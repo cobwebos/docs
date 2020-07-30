@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b23d3d287238d2813f7381941dc279851bc3afdd
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: a61bd162baf6f079b625dc07d4faa397493ba618
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84728820"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015861"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>什么是 Azure Active Directory 的自助注册？
 
@@ -78,8 +78,8 @@ Flow 和 PowerApps 试用注册不由 AllowAdHocSubscriptions 设置控制。 �
 ## <a name="next-steps"></a>后续步骤
 
 * [向 Azure AD 添加自定义域名](../fundamentals/add-custom-domain.md)
-* [如何安装和配置 Azure PowerShell](/powershell/azure/overview)
-* [Azure PowerShell](/powershell/azure/overview)
+* [如何安装和配置 Azure PowerShell](/powershell/azure/)
+* [Azure PowerShell](/powershell/azure/)
 * [Azure Cmdlet 参考](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)
 * [关闭非托管目录中的工作或学校帐户](users-close-account.md)

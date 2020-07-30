@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4431031e5e96c71c6488b57cc570271d763bb764
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 6edd926c0a91519f4c75228d8230c71ff7b96442
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84693458"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018819"
 ---
 # <a name="use-a-windows-vm-system-assigned-managed-identity-to-access-resource-manager"></a>使用 Windows VM 系统分配的托管标识访问资源管理器
 
@@ -51,7 +51,7 @@ ms.locfileid: "84693458"
 
 ## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager"></a>使用 VM 的系统分配的托管标识获取访问令牌并使用它来调用 Azure 资源管理器 
 
-在此部分中将需要使用 PowerShell。  如果尚未安装 **PowerShell**，请从[此处](https://docs.microsoft.com/powershell/azure/overview)下载。 
+在此部分中将需要使用 PowerShell。  如果尚未安装 **PowerShell**，请从[此处](https://docs.microsoft.com/powershell/azure/)下载。 
 
 1.  在门户中，导航到“虚拟机”并转到 Windows 虚拟机，然后在“概述”中，单击“连接”。 
 2.  输入创建 Windows VM 时添加的用户名和密码。 

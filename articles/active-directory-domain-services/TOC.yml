@@ -49,6 +49,8 @@
       href: synchronization.md
     - name: 密码哈希同步的工作原理
       href: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context
+    - name: 虚拟网络注意事项
+      href: network-considerations.md
     - name: 经典部署迁移优势
       href: concepts-migration-benefits.md
     - name: 什么是 Azure Active Directory？
@@ -65,10 +67,6 @@
           href: create-ou.md
         - name: 创建组托管服务帐户 (gMSA)
           href: create-gmsa.md
-    - name: 为 Azure AD DS 进行规划
-      items:
-        - name: 虚拟网络注意事项
-          href: network-considerations.md
     - name: 管理 Azure AD DS
       items:
         - name: 管理组策略

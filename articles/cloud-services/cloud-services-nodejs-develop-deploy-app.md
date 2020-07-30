@@ -9,12 +9,13 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
-ms.openlocfilehash: 25cde21d72de49c5a4f51121f2aa4295319899ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 33006463ed826d1efe32f8beee361eb211e9d709
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049205"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386548"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>生成 Node.js 应用程序并将其部署到 Azure 云服务
 
@@ -31,11 +32,11 @@ ms.locfileid: "87049205"
 
 ![Web 浏览器中显示“Hello World”网页][A web browser displaying the Hello World web page]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 > [!NOTE]
 > 本教程使用 Azure PowerShell，因此需要在 Windows 上运行。
 
-* 安装和配置[Azure Powershell]。
+* 安装和配置 [Azure PowerShell]。
 * 下载并安装 [用于 .NET 2.7 的 Azure SDK]。 在安装设置中，选择：
   * MicrosoftAzureAuthoringTools
   * MicrosoftAzureComputeEmulator
@@ -43,8 +44,8 @@ ms.locfileid: "87049205"
 ## <a name="create-an-azure-cloud-service-project"></a>创建 Azure 云服务项目
 执行以下任务可创建一个新的 Azure 云服务项目以及基本的 Node.js 基架：
 
-1. 以管理员身份运行 **Windows PowerShell**；在“开始”菜单或“开始”屏幕中，搜索 **Windows PowerShell**。********
-2. [连接 PowerShell] 到订阅。
+1. 以管理员身份运行 **Windows PowerShell**；在“开始”菜单或“开始”屏幕中，搜索 **Windows PowerShell**。
+2. [将 PowerShell 连接] 到订阅。
 3. 输入以下 PowerShell cmdlet 来创建项目：
 
    ```powershell

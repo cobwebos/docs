@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 732709dbcb5ebe54025a963379128f1a1e74183e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a8bb9dc5aa6ebbd4ef7fb1b9550670a3c6298333
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81536295"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387840"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>客户管理的密钥磁盘加密
 
@@ -30,7 +30,7 @@ Azure HDInsight 支持使用客户管理的密钥，来加密附加到 HDInsight
 
 如果在存储磁盘加密密钥的密钥保管库上启用密钥保管库防火墙，则必须将用于部署群集的区域的 HDInsight 区域资源提供程序 IP 地址添加到密钥保管库防火墙配置。 这是必需的，因为 HDInsight 不是受信任的 Azure 密钥保管库服务。
 
-可以使用 Azure 门户或 Azure CLI 安全地旋转密钥保管库中的密钥。 轮换密钥时，HDInsight 群集在几分钟内即可开始使用新密钥。 启用[软删除](../key-vault/general/overview-soft-delete.md)密钥保护功能可以防范勒索软件和意外删除。 未启用此项保护功能的 Key Vault 不受支持。
+可以使用 Azure 门户或 Azure CLI 安全地旋转密钥保管库中的密钥。 轮换密钥时，HDInsight 群集在几分钟内即可开始使用新密钥。 启用[软删除](../key-vault/general/soft-delete-overview.md)密钥保护功能可以防范勒索软件和意外删除。 未启用此项保护功能的 Key Vault 不受支持。
 
 |群集类型 |OS 磁盘（托管磁盘） |数据磁盘（托管磁盘） |临时数据磁盘（本地 SSD） |
 |---|---|---|---|
@@ -94,9 +94,9 @@ HDInsight 仅支持 Azure Key Vault。 如果拥有自己的密钥保管库，�
 
     ![为 Azure Key Vault 访问策略设置“选择主体”](./media/disk-encryption/azure-portal-add-access-policy.png)
 
-1. 选择“添加”  ****。
+1. 选择“添加”  。
 
-1. 选择“保存” ****。
+1. 选择“保存” 。
 
     ![保存 Azure Key Vault 访问策略](./media/disk-encryption/add-key-vault-access-policy-save.png)
 

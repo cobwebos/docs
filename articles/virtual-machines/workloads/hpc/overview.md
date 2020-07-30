@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 07/02/2019
-ms.openlocfilehash: b3d5d003db89a11a013c3236a3afbe03ffe68557
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1f88496a6c474194089f20e128b2b92ec61e8559
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76271021"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87083423"
 ---
 # <a name="high-performance-computing-on-h-series-vms"></a>在 H 系列 VM 上进行的高性能计算
 
@@ -39,7 +39,7 @@ HB 系列和 HC 系列支持几乎所有 MPI 类型和版本。 部分受支持�
 
 ## <a name="get-started"></a>入门
 
-首先，决定要使用哪个 H 系列 VM。 若要详细了解 HPC 优化的 VM，请参阅 [HB 系列概述](hb-series-overview.md)和 [HC 系列概述](hc-series-overview.md)。 如需规格，请参阅[高性能计算 VM 大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc)。
+首先，决定要使用哪个 H 系列 VM。 若要详细了解 HPC 优化的 VM，请参阅 [HB 系列概述](hb-series-overview.md)和 [HC 系列概述](hc-series-overview.md)。 如需规格，请参阅[高性能计算 VM 大小](../../sizes-hpc.md)。
 
 为应用程序选择并创建 VM 以后，需启用 InfiniBand 来配置它。 若要了解如何在 Windows 和 Linux VM 上启用 InfiniBand，请参阅[启用 InfiniBand](enable-infiniband.md)。
 
@@ -51,4 +51,4 @@ HPC 工作负荷的关键组件是 MPI。 HB 系列和 HC 系列支持几乎所�
 
 - 查看 [HB 系列概述](hb-series-overview.md)和 [HC 系列概述](hc-series-overview.md)，了解关键差异和规格。
 
-- 若要从体系结构角度更概略性地看待如何运行 HPC 工作负荷，请参阅 [Azure 上的高性能计算 (HPC)](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/)。
+- 若要从体系结构角度更概略性地看待如何运行 HPC 工作负荷，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。

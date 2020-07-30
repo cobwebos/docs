@@ -5,14 +5,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: how-to
-ms.date: 03/19/2020
+ms.date: 07/28/2020
 ms.author: cherylmc
-ms.openlocfilehash: ca5880f76ffd3a85d4b3cec8e01f58ae5c024a58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7e26b00a78d2ce533aa4d16e88649e7e73e3af91
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84749697"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387194"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>将 VPN 网关（虚拟网络网关）连接到虚拟 WAN
 
@@ -33,9 +33,9 @@ Azure 虚拟网络
 
 * 创建不带任何虚拟网络网关的虚拟网络。 确认本地网络的任何子网都不会与要连接到的虚拟网络重叠。 要在 Azure 门户中创建虚拟网络，请参阅[快速入门](../virtual-network/quick-create-portal.md)。
 
-## <a name="1-create-an-azure-virtual-network-gateway"></a><a name="vnetgw"></a>1.创建 Azure 虚拟网络网关
+## <a name="1-create-a-vpn-gateway-virtual-network-gateway"></a><a name="vnetgw"></a>1. 创建 VPN 网关虚拟网络网关
 
-以主动-主动模式为虚拟网络创建 VPN 网关虚拟网络网关。 创建网关时，可将现有公共 IP 地址用于该网关的两个实例，或者可以创建新的公共 IP。 设置虚拟 WAN 站点时将使用这些公共 IP。 有关主动-主动模式的详细信息，请参阅[配置主动-主动连接](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway)。
+为虚拟网络创建主动-主动模式下的**VPN 网关**虚拟网络网关。 创建网关时，可将现有公共 IP 地址用于该网关的两个实例，或者可以创建新的公共 IP。 设置虚拟 WAN 站点时，将使用这些公共 Ip。 有关主动-主动 VPN 网关和配置步骤的详细信息，请参阅[配置主动-主动 vpn 网关](../vpn-gateway/vpn-gateway-activeactive-rm-powershell.md#aagateway)。
 
 ### <a name="active-active-mode-setting"></a><a name="active-active"></a>主动-主动模式设置
 

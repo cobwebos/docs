@@ -3,15 +3,15 @@ title: 适用于虚拟机的 Azure 专用主机概述
 description: 详细了解如何使用 Azure 专用主机部署虚拟机。
 author: cynthn
 ms.service: virtual-machines
-ms.topic: how-to
-ms.date: 01/09/2020
+ms.topic: article
+ms.date: 07/28/2020
 ms.author: cynthn
-ms.openlocfilehash: 15f972f06230e63050f5c4e4b9f3e292d52bd97d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 97e65528a7f049c213ec077c83da1b7672469d90
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373600"
+ms.locfileid: "87388163"
 ---
 # <a name="azure-dedicated-hosts-for-virtual-machines"></a>适用于虚拟机的 Azure 专用主机
 

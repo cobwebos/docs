@@ -3,12 +3,12 @@ title: 快速入门：使用 Go 发送和接收事件 - Azure 事件中心
 description: 快速入门：本文演示了创建 Go 应用程序的过程，可使用该应用程序从 Azure 事件中心发送事件。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 18b139db32e806ac2bdbf440a9dfa8a10ab1ecf3
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.openlocfilehash: 59cd0d757108e7579ce389d216b0ee4d569e12fd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85320346"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002448"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-event-hubs-using-go"></a>快速入门：使用 Go 将事件发送到事件中心或从其接收事件
 Azure 事件中心是一个大数据流式处理平台和事件引入服务，每秒能够接收和处理数百万个事件。 事件中心可以处理和存储分布式软件和设备生成的事件、数据或遥测。 可以使用任何实时分析提供程序或批处理/存储适配器转换和存储发送到数据中心的数据。 有关事件中心的详细概述，请参阅[事件中心概述](event-hubs-about.md)和[事件中心功能](event-hubs-features.md)。
@@ -126,7 +126,7 @@ log.Printf("got partition IDs: %s\n", info.PartitionIDs)
 
 ### <a name="create-a-storage-account-and-container"></a>创建存储帐户和容器
 
-使用 Azure 存储容器在接收器之间共享分区租用和事件流中的检查点等状态。 可以使用 Go SDK 创建存储帐户和容器，但也可以按照[关于 Azure 存储帐户](../storage/common/storage-create-storage-account.md)中的说明进行创建。
+使用 Azure 存储容器在接收器之间共享分区租用和事件流中的检查点等状态。 可以使用 Go SDK 创建存储帐户和容器，但也可以按照[关于 Azure 存储帐户](../storage/common/storage-account-create.md)中的说明进行创建。
 
 [Go 示例存储库](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/storage)中和教程对应的示例中提供了使用 Go SDK 创建存储项目的示例。
 

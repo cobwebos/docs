@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 04/15/2020
-ms.openlocfilehash: 63c098ccd42a438f8daab787afb54cf13cd053c3
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.date: 07/15/2020
+ms.openlocfilehash: 760624b06d00a873ff48c659ef65f9af62cd6454
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780549"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084018"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>教程：使用 .NET SDK 添加自动完成和建议功能
 

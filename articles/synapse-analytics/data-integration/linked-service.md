@@ -1,6 +1,6 @@
 ---
 title: 保护链接服务
-description: 了解如何使用托管 Vnet 预配和保护链接的服务
+description: 了解如何使用托管 VNet 预配和保护链接的服务
 services: synapse-analytics
 author: acomet
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7c7cf8ec7297b3c0ef855936becc3c06a5120a38
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1ce127dbfd9984b3fb18e518701cbbd3a87f5988
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496071"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387229"
 ---
-# <a name="securing-a-linked-service-with-private-links"></a>使用专用链接保护链接服务 
+# <a name="secure-a-linked-service-with-private-links"></a>使用专用链接保护链接服务 
 
 本文介绍如何使用专用终结点保护 Synapse 中的链接服务。
 
@@ -35,14 +35,14 @@ ms.locfileid: "86496071"
 1. 在“外部连接”下，选择“链接服务”。
 1. 若要添加链接服务，请单击“新建”。
 1. 从列表中选择“Azure Data Lake Storage Gen2”磁贴，然后单击“继续”。
-1. 请确保启用**交互式创作**。 启用可能需要大约1分钟的时间。 
+1. 请确保启用“交互式创作”。 启用可能需要大约 1 分钟的时间。 
 1. 输入你的身份验证凭据。 帐户密钥、服务主体和托管标识是目前支持的身份验证类型。 单击“测试连接”以验证你的凭据是否正确。
 1. 选择 "**测试连接**"，它应该会失败，因为存储帐户不允许对专用终结点进行创建和批准即可进行访问。 在错误消息中，你应会看到一个链接，用于创建**专用终结点**，你可以遵循此终结点来执行下一个部分。 如果单击该链接，请跳过下一部分。
 1. 完成后，选择“创建”****。
 
 ## <a name="create-a-managed-private-endpoint"></a>创建托管专用终结点
 
-如果在测试上述连接时未单击超链接，请遵循以下路径。 现在，你需要创建一个托管的专用终结点，该终结点将连接到上面创建的链接服务。
+如果在测试上述连接时未单击超链接，请遵循以下路径。 现在，需要创建一个托管的专用终结点，并将该终结点连接到上面创建的链接服务。
 
 1. 中转到 "**管理**" 选项卡。
 1. 请参阅**托管虚拟网络**部分。
@@ -50,12 +50,12 @@ ms.locfileid: "86496071"
 1. 从列表中选择 "Azure Data Lake Storage Gen2" 磁贴，然后选择 "**继续**"。
 1. 输入前面创建的存储帐户的名称。
 1. 选择“创建”
-1. 等待几秒钟后，创建的专用链接需要审批。
+1. 等待几秒钟后，会显示创建的专用链接需要审批。
 
-## <a name="approval-of-a-private-link"></a>专用链接的批准
-1. 选择上面创建的专用终结点。 你可以看到允许你在存储帐户级别批准专用终结点的超链接。 *一种替代方法是直接进入 Azure 门户的存储帐户，并进入 "**专用终结点连接**" 边栏选项卡。*
+## <a name="private-link-approval"></a>私有链接审批
+1. 选择前面创建的专用终结点。 你可以看到允许你在存储帐户级别批准专用终结点的超链接。 *一种替代方法是直接进入 Azure 门户的存储帐户，并进入 "**专用终结点连接**" 边栏选项卡。*
 1. 勾选你在工作室中创建的专用终结点，并选择 "**批准**"。
-1. 添加说明，然后单击 **"是"**
+1. 添加描述，并单击“是”
 1. 返回到 "**管理**" 选项卡的 "**托管虚拟网络**" 部分下的 "Synapse Studio"。
 1. 需要大约1分钟的时间才能获得为你的专用终结点反射的批准。
 

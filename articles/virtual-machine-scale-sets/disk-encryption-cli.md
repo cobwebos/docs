@@ -9,12 +9,12 @@ ms.subservice: disks
 ms.date: 10/15/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: fd8b88e55f487032f76aa379018f09c144842d60
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fa86773f52c05818f4abea2b7a8b5347e1778274
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200299"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046319"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>使用 Azure CLI 对虚拟机规模集中的 OS 和附加数据磁盘进行加密
 
@@ -32,7 +32,7 @@ Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速�
 az group create --name myResourceGroup --location eastus
 ```
 
-现在，使用 [az vmss create](/cli/azure/vmss) 创建虚拟机规模集。 以下示例创建名为 *myScaleSet* 的规模集，该规模集设置为在应用更改时自动更新；如果 *~/.ssh/id_rsa* 中没有 SSH 密钥，此示例还会生成 SSH 密钥。 每个 VM 实例附有 32Gb 的数据磁盘，可使用 Azure [自定义脚本扩展](../virtual-machines/linux/extensions-customscript.md)通过 [az vmss extension set](/cli/azure/vmss/extension) 准备数据磁盘：
+现在，使用 [az vmss create](/cli/azure/vmss) 创建虚拟机规模集。 以下示例创建名为 *myScaleSet* 的规模集，该规模集设置为在应用更改时自动更新；如果 *~/.ssh/id_rsa* 中没有 SSH 密钥，此示例还会生成 SSH 密钥。 每个 VM 实例附有 32Gb 的数据磁盘，可使用 Azure [自定义脚本扩展](../virtual-machines/extensions/custom-script-linux.md)通过 [az vmss extension set](/cli/azure/vmss/extension) 准备数据磁盘：
 
 ```azurecli-interactive
 # Create a scale set with attached data disk
