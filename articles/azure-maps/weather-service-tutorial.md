@@ -1,20 +1,20 @@
 ---
 title: 教程：使用 Azure Notebooks (Python) 将传感器数据与天气预报数据相联接 | Microsoft Azure Maps
 description: 本教程介绍了如何使用 Azure Notebooks (Python) 将传感器数据与 Microsoft Azure Maps 天气服务提供的天气预报数据相联接。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/29/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, tracking-python
-ms.openlocfilehash: 41d52eff2dc2d9fc1e4c956c893a2f14c91d9f92
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 5a262c95328fef772c9158082f554de9f7ac5f81
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560373"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133225"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>教程：使用 Azure Notebooks (Python) 将传感器数据与天气预报数据相联接
 
@@ -35,7 +35,7 @@ ms.locfileid: "84560373"
 
 若要完成本教程，首先需要：
 
-1. 按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明，在 S0 定价层中创建一个 Azure Maps 帐户订阅。
+1. 按照[创建帐户](quick-demo-map-app.md#create-an-azure-maps-account)中的说明，在 S0 定价层中创建一个 Azure Maps 帐户订阅。
 2. 要获取帐户的主要订阅密钥，请遵循[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的说明。
 
 
