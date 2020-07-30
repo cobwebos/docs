@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.openlocfilehash: 9d8b05a2268a122289c529050c75fd27dd73245b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 15c388336efc92381ac5ebd84df9145c1890cfcc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75438953"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87007208"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>教程：使用数据工厂 REST API 构建第一个 Azure 数据工厂
 > [!div class="op_single_selector"]
@@ -53,7 +53,7 @@ ms.locfileid: "75438953"
   2. 获取**客户端 ID** 和**机密密钥**。
   3. 获取 **租户 ID**。
   4. 将 **ADFGetStartedApp** 应用程序分配到“数据工厂参与者”角色。 
-* 安装 [Azure PowerShell](/powershell/azure/overview)。
+* 安装 [Azure PowerShell](/powershell/azure/)。
 * 启动 **PowerShell** 并运行以下命令。 在本教程结束之前，请将 Azure PowerShell 保持打开状态。 如果将它关闭再重新打开，则需要再次运行下述命令。
   1. 运行 **Connect-AzAccount** 并输入用于登录 Azure 门户的用户名和密码。
   2. 运行 **Get-AzSubscription**，查看此帐户的所有订阅。

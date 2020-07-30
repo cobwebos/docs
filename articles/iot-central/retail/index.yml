@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: 31ef06104f57fd2ec1530c621bceab899921b8f8
-  ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+  ms.openlocfilehash: 57cc81eb1177426edf9d0ddac3b5ec4999325b84
+  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/22/2020
-  ms.locfileid: "82024636"
+  ms.lasthandoff: 07/28/2020
+  ms.locfileid: "87337562"
 landingContent:
 - title: 生成零售解决方案
   linkLists:
@@ -48,13 +48,9 @@ landingContent:
     - text: 设置设备模板
       url: ../core/howto-set-up-template.md
     - text: 连接一个设备
-      url: ../core/tutorial-connect-device-nodejs.md
-    - text: 连接 IoT 即插即用（预览版）设备
-      url: ../core/tutorial-connect-pnp-device.md
+      url: ../core/tutorial-connect-device.md
   - linkListType: how-to-guide
     links:
-    - text: 准备和连接 MXChip IoT DevKit
-      url: ../core/howto-connect-devkit.md
     - text: 连接其他 IoT 云
       url: ../core/howto-build-iotc-device-bridge.md
 - title: 保持连接

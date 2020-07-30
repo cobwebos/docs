@@ -3,16 +3,16 @@ title: 教程 - 使用 CLI 在 Azure 上还原 SAP HANA DB
 description: 在本教程中，你将了解如何使用 Azure CLI 从 Azure 备份恢复服务保管库还原 Azure VM 上运行的 SAP HANA 数据库。
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 14e5023bf79e3e20f96c00fdc73f19c8cd095b73
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 617c21d8c62ed83678f6fc99741409e82eb3c0b1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170575"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87023919"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 还原 Azure VM 中的 SAP HANA 数据库
 
-Azure CLI 用于从命令行或通过脚本创建和管理 Azure 资源。 本文档详细介绍了如何使用 Azure CLI 在 Azure VM 上还原已备份的 SAP HANA 数据库。 还可以使用 [Azure 门户](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)执行这些步骤。
+Azure CLI 用于从命令行或通过脚本创建和管理 Azure 资源。 本文档详细介绍了如何使用 Azure CLI 在 Azure VM 上还原已备份的 SAP HANA 数据库。 还可以使用 [Azure 门户](./sap-hana-db-restore.md)执行这些步骤。
 
 使用 [Azure Cloud Shell](tutorial-sap-hana-backup-cli.md) 运行 CLI 命令。
 
@@ -33,7 +33,7 @@ Azure CLI 用于从命令行或通过脚本创建和管理 Azure 资源。 本�
 
 ## <a name="view-restore-points-for-a-backed-up-database"></a>查看已备份数据库的还原点
 
-要查看数据库的所有恢复点列表，请使用 [az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) cmdlet，如下所示：
+要查看数据库的所有恢复点列表，请使用 [az backup recoverypoint list](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) cmdlet，如下所示：
 
 ```azurecli-interactive
 az backup recoverypoint list --resource-group saphanaResourceGroup \
@@ -56,7 +56,7 @@ DefaultRangeRecoveryPoint                                    AzureWorkload      
 如你所见，上面的列表包含三个恢复点：分别用于完整备份、差异备份和日志备份。
 
 >[!NOTE]
->你还可以使用 [az backup recoverypoint show-log-chain](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) cmdlet 查看每个连续日志备份链的起点和终点。
+>你还可以使用 [az backup recoverypoint show-log-chain](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) cmdlet 查看每个连续日志备份链的起点和终点。
 
 ## <a name="prerequisites-to-restore-a-database"></a>还原数据库的先决条件
 
@@ -73,7 +73,7 @@ Azure 备份可以还原在 Azure VM 上运行的 SAP HANA 数据库，如下所
 * 使用日志备份还原到特定的日期或时间（精确到秒）。 Azure 备份可自动确定相应的完整备份、差异备份和日志链备份，这些是根据所选时间进行还原所必需的。
 * 还原特定的完整备份或差异备份，这样就可以还原到特定的恢复点。
 
-要还原数据库，请使用 [az restore restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) cmdlet，该 cmdlet 需要将恢复配置对象作为其中一个输入。 此对象可使用 [az backup recoveryconfig show](https://docs.microsoft.com/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) cmdlet 生成。 恢复配置对象包含执行还原的所有详细信息。 其中一项是还原模式：OriginalWorkloadRestore 或 AlternateWorkloadRestore 。
+要还原数据库，请使用 [az restore restore-azurewl](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) cmdlet，该 cmdlet 需要将恢复配置对象作为其中一个输入。 此对象可使用 [az backup recoveryconfig show](/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) cmdlet 生成。 恢复配置对象包含执行还原的所有详细信息。 其中一项是还原模式：OriginalWorkloadRestore 或 AlternateWorkloadRestore 。
 
 >[!NOTE]
 > **OriginalWorkloadRestore** - 将数据库还原到与原始源相同的 SAP HANA 实例。 此选项会覆盖原始数据库。 <br>
@@ -85,7 +85,7 @@ Azure 备份可以还原在 Azure VM 上运行的 SAP HANA 数据库，如下所
 
 在本教程中，你将还原到以前的还原点。 [查看数据库的还原点列表](#view-restore-points-for-a-backed-up-database)并选择要还原到的点。 本教程将使用名称为 7660777527047692711 的还原点。
 
-使用上述还原点名称和还原模式，让我们通过 [az backup recoveryconfig show](https://docs.microsoft.com/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) cmdlet 创建恢复配置对象。 我们来看看此 cmdlet 中其余每个参数的含义：
+使用上述还原点名称和还原模式，让我们通过 [az backup recoveryconfig show](/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) cmdlet 创建恢复配置对象。 我们来看看此 cmdlet 中其余每个参数的含义：
 
 * **--target-item-name**：这是已还原数据库要使用的名称。 在本例中，我们使用名称 restored_database。
 * **--target-server-name**：这是成功注册到恢复服务保管库并且与要还原的数据库位于同一区域中的 SAP HANA 服务器的名称。 在本教程中，我们会将数据库还原到受保护的同一 SAP HANA 服务器，名为 hxehost。
@@ -112,7 +112,7 @@ az backup recoveryconfig show --resource-group saphanaResourceGroup \
 {"restore_mode": "AlternateLocation", "container_uri": " VMAppContainer;Compute;saphanaResourceGroup;saphanaVM ", "item_uri": "SAPHanaDatabase;hxe;hxe", "recovery_point_id": "7660777527047692711", "item_type": "SAPHana", "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm", "database_name": null, "container_id": null, "alternate_directory_paths": null}
 ```
 
-现在，要还原数据库，请运行 [az restore restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) cmdlet。 要使用此命令，我们需输入上面的 json 输出（该输出保存到名为 recoveryconfig.json 的文件中）。
+现在，要还原数据库，请运行 [az restore restore-azurewl](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) cmdlet。 要使用此命令，我们需输入上面的 json 输出（该输出保存到名为 recoveryconfig.json 的文件中）。
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -129,13 +129,13 @@ Name                                  Resource
 5b198508-9712-43df-844b-977e5dfc30ea  SAPHANA
 ```
 
-响应将为你提供作业名。 此作业名可用于使用 [az backup job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 来跟踪作业状态。
+响应将为你提供作业名。 此作业名可用于使用 [az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 来跟踪作业状态。
 
 ## <a name="restore-and-overwrite"></a>还原并覆盖
 
 为还原到原始位置，我们将使用 OrignialWorkloadRestore 作为还原模式。 然后，必须选择还原点（可以是以前的时间点或以前的任何还原点）。
 
-在本教程中，我们选择还原到以前的时间点 28-11-2019-09:53:00。 此还原点可按以下格式提供：dd-mm-yyyy、dd-mm-yyyy-hh:mm:ss。 要选择要还原到的有效时间点，请使用 [az backup recoverypoint show-log-chain](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) cmdlet，此 cmdlet 会列出连续日志链备份的间隔。
+在本教程中，我们选择还原到以前的时间点 28-11-2019-09:53:00。 此还原点可按以下格式提供：dd-mm-yyyy、dd-mm-yyyy-hh:mm:ss。 要选择要还原到的有效时间点，请使用 [az backup recoverypoint show-log-chain](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) cmdlet，此 cmdlet 会列出连续日志链备份的间隔。
 
 ```azurecli-interactive
 az backup recoveryconfig show --resource-group saphanaResourceGroup \
@@ -153,7 +153,7 @@ az backup recoveryconfig show --resource-group saphanaResourceGroup \
 {"restore_mode": "OriginalLocation", "container_uri": " VMAppContainer;Compute;saphanaResourceGroup;saphanaVM ", "item_uri": "SAPHanaDatabase;hxe;hxe", "recovery_point_id": "DefaultRangeRecoveryPoint", "log_point_in_time": "28-11-2019-09:53:00", "item_type": "SAPHana", "source_resource_id": "/subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48af3d1/resourceGroups/saphanaResourceGroup/providers/Microsoft.Compute/virtualMachines/saphanavm", "database_name": null, "container_id": null, "alternate_directory_paths": null}"
 ```
 
-现在，要还原数据库，请运行 [az restore restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) cmdlet。 要使用此命令，我们需输入上面的 json 输出（该输出保存到名为 recoveryconfig.json 的文件中）。
+现在，要还原数据库，请运行 [az restore restore-azurewl](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) cmdlet。 要使用此命令，我们需输入上面的 json 输出（该输出保存到名为 recoveryconfig.json 的文件中）。
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -170,15 +170,15 @@ Name                                  Resource
 5b198508-9712-43df-844b-977e5dfc30ea  SAPHANA
 ```
 
-响应将为你提供作业名。 此作业名可用于使用 [az backup job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 来跟踪作业状态。
+响应将为你提供作业名。 此作业名可用于使用 [az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 来跟踪作业状态。
 
 ## <a name="restore-as-files"></a>还原为文件
 
 为将备份数据还原为文件而不是数据库，我们将使用“RestoreAsFiles”作为还原模式。 然后，选择还原点（可以是以前的时间点或以前的任何还原点）。 文件转储到指定路径后，可以将这些文件移动到要将其还原为数据库的任何 SAP HANA 计算机上。 由于可以将这些文件移动到任何计算机，你现在可以跨订阅和区域进行数据还原。
 
-在本教程中，我们将选择还原到以前的时间点 `28-11-2019-09:53:00`，以及在同一 SAP HANA 服务器上将备份文件转储为 `/home/saphana/restoreasfiles` 的位置。 此还原点可按以下格式提供：“dd-mm-yyyy”或“dd-mm-yyyy-hh:mm:ss” 。 要选择要还原到的有效时间点，请使用 [az backup recoverypoint show-log-chain](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) cmdlet，此 cmdlet 会列出连续日志链备份的间隔。
+在本教程中，我们将选择还原到以前的时间点 `28-11-2019-09:53:00`，以及在同一 SAP HANA 服务器上将备份文件转储为 `/home/saphana/restoreasfiles` 的位置。 此还原点可按以下格式提供：“dd-mm-yyyy”或“dd-mm-yyyy-hh:mm:ss” 。 要选择要还原到的有效时间点，请使用 [az backup recoverypoint show-log-chain](/cli/azure/backup/recoverypoint?view=azure-cli-latest#az-backup-recoverypoint-show-log-chain) cmdlet，此 cmdlet 会列出连续日志链备份的间隔。
 
-使用上述还原点名称和还原模式，让我们通过 [az backup recoveryconfig show](https://docs.microsoft.com/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) cmdlet 创建恢复配置对象。 我们来看看此 cmdlet 中其余每个参数的含义：
+使用上述还原点名称和还原模式，让我们通过 [az backup recoveryconfig show](/cli/azure/backup/recoveryconfig?view=azure-cli-latest#az-backup-recoveryconfig-show) cmdlet 创建恢复配置对象。 我们来看看此 cmdlet 中其余每个参数的含义：
 
 * **- target - container - name** 这是成功注册到恢复服务保管库并且与要还原的数据库位于同一区域中的 SAP HANA 服务器的名称。 在本教程中，我们会将数据库作为文件还原到受保护的同一 SAP HANA 服务器，名为 hxehost。
 * **- rp - name** 对于时间点还原，还原点名称将为“DefaultRangeRecoveryPoint”
@@ -215,7 +215,7 @@ az backup recoveryconfig show --resource-group saphanaResourceGroup \
 }
 ```
 
-现在，要将数据库还原为文件，请运行 [az restore restore-azurewl](https://docs.microsoft.com/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) cmdlet。 要使用此命令，我们需输入上面的 json 输出（该输出保存到名为“recoveryconfig.json”的文件中）。
+现在，要将数据库还原为文件，请运行 [az restore restore-azurewl](/cli/azure/backup/restore?view=azure-cli-latest#az-backup-restore-restore-azurewl) cmdlet。 要使用此命令，我们需输入上面的 json 输出（该输出保存到名为“recoveryconfig.json”的文件中）。
 
 ```azurecli-interactive
 az backup restore restore-azurewl --resource-group saphanaResourceGroup \
@@ -266,7 +266,7 @@ az backup restore restore-azurewl --resource-group saphanaResourceGroup \
 }
 ```
 
-响应将为你提供作业名。 此作业名可用于使用 [az backup job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 来跟踪作业状态。
+响应将为你提供作业名。 此作业名可用于使用 [az backup job show](/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) cmdlet 来跟踪作业状态。
 
 转储到目标容器的文件是：
 
@@ -347,4 +347,4 @@ az backup restore restore-azurewl --resource-group saphanaResourceGroup \
 
 * 要了解如何使用 Azure CLI 管理备份的 SAP HANA 数据库，请继续学习教程[使用 CLI 在 Azure VM 中管理 SAP HANA 数据库](tutorial-sap-hana-backup-cli.md)
 
-* 要了解如何使用 Azure 门户还原 Azure VM 中运行的 SAP HANA 数据库，请参阅[在 Azure VM 上还原 SAP HANA 数据库](https://docs.microsoft.com/azure/backup/sap-hana-db-restore)
+* 要了解如何使用 Azure 门户还原 Azure VM 中运行的 SAP HANA 数据库，请参阅[在 Azure VM 上还原 SAP HANA 数据库](./sap-hana-db-restore.md)

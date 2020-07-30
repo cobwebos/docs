@@ -9,14 +9,16 @@ ms.custom:
 - mvc
 - amqp
 - mqtt
+- 'role: Direction'
+- 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 06c0ff7060f4a9d71af11ae75d52ad7f4bf14c6b
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: b5b92de195e4ff4d5b00de041f5b021ee75f9800
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81730854"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307686"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT 中心是什么？
 
