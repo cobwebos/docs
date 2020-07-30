@@ -4,12 +4,12 @@ description: 有关如何在 Azure Blockchain Workbench 预览版中创建区块
 ms.date: 10/14/2019
 ms.topic: tutorial
 ms.reviewer: brendal
-ms.openlocfilehash: 33a9e9c10c07d0808626353a7edfd505e0f60bc9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7be79757f506ea9fb854a248e77f0ff4f1b74f47
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74324806"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87073117"
 ---
 # <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>教程：创建适用于 Azure Blockchain Workbench 的区块链应用程序
 
@@ -329,7 +329,7 @@ contract HelloBlockchain {
 部署区块链应用程序需要几分钟时间。 完成部署后，新应用程序会显示在“应用程序”中。  
 
 > [!NOTE]
-> 也可以使用 [Azure Blockchain Workbench REST API](https://docs.microsoft.com/rest/api/azure-blockchain-workbench) 创建区块链应用程序。
+> 也可以使用 [Azure Blockchain Workbench REST API](/rest/api/azure-blockchain-workbench) 创建区块链应用程序。
 
 ## <a name="add-blockchain-application-members"></a>添加区块链应用程序成员
 

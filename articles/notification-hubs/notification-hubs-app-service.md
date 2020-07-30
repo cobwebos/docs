@@ -17,16 +17,16 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: e6c4fb767e6237f390cdb467b35c323f637bebf2
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 647c5f40c7b02b8d9b488ce0812f27c0c0dde1a7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "76264146"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87022134"
 ---
 # <a name="integration-with-app-service-mobile-apps"></a>与应用服务移动应用集成
 
-为了在 Azure 服务之间促成完美且统一的体验， [应用服务移动应用](../app-service-mobile/app-service-mobile-value-prop.md) 原生支持使用通知中心推送通知。 [应用服务 Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) 提供面向企业开发人员和系统集成商的高度可缩放、全局可用的移动应用程序平台，该平台向移动开发人员提供一组丰富的功能。
+为了在 Azure 服务之间促成完美且统一的体验， [应用服务移动应用](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) 原生支持使用通知中心推送通知。 [应用服务 Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop) 提供面向企业开发人员和系统集成商的高度可缩放、全局可用的移动应用程序平台，该平台向移动开发人员提供一组丰富的功能。
 
 移动应用开发人员可以借助以下工作流来利用通知中心：
 

@@ -11,18 +11,18 @@ ms.date: 06/22/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: af792ccfe8e00c26abc6aab2e4a96d7ef9ff5122
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: de135b57755919a1d312783409caf3e800e03fd5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85252043"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077994"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>快速入门：在通知中心设置推送通知
 
 Azure 通知中心提供了一种易于使用且可扩展的推送引擎。使用通知中心可将通知发送到任意平台（iOS、Android、Windows 和百度），也可从任意后端（云或本地）进行发送。 有关详细信息，请参阅[什么是 Azure 通知中心？](notification-hubs-push-notification-overview.md)。
 
-在该快速入门中，你将在通知中心使用平台通知系统 (PNS) 设置在多个平台上设置推送通知。 该快速入门介绍了要在 Azure 门户中执行的步骤。  [Google Firebase Cloud Messaging](/azure/notification-hubs/configure-notification-hub-portal-pns-settings?tabs=azure-cli#google-firebase-cloud-messaging-fcm) 包含 Azure CLI 使用说明。
+在该快速入门中，你将在通知中心使用平台通知系统 (PNS) 设置在多个平台上设置推送通知。 该快速入门介绍了要在 Azure 门户中执行的步骤。  [Google Firebase Cloud Messaging](?tabs=azure-cli#google-firebase-cloud-messaging-fcm) 包含 Azure CLI 使用说明。
 
 如果尚未创建通知中心，请立即创建。 有关详细信息，请参阅[在 Azure 门户中创建 Azure 通知中心](create-notification-hub-portal.md)或[使用 Azure CLI 创建 Azure 通知中心](create-notification-hub-azure-cli.md)
 
