@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 05/26/2020
+ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 559aee5de7dcf63c92957d70468db6c9672d9155
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 671d6a18ca4c6b9ae15453d23d8188fbb4f7d957
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84124221"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369404"
 ---
 使用适用于 .NET 的语言理解 (LUIS) 创作客户端库可以：
 

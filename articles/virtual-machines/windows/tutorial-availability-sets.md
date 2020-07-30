@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d269b95e5e6fb8491afd4c2f9729cbb047cf3419
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7fe1c01542df2fcc38982fe2a30f9e94c712eacb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100441"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065251"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>教程：使用 Azure PowerShell 创建和部署高度可用的虚拟机
 
@@ -41,13 +41,13 @@ ms.locfileid: "82100441"
 
 Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中的步骤。 它预安装有常用 Azure 工具并将其配置与帐户一起使用。 
 
-若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。  也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。 
+若要打开 Cloud Shell，只需要从代码块的右上角选择“试一试”。 也可以通过转到 [https://shell.azure.com/powershell](https://shell.azure.com/powershell) 在单独的浏览器标签页中启动 Cloud Shell。 选择“复制”以复制代码块，将其粘贴到 Cloud Shell 中，然后按 Enter 来运行它。
 
 ## <a name="create-an-availability-set"></a>创建可用性集
 
-同一位置的硬件分为多个更新域和容错域。 更新域  是一组可同时重启的 VM 和基础物理硬件。 同一个容错域  内的 VM 共享公用存储，以及公用电源和网络交换机。  
+同一位置的硬件分为多个更新域和容错域。 更新域是一组可同时重启的 VM 和基础物理硬件。 同一个容错域内的 VM 共享公用存储，以及公用电源和网络交换机。  
 
-可以使用 [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) 创建可用性集。 在此示例中，更新域和容错域的数目为 *2*，可用性集名为 *myAvailabilitySet*。
+可以使用 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) 创建可用性集。 在此示例中，更新域和容错域的数目为 *2*，可用性集名为 *myAvailabilitySet*。
 
 创建资源组。
 
@@ -57,7 +57,7 @@ New-AzResourceGroup `
    -Location EastUS
 ```
 
-结合 `-sku aligned` 参数使用 [New-AzAvailabilitySet](https://docs.microsoft.com/powershell/module/az.compute/new-azavailabilityset) 创建托管的可用性集。
+结合 `-sku aligned` 参数使用 [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) 创建托管的可用性集。
 
 ```azurepowershell-interactive
 New-AzAvailabilitySet `
@@ -73,15 +73,15 @@ New-AzAvailabilitySet `
 必须在可用性集中创建 VM，确保它们正确地分布在硬件中。 创建后，无法将现有 VM 添加到可用性集中。 
 
 
-通过 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建 VM 时，请使用 `-AvailabilitySetName` 参数指定可用性集的名称。
+通过 [New-AzVM](/powershell/module/az.compute/new-azvm) 创建 VM 时，请使用 `-AvailabilitySetName` 参数指定可用性集的名称。
 
-首先，使用 [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 设置 VM 的管理员用户名和密码：
+首先，使用 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) 设置 VM 的管理员用户名和密码：
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-现在，请使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 在可用性集中创建两个 VM。
+现在，请使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 在可用性集中创建两个 VM。
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)
@@ -99,7 +99,7 @@ for ($i=1; $i -le 2; $i++)
 }
 ```
 
-创建和配置这两个 VM 需要几分钟的时间完成。 完成后，你将拥有两个跨基础硬件分布的虚拟机。 
+创建和配置这两个 VM 需要几分钟的时间。 完成后，你将拥有两个跨基础硬件分布的虚拟机。 
 
 如果转到“资源组” > “myResourceGroupAvailability” > “myAvailabilitySet”在门户中查看可用性集，应会看到 VM 在两个容错域和更新域之间的分布方式。
 
@@ -107,7 +107,7 @@ for ($i=1; $i -le 2; $i++)
 
 ## <a name="check-for-available-vm-sizes"></a>检查可用的 VM 大小 
 
-在可用性集中创建 VM 时，需了解在硬件上可用的 VM 大小。 使用 [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) 命令获取能够在可用性集中部署的虚拟机的所有可用大小。
+在可用性集中创建 VM 时，需了解在硬件上可用的 VM 大小。 使用 [Get-AzVMSize](/powershell/module/az.compute/get-azvmsize) 命令获取能够在可用性集中部署的虚拟机的所有可用大小。
 
 ```azurepowershell-interactive
 Get-AzVMSize `
@@ -119,7 +119,7 @@ Get-AzVMSize `
 
 还可使用 Azure 顾问获取有关如何提高 VM 可用性的详细信息。 Azure 顾问可分析配置和用量遥测数据，然后推荐解决方案来帮助提高 Azure 资源的经济效益、性能、可用性和安全性。
 
-登录到 [Azure 门户](https://portal.azure.com)，选择“所有服务”，然后键入“顾问”   。 顾问仪表板显示针对所选订阅的个性化建议。 有关详细信息，请参阅 [Azure 顾问入门](../../advisor/advisor-get-started.md)。
+登录到 [Azure 门户](https://portal.azure.com)，选择“所有服务”，然后键入“顾问” 。 顾问仪表板显示针对所选订阅的个性化建议。 有关详细信息，请参阅 [Azure 顾问入门](../../advisor/advisor-get-started.md)。
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -136,5 +136,3 @@ Get-AzVMSize `
 
 > [!div class="nextstepaction"]
 > [创建 VM 规模集](tutorial-create-vmss.md)
-
-

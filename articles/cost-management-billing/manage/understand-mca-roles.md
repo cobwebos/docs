@@ -3,19 +3,19 @@ title: Microsoft 客户协议的计费角色 - Azure
 description: 了解 Azure 中 Microsoft 客户协议中计费帐户的计费角色。
 author: amberbhargava
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 02/13/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 76aa21aea647e5096ba47fb691622ea5146d9901
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 84cb68c4cae962fd985a02a72cc85c6b2cf1aa1d
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207217"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87286574"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>了解 Azure 中的 Microsoft 客户协议管理角色
 
-若要管理 Microsoft 客户协议的计费帐户，请使用以下部分所述的角色。 这些角色为 Azure 用来控制对资源的访问的内置角色提供了补充。 有关详细信息，请参阅 [Azure 资源的内置角色](../../role-based-access-control/built-in-roles.md)。
+若要管理 Microsoft 客户协议的计费帐户，请使用以下部分所述的角色。 这些角色为 Azure 用来控制对资源的访问的内置角色提供了补充。 有关详细信息，请参阅 [Azure 内置角色](../../role-based-access-control/built-in-roles.md)。
 
 本文适用于 Microsoft 客户协议的计费帐户。 检查你是否有权访问 Microsoft 客户协议。
 

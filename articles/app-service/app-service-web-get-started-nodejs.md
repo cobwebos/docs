@@ -4,13 +4,13 @@ description: 在数分钟内将第一个 Node.js Hello World 部署到 Azure 应
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.topic: quickstart
 ms.date: 03/04/2020
-ms.custom: mvc, devcenter, seodec18
-ms.openlocfilehash: 4f08068e0920eb8a9e93fbbf91cb352bb8860fe3
-ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
+ms.custom: mvc, devcenter, seodec18, devx-track-javascript
+ms.openlocfilehash: 0e72c17ab20d092a710bb21b1ff6d3d6418e452f
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84905912"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170265"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>在 Azure 中创建 Node.js Web 应用 
 
