@@ -15,12 +15,12 @@ ms.date: 12/05/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 12/04/2019
-ms.openlocfilehash: f78f24ee68545b386169e29a5a52ccc572849ad7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 232bd96373f22957a88c94585f53237e05d5e5cf
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80127061"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076698"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向通用 Windows 平台应用发送通知
 
@@ -43,7 +43,7 @@ ms.locfileid: "80127061"
 
 - **Azure 订阅**。 如果还没有 Azure 订阅，可以在开始前[创建一个免费 Azure 帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 - Microsoft Visual Studio 2017 或更高版本。 本教程中的示例使用 [Visual Studio 2019](https://www.visualstudio.com/products)。
-- [已安装 UWP 应用开发工具](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
+- [已安装 UWP 应用开发工具](/windows/uwp/get-started/get-set-up)
 - 有效的 Windows 应用商店帐户
 - 确认已启用“从应用和其他发送方获取通知”  设置。 
     - 在计算机上启动“设置”  窗口。
@@ -57,16 +57,16 @@ ms.locfileid: "80127061"
 
 要将推送通知发送到 UWP 应用，请将应用关联到 Windows 应用商店。 然后将通知中心配置为与 WNS 集成。
 
-1. 导航到 [Windows 开发人员中心](https://partner.microsoft.com/dashboard/windows/first-run-experience)，使用 Microsoft 帐户登录，然后选择“新建应用”。 
+1. 导航到 [Windows 开发人员中心](https://partner.microsoft.com/dashboard/windows/first-run-experience)，使用 Microsoft 帐户登录，然后选择“新建应用”。
 
     ![“新建应用”按钮](./media/notification-hubs-windows-store-dotnet-get-started/windows-store-new-app-button.png)
-2. 键入应用的名称，然后选择“保留产品名称”。  这将为应用创建一个新的 Windows 应用商店注册。
+2. 键入应用的名称，然后选择“保留产品名称”。 这将为应用创建一个新的 Windows 应用商店注册。
 
     ![存储应用名称](./media/notification-hubs-windows-store-dotnet-get-started/store-app-name.png)
-3. 展开“产品管理”，然后依次选择“WNS/MPNS”、“Live 服务站点”。    登录 Microsoft 帐户。 应用程序注册页会在新选项卡中打开。也可直接导航到[我的应用程序](https://apps.dev.microsoft.com)页，然后选择应用程序名称以访问该页。
+3. 展开“产品管理”，然后依次选择“WNS/MPNS”、“Live 服务站点”。 登录 Microsoft 帐户。 应用程序注册页会在新选项卡中打开。也可直接导航到[我的应用程序](https://apps.dev.microsoft.com)页，然后选择应用程序名称以访问该页。
 
     ![WNS MPNS 页](./media/notification-hubs-windows-store-dotnet-get-started/wns-mpns-page.png)
-4. 记下“应用程序机密”密码和“包安全标识符(SID)”。  
+4. 记下“应用程序机密”密码和“包安全标识符(SID)”。
 
     >[!WARNING]
     >应用程序机密和程序包 SID 是重要的安全凭据。 请勿将这些值告知任何人或随应用程序分发它们。
@@ -77,9 +77,9 @@ ms.locfileid: "80127061"
 
 ### <a name="configure-wns-settings-for-the-hub"></a>配置中心的 WNS 设置
 
-1. 在“通知设置”类别中选择“Windows (WNS)”。  
-2. 输入在前一部分记下的“包 SID”和“安全密钥”的值。  
-3. 单击工具栏上的“保存”。 
+1. 在“通知设置”类别中选择“Windows (WNS)”。
+2. 输入在前一部分记下的“包 SID”和“安全密钥”的值。
+3. 单击工具栏上的“保存”。
 
     ![“包 SID”框和“安全密钥”框](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
 
@@ -88,21 +88,21 @@ ms.locfileid: "80127061"
 ## <a name="create-a-sample-windows-app"></a>创建示例 Windows 应用
 
 1. 在 Visual Studio 中打开“文件”  菜单，选择“新建”  ，然后选择“项目”  。
-2. 在“创建新项目”对话框中完成以下步骤： 
+2. 在“创建新项目”对话框中完成以下步骤：
 
-    1. 在顶部的搜索框中，键入“Windows 通用”。 
-    2. 在搜索结果中选择“空白应用(通用 Windows)”，然后选择“下一步”。  
+    1. 在顶部的搜索框中，键入“Windows 通用”。
+    2. 在搜索结果中选择“空白应用(通用 Windows)”，然后选择“下一步”。
 
        ![“新建项目”对话框](./media/notification-hubs-windows-store-dotnet-get-started/new-project-dialog.png)
 
-    3. 在“配置新项目”对话框中输入**项目名称**，并指定项目文件的**位置**。 
+    3. 在“配置新项目”对话框中输入**项目名称**，并指定项目文件的**位置**。
     4. 选择“创建”  。
 
-3. 接受**目标**和**最低**平台版本的默认值，然后选择“确定”。 
-4. 在“解决方案资源管理器”中，右键单击 Windows Store 应用项目，选择“发布”，然后选择“将应用与 Store 相关联”。   此时会显示“将应用与 Windows 应用商店关联”向导。 
+3. 接受**目标**和**最低**平台版本的默认值，然后选择“确定”。
+4. 在“解决方案资源管理器”中，右键单击 Windows Store 应用项目，选择“发布”，然后选择“将应用与 Store 相关联”。 此时会显示“将应用与 Windows 应用商店关联”向导。
 5. 在向导中，使用 Microsoft 帐户登录。
 6. 选择在第 2 步中注册的应用，选择“下一步”，然后选择“关联”   。 这会将所需的 Windows 应用商店注册信息添加到应用程序清单中。
-7. 在 Visual Studio 中，右键单击该解决方案，并选择“管理 NuGet 包”。  此时会打开“管理 NuGet 包”  窗口。
+7. 在 Visual Studio 中，右键单击该解决方案，并选择“管理 NuGet 包”。 此时会打开“管理 NuGet 包”  窗口。
 8. 在搜索框中，输入 **WindowsAzure.Messaging.Managed**，选择“安装”  ，并接受使用条款。
 
     ![“管理 NuGet 包”窗口][20]
@@ -116,7 +116,7 @@ ms.locfileid: "80127061"
     using Windows.UI.Popups;
     ```
 
-10. 在项目的 `App.xaml.cs` 文件中，找到 `App` 类并添加以下 `InitNotificationsAsync` 方法定义。 将 `<your hub name>` 替换为在 Azure 门户中创建的通知中心的名称，将 `<Your DefaultListenSharedAccessSignature connection string>` 替换为通知中心的“访问策略”页中提供的 `DefaultListenSharedAccessSignature` 连接字符串： 
+10. 在项目的 `App.xaml.cs` 文件中，找到 `App` 类并添加以下 `InitNotificationsAsync` 方法定义。 将 `<your hub name>` 替换为在 Azure 门户中创建的通知中心的名称，将 `<Your DefaultListenSharedAccessSignature connection string>` 替换为通知中心的“访问策略”页中提供的 `DefaultListenSharedAccessSignature` 连接字符串：
 
     ```csharp
     private async void InitNotificationsAsync()
@@ -149,7 +149,7 @@ ms.locfileid: "80127061"
 
     此操作保证每次启动应用程序时都在通知中心注册通道 URI。
 
-12. 若要运行应用，请按键盘的 **F5** 键。 此时会显示包含注册密钥的对话框。 若要关闭对话框，请单击“确定”。 
+12. 若要运行应用，请按键盘的 **F5** 键。 此时会显示包含注册密钥的对话框。 若要关闭对话框，请单击“确定”。
 
     ![注册成功](./media/notification-hubs-windows-store-dotnet-get-started/registration-successful.png)
 
@@ -159,16 +159,16 @@ ms.locfileid: "80127061"
 
 可以通过在 [Azure 门户](https://portal.azure.com/)中发送通知来快速测试在应用中接收通知。
 
-1. 在 Azure 门户中切换到“概览”选项卡，然后在工具栏上选择“测试性发送”。 
+1. 在 Azure 门户中切换到“概览”选项卡，然后在工具栏上选择“测试性发送”。
 
     ![“测试性发送”按钮](./media/notification-hubs-windows-store-dotnet-get-started/test-send-button.png)
-2. 在“测试性发送”窗口中执行以下操作： 
-    1. 对于“平台”，请选择“Windows”  。 
-    2. 对于“通知类型”，请选择“Toast”。  
-    3. 选择“发送”。 
+2. 在“测试性发送”窗口中执行以下操作：
+    1. 对于“平台”，请选择“Windows”  。
+    2. 对于“通知类型”，请选择“Toast”。
+    3. 选择“发送”。
 
         ![“测试发送”窗格](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-test-send-wns.png)
-3. 请在窗口底部的“结果”列表中查看“发送”操作的结果。  此外还会看到一条警报消息。
+3. 请在窗口底部的“结果”列表中查看“发送”操作的结果。 此外还会看到一条警报消息。
 
     ![“发送”操作的结果](./media/notification-hubs-windows-store-dotnet-get-started/result-of-send.png)
 4. 会看到通知消息：桌面上的**测试消息**。
@@ -191,6 +191,6 @@ notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md)
 <!-- URLs. -->
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[toast catalog]: https://msdn.microsoft.com/library/windows/apps/hh761494.aspx
-[tile catalog]: https://msdn.microsoft.com/library/windows/apps/hh761491.aspx
-[badge overview]: https://msdn.microsoft.com/library/windows/apps/hh779719.aspx
+[toast catalog]: /previous-versions/windows/apps/hh761494(v=win.10)
+[tile catalog]: /previous-versions/windows/apps/hh761491(v=win.10)
+[badge overview]: /previous-versions/windows/apps/hh779719(v=win.10)

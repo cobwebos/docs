@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 934422b128fe591d16b9a1dbf73af2bc5264123e
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: c0e17cf2f969b1dc2c5d700a010e3c4ce4474978
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582814"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87015747"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>在 Azure Active Directory 中还原已删除的 Office 365 组
 
@@ -33,24 +33,24 @@ ms.locfileid: "82582814"
 --------- | ---------
 全局管理员、组管理员、合作伙伴 2 级支持人员和 Intune 管理员 | 可以还原任何已删除的 Office 365 组
 用户管理员与合作伙伴 1 级支持人员 | 可以还原任何已删除的 Office 365 组，但分配给公司管理员角色的组除外
-用户 | 可以还原他们拥有的任何已删除 Office 365 组
+User | 可以还原他们拥有的任何已删除 Office 365 组
 
 ## <a name="view-and-manage-the-deleted-office-365-groups-that-are-available-to-restore"></a>查看和管理可还原的已删除 Office 365 组
 
 1. 使用用户管理员帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com)。
 
-2. 选择“组”，然后选择“已删除的组”，查看可还原的已删除组   。
+2. 选择“组”，然后选择“已删除的组”，查看可还原的已删除组 。
 
     ![查看可供还原的组](media/groups-lifecycle/deleted-groups3.png)
 
-3. 可以在“已删除的组”边栏选项卡上执行以下操作  ：
+3. 可以在“已删除的组”边栏选项卡上执行以下操作：
 
-   - 选择“还原组”，从而还原已删除的组及其内容  。
-   - 选择“永久删除”，从而永久删除已删除的组  。 只有管理员才能永久删除某个组。
+   - 选择“还原组”，从而还原已删除的组及其内容。
+   - 选择“永久删除”，从而永久删除已删除的组。 只有管理员才能永久删除某个组。
 
 ## <a name="view-the-deleted-office-365-groups-that-are-available-to-restore-using-powershell"></a>使用 Powershell 查看可还原的已删除 Office 365 组
 
-可以使用以下 cmdlet 查看已删除的组，确认尚未永久清除的、想要还原的一个或多个组。 这些 cmdlet 属于 [Azure AD PowerShell 模块](https://www.powershellgallery.com/packages/AzureAD/)。 [Azure Active Directory PowerShell 版本 2](/powershell/azure/install-adv2?view=azureadps-2.0) 一文中介绍了此模块的详细信息。
+可以使用以下 cmdlet 查看已删除的组，确认尚未永久清除的、想要还原的一个或多个组。 这些 cmdlet 属于 [Azure AD PowerShell 模块](https://www.powershellgallery.com/packages/AzureAD/)。 [Azure Active Directory PowerShell 版本 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) 一文中介绍了此模块的详细信息。
 
 1.  运行以下 cmdlet，以显示 Azure AD 组织中所有已删除但仍可还原的 Office 365 组。
    

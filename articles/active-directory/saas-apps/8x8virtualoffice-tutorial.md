@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c598222978a1c831be6f5e9db9eb87b2d6b6b96
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9c81e63a073882dea3a7aea32d5e9f4d3d5c48f7
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78968656"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018580"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>教程：Azure Active Directory 单一登录 (SSO) 与 8x8 的集成
 
@@ -39,6 +39,9 @@ ms.locfileid: "78968656"
 * 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
 * 一个 8x8 订阅。
 
+> [!NOTE]
+> 此集成也可以通过 Azure AD 美国国家云环境使用。 你可以在“Azure AD 美国国家云应用程序库”中找到此应用程序，并以与在公有云中相同的方式对其进行配置。
+
 ## <a name="scenario-description"></a>方案描述
 
 本教程在测试环境中配置并测试 Azure AD SSO。
@@ -55,11 +58,11 @@ ms.locfileid: "78968656"
 若要配置 8x8 与 Azure AD 的集成，需要从库中将 8x8 添加到托管 SaaS 应用列表。
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
-1. 在左侧导航窗格中，选择“Azure Active Directory”服务  。
-1. 导航到“企业应用程序”，选择“所有应用程序”   。
-1. 若要添加新的应用程序，请选择“新建应用程序”  。
-1. 在“从库中添加”部分的搜索框中，键入 **8x8**。 
-1. 在结果面板中选择“8x8”，然后添加该应用。  在该应用添加到租户时等待几秒钟。
+1. 在左侧导航窗格中，选择“Azure Active Directory”服务。
+1. 导航到“企业应用程序”，选择“所有应用程序” 。
+1. 若要添加新的应用程序，请选择“新建应用程序”。
+1. 在“从库中添加”部分的搜索框中，键入 **8x8**。
+1. 在结果面板中选择“8x8”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-8x8"></a>配置并测试 8x8 的 Azure AD 单一登录
 
@@ -78,23 +81,23 @@ ms.locfileid: "78968656"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“8x8”应用程序集成页上，找到“管理”部分并选择“单一登录”。   
-1. 在“选择单一登录方法”页上选择“SAML”   。
-1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置   。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“8x8”应用程序集成页上，找到“管理”部分并选择“单一登录”。  
+1. 在“选择单一登录方法”页上选择“SAML” 。
+1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 在“基本 SAML 配置”  部分中，按照以下步骤操作：
+1. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    a. 在“标识符”文本框中键入 URL：`https://sso.8x8.com/saml2` 
+    a. 在“标识符”文本框中键入 URL：`https://sso.8x8.com/saml2`
 
-    b. 在“回复 URL”文本框中键入 URL：`https://sso.8x8.com/saml2` 
+    b. 在“回复 URL”文本框中键入 URL：`https://sso.8x8.com/saml2`
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。 稍后在本教程的“配置 8x8 SSO”部分将使用该证书。 
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。 稍后在本教程的“配置 8x8 SSO”部分将使用该证书。
 
     ![证书下载链接](common/certificatebase64.png)
 
-1. 复制“设置 8x8”部分中的 URL，稍后将在本教程中使用这些 URL 值。 
+1. 复制“设置 8x8”部分中的 URL，稍后将在本教程中使用这些 URL 值。
 
     ![复制配置 URL](./media/8x8virtualoffice-tutorial/copy-configuration-urls.png)
 
@@ -102,30 +105,30 @@ ms.locfileid: "78968656"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，你将通过授予 B.Simon 访问 8x8 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在“应用程序”列表中选择“8x8”。 
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在“应用程序”列表中选择“8x8”。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。 
 
 ## <a name="configure-8x8-sso"></a>配置 8x8 SSO
 
@@ -138,25 +141,25 @@ ms.locfileid: "78968656"
 
 1. 登录到 8x8 [Configuration Manager](https://vo-cm.8x8.com/)。
 
-1. 在主页中，单击“标识管理”。 
+1. 在主页中，单击“标识管理”。
 
     ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure1.png)
 
-1. 选中“单一登录(SSO)”，然后选择“Microsoft Azure AD”。  
+1. 选中“单一登录(SSO)”，然后选择“Microsoft Azure AD”。 
 
     ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure2.png)
 
-1. 将 Azure AD 中的“设置 SAML 单一登录”页上的三个 URL 和签署证书，复制到 8x8 Configuration Manager 中的“Microsoft Azure AD SAML 设置”部分。  
+1. 将 Azure AD 中的“设置 SAML 单一登录”页上的三个 URL 和签署证书，复制到 8x8 Configuration Manager 中的“Microsoft Azure AD SAML 设置”部分。 
 
     ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure3.png)
 
-    a. 将“登录 URL”复制到“IDP 登录 URL”。  
+    a. 将“登录 URL”复制到“IDP 登录 URL”。 
 
-    b. 将“Azure AD 标识符”复制到“IDP 颁发者 URL/URN”。  
+    b. 将“Azure AD 标识符”复制到“IDP 颁发者 URL/URN”。 
 
-    c. 将“注销 URL”复制到“IDP 注销 URL”。  
+    c. 将“注销 URL”复制到“IDP 注销 URL”。 
 
-    d. 下载“证书(Base64)”并上传到“证书”。  
+    d. 下载“证书(Base64)”并上传到“证书”。 
 
     e. 单击“ **保存**”。
 
@@ -164,37 +167,37 @@ ms.locfileid: "78968656"
 
 1. 以管理员身份登录到 8x8 Virtual Office 租户。
 
-1. 在“应用程序”面板上选择“Virtual Office 帐户管理器”  。
+1. 在“应用程序”面板上选择“Virtual Office 帐户管理器”。
 
     ![在应用端上配置](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
 
-1. 选择要管理的“企业”  帐户，并单击“登录”  按钮。
+1. 选择要管理的“企业”帐户，并单击“登录”按钮。
 
     ![在应用端上配置](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
 
-1. 在菜单列表中单击“帐户”  选项卡。
+1. 在菜单列表中单击“帐户”选项卡。
 
     ![在应用端上配置](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
 
-1. 在帐户列表中单击“单一登录”  。
+1. 在帐户列表中单击“单一登录”。
 
     ![在应用端上配置](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
 
-1. 在“身份验证”方法下选择“单一登录”  ，然后单击“SAML”  。
+1. 在“身份验证”方法下选择“单一登录”，然后单击“SAML”。
 
     ![在应用端上配置](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
 
-1. 在“SAML 单一登录”部分中，执行以下步骤： 
+1. 在“SAML 单一登录”部分中，执行以下步骤：
 
     ![在应用端上配置](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_006.png)
 
-    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值   。
+    a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值 。
 
-    b. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值   。
+    b. 在“注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值 。
 
-    c. 在“颁发者 URL”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值   。
+    c. 在“颁发者 URL”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值 。
 
-    d. 单击“浏览”按钮，上传已从 Azure 门户下载的证书  。
+    d. 单击“浏览”按钮，上传已从 Azure 门户下载的证书。
 
     e. 单击“保存”按钮  。
 

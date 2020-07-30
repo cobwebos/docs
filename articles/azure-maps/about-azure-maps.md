@@ -1,20 +1,20 @@
 ---
 title: 概述 | Microsoft Azure Maps
 description: 了解 Microsoft Azure Maps 中的服务和功能，以及如何在应用程序中使用这些服务和功能。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/15/2020
 ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 2b6c61c5c144923ece80fddf8a1412d68f35ad52
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 56dce7f52c172255ae316a9171555b8687b7c683
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242861"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133412"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 

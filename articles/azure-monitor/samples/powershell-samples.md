@@ -6,26 +6,26 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 2/14/2018
-ms.openlocfilehash: 4313d9fec9e858a5d30cfea2bbe7372e6a96169c
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.openlocfilehash: 520022be8ee2054d6c0c89ee3f027de9094ae1af
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85413886"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87055255"
 ---
 # <a name="azure-monitor-powershell-samples"></a>Azure Monitor PowerShell 示例
-本文给出了示例 PowerShell 命令，可帮助用户访问 Azure 监视器的功能。
+本文说明可帮助访问 Azure Monitor 功能的示例 PowerShell 命令。
 
 > [!NOTE]
-> 自 2016 年 9 月 25 日起，“Azure Insights”更名为 Azure 监视器。 但是，命名空间及以下命令仍包含“insights”一词。
+> “Azure Insights”在 2016 年 9 月 25 日后称为 Azure Monitor。 但是，命名空间及以下命令仍包含“insights”一词。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="set-up-powershell"></a>设置 PowerShell
-如果尚未安装，请在计算机上安装要运行的 PowerShell。 有关详细信息，请参阅[如何安装和配置 PowerShell](/powershell/azure/overview)。
+如果尚未安装，请在计算机上安装要运行的 PowerShell。 有关详细信息，请参阅[如何安装和配置 PowerShell](/powershell/azure/)。
 
 ## <a name="examples-in-this-article"></a>本文中的示例
-本文中的示例演示了如何使用 Azure 监视器 cmdlet。 还可以在 [Azure 监视器 (Insights) Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 上查看 Azure 监视器 PowerShell cmdlet 的完整列表。
+本文中的示例演示如何使用 Azure Monitor cmdlet。 还可以在 [Azure Monitor (Insights) Cmdlet](/powershell/module/az.applicationinsights) 上查看 Azure Monitor PowerShell cmdlet 的完整列表。
 
 ## <a name="sign-in-and-use-subscriptions"></a>登录并使用订阅
 首先，登录到 Azure 订阅。
@@ -34,13 +34,13 @@ ms.locfileid: "85413886"
 Connect-AzAccount
 ```
 
-会出现登录界面。 登录帐户后，会出现 TenantID 和默认订阅 ID。 所有 Azure cmdlets 都在默认订阅的上下文中工作。 若要查看有权访问的订阅的列表，请使用以下命令：
+会出现登录界面。 登录帐户后，会出现 TenantID 和默认订阅 ID。 所有 Azure cmdlet 都可用于默认订阅的上下文。 若要查看有权访问的订阅的列表，请使用以下命令：
 
 ```powershell
 Get-AzSubscription
 ```
 
-若要查看工作上下文（对其运行命令的订阅），请使用以下命令：
+若要查看工作上下文（运行命令所针对的订阅），请使用以下命令：
 
 ```powershell
 Get-AzContext
@@ -53,9 +53,9 @@ Set-AzContext -SubscriptionId <subscriptionid>
 
 
 ## <a name="retrieve-activity-log"></a>检索活动日志
-使用 [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) cmdlet。  下面是一些常见示例。 活动日志包含最近 90 天的操作。 使用此时间之前的日期会导致错误消息。  
+使用 [Get-AzLog](/powershell/module/az.monitor/get-azlog) cmdlet。  下面是一些常见示例。 活动日志保留过去 90 天的操作。 使用此时间之前的日期会生成错误消息。  
 
-查看当前日期/时间，以验证要在以下命令中使用的时间：
+查看当前日期/时间，以确认要在以下命令中使用的时间：
 ```powershell
 Get-Date
 ```
@@ -90,21 +90,21 @@ Get-AzLog -ResourceProvider 'Microsoft.Web' -StartTime 2015-01-01T10:30 -EndTime
 Get-AzLog -Caller 'myname@company.com'
 ```
 
-以下命令可从活动日志中检索最后 1000 个事件：
+以下命令从活动日志中检索最后 1000 个事件：
 
 ```powershell
 Get-AzLog -MaxRecord 10
 ```
 
-`Get-AzLog` 支持许多其他参数。 有关更多信息，请参阅 `Get-AzLog` 参考。
+`Get-AzLog` 支持许多其他参数。 有关详细信息，请参阅 `Get-AzLog` 参考文档。
 
 > [!NOTE]
-> `Get-AzLog` 仅提供 15 天的历史记录。 使用 -MaxRecords 参数可查询 15 天之外的最后 N 个事件。 要访问超过 15 天的事件，请使用 REST API 或 SDK （使用 SDK 的 C# 示例）。 如果不包括 **StartTime**，则默认值为 **EndTime** 减去一小时。 如果不包括 **EndTime**，则默认值为当前时间。 所有时间均是 UTC 时间。
+> `Get-AzLog` 仅提供 15 天的历史记录。 使用 **-MaxRecords** 参数可查询 15 天之外的最后 N 个事件。 若要访问超过 15 天的事件，请使用 REST API 或 SDK（使用 SDK 的 C# 示例）。 如果不包括 **StartTime**，则默认值为 **EndTime** 减去一小时。 如果不包括 **EndTime**，则默认值为当前时间。 所有时间均是 UTC 时间。
 > 
 > 
 
 ## <a name="retrieve-alerts-history"></a>检索警报历史记录
-若要查看所有警报事件，可以使用以下示例查询 Azure 资源管理器日志。
+若要查看所有警报事件，可以使用以下示例查询 Azure Resource Manager 日志。
 
 ```powershell
 Get-AzLog -Caller "Microsoft.Insights/alertRules" -DetailedOutput -StartTime 2015-03-01
@@ -116,7 +116,7 @@ Get-AzLog -Caller "Microsoft.Insights/alertRules" -DetailedOutput -StartTime 201
 Get-AzAlertHistory -ResourceId /subscriptions/s1/resourceGroups/rg1/providers/microsoft.insights/alertrules/myalert -StartTime 2016-03-1 -Status Activated
 ```
 
-`Get-AzAlertHistory` cmdlet 支持各种参数。 有关详细信息，请参阅 [Get-AlertHistory](https://msdn.microsoft.com/library/mt282453.aspx)。
+`Get-AzAlertHistory` cmdlet 支持各种参数。 有关详细信息，请参阅 [Get-AlertHistory](/previous-versions/azure/mt282453(v=azure.100))。
 
 ## <a name="retrieve-information-on-alert-rules"></a>检索关于警报规则的信息
 下面的所有命令可用于名为“montest”的资源组。
@@ -139,7 +139,7 @@ Get-AzAlertRule -ResourceGroup montest
 Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
 ```
 
-`Get-AzAlertRule` 支持其他参数。 有关详细信息，请参阅 [Get-AlertRule](https://msdn.microsoft.com/library/mt282459.aspx)。
+`Get-AzAlertRule` 支持其他参数。 有关详细信息，请参阅 [Get-AlertRule](/previous-versions/azure/mt282459(v=azure.100))。
 
 ## <a name="create-metric-alerts"></a>创建指标警报
 可使用 `Add-AlertRule` cmdlet 来创建、更新或禁用警报规则。
@@ -148,19 +148,19 @@ Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resou
 
 下表描述了用于使用指标创建警报的参数和值。
 
-| 参数 (parameter) | 值 |
+| 参数 | value |
 | --- | --- |
 | 名称 |simpletestdiskwrite |
 | 此警报规则的位置 |美国东部 |
 | ResourceGroup |montest |
 | TargetResourceId |/subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig |
-| 创建的警报的 MetricName |\PhysicalDisk(_Total)\Disk Writes/sec。有关如何检索精确指标名称的信息，请参阅 `Get-MetricDefinitions` cmdlet |
+| 创建的警报的 MetricName |\PhysicalDisk(_Total)\Disk Writes/sec。See the `Get-MetricDefinitions` cmdlet about how to retrieve the exact metric names |
 | 运算符后的表达式 |GreaterThan |
 | 阈值（此指标的计数/秒） |1 |
 | WindowSize（hh:mm:ss 格式） |00:05:00 |
 | 聚合（在这种情况下使用平均计数的指标的统计信息） |平均值 |
 | 自定义电子邮件（字符串数组） |'foo@example.com','bar@example.com' |
-| 向所有者、参与者和读者发送电子邮件 |-SendToServiceOwners |
+| 将电子邮件发送给所有者、参与者和读者 |-SendToServiceOwners |
 
 创建电子邮件操作
 
@@ -186,7 +186,7 @@ Add-AzMetricAlertRule -Name vmcpu_gt_1 -Location "East US" -ResourceGroup myrg1 
 Get-AzAlertRule -Name vmcpu_gt_1 -ResourceGroup myrg1 -DetailedOutput
 ```
 
-如果给定属性已存在警报规则，则添加警报 cmdlet 还会更新该规则。 若要禁用警报规则，请包括 **-DisableRule** 参数。
+如果给定属性已存在警报规则，则添加警报 cmdlet 还会更新该规则。 若要禁用警报规则，请包括 **-DisableRule**参数。
 
 ## <a name="get-a-list-of-available-metrics-for-alerts"></a>获取警报的可用指标的列表
 可以使用 `Get-AzMetricDefinition` cmdlet 来查看针对特定资源的所有指标的列表。
@@ -201,7 +201,7 @@ Get-AzMetricDefinition -ResourceId <resource_id>
 Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-`Get-AzMetricDefinition` 的可用选项的完整列表位于 [Get-MetricDefinitions](https://msdn.microsoft.com/library/mt282458.aspx) 中。
+`Get-AzMetricDefinition` 的可用选项的完整列表位于 [Get MetricDefinitions](/previous-versions/azure/mt282458(v=azure.100))中。
 
 ## <a name="create-and-manage-activity-log-alerts"></a>创建和管理活动日志警报
 可以使用 `Set-AzActivityLogAlert` cmdlet 来设置活动日志警报。 活动日志警报会要求你首先将条件定义为条件字典，然后创建使用这些条件的警报。
@@ -225,12 +225,12 @@ Set-AzActivityLogAlert -Location 'Global' -Name 'alert on VM create' -ResourceGr
 > 对于云服务 (Microsoft.ClassicCompute)，自动缩放支持 5 分钟时间粒度 (PT5M)。 对于其他服务，自动缩放支持至少 1 分钟时间粒度 (PT1M)
 
 资源（例如 Web 应用、VM、云服务或虚拟机规模集）只能有一种为其配置的自动缩放设置。
-但是，每个自动缩放设置可具有多个配置文件。 例如，一个用于基于性能的缩放配置文件，另一个用于基于计划的配置文件。 每个配置文件可以为其配置多个规则。 有关自动缩放的详细信息，请参阅[如何自动缩放应用程序](../../cloud-services/cloud-services-how-to-scale-portal.md)。
+但是，每个自动缩放设置可具有多个配置文件。 例如，一个用于基于性能的缩放配置文件，另一个用于基于计划的配置文件。 每个配置文件可以为其配置多个规则。 有关自动缩放的详细信息，请参阅 [如何自动缩放应用程序](../../cloud-services/cloud-services-how-to-scale-portal.md)。
 
 请使用以下步骤：
 
 1. 创建规则。
-2. 创建配置文件，将之前创建的规则映射到该配置文件。
+2. 创建配置文件，将之前创建的规则映射到这些配置文件。
 3. 可选：通过配置 webhook 和电子邮件属性，创建自动缩放通知。
 4. 通过映射在前面步骤中创建的配置文件和通知，创建自动缩放设置，并使用目标资源上的名称。
 
@@ -248,7 +248,7 @@ $rule1 = New-AzAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /sub
 $rule2 = New-AzAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -Operator GreaterThan -MetricStatistic Average -Threshold 30 -TimeGrain 00:01:00 -TimeWindow 00:10:00 -ScaleActionCooldown 00:10:00 -ScaleActionDirection Decrease -ScaleActionValue 1
 ```
 
-然后，创建规则的配置文件。
+然后，为规则创建配置文件。
 
 ```powershell
 $profile1 = New-AzAutoscaleProfile -DefaultCapacity 2 -MaximumCapacity 10 -MinimumCapacity 2 -Rules $rule1,$rule2 -Name "My_Profile"
@@ -272,7 +272,7 @@ $notification1= New-AzAutoscaleNotification -CustomEmails ashwink@microsoft.com 
 Add-AzAutoscaleSetting -Location "East US" -Name "MyScaleVMSSSetting" -ResourceGroup big2 -TargetResourceId /subscriptions/s1/resourceGroups/big2/providers/Microsoft.Compute/virtualMachineScaleSets/big2 -AutoscaleProfiles $profile1 -Notifications $notification1
 ```
 
-有关管理自动缩放设置的详细信息，请参阅 [Get-AutoscaleSetting](https://msdn.microsoft.com/library/mt282461.aspx)。
+有关管理自动缩放设置的详细信息，请参阅 [Get AutoscaleSetting](/previous-versions/azure/mt282461(v=azure.100))。
 
 ## <a name="autoscale-history"></a>自动缩放历史记录
 以下示例演示了如何查看近期的自动缩放和警报事件。 使用活动日志搜索来查看自动缩放历史记录。
@@ -287,7 +287,7 @@ Get-AzLog -Caller "Microsoft.Insights/autoscaleSettings" -DetailedOutput -StartT
 Get-AzAutoScaleHistory -ResourceId /subscriptions/s1/resourceGroups/myrg1/providers/microsoft.insights/autoscalesettings/myScaleSetting -StartTime 2016-03-15 -DetailedOutput
 ```
 
-有关详细信息，请参阅 [Get-AutoscaleHistory](https://msdn.microsoft.com/library/mt282464.aspx)。
+有关详细信息，请参阅 [Get-AutoscaleHistory](/previous-versions/azure/mt282464(v=azure.100))。
 
 ### <a name="view-details-for-an-autoscale-setting"></a>查看自动缩放设置的详细信息
 可以使用 `Get-Autoscalesetting` cmdlet 来检索有关自动缩放设置的详细信息。
@@ -312,7 +312,7 @@ Remove-AzAutoscalesetting -ResourceGroup myrg1 -Name MyScaleVMSSSetting
 ```
 
 ## <a name="manage-log-profiles-for-activity-log"></a>管理活动日志的日志配置文件
-可以创建日志配置文件并将数据从活动日志中导出到存储帐户，并且可以为其配置数据保留期。 也可以选择将数据流式传输到事件中心。 目前仅预览版中具有此功能，并且每个订阅只能创建一个日志配置文件。 可以对当前订阅使用以下 cmdlet 来创建和管理日志配置文件。 也可以选择特定的订阅。 虽然 PowerShell 默认为当前订阅，但可以使用 `Set-AzContext` 随时对此进行更改。 可以配置活动日志以将数据路由到该订阅中的任何存储帐户或事件中心。 以 JSON 格式将数据写为 blob 文件。
+可以创建*日志配置文件*并从活动日志中将数据导出到存储帐户，并且可以为其配置数据保留期。 也可以选择将数据流式传输到事件中心。 目前仅预览版中具有此功能，并且每个订阅只能创建一个日志配置文件。 可以通过当前订阅使用以下 cmdlet 来创建和管理日志配置文件。 也可以选择一个特定订阅。 虽然 PowerShell 默认使用当前订阅，但可以使用 `Set-AzContext`随时更改。 可以配置活动日志将数据路由到该订阅中的任何存储帐户或事件中心。 以 JSON 格式将数据写为 blob 文件。
 
 ### <a name="get-a-log-profile"></a>获取日志配置文件
 若要提取现有日志配置文件，请使用 `Get-AzLogProfile` cmdlet。
@@ -328,7 +328,7 @@ Remove-AzLogProfile -name my_log_profile_s1
 ```
 
 ### <a name="add-a-log-profile-with-data-retention"></a>添加有数据保留期的日志配置文件
-可以用天数将 **-RetentionInDays** 属性指定为一个正整数，将保留其中的数据。
+可以用天数将 **-RetentionInDays** 属性指定为一个正整数，会在此期间保留数据。
 
 ```powershell
 Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Location global,westus,eastus,northeurope,westeurope,eastasia,southeastasia,japaneast,japanwest,northcentralus,southcentralus,eastus2,centralus,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia -RetentionInDays 90
@@ -399,4 +399,3 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1/resourceGroups/insights-in
 ```
 
 可以组合这些命令以将数据发送到多个目标。
-
