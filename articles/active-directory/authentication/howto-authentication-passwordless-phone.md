@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5dbf26bc636107576af15a0217eb16302f63f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5022dfc5811f3db59774a46a7034ff14c4dcf4a8
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85601626"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428016"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>使用 Microsoft Authenticator 应用启用无密码登录（预览版）
 
@@ -45,7 +45,7 @@ ms.locfileid: "85601626"
 
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>启用无密码手机登录身份验证方法
 
-1. 登录到 [Azure 门户](https://portal.azure.com)
+1. 使用**全局管理员**帐户登录到[Azure 门户](https://portal.azure.com)。
 1. 搜索并选择“Azure Active Directory”。 选择**安全**  >  **身份验证**方法  >  **身份验证方法策略（预览）**
 1. 在**无密码手机登录**下，选择以下选项
    1. **启用**-是或否

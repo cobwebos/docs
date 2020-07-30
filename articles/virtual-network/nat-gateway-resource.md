@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: 0b025b3e017c8a7702b411e9d91cbdf22f915aba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 983a3e04921bb3d8e804430948013a1b51802727
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549626"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424062"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>使用 NAT 网关资源设计虚拟网络
 
@@ -28,10 +28,10 @@ NAT 网关资源是[虚拟网络 NAT](nat-overview.md) 的一部分，为虚拟�
 
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="用于出站 Internet 连接的虚拟网络 NAT">
+  <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway resource that consumes all IP addresses for a public IP prefix and directs that traffic to and from two subnets of virtual machines and a virtual machine scale set." width="256" title="用于出站 Internet 连接的虚拟网络 NAT">
 </p>
 
-图：*用于出站 Internet 连接的虚拟网络 NAT*
+*图：用于出站 Internet 连接的虚拟网络 NAT*
 
 ## <a name="how-to-deploy-nat"></a>如何部署 NAT
 
@@ -54,10 +54,10 @@ NAT 网关资源：
 下图显示了不同 Azure 资源管理器资源之间的可写引用。  箭头指示引用的方向，从可写位置开始。 审阅 
 
 <p align="center">
-  <img src="media/nat-overview/flow-map.svg" width="256" title="虚拟网络 NAT 对象模型">
+  <img src="media/nat-overview/flow-map.svg" alt="Figure depicts a NAT receiving traffic from internal subnets and directing it to a public IP and an IP prefix." width="256" title="虚拟网络 NAT 对象模型">
 </p>
 
-图：*虚拟网络 NAT 对象模型*
+*图：虚拟网络 NAT 对象模型*
 
 建议为大多数工作负荷使用 NAT，除非对[基于池的负载均衡器出站连接](../load-balancer/load-balancer-outbound-connections.md)有具体的依赖。  
 
@@ -119,20 +119,20 @@ NAT 网关与以下资源兼容：
 开发新的部署时，请从标准 SKU 着手。
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction1.svg" width="256" title="用于出站 Internet 连接的虚拟网络 NAT">
+  <img src="media/nat-overview/flow-direction1.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network." width="256" title="用于出站 Internet 连接的虚拟网络 NAT">
 </p>
 
-图：*用于出站 Internet 连接的虚拟网络 NAT*
+*图：用于出站 Internet 连接的虚拟网络 NAT*
 
 可以使用从 Internet 建立入站连接功能，来扩展 NAT 网关提供的仅限 Internet 出站连接方案。 每个资源都知道流的来源方向。 在使用 NAT 网关的子网上，所有 Internet 出站连接方案都将由 NAT 网关取代。 从 Internet 建立入站连接方案由相应的资源提供。
 
 #### <a name="nat-and-vm-with-instance-level-public-ip"></a>使用实例级公共 IP 的 NAT 和 VM
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction2.svg" width="300" title="使用实例级公共 IP 的虚拟网络 NAT 和 VM">
+  <img src="media/nat-overview/flow-direction2.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with an instance-level public IP." width="300" title="使用实例级公共 IP 的虚拟网络 NAT 和 VM">
 </p>
 
-图：*使用实例级公共 IP 的虚拟网络 NAT 和 VM*
+*图：使用实例级公共 IP 的虚拟网络 NAT 和 VM*
 
 | 方向 | 资源 |
 |:---:|:---:|
@@ -144,10 +144,10 @@ VM 将使用 NAT 网关建立出站连接。  来源入站连接不受影响。
 #### <a name="nat-and-vm-with-public-load-balancer"></a>使用公共负载均衡器的 NAT 和 VM
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction3.svg" width="350" title="使用公共负载均衡器的虚拟网络 NAT 和 VM">
+  <img src="media/nat-overview/flow-direction3.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with a public load balancer." width="350" title="使用公共负载均衡器的虚拟网络 NAT 和 VM">
 </p>
 
-图：*使用公共负载均衡器的虚拟网络 NAT 和 VM*
+*图：使用公共负载均衡器的虚拟网络 NAT 和 VM*
 
 | 方向 | 资源 |
 |:---:|:---:|
@@ -159,10 +159,10 @@ VM 将使用 NAT 网关建立出站连接。  来源入站连接不受影响。
 #### <a name="nat-and-vm-with-instance-level-public-ip-and-public-load-balancer"></a>使用实例级公共 IP 和公共负载均衡器的 NAT 与 VM
 
 <p align="center">
-  <img src="media/nat-overview/flow-direction4.svg" width="425" title="使用实例级公共 IP 和公共负载均衡器的虚拟网络 NAT 与 VM">
+  <img src="media/nat-overview/flow-direction4.svg" alt="Figure depicts a NAT gateway that supports outbound traffic to the internet from a virtual network and inbound traffic with an instance-level public IP and a public load balancer." width="425" title="使用实例级公共 IP 和公共负载均衡器的虚拟网络 NAT 与 VM">
 </p>
 
-图：*使用实例级公共 IP 和公共负载均衡器的虚拟网络 NAT 与 VM*
+*图：使用实例级公共 IP 和公共负载均衡器的虚拟网络 NAT 与 VM*
 
 | 方向 | 资源 |
 |:---:|:---:|
@@ -182,7 +182,7 @@ NAT 网关优先于子网的出站方案。 无法通过适当的转换来调整
 #### <a name="zone-isolation-with-zonal-stacks"></a>使用局部区域堆栈实现区域隔离
 
 <p align="center">
-  <img src="media/nat-overview/az-directions.svg" width="425" title="提供区域隔离的虚拟网络 NAT，创建多个“区域堆栈” "zonal stacks"">
+  <img src="media/nat-overview/az-directions.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet." width="425" title="提供区域隔离的虚拟网络 NAT，创建多个“区域堆栈” "zonal stacks"">
 </p>
 
 图：  实现了区域隔离的虚拟网络 NAT，创建了多个“局部区域性堆栈”
@@ -201,8 +201,8 @@ NAT 网关优先于子网的出站方案。 无法通过适当的转换来调整
 
 | 选项 | 模式 | 示例 | 优点 | 缺点 |
 |---|---|---|---|---|
-| (1) | 使入站终结点与为出站终结点创建的相应局部区域性堆栈相一致。   | 创建包含局部区域性前端的标准负载均衡器。 | 入站与出站终结点采用相同的运行状况模型和故障模式。 操作更简单。 | 可能需要使用公用 DNS 名称来屏蔽每个区域的各个 IP 地址。 |
-| (2) | 使用跨区域入站终结点覆盖局部区域性堆栈。   | 创建包含区域冗余前端的标准负载均衡器。 | 入站终结点使用单个 IP 地址。 | 入站与出站终结点采用不同的运行状况模型和故障模式。  操作更复杂。 |
+| (1) | 使入站终结点与为出站终结点创建的相应局部区域性堆栈相一致。 | 创建包含局部区域性前端的标准负载均衡器。 | 入站与出站终结点采用相同的运行状况模型和故障模式。 操作更简单。 | 可能需要使用公用 DNS 名称来屏蔽每个区域的各个 IP 地址。 |
+| (2) | 使用跨区域入站终结点覆盖局部区域性堆栈。 | 创建包含区域冗余前端的标准负载均衡器。 | 入站终结点使用单个 IP 地址。 | 入站与出站终结点采用不同的运行状况模型和故障模式。  操作更复杂。 |
 
 >[!NOTE]
 > 区域隔离的 NAT 网关要求 IP 地址与 NAT 网关的区域相匹配。 不允许使用其 IP 地址来自其他区域的 NAT 网关资源，也不允许使用没有区域的 NAT 网关资源。
@@ -210,7 +210,7 @@ NAT 网关优先于子网的出站方案。 无法通过适当的转换来调整
 #### <a name="cross-zone-outbound-scenarios-not-supported"></a>不支持跨区域出站方案
 
 <p align="center">
-  <img src="media/nat-overview/az-directions2.svg" width="425" title="与跨区域子网不兼容的虚拟网络 NAT">
+  <img src="media/nat-overview/az-directions2.svg" alt="Figure depicts three zonal stacks, each of which contains a NAT gateway and a subnet, with the connections between to of the gateways and their subnets broken." width="425" title="与跨区域子网不兼容的虚拟网络 NAT">
 </p>
 
 图：  与跨区域子网不兼容的虚拟网络 NAT
@@ -268,18 +268,18 @@ NAT 提供的 SNAT 在多个方面不同于[负载均衡器](../load-balancer/lo
 NAT 为新的出站流量流提供按需 SNAT 端口。 配置了 NAT 的子网上的任何虚拟机将使用库存中所有可用的 SNAT 端口。 
 
 <p align="center">
-  <img src="media/nat-overview/lb-vnnat-chart.svg" width="550" title="虚拟网络 NAT 按需出站 SNAT">
+  <img src="media/nat-overview/lb-vnnat-chart.svg" alt="Figure depicts inventory of all available SNAT ports used by any virtual machine on subnets configured with N A T." width="550" title="虚拟网络 NAT 按需出站 SNAT">
 </p>
 
-图：*虚拟网络 NAT 按需出站 SNAT*
+*图：虚拟网络 NAT 按需出站 SNAT*
 
 虚拟机的任何 IP 配置都可以按需创建出站流。  不需要进行预先分配和按实例的规划，包括根据每个实例的最差情况进行过度预配。  
 
 <p align="center">
-  <img src="media/nat-overview/exhaustion-threshold.svg" width="550" title="耗尽方案的差异">
+  <img src="media/nat-overview/exhaustion-threshold.svg" alt="Figure depicts inventory of all available SNAT ports used by any virtual machine on subnets configured with N A T with exhaustion threshold." width="550" title="耗尽方案的差异">
 </p>
 
-图：*耗尽方案的差异*
+*图：耗尽方案的差异*
 
 释放某个 SNAT 端口后，该端口可供配置了 NAT 的子网上的任何虚拟机使用。  按需分配允许子网上的动态和分散工作负荷按需使用 SNAT 端口。  只要有可用的 SNAT 端口库存，SNAT 流就会成功。 SNAT 端口热点则可受益于较大的端口库存。 不需要 SNAT 端口的虚拟机并非不使用这些端口。
 

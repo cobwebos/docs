@@ -12,12 +12,13 @@ ms.date: 06/16/2017
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: a1e0e3623692321e5c69e4b9c5a26ff82a1c47a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+- devx-track-javascript
+ms.openlocfilehash: 2d5baf0f1c4298d597b620f02f3e463a05203f5a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732355"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424028"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-nodejs"></a>使用 IoT 中心发送云到设备的消息 (Node.js)
 

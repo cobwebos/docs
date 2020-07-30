@@ -3,12 +3,12 @@ title: 如何保护资源层次结构 - Azure 治理
 description: 了解如何通过层次结构设置（包括设置默认管理组）来保护资源层次结构。
 ms.date: 05/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2f8d3d7ff85552fe18a49137450aefe91d0d02c9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: cdaad59d136e89c595a6a42a9760c73523a977c0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366766"
+ms.locfileid: "87422821"
 ---
 # <a name="how-to-protect-your-resource-hierarchy"></a>如何保护资源层次结构
 
@@ -29,7 +29,7 @@ ms.locfileid: "87366766"
 
 默认情况下，在租户中添加的新订阅将添加为根管理组的成员。 如果将策略分配、基于角色的访问控制 (RBAC) 和其他治理构造分配给根管理组，则它们会立即影响这些新订阅。 出于此原因，许多组织不会在根管理组中应用这些构造，即使这是它们分配到的目标位置。 在其他情况下，新订阅需要一组更严格的控件，但不应将其分配给所有订阅。 此设置支持两个用例。
 
-通过允许定义新订阅的默认管理组，可以在根管理组中应用组织范围的治理构造，并且可以定义具有更适合新订阅的策略分配或 RBAC 分配的单独管理组。
+通过允许定义新订阅的默认管理组，可在根管理组中应用组织范围内的调控构造，并且可以定义更适合于新订阅的单独管理组（具有策略分配或 Azure 角色分配）。
 
 若要配置此设置，请调用[层次结构设置](/rest/api/resources/hierarchysettings) REST API 终结点。 为此，请使用以下 REST API URI 和正文格式。 将 `{rootMgID}` 替换为根管理组 ID，将 `{defaultGroupID}` 替换为将成为默认管理组的管理组 ID：
 

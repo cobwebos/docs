@@ -10,12 +10,12 @@ ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: d6fdf25087ec376ec1bc9173aae16f357795372e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: edfdbef2dd0cbfe264ae6a52741413ca28d70864
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130913"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424454"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>为具有 Azure CLI 的容器或 blob 创建用户委托 SAS
 
@@ -129,7 +129,7 @@ az storage account revoke-delegation-keys \
 ```
 
 > [!IMPORTANT]
-> 用户委托密钥和 RBAC 角色分配都是由 Azure 存储缓存的，因此，在启动吊销过程和现有用户委派 SAS 变为无效之间可能存在延迟。
+> 用户委托密钥和 Azure 角色分配都是由 Azure 存储缓存的，因此，在启动吊销过程和现有用户委派 SAS 变为无效之间可能存在延迟。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ author: blackmist
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 2bc3eb72ff0c5d29fd72de848abf87dfe84e2a01
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 88a122a9af4a5edac45a3189df5ffb78fb2ce271
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320215"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423807"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>监视机器学习 Web 服务终结点以及从中收集数据
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -128,6 +128,8 @@ ms.locfileid: "87320215"
 
 3. 生成一个映像并将它部署到 [AKS 或 ACI](how-to-deploy-and-where.md) 上。
 
+有关日志记录和数据收集的详细信息，请参阅在生产中[Azure 机器学习启用日志记录](how-to-enable-logging.md)和[从模型收集数据](how-to-enable-data-collection.md)。
+
 ### <a name="disable-tracking-in-python"></a>在 Python 中禁用跟踪
 
 若要禁用 Azure Application Insights，请使用以下代码：
@@ -166,7 +168,7 @@ ms.locfileid: "87320215"
 
     [![定位 Application Insights url](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 
-1. 在应用程序 Isights 中，从左侧列表中的 "**概述**" 选项卡或 "__监视__" 部分选择 "__日志__"。
+1. 在 Application Insights 中，从左侧列表中的 "**概述**" 选项卡或 "__监视__" 部分，选择 "__日志__"。
 
     [![监视的“概述”选项卡](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 

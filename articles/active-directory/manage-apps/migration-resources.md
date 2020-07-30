@@ -11,17 +11,16 @@ ms.workload: identity
 ms.date: 02/29/2020
 ms.author: kenwith
 ms.reviewer: baselden
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3fe21b6509080e88c63d9c02c8116f3882fb64dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 327e59d3fee6f23d2635b846e9fb5ab422e0139e
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763102"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429022"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>用于将应用程序迁移到 Azure Active Directory 的资源
 
-帮助你将应用程序访问和身份验证迁移到 Azure Active Directory (Azure AD) 的资源。 请参与此简短调查（https://aka.ms/AppsMigrationFeedback) 提供有关将应用迁移到 Azure AD 的体验反馈（包括迁移的阻止程序、是否需要工具/指南，以及保留本地 IDP 的原因）。 
+帮助你将应用程序访问和身份验证迁移到 Azure Active Directory (Azure AD) 的资源。
 
 | 资源  | 说明  |
 |:-----------|:-------------|

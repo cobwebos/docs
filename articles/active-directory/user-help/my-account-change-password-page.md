@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/28/2019
+ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: a93ee781648440a6e656ff8fd948b2eb9e96bd43
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d1191fdd757b4614eca543660eccddea5c20d033
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735933"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422499"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>从“更改密码”页更改工作或学校帐户密码
 
@@ -54,3 +54,5 @@ ms.locfileid: "83735933"
 - 查看[登录活动](my-account-portal-sign-ins-page.md)。
 
 - 查看组织如何[使用隐私相关数据](my-account-portal-privacy-page.md)。
+
+- 更改[我的帐户门户设置](my-account-portal-settings.md)

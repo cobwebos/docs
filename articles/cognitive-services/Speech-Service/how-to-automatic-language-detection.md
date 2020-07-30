@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-speech-services-nomore-variant
-ms.openlocfilehash: df8fe6301a629e4f21478d6da4d892afec44c889
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 3a648b11e795a7d5c8680ac8c3df95e7d0c6bb7d
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85601218"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406769"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>语音转文本的自动语言检测
 
@@ -25,11 +26,11 @@ ms.locfileid: "85601218"
 本文介绍如何使用 `AutoDetectSourceLanguageConfig` 来构造 `SpeechRecognizer` 对象并检索检测到的语言。
 
 > [!IMPORTANT]
-> 此功能仅适用于使用 c #、c + +、Java、Python 和目标-C 的语音 SDK。
+> 此功能仅适用于具有 C#、C++、Java、Python 和 Objective-C 的语音 SDK。
 
 ## <a name="automatic-language-detection-with-the-speech-sdk"></a>使用语言 SDK 进行自动语言检测
 
-自动语言检测目前对每个检测使用四种语言的服务端限制。 在构造 `AudoDetectSourceLanguageConfig` 对象时，请牢记此限制。 在下面的示例中，我们将创建 `AutoDetectSourceLanguageConfig`，然后使用它来构造 `SpeechRecognizer`。
+自动语言检测目前存在每次检测仅限四种语言的服务端限制。 在构造 `AudoDetectSourceLanguageConfig` 对象时，请牢记此限制。 在下面的示例中，我们将创建 `AutoDetectSourceLanguageConfig`，然后使用它来构造 `SpeechRecognizer`。
 
 > [!TIP]
 > 还可以指定一个自定义模型，供执行语音转文本操作时使用。 有关详细信息，请参阅[使用自定义模型来自动检测语言](#use-a-custom-model-for-automatic-language-detection)。

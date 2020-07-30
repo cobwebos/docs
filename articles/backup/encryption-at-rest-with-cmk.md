@@ -3,12 +3,12 @@ title: 使用客户托管密钥加密备份数据
 description: 了解 Azure 备份如何允许使用客户管理的密钥（CMK）对备份数据进行加密。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: c26466582cbe5a10610f6766160c2b0bc51a4828
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1586a40d115a591c474c3bc8c1fed5448eb90bcd
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091090"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387993"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客户托管密钥加密备份数据
 
@@ -92,7 +92,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>启用软删除和清除保护 Azure Key Vault
 
-需要在存储加密密钥的 Azure Key Vault 上**启用软删除和清除保护**。 可以从 Azure Key Vault UI 执行此操作，如下所示。 （或者，可以在创建 Key Vault 时设置这些属性）。 [在此处](../key-vault/general/overview-soft-delete.md)了解有关这些 Key Vault 属性的详细信息。
+需要在存储加密密钥的 Azure Key Vault 上**启用软删除和清除保护**。 可以从 Azure Key Vault UI 执行此操作，如下所示。 （或者，可以在创建 Key Vault 时设置这些属性）。 [在此处](../key-vault/general/soft-delete-overview.md)了解有关这些 Key Vault 属性的详细信息。
 
 ![启用软删除和清除保护](./media/encryption-at-rest-with-cmk/soft-delete-purge-protection.png)
 
@@ -160,7 +160,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
         ![从密钥保管库中选择密钥](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. 单击“保存” 。
+1. 单击“ **保存**”。
 
 1. **跟踪加密密钥更新的进度：** 可以使用恢复服务保管库中的**活动日志**跟踪密钥分配的进度。 状态应更改为 "**成功**"。 现在，保管库会将具有指定密钥的所有数据加密为 KEK。
 
@@ -232,7 +232,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
 从在 Azure VM 中运行的备份 SAP HANA/SQL 数据库还原时，还原的数据将使用目标存储位置中使用的加密密钥进行加密。 它可以是客户托管的密钥或用于加密 VM 磁盘的平台托管密钥。
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="can-i-encrypt-an-existing-backup-vault-with-customer-managed-keys"></a>是否可以使用客户管理的密钥加密现有的备份保管库？
 

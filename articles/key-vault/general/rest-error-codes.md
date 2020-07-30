@@ -10,12 +10,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: bbb30c0ad41babca4158391c9e4e5c5d4d25cbf9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0673732bd657b237ed0f4b4db276b8bf9a3a2b5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81432055"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424369"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API 错误代码
  
@@ -134,7 +134,7 @@ HTTP 403 表示请求已完成身份验证（知道请求方标识），但标�
 
 ### <a name="troubleshooting-403"></a>排除故障 403
 
-首先启用日志记录。 有关如何执行此操作的说明，请参阅[Azure Key Vault 日志记录](logging.md)）。
+首先启用日志记录。 有关说明，请参阅 [Azure Key Vault 日志记录](logging.md)。
 
 启用日志记录后，可以确定 403 错误是由访问策略还是防火墙策略造成的。
 

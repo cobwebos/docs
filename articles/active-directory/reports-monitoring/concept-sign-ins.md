@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2910933e2c57a8bc80a220726462b02915c4a8eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81daa7696c645c1353cdd5e6d3cbca90ac4f03da
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80246511"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87388112"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Azure Active Directory 门户中的“登录活动”报告
 
@@ -151,7 +151,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 |经验证的 SMTP| |由 POP 和 IMAP 客户端用来发送电子邮件。|
 |自动发现| |由 Outlook 和 EAS 客户端用来查找和连接 Exchange Online 中的邮箱。|
 |Exchange ActiveSync| |此筛选器显示尝试 EAS 协议的所有登录尝试。|
-|浏览者|![检查](./media/concept-sign-ins/check.png)|显示用户使用 Web 浏览器进行的所有登录尝试|
+|浏览者|![勾选标记](./media/concept-sign-ins/check.png)|显示用户使用 Web 浏览器进行的所有登录尝试|
 |Exchange ActiveSync| | 显示使用客户端应用通过 Exchange ActiceSync 连接到 Exchange Online 的用户进行的所有登录尝试|
 |Exchange Online PowerShell| |用于通过远程 PowerShell 连接到 Exchange Online。 如果阻止 Exchange Online PowerShell 的基本身份验证，则需使用 Exchange Online PowerShell 模块进行连接。 有关说明，请参阅[使用多重身份验证连接到 Exchange Online PowerShell](https://docs.microsoft.com/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell)。|
 |Exchange Web 服务| |Outlook、Outlook for Mac 和第三方应用使用的编程接口。|
@@ -184,7 +184,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 - **成功**：在登录过程中对用户和应用程序应用了一个或多个条件访问策略（但不一定是其他条件）。 
 
-- **失败**：在登录过程中应用了一个或多个条件访问策略，但不符合这些策略。
+- **失败**：满足至少一个条件性访问策略的用户和应用程序条件，并且未满足或未将授权控件设置为阻止访问。
 
 
 

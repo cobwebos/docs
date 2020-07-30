@@ -3,12 +3,12 @@ title: Azure Migrate 中的物理服务器评估支持
 description: 了解支持 Azure Migrate Server 评估的物理服务器评估
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 3391a29b2297d192aad0d499f688105db9af528b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 97da09fa88cc3e69965237cb5b4326b8b59739bd
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304320"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423773"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>物理服务器评估的支持矩阵 
 
@@ -34,7 +34,7 @@ ms.locfileid: "87304320"
 | **支持**                | **详细信息**               
 | :-------------------       | :------------------- |
 | **物理服务器部署**       | 物理服务器可以是独立服务器，也可以部署到群集中。 |
-| **权限**           | **Windows：** 将域帐户用于已加入域的计算机，并将本地帐户用于已加入域的计算机。 应将用户帐户添加到这些组：远程管理用户、性能监视器用户和性能日志用户。 <br/><br/> **Linux：** 需要在要发现的 Linux 服务器上拥有根帐户。 |
+| **权限**           | **Windows：** 将域帐户用于已加入域的计算机，并将本地帐户用于未加入域的计算机。 应将用户帐户添加到这些组：远程管理用户、性能监视器用户和性能日志用户。 <br/><br/> **Linux：** 需要在要发现的 Linux 服务器上拥有根帐户。 |
 | **操作系统** | 所有操作系统（Windows Server 2003 和 SUSE Linux 除外）都可以进行迁移评估。 |
 
 

@@ -3,12 +3,13 @@ title: 在 Linux 上设置开发环境
 description: 在 Linux 上安装运行时和 SDK 并创建本地开发群集。 完成此设置后，便可以开始生成应用程序。
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 8610feb68e16646c73c132c0577fd3ff198d74b8
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 420284a512147d729db23f3b71cbe8e9f6f050d9
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186888"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429040"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>在 Linux 上准备开发环境
 > [!div class="op_single_selector"]
@@ -29,7 +30,7 @@ ms.locfileid: "86186888"
 
 支持使用以下操作系统版本进行开发。
 
-* Ubuntu 16.04 (`Xenial Xerus`) ，18.04 (`Bionic Beaver`) 
+* Ubuntu 16.04 （ `Xenial Xerus` ）、18.04 （ `Bionic Beaver` ）
 
     确保已安装 `apt-transport-https` 包。
          
@@ -68,7 +69,7 @@ sudo curl -s https://raw.githubusercontent.com/Azure/service-fabric-scripts-and-
     sudo dpkg -i packages-microsoft-prod.deb
     ```
 
-3. 向 APT keyring 添加新的 MS Open Tech Gnu 隐私防护 (GnuPG 或 GPG) 密钥。
+3. 向 APT keyring 添加新的 MS Open Tech Gnu 隐私防护（GnuPG 或 GPG）密钥。
 
     ```bash
     sudo curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -

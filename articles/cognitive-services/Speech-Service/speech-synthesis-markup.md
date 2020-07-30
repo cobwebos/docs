@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 8772607c7f43f2a06f5c9f12ee5efd603a1e324f
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.custom: devx-track-javascript
+ms.openlocfilehash: a7407ec0f507746198c13a7bbdcdcd2c801c92b6
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85212643"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407364"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>通过语音合成标记语言 (SSML) 改善合成
 
@@ -55,11 +56,11 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `version` | 指示用于解释文档标记的 SSML 规范的版本。 当前版本为 1.0。 | 必需 |
-| `xml:lang` | 指定根文档的语言。 该值可以包含小写的双字母语言代码（例如 `en`），或者语言代码加上大写的国家/地区代码（例如 `en-US`）。 | 必需 |
-| `xmlns` | 指定文档的 URI，用于定义 SSML 文档的标记词汇（元素类型和属性名称）。 当前 URI 为 http://www.w3.org/2001/10/synthesis 。 | 必需 |
+| `version` | 指示用于解释文档标记的 SSML 规范的版本。 当前版本为 1.0。 | 必须 |
+| `xml:lang` | 指定根文档的语言。 该值可以包含小写的双字母语言代码（例如 `en`），或者语言代码加上大写的国家/地区代码（例如 `en-US`）。 | 必须 |
+| `xmlns` | 指定文档的 URI，用于定义 SSML 文档的标记词汇（元素类型和属性名称）。 当前 URI 为 http://www.w3.org/2001/10/synthesis 。 | 必须 |
 
 ## <a name="choose-a-voice-for-text-to-speech"></a>选择文本转语音所用的语音
 
@@ -75,9 +76,9 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `name` | 标识用于文本转语音输出的语音。 有关支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 必需 |
+| `name` | 标识用于文本转语音输出的语音。 有关支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 必须 |
 
 **示例**
 
@@ -98,7 +99,7 @@ SSML 的语音服务实现基于万维网联合会的[语音合成标记语言�
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `name` | 标识用于文本转语音输出的语音。 有关支持的语音的完整列表，请参阅[语言支持](language-support.md#text-to-speech)。 | 必须 |
 
@@ -191,7 +192,7 @@ speechConfig!.setPropertyTo(
 > [!IMPORTANT]
 > 调整讲话风格的操作仅适用于神经语音。
 
-默认情况下，对于标准和神经语音，文本转语音服务将使用中性讲话风格合成文本。 使用神经声音，你可以调整说话样式，以表达不同的情感，例如 cheerfulness、理解和冷静，或使用 <mstts： express> 元素优化各种方案（例如，自定义服务、newscasting 和语音助手）的声音。 这是语音服务特有的可选元素。
+默认情况下，对于标准和神经语音，文本转语音服务将使用中性讲话风格合成文本。 使用神经语音，可以调整讲话风格来表达不同的情感（例如愉悦、同情和冷静），或使用 <mstts:express-as> 元素针对不同场景（例如自定义服务、新闻广播和语音助手）优化语音。 这是语音服务特有的可选元素。
 
 目前，支持调整以下神经语音的讲话风格：
 * `en-US-AriaNeural`
@@ -208,7 +209,7 @@ speechConfig!.setPropertyTo(
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `style` | 指定讲话风格。 目前，讲话风格特定于语音。 | 如果调整神经语音的讲话风格，则此属性是必需的。 如果使用 `mstts:express-as`，则必须提供风格。 如果提供无效的值，将忽略此元素。 |
 
@@ -258,7 +259,7 @@ speechConfig!.setPropertyTo(
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `strength` | 使用以下值之一指定暂停的相对持续时间：<ul><li>无</li><li>x-weak</li><li>weak</li><li>medium（默认值）</li><li>strong</li><li>x-strong</li></ul> | 可选 |
 | `time` | 指定暂停的绝对持续时间，以秒或毫秒为单位。 例如，`2s` 和 `500` 是有效值 | 可选 |
@@ -328,9 +329,9 @@ speechConfig!.setPropertyTo(
 
 **属性**
 
-| 属性 | 描述 | 必需/可选 |
+| 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `alphabet` | 指定在 `ph` 属性中合成字符串发音时要使用的音标。 指定音标的字符串必须以小写字母指定。 下面是可以指定的可能音标。<ul><li>`ipa`&ndash;<a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国际注音字母 <span class="docon docon-navigate-external x-hidden-focus"></span> </a></li><li>`sapi` &ndash; [语音服务音标](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash;<a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank">通用电话集</a></li></ul><br>音标仅适用于元素中的 `phoneme`。 | 可选 |
+| `alphabet` | 指定在 `ph` 属性中合成字符串发音时要使用的音标。 指定音标的字符串必须以小写字母指定。 下面是可以指定的可能音标。<ul><li>`ipa` &ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">国际音标 <span class="docon docon-navigate-external x-hidden-focus"></span></a></li><li>`sapi` &ndash; [语音服务音标](speech-ssml-phonetic-sets.md)</li><li>`ups` &ndash;<a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank"> 通用音素集</a></li></ul><br>音标仅适用于元素中的 `phoneme`。 | 可选 |
 | `ph` | 一个字符串，包含用于在 `phoneme` 元素中指定单词发音的音素。 如果指定的字符串包含无法识别的音素，则文本转语音 (TTS) 服务将拒绝整个 SSML 文档，并且不会生成文档中指定的任何语音输出。 | 如果使用音素，则此属性是必需的。 |
 
 **示例**
@@ -361,7 +362,7 @@ speechConfig!.setPropertyTo(
 
 ## <a name="use-custom-lexicon-to-improve-pronunciation"></a>使用自定义词典改善发音
 
-有时文本到语音服务无法准确地发音字词。 例如，公司的名称或医学术语。 开发人员可以使用和标记定义在 SSML 中读取单个实体的方式 `phoneme` `sub` 。 但是，如果需要定义多个实体的读取方式，则可以使用标记创建自定义词典 `lexicon` 。
+有时文本转语音服务无法准确地根据字词发音。 例如，公司的名称或医学术语。 开发人员可以使用 `phoneme` 和 `sub` 标记来定义采用 SSML 朗读单个实体的方式。 但是，如果需要定义朗读多个实体的方式，则可以使用 `lexicon` 标记创建自定义词典。
 
 > [!NOTE]
 > 自定义词典当前支持 UTF-8 编码。 
@@ -374,13 +375,13 @@ speechConfig!.setPropertyTo(
 
 **属性**
 
-| 属性 | 描述                               | 必需/可选 |
+| 属性 | 说明                               | 必需/可选 |
 |-----------|-------------------------------------------|---------------------|
 | `uri`     | 外部 PLS 文档的地址。 | 必需。           |
 
 **使用情况**
 
-若要定义多个实体的读取方式，可以创建一个以 .xml 或 pls 文件形式存储的自定义词典。 下面是一个示例 .xml 文件。
+若要定义朗读多个实体的方式，可以创建一个以 .xml 或 .pls 文件形式存储的自定义词典。 以下是示例 .xml 文件。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -403,7 +404,7 @@ speechConfig!.setPropertyTo(
 
 `lexicon` 元素包含至少一个 `lexeme` 元素。 每个 `lexeme` 元素包含至少一个 `grapheme` 元素以及一个或多个 `grapheme`、`alias` 和 `phoneme` 元素。 `grapheme` 元素包含描述<a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">拼字法 <span class="docon docon-navigate-external x-hidden-focus"></span></a> 的文本。 `alias` 元素用于指示某个首字母缩写词或某个缩写词的发音。 `phoneme` 元素提供了描述 `lexeme` 发音方式的文本。
 
-需要特别注意的是，您不能使用自定义词典直接设置单词的发音。 如果需要为首字母缩写词或缩写词设置发音，请首先提供 `alias` ，然后将与相关联 `phoneme` `alias` 。 例如：
+需要特别注意的是，不能使用自定义词典直接设置字词的发音。 如果需要为首字母缩写词或缩写词设置发音，请首先提供 `alias` ，然后将与相关联 `phoneme` `alias` 。 例如：
 
 ```xml
   <lexeme>
@@ -417,16 +418,16 @@ speechConfig!.setPropertyTo(
 ```
 
 > [!IMPORTANT]
-> `phoneme`当使用 IPA 时，元素不能包含空格。
+> 使用 IPA 时，`phoneme` 元素不能包含空格。
 
-有关自定义词典文件的详细信息，请参阅[发音词典规范（PLS）版本 1.0](https://www.w3.org/TR/pronunciation-lexicon/)。
+有关自定义词典文件的详细信息，请参阅 [Pronunciation Lexicon Specification (PLS) Version 1.0](https://www.w3.org/TR/pronunciation-lexicon/)（发音词典规范 (PLS) 版本 1.0）。
 
-接下来，发布自定义词典文件。 虽然我们不会对此文件的存储位置有限制，但建议使用[Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。
+接下来，发布自定义词典文件。 虽然对此文件的存储位置没有限制，但建议使用 [Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)。
 
 发布自定义词典后，可以从 SSML 引用它。
 
 > [!NOTE]
-> `lexicon`元素必须在 `voice` 元素内部。
+> `lexicon` 元素必须位于 `voice` 元素内部。
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
@@ -440,7 +441,7 @@ speechConfig!.setPropertyTo(
 </speak>
 ```
 
-使用此自定义词典时，"顺便" 将以 "方式" 读取。 将用提供的 IPA "bɛˈ ni ː nji" 读取 "Benigni"。  
+使用此自定义词典时，“BTW”将读作“By the way”。 “Benigni”将通过提供的 IPA“bɛˈniːnji”朗读。  
 
 **限制**
 - 文件大小：自定义词典文件大小的最大限制为 100KB。如果超过此大小，合成请求会失败。
@@ -448,7 +449,7 @@ speechConfig!.setPropertyTo(
 
 **语音服务语音集**
 
-在上面的示例中，我们使用的是国际音标（也称为 IPA 语音集）。 我们建议开发人员使用 IPA，因为它是国际标准。 对于某些 IPA 字符，当使用 Unicode 表示时，它们具有 "预构成" 和 "分解" 版本。 自定义词典仅支持分解后的 unicodes。
+在上面的示例中，我们使用的是国际音标（也称为 IPA 语音集）。 我们建议开发人员使用 IPA，因为它是国际标准。 对于某些 IPA 字符，当使用 Unicode 表示时，它们具有“预构”和“分解”版本。 自定义词典仅支持分解的 Unicode。
 
 考虑到 IPA 不容易记住，语音服务为七种语言（`en-US`、`fr-FR`、`de-DE`、`es-ES`、`ja-JP`、`zh-CN`和 `zh-TW`）定义语音集。
 
@@ -491,8 +492,8 @@ speechConfig!.setPropertyTo(
 
 | 属性 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| `pitch` | 指示文本的基线音节。 可将音节表述为：<ul><li>以某个数字后接“Hz”（赫兹）表示的绝对值。 例如，600 Hz。</li><li>以前面带有“+”或“-”的数字，后接“Hz”或“st”（用于指定音节的变化量）表示的相对值。 例如：+80 Hz 或 -2st。 “st”表示变化单位为半音，即，标准全音阶中的半调（半步）。</li><li>常量值：<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>默认值</li></ul></li></ul>. | 可选 |
-| `contour` |等高线现在同时支持神经和标准语音。 调型表示音节的变化。 这些变化以语音输出中指定时间处的目标数组形式表示。 每个目标由参数对的集定义。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每参数集中的第一个值以文本持续时间百分比的形式指定音节变化的位置。 第二个值使用音节的相对值或枚举值指定音节的升高或降低量（请参阅 `pitch`）。 | 可选 |
+| `pitch` | 指示文本的基线音节。 可将音节表述为：<ul><li>以某个数字后接“Hz”（赫兹）表示的绝对值。 例如，600 Hz。</li><li>以前面带有“+”或“-”的数字，后接“Hz”或“st”（用于指定音节的变化量）表示的相对值。 例如：+80 Hz 或 -2st。 “st”表示变化单位为半音，即，标准全音阶中的半调（半步）。</li><li>常量值：<ul><li>x-low</li><li>low</li><li>中</li><li>high</li><li>x-high</li><li>default</li></ul></li></ul>. | 可选 |
+| `contour` |调型现在同时支持神经语音和标准语音。 调型表示音节的变化。 这些变化以语音输出中指定时间处的目标数组形式表示。 每个目标由参数对的集定义。 例如： <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>每参数集中的第一个值以文本持续时间百分比的形式指定音节变化的位置。 第二个值使用音节的相对值或枚举值指定音节的升高或降低量（请参阅 `pitch`）。 | 可选 |
 | `range` | 表示文本音节范围的值。 可以使用用于描述 `pitch` 的相同绝对值、相对值或枚举值表示 `range`。 | 可选 |
 | `rate` | 指示文本的讲出速率。 可将 `rate` 表述为：<ul><li>以充当默认值倍数的数字表示的相对值。 例如，如果值为 *1*，则速率不会变化。 如果值为 *0.5*，则速率会减慢一半。 如果值为 *3*，则速率为三倍。</li><li>常量值：<ul><li>x-slow</li><li>slow</li><li>中</li><li>fast</li><li>x-fast</li><li>默认值</li></ul></li></ul> | 可选 |
 | `duration` | 语音合成 (TTS) 服务读取文本时应该消逝的时长，以秒或毫秒为单位。 例如 *2s* 或 *1800ms*。 | 可选 |
@@ -500,7 +501,7 @@ speechConfig!.setPropertyTo(
 
 ### <a name="change-speaking-rate"></a>更改语速
 
-讲话速率可应用于单词或句子级的神经语音和标准声音。 
+可以在单词或句子级别对神经语音和标准语音应用语速。 
 
 **示例**
 
@@ -547,7 +548,7 @@ speechConfig!.setPropertyTo(
 ### <a name="change-pitch-contour"></a>更改音高升降曲线
 
 > [!IMPORTANT]
-> 神经声音现在支持音调等高线更改。
+> 神经语音现在支持音节调型变化。
 
 **示例**
 

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/13/2020
-ms.openlocfilehash: 00fd6ff9d79a59421a13d02ad4bafcf3f0a964fa
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 1cff2b56e529e0f52b23f225f7eb492300447ea1
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119661"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387925"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-by-using-the-azure-portal"></a>使用 Azure 门户 Azure Database for PostgreSQL 单个服务器的数据加密
 
@@ -22,13 +22,13 @@ ms.locfileid: "86119661"
 * 必须有一个 Azure 订阅，并且是该订阅的管理员。
 * 在 Azure Key Vault 中，创建要用于客户托管密钥的密钥保管库和密钥。
 * Key vault 必须具有以下属性以用作客户管理的密钥：
-  * [软删除](../key-vault/general/overview-soft-delete.md)
+  * [软删除](../key-vault/general/soft-delete-overview.md)
 
     ```azurecli-interactive
     az resource update --id $(az keyvault show --name \ <key_vault_name> -test -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
     ```
 
-  * [清除保护](../key-vault/general/overview-soft-delete.md#purge-protection)
+  * [清除保护](../key-vault/general/soft-delete-overview.md#purge-protection)
 
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
@@ -49,7 +49,7 @@ ms.locfileid: "86119661"
 
    ![访问策略概述](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
 
-3. 选择“保存”。
+3. 选择“保存” 。
 
 ## <a name="set-data-encryption-for-azure-database-for-postgresql-single-server"></a>为 Azure Database for PostgreSQL 单个服务器设置数据加密
 
@@ -61,7 +61,7 @@ ms.locfileid: "86119661"
 
    ![Azure Database for PostgreSQL 的屏幕截图，其中突出显示了数据加密选项](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
 
-3. 选择“保存”。
+3. 选择“保存” 。
 
 4. 若要确保所有文件（包括临时文件）都是完全加密的，请重新启动服务器。
 

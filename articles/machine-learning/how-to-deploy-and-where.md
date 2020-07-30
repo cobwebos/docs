@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: f592e265cafc3e56dc0616e6eeb748c851084c32
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fb23893f176a2b51e5917ea5bbcb0e52faa64bf3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317869"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423433"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure 机器学习部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -218,6 +218,8 @@ myenv = Environment.from_conda_specification(name = 'myenv',
                                              file_path = 'path-to-conda-specification-file'
 myenv.register(workspace=ws)
 ```
+
+有关使用 Azure 机器学习并自定义 Python 环境的详细讨论，请参阅[在 Azure 机器学习中创建 & 使用软件环境](how-to-use-environments.md)
 
 ### <a name="2-define-scoring-code"></a><a id="script"></a> 2.定义评分代码
 
@@ -636,7 +638,7 @@ az ml model deploy -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.
 ### <a name="ab-testing-controlled-rollout"></a>A/B 测试（受控推出）
 有关详细信息，请参阅[ML 模型的受控推出](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)。
 
-## <a name="consume-web-services"></a>使用 Web 服务
+## <a name="inference-using-web-services"></a>使用 web 服务的推理
 
 每个部署的 Web 服务都提供有一个 REST 终结点，因此可以使用任何编程语言创建客户端应用程序。
 如果已为服务启用基于密钥的身份验证，则需要提供服务密钥，将其作为请求标头中的令牌。
