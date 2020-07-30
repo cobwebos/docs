@@ -4,15 +4,15 @@ description: 了解如何管理 Azure 预留。
 ms.service: cost-management-billing
 author: bandersmsft
 ms.reviewer: yashesvi
-ms.topic: conceptual
-ms.date: 06/04/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 187bfeb7f9e4be47fb44a1ad0cf97be757865ab9
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: c0af39becf172b6d663cb9ffb0a815e529698283
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434177"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289002"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
 

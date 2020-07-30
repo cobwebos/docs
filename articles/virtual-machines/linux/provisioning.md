@@ -9,21 +9,21 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 6530d05b8e1aa565e64256054e81b785572edfb0
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: a7d9aa7de8bb75a22acc85c77924765eaa1b6b3b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307049"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87080142"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Azure Linux VM 预配
 使用通用映像（共享映像库或托管映像）创建 VM 时，通过控制平面可以创建 VM 并将参数和设置传递到 VM。 此过程称为 VM 预配。 在预配过程中，该平台会在 VM 启动时将所需的 VM Create 参数值（主机名、用户名、密码、SSH 密钥 和 customData）提供给 VM。 
 
 映像内烘焙的预配代理与该平台建立连接（连接多个独立的预配接口），设置属性并向该平台发送成功完成的信号。 
 
-预配代理可以是 [Azure Linux 代理](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux)或 [cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init)。 这是创建通用映像的[先决条件](create-upload-generic.md)。
+预配代理可以是 [Azure Linux 代理](../extensions/agent-linux.md)或 [cloud-init](./using-cloud-init.md)。 这是创建通用映像的[先决条件](create-upload-generic.md)。
 
-预配代理支持所有认可的 [Azure Linux 发行版](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)。很多情况下，这些认可的发行版映像附带于 cloud-init 和 Linux 代理中。 这使你可以选择让 cloud-init 处理预配，让 Linux 支持 [Azure 扩展](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows)处理。 对扩展的预配支持意味着 VM 将有资格支持其他 Azure 服务，例如 VM 密码重置、Azure Monitor、Azure 备份和 Azure 磁盘加密。
+预配代理支持所有认可的 [Azure Linux 发行版](./endorsed-distros.md)。很多情况下，这些认可的发行版映像附带于 cloud-init 和 Linux 代理中。 这使你可以选择让 cloud-init 处理预配，让 Linux 支持 [Azure 扩展](../extensions/features-windows.md)处理。 对扩展的预配支持意味着 VM 将有资格支持其他 Azure 服务，例如 VM 密码重置、Azure Monitor、Azure 备份和 Azure 磁盘加密。
 
 预配完成后，每次启动时 cloud-init 都会运行。 cloud-init 会监视 VM 的更改，例如网络变化、临时磁盘格的装载和格式化以及 Linux 代理的启动。 Linux 代理持续在服务器上运行，从 Azure 平台中查找“目标状态”（新配置），以便无论何时安装扩展，Linux 代理都能够处理扩展。
 

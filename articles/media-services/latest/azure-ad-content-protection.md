@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/1/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2dbd75748d30a67c22ac729a8a2130a2d43aef9b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 81c83cd8dcea5f8746b67a7bd52ea52a09c8a711
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205176"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87001394"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>教程：使用 Azure AD 进行端到端内容保护
 
@@ -48,13 +48,13 @@ ms.locfileid: "86205176"
 这是可选的，但建议你在开始学习本教程之前熟悉以下概念：
 
 * 数字版权管理 (DRM)
-* [Azure 媒体服务 (AMS) v3](https://docs.microsoft.com/azure/media-services/latest/media-services-overview)
+* [Azure 媒体服务 (AMS) v3](./media-services-overview.md)
 * 使用 AMS API v3、Azure 门户或 [Azure 媒体服务资源管理器 (AMSE) 工具](https://github.com/Azure/Azure-Media-Services-Explorer)的 AMS [内容密钥策略](content-key-policy-concept.md)
-* [Microsoft 标识平台](https://docs.microsoft.com/azure/active-directory/develop/)上的 Azure AD v2 终结点
-* 新式云身份验证，如 [OAuth 2.0 和 OpenID Connect](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols)
-  * [OAuth 2.0 中的授权代码流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)和需要 PKCE 的原因
-  * [委派权限与应用程序权限](https://docs.microsoft.com/azure/active-directory/develop/developer-glossary#permissions)
-* [JWT 令牌](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)、其声明和签名密钥滚动更新（包含在示例中）。
+* [Microsoft 标识平台](../../active-directory/develop/index.yml)上的 Azure AD v2 终结点
+* 新式云身份验证，如 [OAuth 2.0 和 OpenID Connect](../../active-directory/develop/active-directory-v2-protocols.md)
+  * [OAuth 2.0 中的授权代码流](../../active-directory/develop/v2-oauth2-auth-code-flow.md)和需要 PKCE 的原因
+  * [委派权限与应用程序权限](../../active-directory/develop/developer-glossary.md#permissions)
+* [JWT 令牌](../../active-directory/develop/access-tokens.md)、其声明和签名密钥滚动更新（包含在示例中）。
 
 ### <a name="prerequisite-code-and-installations"></a>必备代码和安装
 
@@ -63,7 +63,7 @@ ms.locfileid: "86205176"
 * 安装 Node.js。 在此处 [https://nodejs.org](https://nodejs.org) 下载 Node.js。安装附带 NPM。
 * 一个 [Azure 订阅](https://azure.microsoft.com/free/)。
 * Azure 媒体服务 (AMS) 帐户。
-* @azure/msal-browser v2.0，[Microsoft 身份验证库 (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) SDK 系列中用于不同客户端平台的成员之一
+* @azure/msal-browser v2.0，[Microsoft 身份验证库 (MSAL)](../../active-directory/develop/msal-overview.md) SDK 系列中用于不同客户端平台的成员之一
 * 最新版本的 [Azure Media Player](https://github.com/Azure-Samples/azure-media-player-samples)（包含在示例中）。
 * Apple 提供的 FPS 凭据，如果想要添加 FairPlay DRM 和使用 CORS（可通过客户端 JavaScript 访问）托管的应用程序证书，则需要它。
 
@@ -98,7 +98,7 @@ ms.locfileid: "86205176"
 
 ![用于解析 JWT 令牌的屏幕](media/aad-ams-content-protection/subsystem.svg)
 
-有关子系统的详细内容，请参阅[设计带访问控制的多 DRM 内容保护系统](https://docs.microsoft.com/azure/media-services/latest/design-multi-drm-system-with-access-control)。
+有关子系统的详细内容，请参阅[设计带访问控制的多 DRM 内容保护系统](./design-multi-drm-system-with-access-control.md)。
 
 ## <a name="understand-the-single-page-app"></a>了解单页应用
 
@@ -339,7 +339,7 @@ if (tokenClaims != null && tokenClaims.Length > 0)
 }
 ```
 
-组声明是 Azure AD 中的[受限声明集](https://docs.microsoft.com/azure/active-directory/develop/active-directory-claims-mapping#claim-sets)的成员。
+组声明是 Azure AD 中的[受限声明集](../../active-directory/develop/active-directory-claims-mapping.md#claim-sets)的成员。
 
 #### <a name="test"></a>测试
 

@@ -424,7 +424,7 @@
           href: platform/autoscale-get-started.md
         - name: 配置设置
           href: platform/autoscale-understanding-settings.md
-        - name: 最佳实践
+        - name: 最佳做法
           href: platform/autoscale-best-practices.md
         - name: 常见指标
           href: platform/autoscale-common-metrics.md
@@ -485,7 +485,7 @@
             - name: 查看通知
               href: ../service-health/service-notifications.md
             - name: 配置基于通知事件的警报
-              href: platform/alerts-activity-log-service-notifications.md
+              href: ../service-health/alerts-activity-log-service-notifications-portal.md
         - name: 通知和操作
           items:
             - name: 操作规则（预览版）
@@ -905,18 +905,24 @@
           href: insights/vminsights-ga-release-faq.md
         - name: 常见问题解答
           href: faq.md#azure-monitor-for-vms
-        - name: 启用监视
+        - name: 配置工作区
+          href: insights/vminsights-configure-workspace.md
+        - name: 安装代理
           items:
-            - name: 启用监视概述
+            - name: 概述
               href: insights/vminsights-enable-overview.md
-            - name: 为单个 Azure VM 启用
-              href: insights/vminsights-enable-single-vm.md
-            - name: 使用 Azure Policy 启用
-              href: insights/vminsights-enable-at-scale-policy.md
-            - name: 使用 Azure PowerShell 启用
-              href: insights/vminsights-enable-at-scale-powershell.md
-            - name: 为混合环境启用
-              href: insights/vminsights-enable-hybrid-cloud.md
+            - name: Azure 门户
+              href: insights/vminsights-enable-portal.md
+            - name: Azure PowerShell
+              href: insights/vminsights-enable-powershell.md
+            - name: ARM 模板
+              href: insights/vminsights-enable-resource-manager.md
+            - name: Azure Policy
+              href: insights/vminsights-enable-policy.md
+            - name: 混合 VM
+              href: insights/vminsights-enable-hybrid.md
+            - name: 升级依赖项代理
+              href: insights/vminsights-dependency-agent-maintenance.md
         - name: 映射依赖项
           href: insights/vminsights-maps.md
         - name: 监视性能
@@ -927,8 +933,6 @@
           href: insights/vminsights-workbooks.md
         - name: 创建警报规则
           href: insights/vminsights-alerts.md
-        - name: 升级依赖项代理
-          href: insights/vminsights-dependency-agent-maintenance.md
         - name: 禁用监视
           href: insights/vminsights-optout.md
     - name: 用于容器的 Azure Monitor
