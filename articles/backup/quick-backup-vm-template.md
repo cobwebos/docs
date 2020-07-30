@@ -5,16 +5,16 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 4e54ca6452a219dedca56885bda28ed43991ad37
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7aef0e7e48bfd3f56bd1c3718b1a547bea66cbe8
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248928"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87054473"
 ---
 # <a name="quickstart-back-up-a-virtual-machine-in-azure-with-an-arm-template"></a>快速入门：使用 ARM 模板在 Azure 中备份虚拟机
 
-[Azure 备份](backup-overview.md)可备份本地计算机和应用以及 Azure VM。 本文介绍如何使用 Azure 资源管理器模板（ARM 模板）和 Azure PowerShell 备份 Azure VM。 本快速入门重点介绍部署 ARM 模板以创建恢复服务保管库的过程。 有关开发 ARM 模板的详细信息，请参阅 [Azure 资源管理器文档](/azure/azure-resource-manager/)和[模板参考](/azure/templates/microsoft.recoveryservices/allversions)。
+[Azure 备份](backup-overview.md)可备份本地计算机和应用以及 Azure VM。 本文介绍如何使用 Azure 资源管理器模板（ARM 模板）和 Azure PowerShell 备份 Azure VM。 本快速入门重点介绍部署 ARM 模板以创建恢复服务保管库的过程。 有关开发 ARM 模板的详细信息，请参阅 [Azure 资源管理器文档](../azure-resource-manager/index.yml)和[模板参考](/azure/templates/microsoft.recoveryservices/allversions)。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 

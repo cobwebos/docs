@@ -14,6 +14,13 @@
           href: ./kubernetes/policy-samples.md
         - name: 已启用 Arc 的服务器
           href: ./servers/policy-samples.md
+- name: 概念
+  items:
+    - name: 安全性
+      items:
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./servers/security-controls-policy.md
 - name: 操作指南
   items:
     - name: 已启用 Arc 的 Kubernetes

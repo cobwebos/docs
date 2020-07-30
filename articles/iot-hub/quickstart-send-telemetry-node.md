@@ -12,13 +12,14 @@ ms.custom:
 - mvc
 - seo-javascript-september2019
 - mqtt
+- 'Role: Cloud Development'
 ms.date: 06/21/2019
-ms.openlocfilehash: 5c34dcc606e87e11a3a018df1b2d6bbedb262d04
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7492374364826519857ad66a52e01851c22da3bb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82209105"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87320453"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-nodejs"></a>快速入门：将遥测数据从设备发送到 IoT 中心并使用后端应用程序读取该数据 (Node.js)
 
@@ -86,7 +87,7 @@ az extension add --name azure-iot
 
     稍后会在快速入门中用到此值。
 
-1. 还需要使用来自 IoT 中心的与事件中心兼容的终结点、与事件中心兼容的路径和服务主密钥，确保后端应用程序能连接到 IoT 中心并检索消息    。 以下命令可检索 IoT 中心的这些值：
+1. 还需要使用与事件中心兼容的终结点、与事件中心兼容的路径和 IoT 中心的服务主密钥，确保后端应用程序能连接到 IoT 中心并检索消息  。 以下命令可检索 IoT 中心的这些值：
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
@@ -106,7 +107,7 @@ az extension add --name azure-iot
 
 1. 打开本地终端窗口，导航到示例 Node.js 项目的根文件夹。 然后导航到 **iot-hub\Quickstarts\simulated-device** 文件夹。
 
-1. 在所选文本编辑器中打开 SimulatedDevice.js 文件  。
+1. 在所选文本编辑器中打开 SimulatedDevice.js 文件。
 
     将 `connectionString` 变量的值替换为之前记下的设备连接字符串。 然后将更改保存到 **SimulatedDevice.js**。
 
@@ -123,11 +124,11 @@ az extension add --name azure-iot
 
 ## <a name="read-the-telemetry-from-your-hub"></a>从中心读取遥测数据
 
-后端应用程序会连接到 IoT 中心上的服务端“事件”终结点  。 应用程序会接收模拟设备发送的设备到云的消息。 IoT 中心后端应用程序通常在云中运行，接收和处理设备到云的消息。
+后端应用程序会连接到 IoT 中心上的服务端“事件”终结点。 应用程序会接收模拟设备发送的设备到云的消息。 IoT 中心后端应用程序通常在云中运行，接收和处理设备到云的消息。
 
-1. 打开另一个本地终端窗口，导航到示例 Node.js 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\read-d2c-messages 文件夹  。
+1. 打开另一个本地终端窗口，导航到示例 Node.js 项目的根文件夹。 然后导航到 iot-hub\Quickstarts\read-d2c-messages 文件夹。
 
-1. 在所选文本编辑器中打开 ReadDeviceToCloudMessages.js 文件  。 更新以下变量并保存对文件所做的更改。
+1. 在所选文本编辑器中打开 ReadDeviceToCloudMessages.js 文件。 更新以下变量并保存对文件所做的更改。
 
     | 变量 | 值 |
     | -------- | ----------- |

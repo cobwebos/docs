@@ -52,8 +52,12 @@
     - name: 访问和标识
       href: concepts-identity.md
     - name: 安全性
-      href: concepts-security.md
-      items: null
+      items:
+        - name: 应用程序和群集的安全性
+          href: concepts-security.md
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
     - name: 网络
       href: concepts-network.md
     - name: 存储
@@ -62,7 +66,7 @@
       href: concepts-scale.md
     - name: 节点自动修复
       href: node-auto-repair.md
-    - name: 最佳实践
+    - name: 最佳做法
       items:
         - name: 概述
           href: best-practices.md
@@ -350,7 +354,7 @@
           href: deployment-center-launcher.md
         - name: 适用于 Kubernetes 的 GitHub 操作
           href: ../aks/kubernetes-action.md
-    - name: 疑难解答
+    - name: 故障排除
       items:
         - name: 常见问题
           href: troubleshooting.md
@@ -396,5 +400,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'
-    - name: 常见问题
+    - name: 常见问题解答
       href: faq.md

@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 07/10/2019
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: da50fb9f331e91089bb6bf0fb373cab8045639f0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 934b679813323fe144f935811eb613ab68b561db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260504"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089611"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>快速入门：将 Windows 容器部署到 Service Fabric
 
@@ -86,7 +86,7 @@ Microsoft 为不同版本的 Windows Server 上生成的 IIS 版本发布不同�
 
 以下示例脚本创建一个由五个节点组成的 Service Fabric 群集（使用 X.509 证书保护的群集）。 该命令将创建一个自签名证书，并将其上传到新的 Key Vault。 该证书也会复制到本地目录。 可在[创建 Service Fabric 群集](scripts/service-fabric-powershell-create-secure-cluster-cert.md)中详细了解如何使用此脚本创建群集。
 
-必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell。
+必要时，请使用 [Azure PowerShell 指南](/powershell/azure/)中的说明安装 Azure PowerShell。
 
 在运行以下脚本之前，请在 PowerShell 中运行 `Connect-AzAccount` 来与 Azure 建立连接。
 

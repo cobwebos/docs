@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: IoT 即插即用预览版文档
-summary: 使用 IoT 即插即用预览版可以定义设备模型，该模型使云解决方案能够自动了解你的设备并开始与之交互 — 所有这一切都无需编写任何设备代码。
+title: IoT 即插即用预览刷新版本文档
+summary: 使用 IoT 即插即用可定义这样一个设备模型，该模型使云解决方案能够自动了解你的设备并开始与之交互。
 metadata:
-  title: IoT 即插即用预览版文档
-  description: 使用 IoT 即插即用预览版可以定义设备模型，该模型使云解决方案能够自动了解你的设备并开始与之交互 — 所有这一切都无需编写任何设备代码。
+  title: IoT 即插即用预览版体系结构
+  description: 通过 IoT 即插即用预览版，解决方案构建者无需手动配置即可将设备集成到解决方案中。 本文介绍了使其成为可能的关键体系结构元素。
   services: iot-pnp
   ms.service: iot-pnp
   ms.topic: landing-page
@@ -11,12 +11,12 @@ metadata:
   ms.author: dobett
   manager: philmea
   ms.date: 10/31/2019
-  ms.openlocfilehash: 9469adb901c2da5f814088aa8eb59121889a0b78
-  ms.sourcegitcommit: 25490467e43cbc3139a0df60125687e2b1c73c09
+  ms.openlocfilehash: 6fe77d059974bcc37fb0b0bbc6a171d371a93478
+  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/09/2020
-  ms.locfileid: "80998292"
+  ms.lasthandoff: 07/28/2020
+  ms.locfileid: "87337358"
 landingContent:
 - title: 关于 IoT 即插即用
   linkLists:
@@ -24,51 +24,41 @@ landingContent:
     links:
     - text: 什么是 IoT 即插即用？
       url: overview-iot-plug-and-play.md
-  - linkListType: video
-    links:
-    - text: IoT 即插即用简介
-      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Introduction-to-IoT-Plug-and-Play/player
-- title: 开发设备
+    - text: 2020 年预览刷新版本更新
+      url: overview-iot-plug-and-play-preview-updates.md
+- title: 生成设备
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 将示例设备连接到 IoT 中心
-      url: quickstart-connect-pnp-device-c-windows.md
-    - text: 将示例设备连接到 IoT Central
-      url: ../iot-central/core/tutorial-connect-pnp-device.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json
-    - text: 使用设备功能模型创建设备
-      url: quickstart-create-pnp-device-windows.md
-  - linkListType: tutorial
-    links:
-    - text: 使用 Visual Studio Code 创建和测试设备功能模型
-      url: tutorial-pnp-visual-studio-code.md
-    - text: 构建可供认证的设备
-      url: tutorial-build-device-certification.md
-    - text: 认证你的设备
-      url: tutorial-certification-test.md
-  - linkListType: how-to-guide
-    links:
-    - text: 使用适用于 Visual Studio Code 的 Azure IoT Tools
-      url: howto-develop-with-vs-vscode.md
-    - text: 载入到 Azure IoT 认证门户
-      url: howto-onboard-portal.md
+    - text: 将示例设备连接到 IoT 中心 (C)
+      url: quickstart-connect-device-c.md
+    - text: 将示例设备连接到 IoT 中心 (C#)
+      url: quickstart-connect-device-csharp.md
+    - text: 将示例设备连接到 IoT 中心 (Java)
+      url: quickstart-connect-device-java.md
+    - text: 将示例设备连接到 IoT 中心 (Node.js)
+      url: quickstart-connect-device-node.md
+    - text: 将示例设备连接到 IoT 中心 (Python)
+      url: quickstart-connect-device-python.md
   - linkListType: concept
     links:
-    - text: 公共接口
-      url: concepts-common-interfaces.md
+    - text: 开发人员指南
+      url: concepts-developer-guide.md
+    - text: IoT 即插即用约定
+      url: concepts-convention.md
+    - text: 组件
+      url: concepts-components.md
 - title: 构建解决方案
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 与已连接到解决方案的设备交互
-      url: quickstart-connect-pnp-device-solution-node.md
+    - text: 与解决方案中的设备交互 (Node.js)
+      url: quickstart-service-node.md
+    - text: 与解决方案中的设备交互 (Python)
+      url: quickstart-service-python.md
   - linkListType: concept
     links:
-    - text: 模型发现
-      url: concepts-model-discovery.md
-    - text: 公共接口
-      url: concepts-common-interfaces.md
-  - linkListType: how-to-guide
-    links:
-    - text: 从解决方案连接到设备
-      url: howto-develop-solution.md
+    - text: 体系结构
+      url: concepts-architecture.md
+    - text: 数字孪生
+      url: concepts-digital-twin.md

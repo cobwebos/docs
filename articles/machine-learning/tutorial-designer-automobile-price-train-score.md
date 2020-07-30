@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
-ms.openlocfilehash: 2922b5d3aa6cee0f1222c041a0e9728936754c21
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 4a925fb4352ac81e5879bb925ee1d743a77ffd5c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200026"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87290279"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>教程：使用设计器预测汽车价格（预览）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -37,6 +37,8 @@ ms.locfileid: "86200026"
 >我们提供了本教程的已完成版本作为示例管道。
 >
 >若要找到该示例，请转到工作区中的设计器。 在“新建管道部分，选择”示例 1 - 回归: 汽车价格预测(基本)”。
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="create-a-new-pipeline"></a>创建新管道
 

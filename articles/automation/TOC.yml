@@ -4,7 +4,7 @@
   items:
     - name: 什么是自动化？
       href: automation-intro.md
-    - name: 常见问题
+    - name: 常见问题解答
       href: automation-faq.md
 - name: 快速入门
   items:
@@ -46,6 +46,9 @@
       href: /powershell/scripting/dsc/overview/overview
     - name: 安全性
       items:
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: 安全基线
           href: security-baseline.md
     - name: 数据安全
