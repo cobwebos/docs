@@ -7,12 +7,13 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: d33cc14612b5c00c8102bd035e7331bef670a4dd
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 433b9ad0f86b84538163b142d762d4e2fb7e8159
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836441"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430835"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure 流分析 JavaScript 用户定义的聚合
  
@@ -78,7 +79,7 @@ function main() {
 
 ### <a name="function-alias"></a>函数别名
 
-函数别名是 UDA 标识符。 在流分析查询中调用时，始终结合“uda”使用 UDA 别名。 前缀。
+函数别名是 UDA 标识符。 在流分析查询中调用时，始终结合“uda”使用 UDA 别名。 前缀开头。
 
 ### <a name="function-type"></a>函数类型
 
@@ -110,7 +111,7 @@ deaccumulateState() 方法基于前一状态和跃点状态重新计算状态。
 
 ### <a name="method--computeresult"></a>方法 – computeResult()
 
-computeResult() 方法基于当前状态返回聚合结果。 当某个时间窗口（TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW 或 SESSIONWINDOW）结束时，会调用此方法。
+computeResult() 方法基于当前状态返回聚合结果。 在时间窗口（TUMBLINGWINDOW、HOPPINGWINDOW、SLIDINGWINDOW 或 SESSIONWINDOW）结束时调用此方法。
 
 ## <a name="javascript-uda-supported-input-and-output-data-types"></a>JavaScript UDA 支持的输入和输出数据类型
 有关 JavaScript UDA 数据类型，请参阅[集成 JavaScript UDF](stream-analytics-javascript-user-defined-functions.md) 的**流分析和 JavaScript 类型转换**部分。
@@ -169,7 +170,7 @@ computeResult() 方法基于当前状态返回聚合结果。 当某个时间窗
 
 1. 单击“保存”按钮后，该 UDA 会显示在函数列表中。
 
-1. 单击新函数“TWA”，可以检查函数定义。
+1. 单击新函数“TWA”即可检查函数定义。
 
 ## <a name="calling-javascript-uda-in-asa-query"></a>在 ASA 查询中调用 JavaScript UDA
 

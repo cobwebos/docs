@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 4bbece33d443139c9f1b1384c1a9e0b3c4da0d08
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7918f684fea1092cbd7c11fade3d8f40c1e44240
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318549"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431208"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>在 Azure AI 库中共享和发现资源
 
-**适用于：** ![不](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-azure-ml.md) ![ 是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） 
+**适用于：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） ![ no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
 
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
@@ -162,7 +162,7 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
    > [!TIP]
    > 如果想要在公开发布文档前先确保它没有问题，可以先将实验发布为“未列出”****。 以后可以在实验详细信息页上将可见性设置更改为“公开”****。 请注意，将试验设置为“公开”之后，无法将其更改为“未列出”。********
 
-1. 选择“创建”。
+1. 选择“创建”  。
 
 贡献内容随即会加入 Azure AI 库中。 贡献内容将在帐户页上的“项”**** 选项卡中列出。
 

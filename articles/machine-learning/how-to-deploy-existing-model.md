@@ -1,54 +1,42 @@
 ---
 title: 使用并部署现有模型
 titleSuffix: Azure Machine Learning
-description: 了解如何通过在服务外部训练过的模型来使用 Azure 机器学习。 可以注册 Azure 机器学习之外创建的模型，然后将其部署为 Web 服务或 Azure IoT Edge 模块。
+description: 了解如何通过 Azure 机器学习将本地训练的 ML 模型引入到 Azure 云。  可以注册 Azure 机器学习之外创建的模型，然后将其部署为 Web 服务或 Azure IoT Edge 模块。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 03/17/2020
+ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 7dc58540cf78356021f1fa2d33dd498381f1da7c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e9177fdbac6173040145ff6d84dda8a579ee1d9e
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325825"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429414"
 ---
-# <a name="use-an-existing-model-with-azure-machine-learning"></a>通过 Azure 机器学习使用现有模型
+# <a name="deploy-your-existing-model-with-azure-machine-learning"></a>利用 Azure 机器学习部署现有模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-了解如何配合使用现有机器学习模型和 Azure 机器学习。
+本文介绍如何注册和部署在 Azure 机器学习之外训练的机器学习模型。 可以将部署为 web 服务或 IoT Edge 设备。  部署完成后，可以监视模型并检测 Azure 机器学习中的数据偏差。 
 
-如果你的机器学习模型是在 Azure 机器学习之外训练的，仍可以使用该服务将模型部署为 Web 服务或 IoT Edge 设备。 
-
-> [!TIP]
-> 本文介绍有关注册和部署现有模型的基本信息。 部署后，Azure 机器学习即可用于监视模型。 还可用于存储发送到部署的输入数据，可使用该数据分析数据偏移或训练新版模型。
->
-> 有关此处使用的概念和术语的详细信息，请参阅[管理、部署和监视机器学习模型](concept-model-management-and-deployment.md)。
->
-> 有关部署流程的一般信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
+有关本文中的概念和术语的详细信息，请参阅[管理、部署和监视机器学习模型](concept-model-management-and-deployment.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 机器学习工作区。 有关详细信息，请参阅[创建工作区](how-to-manage-workspace.md)。
+* [Azure 机器学习工作区](how-to-manage-workspace.md)
+  + Python 示例假设将 `ws` 变量设置为 Azure 机器学习工作区。
+  
+  + CLI 示例使用和的 `myworkspace` 占位符 `myresourcegroup` ，你应将其替换为你的工作区的名称以及包含它的资源组。
 
-    > [!TIP]
-    > 本文中的 Python 示例假定将 `ws` 变量设置为 Azure 机器学习工作区。
-    >
-    > CLI 示例使用 `myworkspace` 和 `myresourcegroup` 的占位符。 将这些占位符替换为你的工作区名称以及包含这些名称的资源组。
-
-* [Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。  
+* [Azure 机器学习 PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)。  
 
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 和[机器学习 CLI 扩展](reference-azure-machine-learning-cli.md)。
 
-* 定型的模型。 必须将模型保留到开发环境中的一个或多个文件中。
-
-    > [!NOTE]
-    > 为了演示如何注册在 Azure 机器学习之外训练的模型，本文中的示例代码片段使用由 Paolo Ripamonti 的 Twitter 情绪分析项目创建的模型：[https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)。
+* 定型的模型。 必须将模型保留到开发环境中的一个或多个文件中。 <br><br>为了演示如何注册经过训练的模型，本文中的示例代码使用[Paolo Ripamonti 的 Twitter 情绪分析项目](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)中的模型。
 
 ## <a name="register-the-models"></a>注册模型
 
@@ -82,7 +70,7 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 
 推理配置定义用于运行已部署模型的环境。 推理配置引用以下实体，这些实体用于在部署模型时运行模型：
 
-* 一个入口脚本。 此文件（名为 `score.py`）在启动已部署的服务时加载模型。 它还负责接收数据，将数据传递到模型，然后返回响应。
+* 名为的条目脚本 `score.py` 在部署的服务启动时加载模型。 此脚本还负责接收数据，将数据传递到模型，然后返回响应。
 * Azure 机器学习[环境](how-to-use-environments.md)。 环境定义运行模型和入口脚本所需的软件依赖项。
 
 以下示例演示如何使用 SDK 创建环境，然后将其用于推理配置：
@@ -145,7 +133,7 @@ dependencies:
 
 有关推理配置的详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
 
-### <a name="entry-script"></a>入口脚本
+### <a name="entry-script-scorepy"></a>条目脚本（score.py）
 
 入口脚本仅包含两个必需函数（`init()` 和 `run(data)`）。 这两个函数用于在启动时初始化服务，并使用客户端传入的请求数据运行模型。 脚本的其余部分用于加载和运行模型。
 
@@ -309,5 +297,4 @@ print(response.json())
 
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)
-* [部署模型的方式和位置](how-to-deploy-and-where.md)
 * [如何为已部署的模型创建客户端](how-to-consume-web-service.md)

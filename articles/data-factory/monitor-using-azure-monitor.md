@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: b7f58c13181c9ec966d548096ffc2756d5d333e3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: ac083f842bf10adcbb23e3e1c1157383e11f3af9
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124863"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432424"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>使用 Azure Monitor 监视数据工厂和发警报
 
@@ -111,8 +111,8 @@ Azure Monitor 针对大多数 Azure 服务提供基本级别的基础结构指�
 安装此解决方案会在所选 "Log Analytics" 工作区的 "工作簿" 部分中创建一组默认视图。 因此，会启用以下度量值：
 
 * ADF 运行-1）管道按数据工厂运行
-* ADF 运行-2）活动按数据因子运行
-* ADF 运行-3）触发器按数据因子运行
+* ADF 运行-2）活动运行（按数据工厂）
+* ADF 运行-3）触发器运行（按数据工厂）
 * ADF 错误-1）数据工厂前10个管道错误
 * ADF 错误-2）由数据工厂运行的前10个活动
 * ADF 错误-3）按数据工厂列出的十大触发器错误
@@ -201,7 +201,7 @@ Azure Monitor 针对大多数 Azure 服务提供基本级别的基础结构指�
 
 ### <a name="diagnostic-settings"></a>诊断设置
 
-可以使用诊断设置来配置非计算资源的诊断日志。 用于资源控制的诊断设置具有以下功能：
+使用 "诊断设置" 配置非计算资源的诊断日志。 用于资源控制的诊断设置具有以下功能：
 
 * 指定要将诊断日志发送到何处。 例如，发送到 Azure 存储帐户、Azure 事件中心或 Monitor 日志。
 * 指定要发送的日志类别。
@@ -269,7 +269,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| properties | 类型 | 说明 |
+| 属性 | 类型 | 说明 |
 | --- | --- | --- |
 | **storageAccountId** |字符串 | 要将诊断日志发送到的存储帐户的资源 ID。 |
 | **serviceBusRuleId** |字符串 | 服务总线命名空间的服务总线规则 ID。你要在该服务总线命名空间中创建事件中心，以便流式传输诊断日志。 规则 ID 的格式为 `{service bus resource ID}/authorizationrules/{key name}`。|
@@ -488,7 +488,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| properties | 类型 | 描述 | 示例 |
+| 属性 | 类型 | 描述 | 示例 |
 | --- | --- | --- | --- |
 | **级别** |字符串 | 诊断日志的级别。 对于活动运行日志，请将该属性值设置为 4。 | `4` |
 | **correlationId** |字符串 | 用于跟踪特定请求的唯一 ID。 | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -568,7 +568,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| properties                   | 类型   | 描述                                                   | 示例                        |
+| 属性                   | 类型   | 描述                                                   | 示例                        |
 | -------------------------- | ------ | ------------------------------------------------------------- | ------------------------------ |
 | **time**                   | 字符串 | UTC 格式的事件时间：`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | 字符串 | SSIS IR 操作的名称                            | `Start/Stop/Maintenance` |
@@ -608,7 +608,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| properties                   | 类型   | 描述                                                          | 示例                        |
+| 属性                   | 类型   | 描述                                                          | 示例                        |
 | -------------------------- | ------ | -------------------------------------------------------------------- | ------------------------------ |
 | **time**                   | 字符串 | UTC 格式的事件时间：`YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | 字符串 | 此元素设置为 。`YourSSISIRName-SSISPackageEventMessageContext`       | `mysqlmissisir-SSISPackageEventMessageContext` |
@@ -658,7 +658,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| properties                   | 类型   | 描述                                                        | 示例                        |
+| 属性                   | 类型   | 描述                                                        | 示例                        |
 | -------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
 | **time**                   | 字符串 | UTC 格式的事件时间：`YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | 此元素设置为 。`YourSSISIRName-SSISPackageEventMessages`           | `mysqlmissisir-SSISPackageEventMessages` |
@@ -707,7 +707,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| properties                   | 类型   | 描述                                                      | 示例                        |
+| 属性                   | 类型   | 描述                                                      | 示例                        |
 | -------------------------- | ------ | ---------------------------------------------------------------- | ------------------------------ |
 | **time**                   | 字符串 | UTC 格式的事件时间：`YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | 此元素设置为 。`YourSSISIRName-SSISPackageExecutableStatistics`  | `mysqlmissisir-SSISPackageExecutableStatistics` |
@@ -752,7 +752,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| properties                   | 类型   | 描述                                                         | 示例                        |
+| 属性                   | 类型   | 描述                                                         | 示例                        |
 | -------------------------- | ------ | ------------------------------------------------------------------- | ------------------------------ |
 | **time**                   | 字符串 | UTC 格式的事件时间：`YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | 此元素设置为 。`YourSSISIRName-SSISPackageExecutionComponentPhases` | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
@@ -800,7 +800,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| properties                     | 在任务栏的搜索框中键入   | 描述                                                        | 示例                        |
+| 属性                     | 在任务栏的搜索框中键入   | 描述                                                        | 示例                        |
 | ---------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
 | **time**                     | 字符串 | UTC 格式的事件时间：`YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**            | String | 此元素设置为 。`YourSSISIRName-SSISPackageExecutionDataStatistics` | `mysqlmissisir-SSISPackageExecutionDataStatistics` |

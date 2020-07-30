@@ -3,12 +3,12 @@ title: Azure Migrate 中的 VMware 迁移支持
 description: 了解 Azure Migrate 中对 VMware VM 迁移的支持。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 5b53ae811786b1712ccd833ff155c408010d4fa4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9de0609361e67d5251b25df798b61a4ab13e432c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022729"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387415"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>VMware 迁移的支持矩阵
 
@@ -74,7 +74,7 @@ ms.locfileid: "87022729"
 
 ### <a name="appliance-requirements-agentless"></a>设备要求（无代理）
 
-无代理迁移使用[Azure Migrate 设备](migrate-appliance.md)。 可以将设备部署为 VMWare VM，具体方法为使用 OVA 模板、导入到 vCenter Server 或使用 [PowerShell 脚本](deploy-appliance-script.md)。
+无代理迁移使用[Azure Migrate 设备](migrate-appliance.md)。 你可以使用 .OVA 模板将设备部署为 VMware VM，并将其导入 vCenter Server 或使用[PowerShell 脚本](deploy-appliance-script.md)。
 
 - 了解 VMware 的[设备要求](migrate-appliance.md#appliance---vmware)。
 - 了解设备需要在[公有](migrate-appliance.md#public-cloud-urls)云和[政府](migrate-appliance.md#government-cloud-urls)云中访问的 URL。

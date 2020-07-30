@@ -3,12 +3,12 @@ title: Azure Batch 中的节点和池
 description: 从开发的角度来了解计算节点和池及其在 Azure Batch 工作流中的运用。
 ms.topic: conceptual
 ms.date: 06/16/2020
-ms.openlocfilehash: 5707d834a7d99e147a81ee2b39952863a63ed695
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 16a5309711b9c8633da9ba473c1b55bc2e54c334
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144925"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385749"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Azure Batch 中的节点和池
 
@@ -28,7 +28,7 @@ Batch 中的所有计算节点还包括：
 - **防火墙** 设置。
 - [远程访问](error-handling.md#connect-to-compute-nodes) Windows（远程桌面协议 (RDP)）和 Linux（安全外壳 (SSH)）节点。
 
-默认情况下，节点可以彼此通信，但它们无法与不属于同一池的虚拟机进行通信。 若要允许节点与其他虚拟机或本地网络进行安全通信，可以[在 Azure 虚拟网络的子网中](batch-virtual-network.md)预配该池 (VNet) 。 当你这样做时，可以通过公共 IP 地址访问节点。 这些公共 IP 地址是通过 Batch 创建的，并且可能会在池的生存期内更改。 你还可以[创建一个包含你控制的静态公共 IP 地址的池](create-pool-public-ip.md)，这样可确保它们不会意外更改。
+默认情况下，节点可以彼此通信，但它们无法与不属于同一池的虚拟机进行通信。 若要允许节点与其他虚拟机或本地网络进行安全通信，可以[在 Azure 虚拟网络（VNet）的子网中](batch-virtual-network.md)预配该池。 当你这样做时，可以通过公共 IP 地址访问节点。 这些公共 IP 地址是通过 Batch 创建的，并且可能会在池的生存期内更改。 你还可以[创建一个包含你控制的静态公共 IP 地址的池](create-pool-public-ip.md)，这样可确保它们不会意外更改。
 
 ## <a name="pools"></a>池
 
@@ -119,7 +119,7 @@ Batch 中提供了两种类型的池配置。
 
 对于动态工作负荷，可以将自动缩放策略应用于池。 Batch 服务将定期评估公式，并根据计算方案的当前工作负载和资源使用情况动态调整池中的节点数目。 这样，便可做到只使用所需资源并可释放不需要的资源，因而能够降低运行应用程序的整体成本。
 
-可通过编写 [自动缩放公式](batch-automatic-scaling.md#automatic-scaling-formulas) 并将该公式与池相关联，来启用自动缩放。 Batch 服务使用该公式来确定池中下一个缩放间隔（可配置的间隔）的目标节点数目。 可以在创建池时指定池的自动缩放设置，或稍后在池上启用缩放。 还可以更新已启用缩放的池上的缩放设置。
+可通过编写 [自动缩放公式](batch-automatic-scaling.md#autoscale-formulas) 并将该公式与池相关联，来启用自动缩放。 Batch 服务使用该公式来确定池中下一个缩放间隔（可配置的间隔）的目标节点数目。 可以在创建池时指定池的自动缩放设置，或稍后在池上启用缩放。 还可以更新已启用缩放的池上的缩放设置。
 
 例如，也许某个作业需要提交大量要执行的任务。 你可以将缩放公式分配到池，以根据当前的排队任务数和作业中任务的完成率来调整池中的节点数目。 Batch 服务将定期评估公式，并根据工作负荷和其他公式设置来调整池的大小。 该服务在有大量排队的任务时按需添加节点，在没有排队的任务或正在运行的任务时删除节点。
 

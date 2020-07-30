@@ -6,12 +6,13 @@ ms.topic: conceptual
 description: 使用 GitHub 操作和 Azure Dev Spaces 直接在 Azure Kubernetes 服务中查看和测试拉取请求中的更改
 keywords: Docker，Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器，GitHub 操作，Helm，服务网格，service 网格路由，kubectl，k8s
 manager: gwallace
-ms.openlocfilehash: a83da0ef3958748831eb0eeda1aa5e91efa7ef2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 9cb240add87a14b0d474cec17684ef65a22cc07a
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80637946"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421019"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>Azure Kubernetes Service （预览版） & GitHub 操作
 
@@ -25,7 +26,7 @@ Azure Dev Spaces 使用 GitHub 操作提供工作流，使你能够在拉取请�
 * 在完整应用程序的上下文中的隔离开发空间内测试单个微服务。
 
 > [!IMPORTANT]
-> 此功能目前以预览版提供。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
+> 此功能目前处于预览状态。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -157,7 +158,7 @@ git push origin bike-images
 > [!div class="mx-imgBorder"]
 > ![GitHub 操作 Url](../media/github-actions/github-action-url.png)
 
-通过从注释打开 URL，导航到*bikesharingweb*服务。 选择 " *Aurelia meets Briggs （客户）* " 作为用户，然后选择要出租的自行车。 验证是否不再显示自行车的占位符图像。
+通过从注释打开 URL，导航到*bikesharingweb*服务。 选择“Aurelia Briggs (客户)”作为用户，然后选择要租赁的自行车。 验证是否不再显示自行车的占位符图像。
 
 如果将所做的更改合并到分支中的*主*分支，则会运行另一个操作来重建和运行父开发人员空间中的整个应用程序。 在此示例中，父空间为*dev*。 此操作在[github/工作流/bikesharing.clients.core. docker-compose.override.yml][github-action-bikesharing-yaml]中进行配置。
 

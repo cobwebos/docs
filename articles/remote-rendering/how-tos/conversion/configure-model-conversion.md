@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: e3be1f9ec900655f4dae45abd402ff8e6a56e283
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9ddf4641cfba2fb9704c2354e01299df368eb2ac
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84147931"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432015"
 ---
 # <a name="configure-the-model-conversion"></a>配置模型转换
 
@@ -18,7 +18,8 @@ ms.locfileid: "84147931"
 
 ## <a name="settings-file"></a>“设置”文件
 
-如果在输入模型旁边的输入容器中找到名为 `ConversionSettings.json` 的文件，则该文件用于为模型转换过程提供额外配置。
+如果 `<modelName>.ConversionSettings.json` 在输入模型旁边的输入容器中找到一个名为的文件 `<modelName>.<ext>` ，则该文件将用于为模型转换过程提供其他配置。
+例如， `box.ConversionSettings.json` 在转换时使用 `box.gltf` 。
 
 该文件的内容应满足以下 json 架构：
 
@@ -54,7 +55,7 @@ ms.locfileid: "84147931"
 }
 ```
 
-`ConversionSettings.json` 文件的一个示例可能是：
+示例文件 `box.ConversionSettings.json` 可能是：
 
 ```json
 {
@@ -66,15 +67,18 @@ ms.locfileid: "84147931"
 
 ### <a name="geometry-parameters"></a>几何参数
 
-* `scaling` - 此参数统一缩放模型。 缩放可用于增大或缩小模型，例如用于在桌面上显示建筑模型。 由于呈现引擎期望以米为单位指定长度，因此以其他单位定义模型时，会显露出此参数的另一重要用途。 例如，如果模型是以厘米定义的，则应用比例 0.01 应会以正确的大小呈现模型。
+* `scaling` - 此参数统一缩放模型。 缩放可用于增大或缩小模型，例如用于在桌面上显示建筑模型。
+如果模型是在 "米" 之外的单位中定义的，则缩放也很重要，因为呈现引擎需要计量。
+例如，如果模型是以厘米定义的，则应用比例 0.01 应会以正确的大小呈现模型。
 一些源数据格式（例如 .fbx）提供单位缩放提示，在这种情况下，转换会将模型隐式缩放为以米为单位。 将在缩放参数的基础上应用源格式提供的隐式缩放。
 最终缩放因子应用于场景图形节点的几何顶点和局部转换。 根实体转换的缩放比例保持不变。
 
 * `recenterToOrigin` - 指出应对模型进行转换，使其边界框以原点为中心。
-如果源模型离原点较远，则居中非常重要，因为在这种情况下，浮点精度问题可能导致呈现噪点。
+如果从源模型置换了源模型，则浮点精度问题可能导致呈现项目。
+在这种情况下，可以对模型进行居中。
 
 * `opaqueMaterialDefaultSidedness` - 呈现引擎假定不透明材料是双面的。
-如果这不是预期的行为，则应将此参数设置为“SingleSided”。 有关详细信息，请参阅[ :::no-loc text="single sided"::: 呈现](../../overview/features/single-sided-rendering.md)。
+如果该假设不是特定模型的 true，则应将此参数设置为 "SingleSided"。 有关详细信息，请参阅[ :::no-loc text="single sided"::: 呈现](../../overview/features/single-sided-rendering.md)。
 
 ### <a name="material-overrides"></a>材料覆盖
 
@@ -99,10 +103,10 @@ ms.locfileid: "84147931"
 
 * `sceneGraphMode` - 定义如何转换源文件中的场景图：
   * `dynamic`（默认值）：文件中的所有对象都作为 API 中的[实体](../../concepts/entities.md)公开，并可独立转换。 运行时的节点层次结构与源文件中的结构相同。
-  * `static`：所有对象都在 API 中公开，但无法独立转换。
+  * `static`：所有对象都在 API 中公开，但无法独立进行转换。
   * `none`：场景图折叠为一个对象。
 
-每个模式具有不同的运行时性能。 在 `dynamic` 模式下，即使没有移动部件，性能开销也会随图形中[实体](../../concepts/entities.md)的数量线性缩放。 仅当需要为应用程序单独移动部件时才应使用此方法，例如要制作“爆炸视图”动画时。
+每个模式具有不同的运行时性能。 在 `dynamic` 模式下，即使没有移动部件，性能开销也会随图形中[实体](../../concepts/entities.md)的数量线性缩放。 `dynamic`仅当需要单独移动部件（例如，对于 "爆炸视图" 动画）时使用模式。
 
 `static` 模式将导出整个场景图，但此图内的部件相对于其根部件具有恒定的转换。 但是，仍可移动、旋转或缩放对象的根节点，而不产生显著的性能开销。 而且，[空间查询](../../overview/features/spatial-queries.md)将返回各个部件，并且可以通过[状态重写](../../overview/features/override-hierarchical-state.md)来修改每个部件。 在此模式下，每个对象的运行时开销可忽略不计。 它非常适用于仍需要按对象检查但不需要按对象转换的大型场景。
 
@@ -178,7 +182,7 @@ ms.locfileid: "84147931"
 
 各种格式的内存占用量如下：
 
-| 格式 | 说明 | 字节/:::no-loc text="vertex"::: |
+| 格式 | 描述 | 字节/:::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|双组件全浮点精度|8
 |16_16_FLOAT|双组件半浮点精度|4
@@ -278,6 +282,11 @@ ms.locfileid: "84147931"
 * 各个部件应是可选择且可移动的，因此必须将 `sceneGraphMode` 保持为 `dynamic`。
 * 打光通常是应用程序不可分割的一部分，因此必须生成冲突网格。
 * 启用 `opaqueMaterialDefaultSidedness` 标志可美化剪切平面。
+
+## <a name="deprecated-features"></a>已弃用的功能
+
+仍支持使用非特定于模型的文件名来提供设置 `conversionSettings.json` ，但不推荐使用。
+请改用特定于模型的文件名 `<modelName>.ConversionSettings.json` 。
 
 ## <a name="next-steps"></a>后续步骤
 

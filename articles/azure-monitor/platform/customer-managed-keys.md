@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 07/05/2020
-ms.openlocfilehash: 3835046e50180e1d1091f5083f276c7c1ad56612
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: eec056cbe246f129fb78e15faa0027846c271181
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117375"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382944"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor 客户管理的密钥 
 
@@ -187,8 +187,8 @@ CMK 功能是在专用 Log Analytics 群集上提供的。若要验证在你的�
 
 可以通过 CLI 和 PowerShell 更新这些设置：
 
-- [软删除](../../key-vault/general/overview-soft-delete.md)
-- [清除保护](../../key-vault/general/overview-soft-delete.md#purge-protection)可防止在软删除后强行删除机密/保管库
+- [软删除](../../key-vault/general/soft-delete-overview.md)
+- [清除保护](../../key-vault/general/soft-delete-overview.md#purge-protection)可防止在软删除后强行删除机密/保管库
 
 ### <a name="create-cluster-resource"></a>创建群集资源
 
@@ -706,8 +706,8 @@ Content-type: application/json
 - CMK 加密适用于 CMK 配置后的新引入数据。  CMK 配置之前引入的数据仍将使用 Microsoft 密钥进行加密。  你可以无缝查询 CMK 配置前后的数据。
 
 - 必须将 Azure Key Vault 配置为可恢复。 默认情况下，这些属性不会启用，应该使用 CLI 或 PowerShell 进行配置：<br>
-  - [软删除](../../key-vault/general/overview-soft-delete.md)
-  - 即使在软删除后，也应打开[清除保护](../../key-vault/general/overview-soft-delete.md#purge-protection)，以防强制删除密钥/保管库。
+  - [软删除](../../key-vault/general/soft-delete-overview.md)
+  - 即使在软删除后，也应打开[清除保护](../../key-vault/general/soft-delete-overview.md#purge-protection)，以防强制删除密钥/保管库。
 
 - 当前不支持*群集*资源移动到另一个资源组或订阅。
 
@@ -763,7 +763,7 @@ Content-type: application/json
   -  400--群集处于删除状态。 正在进行异步操作。 群集必须在执行任何更新操作之前完成其操作。
   -  400--KeyVaultProperties 不为空，但格式不正确。 请参阅[密钥标识符更新](#update-cluster-resource-with-key-identifier-details)。
   -  400--未能验证 Key Vault 中的密钥。 可能是由于权限不足或键不存在。 验证是否在 Key Vault 中[设置了密钥和访问策略](#grant-key-vault-permissions)。
-  -  400--密钥不可恢复。 必须将 "Key Vault" 设置为 "软删除" 和 "清除保护"。 请参阅[Key Vault 文档](../../key-vault/general/overview-soft-delete.md)
+  -  400--密钥不可恢复。 必须将 "Key Vault" 设置为 "软删除" 和 "清除保护"。 请参阅[Key Vault 文档](../../key-vault/general/soft-delete-overview.md)
   -  400--操作无法立即执行。 等待异步操作完成，然后重试。
   -  400--群集处于删除状态。 等待异步操作完成，然后重试。
 

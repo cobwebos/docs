@@ -7,16 +7,16 @@ ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.date: 04/15/2020
-ms.openlocfilehash: cc12204c5eabf857fd1143e71df9b2b505d88a23
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4c900700fa1588cd341171a0176c19acc51129a4
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318651"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430957"
 ---
 # <a name="download-notebookspreview-data"></a>下载笔记本（预览版）数据
 
-**适用于：** ![不](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-azure-ml.md) ![ 是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） 
+**适用于：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） ![ no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
 
 *13 2020 年4月*已删除笔记本（预览）功能。 删除笔记本（预览）选项卡和用户笔记本文件目前正在全球范围内推出 Azure 区域。
 

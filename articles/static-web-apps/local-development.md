@@ -7,12 +7,13 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: a7215790a7f052227b08f51dcd7ad5dd337bb4e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d9988adea8e4d2dab39de64f9fd155a9d0b02cae
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84259263"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432973"
 ---
 # <a name="set-up-local-development-for-azure-static-web-apps-preview"></a>为 Azure 静态 Web 应用预览设置本地开发
 

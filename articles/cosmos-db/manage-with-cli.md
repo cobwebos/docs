@@ -4,14 +4,14 @@ description: 使用 Azure CLI 管理 Azure Cosmos DB 帐户、数据库和容器
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 06/03/2020
+ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: 97b5118f74cbd098beea804c312ed08f1a152873
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0ae29039702a6f73a33f73afc366532077aa4b71
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067170"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432837"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>使用 Azure CLI 管理 Azure Cosmos 资源
 
@@ -19,7 +19,7 @@ ms.locfileid: "87067170"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本主题需要运行 Azure CLI 2.6.0 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
+如果选择在本地安装并使用 CLI，本主题要求运行 Azure CLI 版本2.9.1 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos 帐户
 
@@ -308,6 +308,7 @@ az lock delete --ids $lockid
 以下部分演示了如何管理 Azure Cosmos DB 容器，具体包括：
 
 * [创建容器](#create-a-container)
+* [使用自动缩放创建容器](#create-a-container-with-autoscale)
 * [创建启用了 TTL 的容器](#create-a-container-with-ttl)
 * [使用自定义索引策略创建容器](#create-a-container-with-a-custom-index-policy)
 * [更改容器吞吐量](#change-container-throughput)
@@ -330,6 +331,25 @@ az cosmosdb sql container create \
     -a $accountName -g $resourceGroupName \
     -d $databaseName -n $containerName \
     -p $partitionKey --throughput $throughput
+```
+
+### <a name="create-a-container-with-autoscale"></a>使用自动缩放创建容器
+
+使用默认索引策略、分区键和自动缩放 RU/s （4000）创建 Cosmos 容器。
+
+```azurecli-interactive
+# Create a SQL API container
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
+partitionKey='/myPartitionKey'
+maxThroughput=4000
+
+az cosmosdb sql container create \
+    -a $accountName -g $resourceGroupName \
+    -d $databaseName -n $containerName \
+    -p $partitionKey --max-throughput $maxThroughput
 ```
 
 ### <a name="create-a-container-with-ttl"></a>创建带有 TTL 的容器

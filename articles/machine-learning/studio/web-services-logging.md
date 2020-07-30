@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: how-to
 ms.date: 06/15/2017
-ms.openlocfilehash: baaad137e4a5bc5268642addb5779961b7be3b04
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b879fac7482b000e1b92f2fcc3f7586ae7dae321
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326233"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430205"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-classic-web-services"></a>为 Azure 机器学习工作室（经典版）Web 服务启用日志记录
 
-**适用于：** ![不](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-azure-ml.md) ![ 是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） 
+**适用于：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） ![ no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
 
 
 本文档提供有关机器学习工作室（经典版）Web 服务的日志记录功能的信息。 日志记录可提供错误编号和消息以外的其他信息，这些信息有助于对调用机器学习工作室（经典版）API 进行故障排除。  
@@ -44,7 +44,7 @@ ms.locfileid: "87326233"
 
    ![选择日志记录级别](./media/web-services-logging/enable-logging.png)
 
-6. 单击“保存”。
+6. 单击“ **保存**”。
 
 7. 对于经典 Web 服务，创建“ml-diagnostics”容器****。
 

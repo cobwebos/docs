@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/24/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 09e32d5baa367b76c34ebca28adfdd20385e4e18
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c6db571d64b0fd276519f15a3984848e80c4e18a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374523"
+ms.locfileid: "87387670"
 ---
 # <a name="view-and-understand-azure-digital-twins-metrics"></a>查看和了解 Azure 数字孪生指标
 
@@ -36,7 +36,7 @@ ms.locfileid: "87374523"
 
     :::image type="content" source="media/how-to-view-metrics/diagnostic-settings.png" alt-text="显示 "诊断设置" 页和要添加的按钮的屏幕截图":::
 
-    有关此过程的详细信息，请参阅[*操作方法：设置诊断*](how-to-set-up-diagnostics.md)。
+    有关此过程的详细信息，请参阅[*故障排除：设置诊断*](troubleshoot-diagnostics.md)。
 
 ## <a name="azure-digital-twins-metrics-and-how-to-use-them"></a>Azure 数字孪生指标以及如何使用它们
 
@@ -50,9 +50,9 @@ Azure 数字孪生提供了多个指标，可让你概括了解实例及其关�
 
 | 指标 | 指标显示名称 | 计价单位 | 聚合类型| 说明 | 维度 |
 | --- | --- | --- | --- | --- | --- |
-| ApiRequests | API 请求（预览） | 计数 | 总计 | 为数字孪生读取、写入、删除和查询操作发出的 API 请求数。 |  身份验证 </br>Operation </br>协议 </br>状态代码 </br>状态代码类 </br>状态文本 |
-| ApiRequestsLatency | API 请求延迟（预览版） | 毫秒 | 平均值 | API 请求的响应时间。 这是指从 Azure 数字孪生收到请求到服务发送数字孪生读取、写入、删除和查询操作的成功/失败结果起的时间。 | 身份验证 </br>Operation </br>协议 |
-| ApiRequestsFailureRate | API 请求失败率（预览） | 百分比 | 平均值 | 服务为你的实例接收的 API 请求的百分比，该百分比为数字孪生读、写、删除和查询操作提供内部错误（500）响应代码。 | 身份验证 </br>Operation </br>协议 </br>状态代码 </br>状态代码类 </br>状态文本
+| ApiRequests | API 请求（预览） | 计数 | 总计 | 为数字孪生读取、写入、删除和查询操作发出的 API 请求数。 |  身份验证 </br>操作 </br>协议 </br>状态代码 </br>状态代码类 </br>状态文本 |
+| ApiRequestsLatency | API 请求延迟（预览版） | 毫秒 | 平均值 | API 请求的响应时间。 这是指从 Azure 数字孪生收到请求到服务发送数字孪生读取、写入、删除和查询操作的成功/失败结果起的时间。 | 身份验证 </br>操作 </br>协议 |
+| ApiRequestsFailureRate | API 请求失败率（预览） | 百分比 | 平均值 | 服务为你的实例接收的 API 请求的百分比，该百分比为数字孪生读、写、删除和查询操作提供内部错误（500）响应代码。 | 身份验证 </br>操作 </br>协议 </br>状态代码 </br>状态代码类 </br>状态文本
 
 #### <a name="routing-metrics"></a>路由度量值
 
@@ -60,9 +60,9 @@ Azure 数字孪生提供了多个指标，可让你概括了解实例及其关�
 
 | 指标 | 指标显示名称 | 计价单位 | 聚合类型| 说明 | 维度 |
 | --- | --- | --- | --- | --- | --- |
-| 路由 | 路由（预览版） | 计数 | 总计 | 路由到终结点 Azure 服务（如事件中心、服务总线或事件网格）的消息数。 | Operation </br>结果 |
-| RoutingLatency | 路由延迟（预览版） | 毫秒 | 平均值 | 在事件从 Azure 数字孪生路由到终结点（例如事件中心、服务总线或事件网格）发送到该服务之间所经过的时间。 | Operation </br>结果 |
-| RoutingFailureRate | 路由失败率（预览） | 百分比 | 平均值 | 导致错误的事件百分比，因为这些事件从 Azure 数字孪生路由到终结点 Azure 服务（如事件中心、服务总线或事件网格）。 | Operation </br>结果 |
+| 路由 | 路由（预览版） | 计数 | 总计 | 路由到终结点 Azure 服务（如事件中心、服务总线或事件网格）的消息数。 | 操作 </br>结果 |
+| RoutingLatency | 路由延迟（预览版） | 毫秒 | 平均值 | 在事件从 Azure 数字孪生路由到终结点（例如事件中心、服务总线或事件网格）发送到该服务之间所经过的时间。 | 操作 </br>结果 |
+| RoutingFailureRate | 路由失败率（预览） | 百分比 | 平均值 | 导致错误的事件百分比，因为这些事件从 Azure 数字孪生路由到终结点 Azure 服务（如事件中心、服务总线或事件网格）。 | 操作 </br>结果 |
 
 #### <a name="billing-metrics"></a>计费指标
 
@@ -94,7 +94,7 @@ Azure 数字孪生提供了多个指标，可让你概括了解实例及其关�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何管理 Azure 数字孪生的记录指标，请参阅[*如何：设置诊断*](how-to-set-up-diagnostics.md)。
+若要详细了解如何管理 Azure 数字孪生的记录指标，请参阅[*故障排除：设置诊断*](troubleshoot-diagnostics.md)。
 
 或者，现在你已了解 Azure 数字孪生指标的概述，请单击以下链接了解有关管理 Azure 数字孪生的详细信息：
 
