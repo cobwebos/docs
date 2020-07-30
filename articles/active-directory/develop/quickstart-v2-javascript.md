@@ -11,15 +11,15 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 047e03c4fa5916119036c5e539674dc48a6c77aa
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-javascript
+ms.openlocfilehash: 787f30302d163dc0097cde1be31e745d7f29bb64
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85554025"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87129774"
 ---
-# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入门：登录用户并在 JavaScript SPA 中获取访问令牌
+# <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入门：在 JavaScript SPA 中登录用户并获得访问令牌
 
 在本快速入门中，你将使用代码示例了解 JavaScript 单页应用程序 (SPA) 如何登录个人帐户、工作帐户和学校帐户的用户。 JavaScript SPA 还可以获取用于调用 Microsoft Graph API 或任何 Web API 的访问令牌。 （有关说明，请参阅[示例工作原理](#how-the-sample-works)。）
 
@@ -40,7 +40,7 @@ ms.locfileid: "85554025"
 > 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，然后将门户会话设置为要使用的 Azure Active Directory (Azure AD) 租户。
 > 1. 转到新的 [Azure 门户 - 应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)窗格。
 > 1. 输入应用程序的名称。
-> 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 
+> 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。
 > 1. 选择“注册”。
 > 1. 遵照说明下载内容，系统会自动配置新应用程序。
 >
@@ -54,12 +54,12 @@ ms.locfileid: "85554025"
 > 1. 转到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
 > 1. 选择“新注册”。
 > 1. “注册应用程序”页显示后，请输入应用程序的名称。
-> 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 
+> 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。
 > 1. 选择“注册”。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
 > 1. 本快速入门要求启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)。 在已注册的应用程序的左窗格中，选择“身份验证”。
-> 1. 在“平台配置”下，选择“添加平台”。  左侧将打开一个面板。 在此面板中选择“Web 应用程序”区域。
-> 1. 在左侧将“重定向 URI”值设置为 `http://localhost:3000/`。 然后选择“访问令牌”和“ID 令牌”。 
-> 1. 选择“配置”。
+> 1. 在“平台配置”下，选择“添加平台”。 左侧将打开一个面板。 在此面板中选择“Web 应用程序”区域。
+> 1. 在左侧将“重定向 URI”值设置为 `http://localhost:3000/`。 然后选择“访问令牌”和“ID 令牌”。
+> 1. 选择“配置” 。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>步骤 1：在 Azure 门户中配置应用程序
@@ -110,7 +110,7 @@ ms.locfileid: "85554025"
 > [!div renderon="docs"]
 >
 > 其中：
-> - \<Enter_the_Application_Id_Here> 是已注册的应用程序的应用程序（客户端）ID。
+> - \<Enter_the_Application_Id_Here> 是所注册应用程序的应用程序（客户端）ID。
 > - \<Enter_the_Cloud_Instance_Id_Here> 是 Azure 云的实例。 对于主要或全球 Azure 云，只需输入 *https://login.microsoftonline.com* 。 对于**国家**云（例如“中国”云），请参阅[国家云](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)。
 > - \<Enter_the_Tenant_info_here> 设置为以下选项之一：
 >    - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”（例如，*contoso.microsoft.com*）。
@@ -118,7 +118,7 @@ ms.locfileid: "85554025"
 >    - 如果应用程序支持“任何组织目录中的帐户和个人 Microsoft 帐户”，请将此值替换为 **common**。 若要限制对“仅限个人 Microsoft 帐户”的支持，请将此值替换为 **consumers**。
 >
 > > [!TIP]
-> > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。   
+> > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用的“概述”页。
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行
@@ -144,7 +144,7 @@ ms.locfileid: "85554025"
 > [!div renderon="docs"]
 >
 > 其中：
-> - *\<Enter_the_Graph_Endpoint_Here>* 是将针对其进行 API 调用的终结点。 对于主要或全局 Microsoft Graph API 服务，只需输入 `https://graph.microsoft.com`。 有关详细信息，请参阅[国家云部署](https://docs.microsoft.com/graph/deployments)
+> - \<Enter_the_Graph_Endpoint_Here> 是将针对其进行 API 调用的终结点。 对于主要或全局 Microsoft Graph API 服务，只需输入 `https://graph.microsoft.com`。 有关详细信息，请参阅[国家云部署](https://docs.microsoft.com/graph/deployments)
 >
 > #### <a name="step-4-run-the-project"></a>步骤 4：运行项目
 

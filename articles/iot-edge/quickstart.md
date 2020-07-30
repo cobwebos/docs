@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 73d7c129a63e4d63ad5cc05d8dac47720c7955e4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 748e31499a4aa8f1ddd2cea4e918b688426338fa
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86511902"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87117248"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>快速入门：将第一个 IoT Edge 模块部署到虚拟 Windows 设备
 
@@ -22,10 +22,12 @@ ms.locfileid: "86511902"
 
 此快速入门介绍如何：
 
-1. 创建 IoT 中心。
-2. 将 IoT Edge 设备注册到 IoT 中心。
-3. 在虚拟设备上安装并启动 IoT Edge 运行时。
-4. 以远程方式将模块部署到 IoT Edge 设备并将遥测数据发送到 IoT 中心。
+> [!div class="checklist"]
+>
+> * 创建 IoT 中心。
+> * 将 IoT Edge 设备注册到 IoT 中心。
+> * 在虚拟设备上安装并启动 IoT Edge 运行时。
+> * 以远程方式将模块部署到 IoT Edge 设备并将遥测数据发送到 IoT 中心。
 
 ![关系图 - 设备和云架构的快速入门](./media/quickstart/install-edge-full.png)
 

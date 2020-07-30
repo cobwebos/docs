@@ -10,12 +10,12 @@ author: peterclu
 ms.author: peterlu
 ms.date: 03/29/2020
 ms.custom: designer
-ms.openlocfilehash: d2ed9a605b19287c2ea693187c445dc8a4b3b932
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: c1d927583ecf0ac5684c607b7d203c3224fe87b1
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206327"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318821"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer-preview"></a>Azure 机器学习设计器的示例管道和数据集（预览版）
 
@@ -25,6 +25,8 @@ ms.locfileid: "86206327"
 
 * Azure 订阅。 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://aka.ms/AMLFree)。
 * 使用企业 SKU 的 Azure 机器学习工作区。
+
+[!INCLUDE [machine-learning-missing-ui](../../includes/machine-learning-missing-ui.md)]
 
 ## <a name="use-sample-pipelines"></a>使用示例管道
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 06/12/2020
-ms.openlocfilehash: ddb72cd7928b15220ff14a6cac801a363a4d778a
-ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
+ms.openlocfilehash: 4d5bb50d4fa34176da63c1305462903e9b62f010
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2020
-ms.locfileid: "85127032"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092552"
 ---
 # <a name="create-a-resource-lock-for-azure-cosmos-table-api-table-using-azure-powershell"></a>使用 Azure PowerShell 为 Azure Cosmos 表 API 表创建资源锁
 
@@ -21,7 +21,7 @@ ms.locfileid: "85127032"
 [!INCLUDE [sample-PowerShell-install](../../../../../includes/sample-PowerShell-install-no-ssh.md)]
 
 > [!IMPORTANT]
-> 除非在启用了 `disableKeyBasedMetadataWriteAccess` 属性的情况下先锁定 Cosmos DB 帐户，否则资源锁对使用任何 Cosmos DB SDK、任何工具（通过帐户密钥连接）或 Azure 门户进行连接的用户所作的更改均无效。 要详细了解如何启用此属性，请参阅[防止 SDK 更改](../../../role-based-access-control.md#preventing-changes-from-cosmos-sdk)。
+> 除非在启用了 `disableKeyBasedMetadataWriteAccess` 属性的情况下先锁定 Cosmos DB 帐户，否则资源锁对使用任何 Cosmos DB SDK、任何工具（通过帐户密钥连接）或 Azure 门户进行连接的用户所作的更改均无效。 要详细了解如何启用此属性，请参阅[防止 SDK 更改](../../../role-based-access-control.md#prevent-sdk-changes)。
 
 ## <a name="sample-script"></a>示例脚本
 

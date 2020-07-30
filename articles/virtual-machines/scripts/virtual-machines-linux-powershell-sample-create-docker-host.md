@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 03/02/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6e9fbf4f9e571813bc27f962a2510e380fcd3532
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 91c4124bb7feb2b7da53ced318b24df320283cca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509675"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87028560"
 ---
 # <a name="create-a-docker-host-with-powershell"></a>使用 PowerShell 创建 Docker 主机
 
@@ -64,6 +64,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。
 
 可以在 [Azure Linux VM 文档](../linux/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)中找到其他虚拟机 PowerShell 脚本示例。

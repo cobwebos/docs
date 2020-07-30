@@ -2,17 +2,18 @@
 title: 使用 Java 的 Azure 存储示例 | Microsoft 文档
 description: 查看、下载和运行 Azure 存储的示例代码和应用程序 使用 Java 存储客户端库发现 Blob、队列、表和文件的入门示例。
 author: mhopkins-msft
+ms.custom: devx-track-java
 ms.author: mhopkins
 ms.date: 02/13/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 26fe0538548e13933e112e83bae6e6131f2a030d
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: b0e0588810fcac239a3647f9b750dd036341ab9f
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594633"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322221"
 ---
 # <a name="azure-storage-samples-using-v12-java-client-libraries"></a>使用 v12 Java 客户端库的 Azure 存储示例
 
