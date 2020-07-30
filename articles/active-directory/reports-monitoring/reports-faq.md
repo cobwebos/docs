@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 818528ae193209e23424998421ebe2fb0c2b24b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35aa75fcbd579c3e2c587b370b0926393b4e58c1
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83199375"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383760"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>有关 Azure Active Directory 报告的常见问题解答
 
@@ -145,7 +145,7 @@ ms.locfileid: "83199375"
 
 * **未应用**：这表示在范围内没有针对用户和应用程序的 CA 策略。 
 * **成功**：这表示在范围内存在针对用户和应用程序的 CA 策略，并且已成功满足 CA 策略。 
-* **失败**：这表示在范围内存在针对用户和应用程序的 CA 策略，但不满足 CA 策略。 
+* **失败**：满足至少一个条件性访问策略的用户和应用程序条件，并且未满足或未将授权控件设置为阻止访问。
     
 **问：条件访问策略结果的所有可能值有哪些？**
 

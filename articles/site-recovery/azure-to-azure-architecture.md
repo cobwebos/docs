@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 5d0808b93d0c9c7b49d1fd394d2b776c008bc594
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: e5daf318088cb71b6a1819db71e3c597a9fa94db
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135857"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421444"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
 
@@ -128,19 +128,19 @@ Site Recovery 按如下所述创建快照：
 
 如果使用 URL 控制 VM 的出站访问，请允许这些 URL。
 
-| **URL** | **详细信息** |
-| ------- | ----------- |
-| *.blob.core.windows.net | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
-| login.microsoftonline.com | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
-| *.hypervrecoverymanager.windowsazure.com | 允许 VM 与 Site Recovery 服务进行通信。 |
-| *.servicebus.windows.net | 允许 VM 写入 Site Recovery 监视和诊断数据。 |
-| *.vault.azure.net | 允许访问，以便通过门户为支持 ADE 的虚拟机启用复制
-| *.automation.ext.azure.com | 允许通过门户为复制项启用移动代理自动升级
+| **名称**                  | **商用**                               | **Government**                                 | **说明** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
+| 复制               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`     | 允许 VM 与 Site Recovery 服务进行通信。 |
+| 服务总线               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | 允许 VM 写入 Site Recovery 监视和诊断数据。 |
+| Key Vault                 | `*.vault.azure.net`                        | `*.vault.usgovcloudapi.net`                  | 允许访问，以便通过门户为支持 ADE 的虚拟机启用复制 |
+| Azure 自动化          | `*.automation.ext.azure.com`               | `*.azure-automation.us`                      | 允许通过门户为复制项启用移动代理自动升级 |
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>IP 地址范围的出站连接
 
 若要使用 IP 地址控制 VM 的出站连接，请允许这些地址。
-请注意，可以在[网络白皮书](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)中找到网络连接要求的详细信息 
+请注意，可以在 "[网络" 白皮书](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags)中找到网络连接要求的详细信息 
 
 #### <a name="source-region-rules"></a>源区域规则
 

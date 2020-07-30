@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 76eee4b0b029714a75b57e5d44e097a36de3181f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 721848b996bc4887370b77404e3d571975815624
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371407"
+ms.locfileid: "87421886"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure 门户中 Azure 认知搜索服务管理
 
@@ -58,7 +58,7 @@ Azure 认知搜索利用其他 Azure 服务进行更深入的监视和管理。 
 
 服务预配设备的权限是通过角色分配授予的。 [基于角色的访问（RBAC）](../role-based-access-control/overview.md)是在[azure 资源管理器](../azure-resource-manager/management/overview.md)上构建的用于预配 azure 资源的授权系统。 
 
-在 Azure 认知搜索环境中， [RBAC 角色分配](search-security-rbac.md)将确定谁可以执行任务，无论他们使用的是[门户](search-manage.md)、 [PowerShell](search-manage-powershell.md)还是[管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)：
+在 Azure 认知搜索环境中， [azure 角色分配](search-security-rbac.md)将确定谁可以执行任务，无论他们使用的是[门户](search-manage.md)、 [PowerShell](search-manage-powershell.md)还是[管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)：
 
 * 创建或删除服务
 * 缩放服务

@@ -1,17 +1,15 @@
 ---
 title: 有关 Azure Functions 中的网络的常见问题解答
 description: 有关 Azure Functions 的网络的一些最常见问题解答和方案。
-author: alexkarcher-msft
 ms.topic: troubleshooting
 ms.date: 4/11/2019
-ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 7d3493cc76dfb05cca3c89114b279b99ab49bac2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 52e0a6f9261d89ecd7c660be118162a898988526
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081638"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385902"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>有关 Azure Functions 中的网络的常见问题解答
 
@@ -66,5 +64,5 @@ ms.locfileid: "87081638"
 * [遵循有关虚拟网络集成入门的教程](./functions-create-vnet.md)
 * [详细了解 Azure Functions 中的网络选项](./functions-networking-options.md)
 * [详细了解虚拟网络与应用服务和 Functions 的集成](../app-service/web-sites-integrate-with-vnet.md)
-* [详细了解 Azure 中的虚拟网络](../virtual-network/virtual-networks-overview.md)
+* [了解有关 Azure 中的虚拟网络的详细信息](../virtual-network/virtual-networks-overview.md)
 * [在应用服务环境中允许更多的网络功能和控制](../app-service/environment/intro.md)

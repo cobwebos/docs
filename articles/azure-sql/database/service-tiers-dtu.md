@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: 901ad08440cf1cfbbbab4779a08a87c89a72cc59
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7354a921950daec5cc429fa07318213c8924264
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281491"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382689"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -36,15 +36,14 @@ ms.locfileid: "87281491"
 
 ||基本|标准|高级|
 | :-- | --: |--:| --:|
-|目标工作负荷|开发和生产|开发和生产|开发和生产|
-|运行时间 SLA|99.99%|99.99%|99.99%|
-|最大备份保留期|7 天|35 天|35 天|
+|**目标工作负荷**|开发和生产|开发和生产|开发和生产|
+|**运行时间 SLA**|99.99%|99.99%|99.99%|
+|**最大备份保留期**|7 天|35 天|35 天|
 |CPU|低|低、中、高|中、高|
-|IO 吞吐量（近似） |每个 DTU 1-5 IOPS| 每个 DTU 1-5 IOPS | 每个 DTU 25 IOPS|
-|IO 延迟（近似）|5 毫秒（读取），10 毫秒（写入）|5 毫秒（读取），10 毫秒（写入）|2 毫秒（读取/写入）|
-|列存储索引 |空值|S3 及更高版本|支持|
-|内存中 OLTP|空值|空值|支持|
-|||||
+|**IO 吞吐量（近似）** |每个 DTU 1-5 IOPS| 每个 DTU 1-5 IOPS | 每个 DTU 25 IOPS|
+|**IO 延迟（近似）**|5 毫秒（读取），10 毫秒（写入）|5 毫秒（读取），10 毫秒（写入）|2 毫秒（读取/写入）|
+|**列存储索引** |空值|S3 及更高版本|支持|
+|**内存中 OLTP**|空值|空值|支持|
 
 > [!IMPORTANT]
 > 基本、标准 S0、S1 和 S2 服务层级提供的 vCore (CPU) 不到一个。  对于 CPU 密集型工作负荷，建议使用 S3 或更高的服务层级。 
@@ -61,9 +60,8 @@ ms.locfileid: "87281491"
 
 ||基本|标准|高级|
 | :-- | --: | --: | --: |
-| 最大存储大小 | 2 GB | 1 TB | 4 TB  |
-| 最大 DTU | 5 | 3000 | 4000 | 
-|||||
+| **最大存储大小** | 2 GB | 1 TB | 4 TB  |
+| **最大 DTU** | 5 | 3000 | 4000 |
 
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](file-space-manage.md)。
@@ -72,12 +70,11 @@ ms.locfileid: "87281491"
 
 || **基本** | **标准** | **高级** |
 | :-- | --: | --: | --: |
-| 每个数据库的最大存储大小  | 2 GB | 1 TB | 1 TB |
-| 每个池的最大存储大小 | 156 GB | 4 TB | 4 TB |
-| 每个数据库的最大 eDTU 数 | 5 | 3000 | 4000 |
-| 每个池的最大 eDTU 数 | 1600 | 3000 | 4000 |
-| 每个池的数据库数目上限 | 500  | 500 | 100 |
-|||||
+| **每个数据库的最大存储大小**  | 2 GB | 1 TB | 1 TB |
+| **每个池的最大存储大小** | 156 GB | 4 TB | 4 TB |
+| **每个数据库的最大 eDTU 数** | 5 | 3000 | 4000 |
+| **每个池的最大 eDTU 数** | 1600 | 3000 | 4000 |
+| **每个池的数据库数目上限** | 500  | 500 | 100 |
 
 > [!IMPORTANT]
 > 高级层中的存储空间超过 1 TB 目前在除：中国东部、中国北部、德国中部、德国北部、美国中部、US DoD 地区和美国政府中心以外的所有地区都可用。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。  

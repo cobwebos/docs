@@ -1,16 +1,16 @@
 ---
 title: 将 Azure 事件中心与 Azure 专用链接服务集成
 description: 了解如何将 Azure 事件中心与 Azure 专用链接服务集成
-ms.date: 06/23/2020
+ms.date: 07/29/2020
 ms.topic: article
-ms.openlocfilehash: a07204615c4d81373d744e83862e6de14c7f8165
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 66753e51fd1e918e5659e219c5ebbe471705b3ee
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287963"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421089"
 ---
-# <a name="integrate-azure-event-hubs-with-azure-private-link"></a>将 Azure 事件中心与 Azure 专用链接集成
+# <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>允许通过专用终结点访问 Azure 事件中心命名空间 
 使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如 Azure 事件中心、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户服务/合作伙伴服务。
 
 专用终结点是一个网络接口，可以将你通过专用且安全的方式连接到 Azure 专用链接支持的服务。 专用终结点使用虚拟网络中的专用 IP 地址，从而将该服务有效地引入到虚拟网络。 发往服务的所有流量都可以通过专用终结点路由，因此不需要网关、NAT 设备、ExpressRoute 或 VPN 连接或公共 IP 地址。 虚拟网络与服务之间的流量将通过 Microsoft 主干网络，因此不会从公共 Internet 泄露。 可以连接到 Azure 资源的实例，从而获得最高级别的访问控制粒度。
@@ -42,7 +42,7 @@ ms.locfileid: "87287963"
 
 - 事件中心命名空间。
 - 一个 Azure 虚拟网络。
-- 虚拟网络中的子网。
+- 虚拟网络中的子网。 可以使用**默认**子网。 
 - 对命名空间和虚拟网络拥有所有者或参与者权限。
 
 专用终结点和虚拟网络必须位于同一区域。 使用门户选择专用终结点的区域时，只会自动筛选该区域中的虚拟网络。 命名空间可以位于不同的区域中。
@@ -55,10 +55,15 @@ ms.locfileid: "87287963"
 1. 登录 [Azure 门户](https://portal.azure.com)。 
 2. 在搜索栏中键入“事件中心”。
 3. 从列表中选择要将专用终结点添加到的**命名空间**。
-4. 在“设置”下选择“网络”选项卡。 
+4. 在左侧菜单的 "**设置**" 下选择 "**网络**"。
 
     > [!NOTE]
     > 只会看到**标准**命名空间或**专用**命名空间的 "**网络**" 选项卡。 
+
+    :::image type="content" source="./media/private-link-service/selected-networks-page.png" alt-text="网络选项卡-所选网络选项" lightbox="./media/private-link-service/selected-networks-page.png":::    
+
+    > [!NOTE]
+    > 默认情况下，选择 "**所选网络**" 选项。 如果未指定 IP 防火墙规则或添加虚拟网络，则可以通过公共 internet 访问该命名空间。 
 1. 选择页面顶部的“专用终结点连接”选项卡。 
 1. 在页面顶部选择“+ 专用终结点”按钮。
 

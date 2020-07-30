@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: mihansen
-ms.openlocfilehash: bf05ede858c86fa82e199c800ea42747745c9c19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3fbbfd931efb0e570bc96639bc6b7943fddc0237
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871167"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417669"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>配置 FHIR 的 Azure RBAC 
 
@@ -57,4 +57,3 @@ ms.locfileid: "84871167"
  
 >[!div class="nextstepaction"]
 >[其他设置 Azure API for FHIR](azure-api-for-fhir-additional-settings.md)
-

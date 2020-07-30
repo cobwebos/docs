@@ -13,22 +13,22 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0339d9d47752c194eeda96cd2df4859d6b97518b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e9d4f293f3835e26def97aa2f52dd0c42d9137c7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85338273"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421716"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>在 Azure AD 中管理紧急访问帐户
 
-必须防止意外地被锁在 Azure Active Directory (Azure AD) 组织之外，因为在这种情况下，无法以管理员的身份登录或激活其他用户帐户。 可在组织中创建两个或更多个紧急访问帐户，缓解意外失去管理访问权限造成的影响。
+必须防止意外地被锁在 Azure Active Directory (Azure AD) 组织之外，因为在这种情况下，无法以管理员的身份登录或激活其他用户帐户。 可在组织中创建两个或更多个紧急访问帐户，缓解意外丧失管理访问权限造成的影响。
 
-紧急访问帐户拥有较高的特权，因此请不要将其分配给特定的个人。 紧急访问帐户只能用于紧急情况或“破窗式”情况，即不能使用正常管理帐户。 建议始终以将紧急帐户的使用限于绝对必要情况为目标。
+紧急访问帐户拥有较高的特权，因此请不要将其分配给特定的个人。 紧急访问帐户只能用于“不受限”紧急情况，即不能使用正常管理帐户的情况。 建议你始终以将紧急帐户的使用限于绝对必要情况为目标。
 
 本文提供有关在 Azure AD 中管理紧急访问帐户的指导。
 
-## <a name="why-use-an-emergency-access-account"></a>为什么使用紧急访问帐户
+## <a name="why-use-an-emergency-access-account"></a>为何使用紧急访问帐户
 
 在以下情况下，组织可能需要使用紧急访问帐户：
 
@@ -56,9 +56,9 @@ ms.locfileid: "85338273"
 
 ### <a name="exclude-at-least-one-account-from-conditional-access-policies"></a>从条件访问策略中排除至少一个帐户
 
-在紧急情况下，你不希望某个策略阻止你进行访问以解决问题。 应从所有条件访问策略中排除至少一个紧急访问帐户。 如果已启用[基准策略](../conditional-access/baseline-protection.md)，应排除紧急访问帐户。
+在紧急情况下，你不希望某个策略阻止你进行访问以解决问题。 应从所有条件访问策略中排除至少一个紧急访问帐户。
 
-## <a name="federation-guidance"></a>联合指南
+## <a name="federation-guidance"></a>联合身份验证指南
 
 对于使用 AD 域服务和 ADFS 或类似标识提供者联合到 Azure AD 的组织，另一种做法是配置一个可由该标识提供者提供 MFA 声明的紧急访问帐户。  例如，紧急访问帐户可由证书和密钥对（例如，存储在智能卡上）提供安全保障。  当该用户在 AD 中进行身份验证时，ADFS 可向 Azure AD 提供声明，指示该用户满足 MFA 要求。  即使使用此方法，组织也仍需要提供基于云的紧急访问帐户，否则无法建立联合。 
 
@@ -70,7 +70,7 @@ ms.locfileid: "85338273"
 
 ## <a name="monitor-sign-in-and-audit-logs"></a>监视登录和审核日志
 
-组织应监视紧急帐户的登录和审核日志活动，并向其他管理员发出通知。 监视破窗式帐户上的活动时，可以验证这些帐户是否仅用于测试或实际紧急情况。 可以使用 Azure Log Analytics 监视登录日志，并在出现破窗式帐户登录时发出电子邮件和短信警报。
+组织应该监视紧急帐户的登录和审核日志活动，并触发目标为其他管理员的通知。 监视不受限帐户的活动时，可以验证这些帐户是仅用于测试，还是用于真实的紧急情况。 可以使用 Azure Log Analytics 监视登录日志，在不受限帐户登录时触发接收人为管理员的电子邮件和短信警报。
 
 ### <a name="prerequisites"></a>先决条件
 
@@ -135,7 +135,7 @@ ms.locfileid: "85338273"
 
 ## <a name="validate-accounts-regularly"></a>定期验证帐户
 
-培训员工成员使用紧急访问帐户和验证紧急访问帐户时，至少应定期执行以下步骤：
+为员工培训紧急访问帐户的用法和验证紧急访问帐户时，至少应定期执行以下步骤：
 
 - 确保安全监视人员了解正在进行帐户检查活动。
 - 确保使用这些帐户的紧急破窗流程有文档记录，且是最新的流程。
@@ -156,5 +156,5 @@ ms.locfileid: "85338273"
 - [使用 Azure AD 添加用户](../fundamentals/add-users-azure-active-directory.md)并[将新用户分配到全局管理员角色](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 - [注册 Azure AD Premium](../fundamentals/active-directory-get-started-premium.md)（如果尚未注册）
 - [如何要求用户进行双重验证](../authentication/howto-mfa-userstates.md)
-- 如果你使用 Microsoft 365，[为 Microsoft 365 中的全局管理员配置其他保护](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts)
+- 如果使用 Microsoft 365，则[在 Microsoft 365 中为全局管理员配置额外的保护](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts)
 - [启动全局管理员访问评审](../privileged-identity-management/pim-how-to-start-security-review.md)并[将现有全局管理员转换为更具体的管理员角色](directory-assign-admin-roles.md)

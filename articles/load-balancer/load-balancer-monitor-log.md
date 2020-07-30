@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 1c8acd2d8055359288608f7bd2e5f54f8c4f6cc3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 351307132e231f1fc6639333e6839848ac933337
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809192"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420900"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>公共基本负载均衡器的 Azure Monitor 日志
 
@@ -40,7 +40,7 @@ ms.locfileid: "84809192"
 1. 在门户中，单击“资源组”。
 2. 选择负载均衡器所在的 **\<resource-group-name>** 。
 3. 选择负载均衡器。
-4. 选择“监视” > “诊断设置” 。
+4. 选择 "**活动日志**  >  **诊断设置**"。
 5. 在“诊断设置”窗格中，在“诊断设置”下选择“添加诊断设置”。  
 6. 在“诊断设置”创建窗格中，在“名称”字段中输入“myLBDiagnostics”  。
 7. “诊断设置”有三个选项。  可以选择一个、两个或全部三个，并根据要求对各选项进行配置：

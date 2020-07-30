@@ -6,25 +6,28 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/21/2020
-ms.openlocfilehash: d85fe36bb948ae9a0c81fa25f87450c7f5fe93b7
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 5db756b60330cdac4e43e13bfe29d9397f87af50
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337256"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421648"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-preview"></a>Azure Cache for Redis 与 Azure Private Link （预览版）
 Azure 专用终结点是一个网络接口，该接口将你私下并安全地连接到 Azure 缓存，以供 Azure 专用链接提供支持的 Redis。 
 
 在本文中，你将了解如何使用 Azure 门户创建 Azure 缓存、Azure 虚拟网络和专用终结点。  
 
-## <a name="prerequisites"></a>必备条件
+> [!IMPORTANT]
+> 此预览版在提供时没有服务级别协议，不建议用于生产工作负荷。 有关详细信息，请参阅[Microsoft Azure 预览版的补充使用条款。](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 
+> 
+
+## <a name="prerequisites"></a>先决条件
 * Azure 订阅- [免费创建一个](https://azure.microsoft.com/free/)
 
 > [!NOTE]
-  > 此功能目前处于预览阶段，如果你感兴趣，[请](mailto:azurecache@microsoft.com)联系我们。
-  >
-
+> 此功能目前处于预览阶段，如果你感兴趣，[请](mailto:azurecache@microsoft.com)联系我们。
+>
 
 ## <a name="create-a-cache"></a>创建缓存
 1. 若要创建缓存，请登录到 [Azure 门户](https://portal.azure.com)并选择“创建资源”  。 
@@ -97,7 +100,7 @@ Azure 专用终结点是一个网络接口，该接口将你私下并安全地�
 
 9. 选择 "**查看**" 和 "创建" 选项卡或选择 "查看" 和 "**创建**" 按钮。
 
-10. 选择“创建”。
+10. 选择“创建”  。
 
 
 ## <a name="create-a-private-endpoint"></a>创建专用终结点 

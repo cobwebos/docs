@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 450f04c7de68bf6db282577fbc8e841f1f3c93fc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a43538ec7fa17764e8d9d53aad305480bd3ab4f5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284398"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419795"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>设备标识和桌面虚拟化
 
@@ -54,9 +54,9 @@ ms.locfileid: "87284398"
 |   | 托管 | Windows 当前 | 永久 | 否 |
 |   |   |   | 非持久 | 否 |
 | 已注册 Azure AD | 联合 | Windows 当前 | 永久 | 不适用 |
-|   |   |   | 非持久 | 否 |
+|   |   |   | 非持久 | 不适用 |
 |   | 托管 | Windows 当前 | 永久 | 不适用 |
-|   |   |   | 非持久 | 否 |
+|   |   |   | 非持久 | 不适用 |
 
 \***联合**标识基础结构环境表示具有标识提供者（如 AD FS 或其他第三方 IDP）的环境。
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 588e63e630caa4746b493d4530e301f72e5ccb5f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b3dcb3a74e9341981af7e6eddb4be7454aaf429b
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282936"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419778"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Windows 虚拟机
 
@@ -69,7 +69,7 @@ ms.locfileid: "87282936"
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>在 Azure 中启用 Windows VM 的 Azure AD 登录
 
-若要在 Azure 中使用 Windows VM Azure AD 登录，需要首先为 Windows VM 启用 Azure AD login 选项，然后需要为有权登录到 VM 的用户配置 RBAC 角色分配。
+若要在 Azure 中使用 Windows VM Azure AD 登录，需要首先为 Windows VM 启用 Azure AD login 选项，然后需要为有权登录到 VM 的用户配置 Azure 角色分配。
 可以通过多种方式为 Windows VM 启用 Azure AD 登录：
 
 - 在创建 Windows VM 时使用 Azure 门户体验

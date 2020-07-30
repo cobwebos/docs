@@ -1,7 +1,7 @@
 ---
 title: 启用采用 Azure Key Vault 的 SQL TDE
 titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
-description: 了解如何配置 Azure SQL 数据库和 Azure Synapse Analytics，以便使用 PowerShell 或 Azure CLI 开始使用透明数据加密（TDE）进行静态加密。
+description: 了解如何配置 Azure SQL 数据库和 Azure Synapse Analytics，以开始使用透明数据加密 (TDE) 通过 PowerShell 或 Azure CLI 进行静态加密。
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: security
@@ -12,17 +12,17 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: ac72e3e232ec17c4c4d810f6d2c7fed6fa84fd02
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 84166e5523cdbdb9ccebf9a0cbfc5e4dee0eb9e8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85981322"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387126"
 ---
-# <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell 和 Azure CLI：通过 Azure Key Vault 的客户托管密钥启用透明数据加密
+# <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell 和 Azure CLI：使用 Azure Key Vault 中由客户管理的密钥启用透明数据加密
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-本文介绍如何在 Azure SQL 数据库或 Azure Synapse Analytics （以前称为 SQL 数据仓库）中使用 Azure Key Vault 透明数据加密（TDE）的密钥。 要了解更多关于 TDE 与 Azure Key Vault 集成（即自带密钥 (BYOK) 支持）的信息，请访问[使用 Azure Key Vault 中由客户管理的密钥进行 TDE](transparent-data-encryption-byok-overview.md)。
+本文逐步介绍如何使用 Azure Key Vault 中的密钥对 Azure SQL 数据库或 Azure Synapse Analytics（以前成为 SQL Data Warehouse）启用透明数据加密 (TDE)。 要了解更多关于 TDE 与 Azure Key Vault 集成（即自带密钥 (BYOK) 支持）的信息，请访问[使用 Azure Key Vault 中由客户管理的密钥进行 TDE](transparent-data-encryption-byok-overview.md)。
 
 ## <a name="prerequisites-for-powershell"></a>PowerShell 先决条件
 
@@ -32,11 +32,11 @@ ms.locfileid: "85981322"
 - 创建用于 TDE 的 Azure Key Vault 和密钥。
   - [有关使用硬件安全模块 (HSM) 和 Key Vault 的说明](../../key-vault/keys/hsm-protected-keys.md)
     - Key Vault 必须包含用于 TDE 的以下属性：
-  - [软删除](../../key-vault/general/overview-soft-delete.md)和清除保护
+  - [软删除](../../key-vault/general/soft-delete-overview.md)和清除保护
 - 密钥必须包含用于 TDE 的以下特性：
   - 无过期日期
   - 未禁用
-  - 能够执行“获取”、“包装密钥”和“解包密钥”操作   
+  - 能够执行“获取”、“包装密钥”和“解包密钥”操作  
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -45,11 +45,11 @@ ms.locfileid: "85981322"
 有关 Key Vault 的具体信息，请参阅 [Key Vault 的 PowerShell 说明](../../key-vault/secrets/quick-create-powershell.md)和[如何将 Key Vault 软删除与 PowerShell 配合使用](../../key-vault/general/soft-delete-powershell.md)。
 
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器（RM）模块仍受支持，但所有将来的开发都适用于 Az .Sql 模块。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](/powershell/azure/new-azureps-module-az)。
+> 仍然支持 PowerShell Azure 资源管理器 (RM) 模块，但是所有未来的开发都是针对 Az.Sql 模块。 AzureRM 模块至少在 2020 年 12 月之前将继续接收 bug 修补程序。  Az 模块和 AzureRm 模块中的命令参数大体上是相同的。 若要详细了解其兼容性，请参阅[新 Azure PowerShell Az 模块简介](/powershell/azure/new-azureps-module-az)。
 
-## <a name="assign-an-azure-active-directory-azure-ad-identity-to-your-server"></a>将 Azure Active Directory （Azure AD）标识分配给服务器
+## <a name="assign-an-azure-active-directory-azure-ad-identity-to-your-server"></a>将 Azure Active Directory (Azure AD) 标识分配给服务器
 
-如果有现有[服务器](logical-servers.md)，请使用以下内容将 Azure Active Directory （Azure AD）标识添加到服务器：
+如果你已有[服务器](logical-servers.md)，请使用以下命令将 Azure Active Directory (Azure AD) 标识添加到该服务器：
 
    ```powershell
    $server = Set-AzSqlServer -ResourceGroupName <SQLDatabaseResourceGroupName> -ServerName <LogicalServerName> -AssignIdentity
@@ -123,9 +123,9 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要安装所需版本的 Azure CLI （版本2.0 或更高版本）并连接到 Azure 订阅，请参阅[安装和配置 Azure 跨平台命令行接口 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+若要安装所需的 Azure CLI 版本（版本 2.0 或更高版本）并连接到 Azure 订阅，请参阅[安装和配置 Azure 跨平台命令行界面 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。
 
-有关 Key Vault 的详细信息，请参阅[使用 cli 2.0 管理 Key Vault](../../key-vault/general/manage-with-cli2.md)和[如何将 Key Vault 软删除与 cli 一起使用](../../key-vault/general/soft-delete-cli.md)。
+有关 Key Vault 的具体信息，请参阅[使用 CLI 2.0 管理 Key Vault](../../key-vault/general/manage-with-cli2.md) 和[如何将 Key Vault 软删除与 CLI 配合使用](../../key-vault/general/soft-delete-cli.md)。
 
 ## <a name="assign-an-azure-ad-identity-to-your-server"></a>将 Azure AD 标识分配到服务器
 
@@ -239,7 +239,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
 
 - 如果无法将新密钥添加到服务器，或无法将新密钥更新为 TDE 保护器，请检查以下项：
    - 密钥不应有过期日期
-   - 密钥必须支持“获取”、“包装密钥”和“解包密钥”操作。   
+   - 密钥必须支持“获取”、“包装密钥”和“解包密钥”操作。  
 
 ## <a name="next-steps"></a>后续步骤
 

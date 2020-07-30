@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, divswa, logicappspm
 ms.topic: article
 ms.date: 07/28/2020
-ms.openlocfilehash: a9ebc6b0cdbaa05c36383fa5126c2672fb19b69c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 675d4bdb0b8c0aa8e034d5a85dc027f642705fa9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370948"
+ms.locfileid: "87386174"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>从 Azure 逻辑应用连接到本地数据源
 
@@ -52,13 +52,13 @@ Azure 逻辑应用支持通过数据网关进行读取和写入操作。 但是�
 
 ## <a name="prerequisites"></a>先决条件
 
-* 已经[在本地计算机上安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)。
+* 已经[在本地计算机上安装本地数据网关](../logic-apps/logic-apps-gateway-install.md)。 此网关安装必须存在，然后才能创建链接到此安装的网关资源。
 
-* 你具有与用于网关安装[相同的 Azure 帐户和订阅](../logic-apps/logic-apps-gateway-install.md#requirements)。 此 Azure 帐户必须仅属于单个[Azure Active Directory （Azure AD）租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)。 需要相同的 Azure 帐户和订阅才能在 Azure 中创建网关资源，因为只有网关管理员可以在 Azure 中创建网关资源。 当前不支持服务主体。
+* 你具有与用于网关安装[相同的 Azure 帐户和订阅](../logic-apps/logic-apps-gateway-install.md#requirements)。 此 Azure 帐户必须仅属于单个[Azure Active Directory （Azure AD）租户或目录](../active-directory/fundamentals/active-directory-whatis.md#terminology)。 需要使用相同的 Azure 帐户和订阅在 Azure 中创建网关资源，因为只有网关管理员可以在 Azure 中创建网关资源。 当前不支持服务主体。
 
-  * 当你在 Azure 中创建网关资源时，请选择要与网关资源一起使用的网关安装，并仅选择该网关资源。 每个网关资源只能链接到一个网关安装，只能链接到一个 Azure 帐户和订阅。 因此，不能选择已与另一网关资源关联的网关安装。
+  * 当你在 Azure 中创建网关资源时，你可以选择网关安装，以链接到你的网关资源和仅该网关资源。 每个网关资源只能链接到一个网关安装。 不能选择已与另一网关资源关联的网关安装。
   
-  * 逻辑应用和网关资源不必存在于同一 Azure 订阅中。 如果你具有订阅访问权限，在可以访问本地数据源的触发器和操作中，你可以从与不同的网关资源关联的不同 Azure 订阅中进行选择。
+  * 逻辑应用和网关资源不必存在于同一 Azure 订阅中。 如果你具有订阅访问权限，则可以在可访问本地数据源的触发器和操作中选择包含网关资源的其他 Azure 订阅。
 
 <a name="create-gateway-resource"></a>
 

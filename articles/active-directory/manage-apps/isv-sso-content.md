@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: kenwith
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26fa2b82b89c7b9ce1e05062718f2c4d0c93197c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cabcaacbdc7e3e94e62c8fb45274c4d4f9390ddd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763272"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87273399"
 ---
 # <a name="enable-single-sign-on-for-your-multi-tenant-application"></a>为多租户应用程序启用单一登录  
 
@@ -61,4 +61,4 @@ ms.locfileid: "84763272"
 1. [创建 Azure 租户](isv-tenant-multi-tenant-app.md)并测试应用程序
 1. [在站点上创建并发布 SSO 文档](isv-create-sso-documentation.md)。
 1. [提交你的应用程序列表](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)并与 microsoft 合作，以便在 microsoft 网站上创建文档。
-1. [加入 Microsoft 合作伙伴网络（免费）并创建你的走向市场计划](https://partner.microsoft.com/en-us/explore/commercial#gtm)。
+1. [加入 Microsoft 合作伙伴网络（免费）并创建你的走向市场计划](https://partner.microsoft.com/explore/commercial#gtm)。

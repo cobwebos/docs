@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: c347f637083d8dfdf39cbd032df97bc52973465f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c02b0d63db3a761f52c9ea15e6fc6ba3356cd4be
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372563"
+ms.locfileid: "87421359"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>高性能计算 VM 大小
 
@@ -46,9 +46,9 @@ Azure H 系列虚拟机（Vm）旨在为各种真实的 HPC 工作负荷提供�
 
 - **无限和 RDMA 驱动程序**-在启用了支持的 vm 上，需要适当的驱动程序才能启用 RDMA。 在 Linux 上，Marketplace 中的 CentOS-HPC VM 映像已预先配置了适当的驱动程序。 可以使用[此处的说明](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)，使用正确的驱动程序配置 Ubuntu VM 映像。 在启用了 sr-iov 和 N 系列 Vm 的 sr-iov 上，可以使用[INFINIBANDDRIVERLINUX VM 扩展](./extensions/hpc-compute-infiniband-linux.md)安装 Mellanox OFED 驱动程序并启用 "无序"。 详细了解如何在支持 RDMA 的 VM sat [HPC 工作负荷](./workloads/hpc/overview.md)上启用允许。
 
-在 Windows 上， [INFINIBANDDRIVERWINDOWS VM 扩展](./extensions/hpc-compute-infiniband-windows.md)为 RDMA 连接性安装 Windows 网络直接驱动程序（在非 sr-iov vm 上）或 Mellanox OFED 驱动程序（在 sr-iov vm 上）。 在某些 A8 和 A9 实例的部署中，会自动添加 HpcVmDrivers 扩展。 请注意，不推荐使用 HpcVmDrivers VM 扩展;它不会更新。
+   在 Windows 上， [INFINIBANDDRIVERWINDOWS VM 扩展](./extensions/hpc-compute-infiniband-windows.md)为 RDMA 连接性安装 Windows 网络直接驱动程序（在非 sr-iov vm 上）或 Mellanox OFED 驱动程序（在 sr-iov vm 上）。 在某些 A8 和 A9 实例的部署中，会自动添加 HpcVmDrivers 扩展。 请注意，不推荐使用 HpcVmDrivers VM 扩展;它不会更新。
 
-若要将 VM 扩展添加到 VM，可以使用 [Azure PowerShell](/powershell/azure/) cmdlet。 有关详细信息，请参阅[虚拟机扩展和功能](./extensions/overview.md)。 还可使用[经典部署模型](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)中部署的 VM 扩展。
+   若要将 VM 扩展添加到 VM，可以使用 [Azure PowerShell](/powershell/azure/) cmdlet。 有关详细信息，请参阅[虚拟机扩展和功能](./extensions/overview.md)。 还可使用[经典部署模型](/previous-versions/azure/virtual-machines/windows/classic/agents-and-extensions-classic)中部署的 VM 扩展。
 
 - **MPI** -Azure （HBV2，HB-ACCT-WC，HC，NCv3，NDv2）上启用了 SR-IOV 的 VM 大小，几乎可以使用任何一种与 Mellanox OFED 结合使用的 MPI。
 在非 SR-IOV 启用 Vm 上，支持的 MPI 实现使用 Microsoft Network Direct （ND）接口在 Vm 之间进行通信。 因此，只支持 Microsoft MPI （MS-CHAP） 2012 R2 或更高版本和 Intel MPI 1.x 版本。 Intel MPI 运行时库的更高版本（2017，2018）不一定与 Azure RDMA 驱动程序兼容。
@@ -98,6 +98,6 @@ Azure 提供了多个选项，用于创建可使用 RDMA 网络通信的 Windows
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何优化 Azure 的 HPC 应用程序以及[Hpc 工作负荷](./workloads/hpc/overview.md)中的一些示例 
+- 详细了解如何优化 Azure 的 HPC 应用程序以及[Hpc 工作负荷](./workloads/hpc/overview.md)中的一些示例。
 
-- 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
+- 阅读有关[Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)的最新公告和一些 HPC 示例和结果。

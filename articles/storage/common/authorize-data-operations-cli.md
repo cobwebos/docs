@@ -10,12 +10,12 @@ ms.date: 02/26/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: b4af9c23e2599ad666908763720a5f01303b8d50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1e0b3890c50a476e4c3b3247db435c6032bf9bbc
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805486"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417295"
 ---
 # <a name="authorize-access-to-blob-or-queue-data-with-azure-cli"></a>使用 Azure CLI 授权访问 Blob 或队列数据
 
@@ -57,7 +57,7 @@ Azure 存储扩展支持针对 blob 和队列数据的操作。 可调用的操�
 1. 创建容器之前，请向自己分配[存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)角色。 即使你是帐户所有者，也需要显式权限才能针对存储帐户执行数据操作。 有关如何分配 RBAC 角色的详细信息，请参阅[在 Azure 门户中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限](storage-auth-aad-rbac.md)。
 
     > [!IMPORTANT]
-    > 传播 RBAC 角色分配可能需要花费几分钟时间。
+    > Azure 角色分配可能需要几分钟才能传播。
 
 1. 在将 `--auth-mode` 参数设置为 `login` 的情况下，调用 [az storage container create](/cli/azure/storage/container#az-storage-container-create) 命令以使用 Azure AD 凭据创建容器。 请务必将尖括号中的占位符值替换为你自己的值：
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: b06deadae15a8176a49bed88a53884df2b71e473
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e538299dfc9c9406b519d888d1a92c5c643bb03
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82189456"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421733"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的故障排除和限制
 
@@ -141,26 +141,6 @@ Cloud Shell 适用于交互式用例。 因此，任何长时间运行的非交�
 ### <a name="preview-version-of-azuread-module"></a>AzureAD 模块的预览版本
 
 目前，`AzureAD.Standard.Preview`（基于 .NET Standard 的预览版本）模块不可用。 此模块提供与 `AzureAD` 相同的功能。
-
-### <a name="sqlserver-module-functionality"></a>`SqlServer` 模块功能
-
-Cloud Shell 中包含的 `SqlServer` 模块仅具有对 PowerShell Core 的预发布版本支持。 具体而言，`Invoke-SqlCmd` 尚不可用。
-
-### <a name="default-file-location-when-created-from-azure-drive"></a>从 Azure 驱动器创建时的默认文件位置
-
-使用 PowerShell cmdlet，用户无法在 Azure 驱动器下创建文件。 当用户使用其他工具（如 vim 或 nano）创建新文件时，文件将默认保存到 `$HOME`。
-
-### <a name="tab-completion-can-throw-psreadline-exception"></a>Tab 自动补全可能引发 PSReadline 异常
-
-如果用户的 PSReadline EditMode 设置为 Emacs，用户尝试通过 Tab 自动补全显示所有可能性，而窗口大小过小，无法显示所有可能性，则 PSReadline 将引发未经处理的异常。
-
-### <a name="large-gap-after-displaying-progress-bar"></a>在显示进度栏后出现大间距
-
-如果命令或用户操作显示进度栏（例如，在 `Azure:` 驱动器中的 Tab 自动补全），则光标可能设置不正确，且在以前的进度栏处出现间距。
-
-### <a name="random-characters-appear-inline"></a>随机字符以内联显示
-
-光标位置序列代码（例如 `5;13R`）可以在用户输入时显示。 这些字符可以手动删除。
 
 ## <a name="personal-data-in-cloud-shell"></a>Cloud Shell 中的个人数据
 

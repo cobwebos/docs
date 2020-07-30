@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 5a454d04701160492539f5c9caba57c9e617401e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dca320168805e9f7c8f6336b39c4f9394255f9b8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067480"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87416309"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>优化 Azure Monitor 中的日志查询
 Azure Monitor 日志使用 [Azure 数据资源管理器 (ADX)](/azure/data-explorer/) 来存储日志数据，并运行查询来分析这些数据。 它为你创建、管理和维护 ADX 群集，并针对你的日志分析工作负荷优化它们。 运行查询时，将对其进行优化，并将其路由到存储着工作区数据的相应 ADX 群集。 Azure Monitor 日志和 Azure 数据资源管理器都使用许多自动查询优化机制。 虽然自动优化已提供了显著的性能提升，但在某些情况下，你还可以显著提高查询性能。 本文介绍了性能注意事项和解决相关问题的几种方法。
@@ -98,14 +98,14 @@ SecurityEvent
 Heartbeat 
 | extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
 | where IPRegion == "WestCoast"
-| summarize count() by Computer
+| summarize count(), make_set(IPRegion) by Computer
 ```
 ```Kusto
 //more efficient
 Heartbeat 
 | where RemoteIPLongitude  < -94
 | extend IPRegion = iif(RemoteIPLongitude  < -94,"WestCoast","EastCoast")
-| summarize count() by Computer
+| summarize count(), make_set(IPRegion) by Computer
 ```
 
 ### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>在汇总和联接中使用高效的聚合命令和维度
@@ -433,7 +433,7 @@ Azure Monitor 日志使用 Azure 数据资源管理器的大型群集来运行�
 - 使用序列化和窗口函数，例如 [serialize 运算符](/azure/kusto/query/serializeoperator)、[next()](/azure/kusto/query/nextfunction)、[prev()](/azure/kusto/query/prevfunction) 和 [row](/azure/kusto/query/rowcumsumfunction) 函数。 在这些情况下，有时候可能会使用时序和用户分析功能。 如果在非查询末尾的位置使用了以下运算符，则可能会导致序列化低效：[range](/azure/kusto/query/rangeoperator)、[sort](/azure/kusto/query/sortoperator)、[order](/azure/kusto/query/orderoperator)、[top](/azure/kusto/query/topoperator)、[top-hitters](/azure/kusto/query/tophittersoperator)、[getschema](/azure/kusto/query/getschemaoperator)。
 -    使用 [dcount()](/azure/kusto/query/dcount-aggfunction) 聚合函数会强制系统将非重复值存储在中心副本中。 当数据规模较大时，请考虑使用 dcount 函数可选参数来降低精度。
 -    在许多情况下，[join](/azure/kusto/query/joinoperator?pivots=azuremonitor) 运算符会降低整体并行度。 当性能有问题时，看是否可以使用 shuffle join 作为替代方法。
--    在资源范围的查询中，当存在极大量的 RBAC 分配时，预执行 RBAC 检查可能会延迟。 这可能会导致检查时间延长，并且会导致并行度降低。 例如，查询在有数千个资源的订阅上执行，每个资源在资源级别（而不是在订阅或资源组上）有许多角色分配。
+-    在资源范围内的查询中，在有大量 Azure 角色分配的情况下，执行前 RBAC 检查可能会逗留。 这可能会导致检查时间延长，并且会导致并行度降低。 例如，查询在有数千个资源的订阅上执行，每个资源在资源级别（而不是在订阅或资源组上）有许多角色分配。
 -    如果查询处理的是小块数据，那么它的并行度将很低，因为系统不会将它分布到许多计算节点上。
 
 

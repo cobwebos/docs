@@ -2,18 +2,18 @@
 title: 弃用使用 Azure Site Recovery 的客户托管站点（使用 VMM）之间的灾难恢复 |Microsoft Docs
 description: 详细介绍了使用 Hyper-V 在客户拥有的站点之间以及在由 SCVMM 管理的站点之间通过 Azure Site Discovery 进行灾难恢复这一功能即将弃用，并详细介绍了替代选项
 services: site-recovery
-author: rajani-janaki-ram
-manager: rochakm
+author: Sharmistha-Rai
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
 ms.date: 02/25/2020
-ms.author: rajanaki
-ms.openlocfilehash: 501cf161a22aaa1ec37abda2b750106b6eaf3dc4
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.author: sharrai
+ms.openlocfilehash: 9ffe7a3158b1de6828350947dcf81ef41d08708d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86135213"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421835"
 ---
 # <a name="deprecation-of-disaster-recovery-between-customer-managed-sites-with-vmm-using-azure-site-recovery"></a>使用 Azure Site Recovery 在客户管理的站点（包含 VMM）之间进行灾难恢复功能的弃用
 

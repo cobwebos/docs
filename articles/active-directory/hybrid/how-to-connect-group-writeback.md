@@ -11,12 +11,12 @@ ms.date: 06/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7992563bdfb318867e963ed4f371998bafbbbcdb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8c8fb54261f51d74f02b7b79c27f7a2043426686
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019907"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385137"
 ---
 # <a name="azure-ad-connect-group-writeback"></a>Azure AD Connect 组写回
 
@@ -40,7 +40,7 @@ ms.locfileid: "87019907"
 6. 在 "**写回" 页**上，选择一个 Active Directory 组织单位（OU）来存储从 Office 365 同步到本地组织的对象，然后单击 "**下一步**"。
 7. 在 "已**准备好**配置" 页上，单击 "**配置**"。
 8. 向导完成后，单击 "配置完成" 页上的 "**退出**"。
-9. 在 Azure Active Directory Connect 服务器上打开 Windows PowerShell，并运行以下命令。
+9. 在 Azure Active Directory Connect 服务器上以管理员身份打开 Windows PowerShell，并运行以下命令。
 
 ```Powershell
 $AzureADConnectSWritebackAccountDN =  <MSOL_ account DN>

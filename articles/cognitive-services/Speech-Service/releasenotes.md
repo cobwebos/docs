@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 152907908f12a41679b3161e0c4b39348926399e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: f2aebee24c4de8a1bd92ad3db8e5d110184cbaee
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373787"
+ms.locfileid: "87415017"
 ---
 # <a name="speech-service-release-notes"></a>语音服务发行说明
 
@@ -28,20 +28,20 @@ ms.locfileid: "87373787"
 - **C #**：添加了对异步会话脚本的支持。 参阅[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-async-conversation-transcription)的文档。  
 - **JavaScript**：添加了对[浏览器](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/browser/speaker-recognition)和[node.js](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/speaker-recognition)的演讲者识别支持。
 - **JavaScript**：添加了对自动语言检测/语言 ID 的支持。 参阅[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-javascript)的文档。
-- **目标-C**：添加了对多设备对话和对话脚本的支持。 
+- **目标-C**：添加了对[多设备对话](https://docs.microsoft.com/azure/cognitive-services/speech-service/multi-device-conversation)和[对话](https://docs.microsoft.com/azure/cognitive-services/speech-service/conversation-transcription)脚本的支持。 
 - **Python**：在 Windows 和 Linux 上添加了适用于 Python 的压缩音频支持。 参阅[此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams)的文档。 
 
 **Bug 修复**
 - **全部**：修复了一个问题，导致 KeywordRecognizer 在识别后不向前移动流。
 - **全部**：修复了一个问题，该问题导致从 KeywordRecognitionResult 获取的流不包含关键字。
 - **全部**：修复了在用户完成等待消息后，SendMessageAsync 实际上不会通过线路发送消息的问题。
-- **全部**：修复了在用户启动多个 VoiceProfileClient：： SpeakerRecEnrollProfileAsync 时，扬声器识别 api 出现故障，并且不会等待它们完成。
+- **全部**：修复了在用户多次调用 VoiceProfileClient：： SpeakerRecEnrollProfileAsync 方法并且未等待调用完成的情况时，发言人识别 api 中的崩溃。
 - **All**：修复了 VoiceProfileClient 和 SpeakerRecognizer 类中的启用文件日志记录。
 - **JavaScript**：修复了浏览器被最小化时的限制[问题](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/74)。
 - **JavaScript**：修复了流上的内存泄漏[问题](https://github.com/microsoft/cognitive-services-speech-sdk-js/issues/78)。
 - **JavaScript**：添加了 NODEJS 的 OCSP 响应的缓存。
 - **Java**：修复了导致 BigInteger 字段总是返回0的问题。
-- **ios**：已修复[，并在](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702)iOS 应用商店中发布基于语音 SDK 的应用。
+- **ios**：修复了在 IOS 应用商店中发布基于语音 SDK 的应用的[问题](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/702)。
 
 **示例**
 - **C + +**：[在此处](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/cpp/windows/console/samples/speaker_recognition_samples.cpp)添加了演讲者识别的示例代码。

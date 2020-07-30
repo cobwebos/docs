@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 628631fb7fddbc07dcb865e3d3badbfb608ad097
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1d033a904087bf8ff32721372209820a64090502
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85214445"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383879"
 ---
 # <a name="query-csv-files"></a>查询 CSV 文件
 
@@ -26,6 +26,72 @@ ms.locfileid: "85214445"
 - 不带引号和带引号的值，以及转义字符
 
 上述所有类型都将在下文中进行介绍。
+
+## <a name="quickstart-example"></a>快速入门示例
+
+`OPENROWSET`函数可以通过提供文件的 URL 来读取 CSV 文件的内容。
+
+### <a name="reading-csv-file"></a>正在读取 csv 文件
+
+查看文件内容的最简单方法 `CSV` 是提供 `OPENROWSET` 函数的文件 URL、指定 csv `FORMAT` 和 2.0 `PARSER_VERSION` 。 如果该文件公开可用，或者您的 Azure AD 标识可以访问此文件，则您应该能够使用如下例所示的查询查看该文件的内容：
+
+```sql
+select top 10 *
+from openrowset(
+    bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.csv',
+    format = 'csv',
+    parser_version = '2.0',
+    firstrow = 2 ) as rows
+```
+
+选项 `firstrow` 用于跳过在这种情况下表示标头的 CSV 文件中的第一行。 请确保可以访问此文件。 如果文件受到 SAS 密钥或自定义标识的保护，则需要为[sql 登录设置服务器级别凭据](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
+
+### <a name="using-data-source"></a>使用数据源
+
+前面的示例使用文件的完整路径。 作为替代方法，可以创建一个外部数据源，其中包含指向存储根文件夹的位置：
+
+```sql
+create external data source covid
+with ( location = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases' );
+```
+
+创建数据源后，可以在函数中使用该数据源和该文件的相对路径 `OPENROWSET` ：
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.csv',
+        data_source = 'covid',
+        format = 'csv',
+        parser_version ='2.0',
+        firstrow = 2
+    ) as rows
+```
+
+如果使用 SAS 密钥或自定义标识来保护数据源，则可以[使用数据库范围凭据配置数据源](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)。
+
+### <a name="explicitly-specify-schema"></a>显式指定架构
+
+`OPENROWSET`使您能够使用子句显式指定要读取的列 `WITH` ：
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.csv',
+        data_source = 'covid',
+        format = 'csv',
+        parser_version ='2.0',
+        firstrow = 2
+    ) with (
+        date_rep date 1,
+        cases int 5,
+        geo_id varchar(6) 8
+    ) as rows
+```
+
+子句中的数据类型后面的数字 `WITH` 表示 CSV 文件中的列索引。
+
+在以下部分中，可以了解如何查询各种类型的 CSV 文件。
 
 ## <a name="prerequisites"></a>先决条件
 

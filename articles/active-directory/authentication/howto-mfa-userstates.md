@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 860616cbea598e40494155e250254b3c607c1173
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2bd688a9e488c1206b0c8531698b061f650e2afe
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027489"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417924"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>启用按用户的 Azure 多重身份验证来保护登录事件
 
@@ -55,7 +55,7 @@ Azure 多重身份验证中的用户帐户具有以下三种不同状态：
 
 1. 以管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择“Azure Active Directory”，然后选择“用户” > “所有用户” 。
-1. 选择“多重身份验证”。 可能需要向右滚动才能看到此菜单选项。 选择以下示例屏幕截图中所示的选项，以查看完整的 Azure 门户窗口和菜单位置：[![](media/howto-mfa-userstates/selectmfa-cropped.png "从 Azure AD 的“用户”窗口中选择“多重身份验证”")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. 选择“多重身份验证”。 可能需要向右滚动才能看到此菜单选项。 选择以下示例屏幕截图，查看完整的 Azure 门户窗口和菜单位置： [ ![ 从 Azure AD 中的 "用户" 窗口中选择 "多重身份验证"。](media/howto-mfa-userstates/selectmfa-cropped.png)](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. 此时会打开一个显示用户状态的新页，如以下示例中所示。
    ![显示了 Azure 多重身份验证的示例用户状态信息的屏幕截图](./media/howto-mfa-userstates/userstate1.png)
 
@@ -80,7 +80,7 @@ Azure 多重身份验证中的用户帐户具有以下三种不同状态：
 
 若要使用 [Azure AD PowerShell](/powershell/azure/) 更改用户状态，请更改用户帐户的 `$st.State` 参数。 用户帐户有三种可能的状态：
 
-* *已启用*
+* *Enabled*
 * *已强制*
 * *已禁用*  
 

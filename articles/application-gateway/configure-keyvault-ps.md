@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.author: victorh
-ms.openlocfilehash: 5e0cb1a5c5c115aa1aaf9697e19631e2142853a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4a872bc63be33ebed0a8ba9d89383cdfc9feef28
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808065"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386276"
 ---
 # <a name="configure-tls-termination-with-key-vault-certificates-using-azure-powershell"></a>使用 Azure PowerShell 和 Key Vault 证书配置 TLS 终止
 
@@ -73,7 +73,7 @@ $certificate = Get-AzKeyVaultCertificate -VaultName $kv -Name "cert1"
 $secretId = $certificate.SecretId.Replace($certificate.Version, "")
 ```
 > [!NOTE]
-> 必须使用 -EnableSoftDelete 标志才能正常运行 TLS 终止。 如果要配置[通过门户实现 Key Vault 软删除](../key-vault/general/overview-soft-delete.md#soft-delete-behavior)，保持期必须为 90 天（默认值）。 应用程序网关尚不支持其他保持期。 
+> 必须使用 -EnableSoftDelete 标志才能正常运行 TLS 终止。 如果要配置[通过门户实现 Key Vault 软删除](../key-vault/general/soft-delete-overview.md#soft-delete-behavior)，保持期必须为 90 天（默认值）。 应用程序网关尚不支持其他保持期。 
 
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 

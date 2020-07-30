@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 07/24/2020
+ms.date: 07/28/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: bf8fa174611c7173c957ded49ff9135f90cebc08
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 839662e496a61ff9a90a6250b417688b91ccaed1
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287217"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382570"
 ---
 # <a name="troubleshoot-azure-rbac"></a>排查 Azure RBAC 的问题
 
@@ -61,7 +61,7 @@ $ras.Count
 
     如果收到错误 "权限不足，无法完成操作"，则很可能是因为 Azure CLI 尝试在 Azure AD 中查找工作负责人标识，并且服务主体在默认情况下无法读取 Azure AD。
 
-    有两种方法可以解决此错误。 第一种方法是将[目录读取器](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)角色分配给服务主体，以便它能够读取目录中的数据。 你还可以在 Microsoft Graph 中授予 "[读取" 权限](https://docs.microsoft.com/graph/permissions-reference)。
+    有两种方法可以解决此错误。 第一种方法是将[目录读取器](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)角色分配给服务主体，以便它能够读取目录中的数据。
 
     解决此错误的第二种方法是使用 `--assignee-object-id` 参数而不是创建角色分配 `--assignee` 。 使用 `--assignee-object-id` 会跳过 Azure AD 查找 Azure CLI。 需要获取要为其分配角色的用户、组或应用程序的对象 ID。 有关详细信息，请参阅[使用 Azure CLI 添加或删除 Azure 角色分配](role-assignments-cli.md#new-service-principal)。
 

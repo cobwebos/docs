@@ -3,12 +3,12 @@ title: 备份 Azure 文件常见问题解答
 description: 本文介绍有关如何使用 Azure 备份服务保护 Azure 文件共享的常见问题解答。
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 134d9520a3c2348b23ec27c6e14eb56468f2002d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c2ef95a6303fd061b1ce486e893ba9812b83e14
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054977"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87382706"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有关如何备份 Azure 文件的问题
 
@@ -34,13 +34,13 @@ ms.locfileid: "87054977"
 
 尝试进行备份时，如果选择一个要发现其中的文件共享的存储帐户，则会将该存储帐户注册到在其中执行此操作的保管库。 如果选择使用其他保管库来保护文件共享，则请从该保管库[注销](manage-afs-backup.md#unregister-a-storage-account)所选存储帐户。
 
+### <a name="why-cant-i-change-the-vault-to-configure-backup-for-the-file-share"></a>为什么无法更改保管库来为文件共享配置备份？
+
+如果已向保管库注册存储帐户，或者使用保管库保护存储帐户中的其他文件共享，则不会为你提供更改此项的选项，因为存储帐户中的所有文件共享仅可通过同一保管库进行保护。 大要更改保管库，需要停止对已连接保管库[的存储帐户中所有文件共享的保护](manage-afs-backup.md#stop-protection-on-a-file-share)，[取消注册](manage-afs-backup.md#unregister-a-storage-account)存储帐户，然后选择其他保管库进行保护。
+
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>是否可以更改将文件共享备份到的保管库？
 
 是的。 但是，需要先在连接的保管库中[停止对文件共享的保护](manage-afs-backup.md#stop-protection-on-a-file-share)，[注销](manage-afs-backup.md#unregister-a-storage-account)此存储帐户，然后在另一保管库中对其进行保护。
-
-### <a name="how-many-azure-file-shares-can-i-protect-in-a-vault"></a>可以在保管库中保护多少 Azure 文件共享？
-
-一个保管库中最多可以保护 50 个存储帐户的 Azure 文件共享。 也可在单个保管库中保护多达 200 个 Azure 文件共享。
 
 ### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>是否可以在不同的保管库中对同一存储帐户中的两个不同的文件共享进行保护？
 

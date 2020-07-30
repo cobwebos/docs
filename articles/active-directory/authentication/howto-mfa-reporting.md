@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9bf76729c3b5844918659283a65eeb347c4237d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c8584ca84efc889afebe6758e254bda845912316
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83639835"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418230"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>使用登录报告查看 Azure 多重身份验证事件
 
@@ -44,7 +44,7 @@ ms.locfileid: "83639835"
 
     事件详细信息的“身份验证详细信息”或“条件访问”选项卡显示状态代码或触发了 MFA 提示的策略 。
 
-    [![](media/howto-mfa-reporting/sign-in-report-cropped.png "Screenshot of example Azure Active Directory sign-ins report in the Azure portal")](media/howto-mfa-reporting/sign-in-report.png#lightbox)
+    [![屏幕截图，其中显示了 Azure 门户中的示例 Azure Active Directory 登录报告](media/howto-mfa-reporting/sign-in-report-cropped.png)](media/howto-mfa-reporting/sign-in-report.png#lightbox)
 
 如果可用，将显示身份验证，如短信、Microsoft Authenticator 应用通知或电话呼叫。
 
@@ -145,8 +145,8 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 | FAILED_INVALID_EXTENSION | 分机号无效 | 分机号包含无效字符。  只允许使用数字、逗号、* 和 #。  还可以使用 @ 前缀。 |
 | FAILED_FRAUD_CODE_ENTERED | 已输入欺诈行为代码 | 用户在通话期间选择举报欺诈行为，导致身份验证被拒绝且电话号码被阻止。| 
 | FAILED_SERVER_ERROR | 无法发出呼叫 | 多重身份验证服务无法发出呼叫。 |
-| FAILED_SMS_NOT_SENT | 无法发送短信 | 无法发送短信。  身份验证被拒绝。 |
-| FAILED_SMS_OTP_INCORRECT | 短信 OTP 不正确 | 用户从收到的短信中输入的一次性密码 (OTP) 不正确。  身份验证被拒绝。 |
+| FAILED_SMS_NOT_SENT | 无法发送短信 | 无法发送短信。 身份验证被拒绝。 |
+| FAILED_SMS_OTP_INCORRECT | 短信 OTP 不正确 | 用户从收到的短信中输入的一次性密码 (OTP) 不正确。 身份验证被拒绝。 |
 | FAILED_SMS_OTP_PIN_INCORRECT | 短信 OTP + PIN 不正确 | 用户输入的一次性密码 (OTP) 和/或用户 PIN 不正确。  身份验证被拒绝。 |
 | FAILED_SMS_MAX_OTP_RETRY_REACHED | 已超出短信 OTP 最大尝试次数 | 用户已超出一次性密码 (OTP) 最大尝试次数。 |
 | FAILED_PHONE_APP_DENIED | 已拒绝移动应用 | 用户通过按“拒绝”按钮，拒绝了在移动应用中进行身份验证。 |

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 06/27/2020
-ms.openlocfilehash: c794b87a88cec20b75923e1f251c1e309a43ef1c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 861fcabbfca07cb342fda42ea2425fa290a1598e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319586"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386446"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>如何在工作区中运行 Jupyter 笔记本
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -150,7 +150,7 @@ Azure 机器学习在创建 *ipynb*文件时创建一个检查点文件   。
 
 1. 选择笔记本工具栏中的“+”。 
 2. 为计算命名，并在“虚拟机大小”中选择一个大小。 
-3. 选择“创建”。
+3. 选择“创建” 。
 4. 计算实例会自动连接到笔记本，现在就可以运行单元格了。
 
 只有本人可以查看和使用自己创建的计算实例。  用户文件与 VM 分开存储，并在工作区中的所有计算实例之间共享。
@@ -185,11 +185,20 @@ Azure 机器学习在创建 *ipynb*文件时创建一个检查点文件   。
 笔记本会自动查找连接的计算实例上安装的所有 Jupyter 内核。  若要向计算实例添加内核，请执行以下步骤：
 
 1. 选择笔记本工具栏中的“[打开终端](#terminal)”。
-1. 使用终端窗口创建新环境。
+1. 使用终端窗口创建新环境。  例如，以下代码将创建 `newenv` ：
+    ```shell
+    conda create --name newenv
+    ```
 1. 激活该环境。  例如，创建 `newenv` 的结果如下：
 
     ```shell
-    source activate newenv
+    conda activate newenv
+    ```
+1. 在新环境中安装 pip 和 ipykernel 包，并为该 conda 环境创建内核
+
+    ```shell
+    conda install pip
+    conda install ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
 

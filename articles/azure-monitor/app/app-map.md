@@ -3,14 +3,13 @@ title: Azure Application Insights 中的应用程序映射 | Microsoft 文档
 description: 使用应用程序映射监视复杂的应用程序拓扑
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.custom: devx-track-javascript
 ms.reviewer: sdash
-ms.openlocfilehash: 7e4035e382aaa3f8b5d2327054a50a5360c60bfa
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b99998a7b1bcb2348a1a73696661de7cf8b44b85
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367004"
+ms.locfileid: "87421291"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -82,9 +81,12 @@ ms.locfileid: "87367004"
 
 ![分析体验的屏幕截图](media/app-map/alerts-view.png)
 
-## <a name="set-cloud-role-name"></a>设置云角色名称
+## <a name="set-or-override-cloud-role-name"></a>设置或重写云角色名称
 
-应用程序映射使用**云角色名称**属性来标识映射上的组件。 Application Insights SDK 会自动将云角色名称属性添加到组件发出的遥测数据。 例如，SDK 会将网站名称或服务角色名称添加到云角色名称属性。 但是，在某些情况下，你可能希望替代默认值。 若要替代云角色名称并更改要在应用程序映射上显示的内容，请如下所示进行操作：
+应用程序映射使用**云角色名称**属性来标识映射上的组件。 若要手动设置或重写云角色名称并更改应用程序映射上显示的内容，请执行以下操作：
+
+> [!NOTE]
+> Application Insights SDK 或代理会自动将云角色名称属性添加到 Azure App Service 环境中由组件发出的遥测。
 
 # <a name="netnetcore"></a>[.NET/.NetCore](#tab/net)
 
@@ -266,7 +268,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 3. 如果将 Azure Functions 与 C# 一起使用，请升级到 [Functions V2](../../azure-functions/functions-versions.md)。
 
-4. 确认[云角色名称](#set-cloud-role-name)已正确配置。
+4. 确认[云角色名称](#set-or-override-cloud-role-name)已正确配置。
 
 5. 如果缺少某个依赖项，请确保它在[自动收集的依赖项](./auto-collect-dependencies.md)列表中。 如果不在其中，也可以使用某个[跟踪依赖项调用](./api-custom-events-metrics.md#trackdependency)手动跟踪它。
 
@@ -282,7 +284,7 @@ appInsights.addTelemetryInitializer((envelope) => {
 
 * 依赖项类型应代表依赖项的逻辑类型。 例如，HTTP、 SQL 或 Azure Blob 就是典型的依赖项类型。 它不应包含唯一 ID。
 
-* [上面的部分](#set-cloud-role-name)介绍了云角色名称的用途。
+* [上面的部分](#set-or-override-cloud-role-name)介绍了云角色名称的用途。
 
 ## <a name="portal-feedback"></a>门户反馈
 

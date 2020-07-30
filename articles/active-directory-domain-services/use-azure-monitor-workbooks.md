@@ -9,22 +9,22 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 879138d882913b8ab43c5689ff72a40e6987c104
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 7d1cd032f6042f57a096c5c8e7624f66a4b01355
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223034"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419591"
 ---
 # <a name="review-security-audit-events-in-azure-active-directory-domain-services-using-azure-monitor-workbooks"></a>使用 Azure Monitor 工作簿查看 Azure Active Directory 域服务中的安全审核事件
 
-为了帮助您了解 Azure Active Directory 域服务 (Azure AD DS) 托管域的状态，您可以启用安全审核事件。 然后，可以使用将文本、分析查询和参数合并到丰富的交互式报表 Azure Monitor 工作簿来查看这些安全审核事件。 Azure AD DS 包括安全概述和帐户活动的工作簿模板，使你能够深入了解审核事件并管理你的环境。
+为了帮助您了解 Azure Active Directory 域服务（Azure AD DS）托管域的状态，您可以启用安全审核事件。 然后，可以使用将文本、分析查询和参数合并到丰富的交互式报表 Azure Monitor 工作簿来查看这些安全审核事件。 Azure AD DS 包括安全概述和帐户活动的工作簿模板，使你能够深入了解审核事件并管理你的环境。
 
 本文介绍如何使用 Azure Monitor 工作簿来查看 Azure AD DS 中的安全审核事件。
 
 ## <a name="before-you-begin"></a>准备阶段
 
-需要拥有以下资源和权限才能完成本文中的操作：
+需有以下资源和特权才能完成本文：
 
 * 一个有效的 Azure 订阅。
     * 如果你没有 Azure 订阅，请[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
@@ -75,7 +75,7 @@ Azure AD DS 包含以下两个工作簿模板：
 
 1. 图表下面的安全性概述报表下半部分将细分所选的活动类型。 可以按右侧所涉及的用户名进行筛选，如以下示例报表所示：
 
-    [![](./media/use-azure-monitor-workbooks/account-lockout-details-cropped.png "Details of account lockouts in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-lockout-details.png#lightbox)
+    [![Azure Monitor 工作簿中的帐户锁定的详细信息。](./media/use-azure-monitor-workbooks/account-lockout-details-cropped.png)](./media/use-azure-monitor-workbooks/account-lockout-details.png#lightbox)
 
 ## <a name="use-the-account-activity-report-workbook"></a>使用 "帐户活动报表" 工作簿
 
@@ -93,7 +93,7 @@ Azure AD DS 包含以下两个工作簿模板：
 
     可以按**帐户用户名**（如*felix*）进行筛选，如以下示例报表所示：
 
-    [![](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png "Account activity report in Azure Monitor Workbooks")](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
+    [![Azure Monitor 工作簿中的 "帐户活动" 报表。](./media/use-azure-monitor-workbooks/account-activity-report-cropped.png)](./media/use-azure-monitor-workbooks/account-activity-report.png#lightbox)
 
     图表下面的区域显示各个登录事件以及活动结果和源工作站等信息。 此信息可帮助确定可能会导致帐户锁定或指示潜在攻击的登录事件的重复源。
 

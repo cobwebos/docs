@@ -4,12 +4,13 @@ description: 使用以太坊的证书颁发机构协会解决方案在 Azure 上
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: d75b5348c49728d2a796257fa4000f6c3a36831d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f0b7d056d37ffb11945a5c50e2705b5d74402007
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124918"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386106"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>在 Azure 上部署以太坊证书颁发机构协会解决方案模板
 
@@ -28,9 +29,9 @@ ms.locfileid: "87124918"
 
 选项 | 服务模型 | 常见用例
 -------|---------------|-----------------
-解决方案模板 | IaaS | 解决方案模板是 Azure 资源管理器模板，可用于预配完全配置的区块链网络拓扑。 模板为给定区块链网络类型部署和配置 Microsoft Azure 计算、网络和存储服务。 提供解决方案模板时没有服务级别协议。 使用[Microsoft 问答&问题页面](/answers/topics/azure-blockchain-workbench.html)获取支持。
+解决方案模板 | IaaS | 解决方案模板是 Azure 资源管理器模板，可用于预配完全配置的区块链网络拓扑。 模板为给定区块链网络类型部署和配置 Microsoft Azure 计算、网络和存储服务。 提供解决方案模板时没有服务级别协议。 使用 [Microsoft Q&A 问题页面](/answers/topics/azure-blockchain-workbench.html)获取支持。
 [Azure 区块链服务](../service/overview.md) | PaaS | Azure 区块链服务预览版简化了联合会区块链网络的构成、管理和监管。 将 Azure 区块链服务用于需要 PaaS、联合会管理或合同和事务隐私的解决方案。
-[Azure Blockchain Workbench](../workbench/overview.md) | IaaS 和 PaaS | Azure Blockchain Workbench 预览版是 Azure 服务和功能的集合，旨在帮助创建和部署区块链应用程序，以便与其他组织共享业务流程和数据。 使用 Azure 区块链工作台为区块链解决方案或区块链应用程序概念证明。 服务级别协议未随 Azure Blockchain Workbench 一起提供。 使用[Microsoft 问答&问题页面](/answers/topics/azure-blockchain-workbench.html)获取支持。
+[Azure Blockchain Workbench](../workbench/overview.md) | IaaS 和 PaaS | Azure Blockchain Workbench 预览版是 Azure 服务和功能的集合，旨在帮助创建和部署区块链应用程序，以便与其他组织共享业务流程和数据。 使用 Azure 区块链工作台为区块链解决方案或区块链应用程序概念证明。 服务级别协议未随 Azure Blockchain Workbench 一起提供。 使用 [Microsoft Q&A 问题页面](/answers/topics/azure-blockchain-workbench.html)获取支持。
 
 ## <a name="solution-architecture"></a>解决方案体系结构
 
@@ -100,7 +101,7 @@ VM 用户名 | 部署的每个 VM 的管理员用户名 | 1-64 字母数字字�
 资源组| 部署联盟网络的资源组。 | myResourceGroup
 位置 | 资源组的 Azure 区域。 | 美国西部 2
 
-选择“确定”。
+选择“确定”  。
 
 ### <a name="deployment-regions"></a>部署区域
 
@@ -114,7 +115,7 @@ VM 用户名 | 部署的每个 VM 的管理员用户名 | 1-64 字母数字字�
 第一个区域 | 部署联盟网络的第一个区域 | 美国西部 2
 第二个区域 | 用于部署联合会网络的第二个区域。 当区域数为2或更大时，其他区域可见。 | 美国东部 2
 
-选择“确定”。
+选择“确定”  。
 
 ### <a name="network-size-and-performance"></a>网络规模和性能
 
@@ -136,7 +137,7 @@ F1|标准 SSD|low|low|high
 D2_v3|标准 SSD|中|中|中
 F16s|高级 SSD|high|high|low
 
-选择“确定”。
+选择“确定”  。
 
 ### <a name="ethereum-settings"></a>Ethereum 设置
 
@@ -155,7 +156,7 @@ F16s|高级 SSD|high|high|low
 区块重新封装时间段（秒） | 网络上没有事务时创建空区块的频率。 较高的频率将加快结束，但会增加存储成本。 | 15
 事务权限协定 | 事务权限协定的字节码。 将智能协定部署和执行限制到以太坊帐户的允许列表。 |
 
-选择“确定”。
+选择“确定”  。
 
 ### <a name="monitoring"></a>监视
 
@@ -167,13 +168,13 @@ F16s|高级 SSD|high|high|low
 ----------|-------------|--------------
 监视 | 启用监视的选项 | 启用
 连接到现有 Azure Monitor 日志 | 用于创建新 Azure Monitor 日志实例或加入现有实例的选项 | 新建
-位置 | 部署新实例的区域 | East US
+位置 | 部署新实例的区域 | 美国东部
 现有 log analytics 工作区 ID （连接到现有 Azure Monitor 日志 = 加入现有的）|现有 Azure Monitor 日志实例的工作区 ID||NA
 现有 log analytics 主密钥（连接到现有 Azure Monitor 日志 = 加入现有的日志）|用于连接到现有 Azure Monitor 日志实例的主键||NA
 
-选择“确定”。
+选择“确定”  。
 
-### <a name="summary"></a>摘要
+### <a name="summary"></a>总结
 
 单击摘要以查看指定的输入，并运行基本的部署前验证。 在部署之前，您可以下载模板和参数。
 
@@ -686,7 +687,7 @@ Truffle 使用迁移脚本将智能协定部署到区块链网络。 需要使�
 
 新部署的 PoA 网络上已启用了 WebAssembly 支持。 它允许以任何转换为 Web-Assembly (Rust、C、C++) 的语言进行智能合同开发。 有关详细信息，请参阅： [WebAssembly 的奇偶校验概述](https://wiki.parity.io/WebAssembly-Home)和[奇偶校验技术教程](https://github.com/paritytech/pwasm-tutorial)
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 ### <a name="i-notice-there-are-many-transactions-on-the-network-that-i-didnt-send-where-are-these-coming-from"></a>我注意到，网络上存在许多未发送的事务。 这些事务来自哪里？
 
@@ -714,7 +715,7 @@ Ether 在权威证明联盟中没有用处。 因此，在 MetaMask 中提交事
 
 ### <a name="are-public-ip-deployments-compatible-with-private-network-deployments"></a>公共 IP 部署是否与专用网络部署兼容？
 
-否。 对等互连需要双向通信，以便整个网络必须是公共的或私有的。
+不能。 对等互连需要双向通信，以便整个网络必须是公共的或私有的。
 
 ### <a name="what-is-the-expected-transaction-throughput-of-proof-of-authority"></a>权威证明的预期事务吞吐量是多少？
 

@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2edf1574784ec93448495086fdd05c988a3e55a7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c28299758150f56e3f47156382d8a6245a0cf52
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090529"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386208"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
 
@@ -122,7 +122,7 @@ ms.locfileid: "87090529"
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault 概述和概念
 
-- [Key Vault 软删除行为](overview-soft-delete.md)）描述允许恢复已删除的对象的功能，不管是有意还是有意删除。
+- [Key Vault 软删除行为](soft-delete-overview.md)）描述允许恢复已删除的对象的功能，不管是有意还是有意删除。
 - [Key Vault 客户端限制](overview-throttling.md)介绍了有关限制的基本概念，并针对应用提供了限制方法。
 - [Key Vault 存储帐户密钥概述](../secrets/overview-storage-keys.md)）介绍 Key Vault 集成 Azure 存储帐户密钥。
 - [Key Vault 安全体系](overview-security-worlds.md)介绍了区域与安全领域之间的关系。

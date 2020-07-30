@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9b6753a0aa9e79624b9b972264611fd31f2bba8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2c706de8a7638c16f3778d0d5295069c13b79d98
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764819"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387262"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>具有应用程序代理的本地应用程序的 SAML 单一登录
 
@@ -47,7 +47,7 @@ ms.locfileid: "84764819"
 
 4. 选择 " **SAML** " 作为 "单一登录方法"。
 
-5. 首先，将 SAML SSO 设置为在公司网络上工作。 在 "**设置 SAML 的单一登录**" 页中，选择 "**基本 SAML 配置**" 标题，并选择其**编辑**图标（铅笔）。 按照[输入基本 SAML 配置](configure-single-sign-on-non-gallery-applications.md#step-1-edit-the-basic-saml-configuration)中的步骤为应用程序配置基于 SAML 的身份验证。
+5. 首先设置 SAML SSO 以便在公司网络上运行，请参阅[配置基于 saml 的单一登录](configure-saml-single-sign-on.md)的基本 saml 配置部分，为应用程序配置基于 saml 的身份验证。
 
 6. 至少将一个用户添加到应用程序，并确保测试帐户有权访问该应用程序。 连接到企业网络时，请使用测试帐户查看应用程序的单一登录。 
 
@@ -81,7 +81,7 @@ ms.locfileid: "84764819"
 
 4. 选中已更新的**回复 URL**旁边的复选框以将其标记为默认值。
 
-   * Aftering 将必需的**回复 url**标记为默认值，则还可以删除以前配置的使用内部 URL 的**回复 url** 。
+   * 将所需的**回复 url**标记为默认值后，还可以删除以前配置的使用内部 URL 的**回复 url** 。
 
    * 对于 SP 启动的流，请确保后端应用程序指定了正确的**回复 URL**或断言使用者服务 URL 以便接收身份验证令牌。
 

@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: aea093cbbb59824973c351f6df23113e1b51ab69
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7e93772a77ac1edb88c8e1a56c8db216c6e9fbd3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319858"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420101"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft 商业应用商店中的专用产品/服务
 
@@ -43,6 +43,9 @@ ms.locfileid: "87319858"
 
 对于*仅包含私有计划的新产品*/服务，发布者可以创建其产品/服务作为任何其他产品/服务，然后将计划标记为私有。 仅具有私有计划的产品/服务将无法通过 Microsoft 商用 marketplace 或不与产品/服务关联的客户的[Azure 门户](https://azure.microsoft.com/features/azure-portal/)来发现或访问。
 
+>[!NOTE]
+>仅包含私有计划的产品/服务将不会显示在公共 Azure Marketplace 或 AppSource 中。
+
 ## <a name="targeting-customers-with-private-offers"></a>将客户定位到专用产品/服务
 
 对于新的和现有的专用套餐，发布者可以使用订阅标识符来确定目标客户。 使用虚拟机或 Azure 应用程序产品/服务的发布者可以将私有计划的可用性限制为单个 Azure 订阅 ID，或上传最多20000个 Azure 订阅 Id 的 CSV。 使用 SaaS 应用专用产品/服务时，发布者可以使用手动或 CSV 上传方法关联租户 ID，以限制私有计划的可用性。
@@ -61,6 +64,7 @@ ms.locfileid: "87319858"
 
 >[!Note]
 >通过云解决方案提供商（CSP）计划的经销商建立的订阅不支持专用产品/服务。
+
 
 <!---
 ## Next steps

@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: kenwith
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a0b63c130d7d1e72bd3320e40213ae3cb1069a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 264d4afb50904be17624f8801b7b79fe4b232030
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763238"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386803"
 ---
 # <a name="create-an-azure-tenant-for-a-multi-tenant-application"></a>为多租户应用程序创建 Azure 租户  
 
@@ -37,7 +37,7 @@ Azure Active Directory 在多个版本中可用。 [请参阅详细功能比较]
 
    a. **对于 OIDC 或 Oath 应用**程序，请将[应用程序注册](../develop/quickstart-register-app.md)为多租户应用程序。 在 "受支持的帐户类型" 中选择 "任何组织目录和个人 Microsoft 帐户中的帐户" 选项
 
-   b. **对于基于 saml 和 ws-federation 的应用程序**，可以使用 Azure AD 中的通用 SAML 模板来[配置基于 saml 的单一登录](configure-single-sign-on-non-gallery-applications.md)应用程序。
+   b. **对于基于 saml 和 ws-federation 的应用程序**，可以使用 Azure AD 中的通用 SAML 模板来[配置基于 saml 的单一登录](configure-saml-single-sign-on.md)应用程序。
 
 如果需要，还可以[将单租户应用程序转换为多租户应用程序](../develop/howto-convert-app-to-be-multi-tenant.md)。
 
