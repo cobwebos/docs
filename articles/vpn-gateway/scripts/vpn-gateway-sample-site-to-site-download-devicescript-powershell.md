@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/09/2020
 ms.author: yushwang
-ms.openlocfilehash: 11906dfa8a3d7c49b71ff1cdcc51d8ae5c6cbdc6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8c0be71f5ffe82f6b6e1cb607baf070c499bd46f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75862404"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077245"
 ---
 # <a name="download-vpn-device-template-using-powershell"></a>使用 PowerShell 下载 VPN 设备模板
 
@@ -55,4 +55,4 @@ Remove-AzResourceGroup -Name TestRG1
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。

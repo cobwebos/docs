@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: e76b0912a2862ecf49fb4b06e15285db50a0442a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 57e0d356ce6bedfd5e6a9bf1e576ec154e8d5802
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509437"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082301"
 ---
 # <a name="create-a-virtual-machine-with-powershell"></a>使用 PowerShell 创建虚拟机
 
@@ -53,6 +53,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。
 
 可以在 [Azure Windows VM 文档](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中找到其他虚拟机 PowerShell 脚本示例。

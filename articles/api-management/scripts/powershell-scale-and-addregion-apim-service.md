@@ -12,12 +12,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 50696296e0b0a3ad3eb3a42c026d783bd46f3ede
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: a880bf617f4d1d81b73fda1fbe27d2dd803619a0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253008"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87008806"
 ---
 # <a name="scale-the-service-instance"></a>缩放服务实例
 
@@ -43,6 +43,6 @@ Remove-AzResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。
 
 可以在 [PowerShell 示例](../powershell-samples.md)中找到 Azure API 管理的其他 Azure Powershell 示例。

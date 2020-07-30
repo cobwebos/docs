@@ -5,15 +5,15 @@ author: bandersmsft
 ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 04/10/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: b1986a4cb59e0f276ba59eb99acfb459b48615d8
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 1b63b0316b8314e4c5107ddd3f1d22c1d59cbb08
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81262073"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281797"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>通过 Azure 计费和成本管理来防止意外费用
 
@@ -196,11 +196,11 @@ Azure 帐单按计量器聚合了每月的费用。  计量器用于跟踪某个
 
 ### <a name="review-invoiced-charges-in-cost-analysis"></a>在成本分析中查看已开票费用
 
-若要在 Azure 门户中查看发票详细信息，请导航到“成本分析”以查找与要分析的发票相关的范围。 选择“发票详细信息”  视图。 发票详细信息将显示发票上的费用。
+若要在 Azure 门户中查看发票详细信息，请导航到“成本分析”，查找与要分析的发票相关的范围。 选择“发票详细信息”视图。 发票详细信息会显示发票上的费用。
 
 [![显示发票详细信息的示例](./media/getting-started/invoice-details.png)](./media/getting-started/invoice-details.png#lightbox)
 
-可以通过查看发票详细信息，在成本分析中确定具有意外成本的服务，并确定与该资源直接关联的资源。 例如，若要分析虚拟机服务的费用，请导航到“累计成本”  视图。 然后，将粒度设为“每日”  并筛选费用“服务名称:  虚拟机”，然后按“资源”  将费用分组。
+查看发票详细信息即可在成本分析中确定具有意外成本的服务，并确定与该资源直接关联的资源。 例如，若要分析虚拟机服务的费用，请导航到“累计成本”视图。 然后，将粒度设为“每日”并筛选费用“服务名称:虚拟机”费用，然后按“资源”将费用分组。
 
 [![显示虚拟机累计成本的示例](./media/getting-started/virtual-machines.png)](./media/getting-started/virtual-machines.png#lightbox)
 
@@ -217,8 +217,8 @@ Azure 帐单按计量器聚合了每月的费用。  计量器用于跟踪某个
 
 - 计算小时数
 - IP 地址小时数
-- 入站数据传输
-- 出站数据传输
+- 数据传入
+- 数据发送
 - 标准托管磁盘
 - 标准托管磁盘操作数
 - 标准 IO 磁盘

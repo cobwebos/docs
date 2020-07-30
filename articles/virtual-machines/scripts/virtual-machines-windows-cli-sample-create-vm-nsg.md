@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc
-ms.openlocfilehash: 2cf571d0c965e308ef18cdc1be1eb9fc5797e782
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: 9c447fbeaebcb827a88d19a03dbede24712b678d
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81459485"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87082454"
 ---
 # <a name="secure-network-traffic-between-virtual-machines"></a>保护虚拟机之间的网络流量
 
@@ -46,18 +46,18 @@ az group delete --name myResourceGroup --yes
 
 此脚本使用以下命令创建资源组、虚拟机和所有相关资源。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 注释 |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group) | 创建用于存储所有资源的资源组。 |
-| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | 创建 Azure 虚拟网络和子网。 |
-| [az network vnet subnet create](https://docs.microsoft.com/cli/azure/network/vnet/subnet) | 创建子网。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
-| [az network nsg rule update](https://docs.microsoft.com/cli/azure/network/nsg/rule) | 更新 NSG 规则。 在本例中，将更新后端规则，仅从前端子网传递流量。 |
-| [az network nsg rule list](https://docs.microsoft.com/cli/azure/network/nsg/rule) | 返回有关网络安全组规则的信息。 在此示例中，规则名称存储在变量中，以便以后在脚本中使用。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | 删除资源组，包括所有嵌套的资源。 |
+| [az group create](/cli/azure/group) | 创建用于存储所有资源的资源组。 |
+| [az network vnet create](/cli/azure/network/vnet) | 创建 Azure 虚拟网络和子网。 |
+| [az network vnet subnet create](/cli/azure/network/vnet/subnet) | 创建子网。 |
+| [az vm create](/cli/azure/vm) | 创建虚拟机并将其连接到网卡、虚拟网络、子网和 NSG。 此命令还指定要使用的虚拟机映像和管理凭据。  |
+| [az network nsg rule update](/cli/azure/network/nsg/rule) | 更新 NSG 规则。 在本例中，将更新后端规则，仅从前端子网传递流量。 |
+| [az network nsg rule list](/cli/azure/network/nsg/rule) | 返回有关网络安全组规则的信息。 在此示例中，规则名称存储在变量中，以便以后在脚本中使用。 |
+| [az group delete](/cli/azure/vm/extension) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure)。
 
 可以在 [Azure Windows VM 文档](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中找到其他虚拟机 CLI 脚本示例。

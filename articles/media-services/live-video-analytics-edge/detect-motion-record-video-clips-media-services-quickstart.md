@@ -3,12 +3,12 @@ title: 检测运动，将视频录制到 Azure 媒体服务
 description: 本快速入门演示如何使用 IoT Edge 上的实时视频分析功能来检测实时视频流中的运动，并将视频剪辑录制到 Azure 媒体服务。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 0a81bebe7333266e1b70f97f8c712fccf392a464
-ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
+ms.openlocfilehash: 24bf958c7a6af25d64d8c2884b9fa259c67e39c3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84817320"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87074401"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>快速入门：检测运动，将视频录制到媒体服务
 
@@ -655,7 +655,7 @@ ms.locfileid: "84817320"
 
 请注意上述消息中的以下属性
 
-* 每条消息都包含“正文”部分和“applicationProperties”部分。 若要理解这些部分的内容，请阅读[创建和读取 IoT 中心消息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)一文。
+* 每条消息都包含“正文”部分和“applicationProperties”部分。 若要理解这些部分的内容，请阅读[创建和读取 IoT 中心消息](../../iot-hub/iot-hub-devguide-messages-construct.md)一文。
 * 第一条消息是诊断事件 (MediaSessionEstablished)，表示 RTSP源节点（使用者）能够与 RTSP 模拟器建立连接，并开始接收（模拟的）实时源。
 * ApplicationProperties 中的“subject”引用生成消息的图形拓扑中的节点。 在本例中，该消息来自 RTSP 源节点。
 * applicationProperties 中的“eventType”指示这是诊断事件。

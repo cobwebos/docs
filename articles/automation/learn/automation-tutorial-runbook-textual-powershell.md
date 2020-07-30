@@ -6,12 +6,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: e7c73bf45adba0638074b9d2ab1bab28970ed9b8
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: a1b0dff9421f493958554c659043c49ff2874379
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185426"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87014994"
 ---
 # <a name="tutorial-create-a-powershell-runbook"></a>教程：创建 PowerShell Runbook
 
@@ -51,13 +51,13 @@ PowerShell Runbook 与 PowerShell 工作流 Runbook 具有相同的生命周期�
 
 1. 在 Azure 门户中，打开自动化帐户。
 
-2. 在“流程自动化”下选择“Runbook”，以打开 Runbook 的列表。 
+2. 在“流程自动化”下选择“Runbook”，以打开 Runbook 的列表。
 
 3. 选择“创建 Runbook”，创建一个新的 Runbook。
 
 4. 将该 Runbook 命名为 **MyFirstRunbook-PowerShell**。
 
-5. 在本例中，我们将创建一个 [PowerShell Runbook](../automation-runbook-types.md#powershell-runbooks)。 对于“Runbook 类型”，请选择“PowerShell”。 
+5. 在本例中，我们将创建一个 [PowerShell Runbook](../automation-runbook-types.md#powershell-runbooks)。 对于“Runbook 类型”，请选择“PowerShell”。
 
 6. 单击“创建”以创建 Runbook 并打开文本编辑器  。
 
@@ -144,15 +144,15 @@ PowerShell Runbook 与 PowerShell 工作流 Runbook 具有相同的生命周期�
 
    # Wrap authentication in retry logic for transient network failures
    $logonAttempt = 0
-   while(!($connectionResult) -And ($logonAttempt -le 10))
+   while(!($connectionResult) -and ($logonAttempt -le 10))
    {
        $LogonAttempt++
        # Logging in to Azure...
-       $connectionResult =    Connect-AzAccount `
-                                  -ServicePrincipal `
-                                  -Tenant $connection.TenantID `
-                                  -ApplicationId $connection.ApplicationID `
-                                  -CertificateThumbprint $connection.CertificateThumbprint
+       $connectionResult = Connect-AzAccount `
+                               -ServicePrincipal `
+                               -Tenant $connection.TenantID `
+                               -ApplicationId $connection.ApplicationID `
+                               -CertificateThumbprint $connection.CertificateThumbprint
 
        Start-Sleep -Seconds 30
    }
@@ -174,15 +174,15 @@ PowerShell Runbook 与 PowerShell 工作流 Runbook 具有相同的生命周期�
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
 
-   while(!($connectionResult) -And ($logonAttempt -le 10))
+   while(!($connectionResult) -and ($logonAttempt -le 10))
    {
        $LogonAttempt++
        # Logging in to Azure...
-       $connectionResult =    Connect-AzAccount `
-                                  -ServicePrincipal `
-                                  -Tenant $connection.TenantID `
-                                  -ApplicationId $connection.ApplicationID `
-                                  -CertificateThumbprint $connection.CertificateThumbprint
+       $connectionResult = Connect-AzAccount `
+                               -ServicePrincipal `
+                               -Tenant $connection.TenantID `
+                               -ApplicationId $connection.ApplicationID `
+                               -CertificateThumbprint $connection.CertificateThumbprint
 
        Start-Sleep -Seconds 30
    }
@@ -205,15 +205,15 @@ PowerShell Runbook 与 PowerShell 工作流 Runbook 具有相同的生命周期�
    Disable-AzContextAutosave –Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
-   while(!($connectionResult) -And ($logonAttempt -le 10))
+   while(!($connectionResult) -and ($logonAttempt -le 10))
    {
        $LogonAttempt++
        # Logging in to Azure...
-       $connectionResult =    Connect-AzAccount `
-                                  -ServicePrincipal `
-                                  -Tenant $connection.TenantID `
-                                  -ApplicationId $connection.ApplicationID `
-                                  -CertificateThumbprint $connection.CertificateThumbprint
+       $connectionResult = Connect-AzAccount `
+                               -ServicePrincipal `
+                               -Tenant $connection.TenantID `
+                               -ApplicationId $connection.ApplicationID `
+                               -CertificateThumbprint $connection.CertificateThumbprint
 
        Start-Sleep -Seconds 30
    }
@@ -240,15 +240,15 @@ Runbook 当前会启动已在 Runbook 中硬编码的虚拟机。 如果在启�
    Disable-AzContextAutosave –Scope Process
 
    $connection = Get-AutomationConnection -Name AzureRunAsConnection
-   while(!($connectionResult) -And ($logonAttempt -le 10))
+   while(!($connectionResult) -and ($logonAttempt -le 10))
    {
        $LogonAttempt++
        # Logging in to Azure...
-       $connectionResult =    Connect-AzAccount `
-                                  -ServicePrincipal `
-                                  -Tenant $connection.TenantID `
-                                  -ApplicationId $connection.ApplicationID `
-                                  -CertificateThumbprint $connection.CertificateThumbprint
+       $connectionResult = Connect-AzAccount `
+                               -ServicePrincipal `
+                               -Tenant $connection.TenantID `
+                               -ApplicationId $connection.ApplicationID `
+                               -CertificateThumbprint $connection.CertificateThumbprint
 
        Start-Sleep -Seconds 30
    }
@@ -266,7 +266,7 @@ Runbook 当前会启动已在 Runbook 中硬编码的虚拟机。 如果在启�
 
 6. 单击“启动”以启动 Runbook **ResourceGroupName** 。 
 
-7. 键入要启动的虚拟机的“VMNAME”和“RESOURCEGROUPNAME”值，然后单击“确定”。  
+7. 键入要启动的虚拟机的“VMNAME”和“RESOURCEGROUPNAME”值，然后单击“确定”。
 
     ![传递参数](../media/automation-tutorial-runbook-textual-powershell/automation-pass-params.png)
 

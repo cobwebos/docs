@@ -4,15 +4,15 @@ description: 通过将合作伙伴 ID 链接到用于管理客户资源的用户
 author: dhirajgandhi
 ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 05/04/2020
+ms.date: 07/24/2020
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.openlocfilehash: 77abfcf300decb3a19da4268d7feb7de1f41f3b5
-ms.sourcegitcommit: 24f31287b6a526e23ff5b5469113522d1ccd4467
+ms.topic: how-to
+ms.openlocfilehash: 343db06ba658f31c258d2a63c4a52aa86993c1cd
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84743909"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281780"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户
 

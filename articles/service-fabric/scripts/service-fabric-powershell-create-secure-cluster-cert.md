@@ -14,12 +14,12 @@ ms.topic: sample
 ms.date: 01/19/2018
 ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: f8e1a0ca86f9346cf07c87a738d48cb56f6d7d57
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f6b900bba178d4180d48ed3b89ec1e4d6cb49d7b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75614768"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076112"
 ---
 # <a name="create-a-service-fabric-cluster"></a>创建 Service Fabric 群集
 
@@ -27,7 +27,7 @@ ms.locfileid: "75614768"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell，并运行 `Connect-AzAccount` 创建与 Azure 的连接。 
+必要时，请使用 [Azure PowerShell 指南](/powershell/azure/)中的说明安装 Azure PowerShell，并运行 `Connect-AzAccount` 创建与 Azure 的连接。 
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -52,6 +52,6 @@ Remove-AzResourceGroup -Name $groupname -Force
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。
 
 可以在 [Azure PowerShell 示例](../service-fabric-powershell-samples.md)中找到 Azure Service Fabric 的其他 Azure Powershell 示例。

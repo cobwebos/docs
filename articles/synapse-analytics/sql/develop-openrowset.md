@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a03c031f8874471794f2533285ce65b395d43c2d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b7b8a0d98db1411a08afdb33fa272bb7e6d6313e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86241992"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280471"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>如何使用 SQL 按需版本（预览版）中的 OPENROWSET
 
@@ -30,8 +30,8 @@ Synapse SQL 中的 OPENROWSET 函数从数据源读取文件的内容。 数据�
 
     ```sql
     SELECT *
-    FROM OPENROWSET(BULK 'http://storage..../container/folder/*.parquet',
-                    TYPE = 'PARQUET') AS file
+    FROM OPENROWSET(BULK 'http://<storage account>.dfs.core.windows.net/container/folder/*.parquet',
+                    FORMAT = 'PARQUET') AS file
     ```
 
 这是一种无需预先配置即可读取文件内容的简单快捷方法。 有了此选项，就可以使用基本身份验证选项来访问存储（使用 Azure AD 直通身份验证进行 Azure AD 登录，使用 SAS 令牌进行 SQL 登录）。 
@@ -42,7 +42,7 @@ Synapse SQL 中的 OPENROWSET 函数从数据源读取文件的内容。 数据�
     SELECT *
     FROM OPENROWSET(BULK '/folder/*.parquet',
                     DATA_SOURCE='storage', --> Root URL is in LOCATION of DATA SOURCE
-                    TYPE = 'PARQUET') AS file
+                    FORMAT = 'PARQUET') AS file
     ```
 
 

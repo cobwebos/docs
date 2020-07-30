@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/06/2020
+ms.date: 07/20/2020
 ms.author: aahi
 ms.custom: tracking-python
-ms.openlocfilehash: feababd3d6f6845142a13ccb3b2b31b78315704b
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 99c22edac7acefe3ec34ff40e892a7071b932ada
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027937"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013804"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 Python REST API 调用文本分析认知服务 
 <a name="HOLTop"></a>
@@ -298,7 +298,7 @@ pprint(key_phrases)
 若要标识文本文档中的已知实体（人物、位置和事物），请将 `/text/analytics/v3.0/entities/recognition/general` 追加到文本分析基终结点，形成语言检测 URL。 例如： `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
     
 ```python
-entities_url = endpoint + "/text/analytics/v3.0/entities/recognition/general/recognition/general"
+entities_url = endpoint + "/text/analytics/v3.0/entities/recognition/general"
 ```
 
 创建文档集合，就像以前的示例一样。 

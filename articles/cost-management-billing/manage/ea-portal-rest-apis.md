@@ -3,16 +3,16 @@ title: Azure Enterprise REST API
 description: 本文介绍可用于 Azure 企业注册的 REST API。
 author: bandersmsft
 ms.author: banders
-ms.date: 06/01/2020
+ms.date: 07/13/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: d28c145f4b0bb373e7a6933420dcbc749d3a428d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 06848ee18b610c6199d7add720c7ffb386aa4633
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298085"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87075136"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise REST API
 

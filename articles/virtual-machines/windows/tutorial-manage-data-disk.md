@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c9f514b70eda7d74950576a1a6f3a1199cddb232
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9f7f3e0dfd7da98cade0183825463c6b17f49dc1
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82100322"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077453"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>教程 - 使用 Azure PowerShell 管理 Azure 磁盘
 
@@ -36,11 +36,11 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 ## <a name="default-azure-disks"></a>默认 Azure 磁盘
 
-创建 Azure 虚拟机后，会自动向此虚拟机附加两个磁盘。 
+创建 Azure 虚拟机后，将自动向此虚拟机附加两个磁盘。 
 
 **操作系统磁盘** - 操作系统磁盘大小最大可达 4 TB，并可托管 VM 操作系统。 如果从 [Azure 市场](https://azure.microsoft.com/marketplace/)映像创建新的虚拟机 (VM)，通常为 127 GB（但某些映像的 OS 磁盘更小）。 OS 磁盘默认分配有一个 C: 驱动器号。 已针对 OS 性能优化了 OS 磁盘的磁盘缓存配置。 OS 磁盘不得承载应用程序或数据。 对于应用程序和数据，请使用数据磁盘，详情请参见本文稍后部分。
 
-临时磁盘- 临时磁盘使用 VM 所在的 Azure 主机上的固态驱动器。 临时磁盘具有高性能，可用于临时数据处理等操作。 但是，如果将 VM 移动到新的主机，临时磁盘上存储的数据都会被删除。 临时磁盘的大小由 [VM 大小](sizes.md)决定。 临时磁盘默认分配有一个 D: 驱动器号。
+临时磁盘- 临时磁盘使用 VM 所在的 Azure 主机上的固态驱动器。 临时磁盘具有高性能，可用于临时数据处理等操作。 但是，如果将 VM 移动到新的主机，临时磁盘上存储的数据都将被删除。 临时磁盘的大小由 [VM 大小](sizes.md)决定。 临时磁盘默认分配有一个 D: 驱动器号。
 
 ## <a name="azure-data-disks"></a>Azure 数据磁盘
 
@@ -61,12 +61,12 @@ Azure 提供两种类型的磁盘。
 
 ## <a name="create-and-attach-disks"></a>创建并附加磁盘
 
-若要完成本教程中的示例，必须具备现有虚拟机。 需要时，使用以下命令创建虚拟机。
+若要完成本教程中的示例，必须现有一个虚拟机。 需要时，使用以下命令创建虚拟机。
 
-使用 [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) 设置虚拟机上管理员帐户所需的用户名和密码：
+使用 [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1) 设置虚拟机上管理员帐户所需的用户名和密码：
 
 
-使用 [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) 创建虚拟机。 系统将提示你输入 VM 的管理员帐户的用户名和密码。
+使用 [New-AzVM](/powershell/module/az.compute/new-azvm) 创建虚拟机。 系统将提示你输入 VM 的管理员帐户的用户名和密码。
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -80,7 +80,7 @@ New-AzVm `
 ```
 
 
-使用 [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) 创建初始配置。 以下示例配置大小为 128 GB 的磁盘。
+使用 [New-AzDiskConfig](/powershell/module/az.compute/new-azdiskconfig) 创建初始配置。 以下示例配置大小为 128 GB 的磁盘。
 
 ```azurepowershell-interactive
 $diskConfig = New-AzDiskConfig `
@@ -89,7 +89,7 @@ $diskConfig = New-AzDiskConfig `
     -DiskSizeGB 128
 ```
 
-使用 [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-Azdisk) 命令创建数据磁盘。
+使用 [New-AzDisk](/powershell/module/az.compute/new-azdisk) 命令创建数据磁盘。
 
 ```azurepowershell-interactive
 $dataDisk = New-AzDisk `
@@ -98,13 +98,13 @@ $dataDisk = New-AzDisk `
     -Disk $diskConfig
 ```
 
-使用 [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) 命令获取要向其添加数据磁盘的虚拟机。
+使用 [Get-AzVM](/powershell/module/az.compute/get-azvm) 命令获取要向其添加数据磁盘的虚拟机。
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName "myResourceGroupDisk" -Name "myVM"
 ```
 
-使用 [Add-AzVMDataDisk](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) 命令向虚拟机配置添加数据磁盘。
+使用 [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk) 命令向虚拟机配置添加数据磁盘。
 
 ```azurepowershell-interactive
 $vm = Add-AzVMDataDisk `
@@ -115,7 +115,7 @@ $vm = Add-AzVMDataDisk `
     -Lun 1
 ```
 
-使用 [Update-AzVM](https://docs.microsoft.com/powershell/module/az.compute/add-azvmdatadisk) 命令更新虚拟机。
+使用 [Update-AzVM](/powershell/module/az.compute/add-azvmdatadisk) 命令更新虚拟机。
 
 ```azurepowershell-interactive
 Update-AzVM -ResourceGroupName "myResourceGroupDisk" -VM $vm
@@ -171,4 +171,4 @@ VirtualHardDisk :
 转到下一教程，了解如何自动配置 VM。
 
 > [!div class="nextstepaction"]
-> [自动配置 VM](./tutorial-automate-vm-deployment.md)
+> [自动执行 VM 配置](./tutorial-automate-vm-deployment.md)
