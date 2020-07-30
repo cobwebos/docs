@@ -4,12 +4,12 @@ description: Azure 区块链服务概述
 ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: ravastra
-ms.openlocfilehash: d7aedbc837a58a65fe4c29dbdeed8662d94fc534
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 2a28baeb6de3c8ca1e8ad89e11d45b492f33588c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85214071"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076948"
 ---
 # <a name="what-is-azure-blockchain-service"></a>什么是 Azure 区块链服务？
 
@@ -29,11 +29,11 @@ Azure 区块链服务旨在支持多种账本协议。 当前，该服务使用[
 
 ### <a name="performance-and-service-tiers"></a>性能和服服务层级
 
-Azure 区块链服务提供两种服务层：“基本”和“标准”** **。 每层都提供不同的性能和功能，以支持轻量级开发和测试工作负载，直至大规模的生产区块链部署。 使用“基本”** 层进行开发、测试和概念证明。 使用“标准”** 层进行生产级部署。 这两层均包括至少一个事务节点、一个验证器节点（基本）或两个验证器节点（标准）。 
+Azure 区块链服务提供两种服务层：“基本”和“标准” 。 每层都提供不同的性能和功能，以支持轻量级开发和测试工作负载，直至大规模的生产区块链部署。 使用“基本”层进行开发、测试和概念证明。 使用“标准”层进行生产级部署。 这两层均包括至少一个事务节点、一个验证器节点（基本）或两个验证器节点（标准）。 
 
 ![定价层](./media/overview/pricing-tiers.png)
 
-除了提供两个验证器节点之外，“标准层”还为每个事务和验证器节点提供了 2 个 vCore，而“基本”层提供 1 个 vCore 配置** **。**  通过为事务和验证器节点提供 2 个 vCore，1 个 vCore 可以专用于 Quorum 账本，而另 1 个 vCore 可以用于其他与基础结构相关的服务，从而确保生产区块链工作负载的性能达到最优。 有关定价详细信息的更多信息，请参阅 [Azure 区块链服务定价](https://azure.microsoft.com/pricing/details/blockchain-service)。
+除了提供两个验证器节点之外，“标准层”还为每个事务和验证器节点提供了 2 个 vCore，而“基本”层提供 1 个 vCore 配置 。  通过为事务和验证器节点提供 2 个 vCore，1 个 vCore 可以专用于 Quorum 账本，而另 1 个 vCore 可以用于其他与基础结构相关的服务，从而确保生产区块链工作负载的性能达到最优。 有关定价详细信息的更多信息，请参阅 [Azure 区块链服务定价](https://azure.microsoft.com/pricing/details/blockchain-service)。
 
 ### <a name="security-and-maintenance"></a>安全性和维护
 
@@ -75,7 +75,7 @@ Azure 区块链服务提供两种服务层：“基本”和“标准”** **。
 
 与 Microsoft 工程师和 Azure 区块链社区专家交流。
 
-* [有关 Azure Blockchain 服务的 Microsoft Q&A 问题页面](https://docs.microsoft.com/answers/topics/azure-blockchain-service.html)
+* [有关 Azure Blockchain 服务的 Microsoft Q&A 问题页面](/answers/topics/azure-blockchain-service.html)
 * [Microsoft 技术社区](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/AzureBlockchainService)
 

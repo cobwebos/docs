@@ -7,19 +7,18 @@ ms.service: application-gateway
 ms.topic: sample
 ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 57df87f6cc101f4cc097b464d93238d3b868c93b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0df0ace18e39a3920354e6c713843adc55bf1394
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74129785"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086891"
 ---
 # <a name="azure-cli-examples-for-azure-application-gateway"></a>Azure 应用程序网关的 Azure CLI 示例
 
 下表包含 Azure 应用程序网关的 Azure CLI 脚本示例的链接。
 
-| | |
-|---|---|
+| 示例 | 说明 |
+|-------- | ----------- |
 | [管理 Web 流量](./scripts/create-vmss-cli.md) | 创建应用程序网关和所有相关资源。 |
 | [限制 Web 流量](./scripts/create-vmss-waf-cli.md) | 创建使用 OWASP 规则限制流量的应用程序网关。|
-| | |

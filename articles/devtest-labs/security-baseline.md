@@ -3,12 +3,12 @@ title: Azure 开发测试实验室的 azure 安全基准
 description: Azure 开发测试实验室的 azure 安全基准
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 47adca5867fef1d41ccfec2455acc6932269842d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7f0dc1fb18740e2b0611b5954821a5ceda2d2657
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282273"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387823"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure 开发测试实验室的 azure 安全基准
 
@@ -547,7 +547,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 **指南：** 当你通过 Azure 备份来备份托管磁盘时，虚拟机将以存储服务加密（SSE）加密。 Azure 备份还可以备份使用 Azure 磁盘加密进行加密的 Azure VM。 Azure 磁盘加密与在 Key Vault 中作为机密受到保护的 BitLocker 加密密钥 (BEK) 相集成。 Azure 磁盘加密还与 Azure Key Vault 密钥加密密钥 (KEK) 相集成。 在 Key Vault 中启用软删除，以防意外或恶意删除密钥。
 
 - [VM 的软删除](../backup/soft-delete-virtual-machines.md)
-- [Azure Key Vault-软删除概述](../key-vault/general/overview-soft-delete.md)
+- [Azure Key Vault-软删除概述](../key-vault/general/soft-delete-overview.md)
 
 **Azure 安全中心监视：** 是的
 
