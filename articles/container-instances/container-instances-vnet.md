@@ -4,12 +4,13 @@ description: 了解如何使用 Azure 命令行接口将容器组部署到新的
 ms.topic: article
 ms.date: 07/02/2020
 ms.author: danlep
-ms.openlocfilehash: c5a0e15b2e65be45e7f77e401b912ef7b784519b
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-javascript
+ms.openlocfilehash: f1678dee9c43d2ce9652018f0d09fe1738659f54
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169589"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407143"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>将容器实例部署到 Azure 虚拟网络
 

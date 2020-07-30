@@ -4,12 +4,12 @@ description: 了解如何针对不同情况自定义应用服务中的身份验�
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5b217bb1052a16ded205ac216878945fb960d32d
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 747729b7cbb3dcce72eb36704b5965e8427b59e1
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86205576"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424250"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
 
@@ -24,7 +24,7 @@ ms.locfileid: "86205576"
 * [如何将应用配置为使用 Google 登录](configure-authentication-provider-google.md)
 * [How to configure your app to use Microsoft Account login](configure-authentication-provider-microsoft.md)
 * [如何将应用配置为使用 Twitter 登录](configure-authentication-provider-twitter.md)
-* [如何将应用配置为使用 OpenID Connect 提供程序登录 (预览) ](configure-authentication-provider-openid-connect.md)
+* [如何将应用配置为使用 OpenID Connect 提供程序（预览版）登录](configure-authentication-provider-openid-connect.md)
 
 ## <a name="use-multiple-sign-in-providers"></a>使用多个登录提供程序
 
@@ -130,7 +130,7 @@ az webapp auth update --name <app_name> --resource-group <group_name> --allowed-
 
 ## <a name="preserve-url-fragments"></a>保留 URL 片段
 
-用户登录应用后，通常希望会重定向到同一页面的同一部分，例如 `/wiki/Main_Page#SectionZ`。 不过，由于[URL 片段](https://wikipedia.org/wiki/Fragment_identifier) (例如， `#SectionZ`) 永远不会发送到服务器，因此，在 OAuth 登录完成后，默认情况下不保留它们，并重定向回你的应用程序。 然后，当用户需再次导航到所需定位点时，他们无法获得最佳体验。 此限制存在于所有服务器端身份验证解决方案中。
+用户登录应用后，通常希望会重定向到同一页面的同一部分，例如 `/wiki/Main_Page#SectionZ`。 但是，由于[URL 片段](https://wikipedia.org/wiki/Fragment_identifier)（例如 `#SectionZ` ）从不发送到服务器，因此默认情况下，在 OAuth 登录完成后不会保留它们，并重定向回你的应用程序。 然后，当用户需再次导航到所需定位点时，他们无法获得最佳体验。 此限制存在于所有服务器端身份验证解决方案中。
 
 在应用服务身份验证中，可跨 OAuth 登录保留 URL 片段。 为此，请将名为 `WEBSITE_AUTH_PRESERVE_URL_FRAGMENT` 的应用设置设为 `true`。 可在 [Azure 门户](https://portal.azure.com) 中执行此操作，或只需在 [Azure Cloud Shell](../cloud-shell/quickstart.md) 中运行以下命令：
 
@@ -222,7 +222,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>限制登录帐户的域
 
-Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如，Microsoft 帐户允许 _outlook.com_、_live.com_ 和 _hotmail.com_ 帐户。 Azure AD 允许登录帐户拥有任意数量的自定义域。 不过，你可能想要将用户直接转到你自己的品牌 Azure AD 登录页面，如)  (`contoso.com` 。 若要建议登录帐户的域名，请执行以下步骤。
+Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如，Microsoft 帐户允许 _outlook.com_、_live.com_ 和 _hotmail.com_ 帐户。 Azure AD 允许登录帐户拥有任意数量的自定义域。 但是，你可能希望将用户直接转到你自己的品牌 Azure AD 登录页面（例如 `contoso.com` ）。 若要建议登录帐户的域名，请执行以下步骤。
 
 在中 [https://resources.azure.com](https://resources.azure.com) ，导航到 "**订阅**" > * *_ \<subscription\_name_** > **resourceGroups** > *_* \<resource\_group\_name> _>**提供商**">  >  **Microsoft.Web**  >  **sites** >。_ \<app\_name> **config**  >  **authsettings** 
 
@@ -273,13 +273,13 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 标识提供者可能会提供某些密钥授权。 例如：
 
 - 对于[Azure App Service](configure-authentication-provider-aad.md)，你可以直接在 Azure AD 中[管理企业级访问权限](../active-directory/manage-apps/what-is-access-management.md)。 有关说明，请参阅[如何删除用户对应用程序的访问权限](../active-directory/manage-apps/methods-for-removing-user-access.md)。
-- 对于[google](configure-authentication-provider-google.md)，可以将属于[组织](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations)的 Google API 项目配置为仅允许组织中的用户访问 (参阅[Google**设置 OAuth 2.0**支持页](https://support.google.com/cloud/answer/6158849?hl=en)) 。
+- 对于[google](configure-authentication-provider-google.md)，可以将属于某个[组织](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations)的 Google API 项目配置为仅允许你的组织中的用户访问（请参阅[Google 的**设置 OAuth 2.0**支持页面](https://support.google.com/cloud/answer/6158849?hl=en)）。
 
 ### <a name="application-level"></a>应用程序级别
 
 如果其他任何级别不提供所需的授权，或者平台或标识提供者不受支持，则必须编写自定义代码，以基于[用户声明](#access-user-claims)为用户授权。
 
-## <a name="configure-using-a-file-preview"></a><a name="config-file"> </a>使用文件 (预览配置) 
+## <a name="configure-using-a-file-preview"></a><a name="config-file"> </a>使用文件配置（预览）
 
 你可以选择通过部署提供的文件来配置你的身份验证设置。 应用服务身份验证/授权的某些预览功能可能需要此功能。
 
@@ -291,13 +291,13 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 > [!CAUTION]
 > 在预览期间，启用基于文件的配置将禁止通过某些客户端（例如 Azure 门户、Azure CLI 和 Azure PowerShell）管理应用程序的应用服务身份验证/授权功能。
 
-1. 在项目根目录中为你的配置创建一个新的 JSON 文件， (部署到 web/函数应用) 中的 D:\home\site\wwwroot。 根据[基于文件的配置参考](#configuration-file-reference)填写所需的配置。 如果修改现有的 Azure 资源管理器配置，请确保在配置文件中将集合中捕获的属性转换为 `authsettings` 。
+1. 在项目根目录中为你的配置创建一个新的 JSON 文件（部署到 web/函数应用中的 D:\home\site\wwwroot）。 根据[基于文件的配置参考](#configuration-file-reference)填写所需的配置。 如果修改现有的 Azure 资源管理器配置，请确保在配置文件中将集合中捕获的属性转换为 `authsettings` 。
 
-2. 修改现有配置，该配置将在下的[Azure 资源管理器](../azure-resource-manager/management/overview.md)api 中捕获 `Microsoft.Web/sites/<siteName>/config/authsettings` 。 若要进行修改，可以使用[Azure 资源管理器模板](../azure-resource-manager/templates/overview.md)或[Azure 资源浏览器](https://resources.azure.com/)之类的工具。 在 authsettings 集合中，需要 (设置三个属性，并) 删除其他属性：
+2. 修改现有配置，该配置将在下的[Azure 资源管理器](../azure-resource-manager/management/overview.md)api 中捕获 `Microsoft.Web/sites/<siteName>/config/authsettings` 。 若要进行修改，可以使用[Azure 资源管理器模板](../azure-resource-manager/templates/overview.md)或[Azure 资源浏览器](https://resources.azure.com/)之类的工具。 在 authsettings 集合中，你将需要设置三个属性（并可以删除其他属性）：
 
     1.  设置 `enabled` 为 "true"
     2.  设置 `isAuthFromFile` 为 "true"
-    3.  设置 `authFilePath` 为文件的名称 (例如，"auth.json" ) 
+    3.  设置 `authFilePath` 为文件的名称（例如，"auth.json"）
 
 完成此配置更新后，该文件的内容将用于定义对该站点的应用服务身份验证/授权的行为。 如果希望返回到 Azure 资源管理器配置，可以通过将 `isAuthFromFile` 返回到 "false" 来执行此操作。
 
@@ -413,7 +413,8 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
                 },
                 "login": {
                     "nameClaimType": "<name of claim containing name>",
-                    "loginScopes": [
+                    "scope": [
+                        "openid",
                         "profile",
                         "email"
                     ],
@@ -471,5 +472,5 @@ Microsoft 帐户和 Azure Active Directory 都允许从多个域登录。 例如
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：对用户进行端到端 (Windows) ](app-service-web-tutorial-auth-aad.md) 
->  身份验证和授权[教程：对用户进行端到端 (Linux) 身份验证和授权](containers/tutorial-auth-aad.md)
+> [教程：对用户进行端到端身份验证和授权（Windows）](app-service-web-tutorial-auth-aad.md) 
+> [教程：对用户进行端到端身份验证和授权（Linux）](containers/tutorial-auth-aad.md)

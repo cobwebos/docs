@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: absha
-ms.openlocfilehash: 892ace66c4994f4c2e263d529d69e505ed9c1c1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 20d1dfea251fdfd0bd6e8432d1ea0c7af7284cb5
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068027"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428172"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -55,7 +55,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
   - 不要删除默认出站规则。
   - 不要创建拒绝任何出站连接的其他出站规则。
 
-- 必须允许来自 **AzureLoadBalancer** 标记的流量。
+- **必须允许**来自带有目标子网的**AzureLoadBalancer**标记的流量。
 
 #### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>允许应用程序网关访问一些源 IP
 
@@ -74,7 +74,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 - **v1**
 
-   使用 v1 SKU 时，只要用户定义的路由 (UDR) 未更改端到端请求/响应通信，则应用程序网关子网就会支持这些 UDR。 例如，可以在应用程序网关子网中设置一个指向防火墙设备的、用于检查数据包的 UDR。 但是，必须确保数据包在检查后可以访问其预期目标。 否则，可能会导致不正确的运行状况探测或流量路由行为。 这包括已探测到的路由，或者通过 Azure ExpressRoute 或 VPN 网关在虚拟网络中传播的默认 0.0.0.0/0 路由。
+   使用 v1 SKU 时，只要用户定义的路由 (UDR) 未更改端到端请求/响应通信，则应用程序网关子网就会支持这些 UDR。 例如，可以在应用程序网关子网中设置一个指向防火墙设备的、用于检查数据包的 UDR。 但是，必须确保数据包在检查后可以访问其预期目标。 否则，可能会导致不正确的运行状况探测或流量路由行为。 这包括已探测到的路由，或者通过 Azure ExpressRoute 或 VPN 网关在虚拟网络中传播的默认 0.0.0.0/0 路由。 V1 不支持 0.0.0.0/0 需要在本地（强制隧道）进行重定向的任何情况。
 
 - **v2**
 

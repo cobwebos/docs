@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 61afc3ec0f37f5d8b1030818d21b7daabb7fce40
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: b47c6c7d2137737021766f239fdb6ab1c64bd12f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121667"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422855"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>排查评估/依赖项可视化问题
 
@@ -52,7 +52,7 @@ ms.locfileid: "86121667"
 
 ## <a name="suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>在基于导入的 AVS 评估中标记为未知的建议迁移工具
 
-对于通过 CSV 文件导入的计算机，和 AVS 评估中的默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMWare 混合云扩展（HCX）解决方案。 [了解详细信息](../azure-vmware/hybrid-cloud-extension-installation.md)。
+对于通过 CSV 文件导入的计算机，和 AVS 评估中的默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMware 混合云扩展（HCX）解决方案。 [了解详细信息](../azure-vmware/hybrid-cloud-extension-installation.md)。
 
 ## <a name="linux-vms-are-conditionally-ready-in-an-azure-vm-assessment"></a>Linux Vm 在 Azure VM 评估中 "有条件地就绪"
 
@@ -181,12 +181,15 @@ Azure Migrate 依赖于依赖项可视化功能服务映射。 由于服务映�
 ## <a name="dependencies-export-csv-shows-unknown-process"></a>依赖项导出 CSV 显示 "未知进程"
 在无代理依赖项分析中，会尽力地捕获进程名称。 在某些情况下，尽管将捕获源和目标服务器名称以及目标端口，但在依赖项的两端确定进程名称是不可行的。 在这种情况下，该过程将被标记为 "未知进程"。
 
+## <a name="my-log-analytics-workspace-is-not-listed-when-trying-to-configure-the-workspace-in-server-assessment"></a>尝试在服务器评估中配置工作区时，未列出我的 Log Analytics 工作区
+Azure Migrate 目前支持在“美国东部”、“东南亚”和“西欧”区域创建 OMS 工作区。 如果工作区是在任何其他区域的 Azure Migrate 之外创建的，则当前无法与 Azure Migrate 项目关联。
+
 
 ## <a name="capture-network-traffic"></a>捕获网络流量
 
 收集网络流量日志，如下所示：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 2. 按 F12 开始开发人员工具。 如果需要，请清除 "**在导航上清除条目**" 设置。
 3. 选择 "**网络**" 选项卡，开始捕获网络流量：
    - 在 Chrome 中，选择“保留日志”****。 记录应自动启动。 红色圆圈表示正在捕获流量。 如果未显示红色圆圈，请选择要开始的黑色圆圈。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: 1956090f1b927d9fd4e205eaa57bf1952cb1b070
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f80403946b3097e81678383c4829ef6606f26cd6
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083984"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430355"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Azure 安全中心的增强安全分数
 
@@ -171,6 +171,10 @@ Azure 安全中心有两个主要目标：帮助你了解当前的安全状况�
     <td class="tg-lboi"; width=55%>- 应对 SQL Server 启用审核<br>- 应启用应用服务的诊断日志<br>- 应启用 Azure Data Lake Store 的诊断日志<br>- 应启用 Azure 流分析的诊断日志<br>- 应启用 Batch 帐户的诊断日志<br>- 应启用 Data Lake Analytics 的诊断日志<br>- 应启用事件中心的诊断日志<br>- 应启用 IoT 中心的诊断日志<br>- 应启用密钥保管库的诊断日志<br>- 应启用逻辑应用的诊断日志<br>- 应启用搜索服务的诊断日志<br>- 应启用服务总线的诊断日志<br>- 应启用虚拟机规模集的诊断日志<br>- 应对 Batch 帐户配置指标警报规则<br>- SQL 审核设置中应包含配置为捕获关键活动的操作组<br>- 应将 SQL Server 的审核保留期配置为大于 90 天。</td>
   </tr>
   <tr>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">启用高级威胁防护（最大分数0）</p></strong>Azure 安全中心的威胁防护为你的环境提供全面的防护。 当安全中心检测到环境中的任何区域遭到威胁时，会生成警报。 这些警报会描述受影响资源的详细信息、建议的修正步骤，在某些情况下还会提供触发逻辑应用作为响应的选项。<br>每个威胁防护捆绑都是单独的可选产品/服务，可以使用此安全控件中的相关建议启用此功能。<br><a href="https://docs.microsoft.com/azure/security-center/threat-protection">详细了解安全中心的威胁保护</a>。</td>
+    <td class="tg-lboi"; width=55%>-应在 Azure SQL 数据库服务器上启用高级数据安全性<br>-应在计算机上的 SQL server 上启用高级数据安全性<br>-应在虚拟机上启用高级威胁防护<br>-应对 Azure App Service 计划启用高级威胁防护<br>-应在 Azure 存储帐户上启用高级威胁防护<br>-应在 Azure Kubernetes Service 群集上启用高级威胁防护<br>-应在 Azure 容器注册表注册表中启用高级威胁防护<br>-应在 Azure Key Vault 保管库上启用高级威胁防护</td>
+  </tr>
+  <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">实施安全最佳做法（最高 0 分）</p></strong>新式安全做法“假定突破”网络边界。 因此，此控制中的许多最佳做法都集中在标识管理上。<br>丢失密钥和凭据是一个常见问题。 <a href="https://docs.microsoft.com/azure/key-vault/key-vault-overview">Azure 密钥保管库</a>通过加密密钥、.pfx 文件和密码来保护密钥和机密。<br>虚拟专用网 (VPN) 是访问虚拟机的一种安全方法。 如果 VPN 不可用，请使用复杂的密码和双重身份验证（例如 <a href="https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks">Azure 多重身份验证</a>）。 双重身份验证避开了固有的仅依赖用户名和密码的弱点。<br>使用强身份验证和授权平台是另一种最佳做法。 组织可以使用联合标识来委派授权标识的管理。 当员工离职，需要撤销其访问权限时，这一点也很重要。</td>
     <td class="tg-lboi"; width=55%>- 最多只能为订阅指定 3 个所有者<br>- 应从订阅中删除拥有读取权限的外部帐户<br>- 应在对订阅拥有读取权限的帐户上启用 MFA<br>- 应限制对具有防火墙和虚拟网络配置的存储帐户的访问<br>- 应从事件中心命名空间中删除 RootManageSharedAccessKey 以外的所有授权规则<br>- 应为 SQL Server 预配 Azure Active Directory 管理员<br>- 应对托管实例启用高级数据安全<br>- 应定义事件中心实例上的授权规则<br>- 应将存储帐户迁移到新的 Azure 资源管理器资源<br>- 应将虚拟机迁移到新的 Azure 资源管理器资源<br>- 子网应与网络安全组关联<br>- [预览版]应启用 Windows 攻击防护 <br>- [预览版]应安装来宾配置代理<br>-应通过网络安全组来保护非面向 internet 的虚拟机</td>
   </tr>
@@ -192,7 +196,7 @@ Azure 安全中心有两个主要目标：帮助你了解当前的安全状况�
 否。 为单个资源修正所有建议后，安全评分才会变化。 若要获得某个控制的最高分，必须为所有资源修正所有建议。
 
 ### <a name="is-the-previous-experience-of-the-secure-score-still-available"></a>是否仍然可以使用以前的安全评分体验？ 
-否。 在一段时间内，它们可以轻松地进行转换。 以前的模型现在已弃用。 
+不能。 在一段时间内，它们可以轻松地进行转换。 以前的模型现在已弃用。 
 
 ### <a name="if-a-recommendation-isnt-applicable-to-me-and-i-disable-it-in-the-policy-will-my-security-control-be-fulfilled-and-my-secure-score-updated"></a>如果某个建议对我不适用，我在策略中禁用它，我能否达到安全控制的要求，我的安全评分是否会更新？
 是的。 如果建议不适用于你的环境，建议禁用它们。 有关如何禁用特定建议的说明，请参阅[禁用安全策略](https://docs.microsoft.com/azure/security-center/tutorial-security-policy#disable-security-policies)。

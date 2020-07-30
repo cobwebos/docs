@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: 95372d69f58249afc946f12ec74696507429e5c6
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a971291dd423894e4d04158abe873a7222f9802c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125273"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405552"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>服务请求失败。 状态：403（禁止访问）
 
@@ -57,7 +57,7 @@ ms.locfileid: "87125273"
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<your-Azure-AD-email>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
-有关此角色要求和分配过程的更多详细信息，请参阅*操作方法：设置实例和身份验证（手动）* 中的[*设置用户的访问权限*部分](how-to-set-up-instance-manual.md#set-up-your-users-access-permissions)。
+有关此角色要求和分配过程的更多详细信息，请参阅*操作方法：设置实例和身份验证（CLI 或门户）* 的 " [*设置用户的访问权限*" 部分](how-to-set-up-instance-CLI.md#set-up-user-access-permissions)。
 
 如果此角色分配已存在并且仍遇到403问题，请继续下一解决方案。
 
@@ -75,12 +75,12 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 
 #### <a name="fix-issues"></a>解决问题
 
-如果任何此项的显示方式与所述有所不同，请按照*如何：设置实例和身份验证（手动）* 的 " [*设置客户端应用程序的访问权限*" 部分](how-to-set-up-instance-manual.md#set-up-access-permissions-for-client-applications)中的说明设置应用注册的说明进行操作。
+如果任何此项的显示方式与所述有所不同，请按照*如何：设置实例和身份验证（CLI 或门户）* 的 " [*设置客户端应用程序的访问权限*" 部分](how-to-set-up-instance-cli.md#set-up-access-permissions-for-client-applications)中的说明设置应用注册的说明进行操作。
 
 ## <a name="next-steps"></a>后续步骤
 
 阅读创建和验证新的 Azure 数字孪生实例的设置步骤：
-* [*操作说明：设置实例和身份验证（手动）*](how-to-set-up-instance-manual.md)
+* [*操作说明：设置实例和身份验证（CLI）*](how-to-set-up-instance-cli.md)
 
 阅读有关 Azure 数字孪生的安全和权限的详细信息：
 * [*概念： Azure 数字孪生解决方案的安全性*](concepts-security.md)

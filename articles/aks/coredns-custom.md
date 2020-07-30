@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: cbac35e6c20c0885a1849e3d37951aa23c2dfeb0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f58232eac6727f10fdccb32e7795bf12a93b7cbb
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057226"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405511"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>使用 Azure Kubernetes 服务自定义 CoreDNS
 
@@ -28,6 +28,8 @@ Azure Kubernetes 服务 (AKS) 可将适用于管理和解决群集 DNS 问题的
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
+创建类似于以下示例的配置时，*数据*节中的名称必须以 *. server*或 *. override*结束。 此命名约定在默认 AKS CoreDNS Configmap 中定义，可以使用 `kubectl get configmaps --namespace=kube-system coredns -o yaml` 命令查看。
+
 ## <a name="what-is-supportedunsupported"></a>支持的/不支持的插件
 
 支持所有内置 CoreDNS 插件。 不支持任何附加/第三方插件。
@@ -43,7 +45,7 @@ metadata:
   name: coredns-custom
   namespace: kube-system
 data:
-  test.server: |
+  test.server: | # you may select any name here, but it must end with the .server file extension
     <domain to be rewritten>.com:53 {
         errors
         cache 30
@@ -75,7 +77,7 @@ kubectl delete pod --namespace kube-system -l k8s-app=kube-dns
 
 ## <a name="custom-forward-server"></a>自定义转发服务器
 
-如需为网络流量指定转发服务器，可以创建 ConfigMap 以自定义 DNS。 在以下示例中，请将 `forward` 名称和地址更新为你自己的环境的值。 创建名为 `corednsms.yaml` 的文件并粘贴以下示例配置：
+如果需要为网络流量指定转发服务器，可以创建一个 ConfigMap 来自定义 DNS。 在以下示例中，请将 `forward` 名称和地址更新为你自己的环境的值。 创建名为 `corednsms.yaml` 的文件并粘贴以下示例配置：
 
 ```yaml
 apiVersion: v1
@@ -110,7 +112,7 @@ metadata:
   name: coredns-custom
   namespace: kube-system
 data:
-  puglife.server: |
+  puglife.server: | # you may select any name here, but it must end with the .server file extension
     puglife.local:53 {
         errors
         cache 30
@@ -136,7 +138,7 @@ metadata:
   name: coredns-custom
   namespace: kube-system
 data:
-  test.server: |
+  test.server: | # you may select any name here, but it must end with the .server file extension
     abc.com:53 {
         errors
         cache 30
@@ -168,14 +170,14 @@ metadata:
   name: coredns-custom # this is the name of the configmap you can overwrite with your changes
   namespace: kube-system
 data:
-    test.override: |
+    test.override: | # you may select any name here, but it must end with the .override file extension
           hosts example.hosts example.org { # example.hosts must be a file
               10.0.0.1 example.org
               fallthrough
           }
 ```
 
-## <a name="enable-logging-for-dns-query-debugging"></a>启用日志记录以进行 DNS 查询调试 
+## <a name="enable-logging-for-dns-query-debugging"></a>为 DNS 查询调试启用日志记录 
 
 若要启用 DNS 查询日志记录，请在 coredns-custom ConfigMap 中应用以下配置：
 
@@ -186,7 +188,7 @@ metadata:
   name: coredns-custom
   namespace: kube-system
 data:
-  log.override: |
+  log.override: | # you may select any name here, but it must end with the .override file extension
         log
 ```
 

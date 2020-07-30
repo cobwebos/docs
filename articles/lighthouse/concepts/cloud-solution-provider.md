@@ -1,14 +1,14 @@
 ---
 title: 云解决方案提供商计划注意事项
 description: 对于 CSP 合作伙伴，Azure 委派资源管理通过启用细化权限来帮助提高安全性和控制力。
-ms.date: 07/06/2020
+ms.date: 07/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8dd40c5c4f7131554dcc3249777de9f0d92c35bb
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 0ae7ef0b78f2f37708c6b442a9591fcbcce25646
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86131514"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87429449"
 ---
 # <a name="azure-lighthouse-and-the-cloud-solution-provider-program"></a>Azure Lighthouse 和云解决方案提供商计划
 
@@ -32,6 +32,9 @@ ms.locfileid: "86131514"
 载入通过 CSP 计划创建的订阅，并遵循在[Azure Lighthouse 订阅](../how-to/onboard-customer.md)中所述的步骤。 租户中具有管理员代理角色的任何用户都可以执行此加入过程。
 
 ![使用 AOBO 和 Azure 委派资源管理进行租户管理](../media/csp-2.jpg)
+
+> [!TIP]
+> 通过云解决方案提供商（CSP）计划的分销商建立的订阅不支持具有私有计划的[托管服务提供](managed-services-offers.md)商。 可以[使用 azure 资源管理器模板](../how-to/onboard-customer.md)将这些订阅登记到 azure Lighthouse。
 
 > [!NOTE]
 > Azure 门户中的 " [**我的客户**" 页面](../how-to/view-manage-customers.md)现在包含一个 "**云解决方案提供商（预览版）** " 部分，该部分显示已[签署 Microsoft 客户协议（MCA）](/partner-center/confirm-customer-agreement)并位于[Azure 计划下](/partner-center/azure-plan-get-started)的 CSP 客户的帐单信息和资源。 有关详细信息，请参阅 [Microsoft 合作伙伴协议计费帐户入门](../../cost-management-billing/understand/mpa-overview.md)。

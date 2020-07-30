@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: 66c8db580d0da29aa0be1193bf41b491f388e55a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 17b54eb747e3ddd3b381659031171bc795b61f54
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083967"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430465"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -32,9 +32,27 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 ## <a name="july-2020"></a>2020 年 7 月
 
 7月的更新包括：
+- [虚拟机的漏洞评估现可用于非 marketplace 映像](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)自动        
 - [针对 Azure 存储的威胁防护已扩展为包括 Azure 文件和 Azure Data Lake Storage Gen2 （预览版）](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
+- [启用威胁防护功能的八个新建议](#eight-new-recommendations-to-enable-threat-protection-features)
 - [容器安全改进-更快速的注册表扫描和刷新文档](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
+- [更新自适应应用程序控件规则的新建议](#new-recommendation-to-update-your-adaptive-application-controls-rules)
 - [已弃用六个 SQL 高级数据安全策略](#six-policies-for-sql-advanced-data-security-deprecated)
+
+
+
+
+### <a name="vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images"></a>虚拟机的漏洞评估现在适用于非 marketplace 映像
+
+部署漏洞评估解决方案时，安全中心以前在部署之前执行过验证检查。 检查是确认目标虚拟机的 marketplace SKU。 
+
+从此更新中，已删除该检查，你现在可以将漏洞评估工具部署到 "自定义" Windows 和 Linux 计算机。 自定义映像是你从 marketplace 默认值修改的映像。
+
+尽管你现在可以在更多台计算机上部署集成漏洞评估扩展（由 Qualys 提供支持），但仅当使用[部署 Qualys 内置漏洞扫描程序](built-in-vulnerability-assessment.md#deploying-the-qualys-built-in-vulnerability-scanner)中列出的操作系统时，才提供支持。
+
+了解有关[虚拟机集成漏洞扫描器的详细信息（仅适用于标准层）](built-in-vulnerability-assessment.md)。
+
+若要详细了解如何在[部署合作伙伴漏洞扫描解决方案](partner-vulnerability-assessment.md)中使用 Qualys 或 Rapid7 中的专用许可漏洞评估解决方案。
 
 
 ### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>针对 Azure 存储的威胁防护已扩展为包括 Azure 文件和 Azure Data Lake Storage Gen2 （预览版）
@@ -44,6 +62,39 @@ Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活�
 无论数据存储为 blob 容器、文件共享还是数据 lake，都可以对其进行保护。 
 
 详细了解[Azure 存储的威胁保护](threat-protection.md#threat-protection-for-azure-storage-)。
+
+
+
+
+### <a name="eight-new-recommendations-to-enable-threat-protection-features"></a>启用威胁防护功能的八个新建议
+
+添加了八个新建议以提供一种简单的方法来为以下资源类型启用 Azure 安全中心的威胁防护功能：虚拟机、应用服务计划、Azure SQL 数据库服务器、计算机上的 SQL server、Azure 存储帐户、Azure Kubernetes 服务群集、Azure 容器注册表注册表和 Azure Key Vault 保管库。
+
+新建议如下：
+
+- **应在 Azure SQL 数据库服务器上启用高级数据安全**
+- **应在计算机的 SQL 服务器上启用高级数据安全**
+- **应在 Azure 应用服务计划上启用高级威胁防护**
+- **应对 Azure 容器注册表的注册表启用高级威胁防护**
+- **应对 Azure Key Vault 的保管库启用高级威胁防护**
+- **应对 Azure Kubernetes 服务的群集启用高级威胁防护**
+- **应对 Azure 存储帐户启用高级威胁防护**
+- **应在虚拟机上启用高级威胁防护**
+
+这些新建议属于 "**启用高级威胁防护**" 安全控制。
+
+建议还包括快速修复功能。 
+
+> [!IMPORTANT]
+> 修正其中的任何建议将导致保护相关资源的费用。 如果当前订阅中有相关资源，则会立即开始使用这些费用。 如果以后再添加，则为。
+> 
+> 例如，如果订阅中没有任何 Azure Kubernetes Service 群集并且启用了威胁防护，则不会产生任何费用。 如果将来在同一订阅中添加群集，它将自动受到保护，并将在该时间开始收费。
+
+有关详细信息，请[参阅安全建议参考页](recommendations-reference.md)。
+
+详细了解[Azure 安全中心的威胁防护](https://docs.microsoft.com/azure/security-center/threat-protection)。
+
+
 
 
 ### <a name="container-security-improvements---faster-registry-scanning-and-refreshed-documentation"></a>容器安全改进-更快速的注册表扫描和刷新文档
@@ -62,6 +113,15 @@ Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活�
 - [来自 Azure Kubernetes 服务主机的威胁防护功能的安全警报](https://docs.microsoft.com/azure/security-center/alerts-reference#alerts-containerhost)
 - [容器的安全性建议](https://docs.microsoft.com/azure/security-center/recommendations-reference#recs-containers)
 
+
+
+### <a name="new-recommendation-to-update-your-adaptive-application-controls-rules"></a>更新自适应应用程序控件规则的新建议
+
+自适应应用程序控制功能持续监视配置组中的计算机活动。 在此更新中，你将收到以前未被允许的可能合法行为的通知，这可能会导致误报警报。
+
+**应更新自适应应用程序控制策略中**的新建议允许列表规则，提示你向现有策略添加新规则，以减少自适应应用程序控制违规警报中的误报数。
+
+[详细了解自适应应用程序控制](security-center-adaptive-application.md)。
 
 
 
@@ -185,9 +245,9 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------|
 | [应在 Azure SQL 数据库服务器上启用高级数据安全](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f7fe3b40f-802b-4cdd-8bd4-fd799c948cc2)     | 7fe3b40f-802b-4cdd-8bd4-fd799c948cc2 |
 | [应在计算机的 SQL 服务器上启用高级数据安全](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6581d072-105e-4418-827f-bd446d56421b) | 6581d072-105e-4418-827f-bd446d56421b |
-| [应对存储帐户启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f308fbb08-4ab8-4e67-9b29-592e93fb94fa)           | 308fbb08-4ab8-4e67-9b29-592e93fb94fa |
+| [应对 Azure 存储帐户启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f308fbb08-4ab8-4e67-9b29-592e93fb94fa)           | 308fbb08-4ab8-4e67-9b29-592e93fb94fa |
 | [应对 Azure Key Vault 的保管库启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)           | 0e6763cc-5078-4e64-889d-ff4d9a839047 |
-| [应在应用服务计划上启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)                | 2913021d-f2fd-4f3d-b958-22354e2bdbcb |
+| [应在 Azure 应用服务计划上启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f2913021d-f2fd-4f3d-b958-22354e2bdbcb)                | 2913021d-f2fd-4f3d-b958-22354e2bdbcb |
 | [应对 Azure 容器注册表的注册表启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fc25d9a16-bc35-4e15-a7e5-9db606bf9ed4)   | c25d9a16-bc35-4e15-a7e5-9db606bf9ed4 |
 | [应对 Azure Kubernetes 服务的群集启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f523b5cd1-3e23-492f-a539-13118b6d1e3a)   | 523b5cd1-3e23-492f-a539-13118b6d1e3a |
 | [应在虚拟机上启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f4da35fc9-c9e7-4960-aec9-797fe7d9051d)           | 4da35fc9-c9e7-4960-aec9-797fe7d9051d |
@@ -275,7 +335,7 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 要详细了解安全控件，请参阅 [Azure 安全中心的安全功能分数增强版（预览版）](secure-score-security-controls.md)。
 
-!["分组依据控件" 切换建议](\media\secure-score-security-controls\recommendations-group-by-toggle.gif)
+!["分组依据控件" 切换建议](./media/secure-score-security-controls/recommendations-group-by-toggle.gif)
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>扩展了“实现安全最佳做法”这一安全控件 
 

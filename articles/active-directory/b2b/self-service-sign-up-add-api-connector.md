@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6238e89b3941668f831f3128bb0e723a4097e48
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 88270d51bf50b2b175d9d8761685a8a2a8ae19b1
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027506"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428259"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>向用户流添加 API 连接器
 
@@ -42,9 +42,16 @@ ms.locfileid: "87027506"
 8. 选择要发送到 API 的声明。
 9. 选择你计划从 API 接收回的任何声明。
 
-   ![设置 API 连接器声明](./media/self-service-sign-up-add-api-connector/api-connector-claims.png)
+   <!-- ![Set API connector claims](./media/self-service-sign-up-add-api-connector/api-connector-claims.png) -->
 
 10. 选择“保存” 。
+
+### <a name="selection-of-claims-to-send-and-claims-to-receive"></a>选择 "要发送的声明" 和 "要接收的声明"
+> [!IMPORTANT]
+> 你可能会看到默认情况下选择的所有声明，如下所示。 所有 API 连接器都将更新为以这种方式运行。 你的 API 将接收所有可用的声明，并返回任何支持的声明，无需在 API 连接器定义中进行配置。 
+
+![设置 API 连接器声明](./media/self-service-sign-up-add-api-connector/api-connector-claims-new.png)
+
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>在用户流中启用 API 连接器
 
@@ -136,7 +143,7 @@ Content-type: application/json
 | 参数                                          | 类型              | 必须 | 说明                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 版本                                            | 字符串            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
-| 操作                                             | 字符串            | 是      | 值必须是 `Continue`。                                                                                                                                                                                                                                                              |
+| action                                             | 字符串            | 是      | 值必须是 `Continue`。                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | 否       | 如果值被选为要在 API 连接器配置中**接收的声明**，则这些值可以存储在目录中，并可存储在用户流的**用户属性**中。 如果选择作为**应用程序声明**，则可以在令牌中返回值。                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 返回的声明不需要包含 `_<extensions-app-id>_` 。 如果值被选为要在 API 连接器配置和用户流的**用户属性**中**接收的声明**，则这些值将存储在目录中。 自定义属性不能在令牌中发回。 |
 
@@ -162,7 +169,7 @@ Content-type: application/json
 | 参数   | 类型   | 必须 | 说明                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
 | 版本     | 字符串 | 是      | API 的版本。                                                    |
-| 操作      | 字符串 | 是      | 值必须是 `ShowBlockPage`                                              |
+| action      | 字符串 | 是      | 值必须是 `ShowBlockPage`                                              |
 | userMessage | 字符串 | 是      | 要向用户显示的消息。                                            |
 | code        | 字符串 | 否       | 错误代码。 可用于调试目的。 不会向用户显示。 |
 
@@ -192,7 +199,7 @@ Content-type: application/json
 | 参数   | 类型    | 必须 | 说明                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
 | 版本     | 字符串  | 是      | API 的版本。                                                    |
-| 操作      | 字符串  | 是      | 值必须是 `ValidationError`。                                           |
+| action      | 字符串  | 是      | 值必须是 `ValidationError`。                                           |
 | status      | Integer | 是      | 必须是 `400` ValidationError 响应的值。                        |
 | userMessage | 字符串  | 是      | 要向用户显示的消息。                                            |
 | code        | 字符串  | 否       | 错误代码。 可用于调试目的。 不会向用户显示。 |

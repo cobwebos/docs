@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/22/2019
+ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 00f9e4c1ebd162883f62280e753b6e0c4c13a21d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 29dc03d663d590c13a1948411ed597388750c1d7
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027166"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428006"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -385,7 +385,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5：允许作为 SAML NameID 数据源的属性
 
-|Source|ID|说明|
+|源|ID|说明|
 |-----|-----|-----|
 | 用户 | mail|电子邮件地址|
 | 用户 | userprincipalname|用户主体名称|
@@ -435,6 +435,9 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 ### <a name="example-claims-mapping-policies"></a>声明映射策略示例
 
 在 Azure AD 中，在可以为特定服务主体自定义令牌中发出的声明时，可以实现许多方案。 在此部分中，我们会演练几个常见方案，它们可帮助你理解如何使用声明映射策略类型。
+
+> [!NOTE]
+> 创建声明映射策略时，还可以从令牌中的目录架构扩展属性发出声明。 在元素中使用*ExtensionID*作为扩展特性而不是*ID* `ClaimsSchema` 。  有关扩展属性的详细信息，请参阅[使用目录架构扩展属性](active-directory-schema-extensions.md)。
 
 #### <a name="prerequisites"></a>先决条件
 
@@ -527,4 +530,5 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 ## <a name="see-also"></a>另请参阅
 
-若要了解如何通过 Azure 门户自定义 SAML 令牌中颁发的声明，请参阅[如何：为企业应用程序自定义 SAML 令牌中颁发的声明](active-directory-saml-claims-customization.md)
+- 若要了解如何通过 Azure 门户自定义 SAML 令牌中颁发的声明，请参阅[如何：为企业应用程序自定义 SAML 令牌中颁发的声明](active-directory-saml-claims-customization.md)
+- 若要了解有关扩展属性的详细信息，请参阅[在声明中使用目录架构扩展属性](active-directory-schema-extensions.md)。

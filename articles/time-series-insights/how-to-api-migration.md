@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.custom: shresha
-ms.openlocfilehash: a5721748f023ea5f098b71d8d43dbda53721c54d
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: a74a5e2b8e80121324dc8b880d90f493d5b2ddfd
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171713"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423943"
 ---
 # <a name="migrating-to-new-azure-time-series-insights-gen2-api-versions"></a>迁移到新的 Azure 时序见解 Gen2 API 版本
 
@@ -39,7 +39,7 @@ ms.locfileid: "87171713"
 
 1. 资源管理器会提示你更新时序模型变量和已保存查询所使用的语法。
 
-    [![提示](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
+    [![Prompt](media/api-migration/ux-prompt.png)](media/v2-update-overview/overview-one.png#lightbox)
 
     如果意外关闭了通知，可以在通知面板中找到该通知。
 
@@ -286,7 +286,7 @@ ms.locfileid: "87171713"
 
 此外， `value` 也可以是 `$event['Bar-Pressure-Offset'].Double` 。 如果未指定数据类型，则始终假定数据类型为双精度型。 必须使用括号表示法来转义特殊字符（ `-` ）。
 
-#### <a name="getaggregateseries"></a>GetAggregateSeries
+#### <a name="aggregateseries"></a>AggregateSeries
 
 旧请求正文（由使用 `2018-11-01-preview` ）：
 

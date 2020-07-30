@@ -1,14 +1,14 @@
 ---
 title: 将托管服务产品/服务发布到 Azure Marketplace
 description: 了解如何发布加入客户到 Azure Lighthouse 的托管服务产品/服务。
-ms.date: 05/04/2020
+ms.date: 07/28/2020
 ms.topic: how-to
-ms.openlocfilehash: 19364164617a32a561140e985c8723f8deafe1a7
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: e86cec16cc377470f255c8b677d7462dee6b3573
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133315"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407058"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>将托管服务产品/服务发布到 Azure Marketplace
 
@@ -34,7 +34,7 @@ ms.locfileid: "86133315"
 客户添加你的产品/服务后，他们将能够委托一个或多个订阅或资源组，这些订阅或资源组将[载入到 Azure Lighthouse](#the-customer-onboarding-process)。
 
 > [!IMPORTANT]
-> 托管服务产品/服务中的每个计划都包含 "**清单详细信息**" 部分，你可以在其中定义租户中的 Azure Active Directory （Azure AD）实体，这些实体将有权访问委派的资源组和/或订阅（适用于购买该计划的客户）。 需要注意的是，包含的任何组（或用户或服务主体）将对每个购买计划的客户都具有相同的权限。 若要分配不同的组来与每个客户合作，你需要发布单独的[私有计划](../../marketplace/private-offers.md)，该计划对每个客户都是专用的。
+> 托管服务产品/服务中的每个计划都包含 "**清单详细信息**" 部分，你可以在其中定义租户中的 Azure Active Directory （Azure AD）实体，这些实体将有权访问委派的资源组和/或订阅（适用于购买该计划的客户）。 需要注意的是，包含的任何组（或用户或服务主体）将对每个购买计划的客户都具有相同的权限。 若要分配不同的组来与每个客户合作，你可以发布单独的[私有计划](../../marketplace/private-offers.md)，该计划是每个客户所独有的。 请记住，通过云解决方案提供商（CSP）计划的经销商建立的订阅不支持私有计划。
 
 ## <a name="publish-your-offer"></a>发布产品/服务
 

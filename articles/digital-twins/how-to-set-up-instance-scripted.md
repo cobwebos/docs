@@ -1,18 +1,18 @@
 ---
 title: 设置实例和身份验证（已编写脚本）
 titleSuffix: Azure Digital Twins
-description: 请参阅如何设置 Azure 数字孪生服务的实例，包括正确的身份验证。 脚本版本。
+description: 请参阅如何通过运行自动部署脚本来设置 Azure 数字孪生服务的实例
 author: baanders
 ms.author: baanders
-ms.date: 7/22/2020
+ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 522096b921faf34130f0c37f727d89c7bf95c530
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 076bde9e2760a862822d80d63197e2c15a678d35
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337902"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407411"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>设置 Azure 数字孪生实例和身份验证（脚本）
 
@@ -20,9 +20,12 @@ ms.locfileid: "87337902"
 
 本文介绍**设置新的 Azure 数字孪生实例**的步骤，包括创建实例和设置身份验证。 完成本文后，你将拥有一个可开始对进行编程的 Azure 数字孪生实例。
 
-本文的此版本通过运行可简化过程的[**自动化部署脚本**示例](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/)来完成这些步骤。 若要查看脚本在幕后运行的手动步骤，请参阅本文的手动版本：操作[*方法：设置实例和身份验证（手动）*](how-to-set-up-instance-manual.md)。
+本文的此版本通过运行可简化过程的[**自动化部署脚本**示例](https://docs.microsoft.com/samples/azure-samples/digital-twins-samples/digital-twins-samples/)来完成这些步骤。 
+* 若要查看脚本在幕后运行的手动 CLI 步骤，请参阅本文的 CLI 版本：操作[*方法：设置实例和身份验证（CLI）*](how-to-set-up-instance-cli.md)。
+* 若要根据 Azure 门户查看手动步骤，请参阅本文的门户版本：操作[*说明：设置实例和身份验证（门户）*](how-to-set-up-instance-portal.md)。
 
-[!INCLUDE [digital-twins-setup-starter.md](../../includes/digital-twins-setup-starter.md)]
+[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
+[!INCLUDE [digital-twins-setup-role-cli.md](../../includes/digital-twins-setup-role-cli.md)]
 
 ## <a name="run-the-deployment-script"></a>运行部署脚本
 
@@ -41,7 +44,7 @@ ms.locfileid: "87337902"
  
 2. 登录后，查看 "Cloud Shell 窗口" 图标栏。 选择 "上传/下载文件" 图标，然后选择 "上传"。
 
-    :::image type="content" source="media/how-to-set-up-instance/cloud-shell-upload.png" alt-text="显示上传选项选择的 Cloud Shell 窗口":::
+    :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="显示上传选项选择的 Cloud Shell 窗口":::
 
     导航到计算机上的_**deploy.ps1**_ 文件，并单击 "打开"。 这会将文件上传到 Cloud Shell，以便可以在 "Cloud Shell" 窗口中运行该文件。
 
@@ -57,21 +60,38 @@ ms.locfileid: "87337902"
 
 下面是该脚本的输出日志摘录：
 
-:::image type="content" source="media/how-to-set-up-instance/deployment-script-output.png" alt-text="显示通过运行部署脚本的输入和输出日志的 Cloud Shell 窗口" lightbox="media/how-to-set-up-instance/deployment-script-output.png":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png" alt-text="显示通过运行部署脚本的输入和输出日志的 Cloud Shell 窗口" lightbox="media/how-to-set-up-instance/cloud-shell/deployment-script-output.png":::
 
 如果脚本成功完成，最终打印输出将显示 `Deployment completed successfully` 。 否则，请解决错误消息，并重新运行该脚本。 它将跳过已完成的步骤，并在你离开的点再次开始请求输入。
 
-脚本完成后，现在可以使用 Azure 数字孪生实例，并设置权限来对其进行管理。
+脚本完成后，现在可以使用 Azure 数字孪生实例来管理它，并为客户端应用程序设置了权限来访问它。
+
+> [!NOTE]
+> 此脚本当前将 Azure 数字孪生（*Azure 数字孪生所有者（预览版）*）中所需的管理角色分配给运行 Cloud Shell 脚本的同一用户。 如果需要将此角色分配给将管理实例的其他人，可以通过 Azure 门户（[说明](how-to-set-up-instance-portal.md#set-up-user-access-permissions)）或 CLI （[说明](how-to-set-up-instance-cli.md#set-up-user-access-permissions)）立即执行此操作。
 
 ## <a name="collect-important-values"></a>收集重要值
 
-应用注册中有两个重要值，稍后需要对[Azure 数字孪生 api 的客户端应用进行身份验证](how-to-authenticate-client.md)。 
+当你继续使用 Azure 数字孪生实例时，可能需要由脚本设置的资源中的几个重要值。 在本部分中，你将使用[Azure 门户](https://portal.azure.com)来收集这些值。 应将它们保存在安全的位置，或返回此部分，稍后在需要时进行查找。
+
+如果其他用户将对该实例进行编程，还应与这些用户共享这些值。
+
+### <a name="collect-instance-values"></a>收集实例值
+
+在[Azure 门户](https://portal.azure.com)中，通过在门户搜索栏中搜索实例的名称来查找 Azure 数字孪生实例。
+
+选择它将打开实例的 "*概述*" 页。 注意其*名称*、*资源组*和*主机名*。 稍后可能需要用到它们来标识并连接到实例。
+
+:::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="突出显示实例的 "概述" 页中的重要值":::
+
+### <a name="collect-app-registration-values"></a>收集应用注册值 
+
+应用注册中有两个重要值，稍后需要用来[编写 Azure 数字孪生 api 的客户端应用身份验证代码](how-to-authenticate-client.md)。 
 
 若要查找它们，请单击下面的[链接](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)以导航到 Azure 门户中的 Azure AD 应用注册概述页。 此页显示已在你的订阅中创建的所有应用程序注册。
 
 你应该会看到刚才在此列表中创建的应用注册。 选择它以打开其详细信息：
 
-:::image type="content" source="media/how-to-set-up-instance/app-important-values.png" alt-text="应用注册重要值的门户视图":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="应用注册重要值的门户视图":::
 
 记下显示**在页面上**的*应用程序（客户端） id*和*目录（租户） id* 。 如果您不是将为客户端应用程序编写代码的人员，则需要与将要进行共享的人员共享这些值。
 
@@ -86,6 +106,9 @@ ms.locfileid: "87337902"
 ### <a name="verify-user-role-assignment"></a>验证用户角色分配
 
 [!INCLUDE [digital-twins-setup-verify-role-assignment.md](../../includes/digital-twins-setup-verify-role-assignment.md)]
+
+> [!NOTE]
+> 回忆一下，该脚本当前将此必需角色分配给运行脚本的同一用户 Cloud Shell。 如果需要将此角色分配给将管理实例的其他人，可以通过 Azure 门户（[说明](how-to-set-up-instance-portal.md#set-up-user-access-permissions)）或 CLI （[说明](how-to-set-up-instance-cli.md#set-up-user-access-permissions)）立即执行此操作。
 
 ### <a name="verify-app-registration"></a>验证应用注册
 

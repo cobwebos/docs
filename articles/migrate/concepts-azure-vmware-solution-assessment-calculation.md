@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: mahain
-ms.openlocfilehash: a4d2e810144e7c3d36545cb1e965aec40980c1d2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 84798dbcd158b62ce6714bf73494a9e85bf932a8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118811"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387942"
 ---
 # <a name="avs-assessments-in-azure-migrate-server-assessment"></a>Azure Migrate 中的 AVS 评估：服务器评估
 
@@ -28,8 +28,8 @@ ms.locfileid: "86118811"
 
 **评估类型** | **详细信息**
 --- | --- 
-Azure VM  | 用于将本地服务器迁移到 Azure 虚拟机的评估。 <br/><br/> 可以使用此评估类型评估本地[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[物理服务器](how-to-set-up-appliance-physical.md)，以便迁移到 Azure。[了解更多](concepts-assessment-calculation.md)
-**Azure VMware 解决方案 (AVS)** | 用于将本地服务器迁移到[Azure VMware 解决方案（AVS）](../azure-vmware/introduction.md)的评估。 <br/><br/> 可以使用此评估类型评估本地[Vmware vm](how-to-set-up-appliance-vmware.md) ，以便迁移到 Azure VMware 解决方案（AVS）。[了解更多](concepts-azure-vmware-solution-assessment-calculation.md)
+**Azure VM** | 将本地服务器迁移到 Azure 虚拟机的评估。 <br/><br/> 可以使用此评估类型评估本地[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[物理服务器](how-to-set-up-appliance-physical.md)，以便迁移到 Azure。[了解更多](concepts-assessment-calculation.md)
+**Azure VMware 解决方案 (AVS)** | 将本地服务器迁移到 [Azure VMware 解决方案 (AVS)](../azure-vmware/introduction.md) 的评估。 <br/><br/> 可使用此评估类型评估要迁移到 Azure VMware 解决方案 (AVS) 的本地 [VMware VM](how-to-set-up-appliance-vmware.md)。[了解详细信息](concepts-azure-vmware-solution-assessment-calculation.md)
 
 服务器评估中的 Azure VMware 解决方案（AVS）评估提供两个大小调整条件选项：
 
@@ -127,7 +127,7 @@ Azure VM  | 用于将本地服务器迁移到 Azure 虚拟机的评估。 <br/><
 **性能历史记录** | 设置评估计算机性能数据时要考虑的持续时间。 仅当大小调整条件*基于性能*时，此属性才适用。 
 **百分位使用率** | 指定要用于调整右大小的性能样本集的百分位数值。 此属性仅当调整大小基于性能时才适用。
 **舒适因子** | 在评估期间，Azure Migrate 服务器评估会考虑使用缓冲区（舒适因素）。 该缓冲应用到 VM 的机器使用率数据（CPU、内存、磁盘和网络）上。 舒适因子考虑到季节性使用特点、短期性能历史记录，以及未来使用量可能会增加等问题。<br/><br/> 例如，一个使用率为 20% 的 10 核 VM 通常相当于一个 2 核 VM。 但是，如果舒适因子为 2.0x，则结果就变成一个 4 核 VM。 
-**产品** | 显示您注册的[Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/)。 Azure Migrate 会进行相应的成本估算。
+**产品/服务** | 显示您注册的[Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/)。 Azure Migrate 会进行相应的成本估算。
 **货币** | 显示帐户的计费货币。 
 **折扣 (%)** | 列出你在 Azure 产品/服务上收到的任何特定于订阅的折扣。 默认设置是 0%。 
 **Azure 混合权益** | 指定您是否具有软件保障并且有资格使用[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。 尽管由于基于节点的价格而不影响 Azure VMware 解决方案定价，但客户仍然可以使用 Azure 混合权益在 AVS 中应用本地操作系统许可证（基于 Microsoft）。 其他软件操作系统供应商必须提供其自己的许可条款，例如 RHEL。 
@@ -152,7 +152,7 @@ Azure VM  | 用于将本地服务器迁移到 Azure 虚拟机的评估。 <br/><
 
 | **属性** | **详细信息** | **AVS 就绪状态** 
 | - | - | - 
-| **Internet 协议** | AVS 当前不支持 IPv6 internet 寻址。<br/><br/> 如果检测到你的计算机有 IPv6，请联系你的本地 MSFT AVS GBB 团队，以获取有关更正指南的指导。| 有条件地准备好 Internet 协议
+| **Internet 协议** | AVS 目前不支持 IPv6 Internet 寻址。<br/><br/> 如果检测到计算机使用 IPv6，请与你当地的 MSFT AVS GBB 团队联系，以获取修正指南。| 有条件地准备好 Internet 协议
 
 
 ### <a name="guest-operating-system"></a>来宾操作系统
@@ -172,15 +172,15 @@ Azure VM  | 用于将本地服务器迁移到 Azure 虚拟机的评估。 <br/><
 
 ### <a name="ftt-sizing-parameters"></a>FTT 大小调整参数
 
-AVS 中使用的存储引擎为 vSAN。 vSAN 存储策略为虚拟机定义存储要求。 这些策略保证 Vm 所需的服务级别，因为它们确定如何将存储分配给 VM。 可用的 FTT-Raid 组合如下： 
+AVS 中使用的存储引擎为 vSAN。 vSAN 存储策略为虚拟机定义存储要求。 这些策略保证了 VM 所需的服务级别，因为它们可确定如何将存储分配给 VM。 可用的 FTT-Raid 组合如下： 
 
-**容错故障（FTT）** | **RAID 配置** | **需要的最低主机** | **大小调整注意事项**
+**允许的故障数 (FTT)** | **RAID 配置** | **需要的最少主机数** | **大小调整注意事项**
 --- | --- | --- | --- 
-1 | RAID-1 （镜像） | 3 | 100GB VM 将使用200GB。
-1 | RAID-5 （擦除编码） | 4 | 100GB VM 将使用 133.33 GB
-2 | RAID-1 （镜像） | 5 | 100GB VM 将使用300GB。
-2 | RAID-1 （擦除编码） | 6 | 100GB VM 将使用 150 GB。
-3 | RAID-1 （镜像） | 7 | 100GB VM 将使用400GB。
+1 | RAID-1（镜像） | 3 | 100GB VM 将使用 200GB。
+1 | RAID-5（擦除编码） | 4 | 100GB VM 将使用 133.33 GB
+2 | RAID-1（镜像） | 5 | 100GB VM 将使用 300GB。
+2 | RAID-6（擦除编码） | 6 | 100GB VM 将使用 150GB。
+3 | RAID-1（镜像） | 7 | 100GB VM 将使用 400GB。
 
 ### <a name="performance-based-sizing"></a>基于性能的大小
 
@@ -197,11 +197,11 @@ AVS 中使用的存储引擎为 vSAN。 vSAN 存储策略为虚拟机定义存�
 
 **存储大小调整**： Azure Migrate 使用总本地 VM 磁盘空间作为计算参数来确定 AVS vSAN 存储要求以及客户选择的 FTT 设置。 FTT-可容忍的故障以及每个 FTT 的最少节点数选项将确定所需的总 vSAN 存储与 VM 磁盘要求组合在一起。
 
-**网络大小调整**：服务器评估目前不会考虑到 AVS 评估所需的任何网络设置。
+**网络规模**：对于 AVS 评估，服务器评估目前不考虑任何网络设置。
 
 **计算大小调整**：计算存储要求后，服务器评估会考虑 CPU 和内存要求，以确定 AVS 基于节点类型所需的节点数。
 
-- 根据大小调整条件，服务器评估将查看基于性能的 VM 数据或本地 VM 配置。 舒适系数设置允许指定群集的增长因子。 目前，默认情况下会启用超线程，因此36核心节点将有 72 Vcore。 4 Vcore 每个物理用于确定每个群集的 CPU 阈值（使用不超过80% 的利用率的 VMware 标准），以允许在不影响群集可用性的情况下处理维护或故障。 当前没有可用于更改超额订阅值的替代，我们可能会在将来的版本中使用它。
+- 根据大小调整条件，服务器评估将查看基于性能的 VM 数据或本地 VM 配置。 舒适系数设置允许指定群集的增长因子。 目前，默认情况下会启用超线程，因此 36 个核心节点将具有 72 个 vCore。 结合每台物理计算机使用 4 个 vCore 和不超过 80% 利用率的 VMware 标准，来确定每个群集的 CPU 阈值，以便在不影响群集可用性的情况下进行维护或故障处理。 当前没有可用于更改超额订阅值的替代，我们可能会在将来的版本中使用它。
 
 ### <a name="as-on-premises-sizing"></a>按本地大小调整
 
@@ -255,9 +255,9 @@ Azure Migrate 中的每个基于性能的评估都与一个（最低）到5星�
 
 ## <a name="migration-tool-guidance"></a>迁移工具指南
 
-在 azure VMware 解决方案（AVS）评估的 Azure 就绪状态报告中，可以看到以下建议的工具： 
+在 Azure VMware 解决方案 (AVS) 评估的 Azure 迁移就绪性报告中，可以看到以下推荐工具： 
 - **VMWARE HCX 或 Enterprise**：对于 vmware 计算机，Vmware 混合云扩展（HCX）解决方案是将本地工作负荷迁移到 Azure VMware 解决方案（AVS）私有云的建议迁移工具。 [了解详细信息](../azure-vmware/hybrid-cloud-extension-installation.md)。
-- **未知**：对于通过 CSV 文件导入的计算机，默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMWare 混合云扩展（HCX）解决方案。
+- **未知**：对于通过 CSV 文件导入的计算机，默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMware 混合云扩展（HCX）解决方案。
 
 ## <a name="next-steps"></a>后续步骤
 

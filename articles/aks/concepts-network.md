@@ -4,12 +4,12 @@ description: 了解 Azure Kubernetes 服务 (AKS) 中的网络，包括 kubenet 
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d0e2c193e626b2d82fc57ef0699a2558ec3a9629
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: dacb14664b21412df1b1d48c023017378cf364c9
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244644"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387755"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中应用程序的网络概念
 
@@ -105,7 +105,7 @@ Kubenet 和 Azure CNI 之间存在以下行为差异：
 | 使用负载均衡器服务、应用程序网关或入口控制器公开 Kubernetes 服务 | 支持 | 支持 |
 | 默认的 Azure DNS 和专用区域                                                          | 支持 | 支持 |
 
-关于 DNS，kubenet 和 Azure CNI 插件 DNS 都由 CoreDNS 提供，后者是运行在 AKS 中的守护程序集。 有关 Kubernetes 上的 CoreDNS 的详细信息，请参阅 [Customizing DNS Service](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)（自定义 DNS 服务）。 默认情况下，CoreDNS 配置为将未知域转发到节点 DNS 服务器，换言之，将其转发到部署 AKS 群集的 Azure 虚拟网络的 DNS 功能。 因此，Azure DNS 和专用区域将适用于在 AKS 中运行的 Pod。
+关于 DNS，同时使用 kubenet 和 Azure CNI 插件 DNS 由 CoreDNS 提供，其中使用其自己的自动缩放程序在 AKS 中运行的部署。 有关 Kubernetes 上的 CoreDNS 的详细信息，请参阅 [Customizing DNS Service](https://kubernetes.io/docs/tasks/administer-cluster/dns-custom-nameservers/)（自定义 DNS 服务）。 默认情况下，CoreDNS 配置为将未知域转发到节点 DNS 服务器，换言之，将其转发到部署 AKS 群集的 Azure 虚拟网络的 DNS 功能。 因此，Azure DNS 和专用区域将适用于在 AKS 中运行的 Pod。
 
 ### <a name="support-scope-between-network-models"></a>网络模型之间的支持范围
 
@@ -129,11 +129,11 @@ Kubenet 和 Azure CNI 之间存在以下行为差异：
 
 在 AKS 中，可以使用 NGINX 之类的服务器创建入口资源，或使用 AKS HTTP 应用程序路由功能。 为 AKS 群集启用 HTTP 应用程序路由时，Azure 平台会创建入口控制器和 External-DNS 控制器。 在 Kubernetes 中创建新的入口资源时，系统会在特定于群集的 DNS 区域中创建所需的 DNS A 记录。 有关详细信息，请参阅[部署 HTTP 应用程序路由][aks-http-routing]。
 
-应用程序网关入口控制器 (AGIC) 外接程序允许 AKS 客户使用 Azure 的本机应用程序网关级别7负载均衡器向 Internet 公开云软件。 AGIC 监视托管时所在的 Kubernetes 群集并持续更新应用程序网关，以便向 Internet 公开所选服务。 若要了解有关 AKS 的 AGIC 外接程序的详细信息，请参阅[什么是应用程序网关入口控制器？][agic-overview]
+应用程序网关入口控制器 (AGIC) 加载项使 AKS 客户能够利用 Azure 的本机应用程序网关级别 7 负载均衡器向 Internet 公开云软件。 AGIC 监视托管时所在的 Kubernetes 群集并持续更新应用程序网关，以便向 Internet 公开所选服务。 若要了解有关 AKS 的 AGIC 加载项的详细信息，请参阅[什么是应用程序网关入口控制器？][agic-overview]
 
 入口的另一个常见功能是 SSL/TLS 终止。 在通过 HTTPS 访问的大型 Web 应用程序上，TLS 终止可以由入口资源处理，而不是在应用程序自身内部处理。 要提供自动 TLS 认证生成和配置，可以将入口资源配置为使用 Let's Encrypt 之类的提供程序。 有关使用 Let's Encrypt 配置 NGINX 入口控制器的详细信息，请参阅 [Ingress 和 TLS][aks-ingress-tls]。
 
-还可以配置入口控制器，以便在对 AKS 群集中的容器发出请求时保留客户端源 IP。 如果客户端的请求通过入口控制器路由到 AKS 群集中的容器，则该请求的原始源 IP 将不可用于目标容器。 如果启用客户端源 IP 保留，则可以在请求标头中的 *X-Forwarded-For* 下使用客户端的源 IP。** 如果在入口控制器上使用“客户端源 IP 保留”，则无法使用 TLS 直通。 可对其他服务（例如 LoadBalancer 类型的服务）使用“客户端源 IP 保留”和 TLS 直通。
+还可以配置入口控制器，以便在对 AKS 群集中的容器发出请求时保留客户端源 IP。 如果客户端的请求通过入口控制器路由到 AKS 群集中的容器，则该请求的原始源 IP 将不可用于目标容器。 如果启用客户端源 IP 保留，则可以在请求标头中的 *X-Forwarded-For* 下使用客户端的源 IP。 如果在入口控制器上使用“客户端源 IP 保留”，则无法使用 TLS 直通。 可对其他服务（例如 LoadBalancer 类型的服务）使用“客户端源 IP 保留”和 TLS 直通。
 
 ## <a name="network-security-groups"></a>网络安全组
 

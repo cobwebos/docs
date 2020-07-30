@@ -3,12 +3,12 @@ title: 使用链接模板创建模板规范
 description: 了解如何创建具有链接模板的模板规范。
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: c2648cb8a71be709406f314d02a226ed097be6f0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b952baa465092fef19ad2feb11a43328a6177d1c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095889"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387857"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>教程：使用链接模板创建模板规范（预览）
 
@@ -33,7 +33,7 @@ ms.locfileid: "87095889"
 - `/artifacts/linkedTemplate.json`
 - `artifacts/linkedTemplate.json`
 
-如果在上的 linkedTemplate.js中调用了另一个 linkedTemplate2.js，并将上的 linkedTemplate2.js存储在同一项目子文件夹中，则在 linkedTemplate.js上指定的 relativePath 将**在上linkedTemplate2.js**。
+`relativePath`属性始终相对于在其中声明的模板文件 `relativePath` ，因此，如果在上的 linkedTemplate.js中调用了另一个 linkedTemplate2.js，并将上的 linkedTemplate2.js存储在同一项目子文件夹中，则在 linkedTemplate.js上指定的 relativePath 就是 `linkedTemplate2.json` 。
 
 1. 创建具有以下 JSON 的主模板。 将主模板azuredeploy.js保存到本地计算机**上**。 本教程假定你已保存到**c:\Templates\linkedTS\azuredeploy.js的**路径，但你可以使用任何路径。
 

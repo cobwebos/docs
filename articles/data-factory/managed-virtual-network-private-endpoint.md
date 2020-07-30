@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/26/2020
-ms.openlocfilehash: f6868e3a77cbc4b262180b47ed3b387840062969
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/15/2020
+ms.openlocfilehash: a4594ca1a992f158522eccb4ffa6e846a1f4f605
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095885"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406276"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure 数据工厂托管的虚拟网络（预览版）
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 本文将介绍 Azure 数据工厂中的托管虚拟网络和托管的专用终结点。
 
@@ -76,12 +76,13 @@ Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azu
 以下数据源支持通过来自 ADF 托管虚拟网络的私有链接进行连接。
 - Azure Blob 存储
 - Azure 表存储
-- Azure 文件存储
+- Azure 文件
 - Azure Data Lake Gen2
 - Azure SQL 数据库（不包括 Azure SQL 托管实例）
 - Azure SQL 数据仓库
 - Azure CosmosDB SQL
 - Azure Key Vault
+- Azure 专用链接
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>从 ADF 托管虚拟网络通过公共终结点进行的出站通信
 - 对于出站通信，只打开端口443。

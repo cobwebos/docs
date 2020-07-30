@@ -9,17 +9,17 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 83c4a48f8c177cf84078966bae32126102b45c3b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bfbe67c20fdec292dca0d6e07a05f2ff27637396
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521014"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87427980"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
 
 > [!NOTE]
-> 本文中所述的身份验证方法不再被视为最佳做法。 我们鼓励你采用[如何向 Azure Key Vault 进行身份验证](authentication.md)中已更新的身份验证方法。
+> **Microsoft.azure.services.appauthentication**已弃用。 它被替换为适用于 .NET、Java、TypeScript 和 Python 的新 Azure 标识库**DefaultAzureCredentials** ，适用于所有新的开发。 可在以下网页中找到详细信息：[身份验证和 AZURE SDK](https://azure.github.io/azure-sdk/posts/2020-02-25/defaultazurecredentials.html)。
 
 若要对 Azure Key Vault 进行身份验证，需要提供 Azure Active Directory (Azure AD) 凭据（共享机密或证书）。
 
@@ -170,7 +170,7 @@ ms.locfileid: "86521014"
 
     将 {AppId}、{TenantId} 和 {Thumbprint} 替换为步骤 1 中生成的值。 根据部署计划，将 *{CertificateStore}* 替换为 *LocalMachine*` 或 *CurrentUser*。
 
-1. 运行该应用程序。
+1. 运行应用程序。
 
 ### <a name="use-a-shared-secret-credential-to-sign-into-azure-ad"></a>使用共享机密凭据登录到 Azure AD
 

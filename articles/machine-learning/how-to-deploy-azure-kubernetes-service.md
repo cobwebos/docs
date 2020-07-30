@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: ad34195e003e0ca2d73000d3482cc79c3dbe3ee0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 58a8bd6b8e5594f36bf27a3ad76bee137fdd1160
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372104"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433220"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes 服务群集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,11 @@ AKS 群集和 AML 工作区可以位于不同的资源组中。
 
 - 本文中的 CLI 片段假设已创建 `inferenceconfig.json` 文档____。 有关如何创建此文档的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-- 如果附加的 AKS 群集[启用了授权 IP 范围以访问 API 服务器](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)，请为 AKS 群集启用 AML CONTOL 平面 IP 范围。 AML 控制平面跨配对区域部署，并在 AKS 群集上部署推断 pod。 如果不访问 API 服务器，则无法部署推断 pod。 在 AKS 群集中启用 IP 范围时，同时使用两个[成对区域]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions)的[ip 范围](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519)
+- 如果需要在群集中部署标准负载均衡器（SLB）而不是基本负载均衡器（BLB），请在 AKS 门户/CLI/SDK 中创建群集，并将其附加到 AML 工作区。
+
+- 如果附加的 AKS 群集[启用了授权 IP 范围以访问 API 服务器](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)，请为 AKS 群集启用 AML CONTOL 平面 IP 范围。 AML 控制平面跨配对区域部署，并在 AKS 群集上部署推断 pod。 如果不访问 API 服务器，则无法部署推断 pod。 在 AKS 群集中启用 IP 范围时，请使用两个[配对区域]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions)的[ip 范围](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519)。
+
+__Authroized IP 范围仅适用于标准负载均衡器。__
  
  - 计算名称在工作区中必须是唯一的
    - 名称是必须提供的，且长度必须介于 3 到 24 个字符之间。
@@ -73,7 +77,7 @@ AKS 群集和 AML 工作区可以位于不同的资源组中。
    
  - 如果要将模型部署到 GPU 节点或 FPGA 节点（或任何特定的 SKU），则必须创建具有特定 SKU 的群集。 不支持在现有群集中创建辅助节点池并在辅助节点池中部署模型。
  
- - 如果需要在群集中部署标准负载均衡器（SLB）而不是基本负载均衡器（BLB），请在 AKS 门户/CLI/SDK 中创建群集，并将其附加到 AML 工作区。 
+ 
 
 
 
@@ -257,6 +261,30 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 > [!IMPORTANT]
 > 通过 VS Code 进行部署要求提前创建 AKS 群集或将其附加到工作区。
+
+### <a name="understand-the-deployment-processes"></a>了解部署过程
+
+"部署" 一词同时用于 Kubernetes 和 Azure 机器学习。 在这两种上下文中，"部署" 的含义非常不同。 在 Kubernetes 中， `Deployment` 是使用声明性 YAML 文件指定的具体实体。 Kubernetes 与 `Deployment` 其他 Kubernetes 实体（例如和）具有定义的生命周期和具体的关系 `Pods` `ReplicaSets` 。 可以从文档和视频中了解 Kubernetes [Kubernetes？](https://aka.ms/k8slearning)。
+
+在 Azure 机器学习中，将使用 "部署"，以提供更常见的功能并清理项目资源。 Azure 机器学习考虑部署部分的步骤如下：
+
+1. 压缩项目文件夹中的文件，并忽略在. amlignore 或. .gitignore 中指定的文件
+1. 增加计算群集（与 Kubernetes 相关）
+1. 构建 dockerfile 并将其下载到计算节点（与 Kubernetes 相关）
+    1. 系统计算的哈希值为： 
+        - 基本映像 
+        - 自定义 docker 步骤（请参阅[使用自定义 docker 基本映像部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)）
+        - Conda 定义 YAML （请参阅[Create & use software 环境 in Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)）
+    1. 系统使用此哈希作为工作区 Azure 容器注册表（ACR）的查找中的密钥
+    1. 如果找不到，它将在全局 ACR 中查找匹配项
+    1. 如果找不到，系统将生成新映像（将缓存并向工作区 ACR 注册）
+1. 将压缩的项目文件下载到计算节点上的临时存储
+1. 解压缩项目文件
+1. 计算节点正在执行`python <entry script> <arguments>`
+1. 将日志、模型文件和其他写入的文件保存到 `./outputs` 与工作区关联的存储帐户
+1. 缩减计算，包括删除临时存储（与 Kubernetes 相关）
+
+当你使用 AKS 时，计算的向上和向下缩放由 Kubernetes 控制，使用上图中所述的 dockerfile。 
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>使用受控推出（预览版）将模型部署到 AKS
 

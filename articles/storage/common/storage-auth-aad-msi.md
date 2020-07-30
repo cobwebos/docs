@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 2434c5b80fedb7fd5ae61357cadf5d23f9b00934
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 6571f4351fb3410d1c10079a41b7041eb85ee5e3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127173"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423756"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>使用 Azure 资源托管标识授予对 Blob 和队列数据的访问权限
 
@@ -87,7 +87,7 @@ az ad sp create-for-rbac \
 ```
 
 > [!IMPORTANT]
-> 传播 RBAC 角色分配可能需要花费几分钟时间。
+> Azure 角色分配可能需要几分钟才能传播。
 
 #### <a name="set-environment-variables"></a>设置环境变量。
 
@@ -106,7 +106,7 @@ Azure 标识客户端库会在运行时读取三个环境变量中的值，以�
 
 [!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
-## <a name="net-code-example-create-a-block-blob"></a>.NET 代码示例：创建块 blob
+## <a name="net-code-example-create-a-block-blob"></a>.NET 代码示例：创建块 Blob
 
 向代码添加以下 `using` 指令，以便使用 Azure 标识和 Azure 存储客户端库。
 

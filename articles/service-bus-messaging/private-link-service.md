@@ -5,14 +5,14 @@ author: spelluru
 ms.author: spelluru
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: 4516405472abf733c8ef06fb5ee5855f8e97d396
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef469eb74c3dd7d82dec908dba8c53136df206e4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85340447"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423416"
 ---
-# <a name="integrate-azure-service-bus-with-azure-private-link"></a>将 Azure 服务总线与 Azure 专用链接集成
+# <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>允许通过专用终结点访问 Azure 服务总线命名空间
 
 使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如 Azure 服务总线、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户服务/合作伙伴服务。
 
@@ -46,7 +46,7 @@ ms.locfileid: "85340447"
 
 - 服务总线命名空间。
 - 一个 Azure 虚拟网络。
-- 虚拟网络中的子网。
+- 虚拟网络中的子网。 可以使用**默认**子网。 
 - 对服务总线命名空间和虚拟网络拥有所有者或参与者权限。
 
 专用终结点和虚拟网络必须位于同一区域。 使用门户选择专用终结点的区域时，只会自动筛选该区域中的虚拟网络。 服务总线命名空间可以位于不同的区域中。 并且，专用终结点使用虚拟网络中的专用 IP 地址。
@@ -58,9 +58,20 @@ ms.locfileid: "85340447"
 1. 登录 [Azure 门户](https://portal.azure.com)。 
 2. 在搜索栏中键入“服务总线”。
 3. 从列表中选择要将专用终结点添加到的“命名空间”。
-4. 选择“设置”下的“网络”选项卡。 
-5. 选择页面顶部的“专用终结点连接”选项卡
-6. 选择页面顶部的“+ 专用终结点”按钮。
+2. 在左侧菜单中，选择 "**设置**" 下的 "**网络**" 选项。 
+
+    > [!NOTE]
+    > 只有**高级**命名空间才会显示 "**网络**" 选项卡。  
+    
+    默认情况下，选择 "**所选网络**" 选项。 如果未在此页上至少添加一个 IP 防火墙规则或虚拟网络，则可以通过公共 internet （使用访问密钥）访问该命名空间。
+
+    :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="网络页-默认" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
+    
+    如果选择 "**所有网络**" 选项，则服务总线命名空间接受来自任何 IP 地址（使用访问密钥）的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。 
+
+    ![防火墙 - 已选择“所有网络”选项](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+5. 若要允许通过专用终结点访问命名空间，请选择页面顶部的 "**专用终结点连接**" 选项卡
+6. 在页面顶部选择“+ 专用终结点”按钮。
 
     ![“添加专用终结点”按钮](./media/private-link-service/private-link-service-3.png)
 7. 在“基本信息”页上执行以下步骤： 

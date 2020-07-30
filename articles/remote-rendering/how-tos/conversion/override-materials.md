@@ -5,23 +5,24 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: how-to
-ms.openlocfilehash: 90653db4c572877a728964851a99beebf2e823a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2e9cb216c100f1732230a90572284bd3f8462584
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80681475"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87433147"
 ---
 # <a name="override-materials-during-model-conversion"></a>在模型转换期间替代材料
 
-在转换过程中，源模型中的材料设置用于定义呈现器使用的[.pbr 材料](../../overview/features/pbr-materials.md)。
+源模型中的材料设置用于定义呈现器使用的[.pbr 材料](../../overview/features/pbr-materials.md)。
 有时[默认转换](../../reference/material-mapping.md)不会提供所需的结果，需要进行更改。
 转换模型以便在 Azure 远程呈现中使用时，可以提供材料覆盖文件来自定义材料转换如何按每个材料进行。
 有关[配置模型转换](configure-model-conversion.md)的部分包含声明材料覆盖文件名的说明。
 
 ## <a name="the-override-file-used-during-conversion"></a>转换期间使用的替代文件
 
-举个简单的例子，假设方框模型有一个称为 "默认" 的材料。 需要调整 albedo 颜色以在 ARR 中使用。
+举个简单的例子，假设方框模型有一个称为 "默认" 的材料。
+此外，假设它的 albedo 颜色需要调整为在 ARR 中使用。
 在这种情况下， `box_materials_override.json` 可以创建文件，如下所示：
 
 ```json
@@ -38,7 +39,7 @@ ms.locfileid: "80681475"
 ]
 ```
 
-该 `box_materials_override.json` 文件放置在输入容器中，并在 `ConversionSettings.json` 旁添加 `box.fbx` ，这会告诉转换在何处找到替代文件（请参阅[配置模型转换](configure-model-conversion.md)）：
+该 `box_materials_override.json` 文件放置在输入容器中，并在 `box.ConversionSettings.json` 旁添加 `box.fbx` ，这会告诉转换在何处找到替代文件（请参阅[配置模型转换](configure-model-conversion.md)）：
 
 ```json
 {
@@ -51,7 +52,7 @@ ms.locfileid: "80681475"
 ### <a name="color-materials"></a>颜色材料
 
 [颜色材料](../../overview/features/color-materials.md)模型描述了与光照无关的持续着色的图面。
-例如，这对于 Photogrammetry 算法创建的资产很有用。
+例如，颜色材料适用于 Photogrammetry 算法创建的资产。
 在 "材料覆盖文件" 中，通过将设置为，可以将材料声明为颜色材料 `unlit` `true` 。
 
 ```json

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 08e70265399a67ee58ad66e06adffbfd30b20e10
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b43b20023aa0d96dcaa3ce79b626d61ec6f6752d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289226"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423825"
 ---
 # <a name="get-started-with-azcopy"></a>AzCopy 入门
 
@@ -97,7 +97,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 若要了解如何验证和分配角色，请参阅[在 Azure 门户中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
 > [!NOTE]
-> 请记住，RBAC 角色分配可能需要最多五分钟的时间进行传播。
+> 请记住，最多需要五分钟的时间才能传播 Azure 角色分配。
 
 如果安全主体已添加到目标容器或目录的访问控制列表 (ACL)，则无需将这些角色之一分配到安全主体。 在 ACL 中，安全主体需要对目标目录拥有写入权限，并对容器和每个父目录拥有执行权限。
 

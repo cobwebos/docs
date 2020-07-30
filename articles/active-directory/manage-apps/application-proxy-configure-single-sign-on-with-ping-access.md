@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53f644203b494e5baf087241e2a4fe669b7db07b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 512aed93906968b14f7c6a13e08f74bbeb2f5f31
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85077891"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87431089"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>使用应用程序代理和 PingAccess 通过基于标头的身份验证进行单一登录
 
@@ -105,7 +105,7 @@ Azure Active Directory （Azure AD）应用程序代理与 PingAccess 合作，�
    ![显示用户和组的列表](./media/application-proxy-configure-single-sign-on-with-ping-access/users-and-groups.png)
 
 1. 选择用于应用程序测试的用户，然后选择 "**选择**"。 确保此测试帐户有权访问本地应用程序。
-1. 选择“分配”。 
+1. 选择“分配”。
 1. 从 "应用程序" 边栏**Single sign-on**中，选择 "  >  **基于标头的**单一登录"。
 
    > [!TIP]
@@ -113,7 +113,7 @@ Azure Active Directory （Azure AD）应用程序代理与 PingAccess 合作，�
 
    ![显示基于标头的登录屏幕和 PingAccess](./media/application-proxy-configure-single-sign-on-with-ping-access/sso-header.png)
 
-1. 选择“保存”。
+1. 选择“保存” 。
 
 然后确保重定向 URL 设置为外部 URL：
 
@@ -121,6 +121,11 @@ Azure Active Directory （Azure AD）应用程序代理与 PingAccess 合作，�
 1. 选择自己的应用程序。
 1. 选择 "**重定向 uri**" 旁边的链接，显示为 web 和公用客户端设置的重定向 uri 的数目。 " ** \<application name> -身份验证**" 页将出现。
 1. 检查前面分配给应用程序的外部 URL 是否位于 "**重定向 uri** " 列表中。 如果没有，请立即添加外部 URL，使用**Web**的重定向 URI 类型，然后选择 "**保存**"。
+
+除了外部 URL 之外，还应将外部 URL 上 Azure Active Directory 的授权终结点添加到重定向 Uri 列表。
+
+`https://*.msappproxy.net/pa/oidc/cb`
+`https://*.msappproxy.net/`
 
 最后，设置本地应用程序，以便用户拥有读取/写入访问权限，而其他应用程序具有读/写访问权限：
 
@@ -139,8 +144,8 @@ Azure Active Directory （Azure AD）应用程序代理与 PingAccess 合作，�
 
 | Azure AD 字段的名称 | PingAccess 字段的名称 | 数据格式 |
 | --- | --- | --- |
-| **应用程序(客户端) ID** | **客户端 ID** | GUID |
-| **目录(租户) ID** | **颁发者** | GUID |
+| **应用程序（客户端） ID** | **客户端 ID** | GUID |
+| **目录（租户）ID** | **** 颁发者 | GUID |
 | `PingAccess key` | **客户端机密** | 随机字符串 |
 
 收集此信息：
@@ -164,11 +169,11 @@ Azure Active Directory （Azure AD）应用程序代理与 PingAccess 合作，�
 **更新 `acceptMappedClaims` 字段：**
 
 1. 以应用程序管理员身份登录到[Azure Active Directory 门户](https://aad.portal.azure.com/)。
-1. 选择“Azure Active Directory” > “应用注册”。   此时将显示应用程序列表。
+1. 选择“Azure Active Directory” > “应用注册”。  此时将显示应用程序列表。
 1. 选择自己的应用程序。
 1. 从应用程序的 "**应用注册**" 页的边栏中，选择 "**清单**"。 此时将显示应用程序注册的清单 JSON 代码。
 1. 搜索 `acceptMappedClaims` 字段，并将值更改为 `True` 。
-1. 选择“保存”。
+1. 选择“保存” 。
 
 ### <a name="use-of-optional-claims-optional"></a>使用可选声明（可选）
 
@@ -201,7 +206,7 @@ AzureAD 中不存在的属性的[声明映射策略（预览）](https://docs.mi
 >
 > 可以通过 PowerShell 或 Microsoft Graph 执行策略定义和分配。 如果要在 PowerShell 中执行这些操作，则可能需要先使用 `New-AzureADPolicy` ，然后使用将其分配给应用程序 `Add-AzureADServicePrincipalPolicy` 。 有关详细信息，请参阅[声明映射策略分配](../develop/active-directory-claims-mapping.md#claims-mapping-policy-assignment)。
 
-示例：
+例如：
 ```powershell
 $pol = New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","JwtClaimType":"employeeid"}]}}') -DisplayName "AdditionalClaims" -Type "ClaimsMappingPolicy"
 

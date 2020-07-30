@@ -8,20 +8,20 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: cc02890cb5293e48a8065b63f4f9c799c5dda7f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 55ee6e99cdf6d77ea1e78799e016d4c276e85fcd
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85081031"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423858"
 ---
-# <a name="security-in-azure-cognitive-search---overview"></a>Azure 认知搜索中的安全性-概述
+# <a name="security-in-azure-cognitive-search---overview"></a>Azure 认知搜索中的安全性 - 概述
 
-本文介绍 Azure 认知搜索中可保护内容和操作的关键安全功能。 
+本文介绍 Azure 认知搜索中可以保护内容和操作的关键安全功能。 
 
-+ 在存储层上，静态加密是在平台级别提供的，但对于想要对用户拥有和 Microsoft 管理的密钥进行双重保护的客户，认知搜索还提供了 "双重加密" 选项。
++ 在存储层上，静态加密是在平台级别进行的，但对于想要对用户自有密钥和 Microsoft 托管密钥提供双重保护的客户，认知搜索还提供了“双重加密”选项。
 
-+ 入站安全保护搜索服务终结点的安全级别：从请求上的 API 密钥到防火墙中的入站规则，到从公共 internet 完全防护服务的专用终结点。
++ 入站安全性通过不断提升的安全性级别来保护搜索服务终结点：从请求所使用的 API 密钥到防火墙中的入站规则，再到全面保护服务不受公共 Internet 影响的专用终结点。
 
 + 出站安全适用于从外部源提取内容的索引器。 对于出站请求，请设置托管标识，使其在访问 Azure 存储、Azure SQL、Cosmos DB 或其他 Azure 数据源的数据时搜索受信任的服务。 托管标识用于替代连接上的凭据或访问密钥。 本文未介绍出站安全性。 有关此功能的详细信息，请参阅[使用托管标识连接到数据源](search-howto-managed-identities-data-sources.md)。
 
@@ -29,45 +29,45 @@ ms.locfileid: "85081031"
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Azure-Cognitive-Search-Whats-new-in-security/player]
 
-## <a name="encrypted-transmissions-and-storage"></a>加密传输和存储
+## <a name="encrypted-transmissions-and-storage"></a>加密的传输和存储
 
-加密在 Azure 认知搜索中很普遍，从连接和传输开始，扩展到磁盘上存储的内容。 对于公共 internet 上的搜索服务，Azure 认知搜索侦听 HTTPS 端口443。 所有客户端到服务的连接都使用 TLS 1.2 加密。 不支持更早的版本（1.0 或 1.1）。
+在 Azure 认知搜索中，加密无处不在：从连接和传输开始，一直延伸到磁盘上存储的内容。 对于公共 Internet 上的搜索服务，Azure 认知搜索会侦听 HTTPS 端口 443。 客户端到服务的所有连接都使用 TLS 1.2 加密。 不支持更早的版本（1.0 或 1.1）。
 
 ### <a name="data-encryption-at-rest"></a>静态数据加密
 
-Azure 认知搜索存储索引定义和内容、数据源定义、索引器定义、技能组合定义和同义词映射。
+Azure 认知搜索存储了索引定义和内容、数据源定义、索引器定义、技能组定义和同义词映射。
 
-在存储层上，使用由 Microsoft 管理的密钥在磁盘上加密数据。 不能打开或关闭加密，也不能在门户中或以编程方式查看加密设置。 加密是完全内部化为的，不影响索引的完成时间或索引大小。 加密自动对所有索引进行，包括对未完全加密的索引（在 2018 年 1 月前创建）的增量更新。
+在整个存储层中，系统使用 Microsoft 管理的密钥在磁盘上对数据进行加密。 你无法在门户中或以编程方式启用或禁用加密，或者查看加密设置。 加密已完全内部化，对完成索引所需的时间或索引大小并无显著影响。 加密自动对所有索引进行，包括对未完全加密的索引（在 2018 年 1 月前创建）的增量更新。
 
 在内部，加密基于 [Azure 存储服务加密](../storage/common/storage-service-encryption.md)，使用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)进行。
 
 > [!NOTE]
 > 静态加密已于 2018 年 1 月 24 日宣布推出并应用于所有区域中的所有服务层级，包括免费层。 对于完全加密，必须删除该日期之前创建的索引并重新生成，以便进行加密。 否则，仅对 1 月 24 日以后添加的新数据进行加密。
 
-### <a name="customer-managed-key-cmk-encryption"></a>客户托管的密钥（CMK）加密
+### <a name="customer-managed-key-cmk-encryption"></a>客户管理的密钥 (CMK) 加密
 
-在磁盘上存储和加密数据和对象之前，需要额外的存储保护的客户可对其进行加密。 此方法基于用户拥有的密钥，通过独立于 Microsoft 的 Azure Key Vault 进行管理和存储。 在磁盘上加密内容之前对其进行加密称为 "双加密"。 目前，可以有选择性地对索引和同义词映射进行选择性地加密。 有关详细信息，请参阅[Azure 认知搜索中客户托管的加密密钥](search-security-manage-encryption-keys.md)。
+对于想要获得额外存储保护的客户，可以在磁盘上存储和加密数据和对象之前，对这些数据和对象进行加密。 此方法基于通过 Azure 密钥保管库管理和存储并独立于 Microsoft 的用户自有密钥。 在磁盘上加密内容之前对其进行加密称为“双重加密”。 目前，可以有选择地对索引和同义词映射进行双重加密。 有关详细信息，请参阅 [Azure 认知搜索中客户管理的加密密钥](search-security-manage-encryption-keys.md)。
 
 > [!NOTE]
-> CMK 加密通常适用于2019年1月之后创建的搜索服务。 它在免费（共享）服务中不受支持。 
+> CMK 加密常用于 2019 年 1 月之后创建的搜索服务。 免费（共享）服务不支持此功能。 
 >
 >启用此功能会增大索引大小，降低查询性能。 根据迄今为止的观察结果，查询时间预期会增加 30%-60%，不过，实际性能根据索引定义和查询类型而有所不同。 由于这种性能影响，我们建议仅对真正需要此功能的索引启用此功能。
 
 <a name="service-access-and-authentication"></a>
 
-## <a name="inbound-security-and-endpoint-protection"></a>入站安全和 endpoint protection
+## <a name="inbound-security-and-endpoint-protection"></a>入站安全性和终结点保护
 
-入站安全功能通过提高安全和复杂性级别来保护搜索服务终结点。 首先，所有请求都需要 API 密钥才能进行身份验证访问。 其次，你可以选择设置限制对特定 IP 地址的访问的防火墙规则。 对于高级保护，第三种方法是启用 Azure 专用链接，以防止所有 internet 流量的服务终结点。
+入站安全性功能通过不断提升的安全性和复杂性级别来保护搜索服务终结点。 首先，所有请求都需要 API 密钥才能进行经过身份验证的访问。 其次，你可以选择设置防火墙规则，以限制对特定 IP 地址的访问。 为了提供高级保护，第三个选项是启用 Azure 专用链接来保护服务终结点不受所有 Internet 流量的影响。
 
-### <a name="public-access-using-api-keys"></a>使用 API 密钥的公共访问
+### <a name="public-access-using-api-keys"></a>使用 API 密钥进行公共访问
 
-默认情况下，通过公有云访问搜索服务，使用基于密钥的身份验证对搜索服务终结点进行管理员或查询访问。 API 密钥是随机生成的数字和字母所组成的字符串。 密钥的类型（管理员或查询）确定访问的级别。 提交有效密钥被视为请求源自受信任实体的证明。 
+默认情况下，将使用基于密钥的身份验证（用于对搜索服务终结点进行管理员或查询访问）通过公有云来访问搜索服务。 API 密钥是随机生成的数字和字母所组成的字符串。 密钥的类型（管理员或查询）确定访问的级别。 提交有效密钥被视为请求源自受信任实体的证明。 
 
-搜索服务有两个访问级别，由以下 API 密钥启用：
+有两个搜索服务访问级别，可通过以下 API 密钥启用它们：
 
 + 管理密钥（允许对搜索服务执行[创建-读取-更新-删除](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)操作的读写访问权限）
 
-+ 查询键（允许只读访问索引的文档集合）
++ 查询密钥（允许对索引的文档集合进行只读访问）
 
 预配服务时会创建*管理员密钥*。 有两个管理密钥，分别指定为*主要*和*辅助*密钥以将它们保持在各自的位置，但事实上是可互换的。 每个服务都有两个管理密钥，以便在转换其中一个时不会丢失服务的访问权限。 可以根据 Azure 安全最佳做法定期[重新生成管理密钥](search-security-api-keys.md#regenerate-admin-keys)，但不能将其添加到管理密钥总数。 每个搜索服务最多有两个管理密钥。
 
@@ -75,13 +75,13 @@ Azure 认知搜索存储索引定义和内容、数据源定义、索引器定�
 
 需要对每个请求进行身份验证，而每个请求由必需密钥、操作和对象组成。 链接在一起后，两个权限级别（完全或只读）加上上下文（例如，索引上的查询操作）便足以针对服务操作提供全面的安全性。 有关密钥的详细信息，请参阅[创建和管理 API 密钥](search-security-api-keys.md)。
 
-### <a name="ip-restricted-access"></a>IP 限制的访问
+### <a name="ip-restricted-access"></a>IP 限制访问
 
-若要进一步控制对搜索服务的访问，可以创建入站防火墙规则，以允许访问特定 IP 地址或某个范围的 IP 地址。 必须通过允许的 IP 地址进行所有客户端连接，否则连接将被拒绝。
+为了进一步控制对搜索服务的访问，可以创建入站防火墙规则，以允许访问特定 IP 地址或某个范围的 IP 地址。 所有客户端连接必须通过允许的 IP 地址建立，否则连接将被拒绝。
 
 可以使用门户[配置入站访问](service-configure-firewall.md)。 
 
-或者，你可以使用管理 REST Api。 使用[IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule)参数的 API 版本2020-03-13，你可以通过标识你想要授予对搜索服务的访问权限的 IP 地址，限制对服务的访问。 
+或者，可以使用管理 REST API。 带有 [IpRule](https://docs.microsoft.com/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service#IpRule) 参数的 API 版本 2020-03-13 允许你标识希望向其授予搜索服务访问权限的 IP 地址（单个或在某个范围内），通过这种方式限制对该服务的访问。 
 
 ### <a name="private-endpoint-no-internet-traffic"></a>专用终结点（无 Internet 流量）
 
@@ -114,7 +114,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 ## <a name="administrative-rights"></a>管理权限
 
-[基于角色的访问（RBAC）](../role-based-access-control/overview.md)是在[azure 资源管理器](../azure-resource-manager/management/overview.md)上构建的用于预配 azure 资源的授权系统。 在 Azure 认知搜索中，资源管理器用于创建或删除服务、管理 API 密钥以及缩放服务。 因此，RBAC 角色分配将确定谁可以执行这些任务，无论他们使用的是[门户](search-manage.md)、 [POWERSHELL](search-manage-powershell.md)还是[管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
+[基于角色的访问（RBAC）](../role-based-access-control/overview.md)是在[azure 资源管理器](../azure-resource-manager/management/overview.md)上构建的用于预配 azure 资源的授权系统。 在 Azure 认知搜索中，资源管理器用于创建或删除服务、管理 API 密钥以及缩放服务。 因此，Azure 角色分配将确定谁可以执行这些任务，无论他们使用的是[门户](search-manage.md)、 [POWERSHELL](search-manage-powershell.md)还是[管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
 
 相反，对服务上托管的内容（如创建或删除索引的能力）的管理权限是授予，如[前一部分](#index-access)中所述。
 
@@ -125,7 +125,7 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 Azure 认知搜索已经过认证，适用于公有云和 Azure 政府的多种全球、区域和行业特定的标准。 有关完整列表，请从官方审核报告页下载[ **Microsoft Azure 符合性产品**白皮书](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/)。
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 + [Azure 安全基础知识](../security/fundamentals/index.yml)
 + [Azure 安全性](https://azure.microsoft.com/overview/security)

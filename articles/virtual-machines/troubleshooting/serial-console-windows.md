@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 4778ea7781d181a89e7a6b2d6c4ad5d474e9b5c9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c30999a5f0239e60c842084b60b44c165fb7182e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005933"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423994"
 ---
 # <a name="azure-serial-console-for-windows"></a>适用于 Windows 的 Azure 串行控制台
 
@@ -26,10 +26,12 @@ ms.locfileid: "87005933"
 
 串行控制台的工作方式与 VM 和虚拟机规模集实例的工作方式相同。 在本文档中，除非另有说明，否则所有对 VM 的提及都将隐式包含虚拟机规模集实例。
 
+在全球 Azure 区域和 Azure 政府公共预览版中，串行控制台已正式发布。 它在 Azure 中国云中尚不可用。
+
 有关适用于 Linux 的串行控制台文档，请参阅[适用于 Linux 的 Azure 串行控制台](serial-console-linux.md)。
 
 > [!NOTE]
-> 串行控制台在全球 Azure 区域中提供正式版，并在 Azure 政府中提供公共预览版。 它在 Azure 中国云中尚不可用。
+> 串行控制台当前与托管的启动诊断存储帐户不兼容。 若要使用串行控制台，请确保使用的是自定义的存储帐户。
 
 
 ## <a name="prerequisites"></a>先决条件

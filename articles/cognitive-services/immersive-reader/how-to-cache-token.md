@@ -9,12 +9,13 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: e652aa29b1c1935fcc4887dbe13ef9b683a8bd05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 70173e1904ce9d7a159532c8962932765060e4d9
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75946162"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406939"
 ---
 # <a name="how-to-cache-the-authentication-token"></a>如何缓存身份验证令牌
 
@@ -22,7 +23,7 @@ ms.locfileid: "75946162"
 
 ## <a name="using-aspnet"></a>使用 ASP.NET
 
-导入**System.identitymodel** NuGet 包，该软件包用于获取令牌。 接下来，使用以下代码获取`AuthenticationResult`，并使用在[创建沉浸式读者资源](./how-to-create-immersive-reader.md)时获取的身份验证值。
+导入**System.identitymodel** NuGet 包，该软件包用于获取令牌。 接下来，使用以下代码获取，并 `AuthenticationResult` 使用在[创建沉浸式读者资源](./how-to-create-immersive-reader.md)时获取的身份验证值。
 
 ```csharp
 private async Task<AuthenticationResult> GetTokenAsync()
@@ -34,9 +35,9 @@ private async Task<AuthenticationResult> GetTokenAsync()
 }
 ```
 
-`AuthenticationResult`对象具有`AccessToken`属性，该属性是使用 SDK 启动沉浸式读取器时将使用的实际标记。 它还包含一个`ExpiresOn`属性，该属性指示令牌将过期的时间。 在启动沉浸式阅读器之前，可以检查令牌是否已过期，并仅在其已过期的情况下获取新令牌。
+`AuthenticationResult`对象具有属性， `AccessToken` 该属性是使用 SDK 启动沉浸式读取器时将使用的实际标记。 它还包含一个 `ExpiresOn` 属性，该属性指示令牌将过期的时间。 在启动沉浸式阅读器之前，可以检查令牌是否已过期，并仅在其已过期的情况下获取新令牌。
 
-## <a name="using-nodejs"></a>使用 node.js
+## <a name="using-nodejs"></a>使用 Node.JS
 
 将[**请求**](https://www.npmjs.com/package/request)npm 包添加到项目。 使用以下代码获取令牌，并使用在[创建沉浸式读者资源](./how-to-create-immersive-reader.md)时获取的身份验证值。
 

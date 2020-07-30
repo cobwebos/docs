@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 03/10/2020
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two-with-js
-ms.openlocfilehash: ed2c59a92f348812afac3e39719d3814f0720621
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 82ff34b945e93ffbf43e3a264a09e0af7b8660e5
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86023034"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405086"
 ---
 # <a name="choose-a-speech-recognition-mode"></a>选择语音识别模式
 
@@ -191,7 +192,7 @@ recognizer.stopContinuousRecognitionAsync(()=>{}, (error)=>{});
 
 ## <a name="dictation"></a>听写
 
-使用连续识别时，可以使用相应的“启用听写”功能启用听写处理。 此模式会促使语音配置实例解释对句子结构（如标点符号）进行的字面描述。 例如，言语“你居住在城镇吗问号”会被解释为文本“你居住在城镇吗？”。
+使用连续识别时，可以使用相应的“启用听写”功能启用听写处理。 此模式将导致语音配置实例解释句子结构的单词说明（如标点符号）。 例如，言语“你居住在城镇吗问号”会被解释为文本“你居住在城镇吗？”。
 
 ::: zone pivot="programming-language-csharp"
 
