@@ -6,12 +6,13 @@ ms.topic: quickstart
 description: 本快速入门演示如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务中对 Java 应用程序进行调试和快速循环访问
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Java, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: ac7a1b37b565f3589b7c049a3c1ed2a84972ded0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-java
+ms.openlocfilehash: c0fd035a0341e5e92b2706d833b24d5e5b87e018
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80239733"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371560"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-java---azure-dev-spaces"></a>快速入门：在 Kubernetes 上使用 Visual Studio Code 和 Java 进行调试和循环访问 - Azure Dev Spaces
 
@@ -38,7 +39,7 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>在 AKS 群集上启用 Azure Dev Spaces
 
-使用 `use-dev-spaces` 命令在 AKS 群集上启用 Dev Spaces，然后按提示操作。 以下命令在 *MyResourceGroup* 组中的 *MyAKS* 群集上启用 Dev Spaces，并创建一个默认开发空间。 
+使用 `use-dev-spaces` 命令在 AKS 群集上启用 Dev Spaces，然后按提示操作。 以下命令在 *MyResourceGroup* 组中的 *MyAKS* 群集上启用 Dev Spaces，并创建一个默认开发空间。
 
 > [!NOTE]
 > `use-dev-spaces` 命令还将安装 Azure Dev Spaces CLI（如果尚未安装）。 无法在 Azure Cloud Shell 中安装 Azure Dev Spaces CLI。
@@ -75,11 +76,11 @@ git clone https://github.com/Azure/dev-spaces
 
 ## <a name="prepare-the-sample-application-in-visual-studio-code"></a>在 Visual Studio Code 中准备示例应用程序
 
-打开 Visual Studio Code，依次选择“文件”、“打开”，导航到 *dev-spaces/samples/java/getting-started/webfrontend* 目录，然后选择“打开”。   
+打开 Visual Studio Code，依次选择“文件”、“打开”，导航到 *dev-spaces/samples/java/getting-started/webfrontend* 目录，然后选择“打开”。  
 
 现在，*webfrontend* 项目便在 Visual Studio Code 中打开。 若要在开发空间中运行应用程序，请在命令面板中使用 Azure Dev Spaces 扩展生成 Docker 和 Helm chart 资产。
 
-若要在 Visual Studio Code 中打开命令面板，请依次选择“视图”、“命令面板”。   开始键入 `Azure Dev Spaces` 并选择“Azure Dev Spaces:  准备 Azure Dev Spaces 的配置文件”。
+若要在 Visual Studio Code 中打开命令面板，请依次选择“视图”、“命令面板”。  开始键入 `Azure Dev Spaces` 并选择“Azure Dev Spaces:准备 Azure Dev Spaces 的配置文件”。
 
 ![准备 Azure Dev Spaces 的配置文件](./media/common/command-palette.png)
 
@@ -98,24 +99,24 @@ git clone https://github.com/Azure/dev-spaces
 
 ## <a name="build-and-run-code-in-kubernetes-from-visual-studio-code"></a>通过 Visual Studio Code 在 Kubernetes 中生成并运行代码
 
-选择左侧的“调试”图标，然后选择顶部的“启动 Java 程序(AZDS)”。  
+选择左侧的“调试”图标，然后选择顶部的“启动 Java 程序(AZDS)”。 
 
 ![启动 Java 程序](media/get-started-java/debug-configuration.png)
 
-此命令在 Azure Dev Spaces 中生成并运行你的服务。 底部的“终端”窗口会显示运行 Azure Dev Spaces 的服务的生成输出和 URL。  “调试控制台”会显示日志输出。 
+此命令在 Azure Dev Spaces 中生成并运行你的服务。 底部的“终端”窗口会显示运行 Azure Dev Spaces 的服务的生成输出和 URL。 “调试控制台”会显示日志输出。
 
 > [!Note]
-> 如果在“命令面板”中看不到任何 Azure Dev Spaces 命令，请确保已安装[适用于 Azure Dev Spaces 的 Visual Studio Code 扩展](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。  另请确认是否在 Visual Studio Code 中打开了 *dev-spaces/samples/java/getting-started/webfrontend* 目录。
+> 如果在“命令面板”中看不到任何 Azure Dev Spaces 命令，请确保已安装[适用于 Azure Dev Spaces 的 Visual Studio Code 扩展](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。 另请确认是否在 Visual Studio Code 中打开了 *dev-spaces/samples/java/getting-started/webfrontend* 目录。
 
 可以通过打开公共 URL 来查看服务是否正在运行。
 
-依次选择“调试”、“停止调试”以停止调试程序。  
+依次选择“调试”、“停止调试”以停止调试程序。 
 
 ## <a name="update-code"></a>更新代码
 
-若要部署服务的更新版本，可以更新项目中的任何文件，然后重新运行“启动 Java 程序(AZDS)”  。 例如：
+若要部署服务的更新版本，可以更新项目中的任何文件，然后重新运行“启动 Java 程序(AZDS)”。 例如：
 
-1. 如果应用程序仍在运行，请依次选择“调试”  和“停止调试”  来停止该应用程序。
+1. 如果应用程序仍在运行，请依次选择“调试”和“停止调试”来停止该应用程序。
 1. 将 [`src/main/java/com/ms/sample/webfrontend/Application.java`中的第 19 行](https://github.com/Azure/dev-spaces/blob/master/samples/java/getting-started/webfrontend/src/main/java/com/ms/sample/webfrontend/Application.java#L19)更新为：
     
     ```java
@@ -123,17 +124,17 @@ git clone https://github.com/Azure/dev-spaces
     ```
 
 1. 保存所做更改。
-1. 重新运行“启动 Java 程序(AZDS)”  。
+1. 重新运行“启动 Java 程序(AZDS)”。
 1. 导航到正在运行的服务并观察所做的更改。
-1. 依次选择“调试”和“停止调试”以停止应用程序   。
+1. 依次选择“调试”和“停止调试”以停止应用程序 。
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>设置并使用用于调试的断点
 
-使用“启动 Java 程序(AZDS)”启动服务  。 这在调试模式下也会运行服务。
+使用“启动 Java 程序(AZDS)”启动服务。 这在调试模式下也会运行服务。
 
-依次选择“视图”、“资源管理器”，导航回到“资源管理器”视图。    打开 *src/main/java/com/ms/sample/webfrontend/Application.java* 并单击第 19 行的某处，将光标置于该处。 若要设置断点，请按 **F9**，或者依次选择“调试”、“切换断点”。  
+依次选择“视图”、“资源管理器”，导航回到“资源管理器”视图。   打开 *src/main/java/com/ms/sample/webfrontend/Application.java* 并单击第 19 行的某处，将光标置于该处。 若要设置断点，请按 **F9**，或者依次选择“调试”、“切换断点”。 
 
-在浏览器中打开服务，你会发现未显示任何消息。 返回 Visual Studio Code，将会看到，第 19 行已突出显示。 设置的断点在第 19 行处暂停了服务。 若要恢复服务，请按 **F5**，或者依次选择“调试”、“继续”。   返回浏览器，你会发现，现在显示了消息。
+在浏览器中打开服务，你会发现未显示任何消息。 返回 Visual Studio Code，将会看到，第 19 行已突出显示。 设置的断点在第 19 行处暂停了服务。 若要恢复服务，请按 **F5**，或者依次选择“调试”、“继续”。  返回浏览器，你会发现，现在显示了消息。
 
 在附加调试器的情况下在 Kubernetes 中运行服务时，你对调试信息（例如调用堆栈、局部变量和异常信息）拥有完全访问权限。
 
@@ -146,7 +147,7 @@ git clone https://github.com/Azure/dev-spaces
 return "Hello from webfrontend in Azure while debugging!";
 ```
 
-保存文件。 依次选择“调试”、“重新开始调试”，或者在“调试”工具栏中选择“重新开始调试”按钮。    
+保存文件。 依次选择“调试”、“重新开始调试”，或者在“调试”工具栏中选择“重新开始调试”按钮。   
 
 ![刷新调试](media/common/debug-action-refresh.png)
 
