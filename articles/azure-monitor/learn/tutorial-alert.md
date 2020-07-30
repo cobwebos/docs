@@ -7,12 +7,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
 ms.custom: mvc
-ms.openlocfilehash: 1c39bfdbcfb924505473b20b3d56a28d54c84f93
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 706f3913e25eca6240c186e45709faf6c77620bf
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505867"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324567"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>使用 Azure Application Insights 监视和警报应用程序的运行状况
 
@@ -73,4 +73,5 @@ Azure Application Insights 可用于监视应用程序，并在其不可用、�
 既已了解如何对问题设置警报，可继续学习下一个教程，了解如何分析用户与应用程序的交互。
 
 > [!div class="nextstepaction"]
-> [了解用户](../../azure-monitor/learn/tutorial-users.md)
+> [了解用户](./tutorial-users.md)
+

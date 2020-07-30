@@ -169,6 +169,14 @@
               href: ./partner-center-portal/offer-creation-checklist.md
             - name: 创建 SaaS 产品/服务
               href: ./partner-center-portal/create-new-saas-offer.md
+            - name: 适用于 SaaS 的 Azure AD 身份验证
+              items:
+                - name: Azure AD 和 SaaS 概述
+                  href: ./azure-ad-saas.md
+                - name: 可发生交易的产品/服务的登陆页
+                  href: ./azure-ad-transactable-saas-landing-page.md
+                - name: 免费或试用版产品/服务的登陆页
+                  href: ./azure-ad-free-or-trial-landing-page.md
             - name: SaaS 履行 API
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:

@@ -7,12 +7,12 @@ author: lgayhardt
 ms.author: lagayhar
 ms.date: 07/3/2019
 ms.custom: mvc
-ms.openlocfilehash: caf8b1899cad95ade6297e78e8f2cf35939ef189
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a08e00b2debce970bdbd385b785806c8636e5946
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77661628"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87318413"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>使用 Azure Application Insights 创建自定义 KPI 仪表板
 
@@ -31,7 +31,7 @@ ms.locfileid: "77661628"
 
 完成本教程：
 
-- 将 .NET 应用程序部署到 Azure 并[启用 Application Insights SDK](../../azure-monitor/app/asp-net.md)。
+- 将 .NET 应用程序部署到 Azure 并[启用 Application Insights SDK](../app/asp-net.md)。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
@@ -127,4 +127,5 @@ Azure Application Insights 日志（分析）提供了丰富的查询语言，�
 现在你已经学会了如何创建自定义仪表板，了解一下 Application Insights 文档的其余部分吧，包括案例研究。
 
 > [!div class="nextstepaction"]
-> [深度诊断](../../azure-monitor/app/devops.md)
+> [深度诊断](../app/devops.md)
+

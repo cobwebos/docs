@@ -7,15 +7,16 @@ ms.service: postgresql
 ms.custom:
 - mvc
 - seo-java-august2019
+- devx-track-java
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: cf03cebcd69bd85a4cc94ceb7e99fd0edef99b58
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b11147c5266be17d188e915bf73a999ea157d24
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80063133"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87321405"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入门：使用 Java 连接到 Azure Database for PostgreSQL 并查询其中的数据 - 单一服务器
 
@@ -35,12 +36,12 @@ ms.locfileid: "80063133"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，搜索并选择已创建的服务器（例如 **mydemoserver**）。
 
-1. 从服务器的“概览”面板中记下“服务器名称”和“管理员用户名”。    如果忘记了密码，也可通过此面板来重置密码。
+1. 从服务器的“概览”面板中记下“服务器名称”和“管理员用户名”。   如果忘记了密码，也可通过此面板来重置密码。
 
     ![Azure Database for PostgreSQL 连接字符串](./media/connect-java/server-details-azure-database-postgresql.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>进行连接，创建表，然后插入数据
-通过以下代码进行连接，然后使用函数和 INSERT  SQL 语句将数据加载到数据库。 使用 [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html)、[createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) 和 [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) 方法来连接到数据库、删除和创建表。 使用 [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) 对象来生成 insert 命令，通过 setString() 和 setInt() 来绑定参数值。 [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) 方法为每组参数运行该命令。 
+通过以下代码进行连接，然后使用函数和 INSERT SQL 语句将数据加载到数据库。 使用 [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html)、[createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) 和 [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) 方法来连接到数据库、删除和创建表。 使用 [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) 对象来生成 insert 命令，通过 setString() 和 setInt() 来绑定参数值。 [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) 方法为每组参数运行该命令。 
 
 将 host、database、user 和 password 参数替换为创建你自己的服务器和数据库时指定的值。
 

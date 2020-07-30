@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: aa140d9faad2de9fb6cb8a720623244da58e3bda
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 13a8596da9afa34d79c5e2d8ec8a59aa746e655c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75468771"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102504"
 ---
-如果希望直入正题，请在 GitHub 上查看或下载所有<a href="https://aka.ms/speech/github-java">语音 SDK Java 示例</a>。 否则就开始吧！
+可以在 GitHub 上查看或下载所有<a href="https://aka.ms/speech/github-java">语音 SDK Java 示例</a>。 
