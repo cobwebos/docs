@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: eb00234fb7522c763dbaa910bee99cf327bebaf1
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 80fcebec76788ca9ec754b35c57f9965f38c2c0e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77597892"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87037093"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>教程：使用 Azure 文件同步扩展 Windows 文件服务器
 
@@ -259,9 +259,8 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 
    ![服务器注册 UI 的屏幕快照](media/storage-sync-files-extend-servers/signin.png)
 
-   | | |
-   | ----- | ----- |
    | 值 | 说明 |
+   | ----- | ----- |
    | **Azure 订阅** | 包含本教程的存储同步服务的订阅。 |
    | **资源组** | 包含存储同步服务的资源组。 就本教程来说，请使用 _afsresgroup101918_。 |
    | **存储同步服务** | 存储同步服务的名称。 就本教程来说，请使用 _afssyncservice02_。 |
@@ -301,9 +300,8 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 
 1. 在“添加服务器终结点”窗格上，输入以下信息，创建服务器终结点  ：
 
-   | | |
-   | ----- | ----- |
    | 值 | 说明 |
+   | ----- | ----- |
    | **已注册的服务器** | 创建的服务器的名称。 就本教程来说，请使用 *afsvm101918*。 |
    | **路径** | 创建的驱动器的 Windows Server 路径。 在本教程中，请使用 *f:\filestosync*。 |
    | **云分层** | 在本教程中，保留为禁用状态。 |

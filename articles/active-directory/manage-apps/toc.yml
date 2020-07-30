@@ -21,8 +21,6 @@
       href: delete-application-portal.md
 - name: 教程
   items:
-    - name: 添加库中未列出的应用
-      href: add-non-gallery-app.md
     - name: 集成库应用（例如 ServiceNow、Salesforce、Dropbox）
       href: /azure/active-directory/saas-apps/
     - name: 添加通过应用程序代理访问的本地应用
@@ -42,6 +40,8 @@
       items:
         - name: 应用集成入门
           href: plan-an-application-integration.md
+        - name: 规划库中未列出的应用
+          href: non-gallery-apps.md
         - name: 规划访问面板部署
           href: access-panel-deployment-plan.md
         - name: 开发人员指南
@@ -106,7 +106,7 @@
             - name: 配置基于 SAML 的单一登录
               items:
                 - name: 配置基于 SAML 的单一登录
-                  href: configure-single-sign-on-non-gallery-applications.md
+                  href: configure-saml-single-sign-on.md
                 - name: 自定义用户属性和声明
                   items:
                     - name: 配置组声明

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2020
-ms.openlocfilehash: c3bb15e494638d543795ac5b95e2513cb5871a2a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dcc8a99480400786a48ff952eb378a57c595464f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118624"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87388180"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>使用 Azure 门户 Azure Database for MySQL 的数据加密
 
@@ -22,13 +22,13 @@ ms.locfileid: "86118624"
 * 必须有一个 Azure 订阅，并且是该订阅的管理员。
 * 在 Azure Key Vault 中，创建密钥保管库和用于客户托管密钥的密钥。
 * Key vault 必须具有以下属性以用作客户管理的密钥：
-  * [软删除](../key-vault/general/overview-soft-delete.md)
+  * [软删除](../key-vault/general/soft-delete-overview.md)
 
     ```azurecli-interactive
     az resource update --id $(az keyvault show --name \ <key_vault_name> -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
     ```
 
-  * [清除保护](../key-vault/general/overview-soft-delete.md#purge-protection)
+  * [清除保护](../key-vault/general/soft-delete-overview.md#purge-protection)
 
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
@@ -37,7 +37,7 @@ ms.locfileid: "86118624"
 * 此密钥必须具有以下属性以用作客户管理的密钥：
   * 无过期日期
   * 未禁用
-  * 能够执行“获取”、“包装密钥”和“解包密钥”操作   
+  * 能够执行“获取”、“包装密钥”和“解包密钥”操作  
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>为密钥操作设置正确的权限
 
@@ -49,7 +49,7 @@ ms.locfileid: "86118624"
 
    ![访问策略概述](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
 
-3. 选择“保存”。
+3. 选择“保存” 。
 
 ## <a name="set-data-encryption-for-azure-database-for-mysql"></a>设置 Azure Database for MySQL 的数据加密
 
@@ -61,7 +61,7 @@ ms.locfileid: "86118624"
 
    ![Azure Database for MySQL 的屏幕截图，其中突出显示了数据加密选项](media/concepts-data-access-and-security-data-encryption/setting-data-encryption.png)
 
-3. 选择“保存”。
+3. 选择“保存” 。
 
 4. 若要确保所有文件（包括临时文件）都是完全加密的，请重新启动服务器。
 

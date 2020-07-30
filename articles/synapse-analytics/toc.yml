@@ -24,6 +24,8 @@
           href: get-started-pipelines.md
         - name: 7 使用 Power BI 进行可视化
           href: get-started-visualize-power-bi.md
+        - name: 8 监视
+          href: get-started-monitor.md
     - name: 备忘单
       href: overview-cheat-sheet.md
     - name: 常见问题解答
@@ -847,6 +849,10 @@
               href: ../data-factory/data-factory-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 连接器故障排除
               href: ../data-factory/connector-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: 复制数据工具故障排除
+              href: ../data-factory/copy-data-tool-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: 自承载集成运行时故障排除
+              href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: 将工具连接到 Synapse Analytics
       items:
         - name: Synapse SQL

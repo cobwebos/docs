@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 0058c250c2d1d29061ac7a4130dffedbcf62a249
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4fabaed28ca186f3ca091107e51ed3900168ba41
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293955"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387721"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>用于 Azure VM 的临时 OS 磁盘
 
@@ -35,7 +35,7 @@ ms.locfileid: "87293955"
 |                             | 持久 OS 磁盘                          | 临时 OS 磁盘                              |
 |-----------------------------|---------------------------------------------|------------------------------------------------|
 | **OS 磁盘的大小限制**      | 2 TiB                                                                                        | 与 VM 大小相对应的缓存大小或 2TiB，具体取决于哪一个更小。 有关**GiB 中的缓存大小**，请[参阅 DS](sizes-general.md)、 [ES](sizes-memory.md)、 [M](sizes-memory.md)、 [FS](sizes-compute.md)和[GS](sizes-previous-gen.md#gs-series)              |
-| **支持的 VM 大小**          | 全部                                                                                          | 支持高级存储的 VM 大小，如 DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、LSv2、M                                               |
+| **支持的 VM 大小**          | 全部                                                                                          | 支持高级存储的 VM 大小，如 DSv1、DSv2、DSv3、Esv3、Fs、FsV2、GS、M                                               |
 | **磁盘类型支持**           | 托管和非托管 OS 磁盘                                                                | 仅托管 OS 磁盘                                                               |
 | **区域支持**              | 所有区域                                                                                  | 所有区域                              |
 | **数据持久性**            | 写入 OS 磁盘的 OS 磁盘数据存储在 Azure 存储中                                  | 写入 OS 磁盘的数据存储到本地 VM 存储，不保存到 Azure 存储。 |

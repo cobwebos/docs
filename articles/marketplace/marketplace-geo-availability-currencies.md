@@ -3,16 +3,16 @@ title: Microsoft 商业市场的地域可用性和货币支持
 description: 商业市场中交易的地域可用性和货币支持
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 01/29/2020
-ms.openlocfilehash: 57d1564c155a553571499a47a5c1d83c80c074b3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 7041221b015465e9db2d67d8dd7760d644c34f0c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120001"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387432"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>商业市场的地域可用性和货币支持
 
@@ -43,9 +43,9 @@ ms.locfileid: "86120001"
 | 巴西                              | BR        | BRL\*        |
 | 文莱                              | BN        | USD          |
 | 保加利亚                            | BG        | EUR          |
+| 佛得角                          | CV        | USD          |
 | 喀麦隆                            | CM        | USD          |
 | Canada                              | CA        | CAD          |
-| 佛得角                          | CV        | USD          |
 | 开曼群岛                      | KY        | USD          |
 | 智利                               | CL        | USD          |
 | 中国\**                            | CN        | 空值          |
@@ -110,8 +110,8 @@ ms.locfileid: "86120001"
 | 纳米比亚                             | NA        | USD          |
 | 尼泊尔                               | NP        | USD          |
 | 荷兰                         | NL        | EUR          |
-| 尼加拉瓜                           | NI        | USD          |
 | 新西兰                         | NZ        | NZD          |
+| 尼加拉瓜                           | NI        | USD          |
 | 尼日利亚                             | NG        | USD          |
 | 挪威                              | 是        | NOK          |
 | 阿曼                                | OM        | USD          |
@@ -148,15 +148,15 @@ ms.locfileid: "86120001"
 | 突尼斯                             | TN        | USD          |
 | 土耳其                              | TR        | USD          |
 | 土库曼斯坦                        | TM        | USD          |
-| 梵蒂冈（教区）             | VA        | EUR          |
-| 维尔京群岛（美属） | VI        | USD          |
 | 乌干达                              | UG        | USD          |
 | 乌克兰                             | UA        | USD          |
 | 阿拉伯联合酋长国                | AE        | USD          |
 | United Kingdom                      | GB        | GBP          |
 | United States                       | 美国        | USD          |
+| 美国维尔京群岛                 | VI        | USD          |
 | 乌拉圭                             | UY        | USD          |
 | 乌兹别克斯坦                          | UZ        | USD          |
+| 梵蒂冈（教区）             | VA        | EUR          |
 | 委内瑞拉                           | VE        | USD          |
 | 越南                             | VN        | USD          |
 | 也门                               | YE        | USD          |
