@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 793a4b3e8ea0dde2e4ad755cbff5a07a36c44cb9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dad4262520da1ec88c634c98aa2af2bf66bab936
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515370"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87322289"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>用于 Azure Monitor 指标警报规则的资源管理器模板示例
 
@@ -23,7 +23,7 @@ ms.locfileid: "86515370"
 有关可用于指标警报规则的资源列表，请参阅 [Azure Monitor 中的指标警报支持的资源](../platform/alerts-metric-near-real-time.md)。 有关警报规则的架构和属性的说明，请参阅[指标警报 - 创建或更新](/rest/api/monitor/metricalerts/createorupdate)。
 
 > [!NOTE]
-> 用于针对资源类型创建指标警报的资源模板：Azure Log Analytics 工作区（即 `Microsoft.OperationalInsights/workspaces`）需要执行其他步骤。 有关详细信息，请参阅[日志指标警报 - 资源模板](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)。
+> 用于针对资源类型创建指标警报的资源模板：Azure Log Analytics 工作区（即 `Microsoft.OperationalInsights/workspaces`）需要执行其他步骤。 有关详细信息，请参阅[日志指标警报 - 资源模板](../platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)。
 
 
 
@@ -3127,7 +3127,7 @@ ms.locfileid: "86515370"
 
 
 ## <a name="availability-test-with-metric-alert"></a>具有指标警报的可用性测试
-[Application Insights 可用性测试](../../azure-monitor/app/monitor-web-app-availability.md)可帮助监视全球各地的网站/应用程序的可用性。 当可用性测试在一定数量的位置失败时，可用性测试警报会通知你。 可用性测试会对与指标警报 (Microsoft.Insights/metricAlerts) 相同的资源类型发出警报。 以下示例将创建一个简单的可用性测试和相关警报。
+[Application Insights 可用性测试](../app/monitor-web-app-availability.md)可帮助监视全球各地的网站/应用程序的可用性。 当可用性测试在一定数量的位置失败时，可用性测试警报会通知你。 可用性测试会对与指标警报 (Microsoft.Insights/metricAlerts) 相同的资源类型发出警报。 以下示例将创建一个简单的可用性测试和相关警报。
 
 > [!NOTE]
 > `&amp`; 是 & 的 HTML 实体引用。 URL 参数仍由单个 & 分隔，但如果在 HTML 中提到了 URL，则需要对其进行编码。 因此，如果 pingURL 参数值中包含“&”，则必须使用“`&amp`;”对其进行转义。
@@ -3266,3 +3266,4 @@ ms.locfileid: "86515370"
 - [获取 Azure Monitor 的其他示例模板](resource-manager-samples.md)。
 - [详细了解警报](../platform/alerts-overview.md)。
 - [获取使用资源管理器模板创建操作组的示例](resource-manager-action-groups.md)
+

@@ -3,12 +3,12 @@ title: 快速入门：通过 LUIS 门户部署应用
 description: 本快速入门介绍如何通过创建预测终结点资源、分配资源、训练和发布应用来部署应用。
 ms.topic: quickstart
 ms.date: 05/06/2020
-ms.openlocfilehash: 743c2fe311eeeabad5a3e957319be3a6e372e74f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3d12fa2956f962fe7a05b9639c1d32a7069635f9
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653231"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336356"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>快速入门：在 LUIS 门户中部署应用
 
@@ -19,7 +19,7 @@ LUIS 应用准备好将话语预测返回到客户端应用程序（例如聊天
 ## <a name="prerequisites"></a>先决条件
 
 * 获取 [Azure 订阅](https://azure.microsoft.com/free)。
-* 完成[上述门户快速入门](get-started-portal-build-app.md)或[下载并导入应用](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json)。
+* 完成[上述门户快速入门](get-started-portal-build-app.md)或[下载并导入应用](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/portal-build-app.json)。
 * 如果应用将 Azure 资源身份验证的日期提前，则[迁移到 Azure 资源](luis-migration-authoring.md)。 电子邮件身份验证生效时，某些门户页面的外观会有所不同。
 
 <a name="create-the-endpoint-resource"></a>
