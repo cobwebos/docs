@@ -8,18 +8,18 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2019
 ms.author: lbosq
-ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 25a93377c1594fd1f45229ed2d837f02e9c0a46b
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: 05fc7a7a5bd7e045125cb303e1f5c29d550c58ef
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118286"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323666"
 ---
 # <a name="quickstart-build-a-graph-database-with-the-java-sdk-and-the-azure-cosmos-db-gremlin-api"></a>快速入门：使用 Java SDK 和 Azure Cosmos DB Gremlin API 构建图形数据库
 
 > [!div class="op_single_selector"]
-> * [Gremlin 控制台](create-graph-gremlin-console.md)
+> * [Gremlin console](create-graph-gremlin-console.md)（Gremlin 控制台）
 > * [.NET](create-graph-dotnet.md)
 > * [Java](create-graph-java.md)
 > * [Node.js](create-graph-nodejs.md)
@@ -61,7 +61,7 @@ ms.locfileid: "85118286"
     cd "C:\git-samples"
     ```
 
-3. 运行下列命令以克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
+3. 运行下列命令，克隆示例存储库。 此命令在计算机上创建示例应用程序的副本。 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-java-getting-started.git
@@ -183,16 +183,16 @@ ms.locfileid: "85118286"
 
 5. 选择“添加属性”，以添加下列每个属性。 注意，可以在图形中为每个人创建唯一属性。 仅 id 键是必需的。
 
-    key|值|说明
+    键|值|注释
     ----|----|----
     id|ashley|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
-    gender|女| 
-    技术 | java | 
+    gender|female| 
+    tech | Java | 
 
     > [!NOTE]
     > 在本快速入门中，将创建未分区的集合。 但是，如果在创建集合过程中通过指定分区键创建了分区的集合，则需在每个新顶点中包括该分区键作为键。 
 
-6. 选择“确定”。 可能需要展开屏幕才能在屏幕底部看到“确定”。
+6. 选择“确定” 。 可能需要展开屏幕才能在屏幕底部看到“确定”。
 
 7. 再次选择“新建顶点”，添加其他新用户。 
 
@@ -200,19 +200,19 @@ ms.locfileid: "85118286"
 
 9. 选择“添加属性”，以添加下列每个属性：
 
-    key|值|说明
+    键|值|注释
     ----|----|----
     id|rakesh|顶点的唯一标识符。 如果未指定 id，将为你生成一个。
-    gender|男| 
-    学校|MIT| 
+    gender|male| 
+    school|MIT| 
 
-10. 选择“确定”。 
+10. 选择“确定” 。 
 
-11. 选择“应用筛选器”按钮（默认为 `g.V()` 筛选器），在图形中显示所有值。 所有用户此时会显示在“结果”列表中。 
+11. 选择“应用筛选器”按钮（使用默认 `g.V()` 筛选器），显示图中的所有值。 所有用户此时会显示在“结果”列表中。 
 
     添加更多数据时，可以使用筛选器来限制结果。 默认情况下，数据资源管理器使用 `g.V()` 检索图形中的所有顶点。 可以更改为其他[图形查询](tutorial-query-graph.md)（如 `g.V().count()`），以 JSON 格式返回图形中所有 顶点的计数。 如果更改了筛选器，请将筛选器更改回 `g.V()`，并选择“应用筛选器”，再次显示所有结果。
 
-12. 现在可以连接 rakesh 与 ashley。 确保“ashley”在“结果”列表中为选中状态，然后选择右下侧“目标”旁边的:::image type="content" source="./media/create-graph-java/edit-pencil-button.png" alt-text="“更改图中某个顶点的目标”。":::   可能需要扩大窗口才能看到该按钮。
+12. 现在可以连接 rakesh 与 ashley。 确保“ashley”在“结果”列表中为选中状态，然后选择右下侧“目标”旁边的:::image type="content" source="./media/create-graph-java/edit-pencil-button.png" alt-text="“更改图中某个顶点的目标”。"::: 可能需要扩大窗口才能看到该按钮。
 
     :::image type="content" source="./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png" alt-text="更改图形中某个顶点的目标 - Azure CosmosDB":::
 
@@ -236,7 +236,7 @@ ms.locfileid: "85118286"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已了解了如何创建 Azure Cosmos DB 帐户，使用数据资源管理器创建图形，以及运行 Java 应用来向图形添加数据。 现在可以使用 Gremlin 构建更复杂的查询，实现功能强大的图形遍历逻辑。 
+在本快速入门中，你已了解了如何创建 Azure Cosmos DB 帐户，使用数据资源管理器创建图形，以及运行 Java 应用来向图形添加数据。 现可使用 Gremlin 构建更复杂的查询，实现功能强大的图形遍历逻辑。 
 
 > [!div class="nextstepaction"]
 > [使用 Gremlin 查询](tutorial-query-graph.md)

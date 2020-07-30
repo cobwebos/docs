@@ -8,18 +8,18 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
-ms.openlocfilehash: cb0af65f938baf24b2af574b21e09e099b70ba85
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 771cdecd6248f0a4fd350dc3d18e1c05edbd5a46
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80060287"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87033864"
 ---
 # <a name="scale-a-web-app-manually-using-powershell"></a>使用 PowerShell 手动缩放 Web 应用
 
 在此方案中，将了解如何创建资源组、应用服务计划和 Web 应用。 然后，将应用服务计划从单个实例扩展到多个实例。
 
-必要时，请使用 [Azure PowerShell 指南](/powershell/azure/overview)中的说明安装 Azure PowerShell，并运行 `Connect-AzAccount` 创建与 Azure 的连接。
+必要时，请使用 [Azure PowerShell 指南](/powershell/azure/)中的说明安装 Azure PowerShell，并运行 `Connect-AzAccount` 创建与 Azure 的连接。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -48,6 +48,6 @@ Remove-AzResourceGroup -Name $ResourceGroupName -Force
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。
 
 可以在 [Azure PowerShell 示例](../samples-powershell.md)中找到 Azure 应用服务 Web 应用的其他 Azure Powershell 示例。

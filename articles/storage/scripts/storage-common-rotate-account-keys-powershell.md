@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 52ebed3de093f15d8188ee5fec49d75d5a4a206d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d532782847ec09d2a480951ecd77ae7746b000c2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80060811"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089357"
 ---
 # <a name="rotate-storage-account-access-keys-with-powershell"></a>使用 PowerShell 轮换存储帐户访问密钥
 
@@ -51,6 +51,6 @@ Remove-AzResourceGroup -Name rotatekeystestrg
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。
 
 有关其他存储 PowerShell 脚本示例，可参阅 [Azure Blob 存储的 PowerShell 示例](../blobs/storage-samples-blobs-powershell.md)。

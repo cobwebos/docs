@@ -10,13 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8418a45c9eba596339999c2bddf937a516d3e2d9
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: eb4a150a1680dd4101249458894ded652cde15a0
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223340"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87338038"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>快速入门：在 Azure Active Directory (Azure AD) 租户中配置应用程序的属性
 
@@ -41,15 +40,15 @@ ms.locfileid: "86223340"
 编辑应用程序属性：
 
 1. 在 Azure AD 门户中，选择“企业应用程序”。 然后找到并选择要配置的应用程序。
-1. 在“管理”部分中，选择“属性”以打开“属性”窗格进行编辑  。
+2. 在“管理”部分中，选择“属性”以打开“属性”窗格进行编辑  。
 
     ![“属性”屏幕的屏幕截图，其中显示可编辑的应用属性。](media/add-application-portal/edit-properties.png)
 
-1. 请花点时间了解可用于配置的选项：
+3. 请花点时间了解可用于配置的选项：
     - “是否启用以供用户登录?”决定分配到应用程序的用户能否登录。
     - “是否需要进行用户分配?”决定了未分配到应用程序的用户能否登录。
     - “是否对用户可见?”决定分配到应用的用户能否在[访问面板](https://myapps.microsoft.com)和 Office 365 应用启动器中看到该应用。 （请参阅 Office 365 或 Microsoft 365 网站左上角的华夫饼菜单。）
-1. 参考下表选择最符合需求的选项。
+4. 参考下表选择最符合需求的选项。
 
    - *已分配*用户的行为：
 
@@ -86,10 +85,10 @@ ms.locfileid: "86223340"
 若要使用自定义徽标，请执行以下操作：
 
 1. 创建一个 215 x 215 像素的徽标，将其保存为 .png 格式。
-1. 在 Azure AD 门户中，选择“企业应用程序”。 然后找到并选择要配置的应用程序。
-1. 在“管理”部分中，选择“属性”以打开“属性”窗格进行编辑  。 
-1. 选择图标以上传徽标。
-1. 完成后，选择“保存”。
+2. 在 Azure AD 门户中，选择“企业应用程序”。 然后找到并选择要配置的应用程序。
+3. 在“管理”部分中，选择“属性”以打开“属性”窗格进行编辑  。 
+4. 选择图标以上传徽标。
+5. 完成后，选择“保存”。
 
     ![显示如何更改徽标的“属性”屏幕的屏幕截图。](media/add-application-portal/change-logo.png)
 

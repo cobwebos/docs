@@ -8,13 +8,13 @@ ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: eliotgra
-ms.custom: mvc
-ms.openlocfilehash: 8b54f216850b77473ea8c272311e3f135f256518
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, devx-track-java
+ms.openlocfilehash: 8acc8b1e32304705b4221fe5570f7445720eafed
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536498"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307907"
 ---
 # <a name="quickstart-provision-a-simulated-device-to-iot-hub-with-symmetric-keys"></a>快速入门：使用对称密钥向 IoT 中心预配模拟设备
 

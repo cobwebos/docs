@@ -9,12 +9,12 @@ ms.subservice: availability
 ms.date: 03/27/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 7a8be9b9cebc72e9605af0aaa581783a75246eef
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: d52882eef56a2f99e778b20707aa3aa1a6d4ff18
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701547"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87088931"
 ---
 # <a name="create-a-zone-redundant-virtual-machine-scale-set-with-azure-cli"></a>使用 Azure CLI 创建区域冗余虚拟机规模集
 此脚本创建跨多个可用性区域运行 Ubuntu 的虚拟机规模集。 运行脚本后，可通过 RDP 访问虚拟机。
@@ -43,4 +43,4 @@ az group delete --name myResourceGroup
 | [az group delete](/cli/azure/ad/group) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](https://docs.microsoft.com/cli/azure/overview)。
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure/overview)。

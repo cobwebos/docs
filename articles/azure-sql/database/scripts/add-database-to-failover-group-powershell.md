@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 6750d7bf4d5593807a35c38fe92b568d1bc06bd7
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: cbd9d08c788dee69990ef08a4fe80dfe03270167
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84197006"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87049441"
 ---
 # <a name="use-powershell-to-add-a-database-to-a-failover-group"></a>使用 PowerShell 将数据库添加到故障转移组
 
@@ -61,6 +61,6 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。
 
 可以在 [Azure SQL 数据库 PowerShell 脚本](../powershell-script-content-guide.md)中找到更多 SQL 数据库 PowerShell 脚本示例。

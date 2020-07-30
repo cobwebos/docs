@@ -253,7 +253,7 @@
           href: connector-azure-database-for-postgresql.md
         - name: Azure 文件存储
           href: connector-azure-file-storage.md
-        - name: Azure SQL Database
+        - name: Azure SQL 数据库
           href: connector-azure-sql-database.md
         - name: Azure SQL 托管实例
           href: connector-azure-sql-managed-instance.md
@@ -732,6 +732,8 @@
           href: connector-troubleshoot-guide.md
         - name: 数据流
           href: data-flow-troubleshoot-guide.md
+        - name: 复制数据工具
+          href: copy-data-tool-troubleshoot-guide.md
         - name: 自承载集成运行时
           href: self-hosted-integration-runtime-troubleshoot-guide.md
         - name: Azure-SSIS 集成运行时
