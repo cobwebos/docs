@@ -9,24 +9,23 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 05/19/2020
+ms.date: 07/17/2020
 ms.author: hahamil
-ms.custom: aaddev, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 0eaa4a828716f1a52161726e768acc817d1fde17
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-javascript
+ms.openlocfilehash: 02652243b3c25c0a02e325c8b7b1d7e7c226abcd
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134170"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87311936"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>快速入门：使用授权代码流在 JavaScript SPA 中登录用户并获取访问令牌
-
-> [!IMPORTANT]
-> 此功能目前处于预览状态。 需同意[补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会更改。
 
 本快速入门通过一个代码示例演示 JavaScript 单页应用程序 (SPA) 如何通过使用授权代码流使用个人帐户、工作帐户和学校帐户将用户登录。 此代码示例还演示如何获取访问令牌来调用 Web API，在本例中为 Microsoft Graph API。 有关说明，请参阅[示例工作原理](#how-the-sample-works)。
 
 本快速入门将 MSAL.js 2.0 与授权代码流配合使用。 若要查看将 MSAL 1.0 与隐式流结合使用的类似快速入门，请参阅 [快速入门：在 JavaScript 单页应用中登录用户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript)。
+
+[!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -44,7 +43,7 @@ ms.locfileid: "86134170"
 > 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，然后将门户会话设置为要使用的 Azure Active Directory (Azure AD) 租户。
 > 1. 选择[“应用注册”](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)。
 > 1. 输入应用程序的名称。
-> 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 
+> 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。
 > 1. 选择“注册”。
 > 1. 转到快速入门窗格，按说明下载并自动配置新应用程序。
 >
@@ -57,7 +56,7 @@ ms.locfileid: "86134170"
 > 1. 选择[“应用注册”](https://go.microsoft.com/fwlink/?linkid=2083908)。
 > 1. 选择“新注册”。
 > 1. “注册应用程序”页显示后，请输入应用程序的名称。
-> 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。 
+> 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。
 > 1. 选择“注册”。 在应用的“概述”页上，记下“应用程序(客户端) ID”值，供稍后使用 。
 > 1. 在已注册的应用程序的左窗格中，选择“身份验证”。
 > 1. 在“平台配置”下，选择“添加平台” 。 在打开的窗格中，选择“单页应用程序”。
@@ -128,7 +127,7 @@ ms.locfileid: "86134170"
 > ```
 >
 > > [!TIP]
-> > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用注册的“概览”页。   
+> > 若要查找“应用程序(客户端) ID”、“目录(租户) ID”和“支持的帐户类型”的值，请转到 Azure 门户中应用注册的“概览”页。
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>步骤 3：应用已配置并可以运行

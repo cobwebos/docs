@@ -3,16 +3,16 @@ title: 生成基于计划的自动化工作流
 description: 教程 - 使用 Azure 逻辑应用创建基于计划的重复自动化工作流
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: 5d4990fd806aed75d9b5e5ddd3e9a615631d9d65
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 41f7b1309a9c7fa9a5f2abb3e2e59f08ef31382d
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82146524"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87124844"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>教程：使用 Azure 逻辑应用创建自动化的基于计划的重复工作流
 
@@ -36,43 +36,41 @@ ms.locfileid: "82146524"
 
 * Azure 订阅。 如果你没有 Azure 订阅，请在开始之前[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 逻辑应用支持的电子邮件提供商（例如 Office 365 Outlook、Outlook.com 或 Gmail）提供的电子邮件帐户。 至于其他提供商，请[查看此处的连接器列表](https://docs.microsoft.com/connectors/)。 本快速入门使用 Office 365 Outlook 帐户。 如果你使用其他电子邮件帐户，则常规步骤保持不变，但 UI 可能稍有不同。
+* 逻辑应用支持的电子邮件提供商（例如 Office 365 Outlook、Outlook.com 或 Gmail）提供的电子邮件帐户。 至于其他提供商，请[查看此处的连接器列表](/connectors/)。 本快速入门使用 Office 365 Outlook 帐户。 如果你使用其他电子邮件帐户，则常规步骤保持不变，但 UI 可能稍有不同。
 
   > [!IMPORTANT]
-  > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
+  > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
 
-* 若要获取路线的行程时间，需要必应地图 API 的访问密钥。 若要获取此密钥，请执行[如何获取必应地图密钥](https://docs.microsoft.com/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key)中的步骤。
-
-## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
-
-使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
+* 若要获取路线的行程时间，需要必应地图 API 的访问密钥。 若要获取此密钥，请执行[如何获取必应地图密钥](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key)中的步骤。
 
 ## <a name="create-your-logic-app"></a>创建逻辑应用
 
-1. 在 Azure 主菜单中，依次选择“创建资源” > “集成” > “逻辑应用”。   
+1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
+
+1. 在 Azure 主菜单中，依次选择“创建资源” > “集成” > “逻辑应用”。
 
    ![创建逻辑应用资源](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-new-logic-app-resource.png)
 
-1. 在“创建逻辑应用”下，提供有关逻辑应用的信息，如下所示。  完成操作后，选择“创建”  。
+1. 在“创建逻辑应用”下，提供有关逻辑应用的信息，如下所示。 完成操作后，选择“创建”。
 
    ![提供有关逻辑应用的信息](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
-   | properties | 值 | 说明 |
+   | 属性 | Value | 描述 |
    |----------|-------|-------------|
-   | **名称** | LA-TravelTime | 逻辑应用的名称，只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号（`(`、`)`）和句点 (`.`)。 此示例使用“LA-TravelTime”。 |
+   | **Name** | LA-TravelTime | 逻辑应用的名称，只能包含字母、数字、连字符 (`-`)、下划线 (`_`)、括号（`(`、`)`）和句点 (`.`)。 此示例使用“LA-TravelTime”。 |
    | **订阅** | <*your-Azure-subscription-name*> | Azure 订阅名称 |
    | **资源组** | LA-TravelTime-RG | 用于组织相关资源的 [Azure 资源组](../azure-resource-manager/management/overview.md)的名称。 此示例使用“LA-TravelTime-RG”。 |
    | **位置** | 美国西部 | 用于存储逻辑应用信息的区域。 此示例使用“美国西部”。 |
-   | **Log Analytics** | 关闭 | 对于诊断日志记录，请保留“关闭”设置。  |
+   | **Log Analytics** | 关闭 | 对于诊断日志记录，请保留“关闭”设置。 |
    ||||
 
-1. 在 Azure 部署你的应用后，在 Azure 工具栏上，选择“通知”   > “转到资源”  ，查看你部署的逻辑应用。
+1. 在 Azure 部署你的应用后，在 Azure 工具栏上，选择“通知” > “转到资源”，查看你部署的逻辑应用。
 
    ![转到新的逻辑应用资源](./media/tutorial-build-scheduled-recurring-logic-app-workflow/go-to-new-logic-app-resource.png)
 
    或者，可以通过在搜索框中键入名称来查找和选择逻辑应用。
 
-   逻辑应用设计器打开并显示一个包含简介视频以及常用触发器和逻辑应用模式的页面。   在“模板”下选择“空白逻辑应用”。
+   逻辑应用设计器打开并显示一个包含简介视频以及常用触发器和逻辑应用模式的页面。 在“模板”下选择“空白逻辑应用”。
 
    ![选择空白逻辑应用模板](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-logic-app-template.png)
 
@@ -80,11 +78,11 @@ ms.locfileid: "82146524"
 
 ## <a name="add-the-recurrence-trigger"></a>添加重复触发器
 
-1. 在逻辑应用设计器上的搜索框中，输入“重复”作为筛选器。 在“触发器”列表中选择“重复”触发器。  
+1. 在逻辑应用设计器上的搜索框中，输入“重复”作为筛选器。 在“触发器”列表中选择“重复”触发器。 
 
    ![添加“重复”触发器](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-schedule-recurrence-trigger.png)
 
-1. 在“重复”形状中选择**省略号** ( **...** ) 按钮，然后选择“重命名”。   重命名触发器并提供以下说明：`Check travel time every weekday morning`
+1. 在“重复”形状中选择**省略号** ( **...** ) 按钮，然后选择“重命名”。  重命名触发器并提供以下说明：`Check travel time every weekday morning`
 
    ![重命名重复触发器说明](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
 
@@ -92,13 +90,13 @@ ms.locfileid: "82146524"
 
    ![更改重复触发器的间隔和频率](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
 
-   | properties | 必选 | 值 | 说明 |
+   | properties | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
-   | 间隔  | 是 | 1 | 在两次检查之间需等待的时间间隔数 |
+   | **时间间隔** | 是 | 1 | 在两次检查之间需等待的时间间隔数 |
    | **频率** | 是 | Week | 用于定期触发的时间单位 |
    |||||
 
-1. 在“间隔”和“频率”下，打开“添加新参数”列表，然后选择要添加到触发器的这些属性。   
+1. 在“间隔”和“频率”下，打开“添加新参数”列表，然后选择要添加到触发器的这些属性。  
 
    * **在这些日期**
    * **在这些小时**
@@ -110,20 +108,20 @@ ms.locfileid: "82146524"
 
    ![提供计划和定期触发详细信息](./media/tutorial-build-scheduled-recurring-logic-app-workflow/recurrence-trigger-property-values.png)
 
-   | properties | 值 | 说明 |
+   | 属性 | Value | 说明 |
    |----------|-------|-------------|
-   | **在这些日期** | 星期一、星期二、星期三、星期四、星期五 | 仅当“频率”设置为“周”时可用  |
-   | **在这些小时** | 7,8,9 | 仅当“频率”设置为“周”或“天”时可用  。 选择一天中的某些小时，用于运行此定期触发。 此示例在 7、8、9 点运行。 |
-   | **在这些分钟** | 0,15,30,45 | 仅当“频率”设置为“周”或“天”时可用  。 选择一天中的某些分钟，用于运行此定期触发。 此示例从零点开始，每隔 15 分钟运行一次。 |
+   | **在这些日期** | 星期一、星期二、星期三、星期四、星期五 | 仅当“频率”设置为“周”时可用 |
+   | **在这些小时** | 7,8,9 | 仅当“频率”设置为“周”或“天”时可用。 选择一天中的某些小时，用于运行此定期触发。 此示例在 7、8、9 点运行。 |
+   | **在这些分钟** | 0,15,30,45 | 仅当“频率”设置为“周”或“天”时可用。 选择一天中的某些分钟，用于运行此定期触发。 此示例从零点开始，每隔 15 分钟运行一次。 |
    ||||
 
-   此触发器在每个工作日每隔 15 分钟触发一次，开始时间为早晨 7:00，结束时间为早晨 9:45。 “预览”框显示定期触发计划。  有关详细信息，请参阅[计划任务和工作流](../connectors/connectors-native-recurrence.md)以及[工作流操作和触发器](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger)。
+   此触发器在每个工作日每隔 15 分钟触发一次，开始时间为早晨 7:00，结束时间为早晨 9:45。 “预览”框显示定期触发计划。 有关详细信息，请参阅[计划任务和工作流](../connectors/connectors-native-recurrence.md)以及[工作流操作和触发器](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger)。
 
 1. 若要立即隐藏触发器的详细信息，请单击形状的标题栏。
 
    ![折叠形状即可隐藏详细信息](./media/tutorial-build-scheduled-recurring-logic-app-workflow/collapse-trigger-shape.png)
 
-1. 保存逻辑应用。 在设计器工具栏上，选择“保存”  。
+1. 保存逻辑应用。 在设计器工具栏上选择“保存”。
 
 逻辑应用现已生成，但除了定期触发，不能执行任何操作。 因此，请添加一项在触发器触发时进行响应的操作。
 
@@ -131,25 +129,25 @@ ms.locfileid: "82146524"
 
 有了触发器以后，即可添加[操作](../logic-apps/logic-apps-overview.md#logic-app-concepts)，用于获取两个地点之间的行程时间。 逻辑应用提供适用于必应地图 API 的连接器，可以方便地获取该信息。 在开始此任务之前，请确保有必应地图 API 密钥，如本教程的先决条件部分所述。
 
-1. 在逻辑应用设计器中的触发器下，选择“新建步骤”。 
+1. 在逻辑应用设计器中的触发器下，选择“新建步骤”。
 
-1. 在“选择操作”下选择“标准”。   在搜索框中输入“必应地图”作为筛选器，然后选择“获取路线”操作。 
+1. 在“选择操作”下选择“标准”。  在搜索框中输入“必应地图”作为筛选器，然后选择“获取路线”操作。
 
    ![选择“获取路线”操作](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-get-route-action.png)
 
-1. 如果没有必应地图连接，系统会提示创建一个连接。 提供以下连接详细信息，然后选择“创建”  。
+1. 如果没有必应地图连接，系统会提示创建一个连接。 提供以下连接详细信息，然后选择“创建”。
 
    ![创建与必应地图 API 的连接](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
-   | properties | 必选 | 值 | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **连接名称** | 是 | BingMapsConnection | 提供连接的名称。 此示例使用“BingMapsConnection”。 |
-   | **API 密钥** | 是 | <*your-Bing-Maps-key*> | 输入以前接收的必应地图密钥。 如果没有必应地图密钥，请了解[如何获取密钥](https://msdn.microsoft.com/library/ff428642.aspx)。 |
+   | **API 密钥** | 是 | <*your-Bing-Maps-key*> | 输入以前接收的必应地图密钥。 如果没有必应地图密钥，请了解[如何获取密钥](/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key)。 |
    |||||
 
 1. 重命名操作并提供以下说明：`Get route and travel time with traffic`
 
-1. 在该操作中打开“添加新参数”列表，然后选择要添加到该操作的这些属性。 
+1. 在该操作中打开“添加新参数”列表，然后选择要添加到该操作的这些属性。
 
    * **优化**
    * **距离单位**
@@ -161,7 +159,7 @@ ms.locfileid: "82146524"
 
    ![提供“获取路线”操作的详细信息](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
 
-   | properties | 必选 | 值 | 说明 |
+   | 属性 | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **路标 1** | 是 | <*start-location*> | 路线起点 |
    | **路标 2** | 是 | <*end-location*> | 路由终点 |
@@ -170,7 +168,7 @@ ms.locfileid: "82146524"
    | **旅行模式** | 否 | 驾车 | 路线的旅行模式。 选择“驾车”模式。 |
    ||||
 
-   有关这些参数的详细信息，请参阅 [Calculate a route](https://docs.microsoft.com/bingmaps/rest-services/routes/calculate-a-route)（计算路线）。
+   有关这些参数的详细信息，请参阅 [Calculate a route](/bingmaps/rest-services/routes/calculate-a-route)（计算路线）。
 
 1. 保存逻辑应用。
 
@@ -180,11 +178,11 @@ ms.locfileid: "82146524"
 
 有时候，可能需要对工作流中的数据运行操作，再在以后的操作中使用相关结果。 若要保存这些结果，方便以后重复使用或引用，可以创建变量来存储这些经处理的结果。 只能在逻辑应用的顶层创建变量。
 
-默认情况下，以前的“获取路线”操作通过“旅行期间交通”属性返回特定交通状况下的当前行程时间（以秒为单位）。   将该值改为转换为分钟并进行存储以后，该值在以后就会更易于重复使用，不需再次转换。
+默认情况下，以前的“获取路线”操作通过“旅行期间交通”属性返回特定交通状况下的当前行程时间（以秒为单位）。  将该值改为转换为分钟并进行存储以后，该值在以后就会更易于重复使用，不需再次转换。
 
-1. 在“获取路线”操作下，选择“新建步骤”。  
+1. 在“获取路线”操作下，选择“新建步骤”。 
 
-1. 在“选择操作”下，选择“内置”。   在搜索框中输入“变量”，然后选择“初始化变量”操作。 
+1. 在“选择操作”下，选择“内置”。  在搜索框中输入“变量”，然后选择“初始化变量”操作。
 
    ![选择“初始化变量”操作](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-initialize-variable-action.png)
 
@@ -192,14 +190,14 @@ ms.locfileid: "82146524"
 
 1. 提供变量的详细信息，如下所述：
 
-   | properties | 必选 | 值 | 说明 |
+   | 属性 | 必须 | 值 | 描述 |
    |----------|----------|-------|-------------|
    | **名称** | 是 | travelTime | 变量的名称。 此示例使用“travelTime”。 |
-   | 类型  | 是 | Integer | 变量的数据类型 |
+   | 类型 | 是 | Integer | 变量的数据类型 |
    | **值** | 否| 一个表达式，可将当前的行程时间从秒转换为分钟（参见此表下面的步骤）。 | 变量的初始值 |
    ||||
 
-   1. 若要创建“值”属性的表达式，请单击该框，使动态内容列表显示。  必要时可扩大浏览器，直至列表显示。 在动态内容列表中，选择“表达式”。 
+   1. 若要创建“值”属性的表达式，请单击该框，使动态内容列表显示。 必要时可扩大浏览器，直至列表显示。 在动态内容列表中，选择“表达式”。
 
       ![提供“初始化变量”操作的信息](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings.png)
 
@@ -210,19 +208,19 @@ ms.locfileid: "82146524"
       ![输入此表达式：“div(,60)”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-2.png)
 
    1. 将光标置于表达式中左括号 ( **(** ) 和逗号 ( **,** ) 之间。 
-   选择“动态内容”。 
+   选择“动态内容”。
 
       ![位置光标，选择“动态内容”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-3.png)
 
-   1. 在动态内容列表中，选择“旅行期间交通”  。
+   1. 在动态内容列表中，选择“旅行期间交通”。
 
       ![选择“旅行期间交通”属性](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-4.png)
 
-   1. 在表达式中解析属性值后，选择“确定”。 
+   1. 在表达式中解析属性值后，选择“确定”。
 
       ![若要完成构建表达式，请选择“确定”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-5.png)
 
-      “值”属性现在如下所示： 
+      “值”属性现在如下所示：
 
       ![“值”属性与已解析表达式一起出现](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-6.png)
 
@@ -232,9 +230,9 @@ ms.locfileid: "82146524"
 
 ## <a name="compare-the-travel-time-with-limit"></a>将行程时间与限制进行比较
 
-1. 在上一个操作下，选择“新建步骤”。 
+1. 在上一个操作下，选择“新建步骤”。
 
-1. 在“选择操作”下，选择“内置”。   在搜索框中，输入“条件”作为筛选器。 从操作列表中选择“条件”操作。 
+1. 在“选择操作”下，选择“内置”。  在搜索框中，输入“条件”作为筛选器。 从操作列表中选择“条件”操作。
 
    ![选择“条件”操作](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-condition-action.png)
 
@@ -242,13 +240,13 @@ ms.locfileid: "82146524"
 
 1. 生成一个条件，用于检查 **travelTime** 属性值是否超过指定的限制，如下所示：
 
-   1. 在条件中，单击条件左侧的“选择值”框。 
+   1. 在条件中，单击条件左侧的“选择值”框。
 
-   1. 从显示的动态内容列表中的“变量”  下，选择 **travelTime** 属性。
+   1. 从显示的动态内容列表中的“变量”下，选择 **travelTime** 属性。
 
       ![构建条件的左侧](./media/tutorial-build-scheduled-recurring-logic-app-workflow/build-condition-left-side.png)
 
-   1. 在中间的比较框中，选择“大于”  运算符。
+   1. 在中间的比较框中，选择“大于”运算符。
 
    1. 在条件右侧的“选择值”框中输入以下限制：`15`
 
@@ -264,14 +262,14 @@ ms.locfileid: "82146524"
 
 现在，请添加一项操作，该操作在行程时间超出限制时向你发送电子邮件。 该电子邮件包括当前的行程时间以及行完指定的路线所需的额外时间。
 
-1. 在条件的 **If true** 分支中，选择“添加操作”。 
+1. 在条件的 **If true** 分支中，选择“添加操作”。
 
-1. 在“选择操作”下选择“标准”。   在搜索框中，输入“发送电子邮件”。 此列表将返回许多结果，因此请先选择所需的电子邮件连接器，例如：
+1. 在“选择操作”下选择“标准”。  在搜索框中，输入“发送电子邮件”。 此列表将返回许多结果，因此请先选择所需的电子邮件连接器，例如：
 
    ![选择所需的电子邮件连接器](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-action-send-email.png)
 
-   * 对于 Azure 工作或学校帐户，请选择“Office 365 Outlook”。 
-   * 对于个人 Microsoft 帐户，请选择“Outlook.com”。 
+   * 对于 Azure 工作或学校帐户，请选择“Office 365 Outlook”。
+   * 对于个人 Microsoft 帐户，请选择“Outlook.com”。
 
 1. 显示连接器的操作后，选择要使用的“发送电子邮件”操作，例如：
 
@@ -283,25 +281,25 @@ ms.locfileid: "82146524"
 
 1. 重命名操作并提供以下说明：`Send email with travel time`
 
-1. 在“收件人”  框中，输入收件人的电子邮件地址。 出于测试目的，请使用你的电子邮件地址。
+1. 在“收件人”框中，输入收件人的电子邮件地址。 出于测试目的，请使用你的电子邮件地址。
 
-1. 在“主题”框中指定电子邮件的主题，并包括 **travelTime** 变量。 
+1. 在“主题”框中指定电子邮件的主题，并包括 **travelTime** 变量。
 
    1. 输入带尾随空格的文本 `Current travel time (minutes):`。 
 
-   1. 在动态内容列表中的“变量”下，选择“查看更多”。  
+   1. 在动态内容列表中的“变量”下，选择“查看更多”。 
 
       ![查找“travelTime”变量](./media/tutorial-build-scheduled-recurring-logic-app-workflow/find-travelTime-variable.png)
 
-   1. “travelTime”显示在“变量”下面后，选择“travelTime”。   
+   1. “travelTime”显示在“变量”下面后，选择“travelTime”。  
 
       ![输入主题文本以及可返回行程时间的表达式](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-travelTime-variable.png)
 
-1. 在“正文”框中，指定电子邮件正文的内容。 
+1. 在“正文”框中，指定电子邮件正文的内容。
 
    1. 输入带尾随空格的文本 `Add extra travel time (minutes):`。
 
-   1. 在动态内容列表中，选择“表达式”。 
+   1. 在动态内容列表中，选择“表达式”。
 
       ![生成电子邮件正文的表达式](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings.png)
 
@@ -309,19 +307,19 @@ ms.locfileid: "82146524"
 
       ![输入用于计算额外行程时间（单位：分钟）的表达式](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-2.png)
 
-   1. 将光标置于表达式中左括号 ( **(** ) 和逗号 ( **,** ) 之间。 选择“动态内容”。 
+   1. 将光标置于表达式中左括号 ( **(** ) 和逗号 ( **,** ) 之间。 选择“动态内容”。
 
       ![继续生成用于计算额外行程时间（单位：分钟）的表达式](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-3.png)
 
-   1. 在“变量”下选择“travelTime”。  
+   1. 在“变量”下选择“travelTime”。 
 
       ![选择要在表达式中使用的“travelTime”属性](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-4.png)
 
-   1. 在表达式中解析属性后，选择“确定”。 
+   1. 在表达式中解析属性后，选择“确定”。
 
       ![在“正文”属性解析后，选择“确定”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-5.png)
 
-      “正文”属性现在如下所示： 
+      “正文”属性现在如下所示：
 
       ![解析了表达式中的“正文”属性](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-6.png)
 
@@ -333,7 +331,7 @@ ms.locfileid: "82146524"
 
 ## <a name="run-your-logic-app"></a>运行逻辑应用
 
-若要手动启动逻辑应用，请在设计器工具栏中选择“运行”  。
+若要手动启动逻辑应用，请在设计器工具栏中选择“运行”。
 
 * 如果当前的行程时间始终没有超出限制，则逻辑应用不会执行任何其他操作，只是等待下一个时间间隔，然后重新进行检查。 
 
@@ -345,7 +343,7 @@ ms.locfileid: "82146524"
 
 祝贺！你现已创建并运行基于计划的重复逻辑应用。 
 
-若要创建其他使用“重复”触发器的逻辑应用，请检查以下模板，这些模板在创建逻辑应用之后即可使用： 
+若要创建其他使用“重复”触发器的逻辑应用，请检查以下模板，这些模板在创建逻辑应用之后即可使用：
 
 * 获取发送给你的每日提醒。
 * 删除较旧的 Azure Blob。
@@ -355,13 +353,13 @@ ms.locfileid: "82146524"
 
 不再需要示例逻辑应用时，请删除包含该逻辑应用和相关资源的资源组。 
 
-1. 在 Azure 主菜单中转到“资源组”，然后选择逻辑应用的资源组。 
+1. 在 Azure 主菜单中转到“资源组”，然后选择逻辑应用的资源组。
 
-1. 在资源组菜单中，选择“概述” > “删除资源组”。   
+1. 在资源组菜单中，选择“概述” > “删除资源组”。  
 
    ![“概览”>“删除资源组”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/delete-resource-group.png)
 
-1. 输入资源组名称作为确认，然后选择“删除”。 
+1. 输入资源组名称作为确认，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 
