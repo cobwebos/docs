@@ -3,12 +3,12 @@ title: 配置自定义 Linux 容器
 description: 了解如何在 Azure App Service 中配置自定义 Linux 容器。 本文介绍最常见的配置任务。
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: df766c289ac9ece4c1dc1fbdc65d49ae1306a592
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9a3e360270ac388d0f8434a9184d39d602c98e9e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87008585"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422770"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>为 Azure App Service 配置自定义 Linux 容器
 
@@ -63,7 +63,7 @@ SSH 实现容器和客户端之间的安全通信。 为了使自定义容器支
          && echo "root:Docker!" | chpasswd 
     ```
 
-    此配置不允许外部连接到容器。 SSH 仅通过 `https://<app-name>.scm.azurewebsites.net` 发布凭据提供并经过身份验证。
+    此配置不允许从外部建立到容器的连接。 SSH 仅通过 `https://<app-name>.scm.azurewebsites.net` 发布凭据提供并经过身份验证。
 
 - 将[此 sshd_config 文件](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config)添加到映像存储库，并使用[copy](https://docs.docker.com/engine/reference/builder/#copy)指令将文件复制到 */etc/ssh/* 目录中。 有关*sshd_config*文件的详细信息，请参阅[OpenBSD 文档](https://man.openbsd.org/sshd_config)。
 
@@ -136,9 +136,9 @@ wordpress:
 
 #### <a name="supported-options"></a>支持的选项
 
-- 命令
+- command
 - entrypoint
-- environment
+- 环境
 - image
 - ports
 - restart
@@ -155,10 +155,6 @@ wordpress:
 
 > [!NOTE]
 > 公共预览版中将忽略未显式调用的任何其他选项。
-
-## <a name="configure-vnet-integration"></a>配置 VNet 集成
-
-将自定义容器与 VNet 集成结合使用时，可能需要额外的容器配置。 请参阅[将应用与 Azure 虚拟网络集成](../web-sites-integrate-with-vnet.md)。
 
 [!INCLUDE [robots933456](../../../includes/app-service-web-configure-robots933456.md)]
 

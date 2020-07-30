@@ -3,12 +3,13 @@ title: 使用 Cloud Native Buildpack 生成映像
 description: 在不使用 Dockerfile 的情况下，使用 az acr pack build 命令从应用生成容器映像并将其推送到 Azure 容器注册表。
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: c42bde6bbab5973094302a2d41f004d7600bdf9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 1892f4c20eb75e5e95140c829c49a708a81c2184
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79087070"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408010"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>使用 Cloud Native Buildpack 从应用生成映像并推送该映像
 

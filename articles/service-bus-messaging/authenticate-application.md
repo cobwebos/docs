@@ -3,12 +3,12 @@ title: 对访问 Azure 服务总线实体的应用程序进行身份验证
 description: 本文介绍如何对使用 Azure Active Directory 访问 Azure 服务总线实体（队列、主题等）的应用程序进行身份验证
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 3f94f17a538fc86615f4ffeb8f351beb99e0cb33
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6191534bbc7cad6815072099b8c7a847a712365d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372342"
+ms.locfileid: "87423161"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>使用 Azure Active Directory 对应用程序进行身份验证和授权，使之能够访问 Azure 服务总线实体
 Azure 服务总线支持使用 Azure Active Directory (Azure AD) 授权对服务总线实体（队列、主题、订阅或筛选器）的请求。 可以通过 Azure AD 使用基于角色的访问控制 (RBAC) 授予对服务主体的访问权限，该服务主体可能是用户、组或应用程序服务主体。 若要详细了解角色和角色分配，请参阅[了解不同的角色](../role-based-access-control/overview.md)。
@@ -49,7 +49,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 - **订阅**：角色分配适用于订阅的所有资源组中的所有服务总线资源。
 
 > [!NOTE]
-> 请记住，RBAC 角色分配可能需要最多五分钟的时间进行传播。 
+> 请记住，Azure 角色分配可能需要长达五分钟才能传播。 
 
 有关如何定义内置角色的详细信息，请参阅[了解角色定义](../role-based-access-control/role-definitions.md#management-and-data-operations)。 有关创建 Azure 自定义角色的详细信息，请参阅[azure 自定义角色](../role-based-access-control/custom-roles.md)。
 
@@ -151,7 +151,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 
 ## <a name="next-steps"></a>后续步骤
 - 若要了解有关 RBAC 的详细信息，请参阅[什么是 azure 基于角色的访问控制（AZURE RBAC）](../role-based-access-control/overview.md)？
-- 若要了解如何使用 Azure PowerShell、Azure CLI 或 REST API 分配和管理 RBAC 角色分配，请参阅以下文章：
+- 若要了解如何分配和管理 Azure PowerShell、Azure CLI 或 REST API 的 Azure 角色分配，请参阅以下文章：
     - [使用 Azure PowerShell 管理基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-powershell.md)  
     - [使用 Azure CLI 管理基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-cli.md)
     - [使用 REST API 管理基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-rest.md)

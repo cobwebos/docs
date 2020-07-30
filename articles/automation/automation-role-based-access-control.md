@@ -6,12 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: a970122c5f034e6215d2e829657c9eec99f14371
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c7051cca9029283b150eea0519aa7432d6a9c937
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279876"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420475"
 ---
 # <a name="manage-role-permissions-and-security"></a>管理角色权限和安全性
 
@@ -338,7 +338,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) 列出指定范围内的 Azure AD RBAC 角色分配。 在没有任何参数的情况下，此 cmdlet 返回在订阅下进行的所有角色分配。 使用 `ExpandPrincipalGroups` 参数可列出针对指定用户和该用户所在组的访问权限分配。
+[AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0)列出指定范围内的 Azure 角色分配。 在没有任何参数的情况下，此 cmdlet 返回在订阅下进行的所有角色分配。 使用 `ExpandPrincipalGroups` 参数可列出针对指定用户和该用户所在组的访问权限分配。
 
 **示例：** 使用以下 cmdlet 列出自动化帐户中的所有用户及其角色。
 

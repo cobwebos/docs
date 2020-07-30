@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/03/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: ae08589785d8a482801c71ce3641ba0d66d11133
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 441d830c7512b7d06c5d4f3e64dc59844b764453
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84782256"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387160"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 用户预配服务 SCIM 2.0 协议合规性的已知问题和解决方法
 
@@ -42,7 +42,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 不能。 由于已构成对编码为与较旧行为配合使用的 SCIM 应用的重大更改，更改不会自动应用于现有应用。
 
-修补程序发布后，更改会应用于 Azure 门户中配置的所有新的[非库 SCIM 应用](../manage-apps/configure-single-sign-on-non-gallery-applications.md)。
+修补程序发布后，更改会应用于 Azure 门户中配置的所有新的非库 SCIM 应用。
 
 有关如何迁移预先存在的用户预配作业以包含最新修补程序的信息，请参阅下一部分。
 

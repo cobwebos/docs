@@ -3,12 +3,13 @@ title: 主动了解建议问题-QnA Maker
 description: 通过主动学习提高知识库的质量。 查看、接受或拒绝，添加时不删除或更改现有问题。
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: bb95ddc40e122e2589d0396b94f0de921aab9350
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-javascript
+ms.openlocfilehash: fc7aebc3df2d14c78230d112e3e807d8d98fb047
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053940"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406973"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>接受知识库中的活动学习建议问题
 
@@ -142,7 +143,7 @@ JSON 正文具有几个设置：
 |`feedbackRecords`|array|反馈列表。|
 |`userId`|string|接受建议问题的人员的用户 ID。 用户 ID 格式由您来了解。 例如，电子邮件地址可以是体系结构中的有效用户 ID。 可选。|
 |`userQuestion`|string|用户查询的确切文本。 必需。|
-|`qnaID`|数字|[GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到的问题 ID。 |
+|`qnaID`|number|[GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)中找到的问题 ID。 |
 
 示例 JSON 正文如下所示：
 
@@ -334,7 +335,7 @@ async callTrain(stepContext){
 
 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 有关使用主动学习的最佳做法，请参阅[最佳做法](../Concepts/best-practices.md#active-learning)。
 

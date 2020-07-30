@@ -3,12 +3,12 @@ title: 结合使用 Azure 资源的托管标识与 Azure 服务总线
 description: 本文介绍如何使用托管标识访问 Azure 服务总线实体（队列、主题和订阅）。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 01fe6c59ad878276619a96666e2da82b6a1b1fe9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 7fbf0ec36f54f9ba5f8593094dbb0231881cbaef
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371220"
+ms.locfileid: "87423127"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>使用 Azure Active Directory 对托管标识进行身份验证，以便访问 Azure 服务总线资源
 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)是一项跨 Azure 功能，可便于用户创建与其中运行应用程序代码的部署关联的安全标识。 然后可以将该标识与访问控制角色进行关联，后者授予的自定义权限可用于访问应用程序需要的特定 Azure 资源。
@@ -58,7 +58,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 - **订阅**：角色分配适用于订阅的所有资源组中的所有服务总线资源。
 
 > [!NOTE]
-> 请记住，RBAC 角色分配可能需要最多五分钟的时间进行传播。 
+> 请记住，Azure 角色分配可能需要长达五分钟才能传播。 
 
 有关如何定义内置角色的详细信息，请参阅[了解角色定义](../role-based-access-control/role-definitions.md#management-and-data-operations)。 有关创建 Azure 自定义角色的详细信息，请参阅[azure 自定义角色](../role-based-access-control/custom-roles.md)。
 

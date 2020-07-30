@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: ec4d91d90a952805781d6d38a0fc8a8fcef84f39
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 496d99b3d871c66e2557e1f384bb4480cd8b0831
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283463"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423144"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure 操作安全性最佳做法
 本文提供了用于保护 Azure 中的数据、应用程序和其他资产的一系列操作最佳做法。
@@ -55,7 +55,7 @@ Azure 操作安全性是指用户可用于在 Azure 中保护其数据、应用�
 ## <a name="organize-azure-subscriptions-into-management-groups"></a>将 Azure 订阅组织到管理组中
 如果你的组织有多个订阅，则可能需要一种方法来高效地管理这些订阅的访问权限、策略和符合性。 [Azure 管理组](/azure/governance/management-groups/create)提供了高于订阅的范围级别。 可将订阅组织到名为“管理组”的容器中，并将治理条件应用到管理组。 管理组中的所有订阅都将自动继承应用于管理组的条件。
 
-可以在目录中构建管理组和订阅的灵活结构。 为每个目录指定了一个称为根管理组的顶级管理组。 此根管理组内置在层次结构中，包含其所有下级管理组和订阅。 根管理组允许在目录级别应用全局策略和 RBAC 分配。
+可以在目录中构建管理组和订阅的灵活结构。 为每个目录指定了一个称为根管理组的顶级管理组。 此根管理组内置在层次结构中，包含其所有下级管理组和订阅。 根管理组允许在目录级别应用全局策略和 Azure 角色分配。
 
 下面是管理组使用方面的一些最佳做法：
 

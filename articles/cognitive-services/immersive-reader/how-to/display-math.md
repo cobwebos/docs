@@ -9,12 +9,13 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: pasta
-ms.openlocfilehash: e01cc9e8cedb6c38da0b56e04419c706d5d0566e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 6bde75fe0fb856633d7849173faf21db76edc950
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75946118"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406905"
 ---
 # <a name="how-to-display-math-in-the-immersive-reader"></a>如何在沉浸式阅读器中显示数学
 
@@ -22,7 +23,7 @@ ms.locfileid: "75946118"
 MIME 类型可通过沉浸式读取器[区块](../reference.md#chunk)进行设置。 有关详细信息，请参阅[支持的 MIME 类型](../reference.md#supported-mime-types)。
 
 ## <a name="send-math-to-the-immersive-reader"></a>向沉浸式读者发送数学
-为了向沉浸式读者发送数学，请提供包含 MathML 的区块，并将 MIME 类型设置为```application/mathml+xml```;
+为了向沉浸式读者发送数学，请提供包含 MathML 的区块，并将 MIME 类型设置为 ```application/mathml+xml``` ;
 
 例如，如果内容为以下内容：
 

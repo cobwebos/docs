@@ -6,18 +6,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 7a6105e8742a4cb3d2f113c6ef723f6171baf4d9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ccf4ad960abfd737a9a05d8fdc77a8bb1ea92d2d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328148"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417108"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>启用混合虚拟机的用于 VM 的 Azure Monitor
 本文介绍如何为 Azure 之外的虚拟机（包括本地和其他云环境）启用用于 VM 的 Azure Monitor。
 
 > [!IMPORTANT]
-> 启用混合 Vm 的建议方法是首先为[服务器启用 Azure Arc](/azure-arc/servers/overview.md) ，以便可以使用类似于 Azure vm 的进程为用于 VM 的 Azure Monitor 启用 vm。 本文介绍如果选择不使用 Azure Arc，如何载入混合 Vm。
+> 启用混合 Vm 的建议方法是首先为[服务器启用 Azure Arc](../../azure-arc/servers/overview.md) ，以便可以使用类似于 Azure vm 的进程为用于 VM 的 Azure Monitor 启用 vm。 本文介绍如果选择不使用 Azure Arc，如何载入混合 Vm。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -31,7 +31,7 @@ Azure 之外的虚拟机需要用于 Azure Vm 的相同 Log Analytics 代理和�
 有关部署 Log Analytics 代理的详细信息，请参阅[将 Windows 计算机连接到 Azure Monitor](../platform/agent-windows.md)或[将 Linux 计算机连接到 Azure Monitor](../platform/agent-linux.md) 。 本文提供了依赖关系代理的详细信息。 
 
 ## <a name="firewall-requirements"></a>防火墙要求
-[Log Analytics 代理概述](..//platform/log-analytics-agent.md#network-requirements)中提供了 Log Analytics 代理的防火墙要求。 用于 VM 的 Azure Monitor 映射依赖项代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。 映射数据始终由 Log Analytics 代理传输到 Azure Monitor 服务 - 要么采用直接传输的方式，要么通过 [Operations Management Suite 网关](../../azure-monitor/platform/gateway.md)进行传输（如果 IT 安全策略不允许网络中的计算机连接到 Internet）。
+[Log Analytics 代理概述](../platform/log-analytics-agent.md#network-requirements)中提供了 Log Analytics 代理的防火墙要求。 用于 VM 的 Azure Monitor 映射依赖项代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。 映射数据始终由 Log Analytics 代理传输到 Azure Monitor 服务 - 要么采用直接传输的方式，要么通过 [Operations Management Suite 网关](../../azure-monitor/platform/gateway.md)进行传输（如果 IT 安全策略不允许网络中的计算机连接到 Internet）。
 
 
 ## <a name="dependency-agent"></a>依赖关系代理

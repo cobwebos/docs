@@ -2,19 +2,19 @@
 title: Azure Functions 预热触发器
 description: 了解如何在 Azure Functions 中使用预热触发器。
 documentationcenter: na
-author: alexkarcher-msft
+author: craigshoemaker
 manager: gwallace
 keywords: azure 函数，函数，事件处理，预热，冷启动，高级，动态计算，无服务器体系结构
 ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
-ms.author: alkarche
-ms.openlocfilehash: 013001eebeec232cc60e31f1a850aeab4fd6c905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: cshoe
+ms.openlocfilehash: dade31fd9a5a75c875274ea45607fea81a2de027
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982235"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383709"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions 预热触发器
 

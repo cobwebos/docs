@@ -10,16 +10,17 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: d76f3afa3a831f402f93322ecec350bfdb0c788d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-javascript
+ms.openlocfilehash: afc49e959061bcd2327f1c3a4f988c9ed6e5ce11
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166019"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87414014"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>在应用程序中嵌入视频索引器小组件
 
-本文介绍如何在应用中嵌入视频索引器小组件。 视频索引器支持在您的应用程序中嵌入三种类型的小组件：*认知见解*、*播放器*和*编辑器*。
+本文介绍如何在应用中嵌入视频索引器小组件。 视频索引器支持将三类小组件嵌入应用：认知见解、播放器和编辑器。
 
 从版本2开始，小组件基 URL 包含指定帐户的区域。 例如，美国西部区域中的帐户将生成：`https://www.videoindexer.ai/embed/insights/.../?location=westus2`。
 
@@ -29,11 +30,11 @@ ms.locfileid: "86166019"
 
 认知见解小组件包括从视频索引过程中提取的所有视觉见解。 认知见解小组件支持以下可选 URL 参数：
 
-|名称|定义|说明|
+|名称|定义|描述|
 |---|---|---|
 |`widgets` | 用逗号分隔的字符串 | 允许您控制要呈现的见解。<br/>示例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` 仅呈现人员和关键字 UI insights。<br/>可用选项：人脉、animatedCharacters、关键字、标签、情绪、情感、主题、关键帧、脚本、ocr、发言人、场景和 namedEntities。|
 |`controls`|用逗号分隔的字符串|允许您控制要呈现的控件。<br/>示例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` 仅呈现搜索选项和 "下载" 按钮。<br/>可用选项： "搜索"、"下载"、"预设" 和 "语言"。|
-|`language`| (语言名称的短语言代码) |控制见解语言。<br/>示例： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>或 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
+|`language`|短语言代码（语言名称）|控制见解语言。<br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>或 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | 短语言代码 | 控制 UI 的语言。 默认值为 `en`。 <br/>示例：`locale=de`。|
 |`tab` | 默认选定的选项卡 | 控制默认呈现的 "**见解**" 选项卡。 <br/>示例： `tab=timeline` 在选择 "**时间线**" 选项卡的情况上呈现见解。|
 |`location` ||`location`参数必须包含在嵌入的链接中，请参阅[如何获取区域名称](regions.md)。 如果你的帐户为预览版，则 `trial` 应将其用于位置值。 `trial`参数的默认值 `location` 。| 
@@ -42,12 +43,12 @@ ms.locfileid: "86166019"
 
 可使用播放机小组件通过自适应比特率流式传输视频。 播放机小组件支持以下可选 URL 参数。
 
-|名称|定义|说明|
+|名称|定义|描述|
 |---|---|---|
 |`t` | 开始时间（秒） | 使播放机从指定的时间点开始播放。<br/> 示例：`t=60`。 |
 |`captions` | 语言代码 | 在加载小组件时提取指定语言的标题，在 "**标题**" 菜单中可用。<br/> 示例：`captions=en-US`。 |
 |`showCaptions` | 布尔值 | 使播放器与已启用的字幕一起加载。<br/> 示例：`showCaptions=true`。 |
-|`type`| | 激活音频播放机外观 () 中删除视频部分。<br/> 示例：`type=audio`。 |
+|`type`| | 激活音频播放器外观（视频部分被删除）。<br/> 示例：`type=audio`。 |
 |`autoplay` | 布尔值 | 指示播放机是否应在加载时开始播放视频。 默认值为 `true`。<br/> 示例：`autoplay=false`。 |
 |`language`/`locale` | 语言代码 | 控制播放器语言。 默认值为 `en-US`。<br/>示例：`language=de-DE`。|
 |`location` ||`location`参数必须包含在嵌入的链接中，请参阅[如何获取区域名称](regions.md)。 如果你的帐户为预览版，则 `trial` 应将其用于位置值。 `trial`参数的默认值 `location` 。| 
@@ -78,9 +79,9 @@ ms.locfileid: "86166019"
 
 1. 登录到[视频索引器](https://www.videoindexer.ai/)网站。
 1. 选择要使用的视频，并按 "**播放**"。
-1. 选择想要 (**认知见解**、**播放器**或**编辑器**) 的小组件类型。
+1. 选择所需的小组件类型（**认知见解**、**播放器**或**编辑**）。
 1. 单击 " ** &lt; / &gt; 嵌入**"。
-5. 复制嵌入代码 (出现在 "**将嵌入的代码复制**到**共享 & 嵌入**" 对话框) 中。
+5. 复制嵌入代码（在 "**共享 & 嵌入**" 对话框中的 "**复制嵌入代码**" 中显示）。
 6. 将代码添加到应用。
 
 ### <a name="private-content"></a>专用内容
@@ -111,7 +112,7 @@ ms.locfileid: "86166019"
 
 如果实现自己的播放器代码，并将其与认知见解小组件集成，则需负责验证来自 VideoIndexer.ai 的消息源。
 
-### <a name="embed-widgets-in-your-app-or-blog-recommended"></a>在应用或博客中嵌入小组件 (建议的) 
+### <a name="embed-widgets-in-your-app-or-blog-recommended"></a>在应用或博客中嵌入小组件（推荐）
 
 本部分介绍如何实现两个视频索引器小组件之间的交互，以便当用户在应用上选择见解控件时，播放机将跳到相关时刻。
 
@@ -233,13 +234,13 @@ ms.locfileid: "86166019"
 
 ## <a name="adding-subtitles"></a>添加字幕
 
-如果将视频索引器见解嵌入到自己的[Azure Media Player](https://aka.ms/azuremediaplayer)，则可以使用 `GetVttUrl` 方法 (副标题) 获取隐藏式字幕。 你还可以从视频索引器 AMP 插件调用 JavaScript 方法 `getSubtitlesUrl` ， (如前文所述) 所示。
+如果使用自己的[Azure Media Player](https://aka.ms/azuremediaplayer)嵌入视频索引器见解，则可以使用 `GetVttUrl` 方法获取隐藏式字幕（副标题）。 还可以从视频索引器 AMP 插件调用 JavaScript 方法 `getSubtitlesUrl` （如前文所述）。
 
 ## <a name="customizing-embeddable-widgets"></a>自定义可嵌入式小组件
 
 ### <a name="cognitive-insights-widget"></a>认知见解小组件
 
-您可以选择所需的见解类型。 为此，请将它们指定为以下 URL 参数的值，该参数将添加到从 API 或 web 应用获取 (的嵌入代码中) ： `&widgets=<list of wanted widgets>` 。
+您可以选择所需的见解类型。 为此，请将它们指定为以下 URL 参数的值，该参数将添加到从 API 或 web 应用获取的嵌入代码中： `&widgets=<list of wanted widgets>` 。
 
 可能的值包括： `people` 、 `animatedCharacters` 、 `keywords` 、 `labels` 、 `sentiments` 、 `emotions` 、 `topics` `keyframes` `transcript` `ocr` `speakers` `scenes` 、、、、、和 `namedEntities` 。
 
@@ -247,7 +248,7 @@ ms.locfileid: "86166019"
 
 `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords`
 
-iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<YourTitle>` 即可。  (它自定义) 的 HTML `<title>` 值。
+iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<YourTitle>` 即可。 （它自定义 HTML `<title>` 值）。
    
 例如，如果需要为 iframe 窗口提供标题“MyInsights”，则 URL 将如下所示：
 
@@ -279,12 +280,12 @@ iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<You
 
 请参阅包含视频索引器 API 和小组件示例的[代码示例](https://github.com/Azure-Samples/media-services-video-indexer/tree/master/Embedding%20widgets)存储库：
 
-| 文件/文件夹                       | 说明                                |
+| 文件/文件夹                       | 描述                                |
 |-----------------------------------|--------------------------------------------|
 | `azure-media-player`              | 在自定义 Azure Media Player 中加载视频索引器视频。                        |
 | `azure-media-player-vi-insights`  | 使用自定义 Azure Media Player 嵌入 VI Insights。                             |
 | `control-vi-embedded-player`      | 嵌入 VI 播放机并从外部控制它。                                    |
-| `custom-index-location`           | 嵌入自定义外部位置的 VI Insights (可以是客户) 的 blob。     |
+| `custom-index-location`           | 嵌入自定义外部位置的 VI Insights （可以是客户 a blob）。     |
 | `embed-both-insights`             | 每个 VI Insights 的基本用法都是播放器和见解。                            |
 | `embed-insights-with-AMP`         | 使用自定义 Azure Media Player 嵌入 VI Insights 小组件。                      |
 | `customize-the-widgets`           | 将 VI 小组件嵌入自定义选项。                                     |

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 06/12/2020
-ms.openlocfilehash: 234217b6571307db04941cc0b9989d3438cde1b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bb213776d41c07238fcaba1ccdd4e06f5d5bbb5f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090172"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420883"
 ---
 # <a name="train-wide--deep-recommender"></a>训练 Wide & Deep 推荐器
 本文介绍了如何使用 Azure 机器学习设计器（预览版）中的“训练 Wide & Deep 推荐器”模块，来训练建议模型。 本模块基于由 Google 提出的 Wide & Deep 学习。
@@ -105,7 +105,7 @@ Wide & Deep 推荐器将这些方法结合在一起，即结合使用协作筛�
 
     此超参数确定每个训练步骤的步骤大小，同时不断接近损失函数的最小值。 学习速率过高可能导致学习跳升超过最小值，而学习速率过小可能会导致收敛问题。
 
-7.  **交叉特征维度**：键入交叉用户 ID 和项 ID 特征的维度。 
+7.  **交叉功能维度**：通过输入所需的用户 id 和项目 id 功能键入维度。 
 
     默认情况下，Wide & Deep 推荐器对用户 ID 和项目 ID 功能执行跨产品转换。 将根据此数字对交叉结果进行哈希处理，以确保维持该维度。
 

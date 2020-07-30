@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 5d478723af7d13cc3480f6c2a80bf9b76ba4b84f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4b52fe22e455f5b0ebce6960b40bcc80c46079c3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091345"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421342"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制
 
@@ -34,9 +34,9 @@ RBAC 使用角色分配对服务主体有效地应用权限集。 安全主体�
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>角色分配对文件和目录级访问控制列表的影响
 
-虽然使用 RBAC 角色分配是一种强大的访问权限控制机制，但对 ACL 而言，这种机制并不精细。 RBAC 的最小粒度在容器级别，其评估优先级高于 ACL。 因此，如果将角色分配给容器范围内的某个安全主体，则无论 ACL 分配如何，该安全主体对于该容器中的所有目录和文件都具有与该角色关联的授权级别。
+虽然使用 Azure 角色分配是一种强大的机制来控制访问权限，但它是相对于 Acl 的一种非常相当的粒度机制。 RBAC 的最小粒度在容器级别，其评估优先级高于 ACL。 因此，如果将角色分配给容器范围内的某个安全主体，则无论 ACL 分配如何，该安全主体对于该容器中的所有目录和文件都具有与该角色关联的授权级别。
 
-通过某个[内置角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)或某个自定义角色授予安全主体 RBAC 数据权限后，在授权请求时首先评估这些权限。 如果请求的操作由安全主体的 RBAC 分配授权，则立即解析授权，不执行额外的 ACL 检查。 或者，如果安全主体没有 RBAC 分配或请求的操作与分配的权限不匹配，则通过执行 ACL 检查来确定安全主体是否有权执行请求的操作。
+通过某个[内置角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)或某个自定义角色授予安全主体 RBAC 数据权限后，在授权请求时首先评估这些权限。 如果请求的操作受到安全主体的 Azure 角色分配的授权，则会立即解决授权，并且不执行任何其他 ACL 检查。 或者，如果安全主体没有 Azure 角色分配，或者请求的操作与分配的权限不匹配，则执行 ACL 检查来确定安全主体是否有权执行请求的操作。
 
 > [!NOTE]
 > 如果为安全主体分配了“存储 Blob 数据所有者”内置角色，则会将安全主体视为“超级用户”并向其授予对所有转变操作（包括设置目录或文件的所有者，以及设置他们不是所有者的目录或文件的 ACL）的完全访问权限。 超级用户访问是唯一获准的更改资源所有者的方式。
@@ -333,7 +333,7 @@ az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Data Lake Storage Gen2 是否支持 ACL 继承？
 
-Azure RBAC 分配支持继承。 分配从订阅、资源组和存储帐户资源向下传递到容器资源。
+Azure 角色分配将继承。 分配从订阅、资源组和存储帐户资源向下传递到容器资源。
 
 ACL 不支持继承。 但是，可以使用默认 ACL 来设置父目录下创建的子目录和文件的 ACL。 
 

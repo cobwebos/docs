@@ -3,19 +3,34 @@ title: 排查 .NET SDK Azure Cosmos DB HTTP 408 或请求超时问题
 description: 如何诊断和修复 .NET SDK 请求超时异常
 author: j82w
 ms.service: cosmos-db
-ms.date: 07/13/2020
+ms.date: 07/29/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 29b0c6237ae04ea5da9ec496498fc7c20890b173
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3d6fed539581b2d1add87ade92e34bcf2e1913e8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294041"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87417601"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout"></a>诊断和解决 Azure Cosmos DB .NET SDK 请求超时
 如果 SDK 在超时限制之前无法完成请求，则会出现 HTTP 408 错误。
+
+## <a name="customizing-the-timeout-on-the-azure-cosmos-net-sdk"></a>自定义 Azure Cosmos .NET SDK 的超时
+
+SDK 具有两个不同的方法来控制超时，每个都有不同的作用域。
+
+### <a name="requesttimeout"></a>RequestTimeout
+
+使用 `CosmosClientOptions.RequestTimeout` （或 `ConnectionPolicy.RequestTimeout` SDK V2）配置，可以设置影响每个单个网络请求的超时。  用户启动的操作可以跨多个网络请求（例如，可能会受到限制），此配置将适用于重试时的每个网络请求。 这不是端到端操作请求超时。
+
+### <a name="cancellationtoken"></a>CancellationToken
+
+SDK 中的所有异步操作都有一个可选的 CancellationToken 参数。 此[CancellationToken](https://docs.microsoft.com/dotnet/standard/threading/how-to-listen-for-cancellation-requests-by-polling)在整个操作中跨所有网络请求使用。 在网络请求之间，如果相关令牌已过期，则可能会检查 CancellationToken 并取消操作。 应使用 CancellationToken 来定义操作范围的近似预期超时。
+
+> [!NOTE]
+> CancellationToken 是一种机制，库将在取消时检查取消操作，而[不会导致无效状态](https://devblogs.microsoft.com/premier-developer/recommended-patterns-for-cancellationtoken/)。 当取消中定义的时间已启动时，该操作可能不会完全取消，而是在该时间启动后，它会在执行此操作时取消。
 
 ## <a name="troubleshooting-steps"></a>疑难解答步骤
 下面的列表包含请求超时异常的已知原因和解决方案。

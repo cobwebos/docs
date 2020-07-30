@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: f7aca2820e599c4f3dad364f1ea14eadc634a548
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c6a779deef3ed1dc0a4d5e83c38f483776adf6fe
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519708"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387364"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
 安全中心从 Azure 虚拟机 (VM)、虚拟机规模集、IaaS 容器和非 Azure 计算机（包括本地计算机）收集数据，以监视安全漏洞和威胁。 数据是使用 Log Analytics 代理收集的，该代理从计算机中读取各种与安全相关的配置和事件日志，然后将数据复制到工作区进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。
@@ -211,15 +211,17 @@ ms.locfileid: "86519708"
     - 如果环境中的 Log Analytics 代理安装在客户端工作站上并向现有的 Log Analytics 工作区报告，请查看 [Azure 安全中心支持的操作系统](security-center-os-coverage.md)列表以确保操作系统受支持。 有关详细信息，请参阅[现有 Log Analytics 客户](./faq-azure-monitor-logs.md)。
  
 ### <a name="turn-off-automatic-provisioning"></a>关闭自动预配 <a name="offprovisioning"></a>
-随时可以关闭资源的自动预配，在安全策略中关闭此设置即可。 
+若要禁用 Log Analytics 代理的自动预配：
 
+1. 在门户的“安全中心”菜单中，选择“定价和设置”。
+2. 选择相关订阅。
 
-1. 返回到“安全中心”主菜单，选择“安全策略”。
-2. 在希望禁用自动预配的订阅对应的行上，单击“编辑设置”。
-3. 在“安全策略 - 数据收集”页的“自动预配”下，选择“关闭”  。
-4. 选择“保存”。
+   ![选择订阅][7]
 
-   ![禁用自动预配][6]
+3. 选择“数据收集”。
+4. 在 "**自动设置**" 下，选择 "**关闭**" 以禁用自动设置。
+5. 选择“保存” 。 
+
 
 自动预配处于禁用状态（关闭）时，不会显示默认的工作区配置部分。
 

@@ -3,12 +3,12 @@ title: 使用 Azure Active Directory 授予访问权限
 description: 本文提供有关使用 Azure Active Directory 授权访问事件中心资源的信息。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: cb55a716498bc50dff72c0d98943de407a367d4a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: c6d1be2825ea716c72d70cd38babbb2d95083198
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371492"
+ms.locfileid: "87413385"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>使用 Azure Active Directory 授权访问事件中心资源
 Azure 事件中心支持使用 Azure Active Directory (Azure AD) 授权对事件中心资源的请求。 可以通过 Azure AD 使用基于角色的访问控制 (RBAC) 授予对服务主体的访问权限，该服务主体可能是用户或应用程序服务主体。 若要详细了解角色和角色分配，请参阅[了解不同的角色](../role-based-access-control/overview.md)。
@@ -49,7 +49,7 @@ Azure 提供以下 Azure 内置角色，用于授权使用 Azure AD 和 OAuth �
 - **订阅**：角色分配将应用到订阅的所有资源组中的所有事件中心资源。
 
 > [!NOTE]
-> - 请记住，RBAC 角色分配可能需要最多五分钟的时间进行传播。 
+> - 请记住，Azure 角色分配可能需要长达五分钟才能传播。 
 > - 此内容适用于事件中心及用于 Apache Kafka 的事件中心。 有关用于 Kafka 的事件中心支持的详细信息，请参阅[用于 Kafka 的事件中心 - 安全性和身份验证](event-hubs-for-kafka-ecosystem-overview.md#security-and-authentication)。
 
 

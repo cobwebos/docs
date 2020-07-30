@@ -9,16 +9,16 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 219d2b972089f9d3b7f84caa8b527474ac241c4f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a1f977cef614a52853407c0d0665399f1a249c53
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374161"
+ms.locfileid: "87422056"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>转换到 Azure Monitor 中的指标
 
-Azure 存储现在将指标集成到 Azure Monitor 平台。 **2023 年8月 31**日存储分析度量值，也称为*经典指标*。 如果使用经典指标，请确保在该日期之前过渡到 Azure Monitor 中的指标。 本文将帮助你进行转换。
+Azure 存储现在将指标集成到 Azure Monitor 平台。 本文将帮助你进行转换。
 
 ## <a name="steps-to-complete-the-transition"></a>完成转换的步骤
 

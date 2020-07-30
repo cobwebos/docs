@@ -2,13 +2,13 @@
 title: 部署已启用 GPU 的容器实例
 description: 了解如何使用 GPU 资源部署 Azure 容器实例，以运行计算密集型容器应用。
 ms.topic: article
-ms.date: 07/02/2020
-ms.openlocfilehash: 3ddeb7da2667b774724fe05227cefeec5227101a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/22/2020
+ms.openlocfilehash: 19240560baa0cebdb6777d7b63d8c91832b12e1a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076867"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387077"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>部署使用 GPU 资源的容器实例
 
@@ -33,14 +33,11 @@ ms.locfileid: "87076867"
 
 ## <a name="about-gpu-resources"></a>关于 GPU 资源
 
-> [!IMPORTANT]
-> GPU 资源仅在请求后可用。 若要请求访问 GPU 资源，请提交 [Azure 支持请求][azure-support]。
-
 ### <a name="count-and-sku"></a>计数和 SKU
 
-若要在容器实例中使用 GPU，请使用以下信息指定 GPU 资源  ：
+若要在容器实例中使用 GPU，请使用以下信息指定 GPU 资源**：
 
-* **计数** - GPU 数量：1、2 或 4    。
+* **Count** -gpu 数： **1**、 **2**或**4**。
 * **SKU** -GPU SKU： **K80**、 **P100**或**V100**。 每个 SKU 都映射到以下支持 Azure GPU 的 VM 系列中的 NVIDIA Tesla GPU：
 
   | SKU | VM 系列 |
@@ -52,6 +49,9 @@ ms.locfileid: "87076867"
 [!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
 部署 GPU 资源时，请设置适合工作负载的 CPU 和内存资源，最多可设置为上表所示的最大值。 这些值当前大于容器组中可用的 CPU 和内存资源（不含 GPU 资源）。  
+
+> [!IMPORTANT]
+> GPU 资源的默认[订阅限制](container-instances-quotas.md)（配额）因 SKU 而异。 P100 和 V100 Sku 的默认 CPU 限制最初设置为0。 若要请求增加可用区域，请提交[Azure 支持请求][azure-support]。
 
 ### <a name="things-to-know"></a>使用须知
 

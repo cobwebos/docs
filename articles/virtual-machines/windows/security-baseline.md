@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: abdf84a4266b0bc57d74f2219fdaece8dd193086
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 10802cd141e0b10e30cb01d3d1dc385aedf7fc1e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133021"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387007"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>适用于 Windows 虚拟机的 Azure 安全基线
 
 适用于 Windows 虚拟机的 Azure 安全基线包含有助于改进部署安全状况的建议。
 
-此服务的基线提取自 [Azure 安全基准版本 1.0](../../security/benchmarks/overview.md)，该版本提供了有关如何在 Azure 上利用我们的最佳做法指南来保护云解决方案的建议。
+此服务的基线摘自 [Azure 安全基准版本 1.0](../../security/benchmarks/overview.md)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
 
 有关详细信息，请参阅 [Azure 安全基线概述](../../security/benchmarks/security-baselines-overview.md)。
 
@@ -114,7 +114,7 @@ ms.locfileid: "87133021"
 
 **Azure 安全中心监视**：是
 
-**责任**：客户
+责任：客户
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
@@ -350,7 +350,7 @@ ms.locfileid: "87133021"
 
 Azure 安全中心监视：不可用
 
-责任：客户
+**责任**：客户
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
@@ -428,7 +428,7 @@ Azure 安全中心监视：不可用
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指导**：使用 Azure Active Directory (Azure AD) 作为中心身份验证和授权系统。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会进行加盐操作、哈希操作并安全地存储用户凭据。 你可以使用托管标识向支持 Azure AD 身份验证的任何服务进行身份验证，包括 Key Vault，而无需在代码中使用任何凭据。 在虚拟机上运行的代码可以使用其托管标识来请求支持 Azure AD 身份验证的服务的访问令牌。
+**指导**：使用 Azure Active Directory (Azure AD) 作为中心身份验证和授权系统。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。 你可以使用托管标识向支持 Azure AD 身份验证的任何服务进行身份验证，包括 Key Vault，而无需在代码中使用任何凭据。 在虚拟机上运行的代码可以使用其托管标识来请求支持 Azure AD 身份验证的服务的访问令牌。
 
 * [如何创建和配置 Azure AD 实例](../../active-directory-domain-services/tutorial-create-instance.md)
 
@@ -688,7 +688,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
-**指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪虚拟机及相关资源。 定期协调清单，并确保及时从订阅中删除未经授权的资源。
+**指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪虚拟机及相关资源。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
 * [如何创建其他 Azure 订阅](../../cost-management-billing/manage/create-subscription.md)
 
@@ -766,7 +766,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：是
 
-**责任**：客户
+责任：客户
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：仅使用已批准的 Azure 服务
 
@@ -849,7 +849,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：不可用
 
-**责任**：客户
+责任：客户
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2：建立安全的操作系统配置
 
@@ -897,7 +897,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全存储 Azure 资源的配置
 
@@ -977,7 +977,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：是
 
-**责任**：客户
+责任：客户
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
@@ -991,7 +991,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
-**指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据移动到更安全的位置，例如 Azure Key Vault。
+**指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
 * [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -1047,7 +1047,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：是
 
-**责任**：客户
+责任：客户
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整系统备份，并备份客户管理的所有密钥
 
@@ -1091,7 +1091,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 * [VM 的软删除](../../backup/soft-delete-virtual-machines.md)
 
-* [Azure Key Vault 软删除概述](../../key-vault/general/overview-soft-delete.md)
+* [Azure Key Vault 软删除概述](../../key-vault/general/soft-delete-overview.md)
 
 **Azure 安全中心监视**：是
 
@@ -1151,7 +1151,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
-**指南**：使用连续导出功能导出 Azure 安全中心警报和建议，以帮助确定 Azure 资源的风险。 使用连续导出功能可手动或以连续不断的方式导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Azure Sentinel。
+**指南**：使用连续导出功能导出 Azure 安全中心警报和建议，以帮助确定 Azure 资源的风险。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Azure Sentinel。
 
 * [如何配置连续导出](../../security-center/continuous-export.md)
 

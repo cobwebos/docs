@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 50398632f47d889ecb79b32faef94c9c5923789c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dfdb717a27af8dc7f3186ac7afdff4d1eb3d79f5
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531143"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420832"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>了解实时（JIT） VM 访问
 
@@ -67,13 +67,17 @@ ms.locfileid: "86531143"
 
 ### <a name="what-permissions-are-needed-to-configure-and-use-jit"></a>配置和使用 JIT 需要哪些权限？
 
-如果要创建可用于 JIT 的自定义角色，你将需要以下详细信息：
+如果要创建可用于 JIT 的自定义角色，则需要下表中的详细信息。
+
+> [!TIP]
+> 若要为需要请求对 VM 的 JIT 访问权限的用户创建最小特权角色，而不执行其他任何 JIT 操作，请使用安全中心 GitHub 社区页面中的[JitLeastPrivilegedRole 脚本](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role)。
 
 | 使用户能够： | 要设置的权限|
 | --- | --- |
 | 配置或编辑 VM 的 JIT 策略 | *将这些“操作”分配给角色：*  <ul><li>在与 VM 关联的订阅或资源组的作用域中：<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> 在虚拟机的订阅或资源组的作用域中： <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
 |请求 JIT 对 VM 的访问权限 | *将这些“操作”分配给用户：*  <ul><li>在与 VM 关联的订阅或资源组的作用域中：<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action` </li><li>在与 VM 关联的订阅或资源组的作用域中：<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/*/read` </li><li>  在订阅或资源组或 VM 的作用域中：<br/> `Microsoft.Compute/virtualMachines/read` </li><li>  在订阅或资源组或 VM 的作用域中：<br/> `Microsoft.Network/networkInterfaces/*/read` </li></ul>|
 |读取 JIT 策略| *将这些“操作”分配给用户：*  <ul><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/read`</li><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action`</li><li>`Microsoft.Security/policies/read`</li><li>`Microsoft.Compute/virtualMachines/read`</li><li>`Microsoft.Network/*/read`</li>|
+|||
 
 
 

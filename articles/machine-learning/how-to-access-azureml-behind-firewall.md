@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 75e2ffcad4caeb6500f05ce3801797084c18a043
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 63e2ba93ecdc1131be6bd291fe436b42a2a2d19c
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321643"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407024"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>将 Azure 防火墙后的工作区用于 Azure 机器学习
 
@@ -60,9 +60,9 @@ Azure 防火墙可用于控制对 Azure 机器学习工作区和公共 Internet 
 
 | **主机名** | **用途** |
 | ---- | ---- |
-| **anaconda.com** | 在安装 conda 包时使用 |
-| **pypi.org** | 在安装 pip 包时使用 |
-
+| **anaconda.com** | 用于安装默认包。 |
+| **\*。 anaconda.org** | 用于获取存储库数据。 |
+| **pypi.org** | 用于列出默认索引的依赖项（如果有），并且索引不会被用户设置覆盖。 如果覆盖索引，则还必须允许** \* pythonhosted.org**。 |
 
 ## <a name="r-hosts"></a>R 主机
 

@@ -4,12 +4,12 @@ description: 了解 Azure 应用服务如何更新 OS 和运行时、你的应�
 ms.topic: article
 ms.date: 02/02/2018
 ms.custom: seodec18
-ms.openlocfilehash: 597964914f4022899ab027b735ec6932105497b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93716ab36bc475b092542d1eef40cfe9d75ad819
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78273633"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87414932"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Azure 应用服务中的 OS 和运行时修补
 
@@ -78,10 +78,10 @@ az webapp config set --java-version 1.8 --java-container Tomcat --java-container
 | 信息 | 查找位置 | 
 |-|-|
 | Windows 版本 | 查看 `https://<appname>.scm.azurewebsites.net/Env.cshtml`（在“系统信息”下） |
-| .NET 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
+| .NET 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br>`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full"` |
 | .NET Core 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br> `dotnet --version` |
 | PHP 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br> `php --version` |
-| 默认的 Node.js 版本 | 在 [Cloud Shell](../cloud-shell/overview.md) 中运行以下命令： <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
+| 默认的 Node.js 版本 | 在[Cloud Shell](../cloud-shell/overview.md)中运行以下命令： <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
 | Python 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br> `python --version` |  
 | Java 版本 | 在 `https://<appname>.scm.azurewebsites.net/DebugConsole` 中的命令提示符下运行以下命令： <br> `java -version` |  
 

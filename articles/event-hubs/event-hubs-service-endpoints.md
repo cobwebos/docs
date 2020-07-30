@@ -2,15 +2,15 @@
 title: 虚拟网络服务终结点 - Azure 事件中心 | Microsoft Docs
 description: 本文提供了有关如何将 Microsoft EventHub 服务终结点添加到虚拟网络的信息。
 ms.topic: article
-ms.date: 07/16/2020
-ms.openlocfilehash: 5d1f6bb8e1160a328c30cfd6ef1726e3cf011aee
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 07/29/2020
+ms.openlocfilehash: 15778c85f28300df3d5af34e2940b3854d814c66
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288006"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420442"
 ---
-# <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>将虚拟网络服务终结点与 Azure 事件中心配合使用
+# <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>允许从特定虚拟网络访问 Azure 事件中心命名空间 
 
 通过将事件中心与[虚拟网络 (VNet) 服务终结点][vnet-sep]相集成，可从绑定到虚拟网络的工作负荷（例如虚拟机）安全地访问消息传递功能，同时在两端保护网络流量路径。
 
@@ -56,10 +56,19 @@ ms.locfileid: "87288006"
 本部分演示如何使用 Azure 门户添加虚拟网络服务终结点。 若要限制访问，需要集成此事件中心命名空间的虚拟网络服务终结点。
 
 1. 在 [Azure 门户](https://portal.azure.com)中导航到“事件中心命名空间”。
-2. 在左侧菜单中，选择“网络”选项。 如果选择“所有网络”选项，则事件中心将接受来自任何 IP 地址的连接。 此设置等效于一个接受 0.0.0.0/0 IP 地址范围的规则。 
+4. 在左侧菜单的 "**设置**" 下选择 "**网络**"。 
+
+    > [!NOTE]
+    > 只会看到**标准**命名空间或**专用**命名空间的 "**网络**" 选项卡。 
+
+    默认情况下，选择 "**所选网络**" 选项。 如果未在此页上指定 IP 防火墙规则或添加虚拟网络，则可以从包括公共 internet 的所有网络（使用访问密钥）访问该命名空间。 
+
+    :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="网络选项卡-所选网络选项" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
+
+    如果选择 "**所有网络**" 选项，则事件中心接受来自任何 IP 地址（使用访问密钥）的连接。 此设置等效于一个接受 0.0.0.0/0 IP 地址范围的规则。 
 
     ![防火墙 - 已选择“所有网络”选项](./media/event-hubs-firewall/firewall-all-networks-selected.png)
-1. 若要限制对特定网络的访问，请选择页面顶部的 "**所选网络**" 选项。
+1. 若要限制对特定网络的访问，请在页面顶部选择 "**所选网络**" 选项（如果尚未选择）。
 2. 在页面的 "**虚拟网络**" 部分中，选择 "+ 添加现有虚拟网络"。 如果要创建新的 VNet，请选择 " **+ 创建新虚拟网络**"。 
 
     ![添加现有虚拟网络](./media/event-hubs-tutorial-vnet-and-firewalls/add-vnet-menu.png)
@@ -77,6 +86,8 @@ ms.locfileid: "87288006"
 
     ![保存网络](./media/event-hubs-tutorial-vnet-and-firewalls/save-vnet.png)
 
+    > [!NOTE]
+    > 若要限制对特定 IP 地址或范围的访问，请参阅[允许从特定 ip 地址或范围进行访问](event-hubs-ip-filtering.md)。
 
 ## <a name="use-resource-manager-template"></a>使用 Resource Manager 模板
 

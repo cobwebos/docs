@@ -1,18 +1,18 @@
 ---
 title: 在 Azure 市场创建 Azure 虚拟机产品/服务
-description: 了解如何使用所需的计划在 Azure Marketplace 上创建虚拟机产品/服务。
+description: 了解如何向 Azure Marketplace 发布虚拟机产品/服务。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
-author: iqshahmicrosoft
-ms.author: iqshah
-ms.date: 07/17/2020
-ms.openlocfilehash: 8da76650f9cc3da0ff8f79a9d3df7a00cdd01a24
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.topic: how-to
+author: emuench
+ms.author: mingshen
+ms.date: 07/28/2020
+ms.openlocfilehash: 9db6fbe002492c0db6e9e0e5e0a23ca1946759a5
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324686"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386429"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure 市场创建 Azure 虚拟机产品/服务
 
@@ -352,7 +352,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 #### <a name="plan-name"></a>计划名称
 
-此字段自动填充了你在创建计划时为计划命名的名称。 此名称在 Azure 市场中显示为此计划的标题。 它最多包含 100 个字符。
+此字段将自动填充你在创建计划时为其提供的名称。 此名称在 Azure 市场中显示为此计划的标题。 它最多包含 100 个字符。
 
 #### <a name="plan-summary"></a>计划摘要
 
@@ -368,7 +368,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 此窗格中，将配置：
 
-- 提供此计划的市场。
+- 提供此计划的市场。 每个计划都必须至少在一个[市场](../marketplace-geo-availability-currencies.md)中可用。
 - 每小时价格。
 - 是让计划对所有人可见，还是仅对特定客户（专用受众）可见。
 

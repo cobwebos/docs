@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: tracking-python
-ms.openlocfilehash: e6965cef0257ee472c08b19e3a9b1c2ec2860128
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: e97671e9722051674e3760f11e784ab3291283c7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116908"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87415034"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 
@@ -176,6 +176,15 @@ Azure 资源管理器模板可以用于自动化 Azure 资源部署。 若要详
 ```
 
 tenantId 属性标识该标识所属的 Azure AD 租户。 principalId 是应用程序新标识的唯一标识符。 在 Azure AD 中，服务主体的名称与你为应用服务或 Azure Functions 实例提供的名称相同。
+
+如果需要在模板中的后一阶段引用这些属性，可以通过带标志的[ `reference()` 模板函数](../azure-resource-manager/templates/template-functions-resource.md#reference)来执行 `'Full'` 此操作，如下例所示：
+
+```json
+{
+    "tenantId": "[reference(resourceId('Microsoft.Web/sites', variables('appName')), '2018-02-01', 'Full').identity.tenantId]",
+    "objectId": "[reference(resourceId('Microsoft.Web/sites', variables('appName')), '2018-02-01', 'Full').identity.principalId]",
+}
+```
 
 ## <a name="add-a-user-assigned-identity"></a>添加用户分配的标识
 

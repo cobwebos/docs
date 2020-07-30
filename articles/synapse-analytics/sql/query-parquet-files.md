@@ -9,16 +9,66 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 4bab1ef4588a705f0dd6cdb34be8272868f826e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dd1e387727b0a80781b1103ddfb40afcbce8fce8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85207560"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386616"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用 SQL 按需版本（预览版）查询 Parquet 文件
 
 本文介绍如何使用 SQL 按需版本（预览版）编写查询，该查询将读取 Parquet 文件。
+
+## <a name="quickstart-example"></a>快速入门示例
+
+`OPENROWSET`函数可以通过提供文件的 URL 来读取 parquet 文件的内容。
+
+### <a name="reading-parquet-file"></a>正在读取 parquet 文件
+
+查看文件内容的最简单方法 `PARQUET` 是提供要函数的文件 URL `OPENROWSET` 并指定 parquet `FORMAT` 。 如果该文件公开可用，或者您的 Azure AD 标识可以访问此文件，则您应该能够使用如下例所示的查询查看该文件的内容：
+
+```sql
+select top 10 *
+from openrowset(
+    bulk 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases/latest/ecdc_cases.parquet',
+    format = 'parquet') as rows
+```
+
+请确保访问此文件。 如果文件受 SAS 密钥或自定义 Azure 标识保护，则需要为[sql 登录设置服务器级别凭据](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
+
+### <a name="using-data-source"></a>使用数据源
+
+前面的示例使用文件的完整路径。 作为替代方法，你可以创建一个外部数据源，其中包含指向存储根文件夹的位置，并使用该数据源和函数中的文件的相对路径 `OPENROWSET` ：
+
+```sql
+create external data source covid
+with ( location = 'https://pandemicdatalake.blob.core.windows.net/public/curated/covid-19/ecdc_cases' );
+go
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.parquet',
+        data_source = 'covid',
+        format = 'parquet'
+    ) as rows
+```
+
+如果使用 SAS 密钥或自定义标识来保护数据源，则可以[使用数据库范围凭据配置数据源](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#database-scoped-credential)。
+
+### <a name="explicitly-specify-schema"></a>显式指定架构
+
+`OPENROWSET`使您能够使用子句显式指定要读取的列 `WITH` ：
+
+```sql
+select top 10 *
+from openrowset(
+        bulk 'latest/ecdc_cases.parquet',
+        data_source = 'covid',
+        format = 'parquet'
+    ) with ( date_rep date, cases int, geo_id varchar(6) ) as rows
+```
+
+在以下部分中，可以了解如何查询各种类型的 PARQUET 文件。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -111,7 +161,7 @@ Parquet 文件包含每一列的类型说明。 下表介绍了如何将 Parquet
 | --- | --- | --- |
 | BOOLEAN | | bit |
 | BINARY/BYTE_ARRAY | | varbinary |
-| DOUBLE | | FLOAT |
+| DOUBLE | | float |
 | FLOAT | | real |
 | INT32 | | int |
 | INT64 | | bigint |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 07/07/2020
-ms.openlocfilehash: 193781e078f12dec553d98c15699c7e665966a87
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8546e5fde51ddc8a29a852a2c5dbcd25fffad287
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326609"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405239"
 ---
 # <a name="create-a-managed-service-offer"></a>创建托管服务产品
 
@@ -85,7 +85,7 @@ ms.locfileid: "87326609"
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. Title
+1. 标题
 2. 描述
 3. 有用链接
 4. 屏幕截图
@@ -194,6 +194,9 @@ ms.locfileid: "87326609"
 目前，只有一种定价模型可用于托管服务产品/服务：**自带许可 (BYOL)** 。 这意味着你将直接向客户收取与此产品/服务相关的费用，而 Microsoft 不向你收取任何费用。
 
 “计划可见性”部分让你可以指示此计划是否应为[专用](../../marketplace/private-offers.md)。 如果未选中“这是专用计划”复选框，则计划将不限于特定客户（或特定数量的客户）。
+
+> [!NOTE]
+> 通过云解决方案提供商（CSP）计划的经销商建立的订阅不支持私有计划。
 
 要使此计划仅对特定客户可用，请选择“是”。 执行此操作时，需要提供客户的订阅 ID 来确定客户身份。 可逐一输入（最多 10 个订阅），也可上传一个 .csv 文件（所有计划最多 10,000 个订阅）。 请确保在此处包含你自己的订阅，以便测试和验证该产品/服务。
 

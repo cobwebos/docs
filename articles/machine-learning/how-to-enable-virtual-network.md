@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 79db00216ffb54b8c71ef78cc745ec37c353f1cc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: df819f5ff641af014750d6501c8b168e54917318
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320164"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420526"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>使用专用虚拟网络进行训练和推理期间的网络隔离
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,9 +57,6 @@ __虚拟网络__充当安全边界，可将 Azure 资源与公共 Internet 相�
 > [!WARNING]
 > 
 > 在已启用专用链接的工作区中，不支持 Azure 机器学习计算实例预览。
->
-> Azure 机器学习不支持使用已启用专用链接的 Azure Kubernetes 服务。 相反，可以在虚拟网络中使用 Azure Kubernetes 服务。 有关详细信息，请参阅[在 Azure 虚拟网络中保护 Azure ML 试验和推理作业](how-to-enable-virtual-network.md)。
-
 
 <a id="amlcompute"></a>
 
@@ -448,9 +445,6 @@ except ComputeTargetException:
 > 在开始以下过程之前，请先完成[在 Azure Kubernetes 服务 (AKS) 中配置高级网络](https://docs.microsoft.com/azure/aks/configure-azure-cni#prerequisites)操作指南中的先决条件，并计划群集的 IP 地址。
 >
 > AKS 实例和 Azure 虚拟网络必须位于同一区域。 如果你在虚拟网络中保护工作区使用的一个或多个 Azure 存储帐户，它们必须与 AKS 实例位于同一虚拟网络中。
-
-> [!WARNING]
-> Azure 机器学习不支持使用已启用专用链接的 Azure Kubernetes 服务。
 
 1. 登录 [Azure 机器学习工作室](https://ml.azure.com/)，然后选择你的订阅和工作区。
 

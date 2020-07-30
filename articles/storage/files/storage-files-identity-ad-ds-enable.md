@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 4c374e62c0807269d1457bfe46d3df4260acd45c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2f38daea40f89e73422ca8115f2425758be81a4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510465"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87413096"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>第一部分：为 Azure 文件共享启用 AD DS 身份验证 
 
@@ -53,7 +53,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
 #Import AzFilesHybrid module
 Import-Module -Name AzFilesHybrid
 
-#Login with an Azure AD credential that has either storage account owner or contributer RBAC assignment
+#Login with an Azure AD credential that has either storage account owner or contributer Azure role assignment
 Connect-AzAccount
 
 #Define parameters
@@ -85,7 +85,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 ### <a name="checking-environment"></a>检查环境
 
-首先，您必须检查您的环境的状态。 具体而言，必须检查是否安装了[Active Directory PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps) ，以及是否正在用管理员权限执行 shell。 然后检查是否安装了[Az 2.0 模块](https://www.powershellgallery.com/packages/Az.Storage/2.0.0)，如果不是，则安装它。 完成这些检查后，请检查您的 AD DS，查看是否存在已使用 SPN/UPN 创建的[计算机帐户](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory)（默认）或[服务登录帐户](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)是否为 "cifs/您的存储帐户名称-web.config"。 如果该帐户不存在，请创建一个，如下一节中所述。
+首先，您必须检查您的环境的状态。 具体而言，必须检查是否安装了[Active Directory PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/?view=win10-ps) ，以及是否正在用管理员权限执行 shell。 然后查看是否已安装 [Az.Storage 2.0 module](https://www.powershellgallery.com/packages/Az.Storage/2.0.0)，如果未安装，请立即安装。 完成这些检查后，请检查您的 AD DS，查看是否存在已使用 SPN/UPN 创建的[计算机帐户](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory)（默认）或[服务登录帐户](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts)是否为 "cifs/您的存储帐户名称-web.config"。 如果该帐户不存在，请创建一个，如下一节中所述。
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>手动创建代表 AD 中的存储帐户的标识
 

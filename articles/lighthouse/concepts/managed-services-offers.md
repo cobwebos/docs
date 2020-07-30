@@ -1,14 +1,14 @@
 ---
 title: Azure 市场中的托管服务产品
 description: 托管服务提供允许服务提供商向 Azure Marketplace 中的客户销售资源管理服务。
-ms.date: 05/04/2020
+ms.date: 07/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: 119ecc8d15ef93a265cb5419404840496aaa1572
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 4f3813b7e2adabe5caaf0c7a5cbe8b15ed084730
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121582"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406854"
 ---
 # <a name="managed-service-offers-in-azure-marketplace"></a>Azure 市场中的托管服务产品
 
@@ -24,7 +24,10 @@ ms.locfileid: "86121582"
 
 每个托管服务产品/服务包含一个或多个计划。 计划可以是私有的，也可以是公共的。
 
-如果要将产品/服务限制为特定客户，可以发布专用计划。 执行此操作时，只能为你提供的特定订阅 ID 购买计划。 有关详细信息，请参阅[专用产品/服务](../../marketplace/private-offers.md)。
+如果要将产品/服务限制为特定客户，可以发布专用计划。 当你执行此操作时，只能为你提供的特定订阅 Id 购买计划。 有关详细信息，请参阅[专用产品/服务](../../marketplace/private-offers.md)。
+
+> [!NOTE]
+> 通过云解决方案提供商（CSP）计划的经销商建立的订阅不支持专用产品/服务。
 
 可以利用公共计划将服务推广给新客户。 当只需要对客户租户的有限访问权限时，这些信息通常更合适。 建立与客户的关系后，如果他们决定向你的组织授予其他访问权限，你可以通过为该客户仅发布新的专用计划来完成此操作，或者通过[使用 Azure 资源管理器模板进行进一步访问来载入](../how-to/onboard-customer.md)。
 

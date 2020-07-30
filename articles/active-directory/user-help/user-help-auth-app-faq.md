@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 07/15/2020
+ms.date: 07/16/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 4e21edd662649238b16cf7e7df9d9904f3f17752
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 34720a10796a1a215d541baef9f2c225857d3bc0
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015895"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87423620"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>有关 Microsoft Authenticator 应用的常见问题（FAQ）
 
@@ -30,6 +30,7 @@ Microsoft Authenticator 应用取代了 Azure Authenticator 应用，在使用 A
 | 问题 | Answer |
 | -------- | ------ |
 | 注册设备是否表示同意授权公司或服务访问我的设备？ | 注册设备可使你的设备访问组织的服务，但不允许组织访问你的设备。 |
+| 什么是应用锁定，如何使用它来帮助使我更安全？ | 应用锁定有助于使你的一次性密码、应用信息和应用设置更安全。 启用应用锁定后，每次打开身份验证器时，系统都会要求使用设备 PIN 或生物识别进行身份验证。 应用锁定还有助于确保你是唯一可以通过在批准登录通知时提示你提供 PIN 或生物识别来批准通知的人。 可以在 "验证器设置" 页上打开或关闭应用锁定。 默认情况下，当你在设备上设置 PIN 或生物识别时，应用锁定处于开启状态。<br><br>遗憾的是，不能保证应用锁定会阻止他人访问身份验证器。 这是因为设备注册可能发生在验证器之外的其他位置中，如 Android 帐户设置或公司门户应用。 |
 | 我有一个 Windows Mobile 设备，而 Windows Mobile 上的 Microsoft Authenticator 已不推荐使用。 能否继续使用该应用进行身份验证？ | 在2020年7月15日之后，使用 Windows Mobile 上的 Microsoft Authenticator 的所有身份验证都将停用。 强烈建议使用备用身份验证方法，避免被锁定。<br>适用于企业用户的其他选项包括：<br><ul><li>设置适用于[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)或[iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)的 Microsoft Authenticator。</li><li>[设置 SMS](multi-factor-authentication-setup-phone-number.md)以接收验证码。</li><li>设置电话号码以接收电话号码来[验证其身份](multi-factor-authentication-setup-office-phone.md)。</li></ul><br>适用于个人 Microsoft 帐户用户的其他选项包括：<br><ul><li>设置适用于[Android](https://play.google.com/store/apps/details?id=com.azure.authenticator)或[iOS](https://apps.apple.com/app/microsoft-authenticator/id983156458)的 Microsoft Authenticator。</li><li>通过从[Microsoft 帐户安全性页](https://account.microsoft.com/security/)更新安全信息来设置备用登录方法（SMS 或电子邮件）。</li></ul> |
 | 能否在 Android 身份验证器上获取我的一次性密码（OTP）代码的屏幕截图？ | 从身份验证器 Android 的 release 6.2003.1704 开始，默认情况下所有 OTP 代码都会在执行身份验证器的屏幕截图时隐藏。 如果要在屏幕截图中查看 OTP 代码或允许其他应用捕获验证器屏幕，可以。 只需在验证器中打开**屏幕捕获**设置，然后重新启动应用程序。 |
 | 哪些数据是 Authenticator 以我的名义存储的，我如何删除它？ | 验证器应用将收集三种类型的信息：<ul><li>你在添加帐户时提供的帐户信息。 可以通过删除帐户删除此数据。</li><li>诊断日志数据，在选择该应用的“帮助”菜单中的“发送日志”将日志发送到 Microsoft 之前，该数据只会存在于和保留在该应用中 。 这些日志可以包含个人数据，例如电子邮件地址、服务器地址或 IP 地址。 它们还可以包含设备数据，例如设备名称和操作系统版本。 收集的任何个人数据仅限于帮助排查应用问题所需的信息。 你可以随时在应用程序中浏览这些日志文件，以查看收集的信息。 如果发送日志文件，则身份验证应用工程师仅将其用于排查客户报告的问题。</li><li>非个人识别使用情况数据，例如“已启动添加帐户流/已成功添加了帐户”或者“通知已批准”。 此数据是我们的工程决策不可或缺的一部分。 你的使用情况可帮助我们确定如何以对你很重要的方式来改进应用。 首次使用该应用时，将看到此数据收集的通知。 然后，它会通知你可以在应用的 "**设置**" 页上关闭该功能。 您可以随时打开或关闭此设置。</li></ul> |

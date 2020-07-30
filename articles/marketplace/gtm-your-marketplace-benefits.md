@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: 029883ea1ac85bdd1ea256caaa711d6537c06a76
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8aa9fa1701f41c6fd1adacc264b811e0d9849ab5
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287891"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87408112"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商业市场权益
 
@@ -106,9 +106,15 @@ Rewards 团队成员将在产品/服务上线时联系你，具体取决于你�
 对于发布者的以下行为，Microsoft 保留撤销和终止 Marketplace Rewards 权益的权利： 
 
 * 使用其 marketplace 列表参与非法活动。
+* 接收已知或认为是欺诈的购买。
 * 从商业应用商店中取消列出。 
 * 使用其产品/服务可显示违反版权或商标法律的营销或其他内容。
 * 违反[azure 赞助计划](https://azure.microsoft.com/offers/ms-azr-0036p/)的策略，包括但不限于使用 azure 赞助资金进行其自己的内部操作或 Bitcoin 挖掘。
+
+Microsoft 保留在以下情况中吊销和终止 Marketplace 奖励的权利：
+
+* 进行购买的客户意外，希望取消购买。 
+* 客户在使用合作伙伴的产品之前取消。
 
 ### <a name="offer-availability"></a>产品可用性
 

@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 072fa659d6f5cf55da4dfc99cfed38220be70812
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: c3933e9165160c16a9e533bf8bf95f1533dff1cc
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337341"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386684"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
 
 强烈建议先阅读[规划 Azure 文件部署](storage-files-planning.md)和[规划 Azure 文件同步部署](storage-sync-files-planning.md)，再按照本文中的步骤进行操作。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 * 要部署 Azure 文件同步的同一区域中的 Azure 文件共享。有关详细信息，请参阅：
     - Azure 文件同步的[适用地区](storage-sync-files-planning.md#azure-file-sync-region-availability)。
     - [创建文件共享](storage-how-to-create-file-share.md)，了解创建文件共享的分步说明。
@@ -218,6 +218,13 @@ Remove-Item -Path ".\StorageSyncAgent.msi" -Recurse -Force
 
 注册服务器的管理员必须是给定的存储同步服务的管理角色**所有者**或**参与者**的成员。 这可以在存储同步服务的 Azure 门户中的 "**访问控制（IAM）** " 下进行配置。
 
+此外，还可以区分管理员将服务器注册到允许的服务器，也可以在存储同步服务中配置同步。 为此，您需要创建一个自定义角色，其中列出了只允许注册服务器的管理员，并为您的自定义角色提供下列权限：
+
+* "Storagesync.sys/storageSyncServices/registeredServers/write"
+* "Storagesync.sys/storageSyncServices/read"
+* "Storagesync.sys/storageSyncServices/工作流/读取"
+* "Storagesync.sys/storageSyncServices/工作流/操作/读取"
+
 # <a name="portal"></a>[门户](#tab/azure-portal)
 服务器注册 UI 应在 Azure 文件同步代理安装后自动打开。 如果没有打开，可以手动从其文件位置 C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe 打开。 服务器注册 UI 打开时，请选择“登录”开始操作****。
 
@@ -245,6 +252,8 @@ $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 
 > [!Important]  
 > 可对同步组中的任何云终结点或服务器终结点进行更改，并将文件同步到同步组中的其他终结点。 如果直接对云终结点（Azure 文件分享）进行更改，首先需要通过 Azure 文件同步更改检测作业来发现更改。 每 24 小时仅针对云终结点启动一次更改检测作业。 有关详细信息，请参阅 [Azure 文件常见问题解答](storage-files-faq.md#afs-change-detection)。
+
+创建云终结点的管理员必须是包含云终结点指向的 Azure 文件共享的存储帐户的管理角色**所有者**的成员。 这可以在存储帐户的 Azure 门户中的 "**访问控制（IAM）** " 下进行配置。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 若要创建同步组，请在[Azure 门户](https://portal.azure.com/)中，请前往你的存储同步服务，然后选择 " **+ 同步组**"：

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fd319c7a6b356052f91e779e2f2a67eff4c4b6de
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c83d243a24fb0cacdf032dfa77e9bb17fdf5e824
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87270747"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87383794"
 ---
 # <a name="connect-to-windows-virtual-desktop-classic-with-the-android-client"></a>通过 Android 客户端连接到 Windows 虚拟桌面（经典）
 
@@ -21,9 +21,6 @@ ms.locfileid: "87270747"
 
 >[!IMPORTANT]
 >此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。 如果尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../connect-android.md)。
-
->[!NOTE]
-> 当前在预览版中提供了从 Android 客户端访问 Windows 虚拟桌面资源的功能。
 
 可以使用可下载的客户端从 Android 设备访问 Windows 虚拟桌面资源。 你还可以在支持 Google Play 商店的 Chromebook 设备上使用 Android 客户端。 本指南将说明如何设置 Android 客户端。
 

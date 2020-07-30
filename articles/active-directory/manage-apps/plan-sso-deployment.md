@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 75e3f7fc98072957f571937a1627247cdc4a9e7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ee138ac41557554ae4b8fde8c9178336fd8d5db
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85374434"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387772"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>计划单一登录部署
 
@@ -55,7 +55,7 @@ Azure Marketplace 具有超过3000个具有预先集成 SSO 连接的应用程�
 ### <a name="considerations-for-federation-based-sso"></a>基于联合的 SSO 的注意事项
 
 - **使用 OpenID connect 和 OAuth** -如果要连接的应用程序支持该应用程序，请使用 OIDC/OAuth 2.0 方法将 SSO 启用到该应用程序。 此方法需要较少的配置，并支持更丰富的用户体验。 有关详细信息，请参阅[OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)、 [OpenID connect 1.0](../develop/v2-protocols-oidc.md)和[Azure Active Directory 开发人员指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)。
-- **基于 saml 的 SSO 的终结点配置**-如果使用 saml，则开发人员在配置应用程序之前将需要特定信息。 有关详细信息，请参阅[编辑基本 SAML 配置](configure-single-sign-on-non-gallery-applications.md)。
+- **基于 saml 的 SSO 的终结点配置**-如果使用 saml，则开发人员在配置应用程序之前将需要特定信息。 有关详细信息，请参阅[配置基于 SAML 的单一登录](configure-saml-single-sign-on.md)。
 - **基于 SAML 的 sso 的证书管理-为**应用程序启用联合 sso 时，Azure AD 会创建默认情况下有效期为三年的证书。 如果需要，可以自定义该证书的到期日期。 确保已准备好处理证书，以便在证书过期之前续订证书。 若要了解详细信息，请参阅[Azure AD 管理证书](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)。
 
 ### <a name="considerations-for-password-based-sso"></a>基于密码的 SSO 的注意事项
@@ -235,11 +235,11 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 
 | 增添| 角色 | Azure AD 角色（如果需要） |
 |--------|-------|-----------------------------|
-| 咨询台管理员 | 第1层支持 | None |
+| 咨询台管理员 | 第1层支持 | 无 |
 | 标识管理员 | 在问题影响时进行配置和调试 Azure AD | 全局管理员 |
-| 应用程序管理员 | 应用程序中的用户证明，具有权限的用户配置 | None |
+| 应用程序管理员 | 应用程序中的用户证明，具有权限的用户配置 | 无 |
 | 基础结构管理员 | 证书滚动更新所有者 | 全局管理员 |
-| 业务所有者/利益干系人 | 应用程序中的用户证明，具有权限的用户配置 | None |
+| 业务所有者/利益干系人 | 应用程序中的用户证明，具有权限的用户配置 | 无 |
 
 建议使用[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) （PIM）来管理角色，以便为具有目录权限的用户提供其他审核、控制和访问权限。
 

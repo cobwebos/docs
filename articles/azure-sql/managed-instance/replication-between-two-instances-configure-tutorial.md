@@ -1,7 +1,7 @@
 ---
 title: 配置托管实例之间的复制
 titleSuffix: Azure SQL Managed Instance
-description: 本教程介绍如何在 Azure SQL 托管实例发布服务器/分发服务器与 SQL 托管实例订阅服务器之间配置事务复制。
+description: 本教程介绍如何在 Azure SQL 托管实例发布服务器/分发服务器和 SQL 托管实例订阅服务器之间配置事务复制。
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: data-movement
@@ -12,38 +12,38 @@ author: MashaMSFT
 ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: ac701b70a9db860e2f839ab30fb575133703c142
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cd476d3210263268627541eb40c50048f0eddd1b
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708469"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422906"
 ---
-# <a name="tutorial-configure-replication-between-two-managed-instances"></a>教程：在两个托管实例之间配置复制
+# <a name="tutorial-configure-replication-between-two-managed-instances"></a>教程：配置两个托管实例之间的复制
 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-通过事务复制，可以将数据从一个数据库复制到 SQL Server 或[AZURE SQL 托管实例](sql-managed-instance-paas-overview.md)上托管的另一个数据库（公共预览版）。 SQL 托管实例可以是复制拓扑中的发布服务器、分发服务器或订阅服务器。 有关可用配置，请参阅[事务复制配置](replication-transactional-overview.md#common-configurations)。
+借助事务复制，可将数据从一个数据库复制到托管在 SQL Server 或 [Azure SQL 托管实例](sql-managed-instance-paas-overview.md)（现为公开预览版）中的数据库。 SQL 托管实例可以是复制拓扑中的发布服务器、分发服务器或订阅服务器。 有关可用配置，请参阅[事务复制配置](replication-transactional-overview.md#common-configurations)。
 
 > [!NOTE]
-> 本文介绍了如何在 Azure SQL 托管实例中使用[事务复制](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)。 它与[故障转移组](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)无关，后者是一项 Azure SQL 托管实例功能，可用于创建单个实例的完整可读副本。
+> 本文介绍了如何在 Azure SQL 托管实例中使用[事务复制](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)。 它与[故障转移组](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)无关，这是一项 Azure SQL 托管实例功能，可用于创建单个实例的完整可读副本。 在[通过故障转移组配置事务复制](replication-transactional-overview.md#with-failover-groups)时，还有其他注意事项。
 
-本教程将指导你将一个托管实例配置为发布服务器和分发服务器，然后将另一个托管实例配置为订阅服务器。  
+本教程介绍如何将一个托管实例配置为发布服务器和分发服务器，然后将第二个托管实例配置为订阅服务器。  
 
 ![在两个托管实例之间复制](./media/replication-between-two-instances-configure-tutorial/sqlmi-sqlmi-repl.png)
 
   > [!NOTE]
-  > - 本文旨在指导高级用户从端到端配置与 SQL 托管实例的复制，开始创建资源组。 如果已部署了托管实例，请跳到[步骤 4](#4---create-a-publisher-database)以创建发布服务器数据库[，或者，](#6---configure-distribution)如果已有发布服务器和订阅服务器数据库，并且已准备好开始配置复制，请跳到步骤4。  
-  > - 本文在相同的托管实例上配置发布服务器和分发服务器。 若要将分发服务器置于单独的托管实例上，请参阅教程在[AZURE SQL 托管实例和 SQL Server 之间配置事务复制](replication-two-instances-and-sql-server-configure-tutorial.md)。 
+  > - 本文首先讲解如何创建资源组，旨在全程引导高级用户配置 SQL 托管实例的复制。 如果已部署托管实例，请跳到[步骤 4](#4---create-a-publisher-database)，创建发布服务器数据库；如果已有一个发布服务器和订阅服务器数据库，且已准备好开始配置复制，请跳到[步骤 6](#6---configure-distribution)。  
+  > - 本文在相同的托管实例上配置发布服务器和分发服务器。 若要将分发服务器置于单独的托管实例上，请参阅[在 Azure SQL 托管实例和 SQL Server 之间配置事务复制](replication-two-instances-and-sql-server-configure-tutorial.md)教程。 
 
 ## <a name="requirements"></a>要求
 
-将 SQL 托管实例配置为充当发布服务器和/或分发服务器的功能需要：
+要配置 SQL 托管实例来充当发布服务器和/或分发服务器，需满足以下要求：
 
-- 发布服务器托管实例与分发服务器和订阅服务器位于同一虚拟网络中，或者在所有三个实体的虚拟网络之间配置了[虚拟网络对等互连](../../virtual-network/tutorial-connect-virtual-networks-powershell.md)。 
+- 发布服务器托管实例与分发服务器和订阅服务器位于同一虚拟网络中，或者已在所有三个实体的虚拟网络之间配置[虚拟网络对等互连](../../virtual-network/tutorial-connect-virtual-networks-powershell.md)。 
 - 连接时，在复制参与者之间使用 SQL 身份验证。
-- 复制工作目录的 Azure 存储帐户共享。
-- 需要在托管实例的 NSG 安全规则中打开端口 445（TCP 出站）才能访问 Azure 文件共享。  如果遇到错误 `failed to connect to azure storage \<storage account name> with os error 53` ，你将需要向相应 SQL 托管实例子网的 NSG 添加出站规则。
+- 适用于复制工作目录的 Azure 存储帐户共享。
+- 需要在托管实例的 NSG 安全规则中打开端口 445（TCP 出站）才能访问 Azure 文件共享。  如果遇到错误 `failed to connect to azure storage \<storage account name> with os error 53`，则需要将出站规则添加到相应 SQL 托管实例子网的 NSG。
 
 ## <a name="1---create-a-resource-group"></a>1 - 创建资源组
 
@@ -51,18 +51,18 @@ ms.locfileid: "84708469"
 
 ## <a name="2---create-managed-instances"></a>2 - 创建托管实例
 
-使用[Azure 门户](https://portal.azure.com)在同一个虚拟网络和子网中创建两个[SQL 托管实例](instance-create-quickstart.md)。 例如，将两个托管实例命名为：
+使用 [Azure 门户](https://portal.azure.com)在同一虚拟网络和子网中创建两个 [SQL 托管实例](instance-create-quickstart.md)。 例如，将两个托管实例命名为：
 
 - `sql-mi-pub`（以及一些用于随机化的字符）
 - `sql-mi-sub`（以及一些用于随机化的字符）
 
-还需要[配置 AZURE VM 以连接](connect-vm-instance-configure.md)到托管实例。 
+还需要[配置 Azure VM 来连接](connect-vm-instance-configure.md)到托管实例。 
 
-## <a name="3---create-an-azure-storage-account"></a>3-创建 Azure 存储帐户
+## <a name="3---create-an-azure-storage-account"></a>3 - 创建 Azure 存储帐户
 
 为工作目录[创建 Azure 存储帐户](/azure/storage/common/storage-create-storage-account#create-a-storage-account)，并在存储帐户中创建[文件共享](../../storage/files/storage-how-to-create-file-share.md)。 
 
-按以下格式复制文件共享路径：`\\storage-account-name.file.core.windows.net\file-share-name`
+复制采用 `\\storage-account-name.file.core.windows.net\file-share-name` 格式的文件共享路径
 
 示例： `\\replstorage.file.core.windows.net\replshare`
 
@@ -142,7 +142,7 @@ GO
 
 ## <a name="7---configure-publisher-to-use-distributor"></a>7 - 将发布服务器配置为使用分发服务器
 
-在发布服务器 SQL 托管实例上 `sql-mi-pub` ，将查询执行更改为[SQLCMD](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor)模式，并运行以下代码以向发布服务器注册新的分发服务器。
+在发布服务器 SQL 托管实例 `sql-mi-pub` 上，将查询执行更改为 [SQLCMD](/sql/ssms/scripting/edit-sqlcmd-scripts-with-query-editor) 模式，然后运行以下代码，将新的分发服务器注册到发布服务器。
 
 ```sql
 :setvar username loginUsedToAccessSourceManagedInstance
@@ -166,7 +166,7 @@ EXEC sp_adddistpublisher
    > [!NOTE]
    > 请确保对 file_storage 参数仅使用反斜杠 (`\`)。 在连接到文件共享时使用正斜杠（`/`）可能会导致错误。
 
-此脚本在托管实例上配置本地发布服务器，添加链接服务器，并为 SQL Server 代理创建一组作业。
+此脚本将在托管实例上配置一个本地发布服务器、添加链接服务器，并为 SQL Server 代理创建一组作业。
 
 ## <a name="8---create-publication-and-subscriber"></a>8 - 创建发布和订阅服务器
 
@@ -249,7 +249,7 @@ EXEC sp_startpublication_snapshot
 
 ## <a name="9---modify-agent-parameters"></a>9 - 修改代理参数
 
-Azure SQL 托管实例当前在与复制代理连接时遇到一些后端问题。 虽然正在解决此问题，但解决方法是增加复制代理的登录超时值。
+目前，Azure SQL 托管实例在与复制代理连接时会遇到一些后端问题。 我们正在处理中，暂时可通过调高复制代理的登录超时值来解决它们。
 
 在发布服务器上运行以下 T-SQL 命令以增大登录超时值：
 
@@ -314,8 +314,8 @@ EXEC sp_dropdistributor @no_checks = 1
 GO
 ```
 
-可以通过[从资源组中删除 SQL 托管实例资源](../../azure-resource-manager/management/manage-resources-portal.md#delete-resources)，然后删除资源组来清理 Azure 资源 `SQLMI-Repl` 。 
+可通过[从资源组中删除 SQL 托管实例资源](../../azure-resource-manager/management/manage-resources-portal.md#delete-resources)，然后删除资源组 `SQLMI-Repl` 来清理 Azure 资源。 
 
 ## <a name="next-steps"></a>后续步骤
 
-你还可以[通过 AZURE sql 托管实例了解有关事务复制的](replication-transactional-overview.md)详细信息，或了解如何[在 sql 托管实例发布服务器/分发服务器与 azure VM 订阅服务器上的 sql](replication-two-instances-and-sql-server-configure-tutorial.md)之间配置复制。 
+你还可详细了解 [Azure SQL 托管实例的事务复制](replication-transactional-overview.md)的，或者了解如何[在 SQL 托管实例发布服务器/分发服务器与 Azure VM 订阅服务器上的 SQL](replication-two-instances-and-sql-server-configure-tutorial.md) 之间配置复制。 

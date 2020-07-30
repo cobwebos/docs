@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b23a845002f5a92128917d81fdadf5a647d798
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 578f1e97c8a53604edca7b803933139362a763a7
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85253182"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419727"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的服务依赖项是什么？ 
 
@@ -46,11 +46,12 @@ ms.locfileid: "85253182"
 
 | 客户端应用         | 下游服务                          | 强制 |
 | :--                 | :--                                         | ---         | 
-| Azure 数据湖     | Microsoft Azure 管理（门户和 API） | 早期绑定 |
+| Azure Data Lake     | Microsoft Azure 管理（门户和 API） | 早期绑定 |
 | Microsoft Classroom | Exchange                                    | 早期绑定 |
 |                     | SharePoint                                  | 早期绑定 |
 | Microsoft Teams     | Exchange                                    | 早期绑定 |
 |                     | MS Planner                                  | 后期绑定  |
+|                     | Microsoft Stream                            | 后期绑定  |
 |                     | SharePoint                                  | 早期绑定 |
 |                     | Skype for Business Online                   | 早期绑定 |
 | Office 门户       | Exchange                                    | 后期绑定  |

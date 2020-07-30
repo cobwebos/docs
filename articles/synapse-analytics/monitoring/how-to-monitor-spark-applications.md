@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: a4dc2604dbd62da1baa4278ff3463f41337886bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5ad9e6a448747ac8f33829b1137b1af434e7a9c
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052510"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385579"
 ---
 # <a name="use-synapse-studio-preview-to-monitor-your-apache-spark-applications"></a>使用 Synapse Studio （预览版）监视 Apache Spark 应用程序
 
@@ -22,7 +22,7 @@ ms.locfileid: "87052510"
 
 本文介绍如何监视 Apache Spark 应用程序，使你能够关注最新的状态、问题和进度。
 
-## <a name="accessing-the-list-of-apache-spark-applications"></a>访问 Apache Spark 应用程序的列表
+## <a name="access-apache-spark-applications-list"></a>Access Apache Spark 应用程序列表
 
 若要查看工作区中 Apache Spark 应用程序的列表，请先[打开 Synapse Studio](https://web.azuresynapse.net/) ，然后选择工作区。
 
@@ -36,7 +36,7 @@ ms.locfileid: "87052510"
 
  ![选择 Spark 应用程序](./media/how-to-monitor-spark-applications/monitor-hub-nav-sparkapplications.png)
 
-## <a name="filtering-your-apache-spark-applications"></a>筛选 Apache Spark 应用程序
+## <a name="filter-your-apache-spark-applications"></a>筛选 Apache Spark 应用程序
 
 你可以将 Apache Spark 应用程序的列表筛选为你感兴趣的应用程序的列表。 使用屏幕顶部的筛选器，可以指定要筛选的字段。
 
@@ -46,7 +46,7 @@ ms.locfileid: "87052510"
 
 ![示例筛选器](./media/how-to-monitor-spark-applications/filter-example.png)
 
-## <a name="viewing-details-about-a-specific-apache-spark-application"></a>查看有关特定 Apache Spark 应用程序的详细信息
+## <a name="view-details-about-a-specific-apache-spark-application"></a>查看有关特定 Apache Spark 应用程序的详细信息
 
 若要查看有关某个 Apache Spark 应用程序的详细信息，请选择 Apache Spark 应用程序并查看详细信息。 如果 Apache Spark 的应用程序仍在运行，则可以监视进度。 [了解详细信息](apache-spark-applications.md)。
 

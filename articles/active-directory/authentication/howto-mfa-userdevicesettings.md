@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9861e8e8be39781ad1b256b9939df3ab03e74be6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 49c389170e9d586a2001009226c6542d4d152f7f
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027523"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87418213"
 ---
 # <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>管理 Azure 多重身份验证的用户设置
 
@@ -47,7 +47,7 @@ ms.locfileid: "87027523"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左侧，选择 "Azure Active Directory"  > “用户” > “所有用户”  。
-1. 选择“多重身份验证”。 可能需要向右滚动才能看到此菜单选项。 选择以下示例屏幕截图中所示的选项，以查看完整的 Azure 门户窗口和菜单位置：[![](media/howto-mfa-userstates/selectmfa-cropped.png "在 Azure AD 的“用户”窗口中选择“多重身份验证”")](media/howto-mfa-userstates/selectmfa.png#lightbox)
+1. 选择“多重身份验证”。 可能需要向右滚动才能看到此菜单选项。 选择以下示例屏幕截图，查看完整的 Azure 门户窗口和菜单位置： [ ![ 从 Azure AD 中的 "用户" 窗口中选择 "多重身份验证"。](media/howto-mfa-userstates/selectmfa-cropped.png)](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. 选中要管理的用户或用户旁的框。 右侧会显示快速步骤选项列表。
 1. 选择“管理用户设置”，然后选中“删除所选用户生成的所有现有应用密码”复选框，如以下示例中所示 ：![删除所有现有的应用密码](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 1. 选择“保存”，然后选择“关闭” 。

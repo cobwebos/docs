@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 0da3a0bec79ab6f60b1e69c490124e95a4b7c365
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e8e900e410f1a41c8c98f5cec00631cfb5f275de
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497635"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87407687"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure 数据工厂中的集成运行时 
 
@@ -45,13 +45,10 @@ ms.locfileid: "86497635"
 
 IR 类型 | 公用网络 | 专用网络
 ------- | -------------- | ---------------
-Azure | 数据流<br/>数据移动<br/>活动分派 | &nbsp;
+Azure | 数据流<br/>数据移动<br/>活动分派 | 数据流<br/>数据移动<br/>活动分派
 自承载 | 数据移动<br/>活动分派 | 数据移动<br/>活动分派
 Azure-SSIS | SSIS 包执行 | SSIS 包执行
 
-下图介绍了如何结合使用不同的集成运行时以提供丰富的数据集成功能和网络支持：
-
-![不同类型的集成运行时](media/concepts-integration-runtime/different-integration-runtimes.png)
 
 ## <a name="azure-integration-runtime"></a>Azure 集成运行时
 
@@ -63,7 +60,7 @@ Azure 集成运行时可以：
 
 ### <a name="azure-ir-network-environment"></a>Azure IR 网络环境
 
-Azure Integration Runtime 支持使用可公开访问的终结点连接到数据存储和计算服务。 为 Azure 虚拟网络环境使用自承载集成运行时。
+Azure Integration Runtime 支持使用可公开访问的终结点连接到数据存储和计算服务。 启用托管虚拟网络后，Azure Integration Runtime 支持使用专用网络环境中的专用链接服务连接到数据存储。
 
 ### <a name="azure-ir-compute-resource-and-scaling"></a>Azure IR 计算资源和缩放
 Azure 集成运行时在 Azure 中提供完全托管的无服务器计算。  无需担心基础结构配置、软件安装、修补或功能缩放。  此外，只需为实际使用时间付费。
@@ -136,7 +133,7 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 
 可以设置 Azure IR 的特定位置，这样活动执行或活动调度就会发生在该特定区域。
 
-如果选择使用默认的自动解析 Azure IR，则会出现以下情况：
+如果选择使用 "公用网络" 中的自动解析 Azure IR，这是默认设置，
 
 - 对于复制活动，ADF 会尽最大努力自动检测接收器数据存储的位置，然后使用同一区域中的 IR（如果可用）或者使用同一地理位置中最靠近的 IR；如果检测不到接收器数据存储的区域，则会改用数据工厂区域中的 IR。
 
@@ -154,6 +151,8 @@ IR 位置定义其后端计算的位置，尤其是执行数据移动、活动�
 
   > [!TIP] 
   > 好的做法是确保数据流与相应的数据存储在同一区域中运行（如果可能）。 可以通过自动解析 Azure IR 来实现此目的（如果数据存储位置与数据工厂位置相同），或在与数据存储相同的区域中创建新的 Azure IR 实例，然后在数据存储区中执行数据流。 
+
+如果为自动解析 Azure IR 启用托管虚拟网络，则 ADF 会在数据工厂区域中使用 IR。 
 
 可以在 UI 或活动监视有效负载的管道活动监视视图中监视哪个 IR 位置在活动执行期间生效。
 

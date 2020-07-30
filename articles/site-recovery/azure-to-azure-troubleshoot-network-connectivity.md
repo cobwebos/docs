@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 71176c87ee805eb4a634dd6c2f344922fc13c4f3
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 8396ffa958e41e12e9258766483310baef0cabbe
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132709"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421427"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>排查 Azure 到 Azure VM 网络连接性问题
 
@@ -18,12 +18,12 @@ ms.locfileid: "86132709"
 
 要使 Site Recovery 复制正常运行，必须具有从 VM 到特定 URL 或 IP 范围的出站连接。 如果 VM 位于防火墙后或使用网络安全组 (NSG) 规则来控制出站连接，则可能会遇到以下问题之一。
 
-| URL | 详细信息 |
-|---|---|
-| `*.blob.core.windows.net` | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果你知道 VM 的所有缓存存储帐户，则可以对特定存储帐户 URL 使用允许列表。 例如，使用 `cache1.blob.core.windows.net` 和 `cache2.blob.core.windows.net` 而不是 `*.blob.core.windows.net`。 |
-| `login.microsoftonline.com` | 对于 Site Recovery 服务 URL 的授权和身份验证而言是必需的。 |
-| `*.hypervrecoverymanager.windowsazure.com` | 必需，以便从 VM 进行 Site Recovery 服务通信。 如果防火墙代理支持 IP，则可以使用相应的“Site Recovery IP”。 |
-| `*.servicebus.windows.net` | 必需，以便从 VM 写入 Site Recovery 监视和诊断数据。 如果防火墙代理支持 IP，则可以使用相应的“Site Recovery 监视 IP”。 |
+| **名称**                  | **商用**                               | **Government**                                 | **说明** |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
+| 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果你知道 VM 的所有缓存存储帐户，则可以对特定存储帐户 URL 使用允许列表。 例如，使用 `cache1.blob.core.windows.net` 和 `cache2.blob.core.windows.net` 而不是 `*.blob.core.windows.net`。 |
+| Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 对于 Site Recovery 服务 URL 的授权和身份验证而言是必需的。 |
+| 复制               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | 必需，以便从 VM 进行 Site Recovery 服务通信。 如果防火墙代理支持 IP，则可以使用相应的“Site Recovery IP”。 |
+| 服务总线               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | 必需，以便从 VM 写入 Site Recovery 监视和诊断数据。 如果防火墙代理支持 IP，则可以使用相应的“Site Recovery 监视 IP”。 |
 
 ## <a name="outbound-connectivity-for-site-recovery-urls-or-ip-ranges-error-code-151037-or-151072"></a>Site Recovery URL 或 IP范围的出站连接（错误代码 151037 或 151072）
 
