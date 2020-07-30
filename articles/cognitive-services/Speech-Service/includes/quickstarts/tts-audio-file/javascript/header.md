@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: e7768165967b1adef0347c10cd6865a2407261c6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 0c66e08a7a5bc697f1624b3ce064d83d47c38f7c
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82979149"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102505"
 ---
-如果希望直入正题，请在 GitHub 上查看或下载所有<a href="https://aka.ms/speech/github-javascript">语音 SDK JavaScript 示例</a>。 否则就开始吧！
+可以在 GitHub 上查看或下载所有<a href="https://aka.ms/speech/github-javascript">语音 SDK JavaScript 示例</a>。 

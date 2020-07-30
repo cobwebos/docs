@@ -8,13 +8,13 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 05/29/2019
 ms.author: jafreebe
-ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: d8f03d714ab44dc01d9e138a63a89892ead60fe9
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
+ms.openlocfilehash: ca3c7d6bc6621c4b82a44431ae313384c1653f79
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85249459"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87324227"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-windows"></a>快速入门：在 Windows 上的 Azure 应用服务中创建 Java 应用
 
@@ -25,7 +25,7 @@ ms.locfileid: "85249459"
 [Azure 应用服务](overview.md)提供高度可缩放、自修复的 Web 托管服务。  本快速入门介绍如何将 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) 与[用于 Maven 的 Azure Web 应用插件](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)配合使用来部署 Java Web 存档 (WAR) 文件。
 
 > [!NOTE]
-> 也可使用 IntelliJ 和 Eclipse 等常见 IDE 执行相同的操作。 请查看 [Azure Toolkit for IntelliJ 快速入门](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)或 [Azure Toolkit for Eclipse 快速入门](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)中的类似文档。
+> 也可使用 IntelliJ 和 Eclipse 等常见 IDE 执行相同的操作。 请查看 [Azure Toolkit for IntelliJ 快速入门](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app)或 [Azure Toolkit for Eclipse 快速入门](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)中的类似文档。
 >
 ![在 Azure 应用服务中运行的示例应用](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
@@ -143,7 +143,7 @@ code pom.xml
 
 如果需要，可以直接在 pom 文件中修改应用服务的配置，下面列出了一些常见配置：
 
- properties | 必选 | 说明 | 版本
+ 属性 | 必须 | 说明 | 版本
 ---|---|---|---
 `<schemaVersion>` | false | 指定配置架构的版本。 支持的值是：`v1`、`v2`。 | 1.5.2
 `<resourceGroup>` | true | 用于 Web 应用的 Azure 资源组。 | 0.1.0+
@@ -173,7 +173,7 @@ mvn package azure-webapp:deploy
 
 ![在 Azure 应用服务中运行的示例应用](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
 
-祝贺你！ 现已将第一个 Java 应用部署到 Windows 应用服务。
+**祝贺你！** 现已将第一个 Java 应用部署到 Windows 应用服务。
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

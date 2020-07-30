@@ -7,12 +7,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/15/2020
 ms.author: ralphe
-ms.openlocfilehash: 11ee22be1de22bfc4206aeb7f4a27449bd70c2bb
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: ecff6b6d7034e8e00c95ddd65d157f95a53afc45
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76267976"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102497"
 ---
-如果希望直入正题，请在 GitHub 上查看或下载所有[语音 SDK C# 示例](https://aka.ms/speech/github-csharp)。 否则就开始吧！
+可以在 GitHub 上查看或下载所有[语音 SDK C# 示例](https://aka.ms/speech/github-csharp)。 
 

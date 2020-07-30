@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 8001990d4ade9986bea81f63b60832ed69024265
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cbd9440948a124a5557e47f258b95b098f04a4b5
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86509545"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87085225"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-powershell-windows"></a>通过将现有托管 OS 磁盘与 PowerShell 配合使用来创建虚拟机 (Windows)
 
@@ -67,6 +67,6 @@ Set-AzVMPlan -VM $VirtualMachine -Publisher $Publisher -Product $Product -Name $
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。
 
 可以在 [Azure Windows VM 文档](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)中找到其他虚拟机 PowerShell 脚本示例。

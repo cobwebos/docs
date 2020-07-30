@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: sudbalas
-ms.openlocfilehash: 76ceba11ffeb5569e250fab6bc47fe8faf019361
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 668154b5e54ed4d496d272e33e8fc7f378e75e8a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521099"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386259"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault 备份
 
@@ -27,7 +27,7 @@ Azure 密钥保管库自动提供了一些功能来帮助你维护可用性并�
 
 密钥保管库在灾难情况下维持可用性，并将请求自动故障转移到配对区域，而无需用户进行任何干预。 有关详细信息，请参阅 [Azure Key Vault 可用性和冗余](https://docs.microsoft.com/azure/key-vault/general/disaster-recovery-guidance)。
 
-如果要防止意外或恶意删除机密，请在密钥保管库上配置软删除和清除保护功能。 有关详细信息，请参阅 [Azure 密钥保管库软删除概述](https://docs.microsoft.com/azure/key-vault/general/overview-soft-delete)。
+如果要防止意外或恶意删除机密，请在密钥保管库上配置软删除和清除保护功能。 有关详细信息，请参阅 [Azure 密钥保管库软删除概述](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)。
 
 ## <a name="limitations"></a>限制
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 5fe8d261cb6804ffdf2cbe4f543db29336c4c78b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c8cd789b16f839c60249b36f570ca1c945ef4e01
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656418"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87337171"
 ---
 # <a name="what-is-azure-iot-central"></a>什么是 Azure IoT Central？
 
@@ -63,11 +63,8 @@ IoT Central 是一个 IoT 应用程序平台，可减轻开发、管理和维护
 
 ### <a name="create-device-templates"></a>创建设备模板
 
-IoT Central 可以通过 [IoT 即插即用（预览版）](../../iot-pnp/overview-iot-plug-and-play.md)来集成设备，不需要你编写任何嵌入式设备代码。 IoT 即插即用（预览版）的核心是描述设备功能的设备功能模型架构。 在 IoT Central 应用程序中，设备模板使用这些 IoT 即插即用（预览版）设备功能模型。
-
 作为解决方案构建者，你在创建设备模板时有多种选择：
 
-- 从 [Azure IoT 认证设备目录](https://aka.ms/iotdevcat)导入设备功能模型，然后添加 IoT Central 应用程序所需的任何云属性、自定义和仪表板。
 - 在 IoT Central 中设计设备模板，然后在设备代码中实现其设备功能模型。
 - 使用 Visual Studio code 创建设备功能模型，并将模型发布到存储库。 基于模型实现设备代码，并将设备连接到 IoT Central 应用程序。 IoT Central 从存储库中查找设备功能模型，并创建简单的设备模板。
 - 使用 Visual Studio Code 创建设备功能模型。 基于模型实现设备代码。 将设备功能模型手动导入 IoT Central 应用程序，然后添加 IoT Central 应用程序所需的任何云属性、自定义和仪表板。
@@ -149,7 +146,6 @@ IoT Central 应用程序完全由 Microsoft 托管，这降低了管理应用程
 - IoT Central 目前可在美国、欧洲、亚太、澳大利亚、英国和日本位置中使用。
 - 不能在英国和日本位置使用“自定义应用程序(旧版)”应用程序模板。
 - 必须在同一文件中以内联方式定义设备功能模型的所有接口。
-- 对 [IoT 即插即用](../../iot-pnp/overview-iot-plug-and-play.md)的支持处于预览状态，并且仅在选定区域受支持。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -158,7 +154,6 @@ IoT Central 应用程序完全由 Microsoft 托管，这降低了管理应用程
 - 了解可用的[用于创建 IoT 解决方案的 Azure 技术和服务](../../iot-fundamentals/iot-services-and-technologies.md)。
 - 熟悉 [Azure IoT Central UI](overview-iot-central-tour.md)。
 - 通过[创建 Azure IoT Central 应用程序](quick-deploy-iot-central.md)开始使用此解决方案。
-- 详细了解 [IoT 即插即用（预览版）](../../iot-pnp/overview-iot-plug-and-play.md)。
 - 了解如何[连接 Azure IoT Edge 设备](./tutorial-add-edge-as-leaf-device.md)。
 - 详细了解 [Azure IoT 技术和服务](../../iot-fundamentals/iot-services-and-technologies.md)。
 
