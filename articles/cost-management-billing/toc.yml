@@ -304,6 +304,8 @@
               items:
                 - name: 查看预留和利用率
                   href: reservations/view-reservations.md?toc=/azure/cost-management-billing/toc.json
+                - name: 以 CSP 的身份查看预留
+                  href: reservations/how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/toc.json
                 - name: 管理预留
                   href: reservations/manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/toc.json
                 - name: 对预留执行交换和退款操作

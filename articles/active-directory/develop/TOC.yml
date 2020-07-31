@@ -512,6 +512,8 @@
           href: active-directory-claims-mapping.md
         - name: 配置可选声明
           href: active-directory-optional-claims.md
+        - name: 在声明中使用目录架构扩展属性
+          href: active-directory-schema-extensions.md
         - name: 配置令牌生存期
           href: active-directory-configurable-token-lifetimes.md
         - name: 在 Chrome 浏览器中处理 SameSite Cookie 更改

@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 04/20/2020
+ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: 878fbb81e05db058aa015f8b4a7eae42e8cfea2e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: da00d77138eb3ff737c26d7fa52ab0bb56ec6ae4
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742205"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87422398"
 ---
 # <a name="what-is-the-my-account-portal"></a>什么是“我的帐户”门户？
 
@@ -33,7 +33,7 @@ ms.locfileid: "83742205"
 ![“我的帐户”门户的“概览”页](media/my-account-portal/my-account-portal-overview.png)
 
 >[!Important]
->本文适用于尝试执行以下操作的用户：访问“我的帐户”门户以更新其安全信息、设备信息、密码、连接的组织、隐私或以前的登录信息。 如果你是管理员，想要了解如何为你的员工和其他用户启用身份验证和其他 Azure Active Directory (Azure AD) 功能，请参阅[适用于管理员的 Azure AD 文档](https://docs.microsoft.com/azure/active-directory/)。
+>本文适用于尝试执行以下操作的用户：访问“我的帐户”门户以更新其安全信息、设备信息、密码、连接的组织、语言设置、隐私或以前的登录信息。 如果你是管理员，想要了解如何为你的员工和其他用户启用身份验证和其他 Azure Active Directory (Azure AD) 功能，请参阅[适用于管理员的 Azure AD 文档](https://docs.microsoft.com/azure/active-directory/)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -46,6 +46,8 @@ ms.locfileid: "83742205"
 - 查看[登录活动](my-account-portal-sign-ins-page.md)
 
 - 查看组织如何[使用隐私相关数据](my-account-portal-privacy-page.md)
+
+- 更改[我的帐户门户设置](my-account-portal-settings.md)
 
 ## <a name="related-microsoft-office-content"></a>相关的 Microsoft Office 内容
 

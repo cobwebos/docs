@@ -7,8 +7,6 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 连接监视器（预览版）
-      href: connection-monitor-preview.md
     - name: 诊断 VM 流量筛选器问题 - 门户
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: 诊断 VM 流量筛选器问题 - PowerShell
@@ -27,6 +25,8 @@
       href: network-watcher-nsg-flow-logging-portal.md
 - name: 概念
   items:
+    - name: 连接监视器（预览版）
+      href: connection-monitor-preview.md
     - name: 诊断 VM 网络流量筛选器问题
       href: network-watcher-ip-flow-verify-overview.md
     - name: 诊断 VM 路由问题
@@ -162,6 +162,10 @@
       href: view-relative-latencies.md
     - name: 监视网络性能
       href: ../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+    - name: 移动资源
+      items:
+        - name: 移动网络观察程序资源
+          href: resource-move.md
 - name: 参考
   items:
     - name: Azure CLI

@@ -220,11 +220,11 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: 安全
       items:
-        - name: 配置防火墙
+        - name: 允许从特定 IP 地址访问
           href: service-bus-ip-filtering.md
-        - name: 配置虚拟网络服务终结点
+        - name: 允许从特定虚拟网络访问
           href: service-bus-service-endpoints.md
-        - name: 配置专用终结点
+        - name: 允许通过专用终结点访问
           href: private-link-service.md
         - name: 配置客户管理的密钥
           href: configure-customer-managed-key.md
@@ -270,7 +270,7 @@
       href: service-bus-messaging-sql-rule-action.md
 - name: 资源
   items:
-    - name: 常见问题
+    - name: 常见问题解答
       href: service-bus-faq.md
     - name: 利用 Microsoft Learn 掌握技能
       href: /learn/browse/?products=azure-service-bus

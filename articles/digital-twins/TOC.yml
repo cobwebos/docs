@@ -42,8 +42,10 @@
           href: how-to-use-cli.md
         - name: 设置实例和身份验证（已编写脚本）
           href: how-to-set-up-instance-scripted.md
-        - name: 设置实例和身份验证（手动）
-          href: how-to-set-up-instance-manual.md
+        - name: 设置实例和身份验证 (CLI)
+          href: how-to-set-up-instance-cli.md
+        - name: 设置实例和身份验证（门户）
+          href: how-to-set-up-instance-portal.md
         - name: 编写应用身份验证码
           href: how-to-authenticate-client.md
     - name: 设计模型
