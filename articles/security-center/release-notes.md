@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2020
 ms.author: memildin
-ms.openlocfilehash: 17b54eb747e3ddd3b381659031171bc795b61f54
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: bf503cf90df7b08e5a957416d66eae2f1a599bed
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430465"
+ms.locfileid: "87438944"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -32,11 +32,11 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 ## <a name="july-2020"></a>2020 年 7 月
 
 7月的更新包括：
-- [虚拟机的漏洞评估现可用于非 marketplace 映像](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)自动        
+- [虚拟机的漏洞评估现在适用于非 marketplace 映像](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)
 - [针对 Azure 存储的威胁防护已扩展为包括 Azure 文件和 Azure Data Lake Storage Gen2 （预览版）](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
 - [启用威胁防护功能的八个新建议](#eight-new-recommendations-to-enable-threat-protection-features)
 - [容器安全改进-更快速的注册表扫描和刷新文档](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
-- [更新自适应应用程序控件规则的新建议](#new-recommendation-to-update-your-adaptive-application-controls-rules)
+- [使用新建议更新的自适应应用程序控件，并支持路径规则中的通配符](#adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules)
 - [已弃用六个 SQL 高级数据安全策略](#six-policies-for-sql-advanced-data-security-deprecated)
 
 
@@ -115,11 +115,16 @@ Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活�
 
 
 
-### <a name="new-recommendation-to-update-your-adaptive-application-controls-rules"></a>更新自适应应用程序控件规则的新建议
+### <a name="adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules"></a>使用新建议更新的自适应应用程序控件，并支持路径规则中的通配符
 
-自适应应用程序控制功能持续监视配置组中的计算机活动。 在此更新中，你将收到以前未被允许的可能合法行为的通知，这可能会导致误报警报。
+自适应应用程序控件功能已收到两个重要更新：
 
-**应更新自适应应用程序控制策略中**的新建议允许列表规则，提示你向现有策略添加新规则，以减少自适应应用程序控制违规警报中的误报数。
+- 新的建议确定以前未允许的潜在合法行为。 **应更新自适应应用程序控制策略中**的新建议允许列表规则，提示你向现有策略添加新规则，以减少自适应应用程序控制违规警报中的误报数。
+
+- 路径规则现在支持通配符。 在此更新中，可以使用通配符配置允许的路径规则。 支持以下两种方案：
+
+    - 在路径末尾使用通配符以允许此文件夹和子文件夹中的所有可执行文件
+    - 使用路径中间的通配符，可通过更改的文件夹名称（例如，使用已知可执行文件的个人用户文件夹、自动生成的文件夹名称等）来启用已知的可执行文件名称。 
 
 [详细了解自适应应用程序控制](security-center-adaptive-application.md)。
 

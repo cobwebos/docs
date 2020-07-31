@@ -3,16 +3,16 @@ title: 加拿大联邦 PBMM 蓝图示例概述
 description: 加拿大联邦 PBMM 蓝图示例概述。 此蓝图示例可帮助客户评估特定加拿大联邦 PBMM 控制要求。
 ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: fcaf4a844db10f4a87b205d08cfe3a86a6182957
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: a33cba28459b1d01e816babbfc65c1b662bd2718
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005675"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419676"
 ---
 # <a name="overview-of-the-canada-federal-pbmm-blueprint-sample"></a>加拿大联邦 PBMM 蓝图示例概述
 
-加拿大联邦 B 级保护、中度完整性、中度可用性 (PBMM) 蓝图示例提供了一套使用 [Azure Policy](../../../policy/overview.md) 的治理防护措施，用于帮助通过[加拿大联邦 PBMM](https://www.canada.ca/en/government/system/digital-government/modern-emerging-technologies/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html#toc4) 认证。 
+加拿大联邦 B 级保护、中度完整性、中度可用性 (PBMM) 蓝图示例提供了一套使用 [Azure Policy](../../../policy/overview.md) 的治理防护措施，用于帮助通过[加拿大联邦 PBMM](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/cloud-services/government-canada-security-control-profile-cloud-based-it-services.html) 认证。 
 
 ## <a name="blueprint-sample"></a>蓝图示例
 

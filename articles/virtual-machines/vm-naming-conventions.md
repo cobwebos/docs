@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/22/2020
 ms.author: mimckitt
 ms.custom: sttsinar
-ms.openlocfilehash: 2059c6f374e4cd5c2518e2fc0ac0da5858b99825
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3af4387723f74c1e09597564bc5330183fe1df69
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131712"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439451"
 ---
 # <a name="azure-virtual-machine-sizes-naming-conventions"></a>Azure 虚拟机大小命名约定
 
@@ -29,7 +29,7 @@ ms.locfileid: "87131712"
 | 系列 | 指示 VM 系列系列| 
 | * 子系列 | 仅用于专用 VM differentiations|
 | 个 vcpu 数| 表示 VM 的个 vcpu 数 |
-| 附加功能 | 一个或多个小写字母表示附加功能，例如： <br> a = 基于 AMD 的处理器 <br> d = 磁盘（本地临时磁盘存在）;这适用于较新的 Azure Vm，请参阅[Ddv4 和 Ddsv4 系列](./ddv4-ddsv4-series.md) <br> h = 支持休眠 <br> i = 独立 <br> l = 内存不足 <br> m = 占用大量内存 <br> t = 小内存 <br> r = RDMA <br> s = 支持高级存储，包括[超级 SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk)的可能使用情况（注意：没有属性的一些较新大小仍可支持高级存储，例如 M128、m64-16ms 等）<br> |
+| 附加功能 | 一个或多个小写字母表示附加功能，例如： <br> a = 基于 AMD 的处理器 <br> d = 磁盘（本地临时磁盘存在）;这适用于较新的 Azure Vm，请参阅[Ddv4 和 Ddsv4 系列](./ddv4-ddsv4-series.md) <br> h = 支持休眠 <br> i = 隔离大小 <br> l = 内存不足;内存量要低于内存密集型大小 <br> m = 占用大量内存;特定大小的最大内存量 <br> t = 小内存;特定大小的最小内存量 <br> r = 支持 RDMA <br> s = 支持高级存储，包括[超级 SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk)的可能使用情况（注意：没有属性的一些较新大小仍可支持高级存储，例如 M128、m64-16ms 等）<br> |
 | * 加速器类型 | 表示专用/GPU Sku 中的硬件加速器类型。 只有从第 3 2020 季度启动的新专用/GPU Sku 才能在名称中包含硬件加速器。 |
 | 版本 | 表示 VM 系列系列的版本 |
 

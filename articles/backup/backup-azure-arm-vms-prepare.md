@@ -3,12 +3,12 @@ title: 将 Azure VM 备份到恢复服务保管库中
 description: 介绍如何使用 Azure 备份将 Azure VM 备份到恢复服务保管库中
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: c4fbafc63ce063159d0524ddf26bb936c53328df
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b9d57449e56fb50bfbfddb627a1d6bb379710da4
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373836"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439718"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>将 Azure VM 备份到恢复服务保管库中
 
@@ -88,7 +88,7 @@ ms.locfileid: "87373836"
      ![“选择虚拟机”窗格](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
     >[!NOTE]
-    > 与保管库位于同一区域和订阅中的所有 Vm 都可用于配置备份。 配置备份时，你可以浏览到虚拟机名称及其资源组，即使你对这些 Vm 没有所需的权限。  
+    > 与保管库位于同一区域和订阅中的所有 Vm 都可用于配置备份。 配置备份时，你可以浏览到虚拟机名称及其资源组，即使你对这些 Vm 没有所需的权限。 如果 VM 处于软删除状态，则不会在此列表中显示。 如果需要重新保护 VM，则需要等待软删除周期过期或从软删除列表中删除 VM。 有关详细信息，请参阅[适用于 vm 的软删除文章](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal)。
 
 1. 在“备份”中，选择“启用备份”。  这会将策略部署到保管库和 VM，并在 Azure VM 上运行的 VM 代理中安装备份扩展。
 
@@ -150,7 +150,7 @@ ms.locfileid: "87373836"
 已完成 | 正在进行 | 正在进行
 完成 | 已跳过 | 已完成
 已完成 | 已完成 | 已完成
-已完成 | 失败 | 已完成，但出现警告
+已完成 | 已失败 | 已完成，但出现警告
 失败 | 失败 | 失败
 
 现在借助此功能，对于同一 VM，两个备份可以并行运行，但在任一阶段（快照、将数据传输到保管库）中，只有一个子任务可以运行。 因此，在正在进行的备份作业导致第二天的备份失败时，这种分离功能将避免这种情况。 后续几天的备份可以完成快照，而如果之前的备份作业正在进行状态，则会跳过将**数据传输到保管库**的过程。

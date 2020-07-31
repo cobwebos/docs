@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: 075837d0c382f5bc6f436a63dfe227c17f0a57a3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f3eacbe6f93388756ce26324babeb2ca38bd09a5
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128652"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87438888"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的访问和标识选项
 
@@ -75,8 +75,6 @@ Kubernetes 中的一个主要用户类型是“服务帐户”。 服务帐户�
 
 使用 OpenID Connect 向 AKS 群集提供 Azure AD 身份验证。 OpenID Connect 是构建在 OAuth 2.0 协议顶层的标识层。 有关 OpenID Connect 的详细信息，请参阅 [Open ID Connect 文档][openid-connect]。 在 Kubernetes 群集内部， [Webhook 令牌身份验证][webhook-token-docs]用于验证身份验证令牌。 Webhook 令牌身份验证作为 AKS 群集的一部分进行配置和管理。
 
-在 Kubernetes 群集内部，使用 Webhook 令牌身份验证来验证身份验证令牌。 Webhook 令牌身份验证作为 AKS 群集的一部分进行配置和管理。
-
 ### <a name="webhook-and-api-server"></a>Webhook 和 API 服务器
 
 ![Webhook 和 API 服务器身份验证流](media/concepts-identity/auth-flow.png)
@@ -105,7 +103,7 @@ Azure RBAC 是在 [Azure 资源管理器](../azure-resource-manager/management/o
 
 使用 Azure RBAC，可创建“角色定义”，描述要应用的权限。 然后，使用特定*范围*的*角色分配*（可能是单个资源、资源组或整个订阅）为用户或组分配此角色定义。
 
-有关详细信息，请参阅[什么是 azure 基于角色的访问控制（AZURE RBAC）？][azure-rbac]
+有关详细信息，请参阅[什么是 Azure 基于角色的访问控制 (Azure RBAC)？][azure-rbac]
 
 完全操作 AKS 群集需要两个级别的访问权限： 
 1. [访问 Azure 订阅中的 AKS 资源](#azure-rbac-to-authorize-access-to-the-aks-resource)。 此过程允许你使用 AKS Api 控制扩展或升级群集，并请求 kubeconfig。

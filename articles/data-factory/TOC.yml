@@ -167,8 +167,6 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 集成运行时
       href: concepts-integration-runtime.md
-    - name: 托管的虚拟网络
-      href: managed-virtual-network-private-endpoint.md
     - name: 安全性
       items:
         - name: 安全基线
@@ -588,6 +586,8 @@
           href: data-factory-service-identity.md
         - name: 客户托管密钥加密
           href: enable-customer-managed-key.md
+        - name: 托管的虚拟网络
+          href: managed-virtual-network-private-endpoint.md
     - name: 监视和管理
       items:
         - name: 直观地监视

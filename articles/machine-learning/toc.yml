@@ -16,6 +16,7 @@
   expanded: true
   items:
     - name: 工作室
+      expanded: true
       items:
         - name: 设计器（拖放）
           items:
@@ -37,6 +38,7 @@
           displayName: 'tag, tagging, images'
           href: tutorial-labeling.md
     - name: Python SDK
+      expanded: true
       items:
         - name: 创建首个 ML 试验
           items:
