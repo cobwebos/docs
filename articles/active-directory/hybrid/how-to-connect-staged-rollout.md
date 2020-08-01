@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f547aa900c1b8dbea27eceff7ac7ebc86a83e33
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d582db4bd7ef99d86602f49bc9046aadb8c3e8f0
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019822"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460603"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>使用分阶段推出迁移到云身份验证（预览）
 
@@ -50,6 +50,8 @@ ms.locfileid: "87019822"
 -   若要使用分阶段推出功能，你必须是租户的全局管理员。
 
 -   若要在特定 Active Directory 林上启用无缝 SSO，你必须是域管理员。
+
+-  如果要部署混合 Azure AD 或 Azure AD 加入，则必须升级到 Windows 10 1903 更新。
 
 
 ## <a name="supported-scenarios"></a>支持的方案

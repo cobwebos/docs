@@ -3,12 +3,12 @@ title: ASP.NET Core 应用程序的 Azure 应用程序见解 |Microsoft Docs
 description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用情况。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 770cc3f34487f837631a98c6f652d8746ae2c2df
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1a9bc3e46e108c50b36e0318e0f9a51a94e83573
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321388"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475509"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -455,7 +455,9 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 ## <a name="open-source-sdk"></a>开源 SDK
 
-[阅读代码或为其做出贡献](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates)
+* [阅读代码或为其做出贡献](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates)
+
+有关最新的更新和 bug 修复，[请参阅发行说明](./release-notes.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

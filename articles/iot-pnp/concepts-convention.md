@@ -7,12 +7,12 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: b06edb83e85ef6d56cf8bf8f91551fe99535eba1
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 126673391b49f884a51521d462060c425a314667
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352135"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475662"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT 即插即用约定
 
@@ -25,11 +25,11 @@ IoT 即插即用预览版设备在与 IoT 中心交换消息时应遵循一组�
 
 有关详细信息，请参阅[IoT 即插即用模型中的组件](concepts-components.md)。
 
-## <a name="model-discovery"></a>模型发现
+## <a name="identify-the-model"></a>标识模型
 
 若要公布它实现的模型，IoT 即插即用设备通过添加到字段，在 MQTT 连接数据包中包含模型 ID `model-id` `USERNAME` 。
 
-若要发现设备实现的模型，服务可以从以下各内容获取模型 ID：
+若要标识设备实现的模型，服务可以从以下各内容获取模型 ID：
 
 - 设备克隆 `modelId` 字段。
 - 数字双子 `$metadata.$model` 字段。

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: fc50934b4c301b4eea509ecc22e00c62ca091d75
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 273c41a523de8b2776982e5229c5a8b618b82c19
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056546"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475186"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中支持的 Kubernetes 版本
 
@@ -91,6 +91,14 @@ New Supported Version List
 1.17.*9*, 1.17.*8*, 1.16.*11*, 1.16.*10*
 ```
 
+### <a name="supported-kubectl-versions"></a>支持的 `kubectl` 版本
+
+您可以使用 `kubectl` 相对于*kube-apiserver*版本的较早或较新的次要版本，这与 kubectl 的[Kubernetes 支持策略](https://kubernetes.io/docs/setup/release/version-skew-policy/#kubectl)一致。
+
+例如，如果你的*kube-apiserver*为*1.17*，则可以使用版本*1.16*来*1.18* `kubectl` 该*kube-apiserver*。
+
+若要安装或更新的版本 `kubectl` ，请运行 `az aks install-cli` 。
+
 ## <a name="release-and-deprecation-process"></a>发布和弃用过程
 
 可以在[AKS Kubernetes Release Calendar](#aks-kubernetes-release-calendar)上引用即将发布的版本和弃用功能。
@@ -121,7 +129,6 @@ AKS 有权在不事先发出通行的情况下添加新的版本，或者删除�
 az aks get-versions --location eastus --output table
 ```
 
-
 ## <a name="aks-kubernetes-release-calendar"></a>AKS Kubernetes Release Calendar
 
 对于过去的版本历史记录，请参阅[此处](https://en.wikipedia.org/wiki/Kubernetes#History)。
@@ -135,7 +142,7 @@ az aks get-versions --location eastus --output table
 
 \*挂起的上游发布日期确认。
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>FAQ
 
 **如果用户使用不受支持的次要版本升级 Kubernetes 群集，会发生什么情况？**
 

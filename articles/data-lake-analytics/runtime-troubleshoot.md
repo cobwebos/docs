@@ -7,12 +7,12 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/10/2019
-ms.openlocfilehash: 54524b0528f94ca9386c2d0d45ba4393c965fa88
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 39b4a3bc5e5f70a5699f4fd84ec86dc61cf21483
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128805"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475254"
 ---
 # <a name="learn-how-to-troubleshoot-u-sql-runtime-failures-due-to-runtime-changes"></a>了解如何排查由运行时更改引起的 SQL 运行时故障
 
@@ -46,11 +46,6 @@ release_YYYYMMDD_adl_buildno [_modifier]
 
 例如，release_20190318_adl_3394512_2 表示3394512年 3 18 2019 月版的运行时版本的第二个版本，而 release_20190318_adl_3394512_private 表示同一版本的专用生成。 注意：该日期与上次签入的时间有关，而不一定是正式发布日期。
 
-下面是当前可用的运行时版本。
-
-- release_20190318_adl_3394512
-- release_20190318_adl_5832669 当前默认值
-- release_20190703_adl_4713356
 
 ## <a name="troubleshooting-u-sql-runtime-version-issues"></a>排查 U-SQL 运行时版本问题
 
@@ -60,7 +55,7 @@ release_YYYYMMDD_adl_buildno [_modifier]
 
 2. 如果已将非默认运行时固定到你的帐户，但在一段时间后删除了该运行时，则表示你已显式或隐式使用了非默认运行时。 如果遇到缺少的运行时，请升级您的脚本以与当前默认运行时一起运行。 如果需要更多时间，请联系 Microsoft 支持部门
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 - [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
 - [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)

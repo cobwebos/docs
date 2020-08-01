@@ -1,18 +1,18 @@
 ---
 title: 了解 Azure IoT 模型存储库的概念 |Microsoft Docs
 description: 作为解决方案开发人员或 IT 专业人员，请了解 Azure IoT 模型存储库的基本概念。
-author: JimacoMS3
-ms.author: v-jambra
+author: prashmo
+ms.author: prashmo
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 53ae5bf15c303f26d48550734f46e69ef1fcdd75
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 7d736721e2676a42da90aead3144f8016329f730
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352146"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475492"
 ---
 # <a name="azure-iot-model-repository"></a>Azure IoT 模型存储库
 
@@ -42,7 +42,7 @@ ms.locfileid: "87352146"
 
 ```csharp
 var httpClient = new HttpClient();
-httpClient.BaseAddress = new Uri("<url>");
+httpClient.BaseAddress = new Uri("https://repo.azureiotrepository.com");
 
 var modelId = "dtmi:com:mxchip:model;1";
 var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05-01-preview").ConfigureAwait(false);
@@ -81,7 +81,7 @@ var response = await httpClient.GetAsync($"/models/{modelId}?api-version=2020-05
 |----|----------|
 |TenantAdministrator|管理访问权限，读取模型|
 |创建者|创建模型，读取模型|
-|Publisher|发布模型，读取模型|
+|发布者|发布模型，读取模型|
 
 #### <a name="passing-a-security-token-when-accessing-company-models-with-a-rest-api"></a>使用 REST API 访问公司模型时传递安全令牌
 

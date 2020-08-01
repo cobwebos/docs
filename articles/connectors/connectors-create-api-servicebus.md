@@ -3,16 +3,16 @@ title: 使用 Azure 服务总线交换消息
 description: 在 Azure 逻辑应用中创建使用 Azure 服务总线发送和接收消息的自动化任务和工作流
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 09/19/2019
+ms.date: 07/31/2020
 tags: connectors
-ms.openlocfilehash: 870ec6997b0abf5afc1c1bfa788bbca18c08ead7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 768186d4b1cf9ac62d4ffdb0af8fdb3df04e9b19
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283990"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461578"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure 逻辑应用和 Azure 服务总线在云中交换消息
 
@@ -31,7 +31,7 @@ ms.locfileid: "87283990"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
+* Azure 帐户和订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 * 服务总线命名空间和消息传送实体，例如队列。 这些项和你的逻辑应用需使用同一 Azure 订阅。 如果没有这些项，请了解如何[创建服务总线命名空间和队列](../service-bus-messaging/service-bus-create-namespace-portal.md)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "87283990"
 
 确认逻辑应用有权访问服务总线命名空间。
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 在[Azure 门户](https://portal.azure.com)中，用 Azure 帐户登录。
 
 1. 转到服务总线的命名空间。 在命名空间页上的“设置”下，选择“共享访问策略”。  在“声明”下，检查你是否有该命名空间的“管理”权限。 
 
@@ -54,7 +54,7 @@ ms.locfileid: "87283990"
 1. 获取服务总线命名空间的连接字符串。 在逻辑应用中提供连接信息时需要此字符串。
 
    1. 在“共享访问策略”窗格中，选择“RootManageSharedAccessKey”。
-   
+
    1. 在主连接字符串旁边选择复制按钮。 保存连接字符串供以后使用。
 
       ![复制服务总线命名空间连接字符串](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
@@ -171,4 +171,3 @@ ms.locfileid: "87283990"
 ## <a name="next-steps"></a>后续步骤
 
 * 了解其他[逻辑应用连接器](../connectors/apis-list.md)
-

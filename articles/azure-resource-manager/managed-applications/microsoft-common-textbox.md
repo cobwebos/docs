@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 547b3ed84c8e4406b65ee8cf51c0db10b6878793
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c89bc434d9d67144a95b5c2f23e7664078fe7825
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87063820"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474302"
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Microsoft.Common.TextBox UI 元素
 
@@ -29,6 +29,7 @@ ms.locfileid: "87063820"
     "label": "Name",
     "defaultValue": "contoso123",
     "toolTip": "Use only allowed characters",
+    "placeholder": "",
     "constraints": {
         "required": true,
         "validations": [
@@ -60,6 +61,7 @@ ms.locfileid: "87063820"
 - `isValid`属性包含计算结果为 true 或 false 的表达式。 在表达式中，定义确定文本框是否有效的条件。
 - `message`属性是当文本框的值未通过验证时要显示的字符串。
 - 当 `required` 设置为 **false** 时可以为 `regex` 指定值。 在这种情况下，文本框并非必须具有值才能成功通过验证。 如果指定了一个值，则它必须与正则表达式模式匹配。
+- `placeholder`属性是用户开始编辑时消失的帮助文本。 如果 `placeholder` `defaultValue` 同时定义了和，则将 `defaultValue` 优先使用并显示。
 
 ## <a name="example"></a>示例
 

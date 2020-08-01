@@ -7,15 +7,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 6048b5f0a3702e95cef9175933041fe36f2f07bb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2ef7095d186902425adb5065c470325be1283023
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081553"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475730"
 ---
-# <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>适用于逻辑应用和流的 Azure Monitor 日志连接器
-借助 [Azure 逻辑应用](../../logic-apps/index.yml) 和 [Power Automate](https://ms.flow.microsoft.com)，可以使用数百个操作为多种服务创建自动化工作流。 使用 Azure Monitor 日志连接器，可以在 Azure Monitor 中生成可从 Log Analytics 工作区或 Application Insights 应用程序检索数据的工作流。 本文介绍该连接器附带的操作，并演练如何使用这些数据生成工作流。
+# <a name="azure-monitor-logs-connector-for-logic-apps-and-power-automate"></a>为逻辑应用和电源自动化 Azure Monitor 日志连接器
+借助 [Azure 逻辑应用](../../logic-apps/index.yml) 和 [Power Automate](https://flow.microsoft.com)，可以使用数百个操作为多种服务创建自动化工作流。 使用 Azure Monitor 日志连接器，可以在 Azure Monitor 中生成可从 Log Analytics 工作区或 Application Insights 应用程序检索数据的工作流。 本文介绍该连接器附带的操作，并演练如何使用这些数据生成工作流。
 
 例如，可以创建一个逻辑应用，以在 Office 365 的电子邮件通知中使用 Azure Monitor 日志数据，在 Azure DevOps 中创建 Bug，或者发布 Slack 消息。  可通过简单计划或从连接的服务中的某些操作（例如收到电子邮件或推文时）触发工作流。 
 
@@ -126,4 +126,4 @@ Event
 
 - 详细了解 [Azure Monitor 中的日志查询](../log-query/log-query-overview.md)。
 - 详细了解[逻辑应用](../../logic-apps/index.yml)
-- 详细了解 [Microsoft Flow](https://ms.flow.microsoft.com)。
+- 了解有关[电源自动执行](https://flow.microsoft.com)的详细信息。

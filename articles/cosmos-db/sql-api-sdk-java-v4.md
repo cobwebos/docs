@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 6cd4d64361e1975a6752ff3a15600923ce3fdf98
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 45da3ec95167cbb4fa087435e0e88f85c0eb6463
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322884"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461045"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>用于 Core (SQL) API 的 Azure Cosmos DB Java SDK v4：发行说明和资源
 > [!div class="op_single_selector"]
@@ -138,6 +138,7 @@ ms.locfileid: "87322884"
 * 通过删除双序列化/反序列化来进行查询优化。 
 * 通过删除不必要的来回复制来优化响应标头。 
 * 通过删除中间字符串实例化优化了 `ByteBuffer` 序列化/反序列化。
+
 #### <a name="key-bug-fixes"></a>关键 Bug 修复
 * 修复了 ConnectionPolicy `toString()` 空指针异常。
 * 修复了在按查询的值顺序分析查询结果时的问题。 

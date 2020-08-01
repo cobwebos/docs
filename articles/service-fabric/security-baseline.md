@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 97285ae9eadee3717f0b1a1510627392250424b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 108882fd9e585fadc98436c3404bd8945e80080f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037859"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460671"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>适用于 Service Fabric 的 Azure 安全基线
 
 适用于 Service Fabric 的 Azure 安全基线包含有助于改进部署安全状况的建议。
 
-此服务的基线提取自 [Azure 安全基准版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview)，该版本提供了有关如何在 Azure 上利用我们的最佳做法指南来保护云解决方案的建议。
+此服务的基线摘自 [Azure 安全基准版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
 
 有关详细信息，请参阅 [Azure 安全基线概述](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
 
@@ -176,7 +176,7 @@ ms.locfileid: "87037859"
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动化工具来监视网络资源配置和检测更改
 
-**指南**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure Service Fabric 部署相关的网络资源的更改。 在 Azure Monitor 中创建警报，使其在对关键网络资源进行更改时触发。
+**指南**：使用 Azure 活动日志监视网络资源配置，并检测与 Azure Service Fabric 部署相关的网络资源的更改。 在 Azure Monitor 中创建当关键网络资源发生更改时触发的警报。
 
 * [如何查看和检索 Azure 活动日志事件](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log-view)
 
@@ -338,7 +338,7 @@ ms.locfileid: "87037859"
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
@@ -390,7 +390,7 @@ ms.locfileid: "87037859"
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
-**指南**：当环境中出现可疑或不安全的活动时，可使用 Azure Active Directory (AD) Privileged Identity Management (PIM) 生成日志和警报。 此外，还可使用 Azure AD 风险检测来查看警报和报告有风险的用户行为。
+**指导**：当环境中出现可疑或不安全的活动时，可使用 Azure Active Directory (AD) Privileged Identity Management (PIM) 生成日志和警报。 此外，还可使用 Azure AD 风险检测来查看警报和报告有风险的用户行为。
 
 * [如何部署 Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-deployment-plan)
 
@@ -626,7 +626,7 @@ ms.locfileid: "87037859"
 
 * [如何使用最新的规模集模型对 VM 进行更新](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
 
-* [Azure 自动化更新管理概述](https://docs.microsoft.com/azure/automation/automation-update-management)
+* [Azure 自动化更新管理概述](https://docs.microsoft.com/azure/automation/update-management/update-mgmt-overview)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -668,7 +668,7 @@ ms.locfileid: "87037859"
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动资产发现解决方案
 
-**指南**：使用 Azure Resource Graph 查询/发现订阅中的所有资源（例如计算、存储、网络、端口和协议等）。 确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
+**指导**：使用 Azure Resource Graph 查询/发现订阅中的所有资源（例如计算、存储、网络、端口和协议等）。 确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
 
 虽然可以通过 Resource Graph 发现经典的 Azure 资源，但强烈建议创建和使用 Azure 资源管理器资源以供后续使用。
 
@@ -948,7 +948,7 @@ ms.locfileid: "87037859"
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
-**指南**：如果使用与 Azure Service Fabric 部署相关的任何代码，你可以实施凭据扫描器来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据移动到更安全的位置，例如 Azure Key Vault。
+**指南**：如果使用与 Azure Service Fabric 部署相关的任何代码，你可以实施凭据扫描器来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
 使用 Azure Key Vault 自动轮替 Service Fabric 群集证书。
 
@@ -958,7 +958,7 @@ ms.locfileid: "87037859"
 
 **Azure 安全中心监视**：不适用
 
-**责任**：客户
+责任：客户
 
 ## <a name="malware-defense"></a>恶意软件防护
 
@@ -1064,7 +1064,7 @@ ms.locfileid: "87037859"
 
 **Azure 安全中心监视**：不适用
 
-**责任**：客户
+责任：客户
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
@@ -1078,11 +1078,11 @@ ms.locfileid: "87037859"
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期练习以测试系统的事件响应能力。 识别薄弱点和缺口，并根据需要修订计划。
+**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。
 
 * [适用于 IT 计划和功能的测试、培训和试验计划指南](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)
 
@@ -1102,7 +1102,7 @@ ms.locfileid: "87037859"
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
-**指导**：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出功能可手动或以连续不断的方式导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Sentinel。
+**指导**：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Sentinel。
 
 * [如何配置连续导出](https://docs.microsoft.com/azure/security-center/continuous-export)
 
@@ -1110,7 +1110,7 @@ ms.locfileid: "87037859"
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
 

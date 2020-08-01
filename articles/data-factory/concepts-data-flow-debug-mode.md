@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/06/2019
-ms.openlocfilehash: 4a763a3bb4d46ba03808423d4d1283381c1174a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 02ec26c80a8a64f88a30ded2067a377c292d621d
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81605398"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475594"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>映射数据流调试模式
 
@@ -25,7 +25,7 @@ Azure 数据工厂映射数据流的调试模式允许您在生成和调试数�
 
 ![调试滑块](media/data-flow/debugbutton.png "调试滑块")
 
-打开滑块后，系统将提示您选择要使用的集成运行时配置。 如果选择了 "AutoResolveIntegrationRuntime"，则将启动具有8个常规计算的群集，其生存时间为60分钟。 有关数据流集成运行时的详细信息，请参阅数据流[性能](concepts-data-flow-performance.md#increasing-compute-size-in-azure-integration-runtime)。
+打开滑块后，系统将提示您选择要使用的集成运行时配置。 如果选择了 "AutoResolveIntegrationRuntime"，则将启动具有8个常规计算的群集，其生存时间为60分钟。 有关数据流集成运行时的详细信息，请参阅数据流[性能](concepts-data-flow-performance.md#ir)。
 
 ![调试 IR 选择](media/data-flow/debugbutton2.png "调试 IR 选择")
 

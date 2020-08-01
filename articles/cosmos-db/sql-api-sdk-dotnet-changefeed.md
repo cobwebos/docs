@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 679f3113cddbfe13370483f2678154f4dd1f8ab2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2c846298fecdc771dd5d9831a558b99c74b2737
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85392057"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461062"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 
@@ -48,7 +48,11 @@ ms.locfileid: "85392057"
 
 ### <a name="v2-builds"></a>v2 版本
 
-### <a name="230"></a><a name="2.3.0"></a>2.3.0
+### <a name="231"></a><a name="2.3.1"/>2.3.1
+* `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` `FeedProcessing.IChangeFeedObserver.CloseAsync` 如果找不到分区或者目标副本与读取会话不是最新的，则在将关闭原因发送到时更正了此情况。 在这些情况下 `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` ， `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` 现在使用了关闭原因。
+* 添加了一个新的关闭原因 `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` ，当目标副本不是最新的读取会话时，将发送此关闭原因以关闭更改源观察程序。
+
+### <a name="230"></a><a name="2.3.0"/>2.3.0
 * 添加了新方法 `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` 和相应的公共接口 `ICheckpointPartitionProcessorFactory`。 这样可以实现 `IPartitionProcessor` 接口来使用内置检查点机制。 新工厂类似于现有 `IPartitionProcessorFactory`，只不过其 `Create` 方法也采用 `ILeaseCheckpointer` 参数。
 * 只有 `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` 或 `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` 方法中的一个可用于同一个 `ChangeFeedProcessorBuilder` 实例。
 
@@ -178,16 +182,16 @@ ms.locfileid: "85392057"
 
 ## <a name="release--retirement-dates"></a>发布和停用日期
 
-Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺利转换到更新的/受支持的版本。
+Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺利转换到更新的/受支持的版本。 新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新的 SDK 版本。
 
-新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新的 SDK 版本。 
-
-使用已停用的 SDK 对 Cosmos DB 发出的任何请求都会被服务拒绝。
+> [!WARNING]
+> 2022年8月31日之后，Azure Cosmos DB 将不再进行 bug 修复、添加新功能并为 SQL API 的 Azure Cosmos DB .NET 或 .NET Core SDK 提供支持。 如果不想升级，则从 SDK 的版本1.x 发送的请求将继续由 Azure Cosmos DB 服务提供服务。
 
 <br/>
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.3.1](#2.3.1) |2020年7月30日 |--- |
 | [2.3.0](#2.3.0) |2020 年 4 月 2 日 |--- |
 | [2.2.8](#2.2.8) |2019 年 10 月 28 日 |--- |
 | [2.2.7](#2.2.7) |2019 年 5 月 14 日 |--- |
@@ -205,7 +209,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 | [1.1.0](#1.1.0) |2017 年 8 月 13 日 |--- |
 | [1.0.0](#1.0.0) |2017 年 7 月 7 日 |--- |
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 

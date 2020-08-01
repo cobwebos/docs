@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: b01d6c36b31ef4f03522d03ca327439cfa31be8d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1c26164ed7a2b7c335d3977e143fcef28c8955db
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373736"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475808"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>自动化机器学习中的特征化
 
@@ -64,7 +64,7 @@ ms.locfileid: "87373736"
 | ------------- | ------------- |
 |删除高基数或者无差异的特征* |从训练集和验证集中删除这些特征。 适用于所有值都缺失的特征、所有行使用同一值的特征，或者包含高基数（例如哈希、ID 或 GUID）的特征。|
 |插补缺少的值* |对于数字特征，将在列中插补平均值。<br/><br/>对于分类特征，将插补最常用值。|
-|生成其他特征* |对于日期时间特征：年、月、日、星期、年日期、季、年周、小时、分钟、秒。<br/><br/>对于文本特征：基于单元语法、双元语法和三元语法的字词频率。 了解有关[如何通过经理 bert 完成此操作](#bert-integration)的详细信息。|
+|生成其他特征* |对于日期时间特征：年、月、日、星期、年日期、季、年周、小时、分钟、秒。<br><br> *对于预测任务，* 将创建这些其他日期时间功能： ISO 年、半半年、日历月份作为字符串、周、星期几、以字符串表示的第几天、每年的第几天、上午/下午（0表示小时在中午（晚上12点）、1; 否则为0）<br/><br/>对于文本特征：基于单元语法、双元语法和三元语法的字词频率。 了解有关[如何通过经理 bert 完成此操作](#bert-integration)的详细信息。|
 |转换和编码*|将唯一值较少的数字特征转换为分类特征。<br/><br/>将为低基数分类特征使用 One-hot 编码。 将为高基数分类特征使用 One-hot-hash 编码。|
 |单词嵌入|文本特征化器使用预先训练的模型将文本标记的矢量转换为句子矢量。 每个单词在文档中的嵌入矢量与其余矢量聚合在一起，以生成文档特征矢量。|
 |目标编码|对于分类特征，此步骤将每个类别映射到回归问题的平均目标值，并映射到分类问题的每个类的类概率。 应用基于频率的加权和 k 折交叉验证，以减少稀疏数据类别导致的映射过度拟合与干扰。|
@@ -163,9 +163,11 @@ text_transformations_used
 
 3. 在功能扫描步骤中，AutoML 会根据数据的样本比较经理 BERT 与基线（一袋关键字 features + 预先训练 word 嵌入），并确定经理 BERT 是否会提供准确性。 如果它确定经理 BERT 的性能比基线更好，AutoML 将使用经理 BERT 作为最佳特征化策略，并继续 featurizing 整个数据。 在这种情况下，您将在最终模型中看到 "PretrainedTextDNNTransformer"。
 
+经理 BERT 的运行时间通常比其他大多数 featurizers 更长。 可以通过在群集中提供更多计算来加速。 如果有多个节点（最多可达8个节点），AutoML 将在多个节点之间分布经理 BERT 定型。 这可以通过将[max_concurrent_iterations](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)设置为大于1来完成。 为了获得更好的性能，我们建议使用带有 RDMA 功能的 sku （例如 "STANDARD_NC24r" 或 "STANDARD_NC24rs_V3"）
+
 AutoML 目前支持100种语言，根据数据集的语言，AutoML 选择适当的经理 BERT 模型。 对于德语数据，我们使用德语经理 BERT 模型。 对于英语，我们使用英语经理 BERT 模型。 对于所有其他语言，我们使用多语言经理 BERT 模型。
 
-在下面的代码中，将触发德语经理 BERT 模型，因为数据集语言已指定为 "deu"，这是德语的3个字母代码（根据[ISO 分类](https://iso639-3.sil.org/code/hbs)）：
+在下面的代码中，将触发德语经理 BERT 模型，因为数据集语言已指定为 "deu"，这是德语的3个字母代码（根据[ISO 分类](https://iso639-3.sil.org/code/deu)）：
 
 ```python
 from azureml.automl.core.featurization import FeaturizationConfig

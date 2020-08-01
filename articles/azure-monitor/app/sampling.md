@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4e2557b114b5eb90b03e59dc64cbd6e69c7dd9a4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4a618b00b211ce65b170379cc14d6b83a1183d28
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326573"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460348"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -78,7 +78,7 @@ ms.locfileid: "87326573"
 
 * `<MaxTelemetryItemsPerSecond>5</MaxTelemetryItemsPerSecond>`
   
-    自适应算法的目标速率旨在针对**每个服务器主机**。 如果在多台主机上运行 Web 应用，应减小此值以保留在 Application Insights 门户的目标流量速率以内。
+    自适应算法**在每个服务器主机上**要收集的[逻辑操作](./correlation.md#data-model-for-telemetry-correlation)的目标速率。 如果在多台主机上运行 Web 应用，应减小此值以保留在 Application Insights 门户的目标流量速率以内。
 
 * `<EvaluationInterval>00:00:15</EvaluationInterval>` 
   

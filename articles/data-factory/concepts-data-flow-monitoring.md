@@ -1,19 +1,19 @@
 ---
-title: 映射数据流视觉监视
-description: 如何以可视化方式监视 Azure 数据工厂数据流
+title: 监视映射数据流
+description: 如何在 Azure 数据工厂中直观地监视地图数据流
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/03/2020
-ms.openlocfilehash: 1126f73b4d2e51e952a7cf971363020242838c34
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: ad5fb077596b6cc444c1c4df81af32cbcfa7c1db
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85958884"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475543"
 ---
 # <a name="monitor-data-flows"></a>监视数据流
 
@@ -27,7 +27,7 @@ ms.locfileid: "85958884"
 
 还可以看到此级别的统计信息，包括运行次数和状态。 活动级别的运行 ID 不同于管道级别的运行 ID。 上一级别的运行 ID 适用于管道。 选择眼镜图标可以查看有关数据流执行的深入详细信息。
 
-![数据流监视](media/data-flow/mon002.png "数据流监视")
+![数据流监视](media/data-flow/monitoring-details.png "数据流监视")
 
 在图形节点监视视图中，可以看到数据流图形的简化只读版本。
 

@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: f2d9407d9c7172839027e2650486695244f67889
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: f656de0bb2e5244e137ae21a6d7af88f3430b12c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352120"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475679"
 ---
-# <a name="iot-plug-and-play-preview-architecture"></a>IoT 即插即用预览体系结构
+# <a name="iot-plug-and-play-preview-architecture"></a>IoT 即插即用预览版体系结构
 
 IoT 即插即用预览版使解决方案生成器能够将智能设备与其解决方案集成，无需任何手动配置。 IoT 即插即用的核心是一种设备_型号_，用于描述设备对于启用 IoT 即插即用的应用程序的功能。 此模型的结构化为一组定义的接口：
 
@@ -79,5 +79,5 @@ IoT 中心：
 现在，你已大致了解 IoT 即插即用解决方案的体系结构，接下来的步骤是详细了解以下内容：
 
 - [模型存储库](./concepts-model-repository.md)
-- [模型发现过程](./concepts-model-discovery.md)
+- [数字克隆模型集成](./concepts-model-discovery.md)
 - [为 IoT 即插即用进行开发](./concepts-developer-guide.md)

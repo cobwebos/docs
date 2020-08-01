@@ -2,16 +2,14 @@
 title: 适用于 JavaScript Web 应用的 Azure Application Insights
 description: 获取页面视图和会话计数、Web 客户端数据、单页应用程序 (SPA)，以及跟踪使用模式。 检测 JavaScript 网页中的异常和性能问题。
 ms.topic: conceptual
-author: Dawgfan
-ms.author: mmcc
 ms.date: 09/20/2019
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8cd0c7c73ac4f5c531d91d7e458300ab1b0ad1af
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 063d648c68431dd84fd1aeb88b85bc68f2acbe62
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371475"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475747"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -105,7 +103,7 @@ IE 8 （或更少）上特别不支持报告 SDK 加载失败。 这有助于减
 
 可用的配置选项包括 
 
-| 名称 | 类型 | 说明
+| 名称 | 类型 | 描述
 |------|------|----------------
 | src | string **[必需]** | 要从其加载 SDK 的的完整 URL。 此值用于动态添加的脚本/标记的 "src" 特性 &lt; &gt; 。 你可以使用公共 CDN 位置，也可以使用自己的私有托管位置。
 | name | string *[optional]* | 已初始化的 SDK 的全局名称，默认值为 appInsights。 因此 ```window.appInsights``` 将是对已初始化实例的引用。 注意：如果提供名称值或上一个实例（通过全局名称 appInsightsSDK），则此名称值也将在全局命名空间中定义为 ```window.appInsightsSDK=<name value>``` ，这是 SDK 初始化代码需要的，以确保它正在初始化并更新正确的代码段主干和代理方法。
@@ -342,7 +340,9 @@ Chrome 最新版 ✔ |  Firefox 最新版 ✔ | IE 9 + 和 Microsoft Edge ✔<br
 
 ## <a name="open-source-sdk"></a>开源 SDK
 
-Application Insights JavaScript SDK 是开源的，用户可查看其源代码；若要对该项目做贡献，请访问[官方 GitHub 存储库](https://github.com/Microsoft/ApplicationInsights-JS)。
+Application Insights JavaScript SDK 是开源的，用户可查看其源代码；若要对该项目做贡献，请访问[官方 GitHub 存储库](https://github.com/Microsoft/ApplicationInsights-JS)。 
+
+有关最新的更新和 bug 修复，[请参阅发行说明](./release-notes.md)。
 
 ## <a name="next-steps"></a><a name="next"></a> 后续步骤
 * [跟踪使用情况](usage-overview.md)

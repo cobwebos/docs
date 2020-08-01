@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: b0badd92a3156f76f99bf1f48fca2093a2bca2f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f95c4256f4a0a3fdf410efecf9c22d578d1963a2
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012631"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461793"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>使用 Azure 机器学习优化数据处理
 
@@ -77,9 +77,9 @@ CSV 文件通常用于导入和导出数据，因为它们易于在 Excel 中进
 适用于小于 1 GB 的数据 | 在本地或对远程 Azure 机器学习计算实例执行 `Pandas`
 适用于大于 10 GB 的数据| 使用 `Ray`、`Dask` 或 `Spark` 移动到群集
 
-可以 `Dask` 在具有[dask-cloudprovider](https://cloudprovider.dask.org/en/latest/#azure)包的 Azure ML 计算群集上创建群集。 或者，你可以 `Dask` 在计算实例上本地运行。
+可以使用 [dask-cloudprovider](https://cloudprovider.dask.org/en/latest/#azure) 包在 Azure ML 计算群集上创建 `Dask` 群集。 或者，可以在计算实例上以本地方式运行 `Dask`。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure 机器学习的数据引入选项](concept-data-ingestion.md)。
-* [使用 Azure 数据工厂进行数据引入](how-to-data-ingest-adf.md)。
+* [创建和注册数据集](how-to-create-register-datasets.md)。

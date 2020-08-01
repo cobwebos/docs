@@ -3,12 +3,12 @@ title: 安装混合云扩展 (HCX)
 description: 设置适用于 Azure VMware 解决方案 (AVS) 私有云的 VMware 混合云扩展 (HCX) 解决方案
 ms.topic: how-to
 ms.date: 07/15/2020
-ms.openlocfilehash: b897a44fb6811c4e3564c59a8ab2c064506f0a4f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ea968cb21812f7273af342763d307c2faba1eea6
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539153"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475441"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>安装适用于 Azure VMware 解决方案的 HCX
 
@@ -19,7 +19,7 @@ ms.locfileid: "86539153"
 
 首先，请仔细查看[开始之前](#before-you-begin)、[软件版本要求](#software-version-requirements)和[先决条件](#prerequisites)。 
 
-随后，我们会演练所有必需过程，以便：
+接下来，我们将演练所有必要的过程，以便：
 
 > [!div class="checklist"]
 > * 部署本地 HCX OVA
@@ -31,10 +31,10 @@ ms.locfileid: "86539153"
 
 ## <a name="before-you-begin"></a>开始之前
     
-* 查看基本的 AVS 软件定义数据中心 (SDDC) [教程系列](tutorial-network-checklist.md)
-* 查看并参阅 [VMware HCX 文档](https://docs.vmware.com/en/VMware-HCX/index.html)，包括 HCX 用户指南
-* 查看 VMware 文档[使用 VMware HCX 迁移虚拟机](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)
-* （可选）查看 [VMware HCX 部署注意事项](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html)
+* 查看基本的 AVS 软件定义数据中心（SDDC）[教程系列](tutorial-network-checklist.md)。
+* 查看并参考[VMWARE HCX 文档](https://docs.vmware.com/en/VMware-HCX/index.html)，其中包括 HCX 用户指南。
+* 查看 VMware 文档[通过 Vmware 迁移虚拟机 HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)。
+* 可以查看[VMWARE HCX 部署注意事项](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html)。
 * （可选）查看 HCX 的相关 VMware 材料，如 HCX 的 VMware vSphere [博客系列](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html)。 
 * 通过 AVS 支持渠道订购 AVS HCX Enterprise 激活。
 
@@ -45,14 +45,14 @@ ms.locfileid: "86539153"
                                                          
 | 组件类型    | 源环境要求    | 目标环境要求   |
 | --- | --- | --- |
-| vCenter Server   | 5.1<br/><br/>如果使用 5.5 U1 或更低版本，请为 HCX 操作使用独立 HCX 用户界面。  | 6.0 U2 及更高版本   |
+| vCenter Server   | 5.1<br/><br/>如果使用 5.5 U1 或更早版本，请为 HCX 操作使用独立的 HCX 用户界面。  | 6.0 U2 及更高版本   |
 | ESXi   | 5.0    | ESXi 6.0 及更高版本   |
-| NSX    | 对于源上的逻辑交换机的 HCX 网络扩展：NSXv 6.2+ 或 NSX-T 2.4+   | NSXv 6.2+ 或 NSX-T 2.4+<br/><br/>对于 HCX 邻近路由： NSXv 6.4 + （NSX-T 不支持邻近性路由） |
+| NSX    | 对于源上的逻辑交换机的 HCX 网络扩展： NSXv 6.2 + 或 NSX-T 2.4 +   | NSXv 6.2+ 或 NSX-T 2.4+<br/><br/>对于 HCX 邻近路由： NSXv 6.4 + （NSX-T 不支持邻近路由） |
 | vCloud Director   | 不需要 - 源站点上不与 vCloud Director 进行互操作 | 将目标环境与 Vcloud 集成控制器集成时，最小值为9.1.0.2。  |
 
 ## <a name="prerequisites"></a>先决条件
 
-* 应在本地和 AVS SDDC ER 线路之间配置全球覆盖。
+* 应在本地和 AVS SDDC ExpressRoute 线路之间配置 ExpressRoute Global Reach。
 
 * 应在本地与 AVS SDDC 之间打开所有所需端口（请参阅 [VMware HCX 文档](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html)）。
 

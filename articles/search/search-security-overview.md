@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: 55ee6e99cdf6d77ea1e78799e016d4c276e85fcd
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.date: 07/30/2020
+ms.openlocfilehash: 9fe9a431d7bbc3b0d3b4b95d9883ed8b5a1f4704
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423858"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475424"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure 认知搜索中的安全性 - 概述
 
 本文介绍 Azure 认知搜索中可以保护内容和操作的关键安全功能。 
 
-+ 在存储层上，静态加密是在平台级别进行的，但对于想要对用户自有密钥和 Microsoft 托管密钥提供双重保护的客户，认知搜索还提供了“双重加密”选项。
++ 在存储层，静态加密是在平台级别提供的，但认知搜索还通过 Azure Key Vault 为其他加密层提供客户管理的密钥。
 
 + 入站安全性通过不断提升的安全性级别来保护搜索服务终结点：从请求所使用的 API 密钥到防火墙中的入站规则，再到全面保护服务不受公共 Internet 影响的专用终结点。
 
@@ -124,6 +124,10 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 ## <a name="certifications-and-compliance"></a>认证和合规性
 
 Azure 认知搜索已经过认证，适用于公有云和 Azure 政府的多种全球、区域和行业特定的标准。 有关完整列表，请从官方审核报告页下载[ **Microsoft Azure 符合性产品**白皮书](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/)。
+
+为实现符合性，你可以使用[Azure 策略](../governance/policy/overview.md)来帮助你实现[azure 安全基准](../security/benchmarks/introduction.md)的高安全性最佳实践。 Azure 安全基准是安全建议的集合，整理到安全控件中，这些安全控制映射到你应对服务和数据的威胁应采取的关键操作。 目前有11个安全控制，其中包括[网络安全性](../security/benchmarks/security-control-network-security.md)、[日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)以及[数据保护](../security/benchmarks/security-control-data-protection.md)。
+
+Azure 策略是 Azure 中内置的一项功能，可帮助你管理多个标准（包括 Azure 安全基准）的符合性。 对于众所周知的基准，Azure 策略提供内置定义，以便您可以更轻松地创建策略。 对于 Azure 认知搜索，当前存在一个用于诊断日志记录的内置定义，这意味着你可以分配一个策略来识别和修复与 "日志记录和监视" 安全控制不兼容的任何搜索服务。 有关详细信息，请参阅 azure[认知搜索的 Azure 策略合规性控制](security-controls-policy.md)。
 
 ## <a name="see-also"></a>另请参阅
 

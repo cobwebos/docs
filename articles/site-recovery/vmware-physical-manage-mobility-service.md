@@ -7,17 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 9be758c286e072b0fbefc5f8b20b7accc4e6741b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ff77d6cad60b459b1fe6a4f83641c7aebe204dfa
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79256960"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460093"
 ---
 # <a name="manage-the-mobility-agent"></a>管理移动代理 
 
 使用 Azure Site Recovery 进行从 VMware VM 和物理服务器到 Azure 的灾难恢复时，请在服务器上设置移动代理。 移动代理协调受保护计算机、配置服务器/横向扩展进程服务器之间的通信，并管理数据复制。 本文概述了在部署移动代理后对其进行管理时要执行的常见任务。
 
+>[!TIP]
+>若要下载特定 OS/Linux 发行版的安装程序，请参阅[此处](vmware-physical-mobility-service-overview.md#locate-installer-files)的指南。 若要从门户自动更新，无需下载安装程序。 [ASR 自动从配置服务器中提取安装程序并更新代理](#update-mobility-service-from-azure-portal)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -33,7 +35,7 @@ ms.locfileid: "79256960"
 
      ![“复制的项”VM 列表](./media/vmware-azure-install-mobility-service/update-okpng.png)
 
-5. 将为所选的每台计算机启动“更新移动服务”作业。
+5. 将为所选的每台计算机启动“更新移动服务”作业。 移动代理已更新为配置服务器的版本。 例如，如果配置服务器版本为9.33，则受保护 VM 上的移动代理也更新为9.33 版本。
 
 ## <a name="update-mobility-service-through-powershell-script-on-windows-server"></a>在 Windows 服务器上通过 powershell 脚本更新移动服务
 
@@ -67,7 +69,7 @@ Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Acco
 从 UI 或命令提示符卸载。
 
 - **通过 UI**：在计算机的控制面板中，选择“程序”。  选择**Microsoft Azure Site Recovery 移动服务/主目标服务器**  >  **卸载**"。
-- **通过命令提示符**：在计算机上以管理员身份打开命令提示符窗口。 运行下面的命令： 
+- **通过命令提示符**：在计算机上以管理员身份打开命令提示符窗口。 运行以下命令： 
     ```
     MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
     ```

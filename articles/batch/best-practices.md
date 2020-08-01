@@ -1,14 +1,14 @@
 ---
 title: 最佳实践
 description: 了解开发 Azure Batch 解决方案的最佳做法和有用技巧。
-ms.date: 07/14/2020
+ms.date: 07/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 32610f54cc41bd5d7feb965b9a82903acc23c33c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 535deebd0ba683d9387408ad081d165a504c91d1
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497771"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474897"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch 最佳做法
 
@@ -56,6 +56,10 @@ ms.locfileid: "86497771"
 Azure 中的 Batch 池可能会遇到停机事件。 在规划和开发 Batch 方案或工作流时，请牢记这一点。
 
 如果某个节点发生故障，Batch 会代表你自动尝试恢复这些计算节点。 这可能会触发在恢复的节点上重新计划任何正在运行的任务。 若要详细了解中断的任务，请参阅[重试设计](#design-for-retries-and-re-execution)。
+
+### <a name="third-party-images"></a>第三方映像
+
+可以使用发布到 Azure Marketplace 的第三方映像创建池。 使用用户订阅模式 Batch 帐户时，在使用某些第三方映像创建池时，你可能会看到错误 "因 marketplace 购买资格检查而失败"。 若要解决此错误，请接受映像的发行者设置的条款。 可以使用[Azure Powershell](https://docs.microsoft.com/powershell/module/azurerm.marketplaceordering/set-azurermmarketplaceterms?view=azurermps-6.13.0)或[Azure CLI](https://docs.microsoft.com/cli/azure/vm/image/terms?view=azure-cli-latest)来实现此目的。
 
 ### <a name="azure-region-dependency"></a>Azure 区域依赖项
 

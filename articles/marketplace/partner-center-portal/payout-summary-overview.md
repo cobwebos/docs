@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 0f19d63bd5f22dc7bc60ceb76ef5bdbeff717dbb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4ee970f7e4a1228d40a284372300ed9e95c00b7e
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325723"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460382"
 ---
 # <a name="payout-summary-overview"></a>付款摘要概述
 
@@ -23,7 +23,7 @@ ms.locfileid: "87325723"
 > [!NOTE]
 > 要获得付款资格，你的收益必须达到 50 美元的[付款阈值](./payment-thresholds-methods-timeframes.md)。 有关付款阈值的详细信息，请参阅 [Microsoft Azure 市场发布者协议](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)。
 
-合作伙伴中心的“分析”部分提供了交易发布选项的所有报告和见解，可使用门户右上角的以下图标进行访问：
+若要查看付出的详细信息，请登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)，并选择屏幕右上角的 "支出" 图标：
 
 ![展示了合作伙伴中心门户右上角的“付款”图标。](./media/payout-overview.png)
 

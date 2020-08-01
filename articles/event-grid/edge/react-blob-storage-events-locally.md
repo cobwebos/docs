@@ -7,14 +7,14 @@ ms.author: arduppal
 ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
-ms.openlocfilehash: 9389e0aff04baa18cb216f2a7ab6da42eb7031f2
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 230e158a970f8c815b1575403c013e30749124c5
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171425"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87462014"
 ---
-# <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>教程：在 IoT Edge (Preview 上对 Blob 存储事件做出反应) 
+# <a name="tutorial-react-to-blob-storage-events-on-iot-edge-preview"></a>教程：响应 IoT Edge 上的 Blob 存储事件（预览版）
 本文介绍如何在 IoT 模块上部署 Azure Blob 存储，该模块将充当事件网格发布者，以将 Blob 创建和 Blob 删除事件发送到事件网格。  
 
 有关 IoT Edge 上的 Azure Blob 存储的概述，请参阅[IoT Edge 及其功能上的 Azure Blob 存储](../../iot-edge/how-to-store-data-blob.md)。
@@ -324,26 +324,26 @@ ms.locfileid: "86171425"
 
 下面列出了受支持的事件属性及其类型和说明。 
 
-| 属性 | 类型 | 描述 |
+| Property | 类型 | 描述 |
 | -------- | ---- | ----------- |
-| 主题 | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | string | 事件主题的发布者定义路径。 |
-| eventType | string | 此事件源的一个注册事件类型。 |
-| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| subject | 字符串 | 事件主题的发布者定义路径。 |
+| eventType | 字符串 | 此事件源的一个注册事件类型。 |
+| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
 | id | 字符串 | 事件的唯一标识符。 |
-| 数据 | object | Blob 存储事件数据。 |
-| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| data | object | Blob 存储事件数据。 |
+| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
 | 属性 | 类型 | 说明 |
 | -------- | ---- | ----------- |
-| api | string | 触发事件的操作。 可以为下列值之一： <ul><li>BlobCreated-允许的值为： `PutBlob` 和`PutBlockList`</li><li>BlobDeleted-允许的值为 `DeleteBlob` 、 `DeleteAfterUpload` 和 `AutoDelete` 。 <p>此 `DeleteAfterUpload` 事件是在自动删除 blob 时生成的，因为 deleteAfterUpload 所需的属性设置为 true。 </p><p>`AutoDelete`当 blob 自动删除，因为 deleteAfterMinutes 所需的属性值过期，将生成事件。</p></li></ul>|
-| ClientRequestId | string | 用于存储 API 操作的客户端提供的请求 ID。 此 ID 可用于在日志中使用 "客户端请求 id" 字段与 Azure 存储诊断日志关联，可以使用 "x-客户端请求 id" 标头在客户端请求中提供。 有关详细信息，请参阅[日志格式](/rest/api/storageservices/storage-analytics-log-format)。 |
-| requestId | 字符串 | 用于存储 API 操作的服务生成的请求 ID。 可用于通过 Azure 存储诊断日志中的“request-id-header”字段关联到这些日志，并且由“x-ms-request-id”标头中的初始化 API 调用返回。 请参阅[日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
-| eTag | string | 可用于根据条件执行操作的值。 |
-| contentType | string | 为 Blob 指定的内容类型。 |
+| api | 字符串 | 触发事件的操作。 可以为下列值之一： <ul><li>BlobCreated-允许的值为： `PutBlob` 和`PutBlockList`</li><li>BlobDeleted-允许的值为 `DeleteBlob` 、 `DeleteAfterUpload` 和 `AutoDelete` 。 <p>此 `DeleteAfterUpload` 事件是在自动删除 blob 时生成的，因为 deleteAfterUpload 所需的属性设置为 true。 </p><p>`AutoDelete`当 blob 自动删除，因为 deleteAfterMinutes 所需的属性值过期，将生成事件。</p></li></ul>|
+| ClientRequestId | 字符串 | 用于存储 API 操作的客户端提供的请求 ID。 此 ID 可用于在日志中使用 "客户端请求 id" 字段与 Azure 存储诊断日志关联，可以使用 "x-客户端请求 id" 标头在客户端请求中提供。 有关详细信息，请参阅[日志格式](/rest/api/storageservices/storage-analytics-log-format)。 |
+| requestId | 字符串 | 用于存储 API 操作的服务生成的请求 ID。 可用于通过 Azure 存储诊断日志中的“request-id-header”字段关联到这些日志，并且由“x-ms-request-id”标头中的初始化 API 调用返回。 请参阅[日志格式](/rest/api/storageservices/storage-analytics-log-format)。 |
+| eTag | 字符串 | 可用于根据条件执行操作的值。 |
+| contentType | 字符串 | 为 Blob 指定的内容类型。 |
 | contentLength | integer | Blob 大小，以字节为单位。 |
 | blobType | string | Blob 的类型。 有效值为“BlockBlob”或“PageBlob”。 |
 | url | string | Blob 的路径。 <br>如果客户端使用 Blob REST API，则 url 将采用以下结构： * \<storage-account-name\> . blob.core.windows.net/ \<container-name\> / \<file-name\> *。 <br>如果客户端使用 Data Lake Storage REST API，则 url 将具有以下结构： * \<storage-account-name\> . dfs.core.windows.net/ \<file-system-name\> / \<file-name\> *。 |
@@ -356,7 +356,7 @@ ms.locfileid: "86171425"
 - [筛选 Blob 存储事件](../../storage/blobs/storage-blob-event-overview.md#filtering-events)
 - [使用 Blob 存储事件的建议做法](../../storage/blobs/storage-blob-event-overview.md#practices-for-consuming-events)
 
-在本教程中，已通过在 Azure Blob 存储中创建或删除 blob 来发布事件。 请参阅其他教程，了解如何将事件转发给云 (Azure 事件中心或 Azure IoT 中心) ： 
+在本教程中，已通过在 Azure Blob 存储中创建或删除 blob 来发布事件。 请参阅其他教程，了解如何将事件转发到云（Azure 事件中心或 Azure IoT 中心）： 
 
 - [将事件转发到 Azure 事件网格](forward-events-event-grid-cloud.md)
 - [将事件转发到 Azure IoT 中心](forward-events-iothub.md)

@@ -3,12 +3,12 @@ title: 使用 Azure Application Insights 为 ASP.NET 设置 Web 应用分析 | M
 description: 为托管在本地或 Azure 中的 ASP.NET 网站配置性能、可用性和用户行为分析工具。
 ms.topic: conceptual
 ms.date: 05/08/2019
-ms.openlocfilehash: 4e51fb43a9e088c991af2132b6a5d2257da8d78a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: acfba63cba520631831888a1480929be3b1897f0
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324210"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475526"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>为 ASP.NET 网站设置 Application Insights
 
@@ -112,7 +112,10 @@ Visual Studio 中会显示已记录的事件数。
 
 
 ## <a name="upgrade-to-future-sdk-versions"></a>升级到更高的 SDK 版本
-若要升级到 [SDK 的新版本](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases)，请打开 **NuGet 包管理器**，并筛选已安装的包。 选择“Microsoft.ApplicationInsights.Web”，并选择“升级”。
+
+* [发行说明](./release-notes.md)
+
+若要升级到 SDK 的新版本，请打开**NuGet 包管理器**并筛选已安装的包。 选择“Microsoft.ApplicationInsights.Web”，并选择“升级”。
 
 如果对 ApplicationInsights.config 执行了任何自定义操作，请在升级前保存相关副本。 然后，将更改合并到新版本中。
 

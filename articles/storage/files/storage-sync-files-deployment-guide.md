@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c3933e9165160c16a9e533bf8bf95f1533dff1cc
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 006825b5040db482262f79497b9fd810ed3b790c
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386684"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460620"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -20,11 +20,22 @@ ms.locfileid: "87386684"
 强烈建议先阅读[规划 Azure 文件部署](storage-files-planning.md)和[规划 Azure 文件同步部署](storage-sync-files-planning.md)，再按照本文中的步骤进行操作。
 
 ## <a name="prerequisites"></a>先决条件
-* 要部署 Azure 文件同步的同一区域中的 Azure 文件共享。有关详细信息，请参阅：
+
+# <a name="portal"></a>[门户](#tab/azure-portal)
+
+1. 要部署 Azure 文件同步的同一区域中的 Azure 文件共享。有关详细信息，请参阅：
     - Azure 文件同步的[适用地区](storage-sync-files-planning.md#azure-file-sync-region-availability)。
     - [创建文件共享](storage-how-to-create-file-share.md)，了解创建文件共享的分步说明。
-* 至少有一个受支持的 Windows Server 或 Windows Server 群集实例与 Azure 文件同步同步。有关支持的 Windows Server 版本和推荐的系统资源的详细信息，请参阅[windows file Server 注意事项](storage-sync-files-planning.md#windows-file-server-considerations)。
-* Az PowerShell 模块可与 PowerShell 5.1 或 PowerShell 6 + 一起使用。 您可以在任何支持的系统（包括非 Windows 系统）上使用 Az PowerShell module for Azure 文件同步，但必须始终在要注册的 Windows Server 实例上运行服务器注册 cmdlet （可以直接或通过 PowerShell 远程处理来执行）。 在 Windows Server 2012 R2 上，可以验证是否至少运行了 PowerShell 5.1。 \*通过查看 **$PSVersionTable**对象的**PSVersion**属性的值：
+1. 至少有一个受支持的 Windows Server 或 Windows Server 群集实例与 Azure 文件同步同步。有关支持的 Windows Server 版本和推荐的系统资源的详细信息，请参阅[windows file Server 注意事项](storage-sync-files-planning.md#windows-file-server-considerations)。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+1. 要部署 Azure 文件同步的同一区域中的 Azure 文件共享。有关详细信息，请参阅：
+    - Azure 文件同步的[适用地区](storage-sync-files-planning.md#azure-file-sync-region-availability)。
+    - [创建文件共享](storage-how-to-create-file-share.md)，了解创建文件共享的分步说明。
+1. 至少有一个受支持的 Windows Server 或 Windows Server 群集实例与 Azure 文件同步同步。有关支持的 Windows Server 版本和推荐的系统资源的详细信息，请参阅[windows file Server 注意事项](storage-sync-files-planning.md#windows-file-server-considerations)。
+
+1. Az PowerShell 模块可与 PowerShell 5.1 或 PowerShell 6 + 一起使用。 您可以在任何支持的系统（包括非 Windows 系统）上使用 Az PowerShell module for Azure 文件同步，但必须始终在要注册的 Windows Server 实例上运行服务器注册 cmdlet （可以直接或通过 PowerShell 远程处理来执行）。 在 Windows Server 2012 R2 上，可以验证是否至少运行了 PowerShell 5.1。 \*通过查看 **$PSVersionTable**对象的**PSVersion**属性的值：
 
     ```powershell
     $PSVersionTable.PSVersion
@@ -37,7 +48,7 @@ ms.locfileid: "87386684"
     > [!Important]  
     > 如果你计划使用服务器注册 UI，而不是直接从 PowerShell 注册，则必须使用 PowerShell 5.1。
 
-* 如果已选择使用 PowerShell 5.1，请确保至少安装了 .NET 4.7.2。 详细了解系统上的[.NET Framework 版本和依赖关系](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies)。
+1. 如果已选择使用 PowerShell 5.1，请确保至少安装了 .NET 4.7.2。 详细了解系统上的[.NET Framework 版本和依赖关系](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies)。
 
     > [!Important]  
     > 如果在 Windows Server Core 上安装 .NET 4.7.2 +，则必须用 `quiet` 和标志安装， `norestart` 否则安装将失败。 例如，如果安装 .NET 4.8，则命令将如下所示：
@@ -45,10 +56,51 @@ ms.locfileid: "87386684"
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
 
-* Az PowerShell 模块，可按照此处的说明进行安装：[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
+1. Az PowerShell 模块，可按照此处的说明进行安装：[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
      
     > [!Note]  
     > 安装 Az PowerShell 模块后，将自动安装 Az Storagesync.sys 模块。
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+1. 要部署 Azure 文件同步的同一区域中的 Azure 文件共享。有关详细信息，请参阅：
+    - Azure 文件同步的[适用地区](storage-sync-files-planning.md#azure-file-sync-region-availability)。
+    - [创建文件共享](storage-how-to-create-file-share.md)，了解创建文件共享的分步说明。
+1. 至少有一个受支持的 Windows Server 或 Windows Server 群集实例与 Azure 文件同步同步。有关支持的 Windows Server 版本和推荐的系统资源的详细信息，请参阅[windows file Server 注意事项](storage-sync-files-planning.md#windows-file-server-considerations)。
+
+1. [安装 Azure CLI](/cli/azure/install-azure-cli)
+
+   如果愿意，还可以使用 Azure Cloud Shell 来完成本教程中的步骤。  Azure Cloud Shell 是一种通过浏览器使用的交互式 Shell 环境。  使用以下方法之一开始 Cloud Shell：
+
+   - 选择代码块右上角的“试用”。 **尝试它**将打开 Azure Cloud Shell，但不会自动将代码复制到 Cloud Shell。
+
+   - 通过转到打开 Cloud Shell[https://shell.azure.com](https://shell.azure.com)
+
+   - 选择菜单栏上[Azure 门户](https://portal.azure.com)中右上角的 " **Cloud Shell** " 按钮
+
+1. 登录。
+
+   如果使用的是 CLI 的本地安装，请使用 [az login](/cli/azure/reference-index#az-login) 命令登录。
+
+   ```azurecli
+   az login
+   ```
+
+    遵循终端中显示的步骤完成身份验证过程。
+
+1. 安装[az filesync](/cli/azure/ext/storagesync/storagesync) Azure CLI 扩展。
+
+   ```azurecli
+   az extension add --name storagesync
+   ```
+
+   安装**storagesync.sys**扩展引用后，您将收到以下警告。
+
+   ```output
+   The installed extension 'storagesync' is experimental and not covered by customer support. Please use with discretion.
+   ```
+
+---
 
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>准备 Windows Server，用于 Azure 文件同步
 对于要与 Azure 文件同步配合使用的每个服务器（包括故障转移群集中的服务器节点），请禁用“Internet Explorer 增强的安全性配置”。**** 只需在最初注册服务器时禁用。 可在注册服务器后重新启用。
@@ -87,6 +139,10 @@ if ($installType -ne "Server Core") {
     Stop-Process -Name iexplore -ErrorAction SilentlyContinue
 }
 ``` 
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+按照 Azure 门户或 PowerShell 的说明进行操作。
 
 ---
 
@@ -155,6 +211,10 @@ $storageSyncName = "<my_storage_sync_service>"
 $storageSync = New-AzStorageSyncService -ResourceGroupName $resourceGroup -Name $storageSyncName -Location $region
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+按照 Azure 门户或 PowerShell 的说明进行操作。
+
 ---
 
 ## <a name="install-the-azure-file-sync-agent"></a>安装 Azure 文件同步代理
@@ -207,6 +267,9 @@ Start-Process -FilePath "StorageSyncAgent.msi" -ArgumentList "/quiet" -Wait
 # You may remove the temp folder containing the MSI and the EXE installer
 Remove-Item -Path ".\StorageSyncAgent.msi" -Recurse -Force
 ```
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+按照 Azure 门户或 PowerShell 的说明进行操作。
 
 ---
 
@@ -242,6 +305,9 @@ Remove-Item -Path ".\StorageSyncAgent.msi" -Recurse -Force
 ```powershell
 $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 ```
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+按照 Azure 门户或 PowerShell 的说明进行操作。
 
 ---
 
@@ -312,6 +378,27 @@ New-AzStorageSyncCloudEndpoint `
     -AzureFileShareName $fileShare.Name
 ```
 
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+使用[az storagesync.sys](/cli/azure/ext/storagesync/storagesync/sync-group#ext-storagesync-az-storagesync-sync-group-create)命令创建新的同步组。  若要为所有 CLI 命令默认设置资源组，请使用[az configure](/cli/azure/reference-index#az-configure)。
+
+```azurecli
+az storagesync sync-group create --resource-group myResourceGroupName \
+                                 --name myNewSyncGroupName \
+                                 --storage-sync-service myStorageSyncServiceName \
+```
+
+使用[az storagesync.sys](/cli/azure/ext/storagesync/storagesync/sync-group/cloud-endpoint#ext-storagesync-az-storagesync-sync-group-cloud-endpoint-create)命令创建新的云终结点。
+
+```azurecli
+az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup \
+                                                --storage-sync-service myStorageSyncServiceName \
+                                                --sync-group-name mySyncGroupName \
+                                                --name myNewCloudEndpointName \
+                                                --storage-account mystorageaccountname \
+                                                --azure-file-share-name azure-file-share-name
+```
+
 ---
 
 ## <a name="create-a-server-endpoint"></a>创建服务器终结点
@@ -363,6 +450,34 @@ if ($cloudTieringDesired) {
         -ServerResourceId $registeredServer.ResourceId `
         -ServerLocalPath $serverEndpointPath 
 }
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+使用[az storagesync.sys-endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/server-endpoint#ext-storagesync-az-storagesync-sync-group-server-endpoint-create)命令创建新的服务器终结点。
+
+```azurecli
+# Create a new sync group server endpoint 
+az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
+                                                 --name myNewServerEndpointName
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0
+                                                 --server-local-path d:\myPath
+                                                 --storage-sync-service myStorageSyncServiceNAme
+                                                 --sync-group-name mySyncGroupName
+
+# Create a new sync group server endpoint with additional optional parameters
+az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
+                                                 --name myNewServerEndpointName \
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0 \
+                                                 --server-local-path d:\myPath \
+                                                 --storage-sync-service myStorageSyncServiceName \
+                                                 --sync-group-name mySyncGroupName \
+                                                 --cloud-tiering on \
+                                                 --offline-data-transfer on \
+                                                 --offline-data-transfer-share-name myfilesharename \
+                                                 --tier-files-older-than-days 15 \
+                                                 --volume-free-space-percent 85 \
+
 ```
 
 ---

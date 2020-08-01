@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: b47c6c7d2137737021766f239fdb6ab1c64bd12f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f9598ad508e3760bf1bad04f8694838465e4961f
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422855"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460977"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>排查评估/依赖项可视化问题
 
@@ -66,6 +66,9 @@ ms.locfileid: "87422855"
 
 可以通过在 VMware Vm 上启用[应用程序发现](./how-to-discover-applications.md)来解决这种缺口。 服务器评估使用提供的来宾凭据从虚拟机中检测到的操作系统。 在 Windows 和 Linux Vm 情况下，此操作系统数据会标识正确的操作系统信息。
 
+## <a name="operating-system-version-not-available"></a>操作系统版本不可用
+
+对于物理服务器，操作系统次要版本信息应该可用。 如果不可用，请联系 Microsoft 支持部门。 对于 VMware 计算机，服务器评估使用在 vCenter Server 中为 VM 指定的操作系统信息。 但 vCenter Server 不提供操作系统的次版本。 若要发现次要版本，需要设置[应用程序发现](./how-to-discover-applications.md)。 对于 Hyper-v Vm，不支持操作系统次要版本发现。 
 
 ## <a name="azure-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure Sku 大于本地的 Azure VM 评估
 
@@ -189,7 +192,7 @@ Azure Migrate 目前支持在“美国东部”、“东南亚”和“西欧”
 
 收集网络流量日志，如下所示：
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 按 F12 开始开发人员工具。 如果需要，请清除 "**在导航上清除条目**" 设置。
 3. 选择 "**网络**" 选项卡，开始捕获网络流量：
    - 在 Chrome 中，选择“保留日志”****。 记录应自动启动。 红色圆圈表示正在捕获流量。 如果未显示红色圆圈，请选择要开始的黑色圆圈。

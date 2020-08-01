@@ -3,19 +3,19 @@ title: WebHook 事件传送
 description: 本文介绍如何在使用 Webhook 时进行 WebHook 事件传送和终结点验证。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: b616c82092ad896da82d0f98f37e3c45f3ba1014
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e9a52d0cb3e4e880d91e1b748d97ef3041298930
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118947"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461232"
 ---
 # <a name="webhook-event-delivery"></a>Webhook 事件传送
 Webhook 是从 Azure 事件网格接收事件的多种方式之一。 当新事件准备就绪时，事件网格服务会向已配置的终结点 POST HTTP 请求，并在请求正文中包含该事件。
 
 与众多支持 Webhook 的其他服务一样，事件网格需要你证明对 Webhook 的所有权，然后才能开始向该终结点传送事件。 此要求可防止恶意用户用大量事件淹没你的终结点。 如果使用下面列出的三项 Azure 服务中的任何一项，Azure 基础结构将自动进行此验证：
 
-- 使用[事件网格连接器](https://docs.microsoft.com/connectors/azureeventgrid/)的 Azure 逻辑应用
+- 使用[事件网格连接器](/connectors/azureeventgrid/)的 Azure 逻辑应用
 - 通过 [Webhook](../event-grid/ensure-tags-exists-on-new-virtual-machines.md) 实现 Azure 自动化
 - 使用[事件网格触发器](../azure-functions/functions-bindings-event-grid.md)的 Azure Functions
 

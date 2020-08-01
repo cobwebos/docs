@@ -7,12 +7,12 @@ ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 7d88ac62d9117df9d24c6d865e684a0972c87dae
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: d8efec0517cd0b4bdcba643a0936b474593d58c4
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337307"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475458"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT 即插即用预览版术语表
 
@@ -98,10 +98,6 @@ IoT 即插即用设备通常是一种小型的独立计算设备，用于收集�
 ## <a name="iot-plug-and-play-conventions"></a>IoT 即插即用约定
 
 IoT 即插即用[设备](#iot-plug-and-play-device)在与解决方案交换数据时，应遵循一组[约定](concepts-convention.md)。
-
-## <a name="model-discovery"></a>模型发现
-
-当[iot 即插即用设备](#iot-plug-and-play-device)连接到 iot 解决方案时，该解决方案可以通过查找[设备型号](#device-model)来发现设备的功能。 解决方案可以在[模型存储库](#model-repository)或其他位置查找设备型号。
 
 ## <a name="model-id"></a>模型 ID
 

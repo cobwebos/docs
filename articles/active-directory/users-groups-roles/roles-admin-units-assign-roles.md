@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 04/16/2020
+ms.date: 07/10/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71d0a1f2551338207a71b6c547d9c2cd57fea777
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 918675b111b7b1b85669692b63fed683ea2831f8
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284381"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475628"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>将作用域内角色分配到管理单元
 
@@ -29,7 +29,7 @@ ms.locfileid: "87284381"
 
 ## <a name="roles-available"></a>可用角色
 
-角色  |  说明
+角色  |  描述
 ----- |  -----------
 身份验证管理员  |  有权查看、设置和重置分配的管理单元中的任何非管理员用户的身份验证方法信息。
 组管理员  |  可以管理组和组设置的所有方面，例如仅分配的管理单元中的命名和过期策略。
@@ -46,7 +46,7 @@ ms.locfileid: "87284381"
 
 ![选择管理单元以更改角色作用域](./media/roles-admin-units-assign-roles/select-role-to-scope.png)
 
-选择要分配的角色，然后选择 "**添加分配**"。 这将在右侧打开一个面板，你可以在其中选择要分配给该角色的一个或多个用户。
+选择要分配的角色，然后选择 "**添加分配**"。 此时会在右侧打开一个面板，可以在其中选择一个或多个要分配到该角色的用户。
 
 ![选择要作用域的角色，然后选择 "添加分配"](./media/roles-admin-units-assign-roles/select-add-assignment.png)
 
@@ -104,4 +104,5 @@ Request body
 
 ## <a name="next-steps"></a>后续步骤
 
-- [管理单元故障排除和常见问题](roles-admin-units-faq-troubleshoot.md)
+- [使用云组来管理角色分配](roles-groups-concept.md)
+- [分配给云组的角色疑难解答](roles-groups-faq-troubleshooting.md)

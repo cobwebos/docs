@@ -4,12 +4,12 @@ description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: a594b9636dcb4e584fd10a17bca6c48c2d1fb960
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2488bbded1b4d55f3c4cf21c63e9fcb90e9bfb4f
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514078"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475050"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -132,28 +132,96 @@ Windows 存储空间是用于将存储器虚拟化的一种 Windows 技术。 �
 
 #### <a name="for-lvm-partitions"></a>对于 LVM 分区
 
-列出某个物理卷下的卷组名称：
+脚本运行后，LVM 分区将装载到脚本输出中指定的物理卷/disk 中。 此过程将
+
+1. 获取物理卷或磁盘中卷组名称的唯一列表
+2. 然后列出这些卷组中的逻辑卷
+3. 然后，将逻辑卷装载到所需的路径。
+
+##### <a name="listing-volume-group-names-from-physical-volumes"></a>列出物理卷的卷组名称
+
+列出卷组名称：
+
+```bash
+pvs -o +vguuid
+```
+
+此命令将列出所有物理卷（包括运行脚本之前提供的卷）、其对应的卷组名称和卷组的唯一用户 Id （Uuid）。 此命令的示例输出如下所示。
+
+```bash
+PV         VG        Fmt  Attr PSize   PFree    VG UUID
+
+  /dev/sda4  rootvg    lvm2 a--  138.71g  113.71g EtBn0y-RlXA-pK8g-de2S-mq9K-9syx-B29OL6
+
+  /dev/sdc   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sde   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sdf   datavg_db lvm2 a--   <1.50t <396.50g dhWL1i-lcZS-KPLI-o7qP-AN2n-y2f8-A1fWqN
+
+  /dev/sdd   datavg_db lvm2 a--   <1.50t <396.50g dhWL1i-lcZS-KPLI-o7qP-AN2n-y2f8-A1fWqN
+```
+
+第一列（PV）显示物理卷，后续列显示了卷组的相关卷组名称、格式、属性、大小、可用空间和唯一 ID。 命令输出显示所有物理卷。 请参阅脚本输出，并识别与备份相关的卷。 在上面的示例中，脚本输出会显示/dev/sdf 和/dev/sdd。 因此，datavg_db 卷组属于脚本，Appvg_new 卷组属于该计算机。 最后一种做法是确保唯一的卷组名称应具有1个唯一 ID。
+
+###### <a name="duplicate-volume-groups"></a>重复的卷组
+
+在某些情况下，卷组名称在运行脚本后可以有2个 Uuid。 这意味着在执行脚本的计算机和备份 VM 中的卷组名称是相同的。 接下来，我们需要重命名备份的 Vm 卷组。 请看下面的示例。
+
+```bash
+PV         VG        Fmt  Attr PSize   PFree    VG UUID
+
+  /dev/sda4  rootvg    lvm2 a--  138.71g  113.71g EtBn0y-RlXA-pK8g-de2S-mq9K-9syx-B29OL6
+
+  /dev/sdc   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sde   APPvg_new lvm2 a--  <75.00g   <7.50g njdUWm-6ytR-8oAm-8eN1-jiss-eQ3p-HRIhq5
+
+  /dev/sdg   APPvg_new lvm2 a--  <75.00g  508.00m lCAisz-wTeJ-eqdj-S4HY-108f-b8Xh-607IuC
+
+  /dev/sdh   APPvg_new lvm2 a--  <75.00g  508.00m lCAisz-wTeJ-eqdj-S4HY-108f-b8Xh-607IuC
+
+  /dev/sdm2  rootvg    lvm2 a--  194.57g  127.57g efohjX-KUGB-ETaH-4JKB-MieG-EGOc-XcfLCt
+```
+
+脚本输出会显示/dev/sdg、/dev/sdh、/dev/sdm2。 因此，相应的 VG 名称是 Appvg_new 和 rootvg。 但计算机的 VG 列表中也存在相同的名称。 我们可以验证1个 VG 名称有2个 Uuid。
+
+现在，我们需要为基于脚本的卷（即，/dev/sdg、/dev/sdh、/dev/sdm2.）重命名 VG 名称。 若要重命名卷组，请使用以下命令
+
+```bash
+vgimportclone -n rootvg_new /dev/sdm2
+vgimportclone -n APPVg_2 /dev/sdg /dev/sdh
+```
+
+现在，我们有了所有具有唯一 Id 的 VG 名称。
+
+###### <a name="active-volume-groups"></a>活动卷组
+
+请确保与脚本的卷相对应的卷组处于活动状态。 以下命令用于显示活动的卷组。 检查此列表中是否存在该脚本的相关卷组。
+
+```bash
+vgdisplay -a
+```  
+
+否则，请使用以下命令激活卷组。
 
 ```bash
 #!/bin/bash
-pvs <volume name as shown above in the script output>
+vgchange –a y  <volume-group-name>
 ```
 
-列出卷组中所有逻辑卷、名称及其路径：
+##### <a name="listing-logical-volumes-within-volume-groups"></a>列出卷组中的逻辑卷
+
+获取与脚本相关的 VGs 的唯一活动列表后，可以使用以下命令列出这些卷组中存在的逻辑卷。
 
 ```bash
 #!/bin/bash
-lvdisplay <volume-group-name from the pvs commands results>
+lvdisplay <volume-group-name>
 ```
 
-```lvdisplay``` 命令还会显示卷组是否处于活动状态。 如果卷组被标记为非活动状态，则需要再次激活该卷组才能进行装载。 如果卷组显示为非活动状态，请使用以下命令进行激活。
+此命令将每个逻辑卷的路径显示为 "LV Path"。
 
-```bash
-#!/bin/bash
-vgchange –a y  <volume-group-name from the pvs commands results>
-```
-
-卷组名称处于活动状态后，请再次运行 ```lvdisplay``` 命令以查看所有相关属性。
+##### <a name="mounting-logical-volumes"></a>装载逻辑卷
 
 将逻辑卷装载到所选的路径：
 
@@ -161,6 +229,9 @@ vgchange –a y  <volume-group-name from the pvs commands results>
 #!/bin/bash
 mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
+
+> [!WARNING]
+> 不要使用 "mount-a"。 此命令装入 "/etc/fstab" 中所述的所有设备。 这可能意味着可能会装载重复的设备。 可以将数据重定向到脚本创建的、不保存数据的设备，因此可能会导致数据丢失。
 
 #### <a name="for-raid-arrays"></a>对于 RAID 阵列
 
@@ -274,7 +345,7 @@ mount [RAID Disk Path] [/mountpath]
 - 用户每次下载脚本时，Azure 备份将开始准备用于下载的恢复点。 对于大磁盘，此过程需要相当长的时间。 如果连续出现大量请求，目标准备将造成下载激增。 因此，建议从门户/PowerShell/CLI 下载脚本，等待 20 - 30 分钟（探索性步骤），然后运行该脚本。 此时，目标应准备就绪，可以从脚本进行连接。
 - 在文件恢复后，请务必返回门户并为无法装载卷的恢复点单击“卸载磁盘”。 从本质上来说，此步骤将清理所有现有进程/会话并提高恢复的可能性。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果从虚拟机恢复文件时遇到问题，请查看下表了解更多信息。
 

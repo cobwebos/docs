@@ -5,20 +5,20 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.date: 07/20/2020
-ms.author: amsriva
+ms.author: surmb
 ms.topic: conceptual
-ms.openlocfilehash: 23f76f18256ecadcbef59a498292222ea358008f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 53f6f37454de886934a483b40daad24204958baf
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290981"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474319"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>应用程序网关的多站点托管功能
 
-使用多站点托管功能可以在应用程序网关的同一端口上配置多个 Web 应用程序。 它允许您为部署配置更有效的拓扑，方法是将最多100个网站添加到一个应用程序网关。 每个网站都可以定向到自己的后端池。 例如，三个域、contoso.com、fabrikam.com 和 adatum.com，指向应用程序网关的 IP 地址。 可以创建三个多站点侦听器，并为每个侦听器配置相应的端口和协议设置。 
+使用多站点托管功能可以在应用程序网关的同一端口上配置多个 Web 应用程序。 它可以将多达 100 多个网站添加到一个应用程序网关中，从而为部署配置更有效的拓扑。 每个网站都可以定向到自己的后端池。 例如，contoso.com、fabrikam.com 和 adatum.com，这三个域指向应用程序网关的 IP 地址。 你将创建三个多站点侦听器，并为每个侦听器配置相应的端口和协议设置。 
 
-你还可以在多站点侦听器中定义通配符主机名，每个侦听器最多可定义5个主机名。 若要了解详细信息，请参阅[侦听器中的通配符主机名](#wildcard-host-names-in-listener-preview)。
+此外，你还可以在多站点侦听器中定义通配符主机名，每个侦听器最多可以定义 5 个主机名。 若要了解详细信息，请参阅[侦听器中的通配符主机名](#wildcard-host-names-in-listener-preview)。
 
 :::image type="content" source="./media/multiple-site-overview/multisite.png" alt-text="多站点应用程序网关":::
 
@@ -31,7 +31,7 @@ ms.locfileid: "87290981"
 
 ## <a name="wildcard-host-names-in-listener-preview"></a>侦听程序（预览版）中的通配符主机名
 
-应用程序网关允许使用多站点 HTTP （S）侦听器进行基于主机的路由。 现在，你可以在主机名中使用通配符（如星号（*）和问号（？））和每个多站点 HTTP （S）侦听器最多5个主机名。 例如，`*.contoso.com`。
+应用程序网关允许使用多站点 HTTP （S）侦听器进行基于主机的路由。 现在，你可以在主机名中使用通配符（如星号（*）和问号（？））和每个多站点 HTTP （S）侦听器最多5个主机名。 例如 `*.contoso.com`。
 
 使用主机名中的通配符，可以在单个侦听器中匹配多个主机名。 例如， `*.contoso.com` 可以匹配，也可以与等 `ecom.contoso.com` `b2b.contoso.com` `customer1.b2b.contoso.com` 。 使用主机名数组，可以为侦听器配置多个主机名，以将请求路由到后端池。 例如，侦听器可以包含 `contoso.com, fabrikam.com` 接受两个主机名的请求的侦听器。
 
@@ -42,6 +42,7 @@ ms.locfileid: "87290981"
 
 >[!NOTE]
 >此功能当前仅通过[Azure PowerShell](tutorial-multiple-sites-powershell.md)和[Azure CLI](tutorial-multiple-sites-cli.md)提供。 即将推出门户支持。
+> 请注意，由于门户支持并非完全可用，因此，如果仅使用主机名参数，侦听器将显示为门户中的基本侦听器，而侦听器列表视图的 "主机名" 列将不会显示配置的主机名。 对于通配符侦听器的任何更改，请确保使用 Azure PowerShell 或 CLI，直到它在门户中受支持。
 
 在[Azure PowerShell](tutorial-multiple-sites-powershell.md)中，必须使用 `-HostNames` 而不是 `-HostName` 。 使用主机名时，可以将最多5个主机名提及为逗号分隔值并使用通配符。 例如： `-HostNames "*.contoso.com,*.fabrikam.com"`
 

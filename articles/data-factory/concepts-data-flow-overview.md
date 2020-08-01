@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/09/2020
-ms.openlocfilehash: e8efb43ac0711bac1324ac2c9e3b59373ce59419
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 850879675d4554329f24c86f2ac28660b303084c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84635113"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475560"
 ---
 # <a name="what-are-mapping-data-flows"></a>映射数据流是什么？
 
@@ -39,7 +39,7 @@ ms.locfileid: "84635113"
 
 ![画布](media/data-flow/canvas1.png "画布")
 
-### <a name="graph"></a>图形
+### <a name="graph"></a>Graph
 
 关系图显示转换流。 它显示源数据流入一个或多个接收器时的沿袭。 若要添加新源，请选择 "**添加源**"。 若要添加新的转换，请选择现有转换右下方的加号。
 
@@ -93,41 +93,9 @@ ms.locfileid: "84635113"
 
 #### <a name="optimize"></a>优化
 
-"**优化**" 选项卡包含配置分区方案的设置。
+"**优化**" 选项卡包含配置分区方案的设置。 若要了解有关如何优化数据流的详细信息，请参阅[映射数据流性能指南](concepts-data-flow-performance.md)。
 
-![优化](media/data-flow/optimize1.png "优化")
-
-默认设置为 "**使用当前分区**"，指示 Azure 数据工厂使用对 Spark 上运行的数据流的本机分区方案。 在大多数情况下，建议采用此设置。
-
-在某些情况下，你可能需要调整分区。 例如，如果想要将转换输出到 lake 中的单个文件，请在接收器转换中选择 "**单个分区**"。
-
-您可能想要控制分区方案的另一种情况是优化性能。 通过调整分区，可以控制跨计算节点和数据区域优化的数据分布，同时对整体数据流性能产生正面和负面影响。 有关详细信息，请参阅[数据流性能指南](concepts-data-flow-performance.md)。
-
-若要更改任何转换的分区，请选择 "**优化**" 选项卡，然后选择 "**设置分区**" 单选按钮。 将显示一系列用于分区的选项。 分区的最佳方法根据数据量、候选键、null 值和基数而有所不同。 
-
-最佳做法是从默认分区开始，然后尝试不同的分区选项。 您可以使用管道调试运行进行测试，并在 "监视" 视图中查看每个转换分组中的执行时间和分区使用情况。 有关详细信息，请参阅[监视数据流](concepts-data-flow-monitoring.md)。
-
-以下分区选项可用。
-
-##### <a name="round-robin"></a>轮循机制 
-
-轮循机制是一种简单的分区，可跨分区均匀地分布数据。 如果没有合理的关键候选项来实现坚实的智能分区策略，请使用轮循机制。 可以设置物理分区数目。
-
-##### <a name="hash"></a>哈希
-
-Azure 数据工厂生成列哈希，以生成统一分区，使具有相似值的行位于同一个分区中。 使用 Hash 选项时，请测试可能的分区偏差。 可以设置物理分区数目。
-
-##### <a name="dynamic-range"></a>动态范围
-
-动态范围基于您提供的列或表达式使用 Spark 动态范围。 可以设置物理分区数目。 
-
-##### <a name="fixed-range"></a>固定范围
-
-生成一个表达式，该表达式为分区数据列中的值提供固定范围。 若要避免分区歪斜，应在使用此选项之前对数据有充分的了解。 为表达式输入的值将用作分区函数的一部分。 可以设置物理分区数目。
-
-##### <a name="key"></a>键
-
-如果您对数据的基数有充分了解，键分区可能是一个不错的策略。 键分区为列中的每个唯一值创建分区。 不能设置分区数，因为该数字基于数据中的唯一值。
+![优化](media/data-flow/optimize.png "优化")
 
 #### <a name="inspect"></a>检查
 

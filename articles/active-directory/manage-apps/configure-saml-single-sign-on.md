@@ -11,21 +11,21 @@ ms.workload: identity
 ms.date: 07/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
-ms.openlocfilehash: 1abde88b653ae0f0ef3651b161e806047e143078
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 82b10525fe4d8b9db88300b61ae2da6630030dfd
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418774"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461181"
 ---
 # <a name="configure-saml-based-single-sign-on"></a>配置基于 SAML 的单一登录
 
 在应用程序管理的[快速入门系列](view-applications-portal.md)中，已了解如何使用 Azure AD 作为应用程序的标识提供者（IdP）。 本文介绍有关单一登录的基于 SAML 的选项的更多详细信息。 
 
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
-使用 Azure AD 作为标识提供者，并根据所使用的应用程序设置单一登录（SSO）是简单的还是复杂的。 某些应用程序只能使用几个操作进行设置。 其他人需要深入配置。 若要快速加速，请在应用程序管理上演练[快速入门系列](view-applications-portal.md)。 如果要添加的应用程序很简单，则可能不需要阅读本文。 如果要添加的应用程序需要基于 SAML 的 SSO 的自定义配置，则此文适用于你。
+使用 Azure AD 作为标识提供者（IdP）并设置单一登录（SSO）可能会很简单，也可能很复杂，具体取决于所使用的应用程序。 某些应用程序只能使用几个操作进行设置。 其他人需要深入配置。 若要快速加速，请在应用程序管理上演练[快速入门系列](view-applications-portal.md)。 如果要添加的应用程序很简单，则可能不需要阅读本文。 如果要添加的应用程序需要基于 SAML 的 SSO 的自定义配置，则此文适用于你。
 
 在[快速入门系列](view-applications-portal.md)中，有一篇文章介绍了如何配置单一登录。 在此示例中，你将了解如何访问应用的 "SAML 配置" 页。 "SAML 配置" 页包括五个部分。 本文详细讨论了这些部分。
 

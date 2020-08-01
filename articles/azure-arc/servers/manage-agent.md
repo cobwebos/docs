@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 07/14/2020
+ms.date: 07/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 122f88e8bf14d3e3b082930716cffc3621afd336
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 80c133eceb6af419d0eb5aa35ff784a0f9321d37
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067701"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87474948"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理并维护 Connected Machine 代理
 
@@ -181,6 +181,9 @@ Azcmagent 工具 (Azcmagent.exe) 用于在安装过程中配置 Azure Arc for se
 `azcmagent disconnect --tenant-id <tenantID>`
 
 ### <a name="reconnect"></a>重新连接
+
+> [!WARNING]
+> `reconnect`命令已弃用，不应使用。 此命令将在将来的代理版本中删除，并且现有的代理将无法完成重新连接请求。 相反，请[断开](#disconnect)计算机的[连接](#connect)，然后重新连接。
 
 此参数可将已注册或已连接的计算机与 Azure Arc for servers（预览版）重新连接起来。 如果计算机已关闭（至少 45 天）从而导致其证书过期，则可能需要执行此参数。 此参数使用提供的身份验证选项来检索与表示此计算机的 Azure 资源管理器资源相对应的新凭据。
 
