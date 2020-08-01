@@ -3,12 +3,12 @@ title: Azure 开发测试实验室的 azure 安全基准
 description: Azure 开发测试实验室的 azure 安全基准
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 7f0dc1fb18740e2b0611b5954821a5ceda2d2657
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: b392af17a24b0a5aabdd245af236caa743762244
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387823"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448972"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure 开发测试实验室的 azure 安全基准
 
@@ -275,7 +275,7 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自动操作系统修补管理解决方案
 **指南：** 使用 Azure 更新管理确保在开发测试实验室中托管的 Windows 和 Linux Vm 上安装最新的安全更新。 对于 Windows 虚拟机，请确保已启用 Windows 更新并将其设置为自动更新。 此设置当前不可通过开发测试实验室配置，但实验室管理员/订阅管理员可以在其订阅中的基础计算 Vm 上配置此设置。 
 
-- [如何在 Azure 中为 Vm 配置更新管理](../automation/automation-update-management.md)
+- [如何在 Azure 中为 Vm 配置更新管理](../automation/update-management/update-mgmt-overview.md)
 - [了解通过安全中心监视的 Azure 安全策略](../security-center/security-center-policy-definitions.md)
 
 **Azure 安全中心监视：** 不适用
@@ -289,8 +289,8 @@ Microsoft 对支持 Azure 开发测试实验室的底层资源执行漏洞管理
 
 作为订阅管理员，你还可以使用 Azure 更新管理解决方案来管理开发测试实验室 Vm 的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 System Center Updates Publisher （Updates Publisher）等工具允许你将自定义更新发布到 Windows Server Update Services （WSUS）。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
 
-- [Azure 中的更新管理解决方案](../automation/automation-update-management.md)
-- [管理 Azure VM 的更新和修补程序](../automation/automation-tutorial-update-management.md)
+- [Azure 中的更新管理解决方案](../automation/update-management/update-mgmt-overview.md)
+- [管理 Vm 的更新和修补程序](../automation/update-management/update-mgmt-overview.md)
 
 **Azure 安全中心监视：** 不适用
 

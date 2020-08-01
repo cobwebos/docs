@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 38ddfad179a8ef459b5c10f84619a836193ee092
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7dae16140c376bc9288fec5b8744ac6cd14051e5
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781644"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445608"
 ---
 # <a name="how-provisioning-works"></a>预配工作原理
 
@@ -162,7 +162,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 
 ### <a name="how-long-provisioning-takes"></a>预配花费多长时间
 
-性能取决于预配作业是运行初始预配周期还是增量周期。 有关预配需要多长时间以及如何监视预配服务状态的详细信息，请参阅[检查用户预配的状态](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)。
+性能取决于预配作业是运行初始预配周期还是增量周期。 有关预配需要多长时间以及如何监视预配服务状态的详细信息，请参阅[检查用户预配的状态](application-provisioning-when-will-provisioning-finish-specific-user.md)。
 
 ### <a name="how-to-tell-if-users-are-being-provisioned-properly"></a>如何判断用户预配是否正确
 

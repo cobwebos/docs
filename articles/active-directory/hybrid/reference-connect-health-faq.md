@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0c6484f46731e0ff2d16d00cb0038202511d193
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 427a09f3855d44af0206ebf1fd6183099da75f19
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80331083"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446972"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
 本文提供有关 Azure Active Directory (Azure AD) Connect Health 的常见问题 (FAQ) 解答。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -38,7 +38,7 @@ ms.locfileid: "80331083"
 |角色| 操作系统/版本|
 |--|--|
 |Active Directory 联合身份验证服务 (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
-|Azure AD Connect | 版本 1.0.9125 或更高版本|
+|具有 Azure AD Connect | 版本 1.0.9125 或更高版本|
 |Active Directory 域服务 (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 
 请注意，该服务提供的功能可能因角色和操作系统而有所不同。 换言之，并非所有功能都适用于所有操作系统版本。 有关详细信息，请参阅功能说明。
@@ -52,7 +52,7 @@ ms.locfileid: "80331083"
 
 许可信息还可在 [Azure AD 定价页](https://aka.ms/aadpricing)中找到。
 
-例如：
+示例：
 
 | 注册的代理数 | 所需的许可证数 | 示例监视配置 |
 | ------ | --------------- | --- |
@@ -69,7 +69,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 | 角色 | 功能 | 德国云支持 |
 | ------ | --------------- | --- |
 | 适用于同步的 Connect Health | 监视/见解/警报/分析 | 否 |
-|  | 同步错误报告 | 是 |
+|  | 同步错误报告 | “是” |
 | 适用于 ADFS 的 Connect Health | 监视/见解/警报/分析 | 否 |
 | 适用于 ADDS 的 Connect Health | 监视/见解/警报/分析 | 否 |
 
@@ -96,7 +96,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 **问：在安装 Azure AD Connect Health 代理期间，是否必须重新启动服务器？**
 
-否。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
+不能。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
 
 例如，在 Windows Server 2008 R2 上安装 .NET 4.5 Framework 需要重新启动服务器。
 
@@ -113,7 +113,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 **问：Azure AD Connect Health 在连接到 HTTP 代理时是否支持基本身份验证？**
 
-否。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
+不能。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
 
 **问：若要确保 Azure AD Connect Health 代理正常使用，需要打开哪些防火墙端口？**
 
@@ -135,7 +135,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 * 该代理无法与所需的终结点通信，因为防火墙阻止流量。 这在 Web 应用程序代理服务器上尤其常见。 请确保已允许出站通信到所需终结点和端口。 有关详细信息，请参阅 "[要求" 部分](how-to-connect-health-agent-install.md#requirements)。
 * 网络层会对出站通信进行 TLS 检测。 这会导致代理使用的证书被检查服务器/实体替换，并且无法执行完成代理注册所需的步骤。
-* 用户没有执行代理注册的访问权限。 默认情况下，全局管理员具有访问权限。 可使用[基于角色的访问控制](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)将访问权限委派给其他用户。
+* 用户没有执行代理注册的访问权限。 默认情况下，全局管理员具有访问权限。 可以使用[azure 基于角色的访问控制（AZURE RBAC）](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)委托其他用户的访问权限。
 
 **问：收到 "运行状况服务数据不是最新" 的警报。如何实现解决该问题？**
 

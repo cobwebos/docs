@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: dd5248996661be6d4ace81afd7ab942ab70eb4ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: cecea24fe002ee64d54052635a6d7dec982aeee2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781627"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445642"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>规划自动用户预配部署
 
@@ -123,11 +123,11 @@ Azure AD 预配服务通过连接到每个应用程序供应商提供的用户�
 6.  **AD**更新与 Azure AD 同步。 
 7.  **Azure AD 预配服务**回写电子邮件属性和用户名从 Azure AD 到云 HR 应用租户。
 
-## <a name="plan-the-deployment-project"></a>计划部署项目
+## <a name="plan-the-deployment-project"></a>规划部署项目
 
 考虑你的组织需要确定在你的环境中部署用户设置的策略。
 
-### <a name="engage-the-right-stakeholders"></a>吸引适当的利益干系人
+### <a name="engage-the-right-stakeholders"></a>让合适的利益干系人参与
 
 当技术项目失败时，通常是由于对影响、结果和责任的预期不匹配而导致的。 若要避免这些问题，请[确保参与到正确的利益干系人](https://aka.ms/deploymentplans)，并通过记录利益干系人及其项目输入和责任来充分了解项目中的利益干系人角色。
 
@@ -256,7 +256,7 @@ Azure AD 通过直接的特性到属性映射、提供常量值或[为属性映�
 
 第一次运行 Azure AD 预配服务时，针对源系统和目标系统的初始周期会创建每个目标系统的所有用户对象的快照。
 
-为应用程序启用自动预配时，初始周期可能需要20分钟到几小时。 持续时间取决于 Azure AD 目录的大小以及用于预配的范围内的用户数量。 请参阅[如何提高预配性能](../app-provisioning/application-provisioning-when-will-provisioning-finish.md)。
+为应用程序启用自动预配时，初始周期可能需要20分钟到几小时。 持续时间取决于 Azure AD 目录的大小以及用于预配的范围内的用户数量。
 
 预配服务在初始周期后存储两个系统的状态，从而提高后续增量循环的性能。
 
@@ -292,7 +292,7 @@ Azure AD 可以通过审核日志和报告，[进一步深入](../app-provisioni
 
 建议你假设所有权，并使用这些报表来满足组织的要求。 Azure AD 将大多数审核数据保留30天。
 
-### <a name="troubleshoot"></a>疑难解答
+### <a name="troubleshoot"></a>故障排除
 
 请参阅以下链接，以解决在预配期间可能会打开的任何问题：
 
@@ -300,15 +300,13 @@ Azure AD 可以通过审核日志和报告，[进一步深入](../app-provisioni
 
 * [将属性从本地 Active Directory 同步到 Azure AD 以便预配到应用程序](../app-provisioning/user-provisioning-sync-attributes-for-mapping.md)
 
-* [用户预配到 Azure AD 库应用程序需要数小时或更长时间](../app-provisioning/application-provisioning-when-will-provisioning-finish.md)
-
 * [在为 Azure Active Directory 库应用程序配置用户预配时保存管理员凭据时出现问题](../app-provisioning/application-provisioning-config-problem-storage-limit.md)
 
 * [没有为任何用户预配 Azure AD 库应用程序](../app-provisioning/application-provisioning-config-problem-no-users-provisioned.md)
 
 * [预配到 Azure AD 库应用程序的用户组错误](../app-provisioning/application-provisioning-config-problem-wrong-users-provisioned.md)
 
-### <a name="helpful-documentation"></a>可提供帮助的文档
+### <a name="helpful-documentation"></a>有用的文档
 
 * [为属性映射编写表达式](../app-provisioning/functions-for-customizing-application-data.md)
 

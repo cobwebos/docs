@@ -1,6 +1,6 @@
 ---
-title: 添加对 Long 数据类型的支持 | Microsoft Docs
-description: 对 long 数据类型的支持
+title: Azure 时序见解 Gen2 中的 long 数据类型支持 |Microsoft Docs
+description: Azure 时序见解 Gen2 中的 long 数据类型支持。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -10,58 +10,79 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: dpalled
-ms.openlocfilehash: c31ca7fd3eca89159d583b8a51b59a7bd6b8ed67
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34cf770a8ac75c2516480ec3136e61da15f4e4ff
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531026"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446638"
 ---
-# <a name="adding-support-for-long-data-type"></a>添加对 long 数据类型的支持
+# <a name="adding-support-for-long-data-type-in-azure-time-series-insights-gen2"></a>添加对 Azure 时序见解 Gen2 中 long 数据类型的支持
 
-这些更改将仅应用到 Gen2 环境。 如果你有 Gen1 环境，则可能会忽略这些更改。
+添加对 long 数据类型的支持将影响我们仅在 Azure 时序见解 Gen2 环境中存储和索引数字数据的方式。 如果你有 Gen1 环境，你可以忽略这些更改。
 
-我们正在更改 Azure 时序见解 Gen2 中存储和索引数字数据的方式，这可能会影响你。 如果你受以下任何情况的影响，请尽快进行必要的更改。 系统将在 2020 年 6 月 29 日到 6月 30 日之间开始以 Long 和 Double 数据类型为你的数据编制索引，具体取决于你所在的区域。 如果你对此更改有任何疑问或问题，请通过 Azure 门户提交支持票证并提及此信息。
+从2020年6月29日或6月30日开始，根据你所在的区域，你的数据将被索引为**Long**和**Double**。  如果你对此更改有任何疑问或问题，请通过 Azure 门户提交支持票证并提及此信息。
 
-在以下情况下，此更改会对你造成影响：
+如果受以下任何情况的影响，请进行建议的更改：
 
-1. 如果你当前使用时序模型变量并且在遥测数据中仅发送整型数据类型。
-1. 如果你当前使用时序模型变量并且在遥测数据中同时发送整型和非整型数据类型。
-1. 如果你使用分类变量将整数值映射到类别。
-1. 如果你使用 JavaScript SDK 构建自定义前端应用程序。
-1. 如果你在暖存储 (WS) 中即将达到 1,000 属性名称限制，并且同时发送整型和非整型数据，则可在 [Azure 门户](https://portal.azure.com/)中将属性计数视为指标。
+- **情况 1**：目前使用时序模型变量，并且仅在遥测数据中发送整数数据类型。
+- **案例 2**：目前使用时序模型变量，并在遥测数据中发送整型和非整型数据类型。
+- **情况 3**：使用分类变量将整数值映射到类别。
+- **情况 4**：使用 JavaScript SDK 构建自定义前端应用程序。
+- **情况 5**：接近热存储中的1000属性名称限制，并发送整型和非整型数据。 可以在[Azure 门户](https://portal.azure.com/)中查看属性计数。
 
-如果你符合以上任何情况，则需要对模型进行更改，使之适应此更改。 使用带有建议更改的 Api，在 Azure 时序见解 Gen2 资源管理器和任何自定义客户端中的变量定义中更新时序表达式。 有关详细信息，请参阅下文。
+如果有任何事例适用于你，请对模型进行更改。 使用建议的更改更新变量定义中的时序表达式（TSX）。 更新两个：
 
-根据 IoT 解决方案和约束，可能无法查看发送到 Azure 时序见解 Gen2 环境的数据。 如果你不确定你的数据都是整型的还是既有整型的又有非整型的，则你有几个选择。 你可以等待此功能发布，然后在资源管理器 UI 中浏览原始事件，以了解哪些属性已保存在两个单独的列中。 对于所有数字标记，你可以提前进行以下更改，也可以暂时将一部分事件路由到存储，以便更好地了解和探究你的架构。 若要存储事件，请打开事件中心的[事件捕获](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)，或者从 IoT 中心[路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c#azure-storage)到 Azure Blob 存储。 还可以通过[事件中心资源管理器](https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer)或[事件处理器主机](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send#receive-events)来观察数据。 如果使用 IoT 中心，请参阅[此处](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin)的文档，了解如何访问内置终结点。
+- Azure 时序见解 Gen2 资源管理器
+- 使用我们的 Api 的任何自定义客户端
 
-请注意，如果你受这些更改影响，并且无法在上述日期之前进行更改，则你可能会遇到中断，在这种情况下，通过查询 API 或时序见解资源管理器进行访问的受影响时序变量将返回 null（也就是说，不在资源管理器中显示数据）。
+根据 IoT 解决方案和限制，可能无法查看发送到 Azure 时序见解 Gen2 环境的数据。 如果不确定数据是仅整型还是整型和非整型，则有几个选项可供选择：
+
+- 可以等待该功能释放。 然后，在资源管理器 UI 中浏览原始事件，以了解在两个不同的列中保存了哪些属性。
+- 您可以提前对所有数字标记进行建议的更改。
+- 你可以暂时将事件的子集路由到存储，以便更好地了解和浏览你的架构。
+
+若要存储事件，请打开 Azure 事件中心的[事件捕获](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)，或者从 IoT 中心[路由](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c#azure-storage)到 azure Blob 存储。
+
+还可以通过[事件中心资源管理器](https://marketplace.visualstudio.com/items?itemName=Summer.azure-event-hub-explorer)或[事件处理器主机](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send#receive-events)来观察数据。
+
+如果使用 IoT 中心，请参阅[从内置终结点读取设备到云的消息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin)，了解如何访问内置终结点。
+
+> [!NOTE]
+> 如果未进行建议的更改，则可能会遇到中断。 例如，通过查询 Api 或时序见解资源管理器访问的受影响的时序见解变量将返回**null** （即，不在资源管理器中显示数据）。
 
 ## <a name="recommended-changes"></a>建议的更改
 
-事例 1 和 2：**使用时序模型变量并在遥测数据中仅发送整型数据类型或同时发送整型和非整型数据类型。**
+### <a name="case-1-using-time-series-model-variables-and-sending-only-integral-data-types-in-telemetry-data"></a>案例1：使用时序模型变量并仅在遥测数据中发送整数数据类型
 
-如果你当前正在发送整数遥测数据，则你的数据将拆分到“propertyValue_double”和“propertyValue_long”这两个列中。
+方案1的建议更改与案例2的更改相同。 按照方案2部分中的说明进行操作。
 
-当更改生效时，整数数据将写入到“propertyValue_long”中，并且不会复制“propertyValue_double”中以前引入的（和将来引入的）数字数据。
+### <a name="case-2-using-time-series-model-variables-and-sending-both-integral-and-nonintegral-types-in-telemetry-data"></a>案例2：使用时序模型变量并在遥测数据中同时发送整型和非整型类型
 
-如果你希望跨这两个列查询“propertyValue”属性的数据，则必须在 TSX 中使用 *coalesce()* 标量函数。 此函数接受相同 DataType 的参数，并返回参数列表中的第一个非 null 值（有关用法的详细信息，请参阅[此文](https://docs.microsoft.com/rest/api/time-series-insights/preview#other-functions)）。
+如果你当前发送整数遥测数据，则你的数据将分为两列：
 
-### <a name="variable-definition-in-time-series-explorer---numeric"></a>时序资源管理器中的变量定义 - 数字
+- **propertyValue_double**
+- **propertyValue_long**
 
-以前的变量定义：
+你的整数数据写入**propertyValue_long**。 在**propertyValue_double**中，以前的引入（以及将来的引入）数字数据不会进行复制。
+
+如果要跨这两个列对数据进行查询，**则需要**在 TSX 中使用**合并（）** 标量函数。 函数接受相同**数据类型**的参数，并返回参数列表中的第一个非 null 值。 有关详细信息，请参阅[Azure 时序见解 Gen2 数据访问概念](https://docs.microsoft.com/rest/api/time-series-insights/preview#other-functions)。
+
+#### <a name="variable-definition-in-tsx---numeric"></a>TSX 中的变量定义-数字
+
+*以前的变量定义：*
 
 [![以前的变量定义](media/time-series-insights-long-data-type/var-def-previous.png)](media/time-series-insights-long-data-type/var-def-previous.png#lightbox)
 
-新的变量定义：
+*新变量定义：*
 
 [![新的变量定义](media/time-series-insights-long-data-type/var-def.png)](media/time-series-insights-long-data-type/var-def.png#lightbox)
 
-还可以使用 “coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))”作为自定义[时序表达式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
+您还可以将**合并（$Event toDouble （$event））** 用作自定义[时序表达式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
 
-### <a name="inline-variable-definition-using-time-series-query-apis---numeric"></a>使用时序查询 API 的内联变量定义 - 数字
+#### <a name="inline-variable-definition-using-tsx-query-apis---numeric"></a>使用 TSX 查询 Api 的内联变量定义-数字
 
-以前的变量定义：
+*以前的变量定义：*
 
 ```JSON
 "PropertyValueVariable": {
@@ -83,7 +104,7 @@ ms.locfileid: "86531026"
 }
 ```
 
-新的变量定义：
+*新变量定义：*
 
 ```JSON
 "PropertyValueVariable ": {
@@ -105,32 +126,32 @@ ms.locfileid: "86531026"
 }
 ```
 
-还可以使用 “coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))”作为自定义[时序表达式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
+您还可以将**合并（$Event toDouble （$event））** 用作自定义[时序表达式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
 
 > [!NOTE]
-> 我们建议你在可能使用这些变量的所有位置（时序模型、已保存的查询、Power BI 连接器查询）更新这些变量。
+> 建议在可能使用这些变量的所有位置更新它们。 这些位置包括时序模型、保存的查询和 Power BI 连接器查询。
 
-事例 3：**使用类别变量将整数值映射到类别**
+### <a name="case-3-using-categorical-variables-to-map-integer-values-to-categories"></a>事例 3：使用类别变量将整数值映射到类别
 
-如果你当前正在使用将整数值映射到类别的类别变量，则可以使用 toLong 函数将数据从 Double 类型转换为 Long 类型。 与上述事例中一样，你需要合并 Double 和 Long DataType 列。
+如果你当前使用将整数值映射到类别的分类变量，则很可能使用**toLong**函数将数据从**Double**类型转换为**Long**类型。 就像用例1和2一样，您需要合并**Double**和**Long** **数据类型**列。
 
-### <a name="variable-definition-in-time-series-explorer---categorical"></a>时序资源管理器中的变量定义 - 类别
+#### <a name="variable-definition-in-time-series-explorer---categorical"></a>时序资源管理器中的变量定义-分类
 
-以前的变量定义：
+*以前的变量定义：*
 
 [![以前的变量定义](media/time-series-insights-long-data-type/var-def-cat-previous.png)](media/time-series-insights-long-data-type/var-def-cat-previous.png#lightbox)
 
-新的变量定义：
+*新变量定义：*
 
 [![新的变量定义](media/time-series-insights-long-data-type/var-def-cat.png)](media/time-series-insights-long-data-type/var-def-cat.png#lightbox)
 
-还可以使用 “coalesce($event.propertyValue.Double, toDouble($event.propertyValue.Long))”作为自定义[时序表达式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
+您还可以将**合并（$Event toDouble （$event））** 用作自定义[时序表达式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)。
 
-分类变量仍要求值为整数类型。 在自定义[时序表达式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)中，coalesce() 中的所有参数的 DataType 都必须是 Long 类型。
+分类变量仍要求值为整数类型。 **合并（）** 中所有参数的**数据**类型在自定义[时序表达式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)中必须是**Long**类型。
 
-### <a name="inline-variable-definition-using-time-series-query-apis---categorical"></a>使用时序查询 API 的内联变量定义 - 类别
+#### <a name="inline-variable-definition-using-tsx-query-apis---categorical"></a>使用 TSX 查询 Api 的内联变量定义-分类
 
-以前的变量定义：
+*以前的变量定义：*
 
 ```JSON
 "PropertyValueVariable_Long": {
@@ -168,7 +189,7 @@ ms.locfileid: "86531026"
 }
 ```
 
-新的变量定义：
+*新变量定义：*
 
 ```JSON
 "PropertyValueVariable_Long": {
@@ -206,19 +227,19 @@ ms.locfileid: "86531026"
 }
 ```
 
-分类变量仍要求值为整数类型。 在自定义[时序表达式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)中，coalesce() 中的所有参数的 DataType 都必须是 Long 类型。
+分类变量仍要求值为整数类型。 **合并（）** 中所有参数的**数据**类型在自定义[时序表达式](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)中必须是**Long**类型。
 
 > [!NOTE]
-> 我们建议你在可能使用这些变量的所有位置（时序模型、已保存的查询、Power BI 连接器查询）更新这些变量。
+> 建议在可能使用这些变量的所有位置更新它们。 这些位置包括时序模型、保存的查询和 Power BI 连接器查询。
 
-事例 4：**使用 JavaScript SDK 构建自定义前端应用程序**
+### <a name="case-4-using-the-javascript-sdk-to-build-a-custom-front-end-application"></a>事例 4：使用 JavaScript SDK 构建自定义前端应用程序
 
-如果你受上述事例 1-3 影响并构建自定义应用程序，则需将查询更新为使用 *coalesce()* 函数，如以上示例所示。
+如果受案例1到步骤3的影响并生成自定义应用程序，则需要将查询更新为使用**合并（）** 函数，如前面的示例中所示。
 
-事例 5：**即将达到暖存储的 1,000 属性限制**
+### <a name="case-5-nearing-warm-store-1000-property-limit"></a>事例 5：即将达到暖存储的 1,000 属性限制
 
-如果你是具有大量属性的暖存储用户，并且认为此更改会导致你的环境超出 1,000 WS 属性名称限制，请通过 Azure 门户提交支持票证并提及此信息。
+如果你是具有大量属性的热存储用户，并且认为此更改会将你的环境推送到1000温存储属性-名称限制，请通过 Azure 门户提交支持票证并提及此通信。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要查看支持的数据类型的完整列表，请参阅[支持的数据类型](concepts-supported-data-types.md)。
+- 查看[支持的数据类型](concepts-supported-data-types.md)的完整列表。

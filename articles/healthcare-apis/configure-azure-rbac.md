@@ -1,5 +1,5 @@
 ---
-title: 为适用于 FHIR 的 Azure API 配置基于 Azure 角色的访问控制（RBAC）
+title: 为适用于 FHIR 的 Azure API 配置基于 Azure 角色的访问控制（Azure RBAC）
 description: 本文介绍如何为适用于 FHIR 数据平面的 Azure API 配置 Azure RBAC
 author: hansenms
 ms.service: healthcare-apis
@@ -7,16 +7,16 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: mihansen
-ms.openlocfilehash: 3fbbfd931efb0e570bc96639bc6b7943fddc0237
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a3cdb5a640e09c0095db79f5e3a43b455a1a5705
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87417669"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447155"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>配置 FHIR 的 Azure RBAC 
 
-本文介绍如何使用[基于 Azure 角色的访问控制（RBAC）](https://docs.microsoft.com/azure/role-based-access-control/)来分配对 azure API for FHIR 数据平面的访问权限。 当在与 Azure 订阅关联的 Azure Active Directory 租户中管理数据平面用户时，Azure RBAC 是用于分配数据平面访问权限的首选方法。 如果你使用的是外部 Azure Active Directory 租户，请参阅[本地 RBAC 赋值引用](configure-local-rbac.md)。
+本文介绍如何使用[azure 基于角色的访问控制（AZURE RBAC）](https://docs.microsoft.com/azure/role-based-access-control/)来分配对 azure API for FHIR 数据平面的访问权限。 当在与 Azure 订阅关联的 Azure Active Directory 租户中管理数据平面用户时，Azure RBAC 是用于分配数据平面访问权限的首选方法。 如果你使用的是外部 Azure Active Directory 租户，请参阅[本地 RBAC 赋值引用](configure-local-rbac.md)。
 
 ## <a name="confirm-azure-rbac-mode"></a>确认 Azure RBAC 模式
 

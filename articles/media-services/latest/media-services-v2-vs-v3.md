@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/09/2020
 ms.author: juliako
-ms.openlocfilehash: 091a5d33e49e2abe811bf3cc250d04d69506165d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dfbe1e7fdfca6f9959218f47d903301cb4b6d899
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011628"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448383"
 ---
 # <a name="media-services-v2-vs-v3"></a>媒体服务 v2 与 v3
 
@@ -83,7 +83,8 @@ ms.locfileid: "87011628"
     * 在输入不包含音频时插入静音曲目
     * 在输入不包含视频时插入视频轨道
 * 包含转码的直播活动目前不支持静态图像插入中间流，以及通过 API 调用执行的广告标记插入。 
- 
+* 有关 `https://github.com/Azure-Samples/media-services-v2-dotnet-core-restsharp-sample.git` 使用 V2 REST API 的最佳实践和模式，请参阅示例代码。NETCore SDK。
+
 ## <a name="asset-specific-changes"></a>特定于资产的更改
 
 ### <a name="map-v3-asset-properties-to-v2"></a>将 v3 资产属性映射到 v2

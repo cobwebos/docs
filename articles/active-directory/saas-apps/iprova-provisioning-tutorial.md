@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: b914292e03078021c02d777505543a537b50260f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16cba1896a9e9e4038091769fb78ca0c0469710e
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367608"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448826"
 ---
 # <a name="tutorial-configure-iprova-for-automatic-user-provisioning"></a>教程：为 iProva 配置自动用户预配
 
@@ -114,7 +114,7 @@ ms.locfileid: "85367608"
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存” 。
+7. 单击“保存”。
 
 8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 iProva**"。
 
@@ -124,33 +124,32 @@ ms.locfileid: "85367608"
    |---|---|
    |活动|Boolean|
    |displayName|String|
-   |title|String|
-   |emails[type eq "work"].value|String|
-   |preferredLanguage|String|
-   |userName|String|
+   |title|字符串|
+   |emails[type eq "work"].value|字符串|
+   |preferredLanguage|字符串|
+   |userName|字符串|
    |addresses[type eq "work"].country|字符串|
-   |addresses[type eq "work"].locality|String|
-   |addresses[type eq "work"].postalCode|String|
-   |addresses[type eq "work"].formatted|String|
-   |addresses[type eq "work"].region|String|
-   |addresses[type eq "work"].streetAddress|String|
-   |地址 [type eq "other"]。格式|String|
-   |name.givenName|String|
-   |name.familyName|String|
-   |name.formatted|String|
-   |phoneNumbers[type eq "fax"].value|String|
-   |phoneNumbers[type eq "mobile"].value|String|
-   |phoneNumbers[type eq "work"].value|String|
-   |externalId|String|
-   |角色 [主 eq "True"]。显示|String|
-   |role [primary eq "True"]。类型|String|
-   |role [主 eq "True"]。值|String|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|String|
+   |addresses[type eq "work"].locality|字符串|
+   |addresses[type eq "work"].postalCode|字符串|
+   |addresses[type eq "work"].formatted|字符串|
+   |addresses[type eq "work"].region|字符串|
+   |addresses[type eq "work"].streetAddress|字符串|
+   |地址 [type eq "other"]。格式|字符串|
+   |name.givenName|字符串|
+   |name.familyName|字符串|
+   |name.formatted|字符串|
+   |phoneNumbers[type eq "fax"].value|字符串|
+   |phoneNumbers[type eq "mobile"].value|字符串|
+   |phoneNumbers[type eq "work"].value|字符串|
+   |externalId|字符串|
+   |角色 [主 eq "True"]。显示|字符串|
+   |role [primary eq "True"]。类型|字符串|
+   |role [主 eq "True"]。值|字符串|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:costCenter|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|字符串|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|String|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|参考|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|字符串|
 
 
 10. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 组同步到 iProva**"。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 10802cd141e0b10e30cb01d3d1dc385aedf7fc1e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 11b532b5ece10c8a9ac6dad61e4ca64a9f19f901
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387007"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445203"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>适用于 Windows 虚拟机的 Azure 安全基线
 
@@ -620,9 +620,9 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **指南**：使用 Azure 更新管理解决方案来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 System Center Updates Publisher （Updates Publisher）等工具允许你将自定义更新发布到 Windows Server Update Services （WSUS）。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
 
-* [Azure 中的更新管理解决方案](../../automation/automation-update-management.md)
+* [Azure 中的更新管理解决方案](../../automation/update-management/update-mgmt-overview.md)
 
-* [管理 Azure VM 的更新和修补程序](../../automation/automation-tutorial-update-management.md)
+* [管理 Vm 的更新和修补程序](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure 安全中心监视**：是
 
@@ -632,9 +632,9 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **指南**：你可以使用第三方修补程序管理解决方案。 可以使用 Azure 更新管理解决方案来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 System Center Updates Publisher （Updates Publisher）等工具允许你将自定义更新发布到 Windows Server Update Services （WSUS）。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
 
-* [Azure 中的更新管理解决方案](../../automation/automation-update-management.md)
+* [Azure 中的更新管理解决方案](../../automation/update-management/update-mgmt-overview.md)
 
-* [管理 Azure VM 的更新和修补程序](../../automation/automation-tutorial-update-management.md)
+* [管理 Vm 的更新和修补程序](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure 安全中心监视**：不可用
 

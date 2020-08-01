@@ -1,14 +1,14 @@
 ---
-title: 指南和最佳实践
+title: 指南和最佳做法
 description: 了解将云和本地工作负载备份到云的最佳实践和指南
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 4a5f7e1f55eb5b4a68ee889ef6e1378eb573a6a5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d0ce7877ebd33385deb98977c9439bf8a05b5325
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096537"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447278"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>将云和本地工作负载备份到云
 
@@ -137,7 +137,7 @@ Azure 备份策略有两个组件：*计划*（执行备份的时间）和*保�
 
 ### <a name="authentication-and-authorization"></a>身份验证和授权
 
-* Azure 基于角色的访问控制（RBAC）可实现精细的访问管理，将职责划分到团队中，只向用户授予执行作业所需的访问权限。 [在此处了解详细信息](backup-rbac-rs-vault.md)。
+* Azure 基于角色的访问控制（Azure RBAC）实现了精细的访问管理，将职责划分到团队中，仅向用户授予执行作业所需的访问权限。 [在此处了解详细信息](backup-rbac-rs-vault.md)。
 
 * Azure 备份提供了三种内置角色来控制备份管理操作：备份参与者、操作员和读者。 [在此处了解详细信息](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)。
 

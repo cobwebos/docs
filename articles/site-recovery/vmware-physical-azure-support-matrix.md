@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的 VMware/物理灾难恢复支持列表
 description: 汇总了使用 Azure Site Recovery 将 VMware VM 和物理服务器灾难恢复到 Azure 的支持。
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: c7eebfee771a9c65901bd89336e49c026a944a65
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 56c86993e4e98764bc7e3ce04180f9e870cc612d
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528853"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87458019"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>将 VMware VM 和物理服务器灾难恢复到 Azure 时的支持矩阵
 
@@ -75,7 +75,7 @@ Site Recovery 支持复制在支持的计算机上运行的任何工作负荷。
 --- | ---
 Windows Server 2019 | 从[更新汇总 34](https://support.microsoft.com/help/4490016) 开始受支持（移动服务版本 9.22 和更高版本）。
 Windows Server 2016 64 位 | 支持服务器核心、带桌面体验的服务器。
-Windows Server 2012 R2/Windows Server 2012 | 。
+Windows Server 2012 R2/Windows Server 2012 | 支持。
 Windows Server 2008 R2 SP1 及更高版本。 | 。<br/><br/> 在移动服务代理的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 版本中，需要在运行 Windows 2008 R2 SP1 或更高版本的计算机上安装[服务堆栈更新 (SSU)](https://support.microsoft.com/help/4490628) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。 从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://aka.ms/SHA-2KB)。
 Windows Server 2008 SP2 或更高版本（64 位/32 位） |  仅支持迁移。 [了解详细信息](migrate-tutorial-windows-server-2008.md)。<br/><br/> 在移动服务代理的 [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) 版本中，需要在 Windows 2008 SP2 计算机上安装[服务堆栈更新 (SSU)](https://support.microsoft.com/help/4493730) 和 [SHA-2 更新](https://support.microsoft.com/help/4474419)。 从 2019 年 9 月开始不再支持 SHA-1，如果未启用 SHA-2 代码签名，则无法按预期方式安装/升级代理扩展。 详细了解 [SHA-2 升级和要求](https://support.microsoft.com/en-us/help/4472027/2019-sha-2-code-signing-support-requirement-for-windows-and-wsus)。
 Windows 10、Windows 8.1 和 Windows 8 | 。
@@ -91,7 +91,7 @@ Linux：CentOS | 5.2 到 5.11</b><br/> 6.1 到 6.10</b><br/> 7.0 至7。8<br/> <
 Ubuntu | Ubuntu 14.04 LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions) </br> Ubuntu 18.04 LTS 服务器[（查看支持的内核版本）](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 （包括对所有7的支持。 *x*、8。 *x*版本） [（查看支持的内核版本）](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1、SP2、SP3、SP4、 [SP5](https://support.microsoft.com/help/4570609) [（查看支持的内核版本）](#suse-linux-enterprise-server-12-supported-kernel-versions) <br/> SUSE Linux Enterprise Server 15、15 SP1 [（查看支持的内核版本）](#suse-linux-enterprise-server-15-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3、SUSE Linux Enterprise Server 11 SP4<br/> 不支持将复制计算机从 SUSE Linux Enterprise Server 11 SP3 升级到 SP4。 若要升级，请禁用复制并在升级后重新启用它。
-Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、 [7.6、7.7](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) [7.8](https://support.microsoft.com/help/4573888/)、 [8.0](https://support.microsoft.com/help/4573888/)、 [8.1](https://support.microsoft.com/help/4573888/)、 [8.2](https://support.microsoft.com/help/4573888/) <br/><br/> 运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3、4 和 5（UEK3、UEK4、UEK5）
+Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、 [7.6、7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)、 [7.8](https://support.microsoft.com/help/4573888/)、 [8.0](https://support.microsoft.com/help/4573888/)、 [8.2](https://support.microsoft.com/help/4573888/)  <br/> 运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3、4 和 5（UEK3、UEK4、UEK5）<br/><br/>[8.1](https://support.microsoft.com/help/4573888/)<br/>支持在所有 UEK 内核和 RedHat 内核上运行 <= 3.10.0-1062. *。 在9.36 年年底，将提供对 RedHat 内核的其他支持。
 
 > [!Note]
 > 对于每个 Windows 版本，Azure Site Recovery 仅支持[长期服务渠道 (LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) 生成。  目前不支持[半年渠道](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel)版本。
@@ -174,14 +174,14 @@ BTRFS | 从[更新汇总 34](https://support.microsoft.com/help/4490016)（移�
 **组件** | **支持**
 --- | ---
 主机网络 NIC 组合 | 对于 VMware VM，受支持。 <br/><br/>对于物理计算机复制，不支持。
-主机网络 VLAN | 是。
-主机网络 IPv4 | 是。
-主机网络 IPv6 | 不是。
-来宾/服务器网络 NIC 组合 | 不是。
-来宾/服务器网络 IPv4 | 是。
+主机网络 VLAN | 是的。
+主机网络 IPv4 | 是的。
+主机网络 IPv6 | 不能。
+来宾/服务器网络 NIC 组合 | 不能。
+来宾/服务器网络 IPv4 | 是的。
 来宾/服务器网络 IPv6 | 否。
-来宾/服务器网络静态 IP (Windows) | 是。
-来宾/服务器网络静态 IP (Linux) | 是。 <br/><br/>VM 配置为在故障回复时使用 DHCP。
+来宾/服务器网络静态 IP (Windows) | 是的。
+来宾/服务器网络静态 IP (Linux) | 是的。 <br/><br/>VM 配置为在故障回复时使用 DHCP。
 来宾/服务器网络多个 NIC | 是的。
 对 Site Recovery 服务的私有链接访问 | 是的。 [了解详细信息](hybrid-how-to-enable-replication-private-endpoints.md)。
 
@@ -190,15 +190,15 @@ BTRFS | 从[更新汇总 34](https://support.microsoft.com/help/4490016)（移�
 
 **组件** | **支持**
 --- | ---
-Azure ExpressRoute | 是
-ILB | 是
-ELB | 是
-Azure 流量管理器 | 是
-多 NIC | 是
-保留 IP 地址 | 是
-IPv4 | 是
-保留源 IP 地址 | 是
-Azure 虚拟网络服务终结点<br/> | 是
+Azure ExpressRoute | “是”
+ILB | “是”
+ELB | “是”
+Azure 流量管理器 | “是”
+多 NIC | “是”
+保留 IP 地址 | “是”
+IPv4 | “是”
+保留源 IP 地址 | “是”
+Azure 虚拟网络服务终结点<br/> | “是”
 加速网络 | 否
 
 ## <a name="storage"></a>存储
@@ -207,11 +207,11 @@ Azure 虚拟网络服务终结点<br/> | 是
 动态磁盘 | OS 磁盘必须是基本磁盘。 <br/><br/>数据磁盘可以是动态磁盘
 Docker 磁盘配置 | 否
 主机 NFS | 在 VMware 上支持<br/><br/> 在物理服务器上不支持
-主机 SAN (iSCSI/FC) | 是
+主机 SAN (iSCSI/FC) | “是”
 主机 vSAN | 在 VMware 上支持<br/><br/> 在物理服务器上不适用
 主机多路径 (MPIO) | 是，针对以下项进行了测试：Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON
 主机虚拟卷 (VVols) | 在 VMware 上支持<br/><br/> 在物理服务器上不适用
-来宾/服务器 VMDK | 是
+来宾/服务器 VMDK | “是”
 来宾/服务器共享群集磁盘 | 否
 来宾/服务器加密磁盘 | 否
 来宾/服务器 NFS | 否
@@ -225,7 +225,7 @@ Docker 磁盘配置 | 否
 逻辑卷管理 (LVM)| 复杂预配 - 是 <br></br> 精简预配 - 否
 来宾/服务器 - 存储空间 | 否
 来宾/服务器热添加/删除磁盘 | 否
-来宾/服务器 - 排除磁盘 | 是
+来宾/服务器 - 排除磁盘 | “是”
 来宾/服务器多路径 (MPIO) | 否
 来宾/服务器 GPT 分区 | 从[更新汇总 37](https://support.microsoft.com/help/4508614/)（移动服务版本 9.25）开始支持五个分区。 以前支持四个。
 ReFS | 出行服务版本 9.23 或更高版本支持可复原文件系统
@@ -233,7 +233,7 @@ ReFS | 出行服务版本 9.23 或更高版本支持可复原文件系统
 
 ## <a name="replication-channels"></a>复制通道
 
-|**复制类型**   |**支持**  |
+|**复制类型**   |支持  |
 |---------|---------|
 |卸载的数据传输 (ODX)    |       否  |
 |脱机设定种子        |   否      |
@@ -241,19 +241,19 @@ ReFS | 出行服务版本 9.23 或更高版本支持可复原文件系统
 
 ## <a name="azure-storage"></a>Azure 存储
 
-**组件** | **支持**
+**组件** | 支持
 --- | ---
-本地冗余存储 | 是
-异地冗余存储 | 是
-读取访问异地冗余存储 | 是
+本地冗余存储 | “是”
+异地冗余存储 | “是”
+读取访问异地冗余存储 | “是”
 冷存储 | 否
 热存储| 否
 块 Blob | 否
-静态加密 (SSE)| 是
+静态加密 (SSE)| “是”
 静态加密 (CMK)| 是（通过 PowerShell Az 3.3.0 及更高版本模块）
 双静态加密 | 是（通过 PowerShell Az 3.3.0 module）。 了解有关[Windows](../virtual-machines/windows/disk-encryption.md)和[Linux](../virtual-machines/linux/disk-encryption.md)支持的区域的详细信息。
-高级存储 | 是
-安全传输选项 | 是
+高级存储 | “是”
+安全传输选项 | “是”
 导入/导出服务 | 否
 VNet 的 Azure 存储防火墙 | 是的。<br/> 在目标存储/缓存存储帐户上配置（用于存储复制的数据）。
 常规用途 v2 存储帐户（热层和冷层） | 是（与 V1 相比，V2 的事务成本高得多）
@@ -262,10 +262,10 @@ VNet 的 Azure 存储防火墙 | 是的。<br/> 在目标存储/缓存存储帐�
 
 **功能** | **支持**
 --- | ---
-可用性集 | 是
+可用性集 | “是”
 可用性区域 | 否
-HUB | 是
-托管磁盘 | 是
+HUB | “是”
+托管磁盘 | “是”
 
 ## <a name="azure-vm-requirements"></a>Azure VM 要求
 

@@ -10,36 +10,36 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: c3f9f96c6429d4925c60a56cd450a9c2ee7dde24
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 1193e6f9ed637f6bd28b2fef6488b2d4902ec67b
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419948"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87459379"
 ---
 # <a name="configure-password-based-single-sign-on"></a>配置基于密码的单一登录
 
-在应用程序管理的[快速入门系列](view-applications-portal.md)中，已了解如何使用 Azure AD 作为应用程序的标识提供者（IdP）。 在快速入门指南中，可以设置基于 SAML 的 SSO。 除 SAML 外，还可以选择基于密码的 SSO。 本文详细介绍了单一登录基于密码的选项。 
+在应用程序管理的[快速入门系列](view-applications-portal.md)中，已了解如何使用 Azure AD 作为应用程序的标识提供者（IdP）。 在快速入门指南中，可以设置基于 SAML 的 SSO。 另一种方法是基于密码的 SSO。 本文更详细地介绍了基于密码的 SSO 选项。 
 
-此选项可用于包含 HTML 登录页的任何网站。 基于密码的 SSO 也称为密码保管，可用于管理不支持标识联合的 Web 应用程序中的用户访问权限和密码。 在多个用户需要共享单个帐户（例如组织的社交媒体应用帐户）的情况下，此方法也非常有用。 
+此选项可用于包含 HTML 登录页的任何网站。 基于密码的 SSO 也称为密码存储。 通过基于密码的 SSO，你可以管理不支持联合身份验证的 web 应用程序的用户访问权限和密码。 在多个用户需要共享单个帐户（例如，组织的社交媒体应用帐户）时，这也很有用。
 
 基于密码的 SSO 非常适合于快速将应用程序集成到 Azure AD，并使你能够：
 
-- 为用户启用单一登录（通过安全地存储和重播与集成的应用程序的用户名和密码） Azure AD
+- 通过安全地存储和重播用户名和密码，为用户启用单一登录
 
 - 支持需要多个登录字段的应用程序，这适用于不只需要用户名和密码字段才能登录的应用程序
 
-- 自定义标签，即指用户输入其凭据时，会在[应用程序访问面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)上看到的用户名和密码输入字段的标签
+- 自定义用户在输入凭据时在[应用程序访问面板](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)上看到的 "用户名" 和 "密码" 字段的标签
 
 - 允许用户为手动键入的任何现有应用程序帐户提供自己的用户名和密码。
 
 - 允许业务组的成员使用[自助应用程序访问](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)功能指定分配给用户的用户名和密码
 
--   允许管理员指定个人或组在使用 "更新凭据" 功能登录到应用程序时使用的用户名和密码。 
+-   允许管理员指定个人或组在使用更新凭据功能登录到应用程序时使用的用户名和密码 
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
-使用 Azure AD 作为标识提供者，并根据所使用的应用程序设置单一登录（SSO）是简单的还是复杂的。 某些应用程序只能使用几个操作进行设置。 其他人需要深入配置。 若要快速加速，请在应用程序管理上演练[快速入门系列](view-applications-portal.md)。 如果要添加的应用程序很简单，则可能不需要阅读本文。 如果要添加的应用程序需要自定义配置，并且你需要使用基于密码的 SSO，则本文适用于你。
+使用 Azure AD 作为标识提供者（IdP）并设置单一登录（SSO）可能会很简单，也可能很复杂，具体取决于所使用的应用程序。 某些应用程序只能使用几个操作进行设置。 其他人需要深入配置。 若要快速加速，请在应用程序管理上演练[快速入门系列](view-applications-portal.md)。 如果要添加的应用程序很简单，则可能不需要阅读本文。 如果要添加的应用程序需要自定义配置，并且你需要使用基于密码的 SSO，则本文适用于你。
 
 > [!IMPORTANT] 
 > 在某些情况下，"**单一登录**" 选项将不会出现在 "**企业应用**程序" 中的应用程序的导航中。 
@@ -51,13 +51,13 @@ ms.locfileid: "87419948"
 
 ## <a name="basic-configuration"></a>基本配置
 
-在[快速入门系列](view-applications-portal.md)中，你已了解如何将应用添加到你的租户，以便 Azure AD 知道将其用作应用的标识提供者（IdP）。 某些应用已预先配置，它们显示在 Azure AD 库中。 其他应用不在库中，您必须创建一个通用应用并进行手动配置。 基于密码的 SSO 选项可能不可用，具体取决于应用程序。 如果在应用的 "单一登录" 页上看不到 "基于密码的选项" 列表，则它将不可用。
+在[快速入门系列](view-applications-portal.md)中，你已了解如何将应用添加到你的租户，这使 Azure AD 知道它正在用作应用的标识提供者（IdP）。 某些应用已预先配置，它们显示在 Azure AD 库中。 其他应用不在库中，您必须创建一个通用应用并进行手动配置。 基于密码的 SSO 选项可能不可用，具体取决于应用程序。 如果在应用的 "单一登录" 页上看不到 "基于密码的选项" 列表，则它将不可用。
 
 基于密码的 SSO 的配置页面非常简单。 它仅包含应用程序使用的登录页的 URL。 此字符串必须是包含 "用户名" 输入字段的页面。
 
 输入 URL 后，选择 "**保存**"。 Azure AD 分析用户名和密码输入字段的登录页的 HTML。 如果尝试成功，则已完成。
  
-下一步是[将用户或组分配到应用程序](methods-for-assigning-users-and-groups.md)。 分配用户和组后，你可以提供凭据，以便在用户登录到应用程序时代表用户使用。 选择 "**用户和组**"，选中用户或组所在行的复选框，然后选择 "**更新凭据**"。 然后，输入代表用户或组使用的用户名和密码。 否则，系统将在启动时提示用户输入凭据。
+下一步是[将用户或组分配到应用程序](methods-for-assigning-users-and-groups.md)。 分配用户和组后，你可以提供凭据，以便在用户登录到应用程序时使用。 选择 "**用户和组**"，选中用户或组所在行的复选框，然后选择 "**更新凭据**"。 最后，输入要用于该用户或组的用户名和密码。 如果不这样做，系统将在启动时提示用户输入凭据。
  
 
 ## <a name="manual-configuration"></a>手动配置
@@ -77,11 +77,11 @@ ms.locfileid: "87419948"
 5. 在包含所输入 URL 的选项卡中，完成登录过程。 填写 "用户名" 和 "密码" 字段，然后尝试登录。 （不需要提供正确的密码。）
 
    会出现一个提示，要求您保存捕获的登录字段。
-6. 选择“确定”  。 浏览器扩展更新 "捕获状态" 页，其中包含**为应用程序更新的消息元数据**。 "浏览器" 选项卡关闭。
+6. 选择“确定”。 浏览器扩展更新 "捕获状态" 页，其中包含**为应用程序更新的消息元数据**。 "浏览器" 选项卡关闭。
 
 7. 在 Azure AD**配置登录**"页上，选择 **" 确定 "，我可以成功登录到应用**。
 
-8. 选择“确定”  。
+8. 选择“确定”。
 
 ## <a name="next-steps"></a>后续步骤
 

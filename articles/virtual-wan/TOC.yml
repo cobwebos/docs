@@ -58,8 +58,6 @@
               href: scenario-route-through-nva.md
             - name: 通过 NVA 路由 - 自定义（预览版）
               href: scenario-route-through-nvas-custom.md
-            - name: Azure 防火墙 - 中心间（预览版）
-              href: scenario-route-between-hubs-firewall.md
             - name: Azure 防火墙 - 自定义
               href: scenario-route-between-vnets-firewall.md
     - name: 监视

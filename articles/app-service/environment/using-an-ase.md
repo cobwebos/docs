@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f9bfd601642ff9d6b5b5c5a1c2c508d1821e19c7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 64798e22a893c87a17e3f17077860537c7694c40
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042192"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448200"
 ---
 # <a name="use-an-app-service-environment"></a>使用应用服务环境
 
@@ -126,15 +126,15 @@ SCM URL 用于访问 Kudu 控制台，也可用于通过 Web 部署发布应用�
 
 在自己的 DNS 服务器中通过 ILB ASE 配置 DNS：
 
-1. 为 <ASE name>.appserviceenvironment.net 创建区域
+1. 为 &lt;ASE 名称&gt;.appserviceenvironment.net 创建一个区域
 1. 在该区域中创建一条指向* ILB IP 地址的 A 记录
 1. 在该区域中创建一条指向 @ ILB IP 地址的 A 记录
-1. 在 <ASE name>.appserviceenvironment.net named scm 中创建名为 scm 的区域
+1. 在 &lt;ASE 名称&gt;.appserviceenvironment.net 中创建名为 scm 的区域
 1. 在 scm 区域中创建一条指向 * ILB IP 地址的 A 记录
 
 在 Azure DNS 专用区域中配置 DNS：
 
-1. 创建名为 <ASE name>.appserviceenvironment.net 的 Azure DNS 专用区域
+1. 创建一个名为 &lt; ASE name. appserviceenvironment.net 的 Azure DNS 专用区域 &gt; 。
 1. 在该区域中创建一条指向* ILB IP 地址的 A 记录
 1. 在该区域中创建一条指向 @ ILB IP 地址的 A 记录
 1. 在该区域中创建一条将 *.scm 指向 ILB IP 地址的 A 记录

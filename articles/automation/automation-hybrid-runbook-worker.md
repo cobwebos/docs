@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 07/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 69680fbb442b4e636b72f480ed21f36924362a13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4d29979e28140b728478d405db934cb41783f4b0
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024820"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448082"
 ---
 # <a name="hybrid-runbook-worker-overview"></a>混合 Runbook 辅助角色概述
 
@@ -90,13 +90,13 @@ Azure Automation 混合 Runbook 辅助角色可在 Azure 政府版中使用，�
 
 ## <a name="update-management-on-hybrid-runbook-worker"></a>混合 Runbook 辅助角色上的更新管理
 
-启用 Azure 自动化[更新管理](automation-update-management.md)后，任何连接到 Log Analytics 工作区的计算机都会自动配置为混合 Runbook 辅助角色。 每个辅助角色都可以支持针对更新管理的 Runbook。
+启用 Azure 自动化[更新管理](update-management/update-mgmt-overview.md)后，任何连接到 Log Analytics 工作区的计算机都会自动配置为混合 Runbook 辅助角色。 每个辅助角色都可以支持针对更新管理的 Runbook。
 
 以这种方式配置的计算机未注册到已在自动化帐户中定义的任何混合 Runbook 辅助角色组。 你可以将计算机添加到混合 Runbook 辅助角色组，但必须同时为更新管理和混合 Runbook 辅助角色组成员身份使用同一帐户。 此功能已添加到 7.2.12024.0 版本的混合 Runbook 辅助角色。
 
 ### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>混合 Runbook 辅助角色的更新管理地址
 
-在混合 Runbook 辅助角色所需的标准地址和端口之上，更新管理在 "[网络规划](automation-update-management.md#ports)" 部分中描述了其他网络配置要求。
+在混合 Runbook 辅助角色所需的标准地址和端口之上，更新管理在 "[网络规划](update-management/update-mgmt-overview.md#ports)" 部分中描述了其他网络配置要求。
 
 ## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>混合 Runbook 辅助角色上的 Azure Automation State Configuration
 

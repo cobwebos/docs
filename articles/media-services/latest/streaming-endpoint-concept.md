@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2020
 ms.author: juliako
-ms.openlocfilehash: 030a10e9138af32ee848009a14216c37567d9d2d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6d725ed8a69e2dfed6f5197db731f4adac57e2e2
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091991"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446210"
 ---
 # <a name="streaming-endpoints-origin-in-azure-media-services"></a>Azure 媒体服务中的流式处理终结点（来源）
 
@@ -47,6 +47,8 @@ ms.locfileid: "87091991"
 
 有两种类型的**流式处理终结点**：**标准**（预览版）和**高级**。 类型由用户为流式处理终结点分配的缩放单元（`scaleUnits`）数定义。
 
+最大流式处理单位限制通常为10个。 请[在此处](https://azure.microsoft.com/support/create-ticket/)与我们联系，为你的帐户增加限制。
+
 下表描述了类型：
 
 |类型|缩放单元|说明|
@@ -66,11 +68,11 @@ ms.locfileid: "87091991"
 吞吐量 |使用 CDN 时，高达 600 Mbps，可以提供更高的有效吞吐量。|每个流单元 (SU) 200 Mbps。 使用 CDN 时，可以提供更高的有效吞吐量。
 CDN|Azure CDN、第三方 CDN 或没有 CDN。|Azure CDN、第三方 CDN 或没有 CDN。
 按比例计费| 每天|每日
-动态加密|是|是
-动态打包|是|是
+动态加密|“是”|“是”
+动态打包|是|“是”
 缩放|自动扩展到目标吞吐量。|更多的 SU
-IP 筛选/G20/自定义主机<sup>1</sup>|是|是
-渐进式下载|是|是
+IP 筛选/G20/自定义主机<sup>1</sup>|“是”|“是”
+渐进式下载|“是”|“是”
 建议用途 |建议用于绝大多数流式处理方案。|专业用途。
 
 <sup>1</sup>仅当未在终结点上启用 CDN 时，才直接在流式处理终结点上使用。<br/>

@@ -1,5 +1,5 @@
 ---
-title: 为适用于 FHIR 的 Azure API 配置基于本地角色的访问控制（RBAC）
+title: 为 FHIR 的 Azure API 配置基于角色的本地访问控制（本地 RBAC）
 description: 本文介绍如何将用于 FHIR 的 Azure API 配置为使用外部 Azure AD 租户作为数据平面
 author: hansenms
 ms.service: healthcare-apis
@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
 ms.author: mihansen
-ms.openlocfilehash: 8aa454e272e0dbf4c69941c35a63ee036c16f78f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 11e7d31385140206070e3b415224ccca725d110f
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422566"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446905"
 ---
 # <a name="configure-local-rbac-for-fhir"></a>配置 FHIR 的本地 RBAC 
 

@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 1063f7189de4bdf1aaca4a6d72c979476433c32f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 493c77a8f875018627bfe3167e66addeaf65d089
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095996"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445784"
 ---
 # <a name="frequently-asked-questions---azure-key-vault-certificate-import"></a>常见问题-Azure Key Vault 证书导入
 
@@ -64,6 +64,9 @@ ms.locfileid: "87095996"
 
 ### <a name="if-i-import-a-certificate-from-a-partner-ca-will-the-auto-renew-feature-still-work"></a>如果导入合作伙伴 CA 颁发的证书，自动续订功能是否仍然有效？
 是的，需要确保在证书的颁发策略中指定 autorotation。 而且，所做的更改将反映在下一个周期或证书版本之前。
+
+### <a name="unable-to-see-the-app-service-certificate-imported-to-key-vault"></a>看不到导入到 Key Vault 的应用服务证书？ 
+如果证书已成功导入，请在 "机密" 边栏选项卡中查看。
 
 
 ## <a name="next-steps"></a>后续步骤

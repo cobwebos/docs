@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9bd6a7ff943b5f3750ce8aaeada32010b88272c2
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9c8238e6e0b52a625c76f79fa0dd5a91dd640fb8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745625"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447842"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>将 Azure Monitor 日志更新部署迁移到 Azure 门户
 
@@ -19,7 +19,7 @@ Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/platform
 ## <a name="key-information"></a>重要信息
 
 * 现有部署将继续发挥作用。 在 Azure 中重新创建部署后，可以删除旧部署。
-* 过去在 OMS 中提供的所有现有功能现已在 Azure 中提供。 若要详细了解更新管理，请参阅[更新管理概述](automation-update-management.md)。
+* 过去在 OMS 中提供的所有现有功能现已在 Azure 中提供。 若要详细了解更新管理，请参阅[更新管理概述](update-management/update-mgmt-overview.md)。
 
 ## <a name="access-the-azure-portal"></a>访问 Azure 门户
 
@@ -74,4 +74,4 @@ Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/platform
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解 Azure 自动化中的更新管理，请参阅[更新管理概述](automation-update-management.md)。
+若要详细了解 Azure 自动化中的更新管理，请参阅[更新管理概述](update-management/update-mgmt-overview.md)。

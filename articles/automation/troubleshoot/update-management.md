@@ -5,12 +5,12 @@ services: automation
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 1ec2aed0a2cceebe4685cf75c7007d1ce0785615
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cb598f9a9b8d078c86e9911fa64d872788f47b4b
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293097"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447688"
 ---
 # <a name="troubleshoot-update-management-issues"></a>排查“更新管理”问题
 
@@ -45,9 +45,9 @@ Error details: Failed to enable the Update solution
 
 * 转到[网络配置](../automation-hybrid-runbook-worker.md#network-planning)，了解需要允许哪些地址和端口才能使更新管理功能正常工作。  
 
-* 检查作用域配置问题。 [作用域配置](../automation-scope-configurations-update-management.md)决定为更新管理配置哪些计算机。 如果计算机显示在工作区中，但未显示在更新管理中，则必须将作用域配置设置为以计算机为目标。 若要了解作用域配置，请参阅[在工作区中启用计算机](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)。
+* 检查作用域配置问题。 [作用域配置](../update-management/update-mgmt-scope-configuration.md)决定为更新管理配置哪些计算机。 如果计算机显示在工作区中，但未显示在更新管理中，则必须将作用域配置设置为以计算机为目标。 若要了解作用域配置，请参阅[在工作区中启用计算机](../update-management/update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace)。
 
-* 按照[从本地 Windows 计算机删除混合 Runbook 辅助角色](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker)或[从本地 Linux 计算机删除混合 Runbook 辅助角色](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)中的步骤删除辅助角色配置。 
+* 按照[从本地 Windows 计算机删除混合 Runbook 辅助角色](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker)或[从本地 Linux 计算机删除混合 Runbook 辅助角色](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)中的步骤删除辅助角色配置。
 
 ## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>方案：被取代的更新在“更新管理”中显示为缺失
 
@@ -63,13 +63,13 @@ Error details: Failed to enable the Update solution
 
 如果被取代的更新变得 100% 不适用，则应将该更新的审批状态更改为 `Declined`。 若要更改所有更新的审批状态，请执行以下操作：
 
-1. 在自动化帐户中，选择“更新管理”来查看计算机的状态。 请参阅[查看更新评估](../manage-update-multi.md#view-an-update-assessment)。
+1. 在自动化帐户中，选择“更新管理”来查看计算机的状态。 请参阅[查看更新评估](../update-management/update-mgmt-view-update-assessments.md)。
 
 2. 检查被取代的更新，确保其 100% 不适用。 
 
 3. 请将该更新标记为“已拒绝”，除非对更新有疑问。 
 
-4. 选择“计算机”，然后在“合规性”列中，强制执行重新扫描，以检查合规性 。 请参阅[管理多个计算机的更新](../manage-update-multi.md)。
+4. 选择“计算机”，然后在“合规性”列中，强制执行重新扫描，以检查合规性 。 请参阅[管理 vm 的更新](../update-management/update-mgmt-manage-updates-for-vm.md)。
 
 5. 对于其他被取代的更新，请重复上述步骤。
 
@@ -114,9 +114,9 @@ Error details: Failed to enable the Update solution
 
 4. 如果查询结果中未显示计算机，则表示该计算机最近尚未签入。 可能存在本地配置问题，因此应该[重新安装代理](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)。 
 
-5. 如果查询结果中显示了计算机，请检查作用域配置问题。 [作用域配置](../automation-scope-configurations-update-management.md)决定为更新管理配置哪些计算机。 
+5. 如果查询结果中显示了计算机，请检查作用域配置问题。 [作用域配置](../update-management/update-mgmt-scope-configuration.md)决定为更新管理配置哪些计算机。 
 
-6. 如果工作区中显示了计算机，但更新管理中未显示，则必须将作用域配置配置为面向计算机。 若要了解如何执行此操作，请参阅[在工作区中启用计算机](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)。
+6. 如果工作区中显示了计算机，但更新管理中未显示，则必须将作用域配置配置为面向计算机。 若要了解如何执行此操作，请参阅[在工作区中启用计算机](../update-management/update-mgmt-enable-automation-account.md#enable-machines-in-the-workspace)。
 
 7. 在工作区中运行此查询。
 
@@ -192,13 +192,13 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 #### <a name="machines-not-available-or-not-tagged-correctly-when-schedule-executed"></a>执行计划时，计算机不可用或标记不当
 
-如果为自动化资源提供程序配置了订阅，但在运行更新计划时，指定的[动态组](../automation-update-management-groups.md)缺失了某些计算机，请执行以下操作。
+如果为自动化资源提供程序配置了订阅，但在运行更新计划时，指定的[动态组](../update-management/update-mgmt-groups.md)缺失了某些计算机，请执行以下操作。
 
 1. 在 Azure 门户中，打开自动化帐户，然后选择“更新管理”。
 
-2. 检查[更新管理历史记录](../manage-update-multi.md#view-results-of-an-update-deployment)，以确定运行更新部署的确切时间。 
+2. 检查[更新管理历史记录](../update-management/update-mgmt-deploy-updates.md#view-results-of-a-completed-update-deployment)，以确定运行更新部署的确切时间。
 
-3. 对于可能是更新管理所缺失的计算机，请使用 Azure Resource Graph (ARG) [查找计算机更改](../../governance/resource-graph/how-to/get-resource-changes.md#find-detected-change-events-and-view-change-details)。 
+3. 对于可能是更新管理所缺失的计算机，请使用 Azure Resource Graph (ARG) [查找计算机更改](../../governance/resource-graph/how-to/get-resource-changes.md#find-detected-change-events-and-view-change-details)。
 
 4. 搜索运行更新部署之前的某个时间段（不要太短，例如一天）内的更改。
 
@@ -212,10 +212,10 @@ Error details: Unable to register Automation Resource Provider for subscriptions
 
 ### <a name="issue"></a>问题
 
-Azure 门户预览列表中未显示动态组的所选作用域的 VM。 此列表包含 ARG 查询针对所选作用域检索的所有计算机。 作用域筛选为安装了混合 Runbook 辅助角色的计算机以及你具有访问权限的计算机。 
+Azure 门户预览列表中未显示动态组的所选作用域的 VM。 此列表包含 ARG 查询针对所选作用域检索的所有计算机。 作用域筛选为安装了混合 Runbook 辅助角色的计算机以及你具有访问权限的计算机。
 
 ### <a name="cause"></a>原因
- 
+
 可能导致此问题的原因包括：
 
 * 对所选作用域不具有正确的访问权限。
@@ -232,7 +232,7 @@ Azure 门户仅显示你在给定作用域内具有写入访问权限的计算�
 
 按照以下步骤操作，查看查询是否正常工作。
 
-1. 运行 ARG 查询，格式如下方 Azure 门户的 Resource Graph 资源管理器边栏选项卡中所示。 此查询模拟在更新管理中创建动态组时所选的筛选器。 请参阅[将动态组与更新管理配合使用](../automation-update-management-groups.md)。 
+1. 运行 ARG 查询，格式如下方 Azure 门户的 Resource Graph 资源管理器边栏选项卡中所示。 此查询模拟在更新管理中创建动态组时所选的筛选器。 请参阅[将动态组与更新管理配合使用](../update-management/update-mgmt-groups.md)。
 
     ```kusto
     where (subscriptionId in~ ("<subscriptionId1>", "<subscriptionId2>") and type =~ "microsoft.compute/virtualmachines" and properties.storageProfile.osDisk.osType == "<Windows/Linux>" and resourceGroup in~ ("<resourceGroupName1>","<resourceGroupName2>") and location in~ ("<location1>","<location2>") )
@@ -250,7 +250,7 @@ Azure 门户仅显示你在给定作用域内具有写入访问权限的计算�
     | where  (tags[tolower("ms-resource-usage")] =~ "azure-cloud-shell" and tags[tolower("temp")] =~ "temp")
     | project id, location, name, tags
     ```
- 
+
 2. 查看查询结果中是否列出了你要查找的计算机。 
 
 3. 如果未列出所需计算机，动态组中所选的筛选器可能存在问题。 根据需要调整组配置。
@@ -305,7 +305,7 @@ Update
 
 #### <a name="communication-with-automation-account-blocked"></a>与自动化帐户的通信被阻止
 
-转到[网络规划](../automation-update-management.md#ports)，了解必须允许哪些地址和端口才能使更新管理正常工作。
+转到[网络规划](../update-management/update-mgmt-overview.md#ports)，了解必须允许哪些地址和端口才能使更新管理正常工作。
 
 #### <a name="duplicate-computer-name"></a>重复的计算机名称
 
@@ -391,11 +391,11 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 
 ### <a name="resolution"></a>解决方法
 
-如果适用，请为更新部署使用[动态组](../automation-update-management-groups.md)。 此外，可以执行以下步骤。
+如果适用，请为更新部署使用[动态组](../update-management/update-mgmt-groups.md)。 此外，可以执行以下步骤。
 
 1. 确认计算机仍然存在并且可以访问。 
 2. 如果计算机不存在，请编辑部署并删除该计算机。
-3. 请参阅[网络规划](../automation-update-management.md#ports)部分，以获取更新管理所需的端口和地址的列表，然后确认计算机符合这些要求。
+3. 请参阅[网络规划](../update-management/update-mgmt-overview.md#ports)部分，以获取更新管理所需的端口和地址的列表，然后确认计算机符合这些要求。
 4. 使用混合 Runbook 辅助角色代理故障排除程序验证与混合 Runbook 辅助角色的连接。 若要了解有关故障排除程序的详细信息，请参阅[排查更新代理问题](update-agent-issues.md)。
 5. 在 Log Analytics 中运行以下查询，以在环境中查找更改了源计算机 ID 的计算机。 查找 `Computer` 值相同但 `SourceComputerId` 值不同的计算机。
 
@@ -500,7 +500,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 编辑任何失败的计划更新部署，并增加维护时段。
 
-有关维护时段的详细信息，请参阅[安装更新](../automation-tutorial-update-management.md#schedule-an-update-deployment)。
+有关维护时段的详细信息，请参阅[安装更新](../update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment)。
 
 ## <a name="scenario-machine-shows-as-not-assessed-and-shows-an-hresult-exception"></a><a name="hresult"></a>场景：计算机显示“未评估”，并显示 HRESULT 异常
 
@@ -531,7 +531,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 |异常  |解决方法或操作  |
 |---------|---------|
 |`Exception from HRESULT: 0x……C`     | 搜索 [Windows 更新错误代码列表](https://support.microsoft.com/help/938205/windows-update-error-code-list)中的相关错误代码，以查找有关异常原因的其他详细信息。        |
-|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | 这些表示是网络连接问题。 请确保你的计算机具有与更新管理的网络连接。 请参阅[网络规划](../automation-update-management.md#ports)部分，了解所需的端口和地址的列表。        |
+|`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | 这些表示是网络连接问题。 请确保你的计算机具有与更新管理的网络连接。 请参阅[网络规划](../update-management/update-mgmt-overview.md#ports)部分，了解所需的端口和地址的列表。        |
 |`0x8024001E`| 由于服务或系统正关闭，未能完成更新操作。|
 |`0x8024002E`| 已禁用 Windows 更新服务。|
 |`0x8024402C`     | 如果使用 WSUS 服务器，请确保注册表项 `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` 下 `WUServer` 和 `WUStatusServer` 的注册表值指定的是正确的 WSUS 服务器。        |
@@ -565,9 +565,9 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 ### <a name="resolution"></a>解决方法
 
-如果更新运行成功启动后又失败，请[检查运行中受影响的计算机的作业输出](../manage-update-multi.md#view-results-of-an-update-deployment)。 可以从计算机查找特定的错误消息，可以对这些错误消息进行调查并对其采取操作。 更新管理要求包管理器正常运行才能成功进行更新部署。
+如果更新运行成功启动后又失败，请[检查运行中受影响的计算机的作业输出](../update-management/update-mgmt-deploy-updates.md#view-results-of-a-completed-update-deployment)。 可以从计算机查找特定的错误消息，可以对这些错误消息进行调查并对其采取操作。 更新管理要求包管理器正常运行才能成功进行更新部署。
 
-如果看到特定修补程序、包或更新后作业随即失败，则可以尝试在下一次更新部署中[排除](../automation-tutorial-update-management.md#schedule-an-update-deployment)这些项。 若要从 Windows 更新收集日志信息，请参阅 [Windows 更新日志文件](/windows/deployment/update/windows-update-logs)。
+如果看到特定修补程序、包或更新后作业随即失败，则可以尝试在下一次更新部署中[排除](../update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment)这些项。 若要从 Windows 更新收集日志信息，请参阅 [Windows 更新日志文件](/windows/deployment/update/windows-update-logs)。
 
 如果无法解决某个修补问题，请在下次更新部署启动之前创建 /var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log 文件的副本，并保留它以用于故障排除。
 
@@ -577,7 +577,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 请尝试直接在计算机上运行更新。 如果计算机无法应用更新，请查阅[故障排除指南中的潜在错误列表](#hresult)。
 
-如果更新在本地运行，请尝试按照[从更新管理中删除 VM](../automation-remove-vms-from-update-management.md) 中的指南在计算机上删除并重新安装代理。
+如果更新在本地运行，请尝试按照[从更新管理中删除 VM](../update-management/update-mgmt-remove-vms.md) 中的指南在计算机上删除并重新安装代理。
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>我知道有可用更新，但更新并未在计算机上显示为可用
 
@@ -597,7 +597,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 ### <a name="installing-updates-by-classification-on-linux"></a>按 Linux 上的分类安装更新
 
-按分类（“关键更新和安全更新”）将更新部署到 Linux 有重要的注意事项，尤其是对 CentOS 来说。 这些[限制记录在“更新管理”概览页上](../automation-update-management.md#linux)。
+按分类（“关键更新和安全更新”）将更新部署到 Linux 有重要的注意事项，尤其是对 CentOS 来说。 这些[限制记录在“更新管理”概览页上](../update-management/update-mgmt-overview.md#linux)。
 
 ### <a name="kb2267602-is-consistently-missing"></a>KB2267602 始终缺失
 

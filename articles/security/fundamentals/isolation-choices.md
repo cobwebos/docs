@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 0bcc67e80861df2827237298444175c3abdb6602
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3195c27351ba6110c784ddd8a10ea9ddfb0d903a
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084036"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447355"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公有云中的隔离
 
@@ -76,7 +76,7 @@ Azure RBAC 有三种适用于所有资源类型的基本角色：
 
 - **读取器**可以查看现有 Azure 资源。
 
-![Azure 基于角色的访问控制](./media/isolation-choices/azure-isolation-fig3.png)
+![Azure 基于角色的访问控制（Azure RBAC）](./media/isolation-choices/azure-isolation-fig3.png)
 
 Azure 中的其他 RBAC 角色允许对特定的 Azure 资源进行管理。 例如，虚拟机参与者角色允许用户创建和管理虚拟机。 但不会向用户授予对虚拟机连接的 Azure 虚拟网络或子网的访问权限。
 
@@ -204,7 +204,7 @@ Azure 虚拟机监控程序、根 OS/FA 和客户 VM/GA 的集合包含一个计
 
 可通过网络机制防止未经授权的用户访问 IP 存储数据，该机制用于分配到 IP 存储的专用流量或专用流量隧道。
 
-### <a name="encryption"></a>Encryption
+### <a name="encryption"></a>加密
 
 Azure 提供了以下加密类型来保护数据：
 

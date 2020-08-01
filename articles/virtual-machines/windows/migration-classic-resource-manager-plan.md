@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: b1e550fde0d43b4d2c7bd1a64856edeac607cab3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14beaf4fc0f207abe652a9ed62c974f7ab4b8e79
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999082"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449098"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-windows"></a>规划将 IaaS 资源从经典部署模型迁移到 Windows 中的 Azure 资源管理器
 
@@ -197,7 +197,7 @@ ms.locfileid: "86999082"
 
 对现在想要在 Azure Resource Manager 中启用哪些服务具有目的性。  许多客户找到以下关于其 Azure 环境令人关注的事实：
 
-- [基于角色的访问控制](../../role-based-access-control/overview.md)。
+- [Azure 基于角色的访问控制（AZURE RBAC）](../../role-based-access-control/overview.md)。
 - [使用 Azure Resource Manager 模板以更轻松、更可控的方式完成部署](../../azure-resource-manager/templates/overview.md)。
 - [标记](../../azure-resource-manager/management/tag-resources.md)。
 - [活动控制](../../azure-resource-manager/management/view-activity-logs.md)

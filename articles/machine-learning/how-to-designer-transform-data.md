@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 3858a5a3b39c7ecaaad17a6bb6c313caf7bbc0ae
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 05a21ce10db2822c963f1b375842e9a7233e0816
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326981"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87457815"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>在 Azure 机器学习设计器（预览版）中转换数据
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -112,7 +112,7 @@ ms.locfileid: "87326981"
     文件格式：csv
 
     > [!NOTE]
-    > 本文假设你有权访问注册到当前 Azure 机器学习工作区的数据存储。 有关如何设置数据存储的说明，请参阅[连接到 Azure 存储服务](how-to-access-data.md#azure-machine-learning-studio)。
+    > 本文假设你有权访问注册到当前 Azure 机器学习工作区的数据存储。 有关如何设置数据存储的说明，请参阅[连接到 Azure 存储服务](how-to-access-data.md#studio)。
 
     如果没有数据存储，则可以立即创建一个。 例如，本文会将数据集保存到与工作区关联的默认 blob 存储帐户。 它会将数据集保存到名为 `data` 的新文件夹中的 `azureml` 容器。
 

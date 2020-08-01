@@ -4,12 +4,12 @@ description: 使用基于角色的访问控制来管理对恢复服务保管库�
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 89e5cf7c6b46d63b10bd358fc078f8f87db689c8
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 4c5a0a43efe7bda5fdc4b60d13b97f61565809bd
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371696"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445308"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>使用基于角色的访问控制管理 Azure 备份恢复点
 
@@ -77,7 +77,7 @@ Azure 备份提供三个用于控制备份管理操作的内置角色。 了解[
 
 ## <a name="next-steps"></a>后续步骤
 
-* [基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)：Azure 门户中的 RBAC 入门。
+* [Azure 基于角色的访问控制（AZURE RBAC）](../role-based-access-control/role-assignments-portal.md)： Azure 门户中的 RBAC 入门。
 * 了解如何通过以下方式管理访问权限：
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)

@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 2e787bb494c1e919a235b762b4d8c5250c8cda61
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6a49497cbe71dddb8ab6e76be9b3679dd62b0cee
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321609"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449039"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问权限
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -369,7 +369,7 @@ az provider operation show –n Microsoft.MachineLearningServices
 
 ### <a name="q-what-are-some-common-gotchas-when-using-azure-rbac"></a>问： 使用 Azure RBAC 时，有哪些常见问题？
 
-使用 Azure 基于角色的访问控制时，请注意以下几点：
+使用 Azure 基于角色的访问控制（Azure RBAC）时，请注意以下几点：
 
 - 当你在 Azure 中创建资源时，如工作区，你不会直接成为工作区的所有者。 你的角色继承自你在该订阅中获得授权的最高作用域角色。 例如，如果你是网络管理员，并且有权创建机器学习工作区，则会为该工作区分配网络管理员角色，而不是所有者角色。
 - 如果对同一 AAD 用户有两个角色分配，并且操作/NotActions 发生冲突，则在 NotActions 中列出的操作可能不会生效（如果它们也作为另一个角色中的操作列出）。 若要了解有关 Azure 如何分析角色分配的详细信息，请参阅[AZURE RBAC 如何确定用户是否有权访问资源](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource)

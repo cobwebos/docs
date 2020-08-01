@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: a9786c1f596a9f59e63886fa503bddac58ee7a8e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c6aea3be5782c967c5816a1e40dc5443306671b3
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325332"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445285"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor 代理概述
 
@@ -62,7 +62,7 @@ ms.locfileid: "87325332"
 * 将数据发送到 Log Analytics 工作区，以利用 [Azure Monitor 日志](data-platform-logs.md#what-can-you-do-with-azure-monitor-logs)支持的功能，例如[日志查询](../log-query/log-query-overview.md)。
 * 使用[用于 VM 的 Azure Monitor](../insights/vminsights-overview.md)允许你大规模监视虚拟机，并监视其进程和其他资源和外部进程的依赖项。  
 * 使用[Azure 安全中心](../../security-center/security-center-intro.md)或[azure Sentinel](../../sentinel/overview.md)管理虚拟机的安全性。
-* 使用[Azure 自动化更新管理](../../automation/automation-update-management.md)、 [Azure 自动化状态配置](../../automation/automation-dsc-overview.md)或[azure 自动化更改跟踪和清点](../../automation/change-tracking.md)来提供 Azure vm 的全面管理
+* 使用[Azure 自动化更新管理](../../automation/update-management/update-mgmt-overview.md)、 [Azure 自动化状态配置](../../automation/automation-dsc-overview.md)或[azure 自动化更改跟踪和清点](../../automation/change-tracking.md)来提供 Azure vm 的全面管理
 * 使用不同的[解决方案](../monitor-reference.md#insights-and-core-solutions)来监视特定服务或应用程序。
 
 Log Analytics 代理的限制包括：

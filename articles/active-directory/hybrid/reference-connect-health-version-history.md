@@ -16,12 +16,12 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31388f27eddcef2c75d4ad4d2030655b35f6aa1c
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76897031"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446963"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health：版本发布历史记录
 Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特性和功能。 本文列出已发布的版本和功能。  
@@ -125,7 +125,7 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
   2. 修复了 Bug，进行了一般改进
 
 
-## <a name="march-2018"></a>2018 年 3 月
+## <a name="march-2018"></a>2018 年 3月
 **新的预览功能：**
 * 适用于 AD FS 的 Azure Active Directory Connect Health - 有风险的 IP 报表和警报。
 
@@ -217,7 +217,7 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 ## <a name="november-2015"></a>2015 年 11 月
 **新功能：**
 
-* 支持[基于角色的访问控制](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
+* 支持[azure 基于角色的访问控制（AZURE RBAC）](how-to-connect-health-operations.md#manage-access-with-role-based-access-control)
 
 **新的预览功能：**
 
@@ -253,4 +253,3 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅[在云中监视本地标识基础结构和同步服务](whatis-hybrid-identity-health.md)。
-

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 09ecaf327b2030a77f8a91d99f291cebb0281235
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8dd108e8c2877c7fe459819bf01b0e5b206cd9c0
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781593"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445566"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>规划云 HR 应用程序以 Azure Active Directory 用户预配
 
@@ -108,7 +108,7 @@ HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
 
 ![工作流关系图](media/plan-cloud-hr-provision/plan-cloudhr-provisioning-img1.png)
 
-#### <a name="description-of-workflow"></a>工作流说明
+#### <a name="description-of-workflow"></a>工作流的说明
 
 图中指示了以下关键步骤：  
 
@@ -120,11 +120,11 @@ HR 驱动的 IT 预配的这一功能提供以下重要的业务优势：
 6. **Active Directory**更新与 Azure AD 同步。
 7. **Azure AD 预配服务**，将电子邮件属性和用户名从 Azure AD 部署到云 HR 应用租户。
 
-## <a name="plan-the-deployment-project"></a>计划部署项目
+## <a name="plan-the-deployment-project"></a>规划部署项目
 
-在环境中确定此部署的策略时，请考虑你的组织需求。
+在环境中确定此部署的策略时，请考虑组织的需求。
 
-### <a name="engage-the-right-stakeholders"></a>吸引适当的利益干系人
+### <a name="engage-the-right-stakeholders"></a>让合适的利益干系人参与
 
 当技术项目失败时，他们通常会由于对影响、结果和责任的不匹配期望。 若要避免这些问题，请[确保您参与到了正确的利益干系人](https://aka.ms/deploymentplans)。 此外，请确保项目中的利益干系人角色非常熟悉。 记录利益干系人及其项目输入和责任。
 
@@ -257,7 +257,7 @@ Azure AD Connect 预配代理部署拓扑取决于你计划集成的云 HR 应�
 
 启动 Joiners-离开者进程时，请收集以下要求。
 
-| 过程 | 要求 |
+| 进程 | 要求 |
 | - | - |
 | **Joiners** | 从标识生命周期角度看，如何处理 rehires？ Rehires 是否保留其旧的员工 Id？ |
 | | 您是否会提前处理日后招聘的员工并提前为他们创建 Active Directory 帐户？ 这些帐户是否创建为启用或禁用状态？ |
@@ -276,7 +276,7 @@ Azure AD Connect 预配代理部署拓扑取决于你计划集成的云 HR 应�
 
 启动 Joiners-离开者进程时，请收集以下要求。
 
-| 过程 | 要求 |
+| 进程 | 要求 |
 | - | - |
 | **Joiners** | Active Directory 帐户创建过程是手动、自动还是部分自动？ |
 | | 你是否打算将自定义属性从 cloud HR 应用传播到 Active Directory？ |
@@ -398,13 +398,12 @@ Windows server 上安装的 Azure AD Connect 预配代理在 Windows 事件日�
 
 Azure AD 预配服务不会生成报表、执行分析，也不会在30天内提供见解，因为服务不会存储、处理或保留超过30天的任何数据。
 
-### <a name="troubleshoot"></a>疑难解答
+### <a name="troubleshoot"></a>故障排除
 
 若要解决在预配期间可能会打开的任何问题，请参阅以下文章：
 
 - [为 Azure AD 库应用程序配置用户预配时遇到的问题](application-provisioning-config-problem.md)
 - [将属性从本地 Active Directory 同步到 Azure AD 以便预配到应用程序](user-provisioning-sync-attributes-for-mapping.md)
-- [用户预配到 Azure AD 库应用程序需要数小时或更长时间](application-provisioning-when-will-provisioning-finish.md)
 - [在为 Azure Active Directory 库应用程序配置用户预配时保存管理员凭据时出现问题](application-provisioning-config-problem-storage-limit.md)
 - [没有为任何用户预配 Azure AD 库应用程序](application-provisioning-config-problem-no-users-provisioned.md)
 - [预配到 Azure AD 库应用程序的用户组错误](application-provisioning-config-problem-wrong-users-provisioned.md)

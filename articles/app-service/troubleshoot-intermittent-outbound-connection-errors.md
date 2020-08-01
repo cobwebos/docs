@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 07/24/2020
 ms.author: ramakoni
 ms.custom: security-recommendations
-ms.openlocfilehash: 4d337c9cff4b0d7dbfb18a7ba0cf213265286017
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5e1f2108c5607917c77330f362952f960e57e03a
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289145"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447913"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>排查 Azure 应用服务中的间歇性出站连接错误
 
@@ -38,7 +38,7 @@ ms.locfileid: "87289145"
 
 ## <a name="avoiding-the-problem"></a>避免问题
 
-如果目标是支持服务终结点的 Azure 服务，则可以通过使用[VNet 集成](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)和服务终结点来避免 SNAT 端口耗尽问题。 使用 VNet 集成并将服务终结点置于集成子网中时，指向这些服务的应用出站流量不会有出站 SNAT 端口限制。
+如果目标是支持服务终结点的 Azure 服务，则可以通过使用[区域 VNet 集成](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)和服务终结点或专用终结点来避免 SNAT 端口耗尽问题。 使用区域 VNet 集成并将服务终结点置于集成子网中时，指向这些服务的应用出站流量不会有出站 SNAT 端口限制。 同样，如果使用区域 VNet 集成和专用终结点，则不会向该目标发送任何出站 SNAT 端口问题。 
 
 避免 SNAT 端口问题意味着避免在同一主机和端口上重复创建新连接。
 
@@ -124,13 +124,13 @@ HTTP 连接池
 
 避免出站 TCP 限制更易于解决，因为限制是由辅助角色的大小设置的。 可以查看[沙盒跨 VM 数字限制-TCP 连接](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)的限制
 
-|限制名称|说明|小型（A1）|中（A2）|大（A3）|隔离层（ASE）|
+|限制名称|描述|小型（A1）|中（A2）|大（A3）|隔离层（ASE）|
 |---|---|---|---|---|---|
 |连接|跨整个 VM 的连接数|1920|3968|8064|16,000|
 
 若要避免出站 TCP 限制，可以增加工作线程的大小，也可以水平横向扩展。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 了解这两种类型的出站连接限制以及应用的作用，应使故障排除变得更容易。 如果你知道你的应用程序对同一存储帐户进行多个调用，则可能会怀疑 SNAT 限制。 如果你的应用程序通过 internet 创建对终结点的大量调用，则你可能会认为你达到了 VM 限制。
 
@@ -156,7 +156,7 @@ TCP 连接和 SNAT 端口不是直接相关的。 TCP 连接使用检测程序�
 * TCP 连接限制发生在辅助实例级别。 对于 SNAT 端口限制，Azure 网络出站负载平衡不使用 TCP 连接指标。
 * [沙盒跨 VM 数字限制-Tcp 连接](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits)中描述了 tcp 连接限制
 
-|限制名称|说明|小型（A1）|中（A2）|大（A3）|隔离层（ASE）|
+|限制名称|描述|小型（A1）|中（A2）|大（A3）|隔离层（ASE）|
 |---|---|---|---|---|---|
 |连接|跨整个 VM 的连接数|1920|3968|8064|16,000|
 

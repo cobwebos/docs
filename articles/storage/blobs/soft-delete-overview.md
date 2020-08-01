@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f8e84e845910b8f84a9b3f84ad414f2ecdd250a5
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 4f75b9af6e9b2f92818fd8ec16d59db2f1bd0075
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223782"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446875"
 ---
 # <a name="soft-delete-for-blob-storage"></a>适用于 Blob 存储的软删除
 
@@ -28,7 +28,7 @@ ms.locfileid: "86223782"
 
 在存储帐户上启用软删除后，可以在指定的数据保持期内恢复已删除的对象。 此保护可扩展到因覆盖而擦除的所有 blob 数据（块 blob、追加 blob 和页 blob）。
 
-如果在启用软删除的情况下删除了现有 blob 或快照中的数据，但未启用 blob 版本控制 (预览) ，则会生成软删除的快照以保存覆盖的数据的状态。 在指定的保持期到期后，将永久删除该对象。
+如果在启用软删除的情况下删除了现有 blob 或快照中的数据，但未启用 blob 版本控制（预览），则会生成软删除的快照以保存覆盖的数据的状态。 在指定的保持期到期后，将永久删除该对象。
 
 如果在存储帐户上启用了 blob 版本控制和软删除，则删除 blob 会创建新版本，而不是软删除快照。 不会软删除新版本，并且在软删除保留期到期时不会删除。 可以通过调用 "[撤消删除 blob](/rest/api/storageservices/undelete-blob) " 操作在保留期内还原 blob 的软删除版本。 然后，可以通过调用 "[复制 blob](/rest/api/storageservices/copy-blob) " 操作，从它的某个版本中还原 blob。 有关将 blob 版本控制和软删除一起使用的详细信息，请参阅[blob 版本控制和软删除](versioning-overview.md#blob-versioning-and-soft-delete)。
 
@@ -93,7 +93,7 @@ ms.locfileid: "86223782"
 | [放置块](/rest/api/storageservices/put-block) | 块 Blob | 创建新块，作为块 blob 的一部分进行提交。 | 如果用于将块提交到活动 blob 中，则不发生任何更改。 如果用于将块提交到软删除的 blob 中，将创建新的 blob 并自动生成快照，以捕获软删除 blob 的状态。 |
 | [放置块列表](/rest/api/storageservices/put-block-list) | 块 Blob | 通过指定构成块 blob 的块 ID 集来提交 blob。 | 如果用于替换现有 blob，将自动生成调用之前的 blob 状态的快照。 对于以前软删除的 blob，当且仅当其为块 blob 时，才会生成快照。 如果由不同类型的 blob 替换，所有现有软删除数据都将永久过期。 |
 | [放置页](/rest/api/storageservices/put-page) | 页 Blob | 将一系列页写入页 blob。 | 无更改。 通过该操作覆盖或清除的页 blob 数据不会保存，且不可恢复。 |
-| [追加块](/rest/api/storageservices/append-block) | 追加 Blob | 将数据块写入追加 Blob 的末尾。 | 无更改。 |
+| [追加块](/rest/api/storageservices/append-block) | 追加 Blob | 将数据块写入追加 blob 的末尾 | 无更改。 |
 | [设置 Blob 属性](/rest/api/storageservices/set-blob-properties) | 块、追加和页 blob | 为对 blob 定义的系统属性设置值。 | 无更改。 被覆盖的 blob 属性不可恢复。 |
 | [设置 Blob 元数据](/rest/api/storageservices/set-blob-metadata) | 块、追加和页 blob | 将特定 blob 的用户定义元数据设置为一个或多个名称/值对。 | 无更改。 被覆盖的 blob 元数据不可恢复。 |
 

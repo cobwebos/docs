@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
-ms.openlocfilehash: 1f76966b0ed82ae3d4b32e54627a28e99b0dba2f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c59e8c9e4c756a44d7507fca328aa691ecb184da
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505714"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447309"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor 监视哪些内容？
 本文介绍了由 Azure Monitor 监视的不同应用程序和服务。 
@@ -141,33 +141,33 @@ ms.locfileid: "86505714"
 |专用链接 | 否 | 否 | 否 |  |
 |项目假脱机通信平台 | 否 | 否 | 否 |  |
 |Red Hat OpenShift | 否 | 否 | 否 |  |
-|Redis 缓存 | 是 | 是 | [是](insights/redis-cache-insights-overview.md) | |
+|Redis 缓存 | “是” | “是” | [是](insights/redis-cache-insights-overview.md) | |
 |Resource Graph | 否 | 否 | 否 |  |
 |资源管理器 | 否 | 否 | 否 |  |
 |零售搜索 - 通过必应 | 否 | 否 | 否 |  |
-|搜索 | 是 | 是 | 否 |  |
+|搜索 | “是” | “是” | 否 |  |
 |服务总线 | 是 | 是 | 否 |  |
-|Service Fabric | No | 是 | 否 | 监视来宾操作系统和工作流时所需的代理。  |
+|Service Fabric | 否 | 是 | 否 | 监视来宾操作系统和工作流时所需的代理。  |
 |注册门户 | 否 | 否 | 否 |  |
-|Site Recovery | 否 | 是 | 否 |  |
+|Site Recovery | 否 | “是” | 否 |  |
 |Spring Cloud 服务 | 否 | 否 | 否 |  |
-|SQL 数据仓库 | 是 | 是 | 否 |  |
+|SQL 数据仓库 | “是” | “是” | 否 |  |
 |SQL 数据库 | 是 | 是 | 否 |  |
 |SQL Server Stretch Database | 是 | 是 | 否 |  |
 |堆栈 | 否 | 否 | 否 |  |
-|存储 | 是 | 否 | [是](insights/storage-insights-overview.md) |  |
+|存储 | “是” | 否 | [是](insights/storage-insights-overview.md) |  |
 |存储缓存 | 否 | 否 | 否 |  |
 |存储同步服务 | 否 | 否 | 否 |  |
-|流分析 | 是 | 是 | 否 |  |
+|流分析 | “是” | “是” | 否 |  |
 |时序见解 | 是 | 是 | 否 |  |
 |TINA | 否 | 否 | 否 |  |
-|流量管理器 | 是 | 是 | 否 |  |
+|流量管理器 | “是” | “是” | 否 |  |
 |通用打印 | 否 | 否 | 否 |  |
 |虚拟机规模集 | 否 | 是 | [是](insights/vminsights-overview.md) | 监视来宾操作系统和工作流时所需的代理。 |
-|虚拟机 | 是 | 是 | [是](insights/vminsights-overview.md) | 监视来宾操作系统和工作流时所需的代理。 |
-|虚拟网络 | 是 | 是 | [是](insights/network-insights-overview.md) |  |
-|虚拟网络 - NSG 流日志 | No | 是 | 否 |  |
-|VPN 网关 | 是 | 是 | 否 |  |
+|虚拟机 | 是 | “是” | [是](insights/vminsights-overview.md) | 监视来宾操作系统和工作流时所需的代理。 |
+|虚拟网络 | 是 | “是” | [是](insights/network-insights-overview.md) |  |
+|虚拟网络 - NSG 流日志 | 否 | 是 | 否 |  |
+|VPN 网关 | “是” | 是 | 否 |  |
 |Windows 虚拟桌面 | 否 | 否 | 否 |  |
 
 
@@ -176,7 +176,7 @@ ms.locfileid: "86505714"
 
 | 产品/服务 | 说明 |
 |:---|:---|
-| [Azure 自动化](../automation/index.yml) | 管理操作系统更新并跟踪 Windows 和 Linux 计算机上的更改。 请参阅[更改跟踪](../automation/change-tracking.md)和[更新管理](../automation/automation-update-management.md)。 |
+| [Azure 自动化](../automation/index.yml) | 管理操作系统更新并跟踪 Windows 和 Linux 计算机上的更改。 请参阅[更改跟踪](../automation/change-tracking.md)和[更新管理](../automation/update-management/update-mgmt-overview.md)。 |
 | [Azure 信息保护](/azure/information-protection/) | 对文档和电子邮件进行分类和选择性保护。 请参阅 [Azure 信息保护的中央报告](/azure/information-protection/reports-aip#configure-a-log-analytics-workspace-for-the-reports)。 |
 | [Azure 安全中心](../security-center/index.yml) | 收集和分析安全事件并执行威胁分析。 请参阅 [Azure 安全中心中的数据收集](../security-center/security-center-enable-data-collection.md) |
 | [Azure Sentinel](../sentinel/index.yml) | 连接到不同的源，包括 Office 365 和 Amazon Web Services 云轨迹。 请参阅[连接数据源](../sentinel/connect-data-sources.md)。 |

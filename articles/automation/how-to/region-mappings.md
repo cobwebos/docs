@@ -10,12 +10,12 @@ ms.date: 06/12/2020
 ms.topic: conceptual
 manager: carmonm
 ms.custom: references_regions
-ms.openlocfilehash: a8b5f14147ee748f5d32d794f51d5437eeddfb51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e5cad25c80661f9e707f545929e6ffcb00a1e42
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261182"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447856"
 ---
 # <a name="supported-regions-for-linked-log-analytics-workspace"></a>链接的 Log Analytics 工作区支持的区域
 
@@ -78,11 +78,11 @@ ms.locfileid: "85261182"
 
 或者，也可在工作区内取消工作区与自动化帐户的链接。
 
-1. 在工作区中，选择“相关资源”下的“自动化帐户” 。 
+1. 在工作区中，选择“相关资源”下的“自动化帐户” 。
 2. 在“自动化帐户”页上，选择“取消链接帐户”。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 在[更新管理概述](../automation-update-management.md)中详细了解更新管理。
+* 在[更新管理概述](../update-management/update-mgmt-overview.md)中详细了解更新管理。
 * 在[更改跟踪和库存概述](../change-tracking.md)中了解更改跟踪和库存。
 * 在[在空闲时间启动/停止 VM 概述](../automation-solution-vm-management.md)中了解在空闲时间启动/停止 VM。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: da776c679d5ded6f53cd0d224828fffee058d37d
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 62c3dad980b65c3e8cfc64c98ba173f667e0b5fe
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85920620"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447062"
 ---
 # <a name="high-availability-ports-overview"></a>高可用性端口概述
 
@@ -40,8 +40,8 @@ HA 端口负载均衡规则可帮助你实现关键方案，例如虚拟网络�
 
 对于 NVA HA 方案，HA 端口具有以下优点：
 - 可根据实例运行状况探测快速故障转移到正常的实例
-- 通过横向扩展到 n 个主动实例来提高性能**
-- 提供 n 个主动和主动-被动方案**
+- 通过横向扩展到 n 个主动实例来提高性能
+- 提供 n 个主动和主动-被动方案
 - 无需使用复杂解决方案，例如，使用 Apache ZooKeeper 节点来监视设备
 
 下图显示了中心辐射型虚拟网络部署。 在离开受信任空间之前，辐射使用强制隧道将其流量发送到中心虚拟网络并通过 NVA。 NVA 在采用 HA 端口配置的内部标准负载均衡器后面。 可以处理并相应地转发所有流量。 当如下图所示进行了配置时，HA 端口负载均衡规则还会另外针对入口和出口流量提供流对称。
@@ -65,8 +65,8 @@ HA 端口功能在所有全局 Azure 区域中均可用。
 ### <a name="a-single-non-floating-ip-non-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>内部标准负载均衡器上的一个非浮动 IP（非直接服务器返回）HA 端口配置
 
 此配置是一个基本 HA 端口配置。 执行以下操作可为单个前端 IP 地址配置 HA 端口负载均衡规则：
-1. 配置标准负载均衡器时，请在负载均衡器规则配置中选中“HA 端口”复选框****。
-2. 对于“浮动 IP”，请选择“禁用”**** ****。
+1. 配置标准负载均衡器时，请在负载均衡器规则配置中选中“HA 端口”复选框。
+2. 对于“浮动 IP”，请选择“禁用” 。
 
 进行此配置后，无法为当前负载均衡器资源配置任何其他的负载均衡规则。 并且无法为给定的一组后端实例配置其他的内部负载均衡器资源。
 
@@ -74,7 +74,7 @@ HA 端口功能在所有全局 Azure 区域中均可用。
 
 ### <a name="a-single-floating-ip-direct-server-return-ha-ports-configuration-on-an-internal-standard-load-balancer"></a>内部标准负载均衡器上的一个浮动 IP（直接服务器返回）HA 端口配置
 
-同样，可以将负载均衡器配置为将负载均衡规则与具有单个前端的“HA 端口”配合使用，并将“浮动 IP”设置为“启用”**** **** ****。 
+同样，可以将负载均衡器配置为将负载均衡规则与具有单个前端的“HA 端口”配合使用，并将“浮动 IP”设置为“启用”  。 
 
 使用此配置，可添加更多浮动 IP 负载均衡规则和/或公共负载均衡器。 但是，无法在此配置之上使用非浮动 IP、HA 端口负载均衡配置。
 
@@ -83,11 +83,11 @@ HA 端口功能在所有全局 Azure 区域中均可用。
 如果方案需要为同一后端池配置多个 HA 端口前端，则可执行以下操作： 
 - 为单个内部标准负载均衡器资源配置多个前端专用 IP 地址。
 - 配置多个负载均衡规则，为其中的每个规则选择一个唯一的前端 IP 地址。
-- 对于所有负载均衡规则，选择“HA 端口”选项，并将“浮动 IP”设置为“启用”**** **** ****。
+- 对于所有负载均衡规则，选择“HA 端口”选项，并将“浮动 IP”设置为“启用”  。
 
 ### <a name="an-internal-load-balancer-with-ha-ports-and-a-public-load-balancer-on-the-same-back-end-instance"></a>相同后端实例上具有 HA 端口的内部负载均衡器和公共负载均衡器
 
-可以为后端资源配置一个** 公共标准负载均衡器资源以及单个具有 HA 端口的内部标准负载均衡器。
+可以为后端资源配置一个公共标准负载均衡器资源以及单个具有 HA 端口的内部标准负载均衡器。
 
 ## <a name="limitations"></a>限制
 
@@ -99,5 +99,5 @@ HA 端口功能在所有全局 Azure 区域中均可用。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何通过门户（tutorial-load-balancer-standard-internal-portal # ILB # 创建负载均衡器规则）、 [PowerShell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer)、 [CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)或[模板](load-balancer-get-started-ilb-arm-template.md)为你的配置 HA 端口。
+- 了解如何通过门户、 [PowerShell](load-balancer-get-started-ilb-arm-ps.md#create-the-configuration-rules-probe-and-load-balancer)、 [CLI](load-balancer-get-started-ilb-arm-cli.md#create-the-load-balancer-rule)或[模板](load-balancer-get-started-ilb-arm-template.md)为[你的 ILB 配置 HA 端口](tutorial-load-balancer-standard-internal-portal.md#create-a-load-balancer-rule)。
 - [了解标准负载均衡器](load-balancer-standard-overview.md)

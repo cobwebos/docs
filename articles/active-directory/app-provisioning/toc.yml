@@ -69,8 +69,6 @@
           href: application-provisioning-config-problem-wrong-users-provisioned.md
         - name: 缺少源属性
           href: user-provisioning-sync-attributes-for-mapping.md
-        - name: 预配作业的运行速度缓慢
-          href: application-provisioning-when-will-provisioning-finish.md
         - name: “预配”日志
           href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/app-provisioning/context/app-provisioning-context
     - name: 生成 SCIM 终结点并配置预配

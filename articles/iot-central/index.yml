@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 10/25/2019
-  ms.openlocfilehash: 0c433c2d09f101a9ab3fb9d1225e47741908b3bf
-  ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+  ms.openlocfilehash: 4b77c2d724a8540c0e43c45690877367a4b72416
+  ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/29/2020
-  ms.locfileid: "82562179"
+  ms.lasthandoff: 07/28/2020
+  ms.locfileid: "87337018"
 highlightedContent:
   items:
   - title: 什么是 IoT Central？
@@ -43,9 +43,6 @@ conceptualContent:
     - url: ./core/howto-set-up-template.md
       itemType: how-to-guide
       text: 设置设备模板
-    - url: ./core/tutorial-connect-pnp-device.md
-      itemType: tutorial
-      text: 连接 IoT 即插即用（预览版）设备
     footerLink:
       url: ./core/index.yml
       text: 查看详细信息

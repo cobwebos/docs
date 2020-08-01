@@ -8,40 +8,40 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 05/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3cac20e33ff865058ce41799ae8841a05716edc9
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: f4f79a28dbe8a49e608ca6fae1781a1e19646619
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045070"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448882"
 ---
 # <a name="troubleshoot-input-connections"></a>排查输入连接问题
 
-本文介绍了 Azure 流分析输入连接的常见问题、如何排查输入问题，以及如何解决这些问题。 许多故障排除步骤都需要为流分析作业启用资源日志。 如果未启用资源日志，请参阅[使用资源日志排查 Azure 流分析问题](stream-analytics-job-diagnostic-logs.md)。
+本文介绍 Azure 流分析输入连接的常见问题，以及如何排查和解决这些问题。 许多故障排除步骤都需要为流分析作业启用资源日志。 如果未启用资源日志，请参阅[使用资源日志排查 Azure 流分析问题](stream-analytics-job-diagnostic-logs.md)。
 
 ## <a name="input-events-not-received-by-job"></a>作业未收到输入事件 
 
-1.  测试输入和输出连接。 使用每项输入和输出对应的“测试连接”**** 按钮来验证与输入和输出的连接。
+1.  测试输入和输出连接。 使用每项输入和输出对应的“测试连接”按钮来验证与输入和输出的连接。
 
 2.  检查输入数据。
 
-    1. 对每个输入使用[**示例数据**](stream-analytics-sample-data-input.md)按钮。 下载输入示例数据。
+    1. 对每个输出使用[示例数据](stream-analytics-sample-data-input.md)按钮。 下载输入示例数据。
         
     1. 检查示例数据，了解架构和[数据类型](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)。
     
     1. 检查[事件中心指标](../event-hubs/event-hubs-metrics-azure-monitor.md)，确保正在发送事件。 如果事件中心正在接收消息，则消息指标应大于零。
 
-3.  确保在输入预览中选择了时间范围。 选择“选择时间范围”****，输入示例持续时间，然后测试查询。
+3.  确保在输入预览中选择了时间范围。 选择“选择时间范围”，输入示例持续时间，然后测试查询。
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>格式不正确的输入事件导致反序列化错误 
 
 当流分析作业的输入流包含格式不当的消息时，会导致反序列化问题。 例如，JSON 对象中缺少圆括号或大括号，或者时间字段中的时间戳格式不当，都可能导致消息格式不当。 
  
-当流分析作业从某个输入收到格式不当的消息时，它会丢弃该消息并通过警告来通知你。 流分析作业的“输入”磁贴上会显示一个警告符号****。 只要作业处于运行状态，以下警告符号就会存在：
+当流分析作业从某个输入收到格式不当的消息时，它会丢弃该消息并通过警告来通知你。 流分析作业的“输入”磁贴上会显示一个警告符号。 只要作业处于运行状态，以下警告符号就会存在：
 
 ![Azure 流分析输入磁贴](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
-启用资源日志可查看错误的详细信息以及导致错误的消息（有效负载）。 有多种原因会导致反序列化错误。 若要详细了解特定的反序列化错误，请参阅[输入数据错误](data-errors.md#input-data-errors)。 如果未启用资源日志，Azure 门户中将提供一个简短通知。
+启用资源日志可查看错误的详细信息以及导致错误的消息（有效负载）。 有多种原因会导致反序列化错误发生。 有关特定反序列化错误的详细信息，请参阅[输入数据错误](data-errors.md#input-data-errors)。 如果未启用资源日志，Azure 门户中将提供一个简短通知。
 
 ![输入详细信息警告通知](media/stream-analytics-malformed-events/warning-message-with-offset.png)
 
@@ -75,17 +75,17 @@ AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
 
 2. 找到你的事件中心。
 
-3. 选择“实体”标题下的“事件中心”。**** ****
+3. 选择“实体”标题下的“事件中心”。 
 
 4. 通过名称选择事件中心。
 
-5. 在“事件中心实例”页面上，在“实体”标题下，选择“使用者组”。**** **** **** 此时将列出名为 **$Default** 的使用者组。
+5. 在“事件中心实例”页面上，在“实体”标题下，选择“使用者组”。   此时将列出名为 **$Default** 的使用者组。
 
-6. 选择“+ 使用者组”添加新的使用者组****。 
+6. 选择“+ 使用者组”添加新的使用者组。 
 
    ![在事件中心内添加使用者组](media/stream-analytics-event-hub-consumer-groups/new-eh-consumer-group.png)
 
-7. 在流分析作业中创建输入以指向事件中心时，你在那里指定了使用者组。 在未指定的情况下，会使用 $Default****。 在创建新的使用者组后，编辑流分析作业中的事件中心输入并指定新使用者组的名称。
+7. 在流分析作业中创建输入以指向事件中心时，你在那里指定了使用者组。 在未指定的情况下，会使用 $Default。 在创建新的使用者组后，编辑流分析作业中的事件中心输入并指定新使用者组的名称。
 
 ## <a name="readers-per-partition-exceeds-event-hubs-limit"></a>每个分区的读取器数超过事件中心限制
 
@@ -93,11 +93,11 @@ AzureStreamAnalytics_c4b65e4a-f572-4cfc-b4e2-cf237f43c6f0_1.
 
 每个分区的读取器数超过数据中心限制（5 个）的情况如下：
 
-* 多个 SELECT 语句：如果使用引用“同一个”事件中心输入的多个 SELECT 语句，则每个 SELECT 语句都将导致新建一个接收器****。
+* 多个 SELECT 语句：如果使用引用“同一个”事件中心输入的多个 SELECT 语句，则每个 SELECT 语句都将导致新建一个接收器。
 
-* UNION：使用 UNION 时，可能存在引用“同一个”事件中心或使用者组的多个输入****。
+* UNION：使用 UNION 时，可能存在引用“同一个”事件中心或使用者组的多个输入。
 
-* SELF JOIN：使用 SELF JOIN 操作时，可能会多次引用“同一个”事件中心****。
+* SELF JOIN：使用 SELF JOIN 操作时，可能会多次引用“同一个”事件中心。
 
 下列最佳做法可帮助缓解每个分区的读取器数超过数据中心限制（5 个）的情况。
 
@@ -160,6 +160,10 @@ UNION
 SELECT foo FROM DataTwo
 
 ```
+
+## <a name="readers-per-partition-exceeds-iot-hub-limit"></a>每个分区的读取者超过 IoT 中心限制
+
+流分析作业使用 IoT 中心内置的[与事件中心兼容的终结点](../iot-hub/iot-hub-devguide-messages-read-builtin.md)连接和读取 IoT 中心的事件。 如果每个分区的读取超过 IoT 中心的限制，则可以使用[事件中心的解决方案](#readers-per-partition-exceeds-event-hubs-limit)来解决该问题。 可以通过 IoT 中心门户终结点会话或通过[Iot 中心 SDK](https://docs.microsoft.com/rest/api/iothub/IotHubResource/CreateEventHubConsumerGroup)为内置终结点创建使用者组。
 
 ## <a name="get-help"></a>获取帮助
 

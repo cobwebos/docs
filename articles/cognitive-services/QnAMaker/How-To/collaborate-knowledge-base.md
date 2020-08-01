@@ -1,14 +1,14 @@
 ---
 title: 与知识库协作-QnA Maker
-description: 通过 QnA Maker，多名人员可针对知识库展开协作。 此功能通过 Azure 基于角色的访问控制提供。
+description: 通过 QnA Maker，多名人员可针对知识库展开协作。 此功能随 Azure 基于角色的访问控制（Azure RBAC）一起提供。
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 4c550a36dd045873df4bc4a382e1c884466f95ad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 20eb58f346322cb78bff85af3d6a0d366090763d
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054055"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446949"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>与作者和编辑器协作
 
@@ -62,7 +62,7 @@ QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库�
 
 当他们选择某一知识库时，该知识库中的 QnA Maker 资源上的当前角色就可见了。
 
-:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="在编辑模式下的知识库中的屏幕截图，其角色名称位于网页左上角的 知识库名称 旁边的括号中。":::
+:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="在编辑模式下的知识库中的屏幕截图，其角色名称位于网页左上角的 "知识库名称" 旁边的括号中。":::
 
 ## <a name="next-steps"></a>后续步骤
 

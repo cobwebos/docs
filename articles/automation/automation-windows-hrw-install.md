@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 31c769039009889559b6aa05bb76139d63c42feb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 634f200280a85ff865741cd03905101ff1e5c19f
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015011"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448044"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合 Runbook 辅助角色
 
@@ -28,7 +28,7 @@ ms.locfileid: "87015011"
 
 如果 Log Analytics 工作区没有 Azure Monitor，请在创建工作区之前查看[Azure Monitor 日志设计指南](../azure-monitor/platform/design-logs-deployment.md)。
 
-如果你有一个工作区，但它未链接到自动化帐户，则启用自动功能会添加 Azure 自动化的功能，包括支持混合 Runbook 辅助角色。 当你在 Log Analytics 工作区中启用 Azure 自动化功能之一时，特别[更新管理](automation-update-management.md)或[更改跟踪和清单](change-tracking.md)，辅助角色组件会自动推送到代理计算机。
+如果你有一个工作区，但它未链接到自动化帐户，则启用自动功能会添加 Azure 自动化的功能，包括支持混合 Runbook 辅助角色。 当你在 Log Analytics 工作区中启用 Azure 自动化功能之一时，特别[更新管理](update-management/update-mgmt-overview.md)或[更改跟踪和清单](change-tracking.md)，辅助角色组件会自动推送到代理计算机。
 
    若要将更新管理功能添加到工作区，请运行以下 PowerShell cmdlet：
 
@@ -77,7 +77,7 @@ Windows 混合 Runbook 辅助角色的最低要求如下：
 可以将辅助计算机添加到自动化帐户的混合 Runbook 辅助角色组中。 请注意，只要对 Azure 自动化功能和混合 Runbook 辅助角色组成员身份使用同一帐户，就必须支持自动化 Runbook。 此功能已添加到 7.2.12024.0 版本的混合 Runbook 辅助角色。
 
 >[!NOTE]
->启用 Azure 自动化[更新管理](automation-update-management.md)会自动将连接到 Log Analytics 工作区的任何 Windows 计算机配置为混合 Runbook 辅助角色，以支持管理其操作系统更新。 但是，该辅助角色未注册到任何已在自动化帐户中定义的混合 Runbook 辅助角色组。
+>启用 Azure 自动化[更新管理](update-management/update-mgmt-overview.md)会自动将连接到 Log Analytics 工作区的任何 Windows 计算机配置为混合 Runbook 辅助角色，以支持管理其操作系统更新。 但是，该辅助角色未注册到任何已在自动化帐户中定义的混合 Runbook 辅助角色组。
 
 ## <a name="enabling-machines-for-management-with-azure-automation-state-configuration"></a>启用计算机以通过 Azure 自动化状态配置进行管理
 
@@ -169,7 +169,7 @@ Heartbeat
 
 在搜索结果中，应该会看到计算机的检测信号记录，指出它已连接并向服务报告。 默认情况下，每个代理都会将检测信号记录转发到其分配的工作区。 按照以下步骤可完成代理安装和设置。
 
-1. 启用该功能以添加代理计算机。 有关更新管理和 Azure Vm，请参阅[启用 Azure vm](automation-onboard-solutions-from-automation-account.md#enable-azure-vms)和非 Azure vm，请参阅[在工作区中启用计算机](automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace)。 有关更改跟踪和 Azure Vm，请参阅[启用 Azure vm](automation-enable-changes-from-auto-acct.md#enable-azure-vms)和非 Azure vm，请参阅[在工作区中启用计算机](automation-enable-changes-from-auto-acct.md#enable-machines-in-the-workspace)。
+1. 启用该功能以添加代理计算机。 对于更新管理和 Azure Vm，请参阅[从自动化帐户启用更新管理](update-management/update-mgmt-enable-automation-account.md)、[通过浏览 Azure 门户启用更新管理](update-management/update-mgmt-enable-portal.md)、[从 Runbook 启用更新管理](update-management/update-mgmt-enable-runbook.md)或[从 Azure VM 启用更新管理](update-management/update-mgmt-enable-vm.md)。 有关更改跟踪和 Azure Vm，请参阅[启用 Azure vm](automation-enable-changes-from-auto-acct.md#enable-azure-vms)和非 Azure vm，请参阅[在工作区中启用计算机](automation-enable-changes-from-auto-acct.md#enable-machines-in-the-workspace)。
 
 2. 若要确认混合 Runbook 辅助角色的版本，请浏览到 `C:\Program Files\Microsoft Monitoring Agent\Agent\AzureAutomation\` **版本**子文件夹并记下它。
 

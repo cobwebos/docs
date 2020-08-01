@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 3b86c249630f7bfa5c2d319577c66d750b0f6268
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 948ada46085d83c8cf453cdde23cb407ea2dd2d8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045906"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447704"
 ---
 # <a name="azure-security-baseline-for-automation"></a>用于自动化的 Azure 安全基线
 
 用于自动化的 Azure 安全基线包含有助于改进部署安全状况的建议。
 
-此服务的基线提取自 [Azure 安全基准版本 1.0](../security/benchmarks/overview.md)，该版本提供了有关如何在 Azure 上利用我们的最佳做法指南来保护云解决方案的建议。
+此服务的基线摘自 [Azure 安全基准版本 1.0](../security/benchmarks/overview.md)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
@@ -220,7 +220,7 @@ Azure 安全中心监视：不适用
 
 * [链接的 Log Analytics 工作区支持的区域](./how-to/region-mappings.md)
 
-* [查询更新管理日志](./automation-update-management-query-logs.md)
+* [查询更新管理日志](./update-management/update-mgmt-query-logs.md)
 
 **Azure 安全中心监视**：是
 
@@ -436,7 +436,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指南**：使用 Azure AD 作为中心身份验证和授权系统。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会进行加盐操作、哈希操作并安全地存储用户凭据。 如果使用混合 Runbook 辅助角色，则可以使用托管标识（而不是运行方式帐户）来启用更无缝的安全权限。
+**指南**：使用 Azure AD 作为中心身份验证和授权系统。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。 如果使用混合 Runbook 辅助角色，则可以使用托管标识（而不是运行方式帐户）来启用更无缝的安全权限。
 
 * [如何创建和配置 Azure AD 实例](../active-directory-domain-services/tutorial-create-instance.md)
 
@@ -646,9 +646,9 @@ Azure 安全中心监视：不适用
 
 如果使用 Azure 虚拟机支持的混合 Runbook 辅助角色，请使用 Azure 更新管理来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 System Center Updates Publisher （Updates Publisher）等工具允许你将自定义更新发布到 Windows Server Update Services （WSUS）。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
 
-* [Azure 中的更新管理](./automation-update-management.md)
+* [Azure 中的更新管理](./update-management/update-mgmt-overview.md)
 
-* [管理 Azure VM 的更新和修补程序](./automation-tutorial-update-management.md)
+* [管理 Vm 的更新和修补程序](./update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -660,9 +660,9 @@ Azure 安全中心监视：不适用
 
 如果你使用的是 Azure 虚拟机支持的混合 Runbook 辅助角色，则可以使用 Azure 更新管理来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 System Center Updates Publisher （Updates Publisher）等工具允许你将自定义更新发布到 Windows Server Update Services （WSUS）。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
 
-* [Azure 中的更新管理解决方案](./automation-update-management.md)
+* [Azure 中的更新管理解决方案](./update-management/update-mgmt-overview.md)
 
-* [管理 Azure VM 的更新和修补程序](./automation-tutorial-update-management.md)
+* [管理 Azure VM 的更新和修补程序](./update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -716,7 +716,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
-**指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪 Azure 自动化资源。 定期协调清单，并确保及时从订阅中删除未经授权的资源。 删除任何未使用的运行方式帐户，以最大程度地降低公开攻击面。
+**指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪 Azure 自动化资源。 定期核对清单，确保及时地从订阅中删除未经授权的资源。 删除任何未使用的运行方式帐户，以最大程度地降低公开攻击面。
 
 * [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
@@ -1018,7 +1018,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-**责任**：客户
+责任：客户
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：为操作系统实施自动配置监视
 
@@ -1062,7 +1062,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
-**指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据移动到更安全的位置，例如 Azure Key Vault。
+**指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
 * [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -1172,7 +1172,7 @@ Azure 安全中心监视：不适用
 
 **指南**：如果需要，请确保定期定期将 Azure 资源管理器模板部署到隔离的订阅。 测试已备份客户托管密钥的还原。
 
-* [利用 ARM 模板和 Azure 门户部署资源](../azure-resource-manager/templates/deploy-portal.md)
+* [使用 ARM 模板和 Azure 门户部署资源](../azure-resource-manager/templates/deploy-portal.md)
 
 * [如何在 Azure 中还原密钥保管库密钥](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
 
@@ -1252,7 +1252,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
-**指南**：使用连续导出功能导出 Azure 安全中心警报和建议，以帮助确定 Azure 资源的风险。 使用连续导出功能可手动或以连续不断的方式导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Azure Sentinel。
+**指南**：使用连续导出功能导出 Azure 安全中心警报和建议，以帮助确定 Azure 资源的风险。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Azure Sentinel。
 
 * [如何配置连续导出](../security-center/continuous-export.md)
 

@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: dd179160ad6796da40a5b98e89a10999ad0445d1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e50c1e3efc33fb761068b3009979079b2ba4b760
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070558"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447145"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 存储模拟器进行开发和测试
 
@@ -184,9 +184,9 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 | 选项 | 描述 | 命令 | 自变量 |
 | --- | --- | --- | --- |
-| **开始** |启动存储模拟器。 |`AzureStorageEmulator.exe start [-inprocess]` |*-* 重新处理：在当前进程中启动模拟器，而不是创建新进程。 |
+| **启动** |启动存储模拟器。 |`AzureStorageEmulator.exe start [-inprocess]` |*-* 重新处理：在当前进程中启动模拟器，而不是创建新进程。 |
 | **Stop** |停止存储模拟器。 |`AzureStorageEmulator.exe stop` | |
-| **状态** |打印存储模拟器的状态。 |`AzureStorageEmulator.exe status` | |
+| **Status** |打印存储模拟器的状态。 |`AzureStorageEmulator.exe status` | |
 | **清除** |清除命令行上指定的所有服务中的数据。 |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob*：清除 blob 数据。 <br/>*queue*：清除队列数据。 <br/>*table*：清除表数据。 <br/>*all*：清除所有服务中的所有数据。 |
 | **Init** |执行一次性初始化以设置模拟器。 |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName*：指定托管 SQL 实例的服务器。 <br/>*-sqlinstance instanceName*：指定要在默认服务器实例中使用的 SQL 实例的名称。 <br/>*-forcecreate*：强制创建 SQL 数据库，即使它已存在。 <br/>*-skipcreate*：跳过创建 SQL 数据库的步骤。 此命令优先于 -forcecreate。<br/>*-reserveports*：尝试保留与服务关联的 HTTP 端口。<br/>*-unreserveports*：尝试取消预留与服务关联的 HTTP 端口。 此命令优先于 -reserveports。<br/>*-inprocess*：在当前进程中执行初始化，而不是生成新的进程。 如果更改端口预留，必须使用提升的权限启动当前进程。 |
 
@@ -210,7 +210,7 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 * 增量复制允许复制被覆盖的 blob 中的快照，这会在服务上返回失败消息。
 * “获取页面范围差异”在使用增量复制 Blob 复制的快照之间不起作用。
 * 对存在于存储模拟器中并具有活动租约的 Blob 执行的放置 Blob 操作可能会成功，即使在请求中未指定租约 ID。
-* 追加 Blob 操作不受模拟器支持。 尝试对追加 Blob 执行的操作将返回 FeatureNotSupportedByEmulator 错误（HTTP 状态代码 400 - 错误请求）。
+* 模拟器不支持追加 blob 操作。 尝试对追加 Blob 执行的操作将返回 FeatureNotSupportedByEmulator 错误（HTTP 状态代码 400 - 错误请求）。
 
 ### <a name="differences-for-table-storage"></a>表存储的差异
 
@@ -304,7 +304,7 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 ### <a name="version-41"></a>4.1 版
 
-* 存储模拟器现在支持 Blob、队列和表服务终结点上的 2015-02-21 版存储服务。 它不支持新的“追加 Blob”功能。
+* 存储模拟器现在支持 Blob、队列和表服务终结点上的 2015-02-21 版存储服务。 它不支持新的追加 blob 功能。
 * 对于不支持的存储服务版本，模拟器现在会返回有意义的错误消息。 建议使用最新版本的模拟器。 如果收到 VersionNotSupportedByEmulator 错误（HTTP 状态代码 400 - 错误的请求），请下载最新版本的模拟器。
 * 修复了在并发合并操作期间发生争用情况下导致表实体数据不正确的错误。
 

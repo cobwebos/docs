@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 34c0c52945abc6e0ab74b1cb180581c76464bee8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c2a49c76e6fdb7f957c026e8f8220cd29a7b35d8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75749961"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448376"
 ---
 # <a name="azure-operational-security"></a>Azure 操作安全性
 ## <a name="introduction"></a>简介
@@ -70,7 +70,7 @@ Azure Monitor 日志的核心功能由在 Azure 中运行的一组服务提供�
 | :------------- | :-------------|
 | Azure Monitor 日志 | 监视和分析不同资源（包括物理机和虚拟机）的可用性与性能。 |
 |自动化 | 将手动过程自动化，实施物理机和虚拟机的配置。 |
-| 备份 | 备份和还原关键数据。 |
+| Backup | 备份和还原关键数据。 |
 | Site Recovery | 为关键应用程序提供高可用性。 |
 
 ### <a name="azure-monitor-logs"></a>Azure Monitor 日志
@@ -108,7 +108,7 @@ Azure 备份中的受保护数据存储在位于特定地理区域的备份保�
 
 ![管理解决方案](./media/operational-security/azure-operational-security-fig4.png)
 
-[更新管理解决方案](../../automation/automation-update-management.md)就是使用多个服务提供更多功能的解决方案的一个好例子。 此解决方案使用适用于 Windows 和 Linux 的[Azure Monitor 日志](../../log-analytics/log-analytics-queries.md)代理来收集有关每个代理上所需的更新的信息。 它将此数据写入 Azure Monitor 日志存储库，可在其中使用包含的仪表板对其进行分析。
+[更新管理解决方案](../../automation/update-management/update-mgmt-overview.md)就是使用多个服务提供更多功能的解决方案的一个好例子。 此解决方案使用适用于 Windows 和 Linux 的[Azure Monitor 日志](../../log-analytics/log-analytics-queries.md)代理来收集有关每个代理上所需的更新的信息。 它将此数据写入 Azure Monitor 日志存储库，可在其中使用包含的仪表板对其进行分析。
 
 当你创建部署时， [Azure 自动化](../../automation/automation-intro.md)中的 runbook 将用于安装所需的更新。 可在管理门户中管理整个过程，无需担心如何获取基础详细信息。
 
@@ -308,7 +308,7 @@ Azure AD 审核报告中的事件将保留 180 天。
 
 对于希望将[审核事件](../../active-directory/active-directory-reporting-activity-audit-logs.md)存储在更长保留期的客户，可以使用报告 API 定期将审核事件提取到单独的数据存储中。
 
-## <a name="summary"></a>总结
+## <a name="summary"></a>摘要
 
 本文总结了如何保护隐私和数据安全，同时提供相关软件和服务来帮助用户管理组织的 IT 基础结构。 Microsoft 认识到，当用户授信他人访问自己的数据时，这种信任需要极高的安全性。 从编程到服务运营，Microsoft 都严格遵守相关法规与安全准则。 保护数据是 Microsoft 的头等大事。
 

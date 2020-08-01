@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: fba16f9245c8d438268338329ebadad7a57ef206
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: e0a1f97cc7467d115ecc8462a301e45f90d73818
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131916"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449148"
 ---
 # <a name="server-side-encryption-of-azure-disk-storage"></a>Azure 磁盘存储的服务器端加密
 
@@ -31,7 +31,7 @@ Azure 托管磁盘中的数据使用 256 位 [AES 加密](https://en.wikipedia.o
 
 ### <a name="platform-managed-keys"></a>平台托管的密钥
 
-默认情况下，托管磁盘使用平台托管的加密密钥。 自 2017 年 6 月 10 日起，所有新托管磁盘、快照、图像和写入现有托管磁盘中的新数据都会使用平台托管密钥自动进行静态加密。
+默认情况下，托管磁盘使用平台托管的加密密钥。 写入到现有托管磁盘的所有托管磁盘、快照、映像和数据都将通过平台管理的密钥自动进行静态加密。
 
 ### <a name="customer-managed-keys"></a>客户管理的密钥
 
