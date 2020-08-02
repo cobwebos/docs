@@ -7,12 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 42245a8e1c8ce726b925fccade3c62637abb4f12
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d981bf66ef9c17fda031e66e12e18a2ad9c67cc3
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118658"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503049"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for MySQL 防火墙规则
 可以使用服务器级防火墙规则，管理从特定 IP 地址或某个范围的 IP 地址对 Azure Database for MySQL 服务器的访问。 使用便捷的 Azure CLI 命令，可创建、更新、删除、列出和显示防火墙规则，用于管理服务器。 有关 Azure Database for MySQL 防火墙的概述，请参阅[Azure Database for MySQL 服务器防火墙规则](./concepts-firewall-rules.md)。
@@ -89,7 +90,7 @@ az mysql server firewall-rule create --resource-group myresourcegroup --server m
 ```
 
 > [!IMPORTANT]
-> 该选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。 选择该选项时，请确保登录名和用户权限将访问权限限制为仅已授权用户使用。
+> 该选项将防火墙配置为允许来自 Azure 的所有连接，包括来自其他客户的订阅的连接。 选择该选项时，请确保登录名和用户权限将访问限制为仅允许授权用户访问。
 > 
 
 成功后，每个 create 命令输出会列出已创建的防火墙规则的详细信息，默认采用 JSON 格式。 如果失败，输出会改为显示错误消息文本。

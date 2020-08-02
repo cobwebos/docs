@@ -7,12 +7,12 @@ ms.topic: guide
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/09/2020
-ms.openlocfilehash: d717d93b616e8acd296c89322b7277cda5ade3a3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 273e6560cd4a9efeac6704ca5d44772248c26050
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323989"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504307"
 ---
 # <a name="common-issues-during-vhd-creation"></a>创建 VHD 期间出现的常见问题
 
@@ -34,8 +34,8 @@ Azure 市场目前不支持基于托管存储或 Azure 高级存储中的映像�
 
 以下文章介绍了如何对基于 Windows 和基于 Linux 的 VM 执行 RDS 重置：
 
-* [如何在 Windows VM 中重置远程桌面服务或其登录密码](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-reset-rdp/)
-* [如何使用 VMAccess 扩展重置 Linux VM 密码或 SSH 密钥、修复 SSH 配置，以及检查磁盘一致性](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-classic-reset-access/)
+* [如何在 Windows VM 中重置远程桌面服务或其登录密码](/azure/virtual-machines/troubleshooting/reset-rdp)
+* [如何使用 VMAccess 扩展重置 Linux VM 密码或 SSH 密钥、修复 SSH 配置，以及检查磁盘一致性](/azure/virtual-machines/extensions/vmaccess)
 
 ## <a name="how-do-i-generate-new-ssh-certificates"></a>如何生成新的 SSH 证书？
 
@@ -59,7 +59,7 @@ Azure 市场目前不支持基于托管存储或 Azure 高级存储中的映像�
 
 ## <a name="in-a-vm-how-do-i-manage-the-custom-script-extension-in-the-startup-task"></a>在 VM 中如何管理启动任务中的自定义脚本扩展？
 
-有关通过 Azure PowerShell 模块、Azure 资源管理器模板和 Windows 系统上的故障排除步骤使用自定义脚本扩展的详细信息，请参阅[适用于 Windows 的自定义脚本扩展](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)。
+有关通过 Azure PowerShell 模块、Azure 资源管理器模板和 Windows 系统上的故障排除步骤使用自定义脚本扩展的详细信息，请参阅[适用于 Windows 的自定义脚本扩展](/azure/virtual-machines/extensions/custom-script-windows)。
 
 ## <a name="are-32-bit-applications-or-services-supported-in-azure-marketplace"></a>Azure 市场是否支持 32 位应用程序或服务？
 

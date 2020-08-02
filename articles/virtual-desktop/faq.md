@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 721f9c623255b964e38da1c0f4b7bbf72d0c721d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6867d24d84f6dfb51b2ca7b86ec882102b96552b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075626"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504409"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows 虚拟桌面常见问题解答
 
@@ -46,7 +46,7 @@ ms.locfileid: "87075626"
 
 ## <a name="does-windows-virtual-desktop-support-split-azure-active-directory-models"></a>Windows 虚拟桌面是否支持拆分 Azure Active Directory 模型？
 
-将用户分配到应用组时，服务将执行简单的 Azure 基于角色的访问控制（RBAC）角色分配。 因此，用户的 Azure Active Directory （AD）和应用组的 Azure AD 必须位于同一位置。 所有服务对象，例如主机池、应用组和工作区，也必须与用户在同一 Azure AD 中。
+将用户分配到应用组时，服务将执行简单的 Azure 角色分配。 因此，用户的 Azure Active Directory （AD）和应用组的 Azure AD 必须位于同一位置。 所有服务对象，例如主机池、应用组和工作区，也必须与用户在同一 Azure AD 中。
 
 可以在不同的 Azure AD 中创建虚拟机（Vm），只要将 Active Directory 与用户在同一虚拟网络（VNET）中的 Azure AD 进行同步即可。
 

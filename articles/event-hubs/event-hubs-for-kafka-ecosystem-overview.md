@@ -3,12 +3,12 @@ title: 使用 Apache Kafka 应用中的事件中心 - Azure 事件中心 | Micro
 description: 本文介绍有关 Azure 事件中心提供的 Apache Kafka 支持的信息。
 ms.topic: article
 ms.date: 07/20/2020
-ms.openlocfilehash: 6dad797f6769e9804cce7d47ed74794fdddcfb0b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 94e0993c192cb735d6a4f0f3f7ec484c830902e9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87002472"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501587"
 ---
 # <a name="use-azure-event-hubs-from-apache-kafka-applications"></a>使用 Apache Kafka 应用程序中的 Azure 事件中心
 事件中心提供 Kafka 终结点，现有的基于 Kafka 的应用程序可将该终结点用作运行你自己的 Kafka 群集的替代方案。 事件中心支持 [Apache Kafka 协议 1.0 及更高版本](https://kafka.apache.org/documentation/)，并且可与现有 Kafka 应用程序（包括 MirrorMaker）配合使用。  
@@ -65,6 +65,9 @@ security.protocol=SASL_SSL
 sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 ```
+
+> [!NOTE]
+> 对 Kafka 客户端使用 SAS 身份验证时，在重新生成 SAS 密钥时，建立的连接不会断开连接。 
 
 #### <a name="samples"></a>示例 
 有关创建事件中心并使用 SAS 或 OAuth 对其进行访问的分步说明教程，请参阅[快速入门：使用 Kafka 协议通过事件中心进行数据流式传输](event-hubs-quickstart-kafka-enabled-event-hubs.md)。

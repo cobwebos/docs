@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 4e10843eab8ac2ccbda3d6876f51c88a598d7139
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 36f3c4192f43e323df2aaf9397364dfd1b4da731
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371679"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501366"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure 存储的 azure 安全基线
 
@@ -292,7 +292,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
-**指南**： Azure 存储帐户和 Azure Active Directory 具有默认密码或空白密码的概念。 Azure 存储实现了支持 Azure 基于角色的访问控制（RBAC）以及共享密钥和共享访问签名（SAS）的访问控制模型。 共享密钥和 SAS 身份验证的特性是没有与调用方关联的标识，因此不能执行安全主体基于权限的授权。 
+**指南**： Azure 存储帐户和 Azure Active Directory 具有默认密码或空白密码的概念。 Azure 存储实现了支持 Azure 基于角色的访问控制（Azure RBAC）以及共享密钥和共享访问签名（SAS）的访问控制模型。 共享密钥和 SAS 身份验证的特性是没有与调用方关联的标识，因此不能执行安全主体基于权限的授权。 
 
 - [授予访问 Azure 存储中的数据的权限](https://docs.microsoft.com/azure/storage/common/storage-auth)
 

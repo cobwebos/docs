@@ -11,14 +11,14 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: c885bce5ca17d5919ec134d179f6009e91a969cc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4496b74f162bfaeda7205963cbbe7e355db841f5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495476"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503899"
 ---
-# <a name="maximizing-rowgroup-quality-for-columnstore-index-performance"></a>最大化列存储索引性能的行组质量
+# <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>最大化列存储索引性能的行组质量
 
 行组质量由行组中的行数决定。 增加可用内存可以使列存储索引压缩到每个行组中的行数最大化。  使用这些方法来提高列存储索引的压缩率和请求性能。
 

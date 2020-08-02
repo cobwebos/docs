@@ -10,16 +10,17 @@ ms.date: 02/05/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: bf7d72e6f16605827b55e3a460a9b28010842d2f
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 07e265710c69c2ed72df520bf090b7c7d86c8097
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220824"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503763"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>创建支持表和队列的客户托管密钥的帐户
 
-Azure 存储可对存储帐户中的所有数据进行静态加密。 默认情况下，队列存储和表存储使用的密钥的作用域为服务，由 Microsoft 管理。 你还可以选择使用客户管理的密钥来加密队列或表数据。 若要对队列和表使用客户托管的密钥，必须首先创建一个存储帐户，该帐户使用范围限定为帐户的加密密钥，而不是使用服务。 创建使用帐户加密密钥作为队列和表数据的帐户后，可以使用该存储帐户的 Azure Key Vault 来配置客户管理的密钥。
+Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况下，队列存储和表存储使用的密钥的作用域为服务，由 Microsoft 管理。 你还可以选择使用客户管理的密钥来加密队列或表数据。 若要对队列和表使用客户托管的密钥，必须首先创建一个存储帐户，该帐户使用范围限定为帐户的加密密钥，而不是使用服务。 创建使用帐户加密密钥作为队列和表数据的帐户后，可以使用该存储帐户的 Azure Key Vault 来配置客户管理的密钥。
 
 本文介绍如何创建一个存储帐户，该帐户依赖于该帐户的作用域。 首次创建帐户时，Microsoft 使用帐户密钥对帐户中的数据进行加密，而 Microsoft 管理密钥。 接下来，你可以为帐户配置客户管理的密钥，以利用这些权益，包括提供你自己的密钥、更新密钥版本、轮换密钥和吊销访问控制。
 
@@ -141,7 +142,7 @@ az provider register --namespace 'Microsoft.Storage'
 - 包括 `-EncryptionKeyTypeForQueue` 选项，并将其值设置为， `Account` 以使用帐户加密密钥加密队列存储中的数据。
 - 包括 `-EncryptionKeyTypeForTable` 选项，并将其值设置为， `Account` 以使用帐户加密密钥加密表存储中的数据。
 
-下面的示例演示如何创建一个常规用途 v2 存储帐户，该帐户配置为读取访问地域冗余存储 (GRS) ，并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换括号中的占位符值：
+下面的示例演示如何创建一个常规用途 v2 存储帐户，该帐户配置为读取访问异地冗余存储（GRS），并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换括号中的占位符值：
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName <resource_group> `
@@ -162,7 +163,7 @@ New-AzStorageAccount -ResourceGroupName <resource_group> `
 - 包括 `--encryption-key-type-for-queue` 选项，并将其值设置为， `Account` 以使用帐户加密密钥加密队列存储中的数据。
 - 包括 `--encryption-key-type-for-table` 选项，并将其值设置为， `Account` 以使用帐户加密密钥加密表存储中的数据。
 
-下面的示例演示如何创建一个常规用途 v2 存储帐户，该帐户配置为读取访问地域冗余存储 (GRS) ，并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换括号中的占位符值：
+下面的示例演示如何创建一个常规用途 v2 存储帐户，该帐户配置为读取访问异地冗余存储（GRS），并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换括号中的占位符值：
 
 ```azurecli
 az storage account create \
@@ -177,7 +178,7 @@ az storage account create \
 
 # <a name="template"></a>[模板](#tab/template)
 
-下面的 JSON 示例创建一个常规用途 v2 存储帐户，该帐户配置为读取访问地域冗余存储 (GRS) ，并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换尖括号中的占位符值：
+下面的 JSON 示例创建一个常规用途 v2 存储帐户，该帐户配置为读取访问异地冗余存储（GRS），并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换尖括号中的占位符值：
 
 ```json
 "resources": [

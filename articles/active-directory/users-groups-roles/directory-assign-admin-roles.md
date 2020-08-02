@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f87f732fbfff23e71096a89a7c04c65d1bd7959
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: a88e30e85402f60489839b0a34b5a793fd7192df
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432337"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502471"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -392,7 +392,7 @@ In | 有权执行的操作
 
 ### <a name="privileged-role-administrator"></a>[特权角色管理员](#privileged-role-administrator-permissions)
 
-具有此角色的用户可以管理 Azure Active Directory 和 Azure AD Privileged Identity Management 中的角色分配。 此外，此角色允许管理 Privileged Identity Management 和管理单元的所有方面。
+具有此角色的用户可以管理 Azure Active Directory 和 Azure AD Privileged Identity Management 中的角色分配。 他们可以创建和管理可分配给 Azure AD 角色的组。 此外，此角色允许管理 Privileged Identity Management 和管理单元的所有方面。
 
 > [!IMPORTANT]
 > 此角色授予管理所有 Azure AD 角色（包括全局管理员角色）的分配的能力。 此角色不包括 Azure AD 中的任何其他权限功能，如创建或更新用户。 但是，分配到此角色的用户可通过分配其他角色，授予自己或其他人额外的特权。
@@ -748,6 +748,9 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.directory/directoryRoleTemplates/allProperties/allTasks | 创建和删除 directoryRoleTemplates，然后读取和更新 Azure Active Directory 中的所有属性。 |
 | microsoft.directory/domains/allProperties/allTasks | 创建和删除域，然后读取和更新 Azure Active Directory 中的所有属性。 |
 | microsoft.directory/groups/allProperties/allTasks | 创建和删除组，然后读取和更新 Azure Active Directory 中的所有属性。 |
+| groupsAssignableToRoles/allProperties/update | 在 Azure Active Directory 中，将 "isAssignableToRole" 属性设置为 true 的 "更新组"。 |
+| groupsAssignableToRoles/create | 在 Azure Active Directory 中创建 isAssignableToRole 属性设置为 true 的组。 |
+| groupsAssignableToRoles/删除 | 在 Azure Active Directory 中，删除 isAssignableToRole 属性设置为 true 的组。 |
 | microsoft.directory/groupSettings/allProperties/allTasks | 创建和删除 groupSettings，然后读取和更新 Azure Active Directory 中的所有属性。 |
 | microsoft.directory/groupSettingTemplates/allProperties/allTasks | 创建和删除 groupSettingTemplates，然后读取和更新 Azure Active Directory 中的所有属性。 |
 | microsoft.directory/loginTenantBranding/allProperties/allTasks | 创建和删除 loginTenantBranding，然后读取和更新 Azure Active Directory 中的所有属性。 |
@@ -1582,7 +1585,10 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 
 | **操作** | **说明** |
 | --- | --- |
-| microsoft.aad.privilegedIdentityManagement/allEntities/allTasks | 创建和删除所有资源，然后读取和更新 microsoft.aad.privilegedIdentityManagement 中的标准属性。 |
+| groupsAssignableToRoles/allProperties/update | 在 Azure Active Directory 中，将 "isAssignableToRole" 属性设置为 true 的 "更新组"。 |
+| groupsAssignableToRoles/create | 在 Azure Active Directory 中创建 isAssignableToRole 属性设置为 true 的组。 |
+| groupsAssignableToRoles/删除 | 在 Azure Active Directory 中，删除 isAssignableToRole 属性设置为 true 的组。 |
+| privilegedIdentityManagement/allEntities/allTasks | 创建和删除所有资源，然后读取和更新 microsoft.aad.privilegedIdentityManagement 中的标准属性。 |
 | microsoft.directory/servicePrincipals/appRoleAssignedTo/allTasks | 在 Azure Active Directory 中读取和配置 servicePrincipals.appRoleAssignedTo 属性。 |
 | microsoft.directory/servicePrincipals/oAuth2PermissionGrants/allTasks | 在 Azure Active Directory 中读取和配置 servicePrincipals.oAuth2PermissionGrants 属性。 |
 | microsoft.directory/administrativeUnits/allProperties/allTasks | 创建和管理管理单元（包括成员） |
@@ -1892,7 +1898,7 @@ CRM 服务管理员 | Dynamics 365 管理员 | 44367163-eba1-44c3-98af-f5787879f
 设备管理器 | 不推荐使用 | 2b499bcd-da44-4968-8aec-78e1674fa64d
 设备用户 | 不推荐使用 | d405c6df-0af8-4e3b-95e4-4d06e542189e
 目录读者 | 目录读者 | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
-目录同步帐户 | 不显示，因为不应使用它 | d29b2b05-8046-44ba-8758-1e26182fcf32
+目录同步帐户 | 未显示，因为不应使用它 | d29b2b05-8046-44ba-8758-1e26182fcf32
 目录编写人员 | 未显示，因为不应使用它 | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange 服务管理员 | Exchange 管理员 | 29232cdf-9323-42fd-ade2-1d097af3e4de
 外部 ID 用户流管理员 | 外部 ID 用户流管理员 | 6e591065-9bad-43ed-90f3-e9424366d2f0
@@ -1969,7 +1975,7 @@ Lync 服务管理员 | Skype for Business 管理员 | [反映当前产品品牌]
 合作伙伴层 1 支持 | 未显示，因为不应使用它 | [合作伙伴一线支持人员文档](directory-assign-admin-roles.md#partner-tier1-support)
 合作伙伴层 2 支持 | 未显示，因为不应使用它 | [合作伙伴二线支持人员文档](directory-assign-admin-roles.md#partner-tier2-support)
 受限来宾用户 | 不显示，因为无法使用它 | NA
-User | 未显示，因为无法使用它 | NA
+用户 | 未显示，因为无法使用它 | NA
 工作区设备联接 | 不推荐使用 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
 
 ## <a name="next-steps"></a>后续步骤

@@ -3,12 +3,12 @@ title: 故障排除-QnA Maker
 description: 有关 QnA Maker 服务的最常见问题的特选列表将有助于更快地采用服务，并获得更好的结果。
 ms.topic: troubleshooting
 ms.date: 03/25/2020
-ms.openlocfilehash: ec994677b17ee21dbf4ee6091be3bdf943572b2e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 50823e29eb5c276c00a1c8f0e3227ec67999a703
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131984"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502573"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker 疑难解答
 
@@ -87,7 +87,7 @@ ms.locfileid: "87131984"
 <details>
 <summary><b>是否可以与不在同一个 AAD 租户中的参与者共享知识库，以修改知识库？</b></summary>
 
-**答案**：共享基于 Azure 基于角色的访问控制（RBAC）。 如果可与其他用户共享 Azure 中的任何资源，则也可以共享 QnA Maker。__
+**答案**：共享基于 Azure 基于角色的访问控制（Azure RBAC）。 如果可与其他用户共享 Azure 中的任何资源，则也可以共享 QnA Maker。__
 
 </details>
 

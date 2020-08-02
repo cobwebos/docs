@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ef8c4754afc921eaeb68a84fbd8147f336a4940c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 2cd42d8d4ba1ecabc1b87942536e2ef9a9017b22
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370268"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501944"
 ---
 # <a name="azure-security-baseline-for-synapse-analytics"></a>Synapse Analytics 的 Azure 安全基线
 
@@ -584,7 +584,7 @@ ms.locfileid: "87370268"
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
 
-**指南**：使用 Azure 基于角色的访问控制（RBAC）来管理对 Synapse SQL 池中的 Azure SQL 数据库的访问。
+**指南**：使用 azure 基于角色的访问控制（azure RBAC）来管理对 Synapse SQL 池中的 Azure SQL 数据库的访问。
 
 授权是由用户帐户的数据库角色成员身份和对象级权限控制。 作为最佳实践，应向用户授予所需的最低权限。
 
@@ -1014,7 +1014,7 @@ Azure 安全中心监视：不适用
 
 **指南**：在一整天内会自动创建 Synapse SQL 池的快照，创建7天可用的还原点。 无法更改此保留期。 SQL 池支持八小时恢复点目标 (RPO)。 可以根据过去七天捕获的任意一个快照，还原主要区域中的数据仓库。 请注意，如果需要，还可以手动触发快照。
 
-* [Azure Synapse SQL 池中的备份和还原](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
+* [Azure Synapse SQL 池中的备份和还原](/azure/synapse-analytics/sql-data-warehouse/backup-and-restore)
 
 **Azure 安全中心监视**：不适用
 

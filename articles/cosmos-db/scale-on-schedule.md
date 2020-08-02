@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 9f538b02e81d885e22a6417d7c1f139c22635b0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 670a38b48ee89930078078dc4a8ac1a2876648e2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262474"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503729"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>使用 Azure Functions 计时器触发器缩放 Azure Cosmos DB 吞吐量
 
 Azure Cosmos 帐户的性能基于以每秒请求单位数（RU/秒）表示的预配吞吐量的数量。 预配粒度为秒，并且基于最高的 RU/秒按小时计费。 这种预配的容量模型使服务能够提供可预测且一致的吞吐量，保证低延迟、高可用性。 大多数生产工作负荷都具有这些特征。 但是，在开发和测试环境中，如果 Azure Cosmos DB 只在工作时间使用，则可以在上午提高吞吐量，在晚上在工作时间过后降低吞吐量。
 
-可以通过 [Azure 资源管理器模板](resource-manager-samples.md)、[Azure CLI](cli-samples.md) 和 [PowerShell](powershell-samples-sql.md) 为 Core (SQL) API 帐户设置吞吐量，或者使用语言特定的 Azure Cosmos DB SDK。 使用资源管理器模板、Azure CLI 或 PowerShell 的好处在于它们支持所有 Azure Cosmos DB 模型 API。
+可以通过 [Azure 资源管理器模板](resource-manager-samples.md)、[Azure CLI](cli-samples.md) 和 [PowerShell](powershell-samples.md) 为 Core (SQL) API 帐户设置吞吐量，或者使用语言特定的 Azure Cosmos DB SDK。 使用资源管理器模板、Azure CLI 或 PowerShell 的好处在于它们支持所有 Azure Cosmos DB 模型 API。
 
 ## <a name="throughput-scheduler-sample-project"></a>吞吐量计划程序示例项目
 

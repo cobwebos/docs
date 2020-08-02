@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 9e871b7959c11d7fbae650abf8394811b9088ed1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c6c0e86bc372790cda2de4ff4c1274f414a01ab0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020554"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503202"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Synapse SQL 中的临时表
 
@@ -23,7 +23,7 @@ ms.locfileid: "87020554"
 
 SQL 池和 SQL 点播（预览版）资源都可以利用临时表。 SQL 点播包含本文末尾介绍的限制。 
 
-## <a name="what-are-temporary-tables"></a>什么是临时表？
+## <a name="temporary-tables"></a>临时表
 
 临时表在处理数据时非常有用，尤其是在具有暂时性中间结果的转换期间。 对于 Synapse SQL，临时表存在于会话级别。  它们仅对其所创建于的会话可见。 因此，会话注销时将自动删除它们。 
 
@@ -98,7 +98,7 @@ GROUP BY
 > 
 > 
 
-### <a name="dropping-temporary-tables"></a>删除临时表
+### <a name="drop-temporary-tables"></a>删除临时表
 创建新会话时，应不存在任何临时表。  但是，如果调用的是使用相同名称创建临时的同一存储过程，则为了确保 `CREATE TABLE` 语句成功，请使用简单的预存在检查，其中包括 `DROP` ： 
 
 ```sql
@@ -116,7 +116,7 @@ END
 DROP TABLE #stats_ddl
 ```
 
-### <a name="modularizing-code"></a>模块化代码
+### <a name="modularize-code"></a>模块化代码
 可以在用户会话中的任何位置使用临时表。 然后，可以利用此功能来帮助模块化你的应用程序代码。  为了演示，以下存储过程将生成 DDL，以按统计名称更新数据库中的所有统计信息：
 
 ```sql

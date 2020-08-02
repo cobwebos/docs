@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/15/2020
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 7aad1eb10018445150fb5cf3ac01b97480da674b
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: c043cfb6cf437ab55cc4a48ced716798738adbef
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86226404"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507249"
 ---
 如果在对共享映像库、映像定义和映像版本执行任何操作时遇到问题，请在调试模式下再次运行失败的命令。 调试模式通过 `--debug` 使用 CLI 和 `-Debug` 交换机（使用 PowerShell）传递开关来激活。 确定错误的位置以后，请按本文档的说明来排查错误。
 
@@ -76,7 +76,7 @@ ms.locfileid: "86226404"
 
 尝试创建 VM 或虚拟机规模集的用户没有映像版本的读取访问权限。
 
-请联系订阅所有者，要求他们通过[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles) (RBAC) 授予对映像版本或父资源（例如共享映像库或映像定义）的读取访问权限。 
+请与订阅所有者联系，并要求他们通过[azure 基于角色的访问控制（AZURE RBAC）](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)授予对映像版本或父资源（如共享映像库或映像定义）的读取访问权限。 
 
 找不到映像版本。
 
@@ -97,6 +97,3 @@ ms.locfileid: "86226404"
 ## <a name="azure-limits-and-quotas"></a>Azure 限制和配额 
 
 [Azure 限制和配额](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)适用于所有共享映像库、映像定义和映像版本资源。 请确保未超出订阅限制。 
-
-
-

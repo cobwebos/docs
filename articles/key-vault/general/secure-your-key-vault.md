@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 463ebf429889968474af5630eb99c41a06916d01
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 17482a5924d0bc8be531fe48aa34a2d32acff3e5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448601"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503100"
 ---
 # <a name="secure-access-to-a-key-vault"></a>保护对密钥保管库的访问
 
@@ -59,7 +59,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 
 ## <a name="management-plane-and-rbac"></a>管理平面和 RBAC
 
-在管理平面中，使用 RBAC （基于 Azure 角色的访问控制（Azure RBAC））来授权调用方可以执行的操作。 在 RBAC 模型中，每个 Azure 订阅都有一个 Azure AD 实例。 可以从此目录向用户、组和应用程序授予访问权限。 授予访问权限以管理 Azure 订阅中使用 Azure 资源管理器部署模型的资源。 若要授予访问权限，请使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azure/) 或 [Azure 资源管理器 REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx)。
+在管理平面中，可以使用 Azure 基于角色的访问控制（Azure RBAC）来授权调用方可以执行的操作。 在 RBAC 模型中，每个 Azure 订阅都有一个 Azure AD 实例。 可以从此目录向用户、组和应用程序授予访问权限。 授予访问权限以管理 Azure 订阅中使用 Azure 资源管理器部署模型的资源。 若要授予访问权限，请使用 [Azure 门户](https://portal.azure.com/)、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、[Azure PowerShell](/powershell/azure/) 或 [Azure 资源管理器 REST API](https://msdn.microsoft.com/library/azure/dn906885.aspx)。
 
 可以在资源组中创建密钥保管库，并使用 Azure AD 管理访问权限。 授予用户或组管理资源组中的密钥保管库的权限。 通过分配适当的 RBAC 角色在特定范围级别授予访问权限。 若要授予用户管理密钥保管库的访问权限，请为特定范围的用户分配预定义的 `key vault Contributor` 角色。 可以将以下范围级别分配给 RBAC 角色：
 
@@ -130,7 +130,7 @@ Azure 密钥保管库是一种云服务，用于保护加密密钥和机密（�
 | --- | --- | --- |
 | 安全团队 | 密钥保管库参与者 | 密钥：备份、创建、删除、获取、导入、列出、还原<br>机密：所有操作 |
 | 开发人员和&nbsp;操作人员 | 密钥保管库部署权限<br><br> **注意**：此权限允许已部署的 VM 从密钥保管库提取机密。 | 无 |
-| 审核人员 | None | 密钥：列出<br>机密：列出<br><br> **注意**：此权限让审核员能够检查日志中未发出的密钥和机密的属性（标记、激活日期、到期日期）。 |
+| 审核人员 | 无 | 密钥：列出<br>机密：列出<br><br> **注意**：此权限让审核员能够检查日志中未发出的密钥和机密的属性（标记、激活日期、到期日期）。 |
 | 应用程序 | 无 | 密钥：签名<br>机密：获取 |
 
 三个团队角色需要访问其他资源的权限以及密钥保管库权限。 若要部署 VM（或 Azure 应用服务的 Web 应用功能），开发人员和操作人员需要对这些资源类型的 `Contributor` 访问权限。 审核员需要具有对存储密钥保管库日志的存储帐户的“读取”访问权限。

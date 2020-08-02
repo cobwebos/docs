@@ -9,12 +9,13 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 2ef54da76750617a77c4b2e117b694cb170ff752
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 8631a411b26f91bc72e23ac7ff9fb2278f61168c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502888"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502879"
 ---
 # <a name="migrate-from-a-managed-image-to-an-image-version-using-the-azure-cli"></a>使用 Azure CLI 从托管映像迁移到映像版本
 如果打算将现有托管映像迁移到共享映像库，可以直接从托管映像创建共享映像库映像。 测试新映像后，可以删除源托管映像。 还可以使用 [PowerShell](image-version-managed-image-powershell.md) 从托管映像迁移到共享映像库。

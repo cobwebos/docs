@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 04/24/2020
-ms.openlocfilehash: dc690e29129f5be68456e6a9dc075ba72f11b121
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a013dd875fc5a97e5e2e619553cdeb8c6d729298
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318226"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502624"
 ---
 # <a name="payout-summaries"></a>付款摘要
 
 “付款摘要”详细说明了你通过 Microsoft 赚取的资金。 它还显示了你将何时收到付款以及付款金额。
 
-如果你在 Azure 市场上销售产品，还会在“付款摘要”中看到成功付款的相关信息。 有关详细信息，请参阅 [Microsoft Azure 市场参与策略](https://docs.microsoft.com/legal/marketplace/participation-policy)和 [Microsoft Azure 市场发布者协议](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)。
+如果你在 Azure 市场上销售产品，还会在“付款摘要”中看到成功付款的相关信息。 有关详细信息，请参阅 [Microsoft Azure 市场参与策略](https://docs.microsoft.com/legal/marketplace/participation-policy)和 [Microsoft Azure 市场发布者协议](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)。
 
 > [!NOTE]
 > 你的收款必须达到 50 美元的[付款阈值](payment-thresholds-methods-timeframes.md)，才符合成为付款的条件。 若要详细了解付款阈值，请参阅此页，并查阅应用开发人员协议。

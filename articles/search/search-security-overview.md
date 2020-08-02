@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/30/2020
-ms.openlocfilehash: 9fe9a431d7bbc3b0d3b4b95d9883ed8b5a1f4704
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: b5e408eeac024f63eb8e7ce47039dc4c0a6aa5b5
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475424"
+ms.locfileid: "87501485"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure 认知搜索中的安全性 - 概述
 
@@ -125,9 +125,11 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 Azure 认知搜索已经过认证，适用于公有云和 Azure 政府的多种全球、区域和行业特定的标准。 有关完整列表，请从官方审核报告页下载[ **Microsoft Azure 符合性产品**白皮书](https://azure.microsoft.com/resources/microsoft-azure-compliance-offerings/)。
 
-为实现符合性，你可以使用[Azure 策略](../governance/policy/overview.md)来帮助你实现[azure 安全基准](../security/benchmarks/introduction.md)的高安全性最佳实践。 Azure 安全基准是安全建议的集合，整理到安全控件中，这些安全控制映射到你应对服务和数据的威胁应采取的关键操作。 目前有11个安全控制，其中包括[网络安全性](../security/benchmarks/security-control-network-security.md)、[日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)以及[数据保护](../security/benchmarks/security-control-data-protection.md)。
+为实现符合性，你可以使用[Azure 策略](../governance/policy/overview.md)来实现[azure 安全基准](../security/benchmarks/introduction.md)的高安全性最佳实践。 Azure 安全基准是安全建议的集合，整理到安全控件中，这些安全控制映射到你应对服务和数据的威胁应采取的关键操作。 目前有11个安全控制，其中包括[网络安全性](../security/benchmarks/security-control-network-security.md)、[日志记录和监视](../security/benchmarks/security-control-logging-monitoring.md)以及[数据保护](../security/benchmarks/security-control-data-protection.md)。
 
-Azure 策略是 Azure 中内置的一项功能，可帮助你管理多个标准（包括 Azure 安全基准）的符合性。 对于众所周知的基准，Azure 策略提供内置定义，以便您可以更轻松地创建策略。 对于 Azure 认知搜索，当前存在一个用于诊断日志记录的内置定义，这意味着你可以分配一个策略来识别和修复与 "日志记录和监视" 安全控制不兼容的任何搜索服务。 有关详细信息，请参阅 azure[认知搜索的 Azure 策略合规性控制](security-controls-policy.md)。
+Azure 策略是 Azure 中内置的一项功能，可帮助你管理多个标准（包括 Azure 安全基准）的符合性。 对于众所周知的基准，Azure 策略提供内置的定义，这些定义既提供条件，也提供可操作的响应，以解决不符合性问题。 
+
+对于 Azure 认知搜索，当前有一个内置定义。 它用于诊断日志记录。 利用此内置功能，您可以分配一个策略，用于标识任何缺少诊断日志记录的搜索服务，然后将其打开。 有关详细信息，请参阅 azure[认知搜索的 Azure 策略合规性控制](security-controls-policy.md)。
 
 ## <a name="see-also"></a>另请参阅
 

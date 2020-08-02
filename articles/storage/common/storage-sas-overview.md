@@ -10,12 +10,12 @@ ms.date: 07/17/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 108dd37370290a68d620a61f84b4553ed59792ab
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 185992284e353c3e58104bc46296c1741fbca7d9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077877"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502165"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>使用共享访问签名 (SAS) 授予对 Azure 存储资源的受限访问权限
 
@@ -58,7 +58,7 @@ Azure 存储支持三种类型的共享访问签名：
 
 - 使用 Azure Active Directory （Azure AD）凭据创建的*用户委托密钥*。 用户委托 SAS 使用用户委托密钥进行签名。
 
-    若要获取用户委托密钥并创建 SAS，必须为 Azure AD 安全主体分配一个基于角色的访问控制（RBAC）角色，其中包括 storageAccounts/ **/blobServices/generateUserDelegationKey**操作。 有关具有获取用户委托密钥权限的 RBAC 角色的详细信息，请参阅[创建用户委托 SAS （REST API）](/rest/api/storageservices/create-user-delegation-sas)。
+    若要获取用户委托密钥并创建 SAS，必须为 Azure AD 安全主体分配一个包含 storageAccounts **//blobServices/generateUserDelegationKey**操作的 Azure 角色。 有关具有获取用户委托密钥权限的 Azure 角色的详细信息，请参阅[创建用户委托 SAS （REST API）](/rest/api/storageservices/create-user-delegation-sas)。
 
 - 使用存储帐户密钥。 服务 SAS 和帐户 SAS 都是使用存储帐户密钥签名的。 若要创建使用帐户密钥签名的 SAS，应用程序必须有权访问该帐户密钥。
 

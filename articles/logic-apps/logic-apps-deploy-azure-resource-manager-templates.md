@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
-ms.openlocfilehash: 814cc1116ca8ac924beaaea8c7bb3dbb8d6ae1ad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d3ef4275e5b309bb499338fe90c0f527aeaeb71f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066040"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501502"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>为 Azure 逻辑应用部署 Azure 资源管理器模板
 
@@ -28,7 +29,7 @@ ms.locfileid: "87066040"
 
 ## <a name="deploy-through-azure-portal"></a>通过 Azure 门户进行部署
 
-若要自动将逻辑应用模板部署到 Azure，可以选择下面的“部署到 Azure”按钮，这样可以登录到 Azure 门户，系统会提示你输入有关逻辑应用的信息。  然后，可对逻辑应用模板或参数进行任何必要的更改。
+若要自动将逻辑应用模板部署到 Azure，可以选择下面的“部署到 Azure”按钮，这样可以登录到 Azure 门户，系统会提示你输入有关逻辑应用的信息。 然后，可对逻辑应用模板或参数进行任何必要的更改。
 
 [![“部署到 Azure”](./media/logic-apps-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
@@ -56,7 +57,7 @@ ms.locfileid: "87066040"
 
 ## <a name="deploy-with-azure-powershell"></a>使用 Azure PowerShell 部署
 
-若要部署到特定的 Azure 资源组，请使用以下命令： 
+若要部署到特定的 Azure 资源组，请使用以下命令：
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
@@ -71,7 +72,7 @@ New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -Te
 
 ## <a name="deploy-with-azure-cli"></a>使用 Azure CLI 进行部署
 
-若要部署到特定的 Azure 资源组，请使用以下命令： 
+若要部署到特定的 Azure 资源组，请使用以下命令：
 
 ```azurecli
 az group deployment create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
@@ -104,7 +105,7 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 
 1. 选择管道所需的资源，例如，手动生成的或者在生成过程中生成的逻辑应用模板和模板参数文件。
 
-1. 对于代理作业，请找到并添加“Azure 资源组部署”任务。****
+1. 对于代理作业，请找到并添加“Azure 资源组部署”任务。
 
    ![添加“Azure 资源组部署”任务](./media/logic-apps-deploy-azure-resource-manager-templates/add-azure-resource-group-deployment-task.png)
 

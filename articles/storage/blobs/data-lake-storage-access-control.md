@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 4b52fe22e455f5b0ebce6960b40bcc80c46079c3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: eab2beecc4153bdb2b74ca81bb43f86e2e29a778
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421342"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504137"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制
 
-Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持 Azure 基于角色的访问控制 (RBAC) 和像 POSIX 一样的访问控制列表 (ACL)。 本文汇总了 Data Lake Storage Gen2 访问控制模型的基本知识。
+Azure Data Lake Storage Gen2 实现一个支持 Azure 基于角色的访问控制（Azure RBAC）和类似 POSIX 的访问控制列表（Acl）的访问控制模型。 本文汇总了 Data Lake Storage Gen2 访问控制模型的基本知识。
 
 <a id="azure-role-based-access-control-rbac"></a>
 

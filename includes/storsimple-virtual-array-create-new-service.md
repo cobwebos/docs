@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 4ba5c8b69776b39d8a6640744b0c24600f3a0d5b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7bdeeedaac65f67a3224e824c19e8cad794682b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67173137"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507485"
 ---
 #### <a name="to-create-a-new-service"></a>创建新服务
 
@@ -29,7 +29,7 @@ ms.locfileid: "67173137"
 
     2.  从下拉列表中选择 **“订阅”**。 该订阅将链接到计费帐户。 如果只有一个订阅，此字段不存在。
 
-    3.  对于“资源组”，选择一个现有组或创建一个新组。**** 有关详细信息，请参阅 [Azure 资源组](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/)。
+    3.  对于“资源组”，选择一个现有组或创建一个新组。**** 有关详细信息，请参阅 [Azure 资源组](/azure/azure-resource-manager/management/manage-resource-groups-portal)。
 
     4.  提供你的服务的 **“位置”**。 有关哪个区域中有哪些服务可用的详细信息，请参阅 [Azure 区域](https://azure.microsoft.com/regions/#services)。 一般情况下，请选择距离要在其中部署设备的地理区域最近的**位置**。 还可能需要考虑以下因素：
 

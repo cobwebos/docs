@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 26c734b7a2e9f5592ee6d51dfee4650a3998ab1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4233df62de48dd7a7253c488b0cd69c38cd8d445
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84699050"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503491"
 ---
 # <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>运行测试故障转移（灾难恢复演练）到 Azure 
 
@@ -25,7 +25,7 @@ ms.locfileid: "84699050"
 ## <a name="run-a-test-failover"></a>运行测试故障转移
 本过程描述如何对恢复计划运行测试故障转移。 如果要为单个 VM 运行测试故障转移，请按照[此处](tutorial-dr-drill-azure.md#run-a-test-failover-for-a-single-vm)所述的步骤进行操作
 
-![测试故障转移](./media/site-recovery-test-failover-to-azure/TestFailover.png)
+![Azure 门户中的 "测试故障转移" 页的屏幕截图。](./media/site-recovery-test-failover-to-azure/TestFailover.png)
 
 
 1. 在 Azure 门户上的“Site Recovery”中，单击“恢复计划” > “*recoveryplan_name*” > “测试故障转移”。  
@@ -48,7 +48,7 @@ ms.locfileid: "84699050"
 8.  在“说明”中，记录并保存与测试故障转移相关联的任何观测结果。
 
 
-![测试故障转移](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
+!["测试故障转移作业" 选项卡的屏幕截图。](./media/site-recovery-test-failover-to-azure/TestFailoverJob.png)
 
 触发测试故障转移时，会发生以下情况：
 
