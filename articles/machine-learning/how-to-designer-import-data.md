@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 01/16/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: 92568ceb9c7f0a428189647f259a3f84278eb612
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d977c8e13ce75eb276c8fdb11e9dd40e40a923ad
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326998"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495365"
 ---
 # <a name="import-data-into-azure-machine-learning-designer-preview"></a>将数据导入到 Azure 机器学习设计器（预览版）
 
@@ -32,7 +32,7 @@ ms.locfileid: "87326998"
 
 ### <a name="register-a-dataset"></a>注册数据集
 
-你可以[使用 SDK 以编程方式](how-to-create-register-datasets.md#use-the-sdk)注册现有数据集，也可以[直观地在 Azure 机器学习工作室](how-to-create-register-datasets.md#use-the-ui)中注册现有数据集。
+你可以[使用 SDK 以编程方式](how-to-create-register-datasets.md#datasets-sdk)注册现有数据集，也可以[直观地在 Azure 机器学习工作室](how-to-create-register-datasets.md#datasets-ui)中注册现有数据集。
 
 你还可以将任何设计器模块的输出注册为数据集。
 
@@ -59,7 +59,7 @@ ms.locfileid: "87326998"
 有关如何使用“导入数据”模块的详细信息，请参阅[导入数据引用页](algorithm-module-reference/import-data.md)。
 
 > [!NOTE]
-> 如果数据集包含的列过多，你可能会遇到以下错误：“由于大小限制，验证失败”。 若要避免这种情况，请[在数据集接口中注册数据集](how-to-create-register-datasets.md#use-the-ui)。
+> 如果数据集包含的列过多，你可能会遇到以下错误：“由于大小限制，验证失败”。 若要避免这种情况，请[在数据集接口中注册数据集](how-to-create-register-datasets.md#datasets-ui)。
 
 ## <a name="supported-sources"></a>受支持的源
 

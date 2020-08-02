@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 19acd39be11a33424008662eb27cd68ec0005f77
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 15c8cd3eff7b0eb64e1a512282de129f606a33ce
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038947"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501229"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>监视媒体服务诊断日志
 
@@ -49,7 +50,7 @@ ms.locfileid: "87038947"
 
    ![诊断设置部分](media/media-services-diagnostic-logs/logs02.png)
 1. 将“保留期(天)”滑块移至 30****。 此滑块设置监视数据要在存储帐户中保留的天数。 Azure Monitor 会自动删除早于所述天数的数据。 如果保留期为 0 天，则无限期存储数据。
-1. 单击“保存” 。
+1. 单击“保存”。
 
 现在，资源的监视数据将流入到存储帐户。
 
@@ -178,7 +179,7 @@ az monitor diagnostic-settings create --name amsv3diagnostic \
 
 * Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * [Azure Monitor 指标](../../azure-monitor/platform/data-platform.md)
 * [Azure Monitor 诊断日志](../../azure-monitor/platform/platform-logs-overview.md)

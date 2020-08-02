@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: bf62d57aab07f5b1f2839b9e6e45c42e6b1b2c51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6beda409f03938f471f089bceebaa97c6d02ae7e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478410"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496213"
 ---
-# <a name="using-file-metadata-in-queries"></a>在查询中使用文件元数据
+# <a name="use-file-metadata-in-queries"></a>在查询中使用文件元数据
 
 根据[查询文件夹和多个文件](query-folders-multiple-csv-files.md)一文中所述，SQL 按需版本查询服务可处理多个文件和文件夹。 本文介绍如何在查询中使用有关文件和文件夹名称的元数据信息。
 

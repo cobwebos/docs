@@ -6,19 +6,19 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/09/2020
-ms.openlocfilehash: 97f9635cf6bba9ee276e6775c1718a5d83e9af3e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ad255b2e03cdecd9a87f1af3ce780ae64535bfa2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282120"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495074"
 ---
 # <a name="ssltls-connectivity-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的 SSL/TLS 连接
 
 Azure Database for MySQL 支持使用安全套接字层 (SSL) 将数据库服务器连接到客户端应用程序。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
 
 > [!NOTE]
-> 更新 `require_secure_transport` 服务器参数值不会影响 MySQL 服务的行为。 使用本文中所述的 SSL 和 TLS 强制功能来保护与的连接。
+> 更新 `require_secure_transport` 服务器参数值不会影响 MySQL 服务的行为。 使用本文中所述的 SSL 和 TLS 强制功能来保护与数据库的连接。
 
 ## <a name="ssl-default-settings"></a>SSL 默认设置
 

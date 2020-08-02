@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 5b5de26afceb1127b42c937f1cb1005a660881d4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4dd6a40ed0fe0c4ec168300b3688fc3ba5cacbb9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87273416"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499137"
 ---
 # <a name="automate-saml-based-sso-app-configuration-with-microsoft-graph-api"></a>使用 Microsoft Graph API 为应用自动配置基于 SAML 的单一登录 (SSO)
 
@@ -194,6 +194,8 @@ Content-type: application/json
 
 在此示例中，你要将 `saml` 设置为 [servicePrincipal 资源类型](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-1.0)中的单一登录模式。 可配置的其他 SAML SSO 属性包括：`notificationEmailAddresses`、`loginUrl` 和 `samlSingleSignOnSettings.relayState`
 
+在此查询运行之前，你需要在图形资源管理器中的 "**修改权限**" 选项卡上提供许可。 此外，请确保使用之前获得的**servicePrincipal** id。
+
 #### <a name="request"></a>请求
 
 <!-- {
@@ -224,6 +226,8 @@ HTTP/1.1 204
 ### <a name="set-basic-saml-urls-such-as-identifier-reply-url-sign-on-url"></a>设置基本 SAML URL，例如标识符、回复 URL 和登录 URL
 
 在应用程序对象中设置 AWS 的标识符和回复 URL。
+
+请确保使用的是前面获取的**应用程序**id。
 
 #### <a name="request"></a>请求
 

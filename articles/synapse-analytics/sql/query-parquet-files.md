@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: dd1e387727b0a80781b1103ddfb40afcbce8fce8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 8083edaf647f52a07d55dddf21fe5751340783be
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386616"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496230"
 ---
 # <a name="query-parquet-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用 SQL 按需版本（预览版）查询 Parquet 文件
 
@@ -24,7 +24,7 @@ ms.locfileid: "87386616"
 
 `OPENROWSET`函数可以通过提供文件的 URL 来读取 parquet 文件的内容。
 
-### <a name="reading-parquet-file"></a>正在读取 parquet 文件
+### <a name="read-parquet-file"></a>读取 parquet 文件
 
 查看文件内容的最简单方法 `PARQUET` 是提供要函数的文件 URL `OPENROWSET` 并指定 parquet `FORMAT` 。 如果该文件公开可用，或者您的 Azure AD 标识可以访问此文件，则您应该能够使用如下例所示的查询查看该文件的内容：
 
@@ -37,7 +37,7 @@ from openrowset(
 
 请确保访问此文件。 如果文件受 SAS 密钥或自定义 Azure 标识保护，则需要为[sql 登录设置服务器级别凭据](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。
 
-### <a name="using-data-source"></a>使用数据源
+### <a name="data-source-usage"></a>数据源使用情况
 
 前面的示例使用文件的完整路径。 作为替代方法，你可以创建一个外部数据源，其中包含指向存储根文件夹的位置，并使用该数据源和函数中的文件的相对路径 `OPENROWSET` ：
 

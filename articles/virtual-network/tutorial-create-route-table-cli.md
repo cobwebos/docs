@@ -16,13 +16,13 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: kumud
-ms.custom: ''
-ms.openlocfilehash: 70f7bd4443602f6f18be54c5bc4ff038e868e58e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 027165f797977311fd77f3cd3e626b126c26e47b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84703343"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494666"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>使用 Azure CLI 通过路由表路由网络流量
 
@@ -36,7 +36,7 @@ ms.locfileid: "84703343"
 * 将虚拟机 (VM) 部署到不同子网
 * 通过 NVA 将从一个子网的流量路由到另一个子网
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果你还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -210,7 +210,7 @@ az vm create \
 
 ## <a name="route-traffic-through-an-nva"></a>通过 NVA 路由流量
 
-使用以下命令创建与 *myVmPrivate* VM 的 SSH 会话。 将替换 *\<publicIpAddress>* 为 VM 的公共 IP 地址。 在上面的示例中，IP 地址为 *13.90.242.231*。
+使用以下命令创建与 *myVmPrivate* VM 的 SSH 会话。 将 *\<publicIpAddress>* 替换为 VM 的公共 IP 地址。 在上面的示例中，IP 地址为 *13.90.242.231*。
 
 ```bash
 ssh azureuser@<publicIpAddress>

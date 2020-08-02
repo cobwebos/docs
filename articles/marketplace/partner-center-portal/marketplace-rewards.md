@@ -8,12 +8,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 2ae8e170e3f31090b6babfee23e4505f5b736655
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 25a164fc8709d7c9f6249336ece34bd8a5378f23
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319943"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496009"
 ---
 # <a name="marketplace-rewards"></a>Marketplace Rewards
 
@@ -21,7 +21,7 @@ Marketplace 奖励支持你在特定的增长阶段，从认知活动开始，�
 
 该计划将创建一个积极的反馈循环：每个增长阶段的优势有助于你完成下一阶段，使你能够将你的业务发展到 Microsoft 客户、Microsoft 现场，以及通过利用商业市场作为你的平台，通过 Microsoft 渠道。
 
-你的权益取决于你的产品/服务是[列表、试用还是 transact-sql](../determine-your-listing-type.md#choose-a-publishing-option)。
+权益根据产品/服务属于以下哪种类型来区分：[列出、试用、事务处理](../determine-your-listing-type.md#choose-a-call-to-action)。
 
 Rewards 团队成员将在产品/服务上线时联系你，具体取决于你的资格。
 

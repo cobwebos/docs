@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: f3eacbe6f93388756ce26324babeb2ca38bd09a5
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: f87e3f4add0cb5949036ec6caca2e361e2e88ea0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438888"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498117"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的访问和标识选项
 
@@ -119,7 +119,7 @@ Azure RBAC 是在 [Azure 资源管理器](../azure-resource-manager/management/o
 
 ### <a name="azure-rbac-for-kubernetes-authorization-preview"></a>用于 Kubernetes 授权的 Azure RBAC （预览版）
 
-使用 Azure RBAC 集成，AKS 将使用 Kubernetes Authorization webhook 服务器来使用 Azure RBAC 角色定义和角色分配来管理 Azure AD 集成的 K8s 群集资源的权限和分配。
+使用 Azure RBAC 集成，AKS 将使用 Kubernetes Authorization webhook 服务器来使用 Azure 角色定义和角色分配来管理 Azure AD 集成的 K8s 群集资源的权限和分配。
 
 ![适用于 Kubernetes 授权流的 Azure RBAC](media/concepts-identity/azure-rbac-k8s-authz-flow.png)
 

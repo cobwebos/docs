@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 06/22/2020
-ms.openlocfilehash: 3d8692d3180e4164bff544f71a1216097a390773
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/30/2020
+ms.openlocfilehash: 37647a9591c0f686e4fc3f1fd858baa46e01f7ac
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103647"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498066"
 ---
 # <a name="determine-your-publishing-option"></a>确定发布选项
 
@@ -47,18 +47,7 @@ ms.locfileid: "86103647"
 
 &#42;&#42; Microsoft 365 产品/服务可免费安装，并可通过 SaaS 产品/服务作为授权服务实现盈利。 有关详细信息，请参阅[通过 Microsoft 商业市场利用 Office 365 加载项实现盈利](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)。
 
-## <a name="selecting-a-storefront"></a>选择商店
-
-在选择发布选项之前，必须了解商业市场解决方案、应用和服务的店面资格要求。 两个商店各自满足独特的客户需求，并面向特定受众。 你的产品/服务类型、事务处理功能、类别或行业决定产品/服务的发布位置。
-
-Microsoft AppSource 应用程序属于业务线解决方案，基于 Azure 而构建或者针对 Azure 而构建：Dynamics 365、Office 365、Power BI 或 Power Apps。 AppSource 咨询服务是专业的服务套餐，可以帮助客户实现 Dynamics 365 和 Power BI 使用入门或提高其使用速度。
-
-Azure 市场应用程序是技术性的“构建基块”式解决方案，基于 Azure 而构建或者针对 Azure 而构建，适用于 IT 或开发人员群体。 Azure 市场咨询服务是专业的服务套餐，可以帮助客户实现 Azure 使用入门或提高其使用速度。
-
->[!Note]
->"交叉列表" （仅适用于 SaaS 应用）：如果 SaaS 产品/服务面向技术受众（Azure Marketplace）和业务受众（AppSource），则可以选择适用于这两个商店的类别和/或子类别。 请注意，根据您的产品/服务，您的产品/服务的 "交叉列表" 的目的应该是一种延伸到这两个受众的价值主张。 单击[此处](./gtm-offer-listing-best-practices.md#categories)查看适用于每个店面的类别。
-
-## <a name="choose-a-publishing-option"></a>选择发布选项
+## <a name="choose-a-call-to-action"></a>选择操作调用
 
 可用的发布选项提供差异化的客户参与度，并允许你访问潜在客户共享资料和[商业市场权益](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)。 请注意与发布选项相对应的广告语：
 
@@ -71,6 +60,43 @@ Azure 市场应用程序是技术性的“构建基块”式解决方案，基�
 
 > [!Note]
 > 使用“事务处理”发布选项时，在选择套餐类型和创建套餐之前，了解定价、计费、发票和付款注意事项非常重要。 若要了解详细信息，请参阅[商业市场事务处理功能](./marketplace-commercial-transaction-capabilities-and-considerations.md)。
+
+## <a name="selecting-a-storefront"></a>选择商店
+
+两个商店各自满足独特的客户需求，并面向特定受众。 你的产品/服务类型、功能和类别将确定你的产品/服务的发布位置。 类别和子类别基于目标受众映射到每个店面：
+
+**Microsoft AppSource**面向寻找业务线或行业解决方案的业务用户，以及针对 Dynamics 365、Microsoft 365 和能源平台的咨询服务。
+
+**Azure Marketplace**面向 IT 专业人员和开发人员，寻找在 azure 上或在 azure 上构建的解决方案以及可加快使用 azure 的咨询服务。
+
+选择与目标受众最相符的类别和子类别。 例如，web 应用程序防火墙应发布到安全类别下的 Azure Marketplace，因为目标受众是 IT 专业人员。 合同管理应用应改为发布到 "销售" 类别下的 AppSource，因为目标受众是业务用户。 选择错误的类别或子类别可能会导致产品/服务发布到错误的店面。
+
+### <a name="publishing-to-both-storefronts-saas-offers-only"></a>发布到这两个商店（仅限 SaaS 提供）
+
+SaaS 产品/服务可发布到 Azure Marketplace 或 AppSource。 如果你的 SaaS 产品 */* 服务适用于技术受众（Azure Marketplace）和业务受众（AppSource），请选择适用于每个店面的类别和/或子类别。 发布到这两个店面的产品/服务的价值主张应扩展到 IT 专业人员*和*业务用户。
+
+> [!IMPORTANT]
+> 通过 Azure Marketplace 和 Azure 门户提供按流量计费的 SaaS 产品/服务。 只有专用计划的 SaaS 产品可通过 Azure 门户提供。
+
+| 计费计费 | 公共计划 | 私有计划 | 可用项： |
+|---|---|---|---|
+| “是”             | “是”         | 否           | Azure Marketplace 和 Azure 门户 |
+| “是”             | “是”         | “是”          | Azure Marketplace 和 Azure 门户 * |
+| 是             | 否          | 是          | 仅 Azure 门户 |
+| 否              | 否          | 是          | 仅 Azure 门户 |
+
+&#42; 产品/服务的私有计划将仅通过 Azure 门户提供
+
+例如，Azure 门户中的客户将购买仅计费计费和专用计划（无公开计划）的产品/服务。 详细了解[Microsoft 商业 marketplace 中的专用产品/服务](private-offers.md)。
+
+### <a name="categories"></a>类别
+
+类别和子类别基于目标受众映射到每个店面。 选择与产品/服务和目标受众最相符的类别和子类别。 可以选择：
+
+- 至少一个和多达两个类别。 您可以选择主要和次要类别。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果未选择任何子类别，则在所选类别下，你的产品/服务将仍然可发现。
+
+[!INCLUDE [categories and subcategories](./includes/categories.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

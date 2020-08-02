@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 8b95f6b6eca0f1464a7d09d2810aa66836d76f8f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 04b2d7842222426010b76a1a7ed4c72ee74e3d87
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386633"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489718"
 ---
 # <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中使用 SQL 按需版本（预览版）查询 JSON 文件
 
@@ -22,7 +22,7 @@ ms.locfileid: "87386633"
 - 将多个 JSON 文档存储为 JSON 数组的标准 JSON 文件。
 - 行分隔的 JSON 文件，其中 JSON 文档用换行符分隔。 这些类型的文件的常见扩展为 `jsonl` 、 `ldjson` 和 `ndjson` 。
 
-## <a name="reading-json-documents"></a>读取 JSON 文档
+## <a name="read-json-documents"></a>读取 JSON 文档
 
 查看 JSON 文件内容的最简单方法是提供要函数的文件 URL `OPENROWSET` ，指定 csv `FORMAT` ，并 `0x0b` 为和设置值 `fieldterminator` `fieldquote` 。 如果需要读取行分隔的 JSON 文件，这就足够了。 如果你有经典 JSON 文件，则需要为设置值 `0x0b` `rowterminator` 。 `OPENROWSET`函数将分析 JSON 并返回以下格式的每个文档：
 
@@ -60,7 +60,7 @@ from openrowset(
 
 此查询将每个 JSON 文档作为结果集的单独行返回。 请确保可以访问此文件。 如果文件受到 SAS 密钥或自定义标识的保护，则需要为[sql 登录设置服务器级别凭据](develop-storage-files-storage-access-control.md?tabs=shared-access-signature#server-scoped-credential)。 
 
-### <a name="using-data-source"></a>使用数据源
+### <a name="data-source-usage"></a>数据源使用情况
 
 前面的示例使用文件的完整路径。 作为替代方法，你可以创建一个外部数据源，其中包含指向存储根文件夹的位置，并使用该数据源和函数中的文件的相对路径 `OPENROWSET` ：
 

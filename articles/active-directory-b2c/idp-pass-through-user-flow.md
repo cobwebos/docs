@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 08/17/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0446dd9e316e145cf93c503ab9634d4eedbc299b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b834dda926b7da1241a325e1453143eccafaf30
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387824"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87488765"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用用户流将访问令牌传递给应用程序
 
@@ -26,7 +26,7 @@ Azure AD B2C 当前仅支持传递[OAuth 2.0](authorization-code-flow.md)标识�
 
 ## <a name="prerequisites"></a>必备条件
 
-* 应用程序必须使用 [v2 用户流](user-flow-versions.md)。
+* 应用程序必须使用推荐的[用户流](user-flow-versions.md)。
 * 用户流是使用 OAuth 2.0 标识提供者配置的。
 
 ## <a name="enable-the-claim"></a>启用声明

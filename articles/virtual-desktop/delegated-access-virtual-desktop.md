@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2dc96f587a9e5db9d9810a4d1ab7d32c4ff49f7d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: df4d1b98eac782641fb36c614d2df9508c6131ad
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289854"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498661"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Windows 虚拟桌面中的委托访问
 
@@ -40,7 +40,7 @@ Windows 虚拟桌面委托访问为角色分配的每个元素支持以下值：
 
 在开始之前，请确保按照[设置 PowerShell 模块](powershell-module.md)中的说明设置 Windows 虚拟桌面 PowerShell 模块（如果尚未安装）。
 
-在将应用程序组发布到用户或用户组时，Windows 虚拟桌面使用 Azure 基于角色的访问控制（RBAC）。 桌面虚拟化用户角色分配给用户或用户组，而作用域是应用组。 此角色向用户提供对应用程序组的特殊数据访问权限。  
+在将应用程序组发布到用户或用户组时，Windows 虚拟桌面使用 Azure 基于角色的访问控制（Azure RBAC）。 桌面虚拟化用户角色分配给用户或用户组，而作用域是应用组。 此角色向用户提供对应用程序组的特殊数据访问权限。  
 
 运行以下 cmdlet，将 Azure Active Directory 用户添加到应用组：
 

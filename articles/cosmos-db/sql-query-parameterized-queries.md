@@ -4,18 +4,18 @@ description: 了解 SQL 参数化查询如何提供对用户输入的可靠处�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: e15a8236723c1efd80f27f2d253e9bbc44af4b0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f66bc89ef56dd0c2291903d531a4637210abd8df
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74870813"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496978"
 ---
 # <a name="parameterized-queries-in-azure-cosmos-db"></a>Azure Cosmos DB 中的参数化查询
 
-Cosmos DB 支持使用带有常用 @ 表示法的参数进行查询。 参数化 SQL 为用户输入提供可靠的处理和转义，可防止通过 SQL 注入发生意外的数据泄露。
+Azure Cosmos DB 支持使用熟悉 @ 表示法表示的参数的查询。 参数化 SQL 为用户输入提供可靠的处理和转义，可防止通过 SQL 注入发生意外的数据泄露。
 
 ## <a name="examples"></a>示例
 
@@ -27,7 +27,7 @@ Cosmos DB 支持使用带有常用 @ 表示法的参数进行查询。 参数化
     WHERE f.lastName = @lastName AND f.address.state = @addressState
 ```
 
-然后，可将此请求作为参数化 JSON 查询发送到 Cosmos DB，如下所示：
+然后，你可以将此请求作为参数化 JSON 查询发送到 Azure Cosmos DB，如下所示：
 
 ```sql
     {
@@ -39,7 +39,7 @@ Cosmos DB 支持使用带有常用 @ 表示法的参数进行查询。 参数化
     }
 ```
 
-以下示例使用参数化查询设置 TOP 参数： 
+以下示例使用参数化查询设置 TOP 参数：
 
 ```sql
     {
@@ -50,10 +50,16 @@ Cosmos DB 支持使用带有常用 @ 表示法的参数进行查询。 参数化
     }
 ```
 
-参数值可以是任何有效的 JSON：字符串、数字、布尔值、null，甚至数组或嵌套的 JSON。 由于 Cosmos DB 是无架构的，因此不会针对任何类型验证参数。
+参数值可以是任何有效的 JSON：字符串、数字、布尔值、null，甚至数组或嵌套的 JSON。 由于 Azure Cosmos DB 无架构，因此不会针对任何类型对参数进行验证。
 
+下面是每个 Azure Cosmos DB SDK 中参数化查询的示例：
+
+- [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L195)
+- [Java](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L392-L421)
+- [Node.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement.ts#L58-L79)
+- [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L66-L78)
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
+- [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [模型文档数据](modeling-data.md)

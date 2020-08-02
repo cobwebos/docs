@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 848a5779538f4754ef038a1e88be63c33177bc82
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 8764e85d957688375b27957cee9ac3b4bdf526bc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169977"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499936"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
@@ -163,8 +163,20 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](https:
      * **备份策略用户**  
         你可以包含其他帐户，这些帐户要求对创建用于 Azure NetApp 文件的计算机帐户具有提升的权限。 将允许指定的帐户在文件或文件夹级别更改 NTFS 权限。 例如，你可以指定一个非特权服务帐户，用于将数据迁移到 Azure NetApp 文件中的 SMB 文件共享。  
 
-        > [!IMPORTANT] 
-        > 使用备份策略用户功能需要白名单。 将订阅 ID 发送到 anffeedback@microsoft.com 以请求此功能。 
+        **备份策略用户**功能目前处于预览阶段。 如果这是你第一次使用此功能，请在使用此功能前注册它： 
+
+        ```azurepowershell-interactive
+        Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
+        ```
+
+        检查功能注册的状态： 
+
+        > [!NOTE]
+        > 在将更改为之前， **RegistrationState**可能处于 `Registering` 状态几分钟 `Registered` 。 等到状态**注册**后再继续。
+
+        ```azurepowershell-interactive
+        Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFBackupOperator
+        ```
 
     * 凭证，包括“用户名”和“密码” 
 

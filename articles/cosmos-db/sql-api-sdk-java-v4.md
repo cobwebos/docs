@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 45da3ec95167cbb4fa087435e0e88f85c0eb6463
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 51582fd9aba8721b28f6fb18daec4d0009d0ac15
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461045"
+ms.locfileid: "87500651"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>用于 Core (SQL) API 的 Azure Cosmos DB Java SDK v4：发行说明和资源
 > [!div class="op_single_selector"]
@@ -63,7 +63,30 @@ ms.locfileid: "87461045"
 
 ## <a name="release-history"></a>版本历史记录
 
+### <a name="440-beta1-unreleased"></a>4.4.0 （未发布）
+
+### <a name="430-2020-07-29"></a>4.3.0 （2020-07-29）
+#### <a name="new-features"></a>新功能
+* 已将反应器的核心库版本更新为 `3.3.8.RELEASE` 。 
+* 已将反应器-netty 库版本更新为 `0.9.10.RELEASE` 。 
+* 已将 netty 库版本更新为 `4.1.51.Final` 。 
+* 为添加了新的重载 Api `upsertItem` `partitionKey` 。 
+* 添加了开放式遥测跟踪支持。 
+#### <a name="key-bug-fixes"></a>关键 Bug 修复
+* 修复了 SSLException 在网关模式下取消请求时引发的问题。
+* 修复了对存储过程执行的资源限制重试策略。
+* 修复了在日志级别调试模式下 SDK 挂起的问题。 
+* 修复了直接模式下延迟的定期高峰。 
+* 修复了高客户端初始化时间问题。 
+* 修复了用直接模式和网关模式自定义客户端时的 http 代理 bug。 
+* 修复了用户传递 null 选项的潜在 NPE。 
+* 已将 timeUnit 添加到 `requestLatency` 诊断字符串中。
+* 从诊断字符串中删除了重复的 uri 字符串。 
+* 为点操作修复了正确的 JSON 格式的诊断字符串。
+* 修复了与 `.single()` 运算符有关的问题，导致反应器链在未找到异常的情况下出现。 
+
 ### <a name="420-2020-07-14"></a>4.2.0 （2020-07-14）
+#### <a name="new-features"></a>新功能
 * 向添加了启用脚本日志记录的 API `CosmosStoredProcedureRequestOptions` 。
 * 更新 `DirectConnectionConfig` 默认值 `idleEndpointTimeout` 为1小时，默认值 `connectTimeout` 为5s。
 #### <a name="key-bug-fixes"></a>关键 Bug 修复

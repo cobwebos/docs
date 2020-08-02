@@ -1,6 +1,6 @@
 ---
 title: 针对 StorSimple 使用基于角色的访问控制 | Microsoft Docs
-description: 介绍如何在 StorSimple 上下文中使用 Azure 基于角色的访问控制 (RBAC)。
+description: 介绍如何在 StorSimple 环境中使用基于 Azure 角色的访问控制（Azure RBAC）。
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: ec98060a09a1fad4f851689daff3f4b578c164f5
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 58332be22600620e7a3ff1f455f96fe0d786d846
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124096"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500038"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>适用于 StorSimple 的基于角色的访问控制
 

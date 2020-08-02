@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 60f2a1992750950b50995fcf36513e44e377004d
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: fb56c4da77ddeb87ebc3724a3b138994e4da98e7
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386599"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489684"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>使用 Azure Synapse Analytics 中的 SQL 点播（预览版）查询 Parquet 和 JSON 文件中的嵌套类型
 
@@ -117,7 +117,7 @@ FROM
 
 结果如下表所示：
 
-|title  | first_author_name | body_text | complex_column |
+|标题  | first_author_name | body_text | complex_column |
 | --- | --- | --- | --- |
 | 补充信息 a epidemiolo .。。 | Julien   | -图 S1： Phylogeny .。。 | `{    "paper_id": "000b7d1517ceebb34e1e3e817695b6de03e2fa78",    "metadata": {        "title": "Supplementary Information An eco-epidemiological study of Morbilli-related paramyxovirus infection in Madagascar bats reveals host-switching as the dominant macro-evolutionary mechanism",        "authors": [            {                "first": "Julien"` |
 
@@ -203,7 +203,7 @@ FROM
 
 结构 `MapOfPersons` 作为 `VARCHAR` 列返回，格式设置为 JSON 字符串。
 
-## <a name="projecting-values-from-repeated-columns"></a>投影重复列中的值
+## <a name="project-values-from-repeated-columns"></a>重复列中的项目值
 
 如果在某些列中具有标量值的数组 `[1,2,3]` ，则可以使用以下脚本轻松扩展它们并将其与主行联接在一起：
 

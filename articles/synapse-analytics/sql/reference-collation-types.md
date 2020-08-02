@@ -8,12 +8,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c36df4745e276471e35addf4774470dbaaa9e150
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1099c4e4dd69a8dc8caee96ec5dda633ce8b9d12
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080703"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496196"
 ---
 # <a name="database-collation-support-for-synapse-sql"></a>Synapse SQL 的数据库排序规则支持
 
@@ -23,7 +23,7 @@ ms.locfileid: "87080703"
 
 您可以在创建时使用 CREATE DATABASE 语句指定默认的 Synapse SQL 按需数据库排序规则。
 
-## <a name="changing-collation"></a>更改排序规则
+## <a name="change-collation"></a>更改排序规则
 若要更改 SQL 池数据库的默认排序规则，您可以简单地更新设置体验中的排序规则字段。 例如，如需将默认排序规则更改为区分大小写，只需将“排序规则”从 SQL_Latin1_General_CP1_CI_AS 重命名为 SQL_Latin1_General_CP1_CS_AS 即可。 
 
 若要更改 SQL 按需数据库的默认排序规则，您可以使用 ALTER DATABASE 语句。
@@ -104,7 +104,7 @@ ms.locfileid: "87080703"
 *    SQL_EBCDIC277_2_CP1_CS_AS
 *    UTF-8
 
-## <a name="checking-the-current-collation"></a>查看当前的排序规则
+## <a name="check-the-current-collation"></a>检查当前排序规则
 若要查看数据库的当前排序规则，可运行以下 T-SQL 代码片段：
 ```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Collation') AS Collation;

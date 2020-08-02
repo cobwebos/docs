@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 6571f4351fb3410d1c10079a41b7041eb85ee5e3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 28563dc1e8acf4e521d75a7f4f8986d92d2a8348
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423756"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497930"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>使用 Azure 资源托管标识授予对 Blob 和队列数据的访问权限
 
@@ -45,7 +45,7 @@ Azure 标识客户端库的优点在于，它使你可以使用相同的代码�
 
 有关用于 .NET 的 Azure 标识客户端库的详细信息，请参阅[用于 .NET 的 Azure 标识客户端库](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity)。 有关 Azure 标识客户端库的参考文档，请参阅 [Azure.Identity 命名空间](/dotnet/api/azure.identity)。
 
-### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>分配基于角色的访问控制 (RBAC) 角色以访问数据
+### <a name="assign-azure-roles-for-access-to-data"></a>分配 Azure 角色以访问数据
 
 当 Azure AD 安全主体尝试访问 Blob 或队列数据时，该安全主体必须有资源访问权限。 不管安全主体是 Azure 中的托管标识还是在开发环境中运行代码的 Azure AD 用户帐户，都必须为安全主体分配一个 RBAC 角色，由该角色授权访问 Azure 存储中的 Blob 或队列数据。 若要了解如何通过 RBAC 分配权限，请参阅[使用 Azure Active Directory 授权访问 Azure Blob 和队列](../common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)中标题为“为访问权限分配 RBAC 角色”的部分。
 
@@ -89,7 +89,7 @@ az ad sp create-for-rbac \
 > [!IMPORTANT]
 > Azure 角色分配可能需要几分钟才能传播。
 
-#### <a name="set-environment-variables"></a>设置环境变量。
+#### <a name="set-environment-variables"></a>设置环境变量
 
 Azure 标识客户端库会在运行时读取三个环境变量中的值，以对服务主体进行身份验证。 下表介绍了为每个环境变量设置的值。
 

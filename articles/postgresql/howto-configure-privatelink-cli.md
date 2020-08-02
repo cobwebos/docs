@@ -6,12 +6,13 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: c957e2ee1d1e596ca8e3525e0f4a9802c4039107
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: adb3104fe5874ab80134f267553b90a4b8823039
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206812"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497981"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>使用 CLI 创建和管理 Azure Database for PostgreSQL 单服务器的专用链接
 
@@ -133,7 +134,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 1. 在门户的搜索栏中，输入 *myVm*。
 
-1. 选择“连接”按钮。**** 选择“连接”按钮后，“连接到虚拟机”随即打开**** ****。
+1. 选择“连接”按钮。 选择“连接”按钮后，“连接到虚拟机”随即打开**** ****。
 
 1. 选择“下载 RDP 文件”。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
 
@@ -144,7 +145,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
     1. 输入在创建 VM 时指定的用户名和密码。
 
         > [!NOTE]
-        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据**** ****。
+        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据 。
 
 1. 选择“确定”。
 
@@ -184,7 +185,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 6. 浏览左侧菜单中的数据库。
 
-7.  (可以选择) 通过 postgreSQL 服务器创建或查询信息。
+7. 同时创建或查询来自 postgreSQL 服务器的信息。
 
 8. 关闭与 myVm 的远程桌面连接。
 

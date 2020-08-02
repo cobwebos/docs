@@ -6,12 +6,13 @@ ms.author: ambhatna
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 39b07e313213be2645d211f292d49d9fa1a8d6bc
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2f4ebe13560da58685ac352a102042b9312d4efd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120154"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497131"
 ---
 # <a name="auto-grow-azure-database-for-mariadb-storage-using-the-azure-cli"></a>使用 Azure CLI 自动增长 Azure Database for MariaDB 存储
 本文介绍如何将 Azure Database for MariaDB 服务器存储配置为在不影响工作负荷的情况下增长。
@@ -43,4 +44,4 @@ az mariadb server create --resource-group myresourcegroup --name mydemoserver  -
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[如何基于指标创建警报](howto-alert-metric.md)。
+了解[如何创建有关指标的警报](howto-alert-metric.md)。

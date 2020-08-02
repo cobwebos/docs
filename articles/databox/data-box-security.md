@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 3ec5889d952e2836f1d112e38b8248f667cab586
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 7b74c40ab504c08f5a19a1382c303530116c0fdf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200411"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483823"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box 安全性和数据保护
 
@@ -68,7 +68,7 @@ Data Box 服务受以下功能的保护。
 
 - 访问 Data Box 服务要求组织具备包含 Data Box 在内的 Azure 订阅。 订阅决定可以在 Azure 门户中访问的功能。
 - 由于 Data Box 服务在 Azure 中托管，因此受 Azure 安全功能的保护。 有关 Microsoft Azure 提供的安全功能的详细信息，请转到 [Microsoft Azure 信任中心](https://www.microsoft.com/TrustCenter/Security/default.aspx)。
-- 可以通过使用基于角色的访问控制 (RBAC) 角色来控制对 Data Box 订单的访问。 有关详细信息，请参阅[设置对 Data Box 订单的访问控制](data-box-logs.md#set-up-access-control-on-the-order)
+- 可以通过使用 Azure 角色来控制对 Data Box 顺序的访问。 有关详细信息，请参阅[设置对 Data Box 订单的访问控制](data-box-logs.md#set-up-access-control-on-the-order)
 - Data Box 服务会存储用来解锁服务中的设备的解锁密码。
 - Data box 服务在服务中存储订单详细信息和状态。 删除订单会删除这些信息。
 
@@ -102,7 +102,7 @@ Azure Data Box 在服务中收集并显示以下关键实例中的个人信息�
 
 Data Box 中实现了以下安全准则： 
 
-|准则   |说明   |
+|准则   |描述   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | 防水防尘保护         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | 对不利运输条件的承受力          |

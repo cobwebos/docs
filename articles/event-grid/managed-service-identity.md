@@ -3,12 +3,12 @@ title: 使用托管服务标识进行事件传送
 description: 本文介绍如何为 Azure 事件网格主题启用托管服务标识。 用于将事件转发到受支持的目标。
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: c05eb2e78595e962494a60b1ffa8ead899aa0109
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b437d519a076104b64fb2df5cba1cd61a865b1fc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371254"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499817"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>使用托管标识的事件传递
 本文介绍如何为 Azure 事件网格主题或域启用[托管服务标识](../active-directory/managed-identities-azure-resources/overview.md)。 使用它将事件转发到受支持的目标，如服务总线队列和主题、事件中心和存储帐户。
@@ -64,7 +64,7 @@ az eventgrid topic update -g $rg --name $topicname --identity systemassigned --s
 更新现有域的命令也是类似的 (`az eventgrid domain update`)。
 
 ## <a name="supported-destinations-and-rbac-roles"></a>支持的目标和 RBAC 角色
-为事件网格主题或域启用标识之后，Azure 会自动在 Azure Active Directory 中创建标识。 将此标识添加到相应的基于角色的访问控制（RBAC）角色，以便主题或域可以将事件转发到受支持的目标。 例如，将标识添加到 Azure 事件中心命名空间的**Azure 事件中心数据发送方**角色，以便事件网格主题可以将事件转发到该命名空间中的事件中心。 
+为事件网格主题或域启用标识之后，Azure 会自动在 Azure Active Directory 中创建标识。 将此标识添加到相应的 Azure 角色，以便主题或域可以将事件转发到受支持的目标。 例如，将标识添加到 Azure 事件中心命名空间的**Azure 事件中心数据发送方**角色，以便事件网格主题可以将事件转发到该命名空间中的事件中心。 
 
 目前，Azure 事件网格支持使用系统分配的托管标识配置的主题或域，以将事件转发到以下目标。 此表还为你提供标识应位于的角色，以便主题可以转发事件。
 

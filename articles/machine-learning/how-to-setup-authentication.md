@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 867babcf7160ce6e589197be0a3186e5a2156238
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 4061d7a3d21b8c2db2bf161c422994cb2742b0b4
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423569"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489871"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>为 Azure 机器学习资源和工作流设置身份验证
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -67,7 +67,7 @@ ms.locfileid: "87423569"
 
 ## <a name="service-principal-authentication"></a>服务主体身份验证
 
-若要使用服务主体 (SP) 身份验证，必须先创建 SP，并向其授予对工作区的访问权限。 如前文所述，将使用 Azure 基于角色的访问控制 (RBAC) 来控制访问，因此你还必须确定要授予 SP 的访问权限。
+若要使用服务主体 (SP) 身份验证，必须先创建 SP，并向其授予对工作区的访问权限。 如前文所述，使用 Azure 基于角色的访问控制（Azure RBAC）来控制访问，因此您还必须确定授予 SP 的访问权限。
 
 > [!IMPORTANT]
 > 使用服务主体时，请向它授予它所用于的__任务所需的最低访问权限__。 例如，如果服务主体仅用于读取 Web 部署的访问令牌，则不要向服务主体授予所有者或参与者访问权限。

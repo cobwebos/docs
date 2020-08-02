@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: caa73b5a86c5c245aefd18de9b60ec49616b3b84
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7d583172fe4021a2709a4d58b5488e9bc3898919
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281542"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497590"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>使用 Azure NetApp 文件管理快照
 
@@ -47,8 +47,22 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
 你可以计划使用快照策略自动执行卷快照。 你还可以根据需要修改快照策略，或者删除不再需要的快照策略。  
 
-> [!IMPORTANT] 
-> 使用快照策略功能需要允许列表。 将订阅 ID 发送到 anffeedback@microsoft.com 以请求此功能。
+### <a name="register-the-feature"></a>注册功能
+
+1. **快照策略**功能目前处于预览阶段。 如果这是你第一次使用此功能，请在使用此功能前注册它： 
+
+    ```azurepowershell-interactive
+    Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
+    ```
+
+2. 检查功能注册的状态： 
+
+    > [!NOTE]
+    > 在将更改为之前， **RegistrationState**可能处于 `Registering` 状态几分钟 `Registered` 。 等到状态**注册**后再继续。
+
+    ```azurepowershell-interactive
+    Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSnapshotPolicy
+    ```
 
 ### <a name="create-a-snapshot-policy"></a>创建快照策略 
 
@@ -80,7 +94,7 @@ Azure NetApp 文件支持创建按需快照，并使用快照策略来计划自�
 
     ![每月快照策略](../media/azure-netapp-files/snapshot-policy-monthly.png) 
 
-4.  单击 **“保存”** 。  
+4.  单击“保存”。  
 
 如果需要创建其他快照策略，请重复步骤3。
 创建的策略将显示在 "快照策略" 页中。

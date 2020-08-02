@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 07/27/2020
-ms.openlocfilehash: 00efa3ea6fcd299dcdc51b3002d6b0459edf2ec4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f98e540a6764869f1d37edfbb0f00bf8d1cc2198
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281151"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499171"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 配置和管理 Azure AD 身份验证
 
@@ -216,7 +216,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 也可通过调用以下 CLI 命令来预配 SQL 托管实例的 Azure AD 管理员：
 
-| 命令 | 说明 |
+| 命令 | 描述 |
 | --- | --- |
 |[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | 预配 SQL 托管实例（必须来自当前订阅）的 Azure Active Directory 管理员。 |
 |[az sql mi ad-admin delete](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | 删除 SQL 托管实例的 Azure Active Directory 管理员。 |
@@ -322,7 +322,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 可以通过调用以下 CLI 命令来预配 Azure AD 管理员：
 
-| 命令 | 说明 |
+| 命令 | 描述 |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | 为托管 SQL 数据库或 Azure Synapse 的服务器预配 Azure Active Directory 管理员。 （必须来自当前订阅） |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | 为托管 SQL 数据库或 Azure Synapse 的服务器删除 Azure Active Directory 管理员。 |
@@ -360,7 +360,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 但是，将 Azure Active Directory 身份验证与 SQL 数据库和 Azure Synapse 结合使用时，需要使用基于 Azure AD 标识的包含的数据库用户。 包含的数据库用户在 master 数据库中没有登录名，且映射到与数据库关联的 Azure AD 目录中的标识。 Azure AD 标识可以是单独的用户帐户，也可以是组。 有关包含的数据库用户的详细信息，请参阅[包含的数据库用户 - 使你的数据库可移植](https://msdn.microsoft.com/library/ff929188.aspx)。
 
 > [!NOTE]
-> 不能使用 Azure 门户创建数据库用户（管理员除外）。 RBAC 角色不会传播到 SQL 数据库、SQL 托管实例或 Azure Synapse 中的数据库。 Azure RBAC 角色用于管理 Azure 资源，不会应用于数据库权限。 例如，“SQL Server 参与者”角色不会授予连接到 SQL 数据库、SQL 托管实例或 Azure Synapse 中的数据库的访问权限。 必须使用 Transact-SQL 语句直接在数据库中授予访问权限。
+> 不能使用 Azure 门户创建数据库用户（管理员除外）。 Azure 角色不会传播到 SQL 数据库、SQL 托管实例或 Azure Synapse 中的数据库。 Azure 角色用于管理 Azure 资源，不适用于数据库权限。 例如，“SQL Server 参与者”角色不会授予连接到 SQL 数据库、SQL 托管实例或 Azure Synapse 中的数据库的访问权限。 必须使用 Transact-SQL 语句直接在数据库中授予访问权限。
 
 > [!WARNING]
 > 不支持在 T-SQL 的 `CREATE LOGIN` 和 `CREATE USER` 语句中将特殊字符（例如冒号 `:` 或与号 `&`）用作用户名的一部分。
@@ -544,4 +544,3 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 [11]: ./media/authentication-aad-configure/active-directory-integrated.png
 [12]: ./media/authentication-aad-configure/12connect-using-pw-auth2.png
 [13]: ./media/authentication-aad-configure/13connect-to-db2.png
-

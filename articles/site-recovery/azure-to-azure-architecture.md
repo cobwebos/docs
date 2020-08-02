@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: e5daf318088cb71b6a1819db71e3c597a9fa94db
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3cd64de05c44729f1aa714849e12fc8f69998334
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421444"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498610"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure 到 Azure 的灾难恢复体系结构
 
@@ -34,7 +34,7 @@ ms.locfileid: "87421444"
 **缓存存储帐户** | 源网络中需要一个缓存存储帐户。 在复制期间，VM 更改将存储在缓存中，然后再发送到目标存储。  缓存存储帐户必须是标准存储帐户。<br/><br/> 使用缓存可确保尽量减少对 VM 上运行的生产应用程序造成的影响。<br/><br/> [详细了解](azure-to-azure-support-matrix.md#cache-storage)缓存存储要求。 
 **目标资源** | 在复制期间以及发生故障转移时将使用目标资源。 Site Recovery 默认可以设置目标资源，你也可以自行创建/自定义目标资源。<br/><br/> 在目标区域中，请检查是否能够创建 VM，以及你的订阅是否有足够的资源用于支持目标区域中所需的 VM 大小。 
 
-![源和目标复制](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
+![显示源和目标复制的关系图。](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
 
 ## <a name="target-resources"></a>目标资源
 
@@ -116,7 +116,7 @@ Site Recovery 按如下所述创建快照：
 4. Site Recovery 处理缓存中的数据，并将其发送到目标存储帐户或副本托管磁盘。
 5. 处理数据后，每隔五分钟生成崩溃一致性恢复点。 根据复制策略中指定的设置生成应用一致性恢复点。
 
-![启用复制过程，步骤 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
+![显示复制过程，步骤2的关系图。](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
 
 **复制过程**
 
@@ -128,7 +128,7 @@ Site Recovery 按如下所述创建快照：
 
 如果使用 URL 控制 VM 的出站访问，请允许这些 URL。
 
-| **名称**                  | **商用**                               | **Government**                                 | **说明** |
+| **Name**                  | **商用**                               | **Government**                                 | **说明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`               | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
@@ -191,7 +191,7 @@ Site Recovery 按如下所述创建快照：
 
 如果启动故障转移，系统会在目标资源组、目标虚拟网络、目标子网和目标可用性集中创建 VM。 可在故障转移过程中使用任意恢复点。
 
-![故障转移过程](./media/concepts-azure-to-azure-architecture/failover-v2.png)
+![显示源和目标环境的故障转移过程的示意图。](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
 ## <a name="next-steps"></a>后续步骤
 

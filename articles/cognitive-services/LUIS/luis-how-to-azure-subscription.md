@@ -4,12 +4,13 @@ description: 首次使用语言理解 (LUIS) 时，不需要创建创作密钥�
 services: cognitive-services
 ms.topic: how-to
 ms.date: 07/07/2020
-ms.openlocfilehash: dfe5c416adeb4ff850dfe8f28ae4c61c8bb0844f
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 6bd8cc807a393d6c8027f5990b9897d93f2b78d2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86144638"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496893"
 ---
 # <a name="create-luis-resources"></a>创建 LUIS 资源
 
@@ -24,12 +25,12 @@ ms.locfileid: "86144638"
 
 LUIS 允许三种类型的 Azure 资源和一种非 Azure 资源：
 
-|键|目的|认知服务 `kind`|认知服务 `type`|
+|键|目标|认知服务 `kind`|认知服务 `type`|
 |--|--|--|--|
 |创作密钥|通过创作、训练、发布和测试访问和管理应用程序的数据。 若要以编程方式创作 LUIS 应用，请创建 LUIS 创作密钥。<br><br>`LUIS.Authoring` 密钥的目的是让你执行以下操作：<br>* 以编程方式管理语言理解应用和模型，包括训练和发布<br> * 为人员分配[参与者角色](#contributions-from-other-authors)，控制对创作资源的权限。|`LUIS.Authoring`|`Cognitive Services`|
 |查询预测密钥| 查询预测终结点请求。 在客户端应用请求的预测超出初学者资源提供的 1,000 个请求之前，创建 LUIS 预测密钥。 |`LUIS`|`Cognitive Services`|
 |[认知服务多服务资源密钥](../cognitive-services-apis-create-account-cli.md?tabs=windows#create-a-cognitive-services-resource)|与 LUIS 和其他受支持的认知服务共享的查询预测终结点请求。|`CognitiveServices`|`Cognitive Services`|
-|初学者|免费创作 (没有基于角色的访问控制) 通过 LUIS 门户或 Api (包括 Sdk) 、每月免费1000预测终结点请求（通过浏览器、API 或 Sdk）|-|不是 Azure 资源|
+|初学者|免费创作（无需基于角色的访问控制）通过 LUIS 门户或 Api （包括 Sdk），每月免费1000预测终结点请求，使用浏览器、API 或 Sdk|-|不是 Azure 资源|
 
 Azure 资源创建过程完成后，[将密钥分配](#assign-a-resource-to-an-app)到 LUIS 门户中的应用。
 
@@ -87,7 +88,7 @@ Azure 资源（如 LUIS）由包含资源的订阅所有。
 
 ### <a name="contributions-from-other-authors"></a>其他作者的贡献
 
-对于[创作资源迁移](luis-migration-authoring.md)的应用：使用**访问控制 (IAM) **页，在创作资源的 Azure 门户中管理_参与者_。 了解如何使用协作者的电子邮件地址和_参与者_角色[添加用户](luis-how-to-collaborate.md)。
+对于[创作资源迁移](luis-migration-authoring.md)的应用：使用**访问控制（IAM）** 页在创作资源的 Azure 门户中管理_参与者_。 了解如何使用协作者的电子邮件地址和_参与者_角色[添加用户](luis-how-to-collaborate.md)。
 
 对于尚未迁移的应用：所有_协作_者都在 LUIS 门户中的 "**管理-> 协作**者" 页上进行管理。
 
@@ -102,7 +103,7 @@ Azure 资源（如 LUIS）由包含资源的订阅所有。
 
 所有者和所有参与者具有创作应用所需的访问权限。
 
-|创作访问权限包括|说明|
+|创作访问权限包括|备注|
 |--|--|
 |添加或删除终结点密钥||
 |导出版本||
@@ -124,7 +125,7 @@ Azure 资源（如 LUIS）由包含资源的订阅所有。
 |:--|:--|
 |可供所有者和参与者使用|可供所有者、参与者以及知道应用 ID 的任何其他人使用|
 
-可以通过在服务器到服务器环境中调用 LUIS 运行时密钥来控制谁可以查看该密钥。 如果在机器人上使用 LUIS，则机器人和 LUIS 之间的连接已经安全。 如果直接调用 LUIS 终结点，则应创建具有受控访问权限（如 [AAD](https://azure.microsoft.com/services/active-directory/)）的服务器端 API（如 Azure [函数](https://azure.microsoft.com/services/functions/)）。 如果调用并验证服务器端 API，则在确认授权后将调用传递到 LUIS。 尽管此策略不会阻止中间人攻击，但它进行模糊处理用户的密钥和终结点 URL，使你可以跟踪访问，并允许你添加终结点响应日志记录 (例如[Application Insights](https://azure.microsoft.com/services/application-insights/)) 。
+可以通过在服务器到服务器环境中调用 LUIS 运行时密钥来控制谁可以查看该密钥。 如果在机器人上使用 LUIS，则机器人和 LUIS 之间的连接已经安全。 如果直接调用 LUIS 终结点，则应创建具有受控访问权限（如 [AAD](https://azure.microsoft.com/services/active-directory/)）的服务器端 API（如 Azure [函数](https://azure.microsoft.com/services/functions/)）。 如果调用并验证服务器端 API，则在确认授权后将调用传递到 LUIS。 尽管此策略不会阻止中间人攻击，但它进行模糊处理用户的密钥和终结点 URL，使你可以跟踪访问，并允许你添加终结点响应日志记录（例如[Application Insights](https://azure.microsoft.com/services/application-insights/)）。
 
 ### <a name="runtime-security-for-private-apps"></a>专用应用的运行时安全性
 
@@ -147,7 +148,7 @@ Azure 资源（如 LUIS）由包含资源的订阅所有。
 
 ### <a name="securing-the-query-prediction-endpoint"></a>保护查询预测终结点
 
-可以通过在服务器到服务器环境中调用 LUIS 预测运行时终结点密钥来控制谁可以查看该密钥。 如果在机器人上使用 LUIS，则机器人和 LUIS 之间的连接已经安全。 如果直接调用 LUIS 终结点，则应创建具有受控访问权限（如 [AAD](https://azure.microsoft.com/services/active-directory/)）的服务器端 API（如 Azure [函数](https://azure.microsoft.com/services/functions/)）。 如果调用服务器端 API 并且身份验证和授权得到验证，则将调用传递到 LUIS。 尽管此策略不能防止中间人攻击，但它进行模糊处理用户的终结点，使你可以跟踪访问，并允许你添加终结点响应日志记录 (例如[Application Insights](https://azure.microsoft.com/services/application-insights/)) 。
+可以通过在服务器到服务器环境中调用 LUIS 预测运行时终结点密钥来控制谁可以查看该密钥。 如果在机器人上使用 LUIS，则机器人和 LUIS 之间的连接已经安全。 如果直接调用 LUIS 终结点，则应创建具有受控访问权限（如 [AAD](https://azure.microsoft.com/services/active-directory/)）的服务器端 API（如 Azure [函数](https://azure.microsoft.com/services/functions/)）。 如果调用服务器端 API 并且身份验证和授权得到验证，则将调用传递到 LUIS。 尽管此策略不能防止中间人攻击，但它进行模糊处理用户的终结点，使你可以跟踪访问，并允许你添加终结点响应日志记录（例如[Application Insights](https://azure.microsoft.com/services/application-insights/)）。
 
 <a name="starter-key"></a>
 
@@ -232,7 +233,7 @@ Azure 资源（如 LUIS）由包含资源的订阅所有。
 
     此 POST API 需要以下设置：
 
-    |标头|值|
+    |标题|值|
     |--|--|
     |`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。|
     |`Ocp-Apim-Subscription-Key`|你的创作密钥。|
@@ -243,10 +244,10 @@ Azure 资源（如 LUIS）由包含资源的订阅所有。
 
     此 POST API 需要以下设置：
 
-    |类型|设置|Value|
+    |类型|设置|“值”|
     |--|--|--|
-    |标头|`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。|
-    |标头|`Ocp-Apim-Subscription-Key`|你的创作密钥。|
+    |标题|`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。|
+    |标题|`Ocp-Apim-Subscription-Key`|你的创作密钥。|
     |标头|`Content-type`|`application/json`|
     |Querystring|`appid`|LUIS 应用 ID。
     |正文||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|

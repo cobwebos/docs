@@ -8,21 +8,29 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 02/26/2020
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3d0cb06f84fdd96d099e05f55ba62c37cb1192c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4548b50e4168f260cb401c40dd4e61192cea1015
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78183969"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489531"
 ---
 # <a name="page-layout-versions"></a>页面布局版本
 
 页面布局包会定期更新，其中包括页面元素的修复和改进。 以下更改日志详述了在每个版本中引入的更改。
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
+
+## <a name="210"></a>2.1.0
+
+- 自断言页面 (`selfasserted`)
+  - 本地化和辅助功能修补程序。
+- 统一 SSP 页面（ `unifiedssp` ）
+  - 添加了对多个注册链接的支持。
+  - 根据策略中定义的谓词规则增加了对用户输入验证的支持。
 
 ## <a name="200"></a>2.0.0
 
@@ -40,6 +48,8 @@ ms.locfileid: "78183969"
   - 对 Chrome 转换的支持
 - 统一和自断言页面
   - 用户名/电子邮件和密码字段现在使用 `form` HTML 元素，以允许边缘和 Internet Explorer （IE）正确保存此信息。
+- 自断言页面
+  - 添加了可配置的用户输入验证延迟，以改善用户体验。
 
 ## <a name="110"></a>1.1.0
 

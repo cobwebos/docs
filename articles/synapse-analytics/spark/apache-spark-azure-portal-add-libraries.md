@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b0231b28894ea7233e5f6e588300f03cb8784e5b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c0d34d80df77b5c6fcdefc39b3bc3b1619a93705
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036448"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496247"
 ---
 # <a name="add-and-manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中添加和管理 Apache Spark 库
 
@@ -21,7 +21,7 @@ Apache Spark 依赖于许多库来提供功能。 可以扩充这些库，或将
 
 可以在 Spark 池（预览版）级别添加 Python 包，也可以在 Spark 作业定义级别添加基于 .jar 的包。
 
-## <a name="adding-or-updating-python-libraries"></a>添加或更新 Python 库
+## <a name="add-or-update-python-libraries"></a>添加或更新 Python 库
 
 Azure Synapse Analytics 中的 Apache Spark 包含完整的 Anacondas 安装和其他库。 可以在[Apache Spark 版本支持](apache-spark-version-support.md)中找到 "完整库" 列表。
 
@@ -51,7 +51,7 @@ alabaster==0.7.10
 
 ![添加 Python 库](./media/apache-spark-azure-portal-add-libraries/add-python-libraries.png "添加 Python 库")
 
-### <a name="verifying-installed-libraries"></a>验证已安装的库
+### <a name="verify-installed-libraries"></a>验证安装的库
 
 若要验证是否安装了正确的库版本，请运行以下代码
 

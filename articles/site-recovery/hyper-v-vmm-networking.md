@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: c0426872c29fa126514f22a5f4fb57f19903c967
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 43942c20a353ff69383f3e721679e4c95ab9d230
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021658"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495937"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>设置 IP 寻址以在故障转移后连接到辅助本地站点
 
@@ -63,11 +63,11 @@ ms.locfileid: "87021658"
 
 故障转移前 
 
-![在故障转移之前](./media/hyper-v-vmm-networking/network-design2.png)
+![显示故障转移之前的子网的关系图。](./media/hyper-v-vmm-networking/network-design2.png)
 
 故障转移后 
 
-![在故障转移之后](./media/hyper-v-vmm-networking/network-design3.png)
+![故障转移后显示子网的关系图。](./media/hyper-v-vmm-networking/network-design3.png)
 
 故障转移后，Site Recovery 为 VM 上的每个网络接口分配 IP 地址。 将为每个 VM 实例从相关网络中的静态 IP 地址池中分配地址。
 
@@ -118,11 +118,11 @@ $ip.address
 
 故障转移前 
 
-![不同的 IP 地址 - 故障转移前](./media/hyper-v-vmm-networking/network-design10.png)
+![故障转移之前显示不同 IP 地址的关系图。](./media/hyper-v-vmm-networking/network-design10.png)
 
 故障转移后 
 
-![不同的 IP 地址 - 故障转移后](./media/hyper-v-vmm-networking/network-design11.png)
+![故障转移后显示不同 IP 地址的关系图。](./media/hyper-v-vmm-networking/network-design11.png)
 
 
 ## <a name="next-steps"></a>后续步骤

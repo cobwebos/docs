@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ec15f87bdbf381b71faa7cefd986dd5e55e17a19
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 9db7f2016de01edbedfa9e7d7254561fea957d2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964985"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495295"
 ---
 # <a name="use-t-sql-loops-in-synapse-sql"></a>在 Synapse SQL 中使用 T-sql 循环
 本文提供了有关在 Synapse SQL 中使用 T-sql 循环、替换游标和开发相关解决方案的重要提示。
@@ -26,7 +26,7 @@ Synapse SQL 支持重复执行语句块的[WHILE](https://docs.microsoft.com/sql
 
 SQL 池中的循环用于替换 SQL 代码中定义的游标。 幸运的是，几乎所有以 SQL 代码编写的游标都是快进的只读变体。 因此，[WHILE] 循环是替换游标的极佳替代方法。
 
-## <a name="replacing-cursors-in-sql-pool"></a>替换 SQL 池中的游标
+## <a name="replace-cursors-in-sql-pool"></a>替换 SQL 池中的游标
 
 在开始使用之前，应考虑以下问题： "此游标是否可重写以使用基于集的操作？" 在许多情况下，答案是肯定的，通常这也是最佳方法。 基于集的操作的执行速度通常比迭代的逐行方法要快。
 

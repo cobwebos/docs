@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2020
+ms.date: 07/31/2020
 ms.author: b-juche
-ms.openlocfilehash: 6437e25a2d6afc547b03f2b2144df63728116ef4
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 19e02012c31246b3b6b4636ef61154fbade347ce
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460229"
+ms.locfileid: "87494615"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp 文件的解决方案体系结构
 本文介绍了可帮助你了解使用 Azure NetApp 文件的解决方案体系结构的最佳做法。  
@@ -87,6 +87,7 @@ ms.locfileid: "87460229"
 
 * [Windows 虚拟桌面中的 FSLogix 配置文件容器的存储选项](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile#azure-platform-details)
 * [使用 Azure NetApp 文件为主机池创建 FSLogix 配置文件容器](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
+* [企业级 Windows 虚拟桌面规模](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
 
 ## <a name="hpc-solutions"></a>HPC 解决方案
 

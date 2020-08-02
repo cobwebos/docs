@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
-ms.openlocfilehash: 0ffcda4a33c43866c3b580a60c87c1ffca59bbc4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8a72dff055f2733a07b6da705b66da939ad29bae
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87066335"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495601"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>在 Azure 逻辑应用中添加循环以重复执行操作或处理数组
 
@@ -24,7 +24,7 @@ ms.locfileid: "87066335"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。 
+* Azure 帐户和订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 * 有关[如何创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)的基本知识
 
@@ -32,11 +32,11 @@ ms.locfileid: "87066335"
 
 ## <a name="foreach-loop"></a>Foreach 循环
 
-“Foreach 循环”在每个数组项上重复一个或多个操作，且仅在数组上工作。 “Foreach”循环中的迭代并行运行。 但是，可以通过设置[顺序“Foreach”循环](#sequential-foreach-loop)一次运行一次迭代。 
+“Foreach 循环”在每个数组项上重复一个或多个操作，且仅在数组上工作。 使用“Foreach”循环时请注意以下事项：
 
-使用“Foreach”循环时请注意以下事项：
+* 默认情况下，"Foreach" 循环中的迭代将同时运行，或以并行方式运行。 此行为不同于[电源自动操作，它**适用于每个循环，每个**循环](/power-automate/apply-to-each)一次运行一个迭代，或按顺序运行。 但是，可以[设置顺序 "Foreach" 循环迭代](#sequential-foreach-loop)。 例如，如果想要使用[Delay 操作](../connectors/connectors-native-delay.md)暂停 "Foreach" 循环中的下一次迭代，则需要将循环设置为按顺序运行。
 
-* 在嵌套循环中，迭代总是按顺序运行，而不是并行运行。 若要对嵌套循环中的项目并行运行操作，请创建并[调用子逻辑应用](../logic-apps/logic-apps-http-endpoint.md)。
+  默认行为的例外是嵌套循环，迭代始终按顺序运行，而不是并行运行。 若要对嵌套循环中的项目并行运行操作，请创建并[调用子逻辑应用](../logic-apps/logic-apps-http-endpoint.md)。
 
 * 若要在每次循环迭代期间从变量操作获得可预测的结果，请按顺序运行这些循环。 例如，当并发运行的循环结束时，递增变量、递减变量和附加到变量操作会返回可预测的结果。 但是，在并发运行循环的每次迭代期间，这些操作可能会返回不可预测的结果。 
 
@@ -173,7 +173,7 @@ ms.locfileid: "87066335"
 
    ![设置定期计划](./media/logic-apps-control-flow-loops/do-until-loop-set-trigger-properties.png)
 
-   | properties | 值 |
+   | Property | 值 |
    | -------- | ----- |
    | 间隔 | 1 | 
    | **频率** | 日期 |
@@ -189,7 +189,7 @@ ms.locfileid: "87066335"
 
    ![设置变量属性](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
-   | properties | 值 | 说明 |
+   | properties | Value | 描述 |
    | -------- | ----- | ----------- |
    | **名称** | 限制 | 变量的名称 | 
    | 类型 | Integer | 变量的数据类型 | 
@@ -230,9 +230,9 @@ ms.locfileid: "87066335"
 
       ![设置电子邮件属性](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-      | properties | 值 | 说明 |
+      | Property | 值 | 描述 |
       | -------- | ----- | ----------- | 
-      | **收件人** | *\<email-address\@domain>* | 收件人的电子邮件地址。 若要进行测试，请使用你自己的电子邮件地址。 | 
+      | **To** | *\<email-address\@domain>* | 收件人的电子邮件地址。 若要进行测试，请使用你自己的电子邮件地址。 | 
       | **主题** | “限制”的当前值为 **Limit** | 指定电子邮件主题。 对于本例，请确保包括 **Limit** 变量。 | 
       | **正文** | <*email-content*> | 指定你要发送的电子邮件消息内容。 对于本例，输入你喜欢的任何文本。 | 
       |||| 

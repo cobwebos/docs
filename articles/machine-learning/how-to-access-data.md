@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
 ms.custom: how-to, seodec18, tracking-python
-ms.openlocfilehash: ca7feacf5d631b4e85a0b3f4e7a039bbb79abe45
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: f30f2b45944281ed74da2026eb14e8938260b259
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460195"
+ms.locfileid: "87496094"
 ---
 # <a name="connect-to-azure-storage-services"></a>连接到 Azure 存储服务
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -176,7 +176,7 @@ file_datastore = Datastore.register_azure_file_share(workspace=ws,
 
 对于 Azure Data Lake Storage Gen2 (ADLS Gen 2) 数据存储，请使用 [register_azure_data_lake_gen2()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore.datastore?view=azure-ml-py#register-azure-data-lake-gen2-workspace--datastore-name--filesystem--account-name--tenant-id--client-id--client-secret--resource-url-none--authority-url-none--protocol-none--endpoint-none--overwrite-false-) 通过[服务主体权限](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)注册连接到 Azure DataLake Gen 2 存储的凭据数据存储。 
 
-若要使用服务主体，需要[注册应用程序](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)，并向服务主体授予“存储 Blob 数据读取者”访问权限。 详细了解 [ADLS Gen2 的访问控制设置](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 
+若要利用你的服务主体，你需要[注册应用程序](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)并向服务主体授予**存储 Blob 数据读取器**访问权限。 详细了解 [ADLS Gen2 的访问控制设置](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)。 
 
 以下代码会创建 `adlsgen2_datastore_name` 数据存储并将其注册到 `ws` 工作区。 此数据存储使用提供的服务主体凭据访问 `account_name` 存储帐户中的文件系统 `test`。
 
@@ -202,7 +202,9 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 
 <a name="studio"></a>
 
+
 ## <a name="create-datastores-in-the-studio"></a>在工作室中创建数据存储 
+
 
 在 Azure 机器学习 studio 的几个步骤中创建新的数据存储。
 
@@ -212,14 +214,13 @@ adlsgen2_datastore = Datastore.register_azure_data_lake_gen2(workspace=ws,
 1. 登录到 [Azure 机器学习工作室](https://ml.azure.com/)。
 1. 在左窗格中的“管理”下，选择“数据存储” 。
 1. 选择“+ 新建数据存储”。
-1. 填写新数据存储的表单。 该表单会根据你选择的 Azure 存储类型和身份验证类型智能地进行更新。 请参阅[存储访问和权限部分](#access-validation)，了解在哪里可以找到填写此窗体所需的身份验证凭据。
+1. 填写新数据存储的表单。 该表单会根据你选择的 Azure 存储类型和身份验证类型智能地进行更新。 请参阅[存储访问权限和权限部分](#access-validation)，了解在哪里可以找到需要填写此窗体的身份验证凭据。
 
 下面的示例演示创建**Azure blob 数据存储**时窗体的外观： 
     
 ![新数据存储的表单](media/how-to-access-data/new-datastore-form.png)
 
 <a name="train"></a>
-
 ## <a name="use-data-in-your-datastores"></a>使用数据存储中的数据
 
 创建数据存储后，[创建 Azure 机器学习数据集](how-to-create-register-datasets.md)以与数据进行交互。 数据集将数据打包到延迟计算的可用于机器学习任务的可耗用对象，例如培训。 它们还提供从 Azure 存储服务（如 Azure Blob 存储和 ADLS Gen 2）[下载或装载](how-to-train-with-datasets.md#mount-vs-download)任何格式文件的功能。 你还可以使用它们将表格数据加载到 pandas 或 Spark 数据帧中。

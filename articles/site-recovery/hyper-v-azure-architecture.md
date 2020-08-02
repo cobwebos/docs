@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 6dfa162de02174ac4a1a8251457249bd5ea4d766
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: af387b063a3c07d8b6b6c544814565e2a5ebdd46
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87416326"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495720"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Hyper-V 到 Azure 的灾难恢复体系结构
 
@@ -36,7 +36,7 @@ ms.locfileid: "87416326"
 
 **Hyper-V 到 Azure 体系结构（不使用 VMM）**
 
-![体系结构](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
+![在不包含 VMM 的情况下，显示本地 Hyper-v 站点到 Azure 体系结构的关系图。](./media/hyper-v-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
 ## <a name="architectural-components---hyper-v-with-vmm"></a>体系结构组件 - Hyper-V（使用 VMM）
@@ -53,7 +53,7 @@ ms.locfileid: "87416326"
 
 **Hyper-V 到 Azure 体系结构（使用 VMM）**
 
-![组件](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
+![显示本地 Hyper-v 站点与 Azure 体系结构（含 VMM）的图示。](./media/hyper-v-azure-architecture/arch-onprem-onprem-azure-vmm.png)
 
 ## <a name="set-up-outbound-network-connectivity"></a>设置出站网络连接
 
@@ -66,7 +66,7 @@ ms.locfileid: "87416326"
 
 如果使用基于 URL 的防火墙代理来控制出站连接，请允许访问以下 URL：
 
-| **名称**                  | **商用**                               | **Government**                                 | **说明** |
+| **Name**                  | **商用**                               | **Government**                                 | **说明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
@@ -76,7 +76,7 @@ ms.locfileid: "87416326"
 
 ## <a name="replication-process"></a>复制过程
 
-![从 Hyper-V 到 Azure 的复制](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
+![显示 Hyper-v 到 Azure 的复制过程的示意图](./media/hyper-v-azure-architecture/arch-hyperv-azure-workflow.png)
 
 **复制和恢复过程**
 
@@ -86,7 +86,7 @@ ms.locfileid: "87416326"
 1. 为 Hyper-V VM 启用保护以后，就会在 Azure 门户中或本地启动“启用保护”****。
 2. 该作业会检查计算机是否符合先决条件，然后调用 [CreateReplicationRelationship](/windows/win32/hyperv_v2/createreplicationrelationship-msvm-replicationservice)，以使用配置的设置来设置复制。
 3. 该作业通过调用 [StartReplication](/windows/win32/hyperv_v2/startreplication-msvm-replicationservice) 方法启动初始复制，以便初始化完整的 VM 复制，然后将 VM 的虚拟磁盘发送到 Azure。
-4. 可以在 "**作业**" 选项卡中监视作业。     ![作业列表 ](media/hyper-v-azure-architecture/image1.png) ![启用保护向下钻取](media/hyper-v-azure-architecture/image2.png)
+4. 可以在 "**作业**" 选项卡中监视作业。     !["作业" 选项卡中的 "作业" 列表屏幕截图。 ](media/hyper-v-azure-architecture/image1.png)!["启用保护" 屏幕的屏幕截图，其中包含更多详细信息。](media/hyper-v-azure-architecture/image2.png)
 
 
 ### <a name="initial-data-replication"></a>初始数据复制
@@ -123,7 +123,7 @@ ms.locfileid: "87416326"
 2. 重新同步完成后，应会恢复正常增量复制。
 3. 如果你不希望等待默认非工作时间的重新同步，可手动重新同步 VM。 例如，在发生中断时。 为此，请在 Azure 门户中选择“VM”>“重新同步”****。
 
-    ![手动重新同步](./media/hyper-v-azure-architecture/image4-site.png)
+    ![显示重新同步选项的屏幕截图。](./media/hyper-v-azure-architecture/image4-site.png)
 
 
 ### <a name="retry-process"></a>重试过程

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9b16a0edc1549a1b4d8ef5ba53d8b795f6d74e07
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 7c884ce839523706e67e4278f43e237e1a2b0580
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87418315"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496961"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>将 VMware/物理服务器复制到辅助本地站点的体系结构
 
@@ -42,7 +42,7 @@ ms.locfileid: "87418315"
 
 如果使用基于 URL 的防火墙代理来控制出站连接，请允许访问以下 URL：
 
-| **名称**                  | **商用**                               | **Government**                                 | **说明** |
+| **Name**                  | **商用**                               | **Government**                                 | **说明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | 允许将数据从 VM 写入源区域中的缓存存储帐户。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 向 Site Recovery 服务 URL 提供授权和身份验证。 |
@@ -55,9 +55,7 @@ ms.locfileid: "87418315"
 2. 在初始复制之后，每台计算机上的代理会将增量复制更改发送到进程服务器。
 3. 进程服务器将优化这些数据，并将其传输到辅助站点上的主目标服务器。 配置服务器将管理复制进程。
 
-**图 6：VMware 到 VMware 的复制**
-
-![VMware 到 VMware](./media/site-recovery-components/vmware-to-vmware.png)
+![显示将 VMware Vm 和物理服务器复制到辅助数据中心的图示](./media/site-recovery-components/vmware-to-vmware.png)
 
 
 

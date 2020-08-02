@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: f95c4256f4a0a3fdf410efecf9c22d578d1963a2
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 6bb85ada5ab1cd443d47ed85024b45d98354e97f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461793"
+ms.locfileid: "87500957"
 ---
 # <a name="optimize-data-processing-with-azure-machine-learning"></a>使用 Azure 机器学习优化数据处理
 
@@ -64,7 +64,6 @@ CSV 文件通常用于导入和导出数据，因为它们易于在 Excel 中进
 * 使用像 `Spark` 或 `Dask` 这样的框架来处理“超出内存”的数据。 通过这种方式，数据帧按分区加载到 RAM 中并进行处理，最后收集最终结果。  
 
 * 使用分布式框架横向扩展到群集。 采用这种方式，将拆分数据处理负载并在多个 CPU 上并行运行，最后收集最终结果。
-
 
 ### <a name="recommended-distributed-frameworks"></a>建议的分布式框架
 
