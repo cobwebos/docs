@@ -67,7 +67,9 @@
     - name: 软删除
       items:
         - name: Azure Key Vault 软删除
-          href: overview-soft-delete.md
+          href: soft-delete-overview.md
+        - name: 软删除默认启用
+          href: soft-delete-change.md
     - name: 身份验证、请求和响应
       href: authentication-requests-and-responses.md
     - name: Azure Key Vault 限制指南

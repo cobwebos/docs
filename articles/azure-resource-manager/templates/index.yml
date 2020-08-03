@@ -11,13 +11,13 @@ metadata:
   ms.collection: na
   author: mumian
   ms.author: jgao
-  ms.date: 07/07/2020
-  ms.openlocfilehash: 4a40b64c72946c84d034e13f3a22b7cda2b9c6aa
-  ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+  ms.date: 07/30/2020
+  ms.openlocfilehash: 6a21841d24fcafefe25473e428e1926849f5e9cf
+  ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/08/2020
-  ms.locfileid: "86118862"
+  ms.lasthandoff: 07/30/2020
+  ms.locfileid: "87446744"
 landingContent:
 - title: 关于 ARM 模板
   linkLists:
@@ -31,6 +31,8 @@ landingContent:
       url: template-best-practices.md
     - text: 常见问题
       url: frequently-asked-questions.md
+    - text: 模板规格
+      url: template-specs.md
     - text: 部署模式
       url: deployment-modes.md
     - text: 链接模板
@@ -47,18 +49,18 @@ landingContent:
       url: quickstart-create-templates-use-the-portal.md
     - text: 创建模板 - VS Code
       url: quickstart-create-templates-use-visual-studio-code.md
-    - text: 创建模板 - Visual Studio
-      url: create-visual-studio-deployment-project.md
   - linkListType: tutorial
     links:
     - text: 入门教程
       url: template-tutorial-create-first-template.md
-    - text: 部署多个实例
-      url: template-tutorial-create-multiple-instances.md
-    - text: 设置部署顺序
-      url: template-tutorial-create-templates-with-dependent-resources.md
-    - text: 集成密钥保管库
-      url: template-tutorial-use-key-vault.md
+    - text: 部署
+      url: deployment-tutorial-local-template.md
+  - linkListType: learn
+    links:
+    - text: 一致的基础结构
+      url: /learn/modules/create-azure-resource-manager-template-vs-code/
+    - text: 多个环境
+      url: /learn/modules/modify-azure-resource-manager-template-reuse/
 - title: 开发模板
   linkLists:
   - linkListType: how-to-guide
@@ -91,6 +93,8 @@ landingContent:
       url: deploy-portal.md
     - text: REST API
       url: deploy-rest.md
+    - text: “部署到 Azure”按钮
+      url: deploy-to-azure-button.md
     - text: 模拟部署
       url: template-deploy-what-if.md
 - title: 作用域内部署
@@ -103,6 +107,8 @@ landingContent:
       url: deploy-to-management-group.md
     - text: 租户
       url: deploy-to-tenant.md
+    - text: 跨范围部署
+      url: cross-scope-deployment.md
 - title: 浏览参考内容
   linkLists:
   - linkListType: reference
@@ -125,6 +131,8 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: 测试工具包
+      url: test-toolkit.md
     - text: 导出模板
       url: export-template-portal.md
     - text: CI/CD

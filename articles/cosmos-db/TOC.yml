@@ -176,7 +176,7 @@
         - name: 数组和对象
           displayName: 'object and array creation, object and array'
           href: sql-query-object-array.md
-        - name: Keywords
+        - name: 关键字
           displayName: 'keywords, distinct, between, in, top'
           href: sql-query-keywords.md
         - name: 常量
@@ -592,6 +592,8 @@
           href: policy.md
     - name: 服务配额
       href: concepts-limits.md
+    - name: 自动建议
+      href: automated-recommendations.md
 - name: Cassandra、MongoDB 和其他 API
   expanded: true
   items:

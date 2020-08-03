@@ -4,6 +4,8 @@
   items:
     - name: 什么是 Data Lake Analytics？
       href: data-lake-analytics-overview.md
+    - name: Data Lake Analytics 中的新增功能
+      href: data-lake-analytics-whats-new.md
 - name: 入门
   items:
     - name: Azure 门户
@@ -25,6 +27,9 @@
   items:
     - name: 安全性
       items:
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: Azure 安全基准的安全基线
           href: security-baseline.md
 - name: 如何

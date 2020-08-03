@@ -10,14 +10,16 @@
       href: load-balancer-faqs.md
 - name: 快速入门
   items:
-    - name: 创建负载均衡器 - 门户
+    - name: 创建公共负载均衡器 - 门户
       href: quickstart-load-balancer-standard-public-portal.md
-    - name: 创建负载均衡器 - Azure CLI
+    - name: 创建公共负载均衡器 - Azure CLI
       href: quickstart-load-balancer-standard-public-cli.md
-    - name: 创建负载均衡器 - Azure PowerShell
+    - name: 创建公共负载均衡器 - Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: 创建负载均衡器 - ARM 模板
+    - name: 创建公共负载均衡器 - ARM 模板
       href: quickstart-load-balancer-standard-public-template.md
+    - name: 创建内部负载均衡器 - 门户
+      href: quickstart-load-balancer-standard-internal-portal.md
   expanded: true
 - name: 教程
   items:
@@ -126,7 +128,7 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: 内部负载均衡器 - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
-- name: 故障排除
+- name: 疑难解答
   items:
     - name: 对 Azure 负载均衡器进行故障排除
       href: load-balancer-troubleshoot.md

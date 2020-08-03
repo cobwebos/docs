@@ -109,7 +109,7 @@
           href: functions-bindings-return-value.md
         - name: 处理绑定错误
           href: functions-bindings-errors.md
-    - name: Languages
+    - name: 语言
       items:
         - name: 支持的语言
           href: supported-languages.md
@@ -119,7 +119,7 @@
           href: functions-reference-csharp.md
         - name: F#
           href: functions-reference-fsharp.md
-        - name: JavaScript
+        - name: Javascript
           href: functions-reference-node.md
         - name: Java
           href: functions-reference-java.md
@@ -129,6 +129,10 @@
           href: functions-reference-python.md
         - name: TypeScript
           href: functions-reference-node.md#typescript
+    - name: 框架
+      items:
+        - name: Express.js
+          href: shift-expressjs.md
     - name: 安全性
       items:
         - name: 安全概述
@@ -372,7 +376,7 @@
             - name: 输入
               displayName: Blob storage
               href: functions-bindings-storage-blob-input.md
-            - name: 输出
+            - name: Output
               displayName: Blob storage
               href: functions-bindings-storage-blob-output.md
         - name: Azure Cosmos DB
@@ -392,7 +396,7 @@
                 - name: 输入
                   href: functions-bindings-cosmosdb-v2-input.md
                   displayName: Azure Cosmos DB
-                - name: 输出
+                - name: Output
                   href: functions-bindings-cosmosdb-v2-output.md
                   displayName: Azure Cosmos DB
         - name: 事件网格

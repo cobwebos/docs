@@ -175,6 +175,22 @@
               href: roles-custom-available-permissions.md
             - name: 委托应用管理权限
               href: roles-delegate-app-roles.md
+        - name: 通过组来管理角色分配
+          items:
+            - name: 基于组的角色分配预览
+              href: roles-groups-concept.md
+            - name: 创建可分配角色的组
+              href: roles-groups-create-eligible.md
+            - name: 向组分配角色
+              href: roles-groups-assign-role.md
+            - name: 从组中删除角色分配
+              href: roles-groups-remove-assignment.md
+            - name: 查看组的角色分配
+              href: roles-groups-view-assignments.md
+            - name: 使组符合 PIM 中的角色
+              href: roles-groups-pim-eligible.md
+            - name: 常见问题解答和故障排除
+              href: roles-groups-faq-troubleshooting.md
         - name: 按任务分配的最低权限角色
           href: roles-delegate-by-task.md
         - name: Microsoft 365 角色

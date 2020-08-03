@@ -9,7 +9,7 @@
 - name: 教程
   expanded: true
   items:
-    - name: 创建基本托管域
+    - name: 创建托管域
       href: tutorial-create-instance.md
     - name: 为应用配置虚拟网络
       href: tutorial-configure-networking.md
@@ -21,9 +21,11 @@
       href: tutorial-configure-ldaps.md
     - name: 配置密码哈希同步
       href: tutorial-configure-password-hash-sync.md
-    - name: 创建高级托管域
+    - name: 创建副本集（预览）
+      href: tutorial-create-replica-set.md
+    - name: 创建自定义托管域
       href: tutorial-create-instance-advanced.md
-    - name: 创建林信任（预览版）
+    - name: 创建林信任
       href: tutorial-create-forest-trust.md
 - name: 示例
   items:
@@ -33,12 +35,16 @@
       href: template-create-instance.md
     - name: 使用 Azure AD PowerShell 配置作用域内同步
       href: powershell-scoped-synchronization.md
+    - name: 使用 Azure PowerShell 创建资源林和信任
+      href: create-resource-forest-powershell.md
 - name: 概念
   items:
     - name: 管理基础知识
       href: administration-concepts.md
     - name: 常见部署方案
       href: scenarios.md
+    - name: 副本集（预览）
+      href: concepts-replica-sets.md
     - name: 林和信任
       items:
         - name: 资源林

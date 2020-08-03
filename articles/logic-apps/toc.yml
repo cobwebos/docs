@@ -28,6 +28,8 @@
       href: tutorial-process-email-attachments-workflow.md
 - name: 示例
   items:
+    - name: 创建逻辑应用 - 示例脚本
+      href: sample-logic-apps-cli-script.md
     - name: Azure 代码示例
       href: /samples/browse/?products=azure-logic-apps
     - name: 资源管理器快速启动模板

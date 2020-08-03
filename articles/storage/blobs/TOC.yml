@@ -262,7 +262,7 @@
           items:
             - name: 监视存储帐户
               href: ../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 从经典指标迁移
+            - name: 从经典指标转换
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 监视（经典）
               items:
@@ -685,7 +685,7 @@
           items:
             - name: 监视存储帐户
               href: ../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 从经典指标迁移
+            - name: 从经典指标转换
               href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 监视（经典）
               items:
