@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8c52b2141d2f29303939facf89d4a59fb3d333fd
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 3d680fb105b6bde26e5b02544359009f316647bb
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171881"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513717"
 ---
 # <a name="about-virtual-hub-routing"></a>关于虚拟中心路由
 
@@ -27,7 +27,7 @@ ms.locfileid: "87171881"
 以下部分介绍了虚拟中心路由的关键概念。
 
 > [!NOTE]
-> 在虚拟网络连接中，一些用于中心路由表、关联、传播和静态路由的新概念可能仍在推出，并应在8月3日的第一周完成。
+> 在虚拟网络连接中，一些用于中心路由表、关联、传播和静态路由的新概念可能仍在推出，并应在8月17日的某个星期完成。
 >
 
 ### <a name="hub-route-table"></a><a name="hub-route"></a>中心路由表
@@ -77,9 +77,9 @@ ms.locfileid: "87171881"
 
 * **在虚拟中心中具有预先存在的路由的标准虚拟 WAN 客户**：
 
-若要使用新的路由表功能，请等到8月3日起，才能完成 Azure 中的推出。 如果在 Azure 门户中的中心的 "路由" 部分中具有预先存在的路由，则需要先删除它们，然后尝试创建新的路由表（在 Azure 门户中的中心的 "路由表" 部分中提供）
+若要使用新的路由表功能，请等到8月17日的第几周结束，才能完成 Azure 中的推出。 如果在 Azure 门户中的中心的 "路由" 部分中具有预先存在的路由，则需要先删除它们，然后尝试创建新的路由表（在 Azure 门户中的中心的 "路由表" 部分中提供）
 
-* **在虚拟中心中具有预先存在的路由的基本虚拟 WAN 客户**：若要使用新的路由表功能，请等一下，这些功能在 Azure 中推出要到 8 月第 3 周才能完成。 如果你在 Azure 门户中的中心的“路由”部分具有预先存在的路由，则需要首先删除它们，再将虚拟 WAN 从基本版升级到标准版。 请参阅[将虚拟 WAN 从基本版升级到标准版](upgrade-virtual-wan.md)。
+* **具有虚拟中心中预先存在的路由的基本虚拟 WAN 客户**：若要使用新的路由表功能，请等到8月17日开始推出，才能完成 Azure 中的推出。 如果你在 Azure 门户中的中心的“路由”部分具有预先存在的路由，则需要首先删除它们，再将虚拟 WAN 从基本版升级到标准版。 请参阅[将虚拟 WAN 从基本版升级到标准版](upgrade-virtual-wan.md)。
 
 ## <a name="virtual-wan-routing-considerations"></a><a name="considerations"></a>虚拟 WAN 路由注意事项
 

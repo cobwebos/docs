@@ -1,6 +1,6 @@
 ---
 title: 有关 Azure NetApp 文件的常见问题解答 |Microsoft Docs
-description: 解答有关 Azure NetApp 文件的常见问题。
+description: 查看有关 Azure NetApp 文件（如网络、安全性、性能、容量管理和数据迁移/保护）的常见问题。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.author: b-juche
-ms.openlocfilehash: be18a9d54049562eebc27720988b085c3e14f2da
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: f9552b82dc79e1edafb13fead5a07df3ecf1be3b
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85956503"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512952"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 

@@ -1,17 +1,17 @@
 ---
 title: 在 Azure 数据共享中配置数据集映射
 description: 了解如何使用 Azure 数据共享为接收的共享配置数据集映射。
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 07/10/2019
-ms.openlocfilehash: 52a8b9c5441f9261f8b9179c8100cdb01777bfd1
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/30/2020
+ms.openlocfilehash: 82de05e7169c5803dd999521f61a33b9dd17b567
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119950"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87511949"
 ---
 # <a name="how-to-configure-a-dataset-mapping-for-a-received-share-in-azure-data-share"></a>如何为 Azure 数据共享中接收的共享配置数据集映射
 

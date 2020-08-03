@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 02/03/2020
+ms.date: 08/01/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: c02b0d63db3a761f52c9ea15e6fc6ba3356cd4be
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 122a3e243f314395ea7b1d32b88a5e20b0965eef
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421359"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512000"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>高性能计算 VM 大小
 
@@ -42,9 +42,11 @@ Azure H 系列虚拟机（Vm）旨在为各种真实的 HPC 工作负荷提供�
 > 支持 RDMA 的所有 Vm 都支持 RDMA over IB。
 > 仅支持 SR-IOV 的 Vm 上的 IP over IB。
 
-- **操作系统**-适用于 HPC vm 的 Linux 非常受支持;通常使用发行版，例如 CentOS、RHEL、Ubuntu 和 SUSE。 对于 Windows 支持，所有 HPC 系列 Vm 都支持 Windows Server 2016 和更高版本。 Windows Server 2012 R2、非 SR-IOV 启用的 Vm （H16r、H16mr、A8 和 A9）上也支持 windows Server 2012。 请注意，[在 HBv2 和具有超过64（虚拟或物理）内核的其他 vm 上不支持 Windows Server 2012 R2](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)。
+- **操作系统**-适用于 HPC vm 的 Linux 非常受支持;通常使用发行版，例如 CentOS、RHEL、Ubuntu 和 SUSE。 对于 Windows 支持，所有 HPC 系列 Vm 都支持 Windows Server 2016 和更高版本。 Windows Server 2012 R2、非 SR-IOV 启用的 Vm （H16r、H16mr、A8 和 A9）上也支持 windows Server 2012。 请注意，[在 HBv2 和具有超过64（虚拟或物理）内核的其他 vm 上不支持 Windows Server 2012 R2](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows)。 请参阅[VM 映像](./workloads/hpc/configure.md)，获取 Marketplace 上支持的 vm 映像列表，以及如何对其进行相应的配置。
 
-- **无限和 RDMA 驱动程序**-在启用了支持的 vm 上，需要适当的驱动程序才能启用 RDMA。 在 Linux 上，Marketplace 中的 CentOS-HPC VM 映像已预先配置了适当的驱动程序。 可以使用[此处的说明](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)，使用正确的驱动程序配置 Ubuntu VM 映像。 在启用了 sr-iov 和 N 系列 Vm 的 sr-iov 上，可以使用[INFINIBANDDRIVERLINUX VM 扩展](./extensions/hpc-compute-infiniband-linux.md)安装 Mellanox OFED 驱动程序并启用 "无序"。 详细了解如何在支持 RDMA 的 VM sat [HPC 工作负荷](./workloads/hpc/overview.md)上启用允许。
+- **无限和 RDMA 驱动程序**-在启用了支持的 vm 上，需要适当的驱动程序才能启用 RDMA。 在 Linux 上，对于启用 SR-IOV 和非 SR-IOV 虚拟机的 Vm，Marketplace 中的 CentOS-HPC VM 映像已预先配置了适当的驱动程序。 可以使用[此处的说明](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)，使用正确的驱动程序配置 Ubuntu VM 映像。 请参阅[配置和优化 LINUX OS 的 vm](./workloads/hpc/configure.md) ，详细了解可用的 VM linux os 映像。
+
+   在 Linux 上，可以使用[INFINIBANDDRIVERLINUX VM 扩展](./extensions/hpc-compute-infiniband-linux.md)安装 Mellanox OFED 驱动程序，并在启用 Sr-iov 的 H 和 N 系列 vm 上启用不受支持。 详细了解如何在[HPC 工作负荷](./workloads/hpc/enable-infiniband.md)的支持 RDMA 的 vm 上启用允许。
 
    在 Windows 上， [INFINIBANDDRIVERWINDOWS VM 扩展](./extensions/hpc-compute-infiniband-windows.md)为 RDMA 连接性安装 Windows 网络直接驱动程序（在非 sr-iov vm 上）或 Mellanox OFED 驱动程序（在 sr-iov vm 上）。 在某些 A8 和 A9 实例的部署中，会自动添加 HpcVmDrivers 扩展。 请注意，不推荐使用 HpcVmDrivers VM 扩展;它不会更新。
 
@@ -99,5 +101,5 @@ Azure 提供了多个选项，用于创建可使用 RDMA 网络通信的 Windows
 ## <a name="next-steps"></a>后续步骤
 
 - 详细了解如何优化 Azure 的 HPC 应用程序以及[Hpc 工作负荷](./workloads/hpc/overview.md)中的一些示例。
-
 - 阅读有关[Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)的最新公告和一些 HPC 示例和结果。
+- 有关运行 HPC 工作负荷的更高层次结构视图，请参阅[Azure 上的高性能计算（HPC）](/azure/architecture/topics/high-performance-computing/)。

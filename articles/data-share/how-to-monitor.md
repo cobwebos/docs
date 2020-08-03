@@ -1,17 +1,17 @@
 ---
 title: 如何监视 Azure 数据共享
 description: 了解如何在 Azure 数据共享中监视邀请状态、共享订阅和快照历史记录
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 07/10/2019
-ms.openlocfilehash: 3ee3f0d37c8e35972a1fc2b8c5d04504d2e065f3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/30/2020
+ms.openlocfilehash: 2a986afa1916d179834c516a26f76a2789f82452
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120188"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87511881"
 ---
 # <a name="monitor-azure-data-share"></a>监视 Azure Data Share  
 

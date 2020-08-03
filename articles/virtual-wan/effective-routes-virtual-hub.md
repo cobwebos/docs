@@ -7,19 +7,19 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/29/2020
 ms.author: cherylmc
-ms.openlocfilehash: 20cdc55b474034480392f9dfb05b20ad25df6939
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: a7e42ddeb4abacd8707dda4cd558933b0d7a34f4
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037760"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513700"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>查看虚拟中心有效路由
 
 可以在 Azure 门户中查看虚拟 WAN 集线器的所有路由。 本文将指导你完成查看有效路由的步骤。 有关虚拟中心路由的详细信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。
 
 > [!NOTE]
-> 在 Azure 门户上，其中的某些功能可能仍在推出，在8月3日前仍不可用。 
+> 在 Azure 门户，其中的某些功能可能仍在推出，在8月17日之前不可用。 
 >
 
 ## <a name="select-connections-or-route-tables"></a><a name="routing"></a>选择连接或路由表
@@ -52,7 +52,7 @@ ms.locfileid: "86037760"
 
 使用表底部的滚动条查看 "AS Path"。
 
-| **作为** |  **下一跃点类型** | **下一跃点** |  **路由源** |**作为路径** |
+| **Prefix** |  **下一跃点类型** | **下一跃点** |  **路由源** |**作为路径** |
 | ---        | ---                | ---          | ---               | ---         |
 | 10.2.0.0/24| VPN_S2S_Gateway |10.1.0.6, 10.1.0.7|/subscriptions/ `<sub id>` /ResourceGroups/ `<resource group name>` /providers/Microsoft.Network/vpnGateways/vpngw| 20000|
 
@@ -64,5 +64,5 @@ ms.locfileid: "86037760"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关虚拟 WAN 的详细信息，请参阅[虚拟 Wan 概述](virtual-wan-about.md)。
+* 有关虚拟 WAN 的详细信息，请参阅[虚拟 WAN 概述](virtual-wan-about.md)。
 * 有关虚拟中心路由的详细信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。

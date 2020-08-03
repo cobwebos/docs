@@ -403,6 +403,13 @@
           href: ps-template.md
         - name: 连接到 VM
           href: connect-logon.md
+        - name: 连接到 Linux VM
+          displayName: ssh keygen ssk-key putty
+          items:
+            - name: 在门户中
+              href: ../ssh-keys-portal.md
+            - name: 在 Windows 上
+              href: ../linux/ssh-from-windows.md
         - name: 使用 Azure 混合权益许可证
           href: hybrid-use-benefit-licensing.md
         - name: 使用用于 Windows 10 的多租户托管权限

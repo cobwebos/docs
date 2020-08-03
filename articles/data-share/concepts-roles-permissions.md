@@ -1,17 +1,17 @@
 ---
 title: Azure Data Share 的角色和要求
 description: 了解使用 Azure 数据共享来共享和接收数据所需的权限。
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
-ms.date: 07/10/2019
-ms.openlocfilehash: 229d4fd6647a8a1b756fedee2a864d00b9c7de62
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/30/2020
+ms.openlocfilehash: 84d1ba6ff343b5f3d1f88d7ae5c618601f416e2c
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86110991"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513758"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Azure Data Share 的角色和要求 
 
@@ -33,7 +33,7 @@ ms.locfileid: "86110991"
 |**数据存储类型**|**数据访问接口源数据存储**|**数据使用者目标数据存储**|
 |---|---|---|
 |Azure Blob 存储| 存储 Blob 数据读取者 | 存储 Blob 数据参与者
-|Azure Data Lake Gen1 | 所有者 | 不支持
+|Azure Data Lake Gen1 | 所有者 | 不受支持
 |Azure Data Lake Gen2 | 存储 Blob 数据读取者 | 存储 Blob 数据参与者
 |Azure SQL Server | SQL DB 参与者 | SQL DB 参与者
 |Azure 数据资源管理器群集 | 参与者 | 参与者
@@ -43,7 +43,7 @@ ms.locfileid: "86110991"
 
 |**SQL 数据库类型**|**数据访问接口 SQL 用户权限**|**数据使用者 SQL 用户权限**|
 |---|---|---|
-|Azure SQL Database | db_datareader | db_datareader、db_datawriter db_ddladmin
+|Azure SQL 数据库 | db_datareader | db_datareader、db_datawriter db_ddladmin
 |Azure Synapse Analytics（以前称为 SQL DW） | db_datareader | db_datareader、db_datawriter db_ddladmin
 |
 
@@ -62,7 +62,7 @@ ms.locfileid: "86110991"
 1. 选择 "**添加角色分配**"。
 1. 在 "*角色*" 下，选择上一个角色分配表中的角色（例如，对于 "存储帐户"，选择 "*存储 Blob 数据读取器*"）。
 1. 在 "*选择*" 下，键入 Azure 数据共享资源的名称。
-1. 单击“保存” 。
+1. 单击“保存”。
 
 对于基于 SQL 的源，除了上述步骤外，还需要从 SQL 数据库中的外部提供程序创建一个与 Azure 数据共享资源同名的 SQL 用户。 需要授予此用户*db_datareader*权限。 可以在 "[共享数据](share-your-data.md)" 教程中找到与基于 SQL 的共享一起使用的示例脚本和其他先决条件。 
 
@@ -80,7 +80,7 @@ ms.locfileid: "86110991"
 1. 选择 "**添加角色分配**"。
 1. 在 "*角色*" 下，选择上一个角色分配表中的角色（例如，对于 "存储帐户"，选择 "*存储 Blob 数据读取器*"）。
 1. 在 "*选择*" 下，键入 Azure 数据共享资源的名称。
-1. 单击“保存” 。
+1. 单击“保存”。
 
 对于基于 SQL 的目标，除了上述步骤外，还需要从 SQL 数据库中的外部提供程序创建一个与 Azure 数据共享资源同名的 SQL 用户。 此用户需要被授予*db_datareader、db_datawriter db_ddladmin*权限。 可以在[接受和接收数据](subscribe-to-data-share.md)教程中找到一个示例脚本以及基于 SQL 的共享的其他必备组件。 
 
@@ -90,7 +90,13 @@ ms.locfileid: "86110991"
 
 ## <a name="resource-provider-registration"></a>资源提供程序注册 
 
-若要在 Azure 租户中首次查看 Azure 数据共享邀请，你可能需要手动将 DataShare 资源提供程序注册到你的 Azure 订阅中。 按照以下步骤将 DataShare 资源提供程序注册到你的 Azure 订阅。 需要对 Azure 订阅的*参与者*访问权限才能注册资源提供程序。
+在以下情况下，你可能需要在 Azure 订阅中手动注册 DataShare 资源提供程序： 
+
+* 第一次在 Azure 租户中查看 Azure 数据共享邀请
+* 使用 Azure 数据共享资源从其他 Azure 订阅中的 Azure 数据存储共享数据
+* 将数据从 Azure 数据共享资源传入不同 Azure 订阅中的 Azure 数据存储
+
+按照以下步骤将 DataShare 资源提供程序注册到你的 Azure 订阅。 需要对 Azure 订阅的*参与者*访问权限才能注册资源提供程序。
 
 1. 在 Azure 门户中，导航到 "**订阅**"。
 1. 选择要用于 Azure 数据共享的订阅。

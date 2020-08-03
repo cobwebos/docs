@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure NetApp 文件管理卷 | Microsoft Docs
-description: 介绍如何使用 Azure NetApp 文件服务管理卷。
+description: 了解如何在 Azure NetApp 文件中查看、更新或删除卷。 若要删除卷，请首先删除卷的所有子对象。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 64d83cc88f66eefad8980bead7fe37ad1782873f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a50de55846ba22a0be1bb2e9fa5a9224abe87a49
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483544"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513819"
 ---
 # <a name="manage-volumes-by-using-azure-netapp-files"></a>使用 Azure NetApp 文件管理卷
 可以通过查看、更新或删除卷来管理卷。 

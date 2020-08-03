@@ -11,16 +11,19 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8ceb375eb9da853b4c89ffe278d3483f6a4fa72
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a3a06f01507ad5715d1e8a3f828ab008e1e8ce65
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050950"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512969"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Azure Active Directory 概述的组合安全信息注册
 
 在进行合并注册之前，用户分别注册了 Azure 多重身份验证和自助式密码重置 (SSPR) 的身份验证方法。 人们搞糊涂，使用了类似的方法进行多重身份验证和 SSPR，但他们不得不注册这两种功能。 现在，通过组合注册，用户可以注册一次，并获得多重身份验证和 SSPR 的优势。
+
+> [!NOTE]
+> 自2020年8月15日起，将自动为所有新的 Azure AD 租户启用合并注册。
 
 本文概述了安全注册的组合。 若要开始结合安全注册，请参阅以下文章：
 
@@ -48,18 +51,18 @@ Azure AD 组合的安全信息注册目前不适用于国内云，如 Azure 美�
 
 组合注册支持以下身份验证方法和操作：
 
-| 方法 | 注册 | 更改 | Delete |
+| 方法 | 注册 | 更改 | 删除 |
 | --- | --- | --- | --- |
 | Microsoft Authenticator | 是（最多5个） | 否 | 是 |
 | 其他验证器应用 | 是（最多5个） | 否 | 是 |
 | 硬件令牌 | 否 | 否 | 是 |
-| 电话 | 是 | 是 | 是 |
-| 备用号码 | 是 | 是 | 是 |
+| 电话 | “是” | “是” | “是” |
+| 备用号码 | “是” | “是” | “是” |
 | 办公电话 | 否 | 否 | 否 |
-| 电子邮件 | 是 | 是 | 是 |
-| 安全性问题 | 是 | No | 是 |
-| 应用密码 | 是 | No | 是 |
-| FIDO2 安全密钥<br />*托管模式，仅从 "[安全信息](https://mysignins.microsoft.com/security-info)" 页*| 是 | 是 | 是 |
+| 电子邮件 | “是” | “是” | “是” |
+| 安全性问题 | 是 | 否 | 是 |
+| 应用密码 | 是 | 否 | 是 |
+| FIDO2 安全密钥<br />*托管模式，仅从 "[安全信息](https://mysignins.microsoft.com/security-info)" 页*| “是” | “是” | “是” |
 
 > [!NOTE]
 > 应用密码仅适用于已强制执行多重身份验证的用户。 对于通过条件性访问策略启用多重身份验证的用户，不能使用应用密码。

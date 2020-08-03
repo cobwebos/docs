@@ -5,14 +5,15 @@ author: ju-shim
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.author: jushiman
-ms.openlocfilehash: 34f89656fc56b27edafeff0e60874a00139266dd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/01/2020
+ms.author: amverma
+ms.reviewer: jushiman
+ms.openlocfilehash: 797a036b9cf2e77dfbcdf8dc7596179c4673e6a6
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87268945"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513734"
 ---
 # <a name="h-series"></a>H 系列
 
@@ -98,4 +99,7 @@ Azure Marketplace 提供了许多支持 RDMA 连接的 Linux 分发版：
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
+- 详细了解如何优化 Azure 的 HPC 应用程序以及[Hpc 工作负荷](./workloads/hpc/overview.md)中的一些示例。
+- 阅读有关[Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)的最新公告和一些 HPC 示例和结果。
+- 有关运行 HPC 工作负荷的更高层次结构视图，请参阅[Azure 上的高性能计算（HPC）](/azure/architecture/topics/high-performance-computing/)。
+- 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。

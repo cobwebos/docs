@@ -2,16 +2,16 @@
 title: Azure 数据共享中支持的数据存储
 description: 了解使用 Azure 数据共享支持的数据存储。
 ms.service: data-share
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.topic: conceptual
-ms.date: 10/30/2019
-ms.openlocfilehash: 8263e2b2d3d8d029cd28f6c8ea6c556fb9fe23be
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 07/30/2020
+ms.openlocfilehash: 967b2dceab1f1702120cd3121ccd64b4e7286bc6
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108288"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87511898"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Azure 数据共享中支持的数据存储
 
@@ -28,7 +28,7 @@ Azure 数据共享提供了开放式和灵活的数据共享，包括从和到�
 | Azure Blob 存储 |✓ | |
 | Azure Data Lake Storage Gen1 |✓ | |
 | Azure Data Lake Storage Gen2 |✓ ||
-| Azure SQL Database |公共预览版 | |
+| Azure SQL 数据库 |公共预览版 | |
 | Azure Synapse Analytics （以前称为 Azure SQL DW） |公共预览版 | |
 | Azure 数据资源管理器 | |公共预览版 |
 
@@ -38,12 +38,12 @@ Azure 数据共享提供了开放式和灵活的数据共享，包括从和到�
 
 下表详细说明了数据使用者在接受和配置其数据共享时具有的不同组合和选择。 有关如何配置数据集映射的详细信息，请参阅[如何配置数据集映射](how-to-configure-mapping.md)。
 
-| 数据存储 | Azure Blob 存储 | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL Database | Azure Synapse Analytics | Azure 数据资源管理器
+| 数据存储 | Azure Blob 存储 | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL 数据库 | Azure Synapse Analytics | Azure 数据资源管理器
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob 存储 | ✓ || ✓ ||
 | Azure Data Lake Storage Gen1 | ✓ | | ✓ ||
 | Azure Data Lake Storage Gen2 | ✓ | | ✓ ||
-| Azure SQL Database | ✓ | | ✓ | ✓ | ✓ ||
+| Azure SQL 数据库 | ✓ | | ✓ | ✓ | ✓ ||
 | Azure Synapse Analytics （以前称为 Azure SQL DW） | ✓ | | ✓ | ✓ | ✓ ||
 | Azure 数据资源管理器 |||||| ✓ |
 
