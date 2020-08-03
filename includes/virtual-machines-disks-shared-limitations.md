@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/14/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d2cf7dbcd97c8f740447607eaf443bc3ea4a6733
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f6175a797b14077cafacaca1f2fd48f36e945d9e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500578"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87425137"
 ---
 启用共享磁盘仅适用于磁盘类型的子集。 目前只有超磁盘和高级 Ssd 可以启用共享磁盘。 已启用共享磁盘的每个托管磁盘受到下列限制，按磁盘类型进行组织：
 
@@ -25,6 +25,8 @@ ms.locfileid: "86500578"
 
 - 目前仅限于 Azure 资源管理器或 SDK 支持。 
 - 在某些版本的 Windows Server 故障转移群集中只能使用基本磁盘，有关详细信息，请参阅[故障转移群集硬件要求和存储选项](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements)。
+
+共享的 ultra 磁盘在默认情况下支持的所有区域均提供，无需注册访问权限即可使用这些磁盘。
 
 ### <a name="premium-ssds"></a>高级 SSD
 
@@ -38,4 +40,4 @@ ms.locfileid: "86500578"
 - 在某些版本的 Windows Server 故障转移群集中只能使用基本磁盘，有关详细信息，请参阅[故障转移群集硬件要求和存储选项](https://docs.microsoft.com/windows-server/failover-clustering/clustering-requirements)。
 - Azure 备份和 Azure Site Recovery 支持尚不可用。
 
-如果你对尝试共享磁盘感兴趣，请[注册以进行访问](https://aka.ms/AzureSharedDiskGASignUp)。
+如果你对尝试使用共享高级 Ssd 感兴趣，请[注册以获取访问权限](https://aka.ms/AzureSharedDiskGASignUp)。
