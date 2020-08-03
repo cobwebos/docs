@@ -1,18 +1,18 @@
 ---
-title: 排查 IoT Edge 上的实时视频分析问题
-description: 本文介绍 IoT Edge 上的实时视频分析的故障排除步骤。
+title: 对 IoT Edge 上的实时视频分析进行故障排除 - Azure
+description: 本文介绍对 IoT Edge 上的实时视频分析进行故障排除的步骤。
 author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: ca41a403f789fd529ac65c21799d3d3e7f3becf6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: bbd3cb88b017209adff58a646e274caf31ab425f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285452"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486436"
 ---
-# <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>排查 IoT Edge 上的实时视频分析问题
+# <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>对 IoT Edge 上的实时视频分析进行故障排除
 
 本文介绍 Azure IoT Edge 上的实时视频分析（LVA）的故障排除步骤。
 
@@ -29,7 +29,7 @@ ms.locfileid: "87285452"
 1. [重新启动容器](../../iot-edge/troubleshoot.md#restart-containers)。
 1. [检查防火墙和端口配置规则](../../iot-edge/troubleshoot.md#check-your-firewall-and-port-configuration-rules)。
 
-### <a name="pre-deployment-issues"></a>部署前问题
+### <a name="pre-deployment-issues"></a>部署前的问题
 
 如果边缘基础结构良好，则可以查找部署清单文件的问题。 若要在 IoT Edge 设备上和任何其他 IoT 模块一起部署 IoT Edge 模块上的实时视频分析，请使用包含 IoT Edge 中心、IoT Edge 代理以及其他模块及其属性的部署清单。 如果 JSON 代码格式不正确，则可能会收到以下错误： 
 
@@ -60,9 +60,9 @@ az iot edge set-modules --hub-name <iot-hub-name> --device-id lva-sample-device 
     * 406 - IoT Edge 设备脱机或不发送状态报告。
     * 500 - IoT Edge 运行时中出现了一个错误。
 
-1. 如果收到状态501代码，请检查以确保直接方法名称准确无误。 如果方法名称和请求有效负载准确，则应该获得结果，并显示成功代码 = 200。 如果请求有效负载不准确，你将获得状态 = 400 和响应有效负载，指示错误代码和消息，这些错误代码和消息应该有助于诊断直接方法调用的问题。
+1. 如果收到状态501代码，请检查以确保直接方法名称准确无误。 如果方法名称和请求有效负载准确，则应该获得结果，并显示成功代码 = 200。 如果请求有效负载不准确，将显示状态 =400 以及指示错误代码和消息的响应有效负载，这些错误代码和消息应该有助于诊断直接方法调用的问题。
     * 检查报告的属性和所需属性可帮助您了解模块属性是否已与部署同步。 如果没有，你可以重新启动 IoT Edge 设备。 
-    * 使用[直接方法](direct-methods.md)指南调用一些方法，特别是简单的方法，例如 GraphTopologyList。 本指南还指定了预期的请求和响应负载以及错误代码。 简单直接方法成功后，可以确保实时视频分析 IoT Edge 模块功能正常。
+    * 使用[直接方法](direct-methods.md)指南调用一些方法，特别是简单的方法，例如 GraphTopologyList。 本指南还指定了所需的请求和响应有效负载以及错误代码。 简单直接方法成功后，可以确保实时视频分析 IoT Edge 模块功能正常。
         
        ![IoT Edge 模块的 "直接方法" 窗格的屏幕截图。](./media/troubleshoot-how-to/direct-method.png) 
 
@@ -136,13 +136,13 @@ ModuleNotFoundError: No module named 'azure.mgmt.iothub.iot_hub_client'
     ```
 1. 确保安装了以下扩展。 在本文发布时，扩展及其版本如下：
 
-    | 分机 | 版本 |
+    | 扩展名 | 版本 |
     |---|---|
-    |azure-cli   |      版|
-    |命令模块-nspkg         |   2.0.3|
-    |core  |    版|
+    |azure-cli   |      2.5.1*|
+    |command-modules-nspkg         |   2.0.3|
+    |core  |    2.5.1*|
     |nspkg    | 3.0.4|
-    |遥测| 1.0.4|
+    |telemetry| 1.0.4|
     |storage-preview          |     0.2.10|
     |azure-cli-iot-ext          |    0.8.9|
     |eventgrid| 0.4.9|
@@ -225,7 +225,7 @@ Unhandled exception. Microsoft.Azure.Devices.Common.Exceptions.UnauthorizedExcep
 
 1. 在*appsettings.js*文件中，确保已提供 iot 中心连接字符串而*不*是 iot 中心设备连接字符串，因为[连接字符串的格式不同](https://devblogs.microsoft.com/iotdev/understand-different-connection-strings-in-azure-iot-hub/)。
 
-### <a name="live-video-analytics-working-with-external-modules"></a>使用外部模块的实时视频分析
+### <a name="live-video-analytics-working-with-external-modules"></a>用于外部模块的实时视频分析
 
 通过 HTTP 扩展处理器的实时视频分析可以扩展 media graph，使用 REST 通过 HTTP 发送和接收来自其他 IoT Edge 模块的数据。 作为[特定的示例](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension)，media graph 可以将视频帧作为图像发送到外部推理模块，如 Yolo v3 并接收基于 JSON 的分析结果。 在这种拓扑中，事件的目标主要是 IoT 中心。 如果没有在中心看到推理事件，请检查以下各项：
 
@@ -234,7 +234,7 @@ Unhandled exception. Microsoft.Azure.Devices.Common.Exceptions.UnauthorizedExcep
 
     ![显示 Azure IoT 中心内模块运行状态的屏幕截图。](./media/troubleshoot-how-to/iot-hub.png)
 
-* 查看是否正在将事件发送到正确的 URL 终结点。 外部 AI 容器公开一个 URL 和一个端口，通过该容器接收并返回 POST 请求中的数据。 此 URL 被指定为 `endpoint: url` HTTP 扩展处理器的属性。 如[拓扑 url](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json)中所示，终结点设置为推断 URL 参数。 请确保[参数](http://yolov3/score)的默认值或传入的值是准确的。 您可以通过使用客户端 URL （卷）进行测试，以确定其是否正常工作。  
+* 查看是否正在将事件发送到正确的 URL 终结点。 外部 AI 容器公开一个 URL 和一个端口，通过该容器接收并返回 POST 请求中的数据。 此 URL 被指定为 `endpoint: url` HTTP 扩展处理器的属性。 如[拓扑 url](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/httpExtension/topology.json)中所示，终结点设置为推断 URL 参数。 请确保参数的默认值或传入的值是准确的。 您可以通过使用客户端 URL （卷）进行测试，以确定其是否正常工作。  
 
     例如，以下是在本地计算机上运行的 Yolo v3 容器，其 IP 地址为172.17.0.3。 使用 Docker 检查来查找 IP 地址。
 
@@ -254,11 +254,11 @@ Unhandled exception. Microsoft.Azure.Devices.Common.Exceptions.UnauthorizedExcep
 
    或者，你可以使用更高的 CPU 和内存来获取功能更强大的边缘计算机。
     
-### <a name="multiple-direct-methods-in-parallel--timeout-failure"></a>并行多个直接方法–超时失败 
+### <a name="multiple-direct-methods-in-parallel--timeout-failure"></a>并行的多个直接方法 - 超时失败 
 
 IoT Edge 上的实时视频分析提供了一种基于方法的直接编程模型，可用于设置多个拓扑和多个图形实例。 作为拓扑和图形设置的一部分，您可以调用 IoT Edge 模块上的多个直接方法调用。 如果并行调用这两个方法调用（特别是启动和停止关系图的方法），则可能会遇到超时错误，如下所示： 
 
-程序集初始化方法 Microsoft.Media.LiveVideoAnalytics.Test.Feature.Edge.AssemblyInitializer.InitializeAssemblyAsync 引发了异常。 IotHubException： IotHubException （常见情况）的操作为：（& e）：<br/> `{"Message":"{\"errorCode\":504101,\"trackingId\":\"55b1d7845498428593c2738d94442607-G:32-TimeStamp:05/15/2020 20:43:10-G:10-TimeStamp:05/15/2020 20:43:10\",\"message\":\"Timed out waiting for the response from device.\",\"info\":{},\"timestampUtc\":\"2020-05-15T20:43:10.3899553Z\"}","ExceptionMessage":""}. Aborting test execution. `
+程序集初始化方法 Microsoft.Media.LiveVideoAnalytics.Test.Feature.Edge.AssemblyInitializer.InitializeAssemblyAsync 引发了异常。 Microsoft.Azure.Devices.Common.Exceptions.IotHubException：Microsoft.Azure.Devices.Common.Exceptions.IotHubException：<br/> `{"Message":"{\"errorCode\":504101,\"trackingId\":\"55b1d7845498428593c2738d94442607-G:32-TimeStamp:05/15/2020 20:43:10-G:10-TimeStamp:05/15/2020 20:43:10\",\"message\":\"Timed out waiting for the response from device.\",\"info\":{},\"timestampUtc\":\"2020-05-15T20:43:10.3899553Z\"}","ExceptionMessage":""}. Aborting test execution. `
 
 建议*不要*并行调用直接方法。 按顺序调用它们（也就是说，仅在上一个方法完成后才进行一个直接方法调用）。
 
@@ -312,7 +312,7 @@ IoT Edge 上的实时视频分析提供了一种基于方法的直接编程模�
 
 1. 选择“更新”。
 1. 选择“查看 + 创建”。 成功的验证消息将在绿色横幅下发布。
-1. 选择“创建”。
+1. 选择“创建” 。
 1. 更新**模块标识**，以指向 DebugLogsDirectory 参数，该参数指向收集日志的目录：
 
     a. 在 "**模块**" 表下，选择 " **lvaEdge**"。  

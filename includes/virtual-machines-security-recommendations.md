@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/13/2019
 ms.author: mbaldwin
 ms.custom: include file
-ms.openlocfilehash: 30f852f1bf4994f525ccb65c3827af8f8ae02f96
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e64e6b6abc921b1db6614ed36ba2e9c04fc86b1f
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85838904"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87451233"
 ---
 本文包含适用于 Azure 虚拟机的安全建议。 请遵循这些建议来履行我们责任分担模型中所述的安全义务。 这些建议还有助于改善 Web 应用解决方案的整体安全性。 若要详细了解 Microsoft 如何满足服务提供商的责任，请参阅[云计算的共享责任](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91)。
 
@@ -26,7 +26,7 @@ ms.locfileid: "85838904"
 | 建议 | 注释 | 安全中心 |
 |-|----|--|
 | 生成自定义 VM 映像时，请应用最新的更新。 | 在创建映像之前，为操作系统以及要包含在映像中的所有应用程序安装最新更新。  | - |
-| 使 VM 保持最新。 | 可以使用 Azure 自动化中的[更新管理](../articles/automation/automation-update-management.md)解决方案来管理 azure 中的 Windows 和 Linux 计算机的操作系统更新。 | [是](../articles/security-center/security-center-apply-system-updates.md) |
+| 使 VM 保持最新。 | 可以使用 Azure 自动化中的[更新管理](../articles/automation/update-management/update-mgmt-overview.md)解决方案来管理 azure 中的 Windows 和 Linux 计算机的操作系统更新。 | [是](../articles/security-center/security-center-apply-system-updates.md) |
 | 备份 VM。 | [Azure 备份](../articles/backup/backup-overview.md)可帮助保护应用程序数据，其运行开销极低。 应用程序错误可能会损坏数据，人为错误可能会将 bug 引入应用程序。 Azure 备份可以保护运行 Windows 和 Linux 的 VM。 | - |
 | 使用多个 VM 来提高复原能力和可用性。 | 如果 VM 运行的应用程序必须高度可用，请使用多个 VM 或[可用性集](../articles/virtual-machines/windows/manage-availability.md)。 | - |
 | 采用业务连续性和灾难恢复 (BCDR) 策略。 | 使用 Azure Site Recovery 可以从支持业务连续性的不同选项中进行选择。 它支持不同的复制和故障转移方案。 有关详细信息，请参阅[关于 Site Recovery](../articles/site-recovery/site-recovery-overview.md)。 | - |

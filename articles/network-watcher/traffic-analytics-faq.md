@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: 84e9dab149cfed265833336577d718e57bd9bc2d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: fa1ed25e8c9a80dda2bf0e4625d28a3befaa49c9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165322"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87479840"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -36,7 +36,7 @@ ms.locfileid: "86165322"
 
 帐户必须符合以下某项条件才能启用流量分析：
 
-- 帐户必须在订阅范围内具有以下任何一种基于角色的访问控制 (RBAC) 角色：所有者、参与者、读者或网络参与者。
+- 你的帐户必须在订阅范围内有以下 Azure 角色之一：所有者、参与者、读者或网络参与者。
 - 如果未将帐户分配给之前列出的某一角色，则必须在订阅级别将其分配给分配有以下操作的自定义角色。
             
     - Microsoft.Network/applicationGateways/read
@@ -122,7 +122,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-multiple-nsgs-be-configured-within-a-single-workspace"></a>是否可以在单个工作区中配置多个 NSG？
 
-是。
+是的。
 
 ## <a name="can-i-use-an-existing-workspace"></a>是否可以使用现有的的工作区？
 
@@ -134,7 +134,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>是否可将原始日志存储在不同的订阅中？
 
-是。 你可以将 NSG 流日志配置为发送到位于不同订阅中的存储帐户，前提是你具有适当的权限，并且该存储帐户与 NSG 位于同一区域。 NSG 和目标存储帐户还必须共享同一个 Azure Active Directory 租户。
+是的。 你可以将 NSG 流日志配置为发送到位于不同订阅中的存储帐户，前提是你具有适当的权限，并且该存储帐户与 NSG 位于同一区域。 NSG 和目标存储帐户还必须共享同一个 Azure Active Directory 租户。
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>如果由于“未找到”错误而无法为流量分析配置 NSG，该如何解决？
 
@@ -316,7 +316,7 @@ AzureNetworkAnalytics_CL
 | summarize deviation = stdev(traffic)  by IP
 ```
 
-## <a name="how-do-i-check-which-ports-are-reachable-or-blocked-between-ip-pairs-with-nsg-rules"></a>如何实现检查哪些端口是可访问的 (还是阻止了 IP 对与 NSG 规则之间的) ？
+## <a name="how-do-i-check-which-ports-are-reachable-or-blocked-between-ip-pairs-with-nsg-rules"></a>如何实现检查是否可通过 NSG 规则在 IP 对之间访问（或阻止）哪些端口？
 
 ```
 AzureNetworkAnalytics_CL
@@ -401,4 +401,3 @@ destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_
 - 若要移至拓扑视图中其他突出显示的节点，请使用 `Shift+Right arrow` 键向前移动。 
 - 在突出显示的节点上，焦点会移至节点的“信息工具框”。 默认情况下，焦点会移至“信息工具框”中的“更多详细信息”按钮 。 若要进一步在“框”视图中移动，可分别使用 `Right arrow` 和 `Left arrow` 键向前和向后移动。 按 `Enter` 的效果与在“信息工具框”中选择聚焦的按钮相同。
 - 选择任何此类节点时，可通过按 `Shift+Left arrow` 键逐个访问其所有连接。 焦点将移至该连接的“信息工具框”。 在任何时候，都可通过再次按 `Shift+Right arrow`，将焦点移回该节点。    
-

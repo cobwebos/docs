@@ -3,12 +3,12 @@ title: YAML 参考 - ACR 任务
 description: 有关在 YAML 中为 ACR 任务定义任务的参考，包括任务属性、步骤类型、步骤属性和内置变量。
 ms.topic: article
 ms.date: 07/08/2020
-ms.openlocfilehash: 1d680fd8512ec96fa4fb5762e4a3552e5e2e4dd3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 4710afe0d10a81f2a84437a335d3a012f3bac326
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446929"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87479772"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR 任务参考：YAML
 
@@ -81,40 +81,40 @@ az configure --defaults acr=myregistry
 | `stepTimeout` | 整数（秒） | 是 | 步骤可以运行的最大秒数。 如果在任务中指定该属性，则会设置所有步骤的默认 `timeout` 属性。 如果在步骤中指定 `timeout` 属性，则会替代任务提供的属性。 | 是 | 600（10 分钟） |
 | `workingDirectory` | 字符串 | 是 | 运行时期间容器的工作目录。 如果在任务中指定该属性，则会设置所有步骤的默认 `workingDirectory` 属性。 如果在步骤中指定，则会替代任务提供的属性。 | 是 | `/workspace` |
 | `env` | [字符串, 字符串, ...] | 是 |  采用 `key=value` 格式的字符串数组，定义任务的环境变量。 如果在任务中指定该属性，则会设置所有步骤的默认 `env` 属性。 如果在步骤中指定，则会替代从任务继承的所有环境变量。 | 是 | 无 |
-| `secrets` | [secret, secret, ...] | “是” | [secret](#secret) 对象的数组。 否 | None |
-| `networks` | [network, network, ...] | “是” | [network](#network) 对象的数组。 否 | None |
-| `volumes` | [volume，volume，...] | “是” | [卷](#volume)对象的数组。 指定包含要装载到步骤的源内容的卷。 | 否 | None |
+| `secrets` | [secret, secret, ...] | 是 | [secret](#secret) 对象的数组。 | 否 | 无 |
+| `networks` | [network, network, ...] | 是 | [network](#network) 对象的数组。 | 否 | 无 |
+| `volumes` | [volume，volume，...] | 是 | [卷](#volume)对象的数组。 指定包含要装载到步骤的源内容的卷。 | 否 | 无 |
 
 ### <a name="secret"></a>secret
 
 secret 对象具有以下属性。
 
-| Property | 类型 | 可选 | 描述 | 默认值 |
+| 属性 | 类型 | 可选 | 说明 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- |
-| `id` | string | 否 | 机密的标识符。 | None |
-| `keyvault` | 字符串 | 是 | Azure Key Vault 机密 URL。 | None |
-| `clientID` | 字符串 | 是 | Azure 资源的[用户分配的托管标识](container-registry-tasks-authentication-managed-identity.md)的客户端 ID。 | None |
+| `id` | string | 否 | 机密的标识符。 | 无 |
+| `keyvault` | 字符串 | 是 | Azure Key Vault 机密 URL。 | 无 |
+| `clientID` | 字符串 | 是 | Azure 资源的[用户分配的托管标识](container-registry-tasks-authentication-managed-identity.md)的客户端 ID。 | 无 |
 
 ### <a name="network"></a>network
 
 network 对象具有以下属性。
 
-| Property | 类型 | 可选 | 描述 | 默认值 |
+| 属性 | 类型 | 可选 | 说明 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | string | 否 | 网络的名称。 | None |
-| `driver` | 字符串 | 是 | 用于管理网络的驱动程序。 | None |
-| `ipv6` | bool | “是” | IPv6 网络是否已启用。 | `false` |
-| `skipCreation` | bool | “是” | 是否跳过网络创建过程。 | `false` |
-| `isDefault` | bool | “是” | 网络是否是随 Azure 容器注册表提供的默认网络。 | `false` |
+| `name` | string | 否 | 网络的名称。 | 无 |
+| `driver` | 字符串 | 是 | 用于管理网络的驱动程序。 | 无 |
+| `ipv6` | bool | 是 | IPv6 网络是否已启用。 | `false` |
+| `skipCreation` | bool | 是 | 是否跳过网络创建过程。 | `false` |
+| `isDefault` | bool | 是 | 网络是否是随 Azure 容器注册表提供的默认网络。 | `false` |
 
 ### <a name="volume"></a>卷
 
 卷对象具有以下属性。
 
-| Property | 类型 | 可选 | 描述 | 默认值 |
+| 属性 | 类型 | 可选 | 说明 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | string | 否 | 要装入的卷的名称。 只能包含字母数字字符、"-" 和 "_"。 | None |
-| `secret` | map [string] 字符串 | 否 | Map 的每个键都是在卷中创建和填充的文件的名称。 每个值都是机密的字符串版本。 机密值必须采用 Base64 编码。 | None |
+| `name` | string | 否 | 要装入的卷的名称。 只能包含字母数字字符、"-" 和 "_"。 | 无 |
+| `secret` | map [string] 字符串 | 否 | Map 的每个键都是在卷中创建和填充的文件的名称。 每个值都是机密的字符串版本。 机密值必须采用 Base64 编码。 | 无 |
 
 ## <a name="task-step-types"></a>步骤任务类型
 
@@ -141,10 +141,10 @@ steps:
 
 `build` 步骤类型支持下表中的参数。 `build` 步骤类型还支持 [docker build](https://docs.docker.com/engine/reference/commandline/build/) 命令的所有生成选项，例如 `--build-arg` 以设置生成时变量。
 
-| 参数 | 描述 | 可选 |
+| 参数 | 说明 | 可选 |
 | --------- | ----------- | :-------: |
-| `-t` &#124; `--image` | 定义所生成的映像的完全限定 `image:tag`。<br /><br />由于映像可用于内部任务验证（例如功能测试），并非所有映像都需要通过 `push` 推送到注册表。 但是，若要实例化任务执行中的某个映像，该映像确实需要引用某个名称。<br /><br />与 `az acr build` 不同，正在运行的 ACR 任务不提供默认的推送行为。 使用 ACR 任务时，默认方案假设能够生成、验证再推送映像。 请参阅 [push](#push)，了解如何选择性地推送所生成的映像。 | “是” |
-| `-f` &#124; `--file` | 指定要传递给 `docker build` 的 Dockerfile。 如果未指定，则假设使用上下文根目录中的默认 Dockerfile。 若要指定 Dockerfile，请传递相对于上下文根目录的文件名。 | “是” |
+| `-t` &#124; `--image` | 定义所生成的映像的完全限定 `image:tag`。<br /><br />由于映像可用于内部任务验证（例如功能测试），并非所有映像都需要通过 `push` 推送到注册表。 但是，若要实例化任务执行中的某个映像，该映像确实需要引用某个名称。<br /><br />与 `az acr build` 不同，正在运行的 ACR 任务不提供默认的推送行为。 使用 ACR 任务时，默认方案假设能够生成、验证再推送映像。 请参阅 [push](#push)，了解如何选择性地推送所生成的映像。 | 是 |
+| `-f` &#124; `--file` | 指定要传递给 `docker build` 的 Dockerfile。 如果未指定，则假设使用上下文根目录中的默认 Dockerfile。 若要指定 Dockerfile，请传递相对于上下文根目录的文件名。 | 是 |
 | `context` | 传递给 `docker build` 的根目录。 每个任务的根目录设置为某个共享的 [workingDirectory](#task-step-properties)，包括关联的 Git 克隆目录所在的根目录。 | 否 |
 
 ### <a name="properties-build"></a>属性：build
@@ -155,12 +155,12 @@ steps:
 | -------- | ---- | -------- |
 | `detach` | bool | 可选 |
 | `disableWorkingDirectoryOverride` | bool | 可选 |
-| `entryPoint` | 字符串 | 可选 |
+| `entryPoint` | string | 可选 |
 | `env` | [字符串, 字符串, ...] | 可选 |
 | `expose` | [字符串, 字符串, ...] | 可选 |
-| `id` | 字符串 | 可选 |
+| `id` | string | 可选 |
 | `ignoreErrors` | bool | 可选 |
-| `isolation` | 字符串 | 可选 |
+| `isolation` | string | 可选 |
 | `keep` | bool | 可选 |
 | `network` | 对象 (object) | 可选 |
 | `ports` | [字符串, 字符串, ...] | 可选 |
@@ -173,7 +173,7 @@ steps:
 | `timeout` | 整数（秒） | 可选 |
 | `volumeMount` | 对象 (object) | 可选 |
 | `when` | [字符串, 字符串, ...] | 可选 |
-| `workingDirectory` | 字符串 | 可选 |
+| `workingDirectory` | string | 可选 |
 
 ### <a name="examples-build"></a>示例：build
 
@@ -224,10 +224,10 @@ steps:
 
 `push` 步骤类型支持以下属性。 可在本文的[任务步骤属性](#task-step-properties)部分找到这些属性的详细信息。
 
-| Property | 类型 | 必须 |
+| 属性 | 类型 | 必须 |
 | -------- | ---- | -------- |
 | `env` | [字符串, 字符串, ...] | 可选 |
-| `id` | 字符串 | 可选 |
+| `id` | string | 可选 |
 | `ignoreErrors` | bool | 可选 |
 | `startDelay` | 整数（秒） | 可选 |
 | `timeout` | 整数（秒） | 可选 |
@@ -269,16 +269,16 @@ steps:
 
 `cmd` 步骤类型支持以下属性：
 
-| Property | 类型 | 必须 |
+| 属性 | 类型 | 必须 |
 | -------- | ---- | -------- |
 | `detach` | bool | 可选 |
 | `disableWorkingDirectoryOverride` | bool | 可选 |
-| `entryPoint` | 字符串 | 可选 |
+| `entryPoint` | string | 可选 |
 | `env` | [字符串, 字符串, ...] | 可选 |
 | `expose` | [字符串, 字符串, ...] | 可选 |
-| `id` | 字符串 | 可选 |
+| `id` | string | 可选 |
 | `ignoreErrors` | bool | 可选 |
-| `isolation` | 字符串 | 可选 |
+| `isolation` | string | 可选 |
 | `keep` | bool | 可选 |
 | `network` | 对象 (object) | 可选 |
 | `ports` | [字符串, 字符串, ...] | 可选 |
@@ -400,40 +400,40 @@ steps:
 
 每个步骤类型支持适用于其类型的多个属性。 下表定义了所有可用的步骤属性。 并非所有步骤类型都支持所有属性。 若要查看其中的哪些属性可用于每个步骤类型，请参阅 [cmd](#cmd)、[build](#build) 和 [push](#push) 步骤类型参考部分。
 
-| Property | 类型 | 可选 | 说明 | 默认值 |
+| 属性 | 类型 | 可选 | 说明 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- |
-| `detach` | bool | “是” | 在运行时是否应分离容器。 | `false` |
-| `disableWorkingDirectoryOverride` | bool | “是” | 是否禁用 `workingDirectory` 重写功能。 将此属性与 `workingDirectory` 结合使用可以全面控制容器的工作目录。 | `false` |
-| `entryPoint` | 字符串 | 是 | 重写步骤容器的 `[ENTRYPOINT]`。 | None |
-| `env` | [字符串, 字符串, ...] | “是” | 采用 `key=value` 格式的字符串数组，定义步骤的环境变量。 | None |
-| `expose` | [字符串, 字符串, ...] | “是” | 从容器公开的端口的数组。 |  None |
+| `detach` | bool | 是 | 在运行时是否应分离容器。 | `false` |
+| `disableWorkingDirectoryOverride` | bool | 是 | 是否禁用 `workingDirectory` 重写功能。 将此属性与 `workingDirectory` 结合使用可以全面控制容器的工作目录。 | `false` |
+| `entryPoint` | 字符串 | 是 | 重写步骤容器的 `[ENTRYPOINT]`。 | 无 |
+| `env` | [字符串, 字符串, ...] | 是 | 采用 `key=value` 格式的字符串数组，定义步骤的环境变量。 | 无 |
+| `expose` | [字符串, 字符串, ...] | 是 | 从容器公开的端口的数组。 |  无 |
 | [`id`](#example-id) | 字符串 | 是 | 唯一标识任务中的步骤。 任务中的其他步骤可以引用步骤的 `id`，例如，使用 `when` 执行依赖项检查。<br /><br />`id` 也是正在运行的容器的名称。 例如，在任务的其他容器中运行的进程可以引用 `id` 作为其 DNS 主机名，或者通过 Docker 日志 [id] 来访问该步骤。 | `acb_step_%d`，其中，`%d` 是 YAML 文件中的步骤的从 0 开始的索引（按从上到下的顺序排列）。 |
-| `ignoreErrors` | bool | “是” | 是否将步骤标记为成功（无论容器执行过程中是否发生了错误）。 | `false` |
+| `ignoreErrors` | bool | 是 | 是否将步骤标记为成功（无论容器执行过程中是否发生了错误）。 | `false` |
 | `isolation` | 字符串 | 是 | 容器的隔离级别。 | `default` |
-| `keep` | bool | “是” | 执行后是否应保留该步骤的容器。 | `false` |
-| `network` | object | 是 | 标识运行容器的网络。 | None |
-| `ports` | [字符串, 字符串, ...] | “是” | 从容器发布到主机的端口的数组。 |  None |
-| `pull` | bool | “是” | 在执行容器之前是否强制提取容器以防止任何缓存行为。 | `false` |
-| `privileged` | bool | “是” | 是否在特权模式下运行容器。 | `false` |
-| `repeat` | int | “是” | 尝试重复执行容器的次数。 | 0 |
-| `retries` | int | “是” | 容器执行失败时的重试次数。 仅当容器的退出代码非零时才重试。 | 0 |
-| `retryDelay` | 整数（秒） | “是” | 重试容器执行的间隔延迟（以秒为单位）。 | 0 |
-| `secret` | object | 是 | 标识 Azure Key Vault 机密或 [Azure 资源的托管标识](container-registry-tasks-authentication-managed-identity.md)。 | None |
-| `startDelay` | 整数（秒） | “是” | 将容器执行延迟的秒数。 | 0 |
-| `timeout` | 整数（秒） | “是” | 步骤在终止之前可以执行的最大秒数。 | 600 |
-| [`when`](#example-when) | [字符串, 字符串, ...] | “是” | 配置某个步骤对任务中其他一个或多个步骤的依赖。 | None |
-| `user` | 字符串 | “是” | 容器的用户名或 UID | None |
-| `volumeMounts` | object | 否 | [VolumeMount](#volumemount)对象的数组。 | None |
-| `workingDirectory` | 字符串 | “是” | 设置步骤的工作目录。 默认情况下，ACR 任务会创建一个根目录作为工作目录。 但是，如果生成包含多个步骤，则前面的步骤可以通过指定相同的工作目录，来与后面的步骤共享项目。 | `/workspace` |
+| `keep` | bool | 是 | 执行后是否应保留该步骤的容器。 | `false` |
+| `network` | object | 是 | 标识运行容器的网络。 | 无 |
+| `ports` | [字符串, 字符串, ...] | 是 | 从容器发布到主机的端口的数组。 |  无 |
+| `pull` | bool | 是 | 在执行容器之前是否强制提取容器以防止任何缓存行为。 | `false` |
+| `privileged` | bool | 是 | 是否在特权模式下运行容器。 | `false` |
+| `repeat` | int | 是 | 尝试重复执行容器的次数。 | 0 |
+| `retries` | int | 是 | 容器执行失败时的重试次数。 仅当容器的退出代码非零时才重试。 | 0 |
+| `retryDelay` | 整数（秒） | 是 | 重试容器执行的间隔延迟（以秒为单位）。 | 0 |
+| `secret` | object | 是 | 标识 Azure Key Vault 机密或 [Azure 资源的托管标识](container-registry-tasks-authentication-managed-identity.md)。 | 无 |
+| `startDelay` | 整数（秒） | 是 | 将容器执行延迟的秒数。 | 0 |
+| `timeout` | 整数（秒） | 是 | 步骤在终止之前可以执行的最大秒数。 | 600 |
+| [`when`](#example-when) | [字符串, 字符串, ...] | 是 | 配置某个步骤对任务中其他一个或多个步骤的依赖。 | 无 |
+| `user` | 字符串 | 是 | 容器的用户名或 UID | 无 |
+| `volumeMounts` | object | 否 | [VolumeMount](#volumemount)对象的数组。 | 无 |
+| `workingDirectory` | 字符串 | 是 | 设置步骤的工作目录。 默认情况下，ACR 任务会创建一个根目录作为工作目录。 但是，如果生成包含多个步骤，则前面的步骤可以通过指定相同的工作目录，来与后面的步骤共享项目。 | `/workspace` |
 
 ### <a name="volumemount"></a>volumeMount
 
 VolumeMount 对象具有以下属性。
 
-| Property | 类型 | 可选 | 说明 | 默认值 |
+| 属性 | 类型 | 可选 | 说明 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | string | 否 | 要装入的卷的名称。 必须与属性的名称完全匹配 `volumes` 。 | None |
-| `mountPath`   | 字符串 | 否 | 在容器中装载文件的绝对路径。  | None |
+| `name` | string | 否 | 要装入的卷的名称。 必须与属性的名称完全匹配 `volumes` 。 | 无 |
+| `mountPath`   | string | 否 | 在容器中装载文件的绝对路径。  | 无 |
 
 ### <a name="examples-task-step-properties"></a>示例：任务步骤属性
 

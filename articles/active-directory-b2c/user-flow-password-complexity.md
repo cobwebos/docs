@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 02/11/2019
+ms.date: 07/30/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ce4574870ad8c0bfd945e49f129b82177b3138a1
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 9c7f0ead3a2f93d7f390106b8e7471d58b709023
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115709"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481557"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>配置 Azure Active Directory B2C 中的密码复杂性要求
 
@@ -38,16 +38,16 @@ Azure Active Directory B2C (Azure AD B2C) 支持更改由最终用户在创建�
 
 ## <a name="configure-password-complexity"></a>配置密码复杂性
 
-1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 在门户工具栏中选择“目录 + 订阅”图标，然后选择包含 Azure AD B2C 租户的目录。
 3. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
-4. 选择“用户流(策略)”。
+4. 选择“用户流”****。
 2. 选择一个用户流，然后单击“属性”****。
 3. 在“密码复杂性”**** 下，将此用户流的密码复杂性更改为“简单”****、“强”**** 或“自定义”****。
 
 ### <a name="comparison-chart"></a>比较图表
 
-| 复杂性 | 描述 |
+| 复杂性 | 说明 |
 | --- | --- |
 | 简单 | 为至少 8 到 64 个字符的密码。 |
 | 非常 | 为至少 8 到 64 个字符的密码。 它需要 4 个小写字母、大写字母、数字或符号中的 3 个。 |

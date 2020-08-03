@@ -7,20 +7,24 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 05bcbf8df695ba308a6eaff5e7401f0a6d638747
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 3e7ee90d75a2ff2b3552992c19f11cc86b6109ca
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337596"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486642"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查询 Azure 数字孪生克隆图形
 
 本文提供了有关使用[Azure 数字孪生查询存储语言](concepts-query-language.md)来查询克隆[图形](concepts-twins-graph.md)以获取信息的示例和更多详细信息。 使用 Azure 数字孪生[**查询 api**](how-to-use-apis-sdks.md)在图形上运行查询。
 
+[!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
+
+本文的其余部分提供了有关如何使用这些操作的示例。
+
 ## <a name="query-syntax"></a>查询语法
 
-下面是一些示例查询，阐释了查询语言结构并执行了可能的查询操作。
+本部分包含的示例查询阐释了查询语言结构并执行了可能的查询操作。
 
 获取按属性（包括 ID 和元数据）的[数字孪生](concepts-twins-graph.md)：
 ```sql
@@ -31,16 +35,55 @@ AND T.$dtId in ['123', '456']
 AND T.Temperature = 70
 ```
 
-按[型号](concepts-models.md)获取数字孪生
-```sql
-SELECT  * 
-FROM DigitalTwins T  
-WHERE IS_OF_MODEL(T , 'dtmi:com:contoso:Space;3')
-AND T.roomSize > 50
-```
-
 > [!TIP]
 > 使用元数据字段查询数字克隆的 ID `$dtId` 。
+
+你还可以通过其*标记*属性获取孪生，如[向数字孪生添加标记](how-to-use-tags.md)中所述。
+```sql
+select * from digitaltwins where is_defined(tags.red) 
+```
+
+### <a name="select-top-items"></a>选择顶级项
+
+您可以使用子句在查询中选择多个 "top" 项 `Select TOP` 。
+
+```sql
+SELECT TOP (5)
+FROM DIGITALTWINS
+WHERE property = 42
+```
+
+### <a name="query-by-model"></a>按模型查询
+
+`IS_OF_MODEL`运算符可用于基于克隆的[模型](concepts-models.md)进行筛选。 它支持继承，并且具有多个重载选项。
+
+最简单的用法 `IS_OF_MODEL` 仅采用 `twinTypeName` 参数： `IS_OF_MODEL(twinTypeName)` 。
+下面是传递此参数中的值的查询示例：
+
+```sql
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1')
+```
+
+若要指定多个要搜索的非克隆集合（如使用时一样 `JOIN` ），请添加 `twinCollection` 参数： `IS_OF_MODEL(twinCollection, twinTypeName)` 。
+下面是添加此参数值的查询示例：
+
+```sql
+SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1')
+```
+
+若要执行完全匹配，请添加 `exact` 参数： `IS_OF_MODEL(twinTypeName, exact)` 。
+下面是添加此参数值的查询示例：
+
+```sql
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1', exact)
+```
+
+你还可以将所有这三个参数同时传递： `IS_OF_MODEL(twinCollection, twinTypeName, exact)` 。
+下面是一个用于为所有三个参数指定值的查询示例：
+
+```sql
+SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', exact)
+```
 
 ### <a name="query-based-on-relationships"></a>基于关系的查询
 

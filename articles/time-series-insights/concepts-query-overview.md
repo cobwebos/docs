@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: a4b969ecbc92df45021b4a9ec711960171d77d4e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: abc1f1de45fe846f9f50a6a7aa3dae2ed837b52b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495289"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486788"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>查询 Azure 时序见解 Gen2 中的数据
 
@@ -37,7 +37,7 @@ Azure 时序见解 Gen2 使用基于字符串的丰富表达式语言（即时�
 
 ## <a name="environment-apis"></a>环境 API
 
-* [获取环境 API](https://docs.microsoft.com/rest/api/time-series-insights/management/environments/get)：返回调用方有权访问的环境的列表。
+* [获取环境 API](/rest/api/time-series-insights/management(gen1/gen2)/accesspolicies/listbyenvironment)：返回调用方有权访问的环境的列表。
 * [获取环境可用性 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability)：通过事件时间戳返回事件计数的分布 `$ts` 。 此 API 通过返回被分解为时间间隔（如果有）的事件计数来帮助确定环境中是否存在任何事件。
 * [获取事件架构 API](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema)：返回给定搜索范围的事件架构元数据。 此 API 可帮助检索给定搜索范围的架构中可用的所有元数据和属性。
 

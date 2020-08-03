@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mathoma
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 0e676e1c97c0039490137aa12b06fc88e457646f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: seo-lt-2019, devx-track-azurecli
+ms.openlocfilehash: bc0d5b0cdf616904ee7ed61fdc681ba60bff8f75
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286819"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87480282"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Azure 虚拟机上的 SQL Server Always On 可用性组简介
 
@@ -43,7 +43,7 @@ Azure 虚拟机中可用性组的主要区别是这些虚拟机 (VM) 需要[负�
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
 | **[SQL VM CLI](availability-group-az-cli-configure.md)** | 2016 | 2017 </br>2016   | 企业版 | 云见证 | 否 | 是 | 是 | 是 | 否 | 否 |
 | **[快速启动模板](availability-group-quickstart-template-configure.md)** | 2016 | 2017</br>2016  | 企业版 | 云见证 | 否 | “是” | “是” | 是 | 否 | 否 |
-| **[手动](availability-group-manually-configure-prerequisites-tutorial.md)** | 全部 | 全部 | 全部 | 全部 | 是 | “是” | “是” | “是” | “是” | “是” |
+| **[手动](availability-group-manually-configure-prerequisites-tutorial.md)** | All | All | All | All | 是 | “是” | “是” | “是” | “是” | “是” |
 
 **SQL Server AlwaysOn 群集（预览版）** 模板已从 Azure Marketplace 中删除并且不再可用。 
 
