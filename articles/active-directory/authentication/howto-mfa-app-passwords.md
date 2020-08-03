@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b247b64d563bc2b12c5bffff6a460d77cb96207
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f6bd09a24202b599c1f008e7b046ea5f93ff0323
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485480"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489786"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>启用 Azure 多重身份验证并将其用于使用应用密码的旧版应用程序
 
@@ -88,6 +88,12 @@ Azure AD 支持联合或单一登录（SSO），具有本地 Active Directory �
 5. 在“服务设置”页上，选择“允许用户创建应用密码，以登录非浏览器应用”选项。 
 
     ![Azure 门户的屏幕截图，其中显示了允许用户使用应用密码进行多重身份验证的服务设置](media/concept-authentication-methods/app-password-authentication-method.png)
+    
+> [!NOTE]
+>
+> 禁用用户创建应用密码功能后，现有的应用密码将继续工作。 但是，在禁用此功能后，用户将无法管理或删除这些现有的应用密码。
+>
+> 禁用创建应用密码功能的功能时，还建议[创建条件性访问策略，禁止使用旧身份验证](../conditional-access/block-legacy-authentication.md)。 此方法可防止现有的应用密码正常工作，并强制使用新式身份验证方法。
 
 ## <a name="create-an-app-password"></a>创建应用密码
 

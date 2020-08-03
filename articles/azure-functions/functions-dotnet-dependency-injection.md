@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 02cb862c5ec6f75d546aabcd6e8ac97a4de961a4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05b845f3284ea95dd2be595c4d59767e45149306
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082947"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500458"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 
@@ -33,7 +33,7 @@ Azure Functions 支持依赖项注入 (DI) 软件设计模式，这是一种在�
 
 若要注册服务，请创建一个方法来配置组件并将组件添加到 `IFunctionsHostBuilder` 实例。  Azure Functions 主机会创建 `IFunctionsHostBuilder` 的实例，并将其直接传递到方法中。
 
-若要注册方法，请添加指定在启动过程中使用的类型名称的 `FunctionsStartup` 程序集特性。
+若要注册方法，请添加 `FunctionsStartup` 程序集属性来指定在启动期间使用的类型名称。
 
 ```csharp
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
@@ -71,9 +71,9 @@ namespace MyNamespace
 
 ## <a name="use-injected-dependencies"></a>使用注入的依赖项
 
-使用构造函数注入以后，依赖项即可在函数中使用。 使用构造函数注入要求不要将静态类用于注入的服务或用于函数类。
+使用构造函数注入以后，依赖项即可在函数中使用。 使用构造函数注入要求你不要对已注入服务或对函数类使用静态类。
 
-下面的示例演示如何将 `IMyService` 和 `HttpClient` 依赖项注入到 HTTP 触发的函数中。
+以下示例演示了 `IMyService` 和 `HttpClient` 依赖项是如何注入到 HTTP 触发的函数中的。
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -121,7 +121,7 @@ Azure Functions 应用提供与 [ASP.NET 依赖项注入](/aspnet/core/fundament
 - **限定范围**：限定范围的服务的生存期与函数执行生存期相匹配。 作用域服务在每次执行时创建一次。 在执行期间对该服务的后续请求会重复使用现有服务实例。
 - **单一实例**：单一实例服务生存期与主机生存期相匹配，并且在该实例上的各个函数执行之间重用。 对于连接和客户端（例如 `DocumentClient` 或 `HttpClient` 实例），建议使用单一实例生存期服务。
 
-可在 GitHub 上查看或下载[不同服务生存期的示例](https://aka.ms/functions/di-sample)。
+在 GitHub 上查看或下载[不同服务生存期的示例](https://github.com/Azure/azure-functions-dotnet-extensions/tree/main/src/samples/DependencyInjection/Scopes)。
 
 ## <a name="logging-services"></a>日志记录服务
 

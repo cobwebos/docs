@@ -15,19 +15,16 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28af2a51119cd8328f9fa29000ead1622ae5f5e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bb4b9b3b93053756896dc60c61cdb15c7e521f5d
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763544"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497233"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>如何配置非库应用程序的联合单一登录
 
-若要为非库应用程序配置单一登录*而无需编写代码*，需要拥有订阅或 Azure AD Premium，并且该应用程序必须支持 SAML 2.0。 有关 Azure AD 版本的详细信息，请访问 [Azure AD 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
-
-## <a name="overview-of-steps-required"></a>所需步骤概述
-下面从较高的级别概述了使用 SAML 2.0 配置非库（例如：自定义）应用程序联合单一登录所需的步骤。
+本文详细概述了为非库（如自定义）应用程序配置 SAML 2.0 的联合单一登录所需的步骤。
 
 -   在 Azure AD 中配置应用程序的元数据值（登录 URL、标识符、答复 URL）
 
@@ -43,7 +40,7 @@ ms.locfileid: "84763544"
 
 若要为不在 Azure AD 库中的应用程序配置单一登录，请按照以下步骤操作：
 
-1. 打开[**Azure 门户**](https://portal.azure.com/)，并以 "**全局管理员**" 或 "**共同管理员**" 身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。 
 
 2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
@@ -87,7 +84,7 @@ ms.locfileid: "84763544"
 
 若要选择用户标识符或添加用户属性，请按照以下步骤操作：
 
-1. 打开[**Azure 门户**](https://portal.azure.com/)，并以 "**全局管理员**" 或 "**共同管理员**" 身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。 
 
 2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 
@@ -122,7 +119,7 @@ ms.locfileid: "84763544"
 
 若要从 Azure AD 下载应用程序元数据或证书，请按照以下步骤操作：
 
-1. 打开[**Azure 门户**](https://portal.azure.com/)，并以 "**全局管理员**" 或 "**共同管理员**" 身份登录。
+1. 打开 [**Azure 门户**](https://portal.azure.com/)，并以“全局管理员”或“共同管理员”身份登录。 
 
 2. 在左侧主导航菜单顶部单击“所有服务”，打开“Azure Active Directory 扩展”。
 

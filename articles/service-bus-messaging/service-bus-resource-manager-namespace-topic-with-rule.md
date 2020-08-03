@@ -6,12 +6,13 @@ ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 1cfda37d0a6db5c4f354dc392900366f68a30e8e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 01024ff7d6f152049acf7351313f11d1806d1b3b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336882"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496145"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建包含主题、订阅和规则的服务总线命名空间
 
@@ -21,7 +22,7 @@ ms.locfileid: "85336882"
 
 有关 Azure 资源命名约定的实践和模式的详细信息，请参阅 [Azure 资源的建议命名约定][Recommended naming conventions for Azure resources]。
 
-有关完整的模板，请参阅[包含主题、订阅和规则的服务总线命名空间][Service Bus namespace with topic, subscription, and rule]模板。
+有关完整模板，请参阅[包含主题、订阅和规则的服务总线命名空间][Service Bus namespace with topic, subscription, and rule]模板。
 
 > [!NOTE]
 > 以下 Azure 资源管理器模板可供下载和部署。
@@ -31,13 +32,13 @@ ms.locfileid: "85336882"
 > * [创建服务总线命名空间](service-bus-resource-manager-namespace.md)
 > * [创建包含主题和订阅的服务总线命名空间](service-bus-resource-manager-namespace-topic.md)
 > 
-> 若要检查最新模板，请访问 [Azure 快速启动模板][Azure Quickstart Templates]库并搜索服务总线。
+> 若要检查最新模板，请访问 [Azure 快速启动模板][Azure Quickstart Templates] 库并搜索服务总线。
 
 ## <a name="what-do-you-deploy"></a>要部署什么？
 
-使用此模板，将部署包含主题、订阅和规则（筛选器）的服务总线命名空间。
+使用此模板，你将部署包含主题、订阅和规则（筛选器）的服务总线命名空间。
 
-[服务总线主题和订阅](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)以“发布/订阅”** 模式提供一对多的通信形式。 使用主题和订阅时，分布式应用程序的组件之间不会直接通信，它们会通过用作中介的主题来交换消息。主题订阅类似于虚拟队列，接收发送至该主题的消息副本。 通过订阅中的筛选器，可以指定发送到主题的哪些消息应该在特定主题订阅中显示。
+[服务总线主题和订阅](service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)以“发布/订阅”模式提供一对多的通信形式。 使用主题和订阅时，分布式应用程序的组件之间不会直接通信，它们会通过用作中介的主题来交换消息。主题订阅类似于虚拟队列，接收发送至该主题的消息副本。 通过订阅中的筛选器，可以指定发送到主题的哪些消息应该在特定主题订阅中显示。
 
 ## <a name="what-are-rules-filters"></a>什么是规则（筛选器）？
 
@@ -45,11 +46,11 @@ ms.locfileid: "85336882"
 
 若要自动运行部署，请单击以下按钮：
 
-[![“部署到 Azure”](./media/service-bus-resource-manager-namespace-topic/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-topic-subscription-rule%2Fazuredeploy.json)
+[![部署到 Azure](./media/service-bus-resource-manager-namespace-topic/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-servicebus-create-topic-subscription-rule%2Fazuredeploy.json)
 
-## <a name="parameters"></a>参数
+## <a name="parameters"></a>parameters
 
-使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 模板包含名为 `Parameters` 的部分，其中包含所有参数值。 请根据要部署的项目或要部署到的环境的不同，为那些值定义参数。 不要为始终保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
+使用 Azure 资源管理器，可以定义在部署模板时想要指定的值的参数。 该模板具有一个名为 `Parameters` 的部分，其中包含所有参数值。 请根据要部署的项目或要部署到的环境的不同，为那些值定义参数。 不要为永远保持不变的值定义参数。 每个参数值可在模板中用来定义所部署的资源。
 
 模板定义以下参数：
 
@@ -108,7 +109,7 @@ ms.locfileid: "85336882"
 
 ## <a name="resources-to-deploy"></a>要部署的资源
 
-创建类型为 **Messaging** 的包含主题、订阅和规则的标准服务总线命名空间。
+创建类型为 **Messaging**的包含主题、订阅和规则的标准服务总线命名空间。
 
 ```json
  "resources": [{
@@ -182,7 +183,7 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 
 ## <a name="next-steps"></a>后续步骤
 
-查看以下文章了解如何管理这些资源：
+通过查看以下文章了解如何管理这些资源：
 
 * [管理 Azure 服务总线](service-bus-management-libraries.md)
 * [使用 PowerShell 管理服务总线](service-bus-manage-with-ps.md)

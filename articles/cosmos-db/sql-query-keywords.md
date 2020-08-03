@@ -4,14 +4,14 @@ description: 了解 Azure Cosmos DB 的 SQL 关键字。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 07/29/2020
 ms.author: tisande
-ms.openlocfilehash: 069548b9b69ef6f7f6bde85ede830d97f3d312db
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f00e757f9b51da850c49924f6ae49bf00c9c53d1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81261561"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496675"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Azure Cosmos DB 中的关键字
 
@@ -36,9 +36,6 @@ ms.locfileid: "81261561"
 
 与 ANSI SQL 不同，在 SQL API 中，可以针对混合类型的属性表达范围查询。 例如，在某些项中，`grade` 可能是类似于 `5` 的数字；而在其他一些项中，它可能是类似于 `grade4` 的字符串。 在这些情况下（与在 JavaScript 中一样），两个不同类型之间的比较会生成 `Undefined`，因此会跳过该项。
 
-> [!TIP]
-> 为了更快地执行查询，请创建一个索引策略，该策略对 `BETWEEN` 子句筛选的任何数值属性或路径使用范围索引类型。
-
 ## <a name="distinct"></a>DISTINCT
 
 `DISTINCT` 关键字可消除查询投影中的重复项。
@@ -50,7 +47,7 @@ SELECT DISTINCT VALUE f.lastName
 FROM Families f
 ```
 
-结果有：
+其结果是：
 
 ```json
 [
@@ -65,7 +62,7 @@ SELECT DISTINCT f.lastName
 FROM Families f
 ```
 
-结果有：
+其结果是：
 
 ```json
 [
@@ -76,7 +73,7 @@ FROM Families f
 ]
 ```
 
-还可以在子查询内的投影中使用 DISTINCT：
+`DISTINCT`还可以在子查询的投影中使用：
 
 ```sql
 SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as ChildNames
@@ -85,7 +82,7 @@ FROM f
 
 此查询投影包含每个孩子的 givenName 的数组，并删除了重复项。 此数组的别名为 ChildNames，并在外部查询中投影。
 
-结果有：
+其结果是：
 
 ```json
 [

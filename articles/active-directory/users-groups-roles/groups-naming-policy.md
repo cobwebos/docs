@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46fdd72842db790a8f4ecadfc875069962dcf449
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 380962b71d6829b8a217a5d3038e2ae4dd7264fd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728140"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497080"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>在 Azure Active Directory 中的 Office 365 组上强制实施命名策略
 
@@ -72,7 +72,7 @@ ms.locfileid: "84728140"
 若要配置命名策略，需要以下角色之一：
 - 全局管理员
 - 组管理员
-- 用户管理员
+
 
 选定的管理员可跨所有组工作负荷和终结点得到这些策略的豁免，因此可以使用阻止的字词及其自己的命名约定创建组。 下面列出了可得到组命名策略豁免的管理员角色。
 
@@ -236,7 +236,7 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
 - 在用户键入组名后立即看到随命名策略而定的名称预览（包括前缀和后缀）
 - 如果用户输入阻止字词，可看到一条错误消息，因此可删除阻止字词。
 
-工作负荷 | 合规性
+工作负载 | 合规性
 ----------- | -------------------------------
 Azure Active Directory 门户 | 如果用户在创建或编辑组时键入组名，Azure AD 门户和访问面板门户会显示命名策略强制使用的名称。 当用户输入自定义阻止字词时，会显示一错误消息以及阻止字词，以便用户删除它。
 Outlook Web Access (OWA) | 当用户键入组名或组别名时，Outlook Web Access 显示命名策略强制使用的名称。 当用户输入自定义阻止字词时，UI 中会显示一条错误消息以及阻止字词，以便用户删除它。

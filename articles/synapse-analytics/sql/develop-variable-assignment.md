@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 91e251c8274ad85fcb0b3a65a3bdbcc660ceba00
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c3bd04d037f7852bd7d9ea51719abf27f09093b0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85101014"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495669"
 ---
-# <a name="assigning-variables-with-synapse-sql"></a>用 Synapse SQL 赋值变量
+# <a name="assign-variables-with-synapse-sql"></a>用 Synapse SQL 赋值变量
 
 本文介绍了如何通过 Synapse SQL 分配 T-sql 变量。
 
-## <a name="setting-variables-with-declare"></a>使用 DECLARE 设置变量
+## <a name="set-variables-with-declare"></a>使用 DECLARE 设置变量
 
 Synapse SQL 中的变量是使用 `DECLARE` 语句或语句设置的 `SET` 。 使用 DECLARE 初始化变量是在 Synapse SQL 中设置变量值的最灵活方式之一。
 
@@ -45,7 +45,7 @@ DECLARE @p1 int = 0
 ;
 ```
 
-## <a name="setting-values-with-set"></a>使用 SET 设置值
+## <a name="set-values-with-set"></a>使用 SET 来设置值
 
 SET 是设置单个变量的常见方法。
 

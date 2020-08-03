@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: spelluru
-ms.openlocfilehash: 242e2a2bf743777dd43a4c84194ebd894b5edd3c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c97d5d3119644a6426152b1b832fabac3dde4863
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290399"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498406"
 ---
 # <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>使用 PowerShell 在 Azure 开发测试实验室的实验室中创建自定义角色
 
@@ -27,7 +27,7 @@ ms.locfileid: "87290399"
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 * 实验室****。 此脚本要求拥有现有的实验室。 
 
 ## <a name="sample-script"></a>示例脚本
@@ -38,10 +38,10 @@ ms.locfileid: "87290399"
 
 此脚本使用以下命令： 
 
-| 命令 | 说明 |
+| Command | 注释 |
 |---|---|
 | [AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) | 使用 Azure RBAC 获取作为安全对象的 Azure 资源提供程序的操作。 |
-| [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) | 列出所有可用于分配的 Azure RBAC 角色。 |
+| [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) | 列出可用于分配的所有 Azure 角色。 |
 | [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) | 创建自定义角色。 |
 
 ## <a name="next-steps"></a>后续步骤

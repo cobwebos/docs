@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 4da024eb4eb3747b8e0d6b291ca5b00df12aaeab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 08a65ff8d276cd27c9f8fa07393600bc24e7b17f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367514"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500294"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Azure 应用配置最佳实践
 
@@ -86,6 +86,10 @@ configBuilder.AddAzureAppConfiguration(options => {
 ## <a name="importing-configuration-data-into-app-configuration"></a>将配置数据导入到应用配置
 
 应用配置提供了使用 Azure 门户或 CLI 从当前配置文件中大容量[导入](https://aka.ms/azconfig-importexport1)配置设置的选项。 你还可以使用相同的选项，从应用配置导出值，例如在相关存储之间。 如果要设置与 GitHub 存储库的持续同步，可以使用[Github 操作](https://aka.ms/azconfig-gha2)，以便可以继续使用现有的源代码管理实践，同时获得应用配置的好处。
+
+## <a name="multi-region-deployment-in-app-configuration"></a>应用配置中的多区域部署
+
+应用配置为 "区域服务"。 对于每个区域具有不同配置的应用程序，将这些配置存储在一个实例中可能会导致单点故障。 对于跨多个区域的每个区域部署一个应用配置实例，可能是更好的选择。 它可帮助实现地区性灾难恢复、性能和安全竖井。 按区域配置还可以提高延迟并使用单独的限制配额，因为限制是按实例进行的。 若要应用灾难恢复缓解措施，可以使用[多个配置存储](./concept-disaster-recovery.md)。 
 
 ## <a name="next-steps"></a>后续步骤
 

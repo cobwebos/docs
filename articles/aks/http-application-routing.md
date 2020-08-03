@@ -6,12 +6,12 @@ author: lachie83
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: laevenso
-ms.openlocfilehash: 7349504b5a1ed5a67f3b34be2c4ff5dda29afbf3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 08835bda959fb4fe261e86e4d519ab85bd2a4625
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025296"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495142"
 ---
 # <a name="http-application-routing"></a>HTTP 应用程序路由
 
@@ -20,7 +20,7 @@ ms.locfileid: "87025296"
 启用此加载项后，它会在订阅中创建 DNS 区域。 有关 DNS 成本的详细详细，请参阅 [DNS 定价][dns-pricing]。
 
 > [!CAUTION]
-> HTTP 应用程序路由加载项旨在可以快速创建入口控制器并访问应用程序。 建议不要将此加载项用于生产。 对于包含多个副本和 TLS 支持的生产就绪入口部署，请参阅[创建 HTTPS 入口控制器](./ingress-tls.md)。
+> HTTP 应用程序路由加载项旨在可以快速创建入口控制器并访问应用程序。 此加载项当前不适用于生产环境，不建议用于生产环境。 对于包含多个副本和 TLS 支持的生产就绪入口部署，请参阅[创建 HTTPS 入口控制器](./ingress-tls.md)。
 
 ## <a name="http-routing-solution-overview"></a>HTTP 路由解决方案概述
 
@@ -257,7 +257,7 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 167.220.24.46 - [167.220.24.46] - - [26/Apr/2018:21:53:20 +0000] "GET / HTTP/1.1" 200 234 "" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)" 197 0.001 [default-aks-helloworld-80] 10.244.0.13:8080 234 0.004 200
 ```
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 使用删除在本文中创建的关联的 Kubernetes 对象 `kubectl delete` 。
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: bb4c689da38606561c657a3e4d85fd9e391267bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b28507c072f338342dc1a936cb1ab5f3910eea1
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056731"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498100"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>使用 Azure RBAC 进行 Kubernetes 授权（预览）
 
@@ -122,7 +122,7 @@ az aks create -g MyResourceGroup -n MyManagedCluster --enable-aad --enable-azure
 AKS 提供下列四种内置角色：
 
 
-| 角色                                | 描述  |
+| 角色                                | 说明  |
 |-------------------------------------|--------------|
 | Azure Kubernetes 服务 RBAC 查看器  | 允许只读访问权限查看命名空间中的大多数对象。 它不允许查看角色或角色绑定。 此角色不允许查看 `Secrets` ，因为通过读取机密内容可以访问命名空间中的 ServiceAccount 凭据，这将允许 API 访问命名空间中的任何 ServiceAccount （一种权限提升形式）  |
 | Azure Kubernetes 服务 RBAC 编写器 | 允许读/写访问命名空间中的大多数对象。 此角色不允许查看或修改角色或角色绑定。 但是，此角色允许将 pod `Secrets` 作为命名空间中的任何 ServiceAccount 来访问和运行，因此它可用于获取命名空间中任何 ServiceAccount 的 API 访问级别。 |
@@ -254,7 +254,7 @@ aks-nodepool1-93451573-vmss000002   Ready    agent   3h6m   v1.15.11
 ```
 
 
-## <a name="clean-up"></a>清理
+## <a name="clean-up"></a>清除
 
 ### <a name="clean-role-assignment"></a>清理角色分配
 
@@ -283,7 +283,7 @@ az group delete -n MyResourceGroup
 
 - [在此处](concepts-identity.md)了解有关 AKS Authentication、AUTHORIZATION 和 RBAC 的详细信息。
 - [在此处](../role-based-access-control/overview.md)阅读有关 Azure RBAC 的详细信息。
-- 若要详细了解可用于在此处为 Kubernetes 授权定义自定义 Azure RBAC 角色的所有操作，请参阅[此处](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)。
+- 在[此处](../role-based-access-control/resource-provider-operations.md#microsoftcontainerservice)了解有关可用于以粒度定义 Kubernetes 授权的自定义 Azure 角色的所有操作的详细信息。
 
 
 <!-- LINKS - Internal -->

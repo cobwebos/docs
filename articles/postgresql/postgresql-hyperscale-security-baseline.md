@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: dd6d3ef6f610dcbdc511297e459cc5856bebe033
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5f6fca572524d1b0254c777d0820d8781c9f7be8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87030039"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496621"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-postgresql---hyperscale"></a>适用于 Azure Database for PostgreSQL 的 Azure 安全基线-超大规模
 
@@ -40,7 +40,7 @@ ms.locfileid: "87030039"
 
 **指南**：不适用;Azure Database for PostgreSQL-超大规模（Citus）无法与虚拟网络、子网或网络安全组关联。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -48,7 +48,7 @@ ms.locfileid: "87030039"
 
 **指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -56,7 +56,7 @@ ms.locfileid: "87030039"
 
 **指南**：不适用;Azure Database for PostgreSQL-超大规模（Citus）使用的终结点均由 Microsoft 管理。 你负责管理要部署到本地系统的其他所有控件。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -64,7 +64,7 @@ ms.locfileid: "87030039"
 
 **指南**：不适用;Azure Database for PostgreSQL-超大规模（Citus）无法与虚拟网络、子网或网络安全组关联。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -72,7 +72,7 @@ ms.locfileid: "87030039"
 
 **指南**：不适用;Azure Database for PostgreSQL-超大规模（Citus）使用的终结点均由 Microsoft 管理。 你负责管理要部署到本地系统的其他所有控件。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -80,7 +80,7 @@ ms.locfileid: "87030039"
 
 **指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -88,7 +88,7 @@ ms.locfileid: "87030039"
 
 **指南**：不适用;Azure Database for PostgreSQL-超大规模（Citus）无法与虚拟网络、子网或网络安全组关联。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -110,7 +110,7 @@ ms.locfileid: "87030039"
 
 **指南**：不适用;Azure Database for PostgreSQL-超大规模（Citus）无法与虚拟网络、子网或网络安全组关联。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -118,7 +118,7 @@ ms.locfileid: "87030039"
 
 **指南**：不适用;Azure Database for PostgreSQL-超大规模（Citus）无法与虚拟网络、子网或网络安全组关联。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -222,7 +222,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用;Azure Database for PostgreSQL 超大规模（Citus）不会处理或产生与反恶意软件相关的日志。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -230,7 +230,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用;Azure Database for PostgreSQL 不会处理或产生与 DNS 相关的日志。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -280,7 +280,7 @@ Azure 安全中心监视：不适用
 
 **指南**：围绕使用用于访问超大规模（Citus）实例的专用管理帐户创建标准操作过程。 用于管理 Azure 资源的管理员帐户与 Azure Active Directory 相关联，还存在用于管理数据库访问权限的超大规模（Citus）服务器组中存在的本地服务器管理员帐户。 使用 Azure 安全中心的标识和访问管理来监视 Azure Active Directory 中的管理帐户数。
 
-* [了解 Azure 安全中心的标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [了解 Azure 安全中心标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
 
 * [如何在 Azure Database for PostgreSQL-超大规模（Citus）中创建用户](https://docs.microsoft.com/azure/postgresql/howto-hyperscale-create-users)
 
@@ -294,7 +294,7 @@ Azure 安全中心监视：不适用
 
 * [使用 Azure Active Directory 对 Azure Database for PostgreSQL 进行身份验证](https://docs.microsoft.com/azure/postgresql/howto-configure-sign-in-aad-authentication)
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -326,7 +326,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="37-alert-on-account-login-behavior-deviation"></a>3.7：帐户登录行为偏差的警报
 
-**指南**：当环境中出现可疑或不安全的活动时，可使用 Azure Active Directory (AD) Privileged Identity Management (PIM) 生成日志和警报。
+**指导**：当环境中出现可疑或不安全的活动时，可使用 Azure Active Directory (AD) Privileged Identity Management (PIM) 生成日志和警报。
 
 使用 Azure AD 风险检测查看有关风险用户行为的警报和报告。
 
@@ -350,7 +350,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-指南：使用 Azure Active Directory (AD) 作为中央身份验证和授权系统。 Azure AD 通过对静态数据和传输中的数据使用强加密来保护数据。 Azure AD 还会进行加盐操作、哈希操作并安全地存储用户凭据。
+指南：使用 Azure Active Directory (AD) 作为中央身份验证和授权系统。 Azure AD 通过对静态数据和传输中的数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
 
 Azure AD 凭据还可以用于在管理平面级别（例如，Azure 门户）进行管理，以控制 PostgreSQL 管理员帐户。
 
@@ -408,7 +408,7 @@ Azure AD 凭据还可以用于在管理平面级别（例如，Azure 门户）�
 
 **指南**：当前不可用;超大规模（Citus）尚不支持客户密码箱。
 
-* [客户密码箱支持的服务列表](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
+* [支持客户密码箱的服务列表](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-general-availability)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -484,7 +484,7 @@ Azure AD 凭据还可以用于在管理平面级别（例如，Azure 门户）�
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
 
-**指南**：使用 Azure 基于角色的访问控制（RBAC）来控制对超大规模（Citus）控制平面（例如 Azure 门户）的访问。 RBAC 不影响数据库中的用户权限。
+**指南**：使用 azure 基于角色的访问控制（azure RBAC）来控制对超大规模（Citus）控制平面（例如 Azure 门户）的访问。 RBAC 不影响数据库中的用户权限。
 
 若要在数据库级别修改用户权限，请使用 PgAdmin 或 psql 等工具的标准 PostgreSQL 命令。
 
@@ -504,7 +504,7 @@ Microsoft 管理超大规模（Citus）的底层基础结构，并实施了严�
 
 * [了解 Azure 中的客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -514,7 +514,7 @@ Microsoft 管理超大规模（Citus）的底层基础结构，并实施了严�
 
 * [了解 Azure PostgreSQL-超大规模（Citus）备份的加密](https://docs.microsoft.com/azure/postgresql/concepts-hyperscale-backup)
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：共享
 
@@ -610,7 +610,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
-**指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪超大规模（Citus）实例和相关资源。 定期协调清单，并确保及时从订阅中删除未经授权的资源。
+**指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪超大规模（Citus）实例和相关资源。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
 * [如何创建其他 Azure 订阅](https://docs.microsoft.com/azure/billing/billing-create-subscription)
 
@@ -658,7 +658,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -666,7 +666,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源和整个 Azure。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -674,7 +674,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -696,7 +696,7 @@ Azure 安全中心监视：不适用
 
 **指导**：不适用；此建议适用于计算资源。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -722,7 +722,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -826,7 +826,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：为操作系统实施自动配置监视
 
@@ -850,7 +850,7 @@ Azure 安全中心监视：不适用
 
 **责任**：不适用
 
-### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全地自动管理标识
+### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
 **指南**：Azure Database for PostgreSQL 服务器支持通过 Azure Active Directory 身份验证访问数据库。 创建 Azure Database for PostgreSQL 服务器时，需要为管理员用户提供凭据。 此管理员可用于创建其他数据库用户。
 
@@ -868,13 +868,13 @@ Azure 安全中心监视：不适用
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据暴露
 
-**指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据移动到更安全的位置，例如 Azure Key Vault。
+**指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
 * [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
 **Azure 安全中心监视**：不适用
 
-**责任**：客户
+责任：客户
 
 ## <a name="malware-defense"></a>恶意软件防护
 
@@ -886,7 +886,7 @@ Azure 安全中心监视：不适用
 
 Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务）的基础主机上启用，但不会对客户内容运行。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -906,7 +906,7 @@ Microsoft 反恶意软件会在支持 Azure 服务（例如，Azure 应用服务
 
 Microsoft 反恶意软件在支持 Azure 服务的基础主机（例如超大规模（Citus））上启用，但是，它不会在客户内容上运行。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -980,7 +980,7 @@ Microsoft 反恶意软件在支持 Azure 服务的基础主机（例如超大规
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心对用于发出警报的调查结果或分析的置信度，以及导致警报的活动背后存在恶意意图的可信度。
+**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
 此外，应清楚地标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
 
@@ -1010,7 +1010,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
-**指导**：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出功能可手动或以连续不断的方式导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Sentinel。
+**指导**：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Sentinel。
 
 * [如何配置连续导出](https://docs.microsoft.com/azure/security-center/continuous-export)
 

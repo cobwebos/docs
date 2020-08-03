@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 24c803bd94f56af551f3afa2cb7350219b4fa448
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 538f3f18e1c8889834b9ee6588b85c9094dfbebe
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124725"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496706"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>准备创建 Avere vFXT
 
@@ -32,7 +32,7 @@ ms.locfileid: "87124725"
 
 具有订阅所有者权限的用户应创建 vFXT 群集。 群集创建需要所有者接受软件条款，并授权对网络和存储资源进行更改。
 
-有一些解决方法可允许非所有者创建 Azure 群集的 Avere vFXT。 这些方案涉及限制资源并为创建者分配其他基于角色的访问控制（RBAC）角色。 在所有这些情况下，订阅所有者还必须提前[接受 Avere vFXT 软件条款](#accept-software-terms)。
+有一些解决方法可允许非所有者创建 Azure 群集的 Avere vFXT。 这些方案涉及限制资源并向创建者分配其他 Azure 角色。 在所有这些情况下，订阅所有者还必须提前[接受 Avere vFXT 软件条款](#accept-software-terms)。
 
 | 方案 | 限制 | 创建 Avere vFXT 群集所需的访问角色 |
 |----------|--------|-------|

@@ -106,12 +106,14 @@
           href: cognitive-search-debug-session.md
         - name: 知识存储
           href: knowledge-store-concept-intro.md
-        - name: 投影
+        - name: 投影数
           href: knowledge-store-projection-overview.md
         - name: 增量扩充
           href: cognitive-search-incremental-indexing-conceptual.md
     - name: 安全性
       items:
+        - name: 安全概述
+          href: search-security-overview.md
         - name: Azure Policy 的安全控件
           displayName: 'regulatory, compliance, standards, domains'
           href: ./security-controls-policy.md
@@ -329,8 +331,6 @@
           href: search-api-migration.md
     - name: 安全性
       items:
-        - name: 概述
-          href: search-security-overview.md
         - name: 数据加密
           items:
             - name: 客户管理的密钥

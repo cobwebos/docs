@@ -7,12 +7,13 @@ ms.date: 06/17/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 5be21eea9dbb9ea0925ac014fce6272ce8c32a0d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e25b2b53acdfb05af8572a01109961bf3002e429
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87028135"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499409"
 ---
 # <a name="preview-create-a-windows-vm-with-azure-image-builder-using-powershell"></a>预览：使用 Azure 映像生成器创建 Windows VM 使用 PowerShell
 
@@ -198,7 +199,7 @@ $GalleryParams = @{
 New-AzGalleryImageDefinition @GalleryParams
 ```
 
-## <a name="create-an-image"></a>创建图像
+## <a name="create-an-image"></a>创建映像
 
 创建 Azure 映像生成器源对象。 请参阅[在 Azure Marketplace 中查找 WINDOWS VM 映像，并 Azure PowerShell](./cli-ps-findimage.md)有效的参数值。
 

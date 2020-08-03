@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 637bdb02cd9fc5296c74633bbfa381e62673a4bf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5b41609ec2b7cc9880fb22a76b9e3b40c315bc3c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85355652"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499868"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>在 Azure Blob 存储中管理和查找数据（预览版）
 
@@ -63,7 +63,7 @@ Blob 索引标记是可应用于存储帐户中的新对象或现有对象的键
 > "Priority" = "01" 
 >
 
-若要修改现有的索引标记特性，必须首先检索现有标记特性，修改标记特性，并将替换为 SetBlobTags 操作。 若要从 blob 中删除所有索引标记，请调用 SetBlobTags 操作，不指定标记属性。 由于 blob 索引标记是 blob 数据内容的子资源，因此 SetBlobTags 不会修改任何基础内容，也不会更改 blob 的上次修改时间或 ETag （实体标记）。 您可以为所有当前的基本 blob 和以前的版本创建或修改索引标记;但不能修改快照或软删除 blob 上的标记。 
+若要修改现有的索引标记特性，必须首先检索现有标记特性，修改标记特性，并将替换为 SetBlobTags 操作。 若要从 blob 中删除所有索引标记，请调用 SetBlobTags 操作，不指定标记属性。 由于 blob 索引标记是 blob 数据内容的子资源，因此 SetBlobTags 不会修改任何基础内容，也不会更改 blob 的上次修改时间或 eTag （实体标记）。 您可以为所有当前的基本 blob 和以前的版本创建或修改索引标记;但不能修改快照或软删除 blob 上的标记。 
 
 以下限制适用于 Blob 索引标记：
 - 每个 blob 最多可以有10个 blob 索引标记
@@ -97,7 +97,7 @@ Blob 索引标记作为子资源与 blob 数据一起存储，可独立于基础
 
 下表显示了 FindBlobsByTags 的所有有效运算符：
 
-|  运算符  |  描述  | 示例 |
+|  运算符  |  说明  | 示例 |
 |------------|---------------|---------|
 |     =      |     Equal     | "状态" = "正在进行" | 
 |     >      |  大于 |  "日期" > "2018-06-18" |
@@ -121,7 +121,7 @@ Blob 索引标记作为子资源与 blob 数据一起存储，可独立于基础
 
 下表显示了条件运算的所有有效运算符：
 
-|  运算符  |  描述  | 示例 |
+|  运算符  |  说明  | 示例 |
 |------------|---------------|---------|
 |     =      |     Equal     | "状态" = "正在进行" |
 |     <>     |   不等于   | "状态"  <>  "完成"  | 
@@ -147,7 +147,7 @@ Blob 索引的标记不仅有助于对 blob 数据进行分类、管理和搜索
 
 以下示例生命周期管理规则适用于容器 "videofiles" 中的块 blob，以及用于仅在数据与的 blob 索引标记条件匹配时用于存档存储的层 blob ```"Status" = 'Processed' AND "Source" == 'RAW'``` 。
 
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 ![Azure 门户中的生命周期管理的 Blob 索引匹配规则示例](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
    
 # <a name="json"></a>[JSON](#tab/json)
@@ -221,14 +221,14 @@ Blob 索引标记是 blob 数据的子资源。 具有权限的用户或用于�
 
 |  权限  |  URI 符号  | 允许的操作 |
 |--------------|--------------|--------------------|
-|  索引标记  |      T         | 获取和设置 blob 的 blob 索引标记 |
+|  索引标记  |      t         | 获取和设置 blob 的 blob 索引标记 |
 
 #### <a name="container-sas"></a>容器 SAS
 可以在容器服务 SAS 中授予下列权限，以允许对 blob 标记进行筛选。  Blob 列表权限不足，无法按索引标记允许筛选 blob。
 
 |  权限  |  URI 符号  | 允许的操作 |
 |--------------|--------------|--------------------|
-| 索引标记     |      f       | 查找包含 blob 索引标记的 Blob | 
+| 索引标记     |      F       | 查找包含 blob 索引标记的 Blob | 
 
 ## <a name="choosing-between-metadata-and-blob-index-tags"></a>在元数据和 Blob 索引标记之间选择 
 Blob 索引标记和元数据都可以将任意用户定义的键/值属性与 Blob 资源一起存储。 两者都可以直接检索和设置，而不会返回或更改 blob 的内容。 可以使用元数据和索引标记。
@@ -237,7 +237,7 @@ Blob 索引标记和元数据都可以将任意用户定义的键/值属性与 B
 
 下表总结了 Metadata 和 Blob 索引标记之间的差异：
 
-|              |   元数据   |   Blob 索引标记  |
+|              |   Metadata   |   Blob 索引标记  |
 |--------------|--------------|--------------------|
 | **限制**         | 无数值限制;总共 8 KB;不区分大小写 | 每个 blob 最大10个标记;每个标记768字节;区分大小写 |
 | **更新**      | 在存档层上不允许;SetBlobMetadata 替换所有现有元数据;SetBlobMetadata 更改了 blob 的上次修改时间 | 允许用于所有访问层;SetBlobTags 替换所有现有标记;SetBlobTags 不会更改 blob 的上次修改时间 |
@@ -293,6 +293,7 @@ az provider register --namespace 'Microsoft.Storage'
 -   当前不支持帐户故障转移。 Blob 索引在故障转移后可能不会正确更新。
 -   生命周期管理当前仅支持 Blob 索引匹配的相等性检查。
 -   CopyBlob 不会将 blob 索引标记从源 blob 复制到新的目标 blob。 你可以指定要在复制操作过程中应用于目标 blob 的标记。 
+- 目标 blob 上应用了标记的另一个存储帐户中的 CopyBlob （Async copy）当前导致 blob 索引引擎不返回筛选器集中的 blob 及其标记。 建议在中期使用 URL （同步副本）中的 CopyBlob。
 -   在创建快照时保留标记;但当前不支持升级快照，并且可能会导致空标记集。
 
 ## <a name="faq"></a>常见问题解答
@@ -308,5 +309,7 @@ Blob 索引标记仅支持字符串数据类型和查询，并按字典顺序返
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅如何使用 Blob 索引的示例。 请参阅[利用 Blob 索引管理和查找数据](storage-blob-index-how-to.md)
+有关如何利用 Blob 索引的示例，请参阅[利用 Blob 索引管理和查找数据](storage-blob-index-how-to.md)。
+
+了解[生命周期管理](storage-lifecycle-management-concepts.md)并设置具有 Blob 索引匹配项的规则。
 

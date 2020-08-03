@@ -10,14 +10,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: ca1f535c7f2d949e1f71a06ba9efab2818ee0201
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31e1eb952bb37f5864e296811ba6e61bb0e58320
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046774"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490279"
 ---
-# <a name="designing-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>为 Azure Synapse SQL 池设计 PolyBase 数据加载策略
+# <a name="design-a-polybase-data-loading-strategy-for-azure-synapse-sql-pool"></a>为 Azure Synapse SQL 池设计 PolyBase 数据加载策略
 
 传统的 SMP 数据仓库通过提取、转换和加载 (ETL) 过程来加载数据。 Azure SQL 池是一种大规模并行处理（MPP）体系结构，它利用了计算和存储资源的可伸缩性和灵活性。 使用提取、加载和转换（ELT）过程可以利用 MPP，并消除在加载前转换数据所需的资源。
 
@@ -25,7 +25,7 @@ ms.locfileid: "87046774"
 
 > [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
-## <a name="what-is-elt"></a>什么是 ELT？
+## <a name="extract-load-and-transform-elt"></a>提取、加载和转换（ELT）
 
 提取、加载和转换 (ELT) 是指将数据从源系统提取并加载到数据仓库然后再进行转换的过程。
 
@@ -75,7 +75,7 @@ PolyBase 从 UTF-8 和 UTF-16 编码的带分隔符文本文件加载数据。 �
 |       timestamp       |                           datetime                           |
 |       timestamp       |                             time                             |
 |       date            |                             date                             |
-|        Decimal        |                            decimal                           |
+|        decimal        |                            decimal                           |
 
 ## <a name="2-land-the-data-into-azure-blob-storage-or-azure-data-lake-store"></a>2.将数据移入 Azure Blob 存储或 Azure Data Lake Store
 

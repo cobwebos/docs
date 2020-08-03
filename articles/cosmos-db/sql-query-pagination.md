@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 978cc67336fe7f6f89970007215da73da0737f08
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 7f7f895b61e3c638cb347a2d73bb5ee458b31acd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433554"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498814"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Azure Cosmos DB 中的分页
 
@@ -23,7 +23,7 @@ ms.locfileid: "87433554"
 
 通过设置，可以指定查询返回的最大项数 `MaxItemCount` 。 `MaxItemCount`是为每个请求指定的，并且保证查询引擎将返回该数量或更少的项。 `MaxItemCount` `-1` 如果不想对每个查询执行的结果数施加限制，则可以将设置为。
 
-此外，查询引擎可能需要将查询结果拆分为多个页面。 其中包括:
+此外，查询引擎可能需要将查询结果拆分为多个页面。 其中包括：
 
 - 已限制容器，但没有可用的 ru 返回更多查询结果
 - 查询执行的响应太大
@@ -38,13 +38,10 @@ ms.locfileid: "87433554"
 
 下面是用于处理包含多个页面的查询结果的一些示例：
 
-[.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L280)
-
-[Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L162-L176)
-
-[Node.js SDK](https://github.com/Azure/azure-sdk-for-js/blob/83fcc44a23ad771128d6e0f49043656b3d1df990/sdk/cosmosdb/cosmos/samples/IndexManagement.ts#L128-L140)
-
-[Python SDK](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/examples.py#L89)
+- [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L280)
+- [Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/documentcrud/sync/DocumentCRUDQuickstart.java#L162-L176)
+- [Node.js SDK](https://github.com/Azure/azure-sdk-for-js/blob/83fcc44a23ad771128d6e0f49043656b3d1df990/sdk/cosmosdb/cosmos/samples/IndexManagement.ts#L128-L140)
+- [Python SDK](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/examples.py#L89)
 
 ## <a name="continuation-tokens"></a>继续标记
 
@@ -52,9 +49,8 @@ ms.locfileid: "87433554"
 
 下面是使用继续标记的一些示例：
 
-[.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/Queries/Program.cs#L699-L734)
-
-[Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L216)
+- [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/Queries/Program.cs#L699-L734)
+- [Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L216)
 
 如果查询返回继续标记，则存在其他查询结果。
 
