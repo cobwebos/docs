@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 6c50ceae36c784b8b869977f14351ab5858fc7c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2cfe5f763b3dedd68c5180f5a0a3c7a3f4ea3e93
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84466011"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496417"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>将 Azure Data Lake Storage 从 Gen1 迁移到 Gen2
 
@@ -81,7 +81,7 @@ Azure Data Lake Storage Gen2 是在[Azure Blob 存储](storage-blobs-introductio
    
 6. 搜索包含代码文件或 Databricks 笔记本中的字符串的 URI 引用， `adl://` APACHE HIVE HQL 文件或用作工作负荷的一部分的任何其他文件。 将这些引用替换为新存储帐户的[Gen2 格式的 URI](data-lake-storage-introduction-abfs-uri.md) 。 例如： Gen1 URI： `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` 可能变为 `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile` 。 
 
-7. 配置帐户的安全性，以包括[基于角色的访问控制（RBAC）角色](../common/storage-auth-aad-rbac-portal.md)、[文件和文件夹级别的安全性](data-lake-storage-access-control.md)、 [Azure 存储防火墙和虚拟网络](../common/storage-network-security.md)。
+7. 配置帐户的安全性，以包含[azure 角色](../common/storage-auth-aad-rbac-portal.md)、[文件和文件夹级别的安全性](data-lake-storage-access-control.md)、 [azure 存储防火墙和虚拟网络](../common/storage-network-security.md)。
 
 ### <a name="step-4-cutover-from-gen1-to-gen2"></a>步骤4：从 Gen1 切换到 Gen2
 
@@ -93,11 +93,11 @@ Azure Data Lake Storage Gen2 是在[Azure Blob 存储](storage-blobs-introductio
 
 此表将 Gen1 的功能与 Gen2 的功能进行比较。
 
-|区域 |Gen1   |Gen2 |
+|领域 |Gen1   |Gen2 |
 |---|---|---|
 |数据组织|[分层命名空间](data-lake-storage-namespace.md)<br>文件和文件夹支持|[分层命名空间](data-lake-storage-namespace.md)<br>容器、文件和文件夹支持 |
 |异地冗余| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage)、 [ZRS](../common/storage-redundancy.md#zone-redundant-storage)、 [GRS](../common/storage-redundancy.md#geo-redundant-storage)、 [RA-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
-|身份验证|[AAD 托管标识](../../active-directory/managed-identities-azure-resources/overview.md)<br>[服务主体](../../active-directory/develop/app-objects-and-service-principals.md)|[AAD 托管标识](../../active-directory/managed-identities-azure-resources/overview.md)<br>[服务主体](../../active-directory/develop/app-objects-and-service-principals.md)<br>[共享访问密钥](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
+|身份验证|[AAD 托管标识](../../active-directory/managed-identities-azure-resources/overview.md)<br>服务主体|[AAD 托管标识](../../active-directory/managed-identities-azure-resources/overview.md)<br>服务主体<br>[共享访问密钥](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
 |授权|管理- [RBAC](../../role-based-access-control/overview.md)<br>数据- [acl](data-lake-storage-access-control.md)|管理- [RBAC](../../role-based-access-control/overview.md)<br>数据- [acl](data-lake-storage-access-control.md)， [RBAC](../../role-based-access-control/overview.md) |
 |加密–静态数据|服务器端–与[Microsoft 管理](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)的或[客户管理](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)的密钥|服务器端–与[Microsoft 管理](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)的或[客户管理](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)的密钥|
 |VNET 支持|[VNET 集成](../../data-lake-store/data-lake-store-network-security.md)|[服务终结点](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)，[专用终结点](../common/storage-private-endpoints.md)|
@@ -207,4 +207,3 @@ Azure Data Lake Storage Gen2 是在[Azure Blob 存储](storage-blobs-introductio
 - 了解为存储帐户设置安全性的各个部分。 请参阅[Azure 存储安全指南](../common/storage-security-guide.md)。
 - 优化 Data Lake Store 的性能。 请参阅[优化 Azure Data Lake Storage Gen2 性能](data-lake-storage-performance-tuning-guidance.md)
 - 查看管理 Data Lake Store 的最佳实践。 请参阅[使用 Azure Data Lake Storage Gen2 的最佳实践](data-lake-storage-best-practices.md)
-

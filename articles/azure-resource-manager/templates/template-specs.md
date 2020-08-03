@@ -2,28 +2,34 @@
 title: 模板规格概述
 description: 描述如何创建模板规范并将其与组织中的其他用户共享。
 ms.topic: conceptual
-ms.date: 07/20/2020
+ms.date: 07/31/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 47dcf44b35ad5c0b77dd0b88d683071a7f2f4ecb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 829aaa41bc60b3dcbf78ef6083457fff3b794914
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095887"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497794"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure 资源管理器模板规范（预览版）
 
-模板规范是用于在 Azure 中存储 Azure 资源管理器模板（ARM 模板）以供以后部署的新资源类型。 此资源类型使你可以与组织中的其他用户共享 ARM 模板。 就像任何其他 Azure 资源一样，你可以使用基于角色的访问控制（RBAC）来共享模板规范。用户只需要对模板规范的 "读取" 访问权限来部署模板，因此你可以共享模板，而无需允许其他人修改它。
+模板规范是用于在 Azure 中存储 Azure 资源管理器模板（ARM 模板）以供以后部署的新资源类型。 此资源类型使你可以与组织中的其他用户共享 ARM 模板。 就像任何其他 Azure 资源一样，你可以使用基于角色的访问控制（RBAC）来共享模板规范。
 
 对于模板规格，" **templateSpecs** " 是新的资源类型。 它包含主模板和任意数量的链接模板。 Azure 将模板规范安全地存储在资源组中。 模板规范支持[版本控制](#versioning)。
 
 若要部署模板规范，请使用 Azure 等标准 Azure 工具、Azure CLI、Azure 门户、REST 以及其他受支持的 Sdk 和客户端。 使用相同的命令并传入模板的相同参数。
 
-使用模板规范的好处是组织中的团队无需为常见方案重新创建或复制模板。 创建规范模板并将其共享。 你的模板规范中包含的模板应由组织中的管理员验证，以遵循组织的要求和指导。
-
 > [!NOTE]
 > 模板规范当前为预览版。 若要使用它，必须[注册等待列表](https://aka.ms/templateSpecOnboarding)。
+
+## <a name="why-use-template-specs"></a>为什么使用模板规范？
+
+如果你当前在 GitHub 存储库或存储帐户中使用了模板，则在尝试共享和使用模板时遇到几个难题。 要使用户部署该模板，模板必须为本地模板或模板的 URL 必须可公开访问。 若要绕过此限制，你可以与需要部署模板的用户共享模板的副本，或打开存储库或存储帐户的访问权限。 如果用户拥有模板的本地副本，这些副本最终可能会与原始模板分离。 当你公开访问存储库或存储帐户时，可能会允许非预期用户访问该模板。
+
+使用模板规范的好处是，你可以创建规范模板并将其与组织中的团队共享。 模板规范是安全的，因为它们适用于 Azure 资源管理器进行部署，但没有 RBAC 权限的用户无法访问。 用户只需要对模板规范的 "读取" 访问权限来部署模板，因此你可以共享模板，而无需允许其他人修改它。
+
+你的模板规范中包含的模板应由组织中的管理员验证，以遵循组织的要求和指导。
 
 ## <a name="create-template-spec"></a>创建模板规范
 

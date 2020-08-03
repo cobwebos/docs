@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/10/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 24e4554e2202c8b5452193e1b0f48cf6c8ada5dd
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 691293d0f7ecf5bb2ad83a3f292ad2c9b873e31e
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133785"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386516"
 ---
 ## <a name="limitations"></a>限制
 
@@ -71,7 +71,7 @@ ms.locfileid: "87133785"
 
 维护控制  为客户提供了一个选项，以用于跳过在其专用主机上计划的定期平台更新，然后在 35 天滚动时段内他们所选的时间应用更新。
 
-有关详细信息，请参阅[管理包含维护控制的平台更新](https://docs.microsoft.com/azure/virtual-machines/maintenance-control)。
+有关详细信息，请参阅[通过维护控制管理平台更新](https://docs.microsoft.com/azure/virtual-machines/maintenance-control)。
 
 ## <a name="capacity-considerations"></a>容量注意事项
 

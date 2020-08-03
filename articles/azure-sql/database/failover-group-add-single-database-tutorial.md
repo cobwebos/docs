@@ -4,19 +4,19 @@ description: 使用 Azure 门户、PowerShell 或 Azure CLI 将 Azure SQL 数据
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: ad4ef93b34639abffaf15c806fd86d550e03f0bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4caad36d21d3facb97dc358fdfee61e89c420213
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87045262"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496332"
 ---
 # <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>教程：将 Azure SQL 数据库添加到自动故障转移组
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -163,7 +163,7 @@ ms.locfileid: "87045262"
 
 本教程的此部分使用以下 PowerShell cmdlet：
 
-| 命令 | 注释 |
+| Command | 注释 |
 |---|---|
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 在 Azure SQL 数据库中创建托管单一数据库和弹性池的的服务器。 |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | 为 Azure SQL 数据库中的服务器创建防火墙规则。 |
@@ -286,7 +286,7 @@ ms.locfileid: "87045262"
 
 本教程部分使用以下 PowerShell cmdlet：
 
-| 命令 | 注释 |
+| Command | 注释 |
 |---|---|
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | 获取或列出 Azure SQL 数据库故障转移组。 |
 | [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| 执行 Azure SQL 数据库故障转移组的故障转移。 |
@@ -355,7 +355,7 @@ ms.locfileid: "87045262"
 
 本教程的此部分使用以下 PowerShell cmdlet：
 
-| 命令 | 注释 |
+| Command | 注释 |
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组 |
 

@@ -1,21 +1,22 @@
 ---
-title: 管理读取副本-Azure PowerShell-Azure Database for MariaDB
-description: 了解如何使用 PowerShell 在 Azure Database for MariaDB 中设置和管理读取副本。
+title: 管理只读副本 - Azure PowerShell - Azure Database for MariaDB
+description: 了解如何使用 PowerShell 在 Azure Database for MariaDB 中设置和管理只读副本。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 2e8d250d20126198b3f267b44af98bed811ad8dd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a13ecbb5bed65de9ab8a52258d1f22b9f3520c9f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121174"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498933"
 ---
-# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>如何使用 PowerShell 在 Azure Database for MariaDB 中创建和管理读取副本
+# <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-powershell"></a>如何使用 PowerShell 在 Azure Database for MariaDB 中创建和管理只读副本
 
-本文介绍如何使用 PowerShell 在 Azure Database for MariaDB 服务中创建和管理读取副本。 若要详细了解只读副本，请参阅[概述](concepts-read-replicas.md)。
+本文介绍如何使用 PowerShell 在 Azure Database for MariaDB 服务中创建和管理只读副本。 若要详细了解只读副本，请参阅[概述](concepts-read-replicas.md)。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -32,7 +33,7 @@ ms.locfileid: "86121174"
 > 尽管 Az.MariaDb PowerShell 模块为预览版，但必须使用以下命令从 Az PowerShell 模块单独安装它：`Install-Module -Name Az.MariaDb -AllowPrerelease`。
 > Az.MariaDb PowerShell 模块正式版推出后，它会包含在将来的 Az PowerShell 模块发行版中，并在 Azure Cloud Shell 中原生提供。
 
-如果选择在本地使用 PowerShell，请使用[AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。
+如果选择在本地使用 PowerShell，请使用 [Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) cmdlet 连接到 Azure 帐户。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -109,4 +110,4 @@ Remove-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用 PowerShell 重新启动 Azure Database for MariaDB 服务器](howto-restart-server-powershell.md)
+> [使用 PowerShell 重启 Azure Database for MariaDB 服务器](howto-restart-server-powershell.md)

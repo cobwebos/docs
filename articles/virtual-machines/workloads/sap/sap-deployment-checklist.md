@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 47f412dae6b467518fb1b51518716625c1395717
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 98cad9a359a9a2807b1f1f3f2daba45759471718
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035819"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495652"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷：规划和部署清单
 
@@ -174,7 +174,7 @@ ms.locfileid: "87035819"
    3. 测试您的备份/还原顺序和时间，并在需要时进行更正。 请确保备份时间足以满足需要。 还需要测试还原和时间还原活动。 如果 RTO 依赖于数据库或 VM 还原过程，请确保还原时间在 RTO Sla 中。
    4. 测试跨区域 DR 功能和体系结构。
 1. 安全检查。
-   1. 测试 Azure 基于角色的访问控制（RBAC）体系结构的有效性。 目标是分离并限制不同团队的访问权限和权限。 例如，SAP Basis 团队成员应能够部署 Vm，并将 Azure 存储中的磁盘分配到指定的 Azure 虚拟网络。 但 SAP Basis 团队不应能够创建自己的虚拟网络或更改现有虚拟网络的设置。 网络团队的成员不应能够将 Vm 部署到运行 SAP 应用程序和 DBMS Vm 的虚拟网络中。 此团队成员也不应更改 Vm 的属性，甚至可以删除 Vm 或磁盘。  
+   1. 测试 Azure 基于角色的访问控制（Azure RBAC）体系结构的有效性。 目标是分离并限制不同团队的访问权限和权限。 例如，SAP Basis 团队成员应能够部署 Vm，并将 Azure 存储中的磁盘分配到指定的 Azure 虚拟网络。 但 SAP Basis 团队不应能够创建自己的虚拟网络或更改现有虚拟网络的设置。 网络团队的成员不应能够将 Vm 部署到运行 SAP 应用程序和 DBMS Vm 的虚拟网络中。 此团队成员也不应更改 Vm 的属性，甚至可以删除 Vm 或磁盘。  
    1.  验证[网络安全组和 ASC](../../../virtual-network/security-overview.md)规则按预期方式工作并防护受保护的资源。
    1.  确保所有需要加密的资源都已加密。 定义和实施用于备份证书的进程，存储和访问这些证书，并还原已加密的实体。
    1.  在可能的情况下，使用适用于 OS 磁盘的[Azure 磁盘加密](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md)。

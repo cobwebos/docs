@@ -1,14 +1,14 @@
 ---
 title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
-ms.date: 07/24/2020
+ms.date: 07/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: 979891a3ebea8070c6882fff62ed4a7954041d3e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a6d5c7e06ed59ab76b15f4f8ae880408dc6f7835
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371030"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500872"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -33,9 +33,7 @@ Azure Lighthouse 允许更灵活地管理多个客户的资源，而无需登录
 
 可以直接在门户中对委派资源执行管理任务，也可以使用 API 和管理工具（如 Azure CLI 和 Azure PowerShell）对委派资源执行管理任务。 在处理委托的资源时，只要跨租户管理支持该功能，并且用户具有相应的权限，可以使用所有现有 API。
 
-Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSubscription?view=azps-3.5.0)显示 `tenantID` 每个订阅的，使你可以确定返回的订阅是属于你的服务提供商租户还是托管客户租户。
-
-同样，Azure CLI 命令（例如 [az account list](/cli/azure/account?view=azure-cli-latest#az-account-list)）会显示 homeTenantId 和 managedByTenants 属性。
+Azure CLI 命令（如[az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) ）显示每个订阅的**homeTenantId**和**managedByTenants**属性，使你能够确定返回的订阅是属于你的服务提供商租户还是属于托管客户租户。
 
 > [!TIP]
 > 如果在使用 Azure CLI 时看不到这些值，请尝试通过先运行 `az account clear` 再运行 `az login --identity` 来清除缓存。
@@ -70,7 +68,7 @@ Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSu
 
 [Azure 成本管理 + 计费](../../cost-management-billing/index.yml)：
 
-- 在管理租户中，CSP 合作伙伴可以查看、管理和分析 Azure 计划下的客户的预税消耗成本（不包括购买）。 费用将基于零售费率，以及合作伙伴对客户订阅的基于角色的访问控制（RBAC）访问权限。
+- 在管理租户中，CSP 合作伙伴可以查看、管理和分析 Azure 计划下的客户的预税消耗成本（不包括购买）。 费用将基于零售费率和合作伙伴对客户订阅的基于 Azure 角色的访问控制（Azure RBAC）访问权限。
 
 [Azure Kubernetes 服务 (AKS)](../../aks/index.yml)：
 

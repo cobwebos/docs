@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b94725d4d3eb9fd6f13a39d00486b4ab085b9ef9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4471994f7e691466449125a74cf3f7d46607be01
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80473934"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495125"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Blob 存储的性能与可伸缩性查检表
 
@@ -36,8 +36,8 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 | &nbsp; |网络 |[客户端设备是否具有优质网络链接？](#link-quality) |
 | &nbsp; |网络 |[客户端应用程序是否位于存储帐户所在的同一区域？](#location) |
 | &nbsp; |直接客户端访问 |[是否使用共享访问签名 (SAS) 和跨源资源共享 (CORS) 来实现对 Azure 存储的直接访问？](#sas-and-cors) |
-| &nbsp; |缓存 |[应用程序是否缓存经常访问且极少更改的数据？](#reading-data) |
-| &nbsp; |缓存 |[应用程序是否会对更新进行批处理：将更新缓存在客户端，然后以较大集的形式上传更新？](#uploading-data-in-batches) |
+| &nbsp; |Caching |[应用程序是否缓存经常访问且极少更改的数据？](#reading-data) |
+| &nbsp; |Caching |[应用程序是否会对更新进行批处理：将更新缓存在客户端，然后以较大集的形式上传更新？](#uploading-data-in-batches) |
 | &nbsp; |.NET 配置 |[是否使用 .NET Core 2.1 或更高版本来实现最佳性能？](#use-net-core) |
 | &nbsp; |.NET 配置 |[是否已将客户端配置为使用足够数量的并发连接？](#increase-default-connection-limit) |
 | &nbsp; |.NET 配置 |[对于 .NET 应用程序，是否已将 .NET 配置为使用足够数量的线程？](#increase-minimum-number-of-threads) |
@@ -65,7 +65,7 @@ Azure 存储在容量、事务速率和带宽方面存在可伸缩性与性能�
 如果即将达到特定订阅/区域组合允许的最大存储帐户数，请评估你的方案并确定是否符合以下任何条件：
 
 - 是否使用存储帐户作为非托管磁盘，并将这些磁盘添加到虚拟机 (VM)？ 对于此方案，Microsoft 建议使用托管磁盘。 托管磁盘可自动缩放，你无需创建和管理单个存储帐户。 有关详细信息，请参阅 [Azure 托管磁盘简介](../../virtual-machines/windows/managed-disks-overview.md)
-- 是否对每个客户使用一个存储帐户，以实现数据隔离？ 对于此方案，Microsoft 建议为每个客户使用 blob 容器，而不是使用整个存储帐户。 Azure 存储现在允许按容器分配基于角色的访问控制 (RBAC)。 有关详细信息，请参阅[在 Azure 门户中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限](../common/storage-auth-aad-rbac-portal.md)。
+- 是否对每个客户使用一个存储帐户，以实现数据隔离？ 对于此方案，Microsoft 建议为每个客户使用 blob 容器，而不是使用整个存储帐户。 Azure 存储现在允许基于每个容器分配 Azure 角色。 有关详细信息，请参阅[在 Azure 门户中使用 RBAC 授予对 Azure Blob 和队列数据的访问权限](../common/storage-auth-aad-rbac-portal.md)。
 - 是否使用多个存储帐户进行分片，以增加流入量、流出量、每秒 I/O 操作次数 (IOPS) 或容量？ 对于这种情况，Microsoft 建议在可能的情况下，利用存储帐户的更高限制来减少工作负荷所需的存储帐户数。 若要请求提高存储帐户的限制，请联系 [Azure 支持部门](https://azure.microsoft.com/support/options/)。 有关详细信息，请参阅[宣布推出更大容量和规模的存储帐户](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)。
 
 ### <a name="capacity-and-transaction-targets"></a>容量和事务目标
@@ -151,7 +151,7 @@ Blob 存储使用基于范围的分区方案来进行缩放和负载均衡。 �
   
 SAS 和 CORS 都有助于避免 Web 应用程序上出现不必要的负载。  
 
-## <a name="caching"></a>缓存
+## <a name="caching"></a>Caching
 
 缓存在性能方面发挥着重要的作用。 以下部分将讨论有关缓存的最佳做法。
 
