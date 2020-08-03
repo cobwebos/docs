@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 6939553206fe223d8166368d2963f03b32d2629e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1311af54c2335f403f2db071ced1caee3b122abc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "67173004"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507341"
 ---
 #### <a name="to-create-a-new-service"></a>创建新服务
 1. 使用 Microsoft 帐户凭据登录 [Microsoft Azure 政府门户](https://portal.azure.us/)。
@@ -18,7 +18,7 @@ ms.locfileid: "67173004"
    
    1. 为服务提供唯一“资源名称”。**** 此名称是可用来标识服务的友好名称。 名称可以为 2 到 50 个字符，包括字母、数字和连字符。 名称必须以字母或数字开头和结尾。
    2. 从下拉列表中选择 **“订阅”**。 该订阅将链接到计费帐户。 如果只有一个订阅，此字段不存在。
-   3. 对于“资源组”，请使用现有组或创建新组。************ 有关详细信息，请参阅 [Azure 资源组](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/)。
+   3. 对于“资源组”，请使用现有组或创建新组。************ 有关详细信息，请参阅 [Azure 资源组](/azure/azure-resource-manager/management/manage-resource-groups-portal)。
    4. 提供你的服务的 **“位置”**。 位置是指要部署设备的地理区域。 选择“USGov Iowa”或“USGov Virginia”********。
    5. 选择“新建存储帐户”****，自动为服务创建存储帐户。 为此存储帐户指定名称。 如果需要将数据存储在不同位置，请取消选中此框。
    6. 如果希望在仪表板上显示此服务的快速链接，请选中“固定到仪表板”。****

@@ -8,13 +8,21 @@ ms.topic: include
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
-ms.openlocfilehash: d05386f1dfbab28d5fe42d02b8e9be0f257afafd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 014d1ea4575b17b1d4017c9519bee6c5ea66ceb5
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527196"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87515325"
 ---
+## <a name="what-is-azure-service-manager-and-what-does-it-mean-by-classic"></a>什么是 Azure Service Manager，它是什么意思？
+
+IaaS VM （经典）中的 "经典" 一词是指由 Azure Service Manager （ASM）管理的 Vm。 Azure Service Manager （ASM）是 azure 的旧控制平面，负责创建、管理、删除 Vm 和执行其他控制平面操作。 
+
+## <a name="what-is-azure-resource-manager"></a>什么是 Azure 资源管理器？
+
+[Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/management/overview)是 azure 的最新控制面，负责创建、管理、删除 vm 和执行其他控制平面操作。 
+
 ## <a name="what-is-the-time-required-for-migration"></a>迁移需要多长时间？
 
 计划迁移和执行迁移很大程度都取决于体系结构的复杂性，这可能需要几个月的时间。  
@@ -33,11 +41,11 @@ ms.locfileid: "86527196"
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>此迁移计划是否影响 Azure 虚拟机上运行的任何现有服务或应用程序？ 
 
-2023 年 3 月 1 日前都是 IaaS VM （经典版），所以不会产生影响。 IaaS VM（经典版）是公开上市的完全受支持的服务。 可以继续使用这些资源拓展你在 Microsoft Azure 上的足迹。 2023 年 3 月 1 日起会全面停用这些 VM，并且会停止或解除分配任何活跃的或分配的 VM。 这不会影响到其他经典的资源，如云服务（经典版）、存储帐户（经典版）等。   
+2023 年 3 月 1 日前都是 IaaS VM （经典版），所以不会产生影响。 在正式版中，IaaS VM（经典）是完全受支持的服务。 可以继续使用这些资源拓展你在 Microsoft Azure 上的足迹。 在 2023 年 3 月 1 日，将完全停用这些 VM，且会停止并解除分配任何活动的或已分配的 VM。 这不会影响其他经典资源，如云服务（经典）、存储帐户（经典）等。   
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>如果我近期不打算迁移，我的 VM 会发生什么情况？ 
 
-2023 年 3 月 1 日起会全面停用 IaaS VM（经典版），并且会停止或解除分配任何活跃的或分配的 VM。 为避免影响业务，我们强烈建议现在就开始计划迁移并在 2023 年 3 月 1 日之前完成迁移。 我们近期不会淘汰现有的经典 API、云服务和资源模型。 我们想要通过 Resource Manager 部署模型中提供的高级功能，让迁移变得简单。 我们建议现在开始计划将这些资源迁移到 Azure 资源管理器。 
+在 2023 年 3 月 1 日，将完全停用 IaaS VM（经典），且会停止并解除分配任何活动的或已分配的 VM。 为避免影响业务，我们强烈建议现在就开始计划迁移并在 2023 年 3 月 1 日之前完成迁移。 我们近期不会淘汰现有的经典 API、云服务和资源模型。 我们想要通过 Resource Manager 部署模型中提供的高级功能，让迁移变得简单。 我们建议现在开始计划将这些资源迁移到 Azure 资源管理器。 
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>对于我现有的工具而言，此迁移计划有何意义？ 
 
@@ -57,7 +65,7 @@ ms.locfileid: "86527196"
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>如果我必须使用 Resource Manager 下的 IaaS，是否必须购买其他 ExpressRoute 线路？ 
 
-不会。 我们近期实现了 [将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](../articles/expressroute/expressroute-move.md)。 如果已有 ExpressRoute 线路，则不需要购买新的线路。
+不是。 我们近期实现了[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](../articles/expressroute/expressroute-move.md)。 如果已有 ExpressRoute 线路，则不需要购买新的线路。
 
 ## <a name="what-if-i-had-configured-role-based-access-control-policies-for-my-classic-iaas-resources"></a>如果我已经为经典 IaaS 资源配置基于角色的访问控制策略，该怎么办？ 
 

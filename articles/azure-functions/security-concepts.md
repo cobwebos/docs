@@ -3,12 +3,12 @@ title: 保护 Azure Functions
 description: 了解如何使 Azure 中运行的函数代码更安全，使其免遭常见攻击的威胁。
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: bdb012c3f379b1e0314364f79ccc4aa49eba4bd3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e0c5036681aace103ea69d1e9cc73e96dc30821f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079683"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502675"
 ---
 # <a name="securing-azure-functions"></a>保护 Azure Functions
 
@@ -58,7 +58,7 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 下表比较了不同类型的访问密钥的用法：
 
-| 操作                                        | 范围                    | 有效密钥         |
+| 操作                                        | 作用域                    | 有效密钥         |
 |-----------------------------------------------|--------------------------|--------------------|
 | 执行函数                            | 特定函数        | 函数           |
 | 执行函数                            | 任何函数             | 函数或主机   |
@@ -83,7 +83,7 @@ Functions 还与 Azure Monitor 日志集成，使你能够将函数应用日志�
 
 #### <a name="user-management-permissions"></a>用户管理权限
 
-函数支持内置 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md)。 函数支持的 RBAC 角色有[参与者](../role-based-access-control/built-in-roles.md#contributor)、[所有者](../role-based-access-control/built-in-roles.md#owner)和[读者](../role-based-access-control/built-in-roles.md#owner)。 
+函数支持内置的[基于 azure 角色的访问控制（AZURE RBAC）](../role-based-access-control/overview.md)。 函数支持的 Azure 角色为 "[参与者](../role-based-access-control/built-in-roles.md#contributor)"、"[所有者](../role-based-access-control/built-in-roles.md#owner)" 和 "[读者](../role-based-access-control/built-in-roles.md#owner)"。 
 
 权限在函数应用级别有效。 参与者角色是执行大多数函数应用级任务所必需的。 只有所有者角色才能删除函数应用。 
 
@@ -207,4 +207,3 @@ Azure Functions 工具集成可以简化将本地函数项目代码发布到 Azu
 
 + [适用于 Azure Functions 的 Azure 安全基线](security-baseline.md)
 + [Azure Functions 诊断](functions-diagnostics.md)
-        

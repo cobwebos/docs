@@ -6,12 +6,13 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: fd7b9a809421aa33b83902960da2f02d4deabf9a
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 91b4455c9485389f71d42448617668167579f437
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86113235"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504273"
 ---
 # <a name="auto-grow-azure-database-for-mysql-storage-using-the-azure-cli"></a>使用 Azure CLI 自动增长 Azure Database for MySQL 存储
 本文介绍如何将 Azure Database for MySQL 服务器存储配置为在不影响工作负荷的情况下增长。
@@ -43,4 +44,4 @@ az mysql server create --resource-group myresourcegroup --name mydemoserver  --a
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[如何基于指标创建警报](howto-alert-on-metric.md)。
+了解[如何创建有关指标的警报](howto-alert-on-metric.md)。

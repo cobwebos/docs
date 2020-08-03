@@ -5,21 +5,23 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 3035bd71a91f7cad6fb951d74081b77d8445a81f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 64b3bf87df7d0b10f8a69e8303010f64b3e68f79
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133778"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507219"
 ---
 ### <a name="functional-limits"></a>功能限制
 
 下表列出了 Azure 数字孪生在当前预览版中的功能限制。
 
-| 区域 | 功能 | 默认限制 | 可调? |
+| 领域 | 功能 | 默认限制 | 可调? |
 | --- | --- | --- | --- |
 | Azure 资源 | 区域中每个订阅的 Azure 数字孪生实例数 | 10 | 是 |
 | 数字孪生 | Azure 数字孪生实例中的孪生数 | 200,000 | 是 |
+| 数字孪生 | 与单个克隆的传入关系数 | 5,000 | 否 |
+| 数字孪生 | 单个克隆的传出关系数 | 5,000 | 否 |
 | 路由 | 单个 Azure 数字孪生实例的终结点数 | 6 | 否 |
 | 路由 | 单个 Azure 数字孪生实例的路由数 | 6 | 是 |
 | 模型 | 单个 Azure 数字孪生实例内的模型数 | 10,000 | 是 |

@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f1eec76d92edc97f7e4058d3afe813f0bb2aae47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9cb1b4d33a538b48ca1519d66f6602d902033c3e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81431873"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87494819"
 ---
 # <a name="design-tables-using-synapse-sql"></a>使用 Synapse SQL 设计表
 
@@ -28,24 +28,24 @@ ms.locfileid: "81431873"
 | 主题                                                        | SQL 池 | SQL 按需版本 |
 | ------------------------------------------------------------ | ------------------ | ----------------------- |
 | [确定表类别](#determine-table-category)        | 是                | 否                      |
-| [架构名称](#schema-names)                                | 是                | 是                     |
-| [表名称](#table-names)                                  | 是                | 否                      |
+| [架构名称](#schema-names)                                | “是”                | 是                     |
+| [表名](#table-names)                                  | 是                | 否                      |
 | [表暂留](#table-persistence)                      | 是                | 否                      |
 | [常规表](#regular-table)                              | 是                | 否                      |
-| [临时表](#temporary-table)                          | 是                | 是                     |
-| [外部表](#external-table)                            | 是                | 是                     |
-| [数据类型](#data-types)                                    | 是                | 是                     |
+| [临时表](#temporary-table)                          | “是”                | 是                     |
+| [外部表](#external-table)                            | “是”                | 是                     |
+| [数据类型](#data-types)                                    | “是”                | 是                     |
 | [分布式表](#distributed-tables)                    | 是                | 否                      |
 | [哈希分布表](#hash-distributed-tables)          | 是                | 否                      |
 | [复制表](#replicated-tables)                      | 是                | 否                      |
 | [循环表](#round-robin-tables)                    | 是                | 否                      |
 | [表的常用分布方法](#common-distribution-methods-for-tables) | 是                | 否                      |
-| [分区](#partitions)                                    | 是                | 是                     |
+| [分区](#partitions)                                    | “是”                | 是                     |
 | [列存储索引](#columnstore-indexes)                  | 是                | 否                      |
-| [统计信息](#statistics)                                    | 是                | 是                     |
+| [统计信息](#statistics)                                    | “是”                | 是                     |
 | [主键和唯一键](#primary-key-and-unique-key)    | 是                | 否                      |
 | [用于创建表的命令](#commands-for-creating-tables) | 是                | 否                      |
-| [使源数据与数据仓库相符](#aligning-source-data-with-the-data-warehouse) | 是                | 否                      |
+| [使源数据与数据仓库相符](#align-source-data-with-the-data-warehouse) | 是                | 否                      |
 | [不支持的表功能](#unsupported-table-features)    | 是                | 否                      |
 | [表大小查询](#table-size-queries)                    | 是                | 否                      |
 
@@ -214,7 +214,7 @@ ORDER BY
 | [CREATE TABLE AS SELECT](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | 在新表中填充 select 语句的结果。 表列和数据类型基于 select 语句的结果。 若要导入数据，此语句可从外部表中进行选择。 |
 | [CREATE EXTERNAL TABLE AS SELECT](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) | 通过将 select 语句的结果导出到外部位置，来创建新的外部表。  该位置为 Azure Blob 存储或 Azure Data Lake Storage。 |
 
-## <a name="aligning-source-data-with-the-data-warehouse"></a>使源数据与数据仓库相符
+## <a name="align-source-data-with-the-data-warehouse"></a>将源数据与数据仓库对齐
 
 从其他数据源加载数据可以填充数据仓库表。 若要成功完成加载，源数据中列的数目和数据类型必须与数据仓库中的表定义一致。
 

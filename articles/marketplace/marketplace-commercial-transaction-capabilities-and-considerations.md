@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 33c3cf4b9da33b15d7a7d1c14b0c3fb892b60121
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e2ce35158e8f9a3a2ad9da2b3d67a3f35d5a8c80
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317801"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503559"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>商业市场交易功能
 
 ## <a name="transactions-by-publishing-option"></a>按发布选项统计的交易量
 
-发布者或 Microsoft 负责管理商业市场中的产品/服务的软件许可证交易。 你为产品/服务选择的发布选项将决定交易的管理方。 请参阅[确定发布选项](./determine-your-listing-type.md#choose-a-publishing-option)，了解每个发布选项的可用性和说明。
+发布者或 Microsoft 负责管理商业市场中的产品/服务的软件许可证交易。 你为产品/服务选择的发布选项将决定交易的管理方。 请参阅[确定发布选项](./determine-your-listing-type.md#choose-a-call-to-action)，了解每个发布选项的可用性和说明。
 
 ### <a name="list-trial-and-byol-publishing-options"></a>列表、试用和 BYOL 发布选项
 
@@ -136,7 +136,7 @@ BYOL 的成本构成如下：
 |Microsoft 将许可证费用的 80% 支付给你 <br> \* 对于所有符合资格的 SaaS 应用，Microsoft 将为你垫付许可证费用的 90%   |   80.00 美元/月 <br> \* 90.00 美元/月    |
 |Microsoft 保留许可证费用的 20% <br> \* 对于所有符合资格的 SaaS 应用，Microsoft 保留许可证费用的 10%。  |  20.00 美元/月 <br> \* 10.00 美元     |
 
-对于在商业市场上发布的特定产品/服务，Microsoft 会将其 Marketplace 服务费用从20% 降低到10% （如 Microsoft 发布者协议中所述）。 对于你的产品/服务，你的产品/服务必须已由 Microsoft 指定为 Azure IP 共同销售 incetivized。 在每个日历月结束之前，资格必须至少满足五（5）个工作日，才能获得该月降低的 Marketplace 服务费用。 降低的 Marketplace 服务费用适用于 Azure IP 共同销售 incentivized SaaS、Vm、托管应用以及通过商业市场提供的任何其他合格事务 IaaS 产品/服务。
+对于在商业市场上发布的特定产品/服务，Microsoft 会将其 Marketplace 服务费用从20% 降低到10% （如 Microsoft 发布者协议中所述）。 对于你的产品/服务，你的产品/服务必须已由 Microsoft 指定为 Azure IP 共同销售 incentivized。 在每个日历月结束之前，资格必须至少满足五（5）个工作日，才能获得该月降低的 Marketplace 服务费用。 降低的 Marketplace 服务费用适用于 Azure IP 共同销售 incentivized SaaS、Vm、托管应用以及通过商业市场提供的任何其他合格事务 IaaS 产品/服务。
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>客户开具发票、付款、计费和费用收集
 
@@ -163,7 +163,7 @@ Microsoft 作为代理收集的所有软件许可费用将收取 20% 的手续�
 
 #### <a name="billing-questions-and-support"></a>计费问题和支持
 
-有关详细信息和法律策略，请参阅[发布者协议](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3ypvt)（请参见合作伙伴中心）。
+有关详细信息和法律策略，请参阅[发布者协议](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4xqkx)（请参见合作伙伴中心）。
 
 若在计费方面遇到问题且需要帮助，请联系[商业市场发布者支持](https://aka.ms/marketplacepublishersupport)。
 

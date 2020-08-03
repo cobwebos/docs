@@ -7,13 +7,13 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
-ms.custom: mvc
-ms.openlocfilehash: fc32dd5c477a76a20bc3a641ec8761e95c129554
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 34553c1b211b9e2c4b13a083f5c3a6732fb65472
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805890"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502692"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>使用 Azure CLI 基于 URL 对 Web 流量进行路由
 
@@ -43,7 +43,7 @@ ms.locfileid: "84805890"
 
 资源组是在其中部署和管理 Azure 资源的逻辑容器。 使用 `az group create` 创建资源组。
 
-以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组****。
+以下示例在 eastus 位置创建名为 myResourceGroupAG 的资源组 。
 
 ```azurecli-interactive
 az group create --name myResourceGroupAG --location eastus

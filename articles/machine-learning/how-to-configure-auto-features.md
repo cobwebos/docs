@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 1c26164ed7a2b7c335d3977e143fcef28c8955db
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 31df880d9d6d586491d115d9b70de9f85bc980b2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475808"
+ms.locfileid: "87502913"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>自动化机器学习中的特征化
 
@@ -106,7 +106,7 @@ ms.locfileid: "87475808"
 插补缺少的特征值 |Passed <br><br><br> 完成| 在训练数据中未检测到缺失特征值。 详细了解[缺失值插补。](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> 在训练数据中检测到缺失特征值并进行了插补。
 高基数特征处理 |Passed <br><br><br> 完成| 已分析输入，但未检测到任何高基数特征。 <br><br> 在输入中检测到了高基数特征，并进行了处理。
 验证拆分处理 |完成| 已将验证配置设置为 `'auto'`，并且训练数据包含的行少于 20,000 行。 <br> 已使用交叉验证来验证经过训练的模型的每个迭代。 详细了解[验证数据](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data)。 <br><br> 已将验证配置设置为 `'auto'`，并且训练数据包含的行多于 20,000 行。 <br> 输入数据已被拆分成训练数据集和验证数据集，以用于验证模型。
-类均衡检测 |Passed <br><br><br><br><br> 收到警报 | 输入已经过分析，训练数据中的所有类都是均衡的。 如果某个数据集中每个类都有良好的表示形式（按样本的数量和比率进行度量），则将该数据集视为均衡的数据集。 <br><br><br> 在输入中检测到了不均衡类。 若要修复模型偏差，请解决均衡问题。 详细了解[不均衡数据](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)。
+类均衡检测 |Passed <br><br><br><br><br> 收到警报 <br><br><br><br> 完成| 输入已经过分析，训练数据中的所有类都是均衡的。 如果某个数据集中每个类都有良好的表示形式（按样本的数量和比率进行度量），则将该数据集视为均衡的数据集。 <br><br> 在输入中检测到了不均衡类。 若要修复模型偏差，请解决均衡问题。 详细了解[不均衡数据](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)。 <br><br> 在输入中检测到不均衡类，并且扫描的逻辑已确定要应用平衡。
 内存问题检测 |Passed <br><br><br><br> 完成 |<br> 已分析了选定的值（范围、滞后、滚动窗口），但未检测到潜在的内存不足问题。 详细了解时序[预测配置](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment)。 <br><br><br>已分析了选定的值（范围、滞后、滚动窗口），可能会导致你的试验遇到内存不足问题。 滞后或滚动窗口配置已关闭。
 频率检测 |Passed <br><br><br><br> 完成 |<br> 已分析了时序，所有数据点都与检测到的频率保持一致。 <br> <br> 已分析时序，检测到了与已检测到的频率不一致的数据点。 这些数据点已从数据集中删除。 详细了解[时序预测的数据准备](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#preparing-data)。
 

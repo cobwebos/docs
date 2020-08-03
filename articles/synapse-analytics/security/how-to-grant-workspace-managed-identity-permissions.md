@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9cb1ddceff30b247caf3ecd9ee3bc21d5addb519
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2b11f11ac8a0d4f3a0623c2903dfc9355e875d14
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089441"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501927"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>向工作区托管标识授予权限（预览）
 
@@ -22,7 +22,7 @@ ms.locfileid: "87089441"
 >[!NOTE]
 >在此文档的剩余部分中，我们将此工作区托管标识称为托管标识。
 
-## <a name="grant-the-managed-identity--permissions-to-the-sql-pool"></a>向 SQL 池授予托管标识权限
+## <a name="grant-managed-identity-permissions-to-the-sql-pool"></a>向 SQL 池授予托管标识权限
 
 托管标识授予对工作区中的 SQL 池的权限。 在授予权限的情况下，你可以安排执行与 SQL 池相关的活动的管道。 使用 Azure 门户创建 Azure Synapse 工作区时，可以授予对 SQL 池的托管标识控制权限。
 
