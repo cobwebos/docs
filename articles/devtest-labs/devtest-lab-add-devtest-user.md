@@ -3,19 +3,19 @@ title: 在 Azure 开发测试实验室中添加所有者和用户 | Microsoft Do
 description: 使用 Azure 门户或 PowerShell 在 Azure 开发测试实验室中添加所有者和用户
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: b54e372a9b85b76737c0780be4bce9362765301b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 40173589c4798a8b00d940bca2a71f4d61f2c199
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013453"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533319"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中添加所有者和用户
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
 > 
 > 
 
-Azure 开发测试实验室中的访问权限由[azure 基于角色的访问控制（AZURE RBAC）](../role-based-access-control/overview.md)控制。 使用RBAC，可以将团队中的职责分配给*角色*，仅授予用户执行其作业所需的访问权限。 RBAC 的三个角色分别是所有者**、开发实验室用户** 和参与者**。 在本文中，将了解这三个主要 RBAC 角色的每个角色可以执行的操作。 在这里，将了解如何通过门户和 PowerShell 脚本将用户添加到实验室，以及如何在订阅级别添加用户。
+Azure 开发测试实验室中的访问权限由[azure 基于角色的访问控制（AZURE RBAC）](../role-based-access-control/overview.md)控制。 使用RBAC，可以将团队中的职责分配给*角色*，仅授予用户执行其作业所需的访问权限。 其中三个 Azure 角色是*所有者*、*开发测试实验室用户*和*参与者*。 本文介绍三种主要 Azure 角色中的每个角色可以执行的操作。 在这里，将了解如何通过门户和 PowerShell 脚本将用户添加到实验室，以及如何在订阅级别添加用户。
 
 ## <a name="actions-that-can-be-performed-in-each-role"></a>每个角色可以执行的操作
 可以为用户分配一下三种主要角色：
@@ -30,19 +30,19 @@ Azure 开发测试实验室中的访问权限由[azure 基于角色的访问控�
 | --- | --- | --- | --- |
 | **实验室任务** | | | |
 | 将用户添加到实验室 |否 |是 |否 |
-| 更新成本设置 |否 |是 |是 |
+| 更新成本设置 |否 |是 |“是” |
 | **VM 基本任务** | | | |
-| 添加和删除自定义映像 |否 |是 |是 |
-| 添加、更新和删除公式 |是 |是 |是 |
-| 将 Azure 市场映像加入允许列表 |否 |是 |是 |
+| 添加和删除自定义映像 |否 |是 |“是” |
+| 添加、更新和删除公式 |“是” |“是” |“是” |
+| 将 Azure 市场映像加入允许列表 |否 |是 |“是” |
 | **VM 任务** | | | |
-| 创建 VM |是 |是 |是 |
-| 启动、停止和删除 VM |用户仅创建 VM |是 |是 |
-| 更新 VM 策略 |否 |是 |是 |
-| 将数据磁盘添加到 VM 或从中删除 |用户仅创建 VM |是 |是 |
+| 创建 VM |“是” |“是” |“是” |
+| 启动、停止和删除 VM |用户仅创建 VM |“是” |“是” |
+| 更新 VM 策略 |否 |是 |“是” |
+| 将数据磁盘添加到 VM 或从中删除 |用户仅创建 VM |“是” |“是” |
 | **项目任务** | | | |
-| 添加和删除项目存储库 |否 |是 |是 |
-| 应用项目 |是 |是 |是 |
+| 添加和删除项目存储库 |否 |是 |“是” |
+| 应用项目 |“是” |“是” |“是” |
 
 > [!NOTE]
 > 用户创建 VM 时，会自动为该用户分配创建该 VM 的**所有者**角色。

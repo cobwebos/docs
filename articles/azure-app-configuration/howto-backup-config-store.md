@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: 0b057172c822f893e602d60f77a285f0867cf368
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ef777f235c85c423ea126fb7249f8e6a11492d3a
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367752"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528542"
 ---
 # <a name="backup-app-configuration-stores-automatically"></a>自动存储备份应用配置
 
@@ -191,7 +191,7 @@ az role assignment create \
     --scope $secondaryAppConfigId
 ```
 
-使用以下命令或[Azure 门户](/azure/storage/common/storage-auth-aad-rbac-portal#assign-rbac-roles-using-the-azure-portal)授予 Azure Function App 的托管标识访问存储队列的权限。 
+使用以下命令或[Azure 门户](/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal)授予 Azure Function App 的托管标识访问存储队列的权限。 
 - `Storage Queue Data Contributor`在存储队列中分配角色。
 
 ```azurecli-interactive
@@ -233,7 +233,7 @@ az appconfig kv show --name $secondaryAppConfigName --key Foo
 }
 ```
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果未在辅助存储中看到新设置：
 

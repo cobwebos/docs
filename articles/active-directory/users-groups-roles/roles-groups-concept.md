@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24f29ed1ad7ba0215e9b4193fd56dd3a32f3e9a2
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 68d40e9dbc2c4da6b298f7245318c95de983edcc
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476000"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530140"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>使用云组来管理 Azure Active Directory （预览版）中的角色分配
 
@@ -59,12 +59,13 @@ Azure AD 允许使用名为 isAssignableToRole 的新属性来保护分配给角
 ## <a name="known-issues"></a>已知问题
 
 - 如果角色是通过组分配的，则不能创建或修改动态组。
-- Azure 信息保护尚无法通过组识别角色成员身份。 直接角色分配仍有效。 Azure 信息保护门户（经典门户）尚不通过组识别角色成员身份。 直接角色分配仍有效。 你可以[迁移到统一的灵敏度标签平台](https://docs.microsoft.com/azure/information-protection/configure-policy-migrate-labels)，然后使用 Office 365 Security & 相容性中心来使用组分配来管理角色。
 - **为托管用户登录功能启用暂存推出**不支持通过组进行分配。
 - *仅 Azure AD P2 许可客户*：不要通过 Azure AD 和 Privileged Identity Management 为角色分配活动组。 这将导致用户在 PIM 中看不到其活动角色分配以及无法删除 PIM 赋值的问题。 符合条件的分配在此方案中不受影响。 如果尝试进行此分配，可能会出现意外的行为，例如：
   - 角色分配的结束时间可能会错误地显示。
   - 在 PIM 门户中，无论授予分配多少方法（通过一个或多个组并直接执行），**我的角色**都只能显示一个角色分配。
-- *仅 Azure AD P2 授权客户*即使在删除组之后，它仍会在 PIM UI 中显示为该角色的合格成员。 功能没有问题;这只是 Azure 门户中的缓存问题。
+- *仅 Azure AD P2 授权客户*即使在删除组之后，它仍会在 PIM UI 中显示为该角色的合格成员。 功能没有问题;这只是 Azure 门户中的缓存问题。  
+- Exchange 管理中心不会通过组识别角色成员身份，但 PowerShell cmdlet 将起作用。
+- Azure 信息保护门户（经典门户）尚不通过组识别角色成员身份。 你可以[迁移到统一的灵敏度标签平台](https://docs.microsoft.com/azure/information-protection/configure-policy-migrate-labels)，然后使用 Office 365 Security & 相容性中心来使用组分配来管理角色。
 
 我们正在解决这些问题。
 
@@ -74,5 +75,5 @@ Azure AD 允许使用名为 isAssignableToRole 的新属性来保护分配给角
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建角色分配的组](roles-groups-create-eligible.md)
+- [创建可分配角色的组](roles-groups-create-eligible.md)
 - [将角色分配给角色可分配的组](roles-groups-assign-role.md)

@@ -4,12 +4,12 @@ description: 使用基于角色的访问控制来管理对恢复服务保管库�
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: 4c5a0a43efe7bda5fdc4b60d13b97f61565809bd
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 408e25b865c6d244118e505121492ccf22d19b64
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445308"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533455"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>使用基于角色的访问控制管理 Azure 备份恢复点
 
@@ -28,9 +28,9 @@ Azure 备份提供三个用于控制备份管理操作的内置角色。 了解[
 
 ## <a name="mapping-backup-built-in-roles-to-backup-management-actions"></a>将备份内置角色映射到备份管理操作
 
-下表包含了备份管理操作和执行这些操作所需的最低 RBAC 角色。
+下表捕获了执行该操作所需的备份管理操作和相应的最低 Azure 角色。
 
-| 管理操作 | 所需的最低 RBAC 角色 | 所需的范围 |
+| 管理操作 | 最低要求的 Azure 角色 | 所需的范围 |
 | --- | --- | --- |
 | 创建恢复服务保管库 | 备份参与者 | 包含保管库的资源组 |
 | 启用 Azure VM 备份 | 备份操作员 | 包含保管库的资源组 |

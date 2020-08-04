@@ -3,12 +3,12 @@ title: 将 Azure VM 备份到恢复服务保管库中
 description: 介绍如何使用 Azure 备份将 Azure VM 备份到恢复服务保管库中
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: b9d57449e56fb50bfbfddb627a1d6bb379710da4
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 91fca2eef21a817c0f78b826e507901d94156dcd
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439718"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533591"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>将 Azure VM 备份到恢复服务保管库中
 
@@ -51,7 +51,8 @@ ms.locfileid: "87439718"
 1. 在新保管库中，选择 "**设置**" 部分中的 "**属性**"。
 2. 在 "**属性**" 中的 "**备份配置**" 下，选择 "**更新**"。
 3. 选择存储复制类型，然后选择“保存”。
-![设置新保管库的存储配置](./media/backup-azure-arm-vms-prepare/full-blade.png)
+
+      ![设置新保管库的存储配置](./media/backup-azure-arm-vms-prepare/full-blade.png)
 
 > [!NOTE]
    > 保管库已设置并包含备份项后，无法修改存储复制类型。 如果要执行此操作，则需要重新创建保管库。
@@ -151,7 +152,7 @@ ms.locfileid: "87439718"
 完成 | 已跳过 | 已完成
 已完成 | 已完成 | 已完成
 已完成 | 已失败 | 已完成，但出现警告
-失败 | 失败 | 失败
+已失败 | 失败 | 失败
 
 现在借助此功能，对于同一 VM，两个备份可以并行运行，但在任一阶段（快照、将数据传输到保管库）中，只有一个子任务可以运行。 因此，在正在进行的备份作业导致第二天的备份失败时，这种分离功能将避免这种情况。 后续几天的备份可以完成快照，而如果之前的备份作业正在进行状态，则会跳过将**数据传输到保管库**的过程。
 在保管库中创建的增量恢复点将捕获在保管库中创建的上一个恢复点的所有变动。 用户不会对用户造成任何影响。
@@ -166,13 +167,6 @@ Azure 备份通过为在计算机上运行的 Azure VM 代理安装一个扩展�
 --- | ---
 **Windows** | 1.[下载并安装](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)代理 MSI 文件。<br/><br/> 2.使用管理员权限在计算机上进行安装。<br/><br/> 3.验证安装。 在 VM 上的 C:\WindowsAzure\Packages 中，右键单击“WaAppAgent.exe” > “属性” 。 在“详细信息”选项卡上，“产品版本”应为 2.6.1198.718 或更高。 <br/><br/> 如果要更新代理，请确保没有备份操作正在运行，并[重新安装代理](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。
 **Linux** | 使用发行版的包存储库中的 RPM 或 DEB 包进行安装。 这是安装和升级 Azure Linux 代理的首选方法。 所有[认可的分发版提供商](../virtual-machines/linux/endorsed-distros.md)会将 Azure Linux 代理包集成到其映像和存储库。 [GitHub](https://github.com/Azure/WALinuxAgent) 上提供了该代理，但我们不建议从此处安装。<br/><br/> 如果要更新代理，请确保没有备份操作正在运行，并更新二进制文件。
-
->[!NOTE]
-> Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性磁盘备份和还原。
->
->如今，Azure 备份支持使用虚拟机备份解决方案将 VM 中的所有磁盘（操作系统和数据）备份到一起。 使用排除磁盘功能，可以选择从 VM 的多个数据磁盘中备份一个或多个数据磁盘。 这样就提供了一个高效且经济的针对备份和还原需求的解决方案。 每个恢复点都包含备份操作中包含的磁盘的数据，因此还可以在还原操作过程中从给定的恢复点还原部分磁盘。 这适用于从快照和保管库进行的还原。
->
->若要注册预览版，请向 AskAzureBackupTeam@microsoft.com 发送邮件
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -10,12 +10,12 @@ ms.date: 04/14/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 9d4097e847417f56c9881a3e18237e97dfee465e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: dcd1280dbe3a00a6a7cbdaaf59aa05326dfa8375
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501400"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534169"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>使用 Azure 门户访问 Blob 或队列数据
 
@@ -29,7 +29,7 @@ ms.locfileid: "87501400"
 
 ### <a name="use-the-account-access-key"></a>使用帐户访问密钥
 
-若要使用帐户访问密钥访问 Blob 和队列数据，必须拥有某种 RBAC 角色，此角色包含 RBAC 操作 **Microsoft.Storage/storageAccounts/listkeys/action**。 此 RBAC 角色可为内置角色，也可为自定义角色。 支持 **Microsoft.Storage/storageAccounts/listkeys/action** 的内置角色包括：
+若要使用帐户访问密钥访问 blob 和队列数据，必须为你分配一个 Azure 角色，其中包括 RBAC 操作 " **storageAccounts/listkeys/action**"。 此 Azure 角色可以是内置角色或自定义角色。 支持 **Microsoft.Storage/storageAccounts/listkeys/action** 的内置角色包括：
 
 - Azure 资源管理器[所有者](../../role-based-access-control/built-in-roles.md#owner)角色
 - Azure 资源管理器[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色
@@ -47,7 +47,7 @@ ms.locfileid: "87501400"
 - 至少拥有 Azure 资源管理器[读取者](../../role-based-access-control/built-in-roles.md#reader)角色，该角色的权限范围为存储帐户或更高级别。 “读取者”角色授予限制性最高的权限，但也接受可授予存储帐户管理资源访问权限的其他 Azure 资源管理器角色。
 - 拥有一个可提供 Blob 或队列数据访问权限的内置角色或自定义角色。
 
-必须提供“读取者”角色分配或其他 Azure 资源管理器角色分配，使用户能够在 Azure 门户中查看和导航存储帐户管理资源。 授予 Blob 或队列数据访问权限的 RBAC 角色不会授予存储帐户管理资源访问权限。 若要在门户中访问 Blob 或队列数据，用户需要拥有导航存储帐户资源的权限。 有关此要求的详细信息，请参阅[分配“读取者”角色以访问门户](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access)。
+必须提供“读取者”角色分配或其他 Azure 资源管理器角色分配，使用户能够在 Azure 门户中查看和导航存储帐户管理资源。 授予对 blob 或队列数据的访问权限的 Azure 角色不会授予对存储帐户管理资源的访问权限。 若要在门户中访问 Blob 或队列数据，用户需要拥有导航存储帐户资源的权限。 有关此要求的详细信息，请参阅[分配“读取者”角色以访问门户](../common/storage-auth-aad-rbac-portal.md#assign-the-reader-role-for-portal-access)。
 
 支持访问 Blob 或队列数据的内置角色包括：
 
@@ -82,7 +82,7 @@ ms.locfileid: "87501400"
 
 ![当前正在使用帐户密钥访问容器数据](media/storage-access-blobs-queues-portal/auth-method-access-key.png)
 
-若要改用 Azure AD 帐户，请单击图中突出显示的链接。 如果你通过拥有的 RBAC 角色获得了相应的权限，则可以继续访问。 但是，如果你缺少相应的权限，则会看到如下所示的错误消息：
+若要改用 Azure AD 帐户，请单击图中突出显示的链接。 如果你通过分配给你的 Azure 角色拥有适当的权限，你将能够继续操作。 但是，如果你缺少相应的权限，则会看到如下所示的错误消息：
 
 ![Azure AD 帐户不支持访问时显示的错误](media/storage-access-blobs-queues-portal/auth-error-azure-ad.png)
 

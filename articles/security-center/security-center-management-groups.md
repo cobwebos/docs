@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: memildin
-ms.openlocfilehash: 2ef2cc86b3e12149977fa819a7e54ee9a1c0d7ac
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 43a6c10c8c73e8fb5189b6f085a6969c0d776593
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423977"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534900"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>在 Azure 安全中心内实现租户级公开范围
 本文介绍如何通过将安全策略应用到链接到 Azure Active Directory 租户的所有 Azure 订阅来大规模管理组织的安全状况。
@@ -60,10 +60,10 @@ ms.locfileid: "87423977"
 
 ## <a name="grant-tenant-level-visibility-and-the-ability-to-assign-policies"></a>授予租户级公开范围和策略分配权限
 
-若要了解在 Azure AD 租户中注册的所有订阅的安全状态，必须对根管理组分配拥有足够读取权限的 RBAC 角色。
+若要深入了解 Azure AD 租户中注册的所有订阅的安全状况，需要在根管理组上指定具有足够读取权限的 Azure 角色。
 
 ### <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>提升 Azure Active Directory 全局管理员的访问权限
-Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过，作为目录管理员，他们有权将自身提升为拥有访问权限的角色。 Azure AD 租户管理员必须将自身提升为根管理组级用户访问管理员，才能分配 RBAC 角色。 有关 PowerShell 说明以及更多信息，请参阅[提升 Azure Active Directory 全局管理员的访问权限](../role-based-access-control/elevate-access-global-admin.md)。 
+Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过，作为目录管理员，他们有权将自身提升为拥有访问权限的角色。 Azure AD 租户管理员需要将自身提升为根管理组级别的用户访问管理员，以便他们可以分配 Azure 角色。 有关 PowerShell 说明以及更多信息，请参阅[提升 Azure Active Directory 全局管理员的访问权限](../role-based-access-control/elevate-access-global-admin.md)。 
 
 
 1. 登录 [Azure 门户](https://portal.azure.com)或 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
@@ -87,11 +87,11 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 5. 在提升访问权限下执行需要完成的任务。 完成后，将开关设置回“否”。
 
 
-### <a name="assign-rbac-roles-to-users"></a>向用户分配 RBAC 角色
-若想获得所有订阅的可见性，租户管理员需要在根管理组级别向他们希望向其授予租户级可见性的所有用户分配合适的 RBAC 角色，包括他们自己。 建议分配的角色是**安全管理员**或**安全读取者**。 通常情况下，若要在根级别应用策略，需要安全管理员角色，若要提供租户级可见性，安全读取者角色就足够了。 有关这些角色授予的权限的详细信息，请参阅[安全管理员内置角色说明](../role-based-access-control/built-in-roles.md#security-admin)或[安全读取者内置角色说明](../role-based-access-control/built-in-roles.md#security-reader)。
+### <a name="assign-azure-roles-to-users"></a>向用户分配 Azure 角色
+若要查看所有订阅，租户管理员需要将相应的 Azure 角色分配给他们希望在根管理组级别向其授予租户范围内的可见性的任何用户。 建议分配的角色是**安全管理员**或**安全读取者**。 通常情况下，若要在根级别应用策略，需要安全管理员角色，若要提供租户级可见性，安全读取者角色就足够了。 有关这些角色授予的权限的详细信息，请参阅[安全管理员内置角色说明](../role-based-access-control/built-in-roles.md#security-admin)或[安全读取者内置角色说明](../role-based-access-control/built-in-roles.md#security-reader)。
 
 
-#### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>通过 Azure 门户向用户分配 RBAC 角色： 
+#### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>通过 Azure 门户将 Azure 角色分配给用户： 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 
 1. 若要查看管理组，请在 Azure 主菜单下选择“所有服务”，然后选择“管理组”。
@@ -108,7 +108,7 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
    ![添加安全读取者角色屏幕截图](./media/security-center-management-groups/asc-security-reader.png)
 
 
-#### <a name="assign-rbac-roles-to-users-with-powershell"></a>使用 PowerShell 向用户分配 RBAC 角色： 
+#### <a name="assign-azure-roles-to-users-with-powershell"></a>通过 PowerShell 将 Azure 角色分配给用户： 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -155,7 +155,7 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
     ![“订阅覆盖范围”列表屏幕截图](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="remove-elevated-access"></a>撤消提升的访问权限 
-向用户分配 RBAC 角色后，租户管理员应将自己从用户访问管理员角色中删除。
+将 Azure 角色分配给用户后，租户管理员应从 "用户访问管理员" 角色中删除自己。
 
 1. 登录 [Azure 门户](https://portal.azure.com)或 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
 
@@ -183,7 +183,7 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 4. 重复执行第 1 步到第 3 步，直到已添加范围内的所有订阅。
 
    > [!NOTE]
-   > 管理组可以包含订阅和子管理组。 向父管理组分配拥有 RBAC 角色的用户时，子管理组的订阅继承访问权限。 子管理组还继承在父管理组设置的策略。 
+   > 管理组可以包含订阅和子管理组。 将 Azure 角色的用户分配给父管理组时，该访问权限由子管理组的订阅继承。 子管理组还继承在父管理组设置的策略。 
 
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何在 Azure 安全中心内实现租户级公开范围。 若要详细了解安全中心，请参阅以下文章：

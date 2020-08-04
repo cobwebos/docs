@@ -5,12 +5,12 @@ description: 了解有关使用 Azure Kubernetes 服务 (AKS) 中的高级计划
 services: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 5b003c9f0c3b47779bd7da92fb64c57830911fae
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: b8077a772d6fdc4b911fabdfa893a15dcd7615db
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077841"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530055"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的高级计划程序功能的最佳做法
 
@@ -71,8 +71,6 @@ spec:
 
 应用排斥时，请与应用程序开发人员和所有者协作，让他们在其部署中定义所需的容许。
 
-有关排斥和容许的详细信息，请参阅[应用排斥和容许][k8s-taints-tolerations]。
-
 若要详细了解如何在 AKS 中使用多个节点池，请参阅[为 AKS 中的群集创建和管理多个节点池][use-multiple-node-pools]。
 
 ### <a name="behavior-of-taints-and-tolerations-in-aks"></a>AKS 中的排斥和容许的行为
@@ -80,6 +78,7 @@ spec:
 升级 AKS 中的节点池时，排斥和容许在应用于新节点时遵循一个设定的模式：
 
 - **使用虚拟机规模集的默认群集**
+  - 可以从 AKS API[破坏 nodepool][taint-node-pool] ，使新扩展的节点接收 API 指定的节点 taints。
   - 假设你的群集有两个节点 - *node1* 和 *node2*。 升级节点池。
   - 另外两个节点（node3 和 node4）将被创建，并且排斥会被分别传递。
   - 原始 node1 和 node2 将被删除。
@@ -134,7 +133,7 @@ spec:
 
 节点选择器是将 pod 分配到给定节点的基本方法。 使用节点关联可以获得更高的灵活性。 使用节点关联可以定义当 pod 无法与节点匹配时发生的情况。 可以要求 Kubernetes 计划程序与包含标记主机的 pod 相匹配。 或者，可以优先选择匹配，但如果不匹配，则允许在其他主机上计划 pod。
 
-以下示例将节点关联设置为 *requiredDuringSchedulingIgnoredDuringExecution*。 这种关联要求 Kubernetes 计划使用具有匹配标签的节点。 如果没有可用的节点，则 pod 必须等待计划继续。 若要允许在其他节点上计划 pod，可以改为将值设置为*preferredDuringSchedulingIgnoreDuringExecution*：
+以下示例将节点关联设置为 *requiredDuringSchedulingIgnoredDuringExecution*。 这种关联要求 Kubernetes 计划使用具有匹配标签的节点。 如果没有可用的节点，则 pod 必须等待计划继续。 若要允许在其他节点上计划 pod，可改为将值设置为 preferredDuringSchedulingIgnoreDuringExecution：
 
 ```yaml
 kind: Pod
@@ -198,3 +197,4 @@ Kubernetes 计划程序逻辑隔离工作负荷的最终方法之一是使用 po
 [aks-best-practices-cluster-isolation]: operator-best-practices-cluster-isolation.md
 [aks-best-practices-identity]: operator-best-practices-identity.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
+[taint-node-pool]: use-multiple-node-pools.md#specify-a-taint-label-or-tag-for-a-node-pool

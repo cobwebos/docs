@@ -1,6 +1,6 @@
 ---
 title: Azure 安全中心和 Azure 容器注册表
-description: 了解 Azure 安全中心与 Azure 容器注册表的集成
+description: 了解如何通过 Azure 安全中心扫描容器注册表
 services: security-center
 documentationcenter: na
 author: memildin
@@ -10,35 +10,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2020
+ms.date: 08/02/2020
 ms.author: memildin
-ms.openlocfilehash: 2f995f3f6defd73575d9e1bf19326a828f1e6038
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b66969b26a801e6bd9aacf999c1c1ef9179ef1bd
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089900"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534662"
 ---
-# <a name="azure-container-registry-integration-with-security-center"></a>Azure 容器注册表与安全中心的集成
+# <a name="azure-container-registry-image-scanning-by-security-center"></a>安全中心扫描 Azure 容器注册表映像
 
 Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，它在中心注册表中存储和管理用于 Azure 部署的容器映像。 它基于开源 Docker 注册表 2.0。
 
-如果你使用的是 Azure 安全中心标准层，则可以添加容器注册表捆绑包。 此可选功能使你可以更深入地了解基于 ARM 的注册表中的映像的漏洞。 在订阅级别启用或禁用涵盖订阅中所有注册表的捆绑包。 此功能按映像收费，如[定价页](security-center-pricing.md)所示。 启用容器注册表捆绑包可确保安全中心准备好扫描推送到注册表的映像。 
-
+如果你使用的是 Azure 安全中心标准层，则可以添加容器注册表捆绑包。 此可选功能使你能够更深入地了解 Azure 资源管理器的注册表中的映像的漏洞。 在订阅级别启用或禁用涵盖订阅中所有注册表的捆绑包。 此功能按映像收费，如[定价页](security-center-pricing.md)所示。 启用容器注册表捆绑包可确保安全中心准备好扫描推送到注册表的映像。 
 
 ## <a name="availability"></a>可用性
 
 - 发布状态：**公开上市**
 - 必需的角色：**安全读取器**和[Azure 容器注册表读取器角色](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
-- 支持的注册表：
+- 支持的注册表和映像：
     - ✔可以从公共 internet 访问并提供外壳访问权限的 Linux 托管 ACR 注册表。
     - ✘ Windows 承载的 ACR 注册表。
-    - ✘ "Private" 注册表-安全中心要求可以从公共 internet 访问注册表。 如果你使用防火墙、服务终结点或使用专用终结点（例如，Azure 私有链接）限制了对注册表的访问权限，则安全中心当前无法连接或扫描你的注册表。
+    - ✘ "Private" 注册表-安全中心要求可以从公共 internet 访问注册表。 安全中心当前无法使用防火墙、服务终结点或专用终结点（如 Azure Private Link）连接或扫描访问权限。
     - ✘超级最简单映像，例如[Docker 暂存](https://hub.docker.com/_/scratch/)映像，或仅包含应用程序及其运行时依赖项的 "Distroless" 映像，无需使用包管理器、SHELL 或 OS。
 - 云： 
     - ✔ 商业云
     - ✘美国政府云
-    - ✘中国政府云，其他 gov 云
+    - ✘中国政府云，其他政府云
 
 
 ## <a name="when-are-images-scanned"></a>何时扫描图像？
@@ -51,7 +50,7 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 
 ## <a name="benefits-of-integration"></a>集成的好处
 
-安全中心在订阅中识别基于 ARM 的 ACR 注册表并无缝提供以下内容：
+安全中心在订阅中识别基于 Azure 资源管理器的 ACR 注册表并无缝提供：
 
 * **Azure 原生漏洞扫描**，适用于所有推送的 Linux 映像。 安全中心使用行业领先的漏洞扫描供应商 Qualys 提供的扫描程序来扫描映像。 默认情况下，此原生解决方案已无缝集成。
 
@@ -62,20 +61,23 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 
 
 
-## <a name="acr-with-security-center-faq"></a>具有安全中心常见问题的 ACR
+## <a name="faq-for-azure-container-registry-image-scanning"></a>Azure 容器注册表映像扫描常见问题解答
 
-### <a name="how-does-azure-security-center-scan-an-image"></a>Azure 安全中心如何扫描映像？
+### <a name="how-does-security-center-scan-an-image"></a>安全中心如何扫描图像？
 先从注册表中拉取映像。 然后在独立沙盒中运行该映像，沙盒中包含的 Qualys 扫描程序会提取已知漏洞的列表。
 
 安全中心会对扫描程序的扫描结果进行筛选和分类。 当映像正常运行时，安全中心会将其标为正常。 安全中心仅为存在待解决问题的映像生成安全建议。 安全中心仅在出现问题时发出通知，这样会降低发送不必要的信息警报的可能性。
 
-### <a name="how-often-does-azure-security-center-scan-my-images"></a>Azure 安全中心扫描映像的频率如何？
+### <a name="how-often-does-security-center-scan-my-images"></a>安全中心扫描图像的频率如何？
 每次推送都会触发映像扫描。
 
 ### <a name="can-i-get-the-scan-results-via-rest-api"></a>是否可以通过 REST API 获取扫描结果？
 是的。 结果位于[子评估 Rest API](/rest/api/securitycenter/subassessments/list/) 下。 此外，还可以对所有资源使用 Azure Resource Graph (ARG)，一个类似于 Kusto 的 API：查询可以提取特定扫描。
  
+### <a name="what-registry-types-are-scanned-what-types-are-billed"></a>扫描哪些注册表类型？ 哪些类型会计费？
+"[可用性" 部分](#availability)列出容器注册表绑定支持的容器注册表类型。 
 
+如果不受支持的注册表连接到 Azure 订阅，则不会对其进行扫描，并且不会向你收费。
 
 
 ## <a name="next-steps"></a>后续步骤

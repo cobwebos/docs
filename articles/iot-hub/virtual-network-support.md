@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: f15f0c3f6b442419d3d2e3a253d15465e130eae2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7776345ee4e02baa2d2a6ae7bc08389aa94bd09b
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090597"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534475"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中心支持具有专用链接和托管标识的虚拟网络
 
@@ -174,9 +174,9 @@ IoT 中心可将消息路由到客户拥有的存储帐户。 为了允许路由
 
 1. 在 Azure 门户中，导航到存储帐户的“访问控制 (IAM)”选项卡，然后在“添加角色分配”部分下，单击“添加”  。
 
-2. 为“角色”选择“存储 Blob 数据参与者”（[而不是“参与者”或“存储帐户参与者”角色](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues)），为“分配访问权限给”选择“Azure AD 用户”、“组”或“服务主体”，并在下拉列表中选择你的 IoT 中心的资源名称  。 单击“保存”按钮。
+2. 为“角色”选择“存储 Blob 数据参与者”（[而不是“参与者”或“存储帐户参与者”角色](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)），为“分配访问权限给”选择“Azure AD 用户”、“组”或“服务主体”，并在下拉列表中选择你的 IoT 中心的资源名称  。 单击“保存”按钮  。
 
-3. 导航到存储帐户中的“防火墙和虚拟网络”选项卡，并启用“允许从所选网络进行访问”选项 。 在“异常”列表中，勾选“允许受信任的 Microsoft 服务访问此存储帐户”复选框 。 单击“保存”按钮。
+3. 导航到存储帐户中的“防火墙和虚拟网络”选项卡，并启用“允许从所选网络进行访问”选项 。 在“异常”列表中，勾选“允许受信任的 Microsoft 服务访问此存储帐户”复选框 。 单击“保存”按钮  。
 
 4. 在 IoT 中心的“资源”页上，导航到“消息路由”选项卡。
 
@@ -192,9 +192,9 @@ IoT 中心可将消息路由到客户拥有的存储帐户。 为了允许路由
 
 1. 在 Azure 门户中，导航到事件中心的“访问控制 (IAM)”选项卡，然后在“添加角色分配”部分下，单击“添加”  。
 
-2. 为“角色”选择“事件中心数据发送方”，为“分配访问权限给”选择“Azure AD 用户”、“组”或“服务主体”，并在下拉列表中选择你的 IoT 中心的资源名称   。 单击“保存”按钮。
+2. 为“角色”选择“事件中心数据发送方”，为“分配访问权限给”选择“Azure AD 用户”、“组”或“服务主体”，并在下拉列表中选择你的 IoT 中心的资源名称   。 单击“保存”按钮  。
 
-3. 导航到事件中心中的“防火墙和虚拟网络”选项卡，并启用“允许从所选网络进行访问”选项 。 在“异常”列表中，勾选“允许受信任的 Microsoft 服务访问事件中心”复选框 。 单击“保存”按钮。
+3. 导航到事件中心中的“防火墙和虚拟网络”选项卡，并启用“允许从所选网络进行访问”选项 。 在“异常”列表中，勾选“允许受信任的 Microsoft 服务访问事件中心”复选框 。 单击“保存”按钮  。
 
 4. 在 IoT 中心的“资源”页上，导航到“消息路由”选项卡。
 
@@ -228,7 +228,7 @@ IoT 中心的文件上传功能允许设备将文件上传到客户拥有的存�
 
 1. 在 Azure 门户中，导航到存储帐户的“访问控制 (IAM)”选项卡，然后在“添加角色分配”部分下，单击“添加”  。
 
-2. 为“角色”选择“存储 Blob 数据参与者”（[而不是“参与者”或“存储帐户参与者”角色](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues)），为“分配访问权限给”选择“Azure AD 用户”、“组”或“服务主体”，并在下拉列表中选择你的 IoT 中心的资源名称  。 单击“保存”按钮。
+2. 为“角色”选择“存储 Blob 数据参与者”（[而不是“参与者”或“存储帐户参与者”角色](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)），为“分配访问权限给”选择“Azure AD 用户”、“组”或“服务主体”，并在下拉列表中选择你的 IoT 中心的资源名称  。 单击“保存”按钮  。
 
 3. 导航到存储帐户中的“防火墙和虚拟网络”选项卡，并启用“允许从所选网络进行访问”选项 。 在“异常”列表中，勾选“允许受信任的 Microsoft 服务访问此存储帐户”复选框 。 单击“保存”按钮  。
 
@@ -246,7 +246,7 @@ IoT 中心支持从/向客户提供的存储 blob 批量[导入/导出](./iot-hu
 
 1. 在 Azure 门户中，导航到存储帐户的“访问控制 (IAM)”选项卡，然后在“添加角色分配”部分下，单击“添加”  。
 
-2. 为“角色”选择“存储 Blob 数据参与者”（[而不是“参与者”或“存储帐户参与者”角色](../storage/common/storage-auth-aad-rbac-portal.md#rbac-roles-for-blobs-and-queues)），为“分配访问权限给”选择“Azure AD 用户”、“组”或“服务主体”，并在下拉列表中选择你的 IoT 中心的资源名称  。 单击“保存”按钮。
+2. 为“角色”选择“存储 Blob 数据参与者”（[而不是“参与者”或“存储帐户参与者”角色](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)），为“分配访问权限给”选择“Azure AD 用户”、“组”或“服务主体”，并在下拉列表中选择你的 IoT 中心的资源名称  。 单击“保存”按钮  。
 
 3. 导航到存储帐户中的“防火墙和虚拟网络”选项卡，并启用“允许从所选网络进行访问”选项 。 在“异常”列表中，勾选“允许受信任的 Microsoft 服务访问此存储帐户”复选框 。 单击“保存”按钮  。
 

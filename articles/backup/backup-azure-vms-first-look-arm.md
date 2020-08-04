@@ -3,12 +3,12 @@ title: 通过 VM 设置备份 Azure VM
 description: 本文介绍如何使用 Azure 备份服务备份单个 Azure VM 或多个 Azure VM。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 722c24ce87edc692156a86338521aa3b2f9c7562
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a8d1c29c894663da76b5882ef7ba249356ba3e6d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286699"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531840"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>通过 VM 设置备份 Azure VM
 
@@ -24,20 +24,20 @@ ms.locfileid: "87286699"
 
 ### <a name="azure-vm-agent-installation"></a>Azure VM 代理安装
 
-为了备份 Azure VM，Azure 备份会在 VM 代理上安装一个扩展，该代理在计算机上运行。 如果 VM 是从 Azure Marketplace 映像创建的，则代理将运行。 在某些情况下（例如创建自定义 VM，或者从本地迁移计算机）， 可能需要手动安装代理。
+若要备份 Azure Vm，Azure 备份会在计算机上运行的 VM 代理上安装扩展。 如果 VM 是从 Azure Marketplace 映像创建的，则代理将运行。 在某些情况下，例如，如果创建自定义 VM，或从本地迁移计算机，则可能需要手动安装代理。
 
 - 如果需要手动安装 VM 代理，请按 [Windows](../virtual-machines/extensions/agent-windows.md) 或 [Linux](../virtual-machines/extensions/agent-linux.md) VM 的说明操作。
 - 在安装代理后启用备份时，Azure 备份会将备份扩展安装到代理。 它可以在没有用户干预的情况下更新和修补扩展。
 
 ## <a name="back-up-from-azure-vm-settings"></a>通过 Azure VM 设置进行备份
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 单击“所有服务”，在“筛选器”中键入“虚拟机”，然后单击“虚拟机”    。
-3. 从 VM 列表中选择要备份的 VM。
-4. 在 VM 菜单上单击“备份”。 
-5. 在“恢复服务保管库”中执行以下操作： 
-   - 如果已有一个保管库，请单击“选择现有”，然后选择一个保管库  。
-   - 如果没有保管库，请单击“新建”。  指定保管库的名称。 它在 VM 所在的区域和资源组中创建。 直接通过 VM 设置启用备份时，不能修改这些设置。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
+2. 选择 "**所有服务**"，并在筛选器中键入 "**虚拟机**"，然后选择 "**虚拟机**"。
+3. 从 Vm 列表中，选择要备份的 VM。
+4. 在 "VM" 菜单上，选择 "**备份**"。
+5. 在“恢复服务保管库”中执行以下操作：****
+   - 如果已有保管库，请选择 "**选择现有**"，然后选择保管库。
+   - 如果没有保管库，请选择 "**新建**"。 指定保管库的名称。 它在 VM 所在的区域和资源组中创建。 直接通过 VM 设置启用备份时，不能修改这些设置。
 
         ![启用备份向导](./media/backup-azure-vms-first-look-arm/vm-menu-enable-backup-small.png)
 
@@ -49,41 +49,34 @@ ms.locfileid: "87286699"
 
        ![选择备份策略](./media/backup-azure-vms-first-look-arm/set-backup-policy.png)
 
-7. 单击“启用备份”。  这样会将备份策略与 VM 相关联。
+7. 选择“启用备份”。 这样会将备份策略与 VM 相关联。
 
     ![“启用备份”按钮](./media/backup-azure-vms-first-look-arm/vm-management-menu-enable-backup-button.png)
 
 8. 可在门户通知中跟踪配置进度。
-9. 待作业完成后，请在 VM 菜单中单击“备份”。  页面会显示 VM 的备份状态、有关恢复点的信息、正在运行的作业以及发出的警报。
+9. 作业完成后，在 "VM" 菜单中选择 "**备份**"。 页面会显示 VM 的备份状态、有关恢复点的信息、正在运行的作业以及发出的警报。
 
    ![备份状态](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
 
 10. 启用备份后，会运行初始备份。 可以立即启动初始备份，也可以等待它按备份计划启动。
-    - 在初始备份完成之前，“上次备份状态”  显示为“警告(初始备份挂起)”  。
-    - 若要查看下一个计划的备份何时运行，请单击备份策略名称。
+    - 在初始备份完成之前，“上次备份状态”**** 显示为“警告(初始备份挂起)”****。
+    - 若要查看下一个计划的备份将运行的时间，请选择备份策略名称。
 
 ## <a name="run-a-backup-immediately"></a>立即运行备份
 
-1. 若要立即运行备份，请在 VM 菜单中单击“备份”   >   “立即备份”。
+1. 若要立即运行备份，请在 "VM" 菜单**Backup**中选择 "  >  **立即**备份"。
 
     ![运行备份](./media/backup-azure-vms-first-look-arm/backup-now-update.png)
 
-2. 在“立即备份”中，使用日历控件选择保留此恢复点的最后一天，然后单击“确定”   。
+2. 现在，在 "**备份**" 中，使用 "日历" 控件选择在何时保留恢复点 > **"确定"**。
 
     ![备份保留日期](./media/backup-azure-vms-first-look-arm/backup-now-blade-calendar.png)
 
-3. 门户通知会告知你备份作业已触发。 若要监视备份进度，请单击“查看所有作业”  。
+3. 门户通知会告知你备份作业已触发。 若要监视备份进度，请选择 "**查看所有作业**"。
 
 ## <a name="back-up-from-the-recovery-services-vault"></a>从恢复服务保管库备份
 
 按照本文中的说明为 Azure VM 启用备份，方法是：设置一个 Azure 备份恢复服务保管库，然后在保管库中启用备份。
-
->[!NOTE]
-> **Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性磁盘备份和还原。**
->
->如今，Azure 备份支持使用虚拟机备份解决方案将 VM 中的所有磁盘（操作系统和数据）备份到一起。 使用排除磁盘功能，可以选择从 VM 的多个数据磁盘中备份一个或多个数据磁盘。 这样就提供了一个高效且经济的针对备份和还原需求的解决方案。 每个恢复点都包含备份操作中包含的磁盘的数据，因此还可以在还原操作过程中从给定的恢复点还原部分磁盘。 这适用于从快照和保管库进行的还原。
->
->若要注册预览版，请通过 AskAzureBackupTeam@microsoft.com 联系我们
 
 ## <a name="next-steps"></a>后续步骤
 

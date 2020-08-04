@@ -4,12 +4,12 @@ description: 如何在 Azure Kubernetes Service 上部署和配置 Hyperledger F
 ms.date: 07/27/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: fe06af9364ceb1d97588cac88335cb39c45f0e0f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4bc55090234a4ab33125ba43b8416de1eadb702f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286047"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533421"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务（AKS）上的 Hyperledger 结构联合会
 
@@ -305,12 +305,12 @@ AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STO
   - `<anchorPeersList>`如果只想将 peer1 节点设置为定位点对等节点，则设置为 "peer1"。
   - `<anchorPeersList>`如果要将 peer1 和 peer3 节点设置为锚点对等，则设置为 "peer1" "peer3"。
 
-### <a name="chaincode-management-commands"></a>Chaincode 管理命令
+## <a name="chaincode-management-commands"></a>Chaincode 管理命令
 
 >[!NOTE]
 > 从任何 chaincode 操作开始之前，请确保已完成客户端应用程序的初始设置。  
 
-**设置以下 chaincode 特定环境变量**
+### <a name="set-the-below-chaincode-specific-environment-variables"></a>设置以下 chaincode 特定环境变量
 
 ```bash
 # peer organization name where chaincode operation is to be performed
@@ -329,14 +329,6 @@ CC_PATH=<chaincodePath>
 # Channel on which chaincode is to be instantiated/invoked/queried  
 CHANNEL_NAME=<channelName>  
 ```
-
-可以执行以下 chaincode 操作：  
-
-- [安装 chaincode](#install-chaincode)  
-- [实例化 chaincode](#instantiate-chaincode)  
-- [调用 chaincode](#invoke-chaincode)
-- [查询 chaincode](#query-chaincode)
-
 
 ### <a name="install-chaincode"></a>安装 chaincode  
 
@@ -358,13 +350,13 @@ CHANNEL_NAME=<channelName>
 在对等客户端应用程序中，执行以下命令以实例化通道上的 chaincode。  
 
 ```bash
-./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
+./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
 ```
+
 分别传递和中的实例化函数名称和空格分隔的参数列表 `<instantiateFunc>` `<instantiateFuncArgs>` 。 例如，在 chaincode_example02 chaincode 中，将 chaincode 设置为，并将设置为 " `<instantiateFunc>` `init` `<instantiateFuncArgs>` a" "2000" "b" "1000"。
 
 > [!NOTE]
 > 从通道中的任意一个对等组织执行命令一次。 成功将事务提交到 orderer 后，orderer 会将此事务分发给通道中的所有对等组织。 因此，chaincode 在通道中的所有对等节点上实例化。  
-
 
 ### <a name="invoke-chaincode"></a>调用 chaincode  
 

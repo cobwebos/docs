@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 24a5e342c66d8154f4635acc957084d243fbd75e
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: ba66716abe80a1b12bc64b739f498a0a01d54fe3
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513071"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533166"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>创建用于 Azure NetApp 文件的 SMB 卷
 
-Azure NetApp 文件支持 NFS 和 SMBv3 卷。 卷的容量消耗是依据其池的预配容量计数的。 本文介绍如何创建 SMBv3 卷。 如果要创建 NFS 卷，请参阅[创建用于 Azure NetApp 文件的 NFS 卷](azure-netapp-files-create-volumes.md)。 
+Azure NetApp 文件支持使用 NFS （NFSv3 和 NFSv 4.1）、SMBv3 或双重协议（NFSv3 和 SMB）创建卷。 卷的容量消耗是依据其池的预配容量计数的。 本文介绍如何创建 SMBv3 卷。
 
 ## <a name="before-you-begin"></a>开始之前 
 必须已设置容量池。   
@@ -197,7 +197,7 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](https:
 2. 单击“+ 添加卷”以创建卷。  
     此时将显示“创建卷”窗口。
 
-3. 在“创建卷”窗口中，单击“创建”，并提供以下字段的信息：   
+3. 在 "创建卷" 窗口中，单击 "**创建**"，并在 "基本信息" 选项卡下提供以下字段的信息：   
     * **卷名称**      
         指定要创建的卷的名称。   
 
@@ -230,7 +230,7 @@ Azure NetApp 文件支持用于 AD 连接的 [Active Directory 域服务](https:
 
     * 如果要将现有的快照策略应用到卷，请单击 "**显示高级" 部分**将其展开，然后在下拉菜单中选择一个快照策略。 
 
-        有关创建快照策略的信息，请参阅[管理快照](azure-netapp-files-manage-snapshots.md)。
+        有关创建快照策略的信息，请参阅[管理快照策略](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)。
 
         ![显示高级选择](../media/azure-netapp-files/volume-create-advanced-selection.png)
 

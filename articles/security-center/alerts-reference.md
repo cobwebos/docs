@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 33f31c3f4c24d3b52766131ba163f09adfc8eeec
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 4ac335a4539da9cbcdc4d9a80b3c1e0d1f03f810
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439199"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534713"
 ---
 # <a name="security-alerts---a-reference-guide"></a>安全警报 - 参考指南
 
@@ -296,7 +296,7 @@ ms.locfileid: "87439199"
 | **有人从 Tor 退出节点访问存储帐户**          | 指示有人从已知为 Tor 主动退出节点（匿名化代理）的 IP 地址成功访问此帐户。 此警报的严重性考虑使用的身份验证类型（如有），以及这是否是第一例此类访问。 可能的原因包括：通过使用 Tor 访问存储帐户的攻击者，或通过使用 Tor 访问存储帐户的合法用户。                                                                                                     | 探测/利用             | 高     |
 | **有人从异常位置访问存储帐户**      | 指示对 Azure 存储帐户的访问模式发生了变化。 与最近的活动相比，有人从较为陌生的 IP 地址访问了此帐户。 可能是攻击者已获取帐户访问权限，也可能是合法用户从新的或异常的地理位置进行连接。 后者的示例包括来自新应用程序或开发人员的远程维护操作。                                                                                                                            | 利用                       | 低      |
 | **对存储帐户的匿名访问**                     | 指示对存储帐户的访问模式发生了变化。 例如，帐户已被匿名访问（没有进行任何身份验证），这与此帐户上最近的访问模式相比是不正常的。 可能是因为攻击者利用了对保存 blob 存储的容器的公共读取访问权限。                                                                                                                                                                                           | 利用                       | 高     |
-| **可能的恶意软件已上传到存储帐户**           | 指示包含可能的恶意软件的 blob 已上传到存储帐户。 此警报基于哈希信誉分析，它利用 Microsoft 威胁情报的强大功能，其中包括病毒、特洛伊木马程序、间谍软件和勒索软件的哈希。 可能的原因包括：攻击者故意上传恶意软件、合法用户无意间上传了潜在恶意的 blob。<br>了解有关[Azure 的恶意软件的哈希信誉分析的](https://docs.microsoft.com/azure/security-center/threat-protection#what-is-hash-reputation-analysis-for-malware)详细信息。<br>了解有关[Microsoft 威胁智能功能的](https://go.microsoft.com/fwlink/?linkid=2128684)详细信息。| 横向移动                    | 高     |
+| **可能的恶意软件已上传到存储帐户**           | 指示包含潜在恶意软件的 blob 已上传到存储帐户中的 blob 容器或文件共享。 此警报基于哈希信誉分析，它利用 Microsoft 威胁情报的强大功能，其中包括病毒、特洛伊木马程序、间谍软件和勒索软件的哈希。 可能的原因包括：攻击者故意上传恶意软件、合法用户无意间上传了潜在恶意的 blob。<br>了解有关[Azure 的恶意软件的哈希信誉分析的](https://docs.microsoft.com/azure/security-center/threat-protection#what-is-hash-reputation-analysis-for-malware)详细信息。<br>了解有关[Microsoft 威胁智能功能的](https://go.microsoft.com/fwlink/?linkid=2128684)详细信息。| 横向移动                    | 高     |
 | **存储帐户中的异常访问检查**            | 指示与存储帐户上最近的活动相比，有人以异常方式对此帐户的访问权限进行了检查。 可能的原因是攻击者在为以后的攻击执行侦查。                                                                                                                                                                                                                                                                                                                | 集合                         | 中型   |
 | **从存储帐户提取的数据量异常**   | 指示与此存储容器上最近的活动相比，提取的数据量异常大。 可能的原因是攻击者从保存 blob 存储的容器中提取了大量数据。                                                                                                                                                                                                                                                                                                       | 外泄                       | 中型   |
 | **异常应用程序访问了存储帐户**            | 指示有异常应用程序访问了此存储帐户。 可能的原因是攻击者通过使用新应用程序访问了存储帐户。                                                                                                                                                                                                                                                                                                                                                                          | 利用                       | 中型   |

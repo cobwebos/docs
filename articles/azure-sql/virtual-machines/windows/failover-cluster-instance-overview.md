@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 00c9482eab74003f6a667d52440d4cb6dd21fcfc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8a5374bf15798fd7e53f0d93e69f2f40a2d57b94
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287359"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533812"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>在 Azure 虚拟机上具有 SQL Server 的故障转移群集实例
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -48,8 +48,8 @@ Azure Vm 上的 SQL Server 提供各种选项作为部署 SQL Server 故障转�
 
 ||[Azure 共享磁盘](../../../virtual-machines/windows/disks-shared.md)|[高级文件共享](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[存储空间直通 (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
-|**最低操作系统版本**| 全部 |Windows Server 2012|Windows Server 2016|
-|**最低 SQL Server 版本**|全部|SQL Server 2012|SQL Server 2016|
+|**最低操作系统版本**| All |Windows Server 2012|Windows Server 2016|
+|**最低 SQL Server 版本**|All|SQL Server 2012|SQL Server 2016|
 |**支持的 VM 可用性** |具有邻近位置组的可用性集 |可用性集和可用性区域|可用性集 |
 |**支持 FileStream**|是|否|是 |
 |**Azure blob 缓存**|否|否|是|
@@ -98,7 +98,7 @@ Azure Vm 上的 SQL Server 提供各种选项作为部署 SQL Server 故障转�
 - 由于正在进行磁盘复制，需要高网络带宽才能实现高性能。 
 - 由于存储已附加到每个 VM，因此需要更大的 VM 大小和双倍的存储费用。 
 
-若要开始，请参阅[存储空间直通 SQL Server 故障转移群集实例](failover-cluster-instance-azure-shared-disks-manually-configure.md)。 
+若要开始，请参阅[存储空间直通 SQL Server 故障转移群集实例](failover-cluster-instance-storage-spaces-direct-manually-configure.md)。 
 
 ### <a name="premium-file-share"></a>高级文件共享
 
@@ -118,7 +118,7 @@ Azure Vm 上的 SQL Server 提供各种选项作为部署 SQL Server 故障转�
 
 若要开始，请参阅[SQL Server 具有高级文件共享的故障转移群集实例](failover-cluster-instance-premium-file-share-manually-configure.md)。 
 
-### <a name="partner"></a>Partner
+### <a name="partner"></a>合作伙伴
 
 有一些合作伙伴群集解决方案支持存储。 
 
@@ -166,7 +166,7 @@ Azure 虚拟机支持 Windows Server 2019 上的 MSDTC，其中存储在群集�
 
 查看[群集配置的最佳实践](hadr-cluster-best-practices.md)，然后可以[为 FCI 准备 SQL Server VM](failover-cluster-instance-prepare-vm.md)。 
 
-有关详细信息，请参阅： 
+有关详细信息，请参见: 
 
 - [Windows 群集技术](/windows-server/failover-clustering/failover-clustering-overview)   
 - [SQL Server 故障转移群集实例](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

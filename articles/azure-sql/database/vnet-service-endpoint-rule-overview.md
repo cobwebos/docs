@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: c1ac3c1e312704f8a0afa751d0efc6d0cef897f9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 65ec92aeca44a514467a642de1dab06f06c220e9
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371764"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533846"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>使用适用于 Azure SQL 数据库中的服务器的虚拟网络服务终结点和规则
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -136,7 +136,7 @@ PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure Synapse Anal
    > - 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)将该帐户**升级到 v2** 帐户。
    > - 若要了解 Azure Data Lake Storage Gen2 的已知问题，请参阅此[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)。
 
-1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后选择“添加角色分配”。  将“存储 Blob 数据参与者”RBAC 角色分配给托管 Azure Synapse Analytics 的服务器，后者已在步骤 #1 中向 Azure Active Directory (AAD) 注册。
+1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后选择“添加角色分配”。  将**存储 Blob 数据参与者**Azure 角色分配到托管 Azure Synapse Analytics 的服务器，该服务器已在步骤 #1 中注册 AZURE ACTIVE DIRECTORY （AAD）。
 
    > [!NOTE]
    > 只有对存储帐户具有“所有者”权限的成员才能执行此步骤。 有关各种 Azure 内置角色，请参阅本[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。

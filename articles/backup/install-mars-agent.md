@@ -3,12 +3,12 @@ title: 安装 Microsoft Azure 恢复服务（MARS）代理
 description: 了解如何安装 Microsoft Azure 恢复服务（MARS）代理来备份 Windows 计算机。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: b9842f6b07621301a0a8a32f5eb7fae5ece153bc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 715153d445acbc372f8305ca39f5276bf8a39773
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079360"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533472"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>安装 Azure 备份 MARS 代理
 
@@ -136,13 +136,13 @@ Azure 备份使用 MARS 代理备份本地计算机和 Azure VM 中的文件、�
 ## <a name="install-and-register-the-agent"></a>安装并注册代理
 
 1. 在要备份的计算机上运行 *MARSagentinstaller.exe* 文件。
-1. 在 MARS 代理安装向导中选择“安装设置”。 在此处选择代理的安装位置以及缓存位置。 然后选择“下一步”。
+1. 在 MARS 代理安装向导中选择“安装设置”。 在此处选择代理的安装位置以及缓存位置。 然后，选择“下一步”。
    * Azure 备份在将数据快照发送到 Azure 之前，会使用缓存来存储这些快照。
    * 缓存位置的可用空间应该至少为所要备份的数据大小的 5%。
 
     ![在 MARS 代理安装向导中选择安装设置](./media/backup-configure-vault/mars1.png)
 
-1. 对于“代理配置”中，请指定 Windows 计算机上运行的代理如何连接到 Internet。 然后选择“下一步”。
+1. 对于“代理配置”中，请指定 Windows 计算机上运行的代理如何连接到 Internet。 然后，选择“下一步”。
 
    * 如果使用自定义代理，请指定任何所需的代理设置和凭据。
    * 请记住，代理需要有权访问[特定的 URL](#before-you-start)。
@@ -155,7 +155,7 @@ Azure 备份使用 MARS 代理备份本地计算机和 Azure VM 中的文件、�
 
     ![使用注册服务器向导添加保管库凭据](./media/backup-configure-vault/register1.png)
 
-1. 在“加密设置”页上，指定用于加密和解密计算机备份的通行短语。
+1. 在“加密设置”页上，指定用于加密和解密计算机备份的通行短语。 有关允许的密码字符的详细信息，[请参阅此处](backup-azure-file-folder-backup-faq.md#what-characters-are-allowed-for-the-passphrase)。
 
     * 将通行短语保存在安全位置。 还原备份时需要用到它。
     * 如果你丢失或忘记了该通行短语，Microsoft 将无法帮助你恢复备份数据。

@@ -4,12 +4,12 @@ description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 2488bbded1b4d55f3c4cf21c63e9fcb90e9bfb4f
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: e12669609b21d23b775af27f95528c4b42e95e81
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475050"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533525"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -24,13 +24,13 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 若要从恢复点还原文件或文件夹，请转到虚拟机并选择所需的恢复点。
 
-1. 登录到 [Azure 门户](https://portal.Azure.com)，在左侧窗格中单击“虚拟机”。 从虚拟机列表中，选择虚拟机以打开其仪表板。
+1. 登录到[Azure 门户](https://portal.Azure.com)，并在左窗格中选择 "**虚拟机**"。 从虚拟机列表中，选择虚拟机以打开其仪表板。
 
-2. 在虚拟机菜单中，单击“备份”以打开“备份”仪表板。
+2. 在虚拟机的菜单中，选择 "**备份**" 打开 "备份" 仪表板。
 
     ![打开恢复服务保管库备份项](./media/backup-azure-restore-files-from-vm/open-vault-for-vm.png)
 
-3. 在“备份”仪表板菜单上，单击“文件恢复”。
+3. 在备份仪表板菜单中，选择 "**文件恢复**"。
 
     ![“文件恢复”按钮](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
 
@@ -40,7 +40,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 4. 从“选择恢复点”下拉菜单中，选择存储所需文件的恢复点。 默认已选择最新的恢复点。
 
-5. 若要下载用于从恢复点复制文件的软件，请单击“下载可执行文件”（适用于 Microsoft Azure VM）或“下载脚本”（适用于 Linux Azure VM，会生成 python 脚本）。
+5. 若要下载用于从恢复点复制文件的软件，请选择 "**下载可执行**文件（适用于 Windows azure vm）" 或 "**下载脚本**" （适用于 Linux Azure vm，生成 python 脚本）。
 
     ![生成的密码](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
@@ -50,7 +50,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
     若要以管理员身份运行可执行文件或脚本，建议将下载的文件保存到计算机。
 
-6. 该可执行文件或脚本受密码保护，需要密码才能运行。 在“文件恢复”菜单上，单击复制按钮以将密码加载到内存中。
+6. 该可执行文件或脚本受密码保护，需要密码才能运行。 在 "**文件恢复**" 菜单中，选择 "复制" 按钮，将密码加载到内存中。
 
     ![生成的密码](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
 
@@ -78,7 +78,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 ## <a name="closing-the-connection"></a>关闭连接
 
-识别文件并将其复制到本地存储位置后，请删除（或卸载）其他驱动器。 若要卸载驱动器，请在 Azure 门户中的“文件恢复”菜单上，单击“卸载磁盘”。 
+识别文件并将其复制到本地存储位置后，请删除（或卸载）其他驱动器。 若要卸载驱动器，请在 Azure 门户中的 "**文件恢复**" 菜单上，选择 "**卸载磁盘**"。
 
 ![卸载磁盘](./media/backup-azure-restore-files-from-vm/unmount-disks3.png)
 
@@ -146,7 +146,7 @@ Windows 存储空间是用于将存储器虚拟化的一种 Windows 技术。 �
 pvs -o +vguuid
 ```
 
-此命令将列出所有物理卷（包括运行脚本之前提供的卷）、其对应的卷组名称和卷组的唯一用户 Id （Uuid）。 此命令的示例输出如下所示。
+此命令将列出所有物理卷（包括运行脚本之前提供的卷）、其对应的卷组名称以及卷组的唯一用户 Id （Uuid）。 此命令的示例输出如下所示。
 
 ```bash
 PV         VG        Fmt  Attr PSize   PFree    VG UUID
@@ -162,7 +162,7 @@ PV         VG        Fmt  Attr PSize   PFree    VG UUID
   /dev/sdd   datavg_db lvm2 a--   <1.50t <396.50g dhWL1i-lcZS-KPLI-o7qP-AN2n-y2f8-A1fWqN
 ```
 
-第一列（PV）显示物理卷，后续列显示了卷组的相关卷组名称、格式、属性、大小、可用空间和唯一 ID。 命令输出显示所有物理卷。 请参阅脚本输出，并识别与备份相关的卷。 在上面的示例中，脚本输出会显示/dev/sdf 和/dev/sdd。 因此，datavg_db 卷组属于脚本，Appvg_new 卷组属于该计算机。 最后一种做法是确保唯一的卷组名称应具有1个唯一 ID。
+第一列（PV）显示物理卷，后续列显示了卷组的相关卷组名称、格式、属性、大小、可用空间和唯一 ID。 命令输出显示所有物理卷。 请参阅脚本输出，并识别与备份相关的卷。 在上面的示例中，脚本输出会显示/dev/sdf 和/dev/sdd。 因此， *datavg_db*卷组属于脚本， *Appvg_new*卷组属于该计算机。 最后一种做法是确保唯一的卷组名称应有一个唯一的 ID。
 
 ###### <a name="duplicate-volume-groups"></a>重复的卷组
 
@@ -184,9 +184,9 @@ PV         VG        Fmt  Attr PSize   PFree    VG UUID
   /dev/sdm2  rootvg    lvm2 a--  194.57g  127.57g efohjX-KUGB-ETaH-4JKB-MieG-EGOc-XcfLCt
 ```
 
-脚本输出会显示/dev/sdg、/dev/sdh、/dev/sdm2。 因此，相应的 VG 名称是 Appvg_new 和 rootvg。 但计算机的 VG 列表中也存在相同的名称。 我们可以验证1个 VG 名称有2个 Uuid。
+脚本输出会显示/dev/sdg、/dev/sdh、/dev/sdm2。 因此，相应的 VG 名称是 Appvg_new 和 rootvg。 但计算机的 VG 列表中也存在相同的名称。 我们可以验证一个 VG 名称是否有两个 Uuid。
 
-现在，我们需要为基于脚本的卷（即，/dev/sdg、/dev/sdh、/dev/sdm2.）重命名 VG 名称。 若要重命名卷组，请使用以下命令
+现在，我们需要为基于脚本的卷重命名 VG 名称，例如：/dev/sdg、/dev/sdh、/dev/sdm2。 若要重命名卷组，请使用以下命令
 
 ```bash
 vgimportclone -n rootvg_new /dev/sdm2
@@ -296,7 +296,7 @@ mount [RAID Disk Path] [/mountpath]
 
 ## <a name="access-requirements"></a>访问要求
 
-如果在访问受限的计算机上运行该脚本，请确保能够访问：
+如果在访问受限的计算机上运行该脚本，请确保有权访问：
 
 - `download.microsoft.com`
 - 恢复服务 URL（地区名称是指恢复服务保管库的区域）
@@ -343,7 +343,7 @@ mount [RAID Disk Path] [/mountpath]
     - node.conn[0].timeo.noop_out_timeout = 5 更改为 node.conn[0].timeo.noop_out_timeout = 30
 - 完成上述更改后，请再次运行脚本。 进行这些更改后，文件恢复成功的可能性很高。
 - 用户每次下载脚本时，Azure 备份将开始准备用于下载的恢复点。 对于大磁盘，此过程需要相当长的时间。 如果连续出现大量请求，目标准备将造成下载激增。 因此，建议从门户/PowerShell/CLI 下载脚本，等待 20 - 30 分钟（探索性步骤），然后运行该脚本。 此时，目标应准备就绪，可以从脚本进行连接。
-- 在文件恢复后，请务必返回门户并为无法装载卷的恢复点单击“卸载磁盘”。 从本质上来说，此步骤将清理所有现有进程/会话并提高恢复的可能性。
+- 在文件恢复后，请确保返回到门户，然后选择无法在其中装入卷的恢复点的 "**卸载磁盘**"。 从本质上来说，此步骤将清理所有现有进程/会话并提高恢复的可能性。
 
 ## <a name="troubleshooting"></a>故障排除
 
@@ -357,7 +357,7 @@ mount [RAID Disk Path] [/mountpath]
 | 在运行可执行文件的计算机上：单击卸载按钮后，新卷没有卸载。 | 计算机上的 ISCSI 发起程序无响应/不刷新它与目标之间的连接，并且不保留缓存。 |  单击“卸载”后，请等待几分钟。 如果新卷未卸载，请浏览所有卷。 浏览所有卷会强制发起程序刷新连接并卸载卷，但会出现错误消息，指出磁盘不可用。|
 | 可执行文件输出：脚本成功运行，但脚本输出中未显示“新卷已附加” |    这是暂时性的错误    | 卷其实已附加。 打开资源管理器即可浏览它们。 如果每次都使用同一台计算机来运行脚本，请考虑重启计算机，这样，以后运行可执行文件时应会显示列表。 |
 | Linux 特定：无法查看所需的卷 | 运行脚本的计算机的 OS 可能无法识别受保护 VM 的基础文件系统 | 检查恢复点是崩溃一致还是文件一致。 如果文件一致，请在 OS 可识别受保护 VM 的文件系统的另一台计算机上运行该脚本。 |
-| Windows 特定：无法查看所需的卷 | 磁盘可能已附加，但未配置卷。 | 从磁盘管理屏幕中，识别与恢复点相关的其他磁盘。 如果这些磁盘有任何一个处于脱机状态，请尝试通过右键单击该磁盘并单击“联机”来使其联机。|
+| Windows 特定：无法查看所需的卷 | 磁盘可能已附加，但未配置卷。 | 从磁盘管理屏幕中，识别与恢复点相关的其他磁盘。 如果这些磁盘中有任何一个处于脱机状态，请尝试通过右键单击该磁盘并选择 "**联机**" 来使其联机。|
 
 ## <a name="security"></a>安全性
 
@@ -393,7 +393,7 @@ mount [RAID Disk Path] [/mountpath]
 
 恢复服务与计算机之间的数据流由通过 TCP 构建安全 TLS 隧道提供保护（在运行脚本的计算机上[应支持 TLS 1.2](#system-requirements)）。
 
-父级/备份 VM 中存在的任何文件访问控制列表 (ACL) 也会保留在已装载的文件系统中。
+父/备份 VM 中存在的任何文件访问控制列表（ACL）也会保留在已装载的文件系统中。
 
 此脚本提供对恢复点的只读访问权限，并且仅在 12 小时内有效。 如果你希望提前删除此访问权限，则可登录到 Azure 门户/PowerShell/CLI 并针对该特定恢复点执行**卸载磁盘**操作。 脚本将立即失效。
 

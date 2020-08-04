@@ -3,12 +3,12 @@ title: 关于 Azure VM 中的 SAP HANA 数据库备份
 description: 本文介绍如何备份在 Azure 虚拟机上运行的 SAP HANA 数据库。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 980278b3cdb9c97a5a483354a004a8278a745b3b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: a6c4f627059a8d536e1d006103650dca5d2f5109
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503500"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533438"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>关于 Azure VM 中的 SAP HANA 数据库备份
 
@@ -60,7 +60,7 @@ Azure 备份通过 SAP[认证](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d
 
 使用[Backint 认证的 Azure SAP HANA 备份解决方案](#backup-architecture)可用于数据库备份和恢复。
 
-可以使用[AZURE VM 备份](backup-azure-vms-introduction.md)来备份操作系统和其他非数据库磁盘。 VM 备份每天创建一次，并备份所有磁盘（**写入加速器（WA）磁盘**和**UltraDisks**除外）。 由于数据库是使用 Azure SAP HANA 备份解决方案进行备份的，因此你可以使用 "排除磁盘" 功能（目前为预览版）仅对 OS 和非数据库磁盘执行文件一致性备份。
+可以使用[AZURE VM 备份](backup-azure-vms-introduction.md)来备份操作系统和其他非数据库磁盘。 VM 备份每天创建一次，并备份所有磁盘（**写入加速器（WA）磁盘**和**超**磁盘除外）。 由于使用 Azure SAP HANA 备份解决方案来备份数据库，因此可以使用[适用于 Azure vm 的选择性磁盘备份](selective-disk-backup-restore.md)功能，仅对 OS 和非数据库磁盘执行文件一致性备份。
 
 >[!NOTE]
 > 使用带有 Azure VM 备份的预发布脚本将允许数据库的数据卷的应用一致性备份。 但是，如果日志区域位于 WA 磁盘上，拍摄这些磁盘的快照可能无法保证日志区域的一致性。 对于此确切原因，HANA 有一个明确的方法来生成日志备份。 在 SAP HANA 中启用相同的，并且可以使用 Azure SAP HANA 备份来备份它们。

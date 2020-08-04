@@ -1,14 +1,14 @@
 ---
-title: RBAC 角色和权限
+title: Azure 角色和权限
 description: 使用 Azure 基于角色的访问控制（Azure RBAC）和标识和访问管理（IAM）来提供对 Azure 容器注册表中的资源的精细权限。
 ms.topic: article
 ms.date: 12/02/2019
-ms.openlocfilehash: 0bf6059698191c975b212bee7f45d21977478b49
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 90546b96f081893d312e66aae04e2125c1c210e5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497743"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533302"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure 容器注册表角色和权限
 
@@ -85,7 +85,7 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解如何通过 [Azure 门户](../role-based-access-control/role-assignments-portal.md)、[Azure CLI](../role-based-access-control/role-assignments-cli.md) 或其他 Azure 工具将 RBAC 角色分配给 Azure 标识。
+* 了解有关使用[Azure 门户](../role-based-access-control/role-assignments-portal.md)、 [Azure CLI](../role-based-access-control/role-assignments-cli.md)或其他 Azure 工具将 Azure 角色分配到 azure 标识的详细信息。
 
 * 了解适用于 Azure 容器注册表的[身份验证选项](container-registry-authentication.md)。
 

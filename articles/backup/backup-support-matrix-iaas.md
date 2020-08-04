@@ -4,12 +4,12 @@ description: 提供有关在使用 Azure 备份服务备份 Azure VM 时的支�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: d00f6ee8c10144a7c9fd65101dd21ccb7deeb0a6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3be5bdffd999907234fff64f8f88459d9c9b18b6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289496"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531857"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 
@@ -33,19 +33,12 @@ ms.locfileid: "87289496"
 
 详细了解如何[使用备份服务器](backup-architecture.md#architecture-back-up-to-dpmmabs)进行备份和[支持要求](backup-support-matrix-mabs-dpm.md)。
 
->[!NOTE]
-> **Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性磁盘备份和还原。**
->
->如今，Azure 备份支持使用虚拟机备份解决方案将 VM 中的所有磁盘（操作系统和数据）备份到一起。 使用排除磁盘功能，可以选择从 VM 的多个数据磁盘中备份一个或多个数据磁盘。 这样就提供了一个高效且经济的针对备份和还原需求的解决方案。 每个恢复点都包含备份操作中包含的磁盘的数据，因此还可以在还原操作过程中从给定的恢复点还原部分磁盘。 这适用于从快照和保管库进行的还原。
->
->若要注册预览版，请向 AskAzureBackupTeam@microsoft.com 发送邮件
-
 ## <a name="supported-backup-actions"></a>支持的备份操作
 
-**操作** | **支持**
+**Action** | **支持**
 --- | ---
 备份已关闭/脱机的 VM | 。<br/><br/> 仅创建崩溃一致性快照，不会创建应用一致性快照。
-迁移到托管磁盘后备份磁盘 | 。<br/><br/> 备份将继续工作。 因此不需要执行任何操作。
+迁移到托管磁盘后备份磁盘 | 。<br/><br/> 备份将继续工作。 不需要执行任何操作。
 启用资源组锁定后备份托管磁盘 | 不支持。<br/><br/> Azure 备份无法删除旧的还原点；如果达到了还原点数目的上限，备份将开始失败。
 修改 VM 的备份策略 | 。<br/><br/> 将使用新策略中的计划和保留期设置备份 VM。 如果保留期设置已延长，则会标记并保留现有的恢复点。 如果保留期设置已缩短，则会在下一个清理作业中清理现有的恢复点，并最终将其删除。
 取消备份作业| 在快照过程中受支持。<br/><br/> 快照正在传输到保管库时不受支持。
@@ -201,7 +194,7 @@ Azure 备份支持针对传输中数据和静态数据的加密：
 - 从服务器到恢复服务保管库的备份流量通过高级加密标准 256 进行加密。
 - 备份数据通过安全 HTTPS 链接进行发送。
 - 备份数据以加密格式存储在恢复服务保管库中。
-- 只有你有解锁此数据的通行短语。 Microsoft 无法解密任何恢复点的备份数据。
+- 只有使用加密密钥才能解锁此数据。 Microsoft 无法解密任何恢复点的备份数据。
 
   > [!WARNING]
   > 设置保管库后，只有你才能访问加密密钥。 Microsoft 不保留副本，且没有访问该密钥的权限。 如果客户丢失了密钥，Microsoft 无法恢复备份数据。
@@ -214,9 +207,9 @@ Azure 备份支持针对传输中数据和静态数据的加密：
 
 **计算机** | **传输中** | **静态**
 --- | --- | ---
-没有 DPM/MABS 的本地 Windows 计算机 | ![是][green] | ![是][green]
-Azure VM | ![是][green] | ![“是”][green]
-本地计算机/装有 DPM 的 Azure VM | ![“是”][green] | ![“是”][green]
+没有 DPM/MABS 的本地 Windows 计算机 | ![“是”][green] | ![是][green]
+Azure VM | ![“是”][green] | ![“是”][green]
+本地计算机/装有 DPM 的 Azure VM | ![是][green] | ![是][green]
 本地计算机/装有 MABS 的 Azure VM | ![是][green] | ![是][green]
 
 ## <a name="vm-compression-support"></a>VM 压缩支持
@@ -230,7 +223,7 @@ Azure 备份支持对备份流量进行压缩，详细情况汇总在下表中�
 --- | --- | ---
 没有 DPM/MABS 的本地 Windows 计算机 | NA | ![是][green]
 Azure VM | NA | NA
-本地计算机/装有 DPM 的 Azure VM | ![“是”][green] | ![“是”][green]
+本地计算机/装有 DPM 的 Azure VM | ![“是”][green] | ![是][green]
 本地计算机/装有 MABS 的 Azure VM | ![是][green] | ![“是”][green]
 
 ## <a name="next-steps"></a>后续步骤

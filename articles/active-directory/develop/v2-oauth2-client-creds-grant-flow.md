@@ -12,12 +12,12 @@ ms.date: 7/27/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: bd641b57cfdd7f9481e17a90dbbd81d5e43f8ad2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9bd34831beea4ce20f7abffb2eaac70e08decfd5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311103"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529219"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft 标识平台和 OAuth 2.0 客户端凭据流
 
@@ -53,7 +53,7 @@ OAuth 2.0 客户端凭据授权流允许 Web 服务（机密客户端）在调�
 对于需要访问使用者用户（拥有个人 Microsoft 帐户）所拥有数据的守护程序和服务帐户而言，这种授权类型很常见。 对于组织拥有的数据，建议通过应用程序权限获取必要的授权。
 
 > [!NOTE]
-> 若要启用此基于 ACL 的授权模式，Azure AD 不要求应用程序获得另一个应用程序的令牌，因此，无需声明即可颁发仅限应用的令牌 `rules` 。 公开 Api 的应用程序必须实现权限检查才能接受令牌。
+> 若要启用此基于 ACL 的授权模式，Azure AD 不要求应用程序获得另一个应用程序的令牌，因此，无需声明即可颁发仅限应用的令牌 `roles` 。 公开 Api 的应用程序必须实现权限检查才能接受令牌。
 
 ### <a name="application-permissions"></a>应用程序权限
 

@@ -6,12 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: c7051cca9029283b150eea0519aa7432d6a9c937
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 21742d2db6a7fde69568e5fd1e5eda98542faa47
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420475"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528662"
 ---
 # <a name="manage-role-permissions-and-security"></a>管理角色权限和安全性
 
@@ -19,7 +19,7 @@ ms.locfileid: "87420475"
 
 ## <a name="roles-in-automation-accounts"></a>自动化帐户中的角色
 
-在 Azure 自动化中，访问权限是通过将相应的 RBAC 角色分配给自动化帐户作用域的用户、组和应用程序来授予的。 以下是自动化帐户所支持的内置角色：
+在 Azure 自动化中，通过将相应的 Azure 角色分配给自动化帐户范围内的用户、组和应用程序来授予访问权限。 以下是自动化帐户所支持的内置角色：
 
 | **角色** | **说明** |
 |:--- |:--- |
@@ -319,7 +319,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 
 还可以使用以下 [Azure PowerShell cmdlet](../role-based-access-control/role-assignments-powershell.md) 为自动化帐户配置基于角色的访问权限：
 
-[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) 列出 Azure Active Directory 中提供的所有 RBAC 角色。 可以将此 cmdlet 与 `Name` 参数一起使用来列出特定角色可以执行的所有操作。
+[AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0)列出 Azure Active Directory 中的所有可用 Azure 角色。 可以将此 cmdlet 与 `Name` 参数一起使用来列出特定角色可以执行的所有操作。
 
 ```azurepowershell-interactive
 Get-AzRoleDefinition -Name 'Automation Operator'

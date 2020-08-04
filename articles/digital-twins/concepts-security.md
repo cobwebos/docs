@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: bc6b3911ed6d04561d25ef166625f9e73023726d
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: d29bccdadeef44f1ae4cdae5875257f95395b96f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373277"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534033"
 ---
 # <a name="secure-azure-digital-twins-with-role-based-access-control"></a>使用基于角色的访问控制保护 Azure 数字孪生
 
@@ -33,7 +33,7 @@ RBAC 通过与[Azure Active Directory](../active-directory/fundamentals/active-d
 
 身份验证步骤要求在运行时将任何应用程序请求包含 OAuth 2.0 访问令牌。 如果应用程序在 Azure 实体（如[Azure Functions](../azure-functions/functions-overview.md)应用）内运行，则它可以使用**托管标识**来访问资源。 在下一部分中了解有关托管标识的详细信息。
 
-授权步骤要求向安全主体分配 RBAC 角色。 分配给安全主体的角色确定了该主体拥有的权限。 Azure 数字孪生提供了包含 Azure 数字孪生资源的权限集的 RBAC 角色。 本文稍后将介绍这些角色。
+授权步骤要求向安全主体分配 Azure 角色。 分配给安全主体的角色确定了该主体拥有的权限。 Azure 数字孪生提供 azure 角色，其中包含 Azure 数字孪生资源的权限集。 本文稍后将介绍这些角色。
 
 若要了解有关 Azure 中支持的角色和角色分配的详细信息，请参阅了解 Azure RBAC 文档中[*的不同角色*](../role-based-access-control/rbac-and-directory-admin-roles.md)。
 
@@ -41,9 +41,9 @@ RBAC 通过与[Azure Active Directory](../active-directory/fundamentals/active-d
 
 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)是一项跨 Azure 功能，可用于创建与应用程序代码运行的部署关联的安全标识。 然后，你可以将该标识与访问控制角色相关联，以授予用于访问应用程序所需的特定 Azure 资源的自定义权限。
 
-借助托管标识，Azure 平台可管理此运行时标识。 对于标识本身和需要访问的资源，都不需要在应用程序代码或配置中存储和保护访问密钥。 在 Azure App Service 应用程序中运行的 Azure 数字孪生客户端应用程序不需要处理 SAS 规则和密钥，也不需要处理任何其他访问令牌。 客户端应用只需要 Azure 数字孪生命名空间的终结点地址。 当应用进行连接时，Azure 数字孪生会将托管实体的上下文绑定到客户端。 一旦将其与托管标识相关联，Azure 数字孪生客户端就可以执行所有授权的操作。 然后，将通过将托管实体与 Azure 数字孪生 RBAC 角色关联来授予授权（如下所述）。
+借助托管标识，Azure 平台可管理此运行时标识。 对于标识本身和需要访问的资源，都不需要在应用程序代码或配置中存储和保护访问密钥。 在 Azure App Service 应用程序中运行的 Azure 数字孪生客户端应用程序不需要处理 SAS 规则和密钥，也不需要处理任何其他访问令牌。 客户端应用只需要 Azure 数字孪生命名空间的终结点地址。 当应用进行连接时，Azure 数字孪生会将托管实体的上下文绑定到客户端。 一旦将其与托管标识相关联，Azure 数字孪生客户端就可以执行所有授权的操作。 然后，将通过将托管实体与 Azure 数字孪生 Azure 角色关联来授予授权（如下所述）。
 
-### <a name="authorization-rbac-roles-for-azure-digital-twins"></a>授权： Azure 数字孪生的 RBAC 角色
+### <a name="authorization-azure-roles-for-azure-digital-twins"></a>授权： azure 数字孪生的 Azure 角色
 
 Azure 提供以下 Azure 内置角色，用于授权访问 Azure 数字孪生资源：
 * *Azure 数字孪生所有者（预览版）* -使用此角色授予对 Azure 数字孪生资源的完全访问权限。
@@ -62,7 +62,7 @@ Azure 提供以下 Azure 内置角色，用于授权访问 Azure 数字孪生资
 
 ## <a name="permission-scopes"></a>权限范围
 
-在将 RBAC 角色分配到某个安全主体之前，请确定该安全主体应该获取的访问范围。 最佳做法规定最好只授予最小的可能范围。
+向安全主体分配 Azure 角色之前，请确定安全主体应具有的访问权限的范围。 最佳做法规定最好只授予最小的可能范围。
 
 以下列表描述了可对 Azure 数字孪生资源的访问进行范围的级别。
 * 模型：对此资源的操作规定对 Azure 数字孪生中上载的[模型](concepts-models.md)的控制。
@@ -71,7 +71,7 @@ Azure 提供以下 Azure 内置角色，用于授权访问 Azure 数字孪生资
 * 数字超并行关系：此资源的操作定义对孪生中数字之间的[关系](concepts-twins-graph.md)的 CRUD 操作的控制。
 * 事件路由：此资源的操作确定将[事件](concepts-route-events.md)从 Azure 数字孪生路由到终结点服务（如[事件中心](../event-hubs/event-hubs-about.md)、[事件网格](../event-grid/overview.md)或[服务总线](../service-bus-messaging/service-bus-messaging-overview.md)）的权限。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果用户尝试执行其角色不允许的操作，则可能会收到来自服务请求读取的错误 `403 (Forbidden)` 。 有关详细信息和疑难解答步骤，请参阅[*故障排除： Azure 数字孪生请求失败，状态为：403（禁止访问）*](troubleshoot-error-403.md)。
 

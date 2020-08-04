@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 066118622f19d7efac71ddd66ac1abe058008b55
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: cc39f8250ddc1b2fb1baaf073969f6aab5b1372c
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126765"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531365"
 ---
 # <a name="secure-a-daemon-application"></a>保护后台应用程序
 
@@ -109,7 +109,7 @@ ms.locfileid: "87126765"
 
 ### <a name="grant-role-based-access-for-the-daemon-application-to-azure-maps"></a>向后台应用程序授予基于角色的访问权限，以便 Azure Maps
 
-可以通过将创建的托管标识或服务主体分配给一个或多个 Azure Maps 访问控制角色定义来授予*基于角色的访问控制*（RBAC）。 若要查看 Azure Maps 可用的 RBAC 角色定义，请访问 "**访问控制（IAM）**"。 选择 "**角色**"，然后搜索以*Azure Maps*开头的角色。 这些 Azure Maps 角色是可以向其授予访问权限的角色。
+可以通过将创建的托管标识或服务主体分配给一个或多个 Azure Maps 访问控制角色定义来授予*基于角色的访问控制*（RBAC）。 若要查看可用于 Azure Maps 的 Azure 角色定义，请访问**访问控制（IAM）**。 选择 "**角色**"，然后搜索以*Azure Maps*开头的角色。 这些 Azure Maps 角色是可以向其授予访问权限的角色。
 
 > [!div class="mx-imgBorder"]
 > ![查看可用的角色](./media/how-to-manage-authentication/how-to-view-avail-roles.png)

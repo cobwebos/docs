@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4c28299758150f56e3f47156382d8a6245a0cf52
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: c1a5d302f63f57a142d014c8ef66d02405e119ea
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386208"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531160"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
 
@@ -38,16 +38,37 @@ ms.locfileid: "87386208"
 
 使用密钥保管库中的密钥、机密或证书前，请通过 CLI、PowerShell、资源管理器模板或 REST 创建和管理密钥保管库，如以下文章所述：
 
-- [使用 CLI 创建和管理 Key Vault](../secrets/quick-create-cli.md)
-- [使用 PowerShell 创建和管理 Key Vault](../secrets/quick-create-powershell.md)
-- [Azure 门户创建和管理密钥保管库](../secrets/quick-create-portal.md)
-- [使用 Python 创建和管理 Key Vault](../secrets/quick-create-python.md)
-- [使用 Java 创建和管理 Key Vault](../secrets/quick-create-java.md)
-- [使用 Node.js 创建和管理 Key Vault](../secrets/quick-create-node.md)
-- [使用 .NET (v4 SDK) 创建和管理 Key Vault](../secrets/quick-create-net.md)
-- [通过 Azure Resource Manager 模板创建密钥保管库并添加机密](../secrets/quick-create-template.md)
-- [使用 REST 创建和管理 Key Vault](/rest/api/keyvault/)
+- [使用 CLI 创建和管理 Key Vault](quick-create-cli.md)
+- [使用 PowerShell 创建和管理 Key Vault](quick-create-powershell.md)
+- [Azure 门户创建和管理密钥保管库](quick-create-portal.md)
+- [使用 REST 创建和管理 Key Vault](/rest/api/keyvault/vaults/createorupdate)
 
+### <a name="set-and-retrieve-secrets"></a>设置和检索机密
+
+- [使用 CLI 设置和检索机密](../secrets/quick-create-cli.md)
+- [使用 PowerShell 设置和检索机密](../secrets/quick-create-powershell.md)
+- [使用 Azure 门户设置和检索机密](../secrets/quick-create-portal.md)
+- [REST 的机密操作](/rest/api/keyvault/#secret-operations)
+- [使用 Python 设置和检索机密](../secrets/quick-create-python.md)
+- [使用 Java 设置和检索机密](../secrets/quick-create-java.md)
+- [使用 Node.js设置和检索机密](../secrets/quick-create-node.md)
+- [使用 .NET 设置和检索机密（v4 SDK）](../secrets/quick-create-net.md)
+- [通过 Azure Resource Manager 模板创建密钥保管库并添加机密](../secrets/quick-create-template.md)
+
+### <a name="set-and-retrieve-keys"></a>设置和检索密钥
+
+- [使用 CLI 设置和检索密钥](../keys/quick-create-cli.md)
+- [使用 PowerShell 设置和检索密钥](../keys/quick-create-powershell.md)
+- [使用 Azure 门户设置和检索密钥](../keys/quick-create-portal.md)
+- [REST 的密钥操作](/rest/api/keyvault/#key-operations)
+- [使用 Python 设置和检索密钥](../secrets/quick-create-python.md)
+
+### <a name="set-and-retrieve-certificates"></a>设置和检索证书
+- [使用 CLI 设置和检索证书](../certificates/quick-create-cli.md)
+- [使用 PowerShell 设置和检索证书](../certificates/quick-create-powershell.md)
+- [使用 Azure 门户设置和检索证书](../certificates/quick-create-portal.md)
+- [REST 的密钥操作](/rest/api/keyvault/#certificate-operations)
+- [使用 Python 设置和检索证书](../certificates/quick-create-python.md)
 
 ## <a name="coding-with-key-vault"></a>使用密钥保管库进行编码
 
@@ -64,8 +85,6 @@ ms.locfileid: "87386208"
 #### <a name="net"></a>.NET
 
 [适用于 Key Vault 的 .NET API 参考](/dotnet/api/overview/azure/key-vault?view=azure-dotnet)。
-
-有关 .NET SDK 2.x 版的详细信息，请参阅[发行说明](dotnet2api-release-notes.md)。
 
 #### <a name="java"></a>Java
 
@@ -94,7 +113,6 @@ ms.locfileid: "87386208"
 有关在应用程序中使用密钥保管库的完整示例，请参阅：
 
 - [Azure Key Vault 代码示例](https://azure.microsoft.com/resources/samples/?service=key-vault) - Azure Key Vault 的代码示例。 
-- [从 Web 应用程序使用 Azure Key Vault](../secrets/quick-create-net.md) - 此教程介绍如何从 Azure 中的 Web 应用程序使用 Azure Key Vault。 
 
 ## <a name="how-tos"></a>操作方法
 
@@ -124,7 +142,6 @@ ms.locfileid: "87386208"
 
 - [Key Vault 软删除行为](soft-delete-overview.md)）描述允许恢复已删除的对象的功能，不管是有意还是有意删除。
 - [Key Vault 客户端限制](overview-throttling.md)介绍了有关限制的基本概念，并针对应用提供了限制方法。
-- [Key Vault 存储帐户密钥概述](../secrets/overview-storage-keys.md)）介绍 Key Vault 集成 Azure 存储帐户密钥。
 - [Key Vault 安全体系](overview-security-worlds.md)介绍了区域与安全领域之间的关系。
 
 ## <a name="social"></a>社交

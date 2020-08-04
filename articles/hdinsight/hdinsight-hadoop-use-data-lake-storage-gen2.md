@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: ab1cba455f93abe4d603f417f8d0a00dda0e315e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 2992324a1080b75a98264958f56ea28e93b54651
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497641"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534577"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集
 
@@ -39,9 +39,9 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左上角，单击“创建资源”。
 1. 在搜索框中键入“用户分配”并单击“用户分配的托管标识”。
-1. 单击 **“创建”** 。
+1. 单击“创建”。
 1. 输入托管标识的名称，选择正确的订阅、资源组和位置。
-1. 单击 **“创建”** 。
+1. 单击“创建”。
 
 有关 Azure HDInsight 中托管标识的工作原理的详细信息，请参阅 [Azure HDInsight 中的托管标识](hdinsight-managed-identities.md)。
 
@@ -79,7 +79,7 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 1. 选择“+ 添加角色分配”按钮以添加一个新角色。
 1. 在“添加角色分配”窗口中，选择“存储 Blob 数据所有者”角色 。 然后，选择具有托管标识和存储帐户的订阅。 接下来，搜索并找到之前创建的用户分配托管标识。 最后，选择托管标识，它将在“选定成员”下列出。
 
-    ![显示如何分配 RBAC 角色的屏幕截图](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
+    ![显示如何分配 Azure 角色的屏幕截图](./media/hdinsight-hadoop-use-data-lake-storage-gen2/add-rbac-role3-window.png)
 
 1. 选择“保存” 。 现在，选定的用户分配的标识会列在选定的角色下。
 1. 此初始设置完成后，可通过门户创建群集。 群集必须与存储帐户位于同一 Azure 区域中。 在群集创建菜单的“存储”选项卡中，选择以下选项：

@@ -3,12 +3,12 @@ title: 使用 Azure Active Directory 对托管标识进行身份验证
 description: 本文提供有关对使用 Azure Active Directory 访问 Azure 事件中心资源的托管标识进行身份验证的信息
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 4e3460fa4fc3807cda23d6e3835a9f0b843eb36d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 707c93d1f104dcc2982999c4e7461947280918ef
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537269"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534407"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>使用 Azure Active Directory 对托管标识的事件中心资源访问进行身份验证
 Azure 事件中心支持使用 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)进行 Azure Active Directory (Azure AD) 身份验证。 Azure 资源的托管标识可以从 Azure 虚拟机 (VM)、函数应用、虚拟机规模集和其他服务中运行的应用程序使用 Azure AD 凭据授权对事件中心资源的访问权限。 将 Azure 资源的托管标识与 Azure AD 身份验证结合使用，可避免将凭据随在云中运行的应用程序一起存储。
@@ -25,9 +25,9 @@ Azure 事件中心支持使用 [Azure 资源的托管标识](../active-directory
 - [Azure 资源管理器客户端库](../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="grant-permissions-to-a-managed-identity-in-azure-ad"></a>向 Azure AD 中的托管标识授予权限
-若要通过应用程序中的托管标识授权对事件中心服务的请求，请先为该托管标识配置基于角色的访问控制 (RBAC) 设置。 Azure 事件中心定义 RBAC 角色，这些角色涵盖了从事件中心进行发送和读取操作所需的权限。 将 RBAC 角色分配到某个托管标识后，将在适当的范围授予该托管标识访问事件中心数据的权限。
+若要通过应用程序中的托管标识授权对事件中心服务的请求，请先为该托管标识配置基于角色的访问控制 (RBAC) 设置。 Azure 事件中心定义的 Azure 角色包含用于从事件中心进行发送和读取的权限。 将 Azure 角色分配到托管标识后，会向托管标识授予适当范围内的事件中心数据的访问权限。
 
-有关如何分配 RBAC 角色的详细信息，请参阅[使用 Azure Active Directory 进行身份验证，以便访问事件中心资源](authorize-access-azure-active-directory.md)。
+有关分配 Azure 角色的详细信息，请参阅[使用 Azure Active Directory 进行身份验证以访问事件中心资源](authorize-access-azure-active-directory.md)。
 
 ## <a name="use-event-hubs-with-managed-identities"></a>将事件中心与托管标识结合使用
 若要将事件中心与托管标识配合使用，需为标识分配角色和相应的范围。 此部分的过程使用一个简单的应用程序，该应用程序在托管标识下运行并访问事件中心资源。
@@ -46,7 +46,7 @@ Azure 事件中心支持使用 [Azure 资源的托管标识](../active-directory
 
 现在，请将此服务标识分配给事件中心资源中所需范围中的某个角色。
 
-### <a name="to-assign-rbac-roles-using-the-azure-portal"></a>使用 Azure 门户分配 RBAC 角色
+### <a name="to-assign-azure-roles-using-the-azure-portal"></a>使用 Azure 门户分配 Azure 角色
 若要为事件中心资源分配角色，请导航到 Azure 门户中的该资源。 显示资源的“访问控制(标识和访问管理)”设置，并按以下说明管理角色分配：
 
 > [!NOTE]

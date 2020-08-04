@@ -4,12 +4,12 @@ description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: f84be4082eb6bc845459b6d88cb3157b2330f23d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d75e7053bfff14fbcb6deeae48c48f09e3e9ac0d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091005"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531874"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -106,20 +106,17 @@ Azure 备份支持针对传输中数据和静态数据的加密。
 ### <a name="data-security"></a>数据安全性
 
 - 备份数据以加密格式存储在恢复服务保管库中。
-- 只有你有解锁此数据的通行短语。 Microsoft 无法解密任何恢复点的备份数据。
-
-    > [!WARNING]
-    > 设置保管库后，只有你才能访问加密密钥。 Microsoft 不保留副本，且没有访问该密钥的权限。 如果客户丢失了密钥，Microsoft 无法恢复备份数据。
+- 当使用 MARS 代理从本地服务器备份数据时，将使用密码对数据进行加密，然后再将其上载到 Azure 备份，并在从 Azure 备份下载后进行解密。
 - 备份 Azure VM 时，需要在虚拟机内部设置加密。
 - Azure 备份支持 Azure 磁盘加密，后者在 Windows 虚拟机上使用 BitLocker，在 Linux 虚拟机上使用 **dm-crypt**。
 - 在后端，Azure 备份使用 [Azure 存储服务加密](../storage/common/storage-service-encryption.md)来保护静态数据。
 
 **计算机** | **传输中** | **静态**
 --- | --- | ---
-**没有 DPM/MABS 的本地 Windows 计算机** | ![是][green] | ![是][green]
-**Azure VM** | ![是][green] | ![是][green]
-**本地 Windows 计算机或使用 DPM 的 Azure VM** | ![是][green] | ![是][green]
-**本地 Windows 计算机或使用 MABS 的 Azure VM** | ![是][green] | ![是][green]
+**没有 DPM/MABS 的本地 Windows 计算机** | ![“是”][green] | ![“是”][green]
+**Azure VM** | ![“是”][green] | ![是][green]
+**本地 Windows 计算机或使用 DPM 的 Azure VM** | ![“是”][green] | ![是][green]
+**本地 Windows 计算机或使用 MABS 的 Azure VM** | ![“是”][green] | ![是][green]
 
 ## <a name="compression-support"></a>压缩支持
 
@@ -130,7 +127,7 @@ Azure 备份支持对备份流量进行压缩，详细情况汇总在下表中�
 
 **计算机** | **压缩到 MABS/DPM (TCP)** | **压缩到保管库 (HTTPS)**
 --- | --- | ---
-**直接备份本地 Windows 计算机** | 不可用 | ![是][green]
+**直接备份本地 Windows 计算机** | NA | ![是][green]
 **使用 VM 扩展的 Azure VM 备份** | 不可用 | 不可用
 **使用 MABS/DPM 在本地计算机/Azure 计算机上备份** | ![是][green] | ![是][green]
 

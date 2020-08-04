@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3dcb3a74e9341981af7e6eddb4be7454aaf429b
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 2fcd1c3a9fd3e4be22e4057eb2cfc9a71d09d558
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419778"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529103"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Windows 虚拟机
 
@@ -144,7 +144,7 @@ az vm extension set \
 
 ## <a name="configure-role-assignments-for-the-vm"></a>为 VM 配置角色分配
 
-创建 VM 后，需要配置 Azure RBAC 策略来确定哪些用户可以登录到该 vm。 使用两个 RBAC 角色来授权 VM 登录：
+创建 VM 后，需要配置 Azure RBAC 策略来确定哪些用户可以登录到该 vm。 两个 Azure 角色用于授权 VM 登录：
 
 - **虚拟机管理员登录**：分配了此角色的用户可以使用管理员权限登录到 Azure 虚拟机。
 - **虚拟机用户登录名**：分配了此角色的用户可以使用常规用户权限登录到 Azure 虚拟机。
@@ -208,7 +208,7 @@ az role assignment create \
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>使用 Windows VM Azure AD 凭据登录
 
 > [!IMPORTANT]
-> 仅允许从已注册 Azure AD 的 Windows 10 Pc （20H1 的最低版本为）或 Azure AD 加入或混合 Azure AD 联接到与 VM**相同**的目录的 Windows 10 电脑进行远程连接到 Azure AD。 此外，对于使用 Azure AD 凭据的 RDP，用户必须属于两个 RBAC 角色之一： "虚拟机管理员登录名" 或 "虚拟机用户登录名"。 如果使用 Azure AD 注册的 Windows 10 PC，则必须以 AzureAD\UPN 格式输入凭据（例如 AzureAD\john@contoso.com ）。 目前，不能使用 AADLoginForWindows 扩展的 Azure Active Directory 身份验证来登录 Azure 堡垒;仅支持直接 RDP。
+> 仅允许从已注册 Azure AD 的 Windows 10 Pc （20H1 的最低版本为）或 Azure AD 加入或混合 Azure AD 联接到与 VM**相同**的目录的 Windows 10 电脑进行远程连接到 Azure AD。 此外，若要使用 Azure AD 凭据，该用户必须属于两个 Azure 角色之一： "虚拟机管理员登录名" 或 "虚拟机用户登录名"。 如果使用 Azure AD 注册的 Windows 10 PC，则必须以 AzureAD\UPN 格式输入凭据（例如 AzureAD\john@contoso.com ）。 目前，不能使用 AADLoginForWindows 扩展的 Azure Active Directory 身份验证来登录 Azure 堡垒;仅支持直接 RDP。
 
 使用 Azure AD 登录到 Windows Server 2019 虚拟机： 
 
@@ -315,13 +315,13 @@ az role assignment create \
 
 ### <a name="troubleshoot-sign-in-issues"></a>排查登录问题
 
-当你尝试将 RDP 与 Azure AD 凭据结合时，某些常见错误包括未分配的 RBAC 角色、未经授权的客户端或所需的2FA 登录方法。 使用以下信息来更正这些问题。
+当你尝试将 RDP 与 Azure AD 凭据结合时，某些常见错误包括未分配任何 Azure 角色、未经授权的客户端或2FA 登录方法。 使用以下信息来更正这些问题。
 
 可以通过运行来查看设备和 SSO 状态 `dsregcmd /status` 。 目标是将设备状态显示为 "显示为" 和 "显示为" `AzureAdJoined : YES` `SSO State` `AzureAdPrt : YES` 。
 
 此外，在 AAD\Operational 事件日志下的事件查看器中捕获使用 Azure AD 帐户的 RDP 登录。
 
-#### <a name="rbac-role-not-assigned"></a>未分配 RBAC 角色
+#### <a name="azure-role-not-assigned"></a>未分配 Azure 角色
 
 如果你在启动到 VM 的远程桌面连接时看到以下错误消息： 
 

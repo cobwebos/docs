@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 06c10cffcfa5c68b1da8ba366ca270f1c2fa6ea4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: de6311e786065bebe7399ccb3625798866e864df
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87060971"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533336"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的托管标识对 Azure 资源的访问进行身份验证
 
@@ -325,7 +325,7 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 
 1. 在“添加角色分配”下，选择一个“角色”，该角色授予标识对目标资源的所需访问权限。 
 
-   在本主题的示例中，标识需要一个[可访问 Azure 存储容器中的 Blob 的角色](../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)。
+   在本主题的示例中，标识需要一个[可访问 Azure 存储容器中的 Blob 的角色](../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)。
 
    ![选择“存储 Blob 数据参与者”角色](./media/create-managed-service-identity/select-role-for-identity.png)
 

@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
 ms.date: 07/06/2020
-ms.openlocfilehash: 4bfd90be2a469c5ab94172769729095069f53cd7
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 4ad3800748330d5c3a6a32c6c0824bc72a05d0ef
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045648"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533081"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>为 Windows 或 Linux 虚拟机装载或卸载卷 
 
@@ -43,9 +43,12 @@ ms.locfileid: "86045648"
     a. 首先将卷装载到 Unix 或 Linux VM。  
     b. `chmod 777` `chmod 775` 对该卷运行或命令。  
     c. 通过 Windows 上的 NFS 客户端装载卷。
+    
+5. 如果要装载 NFS Kerberos 卷，请参阅[Configure nfsv 4.1 Kerberos encryption](configure-kerberos-encryption.md)了解更多详细信息。 
 
 ## <a name="next-steps"></a>后续步骤
 
 * [为 Azure NetApp 文件配置 NFSv4.1 默认域](azure-netapp-files-configure-nfsv41-domain.md)
 * [NFS 常见问题解答](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-faqs#nfs-faqs)
 * [网络文件系统概述](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview)
+* [装载 NFS Kerberos 卷](configure-kerberos-encryption.md#kerberos_mount)

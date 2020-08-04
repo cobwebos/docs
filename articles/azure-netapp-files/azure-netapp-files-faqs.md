@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 07/27/2020
 ms.author: b-juche
-ms.openlocfilehash: f9552b82dc79e1edafb13fead5a07df3ecf1be3b
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 7c792ee9c56a044942bb2249a57f2615c72badee
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512952"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533132"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
@@ -29,7 +29,7 @@ ms.locfileid: "87512952"
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS 数据路径是否通过 Internet？  
 
-不能。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是部署到 Azure 虚拟网络（VNet）中的 azure 本机服务，该服务可用。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
+否。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是部署到 Azure 虚拟网络（VNet）中的 azure 本机服务，该服务可用。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
 
 有关详细信息，请参阅[Azure NetApp 文件的准则网络规划](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)。  
 
@@ -48,7 +48,7 @@ ms.locfileid: "87512952"
 
 ### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>能否为 Azure NetApp 文件卷设置或选择自己的 IP 地址？  
 
-不能。 IP 分配给 Azure NetApp 文件卷是动态的。 不支持静态 IP 分配。 
+否。 IP 分配给 Azure NetApp 文件卷是动态的。 不支持静态 IP 分配。 
  
 ## <a name="security-faqs"></a>安全常见问题
 
@@ -97,11 +97,15 @@ Azure NetApp 文件的密钥管理由服务处理。 为每个卷生成唯一的
 
 ### <a name="how-do-i-change-the-service-level-of-a-volume"></a>如何实现更改卷的服务级别？
 
-当前不支持更改卷的服务级别。
+可以通过将卷移到使用所需的[服务级别](azure-netapp-files-service-levels.md)的其他容量池来更改现有卷的服务级别。 请参阅[动态更改卷的服务级别](dynamic-change-volume-service-level.md)。 
 
 ### <a name="how-do-i-monitor-azure-netapp-files-performance"></a>如何实现监视 Azure NetApp 文件性能？
 
 Azure NetApp 文件提供了卷性能指标。 你还可以使用 Azure Monitor 来监视 Azure NetApp 文件的使用情况指标。  有关 Azure NetApp 文件的性能指标列表，请参阅[Azure Netapp 文件的指标](azure-netapp-files-metrics.md)。
+
+### <a name="whats-the-performance-impact-of-kerberos-on-nfsv41"></a>NFSv 4.1 上的 Kerberos 对性能有什么影响？
+
+请参阅[nfsv 4.1 上的 Kerberos 对性能的影响](configure-kerberos-encryption.md#kerberos_performance)，了解有关 nfsv 4.1 安全选项、测试的性能向量和预期的性能影响的信息。 
 
 ## <a name="nfs-faqs"></a>NFS 常见问题解答
 
@@ -165,6 +169,15 @@ Yes, by default, Azure NetApp Files supports both AES-128 and AES-256 encryption
 Yes, Azure NetApp Files supports LDAP signing by default. This functionality enables secure LDAP lookups between the Azure NetApp Files service and the user-specified [Active Directory Domain Services domain controllers](https://docs.microsoft.com/windows/win32/ad/active-directory-domain-services). For more information, see [ADV190023 | Microsoft Guidance for Enabling LDAP Channel Binding and LDAP Signing](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/ADV190023).
 --> 
 
+## <a name="dual-protocol-faqs"></a>双重协议常见问题
+
+### <a name="i-tried-to-use-the-root-and-local-users-to-access-a-dual-protocol-volume-with-the-ntfs-security-style-on-a-unix-system-why-did-i-encounter-a-permission-denied-error"></a>我尝试使用 "root" 和本地用户访问 UNIX 系统上具有 NTFS 安全样式的双协议卷。 为什么会出现 "权限被拒绝" 错误？   
+
+双协议卷支持 NFS 协议和 SMB 协议。  当你尝试访问 UNIX 系统上装入的卷时，系统将尝试将你使用的 UNIX 用户映射到 Windows 用户。 如果未找到映射，则会发生 "权限被拒绝" 错误。  当你使用 "root" 用户进行访问时，这种情况也适用。    
+
+若要避免 "权限被拒绝" 问题，请确保在 `pcuser` 访问装入点之前 Windows Active Directory 包含。 如果在 `pcuser` 遇到 "权限被拒绝" 问题后添加，请等待24小时，以便在再次尝试访问之前清除缓存条目。
+
+
 ## <a name="capacity-management-faqs"></a>容量管理常见问题
 
 ### <a name="how-do-i-monitor-usage-for-capacity-pool-and-volume-of-azure-netapp-files"></a>如何实现监视 Azure NetApp 文件的容量池和容量的使用情况？ 
@@ -173,7 +186,7 @@ Azure NetApp 文件提供容量池和卷使用情况指标。 你还可以使用
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>是否可以通过 Azure 存储资源管理器管理 Azure NetApp 文件？
 
-不能。 Azure 存储资源管理器不支持 Azure NetApp 文件。
+否。 Azure 存储资源管理器不支持 Azure NetApp 文件。
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>如何实现确定目录是否接近限制大小？
 
@@ -230,11 +243,11 @@ NetApp 提供基于 SaaS 的解决方案，即[Netapp 云同步](https://cloud.n
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>Azure Data Box 是否支持迁移？
 
-不能。 Azure Data Box 目前不支持 Azure NetApp 文件。 
+否。 Azure Data Box 目前不支持 Azure NetApp 文件。 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>是否支持通过 Azure 导入/导出服务进行迁移？
 
-不能。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
+否。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
 
 ## <a name="next-steps"></a>后续步骤  
 

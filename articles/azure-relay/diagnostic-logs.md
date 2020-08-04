@@ -3,12 +3,12 @@ title: 混合连接的诊断日志
 description: 本文概述了可用于 Azure 中继的所有活动和诊断日志。
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: f79e4aa21fcb9e592f431e252981dc0e7c02817f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 980f2f7a737d3f2460c17a84c472cbf56f5eb90f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314906"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532996"
 ---
 # <a name="enable-diagnostics-logs-for-azure-relay-hybrid-connections"></a>为 Azure 中继混合连接启用诊断日志
 开始使用 Azure 中继混合连接时，你可能希望监视你的侦听器和发送方是如何以及何时打开和关闭的，以及你的混合连接是如何创建的，消息是如何发送的。 本文概述了 Azure 中继服务提供的活动和诊断日志。 
@@ -46,7 +46,7 @@ ms.locfileid: "85314906"
         ![示例诊断设置](./media/diagnostic-logs/sample-diagnostic-settings.png)
 1. 选择工具栏上的“保存”以保存设置。
 
-新设置将在大约 10 分钟后生效。 日志将显示在“诊断日志”窗格中配置的存档目标中。 有关配置诊断设置的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md)。
+新设置将在大约 10 分钟后生效。 日志将显示在“诊断日志”窗格中配置的存档目标中。 有关配置诊断设置的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/platform-logs-overview.md)。
 
 
 ## <a name="schema-for-hybrid-connections-events"></a>混合连接事件的架构
@@ -56,7 +56,7 @@ ms.locfileid: "85314906"
 | ------- | ------- |
 | ResourceId | Azure 资源管理器资源 ID |
 | ActivityId | 内部 ID，用于标识指定的操作。 也称为“TrackingId” |
-| 终结点 | 中继资源的地址 |
+| 端点 | 中继资源的地址 |
 | OperationName | 所记录的混合连接操作的类型 |
 | EventTimeString | 日志记录的 UTC 时间戳 |
 | 消息 | 事件的详细消息 |
@@ -80,7 +80,7 @@ ms.locfileid: "85314906"
 
 ## <a name="events-and-operations-captured-in-diagnostic-logs"></a>诊断日志中捕获的事件和操作
 
-| 操作 | 说明 | 
+| Operation | 说明 | 
 | --------- | ----------- | 
 | AuthorizationFailed | 授权失败。|
 | InvalidSasToken | 无效 SAS 令牌。 | 

@@ -4,12 +4,12 @@ description: 获取页面视图和会话计数、Web 客户端数据、单页应
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 063d648c68431dd84fd1aeb88b85bc68f2acbe62
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: e0545660cbca68d41bc24b7266496b7912d408bc
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475747"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531313"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -20,7 +20,7 @@ ms.locfileid: "87475747"
 ## <a name="adding-the-javascript-sdk"></a>添加 JavaScript SDK
 
 1. 首先需要一个 Application Insights 资源。 如果你尚未获得资源和检测密钥，请遵照[有关创建新资源的说明](create-new-resource.md)。
-2. 对于希望将 JavaScript 遥测发送到的资源（从步骤1开始），复制_检测密钥_（也称为 "iKey"）。你需要将其添加到 `instrumentationKey` Application Insights JAVASCRIPT SDK 的设置中。
+2. 从你要将 JavaScript 遥测数据发送到的资源（从步骤 1 中得到的）复制检测密钥（也称为“iKey”）。你需要将该密钥添加到 Application Insights JavaScript SDK 的 `instrumentationKey` 设置。
 3. 通过以下两个选项之一，将 Application Insights JavaScript SDK 添加到网页或应用：
     * [npm 设置](#npm-based-setup)
     * [JavaScript 代码片段](#snippet-based-setup)
@@ -39,7 +39,8 @@ ms.locfileid: "87475747"
 npm i --save @microsoft/applicationinsights-web
 ```
 
-> *注意：* **Typings 包含在此包**中，因此你**不**需要安装单独的 Typings 包。
+> [!Note]
+> **Typings 包含在此包**中，因此你**不**需要安装单独的 Typings 包。
     
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -54,11 +55,11 @@ appInsights.trackPageView(); // Manually call trackPageView to establish the cur
 
 ### <a name="snippet-based-setup"></a>基于代码片段的设置
 
-如果应用不使用 npm，则可以通过直接使用 Application Insights 来检测网页：只需将此代码片段粘贴到每个页面的顶部即可。 最好是部分中的第一个脚本， `<head>` 以便它可以监视所有依赖项的任何潜在问题以及任何 JavaScript 错误。 如果使用的是 Blazor Server 应用，请在文件 `_Host.cshtml` 的顶部 `<head>` 部分中添加代码片段。
+如果应用不使用 npm，则可以通过直接使用 Application Insights 来检测网页：只需将此代码片段粘贴到每个页面的顶部即可。 最好是将它用作 `<head>` 节中的第一个脚本，以便它可以监视所有依赖项存在的任何潜在问题或任何 JavaScript 问题。 如果使用的是 Blazor Server 应用，请在文件 `_Host.cshtml` 的顶部 `<head>` 部分中添加代码片段。
 
-为了帮助跟踪应用程序使用的代码段版本，从版本2.5.5 开始，页面视图事件将包含一个新的标记 "ai ..."，它将包含标识的代码段版本。
+为了帮助跟踪应用程序使用的代码片段版本，从版本 2.5.5 开始，页面视图事件将包含一个新的标记“ai.internal.snippet”，该标记将包含标识的代码片段版本。
 
-当前代码段（如下所列）将标识为版本 "3"。
+当前代码片段（如下所示）将标识为版本“3”。
 
 ```html
 <script type="text/javascript">
@@ -76,41 +77,41 @@ cfg: { // Application Insights Configuration
 ```
 
 > [!NOTE]
-> 为了提高可读性并减少可能的 JavaScript 错误，在上面的代码段代码的新行上列出了所有可能的配置选项，如果不想更改注释行的值，则可以将其删除。
+> 为了提高可读性并减少可能的 JavaScript 错误，在上述代码片段的新行上列出了所有可能的配置选项，如果不希望更改注释行的值，可以将其删除。
 
 
 #### <a name="reporting-script-load-failures"></a>报告脚本加载失败
 
-此版本的代码段检测并报告在将 SDK 作为 Azure Monitor 门户（在 "故障异常浏览器" 下）的情况下的 CDN 加载时出现的故障 &gt; &gt; ，此异常提供此类型的故障的可见性，以便您知道您的应用程序不会按预期方式报告遥测（或其他异常）。 此信号非常重要，因为它会丢失遥测数据，因为 SDK 未加载或初始化，这可能导致：
-- 报告用户使用（或尝试使用）你的站点的方式：
-- 最终用户使用您的站点的方式缺少遥测数据;
-- 缺少 JavaScript 错误，这些错误可能会阻止最终用户成功使用您的站点。
+此版本的代码片段检测并报告在将 SDK 作为扩展从 CDN 加载到 Azure Monitor 门户时出现的故障（在“故障”&gt;“异常”&gt;“浏览器”下），此异常提供此类故障的可见性，使你知道应用程序不会按预期方式报告遥测（或其他异常）。 此信号对于了解以下情况至关重要：由于未加载或初始化 SDK，因此缺少遥测数据，这可能导致：
+- 漏报用户使用（或尝试使用）站点的方式；
+- 缺少关于最终用户使用站点的方式的遥测数据；
+- 遗漏可能阻止最终用户成功使用站点的 JavaScript 错误。
 
-有关此异常的详细信息，请参阅[SDK 加载失败](javascript-sdk-load-failure.md)故障排除页。
+有关此异常的详细信息，请参阅 [SDK 加载失败](javascript-sdk-load-failure.md)疑难解答页面。
 
-如果将此失败报告为门户例外，则不会使用 ```disableExceptionTracking``` application insights 配置中的配置选项，因此，如果发生此失败，则它将始终通过代码段进行报告，即使禁用了 onerror 支持也是如此。
+将此失败作为门户异常进行报告时不会使用 Application Insights 配置中的 ```disableExceptionTracking``` 配置选项，因此，如果发生此失败，则将始终通过代码片段进行报告，即使禁用了 window.onerror 支持也是如此。
 
-IE 8 （或更少）上特别不支持报告 SDK 加载失败。 这有助于减少代码段的缩小大小，方法是假定大多数环境不是以独占方式8或更小。 如果你有此要求并且希望收到这些例外，则需要将提取的 poly 填充或 create 你自己的代码段版本用于 ```XDomainRequest``` 而不是 ```XMLHttpRequest``` ，因此建议使用[提供的代码段源代码](https://github.com/microsoft/ApplicationInsights-JS/blob/master/AISKU/snippet/snippet.js)作为起点。
+IE 8（或更低版本）尤其不支持报告 SDK 加载失败。 假设大多数环境都不仅仅是 IE 8 或更低版本，这有助于减少代码片段的缩小版大小。 如果你有此要求并且希望收到这些异常，则需要包括 fetch polyfill，或创建自己的代码片段版本，使其使用 ```XDomainRequest``` 而不是 ```XMLHttpRequest```，建议使用[提供的代码片段源代码](https://github.com/microsoft/ApplicationInsights-JS/blob/master/AISKU/snippet/snippet.js)作为起点。
 
 > [!NOTE]
-> 如果您使用的是代码段的以前版本，则强烈建议您更新到最新版本，以便您将收到以前未报告的问题。
+> 如果你使用的是早期版本的代码片段，则强烈建议你更新到最新版本，以便收到以前未报告的问题。
 
-#### <a name="snippet-configuration-options"></a>代码段配置选项
+#### <a name="snippet-configuration-options"></a>代码片段配置选项
 
-现在，所有配置选项都已移到脚本的末尾，有助于避免意外引入 JavaScript 错误，这不会导致 SDK 加载失败，而且还会禁止报告故障。
+现在，所有配置选项都已移到脚本的末尾，以避免意外引入 JavaScript 错误，这类错误不仅会导致 SDK 加载失败，而且还会阻止报告此失败。
 
-每个配置选项在新行上显示，如果不希望覆盖作为 [optional] 列出的项的默认值，则可以删除该行以最大程度地减小返回页面的结果大小。
+每个配置选项都会显示在一个新行上，如果不希望覆盖作为 [可选] 列出的项的默认值，则可以删除该行以最大程度地减小所返回页面的大小。
 
-可用的配置选项包括 
+可用配置有： 
 
-| 名称 | 类型 | 描述
+| 名称 | 类型 | 说明
 |------|------|----------------
-| src | string **[必需]** | 要从其加载 SDK 的的完整 URL。 此值用于动态添加的脚本/标记的 "src" 特性 &lt; &gt; 。 你可以使用公共 CDN 位置，也可以使用自己的私有托管位置。
-| name | string *[optional]* | 已初始化的 SDK 的全局名称，默认值为 appInsights。 因此 ```window.appInsights``` 将是对已初始化实例的引用。 注意：如果提供名称值或上一个实例（通过全局名称 appInsightsSDK），则此名称值也将在全局命名空间中定义为 ```window.appInsightsSDK=<name value>``` ，这是 SDK 初始化代码需要的，以确保它正在初始化并更新正确的代码段主干和代理方法。
-| ld | ms 中的数字 *[可选]* | 定义在尝试加载 SDK 之前要等待的加载延迟。 默认值为0ms，任何负值会立即将脚本标记添加到页面的 &lt; head &gt; 区域，然后在加载脚本（或失败）之前阻止页面加载事件。
-| useXhr | boolean *[可选]* | 此设置仅用于报告 SDK 加载失败。 报告将首先尝试使用 fetch （）（如果可用），并回退到 XHR，将此值设置为 true 即可绕过提取检查。 仅当您的应用程序在提取将无法发送失败事件的环境中使用时，才需要使用此值。
-| crossOrigin | string *[optional]* | 通过包含此设置，添加到下载 SDK 的脚本标记将包含带有此字符串值的 crossOrigin 属性。 如果未定义（默认值），则不添加 crossOrigin 属性。 未定义建议值（默认值）;"";或 "anonymous" （对于所有有效值，请参阅[HTML 特性： crossorigin](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)文档）
-| cfg | 对象 **[必需]** | 初始化期间传递到 Application Insights SDK 的配置。
+| src | 字符串 [必需] | 要从中加载 SDK 的完整 URL。 此值用于动态添加的 &lt;script /&gt; 标记的“src”属性。 你可以使用公共 CDN 位置，也可以使用自己的私有托管位置。
+| name | 字符串 [可选] | 已初始化的 SDK 的全局名称，默认值为 appInsights。 因此 ```window.appInsights``` 将是对已初始化实例的引用。 注意：如果提供一个名称值或上一个实例似乎是通过全局名称 appInsightsSDK 分配的，则此名称值也将在全局命名空间中定义为 ```window.appInsightsSDK=<name value>```，SDK 初始化代码需要此名称，以确保它正在初始化和更新的代码片段主干和代理方法正确。
+| ld | 毫秒数 [可选] | 定义在尝试加载 SDK 之前要等待的加载延迟。 默认值为 0 毫秒，任何负值都表示将立即向页面的 &lt;head&gt; 区域添加脚本标记，然后在加载脚本（或失败）之前阻止页面加载事件。
+| useXhr | 布尔 [可选] | 此设置仅用于报告 SDK 加载失败。 报告将首先尝试使用 fetch()（如果可用），然后回退到 XHR，将此值设置为 true 即可绕过提取检查。 仅当在提取将无法发送失败事件的环境中使用应用程序时，才需要使用此值。
+| crossOrigin | 字符串 [可选] | 通过包含此设置，添加以下载 SDK 的脚本标记将包含带有此字符串值的 crossOrigin 属性。 如果未定义（默认值），则不添加 crossOrigin 属性。 未定义建议的值（默认值）;""; 或“anonymous”（如需了解所有有效值，请参阅 [HTML 属性：crossorigin](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) 文档）
+| cfg | 对象 [必需] | 初始化期间传递到 Application Insights SDK 的配置。
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>将遥测数据发送到 Azure 门户
 
@@ -169,7 +170,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | samplingPercentage | 100 | 要发送的事件百分比。 默认值为 100，表示发送所有事件。 如果你希望避免大型应用程序达到数据上限，请设置此项。 |
 | autoTrackPageVisitTime | false | 如果为 true，则对于页面视图，将跟踪前一个检测的页面的查看时间并将其作为遥测数据发送，同时，为当前的页面视图启动新的计时器。 默认值为 false。 |
 | disableAjaxTracking | false | 如果为 true，则不自动收集 Ajax 调用。 默认值为 false。 |
-| disableFetchTracking | true | 如果为 true，则不自动收集 Fetch 请求。 默认值为 true |
+| disableFetchTracking | 是 | 如果为 true，则不自动收集 Fetch 请求。 默认值为 true |
 | overridePageViewDuration | false | 如果为 true，则在调用 trackPageView 时，trackPageView 的默认行为将更改为记录页面视图持续时间间隔的结束时间。 如果为 false 且未为 trackPageView 提供自定义持续时间，则会使用导航计时 API 计算页面视图性能。 默认值为 false。 |
 | maxAjaxCallsPerView | 500 | 默认值为 500 - 控制每个页面视图将监视多少个 Ajax 调用。 设置为 -1 可监视页面上的所有（无限制）Ajax 调用。 |
 | disableDataLossAnalysis | 是 | 如果为 false，则对于尚未发送的项，启动时将检查内部遥测发送方缓冲区。 |
@@ -177,7 +178,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | correlationHeaderExcludedDomains |  | 禁用特定域的关联标头 |
 | correlationHeaderDomains |  | 启用特定域的关联标头 |
 | disableFlushOnBeforeUnload | false | 默认值为 false。 如果为 true，则触发 onBeforeUnload 事件时不会调用 flush 方法 |
-| enableSessionStorageBuffer | true | 默认值为 true。 如果为 true，则会将包含所有未发送的遥测数据的缓冲区存储在会话存储中。 加载页面时会还原该缓冲区 |
+| enableSessionStorageBuffer | 是 | 默认值为 true。 如果为 true，则会将包含所有未发送的遥测数据的缓冲区存储在会话存储中。 加载页面时会还原该缓冲区 |
 | isCookieUseDisabled | false | 默认值为 false。 如果为 true，则 SDK 不会存储或读取 Cookie 中的任何数据。|
 | cookieDomain | Null | 自定义 Cookie 域。 若要跨子域共享 Application Insights Cookie，此字段会有帮助。 |
 | isRetryDisabled | false | 默认值为 false。 如果为 false，则出现代码 206（部分成功）、408（超时）、429（请求过多）、500（内部服务器错误）、503（服务不可用）和 0（脱机，仅当已检测到此状态时）时会重试 |
@@ -193,11 +194,11 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | enableRequestHeaderTracking | false | 如果为 true，则跟踪 AJAX 和 Fetch 请求标头，默认值为 false。
 | enableResponseHeaderTracking | false | 如果为 true，则跟踪 AJAX 和 Fetch 请求的响应标头，默认值为 false。
 | distributedTracingMode | `DistributedTracingModes.AI` | 设置分布式跟踪模式。 如果设置了 AI_AND_W3C 模式或 W3C 模式，则将生成 W3C 跟踪上下文标头 (traceparent/tracestate)，并将其包含在所有传出请求中。 提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测服务向后兼容。 请参阅[此处](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)的示例。
-| enableAjaxErrorStatusText | false | 默认值为 false。 如果为 true，则在失败的 AJAX 请求上包含依赖关系事件中的响应错误数据文本。
-| enableAjaxPerfTracking | false | 默认值为 false。 用于启用查找和包含其他浏览器窗口的标记。报告的 ajax （XHR 和 fetch）报告的指标中的性能计时。
-| maxAjaxPerfLookupAttempts | 3 | 默认值为 3。 要在窗口中查找的最大次数。性能计时（如果可用），这是必需的，因为并非所有浏览器都填充窗口。在报告 XHR 请求结束之前的性能和提取请求后，将在其完成后添加。
-| ajaxPerfLookupDelay | 25 | 默认值为25毫秒。 在重新尝试查找 windows 之前要等待的时间量。 ajax 请求的性能计时，时间以毫秒为单位，并直接传递给 setTimeout （）。
-| enableUnhandledPromiseRejectionTracking | false | 如果为 true，则会将未处理的承诺拒绝 autocollected 并报告为 JavaScript 错误。 当 disableExceptionTracking 为 true （不跟踪例外）时，将忽略配置值，不会报告未处理的承诺否决。
+| enableAjaxErrorStatusText | false | 默认值为 false。 如果为 true，则在 AJAX 请求失败时包含依赖关系事件中的响应错误数据文本。
+| enableAjaxPerfTracking | false | 默认值为 false。 用于启用查找并包含报告的 ajax（XHR 和 fetch）报告的指标中其他浏览器 window.performance 计时的标记。
+| maxAjaxPerfLookupAttempts | 3 | 默认值为 3。 查找 window.performance 计时的最大次数，此值为必需，因为并非所有浏览器在报告 XHR 请求完成之前都会填充 window.performance，而对于 fetch 请求，将在请求完成之后添加该值。
+| ajaxPerfLookupDelay | 25 | 默认值为 25 毫秒。 重新尝试为 ajax 请求查找 windows.performance 计时时要等待的时间，时间以毫秒计并直接传递给 setTimeout()。
+| enableUnhandledPromiseRejectionTracking | false | 如果为 true，则将自动收集未处理的拒绝承诺并报告为 JavaScript 错误。 如果 disableExceptionTracking 为 true（不跟踪异常），则将忽略配置值且不会报告未处理的拒绝承诺。
 
 ## <a name="single-page-applications"></a>单页应用程序
 
@@ -227,7 +228,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 还可以通过门户中的“浏览器”体验查看 JavaScript SDK 中的数据。
 
-选择“浏览器”，然后选择“失败”或“性能”。  
+选择“浏览器”，然后选择“失败”或“性能”。
 
 ![Application Insights 中的 "浏览器" 页的屏幕截图，显示如何将浏览器故障或浏览器性能添加到可以为 web 应用程序查看的指标。](./media/javascript/browser.png)
 
@@ -314,7 +315,7 @@ SDK V2 版本中的重大更改：
 
 ## <a name="sdk-performanceoverhead"></a>SDK 性能/开销
 
-只需 36 KB gzip 压缩过，只需大约15毫秒的初始化，Application Insights 就会向网站添加数量不计的 loadtime。 使用代码片段时，很快就能加载极少量的库组件。 同时，整个脚本将在后台下载。
+经过 gzip 压缩后只有 36 KB，只需大约 15 毫秒即可完成初始化，Application Insights 在网站中的加载时间可忽略不计。 使用代码片段时，很快就能加载极少量的库组件。 同时，整个脚本将在后台下载。
 
 从 CDN 下载脚本时，页面的所有跟踪将会排队。 在下载的脚本以异步方式完成初始化后，将会跟踪已排队的所有事件。 因此，在页面的整个生命周期内，你都不会丢失任何遥测数据。 此设置过程可为页面提供一个无缝分析系统，而用户察觉不到该系统。
 
@@ -328,13 +329,13 @@ SDK V2 版本中的重大更改：
 
 ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
-Chrome 最新版 ✔ |  Firefox 最新版 ✔ | IE 9 + 和 Microsoft Edge ✔<br>IE 8 兼容 | Opera 最新版 ✔ | Safari 最新版 ✔ |
+Chrome 最新版 ✔ |  Firefox 最新版 ✔ | IE 9 + 和 Microsoft Edge ✔<br>IE 8- 兼容 | Opera 最新版 ✔ | Safari 最新版 ✔ |
 
 ## <a name="es3ie8-compatibility"></a>ES3/IE8 兼容性
 
-作为 SDK，有很多用户无法控制其客户所使用的浏览器。 因此，我们需要确保此 SDK 继续 "工作"，并且在由较旧的浏览器加载时不会中断 JS 执行。 虽然不支持 IE8 和较旧的生成（ES3）浏览器是理想之选，但有很多大型客户/用户会继续要求页面 "工作"，并注意到它们可能或无法控制最终用户选择使用的浏览器。
+作为 SDK，很多用户无法控制其客户所使用的浏览器。 因此，我们需要确保此 SDK 继续“工作”，并且在由旧版浏览器加载时不会中断 JS 执行。 虽然可以选择不支持 IE8 和旧版生成 (ES3) 浏览器，但有很多大型客户/用户会继续要求页面“工作”，并且我们发现，他们可能或无法控制其最终用户选择使用的浏览器。
 
-这并不意味着我们只支持最少的一组常见功能，只是我们需要维护 ES3 代码兼容性，并且在添加新功能时，需要以不会中断 ES3 JavaScript 分析并将其作为可选功能添加的方式添加这些新功能。
+这并不意味着我们只支持最少的一组常见功能，只是我们需要维护 ES3 代码兼容性，并且需要采用一种既不会中断 ES3 JavaScript 分析又可作为可选功能进行添加的方式来添加新功能。
 
 [有关 IE8 支持的完整详细信息，请参阅 GitHub](https://github.com/Microsoft/ApplicationInsights-JS#es3ie8-compatibility)
 
@@ -348,4 +349,4 @@ Application Insights JavaScript SDK 是开源的，用户可查看其源代码�
 * [跟踪使用情况](usage-overview.md)
 * [自定义事件和指标](api-custom-events-metrics.md)
 * [Build-measure-learn](usage-overview.md)
-* [SDK 加载失败疑难解答](javascript-sdk-load-failure.md)
+* [对 SDK 加载失败进行故障排除](javascript-sdk-load-failure.md)

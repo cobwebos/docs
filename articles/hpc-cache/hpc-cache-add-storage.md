@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 6923bb31e53493dd01f41cb0b0449f2093bc7e91
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7ad910823c4dd2430aeae085dd8e510fcd42c80f
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092467"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532588"
 ---
 # <a name="add-storage-targets"></a>添加存储目标
 
@@ -118,7 +118,7 @@ Azure HPC 缓存使用[基于角色的访问控制（RBAC）](https://docs.micro
 
 可以提前完成此操作，也可以通过单击页面上添加 Blob 存储目标的链接来完成此操作。 请记住，将角色设置传播到 Azure 环境可能需要长达五分钟，因此，在创建存储目标之前，请等待几分钟，然后再添加角色。
 
-添加 RBAC 角色的步骤：
+添加 Azure 角色的步骤：
 
 1. 打开存储帐户的 "**访问控制（IAM）** " 页。 （"**添加存储目标**" 页中的链接会自动打开所选帐户的此页。）
 
@@ -220,9 +220,9 @@ NFS 存储目标的字段比 Blob 存储目标多。 这些字段指定如何访
 
 | 使用模型                   | 缓存模式 | 后端验证 | 最大写回延迟 |
 |-------------------------------|--------------|-----------------------|--------------------------|
-| 读取繁重的罕见写入 | 读取         | 从不                 | None                     |
+| 读取繁重的罕见写入 | 读取         | 从不                 | 无                     |
 | 超过15% 写入       | 读取/写入   | 从不                 | 1 小时                   |
-| 客户端绕过缓存      | 读取         | 30 秒            | None                     |
+| 客户端绕过缓存      | 读取         | 30 秒            | 无                     |
 
 ### <a name="create-an-nfs-storage-target"></a>创建 NFS 存储目标
 

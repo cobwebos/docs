@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 07/24/2020
 ms.author: b-juche
-ms.openlocfilehash: 5097a5dfa6dd9b8fd46e4bcbcee72319af51f86f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e19db61efbf93e3191d5780d07952f3d195c7a59
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499358"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533031"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>动态更改卷的服务级别
 
@@ -38,7 +38,9 @@ ms.locfileid: "87499358"
 
 ## <a name="register-the-feature"></a>注册功能
 
-1. 将卷移动到另一个容量池的功能当前处于预览阶段。 如果这是你第一次使用此功能，请在使用此功能前注册它： 
+将卷移动到另一个容量池的功能当前处于预览阶段。 如果是首次使用此功能，则需要首先注册该功能。
+
+1. 注册功能： 
 
     ```azurepowershell-interactive
     Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange

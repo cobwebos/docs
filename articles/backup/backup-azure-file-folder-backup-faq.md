@@ -3,12 +3,12 @@ title: Microsoft Azure 恢复服务（MARS）代理-常见问题
 description: 解决与使用 Azure 备份对文件和文件夹进行备份相关的常见问题。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: fb6290124aa9ee0335083c5a505c005a387c0cd7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5a4560499c56e4dcdf41c2e5c7920b415ceab6c5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514061"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533574"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>常见问题-Microsoft Azure 恢复服务（MARS）代理
 
@@ -23,6 +23,10 @@ ms.locfileid: "86514061"
 ### <a name="how-long-are-vault-credentials-valid"></a>保管库凭据的有效期是多长时间？
 
 保管库凭据会在 10 天后过期。 如果凭据文件过期，请重新从 Azure 门户下载该文件。
+
+### <a name="what-characters-are-allowed-for-the-passphrase"></a>密码允许使用哪些字符？
+
+该通行短语应使用 ASCII 字符集中的字符，其 ASCII 值小于或等于127。
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>可以从哪些驱动器备份文件和文件夹？
 

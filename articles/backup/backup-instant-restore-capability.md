@@ -4,17 +4,17 @@ description: Azure 即时还原功能以及有关 VM 备份堆栈、资源管理
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 6225a7eb8198ffcca0d1e3e15f64e2b3c977dc16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ea4c3757da4e24ae0455cf35f119bf57ed644a6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84248271"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531823"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>使用 Azure 备份即时还原功能获得更高的备份和还原性能
 
 > [!NOTE]
-> 根据用户的反馈，我们正在将“VM 备份堆栈 V2”**** 重命名为“即时还原”****，以减少与 Azure Stack 功能的混淆。
+> 根据用户的反馈，我们正在将“VM 备份堆栈 V2”重命名为“即时还原”，以减少与 Azure Stack 功能的混淆。
 > 所有 Azure 备份用户现在已升级到**即时还原**。
 
 即时还原的新模型提供以下功能增强：
@@ -24,7 +24,7 @@ ms.locfileid: "84248271"
 * 最大支持 32 TB 的磁盘大小。 Azure 备份不建议重设磁盘大小。
 * 支持标准 SSD 磁盘、标准 HDD 磁盘和高级 SSD 磁盘。
 * 还原时可以使用非托管 VM 的原始存储帐户（按磁盘）。 即使 VM 的磁盘跨存储帐户进行分布，也具备此能力。 这可以加快各种 VM 配置的还原操作。
-* 对于在存储帐户中使用非托管高级磁盘的 VM 的备份（使用即时还原），建议从总的已分配存储空间中分配 50% 的可用空间，这仅在首次备份时是必需的******。 首次备份完成后，50% 的可用空间不再是备份的要求。
+* 对于在存储帐户中使用非托管高级磁盘的 VM 的备份（使用即时还原），建议从总的已分配存储空间中分配 50% 的可用空间，这仅在首次备份时是必需的。 首次备份完成后，50% 的可用空间不再是备份的要求。
 
 ## <a name="whats-new-in-this-feature"></a>功能亮点
 
@@ -48,7 +48,7 @@ ms.locfileid: "84248271"
 * 这是单向升级，一旦升级到即时还原，就不能回退。
 
 >[!NOTE]
->使用此即时还原升级，所有客户（**包含新客户和现有客户**）的快照保留期都将设置为两天的默认值。 不过，您可以根据您的需求将持续时间设置为介于1到5天之间的任何值。
+>使用此即时还原升级，所有客户（**包含新客户和现有客户**）的快照保留期都将设置为两天的默认值。 但是，可以根据需要将持续时间设置为 1 到 5 天之间的任意值。
 
 ## <a name="cost-impact"></a>成本影响
 
@@ -61,7 +61,7 @@ ms.locfileid: "84248271"
 
 ### <a name="using-azure-portal"></a>使用 Azure 门户
 
-在 Azure 门户中可以看到，“即时还原”部分下的“VM 备份策略”边栏选项卡中添加了一个字段。**** **** 对于与特定备份策略关联的所有 VM，可以在“VM 备份策略”边栏选项卡中更改快照保留持续时间。****
+在 Azure 门户中可以看到，“即时还原”部分下的“VM 备份策略”边栏选项卡中添加了一个字段。  对于与特定备份策略关联的所有 VM，可以在“VM 备份策略”边栏选项卡中更改快照保留持续时间。
 
 ![即时还原功能](./media/backup-azure-vms/instant-restore-capability.png)
 
@@ -110,15 +110,9 @@ Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 
 ### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>为何我即使在备份策略中设置了保留期，我的快照也仍然存在？
 
-如果恢复点包含快照并且存在最新可用的 RP，则该快照会一直保留到下一次成功备份为止。 这取决于设计的 "垃圾回收" （GC）策略，该策略目前至少要求一个最新的 RP 始终存在，以防由于 VM 中的问题而导致所有备份都出现故障。 正常情况下，在 RP 过期后，将在最多 24 小时内予以清理。
+如果恢复点包含快照并且存在最新可用的 RP，则该快照会一直保留到下一次成功备份为止。 这符合当前设计的“垃圾回收”(GC) 策略，该策略强制要求始终至少有一个最新的 RP，以防 VM 中的问题导致所有备份进一步出错。 正常情况下，在 RP 过期后，将在最多 24 小时内予以清理。
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>我不需要即时还原功能。 是否可以禁用它？
 
 为所有人启用了即时还原功能，不能禁用它。 可以将快照保留期缩短到最少一天。
 
->[!NOTE]
-> **Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性磁盘备份和还原。**
->
->如今，Azure 备份支持使用虚拟机备份解决方案将 VM 中的所有磁盘（操作系统和数据）备份到一起。 使用排除磁盘功能，可以选择从 VM 的多个数据磁盘中备份一个或多个数据磁盘。 这样就提供了一个高效且经济的针对备份和还原需求的解决方案。 每个恢复点都包含备份操作中包含的磁盘的数据，因此还可以在还原操作过程中从给定的恢复点还原部分磁盘。 这适用于从快照和保管库进行的还原。
->
->**若要注册预览版，请向 AskAzureBackupTeam@microsoft.com 发送邮件**

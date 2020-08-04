@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/23/2020
+ms.date: 08/02/2020
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: e30c4142232a2d695204f5c8f612eb44791c847c
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: f46a7927c149009eaf5baddbad2758732d4da758
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133157"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534256"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>阻止对容器和 blob 的匿名公共读取访问
 
@@ -24,7 +24,7 @@ ms.locfileid: "87133157"
 
 当你禁止访问存储帐户的公共 blob 时，Azure 存储将拒绝对该帐户的所有匿名请求。 帐户不允许公共访问后，该帐户中的容器以后无法进行公共访问。 已配置为公开访问的所有容器将不再接受匿名请求。 有关详细信息，请参阅[配置容器和 blob 的匿名公共读取访问](anonymous-read-access-configure.md)。
 
-本文介绍如何针对存储帐户分析匿名请求，以及如何防止对整个存储帐户或单独容器的匿名访问。
+本文介绍如何使用拖动（检测-修正-管理）框架持续管理存储帐户的公共访问权限。
 
 ## <a name="detect-anonymous-requests-from-client-applications"></a>检测来自客户端应用程序的匿名请求
 
@@ -157,6 +157,126 @@ $ctx = $storageAccount.Context
 
 New-AzStorageContainer -Name $containerName -Permission Blob -Context $ctx
 ```
+
+### <a name="check-the-public-access-setting-for-multiple-accounts"></a>检查多个帐户的公共访问设置
+
+若要在具有最佳性能的一组存储帐户中检查公共访问设置，可以使用 Azure 门户中的 Azure 资源图资源管理器。 若要了解有关使用资源图资源管理器的详细信息，请参阅[快速入门：使用 Azure 资源关系图资源管理器运行第一个资源图形查询](/azure/governance/resource-graph/first-query-portal)。
+
+在资源图资源管理器中运行以下查询将返回存储帐户的列表，并显示每个帐户的公共访问设置：
+
+```kusto
+resources
+| where type =~ 'Microsoft.Storage/storageAccounts'
+| extend allowBlobPublicAccess = parse_json(properties).allowBlobPublicAccess
+| project subscriptionId, resourceGroup, name, allowBlobPublicAccess
+```
+
+## <a name="use-azure-policy-to-audit-for-compliance"></a>使用 Azure 策略审核符合性
+
+如果有大量存储帐户，则可能需要执行审核来确保将这些帐户配置为阻止公共访问。 若要审核一组存储帐户的符合性，请使用 Azure 策略。 Azure 策略是一种服务，可用于创建、分配和管理将规则应用于 Azure 资源的策略。 Azure 策略可帮助确保这些资源符合公司标准和服务级别协议。 有关详细信息，请参阅 [Azure Policy 概述](../../governance/policy/overview.md)。
+
+### <a name="create-a-policy-with-an-audit-effect"></a>创建具有审核效果的策略
+
+Azure 策略支持确定对资源评估策略规则时会发生什么情况的影响。 当资源不符合标准，但不停止请求时，审核效果将创建警告。 有关效果的详细信息，请参阅[了解 Azure 策略影响](../../governance/policy/concepts/effects.md)。
+
+若要为具有 Azure 门户的存储帐户的公共访问设置创建策略，请执行以下步骤：
+
+1. 在 Azure 门户中，导航到 "Azure 策略服务"。
+1. 在 "**创作**" 部分下，选择 "**定义**"。
+1. 选择 "**添加策略定义**"，创建新策略定义。
+1. 对于 "**定义位置**" 字段，请选择 "**更多**" 按钮以指定审核策略资源所在的位置。
+1. 指定策略的名称。 您可以根据需要指定描述和类别。
+1. 在 "**策略规则**" 下，将以下策略定义添加到 " **policyRule** " 部分。
+
+    ```json
+    {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Storage/storageAccounts"
+          },
+          {
+            "not": {
+              "field":"Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+              "equals": "false"
+            }
+          }
+        ]
+      },
+      "then": {
+        "effect": "audit"
+      }
+    }
+    ```
+
+1. 保存策略。
+
+### <a name="assign-the-policy"></a>分配策略
+
+接下来，将策略分配给资源。 策略的作用域对应于该资源及其下的所有资源。 有关策略分配的详细信息，请参阅[Azure 策略分配结构](../../governance/policy/concepts/assignment-structure.md)。
+
+若要将策略分配到 Azure 门户，请执行以下步骤：
+
+1. 在 Azure 门户中，导航到 "Azure 策略服务"。
+1. 在 "**创作**" 部分下，选择 "**分配**"。
+1. 选择 "**分配策略**" 以创建新的策略分配。
+1. 对于 "**作用域**" 字段，请选择策略分配的作用域。
+1. 对于 "**策略定义**" 字段，请选择 "**更多**" 按钮，然后从列表中选择在上一部分中定义的策略。
+1. 提供策略分配的名称。 说明是可选的。
+1. 将 "**策略强制**集" 设置为 "*已启用*"。 此设置不影响审核策略。
+1. 选择 "**查看 + 创建**" 创建分配。
+
+### <a name="view-compliance-report"></a>查看相容性报告
+
+分配策略后，可以查看符合性报告。 审核策略的相容性报告提供有关不符合策略的存储帐户的信息。 有关详细信息，请参阅[获取策略符合性数据](../../governance/policy/how-to/get-compliance-data.md)。
+
+创建策略分配后，相容性报告可能需要几分钟的时间。
+
+若要查看 Azure 门户中的相容性报告，请执行以下步骤：
+
+1. 在 Azure 门户中，导航到 "Azure 策略服务"。
+1. 选择“合规性”。
+1. 筛选在上一步中创建的策略分配名称的结果。 该报表显示不符合策略的资源数量。
+1. 你可以向下钻取到报表以获取更多详细信息，包括不合规的存储帐户的列表。
+
+    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="显示 blob 公共访问审核策略的相容性报告的屏幕截图":::
+
+## <a name="use-azure-policy-to-enforce-authorized-access"></a>使用 Azure 策略强制实施授权访问
+
+Azure 策略通过确保 Azure 资源符合要求和标准来支持云监管。 若要确保组织中的存储帐户仅允许授权的请求，你可以创建一个策略，该策略阻止创建新的存储帐户，并使用允许匿名请求的公共访问设置。 如果该帐户的公共访问设置不符合策略，则此策略还将阻止对现有帐户进行所有配置更改。
+
+强制策略使用拒绝效果来阻止请求创建或修改存储帐户以允许公共访问。 有关效果的详细信息，请参阅[了解 Azure 策略影响](../../governance/policy/concepts/effects.md)。
+
+若要创建对允许匿名请求的公共访问设置具有拒绝影响的策略，请遵循[使用 Azure 策略审核符合性](#use-azure-policy-to-audit-for-compliance)中所述的相同步骤，但在策略定义的**policyRule**节中提供以下 JSON：
+
+```json
+{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Storage/storageAccounts"
+      },
+      {
+        "not": {
+          "field":"Microsoft.Storage/storageAccounts/allowBlobPublicAccess",
+          "equals": "false"
+        }
+      }
+    ]
+  },
+  "then": {
+    "effect": "deny"
+  }
+}
+```
+
+创建具有拒绝效果的策略并将其分配给作用域后，用户无法创建允许公共访问的存储帐户。 用户也不能对当前允许公共访问的现有存储帐户进行任何配置更改。 尝试这样做会导致错误。 存储帐户的公共访问设置必须设置为**false** ，才能继续创建或配置帐户。
+
+下图显示当你尝试创建一个允许公共访问的存储帐户（新帐户的默认值）时，如果策略具有拒绝影响，则该错误将需要公共访问权限。
+
+:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="显示在违反策略时创建存储帐户时出现的错误的屏幕截图":::
 
 ## <a name="next-steps"></a>后续步骤
 

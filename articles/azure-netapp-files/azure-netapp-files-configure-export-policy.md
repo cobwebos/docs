@@ -7,13 +7,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 07/24/2020
-ms.openlocfilehash: 6d990b94210383ba4b30569693f4471f43306ed2
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.date: 07/27/2020
+ms.openlocfilehash: 4a20a223932f82c80ad5831ef3a02bad803e26e6
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169822"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533186"
 ---
 # <a name="configure-export-policy-for-an-nfs-volume"></a>为 NFS 卷配置导出策略
 
@@ -43,14 +43,18 @@ ms.locfileid: "87169822"
         * 读取和写入
         * 只读
 
+    * **只读**和**读/写**  
+        如果将 Kerberos 加密用于 NFSv 4.1，请按照[配置 nfsv 4.1 Kerberos 加密](configure-kerberos-encryption.md)中的说明进行操作。  对于 Kerberos 的性能影响，请参阅[nfsv 4.1 上 Kerberos 的性能影响](configure-kerberos-encryption.md#kerberos_performance)。 
+
+        ![Kerberos 安全选项](../media/azure-netapp-files/kerberos-security-options.png) 
+
     * **根访问**  
         指定帐户是否 `root` 可以访问该卷。  默认情况下，根访问权限设置为**On**，并且该 `root` 帐户有权访问该卷。
 
-        ![导出策略](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
+![导出策略](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 
 
 
 ## <a name="next-steps"></a>后续步骤 
-* [管理卷](azure-netapp-files-manage-volumes.md)
 * [为虚拟机装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [管理快照](azure-netapp-files-manage-snapshots.md)

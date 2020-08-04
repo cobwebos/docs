@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/13/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: d417fa4d6b444f4932338059e2ad499c12d6273e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: d399a9f51eca6298cc829001a2da3b85ba001f27
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371832"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87528980"
 ---
 # <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>使用 Azure Active Directory 授予对 Azure 应用程序配置的访问权限
 除了使用基于哈希的消息验证代码（HMAC）以外，Azure 应用配置支持使用 Azure Active Directory （Azure AD）来向应用配置实例授权请求。  Azure AD 允许使用基于角色的访问控制 (RBAC) 向安全主体授予权限。  安全主体可以是用户、[托管标识](../active-directory/managed-identities-azure-resources/overview.md)或[应用程序服务主体](../active-directory/develop/app-objects-and-service-principals.md)。  若要了解有关角色和角色分配的详细信息，请参阅[了解不同的角色](../role-based-access-control/overview.md)。
@@ -23,12 +23,12 @@ ms.locfileid: "87371832"
 
 身份验证步骤要求应用程序请求在运行时包含 OAuth 2.0 访问令牌。  如果应用程序在 Azure 实体（例如 Azure Functions 应用、Azure Web 应用或 Azure VM）中运行，则它可以使用托管标识来访问资源。  若要了解如何对托管标识向 Azure 应用程序配置发出的请求进行身份验证，请参阅[使用 Azure Active Directory 和 Azure 资源的托管标识对访问 Azure 应用配置资源进行身份验证](howto-integrate-azure-managed-service-identity.md)。
 
-授权步骤要求向安全主体分配一个或多个 RBAC 角色。 Azure 应用程序配置提供了 RBAC 角色，这些角色包含应用程序配置资源的权限集。 分配给安全主体的角色确定提供给主体的权限。 有关 RBAC 角色的详细信息，请参阅[Azure 应用配置的 Azure 内置角色](#azure-built-in-roles-for-azure-app-configuration)。 
+授权步骤要求向安全主体分配一个或多个 Azure 角色。 Azure 应用配置提供了包含应用配置资源的权限集的 Azure 角色。 分配给安全主体的角色确定提供给主体的权限。 有关 Azure 角色的详细信息，请参阅[Azure 应用配置的 azure 内置角色](#azure-built-in-roles-for-azure-app-configuration)。 
 
-## <a name="assign-rbac-roles-for-access-rights"></a>为访问权限分配 RBAC 角色
+## <a name="assign-azure-roles-for-access-rights"></a>为访问权限分配 Azure 角色
 Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 授权访问受保护的资源。
 
-将 RBAC 角色分配给 Azure AD 安全主体时，Azure 会向该安全主体授予对这些资源的访问权限。 访问范围仅限于应用程序配置资源。 Azure AD 安全主体可以是用户、应用程序服务主体或 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
+将 Azure 角色分配到 Azure AD 安全主体时，Azure 会向该安全主体授予对这些资源的访问权限。 访问范围仅限于应用程序配置资源。 Azure AD 安全主体可以是用户、应用程序服务主体或 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
 ## <a name="azure-built-in-roles-for-azure-app-configuration"></a>用于 Azure 应用配置的 Azure 内置角色
 Azure 提供以下 Azure 内置角色，用于授权使用 Azure AD 和 OAuth 访问应用配置数据：

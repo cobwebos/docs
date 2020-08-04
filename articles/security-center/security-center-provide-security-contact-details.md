@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 661d3845365778f7ef23cdd05b81b98c3bf84259
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5a2410a5ccaa10867e94b3a2ec10228a006fbe20
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519252"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534628"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>为安全警报设置电子邮件通知 
 
 若要确保你的组织中的适当人员收到有关环境中的安全警报的通知，请在 "**电子邮件通知**设置" 页中输入其电子邮件地址。
 
-设置通知时，可以将电子邮件配置为发送给特定个人，或配置为具有订阅的特定 RBAC 角色的任何人。 
+设置通知时，可以将电子邮件配置为发送给特定个人，或者配置为具有订阅的特定 Azure 角色的任何人。 
 
 为了避免警报疲劳，安全中心会限制传出邮件的数量。 对于每个订阅，安全中心将发送：
 
@@ -41,7 +41,7 @@ ms.locfileid: "86519252"
 
 ## <a name="set-up-email-notifications-for-alerts"></a>为警报设置电子邮件通知 <a name="email"></a>
 
-你可以向具有特定 RBAC 角色的个人或所有用户发送电子邮件通知。
+你可以向具有特定 Azure 角色的个人或所有用户发送电子邮件通知。
 
 1. 从安全中心的**定价 & 设置**"区域、相关订阅，并选择"**电子邮件通知**"。
 

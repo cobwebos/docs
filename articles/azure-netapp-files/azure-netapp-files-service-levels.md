@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: b-juche
-ms.openlocfilehash: 0398cc6a5336141f51dde26ed7cf4cce8c2c0bb4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 639f1e09fdb5603965209e5b5ee6c224ad238b76
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75832586"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533115"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Azure NetApp 文件的服务级别
 服务级别是容量池的属性。 根据分配给卷的配额，为容量池中的卷允许的最大吞吐量定义和区分服务级别。
@@ -56,7 +56,8 @@ Azure NetApp 文件支持三个服务级别： *Ultra*、*高级*和*标准*。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关不同服务级别的价格，请参阅 [Azure NetApp 文件定价页](https://azure.microsoft.com/pricing/details/storage/netapp/)
-- 有关容量池中容量消耗的计算，请参阅[Azure NetApp 文件的成本模型](azure-netapp-files-cost-model.md) 
+- [Azure NetApp 文件定价页](https://azure.microsoft.com/pricing/details/storage/netapp/)
+- [Azure NetApp 文件的成本模型](azure-netapp-files-cost-model.md) 
 - [设置容量池](azure-netapp-files-set-up-capacity-pool.md)
-- 请参阅[Azure NetApp 文件服务级别协议（SLA）](https://azure.microsoft.com/support/legal/sla/netapp/)
+- [Azure NetApp 文件的服务级别协议（SLA）](https://azure.microsoft.com/support/legal/sla/netapp/)
+- [动态更改卷的服务级别](dynamic-change-volume-service-level.md) 

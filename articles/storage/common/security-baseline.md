@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 36f3c4192f43e323df2aaf9397364dfd1b4da731
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a9c3264a9a9d6ae27eee6da4338fa6fd401da461
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501366"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534050"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure 存储的 azure 安全基线
 
@@ -64,7 +64,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒绝与已知的恶意 IP 地址的通信
 
@@ -136,7 +136,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：记录流量配置规则
 
@@ -150,7 +150,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 **Azure 安全中心监视**：目前不可用
 
-**责任**：客户
+责任：客户
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动工具来监视网络资源配置和检测更改
 
@@ -200,7 +200,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 **指南**：不适用；此建议适用于计算资源。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -254,7 +254,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="29-enable-dns-query-logging"></a>2.9：启用 DNS 查询日志记录
 
@@ -270,7 +270,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 **指导**：不适用；基准适用于计算资源。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -308,7 +308,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 你还可以通过使用 Azure AD Privileged Identity Management 适用于 Microsoft 服务和 Azure ARM 的特权角色来启用实时/刚好足够的访问。 
 
-- [了解 Azure 安全中心的标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+- [了解 Azure 安全中心标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
 
 - [Privileged Identity Management 概述](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/)
 
@@ -340,7 +340,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 **Azure 安全中心监视**：是
 
-**责任**：客户
+责任：客户
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
@@ -352,7 +352,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：来自管理帐户的可疑活动的日志和警报
 
@@ -536,7 +536,7 @@ Azure 存储空间的 Azure 安全基线包含的建议可帮助你提高部署�
 
 **指南**： Azure Active Directory （Azure AD）通过基于角色的访问控制（RBAC）授予对受保护资源的访问权限。 Azure 存储空间定义一组 Azure 内置角色，这些角色包含用于访问 blob 或队列数据的公用权限集。 
 
-- [如何为 Azure 存储帐户分配 RBAC 角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-rbac-roles-using-the-azure-portal)
+- [如何为 Azure 存储帐户分配 Azure 角色](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal)
 
 - [使用 Azure 存储资源提供程序访问管理资源](https://docs.microsoft.com/azure/storage/common/authorization-resource-provider)
 
@@ -566,7 +566,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-**责任**：客户
+责任：客户
 
 ### <a name="49-log-and-alert-on-changes-to-critical-azure-resources"></a>4.9：记录对关键 Azure 资源的更改并对此类更改发出警报
 
@@ -706,7 +706,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -741,7 +741,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="610-implement-approved-application-list"></a>6.10：实施已批准的应用程序列表
 
@@ -759,7 +759,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-**责任**：客户
+责任：客户
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制用户在计算资源中执行脚本的能力
 
@@ -862,7 +862,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -926,7 +926,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。 Microsoft 处理底层平台的反恶意软件。
 
-**Azure 安全中心监视**：不适用
+Azure 安全中心监视：不适用
 
 **责任**：不适用
 
@@ -1039,11 +1039,11 @@ AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAcco
 
 **Azure 安全中心监视**：不适用
 
-**责任**：客户
+责任：客户
 
 ### <a name="102-create-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级确定过程
 
-**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心对用于发出警报的调查结果或分析的置信度，以及导致警报的活动背后存在恶意意图的可信度。 
+**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。 
 
 此外，使用标记清楚地标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
@@ -1063,7 +1063,7 @@ AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAcco
 
 **Azure 安全中心监视**：不适用
 
-**责任**：客户
+责任：客户
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全事件联系人详细信息并为安全事件配置警报通知
 
@@ -1073,7 +1073,7 @@ AzKeyVaultCertificate Restore-AzKeyVaultKey Restore-AzKeyVaultManagedStorageAcco
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 

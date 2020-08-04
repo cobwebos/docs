@@ -3,12 +3,12 @@ title: 体系结构概述
 description: 概述 Azure 备份服务使用的体系结构、组件和流程。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: eab820c2a045c8602bfdbf77b5e2dba4cb2318af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 45e5634188b675198e0fc4c07a8a43964217f91a
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514299"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532486"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 备份体系结构和组件
 
@@ -120,16 +120,15 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 - 创建保管库后，还会创建一个 "DefaultPolicy"，并将其用于备份资源。
 - 对备份策略的保留期所做的任何更改都将以追溯方式到新的恢复点。
 
-### <a name="additional-reference"></a>其他参考 
+### <a name="additional-reference"></a>其他参考
 
--   Azure VM 计算机：如何[创建](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings)和[修改](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm)策略？ 
--   Azure 虚拟机中的 SQL Server 数据库：如何[创建](./backup-sql-server-database-azure-vms.md#create-a-backup-policy)和[修改](./manage-monitor-sql-database-backup.md#modify-policy)策略？ 
--   Azure 文件共享：如何[创建](./backup-afs.md#discover-file-shares-and-configure-backup)和[修改](./manage-afs-backup.md#modify-policy)策略？ 
--   SAP HANA：如何[创建](./backup-azure-sap-hana-database.md#create-a-backup-policy)和[修改](./sap-hana-db-manage.md#change-policy)策略？ 
--   MARS：如何[创建](./backup-windows-with-mars-agent.md#create-a-backup-policy)和[修改](./backup-azure-manage-mars.md#modify-a-backup-policy)策略？ 
--   [根据工作负荷类型计划备份是否有任何限制？](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
+- Azure VM 计算机：如何[创建](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings)和[修改](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm)策略。
+- Azure 虚拟机中的 SQL Server 数据库：如何[创建](./backup-sql-server-database-azure-vms.md#create-a-backup-policy)和[修改](./manage-monitor-sql-database-backup.md#modify-policy)策略。
+- Azure 文件共享：如何[创建](./backup-afs.md)和[修改](./manage-afs-backup.md#modify-policy)策略。
+- SAP HANA：如何[创建](./backup-azure-sap-hana-database.md#create-a-backup-policy)和[修改](./sap-hana-db-manage.md#change-policy)策略。
+- MARS：如何[创建](./backup-windows-with-mars-agent.md#create-a-backup-policy)和[修改](./backup-azure-manage-mars.md#modify-a-backup-policy)策略。
+- [根据工作负荷类型计划备份是否有任何限制？](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
 - [如果更改保留策略，现有恢复点会发生什么情况？](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
-
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>体系结构：内置 Azure VM 备份
 

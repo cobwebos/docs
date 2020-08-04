@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
-ms.openlocfilehash: fe9d4e5a981f9d626bb6086659593e1c3ce06469
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 96fb914b5dafe5eb818f2b491bbe2d856763bd02
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291141"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534730"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>预览：使用 Azure Active Directory 身份验证登录到 Azure 中的 Linux 虚拟机
 
@@ -113,7 +113,7 @@ az vm extension set \
 
 ## <a name="configure-role-assignments-for-the-vm"></a>为 VM 配置角色分配
 
-Azure 基于角色的访问控制（Azure RBAC）策略确定可以登录到 VM 的用户。 使用两个 RBAC 角色来授权 VM 登录：
+Azure 基于角色的访问控制（Azure RBAC）策略确定可以登录到 VM 的用户。 两个 Azure 角色用于授权 VM 登录：
 
 - **虚拟机管理员登录名**：分配了此角色的用户可以使用 Windows 管理员或 Linux root 用户权限登录到 Azure 虚拟机。
 - **虚拟机用户登录名**：分配了此角色的用户可以使用常规用户权限登录到 Azure 虚拟机。
@@ -181,9 +181,9 @@ ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 
 ## <a name="troubleshoot-sign-in-issues"></a>排查登录问题
 
-尝试使用 Azure AD 凭据进行 SSH 登录时，会出现一些常见的错误，其中包括：未分配 RBAC 角色、系统重复提示你登录。 请根据以下部分的说明来纠正这些问题。
+尝试将 SSH 与 Azure AD 凭据结合时，某些常见错误包括未分配任何 Azure 角色，并重复提示登录。 请根据以下部分的说明来纠正这些问题。
 
-### <a name="access-denied-rbac-role-not-assigned"></a>访问被拒绝：未分配 RBAC 角色
+### <a name="access-denied-azure-role-not-assigned"></a>拒绝访问：未分配 Azure 角色
 
 如果在 SSH 提示符窗口中看到以下错误，请验证是否已为授予用户“虚拟机管理员登录名”或“虚拟机用户登录名”角色的 VM 配置 RBAC 策略：****
 

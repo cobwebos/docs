@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 69dda537beda1d1bec4f019e1d5cadd16bdd5b39
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 870ecb8bda9f07c9270724002d381a4f58bc4d13
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126850"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531721"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>在 Azure Maps 中管理身份验证
 
@@ -56,7 +56,7 @@ ms.locfileid: "87126850"
 
 ## <a name="view-role-definitions"></a>查看角色定义
 
-若要查看可用于 Azure Maps 的 RBAC 角色，请访问**访问控制（IAM）**。 选择 "**角色**"，然后搜索以*Azure Maps*开头的角色。 这些 Azure Maps 角色是可以向其授予访问权限的角色。
+若要查看可用于 Azure Maps 的 Azure 角色，请访问**访问控制（IAM）**。 选择 "**角色**"，然后搜索以*Azure Maps*开头的角色。 这些 Azure Maps 角色是可以向其授予访问权限的角色。
 
 > [!div class="mx-imgBorder"]
 > ![查看可用的角色](./media/how-to-manage-authentication/how-to-view-avail-roles.png)

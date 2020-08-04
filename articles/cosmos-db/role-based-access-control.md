@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: mjbrown
-ms.openlocfilehash: 858e185a0e4fa406fb4645475673acc13a0d37f3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6edf5de852ea836de8be02636dd8a971ccebb86d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086667"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530565"
 ---
 # <a name="role-based-access-control-in-azure-cosmos-db"></a>Azure Cosmos DB 中基于角色的访问控制
 
-Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的基于角色的访问控制 (RBAC)。 在 Azure Active Directory 中创建了配置文件的个人可将这些 RBAC 角色分配给用户、组、服务主体或托管标识，以授予或拒绝对 Azure Cosmos DB 中的资源和操作的访问权限。 角色分配范围仅限控制平面访问，包括对 Azure Cosmos 帐户、数据库、容器和套餐（吞吐量）的访问。
+Azure Cosmos DB 为 Azure Cosmos DB 中的常见管理方案提供内置的基于角色的访问控制 (RBAC)。 在 Azure Active Directory 中有配置文件的个人可以将这些 Azure 角色分配给用户、组、服务主体或托管标识，以授予或拒绝对 Azure Cosmos DB 资源的资源和操作的访问权限。 角色分配范围仅限控制平面访问，包括对 Azure Cosmos 帐户、数据库、容器和套餐（吞吐量）的访问。
 
 ## <a name="built-in-roles"></a>内置角色
 
@@ -39,13 +39,13 @@ Azure 门户中的“访问控制(IAM)”窗格用于针对 Azure Cosmos 资源�
 
 ## <a name="custom-roles"></a>自定义角色
 
-除内置角色以外，用户还可以在 Azure 中创建[自定义角色](../role-based-access-control/custom-roles.md)，并将这些角色应用到其 Active Directory 租户内的所有订阅中的服务主体。 自定义角色可让用户使用一组自定义的资源提供程序操作来创建 RBAC 角色定义。 若要了解可以使用哪些操作来为 Azure Cosmos DB 生成自定义角色，请参阅 [Azure Cosmos DB 资源提供程序操作](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)
+除内置角色以外，用户还可以在 Azure 中创建[自定义角色](../role-based-access-control/custom-roles.md)，并将这些角色应用到其 Active Directory 租户内的所有订阅中的服务主体。 自定义角色为用户提供了一种使用一组自定义资源提供程序操作创建 Azure 角色定义的方法。 若要了解可以使用哪些操作来为 Azure Cosmos DB 生成自定义角色，请参阅 [Azure Cosmos DB 资源提供程序操作](../role-based-access-control/resource-provider-operations.md#microsoftdocumentdb)
 
 ## <a name="preventing-changes-from-the-azure-cosmos-db-sdks"></a><a id="prevent-sdk-changes"></a>阻止 Azure Cosmos DB Sdk 的更改
 
 可以锁定 Azure Cosmos DB 资源提供程序，以防止从使用帐户密钥（即通过 Azure Cosmos SDK 连接的应用程序）连接的客户端进行任何资源更改。 这还包括从 Azure 门户所做的更改。 对于需要更高程度的控制和管理生产环境的用户，此功能可能是必需的。 阻止来自 SDK 的更改还会启用资源锁等功能和控制平面操作的诊断日志。 从 Azure Cosmos DB SDK 进行连接的客户端将无法更改 Azure Cosmos 帐户、数据库、容器和吞吐量的任何属性。 涉及读取数据并将数据写入到 Cosmos 容器本身的操作不会受到影响。
 
-启用此功能后，只能从具有正确 RBAC 角色的用户进行对任何资源的更改，并 Azure Active Directory 包含托管服务标识的凭据。
+启用此功能后，只能从具有适当 Azure 角色的用户进行对任何资源的更改，并 Azure Active Directory 包含托管服务标识的凭据。
 
 > [!WARNING]
 > 启用此功能可能会对应用程序产生影响。 启用之前，请确保了解此影响。

@@ -14,12 +14,12 @@ ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac3f9adbb3b83345fe14df39014c6119e97ba7f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c6597c268a2a017280d00f73366562de61b4781e
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886102"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529783"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>部署 Azure AD Privileged Identity Management (PIM)
 
@@ -115,7 +115,7 @@ Azure AD Privileged Identity Management 可帮助跨 Azure AD、Azure 资源和�
 | 姓名和电子邮件 | **订阅/资源所有者**<br/>要为其部署 Privileged Identity Management 的每个订阅或资源的 IT 所有者的代表 | SO/R/I |
 | 姓名和电子邮件 | **安全所有者**<br/>安全团队的代表，可以签署确认计划符合组织的安全要求。 | SO/R |
 | 姓名和电子邮件 | **IT 支持管理员/支持人员**<br/>IT 支持组织的代表，可以从服务支持的角度提供有关更改的可支持性的信息。 | R/I |
-| 试点用户的姓名和电子邮件 | **RBAC 角色用户**<br/>要为其实施特权标识管理的用户组。 他们需要知道 Privileged Identity Management 实施后如何激活角色。 | I |
+| 试点用户的姓名和电子邮件 | **Azure 角色用户**<br/>要为其实施特权标识管理的用户组。 他们需要知道 Privileged Identity Management 实施后如何激活角色。 | I |
 
 ### <a name="enable-privileged-identity-management"></a>启用 Privileged Identity Management
 
@@ -244,15 +244,15 @@ Azure 资源的 Privileged Identity Management 支持时限服务帐户。 应�
 | 角色 | 要求 MFA | 通知 | 事件工单 | 需要审批 | 审批者 | 激活持续时间 | 永久管理员 |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | 全局管理员角色 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 其他全局管理员 | 1 小时 | 紧急访问帐户 |
-| Exchange 管理员 | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | None | 2 小时 | None |
-| 支持管理员 | :x: | :x: | :heavy_check_mark: | :x: | None | 8 小时 | None |
+| Exchange 管理员 | :heavy_check_mark: | :heavy_check_mark: | :x: | :x: | 无 | 2 小时 | 无 |
+| 支持管理员 | :x: | :x: | :heavy_check_mark: | :x: | 无 | 8 小时 | 无 |
 
 #### <a name="privileged-identity-management-settings-for-azure-resource-roles"></a>针对 Azure 资源角色的 Privileged Identity Management 设置
 
 | 角色 | 要求 MFA | 通知 | 需要审批 | 审批者 | 激活持续时间 | 活动管理员 | 活动期限 | 合格期限 |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| 关键订阅的所有者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 订阅的其他所有者 | 1 小时 | None | 不适用 | 3 个月 |
-| 次要订阅的用户访问管理员 | :heavy_check_mark: | :heavy_check_mark: | :x: | None | 1 小时 | None | 不适用 | 3 个月 |
+| 关键订阅的所有者 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | 订阅的其他所有者 | 1 小时 | 无 | 不适用 | 3 个月 |
+| 次要订阅的用户访问管理员 | :heavy_check_mark: | :heavy_check_mark: | :x: | 无 | 1 小时 | 无 | 不适用 | 3 个月 |
 | 虚拟机参与者 | :x: | :heavy_check_mark: | :x: | 无 | 3 个小时 | 无 | 不适用 | 6 个月 |
 
 下表说明了每个设置。

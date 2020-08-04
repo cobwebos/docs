@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 08/03/2020
 ms.author: jingwang
-ms.openlocfilehash: a6092395929f4990010e2212f28a5962cfe1c7e7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 54597953aac6fabe419a9d1b62b16de7ca7bd1e0
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087828"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534339"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -127,7 +127,7 @@ ms.locfileid: "87087828"
 
 #### <a name="syntax-details"></a>语法详细信息
 
-| properties | 说明 | 必需？ |
+| 属性 | 说明 | 必需？ |
 |:--- |:--- |:--- |
 | type | 对于复制活动，请设置为 `Copy` | 是 |
 | inputs | 指定创建的指向源数据的数据集。 复制活动仅支持单个输入。 | 是 |
@@ -198,7 +198,7 @@ ms.locfileid: "87087828"
 
 若要以编程方式对其进行配置，请在复制活动源中添加 `additionalColumns` 属性：
 
-| 属性 | 描述 | 必须 |
+| 属性 | 说明 | 必须 |
 | --- | --- | --- |
 | additionalColumns | 添加要复制到接收器的其他数据列。<br><br>`additionalColumns` 数组下的每个对象都表示一个额外的列。 `name` 定义列名称，`value` 表示该列的数据值。<br><br>允许的数据值为：<br>-  **`$$FILEPATH`** - 一个保留变量，指示将源文件的相对路径存储在数据集中指定的文件夹路径。 应用于基于文件的源。<br>- **表达式**<br>- **静态值** | 否 |
 
@@ -253,9 +253,6 @@ ms.locfileid: "87087828"
 - [SQL Server](connector-sql-server.md)
 
 ![创建接收器表](media/copy-activity-overview/create-sink-table.png)
-
-> [!NOTE]
-> 启用[暂存复制](copy-activity-performance-features.md#staged-copy)时，不支持创建自动表。
 
 ## <a name="fault-tolerance"></a>容错
 

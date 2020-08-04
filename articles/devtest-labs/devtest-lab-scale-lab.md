@@ -3,12 +3,12 @@ title: Azure 开发测试实验室中自己的实验室的缩放配额和限制 
 description: 本文介绍如何在 Azure 开发测试实验室中缩放实验室。 查看使用量配额和限制，并请求增加。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: dacc699a6f4e7663d0f314acfc2212bd69d46d18
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2166eaab073e2abc24ca24494ae13eb876db1fcf
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287312"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87533948"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>开发测试实验室中的缩放配额和限制
 在开发测试实验室中工作时，可能会注意到，某些 Azure 资源存在某些默认的限制，这可能会影响开发测试实验室服务。 这些限制称为“配额”****。
@@ -20,7 +20,7 @@ ms.locfileid: "87287312"
 
 例如，每个订阅的默认配额为 20 个核心。 因此，如果要在实验室中创建 VM，每个 VM 四个核心，则只能创建五个 VM。
 
-[Azure 订阅和服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md)列出了某些最常用于 Azure 资源的配额。 最常用于实验室且带配额的资源包括：VM 核心、公共 IP 地址、网络接口、托管磁盘、RBAC 角色分配，以及 ExpressRoute 线路。
+[Azure 订阅和服务限制](../azure-resource-manager/management/azure-subscription-service-limits.md)列出了某些最常用于 Azure 资源的配额。 实验室最常使用的资源，其中你可能会遇到配额，包括 VM 核心、公共 IP 地址、网络接口、托管磁盘、Azure 角色分配和 ExpressRoute 线路。
 
 ## <a name="view-your-usage-and-quotas"></a>查看使用情况和配额
 以下步骤演示了如何查看订阅中特定 Azure 资源的当前配额，以及如何查看每个配额已使用的百分比。

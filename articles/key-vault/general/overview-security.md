@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: 8d6dd38c3d1802c3b5bec82edbda4f9d344fa28b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3170b51b8e580a625b2dbb4d83229c59bafa900e
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090512"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534798"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault 安全性
 
@@ -46,11 +46,11 @@ ms.locfileid: "87090512"
 
 ### <a name="managing-administrative-access-to-key-vault"></a>管理对 Key Vault 的管理访问权限
 
-在资源组中创建密钥保管库时，使用 Azure AD 管理访问权限。 授予用户或组管理资源组中的密钥保管库的权限。 通过分配适当的 RBAC 角色可以在特定范围级别授予访问权限。 若要授予用户管理密钥保管库的访问权限，请为特定范围的用户分配预定义的 `key vault Contributor` 角色。 可以将以下范围级别分配给 RBAC 角色：
+在资源组中创建密钥保管库时，使用 Azure AD 管理访问权限。 授予用户或组管理资源组中的密钥保管库的权限。 可以通过分配相应的 Azure 角色，在特定范围级别授予访问权限。 若要授予用户管理密钥保管库的访问权限，请为特定范围的用户分配预定义的 `key vault Contributor` 角色。 可以将以下作用域级别分配给 Azure 角色：
 
-- **订阅**：在订阅级别分配的 RBAC 角色适用于该订阅中的所有资源组和资源。
-- **资源组**：在资源组级别分配的 RBAC 角色适用于该资源组中的所有资源。
-- **特定资源**：为特定资源分配的 RBAC 角色适用于该资源。 在这种情况下，资源是特定的密钥保管库。
+- **订阅**：在订阅级别分配的 Azure 角色适用于该订阅中的所有资源组和资源。
+- **资源组**：在资源组级别分配的 Azure 角色适用于该资源组中的所有资源。
+- **特定资源**：为特定资源分配的 Azure 角色适用于该资源。 在这种情况下，资源是特定的密钥保管库。
 
 有多种预定义角色。 如果预定义角色不符合需求，可以定义自己的角色。 有关详细信息，请参阅 [RBAC：内置角色](../../role-based-access-control/built-in-roles.md)。
 
