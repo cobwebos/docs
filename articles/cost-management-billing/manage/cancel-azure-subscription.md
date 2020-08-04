@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: banders
-ms.openlocfilehash: 2d8b529683f4d07bc47010711d65ca40536823fb
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 8b0ba7b597921d82883f2c7ba505ebb10eee1876
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996567"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039761"
 ---
 # <a name="cancel-your-azure-subscription"></a>取消 Azure 订阅
 
@@ -25,7 +25,7 @@ Microsoft 建议你在取消订阅之前执行以下操作，虽然这不是必�
 * 关闭服务。 转到[管理门户中的资源页](https://ms.portal.azure.com/?flight=1#blade/HubsExtension/Resources/resourceType/Microsoft.Resources%2Fresources)，**停止**任何正在运行的虚拟机、应用程序或其他服务。
 * 考虑迁移数据。 请参阅[将资源移到新资源组或订阅中](../../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 * 删除所有资源和所有资源组。
-* 如果在 `AssignableScopes` 中有任何引用此订阅的自定义角色，则应更新这些自定义角色以删除此订阅。 如果在取消订阅后尝试更新自定义角色，可能会收到错误。 有关详细信息，请参阅[排查自定义角色问题](../../role-based-access-control/troubleshooting.md#problems-with-custom-roles)和 [Azure 资源的自定义角色](../../role-based-access-control/custom-roles.md)。
+* 如果在 `AssignableScopes` 中有任何引用此订阅的自定义角色，则应更新这些自定义角色以删除此订阅。 如果在取消订阅后尝试更新自定义角色，可能会收到错误。 有关详细信息，请参阅[排查自定义角色问题](../../role-based-access-control/troubleshooting.md#problems-with-custom-roles)和 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)。
 
 如果取消付费的 Azure 支持计划，则需为剩余的订阅期付费。 有关详细信息，请参阅 [Azure 支持计划](https://azure.microsoft.com/support/plans/)。
 

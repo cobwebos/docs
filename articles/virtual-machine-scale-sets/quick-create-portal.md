@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
-ms.openlocfilehash: 3a607f03bf238b1b05a91c772a7ac77a79574515
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 33f7f407c1df45131b0ebb5b14e8fcad2626bffd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027216"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077549"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建虚拟机规模集
 
@@ -44,8 +44,9 @@ Azure [负载均衡器](../load-balancer/load-balancer-overview.md)在运行正�
     | 类型          | 选择“公共”。       |
     | SKU           | 选择“标准”。       |
     | 公共 IP 地址 | 选择“新建”。 |
-    | 公共 IP 地址名称  | *MyPip*   |
+    | 公共 IP 地址名称  | myPip   |
     | 分配| 静态 |
+    | 可用性区域 | 选择“区域冗余”。 |
 
 1. 完成操作后，选择“查看 + 创建” 
 1. 通过验证后，选择“创建”。 
@@ -55,11 +56,11 @@ Azure [负载均衡器](../load-balancer/load-balancer-overview.md)在运行正�
 ## <a name="create-virtual-machine-scale-set"></a>创建虚拟机规模集
 可使用 Windows Server 映像或 Linux 映像（如 RHEL、CentOS、Ubuntu 或 SLES）部署规模集。
 
-1. 在搜索框中键入“规模集”。 在结果中的“市场”下，选择“虚拟机规模集” 。 将打开“创建虚拟机规模集”页。 
+1. 在搜索框中键入“规模集”。 在结果中的“市场”下，选择“虚拟机规模集” 。 在“虚拟机规模集”页上选择“创建”，此操作将打开“创建虚拟机规模集”页。   
 1. 在“基本信息”选项卡中的“项目详细信息”下，确保选择了正确的订阅，然后选择**新建**资源组。 键入 myVMSSResourceGroup 作为名称，然后选择“确定”。 
 1. 键入 myScaleSet 作为规模集的名称。
 1. 在“区域”中，选择离你近的区域。
-1. 保留业务流程协调程序的规模集 VM 的默认值 。
+1. 保留“业务流程模式”的规模集 VM 的默认值 。
 1. 选择市场映像作为“映像”。 在此示例中，我们选择了“Ubuntu 服务器 18.04 LTS”。
 1. 输入所需的用户名，并选择首选的身份验证类型。
    - 密码长度必须至少为 12 个字符，并且必须满足以下 4 个复杂性要求的其中 3 个：1 个小写字符、1 个大写字符、1 个数字和 1 个特殊字符。 有关详细信息，请参阅[用户名和密码要求](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm)。

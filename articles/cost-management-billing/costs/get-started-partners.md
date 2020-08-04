@@ -3,17 +3,17 @@ title: 面向合作伙伴的 Azure 成本管理入门
 description: 本文介绍合作伙伴如何使用 Azure 成本管理功能，以及如何为客户启用成本管理访问。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2020
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 0b0b5eb8ec41eccf99c23b671cef42a9c1bc8859
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 25a64dd4d06c24b0f7e1f8433a1abf5f67fa6eba
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85849866"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87372138"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>面向合作伙伴的 Azure 成本管理入门
 
@@ -52,7 +52,7 @@ CSP 合作伙伴可以使用成本管理来实现以下目的：
 
 Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
-有关为计费帐户启用 Azure 成本管理并分配其访问权限的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。 “全局管理员”和“管理员代理”角色可以管理计费帐户的成本。 
+有关为计费帐户启用 Azure 成本管理并分配其访问权限的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。 “全局管理员”和“管理员代理”角色可以管理计费帐户的成本。
 
 若要在订阅范围访问 Azure 成本管理，对某个订阅拥有 RBAC 访问权限的任何用户都可以查看零售（即用即付）费率的成本。 但是，必须[为客户租户启用成本可见性策略](#enable-the-policy-to-view-azure-usage-charges)。 若要查看受支持帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。
 
@@ -111,7 +111,7 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 ## <a name="partner-access-to-billing-scopes-in-cost-management"></a>合作伙伴在成本管理中访问计费范围
 
-只有具有“全局管理员”和“管理员代理”角色的用户才能直接在合作伙伴的 Azure 租户中管理和查看计费帐户、计费配置文件与客户的成本。  有关合作伙伴中心角色的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。
+只有具有“全局管理员”和“管理员代理”角色的用户才能直接在合作伙伴的 Azure 租户中管理和查看计费帐户、计费配置文件与客户的成本。 有关合作伙伴中心角色的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。
 
 ## <a name="enable-cost-management-for-customer-tenant-subscriptions"></a>为客户租户订阅启用成本管理
 
@@ -123,15 +123,15 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 ### <a name="enable-the-policy-to-view-azure-usage-charges"></a>启用查看 Azure 使用费的策略
 
-合作伙伴可以使用以下信息来启用查看其客户的 Azure 使用费的策略。
+你需要是“管理员代理”组的成员才能查看和更新策略。 使用以下信息来启用允许客户查看 Azure 使用费的策略。
 
-在 Azure 门户中登录到合作伙伴租户，并选择“成本管理 + 计费”。 选择相关的 Microsoft 合作伙伴协议计费帐户，然后选择“客户”。 客户列表与计费帐户相关联。
+在 Azure 门户中登录到合作伙伴租户，并选择“成本管理 + 计费”。 在计费范围区域中选择相关计费范围，然后选择“客户”。 客户列表与计费帐户相关联。
 
 在客户列表中，选择要允许其查看成本的客户。
 
 [![在成本管理中选择客户](./media/get-started-partners/customer-list.png)](./media/get-started-partners/customer-list.png#lightbox)
 
-在“设置”下，选择“策略”。 
+在“设置”下，选择“策略”。
 
 将显示与所选客户的订阅相关联的“Azure 用量”费用的当前成本可见性策略。
 ![允许客户查看即用即付费用的策略](./media/get-started-partners/cost-management-billing-policies.png)
@@ -238,7 +238,7 @@ RBAC 范围内的预留实例的摊销视图和实际成本将显示零费用。
 
 在 Azure 成本管理中，合作伙伴可以使用成本分析来查看收到了 PEC 权益的成本。
 
-在 Azure 门户中登录到合作伙伴租户，并选择“成本管理 + 计费”。 在“成本管理”下，选择“成本分析”。 
+在 Azure 门户中登录到合作伙伴租户，并选择“成本管理 + 计费”。 在“成本管理”下，选择“成本分析”。
 
 成本分析视图将显示合作伙伴计费帐户的成本。 根据需要选择合作伙伴、特定客户或计费配置文件的“范围”来核对发票。
 

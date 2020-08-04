@@ -1,20 +1,20 @@
 ---
 title: 教程：在地图上搜索附近位置 | Microsoft Azure Maps
 description: 在本教程中，你将了解如何使用 Microsoft Azure Maps 在地图上搜索兴趣点。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc
-ms.openlocfilehash: 0b0cb92cd6b4918e28e143178a5cdbbbb19ac9af
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 4e16c4e88d749f6dbc4f6271a7ceaf77661a208c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333636"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281525"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>教程：使用 Azure Maps 搜索附近兴趣点
 
@@ -38,13 +38,13 @@ ms.locfileid: "80333636"
 
 使用以下步骤创建新的 Maps 帐户：
 
-1. 在 [Azure 门户](https://portal.azure.com)的左上角单击“创建资源”。 
+1. 在 [Azure 门户](https://portal.azure.com)的左上角单击“创建资源”。
 2. 在“在市场中搜索”框中，键入“Maps”   。
-3. 从“结果”中，选择“Maps”   。 单击地图下面显示的“创建”按钮。 
+3. 从“结果”中，选择“Maps”   。 单击地图下面显示的“创建”按钮。
 4. 在“创建 Maps 帐户”页上，输入以下值  ：
-    * 要用于此帐户的订阅。 
-    * 此帐户的资源组名称。  可以选择新建或使用现有的资源组。  
-    * 新帐户的名称。 
+    * 要用于此帐户的订阅。
+    * 此帐户的资源组名称。 可以选择新建或使用现有的资源组。
+    * 新帐户的名称。
     * 此帐户的定价层  。
     * 阅读许可证和隐私声明，并选择复选框接受这些条款   。
     * 单击“创建”  按钮。
@@ -59,7 +59,7 @@ ms.locfileid: "80333636"
 
 1. 在门户中打开 Maps 帐户。
 2. 在设置部分中，选择“身份验证”  。
-3. 将“主密钥”复制到剪贴板。  本地保存它以便稍后在本教程中使用。
+3. 将“主密钥”复制到剪贴板。 本地保存它以便稍后在本教程中使用。
 
 ![在 Azure 门户中获取主密钥](./media/tutorial-search-location/get-key.png)
 
@@ -169,7 +169,7 @@ Map Control API 是一个便利的客户端库。 使用此 API，可以轻松�
 
 ## <a name="add-search-capabilities"></a>添加搜索功能
 
-本部分演示如何使用 Maps [Search API](https://docs.microsoft.com/rest/api/maps/search) 在地图上查找兴趣点。 这是一个 RESTful API，可让开发人员搜索地址、兴趣点和其他地理信息。 搜索服务会将纬度和经度信息分配到指定的地址。 下面介绍的“服务模块”可以用来通过地图搜索 API 搜索位置。 
+本部分演示如何使用 Maps [Search API](https://docs.microsoft.com/rest/api/maps/search) 在地图上查找兴趣点。 这是一个 RESTful API，可让开发人员搜索地址、兴趣点和其他地理信息。 搜索服务会将纬度和经度信息分配到指定的地址。 下面介绍的“服务模块”可以用来通过地图搜索 API 搜索位置。
 
 ### <a name="service-module"></a>服务模块
 
@@ -219,7 +219,7 @@ Map Control API 是一个便利的客户端库。 使用此 API，可以轻松�
 
    ![查看包含搜索结果的地图](./media/tutorial-search-location/pins-map.png)
 
-4. 在浏览器中输入以下 HTTPRequest，即可看到地图呈现的原始数据。 将 \<Your Azure Maps Key\> 替换为主键。
+4. 在浏览器中输入以下 HTTPRequest，即可看到地图呈现的原始数据。 将 \<Your Azure Maps Key\> 替换为主密钥。
 
    ```http
    https://atlas.microsoft.com/search/poi/json?api-version=1.0&query=gasoline%20station&subscription-key=<subscription-key>&lat=47.6292&lon=-122.2337&radius=100000

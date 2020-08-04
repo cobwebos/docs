@@ -9,12 +9,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a8d27b77e210236216883bf630464324a47d2e80
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: c1406b5e7297b1d48b23d9dfa684e0d76b68139f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85073239"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102499"
 ---
 <a name="HOLTop"></a>
 
@@ -70,7 +70,7 @@ Build succeeded.
 在应用程序目录中，使用以下命令安装适用于 .NET 的计算机视觉客户端库：
 
 ```dotnetcli
-dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 5.0.0
+dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --version 6.0.0-preview.1
 ```
 
 如果你使用的是 Visual Studio IDE，客户端库可用作可下载的 NuGet 包。
@@ -211,7 +211,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 
 ## <a name="read-printed-and-handwritten-text"></a>读取印刷体文本和手写文本
 
-计算机视觉可以读取图像中的可见文本，并将其转换为字符流。 本部分中的代码定义了方法 `ExtractTextUrl`，该方法使用客户端对象检测并提取图像中的印刷体文本或手写文本。
+计算机视觉可以读取图像中的可见文本，并将其转换为字符流。 有关文本识别的详细信息，请参阅[光学字符识别 (OCR)](../../concept-recognizing-text.md#read-api) 概念文档。本部分中的代码定义了方法 `BatchReadFileUrl`，该方法使用客户端对象检测并提取图像中的文本。
 
 在 `Main` 方法中添加方法调用。
 
@@ -219,7 +219,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 
 ### <a name="set-up-test-image"></a>设置测试图像
 
-在 **Program** 类中，保存要从中提取文本的图像的 URL 的引用。
+在 Program 类中，保存要从中提取文本的图像的 URL 的引用。 此代码段包含打印文本和手写文本的示例图像。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extracttext_url)]
 
@@ -228,13 +228,13 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.ComputerVision --ver
 
 ### <a name="call-the-read-api"></a>调用读取 API
 
-定义用于读取文本的新方法。 添加以下代码，该代码对给定图像调用 **BatchReadFileAsync** 方法。 这会返回一个操作 ID 并启动异步进程来读取图像的内容。
+定义用于读取文本的新方法。 添加以下代码，该代码对给定图像调用 ReadAsync 方法。 这会返回一个操作 ID 并启动异步进程来读取图像的内容。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extract_call)]
 
 ### <a name="get-read-results"></a>获取读取结果
 
-接下来，获取从 **BatchReadFileAsync** 调用返回的操作 ID，并使用它查询服务以获取操作结果。 下面的代码每隔一秒钟检查一次操作，直到返回结果。 然后，它将提取的文本数据输出到控制台。
+接下来，获取从 ReadAsync 调用返回的操作 ID，并使用它查询服务以获取操作结果。 下面的代码每隔一秒钟检查一次操作，直到返回结果。 然后，它将提取的文本数据输出到控制台。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extract_response)]
 

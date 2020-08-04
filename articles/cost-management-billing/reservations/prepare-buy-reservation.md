@@ -4,15 +4,15 @@ description: 了解帮助购买 Azure 预留项的要点。
 author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 05/04/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 609ca56419ed14f3cf4e449e9b906a75a4ff20ab
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: 68bcf725a6043b8ab19717845fa8005de2f88e35
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807775"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287636"
 ---
 # <a name="buy-a-reservation"></a>购买预留项
 
@@ -34,9 +34,12 @@ Azure 预留项可帮助你节省资金，因为它可以承诺许多 Azure 资�
 
 可以根据需要使用三个选项来限定预留范围：
 
-- **单个资源组范围** — 仅将预留折扣应用到所选资源组中匹配的资源。
-- **单个订阅范围** — 将预留折扣应用到所选订阅中匹配的资源。
-- **共享范围** — 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。 对于企业协议客户，计费上下文为注册。 对于 Microsoft 客户协议客户，计费范围为计费对象信息。 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。
+- 单个资源组范围 — 仅将预留折扣应用到所选资源组中匹配的资源。
+- 单个订阅范围 — 将预留折扣应用到所选订阅中匹配的资源。
+- **共享范围** - 将预留折扣应用到计费上下文中符合条件的订阅中的匹配资源。
+    - 对于企业协议客户，计费上下文为注册。 预留共享范围会在注册中包含多个 Active Directory 租户。
+    - 对于 Microsoft 客户协议客户，计费范围为计费对象信息。
+    - 对于采用即用即付费率的单个订阅，计费范围是由帐户管理员创建的所有符合条件的订阅。
 
 对用途应用预留折扣时，Azure 将按以下顺序处理预留：
 
@@ -91,7 +94,7 @@ Azure 预留项可帮助你节省资金，因为它可以承诺许多 Azure 资�
 
 可以查看通过 API、使用数据和成本分析进行的付款。 对于按月付款的预留，频率值在使用数据和预留费用 API 中显示为“定期”。 对于提前付款的预留，该值显示为“一次性”。
 
-成本分析在默认视图中显示按月购买。 对“费用类型”应用“购买”筛选器，对“频率”应用“定期”筛选器，即可查看所有购买项。    若只查看预留，请应用“预留”筛选器。
+成本分析在默认视图中显示按月购买。 对“费用类型”应用“购买”筛选器，对“频率”应用“定期”筛选器，即可查看所有购买项。 若只查看预留，请应用“预留”筛选器。
 
 ![在成本分析中显示预留购买成本的示例](./media/prepare-buy-reservation/cost-analysis.png)
 

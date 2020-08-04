@@ -1,5 +1,5 @@
 ---
-title: 快速入门：在 Azure Key Vault 中设置和检索证书
+title: 快速入门：设置和查看 Azure Key Vault 证书 - Azure PowerShell
 description: 本快速入门展示了如何使用 Azure PowerShell 在 Azure Key Vault 中设置和检索证书
 services: key-vault
 author: msmbaldwin
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ecb9262a96d1c9857283de00224950d9bc7a583f
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: efd73907a8ca691ceb451391477c9c8e2239c250
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81421021"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87043897"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Azure Key Vault 中设置和检索证书
 
@@ -62,9 +62,7 @@ New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' 
 
 创建保管库以后，你的 Azure 帐户是唯一能够对这个新的保管库执行任何操作的帐户。
 
-![Key Vault 创建命令完成后的输出](../media/quick-create-powershell/output-after-creating-keyvault.png)
-
-## <a name="add-a-certificate-to-key-vault"></a>向密钥保管库中添加证书
+## <a name="add-a-certificate-to-key-vault"></a>将证书添加到 Key Vault
 
 若要向保管库中添加证书，只需再执行几个步骤即可。 此证书可供应用程序使用。 
 

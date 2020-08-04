@@ -4,15 +4,15 @@ description: 了解 Azure Cosmos DB 的 API for MongoDB（3.6 版本）支持的
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 01/15/2020
+ms.date: 07/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 92c94b08602fb32ccebf6115306a5000665affe2
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: bd59b27b5af92d7aa90851c592ba4de495e41283
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171695"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076837"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB 的 API for MongoDB（3.6 版本）：支持的功能和语法
 
@@ -542,7 +542,32 @@ $polygon |  是 |
 
 ## <a name="unique-indexes"></a>唯一索引
 
-唯一索引确保特定字段在一个集合的所有文档中都不会有重复值，类似于默认“_id”键上保持唯一性的方式。 可以在 Cosmos DB 中使用 createIndex 命令（包括“唯一”约束）创建自定义索引。
+[唯一索引](mongodb-indexing.md#unique-indexes)确保特定字段在一个集合的所有文档中都不会有重复值，类似于默认“_id”键上保持唯一性的方式。 可以通过将 `createIndex` 命令与 `unique` 约束参数一起使用，在 Cosmos DB 中创建唯一索引：
+
+```javascript
+globaldb:PRIMARY> db.coll.createIndex( { "amount" : 1 }, {unique:true} )
+{
+        "_t" : "CreateIndexesResponse",
+        "ok" : 1,
+        "createdCollectionAutomatically" : false,
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 4
+}
+```
+
+## <a name="compound-indexes"></a>复合索引
+
+[复合索引](mongodb-indexing.md#compound-indexes-mongodb-server-version-36)提供一种为多达 8 个字段的字段组创建索引的方法。 此类型的索引不同于本机 MongoDB 复合索引。 在 Azure Cosmos DB 中，复合索引用于对应用于多个字段的操作进行排序。 若要创建复合索引，需要指定多个属性作为参数：
+
+```javascript
+globaldb:PRIMARY> db.coll.createIndex({"amount": 1, "other":1})
+{
+        "createdCollectionAutomatically" : false, 
+        "numIndexesBefore" : 1,
+        "numIndexesAfter" : 2,
+        "ok" : 1
+}
+```
 
 ## <a name="time-to-live-ttl"></a>生存时间 (TTL)
 

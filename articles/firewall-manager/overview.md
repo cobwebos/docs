@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: overview
 ms.date: 06/30/2020
 ms.author: victorh
-ms.openlocfilehash: 8b457198655af50427545a0e93e2cfe6903131c8
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 37cbc3737b826060e96524528b065bc8d711bd8b
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85563744"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87384763"
 ---
 # <a name="what-is-azure-firewall-manager"></a>什么是 Azure 防火墙管理器？
 
@@ -27,7 +27,7 @@ Azure 防火墙管理器是一种安全管理服务，可为基于云的安全�
 
    这是你自己创建并管理的标准 Azure 虚拟网络。 安全策略在与此类中心关联后，将称为中心虚拟网络。 目前仅支持 Azure 防火墙策略。 可将包含工作负荷服务器和服务的辐射虚拟网络对等互连。 还可以在未对等互连到任何辐射的独立虚拟网络中管理防火墙。
 
-有关安全虚拟中心与中心虚拟网络体系结构的详细比较，请参阅[有哪些 Azure 防火墙管理器体系结构选项？](vhubs-and-vnets.md)。 
+有关安全虚拟中心与中心虚拟网络体系结构的详细比较，请参阅[有哪些 Azure 防火墙管理器体系结构选项？](vhubs-and-vnets.md)。
 
 ![防火墙管理器](media/overview/trusted-security-partners.png)
 
@@ -81,7 +81,7 @@ Azure 防火墙管理器存在以下已知问题：
 |当前不支持流量拆分。|当前不支持 Office 365 和 Azure 公共 PaaS 流量拆分。 因此，为 V2I 或 B2I 选择第三方提供程序也会通过合作伙伴服务发送所有 Azure 公共 PaaS 和 Office 365 流量。|正在调查中心的流量拆分。
 |每个区域一个安全虚拟中心。|在每个区域最多只能使用一个安全虚拟中心。|可在一个区域中创建多个虚拟 WAN。|
 |基本策略必须与本地策略位于同一区域中。|可在与基本策略相同的区域中创建所有本地策略。 仍可以将在安全中心的某个区域中创建的策略应用于另一个区域。|正在调查|
-|中心之间的通信不适用于安全虚拟中心|目前尚不支持安全虚拟中心之间的通信。|正在调查|
+|中心之间的通信未经过安全虚拟中心|目前尚不支持安全虚拟中心之间的通信，但中心之间的通信仍将可用。|正在调查|
 |共享同一虚拟 WAN 的所有安全虚拟中心必须位于同一资源组中。|此行为现在与虚拟 WAN 中心保持一致。|创建多个虚拟 WAN，以允许在不同的资源组中创建安全虚拟中心。|
 
 ## <a name="next-steps"></a>后续步骤

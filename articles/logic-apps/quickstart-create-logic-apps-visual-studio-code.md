@@ -1,18 +1,18 @@
 ---
-title: 使用 Visual Studio Code 自动执行任务
-description: 使用 Visual Studio Code (VS Code) 创建或编辑逻辑应用基础 JSON 定义
+title: 使用 Visual Studio Code 自动执行任务和工作流
+description: 使用 Visual Studio Code (VS Code) 创建或编辑逻辑应用工作流定义
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, deli, logicappspm
+ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/25/2019
-ms.openlocfilehash: 3dccb596be2d97dd0f38d680537913a76ce09e93
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a2239d5ee70e90b9ee7c07b4dca78a45d2ce7ef9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82147067"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131474"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建和管理逻辑应用工作流定义
 
@@ -50,64 +50,64 @@ ms.locfileid: "82147067"
 
     有关详细信息，请参阅[扩展市场](https://code.visualstudio.com/docs/editor/extension-gallery)。 若要为此扩展的开源版本贡献内容，请访问 [GitHub 上适用于 Visual Studio Code 的 Azure 逻辑应用扩展](https://github.com/Microsoft/vscode-azurelogicapps)。
 
-<a name="sign-in-azure"></a>
+<a name="access-azure"></a>
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+## <a name="access-azure-from-visual-studio"></a>从 Visual Studio 访问 Azure
 
 1. 打开 Visual Studio Code。 在 Visual Studio Code 工具栏上，选择 Azure 图标。
 
    ![选择 Visual Studio Code 工具栏上的 Azure 图标](./media/quickstart-create-logic-apps-visual-studio-code/open-extensions-visual-studio-code.png)
 
-1. 在 Azure 窗口中的“逻辑应用”  下，选择“登录到 Azure”  。 当 Microsoft 登录页面出现提示时，请使用 Azure 帐户登录。
+1. 在 Azure 窗口中的“逻辑应用”下，选择“登录到 Azure”。 当 Microsoft 登录页面出现提示时，请使用 Azure 帐户登录。
 
    ![选择“登录到 Azure”](./media/quickstart-create-logic-apps-visual-studio-code/sign-in-azure-visual-studio-code.png)
 
-   1. 如果登录花费的时间比平时长，Visual Studio Code 会提示你通过提供设备代码由 Microsoft 身份验证网站登录。 若要改为使用代码登录，请选择“使用设备代码”  。
+   1. 如果登录花费的时间比平时长，Visual Studio Code 会提示你通过提供设备代码由 Microsoft 身份验证网站登录。 若要改为使用代码登录，请选择“使用设备代码”。
 
       ![改为使用设备代码继续操作](./media/quickstart-create-logic-apps-visual-studio-code/use-device-code-prompt.png)
 
-   1. 若要复制代码，请选择“复制并打开”  。
+   1. 若要复制代码，请选择“复制并打开”。
 
       ![复制代码以进行 Azure 登录](./media/quickstart-create-logic-apps-visual-studio-code/sign-in-prompt-authentication.png)
 
-   1. 若要打开新的浏览器窗口并继续访问身份验证网站，请选择“打开链接”  。
+   1. 若要打开新的浏览器窗口并继续访问身份验证网站，请选择“打开链接”。
 
       ![确认打开浏览器并转到身份验证网站](./media/quickstart-create-logic-apps-visual-studio-code/confirm-open-link.png)
 
-   1. 在“登录到你的帐户”页上，输入验证码，然后选择“下一步”   。
+   1. 在“登录到你的帐户”页上，输入验证码，然后选择“下一步” 。
 
       ![输入用于 Azure 登录的验证码](./media/quickstart-create-logic-apps-visual-studio-code/authentication-code-azure-sign-in.png)
 
 1. 选择你的 Azure 帐户。 登录后，可以关闭浏览器，然后返回到 Visual Studio Code。
 
-   在 Azure 窗格中，“逻辑应用”和“集成帐户”部分现在显示与帐户关联的 Azure 订阅   。 但是，如果未看到所需的订阅，或者各部分显示的订阅过多，请执行以下步骤：
+   在 Azure 窗格中，“逻辑应用”和“集成帐户”部分现在显示与帐户关联的 Azure 订阅 。 但是，如果未看到所需的订阅，或者各部分显示的订阅过多，请执行以下步骤：
 
-   1. 将指针移到“逻辑应用”标签上  。 显示工具栏后，选择“选择订阅”（筛选器图标）  。
+   1. 将指针移到“逻辑应用”标签上。 显示工具栏后，选择“选择订阅”（筛选器图标）。
 
       ![查找或筛选 Azure 订阅](./media/quickstart-create-logic-apps-visual-studio-code/find-or-filter-subscriptions.png)
 
    1. 从出现的列表中，选择要显示的订阅。
 
-1. 在“逻辑应用”下，选择所需的订阅  。 订阅节点将展开并显示该订阅中存在的任何逻辑应用。
+1. 在“逻辑应用”下，选择所需的订阅。 订阅节点将展开并显示该订阅中存在的任何逻辑应用。
 
    ![选择 Azure 订阅](./media/quickstart-create-logic-apps-visual-studio-code/select-azure-subscription.png)
 
    > [!TIP]
-   > 在“集成帐户”下，选择订阅将显示该订阅中存在的任何集成帐户  。
+   > 在“集成帐户”下，选择订阅将显示该订阅中存在的任何集成帐户。
 
 <a name="create-logic-app"></a>
 
 ## <a name="create-new-logic-app"></a>创建新的逻辑应用
 
-1. 如果你尚未从 Visual Studio Code 内登录到 Azure 订阅，请按照[前面的步骤操作，以立即登录](#sign-in-azure)。
+1. 如果你尚未从 Visual Studio Code 内登录到 Azure 订阅，请按照[前面的步骤操作，以立即登录](#access-azure)。
 
-1. 在 Visual Studio 代码中的“逻辑应用”下，打开订阅的快捷菜单，并选择“创建逻辑应用”   。
+1. 在 Visual Studio 代码中的“逻辑应用”下，打开订阅的快捷菜单，并选择“创建逻辑应用” 。
 
    ![从订阅菜单中选择“创建逻辑应用”](./media/quickstart-create-logic-apps-visual-studio-code/create-logic-app-visual-studio-code.png)
 
    将出现一个列表，显示订阅中的所有 Azure 资源组。
 
-1. 从资源组列表中，选择“创建新的资源组”或选择现有资源组  。 对于本示例，请创建新的资源组。
+1. 从资源组列表中，选择“创建新的资源组”或选择现有资源组。 对于本示例，请创建新的资源组。
 
    ![创建新的 Azure 资源组](./media/quickstart-create-logic-apps-visual-studio-code/select-or-create-azure-resource-group.png)
 
@@ -133,7 +133,7 @@ ms.locfileid: "82147067"
    > 若要重用此示例逻辑应用定义，需要使用 Office 365 组织帐户，例如 @fabrikam.com。 请确保将虚拟电子邮件地址替换为你自己的电子邮件地址。 若要使用其他电子邮件连接器（如 Outlook.com 或 Gmail），请将 `Send_an_email_action` 操作替换为 [Azure 逻辑应用支持的电子邮件连接器](../connectors/apis-list.md)的类似操作。
    >
    > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 
-   > 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 
+   > 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](/connectors/gmail/#authentication-and-bring-your-own-application)。 
    > 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
 
    ```json
@@ -194,7 +194,7 @@ ms.locfileid: "82147067"
 
 1. 完成后，保存逻辑应用的工作流定义。 （“文件”菜单 >“保存”，或按 Ctrl+S）
 
-1. 如果系统提示将逻辑应用上传到 Azure 订阅，请选择“上传”  。
+1. 如果系统提示将逻辑应用上传到 Azure 订阅，请选择“上传”。
 
    此步骤将逻辑应用发布到 [Azure 门户](https://portal.azure.com)，从而使逻辑能够在 Azure 中活动和运行。
 
@@ -204,7 +204,7 @@ ms.locfileid: "82147067"
 
 在 Visual Studio Code 中，可以在只读设计视图中打开逻辑应用。 尽管无法在设计器中编辑逻辑应用，但可通过使用设计器视图，直观查看逻辑应用的工作流。
 
-在 Azure 窗口中“逻辑应用”下，打开逻辑应用的快捷菜单，并选择“在设计器中打开”   。
+在 Azure 窗口中“逻辑应用”下，打开逻辑应用的快捷菜单，并选择“在设计器中打开” 。
 
 只读设计器将在单独的窗口中打开并显示逻辑应用的工作流，例如：
 
@@ -224,17 +224,17 @@ ms.locfileid: "82147067"
 
 ## <a name="disable-or-enable-logic-app"></a>禁用或启用逻辑应用
 
-在 Visual Studio Code 中，如果对已发布的逻辑应用进行编辑并保存更改，则将覆盖已部署的应用  。 为避免中断生产中的逻辑应用并最大程度地减少干扰，请先停用逻辑应用。 然后，在确认逻辑应用仍可正常工作后，可重新激活逻辑应用。
+在 Visual Studio Code 中，如果对已发布的逻辑应用进行编辑并保存更改，则将覆盖已部署的应用。 为避免中断生产中的逻辑应用并最大程度地减少干扰，请先停用逻辑应用。 然后，在确认逻辑应用仍可正常工作后，可重新激活逻辑应用。
 
-1. 如果你尚未从 Visual Studio Code 内登录到 Azure 订阅，请按照[前面的步骤操作，以立即登录](#sign-in-azure)。
+1. 如果你尚未从 Visual Studio Code 内登录到 Azure 订阅，请按照[前面的步骤操作，以立即登录](#access-azure)。
 
-1. 在 Azure 窗口中的“逻辑应用”下，展开 Azure 订阅，以便查看该订阅中的所有逻辑应用  。
+1. 在 Azure 窗口中的“逻辑应用”下，展开 Azure 订阅，以便查看该订阅中的所有逻辑应用。
 
-   1. 若要禁用希望禁用的逻辑应用，请打开逻辑应用菜单，并选择“禁用”  。
+   1. 若要禁用希望禁用的逻辑应用，请打开逻辑应用菜单，并选择“禁用”。
 
       ![禁用逻辑应用](./media/quickstart-create-logic-apps-visual-studio-code/disable-published-logic-app.png)
 
-   1. 如果已准备好重新激活逻辑应用，请打开逻辑应用菜单，并选择“启用”  。
+   1. 如果已准备好重新激活逻辑应用，请打开逻辑应用菜单，并选择“启用”。
 
       ![启用逻辑应用](./media/quickstart-create-logic-apps-visual-studio-code/enable-published-logic-app.png)
 
@@ -247,11 +247,11 @@ ms.locfileid: "82147067"
 > [!IMPORTANT] 
 > 在编辑生产环境中正在运行的逻辑应用前，请[首先禁用逻辑应用](#disable-enable-logic-app)以避免使该逻辑应用中断的风险，并最大程度地减少干扰。
 
-1. 如果你尚未从 Visual Studio Code 内登录到 Azure 订阅，请按照[前面的步骤操作，以立即登录](#sign-in-azure)。
+1. 如果你尚未从 Visual Studio Code 内登录到 Azure 订阅，请按照[前面的步骤操作，以立即登录](#access-azure)。
 
-1. 在 Azure 窗口中的“逻辑应用”  下，展开 Azure 订阅，然后选择想要使用的逻辑应用。
+1. 在 Azure 窗口中的“逻辑应用”下，展开 Azure 订阅，然后选择想要使用的逻辑应用。
 
-1. 打开逻辑应用菜单，并选择“在编辑器中打开”  。 或者，选择逻辑应用名称旁的编辑图标。
+1. 打开逻辑应用菜单，并选择“在编辑器中打开”。 或者，选择逻辑应用名称旁的编辑图标。
 
    ![打开现有逻辑应用的编辑器](./media/quickstart-create-logic-apps-visual-studio-code/open-editor-existing-logic-app.png)
 
@@ -263,7 +263,7 @@ ms.locfileid: "82147067"
 
 1. 完成后，保存所做的更改。 （“文件”菜单 >“保存”，或按 Ctrl+S）
 
-1. 如果系统提示上传更改并覆盖 Azure 门户中的现有逻辑应用，请选择“上传”   。
+1. 如果系统提示上传更改并覆盖 Azure 门户中的现有逻辑应用，请选择“上传”。
 
    此步骤会将更新发布到 [Azure 门户](https://portal.azure.com)中的逻辑应用。
 
@@ -276,29 +276,29 @@ ms.locfileid: "82147067"
 > [!IMPORTANT] 
 > 在更改生产环境中正在运行的逻辑应用前，请[首先禁用逻辑应用](#disable-enable-logic-app)以避免使该逻辑应用中断的风险，并最大程度地减少干扰。
 
-1. 在 Azure 窗口中的“逻辑应用”下，展开 Azure 订阅，以便查看该订阅中的所有逻辑应用  。
+1. 在 Azure 窗口中的“逻辑应用”下，展开 Azure 订阅，以便查看该订阅中的所有逻辑应用。
 
-1. 在订阅下，展开逻辑应用，然后展开“版本”  。
+1. 在订阅下，展开逻辑应用，然后展开“版本”。
 
-   “版本”列表显示了逻辑应用的早期版本（如果存在）  。
+   “版本”列表显示了逻辑应用的早期版本（如果存在）。
 
    ![逻辑应用的早期版本](./media/quickstart-create-logic-apps-visual-studio-code/view-previous-versions.png)
 
 1. 若要查看早期版本，请选择以下任一步骤：
 
-   * 若要查看 JSON 定义，请在“版本”下选择该定义的版本号  。 或者，打开该版本的快捷菜单，然后选择“在编辑器中打开”  。
+   * 若要查看 JSON 定义，请在“版本”下选择该定义的版本号。 或者，打开该版本的快捷菜单，然后选择“在编辑器中打开”。
 
      将在本地计算机上打开一个新文件，并显示该版本的 JSON 定义。
 
-   * 若要在只读设计器视图中查看版本，请打开该版本的快捷菜单，然后选择“在设计器中打开”  。
+   * 若要在只读设计器视图中查看版本，请打开该版本的快捷菜单，然后选择“在设计器中打开”。
 
 1. 若要将早期版本提升到当前版本，请执行以下步骤：
 
-   1. 在“版本”下，打开早期版本的快捷菜单，然后选择“提升”   。
+   1. 在“版本”下，打开早期版本的快捷菜单，然后选择“提升” 。
 
       ![提升早期版本](./media/quickstart-create-logic-apps-visual-studio-code/promote-earlier-version.png)
 
-   1. 若要在 Visual Studio 代码提示进行确认后继续，请选择“是”  。
+   1. 若要在 Visual Studio 代码提示进行确认后继续，请选择“是”。
 
       ![确认提升早期版本](./media/quickstart-create-logic-apps-visual-studio-code/confirm-promote-version.png)
 

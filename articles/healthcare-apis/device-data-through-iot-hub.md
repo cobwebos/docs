@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 06/27/2020
 ms.author: punagpal
-ms.openlocfilehash: 95e3e2be175fa810b1b966a7dda5a0e53e23d780
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: aeed0c90eeecd59e23a1d87a3ebc1e1a836a84ec
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540433"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116844"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>教程：通过 Azure IoT 中心接收设备数据
 
@@ -96,7 +96,7 @@ Azure IoT 中心支持[消息路由](https://docs.microsoft.com/azure/iot-hub/io
 可以使用 Postman 查看 Azure API for FHIR 上的 IoT 连接器创建的 FHIR 观察资源。 设置 [Postman 以访问 Azure API for FHIR](access-fhir-postman-tutorial.md)，并向 `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` 发出 `GET` 请求，以查看在上述示例消息中提交的具有心率值的观察 FHIR 资源。
 
 > [!TIP]
-> 确保你的 usx'er（用户）可以访问 Azure API for FHIR 数据平面。 [使用 Azure 基于角色的访问控制](configure-azure-rbac.md)分配所需的数据平面角色。
+> 确保用户可以访问 Azure API for FHIR 数据平面。 [使用 Azure 基于角色的访问控制](configure-azure-rbac.md)分配所需的数据平面角色。
 
 
 ## <a name="next-steps"></a>后续步骤

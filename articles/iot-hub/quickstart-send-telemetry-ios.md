@@ -1,6 +1,6 @@
 ---
-title: 快速入门：向 Azure IoT 中心发送遥测数据 | Microsoft Docs
-description: 在本快速入门中，请运行一个示例 iOS 应用程序，以便向 IoT 中心发送模拟遥测数据，以及从 IoT 中心读取需在云中处理的遥测数据。
+title: 将遥测数据发送到 Azure IoT 中心快速入门 (iOS)
+description: 运行一个示例 iOS 应用程序，以便向 IoT 中心发送模拟遥测数据，以及从 IoT 中心读取需在云中处理的遥测数据。
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -11,12 +11,12 @@ ms.custom:
 - mvc
 - mqtt
 ms.date: 04/03/2019
-ms.openlocfilehash: dd6ad0a3bc20821f51fcb4637dd4af18a6c3ec84
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.openlocfilehash: c5df389d9bb22fca72f2ff3b65c417f592208d58
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81769144"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061563"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>快速入门：将遥测数据从设备发送到 IoT 中心 (iOS)
 
@@ -111,15 +111,15 @@ pod install
    open "MQTT Client Sample.xcworkspace"
    ```
 
-2. 展开“MQTT 客户端示例”项目，然后展开同一名称的文件夹。   
+2. 展开“MQTT 客户端示例”项目，然后展开同一名称的文件夹。  
 3. 打开 **ViewController.swift**，以便在 XCode 中进行编辑。 
 4. 搜索 **connectionString** 变量，并使用以前记下的设备连接字符串更新其值。
 5. 保存所做更改。 
-6. 使用“生成并运行”按钮或“Command + R”组合键在设备模拟器中运行项目。   
+6. 使用“生成并运行”按钮或“Command + R”组合键在设备模拟器中运行项目。 
 
    ![运行项目](media/quickstart-send-telemetry-ios/run-sample.png)
 
-7. 当模拟器打开后，在示例应用中选择“启动”。 
+7. 当模拟器打开后，在示例应用中选择“启动”。
 
 以下屏幕截图显示了在应用程序将模拟遥测数据发送到 IoT 中心后的一些示例输出：
 
@@ -127,7 +127,7 @@ pod install
 
 ## <a name="read-the-telemetry-from-your-hub"></a>从中心读取遥测数据
 
-在 XCode 模拟器上运行过的示例应用显示从设备发送的消息的相关数据。 也可通过 IoT 中心查看接收的数据。 IoT 中心 CLI 扩展可以连接到 IoT 中心上的服务端**事件**终结点。 该扩展会接收模拟设备发送的设备到云的消息。 IoT 中心后端应用程序通常在云中运行，接收和处理设备到云的消息。
+在 XCode 模拟器上运行过的示例应用显示从设备发送的消息的相关数据。 也可通过 IoT 中心查看接收的数据。 IoT 中心 CLI 扩展可以连接到 IoT 中心上的服务端**事件**终结点。 扩展会接收模拟设备发送的设备到云的消息。 IoT 中心后端应用程序通常在云中运行，接收和处理设备到云的消息。
 
 在 Azure Cloud Shell 中运行以下命令，并将 `YourIoTHubName` 替换为 IoT 中心的名称：
 
@@ -135,7 +135,7 @@ pod install
 az iot hub monitor-events --device-id myiOSdevice --hub-name {YourIoTHubName}
 ```
 
-以下屏幕截图显示了在扩展接收模拟设备发送到 IoT 中心的遥测数据后的输出：
+以下屏幕截图显示了扩展接收到模拟设备发送到中心的遥测数据时的输出：
 
 以下屏幕截图显示在本地终端窗口中看到的遥测数据的类型：
 

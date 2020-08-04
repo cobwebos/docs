@@ -8,14 +8,14 @@ ms.topic: overview
 ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 473e3d52b1757faebd60c14966b425e9390a2685
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6ff1f20314d79c507c696325d19c83e10ec4513f
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248605"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386566"
 ---
-# <a name="what-is-windows-virtual-desktop"></a>什么是 Windows 虚拟桌面？ 
+# <a name="what-is-windows-virtual-desktop"></a>什么是 Windows 虚拟桌面？
 
 Windows 虚拟桌面是在云中运行的桌面和应用虚拟化服务。
 
@@ -78,7 +78,7 @@ Windows 虚拟桌面是在云中运行的桌面和应用虚拟化服务。
   * Azure AD Connect（适用于混合组织）
   * Azure AD 域服务（适用于混合或云组织）
 * 一个包含虚拟网络的 Azure 订阅，该虚拟网络包含或已连接到 Windows Server Active Directory
-  
+
 为 Windows 虚拟桌面创建的 Azure 虚拟机必须：
 
 * [已加入标准域](../active-directory-domain-services/active-directory-ds-comparison.md)，或[已加入混合 AD](../active-directory/devices/hybrid-azuread-join-plan.md)。 虚拟机不能加入 Azure AD。
@@ -105,7 +105,7 @@ Windows 虚拟桌面包括交付给用户的 Windows 桌面和应用，以及由
 * [Web](connect-web.md)
 * [macOS](connect-macos.md)
 * [iOS](connect-ios.md)
-* [Android（预览）](connect-android.md)
+* [Android](connect-android.md)
 
 > [!IMPORTANT]
 > Windows 虚拟桌面不支持 RemoteApp 和桌面连接 (RADC) 客户端或远程桌面连接 (MSTSC) 客户端。
@@ -128,24 +128,24 @@ Windows 虚拟桌面目前支持以下 x64 操作系统映像：
 
 Windows 虚拟桌面不支持 x86（32 位）、Windows 10 企业版 N 或 Windows 10 企业版 KN 操作系统映像。 由于扇区大小限制，Windows 7 也不支持在托管 Azure 存储上托管的任何基于 VHD 或 VHDX 的配置文件解决方案。
 
-可用的自动化和部署选项取决于所选的 OS 和版本，如下表所示： 
+可用的自动化和部署选项取决于所选的 OS 和版本，如下表所示：
 
 |操作系统|Azure 映像库|手动 VM 部署|Azure 资源管理器模板集成|在 Azure 市场中预配主机池|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 多会话版本 1903|是|是|是|是|
-|Windows 10 多会话版本 1809|是|是|否|否|
-|Windows 10 Enterprise 版本 1903|是|是|是|是|
-|Windows 10 Enterprise 版本 1809|是|是|否|否|
-|Windows 7 Enterprise|是|是|否|否|
-|Windows Server 2019|是|是|否|否|
-|Windows Server 2016|是|是|是|是|
-|Windows Server 2012 R2|是|是|否|否|
+|Windows 10 多会话版本 1903|“是”|“是”|“是”|是|
+|Windows 10 多会话版本 1809|“是”|“是”|否|否|
+|Windows 10 Enterprise 版本 1903|“是”|“是”|“是”|是|
+|Windows 10 Enterprise 版本 1809|“是”|“是”|否|否|
+|Windows 7 Enterprise|“是”|“是”|否|否|
+|Windows Server 2019|“是”|“是”|否|否|
+|Windows Server 2016|“是”|“是”|“是”|“是”|
+|Windows Server 2012 R2|是|“是”|否|否|
 
 ## <a name="next-steps"></a>后续步骤
 
-如果使用的是 Windows 虚拟桌面 2019 秋季版，则可从[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)教程入门。
+如果使用的是 Windows 虚拟桌面（经典版），则可通过[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)教程入门。
 
-如果使用的是 Windows 虚拟桌面 2020 春季版，则需要改为创建主机池。 若要开始学习，请访问下面的教程。
+如果使用的是与 Azure 资源管理器集成的 Windows 虚拟桌面，则需要改为创建主机池。 若要开始学习，请访问下面的教程。
 
 > [!div class="nextstepaction"]
 > [使用 Azure 门户创建主机池](create-host-pools-azure-marketplace.md)

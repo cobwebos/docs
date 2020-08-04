@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: 本快速入门演示如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务中对 .NET Core 应用程序进行调试和快速循环访问
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b8ddf2e484b3d1525825f8df3b738091564b0a78
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 104e812cc9e792ce71f263085ba1a3474cc2226b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512446"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87002771"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>快速入门：在 Kubernetes 上进行调试和循环访问：Visual Studio Code 和 .NET Core - Azure Dev Spaces
 
@@ -114,7 +114,7 @@ git clone https://github.com/Azure/dev-spaces
 > [!Note]
 > 最初，公共 URL 可能会显示“错误的网关”错误。 请等待几秒钟，然后再刷新网页，应该会看到你的服务正在运行。
 
-依次单击“调试”、“停止调试”以停止调试器。 
+依次单击“调试”、“停止调试”以停止调试器。
 
 ## <a name="update-code"></a>更新代码
 
@@ -137,7 +137,7 @@ git clone https://github.com/Azure/dev-spaces
 
 在调试模式下使用“.NET Core 启动(AZDS)”启动服务。
 
-依次单击“视图”、“资源管理器”，导航回到“资源管理器”视图。   打开 `Controllers/HomeController.cs` 并单击第 22 行中的某个位置，以将光标置于此处。 若要设置断点，请按 *F9*，或者依次单击“调试”、“切换断点”。 
+依次单击“视图”、“资源管理器”，导航回到“资源管理器”视图。 打开 `Controllers/HomeController.cs` 并单击第 22 行中的某个位置，以将光标置于此处。 若要设置断点，请按 *F9*，或者依次单击“调试”、“切换断点”。
 
 在浏览器中打开服务，你会发现未显示任何消息。 返回 Visual Studio Code，将会看到，第 20 行已突出显示。 设置的断点在第 20 行处暂停了服务。 若要恢复服务，请按 *F5*，或者依次单击“调试”、“继续”。 返回浏览器，你会发现，现在显示了消息。
 
@@ -153,9 +153,9 @@ git clone https://github.com/Azure/dev-spaces
 ViewData["Message"] = "Your application description page in Azure while debugging!";
 ```
 
-保存文件。 依次单击“调试”、“重新开始调试”，或者在“调试”工具栏中单击“重新开始调试”按钮。   
+保存文件。 依次单击“调试”、“重新开始调试”，或者在“调试”工具栏中单击“重新开始调试”按钮。
 
-![调试工具栏是位于页面顶部中心的一个小窗格（就在页面标题下方）。 重启按钮显示一个圆形箭头，并高亮显示。 按钮的悬停图像是“重启 (Ctrl+Shift+F5)”。](media/common/debug-action-refresh.png)
+![调试工具栏是位于页面顶部中心的一个小窗格（就在页面标题下方）。 重启按钮显示一个圆形箭头，并高亮显示。 按钮的悬停图像是“重启(Ctrl+Shift+F5)”。](media/common/debug-action-refresh.png)
 
 在浏览器中打开服务，你会发现已显示更新的消息。
 

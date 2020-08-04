@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: 4725aaaf7a2c1e0aa49ea8dbe046b720727a5d54
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 8b44dc230dbee1b29b9889a1b81e35ebe25f6b97
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147468"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87078681"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>Azure 负载均衡器中的新增功能有哪些？
 
@@ -25,14 +25,15 @@ Azure 负载均衡器会定期更新。 随时了解最新公告。 本文提供
 
 你还可以[在此处](https://azure.microsoft.com/updates/?category=networking&query=load%20balancer)找到最新的 Azure 负载均衡器更新并订阅 RSS 源。
 
-## <a name="new-features"></a>新增功能
+## <a name="recent-releases"></a>最新版本
 
-|Feature  |说明  |添加日期  |
-|---------|---------|---------|
-| 支持基于 IP 的后端池管理（预览版） | Azure 负载均衡器支持通过 IPv4 或 IPv6 地址从后端池中添加和删除资源。 这样就可以轻松管理与负载均衡器关联的容器、虚拟机和虚拟机规模集。 它还允许在创建关联资源之前将 IP 地址作为后端池的一部分保留。 | 2020 年 7 月 |
-| 使用 Azure Monitor 的 Azure 负载均衡器见解 | 作为 Azure 网络监视器一部分，客户现在拥有所有负载平衡器配置的拓扑图，以及在 Azure 门户中预配置了指标的标准负载平衡器的运行状况仪表板。 [开始使用并了解详细信息](https://azure.microsoft.com/blog/introducing-azure-load-balancer-insights-using-azure-monitor-for-networks/) | 2020 年 6 月 |
-| 对 Azure 负载均衡器的 IPv6 支持（正式发布版） | 可以将 IPv6 地址作为 Azure 负载均衡器的前端。 了解如何[在此处创建双堆栈应用程序](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) |2020 年 4 月|
-| 空闲超时时的 TCP 重置（正式发布版）| 使用 TCP 重置创建更具可预测性的应用程序行为。 [了解详细信息](load-balancer-tcp-reset.md)| 2020 年 2 月 |
+| 类型 |名称 |说明  |添加日期  |
+| ------ |---------|---------|---------|
+| Feature | 支持基于 IP 的后端池管理（预览版） | Azure 负载均衡器支持通过 IPv4 或 IPv6 地址从后端池中添加和删除资源。 这样就可以轻松管理与负载均衡器关联的容器、虚拟机和虚拟机规模集。 它还允许在创建关联资源之前将 IP 地址作为后端池的一部分保留。 在[此处](backend-pool-management.md)了解详细信息|2020 年 7 月 |
+| Feature| 使用 Azure Monitor 的 Azure 负载均衡器见解 | 作为 Azure 网络监视器一部分，客户现在拥有所有负载平衡器配置的拓扑图，以及在 Azure 门户中预配置了指标的标准负载平衡器的运行状况仪表板。 [开始使用并了解详细信息](https://azure.microsoft.com/blog/introducing-azure-load-balancer-insights-using-azure-monitor-for-networks/) | 2020 年 6 月 |
+| 验证 | 添加了 HA 端口验证 | 添加了验证，以确保仅当启用了浮动 IP 时才可配置 HA 端口规则和非 HA 端口规则。 之前此配置会执行，但不会按预期方式工作。 未对功能进行任何更改。 可在[此处](load-balancer-ha-ports-overview.md#limitations)了解详细信息| 2020 年 6 月 |
+| Feature| 对 Azure 负载均衡器的 IPv6 支持（正式发布版） | 可以将 IPv6 地址作为 Azure 负载均衡器的前端。 了解如何[在此处创建双堆栈应用程序](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) |2020 年 4 月|
+| Feature| 空闲超时时的 TCP 重置（正式发布版）| 使用 TCP 重置创建更具可预测性的应用程序行为。 [了解详细信息](load-balancer-tcp-reset.md)| 2020 年 2 月 |
 
 ## <a name="next-steps"></a>后续步骤
 

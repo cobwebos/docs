@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f6e70caaedf906142b19ba45f0eb4d818e2955e7
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 4e236be298f92506e40a7f5197b2abeb065e7eed
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85051903"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87013260"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>教程：使用托管标识将 Key Vault 连接到 .NET Azure Web 应用
 
@@ -28,7 +28,7 @@ ms.locfileid: "85051903"
 
 * Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [.NET Core 3.1 SDK 或更高版本](https://dotnet.microsoft.com/download/dotnet-core/3.1)。
-* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/overview)
+* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 或 [Azure PowerShell](/powershell/azure/)
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
@@ -51,7 +51,7 @@ az group create --name "myResourceGroup" -l "EastUS"
 az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 ```
 
-记下返回的 `vaultUri`（其格式将为“https://<your-keyvault-name>.vault.azure.net/”）。 它将在[更新代码](#update-the-code)步骤中使用。
+记下返回的 `vaultUri`（其格式将为“https://&lt;your-keyvault-name&gt;.vault.azure.net/”）。 它将在[更新代码](#update-the-code)步骤中使用。
 
 现在可以使用 [az keyvault secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) 命令将机密放入密钥保管库中。 将机密名称设置为“MySecret”，将值设置为 "Success!"。
 

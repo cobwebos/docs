@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma
-ms.openlocfilehash: d2e10c2a02bf14f7a01ce03bc70f6e3f43b96385
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 7ba6a059a35bee0b122659d8fc70466595112fca
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83700830"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87011023"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>教程：使用 Azure PowerShell 自动缩放虚拟机规模集
 
@@ -99,7 +99,7 @@ $myRuleScaleOut = New-AzureRmAutoscaleRule `
 ## <a name="create-a-rule-to-autoscale-in"></a>创建规则，以便自动横向缩减
 在夜间或周末，应用程序需求可能会降低。 如果这种负载降低在一段时间内持续稳定，可以配置自动缩放规则来减少规模集中的 VM 实例数。 这种横向缩减操作可以减少运行规模集所需的成本，因为只运行满足当前需求所需的实例数。
 
-平均 CPU 负载小于 30% 持续了 5 分钟时，请使用 [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) 创建另一规则来减少规模集中的 VM 实例数。 触发规则时，VM 实例数减少 1。以下示例将创建名为 *myRuleScaleDown* 的对象，用于保存此扩展规则。 -MetricResourceId 使用以前为订阅 ID、资源组名称和规模集名称定义的变量  ：
+平均 CPU 负载小于 30% 持续了 5 分钟时，请使用 [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) 创建另一规则来减少规模集中的 VM 实例数。 触发规则后，VM 实例数减少 1。 以下示例将创建名为“myRuleScaleDown”的对象，用于保存此缩减规则。 -MetricResourceId 使用以前为订阅 ID、资源组名称和规模集名称定义的变量  ：
 
 ```azurepowershell-interactive
 $myRuleScaleIn = New-AzureRmAutoscaleRule `
@@ -194,7 +194,7 @@ mstsc /v 52.168.121.216:50001
 - 由于 Internet Explorer 增强型安全配置已启用，因此请选择“添加”，以便将  *http://download.sysinternals.com* 域添加到受信任站点的列表。
 - 提示查找下载的文件时，请选择“打开”，然后选择“运行”，以便运行   *CPUSTRES.EXE* 工具。
 
-若要生成一些 CPU 负载，请勾选“活动”线程所对应的两个框。  从两个线程的“活动”下拉菜单中选择“最大”。   可以打开任务管理器来确认 VM 上的 CPU 负载是否已达到 100%。
+若要生成一些 CPU 负载，请勾选“活动”线程所对应的两个框。 从两个线程的“活动”下拉菜单中选择“最大”。 可以打开任务管理器来确认 VM 上的 CPU 负载是否已达到 100%。
 
 ![CPU Stress 实用程序可以在 VM 实例上生成负载](media/tutorial-autoscale-powershell/cpu-stress-load.PNG)
 
@@ -204,7 +204,7 @@ mstsc /v 52.168.121.216:50001
 mstsc /v 52.168.121.216:50002
 ```
 
-登录到第二个 VM 实例以后，重复以前的步骤，以便下载并运行 *CPUSTRES.EXE*。 再次启动两个“活动”线程，并将活动设置为“最大”。  
+登录到第二个 VM 实例以后，重复以前的步骤，以便下载并运行 *CPUSTRES.EXE*。 再次启动两个“活动”线程，并将活动设置为“最大”。
 
 请让两个远程桌面连接会话保持打开状态，以便 **CPU Stress** 工具能够继续运行。
 

@@ -1,5 +1,5 @@
 ---
-title: 在 SQL 按需版本（预览版）中同步 Apache Spark for Azure Synapse 外部表定义
+title: 在按需 SQL（预览版）中同步 Apache Spark 外部表定义
 description: 概述如何使用 SQL 按需版本（预览版）查询 Spark 表
 services: synapse-analytics
 author: julieMSFT
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: db6b2d95bf8f38495296885d14260b9900af1d51
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3e9f688a31d2847505e974ab6a1557aa6a7b2047
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247041"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046839"
 ---
 # <a name="synchronize-apache-spark-for-azure-synapse-external-table-definitions-in-sql-on-demand-preview"></a>在 SQL 按需版本（预览版）中同步 Apache Spark for Azure Synapse 外部表定义
 
@@ -22,7 +22,7 @@ SQL 按需版本（预览版）可以自动从 Apache Spark for Azure Synapse �
 
 对于每个基于 Parquet 且位于 Azure 存储的 Spark 外部表，都将在 SQL 按需版本数据库中创建一个外部表。 因此，在关闭 Spark 池的情况下，仍可从 SQL 按需版本查询 Spark 外部表。
 
-在 Spark 中对表进行分区时，存储中的文件将按文件夹进行组织。 SQL 按需版本会利用分区元数据，仅以相关文件夹和文件作为查询目标。
+在 Spark 中对表进行分区时，存储中的文件将按文件夹进行组织。 按需 SQL 会使用分区元数据，仅以相关文件夹和文件作为查询目标。
 
 将为 Azure Synapse 工作区中预配的每个 Spark 池自动配置元数据同步。 可以立即开始查询 Spark 外部表。
 
@@ -35,14 +35,14 @@ SELECT * FROM [db].dbo.[spark_table]
 ```
 
 > [!NOTE]
-> 添加、删除或更改 Spark 外部表列将不会在按需 SQL 的外部表中反映出来。
+> 为列添加、删除或更改 Spark 外部表命令不会在按需 SQL 的外部表中反映出来。
 
 ## <a name="apache-spark-data-types-to-sql-data-types-mapping"></a>Apache Spark 数据类型到 SQL 数据类型的映射
 
 | Spark 数据类型 | SQL 数据类型               |
 | --------------- | --------------------------- |
 | ByteType        | smallint                    |
-| ShortType       | smallint                    |
+| Short Type       | smallint                    |
 | IntegerType     | int                         |
 | LongType        | bigint                      |
 | FloatType       | real                        |

@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: 42c6ad7f77d1b42c02f57f161874eadb75387dc2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 196577741ae1560232f8ae193aacd51a446431c8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496003"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87385528"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Azure Synapse Analytics 共享数据库
 
@@ -34,7 +34,7 @@ Spark 默认数据库（名为 `default`）还会在 SQL 按需版本上下文�
 
 如果使用 SQL 按需版本在 Spark 创建的数据库中创建对象，或尝试删除数据库，该操作会成功。 但是，原始 Spark 数据库不会更改。
 
-## <a name="handling-of-name-conflicts"></a>名称冲突的处理
+## <a name="how-name-conflicts-are-handled"></a>如何处理名称冲突
 
 如果某个 Spark 数据库的名称与现有 SQL 按需版本数据库的名称冲突，则在 SQL 按需版本中，会将一个后缀追加到这个 Spark 数据库。 SQL 按需版本中的后缀是 `_<workspace name>-ondemand-DefaultSparkConnector`。
 
@@ -57,7 +57,7 @@ Spark 数据库和表及其在 SQL 引擎中的已同步表示形式将在基础
 
 ## <a name="examples"></a>示例
 
-### <a name="create--connect-to-spark-database---sql-on-demand"></a>创建和连接 Spark 数据库 - SQL 按需版本
+### <a name="create-and-connect-to-spark-database-with-sql-on-demand"></a>使用 SQL 按需版本创建并连接到 Spark 数据库
 
 首先使用已在工作区中创建的 Spark 群集创建名为 `mytestdb` 的新 Spark 数据库。 例如，可以将 Spark C# 笔记本和以下 .NET for Spark 语句配合使用以实现此目的：
 

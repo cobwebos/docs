@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3790da8674732c50d55a85c84367f0d2fe3e08f5
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: aacaec5ff632385a1f1686610370bb92eb63c349
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255619"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87017544"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Ekarda 的集成
 
@@ -92,7 +92,7 @@ ms.locfileid: "85255619"
     c. 成功上传元数据文件后，“标识符”和“回复 URL”值会自动填充在“Ekarda”部分的文本框中 ：
 
     > [!Note]
-    > 如果“标识符”和“回复 URL”值未自动填充，请根据要求手动填充这些值。 
+    > 如果“标识符”和“回复 URL”值未自动填充，请根据要求手动填充这些值。
 
 1. 在没有“服务提供程序元数据文件”的情况下，如果要在“IDP”发起的模式下配置应用程序，请在“基本 SAML 配置”部分输入以下字段的值  ：
 
@@ -124,26 +124,26 @@ ms.locfileid: "85255619"
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，将通过授予 B.Simon 访问 Ekarda 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。
 1. 在应用程序列表中，选择“Ekarda”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
-1. 在“添加分配”对话框中，单击“分配”按钮。 
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-ekarda-sso"></a>配置 Ekarda SSO
 
@@ -151,12 +151,12 @@ ms.locfileid: "85255619"
 
 1. 单击“管理” -> “我的帐户” 。
 
-    ![Ekarda 配置](./media/ekarda-tutorial/ekarda.PNG)    
+    ![Ekarda 配置](./media/ekarda-tutorial/ekarda.png)    
 
 1. 在页面底部，可找到“SAML 设置”部分，并且可在其中配置 SAML 集成。
 1. 在以下页上，执行以下步骤：
 
-    ![Ekarda 配置](./media/ekarda-tutorial/ekarda1.PNG)
+    ![Ekarda 配置](./media/ekarda-tutorial/ekarda1.png)
 
     a. 单击“服务提供程序元数据”链接，并将其保存为计算机上的文件。
 
@@ -188,13 +188,14 @@ ms.locfileid: "85255619"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [通过 Azure AD 试用 Ekarda](https://aad.portal.azure.com/)
 
+- 使用 [Ekarda 的企业 eCard 解决方案](https://ekarda.com/ecards-ecards-with-logo-for-business-corporate-enterprise)预配任意数量的员工，将具有公司徽标品牌的 eCard 发送给其客户和同事。 详细了解如何设置 [Ekarda 作为 SSO 解决方案](https://support.ekarda.com/#SSO-Implementation)。
+
 - [Microsoft Cloud App Security 中的会话控制是什么？](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 - [如何通过高级可见性和控制保护 Ekarda](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
-

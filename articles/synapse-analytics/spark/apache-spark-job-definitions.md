@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.openlocfilehash: 3311a9a92cc5e63a6fa20e4dd0d2af00fdacc95c
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: ac3e163ffefcb7b164860b0c4fa42edc866227e3
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194478"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87065627"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>教程：在 Synapse Studio 中创建 Apache Spark 作业定义
 
@@ -24,7 +24,7 @@ ms.locfileid: "85194478"
 
 * 为 PySpark (Python) 创建 Apache Spark 作业定义
 * 为 Spark(Scala) 创建 Apache Spark 作业定义
-* 为 .NET Spark(C#) 创建 Apache Spark 作业定义
+* 为 .NET Spark(C#/F#) 创建 Apache Spark 作业定义
 * 以批处理作业形式提交 Apache Spark 作业定义
 * 将 Apache Spark 作业定义添加到管道
 
@@ -42,7 +42,7 @@ ms.locfileid: "85194478"
 
 1. 打开 [Azure Synapse Studio](https://web.azuresynapse.net/)。
 
-2. 可转到[用于创建 Apache Spark 作业定义的示例文件](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python)，下载 wordcount.jar 和 shakespear.txt 。 然后，将这些文件上传到 Azure 存储：单击“数据”，选择“存储帐户”，并将相关文件上传到 ADLS Gen2 文件系统 。 如果文件已在 Azure 存储中，请跳过此步骤。 
+2. 可转到[用于创建 Apache Spark 作业定义的示例文件](https://github.com/Azure-Samples/Synapse/tree/master/Spark/Python)，下载 wordcount.py 和 shakespear.txt。 然后，将这些文件上传到 Azure 存储：单击“数据”，选择“存储帐户”，并将相关文件上传到 ADLS Gen2 文件系统 。 如果文件已在 Azure 存储中，请跳过此步骤。 
 
      ![上传 Python 文件](./media/apache-spark-job-definitions/upload-python-file.png)
 
@@ -57,9 +57,9 @@ ms.locfileid: "85194478"
      |  properties   | 说明   |  
      | ----- | ----- |  
      |作业定义名称| 输入 Apache Spark 作业定义的名称。 在发布作业定义之前，随时可以更新此名称。 示例： `job definition sample`|
-     |主定义文件| 用于作业的主文件。 从存储中选择一个 PY 文件。 可以选择“上传文件”以将文件上传到存储帐户。 示例： `abfss://azureportaldeploy@storageaccountname.dfs.core.windows.net/synapse/workspaces/workspace name/batchjobs/python/fileexists.py`|
-     |命令行参数| 作业的可选参数。 示例： `shakespeare.txt`|
-     |引用文件| 用于主定义文件中的引用的其他文件。 可以选择“上传文件”以将文件上传到存储帐户。 示例： `abfss://azureportaldeploy@storageaccountname.dfs.core.windows.net/synapse/workspaces/workspace name/batchjobs/python/shakespeare.txt`|
+     |主定义文件| 用于作业的主文件。 从存储中选择一个 PY 文件。 可以选择“上传文件”以将文件上传到存储帐户。 示例： `abfss://…/path/to/wordcount.py`|
+     |命令行参数| 作业的可选参数。 示例： `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
+     |引用文件| 用于主定义文件中的引用的其他文件。 可以选择“上传文件”以将文件上传到存储帐户。 |
      |Spark 池| 作业将提交到选定的 Apache Spark 池。|
      |Spark 版本| 正在运行 Apache Spark 池的 Apache Spark 版本。|
      |执行程序| 要在作业的指定 Apache Spark 池中提供的执行程序数目。|
@@ -89,12 +89,12 @@ ms.locfileid: "85194478"
 
  5. 填写 Apache Spark 作业定义的信息。 可复制示例信息。
 
-     |  properties   | 说明   |  
+     |  属性   | 说明   |  
      | ----- | ----- |  
      |作业定义名称| 输入 Apache Spark 作业定义的名称。 在发布作业定义之前，随时可以更新此名称。 示例： `job definition sample`|
-     |主定义文件| 用于作业的主文件。 从存储中选择一个 JAR 文件。 可以选择“上传文件”以将文件上传到存储帐户。 示例： `abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/wordcount.jar`|
+     |主定义文件| 用于作业的主文件。 从存储中选择一个 JAR 文件。 可以选择“上传文件”以将文件上传到存储帐户。 示例： `abfss://…/path/to/wordcount.jar`|
      |主类名| 主定义文件中的完全限定标识符或主类。 示例： `WordCount`|
-     |命令行参数| 作业的可选参数。 示例： `abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/shakespeare.txt abfss://sparkjob@storageaccountname.dfs.core.windows.net/scala/wordcount/result`|
+     |命令行参数| 作业的可选参数。 示例： `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
      |引用文件| 用于主定义文件中的引用的其他文件。 可以选择“上传文件”以将文件上传到存储帐户。|
      |Spark 池| 作业将提交到选定的 Apache Spark 池。|
      |Spark 版本| 正在运行 Apache Spark 池的 Apache Spark 版本。|
@@ -109,9 +109,9 @@ ms.locfileid: "85194478"
      ![发布 scala 定义](./media/apache-spark-job-definitions/publish-scala-definition.png)
 
 
-## <a name="create-an-apache-spark-job-definition-for-net-sparkc"></a>为 .NET Spark(C#) 创建 Apache Spark 作业定义
+## <a name="create-an-apache-spark-job-definition-for-net-sparkcf"></a>为 .NET Spark(C#/F#) 创建 Apache Spark 作业定义
 
-在本部分中，为 .NET Spark(C#) 创建 Apache Spark 作业定义。
+在本部分中，为 .NET Spark(C#/F#) 创建 Apache Spark 作业定义。
  1. 打开 [Azure Synapse Studio](https://web.azuresynapse.net/)。
 
  2. 可转到[用于创建 Apache Spark 作业定义的示例文件](https://github.com/Azure-Samples/Synapse/tree/master/Spark/DotNET)，下载 wordcount.zip 和 shakespear.txt 。 然后，将这些文件上传到 Azure 存储：单击“数据”，选择“存储帐户”，并将相关文件上传到 ADLS Gen2 文件系统 。 如果文件已在 Azure 存储中，请跳过此步骤。 
@@ -125,13 +125,14 @@ ms.locfileid: "85194478"
  4. 从 Apache Spark 作业定义主窗口中的“语言”下拉列表中选择“.NET Spark(C#/F#)”。
 
  5. 填写 Apache Spark 作业定义的信息。 可复制示例信息。
-     |  properties   | 说明   |  
+    
+     |  属性   | 说明   |  
      | ----- | ----- |  
      |作业定义名称| 输入 Apache Spark 作业定义的名称。 在发布作业定义之前，随时可以更新此名称。 示例： `job definition sample`|
-     |主定义文件| 用于作业的主文件。 从存储中选择包含 .NET for Apache Spark 应用程序的 ZIP 文件（即，主可执行文件、包含用户定义的函数的 DLL，以及其他所需文件）。 可以选择“上传文件”以将文件上传到存储帐户。 示例： `abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/wordcount.zip`|
+     |主定义文件| 用于作业的主文件。 从存储中选择包含 .NET for Apache Spark 应用程序的 ZIP 文件（即，主可执行文件、包含用户定义的函数的 DLL，以及其他所需文件）。 可以选择“上传文件”以将文件上传到存储帐户。 示例： `abfss://…/path/to/wordcount.zip`|
      |主可执行文件| 主定义 ZIP 文件中的主可执行文件。 示例： `WordCount`|
-     |命令行参数| 作业的可选参数。 示例： `abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/shakespeare.txt abfss://sparkjob@storageaccountname.dfs.core.windows.net/dotnet/wordcount/result`|
-     |引用文件| 工作器节点所需的其他文件（即，依赖的 jar、其他用户定义的函数 DLL，以及其他配置文件），用于执行主定义 ZIP 文件中不包含的 .NET for Apache Spark 应用程序。 可以选择“上传文件”以将文件上传到存储帐户。|
+     |命令行参数| 作业的可选参数。 示例： `abfss://…/path/to/shakespeare.txt abfss://…/path/to/result`|
+     |引用文件| 工作器节点所需的其他文件（即，依赖的 jar、其他用户定义的函数 DLL，以及其他配置文件），用于执行主定义 ZIP 文件中不包含的 .NET for Apache Spark 应用程序。 可选择“上传文件”，将文件上传到存储帐户。|
      |Spark 池| 作业将提交到选定的 Apache Spark 池。|
      |Spark 版本| 正在运行 Apache Spark 池的 Apache Spark 版本。|
      |执行程序| 要在作业的指定 Apache Spark 池中提供的执行程序数目。|  
@@ -161,7 +162,7 @@ ms.locfileid: "85194478"
 
 ### <a name="scenario-2-view-apache-spark-job-running-progress"></a>应用场景 2：查看 Apache Spark 作业运行进度
 
- 1. 单击“监视”，然后选择“Spark 应用程序”选项。  可找到已提交的 Apache Spark 应用程序。
+ 1. 单击“监视”，然后选择“Spark 应用程序”选项。 可找到已提交的 Apache Spark 应用程序。
 
      ![查看 Spark 应用程序](./media/apache-spark-job-definitions/view-spark-application.png)
 
@@ -171,7 +172,7 @@ ms.locfileid: "85194478"
 
 ### <a name="scenario-3-check-output-file"></a>应用场景 3：检查输出文件
 
- 1. 单击“数据”，然后选择“存储帐户”。  成功运行后，可以转到 ADLS Gen2 存储，并检查是否生成了输出。
+ 1. 单击“数据”，然后选择“存储帐户”。 成功运行后，可以转到 ADLS Gen2 存储，并检查是否生成了输出。
 
      ![查看输出文件](./media/apache-spark-job-definitions/view-output-file.png)
 

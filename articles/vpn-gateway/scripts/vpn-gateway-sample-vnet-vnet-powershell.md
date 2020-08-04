@@ -3,20 +3,20 @@ title: Azure PowerShell 脚本示例 - 配置 VNet 到 VNet VPN | Microsoft Docs
 description: 配置站点到站点 VPN。
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: anzaman
+author: kumudD
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/09/2020
 ms.author: alzam
-ms.openlocfilehash: a4d23f34553881b6425514572f9122edf693a57a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5a69df3893a3bf32ca2af1be62744991346ee048
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75862197"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87068368"
 ---
-# <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>使用 PowerShell 配置 VNet 到 VNet VPN 网关连接
+# <a name="use-powershell-to-configure-a-vnet-to-vnet-vpn-gateway-connection"></a>使用 Powershell 配置 VNet 到 VNet VPN 网关连接
 
 此脚本使用 VNet 到 VNet 连接类型连接两个虚拟网络。
 
@@ -167,4 +167,4 @@ Remove-AzResourceGroup -Name TestRG2
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/overview)。
+有关 Azure PowerShell 模块的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/)。

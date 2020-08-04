@@ -1,20 +1,20 @@
 ---
 title: 教程：按出行模式查找多个路线 | Microsoft Azure Maps
 description: 本教程介绍如何使用 Microsoft Azure Maps 查找不同出行模式的路线。
-author: philmea
-ms.author: philmea
+author: anastasia-ms
+ms.author: v-stharr
 ms.date: 01/14/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc
-ms.openlocfilehash: c7ed2421f468dfbb64c635683a7909b517105bc7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, devx-track-javascript
+ms.openlocfilehash: 0cb3c1eadae426cef59b7aad8821343c23e76d79
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333793"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87289543"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>教程：使用 Azure Maps 查找不同出行模式的路线
 
@@ -27,7 +27,7 @@ ms.locfileid: "80333793"
 > * 在地图上显示多条路线
 
 ## <a name="prerequisites"></a>先决条件
-在继续之前，请按照[创建帐户](quick-demo-map-app.md#create-an-account-with-azure-maps)中的说明进行操作，并选择 S1 定价层。 按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
+在继续之前，请按照[创建帐户](quick-demo-map-app.md#create-an-azure-maps-account)中的说明进行操作，并选择 S1 定价层。 按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
 
 ## <a name="create-a-new-map"></a>创建新地图
 
@@ -200,7 +200,7 @@ ms.locfileid: "80333793"
 
 ## <a name="render-routes-prioritized-by-mode-of-travel"></a>呈现按行驶模式划分优先级的路线
 
-本部分介绍如何使用 Maps 路线服务 API。 路线 API 用于根据交通方式查找从给定起点到终点的多条路线。 路线服务提供相应的 API 用于规划最快、最短、环保或新奇的路线。     这些 API 不仅可以规划两个地点之间的路线，而且还能考虑到当前的交通状况。 
+本部分介绍如何使用 Maps 路线服务 API。 路线 API 用于根据交通方式查找从给定起点到终点的多条路线。 路线服务提供相应的 API 用于规划最快、最短、环保或新奇的路线。 这些 API 不仅可以规划两个地点之间的路线，而且还能考虑到当前的交通状况。 
 
 路线 API 还允许用户使用 Azure 广泛的历史交通数据库来规划将来的路线。 API 可以预测给定日期和时间的出行持续时间。 有关详细信息，请参阅 [Get Route directions](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)（获取路线指示）。 
 

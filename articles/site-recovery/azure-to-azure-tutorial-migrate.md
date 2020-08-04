@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 198e07b80788629030b621dd3c5e235a91baaba3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3cbf3eda97bd1ba6b71c4bc7910e942e39224e30
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518905"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87076109"
 ---
 # <a name="move-azure-vms-to-another-region"></a>将 Azure VM 移动到另一区域
 
@@ -82,8 +82,9 @@ ms.locfileid: "86518905"
 
 ### <a name="create-the-vault-in-any-region-except-the-source-region"></a>在除了源区域之外的任意区域中创建保管库
 
-1. 登录到 [Azure 门户](https://portal.azure.com) > **恢复服务**。
-1. 选择“创建资源” > “管理工具” > “备份和 Site Recovery”。
+1. 登录到 [Azure 门户](https://portal.azure.com)
+1. 在搜索中，键入“恢复服务”，然后单击“恢复服务保管库”
+1. 在“恢复服务保管库”菜单中，单击“+添加”。
 1. 在“名称”  中，指定友好名称 **ContosoVMVault**。 如果有多个订阅，请选择合适的一个。
 1. 创建资源组 ContosoRG  。
 1. 指定 Azure 区域。 若要查看受支持的区域，请参阅 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)中的“地域可用性”。
@@ -124,7 +125,7 @@ Site Recovery 会检索与订阅和资源组关联的 VM 列表。
 
 检查了移动的 VM 并准备好提交更改后，请在“复制的项”  中，右键选择“VM”>“提交”  。 此步骤会完成移到目标区域的过程。 请等待提交作业完成。
 
-## <a name="clean-up"></a>清除
+## <a name="clean-up"></a>清理
 
 以下步骤将指导你完成如何清理源区域以及用于移动的相关资源。
 

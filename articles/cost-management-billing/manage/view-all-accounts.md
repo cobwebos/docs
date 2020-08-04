@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: banders
-ms.openlocfilehash: 75529d03435e92dfff26dac81f4f7e59585b6fe9
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 8afa0b1b068aa03bb1add7f029c731b4fc9a4724
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85255239"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87039692"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Azure 门户中的计费帐户和范围
 
@@ -39,7 +39,7 @@ Azure 门户支持以下类型的计费帐户：
 
 |范围  |定义  |
 |---------|---------|
-|计费帐户     | 表示客户接受使用 Azure 的协议。 它包含一项或多项订阅。  |
+|计费帐户     | 表示客户接受使用 Azure 的协议。 它包含一个或多个订阅。  |
 |订阅     |  表示 Azure 资源的分组。 发票在此范围生成。 其他计费信息（如付款方式和使用地址）与此范围相关联。|
 
 ### <a name="enterprise-agreement"></a>企业协议

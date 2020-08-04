@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 9c07db575827254de833fc0b2390be823ebc4e57
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: aae1797f7f1a252a4f094ee9f1b079fb60ba72f3
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206553"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87131729"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>扩建端到端解决方案
 
@@ -26,6 +26,9 @@ ms.locfileid: "86206553"
 
 [!INCLUDE [Azure Digital Twins tutorial: sample prerequisites](../../includes/digital-twins-tutorial-sample-prereqs.md)]
 
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+### <a name="set-up-cloud-shell-session"></a>设置 Cloud Shell 会话
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
 
 [!INCLUDE [Azure Digital Twins tutorial: configure the sample project](../../includes/digital-twins-tutorial-sample-configure.md)]
@@ -57,7 +60,7 @@ ms.locfileid: "86206553"
 
 :::image type="content" source="media/tutorial-end-to-end/building-scenario-a.png" alt-text="完整建筑方案图的摘录，其中突出显示了 A 部分（Azure 数字孪生实例）":::
 
-在打开 AdtE2ESample 项目的 Visual Studio 窗口中，使用工具栏中的此按钮运行该项目__：
+在打开 AdtE2ESample 项目的 Visual Studio 窗口中，使用工具栏中的此按钮运行该项目：
 
 :::image type="content" source="media/tutorial-end-to-end/start-button-sample.png" alt-text="Visual Studio 开始按钮（SampleClientApp 项目）":::
 
@@ -90,11 +93,11 @@ Query
 * ProcessHubToDTEvents：处理传入的 IoT 中心数据，并相应地更新 Azure 数字孪生
 * ProcessDTRoutedData：处理来自数字孪生的数据，并相应地更新 Azure 数字孪生中的父级孪生
 
-在本部分中，你将发布预先编写的函数应用，并确保该函数应用可通过向其分配 Azure Active Directory (AAD) 标识来访问 Azure 数字孪生。 完成这些步骤后，本教程的其余部分即可使用函数应用中的函数。 
+在本部分中，你将发布预先编写的函数应用，并确保该函数应用可通过向其分配 Azure Active Directory (Azure AD) 标识来访问 Azure 数字孪生。 完成这些步骤后，本教程的其余部分即可使用函数应用中的函数。 
 
 ### <a name="publish-the-app"></a>发布应用
 
-返回到打开 AdtE2ESample 项目的 Visual Studio 窗口中，从“解决方案资源管理器”窗格中，右键选择 SampleFunctionsApp 项目文件，然后点击“发布”____。
+返回到打开 AdtE2ESample 项目的 Visual Studio 窗口中，从“解决方案资源管理器”窗格中，右键选择 SampleFunctionsApp 项目文件，然后点击“发布” 。
 
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="Visual Studio：发布项目":::
 
@@ -138,7 +141,7 @@ Query
 
 ### <a name="assign-permissions-to-the-function-app"></a>向函数应用分配权限
 
-为了使函数应用能够访问 Azure 数字孪生，下一步是配置应用设置，为应用分配系统管理的 AAD 标识，并为此标识授予 Azure 数字孪生实例的“所有者”权限。
+为了使函数应用能够访问 Azure 数字孪生，下一步是配置应用设置，为应用分配系统管理的 Azure AD 标识，并为此标识授予 Azure 数字孪生实例的“所有者”权限。
 
 在 Azure Cloud Shell 中，使用以下命令设置一个应用程序设置，供函数应用用来引用数字孪生实例。
 
@@ -246,12 +249,12 @@ az iot hub device-identity show-connection-string --device-id thermostat67 --hub
 
 将这些值插入本地项目中的设备模拟器代码中，以将模拟器连接到此 IoT 中心和 IoT 中心设备。
 
-在新的 Visual Studio 窗口中，（从下载的解决方案文件夹）打开“设备模拟器”>“DeviceSimulator.sln”__。
+在新的 Visual Studio 窗口中，（从下载的解决方案文件夹）打开“设备模拟器”>“DeviceSimulator.sln”。
 
 >[!NOTE]
-> 你现在应该有两个 Visual Studio 窗口，一个是 DeviceSimulator.sln，另一个是 AdtE2ESample.sln__ __。
+> 你现在应该有两个 Visual Studio 窗口，一个是 DeviceSimulator.sln，另一个是 AdtE2ESample.sln 。
 
-在这个新 Visual Studio 窗口的“解决方案资源管理器”窗格中，选择“DeviceSimulator/AzureIoTHub.cs”，在编辑窗口中将其打开__。 将以下连接字符串值更改为前面收集的值：
+在这个新 Visual Studio 窗口的“解决方案资源管理器”窗格中，选择“DeviceSimulator/AzureIoTHub.cs”，在编辑窗口中将其打开。 将以下连接字符串值更改为前面收集的值：
 
 ```csharp
 connectionString = <Iot-hub-connection-string>
@@ -274,7 +277,7 @@ deviceConnectionString = <device-connection-string>
 
 之前发布的 ProcessHubToDTEvents 函数会侦听 IoT 中心数据，并调用 Azure 数字孪生 API 来更新 thermostat67 孪生上的“温度”属性  。
 
-要查看 Azure 数字孪生端的数据，请转到打开 AdtE2ESample 项目的 Visual Studio 窗口，并运行该项目__。
+要查看 Azure 数字孪生端的数据，请转到打开 AdtE2ESample 项目的 Visual Studio 窗口，并运行该项目。
 
 在打开的项目控制台窗口中运行以下命令，以获取数字孪生 thermostat67 所报告的温度：
 
@@ -375,7 +378,7 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 
 ### <a name="run-the-simulation-and-see-the-results"></a>运行模拟并查看结果
 
-现在你可以运行设备模拟器，启动已设置的新事件流。 转到打开 DeviceSimulator 项目的 Visual Studio 窗口，然后运行该项目__。
+现在你可以运行设备模拟器，启动已设置的新事件流。 转到打开 DeviceSimulator 项目的 Visual Studio 窗口，然后运行该项目。
 
 与之前运行设备模拟器一样，控制台窗口将打开并显示模拟温度遥测消息。 这些事件将经过之前设置的流来更新 thermostat67 孪生，然后经过最近设置的流来更新 room21 孪生以进行匹配 。
 
@@ -420,7 +423,7 @@ ObserveProperties thermostat67 Temperature room21 Temperature
 az group delete --name <your-resource-group>
 ```
 
-接下来，使用以下命令删除为客户端应用创建的 AAD 应用注册：
+接下来，使用以下命令删除为客户端应用创建的 Azure AD 应用注册：
 
 ```azurecli
 az ad app delete --id <your-application-ID>
@@ -433,7 +436,7 @@ az ad app delete --id <your-application-ID>
 在本教程中，你创建了一个端到端方案，它显示了由实时设备数据驱动的 Azure 数字孪生。
 
 接下来，请开始查看概念文档，详细了解本教程中所用的元素：
-* [概念：自定义模型](concepts-models.md)
+* [*概念：自定义模型*](concepts-models.md)
 
 或者，你也可以先查看操作方法文章，更深入的了解本教程中的过程：
-* [操作说明：使用 Azure 数字孪生 CLI](how-to-use-cli.md)
+* [*操作说明：使用 Azure 数字孪生 CLI*](how-to-use-cli.md)

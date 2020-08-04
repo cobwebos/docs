@@ -4,27 +4,27 @@ description: 了解如何在 Azure 门户中查看 Azure 预留。
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 03/31/2020
+ms.topic: how-to
+ms.date: 07/24/2020
 ms.author: banders
-ms.openlocfilehash: 0635c21ee30a40344281f31c8f9aedf9d74a1284
-ms.sourcegitcommit: d597800237783fc384875123ba47aab5671ceb88
+ms.openlocfilehash: fd5d4248e9b1e645628ac8b87df3b4b0a16e2049
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80633850"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288967"
 ---
 # <a name="view-azure-reservations"></a>查看 Azure 预留项
 
-可以在 Azure 门户中查看和管理购买的预留项。   
+可以在 Azure 门户中查看和管理购买的预留项。
 
 ## <a name="permissions-to-view-a-reservation"></a>预留项的查看权限
 
-若要查看或管理预留项，需要对其拥有读取者或所有者权限。 默认情况下，当你购买某个预留项时，你和帐户管理员自动获得预留订单和该预留项的“所有者”角色。 若要允许其他人查看预留，必须将其添加为预留订单或预留的“所有者”或“读者”。   将某人添加到提供用于计收预留费用的订阅不会自动将此人添加到预留项。 
+若要查看或管理预留项，需要对其拥有读取者或所有者权限。 默认情况下，当你购买某个预留项时，你和帐户管理员自动获得预留订单和该预留项的“所有者”角色。 若要允许其他人查看预留，必须将其添加为预留订单或预留的“所有者”或“读者”。 将某人添加到提供用于计收预留费用的订阅不会自动将此人添加到预留项。 
 
 有关详细信息，请参阅[添加或更改可以管理预留的用户](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)。
 
-## <a name="view-reservation-and-utilization-in-azure-portal"></a>在 Azure 门户中查看预留和利用率
+## <a name="view-reservation-and-utilization-in-the-azure-portal"></a>在 Azure 门户中查看预留和利用率
 
 若要以所有者或读取者身份查看预留，请执行以下操作
 

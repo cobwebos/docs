@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: tracking-python
-ms.openlocfilehash: dee07db85d8886ab44be096e405143ea0d881ba2
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: a388cde60e0d19aed1af9620f82b7baa6d5b08fc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118266"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87067319"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>快速入门：使用 Python SDK 和 Azure Cosmos DB 构建 Cassandra 应用
 
@@ -137,9 +137,9 @@ ms.locfileid: "85118266"
 
 1. 在 [Azure 门户](https://portal.azure.com/)的 Azure Cosmos DB 帐户中，选择“连接字符串”。 
 
-1. 使用 ![“复制”按钮](./media/create-cassandra-python/copy.png) 复制最上面的值“联系点”。
+1. 使用屏幕右侧的 :::image type="icon" source="./media/create-cassandra-python/copy.png"::: 按钮复制最上面的值“联系点”。 
 
-    :::image type="content" source="./media/create-cassandra-python/keys.png" alt-text="在 Azure 门户的连接字符串边栏选项卡中查看并复制用户名、密码和联系点":::
+   :::image type="content" source="./media/create-cassandra-python/keys.png" alt-text="在 Azure 门户的连接字符串边栏选项卡中查看并复制用户名、密码和联系点":::
 
 1. 打开 config.py 文件。 
 

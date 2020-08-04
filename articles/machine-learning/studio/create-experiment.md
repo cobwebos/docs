@@ -1,6 +1,5 @@
 ---
-title: 快速入门：创建数据科学试验
-titleSuffix: ML Studio (classic) - Azure
+title: 机器学习工作室（经典）：快速入门：创建数据科学试验 - Azure
 description: 本机器学习快速入门逐步讲解如何轻松完成数据科学试验。 使用回归算法预测汽车价格。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +9,17 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: f8984b3b712d591b64c383dabb723ba5afc61efc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 99332a8716ae137b8ea5fe69a53c7f8e4c46f095
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85965138"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87282545"
 ---
-# <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio-classic"></a>快速入门：在 Azure 机器学习工作室（经典版）中创建第一个数据科学试验
+# <a name="quickstart-create-your-first-data-science-experiment-in-machine-learning-studio-classic"></a>快速入门：在机器学习工作室（经典）中创建第一个数据科学试验
+
+**适用于：** ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../overview-what-is-azure-ml.md) ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典） 
+
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
@@ -53,7 +55,7 @@ ms.locfileid: "85965138"
 
 下面介绍如何将数据集导入试验中。
 
-1. 单击机器学习工作室（经典版）窗口底部的“+新建”以创建新试验。 选择“试验” >  “空白试验”。 
+1. 单击机器学习工作室（经典版）窗口底部的“+新建”以创建新试验。 选择“试验” >  “空白试验”。
 
 1. 试验有一个默认名称，显示在画布顶部。 选中该名称，将试验重命名为某个有意义的名称，例如“汽车价格预测”。 名称不需唯一。
 
@@ -189,7 +191,7 @@ ms.locfileid: "85965138"
 
 1. 选择[训练模型][train-model]模块，单击“属性”窗格中的“启动列选择器”，并选择“价格”列。 “价格”是模型要预测的值。
 
-    在列选择器中选择“价格”列，方法是将其从“可用列”列表移至“所选列”列表。  
+    在列选择器中选择“价格”列，方法是将其从“可用列”列表移至“所选列”列表。
 
     ![选择“训练模型”模块的“价格”列](./media/create-experiment/select-price-column.png)
 

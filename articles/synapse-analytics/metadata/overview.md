@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: c41c3346d04dd1fc00a7ddb9e7fea66f619995e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c11a0ccb08f03775a07716e6c547d849cda347dd
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496037"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387330"
 ---
 # <a name="azure-synapse-analytics-shared-metadata"></a>Azure Synapse Analytics 共享元数据
 
@@ -40,7 +40,7 @@ Azure Synapse Analytics 允许不同的工作区计算引擎在其 Spark 池（�
 
 对象同步以异步方式发生。 对象将在略微延迟几秒后出现在 SQL 上下文中。 这些对象出现后即可供查询，但有权访问这些对象的 SQL 引擎不能更新或更改它们。
 
-## <a name="which-metadata-objects-are-shared"></a>共享的元数据对象
+## <a name="shared-metadata-objects"></a>共享元数据对象
 
 Spark 允许创建数据库、外部表、托管表和视图。 由于 Spark 视图要求通过 Spark 引擎处理 Spark SQL 定义语句，而不能由 SQL 引擎来处理，因此，只会与工作区 SQL 引擎共享数据库及其包含的使用 Parquet 存储格式的外部表和托管表。 Spark 视图仅在 Spark 池实例之间共享。
 

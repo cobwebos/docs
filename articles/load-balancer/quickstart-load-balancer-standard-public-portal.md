@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: eb23f1e703c2e447c484ccb366914cb4b23c5bf7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f9d736098e42bf5ca07eca0cb952275c5e39c2a9
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536534"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87125184"
 ---
 # <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建负载均衡器以对 VM 进行负载均衡
 
@@ -66,7 +66,7 @@ ms.locfileid: "86536534"
 
 3. 接受剩余设置的默认值，然后选择“查看 + 创建”。
 
-4. 在“查看 + 创建”选项卡中，选择“创建”。    
+4. 在“查看 + 创建”选项卡中，选择“创建”。   
     
     :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-standard-load-balancer.png" alt-text="创建标准负载均衡器" border="true":::
  
@@ -98,7 +98,7 @@ ms.locfileid: "86536534"
 
 创建名为 **myHealthProbe** 的运行状况探测来监视 VM 的运行状况。
 
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。  
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。
 
 2. 在“设置”下，依次选择“运行状况探测”、“添加”。
     
@@ -111,7 +111,7 @@ ms.locfileid: "86536534"
     | 不正常阈值 | 选择“2”，作为将 VM 视为不正常所要达到的**不正常阈值**或连续探测失败次数。|
     | | |
 
-3. 选择“确定” 。
+3. 将剩余的字段保留默认设置，然后选择“确定”。
 
 ### <a name="create-a-load-balancer-rule"></a>创建负载均衡器规则
 
@@ -140,7 +140,7 @@ ms.locfileid: "86536534"
     | 后端端口 | 输入 **80**。 |
     | 后端池 | 选择“myBackendPool”。|
     | 运行状况探测 | 选择“myHealthProbe”。 |
-    | 创建隐式出站规则 | 请选择“是”。 </br> 有关详细信息和高级出站规则配置，请参阅： </br> [Azure 中的出站连接](load-balancer-outbound-connections.md) </br> [通过使用 Azure 门户在标准负载均衡器中配置负载均衡和出站规则](configure-load-balancer-outbound-portal.md)
+    | 创建隐式出站规则 | 请选择“否”。
 
 4. 将剩余的字段保留默认设置，然后选择“确定”。
 
@@ -177,7 +177,7 @@ ms.locfileid: "86536534"
 
 1. 在门户的左上方，选择“创建资源” > “计算” > “虚拟机”  。 
    
-2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择值： 
+2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择值：
 
     | 设置 | “值”                                          |
     |-----------------------|----------------------------------|
@@ -208,7 +208,7 @@ ms.locfileid: "86536534"
     | 子网 | myBackendSubnet |
     | 公共 IP | 接受“myVM-ip”的默认值。 </br> IP 将自动成为区域 1 中的标准 SKU IP。 |
     | NIC 网络安全组 | 选择“高级”|
-    | 配置网络安全组 | 选择“新建”。 </br> 在“创建网络安全组”中，在“名称”中输入“myNSG”  。 </br> 在“入站规则”下，选择“+ 添加入站规则” 。 </br> 在“目标端口范围”下，输入“80” 。 </br> 在“优先级”下，输入“100” 。 </br> 在“名称”中，输入“myHTTPRule”  </br> 选择“添加” </br> 选择“确定” |
+    | 配置网络安全组 | 选择“新建”。 </br> 在“创建网络安全组”中，在“名称”中输入“myNSG”  。 </br> 在“入站规则”下，选择“+ 添加入站规则” 。 </br> 在“目标端口范围”下，输入“80” 。 </br> 在“优先级”下，输入“100” 。 </br> 在“名称”中，输入“myHTTPRule” </br> 选择“添加” </br> 选择“确定” |
     | **负载均衡**  |
     | 是否将此虚拟机置于现有负载均衡解决方案之后？ | 选择“是” |
     | **负载均衡设置** |
@@ -237,6 +237,49 @@ ms.locfileid: "86536534"
     | 可用性区域 | **2** |**3**|
     | 网络安全组 | 选择现有的“myNSG”| 选择现有的“myNSG”|
 
+## <a name="create-outbound-rule-configuration"></a>创建出站规则配置
+负载均衡器出站规则为后端池中的 VM 配置出站 SNAT。 
+
+有关出站连接的详细信息，请参阅 [Azure 中的出站连接](load-balancer-outbound-connections.md)。
+
+### <a name="create-outbound-rule"></a>创建出站规则
+
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。
+
+2. 在“设置”下，依次选择“出站规则”、“添加”。
+
+3. 使用以下值配置出站规则：
+
+    | 设置 | 值 |
+    | ------- | ----- |
+    | 名称 | 输入 myOutboundRule。 |
+    | 前端 IP 地址 | 选择“新建”。 </br> 在“名称”中输入“LoadBalancerFrontEndOutbound”。 </br> 选择“IP 地址”或“IP 前缀”。 </br> 在“公共 IP 地址”或“公共 IP 前缀”下选择“新建”。 </br> 对于“名称”，请输入“myPublicIPOutbound”或“myPublicIPPrefixOutbound”。 </br> 选择“确定” 。 </br> 选择“添加”  。|
+    | 空闲超时（分钟） | 将滑块移动到 15 分钟。|
+    | TCP 重置 | 选择“启用”。|
+    | 后端池 | 选择“新建”。 </br> 在“名称”中输入“myBackendPoolOutbound”。 </br> 选择 **添加** 。 |
+    | 端口分配 -> 端口分配 | 选择“手动选择出站端口数” |
+    | 出站端口 -> 选择方式 | 选择“每个实例的端口数” |
+    | 出站端口 -> 每个实例的端口数 | 输入“10000”。 |
+
+4. 选择 **添加** 。
+
+### <a name="add-virtual-machines-to-outbound-pool"></a>向出站池添加虚拟机
+
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。  
+
+2. 在“设置”下，选择“后端池”。 
+
+3. 选择“myBackendPoolOutbound”。
+
+4. 在“虚拟网络”中，选择“myVNet”。
+
+5. 在“虚拟机”中，选择“+ 添加”。
+
+6. 选中“myVM1”、“myVM2”和“myVM3”旁边的框。 
+
+7. 选择“添加”  。
+
+8. 选择“保存” 。
 
 # <a name="option-2-create-a-load-balancer-basic-sku"></a>[选项 2：创建负载均衡器（基本 SKU）](#tab/option-1-create-load-balancer-basic)
 
@@ -268,7 +311,7 @@ ms.locfileid: "86536534"
 
 3. 接受剩余设置的默认值，然后选择“查看 + 创建”。
 
-4. 在“查看 + 创建”选项卡中，选择“创建”。    
+4. 在“查看 + 创建”选项卡中，选择“创建”。   
 
     :::image type="content" source="./media/quickstart-load-balancer-standard-public-portal/create-basic-load-balancer.png" alt-text="创建基本负载均衡器" border="true":::
 
@@ -302,13 +345,13 @@ ms.locfileid: "86536534"
 
 创建后端地址池 **myBackendPool** 以包含用于对 Internet 流量进行负载均衡的虚拟机。
 
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。  
 
 2. 在“设置”下，依次选择“后端池”、“添加”。
 
 3. 在“添加后端池”页上，输入或选择：
     
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入“myBackendPool”。 |
     | 虚拟网络 | 选择“myVNet”。 |
@@ -326,7 +369,7 @@ ms.locfileid: "86536534"
 
 2. 在“设置”下，依次选择“运行状况探测”、“添加”。
     
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 **myHealthProbe**。 |
     | 协议 | 选择“HTTP”。 |
@@ -354,7 +397,7 @@ ms.locfileid: "86536534"
 
 3. 使用以下值配置负载均衡规则：
     
-    | 设置 | 值 |
+    | 设置 | Value |
     | ------- | ----- |
     | 名称 | 输入 **myHTTPRule**。 |
     | IP 版本 | 选择“IPv4” |
@@ -387,7 +430,7 @@ ms.locfileid: "86536534"
 
 1. 在门户的左上方，选择“创建资源” > “计算” > “虚拟机”  。 
    
-2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择值： 
+2. 在“创建虚拟机”中，在“基本信息”选项卡中键入或选择值：
 
     | 设置 | 值                                          |
     |-----------------------|----------------------------------|
@@ -418,7 +461,7 @@ ms.locfileid: "86536534"
     | 子网 | 选择“myBackendSubnet” |
     | 公共 IP | 选择“新建” </br> 在“名称”中输入“myVM-ip”。 </br> 选择“确定” |
     | NIC 网络安全组 | 选择“高级”|
-    | 配置网络安全组 | 选择“新建”。 </br> 在“创建网络安全组”中，在“名称”中输入“myNSG”  。 </br> 在“入站规则”下，选择“+ 添加入站规则” 。 </br> 在“目标端口范围”下，输入“80” 。 </br> 在“优先级”下，输入“100” 。 </br> 在“名称”中，输入“myHTTPRule”  </br> 选择“添加” </br> 选择“确定” |
+    | 配置网络安全组 | 选择“新建”。 </br> 在“创建网络安全组”中，在“名称”中输入“myNSG”  。 </br> 在“入站规则”下，选择“+ 添加入站规则” 。 </br> 在“目标端口范围”下，输入“80” 。 </br> 在“优先级”下，输入“100” 。 </br> 在“名称”中，输入“myHTTPRule” </br> 选择“添加” </br> 选择“确定” |
     | **负载均衡**  |
     | 是否将此虚拟机置于现有负载均衡解决方案之后？ | 请选择“否” |
  
@@ -441,13 +484,14 @@ ms.locfileid: "86536534"
     | 名称 |  **myVM2** |**myVM3**|
     | 可用性集| 选择“myAvailabilitySet” | 选择“myAvailabilitySet”|
     | 网络安全组 | 选择现有的“myNSG”| 选择现有的“myNSG”|
+
 ---
 
-### <a name="install-iis"></a>安装 IIS
+## <a name="install-iis"></a>安装 IIS
 
-1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择位于“myResourceGroupLB”资源组中的“myVM1”。   
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择位于“myResourceGroupLB”资源组中的“myVM1”。
 
-2. 在“概述”页面上，选择“连接”，为虚拟机下载 RDP 文件。 
+2. 在“概述”页面上，选择“连接”，为虚拟机下载 RDP 文件。
 
 3. 打开该 RDP 文件。
 
@@ -488,7 +532,7 @@ ms.locfileid: "86536534"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要本教程中创建的资源组、负载均衡器和所有相关资源，请将其删除。 为此，请选择包含资源的资源组“myResourceGroupSLB”，然后选择“删除”。 
+如果不再需要本教程中创建的资源组、负载均衡器和所有相关资源，请将其删除。 为此，请选择包含资源的资源组“myResourceGroupSLB”，然后选择“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

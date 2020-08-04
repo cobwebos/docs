@@ -1,5 +1,5 @@
 ---
-title: 使用 SQL 按需版本（预览版）在 Synapse SQL 中访问存储中的文件
+title: 使用按需 SQL（预览版）访问存储上的文件
 description: 介绍如何使用 SQL 按需版本（预览版）资源在 Synapse SQL 中查询存储文件。
 services: synapse-analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: f786e92ca99c4c1700d00adf396ba1127b66ea7c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d7f990b059346c4c782ca923e663997317c4df16
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247092"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87046875"
 ---
 # <a name="accessing-external-storage-in-synapse-sql-on-demand"></a>访问 Synapse SQL 中的外部存储（按需版本）
 
@@ -43,7 +43,7 @@ SELECT * FROM
 - Azure AD 用户 - OPENROWSET 将使用调用方的 Azure AD 标识来访问 Azure 存储或通过匿名访问来访问存储。
 - SQL 用户 - OPENROWSET 将通过匿名访问来访问存储。
 
-SQL 主体也可以使用 OPENROWSET 直接查询受 SAS 令牌保护的文件或工作区的托管标识。 如果 SQL 用户执行此函数，则具有 ALTER ANY CREDENTIAL 权限的 Power User 必须创建服务器范围的凭据，该凭据与该函数（使用存储名称和容器）中的 URL 匹配，并向 OPENROWSET 函数的调用方授予此凭据的 REFERENCES 权限：
+SQL 主体也可以使用 OPENROWSET 直接查询受 SAS 令牌保护的文件或工作区的托管标识。 如果 SQL 用户执行此函数，则具有 `ALTER ANY CREDENTIAL` 权限的 Power User 必须创建服务器范围的凭据，该凭据与该函数（使用存储名称和容器）中的 URL 匹配，并向 OPENROWSET 函数的调用方授予此凭据的 REFERENCES 权限：
 
 ```sql
 EXECUTE AS somepoweruser
@@ -87,8 +87,8 @@ DATABASE SCOPED CREDENTIAL 指定如何访问参考数据源（当前为 SAS 和
 调用方必须具有以下权限之一才能执行 OPENROWSET 函数：
 
 - 执行 OPENROWSET 所需的权限之一：
-  - ADMINISTER BULK OPERATION，使登录名可以执行 OPENROWSET 函数。
-  - ADMINISTER DATABASE BULK OPERATION，使数据库范围内的用户可以执行 OPENROWSET 函数。
+  - `ADMINISTER BULK OPERATIONS`，使登录名可以执行 OPENROWSET 函数。
+  - `ADMINISTER DATABASE BULK OPERATIONS`，使数据库范围内的用户可以执行 OPENROWSET 函数。
 - EXTERNAL DATA SOURCE 中引用的凭据的 REFERENCES DATABASE SCOPED CREDENTIAL
 
 #### <a name="accessing-anonymous-data-sources"></a>访问匿名数据源
@@ -151,13 +151,13 @@ FROM dbo.DimProductsExternal
 
 | 查询 | 所需的权限|
 | --- | --- |
-| OPENROWSET(BULK)，不包含数据源 | `ADMINISTER BULK ADMIN`、`ADMINISTER DATABASE BULK ADMIN` 或 SQL 登录名必须对受 SAS 保护的存储具有 REFERENCES CREDENTIAL::\<URL> |
-| OPENROWSET(BULK)，包含不带凭据的数据源 | `ADMINISTER BULK ADMIN` 或 `ADMINISTER DATABASE BULK ADMIN`， |
-| OPENROWSET(BULK)，包含带凭据的数据源 | `ADMINISTER BULK ADMIN`、`ADMINISTER DATABASE BULK ADMIN` 或 `REFERENCES DATABASE SCOPED CREDENTIAL` |
+| OPENROWSET(BULK)，不包含数据源 | `ADMINISTER BULK OPERATIONS`、`ADMINISTER DATABASE BULK OPERATIONS` 或 SQL 登录名必须对受 SAS 保护的存储具有 REFERENCES CREDENTIAL::\<URL> |
+| OPENROWSET(BULK)，包含不带凭据的数据源 | `ADMINISTER BULK OPERATIONS` 或 `ADMINISTER DATABASE BULK OPERATIONS`， |
+| OPENROWSET(BULK)，包含带凭据的数据源 | `REFERENCES DATABASE SCOPED CREDENTIAL` 和 `ADMINISTER BULK OPERATIONS` 之一或 `ADMINISTER DATABASE BULK OPERATIONS` 之一 |
 | CREATE EXTERNAL DATA SOURCE | `ALTER ANY EXTERNAL DATA SOURCE` 和 `REFERENCES DATABASE SCOPED CREDENTIAL` |
 | CREATE EXTERNAL TABLE | `CREATE TABLE`、`ALTER ANY SCHEMA`、`ALTER ANY EXTERNAL FILE FORMAT` 和 `ALTER ANY EXTERNAL DATA SOURCE` |
 | SELECT FROM EXTERNAL TABLE | `SELECT TABLE` 和 `REFERENCES DATABASE SCOPED CREDENTIAL` |
-| CETAS | 创建表：`CREATE TABLE`、`ALTER ANY SCHEMA`、`ALTER ANY DATA SOURCE` 和 `ALTER ANY EXTERNAL FILE FORMAT`。 读取数据：查询中每个表/视图/函数的 `ADMIN BULK OPERATIONS` 或 `REFERENCES CREDENTIAL` 或 `SELECT TABLE` + 对存储的 R/W 权限 |
+| CETAS | 创建表：`CREATE TABLE`、`ALTER ANY SCHEMA`、`ALTER ANY DATA SOURCE` 和 `ALTER ANY EXTERNAL FILE FORMAT`。 读取数据：查询中每个表/视图/函数的 `ADMINISTER BULK OPERATIONS` 或 `REFERENCES CREDENTIAL` 或 `SELECT TABLE` + 对存储的 R/W 权限 |
 
 ## <a name="next-steps"></a>后续步骤
 
