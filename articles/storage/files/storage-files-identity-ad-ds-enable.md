@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: e2f38daea40f89e73422ca8115f2425758be81a4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 612584a71aa6be54d726ccdd74d9368ba9cddbc9
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87413096"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535070"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>第一部分：为 Azure 文件共享启用 AD DS 身份验证 
 
@@ -30,7 +30,7 @@ AzFilesHybrid PowerShell 模块中的 cmdlet 进行必要的修改，并为你�
 
 - [下载并解压缩 AzFilesHybrid 模块](https://github.com/Azure-Samples/azure-files-samples/releases)（GA 模块： v 为 0.2.0 +）
 - 使用有权在目标 AD 中创建服务登录帐户或计算机帐户的 AD DS 凭据在加入本地 AD DS 域的设备中安装和执行模块。
--  使用同步到 Azure AD 的本地 AD DS 凭据运行该脚本。 本地 AD DS 凭据必须具有存储帐户所有者或参与者 RBAC 角色权限。
+-  使用同步到 Azure AD 的本地 AD DS 凭据运行该脚本。 本地 AD DS 凭据必须具有存储帐户所有者或参与者 Azure 角色权限。
 
 ### <a name="run-join-azstorageaccountforauth"></a>运行 AzStorageAccountForAuth
 

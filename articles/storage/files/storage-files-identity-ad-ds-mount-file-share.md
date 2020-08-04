@@ -7,18 +7,18 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
-ms.openlocfilehash: 40d372eb5569f3a4079acda3ab1e43b3e86cc113
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9807563c768b82c823ff754aaa679ddc917bf62d
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999592"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535053"
 ---
 # <a name="part-four-mount-a-file-share-from-a-domain-joined-vm"></a>第四部分：从已加入域的 VM 装载文件共享
 
 在开始本文之前，请确保已完成上一篇文章，[通过 SMB 配置目录和文件级权限](storage-files-identity-ad-ds-configure-permissions.md)。
 
-本文中所述的过程验证是否正确设置了文件共享和访问权限，并且可以从已加入域的 VM 访问 Azure 文件共享。 共享级 RBAC 角色分配可能需要一些时间才能生效。 
+本文中所述的过程验证是否正确设置了文件共享和访问权限，并且可以从已加入域的 VM 访问 Azure 文件共享。 共享级 Azure 角色分配可能需要一些时间才能生效。 
 
 使用你向其授予权限的凭据登录到客户端，如下图所示。
 

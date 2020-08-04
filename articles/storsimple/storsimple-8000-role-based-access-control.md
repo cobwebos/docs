@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 58332be22600620e7a3ff1f455f96fe0d786d846
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 04993d36689c917db05a1b5f2132b107c7c9b412
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500038"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535104"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>适用于 StorSimple 的基于角色的访问控制
 
@@ -29,7 +29,7 @@ ms.locfileid: "87500038"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="rbac-roles-for-storsimple"></a>StorSimple 的 RBAC 角色
+## <a name="azure-roles-for-storsimple"></a>适用于 StorSimple 的 Azure 角色
 
 可基于角色分配 RBAC。 该角色可确保根据环境中的可用资源授予特定的权限级别。 StorSimple 用户可以选择以下两种类型的角色：内置或自定义。
 
@@ -58,7 +58,7 @@ ms.locfileid: "87500038"
     Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
-4. 在 Visual Studio 中打开 JSON 文件。 可看到典型的 RBAC 角色由三个主要节组成：Actions、NotActions 和 AssignableScopes************。
+4. 在 Visual Studio 中打开 JSON 文件。 你会看到，典型的 Azure 角色由三个主要部分组成： **Actions**、 **NotActions**和**AssignableScopes**。
 
     Actions 节列出了允许此角色执行的所有操作****。 每个操作都是从资源提供程序分配的。 对于 StorSimple 基础结构管理员，请使用 `Microsoft.StorSimple` 资源提供程序。
 
@@ -68,9 +68,9 @@ ms.locfileid: "87500038"
 
     还可查看可用于管理资源提供程序的所有 PowerShell cmdlet。
 
-    NotActions 节列出了特定 RBAC 角色的所有受限制操作****。 在此示例中，不会限制任何操作。
+    在**NotActions**部分中，将列出特定 Azure 角色的所有受限操作。 在此示例中，不会限制任何操作。
     
-    AssignableScopes 下列出了订阅 ID****。 确保 RBAC 角色包含它所应用到的显式订阅 ID。 如果未指定正确的订阅 ID，则不能导入订阅中的角色。
+    AssignableScopes 下列出了订阅 ID****。 确保 Azure 角色包含使用它的显式订阅 ID。 如果未指定正确的订阅 ID，则不能导入订阅中的角色。
 
     编辑文件，同时记住上述注意事项。
 
@@ -109,7 +109,7 @@ ms.locfileid: "87500038"
 
 此角色现应显示在“访问控制”边栏选项卡的角色列表中****。
 
-![查看 RBAC 角色](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
+![查看 Azure 角色](./media/storsimple-8000-role-based-access-control/rbac-role-types.png)
 
 有关详细信息，请转到[客户角色](../role-based-access-control/custom-roles.md)。
 
@@ -167,7 +167,7 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 1. 中转到 "**访问控制（IAM）**"。 在“访问控制”边栏选项卡上单击“+ 添加”****。
 
-    ![添加对 RBAC 角色的访问权限](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
+    ![添加对 Azure 角色的访问权限](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
 
 2. 选择要分配的角色，在本例中为“StorSimple 基础结构管理员”****。
 
@@ -175,7 +175,7 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 4. 选择“保存”创建分配****。
 
-    ![将权限添加到 RBAC 角色](./media/storsimple-8000-role-based-access-control/rbac-create-role-infra-admin.png)
+    ![将权限添加到 Azure 角色](./media/storsimple-8000-role-based-access-control/rbac-create-role-infra-admin.png)
 
 “添加用户”通知会跟踪进度****。 成功添加用户后，访问控制中的用户列表会进行更新。
 

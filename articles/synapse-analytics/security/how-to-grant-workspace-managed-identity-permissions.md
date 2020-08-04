@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2b11f11ac8a0d4f3a0623c2903dfc9355e875d14
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5c07943d517f893e67eed5103660a953b508cc87
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501927"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87535036"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>向工作区托管标识授予权限（预览）
 
@@ -84,11 +84,11 @@ ms.locfileid: "87501927"
 
 ![添加新的角色分配](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-9.png)
 
-#### <a name="step-5-select-the-rbac-role"></a>步骤5：选择 RBAC 角色
+#### <a name="step-5-select-the-azure-role"></a>步骤5：选择 Azure 角色
 
 选择 "**存储 Blob 数据参与者**" 角色。
 
-![选择 RBAC 角色](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-10.png)
+![选择 Azure 角色](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-10.png)
 
 #### <a name="step-6-select-the-azure-ad-security-principal"></a>步骤6：选择 Azure AD 安全主体
 
