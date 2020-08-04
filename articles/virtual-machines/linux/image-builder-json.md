@@ -3,17 +3,17 @@ title: 创建 Azure 映像生成器模板（预览版）
 description: 了解如何创建与 Azure 映像生成器配合使用的模板。
 author: danielsollondon
 ms.author: danis
-ms.date: 07/09/2020
+ms.date: 08/03/2020
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: fe4ddeaadedc14e7e3d92a8b185920bf18bd142b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 132e547fe2512676e4d8082744489f4719dcc0bf
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283293"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543599"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览版：创建 Azure 映像生成器模板 
 
@@ -142,12 +142,13 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 
 ## <a name="properties-source"></a>属性：source
 
-`source` 节包含有关映像生成器要使用的源映像的信息。
+映像生成器目前仅支持 HyperV 第1代映像和 Vm， `source` 部分包含有关映像生成器将使用的源映像的信息。
 
 API 需要通过一个“SourceType”来定义用于生成映像的源，目前有三种类型：
 - PlatformImage - 表示源映像是市场映像。
 - ManagedImage - 从常规托管映像开始生成时，请使用此类型。
 - SharedImageVersion - 使用共享映像库中的映像版本作为源时，请使用此类型。
+
 
 > [!NOTE]
 > 使用现有的 Windows 自定义映像时，可在单个 Windows 映像上运行 Sysprep 命令最多8次，有关详细信息，请参阅[Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)文档。
@@ -191,7 +192,10 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 ```
 ### <a name="managedimage-source"></a>ManagedImage 源
 
-将源映像设置为通用化 VHD 或 VM 的现有托管映像。 源托管映像必须采用受支持的 OS，并与 Azure 映像生成器模板位于同一区域中。 
+将源映像设置为通用化 VHD 或 VM 的现有托管映像。
+
+> [!NOTE]
+> 源托管映像必须是受支持的操作系统，并且映像必须与 Azure 映像生成器模板的区域相同。 
 
 ```json
         "source": { 
@@ -204,7 +208,11 @@ az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all
 
 
 ### <a name="sharedimageversion-source"></a>SharedImageVersion 源
-将源映像设置为共享映像库中的现有映像版本。 映像版本必须采用受支持的 OS，并且映像必须复制到 Azure 映像生成器模板所在的区域。 
+将源映像设置为共享映像库中的现有映像版本。
+
+> [!NOTE]
+> 源托管映像必须是受支持的操作系统，并且映像必须与 Azure 映像生成器模板具有相同的区域，否则请将映像版本复制到映像生成器模板区域。
+
 
 ```json
         "source": { 

@@ -1,6 +1,6 @@
 ---
 title: Azure 中客户数据的保护
-description: 本文介绍 Azure 如何保护客户数据。
+description: 了解 Azure 如何通过数据隔离、数据冗余和数据销毁来保护客户数据。
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2020
 ms.author: terrylan
-ms.openlocfilehash: 4f3b4b5e26c8feab44a01d3714c194eee0fc98e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14589e4efe22d89468b069bf6ff7e3d9babcc714
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076285"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543786"
 ---
 # <a name="azure-customer-data-protection"></a>Azure 客户数据保护   
 默认情况下，拒绝 Microsoft 运营和支持人员访问客户数据。 当授予对与支持案例相关的数据的访问权限时，只会使用基于我们的符合性和隐私策略进行审核和审查的策略的实时（JIT）模型来授予它。  访问控制要求由以下 Azure 安全策略制定：

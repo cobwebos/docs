@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 01/21/2020
-ms.openlocfilehash: accd7c3ad82853c1f2af0b632326b2798f85b36b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 965d5dd558d0da7a758db77330c9129ea0e8247c
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073653"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543854"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>将 Linux 计算机连接到 Azure Monitor
 
@@ -163,7 +163,8 @@ OMS 代理对 Linux 提供了有限的自定义支持。
 - FIPs
 
 以下项已计划，但尚不受支持：
-- CI-SELINUX
+- CIS
+- SELINUX
 
 其他强化和自定义方法不受支持，也不会计划用于 OMS 代理。  
 

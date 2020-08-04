@@ -1,18 +1,18 @@
 ---
 title: 适用于虚拟机和虚拟机规模集的 Azure 磁盘加密
-description: 本文概述 Azure 磁盘加密
+description: 了解虚拟机（Vm）和 VM 规模集的 Azure 磁盘加密。 Azure 磁盘加密适用于 Linux 和 Windows Vm。
 author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
 ms.date: 10/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: c881b2b9743766e4d35e6cb05f6f3469803850bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 21194bf2fe76a7eb0ee034d4a502c20ee3032dd9
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80062129"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543667"
 ---
 # <a name="azure-disk-encryption-for-virtual-machines-and-virtual-machine-scale-sets"></a>适用于虚拟机和虚拟机规模集的 Azure 磁盘加密
 

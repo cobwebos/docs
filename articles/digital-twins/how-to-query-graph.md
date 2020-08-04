@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3e7ee90d75a2ff2b3552992c19f11cc86b6109ca
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5d9d7c59244474c76e63271c0be92f835c2ed087
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486642"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543344"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查询 Azure 数字孪生克隆图形
 
-本文提供了有关使用[Azure 数字孪生查询存储语言](concepts-query-language.md)来查询克隆[图形](concepts-twins-graph.md)以获取信息的示例和更多详细信息。 使用 Azure 数字孪生[**查询 api**](how-to-use-apis-sdks.md)在图形上运行查询。
+本文提供了有关使用[Azure 数字孪生查询语言](concepts-query-language.md)查询克隆[图形](concepts-twins-graph.md)以获取信息的示例和更多详细信息。 使用 Azure 数字孪生[**查询 api**](how-to-use-apis-sdks.md)在图形上运行查询。
 
 [!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
 
@@ -87,11 +87,11 @@ SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', ex
 
 ### <a name="query-based-on-relationships"></a>基于关系的查询
 
-当基于数字孪生关系进行查询时，Azure 数字孪生查询存储语言具有特殊的语法。
+当基于数字孪生关系进行查询时，Azure 数字孪生查询语言具有特殊的语法。
 
 关系将被提取到子句中的查询范围内 `FROM` 。 "经典" SQL 类型语言中的一个重要区别在于，此子句中的每个表达式 `FROM` 不是一个表; 相反， `FROM` 子句表示跨实体关系遍历，并使用 Azure 数字孪生版本编写 `JOIN` 。 
 
-回忆一下，通过 Azure 数字孪生[模型](concepts-models.md)功能，关系不能独立于孪生存在。 这就意味着，Azure 数字孪生查询存储语言与 `JOIN` 一般 SQL 的不同之处 `JOIN` ，因为此处的关系不能单独查询，必须绑定到一个完全不同的位置。
+回忆一下，通过 Azure 数字孪生[模型](concepts-models.md)功能，关系不能独立于孪生存在。 这意味着，Azure 数字孪生查询语言与 `JOIN` 常规 SQL 略有不同 `JOIN` ，因为此处的关系不能单独查询，必须绑定到一个完全不同的位置。
 为了引入这种差异， `RELATED` 子句中使用关键字 `JOIN` 来引用克隆的一组关系。 
 
 以下部分提供了此类外观的几个示例。
@@ -117,7 +117,7 @@ WHERE T.$dtId = 'ABC'
 
 #### <a name="query-the-properties-of-a-relationship"></a>查询关系的属性
 
-类似于通过 DTDL 描述的数字孪生的方式，关系也可以具有属性。 使用 Azure 数字孪生查询存储语言，可以通过将别名分配给子句内的关系，来筛选和投影关系 `JOIN` 。 
+类似于通过 DTDL 描述的数字孪生的方式，关系也可以具有属性。 使用 Azure 数字孪生查询语言，可以通过将别名分配给子句内的关系，来筛选和投影关系 `JOIN` 。 
 
 例如，假设有一个具有*reportedCondition*属性的*servicedBy*关系。 在下面的查询中，为此关系提供了一个 "R" 别名，以便引用其属性。
 

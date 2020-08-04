@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: d61527a7a57c82c0e1485ef249306618def9a57c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1566de36d6176568b148fde965bb7d3051e6b500
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077938"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543463"
 ---
 # <a name="what-is-azure-private-endpoint"></a>什么是 Azure 专用终结点？
 
@@ -66,13 +66,13 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 |**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |
 |**Azure IoT 中心** | Microsoft.Devices/IotHubs    | iotHub |
 |**Azure Key Vault** | Microsoft.KeyVault/vaults    | 保管库 |
-|**Azure Kubernetes 服务 - Kubernetes API** | Microsoft.ContainerService/managedClusters    | managedCluster |
+|**Azure Kubernetes 服务 - Kubernetes API** | Microsoft.ContainerService/managedClusters    | 管理 |
 |**Azure 搜索** | Microsoft.Search/searchService| searchService|  
 |**Azure 容器注册表** | Microsoft.ContainerRegistry/registries    | 注册表 |
 |**Azure 应用配置** | Microsoft.Appconfiguration/configurationStores    | configurationStores |
 |**Azure 备份** | Microsoft.RecoveryServices/vaults    | 保管库 |
-|**Azure 事件中心** | Microsoft.EventHub/namespaces    | namespace |
-|**Azure 服务总线** | Microsoft.ServiceBus/namespaces | namespace |
+|**Azure 事件中心** | Microsoft.EventHub/namespaces    | 命名空间 |
+|**Azure 服务总线** | Microsoft.ServiceBus/namespaces | 命名空间 |
 |**Azure 中继** | Microsoft.Relay/namespaces | 命名空间 |
 |**Azure 事件网格** | Microsoft.EventGrid/topics    | 主题 |
 |**Azure 事件网格** | Microsoft.EventGrid/domains    | 域 |
@@ -126,7 +126,7 @@ Azure 专用终结点是一个网络接口，可以将你通过专用且安全�
 下表列出了使用专用终结点时的已知限制： 
 
 
-|限制 |说明 |缓解措施  |
+|限制 |说明 |缓解操作  |
 |---------|---------|---------|
 |网络安全组 (NSG) 规则和用户定义的路由不适用于专用终结点    |专用终结点不支持 NSG。 尽管包含专用终结点的子网可以有关联的 NSG，但这些规则不会针对专用终结点处理的流量生效。 必须[禁用网络策略的强制实施](disable-private-endpoint-network-policy.md)，才能在子网中部署专用终结点。 NSG 仍会在同一子网中托管的其他工作负荷上强制实施。 任何客户端子网上的路由将使用 /32 前缀，更改默认路由行为需要类似的 UDR  | 对源客户端上的出站流量使用 NSG 规则来控制流量。 部署具有 /32 前缀的单个路由，以替代专用终结点路由。 仍支持出站连接的 NSG 流日志和监视信息，并且可以使用这些信息        |
 

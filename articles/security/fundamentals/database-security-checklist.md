@@ -1,6 +1,6 @@
 ---
 title: Azure 数据库安全性清单 | Microsoft Docs
-description: 本文提供有关 Azure 数据库安全性的一组清单。
+description: 使用 Azure 数据库安全性清单确保解决了重要的云计算安全问题。
 services: security
 documentationcenter: na
 author: unifycloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: fc79d7204ba360696b8d9411cd56efd09d1678dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ad8f15f7d1cf69824bfb9298d7ccf097e4893ea8
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84021834"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542970"
 ---
 # <a name="azure-database-security-checklist"></a>Azure 数据库安全性清单
 

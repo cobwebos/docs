@@ -6,12 +6,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions
-ms.openlocfilehash: d1cfbe1db33661dd712dfbc53670fb8f0525a481
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1e62af4f2ab8233125777bf6edf713758e4f2ec7
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507023"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543072"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>创建 Azure Kubernetes 服务 (AKS) 群集并将其配置为通过 Azure CLI 使用虚拟节点
 
@@ -69,6 +69,7 @@ az provider register --namespace Microsoft.ContainerInstance
 * ACI 中的 exec 的[参数](../container-instances/container-instances-exec.md#restrictions)
 * [DaemonSet](concepts-clusters-workloads.md#statefulsets-and-daemonsets) 不会将 Pod 部署到虚拟节点
 * 虚拟节点支持计划 Linux Pod。 你可以手动安装开源 [Virtual Kubelet ACI](https://github.com/virtual-kubelet/azure-aci) 提供程序，以便将 Windows Server 容器调度到 ACI。
+* 虚拟节点需要具有 Azure CNI 网络的 AKS 群集
 
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 

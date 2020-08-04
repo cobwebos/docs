@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 0e538299dfc9c9406b519d888d1a92c5c643bb03
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: eea64520dd5440467c911b6de42d8c8c31fc1bde
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421733"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543446"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的故障排除和限制
 
@@ -151,7 +151,8 @@ Azure Cloud Shell 非常重视你的个人数据，Azure Cloud Shell 服务捕�
 ### <a name="export"></a>导出
 若要导出 Cloud Shell 为你保存的用户设置（如首选 shell、字号和字体类型），请运行以下命令****。
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
+1. [![显示标记为 "启动 Azure Cloud Shell" 的按钮的图像。](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+
 2. 在 Bash 或 PowerShell 中运行以下命令：
 
 Bash：
@@ -174,7 +175,8 @@ PowerShell：
 >[!Note]
 > 如果删除用户设置，不会删除实际的 Azure 文件共享。 请转到“Azure 文件”完成该操作。
 
-1. [![](https://shell.azure.com/images/launchcloudshell.png "Launch Azure Cloud Shell")](https://shell.azure.com)
+1. [![显示标记为 "启动 Azure Cloud Shell" 的按钮的图像。](https://shell.azure.com/images/launchcloudshell.png)](https://shell.azure.com)
+
 2. 在 Bash 或 PowerShell 中运行以下命令：
 
 Bash：

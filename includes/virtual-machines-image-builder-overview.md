@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 05/15/2020
+ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 0a4dcf749a76623df7f46d77bf3e4877f2c41900
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 8ad191ca0d31abf317bab521dfbbc7c2567c3450
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83821486"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87545170"
 ---
 借助标准化虚拟机 (VM) 映像，组织可迁移到云，并确保在部署中保持一致。 映像通常包括预定义的安全性和配置设置，以及必需的软件。 设置自己的映像管道需要时间、基础结构和设置，但使用 Azure VM 映像生成器，只需提供一个描述映像的简单配置，将其提交给该服务，即可构建映像并进行分发。
  
@@ -70,9 +70,9 @@ Azure 映像生成器是一种完全托管的 Azure 服务，可通过 Azure 资
 ![Azure 映像生成器进程的概念图](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
 1. 将映像模板创建为 .json 文件。 此 .json 文件包含有关映像源、自定义和分发的信息。 [Azure 映像生成器 GitHub 存储库](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)中提供了多个示例。
-1. 将其提交给服务，这将在指定的资源组中创建一个映像模板项目。 在后台，映像生成器将根据需要下载源映像或 ISO 以及脚本。 这些资源存储在订阅中自动创建的单独资源组中，格式为：IT_\<DestinationResourceGroup>_\<TemplateName>。 
-1. 创建映像模板后，就可以生成映像。 在后台，映像生成器使用模板和源文件，在 IT_\<DestinationResourceGroup>_\<TemplateName> 资源组中创建 VM（默认大小：Standard_D1_v2）、网络、公共 IP、NSG 和存储。
-1. 在创建映像的过程中，映像生成器会根据模板分发映像，然后删除 IT_\<DestinationResourceGroup>_\<TemplateName> 资源组（资源组为此进程创建）中的其他资源。
+1. 将其提交给服务，这将在指定的资源组中创建一个映像模板项目。 在后台，映像生成器将根据需要下载源映像或 ISO 以及脚本。 它们存储在在订阅中自动创建的单独资源组中，格式为： IT_ \<DestinationResourceGroup> _ \<TemplateName> 。 
+1. 创建映像模板后，就可以生成映像。 在背景图像生成器中，使用模板和源文件在 IT_ \<DestinationResourceGroup> _ 资源组中创建 VM （默认大小： Standard_D1_v2）、网络、公共 IP、NSG 和存储 \<TemplateName> 。
+1. 在创建映像的过程中，映像生成器会根据模板分发映像，然后删除 \<DestinationResourceGroup> 为该进程创建的 IT_ _ 资源组中的其他资源 \<TemplateName> 。
 
 
 ## <a name="permissions"></a>权限
@@ -97,6 +97,9 @@ Azure 映像生成器是一种完全托管的 Azure 服务，可通过 Azure 资
 映像生成器创建 D1v2 VM 大小的 VM、存储和 VM 所需的网络。 这些资源将在生成过程中持续存在，并将在映像生成器创建完映像后删除。 
  
 Azure 映像生成器会将映像分发到所选区域，这可能会产生网络流出量费用。
+
+## <a name="hyper-v-generation"></a>Hyper-v 生成
+映像生成器当前支持 Hyper-v 第1代映像和 Vm。
  
 ## <a name="next-steps"></a>后续步骤 
  

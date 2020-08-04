@@ -1,5 +1,5 @@
 ---
-title: Azure 计算单元概述
+title: Azure 计算单位概述
 description: Azure 计算单位的概念概述。 ACU 提供了一种在 Azure SKU 中比较 CPU 性能的方法。
 author: mimckitt
 ms.service: virtual-machines
@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
 ms.reviewer: davberg
-ms.openlocfilehash: 08f9f83ab3ba1acdeeebe29c7659cc38cf13ad42
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 072e42f642de3daf3d0d03a706435cffa8953888
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288602"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543616"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure 计算单元 (ACU)
 
@@ -69,6 +69,7 @@ Azure 计算单位 (ACU) 这一概念提供一种比较 Azure SKU 的计算 (CPU
 | [L4s - L32s](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [L8s_v2 - L80s_v2](lsv2-series.md) |150 - 175** | 2:1 |
 | [M](m-series.md) | 160 - 180 | 2:1\*\*\* |
+| [NV4](nvv4-series.md) |230-260 * * | 2:1 |
 
 有关各种大小的详细信息，请访问以下链接：
 

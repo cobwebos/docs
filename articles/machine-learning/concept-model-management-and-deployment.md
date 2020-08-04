@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 12d86f9415f7f5b813d2dce8eb3ad4bb63dec30c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1d14fa9730e3ddd47378a45ff7a1442bdee69ac
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82929751"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543378"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps：模型管理、部署和监视 Azure 机器学习
 
@@ -74,7 +74,7 @@ ML 管道可以包含从数据准备、到特征提取、到超参数优化、�
 ### <a name="profile-models"></a>分析模型
 
 Azure 机器学习可帮助你了解部署模型时要创建的服务的 CPU 和内存要求。 分析可测试运行模型并返回 CPU 使用率、内存使用率和响应延迟等信息的服务。 它还根据资源使用率提供 CPU 和内存建议。
-有关详细信息，请参阅[部署模型](how-to-deploy-and-where.md#profilemodel)的“分析”部分。
+有关详细信息，请参阅[部署模型](how-to-deploy-profile-model.md)的“分析”部分。
 
 ### <a name="package-and-debug-models"></a>打包和调试模型
 
@@ -132,7 +132,7 @@ Azure 机器学习可帮助你了解部署模型时要创建的服务的 CPU 和
 * 通过将流量路由到不同版本的终结点来执行 A/B 测试。
 * 通过在终结点配置中更新流量百分比，在终结点版本之间切换。
 
-有关详细信息，请参阅[ML 模型的受控推出](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)。
+有关详细信息，请参阅 [ML 模型的受控推出](how-to-deploy-azure-kubernetes-service.md#deploy-models-to-aks-using-controlled-rollout-preview)。
 
 #### <a name="iot-edge-devices"></a>IoT Edge 设备
 

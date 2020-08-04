@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: juliako
-ms.openlocfilehash: 01972ab02aa901af6144c02171efd36314e2f514
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 30164e1af1948f86c68e102f4d348674ea931e7b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091940"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87544007"
 ---
 # <a name="streaming-policies"></a>流式处理策略
 
@@ -40,7 +40,7 @@ ms.locfileid: "87091940"
 
 单击图像查看其完整大小。  
 
-<a href="./media/streaming-policy/large.png" target="_blank"><img src="./media/streaming-policy/large.png"></a> 
+[![此图显示了一个决策树，旨在帮助您为方案选择预定义的流式传输策略。](./media/streaming-policy/large.png)](./media/streaming-policy/large.png#lightbox)
 
 如果要加密内容，则需要创建[内容密钥策略](content-key-policy-concept.md)，明文流式处理或下载不需要**内容密钥策略**。 
 

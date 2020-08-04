@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 58a8bd6b8e5594f36bf27a3ad76bee137fdd1160
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: bc53a243a58522a76be63536aa721f269ed4759a
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433220"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87544041"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes 服务群集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -65,7 +65,7 @@ AKS 群集和 AML 工作区可以位于不同的资源组中。
 
 - 如果需要在群集中部署标准负载均衡器（SLB）而不是基本负载均衡器（BLB），请在 AKS 门户/CLI/SDK 中创建群集，并将其附加到 AML 工作区。
 
-- 如果附加的 AKS 群集[启用了授权 IP 范围以访问 API 服务器](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)，请为 AKS 群集启用 AML CONTOL 平面 IP 范围。 AML 控制平面跨配对区域部署，并在 AKS 群集上部署推断 pod。 如果不访问 API 服务器，则无法部署推断 pod。 在 AKS 群集中启用 IP 范围时，请使用两个[配对区域]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions)的[ip 范围](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519)。
+- 如果附加的 AKS 群集[启用了授权 IP 范围以访问 API 服务器](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)，请为 AKS 群集启用 AML 控制平面 IP 范围。 AML 控制平面跨配对区域部署，并在 AKS 群集上部署推断 pod。 如果不访问 API 服务器，则无法部署推断 pod。 在 AKS 群集中启用 IP 范围时，请使用两个[配对区域]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions)的[ip 范围](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519)。
 
 __Authroized IP 范围仅适用于标准负载均衡器。__
  
@@ -423,15 +423,12 @@ print(token)
 >
 > 若要检索令牌，必须使用 Azure 机器学习 SDK 或[az ml service get-token](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext-azure-cli-ml-az-ml-service-get-access-token)命令。
 
-## <a name="update-the-web-service"></a>更新 Web 服务
-
-[!INCLUDE [aml-update-web-service](../../includes/machine-learning-update-web-service.md)]
-
 ## <a name="next-steps"></a>后续步骤
 
 * [虚拟网络中的安全试验和推理](how-to-enable-virtual-network.md)
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [部署疑难解答](how-to-troubleshoot-deployment.md)
+* [更新 web 服务](how-to-deploy-update-web-service.md)
 * [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)

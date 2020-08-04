@@ -9,16 +9,16 @@ ms.topic: include
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2b138dab2a97537a93b8d873f79b6ee9c00b4af4
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8dfc3714362b082168c32ba73e234e9b5fb43525
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126733"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87545323"
 ---
 ## <a name="grant-role-based-access-for-users-to-azure-maps"></a>向用户授予 Azure Maps 的基于角色的访问权限
 
-可以通过将 Azure AD 组或安全主体分配给一个或多个 Azure Maps 访问控制角色定义，来授予*基于角色的访问控制*（RBAC）。 若要查看 Azure Maps 可用的 RBAC 角色定义，请访问 "**访问控制（IAM）**"。 选择 "**角色**"，然后搜索以*Azure Maps*开头的角色。
+可以通过将 Azure AD 组或安全主体分配给一个或多个 Azure Maps 访问控制角色定义，来授予*基于角色的访问控制*（RBAC）。 若要查看可用于 Azure Maps 的 Azure 角色定义，请访问**访问控制（IAM）**。 选择 "**角色**"，然后搜索以*Azure Maps*开头的角色。
 
 * 若要有效地管理大量用户对 Azure Maps 的访问权限，请参阅[Azure AD 组](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups)。
 * 对于允许用户对应用程序进行身份验证的用户，必须在 Azure AD 中创建用户。 请参阅[添加或删除使用 Azure AD 的用户](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory)。
