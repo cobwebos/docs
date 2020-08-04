@@ -1,6 +1,6 @@
 ---
-title: 教程 - 使用高级配置创建 Azure AD DS 托管域
-description: 本教程介绍如何使用 Azure 门户创建和配置 Azure Active Directory 域服务托管域并指定高级配置选项。
+title: 教程 - 创建自定义的 Azure Active Directory 域服务托管域 | Microsoft Docs
+description: 本教程介绍如何使用 Azure 门户创建和配置自定义的 Azure Active Directory 域服务托管域并指定高级配置选项。
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: b8eece33e13fca9fdef6b860513368f6c47a4628
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ead20713752b4eb28700541b4314241d86b6cc27
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518515"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87278535"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain-with-advanced-configuration-options"></a>教程：使用高级配置选项创建和配置 Azure Active Directory 域服务托管域
 
@@ -131,7 +131,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
     1. 如果选择创建虚拟网络，请输入虚拟网络的名称（例如 *myVnet*），然后提供地址范围（例如 *10.0.1.0/24*）。
     1. 创建具有明确名称的专用子网，例如 *DomainServices*。 提供地址范围，例如 *10.0.1.0/24*。
 
-    [![](./media/tutorial-create-instance-advanced/create-vnet.png "Create a virtual network and subnet for use with Azure AD Domain Services")](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
+    [![创建用于 Azure AD 域服务的虚拟网络和子网](./media/tutorial-create-instance-advanced/create-vnet.png)](./media/tutorial-create-instance-advanced/create-vnet-expanded.png#lightbox)
 
     请确保选择专用 IP 地址范围内的某个地址范围。 选择公共地址空间中你不拥有的 IP 地址范围会导致 Azure AD DS 出错。
 
@@ -159,7 +159,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 ## <a name="configure-synchronization"></a>配置同步
 
-Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围同步特定的组。 如果选择同步所有用户和组，则以后无法选择仅执行按范围同步。 有关按范围同步的详细信息，请参阅 [Azure AD 域服务的按范围同步][scoped-sync]。
+Azure AD DS 允许同步 Azure AD 中的所有用户和组，或者仅按范围同步特定的组。 现在可以更改同步范围，或在部署托管域后更改。 有关详细信息，请参阅 [Azure AD 域服务的按范围同步][scoped-sync]。
 
 1. 本教程选择了同步**所有**用户和组。 这是默认的同步选项。
 

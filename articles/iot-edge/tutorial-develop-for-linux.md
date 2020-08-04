@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 478d9c0485125870f8d5ffb4132f46476b4bb4ef
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 924654dace53b326e3a29bb834f773122b0476ab
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80384358"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081111"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>教程：开发适用于 Linux 设备的 IoT Edge 模块
 
@@ -132,7 +132,7 @@ Azure IoT Edge Tools 扩展为 Visual Studio Code 中支持的所有 IoT Edge �
    | ----- | ----- |
    | 选择文件夹 | 在适用于 VS Code 的开发计算机上选择用于创建解决方案文件的位置。 |
    | 提供解决方案名称 | 输入解决方案的描述性名称，或者接受默认的 **EdgeSolution**。 |
-   | 选择模块模板 | 选择“C# 模块”。  |
+   | 选择模块模板 | 选择“C# 模块”。 |
    | 提供模块名称 | 接受默认的 **SampleModule**。 |
    | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是基于你在上一步中提供的名称预先填充的。 将 **localhost:5000** 替换为 Azure 容器注册表中的登录服务器值。 可以在 Azure 门户的容器注册表的“概览”页中检索登录服务器。 <br><br> 最终的映像存储库看起来类似于 \<registry name\>.azurecr.io/samplemodule。 |
 
@@ -219,6 +219,12 @@ IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到�
    ```
 
    可能会收到一条安全警告，推荐使用 `--password-stdin`。 这条最佳做法是针对生产方案建议的，这超出了本教程的范畴。 有关详细信息，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) 参考。
+   
+3. 登录到 Azure 容器注册表
+
+   ```cmd/sh
+   az acr login -n <ACR registry name>
+   ```
 
 ### <a name="build-and-push"></a>生成并推送
 
@@ -262,7 +268,7 @@ Visual Studio Code 现在有权访问容器注册表，因此可以将解决方�
 如果在生成并推送模块映像时遇到错误，这通常与开发计算机上的 Docker 配置有关。 使用以下检查来检查配置：
 
 * 是否使用从容器注册表复制的凭据运行 `docker login` 命令？ 这些凭据与用于登录 Azure 的凭据不同。
-* 你的容器存储库是否正确？ 它是否拥有正确的容器注册表名称和正确的模块名称？ 打开 SampleModule 文件夹中的 **module.json** 文件进行检查。 存储库值应类似于 **\<registry name\>.azurecr.io/samplemodule**。
+* 你的容器存储库是否正确？ 它是否拥有正确的容器注册表名称和正确的模块名称？ 打开 SampleModule 文件夹中的 **module.json** 文件进行检查。 存储库值应类似于 \<registry name\>.azurecr.io/samplemodule。
 * 如果为模块使用的名称不是 **SampleModule**，那么使用的名称在整个解决方案中是否保持一致？
 * 计算机运行的容器类型与要生成的容器类型是否相同？ 本教程适用于 Linux IoT Edge 设备，因此，Visual Studio Code 应在侧栏指明 **amd64** 或 **arm32v7**，且 Docker Desktop 应运行 Linux 容器。  
 

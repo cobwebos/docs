@@ -5,15 +5,127 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
-ms.date: 04/20/2020
-ms.openlocfilehash: a1a55ceec2679034125ddd202402cabcbf71e17e
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.date: 07/27/2020
+ms.openlocfilehash: 113249f56c1f5f9c035ec2ff6ccb7309dd355763
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83698304"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281338"
 ---
 # <a name="changelog"></a>更改日志 #
+
+## <a name="235-official-update-june-1-2020"></a>2.3.5 版（正式更新，2020 年 6 月 1 日）
+
+### <a name="bug-fixes-235"></a>2\.3.5 版中的 Bug 修复
+
+- [辅助功能] “选项”窗格中的 Esc 键侦听器已附加到文档
+- [辅助功能] 防止播放器 UI 在控件条或选项菜单包含焦点时消失
+- 启用“时钟时间显示设置”时，控件条显示不正确的时钟时间
+
+### <a name="changes-235"></a>2\.3.5 版中的更改
+
+- 添加了错误代码 0x00400005 的错误消息并进行了记录
+
+## <a name="234-official-update-march-4-2020"></a>2.3.4 版（正式更新，2020 年 3 月 4 日）
+
+### <a name="bug-fixes-234"></a>2\.3.4 版中的 Bug 修复
+
+- 无法设置 PlayReady overrideLicenseAcquistionUrl
+- 无法播放某些不连续的内容
+- [辅助功能] 屏幕阅读器警报的 ID 属性值必须唯一
+- [辅助功能] 导航“隐藏式字幕”设置对话框时，焦点移出对话框
+
+### <a name="changes-234"></a>2\.3.4 版中的更改
+
+- 成功下载后记录内容长度以帮助分析 2.3.3 版（正式更新，2019 年 11 月 12 日）解密错误
+
+### <a name="features-234"></a>2\.3.4 版中的功能
+
+- 添加了对将视频时钟时间显示为覆盖并显示在控件条中的支持
+
+### <a name="bug-fixes-234"></a>2\.3.4 版中的 Bug 修复
+
+- 音轨切换正常工作，但 IE11 和 Windows7 上显示输出错误“对象不支持属性或方法”
+- 完全加载缓冲区时，音轨切换失败
+- 当用户暂停视频并迅速在音轨之间切换时，音轨切换失败
+- [辅助功能] 未在“视频播放器”下为“视频控件”定义工具提示
+- Html5 上缺少音量按钮，具体取决于收到“loadstart”的时间
+- [辅助功能] 无法设置海报图像的替换文字
+- [辅助功能] 在“字幕设置”对话框中选择“完成”后，应用程序焦点丢失
+- [辅助功能] 为“片段预览”下的“视频”定义了不正确的 ARIA 属性
+
+### <a name="changes-234"></a>2\.3.4 版中的更改
+
+- 在 iOS 和 MacOS Safari 上播放 HLS 时删除了空字幕标签/轨道
+- 减少了 IMSC1 字幕出现 412 错误的次数
+- 在控制台中针对 10 个连续的空 IMSC1 字幕响应输出警告，以帮助实时调试
+
+## <a name="232-official-update-october-9-2019"></a>2.3.2 版（正式更新，2019 年 10 月 9 日）
+
+### <a name="features"></a>功能
+
+-添加了对 Chromium Edge 浏览器的 DASH 播放的支持
+
+### <a name="bug-fixes-232"></a>2\.3.2 版中的 Bug 修复
+
+- 当前播放速度不会直观显示在播放速度菜单中，除非用户手动设置
+- [辅助功能] 使用“Esc”键无法折叠“设置”窗格
+- [辅助功能] “讲述人”处于启用状态时，AMP 快捷键“M”无法使用
+
+### <a name="changes-232"></a>2\.3.2 版中的更改
+
+- 对于不支持 E-AC3 音频编解码器的浏览器，E-AC3 音轨隐藏在音轨菜单中
+- 对于支持 E-AC3 音频编解码器的浏览器，默认情况下会选择 E-AC3 音轨
+- 对于不支持音频编解码器切换的浏览器，所选轨道中使用不同编解码器的音轨隐藏在音轨菜单中
+
+## <a name="231-official-update-august-12-2019"></a>2.3.1 版（正式更新，2019 年 8 月 12 日）
+
+### <a name="features-231"></a>2\.3.1 版中的功能
+
+- 在 DASH 播放中收到 emsg 框时指示事件 -添加了支持，可以在支持 ec-3 的浏览上显示音频菜单中的 ec-3 音轨，并允许音轨从 aac 切换到 ec3，这在基于 Chromimum 的 Edge 浏览器上刚好相反
+
+### <a name="bug-fixes-231"></a>2\.3.1 版中的 Bug 修复
+
+- 删除 ec-3 轨道后音轨菜单已损坏
+- 当前时间可以比视频持续时间更长
+- 通过 initialSpeed 设置播放速度不起作用
+- 有时经过搜寻后，播放器似乎会卡住
+- 在 Microsoft Edge 和 IE 的触摸屏上，放大某一页后，按住拖动条或将鼠标悬停在其上不能准确地获得正确的视频片段
+- [辅助功能] 用于播放/暂停的 ARIA 标签对于视频播放器不可描述 将“没有为 flashSS 找到实时片段”错误映射到正确的 AMP 错误
+- [辅助功能] 用于播放/暂停的 ARIA 角色必须符合有效值 (.vjs-text-track-display)
+- [辅助功能] 某些 ARIA 角色必须包含在特定父级中
+- [Accessibility] 没有为视频播放器的播放/暂停按钮定义的工具提示，IMSC1 字幕在当前视频/音频缓冲区中搜寻后可能会消失
+
+### <a name="changes-231"></a>2\.3.1 版中的更改
+
+- 一旦收到 segmentDecryptError 并且播放器已处于实时边缘时，播放器会立即刷新清单而不是尝试播放下一个片段
+- 添加了更多诊断日志记录
+- 更新了文档以包括针对 iOS Safari 的 FairPlay 支持
+- 添加了 IMSC1 的“srclang”选项示例
+- 添加了针对文本轨道的填充、textPadding、boxShadow 替代。
+- 添加了错误代码 (0x0020025B)，以区分由于无 Internet 而导致的片段下载失败，而不仅仅是引发 0x00200259
+
+## <a name="230-official-release-april-30-2019"></a>2.3.0 版（正式发行版，2019 年 4 月 30 日）
+
+### <a name="features-230"></a>2\.3.0 版中的功能
+
+- 添加了对 DASH 的 IMSC1 字幕的支持
+- 添加了对 DASH 的仅视频资产的支持
+- 添加了 API presentationTimeOffsetInSec
+
+### <a name="bug-fixes-230"></a>2\.3.0 版中的 Bug 修复
+
+- AMP LowLatency 启发式配置文件会影响 iOS 视频播放的“静音”和“取消静音”，因为一些语言转换不正确
+- 进度条滑块的 aria-valuenow 值有时不正确
+- 文本轨道显示的 ARIA 角色值不正确
+
+### <a name="changes-230"></a>2\.3.0 版中的更改
+
+- 日志现在包括已下载媒体片段的大小
+- 已删除 IE 9 和 IE 10 支持
+- 更新了 CEA708 示例以显示左对齐字幕
+- 将 MediaError.message 包含在日志中，以表示播放失败
 
 ## <a name="224-official-update-february-22-2019"></a>2.2.4（正式更新，2019 年 2 月 22 日） ##
 
@@ -31,7 +143,7 @@ ms.locfileid: "83698304"
 
 ## <a name="223-official-update-january-9-2019"></a>2.2.3（正式更新，2019 年 1 月 9 日） ##
 
-### <a name="features"></a>功能 ###
+### <a name="features-223"></a>2\.2.3 版中的功能 ###
 
 - [功能][HLS] 针对 Safari HLS 播放添加了音频轨道菜单
 
@@ -72,7 +184,7 @@ ms.locfileid: "83698304"
 
 ### <a name="changes"></a>更改 ###
 
-- [更改][实时字幕] 已将 CEA 字幕的 API 名称从 608 更改为 708。 有关详细信息，请参阅 [CEA708 字幕设置](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)-->
+- [更改][实时字幕] 已将 CEA 字幕的 API 名称从 608 更改为 708。 有关详细信息，请参阅 [CEA708 字幕设置](/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)-->
 
 ## <a name="220-official-release"></a>2.2.0（正式发行版） ##
 

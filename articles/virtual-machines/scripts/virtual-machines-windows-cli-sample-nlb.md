@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
-ms.openlocfilehash: 0d48930d7a9aa1742c26ff85aecdd197b93ab126
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f551c934d3d77cd3d6cf80ca060005064bdc4289
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501056"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87069222"
 ---
-# <a name="load-balance-traffic-between-highly-available-virtual-machines"></a>对高度可用的虚拟机之间的流量进行负载均衡
+# <a name="use-an-azure-cli-sample-script-to-load-balance-traffic-between-highly-available-virtual-machines"></a>使用 Azure CLI 示例脚本对高度可用的虚拟机之间的流量进行负载均衡
 
 此脚本示例创建运行多个 Ubuntu 虚拟机（使用高度可用且负载均衡的配置进行配置）所需的所有项。 运行脚本后，即可拥有已加入到 Azure 可用性集并可通过 Azure 负载均衡器访问的 3 个虚拟机。
 

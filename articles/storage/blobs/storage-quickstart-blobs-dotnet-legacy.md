@@ -3,23 +3,23 @@ title: 快速入门：适用于 .NET 的 Azure Blob 存储客户端库
 description: 本快速入门介绍如何使用适用于 .NET 的 Azure Blob 存储客户端库在 Blob（对象）存储中创建容器和 blob。 接下来，介绍如何将 blob 下载到本地计算机，以及如何列出容器中的所有 blob。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/20/2019
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 5205506e3e7a32423dd9b438b648ff4af5136caa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4fa2d7f3884a30e60ce703dd45b295a85722fe67
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86528547"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87285282"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v11
 
 适用于 .NET 的 Azure Blob 存储客户端库 v11 入门。 Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 请按照步骤操作，安装程序包并试用基本任务的示例代码。 Blob 存储最适合存储巨量的非结构化数据。
 
 > [!NOTE]
-> 此快速启动使用 Azure Blob 存储客户端库的旧版本。 若要开始使用最新版本，请参阅[快速入门：适用于 .NET 的 Azure Blob 存储客户端库](storage-quickstart-blobs-dotnet.md)。
+> 此快速启动使用 Azure Blob 存储客户端库的旧版本。 若要开始使用最新版本，请参阅[快速入门：适用于 .NET 的 Azure Blob 存储客户端库 v12](storage-quickstart-blobs-dotnet.md)。
 
 使用适用于 .NET 的 Azure Blob 存储客户端库完成以下操作：
 

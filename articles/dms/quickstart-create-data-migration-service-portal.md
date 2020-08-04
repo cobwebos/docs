@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 01/08/2020
-ms.openlocfilehash: 7d27d67cfa46eb4554f6ca3d66df76e393b18da0
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 07/21/2020
+ms.openlocfilehash: 0dd150909a56aafdd2005f2d68a12d32a1e8fae4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84187542"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087775"
 ---
 # <a name="quickstart-create-an-instance-of-the-azure-database-migration-service-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建 Azure 数据库迁移服务实例
 
@@ -30,6 +30,9 @@ ms.locfileid: "84187542"
 打开 Web 浏览器，导航到 [Microsoft Azure 门户](https://portal.azure.com/)，然后输入登录到门户所需的凭据。
 
 默认视图是服务仪表板。
+
+> [!NOTE]
+> 每个订阅最多可创建 10 个 DMS 实例。 如果需要更多实例，请创建支持票证。
 
 ## <a name="register-the-resource-provider"></a>注册资源提供程序
 
@@ -47,13 +50,13 @@ ms.locfileid: "84187542"
 
 1. 选择“+创建资源”以创建 Azure 数据库迁移服务的实例。
 
-2. 在市场中搜索“迁移”，选择“Azure 数据库迁移服务”，并在“Azure 数据库迁移服务”屏幕中选择“创建”。  
+2. 在市场中搜索“迁移”，选择“Azure 数据库迁移服务”，并在“Azure 数据库迁移服务”屏幕中选择“创建”。
 
 3. 在“创建迁移服务”屏幕中：
 
     - 选择一个容易记住且唯一的服务名称，用于标识 Azure 数据库迁移服务的实例。
     - 选择要在其中创建实例的 Azure **订阅**。
-    - 选择现有的**资源组**，或创建一个新组。
+    - 选择现有的**资源组**或创建一个新资源组。
     - 选择距离源或目标服务器最近的“位置”。
     - 选择一个现有的虚拟网络或创建一个。
 

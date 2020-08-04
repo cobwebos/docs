@@ -37,6 +37,8 @@
       href: tutorial-multiple-components-node.md
     - name: 连接多组件设备 (Python)
       href: tutorial-multiple-components-python.md
+    - name: 使用 MQTT 连接设备
+      href: tutorial-use-mqtt.md
 - name: 概念
   items:
     - name: 体系结构

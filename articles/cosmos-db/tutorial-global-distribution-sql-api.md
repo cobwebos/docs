@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.custom: tracking-python
-ms.openlocfilehash: 15f5ac1da6d24feceed3a9106b990ae31e3571e3
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 8d33756e1c28247c48d0b4c0a734e604c4e9eab0
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85851614"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87280811"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>教程：使用 SQL API 设置 Azure Cosmos DB 全局分发
 
@@ -28,24 +28,22 @@ ms.locfileid: "85851614"
 <a id="portal"></a>
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
-
 ## <a name="connecting-to-a-preferred-region-using-the-sql-api"></a><a id="preferred-locations"></a> 使用 SQL API 连接到首选区域
 
-为了利用[全局分发](distribute-data-globally.md)，客户端应用程序可以指定要用于执行文档操作的区域优先顺序列表。 可通过设置连接策略来实现此目的。 SQL SDK 会根据 Azure Cosmos DB 帐户配置、当前区域可用性和指定的优先顺序列表，选择最佳的终结点来执行写入和读取操作。
+为了利用[全局分发](distribute-data-globally.md)，客户端应用程序可以指定要用于执行文档操作的区域优先顺序列表。 SQL SDK 会根据 Azure Cosmos DB 帐户配置、当前区域可用性和指定的优先顺序列表，选择最佳的终结点来执行写入和读取操作。
 
-此优先顺序列表是在使用 SQL SDK 初始化连接时指定的。 SDK 接受可选参数“PreferredLocations”，这是 Azure 区域的顺序列表。
+此优先顺序列表是在使用 SQL SDK 初始化连接时指定的。 SDK 接受可选参数 `PreferredLocations`，这是 Azure 区域的顺序列表。
 
-SDK 会自动将所有写入请求发送到当前写入区域。
+SDK 会自动将所有写入请求发送到当前写入区域。 所有读取请求将发送到首选位置列表中的第一个可用区域。 如果请求失败，客户端会将请求转发到列表中的下一个区域。
 
-所有读取请求将发送到 PreferredLocations 列表中的第一个可用区域。 如果请求失败，客户端会将请求转发到列表中的下一个区域，依此类推。
+SDK 只会尝试读取首选位置中指定的区域。 因此，例如，如果 Azure Cosmos 帐户在四个区域中可用，但客户端只在 `PreferredLocations` 内指定了两个读取（非写入）区域，那么将不会从 `PreferredLocations` 中未指定的读取区域为读取提供服务。 如果 `PreferredLocations` 列表中指定的读取区域不可用，将从写入区域为读取提供服务。
 
-SDK 只会尝试读取 PreferredLocations 中指定的区域。 因此，例如，如果数据库帐户在四个区域中可用，但客户端只为 PreferredLocations 指定了两个读取（非写入）区域，那么将不会从 PreferredLocations 中未指定的读取区域为读取提供服务。 如果 PreferredLocations 中指定的读取区域不可用，将从写入区域为读取提供服务。
+应用程序可以通过检查 SDK 1.8 和更高版本中提供的两个属性（`WriteEndpoint` 和 `ReadEndpoint`）来验证 SDK 选择的当前写入终结点和读取终结点。 如果未设置 `PreferredLocations` 属性，则会从当前写入区域为所有请求提供服务。
 
-应用程序可以通过检查 SDK 1.8 和更高版本中提供的两个属性 - WriteEndpoint 和 ReadEndpoint - 来验证 SDK 选择的当前写入终结点和读取终结点。
-
-如果未设置 PreferredLocations 属性，则会从当前写入区域为所有请求提供服务。
+如果未指定首选位置但使用了 `setCurrentLocation` 方法，则 SDK 会根据客户端运行的当前区域自动填充首选位置。 SDK 会根据一个区域与当前区域的邻近程度对区域进行排序。
 
 ## <a name="net-sdk"></a>.NET SDK
+
 无需进行任何代码更改即可使用该 SDK。 在此情况下，SDK 会自动将读取和写入请求定向到当前写入区域。
 
 在 .NET SDK 1.8 和更高版本中，DocumentClient 构造函数的 ConnectionPolicy 参数有一个名为 Microsoft.Azure.Documents.ConnectionPolicy.PreferredLocations 的属性。 此属性的类型为 Collection `<string>`，应包含区域名称的列表。 字符串值已根据 [Azure 区域][regions]页上的“区域名称”列设置格式，其第一个字符的前面和最后一个字符的后面均没有空格。
@@ -55,7 +53,10 @@ SDK 只会尝试读取 PreferredLocations 中指定的区域。 因此，例如�
 > [!NOTE]
 > 不应将终结点 URL 视为长期不变的常量。 服务随时会更新这些 URL。 SDK 会自动处理这种更改。
 >
->
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
+
+如果使用的是 .NET V2 SDK，请使用 `PreferredLocations` 属性设置首选区域。
 
 ```csharp
 // Getting endpoints from application settings or other configuration location
@@ -78,6 +79,54 @@ DocumentClient docClient = new DocumentClient(
 // connect to DocDB
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
+
+或者可使用 `SetCurrentLocation` 属性，让 SDK 根据邻近程度选择首选位置。
+
+```csharp
+// Getting endpoints from application settings or other configuration location
+Uri accountEndPoint = new Uri(Properties.Settings.Default.GlobalDatabaseUri);
+string accountKey = Properties.Settings.Default.GlobalDatabaseKey;
+  
+ConnectionPolicy connectionPolicy = new ConnectionPolicy();
+
+connectionPolicy.SetCurrentLocation("West US 2"); /
+
+// initialize connection
+DocumentClient docClient = new DocumentClient(
+    accountEndPoint,
+    accountKey,
+    connectionPolicy);
+
+// connect to DocDB
+await docClient.OpenAsync().ConfigureAwait(false);
+```
+
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
+
+如果使用的是 .NET V3 SDK，请使用 `ApplicationPreferredRegions` 属性设置首选区域。
+
+```csharp
+
+CosmosClientOptions options = new CosmosClientOptions();
+options.ApplicationName = "MyApp";
+options.ApplicationPreferredRegions = new List<string> {Regions.WestUS, Regions.WestUS2};
+
+CosmosClient client = new CosmosClient(connectionString, options);
+
+```
+
+或者可使用 `ApplicationRegion` 属性，让 SDK 根据邻近程度选择首选位置。
+
+```csharp
+CosmosClientOptions options = new CosmosClientOptions();
+options.ApplicationName = "MyApp";
+// If the application is running in West US
+options.ApplicationRegion = Regions.WestUS;
+
+CosmosClient client = new CosmosClient(connectionString, options);
+```
+
+---
 
 ## <a name="nodejsjavascript"></a>Node.js/JavaScript
 

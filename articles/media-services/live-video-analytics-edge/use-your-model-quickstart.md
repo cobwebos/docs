@@ -3,12 +3,12 @@ title: 使用自己的模型分析实时视频 - Azure
 description: 在本快速入门中，你将应用计算机视觉来分析来自（模拟）IP 相机的实时视频源。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: e19c5bd6b44f9a4dd225f6a849ee9aaf62fa6273
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: dc8c2d1f0620a92a13cb1f4c0b83c2452f964fd6
+ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027658"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87170627"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-model"></a>快速入门：使用自己的模型分析实时视频
 
@@ -184,7 +184,7 @@ HTTP 扩展节点扮演代理的角色。 它将视频帧转换为指定的图�
 
 ## <a name="interpret-results"></a>解释结果
 
-运行媒体图时，来自 HTTP 扩展处理器节点的结果将通过 IoT 中心接收器节点传递到 IoT 中心。 在“输出”窗口中看到的消息包含 `body` 和 `applicationProperties` 部分。 有关详细信息，请参阅[创建和读取 IoT 中心消息](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)。
+运行媒体图时，来自 HTTP 扩展处理器节点的结果将通过 IoT 中心接收器节点传递到 IoT 中心。 在“输出”窗口中看到的消息包含 `body` 和 `applicationProperties` 部分。 有关详细信息，请参阅[创建和读取 IoT 中心消息](../../iot-hub/iot-hub-devguide-messages-construct.md)。
 
 在下面的消息中，实时视频分析模块定义了应用程序属性和正文内容。 
 
@@ -284,8 +284,9 @@ HTTP 扩展处理器节点从 yolov3 模块接收推理结果。 然后它通过
 
 ## <a name="next-steps"></a>后续步骤
 
+* 试用[安全版本的 YOLOv3 模型](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/tls-yolov3-onnx/readme.md)并将其部署到 IOT 边缘设备。 
+
 查看高级用户面临的其他挑战：
 
 * 使用支持 RTSP 的 [IP 相机](https://en.wikipedia.org/wiki/IP_camera)，而不是使用 RTSP 模拟器。 可以在 [ONVIF 符合标准的产品](https://www.onvif.org/conformant-products/)页面上搜索支持 RTSP 的 IP 摄像机。 查找符合配置文件 G、S 或 T 的设备。
-* 使用 AMD64 或 X64 Linux 设备，而不是 Azure Linux VM。 此设备必须与 IP 相机位于同一网络中。 可以按照[在 Linux 上安装 Azure IoT Edge 运行时](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)中的说明进行操作。 然后按照[将首个 IoT Edge 模块部署到虚拟 Linux 设备](https://docs.microsoft.com/azure/iot-edge/quickstart-linux)中的说明，将设备注册到 Azure IoT 中心。
-
+* 使用 AMD64 或 X64 Linux 设备，而不是 Azure Linux VM。 此设备必须与 IP 相机位于同一网络中。 可以按照[在 Linux 上安装 Azure IoT Edge 运行时](../../iot-edge/how-to-install-iot-edge-linux.md)中的说明进行操作。 然后按照[将首个 IoT Edge 模块部署到虚拟 Linux 设备](../../iot-edge/quickstart-linux.md)中的说明，将设备注册到 Azure IoT 中心。

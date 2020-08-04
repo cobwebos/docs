@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: ff37a3ecb55c6ee034d3fd2558909c3b4ef1d375
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 3065cd6f185c0fdfaea1d6c0d02d2fee69bd04c7
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223425"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87116933"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>教程：使用通知中心和必应空间数据发送基于位置的推送通知
 
@@ -47,10 +47,10 @@ ms.locfileid: "86223425"
 ## <a name="set-up-the-data-source"></a>设置数据源
 
 1. 登录到[必应地图开发人员中心](https://www.bingmapsportal.com/)。
-2. 在顶部导航栏中选择“数据源”，然后选择“管理数据源”。 
+2. 在顶部导航栏中选择“数据源”，然后选择“管理数据源”。
 
     ![必应地图开发人员中心“管理数据源”页面的屏幕截图，其中“将数据作为数据源上传”选项用红色标出。](./media/notification-hubs-geofence/bing-maps-manage-data.png)
-3. 如果你没有数据源，会看到用于创建数据源的链接。 选择“将数据作为数据源上传”。 也可以使用“数据源” > “上传数据”菜单。 
+3. 如果你没有数据源，会看到用于创建数据源的链接。 选择“将数据作为数据源上传”。 也可以使用“数据源” > “上传数据”菜单。
 
     ![“上传数据源”对话框的屏幕截图。](./media/notification-hubs-geofence/bing-maps-create-data.png)
 4. 在硬盘驱动器上创建包含以下内容的文件 `NotificationHubsGeofence.pipe`：本教程使用基于管道的示例文件框住旧金山海滨区域：
@@ -63,16 +63,16 @@ ms.locfileid: "86223425"
 
     管道文件表示以下实体：
 
-    ![旧金山海滨区域的管道的屏幕截图，其中用红色多边形标注出了码头区域。](./media/notification-hubs-geofence/bing-maps-geofence.png)
+    ![旧金山海滨区域的地图的屏幕截图，其中用红色多边形标注出了码头区域。](./media/notification-hubs-geofence/bing-maps-geofence.png)
 5. 在“上传数据源”页中执行以下操作：
-   1. 为“数据格式”选择“管道”。 
+   1. 为“数据格式”选择“管道”。
    2. 浏览到在上一步骤中创建的 `NotificationHubGeofence.pipe` 文件并将其选中。
    3. 选择“上传”按钮。
 
       > [!NOTE]
-      > 系统可能会提示为“主密钥”指定不同于“查询密钥”的新密钥。  只需通过仪表板创建新密钥，并刷新数据源上载页。
-6. 上传数据文件后，需确保发布数据源。 像前面一样，选择“数据源” -> “管理数据源”。 
-7. 在列表中选择自己的数据源，然后在“操作”列中选择“发布”。 
+      > 系统可能会提示为“主密钥”指定不同于“查询密钥”的新密钥。 只需通过仪表板创建新密钥，并刷新数据源上载页。
+6. 上传数据文件后，需确保发布数据源。 像前面一样，选择“数据源” -> “管理数据源”。
+7. 在列表中选择自己的数据源，然后在“操作”列中选择“发布”。
 
     ![必应地图开发人员中心“管理数据源”页面的屏幕截图，其中“地理编码数据”选项卡处于选中状态，“发布”选项以红色标出。](./media/notification-hubs-geofence/publish-button.png)
 8. 切换到“发布数据源”选项卡，确认列表中显示了该数据源。
@@ -83,7 +83,7 @@ ms.locfileid: "86223425"
     ![“编辑实体数据”页面的屏幕截图，显示了美国西部的地图，并用洋红色点标注出了旧金山海滨区域。](./media/notification-hubs-geofence/bing-maps-data-details.png)
 
     此时，门户并未显示所创建的地理围栏的边界 - 我们只需确认指定的位置位于适当的邻近范围内。
-10. 现在已满足数据源的所有要求。 要获取有关 API 调用的请求 URL 的详细信息，请在必应地图开发人员中心内依次选择“数据源”、“数据源信息”。 
+10. 现在已满足数据源的所有要求。 要获取有关 API 调用的请求 URL 的详细信息，请在必应地图开发人员中心内依次选择“数据源”、“数据源信息”。
 
     ![必应地图开发人员中心“数据源信息”页面的屏幕截图。](./media/notification-hubs-geofence/bing-maps-data-info.png)
 
@@ -122,7 +122,7 @@ ms.locfileid: "86223425"
 2. 启用应用程序的位置服务。 在“解决方案资源管理器”中打开 `Package.appxmanifest` 文件。
 
     ![解决方案资源管理器的屏幕截图，其中突出显示了 Package.appxmanifest 文件。](./media/notification-hubs-geofence/vs-package-manifest.png)
-3. 在刚刚打开的“包属性”选项卡中切换到“功能”选项卡，然后选择“位置”。 
+3. 在刚刚打开的“包属性”选项卡中切换到“功能”选项卡，然后选择“位置”。
 
     ![显示“功能”选项卡的“包属性”对话框的屏幕截图，其中突出显示了“位置”选项。](./media/notification-hubs-geofence/vs-package-location.png)
 4. 在解决方案中创建名为 `Core` 的新文件夹，并在其中添加名为 `LocationHelper.cs` 的新文件：
@@ -164,7 +164,7 @@ ms.locfileid: "86223425"
     }
     ```
 
-    若想详细了解如何在 UWP 应用中获取用户的位置，请参阅[获取用户的位置](https://msdn.microsoft.com/library/windows/apps/mt219698.aspx)。
+    若想详细了解如何在 UWP 应用中获取用户的位置，请参阅[获取用户的位置](/windows/uwp/maps-and-location/get-location)。
 5. 若要检查是否确实能够获取位置，请打开主页的代码端 (`MainPage.xaml.cs`)。 在 `MainPage` 构造函数中为 `Loaded` 事件创建新的事件处理程序。
 
     ```csharp
@@ -225,8 +225,8 @@ ms.locfileid: "86223425"
 
     项目已配置为将推送通知发送到目标设备，因此我们只需要做两件事 – 指定通知中心的适当连接字符串，并添加边界标识以便仅当用户位于地域隔离区内时才发送通知。
 
-4. 若要配置连接字符串，请打开 `Models` 文件夹中的 `Notifications.cs`。 `NotificationHubClient.CreateClientFromConnectionString` 函数应该包含可在 [Azure 门户](https://portal.azure.com)中获取的通知中心的相关信息（查看“设置”中的“访问策略”页）。  保存更新的配置文件。
-5. 为必应地图 API 结果创建模型。 执行此操作的最简单方法是打开 `Models` 文件夹，并选择“添加” > “类”。  将它命名为 `GeofenceBoundary.cs`。 完成后，从第一部分获取的 API 响应中复制 JSON。 在 Visual Studio 中使用“编辑” > “选择性粘贴” > “将 JSON 粘贴为类”。  
+4. 若要配置连接字符串，请打开 `Models` 文件夹中的 `Notifications.cs`。 `NotificationHubClient.CreateClientFromConnectionString` 函数应该包含可在 [Azure 门户](https://portal.azure.com)中获取的通知中心的相关信息（查看“设置”中的“访问策略”页）。 保存更新的配置文件。
+5. 为必应地图 API 结果创建模型。 执行此操作的最简单方法是打开 `Models` 文件夹，并选择“添加” > “类”。 将它命名为 `GeofenceBoundary.cs`。 完成后，从第一部分获取的 API 响应中复制 JSON。 在 Visual Studio 中使用“编辑” > “选择性粘贴” > “将 JSON 粘贴为类”。
 
     这样，就能确保对象完全按预期反序列化。 生成的类集应类似于以下类：
 
@@ -349,18 +349,18 @@ ms.locfileid: "86223425"
 
     > [!NOTE]
     > 将 `POST_URL` 设置为已部署的 Web 应用程序的位置。 现在，可以在本地运行该应用，但是在部署公共版本时，需要使用外部提供程序托管它。
-2. 为推送通知注册 UWP 应用。 在 Visual Studio 中，选择“项目” > “应用商店” > “将应用与应用商店关联”。  
+2. 为推送通知注册 UWP 应用。 在 Visual Studio 中，选择“项目” > “应用商店” > “将应用与应用商店关联”。
 
     ![解决方案右键单击菜单的屏幕截图，其中突出显示了“存储”和“将应用与应用商店关联”选项。](./media/notification-hubs-geofence/vs-associate-with-store.png)
 3. 登录到开发人员帐户后，请务必选择现有应用或创建新应用，并让包与它相关联。
-4. 转到开发人员中心，打开创建的应用。 选择“服务” > “推送通知” > “Live 服务站点”。  
+4. 转到开发人员中心，打开创建的应用。 选择“服务” > “推送通知” > “Live 服务站点”。
 
     ![显示“推送通知”页的 Windows 开发人员中心的屏幕截图，其中突出显示了“Live 服务站点”。](./media/notification-hubs-geofence/ms-live-services.png)
-5. 记下站点上的“应用程序密钥”和“包 SID”。  在 Azure 门户中需要用到这两项信息 - 打开通知中心，选择“设置” > “Notification Services” > “Windows (WNS)”，并在必填字段中输入信息。  
+5. 记下站点上的“应用程序密钥”和“包 SID”。 在 Azure 门户中需要用到这两项信息 - 打开通知中心，选择“设置” > “Notification Services” > “Windows (WNS)”，并在必填字段中输入信息。
 
     ![显示“设置”页的屏幕截图，其中突出显示了“Notification Services”和“Windows (WNS)”选项，且包 SID 和安全密钥值已填充。](./media/notification-hubs-geofence/notification-hubs-wns.png)
 6. 选择“保存”。
-7. 在“解决方案资源管理器”中打开“引用”，并选择“管理 NuGet 包”。   添加对 **Microsoft Azure 服务总线托管库**的引用 – 只需搜索 `WindowsAzure.Messaging.Managed` 并将它添加到项目即可。
+7. 在“解决方案资源管理器”中打开“引用”，并选择“管理 NuGet 包”。 添加对 **Microsoft Azure 服务总线托管库**的引用 – 只需搜索 `WindowsAzure.Messaging.Managed` 并将它添加到项目即可。
 
     ![“管理 Nuget 包”对话框的屏幕截图，其中突出显示了WindowsAzure.Messaging.Managed 包。](./media/notification-hubs-geofence/vs-nuget.png)
 8. 为了进行测试，可以再次创建 `MainPage_Loaded` 事件处理程序，并在其中添加以下代码片段：
@@ -393,7 +393,7 @@ ms.locfileid: "86223425"
 
 可能还需要执行几个步骤才能使解决方案可用于生产。
 
-1. 首先，需要确保地域隔离区是动态的。 需要对必应 API 进行一些额外的处理，才能在现有数据源内上传新边界。 有关详细信息，请参阅[必应空间数据服务 API 文档](https://msdn.microsoft.com/library/ff701734.aspx)。
+1. 首先，需要确保地域隔离区是动态的。 需要对必应 API 进行一些额外的处理，才能在现有数据源内上传新边界。 有关详细信息，请参阅[必应空间数据服务 API 文档](/bingmaps/spatial-data-services/)。
 2. 其次，由于要确保向正确的参与者执行传送，因此可以通过 [标记](notification-hubs-tags-segment-push-message.md)锁定这些人。
 
-本教程中所示的解决方案描述了一种场景，其中可能有各种不同的目标平台，因此未限制只有系统特定的功能才能使用地域隔离。 也就是说，通用 Windows 平台可以提供现成的 [地域隔离区检测](https://msdn.microsoft.com/windows/uwp/maps-and-location/set-up-a-geofence)功能。
+本教程中所示的解决方案描述了一种场景，其中可能有各种不同的目标平台，因此未限制只有系统特定的功能才能使用地域隔离。 也就是说，通用 Windows 平台可以提供现成的 [地域隔离区检测](/windows/uwp/maps-and-location/set-up-a-geofence)功能。

@@ -8,20 +8,17 @@ ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 035fc4840b08a0a9807c228cb5f63c191efc524a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: effe3125a2d41f0410a1a0b3a87c41da39feb6d9
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86256877"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291350"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>教程：设置服务警报
 
 >[!IMPORTANT]
->本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 2020 春季更新版。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面 2019 秋季版，请参阅[此文](./virtual-desktop-fall-2019/set-up-service-alerts-2019.md)。
->
-> Windows 虚拟桌面 2020 春季更新版目前为公共预览版。 此预览版未提供服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/set-up-service-alerts-2019.md)。
 
 可以使用 Azure 服务运行状况监视 Windows 虚拟桌面的服务问题和运行状况公告。 Azure 服务运行状况可以通过不同类型的警报（例如，电子邮件或短信）通知你，帮助你了解问题的影响，并在问题解决时保持更新。 此外，Azure 服务运行状况还可以帮助你减少停机时间，并为可能影响资源可用性的计划内维护和更改做准备。
 

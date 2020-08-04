@@ -1,6 +1,6 @@
 ---
 title: 筛选 VM 网络流量 - Azure CLI 脚本示例
-description: Azure CLI 脚本示例 - 筛选入站和出站 VM 网络流量。
+description: 使用 Azure CLI 脚本示例筛选入站和出站虚拟机 (VM) 网络流量。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 71de6c9c3f742e006762fb8778948cff2e5d96af
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6832cf08abd179b6108f971227b5c054c5617337
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74084033"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281627"
 ---
-# <a name="filter-inbound-and-outbound-vm-network-traffic-script-sample"></a>筛选入站和出站 VM 网络流量脚本示例
+# <a name="filter-inbound-and-outbound-vm-network-traffic-using-an-azure-cli-script-sample"></a>使用 Azure CLI 脚本示例筛选入站和出站 VM 网络流量
 
 该脚本示例创建了包含前端和后端子网的虚拟网络。 前端子网的入站网络流量仅限于 HTTP、HTTPS 和 SSH，而从后端子网到 Internet 的出站流量则不受允许。 运行该脚本后，将具有一个包含两个 NIC 的虚拟机。 每个 NIC 连接到不同的子网。
 

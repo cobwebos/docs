@@ -3,12 +3,12 @@ title: 使用管理组来组织资源 - Azure 治理
 description: 了解管理组、其权限的工作方式以及如何使用它们。
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: b3d031b68ee7dba9c80ee0c7e97898bb8b439a47
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 1856b2d6f8fafb18757d547d0117f584fb2abb24
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963676"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87132919"
 ---
 # <a name="what-are-azure-management-groups"></a>什么是 Azure 管理组？
 
@@ -92,7 +92,7 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (RBAC)](../../rol
 |所有者                       | X      | X      | X        | X      | X             | X             | X     |
 |参与者                 | X      | X      | X        | X      |               |               | X     |
 |MG 参与者\*            | X      | X      | X        | X      |               |               | X     |
-|读者                      |        |        |          |        |               |               | X     |
+|读取器                      |        |        |          |        |               |               | X     |
 |MG 读者\*                 |        |        |          |        |               |               | X     |
 |资源策略参与者 |        |        |          |        |               | X             |       |
 |用户访问管理员   |        |        |          |        | X             | X             |       |
@@ -100,9 +100,9 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (RBAC)](../../rol
 \*：MG 参与者和 MG 读者只允许用户在管理组范围执行这些操作。  
 \*\*：将订阅或管理组移入/移出层次结构不一定需要根管理组上的角色分配。 请参阅[使用管理组管理资源](manage.md)了解有关将项目移到层次结构中的详细信息。
 
-## <a name="custom-rbac-role-definition-and-assignment"></a>自定义 RBAC 角色定义和分配
+## <a name="azure-custom-role-definition-and-assignment"></a>Azure 自定义角色定义和分配
 
-对管理组的自定义 RBAC 角色支持目前处于预览状态，并且存在一些[限制](#limitations)。 可以在角色定义的可分配范围中定义管理组范围。 然后即可在该管理组及其下的任何管理组、订阅、资源组或资源中分配该自定义 RBAC 角色。 此自定义角色会继承层次结构，就像任何内置角色一样。  
+对管理组的 Azure 自定义角色支持目前处于预览状态，并且存在一些[限制](#limitations)。 可以在角色定义的可分配范围中定义管理组范围。 然后即可在该管理组及其下的任何管理组、订阅、资源组或资源中分配 Azure 自定义角色。 此自定义角色会继承层次结构，就像任何内置角色一样。  
 
 ### <a name="example-definition"></a>示例定义
 
@@ -179,7 +179,7 @@ Azure 管理组支持使用 [Azure 基于角色的访问控制 (RBAC)](../../rol
 - 目标父管理组中的管理组写入访问权限。
   - 内置角色示例：所有者、参与者、管理组参与者  
 - 现有父管理组中的管理组写入访问权限。
-  - 内置角色示例：所有者、参与者、管理组参与者  
+  - 内置角色示例：所有者、参与者、管理组参与者
 
 例外：如果目标或现有父管理组不是根管理组，则权限要求不适用。 由于根管理组是所有新管理组和订阅的默认登陆点，因此不需在其上具有相关权限即可移动某个项。
 

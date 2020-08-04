@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/08/2019
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 746c406c4e6d458f699eb844156190e47d5c7a26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1bdb7637624a1da5270eb1cba49e9f66e5042ccf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85384900"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481999"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>教程：将标识提供程序添加到 Azure Active Directory B2C 应用程序
 
@@ -133,7 +133,7 @@ ms.locfileid: "85384900"
 
 在本教程中，你已完成先决条件的一部分，创建了名为“B2C_1_signupsignin1”的注册和登录用户流。 在此部分中，将标识提供程序添加到 B2C_1_signupsignin1 用户流。
 
-1. 依次选择“用户流(策略)”和“B2C_1_signupsignin1”用户流。
+1. 选择“用户流”，然后选择“B2C_1_signupsignin1”用户流。
 2. 依次选择“标识提供程序”和所添加的“Facebook”和“Contoso Azure AD”标识提供程序。
 3. 选择“保存”。
 

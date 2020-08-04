@@ -5,12 +5,12 @@ ms.date: 11/21/2018
 ms.topic: tutorial
 description: 本教程演示如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务中调试多服务 Node.js 应用程序
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: a5fa0aae3a966dd96ee95e6bcafc3b2eec4e6837
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2c87dedda1db97a033526c809de735fe036120ef
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75438291"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006976"
 ---
 # <a name="running-multiple-dependent-services-nodejs-and-visual-studio-code-with-azure-dev-spaces"></a>运行多个依赖服务：将 Node.js 和 Visual Studio Code 与 Azure Dev Spaces 配合使用
 
@@ -20,15 +20,15 @@ ms.locfileid: "75438291"
 
 在本部分，我们将创建另一个服务 `mywebapi`，并让 `webfrontend` 调用它。 每个服务将在独立的容器中运行。 然后，我们将跨两个容器进行调试。
 
-![](media/common/multi-container.png)
+![该图显示调用 mywebapi 服务的 webfrontend 服务（如箭头所示）。](media/common/multi-container.png)
 
 ### <a name="open-sample-code-for-mywebapi"></a>打开 *mywebapi* 的示例代码
-名为 `samples` 的文件夹下应已包含本指南中 `mywebapi` 的示例代码（如果没有，请转到 https://github.com/Azure/dev-spaces ，并选择“克隆或下载”以下载 GitHub 存储库。）  本部分的代码位于 `samples/nodejs/getting-started/mywebapi` 中。
+名为 `samples` 的文件夹下应已包含本指南中 `mywebapi` 的示例代码（如果没有，请转到 https://github.com/Azure/dev-spaces ，并选择“克隆或下载”以下载 GitHub 存储库。）本部分的代码位于 `samples/nodejs/getting-started/mywebapi` 中。
 
 ### <a name="run-mywebapi"></a>运行 *mywebapi*
-1. 在单独的 VS Code 窗口中打开文件夹 `mywebapi`。 
-1. 打开**命令面板**（使用“视图”|“命令面板”  菜单），并使用“自动完成”来键入并选择此命令：`Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。 此命令不应与 `azds prep` 命令混淆，后者配置部署的项目。
-1. 按 F5，等待服务生成和部署。 当调试控制台中出现“正在侦听端口 80”  消息时，你就会知道它已准备就绪。
+1. 在单独的 VS Code 窗口中打开文件夹 `mywebapi`。
+1. 打开**命令面板**（使用“视图”|“命令面板”菜单），并使用“自动完成”来键入并选择此命令：`Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。 此命令不应与 `azds prep` 命令混淆，后者配置部署的项目。
+1. 按 F5，等待服务生成和部署。 当调试控制台中出现“正在侦听端口 80”消息时，你就会知道它已准备就绪。
 1. 记下终结点 URL（类似于 `http://localhost:<portnumber>`）。 **提示：VS Code 状态栏将变为橙色，并显示一个可点击的 URL。** 容器看起来是在本地运行，但实际上是在 Azure 上的开发环境中运行。 出现 localhost 地址的原因是，`mywebapi` 尚未定义任何公共终结点，只能从 Kubernetes 实例内部访问。 为方便操作以及便于与本地计算机中的专用服务交互，Azure Dev Spaces 将与 Azure 中运行的容器建立临时的 SSH 隧道。
 1. 当 `mywebapi` 准备就绪时，请在浏览器中打开 localhost 地址。 应会看到 `mywebapi` 服务发来的响应（“Hello from mywebapi”）。
 
@@ -41,7 +41,7 @@ ms.locfileid: "75438291"
     var request = require('request');
     ```
 
-3. 替换 `/api` GET 处理程序的代码。  处理请求时，该代码又会调用 `mywebapi`，然后返回来自这两个服务的结果。
+3. 替换 `/api` GET 处理程序的代码。 处理请求时，该代码又会调用 `mywebapi`，然后返回来自这两个服务的结果。
 
     ```javascript
     app.get('/api', function (req, res) {

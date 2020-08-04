@@ -1,37 +1,39 @@
 ---
-title: 新增功能-Personalizer
+title: 新增功能 - 个性化体验创建服务
 titleSuffix: Azure Cognitive Services
-description: 本文包含有关 Personalizer 的新闻。
-author: diberry
+description: 本文包含有关个性化体验创建服务的新闻。
 manager: nitinme
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 06/10/2020
-ms.author: diberry
-ms.openlocfilehash: 973a8b7eb8dad66568a5beb45adea9740dd0402a
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
-ms.translationtype: MT
+ms.date: 07/17/2020
+ms.openlocfilehash: 5e3606ac04d5023e28bc2304aba79a8211c58881
+ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84700628"
+ms.lasthandoff: 07/24/2020
+ms.locfileid: "87133072"
 ---
-# <a name="whats-new-in-personalizer"></a>Personalizer 中的新增功能
+# <a name="whats-new-in-personalizer"></a>个性化体验创建服务的新增功能
 
-了解该服务中的新增功能。 这些项目可能包括发行说明、视频、博客文章和其他类型的信息。 将此页加入书签，以随时了解服务的最新信息。
+了解服务中的新增功能。 这些项可能包括发布说明、视频、博客文章和其他类型的信息。 将此页加入书签，以随时了解服务的最新信息。
 
 ## <a name="release-notes"></a>发行说明
 
+### <a name="july-2020"></a>2020 年 7 月
+
+* 新教程 - [在聊天机器人中使用个性化体验创建服务](tutorial-use-personalizer-chat-bot.md)
+
 ### <a name="june-2020"></a>2020 年 6 月
 
-* 新教程-[在 web 应用中使用 Personalizer](tutorial-use-personalizer-web-app.md)
+* 新教程 - [在 Web 应用中使用个性化体验创建服务](tutorial-use-personalizer-web-app.md)
 
-### <a name="may-2020---build-conference"></a>可能为 2020-build 会议
+### <a name="may-2020---build-conference"></a>2020 年 5 月 - //Build 大会
 
-**公共预览版**中提供了以下内容：
+以下功能以公共预览版提供：
 
- * 作为学习行为的[Apprentice 模式](concept-apprentice-mode.md)。
+ * 作为学习行为的[学徒模式](concept-apprentice-mode.md)。
 
 ### <a name="march-2020"></a>2020 年 3 月
 
@@ -39,12 +41,12 @@ ms.locfileid: "84700628"
 
 ### <a name="november-2019---ignite-conference"></a>2019 年 11 月- Ignite 大会
 
-* Personalizer 正式发布（GA）
-* 整个生命周期的 Azure Notebooks[教程](tutorial-use-azure-notebook-generate-loop-data.md)
+* 个性化体验创建服务正式发布 (GA)
+* 包含整个生命周期的 Azure Notebooks [教程](tutorial-use-azure-notebook-generate-loop-data.md)
 
-### <a name="may-2019---build-conference"></a>可能为 2019-build 会议
+### <a name="may-2019---build-conference"></a>2019 年 5 月 - //Build 大会
 
-以下预览功能已在 Build 2019 大会上发布：
+以下预览功能是在 Build 2019 大会上发布的：
 
 * [排名和奖励学习循环](what-is-personalizer.md)
 
@@ -52,7 +54,7 @@ ms.locfileid: "84700628"
 
 ### <a name="2019-build-videos"></a>2019 Build 视频
 
-* [& 内容（如 Xbox 和认知服务 Personalizer）提供正确的体验](https://azure.microsoft.com/resources/videos/build-2019-deliver-the-right-experiences-and-content-with-cognitive-services-personalizer/)
+* [通过认知服务个性化体验创建服务提供正确的体验和内容（如 Xbox）](https://azure.microsoft.com/resources/videos/build-2019-deliver-the-right-experiences-and-content-with-cognitive-services-personalizer/)
 
 ## <a name="service-updates"></a>服务更新
 
@@ -60,5 +62,5 @@ ms.locfileid: "84700628"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [快速入门：在 C 中创建反馈循环#](csharp-quickstart-commandline-feedback-loop.md)
+* [快速入门：以 C# 创建反馈循环](csharp-quickstart-commandline-feedback-loop.md)
 * [使用交互式演示](https://personalizationdemo.azurewebsites.net/)

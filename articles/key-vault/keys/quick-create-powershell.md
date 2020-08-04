@@ -1,28 +1,26 @@
 ---
-title: 快速入门：在 Azure Key Vault 中设置和检索密钥
+title: 在 Azure Key Vault 中创建和检索密钥的属性 - Azure PowerShell
 description: 本快速入门展示了如何使用 Azure PowerShell 在 Azure Key Vault 中设置和检索密钥
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.date: 03/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c407c10327a80de6b3df18a3db3978468c9f8da0
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 4ebd3cc605b396f72d063f3fc506df9020ec3a5f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81420271"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061011"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 在 Azure Key Vault 中设置和检索密钥
 
 在本快速入门中，你将使用 Azure PowerShell 在 Azure Key Vault 中创建一个密钥保管库。 Azure Key Vault 是一项云服务，用作安全的机密存储。 可以安全地存储密钥、密码、证书和其他机密。 有关 Key Vault 的详细信息，可以参阅[概述](../general/overview.md)。 Azure PowerShell 用于通过命令或脚本创建和管理 Azure 资源。 完成该操作后，你将存储密钥。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -60,8 +58,6 @@ New-AzKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' 
 * **保管库 URI**：在本示例中为 https://Contoso-Vault2.vault.azure.net/ 。 通过其 REST API 使用保管库的应用程序必须使用此 URI。
 
 创建保管库以后，你的 Azure 帐户是唯一能够对这个新的保管库执行任何操作的帐户。
-
-![Key Vault 创建命令完成后的输出](../media/quick-create-powershell/output-after-creating-keyvault.png)
 
 ## <a name="add-a-key-to-key-vault"></a>向密钥保管库中添加密钥
 

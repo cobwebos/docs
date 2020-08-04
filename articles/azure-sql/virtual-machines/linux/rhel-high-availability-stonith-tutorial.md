@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 06/25/2020
-ms.openlocfilehash: cd4128328ac0c3e9f03ecc80abb6e7b17537b2ee
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: af1df529ae0f6bb03a8d3f36e51619f273780dfe
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85483051"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87086789"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>教程：在 Azure 中的 RHEL 虚拟机上为 SQL Server 配置可用性组 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -491,13 +491,13 @@ Description : The fence-agents-azure-arm package contains a fence agent for Azur
  5. 输入一个**名称**（例如 `<resourceGroupName>-app`），选择“仅限此组织目录中的帐户”
  6. 选择“Web”作为应用程序类型，输入登录 URL（例如 http://localhost) ，然后单击“添加”。 不使用登录 URL，它可以是任何有效的 URL。 完成后，单击“注册”
  7. 为新应用注册选择“证书和机密”，然后单击“新建客户端密码”
- 8. 输入新密钥（客户端机密）的说明，选择“永不过期”，然后单击“添加” 
+ 8. 输入新密钥（客户端机密）的说明，选择“永不过期”，然后单击“添加”
  9. 请记下机密的值。 此值用作服务主体的密码
 10. 选择“概述”。 记下应用程序 ID。 此 ID 用作服务主体的用户名（以下步骤中的“登录 ID”）
  
 ### <a name="create-a-custom-role-for-the-fence-agent"></a>为隔离代理创建自定义角色
 
-按照[使用 Azure CLI 为 Azure 资源创建自定义角色](../../../role-based-access-control/tutorial-custom-role-cli.md#create-a-custom-role)教程进行操作。
+按照教程[使用 Azure CLI 创建 Azure 自定义角色](../../../role-based-access-control/tutorial-custom-role-cli.md#create-a-custom-role)。
 
 JSON 文件的内容类似于：
 
@@ -951,17 +951,17 @@ SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.d
 
 1. 基于之前选择的环境使用以下某一命令在可用性组 `ag1` 中创建资源 `ag_cluster`。
 
-      **RHEL 7** 
+    **RHEL 7**
   
-        ```bash
-        sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
-        ```
+    ```bash
+    sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s master notify=true
+    ```
 
-      **RHEL 8** 
+    **RHEL 8**
   
-        ```bash
-        sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s promotable notify=true
-        ```
+    ```bash
+    sudo pcs resource create ag_cluster ocf:mssql:ag ag_name=ag1 meta failure-timeout=30s promotable notify=true
+    ```
 
 2. 在继续使用以下命令之前，请检查资源并确保其处于联机状态：
 

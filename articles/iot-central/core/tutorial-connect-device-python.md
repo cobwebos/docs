@@ -3,17 +3,17 @@ title: 教程 - 将泛型 Python 客户端应用连接到 Azure IoT Central | Mi
 description: 本教程介绍如何以设备开发人员的身份将运行 Python 客户端应用的设备连接到 Azure IoT Central 应用程序。 通过导入设备功能模型创建设备模板，并添加视图来与连接设备交互
 author: dominicbetts
 ms.author: dobett
-ms.date: 03/24/2020
+ms.date: 07/07/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: tracking-python
-ms.openlocfilehash: 98aa452e8b0b5cf04edd319298c2b35e6097148e
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: d7093895392cb26e25e8054f0cdcb6870ce9e18a
+ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85971056"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87336094"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>教程：创建客户端应用程序并将其连接到 Azure IoT Central 应用程序 (Python)
 
@@ -21,7 +21,7 @@ ms.locfileid: "85971056"
 
 本文适用于解决方案构建者和设备开发人员。
 
-本教程介绍如何以设备开发人员的身份将 Python 客户端应用程序连接到 Azure IoT Central 应用程序。 该 Python 应用程序模拟环境传感器设备的行为。 你将使用一个示例设备功能模型在 IoT Central 中创建设备模板。  此外，你将向该设备模板中添加视图，使操作员能够与设备进行交互。
+本教程介绍如何以设备开发人员的身份将 Python 客户端应用程序连接到 Azure IoT Central 应用程序。 该 Python 应用程序模拟环境传感器设备的行为。 你将使用一个示例设备功能模型在 IoT Central 中创建设备模板。 此外，你将向该设备模板中添加视图，使操作员能够与设备进行交互。
 
 在本教程中，你将了解如何执行以下操作：
 
@@ -38,7 +38,7 @@ ms.locfileid: "85971056"
 
 若要完成本文中的步骤，需要以下各项：
 
-* 使用“自定义应用程序”模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
+* 使用“自定义应用程序”模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。 应用程序必须在 2020/07/14 或之后创建。
 * 装有 [Python](https://www.python.org/) 3.7 或更高版本的开发计算机。 若要检查版本，可以在命令行中运行 `python3 --version`。 Python 适用于各种操作系统。 本教程中的说明假设在 Windows 命令提示符下运行 python3 命令。
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
@@ -214,18 +214,18 @@ ms.locfileid: "85971056"
 
     操作员可以在命令历史记录中查看响应有效负载。
 
-1. 将以下函数添加到 `main` 函数中，以处理从 IoT Central 应用程序发送的属性更新：
+1. 将以下函数添加到 `main` 函数中，以处理从 IoT Central 应用程序发送的属性更新。 设备响应[可写属性更新](concepts-telemetry-properties-commands.md#writeable-property-types)而发送的消息必须包含 `av` 和 `ac` 字段。 `ad` 字段为可选字段：
 
     ```python
       async def name_setting(value, version):
         await asyncio.sleep(1)
         print(f'Setting name value {value} - {version}')
-        await device_client.patch_twin_reported_properties({'name' : {'value': value['value'], 'status': 'completed', 'desiredVersion': version}})
+        await device_client.patch_twin_reported_properties({'name' : {'value': value, 'ad': 'completed', 'ac': 200, 'av': version}})
 
       async def brightness_setting(value, version):
         await asyncio.sleep(5)
         print(f'Setting brightness value {value} - {version}')
-        await device_client.patch_twin_reported_properties({'brightness' : {'value': value['value'], 'status': 'completed', 'desiredVersion': version}})
+        await device_client.patch_twin_reported_properties({'brightness' : {'value': value, 'ad': 'completed', 'ac': 200, 'av': version}})
 
       settings = {
         'name': name_setting,
@@ -261,7 +261,7 @@ ms.locfileid: "85971056"
 
       if device_client is not None and device_client.connected:
         print('Send reported properties on startup')
-        await device_client.patch_twin_reported_properties({'state': 'true'})
+        await device_client.patch_twin_reported_properties({'state': 'true', 'processorArchitecture': 'ARM', 'swVersion': '1.0.0'})
         tasks = asyncio.gather(
           send_telemetry(),
           command_listener(),
@@ -304,11 +304,14 @@ python3 environmental_sensor.py
 
 ![观察客户端应用程序](media/tutorial-connect-device-python/run-application-2.png)
 
+## <a name="view-raw-data"></a>查看原始数据
+
+[!INCLUDE [iot-central-monitor-environmental-sensor-raw-data](../../../includes/iot-central-monitor-environmental-sensor-raw-data.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
 作为设备开发人员，现在你已了解了如何使用 Python 创建设备的基础知识，一些建议的后续步骤是：
 
-* 阅读[将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序](./howto-connect-devkit.md)操作方法文章，了解如何将实际设备连接到 IoT Central。
 * 要详细了解在实现设备代码时设备模板的作用，请阅读[什么是设备模板？](./concepts-device-templates.md)。
 * 阅读[连接到 Azure IoT Central](./concepts-get-connected.md)，详细了解如何向 IoT Central 注册设备以及 IoT Central 如何保护设备连接。
 

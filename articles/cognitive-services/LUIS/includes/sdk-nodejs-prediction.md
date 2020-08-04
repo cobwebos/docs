@@ -6,23 +6,23 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 05/28/2020
+ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 504ba9106cc9d617858e8fad7ea421c8707707b3
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 19da911cbc662f47e7bbd16aaddf8803d4109d6a
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171256"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369237"
 ---
 可以使用适用于 Node.js 的语言理解 (LUIS) 运行时客户端库执行以下操作：
 
 * 按槽进行预测
 * 按版本进行预测
 
-[参考文档](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-runtime) | [运行时包 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) | [示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_prediction.js)
+[参考文档](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest) | [库源代码](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-runtime) | [运行时包 (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) | [示例](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -35,8 +35,6 @@ ms.locfileid: "84171256"
 ### <a name="get-your-language-understanding-luis-runtime-key"></a>获取语言理解 (LUIS) 运行时密钥
 
 通过创建 LUIS 运行时资源，获取[运行时密钥](../luis-how-to-azure-subscription.md)。 保留密钥和密钥的终结点，以便用于下一步。
-
-[!INCLUDE [Set up environment variables for prediction quickstart](sdk-prediction-environment-variables.md)]
 
 ### <a name="create-a-new-javascript-nodejs-file"></a>创建新的 JavaScript (Node.js) 文件
 
@@ -75,13 +73,11 @@ npm install @azure/cognitiveservices-luis-runtime @azure/ms-rest-js
 
 1. 为自己所需的 LUIS 信息创建变量：
 
-    添加用于管理从 `LUIS_RUNTIME_KEY` 环境变量提取的预测密钥的变量。 如果在启动应用程序后创建了环境变量，则需要关闭并重新加载运行它的编辑器、IDE 或 shell 以访问该变量。 稍后会创建这些方法。
-
-    创建保留资源名称 `LUIS_RUNTIME_ENDPOINT` 的变量。
-
+    添加用于管理预测密钥和终结点密钥的变量。 
+    
     [!code-javascript [Azure resource variables](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=Variables)]
 
-1. 创建应用 ID 的变量，作为名为 `LUIS_APP_ID` 的环境变量。 设置公共 IoT 应用 **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`** 的环境变量。 创建用于设置 `production` 发布槽的变量。
+1. 为名为 `LUIS_APP_ID` 的应用程序 ID 创建变量。 将变量设置为公共 IoT 应用 `df67dcdb-c37d-46af-88e1-8b97951ca1c2`。 创建用于设置 `production` 发布槽的变量。
 
     [!code-javascript [LUIS app variables](~/cognitive-services-quickstart-code/javascript/LUIS/node-sdk-authoring-prediction/luis_prediction.js?name=OtherVariables)]
 

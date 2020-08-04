@@ -10,15 +10,19 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 02/07/2020
-ms.openlocfilehash: cb4afac3b1e73a95fa3fe703fc5bd9d3f621f23a
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 53b1c22e93c342373cae2bbb14958f4810a79630
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134689"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092314"
 ---
 # <a name="tutorial-use-r-to-create-a-machine-learning-model-preview"></a>教程：使用 R 创建机器学习模型（预览版）
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
+
+> [!IMPORTANT]
+> Azure 机器学习 R SDK 目前提供公共预览版。
+> 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 在本教程中，你将使用 Azure 机器学习 R SDK（预览版）创建逻辑回归模型，该模型预测交通事故中的死亡几率。 你将了解 Azure 机器学习云资源如何与 R 一起工作，提供一个可缩放的环境以用来训练和部署模型。  
 
@@ -67,7 +71,7 @@ Azure 机器学习工作区是云中的基础资源，用于试验、训练和�
 
 1. 打开包含版本号的文件夹。  此数字表示 R SDK 的当前版本。
 
-1. 选择 **vignettes** 文件夹右侧的“...”，然后选择“克隆”。 
+1. 选择 **vignettes** 文件夹右侧的“...”，然后选择“克隆”。
 
     ![克隆文件夹](media/tutorial-1st-r-experiment/clone-folder.png)
 

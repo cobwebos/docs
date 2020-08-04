@@ -1,6 +1,6 @@
 ---
 title: 对等互连两个虚拟网络 - Azure CLI 脚本示例
-description: Azure CLI 脚本示例 - 对等互连两个虚拟网络。
+description: 使用 Azure CLI 脚本示例通过 Azure 网络在同一区域创建并连接两个虚拟网络。
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 2dd5336d66872cc8c56fd372e89b67ce9c892f3a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 88bdca4d37d97bd666cc24e403d6944690bff82f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74083845"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87291925"
 ---
-# <a name="peer-two-virtual-networks-script-sample"></a>将两个虚拟网络脚本示例对等互连
+# <a name="peer-two-virtual-networks-with-an-azure-cli-script-sample"></a>使用 Azure CLI 脚本示例对等互连两个虚拟网络
 
 此脚本示例通过 Azure 网络在同一区域创建并连接两个虚拟网络。 运行脚本后，会在两个虚拟网络之间创建对等互连。
 

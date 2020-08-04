@@ -10,12 +10,12 @@ ms.date: 12/26/2018
 ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
-ms.openlocfilehash: de9e7fd605a1d53d1078523c77cd33065c03ca85
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: c4d44b1bf645132f5c2d6e863dbe0c93f024c7ea
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118961"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87066930"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>使用 Azure Cosmos DB 的用于 MongoDB 的 API 创建 Angular 应用 - 将 CRUD 函数添加至应用
 
@@ -36,7 +36,7 @@ ms.locfileid: "85118961"
 
 ## <a name="add-a-post-function-to-the-hero-service"></a>向 hero 服务添加 Post 函数
 
-1. 在 Visual Studio Code 中按“拆分编辑器”按钮 ![Visual Studio 中的“拆分编辑器”按钮](./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png)，并排打开 routes.js 和 hero.service.js。
+1. 在 Visual Studio Code 中按“拆分编辑器”按钮 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/split-editor-button.png"::: 并排打开 routes.js 和 hero.service.js  。
 
     可以看到，routes.js 第 7 行调用的是 hero.service.js 中第 5 行的 `getHeroes` 函数。  需为 post、put 和 delete 函数进行与此相同的配对。 
 
@@ -84,7 +84,7 @@ ms.locfileid: "85118961"
     });
     ```
 
-5. 运行应用，看是否一切正常。 在 Visual Studio Code 中，保存所有更改，选择左侧的“调试”按钮![Visual Studio Code 中的“调试”图标](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png)，然后选择“开始调试”按钮![Visual Studio Code 中的“开始调试”图标](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png)。
+5. 运行应用，看是否一切正常。 在 Visual Studio Code 中，保存所有更改，选择左侧的“调试”按钮 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png":::，然后选择“启动调试”按钮 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png"::: 。
 
 6. 现在请返回到 Internet 浏览器，打开开发人员工具的“网络”选项卡（在大多数计算机上按 F12 即可）。 导航到 `http://localhost:3000`，观察通过网络进行的调用。
 
@@ -169,7 +169,7 @@ ms.locfileid: "85118961"
     };
     ```
 
-4. 更新了代码后，请选择 Visual Studio Code 中的“重启”按钮![Visual Studio Code 中的“重启”按钮](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png)。
+4. 更新了代码后，选择 Visual Studio Code 中的“重启”按钮 :::image type="icon" source="./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png":::。
 
 5. 刷新 Internet 浏览器中的页面，选择“添加新 Hero”按钮。 添加 ID 为“9”、name 为“Starlord”、saying 为“Hi”的新 hero。 选择“保存”按钮保存新 hero。
 

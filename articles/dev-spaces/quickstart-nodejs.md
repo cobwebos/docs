@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: 本快速入门演示如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务中对 Node.js 应用程序进行调试和快速循环访问
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 18171a2f8d13bfcf3df76b1453c39c59cab89d7c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 370d49b5287a4d5beafc8c2cc5d8f48c269715db
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80240201"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006938"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>快速入门：在 Kubernetes 上使用 Visual Studio Code 和 Node.js 进行调试和循环访问 - Azure Dev Spaces
 
@@ -37,7 +37,7 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --generate-ssh-keys
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>在 AKS 群集上启用 Azure Dev Spaces
 
-使用 `use-dev-spaces` 命令在 AKS 群集上启用 Dev Spaces，然后按提示操作。 以下命令在 *MyResourceGroup* 组中的 *MyAKS* 群集上启用 Dev Spaces，并创建一个默认开发空间。 
+使用 `use-dev-spaces` 命令在 AKS 群集上启用 Dev Spaces，然后按提示操作。 以下命令在 *MyResourceGroup* 组中的 *MyAKS* 群集上启用 Dev Spaces，并创建一个默认开发空间。
 
 > [!NOTE]
 > `use-dev-spaces` 命令还将安装 Azure Dev Spaces CLI（如果尚未安装）。 无法在 Azure Cloud Shell 中安装 Azure Dev Spaces CLI。
@@ -74,11 +74,11 @@ git clone https://github.com/Azure/dev-spaces
 
 ## <a name="prepare-the-sample-application-in-visual-studio-code"></a>在 Visual Studio Code 中准备示例应用程序
 
-打开 Visual Studio Code，依次选择“文件”、“打开”，导航到 *dev-spaces/samples/nodejs/getting-started/webfrontend* 目录，然后选择“打开”。   
+打开 Visual Studio Code，依次选择“文件”、“打开”，导航到 *dev-spaces/samples/nodejs/getting-started/webfrontend* 目录，然后选择“打开”。  
 
 现在，*webfrontend* 项目便在 Visual Studio Code 中打开。 若要在开发空间中运行应用程序，请在命令面板中使用 Azure Dev Spaces 扩展生成 Docker 和 Helm chart 资产。
 
-若要在 Visual Studio Code 中打开命令面板，请依次选择“视图”、“命令面板”。   开始键入 `Azure Dev Spaces` 并选择“Azure Dev Spaces:  准备 Azure Dev Spaces 的配置文件”。
+若要在 Visual Studio Code 中打开命令面板，请依次选择“视图”、“命令面板”。  开始键入 `Azure Dev Spaces` 并选择“Azure Dev Spaces:准备 Azure Dev Spaces 的配置文件”。
 
 ![准备 Azure Dev Spaces 的配置文件](./media/common/command-palette.png)
 
@@ -93,24 +93,24 @@ git clone https://github.com/Azure/dev-spaces
 
 ## <a name="build-and-run-code-in-kubernetes-from-visual-studio-code"></a>通过 Visual Studio Code 在 Kubernetes 中生成并运行代码
 
-选择左侧的“调试”图标，然后选择顶部的“启动服务器(AZDS)”。  
+选择左侧的“调试”图标，然后选择顶部的“启动服务器(AZDS)”。 
 
 ![启动服务器](media/get-started-node/debug-configuration-nodejs.png)
 
-此命令在 Azure Dev Spaces 中生成并运行你的服务。 底部的“终端”窗口会显示运行 Azure Dev Spaces 的服务的生成输出和 URL。  “调试控制台”会显示日志输出。 
+此命令在 Azure Dev Spaces 中生成并运行你的服务。 底部的“终端”窗口会显示运行 Azure Dev Spaces 的服务的生成输出和 URL。 “调试控制台”会显示日志输出。
 
 > [!Note]
-> 如果在“命令面板”中看不到任何 Azure Dev Spaces 命令，请确保已安装[适用于 Azure Dev Spaces 的 Visual Studio Code 扩展](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。  另请确认是否在 Visual Studio Code 中打开了 *dev-spaces/samples/nodejs/getting-started/webfrontend* 目录。
+> 如果在“命令面板”中看不到任何 Azure Dev Spaces 命令，请确保已安装[适用于 Azure Dev Spaces 的 Visual Studio Code 扩展](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。 另请确认是否在 Visual Studio Code 中打开了 *dev-spaces/samples/nodejs/getting-started/webfrontend* 目录。
 
 可以通过打开公共 URL 来查看服务是否正在运行。
 
-依次选择“调试”、“停止调试”以停止调试程序。  
+依次选择“调试”、“停止调试”以停止调试程序。 
 
 ## <a name="update-code"></a>更新代码
 
-若要部署服务的更新版本，可以更新项目中的任何文件，然后重新运行“启动服务器”  。 例如：
+若要部署服务的更新版本，可以更新项目中的任何文件，然后重新运行“启动服务器”。 例如：
 
-1. 如果应用程序仍在运行，请依次选择“调试”  和“停止调试”  来停止该应用程序。
+1. 如果应用程序仍在运行，请依次选择“调试”和“停止调试”来停止该应用程序。
 1. 将 [`server.js`中的第 13 行](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13)更新为：
     
     ```javascript
@@ -118,29 +118,29 @@ git clone https://github.com/Azure/dev-spaces
     ```
 
 1. 保存所做更改。
-1. 重新运行“启动服务器”  。
+1. 重新运行“启动服务器”。
 1. 导航到正在运行的服务并观察所做的更改。
-1. 依次选择“调试”和“停止调试”以停止应用程序   。
+1. 依次选择“调试”和“停止调试”以停止应用程序 。
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>设置并使用用于调试的断点
 
-使用“启动服务器(AZDS)”启动服务。 
+使用“启动服务器(AZDS)”启动服务。
 
-依次选择“视图”、“资源管理器”，导航回到“资源管理器”视图。   打开 *server.js* 并单击第 13 行的某处，以将光标置于该处。 若要设置断点，请按 **F9**，或者依次选择“调试”、“切换断点”。  
+依次选择“视图”、“资源管理器”，导航回到“资源管理器”视图。  打开 *server.js* 并单击第 13 行的某处，以将光标置于该处。 若要设置断点，请按 **F9**，或者依次选择“调试”、“切换断点”。 
 
-在浏览器中打开服务，你会发现未显示任何消息。 返回 Visual Studio Code，并观察到第 13 行突出显示。 你设置的断点已在第 13 行暂停了服务。 若要恢复服务，请按 **F5**，或者依次选择“调试”、“继续”。   返回浏览器，你会发现，现在显示了消息。
+在浏览器中打开服务，你会发现未显示任何消息。 返回 Visual Studio Code，并观察到第 13 行突出显示。 你设置的断点已在第 13 行暂停了服务。 若要恢复服务，请按 **F5**，或者依次选择“调试”、“继续”。  返回浏览器，你会发现，现在显示了消息。
 
 在附加调试器的情况下在 Kubernetes 中运行服务时，你对调试信息（例如调用堆栈、局部变量和异常信息）拥有完全访问权限。
 
 通过将光标置于 *server.js* 中的第 13 行并按 **F9** 来删除断点。
 
-依次选择“调试”、“停止调试”以停止调试器。  
+依次选择“调试”、“停止调试”以停止调试器。 
 
 ## <a name="update-code-from-visual-studio-code"></a>在 Visual Studio Code 中更新代码
 
-将调试模式更改为“附加到服务器(AZDS)”并启动服务： 
+将调试模式更改为“附加到服务器(AZDS)”并启动服务：
 
-![](media/get-started-node/attach-nodejs.png)
+![选择了“附加到服务器(AZDS)”选项的 VS Code UI 的屏幕截图。](media/get-started-node/attach-nodejs.png)
 
 此命令在 Azure Dev Spaces 中生成并运行你的服务。 此外，它还会在服务的容器中启动 [nodemon](https://nodemon.io) 进程，并将 VS Code 附加到该进程。 如果源代码发生了更改，*nodemon* 进程允许自动重启，这样可以加速内部循环的开发，就如同在本地计算机上进行开发一样。
 

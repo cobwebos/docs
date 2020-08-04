@@ -1,0 +1,28 @@
+---
+title: Azure 认知搜索的 Azure Policy 法规遵从性控制
+description: 列出可用于 Azure 认知搜索的 Azure Policy 法规遵从性控制。 这些内置的策略定义提供了管理 Azure 资源合规性的常用方法。
+ms.date: 07/22/2020
+ms.topic: sample
+author: HeidiSteen
+ms.author: heidist
+ms.service: search
+ms.custom: subject-policy-compliancecontrols
+ms.openlocfilehash: f400adcc733cdf4e0e22a33b937d17099250bb3b
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87374410"
+---
+# <a name="azure-policy-regulatory-compliance-controls-for-azure-cognitive-search"></a>Azure 认知搜索的 Azure Policy 法规遵从性控制
+
+[Azure Policy 中的法规遵从性](../governance/policy/concepts/regulatory-compliance.md)为与不同合规性标准相关的“合规性域”和“安全控制”提供由 Microsoft 创建和管理的计划定义，称为“内置项” 。 此页列出 Azure 认知搜索的“符合域”和“安全控件” 。 可以分别为“安全控制”分配内置项，以帮助 Azure 资源符合特定的标准。
+
+[!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]
+
+[!INCLUDE [azure-policy-compliancecontrols-search](../../includes/policy/standards/byrp/microsoft.search.md)]
+
+## <a name="next-steps"></a>后续步骤
+
+- 详细了解 [Azure Policy 法规遵从性](../governance/policy/concepts/regulatory-compliance.md)。
+- 在 [Azure Policy GitHub 存储库](https://github.com/Azure/azure-policy)中查看这些内置项。

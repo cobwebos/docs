@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43f0dfa5fd413d201eb8c63aa752a6fd8db68f6c
-ms.sourcegitcommit: 374d1533ea2f2d9d3f8b6e6a8e65c6a5cd4aea47
+ms.openlocfilehash: ba6f79fffe5287be7574d422f026489d4da2795e
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85807870"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287503"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure Synapse Analytics（工作区预览版）常见问题解答
 
@@ -32,6 +32,8 @@ ms.locfileid: "85807870"
 - 轻松监视和快速优化、应对和调试在任意层的工作区活动中发生的事件。
 - 跨引擎管理元数据。 创建 Spark 表，该表将在 Azure Synapse 数据库中自动提供。
 - 通过统一的用户体验来与数据交互。 Synapse Studio 将大数据开发人员、数据工程师、数据库管理员 (DBA)、数据分析师和数据科学家聚合到了同一个平台。
+
+有关详细信息，请参阅[什么是 Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics/overview-what-is)。
 
 ### <a name="q-what-are-the-main-components-of-azure-synapse-analytics"></a>问：Azure Synapse Analytics 有哪些主要组件
 

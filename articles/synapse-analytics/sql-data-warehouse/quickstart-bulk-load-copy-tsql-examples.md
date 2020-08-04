@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: f9aa0214712704c1a80f73ae3fd05929f7245eb3
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.openlocfilehash: 1e44b58335bf90dbc0e97b58de7f878bc94c91c7
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86274130"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87371951"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>使用 Synapse SQL 安全地加载数据
 
@@ -88,10 +88,10 @@ WITH (
    > [!NOTE]
    > 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](../../storage/common/storage-account-upgrade.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)将该帐户**升级到 v2** 帐户。
 
-3. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后选择“添加角色分配”。  为 SQL Server 分配存储 Blob 数据所有者、参与者或读取者 RBAC 角色。
+3. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后选择“添加角色分配”。 为 SQL Server 分配存储 Blob 数据所有者、参与者或读取者 RBAC 角色。
 
    > [!NOTE]
-   > 只有具有“所有者”特权的成员能够执行此步骤。 若要了解 Azure 资源的各种内置角色，请参阅此[指南](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+   > 只有具有“所有者”特权的成员能够执行此步骤。 有关各种 Azure 内置角色，请参阅此[指南](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
    
     > [!IMPORTANT]
     > 指定存储 Blob 数据所有者、参与者或读取着 RBAC 角色 。 这些角色不同于所有者、参与者和读取者 Azure 内置角色。 
@@ -112,7 +112,7 @@ WITH (
 ## <a name="d-azure-active-directory-authentication-aad"></a>D. Azure Active Directory 身份验证 ((AAD))
 #### <a name="steps"></a>步骤
 
-1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后选择“添加角色分配”。  为 AAD Server 分配存储 Blob 数据所有者、参与者或读取者 RBAC 角色。 
+1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后选择“添加角色分配”。 为 AAD Server 分配存储 Blob 数据所有者、参与者或读取者 RBAC 角色。 
 
     > [!IMPORTANT]
     > 指定存储 Blob 数据所有者、参与者或读取着 RBAC 角色 。 这些角色不同于所有者、参与者和读取者 Azure 内置角色。

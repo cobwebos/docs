@@ -1,5 +1,5 @@
 ---
-title: 快速入门：合成语音，Swift - 语音服务
+title: 快速入门：在 iOS 上通过 Swift 合成语音 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何在 iOS 上使用语音 SDK 通过 Swift 合成语音
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: 8ce7d963e1d4a3514a0e60435634ba4f4a9cb009
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: e71717bdacbc3c6eb08fbdc8d56ec19c26a1d114
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391275"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87062273"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-ios-using-the-speech-sdk"></a>快速入门：在 iOS 上使用语音 SDK 通过 Swift 合成语音
 
@@ -39,7 +39,7 @@ ms.locfileid: "85391275"
 
 ## <a name="create-an-xcode-project"></a>创建 Xcode 项目
 
-启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。  
+启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。
 在模板选择对话框中，选择“iOS 单一视图应用”模板。
 
 在随后的对话框中，进行以下选择：

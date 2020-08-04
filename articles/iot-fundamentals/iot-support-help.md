@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
 ms.date: 6/10/2020
-ms.openlocfilehash: 3ba7e4b73fb0ac8d6318b7bfee73300800d5b7ee
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: b41e3d729fa6e5b0be9a55cc45de38f81bed494b
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85340785"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87061138"
 ---
 # <a name="azure-iot-support-and-help-options"></a>Azure IoT 支持和帮助选项
 
@@ -77,7 +77,7 @@ ms.locfileid: "85340785"
 
 | 服务                       | Azure 反馈 URL |
 |-------------------------------|---------------|
-| Azure IoT 中心                    | https://feedback.azure.com/forums/321918-azure-iot |
+| Azure IoT（中心、DPS、SDK）                    | https://feedback.azure.com/forums/321918-azure-iot |
 | Azure IoT Central             | https://feedback.azure.com/forums/911455-azure-iot-central |
 | Azure IoT 设备目录      | https://feedback.azure.com/forums/916948-azure-iot-device-catalog |
 | Azure IoT Edge                | https://feedback.azure.com/forums/907045-azure-iot-edge |

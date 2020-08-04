@@ -1,24 +1,28 @@
 ---
 title: 使用 Azure 资源管理器模板创建你的第一个函数
-description: 使用 Azure 资源管理器模板创建由 HTTP 触发的简单无服务器函数并将其部署到 Azure。
+description: 使用 Azure 资源管理器模板（ARM 模板）创建由 HTTP 触发的简单无服务器函数并将其部署到 Azure。
 ms.date: 3/5/2020
 ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs
-ms.openlocfilehash: 403ff6407105574c78b8e600c37efbe61d2f8b79
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: e409b3b64ac6bc39ba4cb58397506723a67a0de2
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84740194"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081706"
 ---
-# <a name="quickstart-create-and-deploy-azure-functions-resources-from-a-resource-manager-template"></a>快速入门：使用资源管理器的模板创建和部署 Azure Functions 资源
+# <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>快速入门：使用 ARM 模板创建和部署 Azure Functions 资源
 
-在本文中，你将使用 Azure 资源管理器模板来创建响应 HTTP 请求的函数。 
+在本文中，你将使用 Azure 资源管理器模板（ARM 模板）来创建响应 HTTP 请求的函数。 
 
 完成本快速入门会从你的 Azure 帐户中扣取最多几美分的费用。 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
+
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-function-app-create-dynamic%2Fazuredeploy.json)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -48,13 +52,11 @@ ms.locfileid: "84740194"
 
 在本地创建项目后，创建在 Azure 中运行新函数所需的资源。 
 
-## <a name="create-a-serverless-function-app-in-azure"></a>在 Azure 中创建无服务器函数应用
+## <a name="review-the-template"></a>查看模板
 
-### <a name="review-the-template"></a>查看模板
+本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-function-app-create-dynamic/)。
 
-本快速入门中使用的模板来自 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-function-app-create-dynamic)。
-
-:::code language="json" source="~/quickstart-templates/101-function-app-create-dynamic/azuredeploy.json" :::
+:::code language="json" source="~/quickstart-templates/101-function-app-create-dynamic/azuredeploy.json" range="1-140" highlight="55-136":::
 
 此模板会创建下面 4 个 Azure 资源：
 
@@ -63,7 +65,7 @@ ms.locfileid: "84740194"
 + [Microsoft.Web/sites](/azure/templates/microsoft.web/sites)：创建函数应用。
 + [microsoft.insights/components](/azure/templates/microsoft.insights/components)：创建用于监视的 Application Insights 实例。
 
-### <a name="deploy-the-template"></a>部署模板
+## <a name="deploy-the-template"></a>部署模板
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli-interactive

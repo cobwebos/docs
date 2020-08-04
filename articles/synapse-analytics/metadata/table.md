@@ -9,12 +9,12 @@ ms.subservice: metadata
 ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
-ms.openlocfilehash: d9efafdbc3545bebb3b90b3f64c14f45d8be82e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 28f666fe295b2b49fb6795306e9fad489c867517
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496020"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87387211"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics 共享元数据表
 
@@ -24,7 +24,7 @@ Azure Synapse Analytics 允许不同的工作区计算引擎在其 Apache Spark 
 
 Spark 作业创建数据库后，你可以通过 Spark，在该数据库中创建使用 Parquet 作为存储格式的表。 这些表将立即可供任何 Azure Synapse 工作区 Spark 池查询。 还可以在任何 Spark 作业中按权限使用这些表。
 
-Spark 创建的表、托管表和外部表还可以使用相同名称在 SQL 按需版本的相应已同步数据库中以外部表形式提供。 [在 SQL 中公开 Spark 表](#exposing-a-spark-table-in-sql)提供了有关表同步的更多详细信息。
+Spark 创建的表、托管表和外部表还可以使用相同名称在 SQL 按需版本的相应已同步数据库中以外部表形式提供。 [在 SQL 中公开 Spark 表](#expose-a-spark-table-in-sql)提供了有关表同步的更多详细信息。
 
 由于表以异步方式同步到 SQL 按需版本，因此这些表出现的时间会有延迟。
 
@@ -34,9 +34,9 @@ Spark 创建的表、托管表和外部表还可以使用相同名称在 SQL 按
 
 如果通过 SQL 按需版本在此类数据库中创建对象，或者尝试删除数据库，则该操作将会成功，但原始 Spark 数据库不会更改。
 
-## <a name="exposing-a-spark-table-in-sql"></a>在 SQL 中公开 Spark 表
+## <a name="expose-a-spark-table-in-sql"></a>使用 SQL 公开 Spark 表
 
-### <a name="which-spark-tables-are-shared"></a>共享哪些 Spark 表
+### <a name="shared-spark-tables"></a>共享的 Spark 表
 
 Spark 提供两种类型的、由 Azure Synapse 在 SQL 中自动公开的表：
 
@@ -50,7 +50,7 @@ Spark 提供两种类型的、由 Azure Synapse 在 SQL 中自动公开的表：
 
 Azure Synapse 目前仅共享通过 SQL 引擎以 Parquet 格式存储数据的托管 Spark 表和外部 Spark 表。 其他格式支持的表不会自动同步。 你可以在自己的 SQL 数据库中自行显式将此类表作为外部表进行同步，前提是 SQL 引擎支持这些表的基础格式。
 
-### <a name="how-are-spark-tables-shared"></a>Spark 表的共享方式
+### <a name="share-spark-tables"></a>共享 Spark 表
 
 可共享的托管 Spark 表和外部 Spark 表在 SQL 引擎中作为具有以下属性的外部表公开：
 
@@ -96,7 +96,7 @@ Spark 数据库和表及其在 SQL 引擎中的已同步表示形式将在基础
 
 ### <a name="create-a-managed-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>在 Spark 中创建 Parquet 支持的托管表并从 SQL 按需版本进行查询
 
-在此场景中，你有一个名为 `mytestdb` 的 Spark 数据库。 请参阅[创建和连接 Spark 数据库 - SQL 按需版本](database.md#create--connect-to-spark-database---sql-on-demand)。
+在此场景中，你有一个名为 `mytestdb` 的 Spark 数据库。 请参阅[使用按需 SQL 创建并连接到 Spark 数据库](database.md#create-and-connect-to-spark-database-with-sql-on-demand)。
 
 运行以下命令，使用 SparkSQL 创建托管的 Spark 表：
 
@@ -153,7 +153,7 @@ id | name | birthdate
 1 | Alice | 2010-01-01
 ```
 
-### <a name="creating-an-external-table-backed-by-parquet-in-spark-and-querying-it-from-sql-on-demand"></a>在 Spark 中创建 Parquet 支持的外部表并从 SQL 按需版本查询该表
+### <a name="create-an-external-table-backed-by-parquet-in-spark-and-query-from-sql-on-demand"></a>在 Spark 中创建 Parquet 支持的外部表并从按需 SQL 进行查询
 
 此示例基于在前一个托管表示例中创建的 Parquet 数据文件创建一个外部 Spark 表。
 

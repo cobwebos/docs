@@ -5,21 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 05/11/2020
+ms.date: 07/13/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 718a38f4744b6a1f9b4ebd0112be07b2556f1c39
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 18b2fb520ecab8b233be3c93ef614a2bce01a75e
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116025"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034990"
 ---
 # <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-multi-factor-authentication-or-password-changes"></a>教程：对用户登录使用风险检测以触发 Azure 多重身份验证或密码更改
 
 若要保护用户，可以在 Azure Active Directory (Azure AD) 中配置基于风险的策略，以便自动响应风险行为。 Azure AD 标识保护策略可以自动阻止登录尝试或要求执行其他操作，例如，要求更改密码或提示进行 Azure 多重身份验证。 这些策略可与现有的 Azure AD 条件访问策略配合使用，充当组织的额外保护层。 用户可能永远不会触发其中某项策略内的风险行为，但如果有人试图危害组织的安全，组织将受到保护。
+
+> [!IMPORTANT]
+> 本教程向管理员展示如何启用基于风险的 Azure 多重身份验证。
+>
+> 如果 IT 团队尚未启用使用 Azure 多重身份验证的功能，或者你在登录过程中遇到问题，请联系支持人员获得更多帮助。
 
 在本教程中，你将了解如何执行以下操作：
 

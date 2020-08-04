@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b5a52d0a54a9671052b9b7d46810cc65c22951f
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 35bd80c2501f9e4c24093f861479f993d85d9c02
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799868"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87034145"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hub-planner"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Hub Planner 的集成
 
@@ -90,7 +90,7 @@ ms.locfileid: "85799868"
     c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://app.hubplanner.com/sso/callback`
 
     > [!NOTE]
-    > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Hub Planner 客户端支持团队](mailto:hello@hubplanner.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 这些值是将使用的值。 需要进行的唯一更改是将“登录 URL”中的 \<SUBDOMAIN\> 替换为在注册 Hub Planner 时收到的子域。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
@@ -99,6 +99,7 @@ ms.locfileid: "85799868"
 1. 在“设置 Hub Planner”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
+
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
@@ -108,30 +109,30 @@ ms.locfileid: "85799868"
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，你将通过授予 B.Simon 访问 Hub Planner 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。
 1. 在应用程序列表中选择“Hub Planner”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
-1. 在“添加分配”对话框中，单击“分配”按钮。 
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-hub-planner-sso"></a>配置 Hub Planner SSO
 
-若要在“Hub Planner”端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给[ Hub Planner 支持团队](mailto:hello@hubplanner.com) 。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在“Hub Planner”端配置单一登录，需要登录 Hub Planner 帐户并完成以下任务。 
 
 ### <a name="install-the-extension-in-hub-planner"></a>在 Hub Planner 中安装扩展
 
@@ -167,7 +168,7 @@ ms.locfileid: "85799868"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,5 +1,5 @@
 ---
-title: 教程：Azure Active Directory 单一登录 (SSO) 与 F5 的集成 | Microsoft Docs
+title: 教程：Azure Active Directory 单一登录与 F5 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 F5 之间配置单一登录。
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fc56fe040528df5b4bd5e9217bd614c4a640c15
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 3e9a112f3f8cb7ba22201f4e5f05f21af30df039
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85608041"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87018573"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>教程：Azure Active Directory 单一登录 (SSO) 与 F5 的集成
+# <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>教程：Azure Active Directory (AD) 单一登录 (SSO) 与 F5 集成
 
 本教程介绍如何将 F5 与 Azure Active Directory (Azure AD) 集成。 将 F5 与 Azure AD 集成后，可以：
 
@@ -81,7 +81,7 @@ ms.locfileid: "85608041"
 
 按照下列步骤在 Azure 门户中启用 Azure AD SSO。
 
-1. 在 [Azure 门户](https://portal.azure.com/)中的“F5”应用程序集成页上，找到“管理”部分并选择“单一登录”。  
+1. 在 [Azure 门户](https://portal.azure.com/)中的“F5”应用程序集成页上，找到“管理”部分并选择“单一登录”。
 1. 在“选择单一登录方法”页上选择“SAML” 。
 1. 在“使用 SAML 设置单一登录”页上，单击“基本 SAML 配置”的编辑/笔形图标以编辑设置 。
 
@@ -117,26 +117,26 @@ ms.locfileid: "85608041"
 1. 在“用户”属性中执行以下步骤：
    1. 在“名称”字段中，输入 `B.Simon`。  
    1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。 
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
    1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分，你将通过授予 B.Simon 访问 F5 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。
 1. 在“应用程序”列表中选择“F5”。
 1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。  
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
-1. 在“添加分配”对话框中，单击“分配”按钮。 
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-f5-sso"></a>配置 F5 SSO
 

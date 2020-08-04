@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: quickstart
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 86be7ec73d8e19597062f3fa3777f3aa422082c3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: acfe4695b94fe9337296d70ef4a2864794730ec4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506343"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87081723"
 ---
 # <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>快速入门：在 Azure 中创建用于响应 HTTP 请求的函数
 
@@ -111,6 +111,9 @@ Maven 会请求你提供所需的值，以在部署上完成项目的生成。
 键入 `Y` 或按 Enter 进行确认。
 
 Maven 在名为 artifactId 的新文件夹（在此示例中为 `fabrikam-functions`）中创建项目文件。 
+
+若要在 Azure 中的 Java 11 上运行，必须修改 pom.xml 文件中的值。 若要了解详细信息，请参阅 [Java 版本](functions-reference-java.md#java-versions)。 
+
 ::: zone-end  
 导航到项目文件夹：
 
@@ -157,6 +160,8 @@ Function.java 包含一个接收 `request` 变量中的请求数据的 `run` 方
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-102":::
 
 若要控制在 Azure 中创建资源的方式，可以更改这些设置，例如，在初始部署之前将 `runtime.os` 从 `windows` 更改为 `linux`。 有关 Maven 插件支持的设置的完整列表，请参阅[配置详细信息](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details)。
+
+如果要在 Java 11（而不是 Java 8）上运行函数应用，则必须使用 Java 11 值手动更新 pom.xml 文件。 若要了解详细信息，请参阅 [Java 版本](functions-reference-java.md#java-versions)。 在 Java 11 上运行时，请确保  
 
 #### <a name="functiontestjava"></a>FunctionTest.java
 
@@ -245,7 +250,7 @@ Function.java 包含一个接收 `request` 变量中的请求数据的 `run` 方
 az login
 ```
     
-使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 以下示例在 `westeurope` 区域中创建名为 `AzureFunctionsQuickstart-rg` 的资源组。 （通常，你会在 `az account list-locations` 命令输出的、与你靠近的某个可用区域中创建资源组和资源。）
+使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 以下示例在 `westeurope` 区域中创建名为 `AzureFunctionsQuickstart-rg` 的资源组。 （通常，你会在 `az account list-locations` 命令输出的、与你靠近的某个可用区域中创建资源组和资源。）
 
 ```azurecli
 az group create --name AzureFunctionsQuickstart-rg --location westeurope

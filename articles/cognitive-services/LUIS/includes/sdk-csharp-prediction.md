@@ -6,16 +6,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.date: 02/14/2020
+ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: diberry
-ms.openlocfilehash: 2ba136cd479da0cd394b5e5afe6ebe7c22b539d5
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 4bf86c616420bb049e1d7a82ad0e942e6eb7b36f
+ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81732089"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87369236"
 ---
 使用适用于 .NET 的语言理解 (LUIS) 预测客户端库可以：
 
@@ -31,46 +31,6 @@ ms.locfileid: "81732089"
 * LUIS 应用 ID - 使用 `df67dcdb-c37d-46af-88e1-8b97951ca1c2` 的公共 IoT 应用 ID。 快速入门代码中使用的用户查询特定于该应用。
 
 ## <a name="setting-up"></a>设置
-
-### <a name="create-an-environment-variable"></a>创建环境变量
-
-使用密钥和资源名称，创建两个用于身份验证的环境变量：
-
-* `LUIS_PREDICTION_KEY` - 用于验证请求的资源密钥。
-* `LUIS_ENDPOINT_NAME` - 与密钥关联的资源名称。
-
-使用操作系统的说明。
-
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx LUIS_PREDICTION_KEY <replace-with-your-resource-key>
-setx LUIS_ENDPOINT_NAME <replace-with-your-resource-name>
-```
-
-添加环境变量后，请重启控制台窗口。
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export LUIS_PREDICTION_KEY=<replace-with-your-resource-key>
-export LUIS_ENDPOINT_NAME=<replace-with-your-resource-name>
-```
-
-添加环境变量后，请从控制台窗口运行 `source ~/.bashrc`，使更改生效。
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-编辑 `.bash_profile`，然后添加环境变量：
-
-```bash
-export LUIS_PREDICTION_KEY=<replace-with-your-resource-key>
-export LUIS_ENDPOINT_NAME=<replace-with-your-resource-name>
-```
-
-添加环境变量后，请从控制台窗口运行 `source .bash_profile`，使更改生效。
-
----
 
 ### <a name="create-a-new-c-application"></a>新建 C# 应用程序
 
@@ -116,7 +76,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime --ver
 
 创建客户端后，可以使用此客户端访问如下所述的功能：
 
-* 按[暂存或产品槽](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.predictionoperationsextensions.getslotpredictionasync?view=azure-dotnet)进行预测
+* 按[过渡或产品槽](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.predictionoperationsextensions.getslotpredictionasync?view=azure-dotnet)进行预测
 * 按[版本](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.predictionoperationsextensions.getversionpredictionasync?view=azure-dotnet)进行预测
 
 
@@ -134,13 +94,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime --ver
 
 ## <a name="authenticate-the-client"></a>验证客户端
 
-1. 创建密钥、名称和应用 ID 的变量：
-
-    一个用于管理从环境变量拉取的名为 `LUIS_PREDICTION_KEY` 的预测密钥的变量。 如果在启动应用程序后创建了环境变量，则需要关闭并重新加载运行它的编辑器、IDE 或 shell 以访问该变量。 稍后会创建这些方法。
-
-    创建保留资源名称 `LUIS_ENDPOINT_NAME` 的变量。
-
-    创建应用 ID 的变量，作为名为 `LUIS_APP_ID` 的环境变量。 将环境变量设置为公共 IoT 应用:
+1. 为密钥、资源名称、应用 ID 和发布槽创建变量。 将应用 ID 设置为公共 IoT 应用：
 
     **`df67dcdb-c37d-46af-88e1-8b97951ca1c2`**
 
@@ -156,7 +110,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime --ver
 
 用户言语是 [PredictionRequest](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime.models.predictionrequest?view=azure-dotnet) 对象的一部分。
 
-GetSlotPredictionAsync 方法需要多个参数，如应用 ID、槽名称、用于满足请求的预测请求对象  。 其他选项（如详细、显示所有意向和日志）都是可选的。
+GetSlotPredictionAsync 方法需要多个参数，如应用 ID、槽名称、用于满足请求的预测请求对象。 其他选项（如详细、显示所有意向和日志）都是可选的。
 
 [!code-csharp[Create method to get prediction runtime](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/predict-with-sdk-3x/Program.cs?name=snippet_maintask)]
 

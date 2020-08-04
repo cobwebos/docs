@@ -1,15 +1,15 @@
 ---
-title: 快速入门：部署 Azure Kubernetes 服务群集
+title: 快速入门：使用 PowerShell 部署 AKS 群集
 description: 了解如何使用 PowerShell 快速创建 Kubernetes 群集、部署应用程序，以及监视 Azure Kubernetes 服务 (AKS) 中的性能。
 services: container-service
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e786b64554b5fbaf5bb7051e09daca8fb1eaf049
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 503011f2b9c595feb4d2f94a60e61dcd217c52b0
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251410"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87057017"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-powershell"></a>快速入门：使用 PowerShell 部署 Azure Kubernetes 服务群集
 
@@ -37,7 +37,7 @@ Set-AzContext -SubscriptionId 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>创建资源组
 
-[Azure 资源组](../azure-resource-manager/management/overview.md)是一个逻辑组，用于部署和管理 Azure 资源。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [New-AzResourceGroup][new-azresourcegroup] cmdlet 创建资源组。
+[Azure 资源组](../azure-resource-manager/management/overview.md)是用于部署和管理 Azure 资源的逻辑组。 创建资源组时，系统会要求你指定一个位置， 此位置是资源组元数据的存储位置，如果你在创建资源期间未指定另一个区域，则它还是你的资源在 Azure 中的运行位置。 使用 [New-AzResourceGroup][new-azresourcegroup] cmdlet 创建资源组。
 
 以下示例在“eastus”区域创建名为“myResourceGroup”的资源组 。
 
@@ -70,7 +70,7 @@ New-AzAks -ResourceGroupName myResourceGroup -Name myAKSCluster -NodeCount 1
 
 片刻之后，该命令将会完成，并返回有关群集的信息。
 
-## <a name="connect-to-the-cluster"></a>连接到群集
+## <a name="connect-to-the-cluster"></a>连接至群集
 
 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 如果使用的是 Azure Cloud Shell，则 `kubectl` 已安装。 要本地安装 `kubectl`，请使用 `Install-AzAksKubectl` cmdlet：
 

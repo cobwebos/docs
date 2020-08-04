@@ -30,7 +30,7 @@
           href: stream-files-tutorial-with-rest.md
         - name: 使用 CLI
           href: stream-files-cli-quickstart.md
-        - name: 使用 .NET
+        - name: （使用 .NET）
           href: stream-files-dotnet-quickstart.md
         - name: 利用 Node.js
           href: stream-files-nodejs-quickstart.md
@@ -171,10 +171,10 @@
           href: media-services-metrics-diagnostic-logs.md
         - name: 诊断日志架构
           href: media-services-diagnostic-logs-schema.md
-    - name: 播放器客户端
+    - name: Azure Media Player
       items:
-        - name: Azure Media Player
-          href: use-azure-media-player.md
+        - name: Azure Media Player 概述
+          href: 'https://docs.microsoft.com/en-us/azure/media-services/azure-media-player/azure-media-player-overview'
     - name: 使用 v3 API 进行开发
       items:
         - name: 概述
@@ -257,7 +257,7 @@
           href: job-input-from-http-how-to.md
         - name: 从本地文件
           items:
-            - name: 使用 .NET
+            - name: （使用 .NET）
               displayName: upload
               href: job-input-from-local-file-how-to.md
             - name: 使用 REST
@@ -285,7 +285,11 @@
           items:
             - name: 使用 .NET
               displayName: 'encode, encoding, custom, transform'
-              href: customize-encoder-presets-how-to.md
+              items:
+                - name: 自定义编码器预设
+                  href: customize-encoder-presets-how-to.md
+                - name: 创建覆盖转换
+                  href: how-to-create-overlay.md
             - name: 使用 CLI
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
@@ -294,7 +298,7 @@
               href: custom-preset-rest-howto.md
         - name: 对视频进行子剪辑
           items:
-            - name: 使用 .NET
+            - name: （使用 .NET）
               href: subclip-video-dotnet-howto.md
               displayName: 'subclipping, clip, edit, trim, clipping'
             - name: 使用 REST
@@ -355,6 +359,14 @@
           href: download-results-howto.md
         - name: 表示描述性音频
           href: signal-descriptive-audio-howto.md
+    - name: 使用媒体播放器
+      items:
+        - name: Azure Media Player 完全设置
+          href: 'https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup'
+        - name: 使用 Video.js 播放器
+          href: how-to-video-js-player.md
+        - name: 使用 Shaka 视频播放器
+          href: how-to-shaka-player.md
 - name: 参考
   items:
     - name: OpenAPI 规范 (Swagger)

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 08c7a5b977534e6c2852f8095ce14c44bda71bf1
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 15b96a8bb5460064d6f50f81809f7e3850b30a4c
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331528"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87281916"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技术和功能概述
 
@@ -48,7 +48,7 @@ Azure AD B2C 定义多种类型的用户帐户。 Azure Active Directory、Azure
 * **来宾帐户** - 邀请你作为来宾加入其租户的外部用户。 邀请来宾用户访问 Azure AD B2C 租户的典型方案是共享管理职责。
 * **使用者帐户** - 使用者帐户是当用户在你已注册到租户的应用程序中完成注册用户旅程后，在 Azure AD B2C 目录中创建的帐户。
 
-![Azure 门户中的 Azure AD B2C 用户管理页](media/technical-overview/portal-01-users.png)<br/>图：*Azure 门户中 Azure AD B2C 租户内的用户目录*
+![Azure 门户中的 Azure AD B2C 用户管理页](media/technical-overview/portal-01-users.png)<br/>*图：Azure 门户中 Azure AD B2C 租户内的用户目录*
 
 ### <a name="consumer-accounts"></a>使用者帐户
 
@@ -61,7 +61,7 @@ Azure AD B2C 定义多种类型的用户帐户。 Azure Active Directory、Azure
 
 具有使用者帐户的用户可以通过多个标识（例如用户名、电子邮件、员工 ID、政府 ID 等）登录。 单个帐户可以有多个本地和社交标识。
 
-![使用者帐户标识](media/technical-overview/identities.png)<br/>图：*在 Azure AD B2C 中具有多个标识的单个使用者帐户*
+![使用者帐户标识](media/technical-overview/identities.png)<br/>*图：在 Azure AD B2C 中具有多个标识的单个使用者帐户*
 
 在 Azure AD B2C 中可以管理使用者帐户配置文件的通用属性，例如显示名称、姓氏、名字、城市，等等。 还可以扩展 Azure AD 架构以存储有关用户的其他信息。 例如，用户所在的国家/地区或居住地、首选语言和偏好（例如，是否想要订阅新闻稿或启用多重身份验证）。
 

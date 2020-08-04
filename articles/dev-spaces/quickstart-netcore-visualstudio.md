@@ -8,12 +8,12 @@ keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm,
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 909e4638b3b0919919320a09cbfa0e8d9ac92f2e
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 8279a32ece16209c1dd5bca13d08e22b283677ee
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995932"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87006997"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio--net-core---azure-dev-spaces"></a>快速入门：在 Kubernetes 上进行调试和循环访问：Visual Studio 和 .NET Core - Azure Dev Spaces
 
@@ -77,24 +77,24 @@ Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready 
 1. 选择“ASP.NET Core Web 应用程序”，然后单击“下一步” 。
 1. 为项目“webfrontend”命名并单击“创建” 。
 1. 出现提示时，请为模板选择“Web 应用程序(模型-视图-控制器)”。
-1. 选择顶部的“.NET Core”和“ASP.NET Core 2.1”。 
+1. 选择顶部的“.NET Core”和“ASP.NET Core 2.1”。
 1. 单击“创建”。
 
 ## <a name="connect-your-project-to-your-dev-space"></a>将项目连接到开发空间
 
 在项目中，从启动设置下拉列表中选择“Azure Dev Spaces”，如下所示。
 
-![](media/get-started-netcore-visualstudio/LaunchSettings.png)
+![Visual Studio UI 的屏幕截图，其中突出显示并选中了 IIS Express 选项，并且突出显示了 Azure Dev Spaces 选项。](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
-在“Azure Dev Spaces”对话框中，选择你的订阅和 Azure Kubernetes 群集。  将“空间”保留设置为“默认”，并选中“可公开访问”复选框。   单击“确定”。
+在“Azure Dev Spaces”对话框中，选择你的订阅和 Azure Kubernetes 群集。 将“空间”保留设置为“默认”，并选中“可公开访问”复选框。 单击“确定”。
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
+![“Azure Dev Spaces”对话框的屏幕截图。](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.png)
 
 此过程会使用可公开访问的 URL 将你的服务部署到默认开发空间。 如果选择的群集尚未配置为与 Azure Dev Spaces 一起使用，则会显示一条消息，询问你是否需要对其进行配置。 单击“确定”。
 
-![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
+![“添加 Azure Spaces 资源”对话框的屏幕截图。](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
-在默认开发空间中运行的服务的公共 URL 将显示在“输出”窗口中： 
+在默认开发空间中运行的服务的公共 URL 将显示在“输出”窗口中：
 
 ```cmd
 Starting warmup for project 'webfrontend'.
@@ -114,7 +114,7 @@ Completed warmup for project 'webfrontend' in 125 seconds.
 
 在上面的示例中，公共 URL 为 `http://default.webfrontend.1234567890abcdef1234.eus.azds.io/`。 
 
-选择“调试”，然后选择“开始调试”。  几秒钟后，服务会启动，Visual Studio 会打开一个浏览器，其中包含服务的公共 URL。 如果浏览器未自动打开，请在浏览器中导航到服务的公共 URL，并与开发空间中运行的服务交互。
+选择“调试”，然后选择“开始调试”。 几秒钟后，服务会启动，Visual Studio 会打开一个浏览器，其中包含服务的公共 URL。 如果浏览器未自动打开，请在浏览器中导航到服务的公共 URL，并与开发空间中运行的服务交互。
 
 此过程可能已禁用了对你的服务的公共访问。 若要启用公共访问，可以更新 [values.yaml 中的入口值][ingress-update]。
 
@@ -126,15 +126,15 @@ Completed warmup for project 'webfrontend' in 125 seconds.
 ViewData["Message"] = "Your application description page in Azure.";
 ```
 
-保存所做的更改，选择“调试”，然后选择“开始调试”。  几秒钟后，服务会启动，Visual Studio 会打开一个浏览器，其中包含服务的公共 URL。 如果浏览器未自动打开，请在浏览器中导航服务的公共 URL，然后单击“关于”。 可以看到，显示了更新的消息。
+保存所做的更改，选择“调试”，然后选择“开始调试”。 几秒钟后，服务会启动，Visual Studio 会打开一个浏览器，其中包含服务的公共 URL。 如果浏览器未自动打开，请在浏览器中导航服务的公共 URL，然后单击“关于”。 可以看到，显示了更新的消息。
 
 Azure Dev Spaces 不会在每次进行代码编辑时都重新生成和重新部署新的容器映像，而是在现有的容器中以增量方式重新编译代码，以加快编辑/调试循环的速度。
 
 ## <a name="setting-and-using-breakpoints-for-debugging"></a>设置并使用用于调试的断点
 
-如果 Visual Studio 仍连接到开发空间，请单击“停止”按钮。 打开 `Controllers/HomeController.cs` 并单击第 20 行中的某个位置，以将光标置于此处。 若要设置断点，请按 *F9*，或者依次单击“调试”、“切换断点”。  若要在开发空间中以调试模式启动服务，请按 *F5*，或者依次单击“调试”、“开始调试”。 
+如果 Visual Studio 仍连接到开发空间，请单击“停止”按钮。 打开 `Controllers/HomeController.cs` 并单击第 20 行中的某个位置，以将光标置于此处。 若要设置断点，请按 *F9*，或者依次单击“调试”、“切换断点”。 若要在开发空间中以调试模式启动服务，请按 *F5*，或者依次单击“调试”、“开始调试”。
 
-在浏览器中打开服务，你会发现未显示任何消息。 返回 Visual Studio，将会看到第 20 行已突出显示。 设置的断点在第 20 行处暂停了服务。 若要恢复服务，请按 *F5*，或者依次单击“调试”、“继续”。  返回浏览器，你会发现，现在显示了消息。
+在浏览器中打开服务，你会发现未显示任何消息。 返回 Visual Studio，将会看到第 20 行已突出显示。 设置的断点在第 20 行处暂停了服务。 若要恢复服务，请按 *F5*，或者依次单击“调试”、“继续”。 返回浏览器，你会发现，现在显示了消息。
 
 在附加调试器的情况下在 Kubernetes 中运行服务时，你对调试信息（例如调用堆栈、局部变量和异常信息）拥有完全访问权限。
 

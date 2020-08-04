@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/01/2019
+ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cc6673615c85b34975d6743da6da88ca841bcf35
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b13decc142328525376ca8b3a93c74b95c90dae6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87005355"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87481851"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中创建用户流
 
@@ -32,6 +32,9 @@ ms.locfileid: "87005355"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
+> [!IMPORTANT]
+> 我们更改了引用用户流版本的方式。 之前，我们提供 V1（生产就绪）版本，还提供了 V1.1 和 V2（预览版）版本。 而现在，我们将用户流整合到了“建议”（下一代预览版）和“标准”（正式发布版）版本中 。 所有 V1.1 和 V2 旧预览版用户流将在 2021 年 8 月 1 日之前逐渐被弃用。 有关详细信息，请参阅 [Azure AD B2C 中的用户流版本](user-flow-versions.md)。
+
 ## <a name="prerequisites"></a>先决条件
 
 [注册](tutorial-register-applications.md)属于要创建的用户流的应用程序。
@@ -46,20 +49,21 @@ ms.locfileid: "87005355"
     ![Azure 门户 中的 B2C 租户、目录和订阅窗格](./media/tutorial-create-user-flows/directory-subscription-pane.png)
 
 1. 在 Azure 门户中，搜索并选择“Azure AD B2C”。
-1. 在“策略”下，依次选择“用户流”、“新建用户流”。  
+1. 在“策略”下，依次选择“用户流”、“新建用户流”。
 
     ![门户中的“用户流”页面，突出显示了“新建用户流”按钮](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
-1. 在“建议”选项卡上选择“注册和登录”用户流。
+1. 在“创建用户流”页面上，选择“注册和登录”用户流 。
 
-    ![“选择用户流”页面，其中突出显示了“注册和登录”流](./media/tutorial-create-user-flows/signup-signin-type.png)
+    ![选择突出显示了“注册和登录”流的用户流页面](./media/tutorial-create-user-flows/select-user-flow-type.png)
+
+1. 在“选择版本”下，选择“建议”，然后选择“创建”  。 （[详细了解](user-flow-versions.md)用户流版本。）
+
+    ![在 Azure 门户中创建用户流页面（其中，属性突出显示）](./media/tutorial-create-user-flows/select-version.png)
 
 1. 输入该用户流的**名称**。 例如 *signupsignin1*。
 1. 对于“标识提供者”，请选择“电子邮件注册”。
-
-    ![Azure 门户中的“创建用户流”页面，突出显示了属性](./media/tutorial-create-user-flows/signup-signin-properties.png)
-
-1. 对于“用户属性和声明”，请选择在注册期间要从用户收集并发送的声明和属性。 例如，选择“显示更多”，然后选择“国家/地区”、“显示名称”和“邮政编码”所对应的属性和声明。 单击 **“确定”** 。
+1. 对于“用户属性和声明”，请选择在注册期间要从用户收集并发送的声明和属性。 例如，选择“显示更多”，然后选择“国家/地区”、“显示名称”和“邮政编码”所对应的属性和声明。 单击“确定”。
 
     ![属性和声明选择页，有三个声明处于选中状态](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
@@ -82,12 +86,13 @@ ms.locfileid: "87005355"
 
 如果希望用户能够在你的应用程序中编辑其个人资料，请使用个人资料编辑用户流。
 
-1. 在 Azure AD B2C 租户概述页面的菜单中，选择“用户流”，然后选择“新建用户流”。 
-1. 在“建议”选项卡上选择“个人资料编辑”用户流 。
+1. 在 Azure AD B2C 租户概述页面的菜单中，选择“用户流”，然后选择“新建用户流”。
+1. 在“创建用户流”页面上，选择“个人资料编辑”用户流 。 
+1. 在“选择版本”下，选择“建议”，然后选择“创建”  。
 1. 输入该用户流的**名称**。 例如 *profileediting1*。
 1. 对于“标识提供者”，请选择“本地帐户登录”。
-1. 对于“用户属性”，请选择你希望客户能够在其个人资料中编辑的属性。 例如，选择“显示更多”，然后选择“显示名称”和“职务”所对应的属性和声明。 单击 **“确定”** 。
-1. 单击“创建”以添加用户流。 名称中会自动追加前缀 *B2C_1*。
+2. 对于“用户属性”，请选择你希望客户能够在其个人资料中编辑的属性。 例如，选择“显示更多”，然后选择“显示名称”和“职务”所对应的属性和声明。 单击 **“确定”** 。
+3. 单击“创建”以添加用户流。 名称中会自动追加前缀 *B2C_1*。
 
 ### <a name="test-the-user-flow"></a>测试用户流
 
@@ -100,13 +105,14 @@ ms.locfileid: "87005355"
 
 若要允许应用程序用户重置其密码，请使用密码重置用户流。
 
-1. 在 Azure AD B2C 租户概述菜单中，选择“用户流”，然后选择“新建用户流”。 
-1. 在“建议”选项卡上选择“密码重置”用户流 。
+1. 在 Azure AD B2C 租户概述菜单中，选择“用户流”，然后选择“新建用户流”。
+1. 在“创建用户流”页面上，选择“密码重置”用户流 。 
+1. 在“选择版本”下，选择“建议”，然后选择“创建”  。
 1. 输入该用户流的**名称**。 例如 *passwordreset1*。
 1. 对于“标识提供者”，请启用“使用电子邮件地址重置密码”。
-1. 在“应用程序声明”下单击“显示更多”，并选择你希望在发回到应用程序的授权令牌中返回的声明。 例如，选择“用户的对象 ID”。
-1. 单击 **“确定”** 。
-1. 单击“创建”以添加用户流。 名称中会自动追加前缀 *B2C_1*。
+2. 在“应用程序声明”下单击“显示更多”，并选择你希望在发回到应用程序的授权令牌中返回的声明。 例如，选择“用户的对象 ID”。
+3. 单击 **“确定”** 。
+4. 单击“创建”以添加用户流。 名称中会自动追加前缀 *B2C_1*。
 
 ### <a name="test-the-user-flow"></a>测试用户流
 

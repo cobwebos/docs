@@ -6,12 +6,12 @@ services: container-service
 ms.topic: quickstart
 ms.date: 01/21/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 4ed4f69ea3c994d9d1cc71e26e35b8d2b6021982
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0ce291a068a9dbb8f24a5e0a26fbae39cfc3a161
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251413"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87056911"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>快速入门：使用 Azure 门户部署 Azure Kubernetes 服务 (AKS) 群集
 
@@ -31,7 +31,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 若要创建 AKS 群集，请完成以下步骤：
 
-1. 在 Azure 门户菜单上或在“主页”中，选择“创建资源”。
+1. 在 Azure 门户菜单或“主页”页上，选择“创建资源” 。
 
 2. 选择“容器” >  “Kubernetes 服务”。
 
@@ -61,7 +61,7 @@ Azure Kubernetes 服务 (AKS) 是可用于快速部署和管理群集的托管�
 
 ![Azure 门户中的示例 AKS 仪表板](media/kubernetes-walkthrough-portal/aks-portal-dashboard.png)
 
-## <a name="connect-to-the-cluster"></a>连接到群集
+## <a name="connect-to-the-cluster"></a>连接至群集
 
 若要管理 Kubernetes 群集，请使用 Kubernetes 命令行客户端 [kubectl][kubectl]。 `kubectl` 客户端已预装在 Azure Cloud Shell 中。
 
@@ -95,7 +95,7 @@ Kubernetes 清单文件定义群集的所需状态，例如，要运行哪些容
 > [!TIP]
 > 在本快速入门中，请手动创建应用程序清单并将其部署到 AKS 群集。 在更实际的方案中，可以使用 [Azure Dev Spaces][azure-dev-spaces] 直接在 AKS 群集中快速地循环访问代码并对其进行调试。 可以跨 OS 平台和开发环境使用 Dev Spaces，并可与团队中的他人进行协作。
 
-在 Cloud Shell 中，使用 `nano azure-vote.yaml` 或 `vi azure-vote.yaml` 命令创建一个名为 `azure-vote.yaml` 的文件。 然后复制以下 YAML 定义：
+在 Cloud Shell 中，使用编辑器创建一个名为 `azure-vote.yaml` 的文件，如 `code azure-vote.yaml`、`nano azure-vote.yaml` 或 `vi azure-vote.yaml`。 然后复制以下 YAML 定义：
 
 ```yaml
 apiVersion: apps/v1

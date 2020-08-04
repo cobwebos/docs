@@ -3,21 +3,24 @@ title: 快速入门：适用于 Python 的 Azure Blob 存储客户端库 v2.1
 description: 本快速入门将在对象 (Blob) 存储中创建存储帐户和容器。 然后，使用适用于 Python 的存储客户端库 v2.1 将 blob 上传到 Azure 存储、下载 blob，然后列出容器中的 blob。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 01/24/2020
+ms.date: 07/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019, tracking-python
-ms.openlocfilehash: 513e3bc2e8625f8ce255f479301b2ed5115708bb
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 47ead1be1a81c59da148ea829b61b608a35c45ef
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561341"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87292753"
 ---
 # <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>快速入门：使用 Python v2.1 SDK 管理 blob
 
 本快速入门介绍如何使用 Python 管理 blob。 Blob 是可以保存大量文本或二进制数据（包括图像、文档、流媒体和存档数据）的对象。 你将上传、下载和列出 Blob，并创建和删除容器。
+
+> [!NOTE]
+> 此快速启动使用 Azure Blob 存储客户端库的旧版本。 若要开始使用最新版本，请参阅[快速入门：使用 Python v12 SDK 管理 blob](storage-quickstart-blobs-python.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

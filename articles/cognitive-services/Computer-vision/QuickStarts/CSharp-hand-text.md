@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/22/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b47d579a8b086f86194d7129f5289f9c5c839c85
-ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+ms.openlocfilehash: 70244f6709e35271f63834fd818ea7c72e52a419
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "84987521"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87032062"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-30-rest-api-and-c"></a>快速入门：使用计算机视觉 3.0 REST API 和 C# 提取印刷体文本和手写文本
 
@@ -44,6 +44,7 @@ ms.locfileid: "84987521"
     2. 单击“浏览”选项卡，在“搜索”框中键入“Newtonsoft.Json” 。
     3. 选择显示的 Newtonsoft.Json，单击项目名称旁边的复选框，然后单击“安装” 。
 3. 将以下代码复制并粘贴到解决方案中的 Program.cs 文件。
+1. 将 `imageFilePath` 设置为自己的映像的路径。 可以下载[示例映像](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/cognitive-services/Computer-vision/Images/readsample.jpg)进行使用。
 4. 运行该程序。
 
 ```csharp

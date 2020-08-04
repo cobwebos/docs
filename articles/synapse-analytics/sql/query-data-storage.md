@@ -1,5 +1,5 @@
 ---
-title: 概述 - 使用 SQL 按需版本（预览版）查询存储中的数据
+title: 使用按需 SQL（预览版）查询存储中的数据
 description: 本文描述了如何使用 SQL 按需版本（预览版）资源在 Azure Synapse Analytics 中查询 Azure 存储。
 services: synapse analytics
 author: azaricstefan
@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 4f78928c26b595caafd6709a200297d62ce1c361
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 7ef7a771442dba5c7f82196a13b77cb28b0d1ed8
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259671"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386650"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>使用 SQL 按需版本（预览版）资源在 Synapse SQL 中查询存储文件
 
@@ -54,7 +54,7 @@ WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
 
 ## <a name="query-csv-files"></a>查询 CSV 文件
 
-若要查询 Parquet 源数据，请使用 FORMAT = 'CSV'。 查询 CSV 文件时，你可以将 CSV 文件的架构指定为 `OPENROWSET` 函数的一部分：
+若要查询 CSV 源数据，请使用 FORMAT = 'CSV'。 查询 CSV 文件时，你可以将 CSV 文件的架构指定为 `OPENROWSET` 函数的一部分：
 
 ```sql
 SELECT * FROM
@@ -186,7 +186,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/myroot/*/mysubfolder/*
 - 如果在指定的 column_name 中找不到该属性，则函数将返回错误。
 - 如果在指定的 column_path 中找不到该属性，则函数将根据[路径模式](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE)返回结果：在严格模式下返回错误，在宽松模式下返回 null。
 
-有关查询示例，请查看[查询 Parquet 嵌套类型](query-parquet-nested-types.md#access-elements-from-nested-columns)一文中的“访问嵌套列中的元素”部分。
+有关查询示例，请查看[查询 Parquet 嵌套类型](query-parquet-nested-types.md#read-properties-from-nested-object-columns)一文中的“访问嵌套列中的元素”部分。
 
 #### <a name="access-elements-from-repeated-columns"></a>访问重复列中的元素
 

@@ -4,14 +4,15 @@ description: 介绍 Azure HPC 缓存，它是一种用于高性能计算的文�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 05/29/2020
+ms.date: 07/16/2020
 ms.author: v-erkel
-ms.openlocfilehash: c0d32beeedba61bc2ecdc444685f7e81073459be
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: references_regions
+ms.openlocfilehash: 8c8223872ec3ef1d875e10ead8f327db01a924c4
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433697"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87053674"
 ---
 # <a name="what-is-azure-hpc-cache"></a>什么是 Azure HPC 缓存？
 
@@ -53,22 +54,16 @@ Azure HPC 缓存部署可帮助加快定量分析计算、风险分析工作负�
 
 ## <a name="region-availability"></a>上市区域
 
-Azure HPC 缓存在以下 Azure 区域中提供：
+请访问 [Azure 全球基础结构产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=hpc-cache)页面，以了解提供 Azure HPC 缓存的位置。
 
-| 北美      | 欧洲         | 亚洲            | 澳大利亚      |
-|--------------------|----------------|-----------------|----------------|
-| 美国东部            | 北欧   | 韩国中部   | 澳大利亚东部 |
-| 美国东部 2          | 西欧    | 东南亚  |               |
-| 美国中南部 | | | |
-| 美国西部 2        | | | |
-
-[客户管理的密钥功能](customer-keys.md)仅在以下区域中受支持：
+[客户管理的密钥功能](customer-keys.md)仅在以下 Azure 区域中受支持：
 
 * 美国东部
 * 美国中南部
 * 美国西部 2
-
-有关最新可用性信息，请查看 [Azure HPC 缓存产品页](https://azure.microsoft.com/services/hpc-cache)。
+* 西欧
+* US Gov 亚利桑那州
+* US Gov 弗吉尼亚州
 
 ## <a name="service-availability"></a>服务可用性
 
@@ -79,5 +74,5 @@ Azure HPC 缓存在以下 Azure 区域中提供：
 ## <a name="next-steps"></a>后续步骤
 
 * 阅读 [Azure HPC 缓存产品页](https://azure.microsoft.com/services/hpc-cache)，了解其功能的详细信息
-* 了解产品[先决条件](hpc-cache-prereqs.md)
+* 了解产品[先决条件](hpc-cache-prerequisites.md)
 * 从 Azure 门户中[创建 Azure HPC 缓存](hpc-cache-create.md)

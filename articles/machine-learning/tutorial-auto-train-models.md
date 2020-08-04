@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 02/10/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 595440dc727f3faf1fa475266825a671f00d9153
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 2e22ac4601384508869ff43d473dd191f405cd43
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143612"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87092263"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>教程：使用自动化机器学习预测出租车费
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -863,12 +863,12 @@ x_train, x_test = train_test_split(final_df, test_size=0.2, random_state=223)
 
 ### <a name="define-training-settings"></a>定义训练设置
 
-定义用于训练的试验参数和模型设置。 查看[设置](how-to-configure-auto-train.md)的完整列表。 提交带这些默认设置的试验大约需要 5-20 分钟，但如果需要缩短运行时间，可减小 `experiment_timeout_minutes` 参数。
+定义用于训练的试验参数和模型设置。 查看[设置](how-to-configure-auto-train.md)的完整列表。 提交带这些默认设置的试验大约需要 5-20 分钟，但如果需要缩短运行时间，可减小 `experiment_timeout_hours` 参数。
 
 |properties| 本教程中的值 |说明|
 |----|----|---|
 |**iteration_timeout_minutes**|2|每个迭代的时间限制（分钟）。 减小此值可缩短总运行时。|
-|**experiment_timeout_minutes**|20|在试验结束之前，所有合并的迭代所花费的最大时间量（以分钟为单位）。|
+|**experiment_timeout_hours**|0.3|在试验结束之前，所有合并的迭代所花费的最大时间量（以小时为单位）。|
 |**enable_early_stopping**|True|如果分数在短期内没有提高，则进行标记，以提前终止。|
 |**primary_metric**| spearman_correlation | 要优化的指标。 将根据此指标选择最佳拟合模型。|
 |**featurization**| auto | 如果使用“auto”，则试验可以预处理输入数据（处理缺失的数据、将文本转换为数字，等等）|
@@ -880,7 +880,7 @@ import logging
 
 automl_settings = {
     "iteration_timeout_minutes": 2,
-    "experiment_timeout_minutes": 20,
+    "experiment_timeout_hours": 0.3,
     "enable_early_stopping": True,
     "primary_metric": 'spearman_correlation',
     "featurization": 'auto',
@@ -984,7 +984,9 @@ print(fitted_model)
 使用最佳模型针对测试数据集运行预测，以便预测出租车费。 函数 `predict` 使用最佳模型根据 `x_test` 数据集预测 y（**行程费用**）的值。 输出 `y_predict` 中头 10 个预测的费用值。
 
 ```python
-y_predict = fitted_model.predict(x_test.values)
+y_test = x_test.pop("totalAmount")
+
+y_predict = fitted_model.predict(x_test)
 print(y_predict[:10])
 ```
 

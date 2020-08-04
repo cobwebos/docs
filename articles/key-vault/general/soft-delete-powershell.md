@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 022e6eb517987207755d31fdb1820e35197d8dc6
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 9b9a7a5b3d92833a0f24f6bc646b19110dcfd66a
+ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86202121"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87386072"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>如何将 Key Vault 软删除与 PowerShell 配合使用
 
@@ -27,7 +27,7 @@ Azure Key Vault 的软删除功能允许恢复已删除的保管库和保管库�
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-- Azure PowerShell 1.0.0 或更高版本 - 若尚未安装此产品，请安装 Azure PowerShell 并将其与 Azure 订阅关联，请参阅[如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)。 
+- Azure PowerShell 1.0.0 或更高版本 - 若尚未安装此产品，请安装 Azure PowerShell 并将其与 Azure 订阅关联，请参阅[如何安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/)。 
 
 >[!NOTE]
 > 环境中可能加载了过期版本的 Key Vault PowerShell 输出格式化文件，而没有加载正确版本。 预期 PowerShell 的更新版本将包含输出格式所需的更正，届时将更新此主题。 如果遇到此格式问题，当前的解决方法是：
@@ -206,7 +206,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoVault -UserPrincipalName user@conto
 
 可以使用以下命令管理证书：
 
-- 删除名为“SQLPassword”的证书： 
+- 删除证书： 
   ```powershell
   Remove-AzKeyVaultCertificate -VaultName ContosoVault -Name 'MyCert'
   ```
@@ -285,5 +285,5 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 
 ## <a name="other-resources"></a>其他资源
 
-- 有关 Key Vault 软删除功能的概述，请参阅 [Azure Key Vault 软删除概述](overview-soft-delete.md)。
+- 有关 Key Vault 软删除功能的概述，请参阅 [Azure Key Vault 软删除概述](soft-delete-overview.md)。
 - 有关 Azure Key Vault 使用情况的综述，请参阅[什么是 Azure Key Vault？](overview.md)。

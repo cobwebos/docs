@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 72a76fb513dc6eb008fcf1d1e19ffc33e713cfdc
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 6738f598275e91ce8a811c3ef6bcc6d5dc84e0bd
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259246"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87089492"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>快速入门：生成第一个静态 Web 应用
 
@@ -70,7 +70,7 @@ Azure 静态 Web 应用通过从 GitHub 存储库生成应用来将网站发布�
 - 单击“创建资源”
 - 搜索“静态 Web 应用”
 - 单击“静态 Web 应用(预览)”
-- 单击“创建” 
+- 单击“创建”
 
 ### <a name="basics"></a>基础
 
@@ -97,7 +97,10 @@ Azure 静态 Web 应用通过从 GitHub 存储库生成应用来将网站发布�
 
 :::image type="content" source="media/getting-started/next-build-button.png" alt-text="下一个生成按钮":::
 
-### <a name="build"></a>构建
+> [!NOTE]
+>  如果看不到任何存储库，则可能需要在 GitHub 中授权 Azure Static Web Apps。 浏览到 GitHub 存储库，转到“设置”>“应用程序”>“授权 OAuth 应用”，选择“Azure Static Web Apps”，然后选择“授予”。 对于组织存储库，你必须是组织的所有者才能授予权限。
+
+### <a name="build"></a>生成
 
 接下来，添加特定于首选前端框架的详细信息。
 

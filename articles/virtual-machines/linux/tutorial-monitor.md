@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/30/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 02ebdfc0fe3fd39f29a64fdb49a3f0d37b007097
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: dc4c348315dce59d5eaf58046c9a8d8f7f2e3725
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526956"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87313670"
 ---
 # <a name="tutorial-monitor-a-linux-virtual-machine-in-azure"></a>教程：监视 Azure 中的 Linux 虚拟机
 
@@ -118,7 +118,7 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --na
 
 Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收集该主机的指标，可以在 Azure 门户中查看这些指标，如下所示：
 
-1. 在 Azure 门户中选择“资源组”，选择“myResourceGroupMonitor”，并在资源列表中选择“myVM”。  
+1. 在 Azure 门户中选择“资源组”，选择“myResourceGroupMonitor”，并在资源列表中选择“myVM”。
 1. 若要查看主机 VM 的性能情况，请在 VM 窗口中选择“指标”，并选择“可用指标”下面的任一“[主机]”指标。
 
     ![查看主机指标](./media/tutorial-monitoring/monitor-host-metrics.png)
@@ -127,11 +127,11 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 
 若要使用用于 VM 的 Azure Monitor 启用对Azure VM 的监视，请执行以下操作：
 
-1. 在 Azure 门户中单击“资源组”，选择“myResourceGroupMonitor”，并在资源列表中选择“myVM”。  
+1. 在 Azure 门户中单击“资源组”，选择“myResourceGroupMonitor”，并在资源列表中选择“myVM”。
 
-2. 在“VM”页上的“监视”部分，选择“见解(预览版)”。 
+2. 在“VM”页上的“监视”部分，选择“见解(预览版)”。
 
-3. 在“见解(预览版)”页上，选择“立即试用”。 
+3. 在“见解(预览版)”页上，选择“立即试用”。
 
     ![为 VM 启用用于 VM 的 Azure Monitor](../../azure-monitor/insights/media/vminsights-enable-single-vm/enable-vminsights-vm-portal.png)
 
@@ -140,7 +140,7 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
     该列表预先选择了默认工作区和 VM 在订阅中部署的位置。 
 
     >[!NOTE]
-    >若要创建新的 Log Analytics 工作区以存储 VM 中的监视数据，请参阅[创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。 Log Analytics 工作区必须属于[支持的区域](../../azure-monitor/insights/vminsights-enable-overview.md#log-analytics)之一。
+    >若要创建新的 Log Analytics 工作区以存储 VM 中的监视数据，请参阅[创建 Log Analytics 工作区](../../azure-monitor/learn/quick-create-workspace.md)。 该工作区必须属于[支持的区域](../../azure-monitor/insights/vminsights-configure-workspace.md#supported-regions)之一。
 
 启用监视后，可能需要等待几分钟，然后才能查看 VM 的性能指标。
 
@@ -150,9 +150,9 @@ Linux VM 在 Azure 中有一个与它交互的专用主机。 系统会自动收
 
 用于 VM 的 Azure Monitor 包含一组针对几项关键性能指标 (KPI) 的性能图表，帮助你确定虚拟机的性能状况。 若要从 VM 访问，请执行以下步骤。
 
-1. 在 Azure 门户中单击“资源组”，选择“myResourceGroupMonitor”，并在资源列表中选择“myVM”。  
+1. 在 Azure 门户中单击“资源组”，选择“myResourceGroupMonitor”，并在资源列表中选择“myVM”。
 
-2. 在“VM”页上的“监视”部分，选择“见解(预览版)”。 
+2. 在“VM”页上的“监视”部分，选择“见解(预览版)”。
 
 3. 选择“性能”选项卡。
 

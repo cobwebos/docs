@@ -2,31 +2,70 @@
 title: 快速入门：创建 Linux Python 应用
 description: 将第一个 Python 应用部署到 Azure 应用服务中的 Linux 容器即可开始使用应用服务上的 Linux 应用。
 ms.topic: quickstart
-ms.date: 04/03/2020
+ms.date: 06/30/2020
 ms.custom: seo-python-october2019, cli-validate, tracking-python
-ms.openlocfilehash: 622709098d8b45f6c7badfddd3006dc730a6bf14
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1411c6ccc5228aa9248d5185bf44ecbfd496ed1f
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561702"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87042361"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>快速入门：在 Linux 上的 Azure 应用服务中创建 Python 应用
 
 在本快速入门中，需将 Python Web 应用部署到 [Linux 上的应用服务](app-service-linux-intro.md)，该版本提供了一项高度可缩放、自我修补的 Azure Web 托管服务。 在 Mac、Linux 或 Windows 计算机上使用本地 [Azure 命令行接口 (CLI)](/cli/azure/install-azure-cli)。 配置的 Web 应用使用免费的应用服务层，因此本文中的操作不会产生任何费用。
 
-如果希望通过 IDE 部署应用，请参阅[从 Visual Studio Code 将 Python 应用部署到应用服务](/azure/python/tutorial-deploy-app-service-on-linux-01)。
+如果希望通过 IDE 部署应用，请参阅[从 Visual Studio Code 将 Python 应用部署到应用服务](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="set-up-your-initial-environment"></a>设置初始环境
 
-- Azure 订阅 - [创建免费帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- <a href="https://www.python.org/downloads/" target="_blank">Python 3.7</a>（也支持 Python 3.6）
-- <a href="https://git-scm.com/downloads" target="_blank">Git</a>
-- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.0.80 或更高版本。 请运行 `az --version` 检查版本。
+在开始之前，必须满足以下条件：
 
-## <a name="download-the-sample"></a>下载示例
+1. 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+1. 安装 <a href="https://www.python.org/downloads/" target="_blank">Python 3.6 或更高版本</a>。
+1. 安装 <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.0.80 或更高版本，使用它可以在任何 shell 中运行命令来预配和配置 Azure 资源。
 
-在终端窗口中，运行以下命令，将示例应用程序克隆到本地计算机。 
+打开终端窗口并检查 Python 版本是否为 3.6 或更高版本：
+
+# <a name="bash"></a>[Bash](#tab/bash)
+
+```bash
+python3 --version
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```cmd
+py -3 --version
+```
+
+# <a name="cmd"></a>[Cmd](#tab/cmd)
+
+```cmd
+py -3 --version
+```
+
+---
+
+检查 Azure CLI 版本是否为 2.0.80 或更高版本：
+
+```azurecli
+az --version
+```
+
+然后通过 CLI 登录到 Azure：
+
+```azurecli
+az login
+```
+
+此命令将打开浏览器以获取凭据。 命令完成后，会显示包含订阅相关信息的 JSON 输出。
+
+登录后，可以使用 Azure CLI 运行 Azure 命令，处理订阅中的资源。
+
+## <a name="clone-the-sample"></a>克隆示例
+
+使用以下命令克隆示例存储库。 （如果尚未安装 git，请[安装 git](https://git-scm.com/downloads)。）
 
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-world
@@ -38,38 +77,57 @@ git clone https://github.com/Azure-Samples/python-docs-hello-world
 cd python-docs-hello-world
 ```
 
-存储库包含一个 application.py 文件，后者会告知应用服务：代码包含 Flask 应用  。 有关详细信息，请参阅[容器启动过程和自定义项](how-to-configure-python.md)。
+示例代码包含一个 application.py 文件，该文件会告知应用服务：代码包含 Flask 应用。 有关详细信息，请参阅[容器启动过程和自定义项](how-to-configure-python.md)。
 
 ## <a name="run-the-sample"></a>运行示例
 
-在终端窗口中，使用以下命令（操作系统适用）安装所需的依赖项，并启动内置开发服务器。 
-
 # <a name="bash"></a>[Bash](#tab/bash)
+
+首先，创建虚拟环境并安装依赖项：
 
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+```
+
+然后，将 `FLASK_APP` 环境变量设置为应用的条目模块，并运行 Flask 开发服务器：
+
+```
 export FLASK_APP=application.py
 flask run
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
+首先，创建虚拟环境并安装依赖项：
+
 ```powershell
 py -3 -m venv env
 env\scripts\activate
 pip install -r requirements.txt
+```
+
+然后，将 `FLASK_APP` 环境变量设置为应用的条目模块，并运行 Flask 开发服务器：
+
+```powershell
 Set-Item Env:FLASK_APP ".\application.py"
 flask run
 ```
 
 # <a name="cmd"></a>[Cmd](#tab/cmd)
 
+首先，创建虚拟环境并安装依赖项：
+
 ```cmd
 py -3 -m venv env
 env\scripts\activate
 pip install -r requirements.txt
+```
+
+然后，将 `FLASK_APP` 环境变量设置为应用的条目模块，并运行 Flask 开发服务器：
+
+```cmd
 SET FLASK_APP=application.py
 flask run
 ```
@@ -80,60 +138,24 @@ flask run
 
 ![在本地运行示例 Python 应用](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
 
-在终端窗口中，按 Ctrl+C 退出 Web 服务器   。
-
-## <a name="sign-in-to-azure"></a>登录 Azure
-
-Azure CLI 提供了许多便捷命令，可以在本地终端的命令行下使用这些命令来预配和管理 Azure 资源。 可以使用命令来执行在浏览器中通过 Azure 门户所执行的相同任务。 还可以在脚本中使用 CLI 命令自动执行管理过程。
-
-要在 Azure CLI 中运行 Azure 命令，必须先使用 `az login` 命令进行登录。 此命令将打开浏览器以获取凭据。
-
-```azurecli
-az login
-```
+在终端窗口中，按“Ctrl+C”退出 Flask 开发服务器 。
 
 ## <a name="deploy-the-sample"></a>部署示例
 
-[`az webapp up`](/cli/azure/webapp#az-webapp-up) 命令将在应用服务上创建 Web 应用并部署代码。
-
-在包含示例代码的 python-docs-hello-world 文件夹中，运行以下 `az webapp up` 命令  。 将 `<app-name>` 替换为全局唯一的应用名称（有效字符是 `a-z`、`0-9` 和 `-`）  。
-
+使用 `az webapp up` 命令在本地文件夹 (python-docs-hello-world) 中部署代码：
 
 ```azurecli
 az webapp up --sku F1 -n <app-name>
 ```
 
-`--sku F1` 参数在“免费”定价层上创建 Web 应用。 省略此参数即可改用高级层，这会按小时计费。
+- 如果无法识别 `az` 命令，请确保按照[设置初始环境](#set-up-your-initial-environment)中所述安装 Azure CLI。
+- 将 `<app_name>` 替换为在整个 Azure 中均唯一的名称（有效字符为 `a-z`、`0-9` 和 `-`）。 良好的模式是结合使用公司名称和应用标识符。
+- `--sku F1` 参数在“免费”定价层上创建 Web 应用。 省略此参数可使用更快的高级层，这会按小时计费。
+- 可以选择性地包含参数 `-l <location-name>`，其中，`<location_name>` 是 Azure 区域，例如 centralus、eastasia、westeurope、koreasouth、brazilsouth、centralindia等。 可以运行 [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) 命令来检索 Azure 帐户的允许区域列表。
 
-可以选择性地包含参数 `-l <location-name>`，其中，`<location_name>` 是 Azure 区域，例如 centralus、eastasia、westeurope、koreasouth、brazilsouth、centralindia等。       可以运行 [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) 命令来检索 Azure 帐户的允许区域列表。
+此命令可能需要花费几分钟时间完成。 运行时，它提供以下相关信息：创建资源组、应用服务计划和托管应用，配置日志记录，然后执行 ZIP 部署。 然后，它将显示消息“可以在 http://&lt;app-name&gt;.azurewebsites.net（这是 Azure 上应用的 URL）启动应用”。
 
-`az webapp up` 命令可能需要几分钟才能完全运行。 运行时，它会显示类似于以下示例的信息，其中的 `<app-name>` 是前面提供的名称：
-
-<pre>
-Creating Resource group 'appsvc_rg_Linux_centralus' ...
-Resource group creation complete
-Creating App service plan 'appsvc_asp_Linux_centralus' ...
-App service plan creation complete
-Creating app '&lt;app-name&gt;' ....
-Configuring default logging for the app, if not already enabled
-Creating zip with contents of dir D:\Examples\python-docs-hello-world ...
-Getting scm site credentials for zip deployment
-Starting zip deployment. This operation can take a while to complete ...
-Deployment endpoint responded with status code 202
-You can launch the app at http://&lt;app-name&gt;.azurewebsites.net
-{
-  "URL": "http://&lt;app-name&gt;.net",
-  "appserviceplan": "appsvc_asp_Linux_centralus",
-  "location": "eastus",
-  "name": "&lt;app-name&gt;",
-  "os": "Linux",
-  "resourcegroup": "appsvc_rg_Linux_centralus",
-  "runtime_version": "python|3.7",
-  "runtime_version_detected": "-",
-  "sku": "FREE",
-  "src_path": "D:\\Examples\\python-docs-hello-world"
-}
-</pre>
+![az webapp up 命令的示例输出](./media/quickstart-python/az-webapp-up-output.png)
 
 [!INCLUDE [AZ Webapp Up Note](../../../includes/app-service-web-az-webapp-up-note.md)]
 
@@ -145,11 +167,11 @@ Python 示例代码在使用内置映像的应用服务中运行 Linux 容器。
 
 ![在 Azure 中运行示例 Python 应用](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
 
-祝贺你！  现已将 Python 应用部署到 Linux 上的应用服务。
+祝贺你！ 现已将 Python 应用部署到 Linux 上的应用服务。
 
 ## <a name="redeploy-updates"></a>重新部署更新
 
-在偏好的代码编辑器中打开 application.py，并按如下所示更新 `hello` 函数。  此项更改会添加一个 `print` 语句，用于生成要在下一部分使用的日志记录输出。 
+在偏好的代码编辑器中打开 application.py，并按如下所示更新 `hello` 函数。 此项更改会添加一个 `print` 语句，用于生成要在下一部分使用的日志记录输出。 
 
 ```python
 def hello():
@@ -165,9 +187,9 @@ def hello():
 az webapp up
 ```
 
-此命令使用 .azure/config 文件中缓存的值，包括应用名称、资源组和应用服务计划。 
+此命令使用本地缓存在 .azure/config 文件中的值，包括应用名称、资源组和应用服务计划。
 
-部署完成之后，返回打开 `http://<app-name>.azurewebsites.net` 的浏览器窗口并刷新页面，此时应显示修改后的消息：
+部署完成后，切换回打开到 `http://<app-name>.azurewebsites.net` 的浏览器窗口。 刷新页面，刷新后的页面应显示修改后的消息：
 
 ![在 Azure 中运行更新的示例 Python 应用](./media/quickstart-python/run-updated-hello-world-sample-python-app-in-browser.png)
 
@@ -184,20 +206,15 @@ az webapp up
 az webapp log tail
 ```
 
-在浏览器中刷新应用以生成控制台日志，日志中应包含与以下文本类似的行。 如果未立即显示输出，请在 30 秒后重试。
-
-<pre>
-2020-04-03T22:54:04.236405938Z Handling request to home page.
-2020-04-03T22:54:04.236497641Z 172.16.0.1 - - [03/Apr/2020:22:54:04 +0000] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.83 Safari/537.36 Edg/81.0.416.41"
-</pre>
+在浏览器中刷新应用以生成控制台日志，其中包括描述对应用的 HTTP 请求的消息。 如果未立即显示输出，请在 30 秒后重试。
 
 也可通过浏览器在 `https://<app-name>.scm.azurewebsites.net/api/logs/docker` 中检查日志文件。
 
-若要随时停止日志流式处理，请键入 `Ctrl`+`C`。
+若要随时停止日志流式处理，可键入 Ctrl+C 。
 
 ## <a name="manage-the-azure-app"></a>管理 Azure 应用
 
-转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理已创建的应用。 搜索并选择“应用服务”。 
+转到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>管理已创建的应用。 搜索并选择“应用服务”。
 
 ![在 Azure 门户中导航到应用服务](./media/quickstart-python/navigate-to-app-services-in-the-azure-portal.png)
 
@@ -205,7 +222,7 @@ az webapp log tail
 
 ![在 Azure 门户的应用程序服务中导航到 Python 应用](./media/quickstart-python/navigate-to-app-in-app-services-in-the-azure-portal.png)
 
-这里我们可以看到应用的“概述”页。 并可以执行基本的管理任务，例如浏览、停止、启动、重新启动和删除。
+选择该应用将打开其“概述”页，你可以在其中执行基本的管理任务，例如浏览、停止、启动、重启和删除。
 
 ![在 Azure 门户的“概述”页中管理 Python 应用](./media/quickstart-python/manage-an-app-in-app-services-in-the-azure-portal.png)
 
@@ -215,11 +232,15 @@ az webapp log tail
 
 在前面的步骤中，你在资源组中创建了 Azure 资源。 资源组根据位置得名，例如“appsvc_rg_Linux_CentralUS”。 如果使用 F1 免费层以外的应用服务 SKU，这些资源会持续产生费用（请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/linux/)）。
 
-如果将来不需要这些资源，请按如下方式删除资源组：运行以下命令，并将 `<resource-group-name>` 替换为 `az webapp up` 命令的输出中所显示的资源组（例如“appsvc_rg_Linux_centralus”）。 此命令可能需要一分钟才能完成。
+如果你认为将来不再需要这些资源，请运行以下命令删除资源组：
 
 ```azurecli
-az group delete -n <resource-group-name>
+az group delete
 ```
+
+此命令使用 .azure/config 文件中缓存的资源组名称。
+
+此命令可能需要一分钟才能完成。
 
 ## <a name="next-steps"></a>后续步骤
 

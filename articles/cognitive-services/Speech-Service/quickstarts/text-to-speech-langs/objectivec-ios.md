@@ -1,5 +1,5 @@
 ---
-title: 快速入门：合成语音，Objective-C - 语音服务
+title: 快速入门：上使用语音 SDK 通过 Objective-C 合成语音
 titleSuffix: Azure Cognitive Services
 description: 了解如何在 iOS 上使用语音 SDK 通过 Objective-C 合成语音
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: yulili
-ms.openlocfilehash: 7a1cc2c45988e0c5a8c757e4d280b48dbbe56daa
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: fa1b62a987cb6c158c8d7f1fceb57bc47e5800eb
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391377"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87084834"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>快速入门：在 iOS 上使用语音 SDK 通过 Objective-C 合成语音
 
@@ -40,7 +40,7 @@ ms.locfileid: "85391377"
 
 ## <a name="create-an-xcode-project"></a>创建 Xcode 项目
 
-启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。**** **** ****
+启动 Xcode，然后通过单击“文件” > “新建” > “项目”来启动新项目。
 在模板选择对话框中，选择“iOS 单一视图应用”模板。
 
 在随后的对话框中，进行以下选择：
@@ -74,9 +74,9 @@ ms.locfileid: "85391377"
 
 ## <a name="build-and-run-the-sample"></a>生成并运行示例
 
-1. 使调试输出可见（“视图”**** > “调试区域”**** > ****“激活控制台”）。
-1. 从“产品” > “目标”菜单中的列表中，选择 iOS 模拟器或连接到开发计算机的 iOS 设备作为应用的目标位置**** ****。
-1. 在 iOS 模拟器中生成并运行示例代码，方法是在菜单中选择“产品”**** > ****“运行”，或者单击“播放”按钮。****
+1. 使调试输出可见（“视图” > “调试区域” > “激活控制台”）。
+1. 从“产品” > “目标”菜单中的列表中，选择 iOS 模拟器或连接到开发计算机的 iOS 设备作为应用的目标位置 。
+1. 在 iOS 模拟器中生成并运行示例代码，方法是在菜单中选择“产品” > “运行”，或者单击“播放”按钮。
 
    ![模拟的 iOS 应用](~/articles/cognitive-services/Speech-Service/media/sdk/qs-objectivec-simulated-app-tts.png)
 

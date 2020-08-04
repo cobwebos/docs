@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 06/10/2020
 ms.author: victorh
-ms.openlocfilehash: a98a06dedf1d0ed9b92cc2028dfc208ff26df056
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6ea0b28f5e0f23e0f8bb30e8fe2b0f792bce0709
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517614"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87287445"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Azure 应用程序网关有哪些新增功能？
 
@@ -25,9 +25,9 @@ Azure 应用程序网关会不断更新。 为了让大家随时了解最新的�
 
 ## <a name="new-features"></a>新增功能
 
-|Feature  |说明  |添加日期  |
+|功能  |说明  |添加日期  |
 |---------|---------|---------|
-| 侦听器中的通配符主机名（预览） | 现在可以在多站点侦听器中定义通配符主机名，每个侦听器最多可以定义 5 个主机名。 若要了解更多信息，请参阅[侦听器中的通配符主机名（预览）](multiple-site-overview.md#wildcard-host-names-in-listener-preview)和[使用 Azure 门户在应用程序网关中托管多个站点](create-multiple-sites-portal.md)，以获取分步指南。 | 2020 年 7 月 |
+| 侦听器中的通配符主机名（预览） | 现在可以在多站点侦听器中定义通配符主机名，每个侦听器最多可以定义 5 个主机名。 若要了解详细信息，请参阅[侦听器中的通配符主机名（预览）](multiple-site-overview.md#wildcard-host-names-in-listener-preview) | 2020 年 7 月 |
 | URL 重写（预览） | 现在可以使用 URL 重写功能来重写 URL 路径和查询字符串参数。 请参阅[重写 HTTP 标头和 URL](rewrite-http-headers-url.md) 以了解更多信息，并参阅[使用 Azure 门户在应用程序网关中重写 URL](rewrite-url-portal.md)以获取分步指南。 | 2020 年 7 月 |
 | 运行状况探测的自定义端口 | 现可通过应用程序网关 v2 SKU 在运行状况探测配置中提供自定义端口。 有关详细信息，请参阅[运行状况探测概述](application-gateway-probe-overview.md) | 2020 年 7 月 |
 | 应用程序网关入口控制器 (AGIC) AKS 附加产品（预览版） |现可通过 Azure CLI 将应用程序网关入口控制器单行部署为本机 AKS 附加产品。 作为 AKS 附加产品，AGIC 可成为一项完全托管服务，同时仍在客户的 AKS 群集中运行。 有关详细信息，请参阅 [AGIC 附加产品差异](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)。 |2020 年 6 月 |

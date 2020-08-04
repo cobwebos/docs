@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: overview
 ms.date: 02/07/2019
 ms.author: mihansen
-ms.openlocfilehash: aca0d67326a5a0488d0108efa9acd0d01c7788cd
-ms.sourcegitcommit: db2d402883035150f4f89d94ef79219b1604c5ba
+ms.openlocfilehash: 72e199e45047e1b425b2587c6b4028efb84060df
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2020
-ms.locfileid: "84819927"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87087435"
 ---
 # <a name="what-is-azure-api-for-fhirreg"></a>什么是 Azure API for FHIR&reg;？
 
@@ -82,11 +82,31 @@ Microsoft 提供的 FHIR 功能有两种配置：
 
 对于需要扩展或自定义 FHIR 服务器或需要访问基础服务（例如数据库）而无需通过 FHIR API 的用例，开发人员应选择适用于 Azure 的开放源代码 FHIR 服务器。   若要实现统包式生产就绪 FHIR API 和后端服务（其中持久化数据应只通过 FHIR API 进行访问），开发人员应选择 Azure API for FHIR
 
+## <a name="iot-connector-preview"></a>IoT 连接器（预览版）
+
+IoT 连接器是 Azure API for FHIR 的一项可选功能，使你能够引入来自医疗物联网 (IoMT) 设备的数据。 医疗物联网是一类 IoT 设备，用于通过网络捕获健康状况数据并与其他医疗保健 IT 系统交换此类数据。 IoMT 设备的一些示例包括健身和临床可穿戴设备、监视传感器、活动跟踪器、护理网亭甚至智能药丸。 借助 IoT 连接器功能，你可以快速设置服务，以可缩放、安全且合规的方式将 IoMT 数据引入到 Azure API for FHIR 中。
+
+IoT 连接器可以接受由 IoMT 设备发出的任何基于 JSON 的消息。 此数据首先转换为基于 FHIR 的适当[观察](https://www.hl7.org/fhir/observation.html)资源，然后持久保存到 Azure API for FHIR 中。 数据转换逻辑是通过基于消息架构和 FHIR 要求配置的一对映射模板定义的。 设备数据可以直接推送到 IoT 连接器，也可以与其他 Azure IoT 解决方案（[Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/)和 [Azure IoT Central](https://docs.microsoft.com/azure/iot-central/)）无缝结合使用。 IoT 连接器提供了安全的数据管道，同时允许 Azure IoT 解决方案管理物理设备的预配和维护。
+
+### <a name="applications-of-iot-connector-preview"></a>IoT 连接器的应用（预览版）
+
+医疗保健领域越来越广泛地使用 IoMT 设备，而 IoT 连接器旨在弥合将具有安全性和合规性的多设备数据引入 Azure API for FHIR 的鸿沟。 将 IoMT 数据引入 FHIR 服务器可实现全面的数据见解和创新的临床工作流。 IoT 连接器的一些常见使用场景包括：
+- **远程患者监视/远程医疗：** 远程患者监视提供了在传统医疗场所之外收集患者健康状况数据的功能。 医疗保健机构可以使用 IoT 连接器将远程设备生成的健康状况数据引入 Azure API for FHIR。 此类数据可用于密切跟踪患者的健康状况、监视患者遵守治疗方案的情况并提供个性化护理。
+- **研究与生命科学：** 临床试验正在大范围采用 IoMT 设备（例如生物传感器、可穿戴设备、移动应用）来捕获试验数据。 这些试验可以利用 IoT 连接器以安全、高效且有效的方式将设备数据传输到 Azure API for FHIR。 试验数据传输到 Azure API for FHIR 后，便可对其进行实时分析。
+- **高级分析：** IoMT 设备可以快速提供各类海量数据，这使它非常适合为机器学习模型提供训练和测试数据。 从本质上来说，IoT 连接器是针对各种数据频率、灵活的数据模式和低延迟的云缩放而构建的。 这些属性使 IoT 连接器成为捕获设备数据以满足高级分析需求的极佳选择。
+- **智能医院/诊所：** 如今，智能医院和诊所正在建立互连数字资产的基础结构。 IoT 连接器可用于捕获和集成来自这些连接组件的数据。 来自此类数据集的可行见解可实现更好的患者护理并提高运营效率。
+
 ## <a name="next-steps"></a>后续步骤
 
 若要开始使用 Azure API for FHIR，请遵循 5 分钟的快速入门来部署 Azure API for FHIR。
 
 >[!div class="nextstepaction"]
 >[部署 Azure API for FHIR](fhir-paas-portal-quickstart.md)
+
+若要试用 IoT 连接器功能，请参阅使用 Azure 门户部署 IoT 连接器的快速入门。
+
+>[!div class="nextstepaction"]
+>[部署 IoT 连接器](iot-fhir-portal-quickstart.md)
+
 
 FHIR 是 HL7 的注册商标，经 HL7 许可使用。

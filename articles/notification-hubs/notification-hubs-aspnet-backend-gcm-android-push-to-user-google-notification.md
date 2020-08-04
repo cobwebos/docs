@@ -12,17 +12,17 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-java
 ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 709926671e1ad4d8beefaf0f1cff4c56b1948ca3
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 27a56a45845c1515b500a71528d3449b63c3f869
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80127369"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87323955"
 ---
 # <a name="tutorial-send-push-notification-to-specific-android-users-using-azure-notification-hubs-and-google-cloud-messaging-deprecated"></a>教程：使用 Azure 通知中心和 Google Cloud Messaging（已弃用）向特定 Android 用户发送推送通知
 
@@ -154,7 +154,7 @@ ms.locfileid: "80127369"
 
     `main_activity.xml` 的图形布局现在应如下图所示：
 
-    ![][A1]
+    ![应用的屏幕截图，其中包含用户名、密码、收件人和消息框以及用于登录和发送通知的按钮。][A1]
 3. 在 `MainActivity` 类所在的包中创建一个名为 `RegisterClient` 的新类。 将以下代码用于新的类文件。
 
     ```java
@@ -262,8 +262,8 @@ ms.locfileid: "80127369"
     }
     ```
 
-    此组件将实现所需的 REST 调用，以便能够联系应用程序后端来注册推送通知。 它还会在本地存储通知中心创建的 *registrationIds*，如[从应用后端注册](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)中所述。 它使用你在单击“登录”按钮时存储在本地存储中的授权令牌。 
-4. 在你的类中，删除或注释掉针对 `NotificationHub` 的专用字段，并添加一个用于 `RegisterClient` 类的字段和一个用于 ASP.NET 后端终结点的字符串。 确保使用前面获取的实际后端终结点来替换 `<Enter Your Backend Endpoint>`。 例如，`http://mybackend.azurewebsites.net` 。
+    此组件将实现所需的 REST 调用，以便能够联系应用程序后端来注册推送通知。 它还会在本地存储通知中心创建的 *registrationIds*，如[从应用后端注册](notification-hubs-push-notification-registration-management.md#registration-management-from-a-backend)中所述。 它使用你在单击“登录”按钮时存储在本地存储中的授权令牌。
+4. 在你的类中，删除或注释掉针对 `NotificationHub` 的专用字段，并添加一个用于 `RegisterClient` 类的字段和一个用于 ASP.NET 后端终结点的字符串。 确保使用前面获取的实际后端终结点来替换 `<Enter Your Backend Endpoint>`。 例如，`http://mybackend.azurewebsites.net`。
 
     ```java
     //private NotificationHub hub;
@@ -324,7 +324,7 @@ ms.locfileid: "80127369"
     Button sendPush = (Button) findViewById(R.id.sendbutton);
     sendPush.setEnabled(false);
     ```
-9. 然后，添加以下方法，处理“登录”  按钮的单击事件，并发送推送通知。
+9. 然后，添加以下方法，处理“登录”按钮的单击事件，并发送推送通知。
 
     ```java
     public void login(View view) throws UnsupportedEncodingException {
@@ -406,7 +406,7 @@ ms.locfileid: "80127369"
     }
     ```
 
-    “登录”按钮的 `login` 处理程序生成在输入的用户名和密码上使用的基本身份验证令牌（代表身份验证方案使用的任何令牌），然后使用 `RegisterClient` 调用后端来注册。 
+    “登录”按钮的 `login` 处理程序生成在输入的用户名和密码上使用的基本身份验证令牌（代表身份验证方案使用的任何令牌），然后使用 `RegisterClient` 调用后端来注册。
 
     `sendPush` 方法调用后端来触发根据用户标记向用户发送安全通知。 `sendPush` 针对的平台通知服务取决于传入的 `pns` 字符串。
 
@@ -472,13 +472,13 @@ ms.locfileid: "80127369"
 
 1. 在设备或模拟器上使用 Android Studio 运行该应用程序。
 2. 在 Android 应用中，输入用户名和密码。 它们必须都是相同的字符串值，并且不能包含空格或特殊字符。
-3. 在 Android 应用中，单击“登录”。  等待指示“已登录并已注册”的 toast 消息。  它启用“发送通知”按钮。 
+3. 在 Android 应用中，单击“登录”。 等待指示“已登录并已注册”的 toast 消息。 它启用“发送通知”按钮。
 
-    ![][A2]
+    ![应用的屏幕截图。 确认用户已登录并注册的 Toast 消息可见，并且“发送通知”按钮处于开启状态。][A2]
 4. 单击切换按钮，以启用已在其中运行该应用并已注册用户的所有平台。
 5. 输入接收通知消息的用户的名称。 必须已在目标设备上为通知注册该用户。
 6. 为用户输入要接收为推送通知的消息。
-7. 单击“发送通知”。   已使用匹配的用户名标记注册的每个设备都会收到该推送通知。
+7. 单击“发送通知”。  已使用匹配的用户名标记注册的每个设备都会收到该推送通知。
 
 ## <a name="next-steps"></a>后续步骤
 

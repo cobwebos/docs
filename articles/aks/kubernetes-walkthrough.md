@@ -11,12 +11,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-javascript-october2019
 - seo-python-october2019
-ms.openlocfilehash: 2e6feb7c1d406a26c5a668d36d60ea0dbbae160c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: cfe85db7a49f2d7b830165d05acaa458f51119f0
+ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507108"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87115769"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-cluster-using-the-azure-cli"></a>快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务群集
 
@@ -88,6 +88,9 @@ az aks install-cli
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
+
+> [!NOTE]
+> 以上命令使用 Kubernetes 配置文件的默认位置，即 `~/.kube/config`。 可以使用 --file 为 Kubernetes 配置文件指定其他位置。
 
 若要验证到群集的连接，请使用 [kubectl get][kubectl-get] 命令返回群集节点列表。
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: b54545708d21c876fb85e1795b26c34eece005dd
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d60eeb279f9faa469c98d3d0578d0e4c1cdf0bd2
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255704"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87283446"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>控制 SQL 按需版本（预览版）对存储帐户的访问
 
@@ -87,6 +87,11 @@ SQL 按需版本查询直接从 Azure 存储中读取文件。 对 Azure 存储�
 | 托管标识 | 支持      | 支持        | 支持     |
 | 用户标识    | 支持      | 支持        | 支持     |
 
+
+> [!IMPORTANT]
+> 访问受防火墙保护的存储时，仅可使用托管标识。 需要[允许受信任的 Microsoft 服务设置](../../storage/common/storage-network-security.md#trusted-microsoft-services)并明确[将 RBAC 角色](../../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)分配给该资源实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 在这种情况下，实例的访问范围对应于分配给托管标识的 RBAC 角色。
+>
+
 ## <a name="credentials"></a>凭据
 
 若要查询 Azure 存储中的文件，SQL 按需版本终结点需要一个包含身份验证信息的凭据。 使用两种类型的凭据：
@@ -109,11 +114,7 @@ GRANT ALTER ANY CREDENTIAL TO [user_name];
 GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
 ```
 
-为了确保顺畅的 Azure AD 直通体验，默认情况下，所有用户都拥有使用 `UserIdentity` 凭据的权限。 这是在预配 Azure Synapse 工作区时通过自动执行以下语句实现的：
-
-```sql
-GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO [public];
-```
+为了确保顺畅的 Azure AD 直通体验，默认情况下，所有用户都拥有使用 `UserIdentity` 凭据的权限。
 
 ## <a name="server-scoped-credential"></a>服务器范围的凭据
 
@@ -142,7 +143,7 @@ SQL 用户无法使用 Azure AD 身份验证来访问存储。
 
 以下脚本将创建一个服务器级凭据，`OPENROWSET` 函数可以使用该凭据通过 SAS 令牌访问 Azure 存储上的任何文件。 创建此凭据后，用于执行 `OPENROWSET` 函数的 SQL 主体就可以读取与凭据名称中的 URL 匹配的 Azure 存储中受 SAS 密钥保护的文件。
 
-请将 <mystorageaccountname> 替换为实际存储帐户名称，并将 <mystorageaccountcontainername> 替换为实际容器名称： 
+请将 <mystorageaccountname> 替换为实际存储帐户名称，并将 <mystorageaccountcontainername> 替换为实际容器名称：
 
 ```sql
 CREATE CREDENTIAL [https://<storage_account>.dfs.core.windows.net/<container>]
@@ -243,7 +244,7 @@ SELECT TOP 10 * FROM dbo.userPublicData;
 GO
 SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
                                 DATA_SOURCE = [mysample],
-                                FORMAT=PARQUET) as rows;
+                                FORMAT='PARQUET') as rows;
 GO
 ```
 
@@ -288,7 +289,7 @@ WITH ( LOCATION = 'parquet/user-data/*.parquet',
 ```sql
 SELECT TOP 10 * FROM dbo.userdata;
 GO
-SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT=PARQUET) as rows;
+SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT='PARQUET') as rows;
 GO
 ```
 

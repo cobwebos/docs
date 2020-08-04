@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/17/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2ef1fab7a6f32f45ee3047a24610085a2133a339
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6ba9147aefb793387b429702623639bbccf0beea
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87102477"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507621"
 ---
 ## <a name="benefits-of-managed-disks"></a>托管磁盘的好处
 
@@ -41,7 +41,7 @@ ms.locfileid: "87102477"
 
 ### <a name="granular-access-control"></a>粒度访问控制
 
-可以使用 [Azure 基于角色的访问控制 (RBAC)](../articles/role-based-access-control/overview.md) 将对托管磁盘的特定权限分配给一个或多个用户。 托管磁盘公开了各种操作，包括读取、写入（创建/更新）、删除，以及检索磁盘的[共享访问签名 (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)。 可以仅将某人员执行其工作所需的操作的访问权限授予该人员。 例如，如果不希望某人员将某个托管磁盘复制到存储帐户，则可以选择不授予对该托管磁盘的导出操作的访问权限。 类似地，如果不希望某人员使用 SAS URI 复制某个托管磁盘，则可以选择不授予对该托管磁盘的该权限。
+可以使用 [Azure 基于角色的访问控制 (Azure RBAC)](../articles/role-based-access-control/overview.md) 将托管磁盘的特定权限分配给一个或多个用户。 托管磁盘公开了各种操作，包括读取、写入（创建/更新）、删除，以及检索磁盘的[共享访问签名 (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md)。 可以仅将某人员执行其工作所需的操作的访问权限授予该人员。 例如，如果不希望某人员将某个托管磁盘复制到存储帐户，则可以选择不授予对该托管磁盘的导出操作的访问权限。 类似地，如果不希望某人员使用 SAS URI 复制某个托管磁盘，则可以选择不授予对该托管磁盘的该权限。
 
 ### <a name="upload-your-vhd"></a>上传 vhd
 

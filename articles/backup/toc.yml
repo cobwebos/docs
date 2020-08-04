@@ -123,6 +123,8 @@
               href: backup-azure-vms-encryption.md
             - name: 配置运行 Linux 的 Azure VM 的应用一致备份
               href: backup-azure-linux-app-consistent.md
+            - name: 选择性磁盘备份
+              href: selective-disk-backup-restore.md
         - name: 还原
           items:
             - name: 关于 Azure VM 还原

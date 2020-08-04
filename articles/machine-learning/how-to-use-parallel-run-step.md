@@ -11,12 +11,12 @@ ms.author: tracych
 author: tracychms
 ms.date: 07/16/2020
 ms.custom: Build2020, tracking-python
-ms.openlocfilehash: bf0aa51c64eea0aa58e679c4f9f44686ce7b9ffb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 475c5b3073b25c79b57a2ab507af642a8af3547f
+ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520623"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87288871"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure 机器学习对大量数据运行批处理推理
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,13 +27,13 @@ ms.locfileid: "86520623"
 
 本文介绍如何执行以下任务：
 
-> * 设置机器学习资源。
-> * 配置批量推理的数据输入和输出。
-> * 根据 [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/) 数据集准备预先训练的映像分类模型。 
-> * 编写推理脚本。
-> * 创建一个包含 ParallelRunStep 的[机器学习管道](concept-ml-pipelines.md)，并对 MNIST 测试映像运行批量推理。 
-> * 使用新的数据输入和参数重新提交批量推理运行。 
-> * 查看结果。
+> 1. 设置机器学习资源。
+> 1. 配置批量推理的数据输入和输出。
+> 1. 根据 [MNIST](https://publicdataset.azurewebsites.net/dataDetail/mnist/) 数据集准备预先训练的映像分类模型。 
+> 1.  编写推理脚本。
+> 1. 创建一个包含 ParallelRunStep 的[机器学习管道](concept-ml-pipelines.md)，并对 MNIST 测试映像运行批量推理。 
+> 1. 使用新的数据输入和参数重新提交批量推理运行。 
+> 1. 查看结果。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -100,6 +100,8 @@ else:
      # For a more detailed view of current AmlCompute status, use get_status()
     print(compute_target.get_status().serialize())
 ```
+
+[!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
 
 ## <a name="configure-inputs-and-output"></a>配置输入和输出
 
@@ -203,16 +205,16 @@ model = Model.register(model_path="models/",
 脚本必须包含两个函数：
 - `init()`：此函数适用于后续推理的任何成本高昂或常见的准备工作。 例如，使用它将模型加载到全局对象。 此函数将在进程开始时调用一次。
 -  `run(mini_batch)`：将针对每个 `mini_batch` 实例运行此函数。
-    -  `mini_batch`：ParallelRunStep 将调用 run 方法，并将列表或 Pandas 数据帧作为参数传递给该方法。 如果输入是 FileDataset，则 mini_batch 中的每个条目都将为文件路径；如果输入是 TabularDataset，则为 Pandas 数据帧。
-    -  `response`：run() 方法应返回 Pandas 数据帧或数组。 对于 append_row output_action，这些返回的元素将追加到公共输出文件中。 对于 summary_only，将忽略元素的内容。 对于所有的输出操作，每个返回的输出元素都指示输入微型批处理中输入元素的一次成功运行。 确保运行结果中包含足够的数据，以便将输入映射到运行输出结果。 运行输出将写入输出文件中，并且不保证按顺序写入，你应使用输出中的某个键将其映射到输入。
+    -  `mini_batch``ParallelRunStep` 将调用 run 方法，并将列表或 pandas `DataFrame` 作为参数传递给该方法。 如果输入是 `FileDataset`，则 mini_batch 中的每个条目都将是文件路径；如果输入是 `TabularDataset`，则是 pandas `DataFrame`。
+    -  `response`：run() 方法应返回 pandas `DataFrame` 或数组。 对于 append_row output_action，这些返回的元素将追加到公共输出文件中。 对于 summary_only，将忽略元素的内容。 对于所有的输出操作，每个返回的输出元素都指示输入微型批处理中输入元素的一次成功运行。 确保运行结果中包含足够的数据，以便将输入映射到运行输出结果。 运行输出将写入输出文件中，并且不保证按顺序写入，你应使用输出中的某个键将其映射到输入。
 
 ```python
+%%writefile digit_identification.py
 # Snippets from a sample script.
 # Refer to the accompanying digit_identification.py
 # (https://aka.ms/batch-inference-notebooks)
 # for the implementation script.
 
-%%writefile digit_identification.py
 import os
 import numpy as np
 import tensorflow as tf
@@ -287,7 +289,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 
 `ParallelRunConfig` 是 `ParallelRunStep` 实例在 Azure 机器学习管道中的主要配置。 使用它来包装脚本并配置所需的参数，包括所有以下条目：
 - `entry_script`：作为将在多个节点上并行运行的本地文件路径的用户脚本。 如果 `source_directory` 存在，则使用相对路径。 否则，请使用计算机上可访问的任何路径。
-- `mini_batch_size`：传递给单个 `run()` 调用的微型批处理的大小。 （可选；对于 FileDataset，默认值为 `10` 文件，对于 TabularDataset，默认值为 `1MB`。）
+- `mini_batch_size`：传递给单个 `run()` 调用的微型批处理的大小。 （可选；默认值对于 `FileDataset` 是 `10` 个文件，对应 `TabularDataset` 是 `1MB`。）
     - 对于 `FileDataset`，它是最小值为 `1` 的文件数。 可以将多个文件合并成一个微型批处理。
     - 对于 `TabularDataset`，它是数据的大小。 示例值为 `1024`、`1024KB`、`10MB` 和 `1GB`。 建议值为 `1MB`。 `TabularDataset` 中的微批永远不会跨越文件边界。 例如，如果你有各种大小的 .csv 文件，最小的文件为 100 KB，最大的文件为 10 MB。 如果设置 `mini_batch_size = 1MB`，则大小小于 1 MB 的文件将被视为一个微型批处理。 大小大于 1 MB 的文件将被拆分为多个微型批处理。
 - `error_threshold`：在处理过程中应忽略的 `TabularDataset` 记录失败数和 `FileDataset` 文件失败数。 如果整个输入的错误计数超出此值，则作业将中止。 错误阈值适用于整个输入，而不适用于发送给 `run()` 方法的单个微型批处理。 范围为 `[-1, int.max]`。 `-1` 部分指示在处理过程中忽略所有失败。
@@ -304,7 +306,7 @@ batch_env.docker.base_image = DEFAULT_GPU_IMAGE
 - `run_invocation_timeout`：`run()` 方法调用超时（以秒为单位）。 （可选；默认值为 `60`）
 - `run_max_try`：微型批处理的 `run()` 的最大尝试次数。 如果引发异常，则 `run()` 失败；如果达到 `run_invocation_timeout`，则不返回任何内容（可选；默认值为 `3`）。 
 
-可以指定 `mini_batch_size`、`node_count`、`process_count_per_node`、`logging_level`、`run_invocation_timeout` 和 `run_max_try` 作为 `PipelineParameter` 以便在重新提交管道运行时，可以微调参数值。 在此示例中，对 `mini_batch_size` 和 `Process_count_per_node` 使用 PipelineParameter，并在稍后重新提交运行时更改这些值。 
+可以指定 `mini_batch_size`、`node_count`、`process_count_per_node`、`logging_level`、`run_invocation_timeout` 和 `run_max_try` 作为 `PipelineParameter` 以便在重新提交管道运行时，可以微调参数值。 在此示例中，对 `mini_batch_size` 和 `Process_count_per_node` 使用 `PipelineParameter`，并在稍后重新提交运行时更改这些值。 
 
 此示例假设你使用的是之前讨论的 `digit_identification.py` 脚本。 如果你使用自己的脚本，请相应地更改 `source_directory` 和 `entry_script` 参数。
 
@@ -394,7 +396,7 @@ pipeline_run_2.wait_for_completion(show_output=True)
 ```
 ## <a name="view-the-results"></a>查看结果
 
-以上运行的结果将被写入在 PipelineData 对象中指定的数据存储作为输出数据，此过程在这种情况下称为“推理”。 结果存储在默认 Blob 容器中，可以导航到存储帐户并通过存储资源管理器查看，文件路径为 azureml-blobstore-“GUID”/azureml/“RunId”/“output_dir”  。
+以上运行的结果作为输出数据写入在 `PipelineData` 对象中指定的 `DataStore`，此过程在这种情况下称为“推理”。 结果存储在默认 Blob 容器中，可以导航到存储帐户并通过存储资源管理器查看，文件路径为 azureml-blobstore-“GUID”/azureml/“RunId”/“output_dir”  。
 
 也可以下载此数据来查看结果。 下面是用于查看前 10 行内容的示例代码。
 

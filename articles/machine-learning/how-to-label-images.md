@@ -7,13 +7,13 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 04/09/2020
-ms.openlocfilehash: 90ef75c704459ca726480e6950ba748162c66b8e
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 07/27/2020
+ms.openlocfilehash: a71b4096e791221057fdcc5d14351ceccab720fb
+ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147007"
+ms.lasthandoff: 07/28/2020
+ms.locfileid: "87307193"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>在标记项目中标记图像 
 
@@ -37,11 +37,9 @@ ms.locfileid: "86147007"
 
 1. 选择左侧的“数据标记”来查找项目。  
 
-1. 选择列表中的项目名称。
-
 ## <a name="understand-the-labeling-task"></a>了解标记任务
 
-选择项目后，在页面顶部选择“标签数据”。
+在数据标签项目的表中，为项目选择“标签链接”。
 
 你会看到特定于项目的说明。 其中解释了现有的数据类型、如何做出决策以及其他相关信息。 阅读此信息后，在页面顶部选择“任务”。  或者在页面底部选择“开始标记”。
 
@@ -66,6 +64,10 @@ ms.locfileid: "86147007"
 
 ### <a name="assisted-machine-learning-preview"></a>辅助机器学习（预览版） 
 
+> [!IMPORTANT]
+> 辅助机器学习目前提供公共预览版。
+> 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 可能会触发机器学习算法。 如果在项目中启用了这些算法，你可能会看到以下内容：
 
 * 在标记了一定数量的图像后，你可能会在屏幕顶部的项目名称旁边看到“群集任务”。  这意味着这些图像被分组到一起，在同一页面上呈现相似的图像。  如果是这样，请切换到多个图像视图中的一个来利用分组。  
@@ -78,13 +80,13 @@ ms.locfileid: "86147007"
 
 ## <a name="tag-images-for-multi-class-classification"></a>标记图像以进行多类分类
 
-如果项目的类型为“图像分类多类”，则会将单一标记分配给整个图像。 若要随时查看指导，请转到“说明”页，然后选择“查看详细说明”。 
+如果项目的类型为“图像分类多类”，则会将单一标记分配给整个图像。 若要随时查看指导，请转到“说明”页，然后选择“查看详细说明”。
 
 如果在向图像分配标记后发现有误，可以修复标记。 选择图像下面显示的标签上的“X”可以清除标记。 或者选择该图像，然后选择另一个类。 新选择的值将替换以前应用的标记。
 
 ## <a name="tag-images-for-multi-label-classification"></a>标记图像以进行多标签分类
 
-如果正在处理类型为“多标签图像分类”的项目，则会将一个或多个标记应用到图像。 若要查看特定于项目的指导，请选择“说明”并转到“查看详细说明”。 
+如果正在处理类型为“多标签图像分类”的项目，则会将一个或多个标记应用到图像。 若要查看特定于项目的指导，请选择“说明”并转到“查看详细说明”。
 
 选择要标记的图像，然后选择标记。 该标记将应用到所有选定的图像，然后会取消选择这些图像。 若要应用多个标记，必须重新选择图像。 以下动画演示了多标签标记：
 

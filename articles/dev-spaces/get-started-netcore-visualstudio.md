@@ -7,12 +7,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: 本教程演示如何使用 Azure Dev Spaces 和 Visual Studio 在 Azure Kubernetes 服务上调试并快速迭代 .NET Core 应用程序
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: ba90cbc8bc0267f1fba8c9495886bdc8ce2ac5e3
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 722f2f5b86bd67df7c7250cdbfc44ebcc048c773
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995898"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87090784"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>创建 Kubernetes 开发空间：将 Visual Studio 和 .NET Core 与 Azure Dev Spaces 结合使用
 
@@ -23,7 +23,7 @@ ms.locfileid: "83995898"
 - 独立开发两个独立的服务，并使用 Kubernetes 的 DNS 服务发现来调用另一个服务。
 - 在团队环境中高效地开发和测试代码。
 
-> [!Note]
+> [!NOTE]
 > **如果在任何时候遇到问题**，请参阅[故障排除](troubleshooting.md)部分。
 
 ## <a name="install-the-azure-cli"></a>安装 Azure CLI
@@ -36,7 +36,7 @@ Azure Dev Spaces 需要进行最基本的本地计算机设置。 开发空间�
 az login
 ```
 
-> [!Note]
+> [!NOTE]
 > 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free)。
 
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>如果有多个 Azure 订阅...
@@ -91,31 +91,31 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-key
 
 在 Visual Studio 中创建新项目。 目前，该项目必须是 **ASP.NET Core Web 应用程序**。 将该项目命名为“webfrontend”。
 
-![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
+![“新建项目”对话框显示了在位置 C:\Source\Repos 中创建名为“webfrontend”的 C# Web 应用程序。 “解决方案”下拉列表显示“新建解决方案”，并选中了“创建解决方案的目录”复选框。](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
 
 选择“Web 应用程序(模型-视图-控制器)”模板，确保以对话框顶部两个下拉列表中的 **.NET Core** 和 **ASP.NET Core 2.0** 为目标。 单击“确定”以创建该项目  。
 
-![](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
+![在对话框“新建 ASP.NET Core Web 应用程序”中，有两个下拉列表框分别显示“.NET Core”和“ASP.NET Core 2.0”。 在列表框下方的一组项目模板按钮中，选择了“Web 应用程序(模型-视图-控制器)”模板。 未选中“启用 Docker 支持”复选框。](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
 
 ### <a name="enable-dev-spaces-for-an-aks-cluster"></a>为 AKS 群集启用 Dev Spaces
 
 使用刚才创建的项目，从启动设置下拉列表中选择“Azure Dev Spaces”，如下所示。
 
-![](media/get-started-netcore-visualstudio/LaunchSettings.png)
+![下拉列表框位于名为 Microsoft Visual Studio Int Preview 的窗口的顶部。 已选择“Azure Dev Spaces”。](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
 在旁边显示的对话框中，确保已使用适当的帐户登录，然后选择一个现有的 Kubernetes 群集。
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.PNG)
+![“Azure Dev Spaces”对话框有这些框：“订阅”、“Azure Kubernetes 服务群集”和“空间”。](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog.PNG)
 
 暂时让“空间”下拉列表默认为 `default`。 稍后会详细介绍此选项。 选中“可公开访问”复选框，允许通过公共终结点访问 Web 应用。 此设置不是必需的，但可以稍后用来在本演练中演示某些概念。 但请勿担心，不管什么情况，都可以使用 Visual Studio 来调试网站。
 
-![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog2.png)
+![已选中“可公开访问”复选框。](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog2.png)
 
 单击“确定”，选择或创建群集。
 
 如果选择的群集不支持使用 Azure Dev Spaces，则会显示一条消息，询问是否需要对其进行配置。
 
-![](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
+![消息显示：“添加 Azure Dev Spaces 资源? 必须配置所选 AKS 群集来使用 Azure Dev Spaces，然后才能使用它。 是否执行此操作?” 有“确定”和“取消”按钮。](media/get-started-netcore-visualstudio/Add-Azure-Dev-Spaces-Resource.png)
 
 选择“确定”。
 
@@ -124,9 +124,9 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-key
 
  将会启动一项后台任务来完成此操作。 将需要数分钟才能完成。 若要查看它是否仍在创建，请将鼠标指针悬停在状态栏左下角的“后台任务”图标上方，如下图所示。
 
-![](media/get-started-netcore-visualstudio/BackgroundTasks.PNG)
+![鼠标悬停时出现的弹出窗口显示“在资源组中创建‘我的 AKS’”。](media/get-started-netcore-visualstudio/BackgroundTasks.PNG)
 
-> [!Note]
+> [!NOTE]
 > 在成功创建开发空间之前，无法调试应用程序。
 
 ### <a name="look-at-the-files-added-to-project"></a>查看添加到项目的文件
@@ -138,7 +138,7 @@ az aks create -g MyResourceGroup -n MyAKS --location <region> --generate-ssh-key
 
 最后，你将看到一个名为 `azds.yaml` 的文件，其中包含开发空间所需的开发时配置。
 
-![](media/get-started-netcore-visualstudio/ProjectFiles.png)
+![文件“azds.yaml”显示在“解决方案资源管理器”窗口的“webfrontend”解决方案中。](media/get-started-netcore-visualstudio/ProjectFiles.png)
 
 ## <a name="debug-a-container-in-kubernetes"></a>在 Kubernetes 中调试容器
 成功创建开发空间之后，即可调试应用程序。 在代码中设置一个断点，例如在设置 `Message` 变量时所在的 `HomeController.cs` 文件的第 20 行处设置断点。 单击“F5”开始调试。 

@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: 本教程演示如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务上调试并快速迭代 Node.js 应用程序
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: 3ee8ec8eb78ccb8a7405fd00654ee00ebba8b7c1
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: 286f4f37b0f34614b560c9a1758c18f5f7c586bc
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85854983"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87044328"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>创建 Kubernetes 开发空间：将 Visual Studio Code 和 Node.js 与 Azure Dev Spaces 结合使用
 
@@ -20,7 +20,7 @@ ms.locfileid: "85854983"
 - 在容器中使用 VS Code 和命令行以迭代方式开发代码。
 - 在团队环境中高效地开发和测试代码。
 
-> [!Note]
+> [!NOTE]
 > **如果在任何时候遇到问题**，请参阅[故障排除](troubleshooting.md)部分。
 
 ## <a name="install-the-azure-cli"></a>安装 Azure CLI
@@ -33,7 +33,7 @@ Azure Dev Spaces 需要进行最基本的本地计算机设置。 开发空间�
 az login
 ```
 
-> [!Note]
+> [!NOTE]
 > 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free)。
 
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>如果有多个 Azure 订阅...
@@ -126,7 +126,7 @@ azds up
 - 将显示有关容器终结点的信息。 在我们的示例中，我们需要公共 HTTP URL。
 - 假设上述阶段成功完成，你应该在容器启动时开始看到 `stdout`（和 `stderr`）输出。
 
-> [!Note]
+> [!NOTE]
 > 第一次运行 `up` 命令时，这些步骤需要较长时间，但后续运行应该会更快。
 
 ### <a name="test-the-web-app"></a>测试 Web 应用
@@ -142,7 +142,7 @@ Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 
 若要查看 Web 应用，请在浏览器中打开公共 URL。 另请注意，当你与 Web 应用交互时，`stdout` 和 `stderr` 输出将流式传输到 azds trace  终端窗口。 你还将看到 HTTP 请求通过系统时的跟踪信息。 这使你可以更轻松地在开发期间跟踪复杂的多服务调用。 Dev Spaces 添加的检测提供了此请求跟踪。
 
-> [!Note]
+> [!NOTE]
 > 除了公共 URL 之外，还可以使用控制台输出中显示的备用 `http://localhost:<portnumber>` URL。 如果使用该 localhost URL，则容器看起来是在本地运行，但实际上是在 Azure 中运行。 Azure Dev Spaces 使用 Kubernetes *端口转发*功能将 localhost 端口映射到 AKS 中运行的容器。 这有助于从本地计算机与服务进行交互。
 
 ### <a name="update-a-content-file"></a>更新内容文件
@@ -193,33 +193,33 @@ Azure Dev Spaces 不仅仅是用来让代码在 Kubernetes 中运行，它还可
 
 此命令重新生成容器映像并重新部署 Helm 图表。 重新加载浏览器页面即可查看代码更改的效果。
 
-不过，还有一种更快的开发代码的方法，该方法在下一部分介绍。  
+不过，还有一种更快的开发代码的方法，该方法在下一部分介绍。 
 
 ## <a name="debug-a-container-in-kubernetes"></a>在 Kubernetes 中调试容器
 
 在本部分中，将使用 VS Code 直接调试在 Azure 中运行的容器。 你还将学习如何实现更快的“编辑-运行-测试”循环。
 
-![](media/common/edit-refresh-see.png)
+![此关系图显示了一个包含三个阶段的开发循环：编辑代码、刷新容器并查看更新。](media/common/edit-refresh-see.png)
 
-> [!Note]
+> [!NOTE]
 > **如果在任何时候遇到问题**，请参阅[故障排除](troubleshooting.md)部分，或在此页上发表评论。
 
 ### <a name="initialize-debug-assets-with-the-vs-code-extension"></a>使用 VS Code 扩展初始化调试资产
 首先需要配置代码项目，以便 VS Code 与 Azure 中的开发空间进行通信。 Azure Dev Spaces 的 VS Code 扩展提供了一个帮助程序命令来设置调试配置。 
 
-打开**命令面板**（使用“视图”|“命令面板”  菜单），并使用“自动完成”来键入并选择此命令：`Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。 
+打开**命令面板**（使用“视图”|“命令面板”菜单），并使用“自动完成”来键入并选择此命令：`Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。 
 
 这将在 `.vscode` 文件夹下为 Azure Dev Spaces 添加调试配置。 此命令不应与 `azds prep` 命令混淆，后者配置部署的项目。
 
-![](media/common/command-palette.png)
+![此屏幕截图显示在“命令面板”窗口中选择了命令“Azure Dev Spaces:准备 Azure Dev Spaces 的配置文件”。](media/common/command-palette.png)
 
 ### <a name="select-the-azds-debug-configuration"></a>选择 AZDS 调试配置
 1. 若要打开“调试”视图，请单击 VS Code 侧**活动栏**中的“调试”图标。
-1. 选择“启动程序(AZDS)”作为活动的调试配置。 
+1. 选择“启动程序(AZDS)”作为活动的调试配置。
 
-![](media/get-started-node/debug-configuration-nodejs2.png)
+![屏幕截图显示了 Visual Studio Code 窗口的左上角。 调试图标突出显示，左侧面板标题为“调试”，标题右侧的下拉列表显示“启动程序(AZDS)”](media/get-started-node/debug-configuration-nodejs2.png)
 
-> [!Note]
+> [!NOTE]
 > 如果在命令面板中看不到任何 Azure Dev Spaces 命令，请确保已[安装 Azure Dev Spaces 的 VS Code 扩展](get-started-nodejs.md#get-kubernetes-debugging-for-vs-code)。
 
 ### <a name="debug-the-container-in-kubernetes"></a>在 Kubernetes 中调试容器
@@ -227,10 +227,10 @@ Azure Dev Spaces 不仅仅是用来让代码在 Kubernetes 中运行，它还可
 
 与 `up` 命令类似，代码会在开始调试后同步到开发环境，而容器则会在生成后部署到 Kubernetes。 这次调试器会附加到远程容器。
 
-> [!Tip]
+> [!TIP]
 > VS Code 状态栏将变为橙色，指示已附加调试器。 它还会显示一个可点击的 URL，你可以使用它快速打开你的站点。
 
-![](media/common/vscode-status-bar-url.png)
+![屏幕截图显示 Visual Studio Code 窗口的底部。 橙色状态栏为最后一行。 它包含一个用于打开网站的 URL。](media/common/vscode-status-bar-url.png)
 
 在服务器端的代码文件中设置一个断点，例如，在 [`server.js` 的第 13 行](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13)上的 `app.get('/api'...` 中设置断点。 
 
@@ -240,7 +240,7 @@ app.get('/api', function (req, res) {
 });
 ```
 
-刷新浏览器页面，或者按“再说一遍”  按钮，然后即可点击断点对代码进行单步调试。
+刷新浏览器页面，或者按“再说一遍”按钮，然后即可点击断点对代码进行单步调试。
 
 可以不受限制地访问调试信息（例如调用堆栈、局部变量、异常信息等），就像在本地执行代码一样。
 
@@ -253,13 +253,13 @@ app.get('/api', function (req, res) {
 });
 ```
 
-保存文件，然后在“调试操作”窗格中单击“重启”按钮。   
+保存文件，然后在“调试操作”窗格中单击“重启”按钮。  
 
-![](media/common/debug-action-refresh.png)
+![调试操作窗格是位于页面顶部中心的一个小窗格（就在页面标题下方）。 重启按钮显示一个圆形箭头，并高亮显示。 按钮的悬停图像是“重启(Ctrl+Shift+F5)”。](media/common/debug-action-refresh.png)
 
 Azure Dev Spaces 不会在每次进行代码编辑时都重新生成和重新部署新的容器映像（这通常需要很长时间），而是在两次调试会话期间重启 Node.js 进程，加快编辑/调试循环速度。
 
-刷新浏览器中的 Web 应用，或者按“再说一遍”按钮。  此时会看到自定义消息显示在 UI 中。
+刷新浏览器中的 Web 应用，或者按“再说一遍”按钮。 此时会看到自定义消息显示在 UI 中。
 
 ### <a name="use-nodemon-to-develop-even-faster"></a>使用 NodeMon 加快开发速度
 *Nodemon* 是一种常用的工具，可供 Node.js 开发人员用来进行快速开发。 开发人员通常不会每次进行服务器端代码编辑都手动重启 Node 进程，而是将其 Node 项目配置为通过 *nodemon* 监视文件更改并自动重启服务器进程。 使用这种工作方式，开发人员只需在进行代码编辑后刷新其浏览器即可。
@@ -269,12 +269,12 @@ Azure Dev Spaces 不会在每次进行代码编辑时都重新生成和重新部
 请尝试以下步骤：
 1. 停止 VS Code 调试器。
 1. 单击 VS Code 侧**活动栏**中的“调试”图标。 
-1. 选择“附加(AZDS)”作为活动的调试配置。 
+1. 选择“附加(AZDS)”作为活动的调试配置。
 1. 按 F5。
 
 在此配置中，容器配置为启动 *nodemon*。 进行服务器代码编辑时，*nodemon* 会自动重启 Node 进程，就像在本地开发一样。 
 1. 在 `server.js` 中再次编辑 hello 消息，然后保存文件。
-1. 刷新浏览器或单击“再说一遍”按钮即可看到更改生效！ 
+1. 刷新浏览器或单击“再说一遍”按钮即可看到更改生效！
 
 **现在，我们已掌握了一种快速迭代代码并直接在 Kubernetes 中进行调试的方法！** 接下来，我们了解如何创建和调用另一个容器。
 

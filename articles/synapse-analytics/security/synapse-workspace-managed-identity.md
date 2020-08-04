@@ -1,5 +1,5 @@
 ---
-title: Azure Synapse 工作区中的托管标识
+title: Synapse 工作区中的托管标识
 description: 一篇介绍 Azure Synapse 工作区中的托管标识的文章
 author: RonyMSFT
 ms.service: synapse-analytics
@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ffffe0889831cff239cafdc4d18d44f7bdaf4c45
-ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
+ms.openlocfilehash: 07244f28a345bc3290762c657c2189941009faac
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85194376"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87077731"
 ---
 # <a name="azure-synapse-workspace-managed-identity-preview"></a>Azure Synapse 工作区托管标识（预览版）
 
@@ -44,11 +44,11 @@ Azure Synapse 使用托管标识来协调管道。 托管标识生命周期直�
 
 从 Azure Synapse Studio 中创建支持托管标识身份验证的链接服务时，托管标识信息也会显示。
 
-启动“Azure Synapse Studio”  ，从左侧导航栏中选择“管理”选项卡。  然后选择“链接服务”  并选择“+ 新建”  选项来创建新的链接服务。
+启动“Azure Synapse Studio”  ，从左侧导航栏中选择“管理”选项卡。 然后选择“链接服务”  并选择“+ 新建”  选项来创建新的链接服务。
 
 ![创建链接服务 (1)](./media/synapse-workspace-managed-identity/workspace-managed-identity-2.png)
 
-在“新建链接服务”  窗口中，键入“Azure Data Lake Storage Gen2”  。 从下面的列表中选择“Azure Data Lake Storage Gen2”  资源类型，然后选择“继续”。 
+在“新建链接服务”  窗口中，键入“Azure Data Lake Storage Gen2”  。 从下面的列表中选择“Azure Data Lake Storage Gen2”  资源类型，然后选择“继续”。
 
 ![创建链接服务 (2)](./media/synapse-workspace-managed-identity/workspace-managed-identity-3.png)
 

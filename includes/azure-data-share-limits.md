@@ -2,27 +2,27 @@
 title: include 文件
 description: include 文件
 services: azure data share
-author: jife
+author: jifems
 ms.service: azure data share
 ms.topic: include
-ms.date: 02/07/2020
+ms.date: 07/30/2020
 ms.author: jife
 ms.custom: include file
-ms.openlocfilehash: e1416b8b99c66daa4a27fa7f9bd7a20dfa9519e3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 7c11ace5983ee906ebb12ebb2c60f4567f40e430
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77087425"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87515359"
 ---
-通过 Azure 数据共享，组织可以轻松地与客户和合作伙伴共享数据。
+组织可以使用 Azure Data Share 以简单且安全的方式与客户和合作伙伴共享数据。
 
 | **资源** | **限制** |
 | --- | --- |
-| 每个 Azure 订阅的最大数据共享资源数 |50 |
-| 每个数据共享资源的最大已发送共享数 |100 |
-| 每个数据共享资源接收的最大共享数 |100 |
-| 每个已发送共享的最大邀请数 |100 |
-| 每个已发送共享的共享订阅的最大数目 |100 |
-| 每个共享的数据集的最大数目 |100 |
-| 每个共享的最大快照计划数 |1 |
+| 每个 Azure 订阅的 Data Share 资源数上限 |100 |
+| 每个 Data Share 资源的已发送共享数上限 |200 |
+| 每个 Data Share 资源的已接收共享数上限 |100 |
+| 每个已发送共享的邀请数上限 |200 |
+| 每个已发送共享的共享订阅数上限 |200 |
+| 每个共享的数据集数上限 |200 |
+| 每个共享的快照计划数上限 |1 |
