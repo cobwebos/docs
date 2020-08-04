@@ -1,6 +1,6 @@
 ---
 title: 入门 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
-description: 这是着重强调威胁建模工具操作的更深入的概述。
+description: 了解如何开始使用 Threat Modeling Tool。 创建关系图，识别威胁，缓解威胁，并验证每个缓解措施。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 1454826095bcced9b20935405c0befd5a1ed1ddd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3b8467a5983ae9d8928d14987bcee9d2aef094aa
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68728325"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539894"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>威胁建模工具入门
 

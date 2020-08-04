@@ -1,19 +1,19 @@
 ---
 title: Microsoft Threat Modeling Tool 版本 2019/7/2
 titleSuffix: Azure
-description: 阐述 Threat Modeling Tool 的发行说明
+description: 阅读7/2/2019 上发布的威胁建模工具更新的发行说明。 这些说明包括辅助功能的改进和 bug 修复。
 author: jegeib
 ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: d4a97a10b8055af4401dbe163723b1fb38a5d12f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0e62f6950f90d7f15aa231783e292ec8eee0b4c4
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78269674"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539112"
 ---
 # <a name="threat-modeling-tool-update-release-71607021---722019"></a>Threat Modeling Tool 更新版 7.1.60702.1 - 2019/7/2
 

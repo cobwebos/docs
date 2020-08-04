@@ -4,19 +4,19 @@ description: 了解 Azure SQL 数据库基于 DTU 的购买模型中用于提供
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
-ms.custom: ''
+ms.custom: references_regions
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/26/2019
-ms.openlocfilehash: b7354a921950daec5cc429fa07318213c8924264
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: fbf753436a259993f6869372ae3ba7272f2a181a
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87382689"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541696"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -77,7 +77,7 @@ ms.locfileid: "87382689"
 | **每个池的数据库数目上限** | 500  | 500 | 100 |
 
 > [!IMPORTANT]
-> 高级层中的存储空间超过 1 TB 目前在除：中国东部、中国北部、德国中部、德国北部、美国中部、US DoD 地区和美国政府中心以外的所有地区都可用。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。  
+> 高级层中超过 1 TB 的存储目前在除：中国东部、中国北部、德国中部和德国东北部以外的所有区域中都可用。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。  
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](file-space-manage.md)。
 

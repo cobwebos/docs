@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/12/2020
-ms.openlocfilehash: 6ad6ca72f0861324a10e93a1eadbdc11c6104574
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9ee0fbd69c0004306b67cbff0aca3b257d905eeb
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320963"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541118"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>将模型部署到 Azure 容器实例
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -96,14 +96,12 @@ az ml model deploy -m mymodel:1 -n myservice -ic inferenceconfig.json -dc deploy
 > [!IMPORTANT]
 > 无需事先创建 ACI 容器即可进行测试。 将据需要创建 ACI 容器。
 
-## <a name="update-the-web-service"></a>更新 Web 服务
-
-[!INCLUDE [aml-update-web-service](../../includes/machine-learning-update-web-service.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [部署疑难解答](how-to-troubleshoot-deployment.md)
+* [更新 Web 服务](how-to-deploy-update-web-service.md)
 * [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)

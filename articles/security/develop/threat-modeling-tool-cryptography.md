@@ -1,6 +1,6 @@
 ---
 title: 加密 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
-description: 针对威胁建模工具中暴露的威胁采取的缓解措施
+description: 了解 Threat Modeling Tool 中公开的威胁的密码缓解措施。 请参阅缓解信息和查看代码示例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: c9116472af5b400ded0fea24f98b07bad9d9039b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7de0cad91e01187a1ed84257c9e3a7cd8106951a
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "68728191"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539945"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>安全框架：加密 | 缓解措施 
 
-| 产品/服务 | 文章 |
+| 产品/服务 | 项目 |
 | --------------- | ------- |
 | **Web 应用程序** | <ul><li>[只使用批准的对称块加密法和密钥长度](#cipher-length)</li><li>[为对称加密法使用批准的块加密法模式和初始化向量](#vector-ciphers)</li><li>[使用批准的非对称算法、密钥长度和填充](#padding)</li><li>[使用批准的随机数生成器](#numgen)</li><li>[不要使用对称流加密法](#stream-ciphers)</li><li>[使用批准的 MAC/HMAC/键控哈希算法](#mac-hash)</li><li>[只使用批准的加密哈希函数](#hash-functions)</li></ul> |
 | **Database** | <ul><li>[使用强加密算法来加密数据库中的数据](#strong-db)</li><li>[应该对 SSIS 包加密和数字签名](#ssis-signed)</li><li>[将数字签名添加到关键的数据库安全对象](#securables-db)</li><li>[使用 SQL Server EKM 保护加密密钥](#ekm-keys)</li><li>[如果不应向数据库引擎透露加密密钥，请使用 AlwaysEncrypted 功能](#keys-engine)</li></ul> |
@@ -193,7 +193,7 @@ var deviceClient = DeviceClient.Create( hubUri, AuthenticationMethodFactory. Cre
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| **组件**               | IoT 云网关 | 
+| 组件               | IoT 云网关 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 网关选项 - Azure IoT 中心 |

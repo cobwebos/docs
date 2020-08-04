@@ -16,12 +16,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7267da7db91e153190e98b09e9a3c505837bd042
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: c709fca3fbddb6fc16699052c5f01d1255c79dd8
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446311"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542087"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health 代理安装
 
@@ -140,7 +140,7 @@ ms.locfileid: "87446311"
 7. 在“操作”**** 窗格中，单击“编辑联合身份验证服务属性”****。
 8. 在 **“联合身份验证服务属性”** 对话框中，单击 **“事件”** 选项卡。
 9. 选中 **“成功审核”** 和 **“失败审核”** 复选框。
-10. 单击 **“确定”** 。
+10. 单击“确定”。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>在 Windows Server 2012 R2 上启用 AD FS 审核的步骤
 
@@ -154,6 +154,7 @@ ms.locfileid: "87446311"
 7. 在“操作”**** 窗格中，单击“编辑联合身份验证服务属性”****。
 8. 在 **“联合身份验证服务属性”** 对话框中，单击 **“事件”** 选项卡。
 9. 选择“成功审核”和“失败审核”复选框，并单击“确定”。********
+10. 可以使用命令通过 powershell 启用详细日志记录 ```Set-AdfsProperties -LOGLevel Verbose``` 。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2016"></a>在 Windows Server 2016 上针对 AD FS 启用审核
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
-ms.openlocfilehash: 15a623068c46109b95ce9a9300348d29f95610a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8d71f6e71a7cd6033e570742a23016df0c25dd27
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85254304"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542240"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>部署和浏览使用 Azure SQL 数据库的每租户数据库模式的多租户 SaaS 应用
 
@@ -38,7 +38,7 @@ ms.locfileid: "85254304"
 
 可通过观看[相关教程系列](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)，了解各种 SaaS 设计和管理模式。 除了初始部署相关内容，这些教程还提供其他丰富的内容延展。 使用这些教程时，可以观察所提供的脚本来了解不同的 SaaS 模式是如何实现的。 脚本演示 SQL 数据库的功能如何简化 SaaS 应用程序的开发。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备知识
 
 若要完成本教程，请确保安装 Azure PowerShell。 有关详细信息，请参阅 [Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
@@ -57,7 +57,7 @@ ms.locfileid: "85254304"
 
 1. 若要在 Azure 门户中打开 Wingtip Tickets SaaS“每租户一个数据库”部署模板，请选择“部署到 Azure”。****
 
-   <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   [![显示标记为 "部署到 Azure" 按钮的图像。](https://azuredeploy.net/deploybutton.png)](https://aka.ms/deploywingtipdpt)
 
 1. 在模板中输入必需参数的值。
 
@@ -104,7 +104,7 @@ ms.locfileid: "85254304"
 
 几乎每个脚本中都会引用这些值。
 
-## <a name="run-the-application"></a>运行此应用程序
+## <a name="run-the-application"></a>运行应用程序
 
 举办活动的应用展示场所。 场所类型包括音乐厅、爵士乐俱乐部和运动俱乐部。 在 Wingtip Tickets 中，场所注册为租户。 注册为租户可让场所轻松列出活动，以及向其客户销售门票。 每个场所有个性化的网站用于列出其活动和售票。
 
@@ -128,7 +128,7 @@ Wingtip 应用程序使用  [*Azure 流量管理器*](../../traffic-manager/tra
 
     下表中对前述格式的各部分进行了说明。
 
-    | URL 部分        | 描述       |
+    | URL 部分        | 说明       |
     | :-------------- | :---------------- |
     | wingtip-user | Wingtip 应用的事件部分。<br /><br /> **-dpt** 部分将 Wingtip Tickets 的“每租户一个数据库”实现与其他实现区分开来。 例如，单个**“每租户应用”(-sa**) 实现，或多租户数据库** (-mt**) 实现。 |
     | .* &lt; 用户 &gt; * | 在示例中为 *af1*。 |

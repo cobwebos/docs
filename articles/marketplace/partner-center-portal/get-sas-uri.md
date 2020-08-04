@@ -7,12 +7,12 @@ ms.topic: article
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 07/29/2020
-ms.openlocfilehash: 3c5c86f89882654e44f924ce0a19d4d71713144d
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 2bc129fc37347bd108ad62409490c5ce31b7728f
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431692"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87538925"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>获取 VM 映像的共享访问签名 URI
 
@@ -31,10 +31,10 @@ ms.locfileid: "87431692"
 
 有两个用于创建 SAS 地址 (URL) 的常用工具：
 
-* **Microsoft 存储资源管理器**– Azure 门户中可用的图形工具。
+* **Microsoft Azure 存储资源管理器**– Azure 门户中可用的图形工具。
 * Microsoft Azure CLI – 建议用于非 Windows 操作系统，以及自动化或连续集成环境。
 
-### <a name="use-microsoft-storage-explorer"></a>使用 Microsoft 存储资源管理器
+### <a name="use-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 存储资源管理器
 
 1. 在 Azure 门户中转到你的存储帐户。
 2. 在左侧的 "资源管理器" 窗格中，打开**存储资源管理器**（预览）工具。

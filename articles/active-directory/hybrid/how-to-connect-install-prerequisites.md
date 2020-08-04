@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b33b3e406e21f5bc2a4128fdd7dc9930fa3e0c32
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 83a05636f8e673e08bfd390aa10069da0abd561d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447011"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542053"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的先决条件
 本文介绍 Azure Active Directory （Azure AD）连接的先决条件和硬件要求。
@@ -125,6 +125,7 @@ Azure AD Connect 服务器包含关键的标识数据。 确保对此服务器�
         </system.net>
     ```
 
+* 如果正在现有的安装程序中完成代理配置，则**Microsoft Azure AD 同步服务**需要重新启动一次，以便 Azure AD Connect 读取代理配置并更新 behviour。 
 * 当 Azure AD Connect 在目录同步过程中将 Web 请求发送到 Azure AD 时，Azure AD 可能需要最多 5 分钟才能响应。 代理服务器具有连接空闲超时配置很常见。 确保配置设置为至少6分钟或更高。
 
 有关详细信息，请参阅 MSDN 上的[默认代理元素](https://msdn.microsoft.com/library/kd3cf2ex.aspx)。

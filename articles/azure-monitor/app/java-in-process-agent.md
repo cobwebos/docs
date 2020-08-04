@@ -3,12 +3,12 @@ title: 监视任何环境中的 Java 应用程序 - Azure Monitor Application In
 description: 对在任何环境中运行的 Java 应用程序进行应用程序性能监视，而不需要检测该应用。 分布式跟踪和应用程序映射。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 3ca6e7050b1c7649298d2417f9f7f66ef8898816
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f35d661761f1bea4dbd6b691fb0667c6dad3e72e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014331"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541849"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java 无代码应用程序监视 Azure Monitor Application Insights - 公共预览版
 
@@ -24,7 +24,7 @@ Java 无代码应用程序监视只是为了简化操作 - 无需更改代码，
 
 **1.下载代理**
 
-下载[applicationinsights-agent-3.0.0-preview](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar)
+下载 [applicationinsights-agent-3.0.0-PREVIEW.5.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar)
 
 **2.将 JVM 指向该代理**
 
@@ -126,7 +126,22 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 
 我们支持 Micrometer、OpenTelemetry API 和常用日志记录框架。 Application Insights Java 3.0 会自动捕获遥测，并将其与所有自动收集的遥测相关联。
 
-因此，我们目前不打算发布带有 Application Insights 3.0 的 SDK。
+### <a name="supported-custom-telemetry"></a>支持的自定义遥测
+
+下表显示了当前支持的自定义遥测类型，您可以使用它们来补充 Java 3.0 代理。 总而言之，通过 micrometer 支持自定义指标，可通过日志记录框架启用自定义异常和跟踪，并通过[Application Insights Java 2.X SDK](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#sending-custom-telemetry-using-application-insights-java-sdk-2x)支持任何类型的自定义遥测。 
+
+
+|                 | Micrometer | Log4j、logback、七月 | 2.x SDK |
+|-----------------|------------|---------------------|---------|
+| 自定义事件   |            |                     |  是    |
+| 自定义指标  |  是       |                     |  是    |
+| 依赖项    |            |                     |  是    |
+| 异常      |            |  是                |  是    |   
+| 页面视图      |            |                     |  是    |
+| 请求        |            |                     |  是    |
+| 跟踪          |            |  是                |  是    |
+
+目前，我们并不打算发布带有 Application Insights 3.0 的 SDK。
 
 Application Insights Java 3.0 已在侦听发送到 Application Insights Java SDK 2.x 的遥测。 对于现有 2.x 用户来说，此功能是升级过程中的一个重要部分。在 OpenTelemetry API 正式发布之前，它填补了我们在自定义遥测支持方面的一个重要空白。
 

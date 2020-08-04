@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 07/28/2020
-ms.openlocfilehash: 0dd15fe5d68a521293f279978c668bc88599115e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f3c7420e1f33a7c25e7d3bfdffff14019d0b606a
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498287"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542664"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>使用 DTU 购买模型的弹性池的资源限制
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -149,7 +149,7 @@ ms.locfileid: "87498287"
 <sup>3</sup>有关每个数据库的最大并发工作线程数（请求数），请参阅[单一数据库资源限制](resource-limits-vcore-single-databases.md)。 例如，如果弹性池使用 Gen5 且每个数据库的最大 vCore 数设置为 2，则最大并发辅助角色数目值为 200。  如果每个数据库的最大 vCore 数设置为 0.5，则最大并发辅助角色数目值为 50，因为 Gen5 上每个 vCore 的最大并发辅助角色数为 100。 对于每个数据库的最大 vCore 设置小于 1 个 vCore 或更少的其他情况，最大并发辅助角色数会相应重新缩放。
 
 > [!IMPORTANT]
-> 高级层中的存储空间超过 1 TB 目前在除：中国东部、中国北部、德国中部、德国北部、美国中部、US DoD 地区和美国政府中心以外的所有地区都可用。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。
+> 高级层中超过 1 TB 的存储目前在除：中国东部、中国北部、德国中部和德国东北部以外的所有区域中都可用。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。
 
 如果使用了弹性池的所有 DTU，那么池中的每个数据库会接收相同数量的资源来处理查询。 SQL 数据库服务通过确保相等的计算时间片段，在数据库之间提供资源共享的公平性。 弹性池资源共享公平性是在将每个数据库的 DTU 最小值设为非零值时，对另外为每个数据库保证的任意资源量的补充。
 

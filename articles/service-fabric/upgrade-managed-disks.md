@@ -3,12 +3,12 @@ title: 将群集节点升级为使用 Azure 托管磁盘
 description: 本文介绍了如何在只需群集短暂停机甚至无需其停机的前提下，将现有 Service Fabric 群集升级为使用 Azure 托管磁盘。
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: cff0f99412f189f38f1b14d15c7285166a048c87
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 10863626945483e21aa264e2b05e94a6f08a22f6
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255891"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542837"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>将群集节点升级为使用 Azure 托管磁盘
 
@@ -165,7 +165,7 @@ Get-ServiceFabricClusterHealth
 
 #### <a name="parameters"></a>parameters
 
-添加新规模集的实例名称、计数和大小的参数。 请注意，`vmNodeType1Name` 对于新规模集是唯一的，而计数和大小值与原始规模集相同。
+为新规模集的实例名称添加一个参数。 请注意，`vmNodeType1Name` 对于新规模集是唯一的，而计数和大小值与原始规模集相同。
 
 **模板文件**
 
@@ -174,18 +174,7 @@ Get-ServiceFabricClusterHealth
     "type": "string",
     "defaultValue": "NTvm2",
     "maxLength": 9
-},
-"nt1InstanceCount": {
-    "type": "int",
-    "defaultValue": 5,
-    "metadata": {
-        "description": "Instance count for node type"
-    }
-},
-"vmNodeType1Size": {
-    "type": "string",
-    "defaultValue": "Standard_D2_v2"
-},
+}
 ```
 
 **参数文件**
@@ -193,12 +182,6 @@ Get-ServiceFabricClusterHealth
 ```json
 "vmNodeType1Name": {
     "value": "NTvm2"
-},
-"nt1InstanceCount": {
-    "value": 5
-},
-"vmNodeType1Size": {
-    "value": "Standard_D2_v2"
 }
 ```
 
@@ -216,13 +199,13 @@ Get-ServiceFabricClusterHealth
 
 在部署模板的 *resources* 节中添加新的虚拟机规模集，同时请注意以下事项：
 
-* 新规模集引用与原始规模集相同的节点类型：
+* 新的规模集引用新的节点类型：
 
     ```json
-    "nodeTypeRef": "[parameters('vmNodeType0Name')]",
+    "nodeTypeRef": "[parameters('vmNodeType1Name')]",
     ```
 
-* 新规模集引用相同的负载均衡器后端地址和子网（但使用不同的负载均衡器入站 NAT 池）：
+* 新的规模集引用相同的负载均衡器后端地址和子网作为原始，但使用不同的负载均衡器入站 NAT 池：
 
    ```json
     "loadBalancerBackendAddressPools": [
@@ -254,6 +237,33 @@ Get-ServiceFabricClusterHealth
     }
     ```
 
+接下来，将条目添加到 `nodeTypes` *ServiceFabric/群集*资源的列表。 使用与原始节点类型条目相同的值，但 `name` 应引用新的节点类型（*vmNodeType1Name*）。
+
+```json
+"nodeTypes": [
+    {
+        "name": "[parameters('vmNodeType0Name')]",
+        ...
+    },
+    {
+        "name": "[parameters('vmNodeType1Name')]",
+        "applicationPorts": {
+            "endPort": "[parameters('nt0applicationEndPort')]",
+            "startPort": "[parameters('nt0applicationStartPort')]"
+        },
+        "clientConnectionEndpointPort": "[parameters('nt0fabricTcpGatewayPort')]",
+        "durabilityLevel": "Silver",
+        "ephemeralPorts": {
+            "endPort": "[parameters('nt0ephemeralEndPort')]",
+            "startPort": "[parameters('nt0ephemeralStartPort')]"
+        },
+        "httpGatewayEndpointPort": "[parameters('nt0fabricHttpGatewayPort')]",
+        "isPrimary": true,
+        "vmInstanceCount": "[parameters('nt0InstanceCount')]"
+    }
+],
+```
+
 实现模板和 parameters 文件中的所有更改后，转到下一部分获取 Key Vault 引用并将更新部署到群集。
 
 ### <a name="obtain-your-key-vault-references"></a>获取 Key Vault 引用
@@ -266,7 +276,7 @@ Get-ServiceFabricClusterHealth
     $certUrlValue="https://sftestupgradegroup.vault.azure.net/secrets/sftestupgradegroup20200309235308/dac0e7b7f9d4414984ccaa72bfb2ea39"
     ```
 
-* **群集证书的指纹。**  (如果已[连接到初始群集](#connect-to-the-new-cluster-and-check-health-status)来检查其运行状况状态，则可能已具有此项。 ) 从相同的证书边栏选项卡 (**证书**  >  *Your desired certificate*) 在 Azure 门户中，复制**x.509 sha-1 指纹 (十六进制) **：
+* **群集证书的指纹。** （如果已[连接到初始群集](#connect-to-the-new-cluster-and-check-health-status)来检查其运行状况，则可能已拥有此选项。）在 Azure 门户中，从同一 "证书" 边栏选项卡（**证书**  >  *所需的证书*）复制**x.509 sha-1 指纹（十六进制）**：
 
     ```powershell
     $thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
@@ -305,7 +315,7 @@ Get-ServiceFabricClusterHealth
 
 ## <a name="migrate-seed-nodes-to-the-new-scale-set"></a>将种子节点迁移到新规模集
 
-现在，我们已准备好开始禁用原始规模集的节点。 由于这些节点将被禁用，而新规模集也会标记为主要节点类型，因此，系统服务和种子节点将迁移到新规模集的 VM。
+现在，我们已准备好开始禁用原始规模集的节点。 禁用这些节点后，系统服务和种子节点将迁移到新规模集的 VM，因为新规模集也被标记为主节点类型。
 
 ```powershell
 # Disable the nodes in the original scale set.
@@ -322,11 +332,11 @@ foreach($name in $nodeNames){
 ![显示已禁用节点状态的 Service Fabric Explorer](./media/upgrade-managed-disks/service-fabric-explorer-node-status.png)
 
 > [!NOTE]
-> 在原始规模集的所有节点上完成禁用操作可能需要一段时间。 为了保证数据一致性，每次只能更改一个种子节点。 每次进行种子节点更改都需要更新群集；因此，替换种子节点需要执行群集升级两次（添加和删除节点各需要执行一次）。 在此示例方案中升级 5 个种子节点需要执行群集升级 10 次。
+> 在原始规模集的所有节点上完成禁用操作可能需要一段时间。 为了保证数据一致性，一次只能更改一个种子节点。 每次更改种子节点都需要更新群集，因此，替换种子节点需要升级两次群集（一次是在添加节点时，一次是在删除节点时）。 本示例方案中的升级 5 个种子节点将需要升级 10 次群集。
 
 ## <a name="remove-the-original-scale-set"></a>删除原始规模集
 
-禁用操作完成后，请删除规模集。
+禁用操作完成后，删除规模集。
 
 ```powershell
 # Remove the original scale set

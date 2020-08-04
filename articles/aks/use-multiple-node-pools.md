@@ -4,12 +4,12 @@ description: 了解如何为 Azure Kubernetes 服务 (AKS) 中的群集创建和
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: 400e595d51f08428b01337e63f6c6e8ba5836794
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d007ec18a982d5327aa2ea0871bbe88f64786fce
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133089"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542019"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 
@@ -489,6 +489,8 @@ Events:
 
 ## <a name="specify-a-taint-label-or-tag-for-a-node-pool"></a>指定节点池的排斥、标签或标记
 
+### <a name="setting-nodepool-taints"></a>设置 nodepool taints
+
 创建节点池时，可将排斥、标签或标记添加到该节点池。 添加排斥、标签或标记时，该节点池中的所有节点也会获取该排斥、标签或标记。
 
 若要创建具有排斥的节点池，请使用 [az aks nodepool add][az-aks-nodepool-add]。 指定名称 taintnp，并使用 `--node-taints` 参数为排斥指定 sku=gpu:NoSchedule。 
@@ -532,6 +534,8 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 
 排斥信息将显示在 Kubernetes 中，以便于处理节点的计划规则。
 
+### <a name="setting-nodepool-labels"></a>设置 nodepool 标签
+
 还可以在创建节点池期间向节点池添加标签。 在节点池中设置的标签将添加到节点池中的每个节点。 这些[标签将显示在 Kubernetes 中][kubernetes-labels]，以便于处理节点的计划规则。
 
 若要创建具有标签的节点池，请使用 [az aks nodepool add][az-aks-nodepool-add]。 指定名称 labelnp，并使用 `--labels` 参数为标签指定 dept=IT 和 costcenter=9999。  
@@ -574,7 +578,13 @@ $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
 ]
 ```
 
+### <a name="setting-nodepool-azure-tags"></a>设置 nodepool Azure 标记
+
 可将 Azure 标记应用到 AKS 群集中的节点池。 应用到某个节点池的标记将应用到该节点池中的每个节点，并通过升级持久保存。 标记还会应用于在横向扩展操作期间添加到节点池的新节点。 添加标记有助于完成策略跟踪或成本估算等任务。
+
+对于操作，Azure 标记具有不区分大小写的密钥，例如，通过搜索密钥来检索标记。 在这种情况下，将更新或检索带有给定密钥的标记，而不考虑大小写。 标记值区分大小写。
+
+在 AKS 中，如果设置了多个具有相同键但大小写不同的标记，则使用的标记是字母顺序中的第一个。 例如，会 `{"Key1": "val1", "kEy1": "val2", "key1": "val3"}` `Key1` `val1` 设置和。
 
 使用 [az aks nodepool add][az-aks-nodepool-add] 创建节点池。 指定名称 tagnodepool，并使用 `--tag` 参数为标记指定 dept=IT 和 costcenter=9999。  
 

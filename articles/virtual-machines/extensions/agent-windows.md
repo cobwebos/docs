@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: 6ff5825f3272f0dadc74147d36e8c5fd8e7838d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 100e75520d1165d4772579ba9b179cd350d6df18
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010948"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542613"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 虚拟机代理概述
 Microsoft Azure 虚拟机代理（VM 代理）是受保护的轻型进程，用于管理虚拟机 (VM) 与 Azure 结构控制器的交互。 VM 代理有一个主要角色，目的是启用和执行 Azure 虚拟机扩展。 VM 扩展可用于对 VM 进行部署后配置，例如安装和配置软件。 VM 扩展还可启用恢复功能，例如重置 VM 的管理密码。 没有 Azure VM 代理，VM 扩展将无法运行。
@@ -111,7 +111,7 @@ foreach ($vm in $vms) {
 
 
 ## <a name="upgrade-the-vm-agent"></a>升级 VM 代理
-适用于 Windows 的 Azure VM 代理会自动升级。 新 VM 部署到 Azure 后，会在 VM 预配时获得最新 VM 代理。 应手动更新自定义 VM 映像，以便在创建映像时添加新的 VM 代理。
+适用于 Windows 的 Azure VM 代理会自动升级到从 Azure marketplace 部署的映像。 新 VM 部署到 Azure 后，会在 VM 预配时获得最新 VM 代理。 如果手动安装了代理或正在部署自定义 VM 映像，则需要手动更新以在创建映像时包括新的 VM 代理。
 
 ## <a name="windows-guest-agent-automatic-logs-collection"></a>Windows 来宾代理自动日志收集
 Windows 来宾代理具有自动收集一些日志的功能。 此功能由 CollectGuestLogs.exe 进程控制。 它同时适用于 PaaS 云服务和 IaaS 虚拟机，其目标是快速自动地从 VM 收集一些诊断日志 - 以便将它们用于脱机分析。 收集的日志包括事件日志、OS 日志、Azure 日志和一些注册表项。 它会生成一个压缩文件，该文件传输到 VM 的主机。 然后，工程团队和支持专业人员可以查看此 ZIP 文件，以根据拥有 VM 的客户的请求调查问题。

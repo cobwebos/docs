@@ -1,6 +1,6 @@
 ---
 title: 异常管理 - Microsoft 威胁建模工具 - Azure | Microsoft 文档
-description: 针对威胁建模工具中暴露的威胁采取的缓解措施
+description: 了解 Threat Modeling Tool 中的异常管理。 请参阅缓解信息和查看代码示例。
 services: security
 documentationcenter: na
 author: jegeib
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 074098c3adae0dd8ff2a127d819e2b3630b754da
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 05e9e627afecfc95e03eae39eed1183857df8b4b
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650080"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539928"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>安全框架：异常管理 | 缓解措施 
 | 产品/服务 | 项目 |
@@ -68,7 +68,7 @@ ms.locfileid: "83650080"
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web API | 
+| **组件**               | Web API | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | MVC 5、MVC 6 |
 | **属性**              | 空值  |
@@ -186,7 +186,7 @@ public HttpResponseMessage PostProduct(Product item)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -197,7 +197,7 @@ public HttpResponseMessage PostProduct(Product item)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -208,7 +208,7 @@ public HttpResponseMessage PostProduct(Product item)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 部署 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |
@@ -219,7 +219,7 @@ public HttpResponseMessage PostProduct(Product item)
 
 | 标题                   | 详细信息      |
 | ----------------------- | ------------ |
-| 组件               | Web 应用程序 | 
+| **组件**               | Web 应用程序 | 
 | **SDL 阶段**               | 构建 |  
 | **适用的技术** | 泛型 |
 | **属性**              | 空值  |

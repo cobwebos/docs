@@ -1,6 +1,6 @@
 ---
 title: Azure 高级威胁检测 | Microsoft Docs
-description: 了解 Azure AD 标识保护及其功能。
+description: 了解 Azure 的内置高级威胁检测功能，如 Azure AD Identity Protection 服务。
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 93b63450d65f55e96897f91a5c0c9fae1b0b47f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1522d143f2837a57481a4d678911e7a3c44d084d
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503279"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541016"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure 高级威胁检测
 

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 1e87eec4384887ebd82d5f70c0897add250f31fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6e4ed8514cd99d42790296a58296a73696989b69
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320793"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539129"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure 机器学习创建、查看和部署自动化机器学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -75,7 +75,7 @@ ms.locfileid: "87320793"
 
     1. 查看“设置和预览”窗体中内容的准确性。 该窗体是基于文件类型智能填充的。 
 
-        字段| 描述
+        字段| 说明
         ----|----
         文件格式| 定义文件中存储的数据的布局和类型。
         分隔符| 一个或多个字符，用于指定纯文本或其他数据流中不同的独立区域之间的边界。
@@ -83,7 +83,7 @@ ms.locfileid: "87320793"
         列标题| 指示如何处理数据集的标头（如果有）。
         跳过行 | 指示要跳过数据集中的多少行（如果有）。
     
-        选择“**下一步**”。
+        选择“**下一页**”。
 
     1. “架构”窗体是基于“设置和预览”窗体中所做的选择智能填充的。  在此处，请配置每个列的数据类型，检查列名称，并选择“不包含”哪些列进行试验。 
             
@@ -91,7 +91,7 @@ ms.locfileid: "87320793"
 
     1. “确认详细信息”窗体上总结了先前在“基本信息”和“设置和预览”窗体中填充的信息  。 你还可以使用已启用分析的计算来为数据集创建数据配置文件。 详细了解[数据分析](#profile)。
 
-        选择“**下一步**”。
+        选择“**下一页**”。
 1. 新建的数据集出现后，请将其选中。 还可以查看数据集和样本统计信息的预览。 
 
 1. 在“配置运行”窗体中，输入唯一的试验名称。
@@ -111,12 +111,12 @@ ms.locfileid: "87320793"
     最小/最大节点数| 若要分析数据，必须指定一个或多个节点。 输入计算的最大节点数。 对于 AML 计算，默认值为 6 个节点。
     高级设置 | 使用这些设置可以配置用户帐户和现有虚拟网络以进行试验。 
     
-    选择“创建”。 创建新计算可能需要花费几分钟时间。
+    选择“创建” 。 创建新计算可能需要花费几分钟时间。
 
     >[!NOTE]
     > 计算名称将会指示选择/创建的计算是否已启用分析。 （有关更多详细信息，请参阅[数据分析](#profile)部分）。
 
-    选择“**下一步**”。
+    选择“**下一页**”。
 
 1. 在“任务类型和设置”窗体中选择任务类型：分类、回归或预测。 有关详细信息，请参阅[支持的任务类型](concept-automated-ml.md#when-to-use-automl-classify-regression--forecast)。
 
@@ -132,7 +132,7 @@ ms.locfileid: "87320793"
 
 1. （可选）查看附加配置设置：可用来更好地控制训练作业的其他设置。 否则，将会根据试验选择和数据应用默认设置。 
 
-    其他配置|描述
+    其他配置|说明
     ------|------
     主要指标| 用于对模型进行评分的主要指标。 [详细了解模型指标](how-to-configure-auto-train.md#explore-model-metrics)。
     解释最佳模型 | 选择此项可以启用或禁用，以便显示建议的最佳模型的 explainability。
@@ -222,14 +222,14 @@ Variance| 此列数据与其平均值之间的分散程度度量。
 
 1. 填充“部署模型”窗格。
 
-    字段| 值
+    字段| Value
     ----|----
     名称| 输入部署的唯一名称。
     说明| 输入说明，以更清楚地指出此部署的用途。
     计算类型| 选择要部署的终结点类型：Azure Kubernetes 服务 (AKS) 或 Azure 容器实例 (ACI) 。
     计算名称| 仅适用于 AKS：选择要部署到的 AKS 群集的名称。
     启用身份验证 | 选择此项将允许基于令牌或基于密钥的身份验证。
-    使用自定义部署资产| 若要上传自己的评分脚本和环境文件，请启用此功能。 [详细了解评分脚本](how-to-deploy-and-where.md#script)。
+    使用自定义部署资产| 若要上传自己的评分脚本和环境文件，请启用此功能。 [详细了解评分脚本](how-to-deploy-and-where.md)。
 
     >[!Important]
     > 文件名不能超过 32 个字符，并且必须以字母数字开头和结尾。 开头和结尾之间可以包含短划线、下划线、句点和字母数字。 不允许空格。

@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 2be074c457eaadd1fb6467cbcfdd45a2e7745613
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 499b7348c645f4792332769ac598ffcea07ea102
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82098894"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541900"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>获取调用 Web API 的移动应用的令牌
 
@@ -221,7 +221,7 @@ catch(MsalUiRequiredException)
 
 `WithPrompt()` 参数通过指定提示来控制与用户的交互。
 
-<img src="https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png" width="25%" />
+![显示提示结构中的字段的图像。 这些常量值通过定义 WithPrompt （）参数显示的提示类型来控制与用户的交互。](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
 
 该类定义以下常量：
 

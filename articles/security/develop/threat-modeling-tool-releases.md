@@ -1,7 +1,7 @@
 ---
 title: Microsoft Threat Modeling Tool 发行说明
 titleSuffix: Azure
-description: 阐述 Threat Modeling Tool 的发行说明
+description: 阅读发行说明，了解 Microsoft Threat Modeling Tool 的所有更新。 请参阅下载链接和系统要求。
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: jegeib
-ms.openlocfilehash: eea853ec5829eda3f7496439979adae7bb20c639
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0db0a68b622b9f4596820918d66860d3ea286981
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80125088"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87539061"
 ---
 # <a name="threat-modeling-tool-releases"></a>Threat Modeling Tool 发行版
 

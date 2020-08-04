@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: tracking-python
-ms.openlocfilehash: e97671e9722051674e3760f11e784ab3291283c7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: f3ec80b5d71bbdbf0f1b89606859dcc734d037e5
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87415034"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542206"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 
@@ -314,6 +314,9 @@ principalId 是用于 Azure AD 管理的标识的唯一标识符。 clientId 是
 
 ### <a name="using-the-rest-protocol"></a>使用 REST 协议
 
+> [!NOTE]
+> 此协议的某个旧版本（使用“2017-09-01”API 版本）使用 `secret` 标头而不是 `X-IDENTITY-HEADER`，并且仅接受用户分配的标识的 `clientid` 属性。 它还返回时间戳格式的 `expires_on`。 MSI_ENDPOINT 可用作 IDENTITY_ENDPOINT 的别名，MSI_SECRET 可用作 IDENTITY_HEADER 的别名。 此版本的协议当前需要用于 Linux 消耗托管计划。
+
 有托管标识的应用定义了两个环境变量：
 
 - IDENTITY_ENDPOINT - 本地令牌服务的 URL。
@@ -324,7 +327,7 @@ principalId 是用于 Azure AD 管理的标识的唯一标识符。 clientId 是
 > | 参数名称    | In     | 说明                                                                                                                                                                                                                                                                                                                                |
 > |-------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 > | resource          | 查询  | 应获取其令牌的资源的 Azure AD 资源 URI。 这可以是[支持 Azure AD 身份验证的 Azure 服务](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)或任何其他资源 URI 之一。    |
-> | api-version       | 查询  | 要使用的令牌 API 版本。 请使用“2019-08-01”或更高版本。                                                                                                                                                                                                                                                                 |
+> | api-version       | 查询  | 要使用的令牌 API 版本。 请使用 "2019-08-01" 或更高版本（除非使用的 Linux 使用目前仅提供 "2017-09-01"-请参阅上文）。                                                                                                                                                                                                                                                                 |
 > | X-IDENTITY-HEADER | 标头 | IDENTITY_HEADER 环境变量的值。 此标头用于帮助缓解服务器端请求伪造 (SSRF) 攻击。                                                                                                                                                                                                    |
 > | client_id         | 查询  | （可选）要使用的用户分配的标识的客户端 ID。 不能在包含 `principal_id`、`mi_res_id` 或 `object_id` 的请求中使用。 如果省略所有 ID 参数（`client_id`、`principal_id`、`object_id` 和 `mi_res_id`），则使用系统分配的标识。                                             |
 > | principal_id      | 查询  | （可选）要使用的用户分配的标识的主体 ID。 `object_id` 是可以改用的别名。 不能在包含 client_id、mi_res_id 或 object_id 的请求中使用。 如果省略所有 ID 参数（`client_id`、`principal_id`、`object_id` 和 `mi_res_id`），则使用系统分配的标识。 |
@@ -345,9 +348,6 @@ principalId 是用于 Azure AD 管理的标识的唯一标识符。 clientId 是
 > | token_type    | 指示令牌类型值。 Azure AD 支持的唯一一个类型是 FBearer。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
 
 此响应与 [Azure AD 服务到服务访问令牌请求的响应](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)相同。
-
-> [!NOTE]
-> 此协议的某个旧版本（使用“2017-09-01”API 版本）使用 `secret` 标头而不是 `X-IDENTITY-HEADER`，并且仅接受用户分配的标识的 `clientid` 属性。 它还返回时间戳格式的 `expires_on`。 MSI_ENDPOINT 可用作 IDENTITY_ENDPOINT 的别名，MSI_SECRET 可用作 IDENTITY_HEADER 的别名。
 
 ### <a name="rest-protocol-examples"></a>REST 协议示例
 

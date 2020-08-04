@@ -4,19 +4,19 @@ description: 本文介绍如何在 Azure SQL 数据库中缩放适用于单一�
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
-ms.custom: sqldbrb=1
+ms.custom: sqldbrb=1, references_regions
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/31/2020
-ms.openlocfilehash: 42a4d1288c7daeb4579e481f0258666d8e2cdbce
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 39869e74fcb3e8f3deae1273721093f3f85e8d78
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502981"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541679"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>在 Azure SQL 数据库中缩放单一数据库资源
 
@@ -55,7 +55,7 @@ ms.locfileid: "87502981"
 |**基本单一数据库，</br>标准 (S0-S1)**|&bull; &nbsp;延迟时间较为恒定，与已用空间无关</br>&bull; &nbsp;通常小于 5 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
 |**基本弹性池，</br>标准 (S2-S12)，</br>常规用途单一数据库或弹性池**|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;延迟时间较为恒定，与已用空间无关</br>&bull; &nbsp;通常小于 5 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
 |**高级或业务关键型单一数据库或弹性池**|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
-|**超大规模**|不适用|不适用|不适用|&bull; &nbsp;延迟时间较为恒定，与已用空间无关</br>&bull;&nbsp;通常为小于2分钟|
+|**超大规模**|空值|空值|空值|&bull; &nbsp;延迟时间较为恒定，与已用空间无关</br>&bull;&nbsp;通常为小于2分钟|
 
 > [!NOTE]
 > 此外，对于标准 (S2-S12) 和常规用途数据库，如果数据库使用高级文件共享 ([PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)) 存储，则将数据库移入/移出弹性池或在弹性池之间移动数据库的延迟与数据库大小成正比。
@@ -145,7 +145,7 @@ else {
 
 ## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>当最大大小超过 1 TB 时，P11 和 P15 约束
 
-高级层中的存储空间超过 1 TB 目前在除：中国东部、中国北部、德国中部、德国北部、美国中部、US DoD 地区和美国政府中心以外的所有地区都可用。 在这些区域，高级层中的最大存储限制为 1 TB。 对于最大大小超过 1 TB 的 P11 和 P15 数据库，存在以下注意事项和限制：
+高级层中超过 1 TB 的存储目前在除：中国东部、中国北部、德国中部和德国东北部以外的所有区域中都可用。 在这些区域，高级层中的最大存储限制为 1 TB。 对于最大大小超过 1 TB 的 P11 和 P15 数据库，存在以下注意事项和限制：
 
 - 如果 P11 或 P15 数据库的最大大小已设置为大于 1 TB 的值，则只能将其还原或复制到 P11 或 P15 数据库。  随后，如果重新缩放操作时分配的空间量不超过新计算大小的最大大小限制，则可以将数据库重新缩放到不同的计算大小。
 - 对于“活动异地复制”方案：

@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa83e295460cc847647e83c7e4e8a9d7ee91f6f4
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 9e3b0b8ab4a432254835e43bff4893aaee81b04e
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165764"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541866"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>规划 Azure Active Directory 设备部署
 
@@ -24,13 +24,13 @@ ms.locfileid: "86165764"
 
 用户登录所采用的设备的横向扩展。 组织可以提供台式计算机、便携式计算机、手机、平板电脑和其他设备。 你的用户可能会引入自己的设备阵列，并从不同的位置访问信息。 在此环境中，你作为管理员的作业是使你的组织资源在所有设备上保持安全。
 
-Azure Active Directory (Azure AD) 使你的组织能够通过设备标识管理实现这些目标。 你现在可以在 Azure AD 中获取设备，并从[Azure 门户](https://portal.azure.com/)中的一个中心位置控制它们。 这为你提供了统一的体验和增强的安全性，并减少了配置新设备所需的时间。
+Azure Active Directory （Azure AD）使你的组织能够通过设备标识管理来实现这些目标。 你现在可以在 Azure AD 中获取设备，并从[Azure 门户](https://portal.azure.com/)中的一个中心位置控制它们。 这为你提供了统一的体验和增强的安全性，并减少了配置新设备所需的时间。
 
 可以通过多种方法将设备集成到 Azure AD 中：
 
 * 可以将[设备注册](concept-azure-ad-register.md)到 Azure AD
 
-* 将[设备加入](concept-azure-ad-join.md)到 Azure AD (仅限云的) 或
+* 将[设备加入](concept-azure-ad-join.md)Azure AD （仅限云）或
 
 * 在本地 Active Directory 中的设备与 Azure AD 之间[创建混合 Azure AD 加入](concept-azure-ad-join-hybrid.md)。 
 
@@ -38,17 +38,17 @@ Azure Active Directory (Azure AD) 使你的组织能够通过设备标识管理�
 
 在开始之前，请确保熟悉[设备标识管理概述](overview.md)。
 
-### <a name="benefits"></a>优势
+### <a name="benefits"></a>优点
 
 为设备提供 Azure AD 标识的主要好处是：
 
-* 提高工作效率-通过 Azure AD，你的用户可以对本地资源和云资源进行[无缝登录 (SSO) ](./azuread-join-sso.md) ，使其在任何位置都能高效工作。
+* 提高工作效率-通过 Azure AD，你的用户可以对本地资源和云资源执行[无缝登录（SSO）](./azuread-join-sso.md) ，这使他们可以随时随地提高工作效率。
 
-* 提高安全性– Azure AD 设备使你能够基于设备或用户的身份将[ (CA) 策略的条件访问](../conditional-access/require-managed-devices.md)应用于资源。 CA 策略可以使用[Azure AD Identity Protection](../identity-protection/overview-identity-protection.md)提供额外的保护。 将设备加入 Azure AD 是使用[无密码 Authentication](../authentication/concept-authentication-passwordless.md)策略提高安全性的先决条件。
+* 提高安全性– Azure AD 设备使你能够基于设备或用户的身份将[条件访问（CA）策略](../conditional-access/require-managed-devices.md)应用到资源。 CA 策略可以使用[Azure AD Identity Protection](../identity-protection/overview-identity-protection.md)提供额外的保护。 将设备加入 Azure AD 是使用[无密码 Authentication](../authentication/concept-authentication-passwordless.md)策略提高安全性的先决条件。
 
 * 提高用户体验–在 Azure AD 中使用设备标识，你可以让用户轻松地从个人和公司设备访问组织的基于云的资源。 管理员可以为所有 Windows 设备上的统一体验启用[企业状态漫游](enterprise-state-roaming-overview.md)。
 
-* 简化部署和管理–设备标识管理简化了将设备与[Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot)、[批量预配](https://docs.microsoft.com/mem/intune/enrollment/windows-bulk-enroll)和自助服务一起 Azure AD 的过程[： (OOBE) 的全新体验](../user-help/user-help-join-device-on-network.md)。 你可以通过移动设备管理来管理这些设备 (MDM) 工具，如[Microsoft Intune](https://docs.microsoft.com/mem/intune/fundamentals/what-is-intune)，以及其在[Azure 门户](https://portal.azure.com/)中的标识。
+* 简化部署和管理–设备标识管理简化了将 Azure AD 设备与[Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot)、[大容量预配](https://docs.microsoft.com/mem/intune/enrollment/windows-bulk-enroll)和自助服务一起提供的过程[：全新体验（OOBE）](../user-help/user-help-join-device-on-network.md)。 你可以通过移动设备管理（MDM）工具（如[Microsoft Intune](https://docs.microsoft.com/mem/intune/fundamentals/what-is-intune)）以及它们在[Azure 门户](https://portal.azure.com/)中的标识来管理这些设备。
 
 ### <a name="training-resources"></a>训练资源
 
@@ -60,9 +60,9 @@ Azure Active Directory (Azure AD) 使你的组织能够通过设备标识管理�
 
 在环境中确定此部署的策略时，请考虑组织的需求。
 
-### <a name="engage-the-right-stakeholders"></a>吸引适当的利益干系人
+### <a name="engage-the-right-stakeholders"></a>让合适的利益干系人参与
 
-如果技术项目失败，它们通常是由于在影响、结果和责任方面不符合预期而导致的。 若要避免这些问题，请[确保你正在吸引正确的利益干系人](https://aka.ms/deploymentplans)，并且项目中的利益干系人角色非常了解。 
+当技术项目失败时，失败的原因往往是对影响、结果和责任的预期不符。 若要避免这些问题，请[确保你正在吸引正确的利益干系人](https://aka.ms/deploymentplans)，并且项目中的利益干系人角色非常了解。 
 
 对于此计划，向列表中添加以下利益干系人：
 
@@ -85,7 +85,7 @@ Azure Active Directory (Azure AD) 使你的组织能够通过设备标识管理�
 
 ## <a name="choose-your-integration-methods"></a>选择集成方法
 
-你的组织可以在一个 Azure AD 租户中使用多个设备集成方法。 目标是选择方法 () 适用于在 Azure AD 中安全管理设备。 可以通过许多参数来推动此决定，包括所有权、设备类型、主要受众和组织的基础结构。
+你的组织可以在一个 Azure AD 租户中使用多个设备集成方法。 目标是选择适合于在 Azure AD 中安全管理设备的方法。 可以通过许多参数来推动此决定，包括所有权、设备类型、主要受众和组织的基础结构。
 
 以下信息可帮助你决定要使用的集成方法。
 
@@ -94,7 +94,7 @@ Azure Active Directory (Azure AD) 使你的组织能够通过设备标识管理�
 使用此树来确定组织拥有的设备的选项。 
 
 > [!NOTE]
-> 此关系图中未显示个人或自带设备 (BYOD) 方案。 它们始终导致 Azure AD 的注册。
+> 此关系图中未显示个人或自带设备（BYOD）方案。 它们始终导致 Azure AD 的注册。
 
  ![决策树](./media/plan-device-deployment/flowchart.png)
 
@@ -106,7 +106,7 @@ iOS 和 Android 设备只能注册 Azure AD。 下表提供了有关 Windows 客
 | - | - | - | - |
 | **客户端操作系统**| | |  |
 | Windows 10 设备| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
-| Windows 下层设备 (Windows 8.1 或 Windows 7) | | | ![选中](./media/plan-device-deployment/check.png) |
+| Windows 下层设备（Windows 8.1 或 Windows 7）| | | ![选中](./media/plan-device-deployment/check.png) |
 |**登录选项**| | |  |
 | 最终用户本地凭据| ![选中](./media/plan-device-deployment/check.png)| |  |
 | 密码| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
@@ -114,12 +114,12 @@ iOS 和 Android 设备只能注册 Azure AD。 下表提供了有关 Windows 客
 | Windows Hello| ![选中](./media/plan-device-deployment/check.png)| |  |
 | Windows Hello for Business| | ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
 | FIDO 2.0 安全密钥| | ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
-| Microsoft Authenticator 应用 (无密码) | ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
+| Microsoft Authenticator 应用（无密码）| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
 |**关键功能**| | |  |
 | SSO 到云资源| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
 | SSO 到本地资源| | ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
-| 条件访问 <br>  (要求设备标记为符合)  <br>  (必须由 MDM 管理) | ![选中](./media/plan-device-deployment/check.png) | ![选中](./media/plan-device-deployment/check.png)|![选中](./media/plan-device-deployment/check.png) |
-条件访问 <br> (要求已加入混合 Azure AD 设备) | | | ![选中](./media/plan-device-deployment/check.png)
+| 条件性访问 <br> （要求设备标记为符合） <br> （必须由 MDM 托管）| ![选中](./media/plan-device-deployment/check.png) | ![选中](./media/plan-device-deployment/check.png)|![选中](./media/plan-device-deployment/check.png) |
+条件性访问 <br>（需要 Azure AD 联接的混合设备）| | | ![选中](./media/plan-device-deployment/check.png)
 | Windows 登录屏幕上的自助密码重置| | ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
 | Windows hello PIN 重置| | ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
 | 跨设备的企业状态漫游| | ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png) |
@@ -129,7 +129,7 @@ iOS 和 Android 设备只能注册 Azure AD。 下表提供了有关 Windows 客
 
 已注册的设备通常通过[Microsoft Intune](https://docs.microsoft.com/mem/intune/enrollment/device-enrollment)进行管理。 设备在 Intune 中注册的方式有很多，具体取决于操作系统。 
 
-Azure AD 注册的设备支持自带设备 (BYOD) 和公司拥有的设备到 SSO 到云资源。 资源的访问基于应用到设备和用户的 Azure AD [CA 策略](../conditional-access/require-managed-devices.md)。
+Azure AD 注册的设备支持自带设备（BYOD）和公司拥有的设备到 SSO 到云资源的支持。 资源的访问基于应用到设备和用户的 Azure AD [CA 策略](../conditional-access/require-managed-devices.md)。
 
 ### <a name="registering-devices"></a>注册设备
 
@@ -169,7 +169,7 @@ Azure AD 联接使你可以使用 Windows 过渡到云优先模型。 如果打�
 
 如果设备安装了 Windows 10 专业版或 Windows 10 企业版，则体验将默认为公司所拥有设备的设置过程。
 
-* [Windows 全新体验 (OOBE) 或 Windows 设置](../user-help/user-help-join-device-on-network.md)
+* [Windows 开箱即用体验（OOBE）或从 Windows 设置](../user-help/user-help-join-device-on-network.md)
 
 * [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot)
 
@@ -179,7 +179,7 @@ Azure AD 联接使你可以使用 Windows 过渡到云优先模型。 如果打�
 
 你可能确定 Azure AD 联接是设备的最佳解决方案，并且该设备可能已经处于不同的状态。 下面是升级注意事项。
 
-| 当前设备状态| Desired 设备状态| 操作方法 |
+| 当前设备状态| Desired 设备状态| 操作说明 |
 | - | - | - |
 | 已加入本地域| Azure AD 加入| 在加入到 Azure AD 之前从本地域中脱离设备 |
 | 混合 Azure AD 联接| Azure AD 加入| 在加入到 Azure AD 之前，从本地域和 Azure AD 中脱离设备 |
@@ -190,7 +190,7 @@ Azure AD 联接使你可以使用 Windows 过渡到云优先模型。 如果打�
 
 如果你有本地 Active Directory 环境，并且想要将已加入 Active Directory 域的计算机加入到 Azure AD 中，则可以通过混合 Azure AD 加入来实现此目的。 它支持[范围广泛的 windows 设备](hybrid-azuread-join-plan.md)，包括 windows 当前和 windows 下层设备。
 
-大多数组织已加入域的设备，并通过组策略或 System Center Configuration Manager (SCCM) 对其进行管理。 在这种情况下，我们建议将混合 Azure AD 联接配置为开始获得权益，同时利用现有投资。
+大多数组织已加入域的设备，并通过组策略或 System Center Configuration Manager （SCCM）对其进行管理。 在这种情况下，我们建议将混合 Azure AD 联接配置为开始获得权益，同时利用现有投资。
 
 如果混合 Azure AD 联接是你的组织的最佳选择，请参阅以下资源：
 
@@ -213,7 +213,7 @@ Azure AD 联接使你可以使用 Windows 过渡到云优先模型。 如果打�
 
 你可能确定混合 Azure AD 联接是设备的最佳解决方案，并且该设备可能已经处于不同的状态。 下面是升级注意事项。
 
-| 当前设备状态| Desired 设备状态| 操作方法 |
+| 当前设备状态| Desired 设备状态| 操作说明 |
 | - | - | - |
 | 本地域加入| 混合 Azure AD 联接| 使用 Azure AD 连接或 AD FS 加入 Azure |
 | 已加入本地工作组或新工作组| 混合 Azure AD 联接| [Windows Autopilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-autopilot)支持。 否则，设备需要加入本地域，才能混合 Azure AD 联接 |
@@ -227,10 +227,6 @@ Azure AD 联接使你可以使用 Windows 过渡到云优先模型。 如果打�
 * [配置设备设置](device-management-azure-portal.md#configure-device-settings)
 * 你需要成为本地管理员才能管理 Windows 设备。 [Azure AD 更新 Azure AD 加入的设备的此成员身份](assign-local-admin.md)，则会自动将设备管理器角色添加为所有已加入设备的管理员。
 
-* [查找设备](device-management-azure-portal.md#locate-devices)
-
-* [执行设备标识管理任务](device-management-azure-portal.md#device-identity-management-tasks)
-
 请确保通过[管理过时的设备](manage-stale-devices.md)使环境保持整洁，并将资源集中在管理当前设备上。
 
 * [查看与设备相关的审核日志](device-management-azure-portal.md#audit-logs)
@@ -243,15 +239,15 @@ Azure AD 联接使你可以使用 Windows 过渡到云优先模型。 如果打�
 
 | 设备管理工具| 已注册 Azure AD| Azure AD 加入| 混合 Azure AD 加入|
 | - | - | - | - |
-| [ (MDM) 的移动设备管理](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>示例： Microsoft Intune| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png)|  |
-| [与 Microsoft Intune 和 Microsoft 端点 Configuration Manager 的共同管理](https://docs.microsoft.com/mem/configmgr/comanage/overview) <br> (Windows 10 和更高版本) | | ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png)|  |
-| [组策略](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>仅 (Windows) | | | ![选中](./media/plan-device-deployment/check.png)|  |
+| [移动设备管理（MDM）](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm) <br>示例： Microsoft Intune| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png)|  |
+| [与 Microsoft Intune 和 Microsoft 端点 Configuration Manager 的共同管理](https://docs.microsoft.com/mem/configmgr/comanage/overview) <br>（Windows 10 及更高版本）| | ![选中](./media/plan-device-deployment/check.png)| ![选中](./media/plan-device-deployment/check.png)|  |
+| [组策略](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11))<br>（仅限 Windows）| | | ![选中](./media/plan-device-deployment/check.png)|  |
 
 
 
- 建议你考虑在已注册的 iOS 或 Android 设备上[Microsoft Intune 移动应用程序管理 (MAM) ](https://docs.microsoft.com/mem/intune/apps/app-management)以及设备管理。
+ 建议你考虑在已注册的 iOS 或 Android 设备上[Microsoft Intune 移动应用程序管理（MAM）](https://docs.microsoft.com/mem/intune/apps/app-management)以及设备管理。
 
- 管理员还可以将[虚拟桌面基础结构 (VDI) 平台](howto-device-identity-virtual-desktop-infrastructure.md)（在其组织中托管 Windows 操作系统）来简化管理，并通过整合和集中资源降低成本。 
+ 管理员还可以在其组织中部署托管 Windows 操作系统的[虚拟桌面基础结构（VDI）平台](howto-device-identity-virtual-desktop-infrastructure.md)，通过整合和集中资源来简化管理和降低成本。 
 
 ### <a name="troubleshoot-device-identities"></a>排查设备标识问题
 

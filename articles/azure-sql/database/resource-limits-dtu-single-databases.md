@@ -4,19 +4,19 @@ description: 本页介绍 Azure SQL 数据库中单一数据库的一些常见 D
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
-ms.custom: references_regions
+ms.custom: references_regions, seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: fa8901f2a219b0693cee17bc4d0ab78da615c415
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fa15a5f95c2163309ecfd9cc0130d1860eb3b634
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325094"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542681"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>使用 DTU 购买模型的单一数据库的资源限制 - Azure SQL 数据库
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -101,7 +101,7 @@ ms.locfileid: "87325094"
 <sup>2</sup> 1024 gb，最大为 4096 gb，增量为 256 gb。
 
 > [!IMPORTANT]
-> 高级层中的存储空间超过 1 TB 目前在除：中国东部、中国北部、德国中部、德国北部、美国中部、US DoD 地区和美国政府中心以外的所有地区都可用。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。
+> 高级层中超过 1 TB 的存储目前在除：中国东部、中国北部、德国中部和德国东北部以外的所有区域中都可用。 在这些区域，高级层中的最大存储限制为 1 TB。  有关详细信息，请参阅[P11-P15 当前限制](single-database-scale.md#p11-and-p15-constraints-when-max-size-greater-than-1-tb)。
 > [!NOTE]
 > 有关 `tempdb` 限制，请参阅 [tempdb 限制](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)。
 

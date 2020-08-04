@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 58be0315b272199e74f28654aae315a8c6c5f7b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85fb188028e0e61378b1e47c1fb7b88eaaa4d7a0
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558820"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87541917"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>用于调用 Web API 的桌面应用：获取令牌
 
@@ -213,7 +213,7 @@ WithParentActivityOrWindow(object parent).
 
 `WithPrompt()` 用于通过指定提示来控制与用户的交互。
 
-<img src="https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png" width="25%" />
+![显示提示结构中的字段的图像。 这些常量值通过定义 WithPrompt （）方法显示的提示类型来控制与用户的交互。](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
 
 类定义以下常量：
 
@@ -425,11 +425,11 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 - 在 `PublicClientApplicationBuilder` 中传入的颁发机构需要：
   - 租户化（采用 `https://login.microsoftonline.com/{tenant}/` 格式，其中，`tenant` 是表示租户 ID 或者与该租户关联的域的 GUID）。
-  - 适用于任何工作和学校帐户：`https://login.microsoftonline.com/organizations/`。
+  - 对于任何工作和学校帐户：`https://login.microsoftonline.com/organizations/`。
   - 不支持 Microsoft 个人帐户。 不能使用 /common 或 /consumers 租户。
 
 - 因为集成 Windows 身份验证是一个无提示流：
-  - 应用程序的用户必须事先同意使用该应用程序。
+  - 应用程序的用户必须已事先许可使用该应用程序。
   - 或者，租户管理员必须已事先许可租户中的所有用户使用该应用程序。
   - 换句话说：
     - 开发人员已在 Azure 门户中自行选择“授予”按钮。
@@ -602,7 +602,7 @@ MSAL Python 中尚不支持此流。
 
 ### <a name="this-flow-isnt-recommended"></a>不建议使用此流
 
-不建议使用此流，因为要求用户提供其密码的应用程序是不安全的。 有关详细信息，请参阅[如何解决日益增长的密码问题？](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)。 在已加入 Windows 域的计算机上以无提示方式获取令牌的首选流程是[集成 Windows 身份验证](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication)。 你还可以使用[设备代码流](https://aka.ms/msal-net-device-code-flow)。
+不建议使用此流，因为要求用户提供其密码的应用程序是不安全的。 有关详细信息，请参阅[如何解决不断增多的密码问题？](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/)。 在已加入 Windows 域的计算机上以无提示方式获取令牌的首选流程是[集成 Windows 身份验证](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication)。 你还可以使用[设备代码流](https://aka.ms/msal-net-device-code-flow)。
 
 > [!NOTE]
 > 在某些情况下，使用用户名和密码非常有用，例如 DevOps 方案。 但是，如果你想在自行提供 UI 的交互式方案中使用用户名和密码，建议打消这个念头。 使用用户名和密码意味着会丧失许多功能：
@@ -925,7 +925,7 @@ if not result:
 
 如果你正在编写一个不包含 Web 控件的命令行工具，并且无法或者不想要使用前面所述的流，则需要使用设备代码流。
 
-使用 Azure AD 进行交互式身份验证需要 Web 浏览器。 有关详细信息，请参阅 [Web 浏览器的用法](https://aka.ms/msal-net-uses-web-browser)。 为了对不提供 Web 浏览器的设备或操作系统上的用户进行身份验证，设备代码流可让用户使用另一台设备（例如某台计算机或手机）以交互方式登录。 应用程序使用设备代码流通过为这些设备或 OS 设计的双步过程获取令牌。 此类应用程序的例子包括 iOT 上运行的应用程序或命令行工具 (CLI)。 其思路是：
+使用 Azure AD 的交互式身份验证需要 Web 浏览器。 有关详细信息，请参阅 [Web 浏览器的用法](https://aka.ms/msal-net-uses-web-browser)。 为了对不提供 Web 浏览器的设备或操作系统上的用户进行身份验证，设备代码流可让用户使用另一台设备（例如某台计算机或手机）以交互方式登录。 应用程序使用设备代码流通过为这些设备或 OS 设计的双步过程获取令牌。 此类应用程序的例子包括 iOT 上运行的应用程序或命令行工具 (CLI)。 其思路是：
 
 1. 每当需要用户身份验证时，应用就会为用户提供一个代码。 系统要求用户使用另一台设备（例如，已连接到 Internet 的智能手机）转到某个 URL（例如 `https://microsoft.com/devicelogin`）。 然后系统会提示用户输入代码。 完成此操作后，网页将引导用户进行常规的身份验证操作，其中包括同意提示和多重身份验证（如有必要）。
 

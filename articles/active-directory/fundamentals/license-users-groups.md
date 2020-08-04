@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c695a63705cce90bb0bf6b3cf787d9e6481b888
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 121bf7ef05c2a5bee621ecddcb40033d54194fac
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85603887"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542104"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>在 Azure Active Directory 门户中分配或删除许可证
 
@@ -35,7 +35,7 @@ ms.locfileid: "85603887"
 
 - Azure AD Premium P2
 
-有关每个许可计划的特定信息和关联许可详细信息，请参阅[需要哪个许可证？](https://azure.microsoft.com/pricing/details/active-directory/)。
+有关每个许可计划的特定信息和关联许可详细信息，请参阅[需要哪个许可证？](https://azure.microsoft.com/pricing/details/active-directory/)。 若要注册 Azure AD 高级许可计划，请参阅[此处](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-get-started-premium)。
 
 并非所有 Microsoft 服务都可在所有位置使用。 必须先为所有成员指定“使用位置”  ，然后才能将许可证分配给组。 可以在 Azure AD 的“Azure Active Directory”&gt;“用户”&gt;“配置文件”&gt;“设置”  区域中设置此值。 未指定使用位置的任何用户都会继承 Azure AD 组织的位置。
 
@@ -84,7 +84,7 @@ ms.locfileid: "85603887"
     > [!NOTE]
     > 并非所有 Microsoft 服务都可在所有位置使用。 必须先指定“使用位置”  ，然后才能将许可证分配给用户。 可以在 Azure AD 的“Azure Active Directory”&gt;“用户”&gt;“配置文件”&gt;“设置”  区域中设置此值。 未指定使用位置的任何用户都会继承 Azure AD 组织的位置。
 
-1. 选择“分配”。 
+1. 选择“分配”。
 
     用户会添加到已许可用户列表，并有权访问所包含的 Azure AD 服务。
     > [!NOTE]

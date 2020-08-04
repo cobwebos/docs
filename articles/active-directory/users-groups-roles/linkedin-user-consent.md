@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01ec7f8210df9e41b2620e639eddbc98d4bcb73d
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 4eaf0ab6cc412b7f5a02f898682e90fdde9de3a1
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448668"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542355"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>LinkedIn 帐户连接数据共享与同意
 
@@ -41,7 +41,7 @@ ms.locfileid: "87448668"
 1. 若要启用或禁用集成，请按照[同意将 LinkedIn 集成到 Azure AD 组织](linkedin-integration.md)中的步骤进行操作。
 2. 当在组织中公布领英集成时，让用户访问有关 [Microsoft 应用和服务中的领英信息](https://support.office.com/article/about-linkedin-information-and-features-in-microsoft-apps-and-services-dc81cc70-4d64-4755-9f1c-b9536e34d381)的常见问题解答。 本文提供了有关 LinkedIn 信息显示的位置、[数据共享和隐私](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400)、[如何连接帐户](https://support.microsoft.com/office/connect-your-linkedin-and-work-or-school-accounts-c7c245f2-fa56-4c9b-ba20-3fceb23c5772)等信息。
 
-您必须向用户通知 Linkedin 集成，为他们提供与 Linkedin 集成相关的数据共享和隐私信息。 为了使使用您的用户能够连接到 
+你必须向用户通知 Linkedin 集成，并向他们提供有关[与 Linkedin 集成的数据共享和隐私](https://support.microsoft.com/office/your-data-ae9c08a7-4d06-45b5-a065-320a97bc1400)相关的所有信息。 
 
 ## <a name="user-consent-for-data-access-in-microsoft-and-linkedin"></a>用于在 Microsoft 和领英中进行数据访问的用户同意
 

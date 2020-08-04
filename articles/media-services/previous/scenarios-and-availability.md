@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 0eec42c0703e7158b478b8297848dc2ee6735cb8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 81d1c86bc5130d616712d022efd4b111b8b939dd
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047550"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87542372"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
 
@@ -49,7 +49,7 @@ AMS 在世界各地的多个数据中心运行。 这些数据中心分组到地
 
 单击图像查看其完整大小。  
 
-<a href="./media/media-services-overview/media-services-overview-object-model.png" target="_blank"><img src="./media/media-services-overview/media-services-overview-object-model-small.png"></a> 
+[![显示针对 Azure 媒体服务对象数据模型进行开发时最常使用的对象的关系图。](./media/media-services-overview/media-services-overview-object-model-small.png)](./media/media-services-overview/media-services-overview-object-model.png#lightbox)
 
 可在 [此处](https://media.windows.net/API/$metadata?api-version=2.15)查看完整模型。  
 
@@ -210,10 +210,10 @@ AMS 提供两个按需编码器：  Media Encoder Standard 和  Media Encoder Pr
 
 |媒体处理器名称|状态|数据中心
 |---|---|---|
-|Azure 媒体面部检测器|预览|All|
+|Azure 媒体面部检测器|预览|全部|
 |Azure Media Indexer|GA|全部|
-|Azure 媒体动作检测器|预览|All|
-|Azure 媒体 OCR|预览|All|
+|Azure 媒体动作检测器|预览|全部|
+|Azure 媒体 OCR|预览|全部|
 |Azure 媒体编修器|GA|全部|
 |Azure 媒体视频缩略图|预览|All|
 

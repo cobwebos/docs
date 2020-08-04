@@ -11,12 +11,12 @@ ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4, tracking-python
-ms.openlocfilehash: dcb2a50a91bec70dfe5d9adda7518f3510a8c973
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 4741c6348c2a4077776d2d79bee56de26f62e2d1
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373192"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87540931"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>使用 Azure Kubernetes 服务和 Azure 容器实例对模型的 Docker 部署进行故障排除 
 
@@ -153,7 +153,7 @@ print(prediction)
 在本地测试中，可能需要更新 `score.py` 文件以添加记录或尝试解决发现的任何问题。 若要重新加载对 `score.py` 文件的更改，请使用 `reload()`。 例如，以下代码重新加载服务的脚本，然后向其发送数据。 使用 `score.py` 文件对数据进行评分：
 
 > [!IMPORTANT]
-> `reload` 方法仅适用于本地部署。 有关更新部署到其他计算目标的信息，请参阅[部署模型](how-to-deploy-and-where.md#update)更新部分。
+> `reload` 方法仅适用于本地部署。 有关将部署更新到另一个计算目标的信息，请参阅[如何更新 webservice](how-to-deploy-update-web-service.md)。
 
 ```python
 service.reload()
