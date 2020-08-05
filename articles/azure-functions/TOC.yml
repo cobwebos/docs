@@ -345,8 +345,8 @@
       items:
         - name: 排查存储问题
           href: functions-recover-storage-account.md
-        - name: Python 依赖项疑难解答
-          href: recover-module-not-found.md
+        - name: Python 函数排除故障
+          href: recover-python-functions.md
 - name: 参考
   items:
     - name: API 参考
@@ -484,7 +484,7 @@
             - name: 输入
               href: functions-bindings-signalr-service-input.md
               displayName: SignalR Service
-            - name: 输出
+            - name: Output
               href: functions-bindings-signalr-service-output.md
               displayName: SignalR Service
         - name: 表存储

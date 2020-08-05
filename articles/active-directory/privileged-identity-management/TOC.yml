@@ -91,7 +91,7 @@
       items:
         - name: 特权访问概述
           href: groups-features.md
-        - name: 发现组
+        - name: 让组受到管理
           href: groups-discover-groups.md
         - name: 分配成员或所有者
           href: groups-assign-member-owner.md

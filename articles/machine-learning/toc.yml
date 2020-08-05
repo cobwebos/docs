@@ -15,28 +15,6 @@
 - name: 教程
   expanded: true
   items:
-    - name: 工作室
-      expanded: true
-      items:
-        - name: 设计器（拖放）
-          items:
-            - name: 1. 训练回归模型
-              displayName: studio
-              href: tutorial-designer-automobile-price-train-score.md
-            - name: 2. 部署该模型
-              displayName: studio
-              href: tutorial-designer-automobile-price-deploy.md
-        - name: 自动化 ML (UI)
-          items:
-            - name: 创建自动化机器学习试验
-              displayName: 'automl, automated, auto ml, portal, ui'
-              href: tutorial-first-experiment-automated-ml.md
-            - name: 预测需求（自行车共享数据）
-              displayName: 'automl, automated, auto ml, portal, ui'
-              href: tutorial-automated-ml-forecast.md
-        - name: 标记图像数据
-          displayName: 'tag, tagging, images'
-          href: tutorial-labeling.md
     - name: Python SDK
       expanded: true
       items:
@@ -64,11 +42,33 @@
         - name: 准备适用于生产环境的代码
           displayName: 'mlops, mlopspython, production'
           href: tutorial-convert-ml-experiment-to-production.md
+    - name: 工作室
+      expanded: true
+      items:
+        - name: 自动化 ML (UI)
+          items:
+            - name: 创建自动化机器学习试验
+              displayName: 'automl, automated, auto ml, portal, ui'
+              href: tutorial-first-experiment-automated-ml.md
+            - name: 预测需求（自行车共享数据）
+              displayName: 'automl, automated, auto ml, portal, ui'
+              href: tutorial-automated-ml-forecast.md
+        - name: 设计器（拖放）
+          items:
+            - name: 1. 训练回归模型
+              displayName: studio
+              href: tutorial-designer-automobile-price-train-score.md
+            - name: 2. 部署该模型
+              displayName: studio
+              href: tutorial-designer-automobile-price-deploy.md
+        - name: 标记图像数据
+          displayName: 'tag, tagging, images'
+          href: tutorial-labeling.md
     - name: R SDK
       items:
         - name: 创建首个 ML 试验 (R)
           href: tutorial-1st-r-experiment.md
-    - name: 机器学习 CLI
+    - name: CLI
       items:
         - name: 使用 CLI 进行训练和部署
           href: tutorial-train-deploy-model-cli.md
@@ -226,9 +226,6 @@
         - name: 使用专用 Python 包
           displayName: 'pip, Conda, anaconda'
           href: how-to-use-private-python-packages.md
-        - name: 启用日志记录
-          displayName: 'troubleshoot, log, files, tracing'
-          href: how-to-enable-logging.md
         - name: 设置输入和输出目录
           displayName: 'large data, write, experiment files, size limit'
           href: how-to-save-write-experiment-files.md
@@ -309,8 +306,12 @@
             - name: 启动、监视或取消运行
               displayName: 'cancel, fail, status, child run'
               href: how-to-manage-runs.md
-            - name: 记录训练运行的指标
+            - name: 启用日志
+              displayName: 'troubleshoot, log, files, tracing'
               href: how-to-track-experiments.md
+            - name: 查看日志
+              displayName: 'troubleshoot, log, files, tracing'
+              href: how-to-monitor-view-training-logs.md
             - name: 使用 MLflow 对试验进行跟踪
               displayName: 'log, monitor, metrics, Databricks'
               href: how-to-use-mlflow.md
@@ -363,7 +364,7 @@
         - name: 在何处以及如何部署
           displayName: 'publish, web, service, operationalize, aks, kubernetes, aci, container, cli, consume, docker'
           href: how-to-deploy-and-where.md
-        - name: 部署方案
+        - name: 部署目标
           items:
             - name: 使用现有模型
               displayName: publish existing model
@@ -394,19 +395,37 @@
               href: how-to-deploy-fpga-web-service.md
         - name: 排查问题和调试
           href: how-to-troubleshoot-deployment.md
-        - name: 创建客户端
+        - name: 使用 Web 服务
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: 监视模型
+        - name: 更新 Web 服务
+          displayName: update hot reload model mounting
+          href: how-to-deploy-update-web-service.md
+        - name: 高级入口脚本创作
+          displayName: swagger inference schema binary cors
+          href: how-to-deploy-advanced-entry-script.md
+        - name: 监视 Web 服务
           items:
             - name: 收集和评估模型数据
               displayName: track production
               href: how-to-enable-data-collection.md
             - name: 使用 Application Insights 进行监视
               href: how-to-enable-app-insights.md
+        - name: 连续部署模型
+          displayName: ci cd azure devops models
+          href: how-to-deploy-continuously-deploy.md
         - name: 部署加密的推理服务
           displayName: 'homomorhic,encryption,deployment'
           href: how-to-homomorphic-encryption-seal.md
+        - name: 配置文件模型
+          displayName: profile resource requirement
+          href: how-to-deploy-profile-model.md
+        - name: （预览）无代码部署
+          displayName: no code
+          href: how-to-deploy-no-code-deployment.md
+        - name: 包模型
+          displayName: docker file download
+          href: how-to-deploy-package-models.md
     - name: 构建并使用 ML 管道
       displayName: pipelines
       items:
@@ -423,6 +442,9 @@
           href: how-to-debug-pipelines.md
         - name: 在 Application Insights 中调试管道
           href: how-to-debug-pipelines-application-insights.md
+        - name: 设计器日志指标
+          displayName: 'designer, logging'
+          href: how-to-track-designer-experiments.md
         - name: 设计器转换数据
           displayName: pipeline
           href: how-to-designer-transform-data.md

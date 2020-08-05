@@ -51,6 +51,12 @@
   items:
     - name: 配置网络观察程序
       href: network-watcher-create.md
+    - name: 创建连接监视器（预览）
+      items:
+        - name: 使用 Azure 门户
+          href: connection-monitor-preview-create-using-portal.md
+        - name: 使用 ARMClient
+          href: connection-monitor-preview-create-using-arm-client.md
     - name: 诊断 VM 网络问题
       items:
         - name: 安装 VM 扩展

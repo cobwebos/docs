@@ -251,7 +251,7 @@
           href: connector-azure-database-for-postgresql.md
         - name: Azure 文件存储
           href: connector-azure-file-storage.md
-        - name: Azure SQL 数据库
+        - name: Azure SQL Database
           href: connector-azure-sql-database.md
         - name: Azure SQL 托管实例
           href: connector-azure-sql-managed-instance.md
@@ -726,6 +726,8 @@
           href: pricing-concepts.md
     - name: 疑难解答指南
       items:
+        - name: 数据工厂 UX
+          href: data-factory-ux-troubleshoot-guide.md
         - name: 活动
           href: data-factory-troubleshoot-guide.md
         - name: 连接器

@@ -335,6 +335,8 @@
           items:
             - name: 客户管理的密钥
               href: search-security-manage-encryption-keys.md
+            - name: 获取密钥信息
+              href: search-security-get-encryption-keys.md
         - name: 入站安全性
           items:
             - name: API 访问密钥

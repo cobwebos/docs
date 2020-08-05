@@ -2,16 +2,16 @@
   items:
     - name: 概述
       items:
-        - name: H 系列 VM 的 HPC
+        - name: 适用于 H 系列和 N 系列 VM 的 HPC
           href: overview.md
     - name: 配置
       items:
-        - name: 针对 Linux 进行优化
+        - name: 配置和优化 VM
           href: configure.md
         - name: 启用 InfiniBand
           href: enable-infiniband.md
-    - name: 设置 MPI
-      href: setup-mpi.md
+        - name: 设置 MPI
+          href: setup-mpi.md
     - name: 缩放应用程序
       href: compiling-scaling-applications.md
     - name: 虚拟机
@@ -28,5 +28,5 @@
               href: hc-series-overview.md
             - name: 性能
               href: hc-series-performance.md
-        - name: HB 系列和 HC 系列 VM 的已知问题
+        - name: H 系列和 N 系列 VM 的已知问题
           href: hb-hc-known-issues.md

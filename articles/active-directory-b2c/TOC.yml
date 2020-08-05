@@ -280,7 +280,7 @@
                 - name: ClaimsTransformations
                   href: claimstransformations.md
                   items:
-                    - name: 布尔
+                    - name: Boolean
                       href: boolean-transformations.md
                     - name: Date
                       href: date-transformations.md
@@ -296,7 +296,7 @@
                       href: social-transformations.md
                     - name: StringCollection
                       href: stringcollection-transformations.md
-                    - name: 字符串
+                    - name: String
                       href: string-transformations.md
                 - name: 谓词
                   href: predicates.md
@@ -377,6 +377,8 @@
           href: partner-itsme.md
         - name: LexisNexis
           href: partner-lexisnexis.md
+        - name: Onfido
+          href: partner-onfido.md
         - name: Trusona
           href: partner-trusona.md
         - name: Twilio

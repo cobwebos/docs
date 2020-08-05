@@ -4,7 +4,7 @@ summary: 安全已集成到 Azure 的各个方面。 Azure 提供了源自全球
 brand: azure
 metadata:
   title: Azure 安全文档
-  description: 安全已集成到 Azure 的各个方面。 Azure 提供了源自全球安全智能、面向客户的完善控制和安全强化基础结构的独特安全优势。 这一功能强大的组合可帮助保护应用程序和数据，为你遵从法规提供支持，并为所有规模的组织提供符合成本效益的安全性。
+  description: 了解 Azure 中的安全性。 请参阅有关安全基础、最佳做法和模式以及 Azure 安全中心的信息。
   services: security
   ms.service: security
   ms.subservice: na
@@ -14,12 +14,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 08/29/2019
-  ms.openlocfilehash: b3c5fb0dd15c1211132e627b507aa20a043f09ba
-  ms.sourcegitcommit: fb23286d4769442631079c7ed5da1ed14afdd5fc
+  ms.openlocfilehash: de2b3baae0ab999c0e3eb8ed76194632e7b066e6
+  ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/10/2020
-  ms.locfileid: "81115361"
+  ms.lasthandoff: 08/03/2020
+  ms.locfileid: "87540846"
 highlightedContent:
   items:
   - title: Azure 安全性简介
