@@ -8,12 +8,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: a4e8fc18ab7abfee483f36adef083bfb08a4a27f
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.custom: devx-track-javascript
+ms.openlocfilehash: cb9a674890330ba83b6e7fe754ecd83eda4031bb
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85986088"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87405989"
 ---
 适用于 JavaScript 的异常检测器客户端库入门。 请按照以下步骤安装程序包并试用基本任务的示例代码。 通过异常检测器服务，可以对时序数据自动使用最佳适配模型，从而查找器其中的异常，不限行业、场景或数据量。
 
@@ -94,8 +95,8 @@ npm install  @azure/cognitiveservices-anomalydetector @azure/ms-rest-js csv-pars
 ## <a name="load-time-series-data-from-a-file"></a>从文件加载时序数据
 
 从 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/AnomalyDetector/request-data.csv) 下载此快速入门中的示例数据：
-1. 在浏览器中，右键单击“原始”  。
-2. 单击“将链接另存为”  。
+1. 在浏览器中，右键单击“原始”。
+2. 单击“将链接另存为”。
 3. 将文件另存为 .csv 文件，保存到你的应用程序目录。
 
 此时序数据的格式为 .csv 文件，它将被发送到异常检测器 API。

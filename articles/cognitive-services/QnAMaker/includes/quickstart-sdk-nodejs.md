@@ -3,12 +3,13 @@ title: 快速入门：适用于 Node.js 的 QnA Maker 客户端库
 description: 本快速入门介绍如何开始使用适用于 Node.js 的 QnA Maker 客户端库。
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 7b3c5e69e820951896cb00b82295dc07ba698c94
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 76d0587c68ac46253dbd937c661b06bdb8c495c8
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114503"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87404068"
 ---
 可以使用适用于 Node.js 的 QnA Maker 客户端库执行以下操作：
 
@@ -77,8 +78,8 @@ npm install @azure/ms-rest-js
 ## <a name="object-models"></a>对象模型
 
 QnA Maker 使用两种不同的对象模型：
-* **[QnAMakerClient](#qnamakerclient-object-model)** 是用于创建、管理、发布和下载知识库的对象。
-* **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** 对象通过 GenerateAnswer API 查询知识库，并使用训练 API 发送新的建议问题（作为[主动学习](../concepts/active-learning-suggestions.md)的一个环节）。
+* **[QnAMakerClient](#qnamakerclient-object-model)** 对象可创建、管理、发布和下载知识库。
+* **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** 对象可通过 GenerateAnswer API 查询知识库，并使用训练 API 发送新的建议问题（作为[主动学习](../concepts/active-learning-suggestions.md)的一部分）。
 
 
 ### <a name="qnamakerclient-object-model"></a>QnAMakerClient 对象模型
@@ -122,7 +123,7 @@ QnA Maker 使用两种不同的对象模型：
 知识库为来自三个源的 [CreateKbDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/createkbdto?view=azure-node-latest) 对象存储问答对：
 
 * 对于**编辑内容**，请使用 [QnADTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/qnadto?view=azure-node-latest) 对象。
-    * 若要使用元数据和跟进提示，请使用编辑上下文，因为此数据是在单独的 QnA 对级别上添加的。
+    * 若要使用元数据和跟进提示，请使用编辑上下文，因为此数据是在单独的 QnA 对级别添加的。
 * 对于**文件**，请使用 [FileDTO](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-qnamaker/filedto?view=azure-node-latest) 对象。 FileDTO 包括文件名以及用于访问该文件的公共 URL。
 * 对于 URL，请使用一列字符串来表示公开可用的 URL。
 

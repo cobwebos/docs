@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: 9fe8bc06aafd17518d37c35034fac9b566e079ce
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.custom: devx-track-javascript
+ms.openlocfilehash: d7ec5b386a9e62606a8b46c4e66cea85f8098a83
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261544"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87406820"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>快速入门：使用 Node.js 获取“文本转语音”语音的列表
 
@@ -106,7 +107,7 @@ function textToSpeech(accessToken) {
 
 即将完成。 最后一步是创建异步函数。 此函数将从环境变量读取订阅密钥、获取令牌、等待请求完成，然后将 JSON 响应写入到文件。
 
-如果不熟悉环境变量，或希望使用硬编码为字符串的订阅密钥来测试，请将 `process.env.SPEECH_SERVICE_KEY` 替换为字符串形式的订阅密钥。
+如果不熟悉环境变量，或者首选在测试时将订阅密钥硬编码为字符串，请将 `process.env.SPEECH_SERVICE_KEY` 替换为字符串形式的订阅密钥。
 
 ```javascript
 // Use async and await to get the token before attempting
