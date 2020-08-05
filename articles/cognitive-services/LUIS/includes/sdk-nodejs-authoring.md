@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 07/28/2020
 ms.topic: include
-ms.custom: include file
+ms.custom: include file, devx-track-javascript
 ms.author: diberry
-ms.openlocfilehash: 6d805dfc15264a34abe1f177f688dae96d4a49f7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 88a9c2f18237974a0188f6cf387bf98ebfa2b211
+ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369407"
+ms.locfileid: "87425172"
 ---
 使用适用于 Node.js 的语言理解 (LUIS) 创作客户端库可以：
 

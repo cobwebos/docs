@@ -9,12 +9,13 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
-ms.openlocfilehash: 4efaa90281ddcebf1b800e1016578e38c24be651
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 8fbf06d6bd93de578039959d9f0235f1f55d448e
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "69614111"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87424267"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>通过 React 和 Azure Cosmos DB 创建 MongoDB 应用  
 

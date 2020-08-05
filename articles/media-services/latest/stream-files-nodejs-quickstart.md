@@ -10,15 +10,15 @@ keywords: Azure 媒体服务, 流式传输
 ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, devx-track-javascript
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 5e4c50b4b66d164ba2e89cfc537d9dd8593c4f57
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1c96c538826de696de531aff79ce601bc01a239d
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092025"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87414065"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---nodejs"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - Node.js
 

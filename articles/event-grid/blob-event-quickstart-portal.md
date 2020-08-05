@@ -3,12 +3,12 @@ title: 快速入门：将 Blob 存储事件发送到 Web 终结点 - 门户
 description: 快速入门：使用 Azure 事件网格和 Azure 门户创建 Blob 存储帐户并订阅其事件。 将事件发送到 Webhook。
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: fe942a4daa877088bd354352aa994e4e283f9be5
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 46cd88558334239a1a9971c63b8b2608def3c4d3
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103613"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87421597"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>快速入门：利用 Azure 门户将 Blob 存储事件路由到 Web 终结点
 
@@ -50,7 +50,7 @@ Azure 事件网格是针对云的事件处理服务。 在本文中，你将使�
 
 1. 选择“部署到 Azure”将解决方案部署到你的订阅。 
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 2. 在“自定义部署”页上执行以下步骤： 
     1. 对于“资源组”，请选择你在创建存储帐户时创建的资源组。 这样就可以在完成本教程后，通过删除资源组来更轻松地清理资源。  
     2. 对于“站点名称”，请输入 Web 应用的名称。

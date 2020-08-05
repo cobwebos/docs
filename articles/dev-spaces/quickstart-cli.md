@@ -6,12 +6,13 @@ ms.topic: quickstart
 description: 本快速入门演示如何使用 Azure Dev Spaces 和命令行在 Azure Kubernetes 服务中开发应用程序
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 337c3cb139e1fe0c35344e49271503b98a59fa7b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-javascript
+ms.openlocfilehash: 82e7e73a91b07770881353465af063497deae085
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82165996"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87414796"
 ---
 # <a name="quickstart-develop-an-application-on-kubernetes---azure-dev-spaces"></a>快速入门：在 Kubernetes 上开发应用程序 - Azure Dev Spaces
 本指南介绍如何：

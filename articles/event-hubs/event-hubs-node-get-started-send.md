@@ -3,12 +3,13 @@ title: 使用 JavaScript（旧版）向/从 Azure 事件中心发送/接收事�
 description: 本文演练了如何创建一个可使用旧的 azure/event-hubs 版本 2 程序包向/从 Azure 事件中心发送/接收事件的 JavaScript 应用程序。
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 548276b4bcbdd514c37a19375154923ad9f3f9a4
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.custom: devx-track-javascript
+ms.openlocfilehash: ffa6b821d617731bd6ee5cbb9bec8bd6d856a7a6
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85314506"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87414116"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-javascript-azureevent-hubs-version-2"></a>快速入门：使用 JavaScript（@azure/event-hubs 版本 2）向/从 Azure 事件中心发送/接收事件
 本快速入门介绍了如何使用 azure/event-hubs 版本 2 JavaScript 程序包创建 JavaScript 应用程序，向事件中心发送事件以及从事件中心接收事件。 
