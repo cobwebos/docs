@@ -2,17 +2,17 @@
 title: 刷新 Azure Analysis Services 模型的逻辑应用 |Microsoft Docs
 description: 本文介绍如何使用 Azure 逻辑应用对 Azure Analysis Services 的异步刷新进行编码。
 author: chrislound
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
 ms.custom: references_regions
-ms.openlocfilehash: 9d8c3c7668da939227b3e8aaef002b4292c7d962
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7412a28b53f3b17fb888e3877ecbe50a19c4a3d3
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025313"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552231"
 ---
 # <a name="refresh-with-logic-apps"></a>使用逻辑应用进行刷新
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 08/03/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 127d76bedafd4c857686e93f21d3cccdc36b98dd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ba1fc856ee9093b628bd86b9847f8fc70b7189c2
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87274657"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552894"
 ---
 # <a name="conditional-access-users-and-groups"></a>条件访问：用户和组
 
@@ -44,6 +44,9 @@ ms.locfileid: "87274657"
 
 > [!WARNING]
 > 如果用户或组是超过2048个组的成员，则他们的访问可能会被阻止。 此限制适用于直接和嵌套组成员身份。
+
+> [!WARNING]
+> 条件性访问策略不支持向用户分配目录角色，该角色作用域为直接作用于对象的[管理单元](../users-groups-roles/roles-admin-units-assign-roles.md)或目录角色，如通过[自定义角色](../users-groups-roles/roles-create-custom.md)。
 
 ## <a name="exclude-users"></a>排除用户
 

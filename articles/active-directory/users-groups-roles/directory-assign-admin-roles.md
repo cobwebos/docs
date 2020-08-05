@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a88e30e85402f60489839b0a34b5a793fd7192df
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0ae598fb9e4018369230de5fadcf173a3df9fb4c
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502471"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551687"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -44,7 +44,7 @@ ms.locfileid: "87502471"
 若要了解如何在 Azure Active Directory 中向用户分配管理角色，请参阅[在 Azure Active Directory 中查看和分配管理员角色](directory-manage-roles-portal.md)。
 
 > [!Note]
-> 如果你有一个 Azure AD 的高级 P2 许可证，并且已是一个 Privileged Identity Management （PIM）用户，则在 "特权标识管理" 中执行所有角色管理任务，而不是在 Azure AD 中执行。
+> 如果你有一个 Azure AD 的高级 P2 许可证，并且你已是 (PIM) 用户的 Privileged Identity Management，则所有角色管理任务都是在特权标识管理中执行的，而不是在 Azure AD 中。
 >
 > ![为已使用 PIM 并具有高级 P2 许可证的用户在 PIM 中管理 Azure AD 角色](./media/directory-manage-roles-portal/pim-manages-roles-for-p2.png)
 
@@ -195,8 +195,7 @@ In | 有权执行的操作
 请勿使用。 此角色自动分配给 Azure AD Connect 服务，不可用于其他任何用途。
 
 ### <a name="directory-writers"></a>[目录写入者](#directory-writers-permissions)
-
-这是一个遗留的角色，分配给不支持[许可框架](../develop/quickstart-register-app.md)的应用程序。 不应将它分配给任何用户。
+此角色中的用户可以读取和更新用户、组和服务主体的基本信息。 仅将此角色分配给不支持[同意框架](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)的应用程序。 不应将它分配给任何用户。
 
 ### <a name="dynamics-365-administrator--crm-administrator"></a>[Dynamics 365 管理员/CRM 管理员](#crm-service-administrator-permissions)
 
@@ -501,7 +500,7 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 
 ### <a name="user-administrator"></a>[用户管理员](#user-administrator-permissions)
 
-具有此角色的用户可以创建用户，并管理用户的所有方面（请参阅表），并可以更新密码过期策略。 此外，具有此角色的用户可以创建和管理所有组。 此角色还能够创建和管理用户视图、管理支持票证和监视服务运行状况。 用户管理员无权管理充当大部分管理员角色的用户的某些用户属性。 具有此角色的用户无权管理 MFA。 下表列出了不存在这种限制的角色。
+具有此角色的用户可以创建用户，并管理具有某些限制的用户的所有方面 (查看) 的表，并且可以更新密码过期策略。 此外，具有此角色的用户可以创建和管理所有组。 此角色还能够创建和管理用户视图、管理支持票证和监视服务运行状况。 用户管理员无权管理充当大部分管理员角色的用户的某些用户属性。 具有此角色的用户无权管理 MFA。 下表列出了不存在这种限制的角色。
 
 | **权限** | **有权执行的操作** |
 | --- | --- |
@@ -1001,24 +1000,38 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 
 | **操作** | **说明** |
 | --- | --- |
-| microsoft.directory/groups/create | 在 Azure Active Directory 中创建组。 |
-| microsoft.directory/groups/createAsOwner | 在 Azure Active Directory 中创建组。 添加创建者作为第一个所有者，创建的对象根据创建者的 250 个创建对象配额计数。 |
 | microsoft.directory/groups/appRoleAssignments/update | 更新 Azure Active Directory 中的 groups.appRoleAssignments 属性。 |
-| microsoft.directory/groups/basic/update | 更新 Azure Active Directory 中组的基本属性。 |
+| microsoft. directory/groups/assignLicense | 管理 Azure Active Directory 中组的许可证。 |
+| microsoft.directory/groups/basic/update | 更新 Azure Active Directory 中组的基本属性。  |
+| microsoft. 目录/组/分类/更新 | Azure Active Directory 中组的 "更新分类" 属性。 |
+| microsoft.directory/groups/create | 在 Azure Active Directory 中创建组。 |
+| microsoft. directory/groups/groupType/update | 更新 Azure Active Directory 中组的 groupType 属性。 |
 | microsoft.directory/groups/members/update | 更新 Azure Active Directory 中的 groups.members 属性。 |
 | microsoft.directory/groups/owners/update | 更新 Azure Active Directory 中的 groups.owners 属性。 |
+| microsoft. directory/groups/reprocessLicenseAssignment | 重新处理 Azure Active Directory 中组的许可证分配。 |
+| microsoft. directory/groups/securityEnabled/update | 更新 Azure Active Directory 中组的 secutiryEnabled 属性。 |
 | microsoft.directory/groups/settings/update | 更新 Azure Active Directory 中的 groups.settings 属性。 |
+| microsoft. 目录/组/可见性/更新 | 组的更新可见性属性 |
 | microsoft.directory/groupSettings/basic/update | 更新 Azure Active Directory 中 groupSettings 的基本属性。 |
-| microsoft.directory/groupSettings/create | 在 Azure Active Directory 中创建 groupSettings 属性。 |
+| microsoft.directory/groupSettings/create | 在 Azure Active Directory 中创建 groupSettings。 |
 | microsoft.directory/groupSettings/delete | 删除 Azure Active Directory 中的 groupSettings。 |
+| oAuth2PermissionGrants/basic/update | 在 Azure Active Directory 中更新 oAuth2PermissionGrants 的基本属性。 |
+| oAuth2PermissionGrants/create | 在 Azure Active Directory 中创建 oAuth2PermissionGrants。 |
+| microsoft.directory/servicePrincipals/synchronizationCredentials/manage | 管理应用程序设置机密和凭据。 |
+| microsoft.directory/servicePrincipals/synchronizationJobs/manage | 启动、重新启动和暂停应用程序预配同步作业。 |
+| microsoft.directory/servicePrincipals/synchronizationSchema/manage | 创建和管理应用程序预配同步作业和架构。 |
 | microsoft.directory/users/appRoleAssignments/update | 更新 Azure Active Directory 中的 users.appRoleAssignments 属性。 |
 | microsoft.directory/users/assignLicense | 管理 Azure Active Directory 中用户的许可证。 |
 | microsoft.directory/users/basic/update | 更新 Azure Active Directory 中用户的基本属性。 |
-| microsoft.directory/users/invalidateAllRefreshTokens | 使 Azure Active Directory 中的所有用户刷新令牌无效。 |
+| microsoft. directory/users/disable | 禁用 Azure Active Directory 中的用户帐户。 |
+| microsoft. directory/users/enable | 在 Azure Active Directory 中启用用户帐户 |
+| microsoft.directory/users/invalidateAllRefreshTokens | 使 Azure Active Directory 中的所有用户刷新令牌无效，要求用户在下次登录时重新进行身份验证 |
 | microsoft.directory/users/manager/update | 更新 Azure Active Directory 中的 users.manager 属性。 |
-| microsoft.directory/users/userPrincipalName/update | 更新 Azure Active Directory 中的 users.userPrincipalName 属性。 |
+| microsoft. directory/users/reprocessLicenseAssignment | 重新处理 Azure Active Directory 中用户的许可证分配。 |
+| microsoft. directory/users/userPrincipalName/update | 更新 Azure Active Directory 中的 "用户" 属性。 |
 
-### <a name="exchange-service-administrator-permissions"></a>Exchange 服务管理员权限
+
+### <a name="exchange-service-administrator-permissions"></a>Exchange Service Administrator permissions
 
 可以管理 Exchange 产品的所有方面。
 
@@ -1894,12 +1907,12 @@ CRM 服务管理员 | Dynamics 365 管理员 | 44367163-eba1-44c3-98af-f5787879f
 客户密码箱访问审批者 | 客户密码箱访问审批者 | 5c4f9dcd-47dc-4cf7-8c9a-9e4207cbfc91
 桌面分析管理员 | 桌面分析管理员 | 38a96431-2bdf-4b4c-8b6e-5d3d8abac1a4
 设备管理员 | 设备管理员 | 9f06204d-73c1-4d4c-880a-6edb90606fd8
-设备联接 | 不推荐使用 | 9c094953-4995-41c8-84c8-3ebb9b32c93f
-设备管理器 | 不推荐使用 | 2b499bcd-da44-4968-8aec-78e1674fa64d
-设备用户 | 不推荐使用 | d405c6df-0af8-4e3b-95e4-4d06e542189e
+设备联接 | 已放弃 | 9c094953-4995-41c8-84c8-3ebb9b32c93f
+设备管理器 | 已放弃 | 2b499bcd-da44-4968-8aec-78e1674fa64d
+设备用户 | 已放弃 | d405c6df-0af8-4e3b-95e4-4d06e542189e
 目录读者 | 目录读者 | 88d8e3e3-8f55-4a1e-953a-9b9898b8876b
-目录同步帐户 | 未显示，因为不应使用它 | d29b2b05-8046-44ba-8758-1e26182fcf32
-目录编写人员 | 未显示，因为不应使用它 | 9360feb5-f418-4baa-8175-e2a00bac4301
+目录同步帐户 | 不显示，因为不应使用它 | d29b2b05-8046-44ba-8758-1e26182fcf32
+目录编写人员 | 目录编写人员 | 9360feb5-f418-4baa-8175-e2a00bac4301
 Exchange 服务管理员 | Exchange 管理员 | 29232cdf-9323-42fd-ade2-1d097af3e4de
 外部 ID 用户流管理员 | 外部 ID 用户流管理员 | 6e591065-9bad-43ed-90f3-e9424366d2f0
 外部 ID 用户流属性管理员 | 外部 ID 用户流属性管理员 | 0f971eea-41eb-4569-a71e-57bb8a3eff1e
@@ -1966,17 +1979,17 @@ API 名称 | Azure 门户名称 | 注释
 公司管理员 | 全局管理员角色 | [为便于阅读，名称已更改](directory-assign-admin-roles.md#role-template-ids)
 CRM 服务管理员 | Dynamics 365 管理员 | [反映当前产品品牌](directory-assign-admin-roles.md#role-template-ids)
 设备联接 | 不推荐使用 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
-设备管理器 | 不推荐使用 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
-设备用户 | 不推荐使用 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
+设备管理器 | 已放弃 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
+设备用户 | 已放弃 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
 目录同步帐户 | 未显示，因为不应使用它 | [目录同步帐户文档](directory-assign-admin-roles.md#directory-synchronization-accounts)
 目录编写人员 | 未显示，因为不应使用它 | [目录写入者文档](directory-assign-admin-roles.md#directory-writers)
-来宾用户 | 不显示，因为无法使用它  | NA
+来宾用户 | 未显示，因为无法使用它  | NA
 Lync 服务管理员 | Skype for Business 管理员 | [反映当前产品品牌](directory-assign-admin-roles.md#role-template-ids)
 合作伙伴层 1 支持 | 未显示，因为不应使用它 | [合作伙伴一线支持人员文档](directory-assign-admin-roles.md#partner-tier1-support)
 合作伙伴层 2 支持 | 未显示，因为不应使用它 | [合作伙伴二线支持人员文档](directory-assign-admin-roles.md#partner-tier2-support)
 受限来宾用户 | 不显示，因为无法使用它 | NA
 用户 | 未显示，因为无法使用它 | NA
-工作区设备联接 | 不推荐使用 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
+工作区设备联接 | 已放弃 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
 
 ## <a name="next-steps"></a>后续步骤
 

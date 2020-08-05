@@ -1,5 +1,5 @@
 ---
-title: Azure AD 中的签名密钥滚动更新
+title: Microsoft 标识平台中的签名密钥滚动更新
 description: 本文介绍 Azure Active Directory 的签名密钥滚动更新最佳实践
 services: active-directory
 author: rwike77
@@ -12,20 +12,20 @@ ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e0a38eb03df3d1da64172842fb6eca3cd762f9cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2f9fd27515e9ecda6e78ae16528a4956d3bf607
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537230"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552758"
 ---
-# <a name="signing-key-rollover-in-azure-active-directory"></a>Azure Active Directory 中的签名密钥滚动更新
-本文介绍了需要了解的有关 Azure Active Directory (Azure AD) 中用来为安全令牌签名的公钥的信息。 请务必注意，这些密钥会定期滚动更新，紧急情况下可立即滚动更新。 所有使用 Azure AD 的应用程序应该都能以编程方式处理密钥滚动更新过程，或建立定期手动滚动更新过程。 继续阅读，了解密钥工作方式、如何评估应用程序的滚动更新的影响以及如何更新应用程序，或者在必要时建立定期手动滚动更新过程来处理密钥滚动更新。
+# <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Microsoft 标识平台中的签名密钥滚动更新
+本文讨论了需要了解的有关 Microsoft 标识平台为安全令牌签名的公钥。 请务必注意，这些密钥会定期滚动更新，紧急情况下可立即滚动更新。 使用 Microsoft 标识平台的所有应用程序都应该能够以编程方式处理密钥滚动更新过程或建立定期手动滚动更新过程。 继续阅读，了解密钥工作方式、如何评估应用程序的滚动更新的影响以及如何更新应用程序，或者在必要时建立定期手动滚动更新过程来处理密钥滚动更新。
 
-## <a name="overview-of-signing-keys-in-azure-ad"></a>Azure AD 中的签名密钥概述
-Azure AD 使用基于行业标准构建的公钥加密，在它自己和使用它的应用程序之间建立信任关系。 实际上，它的工作原理如下所述：Azure AD 使用签名密钥，该密钥由公钥和私钥对组成。 当用户登录到使用 Azure AD 进行身份验证的应用程序时，Azure AD 会创建一个包含用户相关信息的安全令牌。 此令牌由 Azure AD 使用其私钥进行签名，并会发送回应用程序。 若要验证该令牌是否有效且来自 Azure AD，应用程序必须使用由 Azure AD 公开，包含在租户的 [OpenID Connect 发现文档](https://openid.net/specs/openid-connect-discovery-1_0.html)或 SAML/WS-Fed [联合元数据文档](../azuread-dev/azure-ad-federation-metadata.md)中的公钥来验证令牌的签名。
+## <a name="overview-of-signing-keys-in-microsoft-identity-platform"></a>Microsoft 标识平台中的签名密钥概述
+Microsoft 标识平台使用基于行业标准构建的公钥加密，在其自身与使用它的应用程序之间建立信任关系。 在实际情况下，这样做的方式如下： Microsoft 标识平台使用由公钥和私钥对组成的签名密钥。 当用户登录到使用 Microsoft 标识平台进行身份验证的应用程序时，Microsoft 标识平台会创建一个包含用户相关信息的安全令牌。 此令牌由 Microsoft 标识平台使用其私钥进行签名，然后再将其发送回应用程序。 若要验证令牌是否有效以及是否来自 Microsoft 标识平台，应用程序必须使用由 Microsoft 标识平台公开的公钥（包含在租户的[OpenID connect 发现文档](https://openid.net/specs/openid-connect-discovery-1_0.html)或 SAML/WS[联合身份验证元数据文档](../azuread-dev/azure-ad-federation-metadata.md)中）来验证令牌的签名。
 
-出于安全考虑，Azure AD 的签名密钥会定期更新，且紧急情况下，可立即滚动更新。 任何与 Azure AD 集成的应用程序都应准备好处理密钥滚动更新事件，而不管滚动更新可能发生的频率是多少。 如果未准备就绪，且应用程序尝试使用过期密钥验证令牌上的签名，则登录请求会失败。
+出于安全目的，Microsoft 标识平台的签名密钥定期滚动，在出现紧急情况时，可能会立即滚动。 任何与 Microsoft 标识平台集成的应用程序都应准备好处理密钥滚动更新事件，而不管发生频率如何。 如果未准备就绪，且应用程序尝试使用过期密钥验证令牌上的签名，则登录请求会失败。
 
 OpenID Connect 发现文档和联合元数据文档中始终有多个有效密钥可用。 应用程序应准备使用该文档中指定的任何密钥，因为可能很快会对一个密钥进行滚动更新，而另一个密钥可能会取而代之，依此类推。
 
@@ -148,7 +148,7 @@ passport.use(new OIDCStrategy({
 
 如果是手动配置的身份验证，请参阅下面的说明，了解如何将 Web API 配置为自动更新其密钥信息。
 
-以下代码片段演示如何从联合元数据文档获取最新密钥，并使用 [JWT 令牌处理程序](https://msdn.microsoft.com/library/dn205065.aspx) 来验证令牌。 该代码片段假设你使用自己的缓存机制来持久保存密钥（以便验证将来从 Azure AD 获取的令牌），无论是将它保存在数据库中、配置文件中，还是保存在其他位置。
+以下代码片段演示如何从联合元数据文档获取最新密钥，并使用 [JWT 令牌处理程序](https://msdn.microsoft.com/library/dn205065.aspx) 来验证令牌。 此代码段假设你将使用自己的缓存机制来保持密钥，以便从 Microsoft 标识平台验证未来的令牌，无论是在数据库、配置文件中还是其他位置。
 
 ```
 using System;
@@ -239,7 +239,7 @@ namespace JWTValidation
 ```
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2012"></a><a name="vs2012"></a>保护资源的和使用 Visual Studio 2012 创建的 Web 应用程序
-如果应用程序是在 Visual Studio 2012 中生成的，则你可能已使用标识和访问工具配置了应用程序。 还可能会用到[验证颁发者名称注册表 (VINR)](https://msdn.microsoft.com/library/dn205067.aspx)。 VINR 负责维护受信任标识提供程序 (Azure AD) 的相关信息以及用于验证其颁发的令牌的密钥。 使用 VINR 还可轻松地自动更新存储在 Web.config 文件中的密钥信息，具体方法是：下载与用户的目录关联的最新联合元数据文档，使用最新文档检查配置是否过期，并根据需要更新应用程序以使用新密钥。
+如果应用程序是在 Visual Studio 2012 中生成的，则你可能已使用标识和访问工具配置了应用程序。 还可能会用到[验证颁发者名称注册表 (VINR)](https://msdn.microsoft.com/library/dn205067.aspx)。 VINR 负责维护 (Microsoft 标识平台的受信任标识提供者的相关信息) 以及用于验证它们所颁发令牌的密钥。 使用 VINR 还可轻松地自动更新存储在 Web.config 文件中的密钥信息，具体方法是：下载与用户的目录关联的最新联合元数据文档，使用最新文档检查配置是否过期，并根据需要更新应用程序以使用新密钥。
 
 如果是使用 Microsoft 提供的代码示例或演练文档创建的应用程序，则密钥滚动更新逻辑已包含在项目中。 你会注意到下面的代码已存在于项目中。 如果应用程序尚未包含该逻辑，请按照下面的步骤添加该逻辑，并验证该逻辑是否正常工作。
 
@@ -282,7 +282,7 @@ namespace JWTValidation
           </keys>
    ```
 2. 在 " **\<add thumbprint="">** 设置" 中，通过将任何字符替换为不同的字符来更改指纹值。 保存 **Web.config** 文件。
-3. 生成并运行应用程序。 如果你能完成登录过程，则应用程序会通过从你的目录的联合元数据文档下载所需的信息来成功地更新密钥。 如果在登录时遇到问题，请阅读[使用 Azure AD 将登录名添加到 Web 应用程序](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect)一文，或下载并检查以下代码示例：[用于 Azure Active Directory 的多租户云应用程序](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b)。
+3. 生成并运行应用程序。 如果你能完成登录过程，则应用程序会通过从你的目录的联合元数据文档下载所需的信息来成功地更新密钥。 如果在登录时遇到问题，请阅读[使用 Microsoft 标识平台向 Web 应用程序添加登录一](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect)文，或下载并检查以下代码示例：[多租户云应用程序，Azure Active Directory 以](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b)确保在应用程序中所做的更改是正确的。
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2008-or-2010-and-windows-identity-foundation-wif-v10-for-net-35"></a><a name="vs2010"></a>保护资源并且使用 Visual Studio 2008 或 2010 和 Windows Identity Foundation (WIF) v1.0 for .NET 3.5 创建的 Web 应用程序
 如果在 WIF v1.0 中构建应用程序，则系统未提供相应的机制来自动刷新应用程序的配置以使用新密钥。
@@ -301,10 +301,10 @@ namespace JWTValidation
 ### <a name="web-applications--apis-protecting-resources-using-any-other-libraries-or-manually-implementing-any-of-the-supported-protocols"></a><a name="other"></a>使用任何其他库保护资源或手动实现任何受支持协议的 Web 应用程序/API
 如果正在使用其他某个库或手动实现任何受支持的协议，则需要检查该库或实现，以确保正在从 OpenID Connect 发现文档或联合元数据文档检索密钥。 进行此项检查的方法之一是在代码或库的代码中执行搜索，以找到对 OpenID 发现文档或联合元数据文档的任何调用。
 
-如果密钥存储在某处或在应用程序中进行了硬编码，则可按照本指南文档末尾的说明执行手动滚动更新，手动检索密钥并进行相应更新。 **强烈建议使用本文中所述的任何方法增强应用程序以支持自动滚动更新**，从而避免将来在 Azure AD 增大其滚动更新频率或发生紧急带外滚动更新时出现中断和开销。
+如果密钥存储在某处或在应用程序中进行了硬编码，则可按照本指南文档末尾的说明执行手动滚动更新，手动检索密钥并进行相应更新。 **强烈建议你将应用程序增强为支持自动滚动更新**，方法是使用本文中的任何一种方法，以避免在 Microsoft 标识平台增加其滚动更新频率或发生紧急带外滚动更新时出现未来中断和开销。
 
 ## <a name="how-to-test-your-application-to-determine-if-it-will-be-affected"></a>如何测试应用程序以确定它是否会受影响
 可以下载脚本并遵循 [此 GitHub 存储库](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)
 
 ## <a name="how-to-perform-a-manual-rollover-if-your-application-does-not-support-automatic-rollover"></a>如果应用程序不支持自动滚动更新，如何执行手动滚动更新
-如果应用程序**不**支持自动滚动更新，则需要建立一个定期监视 Azure AD 签名密钥的过程，并手动执行相应滚动更新。 [此 GitHub 存储库](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)包含脚本和如何执行此操作的说明。
+如果你的应用程序**不**支持自动滚动更新，则需要建立一个过程，该过程会定期监视 Microsoft 标识平台的签名密钥并相应地执行手动滚动更新。 [此 GitHub 存储库](https://github.com/AzureAD/azure-activedirectory-powershell-tokenkey)包含脚本和如何执行此操作的说明。

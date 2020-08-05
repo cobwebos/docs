@@ -5,18 +5,18 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 1ee1b118ed655f29125f0a24de850bbe4ce89939
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 136a5da8d9956e034532c14b6fce011e4e7ce415
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450011"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563879"
 ---
 # <a name="enable-update-management-from-the-azure-portal"></a>从 Azure 门户启用“更新管理”
 
 本文介绍如何通过浏览 Azure 门户来为 VM 启用[更新管理](update-mgmt-overview.md)功能。 若要大规模启用 Azure VM，必须使用更新管理启用现有 VM。
 
-可用于管理 VM 的资源组数量受限于[资源管理器部署限制](../../azure-resource-manager/templates/cross-resource-group-deployment.md)。 每个资源管理器部署（不要与更新部署相混淆）限制为五个资源组。 其中保留了两个资源组，以便配置 Log Analytics 工作区、自动化帐户和相关资源。 因此，还剩下三个资源组可供选择用于更新管理进行管理。 此限制仅适用于同时设置，而不适用于可通过自动化功能管理的资源组数。
+可用于管理 VM 的资源组数量受限于[资源管理器部署限制](../../azure-resource-manager/templates/cross-scope-deployment.md)。 每个资源管理器部署（不要与更新部署相混淆）限制为五个资源组。 其中保留了两个资源组，以便配置 Log Analytics 工作区、自动化帐户和相关资源。 因此，还剩下三个资源组可供选择用于更新管理进行管理。 此限制仅适用于同时设置，而不适用于可通过自动化功能管理的资源组数。
 
 > [!NOTE]
 > 在启用更新管理时，仅支持某些区域链接 Log Analytics 工作区和自动化帐户。 有关受支持的映射对的列表，请参阅[自动化帐户和 Log Analytics 工作区的区域映射](../how-to/region-mappings.md)。

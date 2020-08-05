@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: b7bebfb227de3f9f1c51024845054d2d7a02f923
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 77eaa3e1f4390182ad210ae3aa2ce6a1427d8b0f
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285639"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87551891"
 ---
 # <a name="create-a-map"></a>创建地图
 
@@ -27,7 +27,7 @@ ms.locfileid: "87285639"
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="基本地图负载" src="//codepen.io/azuremaps/embed/rXdBXx/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 "笔<a href='https://codepen.io/azuremaps/pen/rXdBXx/'>基本地图加载</a>方式" Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>）。
+请参阅 CodePen 上的 "通过 Azure Maps () 进行的<a href='https://codepen.io/azuremaps/pen/rXdBXx/'>基本地图加载</a>" <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 > [!TIP]
@@ -40,7 +40,7 @@ ms.locfileid: "87285639"
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="renderWorldCopies = false" src="//codepen.io/azuremaps/embed/eqMYpZ/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上 Azure Maps （）中的<a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>renderWorldCopies = false</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>。
+请参阅 CodePen 上的<a href='https://codepen.io/azuremaps/pen/eqMYpZ/'>renderWorldCopies = false</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) <a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 
@@ -127,6 +127,47 @@ map.setCamera({
 
 <iframe height='500' scrolling='no' title='将地图视图制成动画' src='//codepen.io/azuremaps/embed/WayvbO/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/WayvbO/'>Animate Map View</a>（将地图视图制成动画）。
 </iframe>
+
+## <a name="request-transforms"></a>请求转换
+
+有时，能够修改地图控件发出的 HTTP 请求会很有用。 例如：
+
+- 向磁贴请求添加其他标头。 这通常是针对密码保护的服务完成的。
+- 修改 Url 以通过代理服务运行请求。
+
+该映射的[服务选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.serviceoptions)具有一个 `transformRequest` ，可用于修改由映射发出的所有请求。 `transformRequest`选项是一个函数，该函数采用两个参数：一个字符串 URL，以及一个表示请求用途的资源类型字符串。 此函数必须返回[RequestParameters](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.requestparameters)结果。
+
+```JavaScript
+transformRequest: (url: string, resourceType: string) => RequestParameters
+```
+
+下面的示例演示如何使用此方法， `https://example.com` 通过将用户名和密码添加为请求的标头来修改对大小的所有请求。
+
+```JavaScript
+var map = new atlas.Map('myMap', {
+    transformRequest: function (url, resourceType) {
+        //Check to see if the request is to the specified endpoint.
+        if (url.indexOf('https://examples.com') > -1) {
+            //Add custom headers to the request.
+            return {
+                url: url,
+                header: {
+                    username: 'myUsername',
+                    password: 'myPassword'
+                }
+            };
+        }
+
+        //Return the URL unchanged by default.
+        return { url: url };
+    },
+
+    authOptions: {
+        authType: 'subscriptionKey',
+        subscriptionKey: '<Your Azure Maps Key>'
+    }
+});
+```
 
 ## <a name="try-out-the-code"></a>试用代码
 

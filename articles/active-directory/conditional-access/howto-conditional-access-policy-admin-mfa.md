@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 05/26/2020
+ms.date: 08/03/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a2830db6132e665d3f876a535fb645e936971b2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cc38e576f53c3623bacc374a00adcb4cced01517
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283055"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552877"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>条件访问：要求对管理员执行 MFA
 
@@ -65,17 +65,21 @@ Microsoft 建议你至少要求对以下角色进行 MFA：
       * 安全管理员
       * SharePoint 管理员
       * 用户管理员
-   1. 在“排除”下  选择“用户和组”  ，然后选择组织的紧急访问帐户或不受限帐户。 
-   1. 选择“完成”  。
-1. 在“云应用或操作”   >   “包括”下，选择“所有云应用”，然后选择“完成”。  
-1. 在 "**条件**  >  " "**客户端应用（预览）**" 下，在 "**选择将应用此策略的客户端应用"** 下，保留所有默认设置，然后选择 "**完成**
-1. 在“访问控制”   >   “授予”下，依次选择“授予访问权限”、“需要多重身份验证”、“选择”。   
-1. 确认设置，然后将“启用策略”设置为“打开”。  
-1. 选择“创建”  ，以便创建启用策略所需的项目。
+   
+      > [!WARNING]
+      > 条件性访问策略不支持向用户分配目录角色，该角色作用域为直接作用于对象的[管理单元](../users-groups-roles/roles-admin-units-assign-roles.md)或目录角色，如通过[自定义角色](../users-groups-roles/roles-create-custom.md)。
+
+   1. 在“排除”下选择“用户和组”，然后选择组织的紧急访问帐户或不受限帐户。 
+   1. 选择“完成”。
+1. 在“云应用或操作” > “包含”下方，选择“所有云应用” ，然后选择“完成”。
+1. 在 "**条件**  >  **客户端应用 (预览") **下，在 "**选择要应用此策略的客户端应用**，保留所有默认值并选择"**完成**"。
+1. 在“访问控制” > “授予”下，依次选择“授予访问权限”、“需要多重身份验证”、“选择”。  
+1. 确认设置，然后将“启用策略”设置为“打开”。 
+1. 选择“创建”，以便创建启用策略所需的项目。
 
 ## <a name="next-steps"></a>后续步骤
 
-[条件访问常见策略](concept-conditional-access-policy-common.md)
+[常用条件访问策略](concept-conditional-access-policy-common.md)
 
 [使用条件访问仅限报告模式确定影响](howto-conditional-access-report-only.md)
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
-ms.date: 07/20/2020
-ms.openlocfilehash: ed3f23b13920a9c3220a030059fdc8471f350d28
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 08/04/2020
+ms.openlocfilehash: c24a78413b09de04a10266f883e11617bb7a2f27
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428232"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554033"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自动备份 - Azure SQL 数据库和 SQL 托管实例
 
@@ -120,7 +120,7 @@ SQL 数据库和 SQL 托管实例按累积值形式计算使用的总备份存�
 
 ## <a name="storage-costs"></a>存储费用
 
-存储价格会根据你使用的是 DTU 模型还是 vCore 模型而有所不同。
+备份存储的价格取决于你使用的是 DTU 模型还是 vCore 模型，还取决于你所在的区域。 备份存储按每 GB/月的使用量计费，有关定价，请参阅[AZURE Sql 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/single/)页和[azure sql 托管实例定价](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)页。
 
 ### <a name="dtu-model"></a>DTU 模型
 
@@ -261,7 +261,7 @@ Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName resourceGroup -Instanc
 Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName resourceGroup -InstanceName testserver | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 0
 ```
 
-零（0）天保留期表示备份立即被删除并且不再保留给已删除的数据库。
+零 (0) 天保留会表明备份立即被删除并且不再保留给已删除的数据库。
 一旦已删除的数据库的 PITR 备份保留期减少，就不能再增加了。
 
 ---

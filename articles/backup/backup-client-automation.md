@@ -3,12 +3,12 @@ title: 使用 PowerShell 将 Windows Server 备份到 Azure
 description: 本文介绍如何使用 PowerShell 在 Windows Server 或 Windows 客户端上设置 Azure 备份，以及管理备份和恢复。
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 116bdd6b5f48a9d5abc0f9f0d9ce61f857196fd2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0deccc49b82d4a8b81889c35174c3efa81b6d74d
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513721"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564021"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 客户端的 Azure 备份
 
@@ -148,7 +148,7 @@ $CredsFilename = Get-AzRecoveryServicesVaultSettingsFile -Backup -Vault $Vault -
 ```
 
 在 Windows Server 或 Windows 客户端计算机上，运行 [Start-OBRegistration](/powershell/module/msonlinebackup/start-obregistration) cmdlet 以将计算机注册到保管库。
-此 cmdlet 和用于备份的其他 cmdlet 都来自 Mars AgentInstaller 在安装过程中添加的 MSONLINE 模块。
+此操作以及用于备份的其他 cmdlet 来自 MSONLINE 模块，该模块是 MARS AgentInstaller 作为安装过程的一部分添加的。
 
 代理安装程序不会更新:P SModulePath 变量的 $Env。 这意味着模块自动加载失败。 若要解决此问题，可以执行以下操作：
 

@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 71dcad908884351950c89b590523ffa91d6d47f9
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: cd21ef8d697570afb2109bb56d552284c03fd9a2
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87424753"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552775"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>在声明中使用目录架构扩展属性
 
@@ -41,7 +41,7 @@ ms.locfileid: "87424753"
 使用 AD Connect 创建和同步的目录架构扩展属性始终与 AD Connect 使用的应用程序 ID 相关联。 通过**在门户**UI 的 "企业应用程序" 配置中将其配置为声明，可将它们作为声明的源：将其配置为门户 UI 中的 "**企业应用程序**" 配置中的声明。  通过 AD Connect 创建的目录扩展属性在目录中，它将显示在 SAML SSO 声明配置 UI 中。
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-for-an-application-using-graph-or-powershell"></a>发出声明，其中包含使用图形或 PowerShell 为应用程序创建的目录架构扩展属性中的数据
-如果使用 Microsoft Graph 或 PowerShell （通过应用程序的初始设置或预配步骤）为应用程序注册目录架构扩展属性，则可以在 Azure Active Directory 中配置同一应用程序，以便在用户登录时从声明中的用户对象接收该属性中的数据。  可将应用程序配置为在使用[可选声明](active-directory-optional-claims.md#configuring-directory-extension-optional-claims)在同一应用程序上注册的目录架构扩展中接收数据。  可以在应用程序清单中设置这些项。  这使多租户应用程序可以注册目录架构扩展属性以供自己使用。 将应用程序预配到租户后，相关联的目录架构扩展即可在该租户中的用户上进行设置和使用。  一旦将其配置为租户并获得同意，就可以使用它来存储和检索数据，并将其映射到 Azure AD 发出到应用程序的令牌中的声明。
+如果使用 Microsoft Graph 或 PowerShell (通过应用程序的初始设置或预配步骤) 为某个应用程序注册目录架构扩展属性，则可以在 Azure Active Directory 中配置同一应用程序，以便在用户登录时从声明中的用户对象接收该属性中的数据。  可将应用程序配置为在使用[可选声明](active-directory-optional-claims.md#configuring-directory-extension-optional-claims)在同一应用程序上注册的目录架构扩展中接收数据。  可以在应用程序清单中设置这些项。  这使多租户应用程序可以注册目录架构扩展属性以供自己使用。 将应用程序预配到租户后，相关联的目录架构扩展即可在该租户中的用户上进行设置和使用。  一旦将其配置为租户并获得同意，就可以使用它通过图形存储和检索数据，并映射到 Microsoft 标识平台向应用程序发出的令牌中的声明。
 
 可以为任何应用程序注册和填充目录架构扩展属性。
 
@@ -72,5 +72,5 @@ ms.locfileid: "87424753"
 > 用于内置目录属性的声明架构中的 "Id" 参数为目录扩展属性的 "ExtensionID"。
 
 ## <a name="next-steps"></a>后续步骤
-- 了解如何[将自定义或附加的声明添加到 SAML 2.0 和 JSON Web 令牌（JWT）令牌](active-directory-optional-claims.md)。 
+- 了解如何[将自定义或附加声明添加到 SAML 2.0 和 JSON Web 令牌 (JWT) 令牌](active-directory-optional-claims.md)。 
 - 了解如何[自定义特定应用的令牌中发出的声明](active-directory-claims-mapping.md)。

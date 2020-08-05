@@ -34,6 +34,8 @@
           href: connect-python.md
         - name: Node.js
           href: connect-nodejs.md
+        - name: Azure PowerShell
+          href: connect-powershell.md
         - name: Ruby
           href: connect-ruby.md
         - name: C++
@@ -52,7 +54,7 @@
           href: tutorial-design-database-using-cli.md
         - name: Azure PowerShell
           href: tutorial-design-database-using-powershell.md
-        - name: Azure 资源管理器模板
+        - name: Azure Resource Manager 模板
           href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
     - name: 2 - 创建 Web 应用
       items:
@@ -130,7 +132,7 @@
           href: concepts-audit-logs.md
         - name: 查询存储
           href: concepts-query-store.md
-        - name: 查询性能见解
+        - name: Query Performance Insight
           href: concepts-query-performance-insight.md
         - name: 性能建议
           href: concepts-performance-recommendations.md

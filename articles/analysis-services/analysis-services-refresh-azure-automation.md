@@ -2,16 +2,16 @@
 title: 通过 Azure 自动化刷新 Azure Analysis Services 模型 | Microsoft Docs
 description: 本文介绍了如何使用 Azure 自动化为 Azure Analysis Services 编写模型刷新代码。
 author: chrislound
-ms.service: analysis-services
+ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 5314c933b01a1fb9c4ea9902a6fbb698c104d195
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31dc1973af42a1785a2a65cb1887f479e44af162
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87025398"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553897"
 ---
 # <a name="refresh-with-azure-automation"></a>使用 Azure 自动化进行刷新
 
@@ -21,7 +21,7 @@ ms.locfileid: "87025398"
 
 ## <a name="authentication"></a>身份验证
 
-所有调用都必须使用有效的 Azure Active Directory (OAuth 2) 令牌进行身份验证。  本文中的示例使用服务主体（SPN）对 Azure Analysis Services 进行身份验证。 有关详细信息，请参阅[使用 Azure 门户创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
+所有调用都必须使用有效的 Azure Active Directory (OAuth 2) 令牌进行身份验证。  本文中的示例使用服务主体 (SPN) 对 Azure Analysis Services 进行身份验证。 有关详细信息，请参阅[使用 Azure 门户创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: f8d296e62be9571bdedd5acf40d5547bae8c864e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e80f7d26fb7ab598651d08b4c1b6478b2ae75e3b
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564571"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563052"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>将 Azure Sentinel 连接到 AWS CloudTrail
 
-使用 AWS 连接器将所有 AWS CloudTrail 事件流式传输到 Azure Sentinel。 此连接过程会将 Azure Sentinel 的访问权限委派给 AWS 资源日志，从而在 AWS CloudTrail 和 Azure Sentinel 之间创建信任关系。 这是在 AWS 上完成的，方法是创建一个角色，该角色授予 Azure Sentinel 访问 AWS 日志的权限。
+使用 AWS 连接器将 AWS CloudTrail 管理事件流式传输到 Azure Sentinel。 此连接过程会将 Azure Sentinel 的访问权限委派给 AWS 资源日志，从而在 AWS CloudTrail 和 Azure Sentinel 之间创建信任关系。 这是在 AWS 上完成的，方法是创建一个角色，该角色授予 Azure Sentinel 访问 AWS 日志的权限。
 
 > [!NOTE]
-> AWS CloudTrail 在其 LookupEvents API 中具有[内置限制](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html)。 它允许每个帐户每秒的事务数（TPS）不超过两个，每个查询最多可返回50个记录。 因此，如果单个租户在一个区域中每秒持续生成的记录超过100，则将导致数据引入的积压和延迟。
+> AWS CloudTrail 在其 LookupEvents API 中具有[内置限制](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html)。 它允许每个帐户每秒 (TPS) 两个以上的事务，并且每个查询最多可以返回50个记录。 因此，如果单个租户在一个区域中每秒持续生成的记录超过100，则将导致数据引入的积压和延迟。
 
 ## <a name="prerequisites"></a>先决条件
 
 您必须对 Azure Sentinel 工作区具有写入权限。
 
 > [!NOTE]
-> Azure Sentinel 从所有区域收集 CloudTrail 事件。 建议您不要将事件从一个区域流式传输到另一个区域。
+> Azure Sentinel 从所有区域收集 CloudTrail 管理事件。 建议您不要将事件从一个区域流式传输到另一个区域。
 
 ## <a name="connect-aws"></a>连接 AWS 
 
@@ -50,11 +50,11 @@ ms.locfileid: "85564571"
 
     ![AWS2](./media/connect-aws/aws-2.png)
 
-1.  请选择**其他 AWS 帐户。** 在 "**帐户 id** " 字段中，输入可在 Azure Sentinel 门户的 AWS 连接器页中找到的**Microsoft 帐户 id** （**123412341234**）。
+1.  请选择**其他 AWS 帐户。** 在 "**帐户 id** " 字段中，输入可在 Azure Sentinel 门户的 AWS 连接器页中找到的**Microsoft 帐户 id** (**123412341234**) 。
 
     ![AWS3](./media/connect-aws/aws-3.png)
 
-1.  请确保选择 "**需要外部 id** "，然后输入可在 Azure Sentinel 门户的 AWS 连接器页中找到的外部 Id （工作区 id）。
+1.  请确保选择 "**需要外部 id** "，然后输入 (工作区 id) 的外部 id，该 id 可在 Azure Sentinel 门户的 AWS 连接器页中找到。
 
     ![AWS4](./media/connect-aws/aws-4.png)
 
@@ -62,7 +62,7 @@ ms.locfileid: "85564571"
 
     ![AWS5](./media/connect-aws/aws-5.png)
 
-1.  输入标记（可选）。
+1.  输入标记 (可选) 。
 
     ![AWS6](./media/connect-aws/aws-6.png)
 

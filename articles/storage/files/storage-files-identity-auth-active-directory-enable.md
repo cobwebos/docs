@@ -1,22 +1,22 @@
 ---
 title: 概述-本地 AD DS 对 Azure 文件共享的身份验证
-description: 了解对 Azure 文件共享的 Active Directory 域服务（AD DS）身份验证。 本文介绍了支持方案和可用性，并说明了在 AD DS 和 Azure active directory 之间的权限如何工作。
+description: 了解 Active Directory 域服务 (AD DS Azure 文件共享) 身份验证。 本文介绍了支持方案和可用性，并说明了在 AD DS 和 Azure active directory 之间的权限如何工作。
 author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: rogarana
-ms.openlocfilehash: 1ea1bfdf2c3b2dcfd49f87a5a75597a464b07913
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d7aab7f5db6256d2f2525ff4a58c10ff5aa517f7
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999575"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553166"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>概述-本地 Active Directory 域服务针对 Azure 文件共享的 SMB 进行身份验证
 
-[Azure 文件](storage-files-introduction.md)  支持通过以下两种类型的域服务通过服务器消息块（SMB）进行基于身份的身份验证：本地 Active Directory 域服务（AD DS）和 Azure Active Directory 域服务（Azure AD DS）。强烈建议查看[其工作原理部分](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works)，为身份验证选择适当的域服务。 安装程序不同，具体取决于所选的域服务。 本系列文章重点介绍如何启用和配置本地 AD DS 以通过 Azure 文件共享进行身份验证。
+[Azure 文件](storage-files-introduction.md)  通过以下两种类型的域服务，支持通过服务器消息块进行基于身份的身份验证 (SMB) ：本地 Active Directory 域服务 (AD DS) Azure Active Directory (Azure AD) 和域服务。强烈建议查看[其工作原理部分](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works)，为身份验证选择适当的域服务。 安装程序不同，具体取决于所选的域服务。 本系列文章重点介绍如何启用和配置本地 AD DS 以通过 Azure 文件共享进行身份验证。
 
 如果你不熟悉 Azure 文件共享，我们建议在阅读以下文章之前阅读我们的[规划指南](storage-files-planning.md)。
 
@@ -34,8 +34,8 @@ ms.locfileid: "86999575"
 
 > [!NOTE]
 > 为了帮助你在一些常见用例中设置 Azure 文件 AD 身份验证，我们发布了两个视频，其中包含以下方案的分步指导：
-> - [将本地文件服务器替换为 Azure 文件（包括在文件和 AD 身份验证的专用链接上安装）](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
-> - [使用 Azure 文件作为 Windows 虚拟机的配置文件容器（包括在 AD 身份验证和 FsLogix 配置上设置）](https://www.youtube.com/embed/9S5A1IJqfOQ)
+> - [将本地文件服务器替换为 Azure 文件 (包括在文件和 AD 身份验证的专用链接上安装) ](https://sec.ch9.ms/ch9/3358/0addac01-3606-4e30-ad7b-f195f3ab3358/ITOpsTalkAzureFiles_high.mp4)
+> - [使用 Azure 文件作为 Windows 虚拟机的配置文件容器 (包括在 AD 身份验证和 FsLogix 配置上安装) ](https://www.youtube.com/embed/9S5A1IJqfOQ)
 
 ## <a name="prerequisites"></a>先决条件 
 
@@ -46,6 +46,8 @@ ms.locfileid: "86999575"
     可以在新的或现有的本地 AD DS 环境中启用该功能。 用于访问的标识必须同步到 Azure AD。 要访问的 Azure AD 租户和文件共享必须与相同的订阅相关联。
 
 - 域-将本地计算机或 Azure VM 加入本地 AD DS。 有关如何加入域的信息，请参阅将[计算机加入域](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain)。
+
+    如果你的计算机未加入到 AD DS 的域，则如果你的计算机具有 AD 域控制器的线路，你仍可以利用 AD 凭据进行身份验证。
 
 - 选择或创建一个 Azure 存储帐户。  为了获得最佳性能，我们建议你将存储帐户部署到计划从中访问共享的客户端所在的同一区域。 然后，将[Azure 文件共享装载](storage-how-to-use-files-windows.md)到存储帐户密钥。 装载存储帐户密钥将验证连接性。
 
@@ -69,7 +71,7 @@ ms.locfileid: "86999575"
 
 1. [第一部分：在存储帐户上启用 AD DS 身份验证](storage-files-identity-ad-ds-enable.md)
 
-1. [第二部分：将共享的访问权限分配给与目标 AD 标识同步的 Azure AD 标识（用户、组或服务主体）](storage-files-identity-ad-ds-assign-permissions.md)
+1. [第二部分：将共享的访问权限分配给 Azure AD 标识 (用户、组或服务主体) 与目标 AD 标识同步](storage-files-identity-ad-ds-assign-permissions.md)
 
 1. [第三部分：通过 SMB 为目录和文件配置 Windows Acl](storage-files-identity-ad-ds-configure-permissions.md)
  
@@ -81,7 +83,7 @@ ms.locfileid: "86999575"
 
 ![文件广告工作流关系图](media/storage-files-active-directory-domain-services-enable/diagram-files-ad.png)
 
-用于访问 Azure 文件共享的标识必须同步到 Azure AD，才能通过[基于角色的访问控制（RBAC）](../../role-based-access-control/overview.md)模型来强制执行共享级别文件权限。 将保留并强制执行从现有文件服务器中执行的文件/目录上的[Windows 样式 dacl](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) 。 这提供了与企业 AD DS 环境的无缝集成。 将本地文件服务器替换为 Azure 文件共享时，现有用户可以通过单一登录体验从当前客户端访问 Azure 文件共享，而无需更改所使用的凭据。  
+用于访问 Azure 文件共享的标识必须同步到 Azure AD，才能通过[基于角色的访问控制 (RBAC) ](../../role-based-access-control/overview.md)模型来强制执行共享级别文件权限。 将保留并强制执行从现有文件服务器中执行的文件/目录上的[Windows 样式 dacl](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) 。 这提供了与企业 AD DS 环境的无缝集成。 将本地文件服务器替换为 Azure 文件共享时，现有用户可以通过单一登录体验从当前客户端访问 Azure 文件共享，而无需更改所使用的凭据。  
 
 ## <a name="next-steps"></a>后续步骤
 

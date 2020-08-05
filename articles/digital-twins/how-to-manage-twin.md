@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 48b8175ed5f753ffe7b62d3e97f4fe20f60da5ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0f4d9811dc288222c0a2190805a8b052cb1ae47b
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061608"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563919"
 ---
 # <a name="manage-digital-twins"></a>管理数字孪生
 
-环境中的实体由[数字孪生](concepts-twins-graph.md)表示。 管理数字孪生可能包括创建、修改和删除。 若要执行这些操作，可以使用[**DigitalTwins api**](how-to-use-apis-sdks.md)、 [.Net （c #） SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[Azure 数字孪生 CLI](how-to-use-cli.md)。
+环境中的实体由[数字孪生](concepts-twins-graph.md)表示。 管理数字孪生可能包括创建、修改和删除。 若要执行这些操作，可以使用[**DigitalTwins api**](how-to-use-apis-sdks.md)、 [.Net (c # ) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[Azure 数字孪生 CLI](how-to-use-cli.md)。
 
 本文重点介绍如何管理数字孪生;若要整体处理关系和整数[关系图](concepts-twins-graph.md)，请参阅[*操作方法：管理包含关系的双子关系图*](how-to-manage-graph.md)。
 
@@ -37,10 +37,10 @@ await client.CreateDigitalTwinAsync("myNewTwinID", initData);
 
 （可选）可以为数字输出的所有属性提供初始值。 
 
-> [!TIP]
-> 使用 GetDigitalTwin 检索克隆时，仅返回至少已设置一次的属性。  
-
 模型和初始属性值通过 `initData` 参数提供，它是一个包含相关数据的 JSON 字符串。
+
+> [!TIP]
+> 创建或更新克隆后，可能会有长达10秒的延迟，更改将反映在[查询](how-to-query-graph.md)中。 `GetDigitalTwin`[本文后面](#get-data-for-a-digital-twin)所述的 API () 不会遇到此延迟，因此，如果需要即时响应，请使用 api 调用而不是查询来查看新创建的孪生。 
 
 ### <a name="initialize-properties"></a>初始化属性
 
@@ -91,9 +91,12 @@ object result = await client.GetDigitalTwin(id);
 
 此调用返回作为 JSON 字符串的未克隆数据。 
 
+> [!TIP]
+> 当你使用检索到次时，仅返回至少已设置一次的属性 `GetDigitalTwin` 。
+
 若要使用单个 API 调用检索多个孪生，请参阅[*如何：查询双子图*](how-to-query-graph.md)中的查询 API 示例。
 
-考虑定义*月球*的以下模型（以[数字孪生定义语言（DTDL）](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)编写）：
+请考虑以下模型 (以[数字孪生定义语言编写， (DTDL) ](https://github.com/Azure/opendigitaltwins-dtdl/tree/master/DTDL)) 定义*月球*：
 
 ```json
 {
@@ -150,7 +153,7 @@ object result = await client.GetDigitalTwin(id);
 * `$etag`，由 web 服务器分配的标准 HTTP 字段
 * 节中的其他属性 `$metadata` 。 其中包括：
     - 数字克隆的模型的 DTMI。
-    - 每个可写属性的同步状态。 这对于设备最为有用，在这种情况下，服务和设备有可能会有分叉状态（例如，当设备处于脱机状态时）。 目前，此属性仅适用于连接到 IoT 中心的物理设备。 使用元数据部分中的数据，可以了解属性的完整状态以及上次修改的时间戳。 有关同步状态的详细信息，请参阅有关同步设备状态的[此 IoT 中心教程](../iot-hub/tutorial-device-twins.md)。
+    - 每个可写属性的同步状态。 这对于设备最为有用，在这种情况下，在设备处于) 脱机状态时，服务和设备可能会 (分叉状态。 目前，此属性仅适用于连接到 IoT 中心的物理设备。 使用元数据部分中的数据，可以了解属性的完整状态以及上次修改的时间戳。 有关同步状态的详细信息，请参阅有关同步设备状态的[此 IoT 中心教程](../iot-hub/tutorial-device-twins.md)。
     - 服务特定的元数据，如 IoT 中心或 Azure 数字孪生。 
 
 您可以使用所选的 JSON 分析库（如）分析返回的 JSON `System.Text.Json` 。
@@ -170,11 +173,16 @@ foreach (string prop in twin.CustomProperties.Keys)
 
 有关序列化帮助器类的详细信息，[*请参阅如何：使用 Azure 数字孪生 api 和 sdk*](how-to-use-apis-sdks.md)。
 
-## <a name="update-a-digital-twin"></a>更新数字克隆
+## <a name="update-a-digital-twin"></a>更新数字孪生
 
 若要更新数字克隆的属性，请编写要替换为[JSON 修补](http://jsonpatch.com/)格式的信息。 通过这种方式，可以一次替换多个属性。 然后将 JSON 修补文档传递到方法中 `Update` ：
 
-`await client.UpdateDigitalTwin(id, patch);`.
+```csharp
+await client.UpdateDigitalTwin(id, patch);
+```
+
+> [!TIP]
+> 创建或更新克隆后，可能会有长达10秒的延迟，更改将反映在[查询](how-to-query-graph.md)中。 `GetDigitalTwin`[本文前面](#get-data-for-a-digital-twin)所述的 API () 不会遇到此延迟，因此，如果需要即时响应，请使用 api 调用而不是查询来查看新更新的孪生。 
 
 下面是 JSON 修补程序代码的示例。 此文档替换其所应用到的数字输出的*质量*和*半径*属性值。
 
@@ -249,7 +257,7 @@ await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
 
 仅当修补程序修改的数字克隆符合新的模型时，此操作才会成功。 
 
-请看下面的示例：
+请考虑以下示例：
 1. 假设有一个数字克隆，其型号为*foo_old*。 *foo_old*定义所需的属性*质量*。
 2. 新模型*foo_new*定义属性质量并添加新的必需属性*温度*。
 3. 修补后，数字克隆必须同时具有质量和温度属性。 

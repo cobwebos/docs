@@ -5,12 +5,12 @@ description: 了解有关 Azure Kubernetes 服务 (AKS) 中的存储、数据加
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 843b775f7761af7cd40140c9bf34768d63eb5a50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 26af9e0ab2bd3a52c159e947f1f40300f9e84dd4
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80877892"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562832"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的存储和备份的最佳做法
 
@@ -34,9 +34,9 @@ ms.locfileid: "80877892"
 
 | 使用案例 | 卷插件 | 读/写一次 | 只读多次 | 读/写多次 | Windows Server 容器支持 |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
-| 共享配置       | Azure 文件   | 是 | 是 | 是 | 是 |
-| 结构化应用数据        | Azure 磁盘   | 是 | No  | 否  | 是 |
-| 非结构化的数据，文件系统操作 | [BlobFuse][blobfuse] | 是 | 是 | 是 | No |
+| 共享配置       | Azure 文件   | 是 | 是 | “是” | “是” |
+| 结构化应用数据        | Azure 磁盘   | “是” | 否  | 否  | 是 |
+| 非结构化的数据，文件系统操作 | [BlobFuse][blobfuse] | “是” | “是” | “是” | 否 |
 
 为 AKS 中的卷提供的两种主要存储类型由 Azure 磁盘或 Azure 文件支持。 为了提高安全性，两种类型的存储都默认使用 Azure 存储服务加密 (SSE) 来加密静态数据。 目前无法使用 AKS 节点级别的 Azure 磁盘加密对磁盘进行加密。
 
@@ -104,7 +104,7 @@ AKS 节点作为 Azure VM 运行。 有不同类型和大小的 VM 可使用。 
 
 <!-- LINKS - Internal -->
 [aks-concepts-storage]: concepts-storage.md
-[vm-sizes]: ../virtual-machines/linux/sizes.md
+[vm-sizes]: ../virtual-machines/sizes.md
 [dynamic-disks]: azure-disks-dynamic-pv.md
 [dynamic-files]: azure-files-dynamic-pv.md
 [reclaim-policy]: concepts-storage.md#storage-classes

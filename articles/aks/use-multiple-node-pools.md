@@ -4,12 +4,12 @@ description: 了解如何为 Azure Kubernetes 服务 (AKS) 中的群集创建和
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: d007ec18a982d5327aa2ea0871bbe88f64786fce
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 128b8d07a3fb18ecd70f6ce5a37f41ad0fdd3db1
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542019"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563171"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>为 Azure Kubernetes 服务 (AKS) 中的群集创建和管理多个节点池
 
@@ -736,12 +736,12 @@ az group deployment create \
 
 更新 AKS 群集可能需要花费几分钟时间，具体取决于资源管理器模板中定义的节点池设置和操作。
 
-## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a>为节点池分配每个节点一个公共 IP （预览）
+## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a> (预览为节点池分配每个节点的公共 IP) 
 
 > [!WARNING]
 > 必须安装 CLI 预览版扩展0.4.43 或更高版本，才能使用公共 IP 每节点功能。
 
-AKS 节点无需使用自身的公共 IP 地址进行通信。 但是，方案可能需要节点池中的节点接收其自己的专用公共 IP 地址。 常见的情况是，游戏工作负荷，控制台需要直接连接到云虚拟机以最大程度地减少跃点。 此方案可通过注册预览功能 "节点公共 IP （预览版）" AKS 来实现。
+AKS 节点无需使用自身的公共 IP 地址进行通信。 但是，方案可能需要节点池中的节点接收其自己的专用公共 IP 地址。 常见的情况是，游戏工作负荷，控制台需要直接连接到云虚拟机以最大程度地减少跃点。 此方案可通过注册预览功能、节点公共 IP (preview) 来实现 AKS。
 
 若要安装和更新最新的 aks 扩展，请使用以下 Azure CLI 命令：
 
@@ -859,7 +859,7 @@ az group delete --name myResourceGroup2 --yes --no-wait
 [supported-versions]: supported-kubernetes-versions.md
 [tag-limitation]: ../azure-resource-manager/management/tag-resources.md
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
-[vm-sizes]: ../virtual-machines/linux/sizes.md
+[vm-sizes]: ../virtual-machines/sizes.md
 [use-system-pool]: use-system-pools.md
 [ip-limitations]: ../virtual-network/virtual-network-ip-addresses-overview-arm#standard
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks

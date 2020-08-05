@@ -1,19 +1,19 @@
 ---
-title: 升级 Azure Kubernetes 服务（AKS）节点映像
+title: 升级 Azure Kubernetes Service (AKS) 节点映像
 description: 了解如何升级 AKS 群集节点和节点池上的映像。
 author: laurenhughes
 ms.author: lahugh
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 13842512c7d983a70b32132b4a16be37ac0b2b54
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 040f4378e01c3696b9a74bfcc27230503828f19a
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050724"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562781"
 ---
-# <a name="preview---azure-kubernetes-service-aks-node-image-upgrades"></a>预览版-Azure Kubernetes Service （AKS）节点映像升级
+# <a name="preview---azure-kubernetes-service-aks-node-image-upgrades"></a>预览版-Azure Kubernetes Service (AKS) 节点映像升级
 
 AKS 支持升级节点上的映像，因此你可以使用最新的 OS 和运行时更新。 AKS 每周提供一个新的映像，并提供最新更新，因此，定期升级节点以获取最新功能（包括 Linux 或 Windows 修补程序）是有益的。 本文介绍如何升级 AKS 群集节点映像以及如何更新节点池映像，而无需升级 Kubernetes 版本。
 
@@ -47,7 +47,7 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-当状态显示为“已注册”时，使用 [az provider register](https://docs.microsoft.com/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令来刷新 `Microsoft.ContainerService` 资源提供程序的注册：
+当状态显示为“已注册”时，使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令来刷新 `Microsoft.ContainerService` 资源提供程序的注册：
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService

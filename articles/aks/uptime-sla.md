@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 672a5afe36449aaa486ca6980f510ba52cf6daf2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: cc23e32db71439067421a9be8b18a1827515bd9c
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250951"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563273"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes 服务 (AKS) 运行时间 SLA
 
@@ -49,7 +49,7 @@ ms.locfileid: "86250951"
 
 若要创建具有运行时间 SLA 的群集，请使用 Azure CLI。
 
-以下示例在 eastus 位置创建名为 myResourceGroup 的资源组： 
+以下示例在 eastus 位置创建名为 myResourceGroup 的资源组：
 
 ```azurecli-interactive
 # Create a resource group
@@ -133,7 +133,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [region-availability]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 
 <!-- LINKS - Internal -->
-[vm-skus]: ../virtual-machines/linux/sizes.md
+[vm-skus]: ../virtual-machines/sizes.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [faq]: ./faq.md
 [availability-zones]: ./availability-zones.md

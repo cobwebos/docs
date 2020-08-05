@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47, tracking-python
-ms.openlocfilehash: 920f53fa962cc30f2068d78c9d1907b93019fe34
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bc560f6a0048377f2174805d7e015b55240d7a71
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055856"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564038"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储触发器
 
@@ -163,7 +163,7 @@ module.exports = async function (context, message) {
 }
 ```
 
-代码* _ \_ _ \_ py*将参数声明为 `func.ServiceBusMessage` ，这允许您在函数中读取队列消息。
+代码* _ \_ _ \_ py*将参数声明为 `func.QueueMessage` ，这允许您在函数中读取队列消息。
 
 ```python
 import logging
@@ -299,7 +299,7 @@ public class QueueTriggerDemo {
 }
 ```
 
-| properties    | 说明 |
+| 属性    | 说明 |
 |-------------|-----------------------------|
 |`name`       | 在函数签名中声明参数名称。 触发函数时，此参数的值包含队列消息的内容。 |
 |`queueName`  | 在存储帐户中声明队列名称。 |
@@ -313,7 +313,7 @@ public class QueueTriggerDemo {
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | 不适用| 必须设置为 `queueTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|type | 不适用| 必须设置为 `queueTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction**| 不适用 | 只能在 *function.json* 文件中设置。 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |**name** | 不适用 |包含功能代码中的队列项有效负载的变量的名称。  |
 |**queueName** | **QueueName**| 要轮询的队列的名称。 |
@@ -363,7 +363,7 @@ public class QueueTriggerDemo {
 
 [队列触发器提供了数个元数据属性。](./functions-bindings-expressions-patterns.md#trigger-metadata) 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 这些属性是[CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage)类的成员。
 
-|properties|类型|描述|
+|属性|类型|描述|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|队列有效负载（如果是有效的字符串）。 如果队列消息有效负载是一个字符串，与 `QueueTrigger` 中的属性命名的变量具有相同的值 `name` *function.json*。|
 |`DequeueCount`|`int`|此消息取消排队的次数。|
@@ -408,7 +408,7 @@ public class QueueTriggerDemo {
 
 ## <a name="next-steps"></a>后续步骤
 
-- [写入队列存储消息（输出绑定）](./functions-bindings-storage-blob-output.md)
+- [将队列存储消息写入 (输出绑定) ](./functions-bindings-storage-blob-output.md)
 
 <!-- LINKS -->
 

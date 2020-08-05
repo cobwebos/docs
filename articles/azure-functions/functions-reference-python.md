@@ -4,12 +4,12 @@ description: 了解如何使用 Pythong 开发函数
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: tracking-python
-ms.openlocfilehash: 3d3e313d464a8da8b62d5c22b5983c6458f42b5d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 6be225c1384892dfdb94da3375707351887c8344
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170371"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564004"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -434,8 +434,8 @@ pip install -r requirements.txt
 
 ### <a name="remote-build"></a>远程生成
 
-使用远程生成时，在服务器上还原的依赖项和本机依赖项与生产环境匹配。 这会生成较小的部署包。 在 Windows 上开发 Python 应用时使用远程生成。 如果你的项目具有自定义依赖项，则可以[将远程生成用于额外的索引 URL](#remote-build-with-extra-index-url)。 
- 
+使用远程生成时，在服务器上还原的依赖项和本机依赖项与生产环境匹配。 这会生成较小的部署包。 在 Windows 上开发 Python 应用时使用远程生成。 如果你的项目具有自定义依赖项，则可以[将远程生成用于额外的索引 URL](#remote-build-with-extra-index-url)。
+
 依赖项是根据 requirements.txt 文件的内容远程获取的。 [远程生成](functions-deployment-technologies.md#remote-build)是推荐的生成方法。 默认情况下，使用下面的 [func azure functionapp publish](functions-run-local.md#publish) 命令将 Python 项目发布到 Azure 时，Azure Functions Core Tools 会请求远程生成。
 
 ```bash
@@ -456,7 +456,7 @@ func azure functionapp publish <APP_NAME> --build local
 
 请记住将 `<APP_NAME>` 替换为 Azure 中的函数应用名称。
 
-使用 `--build local` 选项，从 requirements.txt 文件中读取项目依赖项，同时在本地下载并安装这些依赖包。 项目文件和依赖项从本地计算机部署到 Azure。 这会将较大的部署包上传到 Azure。 如果由于某种原因，Core Tools 无法获取 requirements.txt 文件中的依赖项，则必须使用自定义依赖项选项进行发布。 
+使用 `--build local` 选项，从 requirements.txt 文件中读取项目依赖项，同时在本地下载并安装这些依赖包。 项目文件和依赖项从本地计算机部署到 Azure。 这会将较大的部署包上传到 Azure。 如果由于某种原因，Core Tools 无法获取 requirements.txt 文件中的依赖项，则必须使用自定义依赖项选项进行发布。
 
 在 Windows 上进行本地开发时，不建议使用本地生成。
 
@@ -466,7 +466,7 @@ func azure functionapp publish <APP_NAME> --build local
 
 #### <a name="remote-build-with-extra-index-url"></a>具有额外索引 URL 的远程生成
 
-如果包可从可访问的自定义包索引中获取，请使用远程生成。 在发布之前，请确保[创建一个](functions-how-to-use-azure-function-app-settings.md#settings)名为的应用设置 `PIP_EXTRA_INDEX_URL` 。 此设置的值为自定义包索引的 URL。 使用此设置可告诉远程生成 `pip install` 使用 `--extra-index-url` 选项运行。 若要了解详细信息，请参阅[Python pip 安装文档](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format)。 
+如果包可从可访问的自定义包索引中获取，请使用远程生成。 在发布之前，请确保[创建一个](functions-how-to-use-azure-function-app-settings.md#settings)名为的应用设置 `PIP_EXTRA_INDEX_URL` 。 此设置的值为自定义包索引的 URL。 使用此设置可告诉远程生成 `pip install` 使用 `--extra-index-url` 选项运行。 若要了解详细信息，请参阅[Python pip 安装文档](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format)。
 
 你还可以将基本身份验证凭据用于额外的包索引 Url。 若要了解详细信息，请参阅 Python 文档中的[基本身份验证凭据](https://pip.pypa.io/en/stable/user_guide/#basic-authentication-credentials)。
 
@@ -658,11 +658,14 @@ Python 标准库包含每个 Python 分发附带的内置 Python 模块列表。
 
 功能 Python 辅助角色需要一组特定的库。 你还可以在函数中使用这些库，但它们并不是 Python 标准的一部分。 如果函数依赖于其中的任何库，则在 Azure Functions 之外运行时，它们可能无法用于代码。 可以在[setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282)文件中的**安装 \_ 需要**部分找到依赖项的详细列表。
 
+> [!NOTE]
+> 如果函数应用的 requirements.txt 包含 `azure-functions-worker` 条目，请将其删除。 函数工作线程由 Azure Functions 平台自动管理，并定期使用新功能和 bug 修复进行更新。 在 requirements.txt 中手动安装旧版本的辅助角色可能会导致意外问题。
+
 ### <a name="azure-functions-python-library"></a>Azure Functions Python 库
 
 每个 Python 辅助角色更新包括[Azure Functions Python 库 (](https://github.com/Azure/azure-functions-python-library)的新版本) 。 由于每个更新都是向后兼容的，因此这种方法可以更轻松地持续更新 Python 函数应用。 可以在[azure 功能 PyPi](https://pypi.org/project/azure-functions/#history)中找到此库的版本列表。
 
-运行时库版本由 Azure 修复，不能通过 requirements.txt 重写。 `azure-functions`requirements.txt 中的条目仅适用于 linting 和客户认知。 
+运行时库版本由 Azure 修复，不能通过 requirements.txt 重写。 `azure-functions`requirements.txt 中的条目仅适用于 linting 和客户认知。
 
 使用以下代码在运行时中跟踪 Python 函数库的实际版本：
 
@@ -676,8 +679,8 @@ getattr(azure.functions, '__version__', '< 1.2.1')
 
 |  Functions 运行时  | Debian 版本 | Python 版本 |
 |------------|------------|------------|
-| 版本 2.x | 拉伸  | [Python 3。6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3。7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
-| 3\.x 版 | Buster | [Python 3。6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3。7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+| 版本 2.x | 拉伸  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
+| 3\.x 版 | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
 
 ## <a name="cross-origin-resource-sharing"></a>跨域资源共享
 
@@ -689,7 +692,8 @@ Python 函数应用完全支持 CORS。
 
 下面列出了常见问题的疑难解答指南：
 
-* [ModuleNotFoundError 和 ImportError](recover-module-not-found.md)
+* [ModuleNotFoundError 和 ImportError](recover-python-functions.md#troubleshoot-modulenotfounderror)
+* [无法导入 "cygrpc"](recover-python-functions.md#troubleshoot-cannot-import-cygrpc)
 
 所有已知问题和功能请求都使用 [GitHub 问题](https://github.com/Azure/azure-functions-python-worker/issues)列表进行跟踪。 如果遇到 GitHub 中未列出的问题，请打开“新问题”并提供问题的详细说明。
 

@@ -1,15 +1,14 @@
 ---
 title: 排查 Azure 备份代理问题
 description: 本文介绍如何排查 Azure 备份代理的安装和注册问题。
-ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: b810b5abfb15a39d19a0571b6ac36a6c86bf0b4f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1afe437239ec7015bf3bbc195cf0b90e75698142
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054648"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564106"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>排查 Microsoft Azure 恢复服务 (MARS) 代理问题
 
@@ -42,7 +41,7 @@ ms.locfileid: "87054648"
 
 | 原因 | 建议的操作 |
 | ---     | ---    |
-| **保管库凭据无效** <br/> <br/> 保管库凭据文件可能已损坏或过期。 （例如，它们可能是在注册时的 48 以前下载的。）| 请从 Azure 门户上的恢复服务保管库下载新凭据。 （请参阅[下载 MARS 代理](./install-mars-agent.md#download-the-mars-agent)部分中的步骤 6。）然后相应地执行以下步骤： <ul><li> 如果已安装并注册 MARS，请打开 Microsoft Azure 备份代理 MMC 控制台，然后在“操作”窗格中选择“注册服务器”，以使用新凭据完成注册。**** **** <br/> <li> 如果新的安装失败，请尝试使用新凭据重新安装。</ul> **注意**：如果已下载多个保管库凭据文件，在接下来的 48 小时，只有最新文件才有效。 我们建议下载新的保管库凭据文件。
+| **保管库凭据无效** <br/> <br/> 保管库凭据文件可能已损坏或过期。 （例如，它们可能是在注册时的 48 以前下载的。）| 从 Azure 门户上的恢复服务保管库[下载新凭据](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file)。 然后相应地执行以下步骤： <ul><li> 如果已安装并注册了 MARS，请打开 Microsoft Azure 备份代理 MMC 控制台。 然后选择 "**操作**" 窗格中的 "**注册服务器**"，以通过新凭据完成注册。 <br/> <li> 如果新的安装失败，请尝试使用新凭据重新安装。</ul> **注意**：如果已下载多个保管库凭据文件，在接下来的 48 小时，只有最新文件才有效。 我们建议下载新的保管库凭据文件。
 | **代理服务器/防火墙正在阻止注册** <br/>或 <br/>**未建立 Internet 连接** <br/><br/> 如果计算机或代理服务器限制了 Internet 连接，并且你无法确保能够访问所需的 URL，则注册将会失败。| 请执行以下步骤：<br/> <ul><li> 与 IT 团队协作，确保系统已建立 Internet 连接。<li> 如果没有代理服务器，请确保在注册代理时不要选择代理选项。 [检查代理设置](#verifying-proxy-settings-for-windows)。<li> 如果你使用了防火墙/代理服务器，请与网络团队协作，确保这些 URL 和 IP 地址能够访问：<br/> <br> **URL**<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>**IP 地址**<br>  20.190.128.0/18 <br>  40.126.0.0/18 <br/></ul></ul>完成上述故障排除步骤后，再次尝试注册。<br></br> 如果通过 Azure ExpressRoute 进行连接，请确保按照 [Azure ExpressRoute 支持](backup-support-matrix-mars-agent.md#azure-expressroute-support)中所述内容配置设置。
 | **防病毒软件正在阻止注册** | 如果你在服务器上安装了防病毒软件，请将所需的排除规则添加到这些文件和文件夹的防病毒扫描项中： <br/><ul> <li> CBengine.exe <li> CSC.exe<li> scratch 文件夹。 其默认位置为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。 <li> bin 文件夹 C:\Program Files\Microsoft Azure Recovery Services Agent\Bin。
 
@@ -74,13 +73,13 @@ ms.locfileid: "87054648"
 
 | 错误  | 可能的原因 | 建议的操作 |
 | ---     | ---     | ---    |
-| <br /><ul><li>Microsoft Azure 恢复服务代理无法连接到 Microsoft Azure 备份。 (ID:100050)请检查网络设置，并确保能够连接到 Internet。<li>(407) 需要代理身份验证。 |代理正在阻止连接。 |  <ul><li>在 Internet Explorer 中，转到“工具” > “Internet 选项” > “安全性” > “Internet”。**** **** **** **** 选择“自定义级别”，向下滚动到“文件下载”部分。**** **** 选择“启用”****。<p>可能还需要将这些 [URL 和 IP 地址](install-mars-agent.md#verify-internet-access)添加到 Internet Explorer 中的受信任站点。<li>更改设置以使用代理服务器。 然后提供代理服务器详细信息。<li> 如果计算机的 Internet 访问状态受限，请确保计算机或代理上的防火墙设置允许以下 [URL 和 IP 地址](install-mars-agent.md#verify-internet-access)： <li>如果服务器中安装了防病毒软件，请从防病毒软件扫描中排除这些文件： <ul><li>CBEngine.exe（而非 dpmra.exe）。<li>CSC.exe（与 .NET Framework 相关）。 服务器上安装的每个 .NET Framework 版本都有一个 CSC.exe。 排除受影响服务器上的所有 .NET Framework 版本的 CSC.exe 文件。 <li>scratch 文件夹或缓存位置。 <br>scratch 文件夹的默认位置或缓存路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。<li>bin 文件夹 C:\Program Files\Microsoft Azure Recovery Services Agent\Bin。
+| <br /><ul><li>Microsoft Azure 恢复服务代理无法连接到 Microsoft Azure 备份。 (ID:100050)请检查网络设置，并确保能够连接到 Internet。<li>(407) 需要代理身份验证。 |代理正在阻止连接。 |  <ul><li>在 Internet Explorer 中，转到“工具” > “Internet 选项” > “安全性” > “Internet”。**** **** **** **** 选择“自定义级别”，向下滚动到“文件下载”部分。**** **** 选择“启用”。<p>可能还需要将这些 [URL 和 IP 地址](install-mars-agent.md#verify-internet-access)添加到 Internet Explorer 中的受信任站点。<li>更改设置以使用代理服务器。 然后提供代理服务器详细信息。<li> 如果计算机的 Internet 访问状态受限，请确保计算机或代理上的防火墙设置允许以下 [URL 和 IP 地址](install-mars-agent.md#verify-internet-access)： <li>如果服务器中安装了防病毒软件，请从防病毒软件扫描中排除这些文件： <ul><li>CBEngine.exe（而非 dpmra.exe）。<li>CSC.exe（与 .NET Framework 相关）。 服务器上安装的每个 .NET Framework 版本都有一个 CSC.exe。 排除受影响服务器上的所有 .NET Framework 版本的 CSC.exe 文件。 <li>scratch 文件夹或缓存位置。 <br>scratch 文件夹的默认位置或缓存路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。<li>bin 文件夹 C:\Program Files\Microsoft Azure Recovery Services Agent\Bin。
 
 ## <a name="the-specified-vault-credential-file-cannot-be-used-as-it-is-not-downloaded-from-the-vault-associated-with-this-server"></a>无法使用指定的保管库凭据文件，因为它未从与此服务器关联的保管库下载
 
 | 错误  | 可能的原因 | 建议的操作 |
 | ---     | ---     | ---    |
-| 无法使用指定的保管库凭据文件，因为它未从与此服务器关联的保管库下载。 （ID：100110）请提供适当的保管库凭据。 | 保管库凭据文件与此服务器已注册到的保管库不同。 | 确保目标计算机和源计算机已还原到同一个恢复服务保管库。 如果目标服务器已注册到不同的保管库，请使用**Register server**选项注册到正确的保管库。  
+| 无法使用指定的保管库凭据文件，因为它未从与此服务器关联的保管库下载。  (ID： 100110) 请提供相应的保管库凭据。 | 保管库凭据文件与此服务器已注册到的保管库不同。 | 确保目标计算机和源计算机已还原到同一个恢复服务保管库。 如果目标服务器已注册到不同的保管库，请使用**Register server**选项注册到正确的保管库。  
 
 ## <a name="backup-jobs-completed-with-warning"></a>备份作业已完成，但出现警告
 
@@ -178,7 +177,7 @@ Set-ExecutionPolicy Unrestricted
 
 ![作业无法启动，因为另一个作业正在进行中](./media/backup-azure-mars-troubleshoot/job-could-not-be-started.png)
 
-若要解决此问题，请执行下列操作：
+若要解决此问题，请执行以下操作：
 
 1. 在 "运行" 窗口中键入*taskschd.msc* ，启动任务计划程序管理单元
 1. 在左窗格中，导航到**任务计划程序库**  ->  **Microsoft**  ->  **缺少 onlinebackup.kek**"。
@@ -235,7 +234,7 @@ Set-ExecutionPolicy Unrestricted
 
 ### <a name="increase-shadow-copy-storage"></a>增加影子副本存储
 
-如果用于保护数据源的影子副本存储空间不足，则备份操作可能会失败。 若要解决此问题，请使用 vssadmin 增加受保护卷上的影子副本存储空间，如下所示：
+如果没有足够的卷影副本存储空间来保护数据源，则备份操作可能会失败。 若要解决此问题，请使用**vssadmin**增加受保护卷上的卷影副本存储空间，如下所示：
 
 - 在提升的命令提示符下检查当前的影子存储空间：<br/>
   `vssadmin List ShadowStorage /For=[Volume letter]:`
@@ -246,8 +245,8 @@ Set-ExecutionPolicy Unrestricted
 
 如果你在服务器上安装了防病毒软件，请将所需的排除规则添加到这些文件和文件夹的防病毒扫描项中：  
 
-- scratch 文件夹。 其默认位置为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch
-- C:\Program Files\Microsoft Azure Recovery Services Agent\Bin 中的 bin 文件夹
+- scratch 文件夹。 其默认位置为`C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+- 中的 bin 文件夹`C:\Program Files\Microsoft Azure Recovery Services Agent\Bin`
 - CBengine.exe
 - CSC.exe
 
@@ -258,25 +257,25 @@ Set-ExecutionPolicy Unrestricted
 ### <a name="salchecksumstoreinitializationfailed"></a>SalChecksumStoreInitializationFailed
 
 错误消息 | 建议的操作
--- | --
-Microsoft Azure 恢复服务代理无法访问存储在暂存位置的备份校验和 | 若要解决此问题，请执行以下操作，然后重启服务器 <br/> - [检查是否存在防病毒或其他进程锁定暂存位置文件](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [检查暂存位置是否有效，是否可供 MARS 代理访问。](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+--|--
+Microsoft Azure 恢复服务代理无法访问存储在暂存位置的备份校验和 | 若要解决此问题，请执行以下操作，然后重启服务器 <br/> - [检查是否存在防病毒或其他进程锁定暂存位置文件](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [检查暂存位置是否有效并可由 MARS 代理访问。](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
 ### <a name="salvhdinitializationerror"></a>SalVhdInitializationError
 
 错误消息 | 建议的操作
--- | --
-Microsoft Azure 恢复服务代理无法访问暂存位置，因此无法初始化 VHD | 若要解决此问题，请执行以下操作，然后重启服务器 <br/> - [检查是否存在防病毒或其他进程锁定暂存位置文件](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [检查暂存位置是否有效，是否可供 MARS 代理访问。](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+--|--
+Microsoft Azure 恢复服务代理无法访问暂存位置，因此无法初始化 VHD | 若要解决此问题，请执行以下操作，然后重启服务器 <br/> - [检查防病毒或其他进程是否正在锁定暂存位置文件](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [检查暂存位置是否有效并可由 MARS 代理访问。](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
 ### <a name="sallowdiskspace"></a>SalLowDiskSpace
 
 错误消息 | 建议的操作
--- | --
+--|--
 由于暂存文件夹所在的卷中存储空间不足，备份失败 | 若要解决此问题，请验证以下步骤，然后重试该操作：<br/>- [确保 MARS 代理是最新的](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)<br/> - [验证并解决影响备份暂存空间的存储问题](#prerequisites)
 
 ### <a name="salbitmaperror"></a>SalBitmapError
 
 错误消息 | 建议的操作
--- | --
+--|--
 找不到文件中的更改。 这可能是由于各种原因。 请重试该操作 | 若要解决此问题，请验证以下步骤，然后重试该操作：<br/> - [确保 MARS 代理是最新的](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409) <br/> - [验证并解决影响备份暂存空间的存储问题](#prerequisites)
 
 ## <a name="next-steps"></a>后续步骤

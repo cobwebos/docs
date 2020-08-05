@@ -1,24 +1,30 @@
 ---
-title: Microsoft Azure 恢复服务（MARS）代理-常见问题
+title: Microsoft Azure 恢复服务 (MARS) 代理– FAQ
 description: 解决与使用 Azure 备份对文件和文件夹进行备份相关的常见问题。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 5a4560499c56e4dcdf41c2e5c7920b415ceab6c5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c4494b09a5cf838aae3dde01c1268042929ef213
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533574"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563087"
 ---
-# <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>常见问题-Microsoft Azure 恢复服务（MARS）代理
+# <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>常见问题-Microsoft Azure 恢复服务 (MARS) 代理
 
-本文解答了有关通过[Azure 备份](backup-overview.md)服务中的 MICROSOFT AZURE 恢复服务（MARS）代理来备份数据的常见问题。
+本文解答了有关将数据备份到[Azure 备份](backup-overview.md)服务中的 MICROSOFT AZURE 恢复服务 (MARS) 代理的常见问题。
 
 ## <a name="configure-backups"></a>配置备份
 
 ### <a name="where-can-i-download-the-latest-version-of-the-mars-agent"></a>可以从何处下载最新版本的 MARS 代理？
 
 备份 Windows Server 计算机、System Center DPM 和 Microsoft Azure 备份服务器时使用的最新 MARS 代理可供[下载](https://aka.ms/azurebackup_agent)。
+
+### <a name="where-can-i-download-the-vault-credentials-file"></a>在哪里可以下载保管库凭据文件？
+
+在 Azure 门户中，导航到保管库的 "**属性**"。 在 "**备份凭据**" 下，选中 "**已使用最新的恢复服务代理**" 复选框。 选择“下载”。
+
+![下载凭据](./media/backup-azure-file-folder-backup-faq/download-credentials.png)
 
 ### <a name="how-long-are-vault-credentials-valid"></a>保管库凭据的有效期是多长时间？
 
@@ -174,11 +180,11 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 
 考虑以下情况：
 
-* 如果在与三个相同的原始计算机上卸载并重新注册代理
+* 如果你在同一台计算机上卸载并重新注册该代理，
   * *相同的密码*，则可以还原已备份的数据。
   * *不同密码*，则无法还原已备份的数据。
 * 如果在*其他计算机*上安装代理，
-  * *同一密码*（在原始计算机上使用），则可以还原已备份的数据。
+  * 原始计算机)  (使用*相同的密码*，则可以还原已备份的数据。
   * *不同密码*，则无法还原已备份的数据。
 * 如果原始计算机已损坏（阻止你通过 MARS 控制台重新生成通行短语），但你可以还原或访问 MARS 代理使用的原始暂存文件夹，则你也许可以还原（如果忘记了密码）。 若要获取更多帮助，请联系客户支持人员。
 
@@ -203,7 +209,7 @@ MARS 代理依赖于 NTFS，并允许使用文件名/路径中[支持的字符](
 
 * MARS 代理可以备份针对文件、文件夹和卷上设置的 ACL
 * 对于卷还原恢复选项，MARS 代理将提供一个选项，用于跳过还原所要恢复的文件或文件夹的 ACL 权限。
-* 对于 "单个文件和文件夹" 恢复选项，MARS 代理将还原为 ACL 权限（没有用于跳过 ACL 还原的选项）。
+* 对于 "单个文件和文件夹" 恢复选项，MARS 代理将用 ACL 权限还原 (没有用于跳过 ACL 还原) 的选项。
 
 ## <a name="next-steps"></a>后续步骤
 

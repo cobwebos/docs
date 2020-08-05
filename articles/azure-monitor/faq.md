@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: ff7472b764b0e65d69d9b694603e145440e89c0d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 211b7aedc901031e366c60a6c7a2cee396bbe124
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318107"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563834"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题解答
 
@@ -121,7 +121,7 @@ Azure 资源的[平台指标](insights/monitor-azure-resource.md#monitoring-data
 
 
 ### <a name="what-is-an-action-rule"></a>什么是操作规则？
-通过操作规则，可修改匹配特定条件的一组警报的行为。 你可通过它执行诸如在维护时段内禁用警报操作之类的要求。 你还可将操作组应用于一组警报，而不是将其直接应用于警报规则。 请参阅[操作规则](platform/alerts-action-rules.md)。
+通过操作规则，可修改匹配特定条件的一组警报的行为。 这允许您执行在维护时段内禁用警报操作等要求。 你还可将操作组应用于一组警报，而不是将其直接应用于警报规则。 请参阅[操作规则](platform/alerts-action-rules.md)。
 
 ## <a name="agents"></a>代理
 
@@ -137,7 +137,7 @@ Azure 诊断扩展适用于 Azure 虚拟机，它将数据收集到 Azure Monito
 到 Azure Monitor 的流量使用 Microsoft 对等互连 ExpressRoute 线路。 有关不同类型的 ExpressRoute 流量的说明，请参阅 [ExpressRoute 文档](../expressroute/expressroute-faqs.md#supported-services)。 
 
 ### <a name="how-can-i-confirm-that-the-log-analytics-agent-is-able-to-communicate-with-azure-monitor"></a>如何确认 Log Analytics 代理能否与 Azure Monitor 通信？
-在代理计算机上的控制面板中，选择“安全性和设置”，然后选择“Microsoft Monitoring Agent” 。 在“Azure Log Analytics (OMS)”选项卡下，绿色勾号图标表示代理能够与 Azure Monitor 进行通信。 黄色警告图标表示代理存在问题。 一个常见的原因是 Microsoft Monitoring Agent 服务已停止。 请使用服务控制管理器重启该服务。
+在代理计算机上的控制面板中，选择 "**安全 & 设置**"，然后选择 "Microsoft Monitoring Agent"。 在“Azure Log Analytics (OMS)”选项卡下，绿色勾号图标表示代理能够与 Azure Monitor 进行通信。 黄色警告图标表示代理存在问题。 一个常见的原因是 Microsoft Monitoring Agent 服务已停止。 请使用服务控制管理器重启该服务。
 
 ### <a name="how-do-i-stop-the-log-analytics-agent-from-communicating-with-azure-monitor"></a>如何停止 Log Analytics 代理与 Azure Monitor 之间的通信？
 对于直接连接到 Log Analytics 的代理，请打开控制面板，然后依次选择“安全性和设置”和“Microsoft Monitoring Agent” 。 在“Azure Log Analytics (OMS)”选项卡下，删除列出的所有工作区。 在 System Center Operations Manager 中，从 Log Analytics 托管的计算机的列表中删除该计算机。 Operations Manager 会更新该代理的配置以便不再向 Log Analytics 进行报告。 
@@ -207,7 +207,7 @@ WireData
 * [设置 ASP.NET 服务器](app/monitor-performance-live-website-now.md)
 * [设置 Java 服务器](app/java-agent.md)
 
-应该部署多少个 Application Insights？：
+*应该部署多少个 Application Insights 资源：*
 
 * [如何设计 Application Insights 部署：一个还是多个 Application Insights 资源？](app/separate-resources.md)
 
@@ -315,7 +315,7 @@ WireData
 
 * 浏览器遥测：收集发送方的 IP 地址。
 * 服务器遥测：Application Insights 模块收集客户端 IP 地址。 如果设置了 `X-Forwarded-For`，则不会进行收集。
-* 要详细了解如何在 Application Insights 中收集 IP 地址和地理位置数据，请参阅本[文章](./app/ip-collection.md)。
+* 若要详细了解如何在中收集 IP 地址和地理位置数据 Application Insights 参阅此[文](./app/ip-collection.md)。
 
 
 可以配置 `ClientIpHeaderTelemetryInitializer`，从不同的标头获取 IP 地址。 例如，在某些系统中，代理、负载均衡器或 CDN 会将其移动到 `X-Originating-IP`。 [了解详细信息](https://apmtips.com/posts/2016-07-05-client-ip-address/)。
@@ -509,6 +509,15 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 [start]: app/app-insights-overview.md
 [windows]: app/app-insights-windows-get-started.md
 
+### <a name="http-502-and-503-responses-are-not-always-captured-by-application-insights"></a>HTTP 502 和503响应并不总是由 Application Insights 捕获
+
+"502 错误的网关" 和 "503 服务不可用" 错误不总是由 Application Insights 捕获。 如果仅客户端 JavaScript 用于监视这种情况，则可能会出现这种情况，因为在包含 HTML 标头的页面之前返回错误响应，并呈现监视 JavaScript 代码段。 
+
+如果从启用了服务器端监视的服务器发送了502或503响应，则 Application Insights SDK 会收集这些错误。 
+
+但是，在某些情况下，即使在应用程序的 web 服务器上启用了服务器端监视，也不会 Application Insights 捕获502或503错误。 许多新式 web 服务器不允许客户端直接通信，而是使用反向代理等解决方案在客户端和前端 web 服务器之间来回传递信息。 
+
+在此方案中，由于反向代理层出现问题，可能会将502或503响应返回到客户端，并且 Application Insights 不会将其内置。 若要帮助检测该层中的问题，可能需要将日志从反向代理转发到 Log Analytics，并创建自定义规则来检查502/503 响应。 若要了解有关502和503错误的常见原因的详细信息，请参阅 Azure App Service[疑难解答文章 "502 错误的网关" 和 "503 服务不可用"](../app-service/troubleshoot-http-502-http-503.md)。     
 
 ## <a name="azure-monitor-for-containers"></a>用于容器的 Azure Monitor
 
@@ -532,7 +541,7 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 
 其他进程包括：
 
-- 自托管或托管的 Kubernetes 非容器化进程 
+- 自行托管的或托管 Kubernetes 非容器化进程 
 
 - 容器运行时进程  
 

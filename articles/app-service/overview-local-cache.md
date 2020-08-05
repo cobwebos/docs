@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 2a1fc4de572fbb8634f8f58452ce5f9b632023a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1595354803b0625137dd1ac45d17962063ce4e0
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82628787"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562440"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure 应用服务本地缓存概述
 
@@ -104,6 +104,9 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 
 ### <a name="i-just-published-new-changes-but-my-app-does-not-seem-to-have-them-why"></a>刚发布的新更改内容似乎并没有在应用上显示出来， 为什么？
 如果应用使用本地缓存，则需重新启动站点才能获取最新更改。 不想将更改发布到生产站点？ 请参阅前述最佳实践部分的槽选项。
+
+> [!NOTE]
+> "[从包运行](deploy-run-package.md)" 部署选项与本地缓存不兼容。
 
 ### <a name="where-are-my-logs"></a>日志在哪里？
 使用本地缓存时，日志和数据文件夹看起来稍有不同。 但是，子文件夹的结构始终是相同的，区别在于子文件夹嵌套在格式为“唯一 VM 标识符”+ 时间戳的子文件夹下。

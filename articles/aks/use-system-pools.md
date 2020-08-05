@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/18/2020
 ms.author: mlearned
-ms.openlocfilehash: 2994a616d60258e81cbd5a409690abc18538183a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8c808bda624cca3bd7bd28c6adfbdfb52fa2c068
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015521"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87562814"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中管理系统节点池
 
@@ -48,7 +48,7 @@ ms.locfileid: "87015521"
 
 对于节点池，可以执行以下操作：
 
-* 创建专用系统节点池（更倾向于将系统盒计划给的节点池 `mode:system` ）
+* 创建专用系统节点池 (更喜欢将系统盒计划给) 的节点池 `mode:system`
 * 将系统节点池更改为用户节点池，但前提是 AKS 群集中有另一个可以取代它的系统节点池。
 * 将用户节点池更改为系统节点池。
 * 删除用户节点池。
@@ -213,6 +213,6 @@ az group delete --name myResourceGroup --yes --no-wait
 [supported-versions]: supported-kubernetes-versions.md
 [tag-limitation]: ../azure-resource-manager/management/tag-resources.md
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
-[vm-sizes]: ../virtual-machines/linux/sizes.md
+[vm-sizes]: ../virtual-machines/sizes.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
 [maximum-pods]: configure-azure-cni.md#maximum-pods-per-node

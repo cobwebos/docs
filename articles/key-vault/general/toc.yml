@@ -6,6 +6,8 @@
       href: overview.md
     - name: 关于密钥、机密和证书
       href: about-keys-secrets-certificates.md
+    - name: 新增功能
+      href: whats-new.md
 - name: 快速入门
   expanded: true
   items:

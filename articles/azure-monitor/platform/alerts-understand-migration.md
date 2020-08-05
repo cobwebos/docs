@@ -6,12 +6,12 @@ ms.date: 07/10/2019
 ms.author: yalavi
 author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: c9696167d9addc3029a53f25e289d17bd3add263
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 533d114e08464ff95c654a6f071ea28a04caf510
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073626"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564089"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>了解迁移工具的工作原理
 
@@ -33,7 +33,7 @@ ms.locfileid: "87073626"
 - 针对经典存储指标的经典警报规则。 请参阅[有关监视经典存储帐户的指导](https://azure.microsoft.com/blog/modernize-alerting-using-arm-storage-accounts/)。
 - 针对某些存储帐户指标的经典警报规则。 请参阅本文稍后所述的[详细信息](#storage-account-metrics)。
 - 针对某些 Cosmos DB 指标的经典警报规则。 请参阅本文稍后所述的[详细信息](#cosmos-db-metrics)。
-- 针对所有经典虚拟机和云服务指标（Microsoft.classiccompute/virtualMachines 和 Microsoft.classiccompute/domainNames/个角色）的经典警报规则。 请参阅本文稍后所述的[详细信息](#classic-compute-metrics)。
+- ) 的所有经典虚拟机和云服务指标的经典警报规则 (Microsoft.classiccompute/virtualMachines 和 Microsoft.classiccompute/domainNames//个角色。 请参阅本文稍后所述的[详细信息](#classic-compute-metrics)。
 
 如果你的订阅包含任何此类经典规则，必须手动迁移。 由于我们无法提供自动迁移，任何此类现有经典指标警报会继续运行到 2020 年 6 月。 此缓冲期可让你从容地迁移到新警报。 还可以继续在2020年6月之前的列出异常上创建新的经典警报。 但对于其他所有内容，2019年8月后将不能创建新的经典警报。
 
@@ -104,7 +104,7 @@ Mongo 失败请求的警报必须拆分为多个警报，因为没有提供相�
 
 ### <a name="classic-compute-metrics"></a>典型计算指标
 
-对于经典计算指标的任何警报都不会使用迁移工具迁移，因为新警报尚不支持经典计算资源。 将来会添加对这些资源类型的新警报的支持。 一旦可用，客户必须根据2020年6月之前的经典警报规则重新创建新的等效警报规则。
+对于经典计算指标的任何警报都不会使用迁移工具迁移，因为新警报尚不支持经典计算资源。 对这些资源类型的新警报的支持目前以公共预览版提供，客户可以根据其经典警报规则重新创建新的等效警报规则。
 
 ### <a name="classic-alert-rules-on-deprecated-metrics"></a>针对已弃用指标的经典警报规则
 
@@ -268,7 +268,7 @@ Mongo 失败请求的警报必须拆分为多个警报，因为没有提供相�
 在迁移过程中，将会创建新的指标警报和新的操作组，然后删除经典警报规则。 但是，策略可以阻止我们创建资源。 根据策略，无法迁移部分或全部规则。 [迁移工具](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)中列出了阻止进程的策略。 通过以下方法之一解决此问题：
 
 - 从策略分配中排除在迁移过程中的订阅或资源组。 [了解有关管理策略排除范围的详细信息](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion)。
-- 删除或更改 "audit" 或 "append" 的效果（例如，可以解决与缺少标记相关的问题）。 [了解有关管理策略的详细信息](../../governance/policy/concepts/definition-structure.md#policy-rule)。
+- 例如，删除或更改 "audit" 或 "append" 的效果 (可以解决与缺少的标记) 相关的问题。 [了解有关管理策略的详细信息](../../governance/policy/concepts/definition-structure.md#policy-rule)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -301,7 +301,7 @@
     - name: 开发和运行应用程序
       items:
         - name: 在 Visual Studio Code 中使用 Local Process with Kubernetes（预览版）
-          href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+          href: 'https://code.visualstudio.com/docs/containers/local-process-kubernetes'
         - name: 通过 Helm 安装现有应用程序
           href: kubernetes-helm.md
         - name: 使用 OpenFaaS
@@ -354,7 +354,7 @@
           href: deployment-center-launcher.md
         - name: 适用于 Kubernetes 的 GitHub 操作
           href: ../aks/kubernetes-action.md
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 常见问题
           href: troubleshooting.md

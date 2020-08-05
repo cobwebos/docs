@@ -3,16 +3,16 @@ title: 收集和分析资源日志
 description: 记录和分析 Azure 容器注册表的资源日志事件，例如身份验证、映像推送和映像拉取。
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: 8757b8bdb67cf75b1ba800658d80b2a44311f1ba
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 63ccb944b9c3de9941acf55ca5ea85fda70a7008
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252481"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553370"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>用于诊断评估和审核的 Azure 容器注册表日志
 
-本文介绍如何使用 [Azure Monitor](../azure-monitor/overview.md) 的功能收集 Azure 容器注册表的日志数据。 Azure Monitor 针对注册表中的用户驱动事件收集[资源日志](../azure-monitor/platform/platform-logs-overview.md)（前称为诊断日志）。  收集并使用这些数据可以解决如下所述的需求：
+本文介绍如何使用 [Azure Monitor](../azure-monitor/overview.md) 的功能收集 Azure 容器注册表的日志数据。 Azure Monitor 针对注册表中的用户驱动事件收集[资源日志](../azure-monitor/platform/platform-logs-overview.md)（前称为诊断日志）。 收集并使用这些数据可以解决如下所述的需求：
 
 * 审核注册表身份验证事件，以确保安全与合规 
 
@@ -25,13 +25,13 @@ ms.locfileid: "86252481"
 当前会记录映像和其他项目的以下存储库级事件：
 
 * **推送**
-* **请求**
+* **拉取**
 * **取消标记**
-* **删除** (包括存储库删除事件) 
-* **清除标记**并**清除清单**
+* **删除**（包括存储库删除事件）
+* **清除标记**和**清除清单**
 
 > [!NOTE]
-> 仅当配置了注册表[保留策略](container-registry-retention-policy.md)时，才会记录清除事件。
+> 仅当配置了注册表[保留策略](container-registry-retention-policy.md)时，才记录清除事件。
 
 ## <a name="registry-resource-logs"></a>注册表资源日志
 
@@ -54,21 +54,21 @@ ms.locfileid: "86252481"
 例如，若要在 Azure Monitor 中近实时查看容器注册表的日志和指标，请在 Log Analytics 工作区中收集资源日志。 若要使用 Azure 门户启用此诊断设置，请执行以下操作：
 
 1. 如果没有工作区，请使用 [Azure 门户](../azure-monitor/learn/quick-create-workspace.md)创建一个工作区。 为了尽量减少数据收集时的延迟，请确保工作区与容器注册表位于**同一区域**。
-1. 在门户中选择注册表，然后选择“监视”>“诊断设置”>“添加诊断设置”。 
-1. 输入设置名称，然后选择“发送到 Log Analytics”。 
+1. 在门户中选择注册表，然后选择“监视”>“诊断设置”>“添加诊断设置”。
+1. 输入设置名称，然后选择“发送到 Log Analytics”。
 1. 选择注册表诊断日志对应的工作区。
-1. 选择要收集的日志数据，然后单击“保存”。 
+1. 选择要收集的日志数据，然后单击“保存”。
 
 下图显示了如何使用门户创建注册表的诊断设置。
 
 ![启用诊断设置](media/container-registry-diagnostics-audit-logs/diagnostic-settings.png)
 
 > [!TIP]
-> 仅收集所需的数据，以便在成本与监视需求之间进行适当的平衡。 例如，如果只需审核身份验证事件，请仅选择“ContainerRegistryLoginEvents”日志。  
+> 仅收集所需的数据，以便在成本与监视需求之间进行适当的平衡。 例如，如果只需审核身份验证事件，请仅选择“ContainerRegistryLoginEvents”日志。 
 
 ## <a name="view-data-in-azure-monitor"></a>在 Azure Monitor 中查看数据
 
-在 Log Analytics 中启用诊断日志收集后，数据可能需要在几分钟时间后才出现在 Azure Monitor 中。 若要在门户中查看数据，请选择注册表，然后选择“监视”>“日志”。  选择一个包含注册表数据的表。 
+在 Log Analytics 中启用诊断日志收集后，数据可能需要在几分钟时间后才出现在 Azure Monitor 中。 若要在门户中查看数据，请选择注册表，然后选择“监视”>“日志”。 选择一个包含注册表数据的表。 
 
 运行查询以查看数据。 系统中提供了多个示例查询，你也可以运行自己的查询。 例如，以下查询从 **ContainerRegistryRepositoryEvents** 表中检索最近 24 小时的数据：
 
@@ -113,7 +113,7 @@ ContainerRegistryRepositoryEvents
 | project LoginServer, OperationName, Repository, Identity, CallerIpAddress
 ```
 
-### <a name="identity-of-user-or-object-that-deleted-tag"></a>已删除标记的用户或对象的标识
+### <a name="identity-of-user-or-object-that-deleted-tag"></a>删除了标记的用户或对象的标识
 
 ```Kusto
 ContainerRegistryRepositoryEvents
@@ -121,7 +121,7 @@ ContainerRegistryRepositoryEvents
 | project LoginServer, OperationName, Repository, Tag, Identity, CallerIpAddress
 ```
 
-### <a name="reposity-level-operation-failures"></a>Reposity 级操作失败
+### <a name="repository-level-operation-failures"></a>存储库级操作失败
 
 ```kusto
 ContainerRegistryRepositoryEvents 

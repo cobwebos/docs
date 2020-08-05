@@ -84,6 +84,9 @@
           href: overview-patch-os-runtime.md
         - name: 内置安全控件
           href: app-service-security-controls.md
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: ./security-controls-policy.md
         - name: 安全概述
           href: overview-security.md
     - name: 网络功能

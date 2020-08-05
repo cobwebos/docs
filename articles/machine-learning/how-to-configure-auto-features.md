@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 31df880d9d6d586491d115d9b70de9f85bc980b2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8e3657128ddcff7f9436398ac4bcc6e220b86168
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502913"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552469"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>自动化机器学习中的特征化
 
@@ -64,7 +64,7 @@ ms.locfileid: "87502913"
 | ------------- | ------------- |
 |删除高基数或者无差异的特征* |从训练集和验证集中删除这些特征。 适用于所有值都缺失的特征、所有行使用同一值的特征，或者包含高基数（例如哈希、ID 或 GUID）的特征。|
 |插补缺少的值* |对于数字特征，将在列中插补平均值。<br/><br/>对于分类特征，将插补最常用值。|
-|生成其他特征* |对于日期时间特征：年、月、日、星期、年日期、季、年周、小时、分钟、秒。<br><br> *对于预测任务，* 将创建这些其他日期时间功能： ISO 年、半半年、日历月份作为字符串、周、星期几、以字符串表示的第几天、每年的第几天、上午/下午（0表示小时在中午（晚上12点）、1; 否则为0）<br/><br/>对于文本特征：基于单元语法、双元语法和三元语法的字词频率。 了解有关[如何通过经理 bert 完成此操作](#bert-integration)的详细信息。|
+|生成其他特征* |对于日期时间特征：年、月、日、星期、年日期、季、年周、小时、分钟、秒。<br><br> *对于预测任务，* 将创建这些附加的日期时间功能： ISO 年、半半年、日历月份作为字符串、周、星期几、以字符串表示的第几天、每年的第几天、上午/下午 (0 如果小时在中午 (12 PM) ，则为 1; 否则) ，AM/PM 为 string， (12hr<br/><br/>对于文本特征：基于单元语法、双元语法和三元语法的字词频率。 了解有关[如何通过经理 bert 完成此操作](#bert-integration)的详细信息。|
 |转换和编码*|将唯一值较少的数字特征转换为分类特征。<br/><br/>将为低基数分类特征使用 One-hot 编码。 将为高基数分类特征使用 One-hot-hash 编码。|
 |单词嵌入|文本特征化器使用预先训练的模型将文本标记的矢量转换为句子矢量。 每个单词在文档中的嵌入矢量与其余矢量聚合在一起，以生成文档特征矢量。|
 |目标编码|对于分类特征，此步骤将每个类别映射到回归问题的平均目标值，并映射到分类问题的每个类的类概率。 应用基于频率的加权和 k 折交叉验证，以减少稀疏数据类别导致的映射过度拟合与干扰。|
@@ -141,13 +141,13 @@ featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of
 ```
 
 ## <a name="bert-integration"></a>经理 BERT 集成 
-[经理 bert](https://techcommunity.microsoft.com/t5/azure-ai/how-bert-is-integrated-into-azure-automated-machine-learning/ba-p/1194657)在自动 ML 的特征化层中使用。 在此层中，我们检测列是否包含可用文本或其他类型的数据，例如时间戳或简单数字，并相应地进行特征。 对于经理 BERT，我们通过使用用户提供的标签来微调/定型模型，接下来，我们会输出文档嵌入（对于经理 BERT，这些是与特殊 [CLS] 标记相关联的最终隐藏状态）作为功能（如基于时间戳的功能，如一周中的某一天）或数字（例如，一周中的某一天），或许多典型数据 
+[经理 bert](https://techcommunity.microsoft.com/t5/azure-ai/how-bert-is-integrated-into-azure-automated-machine-learning/ba-p/1194657)在自动 ML 的特征化层中使用。 在此层中，我们检测列是否包含可用文本或其他类型的数据，例如时间戳或简单数字，并相应地进行特征。 对于经理 BERT，我们将使用用户提供的标签来对模型进行微调/定型，然后，我们输出了嵌入 (的经理 BERT 这些是与特殊 [CLS]) 令牌关联的最终隐藏状态，与其他功能（如基于时间戳的 (功能）和其他功能（如一周中的某一天) 或数字）相关。 
 
-若要启用经理 BERT，应使用 GPU 计算进行定型。 如果使用 CPU 计算，则 AutoML 将启用 BiLSTM DNN 特征化器，而不是经理 BERT。 若要调用经理 BERT，必须在 automl_settings 中设置 "enable_dnn： True"，并使用 GPU 计算（例如 vm_size = "STANDARD_NC6" 或更高的 GPU）。 有关示例，请参阅[此笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)。
+若要启用经理 BERT，应使用 GPU 计算进行定型。 如果使用 CPU 计算，则 AutoML 将启用 BiLSTM DNN 特征化器，而不是经理 BERT。 若要调用经理 BERT，必须在 automl_settings 中设置 "enable_dnn： True"，并使用 GPU 计算 (例如 vm_size = "STANDARD_NC6" 或更高的 GPU) 。 有关示例，请参阅[此笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)。
 
-对于经理 BERT，AutoML 需要执行以下步骤（请注意，必须在 automl_settings 中设置 "enable_dnn： True" 才能出现这些项）：
+AutoML 执行以下步骤，对于经理 BERT (请注意，必须在 automl_settings 中设置 "enable_dnn： True"，才能) 这些项：
 
-1. 预处理包括所有文本列的标记（将在最终模型的特征化摘要中看到 "StringCast" 转换器。 请访问[此笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)，查看有关如何使用方法生成模型的特征化摘要的示例 `get_featurization_summary()` 。
+1. 预处理包括所有文本列的标记 (你将在最终模型的特征化摘要中看到 "StringCast" 转换器。 请访问[此笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)，查看有关如何使用方法生成模型的特征化摘要的示例 `get_featurization_summary()` 。
 
 ```python
 text_transformations_used = []
@@ -159,11 +159,11 @@ text_transformations_used
 2. 将所有文本列连接到一个文本列，因此您将在最终模型中看到 "StringConcatTransformer"。 
 
 > [!NOTE]
-> 经理 BERT 的实现将训练示例的总文本长度限制为128个标记。 这意味着在连接时所有文本列，最理想的长度为128个标记。 理想情况下，如果存在多个列，则应将每个列修剪为满足此条件。 例如，如果数据中有两个文本列，则这两个文本列都应修剪为64标记（假设您希望两个列在最终串联的文本列中均匀表示），然后再将数据馈送到 AutoML。 对于串联列 >128 标记，经理 BERT 的标记器层会将此输入截断为128标记。
+> 经理 BERT 的实现将训练示例的总文本长度限制为128个标记。 这意味着在连接时所有文本列，最理想的长度为128个标记。 理想情况下，如果存在多个列，则应将每个列修剪为满足此条件。 例如，如果数据中有两个文本列，则这两个文本列都应修剪为64标记，每个 (假设您希望在将数据馈送到 AutoML 之前，这两列在最终串联的文本列中均匀地表示) 。 对于串联列 >128 标记，经理 BERT 的标记器层会将此输入截断为128标记。
 
-3. 在功能扫描步骤中，AutoML 会根据数据的样本比较经理 BERT 与基线（一袋关键字 features + 预先训练 word 嵌入），并确定经理 BERT 是否会提供准确性。 如果它确定经理 BERT 的性能比基线更好，AutoML 将使用经理 BERT 作为最佳特征化策略，并继续 featurizing 整个数据。 在这种情况下，您将在最终模型中看到 "PretrainedTextDNNTransformer"。
+3. 在功能扫描步骤中，AutoML 将经理 BERT 与基线 (包的) 功能进行比较，并确定经理 BERT 是否会提高准确性。 如果它确定经理 BERT 的性能比基线更好，AutoML 将使用经理 BERT 作为最佳特征化策略，并继续 featurizing 整个数据。 在这种情况下，您将在最终模型中看到 "PretrainedTextDNNTransformer"。
 
-经理 BERT 的运行时间通常比其他大多数 featurizers 更长。 可以通过在群集中提供更多计算来加速。 如果有多个节点（最多可达8个节点），AutoML 将在多个节点之间分布经理 BERT 定型。 这可以通过将[max_concurrent_iterations](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)设置为大于1来完成。 为了获得更好的性能，我们建议使用带有 RDMA 功能的 sku （例如 "STANDARD_NC24r" 或 "STANDARD_NC24rs_V3"）
+经理 BERT 的运行时间通常比其他大多数 featurizers 更长。 可以通过在群集中提供更多计算来加速。 如果 AutoML，则会在多个节点之间分布经理 BERT 定型 (最多可) 8 个节点。 这可以通过将[max_concurrent_iterations](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)设置为大于1来完成。 为了获得更好的性能，我们建议使用带有 RDMA 功能 (的 sku，如 "STANDARD_NC24r" 或 "STANDARD_NC24rs_V3" ) 
 
 AutoML 目前支持100种语言，根据数据集的语言，AutoML 选择适当的经理 BERT 模型。 对于德语数据，我们使用德语经理 BERT 模型。 对于英语，我们使用英语经理 BERT 模型。 对于所有其他语言，我们使用多语言经理 BERT 模型。
 

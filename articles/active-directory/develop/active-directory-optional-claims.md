@@ -1,7 +1,7 @@
 ---
 title: 向 Azure AD 应用提供可选声明
 titleSuffix: Microsoft identity platform
-description: 如何将自定义或附加的声明添加到 Azure Active Directory 颁发的 SAML 2.0 令牌和 JSON Web 令牌 (JWT)。
+description: 如何将自定义或附加声明添加到 (JWT) Microsoft 标识平台颁发的令牌的 SAML 2.0 和 JSON Web 令牌。
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
@@ -12,21 +12,21 @@ ms.date: 07/30/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: dd181e87305f3d32fb301c8b563b7330e09b43d6
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: f93e2b34c64ce4bd8cec7182c3e990f0e675dc11
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445589"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552860"
 ---
-# <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：向 Azure AD 应用提供可选声明
+# <a name="how-to-provide-optional-claims-to-your-app"></a>如何：向应用程序提供可选声明
 
 应用程序开发人员可以在其 Azure AD 应用程序中使用可选声明来指定他们希望在发送到其应用程序的令牌中使用哪些声明。
 
 使用可选声明可以：
 
 - 选择要包含在应用程序令牌中的附加声明。
-- 更改 Azure AD 在令牌中返回的某些声明的行为。
+- 更改 Microsoft 标识平台在令牌中返回的某些声明的行为。
 - 添加和访问应用程序的自定义声明。
 
 如需标准声明的列表，请参阅[访问令牌](access-tokens.md)和 [id_token](id-tokens.md) 声明文档。
@@ -137,7 +137,7 @@ ms.locfileid: "87445589"
 1. 选择“添加可选声明”。
 1. 选择要配置的令牌类型。
 1. 选择要添加的可选声明。
-1. 选择“添加”  。
+1. 选择 **添加** 。
 
 **通过应用程序清单配置可选声明：**
 
@@ -183,7 +183,7 @@ ms.locfileid: "87445589"
 
 **表 5：OptionalClaims 类型属性**
 
-| 名称          | 类型                       | 描述                                           |
+| 名称          | 类型                       | 说明                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | 集合 (OptionalClaim) | 在 JWT ID 令牌中返回的可选声明。     |
 | `accessToken` | 集合 (OptionalClaim) | 在 JWT 访问令牌中返回的可选声明。 |
@@ -196,7 +196,7 @@ ms.locfileid: "87445589"
 
 **表 6：OptionalClaim 类型属性**
 
-| 名称                   | 类型                    | 描述                                                                                                                                                                                                                                                                                                   |
+| 名称                   | 类型                    | 说明                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | 可选声明的名称。                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | 声明的源（目录对象）。 扩展属性提供预定义声明和用户定义的声明。 如果源值为 null，则声明是预定义的可选声明。 如果源值为 user，则 name 属性中的值是来自用户对象的扩展属性。 |
@@ -399,7 +399,7 @@ ms.locfileid: "87445589"
 
 **清单配置：**
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
 1. 从左侧菜单中选择“Azure Active Directory”。
 1. 在列表中找到要为其配置可选声明的应用程序并选择它。

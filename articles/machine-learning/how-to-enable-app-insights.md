@@ -11,17 +11,17 @@ author: blackmist
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 88a122a9af4a5edac45a3189df5ffb78fb2ce271
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: e12c22d56399ce1690bee678623c58288cf0163b
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423807"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552197"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>监视机器学习 Web 服务终结点以及从中收集数据
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍如何通过以下方式启用 Azure Application Insights，监视部署到 Azure Kubernetes 服务 (AKS) 或 Azure 容器实例 (ACI) 中 Web 服务终结点的模型以及从中收集数据： 
+本文介绍如何在 Azure Kubernetes Service (AKS) 或 Azure 容器)  (实例（通过通过查询日志和启用 Azure 应用程序 Insights）中收集和监视部署到 Azure Service 中 web 服务终结点的模型： 
 * [Azure 机器学习 Python SDK](#python)
 * [Azure 机器学习工作室](#studio) (https://ml.azure.com )
 
@@ -42,6 +42,18 @@ ms.locfileid: "87423807"
 
 * 要部署到 Azure Kubernetes 服务 (AKS) 或 Azure 容器实例 (ACI) 的经过训练的机器学习模型。 如果没有模型，请参阅[训练图像分类模型](tutorial-train-models-with-aml.md)教程
 
+## <a name="query-logs-for-deployed-models"></a>已部署模型的查询日志
+
+若要从以前部署的 Web 服务检索日志，请加载该服务并使用 `get_logs()` 函数。 日志可以包含有关部署期间发生的任何错误的详细信息。
+
+```python
+from azureml.core.webservice import Webservice
+
+# load existing web service
+service = Webservice(name="service-name", workspace=ws)
+logs = service.get_logs()
+```
+
 ## <a name="web-service-metadata-and-response-data"></a>Web 服务元数据和响应数据
 
 > [!IMPORTANT]
@@ -50,6 +62,7 @@ ms.locfileid: "87423807"
 若要将请求的信息记录到 Web 服务，请将 `print` 语句添加到 score.py 文件。 每个 `print` 语句都会在 Application Insights 的跟踪表中的消息 `STDOUT` 下生成一个条目。 `print` 语句的内容将依次包含在跟踪表的 `customDimensions` 和 `Contents` 下。 如果打印 JSON 字符串，它会在 `Contents` 下的跟踪输出中生成分层数据结构。
 
 你可以直接查询 Azure Application Insights 来访问此数据，或者设置到存储帐户的[连续导出](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry)以保留更长时间或进一步进行处理。 然后，可以在 Azure 机器学习中使用模型数据来设置标签、重新训练、可解释性、数据分析或其他用途。 
+
 
 <a name="python"></a>
 
@@ -162,9 +175,9 @@ ms.locfileid: "87423807"
 查看数据：
 
 1. 在[工作室](https://ml.azure.com/)中中转到 Azure 机器学习工作区。
-1. 选择“终结点”。****
+1. 选择“终结点”。
 1. 选择已部署的服务。
-1. 向下滚动以查找**Application Insights url** ，并单击链接。
+1. 向下滚动以查找**Application Insights url**并选择链接。
 
     [![定位 Application Insights url](./media/how-to-enable-app-insights/appinsightsloc.png)](././media/how-to-enable-app-insights/appinsightsloc.png#lightbox)
 

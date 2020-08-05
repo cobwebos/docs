@@ -3,12 +3,12 @@ title: 虚拟网络服务终结点 - Azure 事件中心 | Microsoft Docs
 description: 本文提供了有关如何将 Microsoft EventHub 服务终结点添加到虚拟网络的信息。
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 15778c85f28300df3d5af34e2940b3854d814c66
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 8c798efc21f5b846965f2247d7e76249177ef946
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420442"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554067"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-virtual-networks"></a>允许从特定虚拟网络访问 Azure 事件中心命名空间 
 
@@ -31,6 +31,7 @@ ms.locfileid: "87420442"
 > 以下 Microsoft 服务必须在虚拟网络中
 > - Azure Web 应用
 > - Azure Functions
+> - Azure Monitor（诊断设置）
 
 
 > [!IMPORTANT]
@@ -61,13 +62,13 @@ ms.locfileid: "87420442"
     > [!NOTE]
     > 只会看到**标准**命名空间或**专用**命名空间的 "**网络**" 选项卡。 
 
-    默认情况下，选择 "**所选网络**" 选项。 如果未在此页上指定 IP 防火墙规则或添加虚拟网络，则可以从包括公共 internet 的所有网络（使用访问密钥）访问该命名空间。 
+    默认情况下，选择 "**所选网络**" 选项。 如果未在此页上指定 IP 防火墙规则或添加虚拟网络，则可以通过使用访问密钥) 的所有网络（包括公共 internet (）访问该命名空间。 
 
     :::image type="content" source="./media/event-hubs-firewall/selected-networks.png" alt-text="网络选项卡-所选网络选项" lightbox="./media/event-hubs-firewall/selected-networks.png":::    
 
-    如果选择 "**所有网络**" 选项，则事件中心接受来自任何 IP 地址（使用访问密钥）的连接。 此设置等效于一个接受 0.0.0.0/0 IP 地址范围的规则。 
+    如果选择 "**所有网络**" 选项，则事件中心接受来自任何 IP 地址的连接 (使用访问密钥) 。 此设置等效于一个接受 0.0.0.0/0 IP 地址范围的规则。 
 
-    ![防火墙 - 已选择“所有网络”选项](./media/event-hubs-firewall/firewall-all-networks-selected.png)
+    ![防火墙 - 选中了“所有网络”选项](./media/event-hubs-firewall/firewall-all-networks-selected.png)
 1. 若要限制对特定网络的访问，请在页面顶部选择 "**所选网络**" 选项（如果尚未选择）。
 2. 在页面的 "**虚拟网络**" 部分中，选择 "+ 添加现有虚拟网络"。 如果要创建新的 VNet，请选择 " **+ 创建新虚拟网络**"。 
 
@@ -103,7 +104,7 @@ ms.locfileid: "87420442"
 > 虽然不可能具有拒绝规则，但 Azure 资源管理器模板的默认操作设置为“允许”，不限制连接。
 > 制定虚拟网络或防火墙规则时，必须更改“defaultAction”
 > 
-> 从
+> from
 > ```json
 > "defaultAction": "Allow"
 > ```

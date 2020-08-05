@@ -3,12 +3,12 @@ title: 常见问题的解答
 description: '针对以下常见问题的解答：包括恢复服务保管库在内的 Azure 备份功能、能够备份的内容、原理、加密和限制。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 4273d93e36dd8d956246811dd3f1d71d96ddcb68
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 95d515e65e31304dd4839f851736be6926a5a29f
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532452"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553081"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 
@@ -47,7 +47,7 @@ ms.locfileid: "87532452"
 
 ### <a name="can-i-change-from-grs-to-lrs-after-a-backup"></a>备份后是否可以从 GRS 更改为 LRS？
 
-默认情况下，存储复制类型设置为异地冗余存储（GRS）。 配置备份后，将禁用修改的选项，并且无法更改。
+默认情况下，存储复制类型设置为异地冗余存储 (GRS) 。 配置备份后，将禁用修改的选项，并且无法更改。
 
 ![存储复制类型](./media/backup-azure-backup-faq/storage-replication-type.png)
 
@@ -139,7 +139,7 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>如果在备份作业开始后取消，是否会删除已传输的备份数据？
 
-否。 在备份作业取消之前传输到保管库中的所有数据将保留在保管库中。
+不是。 在备份作业取消之前传输到保管库中的所有数据将保留在保管库中。
 
 - Azure 备份使用检查点机制，在备份过程中偶尔要对备份数据添加检查点。
 - 由于备份数据中有检查点，下次备份过程可以验证文件的完整性。
@@ -165,7 +165,7 @@ BMR/系统状态 |正在备份计算机的 BMR 或系统状态的每个副本。
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point"></a>如果备份保留了很长一段时间，是否需要更多时间才能恢复较旧的数据点？
 
-否。 恢复最旧或最新时间点所需的时间相同。 每个恢复点的行为类似一个完整的点。
+不是。 恢复最旧或最新时间点所需的时间相同。 每个恢复点的行为类似一个完整的点。
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>如果每个恢复点相当于完整的点，它会影响总体可计费备份存储吗？
 
@@ -197,6 +197,10 @@ Azure 备份存储体系结构在这两方面都能提供最佳性能，它以�
 - 如果延长保留期，则会对现有的恢复点进行标记，按新策略要求来保留它们。
 - 如果缩短保留期，则会将其标记为在下一清理作业中删除，随后会将其删除。
 
+### <a name="how-long-is-data-retained-when-stopping-backups-but-selecting-the-option-to-retain-backup-data"></a>停止备份时数据保留多长时间，但选择保留备份数据的选项？
+
+当停止备份并保留数据时，数据删除的现有策略规则将停止，并且数据将无限期保留，直到管理员要删除。
+
 ## <a name="encryption"></a>Encryption
 
 ### <a name="is-the-data-sent-to-azure-encrypted"></a>发送到 Azure 的数据会加密吗？
@@ -214,7 +218,7 @@ Microsoft 不会解密任何位置的备份数据。
 
 ### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>用于加密备份数据的加密密钥的最小长度是多少？
 
-Microsoft Azure 恢复服务（MARS）代理使用的加密密钥派生自密码长度至少为16个字符的密码。 对于 Azure Vm，Azure KeyVault 使用的密钥长度没有限制。
+Microsoft Azure 恢复服务 (MARS) 代理使用的加密密钥派生自密码长度至少为16个字符的密码。 对于 Azure Vm，Azure KeyVault 使用的密钥长度没有限制。
 
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-can-microsoft-recover-the-data"></a>如果我丢失了加密密钥，会发生什么情况？ 能否恢复数据？ Microsoft 能否恢复数据？
 

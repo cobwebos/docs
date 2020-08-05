@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/17/2020
 ms.author: thomasge
-ms.openlocfilehash: e96126d1516e8a1e20e6f6db9b3a448b94c71cd7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e660678f33f36b75147c2513c77d3085136127d
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050603"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563197"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>在 Azure Kubernetes 服务中使用托管标识
 
@@ -105,7 +105,7 @@ az aks show -g myResourceGroup -n myManagedCluster --query "identity"
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
 
-## <a name="bring-your-own-control-plane-mi-preview"></a>自带控制平面 MI （预览）
+## <a name="bring-your-own-control-plane-mi-preview"></a>自带控制平面 MI (预览) 
 使用自定义控制平面标识，可以在创建群集之前将访问权限授予现有标识。 这可以实现以下方案：将自定义 VNET 或 outboundType 与托管标识结合使用。
 
 > [!IMPORTANT]
@@ -118,7 +118,7 @@ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 - Azure CLI 2.9.0 或更高版本
 - Aks-preview 0.4.57 扩展
 
-自带控制平面的限制（预览）：
+自带控制平面 MI (预览) 的限制：
 * 当前不支持 Azure 政府版。
 * 当前不支持 Azure 中国世纪互联。
 
@@ -208,9 +208,9 @@ az aks create \
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* 使用[Azure 资源管理器（ARM）模板][aks-arm-template]创建启用了托管身份的群集。
+* 使用[Azure 资源管理器 (ARM) 模板][aks-arm-template]来创建启用了托管身份的群集。
 
 <!-- LINKS - external -->
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
-[az-identity-create]: https://docs.microsoft.com/cli/azure/identity?view=azure-cli-latest#az-identity-create
-[az-identity-list]: https://docs.microsoft.com/cli/azure/identity?view=azure-cli-latest#az-identity-list
+[az-identity-create]: /cli/azure/identity?view=azure-cli-latest#az-identity-create
+[az-identity-list]: /cli/azure/identity?view=azure-cli-latest#az-identity-list

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 8e832f57053cb950f705875f2895a9197cc7c83e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 61ec96a35fac6a033fe6c8b65cff156ba63e5e58
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85960293"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563340"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>在 Azure 静态 Web 应用预览中设置自定义域
 
@@ -37,7 +37,7 @@ Azure 静态 Web 应用默认提供自动生成的域名。 本文介绍如何�
 
 ## <a name="map-a-cname-record"></a>映射 CNAME 记录
 
-CNAME 记录将一个域映射到另一个域。 可以使用 CNAME 记录将 `www.example.com` 映射到由 Azure 静态 Web 应用提供的自动生成的域。
+CNAME 记录将一个域映射到另一个域。 您可以使用 CNAME 记录将 `www.example.com` 、 `blog.example.com` 或任何其他子域映射到由 Azure 静态 Web 应用提供的自动生成的域。
 
 1. 打开 [Azure 门户](https://portal.azure.com)，然后使用 Azure 帐户登录。
 
