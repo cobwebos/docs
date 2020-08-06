@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
-ms.custom: mvc
-ms.openlocfilehash: f2d0d0517579608a76ccf8c1e63aa993556e8d58
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 4f2c0a51f7c8d2441c9ddff2520dae2f5cc13565
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608019"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87495330"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>快速入门：使用简单的 Azure CLI 命令 az mysql up 创建 Azure Database for MySQL（预览）
 
@@ -60,14 +60,14 @@ az mysql up
 ---|---|---
 server-name | 系统生成的 | 用于标识 Azure Database for MySQL 服务器的唯一名称。
 resource-group | 系统生成的 | 新的 Azure 资源组。
-sku-name | GP_Gen5_2 | SKU 的名称。 请遵循简写约定 {pricing tier}\_{compute generation}\_{vCores}。 默认为带 2 个 vCore 的常规用途 Gen5 服务器。 有关各层的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/mysql/)。
-backup-retention | 7 | 保留备份的时长。 单位为天。
+sku-name | GP_Gen5_2 | SKU 的名称。 遵循约定“{定价层}\_{计算代系}\_{vCores}”的简写形式。 默认为带 2 个 vCore 的常规用途 Gen5 服务器。 有关各层的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/mysql/)。
+backup-retention | 7 | 备份保留时间。 单位为天。
 geo-redundant-backup | 已禁用 | 是否应该为此服务启用异地冗余备份。
 location | westus2 | 服务器的 Azure 位置。
 ssl-enforcement | 已启用 | 是否应该为此服务器启用 SSL。
-storage-size | 5120 | 服务器的存储容量（单位是兆字节）。
+storage-size | 5120 | 服务器的存储容量（以 MB 为单位）。
 版本 | 5.7 | MySQL 主版本。
-admin-user | 系统生成的 | 用于管理员登录的用户名。
+admin-user | 系统生成的 | 管理员的登录用户名。
 admin-password | 系统生成的 | 管理员用户的密码。
 
 > [!NOTE]

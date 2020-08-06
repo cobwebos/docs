@@ -3,12 +3,13 @@ title: 快速入门：将自定义事件发送到事件中心 - 事件网格、A
 description: 快速入门：使用 Azure 事件网格和 Azure CLI 发布一个主题，然后订阅该事件。 事件中心用于终结点。
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 77268dde90959298c76813fb146e972ecfa3685d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 0965963e6527e625d0684821b977b05cb9f28657
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86104089"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497347"
 ---
 # <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>快速入门：使用 Azure CLI 和事件网格将自定义事件路由到 Azure 事件中心
 
@@ -97,8 +98,8 @@ done
 
 通常，你将创建一个从事件中心检索事件的应用程序。 若要创建从事件中心获取消息的应用程序，请参阅：
 
-* [使用 .NET Standard 中的事件处理程序主机接收消息入门](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)
-* [使用 Java 从 Azure 事件中心接收事件](../event-hubs/event-hubs-java-get-started-receive-eph.md)
+* [使用 .NET Standard 中的事件处理程序主机接收消息入门](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
+* [使用 Java 从 Azure 事件中心接收事件](../event-hubs/event-hubs-java-get-started-send.md)
 * [使用 Apache Storm 从事件中心接收事件](../event-hubs/event-hubs-storm-getstarted-receive.md)
 
 ## <a name="clean-up-resources"></a>清理资源

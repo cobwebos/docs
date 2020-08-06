@@ -13,13 +13,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: c233ef9cfb6ded6f3d4e96b893970d4282dfc22e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 6e4f71be1dc3cdaeb01069f234531da29a7b4977
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526973"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498695"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和管理 Linux VM
 
@@ -254,7 +254,7 @@ Azure VM 可能会处于多种电源状态之一。 从虚拟机监控程序的�
 | 电源状态 | 说明
 |----|----|
 | 正在启动 | 指示正在启动虚拟机。 |
-| 运行 | 指示虚拟机正在运行。 |
+| 正在运行 | 指示虚拟机正在运行。 |
 | 正在停止 | 指示正在停止虚拟机。 | 
 | 已停止 | 指示虚拟机已停止。 虚拟机处于停止状态时仍会产生计算费用。  |
 | 正在解除分配 | 指示正在解除分配虚拟机。 |

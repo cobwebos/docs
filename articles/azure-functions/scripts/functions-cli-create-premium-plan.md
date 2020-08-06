@@ -4,12 +4,13 @@ description: 使用 Azure CLI 在 Azure 中的可缩放高级计划中创建函�
 ms.service: azure-functions
 ms.topic: sample
 ms.date: 11/23/2019
-ms.openlocfilehash: 3587e5b5e46867ff3abe97b3593c9732be3afa22
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 70a5a29a251590580ac787efe8460caf07598898
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85117212"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498270"
 ---
 # <a name="create-a-function-app-in-a-premium-plan---azure-cli"></a>在高级计划中创建函数应用 - Azure CLI
 

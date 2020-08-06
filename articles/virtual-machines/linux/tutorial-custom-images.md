@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: bd4da23ed3f4b2dc92652493c77efbcbc0542066
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7fff8539f330c7cbc886577eaf6dbe4417411999
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86510117"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498134"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>教程：使用 Azure CLI 创建 Azure VM 的自定义映像
 
@@ -47,7 +47,7 @@ ms.locfileid: "86510117"
 
 下列步骤详细说明如何将现有 VM 转换为可重用自定义映像，以便将其用于创建新 VM 实例。
 
-若要完成本教程中的示例，必须具备现有虚拟机。 如果需要，可以参阅 [CLI 快速入门](quick-create-cli.md)来创建本教程所用的 VM。 在学习本教程期间，请根据需要替换资源名称。
+若要完成本教程中的示例，必须现有一个虚拟机。 如果需要，可以参阅 [CLI 快速入门](quick-create-cli.md)来创建本教程所用的 VM。 在学习本教程期间，请根据需要替换资源名称。
 
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 
@@ -184,7 +184,7 @@ Azure 还提供一个基于 Packer 的服务：[Azure VM 映像生成器](./imag
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已创建自定义 VM 映像。 你已了解如何执行以下操作：
+在本教程中，已创建自定义 VM 映像。 你已了解如何：
 
 > [!div class="checklist"]
 > * 创建共享映像库

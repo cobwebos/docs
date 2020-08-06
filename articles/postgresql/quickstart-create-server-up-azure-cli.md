@@ -7,12 +7,13 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: 1dd20d94737df3e799876323d2aeb555dcb9a381
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 1a2b7ceea74091931c92d28f8fa47b9046b545fc
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82146808"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496570"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>快速入门：使用 Azure CLI 命令、az postgres up（预览版）创建 Azure Database for PostgreSQL - 单一服务器
 
@@ -27,13 +28,13 @@ ms.locfileid: "82146808"
 
 本文要求在本地运行 Azure CLI 2.0 或更高版本。 若要查看安装的版本，请运行 `az --version` 命令。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
-需要使用 [az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) 命令登录账户。 记下命令行输出中相应订阅名称的 ID 属性  。
+需要使用 [az login](/cli/azure/authenticate-azure-cli?view=interactive-log-in) 命令登录账户。 记下命令行输出中相应订阅名称的 ID 属性。
 
 ```azurecli
 az login
 ```
 
-如果有多个订阅，请选择应计费的资源所在的相应订阅。 使用 [az account set](/cli/azure/account) 命令选择帐户下的特定订阅 ID。 将 az login 输出中的你的订阅的订阅 ID 属性替换到订阅 ID 占位符中   。
+如果有多个订阅，请选择应计费的资源所在的相应订阅。 使用 [az account set](/cli/azure/account) 命令选择帐户下的特定订阅 ID。 将 az login 输出中的你的订阅的订阅 ID 属性替换到订阅 ID 占位符中 。
 
 ```azurecli
 az account set --subscription <subscription id>
@@ -59,12 +60,12 @@ az postgres up
 ---|---|---
 server-name | 系统生成的 | 用于标识用于 PostgreSQL 的 Azure 数据库服务器的唯一名称。
 resource-group | 系统生成的 | 新的 Azure 资源组。
-sku-name | GP_Gen5_2 | SKU 的名称。 请遵循简写约定 {pricing tier}\_{compute generation}\_{vCores}。 默认为带 2 个 vCore 的常规用途 Gen5 服务器。 有关各层的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/postgresql/)。
+sku-name | GP_Gen5_2 | SKU 的名称。 遵循约定“{定价层}\_{计算代系}\_{vCores}”的简写形式。 默认为带 2 个 vCore 的常规用途 Gen5 服务器。 有关各层的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/postgresql/)。
 backup-retention | 7 | 备份保留的期限。 单位为天。
 geo-redundant-backup | 已禁用 | 是否应该为此服务启用异地冗余备份。
 location | westus2 | 服务器的 Azure 位置。
 ssl-enforcement | 已禁用 | 是否应该为此服务器启用 TLS/SSL。
-storage-size | 5120 | 服务器的存储容量（单位是兆字节）。
+storage-size | 5120 | 服务器的存储容量（以 MB 为单位）。
 版本 | 10 | PostgreSQL 主版本。
 admin-user | 系统生成的 | 管理员用户名。
 admin-password | 系统生成的 | 管理员用户的密码。

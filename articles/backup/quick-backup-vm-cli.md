@@ -4,13 +4,13 @@ description: 在本快速入门中，你将了解如何创建恢复服务保管�
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/31/2019
-ms.custom: mvc
-ms.openlocfilehash: 275a53c0ae5e1058d58516e9c01fa894ddad2120
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: b263d5394d642301c5fc53e169186e4aea56ecab
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054592"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87497454"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>使用 CLI 在 Azure 中备份虚拟机
 
