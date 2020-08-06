@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 51ebecf784b7a3ec38f84703a74e96d277afa70c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bf16ee0af1c5816822f6a201ad1d5a70127082db
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84658210"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825372"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>将 Azure 托管磁盘存储从标准类型转换为高级类型，或者从高级类型转换为标准类型
 
-有四种磁盘类型的 Azure 托管磁盘： Azure ultra Ssd （预览版）、高级 SSD、标准 SSD 和标准 HDD。 可以根据性能需求在三种 GA 磁盘类型（高级 SSD、标准 SSD 和标准 HDD）之间切换。 你还不能从或切换到 ultra SSD，你必须部署一个新的。
+有四种磁盘类型的 Azure 托管磁盘： Azure ultra Ssd (预览版) 、高级 SSD、标准 SSD 和标准 HDD。 可以根据性能需求在三种 GA 磁盘类型（高级 SSD、标准 SSD 和标准 HDD）之间切换。 你还不能从或切换到 ultra SSD，你必须部署一个新的。
 
 非托管磁盘不支持此功能。 但是，可以轻松[将非托管磁盘转换为托管磁盘](convert-unmanaged-to-managed-disks.md)，然后即可切换磁盘类型。
 
@@ -30,7 +30,7 @@ ms.locfileid: "84658210"
 
 ## <a name="switch-all-managed-disks-of-a-vm-between-premium-and-standard"></a>将 VM 的所有托管磁盘在高级类型与标准类型之间切换
 
-此示例演示如何将 VM 的所有磁盘从标准存储转换为高级存储，或者从高级存储转换为标准存储。 若要使用高级托管磁盘，VM 必须使用支持高级存储的 [VM 大小](sizes.md)。 此示例还会切换到支持高级存储的大小。
+此示例演示如何将 VM 的所有磁盘从标准存储转换为高级存储，或者从高级存储转换为标准存储。 若要使用高级托管磁盘，VM 必须使用支持高级存储的 [VM 大小](../sizes.md)。 此示例还会切换到支持高级存储的大小。
 
  ```azurecli
 
@@ -67,7 +67,7 @@ az vm start --name $vmName --resource-group $rgName
 ```
 ## <a name="switch-individual-managed-disks-between-standard-and-premium"></a>在标准类型与高级类型之间切换单个托管磁盘
 
-对于开发/测试工作负荷，可以混合使用标准磁盘和高级磁盘来降低成本。 可以选择仅升级需要更高性能的磁盘。 此示例演示如何将单个 VM 磁盘从标准存储转换为高级存储，或者从高级存储转换为标准存储。 若要使用高级托管磁盘，VM 必须使用支持高级存储的 [VM 大小](sizes.md)。 此示例还会切换到支持高级存储的大小。
+对于开发/测试工作负荷，可以混合使用标准磁盘和高级磁盘来降低成本。 可以选择仅升级需要更高性能的磁盘。 此示例演示如何将单个 VM 磁盘从标准存储转换为高级存储，或者从高级存储转换为标准存储。 若要使用高级托管磁盘，VM 必须使用支持高级存储的 [VM 大小](../sizes.md)。 此示例还会切换到支持高级存储的大小。
 
  ```azurecli
 

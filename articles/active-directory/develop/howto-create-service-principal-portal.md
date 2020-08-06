@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 479222cc9b67775d359182740dc78865da8cee38
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 06e1abc4f863674cc67c1a78a9f2f626565d296f
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115928"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828925"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 
@@ -107,7 +107,7 @@ ms.locfileid: "87115928"
 
    ![选择要分配给应用程序的角色](./media/howto-create-service-principal-portal/select-role.png)
 
-1. 选择“保存”完成角色分配。 应用程序会显示在其角色对应于该范围的用户的列表中。
+1. 选择“保存”  完成角色分配。 应用程序会显示在其角色对应于该范围的用户的列表中。
 
 服务主体已设置完毕。 可以开始使用它运行脚本或应用。 若要管理服务主体（权限、用户同意权限、查看已同意的用户、查看权限、查看登录信息等），请访问“企业应用程序”。
 
@@ -152,7 +152,7 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 若要上传证书，请执行以下操作：
 
-1. 选择“Azure Active Directory”  。
+1. 选择“Azure Active Directory” 。
 1. 从 Azure AD 中的“应用注册”，选择应用程序。
 1. 选择“证书和机密”。
 1. 选择“上传证书”并选择证书（现有证书或导出的自签名证书）。
@@ -187,5 +187,5 @@ $cert=New-SelfSignedCertificate -Subject "CN=DaemonConsoleCert" -CertStoreLocati
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[使用 Azure PowerShell 创建服务主体](howto-authenticate-service-principal-powershell.md)。
-* 若要了解如何指定安全策略，请参阅 [Azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)。  
+* 若要了解有关指定安全策略的信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)。  
 * 有关可对用户授予或拒绝的可用操作的列表，请参阅 [Azure Resource Manager 资源提供程序操作](../../role-based-access-control/resource-provider-operations.md)。

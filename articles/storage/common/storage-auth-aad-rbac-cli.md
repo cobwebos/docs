@@ -11,16 +11,16 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 65dee169b620fbe0726a9e62ee520c92f91d48cf
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 5714ab17f82f9c4d9c1d00f297c0950e41f54cdc
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534186"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827973"
 ---
 # <a name="use-azure-cli-to-assign-an-azure-role-for-access-to-blob-and-queue-data"></a>使用 Azure CLI 分配 Azure 角色以访问 blob 和队列数据
 
-Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 存储空间定义一组 Azure 内置角色，这些角色包含用于访问 blob 或队列数据的公用权限集。
+Azure Active Directory (Azure AD) 通过[AZURE RBAC (的 azure 基于角色的访问控制](../../role-based-access-control/overview.md)来授予对受保护资源的访问权限。 Azure 存储空间定义一组 Azure 内置角色，这些角色包含用于访问 blob 或队列数据的公用权限集。
 
 将 Azure 角色分配到 Azure AD 安全主体时，Azure 会向该安全主体授予对这些资源的访问权限。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 Azure AD 安全主体可以是用户、组、应用程序服务主体，也可以是 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 

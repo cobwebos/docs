@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9e4181956d81ddbe0a385987689a8cb0248ac535
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: fb265f8a8ab34972dac8529d267e41edaf0acb4c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553948"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829282"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Azure 认知搜索中的安全性 - 概述
 
@@ -120,14 +120,14 @@ Azure 认知搜索的[专用终结点](../private-link/private-endpoint-overview
 
 如果需要对搜索结果进行特定于每个用户的控制，则可以在查询上生成安全筛选器，返回与给定安全标识相关联的文档。 基于标识的访问控制是根据标识来修整文档和内容的搜索结果的*筛选器*，而不是预定义的角色和角色分配。 下表描述了修整未经授权内容的搜索结果的两种方法。
 
-| 方法 | 说明 |
+| 方法 | 描述 |
 |----------|-------------|
 |[基于标识筛选器的安全修整](search-security-trimming-for-azure-search.md)  | 阐述实现用户标识访问控制的基本工作流。 该工作流包括将安全标识符添加到索引，然后解释如何针对该字段进行筛选，以修整受禁内容的结果。 |
 |[Azure Active Directory 标识的安全修整](search-security-trimming-for-azure-search-with-aad.md)  | 此文延伸了前一篇文章的内容，提供了有关从 Azure Active Directory (AAD)（Azure 云平台中的一个[免费服务](https://azure.microsoft.com/free/)）检索标识的步骤。 |
 
 ## <a name="administrative-rights"></a>管理权限
 
-[基于角色的访问 (RBAC)](../role-based-access-control/overview.md) 是基于 [Azure 资源管理器](../azure-resource-manager/management/overview.md)构建的授权系统，用于预配 Azure 资源。 在 Azure 认知搜索中，资源管理器用于创建或删除服务、管理 API 密钥以及缩放服务。 因此，Azure 角色分配将确定谁可以执行这些任务，无论他们使用的是[门户](search-manage.md)、 [POWERSHELL](search-manage-powershell.md)还是[管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
+Azure [RBAC) 的 azure 基于角色的访问控制 (](../role-based-access-control/overview.md)是在[azure 资源管理器](../azure-resource-manager/management/overview.md)上构建的用于预配 azure 资源的授权系统。 在 Azure 认知搜索中，资源管理器用于创建或删除服务、管理 API 密钥以及缩放服务。 因此，Azure 角色分配将确定谁可以执行这些任务，无论他们使用的是[门户](search-manage.md)、 [POWERSHELL](search-manage-powershell.md)还是[管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
 
 相反，对服务上托管的内容（如创建或删除索引的能力）的管理权限是授予，如[前一部分](#index-access)中所述。
 

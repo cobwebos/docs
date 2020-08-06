@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
-ms.openlocfilehash: 9085549486333968b98b4d34679c8616282d960f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: eb06f98d1a6e9b76c321e3d202043d656a2d94eb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096572"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829044"
 ---
 # <a name="infiniband-driver-extension-for-linux"></a>适用于 Linux 的无限驱动程序扩展
 
-此扩展在运行 Linux 的无容量和启用了 SR-IOV （' r ' 大小）的[H 系列](../sizes-hpc.md)和[N 系列](../sizes-gpu.md)vm 上安装了不 OFED 的设备驱动程序。 根据 VM 系列的不同，扩展将为 x-blade NIC 安装适当的驱动程序。
+此扩展在运行 Linux) H 系列和 N 系列 vm [H 系列](../sizes-hpc.md)和[N 系列](../sizes-gpu.md)虚拟机上安装 OFED 驱动程序，并在启用了 sr-iov 的、启用了 sr-iov 的 ( "r" 大小。 根据 VM 系列的不同，扩展将为 x-blade NIC 安装适当的驱动程序。
 
-[此处](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband#manually-install-mellanox-ofed)提供有关手动安装 OFED 驱动程序的说明。
+[此处](../workloads/hpc/enable-infiniband.md#manual-installation)提供有关手动安装 OFED 驱动程序的说明。
 
 还可使用扩展来安装[Windows vm](hpc-compute-infiniband-windows.md)的无窗口驱动程序。
 
@@ -72,8 +72,8 @@ ms.locfileid: "87096572"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | string |
-| type | InfiniBandDriverLinux | string |
+| publisher | Microsoft.HpcCompute | 字符串 |
+| type | InfiniBandDriverLinux | 字符串 |
 | typeHandlerVersion | 1.1 | int |
 
 
@@ -178,7 +178,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 10 | 用于 Hyper-V 和 Azure 的 Linux Integration Services 不可用或未安装 | 检查 lspci 的输出 |
 | 11 | 在此 VM 大小上找不到 Mellanox 无空间 | 使用[受支持的 VM 大小和 OS](../sizes-hpc.md) |
 | 12 | 不支持的映像产品/服务 |
-| 13 | 不支持的 VM 大小 | 使用已启用的（"r" 大小） [H 系列](../sizes-hpc.md)和[N 系列](../sizes-gpu.md)n 系列 VM 进行部署 |
+| 13 | 不支持的 VM 大小 | 使用启用了不支持的 ( "r" 大小) [H 系列](../sizes-hpc.md)和[N 系列](../sizes-gpu.md)n 系列 VM 进行部署 |
 | 14 | 操作失败 | 检查执行输出日志 |
 
 
@@ -187,7 +187,7 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 如果对本文中的任何内容需要更多帮助，可以联系 [MSDN Azure 和 Stack Overflow 论坛](https://azure.microsoft.com/support/community/)上的 Azure 专家。 或者，你可以通过[Azure 支持站点](https://azure.microsoft.com/support/options/)提供支持事件。 有关使用 Azure 支持的信息，请阅读 [Microsoft Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
 
 ## <a name="next-steps"></a>后续步骤
-有关未启用的（"r" 大小）的详细信息，请参阅[H 系列](../sizes-hpc.md)和[N 系列](../sizes-gpu.md)vm。
+有关启用了未支持 ( "r" 大小) 的详细信息，请参阅[H 系列](../sizes-hpc.md)和[N 系列](../sizes-gpu.md)vm。
 
 > [!div class="nextstepaction"]
 > [详细了解 Linux Vm 扩展和功能](features-linux.md)

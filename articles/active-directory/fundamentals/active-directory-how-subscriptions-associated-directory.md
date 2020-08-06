@@ -2,7 +2,7 @@
 title: 将现有 Azure 订阅添加到租户 - Azure AD
 description: 有关将现有 Azure 订阅添加到 Azure Active Directory 租户的说明。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18, contperfq4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86223c35118c9c54be49fa830a264a0059ef3937
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 95c3ad5fa66e1327c1fe646303f268ae4e84bd89
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494428"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825015"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>将 Azure 订阅关联或添加到 Azure Active Directory 租户
 
@@ -31,7 +31,7 @@ Azure 订阅与 Azure Active Directory (Azure AD) 之间存在信任关系。 �
 所有用户都有一个用于身份验证的“主”目录。 用户还可以充当其他目录中的来宾。 可在 Azure AD 中查看每位用户的主目录和来宾目录。
 
 > [!Important]
-> 当你将订阅与其他目录关联时，具有使用[基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 分配的角色的用户将失去其访问权限。 经典订阅管理员（包括服务管理员和共同管理员）也将失去其访问权限。
+> 将订阅关联到不同的目录时，具有使用[azure 基于角色的访问控制分配角色的用户 (AZURE RBAC) ](../../role-based-access-control/role-assignments-portal.md)会失去其访问权限。 经典订阅管理员（包括服务管理员和共同管理员）也将失去其访问权限。
 >
 > 当订阅与不同的目录关联时，还会从该订阅中删除策略分配。
 >

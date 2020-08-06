@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: d4ad1c46aa023f30a2d33ef11e576aa29607b273
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 6c4ee08c1679abd54b98d2804ab120c9330f6968
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325417"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827480"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>使用 Java 创建和管理 Azure 中的 Windows VM
 
@@ -107,7 +107,7 @@ ms.locfileid: "87325417"
     </dependency>
     ```
 
-3. 保存该文件。
+3. 保存文件。
 
 ## <a name="create-credentials"></a>创建凭据
 
@@ -413,7 +413,7 @@ input.nextLine();
 
 ### <a name="resize-the-vm"></a>重设 VM 大小
 
-决定虚拟机大小时应考虑部署的诸多方面。 有关详细信息，请参见 [VM 大小](sizes.md)。  
+决定虚拟机大小时应考虑部署的诸多方面。 有关详细信息，请参见 [VM 大小](../sizes.md)。  
 
 若要更改虚拟机大小，请将此代码添加到 main 方法的 try 块：
 

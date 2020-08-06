@@ -3,12 +3,12 @@ title: 作为 Azure 事件网格合作伙伴加入
 description: 加入 Azure 事件网格伙伴主题类型。 了解合作伙伴主题的资源模型和发布流程。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: bf4534849ae29d89524a877ca410d25c74637c94
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 36f2178b7c21af016f9074d6f973a01cedb873d7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461249"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826783"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>作为 Azure 事件网格合作伙伴加入
 
@@ -34,7 +34,7 @@ ms.locfileid: "87461249"
 
     ![创建合作伙伴主题](./media/partner-onboarding-how-to/create-partner-registration.png)
 
-1. 在要发布事件的每个区域中创建一个或多个伙伴命名空间。 事件网格服务预配发布终结点（例如， `https://contoso.westus-1.eventgrid.azure.net/api/events` ）和访问密钥。
+1. 在要发布事件的每个区域中创建一个或多个伙伴命名空间。 事件网格服务设置发布终结点 (例如 `https://contoso.westus-1.eventgrid.azure.net/api/events`) 和访问密钥。
 
     ![创建合作伙伴命名空间](./media/partner-onboarding-how-to/create-partner-namespace.png)
 
@@ -61,7 +61,7 @@ ms.locfileid: "87461249"
 ### <a name="partner-registrations"></a>合作伙伴注册
 * 资源：`partnerRegistrations`
 * 使用者：合作伙伴
-* 描述：捕获软件即服务（SaaS）合作伙伴的全局元数据（例如，名称、显示名称、说明、安装 URI）。
+* 说明：将软件的全局元数据捕获 (SaaS) 伙伴 (例如，名称、显示名称、说明、安装 URI) 。
     
     创建或更新合作伙伴注册是适用于合作伙伴的自助服务操作。 此自助服务功能使合作伙伴能够构建并测试完整的端到端流程。
     
@@ -83,7 +83,7 @@ ms.locfileid: "87461249"
 ### <a name="partner-topics"></a>合作伙伴主题
 * 资源：`partnerTopics`
 * 使用者：客户
-* 说明：合作伙伴主题类似于事件网格中的自定义主题和系统主题。 每个合作伙伴主题都与特定的源（例如 `Contoso:myaccount` ）和特定的合作伙伴主题类型（例如 Contoso）相关联。 客户可在合作伙伴主题上创建事件订阅，以将事件路由到各种事件处理程序。
+* 说明：合作伙伴主题类似于事件网格中的自定义主题和系统主题。 每个合作伙伴主题都与特定的源 (相关联，例如 `Contoso:myaccount`) 和特定的合作伙伴主题类型 (例如 Contoso) 。 客户可在合作伙伴主题上创建事件订阅，以将事件路由到各种事件处理程序。
 
     客户无法直接创建此资源。 创建合作伙伴主题的唯一方法是通过创建事件隧道的合作伙伴操作完成。
 * 范围：在客户订阅中。
@@ -91,7 +91,7 @@ ms.locfileid: "87461249"
 ### <a name="partner-topic-types"></a>合作伙伴主题类型
 * 资源：`partnerTopicTypes`
 * 使用者：客户
-* 说明：合作伙伴主题类型是 tenantwide 的资源类型，这些资源类型使客户能够发现已批准的合作伙伴主题类型的列表。 URL 如下所示https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
+* 说明：合作伙伴主题类型是租户范围的资源类型，使客户能够发现已批准的合作伙伴主题类型的列表。 URL 如下所示https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
 * 范围：Global
 
 ## <a name="publish-events-to-event-grid"></a>将事件发布到事件网格
@@ -150,10 +150,10 @@ ms.locfileid: "87461249"
 | 终结点不正确                 | 404 未找到         |
 | 数组或事件超出大小限制 | 413 有效负载太大 |
 
-## <a name="references"></a>参考资料
+## <a name="references"></a>参考
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
-  * [ARM 模板](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/allversions)
+  * [ARM 模板](/azure/templates/microsoft.eventgrid/allversions)
   * [ARM 模板架构](https://github.com/Azure/azure-resource-manager-schemas/blob/master/schemas/2020-04-01-preview/Microsoft.EventGrid.json)
   * [REST API](/rest/api/eventgrid/version2020-04-01-preview/partnernamespaces)
   * [CLI 扩展](/cli/azure/ext/eventgrid/?view=azure-cli-latest)

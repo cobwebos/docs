@@ -6,16 +6,16 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 7ad910823c4dd2430aeae085dd8e510fcd42c80f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 585ea3b5ddd16acb9af83c1c1e0e4aa6ca9e631a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532588"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826698"
 ---
 # <a name="add-storage-targets"></a>添加存储目标
 
-*存储目标*是可通过 Azure HPC 缓存访问的文件的后端存储。 可以添加 NFS 存储（例如本地硬件系统），也可以将数据存储在 Azure Blob 中。
+*存储目标*是可通过 Azure HPC 缓存访问的文件的后端存储。 你可以添加 NFS 存储 (，例如本地硬件系统) ，或将数据存储在 Azure Blob 中。
 
 最多可为一个缓存定义十个不同的存储目标。 缓存在一个聚合命名空间中显示所有存储目标。
 
@@ -25,7 +25,7 @@ ms.locfileid: "87532588"
 
 单击下面的图像，观看有关创建缓存并从 Azure 门户添加存储目标的[视频演示](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)。
 
-[![视频缩略图： Azure HPC 缓存：设置（单击以访问视频页）](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
+[![视频缩略图： Azure HPC 缓存：安装程序 (单击以访问视频页面) ](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
 ## <a name="view-storage-targets"></a>查看存储目标
 
@@ -39,13 +39,13 @@ ms.locfileid: "87532588"
 
 [!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
 
-使用[az hpc-缓存存储-目标列表](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list)选项来显示缓存的现有存储目标。 提供缓存名称和资源组（除非已全局设置）。
+使用[az hpc-缓存存储-目标列表](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list)选项来显示缓存的现有存储目标。 提供缓存名称和资源组 (，除非已将其全局设置) 。
 
 ```azurecli
 az hpc-cache storage-target list --resource-group "scgroup" --cache-name "sc1"
 ```
 
-使用[az hpc-缓存存储-目标显示](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list)来查看有关特定存储目标的详细信息。 （按名称指定存储目标。）
+使用[az hpc-缓存存储-目标显示](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-list)来查看有关特定存储目标的详细信息。  (按名称指定存储目标。 ) 
 
 示例：
 
@@ -101,7 +101,7 @@ $
 
 * **存储容器**-选择此目标的 Blob 容器，或单击 "**新建**"。
 
-  ![用于为新容器指定名称和访问级别（私有）的对话框屏幕截图](media/add-blob-new-container.png)
+  ![用于为新容器指定名称和访问级别 (专用) 的对话框屏幕截图](media/add-blob-new-container.png)
 
 * **虚拟命名空间路径**-为此存储目标设置面向客户端的文件路径。 阅读[配置聚合命名空间](hpc-cache-namespace.md)，了解有关虚拟命名空间功能的详细信息。
 
@@ -112,7 +112,7 @@ $
 
 ### <a name="add-the-access-control-roles-to-your-account"></a>向你的帐户添加访问控制角色
 
-Azure HPC 缓存使用[基于角色的访问控制（RBAC）](https://docs.microsoft.com/azure/role-based-access-control/index)来授权缓存服务访问 Azure Blob 存储目标的存储帐户。
+Azure HPC 缓存使用 azure [RBAC)  (azure 基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/index)来授权缓存服务访问 Azure Blob 存储目标的存储帐户。
 
 存储帐户所有者必须为用户 "HPC 缓存资源提供程序" 显式添加角色[存储帐户参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor)和[存储 Blob 数据参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)。
 
@@ -120,18 +120,18 @@ Azure HPC 缓存使用[基于角色的访问控制（RBAC）](https://docs.micro
 
 添加 Azure 角色的步骤：
 
-1. 打开存储帐户的 "**访问控制（IAM）** " 页。 （"**添加存储目标**" 页中的链接会自动打开所选帐户的此页。）
+1. 打开存储帐户** ("IAM) ** " 页上的 "访问控制"。  ("**添加存储目标**" 页中的链接会自动打开所选帐户的此页。 ) 
 
 1. 单击 **+** 页面顶部的，然后选择 "**添加角色分配**"。
 
 1. 从列表中选择 "存储帐户参与者" 角色。
 
-1. 在 "**将访问权限分配给**" 字段中，保留选定的默认值（"Azure AD 用户、组或服务主体"）。  
+1. 在 "**分配给**" 字段中，保留 ( "Azure AD 用户、组或服务主体" ) 所选的默认值。  
 
 1. 在**选择**字段中，搜索 "hpc"。  此字符串应匹配一个名为 "HPC 缓存资源提供程序" 的服务主体。 单击该主体将其选中。
 
    > [!NOTE]
-   > 如果搜索 "hpc" 不起作用，请尝试使用字符串 "storagecache"。 参与预览（GA 之前）的用户可能需要使用服务主体的旧名称。
+   > 如果搜索 "hpc" 不起作用，请尝试使用字符串 "storagecache"。 在 GA) 之前参与预览 (的用户可能需要使用服务主体的旧名称。
 
 1. 单击底部的 "**保存**" 按钮。
 
@@ -147,7 +147,7 @@ Azure HPC 缓存使用[基于角色的访问控制（RBAC）](https://docs.micro
 
 添加 blob 存储目标之前，请检查缓存是否具有正确的角色以访问存储帐户，以及防火墙设置是否允许创建存储目标。
 
-Azure HPC 缓存使用[基于角色的访问控制（RBAC）](../role-based-access-control/index.yml)来授权缓存服务访问 Azure Blob 存储目标的存储帐户。
+Azure HPC 缓存使用 azure [RBAC)  (azure 基于角色的访问控制](../role-based-access-control/index.yml)来授权缓存服务访问 Azure Blob 存储目标的存储帐户。
 
 存储帐户所有者必须为用户 "HPC 缓存资源提供程序" 显式添加角色[存储帐户参与者](../role-based-access-control/built-in-roles.md#storage-account-contributor)和[存储 Blob 数据参与者](../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)。
 
@@ -220,9 +220,9 @@ NFS 存储目标的字段比 Blob 存储目标多。 这些字段指定如何访
 
 | 使用模型                   | 缓存模式 | 后端验证 | 最大写回延迟 |
 |-------------------------------|--------------|-----------------------|--------------------------|
-| 读取繁重的罕见写入 | 读取         | 从不                 | 无                     |
+| 读取繁重的罕见写入 | 读取         | 从不                 | None                     |
 | 超过15% 写入       | 读取/写入   | 从不                 | 1 小时                   |
-| 客户端绕过缓存      | 读取         | 30 秒            | 无                     |
+| 客户端绕过缓存      | 读取         | 30 秒            | None                     |
 
 ### <a name="create-an-nfs-storage-target"></a>创建 NFS 存储目标
 
@@ -236,7 +236,7 @@ NFS 存储目标的字段比 Blob 存储目标多。 这些字段指定如何访
 
 * **目标类型**-选择 " **NFS**"。
 
-* **主机名**-输入 NFS 存储系统的 IP 地址或完全限定的域名。 （仅当缓存有权访问可解析名称的 DNS 服务器时，才使用域名。）
+* **主机名**-输入 NFS 存储系统的 IP 地址或完全限定的域名。 仅当缓存有权访问可解析名称的 DNS 服务器时，才 (使用域名 ) 
 
 * **使用情况模型**-选择一个基于工作流的数据缓存配置文件，如[选择上述使用情况模型](#choose-a-usage-model)中所述。
 
@@ -265,7 +265,7 @@ NFS 存储目标可以有多个虚拟路径，只要每个路径代表同一个�
 使用 Azure CLI 命令[az hpc-cache nfs-target add](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-add)来创建存储目标。 除缓存名称和缓存资源组外，还提供以下值：
 
 * ``--name``-设置在 Azure HPC 缓存中标识此存储目标的名称。
-* ``--nfs3-target``-你的 NFS 存储系统的 IP 地址。 （如果你的缓存有权访问可解析该名称的 DNS 服务器，则可以在此处使用完全限定的域名。）
+* ``--nfs3-target``-你的 NFS 存储系统的 IP 地址。  (如果你的缓存有权访问可解析该名称的 DNS 服务器，则可以在此处使用完全限定的域名。 ) 
 * ``--nfs3-usage-model``-数据缓存配置文件之一，请参阅上面的[选择使用情况模型](#choose-a-usage-model)中所述。
 
   使用命令[az hpc-cache 用量-model list](/cli/azure/ext/hpc-cache/hpc-cache/usage-model#ext-hpc-cache-az-hpc-cache-usage-model-list)验证使用模型的名称。
@@ -280,7 +280,7 @@ NFS 存储目标可以有多个虚拟路径，只要每个路径代表同一个�
 
   * ``namespace-path``-面向客户端的虚拟文件路径
   * ``nfs-export``-与面向客户端的路径关联的存储系统导出
-  * ``target-path``（可选）-导出的子目录（如果需要）
+  * ``target-path`` (可选) -导出的子目录（如果需要）
 
   示例： ``--junction namespace-path="/nas-1" nfs-export="/datadisk1" target-path="/test"``
 

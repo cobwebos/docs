@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure 存储资源管理器发行说明
-description: Microsoft Azure 存储资源管理器发行说明
+description: 阅读 Microsoft Azure 存储资源管理器最新版本的发行说明。 还显示了以前版本的发行说明。
 services: storage
 documentationcenter: na
 author: cawaMS
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 986da8980a569583ef454833957ace85dd1bfbb6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91bc7adaf7829766c471056c50c1c3abd70dda63
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80351060"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828772"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 存储资源管理器发行说明
 
@@ -39,14 +39,14 @@ ms.locfileid: "80351060"
       * 上传，包括拖放
       * 下载
       * 复制和粘贴 #1249
-      * Delete
+      * 删除
    * ADLS Gen2 Blob
       * 上传，包括拖放
       * 下载
       * 复制和粘贴
       * 删除，包括文件夹删除
    * 托管磁盘
-      * 上传
+      * 上载
       * 下载
       * 复制和粘贴
 
@@ -94,7 +94,7 @@ ms.locfileid: "80351060"
 * 由于 NodeJS 中的 bug，从 OneDrive 文件夹上传不正常工作。 该 bug 已修复，但尚未集成到 Electron 中。 若要在向/从 Blob 容器上传或下载时解决此问题，可以使用试验性的 AzCopy 功能。
 * 当以 Azure Stack 为目标时，将某些文件作为追加 blob 进行上传可能会失败。
 * 对任务单击“取消”后，可能需要一段时间才能取消该任务。 这是因为我们使用的是此处介绍的“取消筛选”解决办法。
-* 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器，使其忘记该选择。
+* 如果选择错误的 PIN/智能卡证书，需要重启存储资源管理器使其忘记该选择。
 * 重命名 blob（单独地或在已重命名的 blob 容器中）不保留快照。 重命名期间保留 blob、文件和实体的所有其他属性和元数据。
 * Azure Stack 不支持以下功能。 在处理 Azure Stack 资源时尝试使用这些功能可能会导致意外错误。
    * 文件共享
@@ -120,7 +120,7 @@ ms.locfileid: "80351060"
 * [版本 1.7.0](#version-170)
 * [版本 1.6.2](#version-162)
 * [版本 1.6.1](#version-161)
-* [版本 1.6.0](#version-160)
+* [版本1.6。0](#version-160)
 * [版本 1.5.0](#version-150)
 * [版本 1.4.4](#version-144)
 * [版本 1.4.3](#version-143)
@@ -162,13 +162,13 @@ ms.locfileid: "80351060"
 ### <a name="new"></a>新建
 * 存储资源管理器现在提供专用的“设置”UI。 可以通过“编辑”→“设置”访问该 UI，或者，可以单击左侧垂直工具栏中的“设置”图标（齿轮）。 只有在了解此功能后，才能提供各种[用户请求的设置](https://github.com/microsoft/AzureStorageExplorer/labels/%3Abulb%3A%20setting%20candidate)。 从此版本开始支持以下设置：
   * 主题
-  * 代理
+  * Proxy (代理)
   * 退出时注销 #6
   * 启用设备代码流登录
   * 自动刷新 #1526
   * 启用 AzCopy
   * AzCopy SAS 持续时间如果要添加其他设置，请[在 GitHub 上打开](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=)描述你要查看的设置的问题。
-* 存储资源管理器现在支持托管磁盘。 方法：
+* 存储资源管理器现在支持托管磁盘。 可以：
   * 将本地 VHD 上传到新磁盘
   * 下载磁盘
   * 跨资源组和区域复制并粘贴磁盘
@@ -234,7 +234,7 @@ ms.locfileid: "80351060"
 
 * 存储资源管理器现在提供专用的“设置”UI。 可以通过“编辑”→“设置”访问该 UI，或者，可以单击左侧垂直工具栏中的“设置”图标（齿轮）。 只有在了解此功能后，才能提供各种[用户请求的设置](https://github.com/microsoft/AzureStorageExplorer/labels/%3Abulb%3A%20setting%20candidate)。 从此版本开始支持以下设置：
     * 主题
-    * 代理
+    * Proxy (代理)
     * 退出时注销[#6](https://www.github.com/Microsoft/AzureStorageExplorer/issues/6)
     * 启用设备代码流登录
     * 自动刷新[#1526](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1526)
@@ -242,7 +242,7 @@ ms.locfileid: "80351060"
     * AzCopy SAS 持续时间
 
     如果要添加其他设置，请[在 GitHub 上打开描述要查看的设置的问题](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=)。
-* 存储资源管理器现在支持托管磁盘。 你可以：
+* 存储资源管理器现在支持托管磁盘。 可以：
     * 将本地 VHD 上传到新磁盘
     * 下载磁盘
     * 跨资源组和区域复制并粘贴磁盘
@@ -753,7 +753,7 @@ ms.locfileid: "80351060"
 * 目前，每次只能对一个 Blob 执行中断性租约。 此外，必须输入要中断其租约的 Blob 的名称。 做出此项更改的目的是为了减少意外中断租用的可能性，尤其是对于 VM。 #394
 * 如果你曾经遇到过登录问题，现在可以尝试重置身份验证。 转到“帮助”菜单并单击“重置”即可访问此功能。 #419
 
-### <a name="fix"></a>Fix
+### <a name="fix"></a>修复
 
 * 根据强烈的用户要求，我们已重新启用默认的仿真器节点。 仍可以通过“连接”对话框添加其他仿真器连接，但如果仿真器配置为使用默认端口，则你也可以使用“本地和附加/存储帐户”下的“仿真器 * 默认端口”节点。 #669
 * 存储资源管理器不再允许设置包含前导或尾随空白字符的 Blob 元数据值。 #760
@@ -810,7 +810,7 @@ ms.locfileid: "80351060"
    * 自定义要附加的资源的显示名称。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * 附加到使用不同端口的多个本地模拟器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * 将附加的资源添加到“快速访问”。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* 存储资源管理器现在支持软删除。 你可以：
+* 存储资源管理器现在支持软删除。 可以：
    * 通过右键单击你的存储帐户的“Blob 容器”节点来配置软删除策略。
    * 通过在导航栏旁边的下拉列表中选择“活动的和已删除的 Blob”在 Blob 编辑器中查看软删除的 Blob。
    * 撤消删除已删除的 Blob。
@@ -866,7 +866,7 @@ ms.locfileid: "80351060"
    * 自定义要附加的资源的显示名称。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * 附加到使用不同端口的多个本地模拟器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * 将附加的资源添加到“快速访问”。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* 存储资源管理器现在支持软删除。 你可以：
+* 存储资源管理器现在支持软删除。 可以：
    * 通过右键单击你的存储帐户的“Blob 容器”节点来配置软删除策略。
    * 通过在导航栏旁边的下拉列表中选择“活动的和已删除的 Blob”在 Blob 编辑器中查看软删除的 Blob。
    * 撤消删除已删除的 Blob。
@@ -921,7 +921,7 @@ ms.locfileid: "80351060"
    * 自定义要附加的资源的显示名称。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * 附加到使用不同端口的多个本地模拟器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * 将附加的资源添加到“快速访问”。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* 存储资源管理器现在支持软删除。 你可以：
+* 存储资源管理器现在支持软删除。 可以：
    * 通过右键单击你的存储帐户的“Blob 容器”节点来配置软删除策略。
    * 通过在导航栏旁边的下拉列表中选择“活动的和已删除的 Blob”在 Blob 编辑器中查看软删除的 Blob。
    * 撤消删除已删除的 Blob。
@@ -981,7 +981,7 @@ ms.locfileid: "80351060"
    * 自定义要附加的资源的显示名称。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
    * 附加到使用不同端口的多个本地模拟器。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
    * 将附加的资源添加到“快速访问”。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
-* 存储资源管理器现在支持软删除。 你可以：
+* 存储资源管理器现在支持软删除。 可以：
    * 通过右键单击你的存储帐户的“Blob 容器”节点来配置软删除策略。
    * 通过在导航栏旁边的下拉列表中选择“活动的和已删除的 Blob”在 Blob 编辑器中查看软删除的 Blob。
    * 撤消删除已删除的 Blob。

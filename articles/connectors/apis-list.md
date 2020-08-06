@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 0707d578f90f70318c2a01f324b50092d9962965
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 3a628a70d8ce62827f79c1f7e16d2826be8d80f5
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513836"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827242"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>适用于 Azure 逻辑应用的连接器
 
@@ -50,7 +50,7 @@ ms.locfileid: "87513836"
 
   也可以使用这些类别来识别连接器，不过，某些连接器可能属于多个类别。 例如，SAP 既是企业连接器，也是本地连接器：
 
-  | 类别 | 描述 |
+  | 类别 | 说明 |
   |----------|-------------|
   | [**托管连接器**](#managed-api-connectors) | 创建使用 Azure Blob 存储、Office 365、Dynamics、Power BI、OneDrive、Salesforce、SharePoint Online 等服务的逻辑应用。 |
   | [**本地连接器**](#on-premises-connectors) | 安装并设置[本地数据网关][gateway-doc]后，这些连接器可以帮助逻辑应用访问 SQL Server、SharePoint Server、Oracle DB、文件共享等本地系统。 |
@@ -59,14 +59,14 @@ ms.locfileid: "87513836"
 
 <a name="integration-service-environment"></a>
 
-### <a name="connect-from-an-integration-service-environment-ise"></a>从 integration service 环境（ISE）进行连接
+### <a name="connect-from-an-integration-service-environment-ise"></a>从 integration service 环境连接 (ISE) 
 
-对于需要直接访问 Azure 虚拟网络中的资源的逻辑应用，你可以创建专用[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ，在其中你可以在专用资源上构建、部署和运行逻辑应用。 在逻辑应用设计器中，当你在 ISE 中浏览要用于逻辑应用的连接器时，内置触发器和操作上将显示一个**核心**标签，而**ISE**标签显示在某些连接器上。
+对于需要直接访问 Azure 虚拟网络中的资源的逻辑应用，你可以[ (ISE) 创建专用 integration service 环境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，你可以在该环境中生成、部署和运行针对专用资源的逻辑应用。 在逻辑应用设计器中，当你在 ISE 中浏览要用于逻辑应用的连接器时，内置触发器和操作上将显示一个**核心**标签，而**ISE**标签显示在某些连接器上。
 
 > [!NOTE]
 > 在 ISE 及其连接器中运行的逻辑应用，不管这些连接器的运行位置如何，都遵循固定定价计划与基于消耗的定价计划。 有关详细信息，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)和[逻辑应用定价详细](https://azure.microsoft.com/pricing/details/logic-apps/)信息。
 
-| 标签 | 示例 | 描述 |
+| 标签 | 示例 | 说明 |
 |-------|---------|-------------|
 | **转储** | ![ISE 连接器示例](./media/apis-list/example-core-connector.png) | 此标签的内置触发器和操作与逻辑应用在同一 ISE 中运行。 |
 | **ISE** | ![ISE 连接器示例](./media/apis-list/example-ise-connector.png) | 此标签的托管连接器与逻辑应用在同一 ISE 中运行。 如果你的本地系统已连接到 Azure 虚拟网络，则 ISE 允许你的逻辑应用直接访问该系统，而无需使用[本地数据网关](../logic-apps/logic-apps-gateway-connection.md)。 相反，你可以使用该系统的**ISE**连接器（如果有）、HTTP 操作或[自定义连接器](#custom)。 对于没有**ISE**连接器的本地系统，请使用本地数据网关。 若要查看可用的 ISE 连接器，请参阅[ise 连接器](#ise-connectors)。 |
@@ -79,7 +79,7 @@ ms.locfileid: "87513836"
 
 逻辑应用提供内置触发器和操作，使你能够创建基于计划的工作流、帮助逻辑应用与其他应用和服务通信、通过逻辑应用控制工作流，以及管理或处理数据。
 
-| “属性” | 描述 |
+| 名称 | 说明 |
 |------|-------------|
 | [![API 图标][schedule-icon]<br>**计划**][schedule-doc] | - 使用[ **“重复周期”** 触发器][schedule-recurrence-doc]，按指定的重复周期以简单到高级的计划运行逻辑应用。 <br>- 使用[ **“滑动窗口”** 触发器][schedule-sliding-window-doc]，运行需要处理连续区块中的数据的逻辑应用。 <br>- 使用[ **“延迟”** 操作][schedule-delay-doc]，将逻辑应用暂停指定的持续时间。 <br>- 使用[ **“延迟截止时间”** 操作][schedule-delay-until-doc]，将逻辑应用暂停到指定的日期和时间。 |
 | [![API 图标][batch-icon]<br>**批处理**][batch-doc] | - 使用“批处理消息”触发器来批量处理消息。 <br>- 使用“发送要批量处理的消息”操作调用具有现有批处理触发器的逻辑应用。 |
@@ -94,7 +94,7 @@ ms.locfileid: "87513836"
 
 逻辑应用提供内置操作用于在逻辑应用工作流中运行你自己的代码：
 
-| “属性” | 描述 |
+| 名称 | 说明 |
 |------|-------------|
 | [![API 图标][azure-functions-icon]<br>**Azure Functions**][azure-functions-doc] | 从逻辑应用调用运行自定义代码片段（C# 或 Node.js）的 Azure 函数。 |
 | [![API 图标][inline-code-icon]<br>**内联代码**][inline-code-doc] | 从逻辑应用添加和运行 JavaScript 代码片段。 |
@@ -104,7 +104,7 @@ ms.locfileid: "87513836"
 
 逻辑应用提供用于在逻辑应用工作流中构建和控制操作的内置操作：
 
-| “属性” | 描述 |
+| 名称 | 说明 |
 |------|-------------|
 | [![“内置”图标][condition-icon]<br>**条件**][condition-doc] | 评估条件，并根据条件是 true 还是 false 运行不同的操作。 |
 | [![“内置”图标][for-each-icon]<br>**For each**][for-each-doc] | 对数组中的每个项执行相同的操作。 |
@@ -118,7 +118,7 @@ ms.locfileid: "87513836"
 
 逻辑应用提供用于处理数据输出及其格式的内置操作：
 
-| “属性” | 描述 |
+| 名称 | 说明 |
 |------|-------------|
 | [![“内置”图标][data-operations-icon]<br>**数据操作**][data-operations-doc] | 对数据执行操作： <p>- **撰写**：基于具有不同类型的多个输入创建单个输出。 <br>- **创建 CSV 表**：基于包含 JSON 对象的数组创建逗号分隔值 (CSV) 表。 <br>- **创建 HTML 表**：基于包含 JSON 对象的数组创建一个 HTML 表。 <br>- **筛选数组**：基于符合条件的另一个数组中的项创建一个数组。 <br>- **联接**：基于数组中的所有项创建一个字符串，并使用指定的分隔符分隔这些项。 <br>- **分析 JSON**：基于 JSON 内容中的属性及其值创建用户友好的令牌，以便可以在工作流中使用这些属性。 <br>- **选择**：通过转换另一数组中的项或值并将这些项映射到指定的属性，创建包含 JSON 对象的数组。 |
 | ![内置操作图标][date-time-icon]<br>**日期时间** | 对时间戳执行操作： <p>- **添加到时间**：将指定的单位数添加到时间戳。 <br>- **转换时区**：将时间戳从源时区转换为目标时区。 <br>- **当前时间**：返回字符串形式的当前时间戳。 <br>- **获取将来的时间**：返回当前时间戳加上指定的时间单位。 <br>- **获取过去的时间**：返回当前时间戳减去指定的时间单位。 <br>- **从时间中减去**：从时间戳中减去一定数目的时间单位。 |
@@ -131,7 +131,7 @@ ms.locfileid: "87513836"
 
 逻辑应用提供以下用于自动化这些服务或系统的任务、流程和工作流的流行标准连接器：
 
-| “属性” | 描述 |
+| 名称 | 说明 |
 |------|-------------|
 | [![API 图标][azure-service-bus-icon]<br>**Azure 服务总线**][azure-service-bus-doc] | 使用逻辑应用中最常用的连接器管理异步消息、会话和主题订阅。 |
 | [![API 图标][sql-server-icon]<br>**SQL Server**][sql-server-doc] | 连接到本地 SQL Server 或云中的 Azure SQL 数据库，以便可以管理记录、运行存储过程或执行查询。 |
@@ -270,7 +270,7 @@ ms.locfileid: "87513836"
 
 ## <a name="ise-connectors"></a>ISE 连接器
 
-对于在专用[integration service 环境（ISE）](#integration-service-environment)中创建和运行的逻辑应用，逻辑应用设计器使用 "**核心**" 标签来标识在 ISE 中运行的内置触发器和操作。 在 ISE 中运行的托管连接器会显示**ISE**标签，而在全局多租户逻辑应用服务中运行的连接器不会显示任何一个标签。 此列表显示当前具有 ISE 版本的连接器：
+对于在[ (ISE) 的专用 integration service 环境](#integration-service-environment)中创建和运行的逻辑应用，逻辑应用设计器通过使用 "**核心**" 标签来标识在 ISE 中运行的内置触发器和操作。 在 ISE 中运行的托管连接器会显示**ISE**标签，而在全局多租户逻辑应用服务中运行的连接器不会显示任何一个标签。 此列表显示当前具有 ISE 版本的连接器：
 
 :::row:::
     :::column:::
@@ -393,10 +393,10 @@ ms.locfileid: "87513836"
 
 ## <a name="custom-apis-and-connectors"></a>自定义 API 和连接器
 
-若要调用运行自定义代码或者无法作为连接器使用的 API，可以通过[创建自定义 API 应用](../logic-apps/logic-apps-create-api-app.md)来扩展逻辑应用平台。 还可以针对任何基于 REST 或 SOAP 的 API [创建自定义连接器](../logic-apps/custom-connector-overview.md)，使这些 API 可供 Azure 订阅中的任何逻辑应用使用。 若要使自定义 API 应用或连接器可供任何人在 Azure 中使用，可以[提交连接器进行 Microsoft 认证](../logic-apps/custom-connector-submit-certification.md)。
+若要调用运行自定义代码或者无法作为连接器使用的 API，可以通过[创建自定义 API 应用](../logic-apps/logic-apps-create-api-app.md)来扩展逻辑应用平台。 还可以针对任何基于 REST 或 SOAP 的 API [创建自定义连接器](../logic-apps/custom-connector-overview.md)，使这些 API 可供 Azure 订阅中的任何逻辑应用使用。 若要使自定义 API 应用或连接器可供任何人在 Azure 中使用，可以[提交连接器进行 Microsoft 认证](/connectors/custom-connectors/submit-certification)。
 
 > [!NOTE]
-> 在[integration service 环境（ISE）](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)中部署和运行的逻辑应用可以直接访问 Azure 虚拟网络中的资源。 如果你有需要本地数据网关的自定义连接器，并且你在 ISE 外部创建了这些连接器，则 ISE 中的逻辑应用还可以使用这些连接器。
+> 在 integration service 环境中部署和运行的逻辑应用[ (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)可以直接访问 Azure 虚拟网络中的资源。 如果你有需要本地数据网关的自定义连接器，并且你在 ISE 外部创建了这些连接器，则 ISE 中的逻辑应用还可以使用这些连接器。
 >
 > 在 ISE 中创建的自定义连接器不适用于本地数据网关。 但是，这些连接器可以直接访问连接到托管 ISE 的 Azure 虚拟网络的本地数据源。 因此，在与这些资源通信时，ISE 中的逻辑应用最有可能不需要数据网关。
 >
@@ -618,4 +618,3 @@ ms.locfileid: "87513836"
 [x12-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "对使用 X12 协议的消息进行编码"
 [xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "转换 XML 消息"
 [xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "验证 XML 消息"
-

@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/12/2020
-ms.openlocfilehash: a2ece33974e5bb4d8cb6257d3ca68a258f9b8c81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 406991de2441836565c911ef8a8e1402f6398eb0
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325995"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824777"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的监视解决方案
 
-监视解决方案利用 Azure 中的服务来对特定应用程序或服务的操作进行其他分析。 本文简要概述了 Azure 中的监视解决方案，并详细介绍如何了使用和安装这些解决方案。 可以在 Azure Monitor 中针对你使用的任何应用程序和服务添加监视解决方案。 这些解决方案通常是免费的，但收集的数据可能会产生使用费。
+监视解决方案利用 Azure 中的服务来提供特定应用程序或服务的更多操作分析。 本文简要概述了 Azure 中的监视解决方案，并详细介绍如何了使用和安装这些解决方案。 可以在 Azure Monitor 中针对你使用的任何应用程序和服务添加监视解决方案。 这些解决方案通常是免费的，但收集的数据可能会产生使用费。
 
 ## <a name="use-monitoring-solutions"></a>使用监视解决方案
 
@@ -192,7 +192,6 @@ az monitor log-analytics solution delete --name
 
 ## <a name="next-steps"></a>后续步骤
 
-* 获取 [Microsoft 提供的监视解决方案的列表](/azure/azure-monitor/monitor-reference)。
+* 获取 [Microsoft 提供的监视解决方案的列表](../monitor-reference.md)。
 * 了解如何[创建查询](../log-query/log-query-overview.md)来分析监视解决方案收集的数据。
 * 查看[Azure Monitor 的所有 Azure CLI 命令](/cli/azure/azure-cli-reference-for-monitor)。
-

@@ -5,12 +5,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: ef3c2161e5a032983a2cbc9e4ccdf60af6920a7d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 186d4c510b58e06fcb0b823ca0d5770a2684196e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323105"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824981"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>基于工作区的 Application Insights 资源（预览版）
 
@@ -19,7 +19,7 @@ ms.locfileid: "87323105"
 这样还可以跨资源实现公用的基于角色的访问控制 (RBAC)，并消除进行跨应用/工作区查询的需要。
 
 > [!NOTE]
-> 基于工作区的 Application Insights 资源的数据引入和保留操作通过数据所在的 Log Analytics 工作区计费。 [详细了解]( https://docs.microsoft.com/azure/azure-monitor/app/pricing#workspace-based-application-insights)基于工作区的 Application Insights 资源的计费。
+> 基于工作区的 Application Insights 资源的数据引入和保留操作通过数据所在的 Log Analytics 工作区计费。 [详细了解]( ./pricing.md#workspace-based-application-insights)基于工作区的 Application Insights 资源的计费。
 
 若要测试新体验，请登录到 [Azure 门户](https://portal.azure.com)，并创建 Application Insights 资源：
 
@@ -204,4 +204,3 @@ PowerShell 命令 `New-AzApplicationInsights` 当前不支持创建基于工作�
 [diagnostic]: ./diagnostic-search.md
 [metrics]: ../platform/metrics-charts.md
 [start]: ./app-insights-overview.md
-

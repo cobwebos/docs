@@ -1,6 +1,6 @@
 ---
 title: 适用于 Blob 的热、冷、存档访问层 - Azure 存储
-description: Azure 存储帐户的热、冷、存档访问层。
+description: 了解 Azure Blob 存储的 "热"、"冷" 和 "存档" 访问层。 查看支持分层的存储帐户。 比较块博客存储选项。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/23/2019
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: dc9e4e0a896677fd22baf33e7776e8158bd0bee6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 17df78f846d8422c0200ce5fc75b4722d21d35df
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87011339"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828266"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob 存储：热、冷、存档访问层
 
@@ -120,7 +120,7 @@ Blob 存储生命周期管理提供丰富的基于规则的策略，用于将数
 | **可用性**                          | 99.9%                     | 99.9%        | 99%                 | Offline           |
 | **可用性** <br> （RA-GRS 读取）  | 空值                       | 99.99%       | 99.9%               | Offline           |
 | 使用费                         | 存储费用较高，访问和事务费用较低 | 存储费用较高，访问和事务费用较低 | 存储费用较低，访问和事务费用较高 | 存储费用最低，访问和事务费用最高 |
-| 最小对象大小                   | 空值                       | 空值          | 空值                 | 空值               |
+| 最小对象大小                   | 空值                       | 空值          | 不可用                 | 空值               |
 | 最短存储持续时间              | 空值                       | 空值          | 30 天<sup>1</sup> | 180 天
 | **延迟** <br> （距第一字节时间） | 一位数的毫秒数 | 毫秒 | 毫秒        | 小时<sup>2</sup> |
 
@@ -186,7 +186,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 ![更改存储帐户层](media/storage-tiers/blob-access-tier.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-以下 PowerShell 脚本可用于更改 blob 层。 必须使用资源组名称初始化 `$rgName` 变量。 必须使用你的存储帐户名初始化 `$accountName` 变量。 必须使用容器名称初始化 `$containerName` 变量。 必须使用 blob 名称初始化 `$blobName` 变量。 
+以下 PowerShell 脚本可用于更改 blob 层。 必须使用资源组名称初始化 `$rgName` 变量。 必须使用存储帐户名称初始化 `$accountName` 变量。 必须使用容器名称初始化 `$containerName` 变量。 必须使用 blob 名称初始化 `$blobName` 变量。 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""

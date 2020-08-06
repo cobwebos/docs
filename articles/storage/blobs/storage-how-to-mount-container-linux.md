@@ -1,6 +1,6 @@
 ---
 title: 如何将 Azure Blob 存储装载为 Linux 上的文件系统 | Microsoft Docs
-description: 使用 FUSE 在 Linux 上装载 Azure Blob 存储容器
+description: 了解如何在 Linux 上使用 blobfuse （一个虚拟文件系统驱动程序）装载 Azure Blob 存储容器。
 author: rishabpoh
 ms.service: storage
 ms.subservice: blobs
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: 3505cdaa009520f581e2ccf9f8bc60cbfb65586c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8dc7c16b83816d2b408cef7ade06767bfe2a4582
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465467"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826542"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>如何使用 Blobfuse 将 Blob 存储装载为文件系统
 

@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 76b9b965ab7fb5ffda66bd77dba6d9ab5381e6fd
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3b29c5b4b1bf682e0f43a0bf9b0c8fcb40d70433
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534356"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827871"
 ---
 # <a name="authorize-access-to-blobs-and-queues-using-azure-active-directory"></a>使用 Azure Active Directory 授予对 Blob 和队列的访问权限
 
@@ -27,7 +27,7 @@ Azure 存储支持使用 Azure Active Directory (Azure AD) 授予对 Blob 和队
 
 Blob 存储还支持创建通过 Azure AD 凭据签名的共享访问签名 (SAS)。 有关详细信息，请参阅[向具有共享访问签名的数据授予有限的访问权限](storage-sas-overview.md)。
 
-Azure 文件仅支持通过 AD （预览版）或通过 SMB 为已加入域的 Vm Azure AD DS （GA）进行授权。 若要了解如何在 Azure 文件的 SMB 上使用 AD （预览版）或 Azure AD DS （GA），请参阅[smb 访问 Azure 文件基于标识的身份验证支持概述](../files/storage-files-active-directory-overview.md)。
+Azure 文件支持 AD (预览版的授权) 或 Azure AD DS)  (仅限已加入域的 Vm 的 SMB 上的 Azure。 若要了解如何使用 AD (预览版) 或 Azure AD DS (GA) over SMB for Azure 文件，请参阅[Azure 文件基于标识的 Azure 文件身份验证支持概述](../files/storage-files-active-directory-overview.md)。
 
 Azure 表存储不支持通过 Azure AD 进行授权。 使用共享密钥授权对表存储的请求。
 
@@ -43,7 +43,7 @@ Azure 表存储不支持通过 Azure AD 进行授权。 使用共享密钥授权
 
 ## <a name="assign-azure-roles-for-access-rights"></a>为访问权限分配 Azure 角色
 
-Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 存储空间定义一组 Azure 内置角色，其中包含用于访问 blob 和队列数据的常用权限集。 还可以定义自定义角色来访问 Blob 和队列数据。
+Azure Active Directory (Azure AD) 通过[AZURE RBAC (的 azure 基于角色的访问控制](../../role-based-access-control/overview.md)来授予对受保护资源的访问权限。 Azure 存储空间定义一组 Azure 内置角色，其中包含用于访问 blob 和队列数据的常用权限集。 还可以定义自定义角色来访问 Blob 和队列数据。
 
 将 Azure 角色分配到 Azure AD 安全主体时，Azure 会向该安全主体授予对这些资源的访问权限。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 Azure AD 安全主体可以是用户、组、应用程序服务主体，也可以是 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 

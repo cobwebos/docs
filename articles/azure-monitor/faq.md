@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: 211b7aedc901031e366c60a6c7a2cee396bbe124
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: bd575eb5f646b749b431516670c64c764f4d4c9c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563834"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828500"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题解答
 
@@ -670,7 +670,7 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 ### <a name="can-i-onboard-to-a-new-workspace"></a>是否可以载入到新工作区？ 
 如果 VM 当前未连接到现有的 Log Analytics 工作区，则你需要创建一个新工作区来存储数据。 如果通过 Azure 门户为用于 VM 的 Azure Monitor 配置了单个 Azure VM，则系统会自动创建新的默认工作区。
 
-如果选择使用基于脚本的方法，可在[使用 Azure PowerShell 或资源管理器模板启用用于 VM 的 Azure Monitor](insights/vminsights-enable-at-scale-powershell.md) 一文中找到这些步骤。 
+如果选择使用基于脚本的方法，可在[使用 Azure PowerShell 或资源管理器模板启用用于 VM 的 Azure Monitor](./insights/vminsights-enable-powershell.md) 一文中找到这些步骤。 
 
 ### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>如果 VM 已开始向现有工作区报告，我该怎么做？
 如果你已开始从虚拟机收集数据，则可能已将虚拟机配置为向现有的 Log Analytics 工作区报告数据。  只要该工作区在某个受支持区域中，就可以在该现有工作区中启用用于 VM 的 Azure Monitor。  目前，如果使用的工作区不在受支持的区域中，则无法加入用于 VM 的 Azure Monitor。  我们将力求支持更多的区域。
@@ -691,7 +691,7 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 ### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>我在我 VM 的性能图表中看不到任何或部分数据
 性能图表已更新为使用 InsightsMetrics 表中存储的数据。  要查看这些图表中的数据，需要进行升级，使用新的 VM 见解解决方案。  有关其他信息，请参阅[正式发布版常见问题解答](insights/vminsights-ga-release-faq.md)。
 
-如果在磁盘表或某些性能图表中未看到性能数据，则原因可能是未在工作区中配置性能计数器。 若要解决此问题，请运行以下 [PowerShell 脚本](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell)。
+如果在磁盘表或某些性能图表中未看到性能数据，则原因可能是未在工作区中配置性能计数器。 若要解决此问题，请运行以下 [PowerShell 脚本](./insights/vminsights-enable-powershell.md)。
 
 
 ### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>用于 VM 的 Azure Monitor 映射功能与服务映射有何不同？

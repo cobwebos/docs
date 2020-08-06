@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: tracking-python
-ms.openlocfilehash: 5bddb1d141b461eec794de0849b6234c6a5c6102
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 02a1db47a194f4604534f0b96eb836a33009be85
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284449"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827463"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>在 Azure 中使用 Python 创建和管理 Windows VM
 
@@ -464,7 +464,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="resize-the-vm"></a>重设 VM 大小
 
-决定虚拟机大小时应考虑部署的诸多方面。 有关详细信息，请参见 [VM 大小](sizes.md)。
+决定虚拟机大小时应考虑部署的诸多方面。 有关详细信息，请参见 [VM 大小](../sizes.md)。
 
 1. 若要更改虚拟机大小，请在 .py 文件中将此函数添加在变量之后：
 

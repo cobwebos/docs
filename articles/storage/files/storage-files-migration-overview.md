@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 512688345c03ea9d5da0e4933cd6a794eaaf597b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d979d2d0167a4398d31271bb896c812bbe86be73
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660761"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827854"
 ---
 # <a name="migrate-to-azure-file-shares"></a>迁移到 Azure 文件共享
 
 本文介绍迁移到 Azure 文件共享的基本环节。
 
-本文包含迁移基础知识和迁移指南表。 这些指南可帮助你将文件移到 Azure 文件共享。 指南根据你的数据所在的位置以及你要迁移到的部署模型（仅限云或混合）进行组织。
+本文包含迁移基础知识和迁移指南表。 这些指南可帮助你将文件移到 Azure 文件共享。 指南根据你的数据所在的位置以及要移动到 (仅限云或混合) 的部署模型进行组织。
 
 ## <a name="migration-basics"></a>迁移基础知识
 
@@ -53,7 +53,7 @@ Azure 有多种可用的云存储类型。 文件迁移到 Azure 的一个重要
 
 与 Azure blob 中的对象存储不同，Azure 文件共享可本机存储文件元数据。 Azure 文件共享还会保留文件和文件夹层次结构、属性和权限。 NTFS 权限可以存储在文件和文件夹上，因为它们位于本地。
 
-Active Directory 的用户（其本地域控制器）可以以本机方式访问 Azure 文件共享。 因此，Azure Active Directory 域服务（Azure AD DS）的用户可以。 每个都使用其当前标识，基于共享权限和文件和文件夹 Acl 获取访问权限。 此行为类似于连接到本地文件共享的用户。
+Active Directory 的用户（其本地域控制器）可以以本机方式访问 Azure 文件共享。 因此，Azure Active Directory 域服务 (的用户可以 Azure AD DS) 。 每个都使用其当前标识，基于共享权限和文件和文件夹 Acl 获取访问权限。 此行为类似于连接到本地文件共享的用户。
 
 备用数据流是文件保真的主要方面，当前无法存储在 Azure 文件共享中的文件上。 当使用 Azure 文件同步时，它将保留在本地。
 
@@ -81,9 +81,9 @@ Active Directory 的用户（其本地域控制器）可以以本机方式访问
 | 源 | 目标： </br>混合部署 | 目标： </br>仅限云的部署 |
 |:---|:--|:--|
 | | 工具组合：| 工具组合： |
-| Windows Server 2012 R2 及更高版本 | <ul><li>[Azure 文件同步](storage-sync-files-deployment-guide.md)</li><li>[Azure 文件同步和 Azure Data Box](storage-sync-offline-data-transfer.md)</li><li>Azure 文件同步和存储迁移服务</li></ul> | <ul><li>Azure 文件同步</li><li>Azure 文件同步和 Data Box</li><li>Azure 文件同步和存储迁移服务</li><li>RoboCopy</li></ul> |
+| Windows Server 2012 R2 及更高版本 | <ul><li>[Azure 文件同步](storage-sync-files-deployment-guide.md)</li><li>[Azure 文件同步和 Azure Data Box](storage-sync-offline-data-transfer.md)</li><li>[云中的 Azure 文件同步和预植入文件](storage-sync-offline-data-transfer.md#azure-file-sync-and-pre-seeded-files-in-the-cloud)</li><li>Azure 文件同步和存储迁移服务</li></ul> | <ul><li>Azure 文件同步</li><li>Azure 文件同步和 Data Box</li><li>Azure 文件同步和存储迁移服务</li><li>RoboCopy</li></ul> |
 | Windows Server 2012 和更低版本 | <ul><li>Azure 文件同步和 Data Box</li><li>Azure 文件同步和存储迁移服务</li></ul> | <ul><li>Azure 文件同步和存储迁移服务</li><li>RoboCopy</li></ul> |
-| 网络连接存储（NAS） | <ul><li>[Azure 文件同步和 RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
+| 网络连接存储 (NAS)  | <ul><li>[Azure 文件同步和 RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
 | Linux 或 Samba | <ul><li>[Azure 文件同步和 RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
 | Microsoft Azure StorSimple 云设备8100或 StorSimple 云设备8600 | <ul><li>[Azure 文件同步和 StorSimple 云设备8020](storage-files-migration-storsimple-8000.md)</li></ul> | |
 | StorSimple 云设备1200 | <ul><li>[Azure 文件同步](storage-files-migration-storsimple-1200.md)</li></ul> | |
@@ -97,7 +97,7 @@ Microsoft 和其他工具提供了多个文件复制工具。 若要为迁移方
 
 * 该工具是否支持文件复制的源和目标位置？
 
-* 该工具是否支持源和目标存储位置之间的网络路径或可用协议（如 REST、SMB 或 NFS）？
+* 该工具是否支持源和目标存储位置之间的网络路径或可用协议 (例如 REST、SMB 或 NFS) ？
 
 * 该工具是否保留源位置和目标位置支持的必要文件保真度？
 
@@ -111,7 +111,7 @@ Microsoft 和其他工具提供了多个文件复制工具。 若要为迁移方
 
     首次运行该工具时，它会复制大量数据。 此初始运行可能会持续一段时间。 它通常比您为业务流程使数据源脱机所需的时间要长。
 
-    通过将源镜像到目标（如使用**robocopy/MIR**），可以在同一源和目标上再次运行该工具。 运行速度要快得多，因为它只需要传输在上一次运行之后发生的源更改。 通过这种方式重新运行复制工具可显著减少停机时间。
+    通过将源镜像到目标 (与**robocopy/MIR**) 一样，你可以在该相同源和目标上再次运行该工具。 运行速度要快得多，因为它只需要传输在上一次运行之后发生的源更改。 通过这种方式重新运行复制工具可显著减少停机时间。
 
 下表对 Microsoft 工具及其当前适用于 Azure 文件共享的适用性进行分类：
 
@@ -138,7 +138,7 @@ RoboCopy 是最适用于文件迁移的工具之一。 它作为 Windows 的一�
 
 #### <a name="treesize-from-jam-software-gmbh"></a>Database 从卡纸软件 GmbH
 
-Azure 文件同步主要与项目（文件和文件夹）的数量进行缩放，而不是用总存储量来缩放。 Database 工具允许你确定 Windows Server 卷上的项目数。
+Azure 文件同步 (文件和) 文件夹的数目，而不是总存储量。 Database 工具允许你确定 Windows Server 卷上的项目数。
 
 您可以使用该工具在[Azure 文件同步部署](storage-sync-files-deployment-guide.md)之前创建透视。 在部署后，还可以使用云分层。 在这种情况下，你将看到项数以及哪些目录最多使用服务器缓存。
 
@@ -146,7 +146,7 @@ Azure 文件同步主要与项目（文件和文件夹）的数量进行缩放�
 
 ## <a name="next-steps"></a>后续步骤
 
-1. 创建要部署 Azure 文件共享（仅限云或混合）的计划。
+1. 创建一个计划，以便将 Azure 文件共享部署 (所需的仅限云或混合) 。
 1. 查看可用迁移指南列表，查找与 Azure 文件共享的源和部署匹配的详细指南。
 
 下面是有关本文中所述的 Azure 文件技术的详细信息：

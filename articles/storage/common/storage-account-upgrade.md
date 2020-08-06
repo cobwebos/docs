@@ -1,7 +1,7 @@
 ---
 title: 升级到常规用途 v2 存储帐户
 titleSuffix: Azure Storage
-description: 升级到常规用途 v2 存储帐户。
+description: 使用 Azure 门户、PowerShell 或 Azure CLI 升级到常规用途 v2 存储帐户。 指定 blob 数据的访问层。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8ba2478bbfb2a26951d682ab12cb5b98df73be97
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 029753ecb0afd0cdd02a2f4594a0708cbda06efc
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497964"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828211"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>升级到常规用途 v2 存储帐户
 

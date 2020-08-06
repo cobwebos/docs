@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 5fa591530e92682c582b5929240e74a5430fb559
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1b02b089fea7e883bdc6c58c7a2845af12b50a37
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534985"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824522"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>为 SQL Server 设置灾难恢复
 
@@ -48,7 +48,7 @@ Azure IaaS VM 上的或本地的 SQL Server。| 使用 Azure Site Recovery 进�
 > * 确保在计算机上观测到的数据更改率在 [Site Recovery 限制](vmware-physical-azure-support-matrix.md#churn-limits)范围内。 更改率以每秒写入字节数度量。 对于运行 Windows 的计算机，可以选择任务管理器中的“性能”选项卡来查看此更改率。  观测每个磁盘的写入速度。
 > * Site Recovery 支持复制存储空间直通上的故障转移群集实例。 有关详细信息，请参阅[如何启用存储空间直通复制](azure-to-azure-how-to-enable-replication-s2d-vms.md)。
 > 
-> 将 SQL 工作负荷迁移到 Azure 时，建议对[Azure 虚拟机上的 SQL Server 应用性能指导原则](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/performance-guidelines-best-practices)。
+> 将 SQL 工作负荷迁移到 Azure 时，建议对[Azure 虚拟机上的 SQL Server 应用性能指导原则](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md)。
 
 ## <a name="disaster-recovery-of-an-application"></a>应用程序的灾难恢复
 

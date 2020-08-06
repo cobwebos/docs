@@ -16,21 +16,21 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 65fbd84a6fa4b03db9f5dfce81eeba23aceebbc9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ae3851da1dbcc5f7ac37821a64cada20164c7661
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042312"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824998"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>适用于 SAP 工作负载的 Azure 存储类型
 Azure 有许多不同的存储类型，这些类型在功能、吞吐量、延迟和价格方面有所不同。 某些存储类型不是或不可用于 SAP 方案。 但对于特定的 SAP 工作负荷方案，多个 Azure 存储类型非常适合或进行了优化。 特别是对于 SAP HANA，某些 Azure 存储类型已通过 SAP HANA 使用进行了认证。 在本文档中，我们将浏览不同类型的存储，并介绍 SAP 工作负荷和 SAP 组件的功能和可用性。
 
-介绍了本文中使用的单位。 公有云供应商迁移到使用 GiB （[Gibibyte](https://en.wikipedia.org/wiki/Gibibyte)）或 TiB （[Tebibyte](https://en.wikipedia.org/wiki/Tebibyte)作为大小单位，而不是 gb 或 tb。 因此，所有 Azure 文档和 prizing 都使用这些单元。  在整个文档中，我们会专门引用这些大小的 MiB、GiB 和 TiB 单元。 你可能需要计划 MB、GB 和 TB。 因此，如果需要为 400 MiB/秒吞吐量调整大小，而不是 250 MiB/秒的吞吐量，请注意计算中的一些细微差别。
+介绍了本文中使用的单位。 公有云供应商迁移到使用 GiB ([Gibibyte](https://en.wikipedia.org/wiki/Gibibyte)) 或 TiB ([Tebibyte](https://en.wikipedia.org/wiki/Tebibyte)作为大小单位，而不是 gb 或 tb。 因此，所有 Azure 文档和 prizing 都使用这些单元。  在整个文档中，我们会专门引用这些大小的 MiB、GiB 和 TiB 单元。 你可能需要计划 MB、GB 和 TB。 因此，如果需要为 400 MiB/秒吞吐量调整大小，而不是 250 MiB/秒的吞吐量，请注意计算中的一些细微差别。
 
 ## <a name="microsoft-azure-storage-resiliency"></a>Microsoft Azure 存储复原
 
-标准 HDD、标准 SSD、Azure 高级存储和超磁盘的 Microsoft Azure 存储将在三个不同的存储节点上的三个副本中保留基本 VHD （包含 OS）和 VM 附加数据磁盘或 Vhd。 故障转移到另一个副本，并在发生存储节点故障时对新副本进行种子设定是透明的。 作为此冗余的结果，**无**需在多个 Azure 磁盘上使用任何类型的存储冗余层。 这称为本地冗余存储 (LRS)。 对于 Azure 中的这些存储类型，LRS 是默认值。 [Azure NetApp 文件](https://azure.microsoft.com/services/netapp/)提供足够的冗余来实现与其他本机 Azure 存储相同的 sla。
+Microsoft Azure 存储标准 HDD、标准 SSD、Azure 高级存储和超磁盘，可在三个不同的存储节点上的三个副本中保留基本 VHD (，其中包含 OS) 和 VM 附加数据磁盘或 Vhd。 故障转移到另一个副本，并在发生存储节点故障时对新副本进行种子设定是透明的。 作为此冗余的结果，**无**需在多个 Azure 磁盘上使用任何类型的存储冗余层。 这称为本地冗余存储 (LRS)。 对于 Azure 中的这些存储类型，LRS 是默认值。 [Azure NetApp 文件](https://azure.microsoft.com/services/netapp/)提供足够的冗余来实现与其他本机 Azure 存储相同的 sla。
 
 还有其他几种冗余方法，这一文章适用于 Azure 提供的一些不同存储类型的[Azure 存储复制](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。 
 
@@ -47,10 +47,10 @@ Azure 有许多不同的存储类型，这些类型在功能、吞吐量、延�
 在客户定义的存储帐户中部署不带托管磁盘的情况下，磁盘分配是任意的，并不知道出于复原目的，在 AvSet 中部署 Vm。
 
 > [!NOTE]
-> 由于此原因以及通过托管磁盘专门提供的其他几项改进，我们要求使用 azure 块存储的虚拟机的新部署（除 Azure NetApp 文件之外的所有 Azure 存储空间）需要将 Azure 托管磁盘用于基本 VHD/OS 磁盘、包含 SAP 数据库文件的数据磁盘。 独立于是否通过可用性集部署 Vm，无论是在可用性区域还是独立于集和区域。 用于存储备份的磁盘不一定需要为托管磁盘。
+> 从此原因和通过托管磁盘专门提供的其他一些改进，我们要求使用 azure 数据块存储的虚拟机的新部署 (所有 Azure 存储空间（Azure NetApp 文件除外），) 需要将 Azure 托管磁盘用于基本 VHD/OS 磁盘、包含 SAP 数据库文件的数据磁盘。 独立于是否通过可用性集部署 Vm，无论是在可用性区域还是独立于集和区域。 用于存储备份的磁盘不一定需要为托管磁盘。
 
 > [!NOTE]
-> Azure 托管磁盘仅提供本地冗余（LRS）。 
+> Azure 托管磁盘仅 (LRS) 提供本地冗余。 
 
 
 ## <a name="storage-scenarios-with-sap-workloads"></a>SAP 工作负荷的存储方案
@@ -72,16 +72,16 @@ Azure 有许多不同的存储类型，这些类型在功能、吞吐量、延�
 
 | 使用方案 | 标准 HDD | 标准 SSD | 高级存储 | 超级磁盘 | Azure NetApp 文件 |
 | --- | --- | --- | --- | --- | --- |
-| OS 磁盘 | 不适用 |  受限（非生产） | 建议 | 不可能 | 不可能 |
+| OS 磁盘 | 不适用 |  适用于非生产) 的受限 ( | 建议 | 不可能 | 不可能 |
 | 全局传输目录 | 不支持 | 不支持 | 建议 | 建议 | 建议 |
-| /sapmnt | 不适用 | 受限（非生产） | 建议 | 建议 | 建议 |
+| /sapmnt | 不适用 | 适用于非生产) 的受限 ( | 建议 | 建议 | 建议 |
 | DBMS 数据卷 SAP HANA M/Mv2 VM 系列 | 不支持 | 不支持 | 建议 | 建议 | 推荐<sup>2</sup> |
 | DBMS 日志卷 SAP HANA M/Mv2 VM 系列 | 不支持 | 不支持 | 建议<sup>1</sup> | 建议 | 推荐<sup>2</sup> | 
 | DBMS 数据卷 SAP HANA Esv3/Edsv4 VM 系列 | 不支持 | 不支持 | 建议 | 建议 | 推荐<sup>2</sup> |
 | DBMS 日志卷 SAP HANA Esv3/Edsv4 VM 系列 | 不支持 | 不支持 | 不支持 | 建议 | 推荐<sup>2</sup> | 
-| DBMS 数据量非 HANA | 不支持 | 受限（非生产） | 建议 | 建议 | 不支持 |
-| DBMS 日志量非 HANA M/Mv2 VM 系列 | 不支持 | 受限（非生产） | 建议<sup>1</sup> | 建议 | 不支持 |
-| DBMS 日志卷非 HANA 非 Mv2/虚拟机系列 | 不支持 | 受限（非生产） | 适用于最多中等工作负荷 | 建议 | 不支持 |
+| DBMS 数据量非 HANA | 不受支持 | 适用于非生产) 的受限 ( | 建议 | 建议 | 不受支持 |
+| DBMS 日志量非 HANA M/Mv2 VM 系列 | 不受支持 | 适用于非生产) 的受限 ( | 建议<sup>1</sup> | 建议 | 不受支持 |
+| DBMS 日志卷非 HANA 非 Mv2/虚拟机系列 | 不受支持 | 适用于非生产) 的受限 ( | 适用于最多中等工作负荷 | 建议 | 不受支持 |
 
 
 <sup>1</sup>使用[Azure 写入加速器](../../windows/how-to-enable-write-accelerator.md)适用于使用和的 Mv2 VM 系列的日志/重做日志卷<sup>2</sup>使用时，需要/hana/data 和/hana/log 和 
@@ -92,7 +92,7 @@ Azure 有许多不同的存储类型，这些类型在功能、吞吐量、延�
 | --- | --- | --- | --- | --- | --- |
 | 吞吐量/IOPS SLA | 否 | 否 | 是 | 是 | 是 |
 | 延迟读取次数 | high | 中到高 | low | sub 毫秒 | sub 毫秒 |
-| 延迟写入 | high | 中到高  | 低（毫秒<sup>1</sup>） | sub 毫秒 | sub 毫秒 |
+| 延迟写入 | high | 中到高  | 低 (sub 毫秒<sup>1</sup>)  | sub 毫秒 | sub 毫秒 |
 | 支持 HANA | 否 | 否 | 是<sup>1</sup> | 是 | 是 |
 | 可能的磁盘快照 | 是 | 是 | 是 | 否 | 是 |
 | 使用可用性集时分配不同存储群集上的磁盘 | 通过托管磁盘 | 通过托管磁盘 | 通过托管磁盘 | 使用可用性集部署的 Vm 不支持磁盘类型 | 无<sup>3</sup> |
@@ -109,7 +109,7 @@ Azure 有许多不同的存储类型，这些类型在功能、吞吐量、延�
 
 
 > [!IMPORTANT]
-> 若要使用 Azure NetApp 文件（和）实现小于1毫秒的 i/o 延迟，你需要与 Microsoft 协作，以根据和安排 Vm 和 NFS 共享之间的正确位置。 目前没有任何机制可以在部署的 VM 和和上托管的 NFS 卷之间提供自动邻近性。 如果不同的 Azure 区域设置不同，则添加的网络延迟可能会导致 i/o 滞后时间超过1毫秒（如果 VM 和 NFS 共享未分配到邻近性）。
+> 若要使用 Azure NetApp 文件 (和) 实现小于1毫秒的 i/o 延迟，你需要与 Microsoft 协作，以根据和安排 Vm 和 NFS 共享之间的正确位置。 目前没有任何机制可以在部署的 VM 和和上托管的 NFS 卷之间提供自动邻近性。 如果不同的 Azure 区域设置不同，则添加的网络延迟可能会导致 i/o 滞后时间超过1毫秒（如果 VM 和 NFS 共享未分配到邻近性）。
 
 
 > [!IMPORTANT]
@@ -134,7 +134,7 @@ Azure 具有99.9% 的单一实例 VM SLA，与 Azure 高级存储或 Azure 超�
 
 SAP 工作负荷的功能矩阵如下所示：
 
-| 功能| 注释| 备注/链接 | 
+| 功能| 评论| 备注/链接 | 
 | --- | --- | --- | 
 | OS 基本 VHD | 适合 | 所有系统 |
 | 数据磁盘 | 适合 | 所有系统-[专门用于 SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
@@ -146,7 +146,7 @@ SAP 工作负荷的功能矩阵如下所示：
 | 延迟 | 低到中 | - |
 | IOPS SLA | YES | - |
 | 从线性到容量的 IOPS | 方括号中的半线性  | [托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| 每个磁盘的最大 IOPS | 20000[依赖磁盘大小](https://azure.microsoft.com/pricing/details/managed-disks/) | 还要考虑[VM 限制](../../linux/sizes.md) |
+| 每个磁盘的最大 IOPS | 20000[依赖磁盘大小](https://azure.microsoft.com/pricing/details/managed-disks/) | 还要考虑[VM 限制](../../sizes.md) |
 | 吞吐量 SLA | YES | - |
 | 吞吐量线性到容量 | 方括号中的半线性 | [托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/) |
 | HANA 认证 | YES | [专门为 SAP HANA](../../windows/how-to-enable-write-accelerator.md) |
@@ -162,7 +162,7 @@ Azure 高级存储不满足 SAP HANA 存储延迟 Kpi，其中包含 Azure 高�
 
 
 ### <a name="azure-burst-functionality-for-premium-storage"></a>适用于高级存储的 Azure 猝发功能
-对于容量较小或等于 512 GiB 的 Azure 高级存储磁盘，提供了突发功能。 磁盘突发如何工作的确切方式在 "[磁盘突发](../../linux/disk-bursting.md)" 一文中进行了介绍。 阅读本文后，你将了解当 i/o 工作负荷低于磁盘的名义 IOPS 和吞吐量（有关标称吞吐量的详细信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)）时，所产生的 IOPS 和吞吐量的概念。 你将在当前使用情况与磁盘的名义值之间累计 IOPS 和吞吐量的增量。 猝发次数限制为最多30分钟。
+对于容量较小或等于 512 GiB 的 Azure 高级存储磁盘，提供了突发功能。 磁盘突发如何工作的确切方式在 "[磁盘突发](../../linux/disk-bursting.md)" 一文中进行了介绍。 当您阅读本文时，您将了解在以下情况下，当 i/o 工作负荷低于磁盘的名义 IOPS 和吞吐量时，所产生的的 IOPS 和吞吐量的概念 (有关名义吞吐量的详细信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)) 。 你将在当前使用情况与磁盘的名义值之间累计 IOPS 和吞吐量的增量。 猝发次数限制为最多30分钟。
 
 可以在其中规划此突发功能的理想情况可能是包含不同 DBMS 的数据文件的卷或磁盘。 需要对这些卷执行 i/o 工作负荷，尤其是对于小到中等范围的系统，应如下所示：
 
@@ -179,7 +179,7 @@ Azure 高级存储不满足 SAP HANA 存储延迟 Kpi，其中包含 Azure 高�
 
 
 ## <a name="azure-ultra-disk"></a>Azure Ultra 磁盘
-Azure 超级磁盘为 Azure IaaS VM 提供高吞吐量、高 IOPS 和一贯低延迟的磁盘存储。 超磁盘的其他好处包括能够动态更改磁盘的 IOPS 和吞吐量以及工作负载，而无需重新启动虚拟机（VM）。 超磁盘适用于数据密集型工作负荷，如 SAP DBMS 工作负荷。 超磁盘只能用作数据磁盘，不能用作存储操作系统的基本 VHD 磁盘。 建议将 Azure 高级存储用作基于 VHD 磁盘的使用。
+Azure 超级磁盘为 Azure IaaS VM 提供高吞吐量、高 IOPS 和一贯低延迟的磁盘存储。 超磁盘的其他好处包括能够动态更改磁盘的 IOPS 和吞吐量以及工作负荷，而无需重新启动虚拟机 (VM) 。 超磁盘适用于数据密集型工作负荷，如 SAP DBMS 工作负荷。 超磁盘只能用作数据磁盘，不能用作存储操作系统的基本 VHD 磁盘。 建议将 Azure 高级存储用作基于 VHD 磁盘的使用。
 
 创建超磁盘时，可以定义三个维度：
 
@@ -192,7 +192,7 @@ Azure 超级磁盘为 Azure IaaS VM 提供高吞吐量、高 IOPS 和一贯低�
 
 SAP 工作负荷的功能矩阵如下所示：
 
-| 功能| 注释| 备注/链接 | 
+| 功能| 评论| 备注/链接 | 
 | --- | --- | --- | 
 | OS 基本 VHD | 不起作用 | - |
 | 数据磁盘 | 适合 | 所有系统  |
@@ -214,10 +214,10 @@ SAP 工作负荷的功能矩阵如下所示：
 
 
 
-**摘要：** Azure ultra 磁盘是适用于各种 SAP 工作负荷的低延迟的存储。 到目前为止，超磁盘只能与已通过可用性区域（区域部署）部署的 Vm 组合使用。 超磁盘目前不支持存储快照。 对于所有其他存储，超磁盘不能用于基本 VHD 磁盘。 超磁盘非常适合于 i/o 工作负荷很大程度地波动的情况，并且你想要将部署的存储吞吐量或 IOPS 调整到存储工作负荷模式，而不是调整带宽和 IOPS 的最大使用量。
+**摘要：** Azure ultra 磁盘是适用于各种 SAP 工作负荷的低延迟的存储。 到目前为止，超磁盘只能与通过可用性区域 (区域部署) 部署的 Vm 组合使用。 超磁盘目前不支持存储快照。 对于所有其他存储，超磁盘不能用于基本 VHD 磁盘。 超磁盘非常适合于 i/o 工作负荷很大程度地波动的情况，并且你想要将部署的存储吞吐量或 IOPS 调整到存储工作负荷模式，而不是调整带宽和 IOPS 的最大使用量。
 
 
-## <a name="azure-netapp-files-anf"></a>Azure NetApp 文件（和）
+## <a name="azure-netapp-files-anf"></a>Azure NetApp 文件 (和) 
 [Azure NetApp 文件](https://azure.microsoft.com/services/netapp/)是 Microsoft 与 NetApp 之间协作的结果，旨在提供高性能的 AZURE 本机 NFS 和 SMB 共享。 重点是提供高带宽和低延迟存储，以实现 DBMS 部署方案，并且随着时间的推移，还可以通过 Azure 同时启用 NetApp 存储的典型操作功能。 NFS/SMB 共享以三个不同的服务级别提供，可区分存储吞吐量和价格。 [Azure NetApp 文件的服务级别](../../../azure-netapp-files/azure-netapp-files-service-levels.md)一文中介绍了服务级别。 对于不同类型的 SAP 工作负荷，强烈建议使用以下服务级别：
 
 - SAP DBMS 工作负荷：性能，理想的超
@@ -231,7 +231,7 @@ SAP 工作负荷的功能矩阵如下所示：
 
 - 为 SAP 的全局传输目录提供 SMB 或 NFS 共享
 - 如中所述，在高可用性方案中 sapmnt 共享：
-    - [适用于 SAP 应用程序的 azure 虚拟机上的 SAP NetWeaver 的高可用性，适用于 SAP 应用程序的 Azure NetApp 文件（SMB）](./high-availability-guide-windows-netapp-files-smb.md)
+    - [适用于 Windows 上的 Azure 虚拟机上的 SAP NetWeaver 高可用性，适用于 SAP 应用程序 (SMB) 的 Azure Vm](./high-availability-guide-windows-netapp-files-smb.md)
     - [带有适用于 SAP 应用程序的 Azure NetApp 文件的 SUSE Linux Enterprise Server 上 Azure VM 上的 SAP NetWeaver 的高可用性](./high-availability-guide-suse-netapp-files.md)
     - [适用于 sap NetWeaver 的 azure 虚拟机高可用性，适用于 SAP 应用程序的 Azure NetApp 文件 Red Hat Enterprise Linux](./high-availability-guide-rhel-netapp-files.md)
 - 在[Azure 虚拟机存储配置 SAP HANA](./hana-vm-operations-storage.md)一文中所述，使用/hana/data 和/hana/log 卷和/或 nfs/hana/shared 卷的 nfs v2.0 共享和卷 SAP HANA 部署
@@ -243,16 +243,16 @@ SAP 工作负荷的功能矩阵如下所示：
 
 - 例如，若要在和上托管的 NFS 卷上实现 250 MiB/秒的吞吐量，则需要部署超服务级别的 1.95 TiB 容量。 
 - 若要实现 400 MiB/秒，需要部署 3.125 TiB 容量。 但你可能需要过度预配容量来实现卷所需的吞吐量。 容量的过度预配会影响较小 HANA 实例的定价。 
-- 在 SAP/sapmnt 目录的和上使用 NFS 的空间中，你通常会使用 Azure NetApp 文件强制执行的最小容量为 100 GiB 到 150 GiB。 但客户体验表明，12.8 MiB/秒的相关吞吐量（使用超高服务级别）可能不够，而且可能对 SAP 系统的稳定性产生负面影响。 在这种情况下，客户可以通过增加/sapmnt 卷的数量来避免出现问题，因此，该卷提供了更多的吞吐量。
+- 在 SAP/sapmnt 目录的和上使用 NFS 的空间中，你通常会使用 Azure NetApp 文件强制执行的最小容量为 100 GiB 到 150 GiB。 不过，客户体验表明，使用超高服务) 级别的 12.8 MiB/sec (的相关吞吐量可能不足，并且可能会对 SAP 系统的稳定性产生负面影响。 在这种情况下，客户可以通过增加/sapmnt 卷的数量来避免出现问题，因此，该卷提供了更多的吞吐量。
 
 SAP 工作负荷的功能矩阵如下所示：
 
-| 功能| 注释| 备注/链接 | 
+| 功能| 评论| 备注/链接 | 
 | --- | --- | --- | 
 | OS 基本 VHD | 不起作用 | - |
 | 数据磁盘 | 适合 | 仅 SAP HANA  |
 | SAP 全局传输目录 | YES | SMB 和 NFS |
-| SAP sapmnt | 适合 | 所有系统 SMB （仅适用于 Windows）或 NFS （仅限 Linux） |
+| SAP sapmnt | 适合 | 仅适用于 Windows 的所有系统 SMB (仅) 或 NFS (Linux)  |
 | 备份存储 | 适合 | - |
 | 共享/共享磁盘 | YES | SMB 3.0、NFS v3 和 NFS v2。0 |
 | 复原能力 | LRS | 磁盘无可用的 GRS 或 ZRS |
@@ -271,7 +271,7 @@ SAP 工作负荷的功能矩阵如下所示：
 
 - 执行卷快照的功能
 - 从快照克隆和卷
-- 从快照还原卷（快照）
+- 从快照还原卷 (快照恢复) 
 
 **摘要**： Azure NetApp 文件是用于部署 NFS 和 SMB 卷或共享的 HANA 认证低延迟存储。 存储提供了三种不同的服务级别，以线性方式为卷的每个 GiB 容量提供不同的吞吐量和 IOPS。 和存储支持使用备用节点部署 SAP HANA 扩展方案。 存储适合为/sapmnt 或 SAP 全局传输目录提供文件共享。 和存储提供了可用作本机 NetApp 功能的功能可用性。  
 
@@ -280,11 +280,11 @@ SAP 工作负荷的功能矩阵如下所示：
 ## <a name="azure-standard-ssd-storage"></a>Azure 标准 SSD 存储
 与 Azure 标准 HDD 存储相比，Azure 标准 SSD 存储提供更好的可用性、一致性、可靠性和延迟。 它针对需要在低 IOPS 级别上具有一致性能的工作负荷进行了优化。 此存储是用于具有低 IOPS 和吞吐量要求的非生产 SAP 系统的最小存储空间。 SAP 工作负荷的功能矩阵如下所示：
 
-| 功能| 注释| 备注/链接 | 
+| 功能| 评论| 备注/链接 | 
 | --- | --- | --- | 
 | OS 基本 VHD | 限制合适 | 非生产系统 |
 | 数据磁盘 | 限制合适 | 某些非生产系统的 IOPS 和延迟需求较低 |
-| SAP 全局传输目录 | 是 | [不支持](https://launchpad.support.sap.com/#/notes/2015553) |
+| SAP 全局传输目录 | 是 | 不支持 |
 | SAP sapmnt | 限制合适 | 非生产系统 |
 | 备份存储 | 适合 | - |
 | 共享/共享磁盘 | 不可用 | 需要第三方 |
@@ -307,11 +307,11 @@ SAP 工作负荷的功能矩阵如下所示：
 ## <a name="azure-standard-hdd-storage"></a>Azure 标准 HDD 存储
 在2014年，azure 基础结构为 SAP NetWeaver 工作负荷认证时，Azure 标准 HDD 存储是唯一的存储类型。 在2014年，Azure 虚拟机的存储吞吐量较小且低。 因此，此存储类型能够满足需求。 存储非常适合于延迟的不区分工作负荷，在 SAP 空间中几乎不会遇到。 随着 Azure Vm 的增长吞吐量和这些 Vm 产生的工作负荷增加，此存储类型不会考虑到 SAP 方案的使用量。 SAP 工作负荷的功能矩阵如下所示：
 
-| 功能| 注释| 备注/链接 | 
+| 功能| 评论| 备注/链接 | 
 | --- | --- | --- | 
 | OS 基本 VHD | 不适用 | - |
 | 数据磁盘 | 不适用 | - |
-| SAP 全局传输目录 | 是 | [不支持](https://launchpad.support.sap.com/#/notes/2015553) |
+| SAP 全局传输目录 | 是 | 不支持 |
 | SAP sapmnt | 是 | 不支持 |
 | 备份存储 | 适合 | - |
 | 共享/共享磁盘 | 不可用 | 需要 Azure 文件或第三方 |
@@ -335,11 +335,11 @@ SAP 工作负荷的功能矩阵如下所示：
 
 | 存储类型| Linux | Windows | 注释 |
 | --- | --- | --- | --- |
-| 标准 HDD | [Azure 中 Linux Vm 的大小](../../linux/sizes.md) | [Azure 中 Windows Vm 的大小](../../windows/sizes.md) | 可能很难触摸中型或大型 Vm 的存储限制 |
-| 标准 SSD | [Azure 中 Linux Vm 的大小](../../linux/sizes.md) | [Azure 中 Windows Vm 的大小](../../windows/sizes.md) | 可能很难触摸中型或大型 Vm 的存储限制 |
-| 高级存储 | [Azure 中 Linux Vm 的大小](../../linux/sizes.md) | [Azure 中 Windows Vm 的大小](../../windows/sizes.md) | 易于访问的 IOPS 或存储吞吐量 VM 限制与存储配置 |
-| 超磁盘存储 | [Azure 中 Linux Vm 的大小](../../linux/sizes.md) | [Azure 中 Windows Vm 的大小](../../windows/sizes.md) | 易于访问的 IOPS 或存储吞吐量 VM 限制与存储配置 |
-| Azure NetApp 文件 | [Azure 中 Linux Vm 的大小](../../linux/sizes.md) | [Azure 中 Windows Vm 的大小](../../windows/sizes.md) | 存储流量使用网络吞吐量带宽而不是存储带宽！ |
+| 标准 HDD | [Azure 中 Linux Vm 的大小](../../sizes.md) | [Azure 中 Windows Vm 的大小](../../sizes.md) | 可能很难触摸中型或大型 Vm 的存储限制 |
+| 标准 SSD | [Azure 中 Linux Vm 的大小](../../sizes.md) | [Azure 中 Windows Vm 的大小](../../sizes.md) | 可能很难触摸中型或大型 Vm 的存储限制 |
+| 高级存储 | [Azure 中 Linux Vm 的大小](../../sizes.md) | [Azure 中 Windows Vm 的大小](../../sizes.md) | 易于访问的 IOPS 或存储吞吐量 VM 限制与存储配置 |
+| 超磁盘存储 | [Azure 中 Linux Vm 的大小](../../sizes.md) | [Azure 中 Windows Vm 的大小](../../sizes.md) | 易于访问的 IOPS 或存储吞吐量 VM 限制与存储配置 |
+| Azure NetApp 文件 | [Azure 中 Linux Vm 的大小](../../sizes.md) | [Azure 中 Windows Vm 的大小](../../sizes.md) | 存储流量使用网络吞吐量带宽而不是存储带宽！ |
 
 作为限制，你可以注意：
 

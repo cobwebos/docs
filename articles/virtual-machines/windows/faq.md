@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: a21fbcd04c5916e686f13e375bc1854935d1c4fe
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d5dda567d0cfa89863731a3e8e651aede4ab5957
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500338"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825185"
 ---
 # <a name="frequently-asked-question-about-windows-virtual-machines"></a>有关 Windows 虚拟机的常见问题
 本文讨论了在 Azure 中使用 Resource Manager 部署模型创建的 Windows 虚拟机的一些常见问题。 有关本主题的 Linux 版本，请参阅[有关 Linux 虚拟机的常见问题](../linux/faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
@@ -23,7 +23,7 @@ ms.locfileid: "86500338"
 MSDN Azure 权益订户以及 MSDN 开发和测试即用即付订户可使用某些版本的 Windows 7、Windows 8.1 和 Windows 10 执行开发和测试任务。 有关详细信息（包括说明和限制），请参阅[适用于 MSDN 订户的 Windows 客户端映像](https://azure.microsoft.com/blog/2014/05/29/windows-client-images-on-azure/)。 
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>使用虚拟机时，我可以使用多少存储？
-每个数据磁盘的容量高达 32,767 GiB。 可以使用的数据磁盘数取决于虚拟机大小。 有关详细信息，请参阅[虚拟机大小](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
+每个数据磁盘的容量高达 32,767 GiB。 可以使用的数据磁盘数取决于虚拟机大小。 有关详细信息，请参阅[虚拟机大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。
 
 Azure 托管磁盘是推荐用于 Azure 虚拟机的磁盘存储产品，方便永久存储数据。 可对每个虚拟机使用多个托管磁盘。 托管磁盘提供两种类型的持久存储选项：高级和标准托管磁盘。 有关定价信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks)。
 
@@ -49,13 +49,13 @@ Azure 存储帐户还可为操作系统磁盘和任何数据磁盘提供存储�
 否。 如果希望将 VM 作为可用性集的一部分，则需要在该可用性集中创建 VM。 目前，不支持在创建 VM 后将其添加到可用性集。
 
 ## <a name="can-i-upload-a-virtual-machine-to-azure"></a>可否将虚拟机上传到 Azure？
-是。 有关说明，请参阅[将本地 VM 迁移到 Azure](on-prem-to-azure.md)。
+是的。 有关说明，请参阅[将本地 VM 迁移到 Azure](on-prem-to-azure.md)。
 
 ## <a name="can-i-resize-the-os-disk"></a>可否调整 OS 磁盘的大小？
-是。 有关说明，请参阅 [How to expand the OS drive of a Virtual Machine in an Azure Resource Group](expand-os-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（如何扩展 Azure 资源组中虚拟机的 OS 驱动器）。
+是的。 有关说明，请参阅 [How to expand the OS drive of a Virtual Machine in an Azure Resource Group](expand-os-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（如何扩展 Azure 资源组中虚拟机的 OS 驱动器）。
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>可否复制或克隆现有的 Azure VM？
-是。 借助托管映像，可创建虚拟机的映像，然后使用该映像生成多个新的 VM。 有关说明，请参阅[创建 VM 的自定义映像](tutorial-custom-images.md)。
+是的。 借助托管映像，可创建虚拟机的映像，然后使用该映像生成多个新的 VM。 有关说明，请参阅[创建 VM 的自定义映像](tutorial-custom-images.md)。
 
 ## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager"></a>为什么在 Azure Resource Manager 中看不到加拿大中部和加拿大东部区域？
 
@@ -71,7 +71,7 @@ Azure 存储帐户还可为操作系统磁盘和任何数据磁盘提供存储�
 是的。 计算机名称的最大长度为 15 个字符。 有关命名资源的详细信息，请参阅[命名约定规则和限制](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)。
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>是否存在资源组名称要求？
-是。 资源组名称的最大长度为 90 个字符。 有关资源组的详细信息，请参阅[命名约定规则和限制](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming)。
+是的。 资源组名称的最大长度为 90 个字符。 有关资源组的详细信息，请参阅[命名约定规则和限制](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming)。
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>创建 VM 时，用户名有什么要求？
 

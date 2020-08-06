@@ -1,6 +1,6 @@
 ---
 title: Azure 存储分析指标（经典）
-description: 了解如何在 Azure 存储中使用存储分析指标。
+description: 了解如何在 Azure 存储中使用存储分析指标。 了解事务和容量指标，如何存储指标，如何启用指标等等。
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: b4bb17fce7be7aeff2a6978177106201e4c80aee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7d7db5a756e5d75cb4f9719f54d95f9cee1e8d2f
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087265"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828041"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure 存储分析指标（经典）
 
@@ -74,7 +74,7 @@ Azure 存储使用存储分析解决方案存储一些指标，这些指标包�
 1. 确保“状态”设置为“打开”。
 1. 选择要监视的服务指标。
 1. 指定用来指示保留度量值和日志数据的时间长度的保留期策略。
-1. 选择“保存” 。
+1. 选择“保存”。
 
 [Azure 门户](https://portal.azure.com)目前不允许你在存储帐户中配置分钟指标。 必须使用 PowerShell 或以编程方式启用分钟指标。
 
@@ -90,7 +90,7 @@ Azure 存储使用存储分析解决方案存储一些指标，这些指标包�
    * **服务**：收集经过汇总的有关 Blob、队列、表和文件服务的入口和出口、可用性、延迟及成功百分比等指标。
    * ServiceAndApi：除服务指标外，在 Azure 存储服务 API 中为每项存储操作收集一组相同的指标。
 
-例如，以下命令在存储帐户中打开 blob 服务的分钟指标，并将保留期设置为五天： 
+例如，以下命令在保留期设为 5 天的情况下，在存储帐户中为 Blob 服务打开分钟指标： 
 
 > [!NOTE]
 > 此命令假设你已使用 `Connect-AzAccount` 命令登录到 Azure 订阅。
@@ -146,7 +146,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
 如果要为长期存储下载指标或在本地分析这些指标，则需要使用工具或编写一些代码来读取表。 必须下载分析用的分钟指标。 如果在存储帐户中列出所有表，则这些表不会显示，但可以按名称直接访问。 很多存储浏览工具可识别这些表，并可用于直接查看这些表。 有关可用工具的列表，请参阅 [Azure 存储客户端工具](/azure/storage/storage-explorers)。
 
-|指标|表名|注释| 
+|指标|表名|说明| 
 |-|-|-|  
 |小时指标|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|在 2013 年 8 月 15 日之前的版本中，这些表称为：<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> 从 2015 年 4 月 5 日的版本开始，可以使用文件服务指标。|  
 |分钟度量值|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|只能通过 PowerShell 或以编程方式启用。<br /><br /> 从 2015 年 4 月 5 日的版本开始，可以使用文件服务指标。|  
@@ -154,7 +154,7 @@ queueClient.SetServiceProperties(serviceProperties);
 
 有关这些表的完整架构详细信息，请参阅[存储分析指标表架构](/rest/api/storageservices/storage-analytics-metrics-table-schema)。 以下示例行仅显示一部分可用列，但也说明了存储指标在采用相应方式保存这些指标时展现的一些重要功能：  
 
-|PartitionKey|RowKey|Timestamp|TotalRequests|TotalBillableRequests|TotalIngress|TotalEgress|可用性|AverageE2ELatency|AverageServerLatency|PercentSuccess| 
+|PartitionKey|RowKey|时间戳|TotalRequests|TotalBillableRequests|TotalIngress|TotalEgress|可用性|AverageE2ELatency|AverageServerLatency|PercentSuccess| 
 |-|-|-|-|-|-|-|-|-|-|-|  
 |20140522T1100|user;All|2014-05-22T11:01:16.7650250Z|7|7|4003|46801|100|104.4286|6.857143|100|  
 |20140522T1100|user;QueryEntities|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  

@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: a66cb190309fb9e966392f57a251eff746bfa315
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d61e052b10b7255cac37531f889324075d596f3c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321099"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828449"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>在 Azure Monitor 中排查日志警报问题  
 
@@ -186,11 +186,11 @@ Azure 活动日志中的以下示例事件适用于因持续失败而被禁用�
 [Azure 顾问](../../advisor/advisor-overview.md)会警告此类行为。 在 Azure 顾问上，针对特定的日志警报规则添加了一个建议，该规则位于具有中等影响的高可用性类别下，以及有关 "修复日志警报规则以确保监视" 的说明。
 
 > [!NOTE]
-> 如果在 Azure 顾问提供了七天的建议后，不会更正日志警报规则中的警报查询，Azure Monitor 将禁用日志警报，并确保在规则不能连续运行时不会产生不必要的计费（7天）。 可以通过查看 [Azure 活动日志](../../azure-resource-manager/management/view-activity-logs.md)中的事件，来了解 Azure Monitor 禁用日志警报规则的确切时间。
+> 如果在 Azure 顾问提供了七天的建议后，不会更正日志警报规则中的警报查询，Azure Monitor 将禁用日志警报，并确保在 (7 天) ，如果规则无法连续运行，则不需要进行不必要的收费。 可以通过查看 [Azure 活动日志](../../azure-resource-manager/management/view-activity-logs.md)中的事件，来了解 Azure Monitor 禁用日志警报规则的确切时间。
 
 ## <a name="alert-rule-quota-was-reached"></a>已达到警报规则配额
 
-每个订阅和资源的日志搜索警报规则数受[此处](https://docs.microsoft.com/azure/azure-monitor/service-limits)所述的配额限制的限制。
+每个订阅和资源的日志搜索警报规则数受[此处](../service-limits.md)所述的配额限制的限制。
 
 ### <a name="recommended-steps"></a>建议的步骤
     
@@ -201,7 +201,7 @@ Azure 活动日志中的以下示例事件适用于因持续失败而被禁用�
 
     - 需要增加配额限制的订阅 ID
     - 配额增加的原因
-    - 配额增加的资源类型： **Log Analytics**， **Application Insights** ect。
+    - 配额增加的资源类型： **Log Analytics**、 **Application Insights**等。
     - 请求的配额限制
 
 
@@ -226,4 +226,3 @@ Azure 活动日志中的以下示例事件适用于因持续失败而被禁用�
 - 了解 [Azure 中的日志警报](./alerts-unified-log.md)。
 - 详细了解 [Application Insights](../log-query/log-query-overview.md)。
 - 了解有关[日志查询](../log-query/log-query-overview.md)的详细信息。
-

@@ -5,12 +5,12 @@ author: Sharmistha-Rai
 manager: gaggupta
 ms.topic: how-to
 ms.date: 05/25/2020
-ms.openlocfilehash: bd7619f000d16a55e1cfb31cc3b9cfb3b6d33502
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 7f9c5afbeed0c772f76e013a37dd870ed2185be7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432609"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827667"
 ---
 # <a name="replicate-azure-virtual-machines-running-in-proximity-placement-groups-to-another-region"></a>将邻近放置组中运行的 Azure 虚拟机复制到另一个区域
 
@@ -42,7 +42,7 @@ ms.locfileid: "87432609"
 ## <a name="set-up-site-recovery-for-virtual-machines-in-proximity-placement-group"></a>为邻近放置组中的虚拟机设置 Site Recovery
 
 > [!NOTE]
-> 请确保你具有目标邻近组的唯一 ID。 如果要创建新的邻近位置组，请检查[此处](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#create-a-proximity-placement-group)的命令，如果使用现有的邻近位置组，请在[此处](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#list-proximity-placement-groups)使用命令。
+> 请确保你具有目标邻近组的唯一 ID。 如果要创建新的邻近位置组，请检查[此处](../virtual-machines/windows/proximity-placement-groups.md#create-a-proximity-placement-group)的命令，如果使用现有的邻近位置组，请在[此处](../virtual-machines/windows/proximity-placement-groups.md#list-proximity-placement-groups)使用命令。
 
 ### <a name="azure-to-azure"></a>Azure 到 Azure
 

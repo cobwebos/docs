@@ -1,6 +1,6 @@
 ---
 title: 设计用于数据修改的 Azure 表存储 |Microsoft Docs
-description: 用于在 Azure 表存储中进行数据修改的设计表。
+description: 用于在 Azure 表存储中进行数据修改的设计表。 优化插入、更新和删除操作。 确保存储实体中的一致性。
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: c95be7afae5c0a84c06b691c8225f32f2aa68260
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1f48cbf198e8a12d4f35293b285e6cb09bef29a1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75771540"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826460"
 ---
 # <a name="design-for-data-modification"></a>针对数据修改的设计
 本文重点介绍优化插入、更新和删除的设计注意事项。 在某些情况下，需要在针对查询优化的设计与针对数据修改优化的设计之间进行权衡，就像你在设计关系数据库时要做的那样（尽管在关系数据库中，管理设计权衡的方法是不同的）。 “表设计模式”部分介绍了一些详细的表服务设计模式，着重阐释了其中的部分权衡。 在实践中，会发现许多针对查询实体优化的设计对于修改实体也能很好地工作。  
@@ -33,10 +33,10 @@ ms.locfileid: "75771540"
 
 [表设计模式](table-storage-design-patterns.md)一文的以下模式解决了管理一致性的问题：  
 
-* [内分区的第二索引模式](table-storage-design-patterns.md#intra-partition-secondary-index-pattern) - 利用同一分区中的 **RowKey** 值存储每个实体的多个副本，实现快速、高效的查询，并借助不同的 **RowKey** 值替换排序顺序。  
-* [内分区的第二索引模式](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) - 在单独分区/表格中利用不同 RowKey 值存储每个实体的多个副本，实现快速高效的查找，并借助 **RowKey** 值替换排序顺序。  
+* [内分区的第二索引模式](table-storage-design-patterns.md#intra-partition-secondary-index-pattern)-使用不同的**RowKey**值存储每个实体的多个副本)  (在同一分区中，从而实现快速高效的查找，并通过使用不同的**RowKey**值替换排序顺序。  
+* [内分区的第二索引模式](table-storage-design-patterns.md#inter-partition-secondary-index-pattern) - 在单独分区/表格中利用不同 RowKey 值存储每个实体的多个副本，实现快速高效的查找，并借助 RowKey 值替换排序顺序****。  
 * [最终一致性事务模式](table-storage-design-patterns.md#eventually-consistent-transactions-pattern) - 使用 Azure 队列，使不同分区边界或存储系统中的行为达到最终一致。
-* [索引实体模式](table-storage-design-patterns.md#index-entities-pattern) - 维护索引实体，实现返回实体列表的高效搜索。  
+* [索引实体模式](table-storage-design-patterns.md#index-entities-pattern)-维护索引实体以启用返回实体列表的高效搜索。  
 * [反规范模式](table-storage-design-patterns.md#denormalization-pattern) - 将相关数据组合放在单个实体中，使用户可通过单个点查询检索全部所需数据。  
 * [数据系列模式](table-storage-design-patterns.md#data-series-pattern) - 将完整的数据系列存储在单个实体中，最大限度地减少发出请求的次数。  
 

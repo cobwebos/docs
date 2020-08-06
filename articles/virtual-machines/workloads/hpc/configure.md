@@ -13,19 +13,19 @@ ms.topic: article
 ms.date: 08/01/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: c49286f370691c39c3d14d589f2657d6e0bb3c04
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: dfa1c790dc0f2e229b3bfa19616e5760c3d3d02e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542325"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825134"
 ---
-# <a name="configure-and-optimize-vms"></a>配置和优化 Vm
+# <a name="configure-and-optimize-vms"></a>配置和优化 VM
 
 本文介绍了如何配置和优化已启用未支持的[H 系列的 H 系列](../../sizes-hpc.md)和[N 系列](../../sizes-gpu.md)vm，并对其进行了优化。
 
 ## <a name="vm-images"></a>VM 映像
-在启用了支持的 Vm 上，启用 RDMA 需要相应的驱动程序。 在 Linux 上，Marketplace 中的 CentOS-HPC VM 映像已预先配置了适当的驱动程序。 可以使用[此处的说明](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)，使用正确的驱动程序配置 Ubuntu VM 映像。 还建议使用适当的驱动程序和配置创建[自定义 VM 映像](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images)，并重复使用这些 recurringly。
+在启用了支持的 Vm 上，启用 RDMA 需要相应的驱动程序。 在 Linux 上，Marketplace 中的 CentOS-HPC VM 映像已预先配置了适当的驱动程序。 可以使用[此处的说明](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351)，使用正确的驱动程序配置 Ubuntu VM 映像。 还建议使用适当的驱动程序和配置创建[自定义 VM 映像](../../linux/tutorial-custom-images.md)，并重复使用这些 recurringly。
 
 ### <a name="centos-hpc-vm-images"></a>CentOS-HPC VM 映像
 对于不支持 SR-IOV 的支持[RDMA 的 vm](../../sizes-hpc.md#rdma-capable-instances)，CentOS 版本6.5 或更高版本，适用于 Marketplace 中的最大为7.5。 例如，对于[H16 系列 vm](../../h-series.md)，建议使用版本7.1 至7.5。 这些 VM 映像已预先加载到 RDMA 和 Intel MPI 版本5.1 的网络直接驱动程序中。
@@ -45,7 +45,7 @@ ms.locfileid: "87542325"
   在[azhpc](https://github.com/Azure/azhpc-images/tree/master/ubuntu/ubuntu-18.x/ubuntu-18.04-hpc)存储库中，可用于创建基于 UBUNTU 18.04 LTS 的 HPC VM 映像的脚本示例。
 
 ### <a name="suse-linux-enterprise-server-vm-images"></a>SUSE Linux Enterprise Server VM 映像
-SLES 12 SP3 for HPC、SLES 12 SP3 for hpc （高级版）、SLES 12 SP1 for hpc、SLES 12 SP1 for HPC （高级版）、SLES 12 SP4 以及 Marketplace 中的 SLES 15 VM 映像均受支持。 这些 VM 映像已预先加载到 RDMA 和 Intel MPI 版本5.1 的网络直接驱动程序中。 了解有关在 Vm 上[设置 MPI](setup-mpi.md)的详细信息。
+SLES 12 SP3 for HPC、SLES 12 SP3 for hpc (Premium) 、SLES 12 SP1 for HPC、SLES 12 SP1 for HPC (Premium) 、SLES 12 SP4 以及 Marketplace 中的 SLES 15 VM 映像均受支持。 这些 VM 映像已预先加载到 RDMA 和 Intel MPI 版本5.1 的网络直接驱动程序中。 了解有关在 Vm 上[设置 MPI](setup-mpi.md)的详细信息。
 
 ## <a name="optimize-vms"></a>优化 Vm
 
@@ -53,7 +53,7 @@ SLES 12 SP3 for HPC、SLES 12 SP3 for hpc （高级版）、SLES 12 SP1 for hpc�
 
 ### <a name="update-lis"></a>更新 .LIS
 
-如果功能或性能需要，可以在支持的 OS 发行版上安装或更新[Linux Integration Services （.lis）驱动程序](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)，特别是使用自定义映像或早期版本的 CENTOS/RHEL 1.x 或更早版本的7、windows 进行部署时。
+如果功能或性能需要， [Linux Integration Services (.lis) 驱动程序](../../linux/endorsed-distros.md)可以在受支持的 OS 发行版上安装或更新，尤其是使用自定义映像或更早版本的 CENTOS/RHEL 1.x 或早期版本的来部署。
 
 ```bash
 wget https://aka.ms/lis
@@ -111,4 +111,4 @@ sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
 - 详细了解如何在 Vm 上安装各种[受支持的 MPI 库](setup-mpi.md)及其最佳配置。
 - 请查看[hb-acct-wc 系列概述](hb-series-overview.md)和[HC 概述](hc-series-overview.md)，了解如何以最佳方式配置工作负荷以提高性能和可扩展性。
 - 阅读有关[Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)的最新公告和一些 HPC 示例和结果。
-- 有关运行 HPC 工作负荷的更高层次结构视图，请参阅[Azure 上的高性能计算（HPC）](/azure/architecture/topics/high-performance-computing/)。
+- 有关运行 HPC 工作负荷的更高层次结构视图，请参阅[Azure 上的高性能计算 (HPC) ](/azure/architecture/topics/high-performance-computing/)。

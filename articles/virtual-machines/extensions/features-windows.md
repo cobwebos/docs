@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c28fe96fe88a3b0744aaad72d49e8e2f52912fb6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082624"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829078"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>适用于 Windows 的虚拟机扩展和功能
 
@@ -36,7 +36,7 @@ Azure 虚拟机 (VM) 扩展是小型应用程序，可在 Azure VM 上提供部�
 
 - 使用适用于 Windows 的 DSC 扩展将 PowerShell 所需状态配置应用到 VM。 有关详细信息，请参阅 [Azure Desired State configuration extension](dsc-overview.md)（Azure Desired State Configuration 扩展）。
 - 使用 Log Analytics 代理 VM 扩展配置 VM 监视功能。 有关详细信息，请参阅[将 Azure VM 连接到 Azure Monitor 日志](../../azure-monitor/learn/quick-collect-azurevm.md)。
-- 使用 Chef 配置 Azure VM。 有关详细信息，请参阅[使用 Chef 自动执行 Azure VM 部署](../../chef/chef-automation.md)。
+- 使用 Chef 配置 Azure VM。 有关详细信息，请参阅[使用 Chef 自动执行 Azure VM 部署](/azure/developer/chef/windows-vm-configure)。
 - 使用 Datadog 扩展配置 Azure 基础结构监视功能。 有关详细信息，请参阅 [Datadog 博客](https://www.datadoghq.com/blog/introducing-azure-monitoring-with-one-click-datadog-deployment/)。
 
 

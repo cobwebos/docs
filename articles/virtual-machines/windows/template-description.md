@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: cd96fe550a508e54c467ca52cd36322581029654
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e420fe81941352d1002ed2c25c04fc686115c7c2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283225"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827446"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager 模板中的虚拟机
 
@@ -274,7 +274,7 @@ ms.locfileid: "87283225"
 
 定义虚拟机资源时，需要使用几个 profile 元素。 其中一些元素是必需的，还有一些是可选的。 例如，hardwareProfile、osProfile、storageProfile 和 networkProfile 元素是必需的，而 diagnosticsProfile 是可选的。 这些配置文件定义如下所述的设置：
    
-- [大小](sizes.md)
+- [大小](../sizes.md)
 - [名称](/azure/architecture/best-practices/resource-naming)和凭据
 - 磁盘和[操作系统设置](cli-ps-findimage.md)
 - [网络接口](/previous-versions/azure/virtual-network/virtual-network-deploy-multinic-classic-ps) 
@@ -353,7 +353,7 @@ ms.locfileid: "87283225"
 
 ### <a name="attach-data-disks"></a>附加数据磁盘
 
-可以选择性地将数据磁盘添加到 VM。 [磁盘数目](sizes.md)取决于要使用的操作系统磁盘的大小。 如果 VM 的大小设置为 Standard_DS1_v2，则可添加到 VM 的数据磁盘数目上限为 2。 本示例中向每个 VM 添加一个托管数据磁盘：
+可以选择性地将数据磁盘添加到 VM。 [磁盘数目](../sizes.md)取决于要使用的操作系统磁盘的大小。 如果 VM 的大小设置为 Standard_DS1_v2，则可添加到 VM 的数据磁盘数目上限为 2。 本示例中向每个 VM 添加一个托管数据磁盘：
 
 ```json
 "dataDisks": [

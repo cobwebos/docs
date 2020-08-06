@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 表存储中设计可伸缩的高性能表。 | Microsoft Docs
-description: 在 Azure 表存储中设计可伸缩的高性能表。
+description: 了解如何在 Azure 表存储中设计可缩放的高性能表。 查看表分区、实体组事务以及容量和成本注意事项。
 services: storage
 author: SnehaGunda
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 1dba3a6f3ebd7b6675e6d0d90d98a45625ad04ee
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 59af13bcae14839a5b583ad7e063668b5305b30a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656910"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824403"
 ---
 # <a name="design-scalable-and-performant-tables"></a>设计可伸缩的高性能表
 
@@ -73,7 +73,7 @@ ms.locfileid: "83656910"
 <th>电子邮件</th>
 </tr>
 <tr>
-<td>六月</td>
+<td>Jun</td>
 <td>Cao</td>
 <td>47</td>
 <td>junc@contoso.com</td>

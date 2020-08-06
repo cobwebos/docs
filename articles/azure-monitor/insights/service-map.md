@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 77684ffef6be988dbb6b7057ba8c56f5227007b6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e422b019dd17c8c56ba99b5826e9f6215459c382
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326063"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825355"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
 
@@ -35,7 +35,7 @@ ms.locfileid: "87326063"
 ## <a name="enable-service-map"></a>启用服务映射
 
 1. 从[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceMapOMS?tab=Overview)或使用[从解决方案库添加监视解决方案](solutions.md)中所述的过程，启用服务映射解决方案。
-1. 在要获取数据的每台计算机上[安装 Windows 上的 Dependency Agent](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-windows) 或[安装 Linux 上的 Dependency Agent](vminsights-enable-hybrid-cloud.md#install-the-dependency-agent-on-linux)。 依赖关系代理可以监视与直接邻居之间的连接，因此不需要在每台计算机上都具有代理。
+1. 在要获取数据的每台计算机上[安装 Windows 上的 Dependency Agent](./vminsights-enable-hybrid.md#install-the-dependency-agent-on-windows) 或[安装 Linux 上的 Dependency Agent](./vminsights-enable-hybrid.md#install-the-dependency-agent-on-linux)。 依赖关系代理可以监视与直接邻居之间的连接，因此不需要在每台计算机上都具有代理。
 
 在 Azure 门户从 Log Analytics 工作区访问服务映射，并选择左窗格中的“解决方案”**** 选项。<br><br> ![选择工作区中的“解决方案”选项](./media/service-map/select-solution-from-workspace.png)。<br> 从解决方案列表中选择“ServiceMap(workspaceName)”****，并在服务映射解决方案概述页面单击“服务映射摘要”标题。<br><br> ![服务映射摘要标题](./media/service-map/service-map-summary-tile.png)。
 
@@ -314,7 +314,7 @@ Linux：
 包含内部生成的可用于标识唯一进程和计算机的属性：
 
 - 计算机：使用 *ResourceId* 或 *ResourceName_s* 唯一标识 Log Analytics 工作区中的计算机。
-- 进程：使用 *ResourceId* 唯一标识 Log Analytics 工作区中的进程。 *ResourceName_s*在运行进程的计算机的上下文中是唯一的（MachineResourceName_s） 
+- 进程：使用 *ResourceId* 唯一标识 Log Analytics 工作区中的进程。 *ResourceName_s*在运行进程的计算机的上下文中是唯一的 (MachineResourceName_s)  
 
 由于在指定的时间范围内，指定的进程和计算机可能存在多条记录，因此针对同一个计算机或进程的查询可能返回多条记录。 若要仅添加最新记录，请在查询中添加“| dedup ResourceId”。
 
@@ -326,7 +326,7 @@ Linux：
 
 为了控制成本和复杂性，连接记录不会显示单个物理网络连接。 多个物理网络连接分组到一个逻辑连接中，然后在相应的表中反映该逻辑连接。  这意味着，*VMConnection* 表中的记录表示逻辑分组，而不是观测到的单个物理连接。 在给定的一分钟时间间隔内共享以下属性相同值的物理网络连接将聚合到 *VMConnection* 中的单个逻辑记录内。 
 
-| 属性 | 描述 |
+| Property | 描述 |
 |:--|:--|
 | `Direction` |连接方向，值为 *inbound* 或 *outbound* |
 | `Machine` |计算机 FQDN |
@@ -338,7 +338,7 @@ Linux：
 
 为了帮助你权衡分组造成的影响，以下记录属性中提供了有关分组的物理连接数的信息：
 
-| 属性 | 描述 |
+| Property | 描述 |
 |:--|:--|
 | `LinksEstablished` |在报告时间范围内建立的物理网络连接数 |
 | `LinksTerminated` |在报告时间范围内终止的物理网络连接数 |
@@ -349,7 +349,7 @@ Linux：
 
 除了连接计数指标以外，以下记录属性中还包含了有关在给定逻辑连接或网络端口上发送和接收的数据量的信息：
 
-| 属性 | 描述 |
+| Property | 描述 |
 |:--|:--|
 | `BytesSent` |在报告时间范围内发送的字节总数 |
 | `BytesReceived` |在报告时间范围内接收的字节总数 |
@@ -377,7 +377,7 @@ Linux：
 
 *VMConnection* 还包含以下记录属性中每个连接记录的远程端的地理位置信息： 
 
-| 属性 | 描述 |
+| Property | 描述 |
 |:--|:--|
 | `RemoteCountry` |托管 RemoteIp 的国家/地区的名称。  例如，*美国* |
 | `RemoteLatitude` |地理位置的纬度。  例如 *47.68* |
@@ -387,7 +387,7 @@ Linux：
 
 将会根据一组 IP 检查 *VMConnection* 表中的每个 RemoteIp 属性，以识别已知的恶意活动。 如果 RemoteIp 识别为恶意，则会在以下记录属性中填充以下属性（如果未将该 IP 视为恶意，则这些属性为空）：
 
-| 属性 | 描述 |
+| Property | 描述 |
 |:--|:--|
 | `MaliciousIp` |RemoteIp 地址 |
 | `IndicatorThreadType` |检测到的威胁标志是以下值之一：Botnet**、C2**、CryptoMining**、Darknet**、DDos**、MaliciousUrl**、Malware**、Phishing**、Proxy**、PUA** 和 Watchlist**。   |
@@ -598,9 +598,8 @@ Microsoft Dependency Agent 基于 Microsoft Visual Studio 运行时库。 如果
 
 如果你在服务映射中看到你的计算机，但它没有进程或连接数据，则表明依赖关系代理已安装并正在运行，但内核驱动程序未加载。 
 
-检查 `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` （Windows）或 `/var/opt/microsoft/dependency-agent/log/service.log file` （Linux）。 文件的最后几行应指出为何未加载内核。 例如，如果更新内核，则内核在 Linux 上可能不受支持。
+检查 `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` Windows) 或 `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux)  (。 文件的最后几行应指出为何未加载内核。 例如，如果更新内核，则内核在 Linux 上可能不受支持。
 
 ## <a name="suggestions"></a>建议
 
 是否有任何关于服务映射或本文档的反馈？  请访问 [User Voice 页面](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)，可在此处推荐功能或对现有建议投票。
-

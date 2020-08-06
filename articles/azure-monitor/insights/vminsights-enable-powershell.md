@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 7f71e52fd1fd40015ff93e189495daef0e2c333e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a2cdcab08bba76cb385666956b7663324f32c669
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328132"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824573"
 ---
 # <a name="enable-azure-monitor-for-vms-using-powershell"></a>使用 PowerShell 启用用于 VM 的 Azure Monitor
 本文介绍如何使用 PowerShell 在 Azure 虚拟机上启用用于 VM 的 Azure Monitor。 此过程可用于以下操作：
@@ -19,7 +19,7 @@ ms.locfileid: "87328132"
 - Azure 虚拟机
 - Azure 虚拟机规模集
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [创建并配置 Log Analytics 工作区](vminsights-configure-workspace.md)。
 - 请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)，以确保正在启用的虚拟机或虚拟机规模集的操作系统受支持。 
@@ -35,7 +35,7 @@ ms.locfileid: "87328132"
 
 对于每个虚拟机或虚拟机规模集，该脚本将验证是否已安装 Log Analytics 代理和依赖关系代理的 VM 扩展。 如果同时安装了这两个扩展，该脚本会尝试重新安装。 如果未安装这两个扩展，则脚本将安装它们。
 
-验证是否使用的是启用了 `Enable-AzureRM` 兼容性别名的 Azure PowerShell 模块 Az 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
+验证是否使用的是启用了 `Enable-AzureRM` 兼容性别名的 Azure PowerShell 模块 Az 1.0.0 或更高版本。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 如果在本地运行 PowerShell，则还需运行 `Connect-AzAccount` 以创建与 Azure 的连接。
 
 若要获取脚本的参数详细信息和示例用法的列表，请运行 `Get-Help`。
 

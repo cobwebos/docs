@@ -14,12 +14,12 @@ ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6597c268a2a017280d00f73366562de61b4781e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 82c0fbb62f411ccc3056d782518c6c3b570106d2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529783"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828619"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>部署 Azure AD Privileged Identity Management (PIM)
 
@@ -80,9 +80,9 @@ Azure AD Privileged Identity Management 可帮助跨 Azure AD、Azure 资源和�
 
 ### <a name="roles-that-can-be-managed-by-privileged-identity-management"></a>可以通过 Privileged Identity Management 管理的角色
 
-**Azure AD 角色**–这些角色都在 Azure Active Directory （例如全局管理员、Exchange 管理员和安全管理员）中。 可通过 [Azure Active Directory 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)，了解更多有关角色及其功能的信息。 如需帮助来确定向管理员分配哪个角色，请参阅[按任务划分的最小特权角色](../users-groups-roles/roles-delegate-by-task.md)。
+**Azure AD 角色**–这些角色全部在 Azure Active Directory (如全局管理员、Exchange 管理员和安全管理员) 中。 可通过 [Azure Active Directory 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)，了解更多有关角色及其功能的信息。 如需帮助来确定向管理员分配哪个角色，请参阅[按任务划分的最小特权角色](../users-groups-roles/roles-delegate-by-task.md)。
 
-**Azure 资源角色**-这些角色链接到 azure 资源、资源组、订阅或管理组。 Privileged Identity Management 同时提供对内置角色（如所有者、用户访问管理员和参与者）和[自定义角色](../../role-based-access-control/custom-roles.md)的实时访问。 有关 Azure 资源角色的详细信息，请阅读[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md)。
+**Azure 资源角色**-这些角色链接到 azure 资源、资源组、订阅或管理组。 Privileged Identity Management 同时提供对内置角色（如所有者、用户访问管理员和参与者）和[自定义角色](../../role-based-access-control/custom-roles.md)的实时访问。 有关 Azure 资源角色的详细信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制](../../role-based-access-control/overview.md)。
 
 有关详细信息，请参阅[无法在 Privileged Identity Management 中管理的角色](pim-roles.md)。
 

@@ -7,21 +7,21 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 105cb38ccb65c96e2a1177e09839fc9d295c2b80
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8948ed51a9cda3d308046f3b85b6ce338462e82c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489939"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826154"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>使用 CLI 创建和管理 Azure Database for MySQL 的专用链接
 
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 在本文中，你将了解如何使用 Azure CLI 在 Azure 虚拟网络中创建 VM，并使用 Azure 私有终结点在 Azure Database for MySQL 服务器中创建 VM。
 
 > [!NOTE]
-> 此功能适用于所有 Azure Database for MySQL 支持常规用途和内存优化定价层的 Azure 区域。
+> 专用链接功能仅适用于常规用途或内存优化定价层中的 Azure Database for MySQL 服务器。 请确保数据库服务器是这些定价层中的一种。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -143,7 +143,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
         > [!NOTE]
         > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据 。
 
-1. 选择“确定” 。
+1. 选择“确定”。
 
 1. 你可能会在登录过程中收到证书警告。 如果收到证书警告，请选择“确定”或“继续” 。
 
@@ -174,14 +174,14 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
     | 连接名称| 选择所选的连接名称。|
     | 主机名 | 选择*mydemoserver.privatelink.mysql.database.azure.com* |
     | 用户名 | 输入在 *username@servername* 创建 MySQL server 期间提供的用户名。 |
-    | 密码 | 输入在创建 MySQL server 期间提供的密码。 |
+    | Password | 输入在创建 MySQL server 期间提供的密码。 |
     ||
 
 5. 选择“连接”。
 
 6. 浏览左侧菜单中的数据库。
 
-7. 同时创建或查询 MySQL 数据库中的信息。
+7.  (可以选择) 创建或查询 MySQL 数据库中的信息。
 
 8. 关闭与 myVm 的远程桌面连接。
 

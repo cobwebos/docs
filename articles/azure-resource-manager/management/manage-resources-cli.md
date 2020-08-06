@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1a696827cefca53586f14d4ea118094a4718212f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8ecaf7a7df80cbb62bcb27373c47e26c70108d1e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491538"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827004"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>使用 Azure CLI 管理 Azure 资源
 
@@ -137,7 +137,7 @@ az lock delete --ids $lockId
 
 ## <a name="manage-access-to-resources"></a>管理对资源的访问
 
-可以在 Azure 中通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 这种方式管理对资源的访问。 有关详细信息，请参阅[使用 RBAC 和 Azure CLI 管理访问权限](../../role-based-access-control/role-assignments-cli.md)。
+Azure [RBAC) 的 azure 基于角色的访问控制 (](../../role-based-access-control/overview.md)是管理 azure 中资源访问权限的方式。 有关详细信息，请参阅[使用 RBAC 和 Azure CLI 管理访问权限](../../role-based-access-control/role-assignments-cli.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

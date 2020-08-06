@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: ccf4ad960abfd737a9a05d8fdc77a8bb1ea92d2d
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3b30cefdd72286c15095828c409a87f173200a7b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87417108"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828398"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>启用混合虚拟机的用于 VM 的 Azure Monitor
 本文介绍如何为 Azure 之外的虚拟机（包括本地和其他云环境）启用用于 VM 的 Azure Monitor。
@@ -19,7 +19,7 @@ ms.locfileid: "87417108"
 > [!IMPORTANT]
 > 启用混合 Vm 的建议方法是首先为[服务器启用 Azure Arc](../../azure-arc/servers/overview.md) ，以便可以使用类似于 Azure vm 的进程为用于 VM 的 Azure Monitor 启用 vm。 本文介绍如果选择不使用 Azure Arc，如何载入混合 Vm。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 - [创建并配置 Log Analytics 工作区](vminsights-configure-workspace.md)。
 - 请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)，以确保正在启用的虚拟机或虚拟机规模集的操作系统受支持。 
@@ -80,7 +80,7 @@ Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDepend
 > 需要根目录访问才能安装或配置代理。
 >
 
-| 参数 | 描述 |
+| 参数 | 说明 |
 |:--|:--|
 | -help | 获取命令行选项列表。 |
 | -S | 执行无提示安装，无用户提示。 |
@@ -158,7 +158,7 @@ configuration VMInsights {
 
     **Linux**：查找正在运行的进程 "microsoft 依赖关系代理"。
 
-2. 是否处于 [Log Analytics 的免费定价层](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)？ 免费计划最多允许五台仅有的计算机。 任何后续的计算机都不会出现在映射上，即使之前的五台计算机不再发送数据，也是如此。
+2. 是否处于 [Log Analytics 的免费定价层](./solutions.md)？ 免费计划最多允许五台仅有的计算机。 任何后续的计算机都不会出现在映射上，即使之前的五台计算机不再发送数据，也是如此。
 
 3. 计算机是否正在向 Azure Monitor 日志发送日志和性能数据？ 对计算机执行以下查询：
 

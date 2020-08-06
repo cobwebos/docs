@@ -1,7 +1,7 @@
 ---
 title: 使用托管标识授予对数据的访问权限
 titleSuffix: Azure Storage
-description: 了解如何使用 Azure 资源的托管标识在应用程序中授权对 Blob 和队列数据的访问权限，此类应用程序可以在 Azure 虚拟机、函数应用、虚拟机规模集等位置中运行。
+description: 使用 Azure 资源的托管标识对 Azure Vm 中运行的应用程序、函数应用和其他应用程序的 blob 和队列数据访问授权。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 17d19d0b87812ec1f38b43c1b26dbd5c19b4efc8
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 8273be760b37c12f3db7a393e59ab8ead291ec02
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534203"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827990"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>使用 Azure 资源托管标识授予对 Blob 和队列数据的访问权限
 
@@ -51,7 +51,7 @@ Azure 标识客户端库的优点在于，它使你可以使用相同的代码�
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>在开发环境中对用户进行身份验证
 
-代码在开发环境中运行时，可能会自动处理身份验证，也可能需要浏览器登录才能进行身份验证，具体取决于使用哪些工具。 例如，Microsoft Visual Studio 支持单一登录（SSO），以便 active Azure AD 用户帐户自动用于身份验证。 有关 SSO 的详细信息，请参阅[对应用程序的单一登录](../../active-directory/manage-apps/what-is-single-sign-on.md)。
+代码在开发环境中运行时，可能会自动处理身份验证，也可能需要浏览器登录才能进行身份验证，具体取决于使用哪些工具。 例如，Microsoft Visual Studio 支持单一登录 (SSO) ，使活动 Azure AD 用户帐户自动用于身份验证。 有关 SSO 的详细信息，请参阅[对应用程序的单一登录](../../active-directory/manage-apps/what-is-single-sign-on.md)。
 
 其他开发工具可能会提示你通过 Web 浏览器登录。
 
@@ -93,7 +93,7 @@ az ad sp create-for-rbac \
 
 Azure 标识客户端库会在运行时读取三个环境变量中的值，以对服务主体进行身份验证。 下表介绍了为每个环境变量设置的值。
 
-|环境变量|Value
+|环境变量|值
 |-|-
 |`AZURE_CLIENT_ID`|服务主体的应用 ID
 |`AZURE_TENANT_ID`|服务主体的 Azure AD 租户 ID

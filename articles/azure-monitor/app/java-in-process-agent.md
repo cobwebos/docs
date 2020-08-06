@@ -3,12 +3,12 @@ title: 监视任何环境中的 Java 应用程序 - Azure Monitor Application In
 description: 对在任何环境中运行的 Java 应用程序进行应用程序性能监视，而不需要检测该应用。 分布式跟踪和应用程序映射。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: f35d661761f1bea4dbd6b691fb0667c6dad3e72e
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: c719f7f0310a6894d2289bdb0ac8fc64170df307
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541849"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824845"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Java 无代码应用程序监视 Azure Monitor Application Insights - 公共预览版
 
@@ -128,7 +128,7 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 
 ### <a name="supported-custom-telemetry"></a>支持的自定义遥测
 
-下表显示了当前支持的自定义遥测类型，您可以使用它们来补充 Java 3.0 代理。 总而言之，通过 micrometer 支持自定义指标，可通过日志记录框架启用自定义异常和跟踪，并通过[Application Insights Java 2.X SDK](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent#sending-custom-telemetry-using-application-insights-java-sdk-2x)支持任何类型的自定义遥测。 
+下表显示了当前支持的自定义遥测类型，您可以使用它们来补充 Java 3.0 代理。 总而言之，通过 micrometer 支持自定义指标，可通过日志记录框架启用自定义异常和跟踪，并通过[Application Insights Java 2.X SDK](#sending-custom-telemetry-using-application-insights-java-sdk-2x)支持任何类型的自定义遥测。 
 
 
 |                 | Micrometer | Log4j、logback、七月 | 2.x SDK |
@@ -136,7 +136,7 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 | 自定义事件   |            |                     |  是    |
 | 自定义指标  |  是       |                     |  是    |
 | 依赖项    |            |                     |  是    |
-| 异常      |            |  是                |  是    |   
+| 例外      |            |  是                |  是    |   
 | 页面视图      |            |                     |  是    |
 | 请求        |            |                     |  是    |
 | 跟踪          |            |  是                |  是    |

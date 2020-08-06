@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: reference
 ms.date: 07/21/2020
 ms.subservice: alerts
-ms.openlocfilehash: b4a2329640387ab1c3cda93d18c6cb22c7d511cd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3e691e3f32404af792c852636a257659b629eef4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327474"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824556"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>排查 Azure Monitor 指标警报的问题 
 
@@ -34,7 +34,7 @@ ms.locfileid: "87327474"
 
 3. **已处于活动状态** - 检查你预计会收到警报的指标时序是否已存在触发的警报。 指标警报是有状态的，即，一旦在特定的指标时序中触发某个警报，就不会触发该时序中的其他警报，直到相应的问题不再出现。 此设计选择减少了干扰。 当连续三次评估不满足警报条件时，警报会自动解决。
 
-4. **使用的维度**-如果已经[为某个指标](./alerts-metric-overview.md#using-dimensions)选择了某些维度值，则该警报规则将监视每个指标时间系列（由维度值组合定义），以确定阈值是否被破坏。 如果还要监视聚合指标时序（不选择任何维度），请在该指标上配置附加警报规则而不选择维度。
+4. **使用的维度**-如果已经[为某个指标](./alerts-metric-overview.md#using-dimensions)选择了某些维度值，则该警报规则将监视由维度值组合定义的每个 "指标时序" () 用于阈值泄露。 如果还要监视聚合指标时序（不选择任何维度），请在该指标上配置附加警报规则而不选择维度。
 
 5. **聚合和时间粒度**-如果要使用[度量值图表](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/metrics)可视化指标，请确保：
     * 指标图表中选择的“聚合”与警报规则中的“聚合类型”相同 
@@ -49,7 +49,7 @@ ms.locfileid: "87327474"
     > [!NOTE] 
     > 如果使用的是动态阈值条件类型，并认为使用的阈值不正确，请使用哭脸图标提供反馈。 此反馈会影响机器学习算法研究，有助于改进未来的检测。
 
-2. 如果已为某个指标选择了多个维度值，则当**任何**指标时间序列（由维度值组合定义）违反阈值时，就会触发警报。 有关在指标警报中使用维度的详细信息， [请参阅](./alerts-metric-overview.md#using-dimensions)。
+2. 如果已为某个指标选择了多个维度值，则当维度值组合定义的**任何**指标时间序列 () 违反阈值时，将触发该警报。 有关在指标警报中使用维度的详细信息， [请参阅](./alerts-metric-overview.md#using-dimensions)。
 
 3. 检查警报规则配置以确保它已正确配置：
     - 检查是否按预期配置了“聚合类型”、“聚合粒度(周期)”和“阈值”或“敏感度”   
@@ -67,7 +67,7 @@ ms.locfileid: "87327474"
 
 ## <a name="cant-find-the-metric-to-alert-on---virtual-machines-guest-metrics"></a>找不到用于对虚拟机来宾指标发出警报的指标
 
-若要对虚拟机的来宾操作系统指标（例如：内存、磁盘空间）发出警报，请确保已安装所需的代理以将此数据收集到 Azure Monitor 度量值：
+若要在虚拟机的来宾操作系统度量值上发出警报 (例如：内存、磁盘空间) ，请确保已安装了将此数据收集到 Azure Monitor 指标所需的代理：
 - [对于 Windows VM](./collect-custom-metrics-guestos-resource-manager-vm.md)
 - [对于 Linux VM](./collect-custom-metrics-linux-telegraf.md)
 
@@ -108,9 +108,9 @@ ms.locfileid: "87327474"
 
 ## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>定义尚未发出的自定义指标的警报规则
 
-创建指标警报规则时，将根据[指标定义 API](/rest/api/monitor/metricdefinitions/list)验证指标名称，以确保其存在。 在某些情况下，即使在发出之前，也要根据自定义指标创建警报规则。 例如，在创建（使用 ARM 模板）时，将发出自定义指标的 Application Insights 资源以及用于监视该指标的警报规则。
+创建指标警报规则时，将根据[指标定义 API](/rest/api/monitor/metricdefinitions/list)验证指标名称，以确保其存在。 在某些情况下，即使在发出之前，也要根据自定义指标创建警报规则。 例如，使用 ARM 模板创建 (时) 将发出自定义指标的 Application Insights 资源，以及用于监视该指标的警报规则。
 
-若要避免在尝试验证自定义指标的定义时部署失败，可以在预警规则的 "条件" 部分中使用*skipMetricValidation*参数，这将导致跳过指标验证。 请参阅下面的示例，了解如何在 ARM 模板中使用此参数（有关创建指标警报规则的完整 ARM 模板示例，请参阅[此处]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)）。
+若要避免在尝试验证自定义指标的定义时部署失败，可以在预警规则的 "条件" 部分中使用*skipMetricValidation*参数，这将导致跳过指标验证。 请参阅下面的示例，了解如何将此参数用于 ARM 模板 (有关创建指标警报规则的完整 ARM 模板示例，请参阅[此处]( ./alerts-metric-create-templates.md)) 。
 
 ```json
 "criteria": {
@@ -166,7 +166,7 @@ ms.locfileid: "87327474"
 
 ## <a name="managing-alert-rules-using-resource-manager-templates-rest-api-powershell-or-azure-cli"></a>使用资源管理器模板、REST API、PowerShell 或 Azure CLI 管理警报规则
 
-如果使用资源管理器模板、REST API、PowerShell 或 Azure 命令行接口（CLI）来创建、更新、检索或删除指标警报时遇到问题，以下步骤可帮助解决此问题。
+如果使用资源管理器模板、REST API、PowerShell 或 Azure 命令行接口 (CLI) 来创建、更新、检索或删除指标警报时遇到问题，则可以通过以下步骤来帮助解决此问题。
 
 ### <a name="resource-manager-templates"></a>Resource Manager 模板
 
@@ -198,7 +198,7 @@ ms.locfileid: "87327474"
 
    - 对于平台指标：请确保使用 " [Azure Monitor 支持的指标" 页](./metrics-supported.md)中的**指标**名称，而不是**指标显示名称**
 
-   - 对于自定义指标：请确保已发出指标（您不能对不存在的自定义指标创建警报规则），并且提供自定义指标的命名空间（请参阅[此处](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)的 ARM 模板示例）
+   - 对于自定义指标：请确保已发出指标 (你无法) 中创建不存在的自定义指标的警报规则，并提供自定义指标的命名空间 (参阅[此处](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)的 ARM 模板示例) 
 
 - 如果要创建[针对日志的指标警报](./alerts-metric-logs.md)，请确保包含适当的依赖项。 参阅[示例模板](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)。
 
@@ -247,4 +247,3 @@ ms.locfileid: "87327474"
 ## <a name="next-steps"></a>后续步骤
 
 - 有关警报和通知的常规故障排除信息，请参阅[排查 Azure Monitor 警报中的问题](alerts-troubleshoot.md)。
-

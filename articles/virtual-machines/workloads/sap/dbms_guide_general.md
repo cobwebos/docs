@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44a41f43aa31c15b71d7b35ebd29bf935c7df966
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34b7f4bc55fc8e33b7d66f53e6f2fc241801f965
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525460"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827412"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -174,7 +174,7 @@ Azure 存储帐户是一种管理构造，还是一个具有各种限制的主�
 
 对于标准存储，请记得，每个存储帐户的 IOPS 数是有限制的。 请参阅 [Azure 存储可伸缩性和性能目标](../../../storage/common/scalability-targets-standard-account.md)一文中包含“总请求率”那一行。 每个 Azure 订阅还有对存储帐户数量的初始限制。 在不同存储帐户中均衡较大 SAP 布局中的 VHD，避免达到这些存储帐户的限制。 对于具有数千个 VHD 的几百个虚拟机而言，这是一件繁琐的工作。
 
-由于不建议在将 Azure 标准存储用于 DBMS 部署的同时使用 SAP 工作负载，因此对标准存储的参考和建议仅限于此简短的[文章](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)
+由于不建议在将 Azure 标准存储用于 DBMS 部署的同时使用 SAP 工作负载，因此对标准存储的参考和建议仅限于此简短的[文章](/archive/blogs/mast/configuring-azure-virtual-machines-for-optimal-storage-performance)
 
 为避免在不同 Azure 存储帐户中执行规划和部署 VHD 的管理工作，Microsoft 在 2017 年推出了 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)。 托管磁盘适用于标准存储和高级存储。 与非托管磁盘相比，托管磁盘的主要优势如下：
 
@@ -327,7 +327,7 @@ DBMS VM 和 SAP 应用程序层之间的流量是否始终通过负载均衡器�
 
 建议结合 SAP 应用程序层和 DBMS 层之间的负载均衡器配置 DirectServerReturn。 此配置可减少两个层之间的网络延迟。
 
-有关如何使用 SQL Server Always On 设置此配置的示例，请参阅[为 Azure 中的 AlwaysOn 可用性组配置 ILB 侦听器](/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener)。
+有关如何使用 SQL Server Always On 设置此配置的示例，请参阅[为 Azure 中的 AlwaysOn 可用性组配置 ILB 侦听器](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener)。
 
 如果使用已发布的 GitHub JSON 模板用作 Azure 中 SAP 基础结构部署的参考，请了解此 [SAP 3 层系统模板](https://github.com/Azure/azure-quickstart-templates/tree/4099ad9bee183ed39b88c62cd33f517ae4e25669/sap-3-tier-marketplace-image-converged-md)。 在此模板中，还可以了解负载均衡器的正确设置。
 

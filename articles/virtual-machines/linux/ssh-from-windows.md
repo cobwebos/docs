@@ -7,16 +7,16 @@ ms.workload: infrastructure-services
 ms.date: 07/09/2020
 ms.topic: how-to
 ms.author: cynthn
-ms.openlocfilehash: dcb5277773be1fc45a3d2b0901cf9fda177b7054
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 7e99c9191e93562211f6294cf671f431a5db455d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512646"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825559"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>如何在 Azure 上将 SSH 密钥与 Windows 配合使用
 
-本文适用于想要[创建](#create-an-ssh-key-pair)和使用*安全外壳*（SSH）密钥以[连接](#connect-to-your-vm)到 Azure 中的 Linux 虚拟机（vm）的 Windows 用户。 你还可以[在 Azure 门户中生成并存储 SSH 密钥](../ssh-keys-portal.md)，以便在门户中创建 vm 时使用。
+本文适用于想要在 Azure 中[创建](#create-an-ssh-key-pair)*和使用 (* SSH) 密钥来[连接](#connect-to-your-vm)到 Linux 虚拟机 () vm 的 Windows 用户。 你还可以[在 Azure 门户中生成并存储 SSH 密钥](../ssh-keys-portal.md)，以便在门户中创建 vm 时使用。
 
 
 若要从 Linux 或 macOS 客户端使用 SSH 密钥，请参阅[快速](mac-create-ssh-keys.md)。 有关 SSH 的更详细概述，请参阅[详细步骤：在 Azure 中创建和管理用于身份验证的 SSH 密钥进行身份验证](create-ssh-keys-detailed.md)。
@@ -35,7 +35,7 @@ ms.locfileid: "87512646"
 
 根据组织的安全策略，可以重复使用单个密钥对来访问多个 Azure Vm 和服务。 对于每个 VM，无需使用单独的密钥对。 
 
-公钥可与任何人共享，但只有你（或本地安全基础结构）才有权访问私钥。
+公钥可与任何人共享，但只有 (或本地安全基础结构) 才能访问私钥。
 
 [!INCLUDE [virtual-machines-common-ssh-support](../../../includes/virtual-machines-common-ssh-support.md)]
 
@@ -45,11 +45,11 @@ ms.locfileid: "87512646"
 
 你还可以在[Azure Cloud Shell](../../cloud-shell/overview.md)中使用 Bash 来连接到 VM。 你可以在[web 浏览器](https://shell.azure.com/bash)中使用 Cloud Shell，也可以在[Azure 门户](https://portal.azure.com)中使用，也可以使用[Azure 帐户扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)在 Visual Studio Code 中使用。
 
-还可以安装适用于[Linux 的 Windows 子系统](https://docs.microsoft.com/windows/wsl/about)，通过 SSH 连接到 VM，并在 Bash shell 中使用其他本机 Linux 工具。
+还可以安装适用于[Linux 的 Windows 子系统](/windows/wsl/about)，通过 SSH 连接到 VM，并在 Bash shell 中使用其他本机 Linux 工具。
 
 ## <a name="create-an-ssh-key-pair"></a>创建 SSH 密钥对
 
-使用命令创建 SSH 密钥对 `ssh-keygen` 。 输入文件名，或使用括号中显示的默认值（例如 `C:\Users\username/.ssh/id_rsa` ）。  输入文件的密码，如果不想使用通行短语，请将密码留空。 
+使用命令创建 SSH 密钥对 `ssh-keygen` 。 输入文件名，或使用括号中显示的默认 (例如 `C:\Users\username/.ssh/id_rsa`) 。  输入文件的密码，如果不想使用通行短语，请将密码留空。 
 
 ```powershell
 ssh-keygen -m PEM -t rsa -b 4096
@@ -77,7 +77,7 @@ az vm create \
 
 ## <a name="connect-to-your-vm"></a>连接到 VM
 
-凭借部署在 Azure VM 上的公钥和本地系统上的私钥，使用 VM 的 IP 地址或 DNS 名称通过 SSH 连接到 VM。 将以下命令中的*azureuser*和*10.111.12.123*替换为管理员用户名、IP 地址（或完全限定的域名）和私钥的路径：
+凭借部署在 Azure VM 上的公钥和本地系统上的私钥，使用 VM 的 IP 地址或 DNS 名称通过 SSH 连接到 VM。 将以下命令中的*azureuser*和*10.111.12.123*替换为管理员用户名，将 IP 地址 (或完全限定域名) ，并将路径替换为私钥：
 
 ```bash
 ssh -i ~/.ssh/id_rsa.pub azureuser@10.111.12.123

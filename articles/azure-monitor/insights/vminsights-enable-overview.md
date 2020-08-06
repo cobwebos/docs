@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 96783955eac6ade90a155236891307720616ed20
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e3c5f6d7e04620cf36f6cd952467d47afd775b19
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323938"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824760"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>启用用于 VM 的 Azure Monitor 概述
 
@@ -30,7 +30,7 @@ ms.locfileid: "87323938"
 * 使用 PowerShell 在指定的订阅或资源组中启用多个 Azure Vm、Azure Arc Vm、Azure VMSS 或 Azure Arc 计算机。
 * 启用用于 VM 的 Azure Monitor，以监视企业网络或其他云环境中托管的 VM 或物理计算机。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始之前，请确保理解以下部分中的信息。 
 
@@ -45,7 +45,7 @@ ms.locfileid: "87323938"
 - 美国西部
 - 美国西部 2
 - 美国中南部
-- East US
+- 美国东部
 - 美国东部 2
 - 美国中部
 - 美国中北部
@@ -174,10 +174,10 @@ ms.locfileid: "87323938"
 
 | 方法 | 说明 |
 |:---|:---|
-| [Azure 门户](vminsights-enable-single-vm.md) | 在单个虚拟机、虚拟机规模集或使用 Azure Arc 连接的混合虚拟机上安装这两个代理。 |
+| [Azure 门户](./vminsights-enable-portal.md) | 在单个虚拟机、虚拟机规模集或使用 Azure Arc 连接的混合虚拟机上安装这两个代理。 |
 | [资源管理器模板](vminsights-enable-powershell.md) | 使用任意支持的方法安装两个代理，以部署包括 CLI 和 PowerShell 的资源管理器模板。 |
-| [Azure Policy](vminsights-enable-at-scale-policy.md) | 分配 Azure 策略计划，以便在创建虚拟机或虚拟机规模集时自动安装代理。 |
-| [手动安装](vminsights-enable-hybrid-cloud.md) | 在 Azure 外部托管的计算机上的来宾操作系统中安装代理，包括在数据中心或其他云环境中。 |
+| [Azure Policy](./vminsights-enable-policy.md) | 分配 Azure 策略计划，以便在创建虚拟机或虚拟机规模集时自动安装代理。 |
+| [手动安装](./vminsights-enable-hybrid.md) | 在 Azure 外部托管的计算机上的来宾操作系统中安装代理，包括在数据中心或其他云环境中。 |
 
 
 
@@ -200,4 +200,3 @@ Microsoft 使用 Azure Monitor 服务自动收集使用情况和性能数据。 
 ## <a name="next-steps"></a>后续步骤
 
 若要了解如何使用性能监视功能，请参阅[查看用于 VM 的 Azure Monitor 性能](vminsights-performance.md)。 若要查看已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](vminsights-maps.md)。
-
