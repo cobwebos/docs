@@ -3,12 +3,12 @@ title: Azure 事件网格中自定义主题的灾难恢复
 description: 本教程逐步讲解如何设置事件处理体系结构，以便在区域中的事件网格服务运行不正常时能够予以恢复。
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.openlocfilehash: 1ee9c9566a70ba104f6c12866a631061672cb0c0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: dc893973fe1f6367cd9b95de2014d92c045056f4
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115074"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461674"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>为事件网格中的自定义主题构建自己的灾难恢复方案
 灾难恢复侧重于从严重的应用程序功能丧失中恢复。 本教程逐步讲解如何设置事件处理体系结构，以便在特定区域中的事件网格服务不正常时能够予以恢复。
@@ -26,7 +26,7 @@ ms.locfileid: "86115074"
 
 1. 选择“部署到 Azure”将解决方案部署到你的订阅。 在 Azure 门户中，为参数提供值。
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 
 1. 部署可能需要几分钟才能完成。 部署成功后，请查看 Web 应用以确保它正在运行。 在 Web 浏览器中导航到 `https://<your-site-name>.azurewebsites.net`
 请务必记下此 URL，因为稍后需要用到。
@@ -207,4 +207,4 @@ namespace EventGridFailoverPublisher
 
 - 了解如何[在 HTTP 终结点上接收事件](./receive-events.md)
 - 了解如何[将事件路由到混合连接](./custom-event-to-hybrid-connection.md)
-- 了解如何[使用 Azure DNS 和流量管理器进行灾难恢复](https://docs.microsoft.com/azure/networking/disaster-recovery-dns-traffic-manager)
+- 了解如何[使用 Azure DNS 和流量管理器进行灾难恢复](../networking/disaster-recovery-dns-traffic-manager.md)

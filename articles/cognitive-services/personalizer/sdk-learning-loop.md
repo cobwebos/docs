@@ -2,15 +2,15 @@
 title: 快速入门：使用 SDK 创建和使用学习循环 - 个性化体验创建服务
 description: 本快速入门介绍如何使用客户端 SDK 创建和管理知识库。
 ms.topic: quickstart
-ms.date: 04/27/2020
-ms.custom: tracking-python
+ms.date: 07/30/2020
+ms.custom: tracking-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: d4706e93470134751ade5f16e46a4323fd690f94
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 05657d350616502c3d32b500a32b394a748ab2f6
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608632"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461083"
 ---
 # <a name="quickstart-personalizer-client-library"></a>快速入门：个性化体验创建服务客户端库
 

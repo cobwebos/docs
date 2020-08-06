@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: b78364cef6bfd6cf91e6edf81fd57fa5912125db
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: be04b690add70468335ac694e3be54fa55a94249
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260678"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475645"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>教程：创建 Azure Red Hat OpenShift 4 群集
 
@@ -33,42 +33,12 @@ ms.locfileid: "86260678"
 |**用户访问管理员**|X|X| |
 |**参与者**|X|X|X|
 
-### <a name="install-the-az-aro-extension"></a>安装 `az aro` 扩展
-借助 `az aro` 扩展，可以使用 Azure CLI 直接从命令行创建、访问和删除 Azure Red Hat OpenShift 群集。
-
-运行以下命令可安装 `az aro` 扩展。
-
-```azurecli-interactive
-az extension add -n aro --index https://az.aroapp.io/stable
-```
-
-如果已安装了该扩展，可以通过运行以下命令进行更新。
-
-```azurecli-interactive
-az extension update -n aro --index https://az.aroapp.io/stable
-```
-
 ### <a name="register-the-resource-provider"></a>注册资源提供程序
 
 接下来，需要在订阅中注册 `Microsoft.RedHatOpenShift` 资源提供程序。
 
 ```azurecli-interactive
 az provider register -n Microsoft.RedHatOpenShift --wait
-```
-
-验证该扩展是否已注册。
-
-```azurecli-interactive
-az -v
-```
-
-  应会获得类似于以下内容的输出。
-
-```output
-...
-Extensions:
-aro                                1.0.0
-...
 ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>获取 Red Hat 拉取机密（可选）

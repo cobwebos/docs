@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 07/07/2020
 ms.author: eamono
-ms.openlocfilehash: 79f3d83417a99d40ea0d4bd101a89300bc85a393
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 3b9b49a4d38566891f442a3d2d7eac9bf1d36465
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86114510"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461997"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>教程：将 Azure 自动化与事件网格和 Microsoft Teams 相集成
 
@@ -33,7 +33,7 @@ ms.locfileid: "86114510"
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-若要完成此教程，需要 [Azure 自动化帐户](../automation/automation-offering-get-started.md)，以保存从 Azure 事件网格订阅触发的 runbook。
+若要完成此教程，需要 [Azure 自动化帐户](../automation/index.yml)，以保存从 Azure 事件网格订阅触发的 runbook。
 
 * 需要将 `AzureRM.Tags` 模块加载到你的自动化帐户中，请参阅[如何在 Azure 自动化中导入模块](../automation/automation-update-azure-modules.md)来了解如何将模块导入到 Azure 自动化中。
 

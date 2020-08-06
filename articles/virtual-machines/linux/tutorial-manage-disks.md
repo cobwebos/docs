@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/14/2018
 ms.author: cynthn
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurecli
 ms.subservice: disks
-ms.openlocfilehash: c9165d1f539ea585ae1370b7651cda4b9336f85f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2c55f288631ae77541ad957aeeb26cfc44b29f37
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87069423"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87483173"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>教程 - 使用 Azure CLI 管理 Azure 磁盘
 
@@ -76,7 +76,7 @@ Azure Cloud Shell 是免费的交互式 shell，可以使用它运行本文中�
 
 ### <a name="attach-disk-at-vm-creation"></a>在 VM 创建时附加磁盘
 
-使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。
+使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。
 
 ```azurecli-interactive
 az group create --name myResourceGroupDisk --location eastus
@@ -269,4 +269,4 @@ az vm disk attach \
 转到下一教程，了解如何自动配置 VM。
 
 > [!div class="nextstepaction"]
-> [自动执行 VM 配置](./tutorial-automate-vm-deployment.md)
+> [自动配置 VM](./tutorial-automate-vm-deployment.md)

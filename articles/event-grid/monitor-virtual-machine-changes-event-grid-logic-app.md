@@ -9,16 +9,16 @@ ms.author: estfan
 ms.reviewer: estfan, LADocs
 ms.topic: tutorial
 ms.date: 07/20/2020
-ms.openlocfilehash: 91ff67f886dbf54b93e9b91822b5f8535ea77e06
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7af555a634f0e362bdf2d530627a782843105bdf
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079197"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461266"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>教程：通过 Azure 事件网格和逻辑应用监视虚拟机更改
 
-若要监视并响应在 Azure 资源或第三方资源中发生的特定事件，可以创建使用最少代码的[逻辑应用](../logic-apps/logic-apps-overview.md)，以便以工作流的方式实现任务的自动化操作和运行。 这些资源可以将事件发布到 [Azure 事件网格](../event-grid/overview.md)。 然后，事件网格会将这些事件推送给具有队列、webhook 或[事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)作为终结点的订阅者。 作为订阅者，逻辑应用可以在运行自动化工作流以执行任务之前等待这些来自事件网格的事件。
+若要监视并响应在 Azure 资源或第三方资源中发生的特定事件，可以创建使用最少代码的[逻辑应用](../logic-apps/logic-apps-overview.md)，以便以工作流的方式实现任务的自动化操作和运行。 这些资源可以将事件发布到 [Azure 事件网格](../event-grid/overview.md)。 然后，事件网格会将这些事件推送给具有队列、webhook 或[事件中心](../event-hubs/event-hubs-about.md)作为终结点的订阅者。 作为订阅者，逻辑应用可以在运行自动化工作流以执行任务之前等待这些来自事件网格的事件。
 
 例如，下面是发布者可以将通过 Azure 事件网格服务发送给订阅者的某些事件：
 
@@ -50,7 +50,7 @@ ms.locfileid: "87079197"
   本教程将使用 Office 365 Outlook 帐户。 如果使用其他电子邮件帐户，则常规步骤保持不变，但 UI 显示可能稍有不同。
 
   > [!IMPORTANT]
-  > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
+  > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
 
 * 一个在其自己的 Azure 资源组中独一无二的[虚拟机](https://azure.microsoft.com/services/virtual-machines)。 如你尚未这样做，请通过[创建 VM 教程](../virtual-machines/windows/quick-create-portal.md)创建虚拟机。 若要使虚拟机发布事件，你[无需执行任何其他操作](../event-grid/overview.md)。
 

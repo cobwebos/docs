@@ -5,12 +5,12 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: mvc, tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: d5dd74c55f1f355c95da93d8d42e6637f1fa78fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d6061cd449a33ccf1bb461ada090c0412d1e94ae
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056000"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87485212"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>在 Linux 上使用自定义容器创建函数
 
@@ -392,7 +392,7 @@ SSH 实现容器和客户端之间的安全通信。 启用 SSH 后，可以使�
 
     ::: zone pivot="programming-language-csharp"
     ```Dockerfile
-    FROM microsoft/dotnet:2.2-sdk-appservice AS installer-env
+    FROM mcr.microsoft.com/azure-functions/dotnet:3.0-appservice
     ```
     ::: zone-end
 

@@ -6,14 +6,14 @@ ms.author: rodrigoa
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.reviewer: mamccrea
-ms.custom: mvc
+ms.custom: mvc, devx-track-javascript
 ms.date: 06/16/2020
-ms.openlocfilehash: c9767942c893017e98e3013f92022f058524e13c
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.openlocfilehash: ff4af372fa0ec1b6b24698184eb3f52449e28d46
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079005"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87430810"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure 流分析中 JavaScript 用户定义的函数
  
@@ -47,7 +47,7 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
 
 然后，你必须提供以下属性并选择“保存”。
 
-|properties|说明|
+|属性|说明|
 |--------|-----------|
 |函数别名|输入一个名称以在查询中调用函数。|
 |输出类型|JavaScript 用户定义的函数将向流分析查询返回的类型。|
@@ -57,7 +57,7 @@ JavaScript 用户定义的函数支持仅用于计算的且不需要外部连接
 
 可在任何浏览器中测试和调试 JavaScript UDF 逻辑。 流分析门户目前不支持调试和测试这些用户定义函数的逻辑。 函数按预期方式运行后，可以将其添加到流分析作业（如上所述），然后直接从查询调用它。 还可以使用[适用于 Visual Studio 的流分析工具](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install)测试包含 JavaScript UDF 的查询逻辑。
 
-JavaScript 运行时错误被视为严重错误，可通过活动日志查看。 要检索日志，请在 Azure 门户中转到作业，然后选择“活动日志”。
+JavaScript 运行时错误被视为严重错误，可通过活动日志查看。 如果要检索日志，请在 Azure 门户中转到用户的作业，并选择“活动日志”。
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>在查询中调用 JavaScript 用户定义的函数
 
@@ -85,8 +85,8 @@ Azure 流分析 JavaScript 用户定义的函数支持标准的内置 JavaScript
 --- | ---
 bigint | Number（JavaScript 只能精确呈现最大 2^53 的整数）
 DateTime | Date（JavaScript 仅支持毫秒）
-double | Number
-nvarchar(MAX) | 字符串
+Double | Number
+nvarchar(MAX) | String
 Record | 对象
 Array | Array
 Null | Null
@@ -97,7 +97,7 @@ JavaScript | 流分析
 --- | ---
 Number | 如果数字已舍入并介于 long.MinValue 和 long.MaxValue 之间，则为 Bigint；否则为 double
 Date | DateTime
-字符串 | nvarchar(MAX)
+String | nvarchar(MAX)
 对象 | Record
 Array | Array
 Null、Undefined | Null
@@ -107,9 +107,9 @@ JavaScript 语言区分大小写，JavaScript 代码中对象字段的大小写�
 
 ## <a name="other-javascript-user-defined-function-patterns"></a>JavaScript 用户定义的函数的其他模式
 
-### <a name="write-nested-json-to-output"></a>编写嵌套的 JSON 输出
+### <a name="write-nested-json-to-output"></a>编写要输出的嵌套 JSON
 
-如果后续处理步骤需要使用流分析作业输出作为输入并且要求采用 JSON 格式，可以编写要输出的 JSON 字符串。 以下示例调用 **JSON.stringify()** 函数封装输入的所有名称/值对，然后将其写入为输出中的单个字符串值。
+如果后续处理步骤需要使用流分析作业输出作为输入并且要求采用 JSON 格式，可以编写要输出的 JSON 字符串。 以下示例调用 **JSON.stringify()** 函数封装输入的所有名称/值对，并将其写入为输出中的单个字符串值。
 
 **JavaScript 用户定义的函数定义：**
 

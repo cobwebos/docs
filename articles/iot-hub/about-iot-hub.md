@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: b5b92de195e4ff4d5b00de041f5b021ee75f9800
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cde9d8614883168c3fbb3ab8219cdbef6087c9d0
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307686"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87428968"
 ---
 # <a name="what-is-azure-iot-hub"></a>Azure IoT 中心是什么？
 
@@ -68,7 +68,7 @@ IoT 中心为发送数据的设备提供保护信道。
 
 * [Azure 逻辑应用](https://docs.microsoft.com/azure/logic-apps/)，可以自动执行业务流程。
 
-* [Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/)，可为解决方案添加机器学习和 AI 模型。
+* [Azure 机器学习](iot-hub-weather-forecast-machine-learning.md)，可为解决方案添加机器学习和 AI 模型。
 
 * [Azure 流分析](https://docs.microsoft.com/azure/stream-analytics/)，可从设备对数据流执行实时分析计算。
 
