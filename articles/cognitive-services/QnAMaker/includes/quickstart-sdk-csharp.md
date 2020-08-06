@@ -3,12 +3,12 @@ title: 快速入门：适用于 .NET 的 QnA Maker 客户端库
 description: 本快速入门介绍如何开始使用适用于 .NET 的 QnA Maker 客户端库。 请按照以下步骤安装程序包并试用基本任务的示例代码。  使用 QnA Maker，可以根据常见问题解答文档、URL 和产品手册等半结构化内容打造一项问题与解答服务。
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 06aaf8861a263711ab3d01e6355bc161538a3311
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.openlocfilehash: 0dfabfa1357543e4011412c0a9f63061e8856019
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85114505"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87507363"
 ---
 可以使用适用于 .NET 的 QnA Maker 客户端库执行以下操作：
 
@@ -109,7 +109,7 @@ QnA Maker 使用两种不同的对象模型：
 
 预测 QnA Maker 客户端是一个 [QnAMakerRuntimeClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.qnamakerruntimeclient?view=azure-dotnet) 对象，它使用 Microsoft.Rest.ServiceClientCredentials 向 Azure 进行身份验证；Microsoft.Rest.ServiceClientCredentials 包含预测运行时密钥，发布知识库后进行创作客户端调用 `client.EndpointKeys.GetKeys` 可返回该密钥。
 
-使用 [GenerateAnswer](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtimeextensions.generateanswer?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_RuntimeExtensions_GenerateAnswer_Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_IRuntime_System_String_Microsoft_Azure_CognitiveServices_Knowledge_QnAMaker_Models_QueryDTO_) 方法从查询运行时获取答案。
+使用 [GenerateAnswer](/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtimeextensions) 方法从查询运行时获取答案。
 
 ## <a name="code-examples"></a>代码示例
 
