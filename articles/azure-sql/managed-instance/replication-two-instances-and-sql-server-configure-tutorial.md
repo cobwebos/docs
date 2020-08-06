@@ -10,17 +10,17 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: 8a6f21d6b02d555456bb70a16b353e5cdbd52fd4
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.openlocfilehash: 680f8394ad1d10a564033ae5a2b9f59063589f73
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84708512"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87532520"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>教程：在 Azure SQL 托管实例和 SQL Server 之间配置事务复制
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 >
@@ -180,7 +180,7 @@ Get-AzVirtualNetworkPeering `
 
 为工作目录[创建 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account)，并在存储帐户中创建[文件共享](../../storage/files/storage-how-to-create-file-share.md)。
 
-按以下格式复制文件共享路径：`\\storage-account-name.file.core.windows.net\file-share-name`
+复制采用 `\\storage-account-name.file.core.windows.net\file-share-name` 格式的文件共享路径
 
 示例： `\\replstorage.file.core.windows.net\replshare`
 
@@ -192,7 +192,7 @@ Get-AzVirtualNetworkPeering `
 
 ## <a name="7---create-a-database"></a>7 - 创建数据库
 
-在发布服务器托管实例上创建新数据库。 为此，请执行下列步骤：
+在发布服务器托管实例上创建新数据库。 为此，请执行以下步骤：
 
 1. 在 SQL Server 上启动 SQL Server Management Studio。
 1. 连接到 `sql-mi-publisher` 托管实例。
@@ -240,13 +240,17 @@ GO
 
 ## <a name="8---configure-distribution"></a>8 - 配置分发
 
-建立连接并具有示例数据库后，可以在 `sql-mi-distributor` 托管实例上配置分发。 为此，请执行下列步骤：
+建立连接并具有示例数据库后，可以在 `sql-mi-distributor` 托管实例上配置分发。 为此，请执行以下步骤：
 
 1. 在 SQL Server 上启动 SQL Server Management Studio。
 1. 连接到 `sql-mi-distributor` 托管实例。
 1. 打开“新建查询”窗口，并运行以下 Transact-SQL 代码，在分发服务器托管实例上配置分发：
 
    ```sql
+   EXEC sp_adddistributor @distributor = 'sql-mi-distributor.b6bf57.database.windows.net', @password = '<distributor_admin_password>'
+   
+   EXEC sp_adddistributiondb @database = N'distribution'
+   
    EXEC sp_adddistpublisher @publisher = 'sql-mi-publisher.b6bf57.database.windows.net', -- primary publisher
         @distribution_db = N'distribution',
         @security_mode = 0,
@@ -271,18 +275,18 @@ GO
 
 ## <a name="9---create-the-publication"></a>9 - 创建发布
 
-配置分发后，现在可以创建发布。 为此，请执行下列步骤：
+配置分发后，现在可以创建发布。 为此，请执行以下步骤：
 
 1. 在 SQL Server 上启动 SQL Server Management Studio。
 1. 连接到 `sql-mi-publisher` 托管实例。
 1. 在“对象资源管理器”中，展开“复制”节点，然后右键单击“本地发布”文件夹  。 单击“新建发布...”。
 1. 选择“下一步”，离开“欢迎”页。
-1. 在“发布数据库”页上，选择之前创建的 `ReplTutorial` 数据库。 选择“**下一页**”。
-1. 在“发布类型”页上，选择“事务发布” 。 选择“**下一页**”。
-1. 在“项目”页上，选中“表”旁边的框 。 选择“**下一页**”。
+1. 在“发布数据库”页上，选择之前创建的 `ReplTutorial` 数据库。 选择“**下一步**”。
+1. 在“发布类型”页上，选择“事务发布” 。 选择“**下一步**”。
+1. 在“项目”页上，选中“表”旁边的框 。 选择“**下一步**”。
 1. 在“筛选器表行”页上，选择“下一步”而不添加任何筛选器 。
-1. 在“快照代理”页上，选中“立即创建快照并使快照保持可用状态，以初始化订阅”旁边的框 。 选择“**下一页**”。
-1. 在“代理安全性”页上，选择“安全设置…” 。提供要用于快照代理的 SQL Server 登录凭据，并连接到发布服务器。 选择“确定”以关闭“快照代理安全性”页 。 选择“**下一页**”。
+1. 在“快照代理”页上，选中“立即创建快照并使快照保持可用状态，以初始化订阅”旁边的框 。 选择“**下一步**”。
+1. 在“代理安全性”页上，选择“安全设置…” 。提供要用于快照代理的 SQL Server 登录凭据，并连接到发布服务器。 选择“确定”以关闭“快照代理安全性”页 。 选择“**下一步**”。
 
    ![配置快照代理安全性](./media/replication-two-instances-and-sql-server-configure-tutorial/snapshot-agent-security.png)
 
@@ -292,7 +296,7 @@ GO
 
 ## <a name="10---create-the-subscription"></a>10 - 创建订阅
 
-创建发布后，可以创建订阅。 为此，请执行下列步骤：
+创建发布后，可以创建订阅。 为此，请执行以下步骤：
 
 1. 在 SQL Server 上启动 SQL Server Management Studio。
 1. 连接到 `sql-mi-publisher` 托管实例。
@@ -327,14 +331,14 @@ GO
 
 配置复制后，可对其进行测试，方法是：在发布服务器上插入新项并监视更改传播到订阅服务器。
 
-运行以下 T-SQL 代码片段可查看订阅服务器上的行：
+运行以下 T-SQL 代码片段以查看订阅服务器上的行：
 
 ```sql
 Use ReplSub
 select * from dbo.ReplTest
 ```
 
-运行以下 T-SQL 代码片段可在发布服务器上插入更多行，然后再次检查订阅服务器上的行。
+运行以下 T-SQL 代码片段以在发布服务器上插入附加的行，然后再次在订阅服务器上检查这些行。
 
 ```sql
 Use ReplTutorial
@@ -344,9 +348,9 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 ## <a name="clean-up-resources"></a>清理资源
 
 1. 在 [Azure 门户](https://portal.azure.com)中导航到资源组。
-1. 选择托管实例，然后选择“删除”。 在文本框中键入 `yes` 以确认要删除该资源，然后选择“删除”。 此过程可能需要一段时间才能在后台完成，在完成之前，你将无法删除“虚拟群集”或任何其他从属资源。 监视“活动”选项卡中的“删除”，确认已删除托管实例。
-1. 删除托管实例后，请将虚拟群集删除，方法是：在资源组中选择“虚拟群集”，然后选择“删除”。 在文本框中键入 `yes` 以确认要删除该资源，然后选择“删除”。
-1. 删除所有剩余资源。 在文本框中键入 `yes` 以确认要删除该资源，然后选择“删除”。
+1. 选择托管实例，然后选择“删除”。 在文本框中键入 `yes` 以确认你要删除该资源，然后选择“删除”。 此过程可能需要一段时间才能在后台完成，在完成之前，你将无法删除“虚拟群集”或任何其他从属资源。 监视“活动”选项卡中的“删除”，确认已删除托管实例。
+1. 删除托管实例后，请将虚拟群集删除，方法是：在资源组中选择“虚拟群集”，然后选择“删除”。 在文本框中键入 `yes` 以确认你要删除该资源，然后选择“删除”。
+1. 删除任何剩余资源。 在文本框中键入 `yes` 以确认你要删除该资源，然后选择“删除”。
 1. 删除资源组，方法是：选择“删除资源组”，键入资源组的名称 `myResourceGroup`，然后选择“删除” 。
 
 ## <a name="known-errors"></a>已知错误
