@@ -2,36 +2,37 @@
 title: SAP SuccessFactors 属性参考
 description: 了解 SuccessFactors-HR 驱动的预配支持 SuccessFactors 中的哪些属性
 services: active-directory
-author: kenwith
+author: cmmdesai
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 12/06/2019
-ms.author: kenwith
+ms.date: 08/05/2020
+ms.author: chmutali
 ms.reviewer: celested
-ms.openlocfilehash: 25541b76dda55db1ec26f4d8e3ec63573a47e7b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ef2da377c7720cfb7b431d1ce0fed56656a2b8c7
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781542"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808501"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors 属性参考
 
 本文将介绍以下内容：
 
-- [支持的 SuccessFactors 实体和属性](#supported-successfactors-entities-and-attributes)
+- [SuccessFactors 实体和属性](#supported-successfactors-entities-and-attributes)
 - [默认属性映射](#default-attribute-mapping)
 
 ## <a name="supported-successfactors-entities-and-attributes"></a>支持的 SuccessFactors 实体和属性
 
-下表捕获了以下两个预配应用支持的 SuccessFactors 属性列表：
+下表捕获了默认情况下在以下两个设置应用中包含的 SuccessFactors 属性列表：
 
 - [SuccessFactors Active Directory 用户预配](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
 - [SuccessFactors Azure AD 用户预配](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)
 
+有关其他属性，请参阅[SAP SuccessFactors 集成参考](./sap-successfactors-integration-reference.md#retrieving-additional-attributes)，扩展架构。 
 
 | \# | SuccessFactors 实体                  | SuccessFactors 特性     | 操作类型 |
 |----|----------------------------------------|------------------------------|----------------|
@@ -123,21 +124,21 @@ ms.locfileid: "84781542"
 |----|----------------------------------------|--------------------------|-----------------------------------------|----------------------------------------------------------------------------------------------|
 | 1  | PerPerson                              | personIdExternal         | employeeId                              | 用作匹配属性                                                                   |
 | 2  | PerPerson                              | perPersonUuid            | \[未映射 \- 为源锚点\] | 初始同步期间，预配服务会将 personUuid 链接到现有 objectGuid\。  |
-| 3  | PerPersonal                            | displayName              | displayName                             | 不可用                                                                                           |
-| 4  | PerPersonal                            | firstName                | givenName                               | 不可用                                                                                           |
-| 5  | PerPersonal                            | lastName                 | sn                                      | 不可用                                                                                           |
-| 6  | 用户                                   | addressLine1             | streetAddress                           | 不可用                                                                                           |
-| 7  | 用户                                   | city                     | l                                       | 不可用                                                                                           |
-| 8  | 用户                                   | country                  | co                                      | 不可用                                                                                           |
-| 9  | 用户                                   | state                    | st                                      | 不可用                                                                                           |
-| 10 | 用户                                   | username                 | samAccountName                          | 不可用                                                                                           |
-| 11 | 用户                                   | zipCode                  | postalCode                              | 不可用                                                                                           |
-| 12 | PerEmail                               | emailAddress             | mail                                    | 不可用                                                                                           |
-| 13 | EmpJob                                 | jobTitle                 | title                                   | 不可用                                                                                           |
-| 14 | EmpJob                                 | managerId                | manager                                 | 不可用                                                                                           |
-| 15 | EmpJob \. 公司 \. CountryOfRegistration | twoCharCountryCode       | c                                       | 不可用                                                                                           |
-| 16 | EmpJob \. 部门                     | department               | department                              | 不可用                                                                                           |
-| 17 | EmpJob \. 除法                       | division                 | company                                 | 不可用                                                                                           |
-| 18 | EmpJob \. 位置                       | officeLocationAddress    | streetAddress                           | 不可用                                                                                           |
-| 19 | EmpJob \. 位置                       | officeLocationZipCode    | postalCode                              | 不可用                                                                                           |
+| 3  | PerPersonal                            | displayName              | displayName                             | NA                                                                                           |
+| 4  | PerPersonal                            | firstName                | givenName                               | NA                                                                                           |
+| 5  | PerPersonal                            | lastName                 | sn                                      | NA                                                                                           |
+| 6  | 用户                                   | addressLine1             | streetAddress                           | NA                                                                                           |
+| 7  | 用户                                   | city                     | l                                       | NA                                                                                           |
+| 8  | 用户                                   | country                  | co                                      | NA                                                                                           |
+| 9  | 用户                                   | state                    | st                                      | NA                                                                                           |
+| 10 | 用户                                   | username                 | samAccountName                          | NA                                                                                           |
+| 11 | 用户                                   | zipCode                  | postalCode                              | NA                                                                                           |
+| 12 | PerEmail                               | emailAddress             | mail                                    | NA                                                                                           |
+| 13 | EmpJob                                 | jobTitle                 | title                                   | NA                                                                                           |
+| 14 | EmpJob                                 | managerId                | manager                                 | NA                                                                                           |
+| 15 | EmpJob \. 公司 \. CountryOfRegistration | twoCharCountryCode       | c                                       | NA                                                                                           |
+| 16 | EmpJob \. 部门                     | department               | department                              | NA                                                                                           |
+| 17 | EmpJob \. 除法                       | division                 | company                                 | NA                                                                                           |
+| 18 | EmpJob \. 位置                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
+| 19 | EmpJob \. 位置                       | officeLocationZipCode    | postalCode                              | NA                                                                                           |
 | 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | 如果 activeEmploymentsCount = 0，则禁用 account\。                                           |

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: 8db47cd94f508803964398f19353e79f3d93d92a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: d76506141b2563b3ae8d5779e774ad564022494d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506564"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809997"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>应用程序网关常见问题
 
@@ -339,12 +339,12 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 
 ### <a name="my-ev-certificate-is-issued-by-digicert-and-my-intermediate-certificate-has-been-revoked-how-do-i-renew-my-certificate-on-application-gateway"></a>我的 EV 证书由 DigiCert 颁发，而我的中间证书已被吊销。 如何实现在应用程序网关上续订我的证书？
 
-证书颁发机构（CA）浏览器成员最近发布的报表详细介绍了由我们的客户、Microsoft 和更好的技术社区使用的、不符合公开信任 Ca 行业标准的 CA 供应商颁发的多个证书。有关不符合的 Ca 的报告可在此处找到：  
+证书颁发机构 (CA) 浏览器成员最近发布的报表，详细介绍由我们的客户、Microsoft 和更好的技术社区（不符合公开信任的 Ca 行业标准）所颁发的多个证书。有关不符合的 Ca 的报告可在此处找到：  
 
 * [Bug 1649951](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951)
 * [Bug 1650910](https://bugzilla.mozilla.org/show_bug.cgi?id=1650910)
 
-根据行业的合规性要求，CA 供应商开始吊销不合规的 Ca 并颁发符合要求的 Ca，要求客户重新颁发其证书。Microsoft 与这些供应商紧密合作，以最大程度地降低对 Azure 服务的潜在影响，**但你自颁发的证书或 "携带你自己的证书" （BYOC）方案中使用的证书仍存在意外撤销的风险**。
+根据行业的合规性要求，CA 供应商开始吊销不合规的 Ca 并颁发符合要求的 Ca，要求客户重新颁发其证书。Microsoft 与这些供应商紧密合作，以最大程度地降低对 Azure 服务的潜在影响，**但你自颁发的证书或 "携带你自己的证书" 中使用的证书 (BYOC) 方案仍存在被意外撤销的风险**。
 
 若要检查应用程序使用的证书是否已吊销，请参考[DigiCert 的公告](https://knowledge.digicert.com/alerts/DigiCert-ICA-Replacement)和[证书吊销跟踪](https://misissued.com/#revoked)器。 如果你的证书已吊销或将被吊销，你将需要从你的应用程序中使用的 CA 供应商请求新证书。 若要避免应用程序的可用性因为证书被意外撤销而被中断，或要更新已吊销的证书，请参阅我们的 Azure 更新 post，获取支持 BYOC 的各种 Azure 服务的修正链接：https://azure.microsoft.com/updates/certificateauthorityrevocation/
 
@@ -359,7 +359,7 @@ v2 SKU 可以自动确保新实例分布到各个容错域和更新域中。 如
 若要避免由于此问题导致应用程序中断，或者要重新颁发已吊销的 CA，你需要执行以下操作： 
 
 1.  有关如何重新颁发证书的信息，请与证书提供商联系
-2.  重新颁发后，将 Azure 应用程序网关/WAF 上的证书更新为完整[的信任链](https://docs.microsoft.com/windows/win32/seccrypto/certificate-chains)（叶证书、中间证书和根证书）。 根据你使用证书的位置，在应用程序网关的侦听器或 HTTP 设置上，按照以下步骤更新证书，并查看所述的文档链接以获取详细信息。
+2.  重新颁发后，请在 Azure 应用程序网关/WAF 上更新证书，并将完整[的信任链](https://docs.microsoft.com/windows/win32/seccrypto/certificate-chains) (叶版、中间证书和根证书) 。 根据你使用证书的位置，在应用程序网关的侦听器或 HTTP 设置上，按照以下步骤更新证书，并查看所述的文档链接以获取详细信息。
 3.  更新后端应用程序服务器，以使用重新颁发的证书。 根据所使用的后端服务器，证书更新步骤可能会有所不同。 请查看供应商提供的文档。
 
 更新侦听器中的证书：
@@ -466,30 +466,6 @@ AGIC 会尝试自动将路由表资源关联到应用程序网关子网，但 AG
 - 已部署了应用程序网关 v2
 - 应用程序网关子网上有 NSG
 - 已在该 NSG 上启用 NSG 流日志
-
-### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>如何实现将应用程序网关 V2 仅用于专用前端 IP 地址？
-
-应用程序网关 V2 目前不支持仅专用 IP 模式。 它支持以下组合
-* 专用 IP 和公共 IP
-* 仅公共 IP
-
-但若要将应用程序网关 V2 仅用于专用 IP，则可按以下过程操作：
-1. 使用公共和专用前端 IP 地址创建应用程序网关
-2. 不要为公共前端 IP 地址创建任何侦听器。 如果没有为其创建侦听器，应用程序网关将不会侦听公共 IP 地址上的任何流量。
-3. 为应用程序网关子网创建并附加一个[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)，使用以下配置（按优先级顺序排列）：
-    
-    a. 允许的流量来自使用 **GatewayManager** 服务标记的“源”，其“目标”为“任意”，“目标端口”为 **65200-65535**。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口通过证书身份验证进行保护（锁定）。 如果没有适当的证书，外部实体（包括网关用户管理员）将无法对这些终结点做出任何更改
-    
-    b. 允许源为“AzureLoadBalancer”服务标记且目标端口为“Any”的流量
-    
-    c. 拒绝源为“Internet”服务标记且目标端口为“Any”的所有入站流量。 在入站规则中为此规则指定“最低优先级”
-    
-    d. 保留默认规则（如允许 VirtualNetwork 入站），这样就不会阻止在该专用 IP 地址上进行的访问
-    
-    e. 不能阻止出站 Internet 连接。 否则会遇到日志记录、指标等问题。
-
-仅适用于专用 IP 的访问的 NSG 配置示例：![仅适用于专用 IP 访问的应用程序网关 V2 NSG 配置](./media/application-gateway-faq/appgw-privip-nsg.png)
-
 
 ## <a name="next-steps"></a>后续步骤
 

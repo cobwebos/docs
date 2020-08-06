@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2019
+ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 77b4336fd9430b523f4f9fa288b7451117f7e0c5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95c46550570d579af7ab8107686ad20838a3a62e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016966"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809946"
 ---
-# <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning-preview"></a>教程：配置 SAP SuccessFactors 以 Active Directory 用户预配（预览版）
-本教程的目的是说明将用户从 SuccessFactors Employee Central 预配到 Active Directory （AD）和 Azure AD 时需要执行的步骤，并提供对 SuccessFactors 的电子邮件地址的可选写回。 此集成在公共预览版中，支持从 SuccessFactors 员工中心检索70多个以上的[用户属性](../app-provisioning/sap-successfactors-attribute-reference.md)。
+# <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>教程：配置 SAP SuccessFactors 以 Active Directory 用户预配 
+本教程的目的是说明将用户从 SuccessFactors Employee Central 预配到 Active Directory (AD) 和 Azure AD 时需要执行的步骤，并提供 SuccessFactors 的可选回发电子邮件地址。 
 
 >[!NOTE]
->如果要从 SuccessFactors 预配的用户需要本地 AD 帐户，并选择性地使用 Azure AD 帐户，请使用本教程。 如果 SuccessFactors 中的用户只需要 Azure AD 帐户（仅限云的用户），则请参阅[配置 SAP SuccessFactors 以 Azure AD](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)用户预配教程。 
+>如果要从 SuccessFactors 预配的用户需要本地 AD 帐户，并选择性地使用 Azure AD 帐户，请使用本教程。 如果 SuccessFactors 中的用户只需要) 的仅限云的用户 (Azure AD 帐户，请参阅[配置 SAP SuccessFactors Azure AD](sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)用户预配教程。 
 
 
 ## <a name="overview"></a>概述
@@ -36,11 +36,11 @@ Azure AD 用户预配服务支持的 SuccessFactors 用户预配工作流可实�
 
 * **招聘新员工**-将新员工添加到 SuccessFactors 时，会自动在 Active Directory、Azure Active Directory 365 和[Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)中创建用户帐户，并将电子邮件地址的回写到 SuccessFactors。
 
-* **员工属性和配置文件更新**-在 SuccessFactors 中更新员工记录（例如，其名称、标题或经理）时，将在 Active Directory、365 Azure Active Directory 以及[Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)中自动更新其用户帐户。
+* **员工属性和配置文件更新**-在 (SuccessFactors 中更新雇员记录时（例如，在其名称、标题或经理) 中），将自动更新其用户帐户 Active Directory、365 Azure Active Directory 以及[支持 Azure AD 的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
 
 * **员工**离职-当员工在 SuccessFactors 中终止时，会自动在 Active Directory、Azure Active Directory 365 和[Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)中禁用其用户帐户。
 
-* **员工 rehires** -当员工在 SuccessFactors 中 rehired 时，可以根据你的喜好自动重新激活或重新预配其旧帐户（取决于你的偏好） Active Directory、Azure Active Directory 和（可选） Office 365 和[Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
+* **员工 rehires** -当员工在 SuccessFactors 中 rehired 时，可以根据你的偏好) Active Directory、Azure Active Directory 以及（可选） Office 365 和[Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)，自动重新激活或重新设置其旧帐户 (。
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>此用户预配解决方案最适合哪些对象？
 
@@ -50,9 +50,9 @@ Active Directory 用户预配解决方案的这一 SuccessFactors 非常适合�
 
 * 需要从 SuccessFactors 到 Active Directory 的直接用户预配的组织
 
-* 要求使用从[SuccessFactors Employee Central （EC）](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html)获取的数据设置用户的组织
+* 要求使用从[SuccessFactors Employee Central (EC](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html)获取的数据设置用户的组织) 
 
-* 需要加入、移动和离开用户才能同步到一个或多个 Active Directory 林、域和 Ou，且仅基于[SuccessFactors 员工中心（EC）](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html)中检测到的更改信息的组织
+* 需要加入、移动和离开用户的组织仅基于[SuccessFactors Employee Central (EC](https://www.successfactors.com/products-services/core-hr-payroll/employee-central.html)中检测到的更改信息同步到一个或多个 Active Directory 林、域和 ou) 
 
 * 使用 Office 365 收发电子邮件的组织
 
@@ -60,14 +60,14 @@ Active Directory 用户预配解决方案的这一 SuccessFactors 非常适合�
 
 本节介绍适用于常见混合环境的端到端用户预配解决方案体系结构。 有两个相关的流：
 
-* **权威 HR 数据流–从 SuccessFactors 到本地 Active Directory：** 在此流工作人员事件（例如新员工、转移、终止）中，第一次发生于 cloud SuccessFactors Employee Central，然后事件数据通过 Azure AD 和预配代理流入本地 Active Directory。 根据事件的不同，可能会导致在 AD 中创建/更新/启用/禁用操作。
+* **权威 HR 数据流–从 SuccessFactors 到本地 Active Directory：** 在此流工作人员事件 (例如，新员工、转帐、终止) 首先出现在 cloud SuccessFactors Employee Central 中，然后通过 Azure AD 和预配代理将事件数据流入本地 Active Directory。 根据事件的不同，可能会导致在 AD 中创建/更新/启用/禁用操作。
 * **电子邮件写回流–从本地 Active Directory 到 SuccessFactors：** 帐户创建在 Active Directory 中完成后 Azure AD，会通过 Azure AD Connect sync 同步，并将电子邮件属性写回 SuccessFactors。
 
   ![概述](./media/sap-successfactors-inbound-provisioning/sf2ad-overview.png)
 
 ### <a name="end-to-end-user-data-flow"></a>端到端用户数据流
 
-1. HR 团队在 SuccessFactors 员工中心执行工作人员交易（Joiners/搬运工/离开者或新聘用/转让/终止）
+1. HR 团队在 SuccessFactors 员工中心)  (Joiners/搬运工/离开者或新聘用/转让/终止执行工作人员交易
 2. Azure AD 预配服务运行从 SuccessFactors EC 计划的标识同步，并识别需要处理的更改，以便与本地 Active Directory 同步。
 3. Azure AD 预配服务使用包含 Azure AD 帐户创建/更新/启用/禁用操作的请求有效负载调用本地 Azure AD Connect 预配代理。
 4. Azure AD Connect 预配代理使用服务帐户添加/更新 AD 帐户数据。
@@ -82,7 +82,7 @@ Active Directory 用户预配解决方案的这一 SuccessFactors 非常适合�
 * 要部署的 AD 用户预配应用的 SuccessFactors 数
 * 匹配 ID、属性映射、转换和范围筛选器
 
-有关这些主题的综合指导原则，请参阅[云 HR 部署计划](../app-provisioning/plan-cloud-hr-provision.md)。 
+有关这些主题的综合指导原则，请参阅[云 HR 部署计划](../app-provisioning/plan-cloud-hr-provision.md)。 请参阅[SAP SuccessFactors 集成参考](../app-provisioning/sap-successfactors-integration-reference.md)，了解支持的实体、处理详细信息以及如何自定义不同 HR 方案的集成。 
 
 ## <a name="configuring-successfactors-for-the-integration"></a>为集成配置 SuccessFactors
 
@@ -260,7 +260,7 @@ Active Directory 用户预配解决方案的这一 SuccessFactors 非常适合�
         > [!NOTE]
         > 如果未在属性映射中配置 parentDistinguishedName 属性，则此设置仅对用户帐户创建起作用。 此设置不用于用户搜索或更新操作。 整个域子树属于搜索操作的范围。
 
-   * **通知电子邮件–** 输入你的电子邮件地址，并选中 "如果出现故障，则发送电子邮件" 复选框。
+   * **通知电子邮件 -** 输入电子邮件地址，然后选中“如果失败，则发送电子邮件”复选框。
     > [!NOTE]
     > 如果预配作业进入[隔离](/azure/active-directory/manage-apps/application-provisioning-quarantine-status)状态，Azure AD 预配服务将发送电子邮件通知。
 
@@ -278,7 +278,7 @@ Active Directory 用户预配解决方案的这一 SuccessFactors 非常适合�
 
 1. 在 "**源对象范围**" 字段中，可以通过定义一组基于属性的筛选器，选择要在 SuccessFactors 中设置为 AD 的用户的范围。 默认作用域为 "SuccessFactors 中的所有用户"。 示例筛选器：
 
-   * 示例：范围为 personIdExternal 介于1000000和2000000之间的用户（不包括2000000）
+   * 示例：范围为 personIdExternal 介于1000000和2000000之间的用户， (不包括 2000000) 
 
       * 属性： personIdExternal
 

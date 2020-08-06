@@ -2,7 +2,7 @@
 title: 新增功能 发行说明 - Azure Active Directory | Microsoft Docs
 description: 了解 Azure Active Directory 中的新增功能，例如最新的发行说明、已知问题、bug 修复、已弃用的功能和即将应用的更改。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 featureFlags:
 - clicktale
@@ -16,16 +16,16 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc316db0146943113b97b680229bd113f6fc1de5
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6694043f083de30f3bca10051fc7012ef1471c37
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494802"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798811"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory 中的新增功能
 
->通过复制并粘贴此 URL，获取有关何时通过复制并粘贴此 URL 来重新访问此页面的通知： `https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Active+Directory%22&locale=en-us` 到 ![ rss 源读者图标 ](./media/whats-new/feed-icon-16x16.png) 源读者。
+>通过复制此 URL (`https://docs.microsoft.com/api/search/rss?search=%22Release+notes+-+Azure+Active+Directory%22&locale=en-us`) 并粘贴到 ![RSS 源阅读器图标](./media/whats-new/feed-icon-16x16.png) 订阅源阅读器中，获取有关何时重新访问此页以获得更新的通知。
 
 Azure AD 会不断改进。 为了让大家随时了解最新的开发成果，本文将提供以下方面的信息：
 
@@ -81,8 +81,8 @@ Azure AD 预配服务利用 SCIM 标准来与应用程序集成。 我们 SCIM �
 **服务类别：** 设备注册和管理  
 **产品功能：** 平台
 
-传输层安全性（TLS）1.2 和更新服务器和客户端将很快与 Azure Active Directory 设备注册服务通信。 支持 TLS 1.0 和1.1 以便与 Azure AD 设备注册 service 进行通信：
-- 在2020年8月31日，在所有主权云中（GCC 高、DoD 等）
+传输层安全性 (TLS) 1.2 和更新服务器和客户端不久将与 Azure Active Directory 设备注册服务通信。 支持 TLS 1.0 和1.1 以便与 Azure AD 设备注册 service 进行通信：
+- 在2020年8月31日，在所有主权云中 (GCC 高、DoD 等 ) 
 - 所有商业云中的2020年10月30日
 
 [详细了解](https://docs.microsoft.com/azure/active-directory/devices/reference-device-registration-tls-1-2)Azure AD 注册服务的 TLS 1.2。
@@ -95,7 +95,7 @@ Azure AD 预配服务利用 SCIM 标准来与应用程序集成。 我们 SCIM �
 **服务类别：** 报表  
 **产品功能：** 监视和报告
  
-Windows Hello 企业版允许最终用户使用手势（如 PIN 或生物识别）登录到 Windows 计算机。 Azure AD 管理员可能希望将 Windows Hello 企业版登录从其他 Windows 登录区，作为组织的无密码身份验证过程的一部分。 
+Windows Hello 企业版允许最终用户使用手势 (（例如 PIN 或生物识别) ）登录到 Windows 计算机。 Azure AD 管理员可能希望将 Windows Hello 企业版登录从其他 Windows 登录区，作为组织的无密码身份验证过程的一部分。 
 
 管理员现在可以通过在 Azure 门户中的 Azure AD 登录 "边栏选项卡中检查 Windows 登录事件的" 身份验证详细信息 "选项卡，来查看 Windows 身份验证是否使用了 windows Hello 企业版。 Windows Hello 企业版身份验证将在 "身份验证方法" 字段中包括 "WindowsHelloForBusiness"。 有关解释登录日志的详细信息，请参阅[登录日志文档](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)。
  
@@ -107,7 +107,7 @@ Windows Hello 企业版允许最终用户使用手势（如 PIN 或生物识别�
 **服务类别：** 应用预配  
 **产品功能：** 标识生命周期管理
  
-以前，当某个组从 "范围中" 更改为 "超出作用域"，并且管理员在完成更改之前单击了 "重新启动" 时，不会删除组对象。 现在，当组对象超出作用域（禁用、删除、未分配或未通过范围筛选器）时，它将从目标应用程序中删除。 [了解详细信息](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#incremental-cycles)。
+以前，当某个组从 "范围中" 更改为 "超出作用域"，并且管理员在完成更改之前单击了 "重新启动" 时，不会删除组对象。 现在，当组对象超出范围 (禁用、删除、未分配或未通过范围筛选器) 时，会从目标应用程序中删除。 [了解详细信息](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#incremental-cycles)。
  
 ---
 
@@ -141,7 +141,7 @@ Azure 门户有相应的更新，以便你可以将你的 SPA 更新为 "SPA" �
 **服务类别：** 应用代理  
 **产品功能：** 访问控制
 
-Azure AD 应用程序代理现在支持远程桌面服务（RDS） Web 客户端。 RDS web 客户端允许用户通过任何支持 HTLM5 的浏览器（如 Microsoft Edge、Internet Explorer 11、Google Chrome 等）访问远程桌面基础结构。用户可以与远程应用或桌面进行交互，就像在任何位置使用本地设备一样。 通过使用 Azure AD 应用程序代理，你可以通过为所有类型的丰富客户端应用强制执行预身份验证和条件性访问策略，从而提高 RDS 部署的安全性。 有关指南，请参阅将[远程桌面与 Azure AD 应用程序代理一起发布](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-integrate-with-remote-desktop-services)。
+Azure AD 应用程序代理现在支持 (RDS) Web 客户端的远程桌面服务。 RDS web 客户端允许用户通过任何支持 HTLM5 的浏览器（如 Microsoft Edge、Internet Explorer 11、Google Chrome 等）访问远程桌面基础结构。用户可以与远程应用或桌面进行交互，就像在任何位置使用本地设备一样。 通过使用 Azure AD 应用程序代理，你可以通过为所有类型的丰富客户端应用强制执行预身份验证和条件性访问策略，从而提高 RDS 部署的安全性。 有关指南，请参阅将[远程桌面与 Azure AD 应用程序代理一起发布](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-integrate-with-remote-desktop-services)。
  
 ---
 
@@ -165,7 +165,7 @@ Azure AD 应用程序代理现在支持远程桌面服务（RDS） Web 客户端
  
 2020年7月，我们已在应用程序库中添加了以下55新应用程序，并提供联合身份验证支持：
 
-[击掌](http://www.rmit.com.ar/)， [Appreiz](https://microsoftteams.appreiz.com/)， [Inextor 保管库](https://inexto.com/inexto-suite/inextor)， [Beekast](https://my.beekast.com/)， [Templafy](https://app.templafy.com/)， [Control 塔](https://bpm.tnxcorp.com/sso/microsoft)， [PeterConnects，](https://msteams.peterconnects.com/) [Inspire](https://app.inspiresoftware.com/)[硬币构造云](https://sso.coinsconstructioncloud.com/#login/)， [AlohaCloud MT](https://task.teamsmain.medx.im/authorization)，Cocoom，Medxnote，Reflekt，Rever， [Reflekt](https://reflekt.konsolute.com/login)MyCompanyArchive， [Rever](https://app.reverscore.net/access)GReminders， [MyCompanyArchive](https://login.mycompanyarchive.com/)Titanfile，Wootric， [Titanfile](https://docs.microsoft.com/azure/active-directory/saas-apps/titanfile-tutorial) [SolarWinds，Orion](https://app.greminders.com/o365-oauth) [，OpenText](https://docs.microsoft.com/azure/active-directory/saas-apps/datasite-tutorial) [，Datasite，](https://support.solarwinds.com/SuccessCenter/s/orion-platform?language=en_US) [BlogIn、](https://docs.microsoft.com/azure/active-directory/saas-apps/opentext-directory-services-tutorial)INTSIGHTS、kpifire [、](https://docs.microsoft.com/azure/active-directory/saas-apps/blogin-tutorial)System.windows.media.textformatting.textline> [、](https://docs.microsoft.com/azure/active-directory/saas-apps/intsights-tutorial) [Wootric](https://docs.microsoft.com/azure/active-directory/saas-apps/wootric-tutorial)[社区 Spark](https://docs.microsoft.com/azure/active-directory/saas-apps/community-spark-tutorial)、 [Textline](https://docs.microsoft.com/azure/active-directory/saas-apps/textline-tutorial) [Chatwork、](https://docs.microsoft.com/azure/active-directory/saas-apps/cloud-academy-sso-tutorial) [CloudSign](https://docs.microsoft.com/azure/active-directory/saas-apps/cloudsign-tutorial) [、](https://docs.microsoft.com/azure/active-directory/saas-apps/chatwork-tutorial) [C3M Cloud Control](https://docs.microsoft.com/azure/active-directory/saas-apps/c3m-cloud-control-tutorial)， [SmartHR](https://smarthr.jp/)， [NumlyEngage™](https://docs.microsoft.com/azure/active-directory/saas-apps/numlyengage-tutorial)，[密歇根 Data Hub 单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/michigan-data-hub-single-sign-on-tutorial)，[出口](https://docs.microsoft.com/azure/active-directory/saas-apps/egress-tutorial)， [SendSafely](https://docs.microsoft.com/azure/active-directory/saas-apps/sendsafely-tutorial)， [Eletive](https://app.eletive.com/)，[右手网络安全 ADI](https://right-hand.ai/)， [Fyde Enterprise Authentication](https://enterprise.fyde.com/)， [Verme](https://docs.microsoft.com/azure/active-directory/saas-apps/verme-tutorial) [，Lenses.io，Momenta](https://docs.microsoft.com/azure/active-directory/saas-apps/lensesio-tutorial) [，Uprise](https://docs.microsoft.com/azure/active-directory/saas-apps/momenta-tutorial) [，CloudCords，](https://app.uprise.co/sign-in) [TellMe](https://www.strata.io/identity-fabric/) [，Maverics](https://q.moduleq.com/login) [，Smartschool](https://docs.microsoft.com/azure/active-directory/saas-apps/cloudcords-tutorial) [，Zepto，](https://tellme365liteweb.azurewebsites.net/) [timekeeping，Studi.ly](https://studi.ly/) [，Trackplan](https://user.zepto-ai.com/signin) [，Skedda，](https://smart-schoolapp.com/frmLoginForm) [WhosOnLocation，](https://docs.microsoft.com/azure/active-directory/saas-apps/whos-on-location-tutorial) [Coggle，](http://www.trackplanfm.com/) [，](https://docs.microsoft.com/azure/active-directory/saas-apps/skedda-tutorial) [Cocoom](https://start.cocoom.com/)， [Kemp LoadMaster](https://kemptechnologies.com/cloud-load-balancer/) [，](https://docs.microsoft.com/azure/active-directory/saas-apps/coggle-tutorial) [BrowserStack 单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/browserstack-single-sign-on-tutorial) [AlohaCloud](https://appfusions.alohacloud.com/auth) [kpifire](https://docs.microsoft.com/azure/active-directory/saas-apps/kpifire-tutorial)
+[击掌](http://www.rmit.com.ar/)， [Appreiz](https://microsoftteams.appreiz.com/)， [Inextor 保管库](https://inexto.com/inexto-suite/inextor)， [Beekast](https://my.beekast.com/)， [Templafy](https://app.templafy.com/)， [Control 塔](https://bpm.tnxcorp.com/sso/microsoft)， [PeterConnects，](https://msteams.peterconnects.com/)[硬币构造云](https://sso.coinsconstructioncloud.com/#login/) [，](https://appfusions.alohacloud.com/auth) [AlohaCloud MT](https://task.teamsmain.medx.im/authorization) [，Cocoom，](https://start.cocoom.com/) [Medxnote，Reflekt](https://reflekt.konsolute.com/login) [，Rever](https://app.reverscore.net/access) [，MyCompanyArchive](https://login.mycompanyarchive.com/) [，GReminders](https://docs.microsoft.com/azure/active-directory/saas-apps/titanfile-tutorial) [，Titanfile](https://docs.microsoft.com/azure/active-directory/saas-apps/wootric-tutorial) [，](https://docs.microsoft.com/azure/active-directory/saas-apps/kpifire-tutorial) [Wootric，](https://docs.microsoft.com/azure/active-directory/saas-apps/intsights-tutorial) [SolarWinds，Orion](https://app.greminders.com/o365-oauth) [，OpenText](https://docs.microsoft.com/azure/active-directory/saas-apps/datasite-tutorial) [，Datasite，](https://support.solarwinds.com/SuccessCenter/s/orion-platform?language=en_US) [BlogIn、](https://docs.microsoft.com/azure/active-directory/saas-apps/opentext-directory-services-tutorial) [IntSights、](https://docs.microsoft.com/azure/active-directory/saas-apps/textline-tutorial)kpifire [、system.windows.media.textformatting.textline>](https://docs.microsoft.com/azure/active-directory/saas-apps/blogin-tutorial)、[社区 Spark](https://docs.microsoft.com/azure/active-directory/saas-apps/community-spark-tutorial)、 [Chatwork、](https://docs.microsoft.com/azure/active-directory/saas-apps/cloud-academy-sso-tutorial) [CloudSign](https://docs.microsoft.com/azure/active-directory/saas-apps/cloudsign-tutorial)、 [C3M Cloud Control](https://docs.microsoft.com/azure/active-directory/saas-apps/c3m-cloud-control-tutorial) [，SmartHR ](https://smart-schoolapp.com/frmLoginForm)， [Chatwork](https://docs.microsoft.com/azure/active-directory/saas-apps/chatwork-tutorial) [NumlyEngage](https://smarthr.jp/)™ [，密歇根](https://docs.microsoft.com/azure/active-directory/saas-apps/numlyengage-tutorial)Data [Hub 单一登录，出口](https://docs.microsoft.com/azure/active-directory/saas-apps/michigan-data-hub-single-sign-on-tutorial)， [SendSafely](https://docs.microsoft.com/azure/active-directory/saas-apps/egress-tutorial)， [Eletive](https://docs.microsoft.com/azure/active-directory/saas-apps/sendsafely-tutorial)，[右手](https://app.eletive.com/)网络安全[ADI，Fyde](https://right-hand.ai/)Enterprise [Authentication，Verme](https://enterprise.fyde.com/)， [Lenses.io](https://docs.microsoft.com/azure/active-directory/saas-apps/verme-tutorial) [，Momenta，Uprise](https://docs.microsoft.com/azure/active-directory/saas-apps/lensesio-tutorial) [，CloudCords](https://docs.microsoft.com/azure/active-directory/saas-apps/momenta-tutorial) [，](https://app.inspiresoftware.com/)TellMe Identity [Orchestrator SAML 连接器，Maverics](https://www.strata.io/identity-fabric/)，Smartschool， [Zepto](https://app.uprise.co/sign-in)， [Q](https://q.moduleq.com/login)timekeeping， [CloudCords](https://docs.microsoft.com/azure/active-directory/saas-apps/cloudcords-tutorial)Studi.ly， [TellMe Bot](https://tellme365liteweb.azurewebsites.net/) [Trackplan，Skedda](https://studi.ly/) [，WhosOnLocation，](https://user.zepto-ai.com/signin) [Coggle，](https://docs.microsoft.com/azure/active-directory/saas-apps/skedda-tutorial) [，](https://docs.microsoft.com/azure/active-directory/saas-apps/whos-on-location-tutorial)) [ (，](https://docs.microsoft.com/azure/active-directory/saas-apps/coggle-tutorial) [Kemp LoadMaster](https://kemptechnologies.com/cloud-load-balancer/)， [BrowserStack 单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/browserstack-single-sign-on-tutorial) [Trackplan](http://www.trackplanfm.com/)
 
 你还可以从此处查找所有应用程序的文档https://aka.ms/AppsTutorial
 
@@ -195,16 +195,16 @@ Azure AD 应用程序代理现在支持远程桌面服务（RDS） Web 客户端
  
 ---
 
-### <a name="azure-multi-factor-authentication-software-development-azure-mfa-sdk-deprecation"></a>Azure 多重身份验证软件开发（Azure MFA SDK）弃用
+### <a name="azure-multi-factor-authentication-software-development-azure-mfa-sdk-deprecation"></a>Azure 多重身份验证软件开发 (Azure MFA SDK) 弃用
 
 **类型：** 已弃用  
 **服务类别：** MFA  
 **产品功能：** 标识安全和保护
  
-Azure 多重身份验证软件开发（Azure MFA SDK）已于2018年11月14日结束，如11月 2017 11 日公布。 Microsoft 将关闭 SDK 服务，在2020年9月30日生效。 对 SDK 的任何调用都将失败。
+Azure 多重身份验证软件开发 (Azure MFA SDK) 已于2018年11月14日结束，如11月 2017 11 日公布。 Microsoft 将关闭 SDK 服务，在2020年9月30日生效。 对 SDK 的任何调用都将失败。
 
 如果你的组织使用的是 Azure MFA SDK，则需要在2020年9月30日之前迁移：
-- 用于 MIM 的 Azure MFA SDK：如果将 SDK 与 MIM 一起使用，则应迁移到 Azure MFA 服务器，并按照这些[说明](https://docs.microsoft.com/microsoft-identity-manager/working-with-mfaserver-for-mim)激活 PRIVILEGED ACCESS MANAGEMENT （PAM）。   
+- 用于 MIM 的 Azure MFA SDK：如果将 SDK 与 MIM 一起使用，则应迁移到 Azure MFA 服务器，并按照这些[说明](https://docs.microsoft.com/microsoft-identity-manager/working-with-mfaserver-for-mim)激活 Privileged Access Management () PAM。   
 - 适用于自定义应用的 Azure MFA SDK：考虑将你的应用集成到 Azure AD 并使用条件性访问来强制执行 MFA。 若要开始，请查看此[页](https://docs.microsoft.com/azure/active-directory/manage-apps/plan-an-application-integration)。 
 
 ---
@@ -338,9 +338,9 @@ RiskyUsers 和 riskDetections Microsoft Graph Api 现已正式发布。 现在�
 **产品功能：** 协作
  
 
-你现在可以创建敏感度标签，并使用标签设置将策略应用到 Microsoft 365 组，包括隐私（公共或专用）和外部用户访问策略。 你可以创建一个包含隐私策略的标签，并使用外部用户访问策略不允许添加来宾用户。 当用户将此标签应用于组时，该组将为 "专用"，并且不允许向该组添加来宾用户。 
+你现在可以创建敏感度标签，并使用标签设置将策略应用到 Microsoft 365 组，包括隐私 (公用或专用) 和外部用户访问策略。 你可以创建一个包含隐私策略的标签，并使用外部用户访问策略不允许添加来宾用户。 当用户将此标签应用于组时，该组将为 "专用"，并且不允许向该组添加来宾用户。 
 
-敏感度标签非常重要，可保护你的关键业务数据，并使你能够以相容且安全的方式管理规模较高的组。 有关使用敏感度标签的指南，请参阅[Azure Active Directory （预览版）中的将敏感度标签分配给 Office 365 组](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-assign-sensitivity-labels)。
+敏感度标签非常重要，可保护你的关键业务数据，并使你能够以相容且安全的方式管理规模较高的组。 有关使用敏感度标签的指南，请参阅[Azure Active Directory (preview) 中的将敏感度标签分配给 Office 365 组](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-assign-sensitivity-labels)。
  
 ---
 
@@ -390,7 +390,7 @@ Azure 支持现可用于 Microsoft Identity Manager 2016 的 Azure AD 集成组�
 **服务类别：** N/A  
 **产品功能：** 设备生命周期管理
 
-现在可以使用 Microsoft 身份验证库（MSAL），我们将不再向 Azure Active Directory 的身份验证库（ADAL）添加新功能，并将于2022年6月30日结束安全修补程序。 有关如何迁移到 MSAL 的详细信息，请参阅将[应用程序迁移到 Microsoft 身份验证库（MSAL）](https://docs.microsoft.com/azure/active-directory/develop/msal-migration)。
+现在，Microsoft 身份验证库 (MSAL) 提供，我们将不再向 Azure Active Directory 身份验证库添加新功能 (ADAL) 并将于2022年6月30日结束安全修补程序。 有关如何迁移到 MSAL 的详细信息，请参阅将[应用程序迁移到 Microsoft 身份验证库 (MSAL) ](https://docs.microsoft.com/azure/active-directory/develop/msal-migration)。
 
 此外，我们还完成了通过 MS Graph 提供所有 Azure AD Graph 功能的工作。 因此，Azure AD Graph Api 在2022年6月30日之前仅接收到 bug 修复和安全修补程序。 有关详细信息，请参阅[更新应用程序以使用 Microsoft 身份验证库和 MICROSOFT GRAPH API](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/update-your-applications-to-use-microsoft-authentication-library/ba-p/1257363)
  
@@ -404,7 +404,7 @@ Azure 支持现可用于 Microsoft Identity Manager 2016 的 Azure AD 集成组�
 **服务类别：** 标识保护  
 **产品功能：** 标识安全和保护
 
-目前，枚举类型用于表示 riskDetections API 和 riskyUserHistoryItem 中的 riskType 属性（在预览中）。 枚举类型还用于找 API 中的 riskEventTypes 属性。 接下来，我们将这些属性表示为字符串。 
+目前，枚举类型用于表示预览版) 中 riskDetections API 和 riskyUserHistoryItem (中的 riskType 属性。 枚举类型还用于找 API 中的 riskEventTypes 属性。 接下来，我们将这些属性表示为字符串。 
 
 客户应转换为 beta riskDetections 和 riskyUserHistoryItem API 中的 riskEventType 属性，并将 beta 找 API 中的属性 riskEventTypes_v2 为2020年9月9日。 此时，我们将停用当前的 riskType 和 riskEventTypes 属性。 有关详细信息，请参阅[Microsoft Graph 上的风险事件属性和 Identity Protection api 的更改](https://developer.microsoft.com/graph/blogs/changes-to-risk-event-properties-and-identity-protection-apis-on-microsoft-graph/)。
 
@@ -418,7 +418,7 @@ Azure 支持现可用于 Microsoft Identity Manager 2016 的 Azure AD 集成组�
 
 枚举类型将在2020年9月 Microsoft Graph 表示风险事件属性时转换为字符串类型。 除了影响预览版 Api 以外，此更改还会影响生产中的找 API。
 
-我们向找 v1.0 API 引入了一个新的 riskEventsTypes_v2 （string）属性。 我们将根据 Microsoft Graph 弃用策略，在2022年6月11日停用当前 riskEventTypes （enum）属性。 客户应在2022年6月11日之前过渡到 v1.0 找 API 中的 riskEventTypes_v2 属性。 有关详细信息，请参阅[Microsoft Graph 上找 V1.0 API 中的弃用 riskEventTypes 属性](https://developer.microsoft.com/graph/blogs/deprecation-of-riskeventtypes-property-in-signins-v1-0-api-on-microsoft-graph//)。
+我们引入了新的 riskEventsTypes_v2 (string) 属性设置为找 1.0 API。 在2022年6月11日，我们将根据我们的 Microsoft Graph 弃用政策，停用当前 riskEventTypes (枚举) 属性。 客户应在2022年6月11日之前过渡到 v1.0 找 API 中的 riskEventTypes_v2 属性。 有关详细信息，请参阅[Microsoft Graph 上找 V1.0 API 中的弃用 riskEventTypes 属性](https://developer.microsoft.com/graph/blogs/deprecation-of-riskeventtypes-property-in-signins-v1-0-api-on-microsoft-graph//)。
 
 --- 
 
@@ -452,7 +452,7 @@ Azure 支持现可用于 Microsoft Identity Manager 2016 的 Azure AD 集成组�
 **服务类别：** 主权云  
 **产品功能：** 用户身份验证
  
-从6月开始， [Azure 政府云](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)终结点（login.microsoftonline.us）上的 OIDC 发现文档[Microsoft 标识平台和 OpenID connect 协议](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc)将开始返回正确的[国家/地区云图形](https://docs.microsoft.com/graph/deployments)终结点（ https://graph.microsoft.us 或 https://dod-graph.microsoft.us) 基于提供的租户）。  它当前提供了错误的图形终结点（graph.microsoft.com） "msgraph_host" 字段。  
+从6月开始， [Azure 政府云](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)终结点上的 OIDC 发现文档[Microsoft 标识平台和 OpenID connect 协议](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc) (login.microsoftonline.us) ，将开始根据提供的租户返回正确的[国家/地区云图形](https://docs.microsoft.com/graph/deployments)终结点 (https://graph.microsoft.us 或 https://dod-graph.microsoft.us) 。  它目前 (graph.microsoft.com) "msgraph_host" 字段提供了不正确的图形端点。  
 
 此 bug 修复将在大约2个月内逐步推出。  
 
@@ -464,9 +464,9 @@ Azure 支持现可用于 Microsoft Identity Manager 2016 的 Azure AD 集成组�
 **服务类别：** 主权云  
 **产品功能：** 用户身份验证
  
-2018年6月1日，Azure 政府版的官方 Azure Active Directory （AAD）机构已从更改 https://login-us.microsoftonline.com 为 https://login.microsoftonline.us 。 如果你拥有 Azure 政府租户中的应用程序，则必须更新应用程序以在美国终结点上登录用户。
+2018年6月1日，Azure 政府 (AAD) 机构的官方 Azure Active Directory 从更改 https://login-us.microsoftonline.com 为 https://login.microsoftonline.us 。 如果你拥有 Azure 政府租户中的应用程序，则必须更新应用程序以在美国终结点上登录用户。
 
-从5月5日开始，Azure AD 将开始强制终结点更改，阻止 Azure 政府用户使用公共终结点（microsoftonline.com）登录到 Azure 政府租户中托管的应用。 受影响的应用将开始显示错误 "AADSTS900439-USGClientNotSupportedOnPublicEndpoint"。 
+从5月5日开始，Azure AD 将开始强制终结点更改，阻止 Azure 政府用户使用公共终结点 (microsoftonline.com) 登录到托管在 Azure 政府租户中的应用。 受影响的应用将开始显示错误 "AADSTS900439-USGClientNotSupportedOnPublicEndpoint"。 
 
 在6月2020的所有应用中，将对此更改进行逐步推出。 有关更多详细信息，请参阅[Azure 政府博客文章](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/)。
 
@@ -478,9 +478,9 @@ Azure 支持现可用于 Microsoft Identity Manager 2016 的 Azure AD 集成组�
 **服务类别：** 身份验证（登录）  
 **产品功能：** 用户身份验证
  
-当用户单击 "注销" （例如，在 MyApps 门户中）时，Azure AD 会将 SAML 单一注销消息发送到用户会话中处于活动状态的每个应用，并配置注销 URL。 这些消息包含持久格式的 NameID。
+当用户单击 "注销" (例如，在 MyApps 门户) 中，Azure AD 会将 SAML 单一注销消息发送到用户会话中处于活动状态的每个应用，并配置一个注销 URL。 这些消息包含持久格式的 NameID。
 
-如果原始 SAML 登录令牌使用不同格式的 NameID （例如，电子邮件/UPN），则 SAML 应用无法将注销消息中的 NameID 关联到现有会话（因为这两条消息中使用的 NameIDs 不同），这会导致 SAML 应用和用户保持登录时注销消息被丢弃。 此修补程序使注销消息与为应用程序配置的 NameID 一致。
+如果原始 SAML 登录令牌使用不同格式的 NameID (例如，电子邮件/UPN) ，则 SAML 应用程序无法将注销消息中的 NameID 关联到现有会话 (因为这两条消息中使用的 NameIDs 是不同的) ，这会导致 SAML 应用程序和用户保留登录消息。 此修补程序使注销消息与为应用程序配置的 NameID 一致。
 
 ---
 
@@ -526,7 +526,7 @@ IT 管理员可以开始使用新的 "混合管理员" 角色作为设置 Azure 
 **服务类别：** B2B  
 **产品功能：** B2B/B2C
  
-使用 Azure AD 中的外部标识，你可以允许组织外部的人员访问应用和资源，同时让他们使用所需的任何标识进行登录。 与外部用户共享应用时，你可能并不总是提前知道谁需要访问应用。 使用[自助注册](https://docs.microsoft.com/azure/active-directory/b2b/self-service-sign-up-overview)，可以让来宾用户注册并获取业务线（LOB）应用的来宾帐户。 可以创建和自定义注册流以支持 Azure AD 和社交标识。 你还可以在注册过程中收集有关用户的其他信息。
+使用 Azure AD 中的外部标识，你可以允许组织外部的人员访问应用和资源，同时让他们使用所需的任何标识进行登录。 与外部用户共享应用时，你可能并不总是提前知道谁需要访问应用。 使用[自助注册](https://docs.microsoft.com/azure/active-directory/b2b/self-service-sign-up-overview)，你可以让来宾用户为你的业务线 (LOB) 应用注册和获取来宾帐户。 可以创建和自定义注册流以支持 Azure AD 和社交标识。 你还可以在注册过程中收集有关用户的其他信息。
 
 ---
 
@@ -561,7 +561,7 @@ IT 管理员可以开始使用新的 "混合管理员" 角色作为设置 Azure 
 
 ---
 
-### <a name="configure-saml-based-single-sign-on-using-microsoft-graph-api-beta"></a>使用 Microsoft Graph API （Beta 版本）配置基于 SAML 的单一登录
+### <a name="configure-saml-based-single-sign-on-using-microsoft-graph-api-beta"></a>使用 Microsoft Graph API (Beta) 配置基于 SAML 的单一登录
 
 **类型：** 新功能  
 **服务类别：** 企业应用  
@@ -619,13 +619,13 @@ IT 管理员可以开始使用新的 "混合管理员" 角色作为设置 Azure 
 
 ---
 
-### <a name="publisher-verification-preview"></a>出版商验证（预览版）
+### <a name="publisher-verification-preview"></a>出版商验证 (预览) 
 
 **类型：** 新功能  
 **服务类别：** 其他  
 **产品功能：** 开发人员体验
  
-发行者验证（预览版）可帮助管理员和最终用户了解与 Microsoft 标识平台集成的应用程序开发人员的真实性。 有关详细信息，请参阅[发行者验证（预览版）](https://docs.microsoft.com/azure/active-directory/develop/publisher-verification-overview)。
+发布者验证 (预览) 可帮助管理员和最终用户了解与 Microsoft 标识平台集成的应用程序开发人员的真实性。 有关详细信息，请参阅[发行者验证 (预览) ](https://docs.microsoft.com/azure/active-directory/develop/publisher-verification-overview)。
  
 ---
 
@@ -676,7 +676,7 @@ Azure AD B2C 应用注册体验基于适用于 Azure AD 租户的常规[应用�
 
 **产品功能：** 标识安全和保护
 
-多重身份验证（MFA）和自助服务密码重置（SSPR）的组合注册体验现已正式发布。 这项新的注册体验使用户能够在一个循序渐进的过程中注册 MFA 和 SSPR。 当你为你的组织部署新的体验时，用户可以在更短的时间内注册，并且减少了麻烦。 请查看[此处](https://bit.ly/3etiRyQ)的博客文章。
+多重身份验证 (MFA) 和自助密码重置 (SSPR) 的合成注册体验现已正式发布。 这项新的注册体验使用户能够在一个循序渐进的过程中注册 MFA 和 SSPR。 当你为你的组织部署新的体验时，用户可以在更短的时间内注册，并且减少了麻烦。 请查看[此处](https://bit.ly/3etiRyQ)的博客文章。
 
 ---
 
@@ -688,7 +688,7 @@ Azure AD B2C 应用注册体验基于适用于 Azure AD 租户的常规[应用�
 
 **产品功能：** 标识安全和保护
 
-持续访问评估是一项新的安全功能，在 Azure AD 中发生事件时（例如，用户帐户删除），可以在使用 Azure AD 访问令牌的信赖方上几乎实时地强制执行策略。 我们首先将此功能扩展到团队和 Outlook 客户端。 有关更多详细信息，请阅读我们的[博客](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)和[文档](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-continuous-access-evaluation)。
+持续访问评估是一项新的安全功能，可用于在 Azure AD (（如用户帐户删除) ）中发生事件时，在依赖 Azure AD 方上以接近实时的方式执行策略。 我们首先将此功能扩展到团队和 Outlook 客户端。 有关更多详细信息，请阅读我们的[博客](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/moving-towards-real-time-policy-and-security-enforcement/ba-p/1276933)和[文档](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-continuous-access-evaluation)。
 
 ---
 
@@ -762,7 +762,7 @@ Office 正在启动一系列适用于非传统组织的移动优先业务应用�
 
 2020年4月，我们已向应用库添加了这31个新应用和联合支持： 
 
-[SincroPool Apps](https://www.sincropool.com/)， [SmartDB](https://hibiki.dreamarts.co.jp/smartdb/trial/)， [Float](https://docs.microsoft.com/azure/active-directory/saas-apps/float-tutorial)， [LMS365](https://lms.365.systems/)， [iwt-9j-u8d 采购套件](https://docs.microsoft.com/azure/active-directory/saas-apps/iwt-procurement-suite-tutorial)， [Lunni](https://lunni.fi/)， [EasySSO For Jira](https://docs.microsoft.com/azure/active-directory/saas-apps/easysso-for-jira-tutorial)， [Virtual 定型学院](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft)， [Meraki 仪表板](https://docs.microsoft.com/azure/active-directory/saas-apps/meraki-dashboard-tutorial)， [Office 365 搬运工](https://app.mover.io/login)，[发言人参与](https://speakerengage.com/login.php)，[诚实](https://docs.microsoft.com/azure/active-directory/saas-apps/honestly-tutorial)， [Ally](https://docs.microsoft.com/azure/active-directory/saas-apps/ally-tutorial) [，DutyFlow](https://app.dutyflow.nl/) [，](https://docs.microsoft.com/azure/active-directory/saas-apps/highground-tutorial) [AlertMedia](https://docs.microsoft.com/azure/active-directory/saas-apps/alertmedia-tutorial)，gr8 人员[，Pendo，HighGround，](https://docs.microsoft.com/azure/active-directory/saas-apps/pendo-tutorial)[协调](https://docs.microsoft.com/azure/active-directory/saas-apps/harmony-tutorial)，Timetabling[解决方案](https://docs.microsoft.com/azure/active-directory/saas-apps/timetabling-solutions-tutorial)， [SynchroNet 单击](https://docs.microsoft.com/azure/active-directory/saas-apps/synchronet-click-tutorial) [，，](https://www.made-in-office.com/en/)Fortes， [Litmus](https://docs.microsoft.com/azure/active-directory/saas-apps/fortes-change-cloud-tutorial)， [GroupTalk](https://docs.microsoft.com/azure/active-directory/saas-apps/tickitlms-learn-tutorial)， [Frontify，TickitLMS](https://recorder.grouptalk.com/) [，COCO](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/) [，](https://docs.microsoft.com/azure/active-directory/saas-apps/nitro-productivity-suite-tutorial) [MongoDB cloud](https://docs.microsoft.com/azure/active-directory/saas-apps/mongodb-cloud-tutorial) [，Nitro，TMWS](https://docs.microsoft.com/azure/active-directory/saas-apps/litmus-tutorial) [，，](https://docs.microsoft.com/azure/active-directory/saas-apps/frontify-tutorial) [gr8 People](https://docs.microsoft.com/azure/active-directory/saas-apps/gr8-people-tutorial) [Trend Micro Web Security(TMWS)](https://review.docs.microsoft.com/azure/active-directory/saas-apps/trend-micro-tutorial)
+[SincroPool Apps](https://www.sincropool.com/)， [SmartDB](https://hibiki.dreamarts.co.jp/smartdb/trial/)， [Float](https://docs.microsoft.com/azure/active-directory/saas-apps/float-tutorial)， [LMS365](https://lms.365.systems/)， [iwt-9j-u8d 采购套件](https://docs.microsoft.com/azure/active-directory/saas-apps/iwt-procurement-suite-tutorial)， [Lunni](https://lunni.fi/)， [EasySSO For Jira](https://docs.microsoft.com/azure/active-directory/saas-apps/easysso-for-jira-tutorial)， [Virtual 定型学院](https://vta.c3p.ca/app/en/openid?authenticate_with=microsoft)， [Meraki 仪表板](https://docs.microsoft.com/azure/active-directory/saas-apps/meraki-dashboard-tutorial)， [Office 365 搬运工](https://app.mover.io/login)，[发言人参与](https://speakerengage.com/login.php)，[诚实](https://docs.microsoft.com/azure/active-directory/saas-apps/honestly-tutorial)，Ally [，DutyFlow](https://app.dutyflow.nl/) [，](https://docs.microsoft.com/azure/active-directory/saas-apps/highground-tutorial) [AlertMedia](https://docs.microsoft.com/azure/active-directory/saas-apps/alertmedia-tutorial)，gr8 人员[，Pendo，HighGround，](https://docs.microsoft.com/azure/active-directory/saas-apps/pendo-tutorial)[协调](https://docs.microsoft.com/azure/active-directory/saas-apps/harmony-tutorial)，Timetabling[解决方案](https://docs.microsoft.com/azure/active-directory/saas-apps/timetabling-solutions-tutorial)， [SynchroNet 单击](https://docs.microsoft.com/azure/active-directory/saas-apps/synchronet-click-tutorial) [，，](https://www.made-in-office.com/en/)Fortes， [Litmus](https://docs.microsoft.com/azure/active-directory/saas-apps/fortes-change-cloud-tutorial) [，](https://docs.microsoft.com/azure/active-directory/saas-apps/nitro-productivity-suite-tutorial) GroupTalk， [GroupTalk](https://recorder.grouptalk.com/)Frontify， [TickitLMS，](https://review.docs.microsoft.com/azure/active-directory/saas-apps/trend-micro-tutorial) [COCO，](https://docs.microsoft.com/azure/active-directory/saas-apps/frontify-tutorial)MongoDB [TickitLMS Learn](https://docs.microsoft.com/azure/active-directory/saas-apps/tickitlms-learn-tutorial)cloud [，Nitro](https://docs.microsoft.com/azure/active-directory/saas-apps/mongodb-cloud-tutorial)， [TMWS，](https://docs.microsoft.com/azure/active-directory/saas-apps/litmus-tutorial) [，) ](https://hexaware.com/partnerships-and-alliances/digital-transformation-using-microsoft-azure/) ([Ally](https://docs.microsoft.com/azure/active-directory/saas-apps/ally-tutorial) [gr8 People](https://docs.microsoft.com/azure/active-directory/saas-apps/gr8-people-tutorial)
 
 有关这些应用的详细信息，请参阅 [SaaS 应用程序与 Azure Active Directory 集成](https://aka.ms/appstutorial)。 要详细了解如何在 Azure AD 应用库中列出应用程序，请参阅[在 Azure Active Directory 应用程序库中列出应用程序](https://aka.ms/azureadapprequest)。
 
@@ -822,7 +822,7 @@ OAuth2PermissionGrant 的增量查询适用于公共预览版！ 你现在可以
 
 **产品功能：** 开发人员体验
 
-这些 Api 是用于管理用户身份验证方法的重要工具。 现在，你可以以编程方式预注册和管理用于 MFA 和自助密码重置的验证器（SSPR）。 这是 Azure MFA、SSPR 和 Microsoft Graph 空间中最常请求的功能之一。 此浪潮中发布的新 Api 使您能够：
+这些 Api 是用于管理用户身份验证方法的重要工具。 现在，你可以以编程方式预先注册和管理用于 MFA 和自助服务密码重置 (SSPR) 的验证器。 这是 Azure MFA、SSPR 和 Microsoft Graph 空间中最常请求的功能之一。 此浪潮中发布的新 Api 使您能够：
 
 - 读取、添加、更新和删除用户的身份验证电话
 - 重置用户的密码
@@ -848,7 +848,7 @@ OAuth2PermissionGrant 的增量查询适用于公共预览版！ 你现在可以
 - 仅为管理单元中的 Azure AD 用户分配具有管理权限的角色
 - 根据需要向用户和组填充管理单元
 
-有关详细信息，请参阅[Azure Active Directory （预览版）中的管理单元管理](https://aka.ms/AdminUnitsDocs)。
+有关详细信息，请参阅[Azure Active Directory (preview) 中的管理单元管理](https://aka.ms/AdminUnitsDocs)。
 
 ---
 
@@ -874,7 +874,7 @@ OAuth2PermissionGrant 的增量查询适用于公共预览版！ 你现在可以
 
 **产品功能：** 访问控制
 
-充当此角色的用户可以启用、配置和管理与在 Azure AD 中启用混合标识相关的服务及设置。 此角色允许将 Azure AD 配置为三种受支持的身份验证方法之一&#8212;密码哈希同步（PHS）、传递身份验证（PTA）或联合身份验证（AD FS 或第三方联合身份验证提供程序） &#8212;并部署相关的本地基础结构以启用它们。 本地基础结构包括预配和 PTA 代理。 此角色授予在非 Windows 10 设备或非 Windows Server 2016 计算机上启用无缝单一登录 (SSO) 以实现无缝身份验证的能力。 此外，此角色授予了查看登录日志以及访问运行状况和分析以进行监视和故障排除的功能。 [了解详细信息。](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#hybrid-identity-administrator)
+充当此角色的用户可以启用、配置和管理与在 Azure AD 中启用混合标识相关的服务及设置。 此角色允许将 Azure AD 配置为三种受支持的身份验证方法之一&#8212;密码哈希同步 (PHS) ，传递身份验证 (PTA) 或联合 (AD FS 或第三方联合身份验证提供程序) # B1，并部署相关的本地基础结构以启用它们。 本地基础结构包括预配和 PTA 代理。 此角色授予在非 Windows 10 设备或非 Windows Server 2016 计算机上启用无缝单一登录 (SSO) 以实现无缝身份验证的能力。 此外，此角色授予了查看登录日志以及访问运行状况和分析以进行监视和故障排除的功能。 [了解详细信息。](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#hybrid-identity-administrator)
 
 ---
 
@@ -907,7 +907,7 @@ OAuth2PermissionGrant 的增量查询适用于公共预览版！ 你现在可以
 - [创建用户](https://docs.microsoft.com/azure/active-directory/users-groups-roles/users-bulk-add)或[邀请来宾用户](https://docs.microsoft.com/azure/active-directory/b2b/tutorial-bulk-invite)
 - [删除用户](https://docs.microsoft.com/azure/active-directory/users-groups-roles/users-bulk-delete)或[还原已删除的用户](https://docs.microsoft.com/azure/active-directory/users-groups-roles/users-bulk-restore)
 - [下载用户列表](https://docs.microsoft.com/azure/active-directory/users-groups-roles/users-bulk-download)或[下载组列表](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-bulk-download)
-- 为组[添加（导入）成员](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-bulk-import-members)或[删除](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-bulk-remove-members)成员或[下载成员列表](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-bulk-download-members)
+- [添加 (导入) 成员](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-bulk-import-members)或[删除](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-bulk-remove-members)成员或[下载组的成员列表](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-bulk-download-members)
 
 ---
 
@@ -919,7 +919,7 @@ OAuth2PermissionGrant 的增量查询适用于公共预览版！ 你现在可以
 
 **产品功能：**
 
-我的员工可以使用 Firstline 经理（如商店经理）来确保其员工能够访问其 Azure AD 帐户。 组织可将常见任务（如重置密码或更改电话号码）委托给 Firstline Manager，而不是依赖于中心支持人员。 使用我的员工，不能访问帐户的用户只需点击几下鼠标就能重新获得访问权限，而无需任何支持人员或 IT 人员。 有关详细信息，请参阅 "[通过我的员工管理用户（预览版）](https://aka.ms/MyStaffAdminDocs) " 和 "[通过我的人员委托用户管理" （预览版）](https://aka.ms/MyStaffUserDocs)。
+我的员工可以使用 Firstline 经理（如商店经理）来确保其员工能够访问其 Azure AD 帐户。 组织可将常见任务（如重置密码或更改电话号码）委托给 Firstline Manager，而不是依赖于中心支持人员。 使用我的员工，不能访问帐户的用户只需点击几下鼠标就能重新获得访问权限，而无需任何支持人员或 IT 人员。 有关详细信息，请参阅 "[通过我的员工管理用户" (预览版) ](https://aka.ms/MyStaffAdminDocs)并[向我的员工 (预览) 委托用户管理](https://aka.ms/MyStaffUserDocs)。
 
 ---
 
@@ -943,11 +943,11 @@ OAuth2PermissionGrant 的增量查询适用于公共预览版！ 你现在可以
 
 **产品功能：** 
 
-根据客户反馈，我们现已更新企业应用库中的 Workday 入站用户预配和写回应用，以支持最新版本的 Workday Web Services （WWS） API。 通过此更改，客户可以指定要在连接字符串中使用的 WWS API 版本。 这使客户能够检索 Workday 版本中可用的更多 HR 属性。 Workday 写回应用现在使用推荐的 Change_Work_Contact_Info Workday web 服务来克服 Maintain_Contact_Info 的限制。
+根据客户反馈，我们现已更新企业应用库中的 Workday 入站用户预配和写回应用程序，以支持 (WWS) API 的最新版本的 Workday Web Services。 通过此更改，客户可以指定要在连接字符串中使用的 WWS API 版本。 这使客户能够检索 Workday 版本中可用的更多 HR 属性。 Workday 写回应用现在使用推荐的 Change_Work_Contact_Info Workday web 服务来克服 Maintain_Contact_Info 的限制。
 
 如果在连接字符串中未指定任何版本，则默认情况下，Workday 入站预配应用将继续使用 WWS v 21.1 切换到最新的 Workday Api 进行入站用户预配，客户需要更新连接字符串（如[本教程中](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#which-workday-apis-does-the-solution-use-to-query-and-update-workday-worker-profiles)所述），并更新用于 workday 属性的 xpath，如[workday 属性参考指南](https://docs.microsoft.com/azure/active-directory/app-provisioning/workday-attribute-reference#xpath-values-for-workday-web-services-wws-api-v30)中所述。 
 
-若要使用新 API 进行写回，Workday 写回预配应用程序中不需要进行任何更改。 在 Workday 端，确保 Workday Integration System 用户（ISU）帐户有权调用 Change_Work_Contact 业务流程，如 "教程" 部分 "[配置业务流程安全策略" 权限](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#configuring-business-process-security-policy-permissions)中所述。 
+若要使用新 API 进行写回，Workday 写回预配应用程序中不需要进行任何更改。 在 Workday 端，确保 Workday Integration System User (ISU) 帐户有权调用 Change_Work_Contact 业务流程，如 "教程" 部分 "[配置业务流程安全策略" 权限](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial#configuring-business-process-security-policy-permissions)中所述。 
 
 我们已经更新了[本教程指南](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial)，以反映新的 API 版本支持。
 
@@ -985,9 +985,9 @@ OAuth2PermissionGrant 的增量查询适用于公共预览版！ 你现在可以
 
 **产品功能：** 协作
 
-Azure Active Directory （Azure AD）现在提供了验证动态组规则的方法。 在 "**验证规则**" 选项卡上，可以对照组成员验证动态规则，以确认规则按预期方式工作。 创建或更新动态组规则时，管理员希望知道用户或设备是否将成为该组的成员。 这有助于评估用户或设备是否满足规则条件，并有助于在不期望成员身份时进行故障排除。
+Azure Active Directory (Azure AD) 现在提供了验证动态组规则的方法。 在 "**验证规则**" 选项卡上，可以对照组成员验证动态规则，以确认规则按预期方式工作。 创建或更新动态组规则时，管理员希望知道用户或设备是否将成为该组的成员。 这有助于评估用户或设备是否满足规则条件，并有助于在不期望成员身份时进行故障排除。
 
-有关详细信息，请参阅[验证动态组成员身份规则（预览版）](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-rule-validation)。
+有关详细信息，请参阅[ (预览版) 验证动态组成员身份规则](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-rule-validation)。
 
 ---
 
@@ -1018,7 +1018,7 @@ Azure Active Directory （Azure AD）现在提供了验证动态组规则的方�
 - 确保所有用户都可以完成多重身份验证以实现安全访问
 - 需要对管理角色进行 MFA
 
-这些新的改进操作要求在目录中注册用户或管理员进行多重身份验证（MFA），并建立符合组织需求的正确策略集。 主要目标是具有灵活性，同时确保所有用户和管理员都可以使用多个因素或基于风险的标识验证提示进行身份验证。 这种形式可以采用具有多个策略的形式，这些策略应用作用域决定，或设置安全默认值（从3月16日起），以使 Microsoft 决定何时为 MFA 质询用户。 [阅读有关 Microsoft 安全分数中的新增功能的详细信息](https://docs.microsoft.com/microsoft-365/security/mtp/microsoft-secure-score?view=o365-worldwide#whats-new)。
+这些新的改进操作要求向你的用户或管理员注册多重身份验证 (MFA) 在你的目录中，并建立适合你的组织需求的正确策略集。 主要目标是具有灵活性，同时确保所有用户和管理员都可以使用多个因素或基于风险的标识验证提示进行身份验证。 这可以采用具有多个策略的形式，这些策略应用作用域内的决策，或设置安全默认值 (于3月16日) ，让 Microsoft 决定何时为 MFA 质询用户。 [阅读有关 Microsoft 安全分数中的新增功能的详细信息](https://docs.microsoft.com/microsoft-365/security/mtp/microsoft-secure-score?view=o365-worldwide#whats-new)。
 
 ---
 
@@ -1030,7 +1030,7 @@ Azure Active Directory （Azure AD）现在提供了验证动态组规则的方�
 **服务类别：** B2B  
 **产品功能：** B2B/B2C
  
-**从2021年3月31日开始**，Microsoft 将不再支持通过创建用于 B2B 协作方案的非托管 Azure Active Directory （Azure AD）帐户和租户兑换邀请。 为此，我们建议你选择加入[电子邮件一次性密码身份验证](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode)。
+**从2021年3月31日开始**，Microsoft 将不再支持通过创建非托管 Azure Active Directory (AZURE AD 用于 B2B 协作方案的) 帐户和租户来兑换邀请。 为此，我们建议你选择加入[电子邮件一次性密码身份验证](https://docs.microsoft.com/azure/active-directory/b2b/one-time-passcode)。
 
 ---
 
@@ -1044,13 +1044,13 @@ Azure Active Directory （Azure AD）现在提供了验证动态组规则的方�
 
 ---
 
-### <a name="azure-ad-b2b-collaboration-will-be-available-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet-tenants"></a>Azure AD B2B 协作将在世纪互联运营的 Microsoft Azure （Azure 中国世纪互联）租户中提供
+### <a name="azure-ad-b2b-collaboration-will-be-available-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet-tenants"></a>Azure AD B2B 协作将在由世纪互联 (Azure 中国世纪互联) 租户 Microsoft Azure 运营
 
 **类型：** 更改计划  
 **服务类别：** B2B  
 **产品功能：** B2B/B2C
  
-Azure AD B2B 协作功能将在世纪互联运营的 Microsoft Azure （Azure 中国世纪互联）租户中提供，使 Azure 中国世纪互联租户中的用户无缝与其他 Azure 中国世纪互联租户中的用户进行协作。 [详细了解 AZURE AD B2B 协作](https://docs.microsoft.com/azure/active-directory/b2b/)。
+Azure AD B2B 协作功能将在由世纪互联 (Azure 中国世纪互联的 Microsoft Azure 运营) 租户中提供，使 Azure 中国世纪互联租户中的用户无缝与其他 Azure 中国世纪互联租户中的用户进行协作。 [详细了解 AZURE AD B2B 协作](https://docs.microsoft.com/azure/active-directory/b2b/)。
 
 ---
  
@@ -1104,7 +1104,7 @@ Azure AD B2B 协作功能现已在一些 Azure 政府租户之间可用。  若�
 **服务类别：** 报表  
 **产品功能：** 监视和报告
  
-现在 Azure 政府版中提供了与 Azure AD 日志 Azure Monitor 集成。 可以将 Azure AD 日志（审核和登录日志）路由到存储帐户、事件中心和 Log Analytics。 请查看详细的[文档](https://aka.ms/aadlogsinamd)以及用于[报告和监视](https://docs.microsoft.com/azure/active-directory/reports-monitoring/plan-monitoring-and-reporting)Azure AD 方案的部署计划。
+现在 Azure 政府版中提供了与 Azure AD 日志 Azure Monitor 集成。 可以将 Azure AD 日志 (审核和登录日志路由) 到存储帐户、事件中心和 Log Analytics。 请查看详细的[文档](https://aka.ms/aadlogsinamd)以及用于[报告和监视](https://docs.microsoft.com/azure/active-directory/reports-monitoring/plan-monitoring-and-reporting)Azure AD 方案的部署计划。
 
 ---
 
@@ -1128,13 +1128,13 @@ Azure AD 预配服务提供了一组丰富的配置功能。 客户需要能够�
 
 ---
  
-### <a name="sspr-self-service-password-reset-now-requires-two-gates-for-admins-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet"></a>SSPR （自助服务密码重置）现在要求在世纪互联（Azure 中国世纪互联）的 Microsoft Azure 中为管理员提供两个入口 
+### <a name="sspr-self-service-password-reset-now-requires-two-gates-for-admins-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet"></a>SSPR (自助服务密码重置) 现在需要在由世纪互联 (Azure 中国世纪互联的 Microsoft Azure 中为管理员提供两个入口)  
 
 **类型：** 已更改的功能  
 **服务类别：** 自助服务密码重置  
 **产品功能：** 标识安全和保护
  
-以前在世纪互联运营的 Microsoft Azure 中，管理员使用自助服务密码重置（SSPR）来重置其自己的密码，只需要一个 "门" （质询）来证明其身份。 在公共和其他国家云中，管理员通常必须在使用 SSPR 时使用两个入口来证明其身份。 但是，因为我们不支持 Azure 中国世纪互联中的短信或电话呼叫，所以管理员允许通过一入口的密码重置。
+以前的 Microsoft Azure 由世纪互联 (Azure 中国世纪互联) ，使用自助服务密码重置 (SSPR) 来重置其自己的密码，只需要一个 "入口" (质询) 来证明其身份。 在公共和其他国家云中，管理员通常必须在使用 SSPR 时使用两个入口来证明其身份。 但是，因为我们不支持 Azure 中国世纪互联中的短信或电话呼叫，所以管理员允许通过一入口的密码重置。
 
 我们正在创建 Azure 中国世纪互联和公有云之间的 SSPR 功能奇偶校验。 今后，管理员必须在使用 SSPR 时使用两个入口。 将支持 SMS、电话呼叫和验证器应用通知和代码。 [了解详细信息](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy#administrator-reset-policy-differences)。
 
@@ -1148,7 +1148,7 @@ Azure AD 预配服务提供了一组丰富的配置功能。 客户需要能够�
  
 为了确保 Azure AD 服务的可靠性，用户密码现在的长度限制为256个字符。 密码长度超过此长度的用户将被要求在后续登录时更改其密码，方法是联系管理员或使用自助服务密码重置功能。
 
-此更改已于2020年3月13日（，18:00 UTC）启用，错误为 AADSTS 50052，InvalidPasswordExceedsMaxLength。 有关更多详细信息，请参阅[重大更改通知](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#user-passwords-will-be-restricted-to-256-characters)。
+此更改已于2020年3月13日在 10AM PST (18:00 UTC) 启用，错误为 AADSTS 50052，InvalidPasswordExceedsMaxLength。 有关更多详细信息，请参阅[重大更改通知](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes#user-passwords-will-be-restricted-to-256-characters)。
 
 ---
 
@@ -1161,7 +1161,7 @@ Azure AD 预配服务提供了一组丰富的配置功能。 客户需要能够�
 从现在开始，具有免费租户的客户可以从 Azure 门户到最多7天的[Azure AD 登录日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)。 以前，登录日志仅适用于具有 Azure Active Directory Premium 许可证的客户。 进行此更改后，所有租户都可以通过门户访问这些日志。
 
 > [!NOTE]
-> 客户仍需要高级许可证（Azure Active Directory Premium P1 或 P2），才能通过 Microsoft Graph API 和 Azure Monitor 访问登录日志。
+> 客户仍需要高级许可证 (Azure Active Directory Premium P1 或 P2) 通过 Microsoft Graph API 和 Azure Monitor 访问登录日志。
 
 ---
 
@@ -1195,7 +1195,7 @@ Azure AD 预配服务提供了一组丰富的配置功能。 客户需要能够�
 **服务类别：** MFA  
 **产品功能：** 标识安全和保护
  
-为了反映企业在应用与业务相关的策略时是否需要确保过的话很安全性，Microsoft 安全分数会删除三个围绕多重身份验证（MFA）的改进操作，并添加两个。
+为了反映企业在应用与业务相关的策略时，是否需要确保过的话很安全性，Microsoft 安全分数会删除三个围绕多重身份验证的改进操作， (MFA) ，并添加两个。
 
 将删除以下改进操作：
 
@@ -1218,7 +1218,7 @@ Azure AD 预配服务提供了一组丰富的配置功能。 客户需要能够�
 **服务类别：** Azure AD 域服务  
 **产品功能：** Azure AD 域服务
  
-我们听说 Azure AD 域服务客户需要更灵活地选择其实例的性能级别。 从2020年2月1日开始，我们从动态模型（其中 Azure AD 根据对象计数确定性能和定价层）切换到自选择模型。 现在，客户可以选择与其环境匹配的性能层。 此更改还允许我们启用新方案，如资源林和高级功能，如每日备份。 对象计数现在对所有 Sku 均无限制，但我们将继续为每个层提供对象计数建议。
+我们听说 Azure AD 域服务客户需要更灵活地选择其实例的性能级别。 从2020年2月1日开始，我们从动态模型转换 (，其中 Azure AD 根据对象计数) 到自选择模型来确定性能和定价层。 现在，客户可以选择与其环境匹配的性能层。 此更改还允许我们启用新方案，如资源林和高级功能，如每日备份。 对象计数现在对所有 Sku 均无限制，但我们将继续为每个层提供对象计数建议。
 
 **无需立即进行客户操作。** 对于现有客户，在2020年2月1日使用的动态层确定了新的默认层。 此更改的结果不会影响定价或性能。 今后，Azure AD DS 客户需要评估性能要求，因为它们的目录大小和工作负荷特征发生变化。 在服务层之间切换将继续进行无中断操作，并且我们将不再自动根据其目录的增长将客户移动到新的层。 此外，将不会有任何价格增加，新定价将与当前计费模型保持一致。 有关详细信息，请参阅[AZURE AD DS sku 文档](https://docs.microsoft.com/azure/active-directory-domain-services/administration-concepts#azure-ad-ds-skus)和[Azure AD 域服务定价页](https://azure.microsoft.com/pricing/details/active-directory-ds/)。
 
@@ -1232,7 +1232,7 @@ Azure AD 预配服务提供了一组丰富的配置功能。 客户需要能够�
  
 2020年2月，我们已向应用库添加了这31个新应用和联合支持： 
 
-[IamIP 专利平台](https://docs.microsoft.com/azure/active-directory/saas-apps/iamip-patent-platform-tutorial)，[体验云](https://docs.microsoft.com/azure/active-directory/saas-apps/experience-cloud-tutorial)，[适用于 Azure 的 NS1 SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/ns1-sso-azure-tutorial)， [Barracuda 电子邮件安全服务](https://ess.barracudanetworks.com/sso/azure)， [In Case of Crisis - Online Portal](https://docs.microsoft.com/azure/active-directory/saas-apps/in-case-of-crisis-online-portal-tutorial) [ABa 报告](https://myaba.co.uk/client-access/signin/auth/msad) [Beekeeper Azure AD 数据连接器](https://docs.microsoft.com/azure/active-directory/saas-apps/beekeeper-azure-ad-data-connector-tutorial)， [Korn 运送评估](https://www.kornferry.com/solutions/kf-digital/kf-assess)， [Verkada 命令](https://docs.microsoft.com/azure/active-directory/saas-apps/verkada-command-tutorial)， [Splashtop](https://docs.microsoft.com/azure/active-directory/saas-apps/splashtop-tutorial)， [TeamViewer](https://docs.microsoft.com/azure/active-directory/saas-apps/teamviewer-tutorial) Syxsense， [Reprints Desk - Article Galaxy](https://docs.microsoft.com/azure/active-directory/saas-apps/reprints-desk-article-galaxy-tutorial) [EAB](https://docs.microsoft.com/azure/active-directory/saas-apps/eab-navigate-tutorial)，Relic [，Thulium，](https://docs.microsoft.com/azure/active-directory/saas-apps/new-relic-limited-release-tutorial) [Beesy](https://docs.microsoft.com/azure/active-directory/saas-apps/syxsense-tutorial)， [WEDO](https://docs.microsoft.com/azure/active-directory/saas-apps/wedo-tutorial) [MURAL，](https://admin.thulium.com/login/instance)[票证管理器](https://docs.microsoft.com/azure/active-directory/saas-apps/ticketmanager-tutorial)，[团队模板选择器](https://links.officeatwork.com/templatechooser-download-teams) [，LavaDo，](https://www.beesy.me/index.php/site/login)[健康支持系统](https://docs.microsoft.com/azure/active-directory/saas-apps/health-support-system-tutorial)， [Wakelet](https://app.mural.co/signup)， [Hive](https://docs.microsoft.com/azure/active-directory/saas-apps/hive-tutorial) [，](https://docs.microsoft.com/azure/active-directory/saas-apps/coda-tutorial) [Firmex](https://appsource.microsoft.com/product/web-apps/lavaloon.lavado_standard?tab=Overview) [，vdr-fp-xzo，ThingLink](https://wakelet.com/login) [，NearpodApp](https://nearpod.com/signup/?oc=Microsoft&utm_campaign=Microsoft&utm_medium=site&utm_source=product) [，WEDO，](https://www.thinglink.com/) [InvitePeople，](https://invitepeople.com/login) [Reprints，](https://docs.microsoft.com/azure/active-directory/saas-apps/firmex-vdr-tutorial) [BIC Cloud Design](https://docs.microsoft.com/azure/active-directory/saas-apps/bic-cloud-design-tutorial)
+[IamIP 专利平台](https://docs.microsoft.com/azure/active-directory/saas-apps/iamip-patent-platform-tutorial)，[体验云](https://docs.microsoft.com/azure/active-directory/saas-apps/experience-cloud-tutorial)，[适用于 Azure 的 NS1 SSO](https://docs.microsoft.com/azure/active-directory/saas-apps/ns1-sso-azure-tutorial)， [Barracuda 电子邮件安全服务](https://ess.barracudanetworks.com/sso/azure)， [In Case of Crisis - Online Portal](https://docs.microsoft.com/azure/active-directory/saas-apps/in-case-of-crisis-online-portal-tutorial) [ABa 报告](https://myaba.co.uk/client-access/signin/auth/msad) [Beekeeper Azure AD 数据连接器](https://docs.microsoft.com/azure/active-directory/saas-apps/beekeeper-azure-ad-data-connector-tutorial)， [Korn 运送评估](https://www.kornferry.com/solutions/kf-digital/kf-assess)， [Verkada 命令](https://docs.microsoft.com/azure/active-directory/saas-apps/verkada-command-tutorial)， [Splashtop](https://docs.microsoft.com/azure/active-directory/saas-apps/splashtop-tutorial)， [Syxsense](https://docs.microsoft.com/azure/active-directory/saas-apps/syxsense-tutorial)， [EAB 导航](https://docs.microsoft.com/azure/active-directory/saas-apps/eab-navigate-tutorial) [，Relic ](https://docs.microsoft.com/azure/active-directory/saas-apps/new-relic-limited-release-tutorial)，Thulium，Beesy，MURAL，LavaDo，Ticket Manager [，模板](https://docs.microsoft.com/azure/active-directory/saas-apps/ticketmanager-tutorial)选择[器用于团队，Wakelet](https://links.officeatwork.com/templatechooser-download-teams)， [) ](https://www.beesy.me/index.php/site/login) ([健康支持系统](https://docs.microsoft.com/azure/active-directory/saas-apps/health-support-system-tutorial)， [Firmex](https://app.mural.co/signup) [BIC Cloud Design](https://docs.microsoft.com/azure/active-directory/saas-apps/bic-cloud-design-tutorial)， [Hive](https://docs.microsoft.com/azure/active-directory/saas-apps/hive-tutorial)，vdr-fp-xzo，ThingLink，NearpodApp， [WEDO，InvitePeople](https://appsource.microsoft.com/product/web-apps/lavaloon.lavado_standard?tab=Overview) [Thulium](https://admin.thulium.com/login/instance)，Reprints， [Firmex VDR](https://docs.microsoft.com/azure/active-directory/saas-apps/firmex-vdr-tutorial)，，， [Coda](https://docs.microsoft.com/azure/active-directory/saas-apps/coda-tutorial)， [NearpodApp](https://nearpod.com/signup/?oc=Microsoft&utm_campaign=Microsoft&utm_medium=site&utm_source=product) [InvitePeople](https://invitepeople.com/login) [Wakelet](https://wakelet.com/login) [Reprints Desk - Article Galaxy](https://docs.microsoft.com/azure/active-directory/saas-apps/reprints-desk-article-galaxy-tutorial)， [WEDO](https://docs.microsoft.com/azure/active-directory/saas-apps/wedo-tutorial) [ThingLink for Teachers and Schools](https://www.thinglink.com/) [TeamViewer](https://docs.microsoft.com/azure/active-directory/saas-apps/teamviewer-tutorial)
 
  
 有关这些应用的详细信息，请参阅 [SaaS 应用程序与 Azure Active Directory 集成](https://aka.ms/appstutorial)。 要详细了解如何在 Azure AD 应用库中列出应用程序，请参阅[在 Azure Active Directory 应用程序库中列出应用程序](https://aka.ms/azureadapprequest)。

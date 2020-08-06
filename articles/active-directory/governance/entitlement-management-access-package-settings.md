@@ -3,7 +3,7 @@ title: 共享链接，请求 Azure AD 授权管理中的访问包-Azure Active D
 description: 了解如何共享链接，以在 Azure Active Directory 权利管理中请求访问包。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a29f0a0231cdea5a73b7798088002e63ec93324
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 32973d063c36a45eee79db0b4da4e7419cb70013
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078552"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798540"
 ---
 # <a name="share-link-to-request-an-access-package-in-azure-ad-entitlement-management"></a>共享链接，以在 Azure AD 权利管理中请求访问包
 
@@ -41,7 +41,7 @@ ms.locfileid: "85078552"
 
     ![访问包概述 - 我的访问权限门户链接](./media/entitlement-management-shared/my-access-portal-link.png)
 
-    将整个 "我的访问门户" 链接发送到内部业务合作伙伴时，必须将其复制到一起，这一点很重要。 这可确保合作伙伴能够访问你的目录门户来发出请求。 链接以开头 `myaccess` ，包含一个目录提示，并以访问包 ID 结尾。  （对于美国政府版，"我的 Access 门户" 链接中的域将为 `myaccess.microsoft.us` 。）
+    将整个 "我的访问门户" 链接发送到内部业务合作伙伴时，必须将其复制到一起，这一点很重要。 这可确保合作伙伴能够访问你的目录门户来发出请求。 链接以开头 `myaccess` ，包含一个目录提示，并以访问包 ID 结尾。   (美国政府，"我的 Access 门户" 链接中的域将为 `myaccess.microsoft.us` 。 ) 
 
     `https://myaccess.microsoft.com/@<directory_hint>#/access-packages/<access_package_id>`
 

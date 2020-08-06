@@ -1,28 +1,28 @@
 ---
 title: 用于服务器的 Azure Arc 的 VM 扩展管理
-description: 适用于服务器（预览版）的 Azure Arc 可以管理虚拟机扩展的部署，这些扩展提供部署后配置和自动化任务和非 Azure Vm。
+description: 适用于服务器 (预览版的 Azure Arc) 可以管理虚拟机扩展的部署，通过非 Azure Vm 提供部署后配置和自动化任务。
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.openlocfilehash: e04b2c63f782a4fcbb64273c08511ecb0bbc2bc3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: eb1de0c2a5b995231c2972fca7279195cbaea9e7
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84977517"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809623"
 ---
-# <a name="virtual-machine-extension-management-with-azure-arc-for-servers-preview"></a>用于服务器的 Azure Arc 的虚拟机扩展管理（预览）
+# <a name="virtual-machine-extension-management-with-azure-arc-for-servers-preview"></a>适用于服务器 (预览版的 Azure Arc 的虚拟机扩展管理) 
 
-虚拟机（VM）扩展是小型应用程序，用于在 Azure Vm 上提供部署后配置和自动化任务。 例如，如果某个虚拟机需要安装软件、防病毒保护或运行脚本，便可以使用 VM 扩展。
+虚拟机 (VM) 扩展是小型应用程序，用于在 Azure Vm 上提供部署后配置和自动化任务。 例如，如果虚拟机需要软件安装、防病毒保护或运行其中的脚本，则可以使用 VM 扩展。
 
-使用 azure Arc for server （预览版），可以将 Azure VM 扩展部署到非 Azure Windows 和 Linux Vm，从而简化混合计算机在本地、边缘和其他云环境的生命周期中的管理。
+使用 azure Arc 对于服务器 (预览版) 使你能够将 Azure VM 扩展部署到非 Azure Windows 和 Linux Vm，从而简化了混合计算机在本地、边缘和其他云环境的生命周期中的管理。
 
 ## <a name="key-benefits"></a>主要优点
 
-适用于服务器（预览版）的 Azure Arc VM 扩展支持提供以下主要优势：
+适用于服务器 (预览版的 Azure Arc) VM 扩展支持提供以下重要优势：
 
 * 使用[Azure 自动化状态配置](../../automation/automation-dsc-overview.md)集中存储配置，并通过 DSC VM 扩展维护启用混合连接的计算机的所需状态。
 
@@ -40,7 +40,7 @@ VM 扩展功能仅在[受支持区域](overview.md#supported-regions)的列表�
 
 在此预览版中，我们在 Windows 和 Linux 计算机上支持以下 VM 扩展。
 
-|分机 |(OS) |Publisher |其他信息 |
+|扩展 |OS |Publisher |其他信息 |
 |----------|---|----------|-----------------------|
 |CustomScriptExtension |Windows |Microsoft.Compute |[Windows 自定义脚本扩展](../../virtual-machines/extensions/custom-script-windows.md)|
 |DSC |Windows |Microsoft PowerShell|[Windows PowerShell DSC 扩展](../../virtual-machines/extensions/dsc-windows.md)|
@@ -51,11 +51,11 @@ VM 扩展功能仅在[受支持区域](overview.md#supported-regions)的列表�
 |Log Analytics 代理 |Linux |Microsoft.EnterpriseCloud.Monitoring |[适用于 Linux 的 Log Analytics VM 扩展](../../virtual-machines/extensions/oms-linux.md) |
 |Microsoft 依赖项代理 | Linux |Microsoft.Compute | [适用于 Linux 的依赖关系代理虚拟机扩展](../../virtual-machines/extensions/agent-dependency-linux.md) |
 
-VM 扩展可使用 Azure 资源管理器模板、Azure 门户或 Azure PowerShell 通过 Arc 为服务器（预览版）管理的混合服务器运行。
+VM 扩展可使用 Azure 资源管理器模板、Azure 门户或 Azure PowerShell 在服务器 (预览版) 的混合服务器上的运行。
 
 若要了解有关 Azure 连接的计算机代理包以及有关扩展代理组件的详细信息，请参阅[代理概述](agent-overview.md#agent-component-details)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 此功能依赖于订阅中的以下 Azure 资源提供程序：
 
@@ -79,7 +79,7 @@ VM 扩展可使用 Azure 资源管理器模板、Azure 门户或 Azure PowerShel
 
 ## <a name="enable-extensions-from-the-portal"></a>从门户启用扩展
 
-VM 扩展可通过 Azure 门户应用服务器（预览版）托管计算机的 Arc。
+可以通过 Azure 门户将 VM 扩展应用于服务器 (预览) 被管理的计算机。
 
 1. 在浏览器中转到 [Azure 门户](https://aka.ms/arcserver-preview)。
 
@@ -102,7 +102,7 @@ VM 扩展可通过 Azure 门户应用服务器（预览版）托管计算机的 
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager 模板
 
-VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过程中执行。 对于服务器（预览版）的 Arc 支持的 VM 扩展，可以使用 Azure PowerShell 在 Linux 或 Windows 计算机上部署受支持的 VM 扩展。 下面的每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
+VM 扩展可添加到 Azure Resource Manager 模板，并在部署模板的过程中执行。 使用 (预览版) 服务器的 Arc 支持的 VM 扩展，可以使用 Azure PowerShell 在 Linux 或 Windows 计算机上部署受支持的 VM 扩展。 下面的每个示例都包含模板文件和参数文件，其中包含要提供给模板的示例值。
 
 >[!NOTE]
 >虽然可以将多个扩展组合在一起并进行处理，但它们是以串行方式安装的。 第一次扩展安装完成后，将尝试安装下一扩展。
@@ -727,6 +727,6 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，使用[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md) 启用监视等。
+- 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，使用[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) 启用监视等。
 
 - 详细了解 [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)。 若要主动监视计算机上运行的 OS 和工作负荷、使用自动化 Runbook 或更新管理等解决方案对其进行管理，或使用其他 Azure 服务（例如 [Azure 安全中心](../../security-center/security-center-intro.md)），需要安装适用于 Windows 和 Linux 的 Log Analytics 代理。

@@ -2,7 +2,7 @@
 title: Azure Active Directory 的新增功能存档 | Microsoft Docs
 description: 此内容集的“概述”部分中的新增功能发行说明包含 6 个月的活动。 6 个月过后，这些项目将从主文章中删除并放入此存档文章中。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d981bad30bf57fde64d1f6e903039dda5007e526
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e8b09293f80b5aee2dd76abba3f165a50a5eeee5
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87483903"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799134"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能存档
 
@@ -56,7 +56,7 @@ Azure Active Directory 的新增功能发行说明提供有关以下内容的信
 
 ---
  
-### <a name="azure-ad-b2c-phone-sign-up-and-sign-in-using-custom-policy-public-preview"></a>使用自定义策略 Azure AD B2C 手机注册和登录（公共预览版）
+### <a name="azure-ad-b2c-phone-sign-up-and-sign-in-using-custom-policy-public-preview"></a>使用自定义策略 (公共预览版 Azure AD B2C 手机注册和登录) 
 
 **类型：** 新功能  
 **服务类别：** B2C - 用户标识管理  
@@ -101,7 +101,7 @@ Azure Active Directory 的新增功能发行说明提供有关以下内容的信
 **服务类别：** 标识保护  
 **产品功能：** 标识安全和保护
  
-我们已将两个新的登录链接检测类型添加到 Identity Protection：可疑收件箱操作规则和不可能旅行。 这些脱机检测由 Microsoft Cloud App Security （MCAS）发现，并影响用户和在 Identity Protection 中登录的风险。 有关这些检测的详细信息，请参阅[登录风险类型](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks#sign-in-risk)。
+我们已将两个新的登录链接检测类型添加到 Identity Protection：可疑收件箱操作规则和不可能旅行。 这些脱机检测是通过 Microsoft Cloud App Security (MCAS) 发现的，并影响用户和在 Identity Protection 中登录的风险。 有关这些检测的详细信息，请参阅[登录风险类型](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-risks#sign-in-risk)。
  
 ---
  
@@ -116,7 +116,7 @@ Azure Active Directory 的新增功能发行说明提供有关以下内容的信
 
 ## <a name="december-2019"></a>2019 年 12 月
 
-### <a name="integrate-sap-successfactors-provisioning-into-azure-ad-and-on-premises-ad-public-preview"></a>将 SAP SuccessFactors 预配集成到 Azure AD 和本地 AD （公共预览版）
+### <a name="integrate-sap-successfactors-provisioning-into-azure-ad-and-on-premises-ad-public-preview"></a>将 SAP SuccessFactors 预配集成到 Azure AD 和本地 AD (公共预览版) 
 
 **类型：** 新功能  
 **服务类别：** 应用预配  
@@ -128,13 +128,13 @@ Azure Active Directory 的新增功能发行说明提供有关以下内容的信
 
 ---
 
-### <a name="support-for-customized-emails-in-azure-ad-b2c-public-preview"></a>Azure AD B2C 中的自定义电子邮件支持（公共预览版）
+### <a name="support-for-customized-emails-in-azure-ad-b2c-public-preview"></a>Azure AD B2C (公共预览版中的自定义电子邮件支持) 
 
 **类型：** 新功能  
 **服务类别：** B2C - 用户标识管理  
 **产品功能：** B2B/B2C
 
-你现在可以使用 Azure AD B2C 在用户注册使用你的应用时创建自定义的电子邮件。 通过使用 DisplayControls （当前为预览版）和第三方电子邮件提供商（例如， [SendGrid](https://sendgrid.com/)、 [SparkPost](https://sparkpost.com/)或自定义 REST API），可以使用自己的电子邮件模板、**发件**人地址和主题文本，以及支持本地化和自定义的一次性密码（OTP）设置。
+你现在可以使用 Azure AD B2C 在用户注册使用你的应用时创建自定义的电子邮件。 通过使用 DisplayControls (当前在预览版中) 和第三方电子邮件提供商 (例如， [SendGrid](https://sendgrid.com/)、 [SparkPost](https://sparkpost.com/)或自定义 REST API) ，你可以使用自己的电子邮件模板、**发件**人地址和主题文本，以及支持本地化和自定义一次性密码 (OTP) 设置。
 
 有关详细信息，请参阅[Azure Active Directory B2C 中的自定义电子邮件验证](https://docs.microsoft.com/azure/active-directory-b2c/custom-email)。
 
@@ -174,31 +174,31 @@ Azure Active Directory 的新增功能发行说明提供有关以下内容的信
 
 ---
 
-### <a name="new-hotfix-for-microsoft-identity-manager-mim-2016-service-pack-2-sp2"></a>Microsoft Identity Manager （MIM） 2016 Service Pack 2 （SP2）的新修补程序
+### <a name="new-hotfix-for-microsoft-identity-manager-mim-2016-service-pack-2-sp2"></a>适用于 Microsoft Identity Manager (MIM) 2016 Service Pack 2 (SP2 的新修补程序) 
 
 **类型：** 已修复  
 **服务类别：** Microsoft Identity Manager  
 **产品功能：** 标识生命周期管理
 
-修补程序汇总包（build 4.6.34.0）可用于 Microsoft Identity Manager （MIM） 2016 Service Pack 2 （SP2）。 此汇总包解决了问题并增加了在此更新中添加了 "修复和改进问题" 部分中描述的改进功能。
+ (生成 4.6.34.0) 的修补程序汇总包可用于 Microsoft Identity Manager (MIM) 2016 Service Pack 2 (SP2) 。 此汇总包解决了问题并增加了在此更新中添加了 "修复和改进问题" 部分中描述的改进功能。
 
-有关详细信息和下载修补程序包，请参阅[Microsoft Identity Manager 2016 Service Pack 2 （生成4.6.34.0）更新汇总可用](https://support.microsoft.com/help/4512924/microsoft-identity-manager-2016-service-pack-2-build-4-6-34-0-update-r)。
+有关详细信息和下载修补程序包，请参阅[Microsoft Identity Manager 2016 Service Pack 2 (build 4.6.34.0) 更新汇总可用](https://support.microsoft.com/help/4512924/microsoft-identity-manager-2016-service-pack-2-build-4-6-34-0-update-r)。
 
 ---
 
-### <a name="new-ad-fs-app-activity-report-to-help-migrate-apps-to-azure-ad-public-preview"></a>新 AD FS 应用活动报表，可帮助将应用迁移到 Azure AD （公共预览版）
+### <a name="new-ad-fs-app-activity-report-to-help-migrate-apps-to-azure-ad-public-preview"></a>新 AD FS 应用活动报表，可帮助将应用迁移到 Azure AD (公共预览版) 
 
 **类型：** 新功能  
 **服务类别：** 企业应用  
 **产品功能：** SSO
 
-使用 "Azure 门户" 中的 "新建 Active Directory 联合身份验证服务（AD FS）" 应用活动报表来确定哪些应用程序能够迁移到 Azure AD。 该报表将评估所有 AD FS 的应用程序的兼容性 Azure AD、检查是否有任何问题，并提供有关准备要迁移的单个应用程序的指南。
+使用 Azure 门户中的 "新建 Active Directory 联合身份验证服务 (AD FS) " 应用活动 "报表来确定哪些应用程序能够迁移到 Azure AD。 该报表将评估所有 AD FS 的应用程序的兼容性 Azure AD、检查是否有任何问题，并提供有关准备要迁移的单个应用程序的指南。
 
 有关详细信息，请参阅[使用 AD FS 应用程序活动报告将应用程序迁移到 Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/migrate-adfs-application-activity)。
 
 ---
 
-### <a name="new-workflow-for-users-to-request-administrator-consent-public-preview"></a>用户的新工作流，用于请求管理员同意（公共预览版）
+### <a name="new-workflow-for-users-to-request-administrator-consent-public-preview"></a>新工作流，用于请求管理员同意 (公开预览版) 
 
 **类型：** 新功能  
 **服务类别：** 企业应用  
@@ -206,11 +206,11 @@ Azure Active Directory 的新增功能发行说明提供有关以下内容的信
 
 管理员可以通过新的管理员许可工作流向需要管理员批准的应用授予访问权限。 如果用户尝试访问某个应用但无法提供许可，则他们现在可以发送管理员批准请求。 通过电子邮件发送请求，并将其放在可从 Azure 门户访问的队列中，该队列已指定为审阅者。 在审阅者对挂起的请求执行操作之后，会向请求用户通知该操作。
 
-有关详细信息，请参阅[配置管理员许可工作流（预览）](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow)。
+有关详细信息，请参阅[配置管理员许可工作流 (预览) ](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow)。
 
 ---
 
-### <a name="new-azure-ad-app-registrations-token-configuration-experience-for-managing-optional-claims-public-preview"></a>用于管理可选声明的新 Azure AD 应用注册令牌配置体验（公共预览版）
+### <a name="new-azure-ad-app-registrations-token-configuration-experience-for-managing-optional-claims-public-preview"></a>新 Azure AD 应用注册令牌配置体验，用于管理 (公共预览版的可选声明) 
 
 **类型：** 新功能  
 **服务类别：** 其他  
@@ -222,7 +222,7 @@ Azure 门户上的 "新建**Azure AD 应用注册令牌配置**" 边栏选项卡
 
 ---
 
-### <a name="new-two-stage-approval-workflow-in-azure-ad-entitlement-management-public-preview"></a>Azure AD 授权管理（公共预览版）中的新的两阶段审批工作流
+### <a name="new-two-stage-approval-workflow-in-azure-ad-entitlement-management-public-preview"></a>Azure AD 授权管理 (公共预览版中的新两阶段审批工作流) 
 
 **类型：** 新功能  
 **服务类别：** 其他  
@@ -234,7 +234,7 @@ Azure 门户上的 "新建**Azure AD 应用注册令牌配置**" 边栏选项卡
 
 ---
 
-### <a name="updates-to-the-my-apps-page-along-with-new-workspaces-public-preview"></a>更新 "我的应用" 页面和新工作区（公共预览版）
+### <a name="updates-to-the-my-apps-page-along-with-new-workspaces-public-preview"></a>更新 "我的应用" 页面，以及 (公开预览版的新工作区) 
 
 **类型：** 新功能  
 **服务类别：** 我的应用  
@@ -246,19 +246,19 @@ Azure 门户上的 "新建**Azure AD 应用注册令牌配置**" 边栏选项卡
 
 ---
 
-### <a name="google-social-id-support-for-azure-ad-b2b-collaboration-general-availability"></a>Azure AD B2B 协作（公开上市）的 Google 社交 ID 支持
+### <a name="google-social-id-support-for-azure-ad-b2b-collaboration-general-availability"></a>Google 社交 ID 支持 Azure AD B2B 协作 (公开上市) 
 
 **类型：** 新功能  
 **服务类别：** B2B  
 **产品功能：** 用户身份验证
 
-在 Azure AD 中使用 Google 社交 Id （Gmail 帐户）的新支持有助于使用户和合作伙伴更轻松地进行协作。 你的合作伙伴不再需要创建和管理新的特定于 Microsoft 的帐户。 Microsoft 团队现在完全支持所有客户端上的 Google 用户，以及公共和与租户相关的身份验证终结点。
+Azure AD 的 (Gmail 帐户) 使用 Google 社交 Id 的新支持有助于使用户和合作伙伴更轻松地进行协作。 你的合作伙伴不再需要创建和管理新的特定于 Microsoft 的帐户。 Microsoft 团队现在完全支持所有客户端上的 Google 用户，以及公共和与租户相关的身份验证终结点。
 
 有关详细信息，请参阅[添加 Google 作为 B2B 来宾用户的标识提供者](https://docs.microsoft.com/azure/active-directory/b2b/google-federation)。
 
 ---
 
-### <a name="microsoft-edge-mobile-support-for-conditional-access-and-single-sign-on-general-availability"></a>Microsoft Edge 移动支持条件访问和单一登录（正式发布）
+### <a name="microsoft-edge-mobile-support-for-conditional-access-and-single-sign-on-general-availability"></a>适用于条件访问和单一登录的 Microsoft Edge 移动支持 (公开上市) 
 
 **类型：** 新功能  
 **服务类别：** 条件访问  
@@ -266,7 +266,7 @@ Azure 门户上的 "新建**Azure AD 应用注册令牌配置**" 边栏选项卡
 
 IOS 和 Android 上的 Microsoft Edge Azure AD 现在支持 Azure AD 单一登录和条件访问：
 
-- **Microsoft Edge 单一登录（SSO）：** 对于所有连接 Azure AD 的应用，本地客户端（例如 Microsoft Outlook 和 Microsoft Edge）现在均可使用单一登录。
+- **Microsoft Edge 单一登录 (SSO) ：** 单一登录现在可在本机客户端上使用， (例如 Microsoft Outlook 和 Microsoft Edge) 用于所有 Azure AD 连接的应用。
 
 - **Microsoft Edge 条件性访问：** 通过基于应用程序的条件性访问策略，用户必须使用 Microsoft Intune 保护的浏览器，如 Microsoft Edge。
 
@@ -274,7 +274,7 @@ IOS 和 Android 上的 Microsoft Edge Azure AD 现在支持 Azure AD 单一登�
 
 ---
 
-### <a name="azure-ad-entitlement-management-general-availability"></a>Azure AD 的权利管理（正式发布）
+### <a name="azure-ad-entitlement-management-general-availability"></a>Azure AD 的权利管理 (公开上市) 
 
 **类型：** 新功能  
 **服务类别：** 其他  
@@ -310,7 +310,7 @@ Azure AD 授权管理是一项新的标识调控功能，可帮助组织大规�
 
 2019年11月，我们已向应用程序库添加了以下21个新应用和联合支持：
 
-[Airtable](https://docs.microsoft.com/azure/active-directory/saas-apps/airtable-tutorial)， [Hootsuite](https://docs.microsoft.com/azure/active-directory/saas-apps/hootsuite-tutorial)，[成员（BAM）](https://docs.microsoft.com/azure/active-directory/saas-apps/blue-access-for-members-tutorial)、 [Bitly](https://docs.microsoft.com/azure/active-directory/saas-apps/bitly-tutorial)、 [RIVA](https://docs.microsoft.com/azure/active-directory/saas-apps/riva-tutorial)、 [ResLife 门户](https://app.reslifecloud.com/hub5_signin/microsoft_azuread/?g=44BBB1F90915236A97502FF4BE2952CB&c=5&uid=0&ht=2&ref=)、 [NegometrixPortal 单一登录（SSO）](https://docs.microsoft.com/azure/active-directory/saas-apps/negometrixportal-tutorial)、 [TeamsChamp](https://login.microsoftonline.com/551f45da-b68e-4498-a7f5-a6e1efaeb41c/adminconsent?client_id=ca9bbfa4-1316-4c0f-a9ee-1248ac27f8ab&redirect_uri=https://admin.teamschamp.com/api/adminconsent&state=6883c143-cb59-42ee-a53a-bdb5faabf279)、 [Motus](https://docs.microsoft.com/azure/active-directory/saas-apps/motus-tutorial) [、MyAryaka](https://docs.microsoft.com/azure/active-directory/saas-apps/myaryaka-tutorial) [、BlueMail、Beedle](https://loginself1.bluemail.me/)、 [Visma](https://docs.microsoft.com/azure/active-directory/saas-apps/visma-tutorial)、 [OneDesk](https://docs.microsoft.com/azure/active-directory/saas-apps/onedesk-tutorial) [&](https://docs.microsoft.com/azure/active-directory/saas-apps/qmarkets-idea-innovation-management-tutorial)、 [Foko、Qmarkets](https://teams-web.beedle.co/#/)、Netskope、uniFLOW [、Claromentis、](https://docs.microsoft.com/azure/active-directory/saas-apps/foko-retail-tutorial) [Jisc、](https://docs.microsoft.com/azure/active-directory/saas-apps/netskope-user-authentication-tutorial)选民、e4enable、 [、、](https://docs.microsoft.com/azure/active-directory/saas-apps/uniflow-online-tutorial)、、、 [Jisc Student Voter Registration](https://docs.microsoft.com/azure/active-directory/saas-apps/jisc-student-voter-registration-tutorial)、 [、](https://portal.e4enable.com/) [、、](https://docs.microsoft.com/azure/active-directory/saas-apps/claromentis-tutorial)、、、
+[Airtable](https://docs.microsoft.com/azure/active-directory/saas-apps/airtable-tutorial)、 [HOOTSUITE](https://docs.microsoft.com/azure/active-directory/saas-apps/hootsuite-tutorial)、 [ (BAM 的成员的蓝色访问) ](https://docs.microsoft.com/azure/active-directory/saas-apps/blue-access-for-members-tutorial)、 [Bitly](https://docs.microsoft.com/azure/active-directory/saas-apps/bitly-tutorial)、 [RIVA](https://docs.microsoft.com/azure/active-directory/saas-apps/riva-tutorial)、 [ResLife 门户](https://app.reslifecloud.com/hub5_signin/microsoft_azuread/?g=44BBB1F90915236A97502FF4BE2952CB&c=5&uid=0&ht=2&ref=)、 [NegometrixPortal 单一登录 (SSO) ](https://docs.microsoft.com/azure/active-directory/saas-apps/negometrixportal-tutorial)、 [TeamsChamp](https://login.microsoftonline.com/551f45da-b68e-4498-a7f5-a6e1efaeb41c/adminconsent?client_id=ca9bbfa4-1316-4c0f-a9ee-1248ac27f8ab&redirect_uri=https://admin.teamschamp.com/api/adminconsent&state=6883c143-cb59-42ee-a53a-bdb5faabf279)、 [Motus](https://docs.microsoft.com/azure/active-directory/saas-apps/motus-tutorial)、 [MyAryaka](https://docs.microsoft.com/azure/active-directory/saas-apps/myaryaka-tutorial)、 [BlueMail、Beedle](https://loginself1.bluemail.me/)、 [Visma](https://docs.microsoft.com/azure/active-directory/saas-apps/visma-tutorial)、 [OneDesk](https://docs.microsoft.com/azure/active-directory/saas-apps/onedesk-tutorial) [&](https://docs.microsoft.com/azure/active-directory/saas-apps/qmarkets-idea-innovation-management-tutorial)、Foko [、Qmarkets、](https://teams-web.beedle.co/#/)Netskope、uniFLOW [、Claromentis、](https://docs.microsoft.com/azure/active-directory/saas-apps/foko-retail-tutorial) [Jisc、](https://docs.microsoft.com/azure/active-directory/saas-apps/netskope-user-authentication-tutorial)[选民、e4enable、](https://docs.microsoft.com/azure/active-directory/saas-apps/claromentis-tutorial) [Jisc Student Voter Registration](https://docs.microsoft.com/azure/active-directory/saas-apps/jisc-student-voter-registration-tutorial) [、、](https://docs.microsoft.com/azure/active-directory/saas-apps/uniflow-online-tutorial) [、](https://portal.e4enable.com/)
 
 有关这些应用的详细信息，请参阅 [SaaS 应用程序与 Azure Active Directory 集成](https://aka.ms/appstutorial)。 要详细了解如何在 Azure AD 应用库中列出应用程序，请参阅[在 Azure Active Directory 应用程序库中列出应用程序](https://aka.ms/azureadapprequest)。
 
@@ -3403,7 +3403,7 @@ Azure AD 目录角色的审批工作流程已正式发布。
 
 **类型：** 已更改的功能**服务类别：** Privileged Identity Management **产品功能：** Privileged Identity Management
 
-使用 Azure 基于角色的访问控制（Azure RBAC）的 Azure AD Privileged Identity Management （PIM）公共预览版刷新，现在可以：
+使用 Azure AD Privileged Identity Management (PIM) 的公共预览版刷新 (Azure RBAC) ，现在可以：
 
 * 使用 Just Enough Administration。
 * 需要批准才能激活资源角色。

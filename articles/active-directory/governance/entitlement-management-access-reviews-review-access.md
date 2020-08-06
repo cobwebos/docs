@@ -1,9 +1,9 @@
 ---
 title: 在 Azure AD 的权利管理中查看访问包的访问权限
-description: 了解如何在 Azure Active Directory 访问评审（预览版）中完成对授权管理访问包的访问评审。
+description: 了解如何在 Azure Active Directory 访问评审 (预览版) 中完成对授权管理访问包的访问评审。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,18 +16,18 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d4de2ac3ee74d60eb532bd469b20523fa937db0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1115c08214db19227b4b8d7be671ce4da1cf2b1
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078581"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798591"
 ---
 # <a name="review-access-of-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 的权利管理中查看访问包的访问权限
 
 Azure AD 的权利管理简化了企业如何管理对组、应用程序和 SharePoint 站点的访问。 本文介绍如何针对作为指定审阅者分配到访问包的其他用户执行访问评审。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要查看用户的活动访问包分配，你必须满足执行访问评审的先决条件：
 - Azure AD Premium P2
@@ -47,7 +47,7 @@ Azure AD 的权利管理简化了企业如何管理对组、应用程序和 Shar
 
 1. 单击 "**查看用户访问权限**" 链接以打开访问评审。 
 
-1. 如果没有电子邮件，可以直接导航到来查找待定的访问评审 https://myaccess.microsoft.com 。  （对于美国政府版，请改用 `https://myaccess.microsoft.us` 。）
+1. 如果没有电子邮件，可以直接导航到来查找待定的访问评审 https://myaccess.microsoft.com 。   (美国政府版，请 `https://myaccess.microsoft.us` 改用。 ) 
 
 1. 单击左侧导航栏上的 "**访问评审**" 可查看分配给你的待定访问评审的列表。
     

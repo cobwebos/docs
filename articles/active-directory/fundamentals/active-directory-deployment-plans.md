@@ -2,7 +2,7 @@
 title: 部署计划 - Azure Active Directory | Microsoft Docs
 description: 有关如何部署多个 Azure Active Directory 功能的端到端指南。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.subservice: fundamentals
@@ -12,15 +12,15 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c439bbded7fe55f1edd5eb1597f98b339e340956
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d839fc71992802e9ee2b6a66d0bc407c5caaecf
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85386328"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799049"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署计划
-正在寻找有关部署 Azure Active Directory （Azure AD）功能的端到端指南吗？ Azure AD 部署计划将引导你完成成功部署常见 Azure AD 功能所需的业务价值、规划注意事项和操作过程。
+正在寻找有关部署 Azure Active Directory (Azure AD) 功能的端到端指南吗？ Azure AD 部署计划将引导你完成成功部署常见 Azure AD 功能所需的业务价值、规划注意事项和操作过程。
 
 从任何计划页面，使用浏览器的打印到 PDF 功能创建文档的最新脱机版本。
 ## <a name="include-the-right-stakeholders"></a>包含正确的利益干系人
@@ -29,12 +29,12 @@ ms.locfileid: "85386328"
 
 角色可能包括以下 
 
-|角色 |描述 |
+|角色 |说明 |
 |-|-|
 |最终用户|将为其实施功能的代表用户组。 经常预览试点计划中的更改。
 |IT 支持经理|IT 支持组织代表，他们可以从支持人员的角度提供此更改的可支持性的输入。  
 |标识架构师或 Azure 全局管理员|标识管理团队代表定义此更改如何与组织中的核心标识管理基础结构保持一致。|
-|应用程序企业所有者 |受影响的应用程序的总体业务所有者，其中可能包括管理访问权限。还可以提供有关用户体验的输入，并从最终用户的角度来使用此更改。
+|应用程序企业所有者 |受影响的应用程序的总体业务所有者 () ，这可能包括管理访问权限。还可以提供有关用户体验的输入，并从最终用户的角度来使用此更改。
 |安全所有者|安全团队的代表，可以签署计划，以满足组织的安全要求。|
 |合规性管理器|组织中负责确保符合公司、行业或政府要求的人员。|
 
@@ -54,7 +54,7 @@ ms.locfileid: "85386328"
 
 在第一轮中，面向 IT、可用性和其他可测试和提供反馈的适当用户。 此反馈应该用于进一步开发您向用户发送的通信和说明，并深入了解支持人员可能会看到的问题类型。 
 
-将部署扩展到更大的用户组应通过增加目标组的范围来执行。 这可以通过[动态组成员身份](../users-groups-roles/groups-dynamic-membership.md)来完成，或手动将用户添加到目标组。
+将部署扩展到更大的用户组应通过增加)  (的组的范围来执行。 这可以通过[动态组成员身份](../users-groups-roles/groups-dynamic-membership.md)来完成，也可以通过手动将用户添加到目标组 () 。
 
 
 ## <a name="deploy-authentication"></a>部署身份验证
@@ -63,7 +63,7 @@ ms.locfileid: "85386328"
 | -| -|
 | [多重身份验证](../authentication/howto-mfa-getstarted.md)| Azure 多重身份验证 (MFA) 是 Microsoft 的双重验证解决方案。 Azure MFA 可使用管理员批准的身份验证方法，帮助保护对数据和应用程序的访问，同时满足对简单登录过程的需求。 |
 | [条件访问](../conditional-access/plan-conditional-access.md)| 使用条件访问时，可以根据条件实施自动化的访问控制决策，决定谁能够访问云应用。 |
-| [自助服务密码重置](../authentication/howto-sspr-deployment.md)| 自助密码重置功能可帮助用户在无需管理员干预的情况下重置密码。 |
+| [自助式密码重置](../authentication/howto-sspr-deployment.md)| 自助密码重置功能可帮助用户在无需管理员干预的情况下重置密码。 |
 | [无密码](../authentication/howto-authentication-passwordless-deployment.md) | 使用组织中的 Microsoft Authenticator 应用或 FIDO2 安全密钥实现无密码 authentication |
 
 ## <a name="deploy-application-and-device-management"></a>部署应用程序和设备管理
@@ -89,7 +89,7 @@ ms.locfileid: "85386328"
 | 功能 | 说明|
 | -| -|
 | [用户预配](../app-provisioning/plan-auto-user-provisioning.md)| 可以通过 Azure AD 自动创建、维护和删除云 (SaaS) 应用程序（如 Dropbox、Salesforce、ServiceNow 等）中的用户标识。 |
-| [Cloud HR 用户预配](../app-provisioning/plan-cloud-hr-provision.md)| Cloud HR 用户预配到 Active Directory 为正在进行的标识管理创建了基础，并增强了依赖于权威标识数据的业务流程的质量。 将此功能与云 HR 产品（如 Workday 或 Successfactors）结合使用，可以通过配置规则将外接程序 Leaver 进程（例如，新员工、终止、传输）映射到 IT 预配操作（如创建、启用、禁用），无缝地管理员工和临时工作人员的标识生命周期。 |
+| [Cloud HR 用户预配](../app-provisioning/plan-cloud-hr-provision.md)| Cloud HR 用户预配到 Active Directory 为正在进行的标识管理创建了基础，并增强了依赖于权威标识数据的业务流程的质量。 将此功能与云 HR 产品（如 Workday 或 Successfactors）结合使用，可以通过配置规则来 (对员工和临时工作人员的标识生命周期进行无缝管理，这些规则将映射 Leaver 流程 () 如创建、启用、禁用)  |
 
 ## <a name="deploy-governance-and-reporting"></a>部署管理和报告
 

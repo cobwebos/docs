@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/24/2020
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: eed53725507325351dcf51fbe368331c2a4fd2f8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a1e097692eade956446b46782bca5ecf3a17de75
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065140"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800256"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>在 Azure 中的 Red Hat Enterprise Linux 上设置 Pacemaker
 
@@ -125,7 +125,11 @@ ms.locfileid: "87065140"
 1. [A] 设置主机名称解析
 
    可以使用 DNS 服务器，或修改所有节点上的 /etc/hosts。 此示例演示如何使用 /etc/hosts 文件。
-   请替换以下命令中的 IP 地址和主机名。 使用 /etc/hosts 的好处是群集可以独立于 DNS（也可能会成为单一故障点）。
+   请替换以下命令中的 IP 地址和主机名。  
+
+   >[!IMPORTANT]
+   > 如果在群集配置中使用主机名，则必须具有可靠的主机名解析。 如果名称不可用并且可能导致群集故障转移延迟，则群集通信将失败。
+   > 使用 /etc/hosts 的好处是群集可以独立于 DNS（也可能会成为单一故障点）。  
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>

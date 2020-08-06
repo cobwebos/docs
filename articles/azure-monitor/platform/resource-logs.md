@@ -7,17 +7,17 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 6a7b24de860b543778d7e6ceabc95d10bf7c44c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ccf470abadb28919e4fca3c4862b71946a5bb204
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077087"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800494"
 ---
 # <a name="azure-resource-logs"></a>Azure 资源日志
 Azure 资源日志是[平台日志](platform-logs-overview.md)，可以通过它深入了解已在 Azure 资源中执行的操作。 资源日志的内容因 Azure 服务和资源类型而异。 默认不会收集资源日志。 必须为每个 Azure 资源创建诊断设置，以便将其资源日志发送到 Log Analytics 工作区与 [Azure Monitor 日志](data-platform-logs.md)一起使用，发送到 Azure 事件中心以转发到 Azure 外部，或者发送到 Azure 存储进行存档。
 
-有关创建诊断设置的详细信息，请参阅[创建诊断设置以将平台日志和指标发送到不同的目标](diagnostic-settings.md)。若要详细了解如何使用 Azure Policy 为你创建的每个 Azure 资源自动创建诊断设置，请参阅[使用 Azure Policy 大规模部署 Azure Monitor](deploy-scale.md)。
+有关创建诊断设置的详细信息，请参阅[创建诊断设置以将平台日志和指标发送到不同的目标](diagnostic-settings.md)。若要详细了解如何使用 Azure Policy 为你创建的每个 Azure 资源自动创建诊断设置，请参阅[使用 Azure Policy 大规模部署 Azure Monitor](../deploy-scale.md)。
 
 ## <a name="send-to-log-analytics-workspace"></a>发送到 Log Analytics 工作区
  将资源日志发送到 Log Analytics 工作区，以启用 [Azure Monitor 日志](data-platform-logs.md)的功能，其中包括以下内容：

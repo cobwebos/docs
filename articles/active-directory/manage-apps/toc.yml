@@ -108,8 +108,6 @@
           href: configure-password-single-sign-on-non-gallery-applications.md
         - name: 配置链接登录
           href: configure-linked-sign-on.md
-        - name: 使用 MS Graph API 自动执行基于 SAML 的单一登录
-          href: application-saml-sso-configure-api.md
     - name: 分配用户和管理对应用的访问权限
       items:
         - name: 配置用户同意

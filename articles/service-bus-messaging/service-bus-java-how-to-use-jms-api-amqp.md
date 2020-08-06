@@ -4,14 +4,21 @@ description: 了解如何将 Java 消息服务 (JMS) 用于 Azure 服务总线�
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 95558f973041a086dc66d2bebb1ce54ee58c952a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 935579bdcb142969d9baf7ca24cf03268620bf46
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320776"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799678"
 ---
 # <a name="use-the-java-message-service-jms-with-azure-service-bus-and-amqp-10"></a>将 Java 消息服务 (JMS) 用于 Azure 服务总线和 AMQP 1.0
+
+> [!WARNING]
+> 以下指南适用于了对 Java 消息服务 (JMS) 1.1 API 的**有限支持**，仅适用于 Azure 服务总线标准层。
+>
+> 对 Java 消息服务 (JMS) 2.0 API 的完全支持仅在[Azure 服务总线高级层（预览版）中](how-to-use-java-message-service-20.md)提供，强烈建议这样做。
+>
+
 本文说明了如何通过采用常用 Java 消息服务 (JMS) API 标准的 Java 应用程序使用 Azure 服务总线消息传送功能（队列和发布/订阅主题）。 此处的[随附文章](service-bus-amqp-dotnet.md)解释如何使用 Azure 服务总线 .NET API 来执行相同操作。 使用 AMQP 1.0，可以同时使用以下两个指南来了解跨平台消息。
 
 高级消息队列协议 (AMQP) 1.0 是一个高效、可靠的线级消息传送协议，可用于构建可靠的跨平台消息传送应用程序。
@@ -29,7 +36,7 @@ Azure 服务总线支持 AMQP 1.0，这意味着，可以通过一系列使用�
 ## <a name="downloading-the-amqp-10-jms-client-library"></a>下载 AMQP 1.0 JMS 客户端库
 有关 Apache Qpid JMS AMQP 1.0 客户端库最新版本的下载地址的信息，请访问 [https://qpid.apache.org/download.html](https://qpid.apache.org/download.html)。
 
-使用 Service Bus 构建和运行 JMS 应用程序时必须将以下 4 个 JAR 文件从 Apache Qpid JMS AMQP 1.0 分发存档添加到 Java CLASSPATH：
+在通过服务总线构建和运行 JMS 应用程序时，必须将以下 JAR 文件从 Apache Qpid JMS AMQP 1.0 分发存档添加到 Java 类路径：
 
 * geronimo-jms\_1.1\_spec-1.0.jar
 * qpid-jms-client-[version].jar
@@ -56,7 +63,7 @@ queue.QUEUE = queue1
 
 #### <a name="setup-jndi-context-and-configure-the-connectionfactory"></a>设置 JNDI 上下文和配置 ConnectionFactory
 
-在**主连接字符串**下的[Azure 门户](https://portal.azure.com)中的 "共享访问策略" 中所引用的**ConnectionString**
+在 [Azure 门户](https://portal.azure.com)“主连接字符串”下的“共享访问策略”中提供了可引用的 ConnectionString 
 ```java
 // The connection string builder is the only part of the azure-servicebus SDK library
 // we use in this JMS sample and for the purpose of robustly parsing the Service Bus 
@@ -345,7 +352,7 @@ JMS 主题允许客户端动态创建非持久的和持久的订阅者，这样�
 ## <a name="unsupported-features-and-restrictions"></a>不受支持的功能和限制
 在将 JMS over AMQP 1.0 用于 Service Bus 时存在以下限制，即：
 
-* 每个会话只允许一个 MessageProducer 或 MessageConsumer。   如果需要在应用程序中创建多个 MessageProducers 或 MessageConsumers，请分别对其创建专用会话。  
+* 每个会话只允许一个 MessageProducer 或 MessageConsumer。 如果需要在应用程序中创建多个 MessageProducers 或 MessageConsumers，请分别对其创建专用会话。
 * 当前不支持易失性主题订阅。
 * 当前不支持 **MessageSelectors**。
 * 不支持分布式事务（但支持事务处理会话）。
@@ -364,7 +371,7 @@ JMS 主题允许客户端动态创建非持久的和持久的订阅者，这样�
 | createBrowser               | 不受支持。 使用服务总线 API 的 Peek() 功能                         |
 | createQueue                 | 通过管理 API/工具/门户创建队列                                           | 
 | createTemporaryQueue        | 通过管理 API/工具/门户创建队列（AutoDeleteOnIdle 被设置为过期期间） |
-| receiveNoWait               | 使用服务总线 SDK 提供的 receive （）方法，并指定非常低或零的超时 |
+| receiveNoWait               | 使用服务总线 SDK 提供的 receive() 方法并指定非常低或为零的超时 |
 
 ## <a name="summary"></a>摘要
 本操作方法指南演示了如何通过使用常用 JMS API 和 AMQP 1.0 通过 Java 使用 Service Bus 中转消息传送功能（队列和发布/订阅主题）。
@@ -376,5 +383,4 @@ JMS 主题允许客户端动态创建非持久的和持久的订阅者，这样�
 * [如何将 AMQP 1.0 与服务总线 .NET API 配合使用](service-bus-dotnet-advanced-message-queuing.md)
 * [服务总线 AMQP 1.0 开发人员指南](service-bus-amqp-dotnet.md)
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
-* [Java 开发人员中心](https://azure.microsoft.com/develop/java/)
-
+* [Java 开发中心](https://azure.microsoft.com/develop/java/)

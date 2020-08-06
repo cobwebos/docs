@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: f1871871fa3a191c636a965977dba485d2c77f1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1cf29438d3785a3406aa8ce3b75929a5d5261121
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87037502"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800363"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure 春季云常见问题解答
 
@@ -22,7 +22,7 @@ ms.locfileid: "87037502"
 
 ### <a name="why-azure-spring-cloud"></a>为何要使用 Azure Spring Cloud？
 
-Azure 春季云为春季云开发人员提供了平台即服务（PaaS）。 Azure 春季云管理你的应用程序基础结构，以便你可以专注于应用程序代码和业务逻辑。 内置于 Azure 春季云中的核心功能包括 Eureka、Config Server、Service Registry Server、Pivotal 生成服务、蓝绿色部署等。 此服务还允许开发人员将其应用程序与其他 Azure 服务（例如 Azure Cosmos DB、Azure Database for MySQL 和 Redis 的 Azure 缓存）绑定。
+Azure 春季云提供适用于春季云开发人员的平台即服务 (PaaS) 。 Azure 春季云管理你的应用程序基础结构，以便你可以专注于应用程序代码和业务逻辑。 内置于 Azure 春季云中的核心功能包括 Eureka、Config Server、Service Registry Server、Pivotal 生成服务、蓝绿色部署等。 此服务还允许开发人员将其应用程序与其他 Azure 服务（例如 Azure Cosmos DB、Azure Database for MySQL 和 Redis 的 Azure 缓存）绑定。
 
 Azure 春季云通过集成 Azure Monitor、Application Insights 和 Log Analytics 增强了开发人员和操作员的应用程序诊断体验。
 
@@ -54,7 +54,7 @@ Azure 春季云通过集成 Azure Monitor、Application Insights 和 Log Analyti
 
 如果在 Azure 春季云中遇到任何问题，请创建[Azure 支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。 若要提交功能请求或提供反馈，请参阅[Azure 反馈](https://feedback.azure.com/forums/34192--general-feedback)。
 
-## <a name="development"></a>Development
+## <a name="development"></a>开发
 
 ### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>我是一名云开发人员，而是 Azure 的新手。 了解如何开发 Azure 春季云应用程序的最快方法是什么？
 
@@ -127,12 +127,12 @@ Azul 系统。 Azul Zulu for Azure - Enterprise Edition 内部版 JDK 是适用�
 
 ### <a name="what-is-the-operation-system-to-run-my-apps"></a>运行应用的操作系统是什么？
 
-使用最新的 Ubuntu LTS 版本，当前[ubuntu 20.04 LTS （焦距 Fossa）](https://releases.ubuntu.com/focal/)是默认操作系统。
+使用最新的 Ubuntu LTS 版本，当前[ubuntu 20.04 LTS (焦 Fossa) ](https://releases.ubuntu.com/focal/)为默认操作系统。
 
 ### <a name="how-often-will-os-security-patches-be-applied"></a>OS 安全修补程序的应用频率是多少？
 
 适用于 Azure 春季云的安全修补程序将在每月的基础推出。
-适用于 Azure 春季云的关键安全修补程序（CVE 评分 >= 9）将尽快推出。
+适用于 Azure 春季的严重安全修补程序 (CVE 分数 >= 9) 将尽快推出。
 
 ## <a name="deployment"></a>部署
 
@@ -141,7 +141,7 @@ Azul 系统。 Azul Zulu for Azure - Enterprise Edition 内部版 JDK 是适用�
 
 ### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>是否可以访问 Kubernetes 来操作应用程序容器？
 
-否。  Azure Spring Cloud 可使开发人员抽身于底层体系结构，将注意力放在应用程序代码和业务逻辑上。
+错误。  Azure Spring Cloud 可使开发人员抽身于底层体系结构，将注意力放在应用程序代码和业务逻辑上。
 
 ### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Azure Spring Cloud 是否支持从源构建容器？
 
@@ -149,7 +149,7 @@ Azul 系统。 Azul Zulu for Azure - Enterprise Edition 内部版 JDK 是适用�
 
 ### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Azure Spring Cloud 是否支持应用实例中的自动缩放？
 
-否。
+错误。
 
 ### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>将现有春季 Cloud 微服务迁移到 Azure 春季云的最佳做法是什么？
 
@@ -158,9 +158,24 @@ Azul 系统。 Azul Zulu for Azure - Enterprise Edition 内部版 JDK 是适用�
 * 准备好配置条目、环境变量和 JVM 参数，以便可以将它们与 Azure 春季云中的部署进行比较。
 * 如果要使用服务绑定，请访问 Azure 服务并确保已设置适当的访问权限。
 * 建议删除或禁用任何可能与 Azure 春季云管理的服务冲突的嵌入服务，例如我们的服务发现服务、配置服务器等。
-* 建议使用正式的、稳定的 Pivotal 弹簧库。 Pivotal 弹簧库的非正式版本、beta 版本或分叉版本没有服务级别协议（SLA）支持。
+* 建议使用正式的、稳定的 Pivotal 弹簧库。 Pivotal 弹簧库的非正式版本、beta 版本或分叉版本没有服务级别协议 (SLA) 支持。
 
 迁移后，监视 CPU/RAM 指标和网络流量，以确保适当地缩放应用程序实例。
+
+## <a name="trouble-shooting"></a>故障排除
+
+### <a name="what-are-the-impacts-of-service-registry-rarely-unavailable"></a>服务注册表很少使用会产生什么影响？
+
+在极少数情况下，可能会看到一些错误，如 
+```
+RetryableEurekaHttpClient: Request execution failure with status code 401; retrying on another server if available
+```
+从应用程序的日志。 由于网络不稳定或其他网络问题而导致的弹簧框架导致的此问题非常低。 
+
+不会对用户体验产生任何影响，eureka 客户端同时具有检测信号和重试策略来处理此情况。 可以将它视为一个暂时性错误，并将其安全地跳过。
+
+我们将在不久的将来增强此部分，并避免用户的应用程序出现此错误。
+
 
 ## <a name="next-steps"></a>后续步骤
 

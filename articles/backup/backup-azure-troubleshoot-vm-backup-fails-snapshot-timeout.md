@@ -4,12 +4,12 @@ description: 与代理、扩展和磁盘相关的 Azure 备份失败的症状、
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 5bf52606e6fa5de6a122a65432da87de1491e17f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 188eef5471e93661041dadfc93f561d2173ba7f2
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324737"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809759"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
@@ -23,7 +23,7 @@ ms.locfileid: "87324737"
 
 ### <a name="step-1-check-azure-vm-health"></a>步骤1：检查 Azure VM 运行状况
 
-- **确保 AZURE vm 预配状态为 "正在运行"**：如果[VM 预配状态](https://docs.microsoft.com/azure/virtual-machines/windows/states-lifecycle#provisioning-states)为 "**已停止/已解除分配/正在更新**" 状态，则它将干扰备份操作。 打开*Azure 门户 > vm > 概述 >* 并检查 vm 状态以确保其**正在运行**，然后重试备份操作。
+- **确保 AZURE vm 预配状态为 "正在运行"**：如果[VM 预配状态](../virtual-machines/windows/states-lifecycle.md#provisioning-states)为 "**已停止/已解除分配/正在更新**" 状态，则它将干扰备份操作。 打开*Azure 门户 > vm > 概述 >* 并检查 vm 状态以确保其**正在运行**，然后重试备份操作。
 - **查看挂起的操作系统更新或重新启动**：确保 VM 上没有挂起的操作系统更新或挂起的重新启动。
 
 ### <a name="step-2-check-azure-vm-guest-agent-service-health"></a>步骤2：检查 Azure VM 来宾代理服务运行状况
@@ -31,18 +31,18 @@ ms.locfileid: "87324737"
 - **确保 AZURE VM 来宾代理服务已启动并处于最**新状态：
   - 在 Windows VM 上：
     - 导航到**services.msc**并确保**Windows Azure VM 来宾代理服务**已启动并正在运行。 此外，请确保已安装[最新版本](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 若要了解详细信息，请参阅[WINDOWS VM 来宾代理问题](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)。
-    - 默认情况下，Azure VM 代理默认安装在从门户、PowerShell、命令行接口或 Azure 资源管理器模板中的 Azure Marketplace 映像部署的任何 Windows VM 上。 在创建部署到 Azure 的自定义 VM 映像时，可能需要[手动安装代理](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows#manual-installation)。
+    - 默认情况下，Azure VM 代理默认安装在从门户、PowerShell、命令行接口或 Azure 资源管理器模板中的 Azure Marketplace 映像部署的任何 Windows VM 上。 在创建部署到 Azure 的自定义 VM 映像时，可能需要[手动安装代理](../virtual-machines/extensions/agent-windows.md#manual-installation)。
     - 查看支持矩阵以检查 VM 是否在[受支持的 Windows 操作系统](backup-support-matrix-iaas.md#operating-system-support-windows)上运行。
   - 在 Linux VM 上，
-    - 通过执行命令来确保 Azure VM 来宾代理服务正在运行 `ps-e` 。 此外，请确保已安装[最新版本](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent)。 若要了解详细信息，请参阅[LINUX VM 来宾代理问题](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)。
-    - 确保[系统包上的 LINUX VM 代理依赖项](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux#requirements)具有受支持的配置。 例如：支持的 Python 版本为2.6 及更高版本。
+    - 通过执行命令来确保 Azure VM 来宾代理服务正在运行 `ps-e` 。 此外，请确保已安装[最新版本](../virtual-machines/extensions/update-linux-agent.md)。 若要了解详细信息，请参阅[LINUX VM 来宾代理问题](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)。
+    - 确保[系统包上的 LINUX VM 代理依赖项](../virtual-machines/extensions/agent-linux.md#requirements)具有受支持的配置。 例如：支持的 Python 版本为2.6 及更高版本。
     - 查看支持矩阵以检查 VM 是否在[受支持的 Linux 操作系统](backup-support-matrix-iaas.md#operating-system-support-linux)上运行。
 
 ### <a name="step-3-check-azure-vm-extension-health"></a>步骤3：检查 Azure VM 扩展运行状况
 
 - **确保所有 AZURE VM 扩展都处于 "预配成功" 状态**：如果任何扩展处于失败状态，则它可能会干扰备份。
 - *打开 Azure 门户 > VM > 设置 > 扩展 > 扩展状态*，并检查是否所有扩展都处于**预配成功**状态。
-- 请确保所有[扩展问题](https://docs.microsoft.com/azure/virtual-machines/extensions/overview#troubleshoot-extensions)均已解决，然后重试备份操作。
+- 请确保所有[扩展问题](../virtual-machines/extensions/overview.md#troubleshoot-extensions)均已解决，然后重试备份操作。
 - **确保 COM + 系统应用程序**已启动并正在运行。 此外，**分布式事务处理协调器服务**应作为**网络服务帐户**运行。 按照本文中的步骤[解决 COM + 和 MSDTC 问题](backup-azure-vms-troubleshoot.md#extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error)。
 
 ### <a name="step-4-check-azure-backup-vm-extension-health"></a>步骤4：检查 Azure 备份 VM 扩展运行状况
@@ -57,9 +57,9 @@ Azure 备份使用 VM 快照扩展对 Azure 虚拟机进行应用程序一致的
   - `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
   - `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 
-- **检查是否需要网络访问**：从 azure 存储扩展存储库下载扩展包，并将扩展状态上载发送到 Azure 存储。 [了解详细信息](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows#network-access)。
+- **检查是否需要网络访问**：从 azure 存储扩展存储库下载扩展包，并将扩展状态上载发送到 Azure 存储。 [了解详细信息](../virtual-machines/extensions/features-windows.md#network-access)。
   - 如果使用不受支持的代理版本，则需要允许从 VM 对该区域中 Azure 存储的出站访问。
-  - 如果已阻止访问 `168.63.129.16` 使用来宾防火墙或代理，则无论以上哪种情况，扩展都将失败。 需要端口80、443和32526，[了解详细信息](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows#network-access)。
+  - 如果已阻止访问 `168.63.129.16` 使用来宾防火墙或代理，则无论以上哪种情况，扩展都将失败。 需要端口80、443和32526，[了解详细信息](../virtual-machines/extensions/features-windows.md#network-access)。
 
 - **请确保在来宾 vm 内启用 dhcp**：这是从 DHCP 获取主机或构造地址以使 IaaS VM 备份正常运行所必需的。 如果需要静态专用 IP，应通过 Azure 门户或 PowerShell 进行配置，并确保已启用 VM 内的 DHCP 选项，[了解详细信息](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)。
 
@@ -277,7 +277,7 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 
 ### <a name="remove-lock-from-the-recovery-point-resource-group"></a><a name="remove_lock_from_the_recovery_point_resource_group"></a>删除恢复点资源组中的锁
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 转到“所有资源选项”，选择采用 AzureBackupRG_`<Geo>`_`<number>` 格式的还原点集合资源组。****
 3. 在“设置”部分，选择“锁”以显示锁。**** ****
 4. 若要删除锁，请选择省略号，然后单击“删除”。****

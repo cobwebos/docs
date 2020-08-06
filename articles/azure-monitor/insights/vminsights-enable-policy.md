@@ -6,22 +6,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 2c292ee601114a58e38b9e509efa53be2d3c93d6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9bc323e0fafc576c5e75f46b3c38fdf140b1b0f4
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328135"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799796"
 ---
 # <a name="enable-azure-monitor-for-vms-by-using-azure-policy"></a>使用 Azure Policy 启用用于 VM 的 Azure Monitor
-本文介绍如何使用 Azure 策略为使用 azure Arc （预览版）连接的 Azure 虚拟机或混合虚拟机启用用于 VM 的 Azure Monitor。 Azure 策略允许你分配策略定义，用于在 Azure 环境中安装用于 VM 的 Azure Monitor 所需的代理，并在创建每个虚拟机时自动为 Vm 启用监视。 用于 VM 的 Azure Monitor 提供了一项功能，使你能够在你的环境中发现并修正不相容的 Vm。 使用此功能，而不是直接使用 Azure 策略。
+本文介绍如何使用 Azure 策略为使用 azure Arc (预览版) 连接的 Azure 虚拟机或混合虚拟机启用用于 VM 的 Azure Monitor。 Azure 策略允许你分配策略定义，用于在 Azure 环境中安装用于 VM 的 Azure Monitor 所需的代理，并在创建每个虚拟机时自动为 Vm 启用监视。 用于 VM 的 Azure Monitor 提供了一项功能，使你能够在你的环境中发现并修正不相容的 Vm。 使用此功能，而不是直接使用 Azure 策略。
 
-如果你不熟悉 Azure 策略，请参阅[使用 Azure 策略大规模部署 Azure Monitor](../platform/deploy-scale.md)。
+如果你不熟悉 Azure 策略，请参阅[使用 Azure 策略大规模部署 Azure Monitor](../deploy-scale.md)。
 
 > [!NOTE]
-> 若要通过 Azure 虚拟机规模集使用 Azure 策略，或直接使用 Azure 策略来启用 Azure 虚拟机，请参阅[使用 Azure 策略大规模部署 Azure Monitor](../platform/deploy-scale.md#azure-monitor-for-vms-and-virtual-machine-agents)。
+> 若要通过 Azure 虚拟机规模集使用 Azure 策略，或直接使用 Azure 策略来启用 Azure 虚拟机，请参阅[使用 Azure 策略大规模部署 Azure Monitor](../deploy-scale.md#azure-monitor-for-vms)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 - [创建并配置 Log Analytics 工作区](vminsights-configure-workspace.md)。
 - 请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)，以确保正在启用的虚拟机或虚拟机规模集的操作系统受支持。 
 
@@ -60,10 +60,10 @@ ms.locfileid: "87328135"
 
 下表提供了此视图中信息的说明。
 
-| 函数 | 描述 | 
+| 函数 | 说明 | 
 |----------|-------------| 
 | **范围** | 你拥有的或者继承了其访问权限的管理组和订阅，可以通过管理组层次结构向下钻取。|
-| **Role** | 作用域中的角色，可以是读取者、所有者或参与者。 如果你有权访问订阅，但不能访问其所属的管理组，则此字段将为空。 此角色决定了你可以查看哪些数据以及可以在分配策略或计划（所有者）、编辑它们或查看符合性方面执行的操作。 |
+| **角色** | 作用域中的角色，可以是读取者、所有者或参与者。 如果你有权访问订阅，但不能访问其所属的管理组，则此字段将为空。 此角色确定你可以查看的数据和可执行的操作， (所有者) 、编辑它们或查看符合性。 |
 | **VM 总数** | 无论状态如何，该范围中的 Vm 的总数。 对于管理组，这是在订阅或子管理组下嵌套的 Vm 总计。 |
 | **分配覆盖范围** | 计划涵盖的 Vm 的百分比。 |
 | **分配状态** | **成功**-范围中的所有 vm 都部署了 Log Analytics 和依赖项代理。<br>**警告**-订阅不在管理组下。<br>**未启动**-添加了新分配。<br>**锁定**-你没有足够的权限来管理组。<br>**空白**-不存在 vm 或未分配策略。 |
@@ -76,7 +76,7 @@ ms.locfileid: "87328135"
 
 
 ## <a name="remediate-compliance-results"></a>修正符合性结果
-计划将在创建或修改时应用到虚拟机，但不会应用到现有 Vm。 如果分配不显示100% 的符合性，请创建更正任务以评估和启用现有 Vm，选择 "**查看符合性**"，方法是选择省略号（...）。
+计划将在创建或修改时应用到虚拟机，但不会应用到现有 Vm。 如果分配不显示100% 的符合性，请创建更正任务以评估和启用现有 Vm，选择 "**查看符合性**"，方法是选择省略号 ( ") "。
 
 [![查看符合性](media/vminsights-enable-at-scale-policy/view-compliance.png)](media/vminsights-enable-at-scale-policy/view-compliance.png#lightbox)
 

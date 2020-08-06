@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 80c133eceb6af419d0eb5aa35ff784a0f9321d37
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 73ece3f1bc8d5e88d4c1c37e1040f2494230e4ee
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87474948"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809589"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>管理并维护 Connected Machine 代理
 
@@ -320,6 +320,6 @@ sudo azcmagent_proxy remove
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，使用[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-enable-at-scale-policy.md) 启用监视等。
+- 了解如何使用 [Azure Policy](../../governance/policy/overview.md) 管理计算机，例如，进行 VM [来宾配置](../../governance/policy/concepts/guest-configuration.md)，验证计算机是否向预期的 Log Analytics 工作区报告，使用[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-enable-policy.md) 启用监视等。
 
 - 详细了解 [Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)。 如果希望主动监视计算机上运行的 OS 和工作负载，使用自动化 runbook 或更新管理等功能对其进行管理，或使用其他 Azure 服务（如 [Azure 安全中心](../../security-center/security-center-intro.md)），则需要安装适用于 Windows 和 Linux 的 Log Analytics 代理。

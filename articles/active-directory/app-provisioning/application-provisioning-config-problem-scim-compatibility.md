@@ -1,5 +1,5 @@
 ---
-title: SCIM 2.0 协议符合性的已知问题-Azure AD
+title: 用于跨域标识管理的系统的已知问题 (SCIM) 2.0 协议符合性-Azure AD
 description: 如何解决将支持 SCIM 2.0 的非库应用程序添加到 Azure AD 时面临的常见协议兼容性问题
 services: active-directory
 author: kenwith
@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/03/2018
+ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 441d830c7512b7d06c5d4f3e64dc59844b764453
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: c54478282cb1106ae95fe1c9e3fbb15e9c37bbf9
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387160"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808569"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 用户预配服务 SCIM 2.0 协议合规性的已知问题和解决方法
 
@@ -26,32 +26,63 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 本文介绍 Azure AD 用户预配服务遵循 SCIM 2.0 协议当前和过去面临的问题，以及如何解决这些问题。
 
-> [!IMPORTANT]
-> Azure AD 用户预配服务 SCIM 客户端的最新更新于 2018 年 12 月 18 日发布。 此更新解决了下表中列出的已知兼容性问题。 有关此更新的详细信息，请参阅下文的常见问题解答。
+## <a name="understanding-the-provisioning-job"></a>了解预配作业
+预配服务使用作业的概念来针对应用程序进行操作。 可在[进度栏](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar)中找到 jobID。 所有新的预配应用程序都是使用以 "scim" 开头的 jobID 创建的。 Scim 作业表示服务的当前状态。 旧作业的 ID 为 "customappsso"。 此作业表示服务在2018中的状态。 
+
+如果使用的是库中的应用程序，则作业通常包含应用的名称 (例如，缩放雪花、dataBricks 等 ) 。 使用库应用程序时，可以跳过此文档。 这主要适用于 jobID 为 SCIM 或 customAppSSO 的非库应用程序。
 
 ## <a name="scim-20-compliance-issues-and-status"></a>SCIM 2.0 合规性问题和状态
-
-| **SCIM 2.0 合规性问题** |  **小数点?** | **修复日期**  |  
-|---|---|---|
-| Azure AD 要求“/scim”位于应用程序的 SCIM 终结点 URL 的根路径中  | 是  |  2018 年 12 月 18 日 | 
-| 扩展属性在属性名称前使用圆点“.”表示法，而不使用冒号“:”表示法 |  是  | 2018 年 12 月 18 日  | 
-|  多值属性的批量请求包含无效路径筛选器语法 | 是  |  2018 年 12 月 18 日  | 
-|  组创建请求包含无效架构 URI | 是  |  2018 年 12 月 18 日  |  
-
-## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>所述服务修补程序是否会自动应用于预先存在的 SCIM 应用？
-
-不能。 由于已构成对编码为与较旧行为配合使用的 SCIM 应用的重大更改，更改不会自动应用于现有应用。
-
-修补程序发布后，更改会应用于 Azure 门户中配置的所有新的非库 SCIM 应用。
-
-有关如何迁移预先存在的用户预配作业以包含最新修补程序的信息，请参阅下一部分。
-
-## <a name="can-i-migrate-an-existing-scim-based-user-provisioning-job-to-include-the-latest-service-fixes"></a>是否可以迁移现有的基于 SCIM 的用户预配作业以包含最新的服务修补程序？
-
-是的。 如果已经在为单一登录使用此应用程序实例，并需要迁移现有预配作业以包含最新修补程序，请执行下方程序。 此程序介绍如何使用 Microsoft Graph API 和 Microsoft Graph API 资源管理器从现有 SCIM 应用删除旧的预配作业，以及如何创建展示新行为的新预配作业。
+在下表中，标记为 "固定" 的任何项都可以在 SCIM 作业中找到正确的行为。 我们努力确保对我们所做的更改的后向兼容性。 但是，我们不建议实现旧行为。 建议为任何新实现使用新行为，并更新现有实现。
 
 > [!NOTE]
-> 如果应用程序仍处于开发阶段，并且尚未针对单一登录或用户预配进行部署，最简单的解决办法是在 Azure 门户的“Azure Active Directory”>“企业应用程序”部分中删除应用程序条目，然后使用“创建应用程序”>“非库”选项直接添加新应用程序条目********。 这是执行以下程序的替代方法。
+> 对于在2018中所做的更改，可以恢复到 customappsso 行为。 对于自2018以来所做的更改，你可以使用 Url 恢复到旧行为。 我们努力确保通过允许还原到旧 jobID 或使用标志，来确保对我们所做的更改的后向兼容性。 然而，如前文所述，我们不建议实现旧行为。 建议为任何新实现使用新行为，并更新现有实现。
+
+| **SCIM 2.0 合规性问题** |  **小数点?** | **修复日期**  |  **后向兼容性** |
+|---|---|---|
+| Azure AD 要求“/scim”位于应用程序的 SCIM 终结点 URL 的根路径中  | 是  |  2018 年 12 月 18 日 | 降级到 customappSSO |
+| 扩展属性在属性名称前使用圆点“.”表示法，而不使用冒号“:”表示法 |  是  | 2018 年 12 月 18 日  | 降级到 customappSSO |
+| 多值属性的批量请求包含无效路径筛选器语法 | 是  |  2018 年 12 月 18 日  | 降级到 customappSSO |
+| 组创建请求包含无效架构 URI | 是  |  2018 年 12 月 18 日  |  降级到 customappSSO |
+| 更新修补程序行为以确保合规性 | 否 | TBD| 使用预览标志 |
+
+## <a name="flags-to-alter-the-scim-behavior"></a>用于更改 SCIM 行为的标志
+在应用程序的租户 URL 中使用下面的标志，以更改默认 SCIM 客户端行为。
+
+:::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="将标志 SCIM 为更高的行为。":::
+
+* 更新修补程序行为以确保合规性
+  * **SCIM RFC 参考：** 
+    * https://tools.ietf.org/html/rfc7644#section-3.5.2
+  * **URL (符合 SCIM 的) ：** AzureAdScimPatch062020
+  * **操作**
+    * 相容组成员身份删除：
+  ```json
+   {
+     "schemas":
+      ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+     "Operations":[{
+       "op":"remove",
+       "path":"members[value eq \"2819c223-7f76-...413861904646\"]"
+     }]
+   }
+  ```
+  * **URL (不符合 SCIM 的) ：** AzureAdScimPatch2017
+  * **操作**
+    * 不符合的组成员身份删除：
+   ```json
+   {
+     "schemas":
+     ["urn:ietf:params:scim:api:messages:2.0:PatchOp"],
+     "Operations":[{
+       "op":"Remove",  
+       "path":"members",
+       "value":[{"value":"2819c223-7f76-...413861904646"}]
+     }]
+   }
+   ```
+
+## <a name="upgrading-from-the-older-customappsso-job-to-the-scim-job"></a>从较旧的 customappsso 作业升级到 SCIM 作业
+按照以下步骤操作将删除现有的 customappsso 作业，并创建新的 scim 作业。 
  
 1. 登录 Azure 门户：https://portal.azure.com。
 2. 在 Azure 门户的“Azure Active Directory”>“企业应用程序”部分，找到并选择现有 SCIM 应用程序****。
@@ -71,7 +102,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
  
    ![获取架构](media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "获取架构") 
 
-8. 复制最后一步的 JSON 输出，并保存到文本文件。 此输出包含向旧应用添加的所有自定义属性映射，应该约有数千行 JSON。
+8. 复制最后一步的 JSON 输出，并保存到文本文件。 JSON 包含你添加到旧应用的任何自定义属性映射，并且应约为数千行 JSON。
 9. 运行以下命令，删除预配作业：
  
    `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
@@ -81,7 +112,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
  `{   templateId: "scim"   }`
    
-11. 在最后一步的结果中，复制以“scim”开头的完整“ID”字符串。 可选择运行以下命令，将 [new-job-id] 替换为刚才复制的新作业 ID，并输入第七步的 JSON 输出作为请求正文来重新应用旧属性映射。
+11. 在最后一步的结果中，复制以“scim”开头的完整“ID”字符串。 还可以通过运行以下命令重新应用旧的属性映射，将 [new-job id] 替换为复制的新作业 ID，并输入步骤 #7 的 JSON 输出作为请求正文。
 
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema`
  `{   <your-schema-json-here>   }`
@@ -89,10 +120,9 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 12. 返回第一个 Web 浏览器窗口，选择应用程序的“预配”选项卡****。
 13. 验证配置，然后启动预配作业。 
 
-## <a name="can-i-add-a-new-non-gallery-app-that-has-the-old-user-provisioning-behavior"></a>是否可以添加具有旧用户预配行为的新非库应用？
+## <a name="downgrading-from-the-scim-job-to-the-customappsso-job-not-recommended"></a>不建议将 SCIM 作业从作业降级到 customappsso 作业 () 
+ 我们允许降级到旧行为，但不建议这样做，因为 customappsso 不能从我们所做的某些更新中获益，而且可能不会被永久支持。 
 
-是的。 如果已将应用程序编码为展示修补程序发布前已经存在的旧行为，并需要部署其新实例，请执行以下程序。 此程序介绍如何使用 Microsoft Graph API 和 Microsoft Graph API 资源管理器创建展示旧行为的 SCIM 预配作业。
- 
 1. 登录 Azure 门户：https://portal.azure.com。
 2. 在 Azure 门户的“Azure Active Directory”>“企业应用程序”>“创建应用程序”部分，创建新的“非库”应用程序********。
 3. 在新的自定义应用的“属性”部分，复制“对象 ID”********。

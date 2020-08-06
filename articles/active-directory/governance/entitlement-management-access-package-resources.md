@@ -3,7 +3,7 @@ title: 在 Azure AD 权限管理中更改访问包的资源角色-Azure Active D
 description: 了解如何在 Azure Active Directory 权限管理中更改现有访问包的资源角色。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 800c3dbeb96dfb87c7b495909e21eca929bec726
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 006a79c91cd9bfb4c3bbf4a7e0ffb58314af49cc
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550310"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798626"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权限管理中更改访问包的资源角色
 
@@ -103,7 +103,7 @@ ms.locfileid: "85550310"
 
     ![访问包-添加组或团队的资源角色](./media/entitlement-management-access-package-resources/group-role.png)
 
-1. 单击“添加” 。
+1. 单击 **添加**。
 
     添加了对访问包的现有分配的任何用户将自动成为该组或团队的成员。
 
@@ -134,7 +134,7 @@ ms.locfileid: "85550310"
 
     ![访问包 - 为应用程序添加资源角色](./media/entitlement-management-access-package-resources/application-role.png)
 
-1. 单击“添加” 。
+1. 单击 **添加**。
 
     添加此应用程序时，在访问包中具有现有分配的任何用户将自动获得此应用程序的访问权限。
 
@@ -154,7 +154,7 @@ ms.locfileid: "85550310"
 
     ![访问包 - 为 SharePoint Online 站点添加资源角色](./media/entitlement-management-access-package-resources/sharepoint-site-role.png)
 
-1. 单击“添加” 。
+1. 单击 **添加**。
 
     添加此 SharePoint Online 站点时，在访问包中具有现有分配的任何用户将自动获得此 SharePoint Online 站点的访问权限。
 

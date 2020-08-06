@@ -149,7 +149,7 @@
               href: database/transparent-data-encryption-byok-configure.md
             - name: 在存储中存储漏洞扫描结果
               href: database/sql-database-vulnerability-assessment-storage.md
-            - name: 始终加密
+            - name: Always Encrypted
               items:
                 - name: 使用 Azure Key Vault
                   href: database/always-encrypted-azure-key-vault-configure.md
@@ -998,7 +998,7 @@
                       href: virtual-machines/windows/failover-cluster-instance-prepare-vm.md
                     - name: 使用以下项创建 FCI
                       items:
-                        - name: Azure 共享磁盘 (SQL2019+)
+                        - name: Azure 共享磁盘
                           href: virtual-machines/windows/failover-cluster-instance-azure-shared-disks-manually-configure.md
                         - name: 存储空间直通 (Win2016+)
                           href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
@@ -1028,7 +1028,7 @@
               href: /rest/api/
         - name: 资源
           items:
-            - name: 常见问题
+            - name: 常见问题解答
               href: virtual-machines/windows/frequently-asked-questions-faq.md
             - name: 定价
               href: virtual-machines/windows/pricing-guidance.md
@@ -1044,7 +1044,7 @@
               href: 'https://azure.microsoft.com/roadmap/?category=compute'
             - name: MSDN 论坛
               href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server'
-            - name: 堆栈溢出
+            - name: Stack Overflow
               href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'
     - name: Linux
       items:
@@ -1142,9 +1142,9 @@
       href: 'https://azure.microsoft.com/pricing/details/sql-database/'
     - name: MSDN 论坛
       href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/sql-azure'
-    - name: 故障排除
+    - name: 疑难解答
       items:
         - name: 连接错误
           href: database/troubleshoot-common-errors-issues.md

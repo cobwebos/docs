@@ -3,16 +3,16 @@ title: 模板最佳实践
 description: 介绍创作 Azure 资源管理器模板的建议方法。 提供相关建议，避免在使用模板时出现常见问题。
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 272c7e7f824eb193ed48d79c5256167f1dbbbce5
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1121c66e0bcd7de39afd5bea85866fd9ad007ce4
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248911"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809249"
 ---
-# <a name="arm-template-best-practices"></a>ARM 模板最佳实践
+# <a name="arm-template-best-practices"></a>ARM 模板最佳做法
 
-本文介绍如何在构造 ARM 模板时使用建议的做法。 这些建议可帮助你避免使用 ARM 模板部署解决方案时遇到的常见问题。
+本文介绍如何在构造 ARM 模板时使用建议的做法。 这些建议有助于在使用 ARM 模板部署解决方案时避免出现常见问题。
 
 ## <a name="template-limits"></a>模板限制
 
@@ -24,7 +24,7 @@ ms.locfileid: "86248911"
 * 256 个变量
 * 800 个资源（包括副本计数）
 * 64 个输出值
-* 模板表达式中 24,576 个字符
+* 模板表达式中不超过 24,576 个字符
 
 通过使用嵌套模板，可超出某些模板限制。 有关详细信息，请参阅[部署 Azure 资源时使用链接的模板](linked-templates.md)。 若要减少参数、变量或输出的数量，可以将几个值合并为一个对象。 有关详细信息，请参阅[对象即参数](/azure/architecture/building-blocks/extending-templates/objects-as-parameters)。
 
@@ -32,9 +32,9 @@ ms.locfileid: "86248911"
 
 将资源部署到资源组时，资源组会存储与资源有关的元数据。 元数据存储在资源组的位置中。
 
-如果资源组的区域临时不可用，则不能更新资源组中的资源，因为元数据不可用。 其他区域中的资源仍可按预期运行，但你不能更新它们。 若要将风险降至最低，请将资源组和资源定位在同一区域中。
+如果资源组的区域临时不可用，则不能更新资源组中的资源，因为元数据不可用。 其他区域中的资源仍可按预期运行，但你不能更新它们。 为了尽量降低风险，请将资源组和资源放入同一个区域。
 
-## <a name="parameters"></a>参数
+## <a name="parameters"></a>parameters
 
 使用[参数](template-parameters.md)时，本部分中的信息可以提供帮助。
 
@@ -91,7 +91,7 @@ ms.locfileid: "86248911"
 
 * 请尽量少使用 `allowedValues`。 仅当必须确保允许的选项中不含特定值时使用它。 如果过于广泛地使用 `allowedValues`，可能会因未将列表保持最新而阻碍有效部署。
 
-* 当模板中的参数名称与 PowerShell 部署命令中的参数相同时，资源管理器会将 postfix FromTemplate 添加到模板参数中，以解决此命名冲突****。 例如，如果在模板中包括一个名为“ResourceGroupName”**** 的参数，则该参数会与 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 中的“ResourceGroupName”**** 参数冲突。 在部署期间，系统会提示用户提供 ResourceGroupNameFromTemplate 的值****。
+* 当模板中的参数名称与 PowerShell 部署命令中的参数相同时，资源管理器会将 postfix FromTemplate 添加到模板参数中，以解决此命名冲突。 例如，如果在模板中包括一个名为“ResourceGroupName”的参数，则该参数会与 [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) cmdlet 中的“ResourceGroupName”参数冲突。 在部署期间，系统会提示用户提供 ResourceGroupNameFromTemplate 的值。
 
 ### <a name="security-recommendations-for-parameters"></a>有关参数的安全性建议
 
@@ -132,7 +132,7 @@ ms.locfileid: "86248911"
 
 * 请勿为位置参数指定 `allowedValues`。 指定的位置可能并非在所有云中均可用。
 
-* 为可能位于同一位置的资源使用位置参数值。 此方式可以最大程度地减少要求用户提供位置信息的次数。
+* 为可能位于同一位置的资源使用位置参数值。 此方法可以最大程度地减少用户必须提供位置信息的次数。
 
 * 对于并非在所有位置都可用的资源，请使用单独的参数或指定文本位置值。
 
@@ -148,9 +148,9 @@ ms.locfileid: "86248911"
 
 * 请勿为资源上的 `apiVersion` 使用变量。 API 版本决定资源的架构。 通常无法在不更改资源属性的情况下更改版本。
 
-* 不能在模板的“变量”节中使用 [reference](template-functions-resource.md#reference) 函数****。 **reference** 函数从资源的运行时状态中派生其值。 但是，变量是在初始模板分析期间解析的。 直接在模板的 **resources** 或 **outputs** 节中构造需要 **reference** 函数的值。
+* 不能在模板的“变量”节中使用 [reference](template-functions-resource.md#reference) 函数。 **reference** 函数从资源的运行时状态中派生其值。 但是，变量是在初始模板分析期间解析的。 直接在模板的 **resources** 或 **outputs** 节中构造需要 **reference** 函数的值。
 
-* 包含必须具有唯一性的资源名称的变量。
+* 包括的变量适用于必须唯一的资源名称。
 
 * [在变量中使用复制循环](copy-variables.md)来创建重复的 JSON 对象模式。
 
@@ -158,9 +158,9 @@ ms.locfileid: "86248911"
 
 ## <a name="resource-dependencies"></a>资源依赖关系
 
-决定要设置的[依赖项](define-resource-dependency.md)时，请使用以下准则：
+在决定要设置的[依赖项](define-resource-dependency.md)时，请遵循以下准则：
 
-* 使用 reference 函数并传入资源名称以在需要共享属性的资源之间设置隐式依赖项****。 在已定义隐式依赖项的情况下，请勿添加显式 `dependsOn` 元素。 此方法降低了设置不必要依赖项的风险。 有关设置隐式依赖项的示例，请参阅[隐式依赖项](define-resource-dependency.md#reference-and-list-functions)。
+* 使用 reference 函数并传入资源名称以在需要共享属性的资源之间设置隐式依赖项。 在已定义隐式依赖项的情况下，请勿添加显式 `dependsOn` 元素。 此方法降低了设置不必要依赖项的风险。 有关设置隐式依赖项的示例，请参阅[隐式依赖项](define-resource-dependency.md#reference-and-list-functions)。
 
 * 将子资源设置为依赖于其父资源。
 
@@ -189,7 +189,7 @@ ms.locfileid: "86248911"
    ]
    ```
 
-* 如果在模板中使用“公共终结点”（例如 Azure Blob 存储公共终结点），请不要将命名空间硬编码   。 使用 **reference** 函数可动态检索命名空间。 可以使用此方法将模板部署到不同的公共命名空间环境，而无需在模板中手动更改终结点。 在模板中将 API 版本设置为用于存储帐户的同一版本：
+* 如果在模板中使用“公共终结点”（例如 Azure Blob 存储公共终结点），请不要将命名空间硬编码 。 使用 **reference** 函数可动态检索命名空间。 可以使用此方法将模板部署到不同的公共命名空间环境，而无需在模板中手动更改终结点。 在模板中将 API 版本设置为用于存储帐户的同一版本：
    
    ```json
    "diagnosticsProfile": {
@@ -226,8 +226,8 @@ ms.locfileid: "86248911"
    
      有关连接到虚拟机的详细信息，请参阅：
    
-   * [在 Azure 中运行用于 N 层体系结构的 VM](../../guidance/guidance-compute-n-tier-vm.md)
-   * [在 Azure 资源管理器中设置对 VM 的 WinRM 访问](../../virtual-machines/windows/winrm.md)
+   * [在 Azure 中运行用于 N 层体系结构的 VM](/azure/architecture/reference-architectures/n-tier/n-tier-sql-server)
+   * [在 Azure Resource Manager 中设置对 VM 的 WinRM 访问](../../virtual-machines/windows/winrm.md)
    * [使用 Azure 门户实现对 VM 的外部访问](../../virtual-machines/windows/nsg-quickstart-portal.md)
    * [使用 PowerShell 实现对 VM 的外部访问](../../virtual-machines/windows/nsg-quickstart-powershell.md)
    * [使用 Azure CLI 实现对 Linux VM 的外部访问](../../virtual-machines/linux/nsg-quickstart.md)
@@ -274,11 +274,11 @@ ms.locfileid: "86248911"
 
 ## <a name="use-test-toolkit"></a>使用测试工具包
 
-ARM 模板测试工具包是一个脚本，用于检查模板是否使用建议的做法。 如果模板不符合建议的做法，它将返回包含建议更改的警告列表。 测试工具包可帮助您了解如何在模板中实施最佳实践。
+ARM 模板测试工具包是一个脚本，用于检查模板是否使用建议的做法。 如果模板不符合建议的做法，它将返回包含建议的更改的警告列表。 测试工具包可帮助你了解如何在模板中实施最佳做法。
 
-完成模板后，请运行测试工具包，查看是否可以通过某种方式改善 it 实现。 有关详细信息，请参阅[ARM 模板测试工具包](test-toolkit.md)。
+完成模板后，运行测试工具包，看是否有方法可以改进它的实现。 有关详细信息，请参阅[ARM 模板测试工具包](test-toolkit.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关模板文件的结构的信息，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
-* 有关如何生成可在所有 Azure 云环境中使用的模板的建议，请参阅[为云一致性开发 ARM 模板](templates-cloud-consistency.md)。
+* 有关模板文件结构的信息，请参阅[了解 ARM 模板的结构和语法](template-syntax.md)。
+* 有关如何生成在所有 Azure 云环境中工作的模板的建议，请参阅[开发用于实现云一致性的 ARM 模板](templates-cloud-consistency.md)。

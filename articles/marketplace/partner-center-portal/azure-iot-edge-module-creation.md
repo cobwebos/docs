@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 5ead227d886805c0ed48ebb52c4c0e30ef13b851
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 779fc1cfc617e18eee4d84dcfd007f10ddb31f96
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320028"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808705"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>创建 IoT Edge 模块产品/服务
 
@@ -50,10 +50,10 @@ ms.locfileid: "87320028"
 
 此页中包含链接，用于根据你所做的选择对此产品/服务执行操作。 例如：
 
-- 如果产品/服务是草稿版/草稿版[产品](update-existing-offer.md#delete-a-draft-offer)/服务
-- 如果产品/服务是实时的，则[停止销售产品](update-existing-offer.md#stop-selling-an-offer-or-plan)/服务）
-- 如果[产品/服务是预览版）](publishing-status.md#publisher-approval)
-- 如果尚未完成发布服务器注销-请[取消发布。](update-existing-offer.md#cancel-publishing)）
+- 如果产品/服务是草稿 - [删除草稿产品/服务](update-existing-offer.md#delete-a-draft-offer)
+- 如果产品/服务已上线 - [停止销售产品/服务](update-existing-offer.md#stop-selling-an-offer-or-plan)
+- 如果产品/服务处于预览状态 - [上线](publishing-status.md#publisher-approval)
+- 如果还没有完成发布者注销 - [取消发布](update-existing-offer.md#cancel-publishing)。
 
 ## <a name="offer-setup"></a>产品/服务设置
 
@@ -79,8 +79,8 @@ ms.locfileid: "87320028"
 下面是其他一些潜在客户管理资源：
 
 - [潜在客户管理概述](commercial-marketplace-get-customer-leads.md)
-- [潜在客户管理常见问题](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)）
-- [常见潜在客户配置错误](../lead-management-for-cloud-marketplace.md#publishing-config-errors)）
+- [潜在客户管理常见问题](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)) 
+- [常见的潜在客户配置错误](../lead-management-for-cloud-marketplace.md#publishing-config-errors)) 
 - [潜在客户管理概述](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF（确保弹出窗口阻止程序处于禁用状态）。
 
 选择“保存草稿”，然后继续操作。
@@ -93,7 +93,7 @@ ms.locfileid: "87320028"
 
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
-- 至少一个和多达两个类别，包括主类别和辅助类别（可选）。
+- 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
 - 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
 
 请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。 在 marketplace 中，IoT Edge 模块始终显示在 " **物联网**  >  **IoT Edge" 模块**"   类别下。
@@ -199,14 +199,15 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 
 #### <a name="store-logos"></a>应用商店徽标
 
-按以下四个像素大小提供产品/服务徽标的 PNG 文件：
+为**大**徽标 (提供) 216 x 216 和 350 x 350 像素之间的 PNG 文件。 合作伙伴中心将使用此来创建一个**小型** (48 x 48 像素) 和一个**中等** (90 x 90 像素) 大小徽标。 您可以选择将它们替换为不同的图像。
 
-- 小 (48 x 48)
-- 中 (90 x 90)
-- 大 (216 x 216)
-- 宽 (255 x 115)
+需要在列表中的不同位置使用所有三种徽标尺寸：
 
-所有四个徽标都是必需的，并且在市场一览中的不同位置上使用。
+- 小图 (48 x 48)
+- 中图 (90 x 90)
+- **大型** (216 x 216 和 350 x 350) 
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>屏幕截图（可选）
 
@@ -226,13 +227,13 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 
 1. 大徽标
 2. 类别
-3. 支持地址（链接）
+3. 支持地址 (链接) 
 4. 条款和条件
-5. 隐私策略地址（链接）
+5. 隐私策略地址 (链接) 
 6. 名称
-7. 摘要
+7. 总结
 8. 说明
-9. 有用链接
+9. 有用的链接
 10. 屏幕截图/视频
 
 <br>下面是有关如何在 Azure Marketplace 搜索结果中显示产品/服务的示例：
@@ -253,7 +254,7 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 
 1. 名称
 2. 说明
-3. 有用链接
+3. 有用的链接
 4. 屏幕截图
 
 <br>下面是一个示例，说明了产品/服务信息在 "Azure 门户搜索" 结果中的显示方式：
@@ -286,13 +287,13 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 
 ### <a name="plan-overview"></a>计划概述
 
-使用此选项卡，可以在合作伙伴中心内的相同产品/服务中提供不同的计划选项。 计划（以前称为 Sku）的不同之处在于可用的云，如全球云、政府云和计划引用的映像。 若要在市场中列出你的产品/服务，至少必须设置一个计划。
+使用此选项卡，可以在合作伙伴中心内的相同产品/服务中提供不同的计划选项。 计划 (以前称为 Sku) 的计划可能不同于云的可用性，如全球云、政府云和计划引用的映像。 若要在市场中列出你的产品/服务，至少必须设置一个计划。
 
 在你创建计划后，“计划概述”选项卡显示：
 
 - 计划名称
 - 定价模型
-- Azure 区域（全局或政府）
+- Azure 区域 (全局或政府) 
 - 当前发布状态
 - 任何可用操作
 
@@ -353,7 +354,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 #### <a name="plan-examples"></a>计划示例
 
-下面是 Azure Marketplace 计划详细信息的示例（所有列出的价格仅用于示例目的，不打算反映实际成本）：
+下面是 Azure Marketplace 计划详细信息的示例 (列出的所有价格仅用于举例目的，而不用于反映实际成本) ：
 
 :::image type="content" source="media/example-iot-azure-marketplace-plan.png" alt-text="说明 Azure Marketplace 计划详细信息。":::
 
@@ -363,7 +364,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 2. 计划名称
 3. 计划说明
 
-<br>下面是 Azure 门户计划详细信息的示例（所有列出的价格仅用于示例目的，不打算反映实际成本）：
+<br>下面是 Azure 门户计划详细信息的示例 (任何列出的价格仅用于举例目的，而不用于反映实际成本) ：
 
 :::image type="content" source="media/example-iot-azure-marketplace-plan-details.png" alt-text="说明 Azure 门户计划详细信息。":::
 
@@ -404,7 +405,7 @@ Azure 资源组名称：提供包含具有容器映像的 Azure 容器注册表�
 
 Azure 容器注册表名称：提供包含容器映像的 [Azure 容器注册表](../../container-registry/container-registry-intro.md)的名称。 容器注册表必须位于你前面提供的 Azure 资源组中。 只提供注册表名称，而不提供完整的登录服务器名称。 请务必从名称中省略 azurecr.io。 可以在 Azure 门户的[“容器注册表”页](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)上找到注册表名称。
 
-**Azure 容器注册表的管理员用户名**：提供与具有容器映像的 Azure 容器注册表关联的[管理员用户名](../../container-registry/container-registry-authentication.md#admin-account)）。 用户名和密码是必需的，以确保公司有权访问注册表。 若要获取管理员用户名和密码，请使用 Azure 命令行接口 (CLI) 将“管理员已启用”属性设置为“True”。 在 Azure 门户中，可以视需要选择将“管理员用户”设置为“启用”。
+**Azure 容器注册表的管理员用户名**：提供与具有容器映像的 Azure 容器注册表关联) 的[管理员用户名](../../container-registry/container-registry-authentication.md#admin-account)。 用户名和密码是必需的，以确保公司有权访问注册表。 若要获取管理员用户名和密码，请使用 Azure 命令行接口 (CLI) 将“管理员已启用”属性设置为“True”。 在 Azure 门户中，可以视需要选择将“管理员用户”设置为“启用”。
 
 :::image type="content" source="media/example-iot-update-container-registry.png" alt-text="展示了“更新容器注册表”对话框。":::
 
@@ -418,7 +419,7 @@ Azure 容器注册表名称：提供包含容器映像的 [Azure 容器注册表
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. 访问键
+1. 访问密钥
 2. 用户名
 3. 密码
 
@@ -436,7 +437,7 @@ Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器
 
 默认路由。 IoT Edge 中心管理模块、IoT 中心与设备之间的通信。 可以为模块和 IoT 中心之间的数据输入和输出设置路由，这样就能灵活地将消息发送到需要发送的位置，而无需使用其他服务来处理消息或编写额外的代码。 路由是使用名称/值对构造而成的。 最多可以定义五个默认路由名称，每个名称最长可包含 512 个字符。
 
-请确保在路由值中使用正确的[路由语法](../../iot-edge/module-composition.md#declare-routes)（通常定义为从/消息/* 到 $upstream）。 也就是说，任何模块发送的任何消息都发送到 IoT 中心。 若要引用模块，请使用它的默认模块名称，即不包含空格或特殊字符的产品/服务名称。 若要引用未知的其他模块，请使用 <FROM_MODULE_NAME> 约定来告知客户他们需要更新此信息。 有关 IoT Edge 路由的详细信息，请参阅[声明路由](../../iot-edge/module-composition.md#declare-routes)）。
+请确保使用正确的[路由语法](../../iot-edge/module-composition.md#declare-routes)) 路由值中 (通常定义为 "FROM"/"message"/* $upstream) 。 也就是说，任何模块发送的任何消息都发送到 IoT 中心。 若要引用模块，请使用它的默认模块名称，即不包含空格或特殊字符的产品/服务名称。 若要引用未知的其他模块，请使用 <FROM_MODULE_NAME> 约定来告知客户他们需要更新此信息。 有关 IoT Edge 路由的详细信息，请参阅) [声明路由](../../iot-edge/module-composition.md#declare-routes)。
 
 例如，如果模块 ContosoModule 侦听 ContosoInput 上的输入数据和 ContosoOutput 上的输出数据，最好定义以下两个默认路由：
 
@@ -445,7 +446,7 @@ Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器
 - 名称 #2：FromContosoModuleToCloud
 - 值 #2：FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream
 
-默认模块孪生所需属性。 模块孪生是 IoT 中心内的 JSON 文档，用于存储模块实例状态信息，包括所需属性。 所需属性与报告的属性一起用于同步模块配置或条件。 解决方案后端可以设置所需属性，模块可以读取它们。 模块还可以接收所需属性的更改通知。 所需属性是使用最多五个名称/值对创建的，每个默认值必须小于 512 个字符。 最多可以定义五个名称/值孪生所需属性。 孪生所需属性的值必须是有效的 JSON、未转义且不包含数组，最多可包含四级嵌套层次结构。 如果默认值所需的参数（例如客户服务器的 IP 地址）没有意义，可以添加一个参数作为默认值。 若要详细了解成对出现的所需属性，请参阅[定义或更新所需属性](../../iot-edge/module-composition.md#define-or-update-desired-properties)。
+默认模块孪生所需属性。 模块孪生是 IoT 中心内的 JSON 文档，用于存储模块实例状态信息，包括所需属性。 所需属性与报告的属性一起用于同步模块配置或条件。 解决方案后端可以设置所需属性，模块可以读取它们。 模块还可以接收所需属性的更改通知。 所需属性是使用最多五个名称/值对创建的，每个默认值必须小于 512 个字符。 最多可以定义五个名称/值孪生所需属性。 孪生所需属性的值必须是有效的 JSON、未转义且不包含数组，最多可包含四级嵌套层次结构。 如果默认值所需的参数（例如客户服务器的 IP 地址）没有意义，可以添加一个参数作为默认值。 若要详细了解成对出现的所需属性，请参阅) 中[定义或更新所需属性](../../iot-edge/module-composition.md#define-or-update-desired-properties)。
 
 例如，如果某个模块使用孪生所需属性支持可动态配置的刷新频率，最好定义以下默认孪生所需属性：
 

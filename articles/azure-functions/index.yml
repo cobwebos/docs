@@ -9,12 +9,12 @@ metadata:
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: a08908b699d50a7e1e740f162a0b3f53fa96e434
-  ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+  ms.openlocfilehash: 7a6f493bef86952de212eea264cccea1c0bcfeca
+  ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 04/08/2020
-  ms.locfileid: "80886562"
+  ms.lasthandoff: 08/05/2020
+  ms.locfileid: "87810048"
 landingContent:
 - title: 关于 Azure Functions
   linkLists:
@@ -121,7 +121,7 @@ landingContent:
     - text: 使用 Azure Pipelines 进行构建和部署
       url: functions-how-to-azure-devops.md
     - text: 使用 Jenkins 插件进行部署
-      url: /azure/jenkins/jenkins-azure-functions-deploy
+      url: /azure/developer/jenkins/deploy-to-azure-functions
 - title: 性能和监视
   linkLists:
   - linkListType: concept

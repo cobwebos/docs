@@ -7,19 +7,19 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 11c1c307d00b9347081a313308ad2467086ec208
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e17edacf45583283d53c5484417f6a2dd7c6e012
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327389"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799916"
 ---
 # <a name="saas-offer-creation-checklist-in-partner-center"></a>在合作伙伴中心的 SaaS 产品/服务创建清单
 
 SaaS 产品创建过程会将你带到多个页面。  本文介绍了可以在每个页面上提供的详细信息，并提供了详细了解每个项目的链接。
 
 > [!NOTE]
-> 如果要创建事务 SaaS 产品/服务，请确保实现与[SaaS 履单 api](./pc-saas-fulfillment-apis.md)的集成。  与 Api 的集成是 transactability 在 Marketplace 中的唯一工作方式。 还需要确保你的应用程序使用通过单一登录（SSO）进行 Azure AD 身份验证。 请参阅[商业应用商店中的 Azure AD 和事务 SaaS 产品](../azure-ad-saas.md)。
+> 如果要创建事务 SaaS 产品/服务，请确保实现与[SaaS 履单 api](./pc-saas-fulfillment-apis.md)的集成。  与 Api 的集成是 transactability 在 Marketplace 中的唯一工作方式。 还需要确保你的应用在 (SSO) 上使用 Azure AD 身份验证和单一登录。 请参阅[商业应用商店中的 Azure AD 和事务 SaaS 产品](../azure-ad-saas.md)。
 
 下面说明了你需要提供或指定的项。  某些区域是可选的或提供默认值（可根据需要进行更改）。  不必按此处列出的顺序处理这些部分。
 
@@ -30,7 +30,7 @@ SaaS 产品创建过程会将你带到多个页面。  本文介绍了可以在�
 | [属性页](#properties-page) | 定义用于在市场上对产品/服务进行分组的类别和行业、支持产品/服务的法律合同以及应用版本。 |
 | [产品/服务列表页](#offer-listing-page) | 定义要显示在市场中的产品/服务详细信息，包括产品/服务和市场营销资产的说明。|
 | [预览页](#preview-page) | 在向更广泛的市场受众发布产品/服务之前，定义有限的预览受众来发布产品/服务。|
-| [技术配置页](#technical-configuration-page)  |  仅当你选择通过 Microsoft 销售产品/服务时才可用。  定义 marketplace 用于连接到产品/服务的技术详细信息（登录页 URL、连接 webhook URL、Azure AD 租户 ID 和 Azure AD 应用 ID）。  若要正确集成 SaaS 履单和 Marketplace 计费 Api，需要这些参数。|
+| [技术配置页](#technical-configuration-page)  |  仅当你选择通过 Microsoft 销售产品/服务时才可用。  定义 (登陆页 URL、连接 webhook URL、Azure AD 租户 ID 以及 marketplace 用于连接到产品/服务的 Azure AD 应用) ID 的技术详细信息。  若要正确集成 SaaS 履单和 Marketplace 计费 Api，需要这些参数。|
 | [新建计划模式](#plan-identity-modal) | 收集计划标识信息。  |
 | [计划列表页](#plan-listing-page)  | 仅当你选择通过 Microsoft 销售产品/服务时才可用。 定义用于在市场中列出计划的详细信息。  |
 | [计划定价和可用性页](#plan-pricing--availability-page)  | 仅当你选择通过 Microsoft 销售产品/服务时才可用。  为产品/服务的每个计划（版本）收集业务特性（定价模型）、受众和市场可用性。  |
@@ -79,9 +79,9 @@ SaaS 产品创建过程会将你带到多个页面。  本文介绍了可以在�
 在列表页中可提供客户在市场中查看产品/服务列表时看到的文本和图像。 
 
 | **字段名称**    | **说明**   |
-| :---------------- | :-----------| 
+| :---------------- | :-----------|
 | 名称  | 必需，最多 50 个字符。 |
-| 总结  | 必需，最多 100 个字符。 | 
+| 总结  | 必需，最多 100 个字符。 |
 | 说明  | 必需，最多 3000 个字符。 |
 | 入门说明  | 必需，最多 3000 个字符。 |
 | 入门说明  | 必需，最多 3000 个字符。 |
@@ -91,7 +91,7 @@ SaaS 产品创建过程会将你带到多个页面。  本文介绍了可以在�
 | 有用链接标题 + URL  | 可选。 |
 | 支持性文档标题 + 文件  | 必需，最少 1 个，最多 3 个。 必须是 PDF 文件格式。 |
 | 屏幕截图  | 必需，最少 1 个屏幕截图，最多 5 个；推荐使用 4 个或更多。 必须是 PNG 格式的 1280 X 720。 |
-| 存储徽标（小、中、大、宽）  | Small （48 X 48）和大（216 X 216）必需;其他可选大小，但建议使用：中型（90 x 90），宽（255 x 115）。 必须在中。PNG 格式。 |
+| 应用商店徽标 (小型、中型、大型)   | 需要 (216 x 216) 的大徽标。 合作伙伴中心将使用此来创建一个小型 (48 x 48 像素) 和一个中等 (90 x 90 像素) 大小徽标。 您可以选择将它们替换为不同的图像。 徽标必须采用 PNG 格式。 |
 | 视频名称 + URL + 缩略图  | 可选，推荐，最多 4 个视频。 缩略图必须是 PNG 格式的 1280 x 720。 视频必须在 YouTube 或 Vimeo 中托管。 |
 | 联系人（CSP 计划、工程、支持）  | 工程和支持联系人是必需的（姓名、电子邮件和电话号码）；CSP 计划联系人可选，但推荐使用。 |
 | 支持 URL  | 必需。 |
@@ -100,16 +100,16 @@ SaaS 产品创建过程会将你带到多个页面。  本文介绍了可以在�
 
 在预览页上，可指定有权访问你的产品/服务预览版的受众，以在投入使用之前验证产品/服务是否满足所有要求。 
 
-| **字段名称**    | **说明**   | 
-| :---------------- | :-----------| 
+| **字段名称**    | **说明**   |
+| :---------------- | :-----------|
 | AAD/MSA 电子邮件 + 说明 | 必需，最少 1 个，手动输入时最多 10 个，上传 CSV 文件时最多 20 个。 |
 
-## <a name="technical-configuration-page"></a>技术配置页 
+## <a name="technical-configuration-page"></a>技术配置页
 
 在技术配置页上，可指定 Microsoft 用于连接到产品/服务的技术详细信息。 如果你决定不通过 Microsoft 销售，则此页对你不可见。
 
 > [!NOTE]
-> 对于事务产品/服务，必须创建一个登陆页面，应用必须通过单一登录（SSO）使用 Azure AD 身份验证。 有关详细信息，请参阅[商业应用商店中的 Azure AD 和事务 SaaS 产品](../azure-ad-saas.md)。
+> 对于事务提供程序，你必须创建一个登陆页面，你的应用程序必须使用 Azure AD authentication (SSO) 上的单一登录。 有关详细信息，请参阅[商业应用商店中的 Azure AD 和事务 SaaS 产品](../azure-ad-saas.md)。
 
 | **字段名称**    | **说明**   |  
 | :---------------- | :-----------| 

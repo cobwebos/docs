@@ -3,7 +3,7 @@ title: 查看、添加和删除 Azure AD 权利管理中的访问包的分配-Az
 description: 了解如何在 Azure Active Directory 权限管理中查看、添加和删除访问包的分配。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,18 +16,18 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55f17703060d19baebe55ef648cb182cb2c6d00a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78bed4f5c600bfa0218f924dc4444119e9729e28
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078826"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798743"
 ---
 # <a name="view-add-and-remove-assignments-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 授权管理中查看、添加和删除访问包的分配
 
 在 Azure AD 授权管理中，你可以看到已分配了哪些人员来访问包、其策略和状态。 如果访问包具有适当的策略，还可以直接将用户分配到访问包。 本文介绍如何查看、添加和删除访问包的分配。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 若要使用 Azure AD 的权利管理并分配用户访问包，你必须具有以下许可证之一：
 

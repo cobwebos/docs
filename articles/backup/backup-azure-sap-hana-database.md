@@ -3,12 +3,12 @@ title: 使用 Azure 备份将 SAP HANA 数据库备份到 Azure
 description: 本文介绍如何使用 Azure 备份服务将 SAP HANA 数据库备份到 Azure 虚拟机。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 2f42b119c361eaddcb84dda738b50c8accc84f9c
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 0efd26272bbfc4c8f63f7f02a605d48e53577390
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439753"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809130"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>备份 Azure VM 中的 SAP HANA 数据库
 
@@ -16,7 +16,7 @@ SAP HANA 数据库是关键工作负荷，要求较低的恢复点目标 (RPO) �
 
 本文展示了如何将在 Azure VM 上运行的 SAP HANA 数据库备份到 Azure 备份恢复服务保管库。
 
-本文介绍如何执行以下操作：
+本文将指导如何进行以下操作：
 > [!div class="checklist"]
 >
 > * 创建并配置保管库
@@ -25,7 +25,7 @@ SAP HANA 数据库是关键工作负荷，要求较低的恢复点目标 (RPO) �
 > * 运行按需备份作业
 
 >[!NOTE]
->截至8月1日，2020，RHEL 的 SAP HANA 备份（7.4、7.6、7.7 & 8.1）已正式发布。
+>截至8月1日，2020，RHEL (7.4、7.6、7.7 & 8.1) 的 SAP HANA 备份已正式发布。
 
 >[!NOTE]
 >**针对 Azure VM 中 SQL 服务器的软删除以及针对 Azure VM 工作负荷中 SAP HANA 的软删除**现已推出预览版。<br>
@@ -67,7 +67,7 @@ SAP HANA 数据库是关键工作负荷，要求较低的恢复点目标 (RPO) �
 
 1. 单击“添加”，保存新创建的出站安全规则。
 
-同样，可以为 Azure 存储和 Azure AD 创建 NSG 出站安全规则。 有关服务标记的详细信息，请参阅[此文](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)。
+同样，可以为 Azure 存储和 Azure AD 创建 NSG 出站安全规则。 有关服务标记的详细信息，请参阅[此文](../virtual-network/service-tags-overview.md)。
 
 #### <a name="azure-firewall-tags"></a>Azure 防火墙标记
 

@@ -2,16 +2,15 @@
 title: 在 Azure Kubernetes 服务中使用 Azure AD
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure AD
 services: container-service
-manager: gwallace
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 07/27/2020
 ms.author: thomasge
-ms.openlocfilehash: 896986775f0132ef08b17bdfefc00e5e06cf3d9f
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: afc20052680e7f3e5b7d3a6b7320b7ca3b10dbd5
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448134"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799851"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS-托管 Azure Active Directory 集成
 
@@ -36,12 +35,7 @@ AKS 托管 Azure Active Directory 集成在[支持 AKS](https://azure.microsoft.
 * AKS 管理的 AAD 集成不支持非 RBAC 启用的群集
 * 不支持更改与 AKS 管理的 AAD 集成关联的 Azure AD 租户
 
-> [!IMPORTANT]
-> AKS 预览功能是可选择启用的自助功能。 预览功能是“按现状”和“按可用”提供的，不包括在服务级别协议和有限保证中。 AKS 预览功能是由客户支持尽最大努力部分覆盖。 因此，这些功能并不适合用于生产。 有关详细信息，请参阅以下支持文章： 
-> - [AKS 支持策略](support-policies.md) 
-> - [Azure 支持常见问题](faq.md)
-
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * Azure CLI 版本2.9.0 或更高版本
 * 版本不低于 [1.18](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1180) 的 Kubectl
@@ -58,24 +52,8 @@ kubectl version --client
 
 对于其他操作系统，请遵循[这些说明](https://kubernetes.io/docs/tasks/tools/install-kubectl/)。
 
-```azurecli-interactive 
-az feature register --name AAD-V2 --namespace Microsoft.ContainerService    
-``` 
 
-状态可能需要几分钟才显示为“已注册”。 可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令来检查注册状态： 
-
-```azurecli-interactive 
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"    
-``` 
-
-当状态显示为“已注册”时，使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令来刷新 `Microsoft.ContainerService` 资源提供程序的注册：    
-
-```azurecli-interactive 
-az provider register --namespace Microsoft.ContainerService 
-``` 
-
-
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 对于群集，需要 Azure AD 组。 此组需要作为群集的管理员组，以便授予群集管理员权限。 您可以使用现有的 Azure AD 组，或创建一个新组。 记录 Azure AD 组的对象 ID。
 
@@ -146,7 +124,7 @@ aks-nodepool1-15306047-0   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
-配置[azure 基于角色的访问控制（AZURE RBAC）](./azure-ad-rbac.md) ，为群集配置其他安全组。
+配置 azure [RBAC)  (azure 基于角色的访问控制](./azure-ad-rbac.md)，为群集配置其他安全组。
 
 ## <a name="troubleshooting-access-issues-with-azure-ad"></a>排查 Azure AD 的访问问题
 
@@ -196,7 +174,7 @@ az aks update -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-gr
 * 了解[Azure AD 与 KUBERNETES RBAC 集成][azure-ad-rbac]。
 * 使用[kubelogin](https://github.com/Azure/kubelogin)访问 kubectl 中不可用的 Azure 身份验证功能。
 * 了解有关[AKS 和 Kubernetes 标识概念][aks-concepts-identity]的详细信息。
-* 使用[Azure 资源管理器（ARM）模板][aks-arm-template]创建启用了 AKS 的 Azure AD 启用群集。
+* 使用[Azure 资源管理器 (ARM) 模板][aks-arm-template]来创建启用 AKS Azure AD 管理的群集。
 
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication

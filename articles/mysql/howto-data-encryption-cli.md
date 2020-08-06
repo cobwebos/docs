@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e4f6b3ad791624dde2aefa3edac3102df2c15717
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: eb83cd4fe7e98b1cde6dcee5d3f25fa5e35f1d2c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495040"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799813"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>使用 Azure CLI Azure Database for MySQL 的数据加密
 
@@ -68,7 +68,7 @@ ms.locfileid: "87495040"
    az mysql server update --name  <server name>  -g <resource_group> --assign-identity
    ```
 
-2. 设置**主体**的**密钥权限**（**Get**、 **Wrap**、**解包**），这是 MySQL 服务器的名称。
+2. 设置**主体** (**获取**、**包装**、**解包**) 的**主要权限**，这是 MySQL 服务器的名称。
 
     ```azurecli-interactive
     az keyvault set-policy --name -g <resource_group> --key-permissions get unwrapKey wrapKey --object-id <principal id of the server>
@@ -86,7 +86,7 @@ ms.locfileid: "87495040"
 
 ## <a name="using-data-encryption-for-restore-or-replica-servers"></a>对还原服务器或副本服务器使用数据加密
 
-在使用客户存储在 Key Vault 中的托管密钥对 Azure Database for MySQL 进行加密后，还将对服务器的任何新创建的副本进行加密。 你可以通过本地或异地还原操作或通过副本（本地/跨区域）操作进行此新复制。 因此，对于加密的 MySQL 服务器，你可以使用以下步骤来创建加密还原服务器。
+在使用客户存储在 Key Vault 中的托管密钥对 Azure Database for MySQL 进行加密后，还将对服务器的任何新创建的副本进行加密。 可以通过本地或异地还原操作或通过副本 (本地/跨区域) 操作来生成此新副本。 因此，对于加密的 MySQL 服务器，你可以使用以下步骤来创建加密还原服务器。
 
 ### <a name="creating-a-restoredreplica-server"></a>创建还原/副本服务器
 
@@ -94,6 +94,25 @@ ms.locfileid: "87495040"
 * [创建读取副本服务器](howto-read-replicas-cli.md) 
 
 ### <a name="once-the-server-is-restored-revalidate-data-encryption-the-restored-server"></a>还原服务器后，重新验证还原的服务器的数据加密
+
+*   为副本服务器分配标识
+```azurecli-interactive
+az mysql server update --name  <server name>  -g <resoure_group> --assign-identity
+```
+
+*   获取必须用于还原/副本服务器的现有密钥
+
+```azurecli-interactive
+az mysql server key list --name  '<server_name>'  -g '<resource_group_name>'
+```
+
+*   为还原/副本服务器的新标识设置策略
+  
+```azurecli-interactive
+az keyvault set-policy --name <keyvault> -g <resoure_group> --key-permissions get unwrapKey wrapKey --object-id <principl id of the server returned by the step 1>
+```
+
+* 重新验证还原/副本服务器的加密密钥
 
 ```azurecli-interactive
 az mysql server key create –name  <server name> -g <resource_group> --kid <key url>

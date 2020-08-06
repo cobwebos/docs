@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9c7c1000ed5229886d4a964161042eca6517c230
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: d0bca2ad14216873836c751dc002ea915baa3a66
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367429"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800477"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>将 Azure 数字孪生与其他服务集成
 
@@ -33,7 +33,7 @@ Azure 数字孪生可以将数据发送到连接的**终结点**。 支持的终
 * [事件网格](../event-grid/overview.md)
 * [服务总线](../service-bus-messaging/service-bus-messaging-overview.md)
 
-使用管理 Api 或 Azure 门户将端点附加到 Azure 数字孪生。 在[*操作方法：管理终结点和路由*](how-to-manage-routes.md)中了解有关如何将终结点附加到 Azure 数字孪生的详细信息。
+使用管理 Api 或 Azure 门户将端点附加到 Azure 数字孪生。 在[*操作方法：管理终结点和路由*](how-to-manage-routes-apis-cli.md)中了解有关如何将终结点附加到 Azure 数字孪生的详细信息。
 
 还有很多你可能想要最终定向数据的其他服务，例如[Azure 存储](../storage/common/storage-introduction.md)或[时序见解](../time-series-insights/time-series-insights-update-overview.md)。 若要将数据发送到此类服务，请将目标服务附加到终结点。
 

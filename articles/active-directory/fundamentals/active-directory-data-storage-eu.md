@@ -2,7 +2,7 @@
 title: 欧盟客户的标识数据存储-Azure AD
 description: 了解 MAzure Active Directory 在哪个位置存储其欧洲客户的标识相关数据。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.author: ajburnle
 ms.service: active-directory
@@ -12,25 +12,25 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7360b11f41cc08c2beb3ffa227e1658881798502
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 99d8ae8c5e3218959a483e78f70a6502bf7a5a47
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75423000"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799092"
 ---
 # <a name="identity-data-storage-for-european-customers-in-azure-active-directory"></a>Azure Active Directory 中的欧洲客户标识数据存储
 标识数据由 Azure AD 存储在地理位置，在订阅 Microsoft Online services （如 Office 365 和 Azure）时，该地址基于组织提供的地址。 若要了解标识数据的存储位置，可以使用 Microsoft 信任中心的 "[你的数据位于何处？](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located) " 部分。
 
 对于在欧洲提供地址的客户，Azure AD 保留欧洲数据中心内的大多数标识数据。 本文档提供了有关 Azure AD 服务在欧洲之外存储的任何数据的信息。
 
-## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure 多重身份验证（MFA）
+## <a name="microsoft-azure-multi-factor-authentication-mfa"></a>Microsoft Azure 多因素身份验证 (MFA) 
     
 - 使用电话呼叫或短信的所有双因素身份验证都源自我们的数据中心，并且还由全局提供商路由。
 - 使用 Microsoft Authenticator 应用的推送通知源自美国数据中心。 此外，特定于设备供应商的服务也可能会起作用，这些服务可能在欧洲境外。
 - OATH 代码始终在美国验证。 
 
-若要详细了解 Azure 多重身份验证服务器（MFA 服务器）和基于云的 Azure MFA 收集的用户信息，请参阅[Azure 多重身份验证用户数据收集](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection)。
+若要详细了解 Azure 多重身份验证服务器 (MFA 服务器) 和基于云的 Azure MFA 收集的用户信息，请参阅[Azure 多重身份验证用户数据收集](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting-datacollection)。
 
 ## <a name="microsoft-azure-active-directory-b2c-azure-ad-b2c"></a>Microsoft Azure Active Directory B2C (Azure AD B2C)
 
@@ -46,7 +46,7 @@ Azure AD DS 将用户数据存储在客户选择的 Azure 虚拟网络所在的�
 
 ## <a name="federation-in-microsoft-exchange-server-2013"></a>Microsoft Exchange Server 2013 中的联合身份验证
     
-- 应用程序标识符（AppID）-Azure Active Directory authentication 系统生成的唯一编号，用于标识 Exchange 组织。
+- 应用程序标识符 (AppID) -Azure Active Directory authentication 系统生成的唯一编号，用于标识 Exchange 组织。
 - 应用程序的已批准联合域列表
 - 应用程序的令牌签名公钥 
 

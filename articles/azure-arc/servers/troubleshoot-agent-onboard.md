@@ -1,6 +1,6 @@
 ---
 title: 排查服务器的 Azure Arc 代理连接问题
-description: 本文介绍如何通过 Azure Arc for 服务器（预览版）在尝试连接到服务时对连接的计算机代理进行故障排除和解决问题。
+description: 本文介绍如何在尝试连接到服务时，通过 Azure Arc 为服务器 (预览) 中出现的连接的计算机代理排查和解决问题。
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
@@ -8,20 +8,20 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 46096e1f3f4266e9c070bd1d67f328241163126b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2a6f51f1c6901eaa18c1de9c1fc788ed583b7394
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004539"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809436"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>排查连接的计算机代理连接问题
 
-本文介绍了在尝试为 Windows 或 Linux 配置适用于服务器（预览版）的 Azure Arc 时可能出现的故障排除和解决问题的相关信息。 包括配置与服务的连接时的交互式和大规模安装方法。 有关一般信息，请参阅[服务器的 Arc 概述](./overview.md)。
+本文提供了有关故障排除和解决在尝试为 Windows 或 Linux 的连接计算机代理 () 预览配置服务器的 Azure Arc 时可能发生的问题的信息。 包括配置与服务的连接时的交互式和大规模安装方法。 有关一般信息，请参阅[服务器的 Arc 概述](./overview.md)。
 
 ## <a name="agent-verbose-log"></a>代理详细日志
 
-在遵循本文后面所述的故障排除步骤之前，你需要的最少信息为详细日志。 当使用 verbose （-v）参数时，它包含**azcmagent**工具命令的输出。 日志文件将写入 `%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log` Windows 和 Linux `/var/opt/azcmagent/log/azcmagent.log` 。
+在遵循本文后面所述的故障排除步骤之前，你需要的最少信息为详细日志。 当使用详细 ( v) 参数时，它包含**azcmagent**工具命令的输出。 日志文件将写入 `%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log` Windows 和 Linux `/var/opt/azcmagent/log/azcmagent.log` 。
 
 ### <a name="windows"></a>Windows
 
@@ -90,7 +90,7 @@ azcmagent connect \
 
 如果未在此处看到你遇到的问题，或者无法解决你遇到的问题，请尝试以下途径之一以获取其他支持：
 
-* 通过[Microsoft Q&](https://docs.microsoft.com/answers/topics/azure-arc.html)获取来自 Azure 专家的解答。
+* 通过[Microsoft Q&](/answers/topics/azure-arc.html)获取来自 Azure 专家的解答。
 
 * 连接到 [@AzureSupport](https://twitter.com/azuresupport)，这是用于改进客户体验的官方 Microsoft Azure 帐户。 Azure 支持人员会将你连接到 Azure 社区，从中可以获得解答、支持和专家建议。
 

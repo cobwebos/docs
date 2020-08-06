@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 1687224e796043af1f7c3d1ee6f0417465fb4959
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c464e26419648d396b39718f357bcef7e4fa5552
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317622"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800291"
 ---
 # <a name="create-a-power-bi-app-offer"></a>创建 Power BI 应用服务
 
@@ -55,10 +55,10 @@ ms.locfileid: "87317622"
 
 它包含用于根据你所做的选择对此产品/服务执行操作的链接。 例如：
 
-- 如果产品/服务是草稿版/草稿版[产品](update-existing-offer.md#delete-a-draft-offer)/服务
-- 如果产品/服务是实时的，则[停止销售产品](update-existing-offer.md#stop-selling-an-offer-or-plan)/服务）
-- 如果[产品/服务是预览版）](publishing-status.md#publisher-approval)
-- 如果尚未完成发布服务器注销-[取消发布](update-existing-offer.md#cancel-publishing)）
+- 如果产品/服务是草稿版的草稿[提议](update-existing-offer.md#delete-a-draft-offer)) 
+- 如果产品/服务是实时的，则[停止销售该产品/服务](update-existing-offer.md#stop-selling-an-offer-or-plan)) 
+- 如果[产品/服务为预览版) ](publishing-status.md#publisher-approval)
+- 如果尚未完成发布服务器注销-请[取消发布](update-existing-offer.md#cancel-publishing)) 
 
 ## <a name="offer-setup"></a>产品/服务设置
 
@@ -82,8 +82,8 @@ ms.locfileid: "87317622"
 下面是一些其他顾客连接管理资源：
 
 - [顾客连接管理概述](commercial-marketplace-get-customer-leads.md)
-- [潜在客户管理常见问题](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)）
-- [常见潜在客户配置错误](../lead-management-for-cloud-marketplace.md#publishing-config-errors)）
+- [潜在客户管理常见问题](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)) 
+- [常见的潜在客户配置错误](../lead-management-for-cloud-marketplace.md#publishing-config-errors)) 
 - [顾客连接管理概述](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF（确保弹出窗口阻止程序处于关闭状态）
 
 选择“保存草稿”，然后继续。
@@ -96,7 +96,7 @@ ms.locfileid: "87317622"
 
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
-- 至少一个和多达两个类别，包括主类别和辅助类别（可选）。
+- 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
 - 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
 
 请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
@@ -128,7 +128,7 @@ ms.locfileid: "87317622"
 > [!NOTE]
 > 如果产品/服务说明的开头是“此应用程序仅以 [非英语语言] 推出”，则产品/服务详细信息不必是英语。 还可以提供一个有用的链接，来使用与产品/服务列表中所使用的语言不同的语言提供内容。
 
-以下示例显示了产品/服务信息在 Microsoft AppSource 中的显示方式（任何列出的价格仅用于举例目的，不打算反映实际成本）：
+以下示例显示了产品/服务信息在 Microsoft AppSource 中的显示方式， (所有的价格仅用于举例目的，而不用于反映实际成本) ：
 
 :::image type="content" source="media/example-power-bi-app.png" alt-text="说明了此产品/服务在 Microsoft AppSource 中的显示方式。":::
 
@@ -138,12 +138,12 @@ ms.locfileid: "87317622"
 2. 产品
 3. 类别
 4. 行业
-5. 支持地址（链接）
+5. 支持地址 (链接) 
 6. 使用条款
 7. 隐私策略
 8. 产品名称
-9. 摘要
-10. 说明
+9. 总结
+10. 描述
 11. 屏幕截图/视频
 
 ### <a name="name"></a>名称
@@ -207,11 +207,14 @@ ms.locfileid: "87317622"
 
 #### <a name="store-logos"></a>应用商店徽标
 
-提供两个像素大小的产品/服务徽标的 PNG 文件：
-- 小 (48 x 48)
-- 大图 (216 x 216)
+为**大**徽标 (提供) 216 x 216 和 350 x 350 像素之间的 PNG 文件。 合作伙伴中心将使用此来创建) 大小徽标的**小型** (48 x 48 像素。 您可以选择将其替换为不同的图像。
 
-两种徽标都是必需的，并且在市场列表的不同位置上使用。
+以下两种徽标大小都需要在列表中的不同位置使用：
+
+- 小 (48 x 48)
+- **大型** (216 x 216 和 350 x 350) 
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>屏幕截图
 

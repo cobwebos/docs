@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 8148163dc969920b473f12a7162c6f317d85b3c8
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ff2745a636d25c429a1a40644757c00b28e2668c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503219"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799168"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>在 Azure Marketplace 中创建 Azure 容器服务
 
@@ -95,7 +95,7 @@ ms.locfileid: "87503219"
 
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
-- 至少一个和多达两个类别，包括主类别和辅助类别（可选）。
+- 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
 - 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
 
 请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。 容器始终**显示在 "容器"** 下，然后显示 "**容器映像**" 类别。
@@ -113,7 +113,7 @@ ms.locfileid: "87503219"
 
 若要详细了解标准协定，请参阅 [Microsoft 商业市场的标准协定](../standard-contract.md)。 你还可以下载[标准协定](https://go.microsoft.com/fwlink/?linkid=2041178) PDF（确保弹出窗口阻止程序处于禁用状态）。
 
-若要使用标准协定，请选择 "使用 Microsoft 商业应用商店的标准合同" （。/standard-contract.md）
+若要使用标准合同，请选择 "使用 Microsoft 商业 marketplace 的标准合同" (。/standard-contract.md) 
 
 > [!NOTE]
 > 使用 Microsoft 商业市场的标准协定发布产品/服务后，你将无法使用自己的自定义条款和条件。 要么根据标准协定提供解决方案，要么根据你自己的条款和条件提供解决方案。
@@ -195,14 +195,15 @@ ms.locfileid: "87503219"
 
 #### <a name="store-logos"></a>应用商店徽标
 
- 按以下四个像素大小提供产品/服务徽标的 PNG 文件：
+为**大**徽标 (提供) 216 x 216 和 350 x 350 像素之间的 PNG 文件。 合作伙伴中心将使用此来创建一个**小型** (48 x 48 像素) 和一个**中等** (90 x 90 像素) 大小徽标。 您可以选择将它们替换为不同的图像。
+
+需要在列表中的不同位置使用所有三种徽标尺寸：
 
 - 小图 (48 x 48)
 - 中图 (90 x 90)
-- 大图 (216 x 216)
-- 宽图 (255 x 115)
+- **大型** (216 x 216 和 350 x 350) 
 
-所有四个徽标都是必需的，并且在市场一览中的不同位置上使用。
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>屏幕截图（可选）
 
@@ -250,13 +251,13 @@ ms.locfileid: "87503219"
 
 ### <a name="plan-overview"></a>计划概述
 
-使用此选项卡，可以在相同产品/服务中提供不同的计划选项。 计划（以前称为 Sku）的不同之处在于可用的云，如全球云、政府云和计划引用的映像。 若要在商业市场中列出你的产品/服务，必须至少设置一个计划。
+使用此选项卡，可以在相同产品/服务中提供不同的计划选项。 计划 (以前称为 Sku) 的计划可能不同于云的可用性，如全球云、政府云和计划引用的映像。 若要在商业市场中列出你的产品/服务，必须至少设置一个计划。
 
 创建计划后，“计划概述”选项卡将显示：
 
 - 计划名称
 - 定价模型
-- Azure 区域（全局或政府）
+- Azure 区域 (全局或政府) 
 - 当前发布状态
 - 任何可用操作
 
@@ -354,7 +355,7 @@ Azure 资源组名称 - 提供包含具有容器映像的 Azure 容器注册表�
 
 Azure 容器注册表名称 - 提供包含容器映像的 [Azure 容器注册表](../../container-registry/container-registry-intro.md)的名称。 容器注册表必须位于你之前提供的 Azure 资源组中。 仅包括注册表名称，而不包括完整的登录服务器名称。 请务必从名称中省略 azurecr.io。 可以在 Azure 门户的[“容器注册表”页](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)上找到注册表名称。
 
-**Azure 容器注册表的管理员用户名**–提供[管理员用户名](../../container-registry/container-registry-authentication.md#admin-account)）与包含容器映像的 Azure 容器注册表链接。 用户名和密码是必需的，以确保公司有权访问注册表。 若要获取管理员用户名和密码，请使用 Azure 命令行接口 (CLI) 将“管理员已启用”属性设置为“True”。 在 Azure 门户中，可以视需要选择将“管理员用户”设置为“启用”。
+**Azure 容器注册表的管理员用户名**–提供[管理员用户名](../../container-registry/container-registry-authentication.md#admin-account)) 与具有容器映像的 Azure 容器注册表链接。 用户名和密码是必需的，以确保公司有权访问注册表。 若要获取管理员用户名和密码，请使用 Azure 命令行接口 (CLI) 将“管理员已启用”属性设置为“True”。 在 Azure 门户中，可以视需要选择将“管理员用户”设置为“启用”。
 
  :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="“更新容器注册表”对话框的图示。":::
 

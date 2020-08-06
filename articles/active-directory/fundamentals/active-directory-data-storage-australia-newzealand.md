@@ -2,7 +2,7 @@
 title: 适用于澳大利亚客户的标识数据存储-Azure AD
 description: 了解 Azure Active Directory 为其澳大利亚客户存储标识相关数据的位置。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.author: ajburnle
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 7/21/2020
 ms.custom: it-pro, seodec18, references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 749ee479f19b0855700cf1ca15aefd9b983dd7f7
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 494b949594574a55df405ec0447fa6c59f386f7d
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129536"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799029"
 ---
 # <a name="customer-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>适用于澳大利亚和新西兰的客户数据存储 Azure Active Directory
 
-Azure Active Directory （Azure AD）根据你在注册 Microsoft Online service 时提供的国家/地区将客户数据存储在地理位置。 Microsoft Online services 包括 Office 365 和 Azure。 
+Azure Active Directory (Azure AD) 根据你在注册 Microsoft Online service 时提供的国家/地区将客户数据存储在地理位置。 Microsoft Online services 包括 Office 365 和 Azure。 
 
 有关 Azure AD 和其他 Microsoft 服务数据的位置的信息，请参阅 Microsoft 信任中心的 "[数据的位置](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)" 部分。
 

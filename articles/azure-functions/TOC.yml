@@ -119,7 +119,7 @@
           href: functions-reference-csharp.md
         - name: F#
           href: functions-reference-fsharp.md
-        - name: Javascript
+        - name: JavaScript
           href: functions-reference-node.md
         - name: Java
           href: functions-reference-java.md
@@ -263,7 +263,7 @@
         - name: 本地函数
           href: functions-runtime-install.md
         - name: 使用 Jenkins 插件进行部署
-          href: /azure/jenkins/jenkins-azure-functions-deploy
+          href: /azure/developer/jenkins/deploy-to-azure-functions
           maintainContext: true
     - name: 配置
       items:

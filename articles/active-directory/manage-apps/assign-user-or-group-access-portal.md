@@ -12,12 +12,12 @@ ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2eeab9cbb68567b6af3b1381b8ec5e67e82461ec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 04b0b0120a514591fb4fa23656906203acf443b4
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763731"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799496"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中将用户或组分配到企业应用
 
@@ -26,6 +26,9 @@ ms.locfileid: "84763731"
 为了提高控制度，可将某些类型的企业应用程序配置为[需要进行用户分配](#configure-an-application-to-require-user-assignment)。 
 
 若要[将用户或组分配到企业应用](#assign-users-or-groups-to-an-app-via-the-azure-portal)，需要以全局管理员、应用程序管理员、云应用程序管理员或分配的企业应用所有者身份登录。
+
+> [!IMPORTANT]
+> 向应用程序分配组时，只有该组中的用户具有访问权限。 赋值不会级联到嵌套组。
 
 > [!NOTE]
 > 基于组的分配需要 Azure Active Directory Premium P1 或 P2 版本。 基于组的分配仅支持安全组。 目前不支持嵌套的组成员身份和 Office 365 组。 有关本文中讨论的功能的其他许可要求，请参阅 [Azure Active Directory 定价页](https://azure.microsoft.com/pricing/details/active-directory)。 
@@ -138,7 +141,7 @@ ms.locfileid: "84763731"
 
 1. 运行命令 `$sp.AppRoles`，显示可用于 Workplace Analytics 应用程序的角色。 在此示例中，我们要为 Britta Simon 分配“分析员”（访问权限受限）角色。
 
-   ![显示使用 Workplace Analytics 应用程序的用户可用的角色](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
+   ![显示使用 Workplace Analytics 角色的用户可用的角色](./media/assign-user-or-group-access-portal/workplace-analytics-role.png)
 
 1. 将角色名称分配到 `$app_role_name` 变量。
 
@@ -166,4 +169,4 @@ ms.locfileid: "84763731"
 - [查看所有组](../fundamentals/active-directory-groups-view-azure-portal.md)
 - [删除企业应用的用户或组分配](remove-user-or-group-access-portal.md)
 - [禁用企业应用的用户登录](disable-user-sign-in-portal.md)
-- [更改企业应用的名称或徽标](change-name-or-logo-portal.md)
+- [Change the name or logo of an enterprise app](change-name-or-logo-portal.md)

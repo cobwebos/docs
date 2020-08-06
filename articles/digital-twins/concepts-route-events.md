@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: b7d62777f73a92768b1ede3fb9b7e0cb97951823
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 394752792d143a3712d0bb9c50189936f23062f1
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537481"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800460"
 ---
 # <a name="route-events-within-and-outside-of-azure-digital-twins"></a>在 Azure 数字孪生内部和外部路由事件
 
@@ -20,8 +20,8 @@ Azure 数字孪生使用**事件路由**将数据发送到服务外的使用者�
 
 在预览期间，有两种用于发送 Azure 数字孪生数据的主要案例：
 * 将 Azure 数字孪生图中的一个单元中的数据发送到另一个。 例如，当一个数字上的属性发生变化时，你可能需要相应地通知和更新其他数字输出。
-* 将数据发送到下游数据服务，以便进行额外的存储或处理（也称为*数据出口*）。 例如，
-  - 医院可能想要将 Azure 数字孪生事件数据发送到[时序见解（TSI）](../time-series-insights/time-series-insights-update-overview.md)，以便记录用于大容量分析的 handwashing 相关事件的时序数据。
+* 向下游数据服务发送数据以进行额外的存储或处理 (也称为*数据传出*) 。 例如，
+  - 医院可能想要将 Azure 数字孪生事件数据发送到[时序见解 (TSI) ](../time-series-insights/time-series-insights-update-overview.md)，为大容量分析记录 handwashing 相关事件的时序数据。
   - 已使用[Azure Maps](../azure-maps/about-azure-maps.md)的企业可能想要使用 Azure 数字孪生来增强其解决方案。 在设置 Azure 数字孪生后，它们可以快速启用 Azure 映射，将 Azure 地图实体作为单元中的[数字孪生](concepts-twins-graph.md)引入 Azure 数字孪生，或运行功能强大的查询，利用它们 Azure Maps 和 Azure 数字孪生数据。
 
 事件路由用于这两种情况。
@@ -55,9 +55,9 @@ Azure 数字孪生使用**事件路由**将数据发送到服务外的使用者�
 * 事件中心
 * 服务总线
 
-使用控制平面 Api （由[Azure 数字孪生 CLI](how-to-use-cli.md)或通过 Azure 门户来设置终结点。 终结点定义提供：
+使用控制平面 Api 设置终结点 (受[Azure 数字孪生 CLI](how-to-use-cli.md)或 Azure 门户支持。 终结点定义提供：
 * 终结点的名称
-* 终结点类型（事件网格、事件中心或服务总线）
+* 终结点类型 (事件网格、事件中心或服务总线) 
 * 要进行身份验证的主连接字符串和辅助连接字符串 
 * 终结点的主题路径，例如*your-topic.westus2.eventgrid.azure.net*
 
@@ -69,7 +69,7 @@ Azure 数字孪生使用**事件路由**将数据发送到服务外的使用者�
 
 ## <a name="create-an-event-route"></a>创建事件路由
  
-使用以下[.net （c #） SDK](how-to-use-apis-sdks.md)调用在客户端应用程序中创建事件路由： 
+在客户端应用程序中使用以下[.net (c # ) SDK](how-to-use-apis-sdks.md)调用创建事件路由： 
 
 ```csharp
 await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<endpoint-name>"));
@@ -77,7 +77,7 @@ await client.EventRoutes.AddAsync("<name-for-the-new-route>", new EventRoute("<e
 
 * `endpoint-name`标识终结点，如事件中心、事件网格或服务总线。 在进行此注册调用之前，必须在订阅中创建这些终结点，并使用控制平面 Api 将这些终结点附加到 Azure 数字孪生。
 
-传递给的事件路由对象 `EventRoutes.Add` 还采用[**筛选器**参数](./how-to-manage-routes.md#filter-events)，该参数可用于限制跟随此路由的事件类型。
+传递给的事件路由对象 `EventRoutes.Add` 还采用[**筛选器**参数](./how-to-manage-routes-apis-cli.md#filter-events)，该参数可用于限制跟随此路由的事件类型。
 
 还可以使用[Azure 数字孪生 CLI](how-to-use-cli.md)创建路由。
 
@@ -90,7 +90,7 @@ IoT 中心和 Azure 数字孪生中的不同类型的事件会生成不同类型
 ## <a name="next-steps"></a>后续步骤
 
 请参阅如何设置和管理事件路由：
-* [*操作说明：管理终结点和路由*](how-to-manage-routes.md)
+* [*操作说明：管理终结点和路由*](how-to-manage-routes-apis-cli.md)
 
 或者，请参阅如何使用 Azure Functions 在 Azure 数字孪生中路由事件：
 * [*如何：设置用于处理数据的 Azure 函数*](how-to-create-azure-function.md)

@@ -3,7 +3,7 @@ title: 在授权管理中创建新的访问包-Azure AD
 description: 了解如何创建要在 Azure Active Directory 授权管理中共享的新资源访问包。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d54c4e5980383c721629143910eafbd5ae6a527
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64f5c88de72bcd241f0cd42d338acbe707de6f34
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078945"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798777"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权限管理中创建新的访问包
 
@@ -67,7 +67,7 @@ ms.locfileid: "85078945"
    
     ![Azure 门户中的权利管理](./media/entitlement-management-shared/access-packages-list.png)
 
-## <a name="basics"></a>基础
+## <a name="basics"></a>基本信息
 
 在“基本信息”选项卡上指定访问包的名称，并指定要在哪个目录中创建该访问包。****
 
@@ -89,7 +89,7 @@ ms.locfileid: "85078945"
 
 在“资源角色”选项卡上，选择要包含在访问包中的资源。**** 请求并接收访问包的用户将接收访问包中的所有资源角色。
 
-1. 单击要添加的资源类型（**组和团队**、**应用程序**或**SharePoint 站点**）。
+1. 单击要添加 (**组和团队**、**应用程序**或**SharePoint 站点**) 的资源类型。
 
 1. 在出现的“选择”窗格中，从列表中选择一个或多个资源。
 
@@ -107,7 +107,7 @@ ms.locfileid: "85078945"
 
 1. 单击“下一步” 。
 
-## <a name="requests"></a>Requests
+## <a name="requests"></a>请求
 
 在 "**请求**" 选项卡上，可以创建第一个策略来指定谁可以请求访问包和审批设置。 稍后，你可以创建更多的请求策略，以允许其他用户组使用其自己的审批设置来请求访问包。
 
@@ -119,7 +119,7 @@ ms.locfileid: "85078945"
 
 [!INCLUDE [Entitlement management lifecycle policy](../../../includes/active-directory-entitlement-management-lifecycle-policy.md)]
 
-## <a name="review--create"></a>查看 + 创建
+## <a name="review--create"></a>审阅 + 创建
 
 在“查看 + 创建”选项卡上，可以查看设置并检查是否存在任何验证错误。****
 

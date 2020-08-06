@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/23/2020
+ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 5181cc0f6457c5eb98cca828ecb91c52f47f3fbe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f150d6abf2ac6a423a99d3347df9bf0adc9b294b
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87273480"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809925"
 ---
-# <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors-preview"></a>教程：配置从 Azure AD 到 SAP SuccessFactors （预览版）的属性回写
+# <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>教程：配置从 Azure AD 到 SAP SuccessFactors 的属性回写
 本教程的目的是介绍将 Azure AD 的属性写回到 SAP SuccessFactors Employee Central 的步骤。 
 
 ## <a name="overview"></a>概述
@@ -30,9 +30,9 @@ ms.locfileid: "87273480"
 
 * 工作电子邮件
 * 用户名
-* 业务电话号码（包括国家/地区代码、区号、数字和分机号码）
+* 办公电话号码 (包括国家/地区代码、区号、数字和分机) 
 * 业务电话号码主要标志
-* 手机号码（包括国家/地区代码、区号、数字）
+* 手机号码 (包括国家/地区代码、区号、数字) 
 * 手机主标志 
 * User custom01-custom15 属性
 * loginMethod 特性
@@ -44,7 +44,7 @@ ms.locfileid: "87273480"
 
 此 SuccessFactors 写回用户预配解决方案非常适合用于：
 
-* 使用 Office 365 的组织希望将它管理的权威属性（如电子邮件地址、电话、用户名）写回 SuccessFactors 员工中心。
+* 使用 Office 365 的组织希望将它管理的权威属性写入 (如电子邮件地址、电话、用户名) 返回到 SuccessFactors Employee Central。
 
 ## <a name="configuring-successfactors-for-the-integration"></a>为集成配置 SuccessFactors
 
@@ -148,7 +148,7 @@ SuccessFactors 写回预配应用程序使用特定的*代码*值在 Employee Ce
 
 ### <a name="retrieve-constant-value-for-emailtype"></a>检索 emailType 的常量值
 
-1. 在 Postman 中，单击与 SuccessFactors 集合关联的省略号（...），然后添加一个名为 "获取电子邮件类型" 的 "新请求"，如下所示。 
+1. 在 Postman 中，单击与 SuccessFactors 集合关联的省略号 ( ... ) 并添加名为 "获取电子邮件类型" 的 "新请求"，如下所示。 
 
    > [!div class="mx-imgBorder"]
    > ![Postman 电子邮件请求](./media/sap-successfactors-inbound-provisioning/postman-email-request.png)
@@ -171,7 +171,7 @@ SuccessFactors 写回预配应用程序使用特定的*代码*值在 Employee Ce
 
 ### <a name="retrieve-constant-value-for-phonetype"></a>检索 phoneType 的常量值
 
-1. 在 Postman 中，单击与 SuccessFactors 集合关联的省略号（...），然后添加名为 "获取电话类型" 的 "新请求"，如下所示。 
+1. 在 Postman 中，单击与 SuccessFactors 集合关联的省略号 ( ... ) 并添加名为 "获取电话类型" 的 "新请求"，如下所示。 
 
    > [!div class="mx-imgBorder"]
    > ![Postman 电话请求](./media/sap-successfactors-inbound-provisioning/postman-phone-request.png)
@@ -255,13 +255,13 @@ SuccessFactors 写回预配应用程序使用特定的*代码*值在 Employee Ce
    | 1 | employeeId | personIdExternal | 默认情况下，此属性是匹配的标识符。 你可以使用任何其他 Azure AD 属性，而不是使用雇员可在 SuccessFactors 中存储等于 personIdExternal 的值。    |
    | 2 | mail | 电子邮件 | 地图电子邮件属性源。 出于测试目的，可以将 userPrincipalName 映射到电子邮件。 |
    | 3 | 8448 | emailType | 此常数值是与业务电子邮件关联的 SuccessFactors ID 值。 更新此值以与 SuccessFactors 环境匹配。 有关设置此值的步骤，请参阅为[EmailType 检索常数值](#retrieve-constant-value-for-emailtype)部分。 |
-   | 4 | true | emailIsPrimary | 使用此属性将业务电子邮件设置为 SuccessFactors 中的主电子邮件。 如果业务电子邮件不是主电子邮件，请将此标志设置为 false。 |
+   | 4 | 是 | emailIsPrimary | 使用此属性将业务电子邮件设置为 SuccessFactors 中的主电子邮件。 如果业务电子邮件不是主电子邮件，请将此标志设置为 false。 |
    | 5 | userPrincipalName | [custom01 – custom15] | 使用 "**添加新映射**"，可以选择将 userPrincipalName 或任何 Azure AD 属性写入 SuccessFactors 用户对象中提供的自定义属性。  |
    | 6 | 本地-samAccountName | username | 使用 "**添加新映射**"，可以选择将本地 samAccountName 映射到 SuccessFactors username 属性。 |
    | 7 | SSO | loginMethod | 如果为[部分 SSO](https://apps.support.sap.com/sap/support/knowledge/en/2320766)设置 SuccessFactors 租户，然后使用 "添加新映射"，则可以选择将 loginMethod 设置为常量值 "SSO" 或 "PWD"。 |
    | 8 | telephoneNumber | businessPhoneNumber | 使用此映射可将*telephoneNumber*从 Azure AD 流到 SuccessFactors 业务/工作电话号码。 |
    | 9 | 10605 | businessPhoneType | 此常数值是与 business phone 关联的 SuccessFactors ID 值。 更新此值以与 SuccessFactors 环境匹配。 有关设置此值的步骤，请参阅为[PhoneType 检索常数值](#retrieve-constant-value-for-phonetype)部分。 |
-   | 10 | true | businessPhoneIsPrimary | 使用此属性设置业务电话号码的主要标志。 有效值为 true 或 false。 |
+   | 10 | 是 | businessPhoneIsPrimary | 使用此属性设置业务电话号码的主要标志。 有效值为 true 或 false。 |
    | 11 | mobile | cellPhoneNumber | 使用此映射可将*telephoneNumber*从 Azure AD 流到 SuccessFactors 业务/工作电话号码。 |
    | 12 | 10606 | cellPhoneType | 此常数值是与手机关联的 SuccessFactors ID 值。 更新此值以与 SuccessFactors 环境匹配。 有关设置此值的步骤，请参阅为[PhoneType 检索常数值](#retrieve-constant-value-for-phonetype)部分。 |
    | 13 | false | cellPhoneIsPrimary | 使用此属性设置手机号码的主要标志。 有效值为 true 或 false。 |
@@ -283,7 +283,7 @@ SuccessFactors 写回预配应用程序使用特定的*代码*值在 Employee Ce
    > 如果 Azure 门户中未显示 "**编辑属性的属性列表**" 选项，请使用 URL *https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true* 来访问该页面。 
 
 1. 此视图中的 " **API 表达式**" 列显示连接器使用的 JSON 路径表达式。 
-1. 更新业务电话和手机的 JSON 路径表达式，以使用与你的环境相对应的 ID 值（*businessPhoneType*和*cellPhoneType*）。 
+1. 更新业务电话和手机的 JSON 路径表达式，以使用与你的环境相对应 (*businessPhoneType*和*CELLPHONETYPE*) 的 ID 值。 
 
     >[!div class="mx-imgBorder"]
     >![手机 JSON 路径更改](./media/sap-successfactors-inbound-provisioning/phone-json-path-change.png)
