@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.custom: mvc, tracking-python
+ms.custom: mvc, tracking-python, devx-track-javascript
 ms.subservice: blobs
-ms.openlocfilehash: f7c3ebb1a68d671f63e3239794266c8c24f5906a
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 60829e7755c31fdc5204b74c278b8eed21946c60
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553201"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432651"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>教程：使用 Blob 存储构建高度可用的应用程序
 

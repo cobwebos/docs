@@ -8,16 +8,16 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cf01e4baf96e4403dae443fa6c98f74c571641a8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2b88c053e1f9029f916d9a180221a3bb58629608
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508308"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87448871"
 ---
 # <a name="tutorial-monitor-changes-and-update-a-windows-virtual-machine-in-azure"></a>教程：监视更改和更新 Azure 中的 Windows 虚拟机
 
-借助 Azure [更改跟踪](../../automation/change-tracking.md)和[更新管理](../../automation/automation-update-management.md)，可以轻松地识别 Azure 中 Windows 虚拟机中的更改并管理这些 VM 的操作系统更新。
+借助 Azure [更改跟踪](../../automation/change-tracking.md)和[更新管理](../../automation/update-management/update-mgmt-overview.md)，可以轻松地识别 Azure 中 Windows 虚拟机中的更改并管理这些 VM 的操作系统更新。
 
 本教程介绍如何执行下列操作：
 
@@ -112,10 +112,10 @@ New-AzVm `
 | --- | --- |
 | **名称** |输入用于标识更新部署的唯一名称。 |
 |**操作系统**| 选择 Linux 或 Windows 。|
-| **要更新的组** |对于在 Azure 上托管的 VM，应基于订阅、资源组、位置和标记的组合定义查询。 此查询将生成要包含在你的部署中的 Azure 托管 VM 的动态组。 </br></br>对于未托管在 Azure 上的 VM，请选择现有的已保存搜索。 使用此搜索，可以选择要包括在部署中的一组 VM。 </br></br> 有关详细信息，请参阅[动态组](../../automation/automation-update-management-groups.md)。|
+| **要更新的组** |对于在 Azure 上托管的 VM，应基于订阅、资源组、位置和标记的组合定义查询。 此查询将生成要包含在你的部署中的 Azure 托管 VM 的动态组。 </br></br>对于未托管在 Azure 上的 VM，请选择现有的已保存搜索。 使用此搜索，可以选择要包括在部署中的一组 VM。 </br></br> 有关详细信息，请参阅[动态组](../../automation/update-management/update-mgmt-groups.md)。|
 | **要更新的计算机** |请选择“已保存的搜索”、“已导入的组”或“计算机”  。<br/><br/>如果选择“计算机”，则可以从下拉列表中选择单个计算机。 每台计算机的准备情况将显示在表的“更新代理准备情况”列中。</br></br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../../azure-monitor/platform/computer-groups.md) |
 |**更新分类**|选择所有必需的更新分类。|
-|**包括/排除更新**|选择此选项可打开“包括/排除”窗格。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的详细信息，请参阅[计划更新部署](../../automation/automation-tutorial-update-management.md#schedule-an-update-deployment)。 |
+|**包括/排除更新**|选择此选项可打开“包括/排除”窗格。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的详细信息，请参阅[计划更新部署](../../automation/update-management/update-mgmt-deploy-updates.md#schedule-an-update-deployment)。 |
 |**计划设置**|选择启动时间，然后选择“一次”或“定期” 。|
 | **前脚本 + 后脚本**|选择要在部署前和部署后运行的脚本。|
 | **维护时段** | 输入为更新设置的分钟数。 有效值范围为 30 至 360 分钟。 |

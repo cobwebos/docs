@@ -14,12 +14,13 @@ ms.workload: identity
 ms.date: 07/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 45601e820bc03b263fbf664a43ce34266dc4a488
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.custom: azuread-video-2020
+ms.openlocfilehash: cb77bfb6173e94ea3cdaadf4456947de75676565
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171578"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761121"
 ---
 # <a name="what-is-azure-role-based-access-control-azure-rbac"></a>什么是 Azure 基于角色的访问控制 (Azure RBAC)？
 
@@ -76,7 +77,7 @@ Azure 包含多个可用的[内置角色](built-in-roles.md)。 下面列出了�
 
 Azure 具有数据操作，通过这些操作可以授予对对象内数据的访问权限。 例如，如果某个用户对某个存储帐户拥有读取数据的访问权限，则该用户可以读取该存储帐户中的 Blob 或消息。 有关详细信息，请参阅[了解 Azure 角色定义](role-definitions.md)。
 
-### <a name="scope"></a>作用域
+### <a name="scope"></a>范围
 
 范围是访问权限适用于的资源集。 分配角色时，可以通过定义范围来进一步限制允许的操作。 若要将某人分配为[网站参与者](built-in-roles.md#website-contributor)，但只针对一个资源组执行此分配，则可使用范围。
 
@@ -136,7 +137,6 @@ Azure 具有数据操作，通过这些操作可以授予对对象内数据的�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [快速入门：查看用户对 Azure 资源的访问权限](check-access.md)
 - [使用 Azure 门户添加或删除 Azure 角色分配](role-assignments-portal.md)
 - [了解不同角色](rbac-and-directory-admin-roles.md)
 - [云采用框架：Azure 中的资源访问管理](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management)

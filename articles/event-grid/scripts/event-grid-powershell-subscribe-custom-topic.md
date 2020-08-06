@@ -4,12 +4,12 @@ description: 本文提供了一个示例 Azure PowerShell 脚本，演示如何�
 ms.devlang: powershell
 ms.topic: sample
 ms.date: 07/08/2020
-ms.openlocfilehash: 89917554da3d5b338ae17332ea8847d6313ca534
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: f37a90b84e5e55298efc0b3cd53812db95e4d86d
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171170"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460722"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-powershell"></a>使用 PowerShell 订阅自定义主题的事件
 
@@ -37,9 +37,9 @@ ms.locfileid: "86171170"
 
 | Command | 说明 |
 |---|---|
-| [New-AzEventGridSubscription](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridsubscription) | 创建事件网格订阅。 |
+| [New-AzEventGridSubscription](/powershell/module/az.eventgrid/new-azeventgridsubscription) | 创建事件网格订阅。 |
 
 ## <a name="next-steps"></a>后续步骤
 
 * 有关托管应用程序的简介，请参阅 [Azure 托管应用程序概述](../overview.md)。
-* 有关 PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
+* 有关 PowerShell 的详细信息，请参阅 [Azure PowerShell 文档](/powershell/azure/get-started-azureps)。

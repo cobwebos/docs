@@ -7,15 +7,15 @@ ms.subservice: networking
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 12/04/2018
+ms.date: 08/04/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 5ae3f3dd31ad7a98a1b4a3d5ed00b568d1f8ed47
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 84da38fe71446c54f17c4d4329c7294c5e5176d2
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508060"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87800188"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>教程：使用 Azure PowerShell 为 Windows 虚拟机创建和管理 Azure 虚拟网络
 
@@ -277,7 +277,7 @@ New-AzVM `
 > * 创建虚拟网络和子网
 > * 创建公共 IP 地址
 > * 创建前端 VM
-> * 保护网络流量的安全
+> * 安全的网络流量
 > * 创建后端 VM
 
 请继续学习下一教程，了解如何使用 Azure 备份监视和保护虚拟机上的数据。

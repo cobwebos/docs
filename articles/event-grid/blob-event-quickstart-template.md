@@ -3,12 +3,12 @@ title: 将 Blob 存储事件发送到 Web 终结点 - 模板
 description: 使用 Azure 事件网格和 Azure 资源管理器模板创建 Blob 存储帐户并订阅其事件。 将事件发送到 Webhook。
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: 603d6bf11f2ec6988d52e69817bddf2fd3ccf3b3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e1d266f747671542059e0610cfcdd8cd12594e51
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86103307"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460433"
 ---
 # <a name="route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>使用 ARM 模板将 Blob 存储事件路由到 Web 终结点
 
@@ -86,7 +86,7 @@ Azure 事件网格是针对云的事件处理服务。 本文将使用 Azure 资
 
 有关 Azure 资源管理器模板的详细信息，请参阅以下文章：
 
-* [Azure 资源管理器文档](/azure/azure-resource-manager)
+* [Azure 资源管理器文档](../azure-resource-manager/index.yml)
 * [在 Azure 资源管理器模板中定义资源](/azure/templates/)
 * [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/)
 * [Azure 事件网格概述](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid)。
