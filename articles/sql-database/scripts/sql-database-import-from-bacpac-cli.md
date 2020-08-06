@@ -4,19 +4,19 @@ description: 将 BACPAC 文件导入 Azure SQL 数据库中的数据库的 Azure
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
-ms.custom: load & move data
+ms.custom: load & move data, devx-track-azurecli
 ms.devlang: azurecli
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/24/2019
-ms.openlocfilehash: 6477d8f59d66c053ced4ceebed98082d51f92c2f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a8c544f1d3b7d1255cf5a0e6d05975ea5f5ec203
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076006"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503797"
 ---
 # <a name="use-cli-to-import-a-bacpac-file-into-a-database-in-sql-database"></a>使用 CLI 将 BACPAC 文件导入 SQL 数据库中的数据库
 
@@ -46,7 +46,7 @@ az group delete --name $resource
 
 此脚本使用以下命令。 表中的每条命令均链接到特定于命令的文档。
 
-| 命令 | 说明 |
+| Command | 说明 |
 |---|---|
 | [az sql server](/cli/azure/sql/server) | 服务器命令。 |
 | [az sql db import](/cli/azure/sql/db#az-sql-db-import) | 数据库导入命令。 |

@@ -10,15 +10,15 @@ keywords: Azure 媒体服务, 流式传输
 ms.service: media-services
 ms.workload: media
 ms.topic: tutorial
-ms.custom: ''
+ms.custom: devx-track-azurecli
 ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 91259e10966173cb701b867f5b3ed362112beef3
-ms.sourcegitcommit: e040ab443f10e975954d41def759b1e9d96cdade
+ms.openlocfilehash: 5a90e1fdc50a6e2b1544a06f587362bf43b80369
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2020
-ms.locfileid: "80382777"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504443"
 ---
 # <a name="tutorial-encode-a-remote-file-based-on-url-and-stream-the-video---azure-cli"></a>教程：基于 URL 对远程文件进行编码并流式传输视频 - Azure CLI
 
@@ -334,8 +334,8 @@ az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 > 如果播放器托管在 HTTPS 站点上，请确保在 URL 的开头添加“https”。
 
 1. 打开 Web 浏览器并转到 [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/)。
-2. 在“URL”框中，粘贴在上一部分生成的 URL。  可以粘贴 HLS、Dash 或 Smooth 格式的 URL。 Azure Media Player 将自动使用相应的流协议在设备上播放。
-3. 选择“更新播放器”。 
+2. 在“URL”框中，粘贴在上一部分生成的 URL。 可以粘贴 HLS、Dash 或 Smooth 格式的 URL。 Azure Media Player 将自动使用相应的流协议在设备上播放。
+3. 选择“更新播放器”。
 
 >[!NOTE]
 >Azure Media Player 可用于测试，但不可在生产环境中使用。

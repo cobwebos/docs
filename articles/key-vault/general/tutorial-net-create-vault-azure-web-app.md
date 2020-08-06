@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4e236be298f92506e40a7f5197b2abeb065e7eed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a198456412c3146db2bc3e2a2483377e387f452d
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013260"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87513326"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>教程：使用托管标识将 Key Vault 连接到 .NET Azure Web 应用
 
@@ -53,11 +53,7 @@ az keyvault create --name "<your-keyvault-name>" -g "myResourceGroup"
 
 记下返回的 `vaultUri`（其格式将为“https://&lt;your-keyvault-name&gt;.vault.azure.net/”）。 它将在[更新代码](#update-the-code)步骤中使用。
 
-现在可以使用 [az keyvault secret set](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-set) 命令将机密放入密钥保管库中。 将机密名称设置为“MySecret”，将值设置为 "Success!"。
-
-```azurecli-interactive
-az keyvault secret set --vault-name "<your-keyvault-name>" --name "MySecret" --value "Success!"
-```
+[!INCLUDE [Create a secret](../../../includes/key-vault-create-secret.md)]
 
 ## <a name="create-a-net-web-app"></a>创建 .NET Web 应用
 

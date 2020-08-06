@@ -9,12 +9,13 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 04/22/2020
 ms.author: sudbalas
-ms.openlocfilehash: 19a7cf2ec3a8a7a95952fcebfcf3a127c4dfd013
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: d416c6fdef85b83d91ca0e341659f87618d268e0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84792177"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504511"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>配置 Azure Key Vault 防火墙和虚拟网络
 
@@ -27,7 +28,7 @@ ms.locfileid: "84792177"
 > 注意以下配置限制：
 > * 最多允许 127 条虚拟网络规则和 127 条 IPv4 规则。 
 > * 不支持使用“/31”或“/32”前缀大小的小型地址范围。 改为使用单独的 IP 地址规则配置这些范围。
-> * IP 网络规则仅适用于公共 IP 地址。 IP 规则不允许为专用网络保留的 IP 地址范围（如 RFC 1918 中所定义）。 专用网络包括以 10.、172.16-31 和 192.168. 开头的地址  。 
+> * IP 网络规则仅适用于公共 IP 地址。 IP 规则不允许为专用网络保留的 IP 地址范围（如 RFC 1918 中所定义）。 专用网络包括以 **10.** 、**172.16-31** 和 **192.168.** 开头的地址。 
 > * 目前仅支持 IPv4 地址。
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
@@ -41,7 +42,7 @@ ms.locfileid: "84792177"
 5. 在打开的新边栏选项卡中，选择可访问此 Key Vault 的订阅、虚拟网络和子网。 如果虚拟网络和选择的子网没有启用服务终结点，确认想要启用服务终结点，并选择“启用”。 此操作最多可能需要 15 分钟才能生效。
 6. 在“IP 网络”下，可通过采用 [CIDR（无类域间路由）表示法](https://tools.ietf.org/html/rfc4632)键入 IPv4 地址范围或单个 IP 地址来添加 IPv4 地址范围。
 7. 如果要允许 Microsoft 信任的服务跳过 Key Vault 防火墙，请选择“是”。 有关当前 Key Vault 信任的服务的完整列表，请参阅以下链接。 [Azure Key Vault 信任的服务](https://docs.microsoft.com/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services)
-7. 选择“保存”。
+7. 选择“保存” 。
 
 还可添加新的虚拟网络和子网，然后通过选择“+ 添加新的虚拟网络”，为新创建的虚拟网络和子网启用服务终结点。 然后遵照提示操作。
 

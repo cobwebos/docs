@@ -6,13 +6,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: devx-track-java
-ms.openlocfilehash: 26748b6847ab7061b0038ef9ca18f1b721d320e0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-java, devx-track-azurecli
+ms.openlocfilehash: e962047c08dec336ba293aee96eadc0c96d1fc0f
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320759"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87504460"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>快速入门：使用 Azure CLI 创建服务总线队列
 本快速入门介绍了如何使用 Azure CLI 和服务总线 Java 库通过服务总线来发送和接收消息。 最后，如果对更多的技术细节感兴趣，可以[阅读说明](#understand-the-sample-code)，了解示例代码的重要元素。

@@ -1,17 +1,17 @@
 ---
 title: 教程：接受和接收数据 - Azure Data Share
 description: 教程 - 使用 Azure Data Share 接受和接收数据
-author: joannapea
-ms.author: joanpo
+author: jifems
+ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 07/10/2019
-ms.openlocfilehash: 4dff48f909cd3febbbb7e92dcf96070020b8f57c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 07/30/2020
+ms.openlocfilehash: 999d99b0ed4701eb6758ed0bf7a71ca625e622b5
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82145137"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512085"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>教程：使用 Azure Data Share 接受和接收数据  
 
