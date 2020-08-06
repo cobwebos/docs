@@ -14,12 +14,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 68dbeba62f5b59e2c047c7f403e7c50e7325e8ad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 5a28cabfbc5cbba906a8c16451de801818b3fbed
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092110"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489956"
 ---
 # <a name="azure-cli-example-upload-a-local-file-to-a-container"></a>Azure CLI 示例：将本地文件上传到容器
 

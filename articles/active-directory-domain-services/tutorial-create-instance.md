@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: 28c56b7ece51e39d72c4ddff39d681eeb57d2252
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: dc225cef2981bd6307a919d52b75d3e0791e46cf
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86024717"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87490994"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-managed-domain"></a>教程：创建和配置 Azure Active Directory 域服务托管域
 
@@ -56,7 +56,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 若要启动“启用 Azure AD 域服务”向导，请完成以下步骤：
 
 1. 在 Azure 门户菜单或“主页”页上，选择“创建资源” 。
-1. 在搜索栏中输入“域服务”，然后从搜索建议中选择“Azure AD 域服务”。 
+1. 在搜索栏中输入“域服务”，然后从搜索建议中选择“Azure AD 域服务”。
 1. 在“Azure AD 域服务”页上选择“创建”。 “启用 Azure AD 域服务”向导随即启动。
 1. 选择要在其中创建托管域的 Azure“订阅”。
 1. 选择托管域应属于的“资源组”。 选择“新建”，或选择现有的资源组。
@@ -99,7 +99,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
     对于本教程，请选择“标准”SKU。
 1. 林是 Active Directory 域服务用来对一个或多个域进行分组的逻辑构造。 默认情况下，托管域作为用户林创建。 此类林可同步 Azure AD 中的所有对象，包括在本地 AD DS 环境中创建的所有用户帐户。
 
-    *资源*林仅同步直接在 Azure AD 中创建的用户和组。 资源林目前处于预览状态。 有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]。
+    *资源*林仅同步直接在 Azure AD 中创建的用户和组。 有关资源林的详细信息，包括为何使用资源林以及如何创建本地 AD DS 域的林信任，请参阅 [Azure AD DS 资源林概述][resource-forests]。
 
     对于本教程，请选择创建用户林。
 
@@ -138,7 +138,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
 成功部署 Azure AD DS 后，请配置虚拟网络，以允许其他连接的 VM 和应用程序使用托管域。 若要提供此连接，请更新虚拟网络的 DNS 服务器设置，以指向部署托管域的两个 IP 地址。
 
-1. 托管域的“概述”选项卡显示了一些“必需的配置步骤”。  第一个配置步骤是更新虚拟网络的 DNS 服务器设置。 正确配置 DNS 设置后，不再会显示此步骤。
+1. 托管域的“概述”选项卡显示了一些“必需的配置步骤”。 第一个配置步骤是更新虚拟网络的 DNS 服务器设置。 正确配置 DNS 设置后，不再会显示此步骤。
 
     列出的地址是在虚拟网络中使用的域控制器。 在本示例中，这些地址为 *10.0.2.4* 和 *10.0.2.5*。 稍后可在“属性”选项卡上找到这些 IP 地址。
 
@@ -180,7 +180,7 @@ Azure Active Directory 域服务 (Azure AD DS) 提供与 Windows Server Active D
 
     ![选择配置文件](./media/tutorial-create-instance/select-profile.png)
 
-1. 在“个人资料”页上，选择“更改密码”。 
+1. 在“个人资料”页上，选择“更改密码”。
 1. 在“更改密码”页上输入现有（旧）密码，然后输入并确认新密码。
 1. 选择“提交”。
 

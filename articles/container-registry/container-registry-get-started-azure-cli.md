@@ -3,13 +3,13 @@ title: 快速入门 - 创建注册表 - Azure CLI
 description: 快速了解如何使用 Azure CLI 创建专用 Docker 容器注册表。
 ms.topic: quickstart
 ms.date: 06/12/2020
-ms.custom: seodec18, H1Hack27Feb2017, mvc
-ms.openlocfilehash: 31e917fa306330ca579266e21560d7d42c7f2bc7
-ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
+ms.custom: seodec18, H1Hack27Feb2017, mvc, devx-track-azurecli
+ms.openlocfilehash: f4e69616d30c6a7b853c5cc854adee147ebde206
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84752465"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486538"
 ---
 # <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建专用容器注册表
 

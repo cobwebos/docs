@@ -2,16 +2,16 @@
 title: 快速入门 - 使用 Maven 和 Jib 生成 Java 容器映像并将其推送到 Azure 容器注册表
 description: 使用 Maven Jib 插件生成容器化 Java 应用并将其推送到 Azure 容器注册表。
 author: KarlErickson
-ms.custom: devx-track-java
+ms.custom: devx-track-java, devx-track-azurecli
 ms.author: karler
 ms.topic: quickstart
 ms.date: 02/26/2020
-ms.openlocfilehash: 9310fb92b4b0ad1163d343f13daf42c15923ec20
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e87e2d59dd70fbf96c04d9cd467594aa6576639b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327406"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501298"
 ---
 # <a name="quickstart-build-and-push-java-container-images-to-azure-container-registry"></a>快速入门：生成 Java 容器映像并将其推送到 Azure 容器注册表
 

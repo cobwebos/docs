@@ -3,12 +3,13 @@ title: 教程 - 使用 CLI 在 Azure 上还原 SAP HANA DB
 description: 在本教程中，你将了解如何使用 Azure CLI 从 Azure 备份恢复服务保管库还原 Azure VM 上运行的 SAP HANA 数据库。
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 617c21d8c62ed83678f6fc99741409e82eb3c0b1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 282f0ee61ffae455d6d3e49ea445d5ddc2fe56ac
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023919"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500821"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 还原 Azure VM 中的 SAP HANA 数据库
 

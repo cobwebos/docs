@@ -14,12 +14,13 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: 016e187c2ae41958b9527b88b06517b5f5544c7b
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 9e0fcf4a973be1fe2c753e7606c6628eaeefaae8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84707882"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87486776"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli"></a>教程：使用 Azure CLI 创建 NAT 网关
 

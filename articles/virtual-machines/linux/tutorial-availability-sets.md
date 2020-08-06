@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: tutorial
 ms.date: 01/17/2020
 ms.author: cynthn
-ms.custom: mvc
-ms.openlocfilehash: 1a651ccd825d4a3d7add632eae74ac22a40f1b37
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: e04f6120f7d9a5646a3b30553b5083c5259acae2
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86501817"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499630"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和部署高度可用的虚拟机
 

@@ -5,12 +5,13 @@ ms.date: 06/23/2020
 ms.topic: tutorial
 author: spelluru
 ms.author: spelluru
-ms.openlocfilehash: 5340ec8d3d7a479fb349ce5ed1d32f917668d0d8
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: cdbde84780ed7c64f9ad3f4284a74261d2f4a728
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341000"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500447"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>教程：使用 CLI 和主题/订阅更新库存
 
@@ -326,7 +327,7 @@ public CompletableFuture<Void> receiveAllMessageFromSubscription(String subscrip
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已使用 Azure CLI 预配了资源，然后从服务总线主题及其订阅发送并接收了消息。 你已了解如何执行以下操作：
+在本教程中，你已使用 Azure CLI 预配了资源，然后从服务总线主题及其订阅发送并接收了消息。 你已了解如何：
 
 > [!div class="checklist"]
 > * 使用 Azure 门户创建一个服务总线主题和一个或多个对该主题的订阅

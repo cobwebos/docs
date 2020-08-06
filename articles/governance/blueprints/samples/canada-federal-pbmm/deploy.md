@@ -1,14 +1,14 @@
 ---
 title: 部署加拿大联邦 PBMM 蓝图示例
 description: 加拿大联邦 PBMM 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-ms.date: 05/08/2020
+ms.date: 07/31/2020
 ms.topic: sample
-ms.openlocfilehash: 5cbca772212f361fb7020dbfbdca20ca236c1ff0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0b7e0467fbc43ea83a0aa4ff40e9b0be4c69b41e
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045002"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87500106"
 ---
 # <a name="deploy-the-canada-federal-pbmm-blueprint-samples"></a>部署加拿大联邦 PBMM 蓝图示例
 

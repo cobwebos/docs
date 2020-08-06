@@ -7,12 +7,13 @@ ms.service: iot-hub
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.author: robinsh
-ms.openlocfilehash: b9c2fc636b08e872b9ea5288eb6205d905885f0e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 35359c63b79d9eea6f8f6ad688bd040428a39eb8
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120477"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503440"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>教程：使用事件网格和逻辑应用发送有关 Azure IoT 中心事件的电子邮件通知
 
@@ -24,12 +25,12 @@ ms.locfileid: "86120477"
 
 * 一个有效的 Azure 订阅。 如果没有订阅，可以[创建一个免费 Azure 帐户](https://azure.microsoft.com/pricing/free-trial/)。
 
-* Azure 逻辑应用支持的任何电子邮件提供程序（例如 Office 365 Outlook、Outlook.com 或 Gmail）中的电子邮件帐户。 此电子邮件帐户用于发送事件通知。 有关支持的逻辑应用连接器的完整列表，请参阅[连接器概述](https://docs.microsoft.com/connectors/)。
+* Azure 逻辑应用支持的任何电子邮件提供程序（例如 Office 365 Outlook、Outlook.com 或 Gmail）中的电子邮件帐户。 此电子邮件帐户用于发送事件通知。 有关支持的逻辑应用连接器的完整列表，请参阅[连接器概述](/connectors/)。
 
   > [!IMPORTANT]
-  > 使用 Gmail 之前，请检查你是否有 G-Suite 商业帐户（带自定义域的电子邮件地址）或 Gmail 用户帐户（带 @gmail.com 或 @googlemail.com 的电子邮件地址）。 在逻辑应用中，只有 G-Suite 商业帐户可以不受限制地将 Gmail 连接器与其他连接器一起使用。 如果有 Gmail 用户帐户，则只能将 Gmail 连接器与 Google 批准的特定服务一起使用，也可以[创建用于身份验证的 Google 客户端应用](https://docs.microsoft.com/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
+  > 使用 Gmail 之前，请检查你是否有 G-Suite 商业帐户（带自定义域的电子邮件地址）或 Gmail 用户帐户（带 @gmail.com 或 @googlemail.com 的电子邮件地址）。 在逻辑应用中，只有 G-Suite 商业帐户可以不受限制地将 Gmail 连接器与其他连接器一起使用。 如果有 Gmail 用户帐户，则只能将 Gmail 连接器与 Google 批准的特定服务一起使用，也可以[创建用于身份验证的 Google 客户端应用](/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
 
-* Azure 中的 IoT 中心。 如果尚未创建 Iot 中心，请参阅 [IoT 中心入门](../iot-hub/iot-hub-csharp-csharp-getstarted.md)中的演练。
+* Azure 中的 IoT 中心。 如果尚未创建 Iot 中心，请参阅 [IoT 中心入门](../iot-hub/quickstart-send-telemetry-dotnet.md)中的演练。
 
 ## <a name="create-a-logic-app"></a>创建逻辑应用
 
@@ -247,7 +248,7 @@ ms.locfileid: "86120477"
 
 ## <a name="use-the-azure-cli"></a>使用 Azure CLI
 
-如果不使用 Azure 门户，也可以使用 Azure CLI 来完成 IoT 中心相关的步骤。 有关详细信息，请参阅有关使用 Azure CLI [创建事件订阅](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription)和[创建 IoT 设备](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub/device-identity)的网页。
+如果不使用 Azure 门户，也可以使用 Azure CLI 来完成 IoT 中心相关的步骤。 有关详细信息，请参阅有关使用 Azure CLI [创建事件订阅](/cli/azure/eventgrid/event-subscription)和[创建 IoT 设备](/cli/azure/ext/azure-iot/iot/hub/device-identity)的网页。
 
 ## <a name="clean-up-resources"></a>清理资源
 

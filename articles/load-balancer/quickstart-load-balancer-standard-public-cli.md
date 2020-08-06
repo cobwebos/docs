@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: allensu
-ms.custom: mvc
-ms.openlocfilehash: aa0d29c5c2a4cf8eebbf530b42a25d8924e031bc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: mvc, devx-track-javascript, devx-track-azurecli
+ms.openlocfilehash: c80b4e57c94737778d8e6f63804d95f4d1b35fb0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290264"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501791"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-cli"></a>快速入门：使用 Azure CLI 创建公共负载均衡器以对 VM 进行负载均衡
 

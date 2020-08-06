@@ -3,14 +3,15 @@ title: 创建 Kubernetes 开发空间：Visual Studio Code 和 .NET Core
 services: azure-dev-spaces
 ms.date: 09/26/2018
 ms.topic: tutorial
+ms.custom: devx-track-azurecli
 description: 本教程演示如何使用 Azure Dev Spaces 和 Visual Studio Code 在 Azure Kubernetes 服务上调试并快速迭代 .NET Core 应用程序
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: 9c73c191054c9eee183a762d0a029d6c8dc431ee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f4202ef63f77571e279114525fa6f14178821e9c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013634"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499477"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>创建 Kubernetes 开发空间：将 Visual Studio Code 和 .NET Core 与 Azure Dev Spaces 结合使用
 

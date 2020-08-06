@@ -3,12 +3,13 @@ title: 教程 - 使用 CLI 在 Azure 上进行 SAP HANA 数据库备份
 description: 在本教程中，了解如何使用 Azure CLI 将 Azure VM 上运行的 SAP HANA 数据库备份到 Azure 备份恢复服务保管库。
 ms.topic: tutorial
 ms.date: 12/4/2019
-ms.openlocfilehash: 30e1f9fbda16841bbabf1407ef1f3d6ef658ecf9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 4113ba75f007bfa03fed5cfeaed7737797e37ed9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003434"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87489497"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>教程：使用 Azure CLI 备份 Azure VM 中的 SAP HANA 数据库
 
