@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: d1ec61bf18248ea56c8ee5e430a671af7f39d732
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9310fd5c9a66fbd39e32c4756c5037567963912d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81458654"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87841865"
 ---
 为了所运行的应用程序，请务必确保虚拟机 (VM) 安全。 保护 VM 可以添加一个或多个 Azure 服务和功能，这些服务和功能涵盖保护对 VM 的访问和保护数据存储。 按照本文提供的信息操作，可确保 VM 和应用程序安全。
 
@@ -33,7 +33,7 @@ ms.locfileid: "81458654"
 
 加密不会影响托管磁盘的性能。 加密不会产生额外的费用。
 
-可以依赖于平台托管的密钥来加密托管磁盘，也可以使用自己的密钥来管理加密。 如果选择使用自己的密钥来管理加密，则可以指定*客户管理的密钥*，用于加密和解密托管磁盘中的所有数据。 
+可以依赖于平台托管的密钥来加密托管磁盘，也可以使用自己的密钥来管理加密。 如果选择使用自己的密钥管理加密，可以指定一个客户托管密钥，用于加密和解密托管磁盘中的所有数据。 
 
 若要了解有关服务器端加密的详细信息，请参阅 [Windows](../articles/virtual-machines/windows/disk-encryption.md) 或 [Linux](../articles/virtual-machines/linux/disk-encryption.md) 文章。
 
@@ -63,7 +63,7 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-使用[基于角色的访问控制 (RBAC)](../articles/role-based-access-control/overview.md)，可以在团队中对职责进行分配，仅向 VM 上的用户授予执行作业所需的访问权限。 可以仅允许某些操作，而不是向 VM 上的每个人授予不受限制的权限。 可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/role) 或 [Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md) 为 [Azure 门户](../articles/role-based-access-control/role-assignments-portal.md)中的 VM 配置访问控制。
+使用 azure [RBAC)  (azure 基于角色的访问控制](../articles/role-based-access-control/overview.md)，可以在团队中对职责进行隔离，只向 VM 上的用户授予执行作业所需的访问权限量。 可以仅允许某些操作，而不是向 VM 上的每个人授予不受限制的权限。 可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/role) 或 [Azure PowerShell](../articles/role-based-access-control/role-assignments-powershell.md) 为 [Azure 门户](../articles/role-based-access-control/role-assignments-portal.md)中的 VM 配置访问控制。
 
 
 ## <a name="next-steps"></a>后续步骤

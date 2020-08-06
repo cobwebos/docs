@@ -11,17 +11,17 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 6a49497cbe71dddb8ab6e76be9b3679dd62b0cee
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 8cff5ec6886c0aceff5270418f9feeb145f6fd17
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449039"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836541"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问权限
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍了如何管理对 Azure 机器学习工作区的访问权限。 [基于角色的访问控制 (RBAC)](/azure/role-based-access-control/overview) 用于管理对 Azure 资源的访问权限。 Azure Active Directory 中的用户可获得特定角色，这些角色授予了对资源的访问权限。 Azure 提供内置角色和创建自定义角色的功能。
+本文介绍了如何管理对 Azure 机器学习工作区的访问权限。 使用 azure [RBAC)  (azure 基于角色的访问控制](/azure/role-based-access-control/overview)来管理对 Azure 资源的访问。 Azure Active Directory 中的用户可获得特定角色，这些角色授予了对资源的访问权限。 Azure 提供内置角色和创建自定义角色的功能。
 
 ## <a name="default-roles"></a>默认角色
 
@@ -120,30 +120,30 @@ az role definition create --role-definition data_scientist_role.json
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
-有关自定义角色的详细信息，请参阅[Azure 自定义角色](/azure/role-based-access-control/custom-roles)。 有关可用于自定义角色的操作（操作和非操作）的详细信息，请参阅[资源提供程序操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)。
+有关自定义角色的详细信息，请参阅[Azure 自定义角色](/azure/role-based-access-control/custom-roles)。 有关操作的详细信息 (操作，而不是操作) 可用于自定义角色的操作，请参阅[资源提供程序操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
 
 ### <a name="q-what-are-the-permissions-needed-to-perform-some-common-scenarios-in-the-azure-machine-learning-service"></a>问： 在 Azure 机器学习服务中执行某些常见方案需要哪些权限？
 
-下表汇总了 Azure 机器学习活动以及在最小作用域内执行它们所需的权限。 例如，如果可以使用工作区范围（第4列）执行活动，则具有该权限的所有更高的作用域也将自动运行：
+下表汇总了 Azure 机器学习活动以及在最小作用域内执行它们所需的权限。 例如，如果某个活动可以使用工作区范围 (第4列) ，则具有该权限的所有更高的作用域也会自动运行：
 
 > [!IMPORTANT]
 > 此表中以开头的所有路径 `/` 都是的**相对路径** `Microsoft.MachineLearningServices/` ：
 
 | 活动 | 订阅级作用域 | 资源组级作用域 | 工作区级作用域 |
 | ----- | ----- | ----- | ----- |
-| 创建新工作区 | 不需要 | 所有者或参与者 | 不适用（在创建后成为所有者或继承更高作用域角色） |
-| 更新工作区的版本 | 不需要 | 不是必需 | 所有者、参与者或自定义角色允许：`/workspaces/write` |
+| 创建新工作区 | 不是必需 | 所有者或参与者 | 不适用（在创建后成为所有者或继承更高作用域角色） |
+| 更新工作区的版本 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`/workspaces/write` |
 | 请求订阅级别 Amlcompute 配额或设置工作区级别配额 | 所有者、参与者或自定义角色 </br>允许`/locations/updateQuotas/action`</br> 在订阅范围 | 未经授权 | 未经授权 |
-| 新建计算群集 | 不需要 | 不是必需 | 所有者、参与者或自定义角色允许：`/workspaces/computes/write` |
+| 新建计算群集 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`/workspaces/computes/write` |
 | 新建计算实例 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`/workspaces/computes/write` |
-| 提交任意类型的运行 | 不需要 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
-| 发布管道终结点 | 不需要 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
-| 在 AKS/ACI 资源上部署注册的模型 | 不需要 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
-| 针对已部署的 AKS 终结点评分 | 不需要 | 不需要 | 所有者、参与者或自定义角色允许： `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` （未使用 AAD 身份验证时）或 `"/workspaces/read"` （在使用令牌身份验证时） |
-| 使用交互式笔记本访问存储 | 不需要 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
+| 提交任意类型的运行 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
+| 发布管道终结点 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
+| 在 AKS/ACI 资源上部署注册的模型 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
+| 针对已部署的 AKS 终结点评分 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：在 `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` `"/workspaces/read"` 使用令牌身份) 验证时不使用 AAD 身份验证) 或 (时 ( |
+| 使用交互式笔记本访问存储 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
 | 创建新的自定义角色 | 所有者、参与者或自定义角色允许`Microsoft.Authorization/roleDefinitions/write` | 不是必需 | 所有者、参与者或自定义角色允许：`/workspaces/computes/write` |
 
 
@@ -369,7 +369,7 @@ az provider operation show –n Microsoft.MachineLearningServices
 
 ### <a name="q-what-are-some-common-gotchas-when-using-azure-rbac"></a>问： 使用 Azure RBAC 时，有哪些常见问题？
 
-使用 Azure 基于角色的访问控制（Azure RBAC）时，请注意以下几点：
+下面是在 Azure RBAC) 使用 Azure 基于角色的访问 (控制时需要注意的一些事项：
 
 - 当你在 Azure 中创建资源时，如工作区，你不会直接成为工作区的所有者。 你的角色继承自你在该订阅中获得授权的最高作用域角色。 例如，如果你是网络管理员，并且有权创建机器学习工作区，则会为该工作区分配网络管理员角色，而不是所有者角色。
 - 如果对同一 AAD 用户有两个角色分配，并且操作/NotActions 发生冲突，则在 NotActions 中列出的操作可能不会生效（如果它们也作为另一个角色中的操作列出）。 若要了解有关 Azure 如何分析角色分配的详细信息，请参阅[AZURE RBAC 如何确定用户是否有权访问资源](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource)
@@ -387,7 +387,7 @@ az provider operation show –n Microsoft.MachineLearningServices
 Azure 机器学习 Studio 支持基于角色的访问控制。 
 
 > [!IMPORTANT]
-> 向工作区中的数据科学家分配具有特定权限的自定义角色后，会自动向用户隐藏相应的操作（例如添加计算按钮）。 隐藏这些项可防止在使用时无法查看从服务返回未经授权的访问通知的控件。
+> 将具有特定权限的自定义角色分配到工作区中的数据科学家后，会自动向用户隐藏相应的操作 (例如添加计算按钮) 。 隐藏这些项可防止在使用时无法查看从服务返回未经授权的访问通知的控件。
 
 ### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>问： 如何查找我的订阅中某个角色的角色定义？
 

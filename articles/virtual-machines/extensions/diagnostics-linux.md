@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: ddbd64049307dcfd9b27cde1418eef2378b4f6b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c03105326b6d189b3c6fde72ff959211b3009517
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085684"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837034"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>使用 Linux 诊断扩展监视指标和日志
 
@@ -75,7 +75,7 @@ Linux 诊断扩展支持以下分发和版本。 分发和版本的列表仅适�
 ### <a name="sample-installation"></a>示例安装
 
 > [!NOTE]
-> 对于这两个示例，请在运行前为第一部分中的变量填写正确的值。 
+> 对于其中一个示例，在运行前，为第一部分中的变量填写正确的值。 
 
 在这些示例中下载的示例配置将收集一组标准数据，并将其发送到表存储。 示例配置的 URL 及其内容可能会有所更改。 在大多数情况下，你应该下载门户设置 JSON 文件的副本并根据需要对其进行自定义，然后让你构造的任何模板或自动化都使用你自己版本的配置文件，而不是每次都下载该 URL。
 
@@ -190,7 +190,7 @@ sinksConfig | （可选）可将指标和事件传递到的替换目标的详细
 1. 如上所述设置相应部分
 1. 单击“生成 SAS”按钮。
 
-![image](./media/diagnostics-linux/make_sas.png)
+![图像](./media/diagnostics-linux/make_sas.png)
 
 将生成的 SAS 复制到 storageAccountSasToken 字段中；删除前导问号（“?”）。
 
@@ -211,7 +211,7 @@ sinksConfig | （可选）可将指标和事件传递到的替换目标的详细
 
 此可选部分所定义的附加目标是扩展将所收集信息发送到其中的目标。 “sink”数组包含每个附加数据接收器的对象。 “type”属性确定对象中的其他属性。
 
-元素 | Value
+元素 | 值
 ------- | -----
 name | 在扩展配置中其他位置用于引用此接收器的字符串。
 type | 要定义的接收器的类型。 确定此类型实例中的其他值（如果有）。
@@ -443,7 +443,7 @@ sinks | （可选）一个逗号分隔列表，包含应将原始样本指标结
 控制日志文件的捕获。 LAD 在文件中写入新的文本行时捕获这些行，并将其写入表行和/或任何指定的接收器（JsonBlob 或 EventHub）。
 
 > [!NOTE]
-> fileLogs 是由名为的 LAD 的子组件捕获的 `omsagent` 。 若要收集 fileLogs，必须确保 `omsagent` 用户对指定的文件具有读取权限，以及对该文件的路径中的所有目录的执行权限。 可以通过在安装 LAD 后运行来检查此情况 `sudo su omsagent -c 'cat /path/to/file'` 。
+> fileLogs 是由名为 `omsagent` 的 LAD 的子组件捕获的。 若要收集 fileLogs，必须确保 `omsagent` 用户对指定的文件具有读取权限，并对该文件的路径中的所有目录具有执行权限。 可以通过在安装 LAD 后运行 `sudo su omsagent -c 'cat /path/to/file'` 来检查此情况。
 
 ```json
 "fileLogs": [
@@ -570,21 +570,21 @@ WriteBytesPerSecond | 每秒写入的字节数
 
 可通过设置 `"condition": "IsAggregate=True"`，获取跨所有磁盘的聚合值。 若要获取特定设备（例如 /dev/sdf1）的信息，请设置 `"condition": "Name=\\"/dev/sdf1\\""`。
 
-## <a name="installing-and-configuring-lad-30"></a>安装和配置 LAD 3。0
+## <a name="installing-and-configuring-lad-30"></a>安装和配置 LAD 3.0
 
 ### <a name="azure-cli"></a>Azure CLI
 
-假设受保护的设置位于 ProtectedSettings.js的文件中，并且你的公共配置信息在 PublicSettings.js上，请运行以下命令：
+假设受保护的设置位于 ProtectedSettings.json 文件中，而公用配置信息位于 PublicSettings.json 中，请运行以下命令：
 
 ```azurecli
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-该命令假定你使用的是 Azure CLI 的 Azure 资源管理（ARM）模式。 若要为经典部署模型 (ASM) VM 配置 LAD，请切换到“asm”模式 (`azure config mode asm`)，并在命令中省略资源组名称。 有关详细信息，请参阅[跨平台 CLI 文档](/azure/xplat-cli-connect)。
+该命令假定你使用的是 Azure 资源管理模式 Azure CLI。 若要为经典部署模型 (ASM) VM 配置 LAD，请切换到“asm”模式 (`azure config mode asm`)，并在命令中省略资源组名称。 有关详细信息，请参阅[跨平台 CLI 文档](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)。
 
 ### <a name="powershell"></a>PowerShell
 
-假设受保护的设置位于 `$protectedSettings` 变量中，并且公用配置信息位于变量中 `$publicSettings` ，请运行以下命令：
+假设受保护的设置位于 `$protectedSettings` 变量中，而公共配置信息位于 `$publicSettings` 变量中，请运行以下命令：
 
 ```powershell
 Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0
@@ -595,7 +595,7 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 基于前述定义，下面提供一个包含解释的 LAD 3.0 扩展配置示例。 要将此示例应用于具体情况，应使用自己的存储帐户名称、帐户 SAS 令牌和 EventHubs SAS 令牌。
 
 > [!NOTE]
-> 根据是否使用 Azure CLI 或 PowerShell 安装 LAD，提供公共和受保护设置的方法将有所不同。 如果使用 Azure CLI，请将以下设置保存到 ProtectedSettings.js上，并 PublicSettings.js上，以与上述示例命令一起使用。 如果使用 PowerShell，请通过运行将设置保存到 `$protectedSettings` 和 `$publicSettings` `$protectedSettings = '{ ... }'` 。
+> 提供公共和受保护设置的方法将有所不同，具体取决于是否使用 Azure CLI 或 PowerShell 安装 LAD。 如果使用 Azure CLI，请将以下设置保存到 ProtectedSettings.json 和 PublicSettings.json，以与上面的示例命令配合使用。 如果使用 PowerShell，请通过运行 `$protectedSettings = '{ ... }'` 将设置保存到 `$protectedSettings` 和 `$publicSettings`。
 
 ### <a name="protected-settings"></a>受保护的设置
 
@@ -748,7 +748,7 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 
 使用 Azure 门户查看性能数据或设置警报：
 
-![image](./media/diagnostics-linux/graph_metrics.png)
+![图像](./media/diagnostics-linux/graph_metrics.png)
 
 `performanceCounters` 数据始终存储在 Azure 存储表中。 Azure 存储 API 适用于多种语言和平台。
 
@@ -761,7 +761,7 @@ Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Lo
 
 这是 Microsoft Azure 存储资源管理器会话的快照，它显示了测试 VM 上正确配置的 LAD 3.0 扩展生成的 Azure 存储表和容器。 此图与[示例 LAD 3.0 配置](#an-example-lad-30-configuration)不完全匹配。
 
-![image](./media/diagnostics-linux/stg_explorer.png)
+![图像](./media/diagnostics-linux/stg_explorer.png)
 
 请参阅相关 [EventHubs 文档](../../event-hubs/event-hubs-about.md)，了解如何使用发布到 EventHubs 终结点的消息。
 

@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: f5218b2346b6ddebcee87a0e24f4924deafdb0f2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: e74dac779fc1eafaf33ffbc63bf997cf26b64954
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037182"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836796"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure 安全中心的威胁防护
 
@@ -54,11 +54,15 @@ Azure 安全中心与 Azure 服务集成，可以监视和保护基于 Windows �
 
     Microsoft Defender ATP 在检测到威胁时会触发警报。 警报显示在安全中心仪表板上。 在仪表板中，可以透视 Microsoft Defender ATP 控制台，并执行详细调查来发现攻击范围。 有关 Microsoft Defender ATP 的详细信息，请参阅[将服务器加入 Microsoft Defender ATP 服务](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)。
 
-* **无文件攻击检测** <a name="windows-fileless"></a> - 针对终结点的无文件攻击经常发生。 为了避免被检测到，无文件攻击会将恶意有效负载注入到内存中。 攻击者有效负载会持久保存在遭到入侵的进程的内存中，执行各种恶意活动。
+* **Fileless 攻击检测** <a name="windows-fileless"></a>-Fileless 攻击会将恶意有效负载注入到内存中，以避免通过基于磁盘的扫描技术检测。 然后，攻击者的负载会在遭到攻击的进程中保持不变，并执行各种恶意活动。
 
-    自动内存取证技术使用无文件攻击检测来识别无文件攻击工具包、方法和行为。 此解决方案会定期在运行时扫描计算机，并直接从安全关键型进程的内存中提取见解。
+    自动内存取证技术使用无文件攻击检测来识别无文件攻击工具包、方法和行为。 此解决方案会定期在运行时扫描计算机，并直接从进程内存中提取见解。 适用于 Linux 的特定见解包括以下内容的标识： 
 
-    它会找出恶意利用、代码注入和恶意有效负载执行的证据。 无文件攻击检测会生成详细的安全警报，以加速警报会审、关联和下游响应速度。 此方法是对基于事件的 EDR 解决方案的补充，提供更大的检测范围。
+    - 众所周知的工具包和加密挖掘软件 
+    - 外壳代码是一小段代码，通常用作利用软件漏洞的有效负载。
+    - 进程内存中注入的恶意可执行文件
+
+    Fileless 攻击检测会生成详细的安全警报，其中包含具有其他进程元数据的说明，例如网络活动。 这加快了警报会审、相关和下游响应时间。 此方法补充基于事件的 EDR 解决方案，并提供更高的检测范围。
 
     有关无文件攻击检测警报的详细信息，请参阅[警报参考表](alerts-reference.md#alerts-windows)。
 
@@ -128,13 +132,13 @@ Azure 安全中心与 Azure 服务集成，可以监视和保护基于 Windows �
 
 ## <a name="threat-protection-for-sql-database-and-sql-data-warehouse"></a>针对 SQL 数据库和 SQL 数据仓库的威胁防护 <a name="data-sql"></a>
 
-针对 Azure SQL 数据库的高级威胁防护会检测异常活动，这些活动指示存在访问或恶意利用数据库的非寻常且可能有害的企图。
+Azure SQL 数据库的高级威胁防护可检测异常活动，指出有人在访问或利用数据库时的异常行为和可能有害的尝试。
 
 出现可疑的数据库活动、潜在漏洞，或者 SQL 注入攻击以及异常的数据库访问和查询模式时，你会看到警报。
 
-适用于 Azure SQL 数据库和 SQL 的高级威胁防护是高级 SQL 安全功能[（](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)包括 Azure sql 数据库、Azure Sql 托管实例、Azure Sql 数据仓库数据库和 Azure 虚拟机上的 SQL server）的高级 SQL 安全统一包的高级威胁防护。
+适用于 Azure SQL 数据库和 SQL 的高级威胁防护是高级 SQL 安全功能[ (广告) ](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security)统一包的高级威胁防护，其中包括 Azure sql 数据库、Azure Sql 托管实例、Azure Sql 数据仓库数据库和 Azure 虚拟机上的 sql server。
 
-有关详情，请参阅：
+有关详细信息，请参阅：
 
 * [如何为 Azure SQL 数据库启用高级威胁防护](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
 * [如何为 Azure 虚拟机上的 SQL 服务器启用高级威胁防护](security-center-iaas-advanced-data.md)
@@ -147,9 +151,9 @@ Azure 安全中心与 Azure 服务集成，可以监视和保护基于 Windows �
 ### <a name="availability"></a>可用性
 
 - 发布状态：
-    - [Blob 存储](https://azure.microsoft.com/services/storage/blobs/)（正式发布）
-    - [Azure 文件](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)（预览）
-    - [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) （预览）
+    - [Blob 存储](https://azure.microsoft.com/services/storage/blobs/) (公开上市) 
+    - [Azure 文件](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (预览) 
+    - [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (预览版) 
 - 云：<br>
     ✔ 商业云<br>
     ✔ US Gov<br>
@@ -283,7 +287,7 @@ Azure 安全中心包含针对 Azure Key Vault 的 Azure 原生高级威胁防�
 
 Azure 应用程序网关提供的 Web 应用程序防火墙 (WAF) 可以对 Web 应用程序进行集中保护，避免其受到常见的攻击和漏洞伤害。
 
-Web 应用程序正逐渐成为利用常见已知漏洞的恶意攻击的目标。 应用程序网关 WAF 基于开放 Web 应用程序安全项目中的核心规则集 3.0 或 2.2.9。 WAF 会自动更新，以便在出现新漏洞后提供保护。 
+Web 应用程序已逐渐成为利用常见已知漏洞的恶意攻击的目标。 应用程序网关 WAF 基于开放 Web 应用程序安全项目中的核心规则集 3.0 或 2.2.9。 WAF 会自动更新，以便在出现新漏洞后提供保护。 
 
 如果你有 Azure WAF 许可证，则无需进行额外的配置，就会将 WAF 警报流式传输到安全中心。 有关 WAF 生成的警报的详细信息，请参阅 [Web 应用程序防火墙 CRS 规则组和规则](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md?tabs=owasp31#crs911-31)。
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: 8c6b6dcf748b0c6ef6162e9f20726123673abb33
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 86910ece57d8fb72ade0c67a9e6787023c4283f3
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283259"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836915"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>如何在 Azure 中创建具有多个网络接口卡的 Linux 虚拟机
 
@@ -79,7 +79,7 @@ az network nic create \
 ```
 
 ## <a name="create-a-vm-and-attach-the-nics"></a>创建 VM 并附加 NIC
-创建 VM 时，指定使用 `--nics` 创建的 NIC。 还需要谨慎选择 VM 的大小。 可添加到 VM 的 NIC 数目有限制。 详细了解 [Linux VM 大小](sizes.md)。
+创建 VM 时，指定使用 `--nics` 创建的 NIC。 还需要谨慎选择 VM 的大小。 可添加到 VM 的 NIC 数目有限制。 详细了解 [Linux VM 大小](../sizes.md)。
 
 使用 [az vm create](/cli/azure/vm) 创建 VM。 以下示例创建一个名为 myVM  的 VM：
 
@@ -97,7 +97,7 @@ az vm create \
 通过完成[为多个 NIC 配置来宾 OS](#configure-guest-os-for-multiple-nics) 中的步骤，将路由表添加到来宾 OS。
 
 ## <a name="add-a-nic-to-a-vm"></a>将 NIC 添加到 VM
-之前的步骤创建了具有多个 NIC 的 VM。 还可使用 Azure CLI 将 NIC 添加到现有 VM。 不同的 [VM 大小](sizes.md)支持不同数目的 NIC，因此请相应地调整 VM 的大小。 如果需要，可[调整 VM 的大小](change-vm-size.md)。
+之前的步骤创建了具有多个 NIC 的 VM。 还可使用 Azure CLI 将 NIC 添加到现有 VM。 不同的 [VM 大小](../sizes.md)支持不同数目的 NIC，因此请相应地调整 VM 的大小。 如果需要，可[调整 VM 的大小](change-vm-size.md)。
 
 使用 [az network nic create](/cli/azure/network/nic) 创建另一 NIC。 以下示例创建一个名为 myNic3** 的 NIC，该 NIC 连接到后端子网和之前步骤中创建的网络安全组：
 
@@ -242,6 +242,6 @@ ping bing.com -c 4 -I eth1
 ```
 
 ## <a name="next-steps"></a>后续步骤
-尝试创建具有多个 NIC 的 VM 时，请查看 [Lnux VM 大小](sizes.md)。 注意每个 VM 大小支持的 NIC 数目上限。
+尝试创建具有多个 NIC 的 VM 时，请查看 [Lnux VM 大小](../sizes.md)。 注意每个 VM 大小支持的 NIC 数目上限。
 
 若要进一步保护 VM，请使用适时 VM 访问。 此功能会视需要打开针对 SSH 流量的网络安全组规则，并根据定义的时间段保持打开。 有关详细信息，请参阅[使用恰时功能管理虚拟机访问](../../security-center/security-center-just-in-time.md)。

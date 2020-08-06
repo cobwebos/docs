@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 06/02/2020
+ms.date: 08/05/2020
 ms.author: juliako
-ms.openlocfilehash: d7667f7c5194762b227c3cddd5bea5ed9d50a96e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1b11dc0ee17fd0686776a7262c4bc99bd98bcc3e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042633"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837303"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure 媒体服务视频索引器发行说明
 
@@ -30,13 +30,35 @@ ms.locfileid: "87042633"
 * Bug 修复
 * 已弃用的功能
 
+## <a name="july-2020"></a>2020 年 7 月
+
+### <a name="ga-for-multi-language-identification"></a>公开用于多语言标识
+
+多语言标识将从预览版迁移到 GA，并可随时投入使用。
+
+与 "公开预览版" 过渡无关。
+
+### <a name="video-indexer-website-improvements"></a>视频索引器网站改进
+
+#### <a name="adjustments-in-the-video-gallery"></a>视频库中的调整
+
+添加了新的搜索栏，其中包含额外的筛选功能。 搜索结果也得到了增强。
+
+利用多个文件对视频存档进行排序和管理的新列表视图。
+
+#### <a name="new-panel-for-easy-selection-and-configuration"></a>用于轻松选择和配置的新面板
+
+添加了用于轻松选择和用户配置的侧面板，使用户能够轻松创建和共享帐户以及设置配置。
+
+侧面板还用于用户首选项和帮助。
+
 ## <a name="june-2020"></a>2020 年 6 月
 
 ### <a name="search-by-topics"></a>按主题搜索
 
-你现在可以使用搜索 API 搜索包含特定主题的视频（仅限 API）。
+现在，你可以使用搜索 API 搜索包含特定主题 (仅) API 的视频。
 
-主题作为 `textScope` （可选参数）的一部分添加。 有关详细信息，请参阅[API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) 。  
+主题作为 `textScope` (可选参数) 的一部分添加。 有关详细信息，请参阅[API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Search-Videos) 。  
 
 ### <a name="labels-enhancement"></a>标签增强
 
@@ -81,14 +103,14 @@ ms.locfileid: "87042633"
  
     帐户对象的 `Url` 字段指向[视频索引器网站](https://www.videoindexer.ai/)的位置。
 对于付费帐户，该 `Url` 字段当前指向内部 URL，而不是公共网站。
-在接下来的几周，我们将更改它并返回所有帐户的[视频索引器网站](https://www.videoindexer.ai/)URL （试用版和付费版）。
+在接下来的几周，我们将对其进行更改，并返回 (试用版和付费) 的所有帐户的[视频索引器网站](https://www.videoindexer.ai/)URL。
 
     不要使用内部 Url，你应该使用[视频索引器公共 api](https://api-portal.videoindexer.ai/)。
-* 如果要在应用程序中嵌入视频索引器 Url 并且 Url 未指向[视频索引器网站](https://www.videoindexer.ai/)或视频索引器 API 终结点（），而不是指向 `https://api.videoindexer.ai` 区域终结点（例如 `https://wus2.videoindexer.ai` ），请重新生成 url。
+* 如果要在应用程序中嵌入视频索引器 Url 并且 Url 未指向[视频索引器网站](https://www.videoindexer.ai/)或视频索引器 API 终结点 () 而不是指向 `https://api.videoindexer.ai` 区域终结点 (例如 `https://wus2.videoindexer.ai`) ，请重新生成 url。
 
    为此，可以执行以下任一操作：
 
-    * 将 URL 替换为指向视频索引器小组件 Api 的 URL （例如， [insights 小组件](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget)）
+    * 将 URL 替换为指向视频索引器小组件 Api 的 URL (例如， [insights 小组件](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Insights-Widget)) 
     * 使用视频索引器网站生成新的嵌入 URL：
          
          按 "**播放**" 转到视频页面-> 单击 " ** &lt; / &gt; 嵌入**" 按钮-> 将 URL 复制到应用程序中：
@@ -99,7 +121,7 @@ ms.locfileid: "87042633"
  
 ### <a name="custom-language-support-for-additional-languages"></a>针对其他语言的自定义语言支持
 
-视频索引器现在支持、和的自定义语言模型 `ar-SY` `en-UK` （仅适用于 `en-AU` API）。
+视频索引器现在 `ar-SY` 仅支持、和 (API 的自定义语言模型 `en-UK` `en-AU`) 。
  
 ### <a name="delete-account-timeframe-action-update"></a>删除帐户时限操作更新
 
@@ -111,7 +133,7 @@ ms.locfileid: "87042633"
  
 ### <a name="swagger-update"></a>Swagger 更新
 
-视频索引器将统一**身份验证**和**操作**合并成单个[视频索引器 OpenAPI 规范（swagger）](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson)。 开发人员可以在[视频索引器开发人员门户](https://api-portal.videoindexer.ai/)中找到 api。
+视频索引器将统一**身份验证**和**操作**合并为单个[视频索引器 OpenAPI 规范 (swagger) ](https://api-portal.videoindexer.ai/docs/services/Operations/export?DocumentFormat=OpenApiJson)。 开发人员可以在[视频索引器开发人员门户](https://api-portal.videoindexer.ai/)中找到 api。
 
 ## <a name="december-2019"></a>2019 年 12 月
 
@@ -127,11 +149,11 @@ ms.locfileid: "87042633"
 * 密码更改
 * 媒体服务资源已在订阅之间移动  
 
-若要修复帐户配置，请在视频索引器门户中导航到 "设置" > 帐户 "选项卡（作为所有者）。
+若要修复帐户配置，请在视频索引器门户中，导航到 "设置" > 帐户 "选项卡 (所有者) "。
 
 ### <a name="configure-the-custom-vision-account"></a>配置自定义远景帐户
 
-使用视频索引器门户在付费帐户上配置自定义视觉帐户（以前，仅 API 支持此帐户）。 为此，请登录到视频索引器门户，选择 "模型自定义" > > 配置的动画字符。 
+使用视频索引器门户在付费帐户上配置自定义远景帐户 (以前，仅 API) 支持此帐户。 为此，请登录到视频索引器门户，选择 "模型自定义" > > 配置的动画字符。 
 
 ### <a name="scenes-shots-and-keyframes--now-in-one-insight-pane"></a>场景、截图和关键帧–现在，在一个见解窗格中
 
@@ -153,10 +175,10 @@ ms.locfileid: "87042633"
  
 * 朝鲜语自定义语言模型支持
 
-    视频索引器现在支持 API 和门户中的朝鲜语（）的自定义语言模型 `ko-KR` 。 
-* 支持语音到文本的新语言（STT）
+    视频索引器现在支持 API 和门户中 () 的朝鲜语自定义语言模型 `ko-KR` 。 
+* 支持语音到文本 (STT) 的新语言
 
-    视频索引器 Api 现在支持阿拉伯语 Levantine （ar-SY）、英语英国方言（en-GB）和英语澳大利亚方言（zh-cn）中的 STT。
+    视频索引器 Api 现在支持阿拉伯 Levantine (ar-SY) 、英语英国方言 (en-GB) 和英语澳大利亚方言 (en-us) 中的 STT。
     
     对于视频上传，我们已将 zh-chs-HANS 替换为 zh-chs，两者均受支持，但建议使用 zh-chs-CN，更准确。
     
@@ -170,15 +192,15 @@ ms.locfileid: "87042633"
  
 IBC 2019 上公布了多项改进：
  
-* 动画字符识别（公共预览版）
+* 动态字符识别 (公共预览版) 
 
     通过与自定义视觉集成，检测组广告是否能够识别动画内容中的字符。 有关详细信息，请参阅[动画字符检测](animated-characters-recognition.md)。
-* 多语言标识（公共预览版）
+* 公共预览版 (多语言标识) 
 
     在音频轨中检测多种语言的段，并基于它们创建多语言脚本。 初始支持：英语、西班牙语、德语和法语。 有关详细信息，请参阅[自动识别和转录多语言内容](multi-language-identification-transcription.md)。
 * 人员和位置的命名实体提取
 
-    通过自然语言处理（NLP）从语音和视觉文本中提取品牌、位置和人物。
+    通过自然语言处理 (NLP) 从语音和视觉文本中提取品牌、位置和人物。
 * 编辑快照类型分类
 
     用编辑类型（如近向、中等拍摄、两个拍摄、室内、户外等）标记照片。有关详细信息，请参阅[编辑快照类型检测](scenes-shots-keyframes.md#editorial-shot-type-detection)。
@@ -194,11 +216,11 @@ IBC 2019 上公布了多项改进：
 
 ### <a name="new-editorial-shot-type-insights-available"></a>新的编辑快照类型见解可用
 
-添加到视频截图的新标记提供了编辑 "拍摄类型"，以使用内容创建工作流中所用的常见编辑短语来识别它们：极端特写、特写、宽、中、两个拍摄、户外、室内、左面和右面（适用于 JSON）。
+添加到视频截图的新标记提供了编辑 "拍摄类型"，以使用内容创建工作流中所用的常见编辑短语来识别它们：极端特写、特写、宽、中、两个拍摄、户外、室内、左面和右面 (在 JSON) 中可用。
 
 ### <a name="new-people-and-locations-entities-extraction-available"></a>新人员和位置实体提取可用
 
-视频索引器通过视频的 OCR 和脚本来识别命名位置和用户通过自然语言处理（NLP）。 视频索引器使用机器学习算法来识别在视频中调用特定位置（例如，Eiffel 塔）或人员（例如 John Doe）的时间。
+视频索引器通过自然语言处理 (NLP) 视频的 OCR 和脚本来识别命名位置和用户。 视频索引器使用机器学习算法来识别特定位置 (例如，Eiffel 塔) 或人员 (例如，在视频中调用 John Doe) 。
 
 ### <a name="keyframes-extraction-in-native-resolution"></a>以本机分辨率提取关键帧
 
@@ -206,22 +228,22 @@ IBC 2019 上公布了多项改进：
  
 ### <a name="ga-for-training-custom-face-models-from-images"></a>为从图像定型自定义面部模型提供 GA
 
-从预览模式转为 GA 的图像（可通过 API 和门户中获取）进行的训练。
+通过 API 和门户) 从预览模式移动到 GA (提供的图像培训面。
 
 > [!NOTE]
 > 与 "公开预览版" 过渡无关。
 
 ### <a name="hide-gallery-toggle-option"></a>隐藏库切换选项
 
-用户可以选择在门户中隐藏 "库" 选项卡（类似于隐藏 "示例" 选项卡）。
+用户可以选择在门户中隐藏 "库" 选项卡， (类似于隐藏 "示例" 选项卡) 。
  
 ### <a name="maximum-url-size-increased"></a>最大 URL 大小增加
 
-支持在为视频编制索引时使用 URL 查询字符串4096（而不是2048）。
+支持 URL 查询字符串 4096 (而不是 2048) 为视频编制索引。
  
 ### <a name="support-for-multi-lingual-projects"></a>支持多语言项目
 
-现在可以基于用不同语言编制索引的视频（仅 API）创建项目。
+现在可以基于采用不同语言编制索引的视频创建项目 (仅) API。
 
 ## <a name="july-2019"></a>2019 年 7 月
 
@@ -239,7 +261,7 @@ IBC 2019 上公布了多项改进：
 
 你现在可以在日本东部区域中创建视频索引器付费帐户。
 
-### <a name="create-and-repair-account-api-preview"></a>创建和修复帐户 API （预览）
+### <a name="create-and-repair-account-api-preview"></a>创建和修复帐户 API (预览) 
 
 添加了新的 API，可用于[更新 Azure 媒体服务连接终结点或密钥](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Paid-Account-Azure-Media-Services?&groupBy=tag)。
 
@@ -265,7 +287,7 @@ IBC 2019 上公布了多项改进：
 
 ### <a name="new-download-transcript-formats--txt-and-csv"></a>新下载脚本格式– TXT 和 CSV
 
-除了已支持隐藏式字幕格式（SRT、VTT 和 TTML），视频索引器现在支持下载 TXT 和 CSV 格式的脚本。
+除了支持隐藏式字幕格式 (SRT、VTT 和 TTML) ，视频索引器现在支持下载 TXT 和 CSV 格式的脚本。
 
 ## <a name="next-steps"></a>后续步骤
 

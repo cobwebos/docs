@@ -4,12 +4,12 @@ description: 汇总了使用 Azure Site Recovery 将 Azure VM 灾难恢复到次
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: d4beec60a2cd705884ee79296c9afab2afc08c2e
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 09b6bf6db5927c49950fc5b2a6d1753d53364380
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534492"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836643"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>在 Azure 区域之间进行 Azure VM 灾难恢复的支持矩阵
 
@@ -105,13 +105,13 @@ Ubuntu 16.04 LTS Server | [受支持的内核版本](#supported-ubuntu-kernel-ve
 Ubuntu 18.04 LTS Server | [受支持的内核版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Debian 7 | 包括对所有7的支持。 *x*版本[支持的内核版本](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | 包括对所有8的支持。 *x*版本[支持的内核版本](#supported-debian-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 12 | SP1、SP2、SP3、SP4、SP5 [（支持的内核版本）](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines) </br> （* * SP5 可通过适用于 Azure 的最新修补9.33 程序到 Azure DR 方案）获得。
+SUSE Linux Enterprise Server 12 | SP1、SP2、SP3、SP4、SP5 [ (支持的内核版本) ](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines) </br>  ( * * SP5 可通过适用于 Azure 的最新修补程序9.33 到 Azure DR 方案) 提供。
 SUSE Linux Enterprise Server 15 | 15 和 15 SP1。 [（受支持的内核版本）](#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> 不支持将复制计算机从 SP3 升级到 SP4。 如果已升级复制的计算机，则需要禁用复制并在升级后重新启用复制。
 SUSE Linux Enterprise Server 11 | SP4
 Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5、7.6、 [7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)、 [7.8](https://support.microsoft.com/help/4573888/)、 [8.0](https://support.microsoft.com/help/4573888/)  <br/> 运行 Red Hat 兼容内核或 Unbreakable Enterprise Kernel Release 3、4 和 5（UEK3、UEK4、UEK5）<br/><br/>[8.1](https://support.microsoft.com/help/4573888/)<br/>支持在所有 UEK 内核和 RedHat 内核上运行 <= 3.10.0-1062. *。 在9.36 年年底，将提供对 RedHat 内核的其他支持。
 
-* * 注意：若要在版本30天内支持最新的 Linux 内核，Azure Site Recovery 在最新的移动代理版本的基础上推出热修复修补程序。 此修补程序在两个主要版本版本之间推出。 若要更新到最新版本的移动代理（包括热修复修补程序），请按照[本文](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)中所述的步骤操作。 此修补程序当前已针对 Azure 到 Azure DR 方案中使用的移动代理推出。
+* * 注意：若要在版本30天内支持最新的 Linux 内核，Azure Site Recovery 在最新的移动代理版本的基础上推出热修复修补程序。 此修补程序在两个主要版本版本之间推出。 若要更新到最新版本的移动代理 (包括热修复修补程序) 按照[本文](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)中所述的步骤操作。 此修补程序当前已针对 Azure 到 Azure DR 方案中使用的移动代理推出。
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Azure 虚拟机支持的 Ubuntu 内核版本
 
@@ -130,7 +130,7 @@ Oracle Linux | 6.4、6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3�
 18.04 LTS | 9.32| 4.15.0-20-generic 到 4.15.0-74-generic </br> 4.18.0-13-generic 到 4.18.0-25-generic </br> 5.0.0-15-generic 到 5.0.0-37-generic </br> 5.3.0-19-generic 到 5.3.0-24-generic </br> 4.15.0-1009-azure 到 4.15.0-1037-azure </br> 4.18.0-1006-azure 到 4.18.0-1025-azure </br> 5.0.0-1012-azure 到 5.0.0-1028-azure </br> 5.3.0-1007-azure 到 5.3.0-1009-azure|
 18.04 LTS | 9.31| 4.15.0-20-generic 到 4.15.0-72-generic </br> 4.18.0-13-generic 到 4.18.0-25-generic </br> 5.0.0-15-generic 到 5.0.0-37-generic </br> 5.3.0-19-generic 到 5.3.0-24-generic </br> 4.15.0-1009-azure 到 4.15.0-1037-azure </br> 4.18.0-1006-azure 到 4.18.0-1025-azure </br> 5.0.0-1012-azure 到 5.0.0-1025-azure </br> 5.3.0-1007-azure|
 
-* * 注意：若要在版本30天内支持最新的 Linux 内核，Azure Site Recovery 在最新的移动代理版本的基础上推出热修复修补程序。 此修补程序在两个主要版本版本之间推出。 若要更新到最新版本的移动代理（包括热修复修补程序），请按照[本文](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)中所述的步骤操作。 此修补程序当前已针对 Azure 到 Azure DR 方案中使用的移动代理推出。
+* * 注意：若要在版本30天内支持最新的 Linux 内核，Azure Site Recovery 在最新的移动代理版本的基础上推出热修复修补程序。 此修补程序在两个主要版本版本之间推出。 若要更新到最新版本的移动代理 (包括热修复修补程序) 按照[本文](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure)中所述的步骤操作。 此修补程序当前已针对 Azure 到 Azure DR 方案中使用的移动代理推出。
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Azure 虚拟机支持的 Debian 内核版本
 
@@ -145,9 +145,9 @@ Debian 8 | 9.31、9.32、 [9.33](https://support.microsoft.com/help/4564347/)、
 
 **版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 （SP1、SP2、SP3、SP4、SP5） | [9.34](https://support.microsoft.com/help/4570609)、 [9.35](https://support.microsoft.com/help/4573888/) | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.43-azure </br> 4.12.14-16.7-azure 到 4.12.14-16.19-azure  |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4、SP5)  | [9.34](https://support.microsoft.com/help/4570609)、 [9.35](https://support.microsoft.com/help/4573888/) | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.43-azure </br> 4.12.14-16.7-azure 到 4.12.14-16.19-azure  |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | 9.32， [9.33](https://support.microsoft.com/help/4564347/) [9.35](https://support.microsoft.com/help/4573888/) | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.34-azure  |
-SUSE Linux Enterprise Server 12 （SP1、SP2、SP3、SP4、SP5） | 9.33 热修复修补程序 | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.34-azure </br> 4.12.14-16.7-azure 到 4.12.14-16.13-azure  |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3、SP4、SP5)  | 9.33 热修复修补程序 | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.34-azure </br> 4.12.14-16.7-azure 到 4.12.14-16.13-azure  |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3、SP4） | 9.31 | 支持所有[库存 SUSE 12 SP1、SP2、SP3、SP4 内核](https://www.suse.com/support/kb/doc/?id=000019587)。</br></br> 4.4.138-4.7-azure 到 4.4.180-4.31-azure、</br>4.12.14-6.3-azure 到 4.12.14-6.29-azure  |
 
 #### <a name="supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines"></a>Azure 虚拟机支持的 SUSE Linux Enterprise Server 15 内核版本
@@ -170,7 +170,7 @@ SUSE Linux Enterprise Server 15 和 15 SP1 | 9.32 | 默认支持所有[库存 SU
 
 **设置** | **支持** | **详细信息**
 --- | --- | ---
-大小 | 具有至少 2 个 CPU 内核和 1 GB RAM 的任意 Azure VM 大小 | 验证 [Azure 虚拟机大小](../virtual-machines/windows/sizes.md)。
+大小 | 具有至少 2 个 CPU 内核和 1 GB RAM 的任意 Azure VM 大小 | 验证 [Azure 虚拟机大小](../virtual-machines/sizes.md)。
 可用性集 | 支持 | 对于 Azure VM，如果启用使用默认选项进行复制的功能，则会根据源区域设置来自动创建可用性集。 可以修改这些设置。
 可用性区域 | 支持 |
 混合使用权益 (HUB) | 支持 | 如果源 VM 启用了 HUB 许可证，则测试故障转移或故障转移 VM 也使用 HUB 许可证。
@@ -205,7 +205,7 @@ OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/windows
 临时磁盘 | 不支持 | 始终从复制中排除临时磁盘。<br/><br/> 请勿在临时磁盘上存储任何持久性数据。 [了解详细信息](../virtual-machines/windows/managed-disks-overview.md)。
 数据磁盘的最大大小 | 托管磁盘为 8192 GB<br></br>非托管磁盘为 4095 GB|
 数据磁盘最小大小 | 对非托管磁盘没有限制。 托管磁盘为 2 GB |
-数据磁盘的最大数量 | 最多为 64，根据对特定的 Azure VM 大小的支持而定 | [深入了解 ](../virtual-machines/windows/sizes.md)VM 大小相关信息。
+数据磁盘的最大数量 | 最多为 64，根据对特定的 Azure VM 大小的支持而定 | [深入了解 ](../virtual-machines/sizes.md)VM 大小相关信息。
 数据磁盘更改率 | 对于高级存储，每个磁盘最多 20 MBps。 每个标准存储的磁盘最大为 2 MBps。 | 如果磁盘上的平均数据更改率持续高于最大值，复制将跟不上。<br/><br/>  但是，如果偶尔超出最大值，则复制可跟上，但可能会看到稍有延迟的恢复点。
 数据磁盘 - 标准存储帐户 | 支持 |
 数据磁盘 - 高级存储帐户 | 支持 | 如果 VM 将磁盘分散在高级和标准存储帐户上，则可以为每个磁盘选择不同的目标存储帐户，以确保在目标区域中具有相同的存储配置。
@@ -219,7 +219,7 @@ OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/windows
 静态加密 (CMK) | 支持 | 托管磁盘支持软件密钥和 HSM 密钥
 双静态加密 | 支持 | 了解有关[Windows](../virtual-machines/windows/disk-encryption.md)和[Linux](../virtual-machines/linux/disk-encryption.md)支持的区域的详细信息
 适用于 Windows OS 的 Azure 磁盘加密 (ADE) | 支持使用托管磁盘的 VM。 | 不支持使用非托管磁盘的 VM。 <br/><br/> 不支持 HSM 保护的密钥。 <br/><br/> 不支持加密单个磁盘上的各个卷。 |
-适用于 Linux OS 的 Azure 磁盘加密 (ADE) | 支持使用托管磁盘的 VM。 | 不支持使用非托管磁盘的 VM。 <br/><br/> 不支持 HSM 保护的密钥。 <br/><br/> 不支持加密单个磁盘上的各个卷。 <br><br> 启用复制的已知问题。 [了解详细信息。](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-troubleshoot-errors#enable-protection-failed-as-the-installer-is-unable-to-find-the--root-disk-error-code-151137) |
+适用于 Linux OS 的 Azure 磁盘加密 (ADE) | 支持使用托管磁盘的 VM。 | 不支持使用非托管磁盘的 VM。 <br/><br/> 不支持 HSM 保护的密钥。 <br/><br/> 不支持加密单个磁盘上的各个卷。 <br><br> 启用复制的已知问题。 [了解详细信息。](./azure-to-azure-troubleshoot-errors.md#enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137) |
 SAS 密钥轮换 | 不受支持 | 如果存储帐户的 SAS 密钥已轮换，则客户需要禁用并重新启用复制。 |
 热添加    | 支持 | 使用托管磁盘的 VM 支持对添加到已复制 Azure VM 的数据磁盘启用复制。 <br/><br/> 一次只能将一个磁盘热添加到 Azure VM。 不支持并行添加多个磁盘。 |
 热删除磁盘    | 不支持 | 如果在 VM 上删除数据磁盘，需要对 VM 禁用复制，然后重新启用复制。
@@ -290,4 +290,3 @@ IPv6  | 不支持 | 此外，不支持同时包含 IPv4 和 IPv6 的混合配置
 
 - 阅读[网络指南](./azure-to-azure-about-networking.md)，了解如何复制 Azure VM。
 - 通过[复制 Azure VM](./azure-to-azure-quickstart.md) 来部署灾难恢复。
-

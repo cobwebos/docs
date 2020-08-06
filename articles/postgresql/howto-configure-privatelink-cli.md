@@ -7,19 +7,19 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: adb3104fe5874ab80134f267553b90a4b8823039
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 15ddf9392fffb8a9ed196b75b1c5e80d4484b0ad
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497981"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837238"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>使用 CLI 创建和管理 Azure Database for PostgreSQL 单服务器的专用链接
 
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。 在本文中，你将了解如何使用 Azure CLI 在 Azure 虚拟网络中创建 VM 和使用 Azure 专用终结点 Azure Database for PostgreSQL 单一服务器。
 
 > [!NOTE]
-> 此功能在所有 Azure Database for PostgreSQL 单服务器支持常规用途和内存优化定价层的 Azure 区域中均可用。
+> 专用链接功能仅适用于常规用途或内存优化定价层中的 Azure Database for PostgreSQL 服务器。 请确保数据库服务器是这些定价层中的一种。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -177,7 +177,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
     | 服务器类型| 选择**PostgreSQL**。|
     | 服务器名称| 选择*mydemopostgresserver.privatelink.postgres.database.azure.com* |
     | 用户名 | 输入在 username@servername PostgreSQL 服务器创建过程中提供的用户名。 |
-    |密码 |输入在创建 PostgreSQL 服务器期间提供的密码。 |
+    |Password |输入在创建 PostgreSQL 服务器期间提供的密码。 |
     |SSL|选择 "**必需**"。|
     ||
 
@@ -185,7 +185,7 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 
 6. 浏览左侧菜单中的数据库。
 
-7. 同时创建或查询来自 postgreSQL 服务器的信息。
+7.  (可以选择) 通过 postgreSQL 服务器创建或查询信息。
 
 8. 关闭与 myVm 的远程桌面连接。
 

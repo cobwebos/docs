@@ -11,21 +11,21 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 0d31d982e7788970cbf7aad7dd64db9e6d4b9b10
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 4f0e9d057c92f1907bb77ee0767c7bb07f0f4c62
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502191"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836983"
 ---
-# <a name="azure-instance-metadata-service-imds"></a>Azure 实例元数据服务（IMDS）
+# <a name="azure-instance-metadata-service-imds"></a>Azure 实例元数据服务 (IMDS) 
 
 Azure 实例元数据服务 (IMDS) 提供有关当前正在运行的虚拟机实例的信息，可用于管理和配置虚拟机。
 这些信息包括 SKU、存储、网络配置和即将发生的维护事件。 有关提供的数据的完整列表，请参阅[元数据 API](#metadata-apis)。
 实例元数据服务适用于 VM 和虚拟机规模集实例。 它仅可用于运行使用 [Azure 资源管理器](/rest/api/resources/)创建/管理的 VM。
 
-Azure 的 IMDS 是一个 REST 终结点，可在已知不可路由的 IP 地址（）上使用 `169.254.169.254` ，只能从 VM 内部访问它。 VM 与 IMDS 之间的通信绝不会离开主机。
-在查询 IMDS 时，最好让 HTTP 客户端绕过 VM 中的 web 代理，并将其视为 `169.254.169.254` 相同 [`168.63.129.16`](../../virtual-network/what-is-ip-address-168-63-129-16.md) 。
+Azure 的 IMDS 是一个 REST 终结点，位于已知不可路由的 IP 地址 (`169.254.169.254`)，只能从 VM 中访问。 VM 与 IMDS 之间的通信绝不会离开主机。
+最佳做法是让 HTTP 客户端在查询 IMDS 时绕过 VM 中的 web 代理并同等对待 `169.254.169.254` 和 [`168.63.129.16`](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
 
 ## <a name="security"></a>安全性
 
@@ -176,7 +176,7 @@ API | 默认数据格式 | 其他格式
 /attested | json | 无
 /identity | json | 无
 /instance | json | text
-/scheduledevents | json | none
+/scheduledevents | json | 无
 
 若要访问非默认响应格式，请在请求中将所请求的格式指定为查询字符串参数。 例如：
 
@@ -200,7 +200,7 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?ap
 如果未指定版本，则会返回错误并列出受支持的最新版本。
 
 > [!NOTE]
-> 响应为 JSON 字符串。 下例说明了未指定版本时出现的错误情况，为了便于阅读，响应显示非常清晰。
+> 此响应是 JSON 字符串。 下例说明了未指定版本时出现的错误情况，为了便于阅读，响应显示非常清晰。
 
 **请求**
 
@@ -252,7 +252,7 @@ provider | VM 的提供商 | 2018-10-01
 publicKeys | [公钥的集合](/rest/api/compute/virtualmachines/createorupdate#sshpublickey)，已分配给 VM 和路径 | 2018-04-02
 publisher | VM 映像的发布者 | 2017-04-02
 resourceGroupName | 虚拟机的[资源组](../../azure-resource-manager/management/overview.md) | 2017-08-01
-resourceId | 资源的[完全限定](/rest/api/resources/resources/getbyid) ID | 2019-03-11
+ResourceId | 资源的[完全限定](/rest/api/resources/resources/getbyid) ID | 2019-03-11
 sku | VM 映像的特定 SKU | 2017-04-02
 storageProfile | 参阅[存储配置文件](#storage-metadata) | 2019-06-01
 subscriptionId | 虚拟机的 Azure 订阅 | 2017-08-01
@@ -261,7 +261,7 @@ tagsList | 格式化为 JSON 数组以方便编程分析的标记  | 2019-06-04
 版本 | VM 映像的版本 | 2017-04-02
 vmId | VM 的[唯一标识符](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
 vmScaleSetName | 虚拟机规模集的[虚拟机规模集名称](../../virtual-machine-scale-sets/overview.md) | 2017-12-01
-vmSize | [VM 大小](sizes.md) | 2017-04-02
+vmSize | [VM 大小](../sizes.md) | 2017-04-02
 区域 | 虚拟机的[可用性区域](../../availability-zones/az-overview.md) | 2017-12-01
 
 ### <a name="sample-1-tracking-vm-running-on-azure"></a>示例 1：跟踪 Azure 上正在运行的 VM
@@ -511,12 +511,12 @@ caching | 缓存要求
 createOption | 有关 VM 创建方式的信息
 diffDiskSettings | 临时磁盘设置
 diskSizeGB | 磁盘大小 (GB)
-image   | 源用户映像虚拟硬盘
+图像   | 源用户映像虚拟硬盘
 lun     | 磁盘的逻辑单元号
 managedDisk | 托管磁盘参数
 name    | 磁盘名称
 vhd     | 虚拟硬盘
-writeAcceleratorEnabled | 磁盘是否启用了 writeAccelerator
+writeAcceleratorEnabled | 磁盘上是否启用了 writeAccelerator
 
 数据磁盘阵列包含附加到 VM 的数据磁盘列表。 每个数据磁盘对象包含以下信息：
 
@@ -527,7 +527,7 @@ createOption | 有关 VM 创建方式的信息
 diffDiskSettings | 临时磁盘设置
 diskSizeGB | 磁盘大小 (GB)
 encryptionSettings | 磁盘的加密设置
-image   | 源用户映像虚拟硬盘
+图像   | 源用户映像虚拟硬盘
 managedDisk | 托管磁盘参数
 name    | 磁盘名称
 osType  | 磁盘中包含的 OS 类型
@@ -845,7 +845,7 @@ HTTP 状态代码 | Reason
    * <details>
         <summary>验证路由表</summary>
 
-        1. 使用命令（如）转储本地路由表 `netstat -r` ，并查找 IMDS 条目（例如）：
+        1. 使用命令（如）转储本地路由表 `netstat -r` ，并查找 IMDS 条目 (例如 ) ：
             ```console
             ~$ netstat -r
             Kernel IP routing table
@@ -855,8 +855,8 @@ HTTP 状态代码 | Reason
             169.254.169.254 _gateway        255.255.255.255 UGH       0 0          0 eth0
             172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
             ```
-        1. 验证是否存在路由 `169.254.169.254` ，并记下相应的网络接口（例如 `eth0` ）。
-        1. 在路由表中转储相应接口的接口配置（请注意，配置文件的确切名称可能有所不同）
+        1. 验证是否存在 `169.254.169.254` 的路由，并记下相应的网络接口（例如 `eth0`）。
+        1. 转储路由表中对应接口的接口配置 (注意配置文件的确切名称可能会有所不同) 
             ```console
             ~$ cat /etc/netplan/50-cloud-init.yaml
             network:
@@ -871,8 +871,8 @@ HTTP 状态代码 | Reason
                     set-name: eth0
             version: 2
             ```
-        1. 如果使用的是动态 IP，请记下 MAC 地址。 如果使用的是静态 IP，可以记下列出的 IP 和/或 MAC 地址。
-        1. 确认接口对应于 VM 的主 NIC 和主 IP。 可以通过在 Azure 门户中查看网络配置或通过查看[Azure CLI](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-show)来查找主 NIC/IP。 请注意公共和专用 Ip （如果使用 cli，则为 MAC 地址）。 PowerShell CLI 示例：
+        1. 如果使用的是动态 IP，请记下 MAC 地址。 如果使用的是静态 IP，可以记下列出的 IP (s) 和/或 MAC 地址。
+        1. 确认该接口对应于 VM 的主 NIC 和主 IP。 可以通过在 Azure 门户中查看网络配置，或[通过 Azure CLI](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-show) 查找来找到主 NIC/IP。 记下公共和专用 IP（如果使用 cli，还要记下 MAC 地址）。 PowerShell CLI 示例：
             ```powershell
             $ResourceGroup = '<Resource_Group>'
             $VmName = '<VM_Name>'
@@ -884,7 +884,7 @@ HTTP 状态代码 | Reason
             }
             # Output: ipexample606 True 00-0D-3A-E4-C7-2E
             ```
-        1. 如果它们不匹配，请更新路由表，以使主 NIC/ip 为目标。
+        1. 如果它们不匹配，请更新路由表，以使主 NIC/IP 成为目标。
     </details>
 
 ## <a name="support-and-feedback"></a>支持和反馈

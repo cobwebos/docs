@@ -6,24 +6,24 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: 08e146ebde34c6d85e258c93a1ed1780bb97727b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 6c96c4803293db9d9bacfc43f0de2f7803e6c41c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206452"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836473"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-portal"></a>使用门户创建和管理 Azure Database for MariaDB 的专用链接
 
 专用终结点是 Azure 中专用链接的构建基块。 它使 Azure 资源（例如虚拟机 (VM)）能够以私密方式来与专用链接资源通信。  在本文中，你将了解如何使用 Azure 门户在 Azure 虚拟网络中创建 VM，并使用 Azure 私有终结点在 Azure Database for MariaDB 服务器中创建 VM。
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!NOTE]
-> 此功能适用于所有 Azure Database for MariaDB 支持常规用途和内存优化定价层的 Azure 区域。
+> 专用链接功能仅适用于常规用途或内存优化定价层中的 Azure Database for MariaDB 服务器。 请确保数据库服务器是这些定价层中的一种。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
-登录 [Azure 门户](https://portal.azure.com)。
+登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="create-an-azure-vm"></a>创建 Azure VM
 
@@ -57,7 +57,7 @@ ms.locfileid: "86206452"
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
-    | 资源组 | 选择“myResourceGroup”。**** 已在上一部分创建此内容。  |
+    | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。  |
     | **实例详细信息** |  |
     | 虚拟机名称 | 输入 *myVm*。 |
     | 区域 | 选择“西欧”。 |
@@ -78,20 +78,20 @@ ms.locfileid: "86206452"
 
 1. 在“创建虚拟机 - 磁盘”中保留默认值，然后选择“下一步:**** **网络”** 。
 
-1. 在“创建虚拟机 - 基本信息”**** 中，选择以下信息：
+1. 在“创建虚拟机 - 基本信息”中，选择以下信息：
 
-    | 设置 | Value |
+    | 设置 | 值 |
     | ------- | ----- |
     | 虚拟网络 | 保留默认值“MyVirtualNetwork”****。  |
     | 地址空间 | 保留默认值“10.1.0.0/24”。****|
     | 子网 | 保留默认值“mySubnet (10.1.0.0/24)”。****|
     | 公共 IP | 保留默认值“(new) myVm-ip”****。 |
-    | 公共入站端口 | 选择“允许所选端口”****。 |
+    | 公共入站端口 | 选择“允许所选端口”。 |
     | 选择入站端口 | 选择“HTTP”和“RDP”。**** ****|
     |||
 
 
-1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置****。
+1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。
 
 1. 看到“验证通过”消息时，选择“创建” 。
 
@@ -107,7 +107,7 @@ ms.locfileid: "86206452"
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
-    | 资源组 | 选择“myResourceGroup”。**** 已在上一部分创建此内容。|
+    | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。|
     | **服务器详细信息** |  |
     |服务器名称  | 输入 *myserver*。 如果此名称已被使用，请创建唯一的名称。|
     | 管理员用户名| 输入所选的管理员名称。 |
@@ -117,8 +117,8 @@ ms.locfileid: "86206452"
     | 计算 + 存储| 根据工作负荷选择服务器需要的定价层。 |
     |||
 
-7. 选择“确定” 。 
-8. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置****。 
+7. 选择“确定”。 
+8. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
 9. 看到 "验证通过" 消息后，选择 "**创建**"。 
 10. 看到“验证通过”消息时选择“创建”。 
 
@@ -141,7 +141,7 @@ ms.locfileid: "86206452"
     | ------- | ----- |
     | **项目详细信息** | |
     | 订阅 | 选择订阅。 |
-    | 资源组 | 选择“myResourceGroup”。**** 已在上一部分创建此内容。|
+    | 资源组 | 选择“myResourceGroup”。 已在上一部分创建此内容。|
     | **实例详细信息** |  |
     | 名称 | 输入“myPrivateEndpoint”**。 如果此名称已被使用，请创建唯一的名称。 |
     |区域|选择“西欧”。|
@@ -173,7 +173,7 @@ ms.locfileid: "86206452"
     > [!Note] 
     > 使用服务的预定义专用 DNS 区域，或提供首选 DNS 区域名称。 有关详细信息，请参阅[Azure 服务 DNS 区域配置](../private-link/private-endpoint-dns.md)。
 
-1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置****。 
+1. 选择“查看 + 创建”。 随后你会转到“查看 + 创建”页，Azure 将在此页面验证配置。 
 2. 看到“验证通过”消息时，选择“创建” 。 
 
     ![已创建专用链接](media/concepts-data-access-and-security-private-link/show-mariadb-private-link.png)
@@ -188,7 +188,7 @@ ms.locfileid: "86206452"
 
 1. 在门户的搜索栏中，输入 *myVm*。
 
-1. 选择“连接”按钮。**** 选择“连接”按钮后，“连接到虚拟机”随即打开**** ****。
+1. 选择“连接”按钮。 选择“连接”按钮后，“连接到虚拟机”随即打开**** ****。
 
 1. 选择“下载 RDP 文件”。 Azure 会创建远程桌面协议 ( *.rdp*) 文件，并将其下载到计算机。
 
@@ -199,7 +199,7 @@ ms.locfileid: "86206452"
     1. 输入在创建 VM 时指定的用户名和密码。
 
         > [!NOTE]
-        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据**** ****。
+        > 可能需要选择“更多选择” > “使用其他帐户”，以指定在创建 VM 时输入的凭据 。
 
 1. 选择“确定”。
 

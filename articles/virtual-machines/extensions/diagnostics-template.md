@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: mimckitt
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9d14ddf297afc68fd4e17795c4106271bc026c5a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31f690277675650323763a7bc6872ad736f5776c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085667"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837000"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用
 Azure 诊断扩展可在基于 Windows 的 Azure 虚拟机上提供监视和诊断功能。 通过将该扩展纳入为 Azure 资源管理器模板的一部分，可以在虚拟机上启用这些功能。 有关将任何扩展纳入为虚拟机模板一部分的详细信息，请参阅[使用 VM 扩展创作 Azure 资源管理器模板](../windows/template-description.md#extensions)。 本文介绍如何将 Azure 诊断扩展添加到 Windows 虚拟机模板中。  
@@ -79,7 +79,7 @@ Azure 诊断扩展可在基于 Windows 的 Azure 虚拟机上提供监视和诊�
 
 *typeHandlerVersion* 指定要使用的扩展的版本。 将 autoUpgradeMinorVersion 次要版本设置为 true 可确保获得可用的最新扩展次要版本。 强烈建议始终将 *autoUpgradeMinorVersion* 设置为 **true**，这样就可以随时获得并使用具有所有新功能和缺陷修复的最新的可用诊断扩展。 
 
-*settings* 元素包含扩展的配置属性（有时称为公共配置），这些属性可以从扩展设置和读回。 xmlcfg 属性包含由诊断代理收集的诊断日志、性能计数器等内容的基于 xml 的配置。 有关 xml 架构本身的详细信息，请参阅[诊断配置架构](/azure/azure-monitor/platform/diagnostics-extension-schema-windows)。 常见的做法是将实际的 xml 配置存储为 Azure 资源管理器模板中的变量，再进行连接和 base64 编码，以设置 *xmlcfg* 的值。 请参阅[诊断配置变量](#diagnostics-configuration-variables)部分，深入了解如何在变量中存储 xml。 storageAccount 属性指定向其传输诊断数据的存储帐户的名称。 
+*settings* 元素包含扩展的配置属性（有时称为公共配置），这些属性可以从扩展设置和读回。 xmlcfg 属性包含由诊断代理收集的诊断日志、性能计数器等内容的基于 xml 的配置。 有关 xml 架构本身的详细信息，请参阅[诊断配置架构](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)。 常见的做法是将实际的 xml 配置存储为 Azure 资源管理器模板中的变量，再进行连接和 base64 编码，以设置 *xmlcfg* 的值。 请参阅[诊断配置变量](#diagnostics-configuration-variables)部分，深入了解如何在变量中存储 xml。 storageAccount 属性指定向其传输诊断数据的存储帐户的名称。 
 
 *protectedSettings* 中的属性（有时称为专用配置）可设置，但在设置之后无法读回。 protectedSettings 的只写性质使其非常适合存储类似存储帐户密钥（写入诊断数据的位置）的密码。    
 
@@ -117,7 +117,7 @@ Azure 诊断扩展可在基于 Windows 的 Azure 虚拟机上提供监视和诊�
 
 诊断扩展的 *xmlcfg* 属性使用连接在一起的多个变量定义。 这些变量值的格式为 xml，因此必须在设置 json 变量时正确转义。
 
-下面的示例介绍了诊断配置 xml，它会收集标准系统级别性能计数器，以及一些 Windows 事件日志和诊断基础结构日志。 该配置 xml 已正确转义和格式化，因此可以直接将配置粘贴到模板的 variables 节。 有关该配置 xml 的更易理解的示例，请参阅[诊断配置架构](/azure/azure-monitor/platform/diagnostics-extension-schema-windows)。
+下面的示例介绍了诊断配置 xml，它会收集标准系统级别性能计数器，以及一些 Windows 事件日志和诊断基础结构日志。 该配置 xml 已正确转义和格式化，因此可以直接将配置粘贴到模板的 variables 节。 有关该配置 xml 的更易理解的示例，请参阅[诊断配置架构](../../azure-monitor/platform/diagnostics-extension-schema-windows.md)。
 
 ```json
 "wadlogs": "<WadCfg> <DiagnosticMonitorConfiguration overallQuotaInMB=\"4096\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration\"> <DiagnosticInfrastructureLogs scheduledTransferLogLevelFilter=\"Error\"/> <WindowsEventLog scheduledTransferPeriod=\"PT1M\" > <DataSource name=\"Application!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"Security!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"System!*[System[(Level = 1 or Level = 2)]]\" /></WindowsEventLog>",

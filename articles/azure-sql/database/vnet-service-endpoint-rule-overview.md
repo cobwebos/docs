@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 65ec92aeca44a514467a642de1dab06f06c220e9
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 880ec24c377091173202098a3c54b5776bf69a98
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533846"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836609"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>使用适用于 Azure SQL 数据库中的服务器的虚拟网络服务终结点和规则
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -59,7 +59,7 @@ RBAC 备用：
 
 网络管理员和数据库管理员角色的权限超出虚拟网络规则的管理需要， 只有部分权限是必需的。
 
-可以选择在 Azure 中使用[基于角色的访问控制 (RBAC)][rbac-what-is-813s]，创建一个只有部分必需权限的自定义角色。 在涉及到网络管理员或数据库管理员时，可以使用自定义角色来代替。与向两个主要的管理员角色添加用户相比，向自定义角色添加用户的安全风险较低。
+你可以选择使用 azure 中[基于角色的访问控制 (AZURE RBAC) ][rbac-what-is-813s]在 azure 中创建只具有必要的功能子集的单个自定义角色。 在涉及到网络管理员或数据库管理员时，可以使用自定义角色来代替。与向两个主要的管理员角色添加用户相比，向自定义角色添加用户的安全风险较低。
 
 > [!NOTE]
 > 在某些情况下，Azure SQL 数据库中的数据库和 VNet-子网位于不同的订阅中。 在这些情况下，必须确保以下配置：
@@ -136,10 +136,10 @@ PolyBase 通常用于将数据从 Azure 存储帐户加载到 Azure Synapse Anal
    > - 如果有常规用途 v1 或 Blob 存储帐户，则必须先按照此[指南](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)将该帐户**升级到 v2** 帐户。
    > - 若要了解 Azure Data Lake Storage Gen2 的已知问题，请参阅此[指南](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)。
 
-1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后选择“添加角色分配”。  将**存储 Blob 数据参与者**Azure 角色分配到托管 Azure Synapse Analytics 的服务器，该服务器已在步骤 #1 中注册 AZURE ACTIVE DIRECTORY （AAD）。
+1. 在存储帐户下导航到“访问控制(标识和访问管理)”，然后选择“添加角色分配”。  将**存储 Blob 数据参与者**Azure 角色分配到托管 Azure Synapse Analytics 的服务器，该服务器已注册到 AZURE ACTIVE DIRECTORY (AAD) 如步骤 #1 中所述。
 
    > [!NOTE]
-   > 只有对存储帐户具有“所有者”权限的成员才能执行此步骤。 有关各种 Azure 内置角色，请参阅本[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
+   > 只有对存储帐户具有“所有者”权限的成员才能执行此步骤。 有关各种 Azure 内置角色，请参阅此[指南](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)。
   
 1. **通过 Polybase 连接到 Azure 存储帐户：**
 

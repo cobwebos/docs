@@ -3,12 +3,12 @@ title: Azure 事件中心防火墙规则 | Microsoft Docs
 description: 使用防火墙规则允许从特定 IP 地址到 Azure 事件中心的链接。
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 8ba327c78888d9e5f38693ae08a2022b2d1543a4
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: b59c34e80fb08e35a9ed8b1b3e406e2e63517877
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553115"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836813"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>允许从特定 IP 地址或范围访问 Azure 事件中心命名空间
 默认情况下，只要请求附带有效的身份验证和授权，就可以从 Internet 访问事件中心命名空间。 有了 IP 防火墙，就可以使用 [CIDR（无类别域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法将其进一步限制为仅一组 IPv4 地址或 IPv4 地址范围。
@@ -158,6 +158,6 @@ IP 防火墙规则应用于事件中心命名空间级别。 因此，这些规�
 
 <!-- Links -->
 
-[express-route]:  /azure/expressroute/expressroute-faqs#supported-services
+[express-route]:  ../expressroute/expressroute-faqs.md#supported-services
 [lnk-deploy]: ../azure-resource-manager/templates/deploy-powershell.md
 [lnk-vnet]: event-hubs-service-endpoints.md

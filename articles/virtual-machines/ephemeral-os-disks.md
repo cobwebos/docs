@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 4fabaed28ca186f3ca091107e51ed3900168ba41
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: f312170fd357e64e2fbd7d455987993cdad76123
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387721"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837102"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>用于 Azure VM 的临时 OS 磁盘
 
@@ -51,7 +51,7 @@ ms.locfileid: "87387721"
 临时磁盘还要求 VM 大小支持高级存储。 大小通常（但并非总是）在名称中包含 `s`，例如 DSv2 和 EsV3。 有关详细信息，请参阅 [Azure VM 大小](sizes.md)，其中详述了哪些大小支持高级存储。
 
 ## <a name="preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks"></a>预览-暂时的 OS 磁盘现在可以存储在临时磁盘上
-暂时的 OS 磁盘除了 VM 缓存外，还可以存储在 VM temp/资源磁盘上。 因此，现在你可以使用不具有缓存或缓存不足的虚拟机磁盘，但具有用于存储临时 OS 磁盘的临时/资源磁盘，例如 Dav3、Dav4、Eav4 和 Eav3。 如果 VM 具有足够的缓存和临时空间，你现在还可以使用名为[DiffDiskPlacement](https://docs.microsoft.com/rest/api/compute/virtualmachines/list#diffdiskplacement)的新属性指定要存储临时 OS 磁盘的位置。 此功能目前处于预览状态。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 若要开始，请[请求访问](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u)。
+暂时的 OS 磁盘除了 VM 缓存外，还可以存储在 VM temp/资源磁盘上。 因此，现在你可以使用不具有缓存或缓存不足的虚拟机磁盘，但具有用于存储临时 OS 磁盘的临时/资源磁盘，例如 Dav3、Dav4、Eav4 和 Eav3。 如果 VM 具有足够的缓存和临时空间，你现在还可以使用名为[DiffDiskPlacement](/rest/api/compute/virtualmachines/list#diffdiskplacement)的新属性指定要存储临时 OS 磁盘的位置。 此功能目前处于预览状态。 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 若要开始，请[请求访问](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6cQw0fZJzdIsnbfbI13601URTBCRUZPMkQwWFlCOTRIMFBSNkM1NVpQQS4u)。
 
 ## <a name="powershell"></a>PowerShell
 
@@ -203,7 +203,7 @@ id}/resourceGroups/{rgName}/providers/Microsoft.Compute/VirtualMachines/{vmName}
 
 **问：是否支持临时 OS 磁盘的所有 VM 大小？**
 
-答：不可以，支持大多数高级存储 VM 大小（DS、ES、FS、GS、M 等）。 若要了解特定 VM 大小是否支持临时 OS 磁盘，可以：
+答：不可以，大多数高级存储 VM 大小都支持 (DS、ES、FS、GS、M 等 ) 。 若要了解特定 VM 大小是否支持临时 OS 磁盘，可以：
 
 调用 `Get-AzComputeResourceSku` PowerShell cmdlet
 ```azurepowershell-interactive

@@ -4,12 +4,12 @@ description: 提供有关 Azure VMware 解决方案 (AVS) 的某些常见问题�
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: f160e617163f11c02e4d661cbf1c14f63a6772f8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6bf8e924b0776ace282e94f62ae2b0a67439efd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003417"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836575"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>有关 Azure VMware 解决方案 (AVS) 预览版的常见问题解答
 
@@ -25,7 +25,7 @@ ms.locfileid: "87003417"
 
 **目前在哪些地区提供 AVS？**
 
-预览期间，将在北美地区的美国东部和欧洲西部的阿姆斯特丹提供 AVS。
+正在将该服务连续添加到新区域，因此请查看[最新的服务可用性信息](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware)以了解更多详细信息。 
 
 **在 Azure VMware 解决方案 (AVS) 实例中运行的工作负载是否可使用 Azure 服务或与其集成？**
 
@@ -57,7 +57,7 @@ ms.locfileid: "87003417"
 
 **这与 Azure VMware Solution by CloudSimple 有何不同？**
 
-对于新的 Azure VMware 解决方案，Microsoft 与 VMware 具有云服务提供商直接合作伙伴关系。 新解决方案完全由 Microsoft 设计、生成和提供支持，并获得了 VMware 认可。 两种解决方案的体系结构是一致的，VMware 技术堆栈在 Azure 专用基础结构上运行。
+对于新的 Azure VMware 解决方案，Microsoft 与 VMware 具有云服务提供商直接合作伙伴关系。 新解决方案完全是由 Microsoft 设计、构建和支持的，并由 VMware 认可。 两种解决方案的体系结构是一致的，VMware 技术堆栈在 Azure 专用基础结构上运行。
 
 **如果我已是 Azure VMware 解决方案客户，此预览版对我来说意味着什么？**
 
@@ -65,7 +65,7 @@ Azure VMware Solution by CloudSimple 没有任何更改。 我们继续支持 Az
 
 **可以从 Azure VMware Solution by CloudSimple 迁移到此新的解决方案吗？**
 
-可以，Azure VMware 解决方案支持使用熟悉的 VMware 工具（如 HCX）进行迁移。 如果客户对迁移到新解决方案感兴趣，请与你的 Microsoft 帐户团队合作，探索相关选项和可用支持。
+可以，Azure VMware 解决方案支持使用熟悉的 VMware 工具（如 HCX）进行迁移。 对于对迁移到新解决方案感兴趣的客户，请与你的 Microsoft 帐户团队合作来探索选项和可用支持。
 
 
 
@@ -85,11 +85,11 @@ Azure VMware Solution by CloudSimple 没有任何更改。 我们继续支持 Az
 
 **每个主机的存储容量是多少？**
 
-每个 ESXi 主机都有两个 vSAN diskgroups，容量层为 15.2 TB，有 3.2 TB 个 NVMe 缓存层（每个 diskgroup 中 1.6 TB）。
+每个 ESXi 主机都有两个 vSAN diskgroups，容量层为 15.2 TB，每个 diskgroup) 有 3.2 TB 个 NVMe 缓存层 (1.6 TB。
 
 **每个 ESXi 主机中提供多少网络带宽？**
 
-ESXi 主机支持最大 25 Gbps 的连接带宽。
+每个 ESXi 主机均为 AVS 配置了 4 25 Gbps Nic，为 ESXi 系统流量预配了两个 Nic，为工作负荷流量预配了两个 nic。 
 
 **VSAN 数据存储上存储的数据是否静态加密？**
 
@@ -115,7 +115,7 @@ ESXi 主机支持最大 25 Gbps 的连接带宽。
 
 **可以为试用群集使用高端主机吗？**
 
-否。 高端 ESXi 主机保留用于生产群集。
+不是。 高端 ESXi 主机保留用于生产群集。
 
 ## <a name="avs-and-vmware-software"></a>AVS 和 VMware 软件
 
@@ -137,7 +137,7 @@ ESXi 主机支持最大 25 Gbps 的连接带宽。
 
 **在私有云中，VMware 软件的升级和更新计划是什么？**
 
-私有云软件捆绑升级的目的是将软件保存到 VMware 的软件捆绑版本的最新版本中。 私有云软件版本可能不同于各个软件组件的最新版本（ESXi、NSX-T、vCenter、vSAN）。
+私有云软件捆绑升级的目的是将软件保存到 VMware 的软件捆绑版本的最新版本中。 私有云软件版本可能不同于各个软件组件的最新版本， (ESXi，，NSX，vCenter，vSAN) 。
 
 **私有云软件堆栈的更新频率是多少？**
 
@@ -197,11 +197,11 @@ ESXi 主机支持最大 25 Gbps 的连接带宽。
 
 **在 AVS 预览期间将如何定价？**
 
-有关定价的一般问题，请参阅 Azure VMware 解决方案[定价](https://azure.microsoft.com/pricing/details/azure-vmware)页面。 预览定价可根据要求提供，请联系你的帐户团队或访问定价页面上的链接联系销售人员。
+有关定价的一般问题，请参阅 Azure VMware 解决方案[定价](https://azure.microsoft.com/pricing/details/azure-vmware)页面。 预览版定价适用于请求，请联系你的帐户团队，或单击定价页面上的链接以联系销售人员。
 
 **由谁针对 AVS 提供支持？**
 
-对 AVS 的支持由 Microsoft 提供。 请注意，根据我们的预览指南，我们在周一至周五的营业时间 PST 上午 9 点到下午 5 点提供支持。 可通过[此链接](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)提交支持票证
+对 AVS 的支持由 Microsoft 提供。 请注意，根据我们的预览准则，我们将在周一至周五的9到 5 pm PST 营业时间内提供支持。 可通过[此链接](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)提交支持票证
 
 **创建 AVS 私有云需要哪些帐户？**
 

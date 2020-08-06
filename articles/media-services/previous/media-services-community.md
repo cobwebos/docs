@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 11902e363428a45bc158a99d251343e13b62540d
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 5e8318b480cfa0d399a7fb2a0e7f6ebed1488397
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836424"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836490"
 ---
 # <a name="azure-media-services-community"></a>Azure 媒体服务社区  
 
@@ -48,7 +48,7 @@ ms.locfileid: "83836424"
 
 目前，MSDN 为媒体服务团队的主社区论坛。
 
-[![MSDN](./media/media-services-community/msdn.png)](https://docs.microsoft.com/answers/topics/azure-media-services.html) 
+[![MSDN](./media/media-services-community/msdn.png)](/answers/topics/azure-media-services.html) 
 
 团队还可以监控使用 Azure 媒体服务标记 Stack Overflow 的问题。
 

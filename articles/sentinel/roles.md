@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: yelevin
-ms.openlocfilehash: b907fead145847d54b8b1de196586b65101b22ed
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 7dded3b938444198e72d6eb87476f571dd3f4d78
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533999"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836762"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Azure Sentinel 中的权限
 
-Azure Sentinel 使用 [基于角色的访问控制（RBAC）](../role-based-access-control/role-assignments-portal.md)提供 [built-in roles](../role-based-access-control/built-in-roles.md)   可分配给 Azure 中的用户、组和服务的内置角色。
+Azure Sentinel 使用 azure [RBAC)  (azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)来提供 [built-in roles](../role-based-access-control/built-in-roles.md)   可分配给 Azure 中的用户、组和服务的内置角色。
 
-使用 RBAC 创建和分配安全操作团队中的角色，以授予 Azure Sentinel 的适当访问权限。 不同角色使你可以精细控制 Azure Sentinel 的用户可以查看和执行的操作。 可以直接在 Azure Sentinel 工作区中分配 azure 角色（请参阅下面的注释），也可以在工作区所属的订阅或资源组中进行分配。
+使用 RBAC 创建和分配安全操作团队中的角色，以授予 Azure Sentinel 的适当访问权限。 不同角色使你可以精细控制 Azure Sentinel 的用户可以查看和执行的操作。 可以直接在 Azure Sentinel 工作区中分配 azure 角色 (参阅下面) 或工作区所属的订阅或资源组中的说明，Azure Sentinel 将继承该工作区。
 
 ## <a name="roles-for-working-in-azure-sentinel"></a>Azure Sentinel 中使用的角色
 
@@ -38,7 +38,7 @@ Azure Sentinel 使用 [基于角色的访问控制（RBAC）](../role-based-acc
 
 - [Azure Sentinel 读者](../role-based-access-control/built-in-roles.md#azure-sentinel-reader)可以查看数据、事件、工作簿和其他 Azure Sentinel 资源。
 
-- 除了上述情况外， [Azure Sentinel 响应](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)程序还可以管理事件（分配、消除等）
+- 除上述外， [Azure Sentinel 响应](../role-based-access-control/built-in-roles.md#azure-sentinel-responder)程序还可以管理事件 (分配、消除等 ) 
 
 - 除了以上，还可以创建和编辑工作簿、分析规则和其他[Azure sentinel 资源](../role-based-access-control/built-in-roles.md#azure-sentinel-contributor)。
 
@@ -54,7 +54,7 @@ Azure Sentinel 使用 [基于角色的访问控制（RBAC）](../role-based-acc
 
 - 使用行动手册自动完成对威胁的响应
 
-    Azure Sentinel 使用自动响应的**行动手册**。 行动手册基于**Azure 逻辑应用**，是独立的 azure 资源。 你可能希望将逻辑应用与安全业务流程、自动化和响应（之忠诚度）操作一起使用，从而将其分配给安全操作团队的特定成员。 可以使用[逻辑应用参与者](../role-based-access-control/built-in-roles.md#logic-app-contributor)角色或[逻辑应用操作员](../role-based-access-control/built-in-roles.md#logic-app-operator)角色分配显式权限来使用行动手册。
+    Azure Sentinel 使用自动响应的**行动手册**。 行动手册基于**Azure 逻辑应用**，是独立的 azure 资源。 你可能想要将逻辑应用用于安全业务流程、自动化和响应 (之忠诚度) 操作，以将其分配给安全操作团队的特定成员。 可以使用[逻辑应用参与者](../role-based-access-control/built-in-roles.md#logic-app-contributor)角色或[逻辑应用操作员](../role-based-access-control/built-in-roles.md#logic-app-operator)角色分配显式权限来使用行动手册。
 
 - 将数据源连接到 Azure Sentinel
 
@@ -76,7 +76,7 @@ Azure Sentinel 使用 [基于角色的访问控制（RBAC）](../role-based-acc
 
 下表汇总了 Azure Sentinel 中的角色和允许的操作。 
 
-| 角色 | 创建和运行行动手册| 创建和编辑工作簿、分析规则和其他 Azure Sentinel 资源 | 管理事件（解除、分配等） | 查看数据、事件、工作簿和其他 Azure Sentinel 资源 |
+| 角色 | 创建和运行行动手册| 创建和编辑工作簿、分析规则和其他 Azure Sentinel 资源 | 管理事件 (关闭、分配等 )  | 查看数据、事件、工作簿和其他 Azure Sentinel 资源 |
 |---|---|---|---|---|
 | Azure Sentinel 读取者 | -- | -- | -- | &#10003; |
 | Azure Sentinel 响应方 | -- | -- | &#10003; | &#10003; |

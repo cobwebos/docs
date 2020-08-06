@@ -6,21 +6,21 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 6f2043b91f8345a638d6fc773230cd182fb0fead
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 20add4859b272b6d121666cde9c56296119d41e4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84508839"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836524"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>Azure Database for MariaDB 的专用链接
 
-专用链接允许你为 Azure Database for MariaDB 创建专用终结点，并将 Azure 服务引入专用虚拟网络（VNet）。 专用终结点公开专用 IP，可用于连接到 Azure Database for MariaDB 数据库服务器，就像 VNet 中的任何其他资源一样。
+专用链接允许你为 Azure Database for MariaDB 创建专用终结点，并将 Azure 服务引入到专用虚拟网络 (VNet) 中。 专用终结点公开专用 IP，可用于连接到 Azure Database for MariaDB 数据库服务器，就像 VNet 中的任何其他资源一样。
 
 有关支持专用链接功能的 PaaS 服务的列表，请查看专用链接[文档](https://docs.microsoft.com/azure/private-link/index)。 专用终结点是特定 [VNet](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) 和子网中的专用 IP 地址。
 
 > [!NOTE]
-> 此功能适用于所有 Azure Database for MariaDB 支持常规用途和内存优化定价层的 Azure 区域。
+> 专用链接功能仅适用于常规用途或内存优化定价层中的 Azure Database for MariaDB 服务器。 请确保数据库服务器是这些定价层中的一种。
 
 ## <a name="data-exfiltration-prevention"></a>数据渗透防护
 
@@ -32,20 +32,20 @@ Azure Database for MariaDB 中的数据（例如，数据库管理员）可以�
 
 * 仅允许使用 VM 的专用 IP 地址将流量传输到 Azure Database for MariaDB。 有关详细信息，请参阅有关[服务终结点](concepts-data-access-security-vnet.md)和 [VNet 防火墙规则](howto-manage-vnet-portal.md)的文章。
 
-* 在 Azure VM 上，通过使用网络安全组（Nsg）和服务标记，缩小传出连接的范围，如下所示：
+* 在 Azure VM 上，通过使用网络安全组 (Nsg) 和服务标记，缩小传出连接的范围，如下所示：
 
     * 指定 NSG 规则以允许服务标记 = SQL 的流量。WestUs-仅允许连接到美国西部 Azure Database for MariaDB
-    * 指定 NSG 规则（具有较高优先级），拒绝服务标记的流量 = SQL-拒绝连接到所有区域中的 MariaDB 数据库</br></br>
+    * 指定 NSG 规则 (优先级较高的) 拒绝服务标记的流量 = SQL-拒绝连接到所有区域中的 MariaDB 数据库</br></br>
 
 在此设置结束时，Azure VM 只能连接到美国西部区域中的 Azure Database for MariaDB。 不过，连接并不限于单个 Azure Database for MariaDB。 VM 仍可连接到美国西部区域中的任何 Azure Database for MariaDB，包括不属于订阅的数据库。 尽管我们在上述场景中已将数据渗透范围缩小到了特定的区域，但我们并未完全消除这种渗透。</br>
 
-通过专用链接，你现在可以设置网络访问控制（如 Nsg），以限制对专用终结点的访问。 然后，将单个 Azure PaaS 资源映射到特定的专用终结点。 恶意有问必答只能访问映射的 PaaS 资源（例如 Azure Database for MariaDB），也不能访问其他资源。
+通过专用链接，你现在可以设置网络访问控制（如 Nsg），以限制对专用终结点的访问。 然后，将单个 Azure PaaS 资源映射到特定的专用终结点。 恶意有问必答只能访问映射的 PaaS 资源 (例如 Azure Database for MariaDB) ，而不能访问其他资源。
 
 ## <a name="on-premises-connectivity-over-private-peering"></a>通过专用对等互连建立本地连接
 
 从本地计算机连接到公共终结点时，需要使用服务器级防火墙规则将 IP 地址添加到基于 IP 的防火墙。 尽管此模型非常适合用于允许对开发或测试工作负荷的单个计算机进行访问，但在生产环境中却难以管理。
 
-使用 "专用" 链接，可以使用[快速路由](https://azure.microsoft.com/services/expressroute/)（ER）、专用对等互连或[VPN 隧道](https://docs.microsoft.com/azure/vpn-gateway/)来启用对专用终结点的跨界访问。 然后，他们可以通过公共终结点禁用所有访问权限，而不使用基于 IP 的防火墙。
+使用 "专用" 链接，可以使用[Express Route](https://azure.microsoft.com/services/expressroute/) (ER) 、专用对等互连或[VPN 隧道](https://docs.microsoft.com/azure/vpn-gateway/)来启用对专用终结点的跨界访问。 然后，他们可以通过公共终结点禁用所有访问权限，而不使用基于 IP 的防火墙。
 
 > [!NOTE]
 > 在某些情况下，Azure Database for MariaDB 和 VNet 子网位于不同的订阅中。 在这些情况下，必须确保以下配置：
@@ -62,12 +62,12 @@ Azure Database for MariaDB 中的数据（例如，数据库管理员）可以�
 
 ### <a name="approval-process"></a>审批过程
 
-网络管理员创建专用终结点（PE）后，管理员可以管理专用终结点连接（PEC）以 Azure Database for MariaDB。 网络管理员和 DBA 之间的这种职责分离有助于管理 Azure Database for MariaDB 连接性。 
+网络管理员创建专用终结点 (PE) 后，管理员可以 (PEC) 到 Azure Database for MariaDB 来管理专用终结点连接。 网络管理员和 DBA 之间的这种职责分离有助于管理 Azure Database for MariaDB 连接性。 
 
 * 导航到 Azure 门户中的 Azure Database for MariaDB server 资源。 
     * 在左窗格中选择 "专用终结点连接"
-    * 显示所有专用终结点连接的列表（PECs）
-    * 已创建对应的专用终结点（PE）
+    * 显示 (PECs 的所有专用终结点连接的列表) 
+    * 已创建 (PE) 对应的专用终结点
 
 ![选择专用终结点门户](media/concepts-data-access-and-security-private-link/select-private-link-portal.png)
 
@@ -114,7 +114,7 @@ Azure Database for MariaDB 中的数据（例如，数据库管理员）可以�
 
 ## <a name="deny-public-access-for-azure-database-for-mariadb"></a>拒绝 Azure Database for MariaDB 的公共访问
 
-如果你只想要依赖于专用终结点来访问其 Azure Database for MariaDB，则可以通过在数据库服务器上设置 "**拒绝公共网络访问**" 配置来禁用设置所有公共终结点（[防火墙规则](concepts-firewall-rules.md)和[VNet 服务终结点](concepts-data-access-security-vnet.md)）。 
+如果你只想要依赖于专用终结点来访问其 Azure Database for MariaDB，则可以通过在数据库服务器上设置 "**拒绝公共网络访问**" 配置来禁用 ([防火墙规则](concepts-firewall-rules.md)和[VNet 服务终结点](concepts-data-access-security-vnet.md)) 设置所有公共终结点。 
 
 如果此设置设置为 *"是"*，则只允许通过专用终结点连接到 Azure Database for MariaDB。 如果此设置设置为 "*否*"，则客户端可以根据防火墙或 VNet 服务终结点设置连接到 Azure Database for MariaDB。 此外，一旦设置了专用网络访问的值，客户就不能添加和/或更新现有的 "防火墙规则" 和 "VNet 服务终结点规则"。
 
