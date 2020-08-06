@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 16bb5fa41389dcf1ddd8ee2e3434e15755bb0d8d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 649f1e6cf79aa17d053cc547debf5232120bb4fe
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290929"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760628"
 ---
 # <a name="language-support-for-computer-vision"></a>计算机视觉的语言支持
 
@@ -23,9 +23,9 @@ ms.locfileid: "87290929"
 
 ## <a name="optical-character-recognition-ocr"></a>光学字符识别 (OCR)
 
-计算机视觉的 OCR Api 支持多种语言。 它们不需要指定语言代码。 有关详细信息，请参阅[光学字符识别（OCR）](concept-recognizing-text.md) 。
+计算机视觉的 OCR Api 支持多种语言。 它们不需要指定语言代码。 有关详细信息，请参阅[光学字符识别 (OCR) ](concept-recognizing-text.md) 。
 
-|语言| 语言代码 | OCR API | 读取3.0 版 | 读取 3.1-预览。1 |
+|语言| 语言代码 | OCR API | 读取3.0 版 | 读取3.1 公共预览版 |
 |:-----|:----:|:-----:|:---:|:---:|
 |阿拉伯语 | `ar`|✔ | | |
 |中文(简体) | `zh-Hans`|✔ | |✔ |
@@ -58,7 +58,7 @@ ms.locfileid: "87290929"
 
 [分析 - 图像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API 的某些操作可以返回其他语言（使用 `language` 查询参数指定）的结果。 某些操作会返回英语结果而不管你指定何种语言，另外一些操作会针对不支持的语言引发异常。 操作是通过 `visualFeatures` 和 `details` 查询参数指定的；请参阅[概述](home.md)以获取能够通过图像分析完成的所有操作的列表。
 
-|语言 | 语言代码 | 类别 | Tags | 说明 | 成人 | 品牌 | Color | 面 | ImageType | 对象 | 名人 | 特征点 |
+|语言 | 语言代码 | 类别 | 标记 | 说明 | 成人 | 品牌 | Color | 面 | ImageType | 对象 | 名人 | 特征点 |
 |:---|:---:|:----:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 |中文 | `zh`    | ✔ | ✔| ✔|-|-|-|-|-|❌|✔|✔|
 |英语 | `en`   | ✔ | ✔| ✔|✔|✔|✔|✔|✔|✔|✔|✔|

@@ -8,12 +8,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 08/04/2020
-ms.openlocfilehash: 1f6624c454364ca19c8ce112cb1cbbef134f162d
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 8547c07214e94176babe4909504b9292d45c06f9
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/04/2020
-ms.locfileid: "87567885"
+ms.locfileid: "87759608"
 ---
 # <a name="azure-sql-edge-usage-and-diagnostics-data-configuration"></a>Azure SQL Edge 使用情况和诊断数据配置
 
@@ -87,7 +87,7 @@ Azure SQL Edge 使用情况和诊断数据收集的本地审核组件可以将�
 
 在 Azure SQL Edge 上启用本地审核使用情况和诊断数据
 
-1. 为新的本地审核日志存储创建目标目录。 此目标目录需要在映射到 SQL Edge 上的/var/opt/mssql/路径的同一装入卷中创建。
+1. 为新的本地审核日志存储创建目标目录。 此目标目录可以位于主机上，也可以位于容器内。 在下面的示例中，将在映射到 SQL Edge 上的/var/opt/mssql/路径的同一装入卷中创建目标目录。
 
    ```bash
    sudo mkdir <host mount path>/audit
@@ -95,14 +95,14 @@ Azure SQL Edge 使用情况和诊断数据收集的本地审核组件可以将�
 
 2. 使用环境变量或 mssql. 会议文件配置使用情况和诊断数据的审核。
 
-   - 使用环境变量-将以下环境变量添加到 SQL Edge 部署。
+   - 使用环境变量-将以下环境变量添加到 SQL Edge 部署，并指定审核文件的目标目录。
    
-     `*MSSQL_TELEMETRY_DIR = /var/opt/mssql/audit*`
+     `*MSSQL_TELEMETRY_DIR = <host mount path>/audit*`
    
-   - 使用 mssql. 会议文件-在 mssql. 会议文件中添加以下行。
+   - 使用 mssql. 会议文件-在 mssql. 会议文件中添加以下行，并为审核文件指定目标目录。
        ```ini
        [telemetry]
-       userrequestedlocalauditdirectory  = /var/opt/mssql/audit
+       userrequestedlocalauditdirectory  = <host mount path>/audit
        ```  
 
 ## <a name="next-steps"></a>后续步骤

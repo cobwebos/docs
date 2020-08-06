@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/04/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e50733c843dfd21e35572f00fc6690e1e84aba97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 97da7428090935daf95ae28a54b8ff10bca2e546
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84688885"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760900"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>在 Azure 中，使用 Windows 故障转移群集和共享磁盘为 SAP ASCS/SCS 实例安装 SAP NetWeaver HA
 
@@ -185,7 +185,7 @@ ms.locfileid: "84688885"
 1. 在 Windows DNS 管理器中为 ASCS/SCS 实例的虚拟主机名创建 DNS 条目。
 
    > [!IMPORTANT]
-   > 分配给 ASCS/SCS 实例的虚拟主机名的 IP 地址必须与分配给 Azure 负载均衡器的 IP 地址相同（ \<SID\> -lb-ASCS）。  
+   > 分配给 ASCS/SCS 实例的虚拟主机名的 IP 地址必须与分配给 Azure 负载均衡器的 IP 地址 (\<SID\> -lb-ASCS) 。  
    >
    >
 
@@ -225,7 +225,7 @@ ms.locfileid: "84688885"
 
 修改 ASCS/SCS 实例的 SAP 配置文件：
 
-1. 将此配置文件参数添加到 SAP ASCS/SCS 实例配置文件：
+1. 如果使用 ENSA1，请将此配置文件参数添加到 SAP ASCS/SCS 实例配置文件。
 
    ```
    enque/encni/set_so_keepalive = true
@@ -237,6 +237,8 @@ ms.locfileid: "84688885"
    例如，添加到 SAP SCS 实例配置文件和相应的路径：
 
    `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
+   
+   对于 ENSA1 和 ENSA2，请确保 `keepalive` 按 SAP 说明[1410736](https://launchpad.support.sap.com/#/notes/1410736)中所述设置 OS 参数。   
 
 2. 若要应用更改，请重启 SAP ASCS/SCS 实例。
 
@@ -370,7 +372,7 @@ ProbePort 设置为 62000********。 现在，可从其他主机（例如 ascsha
 
 ## <a name="install-the-sap-primary-application-server"></a><a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a>安装 SAP 主应用程序服务器
 
-在 \<SID\> 已指定为托管 PAS 的虚拟机上安装主应用程序服务器（PAS）实例-0。 Azure 上没有依赖项。 没有特定于 DataKeeper 的设置。
+在 \<SID\> 已指定为托管 PAS 的虚拟机上安装主应用程序服务器 (PAS) 实例-0。 Azure 上没有依赖项。 没有特定于 DataKeeper 的设置。
 
 ## <a name="install-the-sap-additional-application-server"></a><a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a>安装 SAP 附加应用程序服务器
 

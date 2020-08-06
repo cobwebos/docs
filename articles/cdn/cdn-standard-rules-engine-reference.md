@@ -1,22 +1,22 @@
 ---
 title: Azure CDN 的标准规则引擎参考 |Microsoft Docs
-description: Azure 内容分发网络（Azure CDN）的标准规则引擎中匹配条件和操作的参考文档。
+description: 适用于 Azure 内容传送网络的标准规则引擎中的匹配条件和操作的参考文档 (Azure CDN) 。
 services: cdn
 author: asudbring
 ms.service: azure-cdn
 ms.topic: article
-ms.date: 06/22/2020
+ms.date: 08/04/2020
 ms.author: allensu
-ms.openlocfilehash: 6260a4b78197329e020bebaa3bc08db5ad792086
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f729176d3f79c2a1f6fabb5631d49747219db48f
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559315"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760084"
 ---
 # <a name="standard-rules-engine-reference-for-azure-cdn"></a>Azure CDN 的标准规则引擎参考
 
-在 Azure 内容分发网络（Azure CDN）的[标准规则引擎](cdn-standard-rules-engine.md)中，规则由一个或多个匹配条件和操作组成。 本文详细说明了适用于 Azure CDN 的标准规则引擎中的匹配条件和功能。
+在 Azure 内容分发网络 (Azure CDN) 的[标准规则引擎](cdn-standard-rules-engine.md)中，规则由一个或多个匹配条件和操作组成。 本文详细说明了适用于 Azure CDN 的标准规则引擎中的匹配条件和功能。
 
 规则引擎旨在作为 Azure CDN 标准请求处理特定类型的请求的最终颁发机构。
 
@@ -55,19 +55,11 @@ ms.locfileid: "85559315"
 
 解释为文本值的文本会*将除% 符号之外*的所有特殊字符视为必须在规则中匹配的值的一部分。 例如， `'*'` 仅当找到准确值时，才会满足将的文本匹配条件设置为 `'*'` 。
 
-百分比符号用于指示 URL 编码（例如 `%20` ）。
+百分比符号用于指示 URL 编码 (例如 `%20`) 。
 
 ### <a name="wildcard-values"></a>通配符值
 
-解释为通配符值的文本会为特殊字符赋予其他意义。 下表说明了标准规则引擎中特定特殊字符的解释方式：
-
-字符 | 说明
-----------|------------
-\ | 反斜杠用于对此表中指定的任何字符进行转义操作。 必须直接在应该进行转义的特殊字符之前指定一个反斜杠。 例如，以下语法会对星号进行转义：`\*`
-% | 百分比符号用于指示 URL 编码（例如 `%20` ）。
-\* | 星号是通配符，代表一个或多个字符。
-space | 空格字符指示可以通过任一指定的值或模式满足匹配条件。
-单引号 | 单引号没有特殊含义。 不过，一组单引号指示应将值视为文本值。 可以通过以下方式使用单引号：<ul><li>如果指定的值与比较值的任何部分匹配，则允许满足匹配条件。  例如，`'ma'` 与以下任何字符串都匹配： <ul><li>/business/**ma**rathon/asset.htm</li><li>**ma**p.gif</li><li>/business/template.**ma**p</li></ul><li>允许将特殊字符指定为文本字符。 例如，可以通过将空格字符括在一组单引号（或）中来指定文本空格字符 `' '` `'<sample value>'` 。</li><li>如果允许指定空白值，则为。 通过指定一组单引号（**' '**）来指定空值。</li></ul>**重要提示**：<br /><ul><li>如果指定的值不包含通配符，则该值将被自动视为文本值。 不需要为文本值指定一组单引号。</li><li>如果不使用反斜杠来对此表中的其他字符进行转义，则当在一组单引号中指定反斜杠时，将忽略它。</li><li>将特殊字符指定为文本字符的另一种方法是使用反斜杠（）对其进行转义 `\` 。</li></ul>
+目前，我们支持标准规则引擎的**UrlPath Match 条件**中的通配符。 \*字符是表示一个或多个字符的星号。 
 
 ## <a name="next-steps"></a>后续步骤
 

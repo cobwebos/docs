@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: marayerm
-ms.openlocfilehash: df2a7d7de236d4a2f7a93b92d7c0ac984de6f010
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 30eaa9b9f8700877607af047e5e64eca65471545
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096548"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759591"
 ---
 # <a name="azure-storage-explorer-support-lifecycle-and-policy"></a>Azure 存储资源管理器支持生命周期和策略
 
@@ -41,6 +41,7 @@ Azure 存储资源管理器发布一年四到六次。 Microsoft 还可以绕过
 
 | 存储资源管理器版本  | 发布日期       | 支持结束日期 |
 |:-------------------------:|:------------------:|:-------------------:|
+| v 1.14。2                   | 2020 年 7 月 16 日      | 2021年7月16日       |
 | v 1.14。1                   | 2020 年 7 月 14 日      | 2021 年 7 月 14 日       |
 | v 1.14。0                   | 2020年6月24日      | 2021 年 7 月 14 日       |
 | v 1.13。1                   | 5月18日2020       | 2021 年 7 月 14 日       |
@@ -61,8 +62,8 @@ Azure 存储资源管理器发布一年四到六次。 Microsoft 还可以绕过
 | v 1.5。0                    | 2018 年 10 月 29 日   | 2021 年 7 月 14 日       |
 | v sqoop-user-guide-1.4。4                    | 2018 年 10 月 15 日   | 2021 年 7 月 14 日       |
 | 版本1.4。2                    | 2018 年 9 月 24 日 | 2021 年 7 月 14 日       |
-| v 1.4。1                    | 2018 年 8 月 28 日    | 2021 年 7 月 14 日       |
+| v 1.4。1                    | 2018 年 8 月 28日    | 2021 年 7 月 14 日       |
 | v 1.3。1                    | 2018年7月11日      | 2021 年 7 月 14 日       |
 | v 1.2。0                    | 2018 年 6 月 12 日      | 2021 年 7 月 14 日       |
 | v 1.1。0                    | 2018 年 5 月 9 日        | 2021 年 7 月 14 日       |
-| 1.0.0 （及更早版本）        | 2018 年 4 月 16 日     | 2021 年 7 月 14 日       |
+|  (和更早版本的 1.0.0)         | 2018 年 4 月 16 日     | 2021 年 7 月 14 日       |

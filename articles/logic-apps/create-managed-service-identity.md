@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: de6311e786065bebe7399ccb3625798866e864df
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f9c5de4fb4e38d3f9ccb79c89be988fe0bbebc3c
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533336"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760288"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的托管标识对 Azure 资源的访问进行身份验证
 
@@ -197,7 +197,7 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 
 * 一个 `type` 属性设置为 `UserAssigned` 的 `identity` 对象
 
-* 一个子 `userAssignedIdentities` 对象，用于指定标识的资源 ID，该 ID 是具有 `principalId` 和 `clientId` 属性的另一个子对象
+* 一个子 `userAssignedIdentities` 对象，该对象指定用户分配的资源和名称
 
 此示例演示 HTTP PUT 请求的逻辑应用资源定义，并包含非参数化的 `identity` 对象。 对 PUT 请求和后续 GET 操作的响应还具有此 `identity` 对象：
 
@@ -215,10 +215,7 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
          "identity": {
             "type": "UserAssigned",
             "userAssignedIdentities": {
-               "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user-assigned-identity-name>": {
-                  "principalId": "<principal-ID>",
-                  "clientId": "<client-ID>"
-               }
+               "/subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<user-assigned-identity-name>": {}
             }
          },
          "properties": {
@@ -231,12 +228,6 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
    "outputs": {}
 }
 ```
-
-| 属性 (JSON) | 值 | 说明 |
-|-----------------|-------|-------------|
-| `principalId` | <*principal-ID*> | Azure AD 租户中用户分配的托管标识的全局唯一标识符 (GUID) |
-| `clientId` | <*client-ID*> | 逻辑应用的新标识的全局唯一标识符 (GUID)，用于运行时中的调用 |
-||||
 
 如果模板还包括托管标识的资源定义，则可以将 `identity` 对象参数化。 此示例演示子 `userAssignedIdentities` 对象如何引用你在模板的 `variables` 部分中定义的 `userAssignedIdentity` 变量。 此变量引用用户分配的标识的资源 ID。
 
@@ -281,22 +272,11 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
          "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
          "name": "[parameters('Template_UserAssignedIdentityName')]",
          "location": "[resourceGroup().location]",
-         "properties": {
-            "tenantId": "<tenant-ID>",
-            "principalId": "<principal-ID>",
-            "clientId": "<client-ID>"
-         }
+         "properties": {}
       }
   ]
 }
 ```
-
-| 属性 (JSON) | 值 | 说明 |
-|-----------------|-------|-------------|
-| `tenantId` | <*Azure-AD-tenant-ID*> | 全局唯一标识符 (GUID)，表示用户分配的标识现在是其中的一名成员的 Azure AD 租户。 在 Azure AD 租户内，服务主体与用户分配的标识具有相同名称。 |
-| `principalId` | <*principal-ID*> | Azure AD 租户中用户分配的托管标识的全局唯一标识符 (GUID) |
-| `clientId` | <*client-ID*> | 逻辑应用的新标识的全局唯一标识符 (GUID)，用于运行时中的调用 |
-||||
 
 <a name="access-other-resources"></a>
 
@@ -508,7 +488,7 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 
 ### <a name="disable-managed-identity-in-azure-resource-manager-template"></a>在 Azure 资源管理器模板中禁用托管标识
 
-如果使用 Azure 资源管理器模板创建了逻辑应用的托管标识，请将 `identity` 对象的 `type` 子属性设置为 `None`。 对于系统托管标识，此操作还会从 Azure AD 删除主体 ID。
+如果使用 Azure 资源管理器模板创建了逻辑应用的托管标识，请将 `identity` 对象的 `type` 子属性设置为 `None`。
 
 ```json
 "identity": {

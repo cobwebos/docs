@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6f8e20f97ae19a33674631e4dee18901d54462b3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 328f7bb8c03cb78f4b5375eb4f6e3d9891b83942
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291503"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760662"
 ---
 # <a name="set-up-msix-app-attach"></a>设置 MSIX 应用附加
 
@@ -29,7 +29,7 @@ ms.locfileid: "87291503"
 在开始之前，需要配置 MSIX 应用附加：
 
 - 访问 Windows 预览体验门户以获取支持 MSIX 应用附加 API 的 Windows 10 版本。
-- 正常运行的 Windows 虚拟桌面部署。 若要了解如何部署 Windows 虚拟桌面（经典），请参阅[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。 若要了解如何使用 Azure 资源管理器集成部署 Windows 虚拟桌面，请参阅[使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
+- 正常运行的 Windows 虚拟桌面部署。 若要了解如何部署 Windows 虚拟桌面 (经典) ，请参阅[在 Windows 虚拟桌面中创建租户](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)。 若要了解如何使用 Azure 资源管理器集成部署 Windows 虚拟桌面，请参阅[使用 Azure 门户创建主机池](./create-host-pools-azure-marketplace.md)。
 - .MSIX 打包工具。
 - Windows 虚拟桌面部署中将存储 .MSIX 包的网络共享。
 
@@ -202,12 +202,12 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 
 1. 右键单击该包，选择“属性”。
 2. 在出现的窗口中，选择“数字签名”选项卡。选项卡上的列表中应该只有一个项，如下图所示。 选择该项以突出显示该项，然后选择“详细信息”。
-3. 出现“数字签名详细信息”窗口时，选择“常规”选项卡，然后选择“安装证书” 。
+3. 当 "数字签名详细信息" 窗口出现时，选择 "**常规**" 选项卡，然后选择 "**查看证书**"，然后选择 "**安装证书**"。
 4. 当安装程序打开时，选择“本地计算机”作为存储位置，然后选择“下一步” 。
 5. 如果安装程序询问你是否允许应用对设备进行更改，请选择“是”。
 6. 选择“将所有证书放入以下存储区”，然后选择“浏览” 。
 7. 当“选择证书存储”窗口出现时，选择“受信任的人员”，然后选择“确定” 。
-8. 选择“完成”。
+8. 选择 "**下一步**" 和 "**完成**"。
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>为 MSIX 应用附加准备 PowerShell 脚本
 
