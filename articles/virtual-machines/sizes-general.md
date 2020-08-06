@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: mimckitt
-ms.openlocfilehash: f56b0fe087cad831efda848da3b8d89a826ec6da
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 542e16bc061b563a6e05dd55c0dc3a30b48a3c85
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423960"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835589"
 ---
 # <a name="general-purpose-virtual-machine-sizes"></a>常规用途虚拟机大小
 
@@ -35,9 +35,9 @@ ms.locfileid: "87423960"
 
 - [Dv3 和 Dsv3 系列](dv3-dsv3-series.md) VM 在采用超线程配置的第 2 代英特尔® 至强® 铂金 8272CL (Cascade Lake)、英特尔® 至强® 8171M 2.1GHz (Skylake)、英特尔® 至强® E5-2673 v4 2.3 GHz (Broadwell) 或英特尔® 至强® E5-2673 v3 2.4 GHz (Haswell) 处理器上运行，为大多数常规用途工作负载提供更好的价值定位。 在磁盘和网络限制已基于核心进行了调整以适应超线程技术的同时，内存已扩展（从 ~3.5 GiB/vCPU 到 4 GiB/vCPU）。 Dv3 系列不再具有 D/Dv2 系列的高内存 VM 大小，那些已移至内存优化的 [Ev3 和 Esv3 系列](ev3-esv3-series.md)。
 
-- [Dv4 和 Dsv4 系列](dv4-dsv4-series.md)Dv4 和 Dsv4 系列在超线程配置中的 Intel®强®白金8272CL （级联 Lake）处理器上运行，为大多数通用工作负荷提供更好的价值主张。 它的特点是，3.4 GHz 的核心 Turbo 时钟速度持久。
+- [Dv4 和 Dsv4 系列](dv4-dsv4-series.md)Dv4 和 Dsv4 系列在 Intel®强®白金 8272CL (级联 Lake) 处理器上的超线程配置中运行，为大多数通用工作负荷提供更好的价值主张。 它具有 3.4 GHz 的持续全核心 Turbo 时钟速度。
 
-- [Ddv4 和 Ddsv4 系列](ddv4-ddsv4-series.md)Ddv4 和 Ddsv4 系列在 &reg; 超线程配置的 Intel 强 &reg; 白金8272CL （级联 Lake）处理器上运行，为大多数通用工作负荷提供更好的价值主张。 它的持续全核睿频时钟速度为 3.4 GHz，采用[英特尔&reg; 睿频加速技术 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[英特尔&reg; 超线程技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)和[英特尔&reg; 高级矢量扩展 512（英特尔&reg; AVX-512）](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 它们还支持 [Intel&reg; Deep Learning Boost](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)。 与 [Gen2 VM](./linux/generation-2.md) 的 [Dv3/Dsv3](./dv3-dsv3-series.md) 大小相比，这些新的 VM 大小的本地存储将增加 50%，而且本地磁盘的读写 IOPS 更佳。
+- [Ddv4 和 Ddsv4 系列](ddv4-ddsv4-series.md)Ddv4 和 Ddsv4 系列在 Intel &reg; 强白金8272CL 上运行 &reg; ，在超线程配置中 (级联 Lake) 处理器，为大多数通用工作负荷提供更好的价值主张。 它的持续全核睿频时钟速度为 3.4 GHz，采用[英特尔&reg; 睿频加速技术 2.0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html)、[英特尔&reg; 超线程技术](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html)和[英特尔&reg; 高级矢量扩展 512（英特尔&reg; AVX-512）](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html)。 它们还支持 [Intel&reg; Deep Learning Boost](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html)。 与 [Gen2 VM](./linux/generation-2.md) 的 [Dv3/Dsv3](./dv3-dsv3-series.md) 大小相比，这些新的 VM 大小的本地存储将增加 50%，而且本地磁盘的读写 IOPS 更佳。
 
 ## <a name="other-sizes"></a>其他大小
 
@@ -52,4 +52,4 @@ ms.locfileid: "87423960"
 
 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助跨 Azure SKU 比较计算性能的详细信息。
 
-有关 Azure 如何命名其 Vm 的详细信息，请参阅[azure 虚拟机大小命名约定](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions)。
+有关 Azure 如何命名其 Vm 的详细信息，请参阅[azure 虚拟机大小命名约定](./vm-naming-conventions.md)。

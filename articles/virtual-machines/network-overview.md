@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 054838d9e2c6dcc0bb021fdbf818db95922697f0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cc98a0703cf408194c4c3740938399b57a36d468
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096607"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835606"
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Azure 中的虚拟网络和虚拟机 
 
@@ -118,7 +118,7 @@ NSG 包含两种类型的规则：入站规则和出站规则。 在每组中，
 
 ## <a name="load-balancers"></a>负载均衡器
 
-[Azure 负载均衡器](../load-balancer/load-balancer-overview.md)可提高应用程序的可用性和网络性能。 可以配置负载均衡器，[对传入 VM 的 Internet 流量进行均衡](../load-balancer/load-balancer-internet-overview.md)，或者[对 VNet 中 VM 之间的流量进行均衡](../load-balancer/load-balancer-internal-overview.md)。 负载均衡器还可以均衡跨界网络中本地计算机与 VM 之间的流量，或者将外部流量转发到特定的 VM。
+[Azure 负载均衡器](../load-balancer/load-balancer-overview.md)可提高应用程序的可用性和网络性能。 可以配置负载均衡器，[对传入 VM 的 Internet 流量进行均衡](../load-balancer/components.md#frontend-ip-configurations)，或者[对 VNet 中 VM 之间的流量进行均衡](../load-balancer/components.md#frontend-ip-configurations)。 负载均衡器还可以均衡跨界网络中本地计算机与 VM 之间的流量，或者将外部流量转发到特定的 VM。
 
 负载均衡器可以映射负载均衡器中公共 IP 地址与端口之间的，以及 VM 中专用 IP 地址与端口之间的传入和传出流量。
 
@@ -129,15 +129,15 @@ NSG 包含两种类型的规则：入站规则和出站规则。 在每组中，
 - **[端口转发](../load-balancer/tutorial-load-balancer-port-forwarding-portal.md)** - 使用入站 NAT 规则定义入站流量如何流经前端 IP 并分配到后端 IP。
 - **负载均衡器规则** – 将给定的前端 IP 和端口组合映射到一组后端 IP 地址和端口组合。 单个负载均衡器可拥有多个负载均衡规则。 每个规则都包含前端 IP 和端口，以及与 VM 关联的后端 IP 和端口。
 - **[探测](../load-balancer/load-balancer-custom-probe-overview.md)** - 监视 VM 的运行状况。 当探测无法响应时，负载均衡器会停止向状况不良的 VM 发送新连接。 现有连接不受影响，新连接将发送到状况良好的 VM。
-- **[出站规则](../load-balancer/load-balancer-outbound-rules-overview.md)** - 出站规则为标准负载均衡器的后端池识别的、要转换为前端的所有虚拟机或实例配置出站网络地址转换 (NAT)。
+- **[出站规则](../load-balancer/load-balancer-outbound-connections.md#outboundrules)** - 出站规则为标准负载均衡器的后端池识别的、要转换为前端的所有虚拟机或实例配置出站网络地址转换 (NAT)。
 
 下表列出了可用于创建面向 Internet 的负载均衡器的方法。
 
 | 方法 | 说明 |
 | ------ | ----------- |
 | Azure 门户 |  可以[通过 Azure 门户对从 Internet 到 VM 的流量进行负载均衡](../load-balancer/tutorial-load-balancer-standard-manage-portal.md)。 |
-| [Azure PowerShell](/azure/load-balancer/load-balancer-get-started-ilb-arm-ps) | 若要提供事先创建的公共 IP 地址标识符，请将 [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) 与 **-PublicIpAddress** 参数配合使用。 使用 [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) 创建后端地址池的配置。 使用 [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) 创建与你创建的前端 IP 配置关联的入站 NAT 规则。 使用 [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) 创建所需的探测。 使用 [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) 创建负载均衡器配置。 使用 [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) 创建负载均衡器。|
-| [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md) | 使用 [az network lb create](/cli/azure/network/lb) 创建初始负载均衡器配置。 使用 [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip) 添加事先创建的公共 IP 地址。 使用 [az network lb address-pool create](/cli/azure/network/lb/address-pool) 添加后端地址池的配置。 使用 [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule) 添加 NAT 规则。 使用 [az network lb rule create](/cli/azure/network/lb/rule) 添加负载均衡器规则。 使用 [az network lb probe create](/cli/azure/network/lb/probe) 添加探测。 |
+| [Azure PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md) | 若要提供事先创建的公共 IP 地址标识符，请将 [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) 与 **-PublicIpAddress** 参数配合使用。 使用 [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) 创建后端地址池的配置。 使用 [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) 创建与你创建的前端 IP 配置关联的入站 NAT 规则。 使用 [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig) 创建所需的探测。 使用 [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig) 创建负载均衡器配置。 使用 [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) 创建负载均衡器。|
+| [Azure CLI](../load-balancer/quickstart-load-balancer-standard-public-cli.md) | 使用 [az network lb create](/cli/azure/network/lb) 创建初始负载均衡器配置。 使用 [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip) 添加事先创建的公共 IP 地址。 使用 [az network lb address-pool create](/cli/azure/network/lb/address-pool) 添加后端地址池的配置。 使用 [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule) 添加 NAT 规则。 使用 [az network lb rule create](/cli/azure/network/lb/rule) 添加负载均衡器规则。 使用 [az network lb probe create](/cli/azure/network/lb/probe) 添加探测。 |
 | [模板](../load-balancer/quickstart-load-balancer-standard-public-template.md) | 参考[负载均衡器中的 2 个 VM，在 LB 上配置 NAT 规则](https://github.com/Azure/azure-quickstart-templates/tree/master/101-load-balancer-standard-create)，使用模板部署负载均衡器。 |
     
 下表列出了可用于创建内部负载均衡器的方法。
@@ -151,7 +151,7 @@ NSG 包含两种类型的规则：入站规则和出站规则。 在每组中，
 
 ### <a name="virtual-machine-scale-sets"></a>虚拟机规模集
 
-有关负载均衡器和虚拟机规模集的详细信息，请参阅 [Azure 虚拟机规模集的网络](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-networking)。
+有关负载均衡器和虚拟机规模集的详细信息，请参阅 [Azure 虚拟机规模集的网络](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md)。
 
 ## <a name="vms"></a>VM
 
@@ -179,4 +179,3 @@ NSG 包含两种类型的规则：入站规则和出站规则。 在每组中，
 - 了解如何配置 [VNet 到 VNet 连接](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)。
 - 了解如何[排查路由问题](../virtual-network/diagnose-network-routing-problem.md)。
 - 了解有关[虚拟机网络带宽](../virtual-network/virtual-machine-network-throughput.md)的详细信息。
-

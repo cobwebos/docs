@@ -6,44 +6,33 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: 14ff1a00b40d956f369b1978f15f01f113c50270
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9a0ed747ea0c894214a633bdbc8141e95e95b5fb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050145"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830030"
 ---
 # <a name="keys-and-values"></a>键和值
 
-Azure 应用配置将配置数据存储为键值对。 键/值对是开发人员使用的应用程序设置的简单而灵活的表示形式。
+Azure 应用配置将配置数据存储为键值。 键-值是开发人员使用的应用程序设置的简单而灵活的表示形式。
 
 ## <a name="keys"></a>键
 
-键用作键值对的标识符，用于存储和检索相应的值。 使用字符分隔符（如 `/` 或 `:`）将键组织到分层命名空间中是一种常见做法。 使用最适合你的应用程序的约定。 应用配置将密钥视为一个整体。 不会解析键以弄清楚其名字是如何构成的，也不会强制执行任何规则。
+键用作键值的标识符，用于存储和检索相应的值。 使用字符分隔符（如 `/` 或 `:`）将键组织到分层命名空间中是一种常见做法。 使用最适合你的应用程序的约定。 应用配置将密钥视为一个整体。 不会解析键以弄清楚其名字是如何构成的，也不会强制执行任何规则。
 
-下面是层次结构中的两个关键名称示例：
-
-* 基于组件服务
+下面是基于组件服务在层次结构中构建的密钥名称的示例：
 
 ```aspx
-        AppName:Service1:ApiEndpoint
-        AppName:Service2:ApiEndpoint
-```
-
-* 基于部署区域
-
-```aspx
-        AppName:Region1:DbEndpoint
-        AppName:Region2:DbEndpoint
+    AppName:Service1:ApiEndpoint
+    AppName:Service2:ApiEndpoint
 ```
 
 在应用程序框架中使用配置数据可能会为键值指定特定的命名方案。 例如，Java 春季 Cloud framework 定义了 `Environment` 向弹簧应用程序提供设置的资源。  这些参数由包括*应用程序名称*和*配置文件*的变量参数化。 Spring Cloud 相关配置数据的键通常以这两个元素开头，由一个分隔符分开。
 
 存储在应用配置中的密钥是区分大小写的、基于 unicode 的字符串。 “app1”和“App1”键在应用程序配置存储区中是有所区分的****。 在应用程序中使用配置设置时，请记住这一点，因为有些框架处理配置键时不区分大小写。 不建议使用 case 来区分键。
 
-除了、和以外，还可以在键名称中使用任何 unicode 字符 `*` `,` `\` 。  如果需要包含其中一个保留字符，请使用对其进行转义 `\{Reserved Character}` 。 
-
-键值对的组合大小限制为 10 KB。 此限制包括键中的所有字符、其值以及所有相关的可选属性。 在此限制范围内，可以为密钥设置许多层次结构级别。
+除了之外，你还可以在键名称中使用任何 unicode 字符 `%` 。 密钥名称不能为 `.` 或 `..` 。 键-值的组合大小限制为 10 KB。 此限制包括键中的所有字符、其值以及所有相关的可选属性。 在此限制范围内，可以为密钥设置许多层次结构级别。
 
 ### <a name="design-key-namespaces"></a>设计键命名空间
 
@@ -57,27 +46,28 @@ Azure 应用配置将配置数据存储为键值对。 键/值对是开发人员
 
 ### <a name="label-keys"></a>标签键
 
-应用配置中的键值可以选择具有“标签”属性。 标签用于区分具有相同键的键值。 带有标签*A*和*B*的键*app1*在应用配置存储区中形成两个不同的键。 默认情况下，键值没有标签。 若要显式引用不带标签的键值，请使用 `\0` （URL 编码为 `%00` ）。
+应用配置中的键值可以选择具有“标签”属性。 标签用于使用相同的键区分键值。 带有标签*A*和*B*的键*app1*在应用配置存储区中形成两个不同的键。 默认情况下，键-值没有标签。 若要显式引用不带标签的键值，请使用 `\0` 编码为 `%00`) 的 (URL。
 
 标签提供了一种方便的方式来创建键的变体。 标签的常见用途是为同一个键指定多个环境：
 
-```aspx
+```
     Key = AppName:DbEndpoint & Label = Test
     Key = AppName:DbEndpoint & Label = Staging
     Key = AppName:DbEndpoint & Label = Production
 ```
 
-### <a name="version-key-values"></a>对键值进行版本调整
+### <a name="version-key-values"></a>版本键-值
 
-应用配置不会自动设置版本键值。 使用标签作为创建键值的多个版本的方法。 例如，可以在标签中输入应用程序版本号或 Git 提交 ID，以标识与特定软件版本关联的键值。
+使用标签可创建键值的多个版本。 例如，可以在标签中输入应用程序版本号或 Git 提交 ID，以标识与特定软件版本关联的键值。
 
-可以在标签中使用任何 unicode 字符，但 `*`、`,` 和 `\` 除外。 这些是保留字符。 若要包含保留字符，必须使用 `\{Reserved Character}` 将其转义。
+> [!NOTE]
+> 如果正在查找更改版本，则应用配置会自动保留在过去特定时间段内发生的键值的所有更改。 有关更多详细信息，请参阅[时间点快照](./concept-point-time-snapshot.md)。
 
-### <a name="query-key-values"></a>查询键值
+### <a name="query-key-values"></a>查询键-值
 
-每个键值通过其键以及可以为 `null` 的标签进行唯一标识。 可以通过指定模式来查询应用程序配置存储区中的键值。 应用程序配置存储区会返回与模式及其对应的值和属性匹配的所有键值。 在 REST API 调用应用配置时使用以下键模式：
+每个键值通过其键以及可以为 `\0` 的标签进行唯一标识。 可以通过指定模式在应用配置存储中查询键值。 应用配置存储返回与模式匹配的所有键值，包括其相应的值和属性。 在 REST API 调用应用配置时使用以下键模式：
 
-| 键 | 描述 |
+| 密钥 | 说明 |
 |---|---|
 | 省略 `key` 或 `key=*` | 匹配所有密钥 |
 | `key=abc` | 完全匹配键名称 abc**** |
@@ -88,19 +78,24 @@ Azure 应用配置将配置数据存储为键值对。 键/值对是开发人员
 
 | Label | 说明 |
 |---|---|
-| 省略 `label` 或 `label=*` | 匹配任何标签，包括 `null` |
-| `label=%00` | 匹配 `null` 标签 |
+| 省略 `label` 或 `label=*` | 匹配任何标签，包括 `\0` |
+| `label=%00` | 匹配 `\0` 标签 |
 | `label=1.0.0` | 完全匹配标签 1.0.0**** |
 | `label=1.0.*` | 匹配以 1.0. 开头的标签**** |
-| `label=%00,1.0.0` | 匹配标签 `null` 或 **1.0.0**，限制为五个 CSV |
+| `label=%00,1.0.0` | 匹配标签 `\0` 或 **1.0.0**，限制为五个 CSV |
+
+> [!NOTE]
+> `*`、 `,` 和 `\` 是查询中的保留字符。 如果在密钥名称或标签中使用保留字符，则必须在查询中使用来对其进行转义 `\{Reserved Character}` 。
 
 ## <a name="values"></a>值
 
-分配给键的值也是 unicode 字符串。 可以将所有 unicode 字符用于值。 有一个与每个值相关联的可选用户定义的内容类型。 使用此属性可存储有关值的信息，这些信息可帮助您的应用程序正确处理。
+分配给键的值也是 unicode 字符串。 可以将所有 unicode 字符用于值。
 
-存储在应用配置存储中的配置数据在静态和传输过程中进行加密。 静态加密密钥。 应用配置不是 Azure Key Vault 的替代解决方案。 不要在其中存储应用程序机密。
+### <a name="use-content-type"></a>使用 Content-type
+应用配置中的每个键-值都具有 content 类型属性。 您可以选择使用此属性将有关值类型的信息存储在可帮助您的应用程序正确处理的键值中。 您可以使用任何格式作为 content-type。 应用配置使用[媒体类型]( https://www.iana.org/assignments/media-types/media-types.xhtml) (也称为 MIME 类型) 用于内置数据类型，例如功能标志、Key Vault 引用和 JSON 键-值。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [时间点快照](./concept-point-time-snapshot.md)  
-* [特色管理](./concept-feature-management.md)  
+* [时间点快照](./concept-point-time-snapshot.md)
+* [特色管理](./concept-feature-management.md)
+* [事件处理](./concept-app-configuration-event.md)

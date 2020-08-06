@@ -3,12 +3,12 @@ title: 结合使用 Azure 资源的托管标识与 Azure 服务总线
 description: 本文介绍如何使用托管标识访问 Azure 服务总线实体（队列、主题和订阅）。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: cdb4329f00138c51826ced1627ff316fc5fd4619
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2e1c6127f3705adbf05cbfd8a92740651efe9048
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534645"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835657"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>使用 Azure Active Directory 对托管标识进行身份验证，以便访问 Azure 服务总线资源
 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)是一项跨 Azure 功能，可便于用户创建与其中运行应用程序代码的部署关联的安全标识。 然后可以将该标识与访问控制角色进行关联，后者授予的自定义权限可用于访问应用程序需要的特定 Azure 资源。
@@ -29,7 +29,7 @@ ms.locfileid: "87534645"
 
 
 ## <a name="assigning-azure-roles-for-access-rights"></a>为访问权限分配 Azure 角色
-Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 服务总线定义一组 Azure 内置角色，其中包含用于访问服务总线实体的常用权限集，还可以定义用于访问数据的自定义角色。
+Azure Active Directory (Azure AD) 通过[AZURE RBAC (的 azure 基于角色的访问控制](../role-based-access-control/overview.md)来授予对受保护资源的访问权限。 Azure 服务总线定义一组 Azure 内置角色，其中包含用于访问服务总线实体的常用权限集，还可以定义用于访问数据的自定义角色。
 
 将 Azure 角色分配到 Azure AD 安全主体时，Azure 会向该安全主体授予对这些资源的访问权限。 访问权限可以局限到订阅、资源组或服务总线命名空间级别。 Azure AD 安全主体可以是用户、组、应用程序服务主体，也可以是 Azure 资源的托管标识。
 

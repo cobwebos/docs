@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: how-to
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: b649a1b3c3dc0d8dd5f7056f36714f831509b82d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 908c258dab5625cda7f2fa020257b08e68102a1d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87266854"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835555"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>使用 C# 和 Resource Manager 模板部署 Azure 虚拟机
 
@@ -326,4 +326,4 @@ azure.ResourceGroups.DeleteByName(groupName);
 ## <a name="next-steps"></a>后续步骤
 
 * 如果部署出现问题，后续措施是参阅[排查使用 Azure 资源管理器时的常见 Azure 部署错误](../../azure-resource-manager/templates/common-deployment-errors.md)。
-* 若要了解如何部署虚拟机及其支持的资源，请查看[使用 C# 部署 Azure 虚拟机](csharp.md)。
+* 若要了解如何部署虚拟机及其支持的资源，请查看[使用 C# 部署 Azure 虚拟机](../../azure-resource-manager/templates/deploy-rest.md)。

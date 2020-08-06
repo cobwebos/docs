@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: c74713ac6ca2b90b20b4e3b2409e3a9761c9c3f2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6f7f2adb5c3e154c3910ee1082e9afad70de9758
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508434"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836167"
 ---
 # <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>用于创建和管理 Azure 虚拟机的常用 PowerShell 命令
 
@@ -39,7 +39,7 @@ ms.locfileid: "86508434"
 
 | 任务 | 命令 |
 | ---- | ------- |
-| 创建 VM 配置 |$vm = [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) -VMName $myVM -VMSize "Standard_D1_v1"<BR></BR><BR></BR>VM 配置用于定义或更新 VM 的设置。 使用 VM 的名称及其[大小](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)对配置进行初始化。 |
+| 创建 VM 配置 |$vm = [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) -VMName $myVM -VMSize "Standard_D1_v1"<BR></BR><BR></BR>VM 配置用于定义或更新 VM 的设置。 使用 VM 的名称及其[大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)对配置进行初始化。 |
 | 添加配置设置 |$vm = [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) -VM $vm -Windows -ComputerName $myVM -Credential $cred -ProvisionVMAgent -EnableAutoUpdate<BR></BR><BR></BR>向以前使用 New-AzVMConfig 创建的配置对象添加包括[凭据](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1)在内的操作系统设置。 |
 | 添加网络接口 |$vm = [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface) -VM $vm -Id $nic.Id<BR></BR><BR></BR>VM 必须使用[网络接口](./quick-create-powershell.md?toc=/azure/virtual-machines/windows/toc.json)在虚拟网络中通信。 还可使用 [Get-AzNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface) 检索现有网络接口对象。 |
 | 指定平台映像 |$vm = [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage) -VM $vm -PublisherName "publisher_name" -Offer "publisher_offer" -Skus "product_sku" -Version "latest"<BR></BR><BR></BR>向以前使用 New-AzVMConfig 创建的配置对象添加[映像信息](cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 仅当将操作系统磁盘设置为使用平台映像时，才使用此命令返回的对象。 |

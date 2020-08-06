@@ -9,16 +9,16 @@ ms.subservice: ''
 ms.date: 06/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: ad6761466cc958235557609e929e641a0311ee43
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fdf3dc56575a45ad0c9e716054184ba2691133ba
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999153"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831696"
 ---
 # <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>分析 Azure Synapse 分析中的复杂数据类型
 
-本文适用于[Azure Cosmos DB 的 Synapse 链接](.\synapse-link\how-to-connect-synapse-link-cosmos-db.md)中的 Parquet 文件和容器。 它说明用户如何使用 Spark 或 SQL 来读取或转换包含复杂架构（例如数组或嵌套结构）的数据。 以下示例是使用单个文档完成的，但可以使用 Spark 或 SQL 轻松扩展到数十亿个文档。 本文中包含的代码使用 PySpark （Python）。
+本文适用于[Azure Cosmos DB 的 Synapse 链接](.\synapse-link\how-to-connect-synapse-link-cosmos-db.md)中的 Parquet 文件和容器。 它说明用户如何使用 Spark 或 SQL 来读取或转换包含复杂架构（例如数组或嵌套结构）的数据。 以下示例是使用单个文档完成的，但可以使用 Spark 或 SQL 轻松扩展到数十亿个文档。 本文中包含的代码使用 PySpark (Python) 。
 
 ## <a name="use-case"></a>用例
 
@@ -70,7 +70,7 @@ ms.locfileid: "86999153"
 ```
 
 ### <a name="schema-example-of-arrays-and-nested-structures"></a>数组和嵌套结构的架构示例
-当通过命令打印对象的数据帧（称为**df**）的架构时 `df.printschema` ，将看到以下表示形式：
+在打印对象的数据帧的架构时，如果命令中 (调用了**df**) ，则会 `df.printschema` 看到以下表示形式：
 
 * 黄色表示嵌套结构
 * 绿色表示具有两个元素的数组
@@ -120,7 +120,7 @@ def flatten_df(nested_df):
     return nested_df.select(columns)
 ```
 
-**步骤 2**：使用函数将数据帧（**df**）的嵌套架构平展到新的数据帧中 `df_flat` ：
+**步骤 2**：使用函数将数据帧的嵌套架构 (**Df**) 平展到新的数据帧中 `df_flat` ：
 
 ```python
 from pyspark.sql.types import StringType, StructField, StructType
@@ -164,8 +164,8 @@ display(df_flat_explode_flat.limit(10))
 
 | BULK              | FORMAT |
 | -------------------- | --- |
-| 'https://ACCOUNTNAME.dfs.core.windows.net/FILESYSTEM/PATH/FINENAME.parquet' |"Parquet" （ADLSg2）|
-| N'endpoint = https://ACCOUNTNAME.documents-staging.windows-ppe.net:443/ ; account = ACCOUNTNAME; database = DATABASENAME; collection = COLLECTIONNAME; region = REGIONTOQUERY，SECRET = ' YOURSECRET ' |"CosmosDB" （Synapse 链接）|
+| 'https://ACCOUNTNAME.dfs.core.windows.net/FILESYSTEM/PATH/FINENAME.parquet' |"Parquet" (ADLSg2) |
+| N'endpoint = https://ACCOUNTNAME.documents-staging.windows-ppe.net:443/ ; account = ACCOUNTNAME; database = DATABASENAME; collection = COLLECTIONNAME; region = REGIONTOQUERY '，SECRET = ' YOURSECRET ' |"CosmosDB" (Synapse 链接) |
 
 
 > [!NOTE]
@@ -179,8 +179,8 @@ display(df_flat_explode_flat.limit(10))
 select *
 FROM
 openrowset(
-BULK 'YOUR BULK ABOVE',
-            FORMAT='YOUR TYPE ABOVE'
+    BULK 'YOUR BULK ABOVE',
+    FORMAT='YOUR TYPE ABOVE'
 )
 with (id varchar(50),
         contextdataeventTime varchar(50) '$.context.data.eventTime',

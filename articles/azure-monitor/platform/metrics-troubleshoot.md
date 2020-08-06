@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: b2f7e45c7f6092566314e6e4867bc0345683e4eb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4800234b55507b7c8d8a16d16ce4d2fef3365baa
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318379"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829588"
 ---
 # <a name="troubleshooting-metrics-charts"></a>排查指标图表问题
 
@@ -42,7 +42,7 @@ ms.locfileid: "87318379"
 
 ### <a name="you-dont-have-sufficient-access-rights-to-your-resource"></a>你对资源没有足够的访问权限
 
-在 Azure 中，对指标的访问由[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 控制。 只有[监视读取者](../../role-based-access-control/built-in-roles.md#monitoring-reader)、[监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)或[参与者](../../role-based-access-control/built-in-roles.md#contributor)的成员才能浏览任何资源的指标。
+在 Azure 中，对指标的访问由[azure 基于角色的访问控制 (AZURE RBAC) ](../../role-based-access-control/overview.md)控制。 只有[监视读取者](../../role-based-access-control/built-in-roles.md#monitoring-reader)、[监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)或[参与者](../../role-based-access-control/built-in-roles.md#contributor)的成员才能浏览任何资源的指标。
 
 **解决方案：** 请确保你对要在其中浏览指标的资源拥有足够的权限。
 
@@ -118,4 +118,3 @@ Azure 指标图表使用虚线样式来指示两个已知时间粒度数据点�
 * [了解指标资源管理器的高级功能](metrics-charts.md)
 * [查看 Azure 服务的可用指标列表](metrics-supported.md)
 * [查看已配置图表的示例](metric-chart-samples.md)
-

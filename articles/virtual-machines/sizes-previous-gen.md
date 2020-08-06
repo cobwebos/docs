@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: d6fb5c384d5e9489c4213277a43d5be0ed14afb6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 01c7d5610daa703e910fb485b5e9d945a6cdc940
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289714"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831288"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前几代虚拟机大小
 
@@ -80,7 +80,7 @@ NVv2 实例中的每个 GPU 都带有 GRID 许可证。 使用此许可证，可
 
 ## <a name="older-generations-of-virtual-machine-sizes"></a>前几代虚拟机大小
 
-本部分提供了有关先前几代虚拟机大小的信息。 这些大小仍受支持，但无法接收更多的容量。 有更新的或备用的大小，这些大小已公开发布。 请参阅 [Azure 中 Linux 虚拟机的大小](linux/sizes.md)，选择最适合自己需求的 VM 大小。  
+本部分提供了有关先前几代虚拟机大小的信息。 这些大小仍受支持，但无法接收更多的容量。 有更新的或备用的大小，这些大小已公开发布。 请参阅 [Azure 中 Linux 虚拟机的大小](./sizes.md)，选择最适合自己需求的 VM 大小。  
 
 有关如何调整 Linux VM 的大小的详细信息，请参阅[调整 Linux VM 的大小](linux/change-vm-size.md)。  
 
@@ -286,7 +286,7 @@ ACU：180-240
 
 高级存储缓存：不支持
 
-| 大小 | vCPU | 内存 (GiB) | 临时存储 (GiB) | 最大数据磁盘数 | 最大临时存储吞吐量（IOPS/MBps） | 最大未缓存磁盘吞吐量（IOPS/MBps） | 最大 NIC 数/预期网络带宽 (Mbps) |
+| 大小 | vCPU | 内存 (GiB) | 临时存储 (GiB) | 最大数据磁盘数 | 最大临时存储吞吐量 (IOPS/MBps)  | 最大未缓存磁盘吞吐量 (IOPS/MBps)  | 最大 NIC 数/预期网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|---|
 | Standard_L4s   | 4  | 32  | 678  | 16 | 20000/200 | 5000/125  | 2/4000  |
 | Standard_L8s   | 8  | 64  | 1388 | 32 | 40000/400 | 10000/250 | 4/8000  |
@@ -309,11 +309,11 @@ ACU：180 - 240 <sup>1</sup>
 
 | 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (Mbps) |
 |---|---|---|---|---|---|---|---|
-| Standard_GS1 | 2 | 28  | 56  | 8  | 10000/100 （264）  | 5000/ 125  | 2/2000 |
-| Standard_GS2 | 4 | 56  | 112 | 16 | 20000/200 （528）  | 10000/ 250 | 2/4000 |
-| Standard_GS3 | 8 | 112 | 224 | 32 | 40000/400 （1056） | 20000/ 500 | 4/8000 |
-| Standard_GS4&nbsp;<sup>3</sup> | 16 | 224 | 448 | 64 | 80000/800 （2112） | 40000/1000 | 8/16000 |
-| Standard_GS5&nbsp;<sup>2,&nbsp;3</sup> | 32 | 448 |896 | 64 |160000/1600 （4224） | 80000/2000 | 8/20000 |
+| Standard_GS1 | 2 | 28  | 56  | 8  | 10000/100 (264)   | 5000/ 125  | 2/2000 |
+| Standard_GS2 | 4 | 56  | 112 | 16 | 20000/200 (528)   | 10000/ 250 | 2/4000 |
+| Standard_GS3 | 8 | 112 | 224 | 32 | 40000/400 (1056)  | 20000/ 500 | 4/8000 |
+| Standard_GS4&nbsp;<sup>3</sup> | 16 | 224 | 448 | 64 | 80000/800 (2112)  | 40000/1000 | 8/16000 |
+| Standard_GS5&nbsp;<sup>2,&nbsp;3</sup> | 32 | 448 |896 | 64 |160000/1600 (4224)  | 80000/2000 | 8/20000 |
 
 <sup>1</sup> GS 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。 有关详细信息，请了解如何为 [Windows](windows/premium-storage-performance.md) 或 [Linux](linux/premium-storage-performance.md) 进行面向高性能的设计。
 
@@ -347,7 +347,7 @@ ACU：180 - 240
 ## <a name="nv-series"></a>NV 系列
 **较新的大小建议**： [NVv3 系列](nvv3-series.md)和[NVv4 系列](nvv4-series.md)
 
-NV 系列虚拟机采用 [NVIDIA Tesla M60 ](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 和 NVIDIA GRID 技术，适用于桌面加速型应用程序和虚拟桌面，方便客户将其数据或模拟可视化。 用户可以在 NV 实例上直观显示其图形密集型工作流以获取高级图形功能，并可额外运行单精度工作负荷，例如编码和渲染。 NV 系列 Vm 还由 Intel 2690 v3 （Haswell） Cpu 提供支持。
+NV 系列虚拟机采用 [NVIDIA Tesla M60 ](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 和 NVIDIA GRID 技术，适用于桌面加速型应用程序和虚拟桌面，方便客户将其数据或模拟可视化。 用户可以在 NV 实例上直观显示其图形密集型工作流以获取高级图形功能，并可额外运行单精度工作负荷，例如编码和渲染。 NV 系列 Vm 还由 Intel 强 2690 v3 (Haswell) Cpu 提供支持。
 
 NV 实例中的每个 GPU 都带有 GRID 许可证。 使用此许可证，可以灵活地将 NV 实例用作单个用户的虚拟工作站，或将 25 个并发用户都连接到用于虚拟应用程序方案的 VM。
 

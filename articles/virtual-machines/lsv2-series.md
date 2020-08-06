@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 4ca6d6647882e81dbf20a0dd39b1ae659b6a6ab6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 64f1de178e2b1e1692ddad316e6c1c1d20517b78
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432986"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835827"
 ---
 # <a name="lsv2-series"></a>Lsv2 系列
 
@@ -37,7 +37,7 @@ ACU：150-175
 
 内存保留更新：不支持
 
-| 大小 | vCPU | 内存 (GiB) | 临时磁盘<sup>1</sup> (GiB) | NVMe 磁盘<sup>2</sup> | NVMe 磁盘吞吐量<sup>3</sup>（读取 IOPS/MBps） | 非缓存数据磁盘吞吐量 (IOPS/MBps)<sup>4</sup> | 最大突发非缓存数据磁盘吞吐量 (IOPS/MBps)<sup>5</sup>| 最大数据磁盘 | 最大 NIC 数 | 预期网络带宽（Mbps） |
+| 大小 | vCPU | 内存 (GiB) | 临时磁盘<sup>1</sup> (GiB) | NVMe 磁盘<sup>2</sup> | NVMe 磁盘吞吐量<sup>3</sup>（读取 IOPS/MBps） | 非缓存数据磁盘吞吐量 (IOPS/MBps)<sup>4</sup> | 最大突发非缓存数据磁盘吞吐量 (IOPS/MBps)<sup>5</sup>| 最大数据磁盘 | 最大 NIC 数 | 预期网络带宽 (Mbps)  |
 |---|---|---|---|---|---|---|---|---|---|---|
 | Standard_L8s_v2   |  8 |  64 |  80 |  1x1.92 TB  | 400000/2000  | 8000/160   | 8000/1280 | 16 | 2 | 3200   |
 | Standard_L16s_v2  | 16 | 128 | 160 |  2x1.92 TB  | 800000/4000  | 16000/320  | 16000/1280 | 32 | 4 | 6400   |
@@ -61,8 +61,8 @@ ACU：150-175
 - Windows Server 2016 或更高版本
 - Ubuntu 16.04 LTS 或更高版本，带 Azure 优化内核（4.15 内核或更高版本）
 - SLES 12 SP2 或更高版本
-- RHEL 或 CentOS 版本6.7 到6.10，其中安装了 Microsoft 提供的 .LIS 包4.3.1 （或更高版本）
-- RHEL 或 CentOS 版本7.3，其中安装了 Microsoft 提供的 .LIS 包4.2.1 （或更高版本）
+- RHEL 或 CentOS 版本6.7 至6.10，使用 Microsoft 提供的 .LIS 包 4.3.1 (或更高版本) 安装
+- RHEL 或 CentOS 版本7.3，其中安装了 Microsoft 提供的 .LIS 包 4.2.1 (或更高版本) 
 - RHEL 或 CentOS 版本7.6 或更高版本
 - UEK4 或更高版本的 Oracle Linux
 - Debian 9，带有向后移植内核 Debian 10 或更高版本
@@ -87,7 +87,7 @@ ACU：150-175
 
 定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
 
-有关磁盘类型的详细信息：[磁盘类型](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+有关磁盘类型的详细信息：[磁盘类型](./linux/disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>后续步骤

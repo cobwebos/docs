@@ -13,28 +13,28 @@ ms.topic: how-to
 ms.custom: ''
 ms.date: 07/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: 763dd82c8263a5e180468f9fbd7f86526295a80d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
-ms.translationtype: HT
+ms.openlocfilehash: 9d784e1697dfbcbfec509c1a51c9b832b533c97b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279281"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830744"
 ---
 # <a name="how-to-use-azure-portal-to-invoke-direct-methods"></a>如何使用 Azure 门户调用直接方法
 
-借助 IoT 中心，你可以从云中对边缘设备调用[直接方法](/azure/iot-hub/iot-hub-devguide-direct-methods#method-invocation-for-iot-edge-modules)。 IoT Edge 上的实时视频分析 (LVA) 模块公开了多种[直接方法](/azure/media-services/live-video-analytics-edge/direct-methods)，这些方法可以用于定义、部署和实例化用于分析实时视频的不同工作流。
+借助 IoT 中心，你可以从云中对边缘设备调用[直接方法](../../iot-hub/iot-hub-devguide-direct-methods.md#method-invocation-for-iot-edge-modules)。 IoT Edge 上的实时视频分析 (LVA) 模块公开了多种[直接方法](./direct-methods.md)，这些方法可以用于定义、部署和实例化用于分析实时视频的不同工作流。
 
 本文介绍如何通过 Azure 门户对 IoT Edge 的实时视频分析模块调用直接方法调用。
 
 ## <a name="prerequisites"></a>先决条件
 
-* 使用“[快速入门：IoT Edge 上的实时视频分析](/azure/media-services/live-video-analytics-edge/get-started-detect-motion-emit-events-quickstart)”中介绍的方法或使用[门户](/azure/media-services/live-video-analytics-edge/deploy-iot-edge-device)，在边缘设备上运行 IoT Edge 上的实时视频分析模块。
+* 使用“[快速入门：IoT Edge 上的实时视频分析](./get-started-detect-motion-emit-events-quickstart.md)”中介绍的方法或使用[门户](./deploy-iot-edge-device.md)，在边缘设备上运行 IoT Edge 上的实时视频分析模块。
 
-* 了解[实时视频分析](/azure/media-services/live-video-analytics-edge/overview)和[媒体图概念](/azure/media-services/live-video-analytics-edge/media-graph-concept)。
+* 了解[实时视频分析](./overview.md)和[媒体图概念](./media-graph-concept.md)。
 
 ## <a name="invoking-direct-methods-via-azure-portal"></a>通过 Azure 门户调用直接方法
 
-LVA 模块公开的每种[直接方法](/azure/media-services/live-video-analytics-edge/direct-methods)均可通过 Azure 门户进行调用。 下面的步骤提供了调用一种直接方法的详细操作。 你可以使用类似的步骤调用其他直接方法。 但是，每种直接方法都需要一个特定的 JSON 正文。
+LVA 模块公开的每种[直接方法](./direct-methods.md)均可通过 Azure 门户进行调用。 下面的步骤提供了调用一种直接方法的详细操作。 你可以使用类似的步骤调用其他直接方法。 但是，每种直接方法都需要一个特定的 JSON 正文。
 
 使用 `GraphTopologyList` 方法调用，检索当前部署在IoT Edge 上的实时视频分析模块上的所有图形拓扑列表。 使用以下步骤来调用此直接方法：
 
@@ -72,9 +72,9 @@ LVA 模块公开的每种[直接方法](/azure/media-services/live-video-analyti
 
 ## <a name="next-steps"></a>后续步骤
 
-可以在[直接方法](/azure/media-services/live-video-analytics-edge/direct-methods)页上找到更多直接方法。
+可以在 "[直接方法](./direct-methods.md)" 页上找到更直接的方法。
 
 > [!NOTE]
 > 图形实例可实例化特定拓扑，因此在创建图形实例之前，请确保已设置正确的拓扑。
 
-[快速入门：检测运动并发出事件](/azure/media-services/live-video-analytics-edge/get-started-detect-motion-emit-events-quickstart)是很好的参考文档，它可以帮助你了解要进行的直接方法调用的确切顺序。
+[快速入门：检测运动并发出事件](./get-started-detect-motion-emit-events-quickstart.md)是很好的参考文档，它可以帮助你了解要进行的直接方法调用的确切顺序。

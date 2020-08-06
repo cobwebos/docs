@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: 8396ffa958e41e12e9258766483310baef0cabbe
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9600f1cae61b59af5d026eb74f504658395a11ae
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421427"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835878"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>排查 Azure 到 Azure VM 网络连接性问题
 
@@ -18,7 +18,7 @@ ms.locfileid: "87421427"
 
 要使 Site Recovery 复制正常运行，必须具有从 VM 到特定 URL 或 IP 范围的出站连接。 如果 VM 位于防火墙后或使用网络安全组 (NSG) 规则来控制出站连接，则可能会遇到以下问题之一。
 
-| **名称**                  | **商用**                               | **Government**                                 | **说明** |
+| **名称**                  | **商用**                               | **政府机关**                                 | **说明** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | 存储                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果你知道 VM 的所有缓存存储帐户，则可以对特定存储帐户 URL 使用允许列表。 例如，使用 `cache1.blob.core.windows.net` 和 `cache2.blob.core.windows.net` 而不是 `*.blob.core.windows.net`。 |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | 对于 Site Recovery 服务 URL 的授权和身份验证而言是必需的。 |
@@ -51,7 +51,7 @@ ms.locfileid: "87421427"
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>问题 2：Site Recovery 配置失败 (151196)
 
 > [!NOTE]
-> 如果 VM 位于“标准”内部负载均衡器之后，则默认情况下，它将无法访问 Office 365 IP（如 `login.microsoftonline.com`）。 可以将其更改为“基本”内部负载均衡器类型，也可以按照[使用 Azure CLI 在标准负载均衡器中配置负载均衡和出站规则](../load-balancer/configure-load-balancer-outbound-cli.md)一文中所述创建出站访问权限。
+> 如果 VM 位于“标准”内部负载均衡器之后，则默认情况下，它将无法访问 Office 365 IP（如 `login.microsoftonline.com`）。 可以将其更改为“基本”内部负载均衡器类型，也可以按照[使用 Azure CLI 在标准负载均衡器中配置负载均衡和出站规则](../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard#create-outbound-rule-configuration)一文中所述创建出站访问权限。
 
 #### <a name="possible-cause"></a>可能的原因
 

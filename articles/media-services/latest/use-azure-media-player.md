@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: bfc22862bc40679644d7dc9eddedf45fbacccab1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ca2da842d9a2d529cf5ea01211efaff2047a9e9a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292888"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836014"
 ---
 # <a name="playback-with-azure-media-player"></a>播放 Azure Media Player
 
@@ -47,7 +47,7 @@ Microsoft Azure 媒体服务允许播放使用 HLS、DASH、平滑流格式提�
 
 ## <a name="set-up-azure-media-player-in-your-html"></a>在 HTML 中设置 Azure Media Player
 
-Azure Media Player 易于设置。 只需要片刻时间便可实现媒体服务帐户中的媒体内容的基本播放。 请参阅 [Azure Media Player 文档](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview)来了解有关如何设置和配置 Azure Media Player 的详细信息。
+Azure Media Player 易于设置。 只需要片刻时间便可实现媒体服务帐户中的媒体内容的基本播放。 请参阅 [Azure Media Player 文档](../azure-media-player/azure-media-player-overview.md)来了解有关如何设置和配置 Azure Media Player 的详细信息。
 
 ## <a name="additional-notes"></a>附加说明
 
@@ -55,5 +55,5 @@ Azure Media Player 易于设置。 只需要片刻时间便可实现媒体服务
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure Media Player 文档](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-overview)
+* [Azure Media Player 文档](../azure-media-player/azure-media-player-overview.md)
 * [Azure Media Player 示例](https://github.com/Azure-Samples/azure-media-player-samples)

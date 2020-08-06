@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 07/27/2020
 tags: connectors
-ms.openlocfilehash: aa5be3d58ee1a0a40d0b817e1f5999ccd4bc423d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: e0e152b3c0e10c34bc6213ddf867b79c58d1d767
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319229"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832971"
 ---
 # <a name="manage-email-contacts-and-calendars-in-office-365-outlook-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Office 365 Outlook 中的电子邮件、联系人和日历
 
@@ -48,7 +48,7 @@ ms.locfileid: "87319229"
 1. 如果系统提示你登录，请提供你的 Office 365 凭据，以便逻辑应用可以连接到你的帐户。 或者，如果连接已存在，请提供触发器属性的信息。
 
    > [!NOTE]
-   > 即使更改了登录凭据，连接也不会在吊销之前过期。 有关详细信息，请参阅 [Azure Active Directory 中的可配置令牌生存期](../active-directory/active-directory-configurable-token-lifetimes.md)。
+   > 即使更改了登录凭据，连接也不会在吊销之前过期。 有关详细信息，请参阅 [Azure Active Directory 中的可配置令牌生存期](../active-directory/develop/active-directory-configurable-token-lifetimes.md)。
 
    此示例选择供触发器检查的日历，例如：
 
@@ -81,7 +81,7 @@ ms.locfileid: "87319229"
 1. 如果系统提示你登录，请提供你的 Office 365 凭据，以便逻辑应用可以连接到你的帐户。 或者，如果连接已存在，请提供操作属性的信息。
 
    > [!NOTE]
-   > 即使更改了登录凭据，连接也不会在吊销之前过期。 有关详细信息，请参阅 [Azure Active Directory 中的可配置令牌生存期](../active-directory/active-directory-configurable-token-lifetimes.md)。
+   > 即使更改了登录凭据，连接也不会在吊销之前过期。 有关详细信息，请参阅 [Azure Active Directory 中的可配置令牌生存期](../active-directory/develop/active-directory-configurable-token-lifetimes.md)。
 
    此示例选择可供操作在其中创建新联系人的联系人文件夹，例如：
 

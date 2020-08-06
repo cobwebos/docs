@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: juliako
-ms.openlocfilehash: ad4c60d6a3facd49f08749b2b3f4b01242d3844c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ce2fbe8c706870250973974c7a73a3964dedd04a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091770"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831883"
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>DRM 子系统的混合设计 
 
@@ -93,17 +93,17 @@ DRM 支持包括 DRM 加密（动态加密）和许可证传送，其中的 Azur
 
 ## <a name="scenarios-and-samples"></a>方案和示例
 
-根据上一部分中的说明，以下五种混合方案使用各自的**内容密钥** - **资产传送策略**配置组合（表中最后一列中提到的示例）：
+根据上一部分中的说明，以下五种混合方案使用各自的**内容密钥** - **资产传送策略**配置组合 (最后一列中提到的示例) ：
 
 |**内容托管和来源**|**DRM 加密**|**DRM 许可证传送**|**配置内容密钥**|**配置资产传送策略**|**示例**|
 |---|---|---|---|---|---|
 |AMS|AMS|AMS|是|是|示例 1|
 |AMS|AMS|第三方|是|是|示例 2|
-|AMS|第三方|AMS|是|No|示例 3|
+|AMS|第三方|AMS|是|否|示例 3|
 |AMS|第三方|外部|否|否|示例 4|
-|第三方|第三方|AMS|是|No|    
+|第三方|第三方|AMS|是|否|    
 
-在示例中，PlayReady 保护适用于 DASH 和平滑流式处理。 以下视频 URL 是平滑流式处理 URL。 若要获取相应的 DASH URL，只需追加“(format=mpd-time-csf)”。 可以使用 [azure media test player](https://aka.ms/amtest) 在浏览器中进行测试。 这样就可以配置要在哪种技术下使用哪个流式处理协议。 Windows 10 上的 IE11 和 Microsoft Edge 支持通过 EME 使用 PlayReady。 有关详细信息，请参阅[有关测试工具的详细信息](/azure/media-services/previous/offline-playready-streaming-windows-10)。
+在示例中，PlayReady 保护适用于 DASH 和平滑流式处理。 以下视频 URL 是平滑流式处理 URL。 若要获取相应的 DASH URL，只需追加“(format=mpd-time-csf)”。 可以使用 [azure media test player](https://aka.ms/amtest) 在浏览器中进行测试。 这样就可以配置要在哪种技术下使用哪个流式处理协议。 Windows 10 上的 IE11 和 Microsoft Edge 支持通过 EME 使用 PlayReady。 有关详细信息，请参阅[有关测试工具的详细信息](./offline-playready-streaming-windows-10.md)。
 
 ### <a name="sample-1"></a>示例 1
 
@@ -131,7 +131,7 @@ DRM 支持包括 DRM 加密（动态加密）和许可证传送，其中的 Azur
 
 * Widevine 是 Google Inc. 提供的一项服务，并受 Google Inc. 服务条款和隐私策略的约束。
 
-## <a name="summary"></a>摘要
+## <a name="summary"></a>总结
 
 总而言之，Azure 媒体服务 DRM 组件非常灵活，只需根据本主题中所述适当配置内容密钥和资产传送策略，即可在混合方案中使用这些组件。
 

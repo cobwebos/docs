@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 5567274fd9ee2cfaf41f9ff4c6e71bb2faab7b1d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 36ac0058f8f2cf3ca106b30c86207e46d0712193
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292370"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830540"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>在 Azure 中将基础结构自动化工具与虚拟机配合使用
 
@@ -34,9 +34,9 @@ ms.locfileid: "87292370"
 
 了解如何：
 
-- [在 Linux 上安装和配置与 Azure 配合使用的 Ansible](../ansible/ansible-install-configure.md)。
-- [创建 Linux 虚拟机](../ansible/ansible-create-vm.md)。
-- [管理 Linux 虚拟机](../ansible/ansible-manage-linux-vm.md)。
+- [在 Linux 上安装和配置与 Azure 配合使用的 Ansible](/azure/developer/ansible/install-on-linux-vm)。
+- [创建 Linux 虚拟机](/azure/developer/ansible/vm-configure)。
+- [管理 Linux 虚拟机](/azure/developer/ansible/vm-manage)。
 
 
 ## <a name="chef"></a>Chef
@@ -45,7 +45,7 @@ ms.locfileid: "87292370"
 了解如何：
 
 - [从 Azure 市场部署 Chef Automate](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate?tab=Overview)。
-- [在 Windows 上安装 Chef 并创建 Azure VM](../chef/chef-automation.md)。
+- [在 Windows 上安装 Chef 并创建 Azure VM](/azure/developer/chef/windows-vm-configure)。
 
 
 ## <a name="puppet"></a>Puppet
@@ -81,7 +81,7 @@ DSC 配置定义要在计算机上安装的内容，以及如何配置主机。 
 
 
 ## <a name="azure-custom-script-extension"></a>Azure 自定义脚本扩展
-适用于 [Linux](./linux/extensions-customscript.md) 或 [Windows](./windows/extensions-customscript.md) 的 Azure 自定义脚本扩展在 Azure VM 上下载和执行脚本。 可以在创建 VM 时使用该扩展，也可以在 VM 处于使用状态后随时使用该扩展。
+适用于 [Linux](./extensions/custom-script-linux.md) 或 [Windows](./extensions/custom-script-windows.md) 的 Azure 自定义脚本扩展在 Azure VM 上下载和执行脚本。 可以在创建 VM 时使用该扩展，也可以在 VM 处于使用状态后随时使用该扩展。
 
 可以从 Azure 存储或任何公共位置（例如 GitHub 存储库）下载脚本。 使用自定义脚本扩展时，可以通过在源 VM 上运行的任何语言来编写脚本。 可以根据需要使用这些脚本来安装应用程序或配置该 VM。 若要确保凭据的安全，可将密码之类的敏感信息存储在受保护配置中。 这些凭据只在 VM 内解密。
 
@@ -116,7 +116,7 @@ Azure 自动化还提供 Desired State Configuration (DSC) 服务，用于针对
 
 了解如何：
 
-- [创建 PowerShell Runbook](../automation/automation-first-runbook-textual-powershell.md)。
+- [创建 PowerShell Runbook](../automation/learn/automation-tutorial-runbook-textual-powershell.md)。
 - [使用混合 Runbook 辅助角色管理本地资源](../automation/automation-hybrid-runbook-worker.md)。
 - [使用 Azure 自动化 DSC](../automation/automation-dsc-getting-started.md)。
 
@@ -124,9 +124,9 @@ Azure 自动化还提供 Desired State Configuration (DSC) 服务，用于针对
 ## <a name="azure-devops-services"></a>Azure DevOps Services
 [Azure DevOps Services](https://www.visualstudio.com/team-services/) 是一套工具，用于共享和跟踪代码、使用自动化生成，以及创建完整的持续集成和开发 (CI/CD) 管道。 Azure DevOps Services 集成了 Visual Studio 和其他编辑器，简化了使用过程。 Azure DevOps Services 还可以创建和配置 Azure VM，然后向其部署代码。
 
-了解有关以下方面的详细信息：
+了解详细信息：
 
-- [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts)。
+- [Azure DevOps Services](/azure/devops/user-guide/index?view=vsts)。
 
 
 ## <a name="jenkins"></a>Jenkins
@@ -134,7 +134,7 @@ Azure 自动化还提供 Desired State Configuration (DSC) 服务，用于针对
 
 了解如何：
 
-- [使用 Jenkins、GitHub 和 Docker 在 Azure 中的 Linux VM 上创建开发基础结构](../jenkins/tutorial-jenkins-github-docker-cicd.md)。
+- [使用 Jenkins、GitHub 和 Docker 在 Azure 中的 Linux VM 上创建开发基础结构](/azure/developer/jenkins/pipeline-with-github-and-docker)。
 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
@@ -149,4 +149,3 @@ Azure 自动化还提供 Desired State Configuration (DSC) 服务，用于针对
 
 ## <a name="next-steps"></a>后续步骤
 可以通过许多不同的选项，在 Azure 中使用基础结构自动化工具。 可以自由使用最适合自己的需求和环境的解决方案。 若要开始尝试一些内置到 Azure 的工具，请了解如何自动完成 [Linux](./linux/tutorial-automate-vm-deployment.md) 或 [Windows](./windows/tutorial-automate-vm-deployment.md) VM 的自定义。
-

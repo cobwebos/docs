@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 03c1d8e6d6b5b1d55fee964b509c1bc08537cf6b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 80bcac36271d86334e11cb3cd161cd96777e6fe5
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088574"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832444"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>重置远程桌面服务或其在 Windows VM 中的管理员密码
 如果无法连接到 Windows 虚拟机 (VM)，可以重置本地管理员密码或远程桌面服务配置（Windows 域控制器不支持此操作）。 若要重置密码，可以使用 Azure 门户或 Azure PowerShell 中的 VM 访问扩展。 登录到 VM 后，重置该本地管理员的密码。  
-如果使用 PowerShell，请务必[安装和配置最新的 PowerShell 模块](/powershell/azure/)，并登录到 Azure 订阅。 也可以[对使用经典部署模型创建的 VM 执行这些步骤](/azure/virtual-machines/windows/classic/reset-rdp)。
+如果使用 PowerShell，请务必[安装和配置最新的 PowerShell 模块](/powershell/azure/)，并登录到 Azure 订阅。 也可以[对使用经典部署模型创建的 VM 执行这些步骤](/previous-versions/azure/virtual-machines/windows/classic/reset-rdp)。
 
 可按以下方式重置远程桌面服务和凭据：
 

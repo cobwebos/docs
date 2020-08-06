@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 98cad9a359a9a2807b1f1f3f2daba45759471718
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ea691ff42f9e5f214aa9987fae53732be844e034
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495652"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836337"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷：规划和部署清单
 
@@ -37,7 +37,7 @@ ms.locfileid: "87495652"
 
 1. 高级设计文档。 本文档应包含：
     - SAP 组件和应用程序的当前清单，以及 Azure 的目标应用程序清单。
-    - 定义参与方的职责和分配的责任分配矩阵（RACI）。 从较高的层次开始，并在整个规划和第一次部署中处理更精细的级别。
+    - 责任分配矩阵 (RACI) ，用于定义所涉及参与方的职责和分配。 从较高的层次开始，并在整个规划和第一次部署中处理更精细的级别。
     - 高级解决方案体系结构。
     - 决定要将哪些 Azure 区域部署到。 请参阅[Azure 区域列表](https://azure.microsoft.com/global-infrastructure/regions/)。 若要了解每个区域中提供了哪些服务，请参阅[按区域提供的产品](https://azure.microsoft.com/global-infrastructure/services/)。
     - 用于从本地连接到 Azure 的网络体系结构。 开始熟悉[Azure 的虚拟数据中心蓝图](/azure/architecture/vdc/)。
@@ -63,14 +63,14 @@ ms.locfileid: "87495652"
         - 根据 RTO 和 RPO，定义高可用性和灾难恢复体系结构的外观。
         - 若要在区域中实现高可用性，请检查所需的 DBMS 在 Azure 中提供的功能。 大多数 DBMS 包提供同步热备用的同步方法，我们建议将其用于生产系统。 还要查看不同数据库的 SAP 相关文档，从[Azure 虚拟机 DBMS 部署适用于 sap 工作负荷](./dbms_guide_general.md)和相关文档的注意事项开始。
            不支持将 Windows Server 故障转移群集与 DBMS 层的共享磁盘配置一起使用，例如[SQL Server 所述](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017)。 相反，请使用如下所示的解决方案：
-           - [SQL Server AlwaysOn](/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
+           - [SQL Server AlwaysOn](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
            - [Oracle 数据防护](../oracle/configure-oracle-dataguard.md)
            - [HANA 系统复制](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         - 对于跨 Azure 区域的灾难恢复，请查看不同 DBMS 供应商提供的解决方案。 其中的大多数支持异步复制或日志传送。
         - 对于 SAP 应用程序层，确定是否要运行业务回归测试系统，理想情况下，它是生产部署的副本，位于同一 Azure 区域或 DR 区域中。 在第二种情况下，您可以将业务回归系统作为生产部署的 DR 目标。
         - 如果决定不将非生产系统置于 DR 站点，请查看 Azure Site Recovery 作为将 SAP 应用程序层复制到 Azure DR 区域中的方法。 有关详细信息，请参阅[设置多层 SAP NetWeaver 应用程序部署的灾难恢复](../../../site-recovery/site-recovery-sap.md)。
         - 如果决定使用[Azure 可用性区域](../../../availability-zones/az-overview.md)结合使用组合的 HADR 配置，请熟悉可用可用性区域的 Azure 区域。 还会考虑在两个可用性区域之间增加网络延迟所带来的限制。  
-3.  所有 SAP 接口（SAP 和非 SAP）的清单。
+3.  SAP 和非 SAP)  (的所有 SAP 接口的清单。
 4.  基础服务的设计。 此设计应包括以下各项：
     - Active Directory 和 DNS 设计。
     - Azure 中的网络拓扑，并分配不同的 SAP 系统。
@@ -78,7 +78,7 @@ ms.locfileid: "87495652"
     - 资源组拓扑。
     - [标记策略](../../../azure-resource-manager/management/tag-resources.md#tags-and-billing)。
     - Vm 和其他基础结构组件以及/或逻辑名称的命名约定。
-5.  Microsoft 顶级支持合同。 确定你的 Microsoft 技术客户经理（TAM）。 有关 SAP 支持的要求，请参阅[sap 支持说明 #2015553](https://launchpad.support.sap.com/#/notes/2015553)。
+5.  Microsoft 顶级支持合同。  (TAM) 确定你的 Microsoft 技术客户经理。 有关 SAP 支持的要求，请参阅[sap 支持说明 #2015553](https://launchpad.support.sap.com/#/notes/2015553)。
 6.  订阅的 Azure 订阅数和核心配额。 根据需要[打开支持请求以增加 Azure 订阅配额](../../../azure-portal/supportability/resource-manager-core-quotas-request.md)。
 7.  将 SAP 数据迁移到 Azure 的数据缩减和数据迁移计划。 对于 SAP NetWeaver 系统，SAP 提供了有关如何限制大量数据量的准则。 有关 SAP ERP 系统中的数据管理，请参阅[此 sap 指南](https://wiki.scn.sap.com/wiki/download/attachments/247399467/DVM_%20Guide_7.2.pdf?version=1&modificationDate=1549365516000&api=v2)。 一些内容通常也适用于 NetWeaver 和 S/4HANA 系统。
 8.  自动部署方法。 Azure 上的基础结构部署自动化的目标是以确定性的方式进行部署并获得确定性的结果。 许多客户使用 PowerShell 或基于 CLI 的脚本。 但你可以使用多种开源技术来部署适用于 SAP 的 Azure 基础结构，甚至还可以安装 SAP 软件。 可在 GitHub 上找到示例：
@@ -87,14 +87,14 @@ ms.locfileid: "87495652"
 9.  在您的客户、系统集成商、Microsoft 以及其他参与方之间定义定期设计和部署评审节奏。
 
 
-## <a name="pilot-phase-strongly-recommended"></a>试点阶段（强烈推荐）
+## <a name="pilot-phase-strongly-recommended"></a> (强烈建议) 试验阶段
  
 您可以在项目规划和准备过程之前或期间运行试验。 你还可以使用试点阶段测试规划和准备阶段中所做的方法和设计。 您可以扩展试验阶段，使其成为现实概念证明。
 
 建议在试验部署过程中设置和验证完整的 HADR 解决方案和安全设计。 在此阶段，某些客户执行可伸缩性测试。 其他客户使用 SAP 沙箱系统的部署作为试验阶段。 假设您已确定要迁移到 Azure 进行试验的系统。
 
 1. 优化数据传输到 Azure。 最佳选择非常依赖于特定的方案。 如果 ExpressRoute 线路有足够的带宽，则通过[Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/)从本地传输的速度最快。 在其他情况下，通过 internet 进行传输的速度更快。
-2. 对于涉及数据导出和导入的异类 SAP 平台迁移，请测试并优化导出和导入阶段。 对于 SQL Server 是目标平台的大型迁移，你可以查找[建议](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAP-OS-DB-Migration-to-SQL-Server-8211-FAQ-v6-2-April-2017/ba-p/368070)。 如果不需要组合发布，可以使用迁移监视器/SWPM。 将迁移与 SAP 版本升级结合使用时，可以使用[SAP sql-dmo](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/)进程。 为此，需要满足源和目标 DBMS 平台组合的某些要求。 [SUM 2.0 SP03 的数据库迁移选项（sql-dmo）](https://launchpad.support.sap.com/#/notes/2631152)中记录了此过程。
+2. 对于涉及数据导出和导入的异类 SAP 平台迁移，请测试并优化导出和导入阶段。 对于 SQL Server 是目标平台的大型迁移，你可以查找[建议](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAP-OS-DB-Migration-to-SQL-Server-8211-FAQ-v6-2-April-2017/ba-p/368070)。 如果不需要组合发布，可以使用迁移监视器/SWPM。 将迁移与 SAP 版本升级结合使用时，可以使用[SAP sql-dmo](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/)进程。 为此，需要满足源和目标 DBMS 平台组合的某些要求。 这一过程记录在[数据库迁移选项中， () 2.0 SP03 的](https://launchpad.support.sap.com/#/notes/2631152)
    1.  导出到源，将文件上传到 Azure，并导入性能。 导出和导入之间的最大重叠。
    2.  评估目标平台和目标平台上数据库的数量，以确定基础结构大小。
    3.  验证和优化计时。
@@ -103,8 +103,8 @@ ms.locfileid: "87495652"
         - 请查看 SAP 支持说明、SAP HANA 硬件目录和 SAP PAM 中的资源。 请确保 Azure 的受支持 Vm、这些 VM 类型支持的操作系统版本以及支持的 SAP 和 DBMS 版本未更改。
         - 再次验证 Azure 上部署的应用程序和基础结构的大小。 如果要移动现有应用程序，通常可以从所用的基础结构和[sap 基准页面](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd)派生必要的 sap，并将其与[sap 支持说明 #1928533](https://launchpad.support.sap.com/#/notes/1928533)中列出的 sap 号码进行比较。 同时，请记住[有关 sap 评级的这篇文章](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAPS-ratings-on-Azure-VMs-8211-where-to-look-and-where-you-can/ba-p/368208)。
         - 评估和测试你在规划阶段中所选 VM 类型的最大存储吞吐量和网络吞吐量方面的 Azure Vm 大小。 可在此处找到数据：
-           -  [Azure 中 Windows 虚拟机的大小](../../windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 请务必考虑用于调整大小的*最大非缓存磁盘吞吐量*。
-           -  [Azure 中 Linux 虚拟机的大小](../../linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 请务必考虑用于调整大小的*最大非缓存磁盘吞吐量*。
+           -  [Azure 中 Windows 虚拟机的大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 请务必考虑用于调整大小的*最大非缓存磁盘吞吐量*。
+           -  [Azure 中 Linux 虚拟机的大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 请务必考虑用于调整大小的*最大非缓存磁盘吞吐量*。
    2. 存储。
         - 至少，将[Azure 标准 SSD 存储](../../windows/disks-types.md#standard-ssd)用于代表 SAP 应用程序层的 vm，并用于部署不区分性能的 dbms。
         - 通常，我们不建议使用[Azure 标准 HDD 磁盘](../../windows/disks-types.md#standard-hdd)。
@@ -167,18 +167,18 @@ ms.locfileid: "87495652"
             -   [SAP 支持说明 #2455582-Linux：运行用 GCC 1.x 编译的 SAP 应用程序](https://launchpad.support.sap.com/#/notes/0002455582)
             -    [SAP 支持说明 #2729475-HWCCT 失败，并出现错误 "不支持虚拟机监控程序" SAP HANA。](https://launchpad.support.sap.com/#/notes/2729475)
 1. 测试您的高可用性和灾难恢复过程。
-   1. 通过关闭 Vm 来模拟故障转移情况（Windows 来宾操作系统）或将操作系统置于紧急模式（Linux 来宾操作系统）。 此步骤可帮助确定故障转移配置是否按设计方式工作。
+   1. 要模拟故障转移的情况，请关闭) 的 Vm (Windows 来宾操作系统，或将操作系统置于紧急模式下 (Linux 来宾操作系统) 。 此步骤可帮助确定故障转移配置是否按设计方式工作。
    1. 度量执行故障转移所花费的时间。 如果时间太长，请考虑：
         - 对于 SUSE Linux，请使用 SBD 设备（而不是 Azure 隔离代理）来加速故障转移。
         - 对于 SAP HANA，如果重新加载数据所需的时间太长，请考虑预配更多的存储带宽。
    3. 测试您的备份/还原顺序和时间，并在需要时进行更正。 请确保备份时间足以满足需要。 还需要测试还原和时间还原活动。 如果 RTO 依赖于数据库或 VM 还原过程，请确保还原时间在 RTO Sla 中。
    4. 测试跨区域 DR 功能和体系结构。
 1. 安全检查。
-   1. 测试 Azure 基于角色的访问控制（Azure RBAC）体系结构的有效性。 目标是分离并限制不同团队的访问权限和权限。 例如，SAP Basis 团队成员应能够部署 Vm，并将 Azure 存储中的磁盘分配到指定的 Azure 虚拟网络。 但 SAP Basis 团队不应能够创建自己的虚拟网络或更改现有虚拟网络的设置。 网络团队的成员不应能够将 Vm 部署到运行 SAP 应用程序和 DBMS Vm 的虚拟网络中。 此团队成员也不应更改 Vm 的属性，甚至可以删除 Vm 或磁盘。  
+   1.  (Azure RBAC) 体系结构，测试 Azure 基于角色的访问控制的有效性。 目标是分离并限制不同团队的访问权限和权限。 例如，SAP Basis 团队成员应能够部署 Vm，并将 Azure 存储中的磁盘分配到指定的 Azure 虚拟网络。 但 SAP Basis 团队不应能够创建自己的虚拟网络或更改现有虚拟网络的设置。 网络团队的成员不应能够将 Vm 部署到运行 SAP 应用程序和 DBMS Vm 的虚拟网络中。 此团队成员也不应更改 Vm 的属性，甚至可以删除 Vm 或磁盘。  
    1.  验证[网络安全组和 ASC](../../../virtual-network/security-overview.md)规则按预期方式工作并防护受保护的资源。
    1.  确保所有需要加密的资源都已加密。 定义和实施用于备份证书的进程，存储和访问这些证书，并还原已加密的实体。
    1.  在可能的情况下，使用适用于 OS 磁盘的[Azure 磁盘加密](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md)。
-   1.  请确保不使用太多的加密层。 在某些情况下，将 Azure 磁盘加密与 DBMS 透明数据加密的一种方法一起使用可以保护同一服务器上的不同磁盘或组件，这一点很有帮助。  例如，在 SAP DBMS 服务器上，可以在操作系统启动磁盘（如果操作系统支持 ADE）上启用 Azure 磁盘加密（ADE）以及 DBMS 数据暂留文件未使用的数据磁盘。  例如，在保存 DBMS TDE 加密密钥的磁盘上使用 ADE。
+   1.  请确保不使用太多的加密层。 在某些情况下，将 Azure 磁盘加密与 DBMS 透明数据加密的一种方法一起使用可以保护同一服务器上的不同磁盘或组件，这一点很有帮助。  例如，在 SAP DBMS 服务器上，Azure 磁盘加密 (ADE) 可在操作系统启动磁盘 (上启用。如果操作系统支持 ADE) ，并且 DBMS 数据暂留文件 (不使用这些数据磁盘) ，则可以启用该功能。  例如，在保存 DBMS TDE 加密密钥的磁盘上使用 ADE。
 1. 性能测试。 在 SAP 中，根据 SAP 跟踪和度量值进行以下比较：
    - 如果适用，请将前10个联机报表与当前实现进行比较。
    - 如果适用，请将前10个批处理作业与当前实现进行比较。
@@ -186,7 +186,7 @@ ms.locfileid: "87495652"
 
 
 ## <a name="non-production-phase"></a>非生产阶段 
-在此阶段，我们假设在成功试验或概念证明（POC）后，开始将非生产 SAP 系统部署到 Azure。 将 POC 中学习并经历的所有内容纳入到此部署中。 Poc 列出的所有条件和步骤也适用于此部署。
+在此阶段，我们假设在 (POC) 成功试验或概念证明后，开始将非生产 SAP 系统部署到 Azure。 将 POC 中学习并经历的所有内容纳入到此部署中。 Poc 列出的所有条件和步骤也适用于此部署。
 
 在此阶段，通常会将开发系统、单元测试系统和业务回归测试系统部署到 Azure。 我们建议，在一个 SAP 应用程序行中至少有一个非生产系统具有将来生产系统将具有的完整高可用性配置。 下面是在此阶段需要完成的一些附加步骤：  
 
@@ -207,8 +207,8 @@ ms.locfileid: "87495652"
 11. 请确保已将 Vm 部署到正确的[azure 邻近性放置组](../../linux/co-location.md)，如 azure 邻近性放置组中所述，[用于 SAP 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。
 11. 在应用工作负荷之前，请执行列出的所有其他检查，以查看概念验证阶段。
 12. 在应用工作负荷时，记录 Azure 中系统的资源消耗。 将此消耗与旧平台中的记录进行比较。 如果发现存在较大的差异，请调整未来部署的 VM 大小。 请记住，当您缩小、存储和 Vm 的网络带宽时，也会将其减少。
-    - [Azure 中 Windows 虚拟机的大小](../../windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-    - [Azure 中 Linux 虚拟机的大小](../../linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
+    - [Azure 中 Windows 虚拟机的大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+    - [Azure 中 Linux 虚拟机的大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 
 13. 试验系统复制功能和进程。 目的是使您能够轻松地复制开发系统或测试系统，使项目团队能够快速获得新系统。 请考虑对这些任务使用[SAP LaMa](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+Landscape+Management+%28SAP+LaMa%29+at+a+Glance) 。
 14. 优化和增强团队的 Azure 基于角色的访问、权限和过程，确保你有责任分离。 同时，请确保所有团队都可以在 Azure 基础结构中执行其任务。
 15. 练习、测试和记录高可用性和灾难恢复过程，使您的员工能够执行这些任务。 确定缺点，并改编要集成到部署中的新 Azure 功能。
@@ -224,7 +224,7 @@ ms.locfileid: "87495652"
     - 将 DBMS 方法（如备份/还原）与 SQL Server Always On、HANA 系统复制或日志传送结合使用，以便在 Azure 中播种和同步数据库内容。
     - 对较小的数据库使用备份/还原。
     - 使用集成到 SAP SWPM 的 SAP 迁移监视器来执行异类迁移。
-    - 如果需要将迁移与 SAP 版本升级结合使用，请使用[SAP sql-dmo](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/)进程。 请记住，并非所有源 DBMS 和目标 DBMS 的组合都受支持。 可以在不同版本的 SQL-DMO 的特定 SAP 支持说明中找到详细信息。 例如， [SUM 2.0 SP04 的数据库迁移选项（sql-dmo）](https://launchpad.support.sap.com/#/notes/2644872)。
+    - 如果需要将迁移与 SAP 版本升级结合使用，请使用[SAP sql-dmo](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/)进程。 请记住，并非所有源 DBMS 和目标 DBMS 的组合都受支持。 可以在不同版本的 SQL-DMO 的特定 SAP 支持说明中找到详细信息。 例如，[数据库迁移选项 () SUM 2.0 的 SP04](https://launchpad.support.sap.com/#/notes/2644872)。
     - 如果需要移动备份或 SAP 导出文件，请测试数据传输吞吐量是否更好通过 internet 或 ExpressRoute。 如果要通过 internet 移动数据，可能需要更改某些网络安全组/应用程序安全组规则，这些规则将需要为将来的生产系统准备就绪。
 1.  将系统从旧平台移到 Azure 之前，请收集资源消耗数据。 有用的数据包括 CPU 使用率、存储吞吐量和 IOPS 数据。 特别是从 DBMS 层单元收集此数据，但也从应用程序层单位收集此数据。 此外，还应测量网络和存储延迟。
 1.  重新检查 SAP 支持说明和所需的 OS 设置、SAP HANA 硬件目录和 SAP PAM。 请确保 Azure 的受支持 Vm、这些 Vm 中支持的操作系统版本以及支持的 SAP 和 DBMS 版本不会发生任何更改。
@@ -256,10 +256,10 @@ ms.locfileid: "87495652"
 ## <a name="go-live-phase"></a>上线阶段
 在上线阶段，请确保遵循在之前阶段中开发的行动手册。 执行你测试和练习的步骤。 不要接受配置和过程中的最后一分钟更改。 还应完成以下步骤：
 
-1. 验证 Azure 门户监视和其他监视工具是否正常工作。 建议适用于 Windows 的 Windows 性能监视器（perfmon）和适用于 Linux 的 SAR。
+1. 验证 Azure 门户监视和其他监视工具是否正常工作。 建议 windows 性能监视器 (perfmon) 适用于 Windows，SAR 适用于 Linux。
     - CPU 计数器。
-        - 平均 CPU 时间，总计（所有 Cpu）
-        - 平均 CPU 时间，每个处理器（M128 Vm 上的128处理器）
+        - 平均 CPU 时间， (所有 Cpu 的总数) 
+        - 平均 CPU 时间，每个处理器在 M128 Vm 上 (128 处理器) 
         - CPU 内核时间，每个处理器
         - CPU 用户时间，每个处理器
     - 内存。

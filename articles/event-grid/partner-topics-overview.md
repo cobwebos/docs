@@ -3,14 +3,14 @@ title: Azure 事件网格合作伙伴主题
 description: 通过 Azure 事件网格将第三方事件网格 SaaS 和 PaaS 合作伙伴的事件直接发送到 Azure 服务。
 ms.topic: conceptual
 ms.date: 07/07/2020
-ms.openlocfilehash: 97829f262a00e2353624b2a3fa9df210518ad3a0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e56055c55a3b30c5d13736b9838257f3c0bbec10
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86115989"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831900"
 ---
-# <a name="partner-topics-in-azure-event-grid-preview"></a>Azure 事件网格中的合作伙伴主题（预览）
+# <a name="partner-topics-in-azure-event-grid-preview"></a>Azure 事件网格中的合作伙伴主题 (预览) 
 通过使用合作伙伴主题，你可以将第三方事件源直接连接到 Azure 事件网格。 通过这种集成，你可以订阅合作伙伴的事件，并且订阅方式与 Azure 服务相同。 
 
 ## <a name="available-partners"></a>可用合作伙伴
@@ -22,7 +22,7 @@ ms.locfileid: "86115989"
 合作伙伴主题按照与系统主题相同的运作费率进行收费。
 
 ## <a name="limits"></a>限制
-合作伙伴主题采用公共预览。 在公共预览版期间，合作伙伴主题将受到与系统主题和自定义主题[相同的限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#event-grid-limits)。
+合作伙伴主题采用公共预览。 在公共预览版期间，合作伙伴主题将受到与系统主题和自定义主题[相同的限制](../azure-resource-manager/management/azure-subscription-service-limits.md#event-grid-limits)。
 
 ## <a name="how-do-i-become-an-event-grid-partner"></a>如何成为事件网格合作伙伴？
 为支持此启动创建的基础结构使新的合作伙伴能够轻松快捷地将其事件功能与事件网格集成。 有关详细信息，请参阅[合作伙伴载入文档](partner-onboarding-overview.md)。

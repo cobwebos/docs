@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 10c9e2c3ecefedded393d6949be1480f2f02973b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: aae0ed4efa7f96ab6258dbf0ce4c34a6879ecbc2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131049"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832801"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 开发人员入门指南
 
@@ -45,7 +45,7 @@ Azure 是一个完整的云平台，可以托管现有应用程序并简化新�
 
 Azure 提供了多个基于云的计算服务来运行你的应用程序，因此，你无需担心基础结构详细信息。 随着应用程序使用率的增长，可轻松纵向扩展或横向扩展你的资源。
 
-Azure 提供了支持应用程序开发和托管需求的服务。 Azure 还提供了基础结构即服务 (IaaS)，以便让你完全控制应用程序托管。 Azure 的平台即服务（PaaS）产品提供了支持应用所需的完全托管服务。 在 Azure 中，甚至有真正的无服务器托管，只需编写代码即可。
+Azure 提供了支持应用程序开发和托管需求的服务。 Azure 还提供了基础结构即服务 (IaaS)，以便让你完全控制应用程序托管。 Azure 的平台即服务 (PaaS) 产品提供支持应用程序所需的完全托管服务。 在 Azure 中，甚至有真正的无服务器托管，只需编写代码即可。
 
 ![Azure 应用程序托管选项](./media/azure-developer-guide/azure-developer-hosting-options.png)
 
@@ -285,7 +285,7 @@ Azure 是基于一组支持 Azure 门户 UI 的 REST API 构建的。 其中大�
 
 ### <a name="manage-your-subscriptions"></a>管理订阅
 
-订阅是链接到 Azure 帐户的 Azure 服务的逻辑分组。 一个 Azure 帐户可包含多个订阅。 Azure 服务计费是按照订阅量进行计算的。 对于按类型提供的可用订阅优惠列表，请参阅 [Microsoft Azure 优惠详细信息](https://azure.microsoft.com/support/legal/offer-details/)。 Azure 订阅具有完全控制订阅的帐户管理员。 他们还有一个服务管理员，可以控制订阅中的所有服务。 有关经典订阅管理员的信息，请参阅[添加或更改 Azure 订阅管理员](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 可以使用[基于角色的访问控制（RBAC）](../../role-based-access-control/overview.md)授予单个帐户对 Azure 资源的详细控制。
+订阅是链接到 Azure 帐户的 Azure 服务的逻辑分组。 一个 Azure 帐户可包含多个订阅。 Azure 服务计费是按照订阅量进行计算的。 对于按类型提供的可用订阅优惠列表，请参阅 [Microsoft Azure 优惠详细信息](https://azure.microsoft.com/support/legal/offer-details/)。 Azure 订阅具有完全控制订阅的帐户管理员。 他们还有一个服务管理员，可以控制订阅中的所有服务。 有关经典订阅管理员的信息，请参阅[添加或更改 Azure 订阅管理员](../../cost-management-billing/manage/add-change-subscription-administrator.md)。 使用 azure RBAC)  (，可以使用 azure[基于角色的访问控制对](../../role-based-access-control/overview.md)个人帐户进行详细控制。
 
 #### <a name="resource-groups"></a>资源组
 
@@ -297,7 +297,7 @@ Azure 资源浏览器是一款非常出色的工具，可用于可视化已在�
 
 如果允许访问 Azure 资源，最佳做法是向用户提供完成给定任务所需的最小特权。
 
-- **基于角色的访问控制 (RBAC)**：在 Azure 中，可以在如下指定范围内授予对用户帐户（主体）的访问权限：订阅、资源组或单个资源。 RBAC 使你可以将资源部署到资源组，并向特定用户或组授予权限。 它还允许你将访问权限限制为仅属于目标资源组的资源。 此外，还可以授予对单个资源的访问权限，例如虚拟机或虚拟网络。 若要授予访问权限，请将角色分配给用户、组或服务主体。 预定义角色有很多，但也可定义自己的自定义角色。 若要了解详细信息，请参阅[什么是 azure 基于角色的访问控制（AZURE RBAC）？](../../role-based-access-control/overview.md)。
+- **基于角色的访问控制 (RBAC)**：在 Azure 中，可以在如下指定范围内授予对用户帐户（主体）的访问权限：订阅、资源组或单个资源。 RBAC 使你可以将资源部署到资源组，并向特定用户或组授予权限。 它还允许你将访问权限限制为仅属于目标资源组的资源。 此外，还可以授予对单个资源的访问权限，例如虚拟机或虚拟网络。 若要授予访问权限，请将角色分配给用户、组或服务主体。 预定义角色有很多，但也可定义自己的自定义角色。 若要了解详细信息，请参阅[什么是 AZURE RBAC) 的 azure 基于角色的访问控制 (？](../../role-based-access-control/overview.md)。
 
   > 何时使用****：当需要对用户和组进行细致的访问管理，或者当需要使用户成为订阅的所有者时使用。
   >
@@ -307,7 +307,7 @@ Azure 资源浏览器是一款非常出色的工具，可用于可视化已在�
 
   > **何时使用**：当你以编程方式管理 Azure 资源或授予应用程序访问权限时。 有关详细信息，请参阅[创建 Active Directory 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
-#### <a name="tags"></a>标记
+#### <a name="tags"></a>Tags
 
 通过 Azure 资源管理器，你可以将自定义标记分配给单个资源。 标记为键值对，在出于计费或监视目的而需要组织资源时，标记可能会十分有用。 标记提供了一种跨多个资源组跟踪的资源方法。 可以通过以下方式分配标记：
 

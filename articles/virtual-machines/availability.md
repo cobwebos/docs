@@ -6,12 +6,12 @@ ms.author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/10/2019
-ms.openlocfilehash: d26e1edb53f963d591b1ee1fba58b87fd454e898
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 18d7755bf6bf9d09a8da30cb5c2892af6ed90c7d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288564"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830642"
 ---
 # <a name="availability-options-for-virtual-machines-in-azure"></a>Azure 中虚拟机的可用性选项
 
@@ -47,11 +47,11 @@ Azure 平台进行定期维护时，此方法可确保至少有一个应用程�
 
 ## <a name="virtual-machines-scale-sets"></a>虚拟机规模集 
 
-使用 Azure 虚拟机规模集可以创建并管理一组负载均衡的 VM。 可以根据需求或定义的计划自动增减 VM 实例的数目。 规模集为应用程序提供高可用性，用于集中管理、配置和更新许多 VM。 建议在一个规模集内创建两个或多个 VM，使应用程序高度可用，并满足 [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 的要求。 规模集本身是免费的，你只需为创建的每个 VM 实例付费。 当单个 VM 使用 [Azure 高级 SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) 时，Azure SLA 适用于计划外维护事件。 规模集内的虚拟机可以跨多个更新域和容错域部署，以最大程度地提高因数据中心中断、计划内或计划外维护事件而导致停机时的可用性和复原能力。 规模集内的虚拟机还可以部署到单个可用性区域或按地区进行部署。 可用性区域部署选项可能因业务流程模式而异。
+使用 Azure 虚拟机规模集可以创建并管理一组负载均衡的 VM。 可以根据需求或定义的计划自动增减 VM 实例的数目。 规模集为应用程序提供高可用性，用于集中管理、配置和更新许多 VM。 建议在一个规模集内创建两个或多个 VM，使应用程序高度可用，并满足 [99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 的要求。 规模集本身是免费的，你只需为创建的每个 VM 实例付费。 当单个 VM 使用 [Azure 高级 SSD](./windows/disks-types.md#premium-ssd) 时，Azure SLA 适用于计划外维护事件。 规模集内的虚拟机可以跨多个更新域和容错域部署，以最大程度地提高因数据中心中断、计划内或计划外维护事件而导致停机时的可用性和复原能力。 规模集内的虚拟机还可以部署到单个可用性区域或按地区进行部署。 可用性区域部署选项可能因业务流程模式而异。
 
 **容错域和更新域**
 
-虚拟机规模集通过协调容错域和更新域简化了高可用性设计。 只需为规模集定义容错域计数。 规模集可用的容错域的数量可能因地区而异。 请参阅[管理 Azure 中的虚拟机的可用性](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)。
+虚拟机规模集通过协调容错域和更新域简化了高可用性设计。 只需为规模集定义容错域计数。 规模集可用的容错域的数量可能因地区而异。 请参阅[管理 Azure 中的虚拟机的可用性](./windows/manage-availability.md)。
 
 
 ## <a name="availability-sets"></a>可用性集
@@ -72,4 +72,3 @@ Azure 平台进行定期维护时，此方法可确保至少有一个应用程�
 
 ## <a name="next-steps"></a>后续步骤
 现在即可开始使用这些可用性和冗余功能构建 Azure 环境。 有关最佳实践的信息，请参阅 [Azure 可用性的最佳实践](/azure/architecture/checklist/resiliency-per-service)。
-

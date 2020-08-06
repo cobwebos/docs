@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 5ee58f6a2058158308cab8ec49b1d79587998d39
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1c2330f1ba71e2a72a1a44df7af6444181f5f9ea
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247024"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836388"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题解答
 
@@ -28,9 +28,9 @@ ms.locfileid: "86247024"
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>是否可以使用资源管理器模板创建 Azure 容器注册表？
 
-是的。 这里提供了[模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry)，可以用来创建注册表。
+是的。 下面是可用于创建注册表的[模版](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry)。
 
-### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>是否会对 ACR 中的映像执行安全漏洞扫描？
+### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>ACR 中是否提供对映像的安全漏洞扫描？
 
 是的。 请参阅 [Azure 安全中心](../security-center/azure-container-registry-integration.md)、[Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) 和 [Aqua](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry) 中的文档。
 
@@ -57,7 +57,7 @@ az acr credential show -n myRegistry
 Invoke-AzureRmResourceAction -Action listCredentials -ResourceType Microsoft.ContainerRegistry/registries -ResourceGroupName myResourceGroup -ResourceName myRegistry
 ```
 
-### <a name="how-do-i-get-admin-credentials-in-a-resource-manager-template"></a>如何获取资源管理器模板中的管理员凭据？
+### <a name="how-do-i-get-admin-credentials-in-a-resource-manager-template"></a>如何在资源管理器模板中获取管理员凭据？
 
 > [!IMPORTANT]
 > 管理员用户帐户专门用于单个用户访问注册表，主要用于测试目的。 建议不要与多个用户共享管理员帐户凭据。 建议用户和服务主体在无外设方案中使用单个标识。 请参阅[身份验证概述](container-registry-authentication.md)。
@@ -113,7 +113,7 @@ ACR 支持 Docker 注册表 HTTP API V2。 可通过 `https://<your registry log
 
 ### <a name="how-do-i-delete-all-manifests-that-are-not-referenced-by-any-tag-in-a-repository"></a>如何删除不由存储库中的任何标记引用的所有清单？
 
-在 bash 中：
+如果你使用的是 bash：
 
 ```azurecli
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv  | xargs -I% az acr repository delete -n myRegistry -t myRepository@%
@@ -125,7 +125,7 @@ az acr repository show-manifests -n myRegistry --repository myRepository --query
 az acr repository show-manifests -n myRegistry --repository myRepository --query "[?tags[0]==null].digest" -o tsv | %{ az acr repository delete -n myRegistry -t myRepository@$_ }
 ```
 
-注意：在 delete 命令中添加 `-y` 可跳过确认。
+注意：可以在删除命令中添加 `-y` 以跳过确认。
 
 有关详细信息，请参阅[删除 Azure 容器注册表中的容器映像](container-registry-delete.md)。
 
@@ -220,7 +220,7 @@ ACR 支持提供不同权限级别的[自定义角色](container-registry-roles.
   az role assignment create --scope resource_id --role AcrPull --assignee user@example.com
   ```
 
-  或者，将角色分配给由其应用程序 ID 标识的服务主体：
+  或者，将角色分配到由应用程序 ID 标识的服务主体：
 
   ```azurecli
   az role assignment create --scope resource_id --role AcrPull --assignee 00000000-0000-0000-0000-000000000000
@@ -254,7 +254,9 @@ ACR 支持提供不同权限级别的[自定义角色](container-registry-roles.
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>如何实现匿名提取访问？
 
-为匿名（公共）提取访问设置 Azure 容器注册表目前是一项预览功能。 若要启用公共访问，请在 https://aka.ms/acr/support/create-ticket 中开具支持票证。 有关详细信息，请参阅 [Azure 反馈论坛](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)。
+为匿名（公共）提取访问设置 Azure 容器注册表目前是一项预览功能。 如果你在注册表中有任何[范围映射 (用户) 或令牌资源](https://aka.ms/acr/repo-permissions)，请先删除它们，然后再 (系统范围映射) 。 若要启用公共访问，请在 https://aka.ms/acr/support/create-ticket 中开具支持票证。 有关详细信息，请参阅 [Azure 反馈论坛](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)。
+
+
 
 
 ## <a name="diagnostics-and-health-checks"></a>诊断和运行状况检查
@@ -433,7 +435,7 @@ curl $redirect_url
 
 请与网络管理员联系，或者检查网络配置和连接性。 尝试使用 Azure CLI 来运行 `az acr check-health -n yourRegistry`，以便检查环境是否能够连接到容器注册表。 另外，也可尝试在浏览器中使用 incognito 或专用会话，避免使用任何过时的浏览器缓存或 Cookie。
 
-### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>为什么拉取或推送请求失败，并出现不受允许的操作？
+### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>为什么我的拉取或推送请求失败，出现操作不被允许的情况？
 
 以下是一些可能出现不允许进行操作的情况：
 * 不再支持经典注册表。 请使用 [az acr update](/cli/azure/acr?view=azure-cli-latest#az-acr-update)或 Azure 门户升级到受支持的[服务层](https://aka.ms/acr/skus)。
@@ -443,9 +445,9 @@ curl $redirect_url
 
 ### <a name="repository-format-is-invalid-or-unsupported"></a>存储库格式无效或不受支持
 
-如果在存储库操作中指定存储库名称时出现错误，如 "不受支持的存储库格式"、"格式无效" 或 "请求的数据不存在"，请检查名称的拼写和大小写。 有效的存储库名称只能包含小写字母数字字符、句点、短划线、下划线和正斜杠。 
+如果在存储库操作中指定存储库名称时出现“存储库格式不受支持”、“无效格式”或“请求的数据不存在”等错误，请检查名称的拼写和大小写。 有效的存储库名称只能包含小写字母数字字符、句点、短划线、下划线和正斜杠。 
 
-有关完整的存储库命名规则，请参阅[开放容器计划分发规范](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview)。
+有关完整的存储库命名规则，请参阅[打开容器计划分发规范](https://github.com/docker/distribution/blob/master/docs/spec/api.md#overview)。
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>如何在 Windows 上收集 HTTP 跟踪？
 
@@ -501,9 +503,9 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 | Git 服务 | 源上下文 | 手动生成 | 通过“提交”触发器自动生成 |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | 是 | 适合 |
-| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | 是 | 是 |
-| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | 适合 | 否 |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | “是” | “是” |
+| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | “是” | 是 |
+| GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | 是 | 否 |
 | BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | 是 | 否 |
 
 ## <a name="run-error-message-troubleshooting"></a>运行错误消息故障排除操作
@@ -515,7 +517,7 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 ## <a name="cicd-integration"></a>CI/CD 集成
 
 - [CircleCI](https://github.com/Azure/acr/blob/master/docs/integration/CircleCI.md)
-- [GitHub 操作](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
+- [GitHub Actions](https://github.com/Azure/acr/blob/master/docs/integration/github-actions/github-actions.md)
 
 ## <a name="next-steps"></a>后续步骤
 

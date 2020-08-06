@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 07/08/2016
-ms.openlocfilehash: 38861ed941d49317e69bfab9afd17638a790bf7b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: da583a1c884ddcae0815849c43dc0eb335005e53
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072431"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832733"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中创建用于在格式之间转换 XML 的映射
 
@@ -36,7 +36,7 @@ ms.locfileid: "87072431"
 
 现在已满足了先决条件，可以创建逻辑应用了：  
 
-1. 创建一个逻辑应用并[将其链接到包含映射的集成帐户](../logic-apps/logic-apps-enterprise-integration-accounts.md "了解如何将集成帐户链接到逻辑应用")。
+1. 创建一个逻辑应用并[将其链接到包含映射的集成帐户](./logic-apps-enterprise-integration-create-integration-account.md "了解如何将集成帐户链接到逻辑应用")。
 2. 将“请求”  触发器添加到逻辑应用  
    ![已选择请求触发器的 "显示 Microsoft 托管的 Api" 下拉屏幕截图。 下拉列表位于使用 Visual Studio Enterprise Integration SDK 创建的逻辑应用中。](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
 3. 通过首先选择“添加操作”**** 来添加“转换 XML”**** 操作   
@@ -133,7 +133,6 @@ ms.locfileid: "87072431"
 
 
 
-## <a name="learn-more"></a>了解更多信息
+## <a name="learn-more"></a>了解详细信息
 * [了解有关 Enterprise Integration Pack 的详细信息](../logic-apps/logic-apps-enterprise-integration-overview.md "了解 Enterprise Integration Pack")  
-* [详细了解映射](../logic-apps/logic-apps-enterprise-integration-maps.md "了解企业集成地图")  
-
+* [详细了解映射](../logic-apps/logic-apps-enterprise-integration-maps.md "了解企业集成映射")  

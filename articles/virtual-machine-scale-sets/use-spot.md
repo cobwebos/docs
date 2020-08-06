@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer, devx-track-azurecli
-ms.openlocfilehash: 2898364811616c16a0c33ea26dcaacace9c2c4ed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: de8cfa66d6d52fe16cc40c5df0f41a39fff134fd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491793"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832631"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>适用于虚拟机规模集的 Azure Spot VM 
 
@@ -40,6 +40,11 @@ Spot 实例的定价是可变的，基于区域和 SKU。 有关详细信息，�
 
 用户可以选择通过 [Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md) 来接收 VM 内通知。 这样，系统就会在你的 VM 被逐出时向你发送通知。在逐出之前，你将有 30 秒的时间来完成任何作业并执行关闭任务。 
 
+## <a name="placement-groups"></a>放置组
+放置组是类似于 Azure 可用性集的构造，具有其自己的容错域和升级域。 默认情况下，一个规模集包含一个放置组，最大大小为 100 台 VM。 如果将被调用的规模集属性 `singlePlacementGroup` 设置为*false*，则规模集可以由多个放置组组成，其范围为 0-1000 个 vm。 
+
+> [!IMPORTANT]
+> 除非使用的是与 HPC 一起使用的，否则强烈建议将 "规模集" 属性设置 `singlePlacementGroup` 为*false* ，以启用多个放置组，以便更好地在区域或区域中进行缩放。 
 
 ## <a name="deploying-spot-vms-in-scale-sets"></a>在规模集中部署 Spot VM
 
@@ -64,6 +69,7 @@ az vmss create \
     --name myScaleSet \
     --image UbuntuLTS \
     --upgrade-policy-mode automatic \
+    --single-placement-group false \
     --admin-username azureuser \
     --generate-ssh-keys \
     --priority Spot \
@@ -89,14 +95,26 @@ $vmssConfig = New-AzVmssConfig `
 
 创建使用 Spot VM 的规模集的过程与适用于 [Linux](quick-create-template-linux.md) 或 [Windows](quick-create-template-windows.md) 的入门文章中详述的过程相同。 
 
-对于 Spot 模板部署，请使用 `"apiVersion": "2019-03-01"` 或更高版本。 在模板的 `"virtualMachineProfile":` 部分中添加 `priority`、`evictionPolicy` 和 `billingProfile` 属性： 
+对于 Spot 模板部署，请使用 `"apiVersion": "2019-03-01"` 或更高版本。 
+
+将 `priority` 、 `evictionPolicy` 和属性添加到模板中的节，将属性添加到节 `billingProfile` `"virtualMachineProfile":` `"singlePlacementGroup": false,` `"Microsoft.Compute/virtualMachineScaleSets"` 中：
 
 ```json
-                "priority": "Spot",
+
+{
+  "type": "Microsoft.Compute/virtualMachineScaleSets",
+  },
+  "properties": {
+    "singlePlacementGroup": false,
+    }
+
+        "virtualMachineProfile": {
+              "priority": "Spot",
                 "evictionPolicy": "Deallocate",
                 "billingProfile": {
                     "maxPrice": -1
                 }
+            },
 ```
 
 若要在逐出实例后将其删除，请将 `evictionPolicy` 参数更改为 `Delete`。

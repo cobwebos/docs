@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b1771b0b55301fe4beaf2049859ebf3b9642fdd5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6e217540b1dd3744da855c71e0add289dd1c9e18
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077341"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831050"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 SQL Server Azure 虚拟机 DBMS 部署
 
@@ -336,7 +336,7 @@ ms.locfileid: "87077341"
 
 
 * 除 A 系列 VM、tempdb 数据、日志文件外，所有 SAP 认证的 VM 类型（请参阅 SAP 说明 [1928533]）都可放置在非持久性驱动器 D:\ 上。 
-* 不过，建议使用多个 tempdb 数据文件。 请注意，D:\ 驱动器卷因 VM 类型而异。 有关不同 VM 的驱动器 D:\ 精确大小的信息，请参阅 [Azure 中 Windows 虚拟机的大小](../../windows/sizes.md)。
+* 不过，建议使用多个 tempdb 数据文件。 请注意，D:\ 驱动器卷因 VM 类型而异。 有关不同 VM 的驱动器 D:\ 精确大小的信息，请参阅 [Azure 中 Windows 虚拟机的大小](../../sizes.md)。
 
 这些配置让 tempdb 耗用的空间比系统驱动器能够提供的还多。 非持久性驱动器 D:\ 还提供更大的 I/O 延迟和吞吐量（除 A 系列 VM 外）。 若要确定正确的 tempdb 大小，可以在现有系统上检查 tempdb 大小。 
 
@@ -379,7 +379,7 @@ SQL Server 2014 及更新版本提供了一种可能性：将数据库文件直�
 
 * 所用存储帐户所在的 Azure 区域必须与部署运行 SQL Server 的 VM 时所用的存储帐户相同。
 * 之前列出的有关将 VHD 分布到不同 Azure 存储帐户的注意事项也适用于这种部署方法。 意味着 I/O 操作计数会以 Azure 存储帐户的限制为依据。
-* 代表 SQL Server 数据和日志文件的存储 Blob 的流量将计入特定 VM 类型的 VM 的网络带宽，而不是计入 VM 的存储 I/O 配额。 有关特定 VM 类型的网络和存储带宽的信息，请参考 [Azure 中 Windows 虚拟机的大小](../../windows/sizes.md)一文。
+* 代表 SQL Server 数据和日志文件的存储 Blob 的流量将计入特定 VM 类型的 VM 的网络带宽，而不是计入 VM 的存储 I/O 配额。 有关特定 VM 类型的网络和存储带宽的信息，请参考 [Azure 中 Windows 虚拟机的大小](../../sizes.md)一文。
 * 由于通过网络配额推送文件 I/O，你将主要搁浅存储配额，而这只会部分地使用 VM 的总体带宽。
 * Azure 高级存储针对不同磁盘大小的 IOPS 和 I/O 吞吐量性能目标不再适用。 即使创建的 Blob 位于 Azure 高级存储上。 目标记录于 [VM 的高性能高级存储与托管磁盘](../../windows/disks-types.md#premium-ssd)一文中。 由于直接将 SQL Server 数据文件和日志文件至于存储在 Azure 高级存储上的 Blob，因此与 Azure 高级存储上的 VHD 相比，性能特征可能会有所不同。
 * 将 SQL Server 数据文件直接放在 Azure blob 上时，无法使用 Azure 高级存储磁盘可用的基于主机的高速缓存。

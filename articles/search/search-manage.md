@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 721848b996bc4887370b77404e3d571975815624
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a623436cdeaac89d140b3834808fb975bd733f4e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421886"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835946"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure 门户中 Azure 认知搜索服务管理
 
@@ -28,35 +28,35 @@ ms.locfileid: "87421886"
 
 Azure 认知搜索是一种完全托管的、基于云的搜索服务，用于在自定义应用中生成丰富的搜索体验。 本文介绍可在 [Azure 门户](https://portal.azure.com)中对已预配的搜索服务执行的服务管理任务。 服务管理设计成轻型，它限于以下任务：
 
-* 使用 "中页**使用情况**" 链接检查存储。
-* 使用中间页面**监视**链接检查查询量和延迟，以及是否限制请求。
-* 使用左侧的 "**密钥**" 页管理访问权限。
-* 使用左侧的 "**缩放**" 页调整容量。
+* 使用中间页“使用情况”链接检查存储。
+* 使用中间页“监视”链接检查查询量和延迟，以及请求是否受到了限制。
+* 使用左边的“密钥”页管理访问。
+* 使用左边的“缩放”页调整容量。
 
-还可以通过[管理 api](https://docs.microsoft.com/rest/api/searchmanagement/)和[Az. 搜索 PowerShell 模块](search-manage-powershell.md)以编程方式处理在门户中执行的相同任务。 管理任务跨门户和编程接口完全表示。 没有特定的管理任务仅在一个模态中可用。
+在门户中执行的相同任务也可以通过[管理 API](https://docs.microsoft.com/rest/api/searchmanagement/) 和 [Az.Search PowerShell 模块](search-manage-powershell.md)以编程方式处理。 管理任务完全呈现在门户和程序设计界面中。 任何特定管理任务都不会只能通过一种形式使用。
 
-Azure 认知搜索利用其他 Azure 服务进行更深入的监视和管理。 与搜索服务一起存储的唯一数据本身就是内容（索引、索引器和数据源定义以及其他对象）。 在滚动30天周期内，从内部日志请求报告给门户页面的指标。 对于用户控制的日志保留和其他事件，需要[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)。 
+Azure 认知搜索充分利用其他 Azure 服务进行更深入的监视和管理。 通过搜索服务单独存储的唯一数据是内容（索引、索引器和数据源定义，以及其他对象）。 报告到门户页面的指标按照滚动的 30 天周期从内部日志中拉取。 对于用户控制的日志保留和其他事件，需要 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)。 
 
-## <a name="fixed-service-properties"></a>固定服务属性
+## <a name="fixed-service-properties"></a>固定的服务属性
 
-搜索服务的几个方面是在预配服务时确定的，以后不能更改：
+搜索服务的一些方面是在预配服务时确定的，确定后不能更改：
 
 * 服务名称（不能重命名服务）
-* 服务位置（目前无法将完整的服务移到另一个区域）
-* 最大副本数和分区计数（由层、基本或标准确定）
+* 服务位置（目前无法将服务原封不动地移动到另一个区域）
+* 最大副本计数和分区计数（由“基本”层或标准“层”确定）
 
-如果使用基本版从最大分区开始，现在需要更多分区，则需要在更高的层上[创建新服务](search-create-service-portal.md)，并在新服务上重新创建内容。 
+如果开始时使用的是最大分区数为 1 的“基本”层，并且现在需要多个分区，则需要在更高层[创建新服务](search-create-service-portal.md)并在新服务上重新创建内容。 
 
 ## <a name="administrator-rights"></a>管理员权限
 
 预配或解除对服务本身的授权可以通过 Azure 订阅管理员或协同管理员完成。
 
-对于对终结点的访问，有权访问服务 URL 和 api 密钥的任何人均可访问内容。 有关密钥的详细信息，请参阅[管理 api 密钥](search-security-api-keys.md)。
+关于对终结点的访问，任何具有服务 URL 访问权限和 API 密钥的人员均可访问内容。 若要详细了解密钥，请参阅[管理 API 密钥](search-security-api-keys.md)。
 
-* 对服务的只读访问是查询权限，通常通过为客户端应用程序提供 URL 和查询 api 密钥来授予客户端应用程序。
-* 读写访问权限提供了添加、删除或修改服务器对象的功能，包括 api 密钥、索引、索引器、数据源和计划。通过提供 URL，即管理员 API 密钥来授予读写访问权限。
+* 服务的只读访问权限是查询权限，通常，向客户端应用程序授予这种权限的方式是向该应用程序提供 URL 和查询 API 密钥。
+* 具有读写访问权限就能够添加、删除或修改服务器对象，包括 API 密钥、索引、索引器、数据源和计划。读写访问权限是通过提供 URL 和管理 API 密钥来授予的。
 
-服务预配设备的权限是通过角色分配授予的。 [基于角色的访问（RBAC）](../role-based-access-control/overview.md)是在[azure 资源管理器](../azure-resource-manager/management/overview.md)上构建的用于预配 azure 资源的授权系统。 
+服务预配设备的权限是通过角色分配授予的。 Azure [RBAC) 的 azure 基于角色的访问控制 (](../role-based-access-control/overview.md)是在[azure 资源管理器](../azure-resource-manager/management/overview.md)上构建的用于预配 azure 资源的授权系统。 
 
 在 Azure 认知搜索环境中， [azure 角色分配](search-security-rbac.md)将确定谁可以执行任务，无论他们使用的是[门户](search-manage.md)、 [PowerShell](search-manage-powershell.md)还是[管理 REST api](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)：
 
@@ -67,18 +67,18 @@ Azure 认知搜索利用其他 Azure 服务进行更深入的监视和管理。 
 * 启用流量分析（创建服务）
 
 > [!TIP]
-> 使用 Azure 范围的机制，可以锁定订阅或资源，以防止使用管理员权限的用户意外或未经授权地删除搜索服务。 有关详细信息，请参阅[锁定资源以防止意外删除](../azure-resource-manager/management/lock-resources.md)。
+> 利用 Azure 范围内的机制，可以锁定订阅或资源，以防止具备管理员权限的用户意外或在未经授权的情况下删除搜索服务。 有关详细信息，请参阅[锁定资源以防止意外删除](../azure-resource-manager/management/lock-resources.md)。
 
 ## <a name="logging-and-system-information"></a>日志记录和系统信息
 
 在基本层以及更高层上，Microsoft 会监视所有 Azure 认知搜索服务以达到服务级别协议 (SLA) 的 99.9% 可用性。 如果服务的速度较慢或请求吞吐量低于 SLA 阈值，则支持团队审查提供给他们的日志文件并解决问题。
 
-Azure 认知搜索利用[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)收集和存储索引和查询活动。 搜索服务本身仅存储其内容（索引、索引器定义、数据源定义、技能组合定义、同义词映射）。 缓存和记录的信息通常存储在 Azure 存储帐户中。 有关记录索引和查询工作负荷的详细信息，请参阅[收集和分析日志数据](search-monitor-logs.md)。
+Azure 认知搜索利用 [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) 来收集和存储索引及查询活动。 搜索服务仅单独存储其内容（索引、索引器定义、数据源定义、技能组定义、同义词映射）。 高速缓存信息和记录的信息是脱离服务而存储的，通常存储在 Azure 存储帐户中。 有关记录索引和查询工作负载的详细信息，请参阅[收集和分析日志数据](search-monitor-logs.md)。
 
-就服务的一般信息而言，仅使用 Azure 中内置的设施认知搜索自身，你可以通过以下方式获取信息：
+就有关服务的一般信息而言，只需使用 Azure 认知搜索本身内置的设施就可以通过以下方式获取信息：
 
-* 使用 "服务**概述**" 页，通过通知、属性和状态消息。
-* 使用[PowerShell](search-manage-powershell.md)或[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) [获取服务属性](https://docs.microsoft.com/rest/api/searchmanagement/services)。 编程层没有提供任何新的信息或操作。 接口存在，以便您可以编写脚本。
+* 使用服务“概述”页面，通过通知、属性和状态消息。
+* 使用 [PowerShell](search-manage-powershell.md) 或[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) 来[获取服务属性](https://docs.microsoft.com/rest/api/searchmanagement/services)。 在编程层不提供新信息或操作。 接口是存在的，这样你便可以编写脚本。
 
 ## <a name="monitor-resource-usage"></a>监视资源使用情况
 
@@ -107,13 +107,13 @@ Azure 认知搜索利用[Azure Monitor](https://docs.microsoft.com/azure/azure-m
 
 ## <a name="scale-up-or-down"></a>增加或减少
 
-每个搜索服务从至少一个副本和一个分区开始操作。 如果注册了[支持更多容量的层](search-limits-quotas-capacity.md)，请单击左侧导航窗格中的 "**缩放**" 以调整资源使用。
+每个搜索服务从至少一个副本和一个分区开始操作。 如果你注册了[支持更多容量的层](search-limits-quotas-capacity.md)，请在左侧导航窗格中单击“缩放”以调整资源使用情况。
 
 如果通过任一资源添加容量，服务会自动使用它们。 无需执行任何进一步的操作，但在新资源产生作用之前，会有轻微延迟。 可能需要 15 分钟或更长的时间才能预配其他资源。
 
 ### <a name="add-replicas"></a>添加副本
 
-增加每秒查询次数 (QPS) 或实现高可用性可通过添加副本来完成。 每个副本都有索引的副本，因此多添加一个副本将转换为可用于处理服务查询要求的多个索引。 高可用性需要至少3个副本（有关详细信息，请参阅[调整容量](search-capacity-planning.md)）。
+增加每秒查询次数 (QPS) 或实现高可用性可通过添加副本来完成。 每个副本都有索引的副本，因此多添加一个副本将转换为可用于处理服务查询要求的多个索引。 高可用性至少需要 3 个副本（有关详细信息，请参阅[调整容量](search-capacity-planning.md)）。
 
 具有许多副本的搜索服务可通过大量索引进行负载均衡查询请求。 在给定查询量级别的情况下，当有更多索引副本可用于为请求提供服务时，查询吞吐量的速度将更快。 如果出现查询延迟，会期望在附加副本联机后对性能产生积极的影响。
 
@@ -123,7 +123,7 @@ Azure 认知搜索利用[Azure Monitor](https://docs.microsoft.com/azure/azure-m
 
 添加副本更为常见，但当存储受到限制时，你可以添加分区以获得更多容量。 预配服务的层确定是否可以添加分区。 基本层锁定在一个分区上。 标准层及以上层支持其他数量的分区。
 
-在12的除数（具体而言，1、2、3、4、6或12）中添加分区。 这是分片的项目。 索引会在 12 个分区中创建，可以全部存储在 1 个分区上，也可以平均分配到 2、3、4、6 或 12 个分区（每个分区一个分片）。
+分区将添加到除数 12 (具体说来，1，2，3，4，6或 12) 。 这是分片的项目。 索引会在 12 个分区中创建，可以全部存储在 1 个分区上，也可以平均分配到 2、3、4、6 或 12 个分区（每个分区一个分片）。
 
 ### <a name="remove-replicas"></a>删除副本
 
@@ -139,10 +139,10 @@ Azure 认知搜索利用[Azure Monitor](https://docs.microsoft.com/azure/azure-m
 
 ## <a name="next-steps"></a>后续步骤
 
-* 通过[PowerShell](search-manage-powershell.md)自动执行
+* 使用 [PowerShell](search-manage-powershell.md) 进行自动化操作
 
-* 查看[性能和优化](search-performance-optimization.md)方法
+* 查看[性能和优化](search-performance-optimization.md)技术
 
-* 查看保护内容和操作的[安全功能](search-security-overview.md)
+* 查看[安全功能](search-security-overview.md)以保护内容和操作
 
-* 启用[诊断日志记录](search-monitor-logs.md)以监视查询和索引工作负荷
+* 启用[诊断日志记录](search-monitor-logs.md)以监视查询和索引工作负载

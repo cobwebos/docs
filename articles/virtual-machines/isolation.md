@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/18/2019
 ms.author: ayshak
-ms.openlocfilehash: 7732f83dfd44cbf686e2d076c665c980962b19d5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 58b3f9c3655a2e15842f7fa28ad3e6921395beba
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292366"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831441"
 ---
 # <a name="virtual-machine-isolation-in-azure"></a>Azure 中的虚拟机隔离
 
@@ -59,18 +59,18 @@ Azure 计算提供独立于特定硬件类型并专用于单个客户的虚拟�
 **答**：我们将在官方弃用的隔离大小提前12个月后提供提醒。
 
 ### <a name="q-im-an-azure-service-fabric-customer-relying-on-the-silver-or-gold-durability-tiers-does-this-change-impact-me"></a>问：我是依赖于白银或黄金耐久性层级的 Azure Service Fabric 客户。 此更改是否会影响我？
-**答**：否。 Service Fabric 的[耐久性层级](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster)提供的保证即使在此更改发生后也将继续履行。 如果你出于其他原因而需要物理硬件隔离，可能仍需采取上述措施之一。 
+**答**：否。 Service Fabric 的[耐久性层级](../service-fabric/service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster)提供的保证即使在此更改发生后也将继续履行。 如果你出于其他原因而需要物理硬件隔离，可能仍需采取上述措施之一。 
  
 ### <a name="q-what-are-the-milestones-for-d15_v2-or-ds15_v2-isolation-retirement"></a>问： D15_v2 或 DS15_v2 隔离停用的里程碑有哪些？ 
 **A**： 
  
 | Date | 操作 |
 |---|---| 
-| 2019 年 11 月 18 日 | D/DS15i_v2 （PAYG，1年 RI）的可用性 | 
+| 2019 年 11 月 18 日 |  (PAYG，1年 RI 的 DS15i_v2 可用性)  | 
 | 5月14日2020 | 第一天购买 D/DS15i_v2 1 年 RI | 
 | 5月15日2020 | 删除了 D/DS15_v2 隔离保障 | 
-| 5月15日2021 | 停用 D/DS15i_v2 （在2019年11月18日之前购买了 D/DS15_v2 的3年 RI 除外的所有客户）| 
-| 2022年11月17日 | 当完成3年的 RIs （对于在2019年11月18日之前购买 DS15_v2 了3年 RI 的客户），停用 D/DS15i_v2 |
+| 5月15日2021 |  (所有客户（在) 2019 年11月18日之前购买了第3年 DS15_v2 的第3年 DS15i_v2| 
+| 2022年11月17日 | 当在2019年11月18日之前购买 DS15_v2 了3年版的第3年 RI 的客户 (，在完成了3年的 RIs 后，停用了 D/DS15i_v2)  |
 
 ## <a name="next-steps"></a>后续步骤
 

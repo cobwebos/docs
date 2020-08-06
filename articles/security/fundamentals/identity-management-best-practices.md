@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 852a8c8eb7e6a87739c58967eefd6c18e996b225
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b354fda4d23d13b8defed4381335ab147bbece5d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367395"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835895"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
@@ -195,7 +195,7 @@ ms.locfileid: "87367395"
 
 ## <a name="use-role-based-access-control"></a>使用基于角色的访问控制
 
-对于任何使用云的组织而言，云资源的访问管理至关重要。 [基于角色的访问控制 (RBAC)](/azure/role-based-access-control/overview) 有助于管理谁有权访问 Azure 资源、这些人可以对这些资源执行哪些操作，以及他们有权访问哪些区域。
+对于任何使用云的组织而言，云资源的访问管理至关重要。 Azure [RBAC) 的基于角色的访问控制 (](/azure/role-based-access-control/overview)可帮助你管理有权访问 Azure 资源的人员、他们可以对这些资源执行哪些操作以及他们有权访问哪些区域。
 
 在 Azure 中指定负责特定职能的组或各个角色有助于避免混乱，这些混乱可能会导致造成安全风险的人为错误和自动化错误。 对于想要实施数据访问安全策略的组织而言，必须根据[需要知道](https://en.wikipedia.org/wiki/Need_to_know)和[最低权限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)安全策略限制访问权限。
 

@@ -3,12 +3,12 @@ title: 对访问 Azure 服务总线实体的应用程序进行身份验证
 description: 本文介绍如何对使用 Azure Active Directory 访问 Azure 服务总线实体（队列、主题等）的应用程序进行身份验证
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: a22645e7442641c00de0b1e7e501b02944d6b1ad
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f5142e59e1711d9bf63a7badc2d0947fd86f49f4
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532469"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835963"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>使用 Azure Active Directory 对应用程序进行身份验证和授权，使之能够访问 Azure 服务总线实体
 Azure 服务总线支持使用 Azure Active Directory (Azure AD) 授权对服务总线实体（队列、主题、订阅或筛选器）的请求。 可以通过 Azure AD 使用基于角色的访问控制 (RBAC) 授予对服务主体的访问权限，该服务主体可能是用户、组或应用程序服务主体。 若要详细了解角色和角色分配，请参阅[了解不同的角色](../role-based-access-control/overview.md)。
@@ -27,7 +27,7 @@ Azure 服务总线支持使用 Azure Active Directory (Azure AD) 授权对服务
 
 
 ## <a name="assigning-azure-roles-for-access-rights"></a>为访问权限分配 Azure 角色
-Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 服务总线定义一组 Azure 内置角色，其中包含用于访问服务总线实体的常用权限集，还可以定义用于访问数据的自定义角色。
+Azure Active Directory (Azure AD) 通过[AZURE RBAC (的 azure 基于角色的访问控制](../role-based-access-control/overview.md)来授予对受保护资源的访问权限。 Azure 服务总线定义一组 Azure 内置角色，其中包含用于访问服务总线实体的常用权限集，还可以定义用于访问数据的自定义角色。
 
 将 Azure 角色分配到 Azure AD 安全主体时，Azure 会向该安全主体授予对这些资源的访问权限。 访问权限可以局限到订阅、资源组或服务总线命名空间级别。 Azure AD 安全主体可以是用户、组、应用程序服务主体，也可以是 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
@@ -150,7 +150,7 @@ Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../
 
 
 ## <a name="next-steps"></a>后续步骤
-- 若要了解有关 RBAC 的详细信息，请参阅[什么是 azure 基于角色的访问控制（AZURE RBAC）](../role-based-access-control/overview.md)？
+- 若要了解有关 RBAC 的详细信息，请参阅[什么是 AZURE RBAC)  (azure 基于角色的访问控制](../role-based-access-control/overview.md)？
 - 若要了解如何分配和管理 Azure PowerShell、Azure CLI 或 REST API 的 Azure 角色分配，请参阅以下文章：
     - [使用 Azure PowerShell 管理基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-powershell.md)  
     - [使用 Azure CLI 管理基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-cli.md)

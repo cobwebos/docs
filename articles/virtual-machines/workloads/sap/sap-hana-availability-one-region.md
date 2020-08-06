@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27b6e2e3cedcc8eca84644562639e0436e48245d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 58ea65e53f4a1262b448a3abd08807113d016fcb
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035853"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833311"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>一个 Azure 区域内的 SAP HANA 可用性
 本文介绍一个 Azure 区域内的多种可用性场景。 Azure 已在许多区域上市，这些区域分散在世界各地。 有关 Azure 区域的列表，请查阅 [Azure 区域](https://azure.microsoft.com/regions/)。 Microsoft 将 SAP HANA 部署在一个 Azure 区域内的 VM 上，可以提供包含一个 HANA 实例的单一 VM 部署。 为了提高可用性，可将包含两个 HANA 实例的两个 VM 部署在一个 [Azure 可用性集](../../windows/tutorial-availability-sets.md)中，并使用 HANA 系统复制来实现可用性。 
@@ -82,7 +82,7 @@ SAP HANA 横向扩展配置的高可用性依赖于 Azure VM 的服务修复，�
 
 此设置并不是很适合用于实现优异的恢复点目标 (RPO) 和恢复时间目标 (RTO)。 RTO 甚至会受到损害，因为需要使用复制的备份来完全还原整个数据库。 但是，在主要实例上意外删除数据后，可以使用此设置进行恢复。 使用这种设置，随时可以还原到特定的时间点、提取数据，并将删除的数据导入主要实例。 因此，结合其他高可用性功能使用这种备份复制方法会很有帮助。 
 
-在复制备份期间，可以使用一个比运行 SAP HANA 实例的主要 VM 更小的 VM。 请注意，在较小的 VM 上只能附加更少的 VHD。 有关各种 VM 类型的限制信息，请参阅 [Azure 中 Linux 虚拟机的大小](../../linux/sizes.md)。
+在复制备份期间，可以使用一个比运行 SAP HANA 实例的主要 VM 更小的 VM。 请注意，在较小的 VM 上只能附加更少的 VHD。 有关各种 VM 类型的限制信息，请参阅 [Azure 中 Linux 虚拟机的大小](../../sizes.md)。
 
 ### <a name="sap-hana-system-replication-without-automatic-failover"></a>在不使用自动故障转移的情况下执行 SAP HANA 系统复制
 

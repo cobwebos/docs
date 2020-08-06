@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: d8ac2a8317343b1bc172eefa17c6eb0074c5c21f
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 81bfde964fa993b69bc464214dab0810a8f2bfe5
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432627"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832580"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列可突增虚拟机大小
 
@@ -88,9 +88,9 @@ B16 特征：
 
 <sup>1</sup> 累积的积分/在一小时中使用的积分等于：`((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes`。  
 
-对于具有16个个 vcpu 和 64 GiB 内存的 D16s_v3，每小时费率为 $0.936/小时（每月 $673.92），对于 B16ms 为16个 vcpu，64 GiB 内存为每小时 $0.794 （每月 $547.86）。 <b>这会节省15% 的费用！</b>
+对于具有16个个 vcpu 和 64 GiB 内存的 D16s_v3，每小时费率为 $0.936 个小时 (每月 $673.92) ; 对于带有16个 vcpu 和 64 GiB 内存的 B16ms，速度为每小时 $0.794 (每小时 $547.86 月) 。 <b>这会节省15% 的费用！</b>
 
-## <a name="q--a"></a>问与答
+## <a name="q--a"></a>问题解答
 
 ### <a name="q-what-happens-if-the-credits-run-out"></a>问：如果信用不足，会发生什么情况？
 **答**：当信用额度用完时，VM 会恢复到基准性能。
@@ -149,7 +149,7 @@ B16 特征：
 
 定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
 
-有关磁盘类型的详细信息：[磁盘类型](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+有关磁盘类型的详细信息：[磁盘类型](./linux/disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>后续步骤
 

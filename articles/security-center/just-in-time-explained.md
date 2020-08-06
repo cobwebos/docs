@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: dfdb717a27af8dc7f3186ac7afdff4d1eb3d79f5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 9c77ed2bf0d764fbbbe24770cc70b3fbeec7f678
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420832"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833447"
 ---
-# <a name="understanding-just-in-time-jit-vm-access"></a>了解实时（JIT） VM 访问
+# <a name="understanding-just-in-time-jit-vm-access"></a>了解实时 (JIT) VM 访问
 
-本页介绍 Azure 安全中心的实时（JIT） VM 访问功能和建议背后的逻辑的原理。
+本页介绍 Azure 安全中心的实时 (JIT) VM 访问功能和建议背后的逻辑的原则。
 
-若要了解如何使用 Azure 门户（安全中心或 Azure 虚拟机）或以编程方式将 JIT 应用于 Vm，请参阅[如何使用 JIT 保护管理端口](security-center-just-in-time.md)。
+若要了解如何使用 Azure 门户 (安全中心或 Azure 虚拟机) 或以编程方式将 JIT 应用于 Vm，请参阅[如何使用 JIT 保护管理端口](security-center-just-in-time.md)。
 
 
 ## <a name="the-risk-of-open-management-ports-on-a-virtual-machine"></a>在虚拟机上打开管理端口的风险
@@ -40,11 +40,11 @@ ms.locfileid: "87420832"
 
 ## <a name="how-jit-operates-with-network-security-groups-and-azure-firewall"></a>JIT 如何与网络安全组和 Azure 防火墙一起操作
 
-启用实时 VM 访问时，可以选择要阻止入站流量的 VM 上的端口。 安全中心针对[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)（NSG）中的选定端口和[Azure 防火墙规则](https://docs.microsoft.com/azure/firewall/rule-processing)确保 "拒绝所有入站流量" 规则。 这些规则限制对 Azure Vm 管理端口的访问，并防止其受到攻击。 
+启用实时 VM 访问时，可以选择要阻止入站流量的 VM 上的端口。 安全中心为[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)中的所选端口确保 "拒绝所有入站流量" 规则 (NSG) 和[Azure 防火墙规则](https://docs.microsoft.com/azure/firewall/rule-processing)。 这些规则限制对 Azure Vm 管理端口的访问，并防止其受到攻击。 
 
 如果所选端口的其他规则已经存在，则这些现有规则优先于新的 "拒绝所有入站流量" 规则。 如果所选端口上没有现有规则，则新规则将在 NSG 和 Azure 防火墙中取得最高优先级。
 
-当用户请求访问 VM 时，安全中心会检查用户是否具有该 VM 的[基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) 权限。 如果批准了请求，安全中心会将 Nsg 和 Azure 防火墙配置为允许从相关 IP 地址（或范围）到所选端口的入站流量。 在该时间到期后，安全中心会将 NSG 还原为以前的状态。 已建立的连接不会中断。
+当用户请求访问 VM 时，安全中心会检查用户是否具有[azure 基于角色的访问控制 (AZURE RBAC) ](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)该 vm 的权限。 如果批准了请求，则安全中心会将 Nsg 和 Azure 防火墙配置为允许从相关 IP 地址 (或范围) （指定的时间）向所选端口发送入站流量。 在该时间到期后，安全中心会将 NSG 还原为以前的状态。 已建立的连接不会中断。
 
 > [!NOTE]
 > JIT 不支持由[Azure 防火墙管理器](https://docs.microsoft.com/azure/firewall-manager/overview)控制的 azure 防火墙所保护的虚拟机。
@@ -56,11 +56,11 @@ ms.locfileid: "87420832"
 
 下图显示了在决定如何分类受支持的 Vm 时，安全中心适用的逻辑： 
 
-[![实时（JIT）虚拟机（VM）逻辑流](media/just-in-time-explained/jit-logic-flow.png)](media/just-in-time-explained/jit-logic-flow.png#lightbox)
+[![实时 (JIT) 虚拟机 (VM) 逻辑流](media/just-in-time-explained/jit-logic-flow.png)](media/just-in-time-explained/jit-logic-flow.png#lightbox)
 
 当安全中心发现可以利用 JIT 的计算机时，它会将该计算机添加到建议的不**正常资源**选项卡。 
 
-![实时（JIT）虚拟机（VM）访问建议](./media/just-in-time-explained/unhealthy-resources.png)
+![实时 (JIT) 虚拟机 (VM) 访问建议](./media/just-in-time-explained/unhealthy-resources.png)
 
 
 ## <a name="faq---questions-about-just-in-time-virtual-machine-access"></a>常见问题解答-有关实时虚拟机访问的问题
@@ -85,7 +85,7 @@ ms.locfileid: "87420832"
 
 ## <a name="next-steps"></a>后续步骤
 
-此页说明了应使用实时（JIT）虚拟机（VM）访问的_原因_。 
+此页说明了_为何_应使用实时 (JIT) 虚拟机 (VM) 访问。 
 
 转到操作指南文章，了解如何启用 JIT 并请求访问启用 JIT 的 Vm：
 

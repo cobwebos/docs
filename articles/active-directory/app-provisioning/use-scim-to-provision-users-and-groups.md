@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a8138f125c55e3b2d76cb680ea48366c5a3e05fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 38973e5484ece0b47e2f81ad78c716b5ee49cead
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051516"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829690"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>使用 Azure AD 生成 SCIM 终结点并配置用户预配
 
@@ -745,7 +745,7 @@ TLS 1.2 密码套件最低标准：
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP 范围
-Azure AD 预配服务当前可以在任何 Azure IP 范围下运行。 正在进行工作以合并服务操作的 IP 范围集。 合并 IP 范围列表后，将更新此文档。 
+Azure AD 预配服务当前在 AzureActiveDirectory 和 AzureActiveDirectoryDomainServices 的 IP 范围下运行[，如下所示。](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all) 正在进行的工作只需合并到 AzureActiveDirectory 下的 IP 范围。 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>步骤 3：生成 SCIM 终结点
 
@@ -918,7 +918,7 @@ https://docs.microsoft.com/aspnet/core/fundamentals/environments)
 Azure Active Directory `externalId` 在 Azure AD 中查询其属性值与用户的 mailNickname 属性值相匹配的用户的服务。 查询以类似此例的超文本传输协议 (HTTP) 请求形式表示，其中，jyoung 是 Azure Active Directory 中某个用户的 mailNickname 示例。
 
 >[!NOTE]
-> 这只是一个示例。 并非所有用户都具有 mailNickname 属性，并且该用户具有的值可能不是目录中的唯一值。 此外，用于匹配的属性（在本例中为 `externalId` ）可在[Azure AD 属性映射](customize-application-attributes.md)中进行配置。
+> 这只是一个示例。 并非所有用户都具有 mailNickname 属性，并且该用户具有的值可能不是目录中的唯一值。 此外，用于匹配的属性 (在此情况下 `externalId`) 可在[Azure AD 属性映射](customize-application-attributes.md)中进行配置。
 
 ```
 GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1

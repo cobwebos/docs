@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3301667c0ee6ad739b6fb734c2cea3aef4889bd9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 15838e1e9acf328a0deaa981d1227c22c08dbbdf
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051834"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832257"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署
 
@@ -359,9 +359,9 @@ Windows 和 Oracle Linux 是 Oracle 和 Azure 上的 SAP 唯一支持的操作�
 
 Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文件。 有关详细信息，请参阅：
 
-- [Microsoft Azure 文件服务简介](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+- [Microsoft Azure 文件服务简介](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
-- [将连接保存到 Microsoft Azure 文件中](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+- [将连接保存到 Microsoft Azure 文件中](/archive/blogs/windowsazurestorage/persisting-connections-to-microsoft-azure-files)
 
 
 如果使用基于 Azure 页 Blob 存储或托管磁盘的磁盘时，[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中的表述也适用于利用 Oracle Database 进行的部署。
@@ -450,9 +450,9 @@ Azure 上的 Oracle Database 文件支持 ext4、xfs 或 Oracle ASM 的文件系
 
 Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文件。 有关详细信息，请参阅以下主题： 
 
-- [Microsoft Azure 文件服务简介](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+- [Microsoft Azure 文件服务简介](/archive/blogs/windowsazurestorage/introducing-microsoft-azure-file-service)
 
-- [将连接保存到 Microsoft Azure 文件中](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+- [将连接保存到 Microsoft Azure 文件中](/archive/blogs/windowsazurestorage/persisting-connections-to-microsoft-azure-files)
 
 如果使用基于 Azure 页 Blob 存储或托管磁盘的磁盘，[适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署的注意事项](dbms_guide_general.md)中的表述也适用于利用 Oracle Database 进行的部署。
 

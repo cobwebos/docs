@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: cynthn
-ms.openlocfilehash: 31755ea096724ffd314d970b2119f0d5ed31bf03
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 71bffacb3f865ffe487ebdd4bee0c0c229be332d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87268418"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830319"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>有关 Linux 虚拟机的常见问题
 本文讨论有关在 Azure 中使用 Resource Manager 部署模型创建的 Linux 虚拟机的一些常见问题。 有关本主题的 Windows 版本，请参阅[有关 Windows 虚拟机的常见问题](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -21,7 +21,7 @@ ms.locfileid: "87268418"
 所有订户都可以在 Azure 虚拟机上运行服务器软件。 有关详细信息，请参阅 [Azure 认可的分发版本中的 Linux](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>使用虚拟机时，我可以使用多少存储？
-每个数据磁盘的容量高达 32,767 GiB。 可以使用的数据磁盘数取决于虚拟机大小。 有关详细信息，请参阅[虚拟机大小](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+每个数据磁盘的容量高达 32,767 GiB。 可以使用的数据磁盘数取决于虚拟机大小。 有关详细信息，请参阅[虚拟机大小](../sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 Azure 托管磁盘是推荐用于 Azure 虚拟机的磁盘存储产品，方便永久存储数据。 可对每个虚拟机使用多个托管磁盘。 托管磁盘提供两种类型的持久存储选项：高级和标准托管磁盘。 有关定价信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks)。
 
@@ -30,7 +30,7 @@ Azure 存储帐户还可为操作系统磁盘和任何数据磁盘提供存储�
 ## <a name="how-can-i-access-my-virtual-machine"></a>如何访问我的虚拟机？
 使用安全外壳 (SSH) 建立远程连接，以登录到虚拟机。 请参阅如何[从 Windows](ssh-from-windows.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 或[从 Linux 和 Mac](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 进行连接的相关说明。 默认情况下，SSH 允许的并发连接最多为 10 个。 通过编辑配置文件，可以增加此数量。
 
-如果遇到问题，请查看[安全外壳（SSH）连接故障排除](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)。
+如果遇到问题，请查看[安全外壳 (SSH) 连接的疑难解答](../troubleshooting/troubleshoot-ssh-connection.md?toc=/azure/virtual-machines/linux/toc.json)。
 
 ## <a name="can-i-use-the-temporary-disk-devsdb1-to-store-data"></a>我是否可以使用临时磁盘 (/dev/sdb1) 存储数据？
 不要使用临时磁盘 (/dev/sdb1) 存储数据。 它只是用于临时存储。 有丢失无法恢复的数据的风险。
@@ -97,7 +97,7 @@ Azure 存储帐户还可为操作系统磁盘和任何数据磁盘提供存储�
  - 门户 - 12 到 72 个字符之间
  - PowerShell - 8 到 123 个字符之间
  - CLI-介于 12-123 个字符之间
- - 不允许使用 Azure 资源管理器（ARM）模板-不允许使用 12-72 字符和控制字符
+ - Azure 资源管理器 (ARM) 模板-不允许使用 12-72 字符和控制字符
  
 
 密码还必须满足以下 4 个复杂性要求中的 3 个要求：

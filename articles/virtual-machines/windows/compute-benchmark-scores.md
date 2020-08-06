@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: 019c627743c344fc0f07c8954ebdfdf2eca0437b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ccaf44f733958bff461e954c78196f7376a59771
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87267041"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836201"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM 的计算基准测试分数
 以下 SPECInt 基准测试分数显示运行 Windows Server 的特定 Azure VM 的计算性能。 此外，还提供了 [Linux VM](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 的计算基准测试分数。
@@ -363,10 +363,10 @@ ms.locfileid: "87267041"
 
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
-| Standard_NC6 | 6 | 1 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 27 | 209.6 | 4.4 | 
-| Standard_NC12 | 12 | 1 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 28 | 394.4 | 3.8 | 
-| Standard_NC24 | 24 | 2 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 28 | 751.7 | 3.5 | 
-| Standard_NC24r | 24 | 2 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 27 | 752.9 | 3.4 | 
+| Standard_NC6 | 6 | 1 | Intel (R) 强 (R) CPU E5-2690 v3 @ 2.60 GHz | 27 | 209.6 | 4.4 | 
+| Standard_NC12 | 12 | 1 | Intel (R) 强 (R) CPU E5-2690 v3 @ 2.60 GHz | 28 | 394.4 | 3.8 | 
+| Standard_NC24 | 24 | 2 | Intel (R) 强 (R) CPU E5-2690 v3 @ 2.60 GHz | 28 | 751.7 | 3.5 | 
+| Standard_NC24r | 24 | 2 | Intel (R) 强 (R) CPU E5-2690 v3 @ 2.60 GHz | 27 | 752.9 | 3.4 | 
 
 ## <a name="nds--gpu-enabled"></a>已启用 NDs-GPU
 
@@ -381,13 +381,12 @@ ms.locfileid: "87267041"
 
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 | 
 | ---- | ----: | ---------: | --- | ---: | ------------: | -----: | 
-| Standard_NV6 | 6 | 1 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 28 | 210.5 | 6.1 | 
-| Standard_NV12 | 12 | 1 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 28 | 394.5 | 2.3 | 
-| Standard_NV24 | 24 | 2 | Intel （R）强® CPU E5-2690 v3 @ 2.60 GHz | 26 | 752.2 | 4.4 | 
+| Standard_NV6 | 6 | 1 | Intel (R) 强 (R) CPU E5-2690 v3 @ 2.60 GHz | 28 | 210.5 | 6.1 | 
+| Standard_NV12 | 12 | 1 | Intel (R) 强 (R) CPU E5-2690 v3 @ 2.60 GHz | 28 | 394.5 | 2.3 | 
+| Standard_NV24 | 24 | 2 | Intel (R) 强 (R) CPU E5-2690 v3 @ 2.60 GHz | 26 | 752.2 | 4.4 | 
 
 ## <a name="about-specint"></a>关于 SPECint
 Windows 分数是通过在 Windows Server 上运行 [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) 计算得出的。 SPECint 是使用基本速率选项 (SPECint_rate2006) 运行的，每个 vCPU 一个副本。 SPECint 包括 12 项单独的测试，每项测试运行三次，取每次测试的中间值并为值加权，形成综合分数。 然后跨多个 VM 运行这些测试，提供所示的平均分。
 
 ## <a name="next-steps"></a>后续步骤
-* 有关存储容量、磁盘详细信息以及选择 VM 大小的注意事项，请参阅 [Sizes for virtual machines](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（虚拟机的大小）。
-
+* 有关存储容量、磁盘详细信息以及选择 VM 大小的注意事项，请参阅 [Sizes for virtual machines](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（虚拟机的大小）。

@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 46ea77b26bb0c31a10cfac11c389ea5a21a8f4ac
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a3870ae192955df11107f0ebb5c618b90a0cc799
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87502523"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833243"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mariadb-server-using-powershell"></a>如何使用 PowerShell 来备份和还原 Azure Database for MariaDB 服务器
 
@@ -88,7 +88,7 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 
 还原过程完成后，找到新服务器，验证数据是否已按预期还原。 新服务器具有相同的服务器管理员登录名和密码，该登录名和密码在开始还原时对现有服务器有效。 可以从新服务器的“概述”页更改密码。
 
-还原期间创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 必须单独为新服务器设置这些规则。 将还原原始服务器中的防火墙规则。
+还原期间创建的新服务器没有原始服务器上存在的 VNet 服务终结点。 必须单独为新服务器设置这些规则。 将从原始服务器还原防火墙规则。
 
 ## <a name="geo-restore"></a>异地还原
 
@@ -133,4 +133,4 @@ Get-AzMariaDbServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用 PowerShell 自定义 Azure Database for MariaDB 服务器参数](howto-configure-server-parameters-using-powershell.md)
+> [如何使用 PowerShell 生成 Azure Database for MariaDB 连接字符串](howto-connection-string-powershell.md)

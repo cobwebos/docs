@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 132e547fe2512676e4d8082744489f4719dcc0bf
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 2f1db4e6c45602fb7fde84079e8ef78179a4ec6b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543599"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830336"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览版：创建 Azure 映像生成器模板 
 
@@ -87,7 +87,7 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-映像生成器默认不会更改映像的大小，它会使用源映像中的大小。 **只能**增加操作系统磁盘的大小（Win 和 Linux），这是可选的，值为0表示保留与源映像相同的大小。 不能将 OS 磁盘大小减少到小于源映像的大小。
+映像生成器默认不会更改映像的大小，它会使用源映像中的大小。 你**只能**增加操作系统磁盘的大小 (Win 和 Linux) ，这是可选的，值为0表示保留与源映像相同的大小。 不能将 OS 磁盘大小减少到小于源映像的大小。
 
 ```json
  {
@@ -116,7 +116,7 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
     "dependsOn": [],
 ```
 
-有关详细信息，请参阅[定义资源依赖关系](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies#dependson)。
+有关详细信息，请参阅[定义资源依赖关系](../../azure-resource-manager/templates/define-resource-dependency.md#dependson)。
 
 ## <a name="identity"></a>标识
 
@@ -137,8 +137,8 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 * 仅支持单个标识
 * 不支持自定义域名
 
-有关详细信息，请参阅[什么是 Azure 资源的托管标识？](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
-若要详细了解如何部署此功能，请参阅[使用 Azure CLI 在 Azure VM 上配置 Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm#user-assigned-managed-identity)。
+有关详细信息，请参阅[什么是 Azure 资源的托管标识？](../../active-directory/managed-identities-azure-resources/overview.md)。
+若要详细了解如何部署此功能，请参阅[使用 Azure CLI 在 Azure VM 上配置 Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity)。
 
 ## <a name="properties-source"></a>属性：source
 
@@ -151,10 +151,10 @@ API 需要通过一个“SourceType”来定义用于生成映像的源，目前
 
 
 > [!NOTE]
-> 使用现有的 Windows 自定义映像时，可在单个 Windows 映像上运行 Sysprep 命令最多8次，有关详细信息，请参阅[Sysprep](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)文档。
+> 使用现有的 Windows 自定义映像时，可在单个 Windows 映像上运行 Sysprep 命令最多8次，有关详细信息，请参阅[Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)文档。
 
 ### <a name="platformimage-source"></a>PlatformImage 源 
-Azure 映像生成器支持 Windows Server 和客户端以及 Linux Azure 市场映像。有关完整列表，请参阅[此文](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support)。 
+Azure 映像生成器支持 Windows Server 和客户端以及 Linux Azure 市场映像。有关完整列表，请参阅[此文](../windows/image-builder-overview.md#os-support)。 
 
 ```json
         "source": {
@@ -373,7 +373,7 @@ Customize 属性：
 - **validExitCodes** - 可从脚本/内联命令返回的可选有效代码，可避免脚本/内联命令报告失败。
 - **runElevated** - 可选布尔值，支持使用提升的权限运行命令和脚本。
 - **sha256Checksum** - 文件的 sha256 校验和的值。你将在本地生成此校验和，然后，映像生成器会对其进行验证。
-    * 若要生成 sha256Checksum，请使用 Windows 上的 PowerShell [Get-Hash](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6)
+    * 若要生成 sha256Checksum，请使用 Windows 上的 PowerShell [Get-Hash](/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6)
 
 
 ### <a name="file-customizer"></a>File 定制器
@@ -567,7 +567,7 @@ Azure 共享映像库是一个新的映像管理服务，可用于管理映像�
 - 映像定义 - 映像的概念分组。 
 - 映像版本 - 这是用于部署 VM 或规模集的映像类型。 可将映像版本复制到需要部署 VM 的其他区域。
  
-必须先创建库和映像定义，然后才能分发到映像库，详见[共享映像](shared-images.md)。 
+必须先创建库和映像定义，然后才能分发到映像库，详见[共享映像](../shared-images-cli.md)。 
 
 ```json
 {
@@ -595,8 +595,8 @@ Azure 共享映像库是一个新的映像管理服务，可用于管理映像�
 - **runOutputName** - 用于标识分发的唯一名称。  
 - **artifactTags** -（可选）用户指定的键值对标记。
 - **replicationRegions** - 用于复制的区域数组。 必须有一个区域是部署库的区域。 添加区域意味着生成时间增加，因为在完成复制之前，生成不会完成。
-- **excludeFromLatest** （可选）此选项可让你将所创建的映像版本标记为 SIG 定义中的最新版本，默认值为 "false"。
-- **storageAccountType** （可选） AIB 支持为要创建的映像版本指定以下类型的存储：
+- **excludeFromLatest** (可选) 这使你可以将所创建的映像版本标记为 SIG 定义中的最新版本，默认值为 "false"。
+- **storageAccountType** (可选) AIB 支持为要创建的映像版本指定以下类型的存储：
     * "Standard_LRS"
     * "Standard_ZRS"
 

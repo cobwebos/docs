@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: cdcc26a8a22e9a1dc7af75667cdb33bb044c7858
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fcbcb89505130dddb42d97c153b172a22a9b29b2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288585"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831475"
 ---
 # <a name="av2-series"></a>Av2 系列
 
@@ -29,7 +29,7 @@ ACU：100
 内存保留更新：支持
 
 
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大数据磁盘数/吞吐量：IOPS | 最大 NIC 数 | 预期网络带宽（Mbps）
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大数据磁盘数/吞吐量：IOPS | 最大 NIC 数 | 预期网络带宽 (Mbps) 
 |---|---|---|---|---|---|---|---|
 | Standard_A1_v2  | 1 | 2  | 10 | 1000/20/10  | 2/2x500   | 2 | 250  |
 | Standard_A2_v2  | 2 | 4  | 20 | 2000/40/20  | 4/4x500   | 2 | 500  |
@@ -52,7 +52,7 @@ ACU：100
 
 定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
 
-有关磁盘类型的详细信息：[磁盘类型](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+有关磁盘类型的详细信息：[磁盘类型](./linux/disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>后续步骤
 

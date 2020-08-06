@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解如何排查和解决在启用和使用 Azure Dev Spaces 时遇到的常见问题
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: cd242dc56e4a3215954fbe6703f47e29bd417ea8
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 1efaa178c2abda316cfad3e375dfdd38b41d75e0
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534390"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835691"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 故障排除
 
@@ -267,7 +267,7 @@ Service cannot be started.
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>连接开发计算机时，网络流量不转发到 AKS 群集
 
-在使用 [Azure Dev Spaces 将 AKS 群集连接到开发计算机](how-to/local-process-kubernetes-vs-code.md)时，可能会遇到下面这样的问题：网络流量没有在开发计算机与 AKS 群集之间进行转发。
+在使用 [Azure Dev Spaces 将 AKS 群集连接到开发计算机](https://code.visualstudio.com/docs/containers/local-process-kubernetes)时，可能会遇到下面这样的问题：网络流量没有在开发计算机与 AKS 群集之间进行转发。
 
 将开发计算机连接到 AKS 群集时，Azure Dev Spaces 通过修改开发计算机的 `hosts` 文件，在 AKS 群集与开发计算机之间转发网络流量。 Azure Dev Spaces 在 `hosts` 中创建一个条目，其中包含要替换的 Kubernetes 服务的地址作为主机名。 此条目与端口转发结合使用，以在开发计算机与 AKS 群集之间定向网络流量。 如果开发计算机上的服务与要替换的 Kubernetes 服务的端口发生冲突，Azure Dev Spaces 就无法转发 Kubernetes 服务的网络流量。 例如，Windows BranchCache 服务通常绑定到 0.0.0.0:80，这会导致所有本地 IP 上的端口 80 发生冲突。
 

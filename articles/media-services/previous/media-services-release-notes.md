@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: b360e58c9349bf98e8c89fcb75a46eedea1bb8fe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5348b4cfb1961bdada7c32f3c437cdb2819ef6d0
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87000493"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833022"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 
@@ -52,11 +52,11 @@ ms.locfileid: "87000493"
 
 ## <a name="september-2019"></a>2019 年 9 月
 
-### <a name="deprecation-of-media-processors"></a>弃用媒体处理器
+### <a name="deprecation-of-media-processors"></a>停用媒体处理器
 
 我们宣布停用 Azure Media Indexer 和 Azure Media Indexer 2 预览版 。 [Azure 媒体服务视频索引器](../video-indexer/index.yml)取代了这些旧版媒体处理器。
 
-有关停用日期，请参阅此[旧组件](legacy-components.md)主题。
+有关停用日期，请参阅此[旧版组件](legacy-components.md)主题。
 
 另请参阅[从 Azure Media Indexer 和 Azure Media Indexer 2 迁移到 Azure 媒体服务视频索引器](migrate-indexer-v1-v2.md)。
 
@@ -255,13 +255,13 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 ## <a name="august-2015-release"></a><a id="august_changes_15"></a>2015 年 8 月版本
 * 现已推出用于 Java 0.8.0 版的媒体服务 SDK 和新示例。 有关详细信息，请参阅：
     
-* 已更新 Azure Media Player，现支持多音频流。 有关详细信息，请参阅 [此博客文章](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/)。
+* 已更新 Azure Media Player，现支持多音频流。 有关详细信息，请参阅[此博客文章](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/)。
 
 ## <a name="july-2015-release"></a><a id="july_changes_15"></a>2015 年 7 月版本
-* 宣布了 Media Encoder Standard 公开上市。 有关详细信息，请参阅 [此博客文章](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)。
+* 宣布了 Media Encoder Standard 公开上市。 有关详细信息，请参阅[此博客文章](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)。
   
     Media Encoder Standard 使用[本节](https://go.microsoft.com/fwlink/?LinkId=618336)所述的预设值。 使用 4k 编码预设时，请获取高级预留单位类型。 有关详细信息，请参阅[缩放编码](media-services-scale-media-processing-overview.md)。
-* 媒体服务和 Media Player 中采用了直播实时字幕。 有关详细信息，请参阅 [此博客文章](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/)。
+* 媒体服务和 Media Player 中采用了直播实时字幕。 有关详细信息，请参阅[此博客文章](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/)。
 
 ### <a name="media-services-net-sdk-updates"></a>媒体服务 .NET SDK 更新
 媒体服务 .NET SDK 当前版本为 3.4.0.0。 进行了以下更新： 
@@ -462,13 +462,13 @@ TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
 
 * Get-AzureMediaServices 
 
-    例如：`Get-AzureMediaServicesAccount`
+    例如： `Get-AzureMediaServicesAccount`
 * New-AzureMediaServicesAccount 
   
-    例如：`New-AzureMediaServicesAccount -Name "MediaAccountName" -Location "Region" -StorageAccountName "StorageAccountName"`
+    例如： `New-AzureMediaServicesAccount -Name "MediaAccountName" -Location "Region" -StorageAccountName "StorageAccountName"`
 * New-AzureMediaServicesKey 
   
-    例如：`New-AzureMediaServicesKey -Name "MediaAccountName" -KeyType Secondary -Force`
+    例如： `New-AzureMediaServicesKey -Name "MediaAccountName" -KeyType Secondary -Force`
 * Remove-AzureMediaServicesAccount 
   
     例如： `Remove-AzureMediaServicesAccount -Name "MediaAccountName" -Force`
@@ -580,8 +580,8 @@ TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
 [Microsoft Q&A question page for Azure Media Services]: /answers/topics/azure-media-services.html
 [Azure 媒体服务 REST API 参考]: /rest/api/media/operations/azure-media-services-rest-api-reference
 [Media Services pricing details]: https://azure.microsoft.com/pricing/details/media-services/
-[输入元数据]: /azure/media-services/previous/media-services-input-metadata-schema
-[输出元数据]: /azure/media-services/previous/media-services-output-metadata-schema
+[输入元数据]: ./media-services-input-metadata-schema.md
+[输出元数据]: ./media-services-output-metadata-schema.md
 [Deliver content]: /previous-versions/azure/hh973618(v=azure.100)
 [Index media files with the Azure Media Indexer]: /previous-versions/azure/dn783455(v=azure.100)
 [StreamingEndpoint]: /rest/api/media/operations/streamingendpoint
@@ -595,7 +595,7 @@ TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
 [动态打包]: /previous-versions/azure/jj889436(v=azure.100)
 [Nick Drouin's blog]: http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/
 [Protect Smooth Streaming with PlayReady]: /previous-versions/azure/dn189154(v=azure.100)
-[适用于 .NET 的媒体服务 SDK 中的重试逻辑]: /azure/media-services/previous/media-services-retry-logic-in-dotnet-sdk
+[适用于 .NET 的媒体服务 SDK 中的重试逻辑]: ./media-services-retry-logic-in-dotnet-sdk.md
 [Grass Valley announces EDIUS 7 streaming through the cloud]: https://www.streamingmedia.com/Producer/Articles/ReadArticle.aspx?ArticleID=96351&utm_source=dlvr.it&utm_medium=twitter
 [Control Media Services Encoder output file names]: /previous-versions/azure/dn303341(v=azure.100)
 [Create overlays]: /previous-versions/azure/dn640496(v=azure.100)

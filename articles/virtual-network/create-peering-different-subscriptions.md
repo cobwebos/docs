@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
-ms.openlocfilehash: 55993162c4ea3cd5bf60a9ee9acc869cc088a9d0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 79062ae45f04b290f6e4120906b98590ce95dbe1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085123"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833260"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>创建虚拟网络对等互连 - 资源管理器、不同订阅和 Azure Active Directory 租户
 
@@ -148,7 +148,7 @@ ms.locfileid: "87085123"
           --name myVnetAToMyVnetB \
           --resource-group myResourceGroupA \
           --vnet-name myVnetA \
-          --remote-vnet-id /subscriptions/<SubscriptionB-Id>/resourceGroups/myResourceGroupB/providers/Microsoft.Network/VirtualNetworks/myVnetB \
+          --remote-vnet /subscriptions/<SubscriptionB-Id>/resourceGroups/myResourceGroupB/providers/Microsoft.Network/VirtualNetworks/myVnetB \
           --allow-vnet-access
     ```
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 8e99ebfe53763811a86c04c53381c502cb1c25a7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5af7b3373993dce1939ecd7534140e58db688579
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421070"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835572"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>存储优化虚拟机大小
 
@@ -37,4 +37,4 @@ ms.locfileid: "87421070"
 
 了解如何针对 [Windows](windows/storage-performance.md) 或 [Linux](linux/storage-performance.md) 优化 Lsv2 系列虚拟机上的性能。
 
-有关 Azure 如何命名其 Vm 的详细信息，请参阅[azure 虚拟机大小命名约定](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions)。
+有关 Azure 如何命名其 Vm 的详细信息，请参阅[azure 虚拟机大小命名约定](./vm-naming-conventions.md)。

@@ -3,12 +3,12 @@ title: 体系结构概述
 description: 概述 Azure 备份服务使用的体系结构、组件和流程。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 45e5634188b675198e0fc4c07a8a43964217f91a
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: fc57f275d7693c9cf93adf04dc5dcc7524ba0567
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532486"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835725"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 备份体系结构和组件
 
@@ -42,7 +42,7 @@ Azure 备份将备份的数据存储在恢复服务保管库中。 保管库是 
 - 使用保管库可以方便地组织备份数据，并将管理开销降至最低。
 - 在每个 Azure 订阅中，最多可以创建 500 个保管库。
 - 可以监视保管库中的已备份项，包括 Azure Vm 和本地计算机。
-- 可以使用 Azure [基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 来管理对保管库的访问。
+- 可以使用[AZURE RBAC)  (azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)来管理保管库访问权限。
 - 指定如何复制保管库中的数据以实现冗余：
   - **本地冗余存储 (LRS)** ：若要防范数据中心发生故障，可以使用 LRS。 LRS 将数据复制到存储缩放单元。 [了解详细信息](../storage/common/storage-redundancy.md)。
   - **异地冗余存储 (GRS)** ：若要防范区域范围的服务中断，可以使用 GRS。 GRS 会将数据复制到次要区域。 [了解详细信息](../storage/common/storage-redundancy.md)。
@@ -116,7 +116,7 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
   - "每周" 指的是一周中某天的备份
   - "每月" 是指每月的某一天的备份
   - "每年" 指的是一年中的某一天的备份
-- "每月"、"每年" 备份点的保留期称为长期保留（LTR）
+- "每月"、"每年" 备份点的保留期称为长期保留 (LTR) 
 - 创建保管库后，还会创建一个 "DefaultPolicy"，并将其用于备份资源。
 - 对备份策略的保留期所做的任何更改都将以追溯方式到新的恢复点。
 

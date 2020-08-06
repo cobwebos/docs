@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 7f78b5d0baff149fc687d2b4bb71d70186315def
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d00b897f41ab00f0e3c23292eeb5f431bf5c070c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543820"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835929"
 ---
 # <a name="introduction-to-azure-security"></a>Azure 安全性简介
 ## <a name="overview"></a>概述
@@ -233,11 +233,11 @@ Microsoft [Azure 应用程序网关](../../application-gateway/overview.md)以�
 
 ![应用程序网关](./media/overview/azure-security-fig2.png)
 
-它可让你通过将 CPU 密集型 TLS 终止功能卸载到应用程序网关（也称为 "TLS 卸载" 或 "TLS 桥接"）来优化 web 场工作效率。 它还提供第 7 层其他路由功能，包括传入流量的轮循机制分配、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后面托管多个网站的能力。 Azure 应用程序网关是第 7 层负载均衡器。
+它可让你通过将 CPU 密集型 TLS 终止功能卸载到应用程序网关来优化 web 场工作效率， (也称为 "TLS 卸载" 或 "TLS 桥接" ) 。 它还提供第 7 层其他路由功能，包括传入流量的轮循机制分配、基于 Cookie 的会话相关性、基于 URL 路径的路由，以及在单个应用程序网关后面托管多个网站的能力。 Azure 应用程序网关是第 7 层负载均衡器。
 
 它在不同服务器之间提供故障转移和性能路由 HTTP 请求，而不管它们是在云中还是本地。
 
-应用程序提供许多应用程序传送控制器（ADC）功能，包括 HTTP 负载均衡、基于 cookie 的会话相关性、 [TLS 卸载](../../application-gateway/tutorial-restrict-web-traffic-powershell.md)、自定义运行状况探测、多站点支持，以及许多其他功能。
+应用程序提供了许多应用程序传送控制器 (ADC) 功能，包括 HTTP 负载均衡、基于 cookie 的会话相关性、 [TLS 卸载](../../application-gateway/tutorial-restrict-web-traffic-powershell.md)、自定义运行状况探测、多站点支持，以及许多其他功能。
 
 ### <a name="web-application-firewall"></a>Web 应用程序防火墙
 Web 应用程序防火墙是 [Azure 应用程序网关](../../application-gateway/overview.md)的一项功能，它为使用应用程序网关实现标准应用程序传递控制 (ADC) 功能的 Web 应用程序提供保护。 Web 应用程序防火墙的此功能可以保护 Web 应用程序免受 OWASP 十大常见 Web 漏洞中的大部分漏洞的威胁。
@@ -301,7 +301,7 @@ Web 应用程序防火墙是 [Azure 应用程序网关](../../application-gatewa
 [Azure 备份](../../backup/backup-overview.md)是一种解决方案，无需资本投资便可保护应用程序数据，最大限度降低运营成本。 应用程序错误可能损坏数据，人为错误可能将 bug 引入应用程序，从而导致安全问题。 使用 Azure 备份可以保护运行 Windows 和 Linux 的虚拟机。
 
 ### <a name="azure-site-recovery"></a>Azure Site Recovery
-组织的[业务连续性/灾难恢复（BCDR）](../../best-practices-availability-paired-regions.md)策略的一个重要部分就是在发生计划内和计划外中断时，如何将公司工作负荷和应用程序启动并运行。 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) 可帮助协调工作负荷和应用的复制、故障转移及恢复，因此能够在主要位置发生故障时通过辅助位置来提供工作负荷和应用。
+组织的[业务连续性/灾难恢复 (BCDR) ](../../best-practices-availability-paired-regions.md)策略的一个重要部分就是在发生计划内和计划外中断时，如何将公司工作负荷和应用程序启动并运行。 [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) 可帮助协调工作负荷和应用的复制、故障转移及恢复，因此能够在主要位置发生故障时通过辅助位置来提供工作负荷和应用。
 
 ### <a name="sql-vm-tde"></a>SQL VM TDE
 SQL Server 加密功能包括[透明数据加密 (TDE)](../../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault.md)和列级加密 (CLE)。 这种加密形式要求客户管理和存储用于加密的加密密钥。
@@ -336,7 +336,7 @@ Microsoft 在其产品和服务中使用多种安全实践和技术来管理标�
 
 -   [基于令牌的身份验证](https://azure.microsoft.com/documentation/articles/active-directory-authentication-scenarios/)启用通过 Azure Active Directory 进行身份验证。
 
--   [基于角色的访问控制 (RBAC)](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/) 能够根据用户分配的角色来授予访问权限，从而轻松为用户仅提供执行作业所需的访问量。 可以根据组织的业务模型和风险允许范围自定义 RBAC。
+-   使用 azure [RBAC)  (azure 基于角色的访问控制](https://azure.microsoft.com/documentation/articles/role-based-access-built-in-roles/)，你可以根据用户的已分配角色授予访问权限，这样就可以轻松地仅向用户提供执行作业职责所需的访问量。 可以根据组织的业务模型和风险允许范围自定义 RBAC。
 
 -   [集成标识管理（混合标识）](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/)能够保持对用户在内部数据中心和云平台中的访问控制，并为所有资源的身份验证和授权创建单个用户标识。
 

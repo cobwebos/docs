@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/22/2020
 ms.author: mimckitt
 ms.custom: sttsinar
-ms.openlocfilehash: 3af4387723f74c1e09597564bc5330183fe1df69
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: a49d1cc47515e698737bf833af09d30da16712a6
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439451"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832319"
 ---
 # <a name="azure-virtual-machine-sizes-naming-conventions"></a>Azure 虚拟机大小命名约定
 
@@ -25,13 +25,12 @@ ms.locfileid: "87439451"
 
 |值 | 说明|
 |---|---|
-| Standard、Basic 或实验 | "标准" 是分配给所有 GA VM 大小的默认值 | 
 | 系列 | 指示 VM 系列系列| 
 | * 子系列 | 仅用于专用 VM differentiations|
 | 个 vcpu 数| 表示 VM 的个 vcpu 数 |
-| 附加功能 | 一个或多个小写字母表示附加功能，例如： <br> a = 基于 AMD 的处理器 <br> d = 磁盘（本地临时磁盘存在）;这适用于较新的 Azure Vm，请参阅[Ddv4 和 Ddsv4 系列](./ddv4-ddsv4-series.md) <br> h = 支持休眠 <br> i = 隔离大小 <br> l = 内存不足;内存量要低于内存密集型大小 <br> m = 占用大量内存;特定大小的最大内存量 <br> t = 小内存;特定大小的最小内存量 <br> r = 支持 RDMA <br> s = 支持高级存储，包括[超级 SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk)的可能使用情况（注意：没有属性的一些较新大小仍可支持高级存储，例如 M128、m64-16ms 等）<br> |
+| 附加功能 | 一个或多个小写字母表示附加功能，例如： <br> a = 基于 AMD 的处理器 <br> d =)  (本地临时磁盘的磁盘;这适用于较新的 Azure Vm，请参阅[Ddv4 和 Ddsv4 系列](./ddv4-ddsv4-series.md) <br> h = 支持休眠 <br> i = 隔离大小 <br> l = 内存不足;内存量要低于内存密集型大小 <br> m = 占用大量内存;特定大小的最大内存量 <br> t = 小内存;特定大小的最小内存量 <br> r = 支持 RDMA <br> s = 支持高级存储，包括[超级 SSD](./windows/disks-types.md#ultra-disk) (的可能使用情况。注意：没有属性的某些较新大小仍可支持高级存储，例如 M128、m64-16ms 等 ) <br> |
 | * 加速器类型 | 表示专用/GPU Sku 中的硬件加速器类型。 只有从第 3 2020 季度启动的新专用/GPU Sku 才能在名称中包含硬件加速器。 |
-| 版本 | 表示 VM 系列系列的版本 |
+| Version | 表示 VM 系列系列的版本 |
 
 ## <a name="example-breakdown"></a>示例细目
 
@@ -44,7 +43,7 @@ ms.locfileid: "87439451"
 | 系列 | M | 
 | 个 vcpu 数 | 416 |
 | 附加功能 | m = 占用大量内存 <br> s = 支持高级存储 |
-| 版本 | v2 |
+| Version | v2 |
 
 ### <a name="example-2-nv16as_v4"></a>示例2： NV16as_v4
 
@@ -54,7 +53,7 @@ ms.locfileid: "87439451"
 | 子系列 | V |
 | 个 vcpu 数 | 16 |
 | 附加功能 | a = 基于 AMD 的处理器 <br> s = 支持高级存储 |
-| 版本 | v4 |
+| Version | v4 |
 
 ### <a name="example-3-nc4as_t4_v3"></a>示例3： NC4as_T4_v3
 
@@ -65,8 +64,8 @@ ms.locfileid: "87439451"
 | 个 vcpu 数 | 4 |
 | 附加功能 | a = 基于 AMD 的处理器 <br> s = 支持高级存储 |
 | 加速器类型 | T4 |
-| 版本 | v3 |
+| Version | v3 |
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 Azure 中的可用[VM 大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)。 
+详细了解 Azure 中的可用[VM 大小](./sizes.md)。 

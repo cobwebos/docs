@@ -3,12 +3,12 @@ title: Azure Migrate 中的发现、评估和依赖项分析问题
 description: 获取有关 Azure Migrate 中的发现、评估和依赖关系分析的常见问题的解答。
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: e2aa0f5c2dae33cd995b30d84e7406da9b501e8f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 8db9103494c0006127c45c0ae5f9672d3bd2bbb1
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385715"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829877"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>发现、评估和依赖关系分析-常见问题
 
@@ -33,11 +33,11 @@ ms.locfileid: "87385715"
 
 - 若要评估本地[VMware vm](how-to-set-up-appliance-vmware.md)、 [hyper-v vm](how-to-set-up-appliance-hyper-v.md)和[物理服务器](how-to-set-up-appliance-physical.md)以迁移到 AZURE vm，请使用**Azure VM 评估**。 [了解详细信息](concepts-assessment-calculation.md)
 
-- 若要评估使用此评估类型迁移到[Azure VMware 解决方案（AVS）](../azure-vmware/introduction.md)的本地[VMware vm](how-to-set-up-appliance-vmware.md) ，请使用**Azure VMware 解决方案（avs）** 评估。 [了解详细信息](concepts-azure-vmware-solution-assessment-calculation.md)
+- 如果要评估本地[VMware vm](how-to-set-up-appliance-vmware.md)以便迁移到[Azure VMWARE 解决方案 (avs) ](../azure-vmware/introduction.md)使用此评估类型，请使用**Azure VMware 解决方案 (AVS) **评估。 [了解详细信息](concepts-azure-vmware-solution-assessment-calculation.md)
 
 - 为了同时运行这两种类型的评估，可以使用具有 VMware 计算机的公共组。 请注意，如果是首次在 Azure Migrate 中运行 AVS 评估，建议创建一组新的 VMware 计算机。
 
-## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>创建 Azure VMware 解决方案（AVS）评估时，无法看到某些组
+## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>创建 Azure VMware 解决方案时，无法看到某些组 (AVS) 评估
 
 - 可以对只有 VMware 计算机的组进行 AVS 评估。 如果要执行 AVS 评估，请从组中删除任何非 VMware 计算机。
 - 如果是首次在 Azure Migrate 中运行 AVS 评估，建议创建一组新的 VMware 计算机。
@@ -80,7 +80,7 @@ Azure Migrate 设备不断地收集有关本地环境的信息。  评估是本�
 - 基于性能的大小调整建议使用具有两个核心和 4 GB 内存的 VM SKU，因为会考虑利用率百分比。
 
 同样，磁盘大小取决于大小标准和存储类型：
-- 如果大小调整条件基于性能并且存储类型为 "自动"，则在标识目标磁盘类型（标准或高级）时，Azure Migrate 将使用该磁盘的 IOPS 和吞吐量值。
+- 如果大小调整条件基于性能并且存储类型为 "自动"，则 Azure Migrate 在 (标准或高级) 标识目标磁盘类型时，将使用该磁盘的 IOPS 和吞吐量值。
 - 如果大小调整条件基于性能并且存储类型为 "高级"，则 Azure Migrate 建议基于本地磁盘大小的高级磁盘 SKU。 当调整大小为 "本地" 并且存储类型为 "标准" 或 "高级" 时，将对磁盘大小应用相同的逻辑。
 
 ## <a name="does-performance-history-and-utilization-affect-sizing-in-an-azure-vm-assessment"></a>性能历史记录和利用率是否会影响 Azure VM 评估的大小？
@@ -113,7 +113,7 @@ Azure Migrate 设备不断地收集有关本地环境的信息。  评估是本�
 
 ## <a name="why-is-the-suggested-migration-tool-in-import-based-avs-assessment-marked-as-unknown"></a>为什么基于导入的 AVS 评估中建议的迁移工具标记为未知？
 
-对于通过 CSV 文件导入的计算机，AVS 评估中的默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMware 混合云扩展（HCX）解决方案。 [了解详细信息](../azure-vmware/hybrid-cloud-extension-installation.md)。
+对于通过 CSV 文件导入的计算机，AVS 评估中的默认迁移工具是未知的。 但对于 VMware 计算机，建议使用 VMware 混合云扩展 (HCX) 解决方案。 [了解详细信息](../azure-vmware/hybrid-cloud-extension-installation.md)。
 
 
 ## <a name="what-is-dependency-visualization"></a>什么是依赖项可视化？
@@ -129,10 +129,10 @@ Azure Migrate 设备不断地收集有关本地环境的信息。  评估是本�
 
 **要求** | **无代理** | **基于代理**
 --- | --- | ---
-支持 | 此选项目前为预览版，仅适用于 VMware Vm。 [查看](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)支持的操作系统。 | 公开上市（GA）。
-代理 | 无需在要交叉检查的计算机上安装代理。 | 要在要分析的每台本地计算机上安装的代理： [Microsoft Monitoring agent （MMA）](../azure-monitor/platform/agent-windows.md)和[依赖项代理](../azure-monitor/platform/agents-overview.md#dependency-agent)。 
-先决条件 | [查看](concepts-dependency-visualization.md#agentless-analysis)先决条件和部署要求。 | [查看](concepts-dependency-visualization.md#agent-based-analysis)先决条件和部署要求。
-Log Analytics | 不要求。 | Azure Migrate 在 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)中使用[服务映射](../azure-monitor/insights/service-map.md)解决方案来进行依赖关系可视化。 [了解详细信息](concepts-dependency-visualization.md#agent-based-analysis)。
+支持 | 此选项目前为预览版，仅适用于 VMware Vm。 [查看](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless)支持的操作系统。 | 公开上市 (GA) 。
+代理 | 无需在要交叉检查的计算机上安装代理。 | 要在要分析的每台本地计算机上安装的代理： [Microsoft Monitoring agent (MMA) ](../azure-monitor/platform/agent-windows.md)和[依赖关系代理](../azure-monitor/platform/agents-overview.md#dependency-agent)。 
+必备条件 | [查看](concepts-dependency-visualization.md#agentless-analysis)先决条件和部署要求。 | [查看](concepts-dependency-visualization.md#agent-based-analysis)先决条件和部署要求。
+Log Analytics | 不需要。 | Azure Migrate 在 [Azure Monitor 日志](../azure-monitor/log-query/log-query-overview.md)中使用[服务映射](../azure-monitor/insights/service-map.md)解决方案来进行依赖关系可视化。 [了解详细信息](concepts-dependency-visualization.md#agent-based-analysis)。
 工作原理 | 捕获启用了依赖关系可视化的计算机上的 TCP 连接数据。 发现后，它会按五分钟的间隔收集数据。 | 计算机上安装的服务映射代理收集有关每个进程的 TCP 进程和入站/出站连接的数据。
 数据 | 源计算机服务器名称、进程、应用程序名称。<br/><br/> 目标计算机服务器名称、进程、应用程序名称和端口。 | 源计算机服务器名称、进程、应用程序名称。<br/><br/> 目标计算机服务器名称、进程、应用程序名称和端口。<br/><br/> 为 Log Analytics 查询收集和提供连接、延迟和数据传输信息的数目。 
 可视化效果 | 可在一小时到30天内查看单服务器的依赖关系图。 | 单个服务器的依赖关系图。<br/><br/> 仅可在一小时内查看地图。<br/><br/> 一组服务器的依赖关系图。<br/><br/> 在映射视图中添加和删除组中的服务器。
@@ -145,13 +145,13 @@ Log Analytics | 不要求。 | Azure Migrate 在 [Azure Monitor 日志](../azure
 
 ## <a name="do-i-pay-for-dependency-visualization"></a>我是否需要为依赖关系可视化付费？
 
-不能。 了解有关[Azure Migrate 定价](https://azure.microsoft.com/pricing/details/azure-migrate/)的详细信息。
+错误。 了解有关[Azure Migrate 定价](https://azure.microsoft.com/pricing/details/azure-migrate/)的详细信息。
 
 ## <a name="what-do-i-install-for-agent-based-dependency-visualization"></a>对于基于代理的依赖项可视化，我应该安装什么？
 
 若要使用基于代理的依赖项可视化，请在要评估的每台本地计算机上下载并安装代理：
 
-- [Microsoft Monitoring Agent （MMA）](../azure-monitor/platform/agent-windows.md)
+- [Microsoft Monitoring Agent (MMA) ](../azure-monitor/platform/agent-windows.md)
 - [依赖关系代理](../azure-monitor/platform/agents-overview.md#dependency-agent)
 - 如果计算机未建立 internet 连接，请下载并在其上安装 Log Analytics 网关。
 
@@ -169,7 +169,7 @@ Log Analytics | 不要求。 | Azure Migrate 在 [Azure Monitor 日志](../azure
 
 对于基于代理的依赖项可视化：
 
-- 使用[脚本安装依赖关系代理](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)。
+- 使用[脚本安装依赖关系代理](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent)。
 - 对于 MMA，请[使用命令行或自动化](../azure-monitor/platform/log-analytics-agent.md#installation-and-configuration)，或使用[脚本](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)。
 - 除了脚本以外，还可以使用部署工具（如 Microsoft Endpoint Configuration Manager 和[Intigua](https://www.intigua.com/intigua-for-azure-migration) ）来部署代理。
 

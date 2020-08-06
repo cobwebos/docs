@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: alzam
-ms.openlocfilehash: 2028cae4908214db28de2545f02f5f2997eeb8af
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 21c2cba1d67ba415849b20dedf9ba157ca191d05
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077472"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832512"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>为用户 VPN 配置 Azure Active Directory 身份验证
 
@@ -23,20 +23,20 @@ ms.locfileid: "87077472"
 在本文中，学习如何：
 
 > [!div class="checklist"]
-> * 创建 WAN
-> * 创建中心
-> * 创建 P2S 配置
-> * 下载 VPN 客户端配置文件
-> * 将 P2S 配置应用到中心
-> * 将 VNet 连接到中心
-> * 下载并应用 VPN 客户端配置
+> * 创建虚拟 WAN
+> * 创建虚拟中心
+> * 创建用户 VPN 配置
+> * 下载虚拟 WAN 用户 VPN 配置文件
+> * 向虚拟中心应用用户 VPN 配置
+> * 将 VNet 连接到虚拟中心
+> * 下载并应用用户 VPN 客户端配置
 > * 查看虚拟 WAN
 
 ![虚拟 WAN 示意图](./media/virtual-wan-about/virtualwanp2s.png)
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
-在开始配置之前，请验证你是否符合以下条件：
+在开始配置之前，请验证是否符合以下条件：
 
 * 你拥有一个要连接到的虚拟网络。 确认本地网络的任何子网都不会与要连接到的虚拟网络重叠。 要在 Azure 门户中创建虚拟网络，请参阅[快速入门](../virtual-network/quick-create-portal.md)。
 
@@ -81,9 +81,9 @@ ms.locfileid: "87077472"
 3. 单击“查看 + 创建”。
 4. 在 "已**通过验证**" 页上，单击 "**创建**"。
 
-## <a name="create-a-new-p2s-configuration"></a><a name="site"></a>创建新的 P2S 配置
+## <a name="create-a-new-user-vpn-configuration"></a><a name="site"></a>创建新的用户 VPN 配置
 
-P2S 配置定义连接远程客户端的参数。
+用户 VPN 配置定义用于连接远程客户端的参数。
 
 1. 在虚拟 WAN 下，选择“用户 VPN 配置”****。
 
@@ -93,7 +93,16 @@ P2S 配置定义连接远程客户端的参数。
 
    ![新建配置](media/virtual-wan-point-to-site-azure-ad/aadportal2.jpg)
 
-3. 输入信息，然后单击“创建”****
+3. 输入信息，然后单击 "**创建**"。
+
+   * **配置名称**-输入要为用户 VPN 配置调用的名称。
+   * **隧道类型**-选择 OpenVPN。
+   * **身份验证方法**-选择 Azure Active Directory。
+   * **受众**-键入在 Azure AD 租户中注册的[Azure VPN](openvpn-azure-ad-tenant.md)企业应用程序的应用程序 ID。 
+   * **N** - `https://sts.windows.net/<your Directory ID>/`
+   * **AAD 租户** - `https://login.microsoftonline.com/<your Directory ID>`
+  
+
 
    ![新建配置](media/virtual-wan-point-to-site-azure-ad/aadportal3.jpg)
 
@@ -111,11 +120,11 @@ P2S 配置定义连接远程客户端的参数。
 6. 单击“确认”  。
 7. 完成此操作最多需要 30 分钟。
 
-## <a name="download-vpn-profile"></a><a name="device"></a>下载 VPN 配置文件
+## <a name="download-user-vpn-profile"></a><a name="device"></a>下载用户 VPN 配置文件
 
 使用 VPN 配置文件来配置客户端。
 
-1. 在虚拟 WAN 的页面上，单击“用户 VPN 配置”。
+1. 在虚拟 WAN 页面上，单击 "**用户 VPN 配置**"。
 2. 在页面顶部，单击“下载用户 VPN 配置”。
 3. 完成创建文件后，可以单击相应的链接下载该文件。
 4. 使用此配置文件配置 VPN 客户端。
@@ -188,13 +197,12 @@ P2S 配置定义连接远程客户端的参数。
 2. 在“概述”页上，地图中的每个点表示一个中心。
 3. 在“中心和连接”部分，可以查看中心状态、站点、区域、VPN 连接状态和传入与传出字节数。
 
-
 ## <a name="clean-up-resources"></a><a name="cleanup"></a>清理资源
 
-如果不再需要这些资源，可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 删除资源组及其包含的所有资源。 将“myResourceGroup”替换为资源组的名称，并运行以下 PowerShell 命令：
+不再需要这些资源时，可以使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 删除资源组及其包含的所有资源。 将“myResourceGroup”替换为资源组的名称，并运行以下 PowerShell 命令：
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>后续步骤

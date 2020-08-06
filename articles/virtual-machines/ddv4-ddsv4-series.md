@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 9f9297673d0787f396fb83ef00f35363d45c6377
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6a02feb77d6a828d522bf3a550243aa304e60b97
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291225"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836286"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4 和 Ddsv4 系列
 
@@ -38,7 +38,7 @@ ACU：195-210
 
 内存保留更新：支持
 
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps | 最大 NIC 数|预期网络带宽（Mbps） |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps | 最大 NIC 数|预期网络带宽 (Mbps)  |
 |---|---|---|---|---|---|---|---|
 | Standard_D2d_v4 | 2 | 8 | 75 | 4 | 19000/120 | 2|1000 |
 | Standard_D4d_v4 | 4 | 16 | 150 | 8 | 38500/242 | 2|2000 |
@@ -67,7 +67,7 @@ ACU：195-210
 
 内存保留更新：支持
 
-| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期网络带宽（Mbps） |
+| 大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数|预期网络带宽 (Mbps)  |
 |---|---|---|---|---|---|---|---|---|
 | Standard_D2ds_v4 | 2 | 8 | 75 | 4 | 19000/120(50) | 3000/48 | 2|1000 |
 | Standard_D4ds_v4 | 4 | 16 | 150 | 8 | 38500/242(100) | 6400/96 | 2|2000 |
@@ -90,7 +90,7 @@ ACU：195-210
 
 定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
 
-有关磁盘类型的详细信息：[磁盘类型](https://docs.microsoft.com/azure/virtual-machines/linux/disks-types#ultra-ssd-preview/)
+有关磁盘类型的详细信息：[磁盘类型](./linux/disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>后续步骤
