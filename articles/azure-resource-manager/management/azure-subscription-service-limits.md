@@ -4,12 +4,12 @@ description: 提供常见的 Azure 订阅和服务限制、配额和约束的列
 ms.topic: conceptual
 author: davidsmatlak
 ms.date: 06/04/2020
-ms.openlocfilehash: ffe0703fbbea75b221dfc6fd16f334dcf58e8ab3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 79aaa594a708fe775a2cdcc6e15b7c7f880f9f50
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515835"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810473"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -22,9 +22,9 @@ ms.locfileid: "86515835"
 > [!NOTE]
 > 某些服务的限制可调整。
 >
-> 当某个服务的限制不可调整时，下面的表会使用表头“限制”  。 在这些情况下，默认值和最大限制相同。
+> 当某个服务的限制不可调整时，下面的表会使用表头“限制”。 在这些情况下，默认值和最大限制相同。
 >
-> 如果可以调整限制，则表中包含“默认限制”  和“最大限制”  表头。 可以将限制提高到默认限制以上，但不能超过最大限制。
+> 如果可以调整限制，则表中包含“默认限制”和“最大限制”表头。 可以将限制提高到默认限制以上，但不能超过最大限制。
 >
 > 如果想要提高限制或配额，使其超出默认限制，可以[免费建立联机客户支持请求](../templates/error-resource-quota.md)。
 
@@ -88,9 +88,9 @@ ms.locfileid: "86515835"
 
 定价层决定了搜索服务的容量和限制。 层包括：
 
-* “免费”层  为多租户服务，可与其他 Azure 订阅用户共享，旨在用于评估和小型开发项目。
-* 基本层  为规模较小的生产工作负荷提供专用计算资源，并为高可用查询工作负荷提供最多 3 个副本。
-* “标准”层（包括 S1、S2、S3 和 S3 高密度）  适用于较大型生产工作负荷。 “标准”层内有多个级别，以便可以选择与工作负荷配置文件最匹配的资源配置。
+* “免费”层为多租户服务，可与其他 Azure 订阅用户共享，旨在用于评估和小型开发项目。
+* 基本层为规模较小的生产工作负荷提供专用计算资源，并为高可用查询工作负荷提供最多 3 个副本。
+* “标准”层（包括 S1、S2、S3 和 S3 高密度）适用于较大型生产工作负荷。 “标准”层内有多个级别，以便可以选择与工作负荷配置文件最匹配的资源配置。
 
 **基于订阅的限制**
 
@@ -126,7 +126,7 @@ ms.locfileid: "86515835"
 
 [!INCLUDE [functions-limits](../../../includes/functions-limits.md)]
 
-有关详细信息，请参阅[函数宿主计划比较](../../azure-functions/functions-scale.md#hosting-plans-comparison)。
+有关详细信息，请参阅 [Functions 托管计划比较](../../azure-functions/functions-scale.md#hosting-plans-comparison)。
 
 ## <a name="azure-kubernetes-service-limits"></a>Azure Kubernetes 服务限制
 
@@ -335,7 +335,7 @@ ms.locfileid: "86515835"
 
 ## <a name="azure-synapse-analytics-limits"></a>Azure Synapse Analytics 限制
 
-有关 Azure Synapse Analytics 限制，请参阅[Azure Synapse 资源限制](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
+有关 Azure Synapse Analytics 限制，请参阅 [Azure Synapse 资源限制](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md)。
 
 ## <a name="storage-limits"></a>存储限制
 
@@ -375,11 +375,11 @@ ms.locfileid: "86515835"
 
 [!INCLUDE [azure-storage-limits-vm-disks](../../../includes/azure-storage-limits-vm-disks.md)]
 
-有关详细信息，请参阅[虚拟机大小](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+有关详细信息，请参阅[虚拟机大小](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 
 #### <a name="disk-encryption-sets"></a>磁盘加密集
 
-每个区域每个订阅的磁盘加密集限制为50。 有关详细信息，请参阅适用于[Linux](/azure/virtual-machines/linux/disk-encryption#restrictions)或[Windows](/azure/virtual-machines/windows/disk-encryption#restrictions)虚拟机的加密文档。 如果需要增加配额，请联系 Azure 支持。
+每个区域每个订阅的磁盘加密集限制为50。 有关详细信息，请参阅适用于[Linux](../../virtual-machines/linux/disk-encryption.md#restrictions)或[Windows](../../virtual-machines/windows/disk-encryption.md#restrictions)虚拟机的加密文档。 如果需要增加配额，请联系 Azure 支持。
 
 ### <a name="managed-virtual-machine-disks"></a>托管虚拟机磁盘
 
@@ -426,6 +426,6 @@ ms.locfileid: "86515835"
 ## <a name="see-also"></a>另请参阅
 
 * [了解 Azure 限制及如何提高限制](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
-* [Azure 的虚拟机和云服务大小](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure 的虚拟机和云服务大小](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure 云服务的大小](../../cloud-services/cloud-services-sizes-specs.md)
 * [Azure 资源的命名规则和限制](resource-name-rules.md)

@@ -4,12 +4,12 @@ description: 了解如何使用 Java 开发函数。
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: 121a3263a28da5e17b1ab918529aa9f285089687
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ffdb6ee9747c76e7f4a6ff3e2f7b65ae96f53fb4
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372410"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810082"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
 
@@ -19,7 +19,7 @@ ms.locfileid: "87372410"
 
 | 入门 | 概念| 
 | -- | -- |  
-| <ul><li>[使用 Visual Studio Code 的 Java 函数](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)</li><li>[带有终端/命令提示符的 Java/Maven 函数](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java)</li><li>[使用 Gradle 的 Java 函数](functions-create-first-java-gradle.md)</li><li>[使用 Eclipse 的 Java 函数](functions-create-maven-eclipse.md)</li><li>[使用 IntelliJ 创意的 Java 函数](functions-create-maven-intellij.md)</li></ul> | <ul><li>[开发人员指南](functions-reference.md)</li><li>[托管选项](functions-scale.md)</li><li>[性能 &nbsp; 注意事项](functions-best-practices.md)</li></ul> |
+| <ul><li>[使用 Visual Studio Code 的 Java 函数](./functions-create-first-function-vs-code.md?pivots=programming-language-java)</li><li>[带有终端/命令提示符的 Java/Maven 函数](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)</li><li>[使用 Gradle 的 Java 函数](functions-create-first-java-gradle.md)</li><li>[使用 Eclipse 的 Java 函数](functions-create-maven-eclipse.md)</li><li>[使用 IntelliJ 创意的 Java 函数](functions-create-maven-intellij.md)</li></ul> | <ul><li>[开发人员指南](functions-reference.md)</li><li>[托管选项](functions-scale.md)</li><li>[性能 &nbsp; 注意事项](functions-best-practices.md)</li></ul> |
 
 ## <a name="java-function-basics"></a>Java 函数基础知识
 
@@ -142,9 +142,9 @@ _对 Java 11 的支持目前以预览版提供_
 
 下表显示了每个主要版本的函数运行时的当前支持 Java 版本（按操作系统）：
 
-| Functions 版本 | Java 版本（Windows） | Java 版本（Linux） |
+| Functions 版本 | Java 版本 (Windows)  | Java 版本 (Linux)  |
 | ----- | ----- | --- |
-| 3.x | 11（预览版）<br/>8<sup>\*</sup> | 11（预览版）<br/>8 |
+| 3.x | 11 (预览) <br/>8<sup>\*</sup> | 11 (预览) <br/>8 |
 | 2.x | 8 | 不适用 |
 
 <sup>\*</sup>这是 Maven 原型生成的 pom.xml 的当前默认值。

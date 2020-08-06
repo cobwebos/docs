@@ -3,12 +3,12 @@ title: MABS 和 System Center DPM 支持矩阵
 description: 本文汇总了使用 Microsoft Azure 备份服务器 (MABS) 或 System Center DPM 备份本地和 Azure VM 资源时的 Azure 备份支持。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 938fb751de90112dc206779a36b88f95f1d7d508
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a97c37accd1275fa99437862a8d939df31360e87
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289460"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810422"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 备份服务器或 System Center DPM 进行备份时的支持矩阵
 
@@ -24,7 +24,7 @@ MABS 基于 System Center DPM，并提供类似的功能，但有几项差别：
 
 - 无需 System Center 许可证即可运行 MABS。
 - Azure 为 MABS 和 DPM 提供长期备份存储。 此外，DPM 允许在磁带上备份数据，以作长期存储。 MABS 不提供此功能。
-- [您可以使用辅助 dpm 服务器备份主 dpm 服务器](https://docs.microsoft.com/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019)。 辅助服务器将保护主服务器上存储的主服务器数据库和数据源副本。 如果主服务器出现故障，则辅助服务器可以继续保护由主服务器保护的工作负荷，直到主服务器再次可用为止。  MABS 不提供此功能。
+- [您可以使用辅助 dpm 服务器备份主 dpm 服务器](/system-center/dpm/back-up-the-dpm-server?view=sc-dpm-2019)。 辅助服务器将保护主服务器上存储的主服务器数据库和数据源副本。 如果主服务器出现故障，则辅助服务器可以继续保护由主服务器保护的工作负荷，直到主服务器再次可用为止。  MABS 不提供此功能。
 
 从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=57520)下载 MABS。 它可以在本地运行，或者在 Azure VM 上运行。
 

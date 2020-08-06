@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: b8e6797d1dbbe4260f7a5b701ada887f68a88a7c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 32905383b046148893492640fe42fc721d1944dd
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87079666"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810235"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>适用于 Azure Functions 的 Azure 安全基线
 
 适用于 Azure Functions 的 Azure 安全基线包含有助于改进部署安全状况的建议。
 
-此服务的基线提取自 [Azure 安全基准版本 1.0](../security/benchmarks/overview.md)，该版本提供了有关如何在 Azure 上利用我们的最佳做法指南来保护云解决方案的建议。
+此服务的基线摘自 [Azure 安全基准版本 1.0](../security/benchmarks/overview.md)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
 
 有关详细信息，请参阅 [Azure 安全基线概述](../security/benchmarks/security-baselines-overview.md)。
 
@@ -42,7 +42,7 @@ ms.locfileid: "87079666"
 
 **指南**：使用 Azure 安全中心并按照网络保护建议来帮助保护与 Azure Functions 应用相关的网络资源和网络配置。
 
-如果通过 Azure Functions 实现使用网络安全组（Nsg），请启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析具有以下优势：能够直观显示网络活动、识别热点、识别安全威胁、了解流量流模式以及查明网络配置错误。
+如果将网络安全组与 Azure Functions 实现 (Nsg) ，请启用 NSG 流日志，并将日志发送到 Azure 存储帐户以进行流量审核。 还可以将 NSG 流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析具有以下优势：能够直观显示网络活动、识别热点、识别安全威胁、了解流量流模式以及查明网络配置错误。
 
 - [了解 Azure 安全中心提供的网络安全](../security-center/security-center-network-recommendations.md)
 
@@ -58,12 +58,12 @@ ms.locfileid: "87079666"
 
 **指南**：若要在生产环境中全面保护 Azure 函数终结点，应考虑实现以下 Function 应用级安全选项之一：
 - 为 function app 启用应用服务身份验证/授权，
-- 使用 Azure API 管理（APIM）对请求进行身份验证，或
+- 使用 Azure API 管理 (APIM) 来对请求进行身份验证，或
 - 将函数应用部署到 Azure 应用服务环境。
 
-此外，请确保已为生产 Azure Functions 禁用了远程调试。 此外，跨域资源共享（CORS）不应允许所有域访问 Azure Function app。 仅允许所需域与 Azure Function app 交互。
+此外，请确保已为生产 Azure Functions 禁用了远程调试。 而且， (CORS) 跨域资源共享不应允许所有域访问 Azure Function app。 仅允许所需域与 Azure Function app 交互。
 
-考虑将 Azure Web 应用程序防火墙（WAF）部署为网络配置的一部分，以便对传入流量进行额外检查。 启用 WAF 的诊断设置，并将日志引入存储帐户、事件中心或 Log Analytics 工作区。 
+请考虑部署 Azure Web 应用程序防火墙 (WAF) 作为网络配置的一部分，以便对传入流量进行额外检查。 启用 WAF 的诊断设置，并将日志引入存储帐户、事件中心或 Log Analytics 工作区。 
 
 - [如何在生产环境中保护 Azure 函数终结点](./functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production)
 
@@ -76,7 +76,7 @@ ms.locfileid: "87079666"
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒绝与已知恶意的 IP 地址进行通信
 
 **指南**：在与函数应用相关联的虚拟网络上启用 ddos 保护，以防止 ddos 攻击。 使用 Azure 安全中心的集成式威胁情报功能拒绝与已知的恶意或未使用的公共 IP 地址通信。
-此外，配置前端网关（如 Azure Web 应用程序防火墙），对所有传入的请求进行身份验证并筛选出恶意流量。 Azure Web 应用程序防火墙可以通过检查入站 Web 流量来阻止 SQL 注入、跨站点脚本、恶意软件上传和 DDoS 攻击，从而帮助保护 Azure Function app。 引入 WAF 需要应用服务环境或使用专用终结点（预览）。 在将专用终结点用于生产工作负荷之前，请确保专用终结点不再处于（预览）。
+此外，配置前端网关（如 Azure Web 应用程序防火墙），对所有传入的请求进行身份验证并筛选出恶意流量。 Azure Web 应用程序防火墙可以通过检查入站 Web 流量来阻止 SQL 注入、跨站点脚本、恶意软件上传和 DDoS 攻击，从而帮助保护 Azure Function app。 引入 WAF 需要应用服务环境或使用专用终结点 (预览版) 。 在将专用终结点与生产工作负荷一起使用之前，请确保专用终结点不再处于 (预览) 。
 
 - [Azure Functions 网络选项](./functions-networking-options.md)
 
@@ -86,7 +86,7 @@ ms.locfileid: "87079666"
 
 - [应用服务环境的网络注意事项](../app-service/environment/network-info.md)
 
-- [如何配置 DDoS 保护](../virtual-network/manage-ddos-protection.md)
+- [如何配置 DDoS 防护](../virtual-network/manage-ddos-protection.md)
 
 - [如何部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -104,7 +104,7 @@ ms.locfileid: "87079666"
 
 ### <a name="15-record-network-packets-and-flow-logs"></a>1.5：记录网络数据包和流日志
 
-**指南**：如果将网络安全组（nsg）与 Azure Functions 实现一起使用，请启用网络安全组流日志，并将日志发送到存储帐户以进行流量审核。 还可以将流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
+**指南**：如果将网络安全组与 Azure Functions 实现 (nsg) ，请启用网络安全组流日志，并将日志发送到存储帐户以进行流量审核。 还可以将流日志发送到 Log Analytics 工作区，并使用流量分析来深入了解 Azure 云中的流量流。 流量分析的优势包括能够可视化网络活动、识别热点、识别安全威胁、了解流量流模式，以及查明网络不当配置。
 
 - [如何启用 NSG 流日志](../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -118,7 +118,7 @@ ms.locfileid: "87079666"
 
 ### <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1.6：部署基于网络的入侵检测/入侵防护系统 (IDS/IPS)
 
-**指南**：配置前端网关（如 Azure Web 应用程序防火墙）来验证所有传入的请求并筛选出恶意流量。 Azure Web 应用程序防火墙可以通过检查入站 Web 流量来阻止 SQL 注入、跨站点脚本、恶意软件上传和 DDoS 攻击，从而帮助保护函数应用。 引入 WAF 需要应用服务环境或使用专用终结点（预览）。 在将专用终结点用于生产工作负荷之前，请确保专用终结点不再处于（预览）。
+**指南**：配置前端网关（如 Azure Web 应用程序防火墙）来验证所有传入的请求并筛选出恶意流量。 Azure Web 应用程序防火墙可以通过检查入站 Web 流量来阻止 SQL 注入、跨站点脚本、恶意软件上传和 DDoS 攻击，从而帮助保护函数应用。 引入 WAF 需要应用服务环境或使用专用终结点 (预览版) 。 在将专用终结点与生产工作负荷一起使用之前，请确保专用终结点不再处于 (预览) 。
 
 另外，Azure 市场上还提供了多种市场选项，它们均包含 IDS/IPS 功能，例如 Barracuda WAF for Azure。
 
@@ -138,11 +138,11 @@ ms.locfileid: "87079666"
 
 **Azure 安全中心监视**：目前不可用
 
-**责任**：客户
+责任：客户
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
-**指导**：为网络配置前端网关，如使用端对端 TLS 加密的 Azure Web 应用程序防火墙。 引入 WAF 需要应用服务环境或使用专用终结点（预览）。 在将专用终结点用于生产工作负荷之前，请确保专用终结点不再处于（预览）。
+**指导**：为网络配置前端网关，如使用端对端 TLS 加密的 Azure Web 应用程序防火墙。 引入 WAF 需要应用服务环境或使用专用终结点 (预览版) 。 在将专用终结点与生产工作负荷一起使用之前，请确保专用终结点不再处于 (预览) 。
 
 - [Azure Functions 网络选项](./functions-networking-options.md)
 
@@ -164,13 +164,13 @@ ms.locfileid: "87079666"
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：最大程度地降低网络安全规则的复杂性和管理开销
 
-**指南**：使用虚拟网络服务标记定义网络安全组或 Azure 防火墙上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 通过在规则的相应 "源" 或 "目标" 字段中指定服务标记名称（例如 AzureAppService），可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
+**指南**：使用虚拟网络服务标记定义网络安全组或 Azure 防火墙上的网络访问控制。 创建安全规则时，可以使用服务标记代替特定的 IP 地址。 通过在规则的相应 "源" 或 "目标" 字段中指定服务标记名称 (例如 AzureAppService) ，可以允许或拒绝相应服务的流量。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。
 
 - [有关使用服务标记的详细信息](../virtual-network/service-tags-overview.md)
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：维护网络设备的标准安全配置
 
@@ -187,11 +187,11 @@ ms.locfileid: "87079666"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：阐述流量配置规则
 
-**指南**：如果将网络安全组（nsg）与 Azure Functions 实现一起使用，请使用 nsg 以及与网络安全和通信流相关的其他资源的标记。 对于单个 NSG 规则，请使用“说明”字段针对允许流量传入/传出网络的任何规则指定业务需求和/或持续时间等。
+**指南**：如果使用网络安全组 (与你的 Azure Functions 实现) ，请使用与网络安全和通信流相关的 nsg 和其他资源的标记。 对于单个 NSG 规则，请使用“说明”字段针对允许流量传入/传出网络的任何规则指定业务需求和/或持续时间等。
 
 使用与标记相关的任何内置 Azure 策略定义（如 "需要标记和值"）来确保使用标记创建所有资源并通知现有未标记资源。
 
@@ -201,7 +201,7 @@ ms.locfileid: "87079666"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动化工具来监视网络资源配置和检测更改
 
@@ -241,7 +241,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 - [如何设置 Azure 应用程序 Insights Azure Functions](./functions-monitoring.md)
 
-- [如何启用 Azure Functions 的诊断设置（用户生成的日志）](./functions-monitor-log-analytics.md)
+- [如何对 Azure Functions (用户生成的日志) 启用诊断设置](./functions-monitor-log-analytics.md)
 
 - [如何加入 Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -257,7 +257,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 - [如何启用 Azure 活动日志的诊断设置](../azure-monitor/platform/activity-log.md)
 
-- [如何启用 Azure Functions 的诊断设置（用户生成的日志）](./functions-monitor-log-analytics.md)
+- [如何对 Azure Functions (用户生成的日志) 启用诊断设置](./functions-monitor-log-analytics.md)
 
 **Azure 安全中心监视**：目前不可用
 
@@ -269,7 +269,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
@@ -279,7 +279,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和审查日志
 
@@ -301,7 +301,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="27-enable-alerts-for-anomalous-activity"></a>2.7：针对异常活动启用警报
 
@@ -323,7 +323,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="28-centralize-anti-malware-logging"></a>2.8：集中管理反恶意软件日志记录
 
@@ -367,7 +367,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
-**指南**：通过 AZURE ACTIVE DIRECTORY （AD）控制对 Azure Functions 的控制平面访问。 Azure AD 没有默认密码。
+**指南**：通过 AZURE ACTIVE DIRECTORY (AD) 控制对 Azure Functions 的控制平面访问。 Azure AD 没有默认密码。
 
 可以通过多种方式控制数据平面访问，包括授权密钥、网络限制和验证 AAD 标识。 授权密钥由连接到 Azure Functions HTTP 终结点的客户端使用，可以随时重新生成。 默认情况下，将为新的 HTTP 终结点生成这些密钥。
 
@@ -435,7 +435,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
-**指南**：当环境中出现可疑或不安全的活动时，可使用 Azure Active Directory (AD) Privileged Identity Management (PIM) 生成日志和警报。
+**指导**：当环境中出现可疑或不安全的活动时，可使用 Azure Active Directory (AD) Privileged Identity Management (PIM) 生成日志和警报。
 
 此外，还可使用 Azure AD 风险检测来查看警报和报告有风险的用户行为。
 
@@ -459,7 +459,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指南**：使用 AZURE ACTIVE DIRECTORY （AD）作为 Azure Functions 应用的中央身份验证和授权系统。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会进行加盐操作、哈希操作并安全地存储用户凭据。
+**指南**：使用 AZURE ACTIVE DIRECTORY (AD) 作为 Azure Functions 应用的中央身份验证和授权系统。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
 
 - [如何将 Azure Functions 应用配置为使用 Azure AD 登录](../app-service/configure-authentication-provider-aad.md)
 
@@ -483,7 +483,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 ### <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3.11：监视访问已停用帐户的企图
 
-**指南**：使用 AZURE ACTIVE DIRECTORY （AD）作为 Azure Function app 的中央身份验证和授权系统。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
+**指南**：使用 AZURE ACTIVE DIRECTORY (AD) 作为 Azure Function app 的中央身份验证和授权系统。 Azure AD 通过对静态数据和传输中数据使用强加密来保护数据。 Azure AD 还会对用户凭据进行加盐、哈希处理和安全存储操作。
 
 你可以访问 Azure AD 登录活动、审核和风险事件日志源，以便与 Azure Sentinel 或第三方 SIEM 集成。
 
@@ -501,7 +501,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
-**指南**：使用 AZURE ACTIVE DIRECTORY （AD）作为 Azure Functions 应用的中央身份验证和授权系统。 对于控制平面上的帐户登录行为偏差（Azure 门户），请使用 Azure Active Directory （AD）标识保护和风险检测功能来配置对检测到的与用户标识相关的可疑操作的自动响应。 还可以将数据引入 Azure Sentinel 中以便进一步调查。
+**指南**：使用 AZURE ACTIVE DIRECTORY (AD) 作为 Azure Functions 应用的中央身份验证和授权系统。 对于 (Azure 门户) 控制平面上的帐户登录行为偏差，请使用 Azure Active Directory (的 "") "标识保护和风险检测功能"，将自动响应配置为检测到与用户标识相关的可疑操作。 还可以将数据引入 Azure Sentinel 中以便进一步调查。
 
 - [如何查看 Azure AD 风险登录](../active-directory/identity-protection/overview-identity-protection.md)
 
@@ -535,13 +535,13 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 Azure Function apps 应由虚拟网络（VNet）/子网分隔并正确标记。
+**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 Azure Function apps 应由虚拟网络 (VNet 分隔) /子网并进行相应标记。
 
-你还可以使用专用终结点来执行网络隔离。 Azure 专用终结点是一个网络接口，用于将你私下并安全地连接到由 Azure 专用链接提供支持的服务（例如： Azure Functions 应用 HTTPs 终结点）。 专用终结点使用 VNet 中的专用 IP 地址将服务有效地引入 VNet 中。 专用终结点处于高级计划中运行的函数应用的（预览版）中。 在将专用终结点用于生产工作负荷之前，请确保专用终结点不再处于（预览）。
+你还可以使用专用终结点来执行网络隔离。 Azure 专用终结点是一个网络接口，该接口将你私下并安全地连接到服务 (例如： Azure Functions 应用 HTTPs 终结点) Azure Private Link。 专用终结点使用 VNet 中的专用 IP 地址将服务有效地引入 VNet 中。 专用终结点位于高级计划中运行的函数应用 (预览) 。 在将专用终结点与生产工作负荷一起使用之前，请确保专用终结点不再处于 (预览) 。
 
 - [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
@@ -559,7 +559,7 @@ Azure Functions 还提供与 Azure 应用程序 Insights 的内置集成，以�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="43-monitor-and-block-unauthorized-transfer-of-sensitive-information"></a>4.3：监视和阻止未经授权的敏感信息传输
 
@@ -589,19 +589,19 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
 ### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**：使用 AZURE ACTIVE DIRECTORY （AD）基于角色的访问控制（RBAC）来控制对 Azure Function control 平面（Azure 门户）的访问。 
+**指南**：使用 AZURE ACTIVE DIRECTORY (AD) 基于角色的访问控制 (RBAC) 来控制对 Azure 函数控制平面的访问 (Azure 门户) 。 
 
 - [如何在 Azure 中配置 RBAC](../role-based-access-control/role-assignments-portal.md)
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用基于主机的数据丢失防护来强制实施访问控制
 
@@ -611,7 +611,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 - [了解 Azure 中的客户数据保护](../security/fundamentals/protection-customer-data.md)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -695,7 +695,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 ### <a name="61-use-azure-asset-discovery"></a>6.1：使用 Azure 资产发现
 
-**指南**：使用 Azure Resource Graph 查询/发现订阅中的所有资源（例如计算、存储、网络、端口和协议等）。  确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
+**指导**：使用 Azure Resource Graph 查询/发现订阅中的所有资源（例如计算、存储、网络、端口和协议等）。  确保租户中具有适当的（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
 
 虽然可以通过 Resource Graph 发现经典的 Azure 资源，但强烈建议创建和使用 Azure 资源管理器资源以供后续使用。
 
@@ -721,9 +721,9 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
-**指南**：在适用的情况下，请使用标记、管理组和单独的订阅来组织和跟踪 Azure 资产。 定期协调清单，并确保及时从订阅中删除未经授权的资源。
+**指南**：在适用的情况下，请使用标记、管理组和单独的订阅来组织和跟踪 Azure 资产。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
-此外，使用 Azure 策略将限制添加到可使用以下内置策略定义在客户订阅中创建的资源类型：不允许的资源类型允许的资源类型
+此外，使用 Azure 策略将对可在客户 (订阅中创建的资源类型（使用以下内置策略定义）进行限制：不允许的资源类型允许的资源类型（) & a）：不允许的资源类型
 
 - [如何创建其他 Azure 订阅](../cost-management-billing/manage/create-subscription.md)
 
@@ -787,7 +787,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 - [如何配置和管理 Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [如何使用 Azure Policy 拒绝特定的资源类型](/azure/governance/policy/samples/not-allowed-resource-types)
+- [如何使用 Azure Policy 拒绝特定的资源类型](../governance/policy/samples/index.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -823,7 +823,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 **指南**：对于敏感或高风险的 Azure Function app，实现单独的订阅和/或管理组以提供隔离。
 
-将高风险 Azure Function app 部署到自己的虚拟网络（VNet）中。 Azure Functions 中的外围安全性通过 Vnet 实现。 高级计划或应用服务环境（ASE）中运行的功能可以与 Vnet 集成。 为用例选择最佳体系结构。
+将高风险 Azure Function app 部署到自己的虚拟网络中 (VNet) 。 Azure Functions 中的外围安全性通过 Vnet 实现。 高级计划或应用服务环境中运行的函数 (ASE) 可以与 Vnet 集成。 为用例选择最佳体系结构。
 
 - [Azure Functions 网络选项](./functions-networking-options.md)
 
@@ -849,7 +849,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
-**指南**：定义和实现 azure Function App 和 azure 策略的标准安全配置。 使用 "System.web" 命名空间中的 Azure 策略别名创建自定义策略，以便审核或强制实施 Azure Functions 应用的配置。 你还可以使用内置的策略定义，例如：
+**指南**：定义和实现 azure Function App 和 azure 策略的标准安全配置。 使用 "System.web" 命名空间中的 Azure 策略别名创建自定义策略，以便审核或强制实施 Azure Functions 应用的配置。 还可以利用内置策略定义，例如：
 - 应在函数应用中使用托管标识
 - 应当为函数应用禁用远程调试
 - 应该只能通过 HTTPS 访问函数应用
@@ -860,7 +860,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2：建立安全的操作系统配置
 
@@ -966,7 +966,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
@@ -980,7 +980,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
-**指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据移动到更安全的位置，例如 Azure Key Vault。 
+**指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。 
 
 - [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -996,7 +996,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 **指导**：不适用；此项指导适用于 IaaS 计算资源。
 
-在支持 Azure 服务的基础主机（例如 Azure Functions）上启用了 Microsoft 反恶意软件，但它不会在客户内容上运行。
+支持 Azure 服务的基础主机上启用了 Microsoft 反恶意软件 (例如 Azure Functions) ，但它不会在客户内容上运行。
 
 **Azure 安全中心监视**：不适用
 
@@ -1015,7 +1015,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 **指南**：不适用；此建议适用于设计用于存储数据的非计算资源。
 
-在支持 Azure 服务的基础主机（例如 Azure Functions）上启用了 Microsoft 反恶意软件，但它不会在客户内容上运行。
+支持 Azure 服务的基础主机上启用了 Microsoft 反恶意软件 (例如 Azure Functions) ，但它不会在客户内容上运行。
 
 **Azure 安全中心监视**：不适用
 
@@ -1113,7 +1113,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心对用于发出警报的调查结果或分析的置信度，以及导致警报的活动背后存在恶意意图的可信度。
+**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
 此外，应清楚地标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
 
@@ -1143,7 +1143,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
-**指导**：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出功能可手动或以连续不断的方式导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Azure Sentinel。
+**指导**：使用连续导出功能导出 Azure 安全中心警报和建议。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Azure Sentinel。
 
 - [如何配置连续导出](../security-center/continuous-export.md)
 
@@ -1151,7 +1151,7 @@ Microsoft 管理 Azure Functions 的底层基础结构，并实施了严格控�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
 

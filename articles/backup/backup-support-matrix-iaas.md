@@ -4,12 +4,12 @@ description: 提供有关在使用 Azure 备份服务备份 Azure VM 时的支�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3be5bdffd999907234fff64f8f88459d9c9b18b6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 9d7e3b4f565fac42d0a91d155846e672c7437f2d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531857"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810456"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 
@@ -18,7 +18,7 @@ ms.locfileid: "87531857"
 其他支持矩阵：
 
 - Azure 备份的[常规支持矩阵](backup-support-matrix.md)
-- Azure 备份服务器/System Center Data Protection Manager （DPM）备份的[支持矩阵](backup-support-matrix-mabs-dpm.md)
+- Azure 备份服务器/System Center Data Protection Manager (DPM) 备份的[支持矩阵](backup-support-matrix-mabs-dpm.md)
 - 使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的[支持矩阵](backup-support-matrix-mars-agent.md)
 
 ## <a name="supported-scenarios"></a>支持的方案
@@ -58,7 +58,7 @@ ms.locfileid: "87531857"
 
 **方案** | **OS 支持**
 --- | ---
-使用 Azure VM 代理扩展进行备份 | - Windows 10 客户端（仅 64 位） <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> -Windows Server 2012 （Datacenter/Standard） <br/><br/> - Windows Server 2008 R2（RTM 和 SP1 Standard）  <br/><br/> - Windows Server 2008（仅限 64 位）
+使用 Azure VM 代理扩展进行备份 | - Windows 10 客户端（仅 64 位） <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> -Windows Server 2012 (Datacenter/Standard)  <br/><br/> - Windows Server 2008 R2（RTM 和 SP1 Standard）  <br/><br/> - Windows Server 2008（仅限 64 位）
 使用 MARS 代理进行备份 | [支持](backup-support-matrix-mars-agent.md#supported-operating-systems)的操作系统。
 使用 DPM/MABS 备份 | 使用 [MABS](backup-mabs-protection-matrix.md) 和 [DPM](/system-center/dpm/dpm-protection-matrix) 备份时支持的操作系统。
 
@@ -137,7 +137,7 @@ DPM/MABS 磁盘上的恢复点数 | 文件服务器为 64 个，应用服务器�
 
 **计算** | **支持**
 --- | ---
-VM 大小 |至少有 2 个 CPU 核心和 1-GB RAM 的任意 Azure VM 大小。<br/><br/> [了解详细信息。](../virtual-machines/windows/sizes.md)
+VM 大小 |至少有 2 个 CPU 核心和 1-GB RAM 的任意 Azure VM 大小。<br/><br/> [了解详细信息。](../virtual-machines/sizes.md)
 备份[可用性集](../virtual-machines/availability.md#availability-sets)中的 VM | 。<br/><br/> 无法使用快速创建 VM 的选项来还原可用性集中的 VM。 还原 VM 时，请还原磁盘并用它来部署 VM，或者还原磁盘并用它来替换现有磁盘。
 备份使用[混合使用权益 (HUB)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) 部署的 VM | 。
 备份[规模集](../virtual-machine-scale-sets/overview.md)中部署的 VM |。 对于容错域，[业务流程模式](../virtual-machine-scale-sets/orchestration-modes.md)应设置为2。 可用性集不受支持。
@@ -149,13 +149,13 @@ VM 大小 |至少有 2 个 CPU 核心和 1-GB RAM 的任意 Azure VM 大小。<b
 还原区域固定 VM | 支持（适用于 2019 年 1 月以后备份的并且可以使用[可用性区域](https://azure.microsoft.com/global-infrastructure/availability-zones/)的 VM）。<br/><br/>目前支持还原到在 VM 中固定的区域。 但是，如果该区域不可用，则还原将失败。
 Gen2 VM | 支持 <br> Azure 备份支持备份和还原 [Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)。 从恢复点还原这些 Vm 时，它们会还原为[Gen2 vm](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)。
 具有锁定的 Azure Vm 备份 | 不支持非托管 Vm。 <br><br> 托管 Vm 支持。
-[点 VM](../virtual-machines/windows/spot-vms.md) | 不支持。 Azure 备份会将专色 Vm 恢复为常规 Azure Vm。
+[点 VM](../virtual-machines/windows/spot-vms.md) | 不受支持。 Azure 备份会将专色 Vm 恢复为常规 Azure Vm。
 
 ## <a name="vm-storage-support"></a>VM 存储支持
 
 **组件** | **支持**
 --- | ---
-Azure VM 数据磁盘 | 除了国家/地区云（Azure 政府版、Azure 中国世纪互联和 Azure 德国）以外的所有地区，支持备份最多包含32个磁盘的 Azure Vm。<br><br> 备份包含非托管磁盘的 Azure VM 或经典 VM 时，最多支持 16 个磁盘。
+Azure VM 数据磁盘 | 除了国家云 (Azure 政府版、Azure 中国世纪互联和 Azure 德国) 以外，所有区域都支持备份最多包含32磁盘的 Azure Vm。<br><br> 备份包含非托管磁盘的 Azure VM 或经典 VM 时，最多支持 16 个磁盘。
 数据磁盘大小 | 对于 VM 中的所有磁盘，单个磁盘大小最大为 32 TB，组合磁盘大小最大为 256 TB。
 存储类型 | 标准 HDD、标准 SSD、高级 SSD。
 托管磁盘 | 。
@@ -164,7 +164,7 @@ Azure VM 数据磁盘 | 除了国家/地区云（Azure 政府版、Azure 中国�
 备份和还原已删除重复数据的 VM/磁盘 | Azure 备份不支持重复数据删除。 有关详细信息，请参阅[此文](./backup-support-matrix.md#disk-deduplication-support) <br/> <br/>  -Azure Backup 不删除重复在恢复服务保管库中的 Vm 之间 <br/> <br/>  -如果在还原期间有 Vm 处于重复数据删除状态，则无法还原这些文件，因为保管库不能识别该格式。 但是，你可以成功执行完整的 VM 还原。
 将磁盘添加到受保护的 VM | 。
 调整受保护 VM 上的磁盘大小 | 。
-共享存储| 不支持使用群集共享卷（CSV）或横向扩展文件服务器备份 Vm。 在备份过程中，CSV 写入器可能会失败。 还原时，包含 CSV 卷的磁盘可能不会启动。
+共享存储| 不支持使用群集共享卷 (CSV) 或横向扩展文件服务器来备份 Vm。 在备份过程中，CSV 写入器可能会失败。 还原时，包含 CSV 卷的磁盘可能不会启动。
 [共享磁盘](../virtual-machines/windows/disks-shared-enable.md) | 不支持。
 
 ## <a name="vm-network-support"></a>VM 网络支持
@@ -207,8 +207,8 @@ Azure 备份支持针对传输中数据和静态数据的加密：
 
 **计算机** | **传输中** | **静态**
 --- | --- | ---
-没有 DPM/MABS 的本地 Windows 计算机 | ![“是”][green] | ![是][green]
-Azure VM | ![“是”][green] | ![“是”][green]
+没有 DPM/MABS 的本地 Windows 计算机 | ![是][green] | ![是][green]
+Azure VM | ![是][green] | ![是][green]
 本地计算机/装有 DPM 的 Azure VM | ![是][green] | ![是][green]
 本地计算机/装有 MABS 的 Azure VM | ![是][green] | ![是][green]
 
@@ -223,8 +223,8 @@ Azure 备份支持对备份流量进行压缩，详细情况汇总在下表中�
 --- | --- | ---
 没有 DPM/MABS 的本地 Windows 计算机 | NA | ![是][green]
 Azure VM | NA | NA
-本地计算机/装有 DPM 的 Azure VM | ![“是”][green] | ![是][green]
-本地计算机/装有 MABS 的 Azure VM | ![是][green] | ![“是”][green]
+本地计算机/装有 DPM 的 Azure VM | ![是][green] | ![是][green]
+本地计算机/装有 MABS 的 Azure VM | ![是][green] | ![是][green]
 
 ## <a name="next-steps"></a>后续步骤
 
