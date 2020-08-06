@@ -4,14 +4,14 @@ description: 了解如何配置和更改默认索引策略，以便自动编制�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/09/2020
+ms.date: 08/04/2020
 ms.author: tisande
-ms.openlocfilehash: a335da61fac914368b4044a97582ef0060f5de4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3981e828e7ffe401be3b72f68185c272ab11645
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84636319"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760815"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
 
@@ -20,7 +20,7 @@ ms.locfileid: "84636319"
 在某些情况下，你可能想要替代此自动行为，以便更好地满足自己的要求。 可以通过设置容器索引策略的索引模式来自定义该策略，并可以包含或排除属性路径。 
 
 > [!NOTE]
-> 本文所述的更新索引策略的方法仅适用于 Azure Cosmos DB 的 SQL (Core) API。
+> 本文所述的更新索引策略的方法仅适用于 Azure Cosmos DB 的 SQL (Core) API。 了解[Azure Cosmos DB 的适用于 MongoDB 的 API](mongodb-indexing.md)中的索引
 
 ## <a name="indexing-mode"></a>索引模式
 
@@ -36,7 +36,7 @@ Azure Cosmos DB 支持两种索引模式：
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>包括和排除属性路径
 
-自定义索引策略可以指定要在索引编制中显式包含或排除的属性路径。 通过优化编制索引的路径数量，可以减少容器使用的存储量并改善写入操作的延迟。 这些路径是遵循[索引概述部分所述的方法](index-overview.md#from-trees-to-property-paths)定义的，补充要求如下：
+自定义索引策略可以指定要在索引编制中显式包含或排除的属性路径。 通过优化已编制索引的路径数，你可以显著减少写入操作的延迟和 RU 费用。 这些路径是遵循[索引概述部分所述的方法](index-overview.md#from-trees-to-property-paths)定义的，补充要求如下：
 
 - 指向标量值（字符串或数字）的路径以 `/?` 结尾
 - 数组中的元素通过 `/[]` 表示法（而不是 `/0`、`/1` 等）统一寻址
@@ -129,7 +129,7 @@ Azure Cosmos DB 支持两种索引模式：
 
 * LineString
 
-Azure Cosmos DB 默认不会创建任何空间索引。 若要使用空间 SQL 内置函数，应该对所需的属性创建空间索引。 有关添加空间索引的索引策略示例，请参阅[此部分](geospatial.md)。
+Azure Cosmos DB 默认不会创建任何空间索引。 若要使用空间 SQL 内置函数，应该对所需的属性创建空间索引。 有关添加空间索引的索引策略示例，请参阅[此部分](sql-query-geospatial-index.md)。
 
 ## <a name="composite-indexes"></a>组合索引
 
@@ -259,16 +259,23 @@ SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.time
 
 ## <a name="modifying-the-indexing-policy"></a>修改索引策略
 
-随时可以[使用 Azure 门户或某个支持的 SDK](how-to-manage-indexing-policy.md) 更新容器的索引策略。 更新索引策略会触发从旧索引到新索引的转换，该操作是在线和就地执行的（因此，在执行该操作期间不会消耗更多的存储空间）。 旧策略的索引将有效转换为新策略，而不会影响写入可用性或针对容器预配的吞吐量。 索引转换是一个异步操作，完成该操作所需的时间取决于预配的吞吐量、项的数目及其大小。
+随时可以[使用 Azure 门户或某个支持的 SDK](how-to-manage-indexing-policy.md) 更新容器的索引策略。 索引策略的更新会触发从旧索引到新索引的转换，这种转换在联机和就地 (执行，因此在操作) 期间不会消耗额外的存储空间。 旧策略的索引将有效地转换为新策略，而不会影响在容器上预配的写入可用性、读取可用性或吞吐量。 索引转换是一个异步操作，完成该操作所需的时间取决于预配的吞吐量、项的数目及其大小。
 
 > [!NOTE]
-> 当添加范围索引或空间索引时，查询可能不会返回所有匹配的结果，并且在返回结果时不会返回任何错误。 这意味着，在索引转换完成之前，查询结果可能不一致。 可以[使用某个 SDK](how-to-manage-indexing-policy.md) 跟踪索引转换的进度。
+> 可以[使用某个 SDK](how-to-manage-indexing-policy.md) 跟踪索引转换的进度。
 
-如果新索引策略的模式设置为“一致”，当索引转换正在进行时，无法应用其他任何索引策略更改。 可以通过将索引策略的模式设置为“无”（立即删除索引），来取消正在运行的索引转换。
+在任何索引转换过程中都不会影响写入可用性。 索引转换使用预配的 ru，但其优先级低于 CRUD 操作或查询。
+
+添加新索引时，不会影响读取可用性。 索引转换完成后，查询将只利用新索引。 在索引转换过程中，查询引擎将继续使用现有索引，因此在索引转换过程中，您将看到与您在开始索引更改之前观察到的内容类似的读取性能。 添加新索引时，不会有不完整或不一致的查询结果的风险。
+
+当删除索引并立即运行对已删除索引进行筛选的查询时，不能保证有一致的或完整的查询结果。 如果删除多个索引，并且在单个索引策略更改中执行此操作，则查询引擎将在整个索引转换中保证一致的结果。 但是，如果通过多个索引策略更改来删除索引，则在所有索引转换完成之前，查询引擎不保证一致或完整的结果。 大多数开发人员不会删除索引，然后立即尝试运行利用这些索引的查询，实际上，这种情况不太可能发生。
+
+> [!NOTE]
+> 如果可能，应始终尝试将多个索引更改组合成单个索引策略修改
 
 ## <a name="indexing-policies-and-ttl"></a>索引策略和 TTL
 
-[生存时间 (TTL) 功能](time-to-live.md)要求索引编制在启用它的容器中处于活动状态。 这意味着：
+使用[生存时间 (TTL) 功能](time-to-live.md)需要编制索引。 这意味着：
 
 - 无法在索引模式设置为“无”的容器中激活 TTL。
 - 无法在已激活 TTL 的容器中将索引模式设置为“无”。

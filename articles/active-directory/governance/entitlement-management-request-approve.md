@@ -3,7 +3,7 @@ title: 批准或拒绝访问请求-Azure AD 的权利管理
 description: 了解如何使用 "我的访问门户" 批准或拒绝对 Azure Active Directory 授权管理中访问包的请求。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: mamtakumar
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78c3c177bfcd5ee969e1430306c7294f0a14b658
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4703a7d1928415d78eae63c42051542b035d3b1a
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078090"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798352"
 ---
 # <a name="approve-or-deny-access-requests-in-azure-ad-entitlement-management"></a>在 Azure AD 的权利管理中批准或拒绝访问请求
 
@@ -43,7 +43,7 @@ ms.locfileid: "85078090"
 
 如果没有电子邮件，可以通过以下步骤来查找待审批的访问请求。
 
-1. 在上登录到 "我的访问门户" [https://myaccess.microsoft.com](https://myaccess.microsoft.com) 。  （对于美国政府版，"我的 Access 门户" 链接中的域将为 `myaccess.microsoft.us` 。）
+1. 在上登录到 "我的访问门户" [https://myaccess.microsoft.com](https://myaccess.microsoft.com) 。   (美国政府，"我的 Access 门户" 链接中的域将为 `myaccess.microsoft.us` 。 ) 
 
 1. 在左侧菜单中，单击“审批”即可看到待审批的访问请求列表。****
 

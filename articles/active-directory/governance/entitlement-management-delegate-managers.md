@@ -3,7 +3,7 @@ title: 委派访问控制以访问 Azure AD 的权利管理中的包管理器-Az
 description: 了解如何委派 IT 管理员的访问控制，以访问包管理器和项目经理，使他们能够自行管理访问权限。
 services: active-directory
 documentationCenter: ''
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7acea7503e5cdde9ff55c27f16351b21453fe521
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e81389ec953829115062a31a019caf040850cbea
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85078339"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798625"
 ---
 # <a name="delegate-access-governance-to-access-package-managers-in-azure-ad-entitlement-management"></a>委派访问控制，以访问 Azure AD 的权利管理中的包管理器
 

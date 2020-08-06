@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: bc53a243a58522a76be63536aa721f269ed4759a
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9503abf147ee89ec03e7e1317df823426ea37b1c
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544041"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87758877"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes 服务群集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -63,7 +63,7 @@ AKS 群集和 AML 工作区可以位于不同的资源组中。
 
 - 本文中的 CLI 片段假设已创建 `inferenceconfig.json` 文档____。 有关如何创建此文档的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
 
-- 如果需要在群集中部署标准负载均衡器（SLB）而不是基本负载均衡器（BLB），请在 AKS 门户/CLI/SDK 中创建群集，并将其附加到 AML 工作区。
+- 如果需要标准负载均衡器 (SLB) 部署在群集中，而不是 (BLB) 的基本负载均衡器，请在 AKS 门户/CLI/SDK 中创建群集，并将其附加到 AML 工作区。
 
 - 如果附加的 AKS 群集[启用了授权 IP 范围以访问 API 服务器](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)，请为 AKS 群集启用 AML 控制平面 IP 范围。 AML 控制平面跨配对区域部署，并在 AKS 群集上部署推断 pod。 如果不访问 API 服务器，则无法部署推断 pod。 在 AKS 群集中启用 IP 范围时，请使用两个[配对区域]( https://docs.microsoft.com/azure/best-practices-availability-paired-regions)的[ip 范围](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519)。
 
@@ -75,7 +75,7 @@ __Authroized IP 范围仅适用于标准负载均衡器。__
    - 名称必须以字母开头
    - 名称必须在 Azure 区域内的全部现有计算中都是唯一的。 如果选择的名称不是唯一的，则会显示警报
    
- - 如果要将模型部署到 GPU 节点或 FPGA 节点（或任何特定的 SKU），则必须创建具有特定 SKU 的群集。 不支持在现有群集中创建辅助节点池并在辅助节点池中部署模型。
+ - 如果要将模型部署到 GPU 节点或 FPGA 节点 (或任何特定的 SKU) ，则必须创建具有特定 SKU 的群集。 不支持在现有群集中创建辅助节点池并在辅助节点池中部署模型。
  
  
 
@@ -166,7 +166,7 @@ az ml computetarget create aks -n myaks
 
 * [创建 AKS 群集 (CLI)](https://docs.microsoft.com/cli/azure/aks?toc=%2Fazure%2Faks%2FTOC.json&bc=%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
 * [创建 AKS 群集（门户）](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
-* [创建 AKS 群集（Azure 快速入门模板上的 ARM 模板）](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
+* [在 Azure 快速入门模板上创建 AKS 群集 (ARM 模板) ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aks-azml-targetcompute)
 
 以下示例演示如何将现有 AKS 群集附加到工作区：
 
@@ -185,6 +185,9 @@ cluster_name = 'myexistingcluster'
 attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                          cluster_name = cluster_name)
 aks_target = ComputeTarget.attach(ws, 'myaks', attach_config)
+
+# Wait for the attach process to complete
+aks_target.wait_for_completion(show_output = True)
 ```
 
 有关此示例中使用的类、方法和参数的详细信息，请参阅以下参考文档：
@@ -269,20 +272,20 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 在 Azure 机器学习中，将使用 "部署"，以提供更常见的功能并清理项目资源。 Azure 机器学习考虑部署部分的步骤如下：
 
 1. 压缩项目文件夹中的文件，并忽略在. amlignore 或. .gitignore 中指定的文件
-1. 增加计算群集（与 Kubernetes 相关）
-1. 构建 dockerfile 并将其下载到计算节点（与 Kubernetes 相关）
+1. 向上缩放计算群集 (与 Kubernetes) 
+1. 构建 dockerfile 并将其下载到计算节点 (与 Kubernetes) 
     1. 系统计算的哈希值为： 
         - 基本映像 
-        - 自定义 docker 步骤（请参阅[使用自定义 docker 基本映像部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)）
-        - Conda 定义 YAML （请参阅[Create & use software 环境 in Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)）
-    1. 系统使用此哈希作为工作区 Azure 容器注册表（ACR）的查找中的密钥
+        - 自定义 docker 步骤 (参阅[使用自定义 docker 基本映像部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)) 
+        - Conda 定义 YAML (参阅[在 Azure 机器学习中创建 & 使用软件环境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)) 
+    1. 系统使用此哈希作为工作区 Azure 容器注册表 (ACR 的查找密钥) 
     1. 如果找不到，它将在全局 ACR 中查找匹配项
-    1. 如果找不到，系统将生成新映像（将缓存并向工作区 ACR 注册）
+    1. 如果找不到它，系统将生成一个新的映像 (将使用工作区 ACR 缓存并注册该映像) 
 1. 将压缩的项目文件下载到计算节点上的临时存储
 1. 解压缩项目文件
 1. 计算节点正在执行`python <entry script> <arguments>`
 1. 将日志、模型文件和其他写入的文件保存到 `./outputs` 与工作区关联的存储帐户
-1. 缩减计算，包括删除临时存储（与 Kubernetes 相关）
+1. 缩减计算，包括删除临时存储 (与 Kubernetes) 
 
 当你使用 AKS 时，计算的向上和向下缩放由 Kubernetes 控制，使用上图中所述的 dockerfile。 
 
@@ -428,7 +431,7 @@ print(token)
 * [虚拟网络中的安全试验和推理](how-to-enable-virtual-network.md)
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [部署疑难解答](how-to-troubleshoot-deployment.md)
-* [更新 web 服务](how-to-deploy-update-web-service.md)
+* [更新 Web 服务](how-to-deploy-update-web-service.md)
 * [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
 * [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)

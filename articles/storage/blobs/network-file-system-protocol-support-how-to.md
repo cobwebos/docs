@@ -1,24 +1,24 @@
 ---
-title: 使用 NFS 3.0 协议（预览版）在 Linux 上装载 Azure Blob 存储 |Microsoft Docs
-description: 了解如何从基于 Linux 的 Azure 虚拟机（VM）或使用 NFS 3.0 协议本地运行的 Linux 系统的 Blob 存储中装载容器。
+title: 使用 NFS 3.0 协议装载 Azure Blob 存储 (预览) |Microsoft Docs
+description: 了解如何从 Azure 虚拟机 (VM) 或使用 NFS 3.0 协议本地运行的客户端在 Blob 存储中装载容器。
 author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: d3907967572b22e7a70316080b08a4368a9805ce
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 2517a0ac8edf30ac041708a57b166af6eb36440a
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372903"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760782"
 ---
-# <a name="mount-blob-storage-on-linux-using-the-network-file-system-nfs-30-protocol-preview"></a>使用网络文件系统（NFS）3.0 协议（预览版）在 Linux 上装载 Blob 存储
+# <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>使用网络文件系统 (NFS) 3.0 协议 (预览中装载 Blob 存储) 
 
-你可以从基于 Linux 的 Azure 虚拟机（VM）或使用 NFS 3.0 协议本地运行的 Linux 系统的 Blob 存储中装载容器。 本文提供了分步指南。 若要了解有关 Blob 存储中的 NFS 3.0 协议支持的详细信息，请参阅[Azure Blob 存储（预览版）中的网络文件系统（NFS）3.0 协议支持](network-file-system-protocol-support.md)。
+可以通过基于 Windows 或 Linux 的 Azure 虚拟机 (VM) 或使用 NFS 3.0 协议在本地运行的 Windows 或 Linux 系统，在 Blob 存储中装载容器。 本文提供了分步指南。 若要了解有关 Blob 存储中的 NFS 3.0 协议支持的详细信息，请参阅[Azure Blob 存储中的网络文件系统 (nfs) 3.0 协议支持 (预览) ](network-file-system-protocol-support.md)。
 
 > [!NOTE]
 > Azure Blob 存储中的 NFS 3.0 协议支持提供公共预览版，并在以下区域提供：美国东部、美国中部和加拿大中部。
@@ -69,7 +69,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFS
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumHns  
 ```
 
-## <a name="step-3-create-an-azure-virtual-network-vnet"></a>步骤3：创建 Azure 虚拟网络（VNet）
+## <a name="step-3-create-an-azure-virtual-network-vnet"></a>步骤3：创建 Azure 虚拟网络 (VNet) 
 
 存储帐户必须包含在 VNet 中。 VNet 使客户端可以安全地连接到你的存储帐户。 若要详细了解 VNet 以及如何创建 VNet，请参阅[虚拟网络文档](https://docs.microsoft.com/azure/virtual-network/)。
 
@@ -78,7 +78,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 
 ## <a name="step-4-configure-network-security"></a>步骤4：配置网络安全
 
-保护帐户中数据的唯一方法是使用 VNet 和其他网络安全设置。 用于保护数据的任何其他工具（包括帐户密钥授权、Azure Active Directory （AD）安全和访问控制列表（Acl））尚不支持在其上启用了 NFS 3.0 协议支持的帐户。 
+保护帐户中数据的唯一方法是使用 VNet 和其他网络安全设置。 用于保护数据的任何其他工具（包括帐户密钥授权、Azure Active Directory (AD) 安全性和访问控制列表 () Acl）在其上启用了 NFS 3.0 协议支持的帐户中不受支持。 
 
 若要保护帐户中的数据，请参阅以下建议： [Blob 存储的网络安全建议](security-recommendations.md#networking)。
 
@@ -96,10 +96,10 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 |性能|高级|
 |帐户类型|BlockBlobStorage|
 |复制|本地冗余存储 (LRS)|
-|连接方法|公用终结点（选定的网络）或专用终结点|
+|连接方法|公共终结点 (所选网络) 或专用终结点|
 |需要安全传输|已禁用|
-|分层命名空间|Enabled|
-|NFS V3|Enabled|
+|分层命名空间|已启用|
+|NFS V3|已启用|
 
 您可以接受所有其他设置的默认值。 
 
@@ -117,6 +117,10 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 
 ## <a name="step-7-mount-the-container"></a>步骤7：装载容器
 
+在 Windows 或 Linux 系统上创建一个目录，然后在存储帐户中装载一个容器。
+
+### <a name="linux"></a>[Linux](#tab/linux)
+
 1. 在 Linux 系统上，创建一个目录。
 
    ```
@@ -133,16 +137,35 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 
    - 将 `<container-name>` 占位符替换为你的容器的名称。
 
+
+### <a name="windows"></a>[Windows](#tab/windows)
+
+1. 打开 " **Windows 功能**" 对话框，并打开 " **NFS 客户端**" 功能。 
+
+   ![网络文件系统客户端功能](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
+
+2. 使用[mount](https://docs.microsoft.com/windows-server/administration/windows-commands/mount)命令装载容器。
+
+   ```
+   mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *
+   ```
+
+   - 将 `<storage-account-name>` 此命令中出现的占位符替换为你的存储帐户的名称。  
+
+   - 将 `<container-name>` 占位符替换为你的容器的名称。
+
+---
+
 ## <a name="resolve-common-issues"></a>解决常见问题
 
 |问题/错误 | 解决方法|
 |---|---|
-|`Access denied by server while mounting`|确保你的客户端在受支持的子网中运行。 请参阅[支持的网络位置](network-file-system-protocol-support.md#supported-network-connections)。|
-|`No such file or directory`| 确保在验证该功能已注册之后，确定要装载的容器已创建。 请参阅[步骤2：验证是否已注册该功能](#step-2-verify-that-the-feature-is-registered)。另外，请确保将 mount 命令和它的参数直接输入到终端中。 如果将此命令的任何部分复制并粘贴到另一个应用程序的终端中，则粘贴的信息中的隐藏字符可能会导致出现此错误。|
+|`Access denied by server while mounting`|请确保客户端在支持的子网中运行。 请参阅[支持的网络位置](network-file-system-protocol-support.md#supported-network-connections)。|
+|`No such file or directory`| 请确保在验证功能已注册后创建要装载的容器。 请参阅[步骤2：验证是否已注册该功能](#step-2-verify-that-the-feature-is-registered)。另外，请确保将 mount 命令和它的参数直接输入到终端中。 如果你将该命令的任何部分从另一个应用程序复制并粘贴到终端，粘贴的信息中的隐藏字符可能会导致出现此错误。|
 
 ## <a name="see-also"></a>另请参阅
 
-[Azure Blob 存储中的网络文件系统（NFS）3.0 协议支持（预览版）](network-file-system-protocol-support.md)
+[Azure Blob 存储中的网络文件系统 (NFS) 3.0 协议支持 (预览) ](network-file-system-protocol-support.md)
 
 
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: 388fb7e36a823d7f6e9ee1d58220d3a1008d8cec
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b7bcdaf9e3935c01a0906ecfaa1570e4bc7caba9
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498033"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798114"
 ---
 # <a name="offer-listing-best-practices"></a>套餐列出最佳做法
 
@@ -22,7 +22,7 @@ ms.locfileid: "87498033"
 
 | 店面设置 | 最佳做法 |
 |:--- |:--- |  
-| 产品名称 | 对于应用程序，提供清晰的标题，其中包括搜索关键字，以帮助客户发现你的产品/服务。 <br> <br> 对于咨询服务，请遵循以下格式： [产品名称： [持续时间] [产品类型] （例如 Contoso：2周实现） <br> <br> 遵守品牌准则：在引用 Microsoft 商标以及 Microsoft 软件、产品和服务的名称时，请遵循[Microsoft 商标和品牌准则](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)以及其他相关的特定于产品的指导原则。 |
+| 产品名称 | 对于应用程序，提供清晰的标题，其中包括搜索关键字，以帮助客户发现你的产品/服务。 <br> <br> 对于咨询服务，请遵循以下格式： [产品名称： [Duration] [产品类型] (例如，Contoso：2周实现)  <br> <br> 遵守品牌准则：在引用 Microsoft 商标以及 Microsoft 软件、产品和服务的名称时，请遵循[Microsoft 商标和品牌准则](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)以及其他相关的特定于产品的指导原则。 |
 | 产品/服务描述 | 在前几个句子中提供说明产品/服务的价值主张的清楚说明。  请记住，这些句子可以在搜索引擎结果中使用。 值主张的核心组件应包括： <ul> <li>产品或解决方案的说明。 </li> <li> 受益于产品或解决方案的用户角色。 </li> <li> 客户需要或获得产品或解决方案地址。 </li> </ul> <br> 尽可能使用行业标准词汇或基于权益的措辞。  不要依赖于特性和功能来销售产品。  而应该强调提供的价值。 <br> <br> 对于咨询服务列表，请明确陈述您提供的专业服务。 |
 
 本部分中的表格提供有关创建具有吸引力的市场套餐的建议。 若要编写和配置市场营销材料，请转到[合作伙伴中心](https://partner.microsoft.com/dashboard/commercial-marketplace/)。 
@@ -53,8 +53,8 @@ Microsoft AppSource 和 Azure Marketplace 是用于满足独特客户需求的�
 
 选择最适合你的产品/服务和目标受众的类别和子类别。 可以选择：
 
-* 最多两（2）个类别，包括主类别和辅助类别（可选）。
-* 每个主节点和/或辅助类别最多包含两个（2）个子类别。 如果未选择任何子类别，你的产品/服务仍将仅在所选类别上可发现。
+* 最多2个 (2 个) 类别，包括 (可选) 的主要和辅助类别。
+* 每个主节点和/或辅助类别最多 (2 个) 子类别。 如果未选择任何子类别，你的产品/服务仍将仅在所选类别上可发现。
 
 [!INCLUDE [categories and subcategories](./includes/categories.md)]
 
@@ -64,7 +64,7 @@ Microsoft AppSource 和 Azure Marketplace 是用于满足独特客户需求的�
 
 | SaaS 产品/服务    | SaaS 产品/服务   | SaaS 产品/服务  | SaaS 产品/服务   | SaaS 产品/服务   | SaaS 产品/服务   | SaaS 产品/服务    | 适用店面 | 适用店面 |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
-| 计费计费 | Microsoft 365 外接程序 | 与我联系 | Transact-sql （至少1个计划） | 仅私有计划 | 仅限公用计划 | 公用 & 专用计划 | AppSource | Azure 市场 |
+| 计费计费 | Microsoft 365 外接程序 | 与我联系 | 事务 (至少有1个计划)  | 仅私有计划 | 仅限公用计划 | 公用 & 专用计划 | AppSource | Azure 市场 |
 |  | X |  |  |  |  |  | X |  |
 | X |  |  | X | X |  |  |  | X |
 | X |  |  | X |  | X |  |  | X |
@@ -93,13 +93,13 @@ Microsoft AppSource 和 Azure Marketplace 是用于满足独特客户需求的�
 | **Distribution** | 家 <br> 包裹 & 包裹寄送 |  
 | **教育** | 高等教育 <br> 主 & 辅助 Edu/K-12 <br> 博物馆 & 库 |
 | **金融服务** | 银行 & 资本市场 <br> 保险 | 
-| **Government** |  防御 & 情报 <br> 民用政府 <br> 公共安全 & 司法 |
+| **政府机关** |  防御 & 情报 <br> 民用政府 <br> 公共安全 & 司法 |
 | **医疗保健** | 运行状况 Payor <br> 运行状况提供程序 <br> 医药业 | 
 | **宾馆 & 旅行** | 旅游和运输业 <br> 宾馆 & 休闲 <br> 餐厅 & 食物服务 | 
 | **制造 & 资源** | 化学 & Agrochemical <br> 离散制造业 <br> 能源 | 
 | **媒体 & 通信** | 媒体 & 娱乐 <br> 电信 | 
 | **其他公共部门行业** | 林 & 钓鱼 <br> 非营利组织 | 
-| **专业服务** | 合作伙伴专业服务 <br> 合法 | 
+| **专业服务** | 合作伙伴专业服务 <br> Legal | 
 | **房地产** | |
 
 仅 Microsoft AppSource 行业：
@@ -119,9 +119,9 @@ Microsoft AppSource 和 Azure Marketplace 是用于满足独特客户需求的�
 ## <a name="storefront-marketing-details"></a>店面市场营销详细信息
 | 店面设置 | 最佳做法 |
 |:--- |:--- |  
-| 产品/服务徽标（PNG 格式，48&nbsp;&times;&nbsp;48）：搜索页 | 针对数字媒体设计和优化徽标。<br>将 PNG 格式的徽标上传到产品/服务的搜索页。 |
-| 产品/服务徽标（PNG 格式， 216&nbsp;&times;&nbsp;216）：应用详细信息页 | 针对数字媒体设计和优化徽标。<br>将 PNG 格式的徽标上传到产品/服务的应用详细信息列表页。 |
-| “了解详细信息”文档 | 在“了解详细信息”下包含支持性的销售和市场营销资产，例如： <ul> <li> 白皮书； </li> <li> 小册子； </li> <li> 清单； </li> <li> PowerPoint 演示文稿。</li> </ul>以 PDF 格式保存所有文件。 此处的目标应该是教育客户，而不是推销。 <br><br>将应用登陆页的链接添加到所有文档，并添加 URL 参数来帮助跟踪访问量和试用量。 |
+| 提供徽标 (PNG 格式，介于216×216和 350 x 350 像素之间) ：应用详细信息页 | 针对数字媒体设计和优化徽标。<br>将 PNG 格式的徽标上传到产品/服务的应用详细信息列表页。 合作伙伴中心会将其调整为所需的徽标大小。 |
+|  (PNG 格式提供徽标，48×48像素) ：搜索页面 | 合作伙伴中心将从你上传的大型徽标生成此徽标。 您可以选择将其替换为不同的图像。 |
+| “了解详细信息”文档 | 在“了解详细信息”下包含支持性的销售和市场营销资产，例如：<ul><li>白皮书</li><li> 手册</li><li>清单；</li><li> PowerPoint 演示文稿</li></ul><br>以 PDF 格式保存所有文件。 此处的目标应该是教育客户，而不是推销。<br><br>将应用登陆页的链接添加到所有文档，并添加 URL 参数来帮助跟踪访问量和试用量。 |
 | 视频：仅限 AppSource、咨询服务和 SaaS 产品/服务 | 最强大的视频能够以叙事形式传达产品/服务的价值：<ul> <li> 让客户而不是你的公司成为故事的主角。 </li> <li> 视频应该解决目标客户面临的首要难题及其目标。 </li> <li> 建议长度：60-90 秒。</li> <li> 包含使用视频名称的搜索关键字。 </li> <li> 考虑添加其他视频，例如操作说明、入门或客户荐言。 </li> </ul> |
 | 屏幕截图 (1280&nbsp;&times;&nbsp;720) | 最多添加 5 张屏幕截图：<br>在文件名中包含搜索关键字。 |
 

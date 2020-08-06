@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 5cea220b44618787e34ce2297921d715476b7f14
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 31bb6dd188786fda532bf85d071e119e69e5bccc
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87280947"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797859"
 ---
 # <a name="consulting-service-offers"></a>咨询服务产品
 
@@ -72,7 +72,7 @@ ms.locfileid: "87280947"
 
 系统集成商合作伙伴可以为以下20个国家/地区提交咨询服务产品/服务：
 
-| 国家/地区  | （续）   | （续）  | （续）  |
+| 国家/地区  |  (继续 .。。)    |  (继续 .。。)   |  (继续 .。。)   |
 |---------|----------|----------|----------|
 | 澳大利亚 | 比利时 | Canada | 丹麦 |
 | 芬兰  | 法国 | 德国  | 印度   |
@@ -86,12 +86,12 @@ ms.locfileid: "87280947"
 首先在市场中[注册](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)公司信息。 有关注册要求的完整清单，请参考[成为市场中的发布者](become-publisher.md)。 
 
 ## <a name="prepare-your-publishing-artifacts"></a>准备发布项目
-在注册之前，可以开始收集和准备内容，以帮助通过列表向目标客户主张服务和解决方案的价值。 
+在注册之前，可以开始收集和准备内容，以帮助通过列表向目标客户主张服务和解决方案的价值。
 
 |设置新的发布服务器  |
 |---------|
 |MPN ID     |
-|公司徽标（48 x 48、216 x 216 像素）     |
+|公司徽标： 48 x 48 像素 (可选) ，216 x 216 像素– 350 x 350 像素 (必需)   |
 |潜在客户目标     |
 ||
 

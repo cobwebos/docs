@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: 64b3bf87df7d0b10f8a69e8303010f64b3e68f79
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 22b00b41c7fce0af57fd9f92b0f42bbd9412afda
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87507219"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87771034"
 ---
 ### <a name="functional-limits"></a>功能限制
 
@@ -31,7 +31,7 @@ ms.locfileid: "87507219"
 | 查询 | `AND`  /  `OR` 查询中的表达式数 | 50 | 是 |
 | 查询 | 子句中的数组项数 `IN`  /  `NOT IN` | 50 | 是 |
 | 查询 | 查询中的字符数 | 8,000 | 是 |
-| 查询 | `JOINS`查询中的数目 | 1 | 是 |
+| 查询 | `JOINS`查询中的数目 | 5 | 是 |
 
 ### <a name="rate-limits"></a>速率限制
 
@@ -47,6 +47,6 @@ ms.locfileid: "87507219"
 
 ### <a name="other-limits"></a>其他限制
 
-可在 GitHub 中的规范文档中找到有关 Azure 数字孪生模型的 DTDL 文档中的数据类型和字段的限制：[*数字孪生定义语言（DTDL）-版本 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
+可在 GitHub 中的规范文档中找到有关 Azure 数字孪生模型的 DTDL 文档中的数据类型和字段的限制：[*数字孪生定义语言 (DTDL) 版本 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)。
  
 在预览期间，查询延迟的详细信息和其他有关编写查询的准则可在[*如何：查询克隆图形*](../articles/digital-twins/how-to-query-graph.md)中找到。

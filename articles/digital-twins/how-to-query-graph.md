@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 5d9d7c59244474c76e63271c0be92f835c2ed087
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 3250e4c35f6b898f4431d0f2fe15f84d915c1c8e
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543344"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760390"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查询 Azure 数字孪生克隆图形
 
@@ -26,7 +26,7 @@ ms.locfileid: "87543344"
 
 本部分包含的示例查询阐释了查询语言结构并执行了可能的查询操作。
 
-获取按属性（包括 ID 和元数据）的[数字孪生](concepts-twins-graph.md)：
+获取[数字孪生](concepts-twins-graph.md)按属性 (包括 ID 和元数据) ：
 ```sql
 SELECT  * 
 FROM DigitalTwins T  
@@ -64,7 +64,7 @@ WHERE property = 42
 SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1')
 ```
 
-若要指定多个要搜索的非克隆集合（如使用时一样 `JOIN` ），请添加 `twinCollection` 参数： `IS_OF_MODEL(twinCollection, twinTypeName)` 。
+若要在有多个 (时指定要搜索的非克隆集合（如 `JOIN`) 使用时一样），请添加 `twinCollection` 参数： `IS_OF_MODEL(twinCollection, twinTypeName)` 。
 下面是添加此参数值的查询示例：
 
 ```sql
@@ -113,7 +113,7 @@ WHERE T.$dtId = 'ABC'
 ```
 
 >[!NOTE] 
-> 开发人员无需将此 `JOIN` 与子句中的键值相关联 `WHERE` （或使用定义内联指定键值 `JOIN` ）。 此关联由系统自动计算，因为关系属性本身标识目标实体。
+> 开发人员无需将此 `JOIN` 与子句中的键值相关联 `WHERE` (或使用定义) 以内联方式指定键值 `JOIN` 。 此关联由系统自动计算，因为关系属性本身标识目标实体。
 
 #### <a name="query-the-properties-of-a-relationship"></a>查询关系的属性
 
@@ -129,7 +129,7 @@ WHERE T.$dtId = 'ABC'
 AND R.reportedCondition = 'clean'
 ```
 
-在上面的示例中，请注意*reportedCondition*是*servicedBy*关系本身的属性（而不是具有*servicedBy*关系的某些数字类型）。
+在上面的示例中，请注意， *reportedCondition*是*servicedBy*关系本身的属性， (不属于具有*servicedBy*关系) 的某些数字克隆。
 
 ## <a name="run-queries-with-an-api-call"></a>使用 API 调用运行查询
 
@@ -172,7 +172,7 @@ catch (RequestFailedException e)
 在预览期间，使用还有其他限制 `JOIN` 。
 * 语句内不支持子查询 `FROM` 。
 * `OUTER JOIN`不支持语义，这意味着，如果关系的排名为零，则将从输出结果集中消除整个 "行"。
-* 公共预览期间，图形遍历深度受到限制： `JOIN` 每个查询只允许有一个。
+* 预览期间，图形遍历深度限制为每个查询的五个 `JOIN` 级别。
 * 操作的源 `JOIN` 受到限制：查询必须声明查询开始处的孪生。
 
 ## <a name="query-best-practices"></a>查询最佳做法
@@ -190,7 +190,7 @@ catch (RequestFailedException e)
         JOIN Floor RELATED Building.contains
         WHERE Building.$dtId = @buildingId
         ``` 
-    2. 若要查找房间，而不是逐个考虑每个楼层并运行 `JOIN` 查询来查找每个房间的房间，则可以使用建筑物中的一组楼层进行查询（在下面的查询中，命名为*Floor* ）。
+    2. 若要查找房间，而不是逐个考虑并运行 `JOIN` 查询来查找每个房间的房间，可以在下面的查询中使用名为*Floor*的建筑物 (中的楼层集合进行查询) 。
 
         在客户端应用中：
         ```csharp

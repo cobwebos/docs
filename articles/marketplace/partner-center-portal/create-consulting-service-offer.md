@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 11f4091489a8ef8c980ece0589945c8e1c7dc8b8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8dd0abb5c127d51a0feaf0c71188b7fc48e2fd69
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317767"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798216"
 ---
 # <a name="create-a-consulting-service-offer"></a>创建咨询服务套餐
 
@@ -77,8 +77,8 @@ ms.locfileid: "87317767"
 下面是一些其他潜在客户管理资源：
 
 - [潜在客户管理概述](commercial-marketplace-get-customer-leads.md)
-- [潜在客户管理常见问题](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)）
-- [常见潜在客户配置错误](../lead-management-for-cloud-marketplace.md#publishing-config-errors)）
+- [潜在客户管理常见问题](../lead-management-for-cloud-marketplace.md#frequently-asked-questions)) 
+- [常见的潜在客户配置错误](../lead-management-for-cloud-marketplace.md#publishing-config-errors)) 
 - [潜在客户管理概述](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF（确保弹出窗口阻止程序处于关闭状态）
 
 选择“保存草稿”，然后继续。
@@ -120,7 +120,7 @@ ms.locfileid: "87317767"
 1. 如果选择了除*Azure 之外的主要产品，* 可以选择最多选择**两个行业和两****个行业**。 这样会使 AppSource 中的客户更轻松地找到你的产品/服务。 请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的行业和纵向完整列表。
 1. 最多添加贵公司已赢得的三个资格，以显示在咨询服务产品列表中。 至少需要一个资格，Azure 专家 MSP 和 Azure 网络 MSP 除外。
 
-选择“保存草稿”，然后继续操作。
+选择“保存草稿”，然后继续。
 
 ## <a name="offer-listing"></a>产品/服务列表
 
@@ -129,7 +129,7 @@ ms.locfileid: "87317767"
 > [!NOTE]
 > 如果产品/服务说明的开头是“此应用程序仅以 [非英语语言] 推出”，则产品/服务详细信息不必是英语。&quot;&quot;还可以提供一个有用的链接，来使用与产品/服务列表详细信息中所使用的语言不同的语言提供内容。
 
-下面是一个示例，说明如何在 Azure Marketplace 中显示提供信息（任何列出的价格仅用于举例目的，而不打算反映实际成本）：
+下面是一个示例，说明如何在 Azure Marketplace 中显示产品/服务 (任何列出的价格仅用于举例目的，而不用于反映实际成本) ：
 
 :::image type="content" source="media/example-consulting-service-offer.png" alt-text="说明此产品/服务在 Azure Marketplace 中的显示方式。":::
 
@@ -140,11 +140,11 @@ ms.locfileid: "87317767"
 3. 解决方案领域
 4. 行业
 5. 产品名称
-6. 摘要
-7. 说明
+6. 总结
+7. 描述
 8. 屏幕截图/视频
 
-<br>以下示例显示了产品/服务信息在 Microsoft AppSource 中的显示方式（任何列出的价格仅用于举例目的，不打算反映实际成本）：
+<br>以下示例显示了产品/服务信息在 Microsoft AppSource 中的显示方式， (所有的价格仅用于举例目的，而不用于反映实际成本) ：
 
 :::image type="content" source="media/example-consulting-service-offer-appsource.png" alt-text="说明了此产品/服务在 Microsoft AppSource 中的显示方式。":::
 
@@ -155,8 +155,8 @@ ms.locfileid: "87317767"
 3. 产品
 4. 行业
 5. 产品名称
-6. 摘要
-7. 说明
+6. 总结
+7. 描述
 8. 屏幕截图/视频
 9. 文档
 
@@ -205,14 +205,16 @@ ms.locfileid: "87317767"
 >[!Note]
 >如果在上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 https://upload.xboxlive.com 服务。
 
-#### <a name="store-logos"></a>Store 徽标
+#### <a name="store-logos"></a>应用商店徽标
 
-按以下每个像素大小提供产品/服务徽标的 PNG 文件：
+为**大**徽标 (提供) 216 x 216 和 350 x 350 像素之间的 PNG 文件。 合作伙伴中心将使用此来创建) 大小徽标的**小型** (48 x 48 像素。 您可以选择将其替换为不同的图像。
 
-- 小图 (48 x 48)
-- 大图 (216 x 216)
+以下两种徽标大小都需要在列表中的不同位置使用：
 
-所有徽标都是必需的，并且在市场列表的不同位置上使用。
+- 小 (48 x 48)
+- **大型** (216 x 216 和 350 x 350) 
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>屏幕截图（可选）
 

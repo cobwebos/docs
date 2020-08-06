@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: f9d7e88e78800df07dfe82d7336324eef38b92d5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7a0f04344d2e4213bbbabb63d57bdaf933154388
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326660"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797878"
 ---
 # <a name="create-an-azure-application-offer"></a>创建 Azure 应用程序产品/服务
 
@@ -157,7 +157,7 @@ ms.locfileid: "87326660"
 
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
-- 至少一个和多达两个类别，包括主类别和辅助类别（可选）。
+- 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
 - 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
 
 请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
@@ -175,7 +175,7 @@ ms.locfileid: "87326660"
 > [!NOTE]
 > 只要产品/服务说明的开头是短语“此应用程序仅以 [非英语语言] 推出”，产品/服务内容（如说明、文档、屏幕截图和使用条款）便不必是英语。 还可以提供一个有用链接 URL，使用与产品/服务列表内容中所使用的语言不同的语言提供内容。
 
-下面是一个示例，说明如何在 Azure Marketplace 中显示提供信息（任何列出的价格仅用于举例目的，而不打算反映实际成本）：
+下面是一个示例，说明如何在 Azure Marketplace 中显示产品/服务 (任何列出的价格仅用于举例目的，而不用于反映实际成本) ：
 
 :::image type="content" source="media/example-azure-marketplace-app.png" alt-text="说明此产品/服务在 Azure Marketplace 中的显示方式。":::
 
@@ -183,12 +183,12 @@ ms.locfileid: "87326660"
 
 1. 徽标
 2. 类别
-3. 支持地址（链接）
+3. 支持地址 (链接) 
 4. 使用条款
-5. 隐私策略地址（链接）
+5. 隐私策略地址 (链接) 
 6. 产品名称
 7. 总结
-8. 描述
+8. 说明
 9. 屏幕截图/视频
 
 <br>下面是有关如何在 Azure 门户中显示产品/服务的示例：
@@ -197,9 +197,9 @@ ms.locfileid: "87326660"
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. 标题
-2. 描述
-3. 有用链接
+1. Title
+2. 说明
+3. 有用的链接
 4. 屏幕截图
 
 #### <a name="name"></a>名称
@@ -247,14 +247,15 @@ ms.locfileid: "87326660"
 
 #### <a name="store-logos"></a>Microsoft Store 徽标
 
-按以下三个像素大小提供产品/服务徽标的 PNG 文件：
+为**大**徽标 (提供) 216 x 216 和 350 x 350 像素之间的 PNG 文件。 合作伙伴中心将使用此来创建一个**小型** (48 x 48 像素) 和一个**中等** (90 x 90 像素) 大小徽标。 您可以选择将它们替换为不同的图像。
+
+所有三种徽标大小都需要在列表中的不同位置使用：
 
 - 小图 (48 x 48)
 - 中图 (90 x 90)
-- 大图 (216 x 216)
-- 宽图 (255 x 115)
+- **大型** (216 x 216 和 350 x 350) 
 
-所有三种徽标都是必需的，会在列表的不同位置上使用。
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>屏幕截图
 
@@ -268,7 +269,7 @@ ms.locfileid: "87326660"
 
 - [市场产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)
 
-选择“保存草稿”，然后继续操作。
+选择“保存草稿”，然后继续。
 
 ## <a name="preview-audience"></a>预览受众
 
@@ -284,7 +285,7 @@ ms.locfileid: "87326660"
 > [!NOTE]
 > 预览受众不同于专用受众。 预览受众可以在向市场发布产品/服务之前来访问它。 他们可以查看和验证所有计划，包括仅在将产品/服务完整发布到市场之后才向专用受众提供的计划。 专用受众（在计划“定价和可用性”选项卡中定义）具有对特定计划的独占访问权限。
 
-选择“保存草稿”，然后继续操作。
+选择“保存草稿”，然后继续。
 
 ## <a name="technical-configuration"></a>技术配置
 
@@ -299,18 +300,18 @@ ms.locfileid: "87326660"
 
 技术配置定义用于标识服务的详细信息（租户 ID 和应用 ID），服务将使用[市场计量服务 API](./marketplace-metering-service-apis.md) 为托管应用程序发出计量事件。  输入发出计量事件时服务将使用的标识。
 
-* **Azure AD 租户 ID** （必需）：在 Azure 门户中，必须[创建 Azure Active Directory （AD）应用](../../active-directory/develop/howto-create-service-principal-portal.md)，以便我们可以验证两个服务之间的连接是否在经过身份验证的通信之后。 若要查找[租户 ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)，请前往 Azure Active Directory，选择 "**属性**"，然后查找列出的**目录 ID**号（例如50c464d3-4930-494c-963c-1e951d15360e）。
-* **Azure AD 应用 id** （必需）：还需要[应用程序 id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)）和身份验证密钥。 若要获取这些值，请转到 Azure Active Directory 并选择“应用注册”，然后查找列出的“应用程序 ID”编号（例如 50c464d3-4930-494c-963c-1e951d15360e）。 若要找到身份验证密钥，请转到“设置”并选择“密钥”。 你将需要提供说明和持续时间，然后系统将向你提供一个数值。
+* **Azure AD 租户 ID** (必需) ：在 Azure 门户内，你必须[创建 Azure Active Directory (AD) 应用](../../active-directory/develop/howto-create-service-principal-portal.md)，以便我们可以验证两个服务之间的连接是否在经过身份验证的通信之后。 若要查找[租户 ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) ，请参阅 Azure Active Directory 并选择 "**属性**"，然后查找列出 (的**目录 ID**号，例如 50c464d3-4930-494c-963c-1e951d15360e) 。
+* **Azure AD 应用 id** (必需) ：还需要[应用程序 id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) 和身份验证密钥。 若要获取这些值，请转到 Azure Active Directory 并选择“应用注册”，然后查找列出的“应用程序 ID”编号（例如 50c464d3-4930-494c-963c-1e951d15360e）。 若要找到身份验证密钥，请转到“设置”并选择“密钥”。 你将需要提供说明和持续时间，然后系统将向你提供一个数值。
 
 >[!Note]
 >Azure 应用程序 ID 将与你的发布者 ID 相关联，只能在此发布者帐户中重复使用。
 
 >[!Note]
->如果要使用[Batch 用量事件](marketplace-metering-service-apis.md#metered-billing-batch-usage-event)，则需要此配置。  如果要提交[使用情况事件](marketplace-metering-service-apis.md#metered-billing-single-usage-event)，还可以使用[实例元数据服务](../../active-directory/managed-identities-azure-resources/overview.md)获取[JSON web 令牌（JWT）持有者令牌](pc-saas-registration.md#how-to-get-the-publishers-authorization-token)。
+>如果要使用) 的[批处理使用情况事件](marketplace-metering-service-apis.md#metered-billing-batch-usage-event)，则需要此配置。  如果要提交[使用情况事件](marketplace-metering-service-apis.md#metered-billing-single-usage-event)) ，还可以使用[实例元数据服务](../../active-directory/managed-identities-azure-resources/overview.md)获取[JSON web 令牌 (JWT) 持有者令牌](pc-saas-registration.md#how-to-get-the-publishers-authorization-token)) 。
 
 ## <a name="plan-overview"></a>计划概述
 
-使用此选项卡可以在相同产品/服务内提供不同的计划选项。 这些计划（以前称为 Sku）在计划类型（解决方案模板和托管应用程序）、盈利或受众方面可能有所不同。 至少配置一个计划，以便在市场中列出你的产品/服务。
+使用此选项卡可以在相同产品/服务内提供不同的计划选项。 这些计划 (以前称为 Sku) 不同于计划类型 (解决方案模板与托管应用程序) 、盈利或受众不同。 至少配置一个计划，以便在市场中列出你的产品/服务。
 
 创建后，你将在此选项卡上看到计划名称、ID、计划类型、可用性（公共或专用）、当前发布状态和任何可用操作。
 
@@ -358,7 +359,7 @@ ms.locfileid: "87326660"
 
 Azure 政府服务处理受特定政府法规和要求约束的数据。 例如，FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4 和 CJIS。 若要了解这些计划的认证，可以提供多达 100 个链接来描述它们。 这些链接可以直接链接到计划上的列表，也可以是你自己网站上关于这些认证的符合性说明的链接。 这些链接仅对 Azure 政府客户可见。
 
-选择“保存草稿”，然后继续操作。
+选择“保存草稿”，然后继续。
 
 ### <a name="plan-listing"></a>计划列表
 
@@ -376,7 +377,7 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 
 描述此软件计划的独特之处，以及产品/服务内的计划之间的差异。 不要描述产品/服务，仅描述计划。 计划说明最多可以包含 2,000 个字符。
 
-选择“保存草稿”，然后继续操作。
+选择“保存草稿”，然后继续。
 
 ### <a name="availability-solution-template-plans-only"></a>可用性（仅限解决方案模板计划）
 
@@ -397,7 +398,7 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 
 如果你的解决方案模板旨在仅当通过其他解决方案模板或托管应用程序引用时才间接部署，请选中此复选框以发布你的解决方案模板，但是会使它向客户隐藏，从而无法直接搜索和浏览它。
 
-选择“保存草稿”，然后继续操作。
+选择“保存草稿”，然后继续。
 
 ### <a name="pricing-and-availability-managed-application-plans-only"></a>定价和可用性（仅限托管应用程序计划）
 
@@ -439,7 +440,7 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 如果将计划设为专用，请输入“Azure 订阅 ID”及其说明。 每个 ID 都是有权访问此专用计划的受众。 通过用于包含所分配的每个 Azure 订阅 ID 的说明的选项，使用 Azure 订阅 ID 分配访问权限。 可单独添加最多 10 个客户订阅 ID，或是通过导入 CSV 文件最多添加 20,000 个。 Azure 订阅 ID 表示为 GUID，字母必须为小写。
 
 >[!Note]
->通过云解决方案提供商计划（CSP）的分销商建立的 Azure 订阅不支持专用产品/服务。
+>通过云解决方案提供商计划的经销商 (CSP) 建立的 Azure 订阅不支持专用产品/服务。
 
 
 ### <a name="technical-configuration"></a>技术配置 
@@ -543,17 +544,17 @@ Azure Active Directory 租户 ID – 包含要向其授予权限的用户、组�
 
 ### <a name="test-drive-technical-configuration"></a>体验版技术配置
 
-- **Azure AD 应用 id** （必需）：输入 AZURE ACTIVE DIRECTORY （AD）[应用程序 id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。 若要查找此 ID，请登录到[Azure 门户](https://portal.azure.com/)，在左侧菜单中选择 "Active Directory" 选项卡，选择 "**应用注册**"，然后查找列出的**应用程序 ID**号（如50c464d3-4930-494c-963c-1e951d15360e）。
+- **Azure AD 应用 ID** (必需) ：输入 Azure Active Directory () AD) [应用程序 id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) 。 若要查找此 ID，请登录到[Azure 门户](https://portal.azure.com/)，在左侧菜单中选择 "Active Directory" 选项卡，选择 "**应用注册**"，然后查找 (的**应用程序 ID**号，如 50c464d3-4930-494c-963c-1e951d15360e) 。
 
 #### <a name="deployment-subscription-details"></a>部署订阅详细信息
 
 若要允许代表你部署体验版，请创建并提供单独的唯一 Azure 订阅（Power BI 体验版不需要）。
 
-* Azure 订阅 ID（Azure 资源管理器和逻辑应用需要）– 输入订阅 ID 以授予对 Azure 帐户服务的访问权限，以便进行资源使用情况报告和计费。 建议考虑[创建单独的 Azure 订阅](../../billing/billing-create-subscription.md)以用于体验版（如果尚未创建）。 登录 [Azure 门户](https://portal.azure.com/)并导航到左侧菜单的“订阅”选项卡，即可找到 Azure 订阅 ID。 选择该选项卡将显示你的订阅 ID （例如 "a83645ac-1234-5ab6-6789-1h234g764ghty"）。
-* **Azure AD 租户 id** （必需）–输入 AZURE ACTIVE DIRECTORY （AD）[租户 id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)）。 若要找到此 ID，请登录 [Azure 门户](https://portal.azure.com/)，在左侧菜单中选择“Active Directory”选项卡，选择“属性”，然后查找列出的“目录 ID”编号（例如 50c464d3-4930-494c-963c-1e951d15360e）。 你还可以在以下位置使用域名 URL 查找组织的租户 ID：[https://www.whatismytenantid.com](https://www.whatismytenantid.com)。
+* Azure 订阅 ID（Azure 资源管理器和逻辑应用需要）– 输入订阅 ID 以授予对 Azure 帐户服务的访问权限，以便进行资源使用情况报告和计费。 建议考虑[创建单独的 Azure 订阅](../../billing/billing-create-subscription.md)以用于体验版（如果尚未创建）。 登录 [Azure 门户](https://portal.azure.com/)并导航到左侧菜单的“订阅”选项卡，即可找到 Azure 订阅 ID。 选择该选项卡将显示您的订阅 ID (如 "a83645ac-1234-5ab6-6789-1h234g764ghty" ) 。
+* **Azure AD 租户 ID** (必需) –输入 AZURE ACTIVE DIRECTORY (AD) [租户 ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) 。 若要找到此 ID，请登录 [Azure 门户](https://portal.azure.com/)，在左侧菜单中选择“Active Directory”选项卡，选择“属性”，然后查找列出的“目录 ID”编号（例如 50c464d3-4930-494c-963c-1e951d15360e）。 你还可以在以下位置使用域名 URL 查找组织的租户 ID：[https://www.whatismytenantid.com](https://www.whatismytenantid.com)。
 * Azure AD 租户名称（Dynamic 365 需要）– 输入 Azure Active Directory (AD) 名称。 若要找到此名称，请登录 [Azure 门户](https://portal.azure.com/)，租户名称将在右上角的帐户名称下列出。
-* **Azure AD 应用 id** （必需）–输入 AZURE ACTIVE DIRECTORY （AD）[应用程序 id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)。 若要找到此 ID，请登录 [Azure 门户](https://portal.azure.com/)，在左侧导航菜单中选择“Active Directory”选项卡，选择“应用注册”，然后查找列出的“应用程序 ID”编号（例如 50c464d3-4930-494c-963c-1e951d15360e）。
-* **Azure Active Directory 应用程序客户端机密**（必需）–输入 Azure AD 应用程序[客户端机密](../../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret)）。 若要找到此值，请登录 [Azure 门户](https://portal.azure.com/)。 在左侧导航菜单中选择“Azure Active Directory”选项卡，选择“应用注册”，然后选择体验版应用。 接下来，选择“证书和密码”，选择“新建客户端密码”，输入说明，在“过期”下选择“从不”，然后选择“添加”。 请确保在离开此页之前复制值。）
+* **Azure AD 应用 ID** (必需) –输入 Azure Active Directory () AD) [应用程序 id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) 。 若要找到此 ID，请登录 [Azure 门户](https://portal.azure.com/)，在左侧导航菜单中选择“Active Directory”选项卡，选择“应用注册”，然后查找列出的“应用程序 ID”编号（例如 50c464d3-4930-494c-963c-1e951d15360e）。
+* **Azure Active Directory 应用程序客户端机密** (必需) –输入 Azure AD 应用程序[客户端密钥](../../active-directory/develop/howto-create-service-principal-portal.md#create-a-new-application-secret)) 。 若要找到此值，请登录 [Azure 门户](https://portal.azure.com/)。 在左侧导航菜单中选择“Azure Active Directory”选项卡，选择“应用注册”，然后选择体验版应用。 接下来，选择“证书和密码”，选择“新建客户端密码”，输入说明，在“过期”下选择“从不”，然后选择“添加”。 请确保在离开此页之前复制值。）
 
 选择“保存草稿”，然后继续。
 
@@ -569,7 +570,7 @@ Azure Active Directory 租户 ID – 包含要向其授予权限的用户、组�
 * 视频:添加视频（可选）– 可以将视频上传到 YouTube 或 Vimeo，并在此处使用链接和缩略图（533 x 324 像素）进行引用，以便客户可以查看信息演练，来帮助他们更好地了解体验版，包括如何成功使用产品/服务的功能并了解突出其优势的方案。
   * 名称（必需）
   * 地址（仅限 YouTube 或 Vimeo；必需）
-  * **缩略图**（图像文件必须采用 PNG 格式，533 x 324 像素）。
+  * **缩略图** (图像文件必须为 PNG 格式，533 x 324 像素) 。
 
 选择“保存草稿”，然后继续操作。
 

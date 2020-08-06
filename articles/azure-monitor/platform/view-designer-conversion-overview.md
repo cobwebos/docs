@@ -5,26 +5,17 @@ author: austonli
 ms.author: aul
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 02/07/2020
-ms.openlocfilehash: 977dcc71fd25b19e09cfa9126bf01d380f581aca
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/04/2020
+ms.openlocfilehash: 19fd1d064a3f106d7b770481d1e456c51cf1e166
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289110"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759421"
 ---
 # <a name="azure-monitor-view-designer-to-workbooks-transition-guide"></a>Azure Monitor 视图设计器到工作簿的转换指南
-[视图设计器](view-designer.md)是 Azure Monitor 的一项功能，它让你能够创建自定义视图，帮助你通过图表、列表和时间线将 Log Analytics 工作区中的数据可视化。 这些元素已逐步淘汰，取而代之的是除这些功能外还可提供其他功能的工作簿。 本文概述将现有视图转换为工作簿的过程。
+[视图设计器](view-designer.md)是 Azure Monitor 的一项功能，它让你能够创建自定义视图，帮助你通过图表、列表和时间线将 Log Analytics 工作区中的数据可视化。 它们已转换为工作簿，以提供用于在 Azure 门户中进行数据分析和创建丰富视觉报表的灵活画布。 本文可帮助你将视图设计器转换为工作簿。 
 
-## <a name="retirement-schedule"></a>停用计划
-
-| 更改 | 这意味着什么 | 预期日期 |
-|:---|:---|:---|
-| 禁用创建通过视图设计器创建的新视图。 | 你将无法再在 Azure 门户中创建并保存新的自定义视图。| 2020年11月 |
-| 禁用具有视图设计器的现有视图的编辑函数。 | 你将无法再修改并保存对现有自定义视图所做的更改。 | 2020年11月 |
-| 禁止将视图部署到 Log Analytics 工作区 | 你将无法再使用 ARM 将自定义视图部署到 Log Analytics 工作区。 | 2021年3月 |
-| 视图设计器在 Azure 门户中不再可用 | 门户体验将不再支持视图设计器。 | 2021年6月 |
-| 从工作区摘要中删除的自定义视图 | 你将无法再访问你的自定义视图数据。 | 2021年12月 |
 
 ## <a name="workbooks-overview"></a>工作簿概述
 [工作簿](../insights/vminsights-workbooks.md)将文本、 [日志查询](../log-query/query-language.md)、指标和参数合并到丰富的交互式报表中。 对 Azure 资源拥有相同访问权限的团队成员也可以编辑工作簿。

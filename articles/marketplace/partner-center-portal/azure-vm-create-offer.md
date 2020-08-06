@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 07/28/2020
-ms.openlocfilehash: 9db6fbe002492c0db6e9e0e5e0a23ca1946759a5
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 0adffbb9058141ea89daefc292b937841659c879
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386429"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798063"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure 市场创建 Azure 虚拟机产品/服务
 
@@ -122,7 +122,7 @@ ms.locfileid: "87386429"
 
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
-- 至少一个和多达两个类别，包括主类别和辅助类别（可选）。
+- 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
 - 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
 
 请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。 虚拟机产品/服务始终显示在 Azure Marketplace 上的**计算**类别下。
@@ -245,16 +245,17 @@ ms.locfileid: "87386429"
 >[!NOTE]
 >如果上传文件时遇到问题，请确保本地网络未阻止合作伙伴中心所使用的 https://upload.xboxlive.com 服务。
 
-#### <a name="azure-marketplace-logos"></a>Azure 市场徽标
+#### <a name="store-logos"></a>应用商店徽标
 
-按以下四个图像尺寸提供产品/服务徽标的 PNG 文件：
+为**大**徽标 (提供) 216 x 216 和 350 x 350 像素之间的 PNG 文件。 合作伙伴中心将使用此来创建一个**小型** (48 x 48 像素) 和一个**中等** (90 x 90 像素) 大小徽标。 您可以选择将它们替换为不同的图像。
 
-- **小**（48 &times; 48 像素）
-- **中**（90 &times; 90 像素）
-- **大**（216 &times; 216 像素）
-- **宽**（255 &times; 115 像素）
+需要在列表中的不同位置使用所有三种徽标尺寸：
 
-所有这四种徽标都是必需的，它们显示在各种 Azure 市场列表中。
+- 小图 (48 x 48)
+- 中图 (90 x 90)
+- **大型** (216 x 216 和 350 x 350) 
+
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>屏幕截图
 
@@ -286,7 +287,7 @@ ms.locfileid: "87386429"
 
 ## <a name="plan-overview"></a>计划概述
 
-在合作伙伴中心内，可以在同一产品/服务中提供各种计划选项。 产品/服务需要至少一个计划（以前称为 SKU），这可能会因盈利受众、Azure 区域、功能或 VM 映像而异。
+在合作伙伴中心内，可以在同一产品/服务中提供各种计划选项。 产品/服务需要至少一个名为 "SKU)  (的计划，盈利受众、Azure 区域、功能或 VM 映像可能会有所不同。
 
 创建计划后，选择“计划概述”选项卡以显示：
 
@@ -411,7 +412,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 **受限受众（Azure 订阅 ID）** ：使用 Azure 订阅 ID 分配将有权访问此专用计划的受众。 根据需要，提供已分配的每个 Azure 订阅 ID 的说明。 如果导入 CSV 电子表格，手动添加最多 10 个订阅 ID 或最多 20,000 个 ID。 Azure 订阅 ID 表示为 GUID，所有字母必须为小写。
 
 >[!Note]
->通过云解决方案提供商计划（CSP）的分销商建立的 Azure 订阅不支持专用产品/服务。
+>通过云解决方案提供商计划的经销商 (CSP) 建立的 Azure 订阅不支持专用产品/服务。
 
 #### <a name="hide-a-plan"></a>隐藏计划
 
@@ -532,10 +533,10 @@ Microsoft 将向你发送电子邮件，让你知道何时有预览版产品/服
 2. 价格
 3. 类别
 4. 条款和条件
-5. 隐私策略地址（链接）
+5. 隐私策略地址 (链接) 
 6. 产品名称
-7. 描述
-8. 有用链接
+7. 说明
+8. 有用的链接
 9. 屏幕截图/视频
 
 <br>下面是有关如何在 Azure Marketplace 搜索结果中显示产品/服务的示例：
@@ -566,8 +567,8 @@ Microsoft 将向你发送电子邮件，让你知道何时有预览版产品/服
 #### <a name="call-out-descriptions"></a>拨出说明
 
 1. 名称
-2. 描述
-3. 有用链接
+2. 说明
+3. 有用的链接
 4. 屏幕截图/视频
 
 <br>下面是一个示例，说明了产品/服务信息在 "Azure 门户搜索" 结果中的显示方式：

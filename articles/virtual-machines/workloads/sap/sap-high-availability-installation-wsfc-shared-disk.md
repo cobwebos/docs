@@ -148,7 +148,7 @@ ms.locfileid: "87760900"
 
 本文介绍如何通过使用 Windows Server 故障转移群集和群集共享磁盘，群集化 SAP ASCS/SCS 实例，在 Azure 中配置高可用性 SAP 系统。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始安装之前，请查看这些文档：
 

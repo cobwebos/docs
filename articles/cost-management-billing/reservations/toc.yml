@@ -71,7 +71,7 @@
           href: reservation-renew.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: 概念
   items:
-    - name: 如何创建预预留建议
+    - name: 预留建议
       href: reserved-instance-purchase-recommendations.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: 如何应用折扣
       items:
@@ -120,9 +120,9 @@
     - name: 预留 REST API
       href: reservation-apis.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: 预留 - Azure PowerShell
-      href: /powershell/module/azurerm.reservations
+      href: /powershell/module/az.reservations
     - name: 预留 - CLI
-      href: /cli/azure/reservations/reservation
+      href: /cli/azure/reservations
     - name: 成本管理 - 消耗用量详细信息 REST API
       href: /rest/api/consumption/usagedetails
     - name: 成本管理 - 消耗预留详细信息 REST API

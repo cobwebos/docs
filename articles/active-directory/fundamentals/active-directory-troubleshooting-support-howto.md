@@ -3,7 +3,7 @@ title: 查找帮助和打开支持工单 - Azure Active Directory | Microsoft Do
 description: 有关如何获取帮助和打开 Azure Active directory 支持工单的说明。
 services: active-directory
 documentationcenter: na
-author: msaburnley
+author: ajburnle
 manager: daveba
 editor: ''
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c49d795b80ed5e9536740e0d8fe877d070da87a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4e4d1490c4900c957a7dce7e632415823723f81b
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85799355"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797281"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>查找帮助并打开 Azure Active Directory 的支持票证
 Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、售前、计费和订阅支持。 对于 Microsoft Azure 付费版和试用版订阅，将通过在线服务和电话提供支持。 电话支持和联机帐单支持可使用其他语言。 
@@ -31,7 +31,7 @@ Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、�
 
 * 有关面向 IT 专业人员和开发人员的操作指南信息或代码示例等内容，请参阅 [docs.microsoft.com 上的技术文档](https://docs.microsoft.com/azure/active-directory/)。
 
-* [Microsoft 技术社区](https://techcommunity.microsoft.com/)是 IT 专业人员合作伙伴和客户进行协作、分享和学习的地方。 [Microsoft 技术社区信息中心](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center)用于公告、博客文章、咨询专家（AMA）与专家的交互等。 你也可以[加入该社区以提交看法](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities)。
+* [Microsoft 技术社区](https://techcommunity.microsoft.com/)是 IT 专业人员合作伙伴和客户进行协作、分享和学习的地方。 [Microsoft 技术社区信息中心](https://techcommunity.microsoft.com/t5/Community-Info-Center/ct-p/Community-Info-Center)适用于公告、博客文章、询问我 (与专家) 交互的任何内容，等等。 你也可以[加入该社区以提交看法](https://techcommunity.microsoft.com/t5/Communities/ct-p/communities)。
 
 
 ## <a name="open-a-support-ticket"></a>开具支持票证
@@ -64,7 +64,7 @@ Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、�
 
 1. 在 "**详细信息**" 边栏选项卡上，填写所需的详细信息并选择一个[严重性](https://azure.microsoft.com/support/plans/response/)。 
  
-    ![image](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
+    ![图像](https://user-images.githubusercontent.com/13383753/76565580-1c284900-6468-11ea-8c0f-85af98097b6f.png)
  
 1. 提供联系信息，然后选择 "**下一步**"。 
 
@@ -76,7 +76,7 @@ Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、�
 > [!NOTE]
 > 仅为管理员提供对[Microsoft 365 管理中心](https://admin.microsoft.com)中 Azure AD 的支持。 
 
-1. 使用具有企业移动性 + 安全性（EMS）许可证的帐户登录到[Microsoft 365 管理中心](https://admin.microsoft.com)。
+1. 使用企业移动性 + 安全性 (EMS) 许可证的帐户登录到[Microsoft 365 管理中心](https://admin.microsoft.com)。
 
 1. 在“支持”磁贴上，选择“新建服务请求”********：
 

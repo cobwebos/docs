@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/24/2020
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 62cabf06c5c0255437324acae43950cd13b96537
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a8503f701a36d7197f85f2c86e37272ccf1cab48
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065112"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760713"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>适用于 sap NetWeaver 的 azure 虚拟机高可用性，适用于 SAP 应用程序的 Azure NetApp 文件 Red Hat Enterprise Linux
 
@@ -50,7 +50,7 @@ ms.locfileid: "87065112"
 [glusterfs-ha]:high-availability-guide-rhel-glusterfs.md
 
 本文介绍如何使用 [Azure NetApp 文件](../../../azure-netapp-files/azure-netapp-files-introduction.md)部署虚拟机、配置虚拟机、安装群集框架，以及安装高可用性 SAP NetWeaver 7.50 系统。
-在示例配置中，安装命令等。ASCS 实例为 number 00，ERS 实例为数字01，主应用程序实例（PAS）为02，应用程序实例（.AAS）为03。 使用 SAP 系统 ID QAS。 
+在示例配置中，安装命令等。ASCS 实例为 number 00，ERS 实例为 number 01，主应用程序实例 (PAS) 为02，应用程序实例 (.AAS) 为03。 使用 SAP 系统 ID QAS。 
 
 文本不会详细介绍数据库层。  
 
@@ -80,7 +80,7 @@ ms.locfileid: "87065112"
   * [High Availability Add-On Administration](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_administration/index)（高可用性附加产品管理）
   * [High Availability Add-On 参考](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/high_availability_add-on_reference/index)
   * [Configuring ASCS/ERS for SAP Netweaver with standalone resources in RHEL 7.5](https://access.redhat.com/articles/3569681)（使用 RHEL 7.5 中的独立资源为 SAP NetWeaver 配置 ASCS/ERS）
-  * [在 RHEL 上的 Pacemaker 中，通过独立的排队服务器2（ENSA2）配置 SAP S/4HANA ASCS/ERS](https://access.redhat.com/articles/3974941)
+  * [在 RHEL 上，用独立的排队服务器 2 (ENSA2) 配置 SAP S/4HANA ASCS/ERS](https://access.redhat.com/articles/3974941)
 * Azure 特定的 RHEL 文档：
   * [Support Policies for RHEL High Availability Clusters - Microsoft Azure Virtual Machines as Cluster Members](https://access.redhat.com/articles/3131341)（RHEL 高可用性群集的支持策略 - Microsoft Azure 虚拟机作为群集成员）
   * [Installing and Configuring a Red Hat Enterprise Linux 7.4 (and later) High-Availability Cluster on Microsoft Azure](https://access.redhat.com/articles/3252491)（在 Microsoft Azure 上安装和配置 Red Hat Enterprise Linux 7.4 [及更高版本] 高可用性群集）
@@ -95,7 +95,7 @@ SAP Netweaver 中心服务的高可用性 (HA) 需要共享存储。
 
 ![SAP NetWeaver 高可用性概述](./media/high-availability-guide-rhel/high-availability-guide-rhel-anf.png)
 
-SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 数据库使用虚拟主机名和虚拟 IP 地址。 在 Azure 上，需要负载均衡器才能使用虚拟 IP 地址。 建议使用[标准负载均衡器](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)。 以下列表显示了负载均衡器的配置，其中包含（A） SCS 和 ERS 的单独前端 Ip。
+SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 数据库使用虚拟主机名和虚拟 IP 地址。 在 Azure 上，需要负载均衡器才能使用虚拟 IP 地址。 建议使用[标准负载均衡器](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)。 以下列表显示了负载均衡器的配置，其中包含用于 () SCS 和 ERS 的单独前端 Ip。
 
 ### <a name="ascs"></a>(A)SCS
 
@@ -148,13 +148,13 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
 
 5. 按照[为 Azure NetApp 文件创建卷的说明](../../../azure-netapp-files/azure-netapp-files-create-volumes.md)，部署 Azure NetApp 文件卷。 将卷部署在指定的 Azure NetApp 文件[子网](/rest/api/virtualnetwork/subnets)中。 将自动分配 Azure NetApp 卷的 IP 地址。 请记住，Azure NetApp 文件资源和 Azure VM 必须位于同一 Azure 虚拟网络或对等 Azure 虚拟网络中。 在此示例中，我们使用两个 Azure NetApp 文件卷： sap<b>QAS</b>和 transSAP。 装载到相应装入点的文件路径为/usrsap<b>qas</b>/sapmnt<b>qas</b>、/usrsap<b>qas</b>/usrsap<b>qas</b>sys 等。  
 
-   1. volume sap<b>QAS</b> （nfs://192.168.24.5/usrsap<b>QAS</b>/sapmnt<b>QAS</b>）
-   2. volume sap<b>QAS</b> （nfs://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>ascs）
-   3. volume sap<b>QAS</b> （nfs://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>sys）
-   4. volume sap<b>QAS</b> （nfs://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>ers）
-   5. volume transSAP （nfs://192.168.24.4/transSAP）
-   6. volume sap<b>QAS</b> （nfs://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>pas）
-   7. 批量 sap<b>QAS</b> （nfs://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>.aas）
+   1. volume sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>QAS</b>/sapmnt<b>QAS</b>) 
+   2. volume sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>ascs) 
+   3. volume sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>sys) 
+   4. volume sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>ers) 
+   5. volume transSAP (nfs://192.168.24.4/transSAP) 
+   6. volume sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>pas) 
+   7. 批量 sap<b>QAS</b> (nfs://192.168.24.5/usrsap<b>QAS</b>/usrsap<b>QAS</b>.aas) 
   
 在此示例中，我们将 Azure NetApp 文件用于所有 SAP Netweaver 文件系统，来演示如何使用 Azure NetApp 文件。 不需要通过 NFS 装载的 SAP 文件系统也可以部署为 [Azure 磁盘存储](../../windows/disks-types.md#premium-ssd)。 在此示例中，<b>a-e</b> 必须位于 Azure NetApp 文件上，<b>f-g</b>（即 /usr/sap/<b>QAS</b>/D<b>02</b>，/usr/sap/<b>QAS</b>/D<b>03</b>）可以部署为 Azure 磁盘存储。 
 
@@ -183,10 +183,10 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
       1. ASCS 的 IP 地址192.168.14。9
          1. 打开负载均衡器，选择前端 IP 池，并单击“添加”
          1. 输入新前端 IP 池的名称（例如，“frontend.QAS.ASCS”）
-         1. 将 "分配" 设置为 "静态" 并输入 IP 地址（例如**192.168.14.9**）
+         1. 将 "分配" 设置为 "静态" 并输入 IP 地址 (例如**192.168.14.9**) 
          1. 单击“确定”
       1. ASCS ERS 的 IP 地址192.168.14.10
-         * 重复上面的 "a" 中的步骤，创建 ERS 的 IP 地址（例如**192.168.14.10**和**前端。QAS.ERS**）
+         * 重复上面的 "a" 中的步骤，创建 ERS (的 IP 地址，例如**192.168.14.10**和**前端。QAS.ERS**) 
    1. 创建后端池
       1. 打开负载均衡器，单击后端池，并单击“添加”
       1. 输入新后端池的名称（例如，“backend.QAS”）
@@ -217,10 +217,10 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
       1. ASCS 的 IP 地址192.168.14。9
          1. 打开负载均衡器，选择前端 IP 池，并单击“添加”
          1. 输入新前端 IP 池的名称（例如，“frontend.QAS.ASCS”）
-         1. 将 "分配" 设置为 "静态" 并输入 IP 地址（例如**192.168.14.9**）
+         1. 将 "分配" 设置为 "静态" 并输入 IP 地址 (例如**192.168.14.9**) 
          1. 单击“确定”
       1. ASCS ERS 的 IP 地址192.168.14.10
-         * 重复上面的 "a" 中的步骤，创建 ERS 的 IP 地址（例如**192.168.14.10**和**前端。QAS.ERS**）
+         * 重复上面的 "a" 中的步骤，创建 ERS (的 IP 地址，例如**192.168.14.10**和**前端。QAS.ERS**) 
    1. 创建后端池
       1. 打开负载均衡器，单击后端池，并单击“添加”
       1. 输入新后端池的名称（例如，“backend.QAS”）
@@ -589,9 +589,11 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
    #Restart_Program_01 = local $(_EN) pf=$(_PF)
    Start_Program_01 = local $(_EN) pf=$(_PF)
    
-   # Add the keep alive parameter
+   # Add the keep alive parameter, if using ENSA1
    enque/encni/set_so_keepalive = true
    ```
+
+   对于 ENSA1 和 ENSA2，请确保 `keepalive` 按 SAP 说明[1410736](https://launchpad.support.sap.com/#/notes/1410736)中所述设置 OS 参数。  
 
    * ERS 配置文件
 
@@ -610,8 +612,6 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
 1. [A] 配置 Keep Alive
 
    SAP NetWeaver 应用程序服务器和 ASCS/SCS 之间的通信是通过软件负载均衡器进行路由的。 负载均衡器在可配置的超时之后将断开非活动连接。 若要防止出现这种情况，需要在 SAP NetWeaver ASCS/SCS 配置文件中设置参数并更改 Linux 系统设置。 有关详细信息，请参阅 [SAP 说明 1410736][1410736]。
-
-   在上一步中已添加了 ASCS/SCS 配置文件参数 enque/encni/set_so_keepalive。
 
    ```
    # Change the Linux system configuration
@@ -662,7 +662,7 @@ Azure NetApp 文件在多个[azure 区域](https://azure.microsoft.com/global-in
     ```
 
    从 SAP NW 7.52 开始，SAP 引入了对排队服务器 2 的支持，包括复制。 从 ABAP 平台 1809 开始，系统将默认安装排队服务器 2。 有关排队服务器 2 的支持，请参阅 SAP 说明 [2630416](https://launchpad.support.sap.com/#/notes/2630416)。
-   如果使用排队服务器2体系结构（[ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)），请安装 resource agent resource-agents-sap-4.1.1 x86_64 rsync-3.0.6-12.el6.x86 或更高版本，并按如下所示定义资源：
+   如果使用 ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)) 的排队 server 2 体系结构，请安装 resource agent resource-agents-sap-x86_64 4.1.1 或更高版本，并按如下所示定义资源：
 
     ```
     sudo pcs property set maintenance-mode=true

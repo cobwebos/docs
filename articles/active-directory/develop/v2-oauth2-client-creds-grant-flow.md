@@ -101,7 +101,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 | 参数 | 条件 | 说明 |
 | --- | --- | --- |
 | `tenant` | 必需 | 要向其请求权限的目录租户。 此参数可采用 GUID 或友好名称格式。 如果不知道用户属于哪个租户并想让他们登录到任一租户，请使用 `common`。 |
-| `client_id` | 必需 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给应用的应用（客户端）ID。 |
+| `client_id` | 必选 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体验分配给应用的应用（客户端）ID。 |
 | `redirect_uri` | 必须 | 要向其发送响应，供应用处理的重定向 URI。 它必须与门户中注册的其中一个重定向 URI 完全匹配，否则必须经过 URL 编码并可包含其他路径段。 |
 | `state` | 建议 | 同时随令牌响应返回的请求中所包含的值。 可以是所需的任何内容的字符串。 该 state 用于在身份验证请求出现之前，于应用中编码用户的状态信息，例如之前所在的页面或视图。 |
 

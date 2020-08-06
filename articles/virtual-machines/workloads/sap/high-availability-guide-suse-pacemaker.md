@@ -12,14 +12,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/24/2020
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 28e53c5ca53f5be4aafc685445e67dcf4d558773
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6d61bd2c45cc1ba9cd9494750b793d7321288224
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073995"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797740"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -36,7 +36,7 @@ ms.locfileid: "87073995"
 
 SBD 设备至少需要一个额外的充当 iSCSI 目标服务器并提供 SBD 设备的虚拟机。 不过，也可以与其他 Pacemaker 群集共享这些 iSCSI 目标服务器。 使用 SBD 设备的优点是，如果你已经在本地使用 SBD 设备，则不需要对 pacemaker 群集的运行方式进行任何更改。 最多可对一个 Pacemaker 群集使用三个 SBD 设备，以允许某个 SBD 设备不可用，例如，在修补 iSCSI 目标服务器的 OS 期间。 若要对每个 Pacemaker 使用多个 SBD 设备，请务必部署多个 iSCSI 目标服务器并从每个 iSCSI 目标服务器连接一个 SBD。 我们建议使用一个或三个 SBD 设备。 如果只配置两个 SBD 设备，而其中一个不可用，则 Pacemaker 无法自动隔离群集节点。 如果希望能够在一个 iSCSI 目标服务器关闭时进行防护，则必须使用三个 SBD 设备，因此可以使用三个 iSCSI 目标服务器，这是使用 SBDs 时最具弹性的配置。
 
-Azure 隔离代理不需要部署其他虚拟机。   
+Azure 隔离代理不需要部署)  (额外的虚拟机。   
 
 ![SLES 上的 Pacemaker 概述](./media/high-availability-guide-suse-pacemaker/pacemaker.png)
 
@@ -221,17 +221,17 @@ o- / ...........................................................................
 
    <pre><code>sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.17:3260</b>   
    sudo iscsiadm -m node -T <b>iqn.2006-04.nfs.local:nfs</b> --login --portal=<b>10.0.0.17:3260</b>
-   sudo iscsiadm -m node -p <b>10.0.0.17:3260</b> --op=update --name=node.startup --value=automatic
+   sudo iscsiadm -m node -p <b>10.0.0.17:3260</b> -T <b>iqn.2006-04.nfs.local:nfs</b> --op=update --name=node.startup --value=automatic
    
    # If you want to use multiple SBD devices, also connect to the second iSCSI target server
    sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.18:3260</b>   
    sudo iscsiadm -m node -T <b>iqn.2006-04.nfs.local:nfs</b> --login --portal=<b>10.0.0.18:3260</b>
-   sudo iscsiadm -m node -p <b>10.0.0.18:3260</b> --op=update --name=node.startup --value=automatic
+   sudo iscsiadm -m node -p <b>10.0.0.18:3260</b> -T <b>iqn.2006-04.nfs.local:nfs</b> --op=update --name=node.startup --value=automatic
    
    # If you want to use multiple SBD devices, also connect to the third iSCSI target server
    sudo iscsiadm -m discovery --type=st --portal=<b>10.0.0.19:3260</b>   
    sudo iscsiadm -m node -T <b>iqn.2006-04.nfs.local:nfs</b> --login --portal=<b>10.0.0.19:3260</b>
-   sudo iscsiadm -m node -p <b>10.0.0.19:3260</b> --op=update --name=node.startup --value=automatic
+   sudo iscsiadm -m node -p <b>10.0.0.19:3260</b> -T <b>iqn.2006-04.nfs.local:nfs</b> --op=update --name=node.startup --value=automatic
    </code></pre>
 
    请确保 iSCSI 设备可用并记下设备名称（在以下示例中为 /dev/sde）
@@ -447,9 +447,14 @@ o- / ...........................................................................
 1. [A] 设置主机名称解析
 
    可以使用 DNS 服务器，或修改所有节点上的 /etc/hosts。 此示例演示如何使用 /etc/hosts 文件。
-   请替换以下命令中的 IP 地址和主机名。 使用 /etc/hosts 的好处是群集可以独立于 DNS（也可能会成为单一故障点）。
+   请替换以下命令中的 IP 地址和主机名。
 
+   >[!IMPORTANT]
+   > 如果在群集配置中使用主机名，则必须具有可靠的主机名解析。 如果名称不可用并且可能导致群集故障转移延迟，则群集通信将失败。
+   > 使用 /etc/hosts 的好处是群集可以独立于 DNS（也可能会成为单一故障点）。  
+     
    <pre><code>sudo vi /etc/hosts
+
    </code></pre>
 
    将以下行插入 /etc/hosts。 根据环境更改 IP 地址和主机名   

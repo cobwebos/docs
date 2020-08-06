@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 22bfab5b9f00a392054fa1aef6a93195180fd968
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 30e57736d0b0e40eb01573d6acca2c618dcf6ee3
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373481"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759693"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>将 Azure SQL 数据库流量迁移到更新的网关
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -26,22 +26,25 @@ Azure 基础结构改进后，Microsoft 会定期刷新硬件，以确保提供�
 
 ## <a name="status-updates"></a>状态更新
 
-# <a name="in-progress"></a>[正在进行](#tab/in-progress-ip)
+# <a name="in-progress"></a>[正在学习](#tab/in-progress-ip)
 ### <a name="september-2020"></a>2020 年 9 月
 
-正在向以下区域添加新的 SQL 网关：
+正在向以下区域添加新的 SQL 网关。 这些 SQL 网关应在2020年9月10日开始接受客户流量：
+
+- 美国中部：13.78.248.43 
+- 南非北部：102.133.120。2  
+
+正在向以下区域添加新的 SQL 网关。 这些 SQL 网关应在2020年9月1日开始接受客户流量：
 
 - 北欧：13.74.104.113 
 - 西2：40.78.248.10 
 - 西欧：52.236.184.163 
 - 美国中南部：20.45.121.1、20.49.88。1 
 
-现有 SQL 网关将开始接受以下区域中的流量：
+现有 SQL 网关将开始接受以下区域中的流量。 这些 SQL 网关应在2020年9月1日开始接受客户流量。 :
 - 日本东部：40.79.184.8、40.79.192。5
 
-这些 SQL 网关应在2020年9月1日开始接受客户流量。 
-
-### <a name="august-2020"></a>2020年8月
+### <a name="august-2020"></a>2020 年 8 月
 
 正在向以下区域添加新的 SQL 网关：
 
@@ -59,7 +62,7 @@ Azure 基础结构改进后，Microsoft 会定期刷新硬件，以确保提供�
 - Brazil South
 - 美国西部
 - 西欧
-- East US
+- 美国东部
 - 美国中部
 - 东南亚
 - 美国中南部
@@ -82,7 +85,7 @@ Azure 基础结构改进后，Microsoft 会定期刷新硬件，以确保提供�
 - 对数据库使用[区域冗余配置](high-availability-sla.md#zone-redundant-configuration)
 
 如果有以下情况，则不会受到影响：
-
+ 
 - 作为连接策略的重定向
 - 从 Azure 内部连接到 SQL 数据库并使用服务标记
 - 使用受支持的 JDBC Driver for SQL Server 所建立的连接将不会产生任何影响。 有关支持的 JDBC 版本，请参阅[下载 MICROSOFT JDBC Driver for SQL Server](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)。
@@ -91,7 +94,7 @@ Azure 基础结构改进后，Microsoft 会定期刷新硬件，以确保提供�
 
 建议为 TCP 端口1433上的区域中的所有[网关 ip 地址](connectivity-architecture.md#gateway-ip-addresses)和端口范围11000-11999 允许到 ip 地址的出站流量。 此建议适用于从本地连接的客户端，以及通过服务终结点连接的客户端。 有关端口范围的详细信息，请参阅[连接策略](connectivity-architecture.md#connection-policy)。
 
-使用低于版本4.0 的 Microsoft JDBC 驱动程序从应用程序进行的连接可能无法通过证书验证。 较低版本的 Microsoft JDBC 依赖证书的 "使用者" 字段中的公用名（CN）。 缓解措施是确保将 hostNameInCertificate 属性设置为 *. database.windows.net。 有关如何设置 hostNameInCertificate 属性的详细信息，请参阅 "[连接加密](/sql/connect/jdbc/connecting-with-ssl-encryption)"。
+使用低于版本4.0 的 Microsoft JDBC 驱动程序从应用程序进行的连接可能无法通过证书验证。 较低版本的 Microsoft JDBC 依赖于证书的 "使用者" 字段中 (CN) 的公用名。 缓解措施是确保将 hostNameInCertificate 属性设置为 *. database.windows.net。 有关如何设置 hostNameInCertificate 属性的详细信息，请参阅 "[连接加密](/sql/connect/jdbc/connecting-with-ssl-encryption)"。
 
 如果上述缓解不起作用，请使用以下 URL 为 SQL 数据库或 SQL 托管实例提供支持请求：https://aka.ms/getazuresupport
 

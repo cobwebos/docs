@@ -1,24 +1,24 @@
 ---
-title: Azure Blob 存储（预览版）中的网络文件系统3.0 支持 |Microsoft Docs
-description: Blob 存储现在支持网络文件系统（NFS）3.0 协议。 这种支持使 Linux 客户端能够在 Blob 存储中从 Azure 虚拟机（VM）或本地计算机装载容器。
+title: Azure Blob 存储中的网络文件系统3.0 支持 (预览) |Microsoft Docs
+description: Blob 存储现在支持网络文件系统 (NFS) 3.0 协议。 这种支持使 Windows 和 Linux 客户端能够在 Blob 存储中从 Azure 虚拟机 (VM) 或本地运行的计算机上装载容器。
 author: normesta
 ms.subservice: blobs
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: ab8d262e4eac08ce21b7ad01402c3608d52a1aab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 32eafc41451c42a9c929e94d30450b923e7eae83
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372886"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760917"
 ---
-# <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob 存储中的网络文件系统（NFS）3.0 协议支持（预览版）
+# <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob 存储中的网络文件系统 (NFS) 3.0 协议支持 (预览) 
 
-Blob 存储现在支持网络文件系统（NFS）3.0 协议。 这种支持使 Linux 客户端能够在 Blob 存储中从 Azure 虚拟机（VM）或本地计算机装载容器。 
+Blob 存储现在支持网络文件系统 (NFS) 3.0 协议。 通过此支持，Windows 或 Linux 客户端可以从 Azure 虚拟机 (VM) 或本地计算机中的 Azure 虚拟机装载容器。 
 
 > [!NOTE]
 > Azure Blob 存储中的 NFS 3.0 协议支持提供公共预览版，并在以下区域提供：美国东部、美国中部和加拿大中部。
@@ -31,7 +31,7 @@ Blob 存储现在支持网络文件系统（NFS）3.0 协议。 这种支持使 
 
 2. 验证功能是否已注册。
 
-3. 创建 Azure 虚拟网络（VNet）。
+3.  (VNet) 创建 Azure 虚拟网络。
 
 4. 配置网络安全。
 
@@ -41,14 +41,14 @@ Blob 存储现在支持网络文件系统（NFS）3.0 协议。 这种支持使 
 
 7. 装载容器。
 
-有关分步指南，请参阅[使用网络文件系统（NFS）3.0 协议（预览版）在 Linux 上装载 Blob 存储](network-file-system-protocol-support-how-to.md)。
+有关分步指南，请参阅[使用网络文件系统装载 Blob 存储 (NFS) 3.0 协议 (预览) ](network-file-system-protocol-support-how-to.md)。
 
 > [!IMPORTANT]
 > 务必按顺序完成这些任务。 你无法在你的帐户上启用 NFS 3.0 协议之前装入你创建的容器。 此外，在你的帐户上启用了 NFS 3.0 协议后，你将无法禁用它。
 
 ## <a name="network-security"></a>网络安全
 
-存储帐户必须包含在 VNet 中。 VNet 使客户端可以安全地连接到你的存储帐户。 保护帐户中数据的唯一方法是使用 VNet 和其他网络安全设置。 用于保护数据的任何其他工具（包括帐户密钥授权、Azure Active Directory （AD）安全和访问控制列表（Acl））尚不支持在其上启用了 NFS 3.0 协议支持的帐户。 
+存储帐户必须包含在 VNet 中。 VNet 使客户端可以安全地连接到你的存储帐户。 保护帐户中数据的唯一方法是使用 VNet 和其他网络安全设置。 用于保护数据的任何其他工具（包括帐户密钥授权、Azure Active Directory (AD) 安全性和访问控制列表 () Acl）在其上启用了 NFS 3.0 协议支持的帐户中不受支持。 
 
 若要了解详细信息，请参阅[Blob 存储的网络安全建议](security-recommendations.md#networking)。
 
@@ -79,13 +79,13 @@ Blob 存储现在支持网络文件系统（NFS）3.0 协议。 这种支持使 
 
 在你的帐户上启用 NFS 3.0 协议后，不支持以下 Azure 存储功能。 
 
-- Azure Active Directory （AD）安全
+- Azure Active Directory (AD) 安全性
 
-- 类似于 POSIX 的访问控制列表（Acl）
+- 类似于 POSIX 的访问控制列表 (Acl) 
 
 - 能够对现有存储帐户启用 NFS 3.0 支持
 
-- 在存储帐户中禁用 NFS 3.0 支持的功能（在启用后）
+- 支持在存储帐户中禁用 NFS 3.0 支持的功能 (在启用后) 
 
 - 能够使用 REST Api 或 Sdk 写入 blob。 
   
@@ -95,13 +95,13 @@ Azure Data Lake Storage Gen2 尚不支持以下 NFS 3.0 功能。
 
 - 经由 UDP 的 NFS 3.0。 仅支持通过 TCP 的 NFS 3.0。
 
-- 通过网络锁管理器（NLM）锁定文件。 装载命令必须包含 `-o nolock` 参数。
+- 通过网络锁管理器 (NLM) 锁定文件。 装载命令必须包含 `-o nolock` 参数。
 
-- 装载子目录。 只能装载根目录（容器）。
+- 装载子目录。 只能 (容器) 中装载根目录。
 
-- 列出装载（例如，使用命令 `showmount -a` ）
+- 列出装载 (例如：通过使用命令 `showmount -a`) 
 
-- 列出导出（例如，使用命令 `showmount -e` ）
+- 列出导出 (例如：通过使用命令 `showmount -e`) 
 
 - 以只读方式导出容器
 
@@ -113,7 +113,7 @@ Azure Data Lake Storage Gen2 尚不支持以下 NFS 3.0 功能。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始使用，请参阅[使用网络文件系统（NFS）3.0 协议（预览版）在 Linux 上装载 Blob 存储](network-file-system-protocol-support-how-to.md)。
+若要开始，请参阅[使用网络文件系统装载 Blob 存储 (NFS) 3.0 协议 (预览) ](network-file-system-protocol-support-how-to.md)。
 
 
 

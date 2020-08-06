@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/26/2020
+ms.date: 08/04/2020
 ms.author: radeltch
-ms.openlocfilehash: 89d7ca3e37b107dce3f832499db45e0506c3fa64
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 16c37c1492b042e9f2f19e631f7801bfbed2d247
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074008"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761206"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>适用于 SAP 应用程序的 Azure SUSE Linux Enterprise Server Vm 上的 SAP NetWeaver 高可用性多 SID 指南
 
@@ -54,7 +54,7 @@ ms.locfileid: "87074008"
 [sap-hana-ha]:sap-hana-high-availability.md
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
-本文介绍如何使用适用于 SAP 应用程序的 SUSE Linux Enterprise Server 在 Azure Vm 的两个节点群集中部署多个 SAP NetWeaver 或 S4HANA 高度可用系统（即多 SID）。  
+本文介绍了如何在 Azure Vm 的两个节点群集中部署多个 SAP NetWeaver 或 S4HANA 高度可用的系统 (多 SID) ，以及 SAP 应用程序 SUSE Linux Enterprise Server。  
 
 在示例配置中，安装命令等是三个 SAP NetWeaver 7.50 系统部署在单个双节点高可用性群集中。 SAP 系统 Sid 包括：
 * **NW1**： ASCS 实例编号**00**和虚拟主机名**msnw1ascs**;ERS 实例编号**02** ，虚拟主机名为**msnw1ers**。  
@@ -99,11 +99,11 @@ ms.locfileid: "87074008"
 > 在 Azure Vm 中，支持将 SAP ASCS/ERS 与 SUSE Linux 作为来宾操作系统的多 SID 群集的支持仅限于同一群集上的**五个**sap sid。 每个新 SID 都增加了复杂性。 **不支持**在同一个群集中混合使用 SAP 排队复制服务器1和排队复制服务器2。 多 SID 群集介绍了如何在一个 Pacemaker 群集中安装具有不同 Sid 的多个 SAP ASCS/ERS 实例。 目前仅支持 ASCS/ERS 的多 SID 群集。  
 
 > [!TIP]
-> SAP ASCS/ERS 的多 SID 群集是复杂性更高的解决方案。 实现起来更为复杂。 执行维护活动（如 OS 修补）时，它还涉及更高的管理工作量。 在开始实际实施之前，请花些时间仔细规划部署和所有涉及的组件，如 Vm、NFS 装载、Vip、负载平衡器配置等。  
+> SAP ASCS/ERS 的多 SID 群集是复杂性更高的解决方案。 实现起来更为复杂。 执行维护活动时，它还涉及更高的管理工作量， (例如 OS 修补) 。 在开始实际实施之前，请花些时间仔细规划部署和所有涉及的组件，如 Vm、NFS 装载、Vip、负载平衡器配置等。  
 
 NFS 服务器、SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS 和 SAP HANA 数据库使用虚拟主机名和虚拟 IP 地址。 在 Azure 上，需要负载均衡器才能使用虚拟 IP 地址。 建议使用[标准负载均衡器](../../../load-balancer/quickstart-load-balancer-standard-public-portal.md)。  
 
-以下列表显示了此多 SID 群集示例（包含三个 SAP 系统）的（A） SCS 和 ERS 负载均衡器的配置。 每个 Sid 的每个 ASCS 和 ERS 实例需要单独的前端 IP、运行状况探测和负载均衡规则。 将属于 ASCS/ASCS 群集的所有 Vm 分配到一个后端池。  
+以下列表显示了使用三个 SAP 系统为此多 SID 群集示例 () SCS 和 ERS 负载均衡器的配置。 每个 Sid 的每个 ASCS 和 ERS 实例需要单独的前端 IP、运行状况探测和负载均衡规则。 将属于 ASCS/ASCS 群集的所有 Vm 分配到一个后端池。  
 
 ### <a name="ascs"></a>(A)SCS
 
@@ -176,20 +176,20 @@ SAP NetWeaver 要求传输、配置文件目录等共享存储。 对于高度�
 
 以下各项带有前缀 [A] - 适用于所有节点、[1] - 仅适用于节点 1，或 [2] - 仅适用于节点 2  。
 
-### <a name="prerequisites"></a>先决条件 
+### <a name="prerequisites"></a>必备条件 
 
 > [!IMPORTANT]
 > 在按照说明在群集中部署其他 SAP 系统之前，请按照说明在群集中部署第一个 SAP 系统，因为在第一次部署系统的过程中，只需要执行一些步骤。  
 
 本文档假定：
 * Pacemaker 群集已配置且正在运行。  
-* 至少一个 SAP 系统（ASCS/ERS 实例）已部署并且正在群集中运行。  
+* 至少一个 SAP 系统 (ASCS/ERS 实例) 已部署并且正在群集中运行。  
 * 已测试群集故障转移功能。  
 * 部署所有 SAP 系统的 NFS 共享。  
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>准备 SAP NetWeaver 安装
 
-1. 按照说明[通过 Azure 门户手动部署 Azure 负载均衡器](./high-availability-guide-suse-netapp-files.md#deploy-azure-load-balancer-manually-via-azure-portal)，将新部署的系统（即**NW2**、 **NW3**）的配置添加到现有的 azure 负载均衡器。 调整配置的 IP 地址、运行状况探测端口和负载均衡规则。  
+1. 按照说明[通过 Azure 门户手动部署 Azure 负载均衡器](./high-availability-guide-suse-netapp-files.md#deploy-azure-load-balancer-manually-via-azure-portal)，将新部署的系统** () 的**配置添加到**现有的 azure**负载均衡器。 调整配置的 IP 地址、运行状况探测端口和负载均衡规则。  
 
 2. **[A]** 设置其他 SAP 系统的名称解析。 可以在所有节点上使用 DNS 服务器或修改 `/etc/hosts` 。 此示例演示如何使用 `/etc/hosts` 文件。  根据你的环境调整 IP 地址和主机名。 
 
@@ -351,14 +351,14 @@ SAP NetWeaver 要求传输、配置文件目录等共享存储。 对于高度�
 
    如果安装无法在/usr/sap/**NW2**/ERS**实例 #** 中创建**子文件夹，** 请尝试将 "所有者" 设置为 " **sid**adm"，将 "组" 设置为 "sapsys"，然后重试。
 
-   如果需要将新部署的 SAP 系统的 ERS 组迁移到另一个群集节点，请不要忘记删除 ERS 组的位置约束。 可以通过运行以下命令来删除约束（该示例是针对 SAP systems **NW2**和**NW3**提供的）。  
+   如果需要将新部署的 SAP 系统的 ERS 组迁移到另一个群集节点，请不要忘记删除 ERS 组的位置约束。 你可以通过运行以下命令来删除约束， (为 SAP systems **NW2**和**NW3**) 提供该示例。  
 
     ```
       crm resource unmigrate g-NW2_ERS
       crm resource unmigrate g-NW3_ERS
     ```
 
-5. **[1]** 改编新安装的 SAP 系统的 ASCS/SCS 和 ERS 实例配置文件。 下面显示的示例适用于 NW2。 你将需要为添加到群集中的所有 SAP 实例调整 ASCS/SCS 和 ERS 配置文件。  
+5. **[1]** 为新安装的 SAP 系统 () 调整 ASCS/SCS 和 ERS 实例配置文件。 下面显示的示例适用于 NW2。 你将需要为添加到群集中的所有 SAP 实例调整 ASCS/SCS 和 ERS 配置文件。  
  
  * ASCS/SCS 配置文件
 
@@ -373,9 +373,11 @@ SAP NetWeaver 要求传输、配置文件目录等共享存储。 对于高度�
    service/halib = $(DIR_CT_RUN)/saphascriptco.so
    service/halib_cluster_connector = /usr/bin/sap_suse_cluster_connector
    
-   # Add the keep alive parameter
+   # Add the keep alive parameter, if using ENSA1
    enque/encni/set_so_keepalive = true
    ```
+
+   对于 ENSA1 和 ENSA2，请确保 `keepalive` 按 SAP 说明[1410736](https://launchpad.support.sap.com/#/notes/1410736)中所述设置 OS 参数。  
 
  * ERS 配置文件
 
@@ -417,7 +419,7 @@ SAP NetWeaver 要求传输、配置文件目录等共享存储。 对于高度�
 
 8. **[1]** 创建新安装的 sap 系统的 sap 群集资源。 
 
-   如果使用 "排队服务器1体系结构" （ENSA1），请按如下所示定义 SAP systems **NW2**和**NW3**的资源：
+   如果使用 (ENSA1) 的排队 server 1 体系结构，请按如下所示定义 SAP systems **NW2**和**NW3**的资源：
 
     ```
      sudo crm configure property maintenance-mode="true"
@@ -465,7 +467,7 @@ SAP NetWeaver 要求传输、配置文件目录等共享存储。 对于高度�
     ```
 
    从 SAP NW 7.52 开始，SAP 引入了对排队服务器 2 的支持，包括复制。 从 ABAP 平台 1809 开始，系统将默认安装排队服务器 2。 有关排队服务器 2 的支持，请参阅 SAP 说明 [2630416](https://launchpad.support.sap.com/#/notes/2630416)。
-   如果使用 "排队服务器2体系结构" （[ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)），请按如下所示定义 SAP systems **NW2**和**NW3**的资源：
+   如果使用 ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html)) 的排队 server 2 体系结构，请按如下所示定义 SAP systems **NW2**和**NW3**的资源：
 
     ```
      sudo crm configure property maintenance-mode="true"
@@ -553,7 +555,7 @@ SAP NetWeaver 要求传输、配置文件目录等共享存储。 对于高度�
     #     rsc_sap_NW3_ERS22  (ocf::heartbeat:SAPInstance):   Started slesmsscl2
     ```
 
-   下图显示了 HA Web Konsole （Hawk）中资源的外观，以及用于 SAP 系统**NW2**的资源的扩展。  
+   下图显示了 HA Web Konsole (Hawk) 中资源的外观，以及用于 SAP 系统**NW2**的资源的扩展。  
 
    [![SAP NetWeaver 高可用性概述](./media/high-availability-guide-suse/ha-suse-multi-sid-hawk.png)](./media/high-availability-guide-suse/ha-suse-multi-sid-hawk-detail.png#lightbox)
 

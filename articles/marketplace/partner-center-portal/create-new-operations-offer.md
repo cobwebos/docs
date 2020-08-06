@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 2c6c6b3fb4f863840b39de6f56fe473be693fe87
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 657c41fbcda30ffb5af4c5a27d58ef17c02a46bc
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001428"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87798250"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations 产品/服务
 
@@ -60,7 +60,7 @@ ms.locfileid: "87001428"
 
 #### <a name="free-trial-listing"></a>免费试用版(一览)
 
-向客户列出你的产品/服务，并提供有效的 URL （从或开始， `http` `https` 用户可以在其中获取试用版）。 例如，`https://contoso.com/trial/my-app` 。 产品/服务一览免费试用版是由你的服务创建、管理和配置，不包含由 Microsoft 管理的订阅。
+向客户列出你的产品/服务，其中包含免费试用版的链接，方法是提供有效的 URL， (始于 `http` 或 `https`) 可以获取试用版。 例如，`https://contoso.com/trial/my-app` 。 产品/服务一览免费试用版是由你的服务创建、管理和配置，不包含由 Microsoft 管理的订阅。
 
 > [!NOTE]
 > 应用通过试用版链接收到的令牌只能用于通过 Azure Active Directory (Azure AD) 获取用户信息，从而在应用中自动创建帐户。 不支持使用此令牌对 Microsoft 帐户进行身份验证。
@@ -91,7 +91,7 @@ ms.locfileid: "87001428"
 
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
-- 至少一个和多达两个类别，包括主类别和辅助类别（可选）。
+- 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
 - 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
 
 请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
@@ -129,12 +129,12 @@ ms.locfileid: "87001428"
 2. 产品
 3. 类别
 4. 行业
-5. 支持地址（链接）
+5. 支持地址 (链接) 
 6. 使用条款
 7. 隐私策略
 8. 产品名称
 9. 屏幕截图/视频
-10. 说明
+10. 描述
 
 ### <a name="name"></a>名称
 
@@ -191,11 +191,14 @@ ms.locfileid: "87001428"
 
 #### <a name="store-logos"></a>应用商店徽标
 
-提供以下两个像素大小的产品/服务徽标：
+为**大**徽标 (提供) 216 x 216 和 350 x 350 像素之间的 PNG 文件。 合作伙伴中心将使用此来创建) 大小徽标的**小型** (48 x 48 像素。 您可以选择将其替换为不同的图像。
+
+以下两种徽标大小都需要在列表中的不同位置使用：
 
 - 小 (48 x 48)
-- 大 (216 x 216)
+- **大型** (216 x 216 和 350 x 350) 
 
+[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>屏幕截图
 
@@ -234,7 +237,7 @@ ms.locfileid: "87001428"
 
 然后，当你准备好提供产品/服务并删除预览限制时，需要删除该隐藏密钥并再次发布。
 
-选择“保存草稿”，然后继续。
+选择“保存草稿”，然后继续操作。
 
 ## <a name="technical-configuration"></a>技术配置
 
@@ -253,7 +256,7 @@ ms.locfileid: "87001428"
 
 选择此解决方案使用的 Dynamics 365 for Finance and Operations 的版本。
 
-选择“保存草稿”，然后继续。
+选择“保存草稿”，然后继续操作。
 
 ## <a name="test-drive-technical-configuration"></a>体验版技术配置
 

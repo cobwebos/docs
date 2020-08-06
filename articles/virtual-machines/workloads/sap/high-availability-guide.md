@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c5b105bf6fea8b78a11f77d73918376670be9ac5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bf483d5a9b6a75ccad48908701d89d1c40206208
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052576"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87759863"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM 上的 SAP NetWeaver 高可用性
 
@@ -1449,7 +1449,7 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
 
 修改 ASCS/SCS 实例的 SAP 配置文件：
 
-1. 将此配置文件参数添加到 SAP ASCS/SCS 实例配置文件：
+1. 如果使用 ENSA1，请将此配置文件参数添加到 SAP ASCS/SCS 实例配置文件：
 
    ```
    enque/encni/set_so_keepalive = true
@@ -1461,6 +1461,8 @@ Windows Server 2012 R2 上不自动激活或安装 Microsoft .NET Framework 3.5�
    例如，添加到 SAP SCS 实例配置文件和相应的路径：
 
    `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
+
+   对于 ENSA1 和 ENSA2，请确保 `keepalive` 按 SAP 说明[1410736](https://launchpad.support.sap.com/#/notes/1410736)中所述设置 OS 参数。  
 
 2. 若要应用更改，请重新启动 SAP ASCS/SCS 实例。
 

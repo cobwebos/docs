@@ -4,76 +4,47 @@ description: 使用 Azure CLI 和 Azure 门户下载 Linux VHD。
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: how-to
-ms.date: 08/21/2019
+ms.date: 08/03/2020
 ms.author: cynthn
-ms.openlocfilehash: 6254be55ae2a1ba6d178d330a41903585da2e50a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 897cae53e589f4058e5499c0e6e941d4f1d9bb2f
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289770"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87761038"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>从 Azure 下载 Linux VHD
 
-本文介绍如何使用 Azure CLI 和 Azure 门户从 Azure 下载 Linux 虚拟硬盘 (VHD) 文件。 
-
-如果尚未安装 [Azure CLI](/cli/azure/install-az-cli2)，请安装。
+本文介绍如何使用 Azure 门户从 Azure 下载 Linux 虚拟硬盘 (VHD) 文件。 
 
 ## <a name="stop-the-vm"></a>停止 VM
 
-如果 VHD 附加到正在运行的 VM，则不能从 Azure 下载。 需要停止 VM，才能下载 VHD。 如果要使用 VHD 作为[映像](tutorial-custom-images.md)创建包含新磁盘的其他 VM，则需要取消设置并通用化文件中包含的操作系统，然后停止 VM。 若要使用 VHD 作为现有 VM 的新实例的磁盘或数据磁盘，只需停止并解除分配 VM。
+如果 VHD 附加到正在运行的 VM，则不能从 Azure 下载。 需要停止 VM，才能下载 VHD。 
 
-若要使用 VHD 作为映像创建其他 VM，请完成以下步骤：
-
-1. 使用 SSH、帐户名称和 VM 的公共 IP 地址连接到它并对其取消设置。 可以使用 [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) 查找公共 IP 地址。 +user 参数还会删除上次预配的用户帐户。 如果正在将帐户凭据收录到 VM，请省略此 +user 参数。 以下示例删除上次预配的用户帐户：
-
-    ```bash
-    ssh azureuser@<publicIpAddress>
-    sudo waagent -deprovision+user -force
-    exit 
-    ```
-
-2. 使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。
-3. 停止并解除分配 VM。
-
-    ```azurecli
-    az vm deallocate --resource-group myResourceGroup --name myVM
-    ```
-
-4. 通用化 VM。 
-
-    ```azurecli
-    az vm generalize --resource-group myResourceGroup --name myVM
-    ``` 
-
-若要使用 VHD 作为现有 VM 的新实例的磁盘或数据磁盘，请完成以下步骤：
-
-1.  登录 [Azure 门户](https://portal.azure.com/)。
+1.  登录到 [Azure 门户](https://portal.azure.com/)。
 2.  在左侧菜单中，选择 "**虚拟机**"。
 3.  从列表中选择 VM。
 4.  在 VM 的页面上，选择“停止”。
 
-    ![停止 VM](./media/download-vhd/export-stop.png)
+    :::image type="content" source="./media/download-vhd/export-stop.PNG" alt-text="显示用于停止 VM 的菜单按钮。":::
 
 ## <a name="generate-sas-url"></a>生成 SAS URL
 
-若要下载 VHD 文件，需要生成[共享访问签名（SAS）](../../storage/common/storage-sas-overview.md?toc=/azure/virtual-machines/windows/toc.json) URL。 生成 URL 时，将为 URL 分配到期时间。
+若要下载 VHD 文件，需要生成[共享访问签名 (SAS) ](../../storage/common/storage-sas-overview.md?toc=/azure/virtual-machines/windows/toc.json) URL。 生成 URL 时，将为 URL 分配到期时间。
 
-1.  在 VM 页的菜单上，选择“磁盘”****。
-2.  为 VM 选择操作系统磁盘，然后选择“磁盘导出”。
-3.  选择“生成 URL”。
-
-    ![生成 URL](./media/download-vhd/export-generate.png)
-
+1. 在 VM 页的菜单上，选择“磁盘”****。
+2. 为 VM 选择操作系统磁盘，然后选择“磁盘导出”。
+1. 如果需要，请更新 URL 的值** (秒后) ** ，为你留出足够的时间来完成下载。 默认值为3600秒 (一小时) 。
+3. 选择“生成 URL”。
+ 
+      
 ## <a name="download-vhd"></a>下载 VHD
 
 1.  在生成的 URL 下，选择“下载 VHD 文件”。
-**
-    ![下载 VHD](./media/download-vhd/export-download.png)
+
+    :::image type="content" source="./media/download-vhd/export-download.PNG" alt-text="显示用于下载 VHD 的按钮。":::
 
 2.  可能需要选择浏览器中的“保存”**** 以开始下载。 VHD 文件的默认名称为 *abcd*。
-
-    ![选择浏览器中的“保存”](./media/download-vhd/export-save.png)
 
 ## <a name="next-steps"></a>后续步骤
 
