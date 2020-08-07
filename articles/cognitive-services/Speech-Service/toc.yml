@@ -494,10 +494,8 @@
       items:
         - name: 自定义关键字概述
           href: custom-keyword-overview.md
-        - name: 自定义关键字命名准则
-          href: speech-devices-sdk-kws-guidelines.md
-        - name: 自定义关键字识别
-          href: speech-devices-sdk-create-kws.md
+        - name: 自定义关键字基础知识
+          href: custom-keyword-basics.md
 - name: 说话人识别
   items:
     - name: 概述

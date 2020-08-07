@@ -171,10 +171,14 @@
         - name: 监视 Azure 虚拟机
           href: insights/monitor-vm-azure.md
           displayname: VM
+    - name: 部署
+      items:
+        - name: 部署 Azure Monitor
+          href: deploy.md
+        - name: 大规模部署
+          href: deploy-scale.md
     - name: 管理和配置
       items:
-        - name: 大规模部署
-          href: platform/deploy-scale.md
         - name: 角色权限和安全
           href: platform/roles-permissions-security.md
         - name: IP 地址
@@ -298,7 +302,7 @@
                       href: platform/data-sources-custom-logs.md
                     - name: 自定义字段
                       href: platform/custom-fields.md
-            - name: 故障排除
+            - name: 疑难解答
               items:
                 - name: Log Analytics VM 扩展
                   displayname: 'troubleshoot, troubleshooting'
@@ -601,7 +605,7 @@
                 - name: Spring Boot 应用
                   displayname: java
                   href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
-                - name: 故障排除
+                - name: 疑难解答
                   href: app/java-troubleshoot.md
             - name: Node.js
               href: app/nodejs.md
@@ -612,7 +616,7 @@
                   href: app/opencensus-python.md
                 - name: 依赖项
                   href: app/opencensus-python-dependency.md
-                - name: Requests
+                - name: 请求
                   href: app/opencensus-python-request.md
             - name: 网页
               items:
@@ -939,7 +943,7 @@
       items:
         - name: 概述
           href: insights/container-insights-overview.md
-        - name: 常见问题
+        - name: 常见问题解答
           href: faq.md#azure-monitor-for-containers
         - name: 启用监视
           items:

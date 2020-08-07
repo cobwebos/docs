@@ -7,6 +7,8 @@
     - name: 比较消息服务
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
+    - name: 结合使用服务总线和 Java 消息服务 (JMS) 2.0（预览版）
+      href: how-to-use-java-message-service-20.md
 - name: 快速入门
   items:
     - name: 服务总线队列
@@ -127,6 +129,8 @@
           items:
             - name: 队列、主题和订阅
               href: service-bus-queues-topics-subscriptions.md
+            - name: Java 消息实体 (JMS) 2.0 实体（预览版）
+              href: java-message-service-20-entities.md
             - name: 消息、有效负载和序列化
               href: service-bus-messages-payloads.md
             - name: 消息传输、锁定和处置
@@ -141,7 +145,7 @@
           href: topic-filters.md
         - name: 从标准层迁移到高级层命名空间
           href: service-bus-migrate-standard-premium.md
-        - name: 分区的队列和主题
+        - name: 分区队列和主题
           href: service-bus-partitioning.md
         - name: 消息会话
           href: message-sessions.md

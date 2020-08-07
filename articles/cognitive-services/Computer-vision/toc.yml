@@ -55,7 +55,7 @@
               href: QuickStarts/CSharp-hand-text.md
             - name: Java
               href: QuickStarts/java-hand-text.md
-            - name: Javascript
+            - name: JavaScript
               href: QuickStarts/javascript-hand-text.md
             - name: Python
               href: QuickStarts/python-hand-text.md
@@ -137,7 +137,7 @@
       href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
     - name: Azure PowerShell
       href: 'https://aka.ms/azure-powershell-cognitiveservices'
-    - name: 计算机视觉 API v3.1-preview.1
+    - name: 计算机视觉 API v3.1 预览版
       href: 'https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-preview-1/operations/5d986960601faab4bf452005'
     - name: 计算机视觉 API v3.0
       href: 'https://aka.ms/computer-vision-v3-ref'
