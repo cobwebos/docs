@@ -9,12 +9,12 @@ ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 337ecc6069211942a809f2bf3d793c5bccc08387
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b08b5db5639d498aa6a6a47b7f7121cad565fe02
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87277224"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986362"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>通过将安全操作与 Microsoft Graph 安全性和 Azure 逻辑应用集成，提升威胁防护能力
 
@@ -62,13 +62,13 @@ ms.locfileid: "87277224"
 
 1. 对于空白逻辑应用，请在添加 Microsoft Graph 安全操作之前添加触发器以及所需的任何其他操作。
 
-   -或-
+   \- 或 -
 
    对于现有的逻辑应用，在要添加 Microsoft Graph 安全操作的最后一个步骤下，选择 "**新建步骤**"。
 
    -或-
 
-   若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择出现的加号（+），然后选择 "**添加操作**"。
+   若要在步骤之间添加操作，请将鼠标指针移到步骤之间的箭头上。 选择出现的加号 (+) ，然后选择 "**添加操作**"。
 
 1. 在搜索框中，输入“microsoft graph 安全性”作为筛选器。 从操作列表中选择所需的操作。
 
@@ -91,11 +91,11 @@ ms.locfileid: "87277224"
 
 1.  在触发器中，提供要监视的警报的相关信息。 若要查看更多属性，请打开 "**添加新参数**" 列表，并选择一个参数以将该属性添加到触发器。
 
-   | 属性 | 属性 (JSON) | 必须 | 类型 | 说明 |
+   | 属性 | 属性 (JSON) | 必选 | 类型 | 说明 |
    |----------|-----------------|----------|------|-------------|
    | **时间间隔** | `interval` | 是 | Integer | 一个正整数，描述工作流基于频率运行的频繁度。 下面是最小和最大间隔： <p><p>- 月：1-16 个月 <br>- 天：1-500 天 <br>- 小时：1-12,000 小时 <br>- 分钟：1-72,000 分钟 <br>- 秒：1-9,999,999 秒 <p>例如，如果间隔为 6，频率为“月”，则重复周期为每 6 个月。 |
-   | **频率** | `frequency` | 是 | 字符串 | 定期计划的时间单位：“秒”、“分钟”、“小时”、“天”、“周”或“月”      |
-   | **时区** | `timeZone` | 否 | 字符串 | 仅当指定启动时间时才适用，因为此触发器不接受 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 选择要应用的时区。 |
+   | **频率** | `frequency` | 是 | String | 定期计划的时间单位：“秒”、“分钟”、“小时”、“天”、“周”或“月”      |
+   | **时区** | `timeZone` | 否 | String | 仅当指定启动时间时才适用，因为此触发器不接受 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 选择要应用的时区。 |
    | **开始时间** | `startTime` | 否 | String | 采用以下格式提供启动日期和时间： <p><p>如果选择了时区，则格式为 YYYY-MM-DDThh:mm:ss <p>-或- <p>如果未选择时区，则格式为 YYYY-MM-DDThh:mm:ssZ <p>例如，如果你需要 2:00 2017 年9月18日，则指定 "2017-09-18T14：00： 00" 并选择时区，如太平洋标准时间。 或者指定“2017-09-18T14:00:00Z”且不选择时区。 <p>**注意：** 此开始时间在未来最长为 49 年，并且必须遵循 [UTC 日期时间格式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)的 [ISO 8601 日期时间规范](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)，但没有 [UTC 时差](https://en.wikipedia.org/wiki/UTC_offset)。 如果未选择时区，必须在末尾添加字母“Z”（无空格）。 这个“Z”指等效的[航海时间](https://en.wikipedia.org/wiki/Nautical_time)。 <p>对于简单计划，开始时间指首次运行时间；对于复杂计划，触发器的激发时间不会早于开始时间。 [*可通过哪些方式使用开始日期和时间？* ](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||
 
@@ -126,7 +126,7 @@ ms.locfileid: "87277224"
 
 Microsoft Graph 支持[订阅**](/graph/api/resources/subscription)或 [Webhook**](/graph/api/resources/webhooks)。 若要获取、更新或删除订阅，请向 Microsoft Graph 实体构造提供 [Microsoft Graph 支持的 ODATA 查询参数](/graph/query-parameters)，并添加后跟 ODATA 查询的 `security/alerts`。 请勿添加** 基 URL（例如，`https://graph.microsoft.com/v1.0`）。 而是改用此示例中的格式：
 
-`security/alerts?$filter=status eq 'New'`
+`security/alerts?$filter=status eq 'NewAlert'`
 
 | 操作 | 说明 |
 |--------|-------------|

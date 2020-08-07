@@ -12,12 +12,12 @@ manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 07/09/2020
-ms.openlocfilehash: c3f3e7540f837722d4dd730c5635ac30c699ccd3
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 8b29708dbcc6bbb0d127b4277fd4b2d962da6e6a
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184277"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986383"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>自定义 Azure-SSIS Integration Runtime 的安装
 
@@ -129,11 +129,11 @@ Azure 数据工厂 (ADF) 中 Azure-SQL Server Integration Services (SSIS) Integr
 
    * 如果选择“安装有许可证的组件”类型，可以在“组件名”下拉列表中选择来自我们 ISV 合作伙伴的任何集成组件： 
 
-     * 如果选择“SentryOne Task Factory”组件，可通过在“许可证密钥”框中输入从 SentryOne 购买的产品许可证密钥，在 Azure-SSIS IR 上安装 SentryOne 提供的 [Task Factory](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) 组件套件。  当前的集成版本是 2019.4.3。
+     * 如果选择“SentryOne Task Factory”组件，可通过在“许可证密钥”框中输入从 SentryOne 购买的产品许可证密钥，在 Azure-SSIS IR 上安装 SentryOne 提供的 [Task Factory](https://www.sentryone.com/products/task-factory/high-performance-ssis-components) 组件套件。  当前的集成版本为**2020.1.3**。
 
-     * 如果选择“oh22 的 HEDDA.IO”组件，可在购买 oh22 服务后，在 Azure-SSIS IR 上安装 oh22 的 [HEDDA.IO](https://hedda.io/ssis-component/) 数据质量/清理组件。 当前的集成版本是 1.0.13。
+     * 如果选择“oh22 的 HEDDA.IO”组件，可在购买 oh22 服务后，在 Azure-SSIS IR 上安装 oh22 的 [HEDDA.IO](https://hedda.io/ssis-component/) 数据质量/清理组件。 当前的集成版本为**1.0.14**。
 
-     * 如果选择“oh22 的 SQLPhonetics.NET”组件，可通过在“许可证密钥”框中输入从 oh22 购买的产品许可证密钥，在 Azure-SSIS IR 上安装 oh22 的 [SQLPhonetics.NET](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) 数据质量/匹配组件。  当前的集成版本是 1.0.43。
+     * 如果选择“oh22 的 SQLPhonetics.NET”组件，可通过在“许可证密钥”框中输入从 oh22 购买的产品许可证密钥，在 Azure-SSIS IR 上安装 oh22 的 [SQLPhonetics.NET](https://appsource.microsoft.com/product/web-apps/oh22.sqlphonetics-ssis) 数据质量/匹配组件。  当前的集成版本为**1.0.45**。
 
      * 如果选择“KingswaySoft 的 SSIS Integration Toolkit”组件，可以通过在“许可密钥”框中输入从 KingswaySoft 购买的产品许可密钥，在 Azure-SSIS IR 上安装适用于 KingswaySoft 所提供的 CRM/ERP/营销/协作应用（例如 Microsoft Dynamics/SharePoint/Project Server、Oracle/Salesforce Marketing Cloud 等）的 [SSIS Integration Toolkit](https://www.kingswaysoft.com/products/ssis-integration-toolkit-for-microsoft-dynamics-365) 套件。  当前的集成版本是 **2019.2**。
 

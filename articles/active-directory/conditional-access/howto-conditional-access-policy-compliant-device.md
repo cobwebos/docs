@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c65b4ede6f4851418bf17d42db5b3215dafa9234
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c60c0324b04bca0a8115f4ac884704012e8e1d8c
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995167"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986842"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>条件访问：要求符合的设备
 
@@ -44,7 +44,7 @@ ms.locfileid: "83995167"
 1. 在“云应用或操作”   >   “包括”下，选择“所有云应用”。 
    1. 如果必须将特定应用程序排除在策略之外，可以在“选择排除的云应用”下的“排除”选项卡中选择它们，然后选择“选择”。   
    1. 选择“完成”  。
-1. 在“条件”   >   “客户端应用(预览)”下，将“配置”设置为“是”，然后选择“完成”。   
+1. 在 "**条件**  >  **客户端应用 (预览") **  >  **选择 "此策略将应用到的客户端应用**"，保留所有默认设置，然后选择 "**完成**"。
 1. 在“访问控制”   >   “授予”下，选择“要求将设备标记为合规”。 
    1. 选择“选择”  。
 1. 确认设置，然后将“启用策略”设置为“打开”。  

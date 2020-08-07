@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: b8a53ae598130086a9009dbec891052e863cdf0f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 64c7db4223fcb703272749b0bf8d5b1583fbb818
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281355"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987318"
 ---
 # <a name="manage-azure-digital-twins-models"></a>管理 Azure 数字孪生模型
 
-你可以使用[**DigitalTwinsModels api**](how-to-use-apis-sdks.md)、 [.Net （c #） SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[azure 数字孪生 CLI](how-to-use-cli.md)来管理 azure 数字孪生实例知道的[模型](concepts-models.md)。 
+你可以使用[**DigitalTwinsModels api**](how-to-use-apis-sdks.md)、 [.Net (c # ) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[Azure 数字孪生 CLI](how-to-use-cli.md)来管理 azure 数字孪生实例知道的[模型](concepts-models.md)。 
 
 管理操作包括上载、验证、检索和删除模型。 
 
@@ -59,17 +59,15 @@ Azure 数字孪生的模型以 DTDL 编写，并保存为*json*文件。 还有�
 ```
 
 > [!NOTE]
-> 这是一个 json 文件的示例正文，其中定义并保存了模型，以便作为客户端项目的一部分进行上载。 另一方面，REST API 调用采用一组类似于上面的模型定义（映射到 `IEnumerable<string>` .NET SDK 中的）。 因此，若要直接在 REST API 中使用此模型，请将其括在括号中。
+> 这是一个 json 文件的示例正文，其中定义并保存了模型，以便作为客户端项目的一部分进行上载。 另一方面，REST API 调用采用类似于上面 (的模型定义的数组，该数组 `IEnumerable<string>` 在 .NET SDK) 中映射到。 因此，若要直接在 REST API 中使用此模型，请将其括在括号中。
 
-此模型定义了患者房间的名称和唯一 ID，并定义了用于表示访问者计数和手动冲蚀状态的属性（这些计数器将从运动传感器和智能 soap dispensers 更新，并将一起用于计算*handwash 百分比*属性）。 该模型还定义了一个关系*hasDevices*，用于将基于此*房间*模型的任何[数字孪生](concepts-twins-graph.md)连接到实际设备。
+此模型定义了患者房间的名称和唯一 ID，并定义了用于表示访问者计数和手动冲蚀状态 (这些计数器将从运动传感器和智能 soap dispensers 更新的属性，并将一起用于计算*handwash 百分比*属性) 。 该模型还定义了一个关系*hasDevices*，用于将基于此*房间*模型的任何[数字孪生](concepts-twins-graph.md)连接到实际设备。
 
 按照此方法，你可以继续为医院的 wards、区域或医院本身定义模型。
 
 ### <a name="validate-syntax"></a>验证语法
 
-有一个可用于分析和验证 DTDL 的客户端库。 它生成 DTDL 内容的 c # 对象模型，该模型可用于模型驱动开发方案，如生成 UI 元素。 你还可以使用此库来确保模型在上传之前没有语法错误。 
-
-有关此库的详细信息以及对 DTDL 验证程序构建的示例的访问权限，请参阅[*操作方法：分析和验证模型*](how-to-use-parser.md)。
+[!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
 ## <a name="manage-models-with-apis"></a>利用 Api 管理模型。
 
@@ -86,7 +84,7 @@ Azure 数字孪生的模型以 DTDL 编写，并保存为*json*文件。 还有�
 创建模型后，可以将其上传到 Azure 数字孪生实例。
 
 > [!TIP]
-> 建议在将模型上传到 Azure 数字孪生实例之前，先对其进行验证。 你可以使用 "[*操作方法：分析和验证模型*](how-to-use-parser.md)" 中所述的[DTDL 客户端分析器库](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)和[DTDL 验证器示例](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)来检查模型，然后将它们上载到服务中。
+> 建议在将模型上传到 Azure 数字孪生实例之前，先对其进行验证。 你可以使用 "[*操作方法：分析和验证模型*](how-to-parse-models.md)" 中所述的[DTDL 客户端分析器库](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)和[DTDL 验证器示例](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)来检查模型，然后将它们上载到服务中。
 
 准备好上载模型时，可以使用以下代码片段：
 
@@ -162,7 +160,7 @@ Pageable<ModelData> pmd3 = client.GetModels(null, true);
 Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
 ```
 
-用于检索模型所有返回对象的 API 调用 `ModelData` 。 `ModelData`包含有关存储在 Azure 数字孪生实例中的模型的元数据，例如名称、DTMI 和模型的创建日期。 `ModelData`对象也可以选择包含模型本身。 因此，根据参数，您可以使用检索调用来仅检索元数据（例如，在希望显示可用工具的 UI 列表的情况下，这非常有用），也可以使用整个模型。
+用于检索模型所有返回对象的 API 调用 `ModelData` 。 `ModelData`包含有关存储在 Azure 数字孪生实例中的模型的元数据，例如名称、DTMI 和模型的创建日期。 `ModelData`对象也可以选择包含模型本身。 因此，根据参数，您可以使用检索调用来仅检索元数据，这在您想要显示可用工具的 UI 列表的情况下很有用 (例如) 或整个模型。
 
 `RetrieveModelWithDependencies`调用不仅返回所请求的模型，而且还返回请求的模型所依赖的所有模型。
 
@@ -231,13 +229,13 @@ await client.DeleteModelAsync(IDToDelete);
 * 查询克隆
 * 读取属性
 * 读取传出关系
-* 添加和删除传入关系（如在中，其他孪生仍可形成*与*此克隆的关系）
+* 添加和删除传入关系 (如中所示，其他孪生仍可形成*与*此克隆的关系) 
   - `target`关系定义中的仍可反映已删除模型的 DTMI。 没有定义的目标的关系也可以在此处工作。
 * 删除关系
 * 删除克隆
 
 不**能**执行的操作：
-* 编辑传出关系（如中所述，与其他孪生*之间的*关系）
+* 编辑与 (相同的传出关系，并将*其与其他*孪生) 进行关系
 * 编辑属性
 
 ##### <a name="after-deletion-re-uploading-a-model"></a>删除后：重新上传模型

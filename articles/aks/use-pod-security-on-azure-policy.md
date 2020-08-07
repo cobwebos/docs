@@ -5,22 +5,18 @@ services: container-service
 ms.topic: article
 ms.date: 07/06/2020
 author: jluk
-ms.openlocfilehash: 5677cb3d240381e06c76ed73354981f782bdb0dd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 18947f409ebcef570998671f9f421f8228e9692d
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830217"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987352"
 ---
 # <a name="secure-pods-with-azure-policy-preview"></a>通过 Azure 策略 (预览的安全箱) 
 
 若要提高 AKS 群集的安全性，可以控制要授予哪些功能，以及根据公司策略运行的任何功能。 此访问通过[用于 AKS 的 Azure 策略外接程序][kubernetes-policy-reference]提供的内置策略定义。 通过提供对 pod 规范安全方面（如 root 权限）的更多控制，可实现更严格的安全遵从性并了解群集中部署的内容。 如果 pod 不满足策略中指定的条件，Azure 策略可以禁止 pod 启动或标记冲突。 本文介绍如何使用 Azure 策略来限制 AKS 中 pod 的部署。
 
-> [!IMPORTANT]
-> AKS 预览功能是自助式选择加入功能。 预览版“按原样”提供，并且仅在“可用情况下”提供，不包含在服务级别协议和有限保障中。 AKS 预览版的内容部分包含在客户支持中，我们只能尽力提供支持。 因此，这些功能不应用于生产。 有关其他信息，请参阅以下支持文章：
->
-> * [AKS 支持策略][aks-support-policies]
-> * [Azure 支持常见问题][aks-faq]
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -283,11 +279,11 @@ az aks disable-addons --addons azure-policy --name MyAKSCluster --resource-group
 |安装|启用 pod 安全策略功能 |启用 Azure 策略外接程序
 |部署策略| 部署 pod 安全策略资源| 将 Azure 策略分配到订阅或资源组作用域。 Azure 策略外接程序是 Kubernetes 资源应用程序所必需的。
 | 默认策略 | 当在 AKS 中启用 pod 安全策略时，将应用默认的特权和无限制策略。 | 启用 Azure 策略外接程序不会应用默认策略。 必须在 Azure 策略中显式启用策略。
-| 谁可以创建和分配策略 | 群集管理创建 pod 安全策略资源 | 对于 AKS 群集资源组，用户必须至少具有 "所有者" 角色或 "资源策略参与者" 权限。 -通过 API，用户可以在 AKS 群集资源范围内分配策略。 用户应在 AKS 群集资源上至少具有 "所有者" 或 "资源策略参与者" 权限。 -在 Azure 门户中，可以将策略分配到管理组/订阅/资源组级别。
+| 谁可以创建和分配策略 | 群集管理创建 pod 安全策略资源 | 对于 AKS 群集资源组，用户必须至少具有 "所有者" 角色或 "资源策略参与者" 权限。 -通过 API，用户可以在 AKS 群集资源范围内分配策略。 用户应在 AKS 群集资源上至少具有 "所有者" 或 "资源策略参与者" 权限。 -在 Azure 门户中，可以在管理组/订阅/资源组级别分配策略。
 | 授权策略| 用户和服务帐户需要显式权限才能使用 pod 安全策略。 | 不需要对策略进行其他分配。 将策略分配到 Azure 后，所有群集用户都可以使用这些策略。
 | 策略适用性 | 管理员用户绕过 pod 安全策略的实施。 |  (管理员 & 非管理员) 的所有用户都将看到相同的策略。 没有基于用户的特殊大小写。 可在命名空间级别排除策略应用程序。
 | 策略作用域 | Pod 安全策略不带命名空间 | Azure 策略使用的约束模板不可带命名空间。
-| 拒绝/审核/变化操作 | Pod 安全策略仅支持拒绝操作。 可以在 create 请求上对默认值执行 Mutatation。 可以在更新请求期间完成验证。| Azure 策略支持审核 & 拒绝操作。 目前尚不支持转变，但计划了。
+| 拒绝/审核/变化操作 | Pod 安全策略仅支持拒绝操作。 可以在 create 请求上对默认值进行转变。 可以在更新请求期间完成验证。| Azure 策略支持审核 & 拒绝操作。 目前尚不支持转变，但计划了。
 | Pod 安全策略符合性 | 启用 pod 安全策略之前，不会看到已存在的有关 pod 的符合性。 启用 pod 安全策略后，创建不符合的 pod。 | 应用 Azure 策略之前存在的不兼容的 pod 将显示在 "策略冲突" 中。 如果策略设置为 "拒绝" 效果，则会拒绝启用 Azure 策略后创建的不符合的 pod。
 | 如何查看群集上的策略 | `kubectl get psp` | `kubectl get constrainttemplate`-返回所有策略。
 | Pod 安全策略标准版-特权 | 启用该功能时，默认情况下会创建特权 pod 安全策略资源。 | 特权模式意味着无限制，因此它等效于没有 Azure 策略分配。

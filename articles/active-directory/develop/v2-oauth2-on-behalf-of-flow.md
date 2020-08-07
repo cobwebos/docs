@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c4274292dfbd53abed09dfeae77ec976afe9ebc0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3abef3324bee61f2d7eb96c80750ad589b15f342
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282953"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987029"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft 标识平台和 OAuth 2.0 代理流
 
@@ -66,9 +66,9 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 | `grant_type` | 必须 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
 | `client_id` | 必须 | [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端）ID。 |
 | `client_secret` | 必须 | 在“Azure 门户 - 应用注册”页中为应用生成的客户端机密。 |
-| `assertion` | 必须 | 发送到中间层 API 的访问令牌。  此令牌必须拥有对 `aud` 发出此 OBO 请求的应用（由字段表示的应用）的受众（）声明 `client-id` 。 应用程序不能兑换不同应用程序的令牌（例如，如果客户端发送 API，它是一个用于 MS Graph 的令牌，则 API 不能使用 OBO 兑换该令牌。  它应改为拒绝标记）。  |
-| `scope` | 必须 | 空格分隔的令牌请求作用域的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。 |
-| `requested_token_use` | 必须 | 指定应如何处理请求。 在 OBO 流中，该值必须设置为 `on_behalf_of`。 |
+| `assertion` | 必须 | 发送到中间层 API 的访问令牌。  此令牌必须使受众 (`aud`) 声明，使此 OBO 请求 (由字段) 表示的应用程序 `client-id` 。 应用程序不能兑换不同应用程序的令牌 (因此，例如，如果客户端发送一个用于 MS Graph 的令牌，则 API 无法使用 OBO 兑换该令牌。  它应改为拒绝令牌) 。  |
+| `scope` | 必选 | 空格分隔的令牌请求作用域的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。 |
+| `requested_token_use` | 必选 | 指定应如何处理请求。 在 OBO 流中，该值必须设置为 `on_behalf_of`。 |
 
 #### <a name="example"></a>示例
 
@@ -95,13 +95,13 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 
 | 参数 | 类型 | 描述 |
 | --- | --- | --- |
-| `grant_type` | 必需 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
+| `grant_type` | 必选 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
 | `client_id` | 必须 |  [Azure 门户 - 应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给应用的应用程序（客户端）ID。 |
 | `client_assertion_type` | 必须 | 值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
-| `client_assertion` | 必需 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 若要了解如何注册证书以及断言的格式，请参阅[证书凭据](active-directory-certificate-credentials.md)。 |
-| `assertion` | 必须 |  发送到中间层 API 的访问令牌。  此令牌必须拥有对 `aud` 发出此 OBO 请求的应用（由字段表示的应用）的受众（）声明 `client-id` 。 应用程序不能兑换不同应用程序的令牌（例如，如果客户端发送 API，它是一个用于 MS Graph 的令牌，则 API 不能使用 OBO 兑换该令牌。  它应改为拒绝标记）。  |
-| `requested_token_use` | 必须 | 指定应如何处理请求。 在 OBO 流中，该值必须设置为 `on_behalf_of`。 |
-| `scope` | 必须 | 空格分隔的令牌请求范围的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。|
+| `client_assertion` | 必选 | 断言（JSON Web 令牌），需使用作为凭据向应用程序注册的证书进行创建和签名。 若要了解如何注册证书以及断言的格式，请参阅[证书凭据](active-directory-certificate-credentials.md)。 |
+| `assertion` | 必须 |  发送到中间层 API 的访问令牌。  此令牌必须使受众 (`aud`) 声明，使此 OBO 请求 (由字段) 表示的应用程序 `client-id` 。 应用程序不能兑换不同应用程序的令牌 (因此，例如，如果客户端发送一个用于 MS Graph 的令牌，则 API 无法使用 OBO 兑换该令牌。  它应改为拒绝令牌) 。  |
+| `requested_token_use` | 必选 | 指定应如何处理请求。 在 OBO 流中，该值必须设置为 `on_behalf_of`。 |
+| `scope` | 必选 | 空格分隔的令牌请求范围的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。|
 
 请注意，这些参数与共享密钥请求的参数几乎相同，只不过 `client_secret` 参数替换为以下两个参数：`client_assertion_type` 和 `client_assertion`。
 
@@ -194,49 +194,6 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 
 > [!TIP]
 > 当从前端 Web 应用程序调用受 SAML 保护的 Web 服务时，只需调用 API 并使用用户的现有会话启动正常的交互式身份验证流。 当服务到服务调用需要 SAML 令牌来提供用户上下文时，只需使用 OBO 流。
-
-### <a name="obtain-a-saml-token-by-using-an-obo-request-with-a-shared-secret"></a>使用带共享密钥的 OBO 请求获取 SAML 令牌
-
-SAML 断言的服务到服务请求包含以下参数：
-
-| 参数 | 类型 | 描述 |
-| --- | --- | --- |
-| grant_type |必需 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须是 urn:ietf:params:oauth:grant-type:jwt-bearer。 |
-| assertion |必填 | 请求中使用的访问令牌值。|
-| client_id |必需 | 在注册到 Azure AD 期间分配给调用服务的应用 ID。 要在 Azure 门户中查找应用 ID，请选择“Active Directory”，选择目录，然后选择应用程序名称。 |
-| client_secret |必需 | 在 Azure AD 中为调用服务注册的密钥。 注册时应已记下此值。 |
-| resource |必需的 | 接收服务（受保护资源）的应用 ID URI。 这是将成为 SAML 令牌受众的资源。 要在 Azure 门户中查找应用 ID URI，请选择“Active Directory”并选择目录。 选择应用程序名称，选择“所有设置”，然后选择“属性” 。 |
-| requested_token_use |必需的 | 指定应如何处理请求。 在代理流中，该值必须是 **on_behalf_of**。 |
-| requested_token_type | 必需 | 指定请求令牌的类型。 值可以是 urn:ietf:params:oauth:token-type:saml2 或 urn:ietf:params:oauth:token-type:saml1，具体取决于访问资源的要求 。 |
-
-响应包含以 UTF8 和 Base64url 编码的 SAML 令牌。
-
-- **源自 OBO 调用的 SAML 断言的 SubjectConfirmationData**：如果目标应用程序需要 **SubjectConfirmationData** 中的接收方值，则该值必须是资源应用程序配置中的非通配符回复 URL。
-- **SubjectConfirmationData 节点**：此节点不能包含 **InResponseTo** 属性，因为它不是 SAML 响应的一部分。 接收 SAML 令牌的应用程序必须能够在没有 InResponseTo 属性的情况下接受 SAML 断言。
-
-- **许可**：必须授予许可，才能接收包含 OAuth 流上用户数据的 SAML 令牌。 有关权限和获取管理员许可的信息，请参阅 [Azure Active Directory v1.0 终结点中的权限和许可](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent)。
-
-### <a name="response-with-saml-assertion"></a>使用 SAML 断言进行响应
-
-| 参数 | 说明 |
-| --- | --- |
-| token_type |指示令牌类型值。 Azure AD 唯一支持的类型是 Bearer 。 有关持有者令牌的详细信息，请参阅 [OAuth 2.0 授权框架：持有者令牌用法 (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt)。 |
-| scope |令牌中授予的访问权限的范围。 |
-| expires_in |访问令牌有效的时间长度（以秒为单位）。 |
-| expires_on |访问令牌的过期时间。 该日期表示为自 1970-01-01T0:0:0Z UTC 至过期时间的秒数。 此值用于确定缓存令牌的生存期。 |
-| resource |接收服务（受保护资源）的应用 ID URI。 |
-| access_token |返回 SAML 断言的参数。 |
-| refresh_token |刷新令牌。 当前 SAML 断言过期后，调用方服务可以使用此令牌请求另一个访问令牌。 |
-
-- token_type：持有者
-- expires_in：3296
-- ext_expires_in：0
-- expires_on：1529627844
-- 资源：`https://api.contoso.com`
-- access_token：\<SAML assertion\>
-- issued_token_type: urn:ietf:params:oauth:token-type:saml2
-- refresh_token：\<Refresh token\>
-
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>为中间层应用程序获得同意
 

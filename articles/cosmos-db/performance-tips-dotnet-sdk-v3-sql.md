@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: 30fdc3c2b75d8ae567acfc612514ab080b929c5f
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 9816ea7dd9f5aef9dcdd62319f8cc4408eff3fd8
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850251"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987250"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>适用于 Azure Cosmos DB 和 .NET 的性能提示
 
@@ -107,7 +107,7 @@ new CosmosClientOptions
 
 在具有稀疏访问权限的情况下，如果在与网关模式访问比较时发现连接计数更高，则可以：
 
-* 将[CosmosClientOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode)属性配置为 `PrivatePortPool` （有效使用 framework 版本>= 4.6.1，.net core 版本 >= 2.0）：此属性允许 SDK 为不同的 Azure Cosmos DB 目标终结点使用少量临时端口。
+* 将[CosmosClientOptions. PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode)属性配置为 `PrivatePortPool` (与 framework 版本>= 4.6.1 和 .net Core 版本 >= 2.0) 一起使用：此属性允许 SDK 为不同 Azure Cosmos DB 目标终结点使用少量临时端口。
 * 配置[CosmosClientOptions. IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout)属性必须大于或等于10分钟。 建议值介于20分钟到24小时之间。
 
 <a id="same-region"></a>
@@ -149,7 +149,7 @@ Azure Cosmos DB SDK 正在不断改进以提供最佳性能。 请参阅 [Azure 
 
 **禁用写入操作时的内容响应**
 
-对于具有 heave 创建有效负载的工作负载，请将 EnableContentResponseOnWrite 请求选项设置为 false。 该服务将不再将创建或更新的资源返回给 SDK。 通常，应用程序具有正在创建的对象，因此不需要服务即可将其返回。 标头值仍可访问，例如请求费用。 这可以提高性能，因为 SDK 不再需要分配内存或序列化响应正文。 这还降低了网络带宽的使用率，从而进一步提高了性能。  
+对于具有大量创建负载的工作负荷，请将 EnableContentResponseOnWrite 请求选项设置为 false。 该服务将不再将创建或更新的资源返回给 SDK。 通常，应用程序具有正在创建的对象，因此不需要服务即可将其返回。 标头值仍可访问，例如请求费用。 这可以提高性能，因为 SDK 不再需要分配内存或序列化响应正文。 这还降低了网络带宽的使用率，从而进一步提高了性能。  
 
 ```csharp
 ItemRequestOption requestOptions = new ItemRequestOptions() { EnableContentResponseOnWrite = false };

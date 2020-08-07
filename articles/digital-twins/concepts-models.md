@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 2d062ea4f38742129d44be0e2b7ff51fe3ad8dd1
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 4d0ed9826326256e3b91815746e43d34b6934ba0
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562423"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985865"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>了解 Azure 数字孪生中的克隆模型
 
@@ -116,7 +116,7 @@ DTDL 模型接口可能包含以下每个字段中的零个、一个或多个字
 
 模型的字段为：
 
-| 字段 | 说明 |
+| 字段 | 描述 |
 | --- | --- |
 | `@id` | 模型的标识符。 必须采用格式 `dtmi:<domain>:<unique model identifier>;<model version number>` 。 |
 | `@type` | 标识所描述的信息的类型。 对于接口，类型为*interface*。 |
@@ -204,14 +204,7 @@ DTDL 模型接口可能包含以下每个字段中的零个、一个或多个字
 
 ## <a name="validating-models"></a>验证模型
 
-> [!TIP]
-> 建议在将模型上传到 Azure 数字孪生实例之前，先对其进行验证。
-
-有一种与语言无关的示例可用于验证模型文档，以确保 DTDL 是正确的。 其位置为： [**DTDL 验证器示例**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)。
-
-DTDL 验证器示例建立在一个 .NET DTDL 分析器库上，该库在 NuGet 上作为客户端库提供： [**DigitalTwins**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)。 你还可以直接使用库来设计自己的验证解决方案。 使用分析器库时，请确保使用与 Azure 数字孪生运行的版本兼容的版本。 预览期间，此版本为*3.7.0*。
-
-可以在[*操作方法：分析和验证模型*](how-to-use-parser.md)中了解有关分析器库的详细信息，包括用法示例。
+[!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
 ## <a name="next-steps"></a>后续步骤
 

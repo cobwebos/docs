@@ -1,24 +1,24 @@
 ---
-title: 使用邻近组来减少 Azure Kubernetes 服务（AKS）群集的延迟
+title: 使用邻近组来减少 Azure Kubernetes Service (AKS) 群集的延迟
 description: 了解如何使用邻近组来减少 AKS 群集工作负荷的延迟。
 services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 07/10/2020
 author: jluk
-ms.openlocfilehash: f6cb370d258a79420b03baf17ec964b091cdebb7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5b3dc3803cfb89f4a74d082b5913e69df1d03a00
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056582"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986706"
 ---
-# <a name="reduce-latency-with-proximity-placement-groups-preview"></a>通过邻近组（预览）减少延迟
+# <a name="reduce-latency-with-proximity-placement-groups-preview"></a>通过邻近组 (预览降低延迟) 
 
 > [!Note]
 > 在 AKS 上使用邻近位置组时，归置仅适用于代理节点。 节点到节点和对应的托管 pod 到 pod 的延迟得到改进。 归置不会影响群集的控制平面的放置。
 
-在 Azure 中部署应用程序时，跨区域或可用性区域传播虚拟机（VM）实例会产生网络延迟，这可能会影响应用程序的总体性能。 邻近性放置组是一种逻辑分组，用于确保 Azure 计算资源的物理位置彼此接近。 有些应用程序（如游戏、工程模拟和高频交易（HFT））需要较低的延迟和更快完成的任务。 对于这样的高性能计算（HPC）方案，请考虑对群集的节点池使用[邻近的放置组](../virtual-machines/linux/co-location.md#proximity-placement-groups)（PPG）。
+在 Azure 中部署应用程序时，跨区域或可用性区域 (VM) 实例分配虚拟机将产生网络延迟，这可能会影响应用程序的总体性能。 邻近性放置组是一种逻辑分组，用于确保 Azure 计算资源的物理位置彼此接近。 有些应用程序（如游戏、工程模拟和高频交易） (HFT) 需要较低的延迟和快速完成的任务。 为实现高性能计算 (HPC) 方案，请考虑使用群集节点池 (PPG) 的[邻近性放置组](../virtual-machines/linux/co-location.md#proximity-placement-groups)。
 
 ## <a name="limitations"></a>限制
 
@@ -26,13 +26,9 @@ ms.locfileid: "87056582"
 * 节点池必须使用虚拟机规模集来关联邻近位置组。
 * 节点池只能在节点池创建时间关联邻近位置组。
 
-> [!IMPORTANT]
-> AKS 预览功能是可选择启用的自助功能。 预览功能是“按现状”和“按可用”提供的，不包括在服务级别协议和有限保证中。 AKS 预览功能是由客户支持尽最大努力部分覆盖。 因此，这些功能并不适合用于生产。 有关详细信息，请参阅以下支持文章：
->
-> - [AKS 支持策略](support-policies.md)
-> - [Azure 支持常见问题](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 必须已安装以下资源：
 
@@ -67,7 +63,7 @@ az extension update --name aks-preview
 
 ## <a name="node-pools-and-proximity-placement-groups"></a>节点池和邻近位置组
 
-使用邻近位置组部署的第一个资源会附加到特定的数据中心。 部署了相同邻近位置组的其他资源将在同一数据中心中进行定位。 使用邻近位置组的所有资源停止（释放）或删除后，就不再附加。
+使用邻近位置组部署的第一个资源会附加到特定的数据中心。 部署了相同邻近位置组的其他资源将在同一数据中心中进行定位。 使用邻近位置组的所有资源停止 (释放) 或删除后，就不再附加。
 
 * 许多节点池可以与单个邻近布局组相关联。
 * 节点池只能与单个邻近布局组相关联。

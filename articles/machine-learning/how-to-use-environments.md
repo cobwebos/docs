@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 08e36f8ef31114b18a166e7a14d6d7ad8385582c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 3fb13a4912fbd2a9bea39b56333adbd1329efef6
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850366"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985897"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure 机器学习中创建 & 使用软件环境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -320,6 +320,14 @@ myenv.python.interpreter_path = "/opt/miniconda/bin/python"
 > [!WARNING]
 > 如果在 Docker 映像中安装了某些 Python 依赖项，但忘记将 user_managed_dependencies 设置为 True，则在执行环境中将不会存在这些包，从而导致运行时失败。 默认情况下，Azure ML 会构建一个具有指定的依赖项的 Conda 环境，并将在该环境中执行运行，而不是使用在基础映像上安装的任何 Python 库。
 
+### <a name="retrieve-image-details"></a>检索映像详细信息
+
+对于已注册的环境，你可以使用以下代码检索映像详细信息，其中 `details` ，是[DockerImageDetails](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockerimagedetails?view=azure-ml-py)的实例 (AzureML Python SDK >= 1.11) ，并提供有关环境映像的所有信息，例如 dockerfile、注册表和映像名称。
+
+```python
+details = environment.get_image_details()
+```
+
 ## <a name="use-environments-for-training"></a>使用环境进行训练
 
 若要提交训练运行，需要将你的环境、[计算目标](concept-compute-target.md)和训练 Python 脚本组合到运行配置中。 此配置是用于提交运行的包装器对象。
@@ -376,12 +384,6 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 
 # Submit the run 
 run = experiment.submit(sk_est)
-```
-### <a name="retrieve-dockerfile-from-a-run"></a>从运行中检索 Dockerfile
-
-使用以下代码为启用了 Docker 的运行获取 Dockerfile。
-```python
-print(run.get_environment().get_image_details().dockerfile)
 ```
 
 ## <a name="use-environments-for-web-service-deployment"></a>使用环境进行 Web 服务部署

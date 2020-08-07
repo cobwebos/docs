@@ -3,16 +3,16 @@ title: 排查 .NET SDK Azure Cosmos DB HTTP 408 或请求超时问题
 description: 如何诊断和修复 .NET SDK 请求超时异常
 author: j82w
 ms.service: cosmos-db
-ms.date: 07/29/2020
+ms.date: 08/06/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 3d6fed539581b2d1add87ade92e34bcf2e1913e8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a0469feed391025f8dd50a7f8b11b96265b0df29
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87417601"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987403"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout"></a>诊断和解决 Azure Cosmos DB .NET SDK 请求超时
 如果 SDK 在超时限制之前无法完成请求，则会出现 HTTP 408 错误。
@@ -23,7 +23,7 @@ SDK 具有两个不同的方法来控制超时，每个都有不同的作用域�
 
 ### <a name="requesttimeout"></a>RequestTimeout
 
-使用 `CosmosClientOptions.RequestTimeout` （或 `ConnectionPolicy.RequestTimeout` SDK V2）配置，可以设置影响每个单个网络请求的超时。  用户启动的操作可以跨多个网络请求（例如，可能会受到限制），此配置将适用于重试时的每个网络请求。 这不是端到端操作请求超时。
+`CosmosClientOptions.RequestTimeout` (或 `ConnectionPolicy.RequestTimeout` For SDK V2) 配置允许您设置影响每个单个网络请求的超时。  用户启动的操作可以跨多个网络请求 (例如，可能存在限制) 并且此配置将适用于重试时的每个网络请求。 这不是端到端操作请求超时。
 
 ### <a name="cancellationtoken"></a>CancellationToken
 
@@ -35,8 +35,8 @@ SDK 中的所有异步操作都有一个可选的 CancellationToken 参数。 �
 ## <a name="troubleshooting-steps"></a>疑难解答步骤
 下面的列表包含请求超时异常的已知原因和解决方案。
 
-### <a name="1-high-cpu-utilization-most-common-case"></a>1. CPU 使用率高（最常见情况）
-为实现最佳延迟，建议 CPU 使用率大约为40%。 建议使用10秒作为时间间隔来监视最大值（而不是平均 CPU 使用率）。 对于跨分区查询，CPU 峰值更常见，在这种情况下，单个查询可能会执行多个连接。
+### <a name="1-high-cpu-utilization-most-common-case"></a>1. CPU 使用率高 (最常见的情况) 
+为实现最佳延迟，建议 CPU 使用率大约为40%。 建议使用10秒作为间隔来监视最大 (不平均) CPU 使用率。 对于跨分区查询，CPU 峰值更常见，在这种情况下，单个查询可能会执行多个连接。
 
 #### <a name="solution"></a>解决方案：
 使用 SDK 的客户端应用程序应向上扩展/向外扩展。
@@ -45,9 +45,12 @@ SDK 中的所有异步操作都有一个可选的 CancellationToken 参数。 �
 使用 .NET SDK 的客户端在 Azure 中运行时，可能会遇到 Azure SNAT (PAT) 端口耗尽问题。
 
 #### <a name="solution-1"></a>解决方案 1：
-遵循[SNAT 端口消耗指南](troubleshoot-dot-net-sdk.md#snat)。
+如果在 Azure Vm 上运行，请遵循[SNAT 端口消耗指南](troubleshoot-dot-net-sdk.md#snat)。
 
 #### <a name="solution-2"></a>解决方案 2：
+如果在 Azure App Service 上运行，请遵循[连接错误疑难解答指南](../app-service/troubleshoot-intermittent-outbound-connection-errors.md#cause)，并[使用应用服务诊断](https://azure.github.io/AppService/2018/03/01/Deep-Dive-into-TCP-Connections-in-App-Service-Diagnostics.html)。
+
+#### <a name="solution-3"></a>解决方案3：
 如果使用 HTTP 代理，请确保它支持 SDK `ConnectionPolicy` 中配置的连接数。
 否则，将遇到连接问题。
 
@@ -58,7 +61,7 @@ SDK 中的所有异步操作都有一个可选的 CancellationToken 参数。 �
 遵循[性能提示](performance-tips-dotnet-sdk-v3-sql.md#sdk-usage)，在整个过程中使用单个 CosmosClient 实例。
 
 ### <a name="4-hot-partition-key"></a>4. 热分区键
-Azure Cosmos DB 在物理分区之间均匀分配预配的总吞吐量。 如果存在热分区，则物理分区上的一个或多个逻辑分区键会消耗全部物理分区的 RU/s，而其他物理分区上的 RU/s 则不会使用。 作为症状，所用的 RU/秒总数将小于数据库或容器上的总体预配 RU/s，但会在针对热逻辑分区键的请求上看到限制（429s）。 使用[规范化的 RU 消耗指标](monitor-normalized-request-units.md)来查看工作负荷是否遇到热分区。 
+Azure Cosmos DB 在物理分区之间均匀分配预配的总吞吐量。 如果存在热分区，则物理分区上的一个或多个逻辑分区键会消耗全部物理分区的 RU/s，而其他物理分区上的 RU/s 则不会使用。 作为症状，所用的 RU/秒总数将小于数据库或容器上的总体预配 RU/s，但仍会在针对热逻辑分区键的请求上看到限制 (429s) 。 使用[规范化的 RU 消耗指标](monitor-normalized-request-units.md)来查看工作负荷是否遇到热分区。 
 
 #### <a name="solution"></a>解决方案：
 选择均匀分配请求量和存储的适当的分区键。 了解如何[更改分区键](https://devblogs.microsoft.com/cosmosdb/how-to-change-your-partition-key/)。

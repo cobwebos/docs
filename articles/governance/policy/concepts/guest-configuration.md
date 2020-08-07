@@ -1,14 +1,14 @@
 ---
 title: 了解如何审核虚拟机的内容
 description: 了解 Azure Policy 如何使用来宾配置代理审核虚拟机内部的设置。
-ms.date: 05/20/2020
+ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8c0f5d4df640fa29f88b3c4c6c0403ad9de97dea
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 906c86856342febc92f070493fde31af42e4ca10
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921684"
+ms.locfileid: "87987097"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -35,8 +35,9 @@ Azure 策略可以审核虚拟机中运行的计算机的设置，这二者都�
 若要审核计算机中的设置，请启用[虚拟机扩展](../../../virtual-machines/extensions/overview.md)，并且该计算机必须具有系统管理的标识。 该扩展下载适用的策略分配和相应的配置定义。 标识用于在计算机读取和写入来宾配置服务时对计算机进行身份验证。 对于 Arc 连接的计算机，不需要扩展，因为它包含在连接了 Arc 的计算机代理中。
 
 > [!IMPORTANT]
-> 若要审核 Azure 虚拟机，需要使用来宾配置扩展和托管标识。 若要 > 在 Azure 虚拟机中执行审核需要来宾配置扩展。 若要大规模部署扩展，请分配以下策略计划： > 大规模部署扩展，请分配以下策略定义： 
->  - [部署先决条件以在虚拟机上启用来宾配置策略](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
+> 若要审核 Azure 虚拟机，需要使用来宾配置扩展和托管标识。 若要大规模部署扩展，请分配以下策略计划：
+> 
+> - [部署先决条件以在虚拟机上启用来宾配置策略](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)
 
 ### <a name="limits-set-on-the-extension"></a>对扩展设置的限制
 
@@ -99,7 +100,7 @@ Azure Arc 计算机使用本地网络基础结构连接到 Azure 服务并报告
 
 ## <a name="managed-identity-requirements"></a>托管标识要求
 
-如果在[虚拟机上启用来宾配置策略](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)，则该计划中的策略将启用系统分配的托管标识（如果不存在）。 计划中有两个管理标识创建的策略定义。 策略定义中的 IF 条件基于 Azure 中的计算机资源的当前状态确保正确的行为。
+计划中的策略定义[部署先决条件若要在虚拟机上启用来宾配置策略](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8)，请启用系统分配的托管标识（如果不存在）。 计划中有两个管理标识创建的策略定义。 策略定义中的 IF 条件基于 Azure 中的计算机资源的当前状态确保正确的行为。
 
 如果计算机当前没有任何托管标识，则有效策略将为： [ \[ 预览版 \] ：添加系统分配的托管标识，以在没有标识的虚拟机上启用来宾配置分配](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
 
@@ -201,8 +202,8 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 
 - 了解如何从[来宾配置符合性视图](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration)中查看每个设置的详细信息
 - 在 [Azure Policy 示例](../samples/index.md)中查看示例。
-- 查看 [Azure Policy 定义结构](definition-structure.md)。
-- 查看[了解策略效果](effects.md)。
+- 查看 [Azure Policy 定义结构](./definition-structure.md)。
+- 查看[了解策略效果](./effects.md)。
 - 了解如何[以编程方式创建策略](../how-to/programmatically-create.md)。
 - 了解如何[获取符合性数据](../how-to/get-compliance-data.md)。
 - 了解如何[修正不符合的资源](../how-to/remediate-resources.md)。

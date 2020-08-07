@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 06ab819065f96508bcc4ebd26371c743c89b9220
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5ddd4fc368a4e479d3d720698c7447d2b3cdf3cc
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87487796"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986556"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure 资源管理器模板创建 Azure 机器学习的工作区
 
@@ -120,7 +120,7 @@ New-AzResourceGroupDeployment `
 默认情况下，作为模板的一部分创建的所有资源都是新的。 不过，您也可以选择使用现有资源。 通过向模板提供其他参数，可以使用现有资源。 例如，如果你想要使用现有的存储帐户，请将**storageAccountOption**值设置为 "**现有**"，并在**storageAccountName**参数中提供存储帐户的名称。
 
 > [!IMPORTANT]
-> 如果要使用现有的 Azure 存储帐户，则该帐户不能是高级帐户（Premium_LRS 和 Premium_GRS）。 它也不能具有分层命名空间（与 Azure Data Lake Storage Gen2 一起使用）。 工作区的默认存储帐户不支持高级存储或分层命名空间。
+> 如果要使用现有的 Azure 存储帐户，则该帐户不能是高级帐户 (Premium_LRS 并 Premium_GRS) 。 它也不能 (与 Azure Data Lake Storage Gen2) 一起使用的分层命名空间。 工作区的默认存储帐户不支持高级存储或分层命名空间。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -653,7 +653,7 @@ New-AzResourceGroupDeployment `
 
 有关详细信息，请参阅[从自定义模板部署资源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 ### <a name="resource-provider-errors"></a>资源提供程序错误
 
@@ -750,6 +750,32 @@ New-AzResourceGroupDeployment `
 
     ```text
     /subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault
+    ```
+
+### <a name="virtual-network-not-linked-to-private-dns-zone"></a>虚拟网络未链接到专用 DNS 区域
+
+使用专用终结点创建工作区时，模板会创建一个名为__privatelink.api.azureml.ms__的专用 DNS 区域。 __虚拟网络链接__自动添加到此专用 DNS 区域。 仅为在资源组中创建的第一个工作区和专用终结点添加链接;如果使用同一资源组中的专用终结点创建另一个虚拟网络和工作区，则可能无法将第二个虚拟网络添加到专用 DNS 区域。
+
+若要查看专用 DNS 区域已存在的虚拟网络链接，请使用以下 Azure CLI 命令：
+
+```azurecli
+az network private-dns link vnet list --zone-name privatelink.api.azureml.ms --resource-group myresourcegroup
+```
+
+若要添加包含其他工作区和专用终结点的虚拟网络，请使用以下步骤：
+
+1. 若要查找要添加的网络的虚拟网络 ID，请使用以下命令：
+
+    ```azurecli
+    az network vnet show --name myvnet --resource-group myresourcegroup --query id
+    ```
+    
+    此命令返回类似于 ""/subscriptions/GUID/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet "" 的值。 保存此值并在下一步中使用它。
+
+2. 若要将虚拟网络链接添加到 privatelink.api.azureml.ms 专用 DNS 区域，请使用以下命令。 对于 `--virtual-network` 参数，请使用上一命令的输出：
+
+    ```azurecli
+    az network private-dns link vnet create --name mylinkname --registration-enabled true --resource-group myresourcegroup --virtual-network myvirtualnetworkid --zone-name privatelink.api.azureml.ms
     ```
 
 ## <a name="next-steps"></a>后续步骤
