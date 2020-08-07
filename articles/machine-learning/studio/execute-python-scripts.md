@@ -1,5 +1,5 @@
 ---
-title: ML Studio （经典）：执行 Python 脚本-Azure
+title: ML Studio (经典) ：执行 Python 脚本-Azure
 description: 了解如何通过“执行 Python 脚本”模块在机器学习工作室（经典版）试验和 Web 服务中使用 Python 代码。
 services: machine-learning
 ms.service: machine-learning
@@ -7,18 +7,18 @@ ms.subservice: studio
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
-ms.custom: tracking-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.custom: devx-track-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: e938e7a8595b6d6b5b94dd265cb466b3e8719230
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: d2f2e01bda22c348d53ce2a1dd25d8d11e86ff3e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432495"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843532"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>在 Azure 机器学习工作室（经典版）中执行 Python 机器学习脚本
 
-**适用于：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） ![ no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
 
 
 Python 是许多数据科学家珍藏的一个有用工具。 它可以在典型机器学习工作流的每个阶段（包括数据探索、特征提取、模型训练和验证，以及部署）中使用。
@@ -63,7 +63,7 @@ Python 模块的输入公开为 Pandas 数据帧。 `azureml_main` 函数最多�
 | Pandas "NA" | 转换为“缺失值” |
 | 索引向量 | 不支持* |
 | 非字符串列名 | 对列名调用 `str` |
-| 复制列名 | 添加数字后缀：（1）、（2）、（3）等。
+| 复制列名 | 添加数字后缀： (1) 、 (2) 、 (3) 等。
 
 **Python 函数中的所有输入数据帧始终具有64位从0到行数减1的数字索引*
 
@@ -155,7 +155,7 @@ block_blob_service = BlockBlobService(account_name='account_name', account_key='
 
 ![按评分将特征排名的函数](./media/execute-python-scripts/figure8.png)
 
-接下来，试验将计算并返回 Azure 机器学习 Studio （经典）中 "Pima indian diabetes 印度糖尿病" 数据集中的特征的重要性分数：
+接下来，试验将计算并返回 Azure 机器学习 Studio (经典) 中 "Pima indian diabetes 印度糖尿病" 数据集中的特征的重要性分数：
 
 ![使用 Python 为 Pima Indian Diabetes 数据集中的特征排名的试验](./media/execute-python-scripts/figure9a.png)
 

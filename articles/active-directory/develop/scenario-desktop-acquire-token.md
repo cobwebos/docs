@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 85fb188028e0e61378b1e47c1fb7b88eaaa4d7a0
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 1caddf2fba8544bfbb1108865a459f4166af680b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541917"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846065"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>用于调用 Web API 的桌面应用：获取令牌
 
@@ -213,7 +213,7 @@ WithParentActivityOrWindow(object parent).
 
 `WithPrompt()` 用于通过指定提示来控制与用户的交互。
 
-![显示提示结构中的字段的图像。 这些常量值通过定义 WithPrompt （）方法显示的提示类型来控制与用户的交互。](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
+![显示提示结构中的字段的图像。 这些常量值通过定义 WithPrompt ( # A1 方法显示的提示类型来控制与用户的交互。](https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png)
 
 类定义以下常量：
 
@@ -453,7 +453,7 @@ AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 
 通常只需要一个参数 (`scopes`)。 根据 Windows 管理员设置策略的方式，有可能不允许 Windows 计算机上的应用程序查找已登录的用户。 在这种情况下，请使用另一个方法 `.WithUsername()`，并以 UPN 格式（例如 `joe@contoso.com`）传入已登录用户的用户名。 在 .NET Core 上，只有采用用户名的重载可用，因为 .NET Core 平台无法请求用于登录 OS 的用户名。
 
-以下示例演示了最新的用例，并解释了可能出现的各种异常及其缓解措施。
+下面的示例展示了最新的情况，并说明了可获取的异常类型以及缓解措施。
 
 ```csharp
 static async Task GetATokenForGraph()

@@ -12,16 +12,16 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 385107f3bb5dd30a118d3a5f7a5f14213f0ad1c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7c5015cb6328dba70fed40053bc234966572ae98
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554522"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873715"
 ---
 # <a name="what-are-security-defaults"></a>什么是安全默认值？
 
-随着常见的与标识相关的攻击（如密码喷射、重放和网络钓鱼）越来越普遍，可能会使安全管理变得更困难。 利用安全默认值，可以更轻松地通过预配置的安全设置来保护组织免受这些攻击：
+在常见的标识相关攻击（例如密码喷涂、重播和网络钓鱼）变得越来越流行时，管理安全性可能比较困难。 利用安全默认值，可以更轻松地通过预配置的安全设置来保护组织免受这些攻击：
 
 - 要求所有用户注册 Azure 多重身份验证。
 - 要求管理员执行多重身份验证。

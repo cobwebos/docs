@@ -11,7 +11,7 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.openlocfilehash: bfe67acf1e1bb84c7700615155ba82db1ccd114d
 ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "75527053"

@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 10c4f0ba4bfc88017304c228ca1afce4ba863118
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 40ff7bfe713f401a23dea0b3660be1b7728a1380
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328150"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828551"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>为用于 VM 的 Azure Monitor 配置 Log Analytics 工作区
 用于 VM 的 Azure Monitor 从 Azure Monitor 中的一个或多个 Log Analytics 工作区收集其数据。 在载入代理之前，必须创建和配置工作区。 本文介绍工作区的要求并对其进行配置以实现用于 VM 的 Azure Monitor。
@@ -40,7 +40,7 @@ ms.locfileid: "87328150"
 
 * [Azure 门户](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
-* [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
+* [PowerShell](../platform/powershell-workspace-configuration.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 
 ## <a name="supported-regions"></a>支持的区域
@@ -51,7 +51,7 @@ ms.locfileid: "87328150"
 - 美国西部
 - 美国西部 2
 - 美国中南部
-- East US
+- 美国东部
 - 美国东部 2
 - 美国中部
 - 美国中北部
@@ -95,7 +95,7 @@ ms.locfileid: "87328150"
 
 
 ### <a name="resource-manager-template"></a>资源管理器模板
-用于用于 VM 的 Azure Monitor 的 Azure 资源管理器模板在存档文件（.zip）中提供，你可以[从 GitHub](https://aka.ms/VmInsightsARMTemplates)存储库下载该文件。 这包括名为**ConfigureWorkspace**的模板，用于配置用于 VM 的 Azure Monitor 的 Log Analytics 工作区。 你可以使用以下任一标准方法（包括下面的 PowerShell 和 CLI 命令示例）部署此模板： 
+适用于用于 VM 的 Azure Monitor 的 Azure 资源管理器模板在存档文件 () .zip 中提供，可[从 GitHub](https://aka.ms/VmInsightsARMTemplates)存储库下载该文件。 这包括名为**ConfigureWorkspace**的模板，用于配置用于 VM 的 Azure Monitor 的 Log Analytics 工作区。 你可以使用以下任一标准方法（包括下面的 PowerShell 和 CLI 命令示例）部署此模板： 
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -116,4 +116,4 @@ New-AzResourceGroupDeployment -Name ConfigureWorkspace -ResourceGroupName my-res
 
 ## <a name="next-steps"></a>后续步骤
 - 请参阅用于将代理连接到用于 VM 的 Azure Monitor[用于 VM 的 Azure Monitor 的内置代理](vminsights-enable-overview.md)。
-- 请参阅[针对 Azure Monitor （预览版）中的监视解决方案](solution-targeting.md)，以限制从解决方案发送到工作区的数据量。
+- 请参阅将[监视解决方案定位到 Azure Monitor (预览版) ](solution-targeting.md) ，以限制从解决方案发送到工作区的数据量。

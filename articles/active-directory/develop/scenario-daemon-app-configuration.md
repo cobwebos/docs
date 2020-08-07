@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 921015d6aa7acd840a4a231a899217daafe3525b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 567bd0a34c1989403f29ea5a52fad258c2ffe825
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84558549"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846150"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>调用 Web API 的守护程序应用 - 代码配置
 
@@ -34,7 +34,7 @@ ms.locfileid: "84558549"
 
 ## <a name="configure-the-authority"></a>配置颁发机构
 
-守护程序应用程序使用应用程序权限，而不是委托的权限。 因此，其支持的帐户类型不能是任何组织目录或任何个人 Microsoft 帐户（例如 Skype、Xbox、Outlook.com）中的帐户。 无租户管理员可以向 Microsoft 个人帐户的后台应用程序授予许可。 你需要选择“我的组织中的帐户”** 或“任何组织中的帐户”**。
+守护程序应用程序使用应用程序权限，而不是委托的权限。 因此，其支持的帐户类型不能是任何组织目录中的帐户，也不能是任何个人 Microsoft 帐户 (例如 Skype、Xbox、Outlook.com) 。 无租户管理员可以向 Microsoft 个人帐户的后台应用程序授予许可。 你需要选择“我的组织中的帐户”** 或“任何组织中的帐户”**。
 
 因此，在应用程序配置中指定的颁发机构应该是租户的（指定租户 ID 或者与组织相关联的域名）。
 
@@ -239,7 +239,7 @@ ConfidentialClientApplication cca =
                 .build();
 ```
 
-或
+or
 
 ```Java
 PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */
