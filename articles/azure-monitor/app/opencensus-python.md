@@ -6,13 +6,13 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.custom: tracking-python
-ms.openlocfilehash: eec4a46596b9cd39a43b6bb1f8969d41e99916b6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-python
+ms.openlocfilehash: ac7569a48e4bab25d4db17f2fc6dd92b31afcab5
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322544"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850043"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>为 Python 应用程序设置 Azure Monitor
 
@@ -22,7 +22,7 @@ ms.locfileid: "87322544"
 
 - Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 - Python 安装。 本文使用[Python 3.7.0](https://www.python.org/downloads/release/python-370/)，但其他版本可能会使用细微的更改。 SDK 仅支持 Python 版本2.7 和 v2.0 3.7。
-- 创建 Application Insights [资源](./create-new-resource.md)。 你将为你的资源分配自己的检测密钥（ikey）。
+- 创建 Application Insights [资源](./create-new-resource.md)。 你将为你的资源分配自己的检测密钥 (ikey) 。
 
 ## <a name="instrument-with-opencensus-python-sdk-for-azure-monitor"></a>检测适用于 Azure Monitor 的 OpenCensus Python SDK
 
@@ -139,7 +139,7 @@ OpenCensus 提供的导出程序映射到 Azure Monitor 中看到的遥测类型
 
 #### <a name="configure-logging-for-django-applications"></a>为 Django 应用程序配置日志记录
 
-你可以在应用程序代码中对 Django 应用程序进行显式配置日志记录，也可以在 Django 的日志记录配置中指定。 此代码可以进入用于 Django 设置配置的任何文件。 有关如何配置 Django 设置的详细说明，请参阅[Django 设置](https://docs.djangoproject.com/en/3.0/topics/settings/)。 有关配置日志记录的详细信息，请参阅[Django 日志记录](https://docs.djangoproject.com/en/3.0/topics/logging/)。
+可以按照上文所述在应用程序代码中为 Django 应用程序显式配置日志记录，也可以在 Django 的日志记录配置中指定日志记录。 此代码可以包含在用于 Django 设置配置的任何文件中。 有关如何配置 Django 设置的详细说明，请参阅[Django 设置](https://docs.djangoproject.com/en/3.0/topics/settings/)。 有关配置日志记录的详细信息，请参阅[Django 日志记录](https://docs.djangoproject.com/en/3.0/topics/logging/)。
 
 ```json
 LOGGING = {
@@ -328,7 +328,7 @@ logger.info('Hello, World!')
 
 #### <a name="performance-counters"></a>性能计数器
 
-默认情况下，度量值导出程序会将一组性能计数器发送到 Azure Monitor。 可通过在指标导出程序的构造函数中将 `enable_standard_metrics` 标志设置为 `False` 来禁用此设置。
+默认情况下，度量值导出程序会将一组性能计数器发送到 Azure Monitor。 可以通过在指标导出程序的构造函数中将 `enable_standard_metrics` 标志设为 `False` 来禁用此功能。
 
 ```python
 ...
@@ -439,16 +439,16 @@ exporter = metrics_exporter.new_metrics_exporter(
 
 如图所示，有三种不同的 Azure Monitor 导出程序支持 OpenCensus。 每种类型都将不同类型的遥测发送到 Azure Monitor。 若要查看每个导出程序发送的遥测类型，请参阅下表。
 
-每个导出程序都接受与通过构造函数传递的配置相同的参数。 可在此处查看每个相关的详细信息：
+每个导出程序都接受通过构造函数传递的相同配置参数。 可在此处查看每个相关的详细信息：
 
-- `connection_string`：用于连接到 Azure Monitor 资源的连接字符串。 优先于 `instrumentation_key` 。
-- `enable_standard_metrics`：用于 `AzureMetricsExporter` 。 通知导出程序将[性能计数器](../platform/app-insights-metrics.md#performance-counters)度量值自动发送到 Azure Monitor。 默认为 `True`。
+- `connection_string`：用于连接到 Azure Monitor 资源的连接字符串。 其优先级高于 `instrumentation_key`。
+- `enable_standard_metrics`：用于 `AzureMetricsExporter` 。 指示导出程序将[性能计数器](../platform/app-insights-metrics.md#performance-counters)指标自动发送到 Azure Monitor。 默认为 `True`。
 - `export_interval`：用于指定导出频率（以秒为单位）。
 - `instrumentation_key`：用于连接到 Azure Monitor 资源的检测密钥。
-- `logging_sampling_rate`：用于 `AzureLogHandler` 。 提供用于导出日志的采样率 [0，1.0]。 默认值为1.0。
+- `logging_sampling_rate`：用于 `AzureLogHandler` 。 为导出日志提供采样率 [0,1.0]。 默认值为 1.0。
 - `max_batch_size`：指定一次导出的最大遥测大小。
 - `proxies`：指定用于将数据发送到 Azure Monitor 的代理的序列。 有关详细信息，请参阅[代理](https://requests.readthedocs.io/en/master/user/advanced/#proxies)。
-- `storage_path`：本地存储文件夹所在位置的路径（未发送的遥测）。 `opencensus-ext-azure`从 v 1.0.3，默认路径是 OS temp 目录 + `opencensus-python`  +  `your-ikey` 。 在 v 1.0.3 之前，默认路径为 $USER + `.opencensus`  +  `.azure`  +  `python-file-name` 。
+- `storage_path`：本地存储文件夹所在位置的路径 (未发送的遥测) 。 `opencensus-ext-azure`从 v 1.0.3，默认路径是 OS temp 目录 + `opencensus-python`  +  `your-ikey` 。 在 v 1.0.3 之前，默认路径为 $USER + `.opencensus`  +  `.azure`  +  `python-file-name` 。
 
 ## <a name="view-your-data-with-queries"></a>使用查询查看数据
 

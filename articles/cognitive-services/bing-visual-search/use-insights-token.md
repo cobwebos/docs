@@ -10,25 +10,25 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
-ms.custom: tracking-python, devx-track-javascript
-ms.openlocfilehash: dc0097396bbd3d624fd043c54f2f37e434ad5b50
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-python, devx-track-javascript
+ms.openlocfilehash: 49daf816c4075820c9efc93611f33c4854a6042d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87403975"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849567"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>使用见解令牌获取图像的见解
 
 必应视觉搜索 API 将返回有关所提供的图像的信息。 可以通过使用图像的 URL、见解标记或通过上传图像来提供图像。 有关这些选项的信息，请参阅[什么是必应视觉搜索 API？](overview.md)。 本文演示了如何使用见解标记。 有关演示如何上传图像以获取见解的示例，请参阅快速入门：
 
-* （[C #](quickstarts/csharp.md)
+*  ([c #](quickstarts/csharp.md)
 
 * [Java](quickstarts/java.md)
 
 * [Node.js](quickstarts/nodejs.md)
 
-* [Python](quickstarts/python.md)）。
+* [Python](quickstarts/python.md)) 。
 
 如果发送必应视觉搜索图像令牌或 URL，则以下内容将显示您必须包含在帖子正文中的表单数据。 窗体数据必须包含 `Content-Disposition` 标头，并且必须将其 `name` 参数设置为 "knowledgeRequest"。 有关对象的详细信息 `imageInfo` ，请参阅请求：
 
@@ -93,7 +93,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 2. 将 Program.cs 的内容替换为本快速入门中所示的代码。
 3. 将 `accessKey` 值替换为你的订阅密钥。
 4. 将 `insightsToken` 值替换为 /图像/搜索响应中的见解标记。
-5. 运行程序。
+5. 运行该程序。
 
 ```csharp
 using System;
@@ -268,7 +268,7 @@ namespace VisualSearchInsightsToken
 2. 在最喜爱的 IDE 或编辑器中新建一个 Java 项目。
 3. 将提供的代码添加到一个名为 `VisualSearch.java` 的文件中。
 4. 将 `subscriptionKey` 值替换为你的订阅密钥。
-5. 运行程序。
+5. 运行该程序。
 
 ```java
 package insightstoken;
@@ -392,7 +392,7 @@ public class InsightsToken {
    ```
 1. 创建一个名为 GetVisualInsights.js 的文件，并将以下代码添加到其中。
 1. 将 `subscriptionKey` 值替换为你的订阅密钥。
-1. 运行程序。  
+1. 运行该程序。  
    ```
    node GetVisualInsights.js
    ```

@@ -1,5 +1,5 @@
 ---
-title: 解释 Python 中的 & 解释 ML 模型（预览版）
+title: '解释 Python (预览版中的 & 介绍 ML 模型) '
 titleSuffix: Azure Machine Learning
 description: 了解使用 Azure 机器学习 SDK 时如何获取解释，以了解机器学习模型如何确定特征重要性并做出预测。
 services: machine-learning
@@ -10,15 +10,15 @@ author: minthigpen
 ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 7f2ca2a84123d3bb7dd92a797d517a2490544efa
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 8682342d23c37d527528de0b525dbdd49a52676e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307006"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853392"
 ---
-# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用 interpretability 包在 Python 中 & 预测来解释 ML 模型（预览版）
+# <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>使用 interpretability 包在 Python (preview 中 & 预测来说明 ML 模型) 
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 

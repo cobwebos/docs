@@ -100,7 +100,7 @@
         - name: 将 GitHub 操作与 Azure Dev Spaces 配合使用（预览）
           href: how-to/github-actions.md
         - name: 使用用于 Jenkins 的 Azure Dev Spaces 插件
-          href: ../jenkins/tutorial-jenkins-dev-spaces.md
+          href: /azure/developer/jenkins/azure-dev-spaces-and-aks
         - name: Azure Dev Spaces 的业务连续性和灾难恢复
           href: how-to/dev-spaces-business-continuity.md
         - name: 与 Windows 容器交互

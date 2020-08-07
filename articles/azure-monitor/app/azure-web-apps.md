@@ -2,14 +2,14 @@
 title: 监视 Azure 应用服务性能 | Microsoft Docs
 description: Azure 应用服务的应用程序性能监视。 对加载和响应时间、依赖项信息绘制图表，并针对性能设置警报。
 ms.topic: conceptual
-ms.date: 12/11/2019
+ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: f96d994f9f88a0debf110de2ca4f6da60e8ea3bc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6c0d99e89e17c2aad3c7dcfe0056b597aa88d2a2
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373158"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876387"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -61,10 +61,10 @@ ms.locfileid: "87373158"
         
 | 数据 | .NET 基本集合 | .NET 建议集合 |
 | --- | --- | --- |
-| 添加 CPU、内存和 I/O 使用情况趋势 |是 |“是” |
-| 收集使用情况趋势，并启用从可用性结果到事务的关联 | 是 |“是” |
-| 收集未经主机进程处理的异常 | 是 |“是” |
-| 提高使用采样时，负载下的 APM 指标准确性 | 是 |“是” |
+| 添加 CPU、内存和 I/O 使用情况趋势 |是 |是 |
+| 收集使用情况趋势，并启用从可用性结果到事务的关联 | 是 |是 |
+| 收集未经主机进程处理的异常 | 是 |是 |
+| 提高使用采样时，负载下的 APM 指标准确性 | 是 |是 |
 | 跨请求/依赖项边界关联微服务 | 否（仅单实例 APM 功能） |是 |
 
 3. 若要配置采样等设置（以前可以通过 applicationinsights.config 文件进行控制），现在可以通过应用程序设置使用相应的前缀来与这些设置交互。 
@@ -396,6 +396,12 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 这是因为 APPINSIGHTS_JAVASCRIPT_ENABLED 应用程序设置指定为 true，同时存在内容编码。 目前不支持此方案。 解决方法是从应用程序设置中删除 APPINSIGHTS_JAVASCRIPT_ENABLED。 遗憾的是，这意味着，如果仍然需要客户端/浏览器端 JavaScript 检测，则需要对网页使用手动 SDK 引用。 请遵照[说明](https://github.com/Microsoft/ApplicationInsights-JS#snippet-setup-ignore-if-using-npm-setup)使用 JavaScript SDK 进行手动检测。
 
 有关 Application Insights 代理/扩展的最新信息，请查看[发行说明](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md)。
+
+### <a name="default-website-deployed-with-web-apps-does-not-support-automatic-client-side-monitoring"></a>用 web 应用部署的默认网站不支持自动客户端监视
+
+使用 Azure 应用 Services 中的或运行时创建 web 应用时， `ASP.NET` `.NET Core` 它会将单个静态 HTML 页作为入门网站部署。 静态网页还会在 IIS 中加载 .NET 托管 web 部件。 这允许测试无代码置备服务器端监视，但不支持自动客户端监视。
+
+如果你想要在 Azure 应用 Services web 应用中测试无代码置备服务器和客户端监视的 ASP.NET 或 ASP.NET Core，我们建议遵循[创建 ASP.NET Core web 应用](../../app-service/app-service-web-get-started-dotnet.md)和[创建 ASP.NET Framework web 应用](../../app-service/app-service-web-get-started-dotnet-framework.md)的官方指南，并使用当前文章中的说明来启用监视。
 
 ### <a name="php-and-wordpress-are-not-supported"></a>不支持 PHP 和 WordPress
 

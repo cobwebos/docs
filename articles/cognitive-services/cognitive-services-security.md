@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/10/2020
 ms.author: erhopf
-ms.custom: tracking-python, devx-track-javascript
-ms.openlocfilehash: 48e5f6d453e69dcbafd9aefe283eb2c880d4b48e
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: devx-track-python, devx-track-javascript
+ms.openlocfilehash: 2b3f7934a24f67992d6b80ac359c29ebe2a40b09
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406633"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849550"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure 认知服务安全性
 
@@ -35,7 +35,7 @@ ms.locfileid: "87406633"
 
 在讨论身份验证时，存在几种常见的误解。 身份验证和授权常常互相混淆。 标识也是安全性的主要组件。 标识是有关<a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">主体 <span class="docon docon-navigate-external x-hidden-focus"></span> </a>的信息的集合。 标识提供者 (IdP) 为身份验证服务提供标识。 身份验证是验证用户身份的行为。 授权指为给定身份指定对资源的访问权限和特权。 有多种认知服务产品/服务，包括基于角色的访问控制 (RBAC)。 RBAC 可用于简化与人工管理主体有关的一些仪式。 有关更多详细信息，请参阅 [Azure 资源的基于角色的访问控制](../role-based-access-control/overview.md)。
 
-有关使用订阅密钥进行身份验证、访问令牌和 Azure Active Directory （AAD）的详细信息，请参阅对<a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">Azure 认知 <span class="docon docon-navigate-external x-hidden-focus"></span> 服务的请求进行</a>身份验证。
+有关使用订阅密钥进行身份验证、访问令牌和 Azure Active Directory (AAD) 的详细信息，请参阅对<a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">Azure 认知 <span class="docon docon-navigate-external x-hidden-focus"></span> 服务的请求进行身份验证</a>。
 
 ## <a name="environment-variables-and-application-configuration"></a>环境变量和应用程序配置
 
@@ -215,7 +215,7 @@ NSString* value =
 
 若要请求使用 E0 SKU，请填写并提交此 [请求表单](https://aka.ms/cogsvc-cmk)。 大约需要3-5 个工作日内就会收到请求的状态。 根据需要，你可以将置于队列中并在空间可用时进行批准。 批准将 E0 SKU 用于 LUIS 后，需要从 Azure 门户创建新资源，并选择 E0 作为定价层。 用户无法从 F0 升级到新的 E0 SKU。
 
-语音服务当前不支持客户密码箱。 但是，可以使用 "自带存储" （BYOS）来存储客户数据，从而使你可以实现类似的数据控件来客户密码箱。 请记住，语音服务数据保持不变，并在创建语音资源的区域进行处理。 这适用于任何静态数据和传输中的数据。 使用自定义功能（如自定义语音和自定义语音）时，将在 BYOS （如果使用）和语音服务资源所在的同一区域内传输、存储和处理所有客户数据。
+语音服务当前不支持客户密码箱。 但是，可以使用 "将自己的存储 (BYOS") 来存储客户数据，从而使你能够实现与客户密码箱相似的数据控制。 请记住，语音服务数据保持不变，并在创建语音资源的区域进行处理。 这适用于任何静态数据和传输中的数据。 当使用自定义功能（如自定义语音和自定义语音）时，将在你的 BYOS () 和语音服务资源所在的同一区域内传输、存储和处理所有客户数据。
 
 > [!IMPORTANT]
 > Microsoft 不**会**使用客户数据来改进其语音模型。 此外，如果禁用了终结点日志记录，并且未使用任何自定义，则不会存储任何客户数据。 
