@@ -12,13 +12,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
-ms.custom: tracking-python
-ms.openlocfilehash: 3a5fa4f07a0df64e5271ec1255112e97cf8846a6
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.custom: devx-track-python
+ms.openlocfilehash: ba93591ade730c4e9c9bdb6a42232e71e10d6469
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170711"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850145"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>如何通过 Python 使用 Twilio 实现语音和 SMS 功能
 本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。 所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。 有关 Twilio 以及在应用程序中使用语音和短信的详细信息，请参阅[后续步骤](#NextSteps)部分。
@@ -104,7 +104,7 @@ TwiML 是一组基于 XML 的指令，这些指令以用于指示 Twilio 如何�
    
   `$ pip install twilio`
 
-    - 或 -
+    \- 或 -
 
 * 从 GitHub 下载适用于 Python 的 Twilio 库 ([https://github.com/twilio/twilio-python][twilio_python]) 并安装它，如下所示：
 

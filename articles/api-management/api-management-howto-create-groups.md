@@ -1,7 +1,7 @@
 ---
 title: 使用 Azure API 管理中的组管理开发人员帐户
 titleSuffix: Azure API Management
-description: 了解如何使用 Azure API 管理中的组管理开发人员帐户
+description: 了解如何在 Azure API 管理中使用组管理开发人员帐户。 创建组，然后将它们与产品或开发人员相关联。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: 16ab72a67a021338bd8e186c32015c271240d224
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 517b70d798d8cdd1b361b244111a8b6781286207
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250526"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851216"
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>如何创建和使用组来管理 Azure API 管理中的开发人员帐户
 
@@ -30,7 +30,7 @@ API 管理具有下列不可变的系统组：
 * **开发人员** - 已经过身份验证的开发人员门户用户属于此组。 开发人员是使用 API 构建应用程序的客户。 开发人员有权访问开发人员门户，并构建调用 API 操作的应用程序。
 * **来宾** - 未经身份验证的开发人员门户用户，如访问此组中 API 管理实例的开发人员门户的潜在客户。 它们可以被授予某些只读访问权限，如能够查看 API，但不能调用它们。
 
-除了这些系统组，管理员还可以创建自定义组或[利用关联 Azure Active Directory 租户中的外部组][leverage external groups in associated Azure Active Directory tenants]。 自定义组和外部组可与系统组一起使用为开发人员提供可见性并可以访问 API 产品。 例如，可以为隶属于一个特定合作伙伴组织的开发人员创建一个自定义组并允许他们从仅包含相关 API 的产品中访问 API。 用户可以是多个组的成员。
+除了这些系统组，管理员还可以创建自定义组或[利用关联 Azure Active Directory 租户中的外部组][leverage external groups in associated Azure Active Directory tenants]。 可以将自定义组和外部组与系统组一起使用，来允许开发人员查看和访问 API 产品。 例如，可以为隶属于一个特定合作伙伴组织的开发人员创建一个自定义组并允许他们从仅包含相关 API 的产品中访问 API。 用户可以是多个组的成员。
 
 本指南演示 API 管理实例的管理员如何添加新组并将它们关联产品和开发人员。
 
@@ -38,9 +38,9 @@ API 管理具有下列不可变的系统组：
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
-完成此文中的任务：[创建 Azure API 管理实例](get-started-create-service-instance.md)。
+完成此文中的任务：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -48,30 +48,30 @@ API 管理具有下列不可变的系统组：
 
 本部分说明如何将新组添加到 API 管理帐户。
 
-1. 选择屏幕左侧的“组”  选项卡。
-2. 单击“+添加”  。
+1. 选择屏幕左侧的“组”**** 选项卡。
+2. 单击 " **+ 添加**"。
 3. 输入组的唯一名称和可选说明。
-4. 按“创建”  。
+4. 按“创建”。
 
     ![添加新组](./media/api-management-howto-create-groups/groups001.png)
 
-创建组后，该组将添加到“组”  列表。 <br/>若要编辑组的“名称”  或“说明”  ，请单击组的名称和“设置”  。<br/>若要删除组，请单击组的名称并按“删除”  。
+创建组后，该组将添加到“组”**** 列表。 <br/>若要编辑组的“名称”**** 或“说明”****，请单击组的名称和“设置”****。<br/>若要删除组，请单击组的名称并按“删除”****。
 
 现在已创建组，它可以与产品和开发人员相关联。
 
 ## <a name="associate-a-group-with-a-product"></a><a name="associate-group-product"> </a>将组与产品关联
 
-1. 选择左侧的“产品”  选项卡。
+1. 选择左侧的“产品”**** 选项卡。
 2. 单击所需产品的名称。
-3. 按“访问控制”  。
-4. 单击“+ 添加组”。 
+3. 按“访问控制”****。
+4. 单击“+ 添加组”。****
 
     ![将组与产品关联](./media/api-management-howto-create-groups/groups002.png)
 5. 选择要添加的组。
 
     ![将组与产品关联](./media/api-management-howto-create-groups/groups003.png)
 
-    若要从产品中删除组，请单击“删除”  。
+    若要从产品中删除组，请单击“删除”****。
 
     ![删除组](./media/api-management-howto-create-groups/groups004.png)
 
@@ -84,16 +84,16 @@ API 管理具有下列不可变的系统组：
 
 本部分演示如何将组与成员相关联。
 
-1. 选择屏幕左侧的“组”  选项卡。
-2. 选择“成员”  。
+1. 选择屏幕左侧的“组”**** 选项卡。
+2. 选择“**成员**”。
 
     ![添加成员](./media/api-management-howto-create-groups/groups005.png)
-3. 按“+添加”  并选择成员。
+3. 按“+添加”**** 并选择成员。
 
     ![添加成员](./media/api-management-howto-create-groups/groups006.png)
-4. 按“选择”  。
+4. 按“选择”。
 
-一旦开发人员和组之间添加关联，可以在“用户”  选项卡中查看它。
+一旦开发人员和组之间添加关联，可以在“用户”**** 选项卡中查看它。
 
 ## <a name="next-steps"></a><a name="next-steps"> </a>后续步骤
 

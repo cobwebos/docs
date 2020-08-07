@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 05/08/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
-ms.openlocfilehash: a75a5942ad0aac39f2fe6afb9c62a254c4645d0a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 4bd13adb9bb431749f1d0f52781ce22c832fc090
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372937"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846728"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>管理和增加 Azure 机器学习资源的配额
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,13 +46,9 @@ ms.locfileid: "87372937"
 > 限制随时会变化。 始终可以在所有 Azure 的服务级别配额[文档](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/)中找到最新的限制。
 
 ### <a name="virtual-machines"></a>虚拟机
-对于每个 Azure 订阅，可以跨服务使用或独立使用的虚拟机数量有限制。 基于总核心数和每个系列的区域级别也同样有此限制。
-
-虚拟机核心数既有区域总数限制，也有区域按大小系列（Dv2、F 等）限制，这两种限制单独实施。 例如，假设某个订阅的美国东部 VM 核心总数限制为 30，A 系列核心数限制为 30，D 系列核心数限制为 30。 该订阅可以部署 30 个 A1 VM、30 个 D1 VM，或者两者的组合，但其总数不能超过 30 个核心（例如，10 个 A1 VM 和 20 个 D1 VM）。
+对于每个 Azure 订阅，你的服务或独立虚拟机的数量有限制。 虚拟机核心数既有区域总数限制，也有区域按大小系列（Dv2、F 等）限制，这两种限制单独实施。 例如，假设某个订阅的美国东部 VM 核心总数限制为 30，A 系列核心数限制为 30，D 系列核心数限制为 30。 该订阅可以部署 30 个 A1 VM、30 个 D1 VM，或者两者的组合，但其总数不能超过 30 个核心（例如，10 个 A1 VM 和 20 个 D1 VM）。
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
-
-有关配额限制更详细的最新列表，请查看[适用于 Azure 的配额文章](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)。
 
 ### <a name="azure-machine-learning-compute"></a>Azure 机器学习计算
 在 [Azure 机器学习计算](concept-compute-target.md#azure-machine-learning-compute-managed)中，订阅中每个区域所允许的核心数和唯一计算资源数都有默认配额限制。 该配额与上述的 VM 核心配额不同，并且核心限制没有在这两种资源类型之间共享，因为 AmlCompute 是在托管代表模型中部署资源的托管服务。
@@ -84,16 +80,10 @@ ms.locfileid: "87372937"
 - 管道中所允许的最大步骤数为 30,000
 - 每个月根据每个订阅的已发布管道的博客触发计划执行的基于计划的运行数与 Blob 提取数之和的最大数目为 100,000
 
-> [!NOTE]
-> 如果想要增加此限制，请联系 [Microsoft 支持](https://azure.microsoft.com/support/options/)。
-
 ### <a name="container-instances"></a>容器实例
 
 可以在给定时间段内（以小时为范围）或在你的整个订阅中启动的容器实例数量也有限制。
-
-[!INCLUDE [container-instances-limits](../../includes/container-instances-limits.md)]
-
-有关配额限制更详细的最新列表，请在[此处](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits)查看适用于 Azure 的配额文章。
+有关限制，请参阅[容器实例限制](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits)。
 
 ### <a name="storage"></a>存储
 给定订阅中每个区域的存储帐户数量也有限制。 默认限制数量为 250，包括标准和高级存储帐户。 如果在某特定区域中需要的存储帐户多于 250 个，请通过 [Azure 支持](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)提出请求。 Azure 存储团队将评审业务案例，对于特定区域最多可以批准 250 个存储帐户。
@@ -126,7 +116,7 @@ Azure 机器学习计算与订阅中的其他 Azure 资源配额分开管理。 
 1. 选择订阅以查看配额限制。 请记住筛选到所需的区域。
 
 1. 现在，可以在订阅级视图与工作区级视图之间切换：
-    + **订阅视图：** 在此视图中可以按 VM 系列查看核心配额的用量，按工作区展开此节点，然后按实际群集名称进一步展开此节点。 此视图最适合用于快速了解特定 VM 系列的核心用量详细信息，以查看各工作区的细分，以及按每个工作区的基础群集进一步提供的细分。 此视图中的一般约定是“(用量/配额)”，其中，用量是当前的已扩展核心数，配额是资源可以扩展到的逻辑最大核心数。 对于每个**工作区**，配额是工作区级配额（如前所述），表示特定 VM 系列可扩展到的最大核心数。 同理，对于**群集**，配额实际上是对应于群集可扩展到的最大节点数（由 max_nodes 属性定义）的核心数。
+    + **订阅视图：** 显示按 VM 系列使用的核心配额，按工作区展开它，并通过实际群集名称进一步扩展它。 快速了解特定 VM 系列的核心使用情况的详细信息，查看工作区的细分，并使每个工作区的基础群集更进一步。 此视图中的一般约定是“(用量/配额)”，其中，用量是当前的已扩展核心数，配额是资源可以扩展到的逻辑最大核心数。 对于每个**工作区**，配额是工作区级配额（如前所述），表示特定 VM 系列可扩展到的最大核心数。 同理，对于**群集**，配额实际上是对应于群集可扩展到的最大节点数（由 max_nodes 属性定义）的核心数。
 
     + **工作区视图：** 在此视图中可以按工作区查看核心配额的用量，按 VM 系列展开此节点，然后按实际群集名称进一步展开此节点。 此视图最适合快速了解特定工作区的核心使用情况的详细信息，以查看按 VM 系列列出的细分，以及进一步按每个系列的基础群集列出的细分。
 
@@ -149,8 +139,4 @@ Azure 机器学习计算与订阅中的其他 Azure 资源配额分开管理。 
 
 ## <a name="next-steps"></a>后续步骤
 
-通过以下文章，了解详细信息：
-
 + [计划和管理 Azure 机器学习的成本](concept-plan-manage-cost.md)
-
-+ [如何增加配额](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)。

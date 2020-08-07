@@ -51,7 +51,7 @@
       href: service-fabric-mesh-storing-state.md
     - name: 机密
       href: service-fabric-mesh-secrets-overview.md
-- name: 操作方法指南
+- name: 操作指南
   items:
     - name: 设置开发环境
       href: service-fabric-mesh-howto-setup-developer-environment-sdk.md
@@ -82,11 +82,9 @@
     - name: Service Fabric 网格 CLI 参考
       href: /cli/azure/ext/mesh
     - name: Service Fabric 客户端资源 REST API
-      href: '/rest/api/servicefabric/sfclient-index#service-fabric-resource-model'
+      href: /rest/api/servicefabric/sfclient-index#service-fabric-resource-model
     - name: Service Fabric Maven CLI 参考
       href: service-fabric-mesh-reference-maven.md
-    - name: 资源管理器模板
-      href: /azure/templates/microsoft.servicefabricmesh/allversions
 - name: 资源
   items:
     - name: 常见问题
@@ -95,7 +93,7 @@
       href: 'https://github.com/Azure-Samples/service-fabric-mesh'
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=service-fabric-mesh'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/search?q=service-fabric-mesh'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-fabric'

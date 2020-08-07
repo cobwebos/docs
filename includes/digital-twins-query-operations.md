@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/28/2020
 ms.author: baanders
-ms.openlocfilehash: 82639a19ef728c22a74381d24754992e0f647976
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 6dfddd9179569075abdbd94b6c1afa719db9ba1e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562458"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905579"
 ---
 ## <a name="query-language-features"></a>查询语言功能
 
@@ -30,7 +30,7 @@ Azure 数字孪生针对大容量图形提供丰富的查询功能。 使用类�
 
 可以通过以下操作进一步增强查询：
 *  (查询) 的多个关系类型上获取孪生 `JOIN` 。 
-  - `JOIN`对于公共预览) ，允许 (一级的数量存在限制。
+  - 在预览期间，允许最多五个级别 `JOIN` 。
 * 仅选择最上面的查询结果 (`Select TOP` 运算符) 
 * 使用标量函数： `IS_BOOL` 、 `IS_DEFINED` 、 `IS_NULL` 、 `IS_NUMBER` 、 `IS_OBJECT` 、 `IS_PRIMITIVE` `IS_STRING` `STARTSWITH` `ENDSWITH` 、、和。
 * 使用查询比较运算符： `IN` / `NIN` 、 `=` 、 `!=` 、 `<` 、 `>` 、 `<=` 、 `>=` 。

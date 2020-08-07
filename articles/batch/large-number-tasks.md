@@ -3,13 +3,13 @@ title: 提交大量任务
 description: 如何有效地将巨量的任务提交到单个 Azure Batch 作业中
 ms.topic: how-to
 ms.date: 08/24/2018
-ms.custom: tracking-python
-ms.openlocfilehash: 73d81624eea43e85b7fb2526d922a34446610d84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-python
+ms.openlocfilehash: 317cd3514bfa5641c163e82fb8ac17465cb02079
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84553351"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848751"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>将大量的任务提交到 Batch 作业
 

@@ -16,13 +16,13 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.custom: tracking-python
-ms.openlocfilehash: 5688caa16faf4a9d83b6d23b24676d43ad16697b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-python
+ms.openlocfilehash: 3b6a38087aee7f33861f980cb6d245024f8d51ee
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084290"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852321"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>如何通过 Python 使用通知中心
 
@@ -448,7 +448,7 @@ hub.send_template_notification(template_payload)
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何为通知中心创建 Python REST 客户端。 此处你可以：
+本文介绍了如何为通知中心创建 Python REST 客户端。 可以从此页执行下列操作：
 
 - 下载完整的 [Python REST 包装器示例]，其中包含本文中的所有代码。
 - 在[突发新闻教程]中继续学习通知中心标记功能

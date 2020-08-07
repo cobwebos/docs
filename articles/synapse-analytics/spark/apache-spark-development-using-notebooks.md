@@ -9,17 +9,17 @@ ms.subservice: spark
 ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.custom: tracking-python
-ms.openlocfilehash: a7dc0fcae9a6fea789d30bac10511007454ecc5f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-python
+ms.openlocfilehash: 6e0062450889a2bbbdfcd47137ffbe36b83cae57
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503961"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849091"
 ---
-# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中创建、开发和维护 Synapse Studio （预览版）笔记本
+# <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>在 Azure Synapse Analytics 中创建、开发和维护 Synapse Studio (预览版) 笔记本
 
-Synapse Studio （预览版）笔记本是一个 web 界面，用于创建包含实时代码、可视化效果和叙述性文本的文件。 笔记本是验证想法并使用快速试验从数据中获取见解的好地方。 笔记本还广泛用于数据准备、数据可视化、机器学习和其他大数据方案。
+Synapse Studio (预览版) 笔记本是一个 web 界面，用于创建包含实时代码、可视化效果和叙述性文本的文件。 笔记本是验证想法并使用快速试验从数据中获取见解的好地方。 笔记本还广泛用于数据准备、数据可视化、机器学习和其他大数据方案。
 
 借助 Azure Synapse Studio 笔记本，可以：
 
@@ -204,7 +204,7 @@ Azure Synapse Studio 笔记本集成了 Monaco 编辑器，将 IDE 样式的 Int
 ### <a name="spark-progress-indicator"></a>Spark 进度指示器
 
 Azure Synapse Studio 笔记本仅基于 Spark。 代码单元格在 Spark 池上远程执行。 Spark 作业进度指示器提供有实时进度栏，可帮助你了解作业执行状态。
-每个作业或阶段的任务数有助于识别 spark 作业的并行级别。 还可以通过单击作业（或阶段）名称上的链接，深入到特定作业（或阶段）的 Spark UI。
+每个作业或阶段的任务数有助于识别 spark 作业的并行级别。 还可以通过单击作业 (或阶段) 名称上的链接，深入了解特定作业 (或阶段) 的 Spark UI。
 
 
 ![spark-progress-indicator](./media/apache-spark-development-using-notebooks/synapse-spark-progress-indicator.png)
@@ -277,7 +277,7 @@ df = spark.read.option("header", "true") \
 
 表格结果视图附带了创建条形图、折线图、饼图、散点图和分区图的选项。 无需编写代码即可可视化数据。 可以在“图表选项”中自定义这些图表。 
 
-默认情况下，在呈现的表视图中显示 %%sql magic 命令的输出。 可以调用 <code>display(df)</code> Spark DataFrames 或弹性分布式数据集（RDD）函数来生成呈现的表视图。
+默认情况下，在呈现的表视图中显示 %%sql magic 命令的输出。 您可以调用 <code>display(df)</code> Spark DataFrames 或弹性分布式数据集 (RDD) 函数来生成呈现的表视图。
 
    [![builtin-charts](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png#lightbox)
 
@@ -366,7 +366,7 @@ displayHTML(html)
 
 ### <a name="designate-a-parameters-cell"></a>指定参数单元
 
-若要参数化笔记本，请选择省略号（...）以访问最右侧的其他单元格操作菜单。 然后选择 "**切换参数单元**"，将该单元格指定为参数单元。
+若要参数化笔记本，请选择省略号 ( ... ) 以访问最右侧的其他单元格操作菜单。 然后选择 "**切换参数单元**"，将该单元格指定为参数单元。
 
 ![切换-参数](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 

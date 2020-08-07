@@ -5,13 +5,13 @@ ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.custom: tracking-python
-ms.openlocfilehash: 6eae11e2157904b47582f78a601c8d2900e61247
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-python
+ms.openlocfilehash: c94bc949f13ee19a9d2150c9d3c1b6a2bdb959b2
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324584"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850060"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>使用 OpenCensus Python 跟踪传入请求
 
@@ -74,7 +74,7 @@ ms.locfileid: "87324584"
     
     ```
 
-2. 您还可以通过配置您的 `flask` 应用程序 `app.config` 。 对于来自不想跟踪的 URL 的请求，请将其添加到 `BLACKLIST_PATHS` 中。
+2. 你也可通过 `app.config` 配置 `flask` 应用程序。 对于来自不想跟踪的 URL 的请求，请将其添加到 `BLACKLIST_PATHS` 中。
 
     ```python
     app.config['OPENCENSUS'] = {

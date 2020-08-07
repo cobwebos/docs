@@ -1,7 +1,7 @@
 ---
 title: Azure API 管理开发人员门户概述
 titleSuffix: Azure API Management
-description: 了解 API 管理中的开发人员门户。
+description: 了解 API 管理中的开发人员门户。 开发人员门户是使用者可以在其中找到你的 Api 的位置。
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: f5f4df58a4b147ccb73c7d69f5307a8328803442
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6a8c4c3fa2bd73fa689458d6877d09900ea86938
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373141"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852151"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API 管理开发人员门户概述
 
@@ -31,7 +31,7 @@ ms.locfileid: "87373141"
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 > [!NOTE]
-> <a name="migrate-from-legacy"></a>新的开发人员门户与旧版开发人员门户不兼容，因此不能自动迁移。 你需要手动重新创建内容（页面、文本、媒体文件）并自定义新门户的外观。 有关指南，请参阅[开发人员门户教程](api-management-howto-developer-portal-customize.md)。
+> <a name="migrate-from-legacy"></a>新的开发人员门户与旧版开发人员门户不兼容，因此不能自动迁移。 需要手动重新创建 (页面、文本、媒体文件) 的内容，并自定义新门户的外观。 有关指南，请参阅[开发人员门户教程](api-management-howto-developer-portal-customize.md)。
 
 ## <a name="managed-and-self-hosted-versions"></a><a name="managed-vs-self-hosted"></a> 托管版本和自承载版本
 

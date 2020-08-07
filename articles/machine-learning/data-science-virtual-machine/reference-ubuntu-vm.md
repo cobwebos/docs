@@ -5,16 +5,16 @@ description: Data Science Virtual Machine 中包含的工具的详细信息
 author: gvashishtha
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.custom: tracking-python
+ms.custom: devx-track-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 34b4bbd9c2ed088aca10801c22c5f189264fdb1f
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 247840fe4719dc83be8048826ac4defc76d7ef9d
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85955533"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852219"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>参考：Ubuntu (Linux) Data Science Virtual Machine
 
@@ -240,7 +240,7 @@ VM 上安装有以下 Azure 工具：
 
 ## <a name="azure-machine-learning"></a>Azure 机器学习
 
-Azure 机器学习是完全托管的云服务，允许构建、部署和共享预测分析解决方案。 可以在 Azure 机器学习 studio （预览版）中构建试验和模型。 可从 Data Science Virtual Machine 上的 Web 浏览器，通过访问 [Microsoft Azure 机器学习](https://ml.azure.com)来访问 Azure 机器学习工作室。
+Azure 机器学习是完全托管的云服务，允许构建、部署和共享预测分析解决方案。 可以在 Azure 机器学习 studio (预览版) 中构建试验和模型。 可从 Data Science Virtual Machine 上的 Web 浏览器，通过访问 [Microsoft Azure 机器学习](https://ml.azure.com)来访问 Azure 机器学习工作室。
 
 登录到 Azure 机器学习 studio 后，可以使用试验画布来构建机器学习算法的逻辑流。 你还可以访问 Azure 机器学习上承载的 Jupyter 笔记本，并可与 Azure 机器学习 studio 中的试验无缝配合使用。 
 

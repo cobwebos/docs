@@ -9,12 +9,12 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.date: 06/02/2020
-ms.openlocfilehash: 308d19fde78edacebb168b8d4e459169338acc41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bba49014fd6b082ea015da259402a8e87bf4afff
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345938"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851973"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Azure 数据工厂中的管理中心
 
@@ -57,6 +57,12 @@ ms.locfileid: "84345938"
 触发器确定何时应开始管道运行。 目前，触发器可以按挂钟计划触发，可以定期运行，也可以按事件触发。 有关详细信息，请参阅[触发器执行](concepts-pipeline-execution-triggers.md#trigger-execution)。 可以在管理中心创建、编辑、删除触发器或查看触发器的当前状态。
 
 ![管理自定义参数](media/author-management-hub/management-hub-triggers.png)
+
+### <a name="global-parameters"></a>全局参数
+
+全局参数是可由任意表达式中的管道使用的数据工厂中的常量。 有关详细信息，请参阅[全局参数](author-global-parameters.md)。
+
+![创建全局参数](media/author-global-parameters/create-global-parameter-3.png)
 
 ## <a name="next-steps"></a>后续步骤
 

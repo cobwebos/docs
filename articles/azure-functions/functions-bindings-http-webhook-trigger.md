@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.custom: tracking-python
-ms.openlocfilehash: d1b545129312e2954c76e296560d9476f37f4424
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-python
+ms.openlocfilehash: 47d023216c9e10eb7c2576eb3eb2aacc14a34419
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081757"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850213"
 ---
 # <a name="azure-functions-http-trigger"></a>Azure Functions HTTP 触发器
 
@@ -482,9 +482,9 @@ public HttpResponseMessage<String> HttpTrigger(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-| **type** | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
+| type | 不适用| 必需 - 必须设置为 `httpTrigger`。 |
 | **direction** | 不适用| 必需 - 必须设置为 `in`。 |
-| **name** | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
+| name | 不适用| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 |
 | <a name="http-auth"></a>**authLevel** |  AuthLevel |确定请求中需要提供的密钥（如果有），以便调用此函数。 授权级别可以是以下值之一： <ul><li><code>anonymous</code>&mdash;无需 API 密钥。</li><li><code>function</code>&mdash;特定于函数的 API 密钥是必需的。 如果未提供任何值，该值为默认值。</li><li><code>admin</code>&mdash;无需主密钥。</li></ul> 有关详细信息，请参阅有关[授权密钥](#authorization-keys)的部分。 |
 | methods |**方法** | HTTP 方法的数组，该函数将响应此方法。 如果未指定，该函数将响应所有 HTTP 方法。 请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
 | route | **Route** | 定义路由模板，控制函数将响应的请求 URL。 如果未提供任何值，则默认值为 `<functionname>`。 有关详细信息，请参阅[自定义 HTTP 终结点](#customize-the-http-endpoint)。 |
@@ -740,11 +740,11 @@ public static void Run(JObject input, ClaimsPrincipal principal, ILogger log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)获得。
+经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)提供。
 
 # <a name="python"></a>[Python](#tab/python)
 
-经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)获得。
+经过身份验证的用户通过 [HTTP 标头](../app-service/app-service-authentication-how-to.md#access-user-claims)提供。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -816,11 +816,11 @@ Webhook 授权由属于 HTTP 触发器的 webhook 接收器组件处理，其机
 
 ## <a name="content-types"></a>内容类型
 
-将二进制和窗体数据传递到非 C # 函数要求使用适当的 content-type 标头。 支持的内容类型包括 `octet-stream` 二进制数据和[多部分类型](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart)。
+将二进制文件和窗体数据传递给非 C# 函数需要使用适当的 content-type 标头。 支持的内容类型包括 `octet-stream`（适用于二进制数据）和[多部分类型](https://www.iana.org/assignments/media-types/media-types.xhtml#multipart)。
 
 ### <a name="known-issues"></a>已知问题
 
-在非 C # 函数中，使用 content 类型发送的请求会 `image/jpeg` 导致 `string` 传递到函数的值。 在这种情况下，可以手动将 `string` 值转换为字节数组，以访问原始二进制数据。
+在非 C# 函数中，使用 content-type `image/jpeg` 发送的请求会导致向函数传递 `string` 值。 在这种情况下，可以手动将 `string` 值转换为字节数组以访问原始二进制数据。
 
 ## <a name="limits"></a>限制
 

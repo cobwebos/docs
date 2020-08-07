@@ -10,19 +10,19 @@ ms.subservice: text-analytics
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.custom: tracking-python
-ms.openlocfilehash: e1f17cad784137af927b9ec80d07bd3be092b82d
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.custom: devx-track-python
+ms.openlocfilehash: 0a94c66eb51298db226ceec5da5c86666576052a
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86189381"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850485"
 ---
 # <a name="recipe-intelligent-art-exploration-with-the-cognitive-services-for-big-data"></a>食谱：针对大数据的认知服务的智能美术探索
 
 在此示例中，我们将使用适用于大数据的认知服务将智能批注添加到 (满足) 的大都市博物馆的开放访问集合。 这使我们可以使用 Azure 搜索创建智能搜索引擎，甚至无需手动注释。 
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 
 * 您必须具有计算机视觉和认知搜索的订阅密钥。 按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取你的密钥。
   > [!NOTE]

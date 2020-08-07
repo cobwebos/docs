@@ -7,12 +7,12 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: rogarana
-ms.openlocfilehash: d7aab7f5db6256d2f2525ff4a58c10ff5aa517f7
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: c3e8299a5acd7cbd3a6fd3cd76af33f4a798ad12
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553166"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832988"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>概述-本地 Active Directory 域服务针对 Azure 文件共享的 SMB 进行身份验证
 
@@ -83,7 +83,7 @@ ms.locfileid: "87553166"
 
 ![文件广告工作流关系图](media/storage-files-active-directory-domain-services-enable/diagram-files-ad.png)
 
-用于访问 Azure 文件共享的标识必须同步到 Azure AD，才能通过[基于角色的访问控制 (RBAC) ](../../role-based-access-control/overview.md)模型来强制执行共享级别文件权限。 将保留并强制执行从现有文件服务器中执行的文件/目录上的[Windows 样式 dacl](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) 。 这提供了与企业 AD DS 环境的无缝集成。 将本地文件服务器替换为 Azure 文件共享时，现有用户可以通过单一登录体验从当前客户端访问 Azure 文件共享，而无需更改所使用的凭据。  
+用于访问 Azure 文件共享的标识必须同步到 Azure AD，才能通过[AZURE RBAC) 模型 (通过 azure 基于角色的访问控制](../../role-based-access-control/overview.md)来强制执行共享级别文件权限。 将保留并强制执行从现有文件服务器中执行的文件/目录上的[Windows 样式 dacl](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) 。 这提供了与企业 AD DS 环境的无缝集成。 将本地文件服务器替换为 Azure 文件共享时，现有用户可以通过单一登录体验从当前客户端访问 Azure 文件共享，而无需更改所使用的凭据。  
 
 ## <a name="next-steps"></a>后续步骤
 

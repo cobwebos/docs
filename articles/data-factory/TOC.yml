@@ -209,14 +209,14 @@
       items:
         - name: 直观创作数据工厂
           href: author-visually.md
+        - name: 迭代开发和调试
+          href: iterative-development-debugging.md
         - name: 管理中心
           href: author-management-hub.md
         - name: 源代码管理
           href: source-control.md
         - name: 持续集成和交付
           href: continuous-integration-deployment.md
-        - name: 迭代开发和调试
-          href: iterative-development-debugging.md
     - name: 连接器
       items:
         - name: 连接器概述
@@ -562,6 +562,8 @@
       items:
         - name: 将链接的服务参数化
           href: parameterize-linked-services.md
+        - name: 全局参数
+          href: author-global-parameters.md
         - name: 表达式语言
           href: control-flow-expression-language-functions.md
         - name: 系统变量

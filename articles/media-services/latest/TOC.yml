@@ -174,7 +174,7 @@
     - name: Azure Media Player
       items:
         - name: Azure Media Player 概述
-          href: 'https://docs.microsoft.com/en-us/azure/media-services/azure-media-player/azure-media-player-overview'
+          href: ../azure-media-player/azure-media-player-overview.md
     - name: 使用 v3 API 进行开发
       items:
         - name: 概述
@@ -362,7 +362,7 @@
     - name: 使用媒体播放器
       items:
         - name: Azure Media Player 完全设置
-          href: 'https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup'
+          href: ../azure-media-player/azure-media-player-full-setup.md
         - name: 使用 Video.js 播放器
           href: how-to-video-js-player.md
         - name: 使用 Shaka 视频播放器
@@ -373,7 +373,7 @@
       href: 'https://aka.ms/ams-v3-rest-sdk'
       displayName: schema
     - name: REST
-      href: 'https://docs.microsoft.com/rest/api/media/'
+      href: /rest/api/media/
     - name: Azure CLI
       href: 'https://aka.ms/ams-v3-cli-ref'
     - name: SDK
