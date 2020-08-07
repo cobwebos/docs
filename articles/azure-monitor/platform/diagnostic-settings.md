@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.subservice: logs
-ms.openlocfilehash: 0a9eaeb9b77c7b4dd7e0b2347c66de3a325a66ee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ff0df654650bb1c32d5c3e9833ebde2a81e3d65c
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86505170"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799950"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>创建诊断设置以将平台日志和指标发送到不同目标
 Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日志和资源日志）提供 Azure 资源及其所依赖的 Azure 平台的详细诊断和审核信息。 默认情况下会收集[平台指标](data-platform-metrics.md)，它们通常存储在 Azure Monitor 指标数据库中。 本文详细介绍如何创建和配置诊断设置，以将平台指标和平台日志发送到不同的目标。
@@ -58,7 +58,7 @@ Azure 中的[平台日志](platform-logs-overview.md)（包括 Azure 活动日�
 如果尚未[创建新的工作区](../learn/quick-create-workspace.md)，请创建一个。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，工作区就不必位于发送日志的资源所在的订阅中。
 
 ### <a name="event-hub"></a>事件中心
-如果还没有[事件中心](../../event-hubs/event-hubs-create.md)，请创建一个。 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限并且这两个订阅都在同一个 AAD 租户中，事件中心命名空间就不必与发出日志的订阅位于同一订阅中。
+如果还没有[事件中心](../../event-hubs/event-hubs-create.md)，请创建一个。 事件中心命名空间不必与发出日志的订阅位于同一订阅中，只要配置设置的用户具有对两个订阅的相应 RBAC 访问权限，并且这两个订阅都在同一租户中。
 
 命名空间的共享访问策略定义流式处理机制具有的权限。 流式传输到事件中心需要“管理”、“发送”和“侦听”权限。 在 Azure 门户中事件中心命名空间的“配置”选项卡下，可以创建或修改共享访问策略。 若要更新诊断设置，使之包括流式传输，则必须在事件中心授权规则中拥有 ListKey 权限。 
 
@@ -182,7 +182,7 @@ az monitor diagnostic-settings create  \
 若要使用 [Azure Monitor REST API](/rest/api/monitor/) 创建或更新诊断设置，请参阅[诊断设置](/rest/api/monitor/diagnosticsettings)。
 
 ## <a name="create-using-azure-policy"></a>使用 Azure 策略创建
-由于需要为每个 Azure 资源创建诊断设置，因此在创建每个资源时，可以使用 Azure 策略来自动创建诊断设置。 有关详细信息，请参阅[使用 Azure 策略大规模部署 Azure Monitor](deploy-scale.md) 。
+由于需要为每个 Azure 资源创建诊断设置，因此在创建每个资源时，可以使用 Azure 策略来自动创建诊断设置。 有关详细信息，请参阅[使用 Azure 策略大规模部署 Azure Monitor](../deploy-scale.md) 。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 3250e4c35f6b898f4431d0f2fe15f84d915c1c8e
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 1fdc6b79bf86272afac038d8f91e4663514830fe
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760390"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905580"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查询 Azure 数字孪生克隆图形
 
@@ -130,6 +130,22 @@ AND R.reportedCondition = 'clean'
 ```
 
 在上面的示例中，请注意， *reportedCondition*是*servicedBy*关系本身的属性， (不属于具有*servicedBy*关系) 的某些数字克隆。
+
+### <a name="query-with-multiple-joins"></a>具有多个联接的查询
+
+目前处于预览状态，一个查询最多支持五个 `JOIN` 。 这使您可以一次遍历多个级别的关系。
+
+下面是多联接查询的一个示例，它获取房间1和2中的灯具面板中包含的所有光源电灯泡。
+
+```sql
+SELECT LightBulb 
+FROM DIGITALTWINS Room 
+JOIN LightPanel RELATED Room.contains 
+JOIN LightBulb RELATED LightPanel.contains 
+WHERE IS_OF_MODEL(LightPanel, ‘dtmi:contoso:com:lightpanel;1’) 
+AND IS_OF_MODEL(LightBulb, ‘dtmi:contoso:com:lightbulb ;1’) 
+AND Room.$dtId IN [‘room1’, ‘room2’] 
+```
 
 ## <a name="run-queries-with-an-api-call"></a>使用 API 调用运行查询
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: cb9c851ca33aa6eeb6d0fe0576f98ecb0693be02
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c3d487c1595a077ac8609813a41d15e28ede0e0b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999250"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903317"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure 流分析解决方案模式
 
@@ -86,17 +86,12 @@ Azure 流分析的内置[异常情况检测模型](stream-analytics-machine-lear
 
 ![ASA 机器学习应用](media/stream-analytics-solution-patterns/machine-learning-app.png)
 
-## <a name="near-real-time-data-warehousing"></a>近实时数据仓库
+## <a name="real-time-data-warehousing"></a>实时数据仓库
 
-另一种常见模式是实时数据仓库，也称为流数据仓库。 除了从应用程序传入事件中心和 IoT 中心的事件以外，还可使用 [IoT Edge 上运行的 Azure 流分析](stream-analytics-edge.md)来满足数据清理、数据化减、数据存储和转发需求。 在 IoT Edge 上运行的流分析可以正常处理系统中的带宽限制和连接问题。 SQL 输出适配器可用于将数据输出到 SQL 数据仓库，但是，最大吞吐量限制为 10 MB/秒。
+另一种常见模式是实时数据仓库，也称为流数据仓库。 除了从应用程序传入事件中心和 IoT 中心的事件以外，还可使用 [IoT Edge 上运行的 Azure 流分析](stream-analytics-edge.md)来满足数据清理、数据化减、数据存储和转发需求。 在 IoT Edge 上运行的流分析可以正常处理系统中的带宽限制和连接问题。 写入 Azure Synapse Analytics 时，流分析可支持最多 200MB/秒的吞吐量速率。
 
 ![ASA 数据仓库](media/stream-analytics-solution-patterns/data-warehousing.png)
 
-改善吞吐量（但会在一定程度上增大延迟）的一种方法是将事件存档到 Azure Blob 存储中，然后[使用 Polybase 将其导入到 SQL 数据仓库](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md)。 必须通过[按时间戳存档数据](stream-analytics-custom-path-patterns-blob-storage-output.md)并定期导入，将从流分析发往 blob 存储的输出，以及从 blob 存储发往 SQL 数据仓库的输入拼结到一起。
-
-在此使用模式中，Azure 流分析用作近实时 ETL 引擎。 新抵达的事件将持续转换并存储，以供下游分析服务使用。
-
-![ASA 高吞吐量数据仓库](media/stream-analytics-solution-patterns/data-warehousing-high-throughput.png)
 
 ## <a name="archiving-real-time-data-for-analytics"></a>存档实时数据用于分析
 

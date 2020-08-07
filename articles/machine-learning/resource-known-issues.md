@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
-ms.date: 03/31/2020
-ms.openlocfilehash: 8f58fcef1a35494053803d98b43ce97fed7205e0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.date: 08/06/2020
+ms.openlocfilehash: 23b749a45e130e99b660cd5bc56349732159e340
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373685"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905490"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure 机器学习中的已知问题和故障排除
 
@@ -99,9 +99,9 @@ ms.locfileid: "87373685"
     
 * **KeyError：在本地计算或 Azure Databricks 群集上运行 AutoML 时的 "品牌"**
 
-    如果新环境是在2020年6月10日之后使用 SDK 1.7.0 或更早版本创建的，则在 py-cpuinfo 包中进行更新后，训练可能会因此错误而失败。 （在2020年6月10日或之前创建的环境不受影响，因为使用缓存的培训图像，所以试验在远程计算上运行。）若要解决此问题，请执行以下两个步骤之一：
+    如果新环境是在2020年6月10日之后使用 SDK 1.7.0 或更早版本创建的，则在 py-cpuinfo 包中进行更新后，训练可能会因此错误而失败。  (在2020年6月10日或之前创建的环境不受影响，因为使用缓存的培训图像，所以试验在远程计算上运行。 ) 若要解决此问题，请执行以下两个步骤之一：
     
-    * 将 SDK 版本更新为1.8.0 或更高版本（这也会将 py cpuinfo 降级到5.0.0）：
+    * 将 SDK 版本更新为1.8.0 或更高版本 (这还会将 py cpuinfo 降级到 5.0.0) ：
     
       ```bash
       pip install --upgrade azureml-sdk[automl]
@@ -131,7 +131,7 @@ ms.locfileid: "87373685"
 
     或者，如果一直面临 Python 库的安装问题，可以使用初始化脚本。 此方法并不正式受到支持。 有关详细信息，请参阅[群集范围的初始化脚本](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts)。
 
-* **Databricks 导入错误：无法从“pandas._libs.tslibs”导入名称“Timedelta”** ：如果在使用自动机器学习时看到此错误，请在笔记本中运行以下两行：
+* **Databricks 导入错误：无法 `Timedelta` 从 `pandas._libs.tslibs` 导入名称**：如果你在使用自动机器学习时看到此错误，请在笔记本中运行以下两行：
     ```
     %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
     %sh /databricks/python/bin/pip install pandas==0.23.4
@@ -164,7 +164,7 @@ ms.locfileid: "87373685"
 * **Azure 门户**：如果直接通过 SDK 或门户的共享链接查看工作区，则将无法在扩展程序中查看包含订阅信息的常规“概述”页。 也将无法切换到另一个工作区。 如果需要查看其他工作区，请直接转到 [Azure 机器学习工作室](https://ml.azure.com)并搜索工作区名称。
 
 * **Azure 机器学习 studio web 门户中支持的浏览器**：建议使用与操作系统兼容的最新浏览器。 支持以下浏览器：
-  * Microsoft Edge （新的 Microsoft Edge，最新版本。 不是 Microsoft Edge 旧版）
+  * Microsoft Edge (新的 Microsoft Edge （最新版本）。 不是 Microsoft Edge 旧) 
   * Safari（最新版本，仅限 Mac）
   * Chrome（最新版本）
   * Firefox（最新版本）
@@ -219,7 +219,7 @@ ms.locfileid: "87373685"
     | 分类 | string、bool、int、float | 特征中的唯一值数小于 100，并小于行数的 5%。 | Null 被视为其自身的类别。 | 
     | 数值 | int、float | 特征中的值为数字数据类型，且不符合分类特征的条件。 | 如果 15% 以上的值为 null，则会删除特征。 | 
 
-* 如果已[创建 datadrift 监视器](how-to-monitor-datasets.md)，但在 Azure 机器学习 studio 中看不到数据**集监视器**页上的数据，请尝试以下。
+* 如果已[创建数据偏移监视器](how-to-monitor-datasets.md)，但在 Azure 机器学习 studio 中看不到数据**集监视器**页上的数据，请尝试以下。
 
     1. 检查是否已在页面顶部选择了正确的日期范围。  
     1. 在 "**数据集监视器**" 选项卡上，选择 "试验" 链接以检查运行状态。  此链接位于表的最右侧。
@@ -243,7 +243,7 @@ ms.locfileid: "87373685"
 
 第一次连接或创建计算目标时，可能需要几分钟或更长时间。 
 
-从模型数据收集器中，最多可能需要10分钟的时间，数据才会到达 blob 存储帐户。 等待10分钟，以确保下面的单元格将运行。
+从模型数据收集器中，最多需要 (，但通常不会) 超过10分钟的时间，数据就会到达 blob 存储帐户。 等待10分钟，以确保下面的单元格将运行。
 
 ```python
 import time
@@ -283,7 +283,7 @@ time.sleep(600)
 
 ## <a name="automated-machine-learning"></a>自动化机器学习
 
-* **TensorFlow**：从 SDK 1.5.0 版开始，自动化机器学习默认情况下不会安装 tensorflow 模型。 若要安装 tensorflow 并将其用于自动化 ML 试验，请通过 CondaDependecies 安装 tensorflow==1.12.0。 
+* **TensorFlow**：从 SDK 的版本1.5.0 版，自动机器学习默认情况下不安装 TensorFlow 模型。 若要安装 TensorFlow 并将其与自动 ML 试验一起使用，请通过 CondaDependecies 安装 TensorFlow = = 1.12.0。 
  
    ```python
    from azureml.core.runconfig import RunConfiguration
@@ -382,5 +382,5 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 * [使用 Azure 机器学习解决 Docker 部署问题](how-to-troubleshoot-deployment.md)
 * [调试机器学习管道](how-to-debug-pipelines.md)
 * [从 Azure 机器学习 SDK 调试 ParallelRunStep 类](how-to-debug-parallel-run-step.md)
-* [使用 VS Code 的机器学习计算实例进行交互式调试](how-to-set-up-vs-code-remote.md)
+* [使用 VS Code 的机器学习计算实例进行交互式调试](how-to-debug-visual-studio-code.md)
 * [使用 Application Insights 调试机器学习管道](how-to-debug-pipelines-application-insights.md)

@@ -10,22 +10,19 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 23ec12daa2e5c236da482615228b7c44037282fb
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 990a2d5279c796f354055328e6968ea705ea10b2
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808110"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873630"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>使用防火墙后面的工作区进行 Azure 机器学习
 
-本文介绍如何配置 Azure 防火墙以便用于 Azure 机器学习工作区。
+本文介绍如何将 Azure 防火墙配置为控制对 Azure 机器学习工作区和公共 internet 的访问。   若要了解有关保护 Azure 机器学习的详细信息，请参阅[企业安全性 Azure 机器学习](concept-enterprise-security.md)
 
-> [!IMPORTANT]
-> 虽然本文档中的信息基于使用 Azure 防火墙，但你应该能够将其与其他防火墙产品一起使用。 如果有关于如何允许通过防火墙进行通信的问题，请查阅所使用防火墙的相关文档。
-
-Azure 防火墙可用于控制对 Azure 机器学习工作区和公共 Internet 的访问。 如果未正确配置，则防火墙可能会在使用工作区时导致问题。 Azure 机器学习工作区使用各种主机名，本文将对此进行介绍。
+虽然本文档中的信息基于使用[Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)，但你应该能够将其与其他防火墙产品一起使用。 如果有关于如何允许通过防火墙进行通信的问题，请查阅所使用防火墙的相关文档。
 
 ## <a name="network-rules"></a>网络规则
 
@@ -37,6 +34,8 @@ Azure 防火墙可用于控制对 Azure 机器学习工作区和公共 Internet 
 > 有关配置 Azure 防火墙的详细信息，请参阅[部署和配置 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule)。
 
 ## <a name="microsoft-hosts"></a>Microsoft 主机
+
+如果未正确配置，则防火墙可能会在使用工作区时导致问题。 Azure 机器学习工作区均使用各种主机名。
 
 本部分中的主机归 Microsoft 所有，它们提供工作区正常工作所需的服务。
 
@@ -58,6 +57,7 @@ Azure 防火墙可用于控制对 Azure 机器学习工作区和公共 Internet 
 | **mcr.microsoft.com** | 用于 docker 基础映像的 Microsoft 容器注册表 |
 | **your-acr-server-name.azurecr.io** | 仅当 Azure 容器注册表位于虚拟网络后面时才需要。 在此配置中，将从 Microsoft 环境创建专用链接到订阅中的 ACR 实例。 为 Azure 机器学习工作区使用 ACR 服务器名称。 |
 | **\*。 notebooks.azure.net** | Azure 机器学习 studio 中的笔记本需要。 |
+
 ## <a name="python-hosts"></a>Python 主机
 
 本部分中的主机用于安装 Python 包。 开发、训练和部署过程中需要使用它们。 
@@ -79,7 +79,7 @@ Azure 防火墙可用于控制对 Azure 机器学习工作区和公共 Internet 
 | ---- | ---- |
 | **cloud.r-project.org** | 在安装 CRAN 包时使用。 |
 
-后续步骤
+## <a name="next-steps"></a>后续步骤
 
-* [[部署和配置 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)]
+* [教程：使用 Azure 门户部署和配置 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)
 * [保护 Azure 虚拟网络中的 Azure ML 试验和推理作业](how-to-enable-virtual-network.md)

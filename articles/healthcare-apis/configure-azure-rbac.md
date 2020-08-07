@@ -1,22 +1,23 @@
 ---
-title: 为适用于 FHIR 的 Azure API 配置基于 Azure 角色的访问控制（Azure RBAC）
+title: 为用于 FHIR 的 Azure API 配置 azure RBAC) 的 Azure 基于角色的访问控制 (
 description: 本文介绍如何为适用于 FHIR 数据平面的 Azure API 配置 Azure RBAC
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 03/15/2020
-ms.author: mihansen
-ms.openlocfilehash: 8e4b5fdecfc5b9fcb2deb68a482b084a6e6ed6d9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.author: matjazl
+ms.reviewer: dseven
+ms.openlocfilehash: c4a78168f2759f9d7bb9e50165b8cf03c71ecab5
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496162"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845931"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>配置 FHIR 的 Azure RBAC 
 
-本文介绍如何使用[azure 基于角色的访问控制（AZURE RBAC）](https://docs.microsoft.com/azure/role-based-access-control/)来分配对 azure API for FHIR 数据平面的访问权限。 当在与 Azure 订阅关联的 Azure Active Directory 租户中管理数据平面用户时，Azure RBAC 是用于分配数据平面访问权限的首选方法。 如果你使用的是外部 Azure Active Directory 租户，请参阅[本地 RBAC 赋值引用](configure-local-rbac.md)。
+在本文中，你将了解如何使用 azure [RBAC)  (azure 基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/)来分配对 Azure API for FHIR 数据平面的访问权限。 当在与 Azure 订阅关联的 Azure Active Directory 租户中管理数据平面用户时，Azure RBAC 是用于分配数据平面访问权限的首选方法。 如果你使用的是外部 Azure Active Directory 租户，请参阅[本地 RBAC 赋值引用](configure-local-rbac.md)。
 
 ## <a name="confirm-azure-rbac-mode"></a>确认 Azure RBAC 模式
 
@@ -28,7 +29,7 @@ ms.locfileid: "87496162"
 
 ## <a name="assign-roles"></a>分配角色
 
-若要授予用户、服务主体或组对 FHIR 数据平面的访问权限，请单击 "**访问控制（IAM）**"，然后单击 "**角色分配**"，然后单击 " **+ 添加**"：
+若要授予用户、服务主体或组对 FHIR 数据平面的访问权限，请单击 " ** (IAM) 的" 访问控制**"，然后单击"**角色分配**"，然后单击" **+ 添加**"：
 
 :::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="添加 Azure 角色分配":::
 
@@ -38,9 +39,9 @@ ms.locfileid: "87496162"
 
 你可以选择：
 
-* FHIR 数据读取器：可以读取（和搜索） FHIR 数据。
+* FHIR 数据读取器：可以读取 (和搜索) FHIR 数据。
 * FHIR 数据编写器：可读取、写入和软删除 FHIR 数据。
-* FHIR 数据导出程序：可以读取和导出（ `$export` 操作员）数据。
+* FHIR 数据导出程序：可以读取和导出 (`$export` 运算符) 数据。
 * FHIR 数据参与者：可执行所有数据平面操作。
 
 如果这些角色不足以满足你的需要，你还可以[创建自定义角色](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-powershell)。
