@@ -1,6 +1,6 @@
 ---
-title: '使用 c # 代码从 Gen1 环境查询数据-Azure 时序见解 Gen1 |Microsoft Docs'
-description: '了解如何使用以 c # 编写的自定义应用从 Azure 时序见解 Gen1 环境查询数据。'
+title: 使用 C# 代码查询 Gen1 环境中的数据 - Azure 时序见解 Gen1 | Microsoft Docs
+description: 了解如何使用以 C# 编写的自定义应用查询 Azure 时序见解 Gen1 环境中的数据。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,19 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: c794cfb5f0d652e25007131d9ca39fb73e2218e2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 98077209e8245753bb9dae79fafd6c6a10f3eafb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080669"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920715"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c"></a>使用 C 从 Azure 时序见解 Gen1 环境查询数据#
+# <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c"></a>使用 C# 查询 Azure 时序见解 Gen1 环境中的数据
 
-此 c # 示例演示如何使用[Gen1 查询 api](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)从 Azure 时序见解 Gen1 环境中查询数据。
+本 C# 示例演示如何使用[Gen1 查询 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) 查询 Azure 时序见解 Gen1 环境中的数据。
 
 > [!TIP]
-> 查看 Gen1 c # 代码示例 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) 。
+> 可以访问 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) 查看 Gen1 C# 代码示例。
 
 ## <a name="summary"></a>总结
 
@@ -33,14 +33,14 @@ ms.locfileid: "87080669"
 
 * 如何在后续查询 API 请求的 `Authorization` 标头中传递该获得的访问令牌。 
 
-* 该示例调用了每个 Gen1 查询 Api，其中演示了如何对发出 HTTP 请求：
+* 示例调用每个 Gen1 查询 API，展示如何对以下项发出 HTTP 请求：
     * [获取环境 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environments-api)，用于返回用户有权访问的环境
     * [获取环境可用性 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-availability-api)
     * [获取环境元数据 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-metadata-api)，用于检索环境元数据
     * [获取环境事件 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)
     * [获取环境聚合 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api)
     
-* 如何使用 WSS 与 Gen1 查询 Api 进行交互以发送消息：
+* 如何使用 WSS 与 Gen1 查询 API 交互以向以下项发送消息：
 
    * [获取流式处理的环境事件 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-streamed-api)
    * [获取流式处理的环境聚合 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-streamed-api)
@@ -75,10 +75,11 @@ ms.locfileid: "87080669"
 
 ## <a name="c-sample-code"></a>C# 示例代码
 
-[!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs)]
+[!code-csharp[csharpquery-example](~/samples-tsi/gen1-sample/csharp-tsi-gen1-sample/Program.cs)]
 
 ## <a name="next-steps"></a>后续步骤
 
 - 若要详细了解查询，请阅读[查询 API 参考](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)。
 
 - 阅读如何[使用客户端 SDK 将 JavaScript 应用连接到时序见解](https://github.com/microsoft/tsiclient)。
+Azure-示例/Azure 时间系列-Insights/gen1/gen1-示例/程序 .cs

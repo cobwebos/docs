@@ -9,16 +9,17 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/15/2020
+ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 8041ce07c08c3b6063e2a1b3c7b55b1cec59b19a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 43ab59f109e311d9d7312b77d34321fa98a952d6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087752"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926801"
 ---
 # <a name="copy-data-from-the-hdfs-server-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HDFS 服务器复制数据
+
 > [!div class="op_single_selector" title1="选择要使用的数据工厂服务的版本："]
 > * [版本 1](v1/data-factory-hdfs-connector.md)
 > * [当前版本](connector-hdfs.md)
@@ -57,7 +58,7 @@ ms.locfileid: "86087752"
 
 HDFS 链接服务支持以下属性：
 
-| Property | 描述 | 必需 |
+| 属性 | 描述 | 必选 |
 |:--- |:--- |:--- |
 | type | *type* 属性必须设置为 *Hdfs*。 | 是 |
 | url |HDFS 的 URL |是 |
@@ -118,7 +119,7 @@ HDFS 链接服务支持以下属性：
 
 HTTP 支持基于格式的数据集中 `location` 设置下的以下属性：
 
-| Property   | 描述                                                  | 必需 |
+| 属性   | 描述                                                  | 必选 |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | 数据集中 `location` 下的 type 属性必须设置为 HdfsLocation。 | 是      |
 | folderPath | 文件夹的路径。 如果要使用通配符来筛选文件夹，请跳过此设置并在活动源设置中指定路径。 | 否       |
@@ -160,7 +161,7 @@ HTTP 支持基于格式的数据集中 `location` 设置下的以下属性：
 
 HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性：
 
-| 属性                 | 描述                                                  | 必需                                      |
+| 属性                 | 描述                                                  | 必选                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | `storeSettings` 下的 *type* 属性必须设置为 **HdfsReadSettings**。 | 是                                           |
 | 找到要复制的文件 |  |  |
@@ -169,7 +170,7 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 | 选项 2：通配符<br>- wildcardFileName | 指定的 folderPath/wildcardFolderPath 下带有通配符的文件名，用于筛选源文件。 <br>允许的通配符为 `*`（匹配零个或零个以上的字符）和 `?`（匹配零个或单个字符）；如果实际文件夹名称中包含通配符或此转义字符，请使用 `^` 进行转义。  如需更多示例，请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)。 | 是 |
 | 选项 3：文件列表<br>- fileListPath | 表示要复制指定文件集。 指向一个文本文件，其中包含要复制的文件列表（每行一个文件，带有数据集中所配置路径的相对路径）。<br/>使用此选项时，请不要在数据集中指定文件名。 如需更多示例，请参阅[文件列表示例](#file-list-examples)。 |否 |
 | ***其他设置*** |  | |
-| recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 `recursive` 设置为 *true* 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 <br>允许的值为 *true*（默认值）和 *false*。<br>如果你配置了 `fileListPath`，则此属性不适用。 |否 |
+| recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 `recursive` 设置为 *true* 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。 <br>允许的值为 *true*（默认值）和 *false*。<br>如果配置 `fileListPath`，则此属性不适用。 |否 |
 | modifiedDatetimeStart    | 文件根据“上次修改时间”属性进行筛选。 <br>如果文件的上次修改时间在 `modifiedDatetimeStart` 到 `modifiedDatetimeEnd` 之间的范围内，则会选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。<br/>如果配置 `fileListPath`，则此属性不适用。 | 否                                            |
 | maxConcurrentConnections | 可以同时连接到存储区存储的连接数。 仅在要限制与数据存储的并发连接时指定一个值。 | 否                                            |
 | DistCp 设置 |  | |
@@ -245,18 +246,18 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 
 [DistCp](https://hadoop.apache.org/docs/current3/hadoop-distcp/DistCp.html) 是 Hadoop 本机命令行工具，用于在 Hadoop 群集中进行分布式复制。 在 Distcp 中运行某个命令时，该命令首先列出要复制的所有文件，然后在 Hadoop 群集中创建多个 Map 作业。 每个 Map 作业会将数据以二进制格式从源复制到接收器。
 
-复制活动支持使用 DistCp 将文件复制到 Azure Blob 存储（包括[暂存复制](copy-activity-performance.md)）或 azure data lake store。 在这种情况下，DistCp 可以利用群集的功能，而不必在自承载集成运行时上运行。 使用 DistCp 可以提供更高的复制吞吐量，尤其是在群集非常强大的情况下。 根据数据工厂中的配置，复制活动会自动构造 DistCp 命令，将其提交到 Hadoop 群集并监视复制状态。
+复制活动支持使用 DistCp 将文件复制到 Azure Blob 存储中 (包括[暂存复制](copy-activity-performance.md)) 或 azure data lake store。 在这种情况下，DistCp 可以利用群集的功能，而不必在自承载集成运行时上运行。 使用 DistCp 可以提供更高的复制吞吐量，尤其是在群集非常强大的情况下。 根据数据工厂中的配置，复制活动会自动构造 DistCp 命令，将其提交到 Hadoop 群集并监视复制状态。
 
 ### <a name="prerequisites"></a>先决条件
 
-若要使用 DistCp 将文件从 HDFS 复制到 Azure Blob 存储（包括暂存复制）或 Azure data lake store，请确保 Hadoop 群集满足以下要求：
+若要使用 DistCp 将文件从 HDFS 复制到 Azure Blob 存储 (包括暂存复制) 或 Azure data lake store，请确保 Hadoop 群集满足以下要求：
 
 * 启用了 MapReduce 和 YARN 服务。  
 * YARN 版本为 2.5 或更高版本。  
-* HDFS 服务器与目标数据存储集成： Azure Blob 存储或 Azure data lake store：  
+* HDFS 服务器与目标数据存储集成： **Azure Blob 存储**或**Azure Data Lake Store (ADLS Gen1) **： 
 
     - 从 Hadoop 2.7 起，为 Azure Blob FileSystem 提供本机支持。 只需在 Hadoop 环境配置中指定 JAR 路径即可。
-    - 从 Hadoop 3.0.0-alpha1 开始，包中附含 Azure Data Lake Store FileSystem。 如果你的 Hadoop 群集版本早于该版本，则需要手动将 Azure Data Lake Storage Gen2 相关 JAR 包（azure-datalake-store）从[此处](https://hadoop.apache.org/releases.html)导入到群集中，并在 Hadoop 环境配置中指定 JAR 文件路径。
+    - 从 Hadoop 3.0.0-alpha1 开始，包中附含 Azure Data Lake Store FileSystem。 如果你的 Hadoop 群集版本早于该版本，则需要手动将 Azure Data Lake Store 相关 JAR)  (包从[此处](https://hadoop.apache.org/releases.html)导入到群集中，并在 Hadoop 环境配置中指定 jar 文件路径。
 
 * 在 HDFS 中准备临时文件夹。 此临时文件夹用于存储 DistCp shell 脚本，因此会占用 KB 级的空间。
 * 确保 HDFS 链接服务中提供的用户帐户具有以下权限：
@@ -436,7 +437,7 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 
 ### <a name="legacy-dataset-model"></a>旧数据集模型
 
-| properties | 描述 | 必需 |
+| 属性 | 描述 | 必选 |
 |:--- |:--- |:--- |
 | type | 数据集的 type 属性必须设置为 FileShare |是 |
 | folderPath | 文件夹的路径。 支持通配符筛选器。 允许的通配符为 `*`（匹配零个或零个以上的字符）和 `?`（匹配零个或单个字符）；如果实际文件名中包含通配符或此转义字符，请使用 `^` 进行转义。 <br/><br/>示例：“rootfolder/subfolder/”，请参阅[文件夹和文件筛选器示例](#folder-and-file-filter-examples)中的更多示例。 |是 |
@@ -481,7 +482,7 @@ HDFS 支持基于格式的复制源中 `storeSettings` 设置下的以下属性�
 
 ### <a name="legacy-copy-activity-source-model"></a>旧复制活动源模型
 
-| 属性 | 描述 | 必需 |
+| 属性 | 描述 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动源的 type 属性必须设置为 HdfsSource。 |是 |
 | recursive | 指示是要从子文件夹中以递归方式读取数据，还是只从指定的文件夹中读取数据。 当 recursive 设置为 true 且接收器是基于文件的存储时，将不会在接收器上复制或创建空的文件夹或子文件夹。<br/>允许的值为 *true*（默认值）和 *false*。 | 否 |

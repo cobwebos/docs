@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 46ebb122b0165d469b1c40871d5939e50a8595c9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7c43d3dd0c8a0d9f6d31d8e379fd195adfd7873f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016282"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925407"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>教程：为自动用户预配配置雪花
 
-本教程的目的是演示要在雪花和 Azure Active Directory （Azure AD）中执行的步骤，以配置 Azure AD 自动将用户和/或组预配到[雪花](https://www.Snowflake.com/pricing/)或取消其预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程的目的是演示要在雪花和 Azure Active Directory (Azure AD) 中执行的步骤，以配置 Azure AD 自动将用户和/或组预配到[雪花](https://www.Snowflake.com/pricing/)或取消其预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 > [!NOTE]
@@ -36,7 +36,7 @@ ms.locfileid: "87016282"
 > * 如果用户不需要访问，请在雪花中删除用户
 > * 使用户属性在 Azure AD 和雪花型之间保持同步
 > * 在雪花中预配组和组成员身份
-> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/snowflake-tutorial)到雪花（建议）
+> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/snowflake-tutorial)到雪花 (建议) 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -52,7 +52,7 @@ ms.locfileid: "87016282"
 2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
 3. 确定要[在 Azure AD 和雪花型之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
 
-## <a name="step-2-configure-snowflake-to-support-provisioning-with-azure-ad"></a>步骤 2： 配置雪花以支持 Azure AD 的预配
+## <a name="step-2-configure-snowflake-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置雪花以支持 Azure AD 的预配
 
 在将雪花配置为使用 Azure AD 进行自动用户预配之前，需要在雪花上启用 SCIM 预配。
 
@@ -68,7 +68,7 @@ ms.locfileid: "87016282"
 
     ![雪花添加 SCIM](media/Snowflake-provisioning-tutorial/image02.png)
 
-## <a name="step-3-add-snowflake-from-the-azure-ad-application-gallery"></a>步骤 3： 从 Azure AD 应用程序库添加雪花
+## <a name="step-3-add-snowflake-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加雪花
 
 从 "Azure AD" 应用程序库中添加雪花，开始管理到雪花的预配。 如果以前为 SSO 设置了雪花，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)详细了解如何从库中添加应用程序。 
 
@@ -97,7 +97,7 @@ ms.locfileid: "87016282"
 
 3. 选择“预配”选项卡。
 
-    ![预配选项卡](common/provisioning.png)
+    ![“预配”选项卡](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
@@ -111,7 +111,7 @@ ms.locfileid: "87016282"
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-8. 单击“保存” 。
+8. 单击“保存”  。
 
 9. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到雪花**"。
 
@@ -157,7 +157,7 @@ ms.locfileid: "87016282"
 配置预配后，请使用以下资源来监视部署：
 
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。  
 
 ## <a name="connector-limitations"></a>连接器限制
@@ -166,7 +166,7 @@ ms.locfileid: "87016282"
 
 ## <a name="change-log"></a>更改日志
 
-* 07/21/2020-为所有用户启用了软删除（通过活动的属性）。
+* 07/21/2020-已通过 active)  (为所有用户启用软删除。
 
 ## <a name="additional-resources"></a>其他资源
 

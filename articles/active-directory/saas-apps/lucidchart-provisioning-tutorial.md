@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0aea258ac52e078c48255b39145193272aa65b25
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25fe315e7d1af2e301e761c755470d2e3c24db1c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85367965"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927005"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>教程：为 Lucidchart 配置自动用户预配
 
-本教程介绍了需要在 Lucidchart 和 Azure Active Directory （Azure AD）中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组并取消其预配到[Lucidchart](https://www.lucidchart.com/user/117598685#/subscriptionLevel) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了需要在 Lucidchart 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组并取消其预配到[Lucidchart](https://www.lucidchart.com/user/117598685#/subscriptionLevel) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -33,7 +33,7 @@ ms.locfileid: "85367965"
 > * 当用户不再需要访问权限时，删除 Lucidchart 中的用户
 > * 使用户属性在 Azure AD 和 Lucidchart 之间保持同步
 > * 在 Lucidchart 中预配组和组成员身份
-> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/lucidchart-tutorial)到 Lucidchart （推荐）
+> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/lucidchart-tutorial)到 Lucidchart (建议) 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -92,7 +92,7 @@ ms.locfileid: "85367965"
 
 3. 选择“预配”选项卡。
 
-    ![预配选项卡](common/provisioning.png)
+    ![“预配”选项卡](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
@@ -114,16 +114,16 @@ ms.locfileid: "85367965"
 
    |Attribute|类型|
    |---|---|
-   |userName|String|
-   |emails[type eq "work"].value|String|
+   |userName|字符串|
+   |emails[type eq "work"].value|字符串|
    |活动|Boolean|
-   |name.givenName|String|
-   |name.familyName|String|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|String|
+   |name.givenName|字符串|
+   |name.familyName|字符串|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:costCenter|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|字符串|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|参考|
    |urn： ietf： params： scim：架构：扩展： lucidchart：1.0： User： canEdit|布尔|
 
@@ -156,13 +156,13 @@ ms.locfileid: "85367965"
 配置预配后，请使用以下资源来监视部署：
 
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。  
 
 ## <a name="change-log"></a>更改日志
 
 * 04/30/2020-为用户添加了对企业扩展属性和自定义属性 "CanEdit" 的支持。
-* 06/15/2020-已启用软删除用户（支持[活动](https://tools.ietf.org/html/rfc7643)属性）。
+* 06/15/2020-已启用用户的软删除 (支持[活动](https://tools.ietf.org/html/rfc7643)属性) 。
 
 ## <a name="additional-resources"></a>其他资源
 

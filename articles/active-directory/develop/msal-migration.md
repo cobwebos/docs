@@ -13,18 +13,18 @@ ms.date: 06/16/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: f84e479c4780437b09ab463781edbb52d8dfdfaa
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 32a1440bb641f0cbe8e3f3b8ada42e0841d9aa67
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86255619"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922483"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>将应用程序迁移到 Microsoft 身份验证库 (MSAL)
 
-许多开发人员都使用 (ADAL) Azure Active Directory 的身份验证库来构建和部署应用程序。 我们现在建议使用 Microsoft 身份验证库 (MSAL) 进行身份验证和授权 Azure AD 实体。
+许多开发人员都使用 Azure Active Directory 身份验证库 (ADAL) 来构建和部署应用程序。 我们现在建议使用 Microsoft 身份验证库 (MSAL) 对 Azure AD 实体进行身份验证和授权。
 
-使用 MSAL 而不是 ADAL：
+通过使用 MSAL 而不是 ADAL：
 
 - 你可以对一组更广泛的标识进行身份验证：
   - Azure AD 标识
@@ -32,14 +32,14 @@ ms.locfileid: "86255619"
   - 使用 Azure AD B2C 的社交和本地帐户
 - 用户将获得最佳单一登录体验。
 - 应用程序可以启用增量许可。
-- 支持条件性访问更容易。
-- 你可以受益于创新。 由于所有 Microsoft 开发工作现在都专注于 MSAL，因此不会在 ADAL 中实现任何新功能。
+- 可以更轻松地支持条件访问。
+- 你将从创新中受益。 因为 Microsoft 所有的开发工作现在都集中在 MSAL 上，所以不会在 ADAL 中实现新功能。
 
-**MSAL 现在是推荐用于 Microsoft 标识平台的身份验证库**。
+**MSAL 现在是建议用于 Microsoft 标识平台的身份验证库**。
 
-## <a name="migration-guidance"></a>迁移指导
+## <a name="migration-guidance"></a>迁移指南
 
-以下文章可帮助你迁移到 MSAL：
+可参考以下文章迁移到 MSAL：
 
 - [迁移到 MSAL.Android](migrate-android-adal-msal.md)
 - [迁移到 MSAL.iOS/macOS](migrate-objc-adal-msal.md)
@@ -51,26 +51,26 @@ ms.locfileid: "86255619"
 
 ## <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 
-__问：是否弃用 ADAL？__  
-A:是的。 从2020年6月30日开始，我们将不再向 ADAL 添加新功能。 我们将继续在2022年6月30日之前将重要的安全修补程序添加到 ADAL。
+__问：是否要弃用 ADAL？__  
+答：是的。 从 2020 年 6 月 30 日开始，我们将不再为 ADAL 添加新功能。 在 2022 年 6 月 30 日之前，我们将继续为 ADAL 添加关键的安全修复程序。 此时间过后，使用 ADAL 的应用程序将正常工作，但我们建议升级到 MSAL，以利用最新功能并保持安全。
 
-__问：如何实现知道哪些应用正在使用 ADAL？__  
-答：如果你有应用程序的源代码，则可以参考上述迁移指南来帮助确定应用使用的库，以及如何将其迁移到 MSAL。 如果无权访问应用程序的源代码，可以[打开支持请求](developer-support-help-options.md#open-a-support-request)，获取已注册应用程序和每个应用程序使用的库的列表。
+__问：如何知道哪些应用正在使用 ADAL？__  
+答：如果你有应用程序的源代码，可以参考上述迁移指南来确定应用使用的库和了解如何将其迁移到 MSAL。 如果你与 ISV 合作，我们建议你直接访问这些资源，以了解迁移到 MSAL 的过程。 如果你没有访问应用程序源代码的权限，可以[提交一个支持请求](developer-support-help-options.md#open-a-support-request)，获取已注册应用程序和每个应用程序所使用的库的列表。
 
 __问：我的现有 ADAL 应用是否会继续工作？__  
-答：你的现有应用程序将继续运行而不进行修改。 如果计划将其保留在2022年6月30日之前，你应该考虑将其更新为 MSAL 以确保它们的安全性，但不需要迁移到 MSAL 来维护现有功能。
+答：你的现有应用将继续正常运行，不会进行修改。 如果计划在 2022 年 6 月 30 日之后继续使用它们，应考虑将其更新到 MSAL 以确保其安全性，但如果要维持现有功能，则无需迁移到 MSAL。
 
-__问：为什么应投入到 MSAL？__  
-答： MSAL 包含不在 ADAL 中的新功能，包括增量许可、单一登录和令牌缓存管理。 另外，与 ADAL 不同，MSAL 将继续接收2022年6月30日之前的安全修补程序。 [了解详细信息](msal-overview.md)。
+__问：为什么应设法迁移到 MSAL？__  
+答：MSAL 包含 ADAL 中没有的新功能，包括增量许可、单一登录和令牌缓存管理。 此外，与 ADAL 不同，MSAL 在 2022 年 6 月 30 日之后会继续接收安全补丁。 [了解详细信息](msal-overview.md)。
 
-__问：你是否会发布一种工具，用于帮助我将我的应用从 ADAL 移到 MSAL？__  
-答：否。 库之间的差异需要专用于开发和维护工具的资源，否则会用到改进 MSAL 的工具。 但是，我们提供了前面的一组迁移指南来帮助你在应用程序中进行所需的更改。
+__问：是否会发布一种工具，来帮助我将应用从 ADAL 迁移到 MSAL？__  
+答：否。 由于库之间存在差异，需要专门投入资源来开发和维护这个工具，而这些资源本可用于改进 MSAL。 但是，我们在前面提供了一组迁移指南，可帮助你对应用程序进行所需的更改。
 
-__问： MSAL 如何与 AD FS 一起使用？__  
-答： MSAL.NET 支持针对 AD FS 2019 进行身份验证的某些方案。 如果你的应用程序需要直接从 AD FS 的早期版本获取令牌，则你应保留在 ADAL 上。 [了解详细信息](msal-net-adfs-support.md)。
+__问：MSAL 如何与 AD FS 配合工作？__  
+答：MSAL.NET 支持针对 AD FS 2019 进行身份验证的特定方案。 如果你的应用需要直接从 AD FS 的早期版本获取令牌，应继续使用 ADAL。 [了解详细信息](msal-net-adfs-support.md)。
 
-__问：如何实现获取有关迁移应用程序的帮助吗？__  
-答：请参阅本文中的[迁移指南](#migration-guidance)部分。 如果在阅读应用平台的指南后，你有更多问题，你可以使用该标记发布 Stack Overflow， `[adal-deprecation]` 或在库的 GitHub 存储库中提出问题。 有关指向每个库存储库的链接，请参阅 MSAL 概述一文的 "[语言和框架](msal-overview.md#languages-and-frameworks)" 一节。
+__问：如何获取有关迁移应用程序的帮助？__  
+答：请参阅本文的[迁移指南](#migration-guidance)部分。 如果在阅读了应用平台的指南后，你还有其他问题，可以使用标记 `[adal-deprecation]` 在 Stack Overflow 上发布问题，或者在库的 GitHub 存储库中提交问题。 请参阅 MSAL 概述文章的[语言和框架](msal-overview.md#languages-and-frameworks)部分，获取指向每个库的存储库的链接。
 
 ## <a name="next-steps"></a>后续步骤
 

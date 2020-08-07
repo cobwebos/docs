@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/04/2020
-ms.openlocfilehash: 36b94f53d3a9113c3980c94c3b8eff0713f11814
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/06/2020
+ms.openlocfilehash: ff8bb1fea863c8ba08434df9c718199ad9f51652
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446526"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925781"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理概述
 Azure Log Analytics 代理是为在任何云、本地计算机以及 [System Center Operations Manager](/system-center/scom/) 监视的虚拟机中进行全面管理而开发的。 Windows 和 Linux 代理将收集的数据从不同来源发送到 Azure Monitor 中的 Log Analytics 工作区，以及监视解决方案中定义的任何唯一日志或指标。 Log Analytics 代理还支持 Azure Monitor 中的见解和其他服务，例如[用于 VM 的 Azure Monitor](../insights/vminsights-enable-overview.md)、[Azure 安全中心](../../security-center/index.yml)和 [Azure 自动化](../../automation/automation-intro.md)。
@@ -116,21 +116,29 @@ Windows 代理官方支持以下版本的 Windows 操作系统：
 
 
 ### <a name="python-2-requirement"></a>Python 2 要求
- Log Analytics 代理需要 Python 2。 如果虚拟机使用的发行版默认情况下不包括 Python 2，则必须安装它。 下面的示例命令将在不同的发行版上安装 Python 2。
+ Log Analytics 代理需要 Python 2。 如果虚拟机使用的发行版默认情况下不包括 Python 2，则必须进行安装。 以下示例命令将在不同的发行版上安装 Python 2。
 
  - Red Hat、CentOS、Oracle：`yum install -y python2`
  - Ubuntu、Debian：`apt-get install -y python2`
  - SUSE: `zypper install -y python2`
 
-Python2 可执行文件必须使用以下命令化名为 "python"：
+Python2 可执行文件必须使用以下过程化名为*python* ：
 
-```
-alternatives --set python `which python2`
-```
+1. 运行以下命令以查看任何当前的 python 别名（如果存在）。 如果是这样，请记下下一步的优先级。
+ 
+    ```
+    sudo update-alternatives ––display python
+    ```
+
+2. 运行以下命令。 替换 *\<priority\>* 为大于任何现有链接的优先级的数字; 如果当前不存在任何链接，则替换为1。
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 <priority>
+    ```
 
 ### <a name="supported-distros"></a>支持的发行版
 
-Linux 代理正式支持以下版本的 Linux 操作系统：
+Linux 代理官方支持以下版本的 Linux 操作系统：
 
 * Amazon Linux 2017.09 (x64)
 * CentOS Linux 6 (x64) 和 7 (x64)  
@@ -194,7 +202,7 @@ Windows 代理将于 2020 年 8 月 17 日开始以独占方式使用 SHA-2 签�
 |\* .blob.core.windows.net |端口 443 |出站|是 |
 |\* .azure-automation.net |端口 443 |出站|是 |
 
-有关 Azure 政府所需的防火墙信息，请参阅 [Azure 政府管理](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs)。 
+有关 Azure 政府所需的防火墙信息，请参阅 [Azure 政府管理](../../azure-government/compare-azure-government-global-azure.md#azure-monitor)。 
 
 如果计划使用 Azure 自动化混合 Runbook 辅助角色连接并注册自动化服务以在环境中使用 Runbook 或管理解决方案，则它必须可以访问[针对混合 Runbook 辅助角色配置网络](../../automation/automation-hybrid-runbook-worker.md#network-planning)中所述的端口号和 URL。 
 
@@ -209,7 +217,7 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 > [!NOTE]
 > 如果代理服务器无需进行身份验证，Linux 代理仍要求提供伪用户名/密码。 这可以是任何用户名或密码。
 
-|属性| 描述 |
+|属性| 说明 |
 |--------|-------------|
 |协议 | https |
 |user | 用于代理身份验证的可选用户名 |
