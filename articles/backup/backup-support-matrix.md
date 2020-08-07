@@ -4,12 +4,12 @@ description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: d75e7053bfff14fbcb6deeae48c48f09e3e9ac0d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: f2f3d26f74c6227ad257c188d4088fd41fca7075
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531874"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922310"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -32,7 +32,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 **功能** | **详细信息**
 --- | ---
 **订阅中的保管库数** | 单个订阅中最多可以有 500 个恢复服务保管库。
-**保管库中的计算机数** | 单个保管库中最多可以有 1,000 个 Azure VM。<br/><br/> 单个保管库中最多可注册 50 个 MABS 服务器。
+**保管库中的计算机数** | 可以在单个保管库中保护所有工作负荷 (（例如 Azure Vm、SQL Server VM、MABS 服务器等) ）上的2000数据源。<br><br>单个保管库中最多可以有 1,000 个 Azure VM。<br/><br/> 单个保管库中最多可注册 50 个 MABS 服务器。
 **数据源** | 单个[数据源](./backup-azure-backup-faq.md#how-is-the-data-source-size-determined)的最大大小为 54,400 GB。 此限制不适用于 Azure VM 备份。 可以备份到保管库的数据总量没有限制。
 **保管库备份** | **Azure VM：** 每天 1 次。<br/><br/>**受 DPM/MABS 保护的计算机：** 一天两次。<br/><br/> **直接使用 MARS 代理备份的计算机：** 一天三次。
 **在保管库之间备份** | 备份在一个区域内进行。<br/><br/> 在包含想要备份的 VM 的每个 Azure 区域中都需要有一个保管库。 无法备份到其他区域。
@@ -85,7 +85,7 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 
 ## <a name="daylight-saving-time-support"></a>夏令时支持
 
-Azure 备份不支持 Azure VM 备份的夏令时自动时钟调整。 它不会将备份的时间向前或向后移动。 若要确保备份在所需的时间运行，请根据需要手动修改备份策略。
+Azure 备份不支持 Azure VM 备份的夏令时自动时钟调整。 它不会向前或向后移动备份的小时数。 若要确保备份在所需的时间运行，请根据需要手动修改备份策略。
 
 ## <a name="disk-deduplication-support"></a>磁盘重复数据删除支持
 
@@ -113,10 +113,10 @@ Azure 备份支持针对传输中数据和静态数据的加密。
 
 **计算机** | **传输中** | **静态**
 --- | --- | ---
-**没有 DPM/MABS 的本地 Windows 计算机** | ![“是”][green] | ![“是”][green]
-**Azure VM** | ![“是”][green] | ![是][green]
-**本地 Windows 计算机或使用 DPM 的 Azure VM** | ![“是”][green] | ![是][green]
-**本地 Windows 计算机或使用 MABS 的 Azure VM** | ![“是”][green] | ![是][green]
+**没有 DPM/MABS 的本地 Windows 计算机** | ![是][green] | ![是][green]
+**Azure VM** | ![是][green] | ![是][green]
+**本地 Windows 计算机或使用 DPM 的 Azure VM** | ![是][green] | ![是][green]
+**本地 Windows 计算机或使用 MABS 的 Azure VM** | ![是][green] | ![是][green]
 
 ## <a name="compression-support"></a>压缩支持
 
@@ -127,7 +127,7 @@ Azure 备份支持对备份流量进行压缩，详细情况汇总在下表中�
 
 **计算机** | **压缩到 MABS/DPM (TCP)** | **压缩到保管库 (HTTPS)**
 --- | --- | ---
-**直接备份本地 Windows 计算机** | NA | ![是][green]
+**直接备份本地 Windows 计算机** | 不可用 | ![是][green]
 **使用 VM 扩展的 Azure VM 备份** | 不可用 | 不可用
 **使用 MABS/DPM 在本地计算机/Azure 计算机上备份** | ![是][green] | ![是][green]
 

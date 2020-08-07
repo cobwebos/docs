@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 6acc1ffd197ddba4290ff7c0751b259d98a70927
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 995ac2776f4197dac1c2ef73fd209833474be5a5
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80754391"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922670"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>规划 Avere vFXT 系统
 
@@ -38,7 +38,7 @@ ms.locfileid: "80754391"
 
 * 后端存储-要缓存的数据存储在硬件存储系统或 Azure Blob 容器中的长期。 你可以在创建 Azure 群集的 Avere vFXT 之后添加存储，或者，如果使用 Blob 存储，则可以在创建群集时添加和配置容器。
 
-* 客户端-使用缓存文件的客户端计算机使用虚拟文件路径连接到群集，而不是直接访问存储系统。 （有关详细信息，请参阅[装入 Avere vFXT 群集](avere-vfxt-mount-clients.md)。）
+* 客户端-使用缓存文件的客户端计算机使用虚拟文件路径连接到群集，而不是直接访问存储系统。  (在[装入 Avere vFXT 群集](avere-vfxt-mount-clients.md)中了解详细信息。 ) 
 
 ## <a name="subscription-resource-group-and-network-infrastructure"></a>订阅、资源组和网络基础结构
 
@@ -86,7 +86,7 @@ Avere vFXT 群集使用以下 IP 地址：
 
 * 一个群集管理 IP 地址。 此地址可以根据需要在群集中的节点之间移动，以使其始终可用。 使用此地址连接到 Avere 控制面板配置工具。
 * 对于每个群集节点：
-  * 至少有一个面向客户端的 IP 地址。 （所有面向客户端的地址由群集的*vserver*管理，可根据需要在节点间移动 IP 地址。）
+  * 至少有一个面向客户端的 IP 地址。  (，所有面向客户端的地址都由群集的*vserver*管理，可根据需要在节点间移动 IP 地址。 ) 
   * 一个用于群集通信的 IP 地址
   * 一个实例 IP 地址（分配给 VM）
 
@@ -117,7 +117,7 @@ Avere vFXT 群集使用以下 IP 地址：
 
 ## <a name="back-end-data-storage"></a>后端数据存储
 
-后端存储系统会将文件提供给群集的缓存，还会接收来自缓存的已更改数据。 确定你的工作集是在新的 Blob 容器中还是在现有存储系统（云或硬件）中存储长期。 这些后端存储系统称为*核心文件*系统。
+后端存储系统会将文件提供给群集的缓存，还会接收来自缓存的已更改数据。 确定你的工作集是在新的 Blob 容器中还是在现有存储系统 (云和) 中存储的长期。 这些后端存储系统称为*核心文件*系统。
 
 ### <a name="hardware-core-filers"></a>硬件核心文件
 
@@ -147,7 +147,7 @@ Avere vFXT for Azure 群集位于专用子网中，并且该群集没有公共 I
   > [!TIP]
   > 如果在群集控制器上设置公共 IP 地址，则可以使用它作为跳转主机。 有关详细信息，请阅读[群集控制器用作跳转主机](#cluster-controller-as-jump-host)。
 
-* 虚拟专用网络（VPN）-在 Azure 和企业网络中的专用网络之间配置点到站点或站点到站点 VPN。
+* 虚拟专用网络 (VPN) -在 Azure 和企业网络中的专用网络之间配置点到站点或站点到站点 VPN。
 
 * Azure ExpressRoute - 通过任一 ExpressRoute 合作伙伴配置专用连接。
 
@@ -166,7 +166,7 @@ Avere vFXT for Azure 群集位于专用子网中，并且该群集没有公共 I
 
 ## <a name="vm-access-roles"></a>VM 访问角色
 
-Azure 使用[基于角色的访问控制](../role-based-access-control/index.yml)（RBAC）来授权群集 vm 执行特定任务。 例如，群集控制器需要授权才能创建和配置群集节点 Vm。 群集节点需要能够向其他群集节点分配或重新分配 IP 地址。
+Azure 使用 azure [RBAC)  (azure 基于角色的访问控制](../role-based-access-control/index.yml)来授权群集 vm 执行特定任务。 例如，群集控制器需要授权才能创建和配置群集节点 Vm。 群集节点需要能够向其他群集节点分配或重新分配 IP 地址。
 
 Avere vFXT 虚拟机使用了两个内置的 Azure 角色：
 

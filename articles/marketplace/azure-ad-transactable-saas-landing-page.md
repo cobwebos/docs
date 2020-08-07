@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 1ff366e24adb82a0d7d4660d4afaffa0bbca0b3c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 737e2fc682e630775b763dd2f22f904d895a120f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328154"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921260"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>在商业应用商店中构建事务 SaaS 产品/服务的登陆页面
 
@@ -21,7 +21,7 @@ ms.locfileid: "87328154"
 
 ## <a name="overview"></a>概述
 
-你可以将登陆页面视为你的软件即服务（SaaS）产品/服务。 买家订阅产品/服务后，商业应用商店会将其定向到登陆页面，以激活并配置其对 SaaS 应用程序的订阅。 将此视为订单确认步骤，该步骤允许买方查看他们购买的内容并确认其帐户详细信息。 使用 Azure Active Directory （Azure AD）和 Microsoft Graph，将为买方启用单一登录（SSO），并获取有关可用于确认和激活其订阅的买方的重要详细信息，包括其名称、电子邮件地址和组织。
+你可以将登陆页面视为你的软件即服务的 "会议厅" (SaaS) 产品/服务。 买家订阅产品/服务后，商业应用商店会将其定向到登陆页面，以激活并配置其对 SaaS 应用程序的订阅。 将此视为订单确认步骤，该步骤允许买方查看他们购买的内容并确认其帐户详细信息。 使用 Azure Active Directory (Azure AD) 和 Microsoft Graph，你将为买家启用单一登录 (SSO) ，并获取有关可用于确认和激活其订阅的买方的重要详细信息，包括其名称、电子邮件地址和组织。
 
 由于激活订阅所需的信息由 Azure AD 和 Microsoft Graph 提供限制，因此，不需要请求要求超过基本许可的信息。 如果需要用户详细信息需要额外的应用程序许可，应在订阅激活完成后请求此信息。 这可为买方启用顺畅订阅激活，并降低放弃的风险。
 
@@ -46,7 +46,7 @@ ms.locfileid: "87328154"
 
 ## <a name="create-an-azure-ad-app-registration"></a>创建 Azure AD 应用注册
 
-商业应用商店与 Azure AD 完全集成。 买家通过[Azure AD 帐户或 Microsoft 帐户（MSA）](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)进行身份验证。 购买后，买家从商业应用商店进入登陆页面 URL，以激活和管理其 SaaS 应用程序的订阅。 必须让买家通过 Azure AD SSO 登录到你的应用程序。 （"产品/服务" 的 "[技术配置](partner-center-portal/offer-creation-checklist.md#technical-configuration-page)" 页中指定了登陆页 URL。
+商业应用商店与 Azure AD 完全集成。 买家会接收到使用 Azure AD 帐户进行身份验证的 marketplace，[或 Microsoft 帐户 (MSA) ](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)。 购买后，买家从商业应用商店进入登陆页面 URL，以激活和管理其 SaaS 应用程序的订阅。 必须让买家通过 Azure AD SSO 登录到你的应用程序。  (产品/服务的[技术配置](partner-center-portal/offer-creation-checklist.md#technical-configuration-page)页中指定了登陆页 URL。
 
 使用该标识的第一步是确保登录页注册为 Azure AD 应用程序。 通过注册应用程序，可以使用 Azure AD 对用户进行身份验证并请求访问用户资源。 它可以被视为应用程序的定义，该定义允许服务根据应用的设置了解如何向应用程序颁发令牌。
 
@@ -56,7 +56,7 @@ ms.locfileid: "87328154"
 
 如果要查询 Microsoft Graph API，请[将新应用程序配置为访问 Web api](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis)。 当你为此应用程序选择 API 权限时，**用户**的默认值就足以收集有关买家的基本信息，使载入过程平滑和自动执行。 不要请求标记为**需要管理员同意**的任何 API 权限，因为这会阻止所有非管理员用户访问登录页。
 
-如果你需要将提升的权限作为载入或预配过程的一部分，请考虑使用 Azure AD 的[增量许可](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis)功能，以便从 marketplace 发送的所有买家最初都能够与登陆页面交互。
+如果你需要将提升的权限作为载入或预配过程的一部分，请考虑使用 Azure AD 的[增量许可](https://aka.ms/incremental-consent)功能，以便从 marketplace 发送的所有买家最初都能够与登陆页面交互。
 
 ## <a name="use-a-code-sample-as-a-starting-point"></a>使用代码示例作为起点
 
@@ -90,22 +90,13 @@ ms.locfileid: "87328154"
 
 ### <a name="call-the-resolve-endpoint"></a>调用解析终结点
 
-SaaS 履单 Api 实现了[解析](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)终结点，可以调用该终结点来确认 marketplace 令牌的有效性并返回有关订阅的信息，包括此表中所示的值。
-
-| 值 | 说明 |
-| ------------ | ------------- |
-| ID | 此订阅的唯一标识符（GUID）。 以后调用 SaaS 履单 Api 时需要此值。 |
-| subscriptionName | 订阅的名称，在将产品/服务添加到合作伙伴中心时设置。 |
-| offerId | 特定产品/服务的标识符（在添加提议时设置）。 |
-| planId | 产品/服务的特定计划的标识符（在添加提议时进行设置）。 |
-| 数量 | 采购时买方的数量输入。 |
-|||
+SaaS 履单 Api 实现了[解析](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)终结点，可以调用该终结点来确认 marketplace 令牌的有效性并返回有关订阅的信息。
 
 ## <a name="read-information-from-claims-encoded-in-the-id-token"></a>从 ID 令牌中编码的声明读取信息
 
 作为[OpenID connect](https://docs.microsoft.com/azure/active-directory/develop/v2-protocols-oidc)流程的一部分，在将买家发送到登陆页面时，Azure AD 会向请求添加一个[ID 令牌](https://docs.microsoft.com/azure/active-directory/develop/id-tokens)。 此标记包含多个基本信息，它们在激活过程中可能有用，包括此表中所述的信息。
 
-| 值 | 描述 |
+| “值” | 描述 |
 | ------------ | ------------- |
 | aud | 此令牌的目标受众。 在这种情况下，它应匹配你的应用程序 ID 并进行验证。 |
 | preferred_username | 访问用户的主用户名。 这可能是电子邮件地址、电话号码或其他标识符。 |
@@ -120,7 +111,7 @@ SaaS 履单 Api 实现了[解析](./partner-center-portal/pc-saas-fulfillment-ap
 
 ID 令牌包含用于识别买方的基本信息，但您的激活过程可能需要更多详细信息（例如买方公司）来完成载入过程。 使用[MICROSOFT GRAPH API](https://docs.microsoft.com/graph/use-the-api)请求此信息，以避免强制用户再次输入这些详细信息。 标准**用户。读取**权限在默认情况下包括以下信息。
 
-| 值 | 说明 |
+| “值” | 说明 |
 | ------------ | ------------- |
 | displayName | 在用户的通讯簿中显示的名称。 |
 | givenName | 用户的名字。 |
@@ -131,12 +122,12 @@ ID 令牌包含用于识别买方的基本信息，但您的激活过程可能�
 | surname | 用户的姓氏。 |
 |||
 
-可以选择其他属性（例如用户公司的名称或用户所在的位置（国家/地区））以包含在请求中。 有关更多详细信息，请参阅[用户资源类型的属性](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0#properties)。
+可以选择其他属性（例如用户公司的名称或用户在国家)  (的位置），以便在请求中包括。 有关更多详细信息，请参阅[用户资源类型的属性](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0#properties)。
 
 注册到 Azure AD 的大多数应用都授予委派的权限，以便从其公司 Azure AD 租户读取用户的信息。 对该信息 Microsoft Graph 的任何请求都必须附带用于身份验证的访问令牌。 生成访问令牌的具体步骤将取决于所使用的技术堆栈，但示例代码将包含示例。 有关详细信息，请参阅[代表用户获取访问权限](https://docs.microsoft.com/graph/auth-v2-user)。
 
 > [!NOTE]
-> MSA 租户中的帐户（具有租户 ID ``9188040d-6c67-4c5b-b112-36a304b66dad`` ）将不会返回超出已通过 ID 令牌收集的信息。 因此，您可以跳过此对这些帐户的图形 API 调用。
+> 具有租户 ID) 的 MSA 租户 (中的帐户 ``9188040d-6c67-4c5b-b112-36a304b66dad`` 将不会返回超过已用 ID 令牌收集的信息。 因此，您可以跳过此对这些帐户的图形 API 调用。
 
 ## <a name="next-steps"></a>后续步骤
 

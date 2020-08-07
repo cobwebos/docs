@@ -1,6 +1,6 @@
 ---
-title: '使用 c # 从 Gen2 环境查询数据-Azure 时序见解 |Microsoft Docs'
-description: '了解如何使用以 c # 编写的应用程序从 Azure 时序见解 Gen2 环境查询数据。'
+title: 使用 C# 查询 Gen2 环境中的数据 - Azure 时序见解 | Microsoft Docs
+description: 了解如何通过使用 C# 编写的应用查询 Azure 时序见解 Gen2 环境中的数据。
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,19 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1057bb908e973c74b6dfb70931469e27f77512de
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 902dfc924fdac28c0aed46745604c5d4d19f084b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292659"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920324"
 ---
-# <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c"></a>使用 C 从 Azure 时序见解 Gen2 环境查询数据#
+# <a name="query-data-from-the-azure-time-series-insights-gen2-environment-using-c"></a>使用 C# 查询 Azure 时序见解 Gen2 环境中的数据
 
-此 c # 示例演示如何在 Azure 时序见解 Gen2 环境中从[Gen2 数据访问 api](https://docs.microsoft.com/rest/api/time-series-insights/preview)查询数据。
+本 C# 示例演示了如何在 Azure 时序见解 Gen2 环境中通过 [Gen2 数据访问 API](https://docs.microsoft.com/rest/api/time-series-insights/preview) 查询数据。
 
 > [!TIP]
-> 查看 Gen2 c # 代码示例 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample) 。
+> 可以访问 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-preview-sample) 查看 Gen2 C# 代码示例。
 
 ## <a name="summary"></a>总结
 
@@ -48,9 +48,9 @@ ms.locfileid: "87292659"
 
 在编译和运行示例代码之前，请完成以下步骤：
 
-1. [预配 Gen2 Azure 时序见解](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-how-to-manage#create-the-environment)环境。
+1. [预配 Azure 时序见解 Gen2](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-how-to-manage#create-the-environment) 环境。
 1. 为 Azure Active Directory 配置 Azure 时序见解环境，如[身份验证和授权](time-series-insights-authentication-and-authorization.md)中所述。 
-1. 按照[Readme.md](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md)中的指定运行[GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat) ，以生成 Azure 时序见解 Gen2 客户端依赖关系。
+1. 按照 [Readme.md](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/Readme.md) 中指定的方式运行 [GenerateCode.bat](https://github.com/Azure-Samples/Azure-Time-Series-Insights/blob/master/csharp-tsi-preview-sample/DataPlaneClient/GenerateCode.bat)，以生成 Azure 时序见解 Gen2 客户端依赖项。
 1. 打开 `TSIPreviewDataPlaneclient.sln` 解决方案，并将 `DataPlaneClientSampleApp` 设置为 Visual Studio 中的默认项目。
 1. 使用[下面](#project-dependencies)所述的步骤安装所需的项目依赖项，并将示例编译为可执行 `.exe` 文件。
 1. 通过双击 `.exe` 文件来运行它。
@@ -71,7 +71,7 @@ ms.locfileid: "87292659"
 
 ## <a name="c-sample-code"></a>C# 示例代码
 
-[!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-preview-sample/DataPlaneClientSampleApp/Program.cs)]
+[!code-csharp[csharpquery-example](~/samples-tsi/gen2-sample/csharp-tsi-gen2-sample/DataPlaneClientSampleApp/Program.cs)]
 
 > [!NOTE]
 > * 可以在不更改默认环境变量的情况下执行代码示例。
@@ -81,4 +81,4 @@ ms.locfileid: "87292659"
 
 - 若要了解有关查询的详细信息，请参阅[查询 API 参考](https://docs.microsoft.com/rest/api/time-series-insights/preview-query)。
 
-- 了解如何[使用客户端 SDK 将 JavaScript 应用连接](https://github.com/microsoft/tsiclient)到 Azure 时序见解。
+- 阅读如何[使用客户端 SDK 将 JavaScript 应用连接到 Azure 时序见解](https://github.com/microsoft/tsiclient)。

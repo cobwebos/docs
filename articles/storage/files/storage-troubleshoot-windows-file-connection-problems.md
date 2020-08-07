@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: ecd7b0bc34d532e7d748bc9468d3a155b9aa2ad2
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: f9e4fdb0fe8872c505bbbbb10da11d8fb74a22b3
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87901736"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927209"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
@@ -305,27 +305,27 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
  
 例如，可将其设置为 0x100000，并查看性能是否有所提高。
 
-## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-aad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>启用 Azure Active Directory 域服务 (AAD DS) Azure 文件的身份验证 "中的错误 AadDsTenantNotFound 找不到租户 Id 为" aad-租户-id "的活动租户
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-azure-ad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>启用 Azure Active Directory 域服务 (Azure AD DS) Azure 文件的身份验证 "中的错误 AadDsTenantNotFound 找不到租户 ID 为" aad-租户-id "的活动租户
 
 ### <a name="cause"></a>原因
 
-尝试启用 Azure Active Directory 域服务时出现错误 AadDsTenantNotFound (在存储帐户上[AZURE AD DS) 身份验证](storage-files-identity-auth-active-directory-domain-service-enable.md)，其中[aad 域服务 (aad DS) ](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview)不是在关联订阅的 aad 租户上创建的。  
+尝试启用 Azure Active Directory 域服务时出现错误 AadDsTenantNotFound (在存储帐户上[AZURE AD DS) 身份验证](storage-files-identity-auth-active-directory-domain-service-enable.md)，其中 Azure AD 不会在关联订阅的 (租户上创建[Azure AD 域服务) Azure AD DS](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) 。  
 
 ### <a name="solution"></a>解决方案
 
-在部署存储帐户的订阅的 AAD 租户上启用 AAD DS。 需要 AAD 租户的管理员权限才能创建托管域。 如果你不是 Azure AD 租户的管理员，请与管理员联系并按照分步指南操作，以[使用 Azure 门户启用 Azure Active Directory 域服务](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)。
+在将存储帐户部署到的订阅的 Azure AD 租户上启用 Azure AD DS。 需要 Azure AD 租户的管理员权限才能创建托管域。 如果你不是 Azure AD 租户的管理员，请与管理员联系并按照分步指南操作，以[使用 Azure 门户启用 Azure Active Directory 域服务](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)。
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-aad-ds-authentication-enabled"></a>出现错误 "系统错误1359。 使用 Azure Active Directory 域服务对文件共享接收到的内部错误 " (AAD DS) 身份验证已启用
+## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-azure-ad-ds-authentication-enabled"></a>出现错误 "系统错误1359。 使用 Azure Active Directory 域服务 (的文件共享接收到的内部错误，Azure AD DS) 身份验证已启用
 
 ### <a name="cause"></a>原因
 
-出现错误 "系统错误1359。 当你尝试使用 AAD ds 身份验证（以数字字符开头的域 DNS 名称）连接到你的文件共享时，将发生内部错误。 例如，如果 AAD DS 域 DNS 名称为 "1domain"，则在尝试使用 AAD 凭据装载文件共享时，会收到此错误。 
+出现错误 "系统错误1359。 当你尝试使用为以数字字符开头的域 DNS 名称的 Azure AD DS 启用 Azure AD DS 身份验证来连接到文件共享时，将发生内部错误。 例如，如果 Azure AD DS 域 DNS 名称为 "1domain"，则在尝试使用 Azure AD 凭据装载文件共享时，会收到此错误。 
 
 ### <a name="solution"></a>解决方案
 
-目前，可以考虑使用适用于以下规则的新域 DNS 名称重新部署 AAD DS：
+目前，可以考虑使用适用于以下规则的新域 DNS 名称重新部署 Azure AD DS：
 - 名称不能以数字字符开头。
 - 名称长度必须介于3到63个字符之间。
 
@@ -350,7 +350,7 @@ Cmdlet 按顺序执行以下检查，并为故障提供指导：
 4. CheckGetKerberosTicket：尝试获取用于连接到存储帐户的 Kerberos 票证 
 5. CheckADObjectPasswordIsCorrect：确保表示存储帐户的 AD 标识上配置的密码与存储帐户 kerb1 或 kerb2 密钥的密码匹配
 6. CheckSidHasAadUser：检查登录 AD 用户是否已同步到 Azure AD。 如果要查找特定 AD 用户是否已同步到 Azure AD，可以在输入参数中指定-UserName 和-Domain。
-7. CheckAadUserHasSid：检查 Azure AD 用户在 AD 中是否有 SID，此检查要求用户输入具有参数-ObjectId 的 Azure AD 用户的对象 Id。 
+7. CheckAadUserHasSid：检查 Azure AD 用户在 AD 中是否有 SID，此检查要求用户输入具有参数-ObjectId 的 Azure AD 用户的对象 ID。 
 8. CheckStorageAccountDomainJoined：检查存储帐户的属性，以查看是否已启用 AD 身份验证，并填充该帐户的 AD 属性。
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>无法在 windows 文件资源管理器) 配置目录/文件级别权限 (

@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2019
 ms.author: Zhchia
-ms.openlocfilehash: 2de7bb81726bcb4aa1943b3f1816d6171f6ac97d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a778675bade3b381907a823e74f07ab4e7f96581
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554618"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926869"
 ---
 # <a name="tutorial-configure-ideo-for-automatic-user-provisioning"></a>教程：为 IDEO 配置自动用户预配
 
-本教程的目的是演示要在 IDEO 和 Azure Active Directory （Azure AD）中执行的步骤，以配置 Azure AD 自动将用户和/或组预配到 IDEO 以及取消其预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。
+本教程的目的是演示要在 IDEO 和 Azure Active Directory (Azure AD) 中执行的步骤，以将 Azure AD 自动预配和取消预配到 IDEO。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。
 
 > [!NOTE]
 > 此连接器目前以公共预览版提供。 若要详细了解 Microsoft Azure 预览版功能的一般使用条款，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -36,7 +36,7 @@ ms.locfileid: "85554618"
 > * 当用户不再需要访问权限时，删除 IDEO 中的用户
 > * 使用户属性在 Azure AD 和 IDEO 之间保持同步
 > * 在 IDEO 中预配组和组成员身份
-> * 单一登录到 IDEO （推荐）
+> * 单一登录到 IDEO (建议) 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -88,7 +88,7 @@ ms.locfileid: "85554618"
 
 3. 选择“预配”选项卡。
 
-    ![预配选项卡](common/provisioning.png)
+    ![“预配”选项卡](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
@@ -102,7 +102,7 @@ ms.locfileid: "85554618"
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存” 。
+7. 单击“保存”  。
 
 8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 IDEO**"。
 
@@ -110,11 +110,11 @@ ms.locfileid: "85554618"
 
    |Attribute|类型|
    |---|---|
-   |userName|String|
-   |emails[type eq "work"].value|String|
+   |userName|字符串|
+   |emails[type eq "work"].value|字符串|
    |活动|Boolean|
-   |name.givenName|String|
-   |name.familyName|String|
+   |name.givenName|字符串|
+   |name.familyName|字符串|
 
 10. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 组同步到 IDEO**"。
    
@@ -145,7 +145,7 @@ ms.locfileid: "85554618"
 配置预配后，请使用以下资源来监视部署：
 
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。  
 
 ## <a name="change-log"></a>更改日志

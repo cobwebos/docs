@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
-ms.openlocfilehash: 0945f89e3c18ab20ece0b493a49ec9f7f31e4e13
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: d6faf5bd42c90ea1510d454a2ab7939f121b3d0d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529188"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924999"
 ---
 # <a name="azure-private-dns-faq"></a>Azure 专用 DNS 常见问题解答
 
@@ -38,7 +38,7 @@ ms.locfileid: "87529188"
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>属于不同订阅的虚拟网络是否可以链接到专用区域？
 
-是的。 你必须对虚拟网络和专用 DNS 区域拥有写入操作权限。 可以向多个 Azure 角色授予写入权限。 例如，经典网络参与者 Azure 角色对虚拟网络具有写入权限，专用 DNS 区域参与者角色对专用 DNS 区域具有写入权限。 有关 Azure 角色的详细信息，请参阅[基于角色的访问控制](../role-based-access-control/overview.md)。
+是的。 你必须对虚拟网络和专用 DNS 区域拥有写入操作权限。 可以向多个 Azure 角色授予写入权限。 例如，经典网络参与者 Azure 角色对虚拟网络具有写入权限，专用 DNS 区域参与者角色对专用 DNS 区域具有写入权限。 有关 Azure 角色的详细信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制](../role-based-access-control/overview.md)。
 
 ## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>删除虚拟机后，是否会自动删除在专用区域中自动注册的虚拟机 DNS 记录？
 
@@ -60,7 +60,7 @@ ms.locfileid: "87529188"
 
 否。 如果删除链接的虚拟网络而不先将其从专用区域中取消链接，则删除操作将会成功，并且会自动清除对 DNS 区域的链接。
 
-## <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>即使专用区域（例如 private.contoso.com）已链接到虚拟网络，使用默认 FQDN （internal.cloudapp.net）的 DNS 解析仍有效？
+## <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>使用默认 FQDN (internal.cloudapp.net 的 DNS 解析) 仍然有效，即使在专用区域 (例如，private.contoso.com) 是否已链接到虚拟网络？
 
 是的。 专用区域不会替换默认的 Azure 提供的 internal.cloudapp.net 区域。 不管依赖于 Azure 提供的 internal.cloudapp.net 还是自己的专用区域，都请使用要解析的区域的 FQDN。
 

@@ -1,18 +1,18 @@
 ---
 title: Azure 角色和权限
-description: 使用 Azure 基于角色的访问控制（Azure RBAC）和标识和访问管理（IAM）来提供对 Azure 容器注册表中的资源的精细权限。
+description: 使用 azure RBAC) 和标识和访问管理 (IAM) 中的 Azure 基于角色的访问 (控制，为 Azure 容器注册表中的资源提供精细的权限。
 ms.topic: article
 ms.date: 12/02/2019
-ms.openlocfilehash: 90546b96f081893d312e66aae04e2125c1c210e5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 23a9c08162c03d4b34ed289d650fddcd7413ed08
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533302"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920069"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure 容器注册表角色和权限
 
-Azure 容器注册表服务支持一组内置的[azure 角色](../role-based-access-control/built-in-roles.md)，这些角色提供对 Azure 容器注册表的不同级别的权限。 使用 Azure[基于角色的访问控制](../role-based-access-control/index.yml)（RBAC）向用户、服务主体或其他需要与注册表进行交互的标识分配特定权限。 
+Azure 容器注册表服务支持一组内置的[azure 角色](../role-based-access-control/built-in-roles.md)，这些角色提供对 Azure 容器注册表的不同级别的权限。 使用 azure [RBAC)  (azure 基于角色的访问控制](../role-based-access-control/index.yml)向用户、服务主体或其他需要与注册表进行交互的标识分配特定权限。 
 
 | 角色/权限       | [访问资源管理器](#access-resource-manager) | [创建/删除注册表](#create-and-delete-registry) | [推送映像](#push-image) | [拉取映像](#pull-image) | [删除映像数据](#delete-image-data) | [更改策略](#change-policies) |   [对映像签名](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- | --------- |
@@ -89,4 +89,4 @@ az provider operation show --namespace Microsoft.ContainerRegistry
 
 * 了解适用于 Azure 容器注册表的[身份验证选项](container-registry-authentication.md)。
 
-* 了解如何在容器注册表中启用[存储库范围内的权限](container-registry-repository-scoped-permissions.md)（预览）。
+* 了解如何在容器注册表中启用[存储库范围内的权限](container-registry-repository-scoped-permissions.md) (预览) 。

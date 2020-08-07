@@ -3,12 +3,12 @@ title: 将 SQL Server 数据库备份到 Azure
 description: 本文介绍如何将 SQL Server 备份到 Azure。 此外还介绍 SQL Server 的恢复。
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: df8543d7f083dd2bf9d2421b4808de5b60a51e30
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 28644065619771069e556c941d2c5a77626e1ba6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513772"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922891"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>关于 Azure VM 中的 SQL Server 备份
 
@@ -40,7 +40,7 @@ ms.locfileid: "86513772"
 在开始之前，请验证以下条件：
 
 1. 确保有一个 SQL Server 实例在 Azure 中运行。 可以在市场中[快速创建 SQL Server 实例](../azure-sql/virtual-machines/windows/sql-vm-create-portal-quickstart.md)。
-2. 查看[功能注意事项](sql-support-matrix.md#feature-consideration-and-limitations)和[方案支持](sql-support-matrix.md#scenario-support)。
+2. 查看[功能注意事项](sql-support-matrix.md#feature-considerations-and-limitations)和[方案支持](sql-support-matrix.md#scenario-support)。
 3. 查看有关此方案的[常见问题解答](faq-backup-sql-server.md)。
 
 ## <a name="set-vm-permissions"></a>设置 VM 权限

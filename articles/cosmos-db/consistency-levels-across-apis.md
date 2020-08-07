@@ -5,22 +5,25 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 08/6/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 2398e95d9a119fe24c97f3887d16aa5b86c6ac76
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af777efda769315019ecee41d4053f5ab82f3047
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119301"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920426"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>一致性级别和 Azure Cosmos DB API
 
-Azure Cosmos DB 为常用数据库提供对与线路协议兼容的 API 的本机支持。 这些数据库包括 MongoDB、Apache Cassandra、Gremlin 和 Azure 表存储。 这些数据库既没有提供准确定义的一致性模型，也没有为一致性级别提供由 SLA 支持的保证。 它们通常仅提供 Azure Cosmos DB 提供的五个一致性模型的一个子集。 
+Azure Cosmos DB 为常用数据库提供对与线路协议兼容的 API 的本机支持。 这些数据库包括 MongoDB、Apache Cassandra、Gremlin 和 Azure 表存储。 这些数据库既没有提供准确定义的一致性模型，也没有为一致性级别提供由 SLA 支持的保证。 它们通常仅提供 Azure Cosmos DB 提供的五个一致性模型的一个子集。
 
 使用 SQL API、Gremlin API 和表 API 时，会使用 Azure Cosmos 帐户上配置的默认一致性级别。 
 
 使用 Cassandra API 或 Azure Cosmos DB 的适用于 MongoDB 的 API 时，应用程序将分别获取 Apache Cassandra 和 MongoDB 提供的完整一致性级别，同时提供更强的一致性和持久性保证。 本文档介绍了与 Apache Cassandra 和 MongoDB 一致性级别对应的 Azure Cosmos DB 一致性级别。
+
+> [!NOTE]
+> Azure Cosmos DB 的默认一致性模型是 Session。 会话是以客户端为中心的一致性模型，不受 Cassandra 或 MongoDB 的本机支持。 有关所选的一致性模型的详细信息，请参阅[Azure Cosmos DB 中的一致性级别](consistency-levels.md)
 
 ## <a name="mapping-between-apache-cassandra-and-azure-cosmos-db-consistency-levels"></a><a id="cassandra-mapping"></a>Apache Cassandra 与 Azure Cosmos DB 一致性级别之间的映射
 
@@ -36,14 +39,14 @@ Azure Cosmos DB 为常用数据库提供对与线路协议兼容的 API 的本�
 
 ## <a name="mapping-between-mongodb-and-azure-cosmos-db-consistency-levels"></a><a id="mongo-mapping"></a>MongoDB 与 Azure Cosmos DB 一致性级别之间的映射
 
-与 Azure Cosmos DB 不一样，本机 MongoDB 并不提供精确定义的一致性保证。 与之相反，本机 MongoDB 允许用户配置下述一致性保证：写入关注、读取关注以及 isMaster 指令 - 目的是将读取操作定向到主副本或辅助副本，以便实现所需的一致性级别。 
+与 Azure Cosmos DB 不一样，本机 MongoDB 并不提供精确定义的一致性保证。 与之相反，本机 MongoDB 允许用户配置下述一致性保证：写入关注、读取关注以及 isMaster 指令 - 目的是将读取操作定向到主副本或辅助副本，以便实现所需的一致性级别。
 
 使用 Azure Cosmos DB 的 MongoDB API 时，MongoDB 驱动程序将写入区域视为主副本，而所有其他区域都是读取副本。 可以选择将哪个与 Azure Cosmos 帐户关联的区域作为主副本。 
 
 使用 Azure Cosmos DB 的 MongoDB API 时：
 
 * 写入关注映射到在 Azure Cosmos 帐户上配置的默认一致性级别。
- 
+
 * Azure Cosmos DB 会将 MongoDB 客户端驱动程序指定的读取关注动态映射到根据读取请求动态配置的某个 Azure Cosmos DB 一致性级别。  
 
 * 可以将与 Azure Cosmos 帐户关联的特定区域批注为“主区域”，方法是将该区域设置为第一个可写区域。 

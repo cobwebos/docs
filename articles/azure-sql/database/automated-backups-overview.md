@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: 205e99303cd53adf6aa952ccd65441b72471f3a2
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 3e37d907d00acd3e2b368700b70b4e268bad3ec9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810254"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921939"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自动备份 - Azure SQL 数据库和 SQL 托管实例
 
@@ -66,7 +66,7 @@ SQL 数据库和 SQL 托管实例都使用 SQL Server 技术，每周创建[完�
 
 可以参考下列示例尝试执行备份配置和还原操作：
 
-| Operation | Azure 门户 | Azure PowerShell |
+| 操作 | Azure 门户 | Azure PowerShell |
 |---|---|---|
 | **更改备份保留** | [SQL 数据库](automated-backups-overview.md?tabs=single-database#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [SQL 托管实例](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL 数据库](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[SQL 托管实例](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | **更改长期备份保留** | [SQL 数据库](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>SQL 托管实例-N/A  | [SQL 数据库](long-term-backup-retention-configure.md)<br/>[SQL 托管实例](../managed-instance/long-term-backup-retention-configure.md)  |
@@ -111,7 +111,7 @@ SQL 数据库和 SQL 托管实例按累积值形式计算使用的总备份存�
 
 - 将[备份保留期](#change-the-pitr-backup-retention-period-by-using-the-azure-portal)减少到所需的最小值。
 - 避免以超过需要的频率执行大型写入操作，例如索引重建。
-- 对于大规模数据加载操作，请考虑使用[聚集列存储索引](https://docs.microsoft.com/sql/database-engine/using-clustered-columnstore-indexes)以及下列相关[最佳做法](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)，和/或减少非聚集索引的数目。
+- 对于大规模数据加载操作，请考虑使用[聚集列存储索引](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview)以及下列相关[最佳做法](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)，和/或减少非聚集索引的数目。
 - 在常规用途服务层级中，预配数据存储的价格低于备份存储的价格。 如果额外备份存储成本一直较高，可以考虑增大数据存储，以便节省备份存储的费用。
 - 在应用程序逻辑中使用 TempDB 而不是永久性表来存储临时结果和/或暂时性数据。
 - 请尽可能使用本地冗余备份存储 (例如，开发/测试环境) 

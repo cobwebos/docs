@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 052223f69fc1c1d59ec5f1bcbeb3746ef7122c86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8859556c61ab890334ea075b7614cdf46fe1a1f6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79087065"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921769"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>教程：为 RingCentral 配置自动用户预配
 
-本教程介绍了需要在 RingCentral 和 Azure Active Directory （Azure AD）中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组并取消其预配到[RingCentral](https://www.ringcentral.com/office/plansandpricing.html) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了需要在 RingCentral 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组并取消其预配到[RingCentral](https://www.ringcentral.com/office/plansandpricing.html) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -32,7 +32,7 @@ ms.locfileid: "79087065"
 > * 在 RingCentral 中创建用户
 > * 当用户不再需要访问权限时，删除 RingCentral 中的用户
 > * 使用户属性在 Azure AD 和 RingCentral 之间保持同步
-> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/ringcentral-tutorial)到 RingCentral （推荐）
+> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/ringcentral-tutorial)到 RingCentral (建议) 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -54,7 +54,7 @@ ms.locfileid: "79087065"
 
     ![RingCentral 管理控制台](media/ringcentral-provisioning-tutorial/admin.png)
 
-2.  选择**SCIM**下的 "**选择目录提供程序**"。 （以后会出现一个名为 Azure Active Directory）的选项。 单击 "**启用 SCIM 服务**"。
+2.  选择**SCIM**下的 "**选择目录提供程序**"。 以后 (会出现一个名为 Azure Active Directory) 的选项。 单击 "**启用 SCIM 服务**"。
 
     ![RingCentral 添加 SCIM](media/ringcentral-provisioning-tutorial/scim.png)
 
@@ -86,13 +86,13 @@ ms.locfileid: "79087065"
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择“RingCentral”****。
+2. 在应用程序列表中，选择“RingCentral”。
 
     ![应用程序列表中的“RingCentral”链接](common/all-applications.png)
 
 3. 选择“预配”选项卡。
 
-    ![预配选项卡](common/provisioning.png)
+    ![“预配”选项卡](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
@@ -114,21 +114,21 @@ ms.locfileid: "79087065"
 
    |Attribute|类型|
    |---|---|
-   |userName|String|
-   |externalId|String|
+   |userName|字符串|
+   |externalId|字符串|
    |活动|Boolean|
-   |displayName|String|
-   |title|String|
-   |emails[type eq "work"].value|String|
-   |addresses[type eq "work"].country|String|
-   |addresses[type eq "work"].region|String|
-   |addresses[type eq "work"].locality|String|
+   |displayName|字符串|
+   |title|字符串|
+   |emails[type eq "work"].value|字符串|
+   |addresses[type eq "work"].country|字符串|
+   |addresses[type eq "work"].region|字符串|
+   |addresses[type eq "work"].locality|字符串|
    |addresses[type eq "work"].postalCode|字符串|
    |addresses[type eq "work"].streetAddress|字符串|
-   |name.givenName|String|
-   |name.familyName|String|
+   |name.givenName|字符串|
+   |name.familyName|字符串|
    |phoneNumbers[type eq "mobile"].value|字符串|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|参考|
 
 10. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
@@ -151,7 +151,7 @@ ms.locfileid: "79087065"
 配置预配后，请使用以下资源来监视部署：
 
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。
 
 ## <a name="additional-resources"></a>其他资源

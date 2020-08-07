@@ -2,13 +2,13 @@
 title: 将资源部署到租户
 description: 介绍如何在 Azure 资源管理器模板中的租户范围内部署资源。
 ms.topic: conceptual
-ms.date: 07/27/2020
-ms.openlocfilehash: a6523ff70dc7307713bb6aecf90e2ea9f8e2bfdd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/06/2020
+ms.openlocfilehash: 3fbf869e371f385a335e4a154bc811a6fc8cab97
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321745"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922517"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>在租户级别创建资源
 
@@ -27,7 +27,6 @@ ms.locfileid: "87321745"
 对于基于角色的访问控制，请使用：
 
 * [roleAssignments](/azure/templates/microsoft.authorization/roleassignments)
-* [roleDefinitions](/azure/templates/microsoft.authorization/roledefinitions)
 
 对于部署到管理组、订阅或资源组的嵌套模板，请使用：
 

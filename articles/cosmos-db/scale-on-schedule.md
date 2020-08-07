@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 670a38b48ee89930078078dc4a8ac1a2876648e2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ec5c98d90facf9458769f235880f17d14708e425
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503729"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923649"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>使用 Azure Functions 计时器触发器缩放 Azure Cosmos DB 吞吐量
 
@@ -23,7 +23,7 @@ Azure Cosmos 帐户的性能基于以每秒请求单位数（RU/秒）表示的�
 
 为了简化按计划缩放 Azure Cosmos DB 的过程，我们创建了一个名为 [Azure Cosmos 吞吐量计划程序](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler)的示例项目。 此项目是一个 Azure Functions 应用，它有两个计时器触发器：ScaleUpTrigger 和 ScaleDownTrigger。 触发器运行一个 PowerShell 脚本，该脚本根据每个触发器的 `resources.json` 文件中的定义在每个资源上设置吞吐量。 ScaleUpTrigger 配置为在 UTC 上午 8 点运行，ScaleDownTrigger 配置为在 UTC 下午 6 点运行，可以在每个触发器的 `function.json` 文件内轻松更新这些时间。
 
-你可以在本地克隆此项目，对其进行修改，以指定要增加和减少的 Azure Cosmos DB 资源以及要运行的计划。 稍后，你可以将其部署到 Azure 订阅中，并使用托管服务标识以及[基于角色的访问控制](role-based-access-control.md) (RBAC) 权限对其进行保护（使用“Azure Cosmos DB 操作员”角色），以在 Azure Cosmos 帐户上设置吞吐量。
+你可以在本地克隆此项目，对其进行修改，以指定要增加和减少的 Azure Cosmos DB 资源以及要运行的计划。 稍后，你可以将其部署到 Azure 订阅中，并使用托管服务标识和[azure 基于角色的访问控制](role-based-access-control.md)对其进行保护， (使用 "Azure Cosmos DB 操作员" 角色设置 azure Cosmos 帐户吞吐量的 azure RBAC) 权限。
 
 ## <a name="next-steps"></a>后续步骤
 

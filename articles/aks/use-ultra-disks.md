@@ -1,21 +1,21 @@
 ---
-title: 在 Azure Kubernetes 服务（AKS）上启用 Ultra 磁盘支持
-description: 了解如何启用和配置 Azure Kubernetes Service （AKS）群集中的 Ultra 磁盘
+title: '启用 Azure Kubernetes Service 上的 Ultra 磁盘支持 (AKS) '
+description: 了解如何启用和配置 Azure Kubernetes Service 中的 Ultra 磁盘 (AKS) 群集
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 46be67a415f67e260262e5b80e5a1dad534aea79
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 540269c7ecf42a7e022aa2efb048df7b11587d1a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531067"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926733"
 ---
-# <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>使用 Azure Kubernetes Service （预览版）上的 Azure ultra 磁盘
+# <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>使用 Azure 上的 Azure Kubernetes 服务 (预览) 
 
 [Azure ultra 磁盘](../virtual-machines/linux/disks-enable-ultra-ssd.md)为有状态应用程序提供高吞吐量、高 IOPS 和一致的低延迟磁盘存储。 超磁盘的一个主要优点是能够在不重新启动代理节点的情况下动态更改 SSD 的性能和工作负荷。 超磁盘适用于数据密集型工作负荷。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 此功能只能在创建群集或创建节点池时设置。
 
@@ -97,7 +97,7 @@ az aks create -g MyResourceGroup -n MyManagedCluster -l westus2 --node-vm-size S
 
 
 ```azurecli
-az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableEncryptionAtHost=true
+az aks nodepool add --name hostencrypt --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_L8s_v2 --zones 1 2 --node-count 2 --aks-custom-headers EnableUltraSSD=true
 ```
 
 如果你想要创建新的节点池而不支持 ultra 磁盘，可以通过省略自定义参数来执行此操作 `--aks-custom-headers` 。
@@ -232,7 +232,7 @@ Events:
 ## <a name="next-steps"></a>后续步骤
 
 - 有关 ultra 磁盘的详细信息，请参阅[使用 Azure 超磁盘](../virtual-machines/linux/disks-enable-ultra-ssd.md)。
-- 有关存储最佳实践的详细信息，请参阅[Azure Kubernetes 服务中存储和备份的最佳实践（AKS）][operator-best-practices-storage]
+- 有关存储最佳实践的详细信息，请参阅[Azure Kubernetes Service 中存储和备份的最佳实践 (AKS) ][operator-best-practices-storage]
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes

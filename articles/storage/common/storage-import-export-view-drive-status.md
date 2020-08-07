@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: c75c9a2d0b491cc00d0fc58054b9bb1e58a364b8
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: bf44b24b9222072bf5f1493b36b0dfcca24b5389
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905714"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923605"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>查看 Azure 导入/导出作业的状态
 
@@ -73,7 +73,7 @@ Azure 门户中的此映像会显示示例作业的驱动器状态：
 -  作业类型和待复制数据的大小
 -  作业中的磁盘数目。 
 
-导入/导出服务没有 SLA，但在收到磁盘之后，服务力求在 7 到 10 天内完成复制。 除了在 Azure 门户上发布的状态以外，REST API 还可用于跟踪作业进度。 [列表作业](/previous-versions/azure/dn529083(v=azure.100))操作 API 调用中的完成百分比参数提供了百分比复制进度。
+导入/导出服务没有 SLA，但在收到磁盘之后，服务力求在 7 到 10 天内完成复制。 除了 Azure 门户上发布的状态之外，还可以使用 REST Api 来跟踪作业进度。 [列表作业](/previous-versions/azure/dn529083(v=azure.100))操作 API 调用中的完成百分比参数提供了百分比复制进度。
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/06/2020
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ca536ddacb0f81459625b733eb79282e145afba
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9aa97595f9a6ab2a866a8c8ebccde7e53854dbd1
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016286"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924540"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>教程：为 Slack 配置自动用户预配
 
@@ -33,7 +33,7 @@ ms.locfileid: "87016286"
 > * 如果用户不再需要访问，请将其删除
 > * 使用户属性在 Azure AD 和时差之间保持同步
 > * 在时差中预配组和组成员身份
-> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-tutorial)到时差（建议）
+> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-tutorial)到时差 (建议) 
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -50,11 +50,11 @@ ms.locfileid: "87016286"
 2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
 3. 确定[Azure AD 和时差之间要映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
 
-## <a name="step-2-add-slack-from-the-azure-ad-application-gallery"></a>步骤 2： 添加 Azure AD 应用程序库中的时差
+## <a name="step-2-add-slack-from-the-azure-ad-application-gallery"></a>步骤 2。 添加 Azure AD 应用程序库中的时差
 
 添加 Azure AD 应用程序库中的时差，开始管理预配到时差。 如果以前为 SSO 设置了时差，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)详细了解如何从库中添加应用程序。 
 
-## <a name="step-3-define-who-will-be-in-scope-for-provisioning"></a>步骤 3： 定义谁在预配范围中 
+## <a name="step-3-define-who-will-be-in-scope-for-provisioning"></a>步骤 3. 定义谁在预配范围中 
 
 使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
 
@@ -62,7 +62,7 @@ ms.locfileid: "87016286"
 
 * 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。
 
-## <a name="step-4-configure-automatic-user-provisioning-to-slack"></a>步骤 4： 配置自动用户预配到时差 
+## <a name="step-4-configure-automatic-user-provisioning-to-slack"></a>步骤 4. 配置自动用户预配到时差 
 
 本部分指导完成将 Azure AD 连接到 Slack 的用户帐户预配 API 和配置预配服务，以便在 Slack 中根据 Azure AD 中的用户和组分配创建、更新和禁用分配的用户帐户。
 
@@ -78,7 +78,7 @@ ms.locfileid: "87016286"
 
 3. 选择“预配”选项卡。
 
-    ![预配选项卡](common/provisioning.png)
+    ![“预配”选项卡](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
@@ -105,11 +105,11 @@ ms.locfileid: "87016286"
 
 11. 在“属性映射”**** 部分中，查看将从 Azure AD 同步到 Slack 的用户属性。 请注意，选为**匹配**属性的属性用于匹配 Slack 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
-   |Attribute|类型|
+   |属性|类型|
    |---|---|
    |活动|Boolean|
    |externalId|字符串|
-   |displayName|String|
+   |displayName|字符串|
    |name.familyName|字符串|
    |name.givenName|字符串|
    |title|字符串|
@@ -141,9 +141,9 @@ ms.locfileid: "87016286"
 
 13. 在“属性映射”**** 部分中，查看将从 Azure AD 同步到 Slack 的组属性。 请注意，选为**匹配**属性的属性用于在更新操作中匹配 Slack 中的组。 选择“保存”按钮以提交任何更改。
 
-      |Attribute|类型|
+      |属性|类型|
       |---|---|
-      |displayName|String|
+      |displayName|字符串|
       |members|参考|
 
 14. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
@@ -166,7 +166,7 @@ ms.locfileid: "87016286"
 配置预配后，请使用以下资源来监视部署：
 
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 有关隔离状态的详细信息，请访问[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)。
 
 ## <a name="troubleshooting-tips"></a>故障排查提示

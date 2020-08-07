@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8b09293f80b5aee2dd76abba3f165a50a5eeee5
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4fd7ce0229d5e26bc4bf3b05f7b97d20d2a23dff
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799134"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927192"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能存档
 
@@ -1106,7 +1106,7 @@ Azure AD 客户现在可以设置策略来管理其组织的用户和组的 FIDO
 
 我们已更新 Azure AD 预配体验，新增了一个进度栏，显示你在用户预配进度中的完成进度。 此更新体验还提供了有关当前周期内预配的用户数以及目前已预配的用户数的信息。
 
-有关详细信息，请参阅[检查用户预配状态](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)。
+有关详细信息，请参阅[检查用户预配状态](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)。
 
 ---
 

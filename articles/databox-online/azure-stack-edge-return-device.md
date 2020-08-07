@@ -1,6 +1,6 @@
 ---
 title: 返回 Azure Stack 边缘设备 |Microsoft Docs
-description: 描述如何返回 Azure Stack Edge 设备。
+description: 了解如何擦除数据并返回 Azure Stack 边缘设备，并删除与设备关联的资源。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 018fe9b97b343bc07cf3c04a1d0e84edaf6cc7ac
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: aa917361ad3c967a697421e86d232e1a206c403e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283854"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923945"
 ---
 # <a name="return-your-azure-stack-edge-device"></a>返回 Azure Stack 边缘设备
 
@@ -69,7 +69,7 @@ ms.locfileid: "87283854"
     
     ![设备序列号1](media/azure-stack-edge-return-device/device-serial-number-1.png) 
 
-    2. 输入服务标记编号，该编号是设备独有的五个或更多字符标识符。 服务标记位于设备（与设备相同）的右下角。 提取信息标记（这是一个滑出标签面板）。 此面板包含系统信息，如服务标记、NIC、MAC 地址等。 
+    2. 输入服务标记编号，该编号是设备独有的五个或更多字符标识符。 当你面对设备) 时，服务标记位于设备的右下角 (。 拖出信息标记 (是) 的 "滑出标签" 面板。 此面板包含系统信息，如服务标记、NIC、MAC 地址等。 
     
     ![服务标记号1](media/azure-stack-edge-return-device/service-tag-number-1.png)
 

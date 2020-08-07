@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Active Directory 门户中配置日志（预览版） |Microsoft Docs
+title: 在 Azure Active Directory 门户中预配日志 (预览版) |Microsoft Docs
 description: Azure Active Directory 门户中的预配活动报表简介
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.date: 11/04/2019
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30cc8be6ad9ebffcad58c5b2412ae15ff3f26fa5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 38cffdcc9c99cdec2aeac8bf6fe1dc1575691c8d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81113321"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924024"
 ---
-# <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 门户中预配报表（预览）
+# <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>在 Azure Active Directory 门户中预配报表 (预览版) 
 
 Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成：
 
@@ -85,7 +85,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 选择列表视图中的某个项可获得更详细的信息。
 
-![详细信息](./media/concept-provisioning-logs/steps.png "筛选器")
+![详细信息](./media/concept-provisioning-logs/steps.png "“筛选器”")
 
 
 ## <a name="filter-provisioning-activities"></a>筛选预配活动
@@ -94,18 +94,18 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 在默认视图中，您可以选择以下筛选器：
 
 - 标识
-- 日期
+- Date
 - 状态
 - 操作
 
 
-![Filter](./media/concept-provisioning-logs/default-filter.png "筛选器")
+![Filter](./media/concept-provisioning-logs/default-filter.png "“筛选器”")
 
 **标识**筛选器使你能够指定所关注的名称或标识。 此标识可以是用户、组、角色或其他对象。 可以按对象的名称或 ID 进行搜索。 该 ID 因情况而异。 例如，在将 Azure AD 的对象预配到 SalesForce 时，源 ID 是 Azure AD 中用户的对象 ID，而 TargetID 是 Salesforce 中用户的 ID。 从 Workday 预配到 Active Directory 时，源 ID 是 Workday 工作人员员工 ID。 请注意，用户的名称可能并不总是出现在标识列中。 始终会有一个 ID。 
 
 
 “日期”筛选器用于定义已返回数据的时间范围。****  
-可能的值有：
+可能的值包括：
 
 - 1 个月
 - 7 天
@@ -118,7 +118,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 使用“状态”**** 筛选器，可以选择：
 
-- All
+- 全部
 - Success
 - 失败
 - 已跳过
@@ -186,11 +186,11 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 - 导入对象
 - 确定对象是否在范围内
 - 源和目标之间的匹配对象
-- 设置对象（采取措施-这可能是创建、更新、删除或禁用）
+- 预配对象 (执行操作-这可能是创建、更新、删除或禁用) 
 
 
 
-![Filter](./media/concept-provisioning-logs/steps.png "筛选器")
+![Filter](./media/concept-provisioning-logs/steps.png "“筛选器”")
 
 
 ### <a name="troubleshoot-and-recommendations"></a>故障排除和建议
@@ -208,7 +208,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 "**摘要**" 选项卡概述源系统和目标系统中的对象发生了什么情况和标识符。 
 
-## <a name="what-you-should-know"></a>要点
+## <a name="what-you-should-know"></a>应了解的内容
 
 - 如果有高级版，Azure 门户将报告的预配数据存储30天，如果有免费版，则存储7天。
 
@@ -245,7 +245,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [检查用户设置的状态](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)
+* [检查用户设置的状态](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)
 * [为 Azure AD 库应用程序配置用户预配时遇到的问题](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
 
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box Disk 排查磁盘解锁问题 | Microsoft Docs
-description: 介绍如何排查 Azure Data Box 磁盘中出现的问题。
+description: 了解用于排查 Azure Data Box Disk 的解锁工具问题的工作流。 请参阅 Data Box Disk 解锁工具错误。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: troubleshooting
 ms.date: 08/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 61f6da7df09f9569af1746563dc3be2922f4e2c1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 866cf01243983863292ada0b086f8f5b2f94e412
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833561"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925555"
 ---
 # <a name="troubleshoot-disk-unlocking-issues-in-azure-data-box-disk"></a>排查 Azure Data Box Disk 中的磁盘解锁问题
 

@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0bed20dfd087783e865dd2e68897870ad56507c2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0b9792ce25541917bfde3291b3864f58d70d6d03
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87294043"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923979"
 ---
 # <a name="tutorial-configure-webroot-security-awareness-training-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Webroot 安全意识培训
 
-本教程介绍了需要在 Webroot 安全意识培训和 Azure Active Directory （Azure AD）中执行的步骤，以配置自动用户预配。 配置后，Azure AD 会自动预配用户和组，并取消其预配，以使用 Azure AD 预配服务[Webroot 安全意识培训](https://www.webroot.com/)。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了需要在 Webroot 安全意识培训和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置后，Azure AD 会自动预配用户和组，并取消其预配，以使用 Azure AD 预配服务[Webroot 安全意识培训](https://www.webroot.com/)。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -65,7 +65,7 @@ ms.locfileid: "87294043"
 
 4. 复制并保存**机密令牌**。 此值将在 Azure 门户的 "Webroot 安全意识培训应用程序" 的 "预配" 选项卡的 "机密令牌" 字段中输入。
 
-5. 单击“完成”。
+5. 单击“Done”（完成） 。
 
     ![复制机密令牌](./media/webroot-security-awareness-training-provisioning-tutorial/copy-secret-token.png)
 
@@ -98,7 +98,7 @@ ms.locfileid: "87294043"
 
 3. 选择“预配”选项卡。
 
-    ![预配选项卡](common/provisioning.png)
+    ![“预配”选项卡](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
@@ -131,7 +131,7 @@ ms.locfileid: "87294043"
 
       |Attribute|类型|支持筛选|
       |---|---|---|
-      |displayName|String|&check;|
+      |displayName|字符串|&check;|
       |members|参考|
       |externalId|字符串|
 
@@ -155,7 +155,7 @@ ms.locfileid: "87294043"
 配置预配后，请使用以下资源来监视部署：
 
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。  
 
 ## <a name="additional-resources"></a>其他资源

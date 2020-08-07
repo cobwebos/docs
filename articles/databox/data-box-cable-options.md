@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box 布线选项 | Microsoft Docs
-description: 介绍 Azure Data Box 的各种布线选项。
+description: 了解通过使用管理端口或数据端口连接 Azure Data Box 以便进行数据传输的不同方式。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: ffabd917eff1c545bba734ab1621b947ee8d9ae9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1a1ce22cd700368d630d70912ea266d16fd772bf
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77920631"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925203"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Azure Data Box 的布线选项
 

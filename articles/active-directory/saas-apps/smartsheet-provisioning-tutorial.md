@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 699eb37176d6737744fb0ba01f9f3f4a2d4e55b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c23c57e77f69cd7043e09ff5e2809d8329d62da3
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85318741"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925492"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>教程：为 Smartsheet 配置自动用户预配
 
-本教程的目的是演示要在 Smartsheet 和 Azure Active Directory （Azure AD）中执行的步骤，以配置 Azure AD 自动将用户和/或组预配到[Smartsheet](https://www.smartsheet.com/pricing)以及取消其预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程的目的是演示要在 Smartsheet 和 Azure Active Directory (Azure AD) 中执行的步骤，以将 Azure AD 自动预配和取消预配到[Smartsheet](https://www.smartsheet.com/pricing)。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -32,7 +32,7 @@ ms.locfileid: "85318741"
 > * 在 Smartsheet 中创建用户
 > * 当用户不再需要访问权限时，删除 Smartsheet 中的用户
 > * 使用户属性在 Azure AD 和 Smartsheet 之间保持同步
-> * 单一登录到 Smartsheet （推荐）
+> * 单一登录到 Smartsheet (建议) 
 
 > [!NOTE]
 > 此连接器目前以公共预览版提供。 若要详细了解 Microsoft Azure 预览版功能的一般使用条款，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -97,7 +97,7 @@ ms.locfileid: "85318741"
 
 * 将用户和组分配到 Smartsheet 时，必须选择 "**默认" 访问权限**以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
 
-* 若要确保 Smartsheet 与 Azure AD 之间的用户角色分配中的奇偶校验，建议使用完全 Smartsheet 用户列表中填充的相同角色分配。 若要从 Smartsheet 中检索此用户列表，请导航到**帐户管理员 > 用户管理 > "更多操作" > 下载用户列表（csv）**。
+* 若要确保 Smartsheet 与 Azure AD 之间的用户角色分配中的奇偶校验，建议使用完全 Smartsheet 用户列表中填充的相同角色分配。 若要从 Smartsheet 中检索此用户列表，请导航到**帐户管理员 > 用户管理 > "更多操作" > 下载用户列表 (csv) **。
 
 * 若要访问应用中的某些功能，Smartsheet 要求用户拥有多个角色。 若要详细了解 Smartsheet 中的用户类型和权限，请参阅[用户类型和权限](https://help.smartsheet.com/learning-track/shared-users/user-types-and-permissions)。
 
@@ -121,7 +121,7 @@ ms.locfileid: "85318741"
 
 3. 选择“预配”选项卡。
 
-    ![预配选项卡](common/provisioning.png)
+    ![“预配”选项卡](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
@@ -135,7 +135,7 @@ ms.locfileid: "85318741"
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存” 。
+7. 单击“保存”  。
 
 8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Smartsheet**"。
 
@@ -144,21 +144,21 @@ ms.locfileid: "85318741"
    |Attribute|类型|
    |---|---|
    |活动|Boolean|
-   |title|String|
-   |userName|String|
-   |name.givenName|String|
-   |name.familyName|String|
-   |phoneNumbers[type eq "work"].value|String|
-   |phoneNumbers[type eq "mobile"].value|String|
-   |phoneNumbers[type eq "fax"].value|String|
-   |externalId|String|
-   |角色 [主 eq "True"]。显示|String|
-   |role [primary eq "True"]。类型|String|
-   |role [主 eq "True"]。值|String|
-   |角色|String|
-   urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|String|
-   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:costCenter|String|
+   |title|字符串|
+   |userName|字符串|
+   |name.givenName|字符串|
+   |name.familyName|字符串|
+   |phoneNumbers[type eq "work"].value|字符串|
+   |phoneNumbers[type eq "mobile"].value|字符串|
+   |phoneNumbers[type eq "fax"].value|字符串|
+   |externalId|字符串|
+   |角色 [主 eq "True"]。显示|字符串|
+   |role [primary eq "True"]。类型|字符串|
+   |role [主 eq "True"]。值|字符串|
+   |角色|字符串|
+   urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|字符串|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:costCenter|字符串|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|字符串|
 
 
@@ -182,7 +182,7 @@ ms.locfileid: "85318741"
 配置预配后，请使用以下资源来监视部署：
 
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。  
 
 ## <a name="connector-limitations"></a>连接器限制

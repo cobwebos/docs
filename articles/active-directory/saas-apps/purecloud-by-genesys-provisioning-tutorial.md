@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: 119690b9046821ab538d879e1209c6ef77277370
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d80502480e0536cb85ad9bd08344c8082f59d85
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77370677"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926988"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>教程：为 PureCloud by Genesys 配置自动用户预配
 
-本教程介绍了需要在 PureCloud by Genesys 和 Azure Active Directory （Azure AD）中执行的步骤，以配置自动用户预配。 配置时，Azure AD 会使用 Azure AD 预配服务自动预配用户和组，并将其预配为[PureCloud By Genesys](https://www.genesys.com) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了需要在 PureCloud by Genesys 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置时，Azure AD 会使用 Azure AD 预配服务自动预配用户和组，并将其预配为[PureCloud By Genesys](https://www.genesys.com) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -33,7 +33,7 @@ ms.locfileid: "77370677"
 > * 如果用户不需要访问，请在 PureCloud by Genesys 中删除用户
 > * 使用户属性在 Azure AD 与 PureCloud 之间保持同步 Genesys
 > * 在 PureCloud by Genesys 中预配组和组成员身份
-> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/purecloud-by-genesys-tutorial)到 PureCloud by Genesys （推荐）
+> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/purecloud-by-genesys-tutorial)到 PureCloud by Genesys (建议) 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -84,7 +84,7 @@ ms.locfileid: "77370677"
 
 3. 选择“预配”选项卡。
 
-    ![预配选项卡](common/provisioning.png)
+    ![“预配”选项卡](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
@@ -106,12 +106,12 @@ ms.locfileid: "77370677"
 
      |Attribute|类型|
      |---|---|
-     |userName|String|
+     |userName|字符串|
      |活动|Boolean|
-     |displayName|String|
-     |emails[type eq "work"].value|String|
-     |title|String|
-     |phoneNumbers[type eq "mobile"].value|String|
+     |displayName|字符串|
+     |emails[type eq "work"].value|字符串|
+     |title|字符串|
+     |phoneNumbers[type eq "mobile"].value|字符串|
      |phoneNumbers[type eq "work"].value|字符串|
      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|
      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|参考|
@@ -120,9 +120,9 @@ ms.locfileid: "77370677"
 
 11. 在 "**属性映射**" 部分中，查看通过 Genesys 从 Azure AD 同步到 PureCloud 的组属性。 选为 "**匹配**" 属性的属性用于匹配 PureCloud by Genesys 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。 PureCloud by Genesys 不支持组创建或删除，并且仅支持更新组。
 
-      |Attribute|类型|
+      |属性|类型|
       |---|---|
-      |displayName|String|
+      |displayName|字符串|
       |externalId|字符串|
       |members|参考|
 
@@ -146,7 +146,7 @@ ms.locfileid: "77370677"
 配置预配后，请使用以下资源来监视部署：
 
 * 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-* 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+* 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 * 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。
 
 ## <a name="additional-resources"></a>其他资源

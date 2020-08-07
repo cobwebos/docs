@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 7035a4f6e3fe8a3c104568697fcf323e4c0bd2c0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fcde2ed4986b367e35965f6524e7d7727eaa07c9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096267"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926767"
 ---
 # <a name="tutorial-configure-linkedin-learning-for-automatic-user-provisioning"></a>教程：为 LinkedIn Learning 配置自动用户预配
 
-本教程介绍了需要在 LinkedIn 学习和 Azure Active Directory （Azure AD）中执行的步骤，以配置自动用户预配。 配置时，Azure AD 会自动将用户和组预配和取消预配到使用 Azure AD 预配服务的[LinkedIn 学习](https://learning.linkedin.com/)。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了在 LinkedIn 学习和 Azure Active Directory (Azure AD) 配置自动用户预配时需要执行的步骤。 配置时，Azure AD 会自动将用户和组预配和取消预配到使用 Azure AD 预配服务的[LinkedIn 学习](https://learning.linkedin.com/)。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -33,7 +33,7 @@ ms.locfileid: "87096267"
 > * 如果用户不再需要访问，请在 LinkedIn Learning 中删除用户
 > * 使用户属性在 Azure AD 和 LinkedIn Learning 之间保持同步
 > * 在 LinkedIn Learning 中预配组和组成员身份
-> * [单一登录](linkedinlearning-tutorial.md)到 LinkedIn Learning （推荐）
+> * [单一登录](linkedinlearning-tutorial.md)到 LinkedIn Learning (推荐) 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,14 +41,14 @@ ms.locfileid: "87096267"
 
 * [Azure AD 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * 具有配置预配[权限](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)的 Azure AD 用户帐户（例如应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员）。 
-* 已为 LinkedIn Learning 启用批准和 SCIM （通过电子邮件联系）。
+* 已为 LinkedIn Learning (通过电子邮件) 联系启用批准和 SCIM。
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
 1. 了解[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
 2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
 3. 确定要[在 Azure AD 和 LinkedIn Learning 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
 
-## <a name="step-2-configure-linkedin-learning-to-support-provisioning-with-azure-ad"></a>步骤 2： 将 LinkedIn Learning 配置为支持预配 Azure AD
+## <a name="step-2-configure-linkedin-learning-to-support-provisioning-with-azure-ad"></a>步骤 2。 将 LinkedIn Learning 配置为支持预配 Azure AD
 1. 登录到[LinkedIn 学习设置](https://www.linkedin.com/learning-admin/settings/global)。 选择**SCIM 安装程序**，然后选择 "**添加新的 SCIM 配置**"。
 
    ![SCIM 安装程序配置](./media/linkedin-learning-provisioning-tutorial/learning-scim-settings.png)
@@ -61,9 +61,9 @@ ms.locfileid: "87096267"
 
    ![SCIM 访问令牌](./media/linkedin-learning-provisioning-tutorial/learning-scim-token.png)
 
-4. 您可以重新发出任何现有配置（这将生成新令牌）或将其删除。
+4. 你可以重新发出 (的任何现有配置，这些配置将生成新令牌) 或将其删除。
 
-## <a name="step-3-add-linkedin-learning-from-the-azure-ad-application-gallery"></a>步骤 3： 从 Azure AD 应用程序库添加 LinkedIn Learning
+## <a name="step-3-add-linkedin-learning-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 LinkedIn Learning
 
 从 "Azure AD" 应用程序库中添加 LinkedIn Learning，开始管理到 LinkedIn Learning 的预配。 如果你以前已设置 LinkedIn Learning for SSO，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)详细了解如何从库中添加应用程序。 
 
@@ -92,7 +92,7 @@ ms.locfileid: "87096267"
 
 3. 选择“预配”选项卡。
 
-    ![预配选项卡](common/provisioning.png)
+    ![“预配”选项卡](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
@@ -131,7 +131,7 @@ ms.locfileid: "87096267"
 
     |Attribute|类型|支持筛选|
     |---|---|---|
-    |displayName|String|&check;|
+    |displayName|字符串|&check;|
     |members|参考|
     |externalId|字符串|
 
@@ -155,7 +155,7 @@ ms.locfileid: "87096267"
 配置预配后，请使用以下资源来监视部署：
 
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。  
 
 ## <a name="additional-resources"></a>其他资源

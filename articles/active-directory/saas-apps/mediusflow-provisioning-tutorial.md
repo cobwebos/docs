@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 838542bf4c3d566c76987754c8f336e00250d04a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 724068950153e6bc4687679892edf55ab89f3bf2
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85482405"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927396"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>教程：为 MediusFlow 配置自动用户预配
 
@@ -56,7 +56,7 @@ ms.locfileid: "85482405"
 首先，在 MediusFlow 中启用 Azure AD 登录名的访问权限和 Azure AD 配置功能，具体步骤如下：
 
 #### <a name="user-login"></a>用户登录
-若要使登录流 Microsoft 365/Azure AD 请参阅 [this] （ https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) 文章。
+若要使登录流 Microsoft 365/Azure AD 请参阅 [此] (https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) 文章。
 
 #### <a name="user-transfer-configuration"></a>用户传输配置
 若要启用用户的配置门户进行设置，请参阅[此](
@@ -202,7 +202,7 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 配置预配后，请使用以下资源来监视部署：
 
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)，以查看预配周期的状态以及还剩多少完成
+2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)，以查看预配周期的状态以及还剩多少完成
 3. 如果预配配置似乎处于运行不正常状态，应用将进入隔离状态。 若要详细了解隔离状态，请单击[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)。
 
 ## <a name="additional-resources"></a>其他资源

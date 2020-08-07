@@ -10,15 +10,15 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 08/04/2020
+ms.date: 08/06/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 1b2d707569221a79ad53f04bcc379f5067ed9b04
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 210b2935cd2df81b0ff079c9a1c945fe770933f9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905527"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926512"
 ---
 # <a name="set-up-message-passing-interface-for-hpc"></a>设置 HPC 的消息传递接口
 
@@ -95,11 +95,24 @@ ${INSTALL_PREFIX}/bin/mpirun -np 2 --map-by node --hostfile ~/hostfile -mca pml 
 
 ## <a name="intel-mpi"></a>Intel MPI
 
-[下载 INTEL MPI](https://software.intel.com/mpi-library/choose-download)。
+下载你选择的[INTEL MPI](https://software.intel.com/mpi-library/choose-download)版本。 根据版本更改 I_MPI_FABRICS 环境变量。 对于 Intel MPI 2018，使用 `I_MPI_FABRICS=shm:ofa` 适用于2019的，使用 `I_MPI_FABRICS=shm:ofi` 。
 
-根据版本更改 I_MPI_FABRICS 环境变量。 对于 Intel MPI 2018，使用 `I_MPI_FABRICS=shm:ofa` 适用于2019的，使用 `I_MPI_FABRICS=shm:ofi` 。
+### <a name="non-sr-iov-vms"></a>非 SR-IOV Vm
+对于非 SR-IOV Vm，下载4.x 运行时[免费评估版本](https://registrationcenter.intel.com/en/forms/?productid=1740)的示例如下所示：
+```bash
+wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/9278/l_mpi_p_5.1.3.223.tgz
+```
+有关安装步骤，请参阅 [Intel MPI 库安装指南](https://registrationcenter-download.intel.com/akdlm/irc_nas/1718/INSTALL.html?lang=en&fileExt=.html)。
+或者，您可能想要为 (的非根非调试器进程启用 ptrace，这是最新版本的 Intel MPI) 所必需的。
+```bash
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+```
 
-默认情况下，进程固定适用于15、30和 60 PPN。
+### <a name="suse-linux"></a>SUSE Linux
+对于 SUSE Linux Enterprise Server VM 映像版本-SLES 12 SP3 for hpc、SLES 12 SP3 for hpc (Premium) 、SLES 12 SP1 for hpc、SLES 12 SP1 for HPC (Premium) 、SLES 12 SP4 和 SLES 15，安装了 RDMA 驱动程序，并在 VM 上分发 Intel MPI 包。 通过运行以下命令安装 Intel MPI：
+```bash
+sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
+```
 
 ## <a name="mpich"></a>MPICH
 

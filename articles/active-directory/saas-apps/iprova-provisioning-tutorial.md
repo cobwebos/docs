@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/29/2019
 ms.author: Zhchia
-ms.openlocfilehash: 16cba1896a9e9e4038091769fb78ca0c0469710e
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 799713c237d8a528b7e458da1e26695484ca1080
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448826"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923163"
 ---
 # <a name="tutorial-configure-iprova-for-automatic-user-provisioning"></a>教程：为 iProva 配置自动用户预配
 
-本教程的目的是演示要在 iProva 和 Azure Active Directory （Azure AD）中执行的步骤，以配置 Azure AD 自动将用户和/或组预配到[iProva](https://www.iProva.com/)以及取消其预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程的目的是演示要在 iProva 和 Azure Active Directory (Azure AD) 中执行的步骤，以将 Azure AD 自动预配和取消预配到[iProva](https://www.iProva.com/)。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 > [!NOTE]
 > 此连接器目前以公共预览版提供。 若要详细了解 Microsoft Azure 预览版功能的一般使用条款，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -36,7 +36,7 @@ ms.locfileid: "87448826"
 > * 当用户不再需要访问权限时，删除 iProva 中的用户
 > * 使用户属性在 Azure AD 和 iProva 之间保持同步
 > * 在 iProva 中预配组和组成员身份
-> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/iprova-tutorial)到 iProva （推荐）
+> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/iprova-tutorial)到 iProva (建议) 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -100,7 +100,7 @@ ms.locfileid: "87448826"
 
 3. 选择“预配”选项卡。
 
-    ![预配选项卡](common/provisioning.png)
+    ![“预配”选项卡](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
@@ -114,7 +114,7 @@ ms.locfileid: "87448826"
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存”。
+7. 单击“保存”  。
 
 8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 iProva**"。
 
@@ -123,7 +123,7 @@ ms.locfileid: "87448826"
    |Attribute|类型|
    |---|---|
    |活动|Boolean|
-   |displayName|String|
+   |displayName|字符串|
    |title|字符串|
    |emails[type eq "work"].value|字符串|
    |preferredLanguage|字符串|
@@ -158,7 +158,7 @@ ms.locfileid: "87448826"
 
       |Attribute|类型|
       |---|---|
-      |displayName|String|
+      |displayName|字符串|
       |members|参考|
 
 12. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
@@ -182,7 +182,7 @@ ms.locfileid: "87448826"
 配置预配后，请使用以下资源来监视部署：
 
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。  
 
 ## <a name="change-log"></a>更改日志

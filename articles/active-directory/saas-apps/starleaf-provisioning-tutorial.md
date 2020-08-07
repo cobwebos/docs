@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: zhchia
-ms.openlocfilehash: 520373fc6a05bcaada973273e3553f9da623c669
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74e37bda28bed3ecd2c842c4659bcff3cb86eb6a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77064285"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920681"
 ---
 # <a name="tutorial-configure-starleaf-for-automatic-user-provisioning"></a>教程：为 StarLeaf 配置自动用户预配
 
-本教程的目的是演示要在 StarLeaf 和 Azure Active Directory （Azure AD）中执行的步骤，以配置 Azure AD 自动将用户和/或组预配到 StarLeaf 以及取消其预配。
+本教程的目的是演示要在 StarLeaf 和 Azure Active Directory (Azure AD) 中执行的步骤，以将 Azure AD 自动预配和取消预配到 StarLeaf。
 
 > [!NOTE]
 >  本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。
@@ -36,7 +36,7 @@ ms.locfileid: "77064285"
 本教程中概述的方案假定你已具有以下先决条件：
 
 * Azure AD 租户。
-* [StarLeaf 租户](https://www.starleaf.com/solutions/)。
+* [StarLeaf 租户](https://starleaf.com/)。
 * StarLeaf 中具有管理员权限的用户帐户。
 
 ## <a name="assign-users-to-starleaf"></a>将用户分配到 StarLeaf
@@ -48,7 +48,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 * 建议将单个 Azure AD 用户分配到 StarLeaf 以测试自动用户预配配置。 稍后可以分配其他用户和组。
 
-* 将用户分配到 StarLeaf 时，必须在分配对话框中选择任何特定于应用程序的有效角色（如果可用）。 具有“默认访问权限”角色的用户排除在预配之外。
+* 将用户分配到 StarLeaf 时，必须在分配对话框中选择任何特定于应用程序的有效角色 (如有) 。 具有“默认访问权限”角色的用户排除在预配之外。
 
 ## <a name="set-up-starleaf-for-provisioning"></a>设置 StarLeaf 以进行预配
 
@@ -58,7 +58,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![StarLeaf 添加 SCIM](media/starleaf-provisioning-tutorial/image00.png)
 
-2. 选择要 Microsoft Azure Active Directory 的**类型**。 在 "**名称**" 中输入合适的名称。 单击“应用”。
+2. 选择要 Microsoft Azure Active Directory 的**类型**。 在 "**名称**" 中输入合适的名称。 单击“**应用**”。
 
     ![StarLeaf 添加 SCIM](media/starleaf-provisioning-tutorial/image01.png)
 
@@ -101,7 +101,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 3. 选择“预配”选项卡。
 
-    ![预配选项卡](common/provisioning.png)
+    ![“预配”选项卡](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
@@ -115,7 +115,7 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存” 。
+7. 单击“保存”  。
 
 8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 StarLeaf**"。
 

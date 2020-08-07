@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: 173ff8b638c40773ca2c4bdac5021f2ea4b84549
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa754868677802b7d0000045f22090fbca62d9b6
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555533"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927413"
 ---
 # <a name="enterprise-and-basic-editions-of-azure-machine-learning"></a>Azure 机器学习的 Basic Edition 和 Basic Edition 
 
@@ -31,13 +31,13 @@ Azure 机器学习提供了两个版本，专为你的机器学习需求提供�
 
 | 功能                     | 版本                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| 标记：在工作室 (Web) 中[创建和管理标记项目](tutorial-labeling.md)                                                | All                     |
-| 标记：工作室 (Web) 中的标记工具                                    | All                     |
-| 标记：使用私人劳动力                               | All                     |
+| 标记：在工作室 (Web) 中[创建和管理标记项目](tutorial-labeling.md)                                                | 全部                     |
+| 标记：工作室 (Web) 中的标记工具                                    | 全部                     |
+| 标记：使用私人劳动力                               | 全部                     |
 | 标记：[ML 辅助映像分类和对象检测](how-to-label-images.md)                  | 仅限 Enterprise Edition |
-| 数据集 + 数据存储：使用 Python 创建和管理                       | All                     |
-| 数据集 + 数据存储：在工作室 (Web) 中创建和管理                         | All                     |
-| 偏移：使用 Python 查看和管理数据集监视器                           | All                     |
+| 数据集 + 数据存储：使用 Python 创建和管理                       | 全部                     |
+| 数据集 + 数据存储：在工作室 (Web) 中创建和管理                         | 全部                     |
+| 偏移：使用 Python 查看和管理数据集监视器                           | 全部                     |
 | 偏移：在工作室 (Web) 中查看和管理数据集监视器                            | 仅限 Enterprise Edition |
 
 
@@ -48,7 +48,7 @@ Azure 机器学习提供了两个版本，专为你的机器学习需求提供�
 
 | 功能    | 版本                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| 在笔记本中创建和运行 [AutoML 试验](how-to-configure-auto-train.md)               | All                     |
+| 在笔记本中创建和运行 [AutoML 试验](how-to-configure-auto-train.md)               | 全部                     |
 | 在工作室 (Web) 中创建和运行 [AutoML 试验](how-to-use-automated-ml-for-ml-models.md)   | 仅限 Enterprise Edition |
 | 行业领先的 AutoML 预测功能             | 仅限 Enterprise Edition |
 | 支持深度学习和其他高级学习器 | 仅限 Enterprise Edition |
@@ -62,10 +62,10 @@ Azure 机器学习提供了两个版本，专为你的机器学习需求提供�
 
 | 功能    | 版本                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| [模型 explainability](how-to-machine-learning-interpretability-automl.md)                                              | 全部                     |
-| [差异隐私](how-to-differential-privacy.md)                          | All                     |
-| 自定义标记以实现数据表    | All                     |
-| 公平 AzureML 集成                                      | All                     |
+| [模型可解释性](how-to-machine-learning-interpretability-automl.md)                                              | 全部                     |
+| [差异隐私](how-to-differential-privacy.md)                          | 全部                     |
+| 自定义标记以实现数据表    | 全部                     |
+| 公平 AzureML 集成                                      | 全部                     |
 
 <br/>
 <br/>
@@ -75,19 +75,19 @@ Azure 机器学习提供了两个版本，专为你的机器学习需求提供�
 
 | 功能    | 版本                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| Visual Studio Code 集成                                                     | All                     |
+| Visual Studio Code 集成                                                     | 全部                     |
 | 强化学习                                                             | 全部                     |
 | 试验 UI                                                                 | 全部                     |
 | Jupyter、JupyterLab 集成                                                    | 全部                     |
 | Python SDK 支持                                                                 | 全部                     |
-| R SDK 支持                                                                      | All                     |
-| ML 管道：使用 Python 创建、运行和发布                           | All                     |
-| ML 管道：使用 Python 创建、编辑和删除计划的管道运行| All                     |
-| ML 管道：在 Python SDK 中创建管道终结点                                   | All                     |
-| ML 管道：在工作室 (Web) 中查看运行详细信息                                              | All                     |
+| R SDK 支持                                                                      | 全部                     |
+| ML 管道：使用 Python 创建、运行和发布                           | 全部                     |
+| ML 管道：使用 Python 创建、编辑和删除计划的管道运行| 全部                     |
+| ML 管道：在 Python SDK 中创建管道终结点                                   | 全部                     |
+| ML 管道：在工作室 (Web) 中查看运行详细信息                                              | 全部                     |
 | ML 管道：在设计器中创建、运行、可视化和发布                  | 仅限 Enterprise Edition |
 | ML 管道：在设计器中创建管道终结点 | 仅限 Enterprise Edition |
-| 集成笔记本的托管计算实例                                 | All                     |
+| 集成笔记本的托管计算实例                                 | 全部                     |
 
 
 <br/>
@@ -99,8 +99,8 @@ Azure 机器学习提供了两个版本，专为你的机器学习需求提供�
 |------------------------------------------------------------------------------------|:-----------:|
 | 适用于机器学习和 Azure ML CLI 的 Azure DevOps 扩展                 | 全部                     |
 | [事件网格集成](how-to-use-event-grid.md)                                                             | 全部                     |
-| 将 Azure 流分析与 Azure 机器学习集成                       | All                     |
-| 在 SDK 中创建 ML 管道                                                         | All                     |
+| 将 Azure 流分析与 Azure 机器学习集成                       | 全部                     |
+| 在 SDK 中创建 ML 管道                                                         | 全部                     |
 | 批处理推理                                                                  | 全部                     |
 | 基于 FPGA 的硬件加速模型                                             | 全部                     |
 | 模型分析                                                                    | 全部                     |
@@ -112,7 +112,7 @@ Azure 机器学习提供了两个版本，专为你的机器学习需求提供�
 
 | 功能     | 版本                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| [基于角色的访问控制](how-to-assign-roles.md) (RBAC) 支持                                           | 全部                     |
+| Azure [RBAC) 支持 (基于角色的访问控制](how-to-assign-roles.md)                                           | 全部                     |
 | [虚拟网络 (VNet)](how-to-enable-virtual-network.md) 计算支持                                         | 全部                     |
 | 对终结点身份验证评分                                                    | 全部                     |
 | [工作区专用链接](how-to-configure-private-link.md)                                                            | 全部                     |

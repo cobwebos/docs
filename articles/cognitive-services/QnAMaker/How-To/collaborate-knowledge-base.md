@@ -3,12 +3,12 @@ title: 与知识库协作-QnA Maker
 description: 通过 QnA Maker，多名人员可针对知识库展开协作。 此功能随 Azure RBAC)  (Azure 基于角色的访问控制一起提供。
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 86c8d919618b37223e51a23635a1322a4e0d780c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0d59ca83e6067c083e4bfebdb7afaaf6669dda8a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837425"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926841"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>与作者和编辑器协作
 
@@ -16,7 +16,7 @@ ms.locfileid: "87837425"
 
 ## <a name="add-azure-role-based-access-control-azure-rbac-to-your-qna-maker-resource"></a>向 QnA Maker 资源添加 azure RBAC)  (Azure 基于角色的访问控制
 
-QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库。 此功能通过 Azure [基于角色的访问控制](../../../active-directory/role-based-access-control-configure.md)提供。
+QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库。 此功能随[AZURE RBAC)  (azure 基于角色的访问控制](../../../active-directory/role-based-access-control-configure.md)一起提供。
 
 ## <a name="access-at-the-qna-maker-resource-level"></a>QnA Maker 资源级别的访问权限
 
@@ -36,7 +36,7 @@ QnA Maker 允许多人在同一 QnA Maker 资源中协作处理所有知识库�
 
     ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.png)
 
-1. 选择“添加”。
+1. 选择“添加”  。
 
     ![QnA Maker IAM 添加](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.png)
 

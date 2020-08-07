@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5aa33529a1957b6e7728b3a87bacf6bb91d987ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94f5be93d95cc1c524e6db464cac68879ed0b0e7
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81378946"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926784"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>教程：为自动用户预配配置 Oracle 云基础结构控制台
 
-本教程介绍了需要在 Oracle 云基础结构控制台和 Azure Active Directory （Azure AD）中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组，并将其预配到[Oracle 云基础结构控制台](https://www.oracle.com/cloud/free/?source=:ow:o:p:nav:0916BCButton&intcmp=:ow:o:p:nav:0916BCButton)。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了需要在 Oracle 云基础结构控制台和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组，并将其预配到[Oracle 云基础结构控制台](https://www.oracle.com/cloud/free/?source=:ow:o:p:nav:0916BCButton&intcmp=:ow:o:p:nav:0916BCButton)。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -33,7 +33,7 @@ ms.locfileid: "81378946"
 > * 如果用户不需要访问，请在 Oracle 云基础结构控制台中删除用户
 > * 使用户属性在 Azure AD 和 Oracle 云基础结构控制台之间保持同步
 > * 在 Oracle 云基础结构控制台中预配组和组成员身份
-> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/oracle-cloud-tutorial)到 Oracle 云基础结构控制台（推荐）
+> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/oracle-cloud-tutorial)到 Oracle 云基础结构控制台 (建议) 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -104,13 +104,13 @@ ms.locfileid: "81378946"
 
 3. 选择“预配”选项卡。
 
-    ![预配选项卡](common/provisioning.png)
+    ![“预配”选项卡](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
     ![“预配”选项卡](common/provisioning-automatic.png)
 
-5. 在 "**管理员凭据**" 部分中，输入格式为的**租户 URL** `https://<IdP ID>.identity.oraclecloud.com/admin/v1` 。 例如，`https://idcs-0bfd023ff2xx4a98a760fa2c31k92b1d.identity.oraclecloud.com/admin/v1`。 在“机密令牌”中，输入之前检索到的机密令牌值。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 Oracle 云基础结构控制台。 如果连接失败，请确保你的 Oracle 云基础结构控制台帐户具有管理员权限，然后重试。
+5. 在 "**管理员凭据**" 部分中，输入格式为的**租户 URL** `https://<IdP ID>.identity.oraclecloud.com/admin/v1` 。 例如 `https://idcs-0bfd023ff2xx4a98a760fa2c31k92b1d.identity.oraclecloud.com/admin/v1`。 在“机密令牌”中，输入之前检索到的机密令牌值。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 Oracle 云基础结构控制台。 如果连接失败，请确保你的 Oracle 云基础结构控制台帐户具有管理员权限，然后重试。
 
     ![预配](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/provisioning.png)
 
@@ -126,24 +126,24 @@ ms.locfileid: "81378946"
 
       |Attribute|类型|
       |---|---|
-      |displayName|String|
-      |userName|String|
+      |displayName|字符串|
+      |userName|字符串|
       |活动|Boolean|
       |title|字符串|
       |emails[type eq "work"].value|字符串|
-      |preferredLanguage|String|
-      |name.givenName|String|
-      |name.familyName|String|
-      |addresses[type eq "work"].formatted|String|
-      |addresses[type eq "work"].locality|String|
-      |addresses[type eq "work"].region|String|
-      |addresses[type eq "work"].postalCode|String|
-      |addresses[type eq "work"].country|String|
-      |addresses[type eq "work"].streetAddress|String|
-      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|String|
-      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|String|
+      |preferredLanguage|字符串|
+      |name.givenName|字符串|
+      |name.familyName|字符串|
+      |addresses[type eq "work"].formatted|字符串|
+      |addresses[type eq "work"].locality|字符串|
+      |addresses[type eq "work"].region|字符串|
+      |addresses[type eq "work"].postalCode|字符串|
+      |addresses[type eq "work"].country|字符串|
+      |addresses[type eq "work"].streetAddress|字符串|
+      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:employeeNumber|字符串|
+      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|字符串|
       |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:costCenter|字符串|
-      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|String|
+      |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division|字符串|
       |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|参考|
       |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:organization|字符串|
       |urn： ietf： params： scim：架构： oracle： idcs： extension： user： User： bypassNotification|布尔|
@@ -155,8 +155,8 @@ ms.locfileid: "81378946"
 
       |Attribute|类型|
       |---|---|
-      |displayName|String|
-      |externalId|String|
+      |displayName|字符串|
+      |externalId|字符串|
       |members|参考|
 
 12. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
@@ -179,7 +179,7 @@ ms.locfileid: "81378946"
 配置预配后，请使用以下资源来监视部署：
 
 * 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-* 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+* 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 * 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。
 
 ## <a name="additional-resources"></a>其他资源

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: b54051db1898fc346c512fab8d0a2da4d541f63b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: bb987bb2a028ae17bb0dfcdd2f75b8fee5a6c288
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825695"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926461"
 ---
 # <a name="azure-operational-security-checklist"></a>Azure 操作安全性清单
 在 Azure 上部署应用程序的过程快速、轻松且经济高效。 在生产环境中部署云应用程序之前，准备好一个清单会很有用，这样可以根据一份必要和建议的操作安全措施列表来评估应用程序。
@@ -39,7 +39,7 @@ Azure 提供一套可用于部署应用程序的基础结构服务。 Azure 操�
 
 |清单类别| 说明|
 | ------------ | -------- |
-| [<br>安全角色和访问控制](../../security-center/security-center-planning-and-operations-guide.md)|<ul><li>使用[基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md) 向特定范围的用户、组和应用程序分配权限。</li></ul> |
+| [<br>安全角色和访问控制](../../security-center/security-center-planning-and-operations-guide.md)|<ul><li>使用 azure [RBAC)  (azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)来提供特定于用户的用户、组和应用程序的权限。</li></ul> |
 | [<br>数据收集和存储](../../storage/blobs/security-recommendations.md)|<ul><li>使用管理平面安全机制，使用[AZURE RBAC)  (azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)来保护存储帐户。</li><li>使用[共享访问签名 (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) 和存储访问策略通过数据平面安全性来保护对数据的访问。</li><li>使用传输级加密 – 使用 [SMB（服务器消息块协议）3.0](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) 对 [Azure 文件共享](../../storage/files/storage-dotnet-how-to-use-files.md)所用的 HTTPS 和加密。</li><li>需要专门控制加密密钥时，使用[客户端加密](../../storage/common/storage-client-side-encryption.md)来保护发送到存储帐户的数据。 </li><li>使用[存储服务加密 (SSE)](../../storage/common/storage-service-encryption.md) 来自动加密 Azure 存储中的数据，使用 [Azure 磁盘加密](../azure-security-disk-encryption-overview.md) 来加密 OS 和数据磁盘的虚拟机磁盘文件。</li><li>使用 Azure [存储分析](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)监视授权类型；像使用 Blob 存储时一样，可以查看用户使用的是共享访问签名还是存储帐户密钥。</li><li>使用[跨域资源共享 (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) 访问不同域中的存储资源。</li></ul> |
 |[<br>安全策略和建议](../../security-center/security-center-planning-and-operations-guide.md)|<ul><li>使用 [Azure 安全中心](../../security-center/security-center-install-endpoint-protection.md)部署终结点解决方案。</li><li>添加 [Web 应用程序防火墙 (WAF)](../../application-gateway/waf-overview.md) 来保护 Web 应用程序。</li><li>   使用 Microsoft 合作伙伴的[防火墙](../../sentinel/connect-data-sources.md)来增强安全保护。 </li><li>为 Azure 订阅应用安全联系人详细信息；如果 [Microsoft 安全响应中心 (MSRC)](https://technet.microsoft.com/security/dn528958.aspx) 发现客户数据被非法或未授权的一方访问，MSRC 会联系你。</li></ul> |
 | [<br>标识和访问管理](identity-management-best-practices.md)|<ul><li>[使用 Azure AD 将本地目录与云目录同步](../../active-directory/hybrid/whatis-hybrid-identity.md)。</li><li>使用[单一登录](https://azure.microsoft.com/resources/videos/overview-of-single-sign-on/)让用户基于他们在 Azure AD 中的组织帐户访问其 SaaS 应用程序。</li><li>使用[密码重置注册活动](../../active-directory/active-directory-passwords-reporting.md)报告来监视正在注册的用户。</li><li>为用户启用[多重身份验证 (MFA)](../../active-directory/authentication/multi-factor-authentication.md)。</li><li>开发人员可对应用使用安全标识功能，例如 [Microsoft 安全开发生命周期 (SDL)](https://www.microsoft.com/download/details.aspx?id=12379)。</li><li>使用 Azure AD Premium 异常报告和 [Azure AD 标识保护功能](../../active-directory/identity-protection/overview.md)主动监视可疑活动。</li></ul> |
