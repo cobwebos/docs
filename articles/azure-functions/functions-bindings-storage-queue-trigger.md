@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
-ms.custom: cc996988-fb4f-47, tracking-python
-ms.openlocfilehash: bc560f6a0048377f2174805d7e015b55240d7a71
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.custom: cc996988-fb4f-47, devx-track-python
+ms.openlocfilehash: 4abe3a46c854e0856e4db9a60fa7cd6fc9f8b3c8
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564038"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844892"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储触发器
 
@@ -299,7 +299,7 @@ public class QueueTriggerDemo {
 }
 ```
 
-| 属性    | 说明 |
+| properties    | 说明 |
 |-------------|-----------------------------|
 |`name`       | 在函数签名中声明参数名称。 触发函数时，此参数的值包含队列消息的内容。 |
 |`queueName`  | 在存储帐户中声明队列名称。 |
@@ -363,7 +363,7 @@ public class QueueTriggerDemo {
 
 [队列触发器提供了数个元数据属性。](./functions-bindings-expressions-patterns.md#trigger-metadata) 这些属性可在其他绑定中用作绑定表达式的一部分，或者用作代码中的参数。 这些属性是[CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage)类的成员。
 
-|属性|类型|描述|
+|properties|类型|描述|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|队列有效负载（如果是有效的字符串）。 如果队列消息有效负载是一个字符串，与 `QueueTrigger` 中的属性命名的变量具有相同的值 `name` *function.json*。|
 |`DequeueCount`|`int`|此消息取消排队的次数。|

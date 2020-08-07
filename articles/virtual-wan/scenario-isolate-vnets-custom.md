@@ -8,18 +8,18 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4443c92fad2510b6bc4bc1214840aca5553556a5
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 84c7b72e3ac7a5726dea38b21b14b5bd83b42340
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553455"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831016"
 ---
 # <a name="scenario-custom-isolation-for-vnets"></a>方案： Vnet 的自定义隔离
 
 使用虚拟 WAN 虚拟中心路由时，有很多可用方案。 在 Vnet 的自定义隔离方案中，目标是防止特定 Vnet 集能够访问其他特定的 Vnet 集。 但是，Vnet 需要访问所有分支 (VPN/ER/用户 VPN) 。 有关虚拟中心路由的详细信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。
 
-## <a name="scenario-design"></a><a name="design"></a>方案设计
+## <a name="design"></a><a name="design"></a>设计
 
 为了确定需要多少个路由表，你可以构建一个连接矩阵。 对于这种情况，它将如下所示，其中每个单元表示源 (行) 是否可以与目标 (列) ：
 
@@ -53,7 +53,7 @@ ms.locfileid: "87553455"
 
 有关虚拟中心路由的详细信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。
 
-## <a name="scenario-workflow"></a><a name="architecture"></a>方案工作流
+## <a name="workflow"></a><a name="architecture"></a>工作流
 
 在**图 1**中，有蓝色和红色 VNet 连接。
 

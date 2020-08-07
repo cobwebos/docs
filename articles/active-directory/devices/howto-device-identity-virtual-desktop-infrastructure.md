@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a43538ec7fa17764e8d9d53aad305480bd3ab4f5
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 0dde9d8b50233c3c4033daf618e0e626c0174b0c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419795"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903147"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>设备标识和桌面虚拟化
 
-管理员通常会在其组织中部署托管 Windows 操作系统的虚拟桌面基础结构（VDI）平台。 管理员将 VDI 部署到：
+管理员通常会将虚拟桌面基础结构 (VDI) 平台部署在其组织中。 管理员将 VDI 部署到：
 
 - 简化管理。
 - 通过整合和集中资源降低成本。
@@ -60,7 +60,7 @@ ms.locfileid: "87419795"
 
 \***联合**标识基础结构环境表示具有标识提供者（如 AD FS 或其他第三方 IDP）的环境。
 
-\*\***托管**标识基础结构环境表示一个环境，该环境的 Azure AD 为使用[密码哈希同步（PHS）](../hybrid/whatis-phs.md)或[直通身份验证（PTA）](../hybrid/how-to-connect-pta.md)通过[无缝单一登录](../hybrid/how-to-connect-sso.md)部署的标识提供者。
+\*\***托管**标识基础结构环境表示一个环境，该环境的 Azure AD 为使用[密码哈希同步 (PHS) ](../hybrid/whatis-phs.md)或通过[无缝单一登录](../hybrid/how-to-connect-sso.md) [ (PTA) ](../hybrid/how-to-connect-pta.md)部署的标识提供者。
 
 \*\*\***Windows 当前**设备表示 windows 10、windows server 2016 和 windows server 2019。
 
@@ -73,11 +73,11 @@ ms.locfileid: "87419795"
 - [为联合环境配置混合 Azure Active Directory 联接](hybrid-azuread-join-federated-domains.md)
 - [为托管环境配置混合 Azure Active Directory 联接](hybrid-azuread-join-managed-domains.md)
 
-如果你依赖于系统准备工具（sysprep.exe），并且如果你使用的是 Windows 之前的 10 1809 映像进行安装，请确保映像不是从已注册为混合 Azure AD Azure AD 的设备注册的。
+如果你依赖于系统准备工具 ( # A0) 并且你使用 Windows 之前的 Windows 10 1809 映像进行安装，请确保映像不是从已注册 Azure AD 为已加入混合 Azure AD 的设备进行的。
 
-如果你依赖于虚拟机（VM）快照来创建其他 Vm，请确保快照不是来自已注册到 Azure AD 的 VM，因为混合 Azure AD 加入。
+如果依赖于虚拟机 (VM) 快照来创建其他 Vm，请确保快照不是从已注册 Azure AD 作为混合 Azure AD 联接的 VM 使用。
 
-部署非持久性 VDI 时，IT 管理员应密切关注如何管理 Azure AD 中的过时设备。 Microsoft 建议 IT 管理员执行以下指导。 如果不这样做，会导致目录中有大量过时混合 Azure AD 联接的设备，这些设备已从非持久性 VDI 平台注册。
+Windows 当前版本不支持非持久 VDI 混合 Azure AD 联接。 为 Windows 下层部署非持久性 VDI 时，IT 管理员应密切关注在 Azure AD 管理过时设备。 Microsoft 建议 IT 管理员执行以下指导。 如果不这样做，会导致目录中有大量过时混合 Azure AD 联接的设备，这些设备已从非持久性 VDI 平台注册。
 
 - 为计算机的显示名称创建并使用一个前缀，将桌面指定为基于 VDI 的计算机。
 - 在注销脚本中实现以下命令。 此命令将触发对 Azure AD 删除设备的尽力操作调用。

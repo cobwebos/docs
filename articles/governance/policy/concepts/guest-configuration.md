@@ -3,12 +3,12 @@ title: 了解如何审核虚拟机的内容
 description: 了解 Azure Policy 如何使用来宾配置代理审核虚拟机内部的设置。
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: f2f07a3e88984a84ca1529052d5899ad8570a268
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bec0215d3f10aa9f6a20eea7258ec9d5081e8f98
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072820"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901974"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>了解 Azure Policy 的来宾配置
 
@@ -48,7 +48,7 @@ Azure 策略可以审核虚拟机中运行的计算机的设置，这二者都�
 
 下表显示了在每个受支持的操作系统上使用的本地工具的列表。 对于内置内容，来宾配置会自动处理这些工具。
 
-|操作系统|验证工具|注释|
+|操作系统|验证工具|说明|
 |-|-|-|
 |Windows|[PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) v2| 将加载到仅由 Azure 策略使用的文件夹。 不会与 Windows PowerShell DSC 冲突。 PowerShell Core 不会添加到系统路径。|
 |Linux|[Chef InSpec](https://www.chef.io/inspec/)| 在默认位置安装 Chef InSpec 版本2.2.61，并将其添加到系统路径。 还会安装 InSpec 包的依赖项，包括 Ruby 和 Python。 |
@@ -74,7 +74,26 @@ Azure 策略可以审核虚拟机中运行的计算机的设置，这二者都�
 
 来宾配置策略支持自定义虚拟机映像，只要它们是上表中的操作系统之一。
 
-## <a name="guest-configuration-extension-network-requirements"></a>来宾配置扩展网络要求
+## <a name="network-requirements"></a>网络要求
+
+Azure 中的虚拟机可以使用其本地网络适配器或专用链接来与来宾配置服务通信。
+
+Azure Arc 计算机使用本地网络基础结构连接到 Azure 服务并报告符合性状态。
+
+### <a name="communicate-over-virtual-networks-in-azure"></a>通过 Azure 中的虚拟网络进行通信
+
+使用虚拟网络进行通信的虚拟机将需要对端口上的 Azure 数据中心的出站访问 `443` 。 如果在 Azure 中使用不允许出站流量的专用虚拟网络，请使用网络安全组规则配置例外。 服务标记“GuestAndHybridManagement”可用于引用来宾配置服务。
+
+### <a name="communicate-over-private-link-in-azure"></a>通过 Azure 中的专用链接进行通信
+
+虚拟机可以使用[专用链接](../../../private-link/private-link-overview.md)来与来宾配置服务通信。 将标记应用到名称 `EnablePrivateNeworkGC` 和值 `TRUE` 以启用此功能。 在将来宾配置策略应用到计算机之前或之后，可以应用标记。
+
+流量使用 Azure[虚拟公共 IP 地址](../../../virtual-network/what-is-ip-address-168-63-129-16.md)进行路由，用 azure 平台资源建立经过身份验证的安全通道。
+
+### <a name="azure-arc-connected-machines"></a>Azure Arc 连接的计算机
+
+位于 Azure 的外部的节点通过 Azure Arc 连接需要连接到来宾配置服务。
+有关[Azure Arc 文档](../../../azure-arc/servers/overview.md)中提供的网络和代理要求的详细信息。
 
 要与 Azure 中的来宾配置资源提供程序通信，计算机需要对端口**443**上的 Azure 数据中心进行出站访问。 如果 Azure 中的网络不允许出站流量，请使用[网络安全组](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)规则配置异常。 [服务标记](../../../virtual-network/service-tags-overview.md)“GuestAndHybridManagement”可用于引用来宾配置服务。
 
@@ -117,7 +136,7 @@ Azure Policy 中的一个计划提供了按照“基线”审核操作系统设�
 
 某些参数支持整数值范围。 例如，“密码最长期限”设置可以审核有效组策略设置。 “1,70”范围将确认用户必须至少每 70 天更改一次密码，但不得少于一天。
 
-如果使用 Azure 资源管理器模板（ARM 模板）分配策略，请使用参数文件管理异常。 将文件签入到版本控制系统（如 Git）。 有关文件更改的注释证明了赋值为何是预期值的例外情况。
+如果使用 Azure 资源管理器模板 (ARM 模板) 分配策略，请使用参数文件管理异常。 将文件签入到版本控制系统（如 Git）。 有关文件更改的注释证明了赋值为何是预期值的例外情况。
 
 #### <a name="applying-configurations-using-guest-configuration"></a>使用来宾配置应用配置
 

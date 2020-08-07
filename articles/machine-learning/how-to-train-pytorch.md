@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 3c5a8980877541d51eff2dc7ad6d7793aad38415
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7f805a702e85b897f9807eb2294e4263a0ea2d8c
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320895"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876319"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模训练 Pytorch 深度学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -218,7 +218,7 @@ estimator= PyTorch(source_directory=project_folder,
                       node_count=2,
                       process_count_per_node=1,
                       distributed_training=MpiConfiguration(),
-                      framework_version='1.13',
+                      framework_version='1.6',
                       use_gpu=True)
 ```
 将为你安装 Horovod 及其依赖项，因此，你可以在训练脚本 `train.py` 中导入它，如下所示：

@@ -6,17 +6,19 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: keferna
 ms.author: keferna
-ms.date: 01/29/2020
-ms.openlocfilehash: 7041221b015465e9db2d67d8dd7760d644c34f0c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 07/29/2020
+ms.openlocfilehash: bf6215bd9225292f7b85ed6d4c4566cd4ee860b7
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387432"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902093"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>商业市场的地域可用性和货币支持
 
-可在按客户的帐单地址定义的 141 个地理位置购买商业市场产品/服务，并可使用 17 个币种完成交易。 下表列出了每个受支持的地理位置、[ISO 3166 2 位 alpha 代码](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)以及分配的货币。
+## <a name="supported-geographic-locations"></a>支持的地理位置
+
+可在按客户的帐单地址定义的 141 个地理位置购买商业市场产品/服务，并可使用 17 个币种完成交易。 下表列出了每个受支持的地理位置、其[ISO 3166 2 位字母代码](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)和分配的货币。
 
 |   国家/地区名称               |   ISO-2   |   货币   |
 |-------------------------------------|-----------|--------------|
@@ -167,3 +169,34 @@ ms.locfileid: "87387432"
 \* 对于巴西的客户，市场通过云解决方案提供商 (CSP) 使用 USD。
 
 \** 仅适用于免费和 BYOL VM 映像。
+
+## <a name="how-we-convert-currency"></a>如何转换货币
+
+对于所有付费产品/服务类型，Isv 可以选择输入以 USD 表示的价格或按本地货币上传价格。 在保存页面时，以 USD 输入的价格自动转换为本地货币。 每日更新合作伙伴中心使用费率。 Isv 可以导出价格并查看转换后的等效项。
+
+若要在发布之前调整任何价格，只需导出定价电子表格，对其进行修改，并将其上传到更改。
+
+> [!NOTE]
+> 发布计划中某个市场的价格后，无法再更改。 若要确保价格发布之前是正确的，请导出定价电子表格，并查看每个市场中的价格。
+
+## <a name="rate-changes"></a>速率更改
+
+用于计算本地价格的费率每天会更新。 此计算是在 ISV 保存页面时完成的，他们可以通过在发布前导出和查看价格来查看所有费率。
+
+### <a name="retrieving-currency-information-by-api"></a>按 API 检索货币信息
+
+单个价格 (根据其设置方式，可能会受到其保存日期的汇率影响) 可以使用 API 进行检索;无法进行货币信息。
+
+有关如何输入特定产品/服务类型的价格的详细信息，请参阅以下文章：
+
+- [创建 Azure 应用程序产品/服务](partner-center-portal/create-new-azure-apps-offer.md)
+- [创建 Azure 容器产品/服务](partner-center-portal/create-azure-container-offer.md)
+- [创建 Azure 虚拟机套餐](partner-center-portal/azure-vm-create-offer.md)
+- [创建咨询服务套餐](partner-center-portal/create-consulting-service-offer.md)
+- [为客户参与 & PowerApps 产品/服务创建 Dynamics 365](partner-center-portal/create-new-customer-engagement-offer.md)
+- [Dynamics 365 for Operations 产品/服务](partner-center-portal/create-new-operations-offer.md)
+- [Dynamics 365 Business Central 产品/服务](partner-center-portal/create-new-business-central-offer.md)
+- [创建 IoT Edge 模块产品/服务](partner-center-portal/azure-iot-edge-module-creation.md)
+- [创建托管服务产品](partner-center-portal/create-new-managed-service-offer.md)
+- [创建 Power BI 应用](partner-center-portal/create-power-bi-app-offer.md)
+- [创建 SaaS 产品/服务](partner-center-portal/create-new-saas-offer.md)

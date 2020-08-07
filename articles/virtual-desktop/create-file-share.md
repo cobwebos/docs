@@ -8,22 +8,22 @@ ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7c6b37cd8c127bf3c7643b39d54bfcdb8093c58c
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: c9636a08b896cefdbec825e4979ad1ec89f8847b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027386"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87842903"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>使用 Azure 文件和 AD DS 创建配置文件容器
 
 本文介绍如何在现有 Windows 虚拟桌面主机池上创建通过域控制器进行身份验证的 Azure 文件共享。 你可以使用此文件共享来存储存储配置文件。
 
-此过程使用 Active Directory 域服务（AD DS），这是本地的目录服务。 如果你正在查找有关如何使用 Azure AD DS 创建 FSLogix 配置文件容器的信息，请参阅[使用 Azure 文件创建 FSLogix 配置文件容器](create-profile-container-adds.md)。
+此过程使用 Active Directory 域服务 (AD DS) ，这是本地的目录服务。 如果你正在查找有关如何使用 Azure AD DS 创建 FSLogix 配置文件容器的信息，请参阅[使用 Azure 文件创建 FSLogix 配置文件容器](create-profile-container-adds.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
-在开始之前，请确保域控制器已同步到 Azure，并可从会话主机连接到的 Azure 虚拟网络（VNET）解析。
+在开始之前，请确保域控制器已同步到 Azure，并可从会话主机连接到的 Azure 虚拟网络 () VNET 进行解析。
 
 ## <a name="set-up-a-storage-account"></a>设置存储帐户
 
@@ -35,16 +35,16 @@ ms.locfileid: "86027386"
 
 2. 在搜索栏中搜索 "**存储帐户**"。
 
-3. 选择 " **+ 添加**"。
+3. 选择“+添加”  。
 
 4. 在 "**创建存储帐户**" 页中输入以下信息：
 
     - 创建新的资源组。
     - 为存储帐户输入唯一的名称。
     - 对于 "**位置**"，建议选择与 Windows 虚拟机主机池相同的位置。
-    - 对于“性能”，请选择“标准”********。 （取决于 IOPS 要求。 有关详细信息，请参阅[Windows 虚拟桌面中的 FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。）
-    - 对于 "**帐户类型**"，选择 " **StorageV2** " 或 " **FileStorage** " （仅在性能层为 "高级" 时可用）。
-    - 对于**复制**，请选择 "**本地冗余存储（LRS）**"。
+    - 对于“性能”，请选择“标准”。 根据 IOPS 要求 (。 有关详细信息，请参阅[Windows 虚拟桌面中的 FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。 ) 
+    - 对于 "**帐户类型**"，选择 " **StorageV2** " 或 " **FileStorage** (仅在性能层为高级) 时可用。
+    - 对于**复制**，请选择 "**本地冗余存储 (LRS) **"。
 
 5. 完成后，依次选择 "**查看**" 和 "创建"，然后选择 "**创建**"。
 
@@ -66,16 +66,16 @@ ms.locfileid: "86027386"
 
 ## <a name="enable-active-directory-authentication"></a>启用 Active Directory 身份验证
 
-接下来，需要启用 Active Directory （AD）身份验证。 若要启用此策略，你需要在已加入域的计算机上按照此部分的说明进行操作。 若要启用身份验证，请在运行域控制器的 VM 上按照以下说明进行操作：
+接下来，需要启用 Active Directory (AD) 身份验证。 若要启用此策略，你需要在已加入域的计算机上按照此部分的说明进行操作。 若要启用身份验证，请在运行域控制器的 VM 上按照以下说明进行操作：
 
 1. 远程桌面协议加入已加入域的 VM。
 
 2. 按照[为 Azure 文件共享启用 AZURE AD DS 身份验证](../storage/files/storage-files-identity-ad-ds-enable.md)中的说明安装 AzFilesHybrid 模块并启用身份验证。
 
-3.  打开 Azure 门户，打开存储帐户，选择 "**配置**"，然后确认 " **Active Directory （AD）** " 设置为 "**已启用**"。
+3.  打开 Azure 门户，打开存储帐户，选择 "**配置**"，然后 Active Directory 确认 " ** (AD) ** " 设置为 "**已启用**"。
 
      > [!div class="mx-imgBorder"]
-     > ![启用 Azure Active Directory （AD）的配置页的屏幕截图。](media/active-directory-enabled.png)
+     > ![启用了 Azure Active Directory (AD) 的配置页的屏幕截图。](media/active-directory-enabled.png)
 
 ## <a name="assign-azure-rbac-permissions-to-windows-virtual-desktop-users"></a>向 Windows 虚拟桌面用户分配 Azure RBAC 权限
 
@@ -88,7 +88,7 @@ ms.locfileid: "86027386"
 >[!NOTE]
 >为其分配权限的帐户或组应该已在域中创建并与 Azure AD 同步。 在 Azure AD 中创建的帐户不起作用。
 
-分配基于角色的访问控制（RBAC）权限：
+ (RBAC) 权限分配基于角色的访问控制权限：
 
 1. 打开 Azure 门户。
 
@@ -190,8 +190,6 @@ ms.locfileid: "86027386"
      icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
-5. 选择“应用”。
-
 ## <a name="configure-fslogix-on-session-host-vms"></a>在会话主机 Vm 上配置 FSLogix
 
 本节将演示如何使用 FSLogix 配置 VM。 每次配置会话主机时，都需要遵循以下说明。 在开始配置之前，请按照[下载并安装 FSLogix](/fslogix/install-ht)中的说明进行操作。 有几个可用选项可以确保在所有会话主机上都设置了注册表项。 可以在映像中设置这些选项或配置组策略。
@@ -216,7 +214,7 @@ ms.locfileid: "86027386"
 
 6. 重启 VM。
 
-## <a name="testing"></a>测试
+## <a name="testing"></a>正在测试
 
 安装并配置 FSLogix 后，可以通过使用已分配了主机池上的应用组或桌面的用户帐户登录来测试部署。 确保你登录所用的用户帐户具有对文件共享的权限。
 

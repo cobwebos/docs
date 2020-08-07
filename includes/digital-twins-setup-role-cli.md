@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/17/2020
 ms.author: baanders
-ms.openlocfilehash: 1714fac465531a2d3a5829e7080132510ccd1ec4
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 2f10a6915a3edf673316ae9151b6052442678ef9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407410"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832310"
 ---
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]
 
@@ -24,7 +24,18 @@ ms.locfileid: "87407410"
 az role assignment list --assignee <your-Azure-email>
 ```
 
-如果你是所有者，则 `roleDefinitionName` 输出中的值为*owner*：
+> [!NOTE]
+> 如果此命令返回一个错误，指出 CLI**在 graph 数据库中找不到用户或服务主体**：
+>
+> 在本文的其余部分，请使用用户的*对象 ID* ，而不是电子邮件。 对于个人 Microsoft 帐户 (的用户，可能会发生这种情况， [msa) ](https://account.microsoft.com/account)。 
+>
+> 使用[Azure Active Directory 用户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)的 "Azure 门户" 页选择用户帐户并打开其详细信息。 复制用户的*ObjectID*：
+>
+> :::image type="content" source="../articles/digital-twins/media/includes/user-id.png" alt-text="Azure 门户突出显示 "对象 ID" 字段中的 GUID 的用户页面视图" lightbox="../articles/digital-twins/media/includes/user-id.png":::
+>
+> 然后，使用用户的*对象 ID*和电子邮件重复 "角色分配列表" 命令。
+
+运行角色分配列表命令后，如果你是所有者，则 `roleDefinitionName` 输出中的值为*owner*：
 
 :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/cloud-shell/owner-role.png" alt-text="显示 az role 赋值 list 命令输出的 Cloud Shell 窗口":::
 

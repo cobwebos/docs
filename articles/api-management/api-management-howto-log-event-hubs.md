@@ -1,6 +1,6 @@
 ---
 title: 如何在 Azure API 管理中将事件记录到 Azure 事件中心 | Microsoft Docs
-description: 了解如何在 Azure API 管理中将事件记录到 Azure 事件中心。
+description: 了解如何在 Azure API 管理中将事件记录到 Azure 事件中心。 事件中心是一个高度可缩放的数据入口服务。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: e2bf63558b4bbd55262aa16f70bfba934a42c3ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4909dde8efd7125a60509bb86b28f069bf6dbb24
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024956"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903385"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>如何在 Azure API 管理中将事件记录到 Azure 事件中心
 事件中心是一个高度可缩放的引入服务，每秒可以引入数百万的事件，使用户能够处理和分析连接设备和应用程序生成的海量数据。 事件中心充当事件管道的“前门”，将数据收集到事件中心后，可以使用任何实时分析提供程序或批处理/存储适配器来转换和存储这些数据。 事件中心可将事件流的生成与这些事件的使用分离开来，因此，事件使用者可以根据自己的计划访问事件。
@@ -63,12 +63,12 @@ ms.locfileid: "87024956"
 ```
 将 `logger-id` 替换为请求 URL 中用于 `{loggerId}` 的值，以创建上一步中的记录器。
 
-可使用返回字符串作为 `log-to-eventhub` 元素值的任何表达式。 在此示例中，JSON 格式的字符串包含记录的日期和时间、服务名称、请求 ID、请求 IP 地址和操作名称。
+可使用返回字符串作为 `log-to-eventhub` 元素值的任何表达式。 在此示例中，将记录 JSON 格式的字符串，其中包含日期和时间、服务名称、请求 ID、请求 IP 地址和操作名称。
 
 单击“保存”保存更新后的策略配置。 保存后，策略立即处于活动状态，并且事件记录到指定的事件中心。
 
 > [!NOTE]
-> 此 API 管理策略可向事件中心发送的最大受支持消息大小为 200 kb。 如果发送到事件中心的消息大于 200 KB，将自动截断该消息，并且截断的消息将传输到事件中心。
+> 可从此 API 管理策略发送到事件中心的最大受支持消息大小为 200 kb (KB) 。 如果发送到事件中心的消息大于 200 KB，将自动截断该消息，并且截断的消息将传输到事件中心。
 
 ## <a name="preview-the-log-in-event-hubs-by-using-azure-stream-analytics"></a>使用 Azure 流分析在事件中心预览日志
 

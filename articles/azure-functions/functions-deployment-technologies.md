@@ -4,16 +4,30 @@ description: 了解将代码部署到 Azure Functions 的不同方式。
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 754a3ea2a316878cc8c2bd918b99476a7194b545
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: bf8944952abf83837d05019bd783bec2fd43cefe
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562933"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905119"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions 中的部署技术
 
-可以使用多种不同的技术将 Azure Functions 项目代码部署到 Azure。 本文提供这些技术的详尽列表，介绍哪种技术适用于哪种 Functions 风格，解释使用每种方法时会发生什么情况，并提供有关在各种场合下使用的最佳方法的建议。 为部署到 Azure Functions 提供支持的各种工具已根据其环境和适当的技术进行优化。 通常情况下，压缩部署是建议用于 Azure Functions 的部署技术。
+可以使用多种不同的技术将 Azure Functions 项目代码部署到 Azure。 本文概述了可用的部署方法，并提供了有关在各种方案中使用最佳方法的建议。 它还提供有关 underlyng 部署技术的详细信息列表和重要详细信息。 
+
+## <a name="deployment-methods"></a>部署方法
+
+用于将代码发布到 Azure 的部署技术通常由您发布应用程序的方式决定。 适当的部署方法取决于特定需求和开发周期中的时间点。 例如，在开发和测试期间，可以直接从开发工具（如 Visual Studio Code）部署。 当你的应用程序在生产环境中时，你很可能会从源代码管理中发布持续，或者通过使用自动发布管道（其中包括其他验证和测试）来发布。  
+
+下表介绍了可用于函数项目的部署方法。
+
+| 部署 &nbsp; 类型 | 方法 | 最适用于 .。。 |
+| -- | -- | -- |
+| 基于工具 | &bull;&nbsp;[Visual &nbsp; Studio &nbsp; Code &nbsp; 发布](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Visual Studio 发布](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[核心工具发布](functions-run-local.md#publish) | 开发和其他 ad hock 部署过程中的部署。 部署由工具在本地进行管理。 | 
+| 应用服务-托管| &bull;&nbsp;[部署 &nbsp; 中心 &nbsp; (CI/CD) ](functions-continuous-deployment.md)<br/>&bull;&nbsp;[容器 &nbsp; 部署](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure) |   (CI/CD) 从源代码管理或从容器注册表进行持续部署。 部署由应用服务平台 (Kudu) 进行管理。|
+| 外部管道|&bull;&nbsp;[DevOps 管道](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub 操作](functions-how-to-github-actions.md) | 包括其他验证、测试和其他操作的生产和 DevOps 管道作为自动部署的一部分运行。 部署由管道进行管理。 |
+
+尽管特定函数部署基于其上下文使用最佳技术，但大多数部署方法都是基于[zip 部署](#zip-deploy)的。
 
 ## <a name="deployment-technology-availability"></a>部署技术的可用性
 

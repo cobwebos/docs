@@ -10,13 +10,13 @@ ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
-ms.custom: seodec18, tracking-python, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d5a332acbf6550fcc3a4256e1bc0531b31dd6c6a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: seodec18, devx-track-python, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: 21bede74ee265ffbe530c7697817186ac0e8dd3b
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87012248"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845691"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Team Data Science Process 实务：使用 Azure Synapse Analytics
 本教程逐步介绍如何使用 Azure Synapse Analytics 为某个公开提供的数据集（[纽约市出租车行程](https://www.andresmh.com/nyctaxitrips/)数据集）生成和部署机器学习模型。 构造的二元分类模型可预测是否为某个行程支付了小费。  模型包括多类分类（是否有小费）和回归（已付小费金额的分布）。
@@ -24,7 +24,7 @@ ms.locfileid: "87012248"
 该过程遵循[团队数据科学过程 (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 工作流。 我们会介绍如何设置数据科学环境，如何将数据载入 Azure Synapse Analytics，以及如何使用 Azure Synapse Analytics 或 IPython Notebook 来浏览要建模的数据和工程特征。 然后，我们会介绍如何使用 Azure 机器学习来构建和部署模型。
 
 ## <a name="the-nyc-taxi-trips-dataset"></a><a name="dataset"></a>NYC 出租车行程数据集
-NYC 出租车车程数据包含大约 20 GB（未压缩约为 48 GB）的压缩 CSV 文件，记录了超过 1.73 亿个单独车程及每个车程支付的费用。 每个行程记录都包括分拣和下车位置和时间、匿名黑客（驾照）许可证编号和 medallion （出租车的唯一 ID）编号。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
+NYC 出租车车程数据包含大约 20 GB（未压缩约为 48 GB）的压缩 CSV 文件，记录了超过 1.73 亿个单独车程及每个车程支付的费用。 每个行程记录都包括拾取和下车位置和时间、匿名黑客 () 驾照号码和 medallion (出租车的唯一 ID) 号。 数据涵盖  2013 年的所有行程，并在每个月的以下两个数据集中提供：
 
 1. **trip_data.csv** 文件包含行程的详细信息，例如乘客编号、上车和下车时间、行程持续时间和行程距离。 下面是一些示例记录：
 
@@ -602,14 +602,14 @@ AND pickup_longitude != '0' AND dropoff_longitude != '0'
 
 **输出：** 此查询生成一个表（包含 2,803,538 行），其中包含上下车的经纬度以及相应的直接距离（以英里计）。 下面是前三行的结果：
 
-| （行号） | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
+|  (行号)  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
 | --- | --- | --- | --- | --- | --- |
 | 1 |40.731804 |-74.001083 |40.736622 |-73.988953 |.7169601222 |
 | 2 |40.715794 |-74,010635 |40.725338 |-74.00399 |.7448343721 |
 | 3 |40.761456 |-73.999886 |40.766544 |-73.988228 |0.7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>准备建模的数据
-下面的查询联接 **nyctaxi\_trip** 和 **nyctaxi\_fare** 表，生成一个二元分类标签 **tipped**，多类分类标签 **tip\_class**，并从完整联接的数据集中提取样本。 采样是通过检索基于提取时间的行程的子集来完成的。  可以复制此查询，然后将其直接粘贴到[Azure 机器学习 Studio （经典）](https://studio.azureml.net) [导入数据][模块中]，以便从 Azure 中的 SQL 数据库实例进行直接数据引入。 此查询将排除具有不正确（0，0）坐标的记录。
+下面的查询联接 **nyctaxi\_trip** 和 **nyctaxi\_fare** 表，生成一个二元分类标签 **tipped**，多类分类标签 **tip\_class**，并从完整联接的数据集中提取样本。 采样是通过检索基于提取时间的行程的子集来完成的。  可以复制此查询，然后将其直接粘贴到[Azure 机器学习 Studio (经典) ](https://studio.azureml.net) [导入][数据模块，]以便从 Azure 中的 SQL 数据库实例进行直接数据引入。 此查询将排除具有不正确（0，0）坐标的记录。
 
 ```sql
 SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,

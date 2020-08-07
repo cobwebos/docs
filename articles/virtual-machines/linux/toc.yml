@@ -45,9 +45,9 @@
     - name: 13 - 管理 VM 安全性
       href: tutorial-azure-security.md
     - name: 14a - 通过 Jenkins 生成
-      href: ../../jenkins/tutorial-jenkins-github-docker-cicd.md
+      href: /azure/developer/jenkins/pipeline-with-github-and-docker
     - name: 14b - 将 Jenkins 与 Azure DevOps 集成
-      href: ../../jenkins/tutorial-build-deploy-jenkins.md
+      href: /azure/developer/jenkins/deploy-to-linux-vm-using-azure-devops-services
     - name: 15a - 配置滚动部署策略
       href: tutorial-devops-azure-pipelines-classic.md
     - name: 15b - 配置 Canary 部署策略
@@ -190,7 +190,7 @@
     - name: VM 类型和大小
       items:
         - name: VM 大小
-          href: sizes.md
+          href: ../sizes.md
         - name: 第 2 代 VM
           href: generation-2.md
         - name: 常规用途
@@ -742,7 +742,7 @@
           items:
             - name: 代理概述
               href: ../../azure-monitor/platform/agents-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-            - name: 常见问题
+            - name: 常见问题解答
               href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#agents
             - name: Azure 诊断扩展
               items:
@@ -806,13 +806,13 @@
                 - name: 启用监视概述
                   href: ../../azure-monitor/insights/vminsights-enable-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
                 - name: 为单个 Azure VM 启用
-                  href: ../../azure-monitor/insights/vminsights-enable-single-vm.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-portal.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
                 - name: 使用 Azure Policy 启用
-                  href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
                 - name: 使用 Azure PowerShell 启用
-                  href: ../../azure-monitor/insights/vminsights-enable-at-scale-powershell.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-powershell.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
                 - name: 为混合环境启用
-                  href: ../../azure-monitor/insights/vminsights-enable-hybrid-cloud.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-hybrid.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
             - name: 映射依赖项
               href: ../../azure-monitor/insights/vminsights-maps.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 监视性能
@@ -850,11 +850,11 @@
         - name: Ansible
           items:
             - name: 安装和配置
-              href: ansible-install-configure.md
+              href: /azure/developer/ansible/install-on-linux-vm
             - name: 创建 Linux VM
-              href: ansible-create-vm.md
+              href: /azure/developer/ansible/vm-configure
             - name: 管理 Linux VM
-              href: ansible-manage-linux-vm.md
+              href: /azure/developer/ansible/vm-manage
         - name: Terraform
           items:
             - name: 安装和配置
@@ -1160,5 +1160,5 @@
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
     - name: 常见问题解答
       href: faq.md
-- name: 故障排除
+- name: 疑难解答
   href: ../troubleshooting/index.yml

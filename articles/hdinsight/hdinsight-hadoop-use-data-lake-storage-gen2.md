@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 2992324a1080b75a98264958f56ea28e93b54651
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 21b09e6b7a2be6b87288d973b40c566fb6217841
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534577"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849975"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集
 
@@ -39,9 +39,9 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 在左上角，单击“创建资源”。
 1. 在搜索框中键入“用户分配”并单击“用户分配的托管标识”。
-1. 单击“创建”。
+1. 单击**创建**。
 1. 输入托管标识的名称，选择正确的订阅、资源组和位置。
-1. 单击“创建”。
+1. 单击**创建**。
 
 有关 Azure HDInsight 中托管标识的工作原理的详细信息，请参阅 [Azure HDInsight 中的托管标识](hdinsight-managed-identities.md)。
 
@@ -106,6 +106,7 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 | `<RESOURCEGROUPNAME>` | 要在其中创建新群集和存储帐户的资源组。 |
 | `<MANAGEDIDENTITYNAME>` | 将获得 Azure Data Lake Storage Gen2 帐户的权限的托管标识的名称。 |
 | `<STORAGEACCOUNTNAME>` | 要创建的新 Azure Data Lake Storage Gen2 帐户。 |
+| `<FILESYSTEMNAME>`  | 此群集应在存储帐户中使用的文件系统的名称。 |
 | `<CLUSTERNAME>` | 你的 HDInsight 群集的名称。 |
 | `<PASSWORD>` | 你选择的使用 SSH 及 Ambari 仪表板登录群集的密码。 |
 
@@ -138,7 +139,8 @@ az storage account create --name <STORAGEACCOUNTNAME> \
 
 接下来，登录到门户。 将新的用户分配的托管标识添加到存储帐户上的 "**存储 Blob 数据参与者**" 角色。 此步骤将在步骤3中[的 "使用 Azure 门户"](hdinsight-hadoop-use-data-lake-storage-gen2.md)下进行说明。
 
-为用户分配的托管标识分配角色后，使用以下代码片段部署模板。
+ > [!IMPORTANT]
+ > 请确保存储帐户具有用户分配的标识和**存储 Blob 数据参与者**角色权限，否则，群集创建将失败。
 
 ```azurecli
 az group deployment create --name HDInsightADLSGen2Deployment \
@@ -159,7 +161,7 @@ Data Lake Storage Gen2 使用一个支持基于角色的访问控制 (RBAC) 和�
 
 RBAC 使用角色分配有效地将权限集应用到 Azure 资源的用户、组和服务主体。 通常情况下，这些 Azure 资源限制为顶级资源（例如，Azure 存储帐户）。 对于 Azure 存储以及 Azure Data Lake Storage Gen2，此机制已扩展到文件系统资源。
 
- 有关 RBAC 的文件权限的详细信息，请参阅[azure 基于角色的访问控制（AZURE RBAC）](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac)。
+ 有关使用 RBAC 的文件权限的详细信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制](../storage/blobs/data-lake-storage-access-control.md#azure-role-based-access-control-rbac)。
 
 有关使用 ACL 分配文件权限的详细信息，请参阅[对文件和目录应用访问控制列表](../storage/blobs/data-lake-storage-access-control.md#access-control-lists-on-files-and-directories)。
 

@@ -9,13 +9,13 @@ ms.author: jordane
 author: jpe316
 ms.date: 07/24/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: dfe3d0e7bf0d291807a5a051f834753c7816801a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: d023fa5786375f8fb4dbcdfe01e32da0400088f8
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320874"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87849380"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模构建 scikit-learn 模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -68,7 +68,7 @@ ws = Workspace.from_config()
 
 #### <a name="create-a-custom-environment"></a>创建自定义环境。
 
-创作你的 conda 环境（sklearn-env. docker-compose.override.yml）。
+ (sklearn-env. docker-compose.override.yml) 创作你的 conda 环境。
 若要从笔记本编写 conda 环境，可以在单元顶部添加线条 ```%%writefile sklearn-env.yml``` 。
 
 ```yaml
@@ -165,7 +165,7 @@ model = run.register_model(model_name='sklearn-iris',
 
 ### <a name="preview-no-code-model-deployment"></a>（预览版）无代码模型部署
 
-除了传统的部署路由，还可以使用无代码部署功能（预览版）进行 scikit-learn。 所有内置 scikit-learn 模型类型都支持无代码模型部署。 通过使用 `model_framework`、`model_framework_version` 和 `resource_configuration` 参数注册你的模型（如上所示），可以简单地使用 [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 静态函数来部署模型。
+除了传统的部署路由，还可以使用无代码部署功能 (预览) 来了解 scikit-learn。 所有内置 scikit-learn 模型类型都支持无代码模型部署。 通过使用 `model_framework`、`model_framework_version` 和 `resource_configuration` 参数注册你的模型（如上所示），可以简单地使用 [`deploy()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 静态函数来部署模型。
 
 ```python
 web_service = Model.deploy(ws, "scikit-learn-service", [model])

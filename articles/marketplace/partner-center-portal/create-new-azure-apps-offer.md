@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 7a0f04344d2e4213bbbabb63d57bdaf933154388
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 425ed63238c07ffcf53df10eeddfa0ac95679a2c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87797878"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904507"
 ---
 # <a name="create-an-azure-application-offer"></a>创建 Azure 应用程序产品/服务
 
@@ -56,12 +56,12 @@ ms.locfileid: "87797878"
 
 视频[为 Azure 市场生成解决方案模板和托管应用程序](https://channel9.msdn.com/Events/Build/2018/BRK3603)全面介绍了 Azure 应用程序产品/服务类型：
 
-* 提供的产品/服务类型；
-* 所需的技术资产；
-* 如何创作 Azure 资源管理器模板；
-* 开发和测试应用 UI；
-* 如何发布应用产品/服务；
-* 应用程序评审过程。
+* 可用的产品/服务类型
+* 需要哪些技术资产
+* 如何创作 Azure 资源管理器模板
+* 开发和测试应用程序 UI
+* 如何发布应用程序产品/服务
+* 应用程序审核过程
 
 ### <a name="suggested-tools"></a>建议的工具
 
@@ -188,7 +188,7 @@ ms.locfileid: "87797878"
 5. 隐私策略地址 (链接) 
 6. 产品名称
 7. 总结
-8. 说明
+8. 描述
 9. 屏幕截图/视频
 
 <br>下面是有关如何在 Azure 门户中显示产品/服务的示例：
@@ -198,7 +198,7 @@ ms.locfileid: "87797878"
 #### <a name="call-out-descriptions"></a>拨出说明
 
 1. Title
-2. 说明
+2. 描述
 3. 有用的链接
 4. 屏幕截图
 
@@ -247,15 +247,14 @@ ms.locfileid: "87797878"
 
 #### <a name="store-logos"></a>Microsoft Store 徽标
 
-为**大**徽标 (提供) 216 x 216 和 350 x 350 像素之间的 PNG 文件。 合作伙伴中心将使用此来创建一个**小型** (48 x 48 像素) 和一个**中等** (90 x 90 像素) 大小徽标。 您可以选择将它们替换为不同的图像。
-
-所有三种徽标大小都需要在列表中的不同位置使用：
+按以下三个像素大小提供产品/服务徽标的 PNG 文件：
 
 - 小图 (48 x 48)
 - 中图 (90 x 90)
-- **大型** (216 x 216 和 350 x 350) 
+- 大图 (216 x 216)
+- 宽图 (255 x 115)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+所有三种徽标都是必需的，会在列表的不同位置上使用。
 
 #### <a name="screenshots"></a>屏幕截图
 
@@ -324,7 +323,7 @@ ms.locfileid: "87797878"
 
 计划 ID – 为此产品/服务中的每个计划创建唯一的计划 ID。 客户可以在产品 URL 中看到此 ID。  仅使用小写的字母数字字符、短划线或下划线。 此计划 ID 最多允许 50 个字符。 选择创建之后，便无法删除此 ID。
 
-计划名称 - 客户在确定要在产品/服务中选择哪个计划时将看到此名称。 为此产品/服务中的每个计划创建唯一的产品/服务名称。 计划名称用于区分可能属于同一产品/服务的软件计划（例如，产品/服务名称：Windows Server；计划：Windows Server 2016、Windows Server 2019）。
+***计划名称***–客户在确定要在产品/服务中选择的计划时，将看到此名称。 为此产品/服务中的每个计划创建唯一的产品/服务名称。 计划名称用于区分可能属于同一产品/服务的软件计划（例如，产品/服务名称：Windows Server；计划：Windows Server 2016、Windows Server 2019）。
 
 ### <a name="plan-setup"></a>计划设置
 
@@ -335,7 +334,7 @@ ms.locfileid: "87797878"
 
 #### <a name="re-use-technical-configuration"></a>重复使用技术配置
 
-如果有多个具有相同类型的计划，并且包在它们之间完全相同，则可以选择“此计划重复使用其他计划中的包”。  选择此选项时，你将能够选择具有相同类型的其他计划之一，以便此产品/服务重复使用其中的包。 
+如果有多个具有相同类型的计划，并且包在它们之间完全相同，则可以选择“此计划重复使用其他计划中的包”。  选择此选项时，你将能够选择具有相同类型的其他计划之一，以便此产品/服务重复使用其中的包。
 
 >[!Note]
 >重复使用其他计划中的包时，整个技术配置选项卡会从此计划中消失。 其他计划中的技术配置详细信息（包括将来进行的任何更新）也将用于此计划。<br><br>此计划发布之后便无法更改此设置。
@@ -416,9 +415,9 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 
 提供此计划的每月价格。  此价格不包括在此解决方案部署的资源所产生的任何 Azure 基础结构或即用即付软件成本中。
 
-除了每月价格之外，还可以使用[按流量计费](./azure-app-metered-billing.md)为非标准单位的消耗设置价格。  如果需要，可以将每月价格设置为零，专门使用按流量计费来收费。 
+除了每月价格之外，还可以使用[按流量计费](./azure-app-metered-billing.md)为非标准单位的消耗设置价格。  如果需要，可以将每月价格设置为零，专门使用按流量计费来收费。
 
-以 USD（USD = 美元）设置的价格在保存时会使用当前汇率转换为所有选定市场的本地货币。 在发布之前，通过导出定价电子表格并查看每个市场中的价格来验证这些价格。 如果要在单独市场中设置自定义价格，请修改并导入定价电子表格。 
+以 USD（USD = 美元）设置的价格在保存时会使用当前汇率转换为所有选定市场的本地货币。 在发布之前，通过导出定价电子表格并查看每个市场中的价格来验证这些价格。 如果要在单独市场中设置自定义价格，请修改并导入定价电子表格。
 
 >[!Note]
 >必须先保存定价更改，才能实现定价数据的导出。
@@ -442,8 +441,7 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 >[!Note]
 >通过云解决方案提供商计划的经销商 (CSP) 建立的 Azure 订阅不支持专用产品/服务。
 
-
-### <a name="technical-configuration"></a>技术配置 
+### <a name="technical-configuration"></a>技术配置
 
 通过此选项卡可以上传允许客户部署计划的部署包。
 
@@ -501,15 +499,15 @@ Azure 政府服务处理受特定政府法规和要求约束的数据。 例如�
 
 #### <a name="customize-allowed-customer-actions"></a>自定义允许的客户操作
 
-选择此选项可指定除了默认提供的“`*/read`”操作外，客户可以对托管资源执行的操作。 
+选择此选项可指定除了默认提供的“`*/read`”操作外，客户可以对托管资源执行的操作。
 
-在此处列出要使客户可以执行的其他操作（用分号分隔）。  有关详细信息，请参阅[了解 Azure 资源的拒绝分配](../../role-based-access-control/deny-assignments.md)。  有关可用操作，请参阅 [Azure 资源管理器资源提供程序操作](../../role-based-access-control/resource-provider-operations.md)。 例如，若要允许使用者重启虚拟机，请将 `Microsoft.Compute/virtualMachines/restart/action` 添加到允许的操作。
+在此处列出要使客户可以执行的其他操作（用分号分隔）。  有关详细信息，请参阅[了解 Azure 资源的拒绝分配](../../role-based-access-control/deny-assignments.md)。 有关可用操作，请参阅 [Azure 资源管理器资源提供程序操作](../../role-based-access-control/resource-provider-operations.md)。 例如，若要允许使用者重启虚拟机，请将 `Microsoft.Compute/virtualMachines/restart/action` 添加到允许的操作。
 
 #### <a name="global-azure--azure-government-cloud"></a>全球 Azure/Azure 政府云
 
-指示在每个受支持的云中应该对此托管应用程序拥有管理访问权限的人员。 要向其授予托管资源组权限的用户、组或应用程序使用 Azure Active Directory (AAD) 标识进行标识。
+指示在每个受支持的云中应该对此托管应用程序拥有管理访问权限的人员。 要向其授予对托管资源组的权限的用户、组或应用程序使用 Azure Active Directory (AD) 标识进行标识。
 
-Azure Active Directory 租户 ID – 包含要向其授予权限的用户、组或应用程序的标识的 AAD 租户 ID（也称为目录 ID）。 可以在 Azure 门户上的 [Azure Active Directory 属性](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)中找到 AAD 租户 ID。
+**Azure Active Directory 租户 id** – AZURE AD 租户 id (也称为目录 ID) ，其中包含要向其授予权限的用户、组或应用程序的标识。 可以在 Azure 门户的 " [Azure Active Directory 的属性](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)" 中找到 AZURE AD 租户 ID。
 
 授权 – 添加要向其授予托管资源组权限的用户、组或应用程序的 Azure Active Directory 对象 ID。 通过其主体 ID 标识用户，该 ID 可在 [Azure 门户上的 Azure Active Directory 用户边栏选项卡](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)中找到。
 
@@ -579,9 +577,9 @@ Azure Active Directory 租户 ID – 包含要向其授予权限的用户、组�
 完成产品/服务的所有必需部分后，选择门户右上角的“查看和发布”。
 
 查看产品/服务的每个部分的完成状态。
-    - 未开始 - 表示该部分尚未涉及，需要完成。
-    - 未完成 - 表示该部分包含需要修复的错误或需要提供更多信息。 返回到相应部分并进行更新。
-    - 完成 - 表示该部分已完成，所有必需数据都已提供并且没有错误。 产品/服务的所有部分都必须处于完成状态，然后才能提交产品/服务。
+    - *未启动*–表示该部分尚未接触，需要完成。
+    - *不完整*–表示部分包含需要修复的错误或需要提供详细信息。 返回相应部分并进行更新。
+    - *Complete* –表示部分已完成，所有必需的数据都已提供并且没有错误。 产品/服务的所有部分都必须处于完成状态，然后才能提交产品/服务。
 
 如果这是你首次发布此产品/服务，则可以向认证团队提供测试说明以确保正确测试你的应用，以及任何有助于了解应用的补充说明。
 
