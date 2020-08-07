@@ -9,17 +9,17 @@ ms.date: 06/30/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: bfbe67c20fdec292dca0d6e07a05f2ff27637396
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6edb6f026f3062dfb2beafd863cf090519f6b66a
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87427980"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875977"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
 
 > [!NOTE]
-> **Microsoft.azure.services.appauthentication**已弃用。 它被替换为适用于 .NET、Java、TypeScript 和 Python 的新 Azure 标识库**DefaultAzureCredentials** ，适用于所有新的开发。 可在以下网页中找到详细信息：[身份验证和 AZURE SDK](https://azure.github.io/azure-sdk/posts/2020-02-25/defaultazurecredentials.html)。
+> 不建议将**microsoft.azure.services.appauthentication**用于新的 Key Vault SDK。 它被替换为适用于 .NET、Java、TypeScript 和 Python 的新 Azure 标识库**DefaultAzureCredentials** ，适用于所有新的开发。 可在以下网页中找到详细信息：[身份验证和 AZURE SDK](https://azure.github.io/azure-sdk/posts/2020-02-25/defaultazurecredentials.html)。
 
 若要对 Azure Key Vault 进行身份验证，需要提供 Azure Active Directory (Azure AD) 凭据（共享机密或证书）。
 
@@ -294,7 +294,7 @@ AzureServiceTokenProvider 在默认安装位置查找 Azure CLI。 如果找不�
 - 将“setProfileEnvironment”配置为“True”。 请在[此处](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration)查看详细信息。 
 
     - 转到 %windir%\System32\inetsrv\config\applicationHost.config
-    - 搜索“setProfileEnvironment”。 如果它设置为“False”，请更改为“True”。 如果该元素不存在，请将其作为属性添加到 processModel 元素（ /configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment ），并将其设置为 "True"。
+    - 搜索“setProfileEnvironment”。 如果它设置为“False”，请更改为“True”。 如果该属性不存在，请将其作为属性添加到 processModel 元素 (/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment) ，并将其设置为 "True"。
 
 - 详细了解 [Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/index.yml)。
 - 详细了解 [Azure AD 身份验证方案](../../active-directory/develop/active-directory-authentication-scenarios.md)。

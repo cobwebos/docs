@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 07/22/2020
-ms.custom: how-to, seodec18, tracking-python
-ms.openlocfilehash: f30f2b45944281ed74da2026eb14e8938260b259
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: how-to, seodec18, devx-track-python
+ms.openlocfilehash: 90de785d56e50885a13d43faa77f087d1235ea18
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496094"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852525"
 ---
 # <a name="connect-to-azure-storage-services"></a>连接到 Azure 存储服务
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -92,11 +92,11 @@ ms.locfileid: "87496094"
 
 ### <a name="access-validation"></a>访问验证
 
-**作为初始数据存储创建和注册过程的一部分**，Azure 机器学习自动验证基础存储服务是否存在，以及用户提供的主体（用户名、服务主体或 SAS 令牌）是否有权访问指定的存储。
+**作为初始数据存储创建和注册过程的一部分**，Azure 机器学习会自动验证基础存储服务是否存在，并且用户提供的主体 (用户名、服务主体或 SAS 令牌) 是否有权访问指定的存储。
 
 **创建数据存储后**，仅针对需要访问基础存储容器的方法执行此验证，**而不**是在每次检索数据存储对象时执行。 例如，如果要从数据存储中下载文件，则会进行验证，但如果只想更改默认数据存储，则不会进行验证。
 
-若要对基础存储服务的访问进行身份验证，可以在 `register_azure_*()` 要创建的数据存储类型的相应方法中提供帐户密钥、共享访问签名（SAS）令牌或服务主体。 [存储类型矩阵](#matrix)列出了与每个数据存储类型对应的支持的身份验证类型。
+若要对基础存储服务的访问进行身份验证，可以在 `register_azure_*()` 要创建的数据存储类型的相应方法中提供帐户密钥、共享访问签名 (SAS) 令牌或服务主体。 [存储类型矩阵](#matrix)列出了与每个数据存储类型对应的支持的身份验证类型。
 
 你可以在[Azure 门户](https://portal.azure.com)上查找帐户密钥、SAS 令牌和服务主体信息。
 

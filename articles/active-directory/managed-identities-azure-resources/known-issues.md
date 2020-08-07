@@ -13,16 +13,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 12/12/2017
+ms.date: 08/06/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9b97edeb34e5d245d3bcf9018399f18b096b56f4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 484f5443702b1151dc3f83af11b5f12a2c0a177d
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420492"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902229"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Azure 资源托管标识的 FAQ 和已知问题
 
@@ -45,7 +45,7 @@ ms.locfileid: "87420492"
 
 ### <a name="do-managed-identities-have-a-backing-app-object"></a>托管标识是否具有后备应用对象？
 
-不能。 托管标识和 Azure AD 应用注册在目录中是不同的。 
+不是。 托管标识和 Azure AD 应用注册在目录中是不同的。 
 
 应用注册有两个组件：应用程序对象和服务主体对象。 Azure 资源的托管标识只有其中一个组件：服务主体对象。 
 
@@ -76,13 +76,13 @@ ms.locfileid: "87420492"
 
 ### <a name="will-managed-identities-be-recreated-automatically-if-i-move-a-subscription-to-another-directory"></a>如果我将订阅移动到另一个目录中，是否会自动重新创建托管标识？
 
-不能。 如果将订阅移动到另一个目录，则必须手动重新创建订阅并再次授予 Azure 角色分配。
+不是。 如果将订阅移动到另一个目录，则必须手动重新创建订阅并再次授予 Azure 角色分配。
 - 对于系统分配的托管标识：禁用并重新启用。 
 - 对于用户分配的托管标识：删除、重新创建并重新将其附加到所需的资源（例如虚拟机）
 
 ### <a name="can-i-use-a-managed-identity-to-access-a-resource-in-a-different-directorytenant"></a>是否可以使用托管标识来访问不同目录/租户中的资源？
 
-否。 托管标识当前不支持跨目录方案。 
+不是。 托管标识当前不支持跨目录方案。 
 
 ### <a name="what-azure-rbac-permissions-are-required-to-managed-identity-on-a-resource"></a>在资源上进行标识托管需要什么 Azure RBAC 权限？ 
 

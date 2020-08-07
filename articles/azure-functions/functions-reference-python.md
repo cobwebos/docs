@@ -3,13 +3,13 @@ title: Azure Functions Python 开发人员参考
 description: 了解如何使用 Pythong 开发函数
 ms.topic: article
 ms.date: 12/13/2019
-ms.custom: tracking-python
-ms.openlocfilehash: 6be225c1384892dfdb94da3375707351887c8344
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.custom: devx-track-python
+ms.openlocfilehash: 776355ce981ba5cc2a24bfe473da2f55427eadf6
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564004"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850740"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
