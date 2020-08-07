@@ -1,18 +1,18 @@
 ---
 title: 监视 Azure 文件同步 | Microsoft Docs
-description: 如何监视 Azure 文件同步。
+description: 查看如何使用 Azure Monitor、存储同步服务和 Windows Server 来监视你的 Azure 文件同步部署。
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 81224e0c055ad4a94bd57ebb3aa7c8a3b30c2dd7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9a4e4a30c5a84baf5a78d0a90f7302e2b31a5946
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832614"
+ms.locfileid: "87903521"
 ---
 # <a name="monitor-azure-file-sync"></a>监视 Azure 文件同步
 
@@ -23,7 +23,7 @@ ms.locfileid: "87832614"
 本指南介绍了以下方案： 
 - 查看 Azure Monitor 中 Azure 文件同步度量值。
 - 在 Azure Monitor 中创建警报，以主动通知关键情况。
-- 使用 Azure 门户监视 Azure 文件同步部署的运行状况。
+- 使用 Azure 门户查看 Azure 文件同步部署的运行状况。
 - 如何使用 Windows Server 上的事件日志和性能计数器来监视 Azure 文件同步部署的运行状况。 
 
 ## <a name="azure-monitor"></a>Azure Monitor
@@ -34,11 +34,13 @@ ms.locfileid: "87832614"
 
 默认情况下，启用 Azure 文件同步指标，并每隔 15 分钟将指标发送到 Azure Monitor。
 
-若要在 Azure Monitor 中查看 Azure 文件同步度量值，请选择 "**存储同步服务**" 资源类型。
+**如何在 Azure Monitor 中查看 Azure 文件同步度量值**
+- 在**Azure 门户**中转到**存储同步服务**，然后单击 "**指标**"。
+- 单击 "**指标**" 下拉箭头，然后选择要查看的度量值。
 
 Azure Monitor 提供了下列 Azure 文件同步指标：
 
-| 指标名称 | 说明 |
+| 指标名称 | 描述 |
 |-|-|
 | 同步的字节数 | 传输数据大小（上传和下载）。<br><br>单元：字节<br>聚合类型： Sum<br>适用的维度：服务器终结点名称，同步方向，同步组名称 |
 | 云分层回调 | 回调的数据大小。<br><br>**注意**：未来将删除此指标。 使用云分层撤回大小指标监视重新调用的数据的大小。<br><br>单元：字节<br>聚合类型： Sum<br>适用的维度：服务器名称 |
@@ -82,7 +84,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 ### <a name="registered-server-health"></a>已注册的服务器运行状况
 
 - 如果**已注册的服务器**状态为 "**联机**"，则服务器将成功与服务进行通信。
-- 如果**已注册的服务器**状态**显示**为 "脱机"，请验证服务器上的存储同步监视器 ( # A0) 进程是否正在运行。 如果服务器位于防火墙或代理之后，请参阅[此文章](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy)配置防火墙和代理。
+- 如果**已注册的服务器**状态**显示**为 "脱机"，则存储同步监视器进程 ( # A0) 未运行，或者服务器无法访问 Azure 文件同步服务。 有关指南，请参阅[故障排除文档](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity)。
 
 ### <a name="server-endpoint-health"></a>服务器终结点运行状况
 
@@ -93,7 +95,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 
 - 可在存储同步服务门户中查看以下指标图表：
 
-  | 指标名称 | 说明 | 边栏选项卡名称 |
+  | 指标名称 | 描述 | 边栏选项卡名称 |
   |-|-|-|
   | 同步的字节数 | 已传输数据的大小（上传和下载） | 同步组，服务器终结点 |
   | 云分层回调 | 回调的数据的大小 | 已注册的服务器 |
@@ -116,16 +118,18 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 
 同步运行状况：
 
-- 在同步会话完成后记录事件 ID 9102。 使用此事件可确定同步会话是否成功 (**HResult = 0**) 以及每项是否有同步错误。 有关详细信息，请参阅[同步运行状况](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync)和[每项错误](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)文档。
+- 同步会话完成后，将记录事件 ID 9102。 使用此事件可确定同步会话是否成功 (**HResult = 0**) 以及每项是否有同步错误。 有关详细信息，请参阅[同步运行状况](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync)和[每项错误](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)文档。
 
   > [!Note]  
   > 有时同步会话会整体失败或具有非零 PerItemErrorCount。 但是，它们仍将继续进行，并且某些文件同步成功。 可以在应用的字段（如 AppliedFileCount、AppliedDirCount、AppliedTombstoneCount 和 AppliedSizeBytes）中查看此项。 这些字段告诉你会话成功的次数。 如果在一行中发现多个同步会话失败，并且它们的应用计数已增加，请在打开支持票证之前，提供同步时间以重试。
+
+- 同步会话完成后，每个项的错误都会记录事件 ID 9121。 使用此事件来确定由于此错误 (**PersistentCount**和**TransientCount**) 而未能同步的文件数。 应调查永久性的每项错误，请参阅[如何实现查看是否存在不同步的特定文件或文件夹？](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing)
 
 - 如果存在活动同步会话，则每 5 到 10 分钟记录一次事件 ID 9302。 使用此事件可确定当前同步会话是否正在 (**AppliedItemCount > 0**) 进行进度。 如果同步未进行进度，同步会话应最终会失败，并且会记录错误的事件 ID 9102。 有关详细信息，请参阅[同步进度文档](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)。
 
 已注册的服务器运行状况：
 
-- 当服务器查询作业服务时，每 30 秒记录一次事件 ID 9301。 如果 GetNextJob 的**状态为 0**，则服务器可以与服务进行通信。 如果 GetNextJob 完成并出现错误，请查看[故障排除文档](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors)以获取指导。
+- 当服务器查询作业服务时，每 30 秒记录一次事件 ID 9301。 如果 GetNextJob 的**状态为 0**，则服务器可以与服务进行通信。 如果 GetNextJob 完成并出现错误，请查看[故障排除文档](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#server-endpoint-noactivity)以获取指导。
 
 云分层运行状况：
 
@@ -150,7 +154,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 
 性能监视器提供了下列 Azure 文件同步性能计数器：
 
-| 性能对象\计数器名称 | 说明 |
+| 性能对象\计数器名称 | 描述 |
 |-|-|
 | AFS 传输的字节数\下载的字节数/秒 | 每秒下载的字节数。 |
 | AFS 传输的字节数\上传的字节数/秒 | 每秒上传的字节数。 |

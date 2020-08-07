@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0bc8da02a523479c3c543eff28a376136e29098f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2ccacef6f9557bdcf683973c2ad5141b6066347b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82176203"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904303"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>使用 PowerShell 管理 Azure 独立云中的存储
 
@@ -112,6 +112,7 @@ Get-AzEnvironment -Name AzureGermanCloud
 | SqlDatabaseDnsSuffix | `.database.cloudapi.de` |
 | **StorageEndpointSuffix** | `core.cloudapi.de` |
 | ... | ... |
+
 若只要检索存储终结点后缀属性，请检索特定的云，并仅请求该属性。
 
 ```powershell

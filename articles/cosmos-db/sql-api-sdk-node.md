@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 08/05/2020
 ms.author: anfeldma
 ms.custom: devx-track-javascript
-ms.openlocfilehash: ddbbb9f39dd17daf5c500bf582c100b4e1754a15
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: f280e6754d40ad5dc8cbfa4b760e090d0b5b81aa
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461351"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846473"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Node.js SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -26,6 +26,8 @@ ms.locfileid: "87461351"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
+> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spark 连接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST 资源提供程序](/rest/api/cosmos-db-resource-provider/)
@@ -57,7 +59,7 @@ ms.locfileid: "87461351"
 * 修复了用户提供部分重试选项时遇到的 bug
 
 ### <a name="303"></a><a name="3.0.3"></a>3.0.3
-* 阻止 Webpack 解析要求调用的模块
+* 阻止 webpack 解析调用的模块时需要
 
 ### <a name="302"></a><a name="3.0.2"></a>3.0.2
 * 修复了在聚合查询中 RU 总是被报告为 0 的长期未解决的 bug
@@ -183,7 +185,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 ```
 
 #### <a name="improved-browser-experience"></a>改进了浏览器体验
-尽管可以在浏览器中使用 v2 SDK，但这并不是理想体验。 需要对多个 node.js 内置库填充代码，并使用 Webpack 或 Parcel 之类的捆绑程序。 v3 SDK 为浏览器用户提供了更好的全新体验。
+尽管可以在浏览器中使用 v2 SDK，但这并不是理想体验。 需要填充代码多个 node.js 内置库并使用 webpack 或包裹等捆绑程序。 v3 SDK 为浏览器用户提供了更好的全新体验。
 
 * 将内部请求替换为 fetch (#245)
 * 不使用缓冲区 (#330)

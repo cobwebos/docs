@@ -3,12 +3,12 @@ title: Microsoft Azure 恢复服务 (MARS) 代理– FAQ
 description: 解决与使用 Azure 备份对文件和文件夹进行备份相关的常见问题。
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: c4494b09a5cf838aae3dde01c1268042929ef213
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: e50e424f1a9f044aa1ed8e95c1bce002d134bffe
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563087"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874616"
 ---
 # <a name="frequently-asked-questions---microsoft-azure-recovery-services-mars-agent"></a>常见问题-Microsoft Azure 恢复服务 (MARS) 代理
 
@@ -32,7 +32,7 @@ ms.locfileid: "87563087"
 
 ### <a name="what-characters-are-allowed-for-the-passphrase"></a>密码允许使用哪些字符？
 
-该通行短语应使用 ASCII 字符集中的字符，其 ASCII 值小于或等于127。
+该通行短语应使用 ASCII 字符集中的字符，其[ascii 值小于或等于 127](https://docs.microsoft.com/office/vba/language/reference/user-interface-help/character-set-0127)。
 
 ### <a name="from-what-drives-can-i-back-up-files-and-folders"></a>可以从哪些驱动器备份文件和文件夹？
 

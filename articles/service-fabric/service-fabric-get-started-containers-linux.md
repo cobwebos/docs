@@ -3,13 +3,13 @@ title: 在 Linux 上创建 Azure Service Fabric 容器应用程序
 description: 在 Azure Service Fabric 上创建第一个 Linux 容器应用程序。 生成包含应用程序的 Docker 映像，将该映像推送到容器注册表，然后生成并部署 Service Fabric 容器应用程序。
 ms.topic: conceptual
 ms.date: 1/4/2019
-ms.custom: tracking-python
-ms.openlocfilehash: 547030b983dd02e7b65d404188dccdcc24d53a22
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-python
+ms.openlocfilehash: 35e96f1039dc71427a1a3d2745245eff5d012aaf
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083831"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847527"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>在 Linux 上创建第一个 Service Fabric 容器应用程序
 > [!div class="op_single_selector"]
@@ -88,7 +88,7 @@ if __name__ == "__main__":
 ```
 
 ## <a name="build-the-image"></a>生成映像
-运行 `docker build` 命令，创建运行上述 Web 应用程序的映像。 打开 PowerShell 窗口，导航到 *c:\temp\helloworldapp*。 运行以下命令：
+运行 `docker build` 命令，创建运行上述 Web 应用程序的映像。 打开 PowerShell 窗口，导航到 *c:\temp\helloworldapp*。 运行下面的命令：
 
 ```bash
 docker build -t helloworldapp .

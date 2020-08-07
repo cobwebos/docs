@@ -3,18 +3,18 @@ title: 安装混合云扩展 (HCX)
 description: 设置适用于 Azure VMware 解决方案 (AVS) 私有云的 VMware 混合云扩展 (HCX) 解决方案
 ms.topic: how-to
 ms.date: 07/15/2020
-ms.openlocfilehash: ea968cb21812f7273af342763d307c2faba1eea6
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 84388c3ec53d9067df2580aabb21ca5885d154b8
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475441"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904987"
 ---
 # <a name="install-hcx-for-azure-vmware-solution"></a>安装适用于 Azure VMware 解决方案的 HCX
 
-在本文中，我们将逐步介绍为 Azure VMWare 解决方案（AVS）私有云设置 VMWare 混合云扩展（HCX）解决方案的过程。 HCX 允许将 VMware 工作负荷迁移到云，并通过各种内置 HCX 支持的迁移类型迁移到其他连接的站点。
+本文介绍如何设置 VMWare 混合云扩展 (适用于 Azure VMWare 解决方案 (AVS) 私有云的 HCX) 解决方案。 HCX 允许将 VMware 工作负荷迁移到云，并通过各种内置 HCX 支持的迁移类型迁移到其他连接的站点。
 
-默认安装 HCX 高级，最多支持三个 Vcenter。 如果需要三个以上的选项，则客户可以选择通过支持启用 HCX Enterprise 外接程序。 公开上市（GA）后，HCX Enterprise 安装会向客户收取额外费用，但会提供[其他功能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)。
+HCX 高级（默认安装）支持 (本地或云到云) 的最多三个站点连接。 如果需要三个以上的站点连接，客户可以选择通过支持（当前为预览版）启用 HCX Enterprise 外接程序。 正式发布 (GA) 之后，HCX Enterprise 会向客户收取额外费用，但是会提供[其他功能](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/)。
 
 
 首先，请仔细查看[开始之前](#before-you-begin)、[软件版本要求](#software-version-requirements)和[先决条件](#prerequisites)。 
@@ -22,7 +22,7 @@ ms.locfileid: "87475441"
 接下来，我们将演练所有必要的过程，以便：
 
 > [!div class="checklist"]
-> * 部署本地 HCX OVA
+> * 部署本地 HCX .OVA (连接器) 
 > * 激活并配置 HCX
 > * 配置网络上行和服务网格
 > * 通过检查设备状态来完成设置
@@ -31,23 +31,26 @@ ms.locfileid: "87475441"
 
 ## <a name="before-you-begin"></a>开始之前
     
-* 查看基本的 AVS 软件定义数据中心（SDDC）[教程系列](tutorial-network-checklist.md)。
+* 查看基本的 AVS 软件定义数据中心 (SDDC) [教程系列](tutorial-network-checklist.md)。
 * 查看并参考[VMWARE HCX 文档](https://docs.vmware.com/en/VMware-HCX/index.html)，其中包括 HCX 用户指南。
 * 查看 VMware 文档[通过 Vmware 迁移虚拟机 HCX](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-D0CD0CC6-3802-42C9-9718-6DA5FEC246C6.html?hWord=N4IghgNiBcIBIGEAaACAtgSwOYCcwBcMB7AOxAF8g)。
 * 可以查看[VMWARE HCX 部署注意事项](https://docs.vmware.com/en/VMware-HCX/services/install-checklist/GUID-C0A0E820-D5D0-4A3D-AD8E-EEAA3229F325.html)。
 * （可选）查看 HCX 的相关 VMware 材料，如 HCX 的 VMware vSphere [博客系列](https://blogs.vmware.com/vsphere/2019/10/cloud-migration-series-part-2.html)。 
-* 通过 AVS 支持渠道订购 AVS HCX Enterprise 激活。
+* 通过 AVS 支持渠道请求 AVS HCX 企业激活。
 
-在准备使用 AVS 私有云 HCX 解决方案时，按照计算和存储资源调整工作负载大小是一个重要的规划步骤。 作为初始私有云环境规划的一部分，处理调整大小步骤。   
+当你准备使用 AVS 私有云 HCX 解决方案时，根据计算和存储资源调整工作负载规模是一种重要的规划步骤。 作为初始私有云环境规划的一部分，处理调整大小步骤。 
+
+还可以通过在 Azure Migrate 门户 (中完成 AVS 评估来调整工作负荷的大小 https://docs.microsoft.com/azure/migrate/how-to-create-azure-vmware-solution-assessment) 。
 
 ## <a name="software-version-requirements"></a>软件版本要求
+
 基础结构组件必须运行所需的最低版本。 
                                                          
 | 组件类型    | 源环境要求    | 目标环境要求   |
 | --- | --- | --- |
 | vCenter Server   | 5.1<br/><br/>如果使用 5.5 U1 或更早版本，请为 HCX 操作使用独立的 HCX 用户界面。  | 6.0 U2 及更高版本   |
 | ESXi   | 5.0    | ESXi 6.0 及更高版本   |
-| NSX    | 对于源上的逻辑交换机的 HCX 网络扩展： NSXv 6.2 + 或 NSX-T 2.4 +   | NSXv 6.2+ 或 NSX-T 2.4+<br/><br/>对于 HCX 邻近路由： NSXv 6.4 + （NSX-T 不支持邻近路由） |
+| NSX    | 对于源上的逻辑交换机的 HCX 网络扩展： NSXv 6.2 + 或 NSX-T 2.4 +   | NSXv 6.2+ 或 NSX-T 2.4+<br/><br/>对于 HCX 邻近路由：不) 支持 NSXv 6.4 + (近程路由 |
 | vCloud Director   | 不需要 - 源站点上不与 vCloud Director 进行互操作 | 将目标环境与 Vcloud 集成控制器集成时，最小值为9.1.0.2。  |
 
 ## <a name="prerequisites"></a>先决条件
@@ -56,7 +59,7 @@ ms.locfileid: "87475441"
 
 * 应在本地与 AVS SDDC 之间打开所有所需端口（请参阅 [VMware HCX 文档](https://docs.vmware.com/en/VMware-HCX/services/user-guide/GUID-E456F078-22BE-494B-8E4B-076EF33A9CF4.html)）。
 
-* 一个 IP 地址用于本地 HCX Manager，并且至少有两个用于互连（IX）和网络扩展（NE）设备的 IP 地址。
+* HCX Manager 在本地提供一个 IP 地址，最少两个 IP 地址用于互连 (IX) 和网络扩展 (NE) 设备。
 
 * 本地 HCX IX 和 NE 设备应该能够访问 vCenter 和 ESXi 基础结构。
 
@@ -132,7 +135,7 @@ ms.locfileid: "87475441"
 
     ![创建网络配置文件](./media/hybrid-cloud-extension-installation/create-network-profile.png)
 
-1. 对于新的网络配置文件，输入 HCX IX 和 NE IP 地址范围（IX 和 NE 设备至少需要两个 IP 地址）。
+1. 对于新的网络配置文件，输入 HCX IX 和 NE IP 地址范围 (IX 和 NE 装置) 至少需要两个 IP 地址。
     
    ![输入 IP 地址范围](./media/hybrid-cloud-extension-installation/enter-address-ranges.png)
   

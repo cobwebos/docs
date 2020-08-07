@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/27/2020
-ms.openlocfilehash: 95756e9951b384c779f61651555482b3c8cb7321
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.date: 08/06/2020
+ms.openlocfilehash: 1ba2f5e4b88ae6ae0ed15dbfbbc4fa5c55c45a77
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86083366"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874021"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集
 
@@ -86,6 +86,9 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
 可选：指定现有的 SQL 数据库，以将 Apache Hive、Apache Oozie、或 Apache Ambari 元数据保存在群集之外。 用于元存储的 Azure SQL 数据库必须允许连接到其他 Azure 服务，包括 Azure HDInsight。 创建元存储时，请勿使用短划线或连字符来命名数据库。 这些字符可能导致群集创建过程失败。
 
+> [!IMPORTANT]
+> 对于支持元存储的群集形状，默认元存储提供具有**基本第5个 DTU 限制**的 Azure SQL 数据库， (不可升级) ！ 适用于基本测试目的。 对于大型或生产工作负荷，我们建议迁移到外部元存储。
+
 在完成时选择“下一步:安全性 + 网络 >>”，转到下一选项卡。
 
 ## <a name="security--networking"></a>安全性 + 网络
@@ -94,7 +97,7 @@ Azure 门户会公开大部分的群集属性。 使用 Azure 资源管理器模
 
 在“安全性 + 网络”选项卡中提供以下信息：
 
-|属性 |说明 |
+|属性 |描述 |
 |---|---|
 |企业安全数据包|可选：选中此复选框可使用**企业安全性套餐**。 有关详细信息，请参阅[使用 Azure Active Directory 域服务配置具有企业安全性套餐的 HDInsight 群集](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)。|
 |TLS|可选：从下拉列表中选择 TLS 版本。 有关详细信息，请参阅[传输层安全性](./transport-layer-security.md)。|

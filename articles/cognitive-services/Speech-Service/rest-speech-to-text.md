@@ -3,19 +3,19 @@ title: 语音转文本 API 参考 (REST) - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何使用语音转文本 REST API。 本文介绍授权选项、查询选项，以及如何构建请求和接收响应。
 services: cognitive-services
-author: yinhew
+author: trevorbye
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
-ms.author: yinhew
-ms.openlocfilehash: e7bbedf253d6a64609179a8710fc9accd1f03818
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.author: trbye
+ms.openlocfilehash: 4b1548efe942cbef842498035d6e0b0d11a91d00
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537963"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905238"
 ---
 # <a name="speech-to-text-rest-api"></a>语音转文本 REST API
 
@@ -88,10 +88,10 @@ https://<REGION_IDENTIFIER>.stt.speech.microsoft.com/speech/recognition/conversa
 
 | 参数 | 说明 | 必需/可选 |
 |-----------|-------------|---------------------|
-| ReferenceText | 将对发音进行计算的文本。 | 必需 |
+| ReferenceText | 将对发音进行计算的文本。 | 必选 |
 | GradingSystem | 用于分数校准的点系统。 接受的值为 `FivePoint` 和 `HundredMark`。 默认设置为 `FivePoint`。 | 可选 |
 | 粒度 | 计算粒度。 接受的值为 `Phoneme` ，其中显示了全文本、单词和音素级别上的分数， `Word` 其中显示了整个文本和 word 级别的分数， `FullText` 只显示了完整文本级别的分数。 默认设置为 `Phoneme`。 | 可选 |
-| 维度 | 定义输出条件。 接受的值为 `Basic` ，只显示精确度评分， `Comprehensive` 显示更多维度上的分数（例如，熟练分数和完整文本级别的完整性分数，word 级别上的错误类型）。 检查[响应参数](#response-parameters)以查看不同分数维度和 word 错误类型的定义。 默认设置为 `Basic`。 | 可选 |
+| 维度 | 定义输出条件。 接受的值为 `Basic` ，只显示精确度评分， `Comprehensive` 显示更多维度上的分数 (例如，熟练分数和完整文本级别的完整性分数，word 级别上的错误类型) 。 检查[响应参数](#response-parameters)以查看不同分数维度和 word 错误类型的定义。 默认设置为 `Basic`。 | 可选 |
 | EnableMiscue | 启用 miscue 计算。 启用此功能后，会将发音为的单词与引用文本进行比较，并根据比较结果标记为省略/插入。 接受的值为 `False` 和 `True`。 默认设置为 `False`。 | 可选 |
 | ScenarioId | 指示自定义点系统的 GUID。 | 可选 |
 
@@ -114,7 +114,7 @@ var pronAssessmentParamsBytes = Encoding.UTF8.GetBytes(pronAssessmentParamsJson)
 var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 ```
 
-我们强烈建议在发布音频数据时进行流式处理（分块）上载，这可以显著减少延迟。 有关如何启用流式处理的详细说明，请参阅[不同编程语言的示例代码](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment)。
+我们强烈建议在发布音频数据时) 上传传输 (分块，这可能会显著降低延迟。 有关如何启用流式处理的详细说明，请参阅[不同编程语言的示例代码](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/PronunciationAssessment)。
 
 >[!NOTE]
 >发音评估功能当前仅适用于 `westus` `eastasia` 和 `centralindia` 区域。 此功能目前仅适用于 `en-US` 语言。

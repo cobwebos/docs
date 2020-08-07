@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.date: 08/01/2020
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: d0344247ba4dfffee275782bc2db83142d34cff3
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 8870c83506b1d962b94cd4d671bd3acd3e96c17c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800239"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905357"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>高性能计算 VM 大小
 
@@ -99,6 +99,6 @@ Azure 提供了多个选项，用于创建可使用 RDMA 网络通信的 Windows
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解如何优化 Azure 的 HPC 应用程序以及[Hpc 工作负荷](./workloads/hpc/overview.md)中的一些示例。
+- 详细了解如何在[HPC 工作负荷](./workloads/hpc/overview.md)中[配置 Vm](./workloads/hpc/configure.md)、[启用无限](./workloads/hpc/enable-infiniband.md)，为 Azure[设置 MPI](./workloads/hpc/setup-mpi.md)和优化 hpc 应用程序。
 - 阅读有关[Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)的最新公告和一些 HPC 示例和结果。
 - 有关运行 HPC 工作负荷的更高层次结构视图，请参阅[Azure 上的高性能计算 (HPC) ](/azure/architecture/topics/high-performance-computing/)。

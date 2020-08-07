@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: cc270ebb12b27c6461b00a4f7042bc3c829d02ef
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 5e061e4d6f9e67cc7d92548f54add94097ede7d1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87812276"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905189"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure 数字孪生：度量值疑难解答
 
@@ -32,9 +32,14 @@ ms.locfileid: "87812276"
 
     此页面显示 Azure 数字孪生实例的指标。 你还可以通过从列表中选择你想要查看的指标来创建其自定义视图。
     
-3. 通过单击菜单中的 "**诊断设置**"，然后单击 "**添加诊断设置**"，可以选择将指标数据发送到事件中心终结点或 Azure 存储帐户。
+3. 你可以选择将指标数据发送到事件中心终结点或 Azure 存储帐户，方法是从菜单中选择 "**诊断设置**"，然后单击 "**添加诊断设置**"。
 
-    :::image type="content" source="media/troubleshoot-metrics/diagnostic-settings.png" alt-text="显示 "诊断设置" 页和要添加的按钮的屏幕截图":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="显示 "诊断设置" 页和要添加的按钮的屏幕截图":::
+
+    有关此过程的详细信息，请参阅[*故障排除：设置诊断*](troubleshoot-diagnostics.md)。
+
+4. 通过从菜单中选择 "**警报**"，然后选择 " **+ 新建警报规则**"，可以选择为指标数据设置警报。
+    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="显示 "警报" 页和要添加的按钮的屏幕截图":::
 
     有关此过程的详细信息，请参阅[*故障排除：设置诊断*](troubleshoot-diagnostics.md)。
 

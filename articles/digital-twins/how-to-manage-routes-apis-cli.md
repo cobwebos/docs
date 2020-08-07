@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9274e147bcaec4b3e63a6720e369946d64e94628
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 6ae3e72dc6e79b252c79c78fd5fac27bff8d4740
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809878"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905221"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>在 Azure 数字孪生中管理终结点和路由 (Api 和 CLI) 
 
@@ -24,7 +24,7 @@ ms.locfileid: "87809878"
 
 还可以通过[Azure 门户](https://portal.azure.com)进行管理。 有关使用门户的本文版本，请参阅[*操作方法：管理终结点和路由 (门户) *](how-to-manage-routes-portal.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 你将需要一个**Azure 帐户** (你可以在[此处](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)免费设置一个帐户) 
 * 你将需要 Azure 订阅中的**Azure 数字孪生实例**。 如果尚未安装实例，则可以使用[*操作方法：设置实例和身份验证*](how-to-set-up-instance-scripted.md)中的步骤创建一个实例。 将安装程序中的以下值用于本文后面的内容：
@@ -104,11 +104,11 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 使用数据平面 Api 定义事件路由。 
 
 路由定义可包含以下元素：
-* 要使用的路由 ID
+* 要使用的路由名称
 * 要使用的终结点的名称
 * 定义要发送到终结点的事件的筛选器 
 
-如果没有路由 ID，则不会在 Azure 数字孪生之外路由任何消息。 如果有路由 ID 且筛选器为，则 `true` 所有消息都将路由到该终结点。 如果已添加路由 ID 并添加了不同的筛选器，则将根据筛选器筛选消息。
+如果没有路由名称，则不会在 Azure 数字孪生之外路由任何消息。 如果存在路由名称并且筛选器为，则 `true` 所有消息都将路由到该终结点。 如果存在路由名称并且添加了不同的筛选器，则将根据筛选器筛选消息。
 
 一个路由应该允许选择多个通知和事件类型。 
 

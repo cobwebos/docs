@@ -3,12 +3,12 @@ title: Azure Migrate 常见问题
 description: 获取有关 Azure Migrate 服务的常见问题解答。
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 307a1d417b54ad9546c6e409ad8b105ea443da0e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95fd2ea9ecf5e4bcdf3fb2291e4cf7bf5b111c5f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090002"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847459"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate：常见问题
 
@@ -29,17 +29,23 @@ Azure Migrate 提供了一个中心，用于跟踪发现、评估和将本地应
 
 [Azure Migrate](migrate-services-overview.md)提供了一个集中式中心，用于评估和迁移到 Azure。 
 
-[Azure Site Recovery](../site-recovery/site-recovery-overview.md)是一种灾难恢复解决方案。 
+- 使用 Azure Migrate 可通过 Azure Migrate 工具、其他 Azure 服务和第三方工具提供互操作性和未来的扩展性。
+- Azure Migrate：服务器迁移工具专用于将服务器迁移到 Azure。 它针对迁移进行了优化。 不需要了解与迁移无关的概念和方案。 
+- 从 VM 开始复制开始，180天内没有用于迁移的工具使用量。 这为你提供了完成迁移的时间。 只需为复制中使用的存储和网络资源付费，并为测试迁移期间使用的计算费用付费。
+- Azure Migrate 支持 Site Recovery 支持的所有迁移方案。 此外，对于 VMware Vm，Azure Migrate 提供无代理迁移选项。
+- 我们仅确定 Azure Migrate： Server 迁移工具的新迁移功能的优先级。 这些功能并不针对 Site Recovery。
+
+[Azure Site Recovery](../site-recovery/site-recovery-overview.md)应仅用于灾难恢复。
 
 Azure Migrate：服务器迁移工具使用一些后端 Site Recovery 功能来迁移某些本地计算机的迁移。
 
 ## <a name="i-have-a-project-with-the-previous-classic-experience-of-azure-migrate-how-do-i-start-using-the-new-version"></a>我有一个项目，该项目具有以前的经典体验 Azure Migrate。 如何实现开始使用新版本吗？
 
-无法将以前版本中的项目或组件升级到新版本。 你需要[创建一个新的 Azure Migrate 项目](create-manage-projects.md)，并向其[添加评估和迁移工具](how-to-add-tool-first-time.md)。 使用教程了解如何使用可用的评估和迁移工具。 如果已将 Log Analytics 工作区附加到经典项目，则在删除经典项目后，可以将其附加到当前版本的项目。
+无法将以前版本中的项目或组件升级到新版本。 需要[创建新的 Azure Migrate 项目](create-manage-projects.md)并向其[添加评估和迁移工具](how-to-add-tool-first-time.md)。 学习教程，了解如何使用可用的评估和迁移工具。 如果已将 Log Analytics 工作区附加到了经典项目，则可以在删除经典项目后将其附加到当前版本的项目。
 
 ## <a name="whats-the-difference-between-azure-migrate-server-assessment-and-the-map-toolkit"></a>Azure Migrate：服务器评估和地图工具包之间的区别是什么？
 
-服务器评估提供评估以帮助迁移准备情况，并评估要迁移到 Azure 的工作负荷。 [Microsoft 评估和计划（MAP）工具包](https://www.microsoft.com/download/details.aspx?id=7826)可帮助执行其他任务，包括针对较新版本的 Windows 客户端和服务器操作系统以及软件使用跟踪的迁移规划。 对于这些方案，请继续使用地图工具包。
+服务器评估提供评估以帮助迁移准备情况，并评估要迁移到 Azure 的工作负荷。 [Microsoft 评估和计划 (MAP) 工具包](https://www.microsoft.com/download/details.aspx?id=7826)可帮助执行其他任务，包括针对较新版本的 Windows 客户端和服务器操作系统以及软件使用跟踪的迁移规划。 对于这些方案，请继续使用地图工具包。
 
 ## <a name="whats-the-difference-between-server-assessment-and-the-site-recovery-deployment-planner"></a>服务器评估与 Site Recovery 部署规划器之间的区别是什么？
 

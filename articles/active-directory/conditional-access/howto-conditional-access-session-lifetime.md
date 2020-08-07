@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cf89864eb6e52baf925f82aa590619d7cfeabb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7d2bb927569a125015f1b0befa27fd3e1f17c00
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552121"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874769"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>使用条件访问配置身份验证会话管理
 
@@ -35,7 +35,7 @@ ms.locfileid: "85552121"
 
 登录频率定义在用户尝试访问资源时，要求用户重新登录之前所要经过的时限。
 
-用户登录频率的 Azure Active Directory （Azure AD）默认配置为90天滚动窗口。 经常要求用户提供凭据看似很明智，但有时适得其反：平时不加思索输入凭据的用户可能会意外中收到恶意的凭据提示。
+"用户登录频率" Azure Active Directory (Azure AD) 默认配置为90天滚动窗口。 经常要求用户提供凭据看似很明智，但有时适得其反：平时不加思索输入凭据的用户可能会意外中收到恶意的凭据提示。
 
 不要求用户重新登录看似不安全，但实际上，任何违反 IT 策略的行为都会撤销会话。 部分示例包括（但不限于）密码更改、设备不合规或禁用帐户。 也可以[使用 PowerShell 显式吊销用户会话](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)。 Azure AD 的默认配置是“如果用户会话的安全状况未发生变化，则不要求用户提供其凭据”。
 
@@ -55,7 +55,7 @@ ms.locfileid: "85552121"
 
 ### <a name="user-sign-in-frequency-and-multi-factor-authentication"></a>用户登录频率和多重身份验证
 
-之前仅应用到 Azure AD 联接、混合 Azure AD 联接和 Azure AD 注册的设备上的第一因素身份验证。 我们的客户无法轻松地在这些设备上重新强制执行多重身份验证（MFA）。 根据客户的反馈，登录频率也适用于 MFA。
+之前仅应用到 Azure AD 联接、混合 Azure AD 联接和 Azure AD 注册的设备上的第一因素身份验证。 我们的客户无法轻松地在这些设备上 (MFA) 执行多重身份验证。 根据客户的反馈，登录频率也适用于 MFA。
 
 [![登录频率和 MFA](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart-small.png)](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart.png#lightbox)
 
@@ -106,8 +106,6 @@ ms.locfileid: "85552121"
 ![为登录频率配置的条件访问策略](media/howto-conditional-access-session-lifetime/conditional-access-policy-session-sign-in-frequency.png)
 
 在已注册到 Azure AD 的 Windows 设备上，设备登录被视为一种提示。 例如，如果已将 Office 应用的登录频率配置为24小时，则 Azure AD 注册的 Windows 设备上的用户将通过登录到设备来满足登录频率策略，并在打开 Office 应用时不会再次提示。
-
-如果为同一浏览器会话中运行的不同 Web 应用配置了不同的登录频率，最严格的策略将应用到这两个应用，因为在同一浏览器会话中运行的所有应用共享一个会话令牌。
 
 ### <a name="policy-2-persistent-browser-session"></a>策略2：持久性浏览器会话
 

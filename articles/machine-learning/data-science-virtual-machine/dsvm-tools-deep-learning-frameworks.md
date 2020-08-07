@@ -6,17 +6,17 @@ keywords: 数据科学工具, 数据科学虚拟机, 数据科学工具, Linux �
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.custom: tracking-python
+ms.custom: devx-track-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: c56c7a0d6f0400811d085f60fd71fe72b88bf9ee
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 360899f7efc8850b336f9716b4fd8c89fefe277a
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520555"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846660"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>适用于 Azure Data Science VM 的深度学习和人工智能框架
 下面列出了 DSVM 上的深度学习框架。
@@ -102,7 +102,7 @@ ms.locfileid: "86520555"
 | 如何在 DSVM 上配置/安装它？  | MXNet 模型服务器在 [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) 上安装于 Python 3.6 中，在 [Linux](./dsvm-tools-languages.md#python-linux-edition) 上安装于 Python 3.5 中 |
 | 运行方式      | 终端：运行 `sudo systemctl stop jupyterhub` 以停止 JupyterHub 服务，因为这两个侦听相同的端口。 然后，激活正确的 conda 环境，并运行 `mxnet-model-server --start --models squeezenet=https://s3.amazonaws.com/model-server/model_archive_1.0/squeezenet_v1.1.mar` |
 
-## <a name="nvidia-system-management-interface-nvidia-smi"></a>[NVidia 系统管理界面（nvidia-smi-s）](https://developer.nvidia.com/nvidia-system-management-interface)
+## <a name="nvidia-system-management-interface-nvidia-smi"></a>[Nvidia 系统管理界面 (nvidia-smi-s) ](https://developer.nvidia.com/nvidia-system-management-interface)
 
 | 类别 | 值 |
 | ------------- | ------------- |
@@ -116,7 +116,7 @@ ms.locfileid: "86520555"
 
 | 类别 | 值 |
 | ------------- | ------------- |
-| 支持的版本 | 1.2.0 （ubuntu 16.04、Windows 2016）、1.4.0 （Ubuntu 18.04、Windows 2019） |
+| 支持的版本 | 1.2.0 (Ubuntu 16.04、Windows 2016) 、1.4.0 (Ubuntu 18.04、Windows 2019)  |
 | 支持的 DSVM 版本      | Linux |
 | 如何在 DSVM 上配置/安装它？  | 安装在 [Python 3.5](dsvm-tools-languages.md#python-linux-edition) 中。 示例 Jupyter 笔记本包含在内，并且示例位于 /dsvm/samples/pytorch 中。 |
 | 运行方式      | 终端：激活正确的环境，然后运行 Python。<br/>* [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)： Connect，然后打开 PyTorch 目录以获取示例。  |
@@ -147,4 +147,4 @@ ms.locfileid: "86520555"
 | 支持的版本 | 1.0.3 |
 | 支持的 DSVM 版本      | Linux |
 | 如何在 DSVM 上配置/安装它？  |Theano 安装在 Python 2.7 (root) 以及 Python 3.5 (py35) 环境中____。 |
-| 运行方式      |  终端：激活所需的 Python 版本（root 或 py35），运行 Python，然后导入 Theano。<br/>* Jupyter：选择 Python 2.7 或3.5 内核，然后导入 Theano。  <br/>要解决最近的数学内核库 (MKL) bug，首先需要设置 MKL 线程层，如下所示：<br/><br/>`export MKL_THREADING_LAYER=GNU`  |
+| 运行方式      |  终端：激活要 (root 或 py35) 的 Python 版本，运行 Python，然后导入 Theano。<br/>* Jupyter：选择 Python 2.7 或3.5 内核，然后导入 Theano。  <br/>要解决最近的数学内核库 (MKL) bug，首先需要设置 MKL 线程层，如下所示：<br/><br/>`export MKL_THREADING_LAYER=GNU`  |

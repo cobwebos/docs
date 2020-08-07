@@ -10,14 +10,14 @@ author: gvashishtha
 ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
+ms.custom: how-to, devx-track-python
 zone_pivot_groups: aml-control-methods
-ms.openlocfilehash: 42205f87e2025fa7f4492cb76aeb44a1fbf46eb6
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 5e73744f3d467d08944d0e8800dd6d8824857abd
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542753"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846966"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure 机器学习部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "87542753"
 
 1. 注册模型。
 1. 准备推理配置
-1. 准备条目脚本（除非使用[无代码部署](how-to-deploy-no-code-deployment.md)）
+1. 准备条目脚本 (，除非使用[无代码部署](how-to-deploy-no-code-deployment.md)) 
 1. 将模型部署到计算目标。
 1. 测试已部署的模型（也称为“Web 服务”）。
 
@@ -74,7 +74,7 @@ Azure 机器学习计算目标由 Azure 机器学习创建和管理。 它们可
 * [排查失败的部署问题](how-to-troubleshoot-deployment.md)
 * [部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)
 * [创建使用 web 服务的客户端应用程序](how-to-consume-web-service.md)
-* [更新 web 服务](how-to-deploy-update-web-service.md)
+* [更新 Web 服务](how-to-deploy-update-web-service.md)
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)

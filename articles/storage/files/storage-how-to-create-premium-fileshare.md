@@ -1,6 +1,6 @@
 ---
 title: 创建高级 Azure 文件共享
-description: 本文介绍如何创建高级 Azure 文件共享。
+description: 本文介绍如何使用 Azure 门户、PowerShell 或 Azure CLI 创建高级 Azure 文件共享。
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,12 +8,12 @@ ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a5bdfbbc505f6abe4fee021df014e32d3ccae074
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: adeb1635489441b30c15fee69922e3abef0a53f9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497624"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903810"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>如何创建高级 Azure 文件共享
 高级文件共享在固态磁盘 (SSD) 存储介质上提供，可用于 IO 密集型工作负荷，包括宿主数据库和高性能计算 (HPC)。 高级文件共享托管在特殊用途的存储帐户类型（称为 FileStorage 帐户）中。 高级文件共享旨在用于高性能和企业级应用程序，可稳定提供低延迟、高 IOPS 和高吞吐量的共享。
