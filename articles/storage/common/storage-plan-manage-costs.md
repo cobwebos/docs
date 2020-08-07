@@ -9,18 +9,18 @@ ms.date: 08/03/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 90aa2b9504008783649662019179a5998d534746
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 75b464c140bfda6c3f3559d3bfdbe1e6bc2e7f24
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543089"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760730"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>规划和管理 Azure Blob 存储的成本
 
 本文可帮助你规划和管理 Azure Blob 存储的成本。 首先，使用 Azure 定价计算器估算成本。 创建存储帐户后，请优化帐户，以便只为所需的内容付费。 使用成本管理功能来设置预算和监控成本。 你还可以查看预测成本，并监视支出趋势以确定你可能想要采取的措施。
 
-请记住，Azure 存储的费用只是 Azure 帐单中的每月成本。 尽管本文介绍了如何评估和管理 Azure 存储的成本，但你需要为 Azure 订阅使用的所有 Azure 服务和资源（包括第三方服务）付费。 熟悉管理 Azure 存储的成本后，可以应用类似的方法来管理订阅中使用的所有 Azure 服务的成本。
+请注意，Blob 存储的成本仅是 Azure 帐单中每月成本的一部分。 尽管本文介绍了如何评估和管理 Blob 存储的成本，但你需要为 Azure 订阅使用的所有 Azure 服务和资源（包括第三方服务）付费。 熟悉如何管理 Blob 存储的成本后，可以应用类似的方法来管理订阅中使用的所有 Azure 服务的成本。
 
 ## <a name="estimate-costs"></a>估算成本
 
@@ -76,7 +76,7 @@ ms.locfileid: "87543089"
 
 ## <a name="monitor-costs"></a>监视成本
 
-在 Azure 存储中使用 Azure 资源时，会产生成本。 资源使用情况单位成本因时间间隔（秒、分钟、小时和天）或单位使用量（字节、mb 等）而异。一旦开始使用 Azure 存储，就会产生成本。 您可以在 "[成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md)" 窗格的 "Azure 门户" 中查看成本。
+在 Azure 存储中使用 Azure 资源时，会产生成本。 资源使用情况单位成本按时间间隔 (秒、分钟、小时和天) 或单位使用情况变化 (字节、mb 等）。开始使用 Azure 存储空间时，) 成本会立即产生。 您可以在 "[成本分析](../../cost-management-billing/costs/quick-acm-cost-analysis.md)" 窗格的 "Azure 门户" 中查看成本。
 
 使用成本分析时，可以在关系图和表中查看不同时间间隔的 Azure 存储成本。 有些示例是按天、当前和上个月和年。 还可以对比预算和预测的成本来查看成本。 随着时间的推移切换到较长的视图，可帮助你确定支出趋势并了解超支可能发生的位置。 如果您已经创建了预算，还可以轻松地查看他们超出的位置。
 
@@ -97,7 +97,7 @@ ms.locfileid: "87543089"
 
    ![通过成本分析窗格监视存储成本](./media/storage-plan-manage-costs/cost-analysis-pane-storage.png)
 
-在前面的示例中，您将看到该服务的当前成本。 Azure 区域（位置）和资源组的成本也会显示。 也可以添加其他筛选器（例如：筛选器查看特定存储帐户的成本）。
+在前面的示例中，您将看到该服务的当前成本。 还显示了按 Azure 区域 (位置) 和资源组）的成本。 也可以添加其他筛选器 (例如：用于查看) 的特定存储帐户的成本的筛选器。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -2,7 +2,7 @@
 title: 从另一个组中添加或删除组 - Azure AD
 description: 有关如何使用 Azure Active Directory 在组中添加或删除另一个组的说明。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2abddefebdf58b6c4f82bd6e6e882e3cb5d16023
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ecfc532ea859c78b72a15dc85e0d3fc740ffe19a
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85604295"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797536"
 ---
 # <a name="add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>使用 Azure Active Directory 在组中添加或删除另一个组
 本文可帮助使用 Azure Active Directory 在其他组中添加和删除组。

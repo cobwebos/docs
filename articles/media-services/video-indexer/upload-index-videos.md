@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 02/18/2020
 ms.author: juliako
-ms.openlocfilehash: 011f94cf24c6148ee01275541b090ba28d697018
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6f8181568e5996bfb3c99ae25fb801fa62f3af1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87052485"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904252"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -25,7 +25,7 @@ ms.locfileid: "87052485"
 * 作为请求正文中的字节数组发送视频文件。
 * 提供[资产 ID](../latest/assets-concept.md)，以便使用现有的 Azure 媒体服务资产（仅付费帐户支持此功能）。
 
-视频上传完毕后，视频索引器（可选）会对视频进行编码（如文章中所述）。 创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，可以[创建连接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户](connect-to-azure.md)。 需要为编制索引的分钟数付费，此外还需要支付媒体帐户相关的费用。 
+当你的视频上传完毕后，视频索引器 (根据需要) 对视频进行编码， (文章) 中所述。 创建视频索引器帐户时，可以选择免费试用帐户（提供特定分钟数的免费索引时间）或付费选项（不受配额的限制）。 使用免费试用版时，视频索引器为网站用户提供最多 600 分钟的免费索引，为 API 用户提供最多 2400 分钟的免费索引。 使用付费选项时，可以[创建连接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户](connect-to-azure.md)。 需要为编制索引的分钟数付费，此外还需要支付媒体帐户相关的费用。 
 
 本文介绍如何通过以下选项上传和索引视频：
 
@@ -58,6 +58,13 @@ ms.locfileid: "87052485"
 
 有关可用于视频索引器的文件格式列表，请参阅[输入容器/文件格式](../latest/media-encoder-standard-formats.md#input-containerfile-formats)一文。
 
+## <a name="video-files-storage"></a>视频文件存储
+
+- 使用付费视频索引器帐户，可以创建连接到 Azure 订阅和 Azure 媒体服务帐户的视频索引器帐户。 有关详细信息，请参阅[创建连接到 Azure 的视频索引器帐户](connect-to-azure.md)。
+- 视频文件通过 Azure 媒体服务存储在 Azure 存储中。 无时间限制。
+- 你始终可以从视频索引器中删除视频和音频文件以及从中提取的任何元数据和见解。 从视频索引器中删除某个文件后，该文件及其元数据和见解将从视频索引器中永久删除。 但是，如果你在 Azure 存储中实施了自己的备份解决方案，则该文件将保留在 Azure 存储中。
+- 视频的持久性是相同的，无论是通过视频索引器网站还是使用上传 API 完成上传。
+   
 ## <a name="upload-and-index-a-video-using-the-video-indexer-website"></a><a name="website"></a>使用视频索引器网站上传视频并为其编制索引
 
 > [!NOTE]
@@ -99,7 +106,7 @@ ms.locfileid: "87052485"
         |state|视频状态|  
     - 示例： https： \/ /test.com/notifyme?projectName=MyProject&id = 1234abcd&状态 = 已处理
 - 在视频中标识的人：
-  - “属性”
+  - 属性
     
       |名称|说明|
       |---|---|
@@ -110,7 +117,7 @@ ms.locfileid: "87052485"
         
     - 示例： https： \/ /test.com/notifyme?projectName=MyProject&id = 1234abcd&faceid = 12&knownPersonId = CCA84350-89B7-4262-861C-3CAC796542A5&personName = Inigo_Montoya 
 
-##### <a name="notes"></a>注释
+##### <a name="notes"></a>说明
 
 - 视频索引器返回在原始 URL 中提供的任何现有参数。
 - 提供的 URL 必须进行编码。
@@ -120,7 +127,7 @@ ms.locfileid: "87052485"
 如果原始的或外部的记录包含背景噪音，请使用此参数。 此参数用于配置索引编制过程。 你可以指定以下值：
 
 - `AudioOnly` - 仅使用音频（忽略视频）编制见解的索引和提取见解
-- `VideoOnly`-仅使用视频编制索引并提取见解（忽略音频）
+- `VideoOnly`-仅使用视频对见解进行索引和提取 (忽略音频) 
 - `Default` - 使用音频和视频编制见解的索引和提取见解
 - `DefaultWithNoiseReduction` - 通过音频和视频编制见解的索引和提取见解，同时对音频流应用降噪算法
 
@@ -141,6 +148,9 @@ ms.locfileid: "87052485"
 视频上传以后，视频索引器会选择性地对视频进行编码。 接下来会对视频进行索引编制和分析。 当视频索引器分析完以后，你会获得一个包含视频 ID 的通知。  
 
 使用[上传视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?)或[重新索引视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) API 时，一个可选的参数是 `streamingPreset`。 如果将 `streamingPreset` 设置为 `Default`、`SingleBitrate` 或 `AdaptiveBitrate`，则会触发编码过程。 索引编制和编码作业完成以后，视频就会发布，这样你就也可以流式传输视频。 要从其流式传输视频的流式处理终结点必须处于“正在运行”状态。****
+
+对于 SingleBitrate，将根据输出应用标准编码器成本。 如果视频高度大于或等于720，则视频索引器会将其编码为1280x720。 否则，为640x468。
+默认设置为[内容感知编码](../latest/content-aware-encoding.md)。
 
 为了运行索引编制和编码作业，[连接到视频索引器帐户的 Azure 媒体服务帐户](connect-to-azure.md)需要预留单位。 有关详细信息，请参阅[缩放媒体处理](../previous/media-services-scale-media-processing-overview.md)。 由于这些是计算密集型作业，因此强烈建议使用 S3 单位类型。 RU 数定义可以并行运行的最大作业数。 基线建议是 10 个 S3 RU。 
 

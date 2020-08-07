@@ -3,18 +3,18 @@ title: Azure API for FHIR 访问令牌验证
 description: 逐步介绍令牌验证，并提供有关如何排查访问问题的提示
 services: healthcare-apis
 author: caitlinv39
-ms.reviewer: mihansen
+ms.reviewer: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: cavoeg
-ms.openlocfilehash: 672acd4f68acd4998fd7631240c2f998299def11
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 426ec0c2d6cc274aa0b6829eb4a30fd29b9ba8e2
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84871227"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844654"
 ---
 # <a name="azure-api-for-fhir-access-token-validation"></a>Azure API for FHIR 访问令牌验证
 
@@ -111,12 +111,12 @@ FHIR 服务器的重要属性为 `jwks_uri`（告知服务器要从何处提取�
 
 使用适用于 Azure 的 OSS Microsoft FHIR server 时，服务器将验证：
 
-1. 令牌具有权限 `Audience` （ `aud` 声明）。
+1. 令牌具有正确的 `Audience` (`aud` 声明) 。
 1. 令牌在声明中具有一个角色 `roles` ，该角色允许访问 FHIR 服务器。
 
 有关如何在[FHIR 服务器上定义角色](https://github.com/microsoft/fhir-server/blob/master/docs/Roles.md)的详细信息，请参阅。
 
-FHIR 服务器还可以验证访问令牌是否具有作用域（在令牌声明中 `scp` ），以便访问客户端尝试访问的 FHIR API 部分。 目前，适用于 FHIR 的 Azure API 和适用于 Azure 的 FHIR 服务器不会验证令牌作用域。
+FHIR 服务器还可以验证访问令牌是否具有范围 (in 令牌声明 `scp`) ，以访问客户端尝试访问的 FHIR API 部分。 目前，适用于 FHIR 的 Azure API 和适用于 Azure 的 FHIR 服务器不会验证令牌作用域。
 
 ## <a name="next-steps"></a>后续步骤
 现在，你已了解如何进行令牌验证，接下来可以完成创建 JavaScript 应用程序并读取 FHIR 数据的教程。

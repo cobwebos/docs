@@ -6,7 +6,7 @@ ms.author: dbradish
 manager: barbkess
 ms.openlocfilehash: 40f243ce0044b8e1172fb03a1366f37314a0c550
 ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/02/2020
 ms.locfileid: "85367796"
