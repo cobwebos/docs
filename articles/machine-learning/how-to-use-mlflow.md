@@ -10,13 +10,13 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.date: 06/04/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: ea26e1861d1e3916302563a27389763ebc4c450c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: a0241864a5eafe8783aea463197f86ff949ea9ed
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326692"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87853375"
 ---
 # <a name="track-model-metrics-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>使用 MLflow 和 Azure 机器学习（预览版）跟踪模型指标并部署 ML 模型
 
@@ -156,7 +156,7 @@ run = exp.submit(src)
 
 若要在群集上安装库，请导航到“库”选项卡并单击“新安装” 
 
- ![使用 Azure 机器学习的 MLflow 示意图](./media/how-to-use-mlflow/azure-databricks-cluster-libraries.png)
+ ![有关将 MLflow 与 Azure 机器学习配合使用的示意图](./media/how-to-use-mlflow/azure-databricks-cluster-libraries.png)
 
 在“包”字段中键入 azureml-mlflow，然后单击“安装”。 根据需要重复此步骤，以将其他包安装到用于试验的群集中。
 

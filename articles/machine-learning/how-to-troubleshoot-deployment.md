@@ -8,15 +8,15 @@ ms.subservice: core
 author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
-ms.date: 03/05/2020
+ms.date: 08/06/2020
 ms.topic: conceptual
-ms.custom: troubleshooting, contperfq4, tracking-python
-ms.openlocfilehash: 4741c6348c2a4077776d2d79bee56de26f62e2d1
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.custom: troubleshooting, contperfq4, devx-track-python
+ms.openlocfilehash: 3f8a3c705878e212e6a26670e20b5a81a3f2a6ba
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87540931"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904371"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>使用 Azure Kubernetes 服务和 Azure 容器实例对模型的 Docker 部署进行故障排除 
 
@@ -286,175 +286,7 @@ Azure Kubernetes 服务部署支持自动缩放，这允许添加副本以支持
 
 ## <a name="advanced-debugging"></a>高级调试
 
-某些情况下，可能需要以交互方式调试包含在模型部署中的 Python 代码。 例如，如果输入脚本失败，并且无法通过其他记录确定原因。 通过使用 Visual Studio Code 和针对 Visual Studio 的 Python 工具 (PTVSD)，可以附加到在 Docker 容器中运行的代码。
-
-> [!IMPORTANT]
-> 使用 `Model.deploy()` 和 `LocalWebservice.deploy_configuration` 在本地部署模型时，此调试方法不起作用。 相反，你必须使用 [Model.package()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) 方法创建一个映像。
-
-若要在本地部署 Web 服务，需要在本地系统上安装能够正常工作的 Docker。 有关使用 Docker 的详细信息，请参阅 [Docker 文档](https://docs.docker.com/)。
-
-### <a name="configure-development-environment"></a>配置开发环境
-
-1. 若要在本地 VS Code 部署环境中安装针对 Visual Studio 的 Python 工具 (PTVSD)，请使用以下命令：
-
-    ```
-    python -m pip install --upgrade ptvsd
-    ```
-
-    有关结合使用 VS Code 和 PTVSD 的详细信息，请参阅[远程调试](https://code.visualstudio.com/docs/python/debugging#_remote-debugging)。
-
-1. 若要配置 VS Code，使其与 Docker 映像进行通信，请创建新的调试配置：
-
-    1. 在 VS Code 中，选择“调试”菜单，然后选择“打开配置” 。 打开一个名为 launch.json 的文件。
-
-    1. 在 launch.json 文件中，找到包含 `"configurations": [` 的行，然后在其后插入以下文本：
-
-        ```json
-        {
-            "name": "Azure Machine Learning: Docker Debug",
-            "type": "python",
-            "request": "attach",
-            "port": 5678,
-            "host": "localhost",
-            "pathMappings": [
-                {
-                    "localRoot": "${workspaceFolder}",
-                    "remoteRoot": "/var/azureml-app"
-                }
-            ]
-        }
-        ```
-
-        > [!IMPORTANT]
-        > 如果“配置”部分已存在其他项，请在插入的代码后添加一个逗号 (,)。
-
-        本部分使用端口 5678 附加到 Docker 容器。
-
-    1. 保存 launch.json 文件。
-
-### <a name="create-an-image-that-includes-ptvsd"></a>创建包括 PTVSD 的映像
-
-1. 修改部署的 Conda 环境，使其包括 PTVSD。 以下示例演示使用 `pip_packages` 参数添加它的过程：
-
-    ```python
-    from azureml.core.conda_dependencies import CondaDependencies 
-
-
-    # Usually a good idea to choose specific version numbers
-    # so training is made on same packages as scoring
-    myenv = CondaDependencies.create(conda_packages=['numpy==1.15.4',            
-                                'scikit-learn==0.19.1', 'pandas==0.23.4'],
-                                 pip_packages = ['azureml-defaults==1.0.45', 'ptvsd'])
-
-    with open("myenv.yml","w") as f:
-        f.write(myenv.serialize_to_string())
-    ```
-
-1. 若要在服务启动时启动 PTVSD 并等待连接，请将以下内容添加到 `score.py` 文件的顶部：
-
-    ```python
-    import ptvsd
-    # Allows other computers to attach to ptvsd on this IP address and port.
-    ptvsd.enable_attach(address=('0.0.0.0', 5678), redirect_output = True)
-    # Wait 30 seconds for a debugger to attach. If none attaches, the script continues as normal.
-    ptvsd.wait_for_attach(timeout = 30)
-    print("Debugger attached...")
-    ```
-
-1. 基于环境定义创建一个映像，并将该映像提取到本地注册表。 在调试过程中，你可能需要对映像中的文件进行更改，而不必重新创建文件。 若要在 Docker 映像中安装文本编辑器 (vim)，请使用 `Environment.docker.base_image` 和 `Environment.docker.base_dockerfile` 属性：
-
-    > [!NOTE]
-    > 此示例假定 `ws` 指向 Azure 机器学习工作区，且 `model` 是要部署的模型。 `myenv.yml` 文件包含步骤 1 中创建的 Conda 依赖项。
-
-    ```python
-    from azureml.core.conda_dependencies import CondaDependencies
-    from azureml.core.model import InferenceConfig
-    from azureml.core.environment import Environment
-
-
-    myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
-    myenv.docker.base_image = None
-    myenv.docker.base_dockerfile = "FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04\nRUN apt-get update && apt-get install vim -y"
-    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-    package = Model.package(ws, [model], inference_config)
-    package.wait_for_creation(show_output=True)  # Or show_output=False to hide the Docker build logs.
-    package.pull()
-    ```
-
-    创建并下载映像后，映像路径（包括存储库、名称和标记，在此示例中也是摘要）会显示在类似于以下内容的消息中：
-
-    ```text
-    Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
-    ```
-
-1. 如果希望简化映像的操作，请使用以下命令添加标记。 将 `myimagepath` 替换为前面步骤中的位置值。
-
-    ```bash
-    docker tag myimagepath debug:1
-    ```
-
-    对于其余步骤，可以将本地映像作为 `debug:1` 而不是完整的映像路径值来进行引用。
-
-### <a name="debug-the-service"></a>调试服务
-
-> [!TIP]
-> 如果在 `score.py` 文件中为 PTVSD 连接设置超时，则必须在超时到达之前将 VS Code 连接到调试会话。 启动 VS Code，打开 `score.py` 的本地副本，设置一个断点，使其准备就绪，然后再使用本部分中的步骤进行操作。
->
-> 有关调试和设置断点的详细信息，请参阅[调试](https://code.visualstudio.com/Docs/editor/debugging)。
-
-1. 若要使用映像启动 Docker 容器，请使用以下命令：
-
-    ```bash
-    docker run --rm --name debug -p 8000:5001 -p 5678:5678 debug:1
-    ```
-
-1. 若要将 VS Code 附加到容器中的 PTVSD，请打开 VS Code 并按 F5 或选择“调试”。 出现提示时，请选择“Azure 机器学习: Docker 调试”配置。 还可以选择左侧栏中的“调试”图标，“Azure 机器学习: Docker 调试”项（位于“调试”下拉菜单），然后使用绿色箭头附加调试器。
-
-    ![“调试”图标、“启动调试”按钮和“配置”选择器](./media/how-to-troubleshoot-deployment/start-debugging.png)
-
-此时，VS Code 会连接到 Docker 容器内的 PTVSD，并在之前设置的断点处停止。 现在可以在代码运行时逐句调试代码、查看变量等。
-
-有关使用 VS Code 调试 Python 的详细信息，请参阅[调试 Python 代码](https://docs.microsoft.com/visualstudio/python/debugging-python-in-visual-studio?view=vs-2019)。
-
-<a id="editfiles"></a>
-### <a name="modify-the-container-files"></a>修改容器文件
-
-若要更改映像中的文件，可以附加到正在运行的容器，并执行 bash shell。 你可以在此使用 vim 编辑文件：
-
-1. 若要连接正在运行的容器，并在容器中启动 bash shell，请使用以下命令：
-
-    ```bash
-    docker exec -it debug /bin/bash
-    ```
-
-1. 若要查找服务使用的文件，请在容器中使用 bash shell 的以下命令（如果默认目录与 `/var/azureml-app` 不同）：
-
-    ```bash
-    cd /var/azureml-app
-    ```
-
-    你可以在此使用 vim 编辑 `score.py` 文件。 有关使用 vim 的详细信息，请参阅[使用 Vim 编辑器](https://www.tldp.org/LDP/intro-linux/html/sect_06_02.html)。
-
-1. 通常不会保留容器的更改。 若要保存所做的任何更改，请在退出前面步骤中（即，另一个 shell 中）启动的 shell 之前，使用以下命令：
-
-    ```bash
-    docker commit debug debug:2
-    ```
-
-    此命令创建一个名为 `debug:2` 的新映像，其中包含你的编辑内容。
-
-    > [!TIP]
-    > 需要停止当前容器并开始使用新版本，更改才会生效。
-
-1. 请确保将对容器中的文件所做的更改与 VS Code 使用的本地文件保持同步。 否则，调试器体验将达不到预期效果。
-
-### <a name="stop-the-container"></a>停止容器
-
-若要停止容器，请使用以下命令：
-
-```bash
-docker stop debug
-```
+某些情况下，可能需要以交互方式调试包含在模型部署中的 Python 代码。 例如，如果输入脚本失败，并且无法通过其他记录确定原因。 通过使用 Visual Studio Code 和 debugpy，可以附加到在 Docker 容器中运行的代码。 有关详细信息，请访问[VS Code 指南中的交互式调试](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-deployments)。
 
 ## <a name="next-steps"></a>后续步骤
 

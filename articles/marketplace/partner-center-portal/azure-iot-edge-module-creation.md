@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 779fc1cfc617e18eee4d84dcfd007f10ddb31f96
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 52bb3e63ff436aa73aaaf43f2f87f904b27f70b6
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87808705"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876625"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>创建 IoT Edge 模块产品/服务
 
@@ -199,15 +199,14 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 
 #### <a name="store-logos"></a>应用商店徽标
 
-为**大**徽标 (提供) 216 x 216 和 350 x 350 像素之间的 PNG 文件。 合作伙伴中心将使用此来创建一个**小型** (48 x 48 像素) 和一个**中等** (90 x 90 像素) 大小徽标。 您可以选择将它们替换为不同的图像。
+按以下四个像素大小提供产品/服务徽标的 PNG 文件：
 
-需要在列表中的不同位置使用所有三种徽标尺寸：
+- 小 (48 x 48)
+- 中 (90 x 90)
+- 大 (216 x 216)
+- 宽 (255 x 115)
 
-- 小图 (48 x 48)
-- 中图 (90 x 90)
-- **大型** (216 x 216 和 350 x 350) 
-
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+所有四个徽标都是必需的，并且在市场一览中的不同位置上使用。
 
 #### <a name="screenshots-optional"></a>屏幕截图（可选）
 
@@ -232,7 +231,7 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 5. 隐私策略地址 (链接) 
 6. 名称
 7. 总结
-8. 说明
+8. 描述
 9. 有用的链接
 10. 屏幕截图/视频
 
@@ -253,7 +252,7 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 #### <a name="call-out-descriptions"></a>拨出说明
 
 1. 名称
-2. 说明
+2. 描述
 3. 有用的链接
 4. 屏幕截图
 

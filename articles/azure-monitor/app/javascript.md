@@ -2,14 +2,14 @@
 title: 适用于 JavaScript Web 应用的 Azure Application Insights
 description: 获取页面视图和会话计数、Web 客户端数据、单页应用程序 (SPA)，以及跟踪使用模式。 检测 JavaScript 网页中的异常和性能问题。
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e0545660cbca68d41bc24b7266496b7912d408bc
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 7c5abb109018bd8bc5b501fe728a3a0f422a3db7
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531313"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905819"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -107,10 +107,10 @@ IE 8（或更低版本）尤其不支持报告 SDK 加载失败。 假设大多�
 | 名称 | 类型 | 说明
 |------|------|----------------
 | src | 字符串 [必需] | 要从中加载 SDK 的完整 URL。 此值用于动态添加的 &lt;script /&gt; 标记的“src”属性。 你可以使用公共 CDN 位置，也可以使用自己的私有托管位置。
-| name | 字符串 [可选] | 已初始化的 SDK 的全局名称，默认值为 appInsights。 因此 ```window.appInsights``` 将是对已初始化实例的引用。 注意：如果提供一个名称值或上一个实例似乎是通过全局名称 appInsightsSDK 分配的，则此名称值也将在全局命名空间中定义为 ```window.appInsightsSDK=<name value>```，SDK 初始化代码需要此名称，以确保它正在初始化和更新的代码片段主干和代理方法正确。
+| name | 字符串 [可选] | 已初始化的 SDK 的全局名称，默认值为 `appInsights` 。 因此 ```window.appInsights``` 将是对已初始化实例的引用。 注意：如果提供一个名称值或上一个实例似乎是通过全局名称 appInsightsSDK 分配的，则此名称值也将在全局命名空间中定义为 ```window.appInsightsSDK=<name value>```，SDK 初始化代码需要此名称，以确保它正在初始化和更新的代码片段主干和代理方法正确。
 | ld | 毫秒数 [可选] | 定义在尝试加载 SDK 之前要等待的加载延迟。 默认值为 0 毫秒，任何负值都表示将立即向页面的 &lt;head&gt; 区域添加脚本标记，然后在加载脚本（或失败）之前阻止页面加载事件。
 | useXhr | 布尔 [可选] | 此设置仅用于报告 SDK 加载失败。 报告将首先尝试使用 fetch()（如果可用），然后回退到 XHR，将此值设置为 true 即可绕过提取检查。 仅当在提取将无法发送失败事件的环境中使用应用程序时，才需要使用此值。
-| crossOrigin | 字符串 [可选] | 通过包含此设置，添加以下载 SDK 的脚本标记将包含带有此字符串值的 crossOrigin 属性。 如果未定义（默认值），则不添加 crossOrigin 属性。 未定义建议的值（默认值）;""; 或“anonymous”（如需了解所有有效值，请参阅 [HTML 属性：crossorigin](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) 文档）
+| crossOrigin | 字符串 [可选] | 通过包含此设置，添加以下载 SDK 的脚本标记将包含带有此字符串值的 crossOrigin 属性。 如果未定义（默认值），则不添加 crossOrigin 属性。 默认)  (不定义建议值;"";或 "anonymous" (适用于所有有效值，请参阅[HTML `crossorigin` 特性：](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin)文档) 
 | cfg | 对象 [必需] | 初始化期间传递到 Application Insights SDK 的配置。
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>将遥测数据发送到 Azure 门户
@@ -195,9 +195,9 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | enableResponseHeaderTracking | false | 如果为 true，则跟踪 AJAX 和 Fetch 请求的响应标头，默认值为 false。
 | distributedTracingMode | `DistributedTracingModes.AI` | 设置分布式跟踪模式。 如果设置了 AI_AND_W3C 模式或 W3C 模式，则将生成 W3C 跟踪上下文标头 (traceparent/tracestate)，并将其包含在所有传出请求中。 提供 AI_AND_W3C 是为了与任何旧版 Application Insights 检测服务向后兼容。 请参阅[此处](./correlation.md#enable-w3c-distributed-tracing-support-for-web-apps)的示例。
 | enableAjaxErrorStatusText | false | 默认值为 false。 如果为 true，则在 AJAX 请求失败时包含依赖关系事件中的响应错误数据文本。
-| enableAjaxPerfTracking | false | 默认值为 false。 用于启用查找并包含报告的 ajax（XHR 和 fetch）报告的指标中其他浏览器 window.performance 计时的标记。
+| enableAjaxPerfTracking | false | 默认值为 false。 用于启用查找和包含其他浏览器窗口的标记。报告的 (XHR 中的性能计时 `ajax` ，并提取) 报告的指标。
 | maxAjaxPerfLookupAttempts | 3 | 默认值为 3。 查找 window.performance 计时的最大次数，此值为必需，因为并非所有浏览器在报告 XHR 请求完成之前都会填充 window.performance，而对于 fetch 请求，将在请求完成之后添加该值。
-| ajaxPerfLookupDelay | 25 | 默认值为 25 毫秒。 重新尝试为 ajax 请求查找 windows.performance 计时时要等待的时间，时间以毫秒计并直接传递给 setTimeout()。
+| ajaxPerfLookupDelay | 25 | 默认值为 25 毫秒。 在重新尝试查找 windows 之前需要等待的时间量。请求的性能计时 `ajax` ，时间以毫秒为单位，并直接传递到 setTimeout ( # A1。
 | enableUnhandledPromiseRejectionTracking | false | 如果为 true，则将自动收集未处理的拒绝承诺并报告为 JavaScript 错误。 如果 disableExceptionTracking 为 true（不跟踪异常），则将忽略配置值且不会报告未处理的拒绝承诺。
 
 ## <a name="single-page-applications"></a>单页应用程序
@@ -219,6 +219,38 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 |---------------|
 | [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
 | [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
+
+## <a name="correlation"></a>相关性
+
+支持客户端到服务器端的相关：
+
+- XHR/AJAX 请求 
+- 提取请求 
+
+与请求的客户端与服务器端相关**不受支持** `GET` `POST` 。
+
+### <a name="enable-cross-component-correlation-between-client-ajax-and-server-requests"></a>启用客户端 AJAX 和服务器请求之间的跨组件关联
+
+若要启用 `CORS` 关联，客户端需要另外发送两个请求标头 `Request-Id` 和 `Request-Context` ，并且服务器端需要能够接受与这些标头的连接。 通过在 `enableCorsCorrelation: true` JAVASCRIPT SDK 配置中设置来启用发送这些标头。 
+
+根据 `Access-Control-Allow-Headers` 服务器端的配置，通常需要通过手动添加和扩展服务器端列表 `Request-Id` `Request-Context` 。
+
+访问控制-允许-标头： `Request-Id` 、 `Request-Context` 、`<your header>`
+
+如果客户端与之通信的任何第三方服务器都无法接受 `Request-Id` 和 `Request-Context` 标头，并且无法更新其配置，则需要通过配置属性将其放入排除列表中 `correlationHeaderExcludeDomains` 。 此属性支持通配符。
+
+```javascript
+// excerpt of the config section of the JavaScript SDK snippet with correlation
+// between client-side AJAX and server requests enabled.
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    enableCorsCorrelation: true,
+    correlationHeaderExcludedDomains: ['myapp.azurewebsites.net', '*.queue.core.windows.net']
+    /* ...Other Configuration Options... */
+}});
+</script>
+
+``` 
 
 ## <a name="explore-browserclient-side-data"></a>浏览浏览器/客户端数据
 

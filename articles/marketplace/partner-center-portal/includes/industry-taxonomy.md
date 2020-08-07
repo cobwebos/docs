@@ -1,5 +1,5 @@
 ---
-title: include 文件
+title: 包含文件
 description: 用于行业分类的包含文件
 documentationcenter: partner-center-commercial-marketplace
 ms.service: marketplace

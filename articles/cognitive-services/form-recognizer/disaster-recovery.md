@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: ebc6ff2c7c0d72dff318c7582d9ae5339682bc95
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 42faf4ba0a596fc5b2b34f403a5117e5ceea82ed
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028224"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903334"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>备份和恢复窗体识别器模型
 
@@ -49,12 +49,12 @@ POST https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/cust
 Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
-你将 `201\Created` 在正文中收到一个值为的响应 `modelId` 。 此字符串是新创建的（空白）模型的 ID。 `accessToken`API 需要将数据复制到此资源， `expirationDateTimeTicks` 值为令牌的过期时间。 将所有这三个值都保存到一个安全位置。
+你将 `201\Created` 在正文中收到一个值为的响应 `modelId` 。 此字符串是新创建的 (空白) 模型的 ID。 `accessToken`API 需要将数据复制到此资源， `expirationDateTimeTicks` 值为令牌的过期时间。 将所有这三个值都保存到一个安全位置。
 
 ```
 HTTP/1.1 201 Created
 Location: https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d
-{"modelId":"33f4d42c-cd2f-4e74-b990-a1aeafab5a5d","accessToken":"1855fe23-5ffc-427b-aab2-e5196641502f","expirationDateTimeTicks":637233481531659440}
+{"modelId":"<your model ID>","accessToken":"<your access token>","expirationDateTimeTicks":637233481531659440}
 ```
 
 ## <a name="start-copy-operation"></a>开始复制操作
@@ -62,7 +62,7 @@ Location: https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0
 以下 HTTP 请求将对源资源启动复制操作。 需要以标头形式输入源资源的终结点和密钥。 请注意，请求 URL 包含要复制的源模型的模型 ID。
 
 ```
-POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copy HTTP/1.1
+POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/<your model ID>/copy HTTP/1.1
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -72,7 +72,7 @@ Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 {
    "targetResourceId": "{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_ID}",  
    "targetResourceRegion": "{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_REGION_NAME}",
-   "copyAuthorization": {"modelId":"33f4d42c-cd2f-4e74-b990-a1aeafab5a5d","accessToken":"1855fe23-5ffc-427b-aab2-e5196641502f","expirationDateTimeTicks":637233481531659440}
+   "copyAuthorization": {"modelId":"<your model ID>","accessToken":"<your access token>","expirationDateTimeTicks":637233481531659440}
 }
 ```
 
@@ -90,7 +90,7 @@ Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecog
 
 |错误|解决方法|
 |:--|:--|
-| 400/错误的请求`"code:" "1002"` | 指示验证错误或格式不正确的复制请求。 常见问题包括：）无效或修改的 `copyAuthorization` 有效负载。 b）令牌的过期值 `expirationDateTimeTicks` （有效 `copyAuhtorization` 负载有效期为24小时）。 c）无效或不受支持 `targetResourceRegion` 。 d）无效或格式不正确 `targetResourceId` 的字符串。
+| 400/错误的请求`"code:" "1002"` | 指示验证错误或格式不正确的复制请求。 常见问题包括：) 无效或已修改的 `copyAuthorization` 有效负载。 b (有效负载的) 过期值 `expirationDateTimeTicks` `copyAuhtorization`) 24 小时有效。 c) 无效或不受支持 `targetResourceRegion` 。 d) 无效或格式不正确 `targetResourceId` 的字符串。
 |
 
 ## <a name="track-copy-progress"></a>跟踪复制进度
@@ -114,8 +114,8 @@ Content-Type: application/json; charset=utf-8
 
 |错误|解决方法|
 |:--|:--|
-|"错误"： [{"代码"： "Authorizationerror)"，<br>"消息"： "授权失败，原因是 <br>授权声明缺少或无效。 "}]   | 当 `copyAuthorization` 从 API 返回的内容修改了负载或内容时发生 `copyAuthorization` 。 确保有效负载与先前调用返回的内容完全相同 `copyAuthorization` 。|
-|"错误"： [{"代码"： "Authorizationerror)"，<br>"消息"： "无法检索授权 <br>新元. 如果此问题仍然存在，请使用不同的 <br>要复制到的目标模型。 "}] | 指示 `copyAuthorization` 负载将与复制请求一起使用。 成功的复制请求将不允许任何使用相同 `copyAuthorization` 有效负载的请求。 如果引发了单独的错误（如下所示），并且随后使用相同的授权有效负载重试副本，则会引发此错误。 解决方法是生成新的 `copyAuthorization` 负载，然后重新发出复制请求。|
+|"错误"： [{"代码"： "Authorizationerror) "，<br>"消息"： "授权失败，原因是 <br>授权声明缺少或无效。 "}]   | 当 `copyAuthorization` 从 API 返回的内容修改了负载或内容时发生 `copyAuthorization` 。 确保有效负载与先前调用返回的内容完全相同 `copyAuthorization` 。|
+|"错误"： [{"代码"： "Authorizationerror) "，<br>"消息"： "无法检索授权 <br>新元. 如果此问题仍然存在，请使用不同的 <br>要复制到的目标模型。 "}] | 指示 `copyAuthorization` 负载将与复制请求一起使用。 成功的复制请求将不允许任何使用相同 `copyAuthorization` 有效负载的请求。 如果引发单独的错误 (如下所示) ，然后使用相同的授权有效负载重试副本，则会引发此错误。 解决方法是生成新的 `copyAuthorization` 负载，然后重新发出复制请求。|
 |"错误"： [{"代码"： "DataProtectionTransformServiceError"，<br>"消息"： "不允许数据传输请求 <br>因为它会降级到不太安全的数据保护方案。 请参阅文档或联系你的服务管理员 <br>了解详细信息。 "}]    | 在 `AEK` 已启用的资源之间复制到未 `AEK` 启用的资源时发生。 若要允许将加密模型作为未加密的复制到目标，请指定 `x-ms-forms-copy-degrade: true` 包含复制请求的标头。|
 |"错误"： [{"代码"： "ResourceResolverError"，<br>"message"： "无法提取 Id 为" ... "的认知资源的信息。 请确保资源有效且存在于指定的区域 "westus2"。 | 指示所指示的 Azure 资源不是 `targetResourceId` 有效的认知资源，或者不存在。 验证并重新发出复制请求以解决此问题。|
 

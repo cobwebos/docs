@@ -9,13 +9,13 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
-ms.custom: tracking-python
-ms.openlocfilehash: b35f971d90f8cd74e2f5a60e34864d8e55a743c4
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: devx-track-python
+ms.openlocfilehash: dee74c787f6546494d12ea582eab383fbd99079d
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431910"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876897"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure 机器学习训练模型
 
@@ -101,18 +101,18 @@ Azure 培训生命周期包括：
 1. 构建 dockerfile 并将其下载到计算节点 
     1. 系统计算的哈希值为： 
         - 基本映像 
-        - 自定义 docker 步骤（请参阅[使用自定义 docker 基本映像部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)）
-        - Conda 定义 YAML （请参阅[Create & use software 环境 in Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)）
-    1. 系统使用此哈希作为工作区 Azure 容器注册表（ACR）的查找中的密钥
+        - 自定义 docker 步骤 (参阅[使用自定义 docker 基本映像部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)) 
+        - Conda 定义 YAML (参阅[在 Azure 机器学习中创建 & 使用软件环境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)) 
+    1. 系统使用此哈希作为工作区 Azure 容器注册表 (ACR 的查找密钥) 
     1. 如果找不到，它将在全局 ACR 中查找匹配项
-    1. 如果找不到，系统将生成新映像（将缓存并向工作区 ACR 注册）
+    1. 如果找不到它，系统将生成一个新的映像 (将使用工作区 ACR 缓存并注册该映像) 
 1. 将压缩的项目文件下载到计算节点上的临时存储
 1. 解压缩项目文件
 1. 计算节点正在执行`python <entry script> <arguments>`
 1. 将日志、模型文件和其他写入的文件保存到 `./outputs` 与工作区关联的存储帐户
 1. 缩减计算，包括删除临时存储 
 
-如果选择在本地计算机上进行训练（"配置为本地运行"），则无需使用 Docker。 如果选择了，则可以在本地使用 Docker （有关示例，请参阅[配置 ML 管道](https://docs.microsoft.com/azure/machine-learning/how-to-debug-pipelines#configure-ml-pipeline )部分）。
+如果选择在本地计算机上定型 ( "配置为本地运行" ) ，则无需使用 Docker。 如果选择 (请参阅[配置 ML 管道](https://docs.microsoft.com/azure/machine-learning/how-to-debug-pipelines#configure-ml-pipeline )部分以获取示例) 部分。
 
 ## <a name="r-sdk"></a>R SDK
 

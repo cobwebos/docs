@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 04/17/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 512632faae453ebdf7cb7b279fe2d29b25d23d6b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a853a28cf7633b5e81bfec2865cc8dc91f2d2f40
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090852"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903980"
 ---
 # <a name="translator-30-translate"></a>翻译器 3.0：Translate
 
@@ -103,7 +103,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 请求标头包括：
 
 <table width="100%">
-  <th width="20%">标头</th>
+  <th width="20%">头文件</th>
   <th>说明</th>
   <tr>
     <td>身份验证标头</td>
@@ -136,7 +136,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 以下限制适用：
 
 * 数组最多可具有 100 个元素。
-* 包括空格在内，请求中包含的整个文本不能超过 5,000 个字符。
+* 请求中包含的整个文本不能超过10000个字符，包括空格。
 
 ## <a name="response-body"></a>响应正文
 

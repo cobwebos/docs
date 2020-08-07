@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: f2af8dcb2460e4e95d29bd81e6994d145ac61a48
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4949a83ac2aac664c19be46a367fce2bbff4cb02
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247769"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904813"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric 群集容量规划注意事项
 
@@ -40,7 +40,7 @@ ms.locfileid: "86247769"
 
 初始节点类型的数量取决于你的群集以及在其上运行的应用程序和服务的用途。 考虑以下问题：
 
-* ***应用程序是否有多个服务，其中是否有任何服务需面向公众或面向 Internet？***
+* ***应用程序是否有多个服务，其中是否有任何服务需是面向公众或面向 Internet 的服务？***
 
     典型的应用程序包含一个前端网关服务，该服务接收来自客户端的输入，以及一个或多个与前端服务通信的后端服务，在前端服务与后端服务之间具有不同的网络。 这些情况通常需要三种节点类型：一个主节点类型，两个非主节点类型 (用于前端和后端服务) 。
 
@@ -155,7 +155,7 @@ ms.locfileid: "86247769"
 
 #### <a name="virtual-machine-sizing"></a>虚拟机大小调整
 
-**对于生产工作负荷， (SKU) 的建议 VM 大小为标准 D2_V2 (或等效) ，最少 50 GB 的本地 SSD。** 建议至少使用 50 GB 本地 SSD，但某些工作负荷 (例如那些运行 Windows 容器) 的工作负荷将需要更大的磁盘。 为生产工作负荷选择其他[VM 大小时](../virtual-machines/sizes-general.md)，请记住以下限制：
+**对于生产工作负荷， (SKU) 的建议 VM 大小为[标准 D2_V2](../virtual-machines/dv2-dsv2-series.md) (或等效) ，最少 50 GB 本地 SSD、2核和 4 GiB 内存。** 建议至少使用 50 GB 本地 SSD，但某些工作负荷 (例如那些运行 Windows 容器) 的工作负荷将需要更大的磁盘。 为生产工作负荷选择其他[VM 大小时](../virtual-machines/sizes-general.md)，请记住以下限制：
 
 - 不支持部分核心 VM 大小（如标准 A0）。
 - *A 系列*出于性能原因，不支持 VM 大小。

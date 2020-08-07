@@ -2,7 +2,7 @@
 title: 使用组管理应用和资源访问 - Azure AD
 description: 了解如何使用 Azure Active Directory 组来管理对组织的基于云的应用、本地应用和资源的访问。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,15 +13,15 @@ ms.author: ajburnle
 ms.reviewer: piotrci
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89c4fa536994ecc8cecb50c907d43df2110be7df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25dace3ad7d467d6add236782c5e39f85d6462a6
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80982593"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797301"
 ---
 # <a name="manage-app-and-resource-access-using-azure-active-directory-groups"></a>使用 Azure Active Directory 组管理应用和资源访问
-通过 Azure Active Directory (Azure AD) 可以使用组来管理基于云的应用、本地应用和资源。 资源可以是 Azure AD 组织的一部分，例如通过 Azure AD 中的角色管理对象的权限，或组织外部的权限，例如，对于软件即服务（SaaS）应用、Azure 服务、SharePoint 站点和本地资源。
+通过 Azure Active Directory (Azure AD) 可以使用组来管理基于云的应用、本地应用和资源。 资源可以是 Azure AD 组织的一部分，例如通过 Azure AD 中的角色管理对象的权限，或组织外部的权限，例如针对软件即服务 (SaaS) 应用、Azure 服务、SharePoint 站点和本地资源。
 
 >[!NOTE]
 > 在 Azure 门户中，可以看到一些组，其成员身份和组详细信息无法在门户中进行管理：

@@ -1,18 +1,18 @@
 ---
 title: 部署 Azure 文件同步 | Microsoft Docs
-description: 了解如何从头到尾部署 Azure 文件同步。
+description: 了解如何使用 Azure 门户、PowerShell 或 Azure CLI 从开始到完成部署 Azure 文件同步。
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 006825b5040db482262f79497b9fd810ed3b790c
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 27615d1367bd0faa035e68bf9f03df05cdccfa7f
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460620"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903844"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -35,13 +35,13 @@ ms.locfileid: "87460620"
     - [创建文件共享](storage-how-to-create-file-share.md)，了解创建文件共享的分步说明。
 1. 至少有一个受支持的 Windows Server 或 Windows Server 群集实例与 Azure 文件同步同步。有关支持的 Windows Server 版本和推荐的系统资源的详细信息，请参阅[windows file Server 注意事项](storage-sync-files-planning.md#windows-file-server-considerations)。
 
-1. Az PowerShell 模块可与 PowerShell 5.1 或 PowerShell 6 + 一起使用。 您可以在任何支持的系统（包括非 Windows 系统）上使用 Az PowerShell module for Azure 文件同步，但必须始终在要注册的 Windows Server 实例上运行服务器注册 cmdlet （可以直接或通过 PowerShell 远程处理来执行）。 在 Windows Server 2012 R2 上，可以验证是否至少运行了 PowerShell 5.1。 \*通过查看 **$PSVersionTable**对象的**PSVersion**属性的值：
+1. Az PowerShell 模块可与 PowerShell 5.1 或 PowerShell 6 + 一起使用。 你可以在任何支持的系统（包括非 Windows 系统）上使用 Az PowerShell module for Azure 文件同步，但必须始终在要注册的 Windows Server 实例上运行服务器注册 cmdlet (可以直接或通过 PowerShell 远程处理) 执行此操作。 在 Windows Server 2012 R2 上，可以验证是否至少运行了 PowerShell 5.1。 \*通过查看 **$PSVersionTable**对象的**PSVersion**属性的值：
 
     ```powershell
     $PSVersionTable.PSVersion
     ```
 
-    如果**PSVersion**值小于5.1， \* 则与大多数全新安装的 Windows Server 2012 R2 一样，你可以通过下载和安装[WINDOWS Management Framework （WMF） 5.1](https://www.microsoft.com/download/details.aspx?id=54616)轻松升级。 为 Windows Server 2012 R2 下载和安装的合适包是**win 8.1 andw2k12r2-KB \* \* \* \* \* \* \* -x64**。 
+    如果**PSVersion**值小于5.1， \* 则与大多数全新安装的 Windows Server 2012 R2 一样，你可以通过下载并安装[WINDOWS Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616)来轻松升级。 为 Windows Server 2012 R2 下载和安装的合适包是**win 8.1 andw2k12r2-KB \* \* \* \* \* \* \* -x64**。 
 
     PowerShell 6 + 可用于任何受支持的系统，并且可以通过其[GitHub 页面](https://github.com/PowerShell/PowerShell#get-powershell)下载。 
 
@@ -159,7 +159,7 @@ Azure 文件同步的部署过程首先会将一个“存储同步服务”资�
 
 - 名称：存储同步服务的唯一名称（按订阅）****。
 - 订阅：需要在其中创建存储同步服务的订阅****。 根据组织的配置策略，可能有权访问一个或多个订阅。 Azure 订阅是对每项云服务（如 Azure 文件）计费的最基本容器。
-- **资源组**：资源组是 Azure 资源（如存储帐户或存储同步服务）的逻辑组。 你可以创建新的资源组或使用现有资源组进行 Azure 文件同步。（建议使用资源组作为容器以逻辑方式将资源隔离到组织，例如对 HR 资源或特定项目的资源进行分组。）
+- **资源组**：资源组是 Azure 资源（如存储帐户或存储同步服务）的逻辑组。 你可以创建新的资源组或使用现有资源组进行 Azure 文件同步。 (建议使用资源组作为容器以逻辑方式将资源隔离到你的组织，例如对 HR 资源或特定项目的资源进行分组。 ) 
 - **位置**：要在其中部署 Azure 文件同步的区域。此列表中仅提供受支持的区域。
 
 完成后，选择“创建”部署存储同步服务****。
@@ -279,7 +279,7 @@ Remove-Item -Path ".\StorageSyncAgent.msi" -Recurse -Force
 > [!Note]
 > 服务器注册使用你的 Azure 凭据在存储同步服务与 Windows Server 之间创建信任关系，但是，服务器随后会创建并使用自身有效的标识，前提是该服务器保持已注册状态，并且当前的共享访问签名令牌（存储 SAS）有效。 取消注册服务器后，无法将新的 SAS 令牌颁发给服务器，因此，服务器无法访问 Azure 文件共享，并停止任何同步。
 
-注册服务器的管理员必须是给定的存储同步服务的管理角色**所有者**或**参与者**的成员。 这可以在存储同步服务的 Azure 门户中的 "**访问控制（IAM）** " 下进行配置。
+注册服务器的管理员必须是给定的存储同步服务的管理角色**所有者**或**参与者**的成员。 这可以在存储同步服务的 Azure 门户中的 "**访问控制" (IAM) **进行配置。
 
 此外，还可以区分管理员将服务器注册到允许的服务器，也可以在存储同步服务中配置同步。 为此，您需要创建一个自定义角色，其中列出了只允许注册服务器的管理员，并为您的自定义角色提供下列权限：
 
@@ -319,7 +319,7 @@ $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 > [!Important]  
 > 可对同步组中的任何云终结点或服务器终结点进行更改，并将文件同步到同步组中的其他终结点。 如果直接对云终结点（Azure 文件分享）进行更改，首先需要通过 Azure 文件同步更改检测作业来发现更改。 每 24 小时仅针对云终结点启动一次更改检测作业。 有关详细信息，请参阅 [Azure 文件常见问题解答](storage-files-faq.md#afs-change-detection)。
 
-创建云终结点的管理员必须是包含云终结点指向的 Azure 文件共享的存储帐户的管理角色**所有者**的成员。 这可以在存储帐户的 Azure 门户中的 "**访问控制（IAM）** " 下进行配置。
+创建云终结点的管理员必须是包含云终结点指向的 Azure 文件共享的存储帐户的管理角色**所有者**的成员。 这可以在 "**访问控制" (IAM) **在存储帐户的 Azure 门户中进行配置。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 若要创建同步组，请在[Azure 门户](https://portal.azure.com/)中，请前往你的存储同步服务，然后选择 " **+ 同步组**"：
@@ -525,10 +525,10 @@ az storagesync sync-group server-endpoint create --resource-group myResourceGrou
 - 在同步拓扑完全启动并运行之前更改服务器上的数据可能会导致各个服务器终结点上发生冲突。  
 - 创建云终结点后，在开始初始同步之前，Azure 文件同步会运行一个进程来检测云中的文件。完成此过程所花的时间取决于各种因素，如网络速度、可用带宽以及文件和文件夹的数目。 对于预览版，粗略估计，检测流程以大约每秒 10 个文件的速度运行。因此，当在云中预先播种数据时，即使预先播种运行速度很快，获得完全运行的系统所需的总体时间也会更长。
 
-## <a name="self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service"></a>通过以前的版本和 VSS 进行自助还原（卷影复制服务）
+## <a name="self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service"></a>通过早期版本和 VSS (卷影复制服务) 进行自助还原
 
 > [!IMPORTANT]
-> 以下信息仅可用于存储同步代理的版本9（或更高版本）。 低于9的版本将不具有 StorageSyncSelfService cmdlet。
+> 以下信息仅可用于版本 9 (或更高版本的存储同步代理) 。 低于9的版本将不具有 StorageSyncSelfService cmdlet。
 
 以前的版本是一项 Windows 功能，可用于利用卷的服务器端 VSS 快照将文件的可恢复版本提供给 SMB 客户端。
 这将为信息工作者（而不是从 IT 管理员的还原）直接为信息工作者提供一种功能强大的方案（通常称为自助还原）。
@@ -556,14 +556,14 @@ Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
 ```
 
 它将列出服务器上的所有卷，以及每个卷的云分层兼容日期数。 此数字是基于每个卷的最大可能快照数和默认快照计划自动计算的。 因此，默认情况下，提供给信息工作者的所有先前版本都可用于从还原。 如果更改默认计划以拍摄更多快照，则情况也是如此。
-但是，如果您更改计划的方式将导致卷上的可用快照超过兼容日期值，则用户将无法使用此旧快照（以前的版本）还原。
+但是，如果您更改计划的方式将导致卷上的可用快照超过兼容日期值，则用户将无法使用旧版本的快照 (早期版本) 从还原。
 
 > [!Note]
-> 启用自助服务还原可能会影响 Azure 存储消耗和计费。 此影响仅限于服务器上当前分层的文件。 启用此功能可确保云中提供的文件版本可通过早期版本（VSS 快照）项进行引用。
+> 启用自助服务还原可能会影响 Azure 存储消耗和计费。 此影响仅限于服务器上当前分层的文件。 启用此功能可确保云中提供的文件版本可通过早期版本 (VSS 快照) 条目进行引用。
 >
 > 如果禁用该功能，则 Azure 存储消耗将慢慢降低，直到达到 "兼容日期" 窗口。 没有办法加速。 
 
-每个卷的默认最大 VSS 快照数（64）以及要采用的默认计划，将导致信息工作者可以从其还原的以前版本中的最大值为45天，具体取决于你可以在卷上存储多少个 VSS 快照。
+每个卷的默认最大 VSS 快照数 (64) 以及用于执行该操作的默认计划，将导致信息工作者可以从其还原的以前版本中的最大值为45天，具体取决于你可以在卷上存储多少个 VSS 快照。
 
 如果最大值。64每个卷的 VSS 快照不是正确的设置，你可以[通过注册表项更改](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies)该值。
 要使新的限制生效，你需要重新运行 cmdlet，以便在以前启用它的每个卷上启用以前版本的兼容性，并使用-Force 标志将新的每个卷的最大 VSS 快照数考虑在内。 这将导致新计算的兼容天数。 请注意，此更改只会对新的分层文件生效，并覆盖你可能已执行的 VSS 计划中的任何自定义。
