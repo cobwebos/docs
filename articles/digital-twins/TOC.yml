@@ -92,6 +92,8 @@
           href: troubleshoot-metrics.md
         - name: 启用诊断日志
           href: troubleshoot-diagnostics.md
+        - name: 启用警报
+          href: troubleshoot-alerts.md
         - name: 已知问题
           href: troubleshoot-known-issues.md
         - name: 问题解决方法
