@@ -1,5 +1,5 @@
 ---
-title: ML Studio （经典）：使用 web 服务-Azure
+title: ML Studio (经典) ：使用 web 服务-Azure
 description: 从 Azure 机器学习工作室（经典版）部署机器学习服务后，即可将 RESTFul Web 服务用作实时请求响应服务或批处理执行服务。
 services: machine-learning
 ms.service: machine-learning
@@ -7,18 +7,18 @@ ms.subservice: studio
 ms.topic: how-to
 author: likebupt
 ms.author: keli19
-ms.custom: seodec18, tracking-python, devx-track-javascript
+ms.custom: seodec18, devx-track-python, devx-track-javascript
 ms.date: 05/29/2020
-ms.openlocfilehash: 4d72a811f018bb17a6a7bb7c129d52e6232f7caa
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: bbecafbbd988530231d71892fb12a55c1a605442
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432900"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844365"
 ---
-# <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>如何使用机器学习 Studio （经典） web 服务
+# <a name="how-to-consume-a-machine-learning-studio-classic-web-service"></a>如何使用机器学习 Studio (经典) web 服务
 
-**适用于：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） ![ no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
 
 
 将 Azure 机器学习工作室（经典版）预测模型部署为 Web 服务后，可以使用 REST API 向其发送数据并获取预测。 可以实时或者以批处理模式发送数据。
@@ -45,7 +45,7 @@ Azure 机器学习工作室（经典版）有两种类型的服务：
 部署实验时，会为 Web 服务生成 API 密钥。 可从多个位置检索密钥。
 
 ### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>从 Microsoft Azure 机器学习 Web 服务门户检索
-登录到 [Microsoft Azure 机器学习 Web 服务](https://services.azureml.net)门户。
+登录到[Microsoft Azure 机器学习 Web 服务](https://services.azureml.net)门户。
 
 为新的机器学习 Web 服务检索 API 密钥：
 

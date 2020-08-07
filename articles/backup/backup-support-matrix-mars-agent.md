@@ -3,12 +3,12 @@ title: MARS 代理的支持矩阵
 description: 本文汇总了备份运行 Microsoft Azure 恢复服务 (MARS) 代理的计算机时的 Azure 备份支持。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5ff9510dfa31bb947d50b1a91fb7f73c2d767471
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2b719bd36c27336b3fe24cdb904715bf8194ed70
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538643"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872406"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>使用 Microsoft Azure 恢复服务 (MARS) 代理进行备份的支持矩阵
 
@@ -45,7 +45,7 @@ Azure 备份使用 MARS 代理将本地计算机和 Azure VM 中的数据备份�
 --- | ---
 大小 |  缓存文件夹中的可用空间应至少为备份数据总大小的 5% 到 10%。
 位置 | 缓存文件夹必须存储在要备份的计算机本地，并且该计算机必须联机。 缓存文件夹不应位于网络共享、可移动媒体或脱机卷上。
-文件夹 | 不应在已删除重复数据的卷、已压缩文件夹、稀疏文件夹或具有重分析点的文件夹中加密缓存文件夹。
+文件夹 | 不应在删除了重复数据的卷上加密缓存文件夹，也不能对压缩后的文件夹进行加密，即稀疏文件或具有重新分析点的文件夹。
 位置更改 | 可以通过停止备份引擎 (`net stop bengine`)，并将缓存文件夹复制到新驱动器来更改缓存位置。 （确保新驱动器有足够的空间。）然后，将 **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** 下的两个注册表项（**Config/ScratchLocation** 和 **Config/CloudBackupProvider/ScratchLocation**）更新为新位置，并重启引擎。
 
 ## <a name="networking-and-access-support"></a>网络和访问支持
@@ -54,7 +54,7 @@ Azure 备份使用 MARS 代理将本地计算机和 Azure VM 中的数据备份�
 
 MARS 代理需要以下 URL 的访问权限：
 
-- <http://www.msftncsi.com/ncsi.txt>
+- `http://www.msftncsi.com/ncsi.txt`
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *.MicrosoftOnline.com
@@ -79,7 +79,7 @@ MARS 代理需要以下 URL 的访问权限：
 - `.microsoftonline.com`
 - `.windows.net`
 
-如果使用 Microsoft 对等互连，请选择以下服务/区域和相关社区值：
+使用 Microsoft 对等互连，选择以下服务/区域和相关社区值：
 
 - Azure Active Directory (12076:5060)
 - Microsoft Azure 区域（根据恢复服务保管库的位置）
@@ -89,6 +89,16 @@ MARS 代理需要以下 URL 的访问权限：
 
 >[!NOTE]
 >对于新线路，公共对等互连已弃用。
+
+### <a name="private-endpoint-support"></a>私有终结点支持
+
+你现在可以使用专用终结点将数据从服务器安全备份到恢复服务保管库。 由于 Azure Active Directory 当前不支持私有终结点，因此需要对 Azure Active Directory 所需的 Ip 和 Fqdn 进行单独的出站访问。
+
+使用 MARS 代理备份本地资源时，请确保包含要备份的资源的本地网络 () 与包含保管库的专用终结点的 Azure VNet 对等互连。 然后，你可以继续安装 MARS 代理并配置备份。 但是，必须确保仅通过对等互连网络进行备份的所有通信。
+
+如果在向保管库注册了 MARS 代理后，删除该保管库的专用终结点，则需要使用保管库重新注册该容器。 不需要停止对它们的保护。
+
+阅读有关[Azure 备份的专用终结点的](private-endpoints.md)详细信息。
 
 ### <a name="throttling-support"></a>限制支持
 
@@ -132,9 +142,9 @@ Windows Server 2019（Standard、Datacenter、Essentials） | 是 | 是 | - .NET
 
 | **操作系统**                                       | **文件/文件夹** | **系统状态** | **软件/模块要求**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
-| Windows 7 （旗舰版、企业版、专业版、家庭高级版/基本版、初学者版） | 是               | 否                 | 检查软件/模块要求的相应服务器版本 |
-| Windows Server 2008 R2 （Standard、Enterprise、Datacenter、Foundation） | 是               | 是                | -.NET 3.5，.NET 4。5 <br>  - Windows PowerShell <br>  - 兼容的 Microsoft VC++ 可再发行包 <br>  - Microsoft 管理控制台 (MMC) 3.0 <br>  - 部署映像服务和管理 (DISM.exe) |
-| Windows Server 2008 SP2 （Standard、Datacenter、Foundation）  | 是               | 否                 | -.NET 3.5，.NET 4。5 <br>  - Windows PowerShell <br>  - 兼容的 Microsoft VC++ 可再发行包 <br>  - Microsoft 管理控制台 (MMC) 3.0 <br>  - 部署映像服务和管理 (DISM.exe) <br>  -Virtual Server 2005 base + KB KB948515 |
+| Windows 7 (旗舰版、企业版、专业版、家庭高级版/基本版、初学者)  | 是               | 否                 | 检查软件/模块要求的相应服务器版本 |
+| Windows Server 2008 R2 (Standard、Enterprise、Datacenter、Foundation)  | 是               | 是                | -.NET 3.5，.NET 4。5 <br>  - Windows PowerShell <br>  - 兼容的 Microsoft VC++ 可再发行包 <br>  - Microsoft 管理控制台 (MMC) 3.0 <br>  - 部署映像服务和管理 (DISM.exe) |
+| Windows Server 2008 SP2 (Standard、Datacenter、Foundation)   | 是               | 否                 | -.NET 3.5，.NET 4。5 <br>  - Windows PowerShell <br>  - 兼容的 Microsoft VC++ 可再发行包 <br>  - Microsoft 管理控制台 (MMC) 3.0 <br>  - 部署映像服务和管理 (DISM.exe) <br>  -Virtual Server 2005 base + KB KB948515 |
 
 ## <a name="backup-limits"></a>备份限制
 
@@ -152,11 +162,11 @@ Windows 7| 1,700 GB
 
 ### <a name="other-limitations"></a>其他限制
 
-- MARS 不支持对单个保管库的多台计算机进行保护。
+- MARS 不支持对单个保管库具有相同名称的多个计算机的保护。
 
 ## <a name="supported-file-types-for-backup"></a>支持备份的文件类型
 
-**Type** | **支持**
+类型 | **支持**
 --- | ---
 过<sup>*</sup>| 。
 Compressed | 。

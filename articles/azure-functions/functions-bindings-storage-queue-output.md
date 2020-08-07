@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
-ms.custom: cc996988-fb4f-47, tracking-python
-ms.openlocfilehash: 1141186a262676fc47b0727c47e682dfe95ba6fb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: cc996988-fb4f-47, devx-track-python
+ms.openlocfilehash: 29f90261e4d9a0e76c7760a2e3142f178510f6d6
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055920"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87844875"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储输出绑定
 
@@ -301,7 +301,7 @@ public class HttpTriggerQueueOutput {
 }
 ```
 
-| 属性    | 描述 |
+| 属性    | 说明 |
 |-------------|-----------------------------|
 |`name`       | 在函数签名中声明参数名称。 触发函数时，此参数的值包含队列消息的内容。 |
 |`queueName`  | 在存储帐户中声明队列名称。 |
@@ -317,7 +317,7 @@ public class HttpTriggerQueueOutput {
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type** | 不适用 | 必须设置为 `queue`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
+|type | 不适用 | 必须设置为 `queue`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |**direction** | 不适用 | 必须设置为 `out`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
 |**name** | 不适用 | 表示函数代码中的队列的变量的名称。 设置为 `$return` 可引用函数返回值。|
 |**queueName** |**QueueName** | 队列的名称。 |

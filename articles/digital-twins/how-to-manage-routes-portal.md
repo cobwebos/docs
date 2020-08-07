@@ -7,12 +7,12 @@ ms.author: v-lakast
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 7786f970f612d2856948e2286ed234e2b0895072
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7d563c7706529c6f3e280f7d138c0d6ba0dfc849
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836950"
+ms.locfileid: "87902179"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>在 Azure 数字孪生 (门户中管理终结点和路由) 
 
@@ -24,7 +24,7 @@ ms.locfileid: "87836950"
 
 还可以通过[EventRoutes api](how-to-use-apis-sdks.md)、 [.Net (c # ) SDK](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)或[Azure 数字孪生 CLI](how-to-use-cli.md)来管理终结点和路由。 有关使用这些机制（而不是门户）的本文版本，请参阅[*如何：管理终结点和路由 (api 和 CLI) *](how-to-manage-routes-apis-cli.md)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 * 你将需要一个**Azure 帐户** (你可以在[此处](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)免费设置一个帐户) 
 * 你将需要 Azure 订阅中的**Azure 数字孪生实例**。 如果尚未安装实例，则可以使用[*操作方法：设置实例和身份验证*](how-to-set-up-instance-scripted.md)中的步骤创建一个实例。 将安装程序中的以下值用于本文后面的内容：
@@ -129,44 +129,49 @@ ms.locfileid: "87836950"
 
 ### <a name="create-an-event-route"></a>创建事件路由 
 
-事件路由定义可包含以下元素：
-* 要使用的路由 ID
+事件路由定义包含以下元素：
+* 要使用的路由名称
 * 要使用的终结点的名称
 * 定义要发送到终结点的事件的筛选器
+    - 若要禁用路由，以便不发送事件，请使用筛选器值`false`
+    - 若要启用没有特定筛选的路由，请使用筛选器值`true`
+    - 有关任何其他类型的筛选器的详细信息，请参阅下面的 "[*筛选器事件*](#filter-events)" 一节。
 
-如果没有路由 ID，则不会在 Azure 数字孪生之外路由任何消息。
-如果有路由 ID 且筛选器为，则 `true` 所有消息都将路由到该终结点。
-如果已添加路由 ID 并添加了不同的筛选器，则将根据筛选器筛选消息。
-
-一个路由应该允许选择多个通知和事件类型。
+单个路由可以允许选择多个通知和事件类型。
 
 若要创建事件路由，请在[Azure 门户](https://portal.azure.com)中的 Azure 数字孪生实例中转到详细信息页 (可以通过在门户搜索栏中输入其名称) 找到该实例。
 
 在 "实例" 菜单中，选择 "_事件路由_"。 然后，在随后的*事件路由*页面中，选择 " *+ 创建事件路由*"。 
 
-在打开的 "*创建事件路由*" 页上，在 "_名称_" 字段中为你的路由至少选择一个名称，然后从下拉列表中选择要用于创建路由的_终结点_。
+在打开的 "*创建事件路由*" 页上，选择 "最小值"：
+* "_名称_" 字段中的路由名称
+* 要用于创建路由的_终结点_ 
 
-:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="为实例创建事件路由的屏幕截图。":::
+若要启用路由，还必须至少添加的**事件路由筛选器** `true` 。  (保留的默认值 `false` 将创建路由，但不会向其发送任何事件。 ) 为此，切换 "_高级编辑器_" 的开关以启用它，然后 `true` 在 "*筛选器*" 框中写入。
+
+:::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="为实例创建事件路由的屏幕截图。" lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
 
 完成后，单击 "_保存_" 按钮创建事件路由。
 
 ### <a name="filter-events"></a>筛选事件
 
-如果没有筛选，终结点就会收到来自 Azure 数字孪生的各种事件：
+如上所述，路由具有**筛选**字段。 如果路由上的筛选器值为 `false` ，则不会将任何事件发送到终结点。 
+
+启用的最小筛选器后 `true` ，终结点将从 Azure 数字孪生收到各种事件：
 * [数字孪生](concepts-twins-graph.md)使用 Azure 数字孪生服务 API 触发的遥测数据
 * 克隆属性更改通知，对 Azure 数字孪生实例中任何克隆的属性更改触发
 * 生命周期事件，在创建或删除孪生或关系时触发
 * 添加或删除在 Azure 数字孪生实例中配置的[模型](concepts-models.md)时触发的模型更改事件
 
-可以通过将终结点的**筛选器**添加到事件路由来限制正在发送的事件。
+可以通过定义更具体的筛选器来限制正在发送的事件类型。
 
-若要在创建事件路由时添加筛选器，请使用 "*创建事件路由*" 页的 "_添加事件路由筛选器_" 部分。 
+若要在创建事件路由时添加事件筛选器，请使用 "*创建事件路由*" 页的 "_添加事件路由筛选器_" 部分。 
 
 你可以从某些基本的常见筛选器选项中进行选择，也可以使用高级筛选器选项编写你自己的自定义筛选器。
 
 #### <a name="use-the-basic-filters"></a>使用基本筛选器
 
-若要使用基本筛选器，请展开 "_事件类型_" 选项，然后选择与要筛选的事件对应的复选框。 
+若要使用基本筛选器，请展开 "_事件类型_" 选项，并选择与要发送到终结点的事件对应的复选框。 
 
 :::row:::
     :::column:::

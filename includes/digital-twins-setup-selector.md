@@ -1,5 +1,5 @@
 ---
-title: include 文件
+title: 包含文件
 description: 用于在 Azure 数字孪生安装程序的不同版本之间进行选择的包含文件
 services: digital-twins
 author: baanders

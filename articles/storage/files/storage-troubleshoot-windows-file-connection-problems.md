@@ -1,22 +1,22 @@
 ---
 title: 在 Windows 中排查 Azure 文件问题 | Microsoft Docs
-description: 在 Windows 中排查 Azure 文件问题
+description: 排查 Windows 中的 Azure 文件问题。 请参阅从 Windows 客户端进行连接时与 Azure 文件相关的常见问题，并查看可能的解决方法。
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e855ed169a0c4eca7dda696c03deedb9e519e9bf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ecd7b0bc34d532e7d748bc9468d3a155b9aa2ad2
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259984"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901736"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
-本文列出了从 Windows 客户端进行连接时，与 Microsoft Azure 文件相关的常见问题。 并提供了这些问题的可能原因和解决方法。 除本文中的疑难解答步骤之外，还可使用 [AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) ，以确保 Windows 客户端环境满足正确的先决条件。 AzFileDiagnostics 会自动检测本文中提及的大多数症状，并帮助设置环境以获得最佳性能。 还可在 [Azure 文件共享疑难解答](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到这些信息，该疑难解答提供相关步骤来帮助解决连接/映射/装载 Azure 文件共享时遇到的问题。
+本文列出了从 Windows 客户端进行连接时，与 Microsoft Azure 文件相关的常见问题。 并提供了这些问题的可能原因和解决方法。 除了本文中的故障排除步骤，还可以使用[AzFileDiagnostics](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows)   确保 Windows 客户端环境具有正确的先决条件。 AzFileDiagnostics 会自动检测本文中提及的大多数症状，并帮助设置环境，以实现最佳性能。 还可以在 [Azure 文件共享疑难解答](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)中找到此信息，该疑难解答提供相关步骤来帮助解决在连接/映射/装载 Azure 文件共享时遇到的问题。
 
 <a id="error5"></a>
 ## <a name="error-5-when-you-mount-an-azure-file-share"></a>装载 Azure 文件共享时出现错误 5
@@ -29,7 +29,7 @@ ms.locfileid: "86259984"
 
 出于安全原因，如果信道未加密，且未从 Azure 文件共享所在的数据中心尝试连接，则到 Azure 文件共享的连接将受阻。 如果在存储帐户中启用[需要安全传输](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)设置，则还可以阻止同一数据中心中未加密的连接。 仅当用户的客户端 OS 支持 SMB 加密时，才提供加密的信道。
 
-Windows 8、Windows Server 2012 及更高版本的每次系统协商均要求其包含支持加密的 SMB 3.0。
+Windows 8、Windows Server 2012 及更高版本的每个系统协商包括支持加密的 SMB 3.0 的请求。
 
 ### <a name="solution-for-cause-1"></a>原因 1 的解决方案
 
@@ -42,7 +42,7 @@ Windows 8、Windows Server 2012 及更高版本的每次系统协商均要求其
 
 ### <a name="solution-for-cause-2"></a>原因 2 的解决方案
 
-验证是否已在存储帐户上正确配置虚拟网络和防火墙规则。 若要测试虚拟网络或防火墙规则是否导致此问题，请将存储帐户上的设置临时更改为“允许来自所有网络的访问”  。 若要了解详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
+验证是否已在存储帐户上正确配置虚拟网络和防火墙规则。 若要测试虚拟网络或防火墙规则是否导致此问题，请将存储帐户上的设置临时更改为“允许来自所有网络的访问”。 若要了解详细信息，请参阅[配置 Azure 存储防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security)。
 
 ### <a name="cause-3-share-level-permissions-are-incorrect-when-using-identity-based-authentication"></a>原因3：使用基于身份的身份验证时，共享级权限不正确
 
@@ -277,7 +277,7 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
 如果使用的是加密文件系统 (EFS)，可能会出现此问题。 可将 BitLocker 加密的文件复制到 Azure 文件。 不过，Azure 文件不支持 NTFS EFS。
 
 ### <a name="workaround"></a>解决方法
-必须先将文件解密，才能通过网络进行复制。 使用下列方法之一：
+必须先将文件解密，才能通过网络进行复制。 使用以下方法之一：
 
 - 运行 copy /d**** 命令。 这样，可以将加密文件作为解密文件保存到目标位置。
 - 设置以下注册表项：

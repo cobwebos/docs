@@ -2,7 +2,7 @@
 title: 分配或删除许可证 - Azure Active Directory | Microsoft Docs
 description: 关于如何对用户或组分配或删除 Azure Active Directory 许可证的说明。
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
 ms.service: active-directory
@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 121bf7ef05c2a5bee621ecddcb40033d54194fac
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9909b92e58d73c9578d3d17a7bbf24fe2924fae2
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542104"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87797077"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>在 Azure Active Directory 门户中分配或删除许可证
 
@@ -84,7 +84,7 @@ ms.locfileid: "87542104"
     > [!NOTE]
     > 并非所有 Microsoft 服务都可在所有位置使用。 必须先指定“使用位置”  ，然后才能将许可证分配给用户。 可以在 Azure AD 的“Azure Active Directory”&gt;“用户”&gt;“配置文件”&gt;“设置”  区域中设置此值。 未指定使用位置的任何用户都会继承 Azure AD 组织的位置。
 
-1. 选择“分配”。
+1. 选择“分配”。 
 
     用户会添加到已许可用户列表，并有权访问所包含的 Azure AD 服务。
     > [!NOTE]

@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 08/06/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 29dc03d663d590c13a1948411ed597388750c1d7
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 82866daaf720fc6b1ea9ba823587c921fd438b9c
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87428006"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902467"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -261,13 +261,15 @@ ms.locfileid: "87428006"
 **数据类型：** 具有一个或多个声明架构条目的 JSON Blob
 
 **摘要：** 此属性定义除了基本声明集与核心声明集之外，在受此策略影响的令牌中存在的声明。
-对于此属性中定义的每个声明架构条目，都需要特定信息。 指定数据来源（**Value** 或 **Source/ID 对**）以及数据作为哪种声明发出（**声明类型**）。
+对于此属性中定义的每个声明架构条目，都需要特定信息。 指定数据的来源位置 (**值**、**源/ID 对**或**源/ExtensionID 对**) ，并声明数据作为 (**声明类型**) 发出。
 
 ### <a name="claim-schema-entry-elements"></a>声明架构条目元素
 
 **Value：** Value 元素将静态值定义为要在声明中发出的数据。
 
-**Source/ID 对：** Source 和 ID 元素定义声明中的数据的来源。 
+**Source/ID 对：** Source 和 ID 元素定义声明中的数据的来源。  
+
+**Source/ExtensionID 对：** 源元素和 ExtensionID 元素定义声明中的数据源自的目录架构扩展属性。 有关详细信息，请参阅[在声明中使用目录架构扩展属性](active-directory-schema-extensions.md)。
 
 将 Source 元素设置为下列值之一： 
 
@@ -284,47 +286,47 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3：每个 Source 的有效 ID 值
 
-| Source | ID | 说明 |
+| 源 | ID | 说明 |
 |-----|-----|-----|
-| User | surname | 家族名称 |
-| User | givenname | 名 |
-| User | displayname | 显示名称 |
-| User | objectid | ObjectID |
-| User | mail | 电子邮件地址 |
-| User | userprincipalname | 用户主体名称 |
-| User | department|Department|
-| User | onpremisessamaccountname | 本地 SAM 帐户名称 |
-| User | netbiosname| NetBios 名称 |
-| User | dnsdomainname | DNS 域名 |
-| User | onpremisesecurityidentifier | 本地安全标识符 |
-| User | companyname| 组织名称 |
-| User | streetaddress | 街道地址 |
-| User | postalcode | 邮政编码 |
-| User | preferredlanguange | 首选语言 |
-| User | onpremisesuserprincipalname | 本地 UPN |
-| User | mailNickname | 邮件别名 |
-| User | extensionattribute1 | 扩展属性 1 |
-| User | extensionattribute2 | 扩展属性 2 |
-| User | extensionattribute3 | 扩展属性 3 |
-| User | extensionattribute4 | 扩展属性 4 |
-| User | extensionattribute5 | 扩展属性 5 |
-| User | extensionattribute6 | 扩展属性 6 |
-| User | extensionattribute7 | 扩展属性 7 |
-| User | extensionattribute8 | 扩展属性 8 |
-| User | extensionattribute9 | 扩展属性 9 |
-| User | extensionattribute10 | 扩展属性 10 |
-| User | extensionattribute11 | 扩展属性 11 |
-| User | extensionattribute12 | 扩展属性 12 |
-| User | extensionattribute13 | 扩展属性 13 |
-| User | extensionattribute14 | 扩展属性 14 |
-| User | extensionattribute15 | 扩展属性 15 |
-| User | othermail | 其他邮件 |
-| User | country | 国家/地区 |
-| User | city | 城市 |
-| User | state | 状态 |
-| User | jobtitle | 职务 |
-| User | employeeid | 员工 ID |
-| User | facsimiletelephonenumber | 传真电话号码 |
+| 用户 | surname | 家族名称 |
+| 用户 | givenname | 名 |
+| 用户 | displayname | 显示名称 |
+| 用户 | objectid | ObjectID |
+| 用户 | mail | 电子邮件地址 |
+| 用户 | userprincipalname | 用户主体名称 |
+| 用户 | department|部门|
+| 用户 | onpremisessamaccountname | 本地 SAM 帐户名称 |
+| 用户 | netbiosname| NetBios 名称 |
+| 用户 | dnsdomainname | DNS 域名 |
+| 用户 | onpremisesecurityidentifier | 本地安全标识符 |
+| 用户 | companyname| 组织名称 |
+| 用户 | streetaddress | 街道地址 |
+| 用户 | postalcode | 邮政编码 |
+| 用户 | preferredlanguange | 首选语言 |
+| 用户 | onpremisesuserprincipalname | 本地 UPN |
+| 用户 | mailNickname | 邮件别名 |
+| 用户 | extensionattribute1 | 扩展属性 1 |
+| 用户 | extensionattribute2 | 扩展属性 2 |
+| 用户 | extensionattribute3 | 扩展属性 3 |
+| 用户 | extensionattribute4 | 扩展属性 4 |
+| 用户 | extensionattribute5 | 扩展属性 5 |
+| 用户 | extensionattribute6 | 扩展属性 6 |
+| 用户 | extensionattribute7 | 扩展属性 7 |
+| 用户 | extensionattribute8 | 扩展属性 8 |
+| 用户 | extensionattribute9 | 扩展属性 9 |
+| 用户 | extensionattribute10 | 扩展属性 10 |
+| 用户 | extensionattribute11 | 扩展属性 11 |
+| 用户 | extensionattribute12 | 扩展属性 12 |
+| 用户 | extensionattribute13 | 扩展属性 13 |
+| 用户 | extensionattribute14 | 扩展属性 14 |
+| 用户 | extensionattribute15 | 扩展属性 15 |
+| 用户 | othermail | 其他邮件 |
+| 用户 | country | 国家/地区 |
+| 用户 | city | 城市 |
+| 用户 | state | 状态 |
+| 用户 | jobtitle | 职务 |
+| 用户 | employeeid | 员工 ID |
+| 用户 | facsimiletelephonenumber | 传真电话号码 |
 | User | assignedroles | 分配给用户的应用角色列表|
 | application、resource、audience | displayname | 显示名称 |
 | application、resource、audience | objectid | ObjectID |
@@ -387,24 +389,24 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 |源|ID|说明|
 |-----|-----|-----|
-| 用户 | mail|电子邮件地址|
-| 用户 | userprincipalname|用户主体名称|
-| 用户 | onpremisessamaccountname|本地 Sam 帐户名称|
-| 用户 | employeeid|员工 ID|
-| 用户 | extensionattribute1 | 扩展属性 1 |
-| 用户 | extensionattribute2 | 扩展属性 2 |
-| 用户 | extensionattribute3 | 扩展属性 3 |
-| 用户 | extensionattribute4 | 扩展属性 4 |
-| 用户 | extensionattribute5 | 扩展属性 5 |
-| 用户 | extensionattribute6 | 扩展属性 6 |
-| 用户 | extensionattribute7 | 扩展属性 7 |
-| 用户 | extensionattribute8 | 扩展属性 8 |
-| 用户 | extensionattribute9 | 扩展属性 9 |
-| 用户 | extensionattribute10 | 扩展属性 10 |
-| 用户 | extensionattribute11 | 扩展属性 11 |
-| 用户 | extensionattribute12 | 扩展属性 12 |
-| 用户 | extensionattribute13 | 扩展属性 13 |
-| 用户 | extensionattribute14 | 扩展属性 14 |
+| User | mail|电子邮件地址|
+| User | userprincipalname|用户主体名称|
+| User | onpremisessamaccountname|本地 Sam 帐户名称|
+| User | employeeid|员工 ID|
+| User | extensionattribute1 | 扩展属性 1 |
+| User | extensionattribute2 | 扩展属性 2 |
+| User | extensionattribute3 | 扩展属性 3 |
+| User | extensionattribute4 | 扩展属性 4 |
+| User | extensionattribute5 | 扩展属性 5 |
+| User | extensionattribute6 | 扩展属性 6 |
+| User | extensionattribute7 | 扩展属性 7 |
+| User | extensionattribute8 | 扩展属性 8 |
+| User | extensionattribute9 | 扩展属性 9 |
+| User | extensionattribute10 | 扩展属性 10 |
+| User | extensionattribute11 | 扩展属性 11 |
+| User | extensionattribute12 | 扩展属性 12 |
+| User | extensionattribute13 | 扩展属性 13 |
+| User | extensionattribute14 | 扩展属性 14 |
 | 用户 | extensionattribute15 | 扩展属性 15 |
 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>表 6：允许用于 SAML NameID 的转换方法

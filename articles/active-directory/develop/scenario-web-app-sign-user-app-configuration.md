@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
-ms.custom: aaddev, tracking-python
-ms.openlocfilehash: 6cc846d8d330459587745795edf21c5ac04f2291
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: aaddev, devx-track-python
+ms.openlocfilehash: 7352fe220e302730f2683d335de5d32ca13d9add
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026333"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845164"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>可将用户登录的 Web 应用：代码配置
 
@@ -211,7 +211,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 若要使用 Microsoft 标识平台（前称为 Azure AD v2.0）添加身份验证，需要添加以下代码。 代码中的注释应该浅显易懂。
 
 > [!NOTE]
-> 如果要直接使用 Microsoft 标识平台的新 ASP.NET Core 模板开始使用 Microsoft 标识平台，则可以下载包含 .NET Core 3.1 和 .NET 5.0 项目模板的预览 NuGet 包。 然后，在安装后，可以直接实例化 ASP.NET Core web 应用程序（MVC 或 Blazor）。 有关详细信息，请参阅[Microsoft web 应用项目模板](https://aka.ms/ms-id-web/webapp-project-templates)。 这是最简单的方法，因为它将执行以下所有步骤。
+> 如果要直接使用 Microsoft 标识平台的新 ASP.NET Core 模板开始使用 Microsoft 标识平台，则可以下载包含 .NET Core 3.1 和 .NET 5.0 项目模板的预览 NuGet 包。 然后，在安装后，可以直接实例化 ASP.NET Core web 应用程序 (MVC 或 Blazor) 。 有关详细信息，请参阅[Microsoft web 应用项目模板](https://aka.ms/ms-id-web/webapp-project-templates)。 这是最简单的方法，因为它将执行以下所有步骤。
 >
 > 如果希望使用 Visual Studio 中的当前默认 ASP.NET Core web 项目或使用或来启动项目 `dotnet new mvc --auth SingleAuth` `dotnet new webapp --auth SingleAuth` ，则会看到如下所示的代码：
 >
@@ -275,7 +275,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 你可以在中找到有关如何使你能够创建 web 应用的更多详细信息。<https://aka.ms/ms-id-web/webapp>
 
 > [!WARNING]
-> 目前，在使用 Azure AD 作为和外部登录提供程序时，Microsoft 不支持**单个用户帐户**（在应用中存储用户帐户）的方案。 有关详细信息，请参阅： [AzureAD/microsoft-标识-web # 133](https://github.com/AzureAD/microsoft-identity-web/issues/133)
+> 目前，在使用 Azure AD 作为和外部登录提供程序时，Microsoft 不支持**单个用户帐户** (存储用户帐户应用内) 。 有关详细信息，请参阅： [AzureAD/microsoft-标识-web # 133](https://github.com/AzureAD/microsoft-identity-web/issues/133)
 
 # <a name="aspnet"></a>[ASP.NET](#tab/aspnet)
 

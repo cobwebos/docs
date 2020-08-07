@@ -3,12 +3,12 @@ title: 有关使用 Azure Site Recovery 实现 Hyper-V 灾难恢复的常见问�
 description: 本文汇总了有关使用 Azure Site Recovery 站点设置本地 Hyper-V VM 到 Azure 的灾难恢复的常见问题。
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: b3d806908ce2274d07e6b508c8cc269b553e684f
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: c168ba9ff14e57f238069e8ca5b0c34a8fb58015
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86132660"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799882"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>常见问题 - Hyper-V 到 Azure 的灾难恢复
 
@@ -151,15 +151,19 @@ Site Recovery 通过公共终结点或使用 ExpressRoute Microsoft 对等互连
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>为何不能通过 VPN 复制？
 
-复制到 Azure 时，复制流量将到达 Azure 存储帐户的公共终结点。 因此，你只能通过 ExpressRoute （Microsoft 对等互连）通过公共 internet 进行复制，并且 VPN 不起作用。 
+复制到 Azure 时，复制流量将到达 Azure 存储帐户的公共终结点。 因此，只能使用 ExpressRoute (Microsoft 对等互连) 在公共 internet 上进行复制，并且 VPN 不起作用。 
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>复制的 VM 要满足哪些要求？
 
 若要复制某个 Hyper-V VM，该 VM 必须运行受支持的操作系统。 此外，该 VM 必须满足 Azure VM 的要求。 在支持矩阵中[了解详细信息](hyper-v-azure-support-matrix.md#replicated-vms)。
 
+### <a name="why-is-an-additional-standard-storage-account-required-if-i-replicate-my-virtual-machine-disks-to-premium-storage"></a>如果将虚拟机磁盘复制到高级存储，为什么需要额外的标准存储帐户？
+
+将本地虚拟机/物理服务器复制到高级存储时，位于受保护计算机的磁盘上的所有数据都将复制到高级存储帐户。 需要额外的标准存储帐户来存储复制日志。 完成复制磁盘数据的初始阶段后，将连续跟踪对本地磁盘数据所做的所有更改，并在此附加的标准存储帐户中将其存储为复制日志。
+
 ### <a name="how-often-can-i-replicate-to-azure"></a>可以多久复制到 Azure 一次？
 
-可以每隔30秒（高级存储除外）或5分钟复制一次 hyper-v Vm。
+Hyper-v Vm 可以每隔30秒复制 (，高级存储) 或5分钟除外。
 
 ### <a name="can-i-extend-replication"></a>是否可以扩展复制？
 不支持扩展或链式复制。 请在[反馈论坛](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959)中请求此功能。
