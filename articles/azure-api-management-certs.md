@@ -1,6 +1,6 @@
 ---
 title: 上传 Azure Service Management 证书 | Microsoft Docs
-description: 了解如何为 Azure 门户上传 Service Management 证书。
+description: 了解如何为 Azure 门户上传 Service Management 证书。 管理证书允许您通过经典部署模型进行身份验证。
 services: cloud-services
 documentationcenter: .net
 author: georgewallace
@@ -10,18 +10,18 @@ ms.service: api-management
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: gwallace
-ms.openlocfilehash: 4b49a9b391eeca2d2e249b171d99f231bda6fdff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0d2436b524ba6df68b12206bcb545e54a405b731
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "78329113"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848547"
 ---
 # <a name="upload-an-azure-service-management-certificate"></a>上传 Azure Service Management 证书
 管理证书使你可以使用 Azure 提供的经典部署模型进行身份验证。 许多程序和工具（如 Visual Studio 或 Azure SDK）会使用这些证书来自动配置和部署各种 Azure 服务。 
 
 > [!WARNING]
-> 请小心！ 这些类型的证书允许任何使用它们进行身份验证的人管理与它们相关联的订阅。
+> 请注意！ 这些类型的证书允许使用它们进行身份验证的任何人管理与其相关联的订阅。
 >
 >
 
@@ -35,19 +35,19 @@ ms.locfileid: "78329113"
 创建管理证书后（仅使用公钥的 .cer 文件），可将其上传到门户。 当该证书在门户中可用时，任何拥有匹配证书（私钥）的人都可通过 Management API 连接并访问与订阅相关联的资源。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 在底部的 Azure 服务列表中，单击“所有服务”，然后在“常规”服务组中选择“订阅”。
+2. 在底部的 Azure 服务列表中，单击“所有服务”****，然后在“常规”__ 服务组中选择“订阅”****。
 
     ![订阅菜单](./media/azure-api-management-certs/subscriptions_menu.png)
 
 3. 请确保选择要与证书关联的正确订阅。     
-4. 选择了正确的订阅后，点按“设置”组中的“管理证书”。
+4. 选择了正确的订阅后，点按“设置”__ 组中的“管理证书”****。
 
     ![设置](./media/azure-api-management-certs/mgmtcerts_menu.png)
 
-5. 点按“上传”  按钮。
+5. 点按“上传”**** 按钮。
 
     ![在“证书”页上传](./media/azure-api-management-certs/certificates_page.png)
-6. 填写对话框信息并点按“上传”  。
+6. 填写对话框信息并点按“上传”****。
 
     ![设置](./media/azure-api-management-certs/certificate_details.png)
 

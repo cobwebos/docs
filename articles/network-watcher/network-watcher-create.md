@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 6b7453a0100233896e3d01769897ed224a0b2618
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03fe71855c43ba831f4b7a4ab746f05bd3bbb4a3
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737540"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846847"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>创建 Azure 网络观察程序实例
 
@@ -57,7 +57,7 @@ az provider register -n Microsoft.Network
 
 将自动在名为 *NetworkWatcherRG* 的资源组中创建网络观察程序实例。 如果该资源组尚不存在，则会创建该资源组。
 
-若要自定义网络观察程序实例的名称和放置该实例的资源组名称，可使用下面各部分中介绍的 Powershell、Azure CLI、REST API 或 ARMClient 方法。 在每个选项中，都必须存在资源组，然后才能在其中创建网络观察程序。  
+如果希望自定义网络观察程序实例的名称以及将其置于其中的资源组，可以使用以下各节中介绍的 PowerShell、Azure CLI、REST API 或 ARMClient 方法。 在每个选项中，都必须存在资源组，然后才能在其中创建网络观察程序。  
 
 ## <a name="create-a-network-watcher-with-powershell"></a>使用 PowerShell 创建网络观察程序
 
@@ -100,6 +100,10 @@ $requestBody = @"
 
 armclient put "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}?api-version=${api-version}" $requestBody
 ```
+
+## <a name="create-a-network-watcher-using-azure-quickstart-template"></a>使用 Azure 快速入门模板创建网络观察程序
+
+若要创建网络观察程序实例，请参阅此[快速入门模板](https://azure.microsoft.com/resources/templates/101-networkwatcher-create/)
 
 ## <a name="delete-a-network-watcher-in-the-portal"></a>在门户中删除网络观察程序
 

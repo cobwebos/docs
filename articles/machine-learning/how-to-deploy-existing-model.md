@@ -10,13 +10,13 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: e9177fdbac6173040145ff6d84dda8a579ee1d9e
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: fc3c03fa3368d87857ed91c720a92aacecf6eb89
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429414"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843158"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>利用 Azure 机器学习部署现有模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -133,7 +133,7 @@ dependencies:
 
 有关推理配置的详细信息，请参阅[使用 Azure 机器学习部署模型](how-to-deploy-and-where.md)。
 
-### <a name="entry-script-scorepy"></a>条目脚本（score.py）
+### <a name="entry-script-scorepy"></a> (score.py 的条目脚本) 
 
 入口脚本仅包含两个必需函数（`init()` 和 `run(data)`）。 这两个函数用于在启动时初始化服务，并使用客户端传入的请求数据运行模型。 脚本的其余部分用于加载和运行模型。
 

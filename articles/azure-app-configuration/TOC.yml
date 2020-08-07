@@ -75,7 +75,7 @@
       href: ./policy-samples.md
 - name: 概念
   items:
-    - name: 键值存储
+    - name: 键和值
       href: concept-key-value.md
     - name: 时间点快照
       href: concept-point-time-snapshot.md

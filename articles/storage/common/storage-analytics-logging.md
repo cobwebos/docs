@@ -1,6 +1,6 @@
 ---
 title: Azure 存储分析日志记录
-description: 了解如何记录针对 Azure 存储发出的请求的详细信息。
+description: 使用存储分析记录有关 Azure 存储请求的详细信息。 查看记录了哪些请求，如何存储日志，如何启用存储日志记录等。
 author: normesta
 ms.service: storage
 ms.subservice: common
@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring
-ms.openlocfilehash: 061c7f6a45b8667b7fd03d62bee67c695bec5e68
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 98c8bc07e1f5bb790c2f907bbc3c2125cae383a5
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87276782"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903215"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure 存储分析日志记录
 
@@ -30,7 +30,7 @@ ms.locfileid: "87276782"
 ## <a name="requests-logged-in-logging"></a>日志记录中记录的请求
 ### <a name="logging-authenticated-requests"></a>记录经过身份验证的请求
 
- 将记录以下类型的已经过身份验证的请求：
+ 将记录以下类型的经过身份验证的请求：
 
 - 成功的请求
 - 失败的请求，包括超时、限制、网络、授权和其他错误
@@ -41,7 +41,7 @@ ms.locfileid: "87276782"
 
 ### <a name="logging-anonymous-requests"></a>记录匿名请求
 
- 将记录以下类型的匿名请求：
+ 记录以下类型的匿名请求：
 
 - 成功的请求
 - 服务器错误

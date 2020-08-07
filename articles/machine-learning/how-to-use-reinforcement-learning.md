@@ -1,7 +1,7 @@
 ---
-title: 训练和部署强化学习模型（预览）。
+title: " (预览) 训练和部署强化学习模型。"
 titleSuffix: Azure Machine Learning
-description: 了解如何使用 Azure 机器学习强化学习（预览版）训练 RL 代理商的游戏。
+description: 了解如何使用 Azure 机器学习强化学习 (预览版) 训练 RL 代理以 play。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,13 +9,13 @@ ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 7a9c367c1669aab18da5a7cb1f7d732f9b8aee9e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 0a043bf79818480e045fb1f82640639fd7dcb232
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319059"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847629"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Azure 机器学习的强化学习（预览版）
 

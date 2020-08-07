@@ -4,12 +4,12 @@ description: 提供有关 Azure VMware 解决方案 (AVS) 的某些常见问题�
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: b6bf8e924b0776ace282e94f62ae2b0a67439efd
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: bd27d4669788b10fc12c47e4514020f6b01300bc
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836575"
+ms.locfileid: "87872321"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>有关 Azure VMware 解决方案 (AVS) 预览版的常见问题解答
 
@@ -45,7 +45,7 @@ ms.locfileid: "87836575"
 
 **可以将 vSphere VM 从本地环境迁移到 AVS 私有云吗？**
 
-是的。 如果满足跨 vCenter 的标准 [vMotion 要求][https://kb.vmware.com/s/article/210695 ]，则可以使用 VM 迁移和 vMotion 将 VM 迁移到私有云。
+是的。 如果满足标准跨 vCenter [vMotion 要求](https://kb.vmware.com/s/article/210695)，则可以使用 VM 迁移和 VMotion 将 vm 移到私有云。
 
 **本地环境中是否需要特定版本的 vSphere？**
 

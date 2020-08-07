@@ -1,7 +1,7 @@
 ---
 title: 使用 .NET 创建存储访问策略
 titleSuffix: Azure Storage
-description: 了解如何使用 .NET 客户端库创建存储访问策略。
+description: 使用 Azure 存储和 .NET 创建存储访问策略。 在服务器上对服务级别的共享访问签名执行其他控制级别。
 services: storage
 author: tamram
 ms.service: storage
@@ -10,12 +10,12 @@ ms.date: 06/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: f4a0d69f3687f0dcc174a2d8a1275a2bf55d9ecf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a08929c4affbd6eeb4d66a82d787ec5eba122e5b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85504383"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903759"
 ---
 # <a name="create-a-stored-access-policy-with-net"></a>使用 .NET 创建存储访问策略
 
@@ -37,18 +37,18 @@ ms.locfileid: "85504383"
 
 ## <a name="create-a-stored-access-policy"></a>创建存储访问策略
 
-用于创建存储访问策略的底层 REST 操作设置为[容器 ACL](/rest/api/storageservices/set-container-acl)。 你必须通过使用连接字符串中的帐户访问密钥授权操作以通过共享密钥创建存储访问策略。 不支持授权**设置容器 ACL**操作与 Azure AD 凭据。 有关详细信息，请参阅[调用 blob 和队列数据操作的权限](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。
+创建存储访问策略的基础 REST 操作是[设置容器 ACL](/rest/api/storageservices/set-container-acl)。 你必须通过使用连接字符串中的帐户访问密钥，授权该操作通过共享密钥创建存储访问策略。 不支持使用 Azure AD 凭据授权“设置容器 ACL”操作。 有关详细信息，请参阅[调用 blob 和队列数据操作的权限](/rest/api/storageservices/authorize-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations)。
 
-下面的代码示例在容器上创建存储访问策略。 可以使用访问策略指定对容器或其 Blob 上的服务 SAS 的约束。
+以下代码示例会在容器上创建存储访问策略。 可以使用访问策略指定对容器或其 Blob 上的服务 SAS 的约束。
 
 # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
-若要在具有适用于 Azure 存储的 .NET 客户端库版本12的容器上创建存储访问策略，请调用以下方法之一：
+若要使用适用于 Azure 存储的 .NET 客户端库版本 12 在容器上创建存储访问策略，请调用以下方法之一：
 
 - [BlobContainerClient.SetAccessPolicy](/dotnet/api/azure.storage.blobs.blobcontainerclient.setaccesspolicy)
 - [BlobContainerClient.SetAccessPolicyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.setaccesspolicyasync)
 
-下面的示例创建一个存储访问策略，该策略生效一天，并授予读取/写入权限：
+以下示例创建一个有效期为一天并授予读/写权限的存储访问策略：
 
 ```csharp
 async static Task CreateStoredAccessPolicyAsync(string containerName)
@@ -94,12 +94,12 @@ async static Task CreateStoredAccessPolicyAsync(string containerName)
 
 # <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
-若要在具有适用于 Azure 存储的 .NET 客户端库版本12的容器上创建存储访问策略，请调用以下方法之一：
+若要使用适用于 Azure 存储的 .NET 客户端库版本 12 在容器上创建存储访问策略，请调用以下方法之一：
 
-- [CloudBlobContainer. SetPermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissions)
-- [CloudBlobContainer. SetPermissionsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissionsasync)
+- [CloudBlobContainer.SetPermissions](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissions)
+- [CloudBlobContainer.SetPermissionsAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setpermissionsasync)
 
-下面的示例创建一个存储访问策略，该策略生效一天，并授予读取、写入和列出权限：
+以下示例创建一个有效期为一天并授予读取、写入和列表权限的存储访问策略：
 
 ```csharp
 private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer container, string policyName)
@@ -125,8 +125,8 @@ private static async Task CreateStoredAccessPolicyAsync(CloudBlobContainer conta
 
 ---
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 - [使用共享访问签名 (SAS) 授予对 Azure 存储资源的有限访问权限](storage-sas-overview.md)
 - [定义存储访问策略](/rest/api/storageservices/define-stored-access-policy)
-- [配置 Azure 存储连接字符串](storage-configure-connection-string.md)
+- [Configure Azure Storage connection strings](storage-configure-connection-string.md)（配置 Azure 存储连接字符串）

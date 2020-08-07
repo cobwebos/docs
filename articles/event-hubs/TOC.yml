@@ -75,7 +75,7 @@
     - name: 使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件
       href: event-hubs-kafka-stream-analytics.md
     - name: 使用事件中心将数据流式传输到 Azure Databricks
-      href: ../azure-databricks/databricks-stream-from-eventhubs.md
+      href: /azure/databricks/scenarios/databricks-stream-from-eventhubs
       maintainContext: true
 - name: 示例
   items:
