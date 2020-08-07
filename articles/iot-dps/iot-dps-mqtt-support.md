@@ -10,12 +10,12 @@ ms.author: ravokkar
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 213fc3412a2dfad77946e52a355a30774d6860c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7683f5d60c5d788707e2f89774cee42e7820db87
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81680678"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924200"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>使用 MQTT 协议与 DPS 通信
 
@@ -82,7 +82,7 @@ DPS 不是功能完备的 MQTT 中转站，并未支持 MQTT v3.1.1 标准中指
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 MQTT 协议的详细信息，请参阅 [MQTT 文档](https://mqtt.org/documentation)。
+若要了解有关 MQTT 协议的详细信息，请参阅 [MQTT 文档](https://mqtt.org/)。
 
 若要进一步探索 DPS 的功能，请参阅：
 

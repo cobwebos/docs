@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 644184f5bb51d049d890655ada5be5ebd4c11bf7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 03d40dcaeaefe01fecbc201cf28dc20c8634af9d
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908388"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926665"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>升级到 Azure 认知搜索 .NET SDK 版本11
 
@@ -48,7 +48,7 @@ ms.locfileid: "87908388"
 | 用于索引器、数据源、技能集的客户端 | [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient) | [SearchIndexerClient (**new**) ](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient) |
 
 > [!Important]
-> 版本11将版本10重命名 `SearchIndexClient` 为 `SearchClient` ，然后重新使用适用于索引、分析器和同义词地图对象的客户端的名称。 更新客户端引用时，请遵循[升级步骤](#UpgradeSteps)中的步骤顺序，以避免在搜索和替换过程中出现混淆。
+> `SearchIndexClient`在两个版本中均存在，但支持不同的功能。 在版本10中， `SearchIndexClient` 创建索引和其他对象。 在版本11中， `SearchIndexClient` 适用于现有索引。 若要避免在更新代码时产生混淆，请注意更新客户端引用的顺序。 遵循[升级步骤](#UpgradeSteps)中的顺序应有助于缓解任何字符串替换问题。
 
 <a name="naming-differences"></a>
 
@@ -125,7 +125,7 @@ Azure 认知搜索客户端库的每个版本都面向 REST API 的相应版本�
 
 版本11中尚不提供以下版本10功能。 如果使用这些功能，请在迁移之前保留迁移。
 
-+ [地理空间类型](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.serialization.geojsonextensions)
++ 地理空间类型
 + 尽管可以使用[此解决方法](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/tests/Samples/FieldBuilder/FieldBuilder.cs)) [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) (。
 + [知识存储](knowledge-store-concept-intro.md)
 

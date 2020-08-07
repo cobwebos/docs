@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: ba490a1e88a242f19daf1a74fe38f02e659571da
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb536b27fe283170626ca6ffa2d21749d511f244
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026741"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923503"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory 应用清单
 
@@ -78,7 +78,7 @@ ms.locfileid: "87026741"
 
 ### <a name="addins-attribute"></a>addIns 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | addIns | 集合 |
 
@@ -103,7 +103,7 @@ ms.locfileid: "87026741"
 
 ### <a name="allowpublicclient-attribute"></a>allowPublicClient 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | allowPublicClient | 布尔 |
 
@@ -117,7 +117,7 @@ ms.locfileid: "87026741"
 
 ### <a name="availabletoothertenants-attribute"></a>availableToOtherTenants 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | availableToOtherTenants | 布尔 |
 
@@ -128,7 +128,7 @@ ms.locfileid: "87026741"
 
 ### <a name="appid-attribute"></a>appId 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | appId | 字符串 |
 
@@ -142,7 +142,7 @@ ms.locfileid: "87026741"
 
 ### <a name="approles-attribute"></a>appRoles 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | appRoles | 集合 |
 
@@ -167,7 +167,7 @@ ms.locfileid: "87026741"
 
 ### <a name="displayname-attribute"></a>displayName 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | displayName | 字符串 |
 
@@ -178,7 +178,7 @@ ms.locfileid: "87026741"
 
 ### <a name="errorurl-attribute"></a>errorUrl 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | errorUrl | 字符串 |
 
@@ -186,7 +186,7 @@ ms.locfileid: "87026741"
 
 ### <a name="groupmembershipclaims-attribute"></a>groupMembershipClaims 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 |groupMembershipClaims | 字符串 |
 
@@ -204,7 +204,7 @@ ms.locfileid: "87026741"
 
 ### <a name="homepage-attribute"></a>homepage 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | homepage |字符串 |
 
@@ -215,7 +215,7 @@ ms.locfileid: "87026741"
 
 ### <a name="objectid-attribute"></a>objectId 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 |objectId | 字符串 |
 
@@ -231,7 +231,7 @@ ms.locfileid: "87026741"
 
 ### <a name="optionalclaims-attribute"></a>optionalClaims 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | optionalClaims | 字符串 |
 
@@ -249,7 +249,7 @@ ms.locfileid: "87026741"
 
 ### <a name="identifieruris-attribute"></a>identifierUris 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | identifierUris | String Array |
 
@@ -263,7 +263,7 @@ ms.locfileid: "87026741"
 
 ### <a name="informationalurls-attribute"></a>informationalUrls 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | informationalUrls | 字符串 |
 
@@ -282,7 +282,7 @@ ms.locfileid: "87026741"
 
 ### <a name="keycredentials-attribute"></a>keyCredentials 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | keyCredentials | 集合 |
 
@@ -306,7 +306,7 @@ ms.locfileid: "87026741"
 
 ### <a name="knownclientapplications-attribute"></a>knownClientApplications 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | knownClientApplications | String Array |
 
@@ -320,7 +320,7 @@ ms.locfileid: "87026741"
 
 ### <a name="logourl-attribute"></a>logoUrl 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | logoUrl | 字符串 |
 
@@ -334,7 +334,7 @@ ms.locfileid: "87026741"
 
 ### <a name="logouturl-attribute"></a>logoutUrl 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | logoutUrl | 字符串 |
 
@@ -348,7 +348,7 @@ ms.locfileid: "87026741"
 
 ### <a name="name-attribute"></a>name 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | name | 字符串 |
 
@@ -362,7 +362,7 @@ ms.locfileid: "87026741"
 
 ### <a name="oauth2allowimplicitflow-attribute"></a>oauth2AllowImplicitFlow 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | oauth2AllowImplicitFlow | 布尔 |
 
@@ -376,7 +376,7 @@ ms.locfileid: "87026741"
 
 ### <a name="oauth2allowidtokenimplicitflow-attribute"></a>oauth2AllowIdTokenImplicitFlow 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | oauth2AllowIdTokenImplicitFlow | 布尔 |
 
@@ -390,7 +390,7 @@ ms.locfileid: "87026741"
 
 ### <a name="oauth2permissions-attribute"></a>oauth2Permissions 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | oauth2Permissions | 集合 |
 
@@ -415,7 +415,7 @@ ms.locfileid: "87026741"
 
 ### <a name="oauth2requiredpostresponse-attribute"></a>oauth2RequiredPostResponse 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | oauth2RequiredPostResponse | 布尔 |
 
@@ -429,7 +429,7 @@ ms.locfileid: "87026741"
 
 ### <a name="parentalcontrolsettings-attribute"></a>parentalControlSettings 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | parentalControlSettings | 字符串 |
 
@@ -447,7 +447,7 @@ ms.locfileid: "87026741"
 
 ### <a name="passwordcredentials-attribute"></a>passwordCredentials 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | passwordCredentials | 集合 |
 
@@ -469,7 +469,7 @@ ms.locfileid: "87026741"
 
 ### <a name="preauthorizedapplications-attribute"></a>preAuthorizedApplications 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | preAuthorizedApplications | 集合 |
 
@@ -490,7 +490,7 @@ ms.locfileid: "87026741"
 
 ### <a name="publicclient-attribute"></a>publicClient 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | publicClient | 布尔|
 
@@ -500,7 +500,7 @@ ms.locfileid: "87026741"
 
 ### <a name="publisherdomain-attribute"></a>publisherDomain 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | publisherDomain | 字符串 |
 
@@ -514,7 +514,7 @@ ms.locfileid: "87026741"
 
 ### <a name="replyurls-attribute"></a>replyUrls 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | replyUrls | 字符串数组 |
 
@@ -524,7 +524,7 @@ ms.locfileid: "87026741"
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | replyUrlsWithType | 集合 |
 
@@ -532,6 +532,7 @@ ms.locfileid: "87026741"
 
 - `Web`
 - `InstalledClient`
+- `Spa`
 
 若要了解详细信息，请参阅 [replyUrl 限制和局限性](https://docs.microsoft.com/azure/active-directory/develop/reply-url)。
 
@@ -548,7 +549,7 @@ ms.locfileid: "87026741"
 
 ### <a name="requiredresourceaccess-attribute"></a>requiredResourceAccess 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | requiredResourceAccess | 集合 |
 
@@ -575,7 +576,7 @@ ms.locfileid: "87026741"
 
 ### <a name="samlmetadataurl-attribute"></a>samlMetadataUrl 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | samlMetadataUrl | 字符串 |
 
@@ -589,7 +590,7 @@ ms.locfileid: "87026741"
 
 ### <a name="signinurl-attribute"></a>signInUrl 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | signInUrl | 字符串 |
 
@@ -603,7 +604,7 @@ ms.locfileid: "87026741"
 
 ### <a name="signinaudience-attribute"></a>signInAudience 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
 | signInAudience | 字符串 |
 
@@ -621,9 +622,9 @@ ms.locfileid: "87026741"
 
 ### <a name="tags-attribute"></a>tags 属性
 
-| 键 | 值类型 |
+| 密钥 | 值类型 |
 | :--- | :--- |
-| 标记 | String Array  |
+| tags | String Array  |
 
 可用来对应用程序进行分类和标识的自定义字符串。
 

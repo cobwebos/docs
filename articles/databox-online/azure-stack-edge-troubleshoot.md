@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 门户对 Azure Stack Edge 进行故障排除 |Microsoft Docs
-description: 介绍如何对 Azure Stack 边缘问题进行故障排除。
+description: 了解如何对 Azure Stack 边缘的问题进行故障排除。 您可以运行诊断、收集支持信息并使用日志进行故障排除。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 03/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 00aae3386b3f648eafdef31dccb640d8120f7ad8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b80b47a1be67a9771d138c43178d50156a6f1a95
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564005"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926427"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-issues"></a>排查 Azure Stack 边缘问题
 

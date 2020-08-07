@@ -3,16 +3,16 @@ title: Azure Application Insights 中的资源、角色和访问控制 | Microso
 description: 组织的见解的所有者、参与者和读者。
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 38c7d7bcbcf193149fd8ab5e632674b6f8530a44
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3d69ad7eeb7c8dd32c2e3cb286f9596bed7fe042
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325689"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926495"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的资源、角色和访问控制
 
-通过使用 [Microsoft Azure 中基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)，可以控制哪些用户对 Azure [Application Insights][start] 中的数据具有读取和更新访问权限。
+通过使用 azure [RBAC)  (azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)，可以控制哪些用户对 azure [Application Insights][start]中的数据具有读取和更新访问权限。
 
 > [!IMPORTANT]
 > 将访问权限分配给应用程序资源所属**资源组或订阅**中的用户（并非资源本身）。 分配 **Application Insights 组件参与者**角色。 这可确保对 Web 测试和警报及应用程序资源的访问实现统一控制。 [了解详细信息](#access)。
@@ -101,7 +101,7 @@ ms.locfileid: "87325689"
 
 ## <a name="related-content"></a>相关内容
 
-* [Azure 中基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)
+* [Azure RBAC) 的 azure 基于角色的访问控制 (](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="powershell-query-to-determine-role-membership"></a>PowerShell 查询确定角色成员身份
 
@@ -135,4 +135,3 @@ $resourceGroup = "RGNAME"
 [group]: ../../azure-resource-manager/management/overview.md
 [portal]: https://portal.azure.com/
 [start]: ./app-insights-overview.md
-

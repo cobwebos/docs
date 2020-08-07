@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ea691ff42f9e5f214aa9987fae53732be844e034
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9f517eb5bd113d8d54714b75bea4c8436882d0f9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836337"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924421"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷：规划和部署清单
 
@@ -74,7 +74,7 @@ ms.locfileid: "87836337"
 4.  基础服务的设计。 此设计应包括以下各项：
     - Active Directory 和 DNS 设计。
     - Azure 中的网络拓扑，并分配不同的 SAP 系统。
-    - 用于管理 Azure 中的基础结构和 SAP 应用程序的团队的[基于角色的访问](../../../role-based-access-control/overview.md)结构。
+    - Azure[基于角色的访问控制 (](../../../role-based-access-control/overview.md)用于管理 azure 中的基础结构和 SAP 应用程序的团队的 azure RBAC) 结构。
     - 资源组拓扑。
     - [标记策略](../../../azure-resource-manager/management/tag-resources.md#tags-and-billing)。
     - Vm 和其他基础结构组件以及/或逻辑名称的命名约定。

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 95455d389669b89075ca0ea8583cc7858bb532f0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12e94cfd576ced8c0e2768dd508e7f6f1a0056eb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85317627"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927464"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>教程：为 Atlassian Cloud 配置自动用户预配
 
-本教程的目的是演示要在 Atlassian 云和 Azure Active Directory （Azure AD）中执行的步骤，以将 Azure AD 自动预配和取消预配到[Atlassian 云](https://www.atlassian.com/licensing/cloud)。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程的目的是演示要在 Atlassian Cloud 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置 Azure AD 自动将用户和/或组预配到[Atlassian 云](https://www.atlassian.com/licensing/cloud)。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -32,7 +32,7 @@ ms.locfileid: "85317627"
 > * 如果用户不需要访问，请在 Atlassian 云中删除用户
 > * 使用户属性在 Azure AD 和 Atlassian Cloud 之间保持同步
 > * 在 Atlassian 云中预配组和组成员身份
-> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/atlassian-cloud-tutorial)到 Atlassian Cloud （推荐）
+> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/atlassian-cloud-tutorial)到 Atlassian Cloud (推荐) 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -88,7 +88,7 @@ ms.locfileid: "85317627"
 
 3. 选择“预配”选项卡。
 
-    ![预配选项卡](common/provisioning.png)
+    ![“预配”选项卡](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
@@ -102,7 +102,7 @@ ms.locfileid: "85317627"
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存” 。
+7. 单击“保存”  。
 
 8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Atlassian Cloud**"。
 
@@ -110,11 +110,11 @@ ms.locfileid: "85317627"
 
    |Attribute|类型|
    |---|---|
-   |userName|String|
+   |userName|字符串|
    |活动|Boolean|
-   |name.familyName|String|
-   |name.givenName|String|
-   |emails[type eq "work"].value|String|   
+   |name.familyName|字符串|
+   |name.givenName|字符串|
+   |emails[type eq "work"].value|字符串|   
 
 10. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 组同步到 Atlassian Cloud**"。
 
@@ -122,7 +122,7 @@ ms.locfileid: "85317627"
 
       |Attribute|类型|
       |---|---|
-      |displayName|String|
+      |displayName|字符串|
       |externalId|字符串|
       |members|参考|
 
@@ -146,7 +146,7 @@ ms.locfileid: "85317627"
 配置预配后，请使用以下资源来监视部署：
 
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。  
 
 ## <a name="connector-limitations"></a>连接器限制

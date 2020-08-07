@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
-ms.openlocfilehash: df6de62eefc0971ece0e0035299425689af5f784
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: c11de5daacfd0d0b3d12c38064dac704c98ce60b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307618"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924183"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>使用 MQTT 协议与 IoT 中心通信
 
@@ -310,13 +310,13 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 
 在从云到设备的消息中，属性包中的值表示如下表中所示：
 
-| 属性值 | 表示形式 | 说明 |
+| 属性值 | 表示形式 | 描述 |
 |----|----|----|
 | `null` | `key` | 属性包中只显示密钥 |
 | 空字符串 | `key=` | 键后跟一个无值的等号 |
 | 非 null，非空值 | `key=value` | 键后跟一个等号和值 |
 
-下面的示例显示一个属性包，其中包含三个应用程序属性： **prop1** ，值为 `null` ;**prop2**，空字符串（""）;和值为 "a string" 的**prop3** 。
+下面的示例显示一个属性包，其中包含三个应用程序属性： **prop1** ，值为 `null` ;**prop2** ( "" ) ，则为空字符串;和值为 "a string" 的**prop3** 。
 
 ```mqtt
 /?prop1&prop2=&prop3=a%20string
@@ -437,7 +437,7 @@ client.publish("$iothub/twin/PATCH/properties/reported/?$rid=" +
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 MQTT 协议的详细信息，请参阅 [MQTT 文档](https://mqtt.org/documentation)。
+若要了解有关 MQTT 协议的详细信息，请参阅 [MQTT 文档](https://mqtt.org/)。
 
 若要深入了解如何规划 IoT 中心部署，请参阅：
 

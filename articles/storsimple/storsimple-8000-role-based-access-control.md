@@ -1,6 +1,6 @@
 ---
 title: 针对 StorSimple 使用基于角色的访问控制 | Microsoft Docs
-description: 介绍如何在 StorSimple 环境中使用基于 Azure 角色的访问控制（Azure RBAC）。
+description: 介绍如何在 StorSimple 环境中使用 azure RBAC)  (azure 基于角色的访问控制。
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: 04993d36689c917db05a1b5f2132b107c7c9b412
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 38500edeca2241bfa9ab093e037af18159994b02
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535104"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920393"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>适用于 StorSimple 的基于角色的访问控制
 
-本文提供了有关如何将基于 Azure 角色的访问控制（Azure RBAC）用于 StorSimple 设备的简短说明。 RBAC 提供针对 Azure 的细化访问管理。 使用 RBAC 只向 StorSimple 用户授予执行作业所需的适当访问量，而不用向每个人授予不受限制的访问。 若要深入了解 Azure 中访问管理的基础知识，请参阅 [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。
+本文简要介绍了如何将 azure RBAC) 的 Azure 基于角色的访问控制用于 StorSimple 设备 (。 RBAC 提供针对 Azure 的细化访问管理。 使用 RBAC 只向 StorSimple 用户授予执行作业所需的适当访问量，而不用向每个人授予不受限制的访问。 若要深入了解 Azure 中访问管理的基础知识，请参阅 [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。
 
 本文适用于在 Azure 门户中运行 Update 3.0 或更高版本的 StorSimple 8000 系列设备。
 
@@ -163,9 +163,9 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 ## <a name="add-users-to-the-custom-role"></a>将用户添加到自定义角色
 
-授予资源、资源组或订阅（即角色分配范围）内的访问权限。 提供访问权限时，请牢记在父节点上授予的访问权限会由子节点继承。 有关详细信息，请转到[基于角色的访问控制](../role-based-access-control/overview.md)。
+授予资源、资源组或订阅（即角色分配范围）内的访问权限。 提供访问权限时，请牢记在父节点上授予的访问权限会由子节点继承。 有关详细信息，请参阅 azure [RBAC) 上的 azure 基于角色的访问控制 (](../role-based-access-control/overview.md)。
 
-1. 中转到 "**访问控制（IAM）**"。 在“访问控制”边栏选项卡上单击“+ 添加”****。
+1. 请**访问 (IAM) 的 "访问控制**"。 在“访问控制”边栏选项卡上单击“+ 添加”****。
 
     ![添加对 Azure 角色的访问权限](./media/storsimple-8000-role-based-access-control/rbac-add-role.png)
 
@@ -183,7 +183,7 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 创建此角色后，可在 Azure 门户中查看与此角色关联的权限。
 
-1. 若要查看与此角色关联的权限，请参阅**StorSimple 基础结构管理员 > 的 "访问控制（IAM）" > 角色**。此时会显示此角色中的用户列表。
+1. 若要查看与此角色关联的权限，请参阅**访问控制 (IAM) > role > StorSimple 基础结构管理员**。此时会显示此角色中的用户列表。
 
 2. 选择 StorSimple 基础结构管理员用户，然后单击“权限”****。
 

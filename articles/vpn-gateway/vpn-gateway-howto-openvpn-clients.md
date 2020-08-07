@@ -1,18 +1,18 @@
 ---
 title: 如何为 Azure VPN 网关配置 OpenVPN 客户端 |Microsoft Docs
-description: 为 Azure VPN 网关配置 OpenVPN 客户端的步骤
+description: 了解如何为 Azure VPN 网关配置 OpenVPN 协议客户端，包括 Windows、Mac 和 Linux 客户端。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: bdddf097265e7af688175688b6f3214413a90fdc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 136dcb0b2d1740aa5cadbd716b4a8386ad5cf486
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84984098"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926206"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>为 Azure VPN 网关配置 OpenVPN 客户端
 

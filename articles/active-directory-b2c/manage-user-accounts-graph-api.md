@@ -12,12 +12,12 @@ ms.date: 08/03/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d523aeff87b95aaea91df9ad5d3f44c73c871b71
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 8132eb72b3e448d7ae830b29ccb7dc51528c1250
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87528593"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921395"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>使用 Microsoft Graph 管理 Azure AD B2C 用户帐户
 
@@ -63,7 +63,7 @@ Microsoft Graph 允许通过在 Microsoft Graph API 中提供创建、读取、�
 | 属性   | 类型 |说明|
 |:---------------|:--------|:----------|
 |signInType|string| 指定目录中的用户登录类型。 对于本地帐户：`emailAddress`、`emailAddress1`、`emailAddress2`、`emailAddress3`、`userName`，或所需的任何其他类型。 社交帐户必须设置为 `federated`。|
-|颁发者|string|指定标识的颁发者。 对于本地帐户（其 **signInType** 不是 `federated`），此属性是本地 B2C 租户的默认域名，例如 `contoso.onmicrosoft.com`。 对于社交标识（其中**signInType**为 `federated` ），该值为颁发者的名称，例如`facebook.com`|
+|颁发者|string|指定标识的颁发者。 对于本地帐户（其 **signInType** 不是 `federated`），此属性是本地 B2C 租户的默认域名，例如 `contoso.onmicrosoft.com`。 对于社会身份 (，其中**signInType**为 `federated`) ，该值为颁发者的名称，例如`facebook.com`|
 |issuerAssignedId|string|指定由颁发者分配给用户的唯一标识符。 **issuer** 和 **issuerAssignedId** 的组合在租户中必须唯一。 对于本地帐户，当 **signInType** 设置为 `emailAddress` 或 `userName` 时，它表示用户的登录名。<br>如果 **signInType** 设置为： <ul><li>`emailAddress`（或以 `emailAddress` 开头，例如 `emailAddress1`），则 **issuerAssignedId** 必须是有效的电子邮件地址</li><li>`userName`（或任何其他值），则 **issuerAssignedId** 必须是有效的[电子邮件地址本地部分](https://tools.ietf.org/html/rfc3696#section-3)</li><li>`federated`，则 **issuerAssignedId** 表示联合帐户唯一标识符</li></ul>|
 
 以下 Identities 属性包含一个本地帐户标识、一个电子邮件地址和一个社交标识，它们均可用作登录名。 
@@ -115,15 +115,15 @@ Azure AD B2C 密码策略（对于本地帐户）基于 Azure Active Directory [
 
 ### <a name="extension-properties"></a>扩展属性
 
-每个面向客户的应用程序对要收集的信息都有独特的要求。 Azure AD B2C 租户附带了一组存储在属性中的内置信息：名字、姓氏、城市和邮政编码。 使用 Azure AD B2C 可以扩展存储在每个客户帐户中的属性集。 有关定义自定义属性的详细信息，请参阅[自定义特性（用户流）](user-flow-custom-attributes.md)和[自定义特性（自定义策略）](custom-policy-custom-attributes.md)。
+每个面向客户的应用程序对要收集的信息都有独特的要求。 Azure AD B2C 租户附带了一组存储在属性中的内置信息：名字、姓氏、城市和邮政编码。 使用 Azure AD B2C 可以扩展存储在每个客户帐户中的属性集。 有关定义自定义属性的详细信息，请参阅[ (用户流中的自定义属性) ](user-flow-custom-attributes.md)和自定义[属性 (自定义策略) ](custom-policy-custom-attributes.md)。
 
-Microsoft Graph API 支持使用扩展特性创建和更新用户。 图形 API 中的扩展属性是使用约定命名的 `extension_ApplicationClientID_attributename` ，其中 `ApplicationClientID` 是应用程序的**应用程序（客户端） ID** `b2c-extensions-app` （在**应用注册**  >  Azure 门户中的**所有应用**程序中）。 请注意，**应用程序（客户端） ID**在扩展属性名称中的表示形式不包含连字符。 例如：
+Microsoft Graph API 支持使用扩展特性创建和更新用户。 图形 API 中的扩展属性是使用约定命名的 `extension_ApplicationClientID_attributename` ，其中， `ApplicationClientID` 是应用程序** (客户端) ID**的应用程序 (在应用注册 Azure 门户 `b2c-extensions-app` 中的**App registrations**  >  **所有应用**程序中查找。 请注意，**应用程序 (客户端) ID**在扩展属性名称中的表示方式不包含连字符。 例如：
 
 ```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
 ```
 
-## <a name="code-sample"></a>代码示例
+## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>代码示例：如何以编程方式管理用户帐户
 
 此代码示例是一个 .NET Core 控制台应用程序，它使用 [Microsoft Graph SDK](https://docs.microsoft.com/graph/sdks/sdks-overview) 来与 Microsoft Graph API 交互。 其中的代码演示了如何调用 API 来以编程方式管理 Azure AD B2C 租户中的用户。
 可以[下载示例存档](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*.zip)，在 GitHub 中[浏览存储库](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management)，或克隆存储库：

@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 可用性区域中创建区域冗余虚拟网络网关
-description: 在可用性区域中部署 VPN 网关和 ExpressRoute 网关
+description: 了解如何在 Azure 可用性区域中部署 VPN 和 ExpressRoute 网关，并将复原能力、可伸缩性和更高可用性添加到 VNet 网关。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -8,24 +8,24 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6cd0b2f31af187d881fe650c0829bb28e353dcbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccb6050ae4d56d2f8e57b4a590d01fb6acd9bd8a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987625"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925150"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>在 Azure 可用性区域中创建区域冗余虚拟网络网关
 
-可以在 Azure 可用性区域中部署 VPN 网关和 ExpressRoute 网关。 这样可以提高虚拟网络网关的复原性、可伸缩性和可用性。 如果在 Azure 可用性区域中部署网关，可以在地理位置和逻辑上将区域内的网关分隔开来，同时还能保护本地网络与 Azure 的连接免受区域级故障的影响。 有关信息，请参阅[关于区域冗余虚拟网络网关](about-zone-redundant-vnet-gateways.md)和[关于 Azure 可用性区域](../availability-zones/az-overview.md)。
+可以在 Azure 可用性区域中部署 VPN 网关和 ExpressRoute 网关。 这样可以提高虚拟网络网关的复原性、可伸缩性和可用性。 可通过在 Azure 可用性区域中部署网关，在地理位置和逻辑上将区域内的网关分隔开来，同时还能保护本地网络与 Azure 的连接免受区域级故障的影响。 有关信息，请参阅[关于区域冗余虚拟网络网关](about-zone-redundant-vnet-gateways.md)和[关于 Azure 可用性区域](../availability-zones/az-overview.md)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="before-you-begin"></a>在开始之前
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ## <a name="1-declare-your-variables"></a><a name="variables"></a>1.声明变量
 
-声明要使用的变量。 使用以下示例，根据需要将值替换为自己的值。 如果在练习期间的任何时候关闭了 PowerShell/Cloud Shell 会话，只需再次复制和粘贴该值，重新声明变量。 指定位置时，请确认指定的区域是否受支持。 有关详细信息，请参阅[常见问题](#faq)。
+声明要使用的变量。 使用以下示例，根据需要将值替换为自己的值。 如果在练习期间的任何时候关闭了 PowerShell/Cloud Shell 会话，只需再次复制和粘贴该值，重新声明变量。 指定位置时，请确认指定的区域是否受支持。 有关详细信息，请参阅[常见问题解答](#faq)。
 
 ```azurepowershell-interactive
 $RG1         = "TestRG1"

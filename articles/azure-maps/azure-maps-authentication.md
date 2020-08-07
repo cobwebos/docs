@@ -10,19 +10,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: af3f9b4595be5af2477fdbef4e5f0a15224e8a93
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4aaa729ffd272c886bf5c545574d99c9de5842f9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285826"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922245"
 ---
 # <a name="authentication-with-azure-maps"></a>使用 Azure Maps 进行身份验证
 
-Azure Maps 支持通过两种方式对请求进行身份验证：共享密钥身份验证和[Azure Active Directory （Azure AD）](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)身份验证。 本文介绍这两种身份验证方法，以帮助指导你实现 Azure Maps 服务。
+Azure Maps 支持通过两种方式对请求进行身份验证：共享密钥身份验证和[Azure Active Directory (Azure AD) ](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)身份验证。 本文介绍这两种身份验证方法，以帮助指导你实现 Azure Maps 服务。
 
 > [!NOTE]
-> 为了改善与 Azure Maps 的安全通信，我们现在支持传输层安全（TLS）1.2，并且我们正在停用对 TLS 1.0 和1.1 的支持。 如果你当前使用 TLS 1.x，请评估你的 TLS 1.2 准备情况，并使用[解决 TLS 1.0 问题](https://docs.microsoft.com/security/solving-tls1-problem)中所述的测试制定迁移计划。
+> 为了改善与 Azure Maps 的安全通信，我们现在支持 (TLS) 1.2 的传输层安全性，并为 TLS 1.0 和1.1 停用支持。 如果你当前使用 TLS 1.x，请评估你的 TLS 1.2 准备情况，并使用[解决 TLS 1.0 问题](https://docs.microsoft.com/security/solving-tls1-problem)中所述的测试制定迁移计划。
 
 ## <a name="shared-key-authentication"></a>共享密钥身份验证
 
@@ -51,7 +51,7 @@ Azure Maps 为每个 Azure Maps 帐户生成一个唯一的标识符（客户端
 
 ### <a name="managed-identities-for-azure-resources-and-azure-maps"></a>Azure 资源和 Azure Maps 的托管标识
 
-[Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)为 azure 服务提供了一个自动托管的基于应用程序的安全主体，该主体可使用 Azure AD 进行身份验证。 使用基于角色的访问控制（RBAC），可以授权托管标识安全主体访问 Azure Maps 服务。 托管标识的一些示例包括： Azure App Service、Azure Functions 和 Azure 虚拟机。 有关托管标识的列表，请参阅[Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)。
+[Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)为 azure 服务提供了一个自动托管的基于应用程序的安全主体，该主体可使用 Azure AD 进行身份验证。 使用基于角色的访问控制 (RBAC) ，可以授权托管标识安全主体访问 Azure Maps 服务。 托管标识的一些示例包括： Azure App Service、Azure Functions 和 Azure 虚拟机。 有关托管标识的列表，请参阅[Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities)。
 
 ### <a name="configuring-application-azure-ad-authentication"></a>配置应用程序 Azure AD 身份验证
 
@@ -59,7 +59,7 @@ Azure Maps 为每个 Azure Maps 帐户生成一个唯一的标识符（客户端
 
 在应用程序收到访问令牌后，SDK 和/或应用程序将使用以下一组所需的 HTTP 标头以及其他 REST API HTTP 标头发送 HTTPS 请求：
 
-| 标头名称    | 值               |
+| 标头名称    | “值”               |
 | :------------- | :------------------ |
 | x-ms-client-id | 30d7cc….9f55        |
 | 授权  | Bearer eyJ0e….HNIVN |
@@ -80,7 +80,7 @@ Authorization: Bearer eyJ0e….HNIVN
 
 ## <a name="authorization-with-role-based-access-control"></a>使用基于角色的访问控制进行授权
 
-Azure Maps 支持访问 Azure[基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/overview)的所有主要类型，包括：个体 Azure AD 用户、组、应用程序、azure 资源和 azure 托管标识。 向主体类型授予一组权限（也称为角色定义）。 角色定义提供 REST API 操作的权限。 将访问权限应用到一个或多个 Azure Maps 帐户称为 "作用域"。 应用主体、角色定义和作用域时，将创建角色分配。 
+Azure Maps 支持对 azure [RBAC)  (azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)的所有主体类型的访问，包括：个人 Azure AD 用户、组、应用程序、azure 资源和 azure 托管标识。 向主体类型授予一组权限（也称为角色定义）。 角色定义提供 REST API 操作的权限。 将访问权限应用到一个或多个 Azure Maps 帐户称为 "作用域"。 应用主体、角色定义和作用域时，将创建角色分配。 
 
 以下各节讨论 Azure Maps 与 Azure AD 基于角色的访问控制集成的概念和组件。 作为 Azure Maps 帐户设置过程的一部分，Azure AD 目录关联到 Azure Maps 帐户所在的 Azure 订阅。 
 
@@ -90,7 +90,7 @@ Azure Maps 支持访问 Azure[基于角色的访问控制](https://docs.microsof
 
 存在下列角色定义类型以支持应用程序方案。
 
-| Azure 角色定义       | 说明                                                                                              |
+| Azure 角色定义       | 描述                                                                                              |
 | :-------------------------- | :------------------------------------------------------------------------------------------------------- |
 | Azure Maps 数据读取器      | 提供对不可变 Azure Maps REST Api 的访问。                                                       |
 | Azure Maps 数据参与者 | 提供对可变 Azure Maps REST Api 的访问。 可变性是由 "操作：写入" 和 "删除" 定义的。 |
@@ -114,7 +114,7 @@ Azure Maps 支持访问 Azure[基于角色的访问控制](https://docs.microsof
 
 下面是一些示例方案，其中的自定义角色可以提高应用程序的安全性。
 
-| 方案                                                                                                                                                                                                                 | 自定义角色数据操作                                                                                                                  |
+| 方案                                                                                                                                                                                                                 | 自定义角色数据操作 (s)                                                                                                                   |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
 | 使用基本地图磁贴的公共或交互式登录网页，无其他 REST Api。                                                                                                                              | `Microsoft.Maps/accounts/services/render/read`                                                                                              |
 | 只需要反向地理编码和其他 REST Api 的应用程序。                                                                                                                                             | `Microsoft.Maps/accounts/services/search/read`                                                                                              |

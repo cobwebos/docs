@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/06/2020
 ms.author: b-juche
-ms.openlocfilehash: e19db61efbf93e3191d5780d07952f3d195c7a59
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e974fb51ac36083e6ed8934afaa7a3e36ab8c08e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533031"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923860"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>动态更改卷的服务级别
 
@@ -33,8 +33,7 @@ ms.locfileid: "87533031"
 
 * 将卷移动到另一个容量池后，将无法再访问以前的卷活动日志和卷指标。 卷将从新的容量池下的新活动日志和指标开始。
 
-* 如果将卷移动到更高的服务级别（例如，从*标准*版升级到高级服务级别或*高级*服务级别），则必须等待至少7天，然后才能将该卷再次移到较低*的服务级别*的容量池（例如，从*超小型*迁移到*高级*或*标准*版）。  
-如果将卷移动到具有相同服务级别或更低服务级别的容量池，则不会应用此等待期限。
+* 如果将卷移动到更高的服务级别的容量池 (例如，从 "*标准*" 层或 "高级" 服务级别) 移动到 "高级" 或 "*高级*" 服务级别时，必须等待至少7天，然后才能将该卷*再次*移到较低*的服务级别*的容量池 (例如，从 " *Ultra* *" 或 "* *标准*") 移动。  
 
 ## <a name="register-the-feature"></a>注册功能
 

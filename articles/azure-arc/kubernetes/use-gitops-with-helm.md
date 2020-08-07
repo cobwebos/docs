@@ -1,5 +1,5 @@
 ---
-title: 在启用 Arc 的 Kubernetes 群集（预览版）上使用 GitOps 部署 Helm 图表
+title: '使用启用了 GitOps on Arc 的 Kubernetes 群集 (预览部署 Helm 图表) '
 services: azure-arc
 ms.service: azure-arc
 ms.date: 05/19/2020
@@ -8,14 +8,14 @@ author: mlearned
 ms.author: mlearned
 description: 将 GitOps 和 Helm 配合用于启用了 Azure Arc 的群集配置（预览版）
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: f6a30dd66ccf476da0293bdebf9054b6781a6bf6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 44803338a27fc492f4dc896a0edb398b2ce486ea
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049943"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926121"
 ---
-# <a name="deploy-helm-charts-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>在启用 Arc 的 Kubernetes 群集（预览版）上使用 GitOps 部署 Helm 图表
+# <a name="deploy-helm-charts-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>使用启用了 GitOps on Arc 的 Kubernetes 群集 (预览部署 Helm 图表) 
 
 Helm 是一种开放源打包工具，有助于安装和管理 Kubernetes 应用程序的生命周期。 与诸如 APT 和 Yum 的 Linux 包管理器类似，Helm 用于管理 Kubernetes 图表，这些图表是预配置的 Kubernetes 资源包。
 
@@ -156,7 +156,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 ## <a name="validate-application"></a>验证应用程序
 
-运行以下命令并在浏览器中导航到[localhost： 3000](http://localhost:3000) ，验证应用程序是否正在运行。
+运行以下命令并 `localhost:3000` 在浏览器中导航到，验证应用程序是否正在运行。
 
 ```bash
 kubectl port-forward -n arc-k8s-demo svc/arc-k8s-demo-vote-front 3000:80

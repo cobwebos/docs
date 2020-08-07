@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 1fdfe57c2995628855ea8e068c4f8eb2f2ac466a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9b05d9952628e550beae5cedc49e051936a9d633
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500415"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927277"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>针对本地物理服务器设置到 Azure 的灾难恢复
 
@@ -59,7 +59,7 @@ ms.locfileid: "87500415"
 请确保 Azure 帐户具有将 VM 复制到 Azure 的权限。
 
 - 查看将计算机复制到 Azure 所需的[权限](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)。
-- 验证和修改[基于角色的访问](../role-based-access-control/role-assignments-portal.md)权限。 
+- 验证和修改 azure [RBAC) 权限的 azure 基于角色的访问控制 (](../role-based-access-control/role-assignments-portal.md) 。 
 
 
 

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
-ms.openlocfilehash: fbf996a66bf76520002a22169903c7961080e38b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b06ae396ae15c8572cf8160ce576651f47001add
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131523"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920494"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>如何保护 DNS 区域和记录
 
@@ -20,11 +20,11 @@ ms.locfileid: "87131523"
 
 DNS 区域和记录是关键资源。 删除 DNS 区域或单个 DNS 记录可能导致服务中断。 重要的是保护 DNS 区域和记录，防止未经授权的或意外的更改。
 
-本文介绍如何通过 Azure DNS 来保护专用 DNS 区域和记录，使之避免受到此类更改。  我们应用了 Azure 资源管理器提供的两个强大的安全功能：[基于角色的访问控制](../role-based-access-control/overview.md)和[资源锁](../azure-resource-manager/management/lock-resources.md)。
+本文介绍如何通过 Azure DNS 来保护专用 DNS 区域和记录，使之避免受到此类更改。  我们应用 Azure 资源管理器提供的两项强大的证券功能： azure RBAC) 和[资源锁](../azure-resource-manager/management/lock-resources.md) [ (基于角色的访问控制](../role-based-access-control/overview.md)。
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-Azure 基于角色的访问控制（Azure RBAC）可为 Azure 用户、组和资源提供精细的访问管理。 使用 RBAC，可以授予用户所需的访问权限级别。 有关 RBAC 如何帮助你管理访问权限的详细信息，请参阅[什么是 azure 基于角色的访问控制（AZURE RBAC）](../role-based-access-control/overview.md)。
+Azure RBAC)  (azure 基于角色的访问控制，为 Azure 用户、组和资源启用精细的访问管理。 使用 RBAC，可以授予用户所需的访问权限级别。 有关 RBAC 如何帮助你管理访问权限的详细信息，请参阅[什么是 AZURE RBAC) 的 azure 基于角色的访问控制 (](../role-based-access-control/overview.md)。
 
 ### <a name="the-dns-zone-contributor-role"></a>“DNS 区域参与者”角色
 

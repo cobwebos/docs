@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c4b9ae0ed682d6b34099c8eff941f1d0b6cabad
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 8367ec2ece59ca8794bc1eeb2027eb6c14db12a0
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461759"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925339"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>如何：规划混合 Azure Active Directory 加入的实施
 
@@ -28,7 +28,7 @@ ms.locfileid: "87461759"
 
 借助将设备引入 Azure AD，可通过云和本地资源中的单一登录 (SSO) 最大程度地提高用户的工作效率。 同时，可以使用[条件性访问](../active-directory-conditional-access-azure-portal.md)来保护对云和本地资源的访问。
 
-如果你有本地 Active Directory （AD）环境，并且想要将已加入 AD 域的计算机加入到 Azure AD，则可以通过混合 Azure AD 加入来实现此目的。 本文提供了在环境中实现混合 Azure AD 加入的相关步骤。 
+如果你有 Active Directory (AD) 环境的本地，并且想要将已加入 AD 域的计算机加入 Azure AD，则可以通过混合 Azure AD 联接来完成此操作。 本文提供了在环境中实现混合 Azure AD 加入的相关步骤。 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -76,21 +76,21 @@ ms.locfileid: "87461759"
 ### <a name="unsupported-scenarios"></a>不支持的方案
 - 如果你的环境包含将标识数据同步到多个 Azure AD 租户的单个 AD 林，则当前不支持混合 Azure AD 联接。
 
-- 运行域控制器（DC）角色的 Windows Server 不支持混合 Azure AD 联接。
+- 运行域控制器 (DC) 角色的 Windows Server 不支持混合 Azure AD 联接。
 
 - 使用凭据漫游或用户配置文件漫游或强制配置文件时，在 Windows 下层设备上不支持混合 Azure AD 联接。
 
 - 服务器核心操作系统不支持任何类型的设备注册。
 
 ### <a name="os-imaging-considerations"></a>OS 映像注意事项
-- 如果你依赖于系统准备工具（Sysprep），并且你使用的是**Windows 之前的 10 1809**映像进行安装，请确保映像不是从已注册到 Azure AD 混合 Azure AD 加入的设备。
+- 如果你依赖于系统准备工具 (Sysprep) ，并且你使用**Windows 之前的 Windows 10 1809**映像进行安装，请确保映像不是从已注册 Azure AD 作为混合 Azure AD 联接的设备进行的。
 
-- 如果你依赖于虚拟机（VM）快照来创建其他 Vm，请确保快照不是来自已注册到 Azure AD 的 VM，因为混合 Azure AD 加入。
+- 如果依赖于虚拟机 (VM) 快照来创建其他 Vm，请确保快照不是从已注册 Azure AD 作为混合 Azure AD 联接的 VM 使用。
 
 - 如果使用[统一写入筛选器](/windows-hardware/customize/enterprise/unified-write-filter)和类似的技术，在重新启动时清除对磁盘的更改，则必须在设备混合 Azure AD 加入设备后应用。 在完成混合 Azure AD 联接之前启用此类技术将导致设备在每次重新启动时进行脱离
 
 ### <a name="handling-devices-with-azure-ad-registered-state"></a>处理 Azure AD 注册状态的设备
-如果已加入 Windows 10 域的设备[Azure AD 注册](overview.md#getting-devices-in-azure-ad)到你的租户，则可能会导致混合 Azure AD 加入和 Azure AD 注册设备的双重状态。 建议升级到 Windows 10 1803 （应用了 KB4489894）或更高版本来自动处理此方案。 在1803之前的版本中，你将需要手动删除 Azure AD 注册状态，然后才能启用混合 Azure AD join。 在1803及更高版本中，已进行了以下更改，以避免这种双重状态：
+如果已加入 Windows 10 域的设备[Azure AD 注册](overview.md#getting-devices-in-azure-ad)到你的租户，则可能会导致混合 Azure AD 加入和 Azure AD 注册设备的双重状态。 建议升级到) 或更高版本应用了 KB4489894 的 Windows 10 1803 (来自动处理此方案。 在1803之前的版本中，你将需要手动删除 Azure AD 注册状态，然后才能启用混合 Azure AD join。 在1803及更高版本中，已进行了以下更改，以避免这种双重状态：
 
 - 在<i>设备混合 Azure AD 加入并且同一用户登录后</i>，将自动删除用户的任何现有 Azure AD 注册状态。 例如，如果用户 A 在设备上有 Azure AD 的注册状态，则只有当用户 A 登录到设备时，才会清除用户 A 的双重状态。 如果同一设备上有多个用户，则当用户登录时，会单独清除双重状态。 除了删除 Azure AD 注册状态，Windows 10 还会从 Intune 或其他 MDM 取消注册该设备，前提是该注册是通过自动注册在 Azure AD 注册过程中进行的。
 - 可以通过将以下注册表值添加到 HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin 来阻止已加入域的设备 Azure AD 注册： "BlockAADWorkplaceJoin" = dword：00000001。
@@ -100,7 +100,7 @@ ms.locfileid: "87461759"
 > 即使 Windows 10 会在本地自动删除 Azure AD 的注册状态，如果 Azure AD 中的设备对象由 Intune 管理，则不会立即将其删除。 可以通过运行 dsregcmd.exe/status 来验证 Azure AD 已注册状态的删除，并考虑设备不会根据该设备注册 Azure AD。
 
 ### <a name="additional-considerations"></a>其他注意事项
-- 如果你的环境使用虚拟桌面基础结构（VDI），请参阅[设备标识和桌面虚拟化](/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure)。
+- 如果你的环境使用 (VDI) 的虚拟桌面基础结构，请参阅[设备标识和桌面虚拟化](/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure)。
 
 - 对于符合 FIPS 的 TPM 2.0，支持混合 Azure AD 联接，不适用于 TPM 1.2。 如果设备具有符合 FIPS 标准的 TPM 1.2，则必须先将其禁用，然后才能继续混合 Azure AD 联接。 Microsoft 不提供任何工具用于为 Tpm 禁用 FIPS 模式，因为它依赖于 TPM 制造商。 请联系你的硬件 OEM 以获得支持。 
 
@@ -123,7 +123,7 @@ ms.locfileid: "87461759"
 这些方案不需要配置联合服务器进行身份验证。
 
 > [!NOTE]
-> 仅支持[使用分阶段推出的云身份验证](/hybrid/how-to-connect-staged-rollout)启动 Windows 10 1903 更新
+> 仅支持[使用分阶段推出的云身份验证](/azure/active-directory/hybrid/how-to-connect-staged-rollout)启动 Windows 10 1903 更新
 
 ### <a name="federated-environment"></a>联合环境
 
@@ -138,7 +138,7 @@ ms.locfileid: "87461759"
   `/adfs/services/trust/13/certificatemixed` 
 
 > [!WARNING] 
-> **adfs/services/trust/2005/windowstransport** 或 **adfs/services/trust/13/windowstransport** 只能作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开。 若要详细了解如何禁用 WS-Trust Windows 终结点，请参阅[在代理上禁用 WS-Trust Windows 终结点](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” > “终结点”查看已启用哪些终结点。 
+> **adfs/services/trust/2005/windowstransport** 或 **adfs/services/trust/13/windowstransport** 只能作为面向 Intranet 的终结点启用，不能通过 Web 应用程序代理作为面向 Extranet 的终结点公开。 若要详细了解如何禁用 WS-Trust Windows 终结点，请参阅[在代理上禁用 WS-Trust Windows 终结点](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)。 可以通过 AD FS 管理控制台中的“服务” > “终结点”查看已启用哪些终结点。
 
 > [!NOTE]
 > Azure AD 不支持托管域中的智能卡或证书。
@@ -158,7 +158,7 @@ ms.locfileid: "87461759"
 - 不可路由的用户 UPN：不可路由的 UPN 没有经过验证的域。 它仅在组织的专用网络内适用。 例如，如果 contoso.com 是 Azure AD 中的主域，则 contoso.local 是本地 AD 中的主域，但在 Internet 中不是可验证的域，且仅可在 Contoso 的网络内使用。
 
 > [!NOTE]
-> 本部分中的信息仅适用于本地用户 UPN。 它不适用于本地计算机域后缀（例如： computer1）。
+> 本部分中的信息仅适用于本地用户 UPN。 它不适用于本地计算机域后缀 (例如： computer1) 。
 
 下表提供了 Windows 10 混合 Azure AD 加入中对这些本地 AD UPN 的支持情况的详细信息
 

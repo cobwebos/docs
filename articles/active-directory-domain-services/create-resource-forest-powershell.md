@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: d5eef553d0d3bf5acbcb61ef8f2dcfab88a53266
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: eb627b8069bcd9efd1d56adab5eda45dc34a1a10
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87505765"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921990"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>使用 Azure PowerShell 创建与本地域的 Azure Active Directory 域服务资源林和出站林信任
 
@@ -102,7 +102,7 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
 1. 查看脚本所需的以下参数 `New-AzureAaddsForest` 。 请确保也具有必备**Azure PowerShell**和**Azure AD PowerShell**模块。 请确保已计划虚拟网络要求，以便提供应用程序和本地连接。
 
-    | 名称                         | 脚本参数          | 说明 |
+    | “属性”                         | 脚本参数          | 说明 |
     |:-----------------------------|---------------------------|:------------|
     | 订阅                 | *-azureSubscriptionId*    | 用于 Azure AD DS 计费的订阅 ID。 可以使用[get-azurermsubscription][Get-AzureRMSubscription] cmdlet 获取订阅列表。 |
     | 资源组               | *-aaddsResourceGroupName* | 托管域和关联资源的资源组的名称。 |
@@ -112,14 +112,14 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
     `New-AzureAaddsForest`如果这些资源尚不存在，该脚本可以创建 Azure 虚拟网络并 AZURE AD DS 子网。 指定该脚本时，可以选择创建工作负荷子网：
 
-    | 名称                              | 脚本参数                  | 说明 |
+    | “属性”                              | 脚本参数                  | 描述 |
     |:----------------------------------|:----------------------------------|:------------|
     | 虚拟网络名称              | *-aaddsVnetName*                  | 托管域的虚拟网络的名称。|
-    | 地址空间                     | *-aaddsVnetCIDRAddressSpace*      | 以 CIDR 表示法表示的虚拟网络地址范围（如果要创建虚拟网络）。|
+    | 地址空间                     | *-aaddsVnetCIDRAddressSpace*      | 如果创建虚拟网络) ，则 (CIDR 表示法中的虚拟网络地址范围。|
     | Azure AD DS 子网名称           | *-aaddsSubnetName*                | 托管托管域的*aaddsVnetName*虚拟网络的子网名称。 不要将自己的 Vm 和工作负载部署到此子网中。 |
     | Azure AD DS 地址范围         | *-aaddsSubnetCIDRAddressRange*    | AAD DS 实例的子网地址范围，以 CIDR 表示法表示，例如*192.168.1.0/24*。 地址范围必须包含在虚拟网络的地址范围内，并且不同于其他子网。 |
-    | 工作负荷子网名称（可选）   | *-workloadSubnetName*             | *AaddsVnetName*虚拟网络中子网的可选名称，用于创建你自己的应用程序工作负荷。 Vm 和应用程序，并改为连接到对等互连 Azure 虚拟网络。 |
-    | 工作负荷地址范围（可选） | *-workloadSubnetCIDRAddressRange* | 适用于应用程序工作负荷的可选子网地址范围，如*192.168.2.0/24*。 地址范围必须包含在虚拟网络的地址范围内，并且不同于其他子网。|
+    | 工作负荷子网名称 (可选)    | *-workloadSubnetName*             | *AaddsVnetName*虚拟网络中子网的可选名称，用于创建你自己的应用程序工作负荷。 Vm 和应用程序，并改为连接到对等互连 Azure 虚拟网络。 |
+    | 工作负荷地址范围 (可选)  | *-workloadSubnetCIDRAddressRange* | 适用于应用程序工作负荷的可选子网地址范围，如*192.168.2.0/24*。 地址范围必须包含在虚拟网络的地址范围内，并且不同于其他子网。|
 
 1. 现在，使用脚本创建托管域资源林 `New-AzureAaaddsForest` 。 以下示例创建名为*addscontoso.com*的林，并创建工作负荷子网。 提供自己的参数名称和 IP 地址范围或现有虚拟网络。
 
@@ -148,8 +148,8 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
 1. 使用 Azure VPN 或 Azure ExpressRoute 连接创建到本地网络到 Azure 的混合连接。 混合网络配置超出了本文档的范围，你的环境中可能已存在此配置。 有关特定方案的详细信息，请参阅以下文章：
 
-    * [Azure 站点到站点 VPN](/vpn-gateway/vpn-gateway-about-vpngateways)。
-    * [Azure ExpressRoute 概述](/vpn-gateway/vpn-gateway-about-vpngateways)。
+    * [Azure 站点到站点 VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways)。
+    * [Azure ExpressRoute 概述](/azure/expressroute/expressroute-introduction)。
 
     > [!IMPORTANT]
     > 如果直接创建连接到托管域的虚拟网络，请使用单独的网关子网。 不要在托管域的子网中创建网关。
@@ -193,7 +193,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 现在，请提供以下信息：
 
-| 名称                               | 脚本参数     | 说明 |
+| “属性”                               | 脚本参数     | 描述 |
 |:-----------------------------------|:---------------------|:------------|
 | Azure AD DS 域名            | *-ManagedDomainFqdn* | 托管域的 FQDN，如*aaddscontoso.com* |
 | 本地 AD DS 域名      | *-TrustFqdn*         | 受信任林的 FQDN，如*onprem.contoso.com* |
@@ -257,7 +257,7 @@ Add-AaddsResourceForestTrust `
 
 应已将 Windows Server 虚拟机加入托管域资源域。 使用此虚拟机来测试本地用户是否可在虚拟机上进行身份验证。
 
-1. 使用远程桌面和托管域管理员凭据连接到已加入托管域资源林的 Windows Server VM。 如果收到网络级别身份验证（NLA）错误，请检查你使用的用户帐户不是域用户帐户。
+1. 使用远程桌面和托管域管理员凭据连接到已加入托管域资源林的 Windows Server VM。 如果网络级别身份验证 (NLA) 错误，请检查你使用的用户帐户不是域用户帐户。
 
     > [!TIP]
     > 若要安全地连接到已加入到 Azure AD 域服务的 Vm，可以在支持的 Azure 区域使用[Azure 堡垒主机服务](https://docs.microsoft.com/azure/bastion/bastion-overview)。
@@ -283,7 +283,7 @@ Add-AaddsResourceForestTrust `
 
 #### <a name="enable-file-and-printer-sharing"></a>启用文件和打印机共享
 
-1. 使用远程桌面和托管域管理员凭据连接到已加入托管域资源林的 Windows Server VM。 如果收到网络级别身份验证（NLA）错误，请检查你使用的用户帐户不是域用户帐户。
+1. 使用远程桌面和托管域管理员凭据连接到已加入托管域资源林的 Windows Server VM。 如果网络级别身份验证 (NLA) 错误，请检查你使用的用户帐户不是域用户帐户。
 
     > [!TIP]
     > 若要安全地连接到已加入到 Azure AD 域服务的 Vm，可以在支持的 Azure 区域使用[Azure 堡垒主机服务](https://docs.microsoft.com/azure/bastion/bastion-overview)。
@@ -305,7 +305,7 @@ Add-AaddsResourceForestTrust `
 1. 在“输入要选择的对象名称”框中键入“域用户”。 选择“检查名称”，提供本地 Active Directory 的凭据，然后选择“确定”。 
 
     > [!NOTE]
-    > 必须提供凭据，因为信任关系只是单向的。 这意味着，托管域中的用户无法访问资源或搜索受信任（本地）域中的用户或组。
+    > 必须提供凭据，因为信任关系只是单向的。 这意味着，托管域中的用户无法访问资源或搜索受信任 (本地) 域中的用户或组。
 
 1. 本地 Active Directory 中的“域用户”组应是“FileServerAccess”组的成员。  选择“确定”以保存该组并关闭窗口。
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/06/2019
-ms.openlocfilehash: 45bfba5b0ab25aa9930719f136428ccc0df5014d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 211dce8a2810d9eb07bf0f388753afd50add4945
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263555"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919950"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>通过 Gremlin SDK 使用 Azure Cosmos DB 资源令牌
 
@@ -102,5 +102,5 @@ builder.authProperties(authenticationProperties);
 应用程序在使用资源令牌时遇到的常见错误是“授权标头中为相应请求提供的权限不足。 请使用另一个授权标头重试”。 当 Gremlin 遍历尝试写入边缘或顶点但资源令牌仅授予“读取”  权限时，会返回此错误。 检查遍历是否包含以下任何步骤：.addV()  、.addE()  、.drop()  或 .property()  。
 
 ## <a name="next-steps"></a>后续步骤
-* Azure Cosmos DB 中[基于角色的访问控制](role-based-access-control.md)
+* [AZURE RBAC) 中的 azure 基于角色的访问控制 (](role-based-access-control.md) Azure Cosmos DB
 * [了解如何保护对 Azure Cosmos DB 中数据的访问](secure-access-to-data.md)

@@ -1,18 +1,18 @@
 ---
 title: Azure VPN 网关：配置诊断资源日志事件的警报
-description: 针对 VPN 网关诊断资源日志事件配置警报的步骤
+description: 了解如何使用 Azure Monitor Log Analytics 和 Azure 中可用的资源日志，基于 Azure VPN 网关上的资源日志事件设置警报。
 services: vpn-gateway
 author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 21fcebf6667eb1bc7741dfb4ba268af42567d58e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d79bdc669ab2c3785b1cde569cfce3021e4d924f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075586"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923180"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>针对 VPN 网关中的资源日志事件设置警报
 
@@ -20,7 +20,7 @@ ms.locfileid: "87075586"
 
 Azure 中提供以下资源日志：
 
-|***名称*** | ***描述*** |
+|***名称*** | ***说明*** |
 |---        | ---               |
 |GatewayDiagnosticLog | 包含网关配置事件、主要更改和维护事件的资源日志 |
 |TunnelDiagnosticLog | 包含隧道状态更改事件。 在适用的情况下，隧道连接/断开连接事件将汇总有关状态更改的原因 |

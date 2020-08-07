@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1404854e054c8fc4967ba863486969b8a87db526
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5d5676009e0545ce6245d81e843b53e6f41979a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77621510"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925186"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>教程：为 Insight4GRC 配置自动用户预配
 
-本教程介绍了需要在 Insight4GRC 和 Azure Active Directory （Azure AD）中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组并取消其预配到[Insight4GRC](https://www.rsmuk.com/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了需要在 Insight4GRC 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组并取消其预配到[Insight4GRC](https://www.rsmuk.com/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -33,7 +33,7 @@ ms.locfileid: "77621510"
 > * 当用户不再需要访问权限时，删除 Insight4GRC 中的用户
 > * 使用户属性在 Azure AD 和 Insight4GRC 之间保持同步
 > * 在 Insight4GRC 中预配组和组成员身份
-> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/insight4grc-tutorial)到 Insight4GRC （推荐）
+> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/insight4grc-tutorial)到 Insight4GRC (建议) 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -84,7 +84,7 @@ ms.locfileid: "77621510"
 
 3. 选择“预配”选项卡。
 
-    ![预配选项卡](common/provisioning.png)
+    ![“预配”选项卡](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
@@ -106,12 +106,12 @@ ms.locfileid: "77621510"
 
    |Attribute|类型|
    |---|---|
-   |userName|String|
-   |externalId|String|
+   |userName|字符串|
+   |externalId|字符串|
    |活动|Boolean|
-   |title|String|
-   |name.givenName|String|
-   |name.familyName|String|
+   |title|字符串|
+   |name.givenName|字符串|
+   |name.familyName|字符串|
    |emails[type eq "work"].value|字符串|
    |phoneNumbers[type eq "work"].value|字符串|
 
@@ -121,7 +121,7 @@ ms.locfileid: "77621510"
 
       |Attribute|类型|
       |---|---|
-      |displayName|String|
+      |displayName|字符串|
       |externalId|字符串|
       |members|参考|
 
@@ -145,7 +145,7 @@ ms.locfileid: "77621510"
 配置预配后，请使用以下资源来监视部署：
 
 * 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败。
-* 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)以查看预配周期的状态以及完成进度。
+* 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)以查看预配周期的状态以及完成进度。
 * 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。
 
 ## <a name="additional-resources"></a>其他资源

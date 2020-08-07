@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5ecf8ca6e6790b218216aed9a6ff82c8a7ac9dd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 90e9006a19825059096b81b9c174d16a270775f1
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85250123"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920307"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>教程：为 G Suite 配置自动用户预配
 
-本教程介绍了需要在 G Suite 和 Azure Active Directory （Azure AD）中执行的步骤，以配置自动用户预配。 配置时，Azure AD 会使用 Azure AD 预配服务自动预配用户和组，并将其预配到[G Suite](https://gsuite.google.com/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了需要在 G Suite 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置时，Azure AD 会使用 Azure AD 预配服务自动预配用户和组，并将其预配到[G Suite](https://gsuite.google.com/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务之上构建的连接器。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。
@@ -42,7 +42,7 @@ ms.locfileid: "85250123"
 > * 如果用户不需要访问，请在 G Suite 中删除用户
 > * 使用户属性在 Azure AD 和 G Suite 之间保持同步
 > * 在 G Suite 中预配组和组成员身份
-> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-tutorial)到 G Suite （推荐）
+> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-tutorial)到 G Suite (建议) 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -167,79 +167,79 @@ ms.locfileid: "85250123"
 
    |Attribute|类型|
    |---|---|
-   |primaryEmail|String|
-   |关系.[type eq "manager"]。值|String|
+   |primaryEmail|字符串|
+   |关系.[type eq "manager"]。值|字符串|
    |name.familyName|字符串|
-   |name.givenName|String|
-   |已暂停|String|
-   |externalIds.[type eq "custom"]。值|String|
-   |externalIds.[type eq "组织"]。值|String|
-   |地址.[type eq "work"]。国家/地区|String|
-   |地址.[type eq "work"]. streetAddress|String|
-   |地址.[type eq "work"]。区域|String|
-   |地址.[type eq "work"]。位置|String|
-   |地址.[type eq "work"]. 邮政编码|String|
-   |封.[type eq "work"]. address|String|
-   |组织.[type eq "work"]. 部门|String|
-   |组织.[type eq "work"]。标题|String|
-   |phoneNumbers.[type eq "work"]。值|String|
-   |phoneNumbers.[type eq "mobile"]。值|String|
-   |phoneNumbers.[type eq "work_fax"]。值|String|
-   |封.[type eq "work"]. address|String|
-   |组织.[type eq "work"]. 部门|String|
-   |组织.[type eq "work"]。标题|String|
-   |phoneNumbers.[type eq "work"]。值|String|
-   |phoneNumbers.[type eq "mobile"]。值|String|
-   |phoneNumbers.[type eq "work_fax"]。值|String|
-   |地址.[type eq "home"]。国家/地区|String|
-   |地址.[type eq "home"]。格式|String|
-   |地址.[类型 eq "home"]。位置|String|
-   |地址.[type eq "home"]. 邮政编码|String|
-   |地址.[type eq "home"]. region|String|
-   |地址.[type eq "home"]. streetAddress|String|
-   |地址.[type eq "other"]。国家/地区|String|
-   |地址.[type eq "other"]。格式|String|
-   |地址.[type eq "other"]。位置|String|
-   |地址.[type eq "other"]。邮政编码|String|
-   |地址.[type eq "other"]。区域|String|
-   |地址.[type eq "other"]. streetAddress|String|
-   |地址.[type eq "work"]。格式|String|
-   |changePasswordAtNextLogin|String|
-   |封.[type eq "home"]. address|String|
-   |封.[type eq "other"]. address|String|
-   |externalIds.[type eq "account"]。值|String|
-   |externalIds.[type eq "custom"]. customType|String|
-   |externalIds.[type eq "customer"]。值|String|
-   |externalIds.[type eq "login_id"]。值|String|
-   |externalIds.[键入 eq "network"]。值|String|
-   |性别。类型|String|
-   |GeneratedImmutableId|String|
-   |标识符|String|
-   |ims.[type eq "home"]。协议|String|
-   |ims.[type eq "other"]。协议|String|
-   |ims.[type eq "work"]。协议|String|
-   |includeInGlobalAddressList|String|
-   |ipWhitelisted|String|
-   |组织.[type eq "school"]. costCenter|String|
-   |组织.[type eq "school"]. 部门|String|
-   |组织.[type eq "school"]。域|String|
-   |组织.[type eq "school"]. fullTimeEquivalent|String|
-   |组织.[type eq "school"]。位置|String|
-   |组织.[type eq "school"]。名称|String|
-   |组织.[type eq "school"]。符号|String|
-   |组织.[type eq "school"]。标题|String|
-   |组织.[type eq "work"]. costCenter|String|
-   |组织.[type eq "work"]。域|String|
-   |组织.[type eq "work"]. fullTimeEquivalent|String|
-   |组织.[type eq "work"]。位置|String|
-   |组织.[type eq "work"]。名称|String|
-   |组织.[type eq "work"]。符号|String|
-   |OrgUnitPath|String|
-   |phoneNumbers.[type eq "home"]。值|String|
-   |phoneNumbers.[type eq "other"]。值|String|
-   |web.[type eq "home"]。值|String|
-   |web.[type eq "other"]。值|String|
-   |web.[type eq "work"]。值|String|
+   |name.givenName|字符串|
+   |已挂起|字符串|
+   |externalIds.[type eq "custom"]。值|字符串|
+   |externalIds.[type eq "组织"]。值|字符串|
+   |地址.[type eq "work"]。国家/地区|字符串|
+   |地址.[type eq "work"]. streetAddress|字符串|
+   |地址.[type eq "work"]。区域|字符串|
+   |地址.[type eq "work"]。位置|字符串|
+   |地址.[type eq "work"]. 邮政编码|字符串|
+   |封.[type eq "work"]. address|字符串|
+   |组织.[type eq "work"]. 部门|字符串|
+   |组织.[type eq "work"]。标题|字符串|
+   |phoneNumbers.[type eq "work"]。值|字符串|
+   |phoneNumbers.[type eq "mobile"]。值|字符串|
+   |phoneNumbers.[type eq "work_fax"]。值|字符串|
+   |封.[type eq "work"]. address|字符串|
+   |组织.[type eq "work"]. 部门|字符串|
+   |组织.[type eq "work"]。标题|字符串|
+   |phoneNumbers.[type eq "work"]。值|字符串|
+   |phoneNumbers.[type eq "mobile"]。值|字符串|
+   |phoneNumbers.[type eq "work_fax"]。值|字符串|
+   |地址.[type eq "home"]。国家/地区|字符串|
+   |地址.[type eq "home"]。格式|字符串|
+   |地址.[类型 eq "home"]。位置|字符串|
+   |地址.[type eq "home"]. 邮政编码|字符串|
+   |地址.[type eq "home"]. region|字符串|
+   |地址.[type eq "home"]. streetAddress|字符串|
+   |地址.[type eq "other"]。国家/地区|字符串|
+   |地址.[type eq "other"]。格式|字符串|
+   |地址.[type eq "other"]。位置|字符串|
+   |地址.[type eq "other"]。邮政编码|字符串|
+   |地址.[type eq "other"]。区域|字符串|
+   |地址.[type eq "other"]. streetAddress|字符串|
+   |地址.[type eq "work"]。格式|字符串|
+   |changePasswordAtNextLogin|字符串|
+   |封.[type eq "home"]. address|字符串|
+   |封.[type eq "other"]. address|字符串|
+   |externalIds.[type eq "account"]。值|字符串|
+   |externalIds.[type eq "custom"]. customType|字符串|
+   |externalIds.[type eq "customer"]。值|字符串|
+   |externalIds.[type eq "login_id"]。值|字符串|
+   |externalIds.[键入 eq "network"]。值|字符串|
+   |性别。类型|字符串|
+   |GeneratedImmutableId|字符串|
+   |标识符|字符串|
+   |ims.[type eq "home"]。协议|字符串|
+   |ims.[type eq "other"]。协议|字符串|
+   |ims.[type eq "work"]。协议|字符串|
+   |includeInGlobalAddressList|字符串|
+   |ipWhitelisted|字符串|
+   |组织.[type eq "school"]. costCenter|字符串|
+   |组织.[type eq "school"]. 部门|字符串|
+   |组织.[type eq "school"]。域|字符串|
+   |组织.[type eq "school"]. fullTimeEquivalent|字符串|
+   |组织.[type eq "school"]。位置|字符串|
+   |组织.[type eq "school"]。名称|字符串|
+   |组织.[type eq "school"]。符号|字符串|
+   |组织.[type eq "school"]。标题|字符串|
+   |组织.[type eq "work"]. costCenter|字符串|
+   |组织.[type eq "work"]。域|字符串|
+   |组织.[type eq "work"]. fullTimeEquivalent|字符串|
+   |组织.[type eq "work"]。位置|字符串|
+   |组织.[type eq "work"]。名称|字符串|
+   |组织.[type eq "work"]。符号|字符串|
+   |OrgUnitPath|字符串|
+   |phoneNumbers.[type eq "home"]。值|字符串|
+   |phoneNumbers.[type eq "other"]。值|字符串|
+   |web.[type eq "home"]。值|字符串|
+   |web.[type eq "other"]。值|字符串|
+   |web.[type eq "work"]。值|字符串|
    
 
 10. 在 "**映射**" 部分下，选择 "**设置 Azure Active Directory 组**"。
@@ -248,9 +248,9 @@ ms.locfileid: "85250123"
 
       |Attribute|类型|
       |---|---|
-      |电子邮件|String|
+      |电子邮件|字符串|
       |成员|String|
-      |name|String|
+      |name|字符串|
       |description|字符串|
 
 12. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
@@ -276,7 +276,7 @@ ms.locfileid: "85250123"
 配置预配后，请使用以下资源来监视部署：
 
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。
 
 ## <a name="additional-resources"></a>其他资源

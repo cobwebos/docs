@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 门户排查 Azure Data Box Gateway 问题 | Microsoft Docs
-description: 介绍如何排查 Azure Data Box Gateway 问题。
+description: 了解如何解决 Azure Data Box Gateway 上的问题。 您可以运行诊断、收集支持信息并使用日志进行故障排除。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: troubleshooting
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: 9688df6c27717cc74c874c75a9df0b47ffd24853
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e49cc400fd8af3d284a223363f3384063d862981
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564009"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927175"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>排查 Azure Data Box Gateway 问题
 

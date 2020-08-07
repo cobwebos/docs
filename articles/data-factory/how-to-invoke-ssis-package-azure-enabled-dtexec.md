@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
-ms.openlocfilehash: dce7fb87ee49aefdedf5653243fa5729eee34519
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 94b581f677e370911a60db08276ff7dd0eb45486
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81414330"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927073"
 ---
 # <a name="run-sql-server-integration-services-packages-with-the-azure-enabled-dtexec-utility"></a>使用支持 Azure 的 dtexec 实用工具运行 SQL Server Integration Services 包
 
@@ -87,7 +87,7 @@ AzureDTExec 将包作为数据工厂管道中的“执行 SSIS 包”活动运�
 - **/F[ile]** ：加载存储在文件系统、文件共享或 Azure 文件存储中的包。 可以指定包文件在文件系统、文件共享或 Azure 文件存储中的 UNC 路径及其 .dtsx 扩展名，作为此选项的值。 如果指定的 UNC 路径包含空格，请用引号括住整个路径。
 - **/Conf[igFile]** ：指定要从中提取值的配置文件。 使用此选项可为包设置不同的运行时配置（不同于设计时指定的配置）。 可以在 XML 配置文件中存储不同的设置，然后在执行包之前加载这些设置。 有关详细信息，请参阅 [SSIS 包配置](https://docs.microsoft.com/sql/integration-services/packages/package-configurations?view=sql-server-2017)。 若要指定此选项的值，请使用配置文件在文件系统、文件共享或 Azure 文件存储中的 UNC 路径及其 dtsConfig 扩展名。 如果指定的 UNC 路径包含空格，请用引号括住整个路径。
 - **/Conn[ection]** ：为包中的现有连接管理器指定连接字符串。 使用此选项可为包中的现有连接管理器设置不同的运行时连接字符串（不同于设计时指定的连接字符串）。 按如下所示指定此选项的值：`connection_manager_name_or_id;connection_string [[;connection_manager_name_or_id;connection_string]...]`。
-- **/Set**：重写包中参数、变量、属性、容器、日志提供程序、Foreach 枚举器或连接的配置。 可以多次指定此选项。 按如下所示指定此选项的值：`property_path;value`。 例如，`\package.variables[counter].Value;1` 将 `counter` 变量的值重写为 1。 可以使用“包配置”向导来查找、复制和粘贴包中要重写其值的项的 `property_path` 值。  有关详细信息，请参阅[包配置向导](https://docs.microsoft.com/sql/integration-services/package-configuration-wizard-ui-reference?view=sql-server-2014)。
+- **/Set**：重写包中参数、变量、属性、容器、日志提供程序、Foreach 枚举器或连接的配置。 可以多次指定此选项。 按如下所示指定此选项的值：`property_path;value`。 例如，`\package.variables[counter].Value;1` 将 `counter` 变量的值重写为 1。 可以使用“包配置”向导来查找、复制和粘贴包中要重写其值的项的 `property_path` 值。  有关详细信息，请参阅[包配置向导](https://docs.microsoft.com/sql/integration-services/packages/legacy-package-deployment-ssis)。
 - **/De[crypt]** ：设置使用 **EncryptAllWithPassword**/**EncryptSensitiveWithPassword** 保护级别为包配置的解密密码。
 
 > [!NOTE]

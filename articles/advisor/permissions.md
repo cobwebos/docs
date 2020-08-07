@@ -3,16 +3,16 @@ title: Azure 顾问中的权限
 description: 介绍顾问权限以及如何通过这些权限来阻止用户配置订阅或者推迟或取消建议。
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 6b5dfdeb888b0577a40562536bd7a6dfc271cb19
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c7b42372ae6de5c2f519b69aec8a154a2f35a82
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057592"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927379"
 ---
 # <a name="permissions-in-azure-advisor"></a>Azure 顾问中的权限
 
-Azure 顾问根据 Azure 资源和订阅的使用情况和配置来提供建议。 顾问使用[基于角色的访问控制](../role-based-access-control/overview.md) (RBAC) 提供的[内置角色](../role-based-access-control/built-in-roles.md)来管理你对建议和顾问功能的访问。 
+Azure 顾问根据 Azure 资源和订阅的使用情况和配置来提供建议。 顾问使用[AZURE RBAC)  (azure 基于角色的访问控制](../role-based-access-control/overview.md)提供的[内置角色](../role-based-access-control/built-in-roles.md)来管理对建议和顾问功能的访问。 
 
 ## <a name="roles-and-their-access"></a>角色及其访问权限
 

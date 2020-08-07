@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 645d92a214f88985e1427ab24d350a6f85c0a076
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: fa23637500755f43bb380a9f20cbe3acc7c3a394
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371373"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925798"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>使用 Azure 存储保护 PaaS Web 和移动应用程序的最佳做法
 本文介绍 Azure 存储安全在保护平台即服务 (PaaS) Web 和移动应用程序方面的最佳做法。 这些最佳实践衍生自我们的 Azure 经验和客户经验。
@@ -56,7 +56,7 @@ Azure 存储提供了以下四种服务：Blob 存储、表存储、队列存储
 若要了解有关共享访问签名的详细信息，请参阅[使用共享访问签名](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)。 
 
 ## <a name="use-role-based-access-control"></a>使用基于角色的访问控制
-管理访问的另一种方法是使用[基于角色的访问控制](/azure/role-based-access-control/overview) (RBAC)。 使用 RBAC 时，可根据了解内容的需要和最低特权的安全原则，专注于为员工提供所需的准确权限。 权限过多，可能会向攻击者公开帐户。 权限太少意味着员工无法有效地完成其工作。 RBAC 通过对 Azure 提供细致的访问管理帮助解决此问题。 对于想要实施数据访问安全策略的组织，这是必须要做的事。
+管理访问权限的另一种方法是使用 azure [RBAC)  (基于角色的访问控制](/azure/role-based-access-control/overview)。 使用 RBAC 时，可根据了解内容的需要和最低特权的安全原则，专注于为员工提供所需的准确权限。 权限过多，可能会向攻击者公开帐户。 权限太少意味着员工无法有效地完成其工作。 RBAC 通过对 Azure 提供细致的访问管理帮助解决此问题。 对于想要实施数据访问安全策略的组织，这是必须要做的事。
 
 可以使用 Azure 中的 Azure 内置角色向用户分配权限。 例如，将存储帐户参与者用于需要管理存储帐户的云操作员，并使用经典存储帐户参与者角色来管理经典存储帐户。 如果云操作员需要管理 VM 但不管理他们连接到的虚拟网络或存储帐户，则可以将他们添加到虚拟机参与者角色。
 

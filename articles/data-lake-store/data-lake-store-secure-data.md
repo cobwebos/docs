@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 1ae93dad9a18c18e330b4ff65924dd1db7a1faf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1da644d8aca0b197e21ec03c7d0ac0b454f92a9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515250"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926291"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>保护 Azure Data Lake Storage Gen1 中存储的数据
 保护 Azure Data Lake Storage Gen1 中的数据包含三个步骤。  必须同时设置基于角色的访问控制 (RBAC) 和访问控制列表 (ACL) 才能为用户和安全组完全启用对数据的访问权限。
 
-1. 首先在 Azure Active Directory (AAD) 中创建安全组。 这些安全组用于实现 Azure 门户中基于角色的访问控制 (RBAC)。 有关详细信息，请参阅 [Microsoft Azure 中基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)。
+1. 首先在 Azure Active Directory (AAD) 中创建安全组。 这些安全组用于实现 Azure RBAC) 在 Azure 门户中的基于角色的访问控制 (。 有关详细信息，请参阅[AZURE RBAC](../role-based-access-control/role-assignments-portal.md)。
 2. 将 AAD 安全组分配到 Data Lake Storage Gen1 帐户。 这会控制从门户访问 Data Lake Storage Gen1 帐户的访问权限和从门户或 API 的管理操作。
 3. 将 AAD 安全组分配为 Data Lake Storage Gen1 文件系统上的访问控制列表 (ACL)。
 4. 此外，也可设置可访问 Data Lake Storage Gen1 中数据的客户端的 IP 地址范围。
@@ -74,7 +74,7 @@ ms.locfileid: "85515250"
    
     ![添加安全组](./media/data-lake-store-secure-data/adl.add.user.2.png "添加安全组")
    
-5. 单击“保存” 。 已添加的安全组如下所示。
+5. 单击“保存”  。 已添加的安全组如下所示。
    
     ![已添加的安全组](./media/data-lake-store-secure-data/adl.add.user.3.png "已添加的安全组")
 
@@ -155,4 +155,3 @@ Data Lake Storage Gen1 允许进一步在网络级别锁定访问权限。 可�
 * [通过 PowerShell 实现 Data Lake Storage Gen1 入门](data-lake-store-get-started-powershell.md)
 * [通过 .NET SDK 实现 Data Lake Storage Gen1 入门](data-lake-store-get-started-net-sdk.md)
 * [访问 Data Lake Storage Gen1 的诊断日志](data-lake-store-diagnostic-logs.md)
-

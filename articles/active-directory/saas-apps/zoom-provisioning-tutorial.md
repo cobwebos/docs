@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: fb5e51503fa20cd3ace6070cb1b51f5bf32d0e13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a2e4bbff1274a2473ac961b8355ca4193dcc69f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87016250"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924897"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>教程：为自动用户预配配置缩放
 
-本教程介绍了需要在缩放和 Azure Active Directory （Azure AD）中执行的步骤，以配置自动用户预配。 配置时，Azure AD 会自动预配和取消预配用户和组，以使用 Azure AD 预配服务进行[缩放](https://zoom.us/pricing/)。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了在缩放和 Azure Active Directory (Azure AD) 配置自动用户预配时需要执行的步骤。 配置时，Azure AD 会自动预配和取消预配用户和组，以使用 Azure AD 预配服务进行[缩放](https://zoom.us/pricing/)。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -32,7 +32,7 @@ ms.locfileid: "87016250"
 > * 在缩放中创建用户
 > * 如果用户不再需要访问，请在 "缩放" 中删除用户
 > * 使用户属性在 Azure AD 和缩放之间保持同步
-> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-tutorial)到缩放（推荐）
+> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-tutorial)到缩放 (建议) 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -48,7 +48,7 @@ ms.locfileid: "87016250"
 2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
 3. 确定要[在 Azure AD 和缩放之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
 
-## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>步骤 2： 配置缩放以支持设置 Azure AD
+## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置缩放以支持设置 Azure AD
 
 1. 登录到[缩放管理控制台](https://zoom.us/signin)。 导航到左侧导航窗格中**的 "高级 > 缩放开发人员**"。
 
@@ -70,7 +70,7 @@ ms.locfileid: "87016250"
 
     ![缩放安装](media/zoom-provisioning-tutorial/zoom05.png)
 
-## <a name="step-3-add-zoom-from-the-azure-ad-application-gallery"></a>步骤 3： 从 Azure AD 应用程序库添加缩放
+## <a name="step-3-add-zoom-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加缩放
 
 添加 Azure AD 应用程序库中的 "缩放"，开始管理预配以进行缩放。 如果以前为 SSO 设置了缩放，则可以使用相同的应用程序。 但建议你在最初测试集成时创建一个单独的应用。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app)详细了解如何从库中添加应用程序。 
 
@@ -99,7 +99,7 @@ ms.locfileid: "87016250"
 
 3. 选择“预配”选项卡。
 
-    ![预配选项卡](common/provisioning.png)
+    ![“预配”选项卡](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
@@ -148,7 +148,7 @@ ms.locfileid: "87016250"
 配置预配后，请使用以下资源来监视部署：
 
 1. 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+2. 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 3. 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。  
 
 ## <a name="connector-limitations"></a>连接器限制

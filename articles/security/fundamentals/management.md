@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: d8baf1c70d115b80e3238d3eedf128057684d2e6
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 73d82efed438d447c7af3bfc54d5c3fc22cdd819
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86224700"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921922"
 ---
 # <a name="security-management-in-azure"></a>Azure 中的安全管理
 Azure 订阅者可从多个设备管理他们的云环境，这些设备包括管理工作站、开发人员电脑，甚至是具有特定于任务的权限的特权最终用户设备。 在某些情况下，可通过基于 Web 的控制台（例如 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)）来执行管理功能。 在其他情况下，可能存在通过虚拟专用网络 (VPN)、终端服务、客户端应用程序协议或（以编程方式）通过 Azure 服务管理 API (SMAPI) 从本地系统直接连接到 Azure。 此外，客户端终结点（例如平板电脑或智能手机）可以加入域或者受到隔离且不受管理。
@@ -43,7 +43,7 @@ Azure 订阅者可从多个设备管理他们的云环境，这些设备包括�
 ### <a name="operational-security-fundamentals"></a>操作安全性基础知识
 为了提升管理和操作的安全性，可以减少可能的入口点数目以尽可能缩小客户端的受攻击面。 这可以通过“职责分离”和“环境隔离”安全原则来实现。
 
-让敏感功能彼此隔离以降低某个级别的错误导致另一个级别出现数据泄漏的可能性。 示例：
+让敏感功能彼此隔离以降低某个级别的错误导致另一个级别出现数据泄漏的可能性。 示例:
 
 * 管理任务不应该与可能将造成入侵的活动合并（例如，管理员的电子邮件中有恶意代码，从而感染基础结构服务器）。
 * 用于高敏感性操作的工作站也不应该是用于高风险用途（例如浏览 Internet）的同一系统。
@@ -66,7 +66,7 @@ Azure 订阅者可从多个设备管理他们的云环境，这些设备包括�
 ### <a name="providing-security-for-azure-remote-management"></a>为 Azure 远程管理提供安全性
 Azure 提供了安全机制来帮助管理员管理 Azure 云服务和虚拟机。 这些机制包括：
 
-* 身份验证和[基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)。
+* [AZURE RBAC)  (身份验证和 azure 基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)。
 * 监视、日志记录和审核。
 * 证书和加密通信。
 * Web 管理门户。

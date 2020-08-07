@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2020
 ms.author: Zhchia
-ms.openlocfilehash: 3197ac3033c6550b72bdfdf39fd23c55dda20d90
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da260221f42bb7e191040857abe4222f449257f5
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82134229"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926835"
 ---
 # <a name="tutorial-configure-new-relic-by-organization-for-automatic-user-provisioning"></a>教程：按组织为自动用户预配配置新的 Relic
 
-本教程介绍了需要在新的 Relic by 组织和 Azure Active Directory （Azure AD）中执行的步骤，以配置自动用户预配。 配置后，Azure AD 会使用 Azure AD 预配服务自动设置用户和组，并将其预配到[新 Relic](https://newrelic.com/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了需要在新的 Relic （按组织）和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置后，Azure AD 会使用 Azure AD 预配服务自动设置用户和组，并将其预配到[新 Relic](https://newrelic.com/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -33,7 +33,7 @@ ms.locfileid: "82134229"
 > * 当新 Relic 中的用户不再需要访问权限时，将其删除
 > * 使用户属性在 Azure AD 和组织中的新 Relic 之间保持同步
 > * 按组织在新 Relic 中预配组和组成员身份
-> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/new-relic-limited-release-tutorial)到新 Relic （按组织）（推荐）
+> * 按组织[单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/new-relic-limited-release-tutorial)到 New Relic (建议) 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -59,8 +59,8 @@ ms.locfileid: "82134229"
 
 你的帐户代表提供以下信息，你将需要为标识提供者配置新的 Relic SCIM/SSO 应用程序：
 
-- SCIM 终结点（租户 URL）
-- SCIM 持有者令牌（机密令牌）
+- SCIM 终结点 (租户 URL) 
+- SCIM 持有者令牌 (机密令牌) 
 
 SCIM 持有者令牌允许在新 Relic 上预配用户，因此请保持此值的安全性。 你的帐户代表会以安全的方式将 SCIM 持有者令牌传输给你。
 
@@ -93,11 +93,11 @@ SCIM 持有者令牌允许在新 Relic 上预配用户，因此请保持此值�
 
 3. 选择“预配”选项卡。
 
-    ![预配选项卡](common/provisioning.png)
+    ![“预配”选项卡](common/provisioning.png)
 
 4. 将“预配模式”设置为“自动”。
 
-    ![“预配”选项卡](common/provisioning-automatic.png)
+    ![预配选项卡](common/provisioning-automatic.png)
 
 5. 在“管理员凭据”部分下，在“租户 URL”中输入 `https://scim-provisioning.service.newrelic.com/scim/v2`。 输入先前在**机密令牌**中检索到的 SCIM authentication 令牌值。 单击 "**测试连接**" 以确保 Azure AD 可以连接到新 Relic。 如果连接失败，请确保新 Relic 帐户具有管理员权限，然后重试。
 
@@ -118,10 +118,10 @@ SCIM 持有者令牌允许在新 Relic 上预配用户，因此请保持此值�
    |userName|字符串|
    |externalId|字符串|
    |活动|Boolean|
-   |emails[type eq "work"].value|String|
-   |name.givenName|String|
-   |name.formatted|String|
-   |timezone|String|
+   |emails[type eq "work"].value|字符串|
+   |name.givenName|字符串|
+   |name.formatted|字符串|
+   |timezone|字符串|
 
 10. 在 "**映射**" 部分下，选择 "**按组织将 Azure Active Directory 组同步到新 Relic**"。
 
@@ -129,7 +129,7 @@ SCIM 持有者令牌允许在新 Relic 上预配用户，因此请保持此值�
 
       |Attribute|类型|
       |---|---|
-      |displayName|String|
+      |displayName|字符串|
       |externalId|字符串|
       |members|参考|
 
@@ -153,7 +153,7 @@ SCIM 持有者令牌允许在新 Relic 上预配用户，因此请保持此值�
 配置预配后，请使用以下资源来监视部署：
 
 * 通过[预配日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs)来确定哪些用户已预配成功或失败
-* 检查[进度栏](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
+* 检查[进度栏](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user)来查看预配周期的状态以及完成进度
 * 如果怀疑预配配置处于非正常状态，则应用程序将进入隔离状态。 可在[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status)了解有关隔离状态的详细信息。  
 
 
