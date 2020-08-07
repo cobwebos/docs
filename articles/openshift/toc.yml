@@ -28,6 +28,12 @@
           href: configure-azure-ad-cli.md
         - name: 配置 Azure Active Directory 身份验证（门户）
           href: configure-azure-ad-ui.md
+    - name: 使用 Velero 创建备份并还原应用程序
+      items:
+        - name: 使用 Velero 创建群集应用程序备份
+          href: howto-create-a-backup.md
+        - name: 使用 Velero 创建群集应用程序还原
+          href: howto-create-a-restore.md
     - name: 为 Azure Red Hat OpenShift 4 执行监视和日志记录
       items:
         - name: Azure Red Hat OpenShift 4 中适用于容器的 Azure Monitor（预览版）

@@ -23,6 +23,8 @@
       href: tutorial-access-api-with-certificates.md
     - name: 将日志流式传输到事件中心
       href: tutorial-azure-monitor-stream-logs-to-event-hub.md
+    - name: 日志分析向导
+      href: tutorial-log-analytics-wizard.md
 - name: 概念
   items:
     - name: 计划报告和监视部署

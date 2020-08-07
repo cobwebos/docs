@@ -12,7 +12,7 @@ CRON 表达式使用的默认时区为协调世界时 (UTC)。 若要让 CRON �
 
 |操作系统 |计划 |值 |
 |-|-|-|
-| Windows |全部 | 将值设置为所需时区的名称，如 [Microsoft Time Zone Index] (中所示 https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc749073(v=ws.10) 。 |
+| **Windows** |全部 | 将值设置为所需时区的名称，如 [Microsoft Time Zone Index] (中所示 https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc749073(v=ws.10) 。 |
 | **Linux** |高级<br/>专用 |将值设置为所需时区的名称，如[tz 数据库](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)中所示。 |
 
 > [!NOTE]

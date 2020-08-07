@@ -13,10 +13,10 @@
       items:
         - name: 注册应用程序
           href: quickstart-register-app.md
-        - name: 配置用于访问 Web API 的应用
-          href: quickstart-configure-app-access-web-apis.md
-        - name: 配置用于公开 Web API 的应用
+        - name: 配置应用以公开 Web API
           href: quickstart-configure-app-expose-web-apis.md
+        - name: 配置应用以访问 Web API
+          href: quickstart-configure-app-access-web-apis.md
         - name: 修改应用支持的帐户
           href: quickstart-modify-supported-accounts.md
         - name: 删除应用
@@ -643,7 +643,7 @@
     - name: 身份验证和授权错误代码
       displayName: AADSTS
       href: reference-aadsts-error-codes.md
-    - name: 中断性变更
+    - name: 重大变化
       href: reference-breaking-changes.md
 - name: 资源
   items:

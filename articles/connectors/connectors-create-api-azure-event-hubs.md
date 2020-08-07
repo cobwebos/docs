@@ -77,7 +77,7 @@ ms.locfileid: "87848836"
 
    ![触发器属性](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger.png)
 
-   | properties | 必选 | 描述 |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **事件中心名称** | 是 | 要监视的事件中心的名称 |
    | **内容类型** | 否 | 事件的内容类型。 默认值为 `application/octet-stream`。 |
@@ -89,7 +89,7 @@ ms.locfileid: "87848836"
 
    **其他属性**
 
-   | properties | 必选 | 描述 |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **内容架构** | 否 | 要从事件中心读取的事件的 JSON 内容架构。 例如，如果指定内容架构，则只有在这些事件符合架构时，才能触发逻辑应用。 |
    | **最小分区键** | 否 | 输入要读取的最小[分区](../event-hubs/event-hubs-features.md#partitions) ID。 默认读取所有分区。 |
@@ -128,7 +128,7 @@ ms.locfileid: "87848836"
 
    ![选择事件中心名称并提供事件内容](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
-   | properties | 必选 | 描述 |
+   | properties | 必选 | 说明 |
    |----------|----------|-------------|
    | **事件中心名称** | 是 | 要在其中发送事件的事件中心 |
    | **内容** | 否 | 要发送的事件内容 |
