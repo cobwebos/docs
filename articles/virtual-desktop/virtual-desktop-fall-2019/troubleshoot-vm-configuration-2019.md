@@ -1,26 +1,24 @@
 ---
-title: Windows 虚拟桌面（经典）会话主机故障排除-Azure
-description: 如何解决在配置 Windows 虚拟桌面（经典）会话主机虚拟机时遇到的问题。
-services: virtual-desktop
+title: Windows 虚拟桌面 (经典) 会话主机故障排除-Azure
+description: 如何解决在配置 Windows 虚拟桌面 (经典) 会话主机虚拟机时遇到的问题。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 0155c9cf6b5d9df8a6a8831896093c4c6b074cd6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 90b4c574a03d8dee50beff60304fb5c1f3b52945
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291251"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008621"
 ---
-# <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Windows 虚拟桌面（经典）会话主机虚拟机配置
+# <a name="windows-virtual-desktop-classic-session-host-virtual-machine-configuration"></a>Windows 虚拟桌面 (经典) 会话主机虚拟机配置
 
 >[!IMPORTANT]
->此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。 如果尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../troubleshoot-vm-configuration.md)。
+>本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../troubleshoot-vm-configuration.md)。
 
-本文介绍配置 Windows 虚拟桌面会话主机虚拟机（Vm）时遇到的问题。
+本文介绍了在配置 Windows 虚拟桌面会话主机虚拟机 (Vm) 时遇到的问题。
 
 ## <a name="provide-feedback"></a>提供反馈
 
@@ -46,7 +44,7 @@ ms.locfileid: "87291251"
 
 ### <a name="error-timeout-waiting-for-user-input"></a>错误：等待用户输入超时
 
-**原因：** 用于完成域加入的帐户可能具有多重身份验证（MFA）。
+**原因：** 用于完成域加入的帐户可以 (MFA) 进行多重身份验证。
 
 **修复：** 执行下列操作之一来解决。
 
@@ -64,11 +62,11 @@ ms.locfileid: "87291251"
 
 ### <a name="error-domain-name-doesnt-resolve"></a>错误：域名不能解析
 
-**原因1：** Vm 位于与域所在的虚拟网络（VNET）不关联的虚拟网络上。
+**原因1：** Vm 位于与域所在的虚拟网络 (VNET) 不关联的虚拟网络上。
 
-**修复1：** 在配置了 Vm 的 VNET 和运行域控制器（DC）的 VNET 之间创建 VNET 对等互连。 请参阅[创建虚拟网络对等互连-资源管理器、不同订阅](../../virtual-network/create-peering-different-subscriptions.md)。
+**修复1：** 在预配了 Vm 的 VNET 和运行域控制器 (DC) 的 VNET 之间创建 VNET 对等互连。 请参阅[创建虚拟网络对等互连-资源管理器、不同订阅](../../virtual-network/create-peering-different-subscriptions.md)。
 
-**原因2：** 使用 Azure Active Directory 域服务（Azure AD DS）时，不会将虚拟网络的 DNS 服务器设置更新为指向托管域控制器。
+**原因2：** 使用 (Azure AD DS) Azure Active Directory 域服务时，不会将虚拟网络的 DNS 服务器设置更新为指向托管域控制器。
 
 **修复2：** 若要更新包含 Azure AD DS 的虚拟网络的 DNS 设置，请参阅[更新 Azure 虚拟网络的 dns 设置](../../active-directory-domain-services/tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)。
 
@@ -114,7 +112,7 @@ ms.locfileid: "87291251"
 
 ## <a name="windows-virtual-desktop-agent-is-not-registering-with-the-windows-virtual-desktop-service"></a>Windows 虚拟桌面代理未向 Windows 虚拟桌面服务注册
 
-当首次在会话主机 Vm 上安装 Windows 虚拟桌面代理（手动或通过 Azure 资源管理器模板和 PowerShell DSC）时，它将提供注册令牌。 以下部分介绍适用于 Windows 虚拟桌面代理和令牌的疑难解答问题。
+当首次在会话主机 Vm 上安装 Windows 虚拟桌面代理时 (手动或通过 Azure 资源管理器模板和 PowerShell DSC) 提供注册令牌。 以下部分介绍适用于 Windows 虚拟桌面代理和令牌的疑难解答问题。
 
 ### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>错误： RdsSessionHost cmdlet 中存档的状态显示为 "不可用"
 
@@ -128,7 +126,7 @@ ms.locfileid: "87291251"
 1. 在会话主机 VM 上下载新版本的代理。
 2. 启动任务管理器，在 "服务" 选项卡上，停止 RDAgentBootLoader 服务。
 3. 运行 Windows 虚拟桌面代理新版本的安装程序。
-4. 当系统提示输入注册令牌时，删除条目 INVALID_TOKEN，然后按 "下一步" （不需要新的令牌）。
+4. 当系统提示输入注册令牌时，删除条目 INVALID_TOKEN 然后按 "下一步" (不需要新令牌) 。
 5. 完成安装向导。
 6. 打开任务管理器并启动 RDAgentBootLoader 服务。
 
@@ -140,7 +138,7 @@ ms.locfileid: "87291251"
 
 1. 如果已有注册令牌，请使用 RDSRegistrationInfo 将其删除。
 2. 用 NewRegistrationInfo 生成新令牌。
-3. 确认-ExpriationHours 参数设置为72（最大值为99999）。
+3. 确认-ExpriationHours 参数设置为 72 (最大值为 99999) 。
 
 ### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-rdssessionhost"></a>错误：运行 RdsSessionHost 时 Windows 虚拟桌面代理未报告检测信号
 
@@ -180,13 +178,13 @@ ms.locfileid: "87291251"
 
 ## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>排查 Windows 虚拟桌面并行堆栈问题
 
-Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 Microsoft Installer （MSI）在 Microsoft Windows Server 2016 或 Windows Server 2012 R2 上安装并行堆栈。 对于 Microsoft Windows 10，将使用**enablesxstackrs.ps1**启用 Windows 虚拟桌面并行堆栈。
+Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 Microsoft Installer (MSI) 在 Microsoft Windows Server 2016 或 Windows Server 2012 R2 上安装并行堆栈。 对于 Microsoft Windows 10，将使用**enablesxstackrs.ps1**启用 Windows 虚拟桌面并行堆栈。
 
 在会话主机池 Vm 上安装或启用并行堆栈的主要方式有三种：
 
 - 通过 Azure 资源管理器**创建和预配新的 Windows 虚拟机主机池**模板
 - 通过在主映像上包含和启用
-- 已在每个 VM 上手动安装或启用（或通过扩展/PowerShell）
+- 已在每个 VM 上手动安装或启用 (或带有扩展/PowerShell) 
 
 如果你遇到 Windows 虚拟桌面并行堆栈问题，请在命令提示符下键入**qwinsta**命令，以确认已安装或启用并行堆栈。
 
@@ -214,7 +212,7 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 
 **修复：** 按照这些说明在会话主机 VM 上安装并行堆栈。
 
-1. 使用远程桌面协议（RDP）作为本地管理员直接加入会话主机 VM。
+1. 使用远程桌面协议 (RDP) ，作为本地管理员直接加入会话主机 VM。
 2. 下载并导入要在 PowerShell 会话中使用[的 Windows 虚拟桌面 PowerShell 模块](/powershell/windows-virtual-desktop/overview/)（如果尚未这样做），然后运行此 cmdlet 以登录到你的帐户：
 
     ```powershell
@@ -228,8 +226,8 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 在某些情况下，可能会导致并列堆栈不正常：
 
 - 不遵循正确的步骤顺序来启用并排堆栈
-- 自动更新到 Windows 10 增强的多功能光盘（EVD）
-- 缺少远程桌面会话主机（RDSH）角色
+- 自动更新到 Windows 10 增强的多功能光盘 (EVD) 
+- 缺少 RDSH) 角色远程桌面会话主机 (
 - 多次运行 enablesxsstackrc.ps1
 - 在没有本地管理员权限的帐户中运行 enablesxsstackrc.ps1
 
@@ -239,7 +237,7 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 
 按照以下说明从同一子网和域运行修正：
 
-1. 将与标准远程桌面协议（RDP）连接到将应用修复的 VM。
+1. 将标准远程桌面协议 (RDP) 连接到要应用修补程序的 VM。
 2. 从下载 PsExec https://docs.microsoft.com/sysinternals/downloads/psexec 。
 3. 解压缩下载的文件。
 4. 以本地管理员身份启动命令提示符。
@@ -282,7 +280,7 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 
 12. 卸载所有 Windows 虚拟桌面组件后，请按照适用于你的操作系统的说明进行操作：
 
-13. 如果操作系统是 Windows Server，请重新启动具有故障的并行堆栈的 VM （使用 Azure 门户或来自 PsExec 工具）。
+13. 如果操作系统为 Windows Server，请重新启动具有故障的并行堆栈的 VM， (与 Azure 门户或从 PsExec 工具) 进行的操作。
 
 如果操作系统是 Microsoft Windows 10，请继续执行以下说明：
 
@@ -311,10 +309,10 @@ Windows 虚拟桌面并行堆栈随 Windows Server 2019 自动安装。 使用 M
 
 如果时间限制到期，将出现一条错误消息，显示 "远程会话已断开连接，因为没有可用于此计算机的远程桌面客户端访问许可证"。
 
-如果看到这些消息中的任何一个，则表示该映像未安装最新的 Windows 更新，或者你正在通过组策略设置远程桌面授权模式。 按照以下部分中的步骤检查组策略设置，确定 Windows 10 企业多会话版本，并安装相应的更新。  
+如果看到这些消息中的任何一个，则表示该映像未安装最新的 Windows 更新，或者你正在通过组策略设置远程桌面授权模式。 按照以下部分中的步骤检查组策略设置，确定 Windows 10 企业多会话版本，并安装相应的更新。
 
 >[!NOTE]
->当主机池包含 Windows Server 会话主机时，Windows 虚拟桌面只需要 RDS 客户端访问许可证（CAL）。 若要了解如何配置 RDS CAL，请参阅[使用客户端访问许可证为你的 RDS 部署提供许可](/windows-server/remote/remote-desktop-services/rds-client-access-license/)。
+>当主机池包含 Windows Server 会话主机时，Windows 虚拟桌面只需要 (CAL) RDS 客户端访问许可证。 若要了解如何配置 RDS CAL，请参阅[使用客户端访问许可证为你的 RDS 部署提供许可](/windows-server/remote/remote-desktop-services/rds-client-access-license/)。
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>禁用 "远程桌面授权模式" 组策略设置
 

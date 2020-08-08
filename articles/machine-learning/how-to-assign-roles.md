@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 8cff5ec6886c0aceff5270418f9feeb145f6fd17
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 8c2203fec71430840e547115d24330b661bda50f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836541"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002230"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问权限
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -66,7 +66,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role Contributor --
 
 ## <a name="azure-machine-learning-operations"></a>Azure 机器学习操作
 
-适用于许多操作和任务的 Azure 机器学习内置操作。 有关完整列表，请参阅 [Azure 资源提供程序操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)。
+适用于许多操作和任务的 Azure 机器学习内置操作。 有关完整列表，请参阅[Azure 资源提供程序操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)。
 
 ## <a name="create-custom-role"></a>创建自定义角色
 
@@ -382,9 +382,9 @@ az provider operation show –n Microsoft.MachineLearningServices
 若要在 Amlcompute 群集上分配用户分配的标识，必须有写入权限才能创建计算，并拥有[托管标识操作员角色](/azure/role-based-access-control/built-in-roles#managed-identity-operator)。 有关具有托管标识的 RBAC 的详细信息，请参阅[如何管理用户分配的标识](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal)
 
 
-### <a name="q-do-we-support-role-based-access-controls-on-the-studio-portal"></a>问： 在 Studio 门户上是否支持基于角色的访问控制？
+### <a name="q-do-we-support-role-based-access-control-on-the-studio-portal"></a>问： 在 Studio 门户上是否支持基于角色的访问控制？
 
-Azure 机器学习 Studio 支持基于角色的访问控制。 
+Azure 机器学习 Studio 支持 Azure RBAC)  (Azure 基于角色的访问控制。 
 
 > [!IMPORTANT]
 > 将具有特定权限的自定义角色分配到工作区中的数据科学家后，会自动向用户隐藏相应的操作 (例如添加计算按钮) 。 隐藏这些项可防止在使用时无法查看从服务返回未经授权的访问通知的控件。

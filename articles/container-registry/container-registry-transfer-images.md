@@ -4,12 +4,12 @@ description: 使用 Azure 存储帐户创建传输管道，将映像集合或其
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: 7f63936ad8f2a97bae6ff63e783e38c15db35e13
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0bbdfc8d1586b7d71daf6d4cbfdc4288357aa45b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259453"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009148"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>将项目传输到另一个注册表
 
@@ -234,6 +234,8 @@ IMPORT_RES_ID=$(az group deployment show \
 |targetName     |  为导出到源存储帐户的项目 blob 选择的名称，如 myblob
 |项目 | 要传输的源项目的数组，作为标记或清单摘要<br/>示例： `[samples/hello-world:v1", "samples/nginx:v1" , "myrepository@sha256:0a2e01852872..."]` |
 
+如果重新部署具有相同属性的 PipelineRun 资源，则还必须使用[forceUpdateTag](#redeploy-pipelinerun-resource)属性。
+
 运行 [az deployment group create][az-deployment-group-create] 以创建 PipelineRun 资源。 下面的示例将部署命名为 exportPipelineRun。
 
 ```azurecli
@@ -291,6 +293,8 @@ az acr repository list --name <target-registry-name>
 |pipelineResourceId     |  导入管道的资源 ID。<br/>示例： `/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.ContainerRegistry/registries/<sourceRegistryName>/importPipelines/myImportPipeline`       |
 |sourceName     |  存储帐户中已导出项目的现有 blob 名称，如 myblob
 
+如果重新部署具有相同属性的 PipelineRun 资源，则还必须使用[forceUpdateTag](#redeploy-pipelinerun-resource)属性。
+
 运行 [az deployment group create][az-deployment-group-create] 以运行资源。
 
 ```azurecli
@@ -304,6 +308,23 @@ az deployment group create \
 
 ```azurecli
 az acr repository list --name <target-registry-name>
+```
+
+## <a name="redeploy-pipelinerun-resource"></a>重新部署 PipelineRun 资源
+
+如果重新部署具有*相同属性*的 PipelineRun 资源，则必须利用**forceUpdateTag**属性。 此属性指示应重新创建 PipelineRun 资源，即使配置尚未更改也是如此。 请确保每次重新部署 PipelineRun 资源时 forceUpdateTag 是不同的。 下面的示例重新创建用于导出的 PipelineRun。 当前日期时间用于设置 forceUpdateTag，从而确保此属性始终唯一。
+
+```console
+CURRENT_DATETIME=`date +"%Y-%m-%d:%T"`
+```
+
+```azurecli
+az deployment group create \
+  --resource-group $SOURCE_RG \
+  --template-file azuredeploy.json \
+  --name exportPipelineRun \
+  --parameters azuredeploy.parameters.json \
+  --parameters forceUpdateTag=$CURRENT_DATETIME
 ```
 
 ## <a name="delete-pipeline-resources"></a>删除管道资源

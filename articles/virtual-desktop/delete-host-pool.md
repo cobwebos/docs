@@ -1,19 +1,17 @@
 ---
 title: 删除 Windows 虚拟桌面主机池-Azure
 description: 如何删除 Windows 虚拟桌面中的主机池。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ced0d7513524758975919fad90f19581d15d95f4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dfc9858bea468389d8ce90677f048e5d1fd3bb82
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096610"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007583"
 ---
 # <a name="delete-a-host-pool"></a>删除主机池
 
@@ -33,7 +31,7 @@ Remove-AzWvdApplicationGroup -Name <appgroupname> -ResourceGroupName <resourcegr
 Remove-AzWvdHostPool -Name <hostpoolname> -ResourceGroupName <resourcegroupname> -Force:$true
 ```
 
-此 cmdlet 将删除主机池的会话主机上的所有现有用户会话。 它还将从主机池中注销会话主机。 所有相关的虚拟机（Vm）在你的订阅中仍然存在。
+此 cmdlet 将删除主机池的会话主机上的所有现有用户会话。 它还将从主机池中注销会话主机。 任何相关的虚拟机 (Vm) 仍将存在于你的订阅中。
 
 ## <a name="delete-a-host-pool-with-the-azure-portal"></a>删除具有 Azure 门户的主机池
 
@@ -53,7 +51,7 @@ Remove-AzWvdHostPool -Name <hostpoolname> -ResourceGroupName <resourcegroupname>
 
 7. 选择“删除” 。
 
-8. 如果要删除的主机池中有会话主机，你会看到一条消息，要求你提供权限才能继续。 选择 **“是”** 。
+8. 如果要删除的主机池中有会话主机，你会看到一条消息，要求你提供权限才能继续。 请选择“是”。
 
 9. Azure 门户将立即删除所有会话主机并删除主机池。 与会话主机相关的 Vm 不会被删除，并将保留在订阅中。
 

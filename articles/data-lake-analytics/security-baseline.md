@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: cb93fa266111a0f60a139d7b76a149ba81b486e9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 33084d72e26f2926751def686c0a4c1d0485a5c2
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075081"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005126"
 ---
 # <a name="azure-security-baseline-for-data-lake-analytics"></a>适用于 Data Lake Analytics 的 Azure 安全基线
 
 适用于 Data Lake Analytics 的 Azure 安全基线包含有助于改进部署安全状况的建议。
 
-此服务的基线提取自 [Azure 安全基准版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview)，该版本提供了有关如何在 Azure 上利用我们的最佳做法指南来保护云解决方案的建议。
+此服务的基线摘自 [Azure 安全基准版本 1.0](https://docs.microsoft.com/azure/security/benchmarks/overview)，其中提供了有关如何根据我们的最佳做法指导保护 Azure 上的云解决方案的建议。
 
 有关详细信息，请参阅 [Azure 安全基线概述](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
 
@@ -36,7 +36,7 @@ ms.locfileid: "87075081"
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2：监视和记录虚拟网络、子网和网络接口的配置和流量
 
@@ -68,7 +68,7 @@ ms.locfileid: "87075081"
 
 ### <a name="15-record-network-packets"></a>1.5：记录网络数据包
 
-**指南**：不适用;Data Lake Analytics 不会在客户虚拟网络中运行，并且不能使用网络安全组（Nsg）记录网络流日志。
+**指南**：不适用;Data Lake Analytics 不会在客户虚拟网络中运行，并且不能使用网络安全组 (Nsg) 来记录网络流日志。
 
 **Azure 安全中心监视**：不适用
 
@@ -92,7 +92,7 @@ ms.locfileid: "87075081"
 
 ### <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1.8：最大程度地降低网络安全规则的复杂性和管理开销
 
-**指南**：不适用;Data Lake Analytics 不会在客户虚拟网络中运行，并且不能使用网络安全组（Nsg）。
+**指南**：不适用;Data Lake Analytics 不会在客户虚拟网络中运行，并且不能使用网络安全组 (Nsg) 。
 
 **Azure 安全中心监视**：不适用
 
@@ -100,7 +100,7 @@ ms.locfileid: "87075081"
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：维护网络设备的标准安全配置
 
-**指南**：不适用;Data Lake Analytics 不会在客户虚拟网络中运行，并且不能使用网络安全组（Nsg）。
+**指南**：不适用;Data Lake Analytics 不会在客户虚拟网络中运行，并且不能使用网络安全组 (Nsg) 。
 
 **Azure 安全中心监视**：不适用
 
@@ -108,7 +108,7 @@ ms.locfileid: "87075081"
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：阐述流量配置规则
 
-**指南**：不适用;Data Lake Analytics 不会在客户虚拟网络中运行，并且不能使用网络安全组（Nsg）。
+**指南**：不适用;Data Lake Analytics 不会在客户虚拟网络中运行，并且不能使用网络安全组 (Nsg) 。
 
 **Azure 安全中心监视**：不适用
 
@@ -116,7 +116,7 @@ ms.locfileid: "87075081"
 
 ### <a name="111-use-automated-tools-to-monitor-network-resource-configurations-and-detect-changes"></a>1.11：使用自动化工具来监视网络资源配置和检测更改
 
-**指南**：不适用;Data Lake Analytics 不会在客户虚拟网络中运行，并且不能使用网络安全组（Nsg）。
+**指南**：不适用;Data Lake Analytics 不会在客户虚拟网络中运行，并且不能使用网络安全组 (Nsg) 。
 
 **Azure 安全中心监视**：不适用
 
@@ -164,7 +164,7 @@ ms.locfileid: "87075081"
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="24-collect-security-logs-from-operating-systems"></a>2.4：从操作系统收集安全日志
 
@@ -184,7 +184,7 @@ ms.locfileid: "87075081"
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和查看日志
 
@@ -256,13 +256,13 @@ ms.locfileid: "87075081"
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
-**指南**： Data Lake Analytics 没有默认密码的概念，因为使用 Azure Active Directory 提供身份验证，并通过基于角色的访问控制（RBAC）来保护身份。
+**指南**： Data Lake Analytics 没有默认密码的概念，因为使用 Azure Active Directory 提供身份验证，并通过 azure RBAC)  (azure 基于角色的访问控制对其进行保护。
 
 * [Azure Data Lake Analytics 概述](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-overview)
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
@@ -276,7 +276,7 @@ ms.locfileid: "87075081"
 
 **责任**：客户
 
-### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 单一登录（SSO）
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory (SSO 的单一登录) 
 
 **指导**：请尽可能使用 Azure Active Directory SSO，而不是为每个服务配置单个独立凭据。 使用 Azure 安全中心标识和访问建议。
 
@@ -288,7 +288,7 @@ ms.locfileid: "87075081"
 
 ### <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3.5：对所有基于 Azure Active Directory 的访问使用多重身份验证
 
-**指南**：启用 Azure Active Directory 多重身份验证（MFA）并遵循 Azure 安全中心的标识和访问管理建议来帮助保护你的 Data Lake Analytics 资源。
+**指南**：启用 Azure Active Directory 多重身份验证 (MFA) ，并遵循 Azure 安全中心的标识和访问管理建议来帮助保护你的 Data Lake Analytics 资源。
 
 * [如何在 Azure 中启用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
@@ -300,7 +300,7 @@ ms.locfileid: "87075081"
 
 ### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6：对管理任务使用 Azure 托管的安全工作站
 
-**指南**：对于需要提升权限的管理任务，请使用安全的 Azure 托管工作站（也称为特权访问工作站，或 PAW）。
+**指南**：对于需要提升权限的管理任务，请使用安全的 Azure 托管的工作站 (也称为特权访问工作站，或 PAW) 。
 
 * [了解 Azure 托管的安全工作站](https://docs.microsoft.com/azure/active-directory/devices/concept-azure-managed-workstation)
 
@@ -330,11 +330,11 @@ ms.locfileid: "87075081"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="39-use-azure-active-directory"></a>3.9：使用 Azure Active Directory
 
-**指导**：使用 Azure Active Directory (Azure AD) 作为中心身份验证和授权系统。 Azure AD 提供了基于角色的访问控制（RBAC），以便对客户端对 Data Lake Analytics 资源的访问进行精细控制。
+**指导**：使用 Azure Active Directory (Azure AD) 作为中心身份验证和授权系统。 Azure AD 提供了基于角色的访问控制 (RBAC) ，以精细控制客户端对 Data Lake Analytics 资源的访问权限。
 
 * [如何创建和配置 Azure AD 实例](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)
 
@@ -400,7 +400,7 @@ ms.locfileid: "87075081"
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
@@ -452,7 +452,7 @@ ms.locfileid: "87075081"
 
 * [了解 Azure 中的客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
-**Azure 安全中心监视**：当前不可用
+**Azure 安全中心监视**：目前不可用
 
 **责任**：客户
 
@@ -470,7 +470,7 @@ ms.locfileid: "87075081"
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -536,13 +536,13 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 ### <a name="55-use-a-risk-rating-process-to-prioritize-the-remediation-of-discovered-vulnerabilities"></a>5.5：使用风险评级过程来确定已发现漏洞的修正措施的优先级
 
-**指南**：使用常见的风险评分计划（例如，公共漏洞计分系统）或第三方扫描工具提供的默认风险评级。
+**指南**：使用常见的风险评分计划 (例如，常见漏洞评分系统) 或第三方扫描工具提供的默认风险评级。
 
 * [NIST 发布-常见漏洞计分系统](https://www.nist.gov/publications/common-vulnerability-scoring-system)
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ## <a name="inventory-and-asset-management"></a>库存和资产管理
 
@@ -550,7 +550,7 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动资产发现解决方案
 
-**指南**：使用 Azure 资源关系图可查询和发现订阅中的所有资源（如计算、存储、网络、端口和协议等）。 请确保租户中的相应（读取）权限，并枚举所有 Azure 订阅以及订阅中的资源。
+**指南**：使用 Azure 资源关系图可查询和发现订阅中的所有资源 (如计算、存储、网络、端口和协议等 ) 。 确保适当的 (读取租户中的) 权限，并枚举所有 Azure 订阅以及订阅中的资源。
 
 尽管可以通过 Azure 资源图资源管理器发现经典 Azure 资源，但强烈建议创建和使用 Azure 资源管理器资源。
 
@@ -572,11 +572,11 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
-**指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪 Azure Data Lake Analytics 资源。 定期协调清单，并确保及时从订阅中删除未经授权的资源。
+**指南**：使用标记、管理组和单独的订阅（如果适用）来组织和跟踪 Azure Data Lake Analytics 资源。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
 此外，使用 Azure 策略将对可在客户订阅中创建的资源类型限制为使用以下内置策略定义：
 - 不允许的资源类型
@@ -602,7 +602,7 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 ### <a name="65-monitor-for-unapproved-azure-resources"></a>6.5：监视未批准的 Azure 资源
 
-**指南**：使用 Azure Policy 对可使用以下内置策略定义在客户订阅中创建的资源类型施加限制：
+**指导**：在 Azure 策略中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
 - 不允许的资源类型
 - 允许的资源类型
 
@@ -743,7 +743,7 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全存储自定义操作系统映像
 
@@ -805,7 +805,7 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
-**指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据移动到更安全的位置，例如 Azure Key Vault。
+**指南**：实施凭据扫描程序来识别代码中的凭据。 凭据扫描程序还会建议将发现的凭据转移到更安全的位置，例如 Azure Key Vault。
 
 * [如何设置凭据扫描程序](https://secdevtools.azurewebsites.net/helpcredscan.html)
 
@@ -827,7 +827,7 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
-**指南**：在支持 Azure 服务的基础主机（例如 Azure Data Lake Analytics）上启用了 Microsoft 反恶意软件，但它不会在客户内容上运行。
+**指南**：在支持 Azure 服务的底层主机上启用了 Microsoft 反恶意软件 (例如 Azure Data Lake Analytics) ，但它不会在客户内容上运行。
 
 预先扫描要上传到 Azure 资源的任何内容，如应用服务、Data Lake Analytics、Blob 存储等。Microsoft 无法访问这些实例中的数据。
 
@@ -913,7 +913,7 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心对用于发出警报的调查结果或分析的置信度，以及导致警报的活动背后存在恶意意图的可信度。
+**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
 此外，使用标记清楚地标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
@@ -943,11 +943,11 @@ Microsoft 对支持 Azure Data Lake Analytics 的基础系统执行漏洞管理�
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
-**指南**：使用连续导出功能导出 Azure 安全中心警报和建议，以帮助确定 Azure 资源的风险。 使用连续导出功能可手动或以连续不断的方式导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Azure Sentinel。
+**指南**：使用连续导出功能导出 Azure 安全中心警报和建议，以帮助确定 Azure 资源的风险。 使用连续导出可以手动导出或者持续导出警报和建议。 可以使用 Azure 安全中心数据连接器将警报流式传输到 Azure Sentinel。
 
 * [如何配置连续导出](https://docs.microsoft.com/azure/security-center/continuous-export)
 

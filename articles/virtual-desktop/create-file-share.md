@@ -1,19 +1,17 @@
 ---
 title: 创建与域控制器的 Azure 文件共享-Azure
 description: 使用 Active Directory 域在现有 Windows 虚拟桌面主机池中的 Azure 文件共享上设置 FSLogix 配置文件容器。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c9636a08b896cefdbec825e4979ad1ec89f8847b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e03d496881b0d563387ee5a5943b60f456530453
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87842903"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009216"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>使用 Azure 文件和 AD DS 创建配置文件容器
 
@@ -214,7 +212,7 @@ ms.locfileid: "87842903"
 
 6. 重启 VM。
 
-## <a name="testing"></a>正在测试
+## <a name="testing"></a>测试
 
 安装并配置 FSLogix 后，可以通过使用已分配了主机池上的应用组或桌面的用户帐户登录来测试部署。 确保你登录所用的用户帐户具有对文件共享的权限。
 

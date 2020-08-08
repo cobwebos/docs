@@ -1,24 +1,22 @@
 ---
-title: Windows 虚拟桌面（经典）租户主机池创建-Azure
-description: 如何在 Windows 虚拟桌面（经典）租户环境的安装过程中排除和解决租户和主机池问题。
-services: virtual-desktop
+title: Windows 虚拟桌面 (经典) 租户主机池创建-Azure
+description: 如何在安装 Windows 虚拟桌面 (经典) 租户环境期间排除和解决租户和主机池问题。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bd9a6dd5d11ab69635d610eee3f92a90e942b576
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: eed1b0e1b01d5d13330b927429eca9a28ff80658
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87269591"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009250"
 ---
-# <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>在 Windows 虚拟桌面（经典）中创建租户和主机池
+# <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>在 Windows 虚拟桌面中创建租户和主机池 (经典) 
 
 >[!IMPORTANT]
->此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。 如果尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../troubleshoot-set-up-issues.md)。
+>本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../troubleshoot-set-up-issues.md)。
 
 本文介绍了 Windows 虚拟桌面租户和相关的会话主机池基础结构的初始安装过程中的问题。
 
@@ -43,9 +41,9 @@ ms.locfileid: "87269591"
 
 ```Error
 AADSTS650052 Message The app needs access to a service(\"{name}\") that your organization
-\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the 
+\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the
 configuration of your service subscriptions.650052 Message The app needs access to a service
-(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled. 
+(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled.
 Contact your IT Admin to review the configuration of your service subscriptions.
 ```
 
@@ -95,9 +93,9 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
 
 **原因1：** 用于登录到 Azure 的帐户中没有活动的订阅，或者使用的帐户无权查看订阅。
 
-**修复1：** 使用至少具有参与者访问权限的帐户登录，以便在其中部署会话主机 Vm。
+**修复1：** 使用具有参与者访问权限的帐户登录，该帐户将至少) 到将在其中部署会话主机 Vm 的订阅的 (。
 
-**原因2：** 使用的订阅是 Microsoft 云服务提供程序（CSP）租户的一部分。
+**原因2：** 使用的订阅是 Microsoft 云服务提供程序的一部分 (CSP) 租户。
 
 **修复2：** 请访问 GitHub 位置以**创建和设置新的 Windows 虚拟桌面主机池**，并按照以下说明进行操作：
 
@@ -124,12 +122,12 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
 1. 退出当前的 Azure Marketplace 部署产品/服务。
 2. 在顶部搜索栏中，搜索并选择 "**活动日志**"。
 3. 找到名为 "**验证部署** **" 的活动，并选择**该活动。
-   
+
    > [!div class="mx-imgBorder"]
    > ![单个 * * 验证部署的屏幕截图 * * 状态的活动 * * 失败 * * 状态](../media/troubleshooting-marketplace-validation-error-activity-summary.png)
 
 4. 选择 "JSON"，然后向下滚动到屏幕底部，直到看到 "statusMessage" 字段。
-   
+
    > [!div class="mx-imgBorder"]
    > ![失败活动的屏幕截图，JSON 文本的 statusMessage 属性周围有一个红色框。](../media/troubleshooting-marketplace-validation-error-json-boxed.png)
 
@@ -138,7 +136,7 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
  - 使用首次使用的参数运行 Azure Marketplace，但这次使用的 Vm 和 VM 内核数更少。
  - 在浏览器中打开在**statusMessage**字段中看到的链接，以提交为指定 VM SKU 增加 Azure 订阅配额的请求。
 
-## <a name="azure-resource-manager-template-and-powershell-desired-state-configuration-dsc-errors"></a>Azure 资源管理器模板和 PowerShell 所需状态配置（DSC）错误
+## <a name="azure-resource-manager-template-and-powershell-desired-state-configuration-dsc-errors"></a>Azure 资源管理器模板和 PowerShell Desired State Configuration (DSC) 错误
 
 按照以下说明解决 Azure 资源管理器模板和 PowerShell DSC 的不成功部署。
 
@@ -170,7 +168,7 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
 
 **修复2：** 请参阅[错误：未](troubleshoot-vm-configuration-2019.md#error-domain-name-doesnt-resolve)在[会话主机 VM 配置](troubleshoot-vm-configuration-2019.md)中解析域名。
 
-**原因3：** 虚拟网络（VNET） DNS 配置已设置为**默认值**。
+**原因3：** 虚拟网络 (VNET) DNS 配置设置为 "**默认**"。
 
 若要解决此问题，请执行以下操作：
 
@@ -216,7 +214,7 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
  /resourceGroups/demoHostDesktop/providers/Microsoft.Compute/virtualMachines/demo", "resourceType": "Microsoft.Compute/virtualMachines", "resourceName": "demo" } }}
 ```
 
-**原因：** 提供的密码包含禁止的子字符串（admin、administrator、root）。
+**原因：** 提供的密码包含禁止的子字符串 (admin、administrator、root) 。
 
 **修复：** 更新用户名或使用其他用户。
 
@@ -247,10 +245,10 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
 
 **修复：** 确认用户名和密码在虚拟机上具有管理访问权限，然后再次运行 Azure 资源管理器模板。
 
-### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>错误： DeploymentFailed – PowerShell DSC 配置 "FirstSessionHost" 已完成，但出现错误
+### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>错误： DeploymentFailed – PowerShell DSC 配置 "FirstSessionHost" 已完成，但出现错误 (s) 
 
 > [!div class="mx-imgBorder"]
-> ![部署的屏幕截图失败，PowerShell DSC 配置 "FirstSessionHost" 已完成，但出现错误。](../media/64870370bcbe1286906f34cf0a8646ab.png)
+> ![部署的屏幕截图失败，PowerShell DSC 配置 "FirstSessionHost" 已完成，但)  (错误。](../media/64870370bcbe1286906f34cf0a8646ab.png)
 
 原始错误的示例：
 
@@ -260,7 +258,7 @@ Windows 虚拟桌面–预配主机池模板可从 Azure Marketplace 获得。
    "message": "At least one resource deployment operation failed. Please list
  deployment operations for details. 4 Please see https://aka.ms/arm-debug for usage details.",
  "details": [
-         { "code": "Conflict",  
+         { "code": "Conflict",
          "message": "{\r\n \"status\": \"Failed\",\r\n \"error\": {\r\n \"code\":
          \"ResourceDeploymentFailure\",\r\n \"message\": \"The resource
          operation completed with terminal provisioning state 'Failed'.\",\r\n
@@ -377,10 +375,10 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
 ```
 
-### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>错误：用户需要 Azure 多重身份验证（MFA）
+### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>错误：用户需要 Azure 多重身份验证 (MFA) 
 
 > [!div class="mx-imgBorder"]
-> ![由于缺少多重身份验证（MFA），部署的屏幕截图失败](../media/MFARequiredError.png)
+> ![部署的屏幕截图失败，因为缺少多重身份验证 (MFA) ](../media/MFARequiredError.png)
 
 原始错误的示例：
 
@@ -388,7 +386,7 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 "message": "{\r\n  \"status\": \"Failed\",\r\n  \"error\": {\r\n    \"code\": \"ResourceDeploymentFailure\",\r\n    \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"VMExtensionProvisioningError\",\r\n        \"message\": \"VM has reported a failure when processing extension 'dscextension'. Error message: \\\"DSC Configuration 'FirstSessionHost' completed with error(s). Following are the first few: PowerShell DSC resource MSFT_ScriptResource  failed to execute Set-TargetResource functionality with error message: One or more errors occurred.  The SendConfigurationApply function did not succeed.\\\".\"\r\n      }\r\n    ]\r\n  }\r\n}"
 ```
 
-**原因：** 指定的 Windows 虚拟桌面租户管理员要求 Azure 多重身份验证（MFA）进行登录。
+**原因：** 指定的 Windows 虚拟桌面租户管理员需要 Azure 多重身份验证 (MFA) 才能登录。
 
 **修复：** 按照[教程：使用 PowerShell 创建服务主体和角色分配](create-service-principal-role-powershell.md)中的步骤，创建服务主体，并为其分配一个适用于 Windows 虚拟桌面租户的角色。 在验证是否可以使用服务主体登录到 Windows 虚拟桌面后，重新运行 Azure Marketplace 产品/服务或 GitHub Azure 资源管理器模板，具体取决于所使用的方法。 按照以下说明为方法输入正确的参数。
 
@@ -401,7 +399,7 @@ New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDef
 
 如果正在运行 GitHub Azure 资源管理器模板，请提供以下参数的值，以正确地向 Windows 虚拟桌面进行身份验证：
 
-- 租户管理员用户主体名称（UPN）或应用程序 ID：创建的新服务主体的应用程序标识
+- 租户管理员用户主体名称 (UPN) 或应用程序 ID：你创建的新服务主体的应用程序标识
 - 租户管理员密码：为服务主体生成的密码密码
 - IsServicePrincipal： **true**
 - AadTenantId：创建的服务主体的 Azure AD 租户 ID

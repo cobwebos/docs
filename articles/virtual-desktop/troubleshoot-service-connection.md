@@ -1,24 +1,22 @@
 ---
 title: 排查 Windows 虚拟桌面服务连接问题 - Azure
 description: 如何解决在 Windows 虚拟桌面租户环境中设置客户端连接时遇到的问题。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 06/19/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 875f39653c5240e3a1b571b531eb2bb08c4811d0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c6d0360a4fe957f43e38fd892cef6b4ab0a2325a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289846"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009369"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows 虚拟桌面服务连接
 
 >[!IMPORTANT]
->此内容适用于 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果使用的是没有 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-service-connection-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-service-connection-2019.md)。
 
 使用本文解决 Windows 虚拟桌面客户端连接问题。
 
@@ -40,7 +38,7 @@ ms.locfileid: "87289846"
 
 3. 如果正在使用 Web 客户端，请确认没有缓存的凭据问题。
 
-4. 如果用户是 Azure Active Directory （AD）用户组的一部分，请确保该用户组是安全组而不是通讯组。 Windows 虚拟桌面不支持 Azure AD 通讯组。
+4. 如果用户是 Azure Active Directory (AD) 用户组的一部分，请确保该用户组是安全组，而不是通讯组。 Windows 虚拟桌面不支持 Azure AD 通讯组。
 
 ## <a name="next-steps"></a>后续步骤
 

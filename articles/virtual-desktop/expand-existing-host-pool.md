@@ -1,24 +1,22 @@
 ---
 title: 利用新的会话主机展开现有的主机池-Azure
 description: 如何使用 Windows 虚拟桌面中的新会话主机扩展现有的主机池。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 69237c2e4404793ce239710407ed10f02bf07d50
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 339fe25a5a75ca8bc5cc0af7c4d96651e90c7eb6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288747"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002447"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>使用新的会话主机展开现有的主机池
 
 >[!IMPORTANT]
->此内容适用于 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果使用的是没有 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/expand-existing-host-pool-2019.md)。
 
 当你在主机池内提高使用率时，可能需要使用新的会话主机扩展现有的主机池以处理新负载。
 
@@ -26,7 +24,7 @@ ms.locfileid: "87288747"
 
 ## <a name="what-you-need-to-expand-the-host-pool"></a>扩展主机池所需的条件
 
-在开始之前，请确保已使用以下方法之一创建了主机池和会话主机虚拟机（Vm）：
+在开始之前，请确保已使用以下方法之一) 创建了主机池和会话主机虚拟机 (Vm：
 
 - [Azure 门户](./create-host-pools-azure-marketplace.md)
 - [使用 PowerShell 创建主机池](./create-host-pools-powershell.md)
@@ -51,7 +49,7 @@ ms.locfileid: "87288747"
 
 5. 选择 " **+ 添加**" 开始创建主机池。
 
-6. 忽略 "基本信息" 选项卡，然后选择 " **VM 详细信息**" 选项卡。可在此处查看和编辑要添加到主机池的虚拟机（VM）的详细信息。
+6. 忽略 "基本信息" 选项卡，然后选择 " **VM 详细信息**" 选项卡。在此处，你可以查看和编辑要添加到主机池的虚拟机 (VM) 的详细信息。
 
 7. 选择要在其下创建 Vm 的资源组，然后选择区域。 您可以选择当前使用的区域或新区域。
 

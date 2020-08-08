@@ -1,24 +1,22 @@
 ---
-title: Windows 虚拟桌面（经典）主机池 Azure 资源管理器-Azure
-description: 如何使用 Azure 资源管理器模板在 Windows 虚拟桌面（经典）中创建主机池。
-services: virtual-desktop
+title: Windows 虚拟桌面 (经典) 主机池 Azure 资源管理器-Azure
+description: 如何使用 Azure 资源管理器模板在 Windows 虚拟桌面 (经典) 中创建主机池。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 88027db54f9b7d4a7ef2ef32d4ea0434d8a26a10
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b9999ae92840d79bb19464216c0f28504011b3f3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87270254"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008315"
 ---
-# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板在 Windows 虚拟桌面（经典）中创建主机池
+# <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板在 Windows 虚拟桌面 (经典) 中创建主机池
 
 >[!IMPORTANT]
->此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。
+>本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。
 
 主机池是 Windows 虚拟桌面租户环境中一个或多个相同虚拟机的集合。 每个主机池可以包含一个应用组，用户可以像在物理桌面上一样与该应用组交互。
 
@@ -46,7 +44,7 @@ ms.locfileid: "87270254"
 
 1. 向下滚动并右键单击“部署到 Azure”，然后选择“复制链接位置”。********
 2. 打开一个文本编辑器（例如记事本）并在其中粘贴该链接。
-3. 紧靠在 " https://portal.azure.com/ " 和井号标签（#）之前，请输入一个 at 符号（@），后跟租户域名。 下面是应使用的格式示例： `https://portal.azure.com/@Contoso.onmicrosoft.com#create/` 。
+3. 紧靠在 " https://portal.azure.com/ " 和井号标签的前面 ( # ) 输入一个 at 符号 ( @ ) 后跟租户域名。 下面是应使用的格式示例： `https://portal.azure.com/@Contoso.onmicrosoft.com#create/` 。
 4. 以对“云解决方案提供商”订阅拥有“管理员/参与者”权限的用户身份登录到 Azure 门户。
 5. 将已复制到文本编辑器的链接粘贴到地址栏中。
 
@@ -70,7 +68,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
 ```
 
-用户的 UPN 应与 Azure Active Directory 中的用户标识匹配（例如， user1@contoso.com ）。 若要添加多个用户，必须针对每个用户运行此 cmdlet。
+用户的 UPN 应与 Azure Active Directory 中的用户标识 (例如， user1@contoso.com) 。 若要添加多个用户，必须针对每个用户运行此 cmdlet。
 
 完成这些步骤后，添加到桌面应用程序组的用户可以使用支持的远程桌面客户端登录到 Windows 虚拟桌面，并且可以看到会话桌面的资源。
 

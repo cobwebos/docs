@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ba03acabb3325045a71d55f583343a26b4d121ca
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 50a7fe866d236a7edb30b3cae5ef076d3ebbca56
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832311"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009709"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>设置 Azure 数字孪生实例和 (CLI 的身份验证) 
 
@@ -24,8 +24,8 @@ ms.locfileid: "87832311"
 * 若要使用 Azure 门户手动完成这些步骤，请参阅本文的门户版本：[*如何：设置实例和身份验证 (门户) *](how-to-set-up-instance-portal.md)。
 * 若要通过使用部署脚本示例的自动安装运行，请参阅本文的脚本编写版本： how [*to： Set a instance and authentication (script) *](how-to-set-up-instance-scripted.md)。
 
-[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
-[!INCLUDE [digital-twins-setup-role-cli.md](../../includes/digital-twins-setup-role-cli.md)]
+[!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="set-up-cloud-shell-session"></a>设置 Cloud Shell 会话
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
@@ -63,7 +63,7 @@ az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-res
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-使用以下命令分配角色 (必须由 Azure 订阅) 的所有者运行：
+使用以下命令分配角色 (必须由在 Azure 订阅中具有[足够权限](#prerequisites-permission-requirements)的用户运行) ：
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-email-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"

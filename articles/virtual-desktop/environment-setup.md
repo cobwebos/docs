@@ -1,24 +1,22 @@
 ---
 title: Windows 虚拟桌面环境-Azure
 description: 了解 Windows 虚拟桌面环境的基本元素，例如主机池和应用组。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e382c1d52130d44479e94378da895c6add7ba3ee
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 99a07dd1791b539ea44fcbab250aa9c227ee1705
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283412"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002605"
 ---
 # <a name="windows-virtual-desktop-environment"></a>Windows 虚拟桌面环境
 
 >[!IMPORTANT]
->此内容适用于 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果使用的是没有 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/environment-setup-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/environment-setup-2019.md)。
 
 Windows 虚拟桌面是一种服务，使用户能够轻松安全地访问其虚拟化桌面和 RemoteApps。 本主题将详细介绍 Windows 虚拟桌面环境的一般结构。
 
@@ -40,7 +38,7 @@ Windows 虚拟桌面是一种服务，使用户能够轻松安全地访问其虚
 - RemoteApp，用户可在其中访问单独选择并发布到应用组的 RemoteApps
 - 桌面，用户在其中访问完整桌面
 
-默认情况下，当你创建主机池时，将自动创建一个桌面应用组（名为 "桌面应用程序组"）。 你可以随时删除此应用组。 但是，如果存在桌面应用组，则无法在主机池中创建另一个桌面应用组。 若要发布 RemoteApps，必须创建 RemoteApp 应用组。 可以创建多个 RemoteApp 应用组来适应不同的辅助角色。 不同的 RemoteApp 应用组还可以包含重叠的 RemoteApps。
+默认情况下，在创建主机池时，将自动创建一个名为 "桌面应用程序组" )  (桌面应用组。 你可以随时删除此应用组。 但是，如果存在桌面应用组，则无法在主机池中创建另一个桌面应用组。 若要发布 RemoteApps，必须创建 RemoteApp 应用组。 可以创建多个 RemoteApp 应用组来适应不同的辅助角色。 不同的 RemoteApp 应用组还可以包含重叠的 RemoteApps。
 
 若要将资源发布到用户，你必须将其分配给应用组。 将用户分配到应用组时，请考虑以下事项：
 
@@ -49,7 +47,7 @@ Windows 虚拟桌面是一种服务，使用户能够轻松安全地访问其虚
 
 ## <a name="workspaces"></a>工作区
 
-工作区是 Windows 虚拟桌面中的应用程序组的逻辑分组。 每个 Windows 虚拟桌面应用程序组必须与一个工作区关联，用户才能查看向其发布的远程应用和桌面。  
+工作区是 Windows 虚拟桌面中的应用程序组的逻辑分组。 每个 Windows 虚拟桌面应用程序组必须与一个工作区关联，用户才能查看向其发布的远程应用和桌面。
 
 ## <a name="end-users"></a>最终用户
 

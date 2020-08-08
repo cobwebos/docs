@@ -1,24 +1,22 @@
 ---
 title: 在 Windows 虚拟桌面中发布内置应用程序-Azure
 description: 如何在 Windows 虚拟桌面中发布内置应用。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ad2dd398e5eddd7cbb56b4f293a8a67a0df85316
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b088f1f58e26dca854c17b0765607ebe76017dfe
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291384"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009488"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>在 Windows 虚拟桌面中发布内置应用
 
 >[!IMPORTANT]
->此内容适用于 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果使用的是没有 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/publish-apps-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/publish-apps-2019.md)。
 
 本文将介绍如何在 Windows 虚拟桌面环境中发布应用。
 

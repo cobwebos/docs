@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: ad0079a0a48178f1e662e2fdf1daa685ae768857
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 47f33d8b1a7792487491cbe7f2ddb5c7f5b087af
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87024180"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002982"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>教程：将 SQL 托管实例添加到故障转移组
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "87024180"
   > [!NOTE]
   > - 学习本教程时，请确保按照[为 SQL 托管实例设置故障转移组的先决条件](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets)来配置资源。 
   > - 创建托管实例可能需要花费很长时间。 因此，本教程可能需要几个小时才能完成。 要详细了解预配时间，请参阅 [SQL 托管实例管理操作](sql-managed-instance-paas-overview.md#management-operations)。 
-  > - 参与故障转移组的托管实例需要 [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 或两个连接的 VPN 网关。 本教程提供创建和连接 VPN 网关的步骤。 如果已配置 ExpressRoute，请跳过这些步骤。 
+  > - 参与故障转移组的托管实例需要 [Azure ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 或两个连接的 VPN 网关。 不支持全局 VNet 对等互连。 本教程提供创建和连接 VPN 网关的步骤。 如果已配置 ExpressRoute，请跳过这些步骤。 
 
 
 ## <a name="prerequisites"></a>先决条件
@@ -57,7 +57,7 @@ ms.locfileid: "87024180"
 此步骤将使用 Azure 门户或 PowerShell 为故障转移组创建资源组和主托管实例。 
 
 
-# <a name="portal"></a>[门户](#tab/azure-portal) 
+# <a name="portal"></a>[Portal](#tab/azure-portal) 
 
 使用 Azure 门户创建资源组和主托管实例。 
 
@@ -384,7 +384,7 @@ ms.locfileid: "87024180"
 
 本教程部分使用以下 PowerShell cmdlet：
 
-| 命令 | 注释 |
+| 命令 | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建 Azure 资源组。  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 创建虚拟网络。  |
@@ -451,7 +451,7 @@ ms.locfileid: "87024180"
 - 是空的。 
 - 与主托管实例的子网和 IP 范围不同。 
 
-# <a name="portal"></a>[门户](#tab/azure-portal) 
+# <a name="portal"></a>[Portal](#tab/azure-portal) 
 
 使用 Azure 门户创建辅助托管实例。 
 
@@ -714,7 +714,7 @@ ms.locfileid: "87024180"
 
 本教程部分使用以下 PowerShell cmdlet：
 
-| 命令 | 注释 |
+| 命令 | 说明 |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | 创建 Azure 资源组。  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | 创建虚拟网络。  |
@@ -815,7 +815,7 @@ ms.locfileid: "87024180"
    $primaryGateway
    ```
 
-本教程的此部分使用以下 PowerShell cmdlet：
+本教程部分使用以下 PowerShell cmdlet：
 
 | 命令 | 注释 |
 |---|---|
@@ -1003,7 +1003,7 @@ ms.locfileid: "87024180"
    $failoverGroup
    ```
 
-本教程的此部分使用以下 PowerShell cmdlet：
+本教程部分使用以下 PowerShell cmdlet：
 
 | 命令 | 注释 |
 |---|---|

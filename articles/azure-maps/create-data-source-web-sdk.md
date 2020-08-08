@@ -1,6 +1,6 @@
 ---
 title: 为地图创建数据源 |Microsoft Azure 映射
-description: 在本文中，你将了解如何创建数据源，并使用 Microsoft Azure map Web SDK 将其添加到地图中。
+description: 了解如何为地图创建数据源。 了解 Azure Maps Web SDK 使用的数据源： GeoJSON 源和矢量图块。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 4f51afbcf50939d762b1b5d32d6204ccfbb9a62d
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: fea2c4fab51db59c9159853e9b0bdaec0bcdbb56
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87551670"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009080"
 ---
 # <a name="create-a-data-source"></a>创建数据源
 

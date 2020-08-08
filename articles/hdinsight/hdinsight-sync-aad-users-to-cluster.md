@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: 5b2a195e0a3145e97bf101b3354c2781fff15801
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 83e168c5f1d1bad58a193937a4b97fe686dde2a3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86085967"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004415"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>将 Azure Active Directory 用户同步到 HDInsight 群集
 
-[使用企业安全性套餐 (ESP) 的 HDInsight 群集](hdinsight-domain-joined-introduction.md)可对 Azure Active Directory (Azure AD) 用户使用强身份验证，还可使用基于角色的访问控制** (RBAC) 策略。 将用户和组添加到 Azure AD 时，可以同步需要访问群集的用户。
+[具有企业安全性套餐 (ESP) 的 HDInsight 群集](hdinsight-domain-joined-introduction.md)可以使用强身份验证与 Azure Active Directory (Azure AD) 用户一起使用，并使用*azure RBAC (策略) 基于角色的访问控制*。 将用户和组添加到 Azure AD 时，可以同步需要访问群集的用户。
 
 ## <a name="prerequisites"></a>先决条件
 

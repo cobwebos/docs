@@ -1,23 +1,21 @@
 ---
-title: 为 Windows 虚拟桌面配置 GPU （经典）-Azure
-description: 如何在 Windows 虚拟桌面（经典）中启用 GPU 加速呈现和编码。
-services: virtual-desktop
+title: 为 Windows 虚拟桌面 (经典) 配置 GPU-Azure
+description: 如何在 Windows 虚拟桌面 (经典) 中启用 GPU 加速呈现和编码。
 author: gundarev
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: denisgun
-ms.openlocfilehash: e6c8fe95508937604c53d817d60dd637352fb6fa
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 32d5c280e80b2f21b30bb34a182070da51e21026
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288688"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008485"
 ---
-# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-classic"></a>配置 Windows 虚拟桌面的图形处理单元（GPU）加速（经典）
+# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-classic"></a>为 Windows 虚拟桌面 (经典) 配置图形处理单元 (GPU) 加速
 
 >[!IMPORTANT]
->此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。 如果尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../configure-vm-gpu.md)。
+>本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../configure-vm-gpu.md)。
 
 Windows 虚拟桌面支持用于提高应用性能和可伸缩性的 GPU 加速渲染和编码。 GPU 加速对于图形密集型应用尤其重要。
 

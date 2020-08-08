@@ -1,19 +1,17 @@
 ---
 title: Windows 虚拟桌面安全 URL 列表-Azure
 description: 你应取消阻止的 Url 的列表，以确保你的 Windows 虚拟桌面部署按预期工作。
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9f7a3b51afa11562123a280da8634e100a22e6b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9ac147eec7004f109687a6bb0888e25d0db84448
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075612"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009471"
 ---
 # <a name="safe-url-list"></a>安全 URL 列表
 
@@ -44,13 +42,13 @@ ms.locfileid: "87075612"
 
 |地址|出站 TCP 端口|目的|服务标记|
 |---|---|---|---|
-|*.microsoftonline.com|443|向 Microsoft Online Services 进行身份验证|None|
-|*.events.data.microsoft.com|443|遥测服务|None|
-|www.msftconnecttest.com|443|检测 OS 是否已连接到 Internet|None|
-|*.prod.do.dsp.mp.microsoft.com|443|Windows 更新|None|
+|*.microsoftonline.com|443|向 Microsoft Online Services 进行身份验证|无|
+|*.events.data.microsoft.com|443|遥测服务|无|
+|www.msftconnecttest.com|443|检测 OS 是否已连接到 Internet|无|
+|*.prod.do.dsp.mp.microsoft.com|443|Windows 更新|无|
 |login.windows.net|443|登录到 Microsoft 365 等 Microsoft Online Services|无|
 |*.sfx.ms|443|OneDrive 客户端软件更新|无|
-|*.digicert.com|443|证书吊销检查|None|
+|*.digicert.com|443|证书吊销检查|无|
 
 >[!NOTE]
 >Windows 虚拟桌面当前没有 IP 地址范围的列表，你可以取消阻止这些 IP 地址范围以允许网络流量。 目前仅支持取消阻止特定的 Url。
@@ -69,11 +67,11 @@ ms.locfileid: "87075612"
 
 |地址|出站 TCP 端口|目的|客户端|
 |---|---|---|---|
-|*.wvd.microsoft.com|443|服务流量|全部|
-|*.servicebus.windows.net|443|排查数据问题|全部|
-|go.microsoft.com|443|Microsoft FWLink|全部|
-|aka.ms|443|Microsoft URL 缩短符|全部|
-|docs.microsoft.com|443|文档|全部|
+|*.wvd.microsoft.com|443|服务流量|All|
+|*.servicebus.windows.net|443|排查数据问题|All|
+|go.microsoft.com|443|Microsoft FWLink|All|
+|aka.ms|443|Microsoft URL 缩短符|All|
+|docs.microsoft.com|443|文档|All|
 |privacy.microsoft.com|443|隐私声明|All|
 |query.prod.cms.rt.microsoft.com|443|客户端更新|Windows 桌面|
 

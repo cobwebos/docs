@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: d26861c9d3a98c219389cde76ecd30c3d58da4c3
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e066f810dca9c1b824c5eb30bb9f938df856a819
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902127"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002698"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -116,14 +116,14 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **Montreal** | [Cologix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | 不适用 | 10G，100G | Bell Canada、Cologix、Megaport、Telus、Zayo |
 | **Mumbai** | Tata Communications | 2 | 印度西部 | 10G | CIX、Global CloudXchange (GCX) 、依赖 Jio、Sify、Tata 通信、Verizon |
 | **孟买 2** | Airtel | 2 | 印度西部 | 不适用 | Airtel、Sify、Vodafone Idea |
-| **慕尼黑** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/) | 1 | 不适用 | 10G | DE-CIX |
+| **慕尼黑** | [EdgeConneX](https://www.edgeconnex.com/locations/europe/munich/) | 1 | 不适用 | 10G | DE-CIX |
 | **纽约** | [Equinix NY9](https://www.equinix.com/locations/americas-colocation/united-states-colocation/new-york-data-centers/ny9/) | 1 | 不适用 | 10G，100G | CenturyLink Cloud Connect、Colt、Coresite、CIX、Equinix、InterCloud、Megaport、Packet、Zayo |
 | **Newport(Wales)** | [Next Generation Data](https://www.nextgenerationdata.co.uk) | 1 | 英国西部 | 不适用 | British Telecom、Colt、Level 3 Communications、Next Generation Data |
 | **大阪** | [Equinix OS1](https://www.equinix.com/locations/asia-colocation/japan-colocation/osaka-data-centers/os1/) | 2 | 日本西部 | 10G，100G | 东京，Colt，Equinix，Internet 计划日本 Inc.-IIJ，Megaport，NTT 通信，NTT SmartConnect，Softbank |
 | **奥斯陆** | [DigiPlex Ulven](https://www.digiplex.com/locations/oslo-datacentre) | 1 | 挪威东部 | 10G，100G | Global Connect、Megaport、Telenor、Telia 载波 |
 | **巴黎** | [Interxion PAR5](https://www.interxion.com/Locations/paris/) | 1 | 法国中部 | 10G，100G | CenturyLink Cloud Connect、Colt、Equinix、Intercloud、Interxion、Orange、Telia Carrier、Zayo |
 | **珀斯** | [NextDC P1](https://www.nextdc.com/data-centres/p1-perth-data-centre) | 2 | 不适用 | 10G | Megaport、NextDC |
-| **Phoenix** | [EdgeConnext PHX01](https://www.edgeconnex.com/locations/north-america/phoenix-az/) | 1 | 不适用 | 10G | |
+| **Phoenix** | [EdgeConneX PHX01](https://www.edgeconnex.com/locations/north-america/phoenix-az/) | 1 | 不适用 | 10G | |
 | **魁北克市** | [Vantage](https://vantage-dc.com/data_centers/quebec-city-data-center-campus/) | 1 | 加拿大东部 | 不适用 | Bell Canada、Megaport |
 | **Queretaro (墨西哥) ** | [KIO Networks QR01](https://www.kionetworks.com/es-mx/) | 4 | 不适用 | 10G | Transtelco|
 | **Quincy** | [Sabey 数据中心-构建](https://sabeydatacenters.com/data-center-locations/central-washington-data-centers/quincy-data-center) | 1 | 美国西部 2 | 10G，100G | | 

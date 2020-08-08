@@ -1,19 +1,17 @@
 ---
 title: 远程桌面客户端 Windows 虚拟桌面故障排除-Azure
 description: 如何解决在 Windows 虚拟桌面租户环境中设置客户端连接时遇到的问题。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f91e68ec2bd4b0b5400ee3e8e380d91ea6f31f36
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6ac2eb2632ad96538e965e4d1057d7e4a116c05d
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291319"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009386"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>远程桌面客户端疑难解答
 
@@ -64,7 +62,7 @@ nslookup rdweb.wvd.microsoft.com
 
 首先，请检查正在使用的 Azure Active Directory 帐户。 如果你已使用与你要用于 Windows 虚拟桌面的帐户 Azure Active Directory 不同的帐户登录，则应使用专用浏览器窗口进行签名。
 
-如果使用的是 Windows 虚拟桌面（经典），请使用[本文](./virtual-desktop-fall-2019/connect-web-2019.md)中的 web 客户端链接连接到资源。
+如果使用的是 Windows 虚拟桌面 (经典) ，请使用[本文](./virtual-desktop-fall-2019/connect-web-2019.md)中的 web 客户端链接连接到资源。
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>Web 客户端停止响应或断开连接
 

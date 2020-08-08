@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.openlocfilehash: 0dbcbd173ce0a7c4c6a123f0644b870aa3cec2f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d00a6b7753a61bb2527a56231b2fe054736f1b0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85829884"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008570"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>使用模板创建 Azure Redis 缓存
 
@@ -26,7 +26,7 @@ ms.locfileid: "85829884"
 有关完整的模板，请参阅 [Azure Redis 缓存模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json)。
 
 > [!NOTE]
-> 适用于新[高级层](cache-premium-tier-intro.md)的 Resource Manager 模板现已推出。 
+> 适用于新[高级层](cache-overview.md#service-tiers)的 Resource Manager 模板现已推出。 
 > 
 > * [通过群集创建高级 Azure Redis 缓存](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
 > * [通过数据暂留创建高级 Azure Redis 缓存](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)

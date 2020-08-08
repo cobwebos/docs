@@ -1,24 +1,22 @@
 ---
 title: Windows 虚拟桌面 PowerShell-Azure
 description: 如何在设置 Windows 虚拟桌面环境时排查 PowerShell 问题。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cd34fa2bc4c1083d4bd4dda7d118e0348a1a7fd0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 03b6da1d35247749d8ec2c6459c8ddee69bfccb6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288724"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002271"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows 虚拟桌面 PowerShell
 
 >[!IMPORTANT]
->此内容适用于 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果使用的是没有 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/troubleshoot-powershell-2019.md)。
 
 本文介绍了在 Windows 虚拟桌面中使用 PowerShell 时的错误和问题。 有关远程桌面服务 PowerShell 的详细信息，请参阅[Windows 虚拟桌面 PowerShell](/powershell/module/windowsvirtualdesktop/)。
 
@@ -33,20 +31,20 @@ ms.locfileid: "87288724"
 ### <a name="error-new-azroleassignment-the-provided-information-does-not-map-to-an-ad-object-id"></a>错误： AzRoleAssignment：提供的信息未映射到 AD 对象 ID
 
 ```powershell
-New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
-**原因：** 在绑定到 Windows 虚拟桌面环境的 Azure Active Directory 中找不到由 *-SignInName*参数指定的用户。 
+**原因：** 在绑定到 Windows 虚拟桌面环境的 Azure Active Directory 中找不到由 *-SignInName*参数指定的用户。
 
 **修复：** 请确保以下各项。
 
 - 应将用户同步到 Azure Active Directory。
-- 该用户不应与企业到消费者（B2C）或企业对企业（B2B）的商业客户联系。
+- 用户不应与企业到消费者 (B2C) 或企业到企业 (B2B) 商务关联。
 - Windows 虚拟桌面环境应绑定到正确的 Azure Active Directory。
 
-### <a name="error-new-azroleassignment-the-client-with-object-id-does-not-have-authorization-to-perform-action-over-scope-code-authorizationfailed"></a>错误： AzRoleAssignment： "具有对象 id 的客户端无权对作用域执行操作（代码： AuthorizationFailed）"
+### <a name="error-new-azroleassignment-the-client-with-object-id-does-not-have-authorization-to-perform-action-over-scope-code-authorizationfailed"></a>错误： AzRoleAssignment： "具有对象 id 的客户端无权对作用域执行操作 (代码： AuthorizationFailed) "
 
-**原因1：** 正在使用的帐户不具有对订阅的所有者权限。 
+**原因1：** 正在使用的帐户不具有对订阅的所有者权限。
 
 **修复1：** 具有所有者权限的用户需要执行角色分配。 或者，需要将用户分配到 "用户访问管理员" 角色，以将用户分配到应用程序组。
 
@@ -57,7 +55,7 @@ New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Deskt
 ### <a name="error-new-azwvdhostpool----the-location-is-not-available-for-resource-type"></a>错误： AzWvdHostPool--位置不可用于资源类型
 
 ```powershell
-New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'. 
+New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'.
 ```
 
 原因： Windows 虚拟桌面支持选择主机池、应用程序组和工作区的位置，以将服务元数据存储在某些位置。 你的选项仅限于此功能可用的位置。 此错误表示该功能在所选位置中不可用。

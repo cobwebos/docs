@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 27fbc669a81364bcb71160200504d61502169eae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6902d1420090b81c933f07f7e929aa86c052404
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609344"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009233"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 认知技能
 
-**光学字符识别 (OCR)** 技能可识别图像文件中的印刷体文本和手写文本。 此技能使用认知服务中的[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)提供的机器学习模型。 **OCR** 技能将映射到以下功能：
+**光学字符识别 (OCR)** 技能可识别图像文件中的印刷体文本和手写文本。 这[项技能使用的机器](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)学习模型由认知服务[计算机视觉](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)API v4.0 提供。 **OCR** 技能将映射到以下功能：
 
-+ [“OCR”](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-api)API 用于英语以外的其他语言。 
-+ 对于英语，使用新的[“Read”](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api)API。
++ 对于英语、西班牙语、德语、法语、意大利语、葡萄牙语和荷兰语，将使用新的["读取"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API。
++ 对于所有其他语言，将使用["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-api) API。
 
 OCR  技能可以从图像文件中提取文本。 支持的文件格式包括：
 
@@ -44,14 +44,14 @@ OCR  技能可以从图像文件中提取文本。 支持的文件格式包括�
 | 参数名称     | 说明 |
 |--------------------|-------------|
 | `detectOrientation`   | 启用图像方向自动检测。 <br/> 有效值：true / false。|
-| `defaultLanguageCode` | <p>   输入文本的语言代码。 支持的语言包括： <br/> zh-Hans（中文简体） <br/> zh-Hant（中文繁体） <br/>cs（捷克语） <br/>da（丹麦语） <br/>nl（荷兰语） <br/>en（英语） <br/>fi（芬兰语）  <br/>fr（法语） <br/>  de（德语） <br/>el（希腊语） <br/> hu（匈牙利） <br/> it（意大利语） <br/>  ja（日语） <br/> ko（韩语） <br/> nb（挪威语） <br/>   pl（波兰语） <br/> pt（葡萄牙语） <br/>  ru（俄语） <br/>  es（西班牙语） <br/>  sv（瑞典语） <br/>  tr（土耳其语） <br/> ar（阿拉伯语） <br/> ro（罗马尼亚语） <br/> sr-Cyrl（塞尔维亚语西里尔文） <br/> sr-Latn（塞尔维亚语拉丁语） <br/>  sk （斯洛伐克语） <br/>  unk（未知） <br/><br/> 如果语言代码未指定或为 null，则语言将设置为英语。 如果语言显式设置为“unk”，则将自动检测语言。 </p> |
-| `lineEnding` | 要在各个检测到的行之间使用的值。 可能的值： "Space"、"CarriageReturn"、"换行"。  默认值为 "Space"。 |
+| `defaultLanguageCode` | <p>   输入文本的语言代码。 支持的语言包括： <br/> zh-Hans（中文简体） <br/> zh-Hant（中文繁体） <br/>cs（捷克语） <br/>da（丹麦语） <br/>nl（荷兰语） <br/>en（英语） <br/>fi（芬兰语）  <br/>fr（法语） <br/>  de（德语） <br/>el（希腊语） <br/> hu（匈牙利） <br/> it（意大利语） <br/>  ja（日语） <br/> ko（韩语） <br/> nb（挪威语） <br/>   pl（波兰语） <br/> pt（葡萄牙语） <br/>  ru（俄语） <br/>  es（西班牙语） <br/>  sv（瑞典语） <br/>  tr（土耳其语） <br/> ar（阿拉伯语） <br/> ro（罗马尼亚语） <br/> sr-Cyrl（塞尔维亚语西里尔文） <br/> sr-Latn（塞尔维亚语拉丁语） <br/>  sk（斯洛伐克语） <br/>  unk（未知） <br/><br/> 如果语言代码未指定或为 null，则语言将设置为英语。 如果语言显式设置为“unk”，则将自动检测语言。 </p> |
+| `lineEnding` | 要在各个检测到的行之间使用的值。 可能的值：“Space”、“CarriageReturn”、“LineFeed”。  默认值为“Space”。 |
 
 以前，有一个名为“textExtractionAlgorithm”的参数，用于指定技能是提取“印刷”文本还是“手写”文本。  此参数已弃用，不再需要，因为最新的 Read API 算法能够同时提取这两种类型的文本。  如果技能定义已经包含此参数，则无需删除它，但是将不再使用它，并且无论将它设置为什么内容，将来都会提取这两种类型的文本。
 
 ## <a name="skill-inputs"></a>技能输入
 
-| 输入名称      | 描述                                          |
+| 输入名称      | 说明                                          |
 |---------------|------------------------------------------------------|
 | `image`         | 复杂类型。 当前仅适用于“/document/normalized_images”字段，当 ```imageAction``` 设置为非 ```none``` 值时由 Azure Blob 索引器生成。 请参阅[此示例](#sample-output)获取详细信息。|
 
@@ -194,7 +194,7 @@ OCR  技能可以从图像文件中提取文本。 支持的文件格式包括�
   ]
 }
 ```
-以上技能集示例假设存在标准化的图像字段。 要生成此字段，请将索引器定义中的 imageAction** 配置设置为 generateNormalizedImages**，如下所示：
+以上技能集示例假设存在标准化的图像字段。 要生成此字段，请将索引器定义中的 imageAction 配置设置为 generateNormalizedImages，如下所示：
 
 ```json
 {

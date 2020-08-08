@@ -1,24 +1,22 @@
 ---
-title: 部署适用于 Windows 虚拟桌面的诊断工具（经典）-Azure
-description: 如何部署适用于 Windows 虚拟桌面的诊断 UX 工具（经典）。
-services: virtual-desktop
+title: 部署适用于 Windows 虚拟桌面 (经典) 的诊断工具-Azure
+description: 如何为 Windows 虚拟桌面 (经典) 部署诊断 UX 工具。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bf05d495442a39b42fddf5f373fb2616bf0c6fbe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c456f7e82bb605909f31b35cdd838145900396e2
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285095"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009182"
 ---
-# <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>部署 Windows 虚拟桌面（经典）诊断工具
+# <a name="deploy-the-windows-virtual-desktop-classic-diagnostics-tool"></a>部署 Windows 虚拟桌面 (经典) 诊断工具
 
 >[!IMPORTANT]
->此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。
+>本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。
 
 >[!IMPORTANT]
 >从2020年3月16日起，我们暂时禁用了影响用户体验的诊断查询，这是因为增加了对服务的需求。 这将导致工具停止工作，因为它依赖于这些查询才能运行。 当诊断查询再次可用时，我们将更新本文。
@@ -27,14 +25,14 @@ ms.locfileid: "87285095"
 
 Windows 虚拟桌面的诊断工具可为你实现以下目的：
 
-- 在一周内查找单个用户的诊断活动（管理、连接或源）。
+- 在一周内查找单个用户的诊断活动 (管理、连接或源) 。
 - 从 Log Analytics 工作区收集连接活动的会话主机信息。
-- 查看特定主机的虚拟机（VM）性能详细信息。
+- 查看虚拟机 (VM) 特定主机的性能详细信息。
 - 查看哪些用户登录到了会话主机。
 - 向特定会话主机上的活动用户发送消息。
 - 将用户登录到会话主机。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 你需要创建 Azure Active Directory 应用注册和 Log Analytics 工作区，然后才能部署该工具的 Azure 资源管理器模板。 你或管理员需要这些权限才能执行此操作：
 
@@ -117,11 +115,11 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 3. 在 "**设置**" 部分，选择 "**高级设置**"。
 4. 然后，导航到 "**数据**" "  >  **Windows 性能计数器**"，并添加以下计数器：
 
-    -   逻辑磁盘（ \* ） \\ % 可用空间
-    -   逻辑磁盘（C：） \\ Avg. Disk Queue Length
-    -   内存（ \* ） \\ 可用兆字节
-    -   处理器信息（ \* ） \\ 处理器时间
-    -   每个会话的用户输入延迟（ \* ） \\ 最大输入延迟
+    -   逻辑磁盘 (\*) \\ 可用空间（%）
+    -   逻辑磁盘 (C： ) \\ 平均磁盘队列长度
+    -   内存 (\*) \\ 可用兆字节
+    -   处理器信息 (\*) \\ 处理器时间
+    -   每个会话 (的用户输入延迟 \*) \\ 最大输入延迟
 
 [在 Azure Monitor 中了解有关 Windows 和 Linux 性能数据源](/azure/azure-monitor/platform/data-sources-performance-counters)的性能计数器的详细信息。
 
@@ -150,11 +148,11 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 3. 之后，请跳到**数据**  >  **Windows 性能计数器**。
 4. 请确保预配置了以下计数器：
 
-   - 逻辑磁盘（ \* ） \\ % Free Space：显示磁盘上总可用空间的可用空间量（以百分比表示）。
-   - 逻辑磁盘（C：） \\ Avg. Disk Queue length： C 驱动器的磁盘传输请求的长度。 该值不应超过一小段时间的2。
-   - 内存（ \* ） \\ 可用兆字节数：系统的可用内存（mb）。
-   - 处理器信息（ \* ） \\ 处理器时间：处理器执行非空闲线程所用时间的百分比。
-   - 每个会话的用户输入延迟（ \* ） \\ 最大输入延迟
+   - 逻辑磁盘 (\*) \\ % 可用空间：显示磁盘上总可用空间的可用空间量（以百分比表示）。
+   - 逻辑磁盘 (C： ) \\ Avg. Disk Queue length： C 驱动器的磁盘传输请求的长度。 该值不应超过一小段时间的2。
+   - 内存 (\*) \\ 可用 mb：系统的可用内存（mb）。
+   - 处理器信息 (\*) \\ 处理器时间：处理器执行非空闲线程所用时间的百分比。
+   - 每个会话 (的用户输入延迟 \*) \\ 最大输入延迟
 
 ### <a name="connect-to-vms-in-your-log-analytics-workspace"></a>连接到 Log Analytics 工作区中的 Vm
 
@@ -164,7 +162,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 2. 中转到 Log Analytics 工作区。
 3. 在左侧面板的 "工作区数据源" 下，选择 "**虚拟机**"。
 4. 选择要连接到的 VM 的名称。
-5. 选择“连接”。
+5. 选择“**连接**”。
 
 ## <a name="deploy-the-diagnostics-tool"></a>部署诊断工具
 
@@ -198,7 +196,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
    > [!div class="mx-imgBorder"]
    > !["重定向 URI" 页](../media/redirect-uri-page.png)
 
-8. 现在，请转到 Azure 资源，选择具有你在模板中提供的名称的 "Azure 应用服务" 资源，并导航到与其关联的 URL。 （例如，如果在模板中使用的应用名称为，则 `contosoapp45` 关联的 URL 为 <https://contosoapp45.azurewebsites.net> ）。
+8. 现在，请转到 Azure 资源，选择具有你在模板中提供的名称的 "Azure 应用服务" 资源，并导航到与其关联的 URL。  (例如，如果在模板中使用的应用名称为，则 `contosoapp45` 关联的 URL 是) 的 <https://contosoapp45.azurewebsites.net> 。
 9. 使用相应的 Azure Active Directory 用户帐户登录。
 10.   选择“接受”。
 
@@ -207,7 +205,7 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 在使诊断工具可供用户使用之前，请确保他们具有以下权限：
 
 - 用户需要 log analytics 的读取访问权限。 有关详细信息，请参阅[Azure Monitor 的角色、权限和安全入门](/azure/azure-monitor/platform/roles-permissions-security)。
--  用户还需要对 Windows 虚拟桌面租户（RDS 读取者角色）具有读取权限。 有关详细信息，请参阅[Windows 虚拟桌面中的委托访问](delegated-access-virtual-desktop-2019.md)。
+-  用户还需要对 Windows 虚拟桌面租户的 "读取" 访问权限 ("RDS 读取器角色") 。 有关详细信息，请参阅[Windows 虚拟桌面中的委托访问](delegated-access-virtual-desktop-2019.md)。
 
 还需要为用户指定以下信息：
 
@@ -243,26 +241,26 @@ Windows 虚拟桌面的诊断工具可为你实现以下目的：
 
 ### <a name="windows-performance-counter-thresholds"></a>Windows 性能计数器阈值
 
-- 逻辑磁盘（ \* ） \\ % 可用空间：
+- 逻辑磁盘 (\*) \\ 可用空间（%）：
 
     - 显示逻辑磁盘上可用的总可用空间的百分比。
     - 阈值：小于20% 被标记为不正常。
 
-- 逻辑磁盘（C：） \\ Avg. Disk Queue Length：
+- 逻辑磁盘 (C： ) \\ Avg. Disk Queue Length：
 
     - 表示存储系统条件。
     - 阈值：大于5会被标记为不正常。
 
-- 内存（ \* ） \\ 可用兆字节：
+- 内存 (\*) \\ 可用 mb：
 
     - 系统的可用内存。
     - 阈值：标记为不正常的小于 500 mb。
 
-- 处理器信息（ \* ） \\ 处理器时间：
+- 处理器信息 (\*) \\ 处理器时间：
 
     - 阈值：大于80% 将被标记为不正常。
 
-- [每个会话的用户输入延迟（ \* ） \\ 最大输入延迟](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/)：
+- [每个会话 (的用户输入延迟 \*) \\ 最大输入延迟](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/)：
 
     - 阈值：大于 2000 ms 被标记为不正常。
 

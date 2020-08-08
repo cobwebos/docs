@@ -1,23 +1,21 @@
 ---
 title: 诊断图形性能问题远程桌面-Azure
 description: 本文介绍如何使用远程桌面协议会话中的 RemoteFX 图形计数器诊断 Windows 虚拟桌面中图形的性能问题。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 84cee86dbddff77f6142925eec01889cf793a466
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dc5c6499fa47a1e32a517032d5cc2a97b3f2677f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79127552"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007160"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>诊断远程桌面中的图形性能问题
 
-若要诊断远程会话的体验质量问题，请在性能监视器的 "RemoteFX 图形" 部分下提供计数器。 本文可帮助你在使用这些计数器的远程桌面协议（RDP）会话期间查找并修复与图形相关的性能瓶颈。
+若要诊断远程会话的体验质量问题，请在性能监视器的 "RemoteFX 图形" 部分下提供计数器。 本文可帮助你查找并修复使用这些计数器在远程桌面协议 (RDP) 会话期间的图形相关性能瓶颈。
 
 ## <a name="find-your-remote-session-name"></a>查找远程会话名称
 
@@ -25,8 +23,8 @@ ms.locfileid: "79127552"
 
 1. 从远程会话打开 Windows 命令提示符。
 2. 运行**qwinsta**命令并找到你的会话名称。
-    - 如果你的会话托管在多会话虚拟机（VM）中：每个计数器的实例的后缀等于你的会话名称的后缀，如 "rdp-tcp 37"。
-    - 如果会话托管在支持虚拟图形处理单元（vGPU）的 VM 中，则每个计数器的实例存储在服务器上而不是 VM 中。 计数器实例包含 VM 名称，而不是会话名称中的数字，如 "Win8 Enterprise VM"。
+    - 如果你的会话托管在多会话虚拟机中 (VM) ：每个计数器的实例的后缀等于你的会话名称的后缀，如 "rdp-tcp 37"。
+    - 如果会话承载于支持虚拟图形处理单元的 VM (vGPU) ：每个计数器的实例存储在服务器上而不是 VM 中。 计数器实例包含 VM 名称，而不是会话名称中的数字，如 "Win8 Enterprise VM"。
 
 >[!NOTE]
 > 虽然计数器在其名称中具有 RemoteFX，但它们也包含 vGPU 方案中的远程桌面图形。
@@ -62,13 +60,13 @@ ms.locfileid: "79127552"
 
 有三种类型的帧跳过/秒计数器：
 
-- 每秒跳过的帧数（服务器资源不足）
-- 每秒跳过的帧数（网络资源不足）
-- 每秒跳过的帧数（客户端资源不足）
+- 跳过的帧数/秒 (服务器资源不足) 
+- 每秒跳过的帧数 (网络资源不足) 
+- 跳过的帧数/秒 (的客户端资源不足) 
 
-"跳过的帧数/秒" 计数器的值太大，这意味着问题与计数器跟踪的资源相关。 例如，如果客户端没有以服务器提供框架的相同速率对帧进行解码和呈现，则跳过的帧数/秒（客户端资源不足）计数器将会很高。
+"跳过的帧数/秒" 计数器的值太大，这意味着问题与计数器跟踪的资源相关。 例如，如果客户端没有以服务器提供框架的相同速率对帧进行解码和呈现，则跳过的帧数/秒 (没有足够的客户端资源) 计数器会很高。
 
-如果输出帧/秒计数器与输入帧/秒计数器匹配，但仍注意到异常延迟或停止，则平均编码时间可能是原因。 编码是在单会话（vGPU）方案中的服务器上和多会话方案中的 VM 上发生的同步过程。 平均编码时间应小于33毫秒。 如果平均编码时间低于33毫秒，但仍存在性能问题，则您正在使用的应用或操作系统可能存在问题。
+如果输出帧/秒计数器与输入帧/秒计数器匹配，但仍注意到异常延迟或停止，则平均编码时间可能是原因。 编码是在单一会话 (vGPU) 情况下的服务器上和多会话方案中的 VM 上发生的同步过程。 平均编码时间应小于33毫秒。 如果平均编码时间低于33毫秒，但仍存在性能问题，则您正在使用的应用或操作系统可能存在问题。
 
 有关诊断与应用相关的问题的详细信息，请参阅[用户输入延迟性能计数器](/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters/)。
 
@@ -102,6 +100,6 @@ ms.locfileid: "79127552"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要创建 GPU 优化的 Azure 虚拟机，请参阅[配置 Windows 虚拟桌面环境的图形处理单元（GPU）加速](configure-vm-gpu.md)。
+- 若要创建 GPU 优化的 Azure 虚拟机，请参阅[为 Windows 虚拟桌面环境配置图形处理单元 (GPU) 加速](configure-vm-gpu.md)。
 - 有关疑难解答和升级跟踪的概述，请参阅[故障排除概述、反馈和支持](troubleshoot-set-up-overview.md)。
 - 若要了解有关该服务的详细信息，请参阅[Windows 桌面环境](environment-setup.md)。

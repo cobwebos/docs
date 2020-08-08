@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ba94f15f21696c87b336dc1f17b6f9f9def75c6c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 0407bde00c703663227230a0b6ff2de287f6650c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220688"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007057"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>在应用服务环境 v1 中创建 Web 应用
 
@@ -28,7 +28,7 @@ ms.locfileid: "86220688"
 > 
 > 
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 本教程假设已创建一个应用服务环境。 如果尚未创建，请参阅[创建应用服务环境](app-service-web-how-to-create-an-app-service-environment.md)。 
 
 ## <a name="create-a-web-app"></a>创建 Web 应用
@@ -40,7 +40,7 @@ ms.locfileid: "86220688"
     如果有多个订阅，请注意，若要在应用服务环境中创建应用，需要使用创建环境时所用的订阅来创建应用。 
 3. 选择或创建资源组。
    
-    使用资源组能够以单位形式管理相关的 Azure 资源，并可在为应用创建基于角色的访问控制 (RBAC) 规则时发挥作用****。 有关详细信息，请参阅 [Azure Resource Manager 概述][ResourceGroups]。 
+    *资源组*可让你将相关的 azure 资源作为一个单元进行管理，在建立*azure 基于角色的访问控制 (* 适用于你的应用的 azure RBAC) 规则时非常有用。 有关详细信息，请参阅 [Azure Resource Manager 概述][ResourceGroups]。 
 4. 选择或创建应用服务计划。
    
     应用服务计划** 是一组托管的 Web 应用。  选择定价时，支付的价格通常适用于应用服务计划而不是单个应用。 在 ASE 中，为分配给 ASE 的计算实例而不是向 ASP 列出的内容付费。  要增加 Web 应用的实例数，增加应用服务计划的实例数即可，此操作将影响该计划中的所有 Web 应用。  某些功能（如站点槽位或虚拟网络集成）在计划内也有数量限制。  有关详细信息，请参阅[Azure App Service 计划概述](../overview-hosting-plans.md)

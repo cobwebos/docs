@@ -5,17 +5,17 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 7/22/2020
 ms.author: baanders
-ms.openlocfilehash: 230304677b78f00b2d1288c846f8bf704cd8a497
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: c2668bdda5002ebd2a34b8a2ffa5885263aec0c9
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407409"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009627"
 ---
-你的组织可能需要订阅所有者的其他操作才能成功设置应用注册 (从而完成设置可用的 Azure 数字孪生实例) 。 根据组织的特定设置，所需的步骤可能会有所不同。
+你的组织可能需要订阅所有者/管理员执行的其他操作才能成功设置应用注册 (从而完成设置可用的 Azure 数字孪生实例) 。 根据组织的特定设置，所需的步骤可能会有所不同。
 
-下面是所有者可能需要执行的一些常见潜在活动。 这些操作和其他操作可以从 Azure 门户的 " [*Azure AD 应用注册*](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)" 页中执行。
-* 向管理员授予对应用注册的许可。 你的组织可能需要对订阅中的所有应用注册 Azure AD 全局启用 "*管理员许可*"。 如果是这样，所有者需要在应用注册的 " *API 权限*" 页上为你的公司选择此按钮，以使应用注册有效：
+下面是所有者/管理员可能需要执行的一些常见潜在活动。 这些操作和其他操作可以从 Azure 门户的 " [*Azure AD 应用注册*](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps)" 页中执行。
+* 向管理员授予对应用注册的许可。 你的组织可能需要对订阅中的所有应用注册 Azure AD 全局启用 "*管理员许可*"。 如果是这样，所有者/管理员需要在应用注册的 " *API 权限*" 页上为你的公司选择此按钮，以使应用注册有效：
 
     :::image type="content" source="../articles/digital-twins/media/how-to-set-up-instance/portal/grant-admin-consent.png" alt-text="API 权限下的 "授予管理员许可" 按钮的门户视图":::
   - 如果已成功授予许可，则 Azure 数字孪生的条目应显示已_授予给**公司 (** _的*状态*值) 

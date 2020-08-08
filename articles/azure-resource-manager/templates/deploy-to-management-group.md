@@ -3,16 +3,16 @@ title: 将资源部署到管理组
 description: 介绍如何通过 Azure 资源管理器模板在管理组范围部署资源。
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: a17387aef4d35c042d1fe0b02f1c6fd447e4a918
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 992882859ed1c67cf66c31f69f21e151081cf087
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321796"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002897"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>在管理组级别创建资源
 
-随着组织的成熟，可以部署 Azure 资源管理器模板（ARM 模板）以在管理组级别创建资源。 例如，你可能需要为管理组定义和分配[策略](../../governance/policy/overview.md)或[基于角色的访问控制](../../role-based-access-control/overview.md)。 使用管理组级别模板，可以通过声明方式应用策略并在管理组级别分配角色。
+随着组织的成熟，你可以将 Azure 资源管理器模板部署 (ARM 模板) ，在管理组级别创建资源。 例如，你可能需要为管理组定义并分配[策略](../../governance/policy/overview.md)或[azure 基于角色的访问控制 (azure RBAC) ](../../role-based-access-control/overview.md) 。 使用管理组级别模板，可以通过声明方式应用策略并在管理组级别分配角色。
 
 ## <a name="supported-resources"></a>支持的资源
 
@@ -357,6 +357,6 @@ New-AzManagementGroupDeployment `
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何分配角色，请参阅[使用 RBAC 和 Azure 资源管理器模板管理对 Azure 资源的访问权限](../../role-based-access-control/role-assignments-template.md)。
+* 若要了解如何分配角色，请参阅[使用 azure 资源管理器模板添加 azure 角色分配](../../role-based-access-control/role-assignments-template.md)。
 * 若要通过示例来了解如何为 Azure 安全中心部署工作区设置，请参阅 [deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json)。
 * 你还可以在[订阅级别](deploy-to-subscription.md)和[租户级别](deploy-to-tenant.md)部署模板。

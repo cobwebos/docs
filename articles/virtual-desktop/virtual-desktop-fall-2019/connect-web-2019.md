@@ -1,24 +1,22 @@
 ---
-title: 连接 Windows 虚拟桌面（经典） web 客户端-Azure
-description: 如何使用 web 客户端连接到 Windows 虚拟桌面（经典）。
-services: virtual-desktop
+title: 将 Windows 虚拟桌面 (经典) web 客户端连接到 Azure
+description: 如何使用 web 客户端连接到 Windows 虚拟桌面 (经典) 。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: efe97c86ebfac8e130489b3105a97302866d6822
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c8a55e35ba89caefc362024fc871ac5eb800447b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87270373"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008417"
 ---
-# <a name="connect-to-windows-virtual-desktop-classic-with-the-web-client"></a>通过 web 客户端连接到 Windows 虚拟桌面（经典）
+# <a name="connect-to-windows-virtual-desktop-classic-with-the-web-client"></a>通过 web 客户端连接到 Windows 虚拟桌面 (经典) 
 
 >[!IMPORTANT]
->此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。 如果尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../connect-web.md)。
+>本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../connect-web.md)。
 
 Web 客户端允许从 Web 浏览器访问 Windows 虚拟桌面资源，而无需漫长的安装过程。
 

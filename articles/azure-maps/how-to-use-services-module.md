@@ -1,6 +1,6 @@
 ---
 title: 使用 "Azure Maps 服务" 模块 |Microsoft Azure 映射
-description: 在本文中，你将了解如何利用 Azure Maps 服务模块 Microsoft Azure 映射 REST 服务。
+description: 了解 Azure Maps 服务模块。 请参阅如何加载和使用此帮助程序库，以访问 web 或 Node.js 应用程序中 Azure Maps REST 服务。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 69ca43021ff2c45733375e14d87d0ed65d8962e9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2f8d41c8248ab761c6d781263f3978937ad01e22
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287059"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004134"
 ---
 # <a name="use-the-azure-maps-services-module"></a>使用 Azure Maps 服务模块
 
@@ -40,7 +40,7 @@ Azure Maps Web SDK 提供*服务模块*。 此模块是一个帮助程序库，�
         <script src="node_modules/azure-maps-rest/dist/atlas-service.min.js"></script>
          ```
 
-1. 创建身份验证管道。 必须先创建管道，然后才能初始化服务 URL 客户端终结点。 使用你自己的 Azure Maps 帐户密钥或 Azure Active Directory （Azure AD）凭据对 Azure Maps 搜索服务客户端进行身份验证。 在此示例中，将创建搜索服务 URL 客户端。 
+1. 创建身份验证管道。 必须先创建管道，然后才能初始化服务 URL 客户端终结点。 使用你自己的 Azure Maps 帐户密钥或 Azure Active Directory (Azure AD) 的凭据来对 Azure Maps 搜索服务客户端进行身份验证。 在此示例中，将创建搜索服务 URL 客户端。 
 
     如果使用订阅密钥进行身份验证：
 
@@ -161,7 +161,7 @@ Azure Maps Web SDK 提供*服务模块*。 此模块是一个帮助程序库，�
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="使用服务模块" src="//codepen.io/azuremaps/embed/zbXGMR/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的<a href='https://codepen.io/azuremaps/pen/zbXGMR/'>使用 "服务" 模块</a>Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> ）。 <a href='https://codepen.io'>CodePen</a>
+请参阅 CodePen 上的 () ，<a href='https://codepen.io/azuremaps/pen/zbXGMR/'>使用 "服务</a>" Azure Maps 模块 <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
 <br/>

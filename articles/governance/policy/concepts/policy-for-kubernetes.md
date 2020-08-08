@@ -1,14 +1,14 @@
 ---
 title: 预览版 - 了解适用于 Kubernetes 的 Azure Policy
 description: 了解 Azure Policy 如何使用 Rego 和 Open Policy Agent 来管理在 Azure 或本地运行 Kubernetes 的群集。 这是预览功能。
-ms.date: 06/12/2020
+ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 461dd467ecda2764c6753ed6eeee0405f8420bbc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: dc81d22677eeab16ae06e782c5ae47c121af04c6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373753"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003489"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>了解适用于 Kubernetes 群集的 Azure Policy（预览版）
 
@@ -130,10 +130,16 @@ Azure Policy 将扩展 [Gatekeeper](https://github.com/open-policy-agent/gatekee
 
   1. 在主页中，选择“启用加载项”按钮。
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="启用适用于 AKS 的 Azure Policy 加载项" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="启用适用于 AKS 的 Azure Policy 加载项":::
 
+     <a name="migrate-from-v1"></a>
      > [!NOTE]
-     > 如果“启用加载项”按钮显示为灰色，则尚未将订阅添加到预览。 如果“禁用加载项”按钮已启用，并且显示了到 v2 的迁移警告消息，则 Gatekeepver v2 仍已安装，必须将其删除。
+     > 如果“启用加载项”按钮显示为灰色，则尚未将订阅添加到预览。 如果启用了 "**禁用外接程序**" 按钮并且显示了 "迁移警告 v2" 消息，则会安装 v1 外接程序，并且必须在分配 v2 策略定义之前将其删除。 在2020年8月24日起，已_弃用_的 v1 外接程序将自动替换为 v2 附加项。 然后，必须分配策略定义的新 v2 版本。 若要立即升级，请执行以下步骤：
+     > 
+     > 1. 验证 AKS 群集是否已安装 v1 外接程序，方法是在 AKS 群集上访问 "**策略" (预览 ") **页，并具有" 当前群集使用 Azure 策略外接程序 v1 ... "消息。
+     > 1. [删除外接程序](#remove-the-add-on-from-aks)。
+     > 1. 选择 "**启用外接程序**" 按钮以安装该外接程序的 v2 版本。
+     > 1. [分配 v1 内置策略定义的 v2 版本](#assign-a-built-in-policy-definition)
 
 - Azure CLI
 

@@ -1,28 +1,26 @@
 ---
 title: 自定义 Windows 虚拟桌面用户的源-Azure
 description: 如何通过 PowerShell cmdlet 为 Windows 虚拟桌面用户自定义源。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f11b4f58a41a3d8ed964169216fda00e7477f7d3
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1f1779ac27c7e46aa3e608b33e3c006902df8c27
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288781"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009114"
 ---
 # <a name="customize-the-feed-for-windows-virtual-desktop-users"></a>为 Windows 虚拟桌面用户自定义源
 
 >[!IMPORTANT]
->此内容适用于 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果使用的是没有 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md)。
 
 你可以自定义该源，使 RemoteApp 和远程桌面资源以可识别的方式显示给用户。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本文假设已下载并安装 Windows 虚拟桌面 PowerShell 模块。 如果尚未安装，请按照[设置 PowerShell 模块](powershell-module.md)中的说明进行操作。
 
@@ -115,7 +113,7 @@ Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName
 
 6. 选择要更新的应用程序，然后输入新的**显示名称**。
 
-7. 选择“保存” 。 你编辑的应用程序现在应显示更新的名称。
+7. 选择“保存”。 你编辑的应用程序现在应显示更新的名称。
 
 ## <a name="next-steps"></a>后续步骤
 

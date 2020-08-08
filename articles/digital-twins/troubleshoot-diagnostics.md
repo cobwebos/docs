@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 0376a57e3f2c1158e9da97fb291a28c99ce2463c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: d47bb7cc868c5733c6e36290f097fec783764cd3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903947"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003578"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure 数字孪生故障排除：诊断日志记录
 
@@ -38,6 +38,8 @@ Azure 数字孪生收集提供有关资源状态的信息的服务实例的[指�
         - ModelsOperation
         - QueryOperation
         - AllMetrics
+        
+        有关这些选项的更多详细信息，请参阅下面的[*类别详细信息*](#category-details)部分。
      * **目标详细信息**：选择要将日志发送到的位置。 可选择以下三个选项的任意组合：
         - 发送到 Log Analytics
         - 存档到存储帐户
@@ -50,6 +52,47 @@ Azure 数字孪生收集提供有关资源状态的信息的服务实例的[指�
     :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="显示 "诊断设置" 页和要添加的按钮的屏幕截图":::
 
 新设置在大约 10 分钟后生效。 之后，日志会在实例的 "**诊断设置**" 页上显示在配置的目标中。 
+
+## <a name="category-details"></a>类别详细信息
+
+下面更详细地介绍了在设置诊断设置时，可在 "**类别详细信息**" 下选择的日志类别。
+
+| 日志类别 | 描述 |
+| --- | --- |
+| ADTModelsOperation | 记录与模型有关的所有 API 调用 |
+| ADTQueryOperation | 记录与查询相关的所有 API 调用 |
+| ADTEventRoutesOperation | 记录与事件路由相关的所有 API 调用，以及从 Azure 数字孪生传出事件到终结点服务（如事件网格、事件中心和服务总线）的事件 |
+| ADTDigitalTwinsOperation | 记录与 Azure 数字孪生有关的所有 API 调用 |
+
+每个日志类别包含写入、读取、删除和操作操作。  它们映射到 REST API 调用，如下所示：
+
+| 事件类型 | REST API 操作 |
+| --- | --- |
+| 写入 | PUT 和 PATCH |
+| 读取 | GET |
+| 删除 | DELETE |
+| 操作 | POST |
+
+下面是在每个类别中记录的操作和相应的[Azure 数字孪生 REST API 调用](https://docs.microsoft.com/rest/api/azure-digitaltwins/)的完整列表。 
+
+>[!NOTE]
+> 每个日志类别包含若干个操作/REST API 调用。 在下表中，每个日志类别映射到其下的所有操作/REST API 调用，直到列出下一个日志类别。 
+
+| 日志类别 | 操作 | REST API 调用和其他事件 |
+| --- | --- | --- |
+| ADTModelsOperation | DigitalTwins/模型/写入 | 数字克隆模型更新 API |
+|  | DigitalTwins/模型/读取 | 数字克隆模型按 Id 和列表 Api 获取 |
+|  | DigitalTwins/模型/删除 | 数字克隆模型删除 API |
+|  | DigitalTwins/模型/操作 | 数字克隆模型添加 API |
+| ADTQueryOperation | DigitalTwins/查询/操作 | 查询孪生 API |
+| ADTEventRoutesOperation | DigitalTwins/eventroutes/write | 事件路由添加 API |
+|  | DigitalTwins/eventroutes/read | 事件路由由 Id 和列表 Api 获取 |
+|  | DigitalTwins/eventroutes/delete | 事件路由删除 API |
+|  | DigitalTwins/eventroutes/action | 向终结点服务传出事件 (不是 API 调用)  |
+| ADTDigitalTwinsOperation | DigitalTwins/DigitalTwins/write | 数字孪生添加、添加关系、更新、更新组件 |
+|  | DigitalTwins/DigitalTwins/read | 数字孪生按 Id、获取组件、按 Id 获取关系、列出传入关系、列表关系 |
+|  | DigitalTwins/DigitalTwins/delete | 数字孪生删除，删除关系 |
+|  | DigitalTwins/DigitalTwins/action | 数字孪生发送组件遥测数据，发送遥测数据 |
 
 ## <a name="next-steps"></a>后续步骤
 

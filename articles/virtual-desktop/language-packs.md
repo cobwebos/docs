@@ -1,23 +1,21 @@
 ---
 title: 在 windows 虚拟桌面中的 Windows 10 虚拟机上安装语言包-Azure
 description: 如何在 Windows 虚拟桌面中安装适用于 Windows 10 多会话 Vm 的语言包。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 70592d940e3766597475f4a7b90a3902a53406d5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 542163511a1b4fc0acde9b44d73be6ffc042d5d3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361296"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008757"
 ---
 # <a name="install-language-packs"></a>安装语言包
 
-当你在国际上设置 Windows 虚拟桌面部署时，最好确保你的部署支持多种语言。 你可以在 Windows 10 企业多会话虚拟机（VM）映像上安装语言包，以支持你的组织所需的多种语言。 本文将介绍如何安装语言包并捕获图像，使用户能够选择自己的显示语言。
+当你在国际上设置 Windows 虚拟桌面部署时，最好确保你的部署支持多种语言。 你可以在 Windows 10 企业多会话虚拟机 (VM) 映像上安装语言包，以支持你的组织所需的多种语言。 本文将介绍如何安装语言包并捕获图像，使用户能够选择自己的显示语言。
 
 若要详细了解如何在 Azure 中部署 VM，请参阅[使用 Azure 门户在可用性区域中创建 Windows 虚拟机](../virtual-machines/windows/create-portal-availability-zone.md)。
 
@@ -41,7 +39,7 @@ ms.locfileid: "85361296"
 
 5. 然后选择 "**语言**"，然后选择 "**添加语言**"。 从列表中选择要安装的语言，然后选择 "**下一步**"。
 6. 当 "**安装语言功能**" 窗口打开时，选中标记为 **"安装语言包" 的复选框，并将其设置为 Windows 显示语言**。
-7. 选择“安装”。
+7. 选择“安装”  。
 8. 若要一次添加多个语言，请选择 "**添加语言**"，然后重复此过程以添加步骤5和6中的语言。 对于要安装的每种语言，请重复此过程。 但是，你一次只能设置一种语言作为显示语言。
 
     让我们通过快速直观的演示来运行。 以下图像显示了如何安装法语和荷兰语包，然后将法语设置为显示语言。

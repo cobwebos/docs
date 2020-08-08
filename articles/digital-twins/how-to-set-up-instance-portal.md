@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c7027f474c9ff5cbd90ed1800d74e3b4ebd60b3e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 33772d46f363b161c1faa5c953f48a702ae2b8bf
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836932"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009630"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>设置 Azure 数字孪生实例和身份验证 (门户) 
 
@@ -24,27 +24,13 @@ ms.locfileid: "87836932"
 * 若要使用 CLI 手动完成这些步骤，请参阅本文的 CLI 版本： how [*to： Set a instance and authentication (CLI) *](how-to-set-up-instance-cli.md)。
 * 若要通过使用部署脚本示例的自动安装运行，请参阅本文的脚本编写版本： how [*to： Set a instance and authentication (script) *](how-to-set-up-instance-scripted.md)。
 
-[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
- 
-然后，用凭据登录到[Azure 门户](https://ms.portal.azure.com/)。
-
-## <a name="prerequisites-permission-requirements"></a>先决条件：权限要求
-
-若要完成本文中的所有步骤，需要在 Azure 订阅中将其作为所有者进行分类。 
-
-您可以在 "[订阅" 页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)中的 "Azure 门户" (检查您的权限级别，可以使用此链接或通过门户搜索栏) 查找*订阅*。 查找正在使用的订阅的名称，并在 "*我的角色*" 列中查看该订阅的角色。 如果你是所有者，则此值为*owner*：
-
-:::image type="content" source="media/how-to-set-up-instance/portal/subscriptions-role.png" alt-text="Azure 门户中的 "订阅" 页的视图，将用户显示为所有者" lightbox="media/how-to-set-up-instance/portal/subscriptions-role.png":::
-
-如果发现值为 "*参与者*" 或 "*所有者*" 以外的其他内容，则可以通过以下方式之一继续：
-* 请与订阅所有者联系，并请求所有者自行完成本文中所述的步骤
-* 联系你的订阅所有者或订阅上具有用户访问管理员角色的某人，并请求他们将你提升为订阅的所有者，这样你就有权继续操作。 这是否合适取决于你的组织和其中的角色。
+[!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
 
 ## <a name="create-the-azure-digital-twins-instance"></a>创建 Azure 数字孪生实例
 
-在本部分中，将使用 Azure 门户**创建 Azure 数字孪生的新实例**。
+在本部分中，将使用[Azure 门户](https://ms.portal.azure.com/)**创建 Azure 数字孪生的新实例**。 导航到门户，然后用你的凭据登录。
 
-登录到[Azure 门户](https://ms.portal.azure.com/)后，请先在 Azure 服务的 "主页" 菜单中选择 "_创建资源_"。
+进入门户后，首先在 Azure 服务的 "主页" 菜单中选择 "_创建资源_"。
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="从 "主页" 的 "Azure 门户" 页中选择 "创建资源"":::
 
@@ -87,7 +73,7 @@ ms.locfileid: "87836932"
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="选择从 "访问控制 (IAM) " 页添加角色分配":::
 
-在 "*添加角色分配*" 页上，填写值 (必须由 Azure 订阅) 的所有者完成：
+在 "*添加角色分配*" 页上，填写值 (必须由在 Azure 订阅中具有[足够权限](#prerequisites-permission-requirements)的用户完成) ：
 * **角色**：从下拉菜单中选择 " *Azure 数字孪生所有者 (预览") *
 * **将访问权限分配给**：从下拉菜单中选择*Azure AD 用户、组或服务主体*
 * **选择**：搜索要分配的用户的名称或电子邮件地址。 选择结果后，用户将显示在 "*所选成员*" 部分中。
