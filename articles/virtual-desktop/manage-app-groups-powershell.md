@@ -1,24 +1,22 @@
 ---
 title: 管理 Windows 虚拟桌面 PowerShell 的应用组-Azure
 description: 如何通过 PowerShell 管理 Windows 虚拟桌面应用组。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 186c6e455fa4d2ab578d6ab2a37f8f8f0d038e02
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a6f24dea00a174aa0276a9b30add0854c3694056
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291431"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008638"
 ---
 # <a name="manage-app-groups-using-powershell"></a>使用 PowerShell 管理应用组
 
 >[!IMPORTANT]
->此内容适用于 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果使用的是没有 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/manage-app-groups-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/manage-app-groups-2019.md)。
 
 为新的 Windows 虚拟桌面主机池创建的默认应用组也会发布完整桌面。 此外，可为主机池创建一个或多个 RemoteApp 应用程序组。 请遵循本教程创建 RemoteApp 应用组并发布单个“开始”  菜单应用。
 
@@ -28,7 +26,7 @@ ms.locfileid: "87291431"
 > * 创建 RemoteApp 组。
 > * 授予对 RemoteApp 程序的访问权限。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 本文假定你已按照[设置 powershell 模块](powershell-module.md)中的说明进行操作，并登录到 Azure 帐户。
 

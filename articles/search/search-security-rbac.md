@@ -1,26 +1,26 @@
 ---
 title: 为 Azure 管理访问设置 Azure 角色
 titleSuffix: Azure Cognitive Search
-description: Azure 门户中基于角色的管理控制 (RBAC)，用于控制和委派 Azure 认知搜索管理的管理任务。
+description: 基于角色的访问控制 (RBAC) 在 Azure 门户中用于控制和委托 Azure 认知搜索管理管理任务。
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: d1b2576eb42cbe25919eb77fc30e2720ed812ca4
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c01806194156fb43524e2db5f4c9bf636186de95
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534424"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009199"
 ---
 # <a name="set-azure-roles-for-administrative-access-to-azure-cognitive-search"></a>设置 azure 角色以实现 Azure 认知搜索的管理访问权限
 
 对于通过门户或 Resource Manager API 管理的所有服务，Azure 提供了[基于全局角色的授权模型](../role-based-access-control/role-assignments-portal.md)。 所有者、参与者和读者角色根据分配给每个角色的 Active Directory 用户、组和安全主体的服务管理，确定服务管理的级别。 
 
 > [!Note]
-> 不存在用于保护文档索引或文档子集且基于角色的访问控制。 如果要实现针对搜索结果的、基于标识的访问，可创建安全筛选器按标识来细化结果，由此去除请求者不应具有访问权限的那些文档。 有关详细信息，请参阅[安全筛选器](search-security-trimming-for-azure-search.md)和[使用 Active Directory 进行保护](search-security-trimming-for-azure-search-with-aad.md)。
+> 没有基于角色的访问控制 (RBAC) 来保护索引部分或部分文档。 如果要实现针对搜索结果的、基于标识的访问，可创建安全筛选器按标识来细化结果，由此去除请求者不应具有访问权限的那些文档。 有关详细信息，请参阅[安全筛选器](search-security-trimming-for-azure-search.md)和[使用 Active Directory 进行保护](search-security-trimming-for-azure-search-with-aad.md)。
 
 ## <a name="management-tasks-by-role"></a>按角色划分的管理任务
 

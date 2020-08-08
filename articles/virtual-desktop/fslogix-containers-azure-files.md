@@ -1,23 +1,21 @@
 ---
 title: Windows 虚拟桌面 FSLogix 配置文件容器文件-Azure
 description: 本文介绍 Windows 虚拟桌面和 Azure 文件中的 FSLogix 配置文件容器。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 7728ff96ccc3da5a36d919e61518a3ce3d13581c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 669f4baa723b78b8933f3a75fc361c468f9e2df9
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82611970"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002390"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix 配置文件容器和 Azure 文件
 
-Windows 虚拟桌面服务建议将 FSLogix 配置文件容器作为用户配置文件解决方案。 FSLogix 设计用于在远程计算环境（如 Windows 虚拟桌面）中漫游配置文件。 它将完整的用户配置文件存储在单个容器中。 登录时，将使用本机支持的虚拟硬盘（VHD）和 Hyper-v 虚拟硬盘（VHDX）将此容器动态连接到计算环境。 用户配置文件立即可用，并与本机用户配置文件完全相同。 本文介绍如何在 Windows 虚拟桌面中使用 FSLogix 配置文件容器与 Azure 文件一起工作。
+Windows 虚拟桌面服务建议将 FSLogix 配置文件容器作为用户配置文件解决方案。 FSLogix 设计用于在远程计算环境（如 Windows 虚拟桌面）中漫游配置文件。 它将完整的用户配置文件存储在单个容器中。 登录时，此容器动态连接到使用本机支持的虚拟硬盘 (VHD) 和 Hyper-v 虚拟硬盘 (VHDX) 的计算环境。 用户配置文件立即可用，并与本机用户配置文件完全相同。 本文介绍如何在 Windows 虚拟桌面中使用 FSLogix 配置文件容器与 Azure 文件一起工作。
 
 >[!NOTE]
 >如果正在查找有关 Azure 上不同 FSLogix 配置文件容器存储选项的比较资料，请参阅[FSLogix 配置文件容器的存储选项](store-fslogix-profile.md)。
@@ -26,18 +24,18 @@ Windows 虚拟桌面服务建议将 FSLogix 配置文件容器作为用户配置
 
 用户配置文件包含有关个人的数据元素，包括桌面设置、永久性网络连接和应用程序设置等配置信息。 默认情况下，Windows 将创建与操作系统紧密集成的本地用户配置文件。
 
-远程用户配置文件在用户数据和操作系统之间提供分区。 它允许在不影响用户数据的情况下替换或更改操作系统。 在远程桌面会话主机（RDSH）和虚拟桌面基础结构（VDI）中，操作系统可能因以下原因而被替换：
+远程用户配置文件在用户数据和操作系统之间提供分区。 它允许在不影响用户数据的情况下替换或更改操作系统。 在远程桌面会话主机 (RDSH) 和虚拟桌面基础结构 (VDI) 中，操作系统可能因以下原因而被替换：
 
 - 操作系统升级
-- 替代现有虚拟机（VM）
-- 作为共用（非持久） RDSH 或 VDI 环境的一部分的用户
+- 替代现有虚拟机 (VM) 
+- 作为 (非永久性) RDSH 或 VDI 环境的一部分的用户
 
 Microsoft 产品针对远程用户配置文件（包括以下技术）运行多项技术：
-- 漫游用户配置文件（RUP）
-- 用户配置文件磁盘（UPD）
-- 企业状态漫游（ESR）
+-  (RUP) 的漫游用户配置文件
+-  (UPD 的用户配置文件磁盘) 
+- 企业状态漫游 (ESR) 
 
-UPD 和 RUP 是远程桌面会话主机（RDSH）和虚拟硬盘（VHD）环境中用于用户配置文件的最广泛使用的技术。
+UPD 和 RUP 是远程桌面会话主机 (RDSH) 和虚拟硬盘 (VHD) 环境中用于用户配置文件的最广泛使用的技术。
 
 ### <a name="challenges-with-previous-user-profile-technologies"></a>以前的用户配置文件技术面临的挑战
 
@@ -47,21 +45,21 @@ UPD 和 RUP 是远程桌面会话主机（RDSH）和虚拟硬盘（VHD）环境�
 
 下表显示了以前的用户配置文件技术的优点和局限性。
 
-| 技术 | 新式设置 | Win32 设置 | OS 设置 | 用户数据 | 在服务器 SKU 上受支持 | Azure 上的后端存储 | 本地后端存储 | 版本支持 | 后续登录时间 |备注|
+| 技术 | 新式设置 | Win32 设置 | OS 设置 | 用户数据 | 在服务器 SKU 上受支持 | Azure 上的后端存储 | 本地后端存储 | 版本支持 | 后续登录时间 |说明|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| **用户配置文件磁盘（UPD）** | 是 | 是 | 是 | 是 | 是 | No | 是 | Win 7 + | 是 | |
-| **漫游用户配置文件（RUP），维护模式** | 否 | 是 | 是 | 是 | 是| No | 是 | Win 7 + | 否 | |
-| **企业状态漫游（ESR）** | 是 | No | 是 | No | 请参阅说明 | 是 | No | Win 10 | 否 | 服务器 SKU 上的函数，但不支持用户界面 |
-| **用户体验虚拟化 (UE-V)** | 是 | 是 | 是 | No | 是 | No | 是 | Win 7 + | 否 |  |
+| ** (UPD 的用户配置文件磁盘) ** | 是 | 是 | 是 | 是 | 是 | 否 | 是 | Win 7 + | 是 | |
+| **漫游用户配置文件 (RUP) ，维护模式** | 否 | 是 | 是 | 是 | 是| 否 | 是 | Win 7 + | 否 | |
+| **企业状态漫游 (ESR) ** | 是 | 否 | 是 | 否 | 请参阅说明 | 是 | 否 | Win 10 | 否 | 服务器 SKU 上的函数，但不支持用户界面 |
+| **用户体验虚拟化 (UE-V)** | 是 | 是 | 是 | 否 | 是 | 否 | 是 | Win 7 + | 否 |  |
 | **OneDrive 云文件** | 否 | 否 | 否 | 是 | 请参阅说明 | 请参阅说明  | 查看注释 | Win 10 RS3 | 否 | 未在服务器 SKU 上测试。 Azure 上的后端存储依赖于同步客户端。 本地上的后端存储需要同步客户端。 |
 
 #### <a name="performance"></a>性能
 
-UPD 需要[存储空间直通（S2D）](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/)来满足性能要求。 UPD 使用服务器消息块（SMB）协议。 它将配置文件复制到记录用户的 VM。 UPD with S2D 是我们建议用于 Windows 虚拟桌面的解决方案。  
+UPD 要求[ (S2D) 存储空间直通](/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment/)，以满足性能要求。 UPD 使用服务器消息块 (SMB) 协议。 它将配置文件复制到记录用户的 VM。 UPD with S2D 是我们建议用于 Windows 虚拟桌面的解决方案。
 
-#### <a name="cost"></a>成本
+#### <a name="cost"></a>节约成本
 
-虽然 S2D 群集实现了所需的性能，但企业客户的成本成本高昂，但对于中小型企业（SMB）客户，开销特别高。 对于此解决方案，企业需要支付存储空间，以及使用磁盘作为共享的 Vm 的成本。
+虽然 S2D 群集实现了所需的性能，但企业客户的成本成本非常高，但对于中小型企业 (SMB) 客户，开销特别高。 对于此解决方案，企业需要支付存储空间，以及使用磁盘作为共享的 Vm 的成本。
 
 #### <a name="administrative-overhead"></a>管理开销
 
@@ -79,7 +77,7 @@ S2D 群集要求在安全状态下对操作系统进行修补、更新和维护�
 
 ## <a name="azure-files-integration-with-azure-active-directory-domain-service"></a>Azure 文件与 Azure Active Directory 域服务的集成
 
-FSLogix 配置文件容器的性能和功能将充分利用云。 2019年8月7日，Microsoft Azure[个文件通过 Azure Active Directory 域服务（AD DS）公布了 Azure 文件身份验证](../storage/files/storage-files-active-directory-overview.md)的公开上市。 通过解决成本和管理开销，具有 Azure AD DS 身份验证的 Azure 文件是 Windows 虚拟桌面服务中的用户配置文件的高级解决方案。
+FSLogix 配置文件容器的性能和功能将充分利用云。 2019年8月7日，Microsoft Azure 文件[Azure Active Directory 域服务 (AD DS) 公布了 Azure 文件身份验证](../storage/files/storage-files-active-directory-overview.md)的公开上市。 通过解决成本和管理开销，具有 Azure AD DS 身份验证的 Azure 文件是 Windows 虚拟桌面服务中的用户配置文件的高级解决方案。
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Windows 虚拟桌面的最佳实践
 

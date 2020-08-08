@@ -1,19 +1,17 @@
 ---
 title: Windows 虚拟桌面中的委托访问-Azure
 description: 如何在 Windows 虚拟桌面部署上委派管理功能，包括示例。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4e63ec864da9a6e7ce5448b322e0452503e2493c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f2aa2c74704cf89c082d2837b39e82902efa0a62
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853426"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010049"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop"></a>Windows 虚拟桌面中的委托访问
 
@@ -40,18 +38,18 @@ Windows 虚拟桌面委托访问为角色分配的每个元素支持以下值：
 
 在开始之前，请确保按照[设置 PowerShell 模块](powershell-module.md)中的说明设置 Windows 虚拟桌面 PowerShell 模块（如果尚未安装）。
 
-在将应用程序组发布到用户或用户组时，Windows 虚拟桌面将使用 Azure 基于角色的访问控制 (Azure RBAC) 。 桌面虚拟化用户角色分配给用户或用户组，而作用域是应用组。 此角色向用户提供对应用程序组的特殊数据访问权限。  
+在将应用程序组发布到用户或用户组时，Windows 虚拟桌面将使用 Azure 基于角色的访问控制 (Azure RBAC) 。 桌面虚拟化用户角色分配给用户或用户组，而作用域是应用组。 此角色向用户提供对应用程序组的特殊数据访问权限。
 
 运行以下 cmdlet，将 Azure Active Directory 用户添加到应用组：
 
 ```powershell
-New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'  
+New-AzRoleAssignment -SignInName <userupn> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
 运行以下 cmdlet，将 Azure Active Directory 用户组添加到应用组：
 
 ```powershell
-New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -ObjectId <usergroupobjectid> -RoleDefinitionName "Desktop Virtualization User" -ResourceName <appgroupname> -ResourceGroupName <resourcegroupname> -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups'
 ```
 
 ## <a name="next-steps"></a>后续步骤

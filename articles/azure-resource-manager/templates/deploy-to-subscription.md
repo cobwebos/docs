@@ -3,16 +3,16 @@ title: 将资源部署到订阅
 description: 介绍了如何在 Azure 资源管理器模板中创建资源组。 它还展示了如何在 Azure 订阅范围内部署资源。
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: a4e21f29762a30baec8d5cf6e3914da2b5faadeb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: aca1aaf9d7d0c8a97bf2dad437953ccadc02a924
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321762"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002788"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>在订阅级别创建资源组和资源
 
-若要简化资源管理，可以使用 Azure 资源管理器模板（ARM 模板）在 Azure 订阅级别部署资源。 例如，你可以将[策略](../../governance/policy/overview.md)和[基于角色的访问控制](../../role-based-access-control/overview.md)部署到你的订阅，这会在你的订阅中应用这些控制。 你还可以在订阅中创建资源组，并将资源部署到订阅中的资源组。
+若要简化资源管理，可以使用 Azure 资源管理器模板 (ARM 模板) 在 Azure 订阅级别部署资源。 例如，你可以将[策略](../../governance/policy/overview.md)和[azure 基于角色的访问控制 (azure RBAC) ](../../role-based-access-control/overview.md)部署到你的订阅，这会将其应用到你的订阅。 你还可以在订阅中创建资源组，并将资源部署到订阅中的资源组。
 
 > [!NOTE]
 > 可在订阅级别部署中部署到 800 个不同的资源组。
@@ -28,7 +28,7 @@ ms.locfileid: "87321762"
 * [项目](/azure/templates/microsoft.blueprint/blueprints/artifacts)
 * [蓝图](/azure/templates/microsoft.blueprint/blueprints)
 * [blueprintAssignments](/azure/templates/microsoft.blueprint/blueprintassignments)
-* [版本（蓝图）](/azure/templates/microsoft.blueprint/blueprints/versions)
+* [ (蓝图) 版本](/azure/templates/microsoft.blueprint/blueprints/versions)
 
 对于 Azure 策略，请使用：
 
@@ -473,7 +473,7 @@ New-AzSubscriptionDeployment `
 
 ## <a name="access-control"></a>访问控制
 
-若要了解如何分配角色，请参阅[使用 RBAC 和 Azure 资源管理器模板管理对 Azure 资源的访问权限](../../role-based-access-control/role-assignments-template.md)。
+若要了解如何分配角色，请参阅[使用 azure 资源管理器模板添加 azure 角色分配](../../role-based-access-control/role-assignments-template.md)。
 
 下面的示例创建一个资源组，对其应用锁，并为主体分配一个角色。
 

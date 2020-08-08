@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: ceadc2d37b9d13502b5ae20605ff083edfd5c51f
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 6739e5619a0dcaa940d38571c4a88c4f68971dfe
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986995"
+ms.locfileid: "88009267"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>排查 Azure 文件存储性能问题
 
@@ -182,22 +182,27 @@ CentOS/RHEL 不支持大于 1 的 IO 深度。
 6. 在 "**配置信号逻辑**" 边栏选项卡上，单击 "**维度名称**" 下拉箭头，然后选择 "**响应类型**"。
 7. 单击 "**维度值**" 下拉箭头，然后选择 "适用于 SMB) 的**SuccessWithThrottling** (" 或 " **ClientThrottlingError** (为 REST) "。
 
-> [!NOTE]
-> 如果 "SuccessWithThrottling" 或 "ClientThrottlingError" 维度值未列出，则表示资源尚未被限制。 若要添加维度值，请单击 "**维度值**" 下拉箭头旁边的 "**添加自定义值**"，键入 " **SuccessWithThrottling** " 或 " **ClientThrottlingError**"，然后单击 **"确定"** ，然后重复步骤 #7。
+  > [!NOTE]
+  > 如果 "SuccessWithThrottling" 或 "ClientThrottlingError" 维度值未列出，则表示资源尚未被限制。 若要添加维度值，请单击 "**维度值**" 下拉箭头旁边的 "**添加自定义值**"，键入 " **SuccessWithThrottling** " 或 " **ClientThrottlingError**"，然后单击 **"确定"** ，然后重复步骤 #7。
 
 8. 单击 "**维度名称**" 下拉箭头，然后选择 "**文件共享**"。
 9. 单击 "**维度值**" 下拉箭头，然后选择要对其发出警报 () 的文件共享。
 
-> [!NOTE]
-> 如果文件共享是标准文件共享，请选择 "**所有当前和未来值**"。 "维度值" 下拉列表将不会列出) 的文件 (共享，因为 "每个共享" 度量值不可用于标准文件共享。 如果存储帐户中的任何文件共享受到限制，并且警报不会确定限制了哪个文件共享，则会触发标准文件共享的限制警报。 由于每个共享度量值不可用于标准文件共享，因此建议每个存储帐户都有一个文件共享。
+  > [!NOTE]
+  > 如果文件共享是标准文件共享，请选择 "**所有当前和未来值**"。 "维度值" 下拉列表将不会列出) 的文件 (共享，因为 "每个共享" 度量值不可用于标准文件共享。 如果存储帐户中的任何文件共享受到限制，并且警报不会确定限制了哪个文件共享，则会触发标准文件共享的限制警报。 由于每个共享度量值不可用于标准文件共享，因此建议每个存储帐户都有一个文件共享。
 
 10. 定义**警报参数** (阈值、运算符、聚合粒度和计算频率) 并单击 "**完成**"。
 
-> [!TIP]
-> 如果使用的是静态阈值，则如果当前正在限制文件共享，则度量值图表可帮助确定合理的阈值。 如果使用的是动态阈值，则度量值图表将根据最近的数据显示计算的阈值。
+  > [!TIP]
+  > 如果使用的是静态阈值，则如果当前正在限制文件共享，则度量值图表可帮助确定合理的阈值。 如果使用的是动态阈值，则度量值图表将根据最近的数据显示计算的阈值。
 
 11. 单击 "**选择操作组**"，通过选择现有操作组或创建新的操作组，将**操作组** (电子邮件、SMS 等 ) 添加到警报。
 12. 填写警报**详细信息**，如**警报规则名称**、**描述**和**严重性**。
 13. 单击 "**创建警报规则**" 以创建警报。
 
 若要了解有关在 Azure Monitor 中配置警报的详细信息，请参阅[Microsoft Azure 中的警报概述]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)。
+
+## <a name="see-also"></a>另请参阅
+* [在 Windows 中排查 Azure 文件问题](storage-troubleshoot-windows-file-connection-problems.md)
+* [在 Linux 中排查 Azure 文件问题](storage-troubleshoot-linux-file-connection-problems.md)
+* [有关 Azure 文件的常见问题解答 (FAQ)](storage-files-faq.md)

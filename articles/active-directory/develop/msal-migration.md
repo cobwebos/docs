@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 06/16/2020
+ms.date: 08/07/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 32a1440bb641f0cbe8e3f3b8ada42e0841d9aa67
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4672c5cab5977b000bd5095f3868864ae0c267ed
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922483"
+ms.locfileid: "88005748"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>将应用程序迁移到 Microsoft 身份验证库 (MSAL)
 
@@ -52,13 +52,13 @@ ms.locfileid: "87922483"
 ## <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 
 __问：是否要弃用 ADAL？__  
-答：是的。 从 2020 年 6 月 30 日开始，我们将不再为 ADAL 添加新功能。 在 2022 年 6 月 30 日之前，我们将继续为 ADAL 添加关键的安全修复程序。 此时间过后，使用 ADAL 的应用程序将正常工作，但我们建议升级到 MSAL，以利用最新功能并保持安全。
+答：是的。 从 2020 年 6 月 30 日开始，我们将不再为 ADAL 添加新功能。 在 2022 年 6 月 30 日之前，我们将继续为 ADAL 添加关键的安全修复程序。 在此日期之后，使用 ADAL 的应用程序将继续工作，但我们建议升级到 MSAL，以利用最新功能并保持安全。
+
+__问：我的现有 ADAL 应用是否会停止工作？__  
+答：否。 你的现有应用程序将继续运行而不进行修改。 如果计划将其保存在2022年6月30日之前，应考虑将应用程序更新为 MSAL 以确保它们的安全性，但不需要迁移到 MSAL 来维护现有功能。
 
 __问：如何知道哪些应用正在使用 ADAL？__  
 答：如果你有应用程序的源代码，可以参考上述迁移指南来确定应用使用的库和了解如何将其迁移到 MSAL。 如果你与 ISV 合作，我们建议你直接访问这些资源，以了解迁移到 MSAL 的过程。 如果你没有访问应用程序源代码的权限，可以[提交一个支持请求](developer-support-help-options.md#open-a-support-request)，获取已注册应用程序和每个应用程序所使用的库的列表。
-
-__问：我的现有 ADAL 应用是否会继续工作？__  
-答：你的现有应用将继续正常运行，不会进行修改。 如果计划在 2022 年 6 月 30 日之后继续使用它们，应考虑将其更新到 MSAL 以确保其安全性，但如果要维持现有功能，则无需迁移到 MSAL。
 
 __问：为什么应设法迁移到 MSAL？__  
 答：MSAL 包含 ADAL 中没有的新功能，包括增量许可、单一登录和令牌缓存管理。 此外，与 ADAL 不同，MSAL 在 2022 年 6 月 30 日之后会继续接收安全补丁。 [了解详细信息](msal-overview.md)。

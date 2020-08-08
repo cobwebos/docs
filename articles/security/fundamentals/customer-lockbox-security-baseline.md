@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1e8fd08a22d5d243f404a12ff96c1a8797b97f70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1cf4af12b9ef912d37014215e422d5b9c73903f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485580"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007873"
 ---
 # <a name="azure-security-baseline-for-customer-lockbox-for-microsoft-azure"></a>适用于 Microsoft Azure 的客户密码箱的 Azure 安全基线
 
@@ -22,7 +22,7 @@ ms.locfileid: "84485580"
 
 有关详细信息，请参阅 [Azure 安全基线概述](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)。
 
-## <a name="network-security"></a>网络安全性
+## <a name="network-security"></a>网络安全
 
 有关详细信息，请参阅[安全控制：网络安全](https://docs.microsoft.com/azure/security/benchmarks/security-control-network-security)。
 
@@ -44,7 +44,7 @@ ms.locfileid: "84485580"
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
-**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -76,7 +76,7 @@ ms.locfileid: "84485580"
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
-**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -156,7 +156,7 @@ ms.locfileid: "84485580"
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -212,7 +212,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -222,13 +222,13 @@ Azure 安全中心监视：不适用
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指南**：维护对你的客户密码箱请求具有管理访问权限的用户帐户的清单。 你可以使用订阅的 Azure 门户中的标识和访问控制（IAM）窗格来配置基于角色的访问控制（RBAC）。 这些角色将应用于 Azure Active Directory 中的用户、组、服务主体和管理标识。
+**指南**：维护对你的客户密码箱请求具有管理访问权限的用户帐户的清单。 你可以使用订阅 Azure 门户中 (IAM) 窗格的 "标识和访问控制" 来配置 Azure RBAC)  (基于角色的访问控制。 这些角色将应用于 Azure Active Directory 中的用户、组、服务主体和管理标识。
 
 在客户组织中，拥有 Azure 订阅的所有者角色的用户将收到来自 Microsoft 的电子邮件，通知他们有任何挂起的访问请求。 对于客户密码箱请求，此人为指定的审批者。
 
 * [了解自定义角色](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
 
-* [如何为工作簿配置 RBAC](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
+* [如何为工作簿配置 Azure RBAC](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
 
 * [了解客户密码箱中的访问请求权限](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
 
@@ -246,7 +246,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
-**指导**：围绕专用管理帐户的使用创建标准操作程序。 使用 Azure 安全中心标识和访问管理来监视管理帐户的数量。
+**指南**：围绕专用管理帐户的使用创建标准操作程序。 使用 Azure 安全中心标识和访问管理来监视管理帐户的数量。
 
 此外，为了帮助你跟踪专用管理帐户，你可以使用 Azure 安全中心或内置 Azure 策略中的建议，例如：
 - 应该为你的订阅分配了多个所有者
@@ -275,7 +275,7 @@ Azure 安全中心监视：不适用
 
 * [如何在 Azure 中启用 MFA](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)
 
-* [如何在 Azure 安全中心内监视标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
+* [如何在 Azure 安全中心监视标识和访问](https://docs.microsoft.com/azure/security-center/security-center-identity-access)
 
 **Azure 安全中心监视**：是
 
@@ -283,7 +283,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="36-use-dedicated-machines-privileged-access-workstations-for-all-administrative-tasks"></a>3.6：对所有管理任务使用专用计算机（特权访问工作站）
 
-**指南**：通过启用了 Azure 多重身份验证（MFA）的特权访问工作站（PAW）登录到你的客户密码箱请求并对其进行配置。
+**指南**：使用具有 Azure 多重身份 (验证的特权访问工作站 (PAW) 启用了 MFA) ，以便登录并配置客户密码箱请求。
 
 * [特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
@@ -295,7 +295,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
-**指南**：在环境中发生可疑或不安全活动时，使用 AZURE ACTIVE DIRECTORY PRIVILEGED IDENTITY MANAGEMENT （PIM）生成日志和警报。
+**指南**：在环境中发生可疑或不安全活动时，使用 AZURE ACTIVE DIRECTORY PRIVILEGED IDENTITY MANAGEMENT (PIM) 生成日志和警报。
 
 此外，使用 Azure Active Directory 风险检测来查看警报和报告有风险的用户行为。
 
@@ -357,7 +357,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12：针对帐户登录行为偏差发出警报
 
-**指南**：对于控制平面（例如 Azure 门户）的帐户登录行为偏差，请使用 Azure Active Directory identity protection 和风险检测功能来配置对检测到的与用户标识相关的可疑操作的自动响应。 还可将数据引入 Azure Sentinel 以做进一步调查。
+**指南**：对于控制平面上的帐户登录行为偏差 (例如 Azure 门户) ，请使用 Azure Active Directory 的标识保护和风险检测功能来配置对检测到的与用户标识相关的可疑操作的自动响应。 还可将数据引入 Azure Sentinel 以做进一步调查。
 
 * [如何查看 Azure Active Directory 有风险的登录](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
 
@@ -407,11 +407,11 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：Microsoft
+**责任**：Microsoft
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密传输中的所有敏感信息
 
-**指南**：默认情况下，Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传输数据时对数据进行保护。 Microsoft 的数据中心与连接到 Azure 服务的客户端系统协商建立 TLS 连接。 TLS 提供严格的身份验证，消息隐私性和完整性强（允许检测消息篡改、拦截和伪造），具有良好的互操作性，算法灵活，易于部署和使用。
+**指南**：默认情况下，在云服务和客户之间传输数据时，Microsoft 使用 (TLS) 协议的传输层安全性来保护数据。 Microsoft 的数据中心与连接到 Azure 服务的客户端系统协商建立 TLS 连接。 TLS 提供严格的身份验证，消息隐私性和完整性强（允许检测消息篡改、拦截和伪造），具有良好的互操作性，算法灵活，易于部署和使用。
 
 * [了解 Azure 传输中的加密](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit)
 
@@ -435,11 +435,11 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="47-use-host-based-data-loss-prevention-to-enforce-access-control"></a>4.7：使用基于主机的数据丢失防护来强制实施访问控制
 
-指南：不适用；此建议旨在用于计算资源。 Microsoft 管理客户密码箱的底层基础结构，并实施了严格控制来防止客户数据丢失或泄露。
+**指南**：不适用；此建议适用于计算资源。 Microsoft 管理客户密码箱的底层基础结构，并实施了严格控制来防止客户数据丢失或泄露。
 
 * [Azure 客户数据保护](https://docs.microsoft.com/azure/security/fundamentals/protection-customer-data)
 
@@ -479,13 +479,13 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：Microsoft
+**责任**：Microsoft
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自动操作系统修补管理解决方案
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -493,7 +493,7 @@ Azure 安全中心监视：不适用
 
 **指南**：不适用；此建议适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -527,11 +527,11 @@ Azure 安全中心监视：不适用
 
 * [如何查看 Azure 订阅](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [了解 Azure 基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [了解 azure RBAC) 的 Azure 基于角色的访问控制 (](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="62-maintain-asset-metadata"></a>6.2：维护资产元数据
 
@@ -543,9 +543,9 @@ Azure 安全中心监视：不适用
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
-**指导**：在适用的情况下，请使用标记、管理组和单独的订阅来组织和跟踪 Azure 资产。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
+**指南**：在适用的情况下，请使用标记、管理组和单独的订阅来组织和跟踪 Azure 资产。 定期核对清单，确保及时地从订阅中删除未经授权的资源。
 
-此外，使用 Azure 策略将对可以使用以下内置策略定义在客户订阅中创建的资源类型进行限制：
+此外，在 Azure Policy 中使用以下内置策略定义，对可以在客户订阅中创建的资源类型施加限制：
 - 不允许的资源类型
 - 允许的资源类型
 
@@ -571,7 +571,7 @@ Azure 安全中心监视：不适用
 
 **指导**：使用 Azure Policy 对可以在订阅中创建的资源类型施加限制。
 
-使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中存在的所有 Azure 资源已获得批准。
+使用 Azure Resource Graph 查询/发现订阅中的资源。 确保环境中的所有 Azure 资源均已获得批准。
 
 * [如何配置和管理 Azure Policy](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -607,7 +607,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：仅使用已批准的 Azure 服务
 
-**指南**：使用 Azure Policy 对可使用以下内置策略定义在订阅中创建的资源类型施加限制：
+**指南**：在 Azure Policy 中使用以下内置策略定义，对可以在你的订阅中创建的资源类型施加限制：
 - 不允许的资源类型
 - 允许的资源类型
 
@@ -647,7 +647,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
-**指导**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
+**指南**：不适用；此建议适用于 Azure 应用服务或计算资源上运行的 Web 应用程序。
 
 **Azure 安全中心监视**：不适用
 
@@ -669,7 +669,7 @@ Azure 安全中心监视：不适用
 
 **指导**：不适用；此项指导适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -685,7 +685,7 @@ Azure 安全中心监视：不适用
 
 **指导**：不适用；此项指导适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -701,7 +701,7 @@ Azure 安全中心监视：不适用
 
 **指导**：不适用；此项指导适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -717,7 +717,7 @@ Azure 安全中心监视：不适用
 
 **指导**：不适用；此项指导适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -733,7 +733,7 @@ Azure 安全中心监视：不适用
 
 **指导**：不适用；此项指导适用于计算资源。
 
-Azure 安全中心监视：不适用
+**Azure 安全中心监视**：不适用
 
 **责任**：不适用
 
@@ -781,7 +781,7 @@ Azure 安全中心监视：不适用
 
 **指南**：在支持 Azure 服务的基础主机（如客户密码箱）上启用了 Microsoft 反恶意软件。
 
-你负责预先扫描要上传到非计算 Azure 资源的任何内容。 Microsoft 无法访问客户数据，因此无法代表您对客户内容进行反恶意软件扫描。
+你需要负责预先扫描要上传到非计算 Azure 资源的任何内容。 Microsoft 无法访问客户数据，因此无法代表你对客户内容执行反恶意软件扫描。
 
 **Azure 安全中心监视**：不适用
 
@@ -845,7 +845,7 @@ Azure 安全中心监视：不适用
 
 * [Microsoft 安全响应中心事件分析](https://msrc-blog.microsoft.com/2019/07/01/inside-the-msrc-building-your-own-security-incident-response-process/)
 
-* [客户还可以利用 NIST 的计算机安全事件处理指南来帮助创建自己的事件响应计划](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
+* [客户还可以利用 NIST 的“计算机安全事件处理指南”来制定他们自己的事件响应计划](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)
 
 **Azure 安全中心监视**：不适用
 
@@ -853,9 +853,9 @@ Azure 安全中心监视：不适用
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指导**：安全中心为每条警报分配严重性，以帮助你优先处理应该最先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
+**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
-此外，请明确标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
+此外，应清楚地标记订阅（例如 生产、非生产），并创建命名系统来对 Azure 资源进行明确标识和分类。
 
 **Azure 安全中心监视**：是
 
@@ -863,7 +863,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
-**指导**：定期执行演练来测试系统的事件响应功能。 识别弱点和差距，并根据需要修改计划。
+**指导**：定期练习以测试系统的事件响应能力。 识别弱点和差距，并根据需要修改计划。
 
 * [请参阅 NIST 的刊物：Guide to Test, Training, and Exercise Programs for IT Plans and Capabilities](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf)（IT 规划和功能的测试、培训与演练计划指南）
 
@@ -873,7 +873,7 @@ Azure 安全中心监视：不适用
 
 ### <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10.4：提供安全事件联系人详细信息，并针对安全事件配置警报通知
 
-**指导**：如果 Microsoft 安全响应中心 (MSRC) 发现非法或未经授权的某方访问了客户的数据，Microsoft 将使用安全事件联系人信息与你取得联系。 事后审查事件，确保问题得到解决。
+**指南**：如果 Microsoft 安全响应中心 (MSRC) 发现非法或未经授权的某方访问了客户的数据，Microsoft 将使用安全事件联系人信息与你取得联系。 事后审查事件，确保问题得到解决。
 
 * [如何设置 Azure 安全中心安全联系人](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details)
 
@@ -891,7 +891,7 @@ Azure 安全中心监视：不适用
 
 **Azure 安全中心监视**：不适用
 
-责任：客户
+**责任**：客户
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
 
@@ -905,13 +905,13 @@ Azure 安全中心监视：不适用
 
 ## <a name="penetration-tests-and-red-team-exercises"></a>渗透测试和红队练习
 
-有关详细信息，请参阅[安全控制：渗透测试和红队练习](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。
+有关详细信息，请参阅[安全控制：渗透测试和红队演练](https://docs.microsoft.com/azure/security/benchmarks/security-control-penetration-tests-red-team-exercises)。
 
 ### <a name="111-conduct-regular-penetration-testing-of-your-azure-resources-and-ensure-remediation-of-all-critical-security-findings-within-60-days"></a>11.1：定期对 Azure 资源执行渗透测试，确保在 60 天内修正所有发现的关键安全问题
 
-**指南**： 
+**指导**： 
 
-* [遵循 Microsoft 订婚规则确保你的渗透测试不违反 Microsoft 政策](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
+* [请遵循 Microsoft 互动规则，确保你的渗透测试不违反 Microsoft 政策](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
 * [可在此处详细了解如何针对 Microsoft 托管云基础结构、服务和应用程序执行红队测试和实时站点渗透测试，以及 Microsoft 的相关策略](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 

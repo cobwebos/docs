@@ -2,13 +2,14 @@
 title: 对 Azure Batch 帐户使用专用终结点
 description: 了解如何使用专用终结点将专用连接到 Azure Batch 帐户。
 ms.topic: how-to
-ms.date: 06/12/2020
-ms.openlocfilehash: 04f52c8c58668b2978b38c65a94533a38c593888
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/07/2020
+ms.custom: references_regions
+ms.openlocfilehash: fac9523dc2ecabaec5d1c108e0ddd7536f01f077
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84754287"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004244"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>对 Azure Batch 帐户使用专用终结点
 
@@ -16,16 +17,11 @@ ms.locfileid: "84754287"
 
 通过使用[Azure 私有链接](../private-link/private-link-overview.md)，你可以通过[专用终结点](../private-link/private-endpoint-overview.md)连接到 Azure Batch 帐户。 专用终结点是虚拟网络中某个子网内的一组专用 IP 地址。 然后，可以通过专用 IP 地址限制对 Azure Batch 帐户的访问。
 
-专用链接允许用户从虚拟网络或任何对等互连的虚拟网络中访问 Azure Batch 帐户。 映射到专用链接的资源也可通过 VPN 或[Azure ExpressRoute](../expressroute/expressroute-introduction.md)通过专用对等互连在本地访问。
+专用链接允许用户从虚拟网络或任何对等互连的虚拟网络中访问 Azure Batch 帐户。 映射到专用链接的资源也可通过 VPN 或[Azure ExpressRoute](../expressroute/expressroute-introduction.md)通过专用对等互连在本地访问。 你可以使用 "[自动" 或 "手动" 审批方法](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)连接到使用 "专用" 链接配置的 Azure Batch 帐户。
 
-你可以使用 "[自动" 或 "手动" 审批方法](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)连接到使用 "专用" 链接配置的 Azure Batch 帐户。
+当前在以下 Azure 区域提供对 Azure Batch 中的专用连接的支持：美国中部、美国西部2、美国东部、美国中南部、US Gov 弗吉尼亚州、US Gov 亚利桑那州、东亚、法国和英国南部。
 
 本文介绍了创建专用批处理帐户并使用专用终结点访问该帐户的步骤。
-
-> [!IMPORTANT]
-> 对 Azure Batch 中的专用连接的支持目前为美国西部、美国西部2、美国东部、美国中南部、US Gov 弗吉尼亚州和 US Gov 亚利桑那州区域提供公共预览版。
-> 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。
-> 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="azure-portal"></a>Azure 门户
 
@@ -55,7 +51,7 @@ ms.locfileid: "84754287"
 
 :::image type="content" source="media/private-connectivity/access-private.png" alt-text="专用终结点 DNS 设置和 IP 地址":::
 
-## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
+## <a name="azure-resource-manager-template"></a>Azure Resource Manager 模板
 
 [使用 Azure 资源管理器模板创建 Batch 帐户](quick-create-template.md)时，请修改模板，将**publicNetworkAccess**设置为 "**已禁用**"，如下所示。
 

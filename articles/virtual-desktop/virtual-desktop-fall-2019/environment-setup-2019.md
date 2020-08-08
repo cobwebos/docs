@@ -1,24 +1,22 @@
 ---
-title: Windows 虚拟桌面（经典）环境-Azure
-description: Windows 虚拟桌面（经典）环境的基本元素。
-services: virtual-desktop
+title: Windows 虚拟桌面 (经典) 环境-Azure
+description: Windows 虚拟桌面 (经典) 环境的基本元素。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2c019dd187c0ccd7a63f71c0373a0388135afda9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4fa281f6435013e9feb6808aab04ffa69c5f96c4
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285010"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008604"
 ---
-# <a name="windows-virtual-desktop-classic-environment"></a>Windows 虚拟桌面（经典）环境
+# <a name="windows-virtual-desktop-classic-environment"></a>Windows 虚拟桌面 (经典) 环境
 
 >[!IMPORTANT]
->此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。 如果尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../environment-setup.md)。
+>本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../environment-setup.md)。
 
 Windows 虚拟桌面是一种服务，使用户能够轻松安全地访问其虚拟化桌面和 RemoteApps。 本主题将详细介绍 Windows 虚拟桌面环境的一般结构。
 
@@ -44,7 +42,7 @@ Windows 虚拟桌面租户是用于管理 Windows 虚拟桌面环境的主要界
 - RemoteApp，用户可在其中访问单独选择并发布到应用组的 RemoteApps
 - 桌面，用户在其中访问完整桌面
 
-默认情况下，当你创建主机池时，将自动创建一个桌面应用组（名为 "桌面应用程序组"）。 你可以随时删除此应用组。 但是，如果存在桌面应用组，则无法在主机池中创建另一个桌面应用组。 若要发布 RemoteApps，必须创建 RemoteApp 应用组。 可以创建多个 RemoteApp 应用组来适应不同的辅助角色。 不同的 RemoteApp 应用组还可以包含重叠的 RemoteApps。
+默认情况下，在创建主机池时，将自动创建一个名为 "桌面应用程序组" )  (桌面应用组。 你可以随时删除此应用组。 但是，如果存在桌面应用组，则无法在主机池中创建另一个桌面应用组。 若要发布 RemoteApps，必须创建 RemoteApp 应用组。 可以创建多个 RemoteApp 应用组来适应不同的辅助角色。 不同的 RemoteApp 应用组还可以包含重叠的 RemoteApps。
 
 若要将资源发布到用户，你必须将其分配给应用组。 将用户分配到应用组时，请考虑以下事项：
 
@@ -53,7 +51,7 @@ Windows 虚拟桌面租户是用于管理 Windows 虚拟桌面环境的主要界
 
 ## <a name="tenant-groups"></a>租户组
 
-在 Windows 虚拟桌面中，大多数设置和配置都会在 Windows 虚拟桌面租户中发生。 Windows 虚拟桌面租户包含主机池、应用组和应用组用户分配。 但是，在某些情况下，你可能需要同时管理多个 Windows 虚拟桌面租户，尤其是在你是云服务提供商（CSP）或托管合作伙伴时。 在这些情况下，可以使用自定义 Windows 虚拟桌面租户组放置每个客户的 Windows 虚拟桌面租户，并集中管理访问权限。 但是，如果你只管理单个 Windows 虚拟桌面租户，则租户组概念不适用，你可以继续操作并管理默认租户组中存在的租户。
+在 Windows 虚拟桌面中，大多数设置和配置都会在 Windows 虚拟桌面租户中发生。 Windows 虚拟桌面租户包含主机池、应用组和应用组用户分配。 但是，在某些情况下，你可能需要同时管理多个 Windows 虚拟桌面租户，特别是当你是云服务提供商 (CSP) 或托管合作伙伴时。 在这些情况下，可以使用自定义 Windows 虚拟桌面租户组放置每个客户的 Windows 虚拟桌面租户，并集中管理访问权限。 但是，如果你只管理单个 Windows 虚拟桌面租户，则租户组概念不适用，你可以继续操作并管理默认租户组中存在的租户。
 
 ## <a name="end-users"></a>最终用户
 

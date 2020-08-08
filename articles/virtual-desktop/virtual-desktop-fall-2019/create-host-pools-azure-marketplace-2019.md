@@ -1,19 +1,17 @@
 ---
 title: 使用 Azure 市场创建 Windows 虚拟桌面（经典）主机池 - Azure
 description: 如何使用 Azure 市场创建 Windows 虚拟桌面（经典）主机池。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3f0db05459b8e81764915c5dffb373e7f19edbc4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
-ms.translationtype: HT
+ms.openlocfilehash: 04184a658ae1efd03afd3e920818eb5317bc7553
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291311"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008587"
 ---
 # <a name="tutorial-create-a-host-pool-in-windows-virtual-desktop-classic"></a>教程：在 Windows 虚拟桌面（经典）中创建主机池
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: 9a2ec2e60ae38506d716a244872baddbbdf570e7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 956e3e83686677f3eb9895354a008783df5f7dcd
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184967"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003698"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>如何为 Azure Redis 缓存设置异地复制
 
@@ -24,7 +24,7 @@ ms.locfileid: "86184967"
 
 若要在两个缓存之间配置异地复制，必须满足以下先决条件：
 
-- 这两个缓存是[高级层](cache-premium-tier-intro.md)缓存。
+- 这两个缓存是[高级层](cache-overview.md#service-tiers)缓存。
 - 这两个缓存在同一 Azure 订阅中。
 - 辅助链接缓存的大小等于或大于主链接缓存的大小。
 - 这两个缓存都已创建且处于运行状态。
@@ -186,5 +186,6 @@ ms.locfileid: "86184967"
 若要启动客户发起的故障转移，请先取消链接缓存。 然后将 Redis 客户端更改为使用（以前链接的）辅助缓存的连接终结点。 取消链接两个缓存后，辅助缓存将再次成为常规的读取写入缓存，并直接从 Redis 客户端接受请求。
 
 ## <a name="next-steps"></a>后续步骤
+详细了解 Azure Cache for Redis 功能。
 
-了解有关 [Azure Redis 缓存高级层](cache-premium-tier-intro.md)的详细信息。
+* [适用于 Redis 服务层的 Azure 缓存](cache-overview.md#service-tiers)

@@ -1,14 +1,14 @@
 ---
 title: 跨租户管理体验
 description: Azure 委派资源管理可实现跨租户管理体验。
-ms.date: 07/31/2020
+ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: a6d5c7e06ed59ab76b15f4f8ae880408dc6f7835
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9ec3896b85f825b22dc9b57d4220e1cdcdf3e390
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500872"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003624"
 ---
 # <a name="cross-tenant-management-experiences"></a>跨租户管理体验
 
@@ -33,7 +33,9 @@ Azure Lighthouse 允许更灵活地管理多个客户的资源，而无需登录
 
 可以直接在门户中对委派资源执行管理任务，也可以使用 API 和管理工具（如 Azure CLI 和 Azure PowerShell）对委派资源执行管理任务。 在处理委托的资源时，只要跨租户管理支持该功能，并且用户具有相应的权限，可以使用所有现有 API。
 
-Azure CLI 命令（如[az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) ）显示每个订阅的**homeTenantId**和**managedByTenants**属性，使你能够确定返回的订阅是属于你的服务提供商租户还是属于托管客户租户。
+Azure PowerShell [AzSubscription cmdlet](/powershell/module/Az.Accounts/Get-AzSubscription)显示 `HomeTenantId` `ManagedByTenantIds` 每个订阅的和属性，使你可以确定返回的订阅是属于托管客户租户还是属于你的管理租户。
+
+同样，Azure CLI 命令（如[az account list](/cli/azure/account?view=azure-cli-latest#az-account-list) ）会显示 `homeTenantId` 和 `managedByTenants` 属性。
 
 > [!TIP]
 > 如果在使用 Azure CLI 时看不到这些值，请尝试通过先运行 `az account clear` 再运行 `az login --identity` 来清除缓存。
@@ -46,12 +48,12 @@ Azure CLI 命令（如[az account list](/cli/azure/account?view=azure-cli-latest
 
 [Azure Arc](../../azure-arc/index.yml)：
 
-- 大规模管理混合服务器-[用于服务器的 Azure Arc （预览版）](../../azure-arc/servers/overview.md)：
+- 大规模管理混合服务器-[用于服务器的 Azure Arc (预览) ](../../azure-arc/servers/overview.md)：
   - [将 Azure 外部的 Windows Server 或 Linux 计算机连接](../../azure-arc/servers/onboard-portal.md)到 Azure 中的委派订阅和/或资源组
   - 使用 Azure 构造（如Azure Policy 和标记）管理连接的计算机
   - 确保跨客户的混合环境应用相同的一组策略
   - 使用 Azure 安全中心监视客户混合环境中的符合性
-- 大规模管理混合 Kubernetes 群集-[启用 Azure Arc Kubernetes （预览版）](../../azure-arc/kubernetes/overview.md)：
+- 大规模管理混合 Kubernetes 群集-[启用 Azure Arc 的 Kubernetes (预览) ](../../azure-arc/kubernetes/overview.md)：
   - 将[Kubernetes 群集连接](../../azure-arc/kubernetes/connect-cluster.md)到 azure 中的委托订阅和/或资源组
   - 对连接的群集[使用 GitOps](../../azure-arc/kubernetes/use-gitops-connected-cluster.md)
   - 跨连接群集强制实施策略
@@ -68,7 +70,7 @@ Azure CLI 命令（如[az account list](/cli/azure/account?view=azure-cli-latest
 
 [Azure 成本管理 + 计费](../../cost-management-billing/index.yml)：
 
-- 在管理租户中，CSP 合作伙伴可以查看、管理和分析 Azure 计划下的客户的预税消耗成本（不包括购买）。 费用将基于零售费率和合作伙伴对客户订阅的基于 Azure 角色的访问控制（Azure RBAC）访问权限。
+- 从管理租户中，CSP 合作伙伴可以查看、管理和分析预计费的消耗成本 (不包含在 Azure 计划下的客户) 购买。 费用将基于零售价和 Azure 基于角色的访问控制， (合作伙伴对客户订阅的 Azure RBAC) 访问权限。
 
 [Azure Kubernetes 服务 (AKS)](../../aks/index.yml)：
 
@@ -84,7 +86,7 @@ Azure CLI 命令（如[az account list](/cli/azure/account?view=azure-cli-latest
 
 [Azure 网络](../../networking/networking-overview.md)：
 
-- 部署和管理客户租户中的[Azure 虚拟网络](../../virtual-network/index.yml)和虚拟网络接口卡（vnic）
+- 在客户租户中部署和管理[Azure 虚拟网络](../../virtual-network/index.yml)和虚拟网络接口卡 (vnic) 
 - 部署和配置 [Azure 防火墙](../../firewall/overview.md)，以保护客户的虚拟网络资源
 - 为客户管理 [Azure 虚拟 WAN](../../virtual-wan/virtual-wan-about.md)、[ExpressRoute](../../expressroute/expressroute-introduction.md)、[VPN 网关](../../vpn-gateway/vpn-gateway-about-vpngateways.md)等连接服务
 - 使用 Azure Lighthouse 支持 [Azure 网络 MSP 计划](../../networking/networking-partners-msp.md)的关键方案
@@ -132,7 +134,7 @@ Azure CLI 命令（如[az account list](/cli/azure/account?view=azure-cli-latest
 
 [Azure Site Recovery](../../site-recovery/index.yml)：
 
-- 为客户租户中的 Azure 虚拟机管理灾难恢复选项（请注意，不能使用 `RunAs` 帐户复制 VM 扩展）
+- 为客户租户中的 Azure 虚拟机管理灾难恢复选项 (请注意，不能使用 `RunAs` 帐户复制 VM 扩展) 
 
 [Azure 虚拟机](../../virtual-machines/index.yml)：
 
@@ -144,12 +146,12 @@ Azure CLI 命令（如[az account list](/cli/azure/account?view=azure-cli-latest
 
 支持请求：
 
-- 在 Azure 门户中为委托的资源（选择可用于委派的作用域的支持计划）[打开**帮助和支持**请求](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started)
+- 在委派资源的 Azure 门户中[打开支持请求**Help + support** ](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) ， (选择可用于委派的作用域的支持计划) 
 
 ## <a name="current-limitations"></a>当前限制
 对于所有方案，都请注意以下当前限制：
 
-- 可以使用 Azure 委派资源管理执行 Azure 资源管理器处理的请求。 这些请求的操作 URI 都以 `https://management.azure.com` 开头。 但是，Azure 委派的资源管理不支持由资源类型的实例（如 Key Vault 机密访问或存储数据访问）处理的请求。 这些请求的操作 URI 通常以实例特有的地址开头，例如 `https://myaccount.blob.core.windows.net` 或 `https://mykeyvault.vault.azure.net/`。 后者通常也是数据操作，而不是管理操作。
+- 可以使用 Azure 委派资源管理执行 Azure 资源管理器处理的请求。 这些请求的操作 URI 都以 `https://management.azure.com` 开头。 但是，Azure 委派的资源管理不支持 Key Vault 机密访问或存储数据访问)  (资源类型实例处理的请求。 这些请求的操作 URI 通常以实例特有的地址开头，例如 `https://myaccount.blob.core.windows.net` 或 `https://mykeyvault.vault.azure.net/`。 后者通常也是数据操作，而不是管理操作。
 - 角色分配必须使用基于角色的访问控制 (RBAC) [内置角色](../../role-based-access-control/built-in-roles.md)。 除所有者或具有权限的任何内置角色外，Azure 委托资源管理当前支持所有内置角色 [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) 。 仅在[向托管标识分配角色](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)时才支持使用用户访问管理员角色。  不支持自定义角色和[经典订阅管理员角色](../../role-based-access-control/classic-administrators.md)。
 - 尽管你可以加入使用 Azure Databricks 的订阅，但管理租户中的用户目前无法在委托订阅上启动 Azure Databricks 工作区。
 - 尽管可以加入具有资源锁的订阅和资源组，但这些锁定不会阻止管理租户中的用户执行操作。 用于保护系统管理资源（例如由 Azure 托管应用程序或 Azure 蓝图创建的资源）的[拒绝分配](../../role-based-access-control/deny-assignments.md)（系统分配的拒绝分配）会阻止管理租户中的用户对这些资源进行操作；但是，目前客户租户中的用户无法创建自己的拒绝分配（用户分配的拒绝分配）。

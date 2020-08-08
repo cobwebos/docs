@@ -1,24 +1,22 @@
 ---
-title: 利用新的会话主机展开现有 Windows 虚拟桌面（经典）主机池-Azure
-description: 如何使用 Windows 虚拟桌面（经典）中的新会话主机扩展现有的主机池。
-services: virtual-desktop
+title: 利用新的会话主机展开现有 Windows 虚拟桌面 (经典) 主机池-Azure
+description: 如何使用 Windows 虚拟桌面 (经典) 中的新会话主机展开现有的主机池。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ecdd63b054fda7f973898b0b3a42a29fc94c03bb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 61cf28b0f1ebee6a0312ec3f23f22b01c6c4919e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285027"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009165"
 ---
-# <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>使用 Windows 虚拟桌面（经典）中的新会话主机展开现有的主机池
+# <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>使用 Windows 虚拟桌面 (经典) 中的新会话主机展开现有的主机池
 
 >[!IMPORTANT]
->此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。 如果尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../expand-existing-host-pool.md)。
+>本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../expand-existing-host-pool.md)。
 
 当你在主机池内提高使用率时，可能需要使用新的会话主机扩展现有的主机池以处理新负载。
 
@@ -26,7 +24,7 @@ ms.locfileid: "87285027"
 
 ## <a name="what-you-need-to-expand-the-host-pool"></a>扩展主机池所需的条件
 
-在开始之前，请确保已使用以下方法之一创建了主机池和会话主机虚拟机（Vm）：
+在开始之前，请确保已使用以下方法之一) 创建了主机池和会话主机虚拟机 (Vm：
 
 - [Azure Marketplace 产品/服务](create-host-pools-azure-marketplace-2019.md)
 - [GitHub Azure 资源管理器模板](create-host-pools-arm-template.md)
@@ -76,7 +74,7 @@ ms.locfileid: "87285027"
 
 按照[使用 Azure Marketplace 创建主机池](create-host-pools-azure-marketplace-2019.md)中的说明进行操作，直到[运行 azure marketplace 产品/服务来预配新的主机池](create-host-pools-azure-marketplace-2019.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)。 转到该点时，需要输入每个选项卡的下列信息：
 
-### <a name="basics"></a>基础
+### <a name="basics"></a>基本信息
 
 本部分中的所有值应与首次创建主机池和会话主机 Vm 时提供的值匹配（*默认桌面用户*除外）：
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 11b532b5ece10c8a9ac6dad61e4ca64a9f19f901
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 4e62fd43c062d9d33292eac36a16d809bc926c98
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445203"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009828"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>适用于 Windows 虚拟机的 Azure 安全基线
 
@@ -28,7 +28,7 @@ ms.locfileid: "87445203"
 
 ### <a name="11-protect-azure-resources-within-virtual-networks"></a>1.1：保护虚拟网络中的 Azure 资源
 
-**指南**：创建 Azure 虚拟机（VM）时，必须创建虚拟网络（VNet）或使用现有的 VNet，并使用子网配置 VM。 确保所有部署的子网均具有一个网络安全组，该安全组与特定于应用程序的受信任端口和源的网络访问控制一起应用。
+**指南**： (VM) 创建 Azure 虚拟机时，必须创建虚拟网络 (VNet) 或使用现有 VNet，并使用子网配置 VM。 确保所有部署的子网均具有一个网络安全组，该安全组与特定于应用程序的受信任端口和源的网络访问控制一起应用。
 
 或者，如果你有用于集中式防火墙的特定用例，还可以使用 Azure 防火墙来满足这些要求。
 
@@ -42,11 +42,11 @@ ms.locfileid: "87445203"
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="12-monitor-and-log-the-configuration-and-traffic-of-virtual-networks-subnets-and-network-interfaces"></a>1.2：监视和记录虚拟网络、子网和网络接口的配置和流量
 
-**指南**：使用 Azure 安全中心来识别和遵循网络保护建议，帮助保护 azure 中的 Azure 虚拟机（VM）资源。 启用 NSG 流日志，并将日志发送到存储帐户，以便对 Vm 进行异常活动的流量审核。
+**指南**：使用 Azure 安全中心来识别和跟踪网络保护建议，以帮助保护 azure 中的 Azure 虚拟机 (VM) 资源。 启用 NSG 流日志，并将日志发送到存储帐户，以便对 Vm 进行异常活动的流量审核。
 
 * [如何启用 NSG 流日志](../../network-watcher/network-watcher-nsg-flow-logging-portal.md)
 
@@ -54,13 +54,13 @@ ms.locfileid: "87445203"
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="13-protect-critical-web-applications"></a>1.3：保护关键 Web 应用程序
 
-**指南**：如果使用虚拟机（VM）来托管 web 应用程序，请使用 VM 子网上的网络安全组（NSG）来限制允许通信的网络流量、端口和协议。 将 Nsg 配置为仅允许应用程序所需的流量时，请遵循最低权限网络方法。
+**指南**：如果使用虚拟机 (vm) 来托管 web 应用程序，请使用 vm 子网上 (NSG) 的网络安全组，以限制允许哪些网络流量、端口和协议进行通信。 将 Nsg 配置为仅允许应用程序所需的流量时，请遵循最低权限网络方法。
 
-你还可以将 Azure Web 应用程序防火墙（WAF）部署在关键 Web 应用程序的前面，以便对传入流量进行额外检查。 启用 WAF 的诊断设置，并将日志引入存储帐户、事件中心或 Log Analytics 工作区。
+你还可以将 Azure Web 应用程序防火墙 (WAF) 部署在关键 Web 应用程序的前面，以便对传入流量进行额外检查。 启用 WAF 的诊断设置，并将日志引入存储帐户、事件中心或 Log Analytics 工作区。
 
 * [使用 Azure 门户创建具有 Web 应用程序防火墙的应用程序网关](../../web-application-firewall/ag/application-gateway-web-application-firewall-portal.md)
 
@@ -68,15 +68,15 @@ ms.locfileid: "87445203"
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="14-deny-communications-with-known-malicious-ip-addresses"></a>1.4：拒绝与已知恶意 IP 地址的通信
 
-**指南**：对虚拟网络启用分布式拒绝服务（DDoS）标准保护，以防止 DDoS 攻击。 使用 Azure 安全中心的威胁智能，你可以监视与已知的恶意 IP 地址的通信。 在每个虚拟网络段上配置适当的 Azure 防火墙，启用威胁情报，并将其配置为针对恶意网络流量 "警报和拒绝"。
+**指南**：在虚拟网络上启用分布式拒绝服务 (DDoS) 标准保护，以防范 DDoS 攻击。 使用 Azure 安全中心的威胁智能，你可以监视与已知的恶意 IP 地址的通信。 在每个虚拟网络段上配置适当的 Azure 防火墙，启用威胁情报，并将其配置为针对恶意网络流量 "警报和拒绝"。
 
 你可以使用 Azure 安全中心的实时网络访问权限，在有限期限内限制 Windows 虚拟机暴露给批准的 IP 地址。 此外，使用 Azure 安全中心的自适应网络强化建议基于实际流量和威胁智能限制端口和源 IPs 的 NSG 配置。
 
-* [如何配置 DDoS 保护](../../virtual-network/manage-ddos-protection.md)
+* [如何配置 DDoS 防护](../../virtual-network/manage-ddos-protection.md)
 
 * [如何部署 Azure 防火墙](../../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -88,7 +88,7 @@ ms.locfileid: "87445203"
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="15-record-network-packets"></a>1.5：记录网络数据包
 
@@ -114,7 +114,7 @@ ms.locfileid: "87445203"
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="17-manage-traffic-to-web-applications"></a>1.7：管理发往 Web 应用程序的流量
 
@@ -142,7 +142,7 @@ ms.locfileid: "87445203"
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9：维护网络设备的标准安全配置
 
-**指南**：使用 azure 策略为 Azure 虚拟机（VM）定义和实施标准安全配置。 你还可以使用 Azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、角色分配和 Azure 策略分配）来简化大规模的 Azure VM 部署。 可以将蓝图应用于订阅，并通过蓝图版本控制启用资源管理。
+**指南**：使用 azure 策略为 Azure 虚拟机 (VM) 定义和实现标准安全配置。 你还可以使用 Azure 蓝图，通过在单个蓝图定义中打包关键环境项目（例如 Azure 资源管理器模板、角色分配和 Azure 策略分配）来简化大规模的 Azure VM 部署。 可以将蓝图应用于订阅，并通过蓝图版本控制启用资源管理。
 
 * [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -156,7 +156,7 @@ ms.locfileid: "87445203"
 
 ### <a name="110-document-traffic-configuration-rules"></a>1.10：阐述流量配置规则
 
-**指南**：对于网络安全组（NSG）以及为 Windows 虚拟机配置的网络安全和流量流相关的其他资源，你可以使用标记。 对于单独的 NSG 规则，请使用 "说明" 字段来指定允许进出网络流量的任何规则的业务需求和/或持续时间。
+**指南**：你可以使用网络安全组标记 (NSG) 和其他与为 Windows 虚拟机配置的网络安全和流量流相关的资源。 对于单独的 NSG 规则，请使用 "说明" 字段来指定允许进出网络流量的任何规则的业务需求和/或持续时间。
 
 * [如何创建和使用标记](../../azure-resource-manager/management/tag-resources.md)
 
@@ -172,7 +172,7 @@ ms.locfileid: "87445203"
 
 **指南**：使用 Azure 活动日志监视对虚拟机相关的网络资源配置的更改。 在 Azure Monitor 中创建警报，在对关键网络设置或资源进行更改时将触发此警报。
 
-使用 Azure 策略来验证（和/或修正）与 Windows 虚拟机相关的网络资源的配置。
+使用 Azure 策略来验证 (和/或修正与 Windows 虚拟机相关的网络资源) 配置。
 
 * [如何查看和检索 Azure 活动日志事件](../../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
@@ -194,7 +194,7 @@ ms.locfileid: "87445203"
 
 **指南**： Microsoft 维护 Azure 资源的时间源，但你可以选择管理 Windows 虚拟机的时间同步设置。
 
-* [如何配置 Azure 计算资源的时间同步](./time-sync.md)
+* [如何为 Azure 计算资源配置时间同步](./time-sync.md)
 
 **Azure 安全中心监视**：不可用
 
@@ -208,13 +208,13 @@ ms.locfileid: "87445203"
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 
-**指南**：活动日志可用于审核虚拟机资源上执行的操作和操作。 活动日志包含资源的所有写入操作（PUT、POST、DELETE），读取操作除外（GET）。 活动日志可用于在故障排除时查找错误，或监视组织中的用户如何修改资源。
+**指南**：活动日志可用于审核虚拟机资源上执行的操作和操作。 活动日志包含对资源的所有写入操作 (PUT、POST、DELETE) 除读取操作外， (获取) 。 活动日志可用于在故障排除时查找错误，或监视组织中的用户如何修改资源。
 
-通过在虚拟机（VM）上部署诊断扩展，启用来宾 OS 诊断数据的收集。 可以使用诊断扩展从 Azure 虚拟机收集诊断数据，例如应用程序日志或性能计数器。
+通过在虚拟机上部署诊断扩展 (VM) 来启用来宾 OS 诊断数据的收集。 可以使用诊断扩展从 Azure 虚拟机收集诊断数据，例如应用程序日志或性能计数器。
 
 若要深入了解虚拟机支持的应用程序和服务，可以同时启用用于 VM 的 Azure Monitor 和 Application insights。 利用 Application Insights，你可以监视应用程序并捕获遥测数据（如 HTTP 请求、异常等），以便你可以将 Vm 与应用程序之间的问题关联起来。
 
@@ -246,7 +246,7 @@ ms.locfileid: "87445203"
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="25-configure-security-log-storage-retention"></a>2.5：配置安全日志存储保留期
 
@@ -258,11 +258,11 @@ ms.locfileid: "87445203"
 
 **Azure 安全中心监视**：不可用
 
-**责任**：客户
+责任：客户
 
 ### <a name="26-monitor-and-review-logs"></a>2.6：监视和查看日志
 
-**指南**：启用 Log Analytics 代理（也称为 MICROSOFT MONITORING AGENT （MMA）），并将其配置为将日志发送到 Log Analytics 工作区。 Windows 代理将不同源中收集的数据发送到 Azure Monitor 中的 Log Analytics 工作区，以及监视解决方案中定义的任何唯一日志或指标。
+**指南**：启用 Log Analytics 代理，也称为 MICROSOFT MONITORING AGENT (MMA) ，并将其配置为将日志发送到 Log Analytics 工作区。 Windows 代理将不同源中收集的数据发送到 Azure Monitor 中的 Log Analytics 工作区，以及监视解决方案中定义的任何唯一日志或指标。
 
 分析和监视日志中的异常行为，并定期查看结果。 使用 Azure Monitor 查看日志数据并执行查询。
 
@@ -308,7 +308,7 @@ ms.locfileid: "87445203"
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="29-enable-dns-query-logging"></a>2.9：启用 DNS 查询日志记录
 
@@ -320,7 +320,7 @@ ms.locfileid: "87445203"
 
 ### <a name="210-enable-command-line-audit-logging"></a>2.10：启用命令行审核日志记录
 
-**指南**： Azure 安全中心为 Azure 虚拟机（VM）提供安全事件日志监视。 安全中心在所有受支持的 Azure Vm 以及在启用自动预配时创建的任何新的 Azure Vm 以及手动安装代理时，预配 Microsoft Monitoring Agent。 该代理可启用进程创建事件 4688 和事件 4688 内的 CommandLine 字段。 VM 上创建的新进程由事件日志记录，并由安全中心检测服务监视。
+**指南**： Azure 安全中心为 Azure 虚拟机 (VM) 提供安全事件日志监视。 安全中心在所有受支持的 Azure Vm 以及在启用自动预配时创建的任何新的 Azure Vm 以及手动安装代理时，预配 Microsoft Monitoring Agent。 该代理可启用进程创建事件 4688 和事件 4688 内的 CommandLine 字段。 VM 上创建的新进程由事件日志记录，并由安全中心检测服务监视。
 
 * [Azure 安全中心中的数据收集](../../security-center/security-center-enable-data-collection.md#data-collection-tier)
 
@@ -342,7 +342,7 @@ ms.locfileid: "87445203"
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2：在适用的情况下更改默认密码
 
@@ -354,17 +354,17 @@ Azure 安全中心监视：不可用
 
 ### <a name="33-use-dedicated-administrative-accounts"></a>3.3：使用专用管理帐户
 
-**指南**：创建有关使用可访问虚拟机的专用管理帐户的标准操作过程。 使用 Azure 安全中心的标识和访问管理来监视管理帐户的数量。 用于访问 Azure 虚拟机资源的任何管理员帐户还可以由 Azure Privileged Identity Management （PIM）进行管理。 Azure Privileged Identity Management 提供多个选项，例如，在假设角色之前需要多重身份验证，并提供委派选项，使权限仅适用于特定的时间范围并需要审批者。
+**指南**：创建有关使用可访问虚拟机的专用管理帐户的标准操作过程。 使用 Azure 安全中心的标识和访问管理来监视管理帐户的数量。 用于访问 Azure 虚拟机资源的任何管理员帐户还可以由 Azure Privileged Identity Management (PIM) 进行管理。 Azure Privileged Identity Management 提供多个选项，例如，在假设角色之前需要多重身份验证，并提供委派选项，使权限仅适用于特定的时间范围并需要审批者。
 
-* [了解 Azure 安全中心的标识和访问](../../security-center/security-center-identity-access.md)
+* [了解 Azure 安全中心标识和访问](../../security-center/security-center-identity-access.md)
 
 * [特权标识管理器的信息](../../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
-### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory 单一登录（SSO）
+### <a name="34-use-azure-active-directory-single-sign-on-sso"></a>3.4：使用 Azure Active Directory (SSO 的单一登录) 
 
 **指导**：尽可能使用 SSO 和 Azure Active Directory，而不是为每个服务配置单独的单独凭据。 请使用 Azure 安全中心标识和访问管理建议。
 
@@ -386,7 +386,7 @@ Azure 安全中心监视：不可用
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6：对管理任务使用 Azure 托管的安全工作站
 
@@ -402,11 +402,11 @@ Azure 安全中心监视：不可用
 
 ### <a name="37-log-and-alert-on-suspicious-activities-from-administrative-accounts"></a>3.7：记录来自管理帐户的可疑活动并对其发出警报
 
-**指南**：在环境中发生可疑或不安全活动时，使用 AZURE AD PRIVILEGED IDENTITY MANAGEMENT （PIM）生成日志和警报。 使用 Azure AD 风险检测查看有关风险用户行为的警报和报告。 客户可以选择将 Azure 安全中心风险检测警报引入 Azure Monitor，并使用操作组配置自定义警报/通知。
+**指南**：在环境中发生可疑或不安全活动时，使用 AZURE AD PRIVILEGED IDENTITY MANAGEMENT (PIM) 生成日志和警报。 使用 Azure AD 风险检测查看有关风险用户行为的警报和报告。 客户可以选择将 Azure 安全中心风险检测警报引入 Azure Monitor，并使用操作组配置自定义警报/通知。
 
 * [如何部署 Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [了解 Azure 安全中心风险检测（可疑活动）](../../active-directory/identity-protection/overview-identity-protection.md)
+* [了解 Azure 安全中心风险检测 (可疑活动) ](../../active-directory/identity-protection/overview-identity-protection.md)
 
 * [如何将 Azure 活动日志集成到 Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -414,7 +414,7 @@ Azure 安全中心监视：不可用
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="38-manage-azure-resources-from-only-approved-locations"></a>3.8：仅从批准的位置管理 Azure 资源
 
@@ -480,7 +480,7 @@ Azure 安全中心监视：不可用
 
 ### <a name="313-provide-microsoft-with-access-to-relevant-customer-data-during-support-scenarios"></a>3.13：在支持场合下为 Microsoft 提供对相关客户数据的访问权限
 
-**指南**：在第三方需要访问客户数据（例如在支持请求期间）的情况下，请使用 Azure 虚拟机客户密码箱查看和批准或拒绝客户数据访问请求。
+**指南**：在第三方需要访问客户数据 (如) 支持请求期间，请使用 Azure 虚拟机客户密码箱查看和批准或拒绝客户数据访问请求。
 
 * [了解客户密码箱](../../security/fundamentals/customer-lockbox-overview.md)
 
@@ -500,11 +500,11 @@ Azure 安全中心监视：不可用
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 资源应由虚拟网络/子网分隔、相应标记并在网络安全组（NSG）或 Azure 防火墙内受保护。 对于存储或处理敏感数据的虚拟机，请实施相应的策略和过程，以在不使用这些虚拟机时将其关闭。
+**指导**：为开发、测试和生产实现单独的订阅和/或管理组。 资源应由虚拟网络/子网分开、正确标记并在网络安全组 (NSG) 或 Azure 防火墙内进行保护。 对于存储或处理敏感数据的虚拟机，请实施相应的策略和过程，以在不使用这些虚拟机时将其关闭。
 
 * [如何创建其他 Azure 订阅](../../cost-management-billing/manage/create-subscription.md)
 
@@ -518,7 +518,7 @@ Azure 安全中心监视：不可用
 
 * [如何部署 Azure 防火墙](../../firewall/tutorial-firewall-deploy-portal.md)
 
-* [如何配置警报或警报，以及如何拒绝 Azure 防火墙](../../firewall/threat-intel.md)
+* [如何通过 Azure 防火墙配置“警报”或“发出警报并拒绝”](../../firewall/threat-intel.md)
 
 **Azure 安全中心监视**：不适用
 
@@ -538,9 +538,9 @@ Azure 安全中心监视：不可用
 
 ### <a name="44-encrypt-all-sensitive-information-in-transit"></a>4.4：加密传输中的所有敏感信息
 
-**指南**：通过多种方式对运行 Windows 的虚拟机（VM）之间的传输到、来源和之间的数据进行加密，具体取决于连接的性质，如连接到 RDP 或 SSH 会话中的 VM 时。
+**指南**：在运行 Windows 的虚拟机 (VM) 之间传输到、从和之间传输的数据采用多种方式进行加密，具体取决于连接的性质，例如连接到 RDP 或 SSH 会话中的 VM 时。
 
-Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传输数据时对数据进行保护。
+Microsoft 使用传输层安全性 (TLS) 协议，在云服务和客户之间传输数据时对数据进行保护。
 
 * [VM 中的传输中加密](../../security/fundamentals/encryption-overview.md#in-transit-encryption-in-vms)
 
@@ -556,11 +556,11 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **责任**：客户
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问
 
-**指南**：使用基于角色的访问控制（RBAC），可以在团队中对职责进行隔离，只向 VM 上的用户授予执行作业所需的访问权限量。 可以仅允许某些操作，而不是向 VM 上的每个人授予不受限制的权限。 可以使用 Azure CLI 或 Azure PowerShell 为 Azure 门户中的 VM 配置访问控制。
+**指南**：使用 azure RBAC) 的 azure 基于角色的访问控制 (，可以在团队中对职责进行隔离，只向 VM 上的用户授予执行作业所需的访问权限量。 可以仅允许某些操作，而不是向 VM 上的每个人授予不受限制的权限。 可以使用 Azure CLI 或 Azure PowerShell 为 Azure 门户中的 VM 配置访问控制。
 
-* [Azure 资源的基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md)
+* [Azure RBAC](../../role-based-access-control/overview.md)
 
 * [Azure 内置角色](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)
 
@@ -578,7 +578,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 ### <a name="48-encrypt-sensitive-information-at-rest"></a>4.8：静态加密敏感信息
 
-**指南**：使用服务器端加密或 Azure 磁盘加密（ADE）加密 WINDOWS 虚拟机（VM）上的虚拟磁盘。 Azure 磁盘加密利用 Windows 的 BitLocker 功能，通过来宾 VM 中的客户托管密钥来加密托管磁盘。 使用客户托管密钥的服务器端加密改进了 ADE，它通过加密存储服务中的数据使你可以为 VM 使用任何 OS 类型和映像。
+**指南**： (VM) Windows 虚拟机上的虚拟磁盘使用服务器端加密或 Azure 磁盘加密 (ADE) 进行静态加密。 Azure 磁盘加密利用 Windows 的 BitLocker 功能，通过来宾 VM 中的客户托管密钥来加密托管磁盘。 使用客户托管密钥的服务器端加密改进了 ADE，它通过加密存储服务中的数据使你可以为 VM 使用任何 OS 类型和映像。
 
 * [Azure 托管磁盘的服务器端加密](./disk-encryption.md)
 
@@ -614,15 +614,15 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2：部署自动操作系统修补管理解决方案
 
-**指南**：使用 Azure 更新管理解决方案来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 System Center Updates Publisher （Updates Publisher）等工具允许你将自定义更新发布到 Windows Server Update Services （WSUS）。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
+**指南**：使用 Azure 更新管理解决方案来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 利用 System Center Updates Publisher (Updates Publisher) 的工具，您可以将自定义更新发布到 Windows Server Update Services (WSUS) 中。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
 
 * [Azure 中的更新管理解决方案](../../automation/update-management/update-mgmt-overview.md)
 
-* [管理 Vm 的更新和修补程序](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
+* [管理 VM 的更新和修补程序](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure 安全中心监视**：是
 
@@ -630,11 +630,11 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 ### <a name="53-deploy-automated-patch-management-solution-for-third-party-software-titles"></a>5.3：为第三方软件部署自动修补程序管理解决方案
 
-**指南**：你可以使用第三方修补程序管理解决方案。 可以使用 Azure 更新管理解决方案来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 System Center Updates Publisher （Updates Publisher）等工具允许你将自定义更新发布到 Windows Server Update Services （WSUS）。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
+**指南**：你可以使用第三方修补程序管理解决方案。 可以使用 Azure 更新管理解决方案来管理虚拟机的更新和修补程序。 更新管理依赖于本地配置的更新存储库来修补受支持的 Windows 系统。 利用 System Center Updates Publisher (Updates Publisher) 的工具，您可以将自定义更新发布到 Windows Server Update Services (WSUS) 中。 此方案允许更新管理将使用 Configuration Manager 作为其更新存储库的计算机与第三方软件配合使用。
 
 * [Azure 中的更新管理解决方案](../../automation/update-management/update-mgmt-overview.md)
 
-* [管理 Vm 的更新和修补程序](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
+* [管理 VM 的更新和修补程序](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
 
 **Azure 安全中心监视**：不可用
 
@@ -656,7 +656,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ## <a name="inventory-and-asset-management"></a>库存和资产管理
 
@@ -664,7 +664,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 ### <a name="61-use-automated-asset-discovery-solution"></a>6.1：使用自动资产发现解决方案
 
-**指南**：使用 Azure 资源关系图可查询和发现订阅中的所有资源（包括虚拟机）。 确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅，以及订阅中的资源。
+**指南**：使用 Azure 资源关系图可查询和发现所有资源 (包括订阅中) 的虚拟机。 确保你在租户中拥有适当的（读取）权限，并且可以枚举所有 Azure 订阅，以及订阅中的资源。
 
 * [如何使用 Azure Graph 创建查询](../../governance/resource-graph/first-query-portal.md)
 
@@ -684,7 +684,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：不可用
 
-责任：客户
+**责任**：客户
 
 ### <a name="63-delete-unauthorized-azure-resources"></a>6.3：删除未经授权的 Azure 资源
 
@@ -766,11 +766,11 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="69-use-only-approved-azure-services"></a>6.9：仅使用已批准的 Azure 服务
 
-**指南**：使用 Azure 策略将限制添加到可使用以下内置策略定义在客户订阅中创建的资源类型：-不允许的资源类型
+**指南**：使用 Azure 策略将对可在客户订阅中创建的资源类型的限制 (s) 使用以下内置策略定义：-不允许的资源类型
 - 允许的资源类型
 
 * [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
@@ -779,11 +779,11 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10：维护已获批软件的清单
 
-**指南**：自适应应用程序控制是 Azure 安全中心的一个智能、自动化的端到端解决方案，可帮助你控制哪些应用程序可在 azure 和非 Azure 计算机（Windows 和 Linux）上运行。 如果这不能满足组织的要求，请实现第三方解决方案。
+**指南**：自适应应用程序控制是 Azure 安全中心的一个智能、自动化的端到端解决方案，可帮助你控制哪些应用程序可以在 azure 和非 azure 计算机上 (Windows 和 Linux) 上运行。 如果这不能满足组织的要求，请实现第三方解决方案。
 
 * [如何使用 Azure 安全中心自适应应用程序控制](../../security-center/security-center-adaptive-application.md)
 
@@ -799,7 +799,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12：限制用户在计算资源中执行脚本的功能
 
@@ -815,7 +815,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 ### <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6.13：以物理或逻辑方式隔离高风险应用程序
 
-**指南**：可以使用虚拟网络、子网、订阅、管理组等隔离部署在 azure 环境中的高风险应用程序，并使用 Azure 防火墙、Web 应用程序防火墙（WAF）或网络安全组（NSG）对其进行充分的保护。
+**指南**：可以使用虚拟网络、子网、订阅、管理组等隔离部署在 azure 环境中的高风险应用程序，并使用 Azure 防火墙、Web 应用程序防火墙 (WAF) 或网络安全组 (NSG) 进行充分保护。
 
 * [Azure 中的虚拟网络和虚拟机](./network-overview.md)
 
@@ -841,7 +841,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 ### <a name="71-establish-secure-configurations-for-all-azure-resources"></a>7.1：为所有 Azure 资源建立安全配置
 
-**指导**：使用 Azure Policy 或 Azure 安全中心来维护所有 Azure 资源的安全配置。 此外，Azure 资源管理器可以在 JavaScript 对象表示法（JSON）中导出模板，应查看该模板以确保配置满足/超过公司的安全要求。
+**指导**：使用 Azure Policy 或 Azure 安全中心来维护所有 Azure 资源的安全配置。 此外，Azure 资源管理器可以 JavaScript 对象表示法 (JSON) 中导出模板，应查看该模板以确保配置满足/超过公司的安全要求。
 
 * [如何配置和管理 Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
@@ -849,7 +849,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：不可用
 
-责任：客户
+**责任**：客户
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2：建立安全的操作系统配置
 
@@ -879,11 +879,11 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4：维护安全的操作系统配置
 
-**指南**：对于用于维护部署的 Azure 虚拟机（VM），有几个选项可供选择：
+**指南**：有多个选项可用于为 Azure 虚拟机 (VM) 进行部署的安全配置：
 
 1-Azure 资源管理器模板：这些是用于从 Azure 门户部署 VM 的基于 JSON 的文件，需要维护自定义模板。 Microsoft 对基本模板执行维护。
 
-2-自定义虚拟硬盘（VHD）：在某些情况下，可能需要使用自定义 VHD 文件，如处理无法通过其他方式管理的复杂环境时。
+2-自定义虚拟硬盘 (VHD) ：在某些情况下，可能需要使用自定义 VHD 文件，如处理无法通过其他方式管理的复杂环境时。
 
 3-Azure 自动化状态配置：部署基本操作系统后，可使用此功能对设置进行更细致的控制，并通过自动化框架强制执行。
 
@@ -901,7 +901,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5：安全存储 Azure 资源的配置
 
-**指南**：使用 Azure Repos 安全地存储和管理代码，如自定义 azure 策略、azure 资源管理器模板、所需状态配置脚本等。若要访问在 Azure DevOps 中管理的资源（例如代码、生成和工作跟踪），必须拥有这些特定资源的权限。 大多数权限通过内置安全组授予，如 "权限和访问" 中所述。 如果与 Azure DevOps 集成，则可以授予或拒绝特定用户、内置安全组或 Azure Active Directory （Azure AD）中定义的组，如果与 TFS 集成，则可以为 Active Directory 授予或拒绝权限。
+**指南**：使用 Azure Repos 安全地存储和管理代码，如自定义 azure 策略、azure 资源管理器模板、所需状态配置脚本等。若要访问在 Azure DevOps 中管理的资源（例如代码、生成和工作跟踪），必须拥有这些特定资源的权限。 大多数权限通过内置安全组授予，如 "权限和访问" 中所述。 如果与 Azure DevOps 集成，则可以授予或拒绝特定用户、内置安全组或组中定义) Azure AD (Azure Active Directory 的组的权限（如果与 Azure 集成，则可以授予或拒绝）; 如果与 TFS 集成，则可以指定 Active Directory。
 
 * [如何在 Azure DevOps 中存储代码](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
@@ -913,11 +913,11 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6：安全存储自定义操作系统映像
 
-**指南**：如果使用自定义映像（例如虚拟硬盘），请使用 Azure 基于角色的访问控制，以确保只有经过授权的用户才能访问映像。
+**指南**：如果使用自定义映像 (例如虚拟硬盘) ，请使用 azure RBAC)  (azure 基于角色的访问控制，以确保只有经过授权的用户才能访问该映像。
 
-* [了解 Azure 中的 RBAC](../../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [了解 Azure RBAC](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 
-* [如何在 Azure 中配置 RBAC](../../role-based-access-control/quickstart-assign-role-user-portal.md)
+* [如何配置 Azure RBAC](../../role-based-access-control/quickstart-assign-role-user-portal.md)
 
 **Azure 安全中心监视**：不可用
 
@@ -935,7 +935,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8：部署操作系统的配置管理工具
 
-**指南**： Azure 自动化状态配置是适用于任何云或本地数据中心内的所需状态配置（DSC）节点的配置管理服务。 它可让你从中心的安全位置快速轻松地扩展到数千台计算机。 可以轻松登记计算机、为其分配声明性配置并查看显示每台计算机是否符合指定的所需状态的报告。
+**指南**： Azure 自动化状态配置是适用于任何云或本地数据中心内的所需状态配置 (DSC) 节点的配置管理服务。 它可让你从中心的安全位置快速轻松地扩展到数千台计算机。 可以轻松登记计算机、为其分配声明性配置并查看显示每台计算机是否符合指定的所需状态的报告。
 
 * [加入 Azure Automation State Configuration 管理的计算机](../../automation/automation-dsc-onboarding.md)
 
@@ -957,7 +957,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10：为操作系统实施自动配置监视
 
-**指南**： Azure 自动化状态配置是适用于任何云或本地数据中心内的所需状态配置（DSC）节点的配置管理服务。 它可让你从中心的安全位置快速轻松地扩展到数千台计算机。 可以轻松登记计算机、为其分配声明性配置并查看显示每台计算机是否符合指定的所需状态的报告。
+**指南**： Azure 自动化状态配置是适用于任何云或本地数据中心内的所需状态配置 (DSC) 节点的配置管理服务。 它可让你从中心的安全位置快速轻松地扩展到数千台计算机。 可以轻松登记计算机、为其分配声明性配置并查看显示每台计算机是否符合指定的所需状态的报告。
 
 * [加入 Azure Automation State Configuration 管理的计算机](../../automation/automation-dsc-onboarding.md)
 
@@ -977,7 +977,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7.12：安全自动管理标识
 
@@ -987,7 +987,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：不可用
 
-责任：客户
+**责任**：客户
 
 ### <a name="713-eliminate-unintended-credential-exposure"></a>7.13：消除意外的凭据透露
 
@@ -1011,7 +1011,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="82-pre-scan-files-to-be-uploaded-to-non-compute-azure-resources"></a>8.2：预先扫描要上传到非计算 Azure 资源的文件
 
@@ -1031,7 +1031,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ## <a name="data-recovery"></a>数据恢复
 
@@ -1039,7 +1039,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 ### <a name="91-ensure-regular-automated-back-ups"></a>9.1：确保定期自动备份
 
-**指南**：启用 azure 备份并配置 azure 虚拟机（VM），以及自动备份所需的频率和保留期。
+**指南**：启用 azure 备份，并 (VM) 配置 azure 虚拟机，以及自动备份所需的频率和保留期。
 
 * [概要了解 Azure VM 备份](../../backup/backup-azure-vms-introduction.md)
 
@@ -1047,13 +1047,13 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9.2：执行完整系统备份，并备份客户管理的所有密钥
 
 **指南**：使用 POWERSHELL 或 REST Api 创建 Azure 虚拟机或附加到这些实例的托管磁盘的快照。 在 Azure Key Vault 中备份任何客户管理的密钥。
 
-启用 Azure 备份和目标 Azure 虚拟机（VM），以及所需的频率和保留期。 这包括完整的系统状态备份。 如果使用 Azure 磁盘加密，Azure VM 备份会自动处理客户托管密钥的备份。
+启用 Azure 备份并将 Azure 虚拟机目标 (VM) ，以及所需的频率和保留期。 这包括完整的系统状态备份。 如果使用 Azure 磁盘加密，Azure VM 备份会自动处理客户托管密钥的备份。
 
 * [使用加密的 Azure Vm 上的备份](../../backup/backup-azure-vms-encryption.md)
 
@@ -1065,7 +1065,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="93-validate-all-backups-including-customer-managed-keys"></a>9.3：验证所有备份，包括客户管理的密钥
 
@@ -1087,7 +1087,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9.4：确保保护备份和客户管理的密钥
 
-**指南**：在 azure 备份中备份 azure 托管磁盘时，会将 vm 静态加密存储服务加密（SSE）。 Azure 备份还可以备份使用 Azure 磁盘加密进行加密的 Azure VM。 Azure 磁盘加密与在 Key Vault 中作为机密受到保护的 BitLocker 加密密钥 (BEK) 相集成。 Azure 磁盘加密还与 Azure Key Vault 密钥加密密钥 (KEK) 相集成。 在 Key Vault 中启用软删除，以防意外或恶意删除密钥。
+**指南**：在 azure 备份中备份 azure 托管磁盘时，将静态加密 vm，并) 存储服务加密 (SSE。 Azure 备份还可以备份使用 Azure 磁盘加密进行加密的 Azure VM。 Azure 磁盘加密与在 Key Vault 中作为机密受到保护的 BitLocker 加密密钥 (BEK) 相集成。 Azure 磁盘加密还与 Azure Key Vault 密钥加密密钥 (KEK) 相集成。 在 Key Vault 中启用软删除，以防意外或恶意删除密钥。
 
 * [VM 的软删除](../../backup/soft-delete-virtual-machines.md)
 
@@ -1095,7 +1095,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ## <a name="incident-response"></a>事件响应
 
@@ -1117,7 +1117,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 ### <a name="102-create-an-incident-scoring-and-prioritization-procedure"></a>10.2：创建事件评分和优先级设定过程
 
-**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心对用于发出警报的调查结果或分析的置信度，以及导致警报的活动背后存在恶意意图的可信度。
+**指南**：安全中心向每个警报分配一个严重性，帮助你优先处理应首先调查的警报。 严重性取决于安全中心在发出警报时所依据的检测结果和分析结果的置信度，以及导致发出警报的活动的恶意企图的置信度。
 
 此外，使用标记清楚地标记订阅（例如 生产、非生产）并创建命名系统来对 Azure 资源进行明确标识和分类，特别是处理敏感数据的资源。 你的责任是根据发生事件的 Azure 资源和环境的关键性确定修正警报的优先级。
 
@@ -1127,7 +1127,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="103-test-security-response-procedures"></a>10.3：测试安全响应过程
 
@@ -1147,7 +1147,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：是
 
-责任：客户
+**责任**：客户
 
 ### <a name="105-incorporate-security-alerts-into-your-incident-response-system"></a>10.5：将安全警报整合到事件响应系统中
 
@@ -1159,7 +1159,7 @@ Microsoft 使用传输层安全性（TLS）协议在云服务和客户之间传�
 
 **Azure 安全中心监视**：不可用
 
-责任：客户
+**责任**：客户
 
 ### <a name="106-automate-the-response-to-security-alerts"></a>10.6：自动响应安全警报
 

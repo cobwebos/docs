@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: yegu
-ms.openlocfilehash: 554724c334cb6c51b8744de0eedd4d6815d707b5
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 2a95aa9e9fccdb7047c2c0901f4349fecfbab672
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172554"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009573"
 ---
 # <a name="migrate-to-azure-cache-for-redis"></a>迁移到 Azure Cache for Redis
 本文介绍了一些方法，用于将在本地或其他云服务中运行的现有 Redis 缓存迁移到 Azure Cache for Redis。
@@ -51,7 +51,7 @@ ms.locfileid: "87172554"
 
 ### <a name="export-data-to-an-rdb-file-and-import-it-into-azure-cache-for-redis"></a>将数据导出到 RDB 文件并将其导入到 Azure Cache for Redis
 
-开源 Redis 定义了一种标准机制，用于获取缓存内存中数据集的快照，并将其保存到文件中。 此文件称为 RDB，可由另一个 Redis 缓存读取。 [适用于 Redis 高级层的 Azure 缓存](cache-premium-tier-intro.md)支持通过 RDB 文件将数据导入缓存实例。 可以使用 RDB 文件将现有缓存中的数据传输到 Azure Cache for Redis。
+开源 Redis 定义了一种标准机制，用于获取缓存内存中数据集的快照，并将其保存到文件中。 此文件称为 RDB，可由另一个 Redis 缓存读取。 [适用于 Redis 高级层的 Azure 缓存](cache-overview.md#service-tiers)支持通过 RDB 文件将数据导入缓存实例。 可以使用 RDB 文件将现有缓存中的数据传输到 Azure Cache for Redis。
 
 > [!IMPORTANT]
 > RDB 文件格式在 Redis 版本之间可能会更改，并且可能不会保留向后兼容性。 要从中导出的缓存的 Redis 版本应等于或小于 Azure Cache for Redis 提供的版本。
@@ -59,7 +59,7 @@ ms.locfileid: "87172554"
 
 实现此选项的一般步骤如下：
 
-1. 在高级层中创建新的 Azure Cache for Redis 实例，该实例与现有缓存大小相同（或大于）。
+1. 在高级层中创建新的 Azure Cache for Redis 实例，该实例大小与现有缓存)  (或更大。
 
 2. 保存现有 Redis 缓存的快照。 可以[将 Redis 配置为定期保存快照](https://redis.io/topics/persistence)，或使用[save](https://redis.io/commands/save)或[BGSAVE](https://redis.io/commands/bgsave)命令手动运行进程。 默认情况下，RDB 文件命名为 "dump. RDB"，并将位于*redis*配置文件中指定的路径。
 
@@ -79,7 +79,7 @@ ms.locfileid: "87172554"
 
 实现此选项的一般步骤如下：
 
-1. 在高级层中创建新的 Azure Cache for Redis 实例，该实例与现有缓存大小相同（或大于）。
+1. 在高级层中创建新的 Azure Cache for Redis 实例，该实例大小与现有缓存)  (或更大。
 
 2. 修改应用程序代码以写入新实例和原始实例。
 
@@ -114,5 +114,5 @@ ms.locfileid: "87172554"
 ## <a name="next-steps"></a>后续步骤
 详细了解 Azure Cache for Redis 功能。
 
-* [Azure Redis 缓存高级层简介](cache-premium-tier-intro.md)
+* [适用于 Redis 服务层的 Azure 缓存](cache-overview.md#service-tiers)
 * [导入数据](cache-how-to-import-export-data.md#import)
