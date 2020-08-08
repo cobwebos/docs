@@ -7,14 +7,14 @@
 - name: 快速入门
   expanded: true
   items:
-    - name: 使用 ARM 模板配置 NSG 流日志
-      href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
     - name: 诊断 VM 流量筛选器问题 - 门户
       href: diagnose-vm-network-traffic-filtering-problem.md
     - name: 诊断 VM 流量筛选器问题 - PowerShell
       href: diagnose-vm-network-traffic-filtering-problem-powershell.md
     - name: 诊断 VM 流量筛选器问题 - Azure CLI
       href: diagnose-vm-network-traffic-filtering-problem-cli.md
+    - name: 使用 ARM 模板配置 NSG 流日志
+      href: quickstart-configure-network-security-group-flow-logs-from-arm-template.md
 - name: 教程
   items:
     - name: 诊断 VM 路由问题

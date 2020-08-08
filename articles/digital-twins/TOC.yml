@@ -55,7 +55,7 @@
         - name: 管理自定义模型
           href: how-to-manage-model.md
         - name: 分析和验证模型
-          href: how-to-use-parser.md
+          href: how-to-parse-models.md
         - name: 添加标记
           href: how-to-use-tags.md
     - name: 使用实时执行环境
