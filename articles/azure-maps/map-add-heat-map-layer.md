@@ -1,6 +1,6 @@
 ---
 title: 向地图添加热度地图层 |Microsoft Azure 映射
-description: 本文介绍如何使用 Microsoft Azure map Web SDK 将热度地图层添加到地图中。
+description: 了解如何创建热度地图。 请参阅如何使用 Azure Maps Web SDK 将热度地图层添加到地图。 了解如何自定义热度地图层。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 2558f30c0d2d1e9d652efec1693e7f056426255b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a6235ee6bbb476c69114e6895403f05e69fd6e19
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282902"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010236"
 ---
 # <a name="add-a-heat-map-layer"></a>添加热度地图层
 
@@ -67,7 +67,7 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 
 前面的示例通过设置半径和不透明度选项来自定义热度地图。 热度地图层提供了用于自定义的几个选项，包括：
 
-* `radius`：定义要在其中呈现每个数据点的像素半径。 可以将 radius 设置为固定数字或表达式。 通过使用表达式，可以根据缩放级别缩放半径，并在地图上表示一致的空间区域（例如，5英里半径）。
+* `radius`：定义要在其中呈现每个数据点的像素半径。 可以将 radius 设置为固定数字或表达式。 通过使用表达式，可以根据缩放级别缩放半径，并在地图上表示一致的空间区域 (例如，5英里半径) 。
 * `color`：指定热度地图的着色方式。 颜色渐变是热度地图的常见功能。 您可以使用表达式来实现效果 `interpolate` 。 还可以使用 `step` 表达式着色热度地图，并将密度直观地分解为类似于等高线或雷达图样式图的范围。 这些调色板定义了从最小到最大密度值的颜色。 
 
   将热度地图的颜色值指定为值的表达式 `heatmap-density` 。 在 "内插" 表达式的索引0处定义了没有数据的区域的颜色，或者定义了 "阶数" 表达式的默认颜色。 您可以使用此值来定义背景色。 通常，此值设置为透明或半透明黑色。 
@@ -103,7 +103,7 @@ map.layers.add(new atlas.layer.HeatMapLayer(datasource, null, {
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="一致的 zoomable 热度地图" src="//codepen.io/azuremaps/embed/OGyMZr/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的<a href='https://codepen.io/azuremaps/pen/OGyMZr/'>zoomable 热度 map</a> by Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> ） <a href='https://codepen.io'>CodePen</a>。
+请参阅 CodePen 上的 "笔<a href='https://codepen.io/azuremaps/pen/OGyMZr/'>一致 zoomable 热度地图</a>" Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 > [!TIP]

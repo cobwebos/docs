@@ -1,24 +1,22 @@
 ---
 title: Windows 虚拟桌面诊断日志分析-Azure
 description: 如何将 log analytics 用于 Windows 虚拟桌面诊断功能。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 85cd94c9ba0cf8909e2013a49d43a473a313db8b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f4b1207f85f87755c8c0f2b8e9935f7e88118df3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292591"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005103"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>使用诊断功能 Log Analytics
 
 >[!IMPORTANT]
->此内容适用于 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果使用的是没有 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md)。
 
 Windows 虚拟桌面使用[Azure Monitor](../azure-monitor/overview.md)来监视和警报，例如许多其他 Azure 服务。 这样，管理员便可以通过单个界面识别问题。 此服务为用户和管理操作创建活动日志。 每个活动日志分为以下类别：
 
@@ -38,7 +36,7 @@ Windows 虚拟桌面使用[Azure Monitor](../azure-monitor/overview.md)来监视
 
 由于诊断角色服务本身是 Windows 虚拟桌面的一部分，因此无法访问 Windows 虚拟桌面的连接将不会显示在诊断结果中。 当用户遇到网络连接问题时，可能会出现 Windows 虚拟桌面连接问题。
 
-Azure Monitor 使你能够分析 Windows 虚拟桌面数据并查看虚拟机（VM）性能计数器，这些计数器都在同一工具内。 本文将介绍如何为 Windows 虚拟桌面环境启用诊断。
+Azure Monitor 使你能够分析 Windows 虚拟桌面数据，并查看虚拟机 (VM) 性能计数器，一切都在同一工具内。 本文将介绍如何为 Windows 虚拟桌面环境启用诊断。
 
 >[!NOTE]
 >若要了解如何在 Azure 中监视 Vm，请参阅[利用 Azure Monitor 监视 azure 虚拟机](../azure-monitor/insights/monitor-vm-azure.md)。 此外，请确保[查看性能计数器阈值](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds)，以便更好地了解你在会话主机上的用户体验。
@@ -67,7 +65,7 @@ Azure Monitor 使你能够分析 Windows 虚拟桌面数据并查看虚拟机（
 
 1. 登录到 Azure 门户并前往**Windows 虚拟桌面**。
 
-2. 导航到要捕获其日志和事件的对象（例如，主机池、应用组或工作区）。
+2. 导航到要捕获其日志和事件的对象 (例如主机池、应用组或工作区) 。
 
 3. 在屏幕左侧的菜单中选择 "**诊断设置**"。
 
@@ -82,7 +80,7 @@ Azure Monitor 使你能够分析 Windows 虚拟桌面数据并查看虚拟机（
 
 5. 输入设置配置的名称，然后选择 "**发送到 Log Analytics**"。 你使用的名称不应包含空格，并且应符合[Azure 命名约定](../azure-resource-manager/management/resource-name-rules.md)。 作为日志的一部分，你可以选择想要添加到 Log Analytics 的所有选项，如检查点、错误、管理等。
 
-6. 选择“保存” 。
+6. 选择“保存”。
 
 >[!NOTE]
 >Log Analytics 提供将数据流式传输到[事件中心](../event-hubs/event-hubs-about.md)或将其存档在存储帐户中的选项。 若要了解有关此功能的详细信息，请参阅将[azure 监视数据流式传输到事件中心](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)和[将 Azure 资源日志存档到存储帐户](../azure-monitor/platform/resource-logs-collect-storage.md)。
@@ -134,7 +132,7 @@ Azure Monitor 使你能够分析 Windows 虚拟桌面数据并查看虚拟机（
 1. 中转到 Log Analytics 工作区，然后选择 "**日志**"。 示例查询 UI 将自动显示。
 1. 将筛选器更改为 "**类别**"。
 1. 选择**Windows 虚拟桌面**查看可用查询。
-1. 选择 "**运行**" 以运行所选查询。 
+1. 选择 "**运行**" 以运行所选查询。
 
 请在 Azure Monitor Log Analytics 中详细了解[已保存查询](../azure-monitor/log-query/saved-queries.md)中的示例查询接口。
 

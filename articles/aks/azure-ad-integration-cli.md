@@ -1,19 +1,19 @@
 ---
-title: 将 Azure Active Directory 与 Azure Kubernetes Service （旧版）集成
-description: 了解如何使用 Azure CLI 创建和启用 Azure Active Directory Azure Kubernetes Service （AKS）群集（旧）
+title: '将 Azure Active Directory 与 Azure Kubernetes Service 集成 (旧版) '
+description: '了解如何使用 Azure CLI 创建和 Azure Active Directory 启用的 Azure Kubernetes 服务 (AKS) 群集 (旧版) '
 services: container-service
 author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: f99b304d2e238d72b47b09261ede19b44827264a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dfcbf214c374f449a04139ce7bf4fbb6853ed524
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057366"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006853"
 ---
-# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>使用 Azure CLI （旧版）将 Azure Active Directory 与 Azure Kubernetes 服务集成
+# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>使用 Azure CLI (旧) 将 Azure Active Directory 与 Azure Kubernetes 服务集成
 
 可将 Azure Kubernetes Service (AKS) 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 在此配置中，可以使用 Azure AD 身份验证令牌登录到 AKS 群集。 群集操作员还可以根据用户标识或目录组成员身份来配置 Kubernetes 基于角色的访问控制 (RBAC)。
 
@@ -28,7 +28,7 @@ ms.locfileid: "87057366"
 
 - 只能在启用 RBAC 的群集上启用 Azure AD。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 需要安装并配置 Azure CLI 2.0.61 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][install-azure-cli]。
 
@@ -280,7 +280,7 @@ error: You must be logged in to the server (Unauthorized)
 [az-ad-signed-in-user-show]: /cli/azure/ad/signed-in-user#az-ad-signed-in-user-show
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
-[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-controls-rbac
+[rbac-authorization]: concepts-identity.md#kubernetes-role-based-access-control-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
 [managed-aad]: managed-aad.md

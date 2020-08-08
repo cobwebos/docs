@@ -4,12 +4,12 @@ description: 使用 Azure 门户从恢复点还原 Azure 虚拟机
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a43e7d1d97196afdad0a1e451b0c1618f0ea3a16
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: a006988049925d2d81c3f15fe24cfe60205b5789
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809177"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006326"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -45,7 +45,7 @@ Azure 备份提供多种方法用于还原 VM。
 
 ## <a name="before-you-start"></a>开始之前
 
-若要还原 VM（创建新的 VM），请确保对“还原 VM”操作具有正确的基于角色的访问控制 (RBAC) [权限](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)。
+若要还原 VM (创建新的 VM) ，请确保具有正确的 Azure 基于角色的访问控制 (Azure RBAC) [权限](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)来执行还原 VM 操作。
 
 如果没有权限，则可以[还原磁盘](#restore-disks)，然后在该磁盘还原后，可以[使用模板](#use-templates-to-customize-a-restored-vm)（在执行还原操作的过程中生成）来创建新的 VM。
 
@@ -173,7 +173,7 @@ Azure 备份提供多种方法用于还原 VM。
 >
 >- 在触发还原后并处于数据传输阶段时，无法取消还原作业。
 >- 跨区域还原功能将 (客户管理的密钥) 启用的 Azure Vm 恢复，这些虚拟机不会在启用了 CMK 的恢复服务保管库中备份，如辅助区域中未启用 CMK 的 Vm。
->- RBAC (基于角色的访问控制在次要区域中还原所需的) 角色与主要区域中的角色相同。
+>- 在次要区域中恢复所需的 Azure 角色与主要区域中的角色相同。
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>监视次要区域还原作业
 

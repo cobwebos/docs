@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: fc3c03fa3368d87857ed91c720a92aacecf6eb89
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 04442ad2c6f12960a6c27cc96b52eae20b046851
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843158"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008196"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>利用 Azure 机器学习部署现有模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -28,7 +28,7 @@ ms.locfileid: "87843158"
 ## <a name="prerequisites"></a>先决条件
 
 * [Azure 机器学习工作区](how-to-manage-workspace.md)
-  + Python 示例假设将 `ws` 变量设置为 Azure 机器学习工作区。
+  + Python 示例假设将 `ws` 变量设置为 Azure 机器学习工作区。 有关如何连接到工作区的详细信息，请参阅适用于[Python 的 AZURE 机器学习 SDK 文档](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py#workspace)。
   
   + CLI 示例使用和的 `myworkspace` 占位符 `myresourcegroup` ，你应将其替换为你的工作区的名称以及包含它的资源组。
 

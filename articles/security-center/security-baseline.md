@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9bd0f1cbe1f4797a0187952b94ca48077bb3134c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0809c9eb1f64dc6a505ef50e25f973aa041d186d
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854238"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004480"
 ---
 # <a name="azure-security-baseline-for-security-center"></a>安全中心的 Azure 安全基准
 
@@ -190,7 +190,7 @@ ms.locfileid: "87854238"
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1：维护管理帐户的清单
 
-**指南**： Azure 基于角色的访问控制 (RBAC) 使你可以通过角色分配管理对 Azure 资源的访问权限。 你可以将这些角色分配给用户、组服务主体和托管标识。 某些资源有预定义的内置角色，可以通过 Azure CLI、Azure PowerShell 或 Azure 门户等工具来清点或查询这些角色。 Azure 安全中心具有适用于 "安全读者" 或 "安全管理员" 的内置角色，使用户能够读取或更新安全策略并消除警报和建议。
+**指南**： azure RBAC) 的 azure 基于角色的访问控制 (允许通过角色分配管理对 Azure 资源的访问权限。 你可以将这些角色分配给用户、组服务主体和托管标识。 某些资源有预定义的内置角色，可以通过 Azure CLI、Azure PowerShell 或 Azure 门户等工具来清点或查询这些角色。 Azure 安全中心具有适用于 "安全读者" 或 "安全管理员" 的内置角色，使用户能够读取或更新安全策略并消除警报和建议。
 
 - [Azure 安全中心中的权限](security-center-permissions.md)
 
@@ -344,7 +344,7 @@ ms.locfileid: "87854238"
 
 ### <a name="42-isolate-systems-storing-or-processing-sensitive-information"></a>4.2：隔离存储或处理敏感信息的系统
 
-**指南**：对各个安全域（如环境类型和数据敏感度级别）使用单独的订阅和管理组实现隔离。 你可以限制对应用程序和企业环境所需 Azure 资源的访问级别。 可以通过 Azure Active Directory RBAC 来控制对 Azure 资源的访问权限。
+**指南**：对各个安全域（如环境类型和数据敏感度级别）使用单独的订阅和管理组实现隔离。 你可以限制对应用程序和企业环境所需 Azure 资源的访问级别。 可以通过 Azure RBAC 控制对 Azure 资源的访问权限。
 
 默认情况下，Azure 安全中心数据存储在安全中心后端服务中。 如果你的组织已添加了在你自己的资源中存储此数据的要求，则可以配置 Log Analytics 工作区来存储安全中心数据、警报和建议。 使用自己的工作区时，可以根据数据的来源环境配置不同的工作区，从而进一步分离。
 
@@ -376,15 +376,15 @@ ms.locfileid: "87854238"
 
 **责任**：共享
 
-### <a name="46-use-role-based-access-controls-to-control-access-to-resources"></a>4.6：使用基于角色的访问控制来控制对资源的访问 
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6：使用 Azure RBAC 控制对资源的访问 
 
-**指南**：使用 azure 基于角色的访问控制来管理对 Azure 安全中心相关数据和资源的访问。 Azure 安全中心具有适用于 "安全读者" 或 "安全管理员" 的内置角色，使用户能够读取或更新安全策略并消除警报和建议。 存储安全中心收集的数据的 "Log Analytics" 工作区还具有可分配的内置角色，如 "Log Analytics 读者"、"Log Analytics 参与者" 等。 分配用户完成其必需任务所需的最少许可角色。 例如，将“读者”角色分配到只需查看有关资源的安全运行状况而不执行操作（例如应用建议或编辑策略）的用户。
+**指南**：使用 azure RBAC)  (azure 基于角色的访问控制来管理对 Azure 安全中心相关数据和资源的访问。 Azure 安全中心具有适用于 "安全读者" 或 "安全管理员" 的内置角色，使用户能够读取或更新安全策略并消除警报和建议。 存储安全中心收集的数据的 "Log Analytics" 工作区还具有可分配的内置角色，如 "Log Analytics 读者"、"Log Analytics 参与者" 等。 分配用户完成其必需任务所需的最少许可角色。 例如，将“读者”角色分配到只需查看有关资源的安全运行状况而不执行操作（例如应用建议或编辑策略）的用户。
 
 - [Azure Log Analytics 工作区的权限](../role-based-access-control/built-in-roles.md#log-analytics-reader)
 
 - [Azure 安全中心中的权限](security-center-permissions.md)
 
-- [如何在 Azure 中配置 RBAC](../role-based-access-control/role-assignments-portal.md)
+- [如何配置 Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
 **Azure 安全中心监视**：不适用
 

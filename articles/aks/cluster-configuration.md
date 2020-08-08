@@ -3,15 +3,15 @@ title: Azure Kubernetes 服务 (AKS) 中的群集配置
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 中配置群集
 services: container-service
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 08/06/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: f1329aa056e8d1db951e01555634cf1ea709608b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c3123d22d2a13be9b9e5360e82990ba3a6320b1a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252005"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008791"
 ---
 # <a name="configure-an-aks-cluster"></a>配置 AKS 群集
 
@@ -233,6 +233,67 @@ az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myR
 
 如果要创建常规 Gen1 节点池，可以通过省略自定义标记来执行此操作 `--aks-custom-headers` 。
 
+
+## <a name="ephemeral-os-preview"></a>临时 OS (预览) 
+
+默认情况下，Azure 虚拟机的操作系统磁盘会自动复制到 Azure 存储，以避免在 VM 需要重定位到另一台主机时丢失数据。 不过，由于容器不会保留本地状态，因此此行为在提供一些缺点的同时提供了有限的价值，其中包括速度较慢的节点预配和更低的读/写延迟。
+
+与此相反，临时 OS 磁盘只存储在主机上，就像临时磁盘一样。 这提供了更低的读/写延迟，还提供了更快的节点缩放和群集升级。
+
+与临时磁盘类似，临时 OS 磁盘包含在虚拟机的价格中，因此不会产生额外的存储成本。
+
+注册 `EnableEphemeralOSDiskPreview` 功能：
+
+```azurecli
+az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
+```
+
+状态可能需要几分钟才显示为“已注册”。 可以使用 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) 命令来检查注册状态：
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
+```
+
+当状态显示为“已注册”时，使用 [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) 命令来刷新 `Microsoft.ContainerService` 资源提供程序的注册：
+
+```azurecli
+az provider register --namespace Microsoft.ContainerService
+```
+
+若要安装 aks CLI 扩展，请使用以下 Azure CLI 命令：
+
+```azurecli
+az extension add --name aks-preview
+```
+
+若要更新 aks CLI 扩展，请使用以下 Azure CLI 命令：
+
+```azurecli
+az extension update --name aks-preview
+```
+
+### <a name="use-ephemeral-os-on-new-clusters-preview"></a>在新群集上使用临时 OS (预览) 
+
+将群集配置为在创建群集时使用临时 OS 磁盘。 使用 " `--aks-custom-headers` 标志" 将 "暂时操作系统" 设置为新群集的 os 磁盘类型。
+
+```azure-cli
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+```
+
+如果要使用网络连接的 OS 磁盘创建常规群集，可以通过省略自定义标记来执行此操作 `--aks-custom-headers` 。 还可以选择添加更多的临时 OS 节点池，如下所示。
+
+### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>在现有群集上使用暂时 OS (预览) 
+配置一个新的节点池以使用临时 OS 磁盘。 使用 `--aks-custom-headers` 标志设置作为该节点池的 os 磁盘类型。
+
+```azure-cli
+az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+```
+
+> [!IMPORTANT]
+> 通过暂时操作系统，可将 VM 和实例映像部署到 VM 缓存大小。 在 AKS 情况下，默认节点 OS 磁盘配置使用100GiB，这意味着需要的 VM 大小的缓存大于 100 GiB。 默认 Standard_DS2_v2 的缓存大小为 86 GiB，这不太大。 Standard_DS3_v2 的缓存大小为 172 GiB，足够大。 还可以通过使用降低 OS 磁盘的默认大小 `--node-osdisk-size` 。 AKS 图像的最小大小为30GiB。 
+
+如果要创建包含网络附加 OS 磁盘的节点池，可以通过省略自定义标记来执行此操作 `--aks-custom-headers` 。
+
 ## <a name="custom-resource-group-name"></a>自定义资源组名称
 
 在 Azure 中部署 Azure Kubernetes 服务群集时，会为工作器节点创建第二个资源组。 默认情况下，AKS 会将节点资源组命名为 `MC_resourcegroupname_clustername_location`，但你也可以提供自己的名称。
@@ -248,8 +309,8 @@ az aks create --name myAKSCluster --resource-group myResourceGroup --node-resour
 请注意，对于节点资源组，不能执行以下操作：
 
 - 不能为节点资源组指定现有资源组。
-- 不能为节点资源组指定不同的订阅。
-- 不能在节点资源组创建完成后更改其名称。
+- 为节点资源组指定不同的订阅。
+- 创建群集后更改节点资源组名称。
 - 不能为节点资源组内的受管理资源指定名称。
 - 不能修改或删除节点资源组内受管理资源中由 Azure 创建的标记。
 
@@ -259,6 +320,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup --node-resour
 - 若要了解如何将群集升级到最高版本的 Kubernetes，请参阅[升级 Azure Kubernetes 服务 (AKS) 群集](upgrade-cluster.md)。
 - 详细了解[ `containerd` 和 Kubernetes](https://kubernetes.io/blog/2018/05/24/kubernetes-containerd-integration-goes-ga/)
 - 若要查找有关一些常用 AKS 问题的答案，请参阅 [AKS 常见问题解答](faq.md)。
+- 阅读有关[临时 OS 磁盘](../virtual-machines/ephemeral-os-disks.md)的详细信息。
 
 
 <!-- LINKS - internal -->

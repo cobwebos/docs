@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/28/2020
+ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82c0fbb62f411ccc3056d782518c6c3b570106d2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9e8250661fdbd6c67faade31caaed61ee8a399fe
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828619"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008078"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>部署 Azure AD Privileged Identity Management (PIM)
 
@@ -27,9 +27,9 @@ ms.locfileid: "87828619"
 
 > [!TIP]
 > 本文中有许多带有以下标记的项：
-> 
+>
 > :heavy_check_mark:**Microsoft 建议**
-> 
+>
 > 这些是常规建议，应仅当其适用于企业需求时才实施。
 
 ## <a name="learn-about-privileged-identity-management"></a>了解 Privileged Identity Management
@@ -142,9 +142,9 @@ Azure AD Privileged Identity Management 可帮助跨 Azure AD、Azure 资源和�
 
 1. 通过阅读和理解[可用的 Azure AD 管理员角色](../users-groups-roles/directory-assign-admin-roles.md#available-roles)来了解角色粒度。 你和你的团队还应参阅 [Azure AD 中按标识任务划分的管理员角色](../users-groups-roles/roles-delegate-by-task.md)，其中解释了特定任务的最低权限角色。
 
-1. 列出组织中有特权角色的人员。 可以使用 [Privileged Identity Management 向导](pim-security-wizard.md#run-the-wizard)转到类似以下的页。
+1. 列出组织中有特权角色的人员。 您可以使用 Privileged Identity Management[发现和见解 (预览版) ](pim-security-wizard.md)来访问如下所示的页面。
 
-    ![“发现特权角色”窗格，其中显示具有特权角色的人员](./media/pim-deployment-plan/discover-privileged-roles-users.png)
+    ![发现和见解 (预览) 页面，通过特权角色降低曝光](./media/pim-deployment-plan/new-preview-page.png)
 
 1. 对于组织中的所有全局管理员，找出他们需要该角色的原因。 基于之前的文档，如果一个人员的工作可由一个或多个权限更为细化的管理员角色来执行，则应删除该人员的全局管理员角色，并在 Azure Active Directory 中实施相应更为细化的角色分配（参考信息：Microsoft 目前只有 10 个管理员拥有全局管理员角色。 在 [Microsoft 如何使用 Privileged Identity Management](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access) 中了解详细信息）。
 

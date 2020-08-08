@@ -1,24 +1,22 @@
 ---
-title: Windows 虚拟桌面（经典）管理工具-Azure
-description: 如何排查 Windows 虚拟桌面（经典）管理工具的问题。
-services: virtual-desktop
+title: Windows 虚拟桌面 (经典) 管理工具-Azure
+description: 如何排查 Windows 虚拟桌面 (经典) 管理工具的问题。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 442cdce2ebb6c1a3e38932411dfa2b081a44ef9f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6f03284103b4a2aa6900bf1ba5c50a4688c50b0e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283361"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005476"
 ---
-# <a name="troubleshoot-the-windows-virtual-desktop-classic-management-tool"></a>Windows 虚拟桌面（经典）管理工具疑难解答
+# <a name="troubleshoot-the-windows-virtual-desktop-classic-management-tool"></a>Windows 虚拟桌面 (经典) 管理工具疑难解答
 
 >[!IMPORTANT]
->此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。
+>本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。
 
 本文介绍部署 Windows 虚拟桌面管理工具时可能出现的问题，以及如何修复这些问题。
 

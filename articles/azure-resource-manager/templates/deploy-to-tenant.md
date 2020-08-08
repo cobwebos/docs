@@ -3,16 +3,16 @@ title: 将资源部署到租户
 description: 介绍如何在 Azure 资源管理器模板中的租户范围内部署资源。
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 3fbf869e371f385a335e4a154bc811a6fc8cab97
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 2f5249eb54a62e4df082a18b22625bb93a0f09f8
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922517"
+ms.locfileid: "88002770"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>在租户级别创建资源
 
-随着组织的成熟，你可能需要跨整个 Azure AD 租户定义和分配[策略](../../governance/policy/overview.md)或[基于角色的访问控制](../../role-based-access-control/overview.md)。 通过租户级模板，可以声明的方式在全局级别应用策略和分配角色。
+随着组织的成熟，你可能需要定义并分配[策略](../../governance/policy/overview.md)或[azure 基于角色的访问控制 (azure RBAC) ](../../role-based-access-control/overview.md)到 Azure AD 租户。 通过租户级模板，可以声明的方式在全局级别应用策略和分配角色。
 
 ## <a name="supported-resources"></a>支持的资源
 
@@ -251,5 +251,5 @@ New-AzTenantDeployment `
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要了解如何分配角色，请参阅[使用 RBAC 和 Azure 资源管理器模板管理对 Azure 资源的访问权限](../../role-based-access-control/role-assignments-template.md)。
+* 若要了解如何分配角色，请参阅[使用 azure 资源管理器模板添加 azure 角色分配](../../role-based-access-control/role-assignments-template.md)。
 * 还可在[订阅级别](deploy-to-subscription.md)或[管理组级别](deploy-to-management-group.md)部署模板。

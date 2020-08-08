@@ -1,25 +1,23 @@
 ---
 title: Windows 虚拟桌面用户连接延迟-Azure
 description: Windows 虚拟桌面用户的连接延迟。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 8a60779fb045aa612a6ba0988c4635752f973f60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 403cf584c79bc0a166054ae36c9d2ea50e4b9d9e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82607395"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008723"
 ---
 # <a name="determine-user-connection-latency-in-windows-virtual-desktop"></a>确定 Windows 虚拟桌面中的用户连接延迟
 
-Windows 虚拟桌面全局可用。 管理员可以在所需的任何 Azure 区域中创建虚拟机（Vm）。 连接延迟将因用户和虚拟机的位置而异。 Windows 虚拟桌面服务将持续推出新的地理区域以提高延迟。 
- 
-[Windows 虚拟桌面体验估计器工具](https://azure.microsoft.com/services/virtual-desktop/assessment/)可帮助你确定优化 vm 延迟的最佳位置。 建议每隔两至三个月使用该工具，以确保在 Windows 虚拟桌面推出到新区域时，最佳位置没有发生变化。 
+Windows 虚拟桌面全局可用。 管理员可以在所需的任何 Azure 区域中 (Vm) 创建虚拟机。 连接延迟将因用户和虚拟机的位置而异。 Windows 虚拟桌面服务将持续推出新的地理区域以提高延迟。
+
+[Windows 虚拟桌面体验估计器工具](https://azure.microsoft.com/services/virtual-desktop/assessment/)可帮助你确定优化 vm 延迟的最佳位置。 建议每隔两至三个月使用该工具，以确保在 Windows 虚拟桌面推出到新区域时，最佳位置没有发生变化。
 
 ## <a name="azure-traffic-manager"></a>Azure 流量管理器
 

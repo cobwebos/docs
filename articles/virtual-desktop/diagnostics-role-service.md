@@ -1,24 +1,22 @@
 ---
 title: Windows 虚拟桌面诊断问题 - Azure
 description: 如何使用 Windows 虚拟桌面诊断功能来诊断问题。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6ff1e3d8eb9cb40d46ae0624be9d37fd199accd2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a985ce4f93b04e4065b5189b2a406b54729720c3
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288763"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005095"
 ---
 # <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>确定和诊断 Windows 虚拟桌面问题
 
 >[!IMPORTANT]
->此内容适用于 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果使用的是没有 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/diagnostics-role-service-2019.md)。
+>本教程的内容适用于包含 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面。 如果你使用的是不包含 Azure 资源管理器对象的 Windows 虚拟桌面（经典），请参阅[此文](./virtual-desktop-fall-2019/diagnostics-role-service-2019.md)。
 
 Windows 虚拟桌面提供了一项诊断功能，使管理员能够通过单个界面识别问题。 若要了解有关 Windows 虚拟桌面诊断功能的详细信息，请参阅[将 Log Analytics 用于诊断功能](diagnostics-log-analytics.md)。
 
@@ -40,11 +38,11 @@ Windows 虚拟桌面提供了一项诊断功能，使管理员能够通过单个
 
 |错误消息|建议的解决方案|
 |---|---|
-|未能创建注册密钥 |无法创建注册令牌。 尝试使用较短的到期时间（介于1小时到1个月之间）重新创建。 |
+|未能创建注册密钥 |无法创建注册令牌。 请尝试使用较短的到期时间 (1 小时到1个月) 。 |
 |未能删除注册密钥|无法删除注册令牌。 请尝试再次删除它。 如果仍不起作用，请使用 PowerShell 检查令牌是否仍然存在。 如果存在，请将它与 PowerShell 一起删除。|
 |未能更改会话主机排出模式 |无法更改 VM 的排出模式。 检查 VM 状态。 如果 VM 不可用，则无法更改排出模式。|
 |未能断开用户会话连接 |无法断开用户与 VM 的连接。 检查 VM 状态。 如果 VM 不可用，则无法断开用户会话的连接。 如果 VM 可用，请检查用户会话状态以查看它是否已断开连接。 |
-|未能注销会话主机内的所有用户 |无法将用户从 VM 注销。 检查 VM 状态。 如果不可用，则无法注销用户。检查用户会话状态，以查看它们是否已注销。可以通过 PowerShell 强制退出。 |
+|未能注销会话主机内的所有用户 ()  |无法将用户从 VM 注销。 检查 VM 状态。 如果不可用，则无法注销用户。检查用户会话状态，以查看它们是否已注销。可以通过 PowerShell 强制退出。 |
 |未能从应用程序组中取消分配用户|无法取消发布用户的应用组。 查看 Azure AD 上的用户是否可用。 查看用户是否属于应用组发布到的用户组。 |
 |检索可用位置时出错 |检查在创建主机池向导中使用的 VM 的位置。 如果映像在该位置不可用，请在该位置添加映像，或者选择其他 VM 位置。 |
 

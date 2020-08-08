@@ -1,24 +1,22 @@
 ---
-title: Windows 虚拟桌面中的委托访问（经典）-Azure
-description: 如何在 Windows 虚拟桌面（经典）部署中委派管理功能，包括示例。
-services: virtual-desktop
+title: Windows 虚拟桌面 (经典) 中的委托访问-Azure
+description: 如何将 Windows 虚拟机上的管理功能委托 (经典) 部署，包括示例。
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fbb8c6e100a9f72c20bcfaba7049b6724ee458b2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0152dc5102fd3f77418448234cab1234d25b97c6
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292535"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008145"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop-classic"></a>Windows 虚拟桌面（经典）中的委托访问
+# <a name="delegated-access-in-windows-virtual-desktop-classic"></a>Windows 虚拟桌面 (经典) 中的委托访问
 
 >[!IMPORTANT]
->此内容适用于不支持 Azure 资源管理器 Windows 虚拟桌面对象的 Windows 虚拟桌面（经典）。 如果尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[此文](../delegated-access-virtual-desktop.md)。
+>本教程的内容适用于 Windows 虚拟桌面（经典），后者不支持 Azure 资源管理器 Windows 虚拟桌面对象。 要尝试管理 Azure 资源管理器 Windows 虚拟桌面对象，请参阅[本文](../delegated-access-virtual-desktop.md)。
 
 Windows 虚拟桌面具有委派的访问模型，使你可以通过为特定用户分配角色来定义允许该用户拥有的访问量。 角色分配有三个组件：安全主体、角色定义和作用域。 Windows 虚拟桌面委托访问模型基于 Azure RBAC 模型。 若要详细了解特定的角色分配及其组件，请参阅[Azure 基于角色的访问控制概述](../../role-based-access-control/built-in-roles.md)。
 
@@ -29,7 +27,7 @@ Windows 虚拟桌面委托访问为角色分配的每个元素支持以下值：
     * 服务主体
 * 角色定义
     * 内置角色
-* 作用域
+* 范围
     * 租户组
     * 租户
     * 主机池
@@ -58,10 +56,10 @@ Windows 虚拟桌面中的委派访问权限包含若干内置角色定义，你
 
 * **AadTenantId**：指定服务主体所属的 AZURE ACTIVE DIRECTORY 租户 ID。
 * **AppGroupName**：远程桌面应用组的名称。
-* **诊断**：指示诊断范围。 （必须与**基础结构**或**租户**参数配对。）
+* **诊断**：指示诊断范围。  (必须与**基础结构**或**租户**参数配对。 ) 
 * **HostPoolName**：远程桌面主机池的名称。
 * **基础结构**：指示基础结构作用域。
-* **RoleDefinitionName**：分配给用户、组或应用远程桌面服务基于角色的访问控制角色的名称。 （例如，远程桌面服务所有者、远程桌面服务读取器等。）
+* **RoleDefinitionName**：分配给用户、组或应用远程桌面服务基于角色的访问控制角色的名称。  (例如远程桌面服务所有者、远程桌面服务读取器等。 ) 
 * **ServerPrincipleName**： Azure Active Directory 应用程序的名称。
 * **SignInName**：用户的电子邮件地址或用户主体名称。
 * **TenantName**：远程桌面租户的名称。

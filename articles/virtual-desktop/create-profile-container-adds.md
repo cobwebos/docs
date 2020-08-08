@@ -1,23 +1,21 @@
 ---
 title: Active Directory 域服务 azure 文件创建 FSLogix 配置文件容器-Azure
 description: 本文介绍如何使用 Azure 文件和 Azure Active Directory 域服务创建 FSLogix 配置文件容器。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4ee1b8d849051b9192e53f761050f1c4b6480e1b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 91f5ef4a5065079f0fe385b92af2a1c4bfa5ee84
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85362435"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007703"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>使用 Azure 文件和 Azure AD DS 创建配置文件容器
 
-本文将演示如何使用 Azure 文件和 Azure Active Directory 域服务（AD DS）创建 FSLogix 配置文件容器。
+本文将演示如何使用 Azure 文件和 Azure Active Directory 域服务 (AD DS) 创建 FSLogix 配置文件容器。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -41,7 +39,7 @@ ms.locfileid: "85362435"
 
 ## <a name="set-up-an-azure-storage-account"></a>设置 Azure 存储帐户
 
-现在，可以通过服务器消息块（SMB）启用 Azure AD DS 身份验证。
+现在，可以通过服务器消息块 (SMB) 启用 Azure AD DS 身份验证。
 
 启用身份验证：
 
@@ -89,7 +87,7 @@ ms.locfileid: "85362435"
 
 4. 中转到 "**虚拟机**" 选项卡并找到将成为主机池一部分的任何 VM。
 
-5. 选择 "**虚拟机（adVM）** " 下的虚拟机（VM）的名称，然后选择 "**连接**"
+5. 在 "**虚拟机 () adVM** " 下选择虚拟机 (VM) 的名称，并选择 "**连接**"
 
     这会下载 RDP 文件，使你能够使用自己的凭据登录到 VM。
 
@@ -98,13 +96,13 @@ ms.locfileid: "85362435"
 
 6. 登录到 VM 后，请以管理员身份运行命令提示符。
 
-7. 运行下面的命令：
+7. 运行以下命令：
 
      ```cmd
      net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
      ```
 
-    - 将替换 `<desired-drive-letter>` 为所选的驱动器号（例如 `y:` ）。
+    - `<desired-drive-letter>`使用所选的驱动器号替换 (例如， `y:`) 。
     - 将的所有实例替换 `<storage-account-name>` 为前面指定的存储帐户的名称。
     - 将替换 `<share-name>` 为前面创建的共享的名称。
     - `<storage-account-key>`将替换为 Azure 中的存储帐户密钥。
@@ -142,20 +140,20 @@ ms.locfileid: "85362435"
 
 3. 安装程序启动后，选择 "**我同意许可条款和条件"。** 如果适用，请提供新的密钥。
 
-4. 选择“安装”。
+4. 选择“安装”  。
 
 5. 打开**驱动器 C**，然后前往**Program Files**  >  **FSLogix**  >  **Apps** ，确保已正确安装了 FSLogix 代理。
 
      >[!NOTE]
      > 如果主机池中有多个 Vm，则需要对每个 VM 重复步骤1至5。
 
-6. 以管理员身份运行**注册表编辑器**（RegEdit）。
+6. 以管理员身份运行**注册表编辑器** (RegEdit) 。
 
 7. 导航到 "**计算机**  >  **HKEY_LOCAL_MACHINE**  >  **software**  >  **FSLogix**"，右键单击 " **FSLogix**"，选择 "**新建**"，然后选择 "**密钥**"。
 
 8. 创建**名为 profile 的新**密钥。
 
-9.  右键单击 "**配置文件**"，选择 "**新建**"，然后选择 " **DWORD （32位）值"。** 为**启用**值命名，并将**数据**值设置为**1**。
+9.  右键单击 "**配置文件**"，选择 "**新建**"，然后选择 " **DWORD (32 位) 值"。** 为**启用**值命名，并将**数据**值设置为**1**。
 
     > [!div class="mx-imgBorder"]
     > ![配置文件密钥的屏幕截图。 将突出显示 REG_DWORD 文件，并将其数据值设置为1。](media/dword-value.png)
