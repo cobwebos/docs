@@ -1,6 +1,6 @@
 ---
 title: 向地图上的点添加弹出项 |Microsoft Azure 映射
-description: 在本文中，你将了解如何使用 Microsoft Azure Map Web SDK 将 popup 添加到某个点。
+description: 了解 Azure Maps 中的弹出窗口、弹出项模板和弹出事件。 请参阅如何在地图上向某个点添加一个弹出窗口，以及如何重复使用和自定义弹出窗口。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 02/27/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 298e05d6527129a20c92b8bacf08cb3090b162c6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 5235b273ab45a2ece011f38bf363b33230101396
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286907"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036498"
 ---
 # <a name="add-a-popup-to-the-map"></a>向地图添加弹出窗口
 
@@ -99,7 +99,7 @@ map.events.add('mouseleave', symbolLayer, function (){
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="自定义弹出窗口" src="//codepen.io/azuremaps/embed/ymKgdg/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 "笔<a href='https://codepen.io/azuremaps/pen/ymKgdg/'>自定义" 弹出窗口</a>Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>）。
+通过在 CodePen 上 Azure Maps () ，查看笔<a href='https://codepen.io/azuremaps/pen/ymKgdg/'>自定义弹出窗口</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="add-popup-templates-to-the-map"></a>向映射添加弹出项模板
@@ -252,7 +252,7 @@ var popup = new atlas.Popup({
 
 <br/>
 
-<iframe height='500' scrolling='no' title='PopupTemplates' src='//codepen.io/azuremaps/embed/dyovrzL/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 CodePen 上的<a href='https://codepen.io/azuremaps/pen/dyovrzL/'>PopupTemplates</a> by Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> ）。 <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='PopupTemplates' src='//codepen.io/azuremaps/embed/dyovrzL/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 CodePen 上的 " <a href='https://codepen.io/azuremaps/pen/dyovrzL/'>PopupTemplates</a> " Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="reuse-popup-template"></a>重复使用弹出项模板
@@ -261,7 +261,7 @@ var popup = new atlas.Popup({
 
 <br/>
 
-<iframe height='500' scrolling='no' title='ReusePopupTemplate' src='//codepen.io/azuremaps/embed/WNvjxGw/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 CodePen 上的<a href='https://codepen.io/azuremaps/pen/WNvjxGw/'>ReusePopupTemplate</a> by Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> ）。 <a href='https://codepen.io'>CodePen</a>
+<iframe height='500' scrolling='no' title='ReusePopupTemplate' src='//codepen.io/azuremaps/embed/WNvjxGw/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 CodePen 上的 " <a href='https://codepen.io/azuremaps/pen/WNvjxGw/'>ReusePopupTemplate</a> " Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="popup-events"></a>弹出项事件
@@ -271,7 +271,7 @@ var popup = new atlas.Popup({
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="弹出项事件" src="//codepen.io/azuremaps/embed/BXrpvB/?height=500&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的笔<a href='https://codepen.io/azuremaps/pen/BXrpvB/'>弹出事件</a>，Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> ）。 <a href='https://codepen.io'>CodePen</a>
+在 CodePen 上通过 Azure Maps () 来查看笔<a href='https://codepen.io/azuremaps/pen/BXrpvB/'>弹出事件</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="next-steps"></a>后续步骤

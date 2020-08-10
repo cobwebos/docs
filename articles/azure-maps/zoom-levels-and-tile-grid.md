@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure 图中的缩放级别和磁贴网格
-description: 在本文中，你将了解 Microsoft Azure 图中的缩放级别和磁贴网格。
+description: 了解如何在 Azure Maps 中设置缩放级别。 请参阅如何将地理坐标转换为像素坐标、图块坐标和 quadkeys。 查看代码示例。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/14/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9493ad21847cca230606ff1641c9ac02c3355f53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ced524080df87468116a538d9b7c8e91fb178a41
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093045"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035869"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>缩放级别和磁贴网格
 
@@ -74,7 +74,7 @@ var mapWidth = tileSize * Math.pow(2, zoom);
 var mapHeight = mapWidth;
 ```
 
-由于地图的宽度和高度在每个缩放级别都不同，因此是像素坐标。 地图左上角的像素始终具有像素坐标（0，0）。 地图右下角的像素具有像素坐标 *（宽度-1、高度为1）* 或引用上一部分的公式 *（tileSize \* 2<sup>zoom</sup>–1，tileSize \* 2<sup>zoom</sup>–1）*。 例如，在级别2使用512正方形磁贴时，像素坐标范围为（0，0）到（2047，2047），如下所示：
+由于地图的宽度和高度在每个缩放级别都不同，因此是像素坐标。 地图左上角的像素始终具有像素坐标 (0，0) 。 地图右下角的像素坐标* (width-1、height-1) *或引用上一部分中的方程式， * (tileSize \* 2<sup>zoom</sup>–1，tileSize \* 2<sup>zoom</sup>– 1) *。 例如，在级别2使用512正方形磁贴时，像素坐标范围为 (0，0) 到 (2047，2047) ，如下所示：
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-width-height.png" alt-text="显示像素尺寸的地图":::
 
@@ -100,7 +100,7 @@ var numberOfTilesWide = Math.pow(2, zoom);
 var numberOfTilesHigh = numberOfTilesWide;
 ```
 
-为每个图块指定了 XY 坐标，范围为（0，0），从左上角到 *（2<sup>缩放</sup>–1，2<sup>缩放</sup>-1）* 。 例如，在缩放级别2，磁贴坐标范围从（0，0）到（7，7），如下所示：
+为每个图块指定了 XY 坐标，范围为从左上角的 (0，0) 到右下角* (2<sup>zoom</sup>–1、2<sup>zoom</sup>-1) * 。 例如，在缩放级别2，磁贴坐标范围从 (0，0) 到 (7、7) ，如下所示：
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/map-tiles-x-y-coordinates-7x7.png" alt-text="图块坐标地图":::
 
@@ -131,7 +131,7 @@ var tileY = Math.floor(pixelY / tileSize);
 > [!NOTE]
 > `quadkeys`命名约定仅适用于一个或更高的缩放级别。 Azure Maps SDK 的支持缩放级别0，它是整个世界的单个地图图块。 
 
-若要将图块坐标转换为 `quadkey` ，则 Y 和 X 坐标的位是交错的，并将结果解释为以4为基数的数字（保留了前导零），并转换为字符串。 例如，给定的平铺的图块 XY 坐标（3，5）， `quadkey` 则按如下方式确定：
+若要将图块坐标转换为 `quadkey` ，则 Y 和 X 坐标的位是交错的，而结果将被解释为 (以) 保留前导零，并转换为字符串的十进制数。 例如，给定的图块 XY 坐标 (3，5) ，级别3，按 `quadkey` 如下所示确定：
 
 ```
 tileX = 3 = 011 (base 2)
@@ -141,7 +141,7 @@ tileY = 5 = 1012 (base 2)
 quadkey = 100111 (base 2) = 213 (base 4) = "213"
 ```
 
-`Qquadkeys`有几个有趣的属性。 首先，的长度 `quadkey` （位数）等于相应磁贴的缩放级别。 其次， `quadkey` 任何图块的均以 `quadkey` 其父磁贴（包含上一个级别的磁贴）的开头。 如以下示例中所示，磁贴2是磁贴20到23的父级：
+`Qquadkeys`有几个有趣的属性。 首先， `quadkey` (的位数) 等于相应磁贴的缩放级别。 其次， `quadkey` 任何图块的从 `quadkey` 其父图块的开始， (上一级) 包含图块。 如以下示例中所示，磁贴2是磁贴20到23的父级：
 
 :::image type="content" border="false" source="./media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png" alt-text="Quadkey 平铺棱锥图":::
 

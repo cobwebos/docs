@@ -1,6 +1,6 @@
 ---
 title: 对配合 Azure 存储使用的 AzCopy 进行配置、优化和故障排除 | Microsoft Docs
-description: 对 AzCopy 进行配置、优化和故障排除
+description: 通过 Azure 存储配置、优化 AzCopy 并对其进行故障排除。 更改或删除计划和日志文件的位置。 更改默认的日志级别。
 author: normesta
 ms.service: storage
 ms.topic: how-to
@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 7e79f186688f3b6531ac24df4e3ae4201cf1903c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9742f97832c1fc931a1679132e262f92c9f11225
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282426"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037178"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>对 AzCopy 进行配置、优化和故障排除
 
@@ -131,7 +131,7 @@ AzCopy 为每个作业创建日志和计划文件。 可以使用日志调查并
 相关错误不一定是文件中出现的第一个错误。 对于网络错误、超时和服务器忙等错误，AzCopy 将重试最多 20 次，通常重试过程会成功。  你看到的第一个错误可能是已成功重试的无害内容。  因此，请查找 `UPLOADFAILED`、`COPYFAILED` 或 `DOWNLOADFAILED` 附近的错误，而不是查看文件中的第一个错误。 
 
 > [!IMPORTANT]
-> 向 Microsoft 支持部门提交请求（或解决涉及任何第三方的问题）时，请共享要执行的命令的修正版本。 这可以确保不会意外地与任何人共享 SAS。 可以在日志文件的开头找到经修订的版本。
+> 提交请求以 Microsoft 支持部门 (或排查涉及任何第三方) 的问题时，请共享你要执行的命令的修正版本。 这可以确保不会意外地与任何人共享 SAS。 可以在日志文件的开头找到经修订的版本。
 
 ### <a name="review-the-logs-for-errors"></a>查看日志中的错误
 

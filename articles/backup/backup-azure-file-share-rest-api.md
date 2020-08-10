@@ -3,12 +3,12 @@ title: 与 REST API 备份 Azure 文件共享
 description: 了解如何使用 REST API 在恢复服务保管库中备份 Azure 文件共享
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 7059dbae9d448b710880f1f9d72b843a6d77d98b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f48ebbd20d6775fe61c3e3dbb07e8f71af41635a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055017"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036736"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>通过 Rest API 使用 Azure 备份来备份 Azure 文件共享
 
@@ -58,7 +58,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 “刷新”操作是一种[异步操作](../azure-resource-manager/management/async-operations.md)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 
-它在创建另一操作时返回两个响应：202（接受），而在该操作完成时返回200（OK）。
+它将返回两个响应： 202 (在创建另一个操作时接受) ，200在该操作完成时)  ("确定"。
 
 ##### <a name="example-responses"></a>示例响应
 
@@ -89,7 +89,7 @@ cca47745-12d2-42f9-b3a4-75335f18fdf6?api-version=2016-12-01’
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/operationResults/cca47745-12d2-42f9-b3a4-75335f18fdf6?api-version=2016-12-01
 ```
 
-发现所有 Azure 存储帐户后，GET 命令将返回200（无内容）响应。 保管库现在能够发现任何具有可在订阅中备份的文件共享的存储帐户。
+发现所有 Azure 存储帐户后，GET 命令将返回 200 (没有内容) 响应。 保管库现在能够发现任何具有可在订阅中备份的文件共享的存储帐户。
 
 ```http
 HTTP/1.1 200 NoContent
@@ -106,9 +106,9 @@ x-ms-routing-request-id  : CENTRALUSEUAP:20200127T105304Z:d9bdb266-8349-4dbd-968
 Date   : Mon, 27 Jan 2020 10:53:04 GMT
 ```
 
-### <a name="get-list-of-storage-accounts-that-can-be-protected-with-recovery-services-vault"></a>获取可通过恢复服务保管库保护的存储帐户列表
+### <a name="get-list-of-storage-accounts-with-file-shares-that-can-be-backed-up-with-recovery-services-vault"></a>获取具有可通过恢复服务保管库备份的文件共享的存储帐户列表
 
-若要确认已完成 "缓存"，请列出订阅下的所有可保护的存储帐户。 然后在响应中找到所需的存储帐户。 使用[GET ProtectableContainers](/rest/api/backup/protectablecontainers/list)操作即可完成此操作。
+若要确认已完成 "缓存"，请列出订阅中的所有存储帐户，其中包含可通过恢复服务保管库备份的文件共享。 然后在响应中找到所需的存储帐户。 使用[GET ProtectableContainers](/rest/api/backup/protectablecontainers/list)操作即可完成此操作。
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectableContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'
@@ -399,9 +399,9 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 示例响应
 
-创建受保护项是一个异步操作，该操作将创建需要跟踪的其他操作。 当创建另一个操作时，它将返回两个响应：202（已接受），并在该操作完成时返回200（确定）。
+创建受保护项是一个异步操作，该操作将创建需要跟踪的其他操作。 它将返回两个响应： 202 (在创建另一操作时接受) ，200在该操作完成时)  ("确定"。
 
-提交用于受保护项创建或更新的*PUT*请求后，初始响应为202（接受）和 location 标头。
+提交用于受保护项创建或更新的*PUT*请求后，初始响应为 202 (接受带有 location 标头的) 。
 
 ```http
 HTTP/1.1 202 Accepted
@@ -467,9 +467,9 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 对于触发按需备份，以下是请求正文的组成部分。
 
-| 名称       | 类型                       | 描述                       |
+| 名称       | 类型                       | 说明                       |
 | ---------- | -------------------------- | --------------------------------- |
-| “属性” | AzurefilesharebackupReques | BackupRequestResource 属性 |
+| 属性 | AzurefilesharebackupReques | BackupRequestResource 属性 |
 
 有关请求正文的完整定义列表和其他详细信息，请参阅[“触发受保护的项的备份”REST API 文档](/rest/api/backup/backups/trigger#request-body)。
 
@@ -491,7 +491,7 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 触发按需备份是一种[异步操作](../azure-resource-manager/management/async-operations.md)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 
-当创建另一个操作时，它将返回两个响应：202（已接受），并在该操作完成时返回200（确定）。
+它将返回两个响应： 202 (在创建另一操作时接受) ，200在该操作完成时)  ("确定"。
 
 ### <a name="example-responses"></a>示例响应
 

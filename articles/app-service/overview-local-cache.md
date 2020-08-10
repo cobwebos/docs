@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: d1595354803b0625137dd1ac45d17962063ce4e0
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 739eb4e7968cb140e49f1baee777b48140811936
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562440"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034951"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure 应用服务本地缓存概述
 
@@ -36,7 +36,7 @@ Azure 应用服务本地缓存功能允许通过 Web 角色来查看内容。 �
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>本地缓存如何改变应用服务的行为
 * D:\home 指向本地缓存，它是应用启动时在 VM 实例上创建的。 D:\local 继续指向特定于临时 VM 的存储。
-* 本地缓存包含共享内容存储的 /site 和 /siteextensions 文件夹的一次性副本，分别位于 D:\home\site 和 D:\home\siteextensions。    应用启动时，文件会复制到本地缓存。 默认情况下，每个应用的这两个文件夹的大小限制为 1 GB，但可增至 2 GB。 请注意，随着缓存大小的增加，加载缓存需要的时间也越长。 如果复制的文件超出了本地缓存的大小，应用服务会以无提示方式忽略本地缓存并从远程文件共享读取。
+* 本地缓存包含共享内容存储的 /site 和 /siteextensions 文件夹的一次性副本，分别位于 D:\home\site 和 D:\home\siteextensions。    应用启动时，文件会复制到本地缓存。 默认情况下，每个应用的这两个文件夹的大小限制为 1 GB，但可增至 2 GB。 请注意，随着缓存大小的增加，加载缓存需要的时间也越长。 如果已将本地缓存限制增加到 2 GB，并且复制的文件超过了最大大小 2 GB，应用服务会以无提示方式忽略本地缓存并从远程文件共享读取。 如果未定义任何限制或将限制设置为小于 2 GB 的任何值，并且复制的文件超出了限制，则部署或交换可能会失败并出现错误。
 * 本地缓存是可以读写的。 不过，如果应用移动了虚拟机，或者系统重启了应用，则会放弃所做的任何修改。 如果应用在内容存储中存储了任务关键型数据，请不要使用本地缓存。
 * D:\home\LogFiles 和 D:\home\Data 包含日志文件和应用数据。  两个子文件夹本地存储在 VM 实例上，并定期复制到共享内容存储。 应用可以通过将日志文件和数据写入到这些文件夹来保留它们。 但是，复制到共享内容存储是最大努力，因此由于 VM 实例的突然崩溃，日志文件和数据可能会丢失。
 * [日志流式处理](troubleshoot-diagnostic-logs.md#stream-logs)受最大努力副本的影响。 可以在流式传输的日志中观察到最多一分钟的延迟。

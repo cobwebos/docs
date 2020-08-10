@@ -1,6 +1,6 @@
 ---
 title: 为 Microsoft Azure 地图选择适当的定价层
-description: 在本文中，你将了解 Microsoft Azure 地图提供的定价层。
+description: 了解 Azure Maps 定价层。 查看在哪些层提供哪些功能，以及查看选择定价层的关键注意事项。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/27/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 359c2270f3de269adae13ce976cedeb4248935d2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 30507b289a0ae4f831c8bcf4e038049301da7981
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285758"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036770"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>在 Azure Maps 中选择适当的定价层
 
@@ -38,15 +38,15 @@ S0 和 S1 定价层处理不同数量的数据吞吐量。 S0 定价层每秒最
 | 路由                                   | ✓                    |✓        |
 | 批处理路由                            |                    | ✓        |
 | 矩阵路由                          |                     | ✓        |
-| 路由范围（等时线）                |                     | ✓        |
+| 路由范围 (等时线)                 |                     | ✓        |
 | 交通                                |✓                    |✓        |
 | 时区                               |✓                    |✓        |
-| 地理位置（预览）                    |✓                   |✓        |
+|  (预览的地理位置)                     |✓                   |✓        |
 | 空间操作                        |                    |✓        |
 | 地理围栏                                |                    |✓        |
-| Azure Maps 数据（预览版）                |                     | ✓        |
-| 移动性（预览版）                       |                     | ✓        |
-| 天气（预览）                        |✓                    |✓        |
+| Azure Maps 数据 (预览)                 |                     | ✓        |
+| 移动性 (预览)                        |                     | ✓        |
+| 天气 (预览)                         |✓                    |✓        |
 
 请考虑以下其他要点：
 

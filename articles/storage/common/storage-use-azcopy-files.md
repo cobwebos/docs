@@ -1,18 +1,18 @@
 ---
 title: 使用 AzCopy v10 向/从 Azure 文件存储传输数据 | Microsoft Docs
-description: 使用 AzCopy 和文件存储传输数据。
+description: 使用 AzCopy 和文件存储传输数据。 AzCopy 是一个命令行工具，用于向存储帐户或从存储帐户复制 blob 或文件。 将 AzCopy 与 Azure 文件配合使用。
 author: normesta
 ms.service: storage
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 7123a90505e5068422d76f22042deac46e721218
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e75ea5a8f5fdeaf7c3562e50d9493341d41ce393
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292723"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037144"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>使用 AzCopy 和文件存储传输数据 
 
@@ -101,7 +101,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 ### <a name="upload-specific-files"></a>上传特定的文件
 
-您可以使用完整的文件名、包含通配符（*）的部分名称或使用日期和时间来上传特定文件。
+您可以使用完整的文件名、包含通配符字符的部分名称 ( * ) 或使用日期和时间上传特定文件。
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多个完整文件名
 
@@ -118,7 +118,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 #### <a name="use-wildcard-characters"></a>使用通配符
 
-结合 `--include-pattern` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 指定包含通配符的部分名称。 使用分号（）分隔名称 `;` 。
+结合 `--include-pattern` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 指定包含通配符的部分名称。 使用分号 () 分隔名称 `;` 。
 
 |    |     |
 |--------|-----------|
@@ -131,7 +131,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 #### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>上传在日期和时间之后修改的文件 
 
-结合 `--include-after` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 以 ISO 8601 格式指定日期和时间（例如： `2020-08-19T15:04:00Z` ）。 
+结合 `--include-after` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 以 ISO 8601 格式指定日期和时间， (例如： `2020-08-19T15:04:00Z`) 。 
 
 |    |     |
 |--------|-----------|
@@ -196,7 +196,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 ### <a name="download-specific-files"></a>下载特定的文件
 
-您可以使用完整的文件名、包含通配符（*）的部分名称或使用日期和时间来下载特定文件。
+您可以使用完整的文件名、包含通配符字符的部分名称 ( * ) 或使用日期和时间来下载特定文件。
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多个完整文件名
 
@@ -213,7 +213,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 #### <a name="use-wildcard-characters"></a>使用通配符
 
-结合 `--include-pattern` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 指定包含通配符的部分名称。 使用分号（）分隔名称 `;` 。
+结合 `--include-pattern` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 指定包含通配符的部分名称。 使用分号 () 分隔名称 `;` 。
 
 |    |     |
 |--------|-----------|
@@ -226,7 +226,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 #### <a name="download-files-that-were-modified-after-a-date-and-time"></a>下载在日期和时间之后修改的文件 
 
-结合 `--include-after` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 以 ISO-8601 格式指定日期和时间（例如： `2020-08-19T15:04:00Z` ）。 
+结合 `--include-after` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 以 ISO-8601 格式指定日期和时间， (例如： `2020-08-19T15:04:00Z`) 。 
 
 |    |     |
 |--------|-----------|

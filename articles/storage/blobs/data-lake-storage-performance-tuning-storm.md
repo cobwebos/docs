@@ -1,6 +1,6 @@
 ---
 title: 优化性能：Storm、HDInsight 和 Azure Data Lake Storage Gen2 | Microsoft Docs
-description: Azure Data Lake Storage Gen2 Storm 性能优化指南
+description: 了解有关优化 Azure HDInsight 群集上的 Azure 风暴拓扑性能和 Azure Data Lake Storage Gen2 的准则。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 60e0d3fc22fdfc158110e9936748cc0bda280853
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85499839992f872896153e360507d7d1ba7fea38
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465909"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037195"
 ---
 # <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>优化性能：Storm、HDInsight 和 Azure Data Lake Storage Gen2
 
@@ -22,10 +22,10 @@ ms.locfileid: "84465909"
 ## <a name="prerequisites"></a>先决条件
 
 * **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* Azure Data Lake Storage Gen2 帐户  。 有关如何创建帐户的说明，请参阅[快速入门：创建用于分析的存储帐户](data-lake-storage-quickstart-create-account.md)。
-* 具有 Data Lake Storage Gen2 帐户访问权限的 Azure HDInsight 群集  。 请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)。 请确保对该群集启用远程桌面。
+* Azure Data Lake Storage Gen2 帐户。 有关如何创建帐户的说明，请参阅[快速入门：创建用于分析的存储帐户](data-lake-storage-quickstart-create-account.md)。
+* 具有 Data Lake Storage Gen2 帐户访问权限的 Azure HDInsight 群集。 请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)。 请确保对该群集启用远程桌面。
 * **在 Data Lake Storage Gen2 中运行 Storm 群集**。 有关详细信息，请参阅 [Storm on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview)。
-* Data Lake Storage Gen2 的性能优化指南  。  有关一般的性能概念，请参阅 [Data Lake Storage Gen2 性能优化指南](data-lake-storage-performance-tuning-guidance.md)。   
+* Data Lake Storage Gen2 的性能优化指南。  有关一般的性能概念，请参阅 [Data Lake Storage Gen2 性能优化指南](data-lake-storage-performance-tuning-guidance.md)。   
 
 ## <a name="tune-the-parallelism-of-the-topology"></a>优化拓扑的并行度
 
@@ -63,7 +63,7 @@ ms.locfileid: "84465909"
 创建基本拓扑后，可以考虑是否要调整以下任何参数：
 * **每个辅助节点的 JVM 数。** 如果在内存中托管一个大型数据结构（例如查找表），则每个 JVM 都需要一个单独的副本。 或者，如果安装更少的 JVM，就能通过许多线程使用该数据结构。 对于 Bolt 的 I/O 而言，JVM 数目不会造成这么大的差异，因为线程数是在这些 JVM 之间增加的。 为方便起见，最好是为每个辅助角色创建一个 JVM。 根据 Bolt 的作用或者所需的应用程序处理功能，可能需要评估是否要更改此数字。
 * **Spout 执行器数。** 由于上面的示例使用 Bolt 向 Data Lake Storage Gen2 写入数据，因此 Spout 的数目与 Bolt 性能没有直接的关系。 但是，根据 Spout 中发生的处理或 I/O 工作量，最好是优化 Spout 以获得最佳性能。 确保提供足够的 Spout 来让 Bolt 保持繁忙状态。 Spout 的输出速率应与 Bolt 的吞吐量相符。 实际配置取决于 Spout。
-* **任务数。** 每个 Bolt 以单个线程的形式运行。 增加每个 Bolt 的任务并不能进一步提高并发性。 仅当确认元组的进程占用了大部分 Bolt 执行时间时，增加任务才能发挥作用。 在从螺栓发送确认之前，最好将多个元组分组为更大的附加。 因此，在大多数情况下，分配多个任务并不能带来任何额外的好处。
+* **任务数。** 每个 Bolt 以单个线程的形式运行。 增加每个 Bolt 的任务并不能进一步提高并发性。 仅当确认元组的进程占用了大部分 Bolt 执行时间时，增加任务才能发挥作用。 在发送来自 Bolt 的确认之前，最好是将多个元组分组成一个较大的追加操作。 因此，在大多数情况下，分配多个任务并不能带来任何额外的好处。
 * **本地或随机分组。** 如果启用此设置，元组将发送到同一工作进程中的 Bolt。 这会减少进程间通信和网络调用。 建议在大多数拓扑中采用此设置。
 
 这种基本方案是个不错的起点。 可以使用自己的数据进行测试，同时调整上述参数来获得最佳性能。
@@ -72,7 +72,7 @@ ms.locfileid: "84465909"
 
 可通过修改以下设置来优化 Spout。
 
-- **元组超时：topology.message.timeout.secs**。 此设置确定消息在被视为失败之前需要完成并接收确认的时间。
+- **元组超时：topology.message.timeout.secs**。 此设置确定在发送完消息之后，在多长时间内如果未收到确认，则将消息处理视为失败。
 
 - **每个工作进程的最大内存：worker.childopts**。 此设置用于指定 Java 辅助角色的附加命令行参数。 此处最常用的设置是 XmX，它确定分配给 JVM 堆的最大内存。
 
@@ -89,7 +89,7 @@ ms.locfileid: "84465909"
 
 * **进程执行延迟总计。** 一个元组由 Spout 发出、由 Bolt 处理并确认所花费的平均时间。
 
-* **Bolt 进程延迟总计。** 这是按下的元组在收到确认之前花费的平均时间。
+* **Bolt 进程延迟总计。** Bolt 中的元组在收到确认之前花费的平均时间。
 
 * **Bolt 进程执行总计。** execute 方法中的 Bolt 花费的平均时间。
 
@@ -110,7 +110,7 @@ ms.locfileid: "84465909"
 
 若要查看是否受到限制，请在客户端上启用调试日志记录：
 
-1. 在“Ambari” > “Storm” > “配置” > “高级 storm-worker-log4j”中，将 **&lt;root level="info"&gt;** 更改为 **&lt;root level="debug"&gt;** 。     重新启动所有节点/服务使配置生效。
+1. 在“Ambari” > “Storm” > “配置” > “高级 storm-worker-log4j”中，将 **&lt;root level="info"&gt;** 更改为 **&lt;root level="debug"&gt;** 。    重新启动所有节点/服务使配置生效。
 2. 监视工作器节点上的 Storm 拓扑日志（在 /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log 下面），确定是否发生 Data Lake Storage Gen2 限制异常。
 
 ## <a name="next-steps"></a>后续步骤

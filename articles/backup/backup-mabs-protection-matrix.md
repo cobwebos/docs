@@ -3,12 +3,12 @@ title: MABS（Azure 备份服务器）V3 UR1 保护矩阵
 description: 本文提供了一个支持矩阵，列出了受 Azure 备份服务器保护的所有工作负荷、数据类型和安装。
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 974820389e84f727a9aab284716b3be9020c6dd8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: cdbe874baf45d9858acbf891af3c0aae4bd0c2d2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032589"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036719"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS（Azure 备份服务器）V3 UR1 保护矩阵
 
@@ -23,6 +23,9 @@ ms.locfileid: "87032589"
 * MABS 安装-要在其中安装 MABS 的计算机/位置。
 
 * 保护和恢复 - 列出工作负荷的详细信息，如支持的存储容器或支持的部署。
+
+>[!NOTE]
+>MABS v3 UR1 不推荐使用对32位保护代理的支持。 请参阅[32 位保护代理弃用](backup-mabs-whats-new-mabs.md#32-bit-protection-agent-deprecation)。
 
 ## <a name="protection-support-matrix"></a>保护支持矩阵
 

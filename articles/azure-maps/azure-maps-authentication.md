@@ -1,7 +1,7 @@
 ---
 title: Microsoft Azure 映射进行身份验证
 titleSuffix: Azure Maps
-description: 本文介绍 Azure Active Directory 和共享密钥身份验证。
+description: 了解 Azure Maps 中的请求身份验证的两种方式：共享密钥身份验证和 Azure Active Directory (Azure AD) 身份验证。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/27/2020
@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 4aaa729ffd272c886bf5c545574d99c9de5842f9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4a923fd34391137f2064cb338ea180ae3782f5e2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922245"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036838"
 ---
 # <a name="authentication-with-azure-maps"></a>使用 Azure Maps 进行身份验证
 
@@ -59,7 +59,7 @@ Azure Maps 为每个 Azure Maps 帐户生成一个唯一的标识符（客户端
 
 在应用程序收到访问令牌后，SDK 和/或应用程序将使用以下一组所需的 HTTP 标头以及其他 REST API HTTP 标头发送 HTTPS 请求：
 
-| 标头名称    | “值”               |
+| 标头名称    | 值               |
 | :------------- | :------------------ |
 | x-ms-client-id | 30d7cc….9f55        |
 | 授权  | Bearer eyJ0e….HNIVN |
@@ -90,7 +90,7 @@ Azure Maps 支持对 azure [RBAC)  (azure RBAC](https://docs.microsoft.com/azure
 
 存在下列角色定义类型以支持应用程序方案。
 
-| Azure 角色定义       | 描述                                                                                              |
+| Azure 角色定义       | 说明                                                                                              |
 | :-------------------------- | :------------------------------------------------------------------------------------------------------- |
 | Azure Maps 数据读取器      | 提供对不可变 Azure Maps REST Api 的访问。                                                       |
 | Azure Maps 数据参与者 | 提供对可变 Azure Maps REST Api 的访问。 可变性是由 "操作：写入" 和 "删除" 定义的。 |
@@ -114,7 +114,7 @@ Azure Maps 支持对 azure [RBAC)  (azure RBAC](https://docs.microsoft.com/azure
 
 下面是一些示例方案，其中的自定义角色可以提高应用程序的安全性。
 
-| 方案                                                                                                                                                                                                                 | 自定义角色数据操作 (s)                                                                                                                   |
+| 场景                                                                                                                                                                                                                 | 自定义角色数据操作 (s)                                                                                                                   |
 | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
 | 使用基本地图磁贴的公共或交互式登录网页，无其他 REST Api。                                                                                                                              | `Microsoft.Maps/accounts/services/render/read`                                                                                              |
 | 只需要反向地理编码和其他 REST Api 的应用程序。                                                                                                                                             | `Microsoft.Maps/accounts/services/search/read`                                                                                              |

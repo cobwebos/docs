@@ -1,6 +1,6 @@
 ---
 title: 路由的车辆消耗模型 |Microsoft Azure 映射
-description: 在本文中，你将了解 Microsoft Azure 地图中路由的车辆消耗模型。
+description: 了解 Azure Maps 支持的消耗模型： combustion 和电气。 查看每个模型使用哪些参数，并查看参数约束。
 author: subbarayudukamma
 ms.author: skamma
 ms.date: 05/08/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: c1572eddf78ca2d5f8f4e3ee9f1fe47b0d43f5aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b44186d783a249192a8c13ee97063034ee319df7
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77190250"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036753"
 ---
 # <a name="consumption-model"></a>消耗模型
 
@@ -25,12 +25,12 @@ ms.locfileid: "77190250"
 在这两种消耗模型中，指定参数时有一些依赖关系。 这意味着，显式指定某些参数可能需要指定其他一些参数。 下面是要注意的这些依赖项：
 
 * 所有参数均要求用户指定 constantSpeedConsumption****。 如果未指定**constantSpeedConsumption** ，则指定任何其他消耗模型参数是错误的。 **VehicleWeight**参数是此要求的例外情况。
-* **accelerationEfficiency**和**decelerationEfficiency**必须始终指定为成对（即，或 none）。
+* **accelerationEfficiency**和**decelerationEfficiency**必须始终指定为成对 (，即或 none) 。
 * 如果指定了 accelerationEfficiency 和 decelerationEfficiency，两者值的乘积不得大于 1（防止出现永恒运动）********。
-* **uphillEfficiency**和**downhillEfficiency**必须始终指定为成对（即，或 none）。
+* **uphillEfficiency**和**downhillEfficiency**必须始终指定为一对 (，这两者都是或 none) 。
 * 如果指定了 uphillEfficiency 和 downhillEfficiency，两者值的乘积不得大于 1（防止出现永恒运动）********。
 * 如果用户指定了 \*Efficiency 参数，还必须指定“vehicleWeight”参数____****。 如果 vehicleEngineType 为燃料，则还必须指定 fuelEnergyDensityInMJoulesPerLiter****__****。
-* **maxChargeInkWh**和**currentChargeInkWh**必须始终指定为成对（即，或 none）。
+* **maxChargeInkWh**和**currentChargeInkWh**必须始终指定为成对 (，即或 none) 。
 
 > [!NOTE]
 > 如果仅指定了 constantSpeedConsumption，消耗计算不会考虑其他任何消耗（如爬坡和车辆加速）****。

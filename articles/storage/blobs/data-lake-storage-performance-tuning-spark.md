@@ -1,6 +1,6 @@
 ---
 title: 调整性能：Spark、HDInsight 和 Azure Data Lake Storage Gen2 | Microsoft Docs
-description: Azure Data Lake Storage Gen2 Spark 性能优化指南
+description: 了解通过 Azure HDInsight 和 Azure Data Lake Storage Gen2 优化 Spark 性能的准则。
 services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 06fe2670e5ee0d95df8985c9777d3ad9741336b3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 8ae9f96b42c0eb36a9380589780d141711c7ae4d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86106112"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034725"
 ---
 # <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>调整性能：Spark、HDInsight 和 Azure Data Lake Storage Gen2
 
@@ -26,9 +26,9 @@ ms.locfileid: "86106112"
 * Azure Data Lake Storage Gen2 帐户  。 有关如何创建帐户的说明，请参阅[快速入门：创建 Azure Data Lake Storage Gen2 存储帐户](data-lake-storage-quickstart-create-account.md)。
 * 具有 Data Lake Storage Gen2 帐户访问权限的 Azure HDInsight 群集  。 请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)。 请确保对该群集启用远程桌面。
 * **在 Data Lake Storage Gen2 中运行 Spark 群集**。  有关详细信息，请参阅[使用 HDInsight Spark 群集分析 Data Lake Storage Gen2 中的数据](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-use-with-data-lake-store)
-* Data Lake Storage Gen2 的性能优化指南****。  有关一般的性能概念，请参阅[Data Lake Storage Gen2 性能优化指南](data-lake-storage-performance-tuning-guidance.md) 
+* Data Lake Storage Gen2 的性能优化指南。  有关一般的性能概念，请参阅[Data Lake Storage Gen2 性能优化指南](data-lake-storage-performance-tuning-guidance.md) 
 
-## <a name="parameters"></a>参数
+## <a name="parameters"></a>parameters
 
 运行 Spark 作业时，可以优化下面这些最重要的设置，提高 Data Lake Storage Gen2 的性能：
 
@@ -71,16 +71,16 @@ Total YARN memory = node * 每个节点的 YARN 内存
 
 **计算内存约束** - 执行器数目参数受内存或 CPU 的约束。  内存约束由应用程序的可用 YARN 内存量决定。  应该计算 YARN 内存总量，然后将该值除以执行器内存量。  需要根据应用数目重新换算约束，以便能够将它与应用数目相除。
 
-Memory constraint = （total YARN memory/执行器内存）/应用 #
+Memory constraint = (total YARN memory/执行器内存) /# 个应用
 
 **计算 CPU 约束** - 将虚拟核心总数除以每个执行器的核心数可以计算出 CPU 约束。  每个物理核心有 2 个虚拟核心。  与内存约束类似，可以除以应用数目来计算结果。
 
-- 虚拟核心数 = （群集中的节点 * 2 中的物理内核数 * 2）
-- CPU 限制 = （每个执行器的虚拟核心总数/每个执行器的核心数）/应用 #
+- 虚拟核心数 = (群集中的节点 * 2 中的物理内核数) 
+- CPU 限制 = (每个执行程序的总虚拟核心数/每个执行程序) /# 个应用
 
 **设置执行器数目** – 使用内存约束和 CPU 约束的最小值可以得出执行器数目参数。 
 
-执行数 = 最小值（每个执行器的虚拟核心数/每个执行器的核心数，可用 YARN 内存/执行器内存）
+执行数 = 每个执行器的最小虚拟核心数/每个执行器的核心数 (可用 YARN 内存/执行器内存) 
 
 设置较大的执行器数目不一定会提高性能。  应考虑到添加更多执行器会增加每个附加执行器的额外开销，这可能会降低性能。  执行器数目受群集资源的约束。    
 
@@ -107,21 +107,21 @@ Memory constraint = （total YARN memory/执行器内存）/应用 #
 
 **计算内存约束** – 将 YARN 内存总量除以每个执行器的内存量可以计算出内存约束。
 
-- Memory constraint = （total YARN memory/执行器内存）/应用 #
-- Memory constraint = （200GB/6GB）/2
-- 内存限制 = 16 （舍入）
+- Memory constraint = (total YARN memory/执行器内存) /# 个应用
+- 内存限制 = (200GB/6GB) /2
+- 内存限制 = 16 (舍入) 
 
 **计算 CPU 约束** - 将 YARN 核心总数除以每个执行器的核心数可以计算出 CPU 约束。
 
 - YARN 核心数 = 群集中的节点 * 每个节点的内核数 * 2
 - YARN 核心数 = 8 个节点 * 每个 D14 8 个内核 * 2 = 128
-- CPU 限制 = （每个执行器的核心数/每个执行器的核心数）/应用 #
-- CPU 限制 = （128/4）/2
+- CPU 限制 = (每个执行器的核心总数/每个执行器) /# 个应用
+- CPU 限制 = (128/4) /2
 - CPU 限制 = 16
 
 **设置执行器数目**
 
-- num-执行器 = Min （内存约束、CPU 约束）
-- num-执行器 = Min （16，16）
+- num 执行器 = Min (memory 约束，CPU 约束) 
+- num-执行器 = Min (16，16) 
 - num-执行器 = 16
 

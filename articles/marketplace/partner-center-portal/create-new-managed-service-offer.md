@@ -3,16 +3,16 @@ title: 在 Microsoft 商业市场中创建托管服务产品/服务
 description: 如何使用合作伙伴中心的商业市场门户创建新的托管服务产品/服务，以在 Azure 市场中列出。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.date: 07/07/2020
-ms.openlocfilehash: ae079fce02f58d6c6457d7fe6401526f4002662f
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.date: 08/07/2020
+ms.openlocfilehash: f58ec53d1c4f3ad95993fd2faff44f7164c4beeb
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798182"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036600"
 ---
 # <a name="create-a-managed-service-offer"></a>创建托管服务产品
 
@@ -86,7 +86,7 @@ ms.locfileid: "87798182"
 #### <a name="call-out-descriptions"></a>拨出说明
 
 1. Title
-2. 描述
+2. 说明
 3. 有用的链接
 4. 屏幕截图
 
@@ -130,20 +130,23 @@ ms.locfileid: "87798182"
 
 在此部分中，可以提供在向客户展示你的产品/服务时使用的徽标和图像。 所有图像都必须采用 .png 格式。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
->如果在上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 https://upload.xboxlive.com 服务。
+>如果上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 https://upload.xboxlive.com 服务。
 
-#### <a name="store-logos"></a>应用商店徽标
+#### <a name="marketplace-logos"></a>市场徽标
 
-为**大**徽标 (提供) 216 x 216 和 350 x 350 像素之间的 PNG 文件。 合作伙伴中心将使用此来创建一个**小型** (48 x 48 像素) 和一个**中等** (90 x 90 像素) 大小徽标。 您可以选择将它们替换为不同的图像。
-
-需要在列表中的不同位置使用所有三种徽标尺寸：
+提供以下四个像素大小的产品/服务徽标：
 
 - 小图 (48 x 48)
 - 中图 (90 x 90)
-- **大型** (216 x 216 和 350 x 350) 
+- 大图 (216 x 216)
+- 宽图 (255 x 115)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+这些徽标用于 Azure Marketplace 中的不同位置：
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots"></a>屏幕截图
 

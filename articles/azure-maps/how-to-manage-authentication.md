@@ -1,7 +1,7 @@
 ---
 title: 管理身份验证
 titleSuffix: Azure Maps
-description: 使用 Azure 门户在 Microsoft Azure 映射中管理身份验证。
+description: 熟悉 Azure Maps 身份验证。 了解哪种方法最适合哪种情况。 了解如何使用门户查看身份验证设置。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/12/2020
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 870ecb8bda9f07c9270724002d381a4f58bc4d13
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 8fc27ea4de7e81f1279f68d2e4a1a7fde1fcf41f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531721"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037331"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>在 Azure Maps 中管理身份验证
 
-创建 Azure Maps 帐户后，将创建客户端 ID 和密钥以支持 Azure Active Directory （Azure AD）身份验证和共享密钥身份验证。
+创建 Azure Maps 帐户后，将创建一个客户端 ID 和密钥以支持 Azure Active Directory (Azure AD) 身份验证和共享密钥身份验证。
 
 ## <a name="view-authentication-details"></a>查看身份验证详细信息
 
@@ -41,9 +41,9 @@ ms.locfileid: "87531721"
 下表概述了 Azure Maps 中常见的身份验证和授权方案。 该表提供了每个方案所提供的保护类型的比较。
 
 > [!IMPORTANT]
-> Microsoft 建议使用基于角色的访问控制（RBAC）为生产应用程序实现 Azure Active Directory （Azure AD）。
+> Microsoft 建议实现 Azure Active Directory () Azure AD 针对生产应用程序使用基于角色的访问控制 (RBAC) 。
 
-| 方案                                                                                    | 身份验证 | 授权 | 开发工作 | 运营工作量 |
+| 场景                                                                                    | 身份验证 | 授权 | 开发工作 | 运营工作量 |
 | ------------------------------------------------------------------------------------------- | -------------- | ------------- | ------------------ | ------------------ |
 | [可信守护程序/非交互式客户端应用程序](./how-to-secure-daemon-app.md)        | 共享密钥     | 空值           | 中型             | 高               |
 | [可信守护程序/非交互式客户端应用程序](./how-to-secure-daemon-app.md)        | Azure AD       | 高          | 低                | 中型             |
@@ -56,14 +56,14 @@ ms.locfileid: "87531721"
 
 ## <a name="view-role-definitions"></a>查看角色定义
 
-若要查看可用于 Azure Maps 的 Azure 角色，请访问**访问控制（IAM）**。 选择 "**角色**"，然后搜索以*Azure Maps*开头的角色。 这些 Azure Maps 角色是可以向其授予访问权限的角色。
+若要查看可用于 Azure Maps 的 Azure 角色，请**访问 (IAM) 的 "访问控制**"。 选择 "**角色**"，然后搜索以*Azure Maps*开头的角色。 这些 Azure Maps 角色是可以向其授予访问权限的角色。
 
 > [!div class="mx-imgBorder"]
 > ![查看可用的角色](./media/how-to-manage-authentication/how-to-view-avail-roles.png)
 
 ## <a name="view-role-assignments"></a>查看角色分配
 
-若要查看已为 Azure Maps 授予 RBAC 的用户和应用，请访问**访问控制（IAM）**。 在此处选择 "**角色分配**"，然后按**Azure Maps**进行筛选。
+若要查看已被授予 Azure Maps RBAC 的用户和应用，请**访问 (IAM) 的 "访问控制**"。 在此处选择 "**角色分配**"，然后按**Azure Maps**进行筛选。
 
 > [!div class="mx-imgBorder"]
 > ![查看已获 RBAC 的用户和应用](./media/how-to-manage-authentication/how-to-view-amrbac.png)

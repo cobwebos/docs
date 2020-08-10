@@ -1,6 +1,6 @@
 ---
 title: 更改 Azure Maps Web Map Control 的样式
-description: 在本文中，你将了解 Azure Maps Web Map Control 的样式功能
+description: 了解如何更改地图的样式和选项。 请参阅如何在 Azure Maps 中将样式选取器控件添加到地图，以便用户可以在不同的样式之间切换。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/27/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a4c1629302c72d6f59f7f1fd10dc850d46cea5a7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15224afac33a3e236c2d1ed9f60515bdc2f34c4f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285777"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036787"
 ---
 # <a name="change-the-style-of-the-map"></a>更改地图的样式
 
@@ -50,7 +50,7 @@ map.setStyle({
 <br/>
 
 <iframe height="700" style="width: 100%;" scrolling="no" title="地图样式选项" src="https://codepen.io/azuremaps/embed/eYNMjPb?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-请参阅 CodePen 上的 "笔<a href='https://codepen.io/azuremaps/pen/eYNMjPb'>地图样式选项</a>" Azure Maps （ <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>）。
+请参阅 CodePen 上的 () ，查看笔<a href='https://codepen.io/azuremaps/pen/eYNMjPb'>映射样式 Azure Maps 选项</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> 。 <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="set-a-base-map-style"></a>设置基本地图样式

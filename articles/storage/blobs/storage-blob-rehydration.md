@@ -1,6 +1,6 @@
 ---
 title: 从存档层解冻 Blob 数据
-description: 从存档存储中解冻 Blob，以便可以访问数据。
+description: 将 blob 从存档存储中解除冻结，以便可以访问 blob 数据。 将已存档的 blob 复制到联机层。
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 9d1d663dce8791b70b9fd8679730d5681d66013a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a416c22c5b8e09104b20a17bc5042302fa56d8ba
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282460"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035138"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>从存档层解冻 Blob 数据
 
@@ -60,14 +60,14 @@ ms.locfileid: "87282460"
 ## <a name="quickstart-scenarios"></a>快速入门方案
 
 ### <a name="rehydrate-an-archive-blob-to-an-online-tier"></a>将存档 Blob 解冻到联机层
-# <a name="portal"></a>[Portal](#tab/azure-portal)
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+# <a name="portal"></a>[门户](#tab/azure-portal)
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 在 Azure 门户中，搜索并选择“所有资源”。
 
 1. 选择存储帐户。
 
-1. 选择容器，然后选择自己的 blob。
+1. 选择容器，然后选择 Blob。
 
 1. 在“Blob 属性”中选择“更改层”。 
 
@@ -81,7 +81,7 @@ ms.locfileid: "87282460"
 ![检查解除冻结状态](media/storage-tiers/rehydrate-status.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-以下 PowerShell 脚本可用于更改存档 blob 的 blob 层。 必须使用资源组名称初始化 `$rgName` 变量。 必须使用存储帐户名称初始化 `$accountName` 变量。 必须使用容器名称初始化 `$containerName` 变量。 必须使用 Blob 名称初始化 `$blobName` 变量。 
+以下 PowerShell 脚本可用于更改存档 blob 的 blob 层。 必须使用资源组名称初始化 `$rgName` 变量。 必须使用你的存储帐户名初始化 `$accountName` 变量。 必须使用容器名称初始化 `$containerName` 变量。 必须使用 Blob 名称初始化 `$blobName` 变量。 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""
@@ -102,7 +102,7 @@ $blob.ICloudBlob.SetStandardBlobTier("Hot", "Standard")
 ---
 
 ### <a name="copy-an-archive-blob-to-a-new-blob-with-an-online-tier"></a>将存档 Blob 复制到联机层的新 Blob
-可以使用以下 PowerShell 脚本将存档 Blob 复制到同一存储帐户中的新 Blob。 必须使用资源组名称初始化 `$rgName` 变量。 必须使用存储帐户名称初始化 `$accountName` 变量。 必须使用容器名称初始化 `$srcContainerName` 和 `$destContainerName` 变量。 必须使用 Blob 名称初始化 `$srcBlobName` 和 `$destBlobName` 变量。 
+可以使用以下 PowerShell 脚本将存档 Blob 复制到同一存储帐户中的新 Blob。 必须使用资源组名称初始化 `$rgName` 变量。 必须使用你的存储帐户名初始化 `$accountName` 变量。 必须使用容器名称初始化 `$srcContainerName` 和 `$destContainerName` 变量。 必须使用 Blob 名称初始化 `$srcBlobName` 和 `$destBlobName` 变量。 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""

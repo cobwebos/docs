@@ -1,7 +1,7 @@
 ---
 title: 对 Azure Blob 存储内容进行搜索
 titleSuffix: Azure Cognitive Search
-description: 了解如何使用 Azure 认知搜索为 Azure Blob 存储编制索引，以及从文档中提取文本。
+description: 了解如何为 Azure Blob 存储中的文档编制索引，以及如何利用 Azure 认知搜索从文档中提取文本。
 manager: nitinme
 author: mgottein
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 29e123666b35e4659e68a1a925047267f8519940
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6295dfbbee2d44b61b5dc832163adc8d643ab0f1
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496445"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036141"
 ---
 # <a name="how-to-index-documents-in-azure-blob-storage-with-azure-cognitive-search"></a>如何使用 Azure 认知搜索为 Azure Blob 存储中的文档编制索引
 
@@ -136,7 +136,7 @@ Blob 索引器可从以下文档格式提取文本：
 > [!NOTE]
 > 默认情况下，包含结构化内容（例如 JSON 或 CSV）的 lob 以单一文本区块的形式编制索引。 如果想要以结构化方法为 JSON 和 CSV Blob 编制索引，请参阅[为 JSON Blob 编制索引](search-howto-index-json-blobs.md)和[为 CSV Blob 编制索引](search-howto-index-csv-blobs.md)来了解详细信息。
 >
-> 复合文档或嵌入式文档（如 ZIP 存档、包含包含附件的嵌入 Outlook 电子邮件的 Word 文档或。带有附件的 MSG 文件）也作为单个文档编制索引。 例如，从的附件中提取的所有图像。消息文件将在 normalized_images 字段中返回。
+> 复合或嵌入式文档（例如 ZIP 存档、嵌入了带附件 Outlook 电子邮件的 Word 文档或带附件的 .MSG 文件）也以单一文档的形式编制索引。 例如，从 .MSG 文件的附件中提取的所有图像将在 normalized_images 字段中返回。
 
 * 文档的文本内容将提取到名为 `content` 的字符串字段中。
 
@@ -212,7 +212,7 @@ Blob 索引器可从以下文档格式提取文本：
 
 #### <a name="what-if-you-need-to-encode-a-field-to-use-it-as-a-key-but-you-also-want-to-search-it"></a>如果需要对某个字段进行编码以便将其用作键，但又想搜索它，该怎么办？
 
-有时，您需要使用诸如 metadata_storage_path 之类的字段的编码版本作为键，但您也需要此字段是可搜索的（不进行编码）。 为了解决此问题，可以将其映射到两个字段中：一个将用于密钥，另一个将用于搜索目的。 在下面的示例中，"*键*" 字段包含编码的路径，而*路径*字段未编码，并将用作索引中的可搜索字段。
+有时，你需要使用诸如 metadata_storage_path 之类的字段的已编码版本作为键，但你也需要将该字段 (搜索，而不) 编码。 为了解决此问题，可以将其映射到两个字段中：一个将用于密钥，另一个将用于搜索目的。 在下面的示例中，"*键*" 字段包含编码的路径，而*路径*字段未编码，并将用作索引中的可搜索字段。
 
 ```http
     PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2020-06-30
@@ -345,14 +345,14 @@ Azure 认知搜索会限制进行了索引编制的 blob 的大小。 这些限�
 ### <a name="native-blob-soft-delete-preview"></a>本机 Blob 软删除（预览版）
 
 > [!IMPORTANT]
-> 对本机 Blob 软删除的支持目前为预览版。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2020-06-30-Preview](https://docs.microsoft.com/azure/search/search-api-preview)提供此功能。 目前不支持门户或 .NET SDK。
+> 对本机 Blob 软删除的支持目前为预览版。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 [REST API 版本 2020-06-30-Preview](https://docs.microsoft.com/azure/search/search-api-preview) 提供此功能。 目前不支持门户或 .NET SDK。
 
 > [!NOTE]
 > 使用本机 Blob 软删除策略时，索引中文档的文档键必须是 Blob 属性或 Blob 元数据。
 
 在此方法中，你将使用 Azure Blob 存储提供的[本机 Blob 软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)功能。 如果在存储帐户中启用了本机 Blob 软删除，你的数据源已设置了本地软删除策略，并且索引器找到了一个已转变为软删除状态的 Blob，则索引器会从索引中删除该文档。 为 Azure Data Lake Storage Gen2 中的 Blob 编制索引时，不支持本机 Blob 软删除策略。
 
-请使用以下步骤：
+使用以下步骤：
 1. [为 Azure Blob 存储启用本地软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)。 我们建议将保留策略设置为比索引器间隔计划大得多的值。 这样，如果在运行索引器时出现问题，或者如果有大量的文档需要编制索引，可以为索引器留出大量的时间来最终处理已软删除的 Blob。 仅当 Azure 认知搜索索引器在处理处于“已软删除”状态的 Blob 时，才会从索引中删除文档。
 1. 在数据源中配置本机 Blob 软删除检测策略。 下面显示了一个示例。 由于此功能目前为预览版，因此必须使用预览版 REST API。
 1. 运行索引器，或者将索引器设置为按计划运行。 当索引器运行并处理 Blob 时，将从索引中删除文档。

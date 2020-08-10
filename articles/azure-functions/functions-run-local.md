@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: ae83d8f68b78a3b13f9ebafe3c7cedd18a29de53
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 5c6761b083200556314d7133d5040f7811066e30
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87449139"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037025"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -56,11 +56,11 @@ Azure Functions Core Tools 当前依赖于 Azure CLI 通过 Azure 帐户进行�
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-以下步骤使用 Windows installer （MSI）安装核心工具 v3. x。 若要详细了解安装 Core Tools v2 所需的其他基于包的安装程序，请参阅[Core tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
+以下步骤使用 Windows installer (MSI) 来安装核心工具 v3. x。 若要详细了解安装 Core Tools v2 所需的其他基于包的安装程序，请参阅[Core tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
 
 1. 下载并运行基于你的 Windows 版本的 Core Tools 安装程序：
 
-    - [v3. x 64 位](https://go.microsoft.com/fwlink/?linkid=2135274)（建议使用）。 [Visual Studio Code 调试](functions-develop-vs-code.md#debugging-functions-locally)需要64位。）
+    -  (建议使用[v3. x 64 位](https://go.microsoft.com/fwlink/?linkid=2135274)。 [Visual Studio Code 调试](functions-develop-vs-code.md#debugging-functions-locally)需要64位。 ) 
     - [v3. x-Windows 32 位](https://go.microsoft.com/fwlink/?linkid=2135275)
 
 1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 Windows 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
@@ -191,7 +191,7 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 `func init` 支持以下选项。除非另有说明，否则这些选项仅限版本 3.x/2.x：
 
-| 选项     | 描述                            |
+| 选项     | 说明                            |
 | ------------ | -------------------------------------- |
 | **`--csx`** | 创建 .NET 函数作为 c # 脚本，这是版本1.x 的行为。 仅对有效 `--worker-runtime dotnet` 。 |
 | **`--docker`** | 使用基于所选的基本映像为容器创建 Dockerfile `--worker-runtime` 。 如果打算发布到自定义 Linux 容器，请使用此选项。 |
@@ -200,12 +200,28 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`--language`** | 初始化语言特定的项目。 当前在设置为时受支持 `--worker-runtime` `node` 。 选项包括 `typescript` 和 `javascript`。 你还可以使用 `--worker-runtime javascript` 或 `--worker-runtime typescript` 。  |
 | **`--managed-dependencies`**  | 安装托管依赖项。 目前，只有 PowerShell 辅助运行时支持此功能。 |
 | **`--source-control`** | 控制是否创建 git 存储库。 默认不会创建存储库。 如果为 `true`，则会创建存储库。 |
-| **`--worker-runtime`** | 设置项目的语言运行时。 支持的值包括： `csharp` 、 `dotnet` 、 `javascript` 、 `node` （JavaScript）、、 `powershell` `python` 和 `typescript` 。 对于 Java，请使用[Maven](functions-reference-java.md#create-java-functions)。如果未设置，则系统会提示你在初始化期间选择运行时。 |
+| **`--worker-runtime`** | 设置项目的语言运行时。 支持的值包括： `csharp` 、 `dotnet` 、 `javascript` 、 `node` (JavaScript) 、 `powershell` 、 `python` 和 `typescript` 。 对于 Java，请使用[Maven](functions-reference-java.md#create-java-functions)。如果未设置，则系统会提示你在初始化期间选择运行时。 |
 |
 > [!IMPORTANT]
-> 默认情况下，版本2.x 和更高版本的核心工具会将 .NET 运行时的函数应用项目创建为[c # 类项目](functions-dotnet-class-library.md)（.csproj）。 这些 C# 项目可以与 Visual Studio 或 Visual Studio Code 结合使用，在测试期间以及发布到 Azure 时进行编译。 如果希望创建并使用在版本 1.x 和门户中创建的相同 C# 脚本 (.csx) 文件，则在创建和部署函数时必须包含 `--csx` 参数。
+> 默认情况下，版本2.x 和更高版本的核心工具会将 .NET 运行时的函数应用项目创建为[c # 类项目](functions-dotnet-class-library.md)， ( .csproj) 。 这些 C# 项目可以与 Visual Studio 或 Visual Studio Code 结合使用，在测试期间以及发布到 Azure 时进行编译。 如果希望创建并使用在版本 1.x 和门户中创建的相同 C# 脚本 (.csx) 文件，则在创建和部署函数时必须包含 `--csx` 参数。
 
-[!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
+## <a name="register-extensions"></a>注册扩展
+
+除了 HTTP 和计时器触发器外，运行时 2.x 版及更高版本中的 Functions 绑定是以扩展包的形式实现的。 HTTP 绑定和计时器触发器不需要扩展。 
+
+为了减少不同扩展包之间的不兼容性，函数允许你在项目文件的 host.js中引用扩展包。 如果选择不使用扩展捆绑，还需要在本地安装 .NET Core 2.x SDK，并使用函数项目维护扩展。 .csproj 和函数项目。  
+
+在 2.x 版及更高版本的 Azure Functions 运行时中，必须显式注册在函数中使用的绑定类型的扩展。 可以选择单独安装绑定扩展，也可以将扩展捆绑包引用添加到 host.json 项目文件。 扩展捆绑包可避免在使用多种绑定类型时出现包兼容性问题。 建议使用此方法来注册绑定扩展。 扩展捆绑包还无需安装 .NET Core 2.x SDK。 
+
+### <a name="use-extension-bundles"></a>使用扩展捆绑
+
+[!INCLUDE [Register extensions](../../includes/functions-extension-bundles.md)]
+
+若要了解更多信息，请参阅[注册 Azure Functions 绑定扩展](functions-bindings-register.md#extension-bundles)。 在将绑定添加到 function.json 文件之前，应该先将扩展捆绑包添加到 host.json。
+
+### <a name="explicitly-install-extensions"></a>显式安装扩展
+
+[!INCLUDE [functions-extension-register-core-tools](../../includes/functions-extension-register-core-tools.md)]
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
@@ -291,10 +307,10 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 | 参数     | 说明                            |
 | ------------------------------------------ | -------------------------------------- |
-| **`--csx`** | （版本2.x 及更高版本。）生成在版本1.x 和门户中使用的相同 c # 脚本（. run.csx）模板。 |
-| **`--language`** , **`-l`**| C#、F# 或 JavaScript 等模板编程语言。 此选项在版本 1.x 中是必需的。 在版本2.x 和更高版本中，请不要使用此选项或选择与工作运行时匹配的语言。 |
-| **`--name`** , **`-n`** | 函数名称。 |
-| **`--template`** , **`-t`** | 使用 `func templates list` 命令查看每种受支持语言的可用模板的完整列表。   |
+| **`--csx`** |  (版本2.x 及更高版本。 ) 会生成在版本1.x 和门户中使用的相同的 c # 脚本 () 模板。 |
+| **`--language`**, **`-l`**| C#、F# 或 JavaScript 等模板编程语言。 此选项在版本 1.x 中是必需的。 在版本2.x 和更高版本中，请不要使用此选项或选择与工作运行时匹配的语言。 |
+| **`--name`**, **`-n`** | 函数名称。 |
+| **`--template`**, **`-t`** | 使用 `func templates list` 命令查看每种受支持语言的可用模板的完整列表。   |
 
 
 例如，若要在单个命令中创建 JavaScript HTTP 触发器，请运行：
@@ -349,7 +365,7 @@ npm start
 
 `func start` 支持以下选项：
 
-| 选项     | 描述                            |
+| 选项     | 说明                            |
 | ------------ | -------------------------------------- |
 | **`--no-build`** | 在运行之前请勿生成当前项目。 仅限于 dotnet 项目。 默认设置为 false。 版本 1.x 不支持。 |
 | **`--cors-credentials`** | 允许跨域身份验证的请求（即 cookie 和 Authentication 标头），版本 1.x 不支持。 |
@@ -461,9 +477,9 @@ curl --request POST -H "Content-Type:application/json" --data "{'input':'sample 
 | 选项     | 说明                            |
 | ------------ | -------------------------------------- |
 | **`--content`**, **`-c`** | 内联内容。 |
-| **`--debug`** , **`-d`** | 运行函数前，将调试程序附加到主机进程。|
-| **`--timeout`** , **`-t`** | 本地 Functions 主机准备就绪前的等待时间（以秒为单位）。|
-| **`--file`** , **`-f`** | 要用作内容的文件名。|
+| **`--debug`**, **`-d`** | 运行函数前，将调试程序附加到主机进程。|
+| **`--timeout`**, **`-t`** | 本地 Functions 主机准备就绪前的等待时间（以秒为单位）。|
+| **`--file`**, **`-f`** | 要用作内容的文件名。|
 | **`--no-interactive`** | 不提示输入。 适用于自动化方案。|
 
 例如，若要调用 HTTP 触发的函数并传递内容正文，请运行以下命令：
@@ -497,7 +513,7 @@ func azure functionapp publish <FunctionAppName>
 
 以下发布选项适用于所有版本：
 
-| 选项     | 描述                            |
+| 选项     | 说明                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  将 local.settings.json 中的设置发布到 Azure，如果该设置已存在，则提示进行覆盖。 如果使用的是 Microsoft Azure 存储模拟器，请先将应用设置更改为[实际的存储连接](#get-your-storage-connection-strings)。 |
 | **`--overwrite-settings -y`** | 使用 `--publish-local-settings -i` 时隐藏覆盖应用设置的提示。|

@@ -1,6 +1,6 @@
 ---
 title: 如何在 Azure 门户中监视 Azure 存储帐户 | Microsoft Docs
-description: 了解如何使用 Azure 门户在 Azure 中监视存储帐户。
+description: 了解如何使用 Azure 门户和 Azure 存储分析在 Azure 中监视存储帐户。
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 46ff6fb26cf568474b24d941e4a174b425bf5207
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 4c78938e2f70342822a4009ed9195196ca486fe0
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87474353"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034662"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>监视 Azure 门户中的存储帐户
 
@@ -139,7 +139,7 @@ ms.locfileid: "87474353"
 1. 确保“状态”设置为“打开”，选择要为其启用日志记录的服务。
 
     ![在 Azure 门户中配置日志记录。](./media/storage-monitor-storage-account/enable-diagnostics.png)
-1. 单击“ **保存**”。
+1. 单击“保存” 。
 
 诊断日志保存在存储帐户下名为 $logs 的 Blob 容器中。 你可以使用存储资源管理器（如[Microsoft Azure 存储资源管理器](https://storageexplorer.com)）或使用存储客户端库或 PowerShell 以编程方式查看日志数据。
 

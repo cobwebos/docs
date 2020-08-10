@@ -1,19 +1,19 @@
 ---
 title: 配置 Always-On VPN 隧道
 titleSuffix: Azure VPN Gateway
-description: 了解如何配置 Always On，以便基于触发器（例如用户登录、网络状态更改或设备屏幕活动）维护 VPN 连接。
+description: 了解如何在 Windows 10 Always On 中使用网关来建立和配置到 Azure 的永久性设备隧道。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 24043576fca4910631ccddb3924303dd642c6842
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e64d2223740942fe35ae8a730303bee8893c2489
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927039"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035597"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>配置 Always On VPN 设备隧道
 

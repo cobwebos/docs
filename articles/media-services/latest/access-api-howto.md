@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: 33c762e2f2a9bed90991f7b85e0fb83fbb43765c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a039e1d4442490d3747a302754d521f1f3402bcf
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090155"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035785"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>获取访问媒体服务 API 的凭据  
 
@@ -45,7 +45,7 @@ ms.locfileid: "87090155"
 通过“API 访问”页面，可选择要用来连接 API 的身份验证方法。 该页面还提供了连接到 API 所需的值。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择媒体服务帐户。
-2. 选择与媒体服务 API 的连接方式。
+2. 选择左侧导航栏上的 " **API 访问" ("新建) ** " 边栏选项卡。
 3. 在“连接到媒体服务 API”下，选择要连接到的媒体服务 API 版本（该服务的最新版本是 V3）。
 
 ### <a name="service-principal-authentication--recommended"></a>服务主体身份验证（推荐）

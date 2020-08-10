@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 08/08/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8fa775ab4d183d75fef41529a95555fe3bcdc91c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 556d3df41b7ee66bfb2b32b8a566d7172f45e313
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827837"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034458"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -51,11 +51,13 @@ Azure 存储帐户中的数据在主要区域中始终复制三次。 Azure 存�
 
 区域冗余存储 (ZRS) 在主区域中的三个 Azure 可用性区域同步复制 Azure 存储数据。 每个可用性区域都是一个独立的物理位置，具有独立的电源、冷却系统和网络。 ZRS 在一年中提供至少 99.9999999999%（12 个 9）的 Azure 存储数据对象持久性。
 
-通过使用 ZRS，即使某个区域变得不可用，也仍可访问你的数据进行读写操作。 如果某个区域变得不可用，则 Azure 会执行网络更新，例如 DNS 重新指向。 如果完成更新之前访问数据，这些更新可能会影响应用程序。 在设计用于 ZRS 的应用程序时，遵循暂时性故障的处理做法，包括结合指数退让实施重试策略。
+通过使用 ZRS，即使某个区域变得不可用，也仍可访问你的数据进行读写操作。 如果区域变得不可用，则 Azure undertakes 网络更新，如 DNS 重构。 如果完成更新之前访问数据，这些更新可能会影响应用程序。 在设计用于 ZRS 的应用程序时，遵循暂时性故障的处理做法，包括结合指数退让实施重试策略。
 
 会同步发生一个针对使用 ZRS 的存储帐户的写入请求。 写入操作仅在将数据写入三个可用性区域中的所有副本后才能成功返回。
 
-对于需要一致性、耐用性和高可用性的方案，Microsoft 建议在主要区域中使用 ZRS。 如果数据变为暂时不可用，ZRS 可提供出色的性能、低延迟和数据复原能力。 但是，如果多个区域永久受到影响，在发生区域性的灾难时，ZRS 本身可能无法保护数据。 为了防御区域灾难，Microsoft 建议使用[地理区域冗余存储](#geo-zone-redundant-storage) (GZRS)，该存储在主要区域中使用 ZRS，并将数据异地复制到次要区域。
+对于需要一致性、耐用性和高可用性的方案，Microsoft 建议在主要区域中使用 ZRS。 如果要将应用程序限制为仅在国家或地区内复制数据，则我们还建议使用 ZRS，因为数据治理要求。
+
+如果数据变为暂时不可用，ZRS 可提供出色的性能、低延迟和数据复原能力。 但是，如果多个区域永久受到影响，在发生区域性的灾难时，ZRS 本身可能无法保护数据。 为了防御区域灾难，Microsoft 建议使用[地理区域冗余存储](#geo-zone-redundant-storage) (GZRS)，该存储在主要区域中使用 ZRS，并将数据异地复制到次要区域。
 
 下表显示了哪些类型的存储帐户支持哪些区域中的 ZRS：
 

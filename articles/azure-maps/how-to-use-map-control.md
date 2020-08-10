@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure 地图 web 地图控件入门
-description: 了解如何使用 Microsoft Azure map web 地图控件客户端 JavaScript 库，将地图和嵌入 Azure Maps 功能呈现到 web 或移动应用程序中。
+description: 了解如何使用 Azure Maps 中的 Map Control 客户端 JavaScript 库将映射添加到 web 和移动应用程序。 请参阅如何本地化映射。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/20/2020
@@ -9,24 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 40ae1492084430f7dbca331d1439b4ded099c866
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e4309b3fdda1296aade19de2874e7f3423b9fc0f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287071"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035942"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure Maps 地图控件
 
 Map Control 客户端 JavaScript 库允许你将地图和嵌入 Azure Maps 功能呈现到你的 web 或移动应用程序中。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 若要在网页中使用 Map Control，必须具备以下先决条件之一：
 
 * [创建 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)并[获取主要订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)，也称为主密钥或订阅密钥。
 
-* 获取具有[身份验证选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)的 AZURE ACTIVE DIRECTORY （AAD）凭据。
+* 获取 Azure Active Directory (具有[身份验证选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)的 AAD) 凭据。
 
 ## <a name="create-a-new-map-in-a-web-page"></a>在网页中创建新地图
 
@@ -34,22 +34,22 @@ Map Control 客户端 JavaScript 库允许你将地图和嵌入 Azure Maps 功�
 
 1. 创建新的 HTML 文件。
 
-2. 载入 Azure Maps Web SDK。 您可以选择以下两个选项之一：
+2. 载入 Azure Maps Web SDK。 可选择以下两个选项之一：
 
     * 通过在 HTML 文件的元素中添加对 JavaScript 和样式表的引用，使用 Azure Maps Web SDK 的全球托管 CDN 版本 `<head>` ：
 
-        ```HTML
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
-        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-        ```
+      ```html
+      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+      <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+      ```
 
     * 使用[Azure Maps control](https://www.npmjs.com/package/azure-maps-control) NPM 包在本地加载 AZURE MAPS Web SDK 源代码，并将其与应用程序一起托管。 此程序包还包括了 TypeScript 定义。
 
-    > **npm install azure-maps-control**
+      > **npm install azure-maps-control**
 
     然后，将对 Azure Maps 样式表的引用添加到该 `<head>` 文件的元素中：
 
-    ```HTML
+    ```html
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
      ```
 
@@ -83,7 +83,7 @@ Map Control 客户端 JavaScript 库允许你将地图和嵌入 Azure Maps 功�
     </body>
    ```
 
-5. 现在，我们将初始化地图控件。 若要对控件进行身份验证，需要拥有 Azure Maps 订阅密钥，或使用具有[身份验证选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)的 AZURE ACTIVE DIRECTORY （AAD）凭据。
+5. 现在，我们将初始化地图控件。 若要对控件进行身份验证，你需要拥有 Azure Maps 订阅密钥，或使用具有[身份验证选项](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authenticationoptions)的 AZURE ACTIVE DIRECTORY (AAD) 凭据。
 
     如果使用订阅密钥进行身份验证，请复制以下脚本元素，并将其粘贴到 `<head>` 元素内和第一个 `<script>` 元素之下。 `<Your Azure Maps Key>`将替换为 Azure Maps 的主订阅密钥。
 
@@ -104,7 +104,7 @@ Map Control 客户端 JavaScript 库允许你将地图和嵌入 Azure Maps 功�
     </script>
     ```
 
-    如果要使用 Azure Active Directory （AAD）进行身份验证，请复制以下脚本元素，并将其粘贴到 `<head>` 元素内和第一个 `<script>` 元素下。
+    如果使用 Azure Active Directory (AAD) 进行身份验证，请复制以下脚本元素，并将其粘贴到 `<head>` 元素内和第一个 `<script>` 元素之下。
 
       ```HTML
     <script type="text/javascript">
@@ -125,7 +125,7 @@ Map Control 客户端 JavaScript 库允许你将地图和嵌入 Azure Maps 功�
     </script>
    ```
 
-    有关 Azure Maps 的身份验证的详细信息，请参阅[Azure Maps 的身份验证](azure-maps-authentication.md)文档。 此外，还提供了一个示例列表，其中显示了如何将 Azure Active Directory （AAD）与 Azure Maps[集成。](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)
+    有关 Azure Maps 的身份验证的详细信息，请参阅[Azure Maps 的身份验证](azure-maps-authentication.md)文档。 此外，还提供了一个示例列表，其中显示了如何将 Azure Active Directory (AAD) 与 Azure Maps[集成。](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)
 
     >[!TIP]
     >在此示例中，我们传入了 `id` 映射的 `<div>` 。 执行此操作的另一种方法是通过将 `HTMLElement` `document.getElementById('myMap')` 作为第一个参数传递来传入对象。
@@ -200,7 +200,7 @@ Map Control 客户端 JavaScript 库允许你将地图和嵌入 Azure Maps 功�
 
 ## <a name="localizing-the-map"></a>本地化地图
 
-Azure Maps 提供了两种不同的方法来设置呈现地图的语言和区域视图。 第一种方法是将此信息添加到全局 `atlas` 命名空间，这会导致应用中的所有地图控件实例默认设置为这些设置。 下面将语言设置为法语（"fr"），并将区域视图设置为 "Auto"：
+Azure Maps 提供了两种不同的方法来设置呈现地图的语言和区域视图。 第一种方法是将此信息添加到全局 `atlas` 命名空间，这会导致应用中的所有地图控件实例默认设置为这些设置。 下面将语言设置为法语 ( "fr" ) ，区域视图设置为 "自动"：
 
 ```javascript
 atlas.setLanguage('fr-FR');
@@ -272,7 +272,7 @@ var searchURL = new atlas.service.SearchURL(pipeline, 'atlas.azure.us');
 > [!div class="nextstepaction"]
 > [代码示例](https://docs.microsoft.com/samples/browse/?products=azure-maps)
 
-有关演示如何将 Azure Active Directory （AAD）与 Azure Maps 集成的示例列表，请参阅：
+有关显示如何将 Azure Active Directory (AAD) 与 Azure Maps 集成的示例列表，请参阅：
 
 > [!div class="nextstepaction"]
 > [Azure AD 身份验证示例](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)

@@ -8,12 +8,12 @@ ms.date: 08/04/2020
 ms.topic: how-to
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 737fe4b334e60f1b51e8f60f39e8821588a6841c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: f51630154b77233aeb2587ac3a2d603c1da6fa4f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010279"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036549"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-preview"></a>使用数据导出 (预览将 IoT 数据导出到云目标) 
 
@@ -22,7 +22,7 @@ ms.locfileid: "88010279"
 
 本文介绍如何使用 Azure 中的新数据导出预览功能 IoT Central。 你可以使用此功能将筛选和扩充的 IoT 数据持续导出到你的云服务。 你可以使用数据导出将所做的更改及时推送到云解决方案的其他部分，以获取热路径见解、分析和存储。 
 
- 例如，你可以：
+ 例如，可以：
 -   以近乎实时的顺序连续导出 JSON 格式的遥测数据和属性更改
 -   筛选这些数据流以导出与自定义条件匹配的特定功能
 -   利用来自设备的自定义值和属性值丰富数据流
@@ -33,7 +33,7 @@ ms.locfileid: "88010279"
 
 ## <a name="prerequisites"></a>先决条件
 
-您必须是 IoT Central 应用程序中的管理员或具有数据导出权限。
+若要使用数据导出 (预览) ，必须具有 V3 应用程序，并且必须具有数据导出权限。
 
 ## <a name="set-up-export-destination"></a>设置导出目标
 
@@ -150,15 +150,22 @@ ms.locfileid: "88010279"
 
 ## <a name="export-contents-and-format"></a>导出内容和格式
 
-对于事件中心和服务总线目标，数据会以近乎实时的速度导出。 数据在消息正文中，采用 JSON 格式编码为 UTF-8。 有关示例，请参阅下面的示例。
+### <a name="azure-blob-storage-destination"></a>Azure Blob 存储目标
 
-对于 Blob 存储，将每分钟导出一次数据，其中每个文件包含自上次导出的文件以来发生的一批更改。 导出的数据以 JSON 格式放置在三个文件夹中。 存储帐户中的默认路径是：
+每分钟导出一次数据，每个文件包含自上次导出的文件以来发生的一批更改。 导出的数据以 JSON 格式放置在三个文件夹中。 存储帐户中的默认路径是：
 
 - 遥测： _{container}/{app-id}/{partition_id}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
 - 属性更改： _{container}/{app-id}/{partition_id}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}_
 
 若要浏览 Azure 门户中的已导出文件，请导航到该文件，然后选择 "**编辑 blob** " 选项卡。
 
+### <a name="azure-event-hubs-and-azure-service-bus-destinations"></a>Azure 事件中心和 Azure 服务总线目标
+
+数据会以近乎实时的速度导出。 数据在消息正文中，采用 JSON 格式编码为 UTF-8。 
+
+在消息的批注或系统属性包中，可以找到、、 `iotcentral-device-id` `iotcentral-application-id` 和， `iotcentral-message-source` `iotcentral-message-type` 它们具有与消息正文中的相应字段相同的值。
+
+### <a name="webhook-destination"></a>Webhook 目标
 对于 webhook 目标，还会以近乎实时的时间导出数据。 数据在消息正文中的格式与事件中心和服务总线的格式相同。
 
 
@@ -169,7 +176,7 @@ ms.locfileid: "88010279"
 - `messageSource`用于导出遥测数据的*遥测*数据
 - `deviceId`发送遥测消息的设备的
 - `schema`有效负载架构的名称和版本
-- `templateId`与设备关联的设备模板 Id
+- `templateId`与设备关联的设备模板 ID
 - `enrichments`是对导出设置的任何根据
 - `messageProperties`设备与消息一起发送的其他数据片段。 这也称为*应用程序属性*，[详细了解 IoT 中心文档](../../iot-hub/iot-hub-devguide-messages-construct.md)。
 
@@ -217,7 +224,7 @@ ms.locfileid: "88010279"
 - `messageType`这是*cloudPropertyChange*或*devicePropertyDesiredChange*， *devicePropertyReportedChange*
 - `deviceId`其属性已更改的设备
 - `schema`有效负载架构的名称和版本
-- `templateId`与设备关联的设备模板 Id
+- `templateId`与设备关联的设备模板 ID
 - `enrichments`是对导出设置的任何根据
 
 对于事件中心和服务总线，IoT Central 会以近乎实时的时间将新的消息数据导出到事件中心、服务总线队列或主题。
@@ -251,9 +258,10 @@ ms.locfileid: "88010279"
 | 功能  | 旧数据导出 | 新数据导出 |
 | :------------- | :---------- | :----------- |
 | 可用数据类型 | 遥测、设备、设备模板 | 遥测，属性更改 |
-| 筛选 | None | 取决于导出的数据类型。 对于遥测，按遥测、消息属性和属性值进行筛选 |
-| 根据 | None | 使用自定义字符串或设备上的属性值丰富 |
+| 筛选 | 无 | 取决于导出的数据类型。 对于遥测，按遥测、消息属性和属性值进行筛选 |
+| 根据 | 无 | 使用自定义字符串或设备上的属性值丰富 |
 | Destinations | Azure 事件中心、Azure 服务总线队列和主题、Azure Blob 存储 | 与旧数据导出和 webhook 相同| 
+| 支持的应用 | V2、V3 | 仅 V3 |
 | 明显限制 | 每个应用导出5个，每个导出1个目标 | 10个导出-每个应用的目标连接 | 
 
 ## <a name="next-steps"></a>后续步骤

@@ -1,5 +1,5 @@
 ---
-title: 商业市场的潜在顾客管理 | Azure 市场和 AppSource
+title: 商业应用程序的潜在客户管理 |Azure Marketplace 和 AppSource
 description: 有关向 Azure 市场和 AppSource 发布产品/服务和技术项目的各种主题的概述
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 2abbef88ed7bac41b84eb06c8c0ec9c8a906b2f6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: d0aea0594a97990c7c89434e73fcd4982b01e20f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119440"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035172"
 ---
-# <a name="lead-management-for-commercial-marketplace"></a>商业市场的潜在顾客管理
+# <a name="lead-management-for-the-commercial-marketplace"></a>商业应用程序的潜在客户管理
 
 任何发展良好的业务都以客户为中心。 在当今的产品采购转型中，营销人员需要注重直接与客户进行联系并建立关系。 所以，生成高质量的销售线索对销售周期非常重要。 在[合作伙伴中心](https://partner.microsoft.com/)推出你的产品/服务后，就可以在客户对你的产品表现出感兴趣或在市场中部署产品时，立即使用工具以编程方式获取客户联系信息。 
 
@@ -134,7 +134,7 @@ title = MSFT_TEST_636573304831318844
   - AzureMarketplace
   - Azure 门户
   - TestDrive  
-  - SPZA （AppSource 的首字母缩写）
+  - AppSource 的 SPZA (首字母缩写) 
 
 - 操作：
   - "INS"-表示安装。 这在 Azure 市场或 AppSource 中每当客户点击按钮来购买产品时发生。

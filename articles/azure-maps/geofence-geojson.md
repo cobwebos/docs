@@ -1,6 +1,6 @@
 ---
 title: 地域隔离区内的 GeoJSON 数据格式 |Microsoft Azure 映射
-description: 本文介绍如何准备可在 Microsoft Azure Map GET 和 POST 地域隔离区内 API 中使用的地域隔离区内数据。
+description: 了解 Azure Maps 地域隔离区内数据。 请参阅如何在检索相对于地域隔离区内的坐标位置时使用 GET 地域隔离区内和 POST 地域隔离区内 Api。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 02/14/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 924c23f0fb0156ff585872dded72932a1574a12d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 27a2fee04afc559a8564aea5e112de07e9c0dcf6
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131299"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037399"
 ---
 # <a name="geofencing-geojson-data"></a>地理围栏 GeoJSON 数据
 
@@ -30,12 +30,12 @@ ms.locfileid: "87131299"
 * `expiredTime` 是地理围栏数据的过期日期和时间。 如果请求中 `userTime` 的值晚于此值，则将相应的地理围栏数据视为过期的数据，且不会查询这些数据。 基于这一点，此地理围栏数据的 geometryId 将包含在地理围栏响应中的 `expiredGeofenceGeometryId` 数组内。
 * `validityPeriod` 是地理围栏有效时段的列表。 如果请求中 `userTime` 的值超出有效时段，则将相应的地理围栏数据视为无效，且不会查询这些数据。 此地理围栏数据的 geometryId 包含在地理围栏响应中的 `invalidPeriodGeofenceGeometryId` 数组内。 下表显示了 validityPeriod 元素的属性。
 
-| 名称 | 类型 | 必须  | 描述 |
+| 名称 | 类型 | 必须  | 说明 |
 | :------------ |:------------: |:---------------:| :-----|
-| startTime | datetime  | true | 有效时段的开始日期时间。 |
-| endTime   | datetime  | true |  有效时段的结束日期时间。 |
-| recurrenceType | 字符串 | false |   时段的重复类型。 值可为 `Daily`、`Weekly`、`Monthly` 或 `Yearly`。 默认值是 `Daily`。|
-| businessDayOnly | 布尔值 | false |  指示数据是否仅在工作日有效。 默认值是 `false`。|
+| startTime | datetime  | 是 | 有效时段的开始日期时间。 |
+| endTime   | datetime  | 是 |  有效时段的结束日期时间。 |
+| recurrenceType | 字符串 | false |   时段的重复类型。 值可为 `Daily`、`Weekly`、`Monthly` 或 `Yearly`。 默认值为 `Daily`。|
+| businessDayOnly | Boolean | false |  指示数据是否仅在工作日有效。 默认值为 `false`。|
 
 
 * 所有坐标值都表示为中定义的 "经度，纬度" `WGS84` 。

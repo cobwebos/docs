@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: mingshen
-ms.date: 07/28/2020
-ms.openlocfilehash: 0adffbb9058141ea89daefc292b937841659c879
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.date: 08/07/2020
+ms.openlocfilehash: 8d27594b33db72303c71ceb39de92b1d4340b9be
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798063"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037263"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure 市场创建 Azure 虚拟机产品/服务
 
@@ -242,20 +242,23 @@ ms.locfileid: "87798063"
 
 提供要用于产品/服务的徽标和图像。 所有图像都必须为 PNG 格式。 模糊图像会导致提交遭到拒绝。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >如果上传文件时遇到问题，请确保本地网络未阻止合作伙伴中心所使用的 https://upload.xboxlive.com 服务。
 
-#### <a name="store-logos"></a>应用商店徽标
+#### <a name="azure-marketplace-logos"></a>Azure 市场徽标
 
-为**大**徽标 (提供) 216 x 216 和 350 x 350 像素之间的 PNG 文件。 合作伙伴中心将使用此来创建一个**小型** (48 x 48 像素) 和一个**中等** (90 x 90 像素) 大小徽标。 您可以选择将它们替换为不同的图像。
+按以下四个图像尺寸提供产品/服务徽标的 PNG 文件：
 
-需要在列表中的不同位置使用所有三种徽标尺寸：
+- **小**（48 &times; 48 像素）
+- **中**（90 &times; 90 像素）
+- **大**（216 &times; 216 像素）
+- **宽**（255 &times; 115 像素）
 
-- 小图 (48 x 48)
-- 中图 (90 x 90)
-- **大型** (216 x 216 和 350 x 350) 
+所有这四种徽标都是必需的，它们显示在各种 Azure 市场列表中。
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots"></a>屏幕截图
 

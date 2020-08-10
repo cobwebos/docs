@@ -1,6 +1,6 @@
 ---
 title: 无服务器计算层
-description: 本文介绍了新的无服务器计算层，并将其与适用于 Azure SQL 数据库的现有预配计算层进行比较。
+description: 本文介绍新的无服务器计算层，并将它与现有的 Azure SQL 数据库预配计算层进行比较。
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 7/9/2020
-ms.openlocfilehash: 38ca6528b77d9f36c84f5aacaa34a64d113b5978
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 8/7/2020
+ms.openlocfilehash: 518d3880a740de2cda4f01e362d8a5ef7865b361
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206931"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037297"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 ### <a name="performance-configuration"></a>性能配置
 
-- “最小 vCore 数”和“最大 vCore 数”是可配置的参数，用于定义数据库可用的计算容量范围。   内存和 IO 限制与指定的 vCore 范围成正比。  
+- “最小 vCore 数”和“最大 vCore 数”是可配置的参数，用于定义数据库可用的计算容量范围。  内存和 IO 限制与指定的 vCore 范围成正比。  
 - **自动暂停延迟**是可配置的参数，用于定义数据库在自动暂停之前必须处于非活动状态的时间段。 发生下次登录或其他活动时，数据库会自动恢复。  或者，可以禁用自动暂停。
 
 ### <a name="cost"></a>成本
@@ -88,7 +88,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 #### <a name="cache-reclamation"></a>缓存回收
 
-与预配的计算数据库不同，当 CPU 或活动缓存使用率较低时，从无服务器数据库回收 SQL 缓存中的内存。  请注意，当 CPU 使用率较低时，主动缓存利用率可能会保持较高，具体取决于使用模式和防止内存回收。
+与预配的计算数据库不同，当 CPU 或活动缓存使用率较低时，从无服务器数据库回收 SQL 缓存中的内存。
 
 - 当最近使用的缓存条目的总大小低于某个时间段的阈值时，主动缓存利用率将视为低。
 - 触发缓存回收后，目标缓存大小将递减到以前大小的一部分，并且仅当使用率保持较低时才继续回收。
@@ -96,6 +96,8 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 - 缓存大小永远不会减至小于最小 vCore 数定义的最小内存限制（可配置）。
 
 在无服务器数据库和预配的计算数据库中，如果使用了所有可用内存，则可能会逐出缓存条目。
+
+请注意，当 CPU 使用率较低时，主动缓存利用率可能会保持较高水平（具体取决于使用模式），并会阻止内存回收。  此外，用户活动停止后，可能会有额外的延迟，因为响应先前用户活动会定期后台进程。  例如，"删除" 操作将生成标记为删除的虚影记录，但不会在物理上删除，直到虚影清除进程运行，这可能涉及到将数据页读入缓存。
 
 #### <a name="cache-hydration"></a>缓存合成
 
@@ -133,7 +135,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 |审核|查看审核记录。<br>更新或查看审核策略。|
 |数据屏蔽|添加、修改、删除或查看数据屏蔽规则|
 |透明数据加密|查看透明数据加密的状况或状态|
-|漏洞评估|如果启用，则为即席扫描和定期扫描|
+|漏洞评估|如果启用，则为临时扫描和定期扫描|
 |查询（性能）数据存储|修改或查看查询存储设置|
 |自动优化|自动优化建议的应用和验证，例如自动索引|
 |数据库复制|创建数据库作为副本。<br>导出到 BACPAC 文件。|
@@ -143,7 +145,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 监视解决方案、管理解决方案或其他执行上述任何操作的解决方案将触发自动恢复。
 
-在部署某些需要数据库联机的服务更新期间，也会触发自动恢复。
+在部署某些需要数据库联机的服务更新时，也会触发自动刷新。
 
 ### <a name="connectivity"></a>连接
 
@@ -155,11 +157,11 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 
 ### <a name="customer-managed-transparent-data-encryption-byok"></a>客户托管透明数据加密 (BYOK)
 
-如果使用[客户托管透明数据加密](transparent-data-encryption-byok-overview.md) (BYOK)，并且在发生密钥删除或吊销时自动暂停了无服务器数据库，则该数据库将保持自动暂停状态。  在这种情况下，在下次恢复数据库后，大约 10 分钟内数据库将无法访问。  该数据库变为不可访问后，恢复过程将与预配的计算数据库相同。  如果在发生密钥删除或吊销时无服务器数据库处于联机状态，则该数据库也将在大约 10 分钟内变得不可访问，其方式与预配的计算数据库相同。
+如果使用[客户托管的透明数据加密](transparent-data-encryption-byok-overview.md) (BYOK)，并且在发生密钥删除或吊销时自动暂停了无服务器数据库，则该数据库将保持自动暂停状态。  在这种情况下，在下次恢复数据库后，大约 10 分钟内数据库将无法访问。  该数据库变为不可访问后，恢复过程将与预配的计算数据库相同。  如果在发生密钥删除或吊销时无服务器数据库处于联机状态，则该数据库也将在大约 10 分钟内变得不可访问，其方式与预配的计算数据库相同。
 
 ## <a name="onboarding-into-serverless-compute-tier"></a>载入无服务器计算层
 
-创建新的数据库，或将现有数据库移动到无服务器计算层中的模式与在预配计算层中创建新的数据库相同，均包含以下两个步骤。
+如果要创建新的数据库，或将现有数据库移动到无服务器计算层中，请按照与在预配计算层中创建新数据库时相同的模式操作，其中涉及以下两个步骤。
 
 1. 指定服务目标。 服务目标规定了服务层、硬件代次和最大 vCore 数。 有关服务目标选项，请参阅[无服务器资源限制](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5)
 
@@ -172,7 +174,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
    |自动暂停延迟|最低：60 分钟（1 小时）<br>最大值：10080 分钟（7 天）<br>增量：10 分钟<br>禁用自动暂停：-1|60 分钟|
 
 
-### <a name="create-a-new-database-in-the-serverless-compute-tier"></a>在无服务器计算层中创建新数据库
+### <a name="create-a-new-database-in-the-serverless-compute-tier"></a>在无服务器计算层中新建数据库
 
 以下示例在无服务器计算层中创建新数据库。
 
@@ -329,7 +331,7 @@ vCore 单位价格是每个 vCore 每秒的费用。 请参考 [Azure SQL 数据
 
 如果暂停无服务器数据库，则计算帐单为零。  如果未暂停无服务器数据库，则最小计算费用将不会低于最大 (最小值 Vcore，最小内存 GB * 1/3) 的 Vcore 量。
 
-示例：
+示例:
 
 - 假设无服务器数据库被暂停并配置为具有8个最大 Vcore，1分钟 vCore 对应于 3.0 GB 的最小内存。  然后，最小计算帐单基于 max (1 vCore，3.0 GB * 1 vCore/3 GB) = 1 vCore。
 - 假设无服务器数据库被暂停并配置为具有最大 4 GB Vcore 和0.5 分钟 Vcore，对应于 2.1 GB 的最小内存。  然后，最小计算帐单基于 max (0.5 Vcore，2.1 GB * 1 vCore/3 GB) = 0.7 Vcore。

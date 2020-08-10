@@ -1,6 +1,6 @@
 ---
 title: Azure 网络服务概述
-description: 了解 Azure 中的网络服务，包括连接服务、应用程序保护服务、应用程序交付服务和网络监视。
+description: 了解 Azure 中的网络服务，包括连接、应用程序保护、应用程序交付和网络监视服务。
 services: networking
 documentationcenter: na
 author: KumudD
@@ -10,24 +10,24 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/12/2020
 ms.author: kumud
-ms.openlocfilehash: 5b32f6b368af62bad13a505472a9ddd4709c032c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1110199a8c02b29d70f0c12e1ed1a6341c44e403
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282154"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037246"
 ---
 # <a name="azure-networking-services-overview"></a>Azure 网络服务概述
 
 Azure 中的网络服务提供可以搭配使用或单独使用的各种网络功能。 请单击以下任一重要功能了解更多相关信息：
-- [**连接服务**](#connect)：使用 Azure 虚拟网络（VNet）、虚拟 WAN、EXPRESSROUTE、VPN 网关、虚拟网络 NAT 网关、Azure DNS、对等互连服务和 Azure 堡垒中的任何或一系列网络服务来连接 azure 资源和本地资源。
+- [**连接服务**](#connect)：使用 azure 中的这些网络服务的任意或组合（ (VNet) 、虚拟 WAN、EXPRESSROUTE、VPN 网关、虚拟网络 NAT 网关、Azure DNS、对等互连服务和 Azure 堡垒）连接 azure 资源和本地资源。
 - [**应用程序保护服务**](#protect)：使用 Azure 中的这些网络服务的任意或组合保护应用程序-私有链接、DDoS 保护、防火墙、网络安全组、Web 应用程序防火墙和虚拟网络终结点。
-- [**应用程序传递服务**](#deliver)：使用 azure 中的这些网络服务的任意或组合在 azure 网络中提供应用程序-内容交付网络（CDN）、Azure 前门服务、流量管理器、应用程序网关、Internet 分析器和负载均衡器。
-- [**网络监视**](#monitor)：使用 Azure 中的这些网络服务的任意或组合监视网络资源-网络观察程序、ExpressRoute 监视器、Azure Monitor 或 VNet 终端访问点（点击）。
+- [**应用程序传递服务**](#deliver)：使用 azure 中的这些网络服务的任意或组合（ (CDN) 、Azure 前门服务、流量管理器、应用程序网关、Internet 分析器和负载均衡器）在 azure 网络中提供应用程序。
+- [**网络监视**](#monitor)：使用 Azure 中的这些网络服务的任意或组合监视网络资源-网络观察程序、ExpressRoute 监视器、Azure Monitor 或 VNet 终端访问点 (点击 ") "。
 
 ## <a name="connectivity-services"></a><a name="connect"></a>连接服务
  
-本部分介绍在 Azure 资源之间提供连接、从本地网络连接到 Azure 资源的服务，以及分支到 Azure 虚拟网络（VNet）、虚拟 WAN、ExpressRoute、VPN 网关、虚拟网络 NAT 网关、Azure DNS、Azure 对等互连服务和 Azure 堡垒的分支连接。
+本部分介绍了在 Azure 资源之间提供连接、从本地网络连接到 Azure 资源，以及在 Azure 虚拟网络中分支到分支连接的服务 (VNet) 、虚拟 WAN、ExpressRoute、VPN 网关、虚拟网络 NAT 网关、Azure DNS、Azure 对等互连服务和 Azure 堡垒。
 
 |服务|为何使用此类服务？|方案|
 |---|---|---|
@@ -38,7 +38,7 @@ Azure 中的网络服务提供可以搭配使用或单独使用的各种网络�
 |[Azure DNS](#dns)|托管使用 Microsoft Azure 基础结构提供名称解析的 DNS 域。|<p>[在 Azure DNS 中托管域](../dns/dns-delegate-domain-azure-dns.md)</p><p>[为 Web 应用创建 DNS 记录](../dns/dns-web-sites-custom-domain.md)</p> <p>[为流量管理器创建别名记录](../dns/tutorial-alias-tm.md)</p> <p>[为公共 IP 地址创建别名记录](../dns/tutorial-alias-pip.md)</p> <p>[为区域资源记录创建别名记录](../dns/tutorial-alias-rr.md)</p>|
 |[Azure Bastion](#bastion)|直接在 Azure 门户 over TLS 中，配置与虚拟机的安全且无缝的 RDP/SSH 连接。 通过 Azure 堡垒连接时，虚拟机不需要公共 IP 地址|<p>[创建 Azure Bastion 主机](../bastion/bastion-create-host-portal.md)</p><p>[使用 SSH 连接到 Linux VM](../bastion/bastion-connect-vm-ssh.md)</p><p>[使用 RDP 连接到 Windows VM](../bastion/bastion-connect-vm-rdp.md)</p>|
 |[虚拟网络 NAT 网关](#nat)|创建 NAT 网关，为虚拟机提供出站连接。|<p>[创建 NAT 网关](../virtual-network/quickstart-create-nat-gateway-portal.md)</p>|
-|[Azure 对等互连服务（预览）](#azurepeeringservice)|通过公共网络与服务提供商协作，以获得最佳和可靠的路由。|<p>[注册 Azure 对等互连服务](../peering-service/azure-portal.md)</p>|
+|[Azure 对等互连服务 (预览) ](#azurepeeringservice)|通过公共网络与服务提供商协作，以获得最佳和可靠的路由。|<p>[注册 Azure 对等互连服务](../peering-service/azure-portal.md)</p>|
 ||||
 
 
@@ -74,7 +74,7 @@ Azure Virtual WAN 是一种网络服务，提供到 Azure 并穿过该服务的�
 Azure DNS 是 DNS 域的托管服务，DNS 域使用 Microsoft Azure 基础结构提供名称解析。 通过在 Azure 中托管域，可以使用与其他 Azure 服务相同的凭据、API、工具和计费来管理 DNS 记录。 有关详细信息，请参阅[什么是 Azure DNS？](../dns/dns-overview.md)
 
 ### <a name="azure-bastion"></a><a name="bastion"></a>Azure Bastion
-Azure Bastion 服务是的一种新型的完全托管平台 PaaS 服务，可在虚拟网络中进行预配。 可通过 TLS 直接在 Azure 门户中实现与虚拟机之间的安全无缝的 RDP/SSH 连接。 在你通过 Azure Bastion 连接时，你的虚拟机无需公共 IP 地址。 有关详细信息，请参阅[什么是 Azure 堡垒？](../bastion/bastion-overview.md)。
+Azure Bastion 服务是的一种新型的完全托管平台 PaaS 服务，可在虚拟网络中进行预配。 可通过 TLS 直接在 Azure 门户中实现与虚拟机之间的安全无缝的 RDP/SSH 连接。 在你通过 Azure Bastion 连接时，你的虚拟机无需公共 IP 地址。 有关详细信息，请参阅[什么是 Azure Bastion？](../bastion/bastion-overview.md)。
 
 ![Azure 堡垒体系结构](./media/networking-overview/architecture.png)
 
@@ -84,7 +84,7 @@ Azure Bastion 服务是的一种新型的完全托管平台 PaaS 服务，可在
 ![虚拟网络 NAT 网关](./media/networking-overview/flow-map.png)
 
 ### <a name="azure-peering-service"></a><a name="azurepeeringservice"></a>Azure 对等互连服务
-Azure 对等互连服务增强了客户与 Microsoft 云服务（如 Office 365、Dynamics 365、软件即服务（SaaS）服务、Azure 或可通过公共 internet 访问的任何 Microsoft 服务）的连接。 有关详细信息，请参阅[什么是 Azure 对等互连服务？](../peering-service/about.md)。
+Azure 对等互连服务增强了客户与 Microsoft 云服务（如 Office 365、Dynamics 365、软件即服务）的连接， (SaaS) 服务、Azure 或可通过公共 internet 访问的任何 Microsoft 服务。 有关详细信息，请参阅[什么是 Azure 对等互连服务？](../peering-service/about.md)。
 
 ## <a name="application-protection-services"></a><a name="protect"></a>应用程序保护服务
 
@@ -97,7 +97,7 @@ Azure 对等互连服务增强了客户与 Microsoft 云服务（如 Office 365�
 |[Azure 防火墙](#firewall)|Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚拟网络资源。 它是一个服务形式的完全有状态防火墙，具有内置的高可用性和不受限制的云可伸缩性。|<p>[在 Vnet 中部署 Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)</p> <p>[- 在混合网络中部署 Azure 防火墙](../firewall/tutorial-hybrid-ps.md)</p> <p>[使用 Azure 防火墙 DNAT 筛选入站流量](../firewall/tutorial-firewall-dnat.md)</p>|
 |[网络安全组](#nsg)|在 VM/子网中对所有网络流量进行完全粒度的分布式终端节点控制|[使用网络安全组筛选网络流量](../virtual-network/tutorial-filter-network-traffic.md)|
 |[虚拟网络服务终结点](#serviceendpoints)|使你可以将对某些 Azure 服务资源的网络访问限制到虚拟网络子网|[限制 PaaS 资源的网络访问](../virtual-network/tutorial-restrict-network-access-to-resources-powershell.md)|
-[专用链接](#privatelink)|使你能够通过虚拟网络中的专用终结点访问 Azure PaaS 服务（例如，Azure 存储和 SQL 数据库）和 Azure 托管的客户拥有/合作伙伴服务。|<p>[创建专用终结点](../private-link/create-private-endpoint-portal.md)</p><p>[创建专用链接服务](../private-link/create-private-link-service-portal.md)</p>|
+[专用链接](#privatelink)|使你能够通过虚拟网络中的专用终结点访问 Azure PaaS 服务 (例如，Azure 存储和 SQL 数据库) 和 Azure 托管的客户拥有/合作伙伴服务。|<p>[创建专用终结点](../private-link/create-private-endpoint-portal.md)</p><p>[创建专用链接服务](../private-link/create-private-link-service-portal.md)</p>|
 |||
 ### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDoS 保护 
 [Azure DDoS 防护](../virtual-network/manage-ddos-protection.md)针对最复杂的 DDoS 威胁提供对策。 此服务为你的虚拟网络中部署的应用程序和资源提供增强的 DDoS 缓解功能。 此外，使用 Azure DDoS 防护的客户有权访问 DDoS 快速响应支持，以在主动攻击期间与 DDoS 专家联系。
@@ -129,7 +129,7 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
 ![虚拟网络服务终结点](./media/networking-overview/vnet-service-endpoints-overview.png)
 
 ### <a name="azure-private-link"></a><a name="privatelink"></a>Azure 专用链接
-使用[Azure 专用链接](../private-link/private-link-overview.md)，可以通过虚拟网络中的专用终结点访问 Azure PaaS 服务（例如，azure 存储和 SQL 数据库）和 azure 托管的客户拥有/合作伙伴服务。
+使用[Azure Private Link](../private-link/private-link-overview.md) ，可以通过虚拟网络中的专用终结点访问 Azure PaaS 服务 (例如，azure 存储和 SQL 数据库) 以及 azure 托管的客户拥有/合作伙伴服务。
 虚拟网络与服务之间的流量将遍历 Microsoft 主干网络。 不再需要向公共 Internet 公开服务。 可以在虚拟网络中创建自己的专用链接服务，并将其交付给客户。
 
 ![专用终结点概述](./media/networking-overview/private-endpoint.png)

@@ -5,21 +5,21 @@ keywords: azure key-vault 身份验证本地凭据
 author: msmbaldwin
 services: key-vault
 ms.author: mbaldwin
-ms.date: 06/30/2020
+ms.date: 08/08/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: 6edb6f026f3062dfb2beafd863cf090519f6b66a
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: d48e9ac71ba12ecd2eaadb8ba333f5440c68af4b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875977"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034781"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
 
 > [!NOTE]
-> 不建议将**microsoft.azure.services.appauthentication**用于新的 Key Vault SDK。 它被替换为适用于 .NET、Java、TypeScript 和 Python 的新 Azure 标识库**DefaultAzureCredentials** ，适用于所有新的开发。 可在以下网页中找到详细信息：[身份验证和 AZURE SDK](https://azure.github.io/azure-sdk/posts/2020-02-25/defaultazurecredentials.html)。
+> 不建议将**microsoft.azure.services.appauthentication**用于新的 Key Vault SDK。 它被替换为适用于 .NET、Java、TypeScript 和 Python 的新 Azure 标识库**DefaultAzureCredentials** ，适用于所有新的开发。 可在以下网页中找到详细信息：[身份验证和 AZURE SDK](https://devblogs.microsoft.com/azure-sdk/authentication-and-the-azure-sdk/)。
 
 若要对 Azure Key Vault 进行身份验证，需要提供 Azure Active Directory (Azure AD) 凭据（共享机密或证书）。
 
@@ -132,7 +132,7 @@ ms.locfileid: "87875977"
 
 ## <a name="running-the-application-using-managed-identity-or-user-assigned-identity"></a>使用托管标识或用户分配标识运行应用程序
 
-在启用托管标识的 Azure 应用服务或 Azure VM 上运行代码时，库自动使用托管标识。 不需要更改代码，但托管标识必须具有密钥保管库的*GET*权限。 可以通过密钥保管库的*访问策略*为托管标识*获取*权限。
+在启用托管标识的 Azure 应用服务或 Azure VM 上运行代码时，库自动使用托管标识。 无需更改代码，但托管标识必须对密钥保管库具有 GET 权限。 可以通过密钥保管库的访问策略为托管标识授予 GET 权限。
 
 或者，可以使用用户分配的标识进行身份验证。 有关用户分配的标识的详细信息，请参阅[关于 Azure 资源的托管标识](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types)。 若要使用用户分配的标识进行身份验证，需要在连接字符串中指定用户分配的标识的客户端 ID。 在[连接字符串支持](#connection-string-support)中已指定连接字符串。
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 DistCp 将数据复制到 Azure Data Lake Storage Gen2 | Microsoft Docs
-description: 使用 DistCp 工具将数据复制到 Data Lake Storage Gen2 和从中复制数据
+description: 使用 Apache Hadoop 分布式复制工具 (DistCp) ，将数据复制到 Azure Data Lake Storage Gen2。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 4930d99c4175126ffba65598bd6b33e973ba1c44
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 734ad2d45dbb27894e5da4fbeb11c0e8b60df8bd
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109495"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035665"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据
 
@@ -83,9 +83,9 @@ hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.w
 
 * **步骤 1：确定可用于“默认”YARN 应用队列的总内存** - 第一步是确定可用于“默认”YARN 应用队列的内存。 可在与群集关联的 Ambari 门户中获取此信息。 导航到 YARN 并查看“配置”选项卡可看到可用于“默认”应用队列的 YARN 内存。 这是 DistCp 作业（实际是 MapReduce 作业）的总可用内存。
 
-* **步骤 2：计算映射器数** - m 的值等于总 YARN 内存除以 YARN 容器大小的商。 YARN 容器大小的信息也可在 Ambari 门户中找到。 导航到 YARN 并查看“配置”选项卡。YARN 容器大小显示在此窗口中。 用于得到映射器数 (**m**) 的公式是
+* **步骤 2：计算映射器数** - **m** 的值等于总 YARN 内存除以 YARN 容器大小的商。 YARN 容器大小的信息也可在 Ambari 门户中找到。 导航到 YARN 并查看“配置”选项卡。YARN 容器大小显示在此窗口中。 用于得到映射器数 (**m**) 的公式是
 
-    m = （节点数 * 每个节点的 YARN 内存）/YARN 容器大小
+    m = (的节点数 * 每个节点的 YARN 内存) /YARN 容器大小
 
 **示例**
 
@@ -97,7 +97,7 @@ hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.w
 
 * **映射器数**：从 Ambari 门户确定一个 D14 群集节点的 YARN 容器大小为 3,072 MB。 因此，映射器数为：
 
-    m = （4个节点 * 96 GB）/3072MB = 128 映射器
+    m = (4 节点 * 96 GB) /3072MB = 128 映射器
 
 如果其他应用程序正在使用内存，则可以选择仅将群集的部分 YARN 内存用于 DistCp。
 

@@ -1,18 +1,18 @@
 ---
 title: Azure VPN 网关：配置设置
-description: 了解 Azure 中的 VPN 网关连接的配置，该连接依赖于多个资源，每个资源包含可配置的设置。
+description: 了解资源管理器部署模型中创建的虚拟网络的 VPN 网关资源和设置。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5fef54e4fff442f1c9eae523d7d278f193b84171
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 6f801b94a16ae6fcee6896dd70510469c5e20098
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926920"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036906"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>关于 VPN 网关配置设置
 

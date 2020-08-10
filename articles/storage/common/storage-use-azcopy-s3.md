@@ -1,6 +1,6 @@
 ---
 title: 使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储 | Microsoft Docs
-description: 使用 AzCopy 和 Amazon S3 桶传输数据
+description: 使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储。 AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 或文件。
 services: storage
 author: normesta
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 88acb4fe31470dab3ca6f273fd8d942e7f84e687
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: ac093f707167160e916c15b935cb3d8ff6bbc748
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281882"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037110"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>使用 AzCopy 将数据从 Amazon S3 复制到 Azure 存储
 
@@ -40,7 +40,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制 Blob 
 
 收集 AWS 访问密钥和机密访问密钥，然后设置以下环境变量：
 
-| 操作系统 | Command  |
+| 操作系统 | 命令  |
 |--------|-----------|
 | **Windows** | `set AWS_ACCESS_KEY_ID=<access-key>`<br>`set AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
 | **Linux** | `export AWS_ACCESS_KEY_ID=<access-key>`<br>`export AWS_SECRET_ACCESS_KEY=<secret-access-key>` |
@@ -87,7 +87,7 @@ AzCopy 使用[从 URL 放置块](https://docs.microsoft.com/rest/api/storageserv
 
 ### <a name="copy-the-contents-of-a-directory"></a>复制目录的内容
 
-可以复制目录的内容，而无需使用通配符（*）复制包含目录本身。
+可以复制目录的内容，而无需使用通配符 ( * ) 来复制包含目录本身。
 
 |    |     |
 |--------|-----------|
