@@ -1,6 +1,6 @@
 ---
 title: 通过 Azure Data Box 从本地 HDFS 存储迁移到 Azure 存储
-description: 将数据从本地 HDFS 存储迁移到 Azure 存储
+description: 使用 Data Box 设备将数据从本地 HDFS 存储迁移到 Azure 存储 (blob 存储或 Data Lake Storage Gen2) 。
 author: normesta
 ms.service: storage
 ms.date: 02/14/2019
@@ -8,16 +8,16 @@ ms.author: normesta
 ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: 6c5f2a041f03d53e1ea7c3f981683f4b70d3963b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a50f85e76f16f1e5ba8823adb1ea1aa02157fcee
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465994"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032554"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>通过 Azure Data Box 从本地 HDFS 存储迁移到 Azure 存储
 
-可以通过使用 Data Box 设备，将 Hadoop 群集的本地 HDFS 存储中的数据迁移到 Azure 存储（blob 存储或 Data Lake Storage Gen2）。 可以从 Data Box Disk、80-TB Data Box 或 770-TB Data Box Heavy 中进行选择。
+可以通过使用 Data Box 设备，将 Hadoop 群集的本地 HDFS 存储中的数据迁移到 Azure 存储 (blob 存储或 Data Lake Storage Gen2) 。 可以从 Data Box Disk、80-TB Data Box 或 770-TB Data Box Heavy 中进行选择。
 
 本文将帮助你完成以下任务：
 
@@ -25,7 +25,7 @@ ms.locfileid: "84465994"
 > * 准备迁移数据。
 > * 将数据复制到 Data Box Disk、Data Box 或 Data Box Heavy 设备。
 > * 将设备寄回给 Microsoft。
-> * 应用对文件和目录的访问权限（仅 Data Lake Storage Gen2）
+> * 仅将访问权限应用于 Data Lake Storage Gen2 的文件和目录 () 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -75,7 +75,7 @@ ms.locfileid: "84465994"
 
     若要确定这些文件是否存在，请使用以下命令： `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure` 。 将 `<hadoop_install_dir>` 占位符替换为已安装 Hadoop 的目录的路径。 请确保使用完全限定的路径。
 
-    示例：
+    示例:
 
     `azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar` `azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar`
 
@@ -151,7 +151,7 @@ ms.locfileid: "84465994"
   
     提高复制速度：
 
-    * 尝试更改映射器数。 （上面的示例使用 `m` = 4 映射器。）
+    * 尝试更改映射器数。 上面的示例 (使用 `m` = 4 映射器。 ) 
 
     * 尝试并行运行多个 `distcp` 。
 
@@ -175,7 +175,7 @@ ms.locfileid: "84465994"
 
 5. Microsoft 收到你的设备后，它将连接到数据中心网络，并且数据将上传到你在你放置设备顺序时指定的存储帐户。 针对所有数据都上载到 Azure 的 BOM 文件进行验证。 
 
-## <a name="apply-access-permissions-to-files-and-directories-data-lake-storage-gen2-only"></a>应用对文件和目录的访问权限（仅 Data Lake Storage Gen2）
+## <a name="apply-access-permissions-to-files-and-directories-data-lake-storage-gen2-only"></a>仅将访问权限应用于 Data Lake Storage Gen2 的文件和目录 () 
 
 已将数据导入到 Azure 存储帐户。 现在，将访问权限应用于文件和目录。
 
@@ -204,7 +204,7 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 > [!NOTE]
 > 运行此命令可能需要很长时间，具体取决于 HDFS 中的文件数。
 
-### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>生成标识列表，并将其映射到 Azure Active Directory （添加）标识
+### <a name="generate-a-list-of-identities-and-map-them-to-azure-active-directory-add-identities"></a>生成标识列表，并将其映射到 Azure Active Directory (添加) 标识
 
 1. 下载 `copy-acls.py` 脚本。 请参阅本文中的[下载帮助器脚本并设置边缘节点以运行它们](#download-helper-scripts)。
 
@@ -219,7 +219,7 @@ sudo -u hdfs ./copy-acls.sh -s /{hdfs_path} > ./filelist.json
 
 3. 在文本编辑器中打开 `id_map.json` 文件。
 
-4. 对于文件中显示的每个 JSON 对象， `target` 使用适当的映射标识更新 AAD 用户主体名称（UPN）或 ObjectId （OID）的属性。 完成后，保存该文件。 下一步需要用到此文件。
+4. 对于文件中显示的每个 JSON 对象， `target` 使用适当的映射标识，更新 (UPN) 或 ObjectId (OID) 的 AAD 用户主体名称的属性。 完成后，保存该文件。 下一步需要用到此文件。
 
 ### <a name="apply-permissions-to-copied-files-and-apply-identity-mappings"></a>将权限应用于复制的文件和应用标识映射
 

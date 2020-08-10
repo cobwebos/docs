@@ -1,18 +1,18 @@
 ---
 title: 如何通过 C++ 使用对象 (Blob) 存储 - Azure | Microsoft Docs
-description: 使用 Azure Blob（对象）存储将非结构化数据存储在云中。
+description: 了解如何使用 c + + 将非结构化数据存储在云中，使用 Azure Blob () 对象)  (blob。
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: d21d37e366e0f34c896d76ee53c49c4ca30a18db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 332d6da35af0eaae9d9d15258a152734f0a9eba6
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87021131"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033625"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>如何通过 C++ 使用 Blob 存储
 

@@ -1,6 +1,6 @@
 ---
-title: 移动（传输）范围
-description: 在本文中，你将了解 Microsoft Azure Maps 移动服务中的公共转口覆盖面。
+title: 移动性 (传输) 覆盖率
+description: 了解 Azure Maps 移动服务在哪些区域提供公共传输功能，如路由和服务警报。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/23/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3cd2cc2068f1855c46bc139100006d75492632d8
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: d61cc94ee1b3c5d23135c033b1068aa7411761d1
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169372"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033251"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure Maps 移动性覆盖范围
 
@@ -29,14 +29,14 @@ Azure Maps 不提供与所有城市和国家/地区相同的信息和准确性�
 
 ## <a name="americas"></a>美洲
 
-| 国家/地区 |  城市（地铁区域） |
+| 国家/地区 |  城市 (地铁区域)  |
 |----------------|---------|
 | 安提瓜和巴布达 | 安提瓜和巴布达 * |
 | 阿根廷       | <p>Bahía Blanca、布宜诺斯艾利斯、Caleta Olivia、Catamarca、Chivilcoy、Comodoro Rivadavia、Córdoba、Corrientes、General Pico、奥、Plata、门多萨、Miramar、Necochea、Neuquén、Oberá、Olavarría、Paraná Posadas、Rio、Tercero、Rosario Salta、Carlos、Bariloche、San Luis de Pedro、Tandil、乌、Viedma、Villa、María、、、、</p>|
 | 巴巴多斯       |  岛 |
 | 巴西         | <p>Angra dos Reis、Anápolis、Apucarana、Aracaju、Araraquara、Araxa、Araçatuba、Bage、Barretos、Bauru、Bebedouro、贝伦、Belo Horizonte、Blumenau、博阿维斯塔 Vista、巴西利亚、Caldas Novas、Campina 坎普、Campinas、大 Belo、大坎普、Caraguatatuba、Caratinga、Cascavel、Cataguases、Caxias、Leopoldina、Região、Catalão、Caxias、格兰德、Chapecó、Cianorte、Conselheiro、Lafaiete、Corumbá、Criciúma、Cruzeiro、格兰德、Cuiabá、Curitiba、Curitibanos、Curvelo、Diamantina Dourados、Estrela、Feira de Santana、Fernando de 诺罗尼亚、Florianópolis、Fortaleza、Foz do Iguaçu、语言、Garanhuns、Goiania、Governador、Valadares、Guarapuava、Imperatriz、Ipatinga、Irati、Itabira、Itabuna、Itajaí、Itajuba、Ituiutaba、Jaguarao、Jaraguá、格兰德、、、、、、、、Joao Pessoa、Joinville、Juazeiro do 格兰德、Juiz de 针对、Jundiaí、Lages、Lavras e Regiao、Lucas、Rio、Londrina、Macapa、Macaé、Maceió、Mafra、Rio、Negro、马瑙斯、Manhuacu、Maringá、Marília、Monte、Carmelo、Montes、Claros、、、、、、Mossoró、Natal、Osorio、Ourinhos、Ouro Preto、Palmas、Paracatu、Paranaguá、Parnaíba、Passo Fundo、Passos、Patos de 米、Patrocínio、Pelotas、Piracicaba、Pirapora、poco de Caldas、Ponta Grossa、韦 Alegre、韦 Ferreira、韦 Seguro、韦柳港、Praia 坎普、Recife、Ribeirão、Preto、Rio、Rio、布朗库、Rio、Rondonópolis、Salinas、Cruz、格兰德、、、、圣诞老人 Rita do Sapucaí，Santarem，Santos，圣保罗 Gabriel do Oeste，圣多美 Joao del Rei，Tiradentes e Regiao，圣保罗 do Rio Preto，圣多美 Mateus，圣保罗，Sorocaba，圣保罗 Carlos，圣保罗，格兰德，圣保罗 José，圣保罗 Lourenço、圣多美 Luís、Taubaté、Telemaco Borba、Teofilo Otoni、Teresina、吧、Três Lagoas、Tucurui、Ubatuba、Uberaba、Uberlândia、Ubá、Uruguaiana、Varginha、Vicosa、Videira & Fraiburgo、Vitória、Vitória、Conquista、Volta Redonda、Votuporanga </p>|
-| 加拿大 | Banff （AB）、Brandon （MB）、卡尔加里（AB）、Comox 低谷（BC）、Cowichan 低谷（BC）、埃德蒙顿（AB）、Fort 圣彼得堡、Fredericton （NB）、更大的 Sudbury （ON）、更高的范 Kelowna （BC），Kingston （ON），伦敦（ON），Moncton （NB），蒙特利尔（QC），Nanaimo （BC），渥太华（ON），Prince George （BC），Québec City （QC），红色 Deer （AB），里贾纳（sk），Rimouski （qc），Saskatoon （BC），圣 John （NL）、阳光海岸、大图标托架（ON）、多伦多（ON）、维多利亚（BC）、Whistler （BC）、Windsor （ON）、温尼伯（MB）、Woodstock</p>|
-| 智利  | <p>Antofagasta，Arica，Aysén，Chillán，Concepción，Constitución，Copiapó，Curicó，Iquique，La Serena y Coquimbo，Linares，洛杉矶（智利），洛杉矶拉各斯，蓬纳斯，Rancagua，圣地亚哥，Talca，Temuco，Valdivia，Valparaíso，Viña del 三月</p>|
+| 加拿大 | Banff (AB) ，Brandon (MB) ，卡尔加里 (AB) ，Comox 谷 (BC) ，Cowichan 低谷 (BC) ，埃德蒙顿 (AB) ，Fort 圣卢西亚，Fredericton (NB) ，更高的 Sudbury (在) 上，更高版本的哈里法克斯 (，坎卢普斯) BC (，Kelowna) 上 (上) 的，Moncton (NB) ，蒙特利尔 (QC) ，Nanaimo (BC) ，渥太华 (在) 上，Prince George (BC) ，Québec City (QC) ，Deer 里贾纳 Rimouski () ，Saskatoon (sk) ，Sherbrooke (qc) ，Squamish (，NL) qc (、 () 上的大图标托架、维多利亚)  (、维多利亚 (BC) 、Whistler (BC) 、 (上的 Windsor) 、温尼伯 (MB) 、Woodstock</p>|
+| 智利  | <p>Antofagasta，Arica，Aysén，Chillán，Concepción，Constitución，Copiapó，Curicó，Iquique，La Serena y Coquimbo，Linares，洛杉矶 (智利) ，洛杉矶拉各斯，蓬纳斯，Rancagua，圣地亚哥，Talca，Temuco，Valdivia，Valparaíso，Viña del 三月</p>|
 | 哥伦比亚 | <p>Barranquilla、Bogotá、Bucaramanga、Cali、Cartagena、Ibagué、Medellín、Pasto、Popayán、圣诞老人 Marta、Sincelejo、Valledupar</p>|  
 | 哥斯达黎加 | San José|
 | 多米尼加共和国 | 图圣多明各 |
@@ -48,13 +48,13 @@ Azure Maps 不提供与所有城市和国家/地区相同的信息和准确性�
 | 波多黎各 | San Juan |
 | 苏里南 | 帕拉马里博 |
 | 乌拉圭 | 蒙得维的亚，蓬 del Este，Salto |
-| 美国 | <p>Albany （NY），Albuquerque （NM），Anchorage （AK），王小姐 Arbor （MI） Appleton-Oshkosh-Neenah （WI），Asheville （NC），雅典（GA），雅典（华盛顿州），亚特兰大（GA），德克萨斯州（德克萨斯州），Bakersfield （CA），巴尔的摩（MD），Birmingham （AL）、Bloomington （在中）、Boise （ID）、波士顿（MA）、Boulder （CO）、保龄球绿色（KY）、德县县县（佛罗里达州）、Buffalo （纽约州）、Butte （MT）、佛得角货（马萨诸塞州）、中心县（PA）、Urbana-champaign （URBANA-CHAMPAIGN）、Charlotte （NC），Charlottesville （VA），Chattanooga （TN），Cheyenne （WY），芝加哥（IL），辛辛那提（哦），柑橘县（佛罗里达州），Cleveland （哦），Coachella 低谷（CA），科罗拉多弹簧（CO），哥伦比亚语料库 Christi （TX）、达拉斯/萨尔瓦多（TX）、Dayton （哦）、特拉华州、丹佛（CO）、Des Moines （IA）、Detroit （MI）、德卢斯（MN）、El Paso （TX）、Eugene （OR）、Fairbanks （AK）、Fargo （）、Fayetteville （NC），Flagstaff （AZ）、Flint （MI） Fort Collins （CO）、Fort 堡（在中）、Fresno （CA）、Gainesville （佛罗里达州）、总计叉（ND）、总计 Rapids （MI）、绿色托架（WI）、Greensboro （NC）、Greenville Hanford （CA）、Hartford （CT）、Hernando 县（佛罗里达州）、Hinesville （GA）、Honolulu （HI）、休斯顿（TX）、Humboldt 县（CA）、亚拉巴马（AL）、印第安纳波利斯（在中）、Ithaca （纽约）、Jackson （MS）、Jackson （TN）、杰克逊维尔 Johnson city （TN）、Jonesboro （AR）、Joplin （MO）、Juneau （AK）、Kalamazoo （MI）、Kalispell （MT）、堪萨斯城 City （MO）、Kauai （）、Ketchum （）、Knoxville （TN）、Lafayette （在中）、兰卡斯特（Lansing）、Laredo （在中）、（得克萨斯州，拉斯维加斯（NV），Lawrence （KS），先生县（佛罗里达州），Lexington （KY），Lincoln 县（OR），小型岩石（AR），洛杉矶（CA），路易斯维尔（KY），Lubbock （TX），Madison （WI），曼彻斯特（NH），McAllen （TX），Memphis （TN）、迈阿密（佛罗里达州）、Milwaukee-Waukesha （WI）、明尼阿波利斯（MN）、Missoula （MT）、Modesto （USA）、Moline （IL）、Monroe 县（PA）、Montgomery （AL）、Morgantown （WV）、纳什维尔（TN）、印地安黄国）、新的 "一座（CT）"、"新奥尔良"、"NYC"、"Ocala"、"Okaloosa"、"Oklahoma 县"、"Omaha"、"沙漠"、"Pensacola"、""、""、"Peoria （IL）、Philadelphia （PA）、Phoenix （AZ）、Pittsburgh （PA）、下带（ME）、下（OR）、Racine （WI）、Raleigh （NC）、Redding （CA）、Reno & Lake Tahoe （NV）、Richmond （VA）、Roanoke 装载（NC）、软糖山地国家标准（OR）、Roseburg （OR）、Roseville （CA）、Sacramento （CA）、塞勒姆（OR）、盐 Lake 城（）、San Antonio （TX）、圣马力诺（CA）、San Luis Obispo （CA）、圣克拉拉 Barbara （CA）北京 Fe （NM）、Sarasota （佛罗里达州）、Savannah （GA）、Seacoast Region （NH）、西雅图-Tacoma-Bellevue （WA）、SF 托架区域（CA）、SF-圣马力诺地区（CA）、Sioux City （IA）、Sioux （SD）、Sitka （AK）、Spokane （WA）、Springfield （MA）、南折弯（在中）、Springfield （IL）、Springfield （质量）、St. George （）、Stockton-Syracuse （纽约）、佛罗里达（佛罗里达州）、Tampa （佛罗里达州）、Terre Haute （在中）、吧（哦）、Topeka （KS）、遍历城市（MI）、Tucson （AZ）、Tulsa （OK）、佛蒙特州、Victorville （CA）、Volusia 县（FL）、Waco （TX）、华盛顿（DC）、Waterbury （CT）、Wichita （KS）、Wichita （TX） Wilmington （NC）、Yakima （WA）、Youngstown （华盛顿州）、纽约县（PA）、Yuma 县（AZ）</p>|
+| 美国 | <p>Albany (NY) ，Albuquerque (NM) ，Anchorage (AK) ，王 Arbor (英里) Appleton-Oshkosh-Neenah (WI) ，Asheville (NC) ，雅典 (GA) ，雅典 (Bakersfield) ，亚特兰大 (GA) ，德克萨斯 (TX) ，Berkshire (CA) ，Birmingham (Bloomington (IN) ，Boise (ID) ，波士顿 (MA) ，Boulder (CO) ，保龄球绿色 (KY) ，德县县 (佛罗里达) ，， (，Butte) MT (，佛得角货) ，urbana-champaign (IL) ，urbana-champaign (SC) ，Charleston (CHARLESTON) ，WV (NC) ，Charlottesville (VA) ，Chattanooga (TN) ，Cheyenne (WY) ，芝加哥 (IL) ，辛辛那提 () ，柑橘县 (佛罗里达州) ，Cleveland (Coachella) ，TN 低谷 (CA) ，科罗拉多弹簧 (CO) ，哥伦比亚 (俄亥俄州哥伦布) ，语料库 Christi (TX) ，达拉斯/提 (TX) Dayton (哦) ，特拉华州，丹佛 (CO) ，Des Moines (IA) ，Detroit (MI) ，德卢斯 (MN) ，El Paso (TX) ，Eugene (或) ，Fairbanks (AK) ，Fargo (AZ) ，Fayetteville (MI) Flagstaff Flint (CO) ，Fort Collins () ，Fresno (CA) ，Gainesville (FL) ，总计分叉 (ND) ，总计 Rapids (英里) ，绿色托架 (WI) ，Greensboro (NC) ，Greenville (SC) ，Gunnison (CO) ，Hampton 公路 (VA) ，Hanford () Hartford (，Hernando) GA (，Hinesville) 休斯顿 (TX) ，Humboldt 县 (CA) ，亚拉巴马州 (AL) ，印第安纳波利斯 (在) ，Ithaca (NY) ，Jackson (MS) ，Jackson (TN) ，杰克逊维尔，Johnson TN (JONESBORO) ，Joplin (Juneau) ，AK (，堪萨斯城城 (MO) ，Kauai () ，Ketchum (ID) ，Knoxville (TN) ，Lafayette (在) ，兰卡斯特 (PA) ，Lansing (MI) ，Laredo (TX) ，内华达州 (NV) ，Lawrence (KS) ，，Lexington 县 (或) ，极少摇滚 (AR) ，洛杉矶 (CA) 路易斯维尔 (KY) ，Lubbock (TX) ，Madison (WI) ，曼彻斯特 (NH) ，McAllen (TX) ，Memphis (TN) ，迈阿密 (佛罗里达) ，Milwaukee-Waukesha (WI) ，明尼阿波利斯-MN (MISSOULA) ，Modesto (MT) ，Moline (USA) ，Monroe (，Morgantown (WV) ，纳什维尔 (TN) ，印地安黄国) ，新的 (CT) ，新奥尔良 (LA) ，NYC-NJ 地区 (纽约州) ，Ocala (FL) ，Okaloosa 县 (佛罗里达) ，Oklahoma City (Omaha) ，沙漠 (NE) ，佛罗里达 (，掌 Pensacola) CA (Peoria (IL) ，Philadelphia (PA) ，Phoenix (AZ) ，Pittsburgh (PA) ，Racine (，北京) 或 (，Raleigh) WI (，Redding) NC (，Reno) CA (，Tahoe) Lake Richmond & NV (，Roanoke)  (，Lynchburg，Rochester) VA (，软糖山地国家公园 (CO) ，流氓低谷 (或) ，Roseburg (或) ，Roseville (CA) ，Sacramento (CA) ，塞勒姆 (或) ，盐 Lake 城 (Antonio) ，San Luis (TX) ，圣马力诺 () CA (，San Obispo Barbara) CA (，北京 Sarasota) CA (Savannah (GA) ，Seacoast 区域 (NH) ，西雅图-Tacoma-Bellevue (WA) ，，Sioux Sioux 地区 (CA) ，Sitka City (IA) ，AK 降 (SD) ，Spokane (SPRINGFIELD) ，Springfield ()  (，Springfield) MA (，)  (，) ，圣 George (Utica) ，St (MO) ，Stockton (CA) ，Syracuse (纽约州) ，佛罗里达 (fl) ，Tampa Terre (Haute) ，吧 (Topeka) ， (KS) ，遍历城市 (MI) Tucson (AZ) ，Tulsa (确定) ，佛蒙特州，Victorville (CA) ，Volusia 县 (佛罗里达) ，Waco (TX) ，华盛顿 (DC) ，Waterbury (CT) ，Wichita (KS) ，Wichita 将 (TX) Wilmington (，Yakima)  ()  (，Youngstown 县) AZ (</p>|
 | + 美属维尔京群岛 | 美属维尔京群岛 * |
 | 委内瑞拉 | 加拉加斯 |
 
 ## <a name="asia-pacific"></a>亚太区
 
-| 国家/地区 |  城市（地铁区域） |
+| 国家/地区 |  城市 (地铁区域)  |
 |--------|---------|
 | 澳大利亚 | <p>阿德莱德，Alice 弹簧，Bowen，布里斯班，Bundaberg QLD，Burnie，Cairns，堪培拉，达尔文，Gladstone，霍巴特，Innisfail，Launceston，Mercer-mackay，磁芯，Maryborough-Hervey Bay，墨尔本，新南威尔士，RockHampton，Queensland，，维多利亚，Toowoomba，Townsville</p> |
 | 文莱 | Bandar Seri Begawan |
@@ -76,7 +76,7 @@ Azure Maps 不提供与所有城市和国家/地区相同的信息和准确性�
 
 ## <a name="europe"></a>欧洲
 
-| 国家/地区 |  城市（地铁区域） |
+| 国家/地区 |  城市 (地铁区域)  |
 |----------------|---------|
 | 安道尔        | 安道尔 la Vella |
 | 奥地利        | 维也纳 |
@@ -126,7 +126,7 @@ Azure Maps 不提供与所有城市和国家/地区相同的信息和准确性�
 
 ## <a name="middle-east-and-africa"></a>中东和非洲
 
-| 国家/地区 |  城市（地铁区域） |
+| 国家/地区 |  城市 (地铁区域)  |
 |---------|---------|
 | 巴林 | 巴林 |
 | 布基纳法索 | Ouagadougou |

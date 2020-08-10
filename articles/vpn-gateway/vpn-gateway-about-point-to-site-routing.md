@@ -1,18 +1,18 @@
 ---
 title: Azure VPN 网关：关于 P2S 路由
-description: 了解 Azure 点到站点 VPN 路由行为，此行为取决于客户端操作系统、用于连接的协议以及虚拟网络的连接方式。
+description: 了解不同操作系统、远程访问协议和虚拟网络配置的 Azure 点到站点 VPN 路由。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: kumud
-ms.openlocfilehash: 8ee75f80ea2e1ee379561b743c2b4add4ef1d7b9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 54b839170d95918889d1295eb20308688fbfb2a7
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926903"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032367"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>关于点到站点 VPN 路由
 

@@ -1,6 +1,6 @@
 ---
 title: 配置 Azure 存储防火墙和虚拟网络 | Microsoft Docs
-description: 配置存储帐户的分层网络安全性。
+description: 使用 Azure 存储防火墙和 Azure 虚拟网络为你的存储帐户配置分层网络安全。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +9,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: a6f59fff351ecdae82ef7175d54e3b2ab1b7d30b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 9c95501c4e17e0afaa082c3e02c29934435c1a19
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534101"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032486"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -356,7 +356,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 > [!IMPORTANT]
 > 请务必[将默认规则设置](#change-the-default-network-access-rule)为“拒绝”，否则网络规则不会有任何效果。
 
-## <a name="exceptions"></a>异常
+## <a name="exceptions"></a>例外
 
 在大多数情况下，网络规则有助于为应用程序与数据之间的连接创建安全环境。 不过，某些应用程序依赖于无法通过虚拟网络或 IP 地址规则单独隔离的 Azure 服务。 但是，必须授予此类服务访问存储的权限，才能完全实现应用程序的功能。 在这种情况下，可以使用“允许受信任的 Microsoft 服务…”设置来允许此类服务访问数据、日志或分析。
 

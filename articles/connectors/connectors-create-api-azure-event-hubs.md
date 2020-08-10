@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 9e3bc4cdab62dd304c5266ff6c9cccf66600fb7b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 198a5da63ed90937c53f7f12f3559f15100e8f19
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848836"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031306"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>使用 Azure 事件中心和 Azure 逻辑应用监视、接收和发送事件
 
@@ -20,7 +20,7 @@ ms.locfileid: "87848836"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
+* Azure 帐户和订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。 
 
 * [Azure 事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)
 
@@ -77,10 +77,10 @@ ms.locfileid: "87848836"
 
    ![触发器属性](./media/connectors-create-api-azure-event-hubs/event-hubs-trigger.png)
 
-   | properties | 必选 | 说明 |
+   | properties | 必须 | 说明 |
    |----------|----------|-------------|
    | **事件中心名称** | 是 | 要监视的事件中心的名称 |
-   | **内容类型** | 否 | 事件的内容类型。 默认值为 `application/octet-stream`。 |
+   | **内容类型** | 否 | 事件的内容类型。 默认为 `application/octet-stream`。 |
    | **使用者组名称** | 否 | 要用于读取事件的[事件中心使用者组名称](../event-hubs/event-hubs-features.md#consumer-groups)。 如果未指定，则使用默认使用者组。 |
    | **最大事件计数** | 否 | 最大事件数。 触发器返回的事件数至少为 1，至多为此属性指定的事件数。 |
    | **时间间隔** | 是 | 一个正整数，描述工作流基于频率运行的频繁度 |
@@ -89,7 +89,7 @@ ms.locfileid: "87848836"
 
    **其他属性**
 
-   | properties | 必选 | 说明 |
+   | properties | 必须 | 说明 |
    |----------|----------|-------------|
    | **内容架构** | 否 | 要从事件中心读取的事件的 JSON 内容架构。 例如，如果指定内容架构，则只有在这些事件符合架构时，才能触发逻辑应用。 |
    | **最小分区键** | 否 | 输入要读取的最小[分区](../event-hubs/event-hubs-features.md#partitions) ID。 默认读取所有分区。 |
@@ -128,7 +128,7 @@ ms.locfileid: "87848836"
 
    ![选择事件中心名称并提供事件内容](./media/connectors-create-api-azure-event-hubs/event-hubs-send-event-action.png)
 
-   | properties | 必选 | 说明 |
+   | properties | 必须 | 说明 |
    |----------|----------|-------------|
    | **事件中心名称** | 是 | 要在其中发送事件的事件中心 |
    | **内容** | 否 | 要发送的事件内容 |
@@ -150,7 +150,7 @@ ms.locfileid: "87848836"
 
 1. 系统提示输入连接信息时，请提供以下详细信息：
 
-   | properties | 必选 | 值 | 说明 |
+   | properties | 必须 | 值 | 说明 |
    |----------|----------|-------|-------------|
    | **连接名称** | 是 | <*connection-name*> | 为连接创建的名称 |
    | **事件中心命名空间** | 是 | <*事件中心-命名空间*> | 选择要使用的事件中心命名空间。 |

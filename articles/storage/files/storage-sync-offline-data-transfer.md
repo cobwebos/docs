@@ -1,18 +1,18 @@
 ---
 title: 通过 Azure Data Box 将数据迁移到 Azure 文件同步
-description: 以与 Azure 文件同步兼容的方式迁移大容量数据。
+description: 脱机迁移与 Azure 文件同步兼容的大容量数据。避免文件冲突，并在启用同步后保留文件和文件夹的 Acl 和时间戳。
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: dda05331163d071a9a47c6f6af8c758a11ec7dd8
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ae9404d366b24c0cc1bcf01ecffc71a427f949d4
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827888"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034339"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync-with-azure-databox"></a>使用 Azure DataBox 将数据批量迁移到 Azure 文件同步
 可以通过两种方式将大容量数据迁移到 Azure 文件同步：

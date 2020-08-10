@@ -3,16 +3,16 @@ title: 使用合作伙伴中心在 Azure 市场中创建 Azure IoT Edge 模块�
 description: 了解如何使用合作伙伴中心在 Azure Marketplace 中创建、配置和发布 IoT Edge 模块产品。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: article
+ms.topic: how-to
 author: keferna
 ms.author: keferna
-ms.date: 07/22/2020
-ms.openlocfilehash: 52bb3e63ff436aa73aaaf43f2f87f904b27f70b6
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.date: 08/07/2020
+ms.openlocfilehash: a44e7835b90ca88460d2045a5494420c6d47921b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876625"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032826"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>创建 IoT Edge 模块产品/服务
 
@@ -194,6 +194,8 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 
 提供要用于产品/服务的徽标和图像。 所有图像都必须为 PNG 格式。 模糊的图像将被拒绝。
 
+[!INCLUDE [logostips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >如果在上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 https://upload.xboxlive.com 服务。
 
@@ -207,6 +209,8 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 - 宽 (255 x 115)
 
 所有四个徽标都是必需的，并且在市场一览中的不同位置上使用。
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots-optional"></a>屏幕截图（可选）
 
@@ -231,7 +235,7 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 5. 隐私策略地址 (链接) 
 6. 名称
 7. 总结
-8. 描述
+8. 说明
 9. 有用的链接
 10. 屏幕截图/视频
 
@@ -252,7 +256,7 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 #### <a name="call-out-descriptions"></a>拨出说明
 
 1. 名称
-2. 描述
+2. 说明
 3. 有用的链接
 4. 屏幕截图
 
@@ -418,7 +422,7 @@ Azure 容器注册表名称：提供包含容器映像的 [Azure 容器注册表
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. 访问密钥
+1. 访问键
 2. 用户名
 3. 密码
 
@@ -445,14 +449,14 @@ Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器
 - 名称 #2：FromContosoModuleToCloud
 - 值 #2：FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream
 
-默认模块孪生所需属性。 模块孪生是 IoT 中心内的 JSON 文档，用于存储模块实例状态信息，包括所需属性。 所需属性与报告的属性一起用于同步模块配置或条件。 解决方案后端可以设置所需属性，模块可以读取它们。 模块还可以接收所需属性的更改通知。 所需属性是使用最多五个名称/值对创建的，每个默认值必须小于 512 个字符。 最多可以定义五个名称/值孪生所需属性。 孪生所需属性的值必须是有效的 JSON、未转义且不包含数组，最多可包含四级嵌套层次结构。 如果默认值所需的参数（例如客户服务器的 IP 地址）没有意义，可以添加一个参数作为默认值。 若要详细了解成对出现的所需属性，请参阅) 中[定义或更新所需属性](../../iot-edge/module-composition.md#define-or-update-desired-properties)。
+默认模块孪生所需属性。 模块孪生是 IoT 中心内的 JSON 文档，用于存储模块实例状态信息，包括所需属性。 所需属性与报告的属性一起用于同步模块配置或条件。 解决方案后端可以设置所需属性，模块可以读取它们。 模块还可以接收所需属性的更改通知。 所需属性是使用最多五个名称/值对创建的，并且每个默认值必须少于512个字符。 最多可以定义五个名称/值孪生所需属性。 孪生所需属性的值必须是有效的 JSON、未转义且不包含数组，最多可包含四级嵌套层次结构。 如果默认值所需的参数（例如客户服务器的 IP 地址）没有意义，可以添加一个参数作为默认值。 若要详细了解成对出现的所需属性，请参阅) 中[定义或更新所需属性](../../iot-edge/module-composition.md#define-or-update-desired-properties)。
 
 例如，如果某个模块使用孪生所需属性支持可动态配置的刷新频率，最好定义以下默认孪生所需属性：
 
 - 名称 #1：RefreshRate
 - 值 #1：60
 
-默认环境变量。 环境变量提供了有助于配置过程的模块的补充信息。 环境变量是使用名称/值对创建的。 每个默认环境变量名称和值都必须小于 512 个字符，并且最多可以定义五个。 如果默认值所需的参数（例如客户服务器的 IP 地址）没有意义，可以添加一个参数作为默认值。
+默认环境变量。 环境变量提供了有助于配置过程的模块的补充信息。 环境变量是使用名称/值对创建的。 每个默认环境变量名称和值都必须少于512个字符，并且最多可以定义五个字符。 如果默认值所需的参数（例如客户服务器的 IP 地址）没有意义，可以添加一个参数作为默认值。
 
 例如，如果某个模块在启动之前需要接受使用条款，则你可以定义以下环境变量：
 

@@ -1,18 +1,18 @@
 ---
 title: 对 Azure 文件同步进行故障排除 | Microsoft Docs
-description: 对 Azure 文件同步的常见问题进行故障排除
+description: 排查 Azure 文件同步上部署中的常见问题，你可以使用该问题将 Windows Server 转换为 Azure 文件共享的快速缓存。
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 17c8f846201553d3cfa9a2d68b8b4a7ab655c378
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: d268358f2f80cc9d347fa722d5027e1a87894b20
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232372"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034390"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -891,7 +891,7 @@ PerItemErrorCount: 1006.
 
 ### <a name="common-troubleshooting-steps"></a>常见故障排除步骤
 <a id="troubleshoot-storage-account"></a>**验证存储帐户是否存在。**  
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 1. 导航到存储同步服务中的同步组。
 2. 选择同步组中的云终结点。
 3. 记下打开的窗格中的 Azure 文件共享名称。
@@ -974,7 +974,7 @@ if ($storageAccount -eq $null) {
 ---
 
 <a id="troubleshoot-azure-file-share"></a>**确保 Azure 文件共享存在。**  
-# <a name="portal"></a>[Portal](#tab/azure-portal)
+# <a name="portal"></a>[门户](#tab/azure-portal)
 1. 在左侧目录中单击“概述”，返回存储帐户主页。
 2. 选择“文件”查看文件共享列表。
 3. 检查云终结点引用的文件共享是否显示在文件共享列表中（在上述步骤 1 中应已记下此共享名称）。
@@ -1165,7 +1165,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 如果不满足上述条件，则无法恢复访问，因为服务器上的这些分层文件现已孤立。 按照以下说明删除孤立的分层文件。
 
-备注
+**说明**
 - 当无法访问服务器上的分层文件时，如果直接访问 Azure 文件共享，则完整文件应仍可访问。
 - 若要防止将来出现孤立的分层文件，请在删除服务器终结点时按照[删除服务器终结点](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#remove-a-server-endpoint)中所述的步骤进行操作。
 

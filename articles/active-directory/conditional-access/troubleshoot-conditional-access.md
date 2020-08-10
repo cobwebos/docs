@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 08/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9a2ab4b1ebc1c958be9dc4bd07a010f7fef8afc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6778b556795f4e079100f1a7bcbb8b9465e9e315
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82610494"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032962"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>排查使用条件访问时的登录问题
 
@@ -55,11 +55,16 @@ ms.locfileid: "82610494"
    1. “故障排除和支持”选项卡中的信息可能会明确地解释登录失败的原因，例如，设备不满足合规性要求。
    1. 若要进一步调查，请单击“策略名称”向下钻取到策略的配置。 单击“策略名称”会显示所选策略的策略配置用户界面，供你进行查看和编辑。
    1. 在登录事件的“基本信息”、“位置”、“设备信息”、“身份验证详细信息”和“其他详细信息”选项卡中，也提供了用于评估条件访问策略的客户端用户和设备详细信息。      
-   1. 选择策略右侧的省略号将显示策略详细信息。 这让管理员能进一步了解策略应用成功或失败的原因。
+
+### <a name="policy-details"></a>策略详细信息
+
+在登录事件中选择策略右侧的省略号将显示策略详细信息。 这让管理员能进一步了解策略应用成功或失败的原因。
 
    ![登录事件的“条件访问”选项卡](./media/troubleshoot-conditional-access/image5.png)
 
    ![策略详细信息（预览版）](./media/troubleshoot-conditional-access/policy-details.png)
+
+左侧提供登录时收集的详细信息，右侧提供了有关这些详细信息是否满足应用的条件访问策略要求的详细信息。 仅当满足所有条件或未配置时，条件访问策略才适用。
 
 如果事件中的信息不足以让你了解登录结果或调整策略来获取所需结果，可以提出支持事件。 导航到该登录事件的“故障排除和支持”选项卡，然后选择“创建新的支持请求”。 
 

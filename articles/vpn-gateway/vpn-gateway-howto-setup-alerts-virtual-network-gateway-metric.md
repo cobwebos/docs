@@ -1,18 +1,18 @@
 ---
 title: 设置基于 Azure VPN 网关指标的警报
-description: 了解如何设置 Azure VPN 网关指标的警报。 使用 Azure Monitor 为 VPN 类型的虚拟网络网关设置警报。
+description: 了解如何使用 Azure 门户根据虚拟网络 VPN 网关的指标设置 Azure Monitor 警报。
 services: vpn-gateway
 author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: alzam
-ms.openlocfilehash: 3819f653cba80854a65a08f92a10f82057abb0fd
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 14bb407cb12e24ca789085e954aaabff2333da7b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923061"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033489"
 ---
 # <a name="set-up-alerts-on-vpn-gateway-metrics"></a>基于 VPN 网关指标设置警报
 
@@ -37,14 +37,14 @@ ms.locfileid: "87923061"
 
 以下示例步骤将在网关上针对以下项创建一个警报：
 
-- **度量值：** TunnelAverageBandwidth
-- **条件：** 每秒带宽 > 10 字节
-- **窗口：** 5 分钟
-- **警报操作：** 电子邮件
+- **指标：** TunnelAverageBandwidth
+- **条件：** 带宽 > 10 字节/秒
+- **时限：** 5 分钟
+- **警报操作：** Email
 
 
 
-1. 请在 "**监视**" 选项卡中，选择 "虚拟网络网关" 资源并选择 "**警报**"。然后创建新的警报规则，或编辑现有的警报规则。
+1. 转到虚拟网关资源，从“监视”选项卡中选择“警报”。   然后创建新的警报规则，或者编辑现有的警报规则。
 
    ![用于创建警报规则的选项](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert1.png "创建")
 
@@ -54,20 +54,20 @@ ms.locfileid: "87923061"
 
 3. 选择要为警报配置的指标。
 
-   ![指标列表中的所选指标](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert3.png "Select")
+   ![指标列表中的所选指标](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert3.png "选择")
 4. 配置信号逻辑。 它有三个组件：
 
-    a. **维度**：如果度量值具有维度，则可以选择特定维度值以便警报仅评估该维度的数据。 这些是可选的。
+    a. **维度**：如果指标包含维度，则可选择特定的维度值，这样警报就只评估该维度的数据。 这些是可选的。
 
-    b. **条件**：此操作用于计算指标值。
+    b. **条件**：这是用于评估指标值的操作。
 
-    c. **Time**：指定指标数据的粒度和用于评估警报的时间段。
+    c. **时间**：指定指标数据的粒度以及时间段，以便评估警报。
 
-   ![信号逻辑配置详情](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert4.png "Select")
+   ![信号逻辑配置详情](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert4.png "选择")
 
-5. 若要查看配置的规则，请选择“管理警报规则”。****
+5. 若要查看配置的规则，请选择“管理警报规则”。 
 
-   ![用于管理警报规则的按钮](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "Select")
+   ![用于管理警报规则的按钮](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric/metric-alert8.png "选择")
 
 ## <a name="next-steps"></a>后续步骤
 

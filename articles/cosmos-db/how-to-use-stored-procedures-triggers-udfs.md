@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: b078d7be46d9c7f7c9dd0645a62b3cbd1c306fc5
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: bceaf4fc4a17ddc6b2129d3b2e73eb3f0f00057e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872695"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034152"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中注册和使用存储过程、触发器与用户定义的函数
 
@@ -206,7 +206,10 @@ sproc_definition = {
     'id': 'spCreateToDoItems',
     'serverScript': file_contents,
 }
-sproc = client.CreateStoredProcedure(container_link, sproc_definition)
+client = CosmosClient(url, key)
+database = client.get_database_client(database_name)
+container = database.get_container_client(container_name)
+sproc = container.create_stored_procedure(container_link, sproc_definition)
 ```
 
 以下代码演示如何使用 Python SDK 调用存储过程
@@ -219,7 +222,7 @@ new_item = [{
     'description':'Pick up strawberries',
     'isComplete': False
 }]
-client.ExecuteStoredProcedure(sproc_link, new_item, {'partitionKey': 'Personal'}
+container.execute_stored_procedure(sproc_link, new_item, {'partitionKey': 'Personal'}
 ```
 
 ## <a name="how-to-run-pre-triggers"></a><a id="pre-triggers"></a>如何运行前触发器
@@ -367,7 +370,10 @@ trigger_definition = {
     'triggerType': documents.TriggerType.Pre,
     'triggerOperation': documents.TriggerOperation.Create
 }
-trigger = client.CreateTrigger(container_link, trigger_definition)
+client = CosmosClient(url, key)
+database = client.get_database_client(database_name)
+container = database.get_container_client(container_name)
+trigger = container.create_trigger(container_link, trigger_definition)
 ```
 
 以下代码演示如何使用 Python SDK 调用前触发器：
@@ -376,8 +382,8 @@ trigger = client.CreateTrigger(container_link, trigger_definition)
 container_link = 'dbs/myDatabase/colls/myContainer'
 item = {'category': 'Personal', 'name': 'Groceries',
         'description': 'Pick up strawberries', 'isComplete': False}
-client.CreateItem(container_link, item, {
-                  'preTriggerInclude': 'trgPreValidateToDoItemTimestamp'})
+container.create_item(container_link, item, {
+                  'pre_trigger_include': 'trgPreValidateToDoItemTimestamp'})
 ```
 
 ## <a name="how-to-run-post-triggers"></a><a id="post-triggers"></a>如何运行后触发器
@@ -514,7 +520,10 @@ trigger_definition = {
     'triggerType': documents.TriggerType.Post,
     'triggerOperation': documents.TriggerOperation.Create
 }
-trigger = client.CreateTrigger(container_link, trigger_definition)
+client = CosmosClient(url, key)
+database = client.get_database_client(database_name)
+container = database.get_container_client(container_name)
+trigger = container.create_trigger(container_link, trigger_definition)
 ```
 
 以下代码演示如何使用 Python SDK 调用后触发器：
@@ -523,8 +532,8 @@ trigger = client.CreateTrigger(container_link, trigger_definition)
 container_link = 'dbs/myDatabase/colls/myContainer'
 item = {'name': 'artist_profile_1023', 'artist': 'The Band',
         'albums': ['Hellujah', 'Rotators', 'Spinning Top']}
-client.CreateItem(container_link, item, {
-                  'postTriggerInclude': 'trgPostUpdateMetadata'})
+container.create_item(container_link, item, {
+                  'post_trigger_include': 'trgPostUpdateMetadata'})
 ```
 
 ## <a name="how-to-work-with-user-defined-functions"></a><a id="udfs"></a>如何使用用户定义的函数
@@ -656,14 +665,17 @@ udf_definition = {
     'id': 'Tax',
     'serverScript': file_contents,
 }
-udf = client.CreateUserDefinedFunction(container_link, udf_definition)
+client = CosmosClient(url, key)
+database = client.get_database_client(database_name)
+container = database.get_container_client(container_name)
+udf = container.create_user_defined_function(container_link, udf_definition)
 ```
 
 以下代码演示如何使用 Python SDK 调用用户定义的函数：
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
-results = list(client.QueryItems(
+results = list(container.query_items(
     container_link, 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
 ```
 

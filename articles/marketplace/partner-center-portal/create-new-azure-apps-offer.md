@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 425ed63238c07ffcf53df10eeddfa0ac95679a2c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: c5d52a78dec31dd796929b141556d6da10044099
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904507"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031477"
 ---
 # <a name="create-an-azure-application-offer"></a>创建 Azure 应用程序产品/服务
 
@@ -188,7 +188,7 @@ ms.locfileid: "87904507"
 5. 隐私策略地址 (链接) 
 6. 产品名称
 7. 总结
-8. 描述
+8. 说明
 9. 屏幕截图/视频
 
 <br>下面是有关如何在 Azure 门户中显示产品/服务的示例：
@@ -198,7 +198,7 @@ ms.locfileid: "87904507"
 #### <a name="call-out-descriptions"></a>拨出说明
 
 1. Title
-2. 描述
+2. 说明
 3. 有用的链接
 4. 屏幕截图
 
@@ -242,6 +242,8 @@ ms.locfileid: "87904507"
 
 提供要用于产品/服务的徽标和图像。 所有图像都必须为 PNG 格式。 模糊图像会导致提交遭到拒绝。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >如果上传文件时遇到问题，请确保本地网络未阻止合作伙伴中心所使用的 https://upload.xboxlive.com 服务。
 
@@ -255,6 +257,8 @@ ms.locfileid: "87904507"
 - 宽图 (255 x 115)
 
 所有三种徽标都是必需的，会在列表的不同位置上使用。
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots"></a>屏幕截图
 

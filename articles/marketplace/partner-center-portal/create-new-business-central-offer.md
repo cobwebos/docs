@@ -1,18 +1,18 @@
 ---
 title: 创建 Dynamics 365 Business Central 产品/服务 - Microsoft 商业市场
-description: 了解在合作伙伴中心的商业市场门户中新建 Dynamics 365 Business Central 产品/服务的步骤和注意事项。 可在 Azure 市场或通过云解决方案提供商 (CSP) 计划列出或销售你的产品/服务。
+description: 了解在合作伙伴中心的 Microsoft 商业 marketplace 中创建新的 Dynamics 365 Business Central 产品/服务的步骤和注意事项。 可在 Azure 市场或通过云解决方案提供商 (CSP) 计划列出或销售你的产品/服务。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 06/17/2020
-ms.openlocfilehash: 5ec8949d1ba614ca947f9848182ae2c94e044fc3
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.date: 08/07/2020
+ms.openlocfilehash: ff93a336b50ceac1106b31726d865ed3e0b41108
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800392"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031466"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Dynamics 365 Business Central 产品/服务
 
@@ -131,7 +131,7 @@ ms.locfileid: "87800392"
 6. 隐私策略
 7. 产品名称
 8. 总结
-9. 描述
+9. 说明
 10. 屏幕截图/视频
 
 ### <a name="name"></a>名称
@@ -180,19 +180,21 @@ ms.locfileid: "87800392"
 
 在此处提供至少一个（最多三个）相关的营销文档，如白皮书、小册子、清单或演示文稿。 这些文档必须采用 .pdf 格式。
 
-### <a name="store-logos"></a>应用商店徽标
+### <a name="marketplace-images"></a>市场映像
 
-为**大**徽标 (提供) 216 x 216 和 350 x 350 像素之间的 PNG 文件。 合作伙伴中心将使用此来创建) 大小徽标的**小型** (48 x 48 像素。 您可以选择将其替换为不同的图像。
+提供适合你的产品/服务的徽标和图像。 所有图像都必须为 PNG 格式。 
 
-以下两种徽标大小都需要在列表中的不同位置使用：
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
 
-- 小 (48 x 48)
-- **大型** (216 x 216 和 350 x 350) 
+按两种大小上传产品/服务徽标：
+
+* 小（48 x 48 像素）
+* 大（216 x 216 像素）
+
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
 >[!NOTE]
 >如果在上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 `https://upload.xboxlive.com` 服务。
-
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>屏幕截图
 
@@ -206,7 +208,7 @@ ms.locfileid: "87800392"
 
 [市场产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)
 
-选择“保存草稿”，然后继续操作。
+选择“保存草稿”，然后继续。
 
 ## <a name="availability"></a>可用性
 
@@ -227,11 +229,11 @@ ms.locfileid: "87800392"
 
 ### <a name="preview-audience"></a>预览版受众
 
-在将产品/服务发布到更广泛的市场产品/服务前，需要先将其提供给有限的预览版受众。 在此处输入隐藏密钥（任何只使用小写字母和/或数字的字符串）。 预览版受众的成员可以将此隐藏密钥用作令牌，以查看市场中产品/服务的预览版。
+在将产品/服务发布到更广泛的市场产品/服务前，需要先将其提供给有限的预览版受众。 在此处输入隐藏密钥（任何只使用小写字母和/或数字的字符串）。 预览版受众的成员可以将此隐藏密钥用作令牌，以查看市场中产品/服务的预览。
 
 然后，当你准备好提供产品/服务并删除预览限制时，需要删除该隐藏密钥并再次发布。
 
-选择“保存草稿”，然后继续操作。
+选择“保存草稿”，然后继续。
 
 ## <a name="technical-configuration"></a>技术配置
 
@@ -268,9 +270,9 @@ ms.locfileid: "87800392"
 
 ## <a name="test-drive-technical-configuration"></a>体验版技术配置
 
-可使用此页设置演示（“体验版”），让客户可在购买之前试用你的产品/服务。 有关详细信息[，请参阅什么是测试驱动器](../what-is-test-drive.md)。
+在此页中可以设置演示（“体验版”），让客户可在购买之前试用你的产品/服务。 有关详细信息[，请参阅什么是测试驱动器](../what-is-test-drive.md)。
 
-若要启用体验版，请在[“产品/服务设置”](#test-drive)选项卡上选中“启用体验版”复选框。若要从产品/服务中删除体验版，请取消选中此复选框。
+若要启用体验版，请在[产品/服务设置](#test-drive)选项卡上选中“启用体验版”复选框。若要从产品/服务中删除体验版，请清除此复选框。
 
 完成设置测试驱动器后，请选择 "**保存草稿**"，然后继续。
 

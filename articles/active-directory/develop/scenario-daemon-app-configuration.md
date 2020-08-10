@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 08/08/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 567bd0a34c1989403f29ea5a52fad258c2ffe825
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 2e7a0657949a2addbf895666682feee7fd0eb595
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846150"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033353"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>调用 Web API 的守护程序应用 - 代码配置
 
@@ -54,6 +54,9 @@ ms.locfileid: "87846150"
 - 颁发机构或者云实例和租户 ID。
 - 通过应用程序注册获得的客户端 ID。
 - 客户端机密或证书。
+
+> [!NOTE]
+> 本文的其余部分中的 .Net 代码段是[dotnetcore](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)示例中的[配置](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/daemon-console/AuthenticationConfig.cs)。
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
@@ -239,7 +242,7 @@ ConfidentialClientApplication cca =
                 .build();
 ```
 
-or
+或
 
 ```Java
 PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */
@@ -286,7 +289,7 @@ X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithAuthority(new Uri(config.Authority))
                                           .WithClientClaims(certificate, claims)
-                                          .Build();```
+                                          .Build();
 ```
 
 同样，如需详细信息，请参阅[客户端断言](msal-net-client-assertions.md)。
