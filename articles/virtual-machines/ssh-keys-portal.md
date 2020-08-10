@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 07/31/2020
 ms.author: cynthn
-ms.openlocfilehash: 39dbf7d9ad933dd47f0a566f02b5e276e4b615a3
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 17ab7ee75e335d686bf308c4b15a53dc4e2e6b0e
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87514263"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041742"
 ---
 # <a name="generate-and-store-ssh-keys-in-the-azure-portal"></a>在 Azure 门户中生成并存储 SSH 密钥
 
@@ -22,17 +22,17 @@ ms.locfileid: "87514263"
 
 如果你有现成的密钥，并且想要在门户中简化使用，则可以上传这些密钥，并将其存储在 Azure 中供重复使用。
 
-有关创建和使用 Linux Vm 的 SSH 密钥的详细信息，请参阅（使用 SSH 密钥连接到 Linux Vm） [./linux/ssh-from-windows.md]。
+若要详细了解如何创建 SSH 密钥并将其用于 Linux Vm，请参阅[使用 ssh 密钥连接到 Linux vm](./linux/ssh-from-windows.md)。
 
 ## <a name="generate-new-keys"></a>生成新密钥
 
-1. 打开 [Azure 门户] （ https://portal.azure.com 。
+1. 打开 [Azure 门户](https://portal.azure.com)。
 
 1. 在页面顶部，键入 " *SSH* " 进行搜索。 在 "*Marketplace*" 下，选择 " **SSH 密钥**"。
 
 1. 在 " **SSH 密钥**" 页上，选择 "**创建**"。
 
-:::image type="content" source="./media/ssh-keys/portal-sshkey.png" alt-text="创建新的资源组并生成 SSH 密钥对":::
+   :::image type="content" source="./media/ssh-keys/portal-sshkey.png" alt-text="创建新的资源组并生成 SSH 密钥对":::
 
 1. 在 "**资源组**" 中，选择 "**新建**" 以创建新的资源组来存储密钥。 键入资源组的名称，然后选择 **"确定"**。
 
@@ -48,7 +48,7 @@ ms.locfileid: "87514263"
 
 1. 然后，你将看到一个弹出窗口，选择 "**下载私钥" 和 "创建资源**"。 这将下载作为 pem 文件的 SSH 密钥。
 
-:::image type="content" source="./media/ssh-keys/download-key.png" alt-text="下载作为 pem 文件的私钥":::
+   :::image type="content" source="./media/ssh-keys/download-key.png" alt-text="下载作为 pem 文件的私钥":::
 
 1. 下载 pem 文件后，你可能需要将其从计算机上的某个位置移动到 SSH 客户端。
 
@@ -66,15 +66,15 @@ ssh -i <path to the .pem file> username@<ipaddress of the VM>
 
 ## <a name="upload-an-ssh-key"></a>上传 SSH 密钥
 
-还可以上传公共 SSH 密钥，使其存储在 Azure 中。 有关如何创建 SSH 密钥对的信息，请参阅[使用 ssh 密钥连接到 Linux vm ](./linux/ssh-from-windows.md)。
+还可以上传公共 SSH 密钥，使其存储在 Azure 中。 有关如何创建 SSH 密钥对的信息，请参阅[使用 ssh 密钥连接到 Linux vm](./linux/ssh-from-windows.md)。
 
-1. 打开 [Azure 门户] （ https://portal.azure.com 。
+1. 打开 [Azure 门户](https://portal.azure.com)。
 
 1. 在页面顶部，键入 " *SSH* " 进行搜索。 在 "*Marketplace*" 下，选择 " **SSH 密钥**"。
 
 1. 在 " **SSH 密钥**" 页上，选择 "**创建**"。
 
-:::image type="content" source="./media/ssh-keys/upload.png" alt-text="上载要存储在 Azure 中的 SSH 公钥":::
+   :::image type="content" source="./media/ssh-keys/upload.png" alt-text="上载要存储在 Azure 中的 SSH 公钥":::
 
 1. 在 "**资源组**" 中，选择 "**新建**" 以创建新的资源组来存储密钥。 键入资源组的名称，然后选择 **"确定"**。
 
@@ -92,4 +92,4 @@ ssh -i <path to the .pem file> username@<ipaddress of the VM>
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关在 Azure Vm 中使用 SSH 密钥的详细信息，请参阅（使用 SSH 密钥连接到 Linux Vm） [./linux/ssh-from-windows.md]。
+若要了解有关在 Azure Vm 中使用 SSH 密钥的详细信息，请参阅[使用 ssh 密钥连接到 Linux vm](./linux/ssh-from-windows.md)。

@@ -7,16 +7,18 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: d0bca2ad14216873836c751dc002ea915baa3a66
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: ca500401a6bff8a00dd9c51eecb29aa93fdbc82b
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800477"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042643"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>将 Azure 数字孪生与其他服务集成
 
-Azure 数字孪生通常与其他服务一起使用。 使用[**事件路由**](concepts-route-events.md)，Azure 数字孪生接收来自上游服务（如[IoT 中心](../iot-hub/about-iot-hub.md)）的数据，用于传递遥测和通知。 Azure 数字孪生还可以将数据路由到下游服务，以便进行存储、工作流集成、分析和其他用途。 
+Azure 数字孪生通常与其他服务一起使用。 使用[**事件路由**](concepts-route-events.md)，Azure 数字孪生接收来自上游服务（如[IoT 中心](../iot-hub/about-iot-hub.md)）的数据，用于传递遥测和通知。 
+
+Azure 数字孪生还可以将数据路由到下游服务，如 Azure Maps ([*操作方法：使用 Azure 数字孪生更新 Azure Maps 的室内地图*](how-to-integrate-maps.md)) 和时序见解 ([*操作方法：与时序见解) 集成*](how-to-integrate-time-series-insights.md)，以实现存储、工作流集成、分析等。 
 
 ## <a name="data-ingress"></a>数据入口
 

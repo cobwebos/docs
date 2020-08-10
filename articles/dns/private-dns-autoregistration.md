@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: 9d1854b459e799d5cbb401de9ac717dd7d0fde1d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9da94f80f9a9c1b3cba7b8e3ac4fef7e717918c9
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "71961237"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042745"
 ---
 # <a name="what-is-the-autoregistration-feature-of-azure-dns-private-zones"></a>什么是 Azure DNS 专用区域的自动注册功能
 
@@ -29,7 +29,8 @@ Azure DNS 专用区域自动注册功能简化了对虚拟机（部署在虚拟�
 
 * 自动注册仅适用于虚拟机。 对于所有其他资源（如内部负载均衡器等），可以在链接到虚拟网络的专用 DNS 区域中手动创建 DNS 记录。
 * 仅为主虚拟机 NIC 自动创建 DNS 记录。 如果虚拟机有多个 NIC，则可以手动为其他网络接口创建 DNS 记录。
-* 不支持 IPv6 自动注册（AAAA 记录）。
+* 仅当主虚拟机 NIC 使用 DHCP 时，才会自动创建 DNS 记录。 如果配置了静态 IP 地址 (例如，若要[在 Azure) 中使用多个 IP 地址](https://docs.microsoft.com/azure/virtual-network/virtual-network-multiple-ip-addresses-portal#os-config)，自动注册不会为该虚拟机创建记录。
+*  (不支持 IPv6 的自动注册) AAAA 记录。
 
 ## <a name="next-steps"></a>后续步骤
 

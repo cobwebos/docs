@@ -6,12 +6,12 @@ manager: jureid
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: 7feb49266a10b7423121dc5362b0bd6bda4d0e08
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: aef9c6781c87ff4e84e46de711308319755e4630
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824471"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042048"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>授予创建 Azure Enterprise 订阅（预览版）所需的访问权限
 
@@ -180,7 +180,7 @@ ms.locfileid: "87824471"
 
 若要通过此 API 跟踪创建的订阅，请使用[租户活动日志 API](/rest/api/monitor/tenantactivitylogs)。 目前不可以使用 PowerShell、CLI 或 Azure 门户跟踪订阅创建信息。
 
-1. Azure AD 租户的租户管理员可以[提升访问权限](../../role-based-access-control/elevate-access-global-admin.md)，然后将一个“读者”角色分配给 `/providers/microsoft.insights/eventtypes/management` 范围内的审核用户。
+1. Azure AD 租户的租户管理员可以[提升访问权限](../../role-based-access-control/elevate-access-global-admin.md)，然后将一个“读者”角色分配给 `/providers/microsoft.insights/eventtypes/management` 范围内的审核用户。 此访问权限可用于 "[读取](../../role-based-access-control/built-in-roles.md#reader)者" 角色、"[监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)" 角色或[自定义角色](../../role-based-access-control/custom-roles.md)。
 1. 审核用户可以调用[租户活动日志 API](/rest/api/monitor/tenantactivitylogs) 查看订阅创建活动。 示例：
 
     ```

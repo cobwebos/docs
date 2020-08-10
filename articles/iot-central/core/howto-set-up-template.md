@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1f5e1347850c038386d32b52378674ac20316e4c
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 3e4b44c8f784524b4cd363a2f4531c5bf0a70e0d
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337205"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041589"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中定义新的 IoT 设备类型
 
 本文适用于解决方案构建者和设备开发人员。
 
-设备模板是定义连接到 Azure IoT Central 应用程序的设备的特征和行为的蓝图。
+设备模板是一种蓝图，用于定义连接到[Azure IoT Central 应用程序](concepts-app-templates.md)的设备类型的特征和行为。
 
 例如，构建人员可以为连接的风扇创建设备模板，该模板包括以下特征：
 
@@ -31,17 +31,21 @@ ms.locfileid: "87337205"
 - 提供用于重启设备的命令
 - 通过仪表板显示设备全方位视图
 
-在此设备模板中，操作员可以创建和连接实际的风扇设备。 所有这些风扇都具有测量值、属性以及操作员用来监视和管理它们的命令。 操作员使用设备仪表板和窗体与风扇设备进行交互。
+在此设备模板中，操作员可以创建和连接实际的风扇设备。 所有这些风扇都具有测量值、属性以及操作员用来监视和管理它们的命令。 操作员使用[设备仪表板](#add-dashboards)和窗体与风扇设备交互。 设备开发人员使用模板来了解设备如何与应用程序交互。 若要了解详细信息，请参阅[遥测、属性和命令有效负载](concepts-telemetry-properties-commands.md)。
 
 > [!NOTE]
 > 只有构建人员和管理员可以创建、编辑和删除设备模板。 任何用户都可以在“设备”页中基于现有的设备模板创建设备。****
 
 在 IoT Central 应用程序中，设备模板使用设备功能模型来描述设备的功能。 作为构建者，你在创建设备模板时有多种选择：
 
-- 在 IoT Central 中设计设备模板，然后在设备代码中实现其设备功能模型。
+- 在 IoT Central 中设计设备模板，然后[在设备代码中实现其设备功能模型](concepts-telemetry-properties-commands.md)。
 - 从 [Azure IoT 认证设备目录](https://aka.ms/iotdevcat)中导入设备功能模型。 然后，添加 IoT Central 应用程序所需的任何云属性、自定义项和仪表板。
 - 使用 Visual Studio Code 创建设备功能模型。 基于模型实现设备代码。 将设备功能模型手动导入到 IoT Central 应用程序中，然后添加 IoT Central 应用程序所需的任何云属性、自定义项和仪表板。
 - 使用 Visual Studio Code 创建设备功能模型。 基于模型实现设备代码，并通过设备优先连接将实际设备连接到 IoT Central 应用程序。 IoT Central 从公共存储库中查找并导入设备功能模型。 然后，你可以将 IoT Central 应用程序所需的任何云属性、自定义和仪表板添加到设备模板中。
+
+你还可以使用[REST API](https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/)或[CLI](howto-manage-iot-central-from-cli.md)将设备模板添加到 IoT Central 应用程序。
+
+某些[应用程序模板](concepts-app-templates.md)已包括在应用程序模板支持的方案中非常有用的设备模板。 例如，请参阅[存储分析体系结构](../retail/store-analytics-architecture.md)。
 
 ## <a name="create-a-device-template-from-the-device-catalog"></a>从设备目录创建设备模板
 
@@ -160,7 +164,7 @@ ms.locfileid: "87337205"
 | 显示名称 | 仪表板和窗体上使用的命令的显示名称。 |
 | 名称 | 命令的名称。 IoT Central 将根据显示名称生成此字段的值，但你可根据需要选择自己的值。 此字段必须为字母数字。 |
 | 功能类型 | 命令。 |
-| 命令 | `SynchronousExecutionType`. |
+| Command | `SynchronousExecutionType`. |
 | 评论 | 有关命令功能的任何注释。 |
 | 说明 | 命令功能的说明。 |
 | 请求 | 如果启用，则请求参数的定义包括：名称、显示名称、架构、单位和显示单位。 |

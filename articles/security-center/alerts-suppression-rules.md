@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 05/04/2020
 ms.service: security-center
 ms.topic: conceptual
-ms.openlocfilehash: 2dce179365b2640ade3675f19dbacf6fc27b26c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 341373c9a8429f335f3064db7a94973d34e0ca1c
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089934"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042494"
 ---
 # <a name="suppress-alerts-from-azure-security-centers-threat-protection"></a>禁止来自 Azure 安全中心的威胁防护的警报
 
@@ -21,9 +21,15 @@ ms.locfileid: "87089934"
 
 ## <a name="availability"></a>可用性
 
-- 发布状态：**预览**
-- 必需的角色：“安全管理员”和“所有者”可以创建/删除规则 。 “安全读取者”和“读取者”可以查看规则 。
-- 云：✔国家/地区✔商业云，US Gov，中国 Gov，其他 Gov）
+|方面|详细信息|
+|----|:----|
+|发布状态：|预览|
+|计价|免费层<br> (大多数安全警报仅适用于标准层) |
+|必需的角色和权限：|**安全管理员**和**所有者**可以创建/删除规则。<br>“安全读取者”和“读取者”可以查看规则 。|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
+|||
+
+
 
 
 ## <a name="what-are-suppression-rules"></a>什么是抑制规则？
@@ -32,9 +38,9 @@ Azure 安全中心的威胁防护组件检测环境中任何区域的威胁并�
 
 当单个警报不感兴趣或不相关时，可以手动关闭它。 或者，使用抑制规则功能在将来自动关闭类似警报。 通常，将使用抑制规则来执行以下操作：
 
-- 取消已标识为“误报”的警报
+- 禁止显示已标识为误报的警报
 
-- 取消过于频繁地触发而失去作用的警报
+- 禁止触发过于频繁触发的警报
 
 抑制规则定义了自动取消警报所应遵循的条件。
 

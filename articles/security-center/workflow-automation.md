@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0eac72832d75c0c26addaef283015155c09b3935
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19fcefdfd163bcbd9cd2adfcba6bf6711b9bee18
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529363"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041659"
 ---
 # <a name="workflow-automation"></a>工作流自动化
 
@@ -22,25 +22,20 @@ ms.locfileid: "86529363"
 本文介绍 Azure 安全中心的工作流自动化功能。 此功能可根据安全警报和建议触发逻辑应用。 例如，你可能希望安全中心在出现警报时向特定用户发送电子邮件。 你还将了解如何使用[Azure 逻辑应用](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)创建逻辑应用。
 
 > [!NOTE]
-> 如果以前在边栏上使用了 "行动手册" （预览版）视图，则会在 "新建工作流自动化" 页中找到相同的功能和扩展功能。
+> 如果以前在边栏上使用了 "行动手册" (预览) 视图，则会在 "新建工作流自动化" 页中找到相同的功能和扩展功能。
 
 
 
 ## <a name="availability"></a>可用性
 
-- 发布状态：**正式发布版**
-- 必需的角色和权限：
-    - 订阅上包含导出配置的**读取器**
-    - 资源组（或**所有者**）上的**安全管理员角色**
-    - 还必须对目标资源具有写入权限
-    - 此外，若要使用 Azure 逻辑应用工作流，则必须具有以下逻辑应用角色/权限：
-        - [逻辑应用操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator)权限是必需的或逻辑应用读取/触发器访问（此角色无法创建或编辑逻辑应用; 仅*运行*现有的应用）
-        - 逻辑[应用参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)权限是创建和修改逻辑应用所必需的
-        - 如果要使用逻辑应用连接器，可能需要使用其他凭据登录到各自的服务（例如，Outlook/团队/时差实例）
-- 云： 
-    - ✔ 商业云
-    - ✔美国政府云
-    - ✘中国政府云，其他 gov 云
+|方面|详细信息|
+|----|:----|
+|发布状态：|正式版|
+|计价|免费层|
+|必需的角色和权限：|订阅上包含导出配置的**读取器**<br>资源组上的**安全管理员角色**或**所有者**<br>还必须对目标资源具有写入权限<br><br>若要使用 Azure 逻辑应用工作流，还必须具有以下逻辑应用角色/权限：<br> - [逻辑应用操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator)权限是必需的或逻辑应用读取/触发器访问 (此角色无法创建或编辑逻辑应用;仅*运行*现有) <br> - 逻辑[应用参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor)权限是创建和修改逻辑应用所必需的<br>如果要使用逻辑应用连接器，可能需要使用其他凭据登录到各自的服务 (例如，Outlook/团队/时差实例) |
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中国 Gov，其他 Gov|
+|||
+
 
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>创建一个逻辑应用，并定义它应自动运行的时间 
@@ -82,7 +77,7 @@ ms.locfileid: "86529363"
 
     [![示例逻辑应用](media/workflow-automation/sample-logic-app.png)](media/workflow-automation/sample-logic-app.png#lightbox)
 
-1. 定义逻辑应用后，返回到 "工作流自动化定义" 窗格（"添加工作流自动化"）。 单击 "**刷新**" 以确保新的逻辑应用可供选择。
+1. 定义逻辑应用后，返回到 "工作流自动化定义" 窗格， ( "添加工作流自动化" ) 。 单击 "**刷新**" 以确保新的逻辑应用可供选择。
 
     ![刷新](media/workflow-automation/refresh-the-list-of-logic-apps.png)
 

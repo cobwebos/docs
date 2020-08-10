@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b887c91a289730c3d92efe753a2df162f36a047
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: f8dfeb8a38e07d94671691bb797d26a32973c910
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032113"
+ms.locfileid: "88042473"
 ---
 # <a name="conditional-access-conditions"></a>条件访问：Conditions
 
@@ -68,7 +68,7 @@ Azure AD 条件访问支持以下设备平台：
 > 2020年8月更新了客户端应用条件的行为。 如果你有现有的条件性访问策略，它们将保持不变。 但是，如果单击现有策略，则会删除 "配置" 切换，并选中 "应用该策略的客户端应用"。
 
 > [!IMPORTANT]
-> 来自旧身份验证客户端的登录不支持 MFA，并且不会将设备状态信息传递到 Azure AD，因此，它们将被条件访问授权控制阻止，如需要 MFA 或相容设备。 如果你的帐户必须使用旧身份验证，你可以从策略中排除这些帐户，或将策略配置为仅应用于新式身份验证客户端。
+> 来自旧身份验证客户端的登录不支持 MFA，并且不会将设备状态信息传递到 Azure AD，因此，它们将被条件访问授权控制阻止，如需要 MFA 或相容设备。 如果你的帐户必须使用旧身份验证，则必须从策略中排除这些帐户，或将策略配置为仅应用于新式身份验证客户端。
 
 如果设置为 **"是"** ，则 "**配置**切换设置" 适用于选中的项。如果设置为 "**否**"，则应用于所有客户端应用，包括新式和旧身份验证客户端 此切换不显示在2020年8月之前创建的策略中。
 

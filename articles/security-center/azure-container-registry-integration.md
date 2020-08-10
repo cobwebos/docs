@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/02/2020
 ms.author: memildin
-ms.openlocfilehash: b66969b26a801e6bd9aacf999c1c1ef9179ef1bd
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 767ad928779743ec28dbe3da8be6154a1fe0b0ab
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534662"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042303"
 ---
 # <a name="azure-container-registry-image-scanning-by-security-center"></a>安全中心扫描 Azure 容器注册表映像
 
@@ -27,24 +27,23 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 
 ## <a name="availability"></a>可用性
 
-- 发布状态：**公开上市**
-- 必需的角色：**安全读取器**和[Azure 容器注册表读取器角色](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
-- 支持的注册表和映像：
-    - ✔可以从公共 internet 访问并提供外壳访问权限的 Linux 托管 ACR 注册表。
-    - ✘ Windows 承载的 ACR 注册表。
-    - ✘ "Private" 注册表-安全中心要求可以从公共 internet 访问注册表。 安全中心当前无法使用防火墙、服务终结点或专用终结点（如 Azure Private Link）连接或扫描访问权限。
-    - ✘超级最简单映像，例如[Docker 暂存](https://hub.docker.com/_/scratch/)映像，或仅包含应用程序及其运行时依赖项的 "Distroless" 映像，无需使用包管理器、SHELL 或 OS。
-- 云： 
-    - ✔ 商业云
-    - ✘美国政府云
-    - ✘中国政府云，其他政府云
+|方面|详细信息|
+|----|:----|
+|发布状态：|正式版|
+|计价|标准层|
+|支持的注册表和映像：|![是 ](./media/icons/yes-icon.png) 可以从公共 internet 访问并提供外壳访问的 Linux 托管 ACR 注册表。<br>![无 ](./media/icons/yes-icon.png) Windows 承载的 ACR 注册表。<br>![无 ](./media/icons/yes-icon.png) "专用" 注册表项-安全中心要求可以从公共 internet 访问注册表。 安全中心当前无法使用防火墙、服务终结点或专用终结点（如 Azure Private Link）连接或扫描访问权限。<br>![没有任何 ](./media/icons/yes-icon.png) 超级最简单映像（例如[Docker 暂存](https://hub.docker.com/_/scratch/)映像）或仅包含应用程序和其运行时依赖项的 "Distroless" 映像，无需包管理器、shell 或 OS。|
+|必需的角色和权限：|**安全读取器**和[Azure 容器注册表读取器角色](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
+|||
+
+
 
 
 ## <a name="when-are-images-scanned"></a>何时扫描图像？
 
 每当将映像推送到注册表时，安全中心都会自动扫描该映像。 若要触发映像扫描，请将该映像推送到存储库。
 
-扫描完成时（通常在大约2分钟后，最长可能需要15分钟），结果将作为安全中心建议提供，如下所示：
+扫描完成后 (通常为大约2分钟后，但最多可以有15分钟的时间) ，如以下安全中心建议所示：
 
 [![有关在 Azure 容器注册表 (ACR) 托管映像中发现的漏洞的 Azure 安全中心建议示例](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 

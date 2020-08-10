@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: 100e75520d1165d4772579ba9b179cd350d6df18
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 42470df5391a976e8023467758d2a3fd0890883e
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542613"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041470"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 虚拟机代理概述
 Microsoft Azure 虚拟机代理（VM 代理）是受保护的轻型进程，用于管理虚拟机 (VM) 与 Azure 结构控制器的交互。 VM 代理有一个主要角色，目的是启用和执行 Azure 虚拟机扩展。 VM 扩展可用于对 VM 进行部署后配置，例如安装和配置软件。 VM 扩展还可启用恢复功能，例如重置 VM 的管理密码。 没有 Azure VM 代理，VM 扩展将无法运行。
@@ -69,9 +69,13 @@ $vm | Update-AzVM
 ```
 
 ### <a name="prerequisites"></a>先决条件
-- 在 .Net Framework 4.0 下，Windows VM 代理至少需要 Windows Server 2008 （64位）才能运行。 请参阅 [Azure 中的虚拟机代理的最低版本支持](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+
+- 若要运行 .Net Framework 4.0，Windows VM 代理至少需要 Windows Server 2008 (64 位) 才能运行。 请参阅 [Azure 中的虚拟机代理的最低版本支持](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
 
 - 确保 VM 可以访问 IP 地址 168.63.129.16。 有关详细信息，请参阅[什么是 IP 地址 168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
+
+- 确保在来宾 VM 内启用 DHCP。 这是从 DHCP 获取用于 IaaS VM 代理和扩展的主机或构造地址的必需操作。 如果需要静态专用 IP，应通过 Azure 门户或 PowerShell 进行配置，并确保已启用 VM 内的 DHCP 选项。 [详细了解](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-ps#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)如何通过 PowerShell 设置静态 IP 地址。
+
 
 ## <a name="detect-the-vm-agent"></a>检测 VM 代理
 

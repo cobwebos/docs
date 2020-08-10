@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: aa9a930195908671cc0e772fd9643dcbce9dbb1c
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 78a0cb6217d8c1d25f08801066a970d6bc94e1b0
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562406"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042099"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) 应用程序代理常见问题
 
@@ -31,6 +31,9 @@ ms.locfileid: "87562406"
 ### <a name="what-license-is-required-to-use-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理需要哪些许可证？
 
 若要使用 Azure AD 应用程序代理，必须具有 Azure AD Premium P1 或 P2 许可证。 有关授权的详细信息，请参阅[Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)
+
+### <a name="what-happens-to-azure-ad-application-proxy-in-my-tenant-if-my-license-expires"></a>如果我的许可证过期，我的租户中 Azure AD 应用程序代理会发生什么情况？
+如果你的许可证已过期，将自动禁用应用程序代理。 应用程序信息将保存一年长达一年。
 
 ### <a name="why-is-the-enable-application-proxy-button-grayed-out"></a>为什么 "启用应用程序代理" 按钮灰显？
 

@@ -7,16 +7,17 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 08/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 8429f58b9b8ce1be12fea861b805084347a0e2b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2fc2ccdc7a0520bd156bde8c1da36e19a9e2af1e
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537691"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042184"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure 数据工厂中的 JSON 格式
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 如果要**分析 JSON 文件或以 JSON 格式写入数据**，请遵循本文中的说明。 
@@ -72,7 +73,7 @@ ms.locfileid: "86537691"
 
 复制活动的 ***\*source\**** 节支持以下属性。
 
-| properties      | 说明                                                  | 必需 |
+| 属性      | 说明                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 **JSONSource**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“JSON 读取设置”表。 | 否       |
@@ -80,17 +81,17 @@ ms.locfileid: "86537691"
 
 `formatSettings` 下支持的“JSON 读取设置”：
 
-| 属性      | 说明                                                  | 必需 |
+| 属性      | 说明                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | formatSettings 的 type 必须设置为“JsonReadSettings”。 | 是      |
 | compressionProperties | 一组属性，指示如何为给定的压缩编解码器解压缩数据。 | 否       |
-| preserveZipFileNameAsFolder<br>（在 `compressionProperties` 下） | 当输入数据集配置了 ZipDeflate 压缩时适用。 指示是否在复制过程中以文件夹结构形式保留源 zip 文件名。 当设置为 true（默认值）时，数据工厂将解压缩文件写入 `<path specified in dataset>/<folder named as source zip file>/`；当设置为 false 时，数据工厂将解压缩文件直接写入 `<path specified in dataset>`。  | 否 |
+| preserveZipFileNameAsFolder<br>（在 `compressionProperties` 下） | 当输入数据集配置了 ZipDeflate 压缩时适用。 指示是否在复制过程中以文件夹结构形式保留源 zip 文件名。<br>-如果设置为**true (默认) **，数据工厂会将解压缩的文件写入 `<path specified in dataset>/<folder named as source zip file>/` 。<br>-当设置为**false**时，数据工厂会将解压缩的文件直接写入到 `<path specified in dataset>` 中。 请确保在不同的源 zip 文件中没有重复的文件名，以免出现赛车或意外的行为。  | 否 |
 
 ### <a name="json-as-sink"></a>JSON 作为接收器
 
 复制活动的 ***\*sink\**** 节支持以下属性。
 
-| properties      | 说明                                                  | 必需 |
+| 属性      | 说明                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | 复制活动源的 type 属性必须设置为 **JSONSink**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的“JSON 写入设置”表。 | 否       |
@@ -98,7 +99,7 @@ ms.locfileid: "86537691"
 
 `formatSettings` 下支持的 **JSON 写入设置**：
 
-| properties      | 说明                                                  | 必需                                              |
+| 属性      | 说明                                                  | 必须                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
 | type          | formatSettings 的类型必须设置为 **JsonWriteSettings**。 | 是                                                   |
 | filePattern |指示每个 JSON 文件中存储的数据模式。 允许的值为：setOfObjects (JSON Lines) 和 arrayOfObjects。 **默认**值为 **setOfObjects**。 请参阅 [JSON 文件模式](#json-file-patterns)部分，详细了解这些模式。 |否 |
@@ -202,7 +203,7 @@ ms.locfileid: "86537691"
 
 下表列出了 json 源支持的属性。 可以在 "**源选项**" 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必须 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 通配符路径 | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
 | 分区根路径 | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否 | 字符串 | partitionRootPath |
@@ -297,7 +298,7 @@ File3.json
 
 下表列出了 json 接收器支持的属性。 可以在 "**设置**" 选项卡中编辑这些属性。
 
-| 名称 | 说明 | 必需 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必须 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 清除文件夹 | 如果在写入前清除目标文件夹 | 否 | `true` 或 `false` | truncate |
 | 文件名选项 | 写入的数据的命名格式。 默认情况下，每个分区的一个文件的格式为`part-#####-tid-<guid>` | 否 | 模式：字符串 <br> 每个分区： String [] <br> As 列中的数据：字符串 <br> 输出到单个文件：`['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |

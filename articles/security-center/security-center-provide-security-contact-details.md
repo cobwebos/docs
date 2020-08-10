@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 5a2410a5ccaa10867e94b3a2ec10228a006fbe20
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c09dca8b5927e417714ef89393950cfb58c89020
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534628"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042269"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>为安全警报设置电子邮件通知 
 
@@ -34,9 +34,15 @@ ms.locfileid: "87534628"
 
 ## <a name="availability"></a>可用性
 
-- 发布状态：**正式发布版**
-- 必需的角色：**安全管理员**或**订阅所有者** 
-- 云：✔商用云✔ US Gov （partial）✘民族/主权（中国 Gov，其他 Gov）
+|方面|详细信息|
+|----|:----|
+|发布状态：|正式版|
+|计价|免费层|
+|必需的角色和权限：|**安全管理员**<br>**订阅所有者** |
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png)  (部分) US Gov<br>![否](./media/icons/no-icon.png) 中国 Gov，其他 Gov|
+|||
+
+
 
 
 ## <a name="set-up-email-notifications-for-alerts"></a>为警报设置电子邮件通知 <a name="email"></a>

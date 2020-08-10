@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: e74dac779fc1eafaf33ffbc63bf997cf26b64954
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d049538653ea345935d40bd965afd7d2453b2aa2
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836796"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041980"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure 安全中心的威胁防护
 
@@ -114,12 +114,13 @@ Azure 安全中心与 Azure 服务集成，可以监视和保护基于 Windows �
 
 ### <a name="availability"></a>可用性
 
-- 发布状态：**公开上市**
-- 必需的角色：**安全管理员**可以解除警报。 **安全读取者**可以查看结果。
-- 云：<br>
-    ✔ 商业云<br>
-    ✘ US Gov<br>
-    ✘中国 Gov，其他 Gov
+|方面|详细信息|
+|----|:----|
+|发布状态：|正式版|
+|计价|标准层|
+|必需的角色和权限：|**安全管理员**可以解除警报。<br>**安全读取者**可以查看结果。|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
+|||
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
@@ -150,14 +151,13 @@ Azure SQL 数据库的高级威胁防护可检测异常活动，指出有人在�
 
 ### <a name="availability"></a>可用性
 
-- 发布状态：
-    - [Blob 存储](https://azure.microsoft.com/services/storage/blobs/) (公开上市) 
-    - [Azure 文件](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (预览) 
-    - [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (预览版) 
-- 云：<br>
-    ✔ 商业云<br>
-    ✔ US Gov<br>
-    ✘中国 Gov，其他 Gov
+|方面|详细信息|
+|----|:----|
+|发布状态：|[Blob 存储](https://azure.microsoft.com/services/storage/blobs/) (公开上市) <br>[Azure 文件](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (预览) <br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (预览版) |
+|计价|标准层|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) US Gov<br>![否](./media/icons/no-icon.png) 中国 Gov，其他 Gov|
+|||
+
 
 ### <a name="whats-protected"></a>受保护的内容
 

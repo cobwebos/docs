@@ -7,16 +7,17 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 08/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 49c44b17247f14b8826df7652dc9eb025953b748
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c0b03db281a054410b3c4f44e278dbccf32029f
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096577"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042677"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>Azure 数据工厂中的 XML 格式
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 如果要**分析 XML 文件**，请遵循本文。 
@@ -27,9 +28,9 @@ ms.locfileid: "87096577"
 
 有关可用于定义数据集的各部分和属性的完整列表，请参阅[数据集](concepts-datasets-linked-services.md)一文。 本部分提供 XML 数据集支持的属性列表。
 
-| properties         | 描述                                                  | 必须 |
+| properties         | 说明                                                  | 必须 |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| 类型             | 数据集的 type 属性必须设置为**Xml**。 | 是      |
+| type             | 数据集的 type 属性必须设置为**Xml**。 | 是      |
 | location         | 文件的位置设置。 每个基于文件的连接器在 `location` 下都有其自己的位置类型和支持的属性。 **请在连接器文章 -> 数据集属性部分中查看详细信息**。 | 是      |
 | encodingName     | 用于读取/写入测试文件的编码类型。 <br>可用的值如下："UTF-8"、"UTF-16"、"UTF-16BE"、"UTF-32"、"UTF-32BE"、"US-ASCII"、"UTF-7"、"BIG5"、"EUC-JP"、"EUC-KR"、"GB2312"、"GB18030"、"JOHAB"、"SHIFT-JIS"、"CP875"、"CP866"、"IBM00858"、"IBM037"、"IBM273"、"IBM437"、"IBM500"、"IBM737"、"IBM775"、"IBM850"、"IBM852"、"IBM855"、"IBM857"、"IBM860"、"IBM861"、"IBM863"、"IBM864"、"IBM865"、"IBM869"、"IBM870"、"IBM01140"、"IBM01141"、"IBM01142"、"IBM01143"、"IBM01144"、"IBM01145"、"IBM01146"、"IBM01147"、"IBM01148"、"IBM01149"、"ISO-2022-JP"、"ISO-2022-KR"、"ISO-8859-1"、"ISO-8859-2"、"ISO-8859-3"、"ISO-8859-4"、"ISO-8859-5"、"ISO-8859-6"、"ISO-8859-7"、"ISO-8859-8"、"ISO-8859-9"、"ISO-8859-13"、"ISO-8859-15"、"WINDOWS-874"、"WINDOWS-1250"、"WINDOWS-1251"、"WINDOWS-1252"、"WINDOWS-1253"、"WINDOWS-1254"、"WINDOWS-1255"、"WINDOWS-1256"、"WINDOWS-1257"、"WINDOWS-1258"。| 否       |
 | nullValue | 指定 null 值的字符串表示形式。<br/>默认值为**空字符串**。 | 否 |
@@ -72,21 +73,21 @@ ms.locfileid: "87096577"
 
 复制活动的 ***\*source\**** 节支持以下属性。 从[XML 连接器行为](#xml-connector-behavior)中了解详细信息。
 
-| properties      | 描述                                                  | 必须 |
+| properties      | 说明                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| 类型          | 复制活动源的 type 属性必须设置为**XmlSource**。 | 是      |
+| type          | 复制活动源的 type 属性必须设置为**XmlSource**。 | 是      |
 | formatSettings | 一组属性。 请参阅下面的**XML 读取设置**表。 | 否       |
 | storeSettings | 有关如何从数据存储读取数据的一组属性。 每个基于文件的连接器在 `storeSettings` 下都有其自己支持的读取设置。 **请在连接器文章 -> 复制活动属性部分中查看详细信息**。 | 否       |
 
 支持的**XML 读取设置** `formatSettings` 如下：
 
-| properties      | 描述                                                  | 必须 |
+| properties      | 说明                                                  | 必须 |
 | ------------- | ------------------------------------------------------------ | -------- |
-| 类型          | FormatSettings 的类型必须设置为**XmlReadSettings**。 | 是      |
-| validationMode | 指定是否验证 XML 架构。<br>允许的值为**none** （默认值、无验证）、 **XSD** （使用 xsd 验证）、 **dtd** （使用 dtd 进行验证）。 | 否 |
-| namespacePrefixes | 用于在分析 xml 文件时为字段命名的前缀映射的命名空间 URI。<br/>如果 XML 文件已启用命名空间和命名空间，则默认情况下，该字段的名称与 XML 文档中的名称相同。<br>如果在此映射中为命名空间 URI 定义了一个项，则字段名称为 `prefix:fieldName` 。 | 否 |
+| type          | FormatSettings 的类型必须设置为**XmlReadSettings**。 | 是      |
+| validationMode | 指定是否验证 XML 架构。<br>允许的值为**none** (默认值、不) 验证、 **XSD** (使用 xsd) 验证、 **dtd** (使用 dtd 进行验证) 。 | 否 |
+| namespacePrefixes | 命名空间 URI 到前缀的映射，用于在分析 xml 文件时为字段命名。<br/>如果 XML 文件已启用命名空间和命名空间，则默认情况下，该字段的名称与 XML 文档中的名称相同。<br>如果在此映射中为命名空间 URI 定义了一个项，则字段名称为 `prefix:fieldName` 。 | 否 |
 | compressionProperties | 一组属性，指示如何为给定的压缩编解码器解压缩数据。 | 否       |
-| preserveZipFileNameAsFolder<br>（在 `compressionProperties` 下） | 当输入数据集配置了 ZipDeflate 压缩时适用。 指示是否在复制过程中以文件夹结构形式保留源 zip 文件名。 当设置为 true（默认值）时，数据工厂将解压缩文件写入 `<path specified in dataset>/<folder named as source zip file>/`；当设置为 false 时，数据工厂将解压缩文件直接写入 `<path specified in dataset>`。  | 否 |
+| preserveZipFileNameAsFolder<br>（在 `compressionProperties` 下） | 当输入数据集配置了 ZipDeflate 压缩时适用。 指示是否在复制过程中以文件夹结构形式保留源 zip 文件名。<br>-如果设置为**true (默认) **，数据工厂会将解压缩的文件写入 `<path specified in dataset>/<folder named as source zip file>/` 。<br>-当设置为**false**时，数据工厂会将解压缩的文件直接写入到 `<path specified in dataset>` 中。 请确保在不同的源 zip 文件中没有重复的文件名，以免出现赛车或意外的行为。  | 否 |
 
 ## <a name="mapping-data-flow-properties"></a>映射数据流属性
 
@@ -94,9 +95,9 @@ ms.locfileid: "87096577"
 
 ### <a name="source-properties"></a>源属性
 
-下表列出了 XML 源支持的属性。 您可以在 "**源选项**" 选项卡中编辑这些属性。从[XML 连接器行为](#xml-connector-behavior)中了解详细信息。 使用内联数据集时，你将看到与 "[数据集属性](#dataset-properties)" 部分所述的属性相同的其他文件设置。 
+下表列出了 XML 源支持的属性。 您可以在 "**源选项**" 选项卡中编辑这些属性。从[XML 连接器行为](#xml-connector-behavior)中了解详细信息。 使用内联数据集时，你将看到其他文件设置，这些设置与 "[数据集属性](#dataset-properties)" 部分中描述的属性相同。 
 
-| 名称 | 描述 | 必须 | 允许的值 | 数据流脚本属性 |
+| 名称 | 说明 | 必须 | 允许的值 | 数据流脚本属性 |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | 通配符路径 | 将处理所有匹配通配符路径的文件。 重写在数据集中设置的文件夹和文件路径。 | 否 | String[] | wildcardPaths |
 | 分区根路径 | 对于已分区的文件数据，可以输入分区根路径以便将分区文件夹读取为列 | 否 | 字符串 | partitionRootPath |
@@ -104,9 +105,9 @@ ms.locfileid: "87096577"
 | 要存储文件名的列 | 使用源文件名称和路径创建新列 | 否 | 字符串 | rowUrlColumn |
 | 完成后 | 在处理后删除或移动文件。 文件路径从容器根开始 | 否 | 删除： `true` 或`false` <br> 移动`['<from>', '<to>']` | purgeFiles <br>moveFiles |
 | 按上次修改时间筛选 | 选择根据文件上次更改时间筛选文件 | 否 | Timestamp | ModifiedAfter <br>modifiedBefore |
-| 验证模式 | 指定是否验证 XML 架构。 | 否 | `None`（默认，无验证）<br>`xsd`（使用 XSD 进行验证）<br>`dtd`（使用 DTD 进行验证）。 | validationMode |
-| 命名空间 | 解析 XML 文件时是否启用命名空间。 | 否 | `true`（默认值）或`false` | namespaces |
-| 命名空间前缀对 | 用于在分析 xml 文件时为字段命名的前缀映射的命名空间 URI。<br/>如果 XML 文件已启用命名空间和命名空间，则默认情况下，该字段的名称与 XML 文档中的名称相同。<br>如果在此映射中为命名空间 URI 定义了一个项，则字段名称为 `prefix:fieldName` 。 | 否 | 带有模式的数组`['URI1'->'prefix1','URI2'->'prefix2']` | namespacePrefixes |
+| 验证模式 | 指定是否验证 XML 架构。 | 否 | `None` (默认情况下，不验证) <br>`xsd`使用 XSD)  (验证<br>`dtd`使用 DTD)  (验证。 | validationMode |
+| 命名空间 | 解析 XML 文件时是否启用命名空间。 | 否 | `true` (默认) 或`false` | namespaces |
+| 命名空间前缀对 | 命名空间 URI 到前缀的映射，用于在分析 xml 文件时为字段命名。<br/>如果 XML 文件已启用命名空间和命名空间，则默认情况下，该字段的名称与 XML 文档中的名称相同。<br>如果在此映射中为命名空间 URI 定义了一个项，则字段名称为 `prefix:fieldName` 。 | 否 | 带有模式的数组`['URI1'->'prefix1','URI2'->'prefix2']` | namespacePrefixes |
 
 ### <a name="xml-source-script-example"></a>XML 源脚本示例
 

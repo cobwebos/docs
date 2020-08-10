@@ -1,6 +1,6 @@
 ---
 title: Azure 安全中心中的实时虚拟机访问 | Microsoft Docs
-description: 本文档演示如何使用 Azure 安全中心中的实时 VM 访问（JIT）来控制对 Azure 虚拟机的访问。
+description: 本文档演示如何使用 Azure 安全中心中的实时 VM 访问 (JIT) 来控制对 Azure 虚拟机的访问。
 services: security-center
 author: memildin
 manager: rkarlin
@@ -8,16 +8,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: a077e1dfd166051ad1cf16e42d11e8eeb61d2c91
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 611124a113a0cce3ab1fb8db5969a6ab6f5f6658
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419846"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041934"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>使用实时访问保护管理端口
 
-使用 Azure 安全中心的实时（JIT）虚拟机（VM）访问功能锁定到你的 Azure 虚拟机的入站流量。 如果需要连接到 VM，这会减少攻击的暴露，同时提供轻松访问。
+使用 Azure 安全中心的实时 (JIT) 虚拟机 (VM) 访问功能锁定到你的 Azure 虚拟机的入站流量。 如果需要连接到 VM，这会减少攻击的暴露，同时提供轻松访问。
 
 有关 JIT 如何工作以及底层逻辑的完整说明，请参阅[实时说明](just-in-time-explained.md)。
 
@@ -31,21 +31,14 @@ ms.locfileid: "87419846"
 
 ## <a name="availability"></a>可用性
 
-- 发布状态：**公开上市**
-- 定价：**标准层**。 [了解有关定价的详细信息](/azure/security-center/security-center-pricing)。
-- 必需的角色和权限：
-    - "**读取**者" 和 " **SecurityReader** " 角色可以查看 JIT 状态和参数。
-    - 若要创建可用于 JIT 的自定义角色，请参阅[配置和使用 jit 需要哪些权限？](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)
-    - 若要为需要请求对 VM 的 JIT 访问权限的用户创建最小特权角色，而不执行其他任何 JIT 操作，请使用安全中心 GitHub 社区页面中的[JitLeastPrivilegedRole 脚本](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role)。
-- 支持的 Vm： 
-    - ✔通过 Azure 资源管理器部署的 Vm。
-    - 采用经典部署模型部署的✘ Vm。 [了解有关这些部署模型的详细信息](../azure-resource-manager/management/deployment-models.md)。
-    - 由[Azure 防火墙管理器](https://docs.microsoft.com/azure/firewall-manager/overview)控制的 azure 防火墙所保护的✘ vm。
-- 云： 
-    - ✔ 商业云
-    - ✔ 国家/主权（US Gov、中国 Gov、其他 Gov）
-
-
+|方面|详细信息|
+|----|:----|
+|发布状态：|正式版|
+|计价|标准层|
+|支持的 Vm：|![是 ](./media/icons/yes-icon.png) 通过 Azure 资源管理器部署的虚拟机。<br>![没有 ](./media/icons/yes-icon.png) 用经典部署模型部署的 vm。 [了解有关这些部署模型的详细信息](../azure-resource-manager/management/deployment-models.md)。<br>![Azure ](./media/icons/yes-icon.png) 防火墙不受 Azure[防火墙管理器](https://docs.microsoft.com/azure/firewall-manager/overview)保护的任何 vm|
+|必需的角色和权限：|"**读取**者" 和 " **SecurityReader** " 角色可以查看 JIT 状态和参数。<br>若要创建可用于 JIT 的自定义角色，请参阅[配置和使用 jit 所需的权限](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)。<br>若要为需要请求对 VM 的 JIT 访问权限的用户创建最小特权角色，而不执行其他任何 JIT 操作，请使用安全中心 GitHub 社区页面中的[JitLeastPrivilegedRole 脚本](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role)。|
+|云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
+|||
 
 
 ## <a name="enable-jit-vm-access"></a>启用 JIT VM 访问<a name="jit-configure"></a>
@@ -75,7 +68,7 @@ ms.locfileid: "87419846"
         - 最后一个用户
     - **未配置-未**启用 jit 但可以支持 jit 的 vm。 建议为这些 Vm 启用 JIT。
     - **不受支持**-未启用 JIT 且不支持该功能的 vm。 VM 可能在此选项卡中，原因如下：
-      - 缺少网络安全组（NSG）-JIT 要求配置 NSG
+      - 缺少网络安全组 (NSG) -JIT 要求配置 NSG
       - 经典 VM-JIT 支持通过 Azure 资源管理器部署的 Vm，而不是 "经典部署"。 [详细了解经典 Vs Azure 资源管理器部署模型](../azure-resource-manager/management/deployment-models.md)。
       - 其他-如果在订阅或资源组的安全策略中禁用了 JIT 解决方案，则 VM 可能在此选项卡中。
 
@@ -94,7 +87,7 @@ ms.locfileid: "87419846"
     - 通过 "**添加**" 按钮添加自定义端口。 
     - 通过从列表中选择一个默认端口来修改其中一个。
 
-    对于每个端口（自定义和默认值），"**添加端口配置**" 窗格提供以下选项：
+    对于每个端口 (自定义和默认) "**添加端口配置**" 窗格提供以下选项：
 
     - **协议**-批准请求时此端口允许的协议
     - **允许的源 ip**-批准请求时此端口允许的 IP 范围
@@ -102,7 +95,7 @@ ms.locfileid: "87419846"
 
      1. 根据需要设置端口安全性。
 
-     1. 选择“确定”  。
+     1. 选择“确定”。
 
 1. 选择“保存”。
 
@@ -238,7 +231,7 @@ ms.locfileid: "87419846"
 
 ## <a name="request-access-to-a-jit-enabled-vm"></a>请求访问启用 JIT 的 VM
 
-可以从 Azure 门户（安全中心或 Azure 虚拟机）或以编程方式请求访问启用 JIT 的 VM。
+可以) 或以编程方式从安全中心或 Azure 虚拟机中的 Azure 门户 (请求对启用了 JIT 的 VM 的访问权限。
 
 每个选项都在下面的单独选项卡中介绍。
 
@@ -320,7 +313,7 @@ ms.locfileid: "87419846"
     $JitPolicyArr=@($JitPolicyVm1)
     ```
         
-1. 发送请求访问权限（使用步骤1中的资源 ID）
+1. 使用步骤1中的资源 ID 发送请求访问 () 
 
     ```azurepowershell
     Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr

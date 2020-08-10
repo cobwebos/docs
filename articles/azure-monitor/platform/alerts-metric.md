@@ -4,14 +4,14 @@ description: 了解如何使用 Azure 门户或 CLI 来创建、查看和管理�
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 08/10/2020
 ms.subservice: alerts
-ms.openlocfilehash: c040958d9518485bc5d583fc01aedd50d5c6e57a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8afe62173dc0e90783c494fa51994e9ebac506f3
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321116"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042728"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理指标警报
 
@@ -88,6 +88,7 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 
 6. 单击“完成”保存所做的编辑。 
 
+
 ## <a name="with-azure-cli"></a>使用 Azure CLI
 
 前面的部分介绍了如何使用 Azure 门户创建、查看和管理指标警报规则。 本部分将介绍如何使用跨平台 [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) 实现相同的结果。 使用 Azure CLI 的最快捷方式是通过 [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest)。 对于本文，我们将使用 Cloud Shell。
@@ -133,6 +134,14 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
     ```azurecli
     az monitor metrics alert delete -g {ResourceGroup} -n {AlertRuleName}
     ```
+
+## <a name="with-powershell"></a>使用 PowerShell
+
+指标警报规则提供了专用 PowerShell cmdlet：
+
+- [AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2)：创建新的指标警报规则或更新现有的指标警报规则。
+- [AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2)：获取一个或多个指标警报规则。
+- [AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2)：删除指标警报规则。
 
 ## <a name="next-steps"></a>后续步骤
 

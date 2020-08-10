@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 07/30/2020
+ms.date: 08/10/2020
 ms.author: victorh
-ms.openlocfilehash: 3f2b844163abce0946dc5df29c3121691e83035b
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 1ba8977272817d41334ccf0d9ad01d4d751bfb17
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439226"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88041691"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 
@@ -133,15 +133,17 @@ Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubn
 
 ## <a name="when-configuring-dnat-for-inbound-internet-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>为入站 Internet 网络流量配置 DNAT 时，是否还需要配置相应的网络规则以允许该流量？
 
-否。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
+不是。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>应用程序规则目标 FQDN 中的通配符有什么作用？
 
+当前只能在 FQDN 的左侧使用通配符。 例如，***. contoso.com**和 ***contoso.com**。
+
 如果配置 * **.contoso.com**，则允许 *anyvalue*.contoso.com，但不允许 contoso.com（域顶点）。 如果希望允许域顶点，必须显式将其配置为目标 FQDN。
 
-## <a name="what-does-provisioning-state-failed-mean"></a>“预配状态:** 失败”意味着什么？
+## <a name="what-does-provisioning-state-failed-mean"></a>“预配状态:失败”意味着什么？
 
-每当应用配置更改时，Azure 防火墙就会尝试更新其所有底层后端实例。 在极少见的情况下，其中的某个后端实例可能无法使用新配置进行更新，并且更新过程将会停止，并出现预配失败状态。 Azure 防火墙仍可正常运行，但应用的配置可能处于不一致状态，有些实例使用以前的配置，而有些实例则使用更新的规则集。 如果发生这种情况，请尝试再一次更新配置，直到操作成功，并且防火墙处于“成功”预配状态。**
+每当应用配置更改时，Azure 防火墙就会尝试更新其所有底层后端实例。 在极少见的情况下，其中的某个后端实例可能无法使用新配置进行更新，并且更新过程将会停止，并出现预配失败状态。 Azure 防火墙仍可正常运行，但应用的配置可能处于不一致状态，有些实例使用以前的配置，而有些实例则使用更新的规则集。 如果发生这种情况，请尝试再一次更新配置，直到操作成功，并且防火墙处于“成功”预配状态。
 
 ## <a name="how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures"></a>Azure 防火墙如何处理计划内维护和计划外故障？
 Azure 防火墙包含多个采用主动-主动配置的后端节点。  对于任何计划内维护，我们都可以通过连接清空逻辑来正常更新节点。  更新安排在每个 Azure 区域的非营业时间，这样可以进一步限制中断风险。  对于计划外问题，我们会实例化一个新节点来代替故障节点。  通常情况下，我们会在发生故障后 10 秒钟内重新建立到新节点的连接。
@@ -160,7 +162,7 @@ Azure 防火墙在缩放时必须预配更多的虚拟机实例。 /26 地址空
 
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>在服务缩放时，防火墙子网大小是否需要更改？
 
-不能。 Azure 防火墙不需要大于 /26 的子网。
+不是。 Azure 防火墙不需要大于 /26 的子网。
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>如何提高防火墙吞吐量？
 
@@ -170,11 +172,11 @@ Azure 防火墙的初始吞吐容量为 2.5 - 3 Gbps，可以横向扩展到 30 
 
 当平均吞吐量或 CPU 消耗达到 60% 时，Azure 防火墙就会逐渐扩展。 默认部署最大吞吐量约为 2.5 Gbps，并在达到该数字的60% 时开始横向扩展。 横向扩展需要 5 到 7 分钟。 
 
-进行性能测试时，请确保测试至少10到15分钟，并启动新连接以利用新创建的防火墙节点。
+进行性能测试时，请确保至少测试 10 到 15 分钟，并启动新连接以利用新创建的防火墙节点。
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>默认情况下，Azure 防火墙是否允许访问 Active Directory？
 
-否。 Azure 防火墙默认阻止 Active Directory 访问。 若要允许访问，请配置 AzureActiveDirectory 服务标记。 有关详细信息，请参阅 [Azure 防火墙服务标记](service-tags.md)。
+不是。 Azure 防火墙默认阻止 Active Directory 访问。 若要允许访问，请配置 AzureActiveDirectory 服务标记。 有关详细信息，请参阅 [Azure 防火墙服务标记](service-tags.md)。
 
 ## <a name="can-i-exclude-a-fqdn-or-an-ip-address-from-azure-firewall-threat-intelligence-based-filtering"></a>能否从基于 Azure 防火墙威胁情报的筛选中排除 FQDN 或 IP 地址？
 
@@ -207,13 +209,13 @@ TCP ping 实际上并未连接到目标 FQDN。 这是因为 Azure 防火墙的�
 
 是的。 有关详细信息，请参阅 [Azure 订阅和服务限制、配额与约束](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits)
 
-## <a name="can-i-move-an-ip-group-to-another-resource-group"></a>是否可以将 IP 组移动到其他资源组？
+## <a name="can-i-move-an-ip-group-to-another-resource-group"></a>能否将 IP 组移到其他资源组？
 
 否，目前不支持将 IP 组移动到其他资源组。
 
-## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Azure 防火墙的 TCP 空闲超时是多少？
+## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Azure 防火墙的 TCP 空闲超时是多长时间？
 
-网络防火墙的标准行为是确保 TCP 连接保持活动状态，并在没有任何活动时立即将其关闭。 Azure 防火墙 TCP 空闲超时为4分钟。 此设置不可配置。 如果处于非活动状态的时间超过超时值，则无法保证已维护 TCP 或 HTTP 会话。 常见的做法是使用 TCP 保持连接状态。 这种做法可以使连接状态保持更长时间。 有关详细信息，请参阅[.net 示例](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)。
+网络防火墙的标准行为是确保 TCP 连接保持活动状态，并在没有活动时迅速将其关闭。 Azure 防火墙 TCP 空闲超时为 4 分钟。 此设置不可配置。 如果处于非活动状态的时间超过超时值，则不能保证维持 TCP 或 HTTP 会话。 常见的做法是使用 TCP 保持连接状态。 这种做法可以使连接状态保持更长时间。 有关详细信息，请参阅 [.NET 示例](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_)。
 
 ## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>是否可以部署没有公共 IP 地址的 Azure 防火墙？
 

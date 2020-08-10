@@ -2,13 +2,13 @@
 title: 移动 Azure 应用服务资源
 description: 使用 Azure 资源管理器将应用服务资源移到新的资源组或订阅。
 ms.topic: conceptual
-ms.date: 12/13/2019
-ms.openlocfilehash: d0ecd117bdcda9238e310a3020dba19a6871a3fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/10/2020
+ms.openlocfilehash: 45f04cad27e175b471f4d6e07426787ca678e369
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80655769"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042051"
 ---
 # <a name="move-guidance-for-app-service-resources"></a>针对应用服务资源的移动指南
 
@@ -23,7 +23,8 @@ ms.locfileid: "80655769"
     - 应用服务计划
     - 上传或导入的 TLS/SSL 证书
     - 应用服务环境
-- 资源组中的所有应用服务资源必须一起移动。 请注意，应用服务环境不能移到新资源组，也不能移到新订阅。
+- 资源组中的所有应用服务资源必须一起移动。
+- 无法将应用服务环境移动到新的资源组或订阅。 但是，你可以将 web 应用和应用服务计划移动到新的订阅中，而无需移动应用服务环境。 移动之后，将不再在应用服务环境中托管 web 应用。
 - 只要将证书与资源组中的所有其他资源一起移动，就可以将绑定的证书移到 Web，而无需删除 TLS 绑定。
 - 只能从最初创建应用服务资源的资源组中移动它们。 如果应用服务资源不再位于其原始资源组中，请将其移回其原始资源组。 然后，在订阅之间移动资源。
 
