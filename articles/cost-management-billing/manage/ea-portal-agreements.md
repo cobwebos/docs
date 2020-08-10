@@ -3,16 +3,16 @@ title: Azure EA 协议和修正合同
 description: 本文介绍 Azure EA 协议和修订如何影响 Azure EA 门户的使用。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/13/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 4d40ffb04882e9809fc818ab492a4c97260d1ff4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bc1749ba8246aa2181890c4c846f9159a0557aff
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537793"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563477"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA 协议和修正合同
 
@@ -20,7 +20,7 @@ ms.locfileid: "86537793"
 
 ## <a name="enrollment-provisioning-status"></a>注册预配状态
 
-新 Azure 预付款的开始日期按区域运营中心处理该事务的日期定义。 Azure EA 门户中的 Azure 预付款订单是在 UTC 时区中处理的，因此如果在不同的区域处理 Azure 预付款采购订单，可能会遇到延迟。 https://www.explore.ms 上的采购订单中的履行开始日期显示 Azure 预付款的开始日期。 履行开始日期是指在 Azure EA 门户中显示 Azure 预付款的时间。
+新 Azure 预付款的开始日期按区域运营中心处理该事务的日期定义。 Azure EA 门户中的 Azure 预付款订单是在 UTC 时区中处理的，因此如果在不同的区域处理 Azure 预付款采购订单，可能会遇到延迟。 采购订单中的履行开始日期显示 Azure 预付款的开始日期。 履行开始日期是指在 Azure EA 门户中显示 Azure 预付款的时间。
 
 ## <a name="support-for-enterprise-customers"></a>对企业客户的支持
 
@@ -43,7 +43,7 @@ ms.locfileid: "86537793"
 
 **已过期** - EA 合约在达到企业协议结束日期时过期。 EA 客户将被取消延期，其所有服务将会禁用。
 
-从 2019 年 8 月 1 日起，Azure 商业客户无法接受新的取消形式。 所有注册将进入无限延期。 如果要停止使用 Azure 服务，请在 [Azure 门户](https://portal.azure.com)中关闭订阅。 或者，合作伙伴可以在 https://www.explore.ms 上提交终止请求。 对于使用政府协议类型的客户，措施没有变化。
+从 2019 年 8 月 1 日起，Azure 商业客户无法接受新的取消形式。 所有注册将进入无限延期。 如果要停止使用 Azure 服务，请在 [Azure 门户](https://portal.azure.com)中关闭订阅。 合作伙伴也可以提交终止请求。 对于使用政府协议类型的客户，措施没有变化。
 
 **已转移** -“已转移”状态适用于其关联帐户和服务已转移到新注册的注册。 如果新注册编号是在续订期间生成的，则注册不会自动转移。 若要自动转移，必须将以前的注册编号包含在客户的续订请求中。
 

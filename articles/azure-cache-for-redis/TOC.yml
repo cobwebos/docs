@@ -39,11 +39,11 @@
       items:
         - name: 使用 Spring Boot Initializer
           href: cache-java-spring-boot-initializer-with-redis-cache.md
-    - name: 将缓存用于排名
+    - name: 创建排行榜
       href: cache-web-app-cache-aside-leaderboard.md
-    - name: Azure PowerShell
+    - name: 使用 Azure PowerShell 进行管理
       href: cache-how-to-manage-redis-cache-powershell.md
-    - name: Azure CLI
+    - name: 使用 Azure CLI 进行管理
       href: cli-samples.md
 - name: 概念
   items:
@@ -65,7 +65,7 @@
     - name: 计划
       items:
         - name: 选择缓存层
-          href: cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use
+          href: cache-overview.md#choosing-the-right-tier
         - name: 使用群集分布缓存
           href: cache-how-to-premium-clustering.md
         - name: 使用 Redis 数据持久性保留缓存
@@ -82,6 +82,12 @@
           href: cache-migration-guide.md
         - name: 从托管缓存服务（已弃用）迁移
           href: cache-migrate-to-redis.md
+        - name: 有关规划的常见问题
+          href: cache-planning-faq.md
+    - name: 生成
+      items:
+        - name: 有关开发的常见问题
+          href: cache-development-faq.md
     - name: 自动化
       items:
         - name: 使用 Azure PowerShell 进行部署和管理
@@ -106,12 +112,22 @@
           href: cache-how-to-redis-cli-tool.md
         - name: 删除 TLS 1.0 和 1.1
           href: cache-remove-tls-10-11.md
+        - name: 管理常见问题解答
+          href: cache-management-faq.md
     - name: 监视
       items:
         - name: 在 Azure 门户中进行监视
           href: cache-how-to-monitor.md
         - name: 设置异常警报
           href: cache-how-to-monitor.md#operations-and-alerts
+        - name: 监视常见问题解答
+          href: cache-monitor-troubleshoot-faq.md
+    - name: 缩放
+      items:
+        - name: 更新为不同的大小和层
+          href: cache-how-to-scale.md
+        - name: 使用 Redis 群集进行横向缩减/扩展
+          href: cache-how-to-premium-clustering.md
     - name: 诊断和故障排除
       items:
         - name: 排查 Redis 服务器问题
@@ -122,12 +138,8 @@
           href: cache-troubleshoot-timeouts.md
         - name: 排查数据丢失问题
           href: cache-troubleshoot-data-loss.md
-    - name: 缩放
-      items:
-        - name: 更新为不同的大小和层
-          href: cache-how-to-scale.md
-        - name: 使用 Redis 群集进行横向缩减/扩展
-          href: cache-how-to-premium-clustering.md
+        - name: 故障排查常见问题解答
+          href: cache-monitor-troubleshoot-faq.md
 - name: 参考
   items:
     - name: “用于 Redis 的 Azure 缓存”示例
@@ -152,7 +164,7 @@
       href: 'https://redis.io/commands#'
 - name: 资源
   items:
-    - name: 用于 Redis 的 Azure 缓存常见问题解答
+    - name: Azure Cache for Redis 常见问题解答
       href: cache-faq.md
     - name: 视频
       href: 'https://www.youtube.com/results?search_query=azure+redis+cache'

@@ -105,8 +105,10 @@
           href: howto-run-a-job.md
     - name: 转换
       items:
-        - name: 将数据导出到 Azure 中的目标
+        - name: 将数据导出到 Azure 中的目标（旧版）
           href: howto-export-data.md
+        - name: 将数据导出到云目标（预览版）
+          href: howto-use-data-export.md
         - name: 根据规则创建 Webhook
           href: howto-create-webhooks.md
         - name: 使用工作流与其他服务集成

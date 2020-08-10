@@ -251,7 +251,7 @@
           href: connector-azure-database-for-postgresql.md
         - name: Azure 文件存储
           href: connector-azure-file-storage.md
-        - name: Azure SQL Database
+        - name: Azure SQL 数据库
           href: connector-azure-sql-database.md
         - name: Azure SQL 托管实例
           href: connector-azure-sql-managed-instance.md
@@ -620,6 +620,8 @@
           href: create-shared-self-hosted-integration-runtime-powershell.md
         - name: 自承载集成运行时的自动化脚本
           href: self-hosted-integration-runtime-automation-scripts.md
+        - name: 在 Windows 容器中运行自承载集成运行时
+          href: how-to-run-self-hosted-integration-runtime-in-windows-container.md
     - name: 在 Azure 中运行 SSIS 包
       items:
         - name: 从 SSDT 运行 Azure 中的 SSIS 包

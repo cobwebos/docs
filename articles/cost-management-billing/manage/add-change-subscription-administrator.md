@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 6d16e663626a1b19271b7d37b39202a0a9b605b9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: ddb40f470f9b951c786fdab529336af3eff38e54
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126119"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87530004"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>添加或更改 Azure 订阅管理员
 
@@ -33,7 +33,7 @@ Microsoft 建议你使用 RBAC 来管理对资源的访问权限。 但是，如
 
 ## <a name="assign-a-subscription-administrator"></a>分配订阅管理员
 
-要使用户成为 Azure 订阅的管理员，现有管理员应在订阅范围内为其分配[所有者](../../role-based-access-control/built-in-roles.md#owner)角色（一个 RBAC 角色）。 “所有者”角色会为该用户提供订阅中所有资源的完全访问权限，包括将访问权限委派给其他用户的权限。 这些步骤与任何其他角色分配相同。
+要使用户成为 Azure 订阅的管理员，现有管理员应在订阅范围内为其分配[所有者](../../role-based-access-control/built-in-roles.md#owner)角色（一个 Azure 角色）。 “所有者”角色会为该用户提供订阅中所有资源的完全访问权限，包括将访问权限委派给其他用户的权限。 这些步骤与任何其他角色分配相同。
 
 如果不确定谁是订阅的帐户管理员，可使用以下步骤查明。
 

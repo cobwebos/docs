@@ -1,6 +1,6 @@
 ---
 title: 了解详细的使用情况和费用 | Microsoft Docs
-description: 介绍如何阅读并了解详细的使用情况和费用
+description: 介绍如何阅读并了解详细的使用情况和费用文件。 查看文件中使用的术语和说明的列表。
 author: bandersmsft
 ms.reviewer: micflan
 tags: billing
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 03/20/2020
 ms.author: banders
-ms.openlocfilehash: 3b4a5601f18a07ba1ecd6fdd93628d671a0acad2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1b53869c9ef90dd0edf3ab9a3120e65db8f16e8a
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80065648"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460280"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>了解 Azure 使用情况和费用文件中的术语
 
@@ -68,7 +68,7 @@ InvoiceSectionId<sup>1</sup> | EA、MCA | EA 部门或 MCA 发票科目的唯一
 InvoiceSectionName | EA、MCA | EA 部门或 MCA 发票科目的名称。
 IsAzureCreditEligible | All | 指示是否可以使用 Azure 额度来支付此费用（值：True、False）。
 位置 | MCA | 资源运行时所在的数据中心位置。
-MeterCategory | All | 计量的分类类别的名称。 例如，“云服务”和“网络”。  
+MeterCategory | All | 计量的分类类别的名称。 例如，“云服务”和“网络”。 
 MeterId<sup>1</sup> | All | 计量的唯一标识符。
 MeterName | All | 计量的名称。
 MeterRegion | All | 按位置定价的服务的数据中心位置的名称。 参见“位置”。
@@ -89,11 +89,11 @@ PublisherType | All | 发布者的类型（值：**Azure**、**AWS**、**Marketp
 数量 | All | 购买或消耗的单位数。
 预订 ID | EA、MCA | 购买的预留实例的唯一标识符。
 ReservationName | EA、MCA | 购买的预留实例的名称。
-ResourceGroup | All | 资源所在的[资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)的名称。 并非所有费用都来自部署到资源组的资源。 没有资源组的费用将显示为 null/空、“其他”  或“不适用”  。
+ResourceGroup | All | 资源所在的[资源组](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)的名称。 并非所有费用都来自部署到资源组的资源。 没有资源组的费用将显示为 null/空、“其他”或“不适用”。
 ResourceId<sup>1</sup> | All | [Azure 资源管理器](https://docs.microsoft.com/rest/api/resources/resources)资源的唯一标识符。
 ResourceLocation | All | 资源运行时所在的数据中心位置。 参见“位置”。
-ResourceName | EA、PAYG | 资源的名称。 并非所有费用都来所部署的资源。 没有资源类型的费用将显示为 null/空、“其他”  或“不适用”  。
-ResourceType | MCA | 资源实例的类型。 并非所有费用都来所部署的资源。 没有资源类型的费用将显示为 null/空、“其他”  或“不适用”  。
+ResourceName | EA、PAYG | 资源的名称。 并非所有费用都来所部署的资源。 没有资源类型的费用将显示为 null/空、“其他”或“不适用”。
+ResourceType | MCA | 资源实例的类型。 并非所有费用都来所部署的资源。 没有资源类型的费用将显示为 null/空、“其他”或“不适用”。
 ServiceFamily | MCA | 服务所属的服务系列。
 ServiceInfo1 | All | 服务特定的元数据。
 ServiceInfo2 | All | 旧字段，具有可选的特定于服务的元数据。

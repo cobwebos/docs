@@ -1,17 +1,17 @@
 ---
 title: 创建另外的 Azure 订阅
-description: 了解如何在 Azure 门户中添加新的 Azure 订阅。
+description: 了解如何在 Azure 门户中添加新的 Azure 订阅。 查看有关计费帐户形式以及其他可用资源的信息。
 author: amberbhargava
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: d6a8196816aaaa61458050334f605cb41afa16b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d27120f6bd0978b69d664ab3ab2e86bfee4f1755
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200840"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87460960"
 ---
 # <a name="create-an-additional-azure-subscription"></a>创建另外的 Azure 订阅
 
@@ -34,7 +34,7 @@ ms.locfileid: "77200840"
 ## <a name="create-a-subscription-in-the-azure-portal"></a>在 Azure 门户中创建订阅
 
 1. 登录 [Azure 门户](https://portal.azure.com)。
-1. 搜索“订阅”。 
+1. 搜索“订阅”。
 
    ![其中显示了在门户中搜索订阅的屏幕截图](./media/create-subscription/billing-search-subscription-portal.png)
 
@@ -44,7 +44,7 @@ ms.locfileid: "77200840"
 
 1. 如果有权访问多个计费帐户，请选择要为其创建订阅的计费帐户。
 
-1. 填充表单，并单击“创建”  。 下面的表列出了表单上每种计费帐户的字段。
+1. 填充表单，并单击“创建”。 下面的表列出了表单上每种计费帐户的字段。
 
 **企业协议**
 

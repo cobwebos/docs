@@ -1,18 +1,18 @@
 ---
 title: 了解 Azure 中企业的管理员角色
-description: 了解 Azure 中的企业管理员角色。
+description: 了解 Azure 中的企业管理员角色。 可以分配五个不同的管理角色。
 author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: banders
-ms.openlocfilehash: 2cd786304180369fee39c7b362f27a44728f3ad8
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 8a4705a68b0b96a8f95cc2356cda454fdef65054
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124334"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87531483"
 ---
 # <a name="managing-azure-enterprise-roles"></a>管理 Azure 企业角色
 
@@ -103,9 +103,9 @@ Azure EA 管理员创建部门后，Azure 企业管理员可以添加部门管�
 
 若要了解如何设置这些策略，请参阅[管理 Azure 账单信息的访问权限](manage-billing-access.md)。
 
-下表显示了企业协议管理角色之间的关系、视图费用策略、Azure 门户中基于角色的访问控制 (RBAC) 角色，以及在 Azure 门户中看到的定价。 企业管理员始终可以查看基于组织的 EA 定价的使用情况详细信息。 但是，部门管理员和帐户所有者看到的定价视图并不相同，具体取决于视图费用策略以及二者的 RBAC 角色。 下表中列出的部门管理员角色是指部门管理员角色和部门管理员（只读）角色。
+下表显示了企业协议管理角色之间的关系、视图费用策略、Azure 门户中的 Azure 角色，以及在 Azure 门户中看到的定价。 企业管理员始终可以查看基于组织的 EA 定价的使用情况详细信息。 但是，部门管理员和帐户所有者看到的定价视图并不相同，具体取决于视图费用策略以及二者的 Azure 角色。 下表中列出的部门管理员角色是指部门管理员角色和部门管理员（只读）角色。
 
-|企业协议管理员角色|角色的视图费用策略|RBAC 角色|定价视图|
+|企业协议管理员角色|角色的视图费用策略|Azure 角色|定价视图|
 |---|---|---|---|
 |帐户所有者或部门管理员|✔ 已启用|所有者|组织的 EA 定价|
 |帐户所有者或部门管理员|✘ 已禁用|所有者|零售定价|
@@ -113,7 +113,7 @@ Azure EA 管理员创建部门后，Azure 企业管理员可以添加部门管�
 |帐户所有者或部门管理员|✘ 已禁用 |none|无定价|
 |无|不适用 |所有者|零售定价|
 
-在企业门户中设置企业管理员角色和视图费用策略。 RBAC 角色可以在 Azure 门户中更新。 有关详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
+在企业门户中设置企业管理员角色和视图费用策略。 Azure 角色可以在 Azure 门户中更新。 有关详细信息，请参阅[使用 RBAC 和 Azure 门户管理访问权限](../../role-based-access-control/role-assignments-portal.md)。
 
 
 

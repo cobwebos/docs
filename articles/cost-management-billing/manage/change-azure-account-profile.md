@@ -6,15 +6,15 @@ ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 08/03/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 449f1e50bda2991db8eec15464a32d295a054c6f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cb7978dfa2c3ded2ae8e8c621bcb679f19620a2c
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286591"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87553472"
 ---
 # <a name="change-the-contact-information-for-your-azure-account"></a>更改 Azure 帐户的联系人信息
 
@@ -24,7 +24,7 @@ ms.locfileid: "87286591"
 
 帐单寄往地址 - 帐单寄往地址是负责处理为计费帐户生成的发票的组织或个人的地址以及联系信息。 Microsoft Online Service 计划 (MOSP) 的计费帐户会有一个帐单寄往地址，该地址显示在对该帐户生成的所有发票上。 对于 Microsoft 客户协议 (MCA) 的计费帐户，每个计费对象信息都有一个帐单寄往地址，并且该地址会显示在为计费对象信息生成的发票中。
 
-用于接收服务和市场营销电子邮件的联系人电子邮件地址 - 你可以指定一个不同于登录时所用的电子邮件地址来接收有关 Azure 帐户的重要计费、服务和推荐通知。  
+用于接收服务和市场营销电子邮件的联系人电子邮件地址 - 你可以指定一个不同于登录时所用的电子邮件地址来接收有关 Azure 帐户的重要计费、服务和推荐通知。 服务通知电子邮件（例如紧急安全问题、价格更改或对你的帐户正在使用的服务的中断性变更）始终会发送到你的登录地址。
 
 ## <a name="update-an-mosp-billing-account-address"></a>更新 MOSP 计费帐户地址
 

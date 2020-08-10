@@ -3,17 +3,17 @@ title: 面向合作伙伴的 Azure 成本管理入门
 description: 本文介绍合作伙伴如何使用 Azure 成本管理功能，以及如何为客户启用成本管理访问。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/28/2020
+ms.date: 08/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 25a64dd4d06c24b0f7e1f8433a1abf5f67fa6eba
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b5f00ee67803819b4d13cdc630bed3de26ac1be9
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372138"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563936"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>面向合作伙伴的 Azure 成本管理入门
 
@@ -140,7 +140,7 @@ Azure 成本管理要求对计费帐户或订阅拥有读取访问权限。
 
 将成本策略设置为“是”时，与客户租户关联的订阅用户可以查看按即用即付费率计算的使用费。
 
-启用成本可见性策略后，具有订阅用量的所有服务都会显示按即用即付费率计算的成本。 对于实际和摊销成本，预留用量会显示零费用。 购买项和权利不与特定的订阅相关联。 因此，不会在订阅范围显示购买项。
+启用成本可见性策略后，具有订阅用量的所有服务都会显示按即用即付费率计算的成本。 对于实际和摊销成本，预留用量会显示零费用。 购买项和权利不与特定的订阅相关联。 因此，不会在订阅范围显示购买项。 直接合作伙伴或间接提供商的全局管理员/管理员代理还可以使用[更新客户 API](/rest/api/billing/2019-10-01-preview/policies/updatecustomer)，以大规模设置每个客户的成本可见性策略。
 
 ### <a name="view-subscription-costs-in-the-customer-tenant"></a>查看客户租户中的订阅成本
 

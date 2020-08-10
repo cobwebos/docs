@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 3572cbb3f8c4a4f20c0141ac1fae5f0aa6fbd216
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a48e4b594b82f6e910db26fc2319032fbef30b6b
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044991"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446003"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建和管理 Azure 预算
 
@@ -40,7 +40,7 @@ ms.locfileid: "87044991"
 
 以下 Azure 帐户类型和范围都支持预算：
 
-- Azure 基于角色的访问控制范围
+- Azure 基于角色的访问控制 (Azure RBAC) 范围
     - 管理组
     - 订阅
 - 企业协议范围

@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Azure 蓝图文档
-summary: 通过将项目（例如 Azure 资源管理器模板、基于角色的访问控制和策略）打包到单个蓝图定义中来简化部署。
+summary: 通过将项目（例如 Azure 资源管理器模板、基于角色的访问控制 (Azure RBAC) 和策略）打包到单个蓝图定义中来简化部署。
 metadata:
   title: Azure 蓝图文档
-  description: 通过将项目（例如 Azure 资源管理器模板、基于角色的访问控制和策略）打包到单个蓝图定义中来简化部署。
+  description: 通过将项目（例如 Azure 资源管理器模板、基于角色的访问控制 (Azure RBAC) 和策略）打包到单个蓝图定义中来简化部署。
   ms.service: blueprints
   ms.topic: landing-page
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 06/29/2020
-  ms.openlocfilehash: 04c99d2428bd3c92187ce9383f51d38a9729d22a
-  ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+  ms.openlocfilehash: a0b800e12143cce428f0e5fcd26d9f9c0b690ee0
+  ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/06/2020
-  ms.locfileid: "85969373"
+  ms.lasthandoff: 08/07/2020
+  ms.locfileid: "88009539"
 landingContent:
 - title: 关于 Azure 蓝图
   linkLists:

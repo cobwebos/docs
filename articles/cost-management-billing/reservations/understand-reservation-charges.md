@@ -1,18 +1,18 @@
 ---
 title: 了解 Azure SQL 数据库的预留折扣 | Microsoft Docs
-description: 了解如何对运行中的 Azure SQL 数据库应用预留折扣。
+description: 了解如何对运行中的 Azure SQL 数据库应用预留折扣。 折扣按每小时应用到这些数据库中。
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 06/11/2020
 ms.author: banders
-ms.openlocfilehash: 736e046b5254de9aa18c898994d7df11efc98a9a
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 9398a68d384eb7acba15fb64e27d7a2672006bc6
+ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037981"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87461283"
 ---
 # <a name="how-a-reservation-discount-is-applied-to-azure-sql-database"></a>如何对 Azure SQL 数据库应用预留折扣
 

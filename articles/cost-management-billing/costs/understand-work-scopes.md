@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: ae6205db4e120f0496fa47be6788887b155361b0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: ecc442049ba63b64f951335940c312dc71985453
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86077152"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501519"
 ---
 # <a name="understand-and-work-with-scopes"></a>了解并使用范围
 
@@ -93,8 +93,8 @@ Azure 支持用于资源管理的三个范围。 每个范围支持管理访问�
 
 EA 计费范围支持以下角色：
 
-- **企业管理员** – 可以管理计费帐户设置和访问权限，可以查看所有成本，并可以管理成本配置。 例如预算和导出。 在功能方面，EA 计费范围与[成本管理参与者 Azure RBAC 角色](../../role-based-access-control/built-in-roles.md#cost-management-contributor)相同。
-- **企业只读用户** – 可以查看计费帐户设置、成本数据和成本配置。 例如预算和导出。 在功能方面，EA 计费范围与[成本管理读取者 Azure RBAC 角色](../../role-based-access-control/built-in-roles.md#cost-management-reader)相同。
+- **企业管理员** – 可以管理计费帐户设置和访问权限，可以查看所有成本，并可以管理成本配置。 例如预算和导出。 在功能方面，EA 计费范围与[成本管理参与者 Azure 角色](../../role-based-access-control/built-in-roles.md#cost-management-contributor)相同。
+- **企业只读用户** – 可以查看计费帐户设置、成本数据和成本配置。 例如预算和导出。 在功能方面，EA 计费范围与[成本管理读取者 Azure 角色](../../role-based-access-control/built-in-roles.md#cost-management-reader)相同。
 - **部门管理员** – 可以管理部门设置（例如成本中心），可以访问和查看所有成本，并可以管理成本配置。 例如预算和导出。  必须启用“DA 查看费用”计费帐户设置，才能让部门管理员和只读用户查看成本。 如果禁用了“DA 查看费用”，则即使部门用户是帐户或订阅所有者，他们也无法在任何级别查看成本。
 - **部门只读用户** – 可以查看部门设置、成本数据和成本配置。 例如预算和导出。 如果禁用了“DA 查看费用”，则即使部门用户是帐户或订阅所有者，他们也无法在任何级别查看成本。
 - **帐户所有者** – 可以管理注册帐户设置（例如成本中心）、查看所有成本，以及管理注册帐户的成本配置（例如预算和导出）。 必须启用“AO 查看费用”计费帐户设置，才能让帐户所有者和 RBAC 用户查看成本。
@@ -141,10 +141,10 @@ Microsoft 客户协议计费帐户具有以下范围：
 
 客户协议计费范围支持以下角色：
 
-- **所有者** – 可以管理计费设置和访问权限、查看所有成本，以及管理成本配置。 例如预算和导出。 在功能方面，此客户协议计费范围与[成本管理参与者 Azure RBAC 角色](../../role-based-access-control/built-in-roles.md#cost-management-contributor)相同。
-- **参与者** – 可以管理计费设置（访问权限除外）、查看所有成本，以及管理成本配置。 例如预算和导出。 在功能方面，此客户协议计费范围与[成本管理参与者 Azure RBAC 角色](../../role-based-access-control/built-in-roles.md#cost-management-contributor)相同。
-- **读取者** – 可以查看计费设置、成本数据和成本配置。 例如预算和导出。 在功能方面，此客户协议计费范围与[成本管理读取者 Azure RBAC 角色](../../role-based-access-control/built-in-roles.md#cost-management-reader)相同。
-- **发票管理者** – 可以查看和支付发票，并可以查看成本数据和配置。 例如预算和导出。 在功能方面，此客户协议计费范围与[成本管理读取者 Azure RBAC 角色](../../role-based-access-control/built-in-roles.md#cost-management-reader)相同。
+- **所有者** – 可以管理计费设置和访问权限、查看所有成本，以及管理成本配置。 例如预算和导出。 在功能方面，此客户协议计费范围与[成本管理参与者 Azure 角色](../../role-based-access-control/built-in-roles.md#cost-management-contributor)相同。
+- **参与者** – 可以管理计费设置（访问权限除外）、查看所有成本，以及管理成本配置。 例如预算和导出。 在功能方面，此客户协议计费范围与[成本管理参与者 Azure 角色](../../role-based-access-control/built-in-roles.md#cost-management-contributor)相同。
+- **读取者** – 可以查看计费设置、成本数据和成本配置。 例如预算和导出。 在功能方面，此客户协议计费范围与[成本管理读取者 Azure 角色](../../role-based-access-control/built-in-roles.md#cost-management-reader)相同。
+- **发票管理者** – 可以查看和支付发票，并可以查看成本数据和配置。 例如预算和导出。 在功能方面，此客户协议计费范围与[成本管理读取者 Azure 角色](../../role-based-access-control/built-in-roles.md#cost-management-reader)相同。
 - **Azure 订阅创建者** – 可以创建 Azure 订阅、查看成本和管理成本配置。 例如预算和导出。 在功能方面，此客户协议计费范围与 EA 注册帐户所有者角色相同。
 
 Azure 订阅嵌套在发票科目下，就如同嵌套在 EA 注册帐户下一样。 计费用户有权在其各自范围下访问订阅和资源组的成本数据。 但是，他们无权在 Azure 门户中查看或管理资源。 计费用户可以通过导航到 Azure 门户服务列表中的“成本管理 + 计费”来查看成本。 然后，按照需要报告的特定订阅和资源组筛选成本。
