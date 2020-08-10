@@ -1,6 +1,6 @@
 ---
 title: 流量覆盖率 |Microsoft Azure 映射
-description: 在本文中，你将了解 Microsoft Azure Maps 中的流量覆盖率。
+description: 了解 Azure Maps 中的流量覆盖率。 查看有关流量和事件的信息是否在世界各地的不同区域中可用。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/22/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 346cd13c021b70dac1501e5ca5a9e6930d407e6e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 51fdbda755b98b47b700f57bf990b5c5356854a9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129417"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037603"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps 交通覆盖区域
 

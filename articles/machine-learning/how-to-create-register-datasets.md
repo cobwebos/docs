@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 18eecdfeca58bc04c77dd0e39658a51fe56d0e68
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: b2252a70aea6df755bb8b37c36b77b08db819ba9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513088"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037535"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -25,17 +25,15 @@ ms.locfileid: "87513088"
 
 本文介绍如何创建 Azure 机器学习数据集，以访问本地或远程试验的数据。 若要了解在 Azure 机器学习总体数据访问工作流中的哪些位置使用数据集，请参阅[安全地访问数据](concept-data.md#data-workflow)一文。
 
-通过创建数据集，可以创建对数据源位置的引用及其元数据的副本。 由于数据仍保留在其现有位置，因此不会产生额外的存储成本，也不会带来数据源的完整性。 此外，还会对数据集进行延迟计算，从而有助于提高工作流性能。
+通过创建数据集，可以创建对数据源位置的引用及其元数据的副本。 由于数据仍保留在其现有位置，因此不会产生额外的存储成本，也不会带来数据源的完整性。 此外，还会对数据集进行延迟计算，从而有助于工作流性能速度。 可以从数据存储、公共 Url 和[Azure 开放式数据集](../open-datasets/how-to-create-dataset-from-open-dataset.md)创建数据集。
 
 使用 Azure 机器学习数据集可以：
 
 * 在存储中保留数据的单个副本，供数据集引用。
 
-* 在模型训练期间无缝访问数据，而无需考虑连接字符串或数据路径。
+* 无需担心连接字符串或数据路径即可在模型训练过程中无缝地访问数据。[详细了解如何对数据集进行训练](how-to-train-with-datasets.md)。
 
 * 与其他用户共享数据和展开协作。
-
-[详细了解如何使用数据集进行训练](how-to-train-with-datasets.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -47,8 +45,14 @@ ms.locfileid: "87513088"
 
 * [已安装适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)，其中包含 azureml-datasets 包。
 
+    * 创建一个[Azure 机器学习的计算实例](concept-compute-instance.md#managing-a-compute-instance)，该实例是一个完全配置且托管的开发环境，其中包括集成的笔记本和已安装的 SDK。
+
+    **OR**
+
+    * 使用你自己的 Jupyter 笔记本，并使用[这些说明](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)自行安装 SDK。
+
 > [!NOTE]
-> 某些数据集类依赖于[dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py)包，此包仅兼容64位 Python。 对于 Linux 用户，仅以下分发版支持这些类： Red Hat Enterprise Linux （7、8）、Ubuntu （14.04、16.04、18.04）、Fedora （27，28）、Debian （8、9）和 CentOS （7）。
+> 某些数据集类依赖于[dataprep](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py)包，此包仅兼容64位 Python。 对于 Linux 用户，仅在以下分发版上支持这些类： Red Hat Enterprise Linux (7、8) 、Ubuntu (14.04、16.04、18.04) 、Fedora (27、28) 、Debian (8、9) 和 CentOS (7) 。
 
 ## <a name="compute-size-guidance"></a>计算大小指南
 
@@ -159,7 +163,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-|编入|PassengerId|Survived|Pclass|名称|Sex|Age|SibSp|Parch|Ticket|Fare|Cabin|Embarked
+| (索引) |PassengerId|Survived|Pclass|名称|Sex|Age|SibSp|Parch|Ticket|Fare|Cabin|Embarked
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|False|3|Braund, Mr. Owen Harris|男|22.0|1|0|A/5 21171|7.2500||S
 1|2|True|1|Cumings, Mrs. John Bradley (Florence Briggs Th...|女|38.0|1|0|PC 17599|71.2833|C85|C
@@ -224,50 +228,15 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 1. 选择“下一步”，查看“确认详细信息”窗体。 检查所做的选择，为数据集创建可选的数据配置文件。 详细了解[数据分析](how-to-use-automated-ml-for-ml-models.md#profile)。 
 1. 选择“创建”以完成数据集的创建。
 
+## <a name="create-datasets-with-azure-open-datasets"></a>使用 Azure 开放数据集创建数据集
+
+[Azure 开放数据集](https://azure.microsoft.com/services/open-datasets/)是精选公共数据集，可用于将方案专属特征添加到机器学习解决方案，以提高模型的准确度。 数据集包括不受任何限制的天气、人口普查、节假日、公共安全和位置数据，有助于定型机器学习模型和扩充预测解决方案。 打开的数据集位于 Microsoft Azure 云中，同时包含在 SDK 和工作室中。
+
+了解如何[从 Azure 开放数据集创建 Azure 机器学习数据集](../open-datasets/how-to-create-dataset-from-open-dataset.md)。 
+
 ## <a name="train-with-datasets"></a>使用数据集进行训练
 
 在机器学习试验中使用您的数据集来训练 ML 模型。 [了解有关如何用数据集定型的详细信息](how-to-train-with-datasets.md)
-
-## <a name="create-datasets-with-azure-open-datasets"></a>使用 Azure 开放数据集创建数据集
-
-[Azure 开放数据集](https://azure.microsoft.com/services/open-datasets/)是精选公共数据集，可用于将方案专属特征添加到机器学习解决方案，以提高模型的准确度。 数据集包括不受任何限制的天气、人口普查、节假日、公共安全和位置数据，有助于定型机器学习模型和扩充预测解决方案。 开放数据集位于 Microsoft Azure 云中，并且会同时包含在 SDK 和工作区 UI 中。
-
-### <a name="use-the-sdk"></a>使用 SDK
-
-若要通过 SDK 使用 Azure 开放数据集创建数据集，请确保已使用 `pip install azureml-opendatasets` 安装相应的包。 每个离散数据集在 SDK 中由其自身的类表示，某些类作为 `TabularDataset` 和/或 `FileDataset` 提供。 有关完整的类列表，请参阅[参考文档](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)。
-
-可以检索 `TabularDataset` 或 `FileDataset` 形式的某些类，这样就可以直接操控和/或下载文件。 其他类可以使用 `get_tabular_dataset()` 或 `get_file_dataset()` 函数之一，**只**获取数据集。 以下代码示例演示了上述类类型的几个例子。
-
-```python
-from azureml.opendatasets import MNIST
-
-# MNIST class can return either TabularDataset or FileDataset
-tabular_dataset = MNIST.get_tabular_dataset()
-file_dataset = MNIST.get_file_dataset()
-
-from azureml.opendatasets import Diabetes
-
-# Diabetes class can return ONLY TabularDataset and must be called from the static function
-diabetes_tabular = Diabetes.get_tabular_dataset()
-```
-
-注册从开放数据集创建的数据集时，不会立即下载数据，但以后可按请求（例如，在训练期间）从某个中心存储位置访问数据。
-
-### <a name="use-the-ui"></a>使用 UI
-
-也可以通过 UI 从开放数据集类创建数据集。 在工作区中，选择“资产”下的“数据集”选项卡。  在“创建数据集”下拉菜单中，选择“从开放数据集”。 
-
-![UI 中的开放数据集](./media/how-to-create-register-datasets/open-datasets-1.png)
-
-选择数据集对应的磁贴将其选中。 （可以选择使用搜索栏进行筛选。）选择“**下一步**”。
-
-![选择数据集](./media/how-to-create-register-datasets/open-datasets-2.png)
-
-选择数据集的注册名称，并（可选）使用可用的筛选器筛选数据。 在本例中，对于公共节假日数据集，可按如下所述进行筛选：将时间段设置为一年，将国家/地区代码设置为仅限 US。 选择“创建” 。
-
-![设置数据集参数并创建数据集](./media/how-to-create-register-datasets/open-datasets-3.png)
-
-现在，该数据集已显示在工作区中的“数据集”下。 可以像使用创建的其他数据集一样来使用它。
 
 ## <a name="version-datasets"></a>对数据集进行版本控制
 

@@ -1,5 +1,5 @@
 ---
-title: Microsoft 商业应用商店中的 SaaS 履单 Api
+title: Microsoft 商用 marketplace 中的 SaaS 履单 Api
 description: 介绍实现 Api，使你能够在 Microsoft AppSource 和 Azure Marketplace 中集成 SaaS 产品。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d9413deb99ce938429d05f7c6348c5914e7dd2b1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e6381afb19018822f6f37171a5ca4b3d929b42e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304133"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037518"
 ---
-# <a name="saas-fulfillment-apis-in-microsoft-commercial-marketplace"></a>Microsoft 商业应用商店中的 SaaS 履单 Api
+# <a name="saas-fulfillment-apis-in-the-microsoft-commercial-marketplace"></a>Microsoft 商用 marketplace 中的 SaaS 履单 Api
 
-SaaS 履单 Api 允许发布者（也称为独立软件供应商（Isv））在 Microsoft AppSource、Azure Marketplace 和 Azure 门户中发布和销售其 SaaS 应用程序。 这些 Api 使 ISV 应用程序能够参与所有启用了商业功能的频道：直接、伙伴 led （经销商）和现场 led。  与这些 Api 集成是在合作伙伴中心创建和发布事务 SaaS 产品/服务的一项要求。
+SaaS 履单 Api 允许发布者（也称为独立软件供应商） (Isv) ，用于在 Microsoft AppSource、Azure Marketplace 和 Azure 门户中发布和销售其 SaaS 应用程序。 这些 Api 使 ISV 应用程序能够参与所有已启用商务的频道：直接、合作伙伴 led (经销商) 和现场 led。  与这些 Api 集成是在合作伙伴中心创建和发布事务 SaaS 产品/服务的一项要求。
 
 Isv 必须实现以下 API 流，方法是将添加到其 SaaS 服务代码，以便为 Isv 和 Microsoft 维护相同的订阅状态：
 
@@ -31,15 +31,15 @@ Isv 必须实现以下 API 流，方法是将添加到其 SaaS 服务代码，�
 与 SaaS 履单 Api 的正确集成对于确保
 
 * 购买发布者的 SaaS 产品/服务的最终客户将由 Microsoft 进行正确计费。
-* 最终客户将获得正确的用户体验，并使用和管理在 Marketplace 中购买的 SaaS 订阅。
+* 最终客户将获得正确的用户体验，并使用和管理在 marketplace 中购买的 SaaS 订阅。
 
 通过这些 Api，发布者的产品/服务可以参与所有启用了商务的频道：
 
 * 直通
-* 伙伴 led （经销商、CSP）
+*  (经销商、CSP) 的伙伴 led
 * 现场 led
 
-在经销商（CSP）方案中，CSP 代表最终客户购买 SaaS 产品/服务。 客户应使用 SaaS 产品/服务，但 CSP 是执行以下操作的实体：
+在经销商 (CSP) 情况下，CSP 会代表最终客户购买 SaaS 产品/服务。 客户应使用 SaaS 产品/服务，但 CSP 是执行以下操作的实体：
 
 * 向客户计费
 * 更改订阅计划/购买的座位数量

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure Maps 搜索服务搜索位置
-description: 在本文中，你将了解如何使用 Microsoft Azure 为地理编码、反向地理编码、模糊搜索和反向交叉街道搜索映射搜索 Api。
+description: 了解 Azure Maps 搜索服务。 请参阅如何将这组 Api 用于地理编码、反向地理编码、模糊搜索和反向交叉街道搜索。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/21/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 51ee2bb66adedc310f65b2d3b430023ae7767df6
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 48dd0168f878a16e2eabe47151d0b09993d9f5f9
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126585"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037773"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>使用 Azure Maps 搜索服务搜索位置
 
@@ -21,8 +21,8 @@ ms.locfileid: "87126585"
 
 本文介绍如何执行以下操作：
 
-* 使用[搜索地址 API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)请求地址（地理编码地址位置）的纬度和经度坐标。
-* 使用[模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)搜索地址或兴趣点（POI）。
+* 使用[搜索地址 API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)为地址 (地理编码 address location) 请求纬度和经度坐标。
+* 使用[模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) (POI) 搜索地址或兴趣点。
 * 进行[反向地址搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)，将坐标位置转换为街道地址。
 * 使用[搜索地址反向交叉街道 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)将坐标位置转换为可识别人工的交叉街道。  大多数情况下，这是跟踪从设备或资产接收 GPS 源的应用程序所必需的，并且希望知道坐标所在的位置。
 
@@ -33,7 +33,7 @@ ms.locfileid: "87126585"
 
 本教程使用 [Postman](https://www.postman.com/) 应用，但你也可以选择其他 API 开发环境。
 
-## <a name="request-latitude-and-longitude-for-an-address-geocoding"></a>请求地址的纬度和经度（地理编码）
+## <a name="request-latitude-and-longitude-for-an-address-geocoding"></a>请求地址的纬度和经度 (地理编码) 
 
 在此示例中，我们将使用 Azure Maps[获取搜索地址 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)将地址转换为纬度和经度坐标。 此过程也称为*地理编码*。 除了返回坐标外，响应还会返回详细的地址属性，例如街道、邮政编码、市政府和国家/地区信息。
 
@@ -64,7 +64,7 @@ ms.locfileid: "87126585"
 
 ## <a name="using-fuzzy-search-api"></a>使用模糊搜索 API
 
-Azure Maps[模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)支持标准单行和自由格式搜索。 如果不知道搜索请求的用户输入类型，建议使用 Azure Maps 搜索模糊 API。  查询输入可以是完整或部分地址。 它还可以是一个兴趣点（POI）令牌，如 POI、POI 类别或品牌名称。 而且，若要改善搜索结果的相关性，可以通过坐标位置和半径或通过定义边界框来约束查询结果。
+Azure Maps[模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)支持标准单行和自由格式搜索。 如果不知道搜索请求的用户输入类型，建议使用 Azure Maps 搜索模糊 API。  查询输入可以是完整或部分地址。 它还可以是 (POI) 令牌的兴趣点，如 POI、POI 类别或品牌名称。 而且，若要改善搜索结果的相关性，可以通过坐标位置和半径或通过定义边界框来约束查询结果。
 
 >[!TIP]
 >大多数搜索查询默认为 maxFuzzyLevel = 1，以获得性能并减少异常结果。 您可以使用或参数调整色阶级别 `maxFuzzyLevel` `minFuzzyLevel` 。 有关 `maxFuzzyLevel` 和所有可选参数的完整列表的详细信息，请参阅[模糊搜索 URI 参数](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy#uri-parameters)
@@ -89,7 +89,7 @@ Azure Maps[模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/get
 
 3. 单击“发送”并查看响应正文。****
 
-    "比萨饼" 的不明确查询字符串在 "比萨饼" 和 "餐馆" 类别中返回10个[兴趣点](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse)（POI）。 每个结果都包含 "街道地址"、"纬度" 和 "经度" 值、"查看端口" 和位置入口点等详细信息。 对于此查询，结果现在会变化，并且不会绑定到任何引用位置。
+    "比萨饼" 的明确查询字符串返回了10个[兴趣点](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse)， ("比萨饼" 和 "餐馆" 类别中的 POI) 。 每个结果都包含 "街道地址"、"纬度" 和 "经度" 值、"查看端口" 和位置入口点等详细信息。 对于此查询，结果现在会变化，并且不会绑定到任何引用位置。
   
     在下一步中，我们将使用 `countrySet` 参数来仅指定你的应用程序需要覆盖的国家/地区。 有关支持的国家/地区的完整列表，请参阅[搜索范围](https://docs.microsoft.com/azure/azure-maps/geocoding-coverage)。
 
@@ -110,7 +110,7 @@ Azure Maps[模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/get
     | radius | 400 |
     | limit | 5|
 
-6. 单击“发送”。 响应包括位于西雅图太空针附近的比萨饼餐厅的结果。
+6. 单击“Send”。 响应包括位于西雅图太空针附近的比萨饼餐厅的结果。
 
 ## <a name="search-for-a-street-address-using-reverse-address-search"></a>使用反向地址搜索搜索街道地址
 
@@ -138,10 +138,10 @@ Azure Maps[获取搜索地址反向 API]( https://docs.microsoft.com/rest/api/ma
 
     | 键 | 值 | 返回
     |-----|------------|------|
-    | 数字 | 1 |响应可能包含街道端（左/右）以及数字的偏移位置。|
-    | returnSpeedLimit | true | 返回地址的速度限制。|
-    | returnRoadUse | true | 返回地址使用的公路类型。 有关所有可能的公路使用类型，请参阅[公路使用类型](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)。|
-    | returnMatchType | true| 返回匹配的类型。 对于所有可能的值，请参阅[反向地址搜索结果](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult)
+    | number | 1 |响应可能包含街道两侧 (左/右) 以及数字的偏移位置。|
+    | returnSpeedLimit | 是 | 返回地址的速度限制。|
+    | returnRoadUse | 是 | 返回地址使用的公路类型。 有关所有可能的公路使用类型，请参阅[公路使用类型](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)。|
+    | returnMatchType | 是| 返回匹配的类型。 对于所有可能的值，请参阅[反向地址搜索结果](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult)
 
    :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="反向搜索。":::
 
@@ -151,7 +151,7 @@ Azure Maps[获取搜索地址反向 API]( https://docs.microsoft.com/rest/api/ma
 
     :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="搜索反向 entityType。":::
 
-7. 单击“发送”。 将结果与步骤5中返回的结果进行比较。  由于请求的实体类型现在为 `municipality` ，因此响应不包含街道地址信息。 此外，还 `geometryId` 可以使用返回的 Azure Maps 获取[搜索多边形 API](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)来请求边界多边形。
+7. 单击“Send”。 将结果与步骤5中返回的结果进行比较。  由于请求的实体类型现在为 `municipality` ，因此响应不包含街道地址信息。 此外，还 `geometryId` 可以使用返回的 Azure Maps 获取[搜索多边形 API](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)来请求边界多边形。
 
 >[!TIP]
 >若要获取有关这些参数的详细信息以及如何了解其他参数，请参阅 "[反向搜索参数" 部分](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters)。
