@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen2 中的访问控制概述 | Microsoft Docs
-description: 了解 Azure Data Lake Storage Gen2 中访问控制的工作原理
+description: 了解 Azure Data Lake Storage Gen2 中的访问控制的工作原理。 支持 azure RBAC) 和类似 POSIX 的 Acl 中的基于角色的访问控制 (。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 54867278b583124473b5b41c164714bf91f2f631
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9edf348c856de5c75c95d8a8f1957dcf73fc8ec1
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543293"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030480"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制
 
-Azure Data Lake Storage Gen2 实现一个支持 Azure 基于角色的访问控制（Azure RBAC）和类似 POSIX 的访问控制列表（Acl）的访问控制模型。 本文汇总了 Data Lake Storage Gen2 访问控制模型的基本知识。
+Azure Data Lake Storage Gen2 实现了一个访问控制模型，该模型支持 Azure RBAC) 和类似 POSIX 的访问控制列表 (Acl) 中使用 Azure 基于角色的访问 (控制。 本文汇总了 Data Lake Storage Gen2 访问控制模型的基本知识。
 
 <a id="azure-role-based-access-control-rbac"></a>
 

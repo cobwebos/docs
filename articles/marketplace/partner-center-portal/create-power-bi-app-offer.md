@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: c464e26419648d396b39718f357bcef7e4fa5552
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 4705919f9c6c11678984c016716fe38cb6191557
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800291"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030738"
 ---
 # <a name="create-a-power-bi-app-offer"></a>创建 Power BI 应用服务
 
@@ -143,7 +143,7 @@ ms.locfileid: "87800291"
 7. 隐私策略
 8. 产品名称
 9. 总结
-10. 描述
+10. 说明
 11. 屏幕截图/视频
 
 ### <a name="name"></a>名称
@@ -202,19 +202,20 @@ ms.locfileid: "87800291"
 
 提供要用于产品/服务的徽标和图像。 所有图像都必须为 PNG 格式。 模糊的图像将被拒绝。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!NOTE]
 >如果在上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 `https://upload.xboxlive.com` 服务。
 
 #### <a name="store-logos"></a>应用商店徽标
 
-为**大**徽标 (提供) 216 x 216 和 350 x 350 像素之间的 PNG 文件。 合作伙伴中心将使用此来创建) 大小徽标的**小型** (48 x 48 像素。 您可以选择将其替换为不同的图像。
-
-以下两种徽标大小都需要在列表中的不同位置使用：
-
+提供两个像素大小的产品/服务徽标的 PNG 文件：
 - 小 (48 x 48)
-- **大型** (216 x 216 和 350 x 350) 
+- 大图 (216 x 216)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+两种徽标都是必需的，并且在市场列表的不同位置上使用。
+
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
 #### <a name="screenshots"></a>屏幕截图
 

@@ -1,18 +1,18 @@
 ---
 title: 规划 Azure 文件同步部署 | Microsoft Docs
-description: 了解规划 Azure 文件部署时应考虑的问题。
+description: 使用 Azure 文件同步服务计划部署，该服务允许你在本地 Windows Server 或云 VM 上缓存多个 Azure 文件共享。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f09e84d20b1a3c568eea015d92b93a99b8cf024e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: acdf830c9bf0eaedcca5bf0ffe1b2bd373750276
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036788"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030651"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 
@@ -303,29 +303,29 @@ Azure 文件同步在以下区域中可用：
 
 | Azure 云 | 地理区域 | Azure 区域 | 区域代码 |
 |-------------|-------------------|--------------|-------------|
-| 公用 | 亚洲 | 东亚 | `eastasia` |
-| 公用 | 亚洲 | 东南亚 | `southeastasia` |
-| 公用 | 澳大利亚 | 澳大利亚东部 | `australiaeast` |
-| 公用 | 澳大利亚 | 澳大利亚东南部 | `australiasoutheast` |
-| 公用 | 巴西 | 巴西南部 | `brazilsouth` |
-| 公用 | Canada | 加拿大中部 | `canadacentral` |
-| 公用 | Canada | 加拿大东部 | `canadaeast` |
-| 公用 | 欧洲 | 北欧 | `northeurope` |
-| 公用 | 欧洲 | 西欧 | `westeurope` |
-| 公用 | 法国 | 法国中部 | `francecentral` |
-| 公用 | 法国 | 法国南部* | `francesouth` |
-| 公用 | 印度 | 印度中部 | `centralindia` |
-| 公用 | 印度 | 印度南部 | `southindia` |
-| 公用 | 日本 | 日本东部 | `japaneast` |
-| 公用 | 日本 | 日本西部 | `japanwest` |
-| 公用 | 韩国 | 韩国中部 | `koreacentral` |
-| 公用 | 韩国 | 韩国南部 | `koreasouth` |
-| 公用 | 南非 | 南非北部 | `southafricanorth` |
-| 公用 | 南非 | 南非西部* | `southafricawest` |
+| 公共 | 亚洲 | 东亚 | `eastasia` |
+| 公共 | 亚洲 | 东南亚 | `southeastasia` |
+| 公共 | 澳大利亚 | 澳大利亚东部 | `australiaeast` |
+| 公共 | 澳大利亚 | 澳大利亚东南部 | `australiasoutheast` |
+| 公共 | 巴西 | 巴西南部 | `brazilsouth` |
+| 公共 | Canada | 加拿大中部 | `canadacentral` |
+| 公共 | Canada | 加拿大东部 | `canadaeast` |
+| 公共 | 欧洲 | 北欧 | `northeurope` |
+| 公共 | 欧洲 | 西欧 | `westeurope` |
+| 公共 | 法国 | 法国中部 | `francecentral` |
+| 公共 | 法国 | 法国南部* | `francesouth` |
+| 公共 | 印度 | 印度中部 | `centralindia` |
+| 公共 | 印度 | 印度南部 | `southindia` |
+| 公共 | 日本 | 日本东部 | `japaneast` |
+| 公共 | 日本 | 日本西部 | `japanwest` |
+| 公共 | 韩国 | 韩国中部 | `koreacentral` |
+| 公共 | 韩国 | 韩国南部 | `koreasouth` |
+| 公共 | 南非 | 南非北部 | `southafricanorth` |
+| 公共 | 南非 | 南非西部* | `southafricawest` |
 | 公共 | 阿拉伯联合酋长国 | 阿联酋中部* | `uaecentral` |
-| 公用 | 阿拉伯联合酋长国 | 阿拉伯联合酋长国北部 | `uaenorth` |
-| 公用 | 英国 | 英国南部 | `uksouth` |
-| 公用 | 英国 | 英国西部 | `ukwest` |
+| 公共 | 阿拉伯联合酋长国 | 阿拉伯联合酋长国北部 | `uaenorth` |
+| 公共 | 英国 | 英国南部 | `uksouth` |
+| 公共 | 英国 | 英国西部 | `ukwest` |
 | 公共 | 美国 | 美国中部 | `centralus` |
 | 公共 | 美国 | 美国东部 | `eastus` |
 | 公共 | 美国 | 美国东部 2 | `eastus2` |
@@ -368,7 +368,7 @@ Microsoft 的内部防病毒解决方案 Windows Defender 和 System Center Endp
 > 防病毒供应商可以使用 [Azure 文件同步防病毒兼容性测试套件](https://www.microsoft.com/download/details.aspx?id=58322)（可从 Microsoft 下载中心下载）来检查其产品与 Azure 文件同步的兼容性。
 
 ## <a name="backup"></a>备份 
-如果启用了云分层，则不应使用直接备份服务器终结点的解决方案或服务器终结点所在的 VM。 云分层仅导致在服务器终结点上存储数据的一个子集，并将完整的数据集驻留在 Azure 文件共享中。 根据所使用的备份解决方案，将跳过或不备份分层文件（因为它们已设置了 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性），或将其撤回到磁盘，从而导致大量出口费用。 建议使用云备份解决方案直接备份 Azure 文件共享。 有关详细信息，请参阅[关于 azure 文件共享备份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)或与备份提供商联系，查看他们是否支持备份 Azure 文件共享。
+如果启用了云分层，则不应使用直接备份服务器终结点的解决方案或服务器终结点所在的 VM。 云分层仅导致在服务器终结点上存储数据的一个子集，并将完整的数据集驻留在 Azure 文件共享中。 根据所使用的备份解决方案，将跳过或不备份分层文件 (因为它们 FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS 属性集) ，或者它们将被召回到磁盘，导致大量出口费用。 建议使用云备份解决方案直接备份 Azure 文件共享。 有关详细信息，请参阅[关于 azure 文件共享备份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)或与备份提供商联系，查看他们是否支持备份 Azure 文件共享。
 
 如果希望使用本地备份解决方案，则应在禁用云分层的同步组中的服务器上执行备份。 执行还原时，使用卷级别或文件级还原选项。 使用文件级别还原选项还原的文件将同步到同步组中的所有终结点，现有文件将被替换为从备份还原的版本。  卷级别的还原不会替换 Azure 文件共享或其他服务器终结点中较新的文件版本。
 

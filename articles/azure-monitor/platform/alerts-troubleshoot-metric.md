@@ -4,14 +4,14 @@ description: Azure Monitor 指标警报的常见问题和可能的解决方案�
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 07/21/2020
+ms.date: 08/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 3e691e3f32404af792c852636a257659b629eef4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 5ea28a7a4669fd000800bf62b7b940abefcf7551
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824556"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030956"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>排查 Azure Monitor 指标警报的问题 
 
@@ -129,6 +129,15 @@ ms.locfileid: "87824556"
               ]
         }
 ```
+
+## <a name="export-the-arm-template-of-a-metric-alert-rule-via-the-azure-portal"></a>通过 Azure 门户导出指标警报规则的 ARM 模板
+
+导出指标警报规则的 ARM 模板可帮助你了解其 JSON 语法和属性，并可用于自动执行未来的部署。
+1. 导航到门户中的 "**资源组**" 部分，并选择包含该规则的资源组。
+2. 在 "概述" 部分中，选中 "**显示隐藏的类型**" 复选框。
+3. 在**类型**筛选器中，选择 " *metricalerts*"。
+4. 选择相关的警报规则以查看其详细信息。
+5. 在“设置”下，选择“导出模板”。 
 
 ## <a name="metric-alert-rules-quota-too-small"></a>指标警报规则配额太小
 

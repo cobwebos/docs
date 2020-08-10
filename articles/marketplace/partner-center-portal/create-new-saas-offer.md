@@ -3,18 +3,18 @@ title: 创建 SaaS 产品/服务、Azure Marketplace 和 Microsoft AppSource
 description: 如何使用 Microsoft 合作伙伴中心的 Microsoft 商业市场计划，在 Microsoft AppSource、Azure Marketplace 或通过云解决方案提供商 (CSP) 程序中创建软件即服务 (SaaS) 产品/服务。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 07/22/2020
+ms.topic: how-to
+ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 2b12eb88f0297c44fabb62e40d315517f3d3b954
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 7fbb50308f14acbcec98c562fe72763341538df2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800330"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031024"
 ---
-# <a name="create-a-saas-offer"></a>创建 SaaS 产品/服务
+# <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>在商业应用商店中创建 SaaS 产品/服务
 
 若要开始在商业市场中创建软件即服务 (SaaS) 产品/服务，请确保先[创建合作伙伴中心帐户](./create-account.md)，然后打开[商业市场仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)，并选择“概述”选项卡。
 
@@ -83,7 +83,7 @@ ms.locfileid: "87800330"
 
 SaaS 产品/服务支持根据固定费用、每位用户按月或按年计费，或使用按流量计费服务收取使用费。 Microsoft 商业市场基于代理模型运行，即发布者设定价格、Microsoft 向客户收费以及 Microsoft 向发布者支付收入并预扣代理费。
 
-这是成本和付款的一个示例细分，用来演示机构模型 (任何列出的价格仅用于举例目的，而不用于反映实际成本) ：
+这是成本和付款的示例细分，用来演示机构模型 (任何列出的价格，例如仅用于反映实际成本) ：
 
 |**许可证费用**|**$100 美元/月**|
 |:---|:---|
@@ -279,19 +279,21 @@ Microsoft 提供标准协定模板。
   - **工程联系人**（必需）- 用于技术问题。
   - **渠道经理联系人**（必需）- 用于与 CSP 计划相关的经销商问题。
 
-#### <a name="files-and-images"></a>文件和图像
+#### <a name="files-and-images"></a>文件和映像
 
 -  (必需) 的**文档**–为产品/服务添加相关营销文档（PDF 格式），其中至少有一个和多达三个文档。
--  (所需) 的**映像**–在) 的所有 (marketplace 中，产品/服务的徽标图像可能出现在多个位置。 为**大**徽标 (提供) 216 x 216 和 350 x 350 像素之间的 PNG 文件。 合作伙伴中心将使用此来创建一个**小型** (48 x 48 像素) 和一个**中等** (90 x 90 像素) 大小徽标。 您可以选择将它们替换为不同的图像。 添加**宽**徽标是可选的。
+- **图像**–以 PNG 格式上传徽标图像：
 
-    要在列表中的不同位置使用，需要三种徽标大小;一个是可选的：
+  - **小写** (48 x 48 像素，必需) 
+  - **中型** (90 x 90 像素，必需) 
+  - **大** (216 x 216 像素，必需) 
+  - **宽** (255 x 115 像素)  (可选) 
 
-    - 小图 (48 x 48)
-    - 中图 (90 x 90)
-    - **大型** (216 x 216 和 350 x 350) 
-    - **宽** (255 x 115) ，*可选*
+   这三种徽标尺寸用于商店中的不同位置：
 
-    [!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+   -   小徽标 (48 x 48 像素) 出现在 Azure Marketplace 搜索结果和 Microsoft AppSource 主页和 "搜索结果" 页上。 
+   -   当你在 Microsoft Azure 中创建新资源时，将显示中等徽标 (90 x 90 像素) 。
+   -   ) 在 Azure Marketplace 和 Microsoft AppSource 的产品/服务列表页上， (216 x 216 和 350 x 350 像素之间的大徽标。
 
 - **屏幕截图** (所需) –添加最多五个屏幕截图，其中演示了产品/服务，大小为 1280 x 720 像素。 所有图像都必须为 .PNG 格式。
 - **视频**（可选）- 添加演示产品/服务的视频的链接。 可以使用 YouTube 和/或 Vimeo 视频链接，这将随产品/服务一起呈现给客户。 还需要以 PNG 格式输入视频的缩略图，大小为 1280 x 720 像素。 每个产品/服务最多可以显示四个视频。

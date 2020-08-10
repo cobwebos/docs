@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 08/07/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e47b8727eccd1b185f381ae3f8474fe13a406501
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: fb90390814af39b240c9a157f490ee9390afeb8f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843804"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030497"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>管理 Azure Cosmos DB 的用于 MongoDB 的 API 中的索引编制
 
@@ -40,7 +40,7 @@ Azure Cosmos DB 的用于 MongoDB 服务器版本 3.6 的 API 会自动为无法
 
 ### <a name="compound-indexes-mongodb-server-version-36"></a>复合索引（MongoDB 服务器版本 3.6）
 
-Azure Cosmos DB 的用于 MongoDB 的 API 对使用版本 3.6 Wire Protocol 的帐户支持复合索引。 一个复合索引中最多可以包含 8 个字段。 与在 MongoDB 中不同，仅当查询需要一次对多个字段进行高效排序时，才应创建复合索引。 对于包含多个不需要排序的筛选器的查询，请创建多个单字段索引，而不是创建单个复合索引。
+Azure Cosmos DB 的用于 MongoDB 的 API 对使用版本 3.6 Wire Protocol 的帐户支持复合索引。 一个复合索引中最多可以包含 8 个字段。 **与在 MongoDB 中不同，仅当查询需要一次对多个字段进行高效排序时，才应创建复合索引。** 对于包含多个不需要排序的筛选器的查询，请创建多个单字段索引，而不是创建单个复合索引。
 
 以下命令对字段 `name` 和 `age` 创建复合索引：
 
@@ -57,6 +57,9 @@ Azure Cosmos DB 的用于 MongoDB 的 API 对使用版本 3.6 Wire Protocol 的�
 但是，复合索引中的路径顺序必须与查询完全匹配。 下面是一个需要其他复合索引的查询示例：
 
 `db.coll.find().sort({age:1,name:1})`
+
+> [!NOTE]
+> 不能对嵌套的属性或数组创建复合索引。
 
 ### <a name="multikey-indexes"></a>多键索引
 

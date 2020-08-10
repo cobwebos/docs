@@ -1,6 +1,6 @@
 ---
 title: 路由覆盖范围 |Microsoft Azure 映射
-description: 在本文中，你将了解 Microsoft Azure 地图的路由覆盖区域。
+description: 了解在不同区域中提供哪一级别的覆盖 Azure Maps 面，以便进行路由、路由和卡车路由。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 04/04/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: d581380bed3cb0cbc50a0b763a1dc7fe7ee1d04e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 160e8182a2de56b494e8f37bbedf4a8cec66c608
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129519"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030888"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps 路由覆盖区域
 
@@ -60,7 +60,7 @@ ms.locfileid: "87129519"
 | 莱索托                        |        Ø        |         ✓            |             |
 | 马拉维                         |        ✓       |                       |              |
 | 马里                           |        ✓       |                       |             |
-| 毛里塔尼亚                     |        ✓       |                       |             |
+| 毛利塔尼亚                     |        ✓       |                       |             |
 | 毛里求斯、马约特岛和留尼汪岛 |        ✓      |                       |             |
 | 摩洛哥                        |        ✓       |                       |             |
 | 莫桑比克                     |        ✓       |         ✓            |             |
@@ -95,7 +95,7 @@ ms.locfileid: "87129519"
 | 哥伦比亚                       |        ✓       |         ✓            |             |
 | 哥斯达黎加                     |        ✓       |                      |             |
 | 古巴                           |        ✓       |                      |             |
-| 多米尼加                       |        ✓       |                      |             |
+| 多米尼克                       |        ✓       |                      |             |
 | 多米尼加共和国             |        ✓       |                      |             |
 | 厄瓜多尔                        |        ✓       |                      |             |
 | 萨尔瓦多                    |        ✓       |                      |             |
@@ -180,12 +180,12 @@ ms.locfileid: "87129519"
 | 格鲁吉亚                        |        ✓       |                      |             |
 | 德国                        |        ✓       |         ✓            |     ✓      | 
 | 希腊                         |        ✓       |         ✓            |     ✓      |  
-| 格恩西岛                       |        ✓       |                      |             |
+| 根西岛                       |        ✓       |                      |             |
 | 匈牙利                        |        ✓       |         ✓            |     ✓      | 
 | 冰岛                        |        ✓       |         ✓            |             |
 | 爱尔兰                        |        ✓       |         ✓            |     ✓      | 
 | 意大利                          |        ✓       |         ✓            |     ✓      | 
-| 泽西                         |        ✓       |                      |             |
+| 泽西岛                         |        ✓       |                      |             |
 | 拉脱维亚                         |        ✓       |         ✓            |     ✓      | 
 | 列支敦士登                  |        ✓       |         ✓            |             |
 | 立陶宛                      |        ✓       |         ✓            |     ✓      | 
@@ -223,7 +223,7 @@ ms.locfileid: "87129519"
 | + 蒙特塞拉特岛                    |        ✓       |                      |             |
 | + 特克斯和凯科斯群岛      |        ✓       |                      |             |
 | 梵蒂冈                   |        ✓       |         ✓            |             |
-| 曼岛                    |        ✓       |                      |             |
+| 马恩岛                    |        ✓       |                      |             |
 
 
 ## <a name="middle-east"></a>中东

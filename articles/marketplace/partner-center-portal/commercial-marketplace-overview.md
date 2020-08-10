@@ -1,22 +1,22 @@
 ---
-title: 合作伙伴中心内的商业市场门户概述
-description: 详细了解合作伙伴中心中的商业市场门户，以及如何通过 Azure 市场、AppSource 和云解决方案提供商 (CSP) 计划列出和销售产品/服务。
+title: 合作伙伴中心的商用 marketplace 门户概述
+description: 详细了解合作伙伴中心的 Microsoft 商用 marketplace 门户，以及如何在 Azure Marketplace、AppSource 上列出和销售产品/服务，并通过云解决方案提供商 (CSP) 计划。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 05/19/2020
-ms.openlocfilehash: 8f827d3e983a50589975eca59808bd1471fe4810
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4c91e6396171511fa3b11b0295504f0ca0d75d15
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87047591"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030855"
 ---
-# <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>合作伙伴中心内的商业市场门户概述
+# <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>合作伙伴中心的商用 marketplace 门户概述
 
-欢迎使用合作伙伴中心内的商业市场门户。 [商业市场门户](https://partner.microsoft.com/dashboard/commercial-marketplace/)可帮助你从产品和服务中获得收益，接触客户并发展业务。
+欢迎使用合作伙伴中心的商业应用商店门户。 [商业市场门户](https://partner.microsoft.com/dashboard/commercial-marketplace/)可帮助你从产品和服务中获得收益，接触客户并发展业务。
 
 这些文章介绍了创建和使用合作伙伴中心帐户的基础知识。 其中包括如何创建可以在 [Azure 市场](https://azuremarketplace.microsoft.com/)或 [AppSource](https://appsource.microsoft.com/) 上列出的新产品/服务，如何管理从云合作伙伴门户迁移的现有产品/服务，以及如何提供有助于解决问题和收集反馈的资源。
 
@@ -28,7 +28,7 @@ ms.locfileid: "87047591"
 
 ## <a name="migration-from-the-cloud-partner-portal"></a>从云合作伙伴门户迁移
 
-合作伙伴中心在不断发展，以便在我们与软件提供商之间的关系的各个方面进行更好的整合。 作为此演化的一部分，我们已将所有商用 marketplace 产品/服务管理从云合作伙伴门户（CPP）迁移到合作伙伴中心。
+合作伙伴中心在不断发展，以便在我们与软件提供商之间的关系的各个方面进行更好的整合。 作为此演化的一部分，我们已将所有商用 marketplace 产品/服务管理从云合作伙伴门户 (CPP) 迁移到合作伙伴中心。
 
 以前使用了 CPP 的现有发布者将发现使用合作伙伴中心的熟悉但更直观的用户体验。 系统会将用户流畅地引导到适当的位置。 此合作伙伴体验升级不会影响客户。
 

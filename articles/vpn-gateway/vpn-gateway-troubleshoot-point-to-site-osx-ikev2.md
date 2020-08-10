@@ -1,18 +1,18 @@
 ---
 title: Azure VPN 网关：排查点到站点连接问题：Mac OS X 客户端
-description: 排查 Mac OS X 的点到站点连接问题。请检查以下设置：服务器地址、远程 ID、本地 ID、身份验证设置和操作系统版本。
+description: 了解如何使用本机 VPN 客户端和 IKEv2 从 Mac OS X 排查点到站点连接问题。
 services: vpn-gateway
 author: kumudD
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: ae7ca9ad69bc5bea20fc959f86e41439bd01cd5c
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 58250980081388b78ebb32fb01b84beb8d86c1c2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920749"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030653"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>对 Mac OS X VPN 客户端的点到站点 VPN 连接进行故障排除
 
