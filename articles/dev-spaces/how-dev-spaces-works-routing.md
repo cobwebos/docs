@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: 描述 power Azure Dev Spaces 的进程以及路由的工作原理
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: 8677284d61a0a08a3262c26d6307399922dab4be
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19a55f37725464da73e93877d9c5238f3ebaced1
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86512463"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077659"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>路由如何处理 Azure Dev Spaces
 
@@ -49,7 +49,7 @@ Dev 空间构建在 AKS 之上，并使用相同的[网络概念](../aks/concept
 
 ## <a name="sharing-a-dev-space"></a>共享开发人员空间
 
-与团队合作时，可以在[整个团队中共享一个开发人员空间](how-to/share-dev-spaces.md)，并创建派生的开发人员空间。 具有参与者访问该开发人员空间资源组的任何人都可以使用 dev 空间。
+与团队合作时，可以在整个团队中共享一个开发人员空间，并创建派生的开发人员空间。 具有参与者访问该开发人员空间资源组的任何人都可以使用 dev 空间。
 
 你还可以创建派生自另一个开发人员空间的新开发人员空间。 创建派生的开发人员空间时， *azds.io/parent-space=PARENT-SPACE-NAME*标签将添加到派生开发人员空间的命名空间中。 此外，父 dev 空间中的所有应用程序都与派生的开发人员空间共享。 如果将应用程序的更新版本部署到派生的开发人员空间，则该应用程序将仅存在于派生的开发人员空间中，并且父开发人员空间不受影响。 最多可以有三个级别的派生开发人员空间或*祖父*空间。
 

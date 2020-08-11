@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 5d5348f8abe8d30c7f23882974b8c121af39636c
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: cdbce7c11bc3184b624fa00f3ac33db7ad8730d8
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448147"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077420"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>将应用服务或 Azure Functions 应用配置为使用 Azure AD 登录
 
@@ -35,7 +35,7 @@ ms.locfileid: "87448147"
 > [!NOTE]
 > “快速”选项不适用于政府云。
 
-1. 在 [Azure 门户]中搜索并选择“应用服务”，然后选择应用。
+1. 在 [Azure 门户]中，搜索并选择“应用服务”，然后选择你的应用。
 2. 在左侧导航栏中，依次选择“身份验证/授权” > “开”。
 3. 依次选择“Azure Active Directory” > “快速”。
 
@@ -73,10 +73,10 @@ ms.locfileid: "87448147"
 执行以下步骤：
 
 1. 登录到 [Azure 门户]，搜索并选择“应用服务”，然后选择应用。 记下应用的 URL。 稍后要使用此 URL 来配置 Azure Active Directory 应用注册。
-1. 依次选择“Azure Active Directory” > “应用注册” > “新建注册”。
+1. 选择“Azure Active Directory” > “应用注册” > “新建注册”。  
 1. 在“注册应用”页上的“名称”中，输入应用注册的名称。
-1. 在“重定向 URI”中，选择“Web”并键入 `<app-url>/.auth/login/aad/callback`。 例如 `https://contoso.azurewebsites.net/.auth/login/aad/callback`。
-1. 选择“创建”  。
+1. 在“重定向 URI”中，选择“Web”并键入 `<app-url>/.auth/login/aad/callback`。 例如，`https://contoso.azurewebsites.net/.auth/login/aad/callback`。
+1. 选择“创建”。
 1. 在应用注册创建后，复制“应用(客户端) ID”和“目录(租户) ID”，以供稍后使用。
 1. 选择“身份验证”。 在“隐式授权”下，启用“ID 令牌”以允许 OpenID Connect 用户从应用服务登录。
 1. （可选）选择“品牌”。 在“主页 URL”中，输入应用服务应用的 URL，然后选择“保存”。
@@ -85,10 +85,10 @@ ms.locfileid: "87448147"
    > [!NOTE]
    > 此值是应用注册的应用 ID URI。 如果 Web 应用需要访问云中的 API，则在配置云应用服务资源时，需要提供该 Web 应用的“应用程序 ID URI”。 例如，如果你希望云服务显式向该 Web 应用授予访问权限，则可以使用此 URI。
 
-1. 选择“添加范围”。
+1. 选择“添加范围”。 
    1. 在“范围名称”中输入 *user_impersonation*。
    1. 在文本框中，输入许可范围名称，以及希望在许可页上向用户显示的说明。 例如，输入“访问我的应用”。
-   1. 选择“添加范围”。
+   1. 选择“添加作用域”。
 1. （可选）若要创建客户端机密，请选择“证书和机密” > “新建客户端机密” > “添加”。   复制页面中显示的客户端机密值。 它不会再次显示。
 1. （可选）若要添加多个回复 URL，请选择“身份验证”。
 
@@ -103,7 +103,7 @@ ms.locfileid: "87448147"
     |字段|说明|
     |-|-|
     |客户端 ID| 使用应用注册的应用（客户端）ID。 |
-    |颁发者 URL| 使用 `<authentication-endpoint>/<tenant-id>/v2.0` ，并将替换为 *\<authentication-endpoint>* [你的云环境的身份验证终结点](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints)（例如，" https://login.microsoft.com " （适用于全球 Azure），同时将替换 *\<tenant-id>* 为在其中创建了应用注册的**目录（租户） ID** 。 例如，此值用于将用户重定向到相应的 Azure AD 租户，以及下载适当的元数据，以便确定相应的令牌签名密钥和令牌颁发者声明值。 对于使用 Azure AD v1 和 Azure Functions 应用的应用程序，请 `/v2.0` 在 URL 中省略。|
+    |颁发者 URL| 使用 `<authentication-endpoint>/<tenant-id>/v2.0` ，将替换为 *\<authentication-endpoint>* 你的[云环境的身份验证终结点](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (例如，"" （ https://login.microsoft.com 适用于全局 Azure) ），同时将替换 *\<tenant-id>* 为在其中创建了应用注册的**目录 (租户) ID** 。 例如，此值用于将用户重定向到相应的 Azure AD 租户，以及下载适当的元数据，以便确定相应的令牌签名密钥和令牌颁发者声明值。 对于使用 Azure AD v1 和 Azure Functions 应用的应用程序，请 `/v2.0` 在 URL 中省略。|
     |客户端密码（可选）| 使用在应用注册中生成的客户端机密。|
     |允许的令牌受众| 如果这是云应用或服务器应用，并且你希望允许使用 Web 应用中的身份验证令牌，请在此处添加 Web 应用的应用 ID URI。 系统始终会将配置的“客户端 ID”隐式视为允许的受众。 |
 
@@ -121,7 +121,7 @@ ms.locfileid: "87448147"
 
     > [!NOTE]
     > 对于Microsoft Store 应用程序，请改用[包 SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) 作为 URI。
-1. 选择“创建”  。
+1. 选择“创建”。
 1. 创建应用注册后，复制“应用程序(客户端) ID”的值。
 1. 选择“API 权限” > “添加权限” > “我的 API”。  
 1. 选择前面为应用服务应用创建的应用注册。 如果未看到该应用注册，请确保在[在 Azure AD 中为应用服务应用创建应用注册](#register)部分已添加 **user_impersonation** 范围。
@@ -157,7 +157,7 @@ ms.locfileid: "87448147"
 ## <a name="next-steps"></a><a name="related-content"> </a>后续步骤
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
-* [教程：在 Azure 应用服务中对用户进行端到端身份验证和授权](app-service-web-tutorial-auth-aad.md)
+* [教程：在 Azure 应用服务中对用户进行端到端身份验证和授权](tutorial-auth-aad.md)
 <!-- URLs. -->
 
 [Azure 门户]: https://portal.azure.com/

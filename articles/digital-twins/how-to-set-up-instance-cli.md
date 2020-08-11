@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 50a7fe866d236a7edb30b3cae5ef076d3ebbca56
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 3c7e4887610f30113b81421396500416d04c5e5e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009709"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078472"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>设置 Azure 数字孪生实例和 (CLI 的身份验证) 
 
@@ -63,10 +63,10 @@ az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-res
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-使用以下命令分配角色 (必须由在 Azure 订阅中具有[足够权限](#prerequisites-permission-requirements)的用户运行) ：
+使用以下命令分配角色 (必须由在 Azure 订阅) 中具有[足够权限](#prerequisites-permission-requirements)的用户运行。 命令要求用户在应分配角色的用户的 Azure AD 帐户上传递*用户主体名称*。 在大多数情况下，这将与 Azure AD 帐户上的用户电子邮件匹配。
 
 ```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-email-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
 此命令的结果将输出有关已创建的角色分配的信息。
@@ -74,13 +74,13 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 > [!NOTE]
 > 如果此命令返回一个错误，指出 CLI**在 graph 数据库中找不到用户或服务主体**：
 >
-> 使用用户的*对象 ID* ，而不是其电子邮件。 对于个人 Microsoft 帐户 (的用户，可能会发生这种情况， [msa) ](https://account.microsoft.com/account)。 
+> 改为使用用户的*对象 ID*分配角色。 对于个人 Microsoft 帐户 (的用户，可能会发生这种情况， [msa) ](https://account.microsoft.com/account)。 
 >
 > 使用[Azure Active Directory 用户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)的 "Azure 门户" 页选择用户帐户并打开其详细信息。 复制用户的*ObjectID*：
 >
 > :::image type="content" source="media/includes/user-id.png" alt-text="Azure 门户突出显示 "对象 ID" 字段中的 GUID 的用户页面视图" lightbox="media/includes/user-id.png":::
 >
-> 然后，使用用户的*对象 ID*和电子邮件重复角色分配列表命令。
+> 然后，使用上面参数的用户*对象 ID*重复角色分配列表命令 `assignee` 。
 
 ### <a name="verify-success"></a>验证是否成功
 

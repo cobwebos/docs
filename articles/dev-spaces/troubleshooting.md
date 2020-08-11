@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解如何排查和解决在启用和使用 Azure Dev Spaces 时遇到的常见问题
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 1efaa178c2abda316cfad3e375dfdd38b41d75e0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7696cc8eaeef9ba5e2e0955bad6f17d28e95b5e5
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835691"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077027"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 故障排除
 
@@ -284,7 +284,7 @@ Service cannot be started.
 
 在安装了[托管标识](../aks/use-managed-identity.md)和[pod 托管标识](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities)的 AKS 群集上运行带有 Azure Dev Spaces 的服务时，该进程可能会在*图表安装*步骤后停止响应。 如果在 azds 命名空间中检查 azds-injector-webhook，可能会看到此错误。
 
-Azure Dev Spaces 在群集上运行的服务利用群集的托管标识与群集外的 Azure Dev Spaces 后端服务进行通信。 在 Pod 托管标识安装后，会在群集的节点上配置网络规则，以将托管标识凭据的所有调用重定向到[群集上安装的节点托管标识 (NMI) DaemonSet](https://github.com/Azure/aad-pod-identity#node-managed-identity)。 此 NMI DaemonSet 对调用 Pod 进行标识，并确保 Pod 已被正确标记来访问请求获取的托管标识。 Azure Dev Spaces 无法检测群集是否安装了 Pod 托管标识，也无法执行必要的配置来允许 Azure Dev Spaces 服务访问群集的托管标识。 由于 Azure Dev Spaces 服务尚未配置为访问群集的托管标识，因此 NMI DaemonSet 将不允许它们获取托管标识的 AAD 令牌，并且无法与 Azure Dev Spaces 后端服务进行通信。
+Azure Dev Spaces 在群集上运行的服务利用群集的托管标识与群集外的 Azure Dev Spaces 后端服务进行通信。 在 Pod 托管标识安装后，会在群集的节点上配置网络规则，以将托管标识凭据的所有调用重定向到[群集上安装的节点托管标识 (NMI) DaemonSet](https://github.com/Azure/aad-pod-identity#node-managed-identity)。 此 NMI DaemonSet 对调用 Pod 进行标识，并确保 Pod 已被正确标记来访问请求获取的托管标识。 Azure Dev Spaces 无法检测群集是否安装了 Pod 托管标识，也无法执行必要的配置来允许 Azure Dev Spaces 服务访问群集的托管标识。 由于尚未将 Azure Dev Spaces 服务配置为访问群集的托管标识，因此，NMI DaemonSet 将不允许它们获取托管标识的 Azure AD 令牌，并且无法与 Azure Dev Spaces 后端服务进行通信。
 
 若要修复此问题，请为 azds-injector-webhook 应用 [AzurePodIdentityException](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md)，并更新由 Azure Dev Spaces 检测的 Pod 来访问托管标识。
 
@@ -416,7 +416,7 @@ spec:
 
 在运行 Visual Studio Code 调试程序时，可能会看到此错误。 可能未在开发计算机上安装适用于 Azure Dev Spaces 的 VS Code 扩展。
 
-若要修复此问题，请安装[适用于 Azure Dev Spaces 的 VS Code 扩展](get-started-netcore.md)。
+若要修复此问题，请安装适用于 Azure Dev Spaces 的 VS Code 扩展。
 
 ### <a name="error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>错误“'cwd' 值 '/src' 无效。 系统找不到指定的文件。” 或者“launch: program‘/src/[项目二进制文件的路径]’不存在”
 

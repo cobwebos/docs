@@ -4,12 +4,12 @@ description: 了解如何针对不同情况自定义应用服务中的身份验�
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: 32b7db234cd91aaf9fa5fcfa9b35679d32561474
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: d69a75092f4ede5d5467357a7ac254be6e7c379b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042609"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078387"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure 应用服务中的身份验证和授权的高级用法
 
@@ -17,8 +17,7 @@ ms.locfileid: "88042609"
 
 若要快速入门，请参阅以下教程之一：
 
-* [教程：在 Azure 应用服务 (Windows) 中对用户进行端到端身份验证和授权](app-service-web-tutorial-auth-aad.md)
-* [教程：在适用于 Linux 的 Azure 应用服务中对用户进行端到端身份验证和授权](containers/tutorial-auth-aad.md)
+* [教程：在 Azure 应用服务中对用户进行端到端身份验证和授权](tutorial-auth-aad.md)
 * [How to configure your app to use Azure Active Directory login](configure-authentication-provider-aad.md)
 * [如何将应用配置为使用 Facebook 登录](configure-authentication-provider-facebook.md)
 * [如何将应用配置为使用 Google 登录](configure-authentication-provider-google.md)
@@ -533,5 +532,4 @@ az webapp auth update --name <my_app_name> \
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：对用户进行端到端 (Windows) ](app-service-web-tutorial-auth-aad.md) 
->  身份验证和授权[教程：对用户进行端到端 (Linux) 身份验证和授权](containers/tutorial-auth-aad.md)
+> [教程：对用户进行端到端身份验证和授权](tutorial-auth-aad.md)

@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: seo-javascript-september2019, devx-track-javascript
-ms.openlocfilehash: 950d85f391504095ceaaa10996145ca832b6db19
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 56099a7d350a29db5a57708bc87b7174cfdb3b29
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432733"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079273"
 ---
 # <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>通过 Node.js 使用 Azure 队列服务创建和删除队列
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "87432733"
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
-创建一个空的 Node.js 应用程序。 有关创建 Node.js 应用程序的说明，请参阅[在 Azure 应用服务中创建 Node.js Web 应用](../../app-service/app-service-web-get-started-nodejs.md)、[使用 Windows PowerShell 生成 Node.js 应用程序并将其部署到 Azure 云服务](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)或 [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)。
+创建一个空的 Node.js 应用程序。 有关创建 Node.js 应用程序的说明，请参阅[在 Azure 应用服务中创建 Node.js Web 应用](../../app-service/quickstart-nodejs.md)、[使用 Windows PowerShell 生成 Node.js 应用程序并将其部署到 Azure 云服务](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)或 [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial)。
 
 ## <a name="configure-your-application-to-access-storage"></a>配置应用程序以访问存储
 若要使用 Azure 存储，需要 Azure Storage SDK for Node.js，其中包括一组便于与存储 REST 服务进行通信的库。
@@ -341,7 +341,7 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 
 [Azure Portal]: https://portal.azure.com
 
-[在 Azure 应用服务中创建 Node.js Web 应用](../../app-service/app-service-web-get-started-nodejs.md)
+[在 Azure 应用服务中创建 Node.js Web 应用](../../app-service/quickstart-nodejs.md)
 
 [生成 Node.js 应用程序并将其部署到 Azure 云服务](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)
 

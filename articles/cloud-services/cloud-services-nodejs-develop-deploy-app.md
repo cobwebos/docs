@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/17/2017
 ms.author: tagore
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 33006463ed826d1efe32f8beee361eb211e9d709
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 489025d9cfdd6f1bdbc950e2bd1e7e4d835a4fff
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386548"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079203"
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>生成 Node.js 应用程序并将其部署到 Azure 云服务
 
@@ -178,7 +178,7 @@ Publish-AzureServiceProject -ServiceName $ServiceName  -Location "East US" -Laun
 <!-- URL List -->
 
 [Azure 网站、云服务和虚拟机的比较]: /azure/architecture/guide/technology-choices/compute-decision-tree
-[使用轻型 Web 应用]: ../app-service/app-service-web-get-started-nodejs.md
+[使用轻型 Web 应用]: ../app-service/quickstart-nodejs.md
 [Azure PowerShell]: /powershell/azure/
 [用于 .NET 2.7 的 Azure SDK]: https://www.microsoft.com/en-us/download/details.aspx?id=48178
 [将 PowerShell 连接]: /powershell/azure/

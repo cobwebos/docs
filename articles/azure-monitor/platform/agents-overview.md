@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/14/2020
-ms.openlocfilehash: c6aea3be5782c967c5816a1e40dc5443306671b3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/05/2020
+ms.openlocfilehash: e6a4c7fe739bd517646f8401e5c812a557441e9f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445285"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88076891"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor 代理概述
 
@@ -29,22 +29,37 @@ ms.locfileid: "87445285"
 
 ### <a name="windows-agents"></a>Windows 代理
 
-| | 诊断<br>扩展 (WAD) | Log Analytics<br>代理 | 依赖项<br>代理 |
-|:---|:---|:---|:---|
-| **支持的环境** | Azure | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 | 
-| **代理要求**  | 无 | 无 | 需要 Log Analytics 代理 |
-| **收集的数据** | 事件日志<br>ETW 事件<br>性能<br>基于文件的日志<br>IIS 日志<br>.NET 应用日志<br>故障转储<br>代理诊断日志 | 事件日志<br>性能<IIS logs><br>基于文件的日志<br>见解和解决方案<br>其他服务 | 进程详细信息和依赖项<br>网络连接指标 |
-| **数据发送目标** | Azure 存储<br>Azure Monitor 指标<br>事件中心 | Azure Monitor 日志 | Azure Monitor 日志 |
+| | Azure Monitor 代理 (预览版)  | 诊断<br>扩展 (WAD) | Log Analytics<br>代理 | 依赖项<br>代理 |
+|:---|:---|:---|:---|:---|
+| **支持的环境** | Azure<br>其他云<br>本地 | Azure | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 | 
+| **代理要求**  | None | None | 无 | 需要 Log Analytics 代理 |
+| **收集的数据** | 事件日志<br>性能 | 事件日志<br>ETW 事件<br>性能<br>基于文件的日志<br>IIS 日志<br>.NET 应用日志<br>故障转储<br>代理诊断日志 | 事件日志<br>性能<IIS logs><br>基于文件的日志<br>见解和解决方案<br>其他服务 | 进程详细信息和依赖项<br>网络连接指标 |
+| **数据发送目标** | Azure Monitor 日志<br>Azure Monitor 指标<br>Azure 存储<br>事件中心 | Azure 存储<br>Azure Monitor 指标<br>事件中心 | Azure Monitor 日志 | Azure Monitor 日志 |
 
 
 ### <a name="linux-agents"></a>Linux 代理
 
-| | 诊断<br>扩展 (LAD) | Telegraf<br>代理 | Log Analytics<br>代理 | 依赖项<br>代理 |
-|:---|:---|:---|:---|:---|
-| **支持的环境** | Azure | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 |
-| **代理要求**  | 无 | 无 | 无 | 需要 Log Analytics 代理 |
-| **收集的数据** | Syslog<br>性能 | 性能 | Syslog<br>性能| 进程详细信息和依赖项<br>网络连接指标 |
-| **数据发送目标** | Azure 存储<br>事件中心 | Azure Monitor 指标 | Azure Monitor 日志 | Azure Monitor 日志 |
+| | Azure Monitor 代理 (预览版)  | 诊断<br>扩展 (LAD) | Telegraf<br>代理 | Log Analytics<br>代理 | 依赖项<br>代理 |
+|:---|:---|:---|:---|:---|:---|
+| **支持的环境** | Azure | Azure | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 | Azure<br>其他云<br>本地 |
+| **代理要求**  | None | None | None | 无 | 需要 Log Analytics 代理 |
+| **收集的数据** | Syslog<br>性能 | Syslog<br>性能 | 性能 | Syslog<br>性能| 进程详细信息和依赖项<br>网络连接指标 |
+| **数据发送目标** | Azure Monitor 日志<br>Azure 存储<br>Azure Monitor 指标<br>事件中心 | Azure 存储<br>事件中心 | Azure Monitor 指标 | Azure Monitor 日志 | Azure Monitor 日志 |
+
+## <a name="azure-monitor-agent-preview"></a>Azure Monitor 代理 (预览版) 
+[Azure Monitor 代理](azure-monitor-agent-overview.md)目前处于预览阶段，将替换 Windows 和 Linux 虚拟机的 Log Analytics 代理、诊断扩展和 Telegraf 代理。 它可以将数据发送到 Azure Monitor 日志和 Azure Monitor 指标，并使用[数据收集规则 (DCR) ](data-collection-rule-overview.md) ，这为每个代理提供了一种配置数据收集和目标的更具伸缩性的方法。
+
+如果需要，请使用 Azure Monitor 代理：
+
+- 从 Azure 中的任何虚拟机、其他云中或本地收集来宾日志和指标。 仅在预览版中 (Azure。 ) 
+- 通过 Azure Monitor 将数据发送到 Azure Monitor 日志和 Azure Monitor 指标进行分析。 
+- 将数据发送到 Azure 存储以进行存档。
+- 使用 [Azure 事件中心](diagnostics-extension-stream-event-hubs.md)将数据发送到第三方工具。
+- 使用[Azure 安全中心](../../security-center/security-center-intro.md)或[azure Sentinel](../../sentinel/overview.md)管理虚拟机的安全性。 预览中 (不可用。 ) 
+
+Azure Monitor 代理的限制包括：
+
+- 目前以公共预览版提供。 有关公共预览版中的限制列表，请参阅[当前限制](azure-monitor-agent-overview.md#current-limitations)。
 
 ## <a name="log-analytics-agent"></a>Log Analytics 代理
 

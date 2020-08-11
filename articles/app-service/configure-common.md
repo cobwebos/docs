@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4ebb33333dc59432fd269c4847abdeab91d935c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9371b39bd37ba2514256a3b2fa90812f45c7ce5e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389763"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077367"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>在 Azure 门户中配置应用服务应用
 
@@ -21,7 +21,7 @@ ms.locfileid: "85389763"
 
 在应用服务中，应用设置是作为环境变量传递给应用程序代码的变量。 对于 Linux 应用和自定义容器，应用服务使用标志将应用设置传递到容器， `--env` 以便在容器中设置环境变量。
 
-在 [Azure 门户]中，搜索并选择“应用服务”，然后选择你的应用。 
+在 [Azure 门户]中搜索并选择“应用服务”  ，然后选择应用。 
 
 ![搜索应用服务](./media/configure-common/search-for-app-services.png)
 
@@ -33,13 +33,13 @@ ms.locfileid: "85389763"
 
 同样，在运行时将应用设置作为环境变量获取。 有关特定语言堆栈的步骤，请参阅：
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
-- [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
-- [PHP](containers/configure-language-php.md#access-environment-variables)
-- [Python](containers/how-to-configure-python.md#access-environment-variables)
-- [Java](containers/configure-language-java.md#data-sources)
-- [Ruby](containers/configure-language-ruby.md#access-environment-variables)
-- [自定义容器](containers/configure-custom-container.md#configure-environment-variables)
+- [ASP.NET Core](configure-language-dotnetcore.md#access-environment-variables)
+- [Node.js](configure-language-nodejs.md#access-environment-variables)
+- [PHP](configure-language-php.md#access-environment-variables)
+- [Python](configure-language-python.md#access-environment-variables)
+- [Java](configure-language-java.md#data-sources)
+- [Ruby](configure-language-ruby.md#access-environment-variables)
+- [自定义容器](configure-custom-container.md#configure-environment-variables)
 
 应用程序设置在存储时始终进行加密（静态加密）。
 
@@ -59,7 +59,7 @@ ms.locfileid: "85389763"
 完成后，单击“更新”。  别忘了返回“配置”页并单击“保存”。  
 
 > [!NOTE]
-> 在默认的 Linux 容器或自定义 Linux 容器中，应用设置名称中的任何嵌套 JSON 密钥结构都 `ApplicationInsights:InstrumentationKey` 需要在应用服务中配置为 `ApplicationInsights__InstrumentationKey` 密钥名称。 换句话说，any `:` 应该替换为 `__` （双下划线）。
+> 在默认的 Linux 容器或自定义 Linux 容器中，应用设置名称中的任何嵌套 JSON 密钥结构都 `ApplicationInsights:InstrumentationKey` 需要在应用服务中配置为 `ApplicationInsights__InstrumentationKey` 密钥名称。 换句话说，任何一个 `:` 都应该替换为 `__` (双下划线) 。
 >
 
 ### <a name="edit-in-bulk"></a>批量编辑
@@ -86,7 +86,7 @@ ms.locfileid: "85389763"
 
 ## <a name="configure-connection-strings"></a>配置连接字符串
 
-在 [Azure 门户]中，搜索并选择“应用服务”，然后选择你的应用。 在应用的左侧菜单中，选择“配置” > “应用程序设置”。  
+在 [Azure 门户]中搜索并选择“应用服务”  ，然后选择应用。 在应用的左侧菜单中，选择“配置” > “应用程序设置”。  
 
 ![应用程序设置](./media/configure-common/open-ui.png)
 
@@ -104,13 +104,13 @@ ms.locfileid: "85389763"
 
 例如，可以使用环境变量 `MYSQLCONNSTR_connectionString1` 的形式访问名为 *connectionstring1* 的 MySql 连接字符串。 有关特定语言堆栈的步骤，请参阅：
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md#access-environment-variables)
-- [Node.js](containers/configure-language-nodejs.md#access-environment-variables)
-- [PHP](containers/configure-language-php.md#access-environment-variables)
-- [Python](containers/how-to-configure-python.md#access-environment-variables)
-- [Java](containers/configure-language-java.md#data-sources)
-- [Ruby](containers/configure-language-ruby.md#access-environment-variables)
-- [自定义容器](containers/configure-custom-container.md#configure-environment-variables)
+- [ASP.NET Core](configure-language-dotnetcore.md#access-environment-variables)
+- [Node.js](configure-language-nodejs.md#access-environment-variables)
+- [PHP](configure-language-php.md#access-environment-variables)
+- [Python](configure-language-python.md#access-environment-variables)
+- [Java](configure-language-java.md#data-sources)
+- [Ruby](configure-language-ruby.md#access-environment-variables)
+- [自定义容器](configure-custom-container.md#configure-environment-variables)
 
 连接字符串在存储时始终进行加密（静态加密）。
 
@@ -176,14 +176,14 @@ ms.locfileid: "85389763"
     > [!NOTE]
     > 大多数新型浏览器仅支持通过 TLS 的 HTTP/2 协议，而非加密流量继续使用 HTTP/1.1。 若要确保客户端浏览器通过 HTTP/2 连接到应用程序，请保护自定义 DNS 名称。 有关详细信息，请参阅[在 Azure App Service 中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
     - **ARR 相关性**：在多实例部署中，请确保在会话的整个生存期内，将客户端路由到同一实例。 对于无状态应用程序，请将此选项设置为“关闭”。 
-- **调试**：启用[ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)、 [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)或[Node.js](containers/configure-language-nodejs.md#debug-remotely)应用的远程调试。 此选项在 48 小时后会自动关闭。
+- **调试**：启用[ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)、 [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)或[Node.js](configure-language-nodejs.md#debug-remotely)应用的远程调试。 此选项在 48 小时后会自动关闭。
 - **传入的客户端证书**：要求在[相互身份验证](app-service-web-configure-tls-mutual-auth.md)中使用客户端证书。
 
 ## <a name="configure-default-documents"></a>配置默认文档
 
 此设置仅适用于 Windows 应用。
 
-在 [Azure 门户]中，搜索并选择“应用服务”，然后选择你的应用。 在应用的左侧菜单中，选择“配置” > “默认文档”。  
+在 [Azure 门户]中搜索并选择“应用服务”  ，然后选择应用。 在应用的左侧菜单中，选择“配置” > “默认文档”。  
 
 ![默认文档](./media/configure-common/open-documents.png)
 
@@ -215,7 +215,7 @@ ms.locfileid: "85389763"
 
 ### <a name="containerized-apps"></a>容器化应用
 
-你可以[为容器化应用添加自定义存储](containers/how-to-serve-content-from-azure-storage.md)。 容器化应用包括所有 Linux 应用，还包括在应用服务上运行的 Windows 和 Linux 自定义容器。 单击 "**新建 Azure 存储**"，并按如下所示配置自定义存储：
+你可以[为容器化应用添加自定义存储](configure-connect-to-azure-storage.md)。 容器化应用包括所有 Linux 应用，还包括在应用服务上运行的 Windows 和 Linux 自定义容器。 单击 "**新建 Azure 存储**"，并按如下所示配置自定义存储：
 
 - **名称**：显示名称。
 - **配置选项**：**基本**或**高级**。
@@ -228,22 +228,22 @@ ms.locfileid: "85389763"
 - **访问密钥**：对于高级配置，为 "访问密钥"。
 - **装载路径**：容器中用于装载自定义存储的绝对路径。
 
-有关详细信息，请参阅[从 Linux 上的应用服务中的 Azure 存储提供内容](containers/how-to-serve-content-from-azure-storage.md)。
+有关详细信息，请参阅[从应用服务中的容器访问 Azure 存储为网络共享](configure-connect-to-azure-storage.md)。
 
 ## <a name="configure-language-stack-settings"></a>配置语言堆栈设置
 
 对于 Linux 应用，请参阅：
 
-- [ASP.NET Core](containers/configure-language-dotnetcore.md)
-- [Node.js](containers/configure-language-nodejs.md)
-- [PHP](containers/configure-language-php.md)
-- [Python](containers/how-to-configure-python.md)
-- [Java](containers/configure-language-java.md)
-- [Ruby](containers/configure-language-ruby.md)
+- [ASP.NET Core](configure-language-dotnetcore.md)
+- [Node.js](configure-language-nodejs.md)
+- [PHP](configure-language-php.md)
+- [Python](configure-language-python.md)
+- [Java](configure-language-java.md)
+- [Ruby](configure-language-ruby.md)
 
 ## <a name="configure-custom-containers"></a>配置自定义容器
 
-请参阅[为 Azure App Service 配置自定义 Linux 容器](containers/configure-custom-container.md)
+请参阅[为 Azure App Service 配置自定义 Linux 容器](configure-custom-container.md)
 
 ## <a name="next-steps"></a>后续步骤
 

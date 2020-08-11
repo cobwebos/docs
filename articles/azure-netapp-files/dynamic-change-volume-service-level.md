@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/06/2020
 ms.author: b-juche
-ms.openlocfilehash: e974fb51ac36083e6ed8934afaa7a3e36ab8c08e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e5d7f30f26be999ae43ce13aa31fc5393d049529
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923860"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078948"
 ---
 # <a name="dynamically-change-the-service-level-of-a-volume"></a>动态更改卷的服务级别
 
@@ -48,7 +48,7 @@ ms.locfileid: "87923860"
 2. 检查功能注册的状态： 
 
     > [!NOTE]
-    > 在将更改为之前， **RegistrationState**可能处于 `Registering` 状态几分钟 `Registered` 。 等到状态**注册**后再继续。
+    > 在**RegistrationState**将 `Registering` 更改为之前，RegistrationState 的状态可能最长为60分钟 `Registered` 。 等到状态**注册**后再继续。
 
     ```azurepowershell-interactive
     Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFTierChange

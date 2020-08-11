@@ -4,12 +4,12 @@ description: 汇总了使用 Azure Site Recovery 将 Azure VM 灾难恢复到次
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 09b7fe1cc4f871d1f94844a8551479fabc0e22ff
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c8890afcdab1b6247fe072f2e34437d790185e58
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008842"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88076919"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>在 Azure 区域之间进行 Azure VM 灾难恢复的支持矩阵
 
@@ -163,7 +163,9 @@ SUSE Linux Enterprise Server 15 和 15 SP1 | 9.32 | 默认情况下，支持所�
 
 * 文件系统：ext3、ext4、XFS、BTRFS
 * 卷管理器：LVM2
-* 多路径软件：设备映射器
+
+> [!NOTE]
+> 不支持多路径软件。 
 
 
 ## <a name="replicated-machines---compute-settings"></a>复制的计算机 - 计算设置

@@ -10,21 +10,21 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/10/2020
+ms.date: 8/11/2020
 ms.author: yohaddad
-ms.openlocfilehash: e14295842413464ed9faced59c8bb897f192a511
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: a8755c593f4009d4cacc3d411eb1bc1cb8ddc50d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067012"
+ms.locfileid: "88079152"
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
 
 ## <a name="july-2020-guest-os"></a>2020年7月来宾 OS
 >[!NOTE]
->目前，我们正在将 7 月来宾 OS 推广到配置为自动更新的云服务 VM。 推出完成后，此版本将可通过 Azure 门户和配置文件进行手动更新。 4 月来宾 OS 中包含以下修补程序。 此列表可能随时变动。
+>目前，我们正在将 7 月来宾 OS 推广到配置为自动更新的云服务 VM。 推出完成后，此版本将可通过 Azure 门户和配置文件进行手动更新。 7 月来宾 OS 中包含以下修补程序。 此列表可能随时变动。
 
 
 | 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |

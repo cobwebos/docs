@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
-ms.openlocfilehash: 7e78a8dfdf902c4c2548e0521a79d67716987791
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6c1bbe48ca5205cf1db49d67a711e9a7523e1845
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85832077"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077112"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>将 Node.js 模块与 Azure 应用程序一起使用
 本文档提供有关将 Node.js 模块与托管在 Azure 中的应用程序一起使用的指南。 其中提供有关确保应用程序使用特定版本的模块以及对 Azure 使用本机模块的指南。
@@ -85,7 +85,7 @@ package.json 文件的一个潜在问题是它仅指定顶级依赖项的版本�
 >
 
 ## <a name="next-steps"></a>后续步骤
-了解如何将 Node.js 模块与 Azure 一起使用后，请学习如何[指定 Node.js 版本](https://github.com/squillace/nodejs-microservice)、[生成和部署 Node.js Web 应用](app-service/app-service-web-get-started-nodejs.md)，以及[如何使用适用于 Mac 和 Linux 的 Azure 命令行接口](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/)。
+了解如何将 Node.js 模块与 Azure 一起使用后，请学习如何[指定 Node.js 版本](https://github.com/squillace/nodejs-microservice)、[生成和部署 Node.js Web 应用](app-service/quickstart-nodejs.md)，以及[如何使用适用于 Mac 和 Linux 的 Azure 命令行接口](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/)。
 
 有关详细信息，请参阅 [Node.js 开发人员中心](/azure/developer/javascript/)。
 

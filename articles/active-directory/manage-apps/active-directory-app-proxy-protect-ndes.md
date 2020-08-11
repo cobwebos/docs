@@ -13,23 +13,23 @@ ms.topic: how-to
 ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
-ms.openlocfilehash: 0798b7674828b14a37f20921e05820d995bff6a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a385a339122197b7055ef6f54b8e37edea8eae4a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84760790"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078931"
 ---
-# <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>与网络设备注册服务（NDES）服务器上的 Azure AD 应用程序代理集成
+# <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>与网络设备注册服务上 Azure AD 应用程序代理集成 (NDES) 服务器
 
-Azure Active Directory （AD）应用程序代理可让你在网络内发布应用程序。 这些应用程序包括 SharePoint 站点、Microsoft Outlook Web App 和其他 Web 应用程序。 它还通过 Azure 对网络外部的用户提供安全访问。
+Azure Active Directory (AD) 应用程序代理可让你在网络内发布应用程序。 这些应用程序包括 SharePoint 站点、Microsoft Outlook Web App 和其他 Web 应用程序。 它还通过 Azure 对网络外部的用户提供安全访问。
 
 如果你不熟悉 Azure AD 应用程序代理并想要了解详细信息，请参阅[通过 Azure AD 应用程序代理远程访问本地应用程序](application-proxy.md)。
 
-Azure AD 应用程序代理是在 Azure 上构建的。 它为您提供了大量的网络带宽和服务器基础结构，以便更好地防范分布式拒绝服务（DDOS）攻击和卓越的可用性。 而且，无需向本地网络开放外部防火墙端口，也不需要任何外围服务器。 所有流量均源自入站。 有关出站端口的完整列表，请参阅[教程：在 Azure Active Directory 中通过应用程序代理添加用于远程访问的本地应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)。
+Azure AD 应用程序代理是在 Azure 上构建的。 它为您提供了大量的网络带宽和服务器基础结构，以便更好地防范分布式拒绝服务 (DDOS) 攻击和卓越的可用性。 而且，无需向本地网络开放外部防火墙端口，也不需要任何外围服务器。 所有流量均源自入站。 有关出站端口的完整列表，请参阅[教程：在 Azure Active Directory 中通过应用程序代理添加用于远程访问的本地应用程序](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)。
 
 > Azure AD 应用程序代理是一项仅当你使用 Azure Active Directory 的高级版或基本版时才可用的功能。 有关详细信息，请参阅 [Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)。 
-> 如果你有企业移动性套件（EMS）许可证，则可以使用此解决方案。
+> 如果你有企业移动性套件 (EMS) 许可证，则可以使用此解决方案。
 > Azure AD 应用程序代理连接器仅安装在 Windows Server 2012 R2 或更高版本上。 这也是 NDES 服务器的要求。
 
 ## <a name="install-and-register-the-connector-on-the-ndes-server"></a>在 NDES 服务器上安装并注册连接器
@@ -76,7 +76,7 @@ Azure AD 应用程序代理是在 Azure 上构建的。 它为您提供了大量
 
    * **名称**：输入应用程序的名称。
    * **内部 url**：输入在其上安装连接器的 NDES 服务器的内部 URL/FQDN。
-   * **预身份验证**：选择 "**传递**"。 不能使用任何形式的预身份验证。 用于证书请求（SCEP）的协议不提供此类选项。
+   * **预身份验证**：选择 "**传递**"。 不能使用任何形式的预身份验证。 用于 (SCEP) 证书请求的协议不提供此类选项。
    * 将提供的**外部 URL**复制到剪贴板。
 
 1. 选择 " **+ 添加**" 以保存应用程序。
@@ -89,10 +89,10 @@ Azure AD 应用程序代理是在 Azure 上构建的。 它为您提供了大量
 
 1. 应会看到**HTTP 错误 403-禁止**响应。
 
-1. 将提供的 NDES URL （通过 Microsoft Intune）更改为设备，此更改可能在 Microsoft 终结点配置中心或 Intune 云中。
+1. 将通过 Microsoft Intune)  (提供的 NDES URL 更改为 "设备"。 此更改可能在 Microsoft 终结点 Configuration Manager 或 Microsoft 终结点管理器管理中心。
 
-   * 对于 "配置中心"，请前往证书注册点（CRP）并调整 URL。 此 URL 是设备向其提供并提出其挑战的内容。
-   * 仅适用于 Intune 云（也称为 Intune 独立版），可以编辑或创建新的 SCEP 策略并添加新的 URL。
+   * 对于 "Configuration Manager"，请前往证书注册点并调整 URL。 此 URL 是设备向其提供并提出其挑战的内容。
+   * 对于 Intune 独立版，可以编辑或创建新的 SCEP 策略并添加新的 URL。
 
 ## <a name="next-steps"></a>后续步骤
 
