@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 5dc0a7fc9797948e834b8b3cb802bb92fce0eb59
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: 79f7924b021de9426eeb66adf2ec12f8033efcea
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85610755"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056850"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
@@ -37,7 +37,7 @@ ms.locfileid: "85610755"
 
 ### <a name="voice-assistants"></a>语音助手
 
-使用语音 SDK 的[语音助手](voice-assistants.md)使开发人员可以为其应用程序和体验创建自然、人为的对话接口。 语音助手服务在设备和助手之间提供快速、可靠的交互。 实现使用机器人框架的直接连线语音通道或集成自定义命令（预览版）服务来完成任务。 此外，语音助手可以使用在[自定义语音门户](https://aka.ms/customvoice)中创建的自定义语音来添加独特的语音输出体验。
+使用语音 SDK 的[语音助手](voice-assistants.md)使开发人员可以为其应用程序和体验创建自然、人为的对话接口。 语音助手服务在设备和助手之间提供快速、可靠的交互。 实现使用 Bot 框架的直接线路语音通道或集成自定义命令 (预览) 服务完成任务。 此外，语音助手可以使用在[自定义语音门户](https://aka.ms/customvoice)中创建的自定义语音来添加独特的语音输出体验。
 
 #### <a name="keyword-spotting"></a>关键字发现
 
@@ -49,7 +49,7 @@ ms.locfileid: "85610755"
 
 #### <a name="conversation-transcription"></a>对话听录
 
-[会话](conversation-transcription.md)脚本为每个扬声器（也称为*diarization*）启用实时（和异步）语音识别、发言人识别和句子归属。 它非常适合用于听录能够区分说话人的面对面会谈场景。
+[对话](conversation-transcription.md)脚本为每个扬声器 (实时 (和异步) 语音识别、发言人识别和句子归属，也称为*diarization*) 。 它非常适合用于听录能够区分说话人的面对面会谈场景。
 
 #### <a name="multi-device-conversation"></a>多设备对话
 
@@ -61,7 +61,7 @@ ms.locfileid: "85610755"
 
 #### <a name="call-center-transcription"></a>呼叫中心听录
 
-[呼叫中心](call-center-transcription.md)脚本是一种常见的语音到文本转录，适用于来自各种系统（如互动语音响应（IVR））的大量电话服务数据。 来自语音服务 excel 的最新语音识别模型转录此电话数据，即使在数据难以理解的情况下也是如此。
+[呼叫中心](call-center-transcription.md)脚本是一种常见的语音到文本转录，适用于来自各种系统（如交互式语音响应 (IVR) 的大量电话服务数据。 语音服务的最新语音识别模型非常擅长听录这些电话数据，即使是人类也难以识别的数据。
 
 ### <a name="codec-compressed-audio-input"></a>编解码器压缩的音频输入
 
@@ -125,5 +125,5 @@ ms.locfileid: "85610755"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
+* [创建免费 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)
 * [了解如何在 C# 中识别语音](quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

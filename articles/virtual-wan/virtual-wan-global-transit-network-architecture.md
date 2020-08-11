@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 78656b4789ea03601bc12579c391292e2f9ead9a
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: c0ab2b2f61c4aa7a83d82b0300bb28cae91992d2
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856365"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056884"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>全局传输网络体系结构和虚拟 WAN
 
@@ -63,7 +63,7 @@ Azure 虚拟 WAN 支持在 VNet 中的全局分布式云工作负荷集、分支
 
 全局传输网络体系结构通过虚拟 WAN 中心实现任意点到任意点的连接。 此体系结构消除或减少了辐射之间的全网格或部分网格式连接模型的需要，此类模型的构建和维护更复杂。 此外，与网格网络相比，中心辐射型体系结构中的路由控制更容易配置和维护。
 
-任何连接（在全局体系结构的上下文中）都允许企业使用全球分布的用户、分支、数据中心、Vnet 和应用程序通过 "传输" 中心彼此连接。 Azure 虚拟 WAN 充当全局传输系统。
+全局体系结构的上下文中 (任意到任意连接性) 使具有全球分布式用户、分支、数据中心、Vnet 和应用程序的企业可以通过 "传输" 中心 () 相互连接。 Azure 虚拟 WAN 充当全局传输系统。
 
 ![任意点到任意点](./media/virtual-wan-global-transit-network-architecture/figure4.png)
 
@@ -87,7 +87,7 @@ Azure 虚拟 WAN 支持以下全局传输连接路径。 括号中的字母对�
 
 ### <a name="expressroute-global-reach-and-virtual-wan"></a>ExpressRoute Global Reach 和虚拟广域网
 
-ExpressRoute 是将本地网络连接到 Microsoft 云的一种私有且灵活的方式。 虚拟 WAN 支持快速路由线路连接。 使用 Express Route 将分支站点连接到虚拟 WAN 需要1）高级线路2）线路处于 Global Reach 启用位置。
+ExpressRoute 是将本地网络连接到 Microsoft 云的一种私有且灵活的方式。 虚拟 WAN 支持快速路由线路连接。 使用 Express Route 将分支站点连接到虚拟 WAN 需要 1) 高级线路 2) 线路置于 Global Reach 启用位置。
 
 ExpressRoute Global Reach 是适用于 ExpressRoute 的附加功能。 使用 Global Reach，你可以将 ExpressRoute 线路链接在一起，以便在本地网络之间建立专用网络。 使用 ExpressRoute 连接到 Azure 虚拟 WAN 的分支要求 ExpressRoute Global Reach 彼此通信。
 
@@ -132,6 +132,9 @@ Azure 虚拟 WAN 中心将互连整个混合网络中的所有网络终结点，
 ![使用 Azure 防火墙的安全虚拟中心](./media/virtual-wan-global-transit-network-architecture/figure5.png)
 
 图 5：**使用 Azure 防火墙的安全虚拟中心**
+
+> [!NOTE]
+> 当前不支持与防火墙的集线器。 集线器之间的流量将直接在每个中心绕过 Azure 防火墙。
 
 虚拟 WAN 的 Azure 防火墙支持以下全局安全传输连接路径。 括号中的字母对应于图 5 中的标识。
 
