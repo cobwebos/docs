@@ -66,6 +66,8 @@
     - name: Azure Policy 内置策略定义
       displayName: 'samples, policies, definitions'
       href: ./policy-samples.md
+    - name: Terraform
+      href: samples-terraform.md
 - name: 概念
   items:
     - name: 应用服务计划
