@@ -3,12 +3,12 @@ title: Azure 事件中心防火墙规则 | Microsoft Docs
 description: 使用防火墙规则允许从特定 IP 地址到 Azure 事件中心的链接。
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: b59c34e80fb08e35a9ed8b1b3e406e2e63517877
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 7870260b77785af59f4f186274775067f2292ef6
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836813"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066043"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-from-specific-ip-addresses-or-ranges"></a>允许从特定 IP 地址或范围访问 Azure 事件中心命名空间
 默认情况下，只要请求附带有效的身份验证和授权，就可以从 Internet 访问事件中心命名空间。 有了 IP 防火墙，就可以使用 [CIDR（无类别域间路由）](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)表示法将其进一步限制为仅一组 IPv4 地址或 IPv4 地址范围。
@@ -18,9 +18,9 @@ ms.locfileid: "87836813"
 >[!WARNING]
 > 实现 IP 筛选可以阻止其他 Azure 服务与事件中心进行交互。
 >
-> 实现虚拟网络时，受信任的 Microsoft 服务不受支持。
+> 实现 IP 筛选后，不支持受信任的 Microsoft 服务。
 >
-> 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）-
+> 不能使用 IP 筛选的常见 Azure 方案 (请注意，此列表并**不**详尽) -
 > - Azure 流分析
 > - Azure IoT 中心路由
 > - Azure IoT Device Explorer

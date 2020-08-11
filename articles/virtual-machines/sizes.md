@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: 65b4bf5e8a681bea36ab381771a2843ac1d1fbe4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 234156186d045e21cc01cc4b407408f98268c790
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827616"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065465"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Azure 中虚拟机的大小
 
@@ -25,7 +25,7 @@ ms.locfileid: "87827616"
 | [计算优化](sizes-compute.md) | F、Fs、Fsv2 | 高 CPU 与内存之比。 适用于中等流量的 Web 服务器、网络设备、批处理和应用程序服务器。 |
 | [内存优化](sizes-memory.md) | Esv3、Ev3、Easv4、Eav4、Ev4、Esv4、Edv4、Edsv4、Mv2、M、DSv2、Dv2 | 高内存与 CPU 之比。 适用于关系数据库服务器、中到大型规模的缓存和内存中分析。                 |
 | [存储优化](sizes-storage.md) | Lsv2 | 较高的磁盘吞吐量和 IO，是大数据、SQL、NoSQL 数据库、数据仓库和大型事务数据库的理想之选。  |
-| [GPU](sizes-gpu.md) | NC、NCv2、NCv3、ND、NDv2（预览）、NV、NVv3、NVv4 | 针对大量图形绘制和视频编辑的专用虚拟机，以及带有深度学习功能的模型定型和推断 (ND)。 可选择单个或多个 GPU。 |
+| [GPU](sizes-gpu.md) | NC、NCv2、NCv3、NCasT4_v3 (Preview) 、ND、NDv2 (Preview) 、NV、NVv3、NVv4 | 针对大量图形绘制和视频编辑的专用虚拟机，以及带有深度学习功能的模型定型和推断 (ND)。 可选择单个或多个 GPU。 |
 | [高性能计算](sizes-hpc.md) | HB、HBv2、HC、H | 速度最快、功能最强大的 CPU 虚拟机具有可选的高吞吐量网络接口 (RDMA)。 |
 
 - 有关不同大小的定价信息，请参阅适用于[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)或[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)的定价页。

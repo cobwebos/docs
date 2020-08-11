@@ -3,18 +3,18 @@ title: Azure Monitor 中的 Azure 服务总线指标 | Microsoft Docs
 description: 本文介绍如何使用 Azure Monitor 监视服务总线实体（队列、主题和订阅）。
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: c4bf33fc7aa21be150a1ee0d6c65df84a391565e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3081b46bebdba8e83e5584178b37aab2dffee599
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089679"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065006"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 服务总线指标
 
 服务总线指标提供 Azure 订阅中的资源状态。 通过一组丰富的指标数据，可在命名空间和实体级别评估服务总线资源的总体运行状况。 这些统计信息非常重要，因为它们能够帮助监视服务总线的状态。 另外，指标也可帮助解决由根本原因造成的问题，而无需联系 Azure 支持。
 
-Azure Monitor 提供了统一的用户界面，可用于监视各种 Azure 服务。 有关详细信息，请参阅 GitHub 上的[在 Microsoft Azure 中进行监视](../monitoring-and-diagnostics/monitoring-overview.md)和[通过 .NET 检索 Azure Monitor 指标](https://github.com/Azure-Samples/monitor-dotnet-metrics-api)示例。
+Azure Monitor 提供了统一的用户界面，可用于监视各种 Azure 服务。 有关详细信息，请参阅 GitHub 上的[在 Microsoft Azure 中进行监视](../azure-monitor/overview.md)和[通过 .NET 检索 Azure Monitor 指标](https://github.com/Azure-Samples/monitor-dotnet-metrics-api)示例。
 
 > [!IMPORTANT]
 > 如果在 2 小时内没有与实体进行任何交互，则指标将显示“0”作为值，直到实体不再空闲为止。
@@ -29,11 +29,11 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 
 可在 [Azure 门户](https://portal.azure.com)中监视一段时间内的指标。 以下示例演示了如何在帐户级别查看成功的请求和传入的请求：
 
-![Azure 门户中的 "监视器-指标（预览）" 页的屏幕截图。][1]
+![Azure 门户中 "监视器-指标" (预览 ") " 页的屏幕截图。][1]
 
 也可以直接通过命名空间来访问指标。 为此，请选择命名空间，然后单击“指标”。 若要显示筛选到实体范围的指标，请选择实体，然后单击“指标”。
 
-![筛选到实体范围的 "监视指标（预览）" 页的屏幕截图。][2]
+![筛选到实体范围 (预览) 页面的屏幕截图。][2]
 
 对于支持维度的指标，必须使用所需的维度值进行筛选。
 
@@ -80,7 +80,7 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 | 活动消息| 队列/主题中的活动消息的计数。 <br/><br/> 单元：计数 <br/> 聚合类型：平均值 <br/> 维度：实体名称 |
 | 死信消息| 队列/主题中的死信消息计数。 <br/><br/> 单元：计数 <br/> 聚合类型：平均值 <br/>维度：实体名称 |
 | 计划的消息| 队列/主题中的计划消息计数。 <br/><br/> 单元：计数 <br/> 聚合类型：平均值  <br/> 维度：实体名称 |
-| 大小 | 实体（队列或主题）的大小（以字节为单位）。 <br/><br/>单元：计数 <br/>聚合类型：平均值 <br/>维度：实体名称 | 
+| 大小 | 实体 (队列或主题) 的大小（以字节为单位）。 <br/><br/>单元：计数 <br/>聚合类型：平均值 <br/>维度：实体名称 | 
 
 > [!NOTE]
 > 以下指标的值是时间点值。 在该时间点之后立即使用的传入消息可能不会反映在这些指标中。 
@@ -91,7 +91,7 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 
 ## <a name="connection-metrics"></a>连接指标
 
-| 指标名称 | 描述 |
+| 指标名称 | 说明 |
 | ------------------- | ----------------- |
 |活动连接数|命名空间以及实体上的活动连接数。<br/><br/> 单元：计数 <br/> 聚合类型：总计 <br/> 维度：实体名称|
 |打开的连接数 |打开的连接数。<br/><br/> 单元：计数 <br/> 聚合类型：总计 <br/> 维度：实体名称|
@@ -108,8 +108,8 @@ Azure Monitor 提供多种访问指标的方法。 可通过 [Azure 门户](http
 
 | 指标名称 | 说明 |
 | ------------------- | ----------------- |
-|每个命名空间的 CPU 使用率|命名空间的 CPU 使用百分比。<br/><br/> 单元：百分比 <br/> 聚合类型：最大值 <br/> 维度：实体名称|
-|每个命名空间的内存使用量|命名空间的内存使用百分比。<br/><br/> 单元：百分比 <br/> 聚合类型：最大值 <br/> 维度：实体名称|
+|每个命名空间的 CPU 使用率|命名空间的 CPU 使用百分比。<br/><br/> 单位：百分比 <br/> 聚合类型：最大值 <br/> 维度：实体名称|
+|每个命名空间的内存使用量|命名空间的内存使用百分比。<br/><br/> 单位：百分比 <br/> 聚合类型：最大值 <br/> 维度：实体名称|
 
 ## <a name="metrics-dimensions"></a>指标维度
 
@@ -121,23 +121,23 @@ Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为�
 
 ## <a name="set-up-alerts-on-metrics"></a>针对指标设置警报
 
-1. 在“服务总线命名空间”页面的“指标”选项卡上，选择“配置警报”。   
+1. 在“服务总线命名空间”页面的“指标”选项卡上，选择“配置警报”。 
 
     ![“指标”页面 - 配置警报菜单](./media/service-bus-metrics-azure-monitor/metrics-page-configure-alerts-menu.png)
 2. 选择“选择目标”选项，并在“选择资源”页面上执行以下操作： 
-    1. 对于“按资源类型筛选”字段，选择“服务总线命名空间”。  
+    1. 对于“按资源类型筛选”字段，选择“服务总线命名空间”。 
     2. 对于“按订阅筛选”字段，选择你的订阅。
     3. 从列表中选择“服务总线命名空间”。 
     4. 选择“完成”。 
     
         ![选择命名空间](./media/service-bus-metrics-azure-monitor/select-namespace.png)
 1. 选择“添加条件”，并在“配置信号逻辑”页面上执行以下操作：
-    1. 对于“信号类型”，选择“指标”。  
+    1. 对于“信号类型”，选择“指标”。 
     2. 选择一个信号。 例如：**服务错误**。 
 
         ![选择“服务器错误”](./media/service-bus-metrics-azure-monitor/select-server-errors.png)
-    1. 对于“条件”，选择“大于”。 
-    2. 对于“时间聚合”，选择“总计”。  
+    1. 对于“条件”，选择“大于”。
+    2. 对于“时间聚合”，选择“总计”。 
     3. 对于“阈值”，输入 **5**。 
     4. 选择“完成”。    
 
@@ -153,8 +153,8 @@ Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为�
     2. 为操作组输入短名称。 
     3. 选择订阅。 
     4. 选一个择资源组。 
-    5. 在本演练中，对于“操作名称”，输入“发送电子邮件”。 
-    6. 对于“操作类型”，选择“电子邮件/短信/推送/语音”。  
+    5. 在本演练中，对于“操作名称”，输入“发送电子邮件”。
+    6. 对于“操作类型”，选择“电子邮件/短信/推送/语音”。 
     7. 选择“编辑详细信息”。 
     8. 在“电子邮件/短信/推送/语音”页面上，执行以下操作：
         1. 选择“电子邮件”。 
@@ -169,9 +169,7 @@ Azure 总线服务支持对 Azure Monitor 中的指标使用以下维度。 为�
 
 ## <a name="next-steps"></a>后续步骤
 
-请参阅 [Azure Monitor 概述](../monitoring-and-diagnostics/monitoring-overview.md)。
+请参阅 [Azure Monitor 概述](../azure-monitor/overview.md)。
 
 [1]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor1.png
 [2]: ./media/service-bus-metrics-azure-monitor/service-bus-monitor2.png
-
-

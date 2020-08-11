@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ae598fb9e4018369230de5fadcf173a3df9fb4c
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 09050bc6895076994baf1c98c65aa87672a5652e
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87551687"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066060"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory 中的管理员角色权限
 
@@ -417,7 +417,7 @@ In | 有权执行的操作
 [Microsoft 365 安全中心](https://protection.office.com) | 跨 Microsoft 365 服务监视与安全相关的策略<br>管理安全威胁和警报<br>查看报告
 标识保护中心 | 安全读取者角色的所有权限<br>此外，还能够执行除了重置密码以外的所有“标识保护中心”操作
 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-configure) | 安全读取者角色的所有权限<br>无法管理 Azure AD 角色分配或设置
-[Office 365 安全与合规中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 管理安全策略<br>查看、调查和响应安全威胁<br>查看报表
+[Office 365 安全与合规中心](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | 管理安全策略<br>查看、调查和响应安全威胁<br>查看报告
 Azure 高级威胁防护 | 监视和响应可疑安全活动
 Windows Defender ATP 和 EDR | 分配角色<br>管理计算机组<br>配置终结点威胁检测和自动修正<br>查看、调查并响应警报
 [Intune](https://docs.microsoft.com/intune/role-based-access-control) | 视图用户、设备、注册、配置和应用程序信息<br>无法对 Intune 进行更改
@@ -545,11 +545,11 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.directory/appRoleAssignments/update | 更新 Azure Active Directory 中的 appRoleAssignments。 |
 | microsoft.directory/appRoleAssignments/delete | 删除 Azure Active Directory 中的 appRoleAssignments。 |
 | microsoft.directory/auditLogs/allProperties/read | 读取 Azure Active Directory 中 auditLogs 上的所有属性（包括特权属性）。 |
-| microsoft.directory/connectorGroups/everything/read | 读取 Azure Active Directory 中的应用程序代理连接器组属性。 |
-| microsoft.directory/connectorGroups/everything/update | 更新 Azure Active Directory 中的应用程序代理连接器组属性。 |
+| connectorGroups/allProperties/read | 读取 Azure Active Directory 中的应用程序代理连接器组属性。 |
+| connectorGroups/allProperties/update | 更新 Azure Active Directory 中的应用程序代理连接器组属性。 |
 | microsoft.directory/connectorGroups/create | 在 Azure Active Directory 中创建应用程序代理连接器组。 |
 | microsoft.directory/connectorGroups/delete | 在 Azure Active Directory 中删除应用程序代理连接器组。 |
-| microsoft.directory/connectors/everything/read | 读取 Azure Active Directory 中的所有应用程序代理连接器属性。 |
+| microsoft. directory/connector/allProperties/read | 读取 Azure Active Directory 中的所有应用程序代理连接器属性。 |
 | microsoft.directory/connectors/create | 在 Azure Active Directory 中创建应用程序代理连接器。 |
 | microsoft.directory/policies/applicationConfiguration/basic/read | 读取 Azure Active Directory 中的 policies.applicationConfiguration 属性。 |
 | microsoft.directory/policies/applicationConfiguration/basic/update | 更新 Azure Active Directory 中的 policies.applicationConfiguration 属性。 |
@@ -1426,7 +1426,6 @@ Windows Defender ATP 和 EDR | 查看并调查警报。 在 Windows Defender ATP
 | microsoft.office365.messageCenter/messages/read | 读取 microsoft.office365.messageCenter 中的消息。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | 读取和配置 Office 365 服务运行状况。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | 创建和管理 Office 365 支持票证。 |
-| microsoft.office365.usageReports/allEntities/read | 阅读 Office 365 使用情况报告。 |
 | microsoft.office365.userCommunication/allEntities/allTasks | 读取和更新新增功能消息的可见性。 |
 | microsoft.office365.webPortal/allEntities/basic/read | 读取 microsoft.office365.webPortal 中所有资源的基本属性。 |
 
@@ -1933,7 +1932,7 @@ Lync 服务管理员 | Skype for Business 管理员 | 75941009-915a-4869-abe7-69
 新式商务用户 | 新式商务用户 | d24aef57-1500-4070-84db-2666f29cf966
 网络管理员 | 网络管理员 | d37c8bed-0711-4417-ba38-b4abe66ce4c2
 Office 应用管理员 | Office 应用管理员 | 2b745bdf-0803-4d80-aa65-822c4493daac
-合作伙伴一线支持人员 | 未显示，因为不应使用它 | 4ba39ca4-527c-499a-b93d-d9b492c50246
+合作伙伴一线支持人员 | 不显示，因为不应使用它 | 4ba39ca4-527c-499a-b93d-d9b492c50246
 合作伙伴二线支持人员 | 不显示，因为不应使用它 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 密码管理员 | 密码管理员 | 966707d0-3269-4727-9be2-8c3a10f19b9d
 Power BI 服务管理员 | Power BI 管理员 | a9ea8996-122f-4c74-9520-8edcd192826c
@@ -1978,17 +1977,17 @@ API 名称 | Azure 门户名称 | 注释
 -------- | ------------------- | -------------
 公司管理员 | 全局管理员角色 | [为便于阅读，名称已更改](directory-assign-admin-roles.md#role-template-ids)
 CRM 服务管理员 | Dynamics 365 管理员 | [反映当前产品品牌](directory-assign-admin-roles.md#role-template-ids)
-设备联接 | 不推荐使用 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
+设备联接 | 已放弃 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
 设备管理器 | 已放弃 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
 设备用户 | 已放弃 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
 目录同步帐户 | 未显示，因为不应使用它 | [目录同步帐户文档](directory-assign-admin-roles.md#directory-synchronization-accounts)
 目录编写人员 | 未显示，因为不应使用它 | [目录写入者文档](directory-assign-admin-roles.md#directory-writers)
-来宾用户 | 未显示，因为无法使用它  | NA
+来宾用户 | 未显示，因为无法使用它  | 不可用
 Lync 服务管理员 | Skype for Business 管理员 | [反映当前产品品牌](directory-assign-admin-roles.md#role-template-ids)
 合作伙伴层 1 支持 | 未显示，因为不应使用它 | [合作伙伴一线支持人员文档](directory-assign-admin-roles.md#partner-tier1-support)
 合作伙伴层 2 支持 | 未显示，因为不应使用它 | [合作伙伴二线支持人员文档](directory-assign-admin-roles.md#partner-tier2-support)
-受限来宾用户 | 不显示，因为无法使用它 | NA
-用户 | 未显示，因为无法使用它 | NA
+受限来宾用户 | 未显示，因为无法使用它 | 不可用
+用户 | 未显示，因为无法使用它 | 不可用
 工作区设备联接 | 已放弃 | [已弃用角色的文档](directory-assign-admin-roles.md#deprecated-roles)
 
 ## <a name="next-steps"></a>后续步骤

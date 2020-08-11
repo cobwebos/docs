@@ -6,21 +6,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8d8b558ebc49a009548afe9a8527985b9e4f5c75
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: f79b198b512547b1d93fbbd458af8251b109e62f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057157"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066655"
 ---
 # <a name="enable-and-manage-soft-delete-for-containers-preview"></a>为容器 (预览) 启用和管理软删除
 
 容器软删除 (预览) 可防止意外或错误地修改或删除数据。 为存储帐户启用容器软删除后，在指定的保持期内，容器及其内容可能会被删除。
 
-如果某个应用程序或其他存储帐户用户可能无意中修改或删除了数据，则 Microsoft 建议启用容器软删除。 本文介绍如何为容器启用软删除。 有关容器软删除的详细信息，请参阅[容器的软删除 (预览) ](soft-delete-container-overview.md)。
+如果某个应用程序或其他存储帐户用户可能无意中修改或删除了数据，则 Microsoft 建议启用容器软删除。 本文介绍如何为容器启用软删除。 有关容器软删除的详细信息（包括如何注册预览版），请参阅[容器的软删除 (预览) ](soft-delete-container-overview.md)。
 
 对于端到端的数据保护，Microsoft 建议你同时为 blob 和 blob 版本控制启用软删除， (预览) 。 若要了解如何为 blob 启用软删除，请参阅为[Blob 启用和管理软删除](soft-delete-blob-enable.md)。 若要了解如何启用 blob 版本控制，请参阅[blob 版本控制 (预览) ](versioning-overview.md)。
 

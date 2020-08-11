@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 200a6b1bc2f960555fae1d910dfebde66628d13a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1cd03814e1590abebb74db490a2692d492a9207d
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84031968"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064938"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>部署拆分/合并服务以在分片数据库之间移动数据
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,9 +39,9 @@ ms.locfileid: "84031968"
 
 ## <a name="prerequisites"></a>先决条件
 
-1. 创建将用作拆分/合并状态数据库的 Azure SQL 数据库。 转到 [Azure 门户](https://portal.azure.com)。 新建 **SQL 数据库**。 为数据库指定一个名称，并新建管理员和密码。 确保记录该名称和密码以供日后使用。
+1. 创建要用作拆分/合并状态数据库的 Azure SQL 数据库数据库。 转到 [Azure 门户](https://portal.azure.com)。 新建 **SQL 数据库**。 为数据库指定一个名称，并新建管理员和密码。 确保记录该名称和密码以供日后使用。
 
-1. 确保你的服务器允许 Azure 服务连接到它。 在门户上的“防火墙设置”  中，确保“允许访问 Azure 服务”  设置设为“打开”  。 单击“保存”图标。
+1. 确保服务器允许 Azure 服务与其连接。 在门户上的“防火墙设置”中，确保“允许访问 Azure 服务”设置设为“打开”。 单击“保存”图标。
 
 1. 创建用于诊断输出的 Azure 存储帐户。
 
@@ -60,7 +60,7 @@ ms.locfileid: "84031968"
    > [!IMPORTANT]
    > 目前，状态数据库必须使用拉丁语排序规则 (SQL\_Latin1\_General\_CP1\_CI\_AS)。 有关详细信息，请参阅 [Windows 排序规则名称 (Transact-SQL)](https://msdn.microsoft.com/library/ms188046.aspx)。
 
-   在 Azure SQL 数据库中，连接字符串通常采用以下格式：
+   在 Azure SQL 数据库中，连接字符串通常采用以下形式：
 
       `Server=<serverName>.database.windows.net; Database=<databaseName>;User ID=<userId>; Password=<password>; Encrypt=True; Connection Timeout=30`
 
@@ -99,17 +99,17 @@ ms.locfileid: "84031968"
 
 ### <a name="import-the-client-certificate-into-the-personal-store"></a>将客户端证书导入到个人存储中
 
-1. 在 Windows 资源管理器中，双击“MyCert.pfx”  。
-2. 在“证书导入向导”  中，选择“当前用户”  ，然后单击“下一步”  。
-3. 确认文件路径，并单击“下一步”  。
-4. 键入密码，保持选中“包括所有扩展属性”  ，然后单击“下一步”  。
-5. 保持选中“自动选择证书存储[…]”  ，然后单击“下一步”  。
-6. 依次单击“完成”  和“确定”  。
+1. 在 Windows 资源管理器中，双击“MyCert.pfx” 。
+2. 在“证书导入向导”中，选择“当前用户”，然后单击“下一步”。
+3. 确认文件路径，并单击“下一步” 。
+4. 键入密码，保持选中“包括所有扩展属性”，然后单击“下一步”。
+5. 保持选中“自动选择证书存储[…]”，然后单击“下一步”。
+6. 依次单击“完成”和“确定”。
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>将 PFX 文件上传到云服务
 
 1. 转到 [Azure 门户](https://portal.azure.com)。
-2. 选择“云服务”  。
+2. 选择“云服务” 。
 3. 选择你之前为拆分/合并服务创建的云服务。
 4. 单击顶部菜单上的“证书”  。
 5. 单击底部栏中的“上传”  。
@@ -143,8 +143,8 @@ ms.locfileid: "84031968"
 
 1. 转到 [Azure 门户](https://portal.azure.com)
 2. 选择先前创建的云服务。
-3. 单击“概览”。 
-4. 选择过渡环境，并单击“上传”  。
+3. 单击“概览”。
+4. 选择过渡环境，并单击“上传”。
 5. 在对话框中，输入一个部署标签。 对于“程序包”和“配置”，单击“从本地”，并选择 *SplitMergeService.cspkg* 文件和之前配置的 cscfg 文件。
 6. 确保选中标记为“即使一个或多个角色包含单个实例也部署”  的复选框。
 7. 点击右下角的勾选按钮以开始部署。 它预计需要几分钟的时间才能完成。
@@ -162,17 +162,20 @@ ms.locfileid: "84031968"
    `Server=<serverName>.database.windows.net; Database=<databaseName>;User ID=<user>; Password=<password>; Encrypt=True; Connection Timeout=30`
 
 - 确保服务器名称不以 **https://** 开头。
-- 确保你的服务器允许 Azure 服务连接到它。 为此，请在门户中打开数据库，并确保“允许访问 Azure 服务”  设置设为“启用”。
+- 确保服务器允许 Azure 服务与其连接。 为此，请在门户中打开数据库，并确保“允许访问 Azure 服务”设置设为“启用”。
 
 ## <a name="test-the-service-deployment"></a>测试服务部署
 
 ### <a name="connect-with-a-web-browser"></a>使用 Web 浏览器建立连接
 
-确定拆分/合并服务的 Web 终结点。 可以在门户中找到此终结点，方法是转到云服务的“概述”  并在右侧的“站点 URL”  下查找。 由于默认的安全设置将禁用 HTTP 终结点，因此请将 **http://** 替换为 **https://** 。 将此 URL 的页面加载到浏览器中。
+确定拆分/合并服务的 Web 终结点。 可以在门户中找到此终结点，方法是转到云服务的“概述”并在右侧的“站点 URL”下查找。 由于默认的安全设置将禁用 HTTP 终结点，因此请将 **http://** 替换为 **https://** 。 将此 URL 的页面加载到浏览器中。
 
 ### <a name="test-with-powershell-scripts"></a>使用 PowerShell 脚本进行测试
 
 可以通过运行包含的示例 PowerShell 脚本测试部署和环境。
+
+> [!IMPORTANT]
+> 示例脚本在 PowerShell 5.1 上运行。 它们目前不在 PowerShell 6 或更高版本上运行。
 
 包含的脚本文件为：
 
@@ -180,7 +183,7 @@ ms.locfileid: "84031968"
 2. *ExecuteSampleSplitMerge.ps1* - 在测试数据层上执行测试操作（有关详细说明，请参阅下表）
 3. *GetMappings.ps1* - 可输出分片映射的当前状态的最上层示例脚本。
 4. *ShardManagement.psm1* - 可包装 ShardManagement API 的帮助程序脚本
-5. *Sqldatabasehelpers.psm1. hbase-runner.psm1* -用于在 SQL 数据库中创建和管理数据库的帮助程序脚本
+5. *SqlDatabaseHelpers.psm1* - 用于在 SQL 数据库中创建和管理数据库的帮助程序脚本
 
    <table style="width:100%">
      <tr>
@@ -228,14 +231,14 @@ ms.locfileid: "84031968"
 
 1. 打开新的 PowerShell 窗口并导航到下载拆分/合并包的目录，并导航到“powershell”目录中。
 
-2. 创建将在其中创建分片映射管理器和分片的服务器（或选择现有服务器）。
+2. 创建一个将要在其中创建分片映射管理器和分片的服务器（或选择现有服务器）。
 
    > [!NOTE]
    > 在默认情况下，*SetupSampleSplitMergeEnvironment.ps1* 脚本将在同一服务器上创建所有这些数据库以简化脚本。 这并不表示拆分/合并服务本身存在限制。
 
    拆分/合并服务需要具有数据库读/写访问权限的 SQL 身份验证登录，才能移动数据并更新分片映射。 由于拆分/合并服务在云中运行，因此它当前不支持集成的身份验证。
 
-   请确保将服务器配置为允许从运行这些脚本的计算机的 IP 地址进行访问。 可以在 "SQL server/防火墙" 和 "虚拟网络/客户端 IP 地址" 下找到此设置。
+   确保服务器已配置为允许从运行这些脚本的计算机的 IP 地址进行访问。 可以在 SQL Server/防火墙和虚拟网络/客户端 IP 地址下找到此设置。
 
 3. 执行 *SetupSampleSplitMergeEnvironment.ps1* 脚本以创建示例环境。
 
@@ -318,8 +321,8 @@ ms.locfileid: "84031968"
 
 为了执行拆分/合并操作，必须声明要移动的分片表和引用表。 使用 **SchemaInfo** API 完成此操作。 此 API 位于 **Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.Schema** 命名空间中。
 
-1. 对于每个分片表，请创建一个**ShardedTableInfo**对象，该对象描述表的父架构名称（可选，默认为 "dbo"）、表名称以及该表中包含分片键的列名称。
-2. 对于每个引用表，请创建一个**shardedtableinfo**对象，该对象描述表的父架构名称（可选，默认为 "dbo"）和表名。
+1. 对于每个分片表，请创建一个**ShardedTableInfo**对象，该对象描述表的父架构名称 (可选，默认为 "dbo" ) 、表名称以及该表中包含分片键的列名称。
+2. 对于每个引用表，请创建一个**shardedtableinfo**对象，该对象描述了表的父架构名称 (可选，默认为 "dbo" ) 和表名。
 3. 将上面的 TableInfo 对象添加到新的 **SchemaInfo** 对象。
 4. 获取对 **ShardMapManager** 对象的引用，然后调用 **GetSchemaInfoCollection**。
 5. 将 **SchemaInfo** 添加到 **SchemaInfoCollection**，从而提供分片映射名称。
@@ -330,7 +333,7 @@ ms.locfileid: "84031968"
 
 ## <a name="troubleshooting"></a>故障排除
 
-在运行示例 PowerShell 脚本时，可能会看到以下消息：
+在运行示例 PowerShell 脚本时，可能会看到下面的消息：
 
    `Invoke-WebRequest : The underlying connection was closed: Could not establish trust relationship for the SSL/TLS secure channel.`
 

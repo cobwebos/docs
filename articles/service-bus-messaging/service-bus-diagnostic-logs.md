@@ -3,12 +3,12 @@ title: Azure 服务总线诊断日志 | Microsoft Docs
 description: 本文概述了可用于 Azure 服务总线的所有操作和诊断日志。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: eeaa7e92488fd59994fc07ea0081b0f00c8768df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f227f5a988ccd51425b4f43e87b4ed4d9af74e1f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85337530"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064428"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>为服务总线启用诊断日志
 
@@ -76,11 +76,11 @@ Azure 服务总线目前支持活动日志和操作日志，这些日志捕获�
 
 操作日志默认已禁用。 若要启用诊断日志，请执行以下操作：
 
-1. 在 [Azure 门户](https://portal.azure.com)中，转到你的 Azure 服务总线命名空间，然后在“监视”下选择“诊断设置”。 
+1. 在 [Azure 门户](https://portal.azure.com)中，转到你的 Azure 服务总线命名空间，然后在“监视”下选择“诊断设置”。
 
    ![“诊断设置”链接](./media/service-bus-diagnostic-logs/image1.png)
 
-1. 在“诊断设置”窗格中，选择“添加诊断设置”。   
+1. 在“诊断设置”窗格中，选择“添加诊断设置”。  
 
    ![“添加诊断设置”链接](./media/service-bus-diagnostic-logs/image2.png)
 
@@ -101,7 +101,7 @@ Azure 服务总线目前支持活动日志和操作日志，这些日志捕获�
 
 新设置将在大约 10 分钟后生效。 日志将显示在“诊断日志”窗格中配置的存档目标中。
 
-有关配置诊断设置的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/diagnostic-logs-overview.md)。
+有关配置诊断设置的详细信息，请参阅 [Azure 诊断日志概述](../azure-monitor/platform/platform-logs-overview.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

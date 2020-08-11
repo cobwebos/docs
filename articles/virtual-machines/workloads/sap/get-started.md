@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/04/2020
+ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a882e3a21d5e1e99f6f9154fd2162071752b4499
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 6151bb915298cc4f771b6d49628f39c8d27b62b4
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87800342"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064360"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -45,6 +45,7 @@ Azure for SAP HANA 的独特之处在于，它是一款能让 Azure 脱颖而出
     - [HANA 大型实例支持的方案](./hana-supported-scenario.md)
 - 不同的 Azure 区域提供哪些 Azure 服务、Azure VM 类型和 Azure 存储服务，请查看站点[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/) 
 - 第三方 HA 帧是否适用于 Windows 和 Pacemaker 以外的支持？ 查看[SAP 支持说明](https://launchpad.support.sap.com/#/notes/1928533)的底部部分 #1928533
+- 哪种 Azure 存储最适合我的方案？ 读取[SAP 工作负荷的 Azure 存储类型](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage)
 
  
 ## <a name="sap-hana-on-azure-large-instances"></a>Azure 上的 SAP HANA（大型实例）
@@ -59,23 +60,7 @@ Azure for SAP HANA 的独特之处在于，它是一款能让 Azure 脱颖而出
  
 
 ## <a name="sap-netweaver-deployed-on-azure-virtual-machines"></a>Azure 虚拟机上部署的 SAP NetWeaver
-本部分列出了有关 Azure 上的 SAP NetWeaver 和 Business One 的规划和部署文档。 该文档重点介绍了 Azure 中 SAP 工作负荷下的非 HANA 数据库的基本知识和使用情况。 有关高可用性的文档和文章也是了解 Azure 中 HANA 高可用性的基础，例如：
-
-- [Azure 规划指南](./planning-guide.md)。 
-- [Azure 虚拟机上的 SAP Business One](./business-one-azure.md)
-- [使用 Site Recovery 保护多层 SAP NetWeaver 应用程序部署](../../../site-recovery/site-recovery-sap.md)
-- [适用于 Azure 的 SAP LaMa 连接器](./lama-installation.md)
-
-有关 Azure 中 SAP 工作负荷下的非 HANA 数据库的信息，请参阅：
-
-- [部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项](./dbms_guide_general.md)
-- [适用于 SAP NetWeaver 的 SQL Server Azure 虚拟机 DBMS 部署](./dbms_guide_sqlserver.md)
-- [适用于 SAP 工作负荷的 Oracle Azure 虚拟机 DBMS 部署](./dbms_guide_oracle.md)
-- [适用于 SAP 工作负荷的 IBM DB2 Azure 虚拟机 DBMS 部署](./dbms_guide_ibm.md)
-- [适用于 SAP 工作负荷的 SAP ASE Azure 虚拟机 DBMS 部署](./dbms_guide_sapase.md)
-- [Azure VM 上的 SAP MaxDB、Live Cache 和内容服务器部署](./dbms_guide_maxdb.md)
-
-有关 Azure 中的 SAP HANA 数据库的信息，请参阅“Azure 虚拟机上的 SAP HANA”部分。
+本部分列出了有关 Azure 上的 SAP NetWeaver 和 Business One 的规划和部署文档。 该文档重点介绍了 Azure 中 SAP 工作负荷下的非 HANA 数据库的基本知识和使用情况。 用于实现高可用性的文档和文章也是 Azure 中 HANA 高可用性的基础
 
 有关 Azure 中 SAP 工作负荷的高可用性的信息，请参阅：
 
@@ -104,6 +89,7 @@ Azure for SAP HANA 的独特之处在于，它是一款能让 Azure 脱颖而出
 
 ## <a name="change-log"></a>更改日志
 
+- 08/10/2020： SAP HANA 存储配置引入[SAP HANA azure 虚拟机存储](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)配置中，并对[Azure 上的 SAP 工作负荷进行一些更新：规划和部署清单](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-deployment-checklist)
 - 08/04/2020：更改在[azure 中的 SLES 上设置 Pacemaker](./high-availability-guide-suse-pacemaker.md) ，并在[AZURE 中设置 RHEL 上的 Pacemaker](./high-availability-guide-rhel-pacemaker.md) ，以强调 Pacemaker 群集的可靠名称解析的重要性
 - 08/04/2020：在 WFCS 中更改[SAP NW ha with 文件共享](./sap-high-availability-installation-wsfc-file-share.md)， [WFCS 上的 sap Nw Ha](./sap-high-availability-installation-wsfc-shared-disk.md)， [azure vm 上的](./high-availability-guide.md)sap nw ha，azure [VM 上](./high-availability-guide-suse.md)的 Sap nw ha，和上的[azure Vm 上的 sap NW ha](./high-availability-guide-suse-netapp-files.md)，适用于 azure 上的[sap nw 的 ha 多 sid 指南](./high-availability-guide-suse-multi-sid.md)，azure vm 上的 sap NW[高可用性](./high-availability-guide-rhel.md)，RHEL 上的 azure vm 上的 sap [nw](./high-availability-guide-rhel-netapp-files.md)高可用性，rhel[多 sid 指南](./high-availability-guide-rhel-multi-sid.md)中的 azure vm 上的 sap nw 高可用性，用于阐明参数的使用`enque/encni/set_so_keepalive`
 - 07/23/2020：[通过 Azure 预订](../../../cost-management-billing/reservations/prepay-hana-large-instances-reserved-capacity.md)添加了 "保存到 SAP HANA 大型实例" 一文，其中介绍了在购买 SAP HANA 大型实例预约之前需要了解的内容以及如何进行购买

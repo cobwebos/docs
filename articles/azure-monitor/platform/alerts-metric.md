@@ -4,14 +4,14 @@ description: 了解如何使用 Azure 门户或 CLI 来创建、查看和管理�
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/11/2020
 ms.subservice: alerts
-ms.openlocfilehash: 8afe62173dc0e90783c494fa51994e9ebac506f3
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 7b5332f68bb35e3c9b9ed82bb7bed2908e744e9f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042728"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065856"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理指标警报
 
@@ -142,6 +142,15 @@ Azure Monitor 中的指标警报提供了一种在指标超出阈值时获得通
 - [AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2)：创建新的指标警报规则或更新现有的指标警报规则。
 - [AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2)：获取一个或多个指标警报规则。
 - [AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2)：删除指标警报规则。
+
+## <a name="with-rest-api"></a>使用 REST API
+
+- [创建或更新](/rest/api/monitor/metricalerts/createorupdate)：创建新的指标警报规则或更新现有的指标警报规则。
+- [Get](/rest/api/monitor/metricalerts/get)：获取特定指标警报规则。
+- [按资源组列出](/rest/api/monitor/metricalerts/listbyresourcegroup)：获取特定资源组中指标警报规则的列表。
+- [按订阅列出](/rest/api/monitor/metricalerts/listbysubscription)：获取特定订阅中指标警报规则的列表。
+- [更新](/rest/api/monitor/metricalerts/update)：更新指标警报规则。
+- [删除](/rest/api/monitor/metricalerts/delete)：删除指标警报规则。
 
 ## <a name="next-steps"></a>后续步骤
 

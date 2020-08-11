@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6ffbd23dccd7bac03e849241866416ac07af4a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5734cb76e4ed018778c6858597ec8efe3019bf9
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035411"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065975"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>利用 Azure Active Directory 智能锁定保护用户帐户
 
@@ -24,7 +24,7 @@ ms.locfileid: "87035411"
 
 ## <a name="how-smart-lockout-works"></a>智能锁定的工作原理
 
-默认情况下，智能锁定会在 10 次尝试失败后锁定帐户，使其在一分钟内无法进行登录尝试。 在每次后续登录尝试失败后，帐户会再次锁定，第一次锁定一分钟，后续尝试失败会锁定更长时间。
+默认情况下，智能锁定会在 10 次尝试失败后锁定帐户，使其在一分钟内无法进行登录尝试。 在每次后续登录尝试失败后，帐户会再次锁定，第一次锁定一分钟，后续尝试失败会锁定更长时间。 若要最大程度地减少攻击者可以绕过此行为的方法，我们不会公开锁定时间段在超过其他不成功登录尝试的速率。
 
 智能锁定跟踪最后三个错误的密码哈希，以避免对相同密码增大锁定计数器。 如果某人多次输入同一错误密码，则此行为不会导致帐户锁定。
 
@@ -37,20 +37,20 @@ ms.locfileid: "87035411"
 
 使用智能锁定并不保证真正的用户永远不会被锁定。当智能锁定锁定用户帐户时，我们将尽力尝试不锁定正版用户。 锁定服务尝试确保不良执行组件无法访问正版用户帐户。 请注意以下事项：
 
-* 每个 Azure AD 数据中心单独跟踪锁定。 如果用户点击了每个数据中心，则用户具有（*threshold_limit * datacenter_count*）尝试次数。
+* 每个 Azure AD 数据中心单独跟踪锁定。 如果用户点击了每个数据中心，则用户 (*threshold_limit * datacenter_count*) 尝试次数。
 * 智能锁定使用熟悉的位置与不熟悉的位置来区分不良参与者与真正的用户。 不熟悉和熟悉的位置都有单独的锁定计数器。
 
-智能锁定可与使用密码哈希同步或传递身份验证的混合部署集成，以保护本地 Active Directory 域服务（AD DS）帐户免遭攻击者的攻击。 通过在 Azure AD 适当地设置智能锁定策略，可以在将攻击传播到本地 AD DS 之前对其进行筛选。
+智能锁定可与使用密码哈希同步或传递身份验证的混合部署集成，以保护本地 Active Directory 域服务 (AD DS) 的帐户被攻击者锁定。 通过在 Azure AD 适当地设置智能锁定策略，可以在将攻击传播到本地 AD DS 之前对其进行筛选。
 
 使用[传递身份验证](../hybrid/how-to-connect-pta.md)时，请注意以下事项：
 
 * Azure AD 锁定阈值**小于**AD DS 帐户锁定阈值。 设置这些值，以便 AD DS 帐户锁定阈值至少大于 Azure AD 锁定阈值的两倍或三倍。
 * Azure AD 锁定持续时间设置的时间必须长于 AD DS 重置帐户锁定计数器的持续时间。 Azure AD 持续时间以秒为单位，而 AD 持续时间设置为分钟。
 
-例如，如果你希望 Azure AD 计数器高于 AD DS，则在本地 AD 设置为1分钟（60秒）时，Azure AD 将为120秒（2分钟）。
+例如，如果你希望 Azure AD 计数器高于 AD DS，则 Azure AD 为120秒 (2 分钟) 而本地 AD 设置为1分钟 (60 秒) 。
 
 > [!IMPORTANT]
-> 目前，如果用户的云帐户已被智能锁定功能锁定，管理员将无法解除其锁定。 管理员必须等到锁定持续时间到期。 但是，用户可以通过使用受信任的设备或位置的自助密码重置（SSPR）来解锁。
+> 目前，如果用户的云帐户已被智能锁定功能锁定，管理员将无法解除其锁定。 管理员必须等到锁定持续时间到期。 但是，用户可以使用自助密码重置 (SSPR) 从受信任的设备或位置进行解锁。
 
 ## <a name="verify-on-premises-account-lockout-policy"></a>验证本地帐户锁定策略
 
