@@ -1,6 +1,6 @@
 ---
 title: 快速入门：创建 iOS 应用
-description: 此快速入门介绍如何使用空间定位点生成 iOS 应用。
+description: 了解如何使用 Azure 空间定位点以编程方式在 Swift 或 Objective-C 中创建 iOS 应用。
 author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
@@ -9,12 +9,12 @@ ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
 ms.custom: has-adal-ref
-ms.openlocfilehash: 542b5168bb70d876d91f8a747a230f2b754568e9
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 2df66979d1e8f400f2630f5e531cd201244fdc6d
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873107"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87809980"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>快速入门：使用 Azure 空间定位点在 Swift 或 Objective-C 中创建 iOS 应用
 
@@ -101,7 +101,7 @@ open ./SampleObjC.xcworkspace
 
 找到 `spatialAnchorsAccountId` 字段并将 `Set me` 替换为帐户标识符。
 
-找到 `startSession()` 并添加以下行，替换之前的帐户域：`cloudSession!.configuration.accountDomain = "MyAccountDomain";`。
+找到 `spatialAnchorsAccountDomain` 字段并将 `Set me` 替换为帐户域。
 
 # <a name="objective-c"></a>[Objective-C](#tab/openproject-objc)
 
@@ -111,7 +111,7 @@ open ./SampleObjC.xcworkspace
 
 找到 `SpatialAnchorsAccountId` 字段并将 `Set me` 替换为帐户标识符。
 
-找到 `startSession()` 并添加以下行，替换之前的帐户域：`_cloudSession.configuration.accountDomain = @"MyAccountDomain";`。
+找到 `SpatialAnchorsAccountDomain` 字段并将 `Set me` 替换为帐户域。
 
 ---
 

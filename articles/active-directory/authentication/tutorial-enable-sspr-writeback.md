@@ -11,12 +11,12 @@ author: iainfoulds
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 70a73cb1f855840831f2e1107baa94dfd54868a5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f4687a98bfb58db8ed5e8a853fa0db2207f435e8
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518481"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419642"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>教程：启用到本地环境的 Azure Active Directory 自助式密码重置写回
 
@@ -40,7 +40,7 @@ ms.locfileid: "86518481"
 
 需有以下资源和特权才能完成本教程：
 
-* 一个至少启用了 Azure AD Premium P1 试用版许可证的有效 Azure AD 租户。
+* 一个至少启用了 Azure AD Premium P1 或试用版许可证的有效 Azure AD 租户。
     * 如果需要，[可免费创建一个](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
     * 有关详细信息，请参阅 [Azure AD SSPR 的许可要求](concept-sspr-licensing.md)。
 * 一个拥有全局管理员特权的帐户。
@@ -81,7 +81,7 @@ Azure AD Connect 可用于在本地 AD DS 环境与 Azure AD 之间同步用户�
     * **写入 lockoutTime**
     * **写入 pwdLastSet**
 
-    [![](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions-cropped.png "Set the appropriate permissions in Active Users and Computers for the account that is used by Azure AD Connect")](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions.png#lightbox)
+    [ ![在“活动的用户和计算机”中为 Azure AD Connect 使用的帐户设置适当的权限](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions-cropped.png) ](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions.png#lightbox)
 
 1. 准备就绪时，选择“应用”/“确定”以应用更改，并退出所有打开的对话框。
 
@@ -131,7 +131,7 @@ Azure AD Connect 中有一个配置选项用于密码写回。 启用此选项�
 
 如果你不再想要使用本教程中配置的 SSPR 写回功能，请完成以下步骤：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择“Azure Active Directory”，选择“密码重置”，然后选择“本地集成”。
 1. 将“将密码写回到本地目录?”选项设置为“否”。
 1. 将“允许用户在不重置密码的情况下解锁帐户?”选项设置为“否”。
@@ -149,7 +149,7 @@ Azure AD Connect 中有一个配置选项用于密码写回。 启用此选项�
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，你已启用到本地 AD DS 环境的 Azure AD SSPR 写回。 你已了解如何执行以下操作：
+在本教程中，你已启用到本地 AD DS 环境的 Azure AD SSPR 写回。 你已了解如何：
 
 > [!div class="checklist"]
 > * 为密码写回配置所需的权限

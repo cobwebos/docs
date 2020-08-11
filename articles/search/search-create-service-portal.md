@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 07/14/2020
-ms.openlocfilehash: 18204777a8e61b577b257b67cdd12bed1a5534fa
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b9507e500282afbdfba5cedd5420974aa8b3ade8
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86529618"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554016"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>快速入门：在门户中创建 Azure 认知搜索服务
 
@@ -30,8 +30,8 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 以下服务属性在服务生存期内是固定的，更改任何属性都需要新的服务。 因为它们是固定的，所以在填写每个属性时，请考虑以下与用法相关的注意事项：
 
 * 服务名称变为 URL 终结点的一部分（[查看提示](#name-the-service)，了解有用的服务名称）。
-* 服务层会[影响计费](search-sku-tier.md)，应设置容量上限。
-* 服务区域可能决定某些方案的可用性。 如果你对知识挖掘和 AI 扩充感兴趣，则需要认知服务，可能还需要与 Azure 认知搜索处于相同区域的 Azure 机器学习。
+* 服务层会[影响计费](search-sku-tier.md)，应设置容量上限。 某些功能在免费层上不可用。
+* 服务区域可能决定某些方案的可用性。 如果需要[高安全性功能](search-security-overview.md)或 [AI 扩充](cognitive-search-concept-intro.md)，则需要将 Azure 认知搜索放置在与其他服务相同的区域中，或放置在提供相关功能的区域中。 
 
 ## <a name="subscribe-free-or-paid"></a>订阅（免费或付费）
 
@@ -41,7 +41,7 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 ## <a name="find-azure-cognitive-search"></a>查找 Azure 认知搜索
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 
 1. 单击左上角的加号（“+ 创建资源”）。
 
@@ -51,7 +51,7 @@ Azure 认知搜索是用于在自定义应用中插入搜索体验的独立资�
 
 ## <a name="choose-a-subscription"></a>选择订阅
 
-如果有多个订阅，请选择一个用于搜索服务。
+如果有多个订阅，请选择一个用于搜索服务。 如果要实现[双重加密](search-security-overview.md#double-encryption)或依赖于托管服务标识的其他功能，请选择与用于 Azure Key Vault 或对其使用托管标识的其他服务相同的订阅。
 
 ## <a name="set-a-resource-group"></a>设置资源组
 
@@ -89,6 +89,8 @@ Azure 认知搜索在大多数区域中可用。 支持的区域列表可在[定
 
 > [!Note]
 > 印度中部和阿拉伯联合酋长国北部目前无法提供新服务。 对于已在这些区域中的服务，你可以无限制地纵向扩展，并且你的服务在该区域是完全受支持的。 这些限制是临时的，仅限于新服务。 如果这些限制不再适用，我们将删除此说明。
+>
+> 双重加密仅在特定区域中可用。 有关详细信息，请参阅[双重加密](search-security-overview.md#double-encryption)。
 
 ### <a name="requirements"></a>要求
 

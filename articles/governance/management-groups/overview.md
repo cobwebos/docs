@@ -3,12 +3,12 @@ title: 使用管理组来组织资源 - Azure 治理
 description: 了解管理组、其权限的工作方式以及如何使用它们。
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 1856b2d6f8fafb18757d547d0117f584fb2abb24
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 787658cebcb8345edd616bcdde485883ea43e8dc
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132919"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529341"
 ---
 # <a name="what-are-azure-management-groups"></a>什么是 Azure 管理组？
 
@@ -38,7 +38,7 @@ ms.locfileid: "87132919"
 
 ## <a name="root-management-group-for-each-directory"></a>每个目录的根管理组
 
-为每个目录指定了一个称为“根”管理组的顶级管理组。 此根管理组内置在层次结构中，包含其所有下级管理组和订阅。 此根管理组允许在目录级别应用全局策略和 RBAC 分配。 一开始的时候，[Azure AD 全局管理员需要提升自身权限](../../role-based-access-control/elevate-access-global-admin.md)才能成为此根组的用户访问管理员角色。 提升访问权限后，管理员可将任何 RBAC 角色分配给其他目录用户或组，以便管理层次结构。 作为管理员，你可以将自己的帐户分配为根管理组的所有者。
+为每个目录指定了一个称为“根”管理组的顶级管理组。 此根管理组内置在层次结构中，包含其所有下级管理组和订阅。 此根管理组允许在目录级别应用全局策略和 Azure 角色分配。 一开始的时候，[Azure AD 全局管理员需要提升自身权限](../../role-based-access-control/elevate-access-global-admin.md)才能成为此根组的用户访问管理员角色。 提升访问权限后，管理员可将任何 Azure 角色分配给其他目录用户或组，以便管理层次结构。 作为管理员，你可以将自己的帐户分配为根管理组的所有者。
 
 ### <a name="important-facts-about-the-root-management-group"></a>关于根管理组的重要事实
 
@@ -50,7 +50,7 @@ ms.locfileid: "87132919"
   - 新订阅在创建时自动默认为根管理组。
 - 所有 Azure 客户都可查看根管理组，但并非所有客户都具有管理该根管理组的权限。
   - 有权访问订阅的每个人都可看到订阅位于层次结构中的位置的上下文。  
-  - 未对任何人授予对根管理组的默认访问权限。 只有 Azure AD 全局管理员可将自身提升为拥有访问权限的角色。 拥有根管理组的访问权限后，全局管理员便可向要管理它的其他用户分配任何 RBAC 角  
+  - 未对任何人授予对根管理组的默认访问权限。 只有 Azure AD 全局管理员可将自身提升为拥有访问权限的角色。 拥有根管理组的访问权限后，全局管理员便可向要管理的其他用户分配任何 Azure 角色  
     色。
 - 在 SDK 中，根管理组（即“租户根”）作为一个管理组进行操作。
 
@@ -82,12 +82,12 @@ ms.locfileid: "87132919"
   
 ## <a name="management-group-access"></a>访问管理组
 
-Azure 管理组支持使用 [Azure 基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 来访问所有资源和定义角色。
-层次结构中的子资源继承这些权限。 可将任何 RBAC 角色分配到管理组，该角色将继承资源的层次结构。 例如，可以向管理组分配 RBAC 角色 VM 参与者。 此角色不对管理组执行任何操作，但将继承该管理组下的所有 VM。
+Azure 管理组支持使用 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/overview.md) 来访问所有资源和定义角色。
+层次结构中的子资源继承这些权限。 可将任何 Azure 角色分配到管理组，该角色将继承资源的层次结构。 例如，可以向管理组分配 Azure 角色 VM 参与者。 此角色不对管理组执行任何操作，但将继承该管理组下的所有 VM。
 
 下图列出了管理组的角色和支持的操作。
 
-| RBAC 角色名称             | 创建 | 重命名 | 移动\*\* | 删除 | 分配访问权限 | 分配策略 | 读取  |
+| Azure 角色名称             | 创建 | 重命名 | 移动\*\* | 删除 | 分配访问权限 | 分配策略 | 读取  |
 |:-------------------------- |:------:|:------:|:--------:|:------:|:-------------:| :------------:|:-----:|
 |所有者                       | X      | X      | X        | X      | X             | X             | X     |
 |参与者                 | X      | X      | X        | X      |               |               | X     |

@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 07/27/2020
-ms.openlocfilehash: 113249f56c1f5f9c035ec2ff6ccb7309dd355763
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9642f6d1090ef358cf86241640255c647dea52eb
+ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281338"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87432671"
 ---
 # <a name="changelog"></a>更改日志 #
 
@@ -57,13 +57,13 @@ ms.locfileid: "87281338"
 
 ### <a name="changes-234"></a>2\.3.4 版中的更改
 
-- 在 iOS 和 MacOS Safari 上播放 HLS 时删除了空字幕标签/轨道
+- 在 iOS 和 macOS Safari 上播放 HLS 时删除了空字幕标签/轨道
 - 减少了 IMSC1 字幕出现 412 错误的次数
 - 在控制台中针对 10 个连续的空 IMSC1 字幕响应输出警告，以帮助实时调试
 
 ## <a name="232-official-update-october-9-2019"></a>2.3.2 版（正式更新，2019 年 10 月 9 日）
 
-### <a name="features"></a>功能
+### <a name="features-232"></a>功能 2.3.2
 
 -添加了对 Chromium Edge 浏览器的 DASH 播放的支持
 
@@ -101,7 +101,7 @@ ms.locfileid: "87281338"
 
 - 一旦收到 segmentDecryptError 并且播放器已处于实时边缘时，播放器会立即刷新清单而不是尝试播放下一个片段
 - 添加了更多诊断日志记录
-- 更新了文档以包括针对 iOS Safari 的 FairPlay 支持
+- 更新了文档，在其中包含了对 iOS Safari 的 FairPlay 支持
 - 添加了 IMSC1 的“srclang”选项示例
 - 添加了针对文本轨道的填充、textPadding、boxShadow 替代。
 - 添加了错误代码 (0x0020025B)，以区分由于无 Internet 而导致的片段下载失败，而不仅仅是引发 0x00200259
@@ -228,7 +228,7 @@ ms.locfileid: "87281338"
 
 ### <a name="changes-218"></a>更改 2.1.8 ###
 
-- [更改] 更新了使用目前不支持的 Flash 30 播放 AES 内容时会显示的 0x0600001 错误。 有关更多详细信息，请参阅[已知问题](azure-media-player-known-issues.md)
+- [更改] 更新了在使用目前不支持的 Flash 30 播放 AES 内容时显示的 0x0600001 错误。 有关更多详细信息，请参阅[已知问题](azure-media-player-known-issues.md)
 - [更改] 针对当清单请求返回 404 或返回空白清单时的实时场景添加了额外的重试。
 
 ## <a name="217-official-update"></a>2.1.7（正式更新） ##

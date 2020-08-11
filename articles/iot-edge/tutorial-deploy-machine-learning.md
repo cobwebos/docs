@@ -4,17 +4,17 @@ description: 在本教程中，将创建 Azure 机器学习模型，然后将其
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5bfbf4a432f720b683ded4c85530135d86b24eba
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ae76fab6359675a87ad252a08ebb199bf724f129
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76773005"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439365"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>教程：将 Azure 机器学习作为 IoT Edge 模块进行部署（预览版）
 
@@ -30,10 +30,10 @@ ms.locfileid: "76773005"
 
 > [!div class="checklist"]
 >
-> * 创建 Azure 机器学习模块
-> * 将模块容器推送到 Azure 容器注册表
-> * 将 Azure 机器学习模块部署到 IoT Edge 设备
-> * 查看生成的数据
+> * 创建 Azure 机器学习模块。
+> * 将模块容器推送到 Azure 容器注册表。
+> * 将 Azure 机器学习模块部署到 IoT Edge 设备。
+> * 查看生成的数据。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -94,13 +94,13 @@ Azure IoT Edge 设备：
 
 2. 概述部分列出了工作区详细信息及其相关资源  。 选择“注册表”值，该值应为工作区名称，后跟随机数字  。
 
-3. 在容器注册表中，选择“存储库”  。 应会看到一个名为“tempanomalydetection”的存储库，它是通过在前面部分中运行的笔记本创建的  。
+3. 在容器注册表中的“服务”下，选择“存储库”。 应会看到一个名为“tempanomalydetection”的存储库，它是通过在前面部分中运行的笔记本创建的  。
 
 4. 选择“tempanomalydetection”  。 应看到存储库中有一个标记：1  。
 
-   现在你已知道注册表名称、存储库名称和标记，你知道了容器的完整映像路径。 映像路径如下所示 \<registry_name\>.azurecr.io/tempanomalydetection:1  。 映像路径可用于将此容器部署到 IoT Edge 设备。
+   现在你已知道注册表名称、存储库名称和标记，你知道了容器的完整映像路径。 映像路径如下所示 \<registry_name\>.azurecr.io/tempanomalydetection:1。 映像路径可用于将此容器部署到 IoT Edge 设备。
 
-5. 在容器注册表中，选择“访问密钥”  。 应看到多个访问凭据，包括“登录服务器”以及管理员用户的“用户名”和“密码”    。
+5. 在容器注册表中的“设置”下，选择“访问密钥”。 应看到多个访问凭据，包括“登录服务器”以及管理员用户的“用户名”和“密码”    。
 
    这些凭据可以包含在部署清单中，使 IoT Edge 设备能够从注册表中拉取容器映像。
 
@@ -134,17 +134,11 @@ Azure IoT Edge 设备：
 
 以下步骤介绍如何设置 Visual Studio Code，以便监视到达 IoT 中心的设备到云消息。
 
-1. 在 Visual Studio Code 中，选择“IoT 中心设备”。 
+1. 在 Visual Studio Code 资源管理器中的“Azure IoT 中心”部分下，展开“设备”可查看 IoT 设备的列表。 
 
-2. 选择 **...** ，然后从菜单中选择“设置 IoT 中心连接字符串”。 
+2. 右键单击 IoT Edge 设备的名称，选择“开始监视内置事件终结点”。
 
-   ![设置 IoT 中心连接字符串](./media/tutorial-deploy-machine-learning/set-connection.png)
-
-3. 在页面顶部打开的文本框中，输入你的 IoT 中心的 iothubowner 连接字符串。 你的 IoT Edge 设备应当会出现在“IoT 中心设备”列表中。
-
-4. 再次选择“...”  ，然后选择“开始监视内置事件终结点”。 
-
-5. 观察每五秒来自 tempSensor 的消息。 消息正文包含 machinelearningmodule 提供的名为 anomaly、值为 true 或 false 的属性  。 如果模型成功运行，**AzureMLResponse** 属性包含值“OK”。
+3. 每隔五秒观察来自 tempSensor 的消息。 消息正文包含一个由 machinelearningmodule 提供的且名为“异常”的属性，其值为 true 或 false。 如果模型成功运行，AzureMLResponse 属性包含值“OK”。
 
    ![消息正文中的 Azure 机器学习响应](./media/tutorial-deploy-machine-learning/ml-output.png)
 

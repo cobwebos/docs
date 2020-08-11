@@ -12,12 +12,12 @@ ms.date: 08/14/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: e005ba9c5458849863bd4668ffde1e0f6fb4bf91
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 263eb531466e26ed6069dc889c17e2632aa9ed20
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76704215"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799406"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis"></a>快速入门：配置应用程序来公开 Web API
 
@@ -75,6 +75,13 @@ ms.locfileid: "76704215"
 
 1. 完成后，设置“状态”并选择“添加范围”。  
 
+1. （可选）若要取消向应用用户提示同意你定义的范围，可以“预授权”客户端应用程序访问 Web API。 应该仅预授权所信任的客户端应用程序，因为用户不会有机会拒绝同意。
+    1. 在“授权客户端应用程序”下，选择“添加客户端应用程序”
+    1. 输入要预授权的客户端应用程序的“应用程序(客户端) ID”。 例如，以前注册的 Web 应用程序的 ID。
+    1. 在“授权的范围”下，选择要取消显示许可提示的范围，然后选择“添加应用程序”。
+
+    客户端应用现在是预授权的客户端应用 (PCA)，系统在用户登录时不会提示用户同意。
+
 1. 按步骤[验证 Web API 是否已公开给其他应用程序](#verify-the-web-api-is-exposed-to-other-applications)。
 
 ## <a name="expose-a-new-scope-or-role-through-the-application-manifest"></a>通过应用程序清单公开新的范围或角色
@@ -83,8 +90,8 @@ ms.locfileid: "76704215"
 
 若要通过应用程序清单公开新的范围，请执行以下操作：
 
-1. 在应用的“概览”页中，选择“清单”部分。   此时会打开一个基于 Web 的清单编辑器，可在其中**编辑**门户中的清单。 （可选）可以选择“下载”并在本地编辑清单，然后使用“上传”将清单重新应用到应用程序。  
-    
+1. 在应用的“概览”页中，选择“清单”部分。  此时会打开一个基于 Web 的清单编辑器，可在其中**编辑**门户中的清单。 （可选）可以选择“下载”并在本地编辑清单，然后使用“上传”将清单重新应用到应用程序。 
+
     以下示例介绍通过将以下 JSON 元素添加到 `oauth2Permissions` 集合，在资源/API 中公开一个名为 `Employees.Read.All` 的新范围。
 
       ```json
@@ -105,19 +112,22 @@ ms.locfileid: "76704215"
    >
    > 以后可以根据需要公开其他范围。 请考虑 Web API 可能要公开与各种不同功能关联的多个范围。 在运行时，资源可以通过评估所收到的 OAuth 2.0 访问令牌中的范围 (`scp`) 声明，来控制对 Web API 的访问。
 
-1. 完成后，单击“保存”  。 现在，Web API 已配置为可供目录中的其他应用程序使用。
+1. 完成后，单击“保存”。 现在，Web API 已配置为可供目录中的其他应用程序使用。
 1. 按步骤[验证 Web API 是否已公开给其他应用程序](#verify-the-web-api-is-exposed-to-other-applications)。
 
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>验证 Web API 是否已公开给其他应用程序
 
-1. 返回到 Azure AD 租户，选择“应用注册”，找到并选择要配置的客户端应用程序。 
+1. 返回到 Azure AD 租户，选择“应用注册”，然后找到并选择要配置的客户端应用程序。
 1. 重复[将客户端应用程序配置为访问 Web API](quickstart-configure-app-access-web-apis.md) 中概述的步骤。
-1. 执行到[选择 API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis
-) 这一步时，请选择资源。 此时会看到可供客户端权限请求使用的新范围。
+1. 执行到[选择 API](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis) 这一步时，请选择资源（Web API 应用注册）。
+    * 如果使用 Azure 门户创建了 Web API 应用注册，则 API 资源会在“我的 API”选项卡中列出。
+    * 如果允许 Visual Studio 在项目创建过程中创建 Web API 应用注册，则 API 资源会在“我的组织使用的 API”选项卡中列出。
+
+在选择了 Web API 资源后，应会看到客户端权限请求可用的新范围。
 
 ## <a name="more-on-the-application-manifest"></a>有关应用程序清单的更多信息
 
-应用程序清单充当了用于更新应用程序实体的机制，它定义了 Azure AD 应用程序的标识配置的所有属性。 有关应用程序实体及其架构的详细信息，请参阅[图形 API 应用程序实体文档](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)。 此文包含有关用于指定 API 权限的应用程序实体成员的完整参考信息，包括：  
+应用程序清单充当了用于更新应用程序实体的机制，它定义了 Azure AD 应用程序的标识配置的所有属性。 有关应用程序实体及其架构的详细信息，请参阅[图形 API 应用程序实体文档](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)。 此文包含有关用于指定 API 权限的应用程序实体成员的完整参考信息，包括：
 
 * appRoles 成员，用于定义 Web API 的[应用程序权限](developer-glossary.md#permissions)的 [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type) 实体集合。
 * oauth2Permissions 成员，用于定义 Web API 的[委托权限](developer-glossary.md#permissions)的 [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type) 实体集合。

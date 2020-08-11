@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f9d736098e42bf5ca07eca0cb952275c5e39c2a9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1864ce5a3c1b5b0b2e0cfe757e66fca2074b764c
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87125184"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475798"
 ---
-# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建负载均衡器以对 VM 进行负载均衡
+# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建公共负载均衡器，以便对 VM 进行负载均衡
 
 使用 Azure 门户创建公共负载均衡器和三个虚拟机，通过这种方式开始使用 Azure 负载均衡器。
 
@@ -36,7 +36,7 @@ ms.locfileid: "87125184"
 
 ---
 
-# <a name="option-1-default-create-a-load-balancer-standard-sku"></a>[选项 1（默认）：创建负载均衡器（标准 SKU）](#tab/option-1-create-load-balancer-standard)
+# <a name="option-1-default-create-a-public-load-balancer-standard-sku"></a>[选项 1（默认）：创建公共负载均衡器（标准 SKU）](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >对于生产型工作负载，建议使用标准 SKU 负载均衡器。  有关 sku 的详细信息，请参阅 [Azure 负载均衡器 SKU](skus.md)。
@@ -76,7 +76,7 @@ ms.locfileid: "87125184"
 
 * 后端地址池的负载均衡器设置。
 * 运行状况探测。
-* 负载均衡器规则和自动出站规则。
+* 负载均衡器规则。
 
 ### <a name="create-a-backend-pool"></a>创建后端池
 
@@ -281,7 +281,7 @@ ms.locfileid: "87125184"
 
 8. 选择“保存” 。
 
-# <a name="option-2-create-a-load-balancer-basic-sku"></a>[选项 2：创建负载均衡器（基本 SKU）](#tab/option-1-create-load-balancer-basic)
+# <a name="option-2-create-a-public-load-balancer-basic-sku"></a>[选项 2：创建公共负载均衡器（基本 SKU）](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >对于生产型工作负载，建议使用标准 SKU 负载均衡器。  有关 sku 的详细信息，请参阅 [Azure 负载均衡器 SKU](skus.md)。
@@ -468,8 +468,9 @@ ms.locfileid: "87125184"
 5. 选择“管理”选项卡，或者选择“下一步” > “管理”。
 
 6. 在“管理”选项卡中，选择或输入：
+    
     | 设置 | 值 |
-    |-|-|
+    |---|---|
     | **Monitoring** | |
     | 启动诊断 | 选择“关闭” |
 
@@ -484,6 +485,24 @@ ms.locfileid: "87125184"
     | 名称 |  **myVM2** |**myVM3**|
     | 可用性集| 选择“myAvailabilitySet” | 选择“myAvailabilitySet”|
     | 网络安全组 | 选择现有的“myNSG”| 选择现有的“myNSG”|
+
+### <a name="add-virtual-machines-to-the-backend-pool"></a>向后端池添加虚拟机
+
+必须将在之前步骤中创建的 VM 添加到 myLoadBalancer 的后端池中。
+
+1. 在左侧菜单中选择“所有服务”，选择“所有资源”，然后在资源列表中选择“myLoadBalancer”。  
+
+2. 在“设置”下，依次选择“后端池”和“myBackendPool”  。
+
+3. 在“关联到”下，选择“虚拟机” 。
+
+4. 在“虚拟机”部分，选择“+添加” 。
+
+5. 选中“myVM1”、“myVM2”和“myVM3”旁边的框。
+
+6. 选择“添加”  。
+
+7. 选择“保存” 。
 
 ---
 

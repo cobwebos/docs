@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18b2fb520ecab8b233be3c93ef614a2bce01a75e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e008091b3d0b450384cb7a672a62c786c33bfeab
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034990"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419625"
 ---
 # <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-multi-factor-authentication-or-password-changes"></a>教程：对用户登录使用风险检测以触发 Azure 多重身份验证或密码更改
 
@@ -39,7 +39,7 @@ ms.locfileid: "87034990"
 
 需有以下资源和特权才能完成本教程：
 
-* 一个至少启用了 Azure AD Premium P2 试用版许可证的有效 Azure AD 租户。
+* 一个至少启用了 Azure AD Premium P2 或试用版许可证的有效 Azure AD 租户。
     * 如果需要，[可免费创建一个](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 一个拥有“全局管理员”特权的帐户。
 * 为自助式密码重置和 Azure 多重身份验证配置的 Azure AD

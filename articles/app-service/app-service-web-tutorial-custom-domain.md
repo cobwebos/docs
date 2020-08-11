@@ -7,12 +7,12 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: a594a754f33ae60d151215deb5a5ed57f87126c3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 96a947a20a17c4dc08851824a392143ce162f186
+ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050650"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87543549"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -95,7 +95,12 @@ ms.locfileid: "87050650"
 
 ## <a name="get-domain-verification-id"></a>获取域验证 ID
 
-若要将自定义域添加到应用，需要使用域提供程序添加验证 ID 作为 TXT 记录来验证你对域的所有权。 在应用页的左侧导航窗格中，单击“设置”下的“自定义域” 。 从此处复制自定义域验证 ID 的值。 下一步需要此验证 ID。
+若要将自定义域添加到应用，需要使用域提供程序添加验证 ID 作为 TXT 记录来验证你对域的所有权。 在应用页的左侧导航窗格中，单击“自定义域”。 复制“自定义域”页中的“自定义域验证 ID” ，以便进行下一步。
+
+![获取自定义域验证 ID](./media/app-service-web-tutorial-custom-domain/get-custom-domain-verification-id.png)
+
+> [!WARNING]
+> 向自定义域添加域验证 ID 可防止出现无关联的 DNS 条目，并避免子域接管。 有关此常见高严重性威胁的详细信息，请参阅[子域接管](../security/fundamentals/subdomain-takeover.md)。
 
 ## <a name="map-your-domain"></a>映射域
 

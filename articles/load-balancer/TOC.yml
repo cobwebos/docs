@@ -128,6 +128,8 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: 内部负载均衡器 - PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
+    - name: 仅出站的负载均衡器配置
+      href: egress-only.md
 - name: 疑难解答
   items:
     - name: 对 Azure 负载均衡器进行故障排除

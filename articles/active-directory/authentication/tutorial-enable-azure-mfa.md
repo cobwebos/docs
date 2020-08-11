@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1df88e26284dc868267cbc79e27df6f0e25f1250
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5aa84faea43846a2f930373529769e62f76e5bbf
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035054"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87419540"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>教程：使用 Azure 多重身份验证保护用户登录事件
 
@@ -39,7 +39,7 @@ ms.locfileid: "87035054"
 
 需有以下资源和特权才能完成本教程：
 
-* 一个至少启用了 Azure AD Premium 或试用版许可证的有效 Azure AD 租户。
+* 一个至少启用了 Azure AD Premium P1 或试用版许可证的有效 Azure AD 租户。
     * 如果需要，[可免费创建一个](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 一个拥有全局管理员特权的帐户。
 * 你知道其密码的非管理员测试用户，例如 *testuser*。 本教程将使用此帐户测试最终用户的 Azure 多重身份验证体验。
@@ -65,7 +65,7 @@ ms.locfileid: "87035054"
 1. 选中“用户和组”对应的框，然后选择“选择”以浏览可用的 Azure AD 用户和组。
 1. 浏览并选择 Azure AD 组（例如 *MFA-Test-Group*），然后选择“选择”。
 
-    [![](media/tutorial-enable-azure-mfa/select-group-for-conditional-access-cropped.png "Select your Azure AD group to use with the Conditional Access policy")](media/tutorial-enable-azure-mfa/select-group-for-conditional-access.png#lightbox)
+    [ ![选择要与条件访问策略配合使用的 Azure AD 组](media/tutorial-enable-azure-mfa/select-group-for-conditional-access-cropped.png) ](media/tutorial-enable-azure-mfa/select-group-for-conditional-access.png#lightbox)
 
 1. 若要对该组应用条件访问策略，请选择“完成”。
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 317cc5222b3444ae2ed242df694d317503c72a87
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9831305f3889f977a270630b40fa0d78ec1085bd
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290664"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501195"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>针对本地 VMware VM 设置到 Azure 的灾难恢复
 
@@ -87,7 +87,7 @@ ms.locfileid: "87290664"
 1. 使用 VMware vSphere 客户端登录到 VMware vCenter 服务器或 vSphere ESXi 主机。
 2. 在“文件”菜单中，选择“部署 OVF 模板”以启动“部署 OVF 模板”向导  。
 
-     ![OVF 模板](./media/vmware-azure-tutorial/vcenter-wizard.png)
+     ![VMWare vSphere 客户端中的部署 OVF 模板命令的屏幕截图。](./media/vmware-azure-tutorial/vcenter-wizard.png)
 
 3. 在“选择源”中，输入下载的 OVF 所在的位置。
 4. 在“查看详细信息”中，选择“下一步”。
@@ -153,7 +153,7 @@ ms.locfileid: "87290664"
 1. 选择“准备基础结构” > “目标”。 选择要使用的 Azure 订阅。 我们将使用资源管理器模型。
 2. Site Recovery 会检查是否有一个或多个虚拟网络。 在此教程系列的[第一个教程](tutorial-prepare-azure.md)中设置 Azure 组件时，你应该已经有了这些。
 
-   ![“目标”选项卡](./media/vmware-azure-tutorial/storage-network.png)
+   ![“准备基础结构”>“目标”选项的屏幕截图。](./media/vmware-azure-tutorial/storage-network.png)
 
 ## <a name="create-a-replication-policy"></a>创建复制策略
 
@@ -165,7 +165,7 @@ ms.locfileid: "87290664"
 6. 在“恢复点保留期”中，指定每个恢复点的保留时间。 在本教程中，我们将使用 72 小时。 可以将复制的 VM 恢复到保留窗口中的任何点。
 7. 在“应用一致性快照频率”中，指定创建应用一致性快照的频率。 我们将使用默认值，即 60 分钟。 选择“确定”以创建策略。
 
-   ![创建复制策略](./media/vmware-azure-tutorial/replication-policy.png)
+   ![创建复制策略选项的屏幕截图。](./media/vmware-azure-tutorial/replication-policy.png)
 
 - 此策略自动与配置服务器关联。
 - 默认情况下会自动创建一个匹配策略，用于故障回复。 例如，如果复制策略是 **rep-policy**，则故障回复策略将是 **rep-policy-failback**。 从 Azure 启动故障回复之前，不会使用此策略。

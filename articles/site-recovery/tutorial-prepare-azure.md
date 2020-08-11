@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 312723818c4cef82ad6c96b013d7ec81ede276cc
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: ed517f2f6e04f60ec1c9c808f2fdf03203fb891b
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130907"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498967"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>准备 Azure 以实现本地到 Azure 的灾难恢复
 
@@ -62,7 +62,7 @@ ms.locfileid: "86130907"
 6. 在“区域”中，选择保管库应位于的区域。 我们将使用“西欧”。
 7. 选择“查看 + 创建”。
 
-   ![创建新的保管库](./media/tutorial-prepare-azure/new-vault-settings.png)
+   ![创建恢复服务保管库页的屏幕截图。](./media/tutorial-prepare-azure/new-vault-settings.png)
 
    新保管库此时会列在“仪表板” > “所有资源”中，以及“恢复服务保管库”主页上。  
 
@@ -81,7 +81,7 @@ ms.locfileid: "86130907"
 9. 我们将保留基本 DDoS 防护的默认选项，网络上没有服务终结点或防火墙。
 9. 选择“创建”。
 
-   ![创建虚拟网络](media/tutorial-prepare-azure/create-network.png)
+   ![创建虚拟网络选项的屏幕截图。](media/tutorial-prepare-azure/create-network.png)
 
 创建虚拟网络需要几秒钟的时间。 创建后，可在 Azure 门户仪表板中看到它。
 

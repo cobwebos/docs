@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: mihansen
 author: hansenms
 ms.date: 02/07/2019
-ms.openlocfilehash: 684f85042fd09c14621801ec017fea0e632f2598
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.openlocfilehash: 6e0851a55673792adc905d27fdd3f5c13d572032
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "84870526"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87563953"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>使用 Postman 访问 Azure API for FHIR
 
@@ -23,6 +23,7 @@ ms.locfileid: "84870526"
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 中存在 FHIR 终结点。 可使用托管的 Azure API for FHIR 或 Azure 的开放源代码 FHIR 服务器设置该终结点。 使用 [Azure 门户](fhir-paas-portal-quickstart.md)、[PowerShell](fhir-paas-powershell-quickstart.md) 或 [Azure CLI](fhir-paas-cli-quickstart.md) 设置托管的 Azure API for FHIR。
+- 要用于访问 FHIR 服务的[客户端应用程序](register-confidential-azure-ad-client-app.md)
 - 已安装 Postman。 可以从 [https://www.getpostman.com](https://www.getpostman.com) 获取它。
 
 ## <a name="fhir-server-and-authentication-details"></a>FHIR 服务器和身份验证详细信息
@@ -108,7 +109,7 @@ ms.locfileid: "84870526"
 }
 ```
 
-在进行故障排除时，最好首先验证你是否拥有正确的受众（`aud` 声明）。 如果令牌来自正确的颁发者（`iss` 声明）并且你拥有正确的受众（`aud` 声明），但仍无法访问 FHIR API，则用户或服务主体（`oid` 声明）可能无权访问 FHIR 数据平面。 建议[使用 Azure 基于角色的访问控制](configure-azure-rbac.md)，向用户分配数据平面角色。 如果针对数据平面使用外部的辅助 Azure Active Directory 租户，则需要 [配置本地 RBAC 分配](configure-local-rbac.md)。
+在进行故障排除时，最好首先验证你是否拥有正确的受众（`aud` 声明）。 如果令牌来自正确的颁发者（`iss` 声明）并且你拥有正确的受众（`aud` 声明），但仍无法访问 FHIR API，则用户或服务主体（`oid` 声明）可能无权访问 FHIR 数据平面。 建议[使用 Azure 基于角色的访问控制 (Azure RBAC)](configure-azure-rbac.md)，向用户分配数据平面角色。 如果针对数据平面使用外部的辅助 Azure Active Directory 租户，则需要 [配置本地 RBAC 分配](configure-local-rbac.md)。
 
 此外，还可以[使用 Azure CLI 获取用于 Azure API for FHIR 的令牌](get-healthcare-apis-access-token-cli.md)。 如果使用通过 Azure CLI 获取的令牌，则应使用授权类型“持有者令牌”，并直接将令牌粘贴到其中。
 

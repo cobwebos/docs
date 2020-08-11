@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba0c44953a33e6ccd0bbe406159e9636411695ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f06f0f376c1ecafcff833aa4b6bece0a0e35d10
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87017087"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475271"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>教程：Azure Active Directory 单一登录 (SSO) 与 JIRA SAML SSO by Microsoft 集成
 
@@ -42,7 +42,7 @@ ms.locfileid: "87017087"
 若要配置 Azure AD 与 JIRA SAML SSO by Microsoft 的集成，需要以下项：
 
 - 一个 Azure AD 订阅。 如果没有订阅，可以获取一个[免费帐户](https://azure.microsoft.com/free/)。
-- 应在 Windows 64 位版本上安装并配置 JIRA Core 和 Software 6.4 到 8.8.0，或 JIRA Service Desk 3.0 到 4.8.0
+- 应在 Windows 64 位版本上安装并配置 JIRA Core 和 Software 6.4 到 8.11.0，或 JIRA Service Desk 3.0 到 4.8.0
 - JIRA 服务器已启用 HTTPS
 - 请注意，下面部分列出了支持 JIRA 插件版本。
 - JIRA 服务器应当可以访问 Internet，尤其是访问用于身份验证的 Azure AD 登录页，还应当可以接收来自 Azure AD 的令牌
@@ -63,7 +63,7 @@ ms.locfileid: "87017087"
 
 ## <a name="supported-versions-of-jira"></a>支持的 JIRA 版本
 
-* JIRA Core and Software：6.4 到 8.8.0
+* JIRA Core and Software：6.4 到 8.11.0
 * JIRA Service Desk 3.0.0 到 4.8.0
 * JIRA 还支持 5.2。 有关更多详细信息，请单击 [Microsoft Azure Active Directory single sign-on for JIRA 5.2](jira52microsoft-tutorial.md)
 

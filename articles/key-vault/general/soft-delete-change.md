@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: sudbalas
-ms.openlocfilehash: 91068bacee0bde9e11cc23816bd8e2a101854fb2
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: c75da4c27eae76df51836143c4fb383a1473159a
+ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388243"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87564123"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>对所有 Key Vault 启用软删除
 
@@ -73,7 +73,7 @@ ms.locfileid: "87388243"
 1. 登录到 Azure 门户。
 2. 搜索 Key Vault。
 3. 选择设置下的“属性”。
-4. 在“软删除”下，选择与“启用对 此 Vault 及其对象的恢复”相对应的单选按钮。
+4. 在“软删除”下，选择与“启用对此保管库及其对象的恢复”。
 5. 设置软删除的保持期。
 6. 选择“保存”。
 

@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/15/2020
+ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 07350ffe4a57bfe4a79bfce5d821b51535867935
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5d4b87c14422744fd62d42a4d8e5b1ca0f34ffac
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76166999"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439721"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>教程：在边缘使用自定义视觉服务进行图像分类
 
@@ -142,7 +142,7 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
 
 可以通过解决方案以逻辑方式为单个 IoT Edge 部署开发和组织多个模块。 解决方案包含适用于一个或多个模块的代码，另外还包含部署清单，用于声明如何在 IoT Edge 设备上配置模块。 
 
-1. 选择“视图”   >   “命令面板”，打开 VS Code 命令面板。 
+1. 在 Visual Studio Code 中，选择“查看” > “命令面板”，以打开 VS Code 命令面板。 
 
 1. 在“命令面板”中，输入并运行 Azure IoT Edge：**New IoT Edge solution** 命令。 在命令面板中提供以下信息，以便创建解决方案： 
 
@@ -152,7 +152,7 @@ Azure IoT Edge 可以将工作负荷从云移到边缘，让 IoT 解决方案更
    | 提供解决方案名称 | 输入解决方案的描述性名称（例如 **CustomVisionSolution**），或者接受默认名称。 |
    | 选择模块模板 | 选择“Python 模块”。  |
    | 提供模块名称 | 将模块命名为 **classifier**。<br><br>必须确保此模块名称为小写。 IoT Edge 在引用模块时区分大小写，而此解决方案使用的库会将所有请求格式化为小写。 |
-   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是在上一步预先填充的。 将 **localhost:5000** 替换为 Azure 容器注册表中的登录服务器值。 可以在 Azure 门户的容器注册表的“概览”页中检索登录服务器。<br><br>最终的字符串看起来类似于 \<注册表名称\>.azurecr.io/classifier  。 |
+   | 为模块提供 Docker 映像存储库 | 映像存储库包含容器注册表的名称和容器映像的名称。 容器映像是在上一步预先填充的。 将 localhost:5000 替换为 Azure 容器注册表中的“登录服务器”值 。 可以在 Azure 门户的容器注册表的“概述”页中检索登录服务器。<br><br>最终的字符串看起来类似于 \<registry name\>.azurecr.io/classifier。 |
  
    ![提供 Docker 映像存储库](./media/tutorial-deploy-custom-vision/repository.png)
 
@@ -161,6 +161,8 @@ Visual Studio Code 窗口会加载 IoT Edge 解决方案工作区。
 ### <a name="add-your-registry-credentials"></a>添加注册表凭据
 
 环境文件存储容器注册表的凭据，并将其与 IoT Edge 运行时共享。 此运行时需要这些凭据才能将专用映像拉取到 IoT Edge 设备中。
+
+IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到环境文件中。 检查凭据是否已包含在内。 如果没有，请立即添加：
 
 1. 在 VS Code 资源管理器中，打开 .env 文件。
 2. 使用从 Azure 容器注册表复制的 **username** 和 **password** 值更新相关字段。
@@ -215,9 +217,9 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
    | Prompt | 值 | 
    | ------ | ----- |
    | 选择部署模板文件 | 选择 CustomVisionSolution 文件夹中的 deployment.template.json 文件。 |
-   | 选择模块模板 | 选择“Python 模块”  |
+   | 选择模块模板 | 选择“Python 模块” |
    | 提供模块名称 | 将模块命名为 **cameraCapture** |
-   | 为模块提供 Docker 映像存储库 | 将 **localhost:5000** 替换为 Azure 容器注册表的登录服务器值。<br><br>最终的字符串看起来类似于 **\<registryname\>.azurecr.io/cameracapture**。 |
+   | 为模块提供 Docker 映像存储库 | 将 localhost:5000 替换为 Azure 容器注册表的登录服务器值。<br><br>最终的字符串看起来类似于 \<registryname\>.azurecr.io/cameracapture。 |
 
    VS Code 窗口会加载解决方案工作区中的新模块，并会更新 deployment.template.json 文件。 现在会看到两个模块文件夹：classifier 和 cameraCapture。 
 
@@ -364,7 +366,7 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 
     ```json
         "routes": {
-          "CameraCaptureToIoTHub": "FROM /messages/modules/cameraCapture/outputs/* INTO $upstream"
+          "cameraCaptureToIoTHub": "FROM /messages/modules/cameraCapture/outputs/* INTO $upstream"
         },
     ```
 
@@ -372,31 +374,51 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 
 7. 保存 **deployment.template.json** 文件。
 
-## <a name="build-and-deploy-your-iot-edge-solution"></a>生成并部署 IoT Edge 解决方案
+## <a name="build-and-push-your-iot-edge-solution"></a>生成并推送 IoT Edge 解决方案
 
-创建两个模块并配置部署清单模板以后，即可生成容器映像并将其推送到容器注册表。 
+创建两个模块并配置部署清单模板以后，即可生成容器映像并将其推送到容器注册表。
 
 映像位于注册表中以后，即可将解决方案部署到 IoT Edge 设备。 可以通过 IoT 中心设置设备上的模块，但是也可以通过 Visual Studio Code 访问 IoT 中心和设备。 在此部分，请先设置对 IoT 中心的访问权限，然后使用 VS Code 将解决方案部署到 IoT Edge 设备。
 
-首先，生成解决方案并将其推送到容器注册表。 
+首先，生成解决方案并将其推送到容器注册表。
 
-1. 在 VS Code 资源管理器中右键单击“deployment.template.json”文件，然后选择“生成并推送 IoT Edge 解决方案”。   可以在 VS Code 的集成终端中观察此操作的进度。 
-2. 请注意，已为解决方案添加了一个新文件夹：**config**。展开该文件夹，打开其中的 **deployment.json** 文件。
-3. 查看 deployment.json 文件中的信息。 系统会自动根据已配置的部署模板文件以及解决方案中的信息（包括 .env 文件和 module.json 文件）创建（或更新）deployment.json 文件。 
+1. 打开 VS Code 集成终端，方法是选择“视图” > “终端” 。
 
-然后选择设备并部署解决方案。
+2. 在终端中输入以下命令，以登录到 Docker。 使用 Azure 容器注册表中的用户名、密码和登录服务器登录。 可以在 Azure 门户中从注册表的“访问密钥”部分检索这些值。
 
-1. 在 VS Code 资源管理器中，展开“Azure IoT 中心设备”部分。  
-2. 右键单击要将其作为部署目标的设备，然后选择“为单个设备创建部署”。  
-3. 在文件资源管理器中导航到解决方案中的 **config** 文件夹，然后选择 **deployment.json**。 单击“选择 Edge 部署清单”。  
+   ```bash
+   docker login -u <ACR username> -p <ACR password> <ACR login server>
+   ```
 
-如果部署成功，则会在 VS Code 输出中输出确认消息。 在 VS Code 资源管理器中，展开用于此部署的 IoT Edge 设备的详细信息。 如果模块没有立即显示，请将光标悬停在“Azure IoT 中心设备”标题上，以便启用刷新按钮。  模块启动并将信息报告回 IoT 中心可能需要一些时间。 
+   可能会收到一条安全警告，推荐使用 `--password-stdin`。 这条最佳做法是针对生产方案建议的，这超出了本教程的范畴。 有关详细信息，请参阅 [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) 参考。
 
-也可查看设备本身上的所有模块是否都已启动并运行。 在 IoT Edge 设备上运行以下命令，以便查看模块的状态。 模块启动可能需要一些时间。
+3. 在 VS Code 资源管理器中右键单击“deployment.template.json”文件，然后选择“生成并推送 IoT Edge 解决方案”。
+
+   “生成并推送”命令会启动三项操作。 首先，它在解决方案中创建名为 **config** 的新文件夹，用于保存基于部署模板和其他解决方案文件中的信息生成的完整部署清单。 其次，它会运行 `docker build`，以基于目标体系结构的相应 dockerfile 生成容器映像。 然后，它会运行 `docker push`，以将映像存储库推送到容器注册表。
+
+   首次执行此过程可能需要几分钟时间，但下次运行命令时速度会变快。
+
+## <a name="deploy-modules-to-device"></a>将模块部署到设备
+
+使用 Visual Studio Code 资源管理器和 Azure IoT Tools 扩展将模块项目部署到 IoT Edge 设备。 你已经为方案准备了部署清单，即 config 文件夹中的 deployment.amd64.json 文件。 现在需要做的就是选择一个设备来接收部署。
+
+确保 IoT Edge 设备已启动并运行。
+
+1. 在 Visual Studio Code 资源管理器中的“Azure IoT 中心”部分下，展开“设备”可查看 IoT 设备的列表。 
+
+2. 右键单击 IoT Edge 设备的名称，然后选择“为单个设备创建部署”。
+
+3. 选择 config 文件夹中的 deployment.amd64.json 文件，然后单击“选择 Edge 部署清单”。   不要使用 deployment.template.json 文件。
+
+4. 在设备下，展开“模块”可查看已部署的正在运行的模块的列表。 单击“刷新”按钮。 此时应看到新的 classifier 和 cameraCapture 模块与 $edgeAgent 和 $edgeHub 一起运行   。  
+
+也可查看设备本身上的所有模块是否都已启动并运行。 在 IoT Edge 设备上运行以下命令，以便查看模块的状态。
 
    ```bash
    iotedge list
    ```
+
+启动模块可能需要数分钟时间。 IoT Edge 运行时需要接收其新的部署清单，从容器运行时下拉模块映像，然后启动每个新模块。
 
 ## <a name="view-classification-results"></a>查看分类结果
 
@@ -408,9 +430,14 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
    iotedge logs cameraCapture
    ```
 
-在 Visual Studio Code 中右键单击 IoT Edge 设备的名称，选择“开始监视内置事件终结点”。  
+在 Visual Studio Code 中右键单击 IoT Edge 设备的名称，选择“开始监视内置事件终结点”。 
 
-自定义视觉模块中的结果是从 cameraCapture 模块作为消息发送的，其中包括图像为铁杉树或樱花树的概率。 由于图像为铁杉，因此会看到概率为 1.0。 
+> [!NOTE]
+> 最初可能会在 cameraCapture 模块的输出中看到一些连接错误。 这是由于所部署的模块与启动的模块之间的延迟导致的。
+>
+> cameraCapture 模块会自动重新尝试连接，直至成功。 随后，你应看到如下所述的预期图像分类消息。
+
+自定义视觉模块中的结果是从 cameraCapture 模块作为消息发送的，其中包括图像为铁杉树或樱花树的概率。 由于图像为铁杉，因此会看到概率为 1.0。
 
 ## <a name="clean-up-resources"></a>清理资源
 

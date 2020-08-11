@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 3be81d104e32946e2bfd7dc76052dad464f95623
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 4e28a46b8d231b3f228a95ea06b7b9cada50de54
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86130980"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498984"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>为 Hyper-V 灾难恢复准备 Azure 资源
 
@@ -63,7 +63,7 @@ ms.locfileid: "86130980"
 9. 在“位置”中，选择存储帐户的地理位置。 本教程使用“西欧”。
 10. 选择“创建”以创建存储帐户。
 
-   ![创建存储帐户](media/tutorial-prepare-azure/create-storageacct.png)
+   ![创建存储帐户选项的屏幕截图。](media/tutorial-prepare-azure/create-storageacct.png)
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
@@ -74,7 +74,7 @@ ms.locfileid: "86130980"
 3. 在“位置”中，选择该保管库要放到的区域。 本教程使用“西欧”。
 4. 若要从仪表板快速访问保管库，请选择“固定到仪表板” > “创建”。
 
-![创建新的保管库](./media/tutorial-prepare-azure/new-vault-settings.png)
+![创建恢复服务保管库页的屏幕截图。](./media/tutorial-prepare-azure/new-vault-settings.png)
 
 新保管库显示在“仪表板” > “所有资源”中，以及“恢复服务保管库”主页上。
 
@@ -91,7 +91,7 @@ ms.locfileid: "86130980"
 7. 保留基本 DDoS 防护的默认选项，网络上没有服务终结点。
 8. 选择“创建”。
 
-![创建虚拟网络](media/tutorial-prepare-azure/create-network.png)
+![创建虚拟网络选项的屏幕截图。](media/tutorial-prepare-azure/create-network.png)
 
 创建虚拟网络需要几秒钟的时间。 创建后，可在 Azure 门户仪表板中看到它。
 

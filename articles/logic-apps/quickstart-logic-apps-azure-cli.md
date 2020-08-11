@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/09/2020
-ms.openlocfilehash: aabb42dc8d86e500875819cbfc169bcc86733219
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/30/2020
+ms.openlocfilehash: e492a5f0afdfc2087e5719df65221d08db0a2e77
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100705"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499545"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>快速入门：使用 Azure CLI 创建和管理逻辑应用
 
@@ -271,3 +271,11 @@ Expecting value: line 1 column 1 (char 0)
 | 调试 | `--debug` | 显示所有调试日志。 |
 | 帮助消息 | `--help -h` | 显示帮助对话框。 |
 | 查询 | `--query` | 为 JSON 输出设置 JMESPath 查询字符串。 |
+
+## <a name="next-steps"></a>后续步骤
+
+有关 Azure CLI 的详细信息，请参阅 [Azure CLI 文档](/cli/azure/?view=azure-cli-latest)。
+
+有关如何通过 CLI 创建基本逻辑应用的示例，请参阅[示例脚本和工作流定义](sample-logic-apps-cli-script.md)。
+
+可以在 [Microsoft 代码示例浏览器](/samples/browse/?products=azure-logic-apps)中找到其他逻辑应用 CLI 脚本示例。

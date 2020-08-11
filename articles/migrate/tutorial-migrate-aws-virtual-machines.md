@@ -1,15 +1,15 @@
 ---
-title: 发现、评估 Amazon Web Services (AWS) VM 并将其迁移到 Azure
+title: 发现、评估 Amazon Web Services (AWS) EC2 VM 并将其迁移到 Azure
 description: 本文介绍如何使用 Azure Migrate 将 AWS VM 迁移到 Azure。
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 5d697c2146144ca7f4b9a8739b6863ba31845f4e
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 61a7bee52179ac525b42ad696d118f4f753f6931
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86165424"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534817"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>发现、评估 Amazon Web Services (AWS) VM 并将其迁移到 Azure
 
@@ -172,7 +172,7 @@ ms.locfileid: "86165424"
     9.10 在“摘要”中选择“安装” 。   
     9.11 “安装进度”显示有关安装过程的信息。 完成后，选择“完成”。 此时会出现一个显示重启消息的窗口。 选择“确定”。   
     9.12 接下来会出现一个窗口，显示有关配置服务器连接通行短语的消息。 将通行短语复制到剪贴板，并将它保存在源 VM 上的临时文本文件中。 在稍后的移动服务安装过程中，需要用到此通行短语。
-10. 安装完成后，设备配置向导将自动启动（也可使用在设备的桌面上创建的 cspsconfigtool 快捷方式手动启动该向导）。 使用向导的“管理帐户”选项卡可添加要用于移动服务的推送安装的帐户详细信息。 在本教程中，我们将在要复制的源 VM 上手动安装移动服务，因此请在此步骤中创建一个虚拟帐户，然后继续。
+10. 安装完成后，设备配置向导将自动启动（也可使用在设备的桌面上创建的 cspsconfigtool 快捷方式手动启动该向导）。 使用向导的“管理帐户”选项卡可添加要用于移动服务的推送安装的帐户详细信息。 在本教程中，我们将在要复制的源 VM 上手动安装移动服务，因此请在此步骤中创建一个虚拟帐户，然后继续。 可以提供以下详细信息来创建虚拟帐户：“guest”作为友好名称，“username”作为用户名，“password”作为帐户密码。 你将在“启用复制”阶段使用此虚拟帐户。 
 11. 设备已安装并重启后，在“发现计算机”中的“选择配置服务器”内选择新设备，然后单击“完成注册”。   “完成注册”步骤会执行最终的几个任务来准备复制设备。
 
     ![完成注册](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
@@ -240,25 +240,24 @@ ms.locfileid: "86165424"
 
 2. 在“复制”>“源设置” > “你的计算机是否已虚拟化?”中，选择“未虚化/其他”   。
 3. 在“本地设备”中，选择已设置的 Azure Migrate 设备的名称。
-4. 在“进程服务器”中，选择复制设备的名称。
-6. 在“来宾凭据”中，指定将用于手动安装移动服务的虚拟帐户（不支持推送安装）。 然后单击“下一页:虚拟机”。
-
+4. 在“进程服务器”中，选择复制设备的名称。 
+5. 在“来宾凭据”中，请选择以前在[复制安装程序设置](#download-the-replication-appliance-installer)过程中创建的虚拟帐户，以手动安装出行服务（不支持推送安装）。 然后单击“下一页:虚拟机”。   
+ 
     ![复制 VM](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
-
-7. 在“虚拟机”中的“从评估中导入迁移设置?”内，保留默认设置“否，我将手动指定迁移设置”。  
-8. 检查要迁移的每个 VM。 然后单击“下一页:目标设置”。
+6. 在“虚拟机”中的“从评估中导入迁移设置?”内，保留默认设置“否，我将手动指定迁移设置”。  
+7. 检查要迁移的每个 VM。 然后单击“下一页:目标设置”。
 
     ![选择 VM](./media/tutorial-migrate-physical-virtual-machines/select-vms.png)
 
-9. 在“目标设置”中，选择订阅以及要迁移到的目标区域，并指定迁移之后 Azure VM 所在的资源组。
-10. 在“虚拟网络”中，选择迁移之后 Azure VM 要加入到的 Azure VNet/子网。
-11. 在“Azure 混合权益”中：
+8. 在“目标设置”中，选择订阅以及要迁移到的目标区域，并指定迁移之后 Azure VM 所在的资源组。
+9. 在“虚拟网络”中，选择迁移之后 Azure VM 要加入到的 Azure VNet/子网。
+10. 在“Azure 混合权益”中：
     - 如果你不想要应用 Azure 混合权益，请选择“否”。 然后单击“下一步”。
     - 如果你的 Windows Server 计算机享有有效软件保障或 Windows Server 订阅的权益，并且你想要将此权益应用到所要迁移的计算机，请选择“是”。 然后单击“下一步”。
 
     ![目标设置](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
 
-12. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性集。 VM 必须符合 [Azure 要求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
+11. 在“计算”中，查看 VM 名称、大小、OS 磁盘类型和可用性集。 VM 必须符合 [Azure 要求](migrate-support-matrix-physical-migration.md#azure-vm-requirements)。
 
     - **VM 大小**：默认情况下，Azure Migrate 服务器迁移会根据 Azure 订阅中最接近的匹配项选择大小。 或者，请在“Azure VM 大小”中的手动选择一个大小。
     - **OS 磁盘**：为 VM 指定 OS（启动）磁盘。 OS 磁盘是包含操作系统引导加载程序和安装程序的磁盘。 
@@ -266,16 +265,16 @@ ms.locfileid: "86165424"
 
     ![计算设置](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-13. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”。
+12. 在“磁盘”中，指定是否要将 VM 磁盘复制到 Azure，并选择 Azure 中的磁盘类型（标准 SSD/HDD 或高级托管磁盘）。 然后单击“下一步”。
     - 可以从复制中排除磁盘。
     - 如果排除了磁盘，迁移后，这些磁盘将不会出现在 Azure VM 中。 
 
     ![磁盘设置](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
-14. 在“检查并开始复制”中检查设置，然后单击“复制”启动服务器的初始复制。 
+13. 在“检查并开始复制”中检查设置，然后单击“复制”启动服务器的初始复制。 
 
 > [!NOTE]
-> 在复制开始之前，随时可以在“管理” > “复制计算机”中更新复制设置。  开始复制后无法更改设置。
+> 在复制开始之前，随时可以在“管理” > “复制计算机”中更新复制设置。 开始复制后无法更改设置。
 
 ## <a name="8-track-and-monitor-replication-status"></a>8.跟踪和监视复制状态
 
@@ -310,7 +309,7 @@ ms.locfileid: "86165424"
 3. 在“测试迁移”中，选择 Azure VM 在迁移后所在的 Azure VNet。 建议使用非生产 VNet。
 4. “测试迁移”作业随即启动。 在门户通知中监视该作业。
 5. 迁移完成后，在 Azure 门户上的“虚拟机”中查看已迁移的 Azure VM。 计算机名称带有 **-Test** 后缀。
-6. 测试完成后，在“复制计算机”中右键单击该 Azure VM，然后单击“清理测试迁移”。 
+6. 测试完成后，在“复制计算机”中右键单击该 Azure VM，然后单击“清理测试迁移”。
 
     ![清理迁移](./media/tutorial-migrate-physical-virtual-machines/clean-up.png)
 
@@ -323,7 +322,7 @@ ms.locfileid: "86165424"
 
     ![复制服务器](./media/tutorial-migrate-physical-virtual-machines/replicate-servers.png)
 
-2. 在“复制计算机”中，右键单击该 VM 并选择“迁移”。 
+2. 在“复制计算机”中，右键单击该 VM 并选择“迁移”。
 3. 在“迁移” > “关闭虚拟机并执行计划迁移(不会丢失任何数据)”中，选择“是” > “确定”。   
     - 如果你不想要关闭 VM，请选择“否”。
 4. 随即会针对该 VM 启动一个迁移作业。 可单击门户页面右上角的通知铃铛图标，或转到服务器迁移工具的“作业”页面（单击工具磁贴上的“概述”，再从左侧菜单中选择“作业”）来查看作业状态。

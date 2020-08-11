@@ -5,19 +5,19 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6f0a782309edc33a8a5ce661652922494ead2ec0
-ms.sourcegitcommit: 67addb783644bafce5713e3ed10b7599a1d5c151
+ms.openlocfilehash: 12bb0b0098b5108bf780b88fc42b86861ea6fcdc
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2020
-ms.locfileid: "80667308"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439558"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Azure FarmBeats（预览版）概述
 
 Azure FarmBeats 是 Azure Marketplace 中提供的企业到企业产品/服务。 它允许跨提供商聚合农业数据集。 借助 Azure FarmBeats，你可以基于融合的数据集构建人工智能 (AI) 或机器学习 (ML) 模型。 通过使用 Azure FarmBeats，农业企业可以将精力集中在核心价值而非无差别的数据工程工作负荷上。
 
 > [!NOTE]
-> Azure FarmBeats 目前提供公开预览版。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 服务级别协议未随 Azure FarmBeats 一起提供。 使用 [Azure FarmBeats 论坛](https://aka.ms/FarmBeatsMSDN )可获得支持。
+> Azure FarmBeats 目前提供公开预览版。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 服务级别协议未随 Azure FarmBeats 一起提供。 使用 [Azure FarmBeats 支持论坛](https://aka.ms/farmbeatssupport)可获得支持。
 
 ![FarmBeats 项目](./media/architecture-for-farmbeats/farmbeats-architecture-1.png)
 

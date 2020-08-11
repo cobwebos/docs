@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
-ms.openlocfilehash: c2dcba05e3b1fc5cfc32d6f1b38c22b811b73626
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 60ad7f5df4f13d626d7a2c24990c7f48db28d01d
+ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87352587"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87475220"
 ---
 # <a name="iot-plug-and-play-preview-refresh"></a>IoT 即插即用预览刷新版本
 
@@ -86,7 +86,7 @@ iothub-interface-name 属性已被弃用。
 
 [Azure IoT Device Workbench](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-iot-workbench) 扩展提供了对 DTDL v1 的创作支持、与早期版本的模型存储库的集成以及代码生成。
 
-如果在 VS Code 中需要 DTDL v2 创作支持，请在 VS Code 中安装新的 [DTDL 扩展](https://github.com/azure/vscode-dtdl)。 此扩展不提供与模型存储库的集成或代码生成。 现在可以使用 [Web UI](https://aka.ms/iotmodelrepo) 管理存储库中的模型。
+如果在 VS Code 中需要 DTDL v2 创作支持，请在 VS Code 中安装新的 [DTDL 扩展](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-dtdl)。 此扩展不提供与模型存储库的集成或代码生成。 现在可以使用 [Web UI](https://aka.ms/iotmodelrepo) 或 [CLI](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/pnp?view=azure-cli-latest) 管理存储库中的模型。
 
 ## <a name="digital-twin-service-side-rest-apis"></a>数字孪生服务端 REST API
 
@@ -103,8 +103,6 @@ iothub-interface-name 属性已被弃用。
 现在有一个模型存储库，其中包含公开发布的模型和受 RBAC 保护的企业专用模型。 所有模型都具有唯一的标识符，且创建后不可改变。
 
 此版本不支持早期版本中的现有企业模型存储库。 可以继续使用 [Azure IoT 认证](https://preview.catalog.azureiotsolutions.com/products)网站管理旧的 DTDL v1 模型。 但不可以再使用该网站注册、测试和认证设备。
-
-适用于 Azure CLI 的 Azure IoT 扩展不支持新的模型存储库。 `az iot pnp` 命令仅适用于早期版本中的模型存储库。
 
 ## <a name="azure-iot-central"></a>Azure IoT Central
 

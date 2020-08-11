@@ -1,20 +1,20 @@
 ---
 title: 澳大利亚政府 ISM PROTECTED 蓝图示例概述
 description: 澳大利亚政府 ISM PROTECTED 蓝图示例的概述。 此蓝图示例帮助客户评估特定的 ISM PROTECTED 控制措施。
-ms.date: 03/10/2020
+ms.date: 08/03/2020
 ms.topic: sample
-ms.openlocfilehash: d82598498fa7eb24ec2ea3f591d08ce8f9503b54
-ms.sourcegitcommit: 581aaca8956b1717b7bc1c1d7710c782c22e6320
+ms.openlocfilehash: 750cc5551f0bbf05e0da6ad41d46729231243f72
+ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2020
-ms.locfileid: "85517093"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87760424"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>澳大利亚政府 ISM PROTECTED 蓝图示例的控制映射
 
 以下文章详细说明了 Azure 蓝图澳大利亚政府 ISM PROTECTED 蓝图示例如何映射到 ISM PROTECTED 控制措施。 有关控制措施的详细信息，请参阅 [ISM PROTECTED](https://www.cyber.gov.au/ism)。
 
-下面是到 ISM PROTECTED 控制措施的映射。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。  然后，找到并选择“ **\[预览\]：** 审核澳大利亚政府 ISM PROTECTED 控制措施，并部署特定 VM 扩展来支持审核要求”内置策略计划。
+下面是到 ISM PROTECTED 控制措施的映射。 使用右侧的导航栏可直接跳转到特定的控制映射。 许多的映射控制措施都是使用 [Azure Policy](../../../policy/overview.md) 计划实施的。 若要查看完整计划，请在 Azure 门户中打开“策略”，并选择“定义”页。 然后，找到并选择“ **\[预览\]：** 审核澳大利亚政府 ISM PROTECTED 控制措施，并部署特定 VM 扩展来支持审核要求”内置策略计划。
 
 > [!IMPORTANT]
 > 下面的每个控件都与一个或多个 [Azure Policy](../../../policy/overview.md) 定义关联。 这些策略可以帮助你[评估控件的符合性](../../../policy/how-to/get-compliance-data.md)；但是，控件与一个或多个策略之间通常不是 1:1 或完全匹配。 因此，Azure Policy 中的符合性仅引用策略本身；这不确保你完全符合控件的所有要求。 此外，符合性标准包含目前未由任何 Azure Policy 定义处理的控件。 因此，Azure Policy 中的符合性只是整体符合性状态的部分视图。 此符合性蓝图示例的控件和 Azure Policy 定义之间的关联可能会随着时间的推移而发生变化。
@@ -106,10 +106,10 @@ ms.locfileid: "85517093"
 
 - 审核对存储帐户的不受限的网络访问
 - Service Fabric 群集只应使用 Azure Active Directory 进行客户端身份验证
-- \[预览\]：显示允许通过没有密码的帐户进行远程连接的 Linux VM 中的审核结果
-- \[预览\]：部署先决条件，以审核允许通过没有密码的帐户进行远程连接的 Linux VM
-- \[预览\]：显示具有不使用密码的帐户的 Linux VM 中的审核结果
-- \[预览\]：部署必备组件以审核其中的帐户没有密码的 Linux VM
+- 显示允许通过没有密码的帐户进行远程连接的 Linux VM 中的审核结果
+- 部署先决条件，以审核允许通过没有密码的帐户进行远程连接的 Linux VM
+- 显示具有不使用密码的帐户的 Linux VM 中的审核结果
+- 部署必备组件以审核其中的帐户没有密码的 Linux VM
 
 ### <a name="0974-multi-factor-authentication-is-used-to-authenticate-standard-users"></a>0974 使用多重身份验证对标准用户进行身份验证
 
@@ -122,8 +122,8 @@ ms.locfileid: "85517093"
 
 ### <a name="0421-passphrases-used-for-single-factor-authentication-are-a-minimum-of-14-characters-with-complexity-ideally-as-4-random-words"></a>0421 用于单重身份验证的通行短语至少包含 14 个字符以满足复杂性要求，且最好包含 4 个随机字
 
-- \[预览\]：显示“安全设置 - 帐户策略”中 Windows VM 配置的审核结果
-- \[预览\]：部署必备组件以审核“安全设置 - 帐户策略”中的 Windows VM 配置
+- 显示“安全设置 - 帐户策略”中 Windows VM 配置的审核结果
+- 部署必备组件以审核“安全设置 - 帐户策略”中的 Windows VM 配置
 
 ## <a name="guidelines-for-system-management---system-administration"></a>系统管理指导原则 - 系统管理
 
@@ -147,7 +147,7 @@ ms.locfileid: "85517093"
 - 应该修复 SQL 数据库中的漏洞
 - 应对 SQL Server 启用漏洞评估
 - 应对 SQL 托管实例启用漏洞评估
-- \[预览\]：应在虚拟机上启用漏洞评估
+- 应对计算机启用漏洞评估
 - 应该修复虚拟机规模集上安全配置中的漏洞
 - 应该通过漏洞评估解决方案修复漏洞
 - 应该修复计算机上安全配置中的漏洞
@@ -159,7 +159,7 @@ ms.locfileid: "85517093"
 - 应该修复 SQL 数据库中的漏洞
 - 应对 SQL Server 启用漏洞评估
 - 应对 SQL 托管实例启用漏洞评估
-- \[预览\]：应在虚拟机上启用漏洞评估
+- 应在虚拟机上启用漏洞评估
 - 应该修复虚拟机规模集上安全配置中的漏洞
 - 应该通过漏洞评估解决方案修复漏洞
 - 应该修复计算机上安全配置中的漏洞
@@ -171,7 +171,7 @@ ms.locfileid: "85517093"
 - 应该修复 SQL 数据库中的漏洞
 - 应对 SQL Server 启用漏洞评估
 - 应对 SQL 托管实例启用漏洞评估
-- \[预览\]：应在虚拟机上启用漏洞评估
+- 应在虚拟机上启用漏洞评估
 - 应该修复虚拟机规模集上安全配置中的漏洞
 - 应该通过漏洞评估解决方案修复漏洞
 - 应该修复计算机上安全配置中的漏洞
@@ -183,7 +183,7 @@ ms.locfileid: "85517093"
 - 应该修复 SQL 数据库中的漏洞
 - 应对 SQL Server 启用漏洞评估
 - 应对 SQL 托管实例启用漏洞评估
-- \[预览\]：应在虚拟机上启用漏洞评估
+- 应在虚拟机上启用漏洞评估
 - 应该修复虚拟机规模集上安全配置中的漏洞
 - 应该通过漏洞评估解决方案修复漏洞
 - 应该修复计算机上安全配置中的漏洞
@@ -195,7 +195,7 @@ ms.locfileid: "85517093"
 - 应该修复 SQL 数据库中的漏洞
 - 应对 SQL Server 启用漏洞评估
 - 应对 SQL 托管实例启用漏洞评估
-- \[预览\]：应在虚拟机上启用漏洞评估
+- 应在虚拟机上启用漏洞评估
 - 应该修复虚拟机规模集上安全配置中的漏洞
 - 应该通过漏洞评估解决方案修复漏洞
 - 应该修复计算机上安全配置中的漏洞
@@ -207,7 +207,7 @@ ms.locfileid: "85517093"
 - 应该修复 SQL 数据库中的漏洞
 - 应对 SQL Server 启用漏洞评估
 - 应对 SQL 托管实例启用漏洞评估
-- \[预览\]：应在虚拟机上启用漏洞评估
+- 应在虚拟机上启用漏洞评估
 - 应该修复虚拟机规模集上安全配置中的漏洞
 - 应该通过漏洞评估解决方案修复漏洞
 - 应该修复计算机上安全配置中的漏洞
@@ -229,8 +229,8 @@ ms.locfileid: "85517093"
 ### <a name="0582-the-following-events-are-logged-for-operating-systems-access-to-important-data-and-processes-application-crashes-and-any-error-messages-attempts-to-use-special-privileges-changes-to-accounts-changes-to-security-policy-changes-to-system-configurations-domain-name-system-dns-and-hypertext-transfer-protocol-http-requests-failed-attempts-to-access-data-and-system-resources-service-failures-and-restarts-system-startup-and-shutdown-transfer-of-data-to-external-media-user-or-group-management-use-of-special-privileges"></a>0582 为操作系统记录以下事件：访问重要数据和进程、应用程序崩溃和任何错误消息、尝试使用特权、更改帐户、更改安全策略、更改系统配置、域名系统 (DNS) 和超文本传输协议 (HTTP) 请求、尝试访问数据和系统资源失败、服务失败和重启、系统启动和关闭、将数据传输到外部媒体、用户或组管理、使用特权
 
 - \[预览\]：审核 Log Analytics 代理部署 - VM 映像 (OS) 未列出
-- \[预览\]：审核 VMSS 中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出
-- \[预览\]：审核 VM 的 Log Analytics 工作区 — 报告不匹配
+- 审核 VMSS 中的 Log Analytics 代理部署 - VM 映像 (OS) 未列出
+- 审核 VM 的 Log Analytics 工作区 — 报告不匹配
 - 审核诊断设置
 
 ### <a name="1537-the-following-events-are-logged-for-databases-access-to-particularly-important-information-addition-of-new-users-especially-privileged-users-any-query-containing-comments-any-query-containing-multiple-embedded-queries-any-query-or-database-alerts-or-failures-attempts-to-elevate-privileges-attempted-access-that-is-successful-or-unsuccessful-changes-to-the-database-structure-changes-to-user-roles-or-database-permissions-database-administrator-actions-database-logons-and-logoffs-modifications-to-data-use-of-executable-commands"></a>1537 为数据库记录以下事件：访问特别重要的信息、添加新用户（尤其是特权用户）、包含注释的任何查询、包含多个嵌入查询的任何查询、任何查询或数据库警报或失败、尝试提升特权、成功或不成功的访问尝试、更改数据库结构、更改用户角色或数据库权限、数据库管理员操作、数据库登录和注销、修改数据、使用可执行命令
@@ -246,7 +246,7 @@ ms.locfileid: "85517093"
 - 应该修复 SQL 数据库中的漏洞
 - 应对 SQL Server 启用漏洞评估
 - 应对 SQL 托管实例启用漏洞评估
-- \[预览\]：应在虚拟机上启用漏洞评估
+- 应在虚拟机上启用漏洞评估
 - 应该修复虚拟机规模集上安全配置中的漏洞
 - 应该通过漏洞评估解决方案修复漏洞
 - 应该修复计算机上安全配置中的漏洞

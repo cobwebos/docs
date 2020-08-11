@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c62cb9b64c42446c1f4ba8f6eb496fc792ff59a1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8d672c1113f265f9fbbabc7caed8df071f548f2a
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281270"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87503814"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>将运行 Windows Server 2008 的服务器迁移到 Azure
 
@@ -104,7 +104,7 @@ Azure Migrate 支持迁移运行 Windows Server 2008 的服务器。
 5. 指定 Azure 区域。 若要查看受支持的区域，请参阅 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)中的“地域可用性”。
 6. 若要从仪表板快速访问保管库，请单击“固定到仪表板”，然后单击“创建”。 
 
-   ![新保管库](media/migrate-tutorial-windows-server-2008/migrate-windows-server-2008-vault.png)
+   ![显示新保管库创建选项的屏幕截图。](media/migrate-tutorial-windows-server-2008/migrate-windows-server-2008-vault.png)
 
 新保管库将添加到“仪表板”中的“所有资源”下，以及“恢复服务保管库”主页面上。
 
@@ -136,15 +136,15 @@ Azure Migrate 支持迁移运行 Windows Server 2008 的服务器。
 > [!WARNING]
 > 确保在复制策略的“应用一致性快照频率”设置中指定“关”。 在复制运行 Windows Server 2008 的服务器时，仅支持崩溃一致性恢复点。 为“应用一致性快照频率”指定任何其他值时，由于缺少应用一致性恢复点，会导致服务器的复制运行状况出现严重问题，因此会生成假警报。
 
-   ![创建复制策略](media/migrate-tutorial-windows-server-2008/create-policy.png)
+   ![显示复制策略创建选项的屏幕截图。](media/migrate-tutorial-windows-server-2008/create-policy.png)
 
 ### <a name="enable-replication"></a>启用复制
 
 为要迁移的 Windows Server 2008 SP2/Windows Server 2008 R2 SP1 服务器[启用复制](physical-azure-disaster-recovery.md#enable-replication)。
    
-   ![添加物理服务器](media/migrate-tutorial-windows-server-2008/Add-physical-server.png)
+   ![显示用于添加物理计算机的选项的屏幕截图。](media/migrate-tutorial-windows-server-2008/Add-physical-server.png)
 
-   ![启用复制](media/migrate-tutorial-windows-server-2008/Enable-replication.png)
+   ![显示用于启用复制的选项的屏幕截图。](media/migrate-tutorial-windows-server-2008/Enable-replication.png)
 
 ### <a name="run-a-test-migration"></a>运行测试迁移
 
@@ -152,7 +152,7 @@ Azure Migrate 支持迁移运行 Windows Server 2008 的服务器。
 
 运行 [测试故障转移](tutorial-dr-drill-azure.md) ，确保一切如预期正常运行。
 
-   ![测试故障转移](media/migrate-tutorial-windows-server-2008/testfailover.png)
+   ![显示测试故障转移命令的屏幕截图。](media/migrate-tutorial-windows-server-2008/testfailover.png)
 
 
 ### <a name="migrate-to-azure"></a>迁移到 Azure
@@ -168,7 +168,7 @@ Azure Migrate 支持迁移运行 Windows Server 2008 的服务器。
     - 完成迁移过程，停止服务器复制，并停止服务器的 Site Recovery 计费。
     - 此步骤清除复制数据。 它不删除迁移的 VM。
 
-   ![完成迁移](media/migrate-tutorial-windows-server-2008/complete-migration.png)
+   ![显示完整迁移命令的屏幕截图。](media/migrate-tutorial-windows-server-2008/complete-migration.png)
 
 
 > [!WARNING]

@@ -4,15 +4,19 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/2/2019
 ms.author: crtreasu
-ms.openlocfilehash: 7e7825e8247e78cbc0c0e9e22bdbd9326939e0a8
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 43e64dadc5e339d174d08788cc7a98506841ee88
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83998108"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87810152"
 ---
-下一步是将应用程序配置为使用帐户标识符和帐户密钥。 在[设置空间定位点资源](#create-a-spatial-anchors-resource)时，将它们复制到文本编辑器中。
+## <a name="configure-the-account-information"></a>配置帐户信息
 
-在“项目”窗格中，导航到 `Assets\AzureSpatialAnchors.SDK\Resources`。 选择 `SpatialAnchorConfig`。 然后，在“检查器”窗格中，输入 `Account Key` 作为 `Spatial Anchors Account Key` 的值并输入 `Account ID` 作为 `Spatial Anchors Account Id` 的值。
+在“项目”窗格中，转到 `Assets/AzureSpatialAnchors.Examples/Scenes` 并打开 `AzureSpatialAnchorsBasicDemo.unity` 场景文件。
 
-接下来，打开 `SpatialAnchorManager.cs`。 查找 `CreateSessionAsync()` 和添加以下行，并替换之前的帐户域：`session.Configuration.AccountDomain = "MyAccountDomain";`。 可以直接在此注释 `// Configure authentication` 之前添加此行。
+接下来是将应用配置为使用你的帐户信息。 在[设置空间定位点资源](#create-a-spatial-anchors-resource)时，将它们复制到文本编辑器中。
+
+在“项目”窗格中，导航到 `Assets\AzureSpatialAnchors.SDK\Resources`。 选择 `SpatialAnchorConfig`。 然后，在“检查器”窗格，输入 `Account Key` 作为 `Spatial Anchors Account Key` 的值，输入 `Account ID` 作为 `Spatial Anchors Account Id` 的值，并输入 `Account Domain` 作为 `Spatial Anchors Account Domain` 的值。
+
+选择“文件” > “保存”，从而保存场景 。

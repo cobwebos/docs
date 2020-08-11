@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: f73d20c19e8fc26c553490772f5374e8a88a77b2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 432c92bcfa8a2e0df26adf1516f5bdc9ee73d267
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289297"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87502369"
 ---
 # <a name="fail-back-an-azure-vm-between-azure-regions"></a>在 Azure 区域之间对 Azure VM 进行故障回复
 
@@ -42,7 +42,7 @@ ms.locfileid: "87289297"
 
 1. 在保管库中选择“复制的项”，然后选择已重新保护的 VM  。
 
-    ![故障回复到主要区域](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback.png)
+    ![显示在 Azure 门户故障回复到主要区域的屏幕截图。](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback.png)
 
 2. 在“复制的项”中选择 VM，然后选择“故障转移”   。
 3. 在“故障转移”中，选择要故障转移到的恢复点  ：
@@ -55,7 +55,7 @@ ms.locfileid: "87289297"
 7. 验证故障转移后，选择“提交故障转移”  。 提交操作会删除所有可用的恢复点。 “更改恢复点”选项不再可用。
 8. VM 应显示为已故障转移并已故障回复。
 
-    ![主要和次要区域的 VM](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
+    ![显示主要和次要区域的 VM 的屏幕截图。](./media/site-recovery-azure-to-azure-failback/azure-to-azure-failback-vm-view.png)
 
 > [!NOTE]
 > 对于使用托管磁盘以及运行 Site Recovery 扩展版本 9.28.x.x 及更高版本[更新汇总 40](https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) 的计算机，在故障回复完成并重新保护 VM 后，Site Recovery 将清理次要灾难恢复区域中的计算机。 无需手动删除次要区域中的 VM 和 NIC。 请注意，不会清理使用非托管磁盘的 VM。 如果在故障回复后完全禁用复制，则除了 VM 和 NIC 之外，Site Recovery 还会清理灾难恢复区域中的磁盘。

@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 07/29/2020
 ms.author: victorh
-ms.openlocfilehash: 7634effd5d1ac46955addd723ee7c992eb820a57
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 458ebe14e77c7b190a5c4cdd9b408396589d5d27
+ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084698"
+ms.lasthandoff: 07/29/2020
+ms.locfileid: "87420815"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-firewall-manager"></a>教程：使用 Azure 防火墙管理器保护虚拟中心
 
@@ -108,7 +108,7 @@ ms.locfileid: "87084698"
 
 ### <a name="configure-the-hub-and-spoke-routing"></a>配置中心路由和辐射路由
 
-从 Azure 门户打开 Cloud Shell 并运行以下 Azure PowerShell，以配置所需的中心路由和辐射路由。
+从 Azure 门户打开 Cloud Shell 并运行以下 Azure PowerShell，以配置所需的中心路由和辐射路由。 对等互连辐射/分支连接必须将传播设置为“无”。 这会阻止辐射之间的任意位置到任意位置通信，而是使用默认路由将流量路由到防火墙。
 
 ```azurepowershell
 $noneRouteTable = Get-AzVHubRouteTable -ResourceGroupName fw-manager `
@@ -155,7 +155,7 @@ Update-AzVirtualHubVnetConnection -ResourceGroupName fw-manager `
 
 使用下表中的信息配置名为 Srv-Workload-02 的另一台虚拟机。 剩余的配置与 Srv-workload-01 虚拟机相同。
 
-|设置  |Value  |
+|设置  |值  |
 |---------|---------|
 |虚拟网络|**Spoke-02**|
 |子网|**Workload-02-SN**|

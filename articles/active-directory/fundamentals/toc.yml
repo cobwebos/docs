@@ -49,6 +49,8 @@
       items:
         - name: Azure AD 体系结构
           href: active-directory-architecture.md
+        - name: 将所有应用与 Azure AD 集成
+          href: five-steps-to-full-application-integration-with-azure-ad.md
     - name: 部署指南
       items:
         - name: 部署 30 天、90 天及之后的时间

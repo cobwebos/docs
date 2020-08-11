@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4928938c38df8a1ed0f1e31c73e755a4f7f6c371
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ea951943c3f48443e4348d633c16ed61303f7aa8
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367624"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87449049"
 ---
 # <a name="tutorial-manipulating-models"></a>教程：操作模型
 
@@ -332,18 +332,14 @@ AppMenu 具有一个子菜单“模型工具”，可实现用于与模型绑定
 
 2. 在之前创建的 TestModel GameObject 中，添加 RemoteRayCastPointerHandler 组件和 RemoteEntityHelper 组件  。
 1. 将 `EntityToDebugLog` 方法分配给 `OnRemoteEntityClicked` 事件。 当事件的输出类型和方法的输入类型匹配时，我们可以使用 Unity 的动态事件挂钩，该挂钩会自动将事件值传递到方法中。
-    1. 创建新的回调字段\
-    ![添加回调](./media/add-callback-remote-entity-clicked.png)
-    1. 将“远程实体帮助程序”组件拖到对象字段，以引用父 GameObject\
-    ![分配对象](./media/assign-object.png)
-    1. 将 `EntityToDebugLog` 分配为回调\
-    ![分配回调](./media/remote-entity-event.png)
+    1. 创建新的回调字段 ![添加回调](./media/add-callback-remote-entity-clicked.png)
+    1. 将“远程实体帮助程序”组件拖到对象字段，以引用父 GameObject ![分配对象](./media/assign-object.png)
+    1. 将 `EntityToDebugLog` 分配为回调 ![分配回调](./media/remote-entity-event.png)
 1. 按 Unity 编辑器中的“播放”以启动场景、连接到远程会话并加载测试模型。
 1. 使用 MRTK 的手势模拟，按住左 Shift 键。
 1. 操纵模拟手，使手部射线指向测试模型。
 1. 单击并长按以模拟隔空敲击，从而执行 `OnPointerClicked` 事件。
-1. 观察 Unity 控制台，看是否显示包含所选子实体名称的日志消息。 例如：\
-![子实体示例](./media/child-entity-example.png)
+1. 观察 Unity 控制台，看是否显示包含所选子实体名称的日志消息。 例如：![子实体示例](./media/child-entity-example.png)
 
 ## <a name="synchronizing-the-remote-object-graph-into-the-unity-hierarchy"></a>将远程对象图同步到 Unity 层次结构中
 
@@ -351,9 +347,9 @@ AppMenu 具有一个子菜单“模型工具”，可实现用于与模型绑定
 
 1. 启动场景并加载测试模型。
 1. 在 Unity 层次结构中展开 TestModel GameObject 的子项，并选择 TestModel_Entity GameObject 。
-1. 在检查器中，单击“显示子项”按钮。\
+1. 在检查器中，单击“显示子项”按钮。
 ![显示子项](./media/show-remote-children.png)
-1. 继续展开层次结构中的子项，然后单击“显示子项”，直到显示一个大的子项列表。\
+1. 继续展开层次结构中的子项，然后单击“显示子项”，直到显示一个大的子项列表。
 ![所有子项](./media/test-model-children.png)
 
 现在，层次结构中填充了数十个实体。 选择其中一个，随即会在检查器中显示 `Transform` 和 `RemoteEntitySyncObject` 组件。 默认情况下，每个实体不会自动同步每个帧，因此对 `Transform` 的本地更改不会同步到服务器。 你可以查看“同步每个帧”，然后在场景视图中移动、缩放或旋转转换，你不会在场景视图中看到渲染的模型，查看“游戏”视图，从视觉上体验模型位置和旋转效果的更新。
@@ -371,13 +367,13 @@ AppMenu 具有一个子菜单“模型工具”，可实现用于与模型绑定
     }
     ```
 
-1. 将另一个回调添加到 RemoteRayCastPointerHandler 事件 `OnRemoteEntityClicked` 中，并将其设置为 `MakeSyncedGameObject`\
+1. 将另一个回调添加到 RemoteRayCastPointerHandler 事件 `OnRemoteEntityClicked` 中，并将其设置为 `MakeSyncedGameObject`。
 ![其他回调](./media/additional-callback.png)
 1. 使用 MRTK 的手势模拟，按住左 Shift 键。
 1. 操纵模拟手，使手部射线指向测试模型。
 1. 单击并长按以模拟隔空敲击，从而执行 `OnPointerClicked` 事件。
-1. 选中并展开层次结构以查看表示被单击的实体的新子对象。\
-![GameObject 表示形式](./media/gameobject-representing-entity.png)\
+1. 选中并展开层次结构以查看表示被单击的实体的新子对象。
+![GameObject 表示形式](./media/gameobject-representing-entity.png)
 1. 测试后，删除对 `MakeSyncedGameObject` 的回调，因为稍后要将其作为其他效果的一部分包含。
 
 > [!NOTE]

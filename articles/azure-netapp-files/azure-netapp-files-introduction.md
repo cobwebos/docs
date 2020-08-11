@@ -1,6 +1,6 @@
 ---
 title: 什么是 Azure NetApp 文件 | Microsoft Docs
-description: 概述了 Azure NetApp 文件和关键任务。
+description: 了解 Azure NetApp 文件，这是一种支持任何工作负载类型并且高度可用的企业级、高性能、按流量计费的文件存储服务。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 33a90f876f5ce35b52bb2d5625fa9d91a0a33dee
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 4ad556a6c720cb4eaac9a0c9cdf5c4346e2aa857
+ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "65522993"
+ms.lasthandoff: 08/02/2020
+ms.locfileid: "87512935"
 ---
 # <a name="what-is-azure-netapp-files"></a>什么是 Azure NetApp 文件
 

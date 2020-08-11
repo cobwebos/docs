@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: quickstart
 ms.date: 05/11/2020
 ms.author: punagpal
-ms.openlocfilehash: bc85765666ba3baeae7ec795118f615f6b4b4368
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 95f5b5f13401c224ccf67c5f013deedf00379de7
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87100833"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87446802"
 ---
 # <a name="quickstart-deploy-iot-connector-preview-using-azure-portal"></a>快速入门：使用 Azure 门户部署 IoT 连接器（预览版）
 
@@ -181,7 +181,7 @@ Azure 提供了一套全面的 IoT 产品，用于连接和管理 IoT 设备。 
 可以使用 Postman 查看由 Azure API for FHIR 的 IoT 连接器创建的基于 FHIR 的观察资源。 设置 [Postman 以访问 Azure API for FHIR](access-fhir-postman-tutorial.md)，并向 `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` 发出 `GET` 请求，以查看具有心率值的观察 FHIR 资源。 
 
 > [!TIP]
-> 确保用户可以访问 Azure API for FHIR 数据平面。 [使用 Azure 基于角色的访问控制](configure-azure-rbac.md)分配所需的数据平面角色。
+> 确保用户可以访问 Azure API for FHIR 数据平面。 使用 [Azure 基于角色的访问控制 (Azure RBAC)](configure-azure-rbac.md) 分配所需的数据平面角色。
 
 ## <a name="clean-up-resources"></a>清理资源
 

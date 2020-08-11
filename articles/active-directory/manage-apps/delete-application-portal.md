@@ -10,13 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec0b3ef559abe1c65872d8ecf87f63e6ff3ed4b0
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 422c174116bb6973993f5c6093a83f8bdb42a62a
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223901"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808229"
 ---
 # <a name="quickstart-delete-an-application-from-your-azure-active-directory-azure-ad-tenant"></a>快速入门：从 Azure Active Directory (Azure AD) 租户中删除应用程序
 
@@ -44,9 +43,15 @@ ms.locfileid: "86223901"
 1. 在左侧窗格的“管理”部分中，选择“属性” 。
 1. 选择“删除”，然后选择“是”以确认要从 Azure AD 租户中删除该应用 。
 
+> [!TIP]
+> 可使用 Graph API 自动管理应用，具体请参阅[使用 Microsoft Graph API 自动管理应用](https://docs.microsoft.com/graph/application-saml-sso-configure-api)。
+
+## <a name="clean-up-resources"></a>清理资源
+
+完成本快速入门系列后，请考虑删除应用以清理测试租户。 本快速入门介绍了如何删除应用。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [应用程序管理最佳做法](application-management-fundamentals.md)
-- [应用程序管理常见方案](common-scenarios.md)
-- [应用程序管理可见性和控制](cloud-app-security.md)
+你已完成了快速入门系列！ 下一步是了解应用管理中的最佳做法。
+> [!div class="nextstepaction"]
+> [应用程序管理最佳做法](application-management-fundamentals.md)

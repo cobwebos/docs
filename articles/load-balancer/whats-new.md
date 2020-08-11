@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: overview
 ms.date: 07/07/2020
 ms.author: anavin
-ms.openlocfilehash: 8b44dc230dbee1b29b9889a1b81e35ebe25f6b97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24c5133b9c012b628e43e956c56d5112e1ad4649
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078681"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87447025"
 ---
 # <a name="whats-new-in-azure-load-balancer"></a>Azure 负载均衡器中的新增功能有哪些？
 
@@ -34,6 +34,16 @@ Azure 负载均衡器会定期更新。 随时了解最新公告。 本文提供
 | 验证 | 添加了 HA 端口验证 | 添加了验证，以确保仅当启用了浮动 IP 时才可配置 HA 端口规则和非 HA 端口规则。 之前此配置会执行，但不会按预期方式工作。 未对功能进行任何更改。 可在[此处](load-balancer-ha-ports-overview.md#limitations)了解详细信息| 2020 年 6 月 |
 | Feature| 对 Azure 负载均衡器的 IPv6 支持（正式发布版） | 可以将 IPv6 地址作为 Azure 负载均衡器的前端。 了解如何[在此处创建双堆栈应用程序](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) |2020 年 4 月|
 | Feature| 空闲超时时的 TCP 重置（正式发布版）| 使用 TCP 重置创建更具可预测性的应用程序行为。 [了解详细信息](load-balancer-tcp-reset.md)| 2020 年 2 月 |
+
+## <a name="known-issues"></a>已知问题
+
+产品小组正在积极开发针对下列已知问题的解决方案：
+
+|问题 |说明  |缓解操作  |
+| ---------- |---------|---------|
+| Log Analytics 导出 | Log Analytics 无法导出标准负载均衡器的指标，也无法导出基本负载均衡器的运行状况探测状态日志  | [使用 Azure Monitor 为标准负载均衡器提供多维度指标](load-balancer-standard-diagnostics.md)。 Azure Monitor 虽然不能使用 Log Analytics 进行监视，但可为一组丰富的多维指标提供可视化效果。 可通过负载均衡器的“见解”子边栏选项卡使用预配置的指标仪表板。 如果使用的是基本负载均衡器，请[升级到标准版](upgrade-basic-standard.md)来实现生产级别的指标监视。
+
+  
 
 ## <a name="next-steps"></a>后续步骤
 

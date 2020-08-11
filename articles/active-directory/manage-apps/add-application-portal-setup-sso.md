@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f8f19e6b98143bb48430decdd51f5626e72d422
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 461a424f23161e1567c6b32a38db0225efc56b1e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387279"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808382"
 ---
 # <a name="quickstart-set-up-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>快速入门：在 Azure Active Directory (Azure AD) 租户中为应用程序设置单一登录 (SSO)
 
@@ -61,6 +61,16 @@ ms.locfileid: "87387279"
     :::image type="content" source="media/add-application-portal-setup-sso/github-pricing.png" alt-text="屏幕截图显示 GitHub 定价页面的企业订阅中的“单一登录”选项。":::
 
 
-## <a name="next-step"></a>后续步骤
+> [!TIP]
+> 可使用 Graph API 自动管理应用，具体请参阅[使用 Microsoft Graph API 自动管理应用](https://docs.microsoft.com/graph/application-saml-sso-configure-api)。
 
-- [删除应用](delete-application-portal.md)
+
+## <a name="clean-up-resources"></a>清理资源
+
+完成本快速入门系列后，请考虑删除应用以清理测试租户。 本系列中的最后一个快速入门介绍如何删除应用，请参阅[删除应用](delete-application-portal.md)。
+
+## <a name="next-steps"></a>后续步骤
+
+继续学习下一篇文章了解如何删除应用。
+> [!div class="nextstepaction"]
+> [删除应用](delete-application-portal.md)

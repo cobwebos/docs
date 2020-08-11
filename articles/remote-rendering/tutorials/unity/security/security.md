@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: 4eee6aeaff045264c8d23276ac91a83592ddc601
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 297241c5f939ae15fc77b29614b55d9b2bd63c84
+ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86207814"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87445898"
 ---
 # <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>教程：保护 Azure 远程渲染和模型存储
 
@@ -176,16 +176,13 @@ RemoteRenderingCoordinator 脚本有一个名为 ARRCredentialGetter 的委托�
 1. 请按照[如何：配置身份验证 - 已部署的应用程序的身份验证](../../../how-tos/authentication.md#authentication-for-deployed-applications)进行操作，具体来说，需要遵循 Azure 空间定位点文档 [Azure AD 用户身份验证](https://docs.microsoft.com/azure/spatial-anchors/concepts/authentication?tabs=csharp#azure-ad-user-authentication)中列出的说明。 这涉及到注册新的 Azure Active Directory 应用程序并配置对 ARR 实例的访问。
 1. 配置新的 AAD 应用程序后，请检查你的 AAD 应用程序是否如下图所示：
 
-    **AAD 应用程序 -> 身份验证**\
-    ![应用身份验证](./media/app-authentication-public.png)
+    AAD 应用程序 -> 身份验证 ![应用身份验证](./media/app-authentication-public.png)
 
-    **AAD 应用程序 -> API 权限**\
-    ![应用 API](./media/request-api-permissions-step-five.png)
+    AAD 应用程序 -> API 权限 ![应用 API](./media/request-api-permissions-step-five.png)
 
 1. 配置远程渲染帐户后，请检查你的配置是否如下图所示：
 
-    **AAR -> AccessControl (IAM)** \
-    ![ARR 角色](./media/azure-remote-rendering-role-assignment-complete.png)
+    AAR -> AccessControl (IAM) ![ARR 角色](./media/azure-remote-rendering-role-assignment-complete.png)
 
     >[!NOTE]
     > 所有者角色的权限不足以通过客户端应用程序管理会话。 对于要授予会话管理权限的每个用户，你需要向他们提供远程渲染客户端角色。 对于要管理会话和转换模型的每个用户，必须为其提供远程渲染管理员角色。
@@ -357,9 +354,7 @@ return await Task.FromResult(new AzureFrontendAccountInfo(accountDomain, azureRe
 1. 在 Unity 编辑器中按“播放”并同意运行会话。
     由于 AADAuthentication 组件有一个视图控制器，它将在会话授权模式面板后自动挂钩以显示提示。
 1. 请按照 AppMenu 右边面板中的说明操作。
-    应可看到类似于下面的内容：
-    ![AAD 身份验证组件](./media/device-flow-instructions.png)\
-    在辅助设备（或同一设备上的浏览器）上输入提供的代码并使用凭据登录后，一个访问令牌会返回到发出请求的应用程序中（在本例中为 Unity 编辑器）。
+    看到的内容应该如下所示：![AAD 身份验证组件](./media/device-flow-instructions.png) 在辅助设备（或同一设备上的浏览器）上输入提供的代码并使用凭据登录后，一个访问令牌会返回到发出请求的应用程序中（在本例中为 Unity 编辑器）。
 1. 此后，应用程序中的所有内容应会正常运行。 如果没有按照预期的方式完成各个阶段，请检查 Unity 控制台是否有任何错误。
 
 ## <a name="build-to-device"></a>在设备上构建

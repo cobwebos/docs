@@ -3,18 +3,18 @@ title: 创建 Azure IoT Central 应用程序 | Microsoft Docs
 description: 创建新的 Azure IoT Central 应用程序。 使用免费的定价计划或标准定价计划之一创建应用程序。
 author: viv-liu
 ms.author: viviali
-ms.date: 02/12/2020
+ms.date: 07/30/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: b670776804c9758774bf216052254148f063e7da
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.openlocfilehash: 4b939505f807385f235def2606d0f29564f5d08f
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81758142"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87552571"
 ---
 # <a name="create-an-azure-iot-central-application"></a>创建 Azure IoT Central 应用程序
 
@@ -43,8 +43,11 @@ ms.locfileid: "81758142"
     ![Azure IoT Central 计费信息](media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png)
 
     > [!NOTE]
-    > 如果你在上一页中选择了“自定义应用”  ，则会看到一个“应用程序模板”  下拉列表。 从这里，你可以在自定义模板与旧模板之间切换。 你可能还会看到为组织提供的其他模板。
+    > 如果你在上一页中选择了“自定义应用”，则会看到一个“应用程序模板”下拉列表。 该下拉列表可能会显示你的组织提供给你的其他模板。 
 
+    >[!IMPORTANT]
+    >自定义应用程序（旧版）模板 (V2) 已停用，因为旧版应用程序模板中以前提供的所有功能现在都在最新自定义应用程序模板 (V3) 中提供。 
+    
 1. 选择使用 7 天免费试用版定价计划或标准定价计划之一创建此应用程序：
 
     - 使用*免费*计划创建的应用程序在七天内是免费的，并且最多支持五台设备。 在它们过期之前，随时可将其转换为使用标准定价计划。
@@ -59,7 +62,7 @@ ms.locfileid: "81758142"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已创建了 IoT Central 应用程序。 接下来，建议执行以下步骤来继续了解 IoT Central：
+在本快速入门中，创建了 IoT Central 应用程序。 接下来，建议执行以下步骤来继续了解 IoT Central：
 
 > [!div class="nextstepaction"]
 > [将模拟设备添加到 IoT Central 应用程序](./quick-create-simulated-device.md)

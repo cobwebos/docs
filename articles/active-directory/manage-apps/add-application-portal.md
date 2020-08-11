@@ -10,13 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79d80a5b94a753b43715c1ccd8fc2059ff84cfca
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 0818ab782710e6a102d2034790ff8d997cd54f8e
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87338021"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808430"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-azure-ad-tenant"></a>快速入门：向 Azure Active Directory (Azure AD) 租户添加应用程序
 
@@ -58,8 +57,15 @@ Azure Active Directory (Azure AD) 有一个库，其中包含数千预集成的�
 
 已完成添加应用程序的操作。 接下来的快速入门介绍如何更改徽标和编辑应用程序的其他属性。
 
+> [!TIP]
+> 可使用 Graph API 自动管理应用，具体请参阅[使用 Microsoft Graph API 自动管理应用](https://docs.microsoft.com/graph/application-saml-sso-configure-api)。
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果你不打算继续学习快速入门系列，请考虑删除应用以清理测试租户。 本系列中的最后一个快速入门介绍如何删除应用，请参阅[删除应用](delete-application-portal.md)。
+
 ## <a name="next-steps"></a>后续步骤
 
-- [配置应用](add-application-portal-configure.md)
-- [设置单一登录](add-application-portal-setup-sso.md)
-- [删除应用](delete-application-portal.md)
+继续学习下一篇文章了解如何配置应用。
+> [!div class="nextstepaction"]
+> [配置应用](add-application-portal-configure.md)

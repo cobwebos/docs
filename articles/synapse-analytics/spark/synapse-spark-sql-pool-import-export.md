@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: ca13cbd8bdba911882f7452e34c45cbc7918dd7f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7b02296d5d9aed5866c0efcdf85fa1c9946617d0
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077698"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87501893"
 ---
 # <a name="introduction"></a>简介
 
@@ -67,7 +67,7 @@ EXEC sp_addrolemember 'db_exporter',[mike@contoso.com]
 
 不需要 import 语句，对于笔记本体验，它们是预先导入的。
 
-### <a name="transferring-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>将数据传输到与工作区相连的 SQL 池，或者从该池向外传输数据
+### <a name="transfer-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>将数据传输到与工作区相连的 SQL 池，或者从该池向外传输数据
 
 > [!NOTE]
 > **在笔记本体验中，import 不是必需的**
@@ -134,7 +134,7 @@ df.write.
 
 ```
 
-### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>如果将数据传输到工作区外部的 SQL 池或数据库，或者从该池或数据库向外传输数据
+### <a name="if-you-transfer-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>如果将数据传输到工作区外部的 SQL 池或数据库，或者从该池或数据库向外传输数据
 
 > [!NOTE]
 > 在笔记本体验中，import 不是必需的
@@ -160,7 +160,7 @@ option(Constants.SERVER, "samplews.database.windows.net").
 sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="using-sql-auth-instead-of-aad"></a>使用 SQL 身份验证而非 AAD
+### <a name="use-sql-auth-instead-of-aad"></a>使用 SQL 身份验证而非 AAD
 
 #### <a name="read-api"></a>读取 API
 
@@ -184,7 +184,7 @@ option(Constants.PASSWORD, <SQLServer Login Password>).
 sqlanalytics("<DBName>.<Schema>.<TableName>", <TableType>)
 ```
 
-### <a name="using-the-pyspark-connector"></a>使用 PySpark 连接器
+### <a name="use-the-pyspark-connector"></a>使用 PySpark 连接器
 
 > [!NOTE]
 > 在给出此示例时，只考虑了笔记本体验。
@@ -208,7 +208,7 @@ pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTE
 
 同样，在读取方案中，使用 Scala 读取数据并将其写入到一个临时表中，在 PySpark 中使用 Spark SQL 查询该临时表并将结果写入一个数据帧。
 
-## <a name="allowing-other-users-to-use-the-azure-synapse-apache-spark-to-synapse-sql-connector-in-your-workspace"></a>允许其他用户在工作区中使用 Synapse SQL 的 Azure Synapse Apache Spark 连接器
+## <a name="allow-other-users-to-use-the-azure-synapse-apache-spark-to-synapse-sql-connector-in-your-workspace"></a>允许其他用户在工作区中使用 Synapse SQL 的 Azure Synapse Apache Spark 连接器
 
 你需要成为连接到工作区的 ADLS Gen2 存储帐户上的存储 Blob 数据所有者，才能改变其他用户缺少的权限。 确保用户有权访问工作区并具有运行笔记本的权限。
 

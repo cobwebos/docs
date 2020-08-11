@@ -30,6 +30,20 @@
       items:
         - name: 创建微履行中心应用程序
           href: tutorial-micro-fulfillment-center.md
+    - name: 视频分析 - 对象和运动检测
+      items:
+        - name: 1 - 创建视频分析应用程序
+          href: tutorial-video-analytics-create-app.md
+        - name: 2 - 配置 IoT Edge 设备
+          items:
+            - name: 在边缘上创建视频分析设备 (Linux VM)
+              href: tutorial-video-analytics-iot-edge-vm.md
+            - name: 在边缘上创建视频分析设备 (Intel NUC)
+              href: tutorial-video-analytics-iot-edge-nuc.md
+        - name: 3 -监视和管理视频分析应用程序
+          href: tutorial-video-analytics-manage.md
+        - name: 4 - 修改和生成实时视频分析网关模块
+          href: tutorial-video-analytics-build-module.md
 - name: 概念
   items:
     - name: 互联物流应用模板体系结构
@@ -42,12 +56,16 @@
       href: store-analytics-architecture.md
     - name: 微履行中心应用模板体系结构
       href: architecture-micro-fulfillment-center.md
+    - name: 视频分析应用模板体系结构
+      href: architecture-video-analytics.md
     - name: 连接
       href: ../core/concepts-get-connected.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: 什么是应用程序模板？
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
 - name: 操作指南
   items:
+    - name: 部署对象和运动检测应用程序
+      href: howto-deploy-video-analytics-template.md
     - name: 连接设备
       items:
         - name: 准备和连接 Rigado Cascade 500

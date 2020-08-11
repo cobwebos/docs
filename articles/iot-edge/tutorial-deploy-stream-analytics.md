@@ -3,16 +3,16 @@ title: 教程 - 使用 Azure IoT Edge 在边缘部署流分析
 description: 在本教程中，请将 Azure 流分析作为模块部署到 IoT Edge 设备
 author: kgremban
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 07/29/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 62ee95db0e3b35c996cb4ee68d772a21c00778fb
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: c259e913a8ee5181bc58aea651af62324cf01fcb
+ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220274"
+ms.lasthandoff: 07/30/2020
+ms.locfileid: "87439405"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>教程：将 Azure 流分析作为 IoT Edge 模块进行部署
 
@@ -134,7 +134,7 @@ Azure IoT Edge 设备：
     HAVING Avg(machine.temperature) > 70
     ```
 
-1. 选择“保存”。
+1. 选择“保存查询”。
 
 ### <a name="configure-iot-edge-settings"></a>配置 IoT Edge 设置
 
@@ -189,7 +189,7 @@ Azure IoT Edge 设备：
 
 1. 选择“更新”或“取消” 。
 
-1. 请记下流分析模块的名称（因为需要在下一步使用它），然后选择“下一步:路由”以继续操作。
+1. 请记下流分析模块的名称，因为需要在下一步使用它。 然后选择“下一步:路由”以继续操作。
 
 1. 在“路由”选项卡中，定义消息在模块和 IoT 中心之间传递的方式。 使用名称/值对构造消息。 将默认的 `route` 和 `upstream` 名称和值替换为下表中显示的对（以下名称/值对），将 _{moduleName}_ 的实例替换为 Azure 流分析模块的名称。
 

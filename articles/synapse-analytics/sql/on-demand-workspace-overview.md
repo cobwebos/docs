@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 35e75037b4bf759fe90d608be0682004d3d3f23c
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: fc306dbca3191f04a85f2c5cc88d41336c13e09c
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85480433"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87496383"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>Azure Synapse Analytics 中的 SQL 按需版本（预览版） 
 
@@ -31,7 +31,7 @@ SQL 按需版本是无服务器服务，因此不需要设置基础结构，也�
 
 如果在数据管道中使用 Apache Spark for Azure Synapse 进行数据准备、清理或扩充，可以直接从 SQL 按需版本[查询已在流程中创建的 Spark 外部表](develop-storage-files-spark-tables.md)。 使用[专用链接](../security/how-to-connect-to-workspace-with-private-links.md)可将 SQL 按需版本终结点整合到[托管工作区 VNet](../security/synapse-workspace-managed-vnet.md) 中。  
 
-## <a name="who-is-sql-on-demand-for"></a>SQL 按需版本的目标用户
+## <a name="sql-on-demand-benefits"></a>SQL 按需版本优势
 
 如果需要探索 Data Lake 中的数据、从这些数据获取见解，或者要优化现有的数据转换管道，则可从使用 SQL 按需版本获益。 它适用于以下方案：
 
@@ -46,7 +46,7 @@ SQL 按需版本是无服务器服务，因此不需要设置基础结构，也�
 - 数据分析师可以使用熟悉的 T-SQL 语言或他们偏好的、可连接到 SQL 按需版本的工具，[探索数据科学家或数据工程师创建的数据和 Spark 外部表](develop-storage-files-spark-tables.md)。
 - BI 专业人员可以快速[基于 Lake 中的数据创建 Power BI 报表](tutorial-connect-power-bi-desktop.md)和 Spark 表。
 
-## <a name="what-do-i-need-to-do-to-start-using-it"></a>需要做好哪些准备才能开始使用 SQL 按需版本？
+## <a name="how-to-start-using-sql-on-demand"></a>如何开始使用 SQL 按需版本
 
 每个 Azure Synapse 工作区中都会提供 SQL 按需版本终结点。 可以创建一个工作区，然后使用熟悉的工具立即开始查询数据。
 
@@ -54,7 +54,7 @@ SQL 按需版本是无服务器服务，因此不需要设置基础结构，也�
 
 使用 SQL 按需版本，可以将现有的 SQL 即席查询和商业智能工具连接到 Data Lake 中。 由于它提供用户熟悉的 T-SQL 语法，任何能够建立 TDS 连接 SQL 产品/服务的工具都可以[连接和查询 Synapse SQL 按需版本](connect-overview.md)。 可以与 Azure Data Studio 进行连接并运行即席查询，或者与 Power BI 进行连接以快速获取见解。
 
-## <a name="is-full-t-sql-supported"></a>是否支持完整的 T-SQL？
+## <a name="t-sql-support"></a>T-SQL 支持
 
 SQL 按需版本提供 T-SQL 查询外围应用，该外围应用在某些方面略有增强/扩展，以便改善半结构化和非结构化数据的查询体验。 此外，由于 SQL 按需版本的设计，T-SQL 语言的某些方面不受支持，例如，目前不支持 DML 功能。
 

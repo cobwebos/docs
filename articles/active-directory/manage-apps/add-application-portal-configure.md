@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/29/2019
 ms.author: kenwith
-ms.openlocfilehash: eb4a150a1680dd4101249458894ded652cde15a0
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: a1a99e9f02a25f5e1d57ea485930a4f26149b53f
+ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87338038"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87808399"
 ---
 # <a name="quickstart-configure-properties-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>快速入门：在 Azure Active Directory (Azure AD) 租户中配置应用程序的属性
 
@@ -95,9 +95,17 @@ ms.locfileid: "87338038"
    > [!NOTE]
    > 此“属性”窗格中显示的缩略图不会立即更新。 可以关闭并重新打开“属性”窗格以查看更新的图标。
 
+
+> [!TIP]
+> 可使用 Graph API 自动管理应用，具体请参阅[使用 Microsoft Graph API 自动管理应用](https://docs.microsoft.com/graph/application-saml-sso-configure-api)。
+
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果你不打算继续学习快速入门系列，请考虑删除应用以清理测试租户。 本系列中的最后一个快速入门介绍如何删除应用，请参阅[删除应用](delete-application-portal.md)。
+
 ## <a name="next-steps"></a>后续步骤
 
-配置好应用程序的属性之后，即可继续设置单一登录。
-
-- [设置单一登录](add-application-portal-setup-sso.md)
-- [删除应用](delete-application-portal.md)
+请继续学习下一篇文章，了解如何为应用设置单一登录。
+> [!div class="nextstepaction"]
+> [设置单一登录](add-application-portal-setup-sso.md)

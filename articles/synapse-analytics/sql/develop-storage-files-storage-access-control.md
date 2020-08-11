@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d60eeb279f9faa469c98d3d0578d0e4c1cdf0bd2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b7005954b14a9263ec074c836180853a99812dd5
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283446"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534764"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>控制 SQL 按需版本（预览版）对存储帐户的访问
 
@@ -89,7 +89,7 @@ SQL 按需版本查询直接从 Azure 存储中读取文件。 对 Azure 存储�
 
 
 > [!IMPORTANT]
-> 访问受防火墙保护的存储时，仅可使用托管标识。 需要[允许受信任的 Microsoft 服务设置](../../storage/common/storage-network-security.md#trusted-microsoft-services)并明确[将 RBAC 角色](../../storage/common/storage-auth-aad.md#assign-rbac-roles-for-access-rights)分配给该资源实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 在这种情况下，实例的访问范围对应于分配给托管标识的 RBAC 角色。
+> 访问受防火墙保护的存储时，仅可使用托管标识。 需要[允许受信任的 Microsoft 服务设置](../../storage/common/storage-network-security.md#trusted-microsoft-services)并明确[将 Azure 角色](../../storage/common/storage-auth-aad.md#assign-azure-roles-for-access-rights)分配给该资源实例的[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/overview.md)。 在这种情况下，实例的访问范围对应于分配给托管标识的 Azure 角色。
 >
 
 ## <a name="credentials"></a>凭据
@@ -219,7 +219,7 @@ WITH (    LOCATION   = 'https://<storage_account>.dfs.core.windows.net/<containe
 
 ## <a name="examples"></a>示例
 
-访问公开可用的数据源
+### <a name="access-a-publicly-available-data-source"></a>访问公开可用的数据源
 
 使用以下脚本创建一个表，用以访问公开可用的数据源。
 
@@ -248,7 +248,7 @@ SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet',
 GO
 ```
 
-使用凭据访问数据源
+### <a name="access-a-data-source-using-credentials"></a>使用凭据访问数据源
 
 修改以下脚本来创建一个外部表，用以使用 SAS 令牌、用户的 Azure AD 标识或工作区的托管标识来访问 Azure 存储。
 

@@ -3,12 +3,12 @@ title: 高级查询示例
 description: 使用 Azure Resource Graph 运行一些高级查询，包括使用列、列出使用的标记以及使用正则表达式匹配资源。
 ms.date: 07/14/2020
 ms.topic: sample
-ms.openlocfilehash: 38013be583c74e968160cb7ec3a4dd32ede213b0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3277d904ebf955c9f924e60dbf6df12eac138a15
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087486"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87534781"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Advanced Resource Graph 查询示例
 
@@ -322,7 +322,7 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.sql/servers/database
 
 ## <a name="list-virtual-machines-with-their-network-interface-and-public-ip"></a><a name="join-vmpip">列出具有其网络接口和公共 IP 的虚拟机</a>
 
-此查询使用两个 **leftouter** `join` 命令将虚拟机、其相关网络接口以及与这些网络接口相关的任何公共 IP 地址组合在一起。
+此查询使用两个 **leftouter** `join` 命令将使用资源管理器部署模型创建的虚拟机、其相关网络接口以及与这些网络接口相关的任何公共 IP 地址组合在一起。
 
 ```kusto
 Resources

@@ -2,14 +2,14 @@
 title: Azure 中的无服务器容器
 description: Azure 容器实例服务提供了在 Azure 中运行隔离容器的最简捷方式，既无需管理虚拟机，也不必采用更高级的业务流程协调程序。
 ms.topic: overview
-ms.date: 04/25/2019
+ms.date: 07/28/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 261e5d0159b4201aab0e8aad1e05fa320cc76a14
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 2871aabe4d81cfb1441e9c74c8fa24e4e906d3b9
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259507"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87498678"
 ---
 # <a name="what-is-azure-container-instances"></a>什么是 Azure 容器实例？
 
@@ -20,6 +20,11 @@ ms.locfileid: "86259507"
 ## <a name="fast-startup-times"></a>启动时间短
 
 与虚拟机 (VM) 相比，容器的启动优势明显。 Azure 容器实例可在数秒内启动 Azure 中的容器，且无需预配和管理 VM。
+
+从 Docker Hub 引入 Linux 或 Windows 容器映像、专用 [Azure 容器注册表](../container-registry/index.yml)或其他基于云的 Docker 注册表。 Azure 容器实例会缓存几个常见的基础操作系统映像，有助于加快自定义应用程序映像的部署速度。
+
+> [!NOTE]
+> 目前无法将映像从本地注册表部署到 Azure 容器实例。
 
 ## <a name="container-access"></a>容器访问
 
@@ -68,7 +73,7 @@ Azure 容器实例支持对共享主机、本地网络、存储和生命周期�
 
 ## <a name="virtual-network-deployment"></a>虚拟网络部署
 
-Azure 容器实例的此功能目前可用于一部分 Azure 区域中的生产工作负荷，它支持[将容器实例部署到 Azure 虚拟网络中](container-instances-vnet.md)。 通过将容器实例部署到虚拟网络的子网中，这些实例可以与虚拟网络中的其他资源（包括本地资源）进行安全通信（通过 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或 [ExpressRoute](../expressroute/expressroute-introduction.md)）。
+Azure 容器实例允许[将容器实例部署到 Azure 虚拟网络中](container-instances-vnet.md)。 部署到虚拟网络的子网中时，容器实例可以与虚拟网络中的其他资源（包括本地资源）进行安全通信（通过 [VPN 网关](../vpn-gateway/vpn-gateway-about-vpngateways.md)或 [ExpressRoute](../expressroute/expressroute-introduction.md)）。
 
 ## <a name="next-steps"></a>后续步骤
 

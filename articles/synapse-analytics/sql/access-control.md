@@ -9,19 +9,19 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: e5db52d1e28a7db5594b3b2a16bc145d0a50e2e3
-ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
+ms.openlocfilehash: 6dc0bb08e3d824c1d3fea155d1b3d4c52e1af4a6
+ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/14/2020
-ms.locfileid: "84765074"
+ms.lasthandoff: 07/31/2020
+ms.locfileid: "87499834"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>管理对工作区、数据和管道的访问
 
 了解如何在 Azure Synapse Analytics 工作区（预览版）中管理对工作区、数据和管道的访问控制。
 
 > [!NOTE]
-> 在正式版 (GA) 中，RBAC 将会引入特定于 Synapse 的 Azure RBAC 角色，因此其功能会更完备。
+> 在正式版 (GA) 中，RBAC 将会引入特定于 Synapse 的 Azure 角色，因此其功能会更完备
 
 ## <a name="access-control-for-workspace"></a>对工作区的访问控制
 
