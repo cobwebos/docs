@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: aae0ed4efa7f96ab6258dbf0ce4c34a6879ecbc2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d91fd15d7f1f5d2bb1bd97b5a28ef56f09797140
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832801"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080311"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 开发人员入门指南
 
@@ -64,7 +64,7 @@ Azure 提供了支持应用程序开发和托管需求的服务。 Azure 还提�
 
 > **何时使用**：在将现有 web 应用程序迁移到 Azure 时，以及当你需要用于 web 应用的完全托管的托管平台时，使用应用服务。 另外，当需要支持移动客户端或者使用你的应用公开 REST API时，也可以使用应用服务。
 >
-> **开始使用**：通过应用服务，可以轻松创建和部署你的第一个 [Web 应用](../../app-service/app-service-web-get-started-dotnet.md)、[移动应用](../../app-service-mobile/app-service-mobile-ios-get-started.md)，或 [API 应用](../../app-service/app-service-web-tutorial-rest-api.md)。
+> **开始使用**：通过应用服务，可以轻松创建和部署你的第一个 [Web 应用](../../app-service/quickstart-dotnetcore.md)、[移动应用](../../app-service-mobile/app-service-mobile-ios-get-started.md)，或 [API 应用](../../app-service/app-service-web-tutorial-rest-api.md)。
 >
 > **立即试用**：通过应用服务，可以设置一个临时应用来试用该平台，而无需注册 Azure 帐户。 试用平台并[创建 Azure 应用服务应用](https://tryappservice.azure.com/)。
 
@@ -307,7 +307,7 @@ Azure 资源浏览器是一款非常出色的工具，可用于可视化已在�
 
   > **何时使用**：当你以编程方式管理 Azure 资源或授予应用程序访问权限时。 有关详细信息，请参阅[创建 Active Directory 应用程序和服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。
 
-#### <a name="tags"></a>Tags
+#### <a name="tags"></a>标记
 
 通过 Azure 资源管理器，你可以将自定义标记分配给单个资源。 标记为键值对，在出于计费或监视目的而需要组织资源时，标记可能会十分有用。 标记提供了一种跨多个资源组跟踪的资源方法。 可以通过以下方式分配标记：
 

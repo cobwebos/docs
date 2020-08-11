@@ -11,12 +11,12 @@ ms.author: nigup
 author: nishankgu
 ms.date: 07/24/2020
 ms.custom: how-to, seodec18
-ms.openlocfilehash: 5b454c324d475eb4f692e1715cb2ea45105f78e1
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: afffdd0267cde8ffc841587748e51dd27e021369
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056918"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079580"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问权限
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -142,7 +142,7 @@ az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientis
 | 提交任意类型的运行 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/*/read", "/workspaces/environments/write", "/workspaces/experiments/runs/write", "/workspaces/metadata/artifacts/write", "/workspaces/metadata/snapshots/write", "/workspaces/environments/build/action", "/workspaces/experiments/runs/submit/action", "/workspaces/environments/readSecrets/action"` |
 | 发布管道终结点 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/pipelines/write", "/workspaces/endpoints/pipelines/*", "/workspaces/pipelinedrafts/*", "/workspaces/modules/*"` |
 | 在 AKS/ACI 资源上部署注册的模型 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/services/aks/write", "/workspaces/services/aci/write"` |
-| 针对已部署的 AKS 终结点评分 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：在 `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` `"/workspaces/read"` 使用令牌身份) 验证时不使用 AAD 身份验证) 或 (时 ( |
+| 针对已部署的 AKS 终结点评分 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：在使用 `"/workspaces/services/aks/score/action", "/workspaces/services/aks/listkeys/action"` `"/workspaces/read"` 令牌) 身份验证时不使用 Azure Active Directory AUTH) 或 (时 ( |
 | 使用交互式笔记本访问存储 | 不是必需 | 不是必需 | 所有者、参与者或自定义角色允许：`"/workspaces/computes/read", "/workspaces/notebooks/samples/read", "/workspaces/notebooks/storage/*"` |
 | 创建新的自定义角色 | 所有者、参与者或自定义角色允许`Microsoft.Authorization/roleDefinitions/write` | 不是必需 | 所有者、参与者或自定义角色允许：`/workspaces/computes/write` |
 
@@ -374,10 +374,14 @@ az provider operation show –n Microsoft.MachineLearningServices
 下面是在 Azure RBAC) 使用 Azure 基于角色的访问 (控制时需要注意的一些事项：
 
 - 当你在 Azure 中创建资源时，如工作区，你不会直接成为工作区的所有者。 你的角色继承自你在该订阅中获得授权的最高作用域角色。 例如，如果你是网络管理员，并且有权创建机器学习工作区，则会为该工作区分配网络管理员角色，而不是所有者角色。
-- 如果对同一 AAD 用户有两个角色分配，并且操作/NotActions 发生冲突，则在 NotActions 中列出的操作可能不会生效（如果它们也作为另一个角色中的操作列出）。 若要了解有关 Azure 如何分析角色分配的详细信息，请参阅[AZURE RBAC 如何确定用户是否有权访问资源](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource)
-- 若要在 VNet 中部署计算资源，需要在该 VNet 资源上显式拥有 "virtualNetworks/join/action" 的权限。
-- 对于新的角色分配，在整个堆栈中通过缓存的权限，可能需要花费1小时的时间才能生效。
+- 如果有两个角色分配给相同的 Azure Active Directory 用户，并且操作/NotActions 有冲突，则在 NotActions 中列出的操作可能不会生效，因为它们也作为另一个角色中的操作列出。 若要了解有关 Azure 如何分析角色分配的详细信息，请参阅[AZURE RBAC 如何确定用户是否有权访问资源](/azure/role-based-access-control/overview#how-azure-rbac-determines-if-a-user-has-access-to-a-resource)
+- 若要在 VNet 中部署计算资源，需要显式具有以下操作的权限：
+    - VNet 资源上的 "virtualNetworks/join/action"。
+    - 子网资源上的 "virtualNetworks/子网/加入/操作"。
+    
+    有关 RBAC with 网络的详细信息，请参阅[联网内置角色](/azure/role-based-access-control/built-in-roles#networking)。
 
+- 对于新的角色分配，在整个堆栈中通过缓存的权限，可能需要花费1小时的时间才能生效。
 
 ### <a name="q-what-permissions-do-i-need-to-use-a-user-assigned-managed-identity-with-my-amlcompute-clusters"></a>问： 对于 Amlcompute 群集使用用户分配的托管标识需要哪些权限？
 

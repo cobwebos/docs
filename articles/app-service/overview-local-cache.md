@@ -6,17 +6,17 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 739eb4e7968cb140e49f1baee777b48140811936
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b3c8f6015b4627d86a0665865fba2f3fdd39589d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034951"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080705"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure 应用服务本地缓存概述
 
 > [!NOTE]
-> 函数应用或容器化应用服务应用中不支持本地缓存，如[Windows 容器](app-service-web-get-started-windows-container.md)中或[Linux 应用服务](containers/app-service-linux-intro.md)。
+> 函数应用或容器化应用服务应用中不支持本地缓存，如[Windows 容器](quickstart-custom-container.md?pivots=container-windows)中或[Linux 应用服务](overview.md#app-service-on-linux)。
 
 
 Azure 应用服务内容将存储在 Azure 存储中，作为内容共享持续呈现。 此设计旨在兼容各种应用，具有以下特点：  

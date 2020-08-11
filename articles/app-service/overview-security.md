@@ -5,12 +5,12 @@ keywords: azure 应用服务, web 应用, 移动应用, api 应用, 函数应用
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 0a4d3518c3325eff2b3c3db111babb9e784d5e31
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a6c8aeeaded659fb7fd37409c3d9e495aa711fa6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649037"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080294"
 ---
 # <a name="security-in-azure-app-service"></a>Azure 应用服务中的安全性
 
@@ -22,7 +22,7 @@ ms.locfileid: "83649037"
 
 ## <a name="https-and-certificates"></a>HTTPS 和证书
 
-应用服务允许通过 [HTTPS](https://wikipedia.org/wiki/HTTPS) 保护应用。 创建应用后，便可使用 HTTPS 访问其默认域名 (\<app_name>.azurewebsites.net)。 如果[为应用配置自定义域](app-service-web-tutorial-custom-domain.md)，则还应[使用 TLS/SSL 对其进行保护](configure-ssl-bindings.md)，以便客户端浏览器与自定义域建立安全的 HTTPS 连接。 下面是应用服务支持的多种类型的证书：
+应用服务允许通过 [HTTPS](https://wikipedia.org/wiki/HTTPS) 保护应用。 创建应用后，其默认域名 (\<app_name> 。 azurewebsites.net) 已使用 HTTPS 进行访问。 如果[为应用配置自定义域](app-service-web-tutorial-custom-domain.md)，则还应[使用 TLS/SSL 对其进行保护](configure-ssl-bindings.md)，以便客户端浏览器与自定义域建立安全的 HTTPS 连接。 下面是应用服务支持的多种类型的证书：
 
 - 免费应用服务托管证书
 - 应用服务证书
@@ -56,7 +56,7 @@ Azure 应用服务提供用户或客户端应用的统包身份验证和授权�
 在向后端服务进行身份验证时，应用服务根据你的需要提供两种不同的机制：
 
 - **服务标识**：使用应用本身的标识登录到远程资源。 通过应用服务可轻松创建[托管标识](overview-managed-identity.md)，在向 [Azure SQL 数据库](/azure/sql-database/)或 [Azure Key Vault](/azure/key-vault/) 等其他服务进行身份验证时可使用该标识。 有关此方法的端到端教程，请参阅[使用托管标识确保从应用服务进行的 Azure SQL 数据库连接安全](app-service-web-tutorial-connect-msi.md)。
-- **代表 (OBO)** ：代表用户对远程资源进行委托访问。 使用 Azure Active Directory 作为验证提供程序时，应用服务应用可以行远程服务（例如 [Microsoft Graph API](../active-directory/develop/microsoft-graph-intro.md) 或应用服务中的远程 API 应用）委托登录。 有关此方法的端到端教程，请参阅[在 Azure 应用服务中对用户进行端到端身份验证和授权](app-service-web-tutorial-auth-aad.md)。
+- **代表 (OBO)** ：代表用户对远程资源进行委托访问。 使用 Azure Active Directory 作为验证提供程序时，应用服务应用可以行远程服务（例如 [Microsoft Graph API](../active-directory/develop/microsoft-graph-intro.md) 或应用服务中的远程 API 应用）委托登录。 有关此方法的端到端教程，请参阅[在 Azure 应用服务中对用户进行端到端身份验证和授权](tutorial-auth-aad.md)。
 
 ## <a name="connectivity-to-remote-resources"></a>远程资源连接
 

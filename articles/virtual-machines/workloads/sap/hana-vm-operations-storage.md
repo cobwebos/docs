@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 074171d658eb4e1e029652c9c0851e082ba043fe
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: d5497f50f9e868338541143a18ab0c83f32c1d1b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053433"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080518"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虚拟机存储配置
 
@@ -133,7 +133,7 @@ Azure 写入加速器是可用于 Azure M 系列 VM 的一项功能。 作为名
 > Azure M 系列虚拟机的 SAP HANA 认证要求中规定，Azure 写入加速器只能用于 **/hana/log** 卷。 因此，在 Azure M 系列虚拟机上的生产场景 SAP HANA 部署中，应该配置 **/hana/log** 卷使用的 Azure 写入加速器。  
 
 > [!NOTE]
-> 在涉及 Azure 高级存储的方案中，我们将在配置中实现突发功能。 使用任意形状或窗体的存储测试工具时，请牢记[Azure 高级磁盘突发](../../linux/disk-bursting.md)功能的工作方式。 运行通过 SAP HWCCT 或 HCMT 工具传递的存储测试时，我们不希望所有测试都将通过条件，因为某些测试会超出你可以累积的突发富余额度。 尤其是在所有测试都按顺序运行时，无需中断。
+> 在涉及 Azure 高级存储的方案中，我们将在配置中实现突发功能。 使用任意形状或窗体的存储测试工具时，请记住[Azure 高级磁盘突发的工作](../../linux/disk-bursting.md)方式。 运行通过 SAP HWCCT 或 HCMT 工具传递的存储测试时，我们不希望所有测试都将通过条件，因为某些测试会超出你可以累积的突发富余额度。 尤其是在所有测试都按顺序运行时，无需中断。
 
 
 > [!NOTE]

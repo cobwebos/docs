@@ -1,29 +1,32 @@
 ---
-title: 配置 Windows Node.js 应用
-description: 了解如何在应用服务的本机 Windows 实例中配置 Node.js 应用。 本文介绍最常见的配置任务。
+title: 配置 Node.js 应用
+description: 了解如何在 Azure App Service 中的本机 Windows 实例或预建 Linux 容器中配置 Node.js 应用。 本文介绍最常见的配置任务。
 ms.custom: devx-track-javascript
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 0fc6ed5cb090653e381d82f484d355a514520c62
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+zone_pivot_groups: app-service-platform-windows-linux
+ms.openlocfilehash: e6daf176504427c96f8dce0a4e9a6b6d5e999a0a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170905"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080107"
 ---
-# <a name="configure-a-windows-nodejs-app-for-azure-app-service"></a>为 Azure App Service 配置 Windows Node.js 应用
+# <a name="configure-a-nodejs-app-for-azure-app-service"></a>为 Azure App Service 配置 Node.js 应用
 
-必须部署所有必需的 NPM 依赖项，才能部署 Node.js 应用。 `npm install --production`部署[Git 存储库](deploy-local-git.md)或启用了生成自动化的[Zip 包](deploy-zip.md)时，应用服务部署引擎会自动运行。 但是，如果使用[FTP/S](deploy-ftp.md)部署文件，则需要手动上传所需的包。 有关 Linux 应用的信息，请参阅为[Azure App Service 配置 LINUX PHP 应用](containers/configure-language-nodejs.md)。
+必须部署所有必需的 NPM 依赖项，才能部署 Node.js 应用。 `npm install --production`部署[Git 存储库](deploy-local-git.md)或启用了生成自动化的[Zip 包](deploy-zip.md)时，应用服务部署引擎会自动运行。 但是，如果使用[FTP/S](deploy-ftp.md)部署文件，则需要手动上传所需的包。
 
-本指南为部署到应用服务的 Node.js 开发人员提供重要的概念和说明。 如果你从未使用过 Azure App Service，请先参阅[Node.js 快速入门](app-service-web-get-started-nodejs.md)教程，并[Node.js MongoDB 教程](app-service-web-tutorial-nodejs-mongodb-app.md)。
+本指南为部署到应用服务的 Node.js 开发人员提供重要的概念和说明。 如果你从未使用过 Azure App Service，请先参阅[Node.js 快速入门](quickstart-nodejs.md)教程，并[Node.js MongoDB 教程](tutorial-nodejs-mongodb-app.md)。
 
 ## <a name="show-nodejs-version"></a>显示 Node.js 版本
+
+::: zone pivot="platform-windows"  
 
 若要显示当前 Node.js 版本，请在[Cloud Shell](https://shell.azure.com)中运行以下命令：
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION'].value"
+az webapp config appsettings list --name <app-name> --resource-group <resource-group-name> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION'].value"
 ```
 
 若要显示所有支持的 Node.js 版本，请在[Cloud Shell](https://shell.azure.com)中运行以下命令：
@@ -32,7 +35,27 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 az webapp list-runtimes | grep node
 ```
 
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+若要显示当前 Node.js 版本，请在[Cloud Shell](https://shell.azure.com)中运行以下命令：
+
+```azurecli-interactive
+az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
+```
+
+若要显示所有支持的 Node.js 版本，请在[Cloud Shell](https://shell.azure.com)中运行以下命令：
+
+```azurecli-interactive
+az webapp list-runtimes --linux | grep NODE
+```
+
+::: zone-end
+
 ## <a name="set-nodejs-version"></a>设置 Node.js 版本
+
+::: zone pivot="platform-windows"  
 
 若要将应用设置为[受支持的 Node.js 版本](#show-nodejs-version)，请在[Cloud Shell](https://shell.azure.com)中运行以下命令，以将设置 `WEBSITE_NODE_DEFAULT_VERSION` 为受支持的版本：
 
@@ -45,6 +68,135 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 > [!NOTE]
 > 应在项目的中设置 Node.js 版本 `package.json` 。 部署引擎在单独的进程中运行，该进程包含所有受支持的 Node.js 版本。
 
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+若要将应用设置为[受支持的 Node.js 版本](#show-nodejs-version)，请在[Cloud Shell](https://shell.azure.com)中运行以下命令：
+
+```azurecli-interactive
+az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "NODE|10.14"
+```
+
+此设置指定在运行时和 Kudu 中自动包还原期间使用的 Node.js 版本。
+
+> [!NOTE]
+> 应在项目的中设置 Node.js 版本 `package.json` 。 部署引擎在包含所有受支持的 Node.js 版本的单独容器中运行。
+
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+## <a name="customize-build-automation"></a>自定义生成自动化
+
+如果在启用生成自动化的情况下使用 Git 或 zip 包部署应用，应用服务生成自动化将按以下顺序完成各个步骤：
+
+1. 运行 `PRE_BUILD_SCRIPT_PATH` 指定的自定义脚本。
+1. `npm install`无需任何标志即可运行，其中包括 npm `preinstall` 和 `postinstall` 脚本，也会进行安装 `devDependencies` 。
+1. `npm run build`如果在*的package.js*中指定了生成脚本，则运行。
+1. `npm run build:azure`如果生成： azure 脚本是在*上的package.js*中指定的，则运行。
+1. 运行 `POST_BUILD_SCRIPT_PATH` 指定的自定义脚本。
+
+> [!NOTE]
+> 如[npm 文档](https://docs.npmjs.com/misc/scripts)中所述，在 `prebuild` `postbuild` 指定的之前和之后分别运行的脚本 `build` 。 `preinstall`并 `postinstall` 分别在之前和之后运行 `install` 。
+
+`PRE_BUILD_COMMAND` 和 `POST_BUILD_COMMAND` 是默认为空的环境变量。 若要运行生成前命令，请定义 `PRE_BUILD_COMMAND`。 若要运行生成后命令，请定义 `POST_BUILD_COMMAND`。
+
+以下示例在一系列命令中指定两个以逗号分隔的变量。
+
+```azurecli-interactive
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PRE_BUILD_COMMAND="echo foo, scripts/prebuild.sh"
+az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings POST_BUILD_COMMAND="echo foo, scripts/postbuild.sh"
+```
+
+有关用于自定义生成自动化的其他环境变量，请参阅 [Oryx 配置](https://github.com/microsoft/Oryx/blob/master/doc/configuration.md)。
+
+若要详细了解应用服务的运行方式以及如何在 Linux 中构建 Node.js 应用，请参阅[Oryx 文档：如何检测和生成 Node.js 应用](https://github.com/microsoft/Oryx/blob/master/doc/runtimes/nodejs.md)。
+
+## <a name="configure-nodejs-server"></a>配置 Node.js 服务器
+
+Node.js 容器附带了一个生产流程经理[PM2](https://pm2.keymetrics.io/)。 你可以将应用程序配置为以 PM2 或使用 NPM 或使用自定义命令开始。
+
+- [运行自定义命令](#run-custom-command)
+- [运行 npm 开始](#run-npm-start)
+- [用 PM2 运行](#run-with-pm2)
+
+### <a name="run-custom-command"></a>运行自定义命令
+
+应用服务可以使用自定义命令（如*run.sh*等可执行文件）启动应用。例如，若要运行 `npm run start:prod` ，请在[Cloud Shell](https://shell.azure.com)中运行以下命令：
+
+```azurecli-interactive
+az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "npm run start:prod"
+```
+
+### <a name="run-npm-start"></a>运行 npm 开始
+
+若要使用启动应用程序 `npm start` ，只需确保 `start` *package.js*文件中有脚本。 例如：
+
+```json
+{
+  ...
+  "scripts": {
+    "start": "gulp",
+    ...
+  },
+  ...
+}
+```
+
+若要在项目中使用自定义*package.js* ，请在[Cloud Shell](https://shell.azure.com)中运行以下命令：
+
+```azurecli-interactive
+az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filename>.json"
+```
+
+### <a name="run-with-pm2"></a>用 PM2 运行
+
+当在你的项目中找到一个公用 Node.js 文件时，容器会自动通过 PM2 启动你的应用程序：
+
+- *bin/www*
+- *server.js*
+- *app.js*
+- *index.js*
+- *hostingstart.js*
+- 以下[PM2 文件](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)之一： *process.js*和*ecosystem.config.js*
+
+你还可以使用以下扩展配置自定义启动文件：
+
+- *.Js*文件
+- 扩展名为*json*、 *.config.js*、 *. Yaml*或 *. docker-compose.override.yml*的[PM2 文件](https://pm2.keymetrics.io/docs/usage/application-declaration/#process-file)
+
+若要添加自定义起始文件，请在[Cloud Shell](https://shell.azure.com)中运行以下命令：
+
+```azurecli-interactive
+az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<filname-with-extension>"
+```
+
+## <a name="debug-remotely"></a>远程调试
+
+> [!NOTE]
+> 远程调试当前为预览版。
+
+如果将应用程序配置为使用[PM2 运行](#run-with-pm2)，则可以在[Visual Studio Code](https://code.visualstudio.com/)中远程调试 Node.js 应用程序，除非使用 * .config.js、docker-compose.override.yml 或*yaml*运行该应用程序。
+
+在大多数情况下，你的应用程序不需要进行额外配置。 如果应用是使用*process.js*文件 (默认的或自定义) 运行，则它必须 `script` 在 JSON 根中具有属性。 例如：
+
+```json
+{
+  "name"        : "worker",
+  "script"      : "./index.js",
+  ...
+}
+```
+
+若要设置远程调试的 Visual Studio Code，请安装[应用服务扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azureappservice)。 按照 "扩展" 页上的说明操作，并在 Visual Studio Code 中登录到 Azure。
+
+在 Azure 资源管理器中，找到要调试的应用程序，右键单击该应用，然后选择 "**开始远程调试**"。 单击 **"是"** 以启用应用。 应用服务启动隧道代理并附加调试器。 然后，您可以向应用程序发出请求，并查看调试器在断点处暂停。
+
+完成调试后，通过选择 "**断开连接**" 来停止调试器。 出现提示时，应单击 **"是"** 以禁用远程调试。 若要以后再禁用它，请在 Azure 资源管理器中再次右键单击你的应用程序，然后选择 "**禁用远程调试**"。
+
+::: zone-end
+
 ## <a name="access-environment-variables"></a>访问环境变量
 
 在应用服务中，可以在应用代码外部[设置应用设置](configure-common.md)。 然后，你可以使用标准 Node.js 模式访问它们。 例如，若要访问名为 `NODE_ENV` 的应用设置，请使用以下代码：
@@ -55,7 +207,7 @@ process.env.NODE_ENV
 
 ## <a name="run-gruntbowergulp"></a>运行 Grunt/Bower/Gulp
 
-默认情况下，应用服务生成自动化 `npm install --production` 在识别通过 Git （或启用了生成自动化的 Zip 部署）部署的 Node.js 应用时运行。 如果应用需要任何常用的自动化工具，如 Grunt、Bower 或 Gulp，则需要提供一个[自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)来运行该工具。
+默认情况下，应用服务生成自动化 `npm install --production` 在识别使用启用了生成自动化的 Git 或 Zip 部署的情况下部署的 Node.js 应用时运行。 如果应用需要任何常用的自动化工具，如 Grunt、Bower 或 Gulp，则需要提供一个[自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)来运行该工具。
 
 若要使存储库能够运行这些工具，需要将它们添加到*package.js上*的依赖项。 例如：
 
@@ -148,7 +300,17 @@ if (req.secure) {
 
 ## <a name="access-diagnostic-logs"></a>访问诊断日志
 
+::: zone pivot="platform-windows"  
+
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
+
+::: zone-end
+
+::: zone pivot="platform-linux"
+
+[!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-linux-no-h.md)]
+
+::: zone-end
 
 ## <a name="troubleshooting"></a>疑难解答
 
@@ -156,13 +318,26 @@ if (req.secure) {
 
 - [访问日志流](#access-diagnostic-logs)。
 - 在生产模式下，在本地测试应用。 应用服务在生产模式下运行 Node.js 应用，因此需要确保项目在生产模式下按预期在本地运行。 例如：
-    - 根据的*package.js*，可能会为生产模式（与）安装不同的包 `dependencies` `devDependencies` 。
+    - 根据*package.js上*的不同，可能会为生产模式 (与) 安装不同的包 `dependencies` `devDependencies` 。
     - 某些 Web 框架可以在生产模式下通过各种方式部署静态文件。
     - 在生产模式下运行时，某些 Web 框架可能会使用自定义的启动脚本。
 - 在开发模式下，在应用服务中运行应用。 例如，在[MEAN.js](https://meanjs.org/)中，可以通过[设置 `NODE_ENV` 应用程序设置](configure-common.md)，将应用程序设置为运行时中的开发模式。
 
+::: zone pivot="platform-linux"
+
+[!INCLUDE [robots933456](../../includes/app-service-web-configure-robots933456.md)]
+
+::: zone-end
+
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：使用 MongoDB 的 Node.js 应用](app-service-web-tutorial-nodejs-mongodb-app.md)
+> [教程：使用 MongoDB 的 Node.js 应用](tutorial-nodejs-mongodb-app.md)
+
+::: zone pivot="platform-linux"
+
+> [!div class="nextstepaction"]
+> [应用服务 Linux 常见问题解答](faq-app-service-linux.md)
+
+::: zone-end
 

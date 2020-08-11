@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 5e32baa10e98f0f57a861f8cebfb7506ad615631
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2bedd8d9ab0b879886042de3dc2fcff7f7b36f2f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74980057"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080926"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>应用程序网关与服务终结点的集成
 应用服务有三种变体，需要对它们采用略微不同的配置，才能使其与 Azure 应用程序网关集成。 这些变体包括普通应用服务（也称为多租户）、内部负载均衡器 (ILB) 应用服务环境 (ASE) 和外部 ASE。 本文逐步介绍如何使用应用服务（多租户）对其进行配置，并讨论有关 ILB 和外部 ASE 的注意事项。
@@ -33,7 +33,7 @@ ms.locfileid: "74980057"
 
 ## <a name="using-azure-portal"></a>使用 Azure 门户
 在 Azure 门户中，可以通过四个步骤来预配和配置设置。 如果已有现有的资源，则可以跳过前几个步骤。
-1. 参考应用服务文档中的某篇快速入门（例如 [.Net Core 快速入门](../../app-service/app-service-web-get-started-dotnet.md)）创建应用服务
+1. 参考应用服务文档中的某篇快速入门（例如 [.Net Core 快速入门](../quickstart-dotnetcore.md)）创建应用服务
 2. 参考[门户快速入门](../../application-gateway/quick-create-portal.md)创建应用程序网关，但请跳过“添加后端目标”部分。
 3. [将应用服务配置为应用程序网关中的后端](../../application-gateway/configure-web-app-portal.md)，但请跳过“限制访问”部分。
 4. 最后，[使用服务终结点创建访问限制](../../app-service/app-service-ip-restrictions.md#service-endpoints)。

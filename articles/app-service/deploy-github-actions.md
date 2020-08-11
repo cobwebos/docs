@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python
-ms.openlocfilehash: 51a340c2fb32de60f20c678e0bc23f2420261e44
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 713f4228bc2ba968fc96668d4d5c568f33b7e786
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849873"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080277"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>使用 GitHub Actions 部署到应用服务
 
@@ -28,49 +28,76 @@ ms.locfileid: "87849873"
 
 |部分  |任务  |
 |---------|---------|
-|**身份验证** | 1.定义服务主体 <br /> 2.创建 GitHub 机密 |
-|**生成** | 1.设置环境 <br /> 2.构建 Web 应用 |
-|**部署** | 1.部署 Web 应用 |
+|**身份验证** | 1. 定义服务主体。 <br /> 2. 创建 GitHub 机密。 |
+|**生成** | 1. 设置环境。 <br /> 2. 生成 web 应用。 |
+|**部署** | 1. 部署 web 应用。 |
 
-## <a name="create-a-service-principal"></a>创建服务主体
+## <a name="generate-deployment-credentials"></a>生成部署凭据
+
+# <a name="user-level-credentials"></a>[用户级凭据](#tab/userlevel)
 
 可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/) 中的 [az ad sp create-for-rbac](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) 命令创建[服务主体](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object)。 可以使用 Azure 门户中的 [Azure Cloud Shell](https://shell.azure.com/) 或选择“试用”按钮运行此命令。
 
 ```azurecli-interactive
-az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name>/providers/Microsoft.Web/sites/<app-name> --sdk-auth
+az ad sp create-for-rbac --name "myApp" --role contributor \
+                            --scopes /subscriptions/<subscription-id>/resourceGroups/<group-name>/providers/Microsoft.Web/sites/<app-name> \
+                            --sdk-auth
 ```
 
-在此示例中，将资源中的占位符替换为你的订阅 ID、资源组名称和应用名称。 输出是提供对应用服务应用的访问权限的角色分配凭据。 复制此 JSON 对象，该对象可用于从 GitHub 进行身份验证。
+在上面的示例中，将占位符替换为你的订阅 ID、资源组名称和应用名称。 输出是一个具有角色分配凭据的 JSON 对象，该对象提供对应用服务应用的访问权限，如下所示。 稍后复制此 JSON 对象。
 
-> [!NOTE]
-> 如果决定使用发布配置文件进行身份验证，则不需要创建服务主体。
+```output 
+  {
+    "clientId": "<GUID>",
+    "clientSecret": "<GUID>",
+    "subscriptionId": "<GUID>",
+    "tenantId": "<GUID>",
+    (...)
+  }
+```
 
 > [!IMPORTANT]
-> 授予最低访问权限始终是一种很好的做法。 因此，上一个示例中的范围仅限于特定的应用服务应用而不是整个资源组。
+> 始终应授予最小访问权限。 上一示例中的范围限制为特定的应用服务应用，而不是整个资源组。
+
+# <a name="app-level-credentials"></a>[应用级凭据](#tab/applevel)
+
+你可以使用应用的发布配置文件来使用应用级凭据。 在门户中，切换到应用的 "管理" 页。 在 "**概述**" 页中，单击 "**获取发布配置文件**" 选项。
+
+稍后你将需要该文件的内容。
+
+---
 
 ## <a name="configure-the-github-secret"></a>配置 GitHub 机密
 
-还可以使用应用级凭据（即发布配置文件）进行部署。 按照以下步骤配置机密：
+# <a name="user-level-credentials"></a>[用户级凭据](#tab/userlevel)
 
-1. 使用“获取发布配置文件”选项，从门户下载应用服务应用的发布配置文件。
+在[GitHub](https://github.com/)中，浏览存储库，选择 "**设置" > 机密 > 添加新机密**。
 
-2. 在 [GitHub](https://github.com/) 中，浏览存储库，选择“设置”>“机密”>“添加新机密”
+要使用[用户级凭据](#generate-deployment-credentials)，请将 Azure CLI 命令的整个 JSON 输出粘贴到机密的值字段中。 为机密指定名称，如 `AZURE_CREDENTIALS` 。
 
-    ![机密](media/app-service-github-actions/secrets.png)
+以后配置工作流文件时，请使用机密来输入 `creds` Azure 登录操作。 例如：
 
-3. 将下载的发布配置文件的内容粘贴到机密的值字段中。
+```yaml
+- uses: azure/login@v1
+  with:
+    creds: ${{ secrets.AZURE_CREDENTIALS }}
+```
 
-4. 现在，在分支中的工作流文件中：`.github/workflows/workflow.yml` 替换部署 Azure Web 应用操作的输入 `publish-profile` 的机密。
+# <a name="app-level-credentials"></a>[应用级凭据](#tab/applevel)
+
+在[GitHub](https://github.com/)中，浏览存储库，选择 "**设置" > 机密 > 添加新机密**。
+
+若要使用[应用级凭据](#generate-deployment-credentials)，请将下载的发布配置文件的内容粘贴到机密的值字段中。 为机密指定名称，如 `azureWebAppPublishProfile` 。
+
+稍后在配置工作流文件时，请使用 " `publish-profile` 部署 Azure Web 应用" 操作的输入的机密。 例如：
     
-    ```yaml
-        - uses: azure/webapps-deploy@v2
-          with:
-            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
-    ```
+```yaml
+- uses: azure/webapps-deploy@v2
+  with:
+    publish-profile: ${{ secrets.azureWebAppPublishProfile }}
+```
 
-5. 定义后，你将看到如下所示的机密。
-
-    ![机密](media/app-service-github-actions/app-service-secrets.png)
+---
 
 ## <a name="set-up-the-environment"></a>设置环境
 
@@ -192,43 +219,9 @@ az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptio
 | **package** | （可选）包或文件夹的路径。 *.zip、*.war、*.jar 或要部署的文件夹 |
 | **slot-name** | （可选）输入生产槽以外的现有槽 |
 
-### <a name="deploy-using-publish-profile"></a>使用发布配置文件进行部署
+# <a name="user-level-credentials"></a>[用户级凭据](#tab/userlevel)
 
-下面是使用发布配置文件生成 Node.js 应用并将其部署到 Azure 的示例工作流。
-
-```yaml
-# File: .github/workflows/workflow.yml
-
-on: push
-
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    # checkout the repo
-    - name: 'Checkout GitHub Action' 
-      uses: actions/checkout@master
-    
-    - name: Setup Node 10.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: '10.x'
-    - name: 'npm install, build, and test'
-      run: |
-        npm install
-        npm run build --if-present
-        npm run test --if-present
-       
-    - name: 'Run Azure webapp deploy action using publish profile credentials'
-          uses: azure/webapps-deploy@v2
-          with: 
-            app-name: node-rn
-            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
-```
-
-### <a name="deploy-using-azure-service-principal"></a>使用 Azure 服务主体进行部署
-
-下面是使用 Azure 服务主体生成 Node.js 应用并将其部署到 Azure 的示例工作流。
+下面是使用 Azure 服务主体生成 Node.js 应用并将其部署到 Azure 的示例工作流。 请注意 `creds` 输入如何引用 `AZURE_CREDENTIALS` 前面创建的机密。
 
 ```yaml
 on: [push]
@@ -268,6 +261,42 @@ jobs:
       run: |
         az logout
 ```
+
+# <a name="app-level-credentials"></a>[应用级凭据](#tab/applevel)
+
+下面是使用应用的发布配置文件构建 Node.js 应用并将其部署到 Azure 的示例工作流。 请注意 `publish-profile` 输入如何引用 `azureWebAppPublishProfile` 前面创建的机密。
+
+```yaml
+# File: .github/workflows/workflow.yml
+
+on: push
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    # checkout the repo
+    - name: 'Checkout GitHub Action' 
+      uses: actions/checkout@master
+    
+    - name: Setup Node 10.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+    - name: 'npm install, build, and test'
+      run: |
+        npm install
+        npm run build --if-present
+        npm run test --if-present
+       
+    - name: 'Run Azure webapp deploy action using publish profile credentials'
+          uses: azure/webapps-deploy@v2
+          with: 
+            app-name: node-rn
+            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
+```
+
+---
 
 ## <a name="next-steps"></a>后续步骤
 

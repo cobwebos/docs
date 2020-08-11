@@ -2,19 +2,18 @@
 title: Azure Cosmos DB 监视数据引用 |Microsoft Docs
 description: 来自 Azure Cosmos DB 的监视数据的日志和指标参考。
 author: bwren
-services: azure-monitor
-ms.service: azure-monitor
+services: cosmos-db
+ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.subservice: logs
-ms.openlocfilehash: 89dc81cdd06bedb6237cf48312ee7ed0510d93ce
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 21e1d93e206751b5a55b0b3549e8bd566612ddbe
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084732"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080447"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB 监视数据参考
 
@@ -24,7 +23,7 @@ ms.locfileid: "87084732"
 
 下表列出了 Azure Cosmos DB 中的资源日志属性。 资源日志收集到 Azure Monitor 日志或 Azure 存储中。 在 Azure Monitor 中，将在 "资源提供程序" 的 "名称" 下面的 " **AzureDiagnostics** " 表中收集日志 `MICROSOFT.DOCUMENTDB` 。
 
-| Azure 存储字段或属性 | Azure Monitor 日志属性 | 描述 |
+| Azure 存储字段或属性 | Azure Monitor 日志属性 | 说明 |
 | --- | --- | --- |
 | **time** | **TimeGenerated** | 操作发生时的日期和时间 (UTC)。 |
 | **resourceId** | **资源** | 为其启用日志的 Azure Cosmos DB 帐户。|
@@ -50,7 +49,7 @@ ms.locfileid: "87084732"
 ## <a name="metrics"></a>指标
 以下各表列出了为 Azure CosmOS DB 收集的平台指标。 所有指标都存储在“Cosmos DB 标准指标”命名空间中。
 
-有关所有 Azure Monitor 支持指标（包括 Azure Cosmos DB）的列表，请参阅[Azure Monitor 支持的指标](../azure-monitor/platform/metrics-supported.md)。 
+有关所有 Azure Monitor 支持指标的列表 (包括 Azure Cosmos DB) ，请参阅[Azure Monitor 支持的指标](../azure-monitor/platform/metrics-supported.md)。 
 
 #### <a name="request-metrics"></a>请求指标
             
@@ -62,7 +61,7 @@ ms.locfileid: "87084732"
 
 #### <a name="request-unit-metrics"></a>请求单位指标
 
-|Metric（指标显示名称）|Unit（聚合类型）|说明|维度| 时间粒度| 旧指标映射 | 用法 |
+|Metric（指标显示名称）|Unit（聚合类型）|说明|维度| 时间粒度| 旧指标映射 | 使用情况 |
 |---|---|---|---| ---| ---| ---|
 | MongoRequestCharge（Mongo 请求费用） | Count（总数） |Mongo 已消耗的请求单位| DatabaseName, CollectionName, Region, CommandName, ErrorCode| 全部 |Mongo 查询请求费用、Mongo 更新请求费用、Mongo 删除请求费用、Mongo 插入请求费用、Mongo 计数请求费用| 用于监视一分钟内的 Mongo 资源 RU。|
 | TotalRequestUnits（请求单位总数）| Count（总数） | 已消耗的请求单位| DatabaseName, CollectionName, Region, StatusCode |全部| TotalRequestUnits| 用于在分钟粒度监视总的 RU 使用量。 若要获取每秒平均使用的 RU，请在分钟级别使用“总计”聚合并除以 60。|
@@ -70,7 +69,7 @@ ms.locfileid: "87084732"
 
 #### <a name="storage-metrics"></a>存储度量值
 
-|Metric（指标显示名称）|Unit（聚合类型）|说明|维度| 时间粒度| 旧指标映射 | 用法 |
+|Metric（指标显示名称）|Unit（聚合类型）|说明|维度| 时间粒度| 旧指标映射 | 使用情况 |
 |---|---|---|---| ---| ---| ---|
 | AvailableStorage（可用存储空间） |Bytes（总数） | 每个区域按 5 分钟粒度报告的可用存储总量| DatabaseName、CollectionName、Region| 5M| 可用存储| 用于监视可用存储容量（仅适用于固定存储集合）。最小粒度应当为 5 分钟。| 
 | DataUsage（数据用量） |Bytes（总数） |每个区域按 5 分钟粒度报告的数据总用量| DatabaseName、CollectionName、Region| 5M |数据大小 | 用于在容器和区域级别监视总的数据使用情况，最小粒度应当为 5 分钟。|

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: 6f5df14d9488f8ccb1f93c2a16ba52998f25e268
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: db1b88b9c22012cb4e6b5025dda31432c9278ff8
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876574"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080892"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>配置 Azure 认知服务虚拟网络
 
@@ -40,10 +40,9 @@ Azure 认知服务提供分层的安全模型。 借助此模型，可保护认�
 
 ## <a name="supported-regions-and-service-offerings"></a>支持的区域和服务产品
 
-下面列出的认知服务支持商业云和 US Gov 云中的虚拟网络。 如果该服务未在此处列出，则它尚不支持虚拟网络。
+支持[认知服务的区域](https://azure.microsoft.com/global-infrastructure/services/)支持虚拟网络 (vnet) 。 如果未列出认知服务，则当前不支持虚拟网络。
 
 > [!div class="checklist"]
-
 > * [异常检测器](./anomaly-detector/index.yml)
 > * [计算机视觉](./computer-vision/index.yml)
 > * [内容审查器](./content-moderator/index.yml)
@@ -59,8 +58,8 @@ Azure 认知服务提供分层的安全模型。 借助此模型，可保护认�
 ## <a name="service-tags"></a>服务标记
 
 认知服务支持网络规则配置服务标记。 下面列出的服务包含在**CognitiveServicesManagement**服务标记中。
-> [!div class="checklist"]
 
+> [!div class="checklist"]
 > * [异常检测器](./anomaly-detector/index.yml)
 > * [计算机视觉](./computer-vision/index.yml)
 > * [内容审查器](./content-moderator/index.yml)

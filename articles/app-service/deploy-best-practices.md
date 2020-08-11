@@ -7,12 +7,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.openlocfilehash: 4dd959d75fd582d787e68db4a415a4a694b9cda8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: addc4edba734c350a1e0e4246203c64315f345dd
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81770693"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88081045"
 ---
 # <a name="deployment-best-practices"></a>部署最佳实践
 
@@ -26,7 +26,7 @@ ms.locfileid: "81770693"
 
 ### <a name="build-pipeline"></a>生成管道
 
-确定部署源后，下一步是选择生成管道。 生成管道从部署源读取源代码，并执行一系列步骤（如编译代码、缩小 HTML 和 JavaScript、运行测试和打包组件）以使应用程序处于可运行状态。 生成管道执行的特定命令取决于你的语言堆栈。 这些操作可在 Azure Pipelines 的生成服务器上执行，或在本地执行。
+确定部署源后，下一步是选择生成管道。 生成管道从部署源读取源代码，并执行一系列步骤 (如编译代码、缩小 HTML 和 JavaScript、运行测试以及打包组件) 以使应用程序处于可运行状态。 生成管道执行的特定命令取决于你的语言堆栈。 这些操作可在 Azure Pipelines 的生成服务器上执行，或在本地执行。
 
 ### <a name="deployment-mechanism"></a>部署机制
 
@@ -43,9 +43,9 @@ ms.locfileid: "81770693"
 
 ### <a name="continuously-deploy-code"></a>连续部署代码
 
-如果你的项目已指定用于测试、QA 和过渡的分支，则每个分支都应持续部署到过渡槽。 （这称为[Gitflow 设计](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)。）这使您的利益干系人可以轻松地评估和测试已部署的分支。 
+如果你的项目已指定用于测试、QA 和过渡的分支，则每个分支都应持续部署到过渡槽。  (这称为[Gitflow 设计](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)。 ) 这使您的利益干系人可以轻松地评估和测试已部署的分支。 
 
-永远不应为生产槽启用持续部署。 相反，应将生产分支（通常为 master）部署到非生产槽。 准备好释放基本分支后，将其交换到生产槽中。 交换到生产中（而不是部署到生产环境）可防止停机，并使你能够通过再次交换回滚更改。 
+永远不应为生产槽启用持续部署。 相反，生产分支 (经常) 应部署到非生产槽上。 准备好释放基本分支后，将其交换到生产槽中。 交换到生产中（而不是部署到生产环境）可防止停机，并使你能够通过再次交换回滚更改。 
 
 ![槽使用情况视觉对象](media/app-service-deploy-best-practices/slot_flow_code_diagam.png)
 
@@ -69,7 +69,7 @@ ms.locfileid: "81770693"
 
 ### <a name="use-github-actions"></a>使用 GitHub 操作
 
-还可以[通过 GitHub 操作](containers/deploy-container-github-action.md)自动化容器部署。  以下工作流文件将使用提交 ID 构建并标记容器，并将其推送到容器注册表，并使用新的映像标记更新指定的站点槽。
+还可以[通过 GitHub 操作](deploy-container-github-action.md)自动化容器部署。  以下工作流文件将使用提交 ID 构建并标记容器，并将其推送到容器注册表，并使用新的映像标记更新指定的站点槽。
 
 ```yaml
 name: Build and deploy a container image to Azure Web Apps
@@ -131,11 +131,11 @@ az ad sp create-for-rbac --name "myServicePrincipal" --role contributor \
 
 ### <a name="node"></a>节点
 
-默认情况下，Kudu 执行节点应用程序（）的生成步骤 `npm install` 。 如果使用的是生成服务（例如 Azure DevOps），则不需要 Kudu 内部版本。 若要禁用 Kudu 生成，请创建一个应用设置， `SCM_DO_BUILD_DURING_DEPLOYMENT` 并将值设置为 `false` 。
+默认情况下，Kudu 执行节点应用程序 () 的生成步骤 `npm install` 。 如果使用的是生成服务（例如 Azure DevOps），则不需要 Kudu 内部版本。 若要禁用 Kudu 生成，请创建一个应用设置， `SCM_DO_BUILD_DURING_DEPLOYMENT` 并将值设置为 `false` 。
 
 ### <a name="net"></a>.NET 
 
-默认情况下，Kudu 执行 .NET 应用程序（）的生成步骤 `dotnet build` 。 如果使用的是生成服务（例如 Azure DevOps），则不需要 Kudu 内部版本。 若要禁用 Kudu 生成，请创建一个应用设置， `SCM_DO_BUILD_DURING_DEPLOYMENT` 并将值设置为 `false` 。
+默认情况下，Kudu 执行 .NET 应用程序 () 的生成步骤 `dotnet build` 。 如果使用的是生成服务（例如 Azure DevOps），则不需要 Kudu 内部版本。 若要禁用 Kudu 生成，请创建一个应用设置， `SCM_DO_BUILD_DURING_DEPLOYMENT` 并将值设置为 `false` 。
 
 ## <a name="other-deployment-considerations"></a>其他部署注意事项
 

@@ -3,12 +3,12 @@ title: Azure 服务总线常见问题解答 (FAQ) | Microsoft Docs
 description: 本文提供了一些有关 Azure 服务总线的常见问题解答 (FAQ)。
 ms.topic: article
 ms.date: 07/15/2020
-ms.openlocfilehash: 04ff12d28be1dd232c5666b17d8a121f8020ca89
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e098b05dba25a51d5d6ef7c50a1b73730828357a
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371237"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080807"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure 服务总线 - 常见问题解答 (FAQ)
 
@@ -57,7 +57,7 @@ ms.locfileid: "87371237"
 1. 从命令提示符处运行以下命令： 
 
     ```
-    nslookup <YourNamespaceName>.cloudapp.net
+    nslookup <YourNamespaceName>.servicebus.windows.net
     ```
 2. 记下在 `Non-authoritative answer` 中返回的 IP 地址。 此 IP 地址是静态的。 只有在你将命名空间还原到另一群集时，它才会更改。
 
@@ -66,7 +66,7 @@ ms.locfileid: "87371237"
 1. 首先，在命名空间中运行 nslookup。
 
     ```
-    nslookup <yournamespace>.cloudapp.net
+    nslookup <yournamespace>.servicebus.windows.net
     ```
 2. 记下“非权威回答”部分中的名称，该名称采用下述格式之一： 
 
@@ -78,7 +78,7 @@ ms.locfileid: "87371237"
 3. 为每一个运行 nslookup，使用后缀 s1、s2 和 s3 获取所有三个在三个可用性区域中运行的实例的 IP 地址。 
 
 ### <a name="where-can-i-find-the-ip-address-of-the-client-sendingreceiving-messages-tofrom-a-namespace"></a>在哪里可以找到客户端向/从命名空间发送/接收消息的客户端的 IP 地址？ 
-我们不会记录向/从命名空间发送消息或接收消息的客户端的 IP 地址。 重新生成密钥，以便所有现有的客户端将无法进行身份验证并查看基于角色的访问控制（[RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)）设置，以确保仅允许的用户或应用程序可以访问该命名空间。 
+我们不会记录向/从命名空间发送消息或接收消息的客户端的 IP 地址。 重新生成密钥，以便所有现有的客户端将无法进行身份验证并查看基于角色的访问控制 ([RBAC](authenticate-application.md#azure-built-in-roles-for-azure-service-bus)) 设置，以确保仅允许的用户或应用程序有权访问该命名空间。 
 
 如果使用的是**高级**命名空间，请使用[IP 筛选](service-bus-ip-filtering.md)、[虚拟网络服务终结点](service-bus-service-endpoints.md)和[专用终结点](private-link-service.md)限制对命名空间的访问。 
 
@@ -108,7 +108,7 @@ ms.locfileid: "87371237"
 在给定 Azure 区域内的任何数据传输和入站数据传输均不收费。 区域外的数据传输需收取输出费用，详见[此处](https://azure.microsoft.com/pricing/details/bandwidth/)。
 
 ### <a name="does-service-bus-charge-for-storage"></a>服务总线是否对存储收费？
-否。 服务总线不对存储收费。 但是，有一种配额限制每个队列/主题可以保留的最大数据量。 请参阅下一个常见问题。
+不能。 服务总线不对存储收费。 但是，有一种配额限制每个队列/主题可以保留的最大数据量。 请参阅下一个常见问题。
 
 ### <a name="i-have-a-service-bus-standard-namespace-why-do-i-see-charges-under-resource-group-system"></a>我有一个服务总线标准命名空间。 为什么我在资源组 '$system' 下看到收费信息？
 Azure 服务总线最近升级了计费组件。 由于此更改，如果你有一个 Service Bus 标准命名空间，则在资源组 "$system" 下，你可能会看到资源 "/subscriptions/<azure_subscription_id>/resourceGroups/$system/providers/Microsoft.ServiceBus/namespaces/$system" 的行项。

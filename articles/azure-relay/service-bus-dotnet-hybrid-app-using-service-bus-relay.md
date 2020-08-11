@@ -3,12 +3,12 @@ title: Azure Windows Communication Foundation (WCF) 中继本地混合/云应用
 description: 了解如何使用 Azure 中继向云中的 Web 应用程序公开本地 WCF 服务
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 78d250eb2572f137df4bcfd40c5c85cee9fb61dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a9ac01beb28b1246122f437bcf1c7a7be7a1dfd9
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85314416"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079954"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>使用 Azure 中继向云中的 Web 应用程序公开本地 WCF 服务
 
@@ -61,7 +61,7 @@ ms.locfileid: "85314416"
 1. 从 SDK [下载页](https://azure.microsoft.com/downloads/)安装用于 .NET 的 Azure SDK。
 1. 在“.NET”列中，选择要使用的 [Visual Studio](https://www.visualstudio.com) 版本。 本教程使用 Visual Studio 2019。
 1. 当系统提示是要运行还是保存安装程序时，选择“运行”。
-1. 在“Web 平台安装程序”对话框中，选择“安装”并继续安装。 
+1. 在“Web 平台安装程序”对话框中，选择“安装”并继续安装。
 
 安装完成后，就有了开始开发应用所需的一切。 SDK 包含了一些工具，可利用这些工具在 Visual Studio 中轻松开发 Azure 应用程序。
 
@@ -77,20 +77,20 @@ ms.locfileid: "85314416"
 
 1. 以管理员身份启动 Microsoft Visual Studio。 为此，请右键单击 Visual Studio 程序图标，并选择“以管理员身份运行”。
 1. 在 Visual Studio 中，选择“新建项目”。
-1. 在“创建新项目”中，选择适用于 C# 的“控制台应用(.NET Framework)”，然后选择“下一步”。  
+1. 在“创建新项目”中，选择适用于 C# 的“控制台应用(.NET Framework)”，然后选择“下一步”。
 1. 将项目命名为 *ProductsServer*，然后选择“创建”。
 
    ![配置新项目][11]
 
-1. 在“解决方案资源管理器”中，右键单击“ProductsServer”项目并选择“管理 NuGet 包”。  
-1. 选择“浏览”，然后搜索并选择“WindowsAzure.ServiceBus”。  选择“安装”并接受使用条款。
+1. 在“解决方案资源管理器”中，右键单击“ProductsServer”项目并选择“管理 NuGet 包”。
+1. 选择“浏览”，然后搜索并选择“WindowsAzure.ServiceBus”。 选择“安装”并接受使用条款。
 
    ![选择 NuGet 包][13]
 
    现已引用所需的客户端程序集。
 
-1. 为产品协定添加新类。 在“解决方案资源管理器”中，右键单击“ProductsServer”项目并选择“添加” > “类”。   
-1. 在“名称”中输入名称 *ProductsContract.cs*，然后选择“添加”。 
+1. 为产品协定添加新类。 在“解决方案资源管理器”中，右键单击“ProductsServer”项目并选择“添加” > “类”。
+1. 在“名称”中输入名称 *ProductsContract.cs*，然后选择“添加”。
 
 对解决方案进行以下代码更改：
 
@@ -223,7 +223,7 @@ ms.locfileid: "85314416"
     </appSettings>
     ```
 
-1. 按 Ctrl+Shift+B 或者选择“生成” > “生成解决方案”以生成应用程序，并验证到目前为止操作的准确性。 
+1. 按 Ctrl+Shift+B 或者选择“生成” > “生成解决方案”以生成应用程序，并验证到目前为止操作的准确性。
 
 ## <a name="create-an-aspnet-application"></a>创建 ASP.NET 应用程序
 
@@ -235,17 +235,17 @@ ms.locfileid: "85314416"
 1. 在 Visual Studio 中，选择“新建项目”。
 1. 在“创建新项目”中，选择适用于 C# 的“ASP.NET Web 应用程序(.NET Framework)”，然后选择“下一步” 。
 1. 将项目命名为 *ProductsPortal*，然后选择“创建”。
-1. 在“创建新 ASP.NET Web 应用程序”中选择“MVC”，然后选择“身份验证”下的“更改”。   
+1. 在“创建新 ASP.NET Web 应用程序”中选择“MVC”，然后选择“身份验证”下的“更改”。
 
    ![选择 ASP .NET Web 应用程序][16]
 
-1. 在“更改身份验证”中，依次选择“无身份验证”、“确定”。   在本教程中，你将部署无需用户登录的应用。
+1. 在“更改身份验证”中，依次选择“无身份验证”、“确定”。 在本教程中，你将部署无需用户登录的应用。
 
     ![指定身份验证][18]
 
-1. 返回“创建新 ASP.NET Web 应用程序”，选择“创建”以创建 MVC 应用。 
-1. 配置新 Web 应用的 Azure 资源。 遵循[发布 Web 应用](../app-service/app-service-web-get-started-dotnet-framework.md#launch-the-publish-wizard)中的步骤。 然后，返回本教程并继续执行下一步。
-1. 在“解决方案资源管理器”中，右键单击“模型”并选择“添加” > “类”。   
+1. 返回“创建新 ASP.NET Web 应用程序”，选择“创建”以创建 MVC 应用。
+1. 配置新 Web 应用的 Azure 资源。 遵循[发布 Web 应用](../app-service/quickstart-dotnet-framework.md#launch-the-publish-wizard)中的步骤。 然后，返回本教程并继续执行下一步。
+1. 在“解决方案资源管理器”中，右键单击“模型”并选择“添加” > “类”。
 1. 将类命名为 *Product.cs*，然后选择“添加”。
 
     ![创建产品模型][17]
@@ -267,7 +267,7 @@ ms.locfileid: "85314416"
     }
     ```
 
-1. 在“解决方案资源管理器”中展开“控制器”，然后双击“HomeController.cs”在 Visual Studio 中打开该文件。  
+1. 在“解决方案资源管理器”中展开“控制器”，然后双击“HomeController.cs”在 Visual Studio 中打开该文件。
 1. 在 *HomeController.cs*中，将现有命名空间定义替换为以下代码：
 
     ```csharp
@@ -290,13 +290,13 @@ ms.locfileid: "85314416"
     }
     ```
 
-1. 在“解决方案资源管理器”中展开“视图” > “共享”，然后双击“_Layout.cshtml”在 Visual Studio 编辑器中打开该文件。   
+1. 在“解决方案资源管理器”中展开“视图” > “共享”，然后双击“_Layout.cshtml”在 Visual Studio 编辑器中打开该文件。
 1. 将出现的所有 `My ASP.NET Application` 更改为“Northwind Traders 产品”。
 1. 删除 `Home`、`About` 和 `Contact` 链接。 在以下示例中，删除突出显示的代码。
 
     ![删除生成的列表项][41]
 
-1. 在“解决方案资源管理器”中展开“视图” > “主目录”，然后双击“Index.cshtml”在 Visual Studio 编辑器中打开该文件。    将文件的全部内容替换为以下代码：
+1. 在“解决方案资源管理器”中展开“视图” > “主目录”，然后双击“Index.cshtml”在 Visual Studio 编辑器中打开该文件。 将文件的全部内容替换为以下代码：
 
    ```html
    @model IEnumerable<ProductsWeb.Models.Product>
@@ -350,9 +350,9 @@ ms.locfileid: "85314416"
 下一步是将本地产品服务器与 ASP.NET 应用程序挂钩。
 
 1. 如果尚未打开在[创建 ASP.NET 应用程序](#create-an-aspnet-application)部分中创建的 **ProductsPortal** 项目，请在 Visual Studio 中重新打开该项目。
-1. 采用与[创建本地服务器](#create-an-on-premises-server)部分类似的步骤，将 NuGet 包添加到项目引用中。 在“解决方案资源管理器”中，右键单击“ProductsPortal”项目并选择“管理 NuGet 包”。  
+1. 采用与[创建本地服务器](#create-an-on-premises-server)部分类似的步骤，将 NuGet 包添加到项目引用中。 在“解决方案资源管理器”中，右键单击“ProductsPortal”项目并选择“管理 NuGet 包”。
 1. 搜索“WindowsAzure.ServiceBus”，然后选择“WindowsAzure.ServiceBus”项。 然后完成安装过程并关闭此对话框。
-1. 在“解决方案资源管理器”中，右键单击“ProductsPortal”项目并选择“添加” > “现有项”。   
+1. 在“解决方案资源管理器”中，右键单击“ProductsPortal”项目并选择“添加” > “现有项”。
 1. 从 **ProductsServer** 控制台项目导航到 *ProductsContract.cs* 文件。 突出显示“ProductsContract.cs”。 选择“添加”旁边的向下箭头，然后选择“添加为链接”。
 
    ![添加为链接][24]
@@ -399,19 +399,19 @@ ms.locfileid: "85314416"
    }
    ```
 
-1. 在“解决方案资源管理器”中右键单击“ProductsPortal”解决方案。  请务必右键单击该解决方案而不是项目。 选择“添加” > “现有项目”。 
+1. 在“解决方案资源管理器”中右键单击“ProductsPortal”解决方案。 请务必右键单击该解决方案而不是项目。 选择“添加” > “现有项目”。
 1. 导航到 **ProductsServer** 项目，然后双击“ProductsServer.csproj”解决方案文件将其添加。
-1. **ProductsServer** 必须正在运行才能显示 **ProductsPortal** 中的数据。 在“解决方案资源管理器”中，右键单击“ProductsPortal”解决方案并选择“属性”以显示“属性页”。   
-1. 选择“通用属性” > “启动项目”，然后选择“多个启动项目”。   确保 **ProductsServer** 和 **ProductsPortal** 按此顺序显示，并且两者的操作为“启动”。 
+1. **ProductsServer** 必须正在运行才能显示 **ProductsPortal** 中的数据。 在“解决方案资源管理器”中，右键单击“ProductsPortal”解决方案并选择“属性”以显示“属性页”。
+1. 选择“通用属性” > “启动项目”，然后选择“多个启动项目”。 确保 **ProductsServer** 和 **ProductsPortal** 按此顺序显示，并且两者的操作为“启动”。
 
       ![多个启动项目][25]
 
-1. 选择左侧的“通用属性” > “项目依赖项”。 
-1. 对于“项目”，请选择“ProductsPortal”。  确保已选择 **ProductsServer**。
+1. 选择左侧的“通用属性” > “项目依赖项”。
+1. 对于“项目”，请选择“ProductsPortal”。 确保已选择 **ProductsServer**。
 
     ![项目依赖项][26]
 
-1. 对于“项目”，请选择“ProductsServer”。  确保未选择“ProductsPortal”，然后选择“确定”保存更改。 
+1. 对于“项目”，请选择“ProductsServer”。 确保未选择“ProductsPortal”，然后选择“确定”保存更改。
 
 ## <a name="run-the-project-locally"></a>在本地运行项目
 
@@ -442,12 +442,12 @@ ms.locfileid: "85314416"
 <a name="set-productsportal-as-web-app"></a>在云中运行应用程序之前，必须确保将 **ProductsPortal** 作为 Web 应用从 Visual Studio 中启动。
 
 1. 在 Visual Studio 中，右键单击“ProductsPortal”项目并选择“属性” 。
-1. 选择“Web”。 在“启动操作”下，选择“启动 URL”。  输入以前部署的 Web 应用的 URL，在本示例中为 `https://productsportal20190906122808.azurewebsites.net/`。
+1. 选择“Web”。 在“启动操作”下，选择“启动 URL”。 输入以前部署的 Web 应用的 URL，在本示例中为 `https://productsportal20190906122808.azurewebsites.net/`。
 
     ![启动 URL][27]
 
-1. 选择“文件” > “全部保存”。 
-1. 选择“生成” > “重新生成解决方案”。 
+1. 选择“文件” > “全部保存”。
+1. 选择“生成” > “重新生成解决方案”。
 
 ## <a name="run-the-application"></a>运行应用程序
 

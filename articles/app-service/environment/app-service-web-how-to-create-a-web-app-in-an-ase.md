@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0407bde00c703663227230a0b6ff2de287f6650c
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 9359fe07818b3c5fbc08082cdf1f96195a7836ab
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007057"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080603"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>在应用服务环境 v1 中创建 Web 应用
 
@@ -24,7 +24,7 @@ ms.locfileid: "88007057"
 本教程介绍如何在[应用服务环境 v1](app-service-app-service-environment-intro.md) (ASE) 中创建 Web 应用和应用服务计划。 
 
 > [!NOTE]
-> 如果想要了解如何创建 Web 应用，但不需要在应用服务环境中进行操作，请参阅[创建 .NET Web 应用](../app-service-web-get-started-dotnet.md)，或适用于其他语言和框架的相关教程之一。
+> 如果想要了解如何创建 Web 应用，但不需要在应用服务环境中进行操作，请参阅[创建 .NET Web 应用](../quickstart-dotnetcore.md)，或适用于其他语言和框架的相关教程之一。
 > 
 > 
 

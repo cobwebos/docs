@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
-ms.openlocfilehash: c59e8c9e4c756a44d7507fca328aa691ecb184da
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 48eb8674a7d3f0fbeb8cc012debfc8a08752d5ff
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447309"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080858"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor 监视哪些内容？
 本文介绍了由 Azure Monitor 监视的不同应用程序和服务。 
@@ -141,33 +141,33 @@ ms.locfileid: "87447309"
 |专用链接 | 否 | 否 | 否 |  |
 |项目假脱机通信平台 | 否 | 否 | 否 |  |
 |Red Hat OpenShift | 否 | 否 | 否 |  |
-|Redis 缓存 | “是” | “是” | [是](insights/redis-cache-insights-overview.md) | |
+|Redis 缓存 | 是 | 是 | [是](insights/redis-cache-insights-overview.md) | |
 |Resource Graph | 否 | 否 | 否 |  |
 |资源管理器 | 否 | 否 | 否 |  |
 |零售搜索 - 通过必应 | 否 | 否 | 否 |  |
-|搜索 | “是” | “是” | 否 |  |
+|搜索 | 是 | 是 | 否 |  |
 |服务总线 | 是 | 是 | 否 |  |
 |Service Fabric | 否 | 是 | 否 | 监视来宾操作系统和工作流时所需的代理。  |
 |注册门户 | 否 | 否 | 否 |  |
 |Site Recovery | 否 | “是” | 否 |  |
 |Spring Cloud 服务 | 否 | 否 | 否 |  |
-|SQL 数据仓库 | “是” | “是” | 否 |  |
+|SQL 数据仓库 | 是 | 是 | 否 |  |
 |SQL 数据库 | 是 | 是 | 否 |  |
 |SQL Server Stretch Database | 是 | 是 | 否 |  |
 |堆栈 | 否 | 否 | 否 |  |
-|存储 | “是” | 否 | [是](insights/storage-insights-overview.md) |  |
+|存储 | 是 | 否 | [是](insights/storage-insights-overview.md) |  |
 |存储缓存 | 否 | 否 | 否 |  |
 |存储同步服务 | 否 | 否 | 否 |  |
-|流分析 | “是” | “是” | 否 |  |
+|流分析 | 是 | 是 | 否 |  |
 |时序见解 | 是 | 是 | 否 |  |
 |TINA | 否 | 否 | 否 |  |
-|流量管理器 | “是” | “是” | 否 |  |
+|流量管理器 | 是 | 是 | 否 |  |
 |通用打印 | 否 | 否 | 否 |  |
 |虚拟机规模集 | 否 | 是 | [是](insights/vminsights-overview.md) | 监视来宾操作系统和工作流时所需的代理。 |
-|虚拟机 | 是 | “是” | [是](insights/vminsights-overview.md) | 监视来宾操作系统和工作流时所需的代理。 |
-|虚拟网络 | 是 | “是” | [是](insights/network-insights-overview.md) |  |
+|虚拟机 | 是 | 是 | [是](insights/vminsights-overview.md) | 监视来宾操作系统和工作流时所需的代理。 |
+|虚拟网络 | 是 | 是 | [是](insights/network-insights-overview.md) |  |
 |虚拟网络 - NSG 流日志 | 否 | 是 | 否 |  |
-|VPN 网关 | “是” | 是 | 否 |  |
+|VPN 网关 | 是 | 是 | 否 |  |
 |Windows 虚拟桌面 | 否 | 否 | 否 |  |
 
 
@@ -220,7 +220,7 @@ Azure Monitor 可以使用下表中列出的方法从 Azure 以外的资源收�
 | 资源 | 方法 |
 |:---|:---|
 | 应用程序 | 使用 Application Insights 监视 Azure 以外的 web 应用程序。 请参阅[什么是 Application Insights？](./app/app-insights-overview.md)。 |
-| 虚拟机 | 使用 Log Analytics 代理从其他云环境中或本地的虚拟机的来宾操作系统收集数据。 请参阅[使用 Log Analytics 代理收集日志数据](platform/log-analytics-agent.md)。 |
+| 虚拟机 | 使用代理从其他云环境或本地的虚拟机的来宾操作系统中收集数据。 请参阅[Azure Monitor 代理概述](platform/agents-overview.md)。 |
 | REST API 客户端 | 可使用单独的 API 将数据从任何 REST API 客户端写入 Azure Monitor 日志和指标。 请参阅[使用 HTTP 数据收集器 API 将日志数据发送到 Azure Monitor](platform/data-collector-api.md)，以及[使用 REST API 将 Azure 资源的自定义指标发送到 Azure Monitor 指标存储](platform/metrics-store-custom-rest-api.md)。 |
 
 

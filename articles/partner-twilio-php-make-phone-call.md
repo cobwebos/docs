@@ -12,12 +12,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: fb1623c4a409f1c6cba94bad56d773e166d2b182
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e75b5a265ba85813581e39a548d897ea57a33da6
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "69637322"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080552"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>如何在 Azure 的 PHP 应用程序中使用 Twilio 发起电话呼叫
 以下示例演示了如何使用 Twilio 从 Azure 中托管的 PHP 网页发起呼叫。 最终的应用程序将提示用户输入电话呼叫值，如以下屏幕截图所示。
@@ -105,7 +105,7 @@ echo "URI resource: " . $call->uri . "<br />";
 ![使用 Twilio 和 PHP 的 Azure 呼叫响应][twilio_php_response]
 
 ## <a name="run-the-application"></a>运行应用程序
-下一步是[使用 Git 将应用程序部署到 Azure Web 应用](app-service/app-service-web-get-started-php.md)（尽管并非该文的所有这些信息都相关）。 
+下一步是[使用 Git 将应用程序部署到 Azure Web 应用](app-service/quickstart-php.md)（尽管并非该文的所有这些信息都相关）。 
 
 ## <a name="next-steps"></a>后续步骤
 提供此代码是为了演示通过 Azure 上的 PHP 使用 Twilio 的基本功能。 在生产中部署到 Azure 之前，可能希望添加更多错误处理或其他功能。 例如：
