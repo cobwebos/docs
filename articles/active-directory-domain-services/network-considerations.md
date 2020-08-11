@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: c811240beea896683f891d9513a657b0689b8824
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0b857cb853add1920e6933a9f1ebfd7a0f61b57f
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87488646"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054266"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory 域服务的虚拟网络设计注意事项和配置选项
 
-Azure Active Directory 域服务（Azure AD DS）为其他应用程序和工作负荷提供身份验证和管理服务。 网络连接是一个重要的组件。 如果未正确配置虚拟网络资源，应用程序和工作负载将无法与 Azure AD DS 提供的功能进行通信并使用它们。 计划虚拟网络要求，确保 Azure AD DS 可以根据需要为应用程序和工作负载提供服务。
+Azure AD DS (Azure Active Directory 域服务) 向其他应用程序和工作负荷提供身份验证和管理服务。 网络连接是一个重要的组件。 如果未正确配置虚拟网络资源，应用程序和工作负载将无法与 Azure AD DS 提供的功能进行通信并使用它们。 计划虚拟网络要求，确保 Azure AD DS 可以根据需要为应用程序和工作负载提供服务。
 
 本文概述了为 Azure AD DS 提供支持的 Azure 虚拟网络设计注意事项和要求。
 
@@ -142,6 +142,10 @@ Azure Active Directory 域服务（Azure AD DS）为其他应用程序和工作�
 
 > [!NOTE]
 > 如果尝试编辑此网络安全组规则，则不能从门户中手动选择 CorpNetSaw 服务标记。 必须使用 Azure PowerShell 或 Azure CLI 手动配置使用 CorpNetSaw 服务标记的规则。
+>
+> 例如，你可以使用以下脚本创建允许 RDP 的规则： 
+>
+> `Get-AzureRmNetworkSecurityGroup -Name "nsg-name" -ResourceGroupName "resource-group-name" | Add-AzureRmNetworkSecurityRuleConfig -Name "new-rule-name" -Access "Allow" -Protocol "TCP" -Direction "Inbound" -Priority "priority-number" -SourceAddressPrefix "CorpNetSaw" -SourcePortRange "" -DestinationPortRange "3389" -DestinationAddressPrefix "" | Set-AzureRmNetworkSecurityGroup`
 
 ### <a name="port-5986---management-using-powershell-remoting"></a>端口 5986 - 使用 PowerShell 远程处理进行管理
 

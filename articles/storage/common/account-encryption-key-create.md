@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 07e265710c69c2ed72df520bf090b7c7d86c8097
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e6ae39fea8c3839208fc366ba0ce8d69799357d2
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503763"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056714"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>创建支持表和队列的客户托管密钥的帐户
 
@@ -40,7 +40,7 @@ Azure 存储对静态存储帐户中的所有数据进行加密。 默认情况�
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要向 PowerShell 注册，请调用[AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature)命令。
+若要向 PowerShell 注册，请调用[AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature)命令。
 
 ```powershell
 Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
@@ -62,7 +62,7 @@ az feature register --namespace Microsoft.Storage \
 
 # <a name="template"></a>[模板](#tab/template)
 
-不适用
+空值
 
 ---
 
@@ -94,7 +94,7 @@ az feature show --namespace Microsoft.Storage \
 
 # <a name="template"></a>[模板](#tab/template)
 
-不适用
+空值
 
 ---
 
@@ -120,7 +120,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 # <a name="template"></a>[模板](#tab/template)
 
-不适用
+空值
 
 ---
 
@@ -142,7 +142,7 @@ az provider register --namespace 'Microsoft.Storage'
 - 包括 `-EncryptionKeyTypeForQueue` 选项，并将其值设置为， `Account` 以使用帐户加密密钥加密队列存储中的数据。
 - 包括 `-EncryptionKeyTypeForTable` 选项，并将其值设置为， `Account` 以使用帐户加密密钥加密表存储中的数据。
 
-下面的示例演示如何创建一个常规用途 v2 存储帐户，该帐户配置为读取访问异地冗余存储（GRS），并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换括号中的占位符值：
+下面的示例演示如何创建一个常规用途 v2 存储帐户，该帐户配置为读取访问地域冗余存储 (GRS) ，并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换括号中的占位符值：
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName <resource_group> `
@@ -163,7 +163,7 @@ New-AzStorageAccount -ResourceGroupName <resource_group> `
 - 包括 `--encryption-key-type-for-queue` 选项，并将其值设置为， `Account` 以使用帐户加密密钥加密队列存储中的数据。
 - 包括 `--encryption-key-type-for-table` 选项，并将其值设置为， `Account` 以使用帐户加密密钥加密表存储中的数据。
 
-下面的示例演示如何创建一个常规用途 v2 存储帐户，该帐户配置为读取访问异地冗余存储（GRS），并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换括号中的占位符值：
+下面的示例演示如何创建一个常规用途 v2 存储帐户，该帐户配置为读取访问地域冗余存储 (GRS) ，并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换括号中的占位符值：
 
 ```azurecli
 az storage account create \
@@ -178,7 +178,7 @@ az storage account create \
 
 # <a name="template"></a>[模板](#tab/template)
 
-下面的 JSON 示例创建一个常规用途 v2 存储帐户，该帐户配置为读取访问异地冗余存储（GRS），并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换尖括号中的占位符值：
+下面的 JSON 示例创建一个常规用途 v2 存储帐户，该帐户配置为读取访问地域冗余存储 (GRS) ，并使用帐户加密密钥来加密队列和表存储的数据。 请记住，用自己的值替换尖括号中的占位符值：
 
 ```json
 "resources": [
@@ -248,7 +248,7 @@ az storage account show /
 
 # <a name="template"></a>[模板](#tab/template)
 
-不适用
+空值
 
 ---
 

@@ -9,21 +9,21 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 95fd62584ef73f3f2f198c84913652f460fc5b1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 903413b6ca00600e15ac3af0a93b98a8d67a1c28
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84465530"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053620"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>将自定义域映射到 Azure Blob 存储终结点
 
 可以将自定义域映射到 blob 服务终结点或[静态网站](storage-blob-static-website.md)终结点。 
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
-> 这种映射仅适用于子域（例如：`www.contoso.com`）。 如果希望在根域上提供 web 终结点（例如： `contoso.com` ），则必须使用 Azure CDN。 有关指南，请参阅本文中的将[自定义域映射到已启用 HTTPS](#enable-https)部分。 由于你转到本文的这一节来启用自定义域的根域，因此用于启用 HTTPS 的那一节中的步骤是可选的。 
+> 这种映射仅适用于子域（例如：`www.contoso.com`）。 如果希望 web 终结点在根域上可用 (例如：) ，则必须 `contoso.com` 使用 Azure CDN。 有关指南，请参阅本文中的将[自定义域映射到已启用 HTTPS](#enable-https)部分。 由于你转到本文的这一节来启用自定义域的根域，因此用于启用 HTTPS 的那一节中的步骤是可选的。 
 
 <a id="enable-http"></a>
 
@@ -44,7 +44,7 @@ ms.locfileid: "84465530"
 
 ： heavy_check_mark：步骤1：获取存储终结点的主机名。
 
-： heavy_check_mark：步骤2：使用域提供程序创建规范名称（CNAME）记录。
+： heavy_check_mark：步骤2：使用域提供程序 (CNAME) 记录创建规范名称。
 
 ： heavy_check_mark：步骤3：将自定义域注册到 Azure。 
 
@@ -73,7 +73,7 @@ ms.locfileid: "84465530"
 
 <a id="create-cname-record"></a>
 
-#### <a name="step-2-create-a-canonical-name-cname-record-with-your-domain-provider"></a>步骤2：使用您的域提供程序创建规范名称（CNAME）记录
+#### <a name="step-2-create-a-canonical-name-cname-record-with-your-domain-provider"></a>步骤2：使用域提供程序创建 (CNAME) 记录的规范名称
 
 创建一条 CNAME 记录，以指向主机名。 CNAME 记录是一种 DNS 记录，用于将源域名映射到目标域名。
 
@@ -128,7 +128,7 @@ ms.locfileid: "84465530"
 
 ： heavy_check_mark：步骤1：获取存储终结点的主机名。
 
-： heavy_check_mark：步骤2：使用域提供程序创建中间规范名称（CNAME）记录。
+： heavy_check_mark：步骤2：使用域提供程序创建中间规范名称 (CNAME) 记录。
 
 ： heavy_check_mark：步骤3：将自定义域预先注册到 Azure。
 
@@ -157,7 +157,7 @@ ms.locfileid: "84465530"
   
    请设置此值供稍后使用。
 
-#### <a name="step-2-create-a-intermediary-canonical-name-cname-record-with-your-domain-provider"></a>步骤2：使用您的域提供程序创建中间规范名称（CNAME）记录
+#### <a name="step-2-create-a-intermediary-canonical-name-cname-record-with-your-domain-provider"></a>步骤2：使用域提供程序创建中间规范名称 (CNAME) 记录
 
 创建一条临时 CNAME 记录，以指向主机名。 CNAME 记录是一种 DNS 记录，用于将源域名映射到目标域名。
 
@@ -233,7 +233,7 @@ ms.locfileid: "84465530"
 
 若要删除自定义域映射，请取消注册自定义域。 使用以下过程之一。
 
-#### <a name="portal"></a>[Portal](#tab/azure-portal)
+#### <a name="portal"></a>[门户](#tab/azure-portal)
 
 若要删除自定义域设置，请执行以下操作：
 
@@ -318,9 +318,9 @@ ms.locfileid: "84465530"
    > [!NOTE] 
    > 更新静态网站时，请确保通过清除 CDN 终结点来清除 CDN 边缘服务器上的缓存内容。 有关详细信息，请参阅[清除 Azure CDN 终结点](../../cdn/cdn-purge-endpoint.md)。
 
-4. 可有可无查看以下指南：
+4.  (可选) 查看以下指南：
 
-   * [具有 Azure CDN 的共享访问签名（SAS）令牌](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#shared-access-signatures)。
+   * [使用 Azure CDN (SAS) 令牌的共享访问签名](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#shared-access-signatures)。
 
    * [带有 Azure CDN 的 HTTP 到 HTTPS 的重定向](https://docs.microsoft.com/azure/cdn/cdn-storage-custom-domain-https#http-to-https-redirection)。
 

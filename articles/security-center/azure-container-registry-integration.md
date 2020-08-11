@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/02/2020
 ms.author: memildin
-ms.openlocfilehash: 767ad928779743ec28dbe3da8be6154a1fe0b0ab
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 718f9a29b70dab34269c959ccd62452e56a32d72
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042303"
+ms.locfileid: "88056595"
 ---
 # <a name="azure-container-registry-image-scanning-by-security-center"></a>安全中心扫描 Azure 容器注册表映像
 
@@ -31,7 +31,7 @@ Azure 容器注册表 (ACR) 是一种托管的专用 Docker 注册表服务，�
 |----|:----|
 |发布状态：|正式版|
 |计价|标准层|
-|支持的注册表和映像：|![是 ](./media/icons/yes-icon.png) 可以从公共 internet 访问并提供外壳访问的 Linux 托管 ACR 注册表。<br>![无 ](./media/icons/yes-icon.png) Windows 承载的 ACR 注册表。<br>![无 ](./media/icons/yes-icon.png) "专用" 注册表项-安全中心要求可以从公共 internet 访问注册表。 安全中心当前无法使用防火墙、服务终结点或专用终结点（如 Azure Private Link）连接或扫描访问权限。<br>![没有任何 ](./media/icons/yes-icon.png) 超级最简单映像（例如[Docker 暂存](https://hub.docker.com/_/scratch/)映像）或仅包含应用程序和其运行时依赖项的 "Distroless" 映像，无需包管理器、shell 或 OS。|
+|支持的注册表和映像：|![是 ](./media/icons/yes-icon.png) 可以从公共 internet 访问并提供外壳访问的 Linux 托管 ACR 注册表。<br>![无 ](./media/icons/no-icon.png) Windows 承载的 ACR 注册表。<br>![无 ](./media/icons/no-icon.png) "专用" 注册表项-安全中心要求可以从公共 internet 访问注册表。 安全中心当前无法使用防火墙、服务终结点或专用终结点（如 Azure Private Link）连接或扫描访问权限。<br>![没有任何 ](./media/icons/no-icon.png) 超级最简单映像（例如[Docker 暂存](https://hub.docker.com/_/scratch/)映像）或仅包含应用程序和其运行时依赖项的 "Distroless" 映像，无需包管理器、shell 或 OS。|
 |必需的角色和权限：|**安全读取器**和[Azure 容器注册表读取器角色](https://docs.microsoft.com/azure/container-registry/container-registry-roles)|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![否](./media/icons/no-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
 |||

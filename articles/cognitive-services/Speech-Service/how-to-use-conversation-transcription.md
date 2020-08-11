@@ -1,5 +1,5 @@
 ---
-title: 实时对话脚本（预览）-语音服务
+title: 实时对话脚本 (预览版) 语音服务
 titleSuffix: Azure Cognitive Services
 description: 了解如何通过语音 SDK 使用实时对话。 适用于 C++、C# 和 Java。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: fc22dea201ccd19c4e7bee92a1092b4ff50117db
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: f9670733f8aa040b87cec20ac28aacc636c04698
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86134938"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056204"
 ---
-# <a name="real-time-conversation-transcription-preview"></a>实时对话脚本（预览）
+# <a name="real-time-conversation-transcription-preview"></a>实时对话对话 (预览) 
 
-通过语音 SDK 的**ConversationTranscriber** API，你可以通过使用或将音频流式传输到语音服务，使用添加、删除和标识多个参与者的能力转录会议和其他对话 `PullStream` `PushStream` 。 本主题要求你了解如何在 Speech SDK （版本1.8.0 或更高版本）中使用语音到文本。 有关详细信息，请参阅[什么是语音服务](overview.md)。
+通过语音 SDK 的**ConversationTranscriber** API，你可以通过使用或将音频流式传输到语音服务，使用添加、删除和标识多个参与者的能力转录会议和其他对话 `PullStream` `PushStream` 。 本主题要求你了解如何在 Speech SDK (版本1.8.0 或更高版本中使用语音到文本) 。 有关详细信息，请参阅[什么是语音服务](overview.md)。
 
 ## <a name="limitations"></a>限制
 
@@ -37,7 +37,7 @@ ms.locfileid: "86134938"
 
 ## <a name="prerequisites"></a>先决条件
 
-语音服务订阅。 如果你没有[语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)，则可以获取它。
+语音服务订阅。 如果没有 Azure 帐户，可以创建[一个免费 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="create-voice-signatures"></a>创建语音签名
 
@@ -45,12 +45,12 @@ ms.locfileid: "86134938"
 
 ### <a name="audio-input-requirements"></a>音频输入要求
 
-- 用于创建语音签名的输入音频波形文件应为16位示例、16 kHz 采样率和单通道（单声道）格式。
+- 用于创建语音签名的输入音频波形文件应为16位示例、16 kHz 采样率和单通道 (mono) 格式。
 - 每个音频采样的建议长度介于30秒到2分钟之间。
 
-### <a name="sample-code"></a>示例代码
+### <a name="sample-code"></a>代码示例
 
-下面的示例演示了使用 c # 中[的 REST API](https://aka.ms/cts/signaturegenservice)以两种不同的方式创建语音签名。 请注意，需要将 "YourSubscriptionKey" 的实际信息、"speakerVoice" 的波形文件名和 " `{region}` YourServiceRegion" （_centralus_或_eastasia_）的区域替换为 ""。
+下面的示例演示了使用 c # 中[的 REST API](https://aka.ms/cts/signaturegenservice)以两种不同的方式创建语音签名。 请注意，需要将 "YourSubscriptionKey" 的实际信息、"speakerVoice" 的波形文件名替换为 "YourServiceRegion"，并将 " `{region}` " (_centralus_或_eastasia_) 。
 
 ```csharp
 class Program

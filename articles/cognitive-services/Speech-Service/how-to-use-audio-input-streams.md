@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 23a426bf8cc3f30516fff0a672d7118a49666433
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1574ea1c6f97606198d071d79ea69d58304a6159
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584920"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053552"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>语音 SDK 的音频输入流 API 简介
 
-使用语音 SDK 的音频输入流 API 可将音频流式传输到识别器，无需使用麦克风或输入文件 API  。
+使用语音 SDK 的音频输入流 API 可将音频流式传输到识别器，无需使用麦克风或输入文件 API。
 
 使用音频输入流时需按以下步骤操作：
 
 - 识别音频流的格式。 格式必须受语音 SDK 和语音服务支持。 目前仅支持以下配置：
 
-  PCM 格式的音频采样，一个通道，每个样本16位，8000或每秒16000样本数（16000或每秒32000字节数），两个块对齐（16位，其中包含样本的空白）。
+  PCM 格式的音频样本、一个频道、每个样本 16 位、每秒 8000 或 16000 次采样（每秒 16000 或 32000 字节）、两个块对齐（16 位，包括样本的内边距）。
 
   SDK 中用于创建音频格式的相应代码如下所示：
 
@@ -75,5 +75,5 @@ ms.locfileid: "83584920"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
+- [创建免费 Azure 帐户](https://azure.microsoft.com/free/cognitive-services/)
 - [了解如何在 C# 中识别语音](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 06/25/2020
-ms.openlocfilehash: b7d7ec95d2227076ff7b7a95ce6e72fffc840975
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7194e4553386c25691bb3ede8096da7fb63c5dc0
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073352"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055187"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>什么是 Azure SQL 托管实例？
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-作为 Azure SQL 产品系列的一部分，Azure SQL 托管实例是一种智能、可缩放的云数据库服务；它将最广泛的 SQL Server 数据库引擎兼容性与完全托管且经久不衰的平台即服务的所有优势相结合。 SQL 托管实例具有与最新 SQL Server (Enterprise Edition) 数据库引擎近 100% 的兼容性，提供解决常见安全问题的本机[虚拟网络 (VNet)](../../virtual-network/virtual-networks-overview.md) 实现，并提供现有 SQL Server 客户惯用的[业务模型](https://azure.microsoft.com/pricing/details/sql-database/)。 SQL 托管实例允许现有 SQL Server 客户将其本地应用程序即时转移到云中，而只需对应用程序和数据库做出极少量的更改。 同时，SQL 托管实例保留了所有 PaaS 功能（自动修补和版本更新、[自动备份](../database/automated-backups-overview.md)、[高可用性](../database/high-availability-sla.md)），可大幅降低管理开销和总拥有成本。
+Azure SQL 托管实例是一种智能、可伸缩的云数据库服务，它将最广泛的 SQL Server 数据库引擎兼容性与完全托管和最长的平台即服务的所有优势相结合。 SQL 托管实例具有与最新 SQL Server (Enterprise Edition) 数据库引擎近 100% 的兼容性，提供解决常见安全问题的本机[虚拟网络 (VNet)](../../virtual-network/virtual-networks-overview.md) 实现，并提供现有 SQL Server 客户惯用的[业务模型](https://azure.microsoft.com/pricing/details/sql-database/)。 SQL 托管实例允许现有 SQL Server 客户将其本地应用程序即时转移到云中，而只需对应用程序和数据库做出极少量的更改。 同时，SQL 托管实例保留了所有 PaaS 功能（自动修补和版本更新、[自动备份](../database/automated-backups-overview.md)、[高可用性](../database/high-availability-sla.md)），可大幅降低管理开销和总拥有成本。
 
 > [!IMPORTANT]
 > 若要查看 SQL 托管实例当前可用的区域列表，请参阅[支持区域](resource-limits.md#supported-regions)。
@@ -219,7 +219,7 @@ SQL 托管实例受益于云中的一贯最新状态，这意味着 SQL Server �
 
 ### <a name="administration-features"></a>管理功能
 
-SQL 托管实例可以减少系统管理员花费在管理任务上的时间，因为该服务可以自行执行这些任务，或者大大简化这些任务。 例如， [OS/RDBMS 安装和修补](../database/high-availability-sla.md)、[动态实例大小调整和配置](../database/single-database-scale.md)、[备份](../database/automated-backups-overview.md)、[数据库复制](replication-between-two-instances-configure-tutorial.md)（包括系统数据库）、[高可用性配置](../database/high-availability-sla.md)，以及运行状况和[性能监视](../../azure-monitor/insights/azure-sql.md)数据流的配置。
+SQL 托管实例可以减少系统管理员花费在管理任务上的时间，因为该服务可以自行执行这些任务，或者大大简化这些任务。 例如， [OS/RDBMS 安装和修补](../database/high-availability-sla.md)、[动态实例大小调整和配置](../database/single-database-scale.md)、[备份](../database/automated-backups-overview.md)、[数据库复制](replication-between-two-instances-configure-tutorial.md) (包括系统数据库) 、[高可用性配置](../database/high-availability-sla.md)，以及运行状况和[性能监视](../../azure-monitor/insights/azure-sql.md)数据流的配置。
 
 有关详细信息，请参阅[支持和不支持的 SQL 托管实例功能列表](../database/features-comparison.md)以及 [SQL 托管实例和 SQL Server 之间的 T-SQL 差异](transact-sql-tsql-differences-sql-server.md)。
 

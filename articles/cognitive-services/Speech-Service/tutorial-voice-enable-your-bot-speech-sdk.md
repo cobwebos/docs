@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: 7a5e6bd262a1772356653eaaff7688ade9b4bfb7
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 47448a97c89b1feddfc43da300cb53fd65eaff05
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041778"
+ms.locfileid: "88056646"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>教程：使用语音 SDK 实现机器人的语音
 
@@ -60,7 +60,7 @@ ms.locfileid: "88041778"
 - 带有工作麦克风和扬声器 (或耳机) 的 Windows 10 PC
 - [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)或更高版本，已安装**ASP.NET 和 web 开发**工作负荷
 - [.NET Framework 运行时 4.6.1](https://dotnet.microsoft.com/download)或更高版本
-- 一个 Azure 帐户。 [免费注册](https://azure.microsoft.com/free/ai/)。
+- 一个 Azure 帐户。 [免费注册](https://azure.microsoft.com/free/cognitive-services/)
 - 一个 [GitHub](https://github.com/) 帐户
 - [适用于 Windows 的 Git](https://git-scm.com/download/win)
 
@@ -83,7 +83,6 @@ ms.locfileid: "88041778"
 
 * 确保使用[受支持的 Azure 区域](regions.md#voice-assistants)。
 * 直接连线语音频道使用文本到语音服务，该服务具有标准和神经声音。 神经声音[仅限于特定的 Azure 区域](regions.md#standard-and-neural-voices)。
-* 免费试用密钥可限制为特定区域。
 
 有关区域的详细信息，请参阅[Azure 位置](https://azure.microsoft.com/global-infrastructure/locations/)。
 
@@ -472,7 +471,7 @@ Windows 语音助手客户端使用包含语音 SDK 的 NuGet 包[cognitiveservi
 > [!div class="nextstepaction"]
 > [通过语音 SDK 构建你自己的客户端应用](quickstart-voice-assistant-csharp-uwp.md)
 
-## <a name="see-also"></a>另请参阅
+## <a name="see-also"></a>请参阅
 
 * 部署到[附近的 Azure 区域](https://azure.microsoft.com/global-infrastructure/locations/)，查看机器人响应时间改进
 * 部署到[支持高质量神经 TTS 声音的 Azure 区域](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)

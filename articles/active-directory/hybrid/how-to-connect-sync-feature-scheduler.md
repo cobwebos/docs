@@ -16,12 +16,12 @@ ms.date: 05/01/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eaeaa8625a5bdb5bbf8ce76a68e616a913da5655
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: c2b65f8cd22e72e0ba90918121a02d66fe6bf3e7
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147003"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053042"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect 同步：计划程序
 本主题介绍 Azure AD Connect 同步（同步引擎）中的内置计划程序。
@@ -171,7 +171,7 @@ d - 天，HH - 小时，mm - 分钟，ss - 秒
 计划程序仍处于活动状态，并在下次有机会时重新启动。
 
 ## <a name="custom-scheduler"></a>自定义计划程序
-本节中所述的 cmdlet 仅在内部版本 [1.1.130.0](reference-connect-version-history.md#111300) 及更高版本中提供。
+本节中所述的 cmdlet 仅在内部版本 [1.1.130.0](reference-connect-version-history.md) 及更高版本中提供。
 
 如果内置的计划程序不符合要求，则可以使用 PowerShell 计划连接器。
 

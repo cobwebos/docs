@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 59f66b88c998a78f5bd3ccf3757cb791aea2521b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fe909ba25191aa21e8a5bfa51c72690fd9c402eb
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279298"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056544"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>有关从云合作伙伴门户过渡到合作伙伴中心的常见问题
 
@@ -89,7 +89,7 @@ ms.locfileid: "87279298"
 | 咨询服务 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 请在[创建咨询服务产品](partner-center-portal/create-consulting-service-offer.md)上了解详细信息。 |
 | 托管服务 | 是 | 登录到合作伙伴中心，创建新产品/服务，并管理在云合作伙伴门户中创建的产品/服务。 请在[创建托管服务产品](partner-center-portal/create-new-managed-service-offer.md)中了解详细信息。 |
 | Dynamics Nav 托管服务 | 否 | Microsoft 已将 Dynamics NAV 托管服务发展为[dynamics 365 Business Central](https://docs.microsoft.com/dynamics365/business-central/)，因此我们从 AppSource 中取消列出了 Dynamics Nav 托管服务实时优惠。 这些产品/服务不再被客户发现，也没有移动到合作伙伴中心。 若要在 AppSource 中提供产品/服务，请将其调整为 Dynamics 365 Business Central 产品/服务，并将其提交到[合作伙伴中心](https://partner.microsoft.com/)。 有关详细信息，请参阅[创建 Dynamics 365 Business Central 产品](partner-center-portal/create-new-business-central-offer.md)。 |
-| Cortana Intelligence | 否 | Microsoft 为 Cortana Intelligence 发展了产品路线图，因此我们从 AppSource 中取消列出了 Cortana Intelligence live 产品。 这些产品/服务不再被客户发现，也没有移动到合作伙伴中心。 若要在商业应用商店中提供产品/服务，请在合作伙伴中心提供产品/服务（SaaS）产品/服务，并将其提交到[合作伙伴中心](https://partner.microsoft.com/)。 有关详细信息，请参阅在[合作伙伴中心创建清单](partner-center-portal/offer-creation-checklist.md)。 |
+| Cortana Intelligence | 否 | Microsoft 为 Cortana Intelligence 发展了产品路线图，因此我们从 AppSource 中取消列出了 Cortana Intelligence live 产品。 这些产品/服务不再被客户发现，也没有移动到合作伙伴中心。 若要在商业应用商店中提供产品/服务，请将你的产品/服务作为服务 (SaaS) 提供，并将其提交到[合作伙伴中心](https://partner.microsoft.com/)。 有关详细信息，请参阅在[合作伙伴中心创建清单](partner-center-portal/offer-creation-checklist.md)。 |
 
 ## <a name="i-cant-find-my-cloud-partner-portal-offers-in-partner-center"></a>在合作伙伴中心找不到我的云合作伙伴门户产品/服务
 
@@ -143,7 +143,7 @@ ms.locfileid: "87279298"
 
 ### <a name="enhanced-preview-options"></a>强化预览选项
 
-合作伙伴中心包含一个[“比较”功能](partner-center-portal/update-existing-offer.md#compare-changes-to-marketplace-offers)，其中有改进后的筛选选项。 这使你能够根据产品/服务的预览版本和上线版本。
+合作伙伴中心包含一个[“比较”功能](partner-center-portal/update-existing-offer.md#compare-changes-to-commercial-marketplace-offers)，其中有改进后的筛选选项。 这使你能够根据产品/服务的预览版本和上线版本。
 
 [![屏幕截图显示合作伙伴中心比较功能。](media/cpp-pc-faq/compare.png "显示合作伙伴中心比较功能")](media/cpp-pc-faq/compare.png#lightbox)
 
@@ -153,7 +153,7 @@ ms.locfileid: "87279298"
 
 [![屏幕截图显示 "合作伙伴中心计划" 页。](media/cpp-pc-faq/plans.png "显示 "合作伙伴中心计划" 页")](media/cpp-pc-faq/plans.png#lightbox)
 
-此外，你之前在**Marketplace**或**店面详细**信息中提供的信息（咨询服务、Power BI 应用云合作伙伴门户）将在合作伙伴中心的产品/服务**列表**页上收集：
+此外，你之前在**Marketplace**或**店面详细**信息中提供的信息 (咨询服务，云合作伙伴门户中的 Power BI 应用) 页现在将收集到合作伙伴中心的**产品/服务列表**页：
 
 [![屏幕截图显示 "合作伙伴中心产品/服务" 列表页。](media/cpp-pc-faq/offer-listing.png "显示合作伙伴中心产品/服务列表页")](media/cpp-pc-faq/offer-listing.png#lightbox)
 
@@ -162,7 +162,7 @@ ms.locfileid: "87279298"
 - 计划设置页面
 - 计划列表页面
 - 计划可用性页面
-- 规划技术配置页，如下所示： ![ ！ [屏幕截图显示 "合作伙伴中心技术配置" 页。]（media/cpp-pc-常见问题解答/technical-configuration.png "显示合作伙伴中心技术配置页"）](media/cpp-pc-faq/technical-configuration.png#lightbox)
+- 规划技术配置页，如下所示： ![ ！ [屏幕截图显示 "合作伙伴中心技术配置" 页。] (media/cpp-pc-常见问题解答/technical-configuration.png "显示合作伙伴中心技术配置页" ) ](media/cpp-pc-faq/technical-configuration.png#lightbox)
 
 产品/服务 ID 现在显示在 "产品/服务" 的左侧导航栏上：
 

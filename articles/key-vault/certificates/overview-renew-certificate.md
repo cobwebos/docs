@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: c6999b67a5c0a0f4ca7cb943ae8de3afd8b6a11e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41085ee629189c32c1bc7196f23805c9c48d154a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095997"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056272"
 ---
 # <a name="about-azure-key-vault-certificate-renewal"></a>关于 Azure Key Vault 证书续订
 
@@ -23,8 +23,11 @@ Azure Key Vault 使你能轻松地为网络预配、管理和部署数字证书�
 
 具有短暂的生存期证书或提高证书轮换的频率会限制攻击者的范围。
 
+## <a name="certificate-expiration-notifications"></a>证书过期通知
+首先，请确保将证书联系人添加到 Key Vault，以便在证书即将过期时收到通知 (例如。 使用 PowerShell [AzureKeyVaultCertificateContact](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultcertificatecontact?view=azurermps-6.13.0)) Second，配置当你希望收到有关证书过期的通知时。 若要配置生命时间操作，请执行[以下](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate)操作
+
 Key vault 中创建了三类证书。 本指南将帮助你了解如何才能实现证书续订。
--   通过集成 CA （DigiCert 或 GlobalSign）创建的证书
+-   通过集成 CA (DigiCert 或 GlobalSign 创建的证书) 
 -   用非集成 CA 创建的证书
 -   自签名证书
 
@@ -55,6 +58,10 @@ Azure 密钥保管库为其用户提供从任何 CA 导入证书的好处，使�
 
 ### <a name="troubleshoot"></a>疑难解答
 如果颁发的证书处于 Azure 门户中的 "已禁用" 状态，请继续查看证书操作，以查看该证书的错误消息。
+
+### <a name="frequently-asked-questions"></a>常见问题
+自动续订证书后是否复制标记？
+不会，除非用户手动复制标记本身，否则标记不会复制。
 
 ### <a name="see-also"></a>另请参阅
 *   [将 Key Vault 与 DigiCert 证书颁发机构集成](how-to-integrate-certificate-authority.md)

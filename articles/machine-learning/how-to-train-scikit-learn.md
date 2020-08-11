@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: d023fa5786375f8fb4dbcdfe01e32da0400088f8
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 4221ed6a927d0c589407dc38b5371ad8a65d2174
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849380"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054384"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>使用 Azure 机器学习大规模构建 scikit-learn 模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -60,7 +60,7 @@ ws = Workspace.from_config()
 
 在本教程中，已在[此处](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn/train_iris.py)为你提供训练脚本**train_iris。** 实际上，你应该能够原样获取任何自定义训练脚本，并使用 Azure ML 运行它，而无需修改你的代码。
 
-注意：
+说明：
 - 提供的培训脚本演示了如何使用脚本中的对象将一些指标记录到 Azure ML 运行 `Run` 中。
 - 提供的训练脚本使用了来自 `iris = datasets.load_iris()` 函数的示例数据。  对于你自己的数据，你可能需要使用[上传数据集和脚本](how-to-train-keras.md#data-upload)之类的步骤来使数据在训练期间可用。
 
@@ -86,6 +86,7 @@ dependencies:
 from azureml.core import Environment
 
 myenv = Environment.from_conda_specification(name = "myenv", file_path = "sklearn-env.yml")
+myenv.docker.enabled = True
 ```
 
 #### <a name="use-a-curated-environment"></a>使用特选环境
@@ -104,7 +105,7 @@ env = Environment.get(workspace=ws, name="AzureML-Tutorial")
 from azureml.core import ScriptRunConfig
 
 sklearnconfig = ScriptRunConfig(source_directory='.', script='train_iris.py')
-src.run_config.environment = myenv
+sklearnconfig.run_config.environment = myenv
 ```
 
 如果要针对远程群集进行提交，则可以将 run_config 更改为所需的计算目标。

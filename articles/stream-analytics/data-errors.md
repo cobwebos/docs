@@ -5,17 +5,17 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: troubleshooting
-ms.date: 03/27/2020
-ms.openlocfilehash: 725d1cf38a0c7f6de02addc62577e397a935af94
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 08/07/2020
+ms.openlocfilehash: 1c649499fd9eaedac0ca4ff9c182e13a9da223ef
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86041041"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053144"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Azure 流分析数据错误
 
-数据错误是处理数据时发生的错误。  这些错误往往发生在数据反序列化、序列化和写入操作期间。  发生数据错误时，流分析会将详细信息和示例事件写入资源日志。  在某些情况下，还会通过门户通知来提供此信息的摘要。
+数据错误是处理数据时发生的错误。  这些错误往往发生在数据反序列化、序列化和写入操作期间。  发生数据错误时，流分析会将详细信息和示例事件写入资源日志。 在作业中启用诊断日志以获取这些其他详细信息。 在某些情况下，还会通过门户通知来提供此信息的摘要。
 
 本文概述输入和输出数据错误的不同错误类型、原因和资源日志详细信息。
 

@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: d464897c031522b2227c682f9581f0d34c8db64b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 09a97897ca7e3984c7003c1dbbca65cddaec1ee6
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518735"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055410"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Azure Blob 存储中的更改源支持（预览版）
 
 更改源的用途是提供存储帐户中 Blob 和 Blob 元数据发生的所有更改的事务日志。 更改源提供这些更改的有序、有保证、持久、不可变、只读的日志。     客户端应用程序可以在流式处理或批处理模式下随时读取这些日志。 使用更改源可以生成高效且可缩放的解决方案，因此能够以较低的成本处理 Blob 存储帐户中发生的更改事件。
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+[!INCLUDE [storage-data-lake-gen2-support](../../../includes/storage-data-lake-gen2-support.md)]
 
 更改源作为 [Blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 存储在存储帐户中的特殊容器内，按标准的 [Blob 定价](https://azure.microsoft.com/pricing/details/storage/blobs/)计费。 你可以根据要求控制这些文件的保留期（请参阅当前版本的[条件](#conditions)）。 更改事件根据 [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) 格式（一种简洁且快速的二进制格式，通过内联架构提供丰富的数据结构）规范以记录的形式追加到更改源。 这种格式广泛用于 Hadoop 生态系统、流分析和 Azure 数据工厂。
 
@@ -71,7 +71,7 @@ ms.locfileid: "86518735"
 
 4. 选择“保存”按钮以确认“数据保护”设置。
 
-    ![显示数据保护设置的屏幕截图。](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
+    ![显示数据保护设置的屏幕截图。](media/soft-delete-blob-enable/storage-blob-soft-delete-portal-configuration.png)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

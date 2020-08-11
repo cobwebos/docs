@@ -4,14 +4,14 @@ description: 了解如何通过添加节点类型来缩放 Service Fabric 分类
 ms.topic: article
 ms.date: 08/06/2020
 ms.author: pepogors
-ms.openlocfilehash: 5cabe7e377c29812252074336d7c5e9c9d3ba259
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: eecf398359470f6e5e151c53eb63b3cb56efbe39
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031960"
+ms.locfileid: "88056748"
 ---
-# <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>纵向扩展 Service Fabric 群集主节点类型
+# <a name="scale-up-a-service-fabric-cluster-primary-node-type-by-adding-a-node-type"></a>通过添加节点类型来向上缩放 Service Fabric 群集主节点类型
 本文介绍如何通过向群集中添加其他节点类型来纵向扩展 Service Fabric 群集主节点类型。 Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 属于群集一部分的计算机或 VM 称为节点。 虚拟机规模集是一种 Azure 计算资源，用于将一组 VM 作为一个集进行部署和管理。 Azure 群集中定义的每个节点类型[设置为独立的规模集](service-fabric-cluster-nodetypes.md)。 然后可以单独管理每个节点类型。
 
 可在以下教程中找到以下教程中的示例模板： [Service Fabric 主节点类型缩放示例](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Primary-NodeType-Scaling-Sample)

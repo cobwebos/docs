@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 9804992aee318fdc34815bdbe4187144704cd667
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 3e7f310f37bd016a73c589db3c9a23e197465427
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85099768"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053910"
 ---
 # <a name="what-is-batch-transcription"></a>什么是批量听录？
 
-批量听录是一组 REST API 操作，可用于听录存储中的大量音频。 你可以指向具有共享访问签名 (SAS) URI 的音频文件并异步接收听录结果。 使用新的 3.0 API，你可以选择转录一个或多个音频文件，或处理整个存储容器。
+批量听录是一组 REST API 操作，可用于听录存储中的大量音频。 你可以指向具有共享访问签名 (SAS) URI 的音频文件并异步接收听录结果。 使用新的 v3.0 API，你可以选择听录一个或多个音频文件，或者处理整个存储容器。
 
 异步语音转文本听录只是其中的一项功能。 可以使用批量听录 REST API 调用以下方法：
 
@@ -27,18 +27,18 @@ ms.locfileid: "85099768"
 
 |    批量听录操作                                             |    方法    |    REST API 调用                                   |
 |------------------------------------------------------------------------------|--------------|----------------------------------------------------|
-|    创建一个新的听录。                                              |    POST      |    speechtotext/3.0/转录            |
-|    检索经过身份验证的订阅的听录列表。    |    GET       |    speechtotext/3.0/转录            |
-|    获取脱机听录支持的区域设置列表。              |    GET       |    speechtotext/3.0/转录/区域设置    |
-|    更新由 ID 标识的听录的可变详细信息。    |    PATCH     |    speechtotext/转录/{id}       |
-|    删除指定的听录任务。                                 |    DELETE    |    speechtotext/转录/{id}       |
-|    获取由给定 ID 标识的听录。                        |    GET       |    speechtotext/转录/{id}       |
-|    获取由给定 ID 标识的脚本的结果文件。    |    GET       |    speechtotext/转录/{id}/files |
+|    创建一个新的听录。                                              |    POST      |    speechtotext/v3.0/transcriptions            |
+|    检索经过身份验证的订阅的听录列表。    |    GET       |    speechtotext/v3.0/transcriptions            |
+|    获取脱机听录支持的区域设置列表。              |    GET       |    speechtotext/v3.0/transcriptions/locales    |
+|    更新由 ID 标识的听录的可变详细信息。    |    PATCH     |    speechtotext/v3.0/transcriptions/{id}       |
+|    删除指定的听录任务。                                 |    DELETE    |    speechtotext/v3.0/transcriptions/{id}       |
+|    获取由给定 ID 标识的听录。                        |    GET       |    speechtotext/v3.0/transcriptions/{id}       |
+|    获取由给定 ID 标识的听录的结果文件。    |    GET       |    speechtotext/v3.0/transcriptions/{id}/files |
 
 
 
 
-可以查看和测试详细的 API，该 API 可用作[Swagger 文档](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)。
+你可以查看和测试详细的 API，它以 [Swagger 文档](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)的形式提供。
 
 批量听录作业是按“尽力而为”的原则安排的。 目前，无法预估作业何时会变为正在运行状态。 在正常的系统负载下，几分钟内应该就可以发生该作业。 进入运行状态后，实际听录的处理速度比实时音频更快。
 
@@ -55,7 +55,7 @@ ms.locfileid: "85099768"
 
 ### <a name="custom-models"></a>自定义模式
 
-如果打算自定义模型，请按照[音频自定义](how-to-customize-acoustic-models.md)和[语言自定义](how-to-customize-language-model.md)中的步骤进行操作。 若要在 batch 脚本中使用创建的模型，需要其模型位置。 在检查模型的详细信息（属性）时，您可以检索模型位置 `self` 。 批处理脚本服务*不需要*已部署的自定义终结点。
+如果计划自定义模型，请按照[声音自定义](how-to-customize-acoustic-models.md)和[语言自定义](how-to-customize-language-model.md)中的步骤操作。 若要在批量听录中使用所创建的模型，需要提供其模型位置。 可以在检查模型的详细信息（`self` 属性）时检索模型位置。 批量听录服务不需要已部署的自定义终结点。
 
 ## <a name="the-batch-transcription-api"></a>批量听录 API
 
@@ -73,7 +73,7 @@ ms.locfileid: "85099768"
 
 ### <a name="configuration"></a>配置
 
-配置参数以 JSON 形式提供（一个或多个单独的文件）：
+配置参数以 JSON 形式（一个或多个单独文件）提供：
 
 ```json
 {
@@ -88,7 +88,7 @@ ms.locfileid: "85099768"
 }
 ```
 
-配置参数以 JSON （处理整个存储容器）的形式提供：
+配置参数以 JSON 形式（处理整个存储容器）提供：
 
 ```json
 {
@@ -101,7 +101,7 @@ ms.locfileid: "85099768"
 }
 ```
 
-若要在 batch 转录中使用自定义训练模型，可以对其进行引用，如下所示：
+若要在批量听录中使用自定义的已训练模型，可按如下方式引用这些模型：
 
 ```json
 {
@@ -164,21 +164,21 @@ ms.locfileid: "85099768"
       `channels`
    :::column-end:::
    :::column span="2":::
-      要处理的信道号的可选数组。 可在此处指定要处理的音频文件中的部分可用通道（例如 `0` 仅限）。 如果未指定，则通道 `0` 和 `1` 将转录为默认值。
+      可选的待处理通道编号数组。 可在此指定处理音频文件中可用通道的子集（例如只听录 `0`）。 如果未指定，则会默认听录通道 `0` 和 `1`。
 :::row-end:::
 :::row:::
    :::column span="1":::
       `timeToLive`
    :::column-end:::
    :::column span="2":::
-      在完成脚本后自动删除转录的可选持续时间。 在 `timeToLive` 批量处理转录中非常有用，可确保最终将其删除（例如 `PT12H` ）。 如果未指定或设置为 `PT0H` ，将不会自动删除脚本。
+      完成听录后保留听录的可选持续时间，此持续时间之后会自动删除听录。 `timeToLive` 适用于批量处理听录，可确保最终将会删除这些听录（例如 `PT12H`）。 如果未指定或设置为 `PT0H`，则不会自动删除听录。
 :::row-end:::
 :::row:::
    :::column span="1":::
       `destinationContainerUrl`
    :::column-end:::
    :::column span="2":::
-      Azure 中可写容器的可选 URL（包含[服务 SAS](../../storage/common/storage-sas-overview.md)）。 结果存储在此容器中。 如果未指定，Microsoft 会将结果存储在由 Microsoft 管理的存储容器中。 通过调用[Delete](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)脚本删除脚本时，结果数据也将被删除。
+      Azure 中可写容器的可选 URL（包含[服务 SAS](../../storage/common/storage-sas-overview.md)）。 结果存储在此容器中。 如果未指定，Microsoft 会将结果存储在由 Microsoft 管理的存储容器中。 当通过调用[删除听录](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)来删除听录时，结果数据也会被删除。
 :::row-end:::
 
 ### <a name="storage"></a>存储
@@ -187,9 +187,9 @@ ms.locfileid: "85099768"
 
 ## <a name="the-batch-transcription-result"></a>批量听录结果
 
-对于每个输入音频，将创建一个脚本结果文件。 可以通过调用[get 转录 files](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles)获取结果文件的列表。 此方法返回此脚本的结果文件列表。 若要查找特定输入文件的脚本文件，请使用和筛选所有返回的文件 `kind`  ==  `Transcription` `name`  ==  `{originalInputName.suffix}.json` 。
+对于每一个输入音频，都将创建一个听录结果文件。 可以通过调用[获取听录文件](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles)来获取结果文件列表。 此方法返回此听录的结果文件列表。 若要查找特定输入文件的听录文件，请使用 `kind` == `Transcription` 和 `name` == `{originalInputName.suffix}.json` 来筛选所有返回的文件。
 
-每个脚本结果文件的格式为：
+每个听录结果文件都采用这种格式：
 
 ```json
 {
@@ -293,7 +293,7 @@ ms.locfileid: "85099768"
 
 分割聚类是将讲述人语音分隔成音频片段的过程。 Batch 管道支持分割聚类，并且能够识别单声道录制内容中的两个讲述人。 此功能不适用于立体声录音。
 
-启用了 diarization 的脚本的输出中， `Speaker` 每个转录短语都包含一个条目。 如果未使用 diarization，则 `Speaker` JSON 输出中不存在该属性。 对于分割聚类，我们支持两段语音，因此讲述人标识为 `1` 或 `2`。
+对于每个听录短语，启用了分割聚类的听录的输出都包含一个 `Speaker` 项。 如果未使用分割聚类，JSON 输出中不会有属性 `Speaker`。 对于分割聚类，我们支持两段语音，因此讲述人标识为 `1` 或 `2`。
 
 若要请求分割聚类，只需在 HTTP 请求中添加相关的参数，如下所示。
 
@@ -313,17 +313,17 @@ ms.locfileid: "85099768"
 }
 ```
 
-必须启用 Word 级时间戳，因为上述请求中的参数表示。
+如上述请求中的参数所示，必须启用单词级时间戳。
 
 ## <a name="best-practices"></a>最佳实践
 
-听录服务可以处理大量的已提交听录内容。 可以通过 `GET` 中的[Get 转录](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions)查询转录的状态。 检索结果后，调用从服务定期调用[Delete](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) 。 或者，将 `timeToLive` 属性设置为合理的值，以确保最终删除结果。
+听录服务可以处理大量的已提交听录内容。 可以通过[获取听录](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions)中的 `GET` 来查询听录的状态。 检索结果后，请定期从服务中调用[删除听录](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)。 或者，请将 `timeToLive` 属性设置为一个合理值，以确保最终删除结果。
 
 ## <a name="sample-code"></a>代码示例
 
 `samples/batch` 子目录内的 [GitHub 示例存储库](https://aka.ms/csspeech/samples)中提供了完整示例。
 
-请使用你的订阅信息、服务区域、指向要转录的音频文件的 SAS URI 和模型位置（如果你想要使用自定义模型）来更新示例代码。
+如果要使用自定义模型，请使用订阅信息、服务区域、指向要听录的音频文件的 SAS URI 以及模型位置来更新示例代码。
 
 [!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#transcriptiondefinition)]
 
@@ -333,12 +333,12 @@ ms.locfileid: "85099768"
 
 有关上述调用的完整详细信息，请参阅 [Swagger 文档](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0)。 有关此处所示的完整示例，请转到 `samples/batch` 子目录中的 [GitHub](https://aka.ms/csspeech/samples)。
 
-请注意用于发布音频和接收听录状态的异步设置。 创建的客户端是一个 .NET HTTP 客户端。 有一种 `PostTranscriptions` 方法可用于发送音频文件详细信息和 `GetTranscriptions` 用于接收状态的方法。 `PostTranscriptions` 返回句柄，`GetTranscriptions` 使用此句柄创建一个句柄来获取听录状态。
+请注意用于发布音频和接收听录状态的异步设置。 创建的客户端是一个 .NET HTTP 客户端。 `PostTranscriptions` 方法用于发送音频文件详细信息，`GetTranscriptions` 方法用于接收状态。 `PostTranscriptions` 返回句柄，`GetTranscriptions` 使用此句柄创建一个句柄来获取听录状态。
 
-当前示例代码未指定任何自定义模型。 服务使用基线模型来转录文件。 若要指定模型，可以对自定义模型的模型引用传递相同的方法。
+当前示例代码未指定任何自定义模型。 该服务使用基线模型来听录一个或多个文件。 若要指定模型，可将自定义模型的模型引用传递到相同的方法。
 
 > [!NOTE]
-> 对于基线转录，无需声明基线模型的 ID。
+> 对于基线听录，无需声明基线模型的 ID。
 
 ## <a name="download-the-sample"></a>下载示例
 
@@ -346,4 +346,4 @@ ms.locfileid: "85099768"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
+- [语音到文本 v3 API 参考](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)

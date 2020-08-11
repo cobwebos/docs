@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/30/2020
+ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1e0efc2c64a1cbdcc2c83c019f7743406054afe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 074171d658eb4e1e029652c9c0851e082ba043fe
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074021"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053433"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虚拟机存储配置
 
@@ -46,7 +46,7 @@ Azure 为 Azure 标准和高级存储上的 Vhd 提供了两种部署方法。 �
 - Azure Ultra 磁盘至少适用于 **/hana/log**卷。 **/Hana/data**卷可放置在无 Azure 写入加速器的高级存储上，或者用于获取超磁盘的重新启动时间
 - **NFS** v2.0 上 **/hana/log 和/Hana/data**的 Azure NetApp 文件的卷。 /Hana/shared 的卷可以使用 NFS v3 或 NFS v2.0 协议
 
-可以组合某些存储类型。 例如，可以将 **/hana/data**放在高级存储上，而 **/hana/log**可放置在超小型磁盘存储上，以便达到所需的低延迟。 如果将基于和的卷用于 **/hana/data**，则 **/hana/log**卷也需要基于和顶层的 NFS。 **不支持**在和上将 NFS 用于某个卷（如/hana/data）和 Azure 高级存储或超磁盘（如 **/hana/log**）。
+可以组合某些存储类型。 例如，可以将 **/hana/data**放在高级存储上，而 **/hana/log**可放置在超小型磁盘存储上，以便达到所需的低延迟。 如果将基于和的卷用于 **/hana/data**，则 **/hana/log**卷也需要基于和顶层的 NFS。 **不支持**在和上将 NFS 用于某个卷 (例如/hana/data) 、Azure 高级存储或超磁盘 (如 **/hana/log**) ）。
 
 在本地环境中，很少需要考虑 I/O 子系统及其功能。 原因在于，设备供应商会确保满足 SAP HANA 的最低存储要求。 在自行构建 Azure 基础结构时，你应该注意其中的一些 SAP 颁发的要求。 SAP 所建议的一些最小吞吐量特征包括：
 
@@ -61,7 +61,7 @@ Azure 为 Azure 标准和高级存储上的 Vhd 提供了两种部署方法。 �
 
 - 根据[SAP 工作负荷的 Azure 存储类型](./planning-guide-storage.md)决定存储类型，并[选择磁盘类型](../../linux/disks-types.md)
 - 调整或确定 VM 时的总体 VM i/o 吞吐量和 IOPS 限制。 [内存优化虚拟机大小](../../sizes-memory.md)一文中记录了总体 VM 存储吞吐量
-- 在确定存储配置时，请尝试将 VM 的总体吞吐量保持在 **/hana/data**卷配置的下方。 写入保存点，SAP HANA 可以是主动的、发出的 i/o。 写入保存点时，可以轻松地将 **/hana/data**卷的吞吐量限制增加到最大值。 如果生成 **/hana/data**卷的磁盘的吞吐量高于 VM 允许的吞吐量，则可能会遇到这样的情况，即，保存点写入所使用的吞吐量会干扰重做日志写入操作的吞吐量需求。 可能影响应用程序吞吐量的情况
+- 在确定存储配置时，请尝试将 VM 的总体吞吐量保持在 **/hana/data**卷配置的下方。 写入保存点，SAP HANA 可以是主动的、发出的 i/o。 写入保存点时，可以轻松地将 **/hana/data**卷的吞吐量限制增加到最大值。 如果) 生成 **/hana/data**卷的 (磁盘的吞吐量比 VM 允许的吞吐量更高，则可能会出现以下情况：保存点写入利用的吞吐量与重做日志写入操作的吞吐量要求产生了干扰。 可能影响应用程序吞吐量的情况
 - 如果你使用的是 Azure 高级存储，开销最少的配置是使用逻辑卷管理器来构建带区集以生成 **/hana/data**和 **/hana/log**卷
 
 > [!IMPORTANT]
@@ -111,7 +111,7 @@ Azure 写入加速器是可用于 Azure M 系列 VM 的一项功能。 作为名
 
 
 ### <a name="azure-burst-functionality-for-premium-storage"></a>适用于高级存储的 Azure 猝发功能
-对于容量较小或等于 512 GiB 的 Azure 高级存储磁盘，提供了突发功能。 磁盘突发如何工作的确切方式在 "[磁盘突发](../../linux/disk-bursting.md)" 一文中进行了介绍。 阅读本文后，你将了解当 i/o 工作负荷低于磁盘的名义 IOPS 和吞吐量（有关标称吞吐量的详细信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)）时，所产生的 IOPS 和吞吐量的概念。 你将在当前使用情况与磁盘的名义值之间累计 IOPS 和吞吐量的增量。 猝发次数限制为最多30分钟。
+对于容量较小或等于 512 GiB 的 Azure 高级存储磁盘，提供了突发功能。 磁盘突发如何工作的确切方式在 "[磁盘突发](../../linux/disk-bursting.md)" 一文中进行了介绍。 当您阅读本文时，您将了解在以下情况下，当 i/o 工作负荷低于磁盘的名义 IOPS 和吞吐量时，所产生的的 IOPS 和吞吐量的概念 (有关名义吞吐量的详细信息，请参阅[托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)) 。 你将在当前使用情况与磁盘的名义值之间累计 IOPS 和吞吐量的增量。 猝发次数限制为最多30分钟。
 
 可以在其中规划此突发功能的理想情况可能是包含不同 DBMS 的数据文件的卷或磁盘。 需要对这些卷执行 i/o 工作负荷，尤其是对于小到中等范围的系统，应如下所示：
 
@@ -151,11 +151,11 @@ SAP **/hana/data**卷的配置：
 | M64s | 1,000 GiB | 1,000 MBps | 4 x P15 | 680 MBps | 4400 | 14,000 |
 | M64ms | 1,750 GiB | 1,000 MBps | 4 x P20 | 680 MBps | 9200 | 14,000 |  
 | M128s | 2,000 GiB | 2000 MBps | 4 x P20 | 680 MBps | 9200| 14,000 | 
-| M128ms | 3,800 GiB | 2000 MBps | 4 x P30 | 800 MBps （已设置） | 20,000 | 无突发 | 
-| M208s_v2 | 2,850 GiB | 1,000 MBps | 4 x P30 | 800 MBps （已设置） | 20,000| 无突发 | 
-| M208ms_v2 | 5,700 GiB | 1,000 MBps | 4 x P40 | 1000 MBps （已设置） | 25,000 | 无突发 |
-| M416s_v2 | 5,700 GiB | 2000 MBps | 4 x P40 | 1000 MBps （已设置） | 25,000 | 无突发 |
-| M416ms_v2 | 11,400 GiB | 2000 MBps | 4 x P50 | 2000 MBps （已设置） | 25,000 | 无突发 |
+| M128ms | 3,800 GiB | 2000 MBps | 4 x P30 | 800 MBps (预配)  | 20,000 | 无突发 | 
+| M208s_v2 | 2,850 GiB | 1,000 MBps | 4 x P30 | 800 MBps (预配)  | 20,000| 无突发 | 
+| M208ms_v2 | 5,700 GiB | 1,000 MBps | 4 x P40 | 1000 MBps (预配)  | 25,000 | 无突发 |
+| M416s_v2 | 5,700 GiB | 2000 MBps | 4 x P40 | 1000 MBps (预配)  | 25,000 | 无突发 |
+| M416ms_v2 | 11,400 GiB | 2000 MBps | 4 x P50 | 2000 MBps (预配)  | 25,000 | 无突发 |
 
 
 对于 **/hana/log**卷。 此配置如下所示：
@@ -321,6 +321,44 @@ Azure NetApp 卷的吞吐量是卷大小和服务级别的函数，如 [Azure Ne
 > 可以动态调整 Azure NetApp 文件卷的大小，而无需 `unmount` 卷、停止虚拟机或停止 SAP HANA。 这具有灵活性，可同时满足应用程序的预期和不可预见的吞吐量需求。
 
 有关如何使用 ANF 中托管的 NFS v4.1 卷部署带备用节点的 SAP HANA 横向扩展配置的文档，已在以下位置发布：[使用 SUSE Linux Enterprise Server 上的 Azure NetApp 文件在 Azure VM 上进行带备用节点的 SAP HANA 横向扩展](./sap-hana-scale-out-standby-netapp-files-suse.md)。
+
+
+## <a name="cost-conscious-solution-with-azure-premium-storage"></a>Azure 高级存储的成本意识解决方案
+到目前为止，本文档中的 Azure 高级存储解决方案在[Azure M 系列虚拟机的高级存储和 azure 写入加速器的解决方案](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines)中进行了介绍，用于 SAP HANA 生产支持的方案。 生产可支持性配置的特征之一是将 SAP HANA 数据和重做日志的卷分离成两个不同的卷。 此类隔离的原因是卷上的工作负荷特征不同。 而且，对于推荐的生产配置，可能需要不同类型的缓存或甚至不同类型的 Azure 块存储。 使用 Azure 块存储目标的生产支持的配置也符合[Azure 虚拟机的单一 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 。  对于非生产方案，为生产系统所做的一些注意事项可能不适用于更低端的非生产系统。 因此，可以合并 HANA 数据和日志卷。 尽管最终有一些原因，但最终不满足生产系统所需的某些吞吐量或延迟 Kpi。 降低此类环境成本的另一个方面就是使用[Azure 标准 SSD 存储](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage#azure-standard-ssd-storage)。 尽管选择会使[Azure 虚拟机的单个 VM SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/)失效。 
+
+对于此类配置，更便宜的替代方法如下所示：
+
+
+| VM SKU | RAM | 最大 VM I/O<br /> 吞吐量 | /hana/data and /hana/log<br /> 使用 LVM 或 MDADM 进行条带化 | /hana/shared | /root 卷 | /usr/sap | comments |
+| --- | --- | --- | --- | --- | --- | --- | -- |
+| DS14v2 | 112 GiB | 768 MB/秒 | 4 x P6 | 1 x E10 | 1 x E6 | 1 x E6 | 不会达到1ms 存储延迟<sup>1</sup> |
+| E16v3 | 128 GiB | 384 MB/秒 | 4 x P6 | 1 x E10 | 1 x E6 | 1 x E6 | VM 类型未通过 HANA 认证 <br /> 不会达到1ms 存储延迟<sup>1</sup> |
+| M32ts | 192 GiB | 500 MB/秒 | 3 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 5000<sup>2</sup> |
+| E20ds_v4 | 160 GiB | 480 MB/秒 | 4 x P6 | 1 x E15 | 1 x E6 | 1 x E6 | 不会达到1ms 存储延迟<sup>1</sup> |
+| E32v3 | 256 GiB | 768 MB/秒 | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | VM 类型未通过 HANA 认证 <br /> 不会达到1ms 存储延迟<sup>1</sup> |
+| E32ds_v4 | 256 GiB | 768 MBps | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | 不会达到1ms 存储延迟<sup>1</sup> |
+| M32ls | 256 GiB | 500 MB/秒 | 4 x P10 | 1 x E15 | 1 x E6 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 5000<sup>2</sup> |
+| E48ds_v4 | 384 GiB | 1152 MBps | 6 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | 不会达到1ms 存储延迟<sup>1</sup> |
+| E64v3 | 432 GiB | 1,200 MB/秒 | 6 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | 不会达到1ms 存储延迟<sup>1</sup> |
+| E64ds_v4 | 504 GiB | 1200 MB/秒 |  7 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | 不会达到1ms 存储延迟<sup>1</sup> |
+| M64ls | 512 GiB | 1,000 MB/秒 | 7 x P10 | 1 x E20 | 1 x E6 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 10000<sup>2</sup> |
+| M64s | 1,000 GiB | 1,000 MB/秒 | 7 x P15 | 1 x E30 | 1 x E6 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 10000<sup>2</sup> |
+| M64ms | 1,750 GiB | 1,000 MB/秒 | 6 x P20 | 1 x E30 | 1 x E6 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 10000<sup>2</sup> |
+| M128s | 2,000 GiB | 2,000 MB/秒 |6 x P20 | 1 x E30 | 1 x E10 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 20000<sup>2</sup> |
+| M208s_v2 | 2,850 GiB | 1,000 MB/秒 | 4 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 10000<sup>2</sup> |
+| M128ms | 3,800 GiB | 2,000 MB/秒 | 5 x P30 | 1 x E30 | 1 x E10 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 20000<sup>2</sup> |
+| M208ms_v2 | 5,700 GiB | 1,000 MB/秒 | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 10000<sup>2</sup> |
+| M416s_v2 | 5,700 GiB | 2,000 MB/秒 | 4 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 20000<sup>2</sup> |
+| M416ms_v2 | 11400 GiB | 2,000 MB/秒 | 7 x P40 | 1 x E30 | 1 x E10 | 1 x E6 | 对合并数据和日志卷使用写入加速器会将 IOPS 速率限制为 20000<sup>2</sup> |
+
+
+<sup>1</sup> [Azure 写入加速器](../../linux/how-to-enable-write-accelerator.md)不能与 Ev4 和 Ev4 VM 系列一起使用。 由于使用 Azure 高级存储，i/o 延迟不会小于1ms
+
+<sup>2</sup> VM 家族支持[Azure 写入加速器](../../linux/how-to-enable-write-accelerator.md)，但写入加速器的 IOPS 限制可能会限制磁盘配置 iops 功能
+
+在将数据和日志卷与 SAP HANA 进行组合的情况下，生成条带化卷的磁盘不应启用读缓存或读/写缓存。
+
+列出了未通过 SAP 认证的 VM 类型，因此未在所谓的 " [SAP HANA 硬件目录](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)" 中列出。 客户的反馈是，某些非生产任务已成功使用了这些非列出的 VM 类型。
 
 
 ## <a name="next-steps"></a>后续步骤

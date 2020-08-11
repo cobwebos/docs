@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 0e7cedaea89e2ed3d998df6ffe0ecaa06115e265
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: 0d915c0b293e9f3deadbfb2a5fb0ff7f379e1717
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513785"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053467"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 存储功能
 
@@ -42,17 +42,19 @@ Blob 存储功能（例如[诊断日志记录](../common/storage-analytics-loggi
 |存档访问层|正式发布|不支持|[Azure Blob 存储：热、冷、存档访问层](storage-blob-storage-tiers.md)|
 |生命周期管理策略|正式发布|尚不支持|[管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)|
 |登录 Azure Monitor|预览 |尚不支持|[监视 Azure 存储](../common/monitor-storage.md)|
-|快照|预览<div role="complementary" aria-labelledby="preview-form"><sup>3</sup></div>|尚不支持|[blob 快照](snapshots-overview.md)|
-|静态网站|预览<div role="complementary" aria-labelledby="preview-form"><sup>3</sup></div>|尚不支持|[Azure 存储中的静态网站托管](storage-blob-static-website.md)|
-|不可变存储|预览<div role="complementary" aria-labelledby="preview-form"><sup>3</sup></div>|尚不支持|[使用不可变的存储来存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)|
+|快照|预览|尚不支持|[blob 快照](snapshots-overview.md)|
+|静态网站|预览|尚不支持|[Azure 存储中的静态网站托管](storage-blob-static-website.md)|
+|不可变存储|预览|尚不支持|[使用不可变的存储来存储业务关键型 Blob 数据](storage-blob-immutable-storage.md)|
+|生命周期管理策略|预览|尚不支持|[管理 Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)|
+|容器软删除|预览|预览|[容器的软删除 (预览) ](soft-delete-container-overview.md)|
+|Blob 软删除|尚不支持|尚不支持|[blob 的软删除](storage-blob-soft-delete.md)|
 |Blobfuse|预览|尚不支持|[如何使用 Blobfuse 将 Blob 存储装载为文件系统](storage-how-to-mount-container-linux.md)|
 |更改源|尚不支持|尚不支持|[Azure Blob 存储中的更改源支持](storage-blob-change-feed.md)|
 |帐户故障转移|尚不支持|尚不支持|[灾难恢复和帐户故障转移](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blob 容器 ACL|尚不支持<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|尚不支持<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|[Set Container ACL](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
 |自定义域|尚不支持|尚不支持|[将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)|
-|软删除|尚不支持|尚不支持|[Azure 存储 Blob 的软删除](storage-blob-soft-delete.md)|
 
-<div id="diagnostic-logging"><sup>1</sup>对于高级块 blob 存储帐户，无法使用 Azure 门户启用诊断日志（经典）。 可使用 PowerShell 启用它们。</div><br>
+<div id="diagnostic-logging"><sup>1</sup>对于高级块 blob 存储帐户，不能使用 Azure 门户启用 (经典) 的诊断日志。 可使用 PowerShell 启用它们。</div><br>
 
 <div id="blob-container-ACL"><sup>2</sup>可以在容器的根文件夹中设置 acl，但不能在容器本身上设置 acl。</div><br>
 

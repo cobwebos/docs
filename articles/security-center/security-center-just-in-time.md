@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 611124a113a0cce3ab1fb8db5969a6ab6f5f6658
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 88f1924f69aed350b39f953cb7503a0dde9ca9ad
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041934"
+ms.locfileid: "88056306"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>使用实时访问保护管理端口
 
@@ -35,7 +35,7 @@ ms.locfileid: "88041934"
 |----|:----|
 |发布状态：|正式版|
 |计价|标准层|
-|支持的 Vm：|![是 ](./media/icons/yes-icon.png) 通过 Azure 资源管理器部署的虚拟机。<br>![没有 ](./media/icons/yes-icon.png) 用经典部署模型部署的 vm。 [了解有关这些部署模型的详细信息](../azure-resource-manager/management/deployment-models.md)。<br>![Azure ](./media/icons/yes-icon.png) 防火墙不受 Azure[防火墙管理器](https://docs.microsoft.com/azure/firewall-manager/overview)保护的任何 vm|
+|支持的 Vm：|![是 ](./media/icons/yes-icon.png) 通过 Azure 资源管理器部署的虚拟机。<br>![没有 ](./media/icons/no-icon.png) 用经典部署模型部署的 vm。 [了解有关这些部署模型的详细信息](../azure-resource-manager/management/deployment-models.md)。<br>![Azure ](./media/icons/no-icon.png) 防火墙不受 Azure[防火墙管理器](https://docs.microsoft.com/azure/firewall-manager/overview)保护的任何 vm|
 |必需的角色和权限：|"**读取**者" 和 " **SecurityReader** " 角色可以查看 JIT 状态和参数。<br>若要创建可用于 JIT 的自定义角色，请参阅[配置和使用 jit 所需的权限](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit)。<br>若要为需要请求对 VM 的 JIT 访问权限的用户创建最小特权角色，而不执行其他任何 JIT 操作，请使用安全中心 GitHub 社区页面中的[JitLeastPrivilegedRole 脚本](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role)。|
 |云：|![是](./media/icons/yes-icon.png) 商业云<br>![是](./media/icons/yes-icon.png) 国家/主权 (US Gov、中国 Gov、其他 Gov) |
 |||

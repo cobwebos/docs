@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: bcb4563f7106161920b89897b706b05d2f819938
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f4bf3974cd561626c280dc65aa5fc78d0c9a159b
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282443"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056493"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>使用 AzCopy 和 Blob 存储传输数据
 
@@ -111,7 +111,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 
 ### <a name="upload-specific-files"></a>上传特定的文件
 
-您可以使用完整的文件名、包含通配符（*）的部分名称或使用日期和时间来上传特定文件。
+您可以使用完整的文件名、包含通配符字符的部分名称 ( * ) 或使用日期和时间上传特定文件。
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多个完整文件名
 
@@ -143,7 +143,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 
 #### <a name="upload-files-that-were-modified-after-a-date-and-time"></a>上传在日期和时间之后修改的文件 
 
-结合 `--include-after` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 以 ISO-8601 格式指定日期和时间（例如： `2020-08-19T15:04:00Z` ）。 
+结合 `--include-after` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 以 ISO-8601 格式指定日期和时间， (例如： `2020-08-19T15:04:00Z`) 。 
 
 |    |     |
 |--------|-----------|
@@ -214,7 +214,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 
 ### <a name="download-specific-files"></a>下载特定的文件
 
-您可以使用完整的文件名、包含通配符（*）的部分名称或使用日期和时间来下载特定文件。 
+您可以使用完整的文件名、包含通配符字符的部分名称 ( * ) 或使用日期和时间来下载特定文件。 
 
 #### <a name="specify-multiple-complete-file-names"></a>指定多个完整文件名
 
@@ -246,7 +246,7 @@ AzCopy 是一个命令行实用工具，可用于向/从存储帐户复制数据
 
 #### <a name="download-files-that-were-modified-after-a-date-and-time"></a>下载在日期和时间之后修改的文件 
 
-结合 `--include-after` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 以 ISO-8601 格式指定日期和时间（例如： `2020-08-19T15:04:00Z` ）。 
+结合 `--include-after` 选项使用 [azcopy copy](storage-ref-azcopy-copy.md) 命令。 以 ISO-8601 格式指定日期和时间， (例如： `2020-08-19T15:04:00Z`) 。 
 
 |    |     |
 |--------|-----------|
@@ -283,7 +283,7 @@ AzCopy 使用[服务器到服务器](https://docs.microsoft.com/rest/api/storage
 >
 > |方案|标志|
 > |---|---|
-> |将文件复制为追加 Blob 或页 Blob。|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
+> |将 blob 复制为块、页或追加 Blob。|**--blob-type**=\[BlockBlob\|PageBlob\|AppendBlob\]|
 > |复制到特定访问层（如存档层）。|**--block-blob-tier**=\[None\|Hot\|Cool\|Archive\]|
 > |自动解压缩文件。|**--decompress**=\[gzip\|deflate\]|
 > 

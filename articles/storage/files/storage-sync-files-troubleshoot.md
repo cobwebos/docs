@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: d268358f2f80cc9d347fa722d5027e1a87894b20
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: d266583a2bd73c92a58fad1882a1c572ed4f3769
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034390"
+ms.locfileid: "88056255"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -47,7 +47,7 @@ StorageSyncAgent.msi /l*v AFSInstaller.log
 driveletter:\ 不可访问。  
 参数不正确。
 
-若要解决此问题，请安装 Windows Server 2012 R2 的最新更新，然后重新启动服务器。
+若要解决此问题，请安装[KB2919355](https://support.microsoft.com/help/2919355/windows-rt-8-1-windows-8-1-windows-server-2012-r2-update-april-2014)并重新启动服务器。 如果此更新将不会安装，因为已安装了更高版本的更新，请跳到 Windows 更新，安装 Windows Server 2012 R2 的最新更新，然后重新启动服务器。
 
 <a id="server-registration-missing-subscriptions"></a>**服务器注册未列出所有 Azure 订阅**  
 使用 ServerRegistration.exe 注册服务器时，如果单击 Azure 订阅下拉列表，订阅将丢失。
@@ -338,7 +338,7 @@ PerItemErrorCount: 1006.
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | 由于已达到冲突文件最大数量，文件无法同步。 Azure 文件同步支持每文件 100 个冲突文件。 若要了解有关文件冲突的详细信息，请参阅 Azure 文件同步[常见问题解答](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution)。 | 若要解决此问题，请减少冲突文件数。 冲突文件数小于 100 后，文件将同步。 |
 
 #### <a name="handling-unsupported-characters"></a>处理不受支持的字符
-如果 FileSyncErrorsReport.ps1 PowerShell 脚本显示不受支持的字符导致失败（错误代码 0x8007007b 或 0x80c80255），请从相关的文件名中删除或重命名错误的字符。 PowerShell 可能会以问号或空框的形式列显这些字符，因为其中的大多数字符没有标准的视觉编码。 [评估工具](storage-sync-files-planning.md#evaluation-cmdlet)可用于标识不受支持的字符。
+如果**FileSyncErrorsReport.ps1** PowerShell 脚本显示由于不支持的字符而导致的每项同步错误 (错误代码0x8007007b 或 0x80c80255) ，则应该从相应的文件名中删除或重命名出现错误的字符。 PowerShell 可能会以问号或空框的形式列显这些字符，因为其中的大多数字符没有标准的视觉编码。 [评估工具](storage-sync-files-planning.md#evaluation-cmdlet)可用于标识不受支持的字符。 如果数据集包含多个包含无效字符的文件，请使用[ScanUnsupportedChars](https://github.com/Azure-Samples/azure-files-samples/tree/master/ScanUnsupportedChars)脚本重命名包含不支持的字符的文件。
 
 下表包含 Azure 文件同步尚不支持的所有 Unicode 字符。
 

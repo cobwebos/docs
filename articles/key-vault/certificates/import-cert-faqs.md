@@ -10,16 +10,16 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 493c77a8f875018627bfe3167e66addeaf65d089
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 402672d8eeaae8a5097e2ab2905997eb1f646ad6
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445784"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056340"
 ---
 # <a name="frequently-asked-questions---azure-key-vault-certificate-import"></a>常见问题-Azure Key Vault 证书导入
 
-## <a name="frequently-asked-questions"></a>常见问题解答
+## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="how-can-i-import-a-certificate-in-azure-key-vault"></a>如何在 Azure Key Vault 中导入证书？
 
@@ -33,13 +33,17 @@ ms.locfileid: "87445784"
 
 导入证书时，需要确保该密钥包含在文件本身中。 如果让私钥单独采用另一格式，则需将私钥与证书组合在一起。 某些证书颁发机构提供不同格式的证书，因此在导入证书之前，请确保它们采用的是 pem 或 .pfx 格式，并且所使用的密钥为 RSA 或 ECC。 请参阅，了解[证书要求](https://docs.microsoft.com/azure/key-vault/certificates/certificate-scenarios#formats-of-import-we-support)和[证书密钥要求](https://docs.microsoft.com/azure/key-vault/keys/about-keys#cryptographic-protection)。
 
+###  <a name="can-i-import-certificate-using-arm-template"></a>能否使用 ARM 模板导入证书？
+
+不可以，不能使用 ARM 模板执行证书操作。 建议的解决方法是在 API、CLI 或 PowerShell 中使用证书导入方法。 如果你有现有证书，则可以将其导入为机密。
+
 ### <a name="error-when-importing-certificate-via-portal-something-went-wrong-how-can-i-investigate-further"></a>通过门户导入证书时出现错误“出现错误”。 我如何进一步调查？
     
 若要查看更多描述性错误，请通过[Azure CLI](https://docs.microsoft.com/cli/azure/keyvault/certificate?view=azure-cli-latest#az-keyvault-certificate-import)或[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/import-azurekeyvaultcertificate?view=azurermps-6.13.0)导入证书文件。
 
 ### <a name="how-can-i-resolve-error-type-access-denied-or-user-is-unauthorized-to-import-certificate"></a>如何解决 "错误类型：访问被拒绝" 或 "用户无权导入证书"？
     
-此操作需要证书/导入权限。 导航到 Key Vault 所在位置，你将需要在“访问策略”下授予用户适当的权限。 导航到 Key Vault> 访问策略 > "添加访问策略" > "选择证书权限" （或所需权限） > 主体 > 搜索，然后添加用户的电子邮件。 [阅读有关证书相关访问策略的详细信息](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#certificate-access-control)
+此操作需要证书/导入权限。 导航到 Key Vault 所在位置，你将需要在“访问策略”下授予用户适当的权限。 导航到 "Key Vault> 访问策略" > "添加访问策略" > 选择 "证书权限" (或希望权限) > 主体 > 搜索，然后添加用户的电子邮件。 [阅读有关证书相关访问策略的详细信息](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates#certificate-access-control)
 
 
 ### <a name="how-can-i-resolve-error-type-conflict-when-creating-a-certificate"></a>如何解决 "错误类型：创建证书时出现冲突"？

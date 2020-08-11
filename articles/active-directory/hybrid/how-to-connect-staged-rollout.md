@@ -10,16 +10,16 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d582db4bd7ef99d86602f49bc9046aadb8c3e8f0
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: e260ff55c3039b7943137ff1656068e9b5b9cb28
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460603"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053213"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>使用分阶段推出迁移到云身份验证（预览）
 
-使用分阶段推出，可以有选择性地测试用户组，这些用户组具有云身份验证功能（如 Azure 多重身份验证（MFA））、条件性访问、对泄露凭据的标识保护、标识监管等，并在将域剪切到域之前。  本文介绍如何进行这种切换。 但是，在开始分步推出之前，如果满足以下一个或多个条件，就应当考虑影响：
+使用分阶段推出，可以有选择性地测试用户组，其中包含云身份验证功能，如 Azure 多重身份验证 (MFA) 、条件性访问、对泄露凭据的身份保护、标识监管等，以及在削减域之前。  本文介绍如何进行这种切换。 但是，在开始分步推出之前，如果满足以下一个或多个条件，就应当考虑影响：
     
 -  当前正在使用本地多重身份验证服务器。 
 -  使用智能卡进行身份验证。 
@@ -38,14 +38,14 @@ ms.locfileid: "87460603"
 -   你拥有具有联合域的 Azure Active Directory (Azure AD) 租户。
 
 -   你已决定改用以下两个选项之一：
-    - **选项 A**  - *密码哈希同步（同步）*  + *无缝单一登录（SSO）*。  有关详细信息，请参阅[什么是密码哈希同步](whatis-phs.md)以及[什么是无缝 SSO](how-to-connect-sso.md)
+    - **选项 A**  - *密码哈希同步 (同步) *  + *无缝单一登录 (SSO) *。  有关详细信息，请参阅[什么是密码哈希同步](whatis-phs.md)以及[什么是无缝 SSO](how-to-connect-sso.md)
     - **选项 B**  - *传递身份验证*  + *无缝 SSO*。  有关详细信息，请参阅[什么是直通身份验证](how-to-connect-pta.md)  
     
     尽管无缝 SSO 是可选的，但我们建议使用它，为运行着公司网络中加入域的计算机的用户提供无提示登录体验。
 
 -   你已配置了要迁移到云身份验证的用户所需的所有相应租户品牌和条件访问策略。
 
--   如果你计划使用 Azure 多重身份验证，我们建议你使用 "[自助密码重置（SSPR）" 和 "多重身份验证" 的组合注册](../authentication/concept-registration-mfa-sspr-combined.md)，让你的用户注册其身份验证方法一次。
+-   如果你计划使用 Azure 多重身份验证，我们建议你使用 "[自助密码重置" 的组合注册 (SSPR) 和多重身份验证](../authentication/concept-registration-mfa-sspr-combined.md)，让你的用户注册其身份验证方法一次。
 
 -   若要使用分阶段推出功能，你必须是租户的全局管理员。
 
@@ -84,7 +84,7 @@ ms.locfileid: "87460603"
 
 - 首次为分阶段推出添加安全组时，限制于 200 个用户，以避免 UX 超时。添加组后，可以根据需要直接向其添加更多用户。
 
-- 当用户处于分阶段推出时，密码过期策略设置为90天，无选项可对其进行自定义。 
+- 当用户处于分阶段推出时，启用 EnforceCloudPasswordPolicyForPasswordSyncedUsers 时，密码过期策略设置为90天，无选项可对其进行自定义。 
 
 
 ## <a name="get-started-with-staged-rollout"></a>分阶段推出入门
@@ -177,7 +177,7 @@ ms.locfileid: "87460603"
 
    >[!NOTE]
    >将自动为组中成员启用分阶段推出。 分阶段推出不支持嵌套和动态组。
-   >添加新组时，将更新组中的用户（最多为新组200用户），以使用托管身份验证 immidiatly。 编辑组（添加或删除用户）时，更改可能需要长达24小时才能生效。
+   >添加新组时， (组中的用户将更新为新组的最多200个用户) 将更新为使用托管身份验证 immidiatly。 编辑组 (在) 添加或删除用户时，更改可能需要长达24小时才能生效。
 
 ## <a name="auditing"></a>审核
 

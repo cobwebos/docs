@@ -1,14 +1,14 @@
 ---
 title: 如何使用管理组 - Azure 治理
 description: 了解如何查看、维护、更新和删除管理组层次结构。
-ms.date: 04/15/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: c5a0269935daedb3be478cc27d5ecaf87f3c97f7
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 43837dcaed9b9628573ee92244ede542107155f9
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535002"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055133"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 
@@ -65,9 +65,7 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
 若要删除某个管理组，必须满足以下要求：
 
-1. 该管理组下面没有任何子管理组或订阅。
-
-   - 若要将订阅或管理组移到另一个管理组，请参阅[在层次结构中移动管理组和订阅](#moving-management-groups-and-subscriptions)。
+1. 该管理组下面没有任何子管理组或订阅。 若要将订阅或管理组移动到其他管理组，请参阅[在层次结构中移动管理组和订阅](#moving-management-groups-and-subscriptions)。
 
 1. 你需要拥有对管理组的写入权限（“所有者”、“参与者”或“管理组参与者”）。 若要查看自己拥有哪些权限，请选择管理组，然后选择“IAM”。 若要了解有关 Azure 角色的详细信息，请参阅  
    [通过 RBAC 管理访问和权限](../../role-based-access-control/overview.md)。
@@ -200,7 +198,7 @@ az account management-group show --name 'Contoso' -e -r
 
 创建管理组的原因之一是将订阅捆绑在一起。 只能将管理组和订阅设置为另一个管理组的子级。 移到管理组的订阅从父管理组继承所有用户访问权限和策略
 
-将管理组或订阅移动为另一个管理组的子项时，三项规则的计算结果都需要为 true。
+当将管理组或订阅移动到另一个管理组的子级时，需要将三个规则评估为 true。
 
 如果执行移动操作，你需要： 
 

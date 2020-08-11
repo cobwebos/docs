@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/21/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 44d58b4e68e9f846b6bdb87765e96bcab90274a3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0309f4d07056e3986138139e10ab29faa675cfcd
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083593"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056072"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
@@ -54,8 +54,6 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 * [获取页面范围](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
 * [增量复制 Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
 * [从 URL 放置页](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [放置 Blob（追加）](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [追加块](https://docs.microsoft.com/rest/api/storageservices/append-block)
 * [通过 URL 追加块](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
 具有分层命名空间的帐户不支持非托管 VM 磁盘。 若要在存储帐户中启用分层命名空间，请将非托管 VM 磁盘置于未启用分层命名空间功能的存储帐户中。
@@ -92,7 +90,7 @@ Blob API 和 Data Lake Storage Gen2 API 可以对相同的数据执行操作。
 
 ## <a name="access-control-lists-acl-and-anonymous-read-access"></a>访问控制列表 (ACL) 和匿名读取访问
 
-如果已授予对某个容器的[匿名读取访问权限](storage-manage-access-to-resources.md)，则 ACL 对该容器或该容器中的文件没有影响。
+如果已将[匿名读取访问](storage-manage-access-to-resources.md)授予容器，则 ACL 对该容器或该容器中的文件没有影响。
 
 ## <a name="premium-performance-blockblobstorage-storage-accounts"></a>高性能 BlockBlobStorage 存储帐户
 

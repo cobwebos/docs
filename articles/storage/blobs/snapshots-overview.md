@@ -9,19 +9,19 @@ ms.topic: article
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cd8771afdc9c4462faaff758ffdd073382f69f53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24118e6ae5c31399ce5d33361dd60e3a08424681
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550962"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055762"
 ---
 # <a name="blob-snapshots"></a>Blob 快照
 
 快照是在某一时间点拍摄的只读版本的 Blob。
 
 > [!NOTE]
-> Blob 版本控制（预览版）提供了另一种方法来维护 blob 的历史副本。 有关详细信息，请参阅[Blob 版本控制（预览）](versioning-overview.md)。
+> Blob 版本控制 (预览) 提供另一种方法来维护 blob 的历史副本。 有关详细信息，请参阅[Blob 版本控制 (预览) ](versioning-overview.md)。
 
 ## <a name="about-blob-snapshots"></a>关于 Blob 快照
 
@@ -33,7 +33,7 @@ Blob 的快照与其基本 Blob 相同，不过，Blob URI 的后面追加了一
 > 所有快照共享基本 Blob 的 URI。 基本 Blob 与快照之间的唯一区别体现在追加的 **DateTime** 值。
 >
 
-一个 Blob 可以有任意数目的快照。 快照会一直保留，直到被显式删除，这意味着快照的生存期不能长于其基本 Blob。 可以枚举与基本 Blob 关联的快照，以跟踪当前快照。
+一个 Blob 可以有任意数目的快照。 快照会一直保留，直到被显式删除（独立或作为基本 blob 的删除 Blob 操作的一部分）。 可以枚举与基本 Blob 关联的快照，以跟踪当前快照。
 
 创建 Blob 的快照时，会将该 Blob 的系统属性复制到具有相同值的快照。 基本 Blob 的元数据也会复制到快照，除非创建快照时为其指定了单独的元数据。 创建快照后，可以读取、复制或删除它，但无法修改它。
 

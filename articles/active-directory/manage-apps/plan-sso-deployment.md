@@ -13,22 +13,22 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 0ee138ac41557554ae4b8fde8c9178336fd8d5db
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 85ec94ccf853d4f8b02a14ba08e9515170b36b5e
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387772"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054794"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>计划单一登录部署
 
-单一登录（SSO）是指只需使用单个用户帐户登录一次即可访问用户所需的所有应用程序和资源。 使用 SSO，用户可以访问所有所需的应用程序，而无需再次进行身份验证。
+单一登录 (SSO) 意味着只需使用单个用户帐户登录一次，就能访问用户需要的所有应用程序和资源。 使用 SSO，用户可以访问所有所需的应用程序，而无需再次进行身份验证。
 
 ## <a name="benefits-of-sso"></a>SSO 的优点
 
-当用户登录到 Azure Active Directory （Azure AD）中的应用程序时，单一登录（SSO）可增加安全性和便利性。 
+单一登录 (SSO) 在用户以 Azure Active Directory (Azure AD) 登录到应用程序时，添加安全和便利性。 
 
-许多组织依赖软件即服务（SaaS）应用程序（如 Office 365、Box 和 Salesforce）来提高最终用户的工作效率。 从历史上看，IT 人员需要在每个 SaaS 应用程序中单独创建和更新用户帐户，并且用户需要记住每个应用程序的密码。
+许多组织依赖软件即服务 (SaaS) 应用程序（如 Office 365、Box 和 Salesforce）来提高最终用户的工作效率。 从历史上看，IT 人员需要在每个 SaaS 应用程序中单独创建和更新用户帐户，并且用户需要记住每个应用程序的密码。
 
 Azure Marketplace 具有超过3000个具有预先集成 SSO 连接的应用程序，因此可以轻松地将它们集成到租户中。
 
@@ -70,7 +70,7 @@ Azure Marketplace 具有超过3000个具有预先集成 SSO 连接的应用程�
 
 #### <a name="capturing-login-forms-metadata-for-applications-that-arent-in-the-gallery"></a>捕获不在库中的应用程序的登录窗体元数据
 
-Microsoft 支持在 web 应用程序上捕获用于密码保管的元数据（捕获 "用户名" 和 "密码" 字段）。 在配置应用程序的过程中导航到登录 URL，以捕获窗体元数据。 向应用程序所有者询问确切的登录 URL。 在登录过程中将使用此信息，在登录过程中将 Azure AD 凭据映射到应用程序。
+Microsoft 支持捕获 web 应用程序上的元数据以进行密码保管 (捕获 "用户名" 和 "密码" 字段) 。 在配置应用程序的过程中导航到登录 URL，以捕获窗体元数据。 向应用程序所有者询问确切的登录 URL。 在登录过程中将使用此信息，在登录过程中将 Azure AD 凭据映射到应用程序。
 
 若要了解详细信息，请参阅[什么是应用程序访问和 SSO 与 Azure AD？-基于密码的 sso](https://azure.microsoft.com/documentation/articles/active-directory-appssoaccess-whatis/)。
 
@@ -129,7 +129,7 @@ Azure AD 保留30天的大多数审核数据，并通过 Azure 管理门户或�
 
 ### <a name="consider-using-microsoft-cloud-application-security"></a>考虑使用 Microsoft 云应用程序安全性
 
-Microsoft Cloud App Security （MCAS）是一种云访问安全代理（CASB）解决方案。 它可让你查看云应用和服务，提供复杂分析来识别和对抗以来自2200，并使你能够控制数据的传播方式。
+Microsoft Cloud App Security (MCAS) 是云访问安全代理 (CASB) 解决方案。 它可让你查看云应用和服务，提供复杂分析来识别和对抗以来自2200，并使你能够控制数据的传播方式。
 
 部署 MCAS 可让你：
 
@@ -139,7 +139,7 @@ Microsoft Cloud App Security （MCAS）是一种云访问安全代理（CASB）�
 - 使用条件访问应用控制保护，以实时查看和控制云应用中的访问和活动
 - 通过设置，然后不断地调整策略，帮助你进行连续控制。
 
-Microsoft 云应用程序安全性（MCAS）会话控制可用于任何操作系统上任何主要平台上的任何浏览器。 也可阻止或允许移动应用和桌面应用。 通过本机方式与 Azure AD 进行集成，可以支持在 Azure AD 中配置了 SAML 或 Open ID Connect 应用程序的任何应用，包括[多个特色应用](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)。
+Microsoft 云应用程序安全 (MCAS) 会话控制可用于任何操作系统上任何主要平台上的任何浏览器。 也可阻止或允许移动应用和桌面应用。 通过本机方式与 Azure AD 进行集成，可以支持在 Azure AD 中配置了 SAML 或 Open ID Connect 应用程序的任何应用，包括[多个特色应用](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)。
 
 有关 MCAS 的信息，请参阅[Microsoft Cloud App Security 概述](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)。 MCAS 是基于用户的订阅服务。 可以在[MCAS 授权数据表](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE2NXYO)中查看许可详细信息。
 
@@ -147,11 +147,11 @@ Microsoft 云应用程序安全性（MCAS）会话控制可用于任何操作系
 
 使用条件性访问，你可以针对云应用自动执行基于条件的访问控制决策。
 
-完成第一因素身份验证后将强制执行条件访问策略。 因此，条件性访问不应作为拒绝服务（DoS）攻击等方案的第一线防御，但可以使用来自这些事件的信号来确定访问权限。 例如，可以使用登录风险级别、请求的位置等等。 有关条件性访问的详细信息，请参阅[概述](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)和[部署计划](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)。
+完成第一因素身份验证后将强制执行条件访问策略。 因此，条件性访问不应作为 (DoS) 攻击等方案的第一线防御，但可以使用来自这些事件的信号来确定访问权限。 例如，可以使用登录风险级别、请求的位置等等。 有关条件性访问的详细信息，请参阅[概述](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)和[部署计划](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)。
 
 ## <a name="azure-sso-technical-requirements"></a>Azure SSO 技术要求
 
-以下部分详细介绍了配置特定应用程序的要求，其中包括所需的环境、终结点、声明映射、所需的属性、证书以及所使用的协议。 在[Azure AD 门户](https://portal.azure.com/)中配置 SSO 需要此信息。
+以下部分详细说明了配置特定应用程序的要求，其中包括所需的环境 () 、终结点、声明映射、所需的属性、证书以及所使用的协议。 在[Azure AD 门户](https://portal.azure.com/)中配置 SSO 需要此信息。
 
 ### <a name="authentication-mechanism-details"></a>身份验证机制详细信息
 
@@ -201,11 +201,11 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 
 ### <a name="verify-end-user-scenarios-for-sso"></a>验证 SSO 的最终用户方案
 
-你可以使用以下测试用例在公司拥有的设备和个人设备上执行测试，以确保你的 SSO 配置按预期方式工作。 以下方案假设用户要导航到应用程序 URL，并通过服务提供商（SP 发起的身份验证流）启动的身份验证流。
+你可以使用以下测试用例在公司拥有的设备和个人设备上执行测试，以确保你的 SSO 配置按预期方式工作。 以下方案假设用户要导航到应用程序 URL，并通过服务提供商启动的身份验证流 (SP 启动的身份验证流) 。
 
 | 方案 | 由用户启动的 SP 启动的身份验证流的预期结果 |
 |----------|---------------------------------------------------|
-| 在公司网络上登录到具有 IE 的应用程序。 | 集成的 Windows 身份验证（IWA）发生，无其他提示。 |
+| 在公司网络上登录到具有 IE 的应用程序。 | 集成的 Windows 身份验证 (IWA) 出现，无其他提示。 |
 | 在关闭具有新登录尝试的公司网络的情况下，通过 IE 登录到应用程序。 | AD FS Server 上的基于窗体的提示。 用户成功登录并浏览器提示进行 MFA。 |
 | 使用 IE 登录到应用程序，而不使用当前会话的公司网络，且从未执行过 MFA。 | 用户不会收到第一个因素的提示。 用户接收 MFA 提示。 |
 | 使用 IE 登录到应用程序时，通过当前会话与公司网络断开，并已在此会话中执行 MFA。 | 用户不会收到第一个因素的提示。 用户不会收到 MFA。 用户 SSOs 到应用程序中。 |
@@ -217,8 +217,8 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 | 授权的用户尝试登录，但输入的密码不正确。 | 用户导航到 "应用程序 URL" 并收到错误的用户名/密码错误。 |
 | 授权的用户单击电子邮件中的链接，已经过身份验证。 | 用户单击 URL 并登录到应用程序，无其他提示。 |
 | 授权的用户单击电子邮件中的链接，但尚未通过身份验证。 | 用户单击 "URL"，系统会提示第一个因素进行身份验证。 |
-| 经授权的用户通过新的登录尝试，使用应用程序移动应用程序（SP 启动）登录应用程序。 | AD FS Server 上的基于窗体的提示。 用户成功登录，并且 ADAL 客户端提示进行 MFA。 |
-| 未经授权的用户尝试通过登录 URL （SP 发起的）登录到应用程序。 | AD FS Server 上的基于窗体的提示。 用户无法以首个因素登录。 |
+| 授权用户使用应用程序移动应用程序登录应用程序 (SP 启动的) ，并具有新的登录尝试。 | AD FS Server 上的基于窗体的提示。 用户成功登录，并且 ADAL 客户端提示进行 MFA。 |
+| 未经授权的用户尝试登录到应用程序，登录 URL (SP 启动的) 。 | AD FS Server 上的基于窗体的提示。 用户无法以首个因素登录。 |
 | 授权的用户尝试登录，但输入的密码不正确。| 用户导航到 "应用程序 URL" 并收到错误的用户名/密码错误。 |
 | 授权的用户注销，然后再次登录。 | 如果配置了注销 URL，用户将从所有服务中注销，并提示进行身份验证。 |
 | 授权的用户注销，然后再次登录。 | 如果未配置注销 URL，用户将使用现有的 Azure AD 浏览器会话中的现有令牌自动登录。 |
@@ -233,7 +233,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 
 始终使用具有最少权限的角色来完成 Azure Active Directory 中所需的任务。 Microsoft 建议[查看可用的不同角色](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)，并选择正确的角色以解决此应用程序的每个角色的需求。 在部署完成后，可能需要暂时应用某些角色并将其删除。
 
-| 增添| 角色 | Azure AD 角色（如果需要） |
+| 增添| 角色 | Azure AD 角色 (（如果需要）)  |
 |--------|-------|-----------------------------|
 | 咨询台管理员 | 第1层支持 | 无 |
 | 标识管理员 | 在问题影响时进行配置和调试 Azure AD | 全局管理员 |
@@ -241,7 +241,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 | 基础结构管理员 | 证书滚动更新所有者 | 全局管理员 |
 | 业务所有者/利益干系人 | 应用程序中的用户证明，具有权限的用户配置 | 无 |
 
-建议使用[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) （PIM）来管理角色，以便为具有目录权限的用户提供其他审核、控制和访问权限。
+建议使用[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) 来管理角色，以便为具有目录权限的用户提供其他审核、控制和访问评审。
 
 ### <a name="sso-certificate-lifecycle-management"></a>SSO 证书生命周期管理
 
@@ -261,7 +261,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 
 - **如果你的应用程序支持多个标识提供程序**（例如 LDAP 和 AD FS 和 Ping），请不要在部署期间删除现有的 SSO 配置。 相反，请在迁移过程中禁用它，以防以后需要切换回。 
 
-- **如果应用不支持多个 idp** ，但允许用户使用基于窗体的身份验证（用户名/密码）登录，请确保在新的 SSO 配置部署失败的情况下，用户可以回退到此方法。
+- **如果应用不支持多个 idp** ，但允许用户使用基于窗体的身份验证登录 (用户名/密码) ，请确保在新的 SSO 配置部署失败的情况下，用户可以回退到此方法。
 
 ### <a name="access-management"></a>访问管理
 
@@ -315,7 +315,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 
 [单一注销 SAML 协议](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-out-protocol-reference)
 
-[AZURE AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) （对于外部用户，如合作伙伴和供应商）
+[AZURE AD B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b) (供外部用户（如合作伙伴和供应商）) 
 
 [Azure AD 条件性访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
 
@@ -324,3 +324,5 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 [SSO 访问](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 [应用程序 SSO 教程](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+
+[白皮书下载-单一登录部署计划](https://aka.ms/SSODeploymentPlan)

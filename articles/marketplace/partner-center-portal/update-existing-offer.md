@@ -1,24 +1,24 @@
 ---
 title: 更新现有的商业市场优惠
-description: 如何更新现有的商业 Marketplace 产品/服务，包括编辑、删除草稿、取消发布请求、停止销售产品/服务或计划以及同步专用受众。
+description: 如何更新现有的商业 marketplace 产品/服务，包括编辑、删除草稿、取消发布请求、停止销售产品/服务或计划以及同步专用受众。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 01/16/2020
-ms.openlocfilehash: 33e7a97f4b82bd3d7e82532fe2f0a5e3d80c73f5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ca106625acf28aded0009fd09022843f1016faf3
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006785"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056136"
 ---
-# <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>在商业市场中更新现有的套餐
+# <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>更新商业应用商店中的现有产品/服务
 
 你可以在合作伙伴中心的[商业 Marketplace 门户](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)的 "**概述**" 选项卡上查看现有产品/服务。
 
-若要更新当前在 marketplace 中的现有产品/服务：
+若要更新现有产品/服务，该产品/服务当前在商业应用商店中提供：
 
 1. 选择要更新的产品/服务的名称。 产品/服务的状态可能会列为**预览**、**实时**、**正在进行的发布**、**草稿**、**需要注意**，或**在**之前已选择停止销售产品/服务)  (。 选择后，该产品/服务的 "产品/服务**概述**" 页将打开。
 2. 从产品/服务概述页上的卡中选择 "**更新**"，或者从左侧导航栏中选择要更新的区域的菜单项。 你可能想要更新**产品/服务设置**、**属性**、**产品列表**、**预览**、**技术配置**、**计划概述**或**测试驱动器**。
@@ -74,7 +74,7 @@ ms.locfileid: "88006785"
 1. 选择“保存草稿”。
 1. 完成新计划的所有必需部分后，请选择 "**查看并发布**"。 这将提交你的产品/服务以供审查和发布。 阅读[检查并将产品/服务发布到商业市场](../review-publish-offer.md)，了解更多详细信息。
 
-## <a name="compare-changes-to-marketplace-offers"></a>将更改与 marketplace 产品/服务进行比较
+## <a name="compare-changes-to-commercial-marketplace-offers"></a>将更改与商用 marketplace 产品/服务进行比较
 
 通过使用 "**比较**"，可以在将[发布](#compare-changes-to-published-offer)或[预览](#compare-changes-to-a-preview-offer)提议投入使用之前对其进行审核。
 
@@ -161,15 +161,17 @@ ms.locfileid: "88006785"
 
 ## <a name="stop-selling-an-offer-or-plan"></a>停止销售产品/服务或计划
 
+由于各种原因，你可能会决定从 Microsoft 商用 marketplace 中删除你的产品/服务列表。 产品/服务删除可确保新客户无法再购买或部署你的产品/服务，但不会对现有客户产生任何影响。
+
 若要在发布产品/服务后停止销售产品/服务，请从**产品/服务概述**页中选择 "**停止销售**"。
 
-确认你要停止销售该产品/服务后，在几个小时内它将不再显示在 marketplace 中，任何新客户都无法下载该产品/服务。
+确认你要停止销售该产品/服务后，在几个小时内它将不再显示在商业市场中，任何新客户都无法下载该产品/服务。
 
-若要停止销售某个计划，请选择 "从**计划概述**页**停止销售**"。 如果产品/服务中有多个计划，则停止销售计划的选项只适用。 你可以选择停止销售一个计划，而不会影响你的产品/服务中的其他计划。 确认你要停止销售计划后，你必须重新发布产品/服务以使更改生效。 重新发布产品/服务后，该计划将不再在 marketplace 中显示，并且任何新客户都无法下载该计划。
+若要停止销售某个计划，请选择 "从**计划概述**页**停止销售**"。 如果产品/服务中有多个计划，则停止销售计划的选项只适用。 你可以选择停止销售一个计划，而不会影响你的产品/服务中的其他计划。 确认你要停止销售计划后，你必须重新发布产品/服务以使更改生效。 重新发布产品/服务后，该计划将无法再在商业市场中显示，并且任何新客户都无法下载该计划。
 
 以前获得产品/服务或计划的任何客户仍可使用它。 他们可以再次下载该软件，但如果稍后更新并重新发布产品/服务，则不会获取更新。
 
-停止销售产品/计划的请求完成后，仍会在合作伙伴中心的 "商用 Marketplace 门户" 中看到它，但状态为 "**不可**用"。
+停止销售产品/计划的请求完成后，仍会在合作伙伴中心的 "商用 marketplace 门户" 中看到它，但状态为 "**不可**用"。
 
 如果你决定再次列出或销售此产品或计划，请按照说明[更新现有产品/服务](#update-an-existing-offer-in-the-commercial-marketplace)。 请注意，在进行任何更改后，你将需要再次**发布**产品/服务或计划。
 

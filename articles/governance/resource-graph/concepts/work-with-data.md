@@ -1,14 +1,14 @@
 ---
 title: 处理大型数据集
 description: 了解如何在使用 Azure Resource Graph 的同时，在大型数据集中获取、格式化、分页和跳过记录。
-ms.date: 03/20/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4b45a28a5dbd2ebc233bcf9a6808cb7d7cd6d8c8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 77ec7cc342672becddcbca7e6173eb1968519f02
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681065"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056400"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>处理大型 Azure 资源数据集
 
@@ -63,10 +63,10 @@ Search-AzGraph -Query "Resources | project name | order by name asc" -Skip 10
 
 ## <a name="paging-results"></a>分页结果
 
-如果有必要将结果集拆分为更小的记录集进行处理，或者因为结果集会超过允许的最大返回记录数（即 1000 条），请使用分页。 [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) QueryResponse 提供了指示结果集已拆分的值：resultTruncated 和 $skipToken  。
-resultTruncated 是布尔值，用于指示使用者返回的响应中是否还有其他记录。 如果 count 属性小于 totalRecords 属性，也可以确定此条件。 totalRecords 定义匹配查询的记录数。
+如果有必要将结果集拆分为更小的记录集进行处理，或者因为结果集会超过允许的最大返回记录数（即 1000 条），请使用分页。 [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) 
+ **QueryResponse**提供了指示结果集已被中断的值： **resultTruncated**和 **$skipToken**。 resultTruncated 是布尔值，用于指示使用者返回的响应中是否还有其他记录。 如果 count 属性小于 totalRecords 属性，也可以确定此条件。 totalRecords 定义匹配查询的记录数。
 
- 如果由于没有 `id` 列而禁用了分页或无法进行分页，或者可用资源少于查询请求的资源，则 resultTruncated 为 true 。 如果 resultTruncated 为 true，则不设置 $skipToken 属性  。
+ 如果分页已禁用或不可用，则**resultTruncated**为**true** ，这是因为没有 `id` 列，或者当可用资源小于查询请求时。 当**resultTruncated**为**true**时，则不设置 **$skipToken**属性。
 
 以下示例演示了如何使用 Azure CLI 和 Azure PowerShell 跳过前 3000 条记录，并返回这些跳过的记录之后的前 1000 条记录 ：
 

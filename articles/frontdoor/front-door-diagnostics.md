@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: f57c0353989cfcf924042d202bd80a57b476507b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 249b2406f048709fd7e4f76f8272b3158708e5bb
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322318"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056425"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>在 Azure 前门中监视指标和日志
 
@@ -31,26 +31,26 @@ ms.locfileid: "85322318"
 
 | 指标 | 指标显示名称 | 计价单位 | 维度 | 说明 |
 | --- | --- | --- | --- | --- |
-| RequestCount | 请求计数 | 计数 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Front Door 服务的客户端请求数。  |
+| RequestCount | 请求计数 | Count | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Front Door 服务的客户端请求数。  |
 | RequestSize | 请求大小 | 字节 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 以请求的形式从客户端发送到 Front Door 的字节数。 |
 | ResponseSize | 响应大小 | 字节 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 以响应的形式从 Front Door 发送到客户端的字节数。 |
 | TotalLatency | 总延迟 | 毫秒 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 由前门接收的客户端请求计算的时间，直到客户端从前门确认最后一个响应字节。 |
-| BackendRequestCount | 后端请求计数 | 计数 | HttpStatus</br>HttpStatusGroup</br>后端 | 从 Front Door 发送到后端的请求数。 |
+| BackendRequestCount | 后端请求计数 | Count | HttpStatus</br>HttpStatusGroup</br>后端 | 从 Front Door 发送到后端的请求数。 |
 | BackendRequestLatency | 后端请求延迟 | 毫秒 | 后端 | 自 Front Door 向后端发送请求起，直至 Front Door 接收到来自后端的最后一个响应字节为止，所计算的时间。 |
 | BackendHealthPercentage | 后端运行状况百分比 | 百分比 | 后端</br>BackendPool | 从 Front Door 到后端，成功运行状况探测的百分比。 |
 | WebApplicationFirewallRequestCount | Web 应用程序防火墙请求计数 | Count | PolicyName</br>RuleName</br>操作 | Front Door 的应用层安全性所处理的客户端请求数。 |
 
 ## <a name="activity-logs"></a><a name="activity-log"></a>活动日志
 
-活动日志提供有关在前门上完成的操作的信息。 它们还决定了在前门上执行的任何写入操作（put、post 或 delete）的具体内容、人员和时间。
+活动日志提供有关在前门上完成的操作的信息。 它们还决定了任何写入操作 (put、post 或 delete) 在前门上执行的操作。
 
 >[!NOTE]
->活动日志不包括读取（get）操作。 它们还不包括使用 Azure 门户或原始管理 API 执行的操作。
+>活动日志不包括读取 (获取) 操作。 它们还不包括使用 Azure 门户或原始管理 API 执行的操作。
 
 在 Azure Monitor 中访问你的前端或 Azure 资源的所有日志中的活动日志。 要查看活动日志，请执行以下操作：
 
 1. 选择前门实例。
-2. 选择 "**活动日志**"。
+2. 选择“活动日志”。
 
     ![活动日志](./media/front-door-diagnostics/activity-log.png)
 
@@ -71,11 +71,11 @@ ms.locfileid: "85322318"
 
 3. 选择“启用诊断”。 将诊断日志和指标存档到存储帐户，将其流式传输到事件中心，或将其发送到 Azure Monitor 日志。
 
-前门当前提供诊断日志（每小时进行批处理）。 诊断日志提供单个 API 请求，其中每个条目具有以下架构：
+前门目前提供的诊断日志 (按小时批处理) 。 诊断日志提供单个 API 请求，其中每个条目具有以下架构：
 
-| Property  | 描述 |
+| properties  | 说明 |
 | ------------- | ------------- |
-| BackendHostname | 如果将请求转发到后端，此字段表示后端的主机名。 如果请求被重定向或转发到区域缓存（为路由规则启用了缓存），此字段将为空。 |
+| BackendHostname | 如果将请求转发到后端，此字段表示后端的主机名。 如果为路由规则) 启用了缓存，则此字段将为空（如果请求被重定向或转发到区域 (缓存）。 |
 | CacheStatus | 对于缓存方案，此字段定义了弹出窗口中的缓存命中/未命中 |
 | ClientIp | 发出请求的客户端的 IP 地址。 如果请求中有一个 X 转发的标头，则从同一获取客户端 IP。 |
 | ClientPort | 发出请求的客户端的 IP 端口。 |
@@ -91,7 +91,7 @@ ms.locfileid: "85322318"
 | RulesEngineMatchNames | 请求匹配的规则的名称。 |
 | SecurityProtocol | 请求所使用的 TLS/SSL 协议版本，如果没有加密，则为 null。 |
 | SentToOriginShield | 布尔值字段，表示在第一个环境上是否出现缓存未命中，并向区域缓存发送请求。 如果路由规则是重定向或未启用缓存，则忽略此字段。 |
-| TimeTaken | 操作所用的时间长度（以毫秒为单位）。 |
+| TimeTaken | 从请求的第一个字节到响应的最后一个字节的时间长度（以秒为单位）。 |
 | TrackingReference | 标识由 Front Door 提供的请求的唯一引用字符串，该请求还会以 X-Azure-Ref 标头的形式发送到客户端。 是搜索特定请求访问日志中的详细信息必需的。 |
 | UserAgent | 客户端使用的浏览器类型。 |
 
@@ -99,8 +99,8 @@ ms.locfileid: "85322318"
 
 | 方案 | 日志条目计数 | POP | BackendHostname | SentToOriginShield | CacheStatus |
 | ------------- | ------------- | ------------- | ------------- | ------------- | ------------- |
-| 未启用缓存的路由规则 | 1 | 边缘 POP 代码 | 转发请求的后端 | False | CONFIG_NOCACHE |
-| 启用了缓存的路由规则。 在边缘 POP 处命中缓存 | 1 | 边缘 POP 代码 | 空 | False | 命中 |
+| 未启用缓存的路由规则 | 1 | 边缘 POP 代码 | 转发请求的后端 | 错误 | CONFIG_NOCACHE |
+| 启用了缓存的路由规则。 在边缘 POP 处命中缓存 | 1 | 边缘 POP 代码 | 空 | 错误 | 命中 |
 | 启用了缓存的路由规则。 边缘 POP 处的缓存未命中，但在父缓存 POP 处命中缓存 | 2 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. 父缓存 POP 主机名</br>2。空 | 1. True</br>2. False | 1. 未命中</br>2. PARTIAL_HIT |
 | 启用了缓存的路由规则。 边缘和父缓存弹出窗口中的缓存未命中 | 2 | 1. 边缘 POP 代码</br>2. 父缓存 POP 代码 | 1. 父缓存 POP 主机名</br>2. 帮助填充缓存的后端 | 1. True</br>2. False | 1. 未命中</br>2. 未命中 |
 

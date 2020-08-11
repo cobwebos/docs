@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: 4604bfe7c815f79733f99a1a3727e4c68527e7ec
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5dc1f8ed31c8d7199a31643a76e611d828da77ac
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80656127"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056459"
 ---
 # <a name="try-the-speech-service-for-free"></a>免费试用语音服务
 
 在本文中，你将选择一个选项来轻松地免费测试语音服务，以便你能够发现服务的功能，并决定它是否适合你的需求。 选择以下两个选项之一，具体取决于你的情况和用例：
 
-- [选项 1](#no-card)：立即获取**免费试用版**API 密钥，而无需提供任何信用卡信息（需要具有现有的 Azure 帐户）。 **免费试用**期限为30天，数据将在结束时删除。 此选项最适合用于对服务的快速试验。
-- [选项 2](#new-resource)：在 Azure 中创建新的语音资源，**免费订阅**（需要信用卡信息）。 **免费订阅**主要具有比付费订阅更严格的速率限制。 如果你想要测试服务，并计划在将来升级到付费订阅，并且不希望丢失数据，则可以使用此选项。
+- [选项 1](#no-card)：立即获取**免费试用版**API 密钥，而无需提供任何信用卡信息 (需要具有现有的 Azure 帐户) 。 **免费试用**期限为30天，数据将在结束时删除。 此选项最适合用于对服务的快速试验。
+- [选项 2](#new-resource)：在 Azure 中创建新的语音资源，免费**免费订阅** (所需的信用卡信息) 。 **免费订阅**主要有比付费订阅更苛刻的速率限制。 若要测试服务，计划在将来升级到付费订阅，并且不希望丢失数据，则可使用此选项。
 
 ## <a name="try-the-speech-service-without-credit-card-info"></a><a id="no-card"></a>试用语音服务，无需信用卡信息
 
@@ -52,31 +52,31 @@ ms.locfileid: "80656127"
 
 若要将语音服务资源（免费层或付费层）添加到 Azure 帐户，请执行以下步骤：
 
-1. 使用 Microsoft 帐户登录 [Azure 门户](https://portal.azure.com/)。
+1. 使用你的 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. 选择门户左上角的“创建资源”。**** 如果看不到“创建资源”，始终可以通过选择左上角的折叠菜单来找到它：****
+1. 选择门户左上角的“创建资源”。  如果看不到“创建资源”，始终可以通过选择左上角的折叠菜单来找到它： 
 
    ![折叠的导航按钮](media/index/collapsed-nav.png)
 
-1. 在“新建”窗口中的搜索框内键入“语音”，然后按 ENTER。****
+1. 在“新建”窗口中的搜索框内键入“语音”，然后按 ENTER。 
 
-1. 在搜索结果中，选择“语音”。****
+1. 在搜索结果中，选择“语音”。 
 
    ![语音搜索结果](media/index/speech-search.png)
 
-1. 选择“创建”，然后：****
+1. 选择“创建”，然后： 
 
-   - 为新资源指定唯一的名称。 该名称可帮助你区分绑定到同一个服务的多个订阅。
+   - 为新资源指定唯一的名称。 名称有助于区分绑定到同一服务的多个订阅。
    - 选择新资源关联的 Azure 订阅，以确定计费方式。
-   - 选择将使用该资源的[区域](regions.md)。
-   - 选择免费 (F0) 或付费 (S0) 定价层。 若要查看每个层的定价和用量配额的完整信息，请选择“查看全部定价详细信息”****。
+   - 选择将使用资源的[区域](regions.md)。
+   - 选择免费 (F0) 或付费 (S0) 定价层。 若要查看每个层的定价和用量配额的完整信息，请选择“查看全部定价详细信息”  。
    - 为此“语音”订阅创建新的资源组或将订阅分配到现有资源组。 资源组有助于使多种 Azure 订阅保持有序状态。
    - 选择“创建”  。 系统随后会将你转到部署概述，并显示部署进度消息。
 
 > [!NOTE]
 > 可在一个或多个区域中创建数量不受限的标准层订阅。 但是，只能创建一个免费层订阅。 在免费层上进行的模型部署如果连续 7 天处于未使用状态，则会被系统自动停用。
 
-部署新的语音资源需要花费片刻时间。 部署完成后，选择“转到资源”，然后在左侧导航窗格中选择“密钥”以显示语音服务订阅密钥。******** 每个订阅有两个密钥；可在应用程序中使用任意一个密钥。 若要将密钥快速复制/粘贴到代码编辑器或其他位置，请选择每个密钥旁边的复制按钮，切换窗口，然后将剪贴板中的内容粘贴到所需位置。
+部署新的语音资源需要花费片刻时间。 部署完成后，选择“转到资源”，然后在左侧导航窗格中选择“密钥”以显示语音服务订阅密钥。   每个订阅有两个密钥；可在应用程序中使用任意一个密钥。 若要将密钥快速复制/粘贴到代码编辑器或其他位置，请选择每个密钥旁边的复制按钮，切换窗口，然后将剪贴板中的内容粘贴到所需位置。
 
 > [!IMPORTANT]
 > 这些订阅密钥用于访问认知服务 API。 不要共享你的密钥。 安全存储密钥 - 例如，使用 Azure Key Vault。 此外，我们建议定期重新生成这些密钥。 发出 API 调用只需一个密钥。 重新生成第一个密钥时，可以使用第二个密钥来持续访问服务。
@@ -96,5 +96,5 @@ ms.locfileid: "80656127"
 完成我们的 10 分钟快速入门之一，或查看我们的 SDK 示例：
 
 > [!div class="nextstepaction"]
-> [快速入门：在 c #](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
-> [语音 SDK 示例](speech-sdk.md#sample-source-code)中识别语音
+> [快速入门：通过语音 CLI](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programmer-tool-spx) 
+>  识别语音[语音 SDK 示例](speech-sdk.md#sample-source-code)
