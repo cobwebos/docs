@@ -7,16 +7,16 @@ ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 6bcbdbb72f3d26522790b769a8185138c1207a98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1b7aafca331170100ce99c084a11c96c97df7781
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85336834"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067386"
 ---
 # <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建服务总线命名空间
 
-了解如何部署 Azure 资源管理器模板以创建服务总线命名空间。 可将此模板用于自己的部署，或自定义此模板以满足要求。 有关创建模板的详细信息，请参阅 [Azure 资源管理器文档](/azure/azure-resource-manager/)。
+了解如何部署 Azure 资源管理器模板以创建服务总线命名空间。 可将此模板用于自己的部署，或自定义此模板以满足要求。 有关创建模板的详细信息，请参阅 [Azure 资源管理器文档](../azure-resource-manager/index.yml)。
 
 还可使用以下模板创建服务总线命名空间：
 
@@ -55,7 +55,7 @@ ms.locfileid: "85336834"
 
     资源组名称是追加了 **rg** 的服务总线命名空间名称。
 
-2. 选择“复制”以复制 PowerShell 脚本。 
+2. 选择“复制”以复制 PowerShell 脚本。
 3. 右键单击 shell 控制台并选择“粘贴”  。
 
 创建事件中心需要花费片刻时间。

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: d74e3f196e58e522eb9377ca9f18fd05ec8460ae
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ca164b6ad6b5333c662a6632b27f658ab479231c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87023987"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067624"
 ---
 # <a name="hyperscale-service-tier"></a>“超大规模”服务层级
 
@@ -185,7 +185,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 - 中国东部 2
 - 中国北部 2
 - 东亚
-- East US
+- 美国东部
 - 美国东部2
 - 法国中部
 - 德国中西部
@@ -198,7 +198,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 - 挪威东部
 - 挪威西部
 - 南非北部
-- South Central US
+- 美国中南部
 - Southeast Asia
 - 瑞士西部
 - 英国南部
@@ -223,8 +223,8 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 | 如果数据库中的一个或多个数据文件大于 1 TB，迁移将会失败 | 在某些情况下，可以通过将大文件缩小为 1 TB 以下来解决此问题。 如果在迁移过程中迁移正在使用的数据库，请确保没有任何文件大于 1 TB。 使用以下查询来确定数据库文件的大小。 `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | SQL 托管实例 | 超大规模数据库目前不支持 Azure SQL 托管实例。 |
 | 弹性池 |  超大规模目前不支持弹性池。|
-| 迁移到“超大规模”服务层级目前是单向操作 | 将数据库迁移到“超大规模”层级后，它不能直接迁移到非“超大规模”服务层级。 目前，将数据库从超大规模迁移到非超大规模的唯一方法是使用 bacpac 文件或其他数据移动技术（大容量复制、Azure 数据工厂、Azure Databricks、SSIS 等）进行导出/导入。从 Azure CLI 使用[az sql db export](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-export)和[az sql db import](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-import)， [REST API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export)并不支持从使用[AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport)或[AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport)从 PowerShell 导出/导 Azure 门户入 Bacpac。 支持使用 SSMS 和 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 版本 18.4 及更高版本对较小的超大规模数据库（最多 200 GB）进行 bacpac 导入/导出。 对于较大的数据库，bacpac 导出/导入可能需要很长时间，并且可能会因各种原因失败。|
-| 迁移包含持久性内存中 OLTP 对象的数据库 | “超大规模”服务层级仅支持非持久性内存中 OLTP 对象（表类型、本机 SP 和函数）。  将数据库迁移到“超大规模”服务层级之前，必须删除持久性内存中 OLTP 表和其他对象，并将其重新创建为基于磁盘的对象。|
+| 迁移到“超大规模”服务层级目前是单向操作 | 将数据库迁移到“超大规模”层级后，它不能直接迁移到非“超大规模”服务层级。 目前，将数据库从超大规模迁移到非超大规模的唯一方法是使用 bacpac 文件或其他数据移动技术（ (大容量复制）导出/导入[。使用](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport)az sql db export 和 az sql db import 从 Azure CLI 使用 az [sql db export 和](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-export)az [sql db import，](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-import)而不支持[New-AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport)来自 REST API[的](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export)Azure 数据工厂、Azure Databricks、SSIS 等 ) bacpac 导出/导入。 Azure 门户 支持使用 SSMS 和 [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) 版本 18.4 及更高版本对较小的超大规模数据库（最多 200 GB）进行 bacpac 导入/导出。 对于较大的数据库，bacpac 导出/导入可能需要很长时间，并且可能会因各种原因失败。|
+| 迁移具有内存中 OLTP 对象的数据库 | 超大规模支持内存中 OLTP 对象的子集，包括内存优化表类型、表变量和本机编译模块。 但是，如果要迁移的数据库中存在任何类型的内存中 OLTP 对象，则不支持从高级和业务关键服务层迁移到超大规模。 若要将此类数据库迁移到超大规模，必须删除所有内存中 OLTP 对象及其依赖项。 迁移数据库之后，可以重新创建这些对象。 持久性和非持久的内存优化表目前在超大规模中不受支持，并且必须作为磁盘表重新创建。|
 | 异地复制  | 目前无法为超大规模 Azure SQL 数据库配置异地复制。 |
 | 数据库复制 | 目前无法使用“数据库复制”在 Azure SQL“超大规模”中创建新数据库。 |
 | TDE/AKV 集成 | 使用 Azure Key Vault（通常称为自带密钥或 BYOK）的透明数据库加密功能目前为预览版。 |

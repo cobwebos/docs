@@ -1,5 +1,5 @@
 ---
-title: 将 Java 消息服务（JMS）应用程序从 Apache ActiveMQ 迁移到 Azure 服务总线 |Microsoft Docs
+title: 将 (JMS) 应用程序从 Apache ActiveMQ 迁移到 Azure 服务总线 |Microsoft Docs
 description: 本文介绍如何迁移与 Apache ActiveMQ 交互的现有 JMS 应用程序，以便与 Azure 服务总线交互。
 services: service-bus-messaging
 documentationcenter: ''
@@ -14,18 +14,18 @@ ms.topic: article
 ms.date: 07/07/2020
 ms.author: aschhab
 ms.custom: devx-track-java
-ms.openlocfilehash: 35e2e86f68e1f53febabc75fcc537dbdd4481882
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 1b07faa5b2540aafafc27a51192d824d4445ce35
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369027"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067148"
 ---
-# <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>将现有 Java 消息服务（JMS）2.0 应用程序从 Apache ActiveMQ 迁移到 Azure 服务总线
+# <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>将现有 Java 消息服务 (JMS) 2.0 应用程序从 Apache ActiveMQ 迁移到 Azure 服务总线
 
-本文介绍如何修改与 JMS 代理交互的现有 Java 消息服务（JMS）2.0 应用程序，以便与 Azure 服务总线交互。 具体而言，本文介绍从 Apache ActiveMQ 或 Amazon MQ 进行迁移。
+本文介绍了如何修改现有 Java 消息服务 (与 JMS 代理交互的 JMS) 2.0 应用程序，以便与 Azure 服务总线交互。 具体而言，本文介绍从 Apache ActiveMQ 或 Amazon MQ 进行迁移。
 
-Azure 服务总线支持 Java 2 平台、企业版和使用 JMS 2.0 API over 高级消息队列协议（AMQP）的弹簧工作负荷。
+Azure 服务总线支持 Java 2 平台、企业版和弹簧工作负载，这些工作负荷使用 JMS 2.0 API over 高级消息队列协议 (AMQP) 。
 
 ## <a name="before-you-start"></a>开始之前
 
@@ -37,10 +37,10 @@ Azure 服务总线和 Apache ActiveMQ 都是消息代理，充当用于客户端
 
 | 类别 | ActiveMQ | Azure 服务总线 |
 | --- | --- | --- |
-| 应用程序分层 | 群集单体架构 | 双层 <br> （网关 + 后端） |
+| 应用程序分层 | 群集单体架构 | 双层 <br>  (网关 + 后端)  |
 | 协议支持 | <ul> <li>AMQP</li> <li> 阻碍 </li> <li> OpenWire </li> </ul> | AMQP |
-| 预配模式 | <ul> <li> 本地基础结构即服务（IaaS） </li> <li> Amazon MQ （托管平台即服务） </li> | 托管平台即服务（PaaS） |
-| 消息大小 | 客户可配置 | 1 MB （高级层） |
+| 预配模式 | <ul> <li> 基础结构即服务 (IaaS) ，本地 </li> <li> Amazon MQ (托管平台即服务)  </li> | 托管平台即服务 (PaaS)  |
+| 消息大小 | 客户可配置 | 1 MB (高级层)  |
 | 高可用性 | 由客户管理 | 平台托管 |
 | 灾难恢复 | 由客户管理 | 平台托管 | 
 
@@ -50,7 +50,7 @@ Azure 服务总线和 Apache ActiveMQ 都是消息代理，充当用于客户端
 
 ### <a name="considerations"></a>注意事项
 
-Azure 服务总线的两层性质提供各种业务连续性功能（高可用性和灾难恢复）。 但是，在使用 JMS 功能时，有一些注意事项。
+Azure 服务总线的两层性质提供各种业务连续性功能 (高可用性和灾难恢复) 。 但是，在使用 JMS 功能时，有一些注意事项。
 
 #### <a name="service-upgrades"></a>服务升级
 
@@ -62,7 +62,7 @@ Azure 服务总线的两层性质提供各种业务连续性功能（高可用�
 
 #### <a name="authentication-and-authorization"></a>身份验证和授权
 
-Azure Active Directory 提供的基于角色的访问控制（RBAC）是服务总线的首选身份验证机制。 由于 Apache QPID JMS 目前不支持 RBAC 或基于声明的身份验证，但是，你应该使用 SAS 密钥进行身份验证。
+基于角色的访问控制 (RBAC) （由 Azure Active Directory 提供支持）是服务总线的首选身份验证机制。 由于 Apache QPID JMS 目前不支持 RBAC 或基于声明的身份验证，但是，你应该使用 SAS 密钥进行身份验证。
 
 ## <a name="pre-migration"></a>迁移前
 
@@ -72,23 +72,23 @@ Azure Active Directory 提供的基于角色的访问控制（RBAC）是服务�
 
 | 组件 | 版本 |
 |---|---|
-| Java 消息服务（JMS） API | 1.1 或更高版本 |
+|  (JMS) API 的 Java 消息服务 | 1.1 或更高版本 |
 | AMQP 协议 | 1.0 |
 
 ### <a name="ensure-that-amqp-ports-are-open"></a>确保 AMQP 端口已打开
 
-Service Bus 支持通过 AMQP 协议进行通信。 为此，请启用通过端口5671（AMQP）和443（TCP）进行的通信。 根据客户端应用程序的托管位置，你可能需要一个支持票证来允许通过这些端口进行通信。
+Service Bus 支持通过 AMQP 协议进行通信。 为此，请通过端口 5671 (AMQP) 和 443 (TCP) 启用通信。 根据客户端应用程序的托管位置，你可能需要一个支持票证来允许通过这些端口进行通信。
 
 > [!IMPORTANT]
 > 服务总线仅支持 AMQP 1.0 协议。
 
 ### <a name="set-up-enterprise-configurations"></a>设置企业配置
 
-服务总线可实现各种企业安全性和高可用性功能。 有关详细信息，请参阅： 
+服务总线可实现各种企业安全性和高可用性功能。 有关详情，请参阅： 
 
   * [虚拟网络服务终结点](service-bus-service-endpoints.md)
-  * [防火墙](service-bus-ip-filtering.md)
-  * [通过客户托管密钥进行服务端加密（BYOK）](configure-customer-managed-key.md)
+  * [Firewall](service-bus-ip-filtering.md)
+  * [通过客户托管密钥进行服务端加密 (BYOK) ](configure-customer-managed-key.md)
   * [专用终结点](private-link-service.md)
   * [身份验证和授权](service-bus-authentication-and-authorization.md)
 
@@ -127,14 +127,14 @@ Service Bus 支持通过 AMQP 协议进行通信。 为此，请启用通过端�
 
 若要迁移现有的 JMS 2.0 应用程序以与 Service Bus 交互，请按照以下几节中的步骤进行操作。
 
-### <a name="export-the-topology-from-activemq-and-create-the-entities-in-service-bus-optional"></a>从 ActiveMQ 导出拓扑并在服务总线中创建实体（可选）
+### <a name="export-the-topology-from-activemq-and-create-the-entities-in-service-bus-optional"></a>从 ActiveMQ 导出拓扑，并在服务总线中创建实体 (可选) 
 
-若要确保客户端应用程序可以无缝连接到服务总线，请将拓扑（包括队列、主题和订阅）从 Apache ActiveMQ 迁移到服务总线。
+若要确保客户端应用程序可以无缝连接到服务总线，请将拓扑 (包括从 Apache ActiveMQ 到 Service Bus) 的队列、主题和订阅。
 
 > [!NOTE]
-> 对于 JMS 应用程序，可以创建队列、主题和订阅作为运行时操作。 大多数 JMS 提供程序（消息代理）使你能够在运行时创建它们。 这就是为什么将此导出步骤视为可选的。 若要确保应用程序具有在运行时创建拓扑的权限，请使用具有 SAS 权限的连接字符串 `Manage` 。
+> 对于 JMS 应用程序，可以创建队列、主题和订阅作为运行时操作。 大多数 JMS 提供程序 (消息代理) 使你能够在运行时创建它们。 这就是为什么将此导出步骤视为可选的。 若要确保应用程序具有在运行时创建拓扑的权限，请使用具有 SAS 权限的连接字符串 `Manage` 。
 
-具体方法为：
+若要实现此目的，请执行以下操作：
 
 1. 使用[ActiveMQ 命令行工具](https://activemq.apache.org/activemq-command-line-tools-reference)导出拓扑。
 1. 使用[Azure 资源管理器模板](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)重新创建相同的拓扑。
@@ -272,7 +272,7 @@ connection.start();
 
 ## <a name="next-steps"></a>后续步骤
 
-使用[适用于 Azure 服务总线 JMS 的春季 Boot 入门](https://docs.microsoft.com/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-service-bus)，实现与服务总线的无缝集成。
+使用[适用于 Azure 服务总线 JMS 的春季 Boot 入门](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-service-bus)，实现与服务总线的无缝集成。
 
 若要了解有关服务总线消息传送和 JMS 的详细信息，请参阅：
 

@@ -5,12 +5,12 @@ author: spelluru
 ms.topic: article
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: beafd0d49e8fccaef4ccc043d198875b9f1b1ebd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 750ee2f05e81fe18560a20227aefb52ca343e07b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341018"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067522"
 ---
 # <a name="service-bus-messaging-samples"></a>服务总线消息传送示例
 服务总线消息传送示例演示[服务总线消息传送](https://azure.microsoft.com/services/service-bus/)中的关键功能。 目前，可以在以下两个位置找到这些示例：
@@ -30,5 +30,4 @@ ms.locfileid: "85341018"
 有关服务总线的概念性概述，请参阅以下主题。
 
 * [服务总线消息传送概述](service-bus-messaging-overview.md)
-* [服务总线体系结构](service-bus-architecture.md)
-
+* [服务总线体系结构](./service-bus-messaging-overview.md)

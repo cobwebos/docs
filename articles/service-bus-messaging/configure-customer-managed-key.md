@@ -3,12 +3,12 @@ title: 配置自己的密钥以用于加密 Azure 服务总线静态数据
 description: 本文介绍了如何配置自己的密钥以用于加密 Azure 服务总线静态数据。
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: a4eef0965f585291c31a3698d1d37abf67c6295c
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 97de8df336367a74f66628675569c06d7726f2a4
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041557"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067233"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>使用 Azure 门户配置客户管理的密钥以用于加密 Azure 服务总线静态数据
 Azure 服务总线高级层提供了通过 Azure 存储服务加密 (Azure SSE) 对静态数据进行加密的功能。 服务总线高级层依赖于 Azure 存储来存储数据，默认情况下，存储在 Azure 存储中的所有数据将使用 Microsoft 管理的密钥进行加密。 
@@ -44,7 +44,7 @@ Azure 服务总线现在支持用户选择通过 Microsoft 管理的密钥或客
 
 启用客户管理的密钥后，需要将客户管理的密钥关联到 Azure 服务总线命名空间。 服务总线仅支持 Azure Key Vault。 如果启用了上一部分所述的“使用客户管理的密钥进行加密”选项，则需要将密钥导入 Azure Key Vault。 此外，必须为密钥配置“软删除”和“不清除”。 可以使用 [PowerShell](../key-vault/general/soft-delete-powershell.md) 或 [CLI](../key-vault/general/soft-delete-cli.md#enabling-purge-protection) 配置这些设置。
 
-1. 若要创建新的密钥保管库，请遵循 Azure Key Vault [快速入门](../key-vault/general/overview.md)。 有关导入现有密钥的详细信息，请参阅[关于密钥、机密和证书](../key-vault/about-keys-secrets-and-certificates.md)。
+1. 若要创建新的密钥保管库，请遵循 Azure Key Vault [快速入门](../key-vault/general/overview.md)。 有关导入现有密钥的详细信息，请参阅[关于密钥、机密和证书](../key-vault/general/about-keys-secrets-certificates.md)。
 1. 若要在创建保管库时启用“软删除”和“清除保护”，请使用 [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) 命令。
 
     ```azurecli-interactive
@@ -323,5 +323,3 @@ Azure 服务总线现在支持用户选择通过 Microsoft 管理的密钥或客
 请参阅以下文章：
 - [服务总线概述](service-bus-messaging-overview.md)
 - [Key Vault 概述](../key-vault/general/overview.md)
-
-

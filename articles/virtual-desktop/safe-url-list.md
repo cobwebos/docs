@@ -3,15 +3,15 @@ title: Windows 虚拟桌面安全 URL 列表-Azure
 description: 你应取消阻止的 Url 的列表，以确保你的 Windows 虚拟桌面部署按预期工作。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9ac147eec7004f109687a6bb0888e25d0db84448
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 37fb5ccf121fed6e772dc1cd3dcba2345d62c66f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009471"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067199"
 ---
 # <a name="safe-url-list"></a>安全 URL 列表
 
@@ -31,7 +31,7 @@ ms.locfileid: "88009471"
 |catalogartifact.azureedge.net|443|Azure 市场|AzureCloud|
 |kms.core.windows.net|1688|Windows 激活|Internet|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure 门户支持|AzureCloud|
-| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 空值 |
+| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 不适用 |
 
 >[!IMPORTANT]
 >Windows 虚拟桌面现在支持 FQDN 标记。 有关详细信息，请参阅[使用 Azure 防火墙保护 Windows 虚拟桌面部署](../firewall/protect-windows-virtual-desktop.md)。
@@ -76,4 +76,6 @@ ms.locfileid: "88009471"
 |query.prod.cms.rt.microsoft.com|443|客户端更新|Windows 桌面|
 
 >[!IMPORTANT]
->若要获取可靠的客户端体验，必须打开这些 URL。 不支持阻止访问这些 URL，否则会影响服务功能。 这些 URL 仅对应于客户端站点和资源，而不包括 Azure Active Directory 等其他服务的 URL。
+>若要获取可靠的客户端体验，必须打开这些 URL。 不支持阻止访问这些 URL，否则会影响服务功能。
+>
+>这些 Url 仅对应于客户端站点和资源。 此列表不包含其他服务（如 Azure Active Directory）的 Url。 在[Office 365 url 和 IP 地址范围](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)的 ID 56 下可以找到 Azure Active Directory url。

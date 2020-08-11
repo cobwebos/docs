@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 9ddf4641cfba2fb9704c2354e01299df368eb2ac
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: b4881ee52b39539bfc29f62d7c6773da371a3ea5
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432015"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067165"
 ---
 # <a name="configure-the-model-conversion"></a>配置模型转换
 
@@ -49,6 +49,12 @@ ms.locfileid: "87432015"
             },
             "minItems": 3,
             "maxItems": 3
+        },
+        "metadataKeys": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
         }
     },
     "additionalProperties" : false
@@ -131,6 +137,12 @@ ms.locfileid: "87432015"
 
 * `axis` - 替代坐标系统单位矢量。 默认值有 `["+x", "+y", "+z"]`。 理论上，FBX 格式具有标头，其中定义了这些矢量以及使用该信息来转换场景的转换。 glTF 格式也定义固定坐标系统。 在实践中，某些资产的标头中包含不正确的信息，或者是使用不同的坐标系统约定保存的。 此选项可用于替代坐标系统以进行补偿。 例如：`"axis" : ["+x", "+z", "-y"]` 将交换 Z 轴和 Y 轴，并通过反转 Y 轴方向来保持坐标系统的旋向。
 
+### <a name="node-meta-data"></a>节点元数据
+
+* `metadataKeys`-用于指定要保留在转换结果中的节点元数据属性的键。 可以指定精确的密钥或通配符。 通配符的格式为 "ABC *"，并与以 "ABC" 开头的任何密钥匹配。 支持的元数据值类型为 `bool` 、、 `int` `float` 和 `string` 。
+
+    对于 GLTF 文件，此数据来自[节点上的额外对象](https://github.com/KhronosGroup/glTF/tree/master/specification/2.0#nodeextras)。 对于 FBX 文件，此数据来自中的 `Properties70` 数据 `Model nodes` 。 有关更多详细信息，请参阅你的3D 资产工具的文档。
+
 ### <a name="no-loc-textvertex-format"></a>:::no-loc text="Vertex":::形式
 
 可以调整 :::no-loc text="vertex"::: 网格的格式，以节省内存的交易精度。 占用内存较低，可以加载更大的模型或获得更好的性能。 但是，根据具体数据，格式错误可能会显著影响呈现质量。
@@ -182,7 +194,7 @@ ms.locfileid: "87432015"
 
 各种格式的内存占用量如下：
 
-| 格式 | 描述 | 字节/:::no-loc text="vertex"::: |
+| 格式 | 说明 | 字节/:::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|双组件全浮点精度|8
 |16_16_FLOAT|双组件半浮点精度|4
@@ -205,7 +217,7 @@ ms.locfileid: "87432015"
 
 默认情况下，转换器必须假设你在某个时间会想在模型上使用 PBR 材料，因此它将为你生成 `normal`、`tangent` 和 `binormal` 数据。 因此，每个顶点的内存使用量为 `position`（12 字节）+ `texcoord0`（8 字节）+ `normal`（4 字节）+ `tangent`（4 字节）+ `binormal`（4 字节）= 32 字节。 此类更大的模型可能很多数百万 :::no-loc text="vertices"::: ，因此可能会占用多 gb 内存。 如此大量的数据会影响性能，甚至可能耗尽内存。
 
-知道您在模型上从不需要动态照明，并且知道所有纹理坐标都在范围内 `[0; 1]` ，则可以将 `normal` 、 `tangent` 和设置 `binormal` 为 `NONE` `texcoord0` 半精度（ `16_16_FLOAT` ），因此每个仅生成16个字节 :::no-loc text="vertex"::: 。 将网格数据一分为二，可以加载更大的模型，并可能提高性能。
+知道您在模型上从不需要动态照明，并且知道所有纹理坐标都在范围内 `[0; 1]` ，则可以将 `normal` 、 `tangent` 、和设置 `binormal` 为 `NONE` `texcoord0` 半精度 (`16_16_FLOAT`) ，从而每个仅生成16个字节 :::no-loc text="vertex"::: 。 将网格数据一分为二，可以加载更大的模型，并可能提高性能。
 
 ## <a name="memory-optimizations"></a>内存优化
 
@@ -217,7 +229,7 @@ ms.locfileid: "87432015"
 实例化示例用例是体系结构模型中的一种或椅子。
 
 > [!NOTE]
-> 实例化可显著提高内存消耗（从而导致加载时间），但对渲染性能方面的改进是不重要的。
+> 实例化可以 (的内存消耗提高，从而) 明显地加载时间，但对渲染性能方面的改进是不重要的。
 
 如果在源文件中相应地标记了部件，转换服务将考虑实例化。 但是，转换不执行网格数据的其他深入分析来识别可重复使用的部分。 因此，内容创建工具及其导出管道是正确的实例化设置的决定性条件。
 
@@ -229,9 +241,9 @@ ms.locfileid: "87432015"
 
 ![最大3ds 克隆](./media/3dsmax-clone-object.png)
 
-* **`Copy`**：在此模式下，将克隆网格，因此不使用实例（ `numMeshPartsInstanced` = 0）。
-* **`Instance`**：这两个对象共享同一网格，因此使用了实例化（ `numMeshPartsInstanced` = 1）。
-* **`Reference`**：不同的修饰符可应用于几何图形，因此导出程序选择保守方法，不使用实例化（ `numMeshPartsInstanced` = 0）。
+* **`Copy`**：在此模式下，将克隆网格，因此不会使用 (`numMeshPartsInstanced` = 0) 的实例。
+* **`Instance`**：这两个对象共享同一网格，因此 (`numMeshPartsInstanced` = 1) 使用实例化。
+* **`Reference`**：不同的修饰符可应用于几何图形，因此导出程序选择保守方法，而不使用实例 (`numMeshPartsInstanced` = 0) 。
 
 
 ### <a name="depth-based-composition-mode"></a>基于深度的组合模式
@@ -283,7 +295,7 @@ ms.locfileid: "87432015"
 * 打光通常是应用程序不可分割的一部分，因此必须生成冲突网格。
 * 启用 `opaqueMaterialDefaultSidedness` 标志可美化剪切平面。
 
-## <a name="deprecated-features"></a>已弃用的功能
+## <a name="deprecated-features"></a>弃用的功能
 
 仍支持使用非特定于模型的文件名来提供设置 `conversionSettings.json` ，但不推荐使用。
 请改用特定于模型的文件名 `<modelName>.ConversionSettings.json` 。

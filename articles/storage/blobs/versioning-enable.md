@@ -1,24 +1,28 @@
 ---
-title: 启用和管理 blob 版本控制（预览）
+title: '启用和管理 blob 版本控制 (预览) '
 titleSuffix: Azure Storage
-description: 了解如何在 Azure 门户中或使用 Azure 资源管理器模板启用 blob 版本控制。
+description: 了解如何在 Azure 门户中或使用 Azure 资源管理器模板启用 blob 版本控制 (预览) 。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 7ff0bb6d593a199bd249441cf484d1f0580774ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 85e8ccd03bd20ed9bb572d482dbc7a06b8af725c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086041"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067267"
 ---
-# <a name="enable-and-manage-blob-versioning"></a>启用和管理 blob 版本控制
+# <a name="enable-and-manage-blob-versioning-preview"></a>启用和管理 blob 版本控制 (预览) 
 
-通过使用 Azure 门户或 Azure 资源管理器模板，可以随时启用或禁用存储帐户的 blob 版本控制（预览）。
+可以启用 Blob 存储版本控制 (预览) 自动维护对象的以前版本。  启用 blob 版本控制后，如果错误地修改或删除了数据，则可以还原该 blob 的早期版本以恢复数据。
+
+本文介绍如何使用 Azure 门户或 Azure 资源管理器模板启用或禁用存储帐户的 blob 版本控制。
+
+启用 blob 版本控制之前，必须注册预览。 若要了解有关 blob 版本控制的详细信息（包括如何注册预览版），请参阅[blob 版本控制 (预览) ](versioning-overview.md)。
 
 ## <a name="enable-blob-versioning"></a>启用 Blob 版本控制
 

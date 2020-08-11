@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/02/2020
 ms.author: memildin
-ms.openlocfilehash: 3f7d08e2290291dfcd931ed5609e30d5fec9f973
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e5728b220f12c3305aa896e64010fc7e5828d6fb
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835640"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067216"
 ---
 # <a name="permissions-in-azure-security-center"></a>Azure 安全中心的权限
 
@@ -45,7 +45,7 @@ Azure 安全中心使用 azure [RBAC)  (azure 基于角色的访问控制](../ro
 |编辑安全策略|-|✔|-|-|✔|
 |添加/分配计划 (包括) 法规符合性标准) |-|-|-|-|✔|
 |更改订阅定价层|-|✔|-|-|✔|
-|启用/禁用自动预配|-|✔|✔|-|✔|
+|启用/禁用自动预配|-|✔|-|✔|✔|
 |应用资源的安全建议</br>  (和使用[快速修复！](security-center-remediate-recommendations.md#quick-fix-remediation)) |-|-|✔|✔|✔|
 |消除警报|-|✔|-|✔|✔|
 |查看警报和建议|✔|✔|✔|✔|✔|
