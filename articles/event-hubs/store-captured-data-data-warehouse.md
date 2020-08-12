@@ -4,12 +4,12 @@ description: 教程：本教程介绍如何使用事件网格触发的 Azure 函
 services: event-hubs
 ms.date: 06/23/2020
 ms.topic: tutorial
-ms.openlocfilehash: 8d45681b53aa2dd8df8c2288fecdde1b45fb7bd4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1a7030014a8926b1db11ad99ba031e51194ddfd9
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039491"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833719"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>教程：使用事件网格和 Azure Functions 将捕获的事件中心数据迁移到 SQL 数据仓库
 
@@ -178,4 +178,4 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 ## <a name="next-steps"></a>后续步骤 
 可以将强大的数据可视化工具与数据仓库配合使用，以便获取可行的见解。
 
-本文介绍如何[将 Power BI 与 SQL 数据仓库配合使用](/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi)
+本文介绍如何[将 Power BI 与 SQL 数据仓库配合使用](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect)

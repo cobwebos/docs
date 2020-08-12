@@ -2,19 +2,19 @@
 title: Azure CLI：部署适用于 Azure 的开放源代码 FHIR 服务器 - Azure API for Azure
 description: 本快速入门介绍了如何部署适用于 Azure 的开放源代码 Microsoft FHIR 服务器。
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 02/07/2019
-ms.author: mihansen
+ms.author: matjazl
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: dc65bedc8b008d9628d09ef3e4bfc7cc6ea12e95
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 10af71afd8843e75d5df3be57c909c56a7abca01
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495244"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843566"
 ---
 # <a name="quickstart-deploy-open-source-fhir-server-using-azure-cli"></a>快速入门：使用 Azure CLI 部署开放源代码 FHIR 服务器
 

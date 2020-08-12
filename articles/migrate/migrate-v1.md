@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2defb00827e6f3ccf49c336007198b7d9ac176f6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bb4cfcd48608f90898648450a20d246f9fde002b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87306105"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835997"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>使用以前版本的 Azure Migrate
 
@@ -101,7 +101,7 @@ ms.locfileid: "87306105"
 --- | --- | ---
 **启动类型** | 支持 BIOS。 不支持 UEFI。 | 如果启动类型为 UEFI，则状态为有条件的就绪。
 **核心数** | 计算机核心数 <= Azure VM 支持的最大核心数 (128)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的核心数。<br/>如果在评估设置中指定了舒适因子，则将已利用的内核数乘以此舒适因子。<br/><br/> 如果没有任何性能历史记录，Azure Migrate 将使用已分配的内核数，而不应用舒适因子。 | 如果小于或等于限制，则状态为就绪。
-**内存** | 计算机内存大小 <= Azure VM 支持的最大内存（Azure M 系列 Standard_M128m&nbsp;<sup>2</sup> 上为 3892 GB）。 [了解详细信息](../virtual-machines/windows/sizes.md)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内存。<br/><br/>如果指定了舒适因子，则将已利用的内存乘以此舒适因子。<br/><br/> 如果没有任何历史记录，将使用已分配的内存，而不应用舒适因子。<br/><br/> | 如果在限制范围内，则状态为就绪。
+**内存** | 计算机内存大小 <= Azure VM 支持的最大内存（Azure M 系列 Standard_M128m&nbsp;<sup>2</sup> 上为 3892 GB）。 [了解详细信息](../virtual-machines/sizes.md)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内存。<br/><br/>如果指定了舒适因子，则将已利用的内存乘以此舒适因子。<br/><br/> 如果没有任何历史记录，将使用已分配的内存，而不应用舒适因子。<br/><br/> | 如果在限制范围内，则状态为就绪。
 **存储磁盘** | 分配的磁盘大小必须为 4 TB (4096 GB) 或更小。<br/><br/> 连接到计算机的磁盘（包括操作系统磁盘）数必须为 65 个或更少。 | 如果在限制范围内，则状态为就绪。
 **网络** | 连接到计算机的 NIC 数必须为 32 个或更少。 | 如果在限制范围内，则状态为就绪。
 
@@ -263,7 +263,7 @@ vCenter Server 中指定为“其他”的 OS | 在此情况下，Azure Migrate 
     ```sh InstallDependencyAgent-Linux64.bin```
 
 - 详细了解针对 Windows 和 Linux 操作系统的 [Dependency agent 支持](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems)。
-- [详细了解](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)如何使用脚本来安装依赖项代理。
+- [详细了解](../azure-monitor/insights/vminsights-enable-hybrid.md#dependency-agent)如何使用脚本来安装依赖项代理。
 
 >[!NOTE]
 > 参考的“用于 VM 的 Azure Monitor”一文提供了部署 Dependency agent 的系统先决条件和方法的概述，也适用于服务映射解决方案。
