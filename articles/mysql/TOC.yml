@@ -57,10 +57,10 @@
     - name: 2 - 创建 Web 应用
       items:
         - name: 将 Wordpress 与 MySQL 配合使用创建多容器应用
-          href: ../app-service/containers/tutorial-multi-container-app.md
+          href: ../app-service/tutorial-multi-container-app.md
           maintainContext: true
         - name: 将 PHP 与 MySQL 配合使用
-          href: ../app-service/app-service-web-tutorial-php-mysql.md
+          href: ../app-service/tutorial-php-mysql-app.md
           maintainContext: true
 - name: 示例
   items:

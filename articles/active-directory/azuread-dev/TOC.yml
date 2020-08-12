@@ -149,7 +149,7 @@
         - name: 发布到 Azure AD 应用库
           href: howto-app-gallery-listing.md
         - name: 发布到 Office 365 卖家仪表板
-          href: 'https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store'
+          href: /office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
     - name: Azure 访问控制服务
       displayName: ACS
       items:
@@ -160,7 +160,7 @@
     - name: 使用 Microsoft Graph API
       href: ../develop/microsoft-graph-intro.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: 针对开发人员的 AD FS
-      href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/ad-fs-overview'
+      href: /windows-server/identity/ad-fs/ad-fs-overview
 - name: 参考
   items:
     - name: 身份验证库
@@ -192,4 +192,4 @@
       displayName: 'support, help options'
       href: ../develop/developer-support-help-options.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json
     - name: Azure 资源的托管标识
-      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
+      href: ../managed-identities-azure-resources/overview.md

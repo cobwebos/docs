@@ -6,12 +6,12 @@ metadata:
   title: Microsoft Azure 容器服务文档 | Microsoft Docs
   description: 了解如何使用 Azure 容器服务来管理和开发基于云的容器应用程序。
   ms.topic: hub-page
-  ms.openlocfilehash: 7618bedf711554fbd4428ceb6c88817477b82e6d
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: a7b1480061a1482e5a7980fd89d9d28d89561d31
+  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87031875"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88080841"
 highlightedContent:
   items:
   - itemType: whats-new
@@ -61,7 +61,7 @@ conceptualContent:
     - url: ../app-service/configure-ssl-bindings.md
       itemType: tutorial
       text: 使用 SSL 绑定确保自定义域安全
-    - url: ../app-service/app-service-web-get-started-windows-container.md
+    - url: ../app-service/quickstart-custom-container.md
       itemType: get-started
       text: 运行自定义 Windows 容器
     - url: ../app-service/containers/quickstart-docker.md

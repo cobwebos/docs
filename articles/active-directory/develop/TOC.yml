@@ -468,13 +468,13 @@
     - name: 自动用户预配 (SCIM)
       items:
         - name: 自动用户预配是什么？
-          href: /azure/active-directory/app-provisioning/user-provisioning
+          href: ../app-provisioning/user-provisioning.md
         - name: 开发和集成 SCIM 终结点
-          href: /azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups
+          href: ../app-provisioning/use-scim-to-provision-users-and-groups.md
         - name: 常见预配方案
-          href: /azure/active-directory/app-provisioning/scim-graph-scenarios
+          href: ../app-provisioning/scim-graph-scenarios.md
         - name: 使用 MS Graph 自动执行配置
-          href: /azure/active-directory/app-provisioning/application-provisioning-configure-api
+          href: ../app-provisioning/application-provisioning-configure-api.md
     - name: Azure 门户帮助文章
       items:
         - name: 自定义开发的应用程序的令牌生存期默认设置
@@ -630,7 +630,7 @@
         - name: 发布到 Azure AD 应用库
           href: v2-howto-app-gallery-listing.md
         - name: 发布到 Office 365 卖家仪表板
-          href: 'https://docs.microsoft.com/office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store'
+          href: /office/dev/store/use-the-seller-dashboard-to-submit-to-the-office-store
 - name: 参考
   items:
     - name: 应用程序清单
@@ -642,11 +642,11 @@
       displayName: 'MSAL, auth library, SDK'
       href: reference-v2-libraries.md
     - name: Microsoft Graph 中的标识和访问 API
-      href: 'https://docs.microsoft.com/graph/api/resources/azure-ad-overview'
+      href: /graph/api/resources/azure-ad-overview
     - name: 身份验证和授权错误代码
       displayName: AADSTS
       href: reference-aadsts-error-codes.md
-    - name: 重大变化
+    - name: 中断性变更
       href: reference-breaking-changes.md
 - name: 资源
   items:
@@ -663,7 +663,7 @@
     - name: 尝试使用 Microsoft 登录
       href: 'https://azure.microsoft.com/develop/identity/signin/'
     - name: Azure 资源的托管标识
-      href: 'https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview'
+      href: ../managed-identities-azure-resources/overview.md
     - name: 获取帮助
       displayName: 'support, help options'
       href: developer-support-help-options.md
