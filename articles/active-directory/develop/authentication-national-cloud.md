@@ -13,28 +13,28 @@ ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,celested
 ms.custom: aaddev,references_regions
-ms.openlocfilehash: 20a158aac6a03dfe0bd8929de9fa66ea215aa29c
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 9d703eab97b087ed6b3e4d9c3519a7e3ee7489cd
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194116"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117407"
 ---
 # <a name="national-clouds"></a>国家云
 
-国家云是 Azure 的物理独立实例。 Azure 的这些区域旨在确保数据驻留、主权和合规性要求在地理边界内得到遵从。
+国家云是物理上独立的 Azure 实例。 Azure 的这些区域旨在确保数据驻留、主权和合规性要求在地理边界内得到遵从。
 
-包括全球云，Azure Active Directory (Azure AD) 在以下国家云中部署：  
+包括全球云，Azure Active Directory (Azure AD) 部署在以下国家云中：  
 
 - Azure Government
 - Azure 德国
 - Azure 中国世纪互联
 
-国家云是唯一的，不同于 Azure 全局环境。 针对这些环境开发应用程序时，请务必了解关键差异。 差异包括应用程序的注册、令牌的获取和终结点的配置。
+国家云是独一无二的，与 Azure 全球分开的环境。 在为这些环境开发应用程序时，了解关键差异非常重要。 差异包括注册应用程序、获取令牌和配置终结点。
 
 ## <a name="app-registration-endpoints"></a>应用注册终结点
 
-每个国家云都有一个单独的 Azure 门户。 若要在国家云中将应用程序与 Microsoft 标识平台集成，则需要在每个特定于环境的 Azure 门户中单独注册应用程序。
+每个国家云都有一个单独的 Azure 门户。 若要在国家云中将应用程序与 Microsoft 标识平台集成，需要在每个特定于环境的 Azure 门户中单独注册应用程序。
 
 下表列出了用于为每个国家云注册应用程序的 Azure AD 终结点的基 URL。
 
@@ -49,7 +49,7 @@ ms.locfileid: "84194116"
 
 所有各国云在每个环境中分别对用户进行身份验证，并具有单独的身份验证终结点。
 
-下表列出了用于获取令牌以针对每个国家云的 Azure AD 终结点的基 URL。
+下表列出了用于获取每个国家云的令牌的 Azure AD 终结点的基 URL。
 
 | 国家云 | Azure AD 身份验证终结点 |
 |----------------|-------------------------|
@@ -63,14 +63,14 @@ ms.locfileid: "84194116"
   - 授权常用终结点为 `https://login.microsoftonline.de/common/oauth2/v2.0/authorize`。
   - 令牌常用终结点为 `https://login.microsoftonline.de/common/oauth2/v2.0/token`。
 
-对于单租户应用程序，请将先前 URL 中的 common 替换为你的租户 ID 或名称。 示例为 `https://login.microsoftonline.de/contoso.com`。
+对于单租户应用程序，请将先前 URL 中的“common”替换为你的租户 ID 或名称。 例如 `https://login.microsoftonline.de/contoso.com`。
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 
 若要了解如何在国家云环境中调用 Microsoft Graph API，请转到[国家云部署中的 Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/deployments)。
 
 > [!IMPORTANT]
-> 全局服务的特定区域中的某些服务和功能可能无法在所有国家云中使用。 若要了解哪些服务可用，请访问[各区域的产品可用性](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast)。
+> 全球服务的特定区域中的某些服务和功能可能并非在所有国家云中都可用。 若要了解哪些服务可用，请访问[可用产品（按区域）](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast)。
 
 若要了解如何使用 Microsoft 标识平台构建应用程序，请遵循 [Microsoft 身份验证库 (MSAL) 教程](msal-national-cloud.md)。 具体而言，此应用会将用户登录，获取用于调用 Microsoft Graph API 的访问令牌。
 
@@ -78,7 +78,7 @@ ms.locfileid: "84194116"
 
 了解有关以下方面的详细信息：
 
-- [Azure Government](https://docs.microsoft.com/azure/azure-government/)
-- [Azure 中国世纪互联](https://docs.microsoft.com/azure/china/)
-- [Azure 德国](https://docs.microsoft.com/azure/germany/)
-- [Azure AD 身份验证基础知识](authentication-scenarios.md)
+- [Azure Government](../../azure-government/index.yml)
+- [Azure 中国世纪互联](/azure/china/)
+- [Azure 德国](../../germany/index.yml)
+- [Azure AD 身份验证基础知识](./authentication-vs-authorization.md)

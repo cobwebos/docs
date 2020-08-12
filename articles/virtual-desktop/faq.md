@@ -3,15 +3,15 @@ title: Windows 虚拟桌面常见问题解答-Azure
 description: Windows 虚拟桌面的常见问题和最佳实践。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e0e7084a00439fd9096367578f983e6b6acd1df5
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 058c5778c116a9e8368049bf30046aa6b7634163
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007482"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121113"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows 虚拟桌面常见问题解答
 
@@ -47,8 +47,6 @@ ms.locfileid: "88007482"
 将用户分配到应用组时，服务将执行简单的 Azure 角色分配。 因此，用户的 Azure Active Directory (AD) ，并且应用组的 Azure AD 必须位于同一位置。 所有服务对象，例如主机池、应用组和工作区，也必须与用户在同一 Azure AD 中。
 
 你可以在不同的 Azure AD 中创建 (Vm) 的虚拟机，只要你将 Active Directory 与相同虚拟网络 Azure AD VNET (中的用户) 同步即可。
-
-Azure Lighthouse 不完全支持管理 Windows 虚拟桌面环境。 由于 Lighthouse 目前不支持跨 Azure AD 租户用户管理，Lighthouse 客户仍需登录到客户用于管理用户的 Azure AD。
 
 ## <a name="what-are-location-restrictions"></a>什么是位置限制？
 
@@ -132,3 +130,11 @@ FSLogix 中的限制或配额取决于用于存储用户配置文件 VHD (X) 文
 - 对于每个区域和每个订阅可以创建的内核数有限制。 例如，如果你有企业协议订阅，则可以创建350核心。 你需要将350除以每个 VM 的默认核心数或你自己的核心限制，以确定每次运行模板时可以创建多少个 Vm。 了解更多[虚拟机限制-Azure 资源管理器](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits---azure-resource-manager)。
 
 - VM 前缀名称和 Vm 数少于15个字符。 若要了解详细信息，请参阅[Azure 资源的命名规则和限制](../azure-resource-manager/management/resource-name-rules.md#microsoftcompute)。
+
+## <a name="can-i-manage-windows-virtual-desktop-environments-with-azure-lighthouse"></a>能否通过 Azure Lighthouse 管理 Windows 虚拟桌面环境？
+
+Azure Lighthouse 不完全支持管理 Windows 虚拟桌面环境。 由于 Lighthouse 目前不支持跨 Azure AD 租户用户管理，Lighthouse 客户仍需登录到客户用于管理用户的 Azure AD。
+
+还不能将 CSP 沙盒订阅与 Windows 虚拟桌面服务一起使用。 若要了解详细信息，请参阅[Integration 沙盒帐户](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account)。
+
+最后，如果你从 CSP 所有者帐户启用了资源提供程序，则 CSP 客户帐户将不能修改资源提供程序。

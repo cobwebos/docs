@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/06/2020
-ms.openlocfilehash: 23b749a45e130e99b660cd5bc56349732159e340
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 17d6137dd243c3bce011a1841ea9bca64e0b64ba
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905490"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120756"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure 机器学习中的已知问题和故障排除
 
@@ -302,6 +302,47 @@ time.sleep(600)
     ```
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
     ```
+* **automl_setup 失败**： 
+    * 在 Windows 上，从 Anaconda 提示符运行 automl_setup。 若要安装 Miniconda) ，请单击[此处](https://docs.conda.io/en/latest/miniconda.html)。
+    * 通过运行命令确保安装了 conda 64 位，而不是32位 `conda info` 。 `platform`应该 `win-64` 适用于 Windows 或 `osx-64` for Mac。
+    * 确保已安装 conda 4.4.10 或更高版本。 可以通过命令检查版本 `conda -V` 。 如果你安装了以前的版本，则可以使用命令进行更新： `conda update conda` 。
+    * Linux`gcc: error trying to exec 'cc1plus'`
+      *  如果 `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` 遇到错误，请使用管理中心捆绑命令安装 build essentials `sudo apt-get install build-essential` 。
+      * 将新名称作为第一个参数传递给 automl_setup 以创建新的 conda 环境。 使用查看现有的 conda 环境 `conda env list` ，并使用将其删除 `conda env remove -n <environmentname>` 。
+      
+* **automl_setup_linux sh 失败**：如果 automl_setup_linus，则在 Ubuntu Linux 出现错误：`unable to execute 'gcc': No such file or directory`-
+  1. 确保启用出站端口53和80。 在 Azure VM 上，可以通过在 Azure 门户中选择 VM 并单击 "网络" 来执行此操作。
+  2. 运行命令 `sudo apt-get update`
+  3. 运行命令 `sudo apt-get install build-essential --fix-missing`
+  4. `automl_setup_linux.sh`再次运行
+
+* **ipynb 失败**：
+  * 对于本地 conda，请首先确保 automl_setup 具有 susccessfully 运行。
+  * 确保 subscription_id 正确。 依次选择 "所有服务" 和 "订阅"，在 Azure 门户中查找 subscription_id。 Subscription_id 值中不应包含字符 "<" 和 ">"。 例如， `subscription_id = "12345678-90ab-1234-5678-1234567890abcd"` 具有有效的格式。
+  * 确保参与者或所有者对订阅的访问权限。
+  * 检查该区域是否为受支持的区域之一： `eastus2` 、 `eastus` 、 `westcentralus` 、 `southeastasia` 、 `westeurope` `australiaeast` `westus2` 、、和 `southcentralus` 。
+  * 使用 Azure 门户确保对区域的访问权限。
+  
+* **导入 AutoMLConfig 失败**：自动机器学习版本1.0.76 中存在包更改，这需要在更新到新版本之前卸载以前的版本。 如果 `ImportError: cannot import name AutoMLConfig` 从 1.0.76 v 到 v 1.0.76 或更高版本的 SDK 版本升级之后遇到此错误，请通过运行以下内容来解决该错误： `pip uninstall azureml-train automl` 和 `pip install azureml-train-auotml` 。 Automl_setup .cmd 脚本会自动执行此功能。 
+
+* **工作区。 from_config 失败**：如果调用 Ws = workspace from_config ( # A1 "失败-
+  1. 确保 ipynb 笔记本已成功运行。
+  2. 如果正在运行的文件夹不在运行的文件夹下运行 `configuration.ipynb` ，请将文件夹 aml_config，并将其包含的文件 config.js到新文件夹中。 From_config 读取笔记本文件夹或其父文件夹的 config.js。
+  3. 如果正在使用新的订阅、资源组、工作区或区域，请确保 `configuration.ipynb` 再次运行笔记本。 仅当工作区在指定的订阅下指定的资源组中已存在时，才能直接更改 config.js。
+  4. 若要更改区域，请更改工作区、资源组或订阅。 `Workspace.create`如果工作区已经存在，则不会创建或更新它，即使指定的区域不同也是如此。
+  
+* **示例笔记本失败**：如果示例笔记本失败并出现错误，preperty、方法或库不存在：
+  * 确保已在 jupyter 笔记本中选择 correctcorrect 内核。 内核显示在笔记本页面的右上方。 默认值为 azure_automl。 请注意，内核将作为笔记本的一部分保存。 因此，如果切换到新的 conda 环境，则必须在笔记本中选择新内核。
+      * 对于 Azure Notebooks，它应为 Python 3.6。 
+      * 对于本地 conda 环境，该环境应为在 automl_setup 中指定的 conda envioronment 名称。
+  * 确保笔记本适用于你正在使用的 SDK 版本。 可以通过 `azureml.core.VERSION` 在 jupyter 笔记本单元中执行来检查 SDK 版本。 您可以通过单击该 `Branch` 按钮，选择该 `Tags` 选项卡，然后选择版本来从 GitHub 下载以前版本的示例笔记本。
+
+* **Windows 中的 Numpy 导入失败**：一些 windows 环境会看到一个错误，加载 Numpy 最新的 Python 版本3.6.8。 如果你看到此问题，请尝试 Python 版本3.6.7。
+
+* **Numpy 导入失败**：请在自动 ml conda 环境中检查 tensorflow 版本。 支持的版本为 1.13 <。 如果版本 >为1.13，则从环境中卸载 tensorflow，可以按如下所示检查 tensorflow 和 uninstall 的版本：
+  1. 启动命令行界面，激活安装了自动 ml 包的 conda 环境。
+  2. 输入 `pip freeze` 并查找 `tensorflow` ，如果找到，则列出的版本应为 < 1.13
+  3. 如果列出的版本不是受支持的版本，请 `pip uninstall tensorflow` 在命令外壳中输入 y 进行确认。
 
 ## <a name="deploy--serve-models"></a>部署和提供模型
 

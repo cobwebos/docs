@@ -1,19 +1,14 @@
 ---
 title: 排查服务器的 Azure Arc 代理连接问题
 description: 本文介绍如何在尝试连接到服务时，通过 Azure Arc 为服务器 (预览) 中出现的连接的计算机代理排查和解决问题。
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2a6f51f1c6901eaa18c1de9c1fc788ed583b7394
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 5cd2560279085485a8ac7b285e4f601060a924f1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809436"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118002"
 ---
 # <a name="troubleshoot-the-connected-machine-agent-connection-issues"></a>排查连接的计算机代理连接问题
 
@@ -72,7 +67,7 @@ azcmagent connect \
 
 下表列出了一些已知错误以及有关如何排查和解决问题的建议。
 
-|Message |错误 |可能的原因 |解决方案 |
+|消息 |错误 |可能的原因 |解决方案 |
 |--------|------|---------------|---------|
 |未能获取授权令牌设备流 |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp 40.126.9.7:443: connect: network is unreachable.` |无法访问 `login.windows.net` 终结点 | 验证与终结点的连接。 |
 |未能获取授权令牌设备流 |`Error occurred while sending request for Device Authorization Code: Post https://login.windows.net/fb84ce97-b875-4d12-b031-ef5e7edf9c8e/oauth2/devicecode?api-version=1.0:  dial tcp 40.126.9.7:443: connect: network is Forbidden`. |代理或防火墙正在阻止对 `login.windows.net` 终结点的访问。 | 验证与终结点的连接，并且它未被防火墙或代理服务器阻止。 |

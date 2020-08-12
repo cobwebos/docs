@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: c290cbf36fd53d5afb5fd805cda896fb6879bb4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5ff2858dd8b91ba036c517cbff07be96a729ef8c
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80154944"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116438"
 ---
 # <a name="application-types-in-v10"></a>v1.0 中的应用程序类型
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) 支持各种新型应用体系结构的身份�
 在开始使用代码之前，请打开链接详细了解每种类型应用并了解高级方案。 还可以了解在编写适用于 v1.0 终结点或 v2.0 终结点的特定应用时需要了解的差异。
 
 > [!NOTE]
-> v2.0 终结点并非支持所有 Azure AD 方案和功能。 若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](../develop/active-directory-v2-limitations.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。
+> v2.0 终结点并非支持所有 Azure AD 方案和功能。 若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](./azure-ad-endpoint-comparison.md?bc=%2fazure%2factive-directory%2fazuread-dev%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fazuread-dev%2ftoc.json)。
 
 你可以使用各种语言和平台开发此处所述的任何应用和方案。 它们都受到代码示例指南中提供的完整代码示例的支持：[按方案分类的 v1.0 代码示例](sample-v1-code.md)和[按方案分类的 v2.0 代码示例](../develop/sample-v2-code.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)。 也可以直接从相应的 [GitHub 示例存储库](https://github.com/Azure-Samples?q=active-directory)下载代码示例。
 

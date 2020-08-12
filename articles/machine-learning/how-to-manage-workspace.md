@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: sgilley
 author: sdgilley
-ms.date: 12/27/2019
+ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: dccf8b2e9608de4f22f9782eb9f3cdb489e18be3
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fefc7b39a6539822686618d9f018084f65443ee1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319705"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121696"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>在 Azure 门户中创建并管理 Azure 机器学习工作区
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,16 +42,78 @@ ms.locfileid: "87319705"
 
    字段|说明 
    ---|---
-   工作区名称 |输入用于标识工作区的唯一名称。 本示例使用 docs-ws****。 名称在整个资源组中必须唯一。 使用易于记忆且区别于其他人所创建工作区的名称。 工作区名称不区分大小写。
+   工作区名称 |输入用于标识工作区的唯一名称。 名称在整个资源组中必须唯一。 使用易于记忆且区别于其他人所创建工作区的名称。 工作区名称不区分大小写。
    订阅 |选择要使用的 Azure 订阅。
-   资源组 | 使用订阅中的现有资源组，或者输入一个名称以创建新的资源组。 资源组保存 Azure 解决方案的相关资源。 本示例使用 docs-aml****。 
+   资源组 | 使用订阅中的现有资源组，或者输入一个名称以创建新的资源组。 资源组保存 Azure 解决方案的相关资源。 
    位置 | 选择离你的用户和数据资源最近的位置来创建工作区。
    工作区版本 | 选择“基本”**** 或“企业”****。  此工作区版本决定了可访问的功能和定价。 详细了解[基本版和企业版产品/服务](overview-what-is-azure-ml.md#sku)。 
 
-    ![配置工作区](./media/how-to-manage-workspace/select-edition.png)
+   :::image type="content" source="media/how-to-manage-workspace/select-edition.png" alt-text="配置工作区":::
 
-1. 完成工作区配置后，选择“查看 + 创建”****。
-2. 查看设置并进行任何其他更改或更正。 如果对设置感到满意，请选择“创建”****。
+1. 完成配置工作区后，可以选择 "**查看 + 创建**"，或转到可选的__网络__配置。
+
+### <a name="optional-networking"></a> (可选) 网络
+
+> [!IMPORTANT]
+> 有关将专用终结点和虚拟网络与工作区结合使用的详细信息，请参阅[网络隔离和隐私](how-to-enable-virtual-network.md)。
+
+1. 默认的网络配置是使用公用__终结点，该终结点__可在公共 internet 上访问。 若要将对工作区的访问权限限制到已创建的 Azure 虚拟网络，可以改为选择 "__专用终结点__" 作为__连接方法__，然后使用 " __+ 添加__" 配置终结点。
+
+   :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="专用终结点选择":::
+
+1. 在 "__创建专用终结点__" 窗体上，设置要使用的位置、名称和虚拟网络。 如果要将终结点用于专用 DNS 区域，请选择 "__与专用 DNS 区域集成__"，并使用 "__专用 DNS 区域__" 字段选择区域。 选择 __"确定"__ 以创建终结点。 
+
+   :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="专用终结点创建":::
+
+1. 完成网络配置后，可以选择 "查看" 和 "__创建__"，或转到可选的__高级__配置。
+
+    > [!WARNING]
+    > 创建专用终结点时，将创建一个名为__privatelink.api.azureml.ms__的新专用 DNS 区域。 其中包含指向虚拟网络的链接。 如果在同一资源组中创建具有专用终结点的多个工作区，则仅可将第一个专用终结点的虚拟网络添加到 DNS 区域。 若要添加其他工作区/专用终结点使用的虚拟网络的条目，请执行以下步骤：
+    > 
+    > 1. 在[Azure 门户](https://portal.azure.com)中，选择包含工作区的资源组。 然后选择名为__privatelink.api.azureml.ms__的专用 DNS 区域资源。
+    > 2. 在 "__设置__" 中，选择 "__虚拟网络链接__"。
+    > 3. 选择“添加”。 从 "__添加虚拟网络" 链接__页，提供一个唯一的__链接名称__，然后选择要添加的__虚拟网络__。 选择 __"确定"__ 以添加网络链接。
+    >
+    > 有关详细信息，请参阅[Azure 专用终结点 DNS 配置](/azure/private-link/private-endpoint-dns)。
+
+### <a name="optional-advanced"></a> (可选) 高级
+
+默认情况下，工作区的指标和元数据存储在 Microsoft 维护的 Azure Cosmos DB 实例中。 此数据使用 Microsoft 托管的密钥进行加密。 
+
+若要限制 Microsoft 在你的工作区中收集的数据，请选择 "__高业务影响" 工作区__。
+
+> [!IMPORTANT]
+> 只有在创建工作区时，才能选择高业务影响。 在创建工作区后，不能更改此设置。
+
+如果使用的是 Azure 机器学习的__企业__版，则可以提供自己的密钥。 这样做会创建在 Azure 订阅中存储指标和元数据的 Azure Cosmos DB 实例。 使用以下步骤来使用你自己的密钥：
+
+> [!IMPORTANT]
+> 在执行以下步骤之前，必须先执行以下操作：
+>
+> 1. 在标识和访问管理) 中为订阅的 "参与者" 权限授权__机器学习应用__ (。
+> 1. 按照[将客户托管的密钥配置](/azure/cosmos-db/how-to-setup-cmk)为：
+>     * 注册 Azure Cosmos DB 提供程序
+>     * 创建和配置 Azure Key Vault
+>     * 生成密钥
+>
+>     您无需手动创建 Azure Cosmos DB 实例，而是在创建工作区时为您创建一个实例。 此 Azure Cosmos DB 实例将使用基于此模式的名称在单独的资源组中创建： `<your-resource-group-name>_<GUID>` 。
+>
+> 在创建工作区后，不能更改此设置。 如果删除工作区使用的 Azure Cosmos DB，则还必须删除正在使用该工作区的工作区。
+
+1. 选择 "__客户管理的密钥__"，然后选择 __"单击以选择密钥__"。
+
+    :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="客户管理的密钥":::
+
+1. 在 Azure Key Vault 窗体的 "__选择项__" 窗体中，选择现有 Azure Key Vault、它包含的密钥以及密钥版本。 此密钥用于加密 Azure Cosmos DB 中存储的数据。 最后，使用 "__选择__" 按钮使用此密钥。
+
+   :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="选择密钥":::
+
+
+完成网络配置后，请选择 "__查看" "+ 创建__"。
+
+### <a name="review--create"></a>查看 + 创建
+
+1. 查看设置并进行任何其他更改或更正。 如果对设置感到满意，请选择“创建”****。
 
    > [!Warning] 
    > 在云中创建工作区可能需要几分钟时间。

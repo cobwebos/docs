@@ -13,16 +13,16 @@ ms.author: marsma
 ms.custom: aaddev
 ms.reviewer: celested
 titleSuffix: Microsoft identity platform
-ms.openlocfilehash: e71f555f7a9cefef3aeada79031db3a07e3db49a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7865fbe758b35ae9ff1ffe526da5e7100e83c966
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77202055"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117543"
 ---
 # <a name="azure-active-directory-developer-platform-videos"></a>Azure Active Directory 开发人员平台视频
 
-了解新的 Microsoft 标识平台以及如何从 Azure Active Directory （Azure AD）开发人员平台迁移到该平台。 视频通常为1-2 分钟。
+了解新的 Microsoft 标识平台以及如何从 Azure Active Directory (Azure AD) 开发人员平台迁移到该平台。 视频通常为1-2 分钟。
 
 ## <a name="migrate-from-v10-to-v20"></a>从 1.0 迁移到 v2.0
 
@@ -73,4 +73,4 @@ ms.locfileid: "77202055"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解新的[Microsoft 标识平台](https://docs.microsoft.com/azure/active-directory/develop)
+了解新的[Microsoft 标识平台](../develop/index.yml)

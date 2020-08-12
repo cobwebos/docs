@@ -6,18 +6,18 @@ ms.subservice: core
 ms.topic: include
 ms.date: 07/31/2020
 ms.author: gopalv
-ms.openlocfilehash: 624824f5b6b8f7154ccd7b50da49f3f4bb179bb9
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 97f0412141f15ad0a72c02b92cfcf089b61db0cf
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542754"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120332"
 ---
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](../articles/machine-learning/how-to-manage-workspace.md)。
 - 模型。 如果没有已训练的模型，则可以使用[此教程](https://aka.ms/azml-deploy-cloud)中提供的模型和依赖项文件。
-- [适用于 Python 的 Azure 机器学习软件开发工具包（SDK）](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+- [适用于 Python 的 Azure 机器学习软件开发工具包 (SDK) ](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 
 
 ## <a name="connect-to-your-workspace"></a>连接到工作区
@@ -100,12 +100,11 @@ ws = Workspace.from_config(path=".file-path/ws_config.json")
 
 若要详细了解如何使用在 Azure 机器学习之外训练的模型，请参阅[如何部署现有模型](../articles/machine-learning/how-to-deploy-existing-model.md)。
 
-
 ## <a name="define-an-entry-script"></a>定义条目脚本
 
 [!INCLUDE [write entry script](machine-learning-entry-script.md)]
 
-## <a name="define-an-inference-configuration"></a>定义推理配置
+## <a name="define-an-inferenceconfig"></a>定义 InferenceConfig
 
 推理配置描述如何设置包含模型的 Web 服务。 此配置稍后在部署模型时使用。
 
@@ -162,12 +161,9 @@ inference_config = InferenceConfig(entry_script='path-to-score.py',
 
 ## <a name="choose-a-compute-target"></a>选择计算目标
 
-
 [!INCLUDE [aml-compute-target-deploy](aml-compute-target-deploy.md)]
 
-
-
-## <a name="define-a-deployment-configuration"></a>定义部署配置
+## <a name="define-a-deploymentconfiguration"></a>定义 DeploymentConfiguration
 
 在部署模型之前，必须定义部署配置。 部署配置特定于将托管 Web 服务的计算目标**。 例如，在本地部署模型时，必须指定服务接受请求的端口。 该部署配置不属于入口脚本。 它用于定义将托管模型和入口脚本的计算目标的特征。
 
@@ -187,7 +183,6 @@ inference_config = InferenceConfig(entry_script='path-to-score.py',
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-
 ## <a name="deploy-your-model"></a>部署模型
 
 你现在已准备好部署模型。 下面的示例演示了本地部署。 根据你在上一步中选择的计算目标，语法将有所不同。
@@ -203,11 +198,9 @@ print(service.state)
 
 有关详细信息，请参阅关于 [LocalWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py)[Model.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) 和 [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) 的文档。
 
-
 ## <a name="delete-resources"></a>删除资源
 
 若要删除已部署的 Web 服务，请使用 `service.delete()`。
 若要删除已注册的模型，请使用 `model.delete()`。
 
 有关详细信息，请参阅关于 [WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) 和 [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--) 的文档。
-

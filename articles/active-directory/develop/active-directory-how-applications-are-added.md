@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 01ea22af472877abe34236ec82a7750eccfcdfb9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d89f0d08fec0b0f341094d422b1091de5a61055e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80884267"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115758"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>如何以及为何将应用程序添加到 Azure AD
 
@@ -74,7 +74,7 @@ Azure AD 中的应用程序有两种表示形式：
   * 订阅 Office 365 或开始试用时，会在目录中创建一个或多个服务主体，表示传递所有与 Office 365 关联的功能的各种服务。
   * 某些 Office 365 服务（如 SharePoint）会不断地创建服务主体，以允许在组件（包括工作流）之间进行安全通信。
 * 当管理员从应用库添加应用程序时（这也会创建基础应用对象）
-* 添加一个应用程序以使用 [Azure AD 应用程序代理](/azure/active-directory/manage-apps/application-proxy)
+* 添加一个应用程序以使用 [Azure AD 应用程序代理](../manage-apps/application-proxy.md)
 * 连接应用程序，以使用 SAML 或密码单一登录 (SSO) 进行单一登录
 * 通过 Microsoft Graph API 或 PowerShell 以编程方式
 
@@ -104,8 +104,8 @@ Azure AD 中的应用程序有两种表示形式：
   * 声明转换规则
   * 属性映射（用户设置）
 * 有关服务主体和应用程序对象的详细信息，请参阅 Microsoft Graph API 参考文档：
-  * [应用程序](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0)
-  * [服务主体](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta)
+  * [应用程序](/graph/api/resources/application?view=graph-rest-1.0)
+  * [Service Principal](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>应用程序为何要与 Azure AD 集成？
 

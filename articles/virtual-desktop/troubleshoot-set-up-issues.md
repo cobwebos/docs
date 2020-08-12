@@ -3,15 +3,15 @@ title: Windows 虚拟桌面环境主机池创建-Azure
 description: 如何在 Windows 虚拟桌面环境的安装过程中排除和解决租户和主机池问题。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 01/08/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 064cdc0189f6b85fa0e5872f49759c2ec67472e6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 4d504c46288ebe2a8112586ce6be6449178df16a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006156"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121368"
 ---
 # <a name="host-pool-creation"></a>创建主机池
 
@@ -252,6 +252,12 @@ the VM.\\\"
 **原因：** 此错误是由于静态路由、防火墙规则或 NSG 阻止下载关联到 Azure 资源管理器模板的 zip 文件引起的。
 
 **修复：** 删除阻止的静态路由、防火墙规则或 NSG。 （可选）在文本编辑器中打开 Azure 资源管理器模板 json 文件，获取 zip 文件的链接，并将资源下载到允许的位置。
+
+### <a name="error-cant-delete-a-session-host-from-the-host-pool-after-deleting-the-vm"></a>错误：删除 VM 后无法从主机池删除会话主机
+
+**原因：** 删除 VM 之前，需要先删除该会话主机。
+
+**修复：** 将会话主机置于排出模式，从该会话主机中注销所有用户，然后删除该主机。
 
 ## <a name="next-steps"></a>后续步骤
 

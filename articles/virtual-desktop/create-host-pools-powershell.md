@@ -3,15 +3,15 @@ title: 创建 Windows 虚拟桌面主机池 PowerShell - Azure
 description: 如何使用 PowerShell cmdlet 在 Windows 虚拟桌面中创建主机池。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a3e4b326b5a78f4b14bdd87e842d8ca485f56831
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 1275eab36e21ea6befdda13e14759a30ef5398a3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002590"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121147"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>使用 PowerShell 创建 Windows 虚拟机主机池
 
@@ -116,6 +116,32 @@ $token = Get-AzWvdRegistrationInfo -ResourceGroupName <resourcegroupname> -HostP
 
 >[!IMPORTANT]
 >为了帮助保护 Azure 中的 Windows 虚拟桌面环境，我们建议你不要在 VM 上打开入站端口 3389。 Windows 虚拟机不需要打开入站端口 3389，用户就可以访问主机池的 VM。 如果必须打开端口 3389 以进行故障排除，我们建议你使用[实时 VM 访问](../security-center/security-center-just-in-time.md)。 同时建议不要向 VM 分配公共 IP。
+
+## <a name="update-the-agent"></a>更新代理
+
+如果你在以下情况之一，则需要更新代理：
+
+- 要将以前注册的会话迁移到新的主机池
+- 更新后，会话主机不会显示在主机池中
+
+更新代理：
+
+1. 以管理员身份登录到 VM。
+2. 请先执行 "**服务**"，然后停止**Rdagent**和**远程桌面代理加载**器进程。
+3. 接下来，查找代理和加载程序 Msi。 它们将位于**C:\DeployAgent**文件夹中或在安装时保存到的任何位置。
+4. 找到以下文件并将其卸载：
+     
+     - RDInfra. RDAgent-x64-verx. x
+     - RDInfra. RDAgentBootLoader-x64
+
+   若要卸载这些文件，请右键单击每个文件名，然后选择 "**卸载**"。
+5. 还可以选择删除以下注册表设置：
+     
+     - 计算机 \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDInfraAgent
+     - 计算机 \ HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\RDAgentBootLoader
+
+6. 卸载这些项后，这会删除与旧主机池的所有关联。 如果要将此主机重新注册到服务，请按照将[虚拟机注册到 WIndows 虚拟机主机池](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)中的说明进行操作。
+
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,29 +11,29 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: feb7c4a4417d64e039793bd96141c965f6437414
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e09ad2991d552cb9886911ac75ea23c690204a71
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050930"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116642"
 ---
 # <a name="enforce-on-premises-azure-ad-password-protection-for-active-directory-domain-services"></a>为 Active Directory 域服务强制实施本地 Azure AD 密码保护
 
-Azure AD 密码保护检测并阻止已知弱密码及其变种，还可以阻止特定于你的组织的其他弱条款。 Azure AD 密码保护的本地部署使用 Azure AD 中存储的相同的全局和自定义禁止密码列表，并根据 Azure AD 对基于云的更改执行相同的本地密码更改检查。 这些检查在密码更改和密码重置事件期间针对本地 Active Directory 域服务（AD DS）域控制器执行。
+Azure AD 密码保护检测并阻止已知弱密码及其变种，还可以阻止特定于你的组织的其他弱条款。 Azure AD 密码保护的本地部署使用 Azure AD 中存储的相同的全局和自定义禁止密码列表，并根据 Azure AD 对基于云的更改执行相同的本地密码更改检查。 这些检查在密码更改和密码重置事件期间针对本地 Active Directory 域服务 (AD DS) 域控制器执行。
 
 ## <a name="design-principles"></a>设计原理
 
 Azure AD 密码保护的设计考虑了以下原则：
 
-* 域控制器（Dc）决不需要直接与 internet 通信。
+* 域控制器 (Dc) 不必直接与 internet 通信。
 * 在 Dc 上未打开任何新的网络端口。
 * 不需要 AD DS 架构更改。 软件使用现有 AD DS*容器*和*serviceConnectionPoint*架构对象。
-* 不需要最低 AD DS 域或林功能级别（DFL/FFL）。
+* 无最低 AD DS 域或林功能级别 (DFL/FFL) 是必需的。
 * 该软件不会创建或要求其保护的 AD DS 域中的帐户。
 * 在密码验证操作期间或在任何其他时间，用户明文密码始终不会离开域控制器。
-* 该软件不依赖于其他 Azure AD 的功能。 例如，Azure AD 密码哈希同步（PHS）与 Azure AD 密码保护无关或不需要。
-* 支持增量部署，但仅在安装域控制器代理（DC 代理）的位置强制实施密码策略。
+* 该软件不依赖于其他 Azure AD 的功能。 例如，Azure AD 密码哈希同步 (PHS) 与 Azure AD 密码保护不相关或不是必需的。
+* 支持增量部署，但仅在安装了域控制器代理 (DC Agent) 的情况下才强制执行密码策略。
 
 ## <a name="incremental-deployment"></a>增量部署
 
@@ -51,7 +51,7 @@ Azure AD 密码保护 DC 代理软件只能在其安装在 DC 上时验证密码
 
 * Azure AD 密码保护代理服务在当前 AD DS 林中的任何已加入域的计算机上运行。 服务的主要用途是将密码策略下载请求从 Dc 转发到 Azure AD，然后将 Azure AD 中的响应返回到 DC。
 * DC 代理的密码筛选器 DLL 接收来自操作系统的用户密码验证请求。 筛选器将它们转发到在 DC 上本地运行的 DC 代理服务。
-* Azure AD 密码保护的 DC 代理服务从 DC 代理的密码筛选器 DLL 接收密码验证请求。 DC 代理服务使用当前（本地可用）密码策略处理它们，并返回*通过*或*失败*的结果。
+* Azure AD 密码保护的 DC 代理服务从 DC 代理的密码筛选器 DLL 接收密码验证请求。 DC 代理服务使用当前 (本地可用) 密码策略处理它们，并返回*通过*或*失败*的结果。
 
 ## <a name="how-azure-ad-password-protection-works"></a>Azure AD 密码保护的工作原理
 
@@ -87,6 +87,9 @@ Azure AD 密码保护 DC 代理软件只能在其安装在 DC 上时验证密码
 在 AD DS 林中部署 Azure AD 密码保护需要使用 Azure AD 注册该林。 还必须将部署的每个代理服务注册到 Azure AD。 这些林和代理注册与特定 Azure AD 租户相关联，该租户由注册期间使用的凭据隐式标识。
 
 林中的 AD DS 林和所有已部署的代理服务必须注册到同一个租户。 不支持将 AD DS 的林或该林中的任何代理服务注册到不同的 Azure AD 租户。 这种配置错误的部署的症状包括无法下载密码策略。
+
+> [!NOTE]
+> 因此，具有多个 Azure AD 租户的客户必须选择一个可分辨租户来注册每个林以 Azure AD 密码保护目的。
 
 ## <a name="download"></a>下载
 

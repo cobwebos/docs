@@ -8,16 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 07/28/2020
+ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 9b76dac0734985b01a4a73ad4fc7f2a5f35838db
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 71cbf03a36dd95eb66c3dcbaffbf4b63d889f507
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986893"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121572"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>如何：将文本分析用于运行状况 (预览版) 
+
+> [!NOTE]
+> 运行状况容器的文本分析最近已更新。 有关最近更改的详细信息，请参阅[新增功能](../whats-new.md)。 请记得提取最新的容器以使用列出的更新。
 
 > [!IMPORTANT] 
 > 针对运行状况的文本分析是 "按原样" 和 "所有错误" 提供的预览功能。 因此，**不应在任何生产用途中实现或部署运行状况 (预览版) 文本分析。** 针对运行状况的文本分析不是要用作医疗设备、临床支持、诊断工具或其他旨在用于诊断、硬化、缓解、治疗或防范疾病或其他情况的技术，Microsoft 不会授予使用此功能的任何许可或权利。 此功能不是专为实现或部署的，而是作为一种替代专业人员的医疗建议或医疗保健、诊断、治疗或医疗保健专业人员的临床判断，不应如此。 客户独自负责使用文本分析的健康状况。 Microsoft 不保证文本分析的运行状况或与功能连接的任何材料都足以满足任何医疗目的或满足任何人的健康或医疗要求。 
@@ -229,7 +232,7 @@ docker-compose up
 使用下面的示例卷请求将查询提交到已部署的容器， `serverURL` 并将该变量替换为适当的值。
 
 ```bash
-curl -X POST 'http://<serverURL>:5000/text/analytics/v3.0-preview.1/domains/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
+curl -X POST 'http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health' --header 'Content-Type: application/json' --header 'accept: application/json' --data-binary @example.json
 
 ```
 
@@ -269,8 +272,8 @@ example.json
                     "offset": 17,
                     "length": 11,
                     "text": "itchy sores",
-                    "type": "SYMPTOM_OR_SIGN",
-                    "score": 0.97,
+                    "category": "SymptomOrSign",
+                    "ConfidenceScore": 1.0,
                     "isNegated": false
                 }
             ]
@@ -283,8 +286,8 @@ example.json
                     "offset": 11,
                     "length": 4,
                     "text": "50mg",
-                    "type": "DOSAGE",
-                    "score": 1.0,
+                    "category": "Dosage",
+                    "ConfidenceScore": 1.0,
                     "isNegated": false
                 },
                 {
@@ -292,8 +295,8 @@ example.json
                     "offset": 16,
                     "length": 8,
                     "text": "benadryl",
-                    "type": "MEDICATION_NAME",
-                    "score": 0.99,
+                    "category": "MedicationName",
+                    "ConfidenceScore": 1.0,
                     "isNegated": false,
                     "links": [
                         {
@@ -339,50 +342,35 @@ example.json
                     "offset": 32,
                     "length": 11,
                     "text": "twice daily",
-                    "type": "FREQUENCY",
-                    "score": 1.0,
+                    "category": "Frequency",
+                    "ConfidenceScore": 1.0,
                     "isNegated": false
                 }
             ],
             "relations": [
                 {
-                    "relationType": "DOSAGE_OF_MEDICATION",
-                    "score": 1.0,
-                    "entities": [
-                        {
-                            "id": "0",
-                            "role": "ATTRIBUTE"
-                        },
-                        {
-                            "id": "1",
-                            "role": "ENTITY"
-                        }
-                    ]
+                    "relationType": "DosageOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/0",
+                    "target": "#/documents/1/entities/1"
                 },
                 {
-                    "relationType": "FREQUENCY_OF_MEDICATION",
-                    "score": 1.0,
-                    "entities": [
-                        {
-                            "id": "1",
-                            "role": "ENTITY"
-                        },
-                        {
-                            "id": "2",
-                            "role": "ATTRIBUTE"
-                        }
-                    ]
+                    "relationType": "FrequencyOfMedication",
+                    "bidirectional": false,
+                    "source": "#/documents/1/entities/2",
+                    "target": "#/documents/1/entities/1"
                 }
             ]
         }
     ],
     "errors": [],
-    "modelVersion": "2020-05-08"
+    "modelVersion": "2020-07-24"
 }
 ```
 
-> [!NOTE] 
-> 对于求反检测，在某些情况下，单个求反字词一次可以处理多个字词。 在 JSON 输出中，通过标志的布尔值表示已识别的实体的求反结果 `isNegated` ：
+### <a name="negation-detection-output"></a>求反检测输出
+
+使用求反检测时，在某些情况下，单个否定字词可以同时处理多个字词。 在 JSON 输出中，通过标志的布尔值表示已识别的实体的求反结果 `isNegated` ：
 
 ```json
 {
@@ -390,7 +378,7 @@ example.json
   "offset": 90,
   "length": 10,
   "text": "chest pain",
-  "type": "SYMPTOM_OR_SIGN",
+  "category": "SymptomOrSign",
   "score": 0.9972,
   "isNegated": true,
   "links": [
@@ -403,6 +391,33 @@ example.json
       "id": "0000023593"
     },
     ...
+```
+
+### <a name="relation-extraction-output"></a>关系提取输出
+
+关系提取输出包含对关系*源*及其*目标*的 URI 引用。 具有关系角色的实体 `ENTITY` 分配给 `target` 字段。 具有关系角色的实体 `ATTRIBUTE` 分配给 `source` 字段。 缩写关系包含双向 `source` 和 `target` 字段，并且 `bidirectional` 将设置为 `true` 。 
+
+```json
+"relations": [
+  {
+      "relationType": "DosageOfMedication",
+      "score": 1.0,
+      "bidirectional": false,
+      "source": "#/documents/2/entities/0",
+      "target": "#/documents/2/entities/1",
+      "entities": [
+          {
+              "id": "0",
+              "role": "ATTRIBUTE"
+          },
+          {
+              "id": "1",
+              "role": "ENTITY"
+          }
+      ]
+  },
+...
+]
 ```
 
 ## <a name="see-also"></a>另请参阅

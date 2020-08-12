@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 08/06/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 82866daaf720fc6b1ea9ba823587c921fd438b9c
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 8923cb19c24b0e392026dc0f4b8f67c31956894a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902467"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115928"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -418,7 +418,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 ### <a name="custom-signing-key"></a>自定义签名密钥
 
-必须为服务主体对象分配自定义签名密钥，否则声明映射策略无法生效。 这可以确保确认令牌是由声明映射策略的创建者修改的，并防止应用程序被恶意参与者创建的声明映射策略破坏。 若要添加自定义签名密钥，可以使用 Azure PowerShell cmdlet `new-azureadapplicationkeycredential` 为应用程序对象创建对称密钥凭据。 有关此 Azure PowerShell cmdlet 的详细信息，请参阅 [New-AzureADApplicationKeyCredential](https://docs.microsoft.com/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)。
+必须为服务主体对象分配自定义签名密钥，否则声明映射策略无法生效。 这可以确保确认令牌是由声明映射策略的创建者修改的，并防止应用程序被恶意参与者创建的声明映射策略破坏。 若要添加自定义签名密钥，可以使用 Azure PowerShell cmdlet `new-azureadapplicationkeycredential` 为应用程序对象创建对称密钥凭据。 有关此 Azure PowerShell cmdlet 的详细信息，请参阅 [New-AzureADApplicationKeyCredential](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)。
 
 启用了声明映射的应用必须通过将 `appid={client_id}` 追加到其 [OpenID Connect 元数据请求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)来验证令牌签名密钥。 下面是你应该使用的 OpenID 连接元数据文档的格式： 
 

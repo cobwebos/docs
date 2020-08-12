@@ -13,12 +13,12 @@ ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: da697ad6fac5c75faacbfb20b768a4ec96528881
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: 0ba348bc9c97ba8be415cac2e5fd7d102d850568
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041453"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117067"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
 
@@ -95,7 +95,7 @@ ms.locfileid: "88041453"
 "availableToOtherTenants": false,
 ```
 
-定义的角色数会影响应用程序清单具有的限制。 它们已在[清单限制](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-limits)页面上进行了详细讨论。
+定义的角色数会影响应用程序清单具有的限制。 它们已在[清单限制](./reference-app-manifest.md#manifest-limits)页面上进行了详细讨论。
 
 ### <a name="assign-users-and-groups-to-roles"></a>将用户和组分配到角色
 
@@ -128,6 +128,6 @@ ms.locfileid: "88041453"
 - [将使用应用角色和角色声明的授权添加到 ASP.NET Core Web 应用](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/5-WebApp-AuthZ/5-1-Roles)
 - [在具有 Microsoft 标识平台的应用程序中实现授权 (视频) ](https://www.youtube.com/watch?v=LRoc-na27l0)
 - [Azure Active Directory 现在可以与组声明和应用程序角色配合使用](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862)
-- [Azure Active Directory 应用清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
+- [Azure Active Directory 应用清单](./reference-app-manifest.md)
 - [AAD 访问令牌](access-tokens.md)
 - [AAD `id_tokens`](id-tokens.md)

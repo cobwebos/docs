@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/05/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 95cb1181f841ce5f958b8a85697d7261f442b410
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 29c57411a2a35c36d0b4a9d4def931821b795094
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799593"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121130"
 ---
 # <a name="a-web-api-that-calls-web-apis-code-configuration"></a>调用 Web API 的 Web API：代码配置
 
@@ -176,7 +176,7 @@ Python Web API 需要使用一些中间件来验证从客户端接收的持有�
 
 ## <a name="protocol"></a>协议
 
-有关 OBO 协议的详细信息，请参阅 [Microsoft 标识平台和 OAuth 2.0 代理流](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)。
+有关 OBO 协议的详细信息，请参阅 [Microsoft 标识平台和 OAuth 2.0 代理流](./v2-oauth2-on-behalf-of-flow.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

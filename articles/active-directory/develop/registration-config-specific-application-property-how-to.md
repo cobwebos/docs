@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
-ms.openlocfilehash: c44575ca43063388d5c65855542cf15700d2cb5a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1469fcfa68b10353b78d31ccc758c61bf7746692
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80883162"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120688"
 ---
 # <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>自定义开发应用的 Azure 门户注册字段
 
@@ -38,7 +38,7 @@ ms.locfileid: "80883162"
 |------------------|------------------------------------------------------------------------------------------|
 | 名称             | 应用程序的名称。 它应至少具有四个字符。                |
 | 支持的帐户类型| 选择希望应用程序支持的帐户：仅限此组织目录中的帐户、任何组织目录中的帐户或任何组织目录中的帐户和个人 Microsoft 帐户。  |
-| 重定向 URI（可选） | 选择要生成的应用的类型：“Web”或“公共客户端(移动和桌面)”，然后输入应用程序的重定向 URI (或回复 URL)。   对于 Web 应用程序，请提供应用的基 URL。 例如， http://localhost:31544 可以是本地计算机上运行的 Web 应用的 URL。 用户将使用此 URL 登录到 Web 客户端应用程序。 对于公共客户端应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于应用程序的值，例如 myapp://auth。若要查看 Web 应用程序或本机应用程序的具体示例，请参阅[快速入门](https://docs.microsoft.com/azure/active-directory/develop)。|
+| 重定向 URI（可选） | 选择要生成的应用的类型：“Web”或“公共客户端(移动和桌面)”，然后输入应用程序的重定向 URI (或回复 URL)。   对于 Web 应用程序，请提供应用的基 URL。 例如， http://localhost:31544 可以是本地计算机上运行的 Web 应用的 URL。 用户将使用此 URL 登录到 Web 客户端应用程序。 对于公共客户端应用程序，请提供 Azure AD 返回令牌响应时所用的 URI。 输入特定于应用程序的值，例如 myapp://auth。若要查看 Web 应用程序或本机应用程序的具体示例，请参阅[快速入门](./index.yml)。|
 
 填写上述字段后，会在 Azure 门户中注册应用程序，并重定向到应用程序概览页面。 左窗格“管理”  下的“设置”页包含多个用于自定义应用程序的字段。 下面的这些表介绍所有字段。 将只能看到这些字段的一个子集，具体取决于创建的是 Web 应用程序还是公共客户端应用程序。
 

@@ -13,20 +13,20 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: f3bb4dd1c564e5f6c4a8ee1bb5bf7424a74a339e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 479e74f9c36864e041685393d35972e7365260da
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81533983"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119431"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>在国家/地区云环境中使用 MSAL
 
 [国内云](authentication-national-cloud.md)（也称为主权云）是 Azure 的物理上独立的实例。 Azure 的这些区域可帮助确保数据驻留、主权和合规性要求在地理边界内有效。
 
-除了 Microsoft 全球云以外，Microsoft 身份验证库（MSAL）还使国家/地区的应用程序开发人员能够获取令牌，以便进行身份验证和调用受保护的 web Api。 这些 web Api 可以 Microsoft Graph 或其他 Microsoft Api。
+除了 Microsoft 全球云以外，Microsoft 身份验证库 (MSAL) 使国家云中的应用程序开发人员能够获取令牌，以便进行身份验证和调用受保护的 web Api。 这些 web Api 可以 Microsoft Graph 或其他 Microsoft Api。
 
-在以下国家/地区中部署 Azure Active Directory （Azure AD）包括全局云：  
+在以下国家/地区部署 Azure Active Directory (Azure AD) 中包含全局云：  
 
 - Azure Government
 - Azure 中国世纪互联
@@ -40,16 +40,16 @@ ms.locfileid: "81533983"
 
 ### <a name="choose-the-appropriate-identities"></a>选择适当的标识
 
-[Azure 政府](https://docs.microsoft.com/azure/azure-government/)版应用程序可使用 Azure AD 政府标识，Azure AD 公共标识对用户进行身份验证。 由于可以使用任何这些标识，因此需要决定应为方案选择哪个颁发机构终结点：
+[Azure 政府](../../azure-government/index.yml)版应用程序可使用 Azure AD 政府标识，Azure AD 公共标识对用户进行身份验证。 由于可以使用任何这些标识，因此需要决定应为方案选择哪个颁发机构终结点：
 
-- Azure AD 公有：如果你的组织已有一个 Azure AD 公有租户来支持 Office 365 （公有或 GCC）或其他应用程序，则通常使用。
-- Azure AD 政府：如果你的组织已有一个 Azure AD 政府租户支持 Office 365 （GCC 高版或 DoD），或在 Azure AD 政府版中创建新租户，则通常使用此项。
+- Azure AD 公有：如果你的组织已有 Azure AD 公有租户来支持 Office 365 (公共或 GCC) 或其他应用程序，则通常使用此操作。
+- Azure AD 政府：如果你的组织已有 Azure AD 政府租户支持 Office 365 (GCC 高或 DoD) 或正在 Azure AD 政府创建新租户，则通常使用此项。
 
 确定之后，在执行应用注册的位置需要特别注意。 如果为 Azure 政府版应用程序选择 Azure AD 公共标识，则必须在 Azure AD 公有租户中注册该应用程序。
 
 ### <a name="get-an-azure-government-subscription"></a>获取 Azure 政府版订阅
 
-若要获取 Azure 政府版订阅，请参阅[在 Azure 政府版中管理和连接到你的订阅](https://docs.microsoft.com/azure/azure-government/documentation-government-manage-subscriptions)。
+若要获取 Azure 政府版订阅，请参阅[在 Azure 政府版中管理和连接到你的订阅](../../azure-government/documentation-government-manage-subscriptions.md)。
 
 如果你没有 Azure 政府版订阅，请在开始前创建一个[免费帐户](https://azure.microsoft.com/global-infrastructure/government/request/)。
 
@@ -122,19 +122,19 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 
 在该代码中：
 
-- `Enter_the_Application_Id_here`注册的应用程序的**应用程序（客户端） ID**值。
+- `Enter_the_Application_Id_here`是应用程序 (已注册应用程序的**客户端) ID**值。
 - `Enter_the_Tenant_Info_Here` 设置为以下选项之一：
-    - 如果你的应用程序支持**此组织目录中的帐户**，请将此值替换为租户 ID 或租户名称（例如，contoso.microsoft.com）。
+    - 如果你的应用程序支持**此组织目录中的帐户**，请将此值替换为租户 ID 或租户名称 (例如 contoso.microsoft.com) 。
     - 如果你的应用程序支持**任何组织目录中的帐户**，请将此值替换为 `organizations` 。
 
-    若要查找所有国家/地区云的身份验证终结点，请参阅[Azure AD 身份验证终结点](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints)。
+    若要查找所有国家/地区云的身份验证终结点，请参阅[Azure AD 身份验证终结点](./authentication-national-cloud.md#azure-ad-authentication-endpoints)。
 
     > [!NOTE]
     > 国内云不支持个人 Microsoft 帐户。
 
 - `graphEndpoint`是适用于美国政府的 Microsoft 云的 Microsoft Graph 终结点。
 
-   若要查找所有国家云 Microsoft Graph 终结点，请参阅[国家/地区云中的 Microsoft Graph 终结点](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
+   若要查找所有国家云 Microsoft Graph 终结点，请参阅[国家/地区云中的 Microsoft Graph 终结点](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
 
 ## <a name="python"></a>[Python](#tab/python)
 
@@ -150,7 +150,7 @@ const myMSALObj = new UserAgentApplication(msalConfig);
     "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
     ```
 
-- 若要调用 Microsoft graph，需要一个特定的图形终结点 URL，该 URL 依赖于所使用的云。 若要查找所有国家/地区云 Microsoft Graph 终结点，请参阅[Microsoft Graph 和 Graph 资源管理器服务根终结点](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
+- 若要调用 Microsoft graph，需要一个特定的图形终结点 URL，该 URL 依赖于所使用的云。 若要查找所有国家/地区云 Microsoft Graph 终结点，请参阅[Microsoft Graph 和 Graph 资源管理器服务根终结点](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
 
     下面是一个具有作用域的图形终结点示例：
 
@@ -173,7 +173,7 @@ const myMSALObj = new UserAgentApplication(msalConfig);
 "authority": "https://login.microsoftonline.us/Enter_the_Tenant_Info_Here"
 ```
 
-- 若要调用 Microsoft graph，需要一个特定的图形终结点 URL，该 URL 依赖于所使用的云。 若要查找所有国家/地区云 Microsoft Graph 终结点，请参阅[Microsoft Graph 和 Graph 资源管理器服务根终结点](https://docs.microsoft.com/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
+- 若要调用 Microsoft graph，需要一个特定的图形终结点 URL，该 URL 依赖于所使用的云。 若要查找所有国家/地区云 Microsoft Graph 终结点，请参阅[Microsoft Graph 和 Graph 资源管理器服务根终结点](/graph/deployments#microsoft-graph-and-graph-explorer-service-root-endpoints)。
 
 下面是一个具有作用域的图形终结点示例：
 
@@ -225,6 +225,6 @@ if let application = try? MSALPublicClientApplication(configuration: config) { /
 了解有关以下方面的详细信息：
 
 - [国家/地区云中的身份验证](authentication-national-cloud.md)
-- [Azure Government](https://docs.microsoft.com/azure/azure-government/)
-- [Azure 中国世纪互联](https://docs.microsoft.com/azure/china/)
-- [Azure 德国](https://docs.microsoft.com/azure/germany/)
+- [Azure Government](../../azure-government/index.yml)
+- [Azure 中国世纪互联](/azure/china/)
+- [Azure 德国](../../germany/index.yml)

@@ -12,16 +12,16 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 6a20bbeef83072b6fb76bd4e9214e63f094736a1
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: b76e77d6d8575fa086f74c956594a344076f7c74
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172555"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118835"
 ---
 # <a name="add-your-application-to-the-azure-active-directory-application-gallery"></a>将应用程序添加到 Azure Active Directory 应用程序库
 
-本文介绍如何在 Azure Active Directory （Azure AD）应用程序库中列出应用程序，如何实现单一登录（SSO）和管理列表。
+本文介绍如何在 Azure Active Directory (Azure AD) 应用程序库中列出应用程序，如何实现 SSO (的单一登录，以及如何管理列表。
 
 ## <a name="what-is-the-azure-ad-application-gallery"></a>什么是 Azure AD 应用程序库？
 
@@ -30,11 +30,11 @@ ms.locfileid: "87172555"
 - 在库中快速搜索应用程序。
 - 免费、基本和高级 Azure AD 客户都可以使用此集成。
 - 共同客户可以获得分步配置教程。
-- 使用系统进行跨域标识管理（[SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)）的客户可以使用同一应用的预配。
+- 使用系统进行跨域标识管理 ([SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) 的客户可以对同一应用使用预配。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 对于联合应用程序（开放 ID 和 SAML/WS 进纸），应用程序必须支持 "软件即服务" （SaaS）模型，才能在 Azure AD 应用库中列出。 企业库应用程序必须支持多个客户配置，而不是任何特定客户。
+- 对于联合应用程序 (打开 ID 和 SAML/WS 进) ，应用程序必须支持软件即服务 (SaaS) 模型，才能在 Azure AD 应用程序库中列出。 企业库应用程序必须支持多个客户配置，而不是任何特定客户。
 - 对于 Open ID Connect，应用程序必须是 multitenanted 的，并且必须正确地为应用程序实现[Azure AD 许可框架](consent-framework.md)。 用户可以将登录请求发送到公共终结点，以便任何客户都可以向应用程序提供许可。 你可以根据在令牌中收到的租户 ID 和用户 UPN 来控制用户访问。
 - 对于 SAML 2.0/WS 馈送，应用程序必须能够在 SP 或 IDP 模式下执行 SAML/WS-FEDERATION SSO 集成。 提交请求之前，请确保此功能正常工作。
 - 对于密码 SSO，请确保你的应用程序支持窗体身份验证，以便可以进行密码保险存储以使单一登录能够按预期方式工作。
@@ -58,9 +58,9 @@ ms.locfileid: "87172555"
 
   ![SharePoint 门户上的业务理由框](./media/howto-app-gallery-listing/accessrequest.png)
 
-我们的团队将审核详细信息并相应地为你提供访问权限。 批准请求后，可以通过在主页上选择 "**提交请求（ISV）** " 磁贴来登录到门户并提交请求。
+我们的团队将审核详细信息并相应地为你提供访问权限。 批准请求后，你可以登录到门户并通过在主页上选择 "**提交请求 (ISV) ** " 磁贴来提交请求。
 
-![主页上的提交请求（ISV）磁贴](./media/howto-app-gallery-listing/homepage.png)
+![在主页上提交请求 (ISV) 磁贴](./media/howto-app-gallery-listing/homepage.png)
 
 ## <a name="issues-on-logging-into-portal"></a>登录到门户的问题
 
@@ -72,13 +72,13 @@ ms.locfileid: "87172555"
 
 **发生了什么事情：**
 
-来宾用户与家庭租户联合，这也是 Azure AD。 来宾用户处于高风险状态。 Microsoft 不允许高风险用户访问其资源。 所有高风险用户（员工或来宾/供应商）必须修正/关闭他们访问 Microsoft 资源的风险。 对于来宾用户，此用户面临的风险来自于 home 租户，而策略来自资源租户（在本例中为 Microsoft）。
+来宾用户与家庭租户联合，这也是 Azure AD。 来宾用户处于高风险状态。 Microsoft 不允许高风险用户访问其资源。 所有高风险用户 (员工或来宾/供应商) 必须修正/关闭他们访问 Microsoft 资源的风险。 对于来宾用户，此用户面临的风险来自于 home 租户，策略来自资源租户 (Microsoft 在此案例中) 。
  
 **安全解决方案：**
 
-* MFA 注册的来宾用户修正其自己的用户风险。 这可以由来宾用户执行安全的密码更改或重置（ https://aka.ms/sspr) 在其主租户上，这需要 MFA 和 SSPR）执行。 必须在 Azure AD 而不是本地上启动安全密码更改或重置。
+* MFA 注册的来宾用户修正其自己的用户风险。 这可以由来宾用户在其主租户 (执行安全密码更改或重置 https://aka.ms/sspr) ， (这需要在 home 租户) 进行 MFA 和 SSPR。 必须在 Azure AD 而不是本地上启动安全密码更改或重置。
 
-* 来宾用户的管理员可以纠正他们的风险。 在这种情况下，管理员将执行密码重置（临时密码生成）。 这不需要 Identity Protection。 来宾用户的管理员可以前往 https://aka.ms/RiskyUsers ，并单击 "重置密码"。
+* 来宾用户的管理员可以纠正他们的风险。 在这种情况下，管理员将 (临时密码生成) 执行密码重置。 这不需要 Identity Protection。 来宾用户的管理员可以前往 https://aka.ms/RiskyUsers ，并单击 "重置密码"。
 
 * 来宾用户的管理员需要关闭/消除其风险。 同样，这不需要 Identity Protection。 管理员可以前往 https://aka.ms/RiskyUsers ，并单击 "消除用户风险"。 但是，管理员必须执行 "截止努力"，以确保在关闭用户风险之前，这是误报风险评估。 否则，他们会通过抑制风险评估而不进行调查，使其和 Microsoft 的资源面临风险。
 
@@ -89,14 +89,14 @@ ms.locfileid: "87172555"
 
 若要将某个应用程序列在 Azure AD 应用库中，首先需要实现 Azure AD 支持的以下联合身份验证协议之一。 还需要同意 Azure AD 应用程序库的条款和条件。 阅读[本网站](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/)上 Azure AD 应用程序库的条款和条件。
 
-- **OpenID connect**：若要通过使用 Open ID Connect 协议将应用程序与 Azure AD 进行集成，请按照[开发人员的说明](v1-authentication-scenarios.md)进行操作。
+- **OpenID connect**：若要通过使用 Open ID Connect 协议将应用程序与 Azure AD 进行集成，请按照[开发人员的说明](../azuread-dev/v1-authentication-scenarios.md)进行操作。
 
     ![在库中列出 OpenID Connect 应用程序](./media/howto-app-gallery-listing/openid.png)
 
     * 如果要使用 OpenID Connect 将应用程序添加到库中，请选择 " **Openid connect & OAuth 2.0** "，如下所示。
     * 如果访问有任何问题，请联系[AZURE AD SSO 集成团队](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)。
 
-- **SAML 2.0**或**ws-addressing**：如果应用支持 SAML 2.0，则可以按照[说明添加自定义应用程序](../active-directory-saas-custom-apps.md)，将其与 Azure AD 租户直接集成。
+- **SAML 2.0**或**ws-addressing**：如果应用支持 SAML 2.0，则可以按照[说明添加自定义应用程序](../manage-apps/view-applications-portal.md)，将其与 Azure AD 租户直接集成。
 
   ![在库中列出 SAML 2.0 或 WS 进纸应用程序](./media/howto-app-gallery-listing/saml.png)
 

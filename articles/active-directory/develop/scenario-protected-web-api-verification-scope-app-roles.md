@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 005fb194a5c1539b70ccb8e8ac7d938b190ee4f5
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 204bc7dd8cc31f48fdc09eae6b00247023de64f3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563306"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120960"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>受保护的 Web API：验证范围和应用角色
 
@@ -88,7 +88,7 @@ public class TodoListController : Controller
 
 #### <a name="verify-the-scopes-more-globally"></a>更全局地验证范围
 
-为 web API 定义粒度范围并验证每个控制器操作中的作用域是推荐的方法。 不过，也可以使用 ASP.NET Core 验证应用程序或控制器级别的作用域。 有关详细信息，请参阅 ASP.NET 核心文档中的[基于声明的授权](https://docs.microsoft.com/aspnet/core/security/authorization/claims)。
+为 web API 定义粒度范围并验证每个控制器操作中的作用域是推荐的方法。 不过，也可以使用 ASP.NET Core 验证应用程序或控制器级别的作用域。 有关详细信息，请参阅 ASP.NET 核心文档中的[基于声明的授权](/aspnet/core/security/authorization/claims)。
 
 ### <a name="net-mvc"></a>.NET MVC
 
@@ -96,7 +96,7 @@ public class TodoListController : Controller
 
 ## <a name="verify-app-roles-in-apis-called-by-daemon-apps"></a>验证守护程序应用调用的 API 中的应用角色
 
-如果 Web API 由某个[守护程序应用](scenario-daemon-overview.md)调用，该应用应该对该 Web API 拥有应用程序权限。 如[公开应用程序权限（应用角色）](https://docs.microsoft.com/azure/active-directory/develop/scenario-protected-web-api-app-registration#exposing-application-permissions-app-roles)中所示，你的 API 将公开此类权限。 一个示例是 `access_as_application` 应用角色。
+如果 Web API 由某个[守护程序应用](scenario-daemon-overview.md)调用，该应用应该对该 Web API 拥有应用程序权限。 如[公开应用程序权限（应用角色）](./scenario-protected-web-api-app-registration.md#exposing-application-permissions-app-roles)中所示，你的 API 将公开此类权限。 一个示例是 `access_as_application` 应用角色。
 
 现在，你需要让 API 验证它收到的令牌是否包含 `roles` 声明，以及此声明是否具有预期的值。 验证代码类似于对委托权限进行验证的代码，不同之处在于，你的控制器操作针对角色进行测试，而非针对作用域进行测试：
 

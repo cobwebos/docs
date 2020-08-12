@@ -3,15 +3,15 @@ title: Windows 虚拟桌面诊断问题 - Azure
 description: 如何使用 Windows 虚拟桌面诊断功能来诊断问题。
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a985ce4f93b04e4065b5189b2a406b54729720c3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 50fe1eb6e5aed551b56bcd1526daa5d441185501
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005095"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121402"
 ---
 # <a name="identify-and-diagnose-windows-virtual-desktop-issues"></a>确定和诊断 Windows 虚拟桌面问题
 
@@ -60,6 +60,14 @@ Windows 虚拟桌面提供了一项诊断功能，使管理员能够通过单个
 |8|ConnectionBroken|客户端和网关或服务器之间的连接已断开。 除非意外发生，否则不需要执行任何操作。|
 |14|UnexpectedNetworkDisconnect|断开与网络的连接。 要求用户再次连接。|
 |24|ReverseConnectFailed|主机虚拟机没有直通 RD 网关。 请确保可以解析网关 IP 地址。|
+
+## <a name="error-cant-add-user-assignments-to-an-app-group"></a>错误：无法向应用组添加用户分配
+
+将用户分配到应用组后，Azure 门户会显示一条警告，指出 "会话结束" 或 "遇到身份验证问题-扩展 Microsoft_Azure_WVD。" 然后，"分配" 页将不会加载，此后，页面将停止在整个 Azure 门户 (加载，例如 Azure Monitor、Log Analytics、服务运行状况等) 。
+
+**原因：** 条件性访问策略有问题。 Azure 门户正在尝试获取 Microsoft Graph 的令牌，该令牌依赖于 SharePoint Online。 客户具有名为 "Microsoft Office 365 数据存储使用条款" 的条件性访问策略，该策略要求用户接受访问数据存储所需的使用条款。 但是，它们尚未登录，因此 Azure 门户无法获取令牌。
+
+**修复：** 在登录到 Azure 门户之前，管理员首先需要登录到 SharePoint 并接受使用条款。 之后，他们应该能够像平常一样登录到 Azure 门户。
 
 ## <a name="next-steps"></a>后续步骤
 
