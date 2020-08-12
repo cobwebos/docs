@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 3aac63369dffa5b8ba0b9e55b5063ad8136c95cf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ea5cc53d909ed090e152af84da49c8e87907f6bf
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82883220"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120603"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>使用 MSAL.NET 通过社交标识将用户登录
 
@@ -134,7 +134,7 @@ private async void EditProfileButton_Click(object sender, RoutedEventArgs e)
 
 ### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 配置 ROPC 流
 
-在 Azure AD B2C 租户中，新建一个用户流并选择“使用 ROPC 登录”，以便为该用户流启用 ROPC。 有关详细信息，请参阅[配置资源所有者密码凭据流](/azure/active-directory-b2c/configure-ropc)。
+在 Azure AD B2C 租户中，新建一个用户流并选择“使用 ROPC 登录”，以便为该用户流启用 ROPC。 有关详细信息，请参阅[配置资源所有者密码凭据流](../../active-directory-b2c/configure-ropc.md)。
 
 `IPublicClientApplication` 包含 `AcquireTokenByUsernamePassword` 方法：
 
@@ -153,7 +153,7 @@ AcquireTokenByUsernamePassword(
 
 ### <a name="limitations-of-the-ropc-flow"></a>ROPC 流的限制
 
-ROPC 流仅适用于本地帐户，在本地帐户中用户已使用电子邮件地址或用户名注册到 Azure AD B2C。 与 Azure AD B2C （Facebook、Google 等）支持的外部标识提供程序进行联合时，此流不起作用。
+ROPC 流仅适用于本地帐户，在本地帐户中用户已使用电子邮件地址或用户名注册到 Azure AD B2C。 与 Azure AD B2C (Facebook、Google 等）支持的外部标识提供者进行联合时，此流不起作用 ) 。
 
 ## <a name="google-auth-and-embedded-webview"></a>Google 身份验证和嵌入式 web 视图
 
@@ -172,7 +172,7 @@ MSAL.NET 支持[令牌缓存](/dotnet/api/microsoft.identity.client.tokencache?v
 - `tid`（Azure AD 租户 ID）
 - `preferred_username`
 
-在 Azure AD B2C 情况下，这两个声明可能都丢失，因为并非所有社交标识提供者（Facebook、Google 和其他）都在其返回到 Azure AD B2C 的令牌中返回它们。
+Azure AD B2C 方案中可能缺少这两个声明，因为并非所有社交标识提供者 (Facebook、Google 和其他) 将它们返回到 Azure AD B2C 的令牌中。
 
 这种场景的现象是：当你访问 Azure AD B2C 所颁发令牌中的 `preferred_username` 声明值时，MSAL.NET 会返回 `Missing from the token response`。 对于 `preferred_username`，MSAL 使用 `Missing from the token response` 值以保持库之间的缓存交叉兼容性。
 
@@ -182,7 +182,7 @@ MSAL.NET 支持[令牌缓存](/dotnet/api/microsoft.identity.client.tokencache?v
 
 建议的解决方法是使用之前介绍的[按策略缓存](#acquire-a-token-to-apply-a-policy)。
 
-或者， `tid` 如果使用的是 Azure AD B2C 中的[自定义策略](../../active-directory-b2c/custom-policy-get-started.md)，则可以使用声明。 自定义策略可以使用[声明转换](/azure/active-directory-b2c/claims-transformation-technical-profile)将其他声明返回到应用程序。
+或者， `tid` 如果使用的是 Azure AD B2C 中的[自定义策略](../../active-directory-b2c/custom-policy-get-started.md)，则可以使用声明。 自定义策略可以使用[声明转换](../../active-directory-b2c/claims-transformation-technical-profile.md)将其他声明返回到应用程序。
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>“在令牌响应中缺失”的缓解措施
 

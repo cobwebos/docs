@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 7/10/2019
 ms.author: genli
-ms.openlocfilehash: 13e4c7a981124aba22dcb324d60e075d1d552bf8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1bf080ad4c4dc665e61d1075cf22c84d4cd66648
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526793"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121385"
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights
 
@@ -44,7 +44,7 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
 - 存储信息
 
-- Azure 虚拟机配置（使用[Azure 实例元数据服务](../windows/instance-metadata-service.md)收集）
+- 使用[Azure 实例元数据服务](../windows/instance-metadata-service.md)收集的 Azure 虚拟机配置 () 
 
 - 正在运行的进程的列表、磁盘、内存和 CPU 使用率
 
@@ -72,7 +72,7 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
   - PCI 设备 [ `*` ]
 
 - 进程和内存
-  - 进程列表（任务名称、使用的内存、打开的文件）
+  -  (任务名称、使用的内存、打开的文件的进程的列表) 
   - 总计、可用和可用的物理内存
   - 总计、可用和可用的交换内存
   - 性能分析捕获 CPU 和进程 CPU 使用率（以5秒为间隔）
@@ -99,6 +99,7 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
   - /var/log/boot.log
   - /var/log/yum.log
   - /var/log/dpkg.log
+  - /var/log/sysstat 或/var/log/sa [ `**` ]
   - /var/log/cloud-init.log
   - /var/log/cloud-init-output.log
   - /var/log/gpu-manager.log
@@ -112,7 +113,9 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 - [Azure 虚拟机实例元数据](../windows/instance-metadata-service.md)
 
 >[!Note]
->[ `*` ] PCI 信息尚未收集在 Debian 和 SLES 分发版上
+>[ `*` ] PCI 信息尚未收集在 Debian 和 SLES 分发版上。
+> 
+>[ `**` ]/var/log/sysstat 或/var/log/sa 包含 sysstat 包收集的系统活动报表 (SAR) 文件。 如果 VM 上未安装 sysstat 包，则 PerfInsights 工具会提供安装建议。
 
 ## <a name="run-the-perfinsights-linux-on-your-vm"></a>在 VM 上运行 PerfInsights Linux
 
@@ -121,13 +124,13 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 #### <a name="tool-requirements"></a>工具要求
 
 - 此工具必须在有性能问题的 VM 上运行。
-- 必须在 VM 上安装 Python 2。7
+- 需要在 VM 上安装 python 3.x 或 Python 2.7。
 
 - 目前支持以下分发版：
 
     | 分发               | 版本                                         |
     |----------------------------|-------------------------------------------------|
-    | Oracle Linux 服务器        | 6.10 [ `*` ]，7.3，7.6，7.5 （Oracle-数据库-Ee 13.8 marketplace 映像）|
+    | Oracle Linux 服务器        | 6.10 [ `*` ]，7.3，7.6，7.5 (Oracle 数据库-Ee 13.8 marketplace 映像) |
     | CentOS                     | 6.5 [ `*` ]，7。6                                    |
     | RHEL                       | 7.2、7.5、8.0 [ `*` ]                               |
     | Ubuntu                     | 14.04、16.04、18.04                               |

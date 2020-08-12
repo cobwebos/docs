@@ -11,20 +11,22 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d19f59635920951b506e41884f4ab79be78e247d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 375c97179351e1dbf90ce4488114cb232d6dd450
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080720"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121317"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>使用 IDENTITY 在 Synapse SQL 池中创建代理键
 
-本文介绍如何使用 IDENTITY 属性在 Synapse SQL 池中的表上创建代理键。
+本文介绍如何使用 IDENTITY 属性在 Synapse SQL 池中创建基于表的代理键的建议和示例。
 
 ## <a name="what-is-a-surrogate-key"></a>什么是代理键
 
-基于表的代理键是一个列，其中包含针对每个行的唯一标识符。 此键不是从表数据生成的。 数据建模者想要在设计数据仓库模型时在其表上创建代理键。 可以使用 IDENTITY 属性轻松高效地实现此目标，而不会影响负载性能。 标识属性有一些限制，如[CREATE TABLE （transact-sql）标识（属性）](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)中所述。 标识的一个限制是不能保证它是唯一的。 设置标识 INSERT off 和 not 重设种子标识值将导致更唯一的值，但在所有情况下可能不保证唯一性。 如果由于标识限制而不能使用标识值，请创建一个包含当前值的单独表，并使用你的应用程序管理对表和编号分配的访问。 
+基于表的代理键是一个列，其中包含针对每个行的唯一标识符。 此键不是从表数据生成的。 数据建模者想要在设计数据仓库模型时在其表上创建代理键。 可以使用 IDENTITY 属性轻松高效地实现此目标，而不会影响负载性能。
+> [!NOTE]
+> 如果用户使用 "SET IDENTITY_INSERT ON" 或 reseeds 标识显式插入重复值，则不保证 Synapse SQL 中的标识值是唯一的。 有关详细信息，请参阅[CREATE TABLE (transact-sql) 标识 (属性) ](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)。 
 
 ## <a name="creating-a-table-with-an-identity-column"></a>创建包含 IDENTITY 列的表
 

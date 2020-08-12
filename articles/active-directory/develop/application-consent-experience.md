@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
-ms.openlocfilehash: e96442be50a075ebf2cd81bf1b6fb0f58f883bad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e768c1e938006afd62fc097a80f8ebc3ea0f3e6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80885576"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115469"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>了解 Azure AD 应用程序许可体验
 
@@ -28,10 +28,10 @@ ms.locfileid: "80885576"
 
 许可是指用户授权应用程序代表他们访问受保护资源的过程。 可以要求管理员或用户同意访问其组织/个人数据。
 
-授予许可的实际用户体验将根据在用户租户上设置的策略、用户的授权范围（或角色）以及客户端应用程序请求的[权限](https://docs.microsoft.com/azure/active-directory/azuread-dev/v1-permissions-consent)类型而有所不同。 这意味着应用程序开发人员和租户管理员可以对许可体验进行一些控制。 管理员可以在租户或应用上灵活地设置和禁用策略，以控制其租户中的许可体验。 应用程序开发人员可以指示正在请求的权限类型以及是否希望引导用户完成用户许可流或管理员许可流。
+授予许可的实际用户体验将根据在用户租户上设置的策略、用户的授权范围（或角色）以及客户端应用程序请求的[权限](../azuread-dev/v1-permissions-consent.md)类型而有所不同。 这意味着应用程序开发人员和租户管理员可以对许可体验进行一些控制。 管理员可以在租户或应用上灵活地设置和禁用策略，以控制其租户中的许可体验。 应用程序开发人员可以指示正在请求的权限类型以及是否希望引导用户完成用户许可流或管理员许可流。
 
 - **用户许可流**是指应用程序开发人员将用户定向到授权终结点，意图仅记录当前用户的许可。
-- **管理员许可流**是指应用程序开发人员将用户定向到管理员许可终结点，意图记录整个租户的许可。 若要确保管理员许可流正常工作，应用程序开发人员必须列出应用程序清单中 `RequiredResourceAccess` 属性中的所有权限。 有关详细信息，请参阅[应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)。
+- **管理员许可流**是指应用程序开发人员将用户定向到管理员许可终结点，意图记录整个租户的许可。 若要确保管理员许可流正常工作，应用程序开发人员必须列出应用程序清单中 `RequiredResourceAccess` 属性中的所有权限。 有关详细信息，请参阅[应用程序清单](./reference-app-manifest.md)。
 
 ## <a name="building-blocks-of-the-consent-prompt"></a>许可提示的构建基块
 
@@ -81,6 +81,6 @@ ms.locfileid: "80885576"
     1. 非管理员用户将看到与上面所示的 2.ii 相同的屏幕。
 
 ## <a name="next-steps"></a>后续步骤
-- 获取有关 [Azure AD 同意框架如何实现同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)的分步概述。
-- 有关详细信息，请参阅[多租户应用程序如何使用同意框架](active-directory-devhowto-multi-tenant-overview.md)实现“用户”和“管理员”同意（支持更多高级多层应用程序模式）。
+- 获取有关 [Azure AD 同意框架如何实现同意](./quickstart-register-app.md)的分步概述。
+- 有关详细信息，请参阅[多租户应用程序如何使用同意框架](./howto-convert-app-to-be-multi-tenant.md)实现“用户”和“管理员”同意（支持更多高级多层应用程序模式）。
 - 了解[如何配置应用的发布者域](howto-configure-publisher-domain.md)。

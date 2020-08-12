@@ -13,12 +13,12 @@ ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ROBOTS: NOINDEX
-ms.openlocfilehash: bae052e06aae4881dd7203a5616b35e9c96997fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 75c3b325b29e6738a61728d53b85464bb61655f8
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85551717"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117781"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>如何：从 Azure 访问控制服务迁移
 
@@ -59,7 +59,7 @@ https://<mynamespace>.accesscontrol.windows.net
 
 抵达 `https://accounts.accesscontrol.windows.net` 的任何流量除外。 流至此 URL 的流量已由其他服务进行处理，**不受**访问控制弃用影响。 
 
-有关访问控制的详细信息，请参阅[访问控制服务 2.0（已存档）](https://msdn.microsoft.com/library/hh147631.aspx)。
+有关访问控制的详细信息，请参阅[访问控制服务 2.0（已存档）](/previous-versions/azure/azure-services/hh147631(v=azure.100))。
 
 ## <a name="find-out-which-of-your-apps-will-be-impacted"></a>查明哪些应用将受影响
 
@@ -114,7 +114,7 @@ https://<mynamespace>.accesscontrol.windows.net
 
 - **2017 年 11 月**：[停用](https://blogs.technet.microsoft.com/enterprisemobility/2017/09/18/marching-into-the-future-of-the-azure-ad-admin-experience-retiring-the-azure-classic-portal/) Azure 经典门户中的 Azure AD 管理体验。 届时，将通过以下新专用 URL 管理访问控制命名空间：`https://manage.windowsazure.com?restoreClassic=true`。 如有需要，可使用此 URl 查看现有命名空间、启用/禁用命名空间和删除命名空间。
 - **2018 年 4 月 2 日**：完全停用 Azure 经典门户，这意味着，不再可以通过任何 URL 管理访问控制命名空间。 此时，不能禁用/启用、删除或枚举访问控制命名空间。 但可通过 `https://\<namespace\>.accesscontrol.windows.net` 访问功能完善的访问控制管理门户。 访问控制的其他所有组件继续正常运行。
-- **2018 年 11 月 7 日**：永久关闭所有访问控制组件。 这包括访问控制管理门户、管理服务、STS 和令牌转换规则引擎。 此时，发送到访问控制（位于 accesscontrol.windows.net）的任何请求都将 \<namespace\> 失败。 应在此之前将所有现有应用和服务迁移到其他技术。
+- **2018 年 11 月 7 日**：永久关闭所有访问控制组件。 这包括访问控制管理门户、管理服务、STS 和令牌转换规则引擎。 此时，发送到 () 的访问控制的任何请求都将 \<namespace\> 失败。 应在此之前将所有现有应用和服务迁移到其他技术。
 
 > [!NOTE]
 > 策略会禁用在一段时间内未请求令牌的命名空间。 自 2018 年 9 月初起，这段时间目前是 14 天处于不活动状态，但在未来几周内将缩短为 7 天处于不活动状态。 如果有当前已禁用的访问控制命名空间，则可以[下载并安装 ACS PowerShell](#download-and-install-acs-powershell) 以重新启用命名空间。
@@ -129,13 +129,13 @@ https://<mynamespace>.accesscontrol.windows.net
 
 | 服务 | 指南 |
 | ------- | -------- |
-| Azure 服务总线 | [迁移到共享访问签名](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
-| Azure 服务总线中继 | [迁移到共享访问签名](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
-| Azure 托管缓存 | [迁移到用于 Redis 的 Azure 缓存](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#which-azure-cache-offering-is-right-for-me) |
-| Azure DataMarket | [迁移到认知服务 API](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
-| BizTalk 服务 | [迁移到 Azure 应用服务的逻辑应用功能](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
+| Azure 服务总线 | [迁移到共享访问签名](../../service-bus-messaging/service-bus-migrate-acs-sas.md) |
+| Azure 服务总线中继 | [迁移到共享访问签名](../../azure-relay/relay-migrate-acs-sas.md) |
+| Azure 托管缓存 | [迁移到 Azure Cache for Redis](../../azure-cache-for-redis/cache-faq.md) |
+| Azure DataMarket | [迁移到认知服务 API](https://azure.microsoft.com/services/cognitive-services/) |
+| BizTalk 服务 | [迁移到 Azure 应用服务的逻辑应用功能](https://azure.microsoft.com/services/cognitive-services/) |
 | Azure 媒体服务 | [迁移到 Azure AD 身份验证](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
-| Azure 备份 | [升级 Azure 备份代理](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
+| Azure 备份 | [升级 Azure 备份代理](../../backup/backup-azure-file-folder-backup-faq.md) |
 
 <!-- Dynamics CRM: Migrate to new SDK, Dynamics team handling privately -->
 <!-- Azure RemoteApp deprecated in favor of Citrix: https://www.zdnet.com/article/microsoft-to-drop-azure-remoteapp-in-favor-of-citrix-remoting-technologies/ -->
@@ -150,10 +150,10 @@ https://<mynamespace>.accesscontrol.windows.net
 
 | 功能 | 指南 |
 | ------- | -------- |
-| 从 Azure AD 对用户进行身份验证 | 以前，Azure AD 不支持 SharePoint 进行身份验证所需的 SAML 1.1 令牌，并将 ACS 用作中介，使 SharePoint 能够与 Azure AD 令牌格式兼容。 现在，你可以[使用本地应用 Azure AD 应用库 sharepoint 将 sharepoint 直接连接到 Azure AD](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial)。 |
-| [应用身份验证 & 本地 SharePoint 中的服务器到服务器身份验证](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | 不受 ACS 停用的影响；无需更改。 | 
-| [SharePoint 加载项的低信任授权（提供程序托管和 SharePoint 托管）](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | 不受 ACS 停用的影响；无需更改。 |
-| [SharePoint 云混合搜索](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | 不受 ACS 停用的影响；无需更改。 |
+| 从 Azure AD 对用户进行身份验证 | 以前，Azure AD 不支持 SharePoint 进行身份验证所需的 SAML 1.1 令牌，并将 ACS 用作中介，使 SharePoint 能够与 Azure AD 令牌格式兼容。 现在，你可以[使用本地应用 Azure AD 应用库 sharepoint 将 sharepoint 直接连接到 Azure AD](../saas-apps/sharepoint-on-premises-tutorial.md)。 |
+| [应用身份验证 & 本地 SharePoint 中的服务器到服务器身份验证](/SharePoint/security-for-sharepoint-server/authentication-overview) | 不受 ACS 停用的影响；无需更改。 | 
+| [SharePoint 加载项的低信任授权（提供程序托管和 SharePoint 托管）](/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | 不受 ACS 停用的影响；无需更改。 |
+| [SharePoint 云混合搜索](/archive/blogs/spses/cloud-hybrid-search-service-application) | 不受 ACS 停用的影响；无需更改。 |
 
 ### <a name="web-applications-that-use-passive-authentication"></a>使用被动身份验证的 Web 应用程序
 
@@ -197,7 +197,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 | Facebook、Google、Yahoo 帐户 | 支持 | 都不支持 |
 | **协议和 SDK 兼容性** | | |
 | WIF | 支持 | 支持，但说明有限 |
-| WS-Federation | 支持 | 支持 |
+| WS 联合身份验证 | 支持 | 支持 |
 | OAuth 2.0 | 支持草案 13 | 支持最新规范 RFC 6749 |
 | WS-Trust | 支持 | 不支持 |
 | **标记格式** | | |
@@ -214,7 +214,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 
 如果确定 Azure AD 是应用程序和服务的最佳迁移途径，应注意将应用与 Azure AD 集成的方法有两种。
 
-若要使用 WS 联合身份验证或 WIF 来与 Azure AD 集成，建议采用[为非库应用程序配置联合单一登录](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery)中所述的方法。 虽然这篇文章介绍的是如何为 Azure AD 配置基于 SAML 的单一登录，但同样也适用于配置 WS 联合身份验证。 遵循这种方法需要使用 Azure AD Premium 许可证。 这种方法具有两个优势：
+若要使用 WS 联合身份验证或 WIF 来与 Azure AD 集成，建议采用[为非库应用程序配置联合单一登录](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)中所述的方法。 虽然这篇文章介绍的是如何为 Azure AD 配置基于 SAML 的单一登录，但同样也适用于配置 WS 联合身份验证。 遵循这种方法需要使用 Azure AD Premium 许可证。 这种方法具有两个优势：
 
 - 可以完全灵活地自定义 Azure AD 令牌。 可以自定义 Azure AD 发布的声明，使其与访问控制发布的声明相匹配。 尤其是用户 ID 或名称标识符声明。 若要在更换技术后，仍继续为用户接收一致的用户标识符，需确保 Azure AD 和访问控制颁发的用户 ID 一致。
 - 可以配置应用程序专属令牌签名证书，且由自己控制其生存期。
@@ -224,7 +224,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 
 另一种方法是遵循[此代码示例](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation)，其中有关如何设置 WS 联合身份验证的说明略有不同。 此代码示例不使用 WIF，而是使用 ASP.NET 4.5 OWIN 中间件。 不过，应用注册说明也适用于使用 WIF 的应用，但不需要使用 Azure AD Premium 许可证。 
 
-如果采用这种方法，需要了解 [Azure AD 中的签名密钥滚动更新](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover)。 这种方法使用 Azure AD 全局签名密钥来颁发令牌。 默认情况下，WIF 不会自动刷新签名密钥。 如果 Azure AD 轮播全局签名密钥，WIF 实现需要做好接受更改的准备。 有关详细信息，请参阅[有关 Azure AD 中签名密钥滚动更新的重要信息](https://msdn.microsoft.com/library/azure/dn641920.aspx)。
+如果采用这种方法，需要了解 [Azure AD 中的签名密钥滚动更新](../develop/active-directory-signing-key-rollover.md)。 这种方法使用 Azure AD 全局签名密钥来颁发令牌。 默认情况下，WIF 不会自动刷新签名密钥。 如果 Azure AD 轮播全局签名密钥，WIF 实现需要做好接受更改的准备。 有关详细信息，请参阅[有关 Azure AD 中签名密钥滚动更新的重要信息](/previous-versions/azure/dn641920(v=azure.100))。
 
 如果能够通过 OpenID Connect 或 OAuth 协议与 Azure AD 集成，则建议这样做。 [Azure AD 开发人员指南](https://aka.ms/aaddev)中收录了大量有关如何将 Azure AD 集成到 Web 应用程序的文档和指南。
 
@@ -248,7 +248,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 | Facebook、Google、Yahoo 帐户 | 支持 | 本身支持 Facebook 和 Google，使用自定义策略通过 OpenID Connect 联合支持 Yahoo |
 | **协议和 SDK 兼容性** | | |
 | Windows Identity Foundation (WIF) | 支持 | 不支持 |
-| WS-Federation | 支持 | 不支持 |
+| WS 联合身份验证 | 支持 | 不支持 |
 | OAuth 2.0 | 支持草案 13 | 支持最新规范 RFC 6749 |
 | WS-Trust | 支持 | 不支持 |
 | **标记格式** | | |
@@ -265,8 +265,8 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 
 如果确定 Azure AD B2C 是应用程序和服务的最佳迁移途径，请从以下资源着手：
 
-- [Azure AD B2C 文档](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview)
-- [Azure AD B2C 自定义策略](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
+- [Azure AD B2C 文档](../../active-directory-b2c/overview.md)
+- [Azure AD B2C 自定义策略](../../active-directory-b2c/custom-policy-overview.md)
 - [Azure AD B2C 定价](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
 #### <a name="migrate-to-ping-identity-or-auth0"></a>迁移到 Ping 标识或 Auth0

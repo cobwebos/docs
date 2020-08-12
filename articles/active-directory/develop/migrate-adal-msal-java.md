@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 3b775d88409a03f6de54b9db3ab62d6988c5bddd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: ec4103251d27114b8fe40101c0e78c259106a440
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313041"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120875"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>适用于 Java 的 ADAL 到 MSAL 迁移指南
 
@@ -29,7 +29,7 @@ ms.locfileid: "87313041"
 
 MSAL 提供以下优势：
 
-- 由于它使用较新的 Microsoft 标识平台终结点，因此你可以通过 Azure AD 企业到消费者（B2C）来验证一组更广泛的 Microsoft 标识，如 Azure AD 标识、Microsoft 帐户以及社交和本地帐户。
+- 由于它使用较新的 Microsoft 标识平台终结点，因此你可以通过 Azure AD Business to 消费品 (B2C) ，对一组更广泛的 Microsoft 标识进行身份验证，如 Azure AD 标识、Microsoft 帐户以及社交和本地帐户。
 - 用户将获得最佳单一登录体验。
 - 应用程序可以启用增量许可，更轻松地为条件访问提供支持。
 
@@ -37,15 +37,15 @@ MSAL for Java 是我们建议用于 Microsoft 标识平台的身份验证库。 
 
 ## <a name="differences"></a>差异
 
-如果你一直在使用面向开发人员的 Azure AD (v1.0) 终结点（和 ADAL4J），请阅读[ Microsoft 标识平台 (v2.0) 终结点有何不同？](https://docs.microsoft.com/azure/active-directory/develop/azure-ad-endpoint-comparison)
+如果你一直在使用面向开发人员的 Azure AD (v1.0) 终结点（和 ADAL4J），请阅读[ Microsoft 标识平台 (v2.0) 终结点有何不同？](../azuread-dev/azure-ad-endpoint-comparison.md)
 
 ## <a name="scopes-not-resources"></a>范围不是资源
 
-ADAL4J 获取资源的令牌，而 MSAL for Java 则是获取范围的令牌。 许多 MSAL for Java 类需要 scopes 参数。 此参数是一个字符串列表，这些字符串声明所需的权限和请求的资源。 请参阅 [Microsoft Graph 的范围](https://docs.microsoft.com/graph/permissions-reference)查看示例范围。
+ADAL4J 获取资源的令牌，而 MSAL for Java 则是获取范围的令牌。 许多 MSAL for Java 类需要 scopes 参数。 此参数是一个字符串列表，这些字符串声明所需的权限和请求的资源。 请参阅 [Microsoft Graph 的范围](/graph/permissions-reference)查看示例范围。
 
 可以将 `/.default` 作用域后缀添加到资源中，帮助将应用从 v1.0 终结点 (ADAL) 迁移到 Microsoft 标识平台终结点 (MSAL)。 例如，对于 `https://graph.microsoft.com` 的资源值，等效的作用域值为 `https://graph.microsoft.com/.default`。  如果资源未采用 URL 形式，但资源 ID 采用 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` 形式，则仍可以使用作用域值 `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default`。
 
-有关不同类型作用域的更多详细信息，请参阅 [Microsoft 标识平台中的权限和许可](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)以及[接受 v1.0 令牌的 Web API 的作用域](https://docs.microsoft.com/azure/active-directory/develop/msal-v1-app-scopes)两篇文章。
+有关不同类型作用域的更多详细信息，请参阅 [Microsoft 标识平台中的权限和许可](./v2-permissions-and-consent.md)以及[接受 v1.0 令牌的 Web API 的作用域](./msal-v1-app-scopes.md)两篇文章。
 
 ## <a name="core-classes"></a>核心类
 
@@ -80,15 +80,15 @@ MSAL for Java 添加了[令牌缓存](msal-acquire-cache-tokens.md)，在可能�
 
 在 v1.0 中，如果你使用 `https://login.microsoftonline.com/common` 颁发机构，则用户可以使用任何 Azure Active Directory (AAD) 帐户（适用于任何组织）登录。
 
-如果你使用的是 v2.0 `https://login.microsoftonline.com/common` 中的权限，则用户可以使用任何 AAD 组织，甚至 Microsoft 个人帐户（MSA）登录。 在 MSAL for Java 中，若要限制登录到任何 AAD 帐户，则需要使用 `https://login.microsoftonline.com/organizations` 颁发机构（与 ADAL4J 中的行为相同）。 若要指定颁发机构，请在创建 `PublicClientApplication` 类时，在 [PublicClientApplication.Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) 方法中设置 `authority` 参数。
+如果你使用的是 v2.0 `https://login.microsoftonline.com/common` 中的权限，则用户可以使用任何 AAD 组织，甚至 Microsoft 个人帐户 (MSA) 登录。 在 MSAL for Java 中，若要限制登录到任何 AAD 帐户，则需要使用 `https://login.microsoftonline.com/organizations` 颁发机构（与 ADAL4J 中的行为相同）。 若要指定颁发机构，请在创建 `PublicClientApplication` 类时，在 [PublicClientApplication.Builder](https://javadoc.io/doc/com.microsoft.azure/msal4j/1.0.0/com/microsoft/aad/msal4j/PublicClientApplication.Builder.html) 方法中设置 `authority` 参数。
 
 ## <a name="v10-and-v20-tokens"></a>v1.0 和 v2.0 令牌
 
 v1.0 终结点（由 ADAL 使用）只发出 v1.0 令牌。
 
-v2.0 终结点（由 MSAL 使用）可以发出 v1.0 和 v2.0 令牌。 开发人员可以使用 Web API 应用程序清单的属性来选择接受的令牌版本。 请参阅[应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)参考文档中的 `accessTokenAcceptedVersion`。
+v2.0 终结点（由 MSAL 使用）可以发出 v1.0 和 v2.0 令牌。 开发人员可以使用 Web API 应用程序清单的属性来选择接受的令牌版本。 请参阅[应用程序清单](./reference-app-manifest.md)参考文档中的 `accessTokenAcceptedVersion`。
 
-有关 v1.0 和 v2.0 令牌的详细信息，请参阅 [Azure Active Directory 访问令牌](https://docs.microsoft.com/azure/active-directory/develop/access-tokens)。
+有关 v1.0 和 v2.0 令牌的详细信息，请参阅 [Azure Active Directory 访问令牌](./access-tokens.md)。
 
 ## <a name="adal-to-msal-migration"></a>ADAL 到 MSAL 的迁移
 

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: damendo
-ms.openlocfilehash: 14b4d3568c129c77260b00d554db520809dfd670
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: dff5519c1b36a0a7738cb2529c2f4460ecf61e48
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/11/2020
-ms.locfileid: "88068120"
+ms.locfileid: "88117829"
 ---
-# <a name="data-residency-for-the-azure-network-watcher"></a>Azure 网络观察程序的数据驻留
+# <a name="data-residency-for-azure-network-watcher"></a>Azure 网络观察程序的数据驻留
 除了连接监视器 (预览) 服务之外，Azure 网络观察程序不会存储客户数据。
 
 

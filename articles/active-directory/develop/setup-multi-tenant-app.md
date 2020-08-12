@@ -11,21 +11,21 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: a27524f860f17642dcd0640bcb740fc04c187407
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d865ac8bae475365dbfc6c8bad990a1acc7998f0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80881377"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116744"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>如何配置新的多租户应用程序
 
 下面是一系列推荐参阅的可用于详细了解多租户应用程序的主题：
 
-- 概括性了解：[多租户应用程序的意义](https://docs.microsoft.com/azure/active-directory/develop/active-directory-dev-glossary#multi-tenant-application)
-- 概括性了解：[如何将应用程序配置为多租户](https://docs.microsoft.com/azure/active-directory/develop/howto-convert-app-to-be-multi-tenant)
-- 获取有关[如何使用 Azure AD 同意框架实现同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)的分步概述，多租户应用程序需使用此框架
-- 有关详细信息，请参阅[如何对多租户应用程序进行端到端配置和编码](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview)，其中包括如何注册、使用“通用”终结点、实现“用户”和“管理员”同意、如何实现更多高级多层方案
+- 概括性了解：[多租户应用程序的意义](./developer-glossary.md#multi-tenant-application)
+- 概括性了解：[如何将应用程序配置为多租户](./howto-convert-app-to-be-multi-tenant.md)
+- 获取有关[如何使用 Azure AD 同意框架实现同意](./quickstart-register-app.md)的分步概述，多租户应用程序需使用此框架
+- 有关详细信息，请参阅[如何对多租户应用程序进行端到端配置和编码](./howto-convert-app-to-be-multi-tenant.md)，其中包括如何注册、使用“通用”终结点、实现“用户”和“管理员”同意、如何实现更多高级多层方案
 
 ## <a name="next-steps"></a>后续步骤
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

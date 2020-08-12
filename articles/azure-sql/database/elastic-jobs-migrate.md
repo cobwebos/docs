@@ -1,5 +1,5 @@
 ---
-title: 迁移到新的弹性数据库作业
+title: '迁移到新的弹性数据库作业 (预览) '
 description: 迁移到新的弹性数据库作业。
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: johnpaulkee
 ms.author: joke
 ms.reviewer: sstein
 ms.date: 03/13/2019
-ms.openlocfilehash: bb5f7c441ae25e24857d0709b32e17931c3c63a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a1f9e392ddb7b5a79b01459925fe711707db97b5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84038368"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121181"
 ---
-# <a name="migrate-to-the-new-elastic-database-jobs"></a>迁移到新的弹性数据库作业
+# <a name="migrate-to-the-new-elastic-database-jobs-preview"></a>迁移到新的弹性数据库作业 (预览版) 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 现已提供升级版本的[弹性数据库作业](elastic-jobs-overview.md)。
@@ -369,7 +369,7 @@ function Setup-TargetGroup ($tgName, $agent) {
 
 若要将目标（服务器、数据库和自定义集合）迁移到新的作业数据库，请执行 **Migrate-TargetGroups** cmdlet 来执行以下操作：
 
-- 作为服务器和数据库的根级别目标将迁移到名为 "（，）" 的新目标组，并且 \<serverName\> \<databaseName\> 只包含根级别目标。
+- 作为服务器和数据库的根级别目标将迁移到名为 " (，) " 的新目标组 \<serverName\> ，并且 \<databaseName\> 只包含根级别目标。
 - 自定义集合将迁移到包含所有子目标的新目标组。
 
 ```powershell
@@ -565,7 +565,7 @@ function Setup-JobStep ($newJob, $job) {
 
 若要将作业、作业内容、作业触发器和作业计划迁移到新的弹性作业代理的数据库，请执行传入代理的 Migrate-Jobs cmdlet****。
 
-- 具有多个具有不同计划的触发器的作业分为多个作业，命名方案为 " \<jobName\> （ \<scheduleName\> ）"。
+- 具有多个具有不同计划的触发器的作业分为多个作业，命名方案为 " \<jobName\> (\<scheduleName\>) "。
 - 通过添加一个名为 JobStep 具有关联命令文本的默认作业步骤将作业内容迁移到作业。
 - 作业在默认情况下是禁用的，以便在启用作业之前可以先对它们进行验证。
 

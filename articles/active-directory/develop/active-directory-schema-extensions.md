@@ -13,12 +13,12 @@ ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: cd21ef8d697570afb2109bb56d552284c03fd9a2
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 4450b0bcc06b048fd9ad42d2a7bf1c588816eae7
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552775"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115605"
 ---
 # <a name="using-directory-schema-extension-attributes-in-claims"></a>在声明中使用目录架构扩展属性
 
@@ -34,7 +34,7 @@ ms.locfileid: "87552775"
 ## <a name="registering-and-using-directory-schema-extensions"></a>注册和使用目录架构扩展
 可以通过以下两种方式之一注册和填充目录架构扩展属性：
 
-- 通过配置 AD Connect 来创建它们，并将数据从本地 AD 同步到它们。 请参阅[Azure AD Connect 同步目录扩展](/azure/active-directory/hybrid/how-to-connect-sync-feature-directory-extensions)。
+- 通过配置 AD Connect 来创建它们，并将数据从本地 AD 同步到它们。 请参阅[Azure AD Connect 同步目录扩展](../hybrid/how-to-connect-sync-feature-directory-extensions.md)。
 - 使用 Microsoft Graph 注册、设置的值，以及从目录架构扩展属性中读取属性[目录架构扩展 |图形 API 概念](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions)和/或 powershell +[通过 AzureAD PowerShell cmdlet 管理扩展属性](/powershell/azure/active-directory/using-extension-attributes-sample?view=azureadps-2.0)。
 
 ### <a name="emitting-claims-with-data-from-directory-schema-extension-attributes-created-with-ad-connect"></a>发出声明，其中包含通过 AD Connect 创建的目录架构扩展属性中的数据

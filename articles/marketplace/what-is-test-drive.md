@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 06/19/2020
-ms.openlocfilehash: abad72145b095b4da77ec499f936c6912fd970a6
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: bd3b77f80a414dd3db1d5106929fa0e215e34c1f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229442"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121861"
 ---
 # <a name="what-is-a-test-drive"></a>什么是体验版？
 
@@ -24,7 +24,7 @@ ms.locfileid: "86229442"
 
 潜在客户在商业市场上发现你的测试驱动器。 它们提供了其联系信息并同意你的产品/服务的条款和隐私策略，然后在一段固定的时间内访问预配置的环境以试用该服务。 客户可获得对你的产品关键功能和权益的动手、自行指导的试用版，你将获得宝贵的潜在顾客。
 
-## <a name="how-does-it-work"></a>它是如何工作的？
+## <a name="how-does-it-work"></a>工作原理
 
 作为发布者，你可以在合作伙伴中心内管理和配置测试驱动器设置。 安装完成后，它将成为托管实例，该实例将按需为请求它的客户部署。 分配一个测试驱动器实例后，可将其用于一定的时间，然后将其删除以便为另一个客户腾出空间。
 
@@ -44,7 +44,17 @@ ms.locfileid: "86229442"
 
 ### <a name="azure-resource-manager-test-drive"></a>Azure 资源管理器测试驱动器
 
-此部署模板包含构成解决方案的所有 Azure 资源。 适合此方案的产品仅使用 Azure 资源。 这是虚拟机或 Azure 应用产品/服务的唯一测试驱动器选项。
+此部署模板包含构成解决方案的所有 Azure 资源。 适合此方案的产品仅使用 Azure 资源。 Azure 资源管理器测试驱动器适用于这些产品/服务类型： 
+
+- Azure 应用程序
+- Dynamics 365 for Business Central
+- Dynamics 365 for Customer Engagement & PowerApps
+- Dynamics 365 for Operations
+- SaaS
+- 虚拟机
+
+>[!NOTE]
+>这是虚拟机和 Azure 应用程序产品/服务的唯一测试驱动器选项。
 
 ### <a name="hosted-test-drive"></a>托管的测试驱动器
 
@@ -85,6 +95,6 @@ ms.locfileid: "86229442"
 - [技术最佳做法](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [概述](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf)（PDF；确保弹出窗口阻止程序处于禁用状态）
 
-## <a name="next-step"></a>下一步
+## <a name="next-step"></a>后续步骤
 
 - [体验版技术配置](test-drive-technical-configuration.md)

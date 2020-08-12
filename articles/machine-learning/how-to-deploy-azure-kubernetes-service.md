@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 9503abf147ee89ec03e7e1317df823426ea37b1c
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 5c253abf0fa6ae95dff178847209be407fb5bca5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87758877"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120824"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes 服务群集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,7 +41,7 @@ AKS 群集和 AML 工作区可以位于不同的资源组中。
 > 创建或附加过程是一次性任务。 将 AKS 群集连接到工作区后，便可将其用于部署。 如果不再需要 AKS 群集，可将其拆离或删除。 拆离或删除后，将无法再部署到该群集。
 
 > [!IMPORTANT]
-> 强烈建议在部署到 web 服务之前进行本地调试。有关详细信息，请参阅[本地调试](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
+> 建议你在部署到 web 服务之前本地进行调试。 有关详细信息，请参阅[本地调试](https://docs.microsoft.com/azure/machine-learning/how-to-troubleshoot-deployment#debug-locally)
 >
 > 你还可以参阅 Azure 机器学习-[部署到本地笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
 
@@ -88,7 +88,7 @@ __Authroized IP 范围仅适用于标准负载均衡器。__
 对于工作区而言，创建或附加 AKS 群集是一次性过程。 可以将此群集重复用于多个部署。 如果删除该群集或包含该群集的资源组，则在下次需要进行部署时必须创建新群集。 可将多个 AKS 群集附加到工作区。
  
 Azure 机器学习现在支持使用启用了专用链接的 Azure Kubernetes 服务。
-若要创建专用 AKS 群集，请[在此处](https://docs.microsoft.com/azure/aks/private-clusters)执行文档
+若要创建专用 AKS 群集，请[在此处](https://docs.microsoft.com/azure/aks/private-clusters)使用文档
 
 > [!TIP]
 > 如果要使用 Azure 虚拟网络保护 AKS 群集，则必须先创建虚拟网络。 有关详细信息，请参阅 [Azure 虚拟网络中的安全试验和推理](how-to-enable-virtual-network.md#aksvnet)。
@@ -109,6 +109,13 @@ from azureml.core.compute import AksCompute, ComputeTarget
 # For example, to create a dev/test cluster, use:
 # prov_config = AksCompute.provisioning_configuration(cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST)
 prov_config = AksCompute.provisioning_configuration()
+# Example configuration to use an existing virtual network
+# prov_config.vnet_name = "mynetwork"
+# prov_config.vnet_resourcegroup_name = "mygroup"
+# prov_config.subnet_name = "default"
+# prov_config.service_cidr = "10.0.0.0/16"
+# prov_config.dns_service_ip = "10.0.0.10"
+# prov_config.docker_bridge_cidr = "172.17.0.1/16"
 
 aks_name = 'myaks'
 # Create the cluster
@@ -267,7 +274,7 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 ### <a name="understand-the-deployment-processes"></a>了解部署过程
 
-"部署" 一词同时用于 Kubernetes 和 Azure 机器学习。 在这两种上下文中，"部署" 的含义非常不同。 在 Kubernetes 中， `Deployment` 是使用声明性 YAML 文件指定的具体实体。 Kubernetes 与 `Deployment` 其他 Kubernetes 实体（例如和）具有定义的生命周期和具体的关系 `Pods` `ReplicaSets` 。 可以从文档和视频中了解 Kubernetes [Kubernetes？](https://aka.ms/k8slearning)。
+"部署" 一词同时用于 Kubernetes 和 Azure 机器学习。 "部署" 在这两个上下文中具有不同的含义。 在 Kubernetes 中， `Deployment` 是使用声明性 YAML 文件指定的具体实体。 Kubernetes 与 `Deployment` 其他 Kubernetes 实体（例如和）具有定义的生命周期和具体的关系 `Pods` `ReplicaSets` 。 可以从文档和视频中了解 Kubernetes [Kubernetes？](https://aka.ms/k8slearning)。
 
 在 Azure 机器学习中，将使用 "部署"，以提供更常见的功能并清理项目资源。 Azure 机器学习考虑部署部分的步骤如下：
 

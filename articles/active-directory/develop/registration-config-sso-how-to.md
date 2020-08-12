@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: 9b6451d29a3a874e09d74cbe664662a395b647f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 465adbb71abaa45160399ecba2ebfb692a8307c2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82890465"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120671"
 ---
 # <a name="how-to-configure-single-sign-on-for-an-application"></a>如何为应用程序配置单一登录
 
@@ -26,20 +26,20 @@ ms.locfileid: "82890465"
 
 * 如果生成移动应用，可能需要进行额外配置以启用中转或非中转 SSO。
 
-对于 Android 系统，请参阅[在 Android 中启用跨应用 SSO](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)。<br>
+对于 Android 系统，请参阅[在 Android 中启用跨应用 SSO](../azuread-dev/howto-v1-enable-sso-android.md)。<br>
 
-对于 iOS 系统，请参阅[在 iOS 中启用跨应用 SSO](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)。
+对于 iOS 系统，请参阅[在 iOS 中启用跨应用 SSO](../azuread-dev/howto-v1-enable-sso-ios.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure AD SSO](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)<br>
+[Azure AD SSO](../manage-apps/what-is-single-sign-on.md)<br>
 
-[在 Android 中启用跨应用 SSO](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-android)<br>
+[在 Android 中启用跨应用 SSO](../azuread-dev/howto-v1-enable-sso-android.md)<br>
 
-[在 iOS 中启用跨应用 SSO](https://docs.microsoft.com/azure/active-directory/develop/active-directory-sso-ios)<br>
+[在 iOS 中启用跨应用 SSO](../azuread-dev/howto-v1-enable-sso-ios.md)<br>
 
-[将应用与 AzureAD 集成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)<br>
+[将应用与 AzureAD 集成](./quickstart-register-app.md)<br>
 
-[Microsoft 标识平台终结点中的权限和许可](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes)<br>
+[Microsoft 标识平台终结点中的权限和许可](./v2-permissions-and-consent.md)<br>
 
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

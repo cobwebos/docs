@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 8/7/2020
-ms.openlocfilehash: 518d3880a740de2cda4f01e362d8a5ef7865b361
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 7697ba514b74935f8da6d71cdfb380e704d66f56
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037297"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121351"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL 数据库无服务器
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -119,7 +119,7 @@ Azure SQL 数据库中单一数据库的无服务器计算层由计算自动缩�
 - 异地复制（活动异地复制和自动故障转移组）。
 - 长期备份保留 (LTR)。
 - SQL 数据同步中使用的同步数据库。与同步数据库不同，中心数据库和成员数据库支持自动暂停。
-- 弹性作业中使用的作业数据库。
+- 弹性作业中使用的作业数据库 (预览) 。
 
 在部署某些需要数据库联机的服务更新期间，会暂时阻止自动暂停。  在这种情况下，一旦服务更新完成，就会再次允许自动暂停。
 
@@ -331,7 +331,7 @@ vCore 单位价格是每个 vCore 每秒的费用。 请参考 [Azure SQL 数据
 
 如果暂停无服务器数据库，则计算帐单为零。  如果未暂停无服务器数据库，则最小计算费用将不会低于最大 (最小值 Vcore，最小内存 GB * 1/3) 的 Vcore 量。
 
-示例:
+示例：
 
 - 假设无服务器数据库被暂停并配置为具有8个最大 Vcore，1分钟 vCore 对应于 3.0 GB 的最小内存。  然后，最小计算帐单基于 max (1 vCore，3.0 GB * 1 vCore/3 GB) = 1 vCore。
 - 假设无服务器数据库被暂停并配置为具有最大 4 GB Vcore 和0.5 分钟 Vcore，对应于 2.1 GB 的最小内存。  然后，最小计算帐单基于 max (0.5 Vcore，2.1 GB * 1 vCore/3 GB) = 0.7 Vcore。

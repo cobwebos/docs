@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 73a96f295d5dfa74130927e5096e9278a0e348e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f611eefc50fede2ef4d738cd5abfd6afcc08b9ff
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83682429"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120773"
 ---
 # <a name="publisher-verification-preview"></a>发布者验证（预览版）
 
@@ -42,13 +42,13 @@ ms.locfileid: "83682429"
 
 -  一个有效的 [Microsoft 合作伙伴网络](https://partner.microsoft.com/membership)帐户的 MPN ID，该帐户已完成[验证](/partner-center/verification-responses)过程。 这个 MPN 帐户必须是贵组织的[合作伙伴全局帐户 (PGA)](/partner-center/account-structure#the-top-level-is-the-partner-global-account-pga)。 
 
--  一个 Azure AD 租户，具有经 DNS 验证的[自定义域](/azure/active-directory/fundamentals/add-custom-domain)。 自定义域必须与上一步中验证时使用的电子邮件地址的域相匹配。 
+-  一个 Azure AD 租户，具有经 DNS 验证的[自定义域](../fundamentals/add-custom-domain.md)。 自定义域必须与上一步中验证时使用的电子邮件地址的域相匹配。 
 
 -  一个在 Azure AD 租户中注册的应用，使用之前使用的相同域配置了[发布者域](howto-configure-publisher-domain.md)。 
 
 -  执行验证的用户必须获得授权，才能对 Azure AD 中的应用注册和合作伙伴中心中的 MPN 帐户进行更改。 
 
-    -  在 Azure AD 中，此用户必须是应用的所有者或拥有以下[角色](/azure/active-directory/users-groups-roles/directory-assign-admin-roles)之一。应用程序管理员、云应用程序管理员和全局管理员。 
+    -  在 Azure AD 中，此用户必须是应用的所有者或拥有以下[角色](../users-groups-roles/directory-assign-admin-roles.md)之一。应用程序管理员、云应用程序管理员和全局管理员。 
 
     -  在合作伙伴中心，该用户必须拥有以下[角色](/partner-center/permissions-overview)之一。MPN 管理员、帐户管理员或全局管理员（这是 Azure AD 中主导的共享角色）。
     
@@ -67,7 +67,7 @@ ms.locfileid: "83682429"
 
   此外，与 Microsoft 365 集成的开发人员可以从这些计划获得更多好处。 有关详细信息，请参阅 [ Microsoft 365 发布者证明](/microsoft-365-app-certification/docs/attestation)和 [Microsoft 365 应用认证](/microsoft-365-app-certification/docs/certification)。 
 
-- 这与 Azure AD 应用程序库一样吗？ 不一样。无发布者验证是一项独立计划，是对 [Azure Active Directory 应用程序库](/azure/active-directory/azuread-dev/howto-app-gallery-listing)的补充。 符合上述标准的开发人员应完成发布者验证过程（与参与该计划无关）。 
+- 这与 Azure AD 应用程序库一样吗？ 不一样。无发布者验证是一项独立计划，是对 [Azure Active Directory 应用程序库](../azuread-dev/howto-app-gallery-listing.md)的补充。 符合上述标准的开发人员应完成发布者验证过程（与参与该计划无关）。 
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何[将应用标记为“发布者已验证”](mark-app-as-publisher-verified.md)。

@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: reference
 ms.date: 08/09/2020
 ms.subservice: alerts
-ms.openlocfilehash: 5ea28a7a4669fd000800bf62b7b940abefcf7551
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: c6b7d1fb28e81957ded56662a06946e56c3dc00e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030956"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114891"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>排查 Azure Monitor 指标警报的问题 
 
@@ -108,9 +108,9 @@ ms.locfileid: "88030956"
 
 ## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>定义尚未发出的自定义指标的警报规则
 
-创建指标警报规则时，将根据[指标定义 API](/rest/api/monitor/metricdefinitions/list)验证指标名称，以确保其存在。 在某些情况下，即使在发出之前，也要根据自定义指标创建警报规则。 例如，使用 ARM 模板创建 (时) 将发出自定义指标的 Application Insights 资源，以及用于监视该指标的警报规则。
+创建指标警报规则时，将根据[指标定义 API](/rest/api/monitor/metricdefinitions/list)验证指标名称，以确保其存在。 在某些情况下，即使在发出之前，也要根据自定义指标创建警报规则。 例如，在创建 (时使用资源管理器模板) 将发出自定义指标的 Application Insights 资源，以及用于监视该指标的警报规则。
 
-若要避免在尝试验证自定义指标的定义时部署失败，可以在预警规则的 "条件" 部分中使用*skipMetricValidation*参数，这将导致跳过指标验证。 请参阅下面的示例，了解如何将此参数用于 ARM 模板 (有关创建指标警报规则的完整 ARM 模板示例，请参阅[此处]( ./alerts-metric-create-templates.md)) 。
+若要避免在尝试验证自定义指标的定义时部署失败，可以在预警规则的 "条件" 部分中使用*skipMetricValidation*参数，这将导致跳过指标验证。 请参阅下面的示例，了解如何在资源管理器模板中使用此参数。 有关详细信息，请参阅[用于创建指标警报规则的完整资源管理器模板示例](./alerts-metric-create-templates.md)。
 
 ```json
 "criteria": {

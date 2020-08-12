@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/28/2020
 ms.topic: reference
-ms.openlocfilehash: aab914caa2647146639aa366f558c80bebcfde54
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8e439a055b71ed291573965c561ee31610e3ed4
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84809934"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121606"
 ---
 # <a name="vm-sizes"></a>VM 大小
 
@@ -76,7 +76,7 @@ void CreateRenderingSession(ApiHandle<AzureFrontend> frontend)
 
 可以通过两种方法来确定模型或场景中构成大小 VM 预算限制的多边形数量 `standard` ：
 * 在模型转换端检索[转换输出 json 文件](../how-tos/conversion/get-information.md)，然后检查 `numFaces` [ *inputStatistics*节](../how-tos/conversion/get-information.md#the-inputstatistics-section)中的条目。
-* 如果你的应用程序处理的是动态内容，则在运行时可以动态查询呈现的多边形的数目。 使用[性能评估查询](../overview/features/performance-queries.md#performance-assessment-queries)并 `polygonsRendered` 在结构中检查成员 `FrameStatistics` 。 棋盘背景始终是褪色的，并有一些延迟，以确保在执行此异步查询后可以执行用户操作。 例如，用户操作可以隐藏或删除模型实例。
+* 如果你的应用程序处理的是动态内容，则在运行时可以动态查询呈现的多边形的数目。 使用[性能评估查询](../overview/features/performance-queries.md#performance-assessment-queries)并 `polygonsRendered` 在结构中检查成员 `FrameStatistics` 。 `polygonsRendered` `bad` 当呈现器达到多边形限制时，该字段将设置为。 棋盘背景始终是褪色的，并有一些延迟，以确保在执行此异步查询后可以执行用户操作。 例如，用户操作可以隐藏或删除模型实例。
 
 ## <a name="pricing"></a>定价
 

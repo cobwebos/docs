@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: ad66e0698cf0705c7a4db90a6dd515b71fed84e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85c406fc561424d7b02d39dfd58dc3c8fe34aab2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85478614"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116081"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序配置 SAML 令牌中颁发的角色声明
 
@@ -88,14 +88,14 @@ ms.locfileid: "85478614"
 
       ![用于获取需修改的服务主体的查询](./media/active-directory-enterprise-app-role-management/graph-explorer-new2.png)
 
-    如， 从服务主体对象提取 **appRoles** 属性。
+    g. 从服务主体对象提取 **appRoles** 属性。
 
       ![appRoles 属性的详细信息](./media/active-directory-enterprise-app-role-management/graph-explorer-new3.png)
 
       > [!Note]
       > 如果使用自定义应用（而不是 Azure 市场应用），则会看到两个默认角色：user 和 msiam_access。 对于 Marketplace 应用，msiam_access 是唯一的默认角色。 不需对默认角色进行任何更改。
 
-    h.如果该值不存在，请单击“添加行”。 为应用程序生成新角色。
+    h. 为应用程序生成新角色。
 
       以下 JSON 是 **appRoles** 对象的示例。 创建类似的对象，以添加应用程序所需的角色。
 
@@ -173,7 +173,7 @@ ms.locfileid: "85478614"
 
     e. 在“源属性”  列表中，键入为该行显示的属性值。
 
-    f. 选择“保存”。 
+    f. 选择“保存”。
 
 10. 若要在标识提供者启动的单一登录中测试应用程序，请登录到[访问面板](https://myapps.microsoft.com)，然后选择应用程序磁贴。 在 SAML 令牌中，应该会看到具有所提供的声明名称的用户的所有已分配角色。
 
@@ -265,7 +265,7 @@ ms.locfileid: "85478614"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关其他步骤，请参阅[应用文档](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)。
+有关其他步骤，请参阅[应用文档](../saas-apps/tutorial-list.md)。
 
 <!--Image references-->
 <!--Image references-->

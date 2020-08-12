@@ -7,12 +7,12 @@ ms.date: 08/06/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: a0469feed391025f8dd50a7f8b11b96265b0df29
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 09442e01fa160d3851169a51230fa4cbef7e0980
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987403"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118563"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-net-sdk-request-timeout"></a>诊断和解决 Azure Cosmos DB .NET SDK 请求超时
 如果 SDK 在超时限制之前无法完成请求，则会出现 HTTP 408 错误。
@@ -51,6 +51,9 @@ SDK 中的所有异步操作都有一个可选的 CancellationToken 参数。 �
 如果在 Azure App Service 上运行，请遵循[连接错误疑难解答指南](../app-service/troubleshoot-intermittent-outbound-connection-errors.md#cause)，并[使用应用服务诊断](https://azure.github.io/AppService/2018/03/01/Deep-Dive-into-TCP-Connections-in-App-Service-Diagnostics.html)。
 
 #### <a name="solution-3"></a>解决方案3：
+如果在 Azure Functions 上运行，请验证是否遵循了为所有涉及的服务维护单独/静态客户端的[Azure Functions 建议](../azure-functions/manage-connections.md#static-clients)， (包括 Cosmos DB) 并基于 Function App 托管的类型和大小检查[服务限制](../azure-functions/functions-scale.md#service-limits)。
+
+#### <a name="solution-4"></a>解决方案4：
 如果使用 HTTP 代理，请确保它支持 SDK `ConnectionPolicy` 中配置的连接数。
 否则，将遇到连接问题。
 

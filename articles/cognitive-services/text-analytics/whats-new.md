@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 67850490a3c1d972d4d03eec545068b1d9eb9fff
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 95e9b208159e9af41563f12ce8af7892e13f6629
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986292"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121844"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
@@ -23,9 +23,45 @@ ms.locfileid: "87986292"
 
 ## <a name="august-2020"></a>2020 年 8 月
 
+### <a name="general-api-updates"></a>常规 API 更新
+
 * V3 的模型版本 `2020-07-01` `/keyphrases` `/pii` 和 `/languages` 终结点，这些终结点用于添加：
     * 命名实体识别的其他政府和国家特定[实体类别](named-entity-types.md?tabs=personal)。
 * 对于超过已发布[数据限制](concepts/data-limits.md)的 v3 API 请求，将返回 HTTP 400 错误。 
+
+### <a name="text-analytics-for-health-container-august-updates"></a>运行状况容器的文本分析8月更新
+
+以下更新仅特定于运行状况容器文本分析的8月发行版。
+
+* 新模型-版本文本分析用于运行状况：`2020-07-24`
+* 用于发送运行状况请求的文本分析的新 URL：`http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` 
+
+JSON 响应中的以下属性已更改：
+
+* `type` 已重名为 `category` 
+* `score` 已重名为 `confidenceScore`
+* JSON 输出的字段中的实体 `category` 现在采用 pascal 大小写格式。 以下实体已重命名：
+    * `EXAMINATION_RELATION` 已重命名为 `RelationalOperator`。
+    * `EXAMINATION_UNIT` 已重命名为 `MeasurementUnit`。
+    * `EXAMINATION_VALUE` 已重命名为 `MeasurementValue`。
+    * `ROUTE_OR_MODE`已重命名 `MedicationRoute` 。
+    * 关系实体已 `ROUTE_OR_MODE_OF_MEDICATION` 重命名为 `RouteOfMedication` 。
+
+添加了以下实体：
+
+* NER
+    * `AdministrativeEvent`
+    * `CareEnvironment`
+    * `HealthcareProfession`
+    * `MedicationForm` 
+
+* 关系提取
+    * `DirectionOfCondition`
+    * `DirectionOfExamination`
+    * `DirectionOfTreatment`
+
+> [!div class="nextstepaction"]
+> [了解有关运行状况容器文本分析的详细信息](how-tos/text-analytics-for-health.md)
 
 ## <a name="july-2020"></a>2020 年 7 月 
 
@@ -39,10 +75,6 @@ ms.locfileid: "87986292"
 * 关系提取
 * 实体链接
 * 否定
-
-
-> [!div class="nextstepaction"]
-> [了解有关运行状况容器文本分析的详细信息](how-tos/text-analytics-for-health.md)
 
 ## <a name="may-2020"></a>2020 年 5 月
 
@@ -107,7 +139,7 @@ JSON 响应中以下属性的名称已更改（如果适用）：
 
 * 以下常规实体类型的识别仅 (英语) ：
     * PersonType
-    * 产品
+    * Products
     * 事件
     * 地缘政治实体 (GPE) 作为 "位置" 下的子类型
     * 技能
@@ -117,7 +149,7 @@ JSON 响应中以下属性的名称已更改（如果适用）：
     * 组织
     * 在数量下作为子类型的年龄
     * 日期作为 DateTime 下的子类型
-    * Email 
+    * 电子邮件 
     * 电话号码 (仅限我们) 
     * URL
     * IP 地址

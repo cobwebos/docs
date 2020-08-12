@@ -13,12 +13,12 @@ ms.date: 08/13/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
-ms.openlocfilehash: 53a44ed270dc47725dddfd57d6a212e859d46bad
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 0574eb0b8ab0b5d4de671ad44a45a85e434393f1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552707"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115571"
 ---
 # <a name="app-registration-reference"></a>应用注册参考
 
@@ -26,7 +26,7 @@ ms.locfileid: "87552707"
 
 ## <a name="my-applications-or-converged-applications"></a>我的应用程序或聚合应用程序
 
-此列表包含所有已注册且可与 Microsoft 标识平台 (v2.0) 终结点搭配使用的应用程序。 这些应用程序能够让用户使用个人 Microsoft 帐户和工作/学校帐户从 Azure Active Directory 登录。 若要了解有关该标识平台终结点的详细信息，请参阅 [v2.0 概述](active-directory-appmodel-v2-overview.md)。 这些应用程序也可以用来与 Microsoft 帐户身份验证终结点 `https://login.live.com` 集成。
+此列表包含所有已注册且可与 Microsoft 标识平台 (v2.0) 终结点搭配使用的应用程序。 这些应用程序能够让用户使用个人 Microsoft 帐户和工作/学校帐户从 Azure Active Directory 登录。 若要了解有关该标识平台终结点的详细信息，请参阅 [v2.0 概述](./v2-overview.md)。 这些应用程序也可以用来与 Microsoft 帐户身份验证终结点 `https://login.live.com` 集成。
 
 ## <a name="azure-ad-only-applications"></a>Azure AD 专用应用程序
 
