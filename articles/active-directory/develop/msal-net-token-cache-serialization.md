@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: e86b89fbf325eb0af5e4127e7fe113b87b1b70c2
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: f9ad5eeec17027b0e2891069af703c28aee9c528
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874259"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119090"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>MSAL.NET 中的令牌缓存序列化
 [获取令牌](msal-acquire-cache-tokens.md)后，Microsoft 身份验证库 (MSAL) 会缓存该令牌。  在通过其他方法获取令牌之前，应用程序代码应该先尝试从缓存中获取令牌。  本文介绍 MSAL.NET 中令牌缓存的默认序列化和自定义序列化。
@@ -325,7 +325,7 @@ services.AddDistributedSqlServerCache(options =>
 });
 ```
 
-它们的用法在 [ASP.NET Core Web 应用教程](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/)的 [2-2 令牌缓存](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)阶段中进行了说明。
+它们的用法在 [ASP.NET Core Web 应用教程](/aspnet/core/tutorials/first-mvc-app/)的 [2-2 令牌缓存](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)阶段中进行了说明。
 
 ## <a name="next-steps"></a>后续步骤
 

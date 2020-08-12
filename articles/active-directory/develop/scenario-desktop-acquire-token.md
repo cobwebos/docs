@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/18/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 1caddf2fba8544bfbb1108865a459f4166af680b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: c394a3e84982db31b5727d170c143e9c07636d62
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846065"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121062"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>用于调用 Web API 的桌面应用：获取令牌
 
@@ -175,7 +175,7 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>必需参数
 
-`AcquireTokenInteractive` 只有一个必需的参数 ``scopes``，其中包含一个定义需要令牌的范围的字符串枚举。 如果令牌用于 Microsoft Graph，则可以在“权限”一节中每个 Microsoft Graph API 的 API 参考中找到所需范围。 例如，若要[列出用户的联系人](https://docs.microsoft.com/graph/api/user-list-contacts)，必须使用范围“User.Read”、“Contacts.Read”。 有关详细信息，请参阅 [Microsoft Graph 权限参考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
+`AcquireTokenInteractive` 只有一个必需的参数 ``scopes``，其中包含一个定义需要令牌的范围的字符串枚举。 如果令牌用于 Microsoft Graph，则可以在“权限”一节中每个 Microsoft Graph API 的 API 参考中找到所需范围。 例如，若要[列出用户的联系人](/graph/api/user-list-contacts)，必须使用范围“User.Read”、“Contacts.Read”。 有关详细信息，请参阅 [Microsoft Graph 权限参考](https://developer.microsoft.com/graph/docs/concepts/permissions_reference)。
 
 在 Android 上，还需要按如下所示使用 `.WithParentActivityOrWindow` 指定父活动，以便在交互后令牌返回到该父活动。 如果未指定父活动，则调用 `.ExecuteAsync()` 时会引发异常。
 
@@ -278,7 +278,7 @@ MSAL.NET 团队已重新编写 UI 测试，以使用此扩展性机制。 如果
 
 ##### <a name="provide-a-great-experience-with-systemwebviewoptions"></a>通过 SystemWebViewOptions 提供极佳体验
 
-在 MSAL.NET 4.1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) 中，可以指定：
+在 MSAL.NET 4.1 [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) 中，可以指定：
 
 - 在系统 Web 浏览器中出现登录或许可错误时，要转到的 URI (`BrowserRedirectError`) 或需要显示的 HTML 片段 (`HtmlMessageError`)。
 - 在成功完成登录或许可时，要转到的 URI (`BrowserRedirectSuccess`) 或需要显示的 HTML 片段 (`HtmlMessageSuccess`)。
@@ -433,13 +433,13 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
   - 或者，租户管理员必须已事先许可租户中的所有用户使用该应用程序。
   - 换句话说：
     - 开发人员已在 Azure 门户中自行选择“授予”按钮。
-    - 或者，租户管理员已在应用程序注册的“API 权限”选项卡中选择“授予/撤销 {租户域} 的管理员许可”按钮。  有关详细信息，请参阅[添加用于访问 Web API 的权限](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis#add-permissions-to-access-web-apis)。
-    - 或者，你已提供某种方式让用户许可应用程序。 有关详细信息，请参阅[请求单个用户的许可](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-individual-user-consent)。
-    - 或者，你已提供某种方式让租户管理员许可应用程序。 有关详细信息，请参阅[管理员许可](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-consent-for-an-entire-tenant)。
+    - 或者，租户管理员已在应用程序注册的“API 权限”选项卡中选择“授予/撤销 {租户域} 的管理员许可”按钮。  有关详细信息，请参阅[添加用于访问 Web API 的权限](./quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)。
+    - 或者，你已提供某种方式让用户许可应用程序。 有关详细信息，请参阅[请求单个用户的许可](./v2-permissions-and-consent.md#requesting-individual-user-consent)。
+    - 或者，你已提供某种方式让租户管理员许可应用程序。 有关详细信息，请参阅[管理员许可](./v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)。
 
 - 已针对 .NET Desktop、.NET Core 和 UWP 应用启用此流。
 
-有关许可的详细信息，请参阅 [Microsoft 标识平台的权限和许可](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)。
+有关许可的详细信息，请参阅 [Microsoft 标识平台的权限和许可](./v2-permissions-and-consent.md)。
 
 ### <a name="learn-how-to-use-it"></a>了解其用法
 

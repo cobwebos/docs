@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 1adff446e6d41e30db109d0871811dc651f1f4f5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b16ee98b44e52482423229a0940c8927a94d4c83
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026233"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118665"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>用于登录用户的 Web 应用：应用注册
 
@@ -41,7 +41,7 @@ ms.locfileid: "87026233"
 > 要使用的门户不同，具体取决于你的应用程序是在 Microsoft Azure 公有云还是在全国或主权云中运行。 有关详细信息，请参阅[国家云](./authentication-national-cloud.md#app-registration-endpoints)。
 
 
-1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。 或者，登录到所选的适用于全国云的[Azure 门户](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#app-registration-endpoints)。
+1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。 或者，登录到所选的适用于全国云的[Azure 门户](./authentication-national-cloud.md#app-registration-endpoints)。
 2. 如果你的帐户有权限访问多个租户，请在右上角选择该帐户。 然后，将门户会话设置为所需的 Azure Active Directory (Azure AD) 租户。
 3. 在左侧窗格中选择“Azure Active Directory”服务，然后选择“应用注册” > “新建注册”。   
 
@@ -64,16 +64,16 @@ ms.locfileid: "87026233"
 1. 出现“注册应用程序”页后，请输入应用程序的注册信息：
    1. 为应用程序选择支持的帐户类型。 （请参阅[支持的帐户类型](./v2-supported-account-types.md)。）
    1. 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称。 例如，输入 **MailApp-openidconnect-v2**。
-   1. 在 "**重定向 URI （可选）** " 部分中，在组合框中选择 " **Web** "，然后输入以下重定向 URI： **https://localhost:44326/** 。
+   1. 在 "**重定向 uri (可选) ** " 部分中，在组合框中选择 " **Web** "，然后输入以下重定向 URI： **https://localhost:44326/** 。
 1. 选择“注册”以创建应用程序。
 1. 选择“身份验证”菜单。****
 1. 在 "**高级设置**" "  |  **隐式授予**" 部分中，选择 " **ID 令牌**"。 本示例需要启用[隐式授权流](v2-oauth2-implicit-grant-flow.md)才能将用户登录。
-1. 选择“保存” 。
+1. 选择“保存”。
 
 # <a name="java"></a>[Java](#tab/java)
 
 1. “注册应用程序”页显示后，请输入应用程序的显示名称。**** 例如，输入 **java-webapp**。
-1. 选择**任何组织目录和个人 Microsoft 帐户中的帐户（例如 Skype、Xbox、Outlook.com）**，然后选择 " **WEB 应用/API** " 作为**应用程序类型**。
+1. 选择**任何组织目录中的帐户和个人 Microsoft 帐户 (例如 Skype、Xbox、Outlook.com) **，然后选择 " **WEB 应用/API** " 作为 "**应用程序类型**"。
 1. 选择“注册”**** 以注册应用程序。
 1. 在左侧菜单中选择“身份验证”。**** 在“重定向 URI”下选择“Web”。********
 
@@ -91,14 +91,14 @@ ms.locfileid: "87026233"
 
    1. 输入密钥说明。
    1. 选择密钥持续时间“1 年”。****
-   1. 选择“添加”  。
+   1. 选择“添加”。
    1. 显示密钥值后，请将其复制供稍后使用。 此值不会再次显示，也无法通过任何其他方式检索。
 
 # <a name="python"></a>[Python](#tab/python)
 
 1. 出现“注册应用程序”页后，请输入应用程序的注册信息：
    1. 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称。 例如，输入 **python-webapp**。
-   1. 将**支持的帐户类型**更改为**组织目录和个人 Microsoft 帐户中的帐户（例如 Skype、Xbox、Outlook.com）**。
+   1. 将**支持的帐户类型**更改为**任何组织目录中的帐户和个人 Microsoft 帐户 (例如 Skype、Xbox、Outlook.com) **。
    1. 在“重定向 URI (可选)”部分，选择组合框中的“Web”并输入以下重定向 URI：**http://localhost:5000/getAToken**。********
 1. 选择“注册”以创建应用程序。
 1. 在应用的“概述”页上，找到“应用程序(客户端) ID”值，并记下该值供稍后使用。  稍后需要使用它为此项目配置 Visual Studio 配置文件。
@@ -107,7 +107,7 @@ ms.locfileid: "87026233"
 
    1. 输入密钥说明。
    1. 选择密钥持续时间“1 年”。
-   1. 选择“添加”  。
+   1. 选择“添加”。
    1. 显示密钥值后，请将其复制。 稍后需要用到此信息。
 ---
 
@@ -119,7 +119,7 @@ ms.locfileid: "87026233"
 > - MyOrg（仅限此组织目录中的帐户）
 > - AnyOrg（任何组织目录中的帐户）
 >
-> 你可以创建一个应用程序，该应用程序使用其 Microsoft 个人帐户（例如 Skype、Xbox 或 Outlook.com）来登录用户。 首先，创建一个多租户应用程序。 支持的帐户类型是任何组织目录中的帐户。 然后， [`accessTokenAcceptedVersion`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#accesstokenacceptedversion-attribute) **2** [`signInAudience`](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#signinaudience-attribute) `AzureADandPersonalMicrosoftAccount` 在 Azure 门户的[应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)中，将属性更改为2，并将属性更改为。 有关详细信息，请参阅 ASP.NET Core 教程中的[步骤 1.3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) 。 可以采用任何语言将此步骤通用化到 web 应用。
+> 你可以创建一个应用程序，该应用程序使用其个人 Microsoft 帐户 (例如，Skype、Xbox 或 Outlook.com) 来登录用户。 首先，创建一个多租户应用程序。 支持的帐户类型是任何组织目录中的帐户。 然后， [`accessTokenAcceptedVersion`](./reference-app-manifest.md#accesstokenacceptedversion-attribute) **2** [`signInAudience`](./reference-app-manifest.md#signinaudience-attribute) `AzureADandPersonalMicrosoftAccount` 在 Azure 门户的[应用程序清单](./reference-app-manifest.md)中，将属性更改为2，并将属性更改为。 有关详细信息，请参阅 ASP.NET Core 教程中的[步骤 1.3](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/1-WebApp-OIDC/1-3-AnyOrgOrPersonal#step-1-register-the-sample-with-your-azure-ad-tenant) 。 可以采用任何语言将此步骤通用化到 web 应用。
 
 ## <a name="next-steps"></a>后续步骤
 

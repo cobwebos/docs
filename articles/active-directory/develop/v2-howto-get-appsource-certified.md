@@ -12,12 +12,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 18102b5501bcfca0aabc6609b8472aa45c23ec7f
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 08acaf4f0171e586ff2cc3f52134395fb5925df7
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87172567"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118801"
 ---
 # <a name="get-appsource-certified-for-azure-active-directory"></a>获取 Azure Active Directory 的 AppSource 认证
 
@@ -40,7 +40,7 @@ ms.locfileid: "87172567"
 
 单租户应用程序是仅接受来自定义的 Azure AD 实例的用户登录的应用程序。** 将每个用户作为来宾帐户添加到应用程序注册的 Azure AD 实例后，外部用户（包括来自其他组织的工作或学校帐户，或个人帐户）可以登录到单租户应用程序。 
 
-可以通过 [Azure AD B2B 协作](../b2b/what-is-b2b.md)将用户作为来宾帐户添加到 Azure AD，或者[以编程方式](../../active-directory-b2c/code-samples.md)执行此操作。 使用 B2B 时，用户可以创建自助服务门户，而无需接收登录邀请。 有关详细信息，请参阅 [Azure AD B2B 协作注册的自助服务门户](https://docs.microsoft.com/azure/active-directory/b2b/self-service-portal)。
+可以通过 [Azure AD B2B 协作](../external-identities/what-is-b2b.md)将用户作为来宾帐户添加到 Azure AD，或者[以编程方式](../../active-directory-b2c/code-samples.md)执行此操作。 使用 B2B 时，用户可以创建自助服务门户，而无需接收登录邀请。 有关详细信息，请参阅 [Azure AD B2B 协作注册的自助服务门户](../external-identities/self-service-portal.md)。
 
 单租户应用程序可启用“与我联系”体验，但若要启用 AppSource 建议的单击/免费试用体验，则请改为在应用程序上启用多租户**。
 
@@ -54,7 +54,7 @@ ms.locfileid: "87172567"
 
     ![显示客户 led 试用体验的免费试用版](./media/active-directory-devhowto-appsource-certified/customer-led-trial-step1.png)
 
-2.  AppSource 将用户重定向到你的网站中的 URL。 网站会自动启动*单一登录*过程（在页面加载时）。
+2.  AppSource 将用户重定向到你的网站中的 URL。 你的网站将在页面加载) 上自动启动*单一登录*过程 (。
 
     ![显示如何将用户重定向到你的网站中的 URL](./media/active-directory-devhowto-appsource-certified/customer-led-trial-step2.png)
 
@@ -98,7 +98,7 @@ ms.locfileid: "87172567"
 
     ![显示当重定向回到站点时用户看到的体验](./media/active-directory-devhowto-appsource-certified/customer-led-trial-step5.png)
 
-### <a name="more-information"></a>更多信息
+### <a name="more-information"></a>详细信息
 
 有关 AppSource 试用体验的详细信息，请参阅[此视频](https://aka.ms/trialexperienceforwebapps)。 
 
@@ -114,6 +114,3 @@ ms.locfileid: "87172567"
 
 - 有关构建支持 Azure AD 登录的应用程序的详细信息，请参阅 [Azure AD 的身份验证方案](authentication-flows-app-scenarios.md)。
 - 有关如何在 AppSource 中列出你的 SaaS 应用程序的信息，请参阅 [AppSource 合作伙伴信息](https://appsource.microsoft.com/partners)
-
-
-

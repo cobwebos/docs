@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: 5abc10d149cdb2c054f4122cd805ec22b2e37e2f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1cb5716e2f02a99e4d39a4041a2e54e87cf43568
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095969"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114653"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>将 Cloud Shell 部署到 Azure 虚拟网络
 > [!NOTE]
@@ -46,7 +46,7 @@ ms.locfileid: "87095969"
 需要确定要用于 Cloud Shell 的所需虚拟网络。 这通常是一个现有的虚拟网络，其中包含你想要管理的资源，或包含与包含资源的网络的对等网络。
 
 ### <a name="subnet"></a>子网
-在选定的虚拟网络中，专用子网必须用于 Cloud Shell 容器。 此子网将委托给 Azure 容器实例（ACI）服务。  当用户请求虚拟网络中的 Cloud Shell 容器时，Cloud Shell 使用 ACI 来创建位于此委托子网中的容器。  此子网中不能创建其他资源。
+在选定的虚拟网络中，专用子网必须用于 Cloud Shell 容器。 此子网将委托给 (ACI) 服务的 Azure 容器实例。  当用户请求虚拟网络中的 Cloud Shell 容器时，Cloud Shell 使用 ACI 来创建位于此委托子网中的容器。  此子网中不能创建其他资源。
 
 ### <a name="network-profile"></a>网络配置文件
 网络配置文件是用于指定资源的某些网络属性的 Azure 资源的网络配置模板。
@@ -103,7 +103,7 @@ ResourceTypes                             RegistrationState
 > [!NOTE]
 > 必须完成此步骤，每个管理员都将使用 Cloud Shell。
 
-部署完成上述步骤后，请导航到 Azure 门户或中的 Cloud Shell https://shell.azure.com 。
+部署完成上述步骤后，请导航到 Azure 门户或中的 Cloud Shell https://shell.azure.com 。 每次需要连接到隔离的 Cloud Shell 体验时，都必须使用这些体验之一。
 
 > [!NOTE]
 > 如果过去已使用 Cloud Shell，则必须卸载现有 clouddrive。 若要 `clouddrive unmount` 从活动 Cloud Shell 会话运行此操作，请刷新页面。

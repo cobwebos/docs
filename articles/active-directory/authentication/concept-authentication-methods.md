@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: b6111529d1a3d37f08b29fb5c0751fb6a49acea5
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 40ea8c3d070d8895a6da063789279895f52189e3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054062"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116761"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Azure Active Directory 中有哪些可用的身份验证和验证方法？
 
@@ -45,6 +45,8 @@ Azure AD 中的许多帐户启用了自助服务密码重置 (SSPR) 或 Azure �
 | [安全性问题](#security-questions) | 否 | 仅 SSPR |
 | [电子邮件地址](#email-address) | 否 | 仅 SSPR |
 | [应用密码](#app-passwords) | 否 | 仅限在某些情况下执行 MFA |
+
+这些身份验证方法可以在 Azure 门户中进行配置，并且在更多情况下都使用[Microsoft Graph REST API beta 版](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)。
 
 本文概述了可在 Azure AD 中使用的这些不同的身份验证方法以及特定的限制或限制（如有）。
 
@@ -297,6 +299,8 @@ Microsoft 不保证相同号码传送的短信或基于语音的 Azure 多重身
 要详细了解 SSPR 概念，请参阅[ Azure AD 自助式密码重置的工作原理][concept-sspr]。
 
 要详细了解 MFA 概念，请参阅[ Azure 多重身份验证的工作原理][concept-mfa]。
+
+详细了解如何使用[Microsoft Graph REST API beta](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta)配置身份验证方法。
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

@@ -3,16 +3,12 @@ title: 用于服务器的 Azure Arc 的 VM 扩展管理
 description: 适用于服务器 (预览版的 Azure Arc) 可以管理虚拟机扩展的部署，通过非 Azure Vm 提供部署后配置和自动化任务。
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
-ms.openlocfilehash: eb1de0c2a5b995231c2972fca7279195cbaea9e7
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 0319420fe528d41a23ee8fae90c4ad8c326f35a0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809623"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121300"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-for-servers-preview"></a>适用于服务器 (预览版的 Azure Arc 的虚拟机扩展管理) 
 
@@ -40,7 +36,7 @@ VM 扩展功能仅在[受支持区域](overview.md#supported-regions)的列表�
 
 在此预览版中，我们在 Windows 和 Linux 计算机上支持以下 VM 扩展。
 
-|扩展 |OS |Publisher |其他信息 |
+|扩展 |OS |发布者 |其他信息 |
 |----------|---|----------|-----------------------|
 |CustomScriptExtension |Windows |Microsoft.Compute |[Windows 自定义脚本扩展](../../virtual-machines/extensions/custom-script-windows.md)|
 |DSC |Windows |Microsoft PowerShell|[Windows PowerShell DSC 扩展](../../virtual-machines/extensions/dsc-windows.md)|
@@ -55,7 +51,7 @@ VM 扩展可使用 Azure 资源管理器模板、Azure 门户或 Azure PowerShel
 
 若要了解有关 Azure 连接的计算机代理包以及有关扩展代理组件的详细信息，请参阅[代理概述](agent-overview.md#agent-component-details)。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 此功能依赖于订阅中的以下 Azure 资源提供程序：
 

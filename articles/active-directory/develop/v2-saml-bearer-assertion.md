@@ -12,12 +12,12 @@ ms.date: 08/05/2019
 ms.author: kenwith
 ms.reviewer: paulgarn
 ms.custom: aaddev
-ms.openlocfilehash: 2d745ddcf7b1d5bd7976a0ca8461c13d8ae3c849
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e0db5bec00ce864536b3559eda160acdada5e157
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282375"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114687"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-saml-bearer-assertion-flow"></a>Microsoft 标识平台和 OAuth 2.0 SAML 持有者断言流
 当客户端需要使用现有的信任关系时，你可以通过 OAuth 2.0 SAML 持有者断言流使用 SAML 断言请求 OAuth 访问令牌。 应用于 SAML 断言的签名提供已授权应用的身份验证。 SAML 断言是标识提供者颁发的 XML 安全令牌，由服务提供者使用。 出于安全相关的目的，该服务提供者依赖于其内容来识别断言的使用者。
@@ -37,7 +37,7 @@ SAML 断言将发布到 OAuth 令牌终结点。  该终结点根据应用的先
 
 ### <a name="prerequisites"></a>先决条件
 
-在授权服务器/环境 (Microsoft 365) 与标识提供者或 SAML 2.0 持有者断言 (ADFS) 颁发者之间建立信任关系。 若要将 ADFS 配置为单一登录和标识提供者，可以参阅[此文](https://blogs.technet.microsoft.com/canitpro/2015/09/11/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365/)。
+在授权服务器/环境 (Microsoft 365) 与标识提供者或 SAML 2.0 持有者断言 (ADFS) 颁发者之间建立信任关系。 若要将 ADFS 配置为单一登录和标识提供者，可以参阅[此文](/archive/blogs/canitpro/step-by-step-setting-up-ad-fs-and-enabling-single-sign-on-to-office-365)。
 
 在[门户](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)中注册应用程序：
 1. 登录到[门户的应用注册边栏选项卡](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)（请注意，我们将对图形 API 使用 v2.0 终结点，因此需要在此门户中注册应用程序。 否则可以使用 Azure Active Directory 中的注册）。 

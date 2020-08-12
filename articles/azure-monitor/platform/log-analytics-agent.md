@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/06/2020
-ms.openlocfilehash: ff8bb1fea863c8ba08434df9c718199ad9f51652
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: d507db415a2438c97444ca008f0c9b182306242b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925781"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121521"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics 代理概述
 Azure Log Analytics 代理是为在任何云、本地计算机以及 [System Center Operations Manager](/system-center/scom/) 监视的虚拟机中进行全面管理而开发的。 Windows 和 Linux 代理将收集的数据从不同来源发送到 Azure Monitor 中的 Log Analytics 工作区，以及监视解决方案中定义的任何唯一日志或指标。 Log Analytics 代理还支持 Azure Monitor 中的见解和其他服务，例如[用于 VM 的 Azure Monitor](../insights/vminsights-enable-overview.md)、[Azure 安全中心](../../security-center/index.yml)和 [Azure 自动化](../../automation/automation-intro.md)。
@@ -174,7 +174,7 @@ Linux 代理官方支持以下版本的 Linux 操作系统：
 
 
 ## <a name="sha-2-code-signing-support-requirement-for-windows"></a>适用于 Windows 的 SHA-2 代码签名支持要求
-Windows 代理将于 2020 年 8 月 17 日开始以独占方式使用 SHA-2 签名。 此更改将影响使用旧版 OS 上的 Log Analytics 代理作为任何 Azure 服务（Azure Monitor、Azure 自动化、Azure 更新管理、Azure 更改跟踪、Azure 安全中心、Azure Sentinel、Windows Defender ATP）一部分的客户。 除非你在旧版 OS 版本（Windows 7、Windows Server 2008 R2 和 Windows Server 2008）上运行代理，否则更改不需要任何客户操作。 在 2020 年 8 月 17 日之前，在旧版 OS 版本上运行的客户必须在其计算机上执行以下操作，否则其代理会停止将数据发送到其 Log Analytics 工作区：
+Windows 代理将开始在2020年11月2日独占使用 SHA-2 签名。 此更改将影响使用旧版 OS 上的 Log Analytics 代理作为任何 Azure 服务（Azure Monitor、Azure 自动化、Azure 更新管理、Azure 更改跟踪、Azure 安全中心、Azure Sentinel、Windows Defender ATP）一部分的客户。 除非你在旧版 OS 版本（Windows 7、Windows Server 2008 R2 和 Windows Server 2008）上运行代理，否则更改不需要任何客户操作。 在旧操作系统版本上运行的客户需要在2020年11月2日之前在其计算机上执行以下操作，否则，其代理将停止向其 Log Analytics 工作区发送数据：
 
 1. 为 OS 安装最新服务器包。 必需的服务包版本包括：
     - Windows 7 SP1
@@ -217,7 +217,7 @@ Windows 和 Linux 代理支持使用 HTTPS 协议通过代理服务器或 Log An
 > [!NOTE]
 > 如果代理服务器无需进行身份验证，Linux 代理仍要求提供伪用户名/密码。 这可以是任何用户名或密码。
 
-|属性| 说明 |
+|properties| 说明 |
 |--------|-------------|
 |协议 | https |
 |user | 用于代理身份验证的可选用户名 |

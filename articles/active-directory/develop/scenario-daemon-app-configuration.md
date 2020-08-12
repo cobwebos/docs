@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 08/08/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 2e7a0657949a2addbf895666682feee7fd0eb595
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 85c9bd3ecd5af861cfb93c18528416e06479ae93
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033353"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119175"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>调用 Web API 的守护程序应用 - 代码配置
 
@@ -333,16 +333,16 @@ ConfidentialClientApplication cca =
 # <a name="net"></a>[.NET](#tab/dotnet)
 
 > [!div class="nextstepaction"]
-> [守护程序应用 - 获取应用的令牌](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=dotnet)
+> [守护程序应用 - 获取应用的令牌](./scenario-daemon-acquire-token.md?tabs=dotnet)
 
 # <a name="python"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [守护程序应用 - 获取应用的令牌](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=python)
+> [守护程序应用 - 获取应用的令牌](./scenario-daemon-acquire-token.md?tabs=python)
 
 # <a name="java"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [守护程序应用 - 获取应用的令牌](https://docs.microsoft.com/azure/active-directory/develop/scenario-daemon-acquire-token?tabs=java)
+> [守护程序应用 - 获取应用的令牌](./scenario-daemon-acquire-token.md?tabs=java)
 
 ---

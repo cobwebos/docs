@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/05/2020
 ms.author: yushwang
-ms.openlocfilehash: 027047a212df72479a4f1b2511729365f3fa09e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b5d66e79e79edd98f3192d0187d6f0454c3aeffa
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84708920"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121470"
 ---
 # <a name="vpn-gateway-faq"></a>VPN 网关常见问题
 
@@ -90,15 +90,15 @@ VPN 网关是一种虚拟网络网关。 VPN 网关通过公共连接在虚拟�
 
 ### <a name="can-i-get-my-vpn-gateway-ip-address-before-i-create-it"></a>是否可以先获得 VPN 网关 IP 地址，再创建网关？
 
-区域冗余和区域性网关（名称中包含_AZ_的网关 sku）都依赖于_标准 SKU_ Azure 公共 IP 资源。 Azure 标准 SKU 公共 IP 资源必须使用静态分配方法。 因此，在创建了要用于它的标准 SKU 公共 IP 资源后，就会获得 VPN 网关的公共 IP 地址。
+区域冗余和区域性网关 (的网关 Sku，其中_AZ_ in name) 均依赖于_标准 SKU_ Azure 公共 IP 资源。 Azure 标准 SKU 公共 IP 资源必须使用静态分配方法。 因此，在创建了要用于它的标准 SKU 公共 IP 资源后，就会获得 VPN 网关的公共 IP 地址。
 
-对于非区域冗余和非区域性网关（名称中_不_包含_AZ_的网关 sku），在创建 VPN 网关 IP 地址之前无法获取该地址。 仅当你删除并重新创建 VPN 网关时，IP 地址才会更改。
+对于不包含_AZ_ in name) 的非区域冗余和非区域性网关 (，在创建 VPN 网关 IP 地址_之前无法获取_该地址。 仅当你删除并重新创建 VPN 网关时，IP 地址才会更改。
 
 ### <a name="can-i-request-a-static-public-ip-address-for-my-vpn-gateway"></a>能否为 VPN 网关请求静态公共 IP 地址？
 
-如上所述，区域冗余和区域性网关（名称中包含_AZ_的网关 sku）都依赖于_标准 SKU_ Azure 公共 IP 资源。 Azure 标准 SKU 公共 IP 资源必须使用静态分配方法。
+如上所述，区域冗余和区域性网关 (包含_AZ_ in name) 的网关 sku 依赖于_标准 SKU_ Azure 公共 IP 资源。 Azure 标准 SKU 公共 IP 资源必须使用静态分配方法。
 
-对于非区域冗余和非区域性网关（名称中_不_包含_AZ_的网关 sku），仅支持动态 IP 地址分配。 但是，这并不意味着 IP 地址在分配到 VPN 网关后会更改。 只有在删除并重新创建网关后，VPN 网关 IP 地址才会更改。 当调整、重置或完成其他 VPN 网关内部维护和升级时，VPN 网关公共 IP 地址不会更改。
+对于_不包含_ _AZ_ in name)  (网关 sku 的非区域冗余和非区域性网关，仅支持动态 IP 地址分配。 但是，这并不意味着 IP 地址在分配到 VPN 网关后会更改。 只有在删除并重新创建网关后，VPN 网关 IP 地址才会更改。 当调整、重置或完成其他 VPN 网关内部维护和升级时，VPN 网关公共 IP 地址不会更改。
 
 ### <a name="how-does-my-vpn-tunnel-get-authenticated"></a>VPN 隧道如何进行身份验证？
 
@@ -126,6 +126,10 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 网
 ### <a name="can-i-configure-force-tunneling"></a>是否可以配置强制隧道？
 
 是的。 请参阅[配置强制隧道](vpn-gateway-about-forced-tunneling.md)。
+
+### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>能否在 VPN 连接上使用 NAT？
+
+是，支持 NAT 遍历 (NAT-T) 。 Azure VPN 网关不会对来自 IPsec 隧道的内部数据包执行类似于 NAT 的任何功能。  在此配置中，请确保本地设备启动 IPSec 隧道。
 
 ### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network"></a>能否在 Azure 中设置自己的 VPN 服务器，并使用该服务器连接到本地网络？
 
@@ -215,7 +219,7 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 网
 
 ### <a name="can-i-connect-a-virtual-network-with-ipsec-vpns-to-my-expressroute-circuit"></a>能否将使用 IPsec VPN 的虚拟网络连接到我的 ExpressRoute 线路？
 
-是，系统支持该操作。 有关详细信息，请参阅 [配置可共存的 ExpressRoute 连接和站点到站点 VPN 连接](../expressroute/expressroute-howto-coexist-classic.md)。
+是的，支持此操作。 有关详细信息，请参阅 [配置可共存的 ExpressRoute 连接和站点到站点 VPN 连接](../expressroute/expressroute-howto-coexist-classic.md)。
 
 ## <a name="ipsecike-policy"></a><a name="ipsecike"></a>IPsec/IKE 策略
 

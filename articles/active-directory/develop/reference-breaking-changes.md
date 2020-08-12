@@ -12,12 +12,12 @@ ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 2fe41cdc6fa1adef96568981df5bb13129fe900f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0c5abf345fda9db4cc5123360245e42ea0ef40e1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87026724"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115027"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能
 
@@ -41,15 +41,15 @@ ms.locfileid: "87026724"
 
 ### <a name="azure-government-endpoints-are-changing"></a>Azure 政府版终结点正在更改
 
-**生效日期**：5月5日（完成2020年6月） 
+**生效日期**：5月 (晚5月 2020)  
 
 **受影响的终结点**：全部
 
 **受影响的协议**：所有流
 
-2018年6月1日，Azure 政府版的官方 Azure Active Directory （AAD）机构已从更改 `https://login-us.microsoftonline.com` 为 `https://login.microsoftonline.us` 。 此更改也适用于 Microsoft 365 GCC 高和 DoD，Azure 政府版 AAD 也服务。 如果你拥有美国政府租户中的应用程序，则必须更新应用程序，以便登录到终结点上的用户 `.us` 。  
+2018年6月1日，Azure 政府 (AAD) 机构的官方 Azure Active Directory 从更改 `https://login-us.microsoftonline.com` 为 `https://login.microsoftonline.us` 。 此更改也适用于 Microsoft 365 GCC 高和 DoD，Azure 政府版 AAD 也服务。 如果你拥有美国政府租户中的应用程序，则必须更新应用程序，以便登录到终结点上的用户 `.us` 。  
 
-从5月5日开始，Azure AD 将开始强制终结点更改，阻止政府用户使用公共终结点（）登录美国政府租户中托管的应用 `microsoftonline.com` 。  受影响的应用将开始显示错误 `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint` 。 此错误表示应用正尝试在公有云终结点上登录美国政府用户。 如果你的应用处于公有云租户中，并旨在支持我们的政府用户，则需要[更新你的应用以明确支持它们](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)。 这可能需要在美国政府云中创建新的应用注册。 
+从5月5日开始，Azure AD 将开始强制终结点更改，阻止政府用户使用公共终结点 () 登录到在美国政府租户中托管的应用 `microsoftonline.com` 。  受影响的应用将开始显示错误 `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint` 。 此错误表示应用正尝试在公有云终结点上登录美国政府用户。 如果你的应用处于公有云租户中，并旨在支持我们的政府用户，则需要[更新你的应用以明确支持它们](./authentication-national-cloud.md)。 这可能需要在美国政府云中创建新的应用注册。 
 
 此更改的执行将通过以下方式进行：使用逐步推出：美国政府版中的用户登录到应用程序时，不经常会看到强制执行，而美国政府用户经常使用的应用将在最后应用强制实施。 预计会在6月2020的所有应用中完成强制。 
 
@@ -98,7 +98,7 @@ ms.locfileid: "87026724"
 
 **受影响的终结点**：v1.0 和 v2.0
 
-**受影响的协议**：使用 POST 的任何位置（[客户端凭据](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)、[授权代码兑换](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)、[ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)、[OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)和[刷新令牌兑换](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token)）
+**受影响的协议**：使用 POST 的任何位置（[客户端凭据](./v2-oauth2-client-creds-grant-flow.md)、[授权代码兑换](./v2-oauth2-auth-code-flow.md)、[ROPC](./v2-oauth-ropc.md)、[OBO](./v2-oauth2-on-behalf-of-flow.md)和[刷新令牌兑换](./v2-oauth2-auth-code-flow.md#refresh-the-access-token)）
 
 从 9 月 2 日那一周开始，使用 POST 方法的身份验证请求会按更严格的 HTTP 标准进行验证。  具体说来，空格和双引号 (“) 将不再从请求表单值中删除。 这些更改不应造成任何现有客户端出现中断，将确保发送到 Azure AD 的请求每次都能够得到可靠的处理。 在将来（见上），我们计划还要拒绝重复参数并忽略请求中的 BOM。
 
@@ -113,9 +113,9 @@ ms.locfileid: "87026724"
 
 **生效日期**：2019 年 6 月 26 日
 
-**受影响的终结点**：[v1.0](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow) 和 [v2.0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
+**受影响的终结点**：[v1.0](../azuread-dev/v1-oauth2-client-creds-grant-flow.md) 和 [v2.0](./v2-oauth2-client-creds-grant-flow.md)
 
-**受影响的协议**：[客户端凭据（仅限应用的令牌）](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)
+**受影响的协议**：[客户端凭据（仅限应用的令牌）](../azuread-dev/v1-oauth2-client-creds-grant-flow.md)
 
 一项安全更改已在 7 月 26 日上线，它会更改颁发仅限应用的令牌的方式（通过客户端凭据授予）。 以前，允许应用程序获取令牌来调用任何其他应用，无论该应用程序是否在租户中存在或者是否向其许可了角色。  此行为现已更新，对于设置为单租户（默认值）的资源（有时称为 Web API），客户端应用程序必须在资源租户中存在。  请注意，仍不需要客户端与 API 之间的现有许可，应用应该仍会执行其自身的授权检查，以确保 `roles` 声明存在并且包含 API 所需的值。
 
