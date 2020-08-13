@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 578560eccb13ff4b9169e11b0674859acc1fc901
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: efa4ca24dadb2fb5d347d79de20eebfacc9a58e0
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285860"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142173"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中实现业务连续性和灾难恢复的最佳做法
 
@@ -59,7 +59,7 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 
 ### <a name="application-routing-with-azure-front-door-service"></a>应用程序与 Azure 前门服务的路由
 
-使用基于 TCP 的拆分协议， [Azure 前门服务](../frontdoor/front-door-overview.md)确保最终用户能够立即连接到最近的前门 POP （存在点）。 Azure 前门服务的其他功能包括 TLS 终止、自定义域、web 应用程序防火墙、URL 重写和会话相关性。 查看应用程序流量的需求，以了解哪种解决方案是最合适。
+使用基于 TCP 的拆分协议， [Azure 前门服务](../frontdoor/front-door-overview.md)确保最终用户能够立即连接到最近的前门 POP (状态) 。 Azure 前门服务的其他功能包括 TLS 终止、自定义域、web 应用程序防火墙、URL 重写和会话相关性。 查看应用程序流量的需求，以了解哪种解决方案是最合适。
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>使用虚拟网络对等互连将区域互连
 
@@ -93,7 +93,7 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 
 状态可以外部化或与操作状态的代码共存。 通常，你会使用一个数据库或其他数据存储（在网络中不同计算机上运行或同一计算机进程外部运行）来实现状态的外部化。
 
-当容器和微服务中运行的进程不保持状态时，它们最有弹性。 由于应用程序几乎始终包含某种状态，因此请使用 Azure Database for MySQL、Azure Database for PostgreSQL 或 Azure SQL 数据库等 PaaS 解决方案。
+当容器和微服务中运行的进程不保持状态时，它们最有弹性。 由于应用程序几乎始终包含某种状态，因此请使用 PaaS 解决方案，如 Azure Cosmos DB、Azure Database for PostgreSQL、Azure Database for MySQL 或 Azure SQL 数据库。
 
 如何构建可移植的应用程序，请参阅以下指导原则：
 

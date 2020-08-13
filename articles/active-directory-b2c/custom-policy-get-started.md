@@ -12,12 +12,12 @@ ms.date: 02/28/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cb3bb363b1d6be72fe8941cad509b4c3525cfa15
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 54d92da469625a3b81d0027558ec14166d916b80
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87169423"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163180"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略入门
 
@@ -213,6 +213,6 @@ Azure AD B2C 要求注册两个应用程序，它们分别用于通过本地帐�
 
 ## <a name="next-steps"></a>后续步骤
 
-接下来，尝试添加 Azure Active Directory (Azure AD) 作为标识提供者。 本入门指南中使用的基本文件已包含添加其他标识提供者（如 Azure AD）所需的一些内容。
+接下来，尝试添加 Azure Active Directory (Azure AD) 作为标识提供者。 本入门指南中使用的基本文件已包含添加其他标识提供者（如 Azure AD）所需的一些内容。 有关设置 Azure AD 作为标识提供者的信息，请参阅[使用 Active Directory B2C 自定义策略设置 Azure Active Directory 帐户的注册和登录](identity-provider-azure-ad-single-tenant-custom.md)。 
 
-要了解如何将 Azure AD 设置为标识提供者，请参阅[使用 Active Directory B2C 自定义策略设置 Azure Active Directory 帐户的注册和登录](identity-provider-azure-ad-single-tenant-custom.md)。
+请访问我们的[合作伙伴库](partner-gallery.md)，了解有关如何使用自定义策略实现 ISV 集成的详细信息。 

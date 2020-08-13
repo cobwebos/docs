@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 1cb3af32f1ad16218c82f91c3f28d4f4ab47e677
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 0a24339d728c43817b6a7ae6eac8782ad0e27b09
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843498"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142513"
 ---
 # <a name="features"></a>功能
 
@@ -53,11 +53,11 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 
 支持所有搜索参数类型。 
 
-| 搜索参数类型 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 评论 |
+| 搜索参数类型 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 注释 |
 |-----------------------|-----------|-----------|-----------|---------|
-| 数字                | 是       | 是       | 是       |         |
+| Number                | 是       | 是       | 是       |         |
 | Date/DateTime         | 是       | 是       | 是       |         |
-| String                | 是       | 是       | 是       |         |
+| 字符串                | 是       | 是       | 是       |         |
 | 令牌                 | 是       | 是       | 是       |         |
 | 参考             | 是       | 是       | 是       |         |
 | 合成             | 是       | 是       | 是       |         |
@@ -79,7 +79,7 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 |`:[type]` (引用)   | 否        | 否        | 否        |         |
 |`:below` (uri)         | 是       | 是       | 是       |         |
 |`:not`                 | 否        | 否        | 否        |         |
-|`:above` (uri)          | 否        | 否        | 否        | 问题[#158](https://github.com/Microsoft/fhir-server/issues/158) |
+|`:above` (uri)          | 否        | 否        | 否        | 问题 [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 
 | 常用搜索参数 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 注释 |
 |-------------------------| ----------| ----------| ----------|---------|
@@ -95,7 +95,7 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 | `_type`                 | 是       | 是       | 是       |         |
 | `_query`                | 否        | 否        | 否        |         |
 
-| 搜索操作       | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 评论 |
+| 搜索操作       | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 注释 |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_filter`               | 否        | 否        | 否        |         |
 | `_sort`                 | 否        | 否        | 否        |         |
@@ -103,7 +103,7 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 | `_count`                | 是       | 是       | 是       |         |
 | `_summary`              | 部分   | 部分   | 部分   | 支持 `_summary=count` |
 | `_include`              | 否        | 是       | 否        |         |
-| `_revinclude`           | 否        | 否        | 否        |         |
+| `_revinclude`           | 否        | 是       | 否        | 包含的项限制为100。 |
 | `_contained`            | 否        | 否        | 否        |         |
 | `_elements`             | 否        | 否        | 否        |         |
 
@@ -111,15 +111,15 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 
 Microsoft FHIR 服务器具有可插接式持久性模块 (参阅 [`Microsoft.Health.Fhir.Core.Features.Persistence`](https://github.com/Microsoft/fhir-server/tree/master/src/Microsoft.Health.Fhir.Core/Features/Persistence)) 。
 
-目前，FHIR 服务器开源包括[Azure Cosmos DB](../cosmos-db/index-overview.md)和[SQL 数据库](https://azure.microsoft.com/services/sql-database/)的实现。
+目前，FHIR 服务器开源包括 [Azure Cosmos DB](../cosmos-db/index-overview.md) 和 [SQL 数据库](https://azure.microsoft.com/services/sql-database/)的实现。
 
-Cosmos DB 是一种全球分布的多模型 (SQL API、MongoDB API 等 ) 数据库。 它支持不同的[一致性级别](../cosmos-db/consistency-levels.md)。 默认部署模板配置 FHIR 服务器 `Strong` 一致性，但可以使用 `x-ms-consistency-level` 请求标头，通过请求来修改一致性策略 (一般宽松地) 请求。
+Cosmos DB 是一种全球分布的多模型 (SQL API、MongoDB API 等 ) 数据库。 它支持不同的 [一致性级别](../cosmos-db/consistency-levels.md)。 默认部署模板配置 FHIR 服务器 `Strong` 一致性，但可以使用 `x-ms-consistency-level` 请求标头，通过请求来修改一致性策略 (一般宽松地) 请求。
 
 ## <a name="role-based-access-control"></a>基于角色的访问控制
 
-FHIR 服务器使用[Azure Active Directory](https://azure.microsoft.com/services/active-directory/)进行访问控制。 具体而言，如果将配置参数设置为，则会强制实施基于角色的访问控制 (RBAC) ， `FhirServer:Security:Enabled` `true` 并且除 `/metadata`) 到 FHIR 服务器的所有 (请求都必须 `Authorization` 将请求标头设置为 `Bearer <TOKEN>` 。 令牌必须包含声明中定义的一个或多个角色 `roles` 。 如果令牌包含允许指定资源上指定操作的角色，则将允许请求。
+FHIR 服务器使用 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 进行访问控制。 具体而言，如果将配置参数设置为，则会强制实施基于角色的访问控制 (RBAC) ， `FhirServer:Security:Enabled` `true` 并且除 `/metadata`) 到 FHIR 服务器的所有 (请求都必须 `Authorization` 将请求标头设置为 `Bearer <TOKEN>` 。 令牌必须包含声明中定义的一个或多个角色 `roles` 。 如果令牌包含允许指定资源上指定操作的角色，则将允许请求。
 
-目前，对给定角色允许的操作在 API 上*全局*应用。
+目前，对给定角色允许的操作在 API 上 *全局* 应用。
 
 ## <a name="next-steps"></a>后续步骤
 

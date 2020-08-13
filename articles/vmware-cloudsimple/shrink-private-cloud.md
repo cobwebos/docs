@@ -1,6 +1,6 @@
 ---
 title: 通过 CloudSimple 私有云缩小 Azure VMware 解决方案
-description: 介绍如何收缩 CloudSimple 私有云。
+description: 了解如何通过删除现有 vSphere 群集中的节点或删除整个群集，在 CloudSimple 中动态收缩私有云。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 07/01/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 602dca105e91c55c591388a833a36e71f951da8b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2759b35c9ba521a63eaf54c4c696598d545120b4
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77014260"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141731"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>缩小 CloudSimple 私有云
 
@@ -21,11 +21,11 @@ CloudSimple 提供动态收缩私有云的灵活性。  私有云由一个或多
 
 ## <a name="before-you-begin"></a>开始之前
 
-若要压缩私有云，必须满足以下条件。  无法删除创建私有云时创建的管理群集（第一个群集）。
+若要压缩私有云，必须满足以下条件。  不能删除在创建私有云时创建的 (第一个群集) 的管理群集。
 
 * VSphere 群集必须具有三个节点。  只有三个节点的群集无法收缩。
 * 使用的总存储空间不应超过群集缩小后的总容量。
-* 检查是否有任何分布式资源计划程序（DRS）规则阻止了虚拟机的 vMotion。  如果有规则，请禁用或删除规则。  DRS 规则包括用于主机关联规则的虚拟机。
+* 检查是否有任何分布式资源计划程序 (DRS) 规则阻止虚拟机的 vMotion。  如果有规则，请禁用或删除规则。  DRS 规则包括用于主机关联规则的虚拟机。
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

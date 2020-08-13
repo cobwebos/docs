@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 44a2c0c1b4bc9b4e6fc1247497640b261d1d0fa1
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 58936066abcbe4c3f9fcfad78bf914c74079aa95
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387908"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141782"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>设置 Azure Sentinel 客户托管密钥
 
@@ -90,7 +90,7 @@ Azure Sentinel 使用 Cosmos DB 作为附加存储资源。 请确保注册到 C
 
 -  要在其上启用 CMK 的工作区 ID
 
--  密钥保管库 URL：复制密钥的“密钥标识符”（直到最后一个正斜杠）：  
+-  Key Vault URL：将密钥的 "密钥标识符" 复制到最后一个正斜杠：  
     
 
     ![密钥标识符](./media/customer-managed-keys/key-identifier.png)

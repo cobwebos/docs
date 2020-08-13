@@ -2,18 +2,18 @@
 title: Microsoft Azure Data Box 自我托管交付 | 关于数据的 Microsoft Docs
 description: 描述 Azure Data Box 设备的自我托管交付工作流
 services: databox
-author: priestlg
+author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: how-to
-ms.date: 05/20/2020
-ms.author: v-grpr
-ms.openlocfilehash: 99c7021744467484656c52cf72378c6f553c3913
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/12/2020
+ms.author: alkohli
+ms.openlocfilehash: cfa2dee41f07e273d933da356f74063453cb1775
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84608581"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142530"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>在 Azure 门户中对 Azure Data Box 使用自我托管交付功能
 
@@ -28,6 +28,8 @@ ms.locfileid: "84608581"
 * 日本
 * 新加坡
 * 韩国
+* 印度
+* 南非
 
 ## <a name="use-self-managed-shipping"></a>使用自我托管交付
 
@@ -36,7 +38,7 @@ ms.locfileid: "84608581"
 1. 在 Azure Data Box 订单的“联系人详细信息”下，选择“+ 添加送货地址” 。
    ![自我托管交付](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-1.png)
 
-2. 选择送货类型时，请选择“自我托管交付”选项。 仅当你位于受支持的区域（如先决条件中所述）时，此选项才可用。
+2. 选择送货类型时，请选择“自我托管交付”选项。 仅当你位于先决条件中所述的受支持的区域时，此选项才可用。
 
 3. 提供送货地址后，需要验证该地址并完成下单。
    ![自我托管交付](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
@@ -49,7 +51,7 @@ ms.locfileid: "84608581"
 
 5. 按照“Azure 提货安排”中的说明进行操作。
 
-   你必须发送电子邮件至 [adbops@microsoft.com](mailto:adbops@microsoft.com)，安排从你所在区域的数据中心来提货，然后才可获得授权代码。
+   你必须发送电子邮件至 [adbops@microsoft.com](mailto:adbops@microsoft.com)，安排从你所在区域的数据中心来提取设备，然后才可获得授权代码。
 
    ![安排提货](media\data-box-portal-customer-managed-shipping\data-box-portal-schedule-pickup-email-01.png)
 
@@ -61,9 +63,9 @@ ms.locfileid: "84608581"
 
    你还需要提供将前往数据中心提货的人员的详细信息。 你或联系人员必须携带政府批准的带照片的 ID，我们将在数据中心验证该 ID。
 
-   此外，设备提货人员还需要有授权代码。 在数据中心提货时会验证该授权代码。
+   此外，设备提取人员还需要有授权代码。 在数据中心提货时会验证该授权代码。
 
-7. 从数据中心提出设备后，你的订单将自动切换到“已提货”状态。
+7. 从数据中心提取设备后，你的订单将自动切换到“已提货”状态。
 
     ![已提货](media\data-box-portal-customer-managed-shipping\data-box-portal-picked-up-boxed-01.png)
 

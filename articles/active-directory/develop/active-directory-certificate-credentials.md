@@ -9,25 +9,26 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 08/12/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 47a35f70251622674205a28af9b7cc64132d0530
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 06f15257148342879a164005a8f4fb302c539e67
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690289"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163656"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft 标识平台应用程序身份验证证书凭据
 
-Microsoft 标识平台允许应用程序使用其自己的凭据进行身份验证，例如，在 [OAuth 2.0 客户端凭据授予流 v2.0](v2-oauth2-client-creds-grant-flow.md) 和[代理流](v2-oauth2-on-behalf-of-flow.md)中就是如此。
+Microsoft 标识平台允许应用程序使用自己的凭据进行身份验证，例如，在 OAuth 2.0[客户端凭据授予](v2-oauth2-client-creds-grant-flow.md)流和[代表](v2-oauth2-on-behalf-of-flow.md) (OBO) 流中。
 
-应用程序可用于身份验证的凭据的一种形式使用应用程序拥有的证书进行签名的 JSON Web 令牌 (JWT) 断言。
+应用程序可用于身份验证的一种形式的凭据是 (JWT) 断言，该[令牌](./security-tokens.md#json-web-tokens-jwts-and-claims)是使用应用程序拥有的证书进行签名的。
 
 ## <a name="assertion-format"></a>断言格式
-Microsoft 标识平台 若要计算断言，可使用所选语言中的许多 [JSON Web 令牌](https://jwt.ms/)库之一。 令牌携带的信息如下所示：
+
+若要计算断言，可以使用所选语言的多种 JWT 库之一。 此信息由标记在其[标头](#header)、[声明](#claims-payload)和[签名](#signature)中传送。
 
 ### <a name="header"></a>标头
 
@@ -35,22 +36,22 @@ Microsoft 标识平台 若要计算断言，可使用所选语言中的许多 [J
 | --- | --- |
 | `alg` | 应为 **RS256** |
 | `typ` | 应为 **JWT** |
-| `x5t` | 应为 X.509 证书 SHA-1 指纹 |
+| `x5t` | X.509 证书哈希 (也称为证书的 SHA-1*指纹*) 编码为 Base64 字符串值。 例如，给定的 x.509 证书哈希值 `84E05C1D98BCE3A5421D225B140B36E86A3D5534` 为，则 `x5t` 声明为 `hOBcHZi846VCHSJbFAs26Go9VTQ` 。 |
 
 ### <a name="claims-payload"></a>声明（有效负载）
 
 | 参数 |  备注 |
 | --- | --- |
-| `aud` | 受众：应为 **https://login.microsoftonline.com/*tenant_Id*/oauth2/token** |
-| `exp` | 到期日期：令牌的到期日期。 该时间表示为自 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 至令牌有效期到期的秒数。|
-| `iss` | 颁发者：应为 client_id（客户端服务的应用程序 ID） |
-| `jti` | GUID：JWT ID |
-| `nbf` | 生效时间：此日期之前不能使用令牌。 该时间表示为自 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 至令牌颁发时间的秒数。 |
-| `sub` | 使用者：对于 `iss`，应该是 client_id（客户端服务的应用程序 ID） |
+| `aud` | 受众：应为`https://login.microsoftonline.com/<your-tenant-id>/oauth2/token` |
+| `exp` | 到期日期：令牌的到期日期。 该时间表示为自 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 至令牌有效期到期的秒数。 建议使用较短的过期时间-10 分钟到一小时。|
+| `iss` | 颁发者：应为客户端服务的 client_id (*应用程序 (客户端) id*)  |
+| `jti` | GUID： JWT ID |
+| `nbf` | 不早于：在其之前不能使用令牌的日期。 该时间表示为从1970年1月1日 (1970-01-01T0：0： 0Z) UTC 到创建断言之前的秒数。 |
+| `sub` | 主题：对于 `iss` ，应为客户端服务的 client_id (*应用程序 (客户端) id*)  |
 
 ### <a name="signature"></a>签名
 
-使用证书计算签名，如 [JSON Web 令牌 RFC7519 规范](https://tools.ietf.org/html/rfc7519)中所述
+签名是通过应用证书来计算的，如[JSON Web 令牌 RFC7519 规范](https://tools.ietf.org/html/rfc7519)中所述。
 
 ## <a name="example-of-a-decoded-jwt-assertion"></a>已解码的 JWT 断言示例
 
@@ -75,10 +76,11 @@ Microsoft 标识平台 若要计算断言，可使用所选语言中的许多 [J
 
 ## <a name="example-of-an-encoded-jwt-assertion"></a>已编码的 JWT 断言示例
 
-以下字符串是已编码的断言的示例。 如果仔细查看，会注意到由句点 (.) 分隔的三部分：
-* 第一部分对标头进行编码
-* 第二部分对有效负载进行编码
-* 最后一部分是使用前两部分内容中的证书进行计算的签名
+以下字符串是已编码的断言的示例。 如果你仔细查看，你会注意到三个以点分隔的部分 (`.`) ：
+
+* 第一部分编码*标头*
+* 第二部分将*声明* (负载编码) 
+* 最后一节是通过前两部分内容中的证书进行计算的*签名*
 
 ```
 "eyJhbGciOiJSUzI1NiIsIng1dCI6Imd4OHRHeXN5amNScUtqRlBuZDdSRnd2d1pJMCJ9.eyJhdWQiOiJodHRwczpcL1wvbG9naW4ubWljcm9zb2Z0b25saW5lLmNvbVwvam1wcmlldXJob3RtYWlsLm9ubWljcm9zb2Z0LmNvbVwvb2F1dGgyXC90b2tlbiIsImV4cCI6MTQ4NDU5MzM0MSwiaXNzIjoiOTdlMGE1YjctZDc0NS00MGI2LTk0ZmUtNWY3N2QzNWM2ZTA1IiwianRpIjoiMjJiM2JiMjYtZTA0Ni00MmRmLTljOTYtNjVkYmQ3MmMxYzgxIiwibmJmIjoxNDg0NTkyNzQxLCJzdWIiOiI5N2UwYTViNy1kNzQ1LTQwYjYtOTRmZS01Zjc3ZDM1YzZlMDUifQ.
@@ -101,8 +103,8 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 拥有证书后需计算：
 
-- `$base64Thumbprint`，此项为证书哈希的 base64 编码
-- `$base64Value`，证书原始数据的 base64 编码
+- `$base64Thumbprint`-证书哈希的 Base64 编码值
+- `$base64Value`-证书原始数据的 Base64 编码值
 
 还需要提供 GUID 来标识应用程序清单中的密钥 (`$keyId`)。
 
@@ -125,9 +127,6 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
    `keyCredentials` 属性具有多个值，因此可上传多个证书实现更丰富的密钥管理。
 
-## <a name="code-sample"></a>代码示例
+## <a name="next-steps"></a>后续步骤
 
-> [!NOTE]
-> 必须通过使用证书的哈希将 X5T 标头转换为 base 64 字符串来对其进行计算。 在 C# 中执行此操作的代码是 `System.Convert.ToBase64String(cert.GetCertHash());`。
-
-代码示例[使用 Microsoft 标识平台的 .NET Core 守护程序控制台应用程序](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)展示了应用程序如何使用自己的凭据进行身份验证。 它还演示了如何使用 `New-SelfSignedCertificate` Powershell命令[创建自签名证书](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script)。 还可以利用和使用[应用创建脚本](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md)执行创建证书、计算指纹等操作。
+GitHub 上的[.Net Core 守护程序控制台应用程序使用 Microsoft 标识平台](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)代码示例显示应用程序如何使用其自己的凭据进行身份验证。 它还演示了如何使用 PowerShell cmdlet[创建自签名证书](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) `New-SelfSignedCertificate` 。 你还可以使用示例存储库中的[应用创建脚本](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md)来创建证书、计算指纹等。

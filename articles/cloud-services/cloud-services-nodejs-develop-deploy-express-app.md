@@ -1,7 +1,7 @@
 ---
 title: 构建 Node.js Express 应用并将其部署到 Azure 云服务
 titleSuffix: Azure Cloud Services
-description: 在 Node.js 中构建 Express.js 应用程序并将其部署到 Azure 云服务
+description: 本教程介绍如何使用 Express 模块创建一个新的应用程序，该模块提供用于创建 Node.js web 应用程序的 MVC 框架。
 services: cloud-services
 documentationcenter: nodejs
 author: tgore03
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: tagore
 ms.custom: devx-track-javascript
-ms.openlocfilehash: d642119d2fe70236ec8cc4b85da07bc8a2dca0c3
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 80b7e80e3636b2005594706e17b088b833c7bce7
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386497"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142445"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>使用 Express 在 Azure 云服务中构建并部署 Node.js Web 应用程序
 

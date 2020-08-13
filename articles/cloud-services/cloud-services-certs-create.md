@@ -1,6 +1,6 @@
 ---
 title: 云服务和管理证书 | Microsoft Docs
-description: 了解如何使用 Microsoft Azure 创建和使用证书
+description: 了解如何创建和部署云服务的证书，以及如何在 Azure 中通过管理 API 进行身份验证。
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
-ms.openlocfilehash: cf2106302064df5ede02d18f253436047a5d33d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08ce69856dd36b6029297109fcb8610b856c8b98
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82024602"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142360"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure 云服务证书概述
 证书在 Azure 中用于云服务（[服务证书](#what-are-service-certificates)）以及用于通过管理 API 进行身份验证（[管理证书](#what-are-management-certificates)）。 本主题同时提供了有关这两种证书类型的一般概述，并说明了如何[创建](#create)并将其部署到 Azure。
@@ -55,7 +55,7 @@ Azure 使用的证书可以包含一个公钥。 证书具有指纹，它提供�
 * 为密钥交换（.pfx 文件）而创建。
 * 使用者名称必须与用于访问云服务的域匹配。
 
-    > 不能为 cloudapp.net （或与 Azure 相关的任何域）的 TLS/SSL 证书。证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，**contoso.net**，而不是 **contoso.cloudapp.net**。
+    > 你无法获取 cloudapp.net (或任何 Azure 相关) 域的 TLS/SSL 证书;证书的使用者名称必须与用于访问应用程序的自定义域名匹配。 例如，**contoso.net**，而不是 **contoso.cloudapp.net**。
 
 * 至少采用 2048 位加密。
 * **仅服务证书**：客户端证书必须驻留在“个人”证书存储中。

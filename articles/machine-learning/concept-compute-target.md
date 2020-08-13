@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: f8b532716e14a8a90b0be061f7d93abf43e55e38
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 27c129af9fbf3e76c6c57fbf084596876b51955b
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321983"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141919"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>什么是 Azure 机器学习中的计算目标? 
 
@@ -85,7 +85,9 @@ Azure 机器学习为不同的计算资源提供不同的支持。  你也可以
 | D | 无 |
 | Dv2 | 无 |  
 | DSv2 | 无 |  
-| FSv2 | 无 |  
+| FSv2 | 无 | 
+| HBv2 | 需要批准 |  
+| HCS | 需要批准 |  
 | M | 需要批准 |
 | NC | 无 |    
 | NCsv2 | 需要批准 |

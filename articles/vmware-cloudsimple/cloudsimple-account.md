@@ -1,6 +1,6 @@
 ---
 title: CloudSimple 帐户管理-Azure
-description: 了解如何管理 CloudSimple 帐户
+description: 了解如何管理 CloudSimple 帐户，该帐户与 CloudSimple 服务一起创建，并与你的 Azure 订阅相关联。
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 04/10/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: a180e2ba6c1a610116271d5a9b6e3fdf562cecdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68ddea6c58bfff5e82643acc947ac1e7de76d699
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77025106"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141034"
 ---
 # <a name="account-management-overview"></a>帐户管理概述
 

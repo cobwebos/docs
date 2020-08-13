@@ -4,12 +4,12 @@ description: 了解 Azure 监视器的合作伙伴，以及如何访问相关文
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 994dfe0d7e252fd2aea489c363e76f0956715048
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e3fae1b942083d78798fccebd7a7f2c58f7659a
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318328"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142395"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure 监视器合作伙伴集成
 
@@ -106,7 +106,7 @@ Grafana 是一个开源应用程序，用于可视化时序指标数据。
 
 ![InfluxData 徽标](./media/partners/Influxdata.png)
 
-InfluxData 是 InfluxDB （开源时序数据库）的创建者。 我们的技术专门用于处理 IoT 设备、应用程序、网络、容器和计算机生成的大量时间戳数据。 我们负责帮助开发人员和组织（如 IBM、签证、Siemens、Tesla 和 NASA）存储和分析实时数据，使他们能够更快、更快速地构建转换监视、分析和 IoT 应用程序。 可以使用 InfluxData 的 Telegraf 代理展开 Microsoft Azure 监视器的指标和事件收集功能，使 Microsoft 用户能够受益于领先的时序数据库解决方案，并可利用不断增长的开源贡献给 Telegraf。
+InfluxData 是开放源代码时序数据库 InfluxDB 的创建者。 我们的技术专为处理 IoT 设备、应用程序、网络、容器和计算机产生的大量带时间戳的数据而设计。 我们的使命是帮助开发者和组织（如 IBM、Visa、Siemens、Tesla 和 NASA）存储和分析实时数据，使他们能够更快地构建变革性的监视、分析和 IoT 应用程序并进行缩放。 可以使用 InfluxData 的 Telegraf 代理展开 Microsoft Azure 监视器的指标和事件收集功能，使 Microsoft 用户能够受益于领先的时序数据库解决方案，并可利用不断增长的开源贡献给 Telegraf。
 
 
 [查看相关文档。][influxdata-doc]
@@ -183,6 +183,16 @@ OpsGenie 充当 Azure 所生成的警报的发送器。 OpsGenie 根据值守计
 PagerDuty 是行业领先的事件管理解决方案，为 Azure 指标警报提供一流的支持。 PagerDuty 支持 Azure Monitor 警报通知、自动缩放通知、活动日志事件通知，以及 Azure 服务的平台级指标通知。 可以通过这些增强功能进一步了解核心 Azure 平台。 可以充分利用 PagerDuty 的事件管理功能进行实时响应。 可以通过 Webhook 实现扩展的 Azure 集成。 可以通过 Webhook 轻松快捷地设置和自定义此解决方案。
 
 [查看相关文档。][pagerduty-doc]
+
+## <a name="promitor"></a>Promitor
+
+![Promitor 徽标](./media/partners/promitor.png)
+
+Promitor 是一个 Azure Monitor scraper，使指标在 Atlassian Statuspage、Prometheus 和 StatsD 等系统中可用。
+
+将所有指标推送到 Azure Monitor 并在需要时使用它们。
+
+[了解详细信息。][promitor-doc]
 
 ## <a name="qradar"></a>QRadar
 
@@ -293,6 +303,7 @@ Turbonomic 为混合云提供工作负荷自动化解决方案，同时实时优
 [newrelic-doc]: https://newrelic.com/azure "NewRelic 文档。"
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie 文档。"
 [pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty 文档。"
+[promitor-doc]: https://promitor.io/ "Promitor 文档。"
 [qradar-doc]: https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0 "QRadar 文档。"
 [sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "ScienceLogic 文档。"
 [serverless360-doc]: https://docs.serverless360.com/docs/ "Serverless360 文档。"

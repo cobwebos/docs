@@ -13,12 +13,12 @@ ms.date: 07/15/2020
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0ba348bc9c97ba8be415cac2e5fd7d102d850568
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 5a2acb08971bc0878c943047c42c9dc2a9525794
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88117067"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141425"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>如何：在应用程序中添加应用角色并在令牌中接收它们
 
@@ -30,7 +30,7 @@ ms.locfileid: "88117067"
 
 ## <a name="declare-roles-for-an-application"></a>为应用程序声明角色
 
-这些应用程序角色在 [Azure 门户](https://portal.azure.com)的应用程序注册清单中定义。  当用户登录到应用程序时，Azure AD 会针对每个角色发出一个 `roles` 声明。这些角色包括单独授予用户的，以及通过组成员身份获得的。  可以通过门户的 UI 为用户或组分配角色，也可以使用 [Microsoft Graph](https://developer.microsoft.com/graph/docs/concepts/azuread-identity-access-management-concept-overview) 以编程方式进行分配。
+这些应用程序角色在 [Azure 门户](https://portal.azure.com)的应用程序注册清单中定义。  当用户登录到应用程序时，Azure AD 会针对每个角色发出一个 `roles` 声明。这些角色包括单独授予用户的，以及通过组成员身份获得的。  可以通过门户的 UI 为用户或组分配角色，也可以使用 [Microsoft Graph](/graph/azuread-identity-access-management-concept-overview) 以编程方式进行分配。
 
 ### <a name="declare-app-roles-using-azure-portal"></a>使用 Azure 门户声明应用角色
 
@@ -76,7 +76,7 @@ ms.locfileid: "88117067"
 > [!NOTE]
 >`displayName`可以包含空格。
 
-可以针对 `users` 和/或 `applications` 来定义应用角色。 如果可用于 `applications` ，应用角色将作为 "**管理**" 部分下的 "应用程序权限" 显示 > **Api 权限 "> 添加 > 我的 Api 的权限 > 选择 api > 应用程序权限**。 以下示例显示一个以 `Application` 为目标的应用角色。
+可以针对 `users` 和/或 `applications` 来定义应用角色。 如果可用于 `applications` ，应用角色将作为 " **管理** " 部分下的 "应用程序权限" 显示 > **Api 权限 "> 添加 > 我的 Api 的权限 > 选择 api > 应用程序权限**。 以下示例显示一个以 `Application` 为目标的应用角色。
 
 ```Json
 "appId": "8763f1c4-f988-489c-a51e-158e9ef97d6a",

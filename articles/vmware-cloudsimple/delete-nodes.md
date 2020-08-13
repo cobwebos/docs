@@ -1,6 +1,6 @@
 ---
 title: 通过 CloudSimple 删除 VMware 解决方案的节点-Azure
-description: 了解如何通过 CloudSimple 部署删除 VMWare 中的节点
+description: 了解如何通过 CloudSimple 部署删除 VMWare 中的节点。 CloudSimple 节点按流量计费。 删除 Azure 门户中未使用的节点。
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/05/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 122e0636f54e066ae86ed2d19cefe5863b026293
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 569bc6350b1bfa01228d49d28a1d12e2ab62f6f0
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024732"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142258"
 ---
 # <a name="delete-nodes-from-azure-vmware-solution-by-cloudsimple"></a>通过 CloudSimple 从 Azure VMware 解决方案中删除节点
 
@@ -32,7 +32,7 @@ ms.locfileid: "77024732"
 
 ## <a name="delete-cloudsimple-node"></a>删除 CloudSimple 节点
 
-1. 选择“所有服务”****。
+1. 选择“所有服务”。
 
 2. 搜索**CloudSimple 节点**。
 

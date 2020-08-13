@@ -1,20 +1,23 @@
 ---
 title: 大规模监视委托的资源
 description: 了解如何在你管理的客户租户之间以可伸缩方式有效地使用 Azure Monitor 日志。
-ms.date: 07/15/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: 5cace0396c5a1f430ce10ba29ee051b5e432c125
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: fdd0147737da47613d6b7ef1bf6005e4c03de0dd
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448955"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163282"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>大规模监视委托的资源
 
 作为服务提供商，你可能已将多个客户租户载入[Azure Lighthouse](../overview.md)。 Azure Lighthouse 允许服务提供商同时在多个租户之间大规模执行操作，从而提高管理任务的效率。
 
 本主题说明如何在你管理的客户租户之间以可伸缩方式使用[Azure Monitor 日志](../../azure-monitor/platform/data-platform-logs.md)。
+
+> [!TIP]
+> 尽管我们指的是本主题中的服务提供商和客户，但本指南也适用于[使用 Azure Lighthouse 管理多个租户的企业](../concepts/enterprise.md)。
 
 ## <a name="create-log-analytics-workspaces"></a>创建 Log Analytics 工作区
 

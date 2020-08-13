@@ -3,12 +3,12 @@ title: 监视管理租户中的委派更改
 description: 了解如何监视从客户租户到管理租户的委托活动。
 ms.date: 08/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 9842ad91c059fe4da70221d8c7c5570084bcc6b9
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 63b8ec60ecf2f2e5655e3253db7aef01c003fc63
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119005"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163333"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>监视管理租户中的委派更改
 
@@ -173,6 +173,9 @@ else {
 1. 确保在屏幕顶部附近的筛选器中选择 "**目录活动**"。
 
 将显示委托更改列表。 你可以选择 **"编辑列**" 以显示或隐藏**状态**、**事件类别**、**时间**、**时间戳**、**订阅**、**事件启动者**、**资源组**、**资源类型**和**资源**值。
+
+> [!TIP]
+> 尽管我们指的是本主题中的服务提供商和客户，但[管理多个租户的企业](../concepts/enterprise.md)可以使用相同的过程。
 
 ## <a name="next-steps"></a>后续步骤
 

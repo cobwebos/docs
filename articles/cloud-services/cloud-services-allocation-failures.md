@@ -1,6 +1,6 @@
 ---
 title: 排除云服务分配故障 | Microsoft Docs
-description: 对在 Azure 中部署云服务时的分配失败进行故障排除
+description: 排查部署 Azure 云服务时的分配失败问题。 了解分配的工作原理以及分配失败的原因。
 services: azure-service-management, cloud-services
 documentationcenter: ''
 author: simonxjx
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: ab6cc71478e80bc3ff9d81a3a91ce90fbb09adb3
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: cba3f47015072f16112ef981d2f59d0c73cb69c2
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921595"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142479"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>对在 Azure 中部署云服务时的分配失败进行故障排除
 ## <a name="summary"></a>总结
@@ -41,33 +41,33 @@ Azure 数据中心的服务器分区成群集。 会在多个群集中尝试新�
 ### <a name="error-message"></a>错误消息
 可能会看到以下错误消息：
 
-> "Azure 操作" {operation id} "失败，代码为 ConstrainedAllocationFailed。 详细信息：分配失败;无法满足请求中的约束。 请求的新服务部署绑定至地缘组，或以虚拟网络为目标，或此托管服务下已经有部署。 上述任一情况都会将新的部署局限于特定的 Azure 资源。 请稍后重试，或尝试减少 VM 大小或角色实例数目。 或者，可能的话，删除先前提到的约束，或尝试部署到不同的区域。”
+> “Azure 操作‘{operation id}’失败，代码为 Compute.ConstrainedAllocationFailed。 详细信息：分配失败；无法满足请求中的约束。 请求的新服务部署绑定至地缘组，或以虚拟网络为目标，或此托管服务下已经有部署。 上述任一情况都会将新的部署局限于特定的 Azure 资源。 请稍后重试，或尝试减少 VM 大小或角色实例数目。 或者，可能的话，删除先前提到的约束，或尝试部署到不同的区域。”
 
 ### <a name="common-issues"></a>常见问题
 以下是造成分配请求被固定到单个群集的常见分配案例。
 
 * 部署到过渡槽 - 如果某个云服务在任一槽中存在部署，则会将整个云服务固定到特定的群集。  这意味着，如果生产槽中已存在部署，则只能将新的过渡部署分配到与生产槽相同的群集中。 如果群集已接近容量，则请求可能失败。
 * 缩放 - 将新实例添加到现有云服务时，必须在同一群集中进行分配。  通常可分配小型缩放请求，但情况并非总是如此。 如果群集已接近容量，则请求可能失败。
-* 地缘组 - 进行新的目标为空云服务的部署时，可以通过该区域任何群集中的结构对部署进行分配，除非已将云服务固定到地缘组。 会在相同的群集中尝试部署到相同的地缘组。 如果群集已接近容量，则请求可能失败。
-* 地缘组 vNet - 旧式虚拟网络已绑定到地缘组而不是区域，而这些虚拟网络中的云服务则会固定到地缘组群集。 会在固定的群集中尝试部署到此类虚拟网络。 如果群集已接近容量，则请求可能失败。
+* 地缘组 - 进行新的目标为空云服务的部署时，可以通过该区域任何群集中的结构对部署进行分配，除非已将云服务固定到地缘组。 将会在相同的群集中尝试部署到相同的地缘组。 如果群集已接近容量，则请求可能失败。
+* 地缘组 vNet - 旧式虚拟网络已绑定到地缘组而不是区域，而这些虚拟网络中的云服务则会固定到地缘组群集。 将会在固定的群集中尝试部署到此类虚拟网络。 如果群集已接近容量限制，则请求可能失败。
 
 ## <a name="solutions"></a>解决方案
 1. 重新部署到新的云服务 - 这种解决方案很可能是最成功的，因为它允许平台从该区域的所有群集中进行选择。
 
    * 将工作负荷部署到新的云服务  
-   * 更新 CNAME 或 A 记录，将流量指向新的云服务
-   * 没有流量流向旧站点后，即可删除旧的云服务。 此解决方案应该不会导致停机。
-2. 删除生产槽和过渡槽 - 此解决方案会保留现有的 DNS 名称，但在应用时会导致停机。
+   * 更新 CNAME 或 A 记录，以将流量指向新的云服务
+   * 一旦零流量流向旧站点，就可以删除旧的云服务。 此解决方案应该不会导致停机。
+2. 删除生产槽位和过渡槽位 - 此解决方案会保留现有的 DNS 名称，但会导致应用程序停机。
 
-   * 删除现有云服务的生产槽和过渡槽，使云服务为空，然后
+   * 请删除现有云服务的生产槽位和过渡槽位，使云服务为空，然后
    * 在现有云服务中创建新部署。 这会在该区域的所有群集上重新尝试进行分配。 确保云服务未绑定到地缘组。
-3. 保留 IP - 此解决方案将保留现有 IP 地址，但可能导致应用程序停机。  
+3. 保留 IP - 此解决方案将保留现有 IP 地址，但会导致应用程序停机。  
 
-   * 使用 Powershell 针对现有部署创建 ReservedIP
+   * 请使用 Powershell 为现有部署创建 ReservedIP
 
      ```
      New-AzureReservedIP -ReservedIPName {new reserved IP name} -Location {location} -ServiceName {existing service name}
      ```
    * 按照上面的第 2 种方法进行操作，确保在服务的 CSCFG 中指定新的 ReservedIP。
-4. 删除针对新部署的地缘组 - 不再建议使用地缘组。 按照上面第 1 种方法的步骤部署新的云服务。 确保云服务不在地缘组中。
-5. 转变成区域虚拟网络 - 请参阅[如何从地缘组迁移到区域虚拟网络 (VNet)](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)。
+4. 删除新部署的地缘组 - 不再建议使用地缘组。 按照上面第 1 种方法的步骤部署新的云服务。 确保云服务不在地缘组中。
+5. 转换为区域虚拟网络 - 请参阅[如何从地缘组迁移到区域虚拟网络 (VNet)](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)。
