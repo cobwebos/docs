@@ -2,19 +2,19 @@
 title: 快速入门：使用 Azure CLI 部署 Azure API for FHIR
 description: 在本快速入门中，你将了解如何使用 Azure CLI 在 Azure 中部署 Azure API for FHIR。
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 10/15/2019
-ms.author: mihansen
+ms.author: matjazl
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e2fdd4c4298946d943ee8a806ebc53966c8dd624
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e1aa3362217a4edcfcf547c69b9effde00459f7e
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500889"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87850522"
 ---
 # <a name="quickstart-deploy-azure-api-for-fhir-using-azure-cli"></a>快速入门：使用 Azure CLI 部署 Azure API for FHIR
 
