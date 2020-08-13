@@ -7,13 +7,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
-ms.custom: tracking-python
-ms.openlocfilehash: 4c490d252fa1153324df62a6119ae6bdc548c331
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.custom: devx-track-python
+ms.openlocfilehash: f6d1b25cb502b8cb208ba5b59c91667e03c77778
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85341027"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064377"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>快速入门：通过 Python 使用服务总线主题和订阅
 
@@ -176,7 +176,7 @@ bus_service.delete_topic('mytopic')
 bus_service.delete_subscription('mytopic', 'HighMessages')
 ```
 
-默认情况下，主题和订阅是持久性的，在删除之前会一直存在。 若要在特定的时间段过后自动删除订阅，可对订阅设置 [auto_delete_on_idle](https://docs.microsoft.com/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) 参数。 
+默认情况下，主题和订阅是持久性的，在删除之前会一直存在。 若要在特定的时间段过后自动删除订阅，可对订阅设置 [auto_delete_on_idle](/python/api/azure-mgmt-servicebus/azure.mgmt.servicebus.models.sbsubscription?view=azure-python) 参数。 
 
 > [!TIP]
 > 可以使用[服务总线资源管理器](https://github.com/paolosalvatori/ServiceBusExplorer/)管理服务总线资源。 可以使用服务总线资源管理器连接到服务总线命名空间并轻松管理消息传送实体。 该工具提供高级功能，例如导入/导出功能，以及用于对主题、队列、订阅、中继服务、通知中心和事件中心进行测试的功能。 
@@ -192,4 +192,4 @@ bus_service.delete_subscription('mytopic', 'HighMessages')
 [Azure Python package]: https://pypi.python.org/pypi/azure
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter.SqlExpression]: service-bus-messaging-sql-filter.md
-[Service Bus quotas]: service-bus-quotas.md 
+[Service Bus quotas]: service-bus-quotas.md
