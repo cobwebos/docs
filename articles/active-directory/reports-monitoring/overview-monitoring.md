@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d63f8440ca527a746f73574bc156037d85fc3599
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: 84353dd3c8b803f27073d113d6946152f059d9be
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "68988204"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873409"
 ---
 # <a name="what-is-azure-active-directory-monitoring"></a>什么是 Azure Active Directory 监视？
 
@@ -30,9 +30,11 @@ ms.locfileid: "68988204"
 
 目前可以将日志路由到以下位置：
 
-- 一个 Azure 存储帐户。
+- Azure 存储帐户。
 - Azure 事件中心，以便与 Splunk 和 Sumologic 实例集成。
 - Azure Log Analytics 工作区，以便在其中分析数据、创建仪表板并针对特定事件发出警报
+
+**必备角色**：全局管理员
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
@@ -40,13 +42,13 @@ ms.locfileid: "68988204"
 
 ## <a name="diagnostic-settings-configuration"></a>诊断设置配置
 
-若要配置 Azure AD 活动日志的监视设置，请先登录到 [Azure 门户](https://portal.azure.com)，然后选择“Azure Active Directory”。  在这里，可以通过两种方式访问诊断设置配置页：
+若要配置 Azure AD 活动日志的监视设置，请先登录到 [Azure 门户](https://portal.azure.com)，然后选择“Azure Active Directory”。 在这里，可以通过两种方式访问诊断设置配置页：
 
-* 在“监视”部分选择“诊断设置”   。
+* 在“监视”部分选择“诊断设置” 。
 
     ![诊断设置](./media/overview-monitoring/diagnostic-settings.png)
     
-* 选择“审核日志”或“登录”，然后选择“导出设置”    。 
+* 选择“审核日志”或“登录”，然后选择“导出设置”  。 
 
     ![导出设置](./media/overview-monitoring/export-settings.png)
 

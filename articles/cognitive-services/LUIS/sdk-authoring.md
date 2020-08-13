@@ -3,14 +3,14 @@ title: 快速入门：语言理解 (LUIS) 创作客户端库
 description: 参考本快速入门开始使用 LUIS 客户端库。 请按照以下步骤安装程序包并试用基本任务的示例代码。
 ms.topic: quickstart
 ms.date: 07/28/2020
-ms.custom: tracking-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: e5fc21ed42d3704cf102a820cebb64c09aff23ab
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 124cfbac897be76365710ffd505dee18af7adcec
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87369405"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876965"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library"></a>快速入门：语言理解 (LUIS) 创作客户端库
 

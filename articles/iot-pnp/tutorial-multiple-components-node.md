@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 808d1ad522f6678ced54de334e7ea39fb60cd165
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d26179ab82f29ce8f937f5b444463c1308d92047
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420679"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904048"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-nodejs"></a>教程：将示例 IoT 即插即用预览版多个组件设备应用程序连接到 IoT 中心 (Node.js)
 
@@ -98,29 +98,29 @@ pnpTemperatureController.js 文件中的代码实现 IoT 即插即用温度控�
 
 1. 为要实现的设备定义 DTMI `modelId`。 此 DTMI 是用户定义的，必须与[温度控制器 DTDL 模型](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json)的 DTMI 相匹配。
 
-1. 实现温度控制器 DTDL 模型中定义的组件。 实际温度控制器中的组件应实现这两个接口。 这两个接口已在中央存储库中发布。 在此示例中，这两个接口为：
+2. 实现温度控制器 DTDL 模型中定义的组件。 实际温度控制器中的组件应实现这两个接口。 这两个接口已在中央存储库中发布。 在此示例中，这两个接口为：
   - 恒温调节器
   - Azure 开发的设备信息
 
-1. 定义组件名称。 此示例包含两个恒温器和一个设备信息组件。
+3. 定义组件名称。 此示例包含两个恒温器和一个设备信息组件。
 
-1. 定义命令名称。 这些是设备响应的命令。
+4. 定义命令名称。 这些是设备响应的命令。
 
-1. 定义 `serialNumber` 常量。 `serialNumber` 是任何指定的固定设备。
+5. 定义 `serialNumber` 常量。 `serialNumber` 是任何指定的固定设备。
 
-1. 定义命令处理程序。
+6. 定义命令处理程序。
 
-1. 定义用于发送命令响应的函数。
+7. 定义用于发送命令响应的函数。
 
-1. 定义用于记录命令请求的 helper 函数。
+8. 定义用于记录命令请求的 helper 函数。
 
-1. 定义用于创建属性的 helper 函数。
+9. 定义用于创建属性的 helper 函数。
 
-1. 为属性更新定义侦听器。
+10. 为属性更新定义侦听器。
 
-1. 定义一个函数，用于从此设备发送遥测数据。 恒温器和根组件都发送遥测数据。 此函数接收组件名称作为参数。
+11. 定义一个函数，用于从此设备发送遥测数据。 恒温器和根组件都发送遥测数据。 此函数接收组件名称作为参数。
 
-1. 定义 `main` 函数：
+12. 定义 `main` 函数：
 
     1. 使用设备 SDK 创建设备客户端并连接到 IoT 中心。 设备提供 `modelId` 以便 IoT 中心可以将设备标识为 IoT 即插即用设备。
 

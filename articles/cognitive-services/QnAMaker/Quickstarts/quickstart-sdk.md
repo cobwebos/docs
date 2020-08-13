@@ -3,14 +3,14 @@ title: 快速入门：使用 SDK 来创建和管理知识库 - QnA Maker
 description: 本快速入门介绍如何使用客户端 SDK 创建和管理知识库。
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.custom: tracking-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: c193be6b415e6c158dfc75d6c2f36f6cf9a45e2c
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: e6a8a6d0688f362f934d1439c1ca0f6072acf6d6
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404067"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872916"
 ---
 # <a name="quickstart-qna-maker-client-library"></a>快速入门：QnA Maker 客户端库
 

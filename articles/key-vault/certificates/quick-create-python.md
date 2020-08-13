@@ -7,13 +7,13 @@ ms.date: 3/30/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.custom: tracking-python
-ms.openlocfilehash: abbe07d96daf5848d01cd1f4943d4969fe1e59d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.custom: devx-track-python
+ms.openlocfilehash: 86ce2b95cce82bd6d6877f83c3bc0b0496804c83
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043714"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87875330"
 ---
 # <a name="quickstart-azure-key-vault-certificates-client-library-for-python"></a>快速入门：适用于 Python 的 Azure Key Vault 证书客户端库
 

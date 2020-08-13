@@ -10,14 +10,14 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.author: erhopf
-ms.custom: tracking-python, devx-track-javascript
+ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 6b703eb006638d91b664c7694f99f380be6bd809
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: de73b99cfd52a8b1c9359a6710092a4b21ec0491
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405377"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87876591"
 ---
 # <a name="quickstart-use-the-translator-to-determine-sentence-length"></a>快速入门：使用“翻译”来确定句子长度
 

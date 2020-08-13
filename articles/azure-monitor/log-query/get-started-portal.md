@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
-ms.openlocfilehash: 522a13c6de87dd8074b76f95670baf79fc96d419
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8917c73474b81ee76e6acdf8c6f274e962ee1215
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075342"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874225"
 ---
 # <a name="tutorial-get-started-with-log-analytics-queries"></a>教程：Log Analytics 查询入门
 
@@ -32,7 +32,7 @@ ms.locfileid: "87075342"
 ## <a name="open-log-analytics"></a>打开 Log Analytics
 若要使用 Log Analytics，需要登录到 Azure 帐户。 如果没有 Azure 帐户，可[免费创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-若要完成本教程中的大部分步骤，可以使用[此演示环境](https://portal.loganalytics.io/demo)，其中包含了大量示例数据。 使用演示环境无法保存查询，或将结果固定到仪表板。
+若要完成本教程中的大部分步骤，可以使用[此演示环境](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade)，其中包含了大量示例数据。 使用演示环境无法保存查询，或将结果固定到仪表板。
 
 如果使用 Azure Monitor 来收集至少一个 Azure 资源中的日志数据，则你也可以使用自己的环境。 若要打开 Log Analytics 工作区，请在 Azure Monitor 的左侧导航栏中选择“日志”。 
 
