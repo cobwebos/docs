@@ -1,6 +1,6 @@
 ---
 title: Azure VMware 解决方案（按 CloudSimple）-私有云
-description: 了解有关 CloudSimple 私有云和概念的信息。
+description: 了解 CloudSimple 的概念和优点，包括完整的 VMware 运营连续性、与现有工具、技能和过程的兼容性。
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4fb930603455ed1a5df5d357fcab669f41a0c28c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e2096e8c0ebfb233c7449510bf0bc8e80b56231e
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024938"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140710"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>CloudSimple 私有云概述
 
@@ -46,7 +46,7 @@ CloudSimple 管理基础结构以及所有必需的网络和管理服务。 Clou
 * 应用程序预配
 * 业务连续性
 * 支持
-* 策略强制
+* 策略强制执行
 
 ## <a name="private-cloud-environment-overview"></a>私有云环境概述
 
@@ -134,5 +134,5 @@ CloudSimple 管理基础结构以及所有必需的网络和管理服务。 Clou
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[创建私有云](create-private-cloud.md)
-* 了解如何[配置私有云环境](quickstart-create-private-cloud.md)
+* 了解如何 [创建私有云](create-private-cloud.md)
+* 了解如何 [配置私有云环境](quickstart-create-private-cloud.md)

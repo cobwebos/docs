@@ -5,28 +5,28 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/12/2020
-ms.openlocfilehash: 406991de2441836565c911ef8a8e1402f6398eb0
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/07/2020
+ms.openlocfilehash: 04f2d11b9fc8bbd61319a057c091cddbf140b9db
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87824777"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135517"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的监视解决方案
 
-监视解决方案利用 Azure 中的服务来提供特定应用程序或服务的更多操作分析。 本文简要概述了 Azure 中的监视解决方案，并详细介绍如何了使用和安装这些解决方案。 可以在 Azure Monitor 中针对你使用的任何应用程序和服务添加监视解决方案。 这些解决方案通常是免费的，但收集的数据可能会产生使用费。
+Azure Monitor 中的监视解决方案提供对特定 Azure 应用程序或服务的操作的分析。 本文简要概述了 Azure 中的监视解决方案，并详细介绍如何了使用和安装这些解决方案。 可以在 Azure Monitor 中针对你使用的任何应用程序和服务添加监视解决方案。 这些解决方案通常是免费的，但收集的数据可能会产生使用费。
 
 ## <a name="use-monitoring-solutions"></a>使用监视解决方案
 
-打开 Azure Monitor 的“概述”页来为该工作区中安装的每个解决方案显示一个磁贴。
+Azure Monitor 中的 "解决方案**概述**" 页显示 Log Analytics 工作区中安装的每个解决方案的磁贴。 若要打开此页，请跳到[Azure 门户](https://ms.portal.azure.com)中的**Azure Monitor** 。 在 "**见解**" 菜单下，选择 "**更多**" 以打开**Insights Hub**，然后单击 " **Log Analytics 工作区**"。
 
-1. 转到 [Azure 门户](https://ms.portal.azure.com)。 搜索并选择“Monitor”。
-1. 在“见解”菜单下选择“更多” 。
-1. 使用屏幕顶部的下拉框更改工作区或用于磁贴的时间范围。
-1. 单击解决方案的磁贴，以打开它的视图，其中包含它收集的数据的更详细分析。
+[![Insights 中心](media/solutions/insights-hub.png)](media/solutions/insights-hub.png#lightbox)
 
-![概述](media/solutions/overview.png)
+
+使用屏幕顶部的下拉框更改工作区或用于磁贴的时间范围。 单击解决方案的磁贴，以打开它的视图，其中包含它收集的数据的更详细分析。
+
+[![概述](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
 监视解决方案可以包含多种类型的 Azure 资源。可以像查看其他任何资源一样查看解决方案包含的任何资源。 例如，解决方案中包含的任何日志查询都列在[查询资源管理器](../log-query/get-started-portal.md#load-queries)中的“解决方案查询”下，可在使用[日志查询](../log-query/log-query-overview.md)执行临时分析时使用这些查询。
 

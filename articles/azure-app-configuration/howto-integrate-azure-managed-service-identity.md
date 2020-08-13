@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure 托管标识进行身份验证
+title: 使用托管标识访问应用配置
 titleSuffix: Azure App Configuration
-description: 使用 Azure 托管标识对 Azure 应用配置进行身份验证
+description: 使用托管标识对 Azure 应用配置进行身份验证
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: bf97a1eae758778efc8d800666af4a5fcb574429
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ccf1bed3a1791f0aa172a617deab1cd192540f3
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80056839"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135464"
 ---
-# <a name="integrate-with-azure-managed-identities"></a>与 Azure 托管标识集成
+# <a name="use-managed-identities-to-access-app-configuration"></a>使用托管标识访问应用配置
 
-Azure Active Directory[托管标识](../active-directory/managed-identities-azure-resources/overview.md)简化了云应用程序的密钥管理。 使用托管标识，你的代码可以使用为其运行所在的 Azure 服务创建的服务主体。 使用托管标识而不是存储在 Azure Key Vault 中的单独凭据或本地连接字符串。 
+Azure Active Directory[托管标识](../active-directory/managed-identities-azure-resources/overview.md)简化了云应用程序的密钥管理。 使用托管标识，你的代码可以使用为其运行所在的 Azure 服务创建的服务主体。 使用托管标识而不是存储在 Azure Key Vault 中的单独凭据或本地连接字符串。
 
 Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库内置了托管标识支持。 尽管不需要使用它，但托管标识不再需要包含机密的访问令牌。 你的代码只能使用服务终结点访问应用配置存储。 可以直接在代码中嵌入此 URL，而无需公开任何机密。
 
@@ -68,7 +68,7 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
 
 1. 在“订阅”下，选择 Azure 订阅****。 选择应用的应用服务资源。
 
-1. 选择“保存”。
+1. 选择“保存” 。
 
     ![添加托管标识](./media/add-managed-identity.png)
 
@@ -84,7 +84,7 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
 
 1. 查找应用配置存储的终结点。 此 URL 在 Azure 门户中存储的 "**访问密钥**" 选项卡上列出。
 
-1. 打开“appsettings.json”，并添加以下脚本**。 将 *\<service_endpoint>* URL 替换为你的应用配置存储的 URL，包括括号。 
+1. 打开“appsettings.json”，并添加以下脚本**。 将 *\<service_endpoint>* URL 替换为你的应用配置存储的 URL，包括括号。
 
     ```json
     "AppConfig": {
@@ -183,6 +183,9 @@ Azure 应用配置及其 .NET Core、.NET Framework 和 Java 春季客户端库�
 
     你现在可以像访问任何其他应用配置键一样访问 Key Vault 引用。 配置提供程序将使用 `KeyVaultClient` 你配置的进行身份验证，以便 Key Vault 和检索值。
 
+> [!NOTE]
+> `ManagedIdentityCredential`仅支持托管标识身份验证。 它在本地环境中不起作用。 如果要在本地运行代码，请考虑使用 `DefaultAzureCredential` ，它也支持服务主体身份验证。 查看[链接](https://docs.microsoft.com/dotnet/api/azure.identity.defaultazurecredential)以获取详细信息。
+
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
 ## <a name="deploy-from-local-git"></a>从本地 Git 进行部署
@@ -242,7 +245,7 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="use-managed-identity-in-other-languages"></a>使用其他语言的托管标识
 
-适用于 .NET Framework 和 Java Spring 的应用配置提供程序也有针对托管标识的内置支持。 配置其中一个提供程序时，可以使用存储的 URL 终结点，而不是其完整的连接字符串。 
+适用于 .NET Framework 和 Java Spring 的应用配置提供程序也有针对托管标识的内置支持。 配置其中一个提供程序时，可以使用存储的 URL 终结点，而不是其完整的连接字符串。
 
 例如，可以更新在快速入门中创建的 .NET Framework 控制台应用程序，以在*App.config*文件中指定以下设置：
 

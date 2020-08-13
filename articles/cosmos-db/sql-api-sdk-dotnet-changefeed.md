@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/05/2020
 ms.author: anfeldma
-ms.openlocfilehash: 5f0d66a515ed13f96645e5916af2b01841950375
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f38b2715115efadef4e09a95e9392b1dfd4c68b0
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846592"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135736"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 
@@ -49,6 +49,9 @@ ms.locfileid: "87846592"
 ## <a name="release-notes"></a>发行说明
 
 ### <a name="v2-builds"></a>v2 版本
+
+### <a name="232"></a><a name="2.3.2"/>2.3.2
+* 添加了与[V3 SDK](sql-api-sdk-dotnet-standard.md)的租赁存储兼容性，可实现热迁移路径。 应用程序可以迁移到 V3 SDK 并迁移回更改源处理器库，而不会丢失任何状态。
 
 ### <a name="231"></a><a name="2.3.1"/>2.3.1
 * `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` `FeedProcessing.IChangeFeedObserver.CloseAsync` 如果找不到分区或者目标副本与读取会话不是最新的，则在将关闭原因发送到时更正了此情况。 在这些情况下 `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` ， `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` 现在使用了关闭原因。
@@ -193,6 +196,7 @@ Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [2.3.2](#2.3.2) |2020年8月11日 |--- |
 | [2.3.1](#2.3.1) |2020年7月30日 |--- |
 | [2.3.0](#2.3.0) |2020 年 4 月 2 日 |--- |
 | [2.2.8](#2.2.8) |2019 年 10 月 28 日 |--- |

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/15/2020
-ms.openlocfilehash: a4594ca1a992f158522eccb4ffa6e846a1f4f605
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: c0f23c864430b6cb2f49f924d5aaa8bde296037c
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406276"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135957"
 ---
-# <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure 数据工厂托管的虚拟网络（预览版）
+# <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure 数据工厂托管的虚拟网络 (预览) 
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -27,7 +27,7 @@ ms.locfileid: "87406276"
 
 ## <a name="managed-virtual-network"></a>托管虚拟网络
 
-当你在 Azure 数据工厂托管的虚拟网络（VNET）中创建 Azure Integration Runtime （IR）时，将使用托管虚拟网络来预配集成运行时，并将利用专用终结点安全连接到支持的数据存储。 
+当你在 Azure 数据工厂托管的虚拟网络 (VNET) 中创建 Azure Integration Runtime (IR) 时，将使用托管虚拟网络预配集成运行时，并将利用专用终结点安全连接到支持的数据存储。 
 
 在托管的虚拟网络中创建 Azure IR 可确保隔离和保护数据集成过程。 
 
@@ -49,7 +49,7 @@ ms.locfileid: "87406276"
 
 ![新托管专用终结点](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
-Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azure （PaaS）服务（例如 Azure 存储、Azure Cosmos DB、Azure SQL 数据仓库）。
+Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azure (PaaS) 服务 (如 Azure 存储、Azure Cosmos DB、Azure Synapse 分析 (以前的 Azure SQL 数据仓库) # A5。
 
 使用专用链接时，数据存储和托管虚拟网络之间的流量完全通过 Microsoft 骨干网络进行遍历。 专用链接可防止数据泄露风险。 可以通过创建专用终结点来建立到资源的专用链接。
 
@@ -59,7 +59,7 @@ Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azu
 > 建议你创建托管专用终结点来连接到所有 Azure 数据源。 
  
 > [!WARNING]
-> 如果 PaaS 数据存储（Blob、ADLS Gen2、SQL DW）已针对其创建了专用终结点，并且即使它允许从所有网络进行访问，ADF 也只能使用托管的专用终结点来访问它。 请确保在此类方案中创建专用终结点。 
+> 如果 PaaS 数据存储 (Blob、ADLS Gen2、SQL DW) 已经为其创建了专用终结点，即使它允许从所有网络进行访问，ADF 也只能使用托管的专用终结点来访问它。 请确保在此类方案中创建专用终结点。 
 
 在 Azure 数据工厂中创建托管专用终结点时，将以 "挂起" 状态创建专用终结点连接。 将启动审批工作流。 专用链接资源所有者负责批准或拒绝该连接。
 
@@ -72,14 +72,14 @@ Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azu
 只有处于已批准状态的托管专用终结点才能将流量发送到给定的专用链接资源。
 
 ## <a name="limitations-and-known-issues"></a>限制和已知问题
-### <a name="supported-data-sources"></a>受支持的数据源
+### <a name="supported-data-sources"></a>支持的数据源
 以下数据源支持通过来自 ADF 托管虚拟网络的私有链接进行连接。
 - Azure Blob 存储
 - Azure 表存储
 - Azure 文件
 - Azure Data Lake Gen2
-- Azure SQL 数据库（不包括 Azure SQL 托管实例）
-- Azure SQL 数据仓库
+- Azure SQL Database (不包括 Azure SQL 托管实例) 
+- Azure Synapse Analytics（以前称为 Azure SQL 数据仓库）
 - Azure CosmosDB SQL
 - Azure Key Vault
 - Azure 专用链接

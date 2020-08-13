@@ -1,6 +1,6 @@
 ---
 title: 通过 CloudSimple 为 VMware 解决方案预配节点-Azure
-description: 了解如何通过 CloudSimple 部署将节点添加到 VMWare
+description: 了解如何在 Azure 门户中通过 CloudSimple 部署将节点添加到 VMWare。 你可以为私有云环境设置即用即付容量。
 author: dikamath
 ms.author: dikamath
 ms.date: 08/14/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: eb033425d18b472c9da1a2d6a1bb6f166702905e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ccff5b4dc6ed5a571e25ab0569b9fa92674e1340
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024800"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140728"
 ---
 # <a name="provision-nodes-for-azure-vmware-solution-by-cloudsimple"></a>通过 CloudSimple 为 Azure VMware 解决方案预配节点
 
@@ -25,7 +25,7 @@ ms.locfileid: "77024800"
 
 ## <a name="add-a-node-to-your-cloudsimple-private-cloud"></a>将节点添加到 CloudSimple 私有云
 
-1. 选择“所有服务”****。
+1. 选择“所有服务”。
 2. 搜索**CloudSimple 节点**。
 
    ![搜索 CloudSimple 节点](media/create-cloudsimple-node-search.png)

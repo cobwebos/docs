@@ -1,6 +1,6 @@
 ---
 title: 快速入门-在私有云上创建 Azure VMware VM-Azure VMware 解决方案（按 CloudSimple）
-description: 介绍如何在 CloudSimple 私有云上创建 Azure VMware VM
+description: 了解如何在 CloudSimple 私有云上创建 VMware 虚拟机。 从 Azure 门户访问 CloudSimple 门户。
 author: sharaths-cs
 ms.author: b-shsury
 ms.date: 08/16/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 000e30f2656b88c068654fd8099cdff0ce0a4b37
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 32ac78c6bc613daf04fc98c03044699f387f290d
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091260"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140847"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>在私有云上创建 VMware 虚拟机
 
@@ -94,11 +94,11 @@ VM 现在已添加到工作负荷计算资源，可供使用。
 
 以下部分包含有关为私有云工作负荷设置 DNS 和 DHCP 服务器以及修改默认网络配置的可选信息。
 
-## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>将用户和标识源添加到 vCenter （可选）
+## <a name="add-users-and-identity-sources-to-vcenter-optional"></a>将用户和标识源添加到 vCenter (可选) 
 
 CloudSimple 将使用用户名分配默认 vCenter 用户帐户 `cloudowner@cloudsimple.local` 。 不需要额外的帐户设置即可开始。  CloudSimple 通常为管理员分配执行正常操作所需的特权。  将本地 active directory 或 Azure AD 设置为私有云上的[其他标识源](set-vcenter-identity.md)。
 
-## <a name="create-a-dns-and-dhcp-server-optional"></a>创建 DNS 和 DHCP 服务器（可选）
+## <a name="create-a-dns-and-dhcp-server-optional"></a>创建 DNS 和 DHCP 服务器 (可选) 
 
 在私有云环境中运行的应用程序和工作负荷需要进行名称解析，并使用 DHCP 服务进行查找和 IP 地址分配。 需有适当的 DHCP 和 DNS 基础结构才能提供这些服务。 可以在 vCenter 中配置虚拟机，以在私有云环境中提供这些服务。
 
@@ -126,7 +126,7 @@ Linux 提供了用于设置 DNS 服务器的各种包。  下面是有关设置�
 
 [Windows Server 作为 DHCP 服务器](/windows-server/networking/technologies/dhcp/dhcp-top)
 
-## <a name="customize-networking-configuration-optional"></a>自定义网络配置（可选）
+## <a name="customize-networking-configuration-optional"></a>自定义网络配置 (可选) 
 
 CloudSimple 门户中的 "网络" 页允许您为 Vm 指定防火墙表和公共 IP 地址的配置。
 
@@ -139,7 +139,7 @@ CloudSimple 门户中的 "网络" 页允许您为 Vm 指定防火墙表和公共
 5. 如果需要，请使用滑块更改空闲超时。
 6. 输入要为其分配公共 IP 地址的本地 IP 地址。
 7. 如果需要，请输入关联的 DNS 名称。
-8. 单击“完成”。
+8. 单击“Done”（完成） 。
 
     ![公共 IP](media/quick-create-pc-public-ip.png)
 
@@ -200,7 +200,7 @@ netstat -an | grep 80
 python2.7 -m SimpleHTTPServer 80
 ```
 
-or
+或
 
 ```
 python3 -m http.server 80
@@ -209,17 +209,17 @@ python3 -m http.server 80
 
 ### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>公共 IP 的默认 CloudSimple 防火墙规则
 
-* VPN 流量：允许 VPN 与所有工作负荷网络和管理网络之间的所有流量。
-* 私有云内部流量：允许（from/to）工作负荷网络与管理网络（如上所示）之间的所有东西部流量。
+* VPN 流量：允许 (from/到) VPN 和所有工作负荷网络和管理网络之间的所有流量。
+* 私有云内部流量：允许 (from/to) 工作负荷网络和管理网络之间的所有东流量 () 。
 * Internet 流量：
   * 拒绝从 Internet 传入的所有流量到工作负载网络和管理网络。
   * 允许从工作负载网络或管理网络发往 Internet 的所有流量。
 
 你还可以使用防火墙规则功能修改流量的安全方式。 有关详细信息，请参阅[设置防火墙表和规则](firewall.md)。
 
-## <a name="install-solutions-optional"></a>安装解决方案（可选）
+## <a name="install-solutions-optional"></a>安装解决方案 (可选) 
 
-可以在 CloudSimple 私有云上安装解决方案，充分利用私有云 vCenter 环境。 可以设置备份、灾难恢复、复制和其他功能来保护虚拟机。 示例包括 VMware Site Recovery Manager （VMware SRM）和 Veeam 备份 & 复制。
+可以在 CloudSimple 私有云上安装解决方案，充分利用私有云 vCenter 环境。 可以设置备份、灾难恢复、复制和其他功能来保护虚拟机。 示例包括 VMware Site Recovery Manager (VMware SRM) 和 Veeam Backup & 复制。
 
 若要安装解决方案，必须在有限的时间段内请求其他权限。 请参阅[提升权限](escalate-private-cloud-privileges.md)。
 

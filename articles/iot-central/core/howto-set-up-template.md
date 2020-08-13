@@ -7,13 +7,13 @@ ms.date: 12/06/2019
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-manager: peterpr
-ms.openlocfilehash: 3e4b44c8f784524b4cd363a2f4531c5bf0a70e0d
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.custom: contperfq1
+ms.openlocfilehash: a75fbeb9a12f61f827411e56c57ff6a4460ab083
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88041589"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136263"
 ---
 # <a name="define-a-new-iot-device-type-in-your-azure-iot-central-application"></a>在 Azure IoT Central 应用程序中定义新的 IoT 设备类型
 
@@ -129,7 +129,7 @@ ms.locfileid: "88041589"
 | 状态值 | 仅适用于状态语义类型。 定义可能的状态值，其中每个状态值都具有显示名称、名称、枚举类型和值。 |
 | 单位 | 遥测值的单位，例如**mph**、 **%** 或** &deg; C**。 |
 | 显示单位 | 仪表板和窗体上使用的显示单位。 |
-| 评论 | 有关遥测功能的任何注释。 |
+| 注释 | 有关遥测功能的任何注释。 |
 | 说明 | 遥测功能的说明。 |
 
 ### <a name="properties"></a>属性
@@ -150,7 +150,7 @@ ms.locfileid: "88041589"
 | 状态值 | 仅适用于状态语义类型。 定义可能的状态值，其中每个状态值都具有显示名称、名称、枚举类型和值。 |
 | 单位 | 属性值的单位，如**mph**、 **%** 或** &deg; C**。 |
 | 显示单位 | 仪表板和窗体上使用的显示单位。 |
-| 评论 | 有关属性功能的任何注释。 |
+| 注释 | 有关属性功能的任何注释。 |
 | 说明 | 属性功能的说明。 |
 
 ### <a name="commands"></a>命令
@@ -164,8 +164,8 @@ ms.locfileid: "88041589"
 | 显示名称 | 仪表板和窗体上使用的命令的显示名称。 |
 | 名称 | 命令的名称。 IoT Central 将根据显示名称生成此字段的值，但你可根据需要选择自己的值。 此字段必须为字母数字。 |
 | 功能类型 | 命令。 |
-| Command | `SynchronousExecutionType`. |
-| 评论 | 有关命令功能的任何注释。 |
+| 命令 | `SynchronousExecutionType`. |
+| 注释 | 有关命令功能的任何注释。 |
 | 说明 | 命令功能的说明。 |
 | 请求 | 如果启用，则请求参数的定义包括：名称、显示名称、架构、单位和显示单位。 |
 | 响应 | 如果启用，则命令响应的定义包括：名称、显示名称、架构、单位和显示单位。 |

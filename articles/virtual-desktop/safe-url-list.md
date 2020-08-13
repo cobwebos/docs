@@ -3,15 +3,15 @@ title: Windows 虚拟桌面安全 URL 列表-Azure
 description: 你应取消阻止的 Url 的列表，以确保你的 Windows 虚拟桌面部署按预期工作。
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 37fb5ccf121fed6e772dc1cd3dcba2345d62c66f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: d75d6ecf73dece6dad43367a7f869a1b8ec3d86b
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067199"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135855"
 ---
 # <a name="safe-url-list"></a>安全 URL 列表
 
@@ -27,11 +27,12 @@ ms.locfileid: "88067199"
 |mrsglobalsteus2prod.blob.core.windows.net|443|代理和 SXS 堆栈更新|AzureCloud|
 |*.core.windows.net|443|代理流量|AzureCloud|
 |*.servicebus.windows.net|443|代理流量|AzureCloud|
-|prod.warmpath.msftcloudes.com|443|代理流量|AzureCloud|
+|gcs.prod.monitoring.core.windows.net|443|代理流量|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure 市场|AzureCloud|
 |kms.core.windows.net|1688|Windows 激活|Internet|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure 门户支持|AzureCloud|
-| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 不适用 |
+| 169.254.169.254 | 80 | [Azure 实例元数据服务终结点](../virtual-machines/windows/instance-metadata-service.md) | 空值 |
+| 168.63.129.16 | 80 | [会话主机运行状况监视](../virtual-network/security-overview.md#azure-platform-considerations) | 空值 |
 
 >[!IMPORTANT]
 >Windows 虚拟桌面现在支持 FQDN 标记。 有关详细信息，请参阅[使用 Azure 防火墙保护 Windows 虚拟桌面部署](../firewall/protect-windows-virtual-desktop.md)。

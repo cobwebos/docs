@@ -12,24 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 08/11/2020
 ms.author: b-juche
-ms.openlocfilehash: 7c792ee9c56a044942bb2249a57f2615c72badee
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 29055da1ea8093d413691a41d38d6280f43f728a
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533132"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88134490"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>有关 Azure NetApp 文件的常见问题解答
 
-本文解答有关 Azure NetApp 文件的常见问题（Faq）。 
+本文解答了有关 Azure NetApp 文件 (常见问题解答) 常见问题。 
 
 ## <a name="networking-faqs"></a>网络常见问题解答
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>NFS 数据路径是否通过 Internet？  
 
-否。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是部署到 Azure 虚拟网络（VNet）中的 azure 本机服务，该服务可用。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
+不是。 NFS 数据路径不通过 Internet。 Azure NetApp 文件是一个 Azure 本机服务，该服务部署到 Azure 虚拟网络 (VNet) 服务可用。 Azure NetApp 文件使用委托子网，并直接在 VNet 中预配网络接口。 
 
 有关详细信息，请参阅[Azure NetApp 文件的准则网络规划](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)。  
 
@@ -48,13 +48,13 @@ ms.locfileid: "87533132"
 
 ### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>能否为 Azure NetApp 文件卷设置或选择自己的 IP 地址？  
 
-否。 IP 分配给 Azure NetApp 文件卷是动态的。 不支持静态 IP 分配。 
+不是。 IP 分配给 Azure NetApp 文件卷是动态的。 不支持静态 IP 分配。 
  
 ## <a name="security-faqs"></a>安全常见问题
 
 ### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Azure VM 和存储之间的网络流量是否可以加密？
 
-未加密数据流量（从 NFSv3、NFSv 4.1 或 SMBv3 客户端到 Azure NetApp 文件卷的流量）。 但是，从 Azure VM （运行 NFS 或 SMB 客户端）到 Azure NetApp 文件的流量与任何其他 Azure VM 到 VM 的流量一样安全。 此流量是 Azure 数据中心网络的本地流量。 
+数据流量 (从 NFSv3、NFSv 4.1 或 SMBv3 客户端到 Azure NetApp 文件) 卷的流量未加密。 但是，与任何其他 Azure VM 到 VM 的流量一样，Azure VM (运行 NFS 或 SMB 客户端) Azure NetApp 文件的流量。 此流量是 Azure 数据中心网络的本地流量。 
 
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>是否可以静态加密存储？
 
@@ -64,7 +64,7 @@ ms.locfileid: "87533132"
 
 Azure NetApp 文件的密钥管理由服务处理。 为每个卷生成唯一的 XTS-256 数据加密密钥。 加密密钥层次结构用于加密和保护所有卷密钥。 这些加密密钥永远不会以未加密的格式显示或报告。 删除卷时，会立即删除加密密钥。
 
-使用 Azure 专用 HSM 支持用户托管的密钥（自带密钥），可在美国东部、美国 West2 和美国中南部区域提供控制。  您可以在上请求访问 **anffeedback@microsoft.com** 。 容量可用时，将批准请求。
+使用 Azure 专用 HSM) 的用户管理密钥支持 (自带密钥，可在美国东部、美国 West2 和美国中南部区域提供控制。  您可以在上请求访问 **anffeedback@microsoft.com** 。 容量可用时，将批准请求。
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>能否配置 NFS 导出策略规则来控制对 Azure NetApp 文件服务装载目标的访问？
 
@@ -131,7 +131,7 @@ Azure NetApp 文件支持 NFSv3 和 NFSv 4.1。 可以使用任一 NFS 版本[�
 
 ### <a name="which-smb-versions-are-supported-by-azure-netapp-files"></a>Azure NetApp 文件支持哪些 SMB 版本？
 
-Azure NetApp 文件支持 SMB 2.1 和 SMB 3.1 （支持 SMB 3.0）。    
+Azure NetApp 文件支持 SMB 2.1 和 SMB 3.1 (，其中包括对 SMB 3.0) 的支持。    
 
 ### <a name="is-an-active-directory-connection-required-for-smb-access"></a>SMB 访问是否需要 Active Directory 连接？ 
 
@@ -139,13 +139,13 @@ Azure NetApp 文件支持 SMB 2.1 和 SMB 3.1 （支持 SMB 3.0）。
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>支持多少个 Active Directory 连接？
 
-Azure NetApp 文件不支持单个*区域*中的多个 ACTIVE DIRECTORY （AD）连接，即使 AD 连接在不同的 NetApp 帐户中。 但是，只要 AD 连接位于不同的区域，就可以在单个*订阅*中拥有多个 ad 连接。 如果在单个区域中需要多个 AD 连接，则可以使用单独的订阅来执行此操作。 
+即使 AD 连接在不同的 NetApp 帐户中，Azure NetApp 文件也不支持单个*区域*中 (ad) 连接的多个 Active Directory。 但是，只要 AD 连接位于不同的区域，就可以在单个*订阅*中拥有多个 ad 连接。 如果在单个区域中需要多个 AD 连接，则可以使用单独的订阅来执行此操作。 
 
 AD 连接是按 NetApp 帐户配置的;AD 连接仅在创建它的 NetApp 帐户中可见。
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Azure NetApp 文件是否支持 Azure Active Directory？ 
 
-支持[Azure Active Directory （AD）域服务](https://docs.microsoft.com/azure/active-directory-domain-services/overview)和[Active Directory 域服务（AD DS）](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) 。 可以将现有 Active Directory 域控制器与 Azure NetApp 文件一起使用。 域控制器可以作为虚拟机或本地通过 ExpressRoute 或 S2S VPN 驻留在 Azure 中。 目前，Azure NetApp 文件不支持[Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/)的 AD join。
+支持[Azure Active Directory (AD) 域服务](https://docs.microsoft.com/azure/active-directory-domain-services/overview)和[Active Directory 域服务 (](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) AD DS) 。 可以将现有 Active Directory 域控制器与 Azure NetApp 文件一起使用。 域控制器可以作为虚拟机或本地通过 ExpressRoute 或 S2S VPN 驻留在 Azure 中。 目前，Azure NetApp 文件不支持[Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/)的 AD join。
 
 如果将 Azure NetApp 文件与 Azure Active Directory 域服务一起使用，则在为 NetApp 帐户配置 Active Directory 时，组织单位路径为 `OU=AADDC Computers`。
 
@@ -177,6 +177,11 @@ Yes, Azure NetApp Files supports LDAP signing by default. This functionality ena
 
 若要避免 "权限被拒绝" 问题，请确保在 `pcuser` 访问装入点之前 Windows Active Directory 包含。 如果在 `pcuser` 遇到 "权限被拒绝" 问题后添加，请等待24小时，以便在再次尝试访问之前清除缓存条目。
 
+### <a name="when-i-try-to-create-a-dual-protocol-volume-why-does-the-creation-process-fail-with-the-error-failed-to-validate-ldap-configuration-try-again-after-correcting-ldap-configuration"></a>尝试创建双重协议卷时，为什么创建过程失败，并出现错误 "无法验证 LDAP 配置，更正 LDAP 配置后重试"？  
+
+DNS 服务器上可能缺少 AD 主机计算机 (PTR) 记录的指针。 需要在 DNS 服务器上创建反向查找区域，然后在该反向查找区域中添加 AD 主机计算机的 PTR 记录。
+
+例如，假设 AD 计算机的 IP 地址为 `1.1.1.1` ，使用命令)  (找到的 ad 计算机的主机名 `hostname` `AD1` ，并且域名为 `myDomain.com` 。  添加到反向查找区域中的 PTR 记录应该是 `1.1.1.1`  ->  `AD1.myDomain.com` 。
 
 ## <a name="capacity-management-faqs"></a>容量管理常见问题
 
@@ -186,13 +191,13 @@ Azure NetApp 文件提供容量池和卷使用情况指标。 你还可以使用
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>是否可以通过 Azure 存储资源管理器管理 Azure NetApp 文件？
 
-否。 Azure 存储资源管理器不支持 Azure NetApp 文件。
+不是。 Azure 存储资源管理器不支持 Azure NetApp 文件。
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>如何实现确定目录是否接近限制大小？
 
-可以使用 `stat` 客户端中的命令查看目录是否接近目录元数据的最大大小限制（320 MB）。
+可以使用 `stat` 客户端中的命令查看目录是否接近目录元数据的最大大小限制 (320 MB) 。
 
-对于 320 MB 的目录，块数为655360，每个块的大小为512个字节。  （即 320x1024x1024/512。）  
+对于 320 MB 的目录，块数为655360，每个块的大小为512个字节。   (，即 320x1024x1024/512 )   
 
 示例：
 
@@ -243,11 +248,11 @@ NetApp 提供基于 SaaS 的解决方案，即[Netapp 云同步](https://cloud.n
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>Azure Data Box 是否支持迁移？
 
-否。 Azure Data Box 目前不支持 Azure NetApp 文件。 
+不是。 Azure Data Box 目前不支持 Azure NetApp 文件。 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>是否支持通过 Azure 导入/导出服务进行迁移？
 
-否。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
+不是。 Azure 导入/导出服务目前不支持 Azure NetApp 文件。
 
 ## <a name="next-steps"></a>后续步骤  
 

@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: bf6215bd9225292f7b85ed6d4c4566cd4ee860b7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: b1baeaa31eddc13a68f2cc1d374b850f1c1a26bd
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902093"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136331"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>商业市场的地域可用性和货币支持
 
@@ -179,11 +179,7 @@ ms.locfileid: "87902093"
 > [!NOTE]
 > 发布计划中某个市场的价格后，无法再更改。 若要确保价格发布之前是正确的，请导出定价电子表格，并查看每个市场中的价格。
 
-## <a name="rate-changes"></a>速率更改
-
-用于计算本地价格的费率每天会更新。 此计算是在 ISV 保存页面时完成的，他们可以通过在发布前导出和查看价格来查看所有费率。
-
-### <a name="retrieving-currency-information-by-api"></a>按 API 检索货币信息
+## <a name="retrieving-currency-information-by-api"></a>按 API 检索货币信息
 
 单个价格 (根据其设置方式，可能会受到其保存日期的汇率影响) 可以使用 API 进行检索;无法进行货币信息。
 

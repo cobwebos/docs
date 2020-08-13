@@ -1,6 +1,6 @@
 ---
 title: Azure VMware 解决方案中通过 CloudSimple 的 Vlan 和子网
-description: 了解 CloudSimple 私有云中的 Vlan 和子网
+description: 了解 CloudSimple 私有云中的 Vlan 和子网，以及 CloudSimple 提供 CloudSimple 服务部署位置的网络。
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/15/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 2451fbb69636624db354006df2a7925ef9e75459
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e3235b394f739e8af846f30dfe51705d0926c843
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77024885"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140660"
 ---
 # <a name="vlans-and-subnets-overview"></a>Vlan 和子网概述
 
@@ -23,7 +23,7 @@ CloudSimple 提供了每个区域的网络，其中部署了 CloudSimple 服务�
 
 ## <a name="vlans"></a>VLAN
 
-为每个私有云创建 VLAN （第2层网络）。  第2层流量保持在私有云的边界内，使你能够隔离私有云中的本地流量。  在私有云上创建的 VLAN 只能用于在该私有云中创建分布式端口组。  在私有云上创建的 VLAN 自动在连接到私有云的主机的所有交换机上进行配置。
+为每个私有云创建 VLAN (第2层网络) 。  第2层流量保持在私有云的边界内，使你能够隔离私有云中的本地流量。  在私有云上创建的 VLAN 只能用于在该私有云中创建分布式端口组。  在私有云上创建的 VLAN 自动在连接到私有云的主机的所有交换机上进行配置。
 
 ## <a name="subnets"></a>子网
 
@@ -33,7 +33,7 @@ CloudSimple 提供了每个区域的网络，其中部署了 CloudSimple 服务�
 
 ## <a name="vspherevsan-subnets-cidr-range"></a>vSphere/vSAN 子网 CIDR 范围
 
-私有云是作为由 vCenter 服务器管理的隔离 VMware 堆栈（ESXi 主机、vCenter、vSAN 和 NSX）环境创建的。  管理组件部署在为 vSphere/vSAN 子网 CIDR 选择的网络中。  在部署过程中，网络 CIDR 范围分为不同的子网。
+私有云创建为独立的 VMware 堆栈 (ESXi 主机、vCenter、vSAN 和 NSX) 由 vCenter 服务器管理的环境。  管理组件部署在为 vSphere/vSAN 子网 CIDR 选择的网络中。  在部署过程中，网络 CIDR 范围分为不同的子网。
 
 * 最小 vSphere/vSAN 子网 CIDR 范围前缀： **/24**
 * 最大 vSphere/vSAN 子网 CIDR 范围前缀： **/21**
