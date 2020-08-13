@@ -13,12 +13,12 @@ ms.date: 08/07/2020
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 4672c5cab5977b000bd5095f3868864ae0c267ed
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: fd19b451638eacbf0d6174154a2688b3523ca4d2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005748"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183864"
 ---
 # <a name="migrate-applications-to-microsoft-authentication-library-msal"></a>将应用程序迁移到 Microsoft 身份验证库 (MSAL)
 
@@ -58,7 +58,7 @@ __问：我的现有 ADAL 应用是否会停止工作？__
 答：否。 你的现有应用程序将继续运行而不进行修改。 如果计划将其保存在2022年6月30日之前，应考虑将应用程序更新为 MSAL 以确保它们的安全性，但不需要迁移到 MSAL 来维护现有功能。
 
 __问：如何知道哪些应用正在使用 ADAL？__  
-答：如果你有应用程序的源代码，可以参考上述迁移指南来确定应用使用的库和了解如何将其迁移到 MSAL。 如果你与 ISV 合作，我们建议你直接访问这些资源，以了解迁移到 MSAL 的过程。 如果你没有访问应用程序源代码的权限，可以[提交一个支持请求](developer-support-help-options.md#open-a-support-request)，获取已注册应用程序和每个应用程序所使用的库的列表。
+答：如果你有应用程序的源代码，可以参考上述迁移指南来确定应用使用的库和了解如何将其迁移到 MSAL。 如果你与 ISV 合作，我们建议你直接访问这些资源，以了解迁移到 MSAL 的过程。
 
 __问：为什么应设法迁移到 MSAL？__  
 答：MSAL 包含 ADAL 中没有的新功能，包括增量许可、单一登录和令牌缓存管理。 此外，与 ADAL 不同，MSAL 在 2022 年 6 月 30 日之后会继续接收安全补丁。 [了解详细信息](msal-overview.md)。

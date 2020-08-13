@@ -1,6 +1,6 @@
 ---
 title: 教程-将 StorSimple 物理设备故障转移到同一设备
-description: 了解如何将 StorSimple 设备故障转移到同一设备。
+description: 了解在发生灾难时，将 StorSimple 8000 系列物理设备故障转移到其自身所需的步骤。
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 60bf5b593efc5a26387680c092fc972bf9274e56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17c116194aa52a82246bcee9114824e8a918ebbd
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511757"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184323"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>将 StorSimple 物理设备故障转移到同一设备
 

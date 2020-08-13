@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 08/11/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65aed14ec7f644f2792aaecde5c8bccfffdd8081
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 30d18041a746a0c1046a51cf408494ccb81019c9
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88078438"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183201"
 ---
 # <a name="use-cloud-groups-to-manage-role-assignments-in-azure-active-directory-preview"></a>使用云组来管理 Azure Active Directory (预览版中的角色分配) 
 
@@ -60,7 +60,7 @@ Azure AD 允许使用名为 isAssignableToRole 的新属性来保护分配给角
 
 - 如果角色是通过组分配的，则不能创建或修改动态组。
 - **为托管用户登录功能启用暂存推出**不支持通过组进行分配。
-- *仅 Azure AD P2 许可客户*：不要通过 Azure AD 和 Privileged Identity Management 为角色分配活动组。 这将导致用户在 PIM 中看不到其活动角色分配以及无法删除 PIM 赋值的问题。 符合条件的分配在此方案中不受影响。 如果尝试进行此分配，可能会出现意外的行为，例如：
+- *仅 Azure AD P2 许可客户*：不要通过 Azure AD 和 PRIVILEGED IDENTITY MANAGEMENT (PIM) 将组分配为活动角色。 具体而言，请不要在创建角色时将角色分配给该角色的组 *，并*在以后使用 PIM 将角色分配给该组。 这将导致用户在 PIM 中看不到其活动角色分配以及无法删除 PIM 赋值的问题。 符合条件的分配在此方案中不受影响。 如果尝试进行此分配，可能会出现意外的行为，例如：
   - 角色分配的结束时间可能会错误地显示。
   - 在 PIM 门户中， **"我的角色**" 只能显示一个角色分配，而与通过一个或多个组 (授予分配的方法多少并直接) 。
 - *仅 Azure AD P2 授权客户*即使在删除组之后，它仍会在 PIM UI 中显示为该角色的合格成员。 功能没有问题;这只是 Azure 门户中的缓存问题。  

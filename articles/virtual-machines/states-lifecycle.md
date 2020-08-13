@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 127604264850f9845846d0bb6a2768cac23cdc8c
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 0613b4c444b9eacaaf2b9d3e0795f4872cb903f3
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88169121"
+ms.locfileid: "88182931"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>虚拟机生命周期和状态
 
@@ -23,137 +23,195 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 
 电源状态表示 VM 的上一个已知状态。
 
-![VM 电源状态图](./media/vm-power-states.png)
+![VM 电源状态图](./media/virtual-machines-common-states-lifecycle/vm-power-states.png)
 
 <br>
 下表描述每个实例状态并指示是否会对其收取实例使用费用。
 
-<table>
-<tr>
-<th>
-状态
-</th>
-<th>
-说明
-</th>
-<th>
-实例使用计费
-</th>
-</tr>
-<tr>
-<td>
-<p><b>正在启动</b></p>
-</td>
-<td>
-<p>VM 正在启动。</p>
-<code>"statuses": [<br>
-   {<br>
-      "code": "PowerState/starting",<br>
-       "level": "Info",<br>
-        "displayStatus": "VM starting"<br>
-    }<br>
-    ]</code><br>
-</td>
-<td>
-<p><b>不计费</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>正在运行</b></p>
-</td>
-<td>
-<p>VM 的正常工作状态</p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/running",<br>
- "level": "Info",<br>
- "displayStatus": "VM running"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>向</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>正在停止</b></p>
-</td>
-<td>
-<p>这是一种过渡性状态。 完成后，会显示为“已停止”。****</p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/stopping",<br>
- "level": "Info",<br>
- "displayStatus": "VM stopping"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>向</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>已停止</b></p>
-</td>
-<td>
-<p>VM 已在来宾 OS 中关闭，或者已使用 PowerOff API 关闭。</p>
-<p>硬件仍然分配给 VM 并保留在主机上。 </p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/stopped",<br>
- "level": "Info",<br>
- "displayStatus": "VM stopped"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>计费&#42;</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>正在解除分配</b></p>
-</td>
-<td>
-<p>过渡性状态。 完成后，VM 会显示为“已解除分配”。****</p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/deallocating",<br>
- "level": "Info",<br>
- "displayStatus": "VM deallocating"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>不计费&#42;</b></p>
-</td>
-</tr>
-<tr>
-<td>
-<p><b>已解除分配</b></p>
-</td>
-<td>
-<p>VM 已成功停止并从主机中删除。 </p>
-<code>"statuses": [<br>
- {<br>
- "code": "PowerState/deallocated",<br>
- "level": "Info",<br>
- "displayStatus": "VM deallocated"<br>
- }<br>
- ]</code><br>
-</td>
-<td>
-<p><b>不计费</b></p>
-</td>
-</tr>
-</tbody>
-</table>
+:::row:::
+   :::column span="":::
+
+   **State**
+   
+   :::column-end:::
+   :::column span="":::
+
+   **描述**
+
+   :::column-end:::
+   :::column span="":::
+
+   **实例使用情况已计费**
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **正在启动**
+
+   :::column-end:::
+   :::column span="":::
+
+   VM 正在启动。
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/starting",
+    "level": "Info",
+    "displayStatus": "VM starting"
+    }
+   ]
+   ```
+   :::column-end:::
+   :::column span="":::
+
+   **不计费**
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **正在运行**
+
+   :::column-end:::
+   :::column span="":::
+
+   VM 的正常工作状态
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/running",
+    "level": "Info",
+    "displayStatus": "VM running"
+    }
+  ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **向**
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **正在停止**
+
+   :::column-end:::
+   :::column span="":::
+
+   这是一种过渡性状态。 完成后，会显示为“已停止”。****
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/stopping",
+    "level": "Info",
+    "displayStatus": "VM stopping"
+    }
+   ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **向**
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **已停止**
+
+   :::column-end:::
+   :::column span="":::
+
+   VM 已在来宾 OS 中关闭，或者已使用 PowerOff API 关闭。
+
+   硬件仍然分配给 VM 并保留在主机上。
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/stopped",
+    "level": "Info",
+    "displayStatus": "VM stopped"
+    }
+   ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **向***
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **正在解除分配**
+
+   :::column-end:::
+   :::column span="":::
+
+   过渡性状态。 完成后，VM 会显示为“已解除分配”。****
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/deallocating",
+    "level": "Info",
+    "displayStatus": "VM deallocating"
+    }
+   ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **未计费***
+
+   :::column-end:::
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **已解除分配**
+
+   :::column-end:::
+   :::column span="":::
+
+   VM 已成功停止并从主机中删除。
+
+   ```json
+   "statuses": [
+    {
+    "code": "PowerState/deallocated",
+    "level": "Info",
+    "displayStatus": "VM deallocated"
+    }
+   ]
+  ```
+   :::column-end:::
+   :::column span="":::
+
+   **不计费**
+
+   :::column-end:::
+:::row-end:::
 
 
-&#42;*某些 Azure 资源（如磁盘和网络）会产生费用。 实例上的软件许可证不产生费用。
+&#42; 一些 Azure 资源，如磁盘和网络，会产生费用。 实例上的软件许可证不产生费用。
 
 ## <a name="provisioning-states"></a>预配状态
 
@@ -171,86 +229,159 @@ Azure 虚拟机 (VM) 经历的不同状态可以归类为“预配”状态和�
 
 下面是在平台接受用户启动的操作之后的过渡操作状态：
 
-<br>
+:::row:::
+   :::column span="":::
 
-<table>
-<tbody>
-<tr>
-<td width="162">
-<p><b>状态</b></p>
-</td>
-<td width="366">
-<p>说明</p>
-</td>
-</tr>
-<tr>
-<td width="162">
-<p><b>Creating</b></p>
-</td>
-<td width="366">
-<code>"statuses": [<br>
- {<br>
- "code": "ProvisioningState/creating",<br>
- "level": "Info",<br>
- "displayStatus": "Creating"<br>
- }</code><br>
-</td>
-</tr>
-<tr>
-<td width="162">
-<p><b>更新</b></p>
-</td>
-<td width="366">
-<code>"statuses": [<br>
- {<br>
- "code": "ProvisioningState/updating",<br>
- "level": "Info",<br>
- "displayStatus": "Updating"<br>
- }<br>
- ]</code><br>
-</td>
-</tr>
-<tr>
-<td width="162">
-<p><b>正在删除</b></p>
-</td>
-<td width="366">
-<code>"statuses": [<br>
- {<br>
- "code": "ProvisioningState/deleting",<br>
- "level": "Info",<br>
- "displayStatus": "Deleting"<br>
- }<br>
- ]</code><br>
-</td>
-</tr>
-<tr>
-<td width="162">
-<p><b>OS 预配状态</b></p>
-</td>
-<td width="366">
-<p>如果 VM 是使用 OS 映像而非专用映像创建的，可能会观察到以下子状态：</p>
-<p>1. <b>OSProvisioningInprogress</b> &ndash; VM 正在运行，来宾 OS 的安装正在进行。 <p /> 
-<code> "statuses": [<br>
- {<br>
- "code": "ProvisioningState/creating/OSProvisioningInprogress",<br>
- "level": "Info",<br>
- "displayStatus": "OS Provisioning In progress"<br>
- }<br>
-]</code><br>
-<p>2. <b>OSProvisioningComplete</b> &ndash; 短时状态。 VM 会快速过渡到“成功”状态，除非需要安装扩展。**** 安装扩展可能需要一定的时间。 <br />
-<code> "statuses": [<br>
- {<br>
- "code": "ProvisioningState/creating/OSProvisioningComplete",<br>
- "level": "Info",<br>
- "displayStatus": "OS Provisioning Complete"<br>
- }<br>
-]</code><br>
-<p><b>注意</b>：如果存在 OS 故障或者 OS 没有及时安装，则 OS 预配可能会过渡到“失败”状态。**** 会根据部署在基础结构上的 VM 对客户收费。</p>
-</td>
-</tr>
-</table>
+   **State**
+   
+   :::column-end:::
+   :::column span="2":::
 
+   **描述**
+
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **Creating**
+
+   :::column-end:::
+   :::column span="2":::
+
+  ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/creating",
+    "level": "Info",
+    "displayStatus": "Creating"
+    }
+   [
+   ```
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **更新**
+
+   :::column-end:::
+   :::column span="2":::
+
+   ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/updating",
+    "level": "Info",
+    "displayStatus": "Updating"
+    }
+   [
+   ```
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **正在删除**
+
+   :::column-end:::
+   :::column span="2":::
+
+   ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/deleting",
+    "level": "Info",
+    "displayStatus": "Deleting"
+    }
+   [
+   ```
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **OS 预配状态**
+   
+   :::column-end:::
+   :::column span="2":::
+
+   **描述**
+
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+
+
+   :::column-end:::
+   :::column span="2":::
+
+   如果 VM 是使用 OS 映像而非专用映像创建的，可能会观察到以下子状态：
+
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **OSProvisioningInprogress**
+
+   :::column-end:::
+   :::column span="2":::
+
+   VM 正在运行，且来宾操作系统的安装正在进行中。
+ 
+   ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/creating/OSProvisioningInprogress",
+    "level": "Info",
+    "displayStatus": "OS Provisioning In progress"
+    }
+   [
+   ```
+   :::column-end:::
+
+:::row-end:::
+
+:::row:::
+   :::column span="":::
+
+   **OSProvisioningComplete**
+
+   :::column-end:::
+   :::column span="2":::
+   
+   生存期状态。 VM 会快速过渡到“成功”状态，除非需要安装扩展。**** 安装扩展可能需要一定的时间。
+   
+   ```json
+   "statuses": [
+    {
+    "code": "ProvisioningState/creating/OSProvisioningComplete",
+    "level": "Info",
+    "displayStatus": "OS Provisioning Complete"
+    }
+   [
+   ```
+   
+   **注意**：如果存在 OS 故障或者 OS 没有及时安装，则 OS 预配可能会过渡到“失败”状态。**** 会根据部署在基础结构上的 VM 对客户收费。
+
+   :::column-end:::
+
+:::row-end:::
 
 操作完成后，VM 会过渡到下述某个状态：
 

@@ -1,17 +1,17 @@
 ---
 title: 使用 AzureRM PowerShell 脚本管理 StorSimple 设备
-description: 了解如何使用 Azure 资源管理器脚本自动执行 StorSimple 作业
+description: 了解如何使用基于 Azure 资源管理器 SDK 的脚本来管理 StorSimple 8000 系列设备。
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 3b9a7bf243931443b8273253dee7618c0e594aaf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 4a53dd803b22899b7dd15db0aa1ff411641a11dc
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020859"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183252"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>使用基于 Azure 资源管理器 SDK 的脚本管理 StorSimple 设备
 
@@ -25,7 +25,7 @@ ms.locfileid: "87020859"
 
 #### <a name="table-of-azure-resource-manager-sdk-based-sample-scripts"></a>基于 Azure 资源管理器 SDK 的示例脚本表
 
-| Azure 资源管理器脚本                    | 说明                                                                                                                                                                                                       |
+| Azure 资源管理器脚本                    | 描述                                                                                                                                                                                                       |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Authorize-ServiceEncryptionRollover.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Authorize-ServiceEncryptionRollover.ps1)          | 此脚本可用于授权 StorSimple 设备更改服务数据加密密钥。                                                                                                           |
 | [Create-StorSimpleCloudAppliance.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Create-StorSimpleCloudAppliance.ps1)              | 此脚本可用于创建 8010 或 8020 StorSimple 云设备。 然后，可以使用 StorSimple 数据管理器服务配置和注册云设备。                                                       |

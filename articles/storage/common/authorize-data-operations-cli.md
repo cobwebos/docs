@@ -1,24 +1,24 @@
 ---
-title: 使用 Azure CLI 授权访问 Blob 或队列数据
+title: 使用 Azure AD 凭据运行 Azure CLI 命令以访问 Blob 或队列数据
 titleSuffix: Azure Storage
 description: 指定如何使用 Azure CLI 授权针对 Blob 或队列数据的数据操作。 可以使用 Azure AD 凭据、帐户访问密钥或共享访问签名 (SAS) 令牌授权数据操作。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/26/2020
+ms.date: 08/12/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a656ccc56d198943c8631077466115eb6411a64a
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 5ab346af1516c29b1638811217b779e11f120043
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534883"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183388"
 ---
-# <a name="authorize-access-to-blob-or-queue-data-with-azure-cli"></a>使用 Azure CLI 授权访问 Blob 或队列数据
+# <a name="run-azure-cli-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>使用 Azure AD 凭据运行 Azure CLI 命令以访问 Blob 或队列数据
 
 Azure 存储提供适用于 Azure CLI 的扩展，使你能够指定如何授权针对 Blob 或队列数据的操作。 可通过以下方式授权数据操作：
 

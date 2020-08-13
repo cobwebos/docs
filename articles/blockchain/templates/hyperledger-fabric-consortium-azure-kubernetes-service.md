@@ -1,19 +1,19 @@
 ---
-title: Azure Kubernetes 服务（AKS）上的 Hyperledger 结构联合会
+title: 'Azure Kubernetes Service 上的 Hyperledger Fabric 联合会 (AKS) '
 description: 如何在 Azure Kubernetes Service 上部署和配置 Hyperledger Fabric 联合会网络
-ms.date: 07/27/2020
+ms.date: 08/06/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 4bc55090234a4ab33125ba43b8416de1eadb702f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: d6999b32224e6c41cdf9869554c884fc4779c217
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533421"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184204"
 ---
-# <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务（AKS）上的 Hyperledger 结构联合会
+# <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service 上的 Hyperledger Fabric 联合会 (AKS) 
 
-可以使用 Azure Kubernetes 服务（AKS）模板上的 Hyperledger Fabric （HLF）在 Azure 上部署和配置 Hyperledger Fabric 联合会网络。
+可以使用 Azure Kubernetes Service 上的 Hyperledger Fabric (HLF)  (AKS) 模板在 Azure 上部署和配置 Hyperledger Fabric 联合会网络。
 
 阅读本文后，可以：
 
@@ -42,7 +42,7 @@ ms.locfileid: "87533421"
 
 - **对等节点**：主要承载分类帐和智能协定的节点，这是网络的基本元素。
 
-- **FABRIC ca**：构造 Ca 是 Hyperledger Fabric 的证书颁发机构（CA）。 构造 CA 允许您初始化和启动承载证书颁发机构的服务器进程。 它允许您管理标识和证书。 默认情况下，每个作为模板的一部分部署的 AKS 群集都具有结构 CA pod。
+- **FABRIC ca**：构造 Ca 是 Hyperledger FABRIC (CA) 的证书颁发机构。 构造 CA 允许您初始化和启动承载证书颁发机构的服务器进程。 它允许您管理标识和证书。 默认情况下，每个作为模板的一部分部署的 AKS 群集都具有结构 CA pod。
 
 - **CouchDB 或 LevelDB**：对等节点的全球状态数据库可以存储在 LevelDB 或 CouchDB 中。 LevelDB 是在对等节点中嵌入的默认状态数据库，并将 chaincode 数据存储为简单的键值对，并仅支持键、键范围和复合键查询。 CouchDB 是可选的备用状态数据库，在 chaincode 数据值建模为 JSON 时支持丰富的查询。
 
@@ -66,7 +66,7 @@ ms.locfileid: "87533421"
 
 若要开始 HLF 网络组件部署，请导航到[Azure 门户](https://portal.azure.com)。
 
-1. 选择 "**创建资源 > 区块链** **" > 在 Azure Kubernetes Service （预览版）中搜索 Hyperledger Fabric**。
+1. 选择 "**创建资源 > 区块链** **" > 在 Azure Kubernetes Service (预览) 上搜索 "Hyperledger Fabric" **。
 
 2. 在 "**基本**信息" 页中输入 "项目详细信息"。
 
@@ -75,7 +75,7 @@ ms.locfileid: "87533421"
 3. 输入以下详细信息：
     - **订阅**：选择要在其中部署 HLF 网络组件的订阅名称。
     - **资源组**：创建新的资源组或选择现有的空资源组，该资源组将保存作为模板的一部分部署的所有资源。
-    - **区域**：选择要在其中部署 HLF 组件的 azure Kubernetes 群集的 azure 区域。 此模板在 AKS 可用的所有区域中都可用，请确保选择订阅未按虚拟机（VM）配额限制的区域。
+    - **区域**：选择要在其中部署 HLF 组件的 azure Kubernetes 群集的 azure 区域。 此模板在 AKS 可用的所有区域中都可用，请确保选择订阅未按虚拟机 (VM) 配额限制的区域。
     - **资源前缀**：用于命名部署的资源的前缀。 资源前缀的长度必须小于六个字符，并且字符组合必须同时包含数字和字母。
 4. 选择 "**构造设置**" 选项卡以定义将部署的 HLF 网络组件。
 
@@ -92,7 +92,7 @@ ms.locfileid: "87533421"
     - **FABRIC ca 密码**：输入用于构造 ca 身份验证的密码。
     - **确认密码**：确认构造 CA 密码。
     - **证书**：如果想要使用自己的根证书来初始化构造 ca，请选择 "为 Fabric Ca 上传根证书" 选项，否则，"fabric ca" 会创建自签名证书。
-    - **根证书**：上传需要初始化构造 CA 的根证书（公钥）。 支持采用 pem 格式的证书，证书应在 UTC 时区内有效。
+    - **根证书**：上传根证书 (需要初始化构造 CA 的公钥) 。 支持采用 pem 格式的证书，证书应在 UTC 时区内有效。
     - **根证书私钥**：上传根证书的私钥。 如果你有一个包含公钥和私钥的 pem 证书，也可以在此处上传。
 
 
@@ -103,8 +103,8 @@ ms.locfileid: "87533421"
 7. 输入以下详细信息：
     - **Kubernetes 群集名称**：创建的 AKS 群集的名称。 根据提供的资源前缀预填充此字段，如有必要，可以更改。
     - **Kubernetes 版本**：将部署在群集上的 Kubernetes 版本。 根据在 "**基本**信息" 选项卡中选择的区域，可用的支持版本可能会更改。
-    - **DNS 前缀**： AKS 群集的域名系统（DNS）名称前缀。 创建群集后管理容器时，你将使用 DNS 连接到 Kubernetes API。
-    - **节点大小**： Kubernetes 节点的大小，可以从 Azure 上提供的 VM 库存单位（sku）列表中进行选择。 为了获得最佳性能，建议采用标准 DS3 v2。
+    - **Dns 前缀**：域名系统 (DNS) AKS 群集的名称前缀。 创建群集后管理容器时，你将使用 DNS 连接到 Kubernetes API。
+    - **节点大小**： Kubernetes 节点的大小，您可以从 "VM 库存保留单元 (" sku 列表中进行选择) 在 Azure 上提供。 为了获得最佳性能，建议采用标准 DS3 v2。
     - **节点计数**：要在群集中部署的 Kubernetes 节点数。 建议将此节点数至少设置为等于或大于 Fabric 设置中指定的 HLF 节点数。
     - **服务主体客户端 id**：输入现有服务主体的客户端 id，或创建 AKS authentication 所需的新的。 请参阅[创建服务主体](/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal)的步骤。
     - **服务主体客户端机密**：输入服务主体客户端 ID 中提供的服务主体的客户端机密。
@@ -120,16 +120,16 @@ ms.locfileid: "87533421"
 
 ## <a name="build-the-consortium"></a>构建联合会
 
-若要生成区块链协会，请在部署订购服务和对等节点后，按顺序执行以下步骤。 Azure HLF script （azhlf），可帮助设置联合会、创建频道和 chaincode 操作。
+若要生成区块链协会，请在部署订购服务和对等节点后，按顺序执行以下步骤。 Azure HLF script (azhlf) ，它可帮助你设置联合会、创建频道和 chaincode 操作。
 
 > [!NOTE]
 > 脚本中有一个更新，此更新用于通过 Azure HLF 脚本提供更多功能。 如果要引用旧脚本，[请参阅此处](https://github.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/blob/master/consortiumScripts/README.md)。 此脚本与 Azure Kubernetes 服务模板版本2.0.0 和更高版本上的 Hyperledger 结构兼容。 若要检查部署的版本，请执行[故障排除](#troubleshoot)中的步骤。
 
 > [!NOTE]
-> 提供的 Azure HLF （azhlf）脚本仅用于帮助演示/开发测试方案。 此脚本创建的通道和联盟具有基本的 HLF 策略，可简化演示/开发测试方案。 对于生产设置，我们建议根据组织的符合性需求，使用本机 HLF Api 更新通道/联合会 HLF 策略。
+> 提供的 Azure HLF (azhlf) 脚本仅用于帮助演示/开发测试方案。 此脚本创建的通道和联盟具有基本的 HLF 策略，可简化演示/开发测试方案。 对于生产设置，我们建议根据组织的符合性需求，使用本机 HLF Api 更新通道/联合会 HLF 策略。
 
 
-运行 Azure HLF 脚本的所有命令都可以通过 Azure Bash 命令行执行。 接口（CLI）。 可以通过   ![ Azure 门户右上角的 "Azure Kubernetes 服务模板" 选项，通过 Hyperledger Fabric 登录到 azure shell web 版本 ](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) 。 在命令提示符下，键入 bash，然后输入以切换到 bash CLI 或从 shell 工具栏选择*bash* 。
+运行 Azure HLF 脚本的所有命令都可以通过 Azure Bash 命令行执行。 接口 (CLI) 。 可以通过   ![ Azure 门户右上角的 "Azure Kubernetes 服务模板" 选项，通过 Hyperledger Fabric 登录到 azure shell web 版本 ](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) 。 在命令提示符下，键入 bash，然后输入以切换到 bash CLI 或从 shell 工具栏选择*bash* 。
 
 有关详细信息，请参阅[Azure shell](../../cloud-shell/overview.md) 。
 
@@ -289,9 +289,9 @@ AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STO
 
 同样，若要在通道中添加更多对等组织，请根据所需的对等组织更新对等环境变量，并执行步骤1到4。
 
-### <a name="set-anchor-peers-command"></a>设置定位点对等节点命令
+### <a name="set-anchor-peers-command"></a> (s) 命令设置定位点对等
 
-在对等组织客户端中，发出命令为指定通道上的对等组织设置锚点。
+在对等组织客户端中，发出命令，为指定通道上的对等组织设置锚点 (s) 。
 
 >[!NOTE]
 > 执行此命令之前，请确保使用 "联盟管理" 命令在通道中添加对等组织。
@@ -350,10 +350,22 @@ CHANNEL_NAME=<channelName>
 在对等客户端应用程序中，执行以下命令以实例化通道上的 chaincode。  
 
 ```bash
-./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
+./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>
 ```
 
 分别传递和中的实例化函数名称和空格分隔的参数列表 `<instantiateFunc>` `<instantiateFuncArgs>` 。 例如，在 chaincode_example02 chaincode 中，将 chaincode 设置为，并将设置为 " `<instantiateFunc>` `init` `<instantiateFuncArgs>` a" "2000" "b" "1000"。
+
+你还可以使用标志传递集合配置 JSON 文件 `--collections-config` 。 或者， `-t` 在实例化用于专用事务的 chaincode 时使用标志设置暂时性参数。
+
+例如：
+
+```bash
+./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath>
+./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath> -t <transientArgs>
+```
+
+\<collectionConfigJSONFilePath\>是 JSON 文件的路径，该文件包含为私有数据 chaincode 的实例化定义的集合。 可在以下路径找到相对于 azhlfTool 目录的示例集合配置 JSON 文件： `./samples/chaincode/src/private_marbles/collections_config.json` 。
+\<transientArgs\>以字符串格式传递为有效的 JSON。 对任何特殊字符进行转义。 例如： `'{\\\"asset\":{\\\"name\\\":\\\"asset1\\\",\\\"price\\\":99}}'`
 
 > [!NOTE]
 > 从通道中的任意一个对等组织执行命令一次。 成功将事务提交到 orderer 后，orderer 会将此事务分发给通道中的所有对等组织。 因此，chaincode 在通道中的所有对等节点上实例化。  
@@ -377,8 +389,12 @@ CHANNEL_NAME=<channelName>
 执行以下命令以查询 chaincode：  
 
 ```bash
-./azhlf chaincode query -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs>  
+./azhlf chaincode query -o $ORGNAME -p <endorsingPeers> -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs> 
 ```
+认可对等方是安装了 chaincode 的对等方，为执行事务而调用。 必须设置 \<endorsingPeers\> 当前对等组织中包含对等节点的名称。 列出给定 chaincode 的认可对等方和由空格分隔的通道组合。 例如 `-p "peer1" "peer3"`。
+
+如果使用 azhlfTool 安装 chaincode，请将任何对等节点名称作为值传递到认可对等参数。 该组织的每个对等节点上都安装了 chaincode。 
+
 分别在和中传递查询函数名称和空格分隔的参数列表  `<queryFunction>`    `<queryFuncArgs>`   。 同样，将 chaincode_example02 "chaincode" 作为参考，将 "世界" 状态中的 "a" 的查询值设置  `<queryFunction>`   为  `query` 和  `<queryArgs>` "a"。  
 
 ## <a name="troubleshoot"></a>疑难解答

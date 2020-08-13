@@ -1,18 +1,18 @@
 ---
 title: 在 StorSimple Linux 主机上配置 MPIO
-description: 在与运行 CentOS 6.6 的 Linux 主机连接的 StorSimple 上配置 MPIO
+description: 了解在 StorSimple Linux (Centos 6.6) 主机服务器上配置多路径 IO (MPIO) 所需的步骤。
 author: alkohli
 ms.assetid: ca289eed-12b7-4e2e-9117-adf7e2034f2f
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 05a67ab33c12e9f2bdbc0cd0098c39252db37e8e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 3ce84d3c03c2a24406629b8687c4fb8973809166
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187075"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183626"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>在运行 CentOS 的 StorSimple 主机上配置 MPIO
 本文说明在 Centos 6.6 主机服务器上配置多路径 IO (MPIO) 所要执行的步骤。 主机服务器已连接到 Microsoft Azure StorSimple 设备，以通过 iSCSI 发起程序获得高可用性。 本文详细描述多路径设备的自动发现，以及仅适用于 StorSimple 卷的特定设置。
@@ -60,7 +60,7 @@ multipath.conf 包括五个节：
 
 以下过程描述当有两个网络接口的 StorSimple 设备连接到有两个网络接口的主机时，如何配置多路径。
 
-## <a name="prerequisites"></a>必备知识
+## <a name="prerequisites"></a>先决条件
 本部分详细说明 CentOS 服务器和 StorSimple 设备的配置先决条件。
 
 ### <a name="on-centos-host"></a>在 CentOS 主机上
@@ -336,7 +336,7 @@ StorSimple 设备应该：
 
 问： `multipath.conf` 文件中的更改未生效。
 
-A. 对 `multipath.conf` 文件进行任何更改后，需要重新启动多路径服务。 输入以下命令：
+A. 对 `multipath.conf` 文件进行任何更改后，需要重新启动多路径服务。 键入下列命令：
 
 `service multipathd restart`
 
@@ -372,7 +372,7 @@ A. 通常情况下，不会看到任何多路径路径会给出有关多路径�
 
 `iscsiadm -m node --logout -p <Target_IP>`
 
-针对 iSCSI 目标（即 StorSimple 设备）上所有已连接的网络接口重复此命令。 从所有 iSCSI 会话注销后，使用 iSCSI 目标 IQN 重新建立 iSCSI 会话。 输入以下命令：
+针对 iSCSI 目标（即 StorSimple 设备）上所有已连接的网络接口重复此命令。 从所有 iSCSI 会话注销后，使用 iSCSI 目标 IQN 重新建立 iSCSI 会话。 键入下列命令：
 
 `iscsiadm -m node --login -T <TARGET_IQN>`
 

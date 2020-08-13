@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: db2e493f04d74308b21e8a63222f26b1e2af8546
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: e6f3a541f1e9dbca2c9949fb0c5cde28cd43e8e5
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038176"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183000"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>从 Azure 开放数据集创建 Azure 机器学习数据集
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -75,19 +75,21 @@ diabetes_tabular = Diabetes.get_tabular_dataset()
 
 ## <a name="create-datasets-with-the-studio"></a>用工作室创建数据集
 
-还可以通过[Azure 机器学习 studio](https://ml.azure.com)从打开的数据集创建数据集。 在工作区中，选择“资产”下的“数据集”选项卡。  在“创建数据集”下拉菜单中，选择“从开放数据集”。 
+还可以通过[Azure 机器学习 studio](https://ml.azure.com)从打开的数据集创建数据集。
 
-![UI 中的开放数据集](./media/how-to-create-dataset-from-open-dataset/open-datasets-1.png)
+1. 在工作区中，选择“资产”下的“数据集”选项卡。  在“创建数据集”下拉菜单中，选择“从开放数据集”。 
 
-选择数据集对应的磁贴将其选中。 （可以选择使用搜索栏进行筛选。）选择“**下一步**”。
+    ![UI 中的开放数据集](./media/how-to-create-dataset-from-open-dataset/open-datasets-1.png)
 
-![选择数据集](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
+1. 选择数据集对应的磁贴将其选中。 （可以选择使用搜索栏进行筛选。）选择“**下一步**”。
 
-选择数据集的注册名称，并（可选）使用可用的筛选器筛选数据。 在本例中，对于公共节假日数据集，可按如下所述进行筛选：将时间段设置为一年，将国家/地区代码设置为仅限 US。 选择“创建” 。
+    ![选择数据集](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
 
-![设置数据集参数并创建数据集](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
+1. 选择数据集的注册名称，并（可选）使用可用的筛选器筛选数据。 在这种情况下，对于**公共假日**数据集，请将时间段筛选为一年，将国家/地区代码筛选为仅限美国。 选择“创建” 。
 
-现在，该数据集已显示在工作区中的“数据集”下。 可以像使用创建的其他数据集一样来使用它。
+    ![设置数据集参数并创建数据集](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
+
+    现在，该数据集已显示在工作区中的“数据集”下。 可以像使用创建的其他数据集一样来使用它。
 
 
 ## <a name="access-datasets-for-your-experiments"></a>为试验访问数据集

@@ -1,17 +1,17 @@
 ---
 title: 使用 Azure 自动化 Runbook 管理 StorSimple 设备
-description: 了解如何使用 Azure 自动化 Runbook 自动执行 StorSimple 作业
+description: 了解如何在 Azure 门户中使用 Azure 自动化 Runbook 管理 StorSimple 8000 系列设备。
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 10/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 737533cd75ebec8d5d6c614f496e0c9b552217aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fee0837c1196adf35a956cd13df584528d46bfc0
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514172"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183473"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>使用 Azure 自动化 Runbook 管理 StorSimple 设备
 
@@ -194,7 +194,7 @@ ms.locfileid: "85514172"
 
 4. 在新建的帐户中，转到“共享资源”>“模块”并单击“+ 添加模块”。********
 
-5. 在“添加模块”边栏选项卡中，浏览到压缩的模块所在的位置，选择并打开该模块。**** 单击“确定”。
+5. 在“添加模块”边栏选项卡中，浏览到压缩的模块所在的位置，选择并打开该模块。**** 单击" **确定**"。
 
     ![add-module](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 

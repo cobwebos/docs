@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure StorSimple 虚拟阵列备份教程 | Microsoft 文档
-description: 介绍了如何备份 StorSimple Virtual Array 共享和卷。
+description: 为 Microsoft Azure StorSimple 虚拟阵列创建计划备份和手动备份，并执行项目级恢复以还原虚拟阵列上已删除的文件。
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26bf018d8823495c00b09af3a40b39315dadb31c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41cb02e77fa77c5a7452c5e3e0d2080ee3d472d5
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85513675"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183218"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>备份 StorSimple 虚拟阵列上的共享或卷
 
@@ -58,7 +58,7 @@ StorSimple 虚拟阵列具有一个默认备份策略，该策略从每天的指
    
     ![导航到“备份策略”](./media/storsimple-virtual-array-backup/changebuschedule5.png)
 
-4. 单击“保存” 。
+4. 单击“ **保存**”。
 
 ### <a name="take-a-manual-backup"></a>创建手动备份
 

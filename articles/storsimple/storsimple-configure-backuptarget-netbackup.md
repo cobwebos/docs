@@ -1,6 +1,6 @@
 ---
 title: 用作备份目标的 StorSimple 8000 系列与 NetBackup 的集成 | Microsoft 文档
-description: 介绍包含 Veritas NetBackup 的 StorSimple 备份目标配置。
+description: 了解适用于 Veritas NetBackup 的 StorSimple 备份目标配置，以及集成这两种解决方案的最佳实践。
 services: storsimple
 documentationcenter: ''
 author: harshakirank
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: matd
-ms.openlocfilehash: 34c66c3d5739fdc23323a302e3bedfb1b6301d86
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b186fadcc99c6cc538b61eaa94d5d84d649c233f
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077908"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184000"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>用作备份目标的 StorSimple 与 NetBackup 的集成
 
@@ -102,7 +102,7 @@ StorSimple 提供以下优势：
 | 备份方案  | 本地存储容量  | 云存储容量  |
 |---|---|---|
 | 主备份  | 最近的备份存储在本地存储中以加快恢复速度，满足恢复点目标 (RPO)。 | 备份历史记录 (RPO) 占用云容量 |
-| 辅助备份 | 备份数据的辅助副本可存储在云容量中  | 空值  |
+| 辅助备份 | 备份数据的辅助副本可存储在云容量中  | 不可用  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>用作主备份目标的 StorSimple
 
@@ -328,7 +328,7 @@ StorSimple 提供以下优势：
 
    ![NetBackup 管理控制台，选择策略类型](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
-5. 选择主机，选中“检测客户端操作系统”复选框，，并选择“添加”。******** 选择“**下一步**”。
+5. 选择主机，选中“检测客户端操作系统”复选框，，并选择“添加”。******** 选择“**下一页**”。
 
    ![NetBackup 管理控制台，在新策略中列出客户端](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
 
@@ -529,13 +529,13 @@ StorSimple 云快照可保护 StorSimple 设备中的数据。 创建云快照�
 
 灾难的发生可能会出于多种因素。 下表列出了常见的灾难恢复方案。
 
-| 方案 | 影响 | 如何恢复 | 注释 |
+| 方案 | 影响 | 如何恢复 | 备注 |
 |---|---|---|---|
 | StorSimple 设备故障 | 备份和还原操作会中断。 | 更换有故障的设备，并执行 [StorSimple 故障转移和灾难恢复](storsimple-device-failover-disaster-recovery.md)。 | 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层，因此可能非常耗时。 |
 | NetBackup 服务器故障 | 备份和还原操作会中断。 | 重新构建备份服务器并执行数据库还原。 | 必须在灾难恢复站点重建或还原 NetBackup 服务器。 将数据库还原到最近的时间点。 如果还原的 NetBackup 数据库未与最新的备份作业同步，则需要编制索引和目录。 这种索引和目录重新扫描过程可能会导致扫描所有备份集并将其从云层提取到本地设备层。 这会进一步消耗时间。 |
 | 站点发生故障，导致备份服务器和 StorSimple 丢失 | 备份和还原操作会中断。 | 首先还原 StorSimple，然后还原 NetBackup。 | 首先还原 StorSimple，然后还原 NetBackup。 如果在恢复设备后需要执行还原，则需要将云中的完整工作集检索到新设备。 所有操作都以云的速度进行。 |
 
-## <a name="references"></a>参考资料
+## <a name="references"></a>参考
 
 本文参考了以下文档：
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 391a5f054c5d80b255fd333ea416900c8c5ab6d1
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: f6420683d22488abc66b387fd44cb74cc8f8b7bd
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135413"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184646"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>使用 Azure Monitor 日志管理使用情况和成本    
 
@@ -575,9 +575,9 @@ union *
 - **定义警报条件**将 Log Analytics 工作区指定为资源目标。
 - **警报条件**指定下列项：
    - **信号名称**选择“自定义日志搜索”。
-   - **搜索查询**到 `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` 。 如果需要不同 
+   - **搜索查询**到 `Usage | where IsBillable | summarize DataGB = sum(Quantity / 1000.) | where DataGB > 50` 。 
    - 警报逻辑基于结果数，条件大于阈值 0 
-   - 每隔*1440* minutesto 每隔一天运行一次的**时间段** *1440*分钟和**警报频率**。
+   - 每*1440*分钟一次运行一次的**时间段**（ *1440*分钟和**警报频率**）。
 - **定义警报详细信息**指定以下项：
    - *24 小时内大于 50 GB 的可计费数据卷的***名称**
    - 将“严重性”设置为“警告”
@@ -604,7 +604,7 @@ Operation | where OperationCategory == 'Data Collection Status'
 |停止收集的原因| 解决方案| 
 |-----------------------|---------|
 |达到了工作区的每日上限|等到收集自动重启，或者根据“管理每日最大数据量”中所述提高每日数据量限制。 每日上限重置时间显示在 "**每日上限**" 页上。 |
-| 你的工作区已达到[数据引入量速率](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) | 使用诊断设置从 Azure 资源发送的数据的默认引入量限制约为每个工作区 6 GB/分钟。 这是一个近似值，因为实际大小在数据类型之间可能会有所不同，具体取决于日志长度及其压缩率。 此限制不适用于从代理或数据收集器 API 发送的数据。 如果以更高速率将数据发送到单个工作区，则某些数据将丢弃，并且在继续超过阈值的情况下，每 6 小时将向工作区中的“操作”表发送一个事件。 如果引入量继续超过速率限制，或者希望很快达到该限制，则可以通过向 LAIngestionRate@microsoft.com 发送电子邮件或提交支持请求来请求增加工作区。 要查找的事件，该事件指示可通过查询找到数据引入速率限制 `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The rate of data crossed the threshold"` 。 |
+| 你的工作区已达到[数据引入量速率](https://docs.microsoft.com/azure/azure-monitor/service-limits#log-analytics-workspaces) | 默认的摄取量速率阈值 500 MB (压缩的) 适用于工作区（大约**6 GB/最小**）的工作区-根据日志长度和其压缩率，实际大小可能会有所不同。 此阈值适用于所有引入数据，无论是使用[诊断设置](diagnostic-settings.md)、[数据收集器 API](data-collector-api.md)还是代理从 Azure 资源发送。 如果将数据发送到工作区中配置的阈值高于80% 的工作区，则每隔6小时就会将事件发送到工作区中的*操作*表，同时将继续超出阈值。 当引入 volume rate 高于阈值时，某些数据会被删除，并且每隔6小时就会将事件发送到工作区中的*操作*表，而阈值仍会被超过。 如果引入量的速率持续超出阈值，或者您很快就会到达，则可以通过打开支持请求来请求在您的工作区中增加它。 若要在你的工作区中收到此类事件的通知，请使用以下查询创建[日志警报规则](alerts-log.md)，该规则使用以下查询，其中的结果大于数为0，评估期为5分钟，频率为5分钟。 引入量速率达到80% 的阈值： `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"` 。 已达到引入速率阈值阈值： `Operation | where OperationCategory == "Ingestion" | where Detail startswith "The data ingestion volume rate crossed the threshold"` 。 |
 |达到旧版免费定价层的每日限制 |等到下一天收集自动重启，或者更改为付费定价层。|
 |Azure 订阅由于以下原因处于挂起状态：<br> 免费试用已结束<br> Azure 许可已过期<br> 已达到每月支出限制（例如，在 MSDN 或 Visual Studio 订阅上）|转换为付费订阅<br> 删除限制，或者等到限制重置|
 

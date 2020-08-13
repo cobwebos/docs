@@ -1,17 +1,17 @@
 ---
 title: Microsoft Azure StorSimple 数据管理器 UI
-description: 介绍如何使用 StorSimple 数据管理器服务 UI
+description: 了解如何使用 StorSimple 数据管理器 UI 转换驻留在 StorSimple 8000 系列设备上的数据。
 author: alkohli
 ms.service: storsimple
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 00748cfa60882e49336c3a0ac3ecfdec389021ac
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5d6273cbef1664984d466fb15c7f02ca505b18e2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496434"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184527"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>管理 Azure 门户中的 StorSimple 数据管理器服务
 
@@ -48,7 +48,7 @@ StorSimple 数据管理器是可在其中实例化数据转换的资源。 通�
     
    5. 若要在仪表板上获取此服务的链接，请选择“固定到仪表板”****。
     
-   6. 单击**创建**。
+   6. 单击“创建”。
 
       ![创建 StorSimple 数据管理器服务 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
@@ -104,7 +104,7 @@ StorSimple 数据管理器是可在其中实例化数据转换的资源。 通�
 
    4. 数据转换服务仅适用于推送到 Azure 的数据的最新快照。
 
-   5. 单击“确定”。
+   5. 单击" **确定**"。
 
       ![配置源数据存储库 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
@@ -121,7 +121,7 @@ StorSimple 数据管理器是可在其中实例化数据转换的资源。 通�
     
     1. 从“目标帐户名称”的下拉列表中选择创建的存储库作为目标****。
 
-    2. 选择 blob 或文件作为存储类型。 指定已转换的数据所在的存储容器的名称。 单击“确定”。
+    2. 选择 blob 或文件作为存储类型。 指定已转换的数据所在的存储容器的名称。 单击" **确定**"。
 
         ![配置目标数据存储库存储帐户](./media/storsimple-data-manager-ui/create-job-definition-16.png)
 
