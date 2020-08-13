@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 07/17/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6ba9147aefb793387b429702623639bbccf0beea
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 26d6ca641c03395996fdeaa4e54d2a001cf02bef
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87507621"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88162832"
 ---
 ## <a name="benefits-of-managed-disks"></a>托管磁盘的好处
 
@@ -53,7 +53,7 @@ ms.locfileid: "87507621"
 
 ### <a name="private-links"></a>专用链接
 
-托管磁盘支持使用专用链接导入或导出网络内部的托管磁盘。 通过专用链接，可以为未连接的托管磁盘和快照生成有时间限制的共享访问签名 (SAS) URI，将数据导出到其他区域以进行区域扩展、灾难恢复和取证分析。 还可以使用 SAS URI 将 VHD 从本地直接上传到空磁盘。 现在，可以利用[专用链接](../articles/private-link/private-link-overview.md)将托管磁盘的导出和导入限制于 Azure 虚拟网络。 通过专用链接，可以确保数据仅在安全的 Microsoft 骨干网络内传输。
+目前已以预览版形式提供对托管磁盘的专用链接支持，你可使用该链接在你网络的内部导入或导出托管磁盘。 通过专用链接，可以为未连接的托管磁盘和快照生成有时间限制的共享访问签名 (SAS) URI，将数据导出到其他区域以进行区域扩展、灾难恢复和取证分析。 还可以使用 SAS URI 将 VHD 从本地直接上传到空磁盘。 现在，可以利用[专用链接](../articles/private-link/private-link-overview.md)将托管磁盘的导出和导入限制于 Azure 虚拟网络。 通过专用链接，可以确保数据仅在安全的 Microsoft 骨干网络内传输。
 
 若要了解如何启用专用链接以导入或导出托管磁盘，请参阅 [CLI](../articles/virtual-machines/linux/disks-export-import-private-links-cli.md) 或[门户](../articles/virtual-machines/disks-enable-private-links-for-import-export-portal.md)文章。
 

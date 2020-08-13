@@ -351,7 +351,7 @@
       items:
         - name: 概述
           href: platform/agents-overview.md
-        - name: 常见问题解答
+        - name: FAQ
           href: faq.md#agents
         - name: Azure Monitor 代理
           items:
@@ -462,7 +462,7 @@
           href: platform/autoscale-get-started.md
         - name: 配置设置
           href: platform/autoscale-understanding-settings.md
-        - name: 最佳做法
+        - name: 最佳实践
           href: platform/autoscale-best-practices.md
         - name: 常见指标
           href: platform/autoscale-common-metrics.md
@@ -935,6 +935,10 @@
               href: app/sharepoint.md
             - name: Windows 桌面
               href: app/windows-desktop.md
+        - name: 其他工具
+          items:
+            - name: 更改分析
+              href: app/change-analysis.md
     - name: 用于 VM 的 Azure Monitor
       items:
         - name: 概述
@@ -1062,10 +1066,6 @@
           href: insights/resource-group-insights.md
         - name: 见解疑难解答
           href: insights/troubleshoot-workbooks.md
-    - name: 更改分析
-      items:
-        - name: 更改分析
-          href: app/change-analysis.md
     - name: 解决方案
       items:
         - name: 概述
