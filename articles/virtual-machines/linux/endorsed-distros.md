@@ -3,7 +3,7 @@ title: Azure 认可的 Linux 分发
 description: 了解 Azure 认可的分发中的 Linux，包括 Ubuntu、CentOS、Oracle 和 SUSE 的指南。
 services: virtual-machines-linux
 documentationcenter: ''
-author: gbowerman
+author: danielsollondon
 manager: gwallace
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 2777a526-c260-4cb9-a31a-bdfe1a55fffc
@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 08/02/2020
 ms.author: guybo
-ms.openlocfilehash: fd21170c4edc1ed0587ea4d4e067e61590530623
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 83a5289e17243fc7d89dd463b10916fb73046947
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283310"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184986"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Azure 认可的 Linux 分发版
 
@@ -26,7 +26,7 @@ ms.locfileid: "87283310"
 
 ## <a name="supported-distributions-and-versions"></a>支持的发行版和版本
 
-下表列出了 Azure 支持的 Linux 分发和版本。 请参阅[Microsoft Azure 中对 linux 映像的支持](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)，了解有关 Azure 中 linux 和开源技术的支持的更多详细信息。
+下表列出了 Azure 支持的 Linux 分发和版本。 请参阅 [Microsoft Azure 中对 linux 映像的支持](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) ，了解有关 Azure 中 linux 和开源技术的支持的更多详细信息。
 
 Hyper-V 和 Azure 的 Linux 集成服务 (LIS) 驱动程序是 Microsoft 直接为上游 Linux 内核提供的内核模块。 默认情况下，某些 LIS 驱动程序已内置在发行版的内核中。 基于 Red Hat Enterprise (RHEL)/CentOS 的早期分发在[用于 Hyper-V 和 Azure 的 Linux Integration Services 版本 4.2](https://www.microsoft.com/download/details.aspx?id=55106) 以单独下载的形式提供。 有关 LIS 驱动程序的详细信息，请参阅 [Linux 内核要求](create-upload-generic.md#linux-kernel-requirements)。
 
@@ -74,6 +74,14 @@ Microsoft 为 CoreOS 用户提供了两 (2) 个迁移通道。
 [https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure](https://www.credativ.co.uk/credativ-blog/debian-images-microsoft-azure)
 
 Credativ 是一家独立的咨询和服务公司，致力于通过免费软件开发和实施专业解决方案。 Credativ 是获得国际认可的开源领域专业先行者，为许多公司的 IT 部门提供支持。 Credativ 与 Microsoft 合作，目前正在为 Debian 8 (Jessie) 以及 Debian 7 (Wheezy) 之前的版本准备相应的 Debian 映像。 这些映像经过专门的设计，可以在 Azure 上运行并可通过该平台轻松进行管理。 Credativ 还会通过其开源支持中心为 Azure 的 Debian 映像的维护和更新提供长期支持。
+
+### <a name="kinvolk"></a>Kinvolk
+[https://www.kinvolk.io/flatcar-container-linux/](https://www.kinvolk.io/flatcar-container-linux/)
+
+Kinvolk 是 Flatcar 容器 Linux 后面的公司，继续原 CoreOS 愿景，以获得容器化应用程序的最小、不可变和自动更新的基础。 最小的发行版是，Flatcar 只包含部署容器所需的包。 它的不可变文件系统确保一致性和安全性，而其自动更新功能使您始终可以使用最新的安全修补程序保持最新状态。 
+
+Flatcar Container Linux 由 Kinvolk 的 Linux 和容器技术专家组成，这些专家提供了一个可选的商业支持订阅，包括24x7 响应、安全和技术警报，以及独有的 Azure 优化映像，其中包括长期支持渠道。
+
 
 ### <a name="oracle"></a>Oracle
 

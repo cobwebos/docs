@@ -1,17 +1,17 @@
 ---
 title: Microsoft Azure FXT Edge 文件服务器-其他文档
-description: Azure FXT Edge 文件服务器安装的其他参考文档
+description: 其他参考文档可帮助你了解和使用 Microsoft Azure FXT Edge 文件服务器混合缓存。
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 4fe2867343f07a7b1a7dd3d8eb2b44dd1ec1e271
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 314d745072d33fecd8fbf9eafe543fd0d52fe3cb
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086534"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185768"
 ---
 # <a name="additional-documentation-for-azure-fxt-edge-filer"></a>Azure FXT Edge 文件服务器的其他文档
 

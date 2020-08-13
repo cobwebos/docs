@@ -1,5 +1,5 @@
 ---
-title: 无代码部署（预览）
+title: '无 (预览版的代码部署) '
 titleSuffix: Azure Machine Learning
 description: 了解如何在不使用条目脚本的情况下部署模型。
 services: machine-learning
@@ -9,21 +9,23 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: d6c70f27eebc9d502ce7275603e99975c2efc267
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9d6e234e1f4c8ac5199b92a09eb12bf7aa41b01b
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544545"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185479"
 ---
 # <a name="preview-no-code-model-deployment"></a>（预览）无代码模型部署
 
 无代码模型部署目前处于预览阶段，支持以下机器学习框架：
 
-## <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel 格式
-需要以 SavedModel 格式注册 Tensorflow 模型，才能进行无代码模型部署****。
+## <a name="tensorflow-savedmodel-format"></a>TensorFlow SavedModel 格式
+需要以**SavedModel 格式**注册 TensorFlow 模型，才能使用无代码模型部署。
 
 请参阅[此链接](https://www.tensorflow.org/guide/saved_model)，了解有关如何创建 SavedModel 的信息。
+
+我们支持[TensorFlow 服务 DockerHub](https://registry.hub.docker.com/r/tensorflow/serving/tags)的 "标记" 下列出的任何 TensorFlow 版本。
 
 ```python
 from azureml.core import Model
@@ -61,9 +63,9 @@ service = Model.deploy(ws, service_name, [model])
 
 若要对模型进行评分，请参阅[使用部署为 web 服务的 Azure 机器学习模型](https://docs.microsoft.com/azure/machine-learning/how-to-consume-web-service)。 许多 ONNX 项目使用 protobuf 文件来简洁地存储定型和验证数据，这可能会导致难以知道服务所需的数据格式。 作为模型开发人员，您应该为您的开发人员提供文档：
 
-* 输入格式（JSON 或二进制）
-* 输入数据形状和类型（例如，形状的浮动数组 [100100，3]）
-* 域信息（例如，对于图像、颜色空间、组件顺序以及值是否规范化）
+* 输入格式 (JSON 或二进制) 
+* 输入数据形状和类型 (例如，形状的一个浮动数组 [100100，3] ) 
+* 例如，对于图像、颜色空间、组件顺序以及值是否规范化) ，域信息 (。
 
 如果你使用的是 Pytorch，则[从 Pytorch 将模型导出到 ONNX](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb)具有有关转换和限制的详细信息。 
 
@@ -129,7 +131,7 @@ print(output)
 * [排查失败的部署问题](how-to-troubleshoot-deployment.md)
 * [部署到 Azure Kubernetes 服务](how-to-deploy-azure-kubernetes-service.md)
 * [创建使用 web 服务的客户端应用程序](how-to-consume-web-service.md)
-* [更新 web 服务](how-to-deploy-update-web-service.md)
+* [更新 Web 服务](how-to-deploy-update-web-service.md)
 * [如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)
 * [使用 TLS 通过 Azure 机器学习保护 Web 服务](how-to-secure-web-service.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)

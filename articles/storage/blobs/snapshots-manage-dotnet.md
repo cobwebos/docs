@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: be3d06d8ea493ab7c246ace5c49d5e5bc0036108
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9404cc8037b9cd7ef3e6f74265ce803177eb0465
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463529"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185275"
 ---
 # <a name="create-and-manage-a-blob-snapshot-in-net"></a>在 .NET 中创建和管理 blob 快照
 
@@ -24,7 +24,7 @@ ms.locfileid: "84463529"
 
 ## <a name="create-a-snapshot"></a>创建快照
 
-# <a name="net-version-12x"></a>[.NET 版本 12.x](#tab/v12)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 要使用 12.x 版用于 .NET 的 Azure 存储客户端库创建块 blob 快照，请使用以下任一方法：
 
@@ -77,7 +77,7 @@ private static async Task CreateBlockBlobSnapshot(string accountName, string con
 }
 ```
 
-# <a name="net-version-11x"></a>[.NET 版本 11.x](#tab/v11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 要使用 11.x 版用于 .NET 的 Azure 存储客户端库创建块 blob 快照，请使用以下任一方法：
 
@@ -126,7 +126,7 @@ private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
 
 若要删除 blob，必须先删除该 blob 的所有快照。 可以单独删除快照，或指定在删除源 Blob 时删除所有快照。 如果尝试删除仍包含快照的 Blob，会发生错误。
 
-# <a name="net-version-12x"></a>[.NET 版本 12.x](#tab/v12)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 要使用 12.x 版用于 .NET 的 Azure 存储客户端库删除 blob 及其快照，请使用以下任一方法，并包括 [DeleteSnapshotsOption](/dotnet/api/azure.storage.blobs.models.deletesnapshotsoption) 枚举：
 
@@ -141,7 +141,7 @@ private static async Task CreateBlockBlobSnapshot(CloudBlobContainer container)
 await blobClient.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null, default);
 ```
 
-# <a name="net-version-11x"></a>[.NET 版本 11.x](#tab/v11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 要使用 11.x 版用于 .NET 的 Azure 存储客户端库删除 blob 及其快照，请使用以下任一 blob 删除方法，并包括 [DeleteSnapshotsOption](/dotnet/api/microsoft.azure.storage.blob.deletesnapshotsoption) 枚举：
 
@@ -161,5 +161,5 @@ await blockBlob.DeleteIfExistsAsync(DeleteSnapshotsOption.IncludeSnapshots, null
 ## <a name="next-steps"></a>后续步骤
 
 - [blob 快照](snapshots-overview.md)
-- [Blob 版本（预览）](versioning-overview.md)
+- [ (预览版的 Blob 版本) ](versioning-overview.md)
 - [blob 的软删除](storage-blob-soft-delete.md)

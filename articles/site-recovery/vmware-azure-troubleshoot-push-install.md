@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: 04b4feb1219f6a51a1f0a7ac0d19fc3fd70029c6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: db66137ac4b233a7e5d3040cf38dc69a089b0c9a
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133533"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185207"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>排查移动服务推送安装问题
 
@@ -257,6 +257,10 @@ Site Recovery 移动服务有多个组件，其中一个称为筛选器驱动程
 ## <a name="insufficient-space-errorid-95524"></a>空间不足（ErrorID：95524）
 
 将移动代理复制到源计算机时，需要至少 100 MB 的可用空间。 请确保源计算机有必需的可用空间量，然后重试此操作。
+
+## <a name="low-system-resources"></a>系统资源不足
+
+如果系统内存不足，并且无法为移动服务安装分配内存，则会出现此问题。 请确保已释放足够的内存，以便安装继续并成功完成。
 
 ## <a name="vss-installation-failures"></a>VSS 安装失败
 

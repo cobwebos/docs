@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 8b2b62ac4d79964c0a597f40d8154e5f57350f0b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 737617b1fb8bd233a8747deacbbb328a02fa30ef
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031075"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185615"
 ---
 # <a name="monitor-azure-file-sync"></a>监视 Azure 文件同步
 
@@ -40,7 +40,7 @@ ms.locfileid: "88031075"
 
 Azure Monitor 提供了下列 Azure 文件同步指标：
 
-| 指标名称 | 说明 |
+| 指标名称 | 描述 |
 |-|-|
 | 同步的字节数 | 传输数据大小（上传和下载）。<br><br>单元：字节<br>聚合类型： Sum<br>适用的维度：服务器终结点名称，同步方向，同步组名称 |
 | 云分层回调 | 回调的数据大小。<br><br>**注意**：未来将删除此指标。 使用云分层撤回大小指标监视重新调用的数据的大小。<br><br>单元：字节<br>聚合类型： Sum<br>适用的维度：服务器名称 |
@@ -112,7 +112,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 
 - 可在存储同步服务门户中查看以下指标图表：
 
-  | 指标名称 | 说明 | 边栏选项卡名称 |
+  | 指标名称 | 描述 | 边栏选项卡名称 |
   |-|-|-|
   | 同步的字节数 | 已传输数据的大小（上传和下载） | 同步组，服务器终结点 |
   | 云分层回调 | 回调的数据的大小 | 已注册的服务器 |
@@ -156,12 +156,13 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
   - 事件 ID 9016 提供卷的副本创建结果。 例如：可用空间百分比是，会话中幻像的文件数，以及失败的文件数。
   - 事件 ID 9029 提供服务器终结点的副本创建会话信息。 例如：会话中尝试的文件数、会话中分层的文件数以及已分层的文件数。
   
-- 若要监视服务器上的撤回活动，请在遥测事件日志中使用事件 ID 9005、9006、9009和9059，该日志事件查看器位于 Services\Microsoft\FileSync\Agent 下的 "*应用程序" 和 "*" 下。
+- 若要监视服务器上的撤回活动，请在遥测事件日志中使用事件 ID 9005、9006、9009、9059和9071，该日志事件查看器位于 Services\Microsoft\FileSync\Agent 下的 "*应用程序" 和 "*" 下。
 
   - 事件 ID 9005 提供服务器终结点的重新调用可靠性。 例如：已访问的唯一文件总数和访问失败的唯一文件总数。
   - 事件 ID 9006 提供服务器终结点的重新调用错误分布情况。 例如：失败请求总数和错误代码。 每个错误代码记录一个事件。
   - 事件 ID 9009 提供服务器终结点的回调会话信息。 例如： DurationSeconds、CountFilesRecallSucceeded 和 CountFilesRecallFailed。
   - 事件 ID 9059 提供服务器终结点的应用程序回调分布情况。 例如： ShareId、Application Name 和 TotalEgressNetworkBytes。
+  - 事件 ID 9071 为服务器终结点提供云分层效率。 例如： TotalDistinctFileCountCacheHit、TotalDistinctFileCountCacheMiss、TotalCacheHitBytes 和 TotalCacheMissBytes。
 
 ### <a name="performance-counters"></a>性能计数器
 
@@ -171,7 +172,7 @@ Azure Monitor 提供了下列 Azure 文件同步指标：
 
 性能监视器提供了下列 Azure 文件同步性能计数器：
 
-| 性能对象\计数器名称 | 说明 |
+| 性能对象\计数器名称 | 描述 |
 |-|-|
 | AFS 传输的字节数\下载的字节数/秒 | 每秒下载的字节数。 |
 | AFS 传输的字节数\上传的字节数/秒 | 每秒上传的字节数。 |

@@ -10,12 +10,12 @@ ms.date: 06/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: a08929c4affbd6eeb4d66a82d787ec5eba122e5b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: c9c267097f681a78ba940283096b2c18d692e9cc
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903759"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185360"
 ---
 # <a name="create-a-stored-access-policy-with-net"></a>使用 .NET 创建存储访问策略
 
@@ -33,7 +33,7 @@ ms.locfileid: "87903759"
 >
 > 仅服务 SAS 支持存储访问策略。 帐户 SAS 或用户委托 SAS 不支持存储访问策略。  
 
-有关存储访问策略的详细信息，请参阅[定义存储访问策略](/rest/api/storageservices/define-stored-access-policy)。
+有关存储访问策略的详细信息，请参阅 [定义存储访问策略](/rest/api/storageservices/define-stored-access-policy)。
 
 ## <a name="create-a-stored-access-policy"></a>创建存储访问策略
 
@@ -41,7 +41,7 @@ ms.locfileid: "87903759"
 
 以下代码示例会在容器上创建存储访问策略。 可以使用访问策略指定对容器或其 Blob 上的服务 SAS 的约束。
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 若要使用适用于 Azure 存储的 .NET 客户端库版本 12 在容器上创建存储访问策略，请调用以下方法之一：
 
@@ -92,7 +92,7 @@ async static Task CreateStoredAccessPolicyAsync(string containerName)
 }
 ```
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 若要使用适用于 Azure 存储的 .NET 客户端库版本 12 在容器上创建存储访问策略，请调用以下方法之一：
 

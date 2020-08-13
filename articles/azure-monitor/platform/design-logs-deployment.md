@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 3a6afd42c12a523523b45861b38b323fa680ecab
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8b74fa39c47f9032e57d2b6630be1a3ef45990a3
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317278"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185173"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
@@ -127,17 +127,25 @@ Azure Monitor 根据执行日志搜索时所在的上下文自动确定正确的
 
 ## <a name="ingestion-volume-rate-limit"></a>引入量速率限制
 
-Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 每个工作区的默认引入速率阈值设置为 **6 GB/分钟**。 这是一个近似值，因为实际大小在数据类型之间可能会有所不同，具体取决于日志长度及其压缩率。 此限制不适用于从代理或[数据收集器 API](data-collector-api.md) 发送的数据。
+Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 卷速率限制旨在保护 Azure Monitor 客户免受多租户环境中突然引入的高峰。 默认的摄取量速率阈值 500 MB (压缩的) 适用于工作区（大约**6 GB/最小**）的工作区-根据日志长度和其压缩率，实际大小可能会有所不同。 此阈值适用于所有引入数据，无论是使用[诊断设置](diagnostic-settings.md)、[数据收集器 API](data-collector-api.md)还是代理从 Azure 资源发送。
 
-如果以更高速率将数据发送到单个工作区，则某些数据将丢弃，并且在继续超过阈值的情况下，每 6 小时将向工作区中的“操作”表发送一个事件。 如果引入量继续超过速率限制，或者希望很快达到该限制，则可以通过向 LAIngestionRate@microsoft.com 发送电子邮件或提交支持请求来请求增加工作区。
- 
-若要在工作区中收到此类事件的通知，请根据大于零的结果数，使用以下具有警报逻辑的查询创建[日志警报规则](alerts-log.md)。
+如果将数据发送到工作区中配置的阈值高于80% 的工作区，则每隔6小时就会将事件发送到工作区中的*操作*表，同时将继续超出阈值。 当引入 volume rate 高于阈值时，某些数据会被删除，并且每隔6小时就会将事件发送到工作区中的*操作*表，而阈值仍会被超过。 如果引入量的速率持续超出阈值，或者您很快就会到达，则可以通过打开支持请求来请求在您的工作区中增加它。 
 
-``` Kusto
+若要在你的工作区中收到此类事件的通知，请使用以下查询创建[日志警报规则](alerts-log.md)，该规则使用以下查询，其中的结果大于数为0，评估期为5分钟，频率为5分钟。
+
+引入量速率达到80% 的阈值：
+```Kusto
 Operation
 |where OperationCategory == "Ingestion"
-|where Detail startswith "The rate of data crossed the threshold"
-``` 
+|where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
+```
+
+已达到引入速率阈值阈值：
+```Kusto
+Operation
+|where OperationCategory == "Ingestion"
+|where Detail startswith "The data ingestion volume rate crossed the threshold"
+```
 
 
 ## <a name="recommendations"></a>建议

@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 6e4ed8514cd99d42790296a58296a73696989b69
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 09dd444d0d7409ca86955d2854aec82f07db0c4d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539129"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185394"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>使用 Azure 机器学习创建、查看和部署自动化机器学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "87539129"
 本文介绍了如何在 Azure 机器学习 studio 中创建、探索和部署自动化机器学习模型，而无需编写单行代码。
 
 >[!IMPORTANT]
-> Azure 机器学习工作室中的自动 ML 体验处于预览阶段。 某些功能可能不受支持或功能有限。
+> Azure 机器学习工作室中的自动化 ML 体验处于预览状态。 某些功能可能不受支持或者受限。
 
  自动化机器学习是一个为你选择要用于特定数据的最佳机器学习算法的过程。 通过此过程可以快速生成机器学习模型。 [详细了解自动化机器学习](concept-automated-ml.md)。
  
@@ -128,13 +128,13 @@ ms.locfileid: "87539129"
     
         1. 选择*时间列*：此列包含要使用的时间数据。
 
-        1. 选择*预测范围*：指示该模型能够预测到未来的时间单位（分钟/小时/天/周/月/年）。 模型需要预测的未来时间越久远，其准确度越低。 [详细了解预测和预测范围](how-to-auto-train-forecast.md)。
+        1. 选择*预测范围*：指示该模型可预测到未来的)  (分钟/小时/天/周/月/年的时间单位。 模型需要预测的未来时间越久远，其准确度越低。 [详细了解预测和预测范围](how-to-auto-train-forecast.md)。
 
 1. （可选）查看附加配置设置：可用来更好地控制训练作业的其他设置。 否则，将会根据试验选择和数据应用默认设置。 
 
     其他配置|说明
     ------|------
-    主要指标| 用于对模型进行评分的主要指标。 [详细了解模型指标](how-to-configure-auto-train.md#explore-model-metrics)。
+    主要指标| 用于对模型进行评分的主要指标。 [详细了解模型指标](how-to-configure-auto-train.md#primary-metric)。
     解释最佳模型 | 选择此项可以启用或禁用，以便显示建议的最佳模型的 explainability。
     阻止的算法| 选择要从训练作业中排除的算法。
     退出条件| 如果满足其中的任一条件，则会停止训练作业。 <br> *训练作业时间(小时)* ：允许训练作业运行多长时间。 <br> *指标评分阈值*：所有管道的最低指标评分。 这可以确保在你具有一个要实现的已定义目标指标时，无需花费不必要的时间来完成训练作业。
@@ -156,7 +156,7 @@ ms.locfileid: "87539129"
 
 统计信息|说明
 ------|------
-Feature| 正在汇总的列的名称。
+功能| 正在汇总的列的名称。
 配置文件| 基于推理的类型显示的内联可视化效果。 例如，字符串、布尔值和日期包含值计数，而小数（数字）则包含近似的直方图。 这样，就可以快速了解数据的分布。
 类型分布| 列中类型的内联值计数。 Null 是其自身的类型，因此，此可视化效果可用于检测反常值或缺失值。
 类型|列的推理类型。 可能的值包括：字符串、布尔值、日期和小数。
@@ -222,7 +222,7 @@ Variance| 此列数据与其平均值之间的分散程度度量。
 
 1. 填充“部署模型”窗格。
 
-    字段| Value
+    字段| 值
     ----|----
     名称| 输入部署的唯一名称。
     说明| 输入说明，以更清楚地指出此部署的用途。

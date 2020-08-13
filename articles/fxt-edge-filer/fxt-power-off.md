@@ -1,17 +1,17 @@
 ---
 title: 如何关闭 Microsoft Azure FXT Edge 文件服务器单元
-description: Azure FXT Edge 文件服务器节点的启动和安全关闭过程
+description: 通过使用 "群集控制面板" 软件了解 Azure FXT Edge 文件服务器的启动和安全关闭过程。
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: how-to
 ms.date: 07/01/2019
 ms.author: rohogue
-ms.openlocfilehash: 92364de82bc3de8229eced4ee02997a27afbde45
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d597d5d1e86a2ea13363bc270fb55304d77dee5c
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85506406"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184867"
 ---
 # <a name="how-to-safely-power-off-azure-fxt-edge-filer-hardware"></a>如何安全关闭 Azure FXT Edge 文件服务器硬件
 
@@ -28,7 +28,7 @@ ms.locfileid: "85506406"
 
 按照以下说明安全关闭 Azure FXT Edge 文件服务器节点：
 
-1. 登录到 "群集控制面板"。 （[打开 "设置" 页中的](fxt-cluster-create.md#open-the-settings-pages)方向）
+1. 登录到 "群集控制面板"。 [打开 "设置" 页](fxt-cluster-create.md#open-the-settings-pages)中 (说明) 
 1. 单击 "**设置**" 选项卡，然后加载 "**群集**  >  **FXT 节点**" 页。
 1. 在群集节点列表中，找到要关闭的节点。 单击 "**操作**" 列中的 "**关闭**" 按钮。 
 1. 稍等片刻。 节点将关闭并关机。

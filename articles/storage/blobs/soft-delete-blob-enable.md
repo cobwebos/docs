@@ -10,12 +10,12 @@ ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 213e4092719b274909cc764d94a72886bb4923c9
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 83827c7a39b2833ce1301e78a0bef4e6d61ec62b
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057168"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185292"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>启用和管理 blob 的软删除
 
@@ -134,7 +134,7 @@ block_blob_service.set_blob_service_properties(
     delete_retention_policy=DeleteRetentionPolicy(enabled=True, days=7))
 ```
 
-# <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[.NET v12](#tab/dotnet)
 
 若要启用软删除，请更新 blob 客户端的服务属性：
 
@@ -148,7 +148,7 @@ block_blob_service.set_blob_service_properties(
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverSpecificBlobVersion":::
 
-# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
 若要启用软删除，请更新 blob 客户端的服务属性：
 

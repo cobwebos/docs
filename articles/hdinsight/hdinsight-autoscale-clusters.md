@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 29c04fc8f6af016200e06ad239095a3665de5869
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: cc294eb1bdfd4a6a8c6ad001c007f83a10983644
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086426"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185802"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>自动缩放 Azure HDInsight 群集
 
@@ -21,7 +21,7 @@ Azure HDInsight 的 "免费自动缩放" 功能可根据先前设置的条件自
 
 ## <a name="how-it-works"></a>工作原理
 
-自动缩放功能使用两种类型的条件来触发缩放事件：不同群集性能指标的阈值（称为*基于负载的缩放*）和基于时间的触发器（称为*基于计划的缩放*）。 基于负载的缩放会在你设置的范围内更改群集中的节点数，以确保 CPU 使用最佳并且最大程度地降低运行成本。 基于计划的缩放根据与特定日期和时间关联的操作更改群集中的节点数。
+自动缩放功能使用两种类型的条件来触发缩放事件：不同群集性能指标的阈值 (称为基于*负载的缩放*) 和基于时间的触发器 (称为*基于计划的缩放*) 。 基于负载的缩放会在你设置的范围内更改群集中的节点数，以确保 CPU 使用最佳并且最大程度地降低运行成本。 基于计划的缩放根据与特定日期和时间关联的操作更改群集中的节点数。
 
 以下视频概述了自动缩放解决的难题，以及它如何帮助你使用 HDInsight 控制成本。
 
@@ -72,7 +72,7 @@ Azure HDInsight 的 "免费自动缩放" 功能可根据先前设置的条件自
 
 下表描述了与自动缩放功能兼容的群集类型和版本。
 
-| Version | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
+| 版本 | Spark | Hive | LLAP | HBase | Kafka | 暴风 | ML |
 |---|---|---|---|---|---|---|---|
 | 不包含 ESP 的 HDInsight 3.6 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
 | 不包含 ESP 的 HDInsight 4.0 | 是 | 是 | 是 | 是* | 否 | 否 | 否 |
@@ -133,7 +133,7 @@ Azure HDInsight 的 "免费自动缩放" 功能可根据先前设置的条件自
 
 #### <a name="load-based-autoscaling"></a>基于负载的自动缩放
 
-可以使用 Azure 资源管理器模板创建支持基于负载的自动缩放的 HDInsight 群集，方法是将 `autoscale` 节点添加到包含属性 `minInstanceCount` 和 `maxInstanceCount` 的 `computeProfile` > `workernode` 节，如以下 JSON 代码片段所示。
+可以使用 Azure 资源管理器模板创建支持基于负载的自动缩放的 HDInsight 群集，方法是将 `autoscale` 节点添加到包含属性 `minInstanceCount` 和 `maxInstanceCount` 的 `computeProfile` > `workernode` 节，如以下 JSON 代码片段所示。 有关完整的 resource manager 模板，请参阅[快速入门模板：使用启用了 Loadbased 自动缩放功能部署 Spark 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased)。
 
 ```json
 {
@@ -161,7 +161,7 @@ Azure HDInsight 的 "免费自动缩放" 功能可根据先前设置的条件自
 
 #### <a name="schedule-based-autoscaling"></a>基于计划的自动缩放
 
-可以使用 Azure 资源管理器模板创建支持基于计划的自动缩放的 HDInsight 群集，方法是将 `autoscale` 节点添加到 `computeProfile` > `workernode` 节。 `autoscale` 节点包含 `recurrence`，其中的 `timezone` 和 `schedule` 描述了更改生效的时间。
+可以使用 Azure 资源管理器模板创建支持基于计划的自动缩放的 HDInsight 群集，方法是将 `autoscale` 节点添加到 `computeProfile` > `workernode` 节。 `autoscale` 节点包含 `recurrence`，其中的 `timezone` 和 `schedule` 描述了更改生效的时间。 有关完整的 resource manager 模板，请参阅[在启用基于计划的自动缩放的情况下部署 Spark 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased)。
 
 ```json
 {

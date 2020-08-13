@@ -3,12 +3,12 @@ title: 将 Azure 事件中心与 Azure 专用链接服务集成
 description: 了解如何将 Azure 事件中心与 Azure 专用链接服务集成
 ms.date: 07/29/2020
 ms.topic: article
-ms.openlocfilehash: 66753e51fd1e918e5659e219c5ebbe471705b3ee
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 8d6d5c13e1a5eab55998d3b98596ce845de104eb
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421089"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185462"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>允许通过专用终结点访问 Azure 事件中心命名空间 
 使用 Azure 专用链接服务，可以通过虚拟网络中的专用终结点访问 Azure 服务（例如 Azure 事件中心、Azure 存储和 Azure Cosmos DB）以及 Azure 托管的客户服务/合作伙伴服务。
@@ -18,21 +18,19 @@ ms.locfileid: "87421089"
 有关详细信息，请参阅[什么是 Azure 专用链接？](../private-link/private-link-overview.md)
 
 > [!IMPORTANT]
-> **标准**层和**专用**层都支持此功能。 
-
->[!WARNING]
-> 启用专用终结点可以防止其他 Azure 服务与事件中心交互。
+> **标准**层和**专用**层都支持此功能。 **基本**层不支持此方法。
 >
-> 使用虚拟网络时，受信任的 Microsoft 服务不受支持。
+> 启用专用终结点可以防止其他 Azure 服务与事件中心交互。  被阻止的请求包括来自其他 Azure 服务、来自 Azure 门户、来自日志记录和指标服务等的请求。 
+> 
+> 下面是启用专用终结点时无法访问事件中心资源的某些服务。 请注意，此列表并**不**详尽。
 >
-> 不适用于虚拟网络常见 Azure 方案（请注意，该列表内容并不详尽）-
 > - Azure 流分析
 > - Azure IoT 中心路由
 > - Azure IoT Device Explorer
+> - Azure 事件网格
+> - Azure Monitor (诊断设置) 
 >
-> 以下 Microsoft 服务必须在虚拟网络中
-> - Azure Web 应用
-> - Azure Functions
+> 例外情况是，即使在启用了专用终结点的情况下，也可以允许从某些受信任的服务访问事件中心资源。 有关受信任服务的列表，请参阅[受信任服务](#trusted-microsoft-services)。
 
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>使用 Azure 门户添加专用终结点
 
@@ -105,6 +103,10 @@ ms.locfileid: "87421089"
 12. 确认你创建的专用终结点连接已显示在终结点列表中。 在此示例中，专用终结点会自动获得批准，因为你已连接到自己目录中的 Azure 资源，并且有足够的权限。 
 
     ![已创建专用终结点](./media/private-link-service/private-endpoint-created.png)
+
+[!INCLUDE [event-hubs-trusted-services](../../includes/event-hubs-trusted-services.md)]
+
+若要允许受信任的服务访问你的命名空间，请切换到 "**网络**" 页上的 "**防火墙和虚拟网络**" 选项卡，然后选择 **"是"** 以**允许受信任的 Microsoft 服务跳过此防火墙？**。 
 
 ## <a name="add-a-private-endpoint-using-powershell"></a>使用 PowerShell 添加专用终结点
 以下示例演示如何使用 Azure PowerShell 创建专用终结点连接。 此过程不会为你创建专用群集。 请遵循[此文](event-hubs-dedicated-cluster-create-portal.md)中的步骤创建专用的事件中心群集。 

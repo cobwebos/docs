@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 37106517c47c86f4a4a562eebd6d120e31e22334
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a19ced1cb9496bddd1f9aa7ea9e3eb58ba7eea3d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564526"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185683"
 ---
-# <a name="connect-data-from-azure-active-directory-azure-ad"></a>连接 Azure Active Directory （Azure AD）中的数据
+# <a name="connect-data-from-azure-active-directory-azure-ad"></a>将数据从 Azure Active Directory (Azure AD) 
 
 
 
@@ -30,7 +30,7 @@ Azure Sentinel 使你能够从[Azure Active Directory](../active-directory/funda
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果要从 Azure AD 导出登录数据，则必须具有 Azure AD P1 或 P2 许可证。
+- 任何 Azure AD 许可证 (免费/O365/P1/P2) 可以与 Azure Monitor 并将登录日志引入 Azure Sentinel。 每 gb 的额外费用将适用于 Azure Monitor 或 Azure Sentinel。
 
 - 对要从中流式传输日志的租户拥有全局管理员或安全管理员权限的用户。
 

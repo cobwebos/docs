@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e8aa87eecc29a5b664520cb1be2cbc5e65b2969e
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 67a66ae94508a8d7f54d6112de95fa65a8fd5f09
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134541"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185411"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure 机器学习部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,13 +39,13 @@ ms.locfileid: "88134541"
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 - 模型。 如果没有已训练的模型，则可以使用[此教程](https://aka.ms/azml-deploy-cloud)中提供的模型和依赖项文件。
-- [Azure 命令行接口 (机器学习服务的 CLI) 扩展](reference-azure-machine-learning-cli.md)
+- [Azure 命令行接口 (机器学习服务的 CLI) 扩展](reference-azure-machine-learning-cli.md)。
 
 # <a name="python"></a>[Python](#tab/python)
 
 - Azure 机器学习工作区。 有关详细信息，请参阅[创建 Azure 机器学习工作区](how-to-manage-workspace.md)。
 - 模型。 如果没有已训练的模型，则可以使用[此教程](https://aka.ms/azml-deploy-cloud)中提供的模型和依赖项文件。
-- [适用于 Python 的 Azure 机器学习软件开发工具包 (SDK) ](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+- [适用于 Python 的 Azure 机器学习软件开发工具包 (SDK) ](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
 
 ---
 
@@ -242,7 +242,7 @@ myenv = Environment.from_conda_specification(name = 'myenv',
 myenv.register(workspace=ws)
 ```
 
-有关使用 Azure 机器学习并自定义 Python 环境的详细讨论，请参阅[在 Azure 机器学习中创建 & 使用软件环境](how-to-use-environments.md)
+有关使用 Azure 机器学习并自定义 Python 环境的详细讨论，请参阅[在 Azure 机器学习中创建 & 使用软件环境](how-to-use-environments.md)。
 
 若要详细了解如何将自定义 Docker 映像与推理配置结合使用，请参阅[如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)。
 
@@ -373,7 +373,7 @@ Azure 机器学习计算目标由 Azure 机器学习创建和管理。 它们可
 
 若要从工作区中删除已注册的模型，请使用`az ml model delete <model id>`
 
-阅读有关[删除 webservice](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-delete)并[删除模型](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-delete)的详细信息
+阅读有关[删除 webservice](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-delete)并[删除模型](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-delete)的详细信息。
 
 # <a name="python"></a>[Python](#tab/python)
 
