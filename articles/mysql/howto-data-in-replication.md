@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 8/7/2020
-ms.openlocfilehash: dbf3a13ed5a544406950dbcfb5ea8796eceb03c1
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: f8dbdf87eef193540fd5c1bf9d9e7f3794ae46ce
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030532"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168212"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>如何配置 Azure Database for MySQL 的数据传入复制
 
@@ -53,7 +53,7 @@ ms.locfileid: "88030532"
 
    例如，请确保主服务器允许端口 3306 上的入站和出站流量，并且主服务器具有公共 IP 地址，DNS 可公开访问或者具有完全限定的域名 (FQDN)。 
    
-   通过尝试从其他计算机上托管的 MySQL 命令行或 Azure 门户中提供的[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)来连接到主服务器的连接。
+   通过尝试从其他计算机上托管的 MySQL 命令行或 Azure 门户中提供的 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 来连接到主服务器的连接。
 
 1. 启用二进制日志记录
 
@@ -204,9 +204,11 @@ ms.locfileid: "88030532"
 
 1. 筛选 
  
-   如果要跳过从主副本复制某些表，请更新 `replicate_wild_ignore_table` 副本服务器上的 server 参数。 查看 [MySQL 文档](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table)详细了解此参数。
+   如果要跳过从主副本复制某些表，请更新 `replicate_wild_ignore_table` 副本服务器上的 server 参数。 您可以使用以逗号分隔的列表提供多个表模式。
+
+   查看 [MySQL 文档](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table)详细了解此参数。 
     
-    若要更新参数，可以使用[Azure 门户](howto-server-parameters.md)或[Azure CLI](howto-configure-server-parameters-using-cli.md)。
+   若要更新参数，可以使用 [Azure 门户](howto-server-parameters.md) 或 [Azure CLI](howto-configure-server-parameters-using-cli.md)。
 
 1. 启动复制
 

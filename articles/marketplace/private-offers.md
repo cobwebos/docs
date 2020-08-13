@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: 7e93772a77ac1edb88c8e1a56c8db216c6e9fbd3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5f8487126cd187ea66f9423a480c9a73151154c3
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420101"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168008"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft 商业应用商店中的专用产品/服务
 
@@ -35,7 +35,7 @@ ms.locfileid: "87420101"
 
 ## <a name="creating-private-offers-using-plans"></a>使用计划创建专用产品/服务
 
-对于*具有计划的新的或现有的产品/服务*，发布者可以通过创建新的计划（以前称为 "sku"）并将其标记为私密来轻松创建新的私有变体。  
+对于*具有计划的新的或现有的产品/服务*，发布者可以通过创建新计划 (以前称为 sku) 并将它们标记为专用，来轻松创建新的专用变体。 每个产品/服务最多可以有45个私有计划。
 
 <!--- [Private SKUs](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) --->
 
@@ -63,7 +63,7 @@ ms.locfileid: "87420101"
 专用套餐也会显示在搜索结果中。 只需查找**专用**徽章即可。
 
 >[!Note]
->通过云解决方案提供商（CSP）计划的经销商建立的订阅不支持专用产品/服务。
+>通过云解决方案提供商的经销商 (CSP) program 建立的订阅不支持专用产品/服务。
 
 
 <!---

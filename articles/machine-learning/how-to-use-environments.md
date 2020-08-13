@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 3fb13a4912fbd2a9bea39b56333adbd1329efef6
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: e6e4b8d7cc3b22737e7e76c31fd1377912fe28cb
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985897"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167141"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure 机器学习中创建 & 使用软件环境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -248,6 +248,9 @@ build.wait_for_completion(show_output=True)
 ```
 
 首先使用方法在本地生成图像非常有用 [`build_local()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py#build-local-workspace--platform-none----kwargs-) 。 设置可选参数 `pushImageToWorkspaceAcr = True` 会将生成的映像推送到 AZURE ML 工作区容器注册表中。 
+
+> [!WARNING]
+>  更改环境中的依赖项或通道的顺序将产生新的环境，并将需要新的映像生成。
 
 ## <a name="enable-docker"></a>启用 Docker
 

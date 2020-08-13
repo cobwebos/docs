@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: a44e7835b90ca88460d2045a5494420c6d47921b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 38e51f8bc66e8c47807a9b265ade3f196745db26
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032826"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167175"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>创建 IoT Edge 模块产品/服务
 
@@ -236,7 +236,7 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 6. 名称
 7. 总结
 8. 说明
-9. 有用的链接
+9. 有用链接
 10. 屏幕截图/视频
 
 <br>下面是有关如何在 Azure Marketplace 搜索结果中显示产品/服务的示例：
@@ -257,7 +257,7 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 
 1. 名称
 2. 说明
-3. 有用的链接
+3. 有用链接
 4. 屏幕截图
 
 <br>下面是一个示例，说明了产品/服务信息在 "Azure 门户搜索" 结果中的显示方式：
@@ -288,11 +288,13 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 
 选择“保存草稿”，然后转到下一部分“计划概述”继续操作。
 
-### <a name="plan-overview"></a>计划概述
+## <a name="plan-overview"></a>计划概述
 
 使用此选项卡，可以在合作伙伴中心内的相同产品/服务中提供不同的计划选项。 计划 (以前称为 Sku) 的计划可能不同于云的可用性，如全球云、政府云和计划引用的映像。 若要在市场中列出你的产品/服务，至少必须设置一个计划。
 
-在你创建计划后，“计划概述”选项卡显示：
+最多可为每个产品创建100个计划：最多可为45个。 详细了解[Microsoft 商业应用商店](../private-offers.md)中的专用产品/服务。
+
+创建计划后，“计划概述”选项卡将显示：
 
 - 计划名称
 - 定价模型
@@ -305,7 +307,7 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 - 删除草稿：如果计划状态为“草稿”。
 - 停止销售计划：如果计划状态为“已发布上线”。
 
-#### <a name="create-new-plan"></a>新建计划
+### <a name="create-new-plan"></a>新建计划
 
 选择“新建计划”。 此时，“新建计划”对话框显示。
 
@@ -337,7 +339,7 @@ IoT Edge 模块产品/服务的所有计划自动在**Azure Global**中提供。
 
 Azure 政府服务处理符合特定政府法规和要求的数据。 例如，FedRAMP、NIST 800.171 (DIB)、ITAR、IRS 1075、DoD L4 和 CJIS。 为了让受众注意到你在这些计划上获得的认证，可以提供最多 100 个链接来描述你的认证。 这些链接可以直接链接到你在这些计划上获得的认证一览，也可以链接到你自己的网站。 这些链接只对 Azure 政府客户可见。
 
-## <a name="plan-listing"></a>计划一览
+### <a name="plan-listing"></a>计划一览
 
 此选项卡显示同一个产品/服务内每个不同计划的具体信息。
 
@@ -377,7 +379,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 2. 计划名称
 3. 计划说明
 
-## <a name="availability"></a>可用性
+### <a name="availability"></a>可用性
 
 若要隐藏已发布的产品/服务，以便客户无法在市场中搜索、浏览或购买它，请选中“可用性”选项卡上的“隐藏计划”复选框。
 

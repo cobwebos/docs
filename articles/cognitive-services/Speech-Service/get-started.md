@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: 5dc1f8ed31c8d7199a31643a76e611d828da77ac
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: c15601b4c58ce072881b3c244f10bc196bceb853
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056459"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167804"
 ---
 # <a name="try-the-speech-service-for-free"></a>免费试用语音服务
 
@@ -87,7 +87,7 @@ ms.locfileid: "88056459"
 
 ## <a name="about-regions"></a>关于区域
 
-- 如果应用程序使用[语音 SDK](speech-sdk.md)，请在创建语音配置时提供区域代码，例如 `westus`。
+- 如果你的应用程序使用[语音 SDK](speech-sdk.md)，则在 `westus` 创建语音配置时提供区域标识符，如。
 - 如果应用程序使用某个语音服务的 [REST API](rest-apis.md)，则区域是你在发出请求时使用的终结点 URI 的一部分。
 - 为某个区域创建的密钥仅在该区域有效。 尝试在其他区域使用此类密钥会导致身份验证错误。
 

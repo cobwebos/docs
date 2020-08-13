@@ -10,18 +10,18 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: e83e6df26a2b3e8eabda142ee6cd89320c59ad8a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 7384d03595f36e37eb70ec68d4f59b889facf76f
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922636"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168025"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure 时序见解 API 的身份验证和授权
 
-本文档介绍如何使用新的 Azure Active Directory 边栏选项卡在 Azure Active Directory 中注册应用。 在 Azure Active Directory 中注册的应用可让用户进行身份验证，并有权使用与 Azure 时序见解环境关联的 Azure 时序见解 API。
+本文档介绍如何使用新的 Azure Active Directory 边栏选项卡在 Azure Active Directory 中注册应用。 在 Azure Active Directory 中注册的应用使用户能够使用 Azure 时序见解 API 与 Azure 时序见解环境进行身份验证和授权。
 
 ## <a name="service-principal"></a>服务主体
 
@@ -46,6 +46,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 > 配置 Azure 时序见解安全策略时，请遵循“关注点分离”的原则（在上述方案中已介绍）。
 
 > [!NOTE]
+
 > * 文中重点介绍了单租户应用程序，其中应用程序只应在一个组织内运行。
 > * 通常会将单租户应用程序作为在组织中运行的业务线应用程序使用。
 
@@ -115,6 +116,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 > [!IMPORTANT]
 > 令牌必须严格颁发给 `https://api.timeseries.azure.com/` 资源（也称为令牌的“受众”）。
+
 > * 因此，[Postman](https://www.getpostman.com/) **AuthURL** 将为：`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?scope=https://api.timeseries.azure.com/.default`
 > * `https://api.timeseries.azure.com/` 有效，但 `https://api.timeseries.azure.com` 无效。
 
@@ -155,7 +157,7 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 | 可选查询参数 | 说明 | 版本 |
 | --- |  --- | --- |
-| `timeout=<timeout>` | 用于执行 HTTP 请求的服务器端超时。 仅适用于[获取环境事件](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)和[获取环境聚合](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API。 超时值应采用 ISO 8601 持续时间格式（例如 `"PT20S"`），并且应在 `1-30 s` 范围内。 默认值为 `30 s`。 | Gen1 |
+| `timeout=<timeout>` | 用于执行 HTTP 请求的服务器端超时。 仅适用于[获取环境事件](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api)和[获取环境聚合](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api#get-environment-aggregates-api) API。 超时值应采用 ISO 8601 持续时间格式（例如 `"PT20S"`），并且应在 `1-30 s` 范围内。 默认值为 `30 s`。 | Gen1 |
 | `storeType=<storeType>` | 对于启用了 Warm 存储的 Gen2 环境，可以对 `WarmStore` 或 `ColdStore` 执行查询。 查询中的此参数定义应对哪个存储执行查询。 如果未定义，将对 Cold 存储区执行查询。 若要查询 Warm 存储，需要将 storeType 设置为 `WarmStore`。 如果未定义，将对 Cold 存储区执行查询。 | Gen2 |
 
 ## <a name="next-steps"></a>后续步骤
@@ -164,6 +166,6 @@ Azure Active Directory 应用注册流程涉及三个主要步骤。
 
 * 有关调用 Gen2 Azure 时序见解 API 示例代码的示例代码，请参阅[使用 C# 查询 Gen2 数据](./time-series-insights-update-query-data-csharp.md)。
 
-* 有关 API 参考信息，请阅读[查询 API 参考](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api)文档。
+* 有关 API 参考信息，请阅读[查询 API 参考](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api)文档。
 
 * 了解如何[创建服务主体](../active-directory/develop/howto-create-service-principal-portal.md)。

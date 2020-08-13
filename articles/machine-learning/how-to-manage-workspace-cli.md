@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 07/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 6c2d1b3db422a40f7bcf237c292b48183d99962b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0eec9ce6b035b7bf3627c844abb97649ce972693
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121266"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167634"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>使用 Azure CLI 创建 Azure 机器学习工作区
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -144,13 +144,16 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
 
 ### <a name="virtual-network-and-private-endpoint"></a>虚拟网络和专用终结点
 
+> [!IMPORTANT]
+> 将 Azure Private Link 与 Azure 机器学习工作区结合使用目前为公共预览版。 此功能仅在**美国东部**和**美国西部 2**区域提供。 此预览版在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+
 如果要将工作区的访问权限限制为虚拟网络，可以使用以下参数：
 
 * `--pe-name`：创建的专用终结点的名称。
 * `--pe-auto-approval`：是否应自动批准与工作区的专用终结点连接。
 * `--pe-resource-group`：要在其中创建专用终结点的资源组。 必须是包含虚拟网络的同一个组。
 * `--pe-vnet-name`：要在其中创建专用终结点的现有虚拟网络。
-* `--pe-subnet-name`：要在其中创建专用终结点的子网的名称。 默认值为 `default`。
+* `--pe-subnet-name`：要在其中创建专用终结点的子网的名称。 默认值是 `default`。
 
 有关将专用终结点和虚拟网络与工作区结合使用的详细信息，请参阅[网络隔离和隐私](how-to-enable-virtual-network.md)。
 

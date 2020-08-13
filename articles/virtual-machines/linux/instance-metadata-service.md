@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: 4f0e9d057c92f1907bb77ee0767c7bb07f0f4c62
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d0f6655d22818c119d1098bbce96ea3699a42a50
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836983"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168127"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Azure 实例元数据服务 (IMDS) 
 
@@ -47,7 +47,7 @@ Azure 的 IMDS 是一个 REST 终结点，位于已知不可路由的 IP 地址 
 **请求**
 
 ```bash
-curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2019-06-01"
+curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2020-06-01"
 ```
 
 **响应**
@@ -57,112 +57,97 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?ap
 
 ```json
 {
-  "compute": {
-    "azEnvironment": "AzurePublicCloud",
-    "customData": "",
-    "location": "centralus",
-    "name": "negasonic",
-    "offer": "lampstack",
-    "osType": "Linux",
-    "placementGroupId": "",
-    "plan": {
-        "name": "5-6",
-        "product": "lampstack",
-        "publisher": "bitnami"
-    },
-    "platformFaultDomain": "0",
-    "platformUpdateDomain": "0",
-    "provider": "Microsoft.Compute",
-    "publicKeys": [],
-    "publisher": "bitnami",
-    "resourceGroupName": "myrg",
-    "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachines/negasonic",
-    "sku": "5-6",
-    "storageProfile": {
-        "dataDisks": [
-          {
-            "caching": "None",
-            "createOption": "Empty",
-            "diskSizeGB": "1024",
-            "image": {
-              "uri": ""
+    "compute": {
+        "azEnvironment": "AZUREPUBLICCLOUD",
+        "isHostCompatibilityLayerVm": "true",
+        "location": "westus",
+        "name": "examplevmname",
+        "offer": "Windows",
+        "osType": "linux",
+        "placementGroupId": "f67c14ab-e92c-408c-ae2d-da15866ec79a",
+        "plan": {
+            "name": "planName",
+            "product": "planProduct",
+            "publisher": "planPublisher"
+        },
+        "platformFaultDomain": "36",
+        "platformUpdateDomain": "42",
+        "publicKeys": [{
+                "keyData": "ssh-rsa 0",
+                "path": "/home/user/.ssh/authorized_keys0"
             },
-            "lun": "0",
-            "managedDisk": {
-              "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
-              "storageAccountType": "Standard_LRS"
-            },
-            "name": "exampledatadiskname",
-            "vhd": {
-              "uri": ""
-            },
-            "writeAcceleratorEnabled": "false"
-          }
+            {
+                "keyData": "ssh-rsa 1",
+                "path": "/home/user/.ssh/authorized_keys1"
+            }
         ],
-        "imageReference": {
-          "id": "",
-          "offer": "UbuntuServer",
-          "publisher": "Canonical",
-          "sku": "16.04.0-LTS",
-          "version": "latest"
+        "publisher": "RDFE-Test-Microsoft-Windows-Server-Group",
+        "resourceGroupName": "macikgo-test-may-23",
+        "resourceId": "/subscriptions/8d10da13-8125-4ba9-a717-bf7490507b3d/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/virtualMachines/examplevmname",
+        "securityProfile": {
+            "secureBootEnabled": "true",
+            "virtualTpmEnabled": "false"
         },
-        "osDisk": {
-          "caching": "ReadWrite",
-          "createOption": "FromImage",
-          "diskSizeGB": "30",
-          "diffDiskSettings": {
-            "option": "Local"
-          },
-          "encryptionSettings": {
-            "enabled": "false"
-          },
-          "image": {
-            "uri": ""
-          },
-          "managedDisk": {
-            "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
-            "storageAccountType": "Standard_LRS"
-          },
-          "name": "exampleosdiskname",
-          "osType": "Linux",
-          "vhd": {
-            "uri": ""
-          },
-          "writeAcceleratorEnabled": "false"
-        }
-    },
-    "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "tags": "Department:IT;Environment:Prod;Role:WorkerRole",
-    "version": "7.1.1902271506",
-    "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
-    "vmScaleSetName": "",
-    "vmSize": "Standard_A1_v2",
-    "zone": "1"
-  },
-  "network": {
-    "interface": [
-      {
-        "ipv4": {
-          "ipAddress": [
-            {
-              "privateIpAddress": "10.1.2.5",
-              "publicIpAddress": "X.X.X.X"
+        "sku": "Windows-Server-2012-R2-Datacenter",
+        "storageProfile": {
+            "dataDisks": [{
+                "caching": "None",
+                "createOption": "Empty",
+                "diskSizeGB": "1024",
+                "image": {
+                    "uri": ""
+                },
+                "lun": "0",
+                "managedDisk": {
+                    "id": "/subscriptions/8d10da13-8125-4ba9-a717-bf7490507b3d/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+                    "storageAccountType": "Standard_LRS"
+                },
+                "name": "exampledatadiskname",
+                "vhd": {
+                    "uri": ""
+                },
+                "writeAcceleratorEnabled": "false"
+            }],
+            "imageReference": {
+                "id": "",
+                "offer": "UbuntuServer",
+                "publisher": "Canonical",
+                "sku": "16.04.0-LTS",
+                "version": "latest"
+            },
+            "osDisk": {
+                "caching": "ReadWrite",
+                "createOption": "FromImage",
+                "diskSizeGB": "30",
+                "diffDiskSettings": {
+                    "option": "Local"
+                },
+                "encryptionSettings": {
+                    "enabled": "false"
+                },
+                "image": {
+                    "uri": ""
+                },
+                "managedDisk": {
+                    "id": "/subscriptions/8d10da13-8125-4ba9-a717-bf7490507b3d/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+                    "storageAccountType": "Standard_LRS"
+                },
+                "name": "exampleosdiskname",
+                "osType": "Linux",
+                "vhd": {
+                    "uri": ""
+                },
+                "writeAcceleratorEnabled": "false"
             }
-          ],
-          "subnet": [
-            {
-              "address": "10.1.2.0",
-              "prefix": "24"
-            }
-          ]
         },
-        "ipv6": {
-          "ipAddress": []
-        },
-        "macAddress": "000D3A36DDED"
-      }
-    ]
-  }
+        "subscriptionId": "8d10da13-8125-4ba9-a717-bf7490507b3d",
+        "tags": "baz:bash;foo:bar",
+        "version": "15.05.22",
+        "vmId": "02aab8a4-74ef-476e-8182-f6d2ba4166a6",
+        "vmScaleSetName": "crpteste9vflji9",
+        "vmSize": "Standard_A3",
+        "zone": ""
+    }
 }
 ```
 
@@ -176,7 +161,7 @@ API | 默认数据格式 | 其他格式
 /attested | json | 无
 /identity | json | 无
 /instance | json | text
-/scheduledevents | json | 无
+/scheduledevents | json | none
 
 若要访问非默认响应格式，请在请求中将所请求的格式指定为查询字符串参数。 例如：
 
@@ -191,9 +176,26 @@ curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?ap
 
 实例元数据服务进行了版本控制，因此，必须在 HTTP 请求中指定 API 版本。
 
-下面是支持的服务版本：2017-04-02、2017-08-01、2017-12-01、2018-02-01、2018-04-02、2018-10-01、2019-02-01、2019-03-11、2019-04-30、2019-06-01、2019-06-04、2019-08-01、2019-08-15。
+支持的 API 版本如下： 
+- 2017-03-01
+- 2017-04-02
+- 2017-08-01 
+- 2017-10-01
+- 2017-12-01 
+- 2018-02-01
+- 2018-04-02
+- 2018-10-01
+- 2019-02-01
+- 2019-03-11
+- 2019-04-30
+- 2019-06-01
+- 2019-06-04
+- 2019-08-01
+- 2019-08-15
+- 2019-11-01
+- 2020-06-01
 
-请注意，新版本发布后，需要一段时间才能推广到所有区域。 版本 2019-11-01 当前仍处于部署阶段，可能并非在所有区域都提供。
+请注意，新版本发布后，需要一段时间才能推广到所有区域。
 
 在添加更新的版本时，早期版本仍可供访问以保持兼容性（如果脚本依赖于特定的数据格式）。
 
@@ -240,6 +242,7 @@ API | 说明 | 引入的版本
 -----|-------------|-----------------------
 azEnvironment | VM 运行时所在的 Azure 环境 | 2018-10-01
 customData | 此功能目前已禁用。 当该功能可用时，我们将更新此文档 | 2019-02-01
+isHostCompatibilityLayerVm | 标识 VM 是否在主机兼容性层上运行 | 2020-06-01
 location | VM 在其中运行的 Azure 区域 | 2017-04-02
 name | VM 的名称 | 2017-04-02
 offer | 提供 VM 映像的信息，仅适用于从 Azure 映像库部署的映像 | 2017-04-02
@@ -254,6 +257,8 @@ publisher | VM 映像的发布者 | 2017-04-02
 resourceGroupName | 虚拟机的[资源组](../../azure-resource-manager/management/overview.md) | 2017-08-01
 ResourceId | 资源的[完全限定](/rest/api/resources/resources/getbyid) ID | 2019-03-11
 sku | VM 映像的特定 SKU | 2017-04-02
+securityProfile. secureBootEnabled | 标识是否在 VM 上启用了 UEFI 安全启动 | 2020-06-01
+securityProfile.virtualTpmEnabled | 确定虚拟受信任的平台模块 (是否在 VM 上启用了 TPM)  | 2020-06-01
 storageProfile | 参阅[存储配置文件](#storage-metadata) | 2019-06-01
 subscriptionId | 虚拟机的 Azure 订阅 | 2017-08-01
 标记 | 虚拟机的[标记](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
@@ -511,7 +516,7 @@ caching | 缓存要求
 createOption | 有关 VM 创建方式的信息
 diffDiskSettings | 临时磁盘设置
 diskSizeGB | 磁盘大小 (GB)
-图像   | 源用户映像虚拟硬盘
+image   | 源用户映像虚拟硬盘
 lun     | 磁盘的逻辑单元号
 managedDisk | 托管磁盘参数
 name    | 磁盘名称
@@ -527,7 +532,7 @@ createOption | 有关 VM 创建方式的信息
 diffDiskSettings | 临时磁盘设置
 diskSizeGB | 磁盘大小 (GB)
 encryptionSettings | 磁盘的加密设置
-图像   | 源用户映像虚拟硬盘
+image   | 源用户映像虚拟硬盘
 managedDisk | 托管磁盘参数
 name    | 磁盘名称
 osType  | 磁盘中包含的 OS 类型
@@ -814,7 +819,7 @@ Ruby          | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
 
 如果找不到某个数据元素，或者请求的格式不正确，则实例元数据服务返回标准 HTTP 错误。 例如：
 
-HTTP 状态代码 | Reason
+HTTP 状态代码 | 原因
 ----------------|-------
 200 正常 |
 400 错误的请求 | 查询叶节点时缺少 `Metadata: true` 标头或缺少参数 `format=json`
@@ -845,7 +850,7 @@ HTTP 状态代码 | Reason
    * <details>
         <summary>验证路由表</summary>
 
-        1. 使用命令（如）转储本地路由表 `netstat -r` ，并查找 IMDS 条目 (例如 ) ：
+        1. 使用诸如 `netstat -r` 等命令转储本地路由表，并查找 IMDS 条目（例如）：
             ```console
             ~$ netstat -r
             Kernel IP routing table
@@ -856,7 +861,7 @@ HTTP 状态代码 | Reason
             172.16.69.0     0.0.0.0         255.255.255.0   U         0 0          0 eth0
             ```
         1. 验证是否存在 `169.254.169.254` 的路由，并记下相应的网络接口（例如 `eth0`）。
-        1. 转储路由表中对应接口的接口配置 (注意配置文件的确切名称可能会有所不同) 
+        1. 转储路由表中相应接口的接口配置（请注意，配置文件的确切名称可能有所不同）
             ```console
             ~$ cat /etc/netplan/50-cloud-init.yaml
             network:
@@ -871,7 +876,7 @@ HTTP 状态代码 | Reason
                     set-name: eth0
             version: 2
             ```
-        1. 如果使用的是动态 IP，请记下 MAC 地址。 如果使用的是静态 IP，可以记下列出的 IP (s) 和/或 MAC 地址。
+        1. 如果使用的是动态 IP，请记下 MAC 地址。 如果使用的是静态 IP，可以记下列出的 IP 和/或 MAC 地址。
         1. 确认该接口对应于 VM 的主 NIC 和主 IP。 可以通过在 Azure 门户中查看网络配置，或[通过 Azure CLI](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-show) 查找来找到主 NIC/IP。 记下公共和专用 IP（如果使用 cli，还要记下 MAC 地址）。 PowerShell CLI 示例：
             ```powershell
             $ResourceGroup = '<Resource_Group>'

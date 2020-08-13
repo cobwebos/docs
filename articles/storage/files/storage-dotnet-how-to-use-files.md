@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 44602c65a08f2e76fa017022f6137a18481f2edd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bbee9881addf66d762f1eadb837e5a4e41bf79de
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515378"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167889"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 针对 Azure 文件进行开发
 
@@ -487,7 +487,7 @@ Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 ### <a name="conceptual-articles-and-videos"></a>概念性文章和视频
 
 * [Azure 文件：适用于 Windows 和 Linux 的顺畅的云 SMB 文件系统](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [通过 Linux 使用 Azure 文件](storage-how-to-use-files-linux.md)
+* [将 Azure 文件存储用于 Linux](storage-how-to-use-files-linux.md)
 
 ### <a name="tooling-support-for-file-storage"></a>文件存储的工具支持
 

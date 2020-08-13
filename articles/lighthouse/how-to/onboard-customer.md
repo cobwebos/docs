@@ -1,30 +1,30 @@
 ---
 title: 将客户加入 Azure Lighthouse
 description: 了解如何将客户加入 Azure Lighthouse，从而允许使用 Azure 委派的资源管理通过自己的租户访问和管理其资源。
-ms.date: 05/26/2020
+ms.date: 08/12/2020
 ms.topic: how-to
-ms.openlocfilehash: cac40a835ff3227a31611b31655865d43fa378ab
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: f20df54a4bc689effad210746f93928defdaf0f5
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118869"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167311"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>将客户加入 Azure Lighthouse
 
 本文介绍你作为服务提供商如何将客户加入 Azure Lighthouse。 当你执行此操作时，可以使用[Azure 委派的资源管理](../concepts/azure-delegated-resource-management.md)通过你自己的 Azure Active Directory (Azure AD) 租户来访问和管理客户的委托资源 (订阅和/或资源组) 。
 
-如果要为多位客户管理资源，可重复此过程。 然后，当已授权的用户登录到你的租户时，可以在客户租户范围内授权该用户执行管理操作，而无需登录到每个单独的客户租户。
+> [!TIP]
+> 尽管我们指的是本主题中的服务提供商和客户，但[管理多个租户的企业](../concepts/enterprise.md)可以使用相同的过程来设置 Azure Lighthouse 并合并其管理体验。
 
-若要跟踪你对客户互动的影响并获得认可，请将你的 Microsoft 合作伙伴网络 (MPN) ID 与至少一个有权访问你加入的每个订阅的用户帐户相关联。 请注意，你需要在服务提供商租户中执行此关联。 简单起见，我们建议在租户中创建一个与你的 MPN ID 相关联的服务主体帐户，并向其授予对你加入的每个客户的“读取者”访问权限。 有关详细信息，请参阅[将合作伙伴 ID 链接到 Azure 帐户](../../cost-management-billing/manage/link-partner-id.md)。 
+你可以为多个客户重复执行载入过程。 当具有适当权限的用户登录到你的管理租户时，该用户可以在客户租户范围内获得授权，以执行管理操作，而无需登录到每个单独的客户租户。
+
+若要跟踪你对客户互动的影响并获得认可，请将你的 Microsoft 合作伙伴网络 (MPN) ID 与至少一个有权访问你加入的每个订阅的用户帐户相关联。 需要在服务提供商租户中执行此关联。 简单起见，我们建议在租户中创建一个与你的 MPN ID 相关联的服务主体帐户，并向其授予对你加入的每个客户的“读取者”访问权限。 有关详细信息，请参阅[将合作伙伴 ID 链接到 Azure 帐户](../../cost-management-billing/manage/link-partner-id.md)。
 
 > [!NOTE]
-> 当客户购买托管服务产品/服务 (发布到 Azure Marketplace 的公共或私有) 时，也可以载入 Azure Lighthouse。 有关详细信息，请参阅[将托管服务产品发布到 Azure 市场](publish-managed-services-offers.md)。 还可以结合已发布到 Azure 市场的产品/服务使用此处所述的流程。
+> 当客户购买托管服务产品) /服务时，也可以载入 Azure Lighthouse， (公开[发布到 Azure Marketplace](publish-managed-services-offers.md)。 你还可以在发布到 Azure Marketplace 的产品/服务中使用此处所述的载入过程。
 
 载入过程要求从服务提供商的租户和客户的租户中执行操作。 上述所有步骤均可参见本文。
-
-> [!TIP]
-> 即使我们引用本主题中的服务提供商和客户，[管理多个租户的企业](../concepts/enterprise.md)也可以使用相同的过程来设置 Azure Lighthouse 并合并其管理体验。
 
 ## <a name="gather-tenant-and-subscription-details"></a>收集租户和订阅详细信息
 
@@ -65,14 +65,16 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>定义角色和权限
 
-作为服务提供商，你可能想要为单个客户执行多个任务，这需要针对不同范围的不同访问权限。 可以根据需要定义任意数量的授权，以将[基于角色的访问控制 (RBAC) 内置角色](../../role-based-access-control/built-in-roles.md)分配给租户中的用户。
+作为服务提供商，你可能想要为单个客户执行多个任务，这需要针对不同范围的不同访问权限。 你可以根据需要定义任意数量的授权，以便为租户中的用户分配适当的[基于角色的访问控制 (RBAC) 内置角色](../../role-based-access-control/built-in-roles.md)。
 
-为了简化管理，建议为每个角色使用 Azure AD 用户组，这使你能够向组添加或删除单个用户，而不是直接向此用户分配权限。 你可能还想要将角色分配给服务主体。 请务必遵循最低权限原则，使用户仅具有完成作业所需的权限。 有关支持角色的建议和信息，请参阅 [Azure Lighthouse 方案中的租户、用户和角色](../concepts/tenants-users-roles.md)。
+为了更轻松地进行管理，我们建议为每个角色使用 Azure AD 用户组。 这样，你可以灵活地在组中添加或删除单个用户，这样就无需重复载入过程来进行用户更改。 可以将角色分配给服务主体，这对于自动化方案非常有用。
+
+定义授权时，请确保遵循最低权限原则，使用户仅具有完成工作所需的权限。 有关支持的角色的指导和信息，请参阅[Azure Lighthouse 方案中的租户、用户和角色](../concepts/tenants-users-roles.md)。
 
 > [!IMPORTANT]
 > 若要为 Azure AD 组添加权限，“组类型”必须是“安全性”而不是“Office 365”  。 此选项是在创建组时选择的。 有关详细信息，请参阅[使用 Azure Active Directory 创建基本组并添加成员](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)。
 
-要定义授权，需要知道服务提供商租户中你要向其授予访问权限的每个用户、用户组或服务主体的 ID 值。 还需知道要分配的每个内置角色的角色定义 ID。 如果尚未获得这些 ID，可以从服务提供商租户内运行以下命令来检索它们。
+若要定义授权，需要知道要向其授予访问权限的服务提供商租户中的每个用户、用户组或服务主体的 ID 值。 还需知道要分配的每个内置角色的角色定义 ID。 如果尚未获得这些 ID，可以从服务提供商租户内运行以下命令来检索它们。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -109,12 +111,13 @@ az ad sp list --query "[?displayName == '<spDisplayName>'].objectId" --output ts
 # To retrieve role definition IDs
 az role definition list --name "<roleName>" | grep name
 ```
+
 > [!TIP]
 > 我们建议在加入客户时分配[托管服务注册分配删除角色](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role)，这样租户中的用户之后可以[删除对委派的访问权限](remove-delegation.md)（如果需要）。 如果未分配此角色，则只能由客户租户中的用户删除委派资源。
 
 ## <a name="create-an-azure-resource-manager-template"></a>创建 Azure 资源管理器模板
 
-若要加入客户，需要使用以下信息为你的产品/服务创建 [Azure 资源管理器](../../azure-resource-manager/index.yml)模板。 在 Azure 门户的[服务提供商页](view-manage-service-providers.md)中查看产品/服务详细信息时，客户可以看到 **mspOfferName** 和 **mspOfferDescription** 值。
+若要加入客户，需要使用以下信息为你的产品/服务创建 [Azure 资源管理器](../../azure-resource-manager/index.yml)模板。 **MspOfferName**和**mspOfferDescription**值将在 Azure 门户的 "[服务提供商" 页](view-manage-service-providers.md)中对客户可见。
 
 |字段  |定义  |
 |---------|---------|
@@ -192,13 +195,11 @@ az role definition list --name "<roleName>" | grep name
 }
 ```
 
-上面示例中的最后一个授权添加了具有用户访问管理员角色 (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) 的 principalId。 分配此角色时，必须包含 delegatedRoleDefinitionIds 属性和一个/多个内置角色。 在此授权中创建的用户能够在客户租户中将这些内置角色分配给[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，这是[部署可修正的策略](deploy-policy-remediation.md)所必需的。  用户还可以创建支持事件。  通常与用户访问管理员角色关联的其他权限均不适用于此用户。
+上面示例中的最后一个授权添加了具有用户访问管理员角色 (18d7d88d-d35e-4fb5-a5c3-7773c20a72d9) 的 principalId。 分配此角色时，必须包含 delegatedRoleDefinitionIds 属性和一个/多个内置角色。 在此授权中创建的用户能够将这些内置角色分配到客户租户中的[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)，这是[部署可修正的策略](deploy-policy-remediation.md)所必需的。  用户还可以创建支持事件。  通常与用户访问管理员角色关联的其他权限均不适用于此用户。
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>部署 Azure 资源管理器模板
 
-更新参数文件后，客户租户中的某个用户必须在其租户中将 Azure 资源管理器模板部署为订阅级部署。 需要为每个要加入 (的订阅或包含要在其中进行登记) 资源组的每个订阅执行单独的部署。
-
-由于这是订阅级部署，因此无法在 Azure 门户中启动。 可以使用 PowerShell 或 Azure CLI 来完成部署，如下所示。
+更新参数文件后，客户租户中的某个用户必须在其租户中将 Azure 资源管理器模板部署为订阅级部署。 需要为每个要加入 (的订阅或包含要在其中进行登记) 资源组的每个订阅执行单独的部署。 可以使用 PowerShell 或 Azure CLI 来完成部署，如下所示。
 
 > [!IMPORTANT]
 > 此订阅级部署必须由客户租户中的非来宾帐户完成，该帐户对于正在加入的订阅（或包含正在加入的资源组的订阅）拥有[“所有者”内置角色](../../role-based-access-control/built-in-roles.md#owner)。 若要查看所有可以委托订阅的用户，客户租户中的用户可以在 Azure 门户中选择订阅，打开“访问控制(IAM)”，然后[查看具有“所有者”角色的所有用户](../../role-based-access-control/role-assignments-list-portal.md#list-owners-of-a-subscription)。

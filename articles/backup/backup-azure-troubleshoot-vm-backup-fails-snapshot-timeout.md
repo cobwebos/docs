@@ -4,12 +4,12 @@ description: 与代理、扩展和磁盘相关的 Azure 备份失败的症状、
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 188eef5471e93661041dadfc93f561d2173ba7f2
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 274435a958820c3fd08fef4a61643a1d656e31e3
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809759"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167923"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
@@ -23,7 +23,7 @@ ms.locfileid: "87809759"
 
 ### <a name="step-1-check-azure-vm-health"></a>步骤1：检查 Azure VM 运行状况
 
-- **确保 AZURE vm 预配状态为 "正在运行"**：如果[VM 预配状态](../virtual-machines/windows/states-lifecycle.md#provisioning-states)为 "**已停止/已解除分配/正在更新**" 状态，则它将干扰备份操作。 打开*Azure 门户 > vm > 概述 >* 并检查 vm 状态以确保其**正在运行**，然后重试备份操作。
+- **确保 AZURE vm 预配状态为 "正在运行"**：如果[VM 预配状态](../virtual-machines/states-lifecycle.md#provisioning-states)为 "**已停止/已解除分配/正在更新**" 状态，则它将干扰备份操作。 打开*Azure 门户 > vm > 概述 >* 并检查 vm 状态以确保其**正在运行**，然后重试备份操作。
 - **查看挂起的操作系统更新或重新启动**：确保 VM 上没有挂起的操作系统更新或挂起的重新启动。
 
 ### <a name="step-2-check-azure-vm-guest-agent-service-health"></a>步骤2：检查 Azure VM 来宾代理服务运行状况
@@ -101,7 +101,7 @@ Azure VM 代理可能已停止、已过期、处于不一致状态或未安装�
 **错误代码**：UserErrorVmProvisioningStateFailed<br>
 **错误消息**：VM 处于预配失败状态<br>
 
-当其中一个扩展失败将 VM 状态置于预配失败状态时，会发生此错误。<br>打开 Azure 门户>“VM”>“设置”>“扩展”>“扩展状态”，然后检查所有扩展是否都处于“预配成功”状态**** ****。 若要了解详细信息，请参阅[预配状态](../virtual-machines/windows/states-lifecycle.md#provisioning-states)。
+当其中一个扩展失败将 VM 状态置于预配失败状态时，会发生此错误。<br>打开 Azure 门户>“VM”>“设置”>“扩展”>“扩展状态”，然后检查所有扩展是否都处于“预配成功”状态**** ****。 若要了解详细信息，请参阅[预配状态](../virtual-machines/states-lifecycle.md#provisioning-states)。
 
 - 如果 VMSnapshot 扩展处于失败状态，则右键单击失败的扩展并将其删除。 触发按需备份。 此操作会重新安装扩展并运行备份作业。  <br>
 - 如果其他任何扩展处于失败状态，则可能会干扰备份。 确保这些扩展问题已解决，然后重试备份操作。
