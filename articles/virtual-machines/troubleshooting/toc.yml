@@ -56,7 +56,7 @@
     - name: VM 启动时出现停滞
       href: troubleshoot-vm-boot-configure-update.md
     - name: VM 生命周期和状态
-      href: ../windows/states-lifecycle.md
+      href: ../states-lifecycle.md
 - name: VM 无法启动
   items:
     - name: Linux

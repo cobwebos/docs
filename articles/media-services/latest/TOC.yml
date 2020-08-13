@@ -290,12 +290,16 @@
                   href: customize-encoder-presets-how-to.md
                 - name: 创建覆盖转换
                   href: how-to-create-overlay.md
+                - name: 使用 .NET 生成缩略图
+                  href: media-services-generate-thumbnails-dotnet.md
             - name: 使用 CLI
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-cli-howto.md
             - name: 使用 REST
               displayName: 'encode, encoding, custom, transform'
               href: custom-preset-rest-howto.md
+            - name: 使用 REST 生成缩略图
+              href: media-services-generate-thumbnails-rest.md
         - name: 对视频进行子剪辑
           items:
             - name: （使用 .NET）

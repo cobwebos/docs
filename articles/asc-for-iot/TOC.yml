@@ -31,6 +31,8 @@
       href: quickstart-create-security-twin.md
     - name: 创建自定义安全警报
       href: quickstart-create-custom-alerts.md
+    - name: 调查安全警报
+      href: quickstart-investigate-security-alerts.md
 - name: 概念
   items:
     - name: 安全代理身份验证

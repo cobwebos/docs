@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure Maps 文档
-summary: Microsoft Azure Maps 为所有行业的开发人员提供强大的地理空间功能。 这些地理空间功能与最新的地理信息数据打包在一起。 Azure Maps 适用于 Web 应用程序和移动应用程序。 Azure Maps 是一组与 Azure One API 兼容的 REST API。 下面只是 Azure Maps 提供的服务的简要概述 - 地图、搜索、路线、交通、出行、天气、时区、地理位置、地理围栏、地图数据和空间操作。 Web 和 Android SDK 使开发轻松、灵活并可跨多个平台移植。
+summary: Microsoft Azure Maps 为所有行业的开发人员提供强大的地理空间功能。 这些地理空间功能与最新的地理信息数据打包在一起。 Azure Maps 适用于 Web 应用程序和移动应用程序。 Azure Maps 是一组与 Azure One API 兼容的 REST API。 下面只是 Azure Maps 提供的服务的简要概述 - 地图、搜索、路线、交通、出行、天气、时区、地理位置、地理围栏、地图数据、创建者和空间操作。 Web 和 Android SDK 使开发轻松、灵活并可跨多个平台移植。
 metadata:
   title: Azure Maps 文档 | Microsoft Docs
   description: 了解 Azure Maps 以及如何使用它为 Web 或移动应用程序提供地理空间服务。
@@ -9,12 +9,12 @@ metadata:
   author: anastasia-ms
   ms.author: v-stharr
   ms.date: 1/15/2020
-  ms.openlocfilehash: 0760dce9e64560c8ecb593f41b2d611bd059a639
-  ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+  ms.openlocfilehash: 4e95d7d9afb77dcf8e168a04c9e0f4fc3b266807
+  ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/31/2020
-  ms.locfileid: "87461742"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88121640"
 landingContent:
 - title: 关于 Azure Maps
   linkLists:

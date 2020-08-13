@@ -90,6 +90,8 @@
           href: managed-identity.md
         - name: 使用访问控制策略
           href: group-permissions-for-apps.md
+        - name: 排查访问问题
+          href: troubleshooting-access-issues.md
     - name: 开发
       items:
         - name: Azure 密钥保管库开发人员指南

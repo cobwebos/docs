@@ -671,6 +671,8 @@
           href: gigya-tutorial.md
         - name: GitHub
           href: github-tutorial.md
+        - name: GitHub 企业级云 - 企业帐户
+          href: github-enterprise-cloud-enterprise-account-tutorial.md
         - name: GlassFrog
           href: glassfrog-tutorial.md
         - name: GoLinks

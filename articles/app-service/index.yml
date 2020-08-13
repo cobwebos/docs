@@ -1,18 +1,18 @@
 ### YamlMime:Landing
 title: 应用服务文档
-summary: 使用 Azure 应用服务可以采用所选编程语言构建和托管 Web 应用、移动后端以及 RESTful API，而无需管理基础结构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps 或任何 Git 存储库进行自动部署。 可以参考我们的快速入门、教程和示例来了解如何使用 Azure 应用服务。
+summary: Azure 应用服务可以让你采用所选编程语言构建和托管 Web 应用、移动后端以及 RESTful API，而无需管理基础结构。 它提供自动缩放和高可用性，支持 Windows 和 Linux，并支持从 GitHub、Azure DevOps 或任何 Git 存储库进行自动部署。 可以参考我们的快速入门、教程和示例来了解如何使用 Azure 应用服务。
 metadata:
   title: Azure 应用服务文档
   description: 在 Azure 应用服务中托管网站、Web 应用、RESTful API 和移动后端。 查找快速入门、教程和示例，以便帮助你成功使用应用服务。
   ms.topic: landing-page
   ms.service: app-service
-  ms.date: 02/26/2020
-  ms.openlocfilehash: e8dcbe7288fb72fb5084f210bf38f7fa55f969a2
-  ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
+  ms.date: 08/06/2020
+  ms.openlocfilehash: 3fc31095ec0d8e1ecdbe44c0751c55164d20e088
+  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/18/2020
-  ms.locfileid: "84987966"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88080022"
 landingContent:
 - title: 关于应用服务
   linkLists:
@@ -20,8 +20,6 @@ landingContent:
     links:
     - text: 什么是应用服务？
       url: overview.md
-    - text: Linux 上的应用服务
-      url: /azure/app-service/containers/
     - text: 应用服务环境
       url: environment/intro.md
     - text: 比较托管选项
@@ -35,19 +33,19 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: 第一个 ASP.NET Core 应用
-      url: app-service-web-get-started-dotnet.md
-    - text: 第一个 ASP.NET 应用
-      url: app-service-web-get-started-dotnet-framework.md
+      url: quickstart-dotnetcore.md
+    - text: 第一个 ASP.NET 应用（仅限 Windows）
+      url: quickstart-dotnet-framework.md
     - text: 第一个 Node.js 应用
-      url: app-service-web-get-started-nodejs.md
+      url: quickstart-nodejs.md
     - text: 第一个 PHP 应用
-      url: app-service-web-get-started-php.md
+      url: quickstart-php.md
     - text: 第一个 Java 应用
-      url: app-service-web-get-started-java.md
-    - text: 第一个 Python 应用（Linux 上）
-      url: containers/quickstart-python.md
-    - text: 第一个 Ruby 应用（Linux 上）
-      url: containers/quickstart-ruby.md
+      url: quickstart-java.md
+    - text: 第一个 Python Flask 应用（仅限 Linux）
+      url: quickstart-python.md
+    - text: 第一个 Ruby 应用（仅限 Linux）
+      url: quickstart-ruby.md
 - title: 常见任务
   linkLists:
   - linkListType: tutorial
@@ -62,6 +60,8 @@ landingContent:
     links:
     - text: 启用诊断日志
       url: troubleshoot-diagnostic-logs.md
+    - text: 通过 SSH 连接到 Linux 容器
+      url: configure-linux-open-ssh-session.md
     - text: 将活动域迁移到应用服务
       url: manage-custom-dns-migrate-domain.md
 - title: 将 CRUD 应用与数据库配合使用
@@ -71,11 +71,17 @@ landingContent:
     - text: 将 ASP.NET 应用与 SQL 数据库配合使用
       url: app-service-web-tutorial-dotnet-sqldatabase.md
     - text: 将 ASP.NET Core 应用与 SQL 数据库配合使用
-      url: app-service-web-tutorial-dotnetcore-sqldb.md
+      url: tutorial-dotnetcore-sqldb-app.md
     - text: 将 PHP (Laravel) 应用与 Azure MySQL 配合使用
-      url: app-service-web-tutorial-php-mysql.md
+      url: tutorial-php-mysql-app.md
     - text: 将 Node.js (MEAN.js) 应用与 MongoDB 配合使用
-      url: app-service-web-tutorial-nodejs-mongodb-app.md
+      url: tutorial-nodejs-mongodb-app.md
+    - text: 将 Java (Spring Boot) 应用与 Cosmos DB 配合使用
+      url: tutorial-java-spring-cosmosdb.md
+    - text: 将 Python (Django) 应用与 PostgreSQL 配合使用
+      url: tutorial-python-postgresql-app.md
+    - text: 将 Ruby (Rails) 应用与 PostgreSQL 配合使用
+      url: tutorial-ruby-postgres-app.md
 - title: 上传代码或内容
   linkLists:
   - linkListType: deploy
@@ -90,20 +96,28 @@ landingContent:
       url: deploy-content-sync.md
     - text: 从 GitHub、BitBucket 等存储库进行 CI/CD
       url: deploy-continuous-deployment.md
-- title: 运行容器化 Windows 应用
+    - text: 从程序包运行
+      url: deploy-run-package.md
+- title: 运行自定义容器
   linkLists:
   - linkListType: quickstart
     links:
-    - text: 运行自定义 Windows 容器
-      url: app-service-web-get-started-windows-container.md
+    - text: 运行自定义容器
+      url: quickstart-custom-container.md
   - linkListType: tutorial
     links:
-    - text: 在 Windows 容器中将旧版应用迁移到 Azure
-      url: app-service-web-tutorial-windows-containers-custom-fonts.md
+    - text: 运行 Docker Compose 应用（仅限 Linux）
+      url: tutorial-multi-container-app.md
+    - text: 将自定义软件迁移到容器中的 Azure
+      url: tutorial-custom-container.md
   - linkListType: how-to-guide
     links:
+    - text: 将 CI/CD 迁移到自定义容器
+      url: deploy-ci-cd-custom-container.md
     - text: 将容器连接到存储文件
       url: configure-connect-to-azure-storage.md
+    - text: 使用 GitHub 操作进行部署
+      url: deploy-container-github-action.md
 - title: 管理和集成
   linkLists:
   - linkListType: concept
@@ -115,7 +129,7 @@ landingContent:
     - text: 使用托管标识保护资源访问
       url: app-service-web-tutorial-connect-msi.md
     - text: 对用户进行身份验证
-      url: app-service-web-tutorial-auth-aad.md
+      url: tutorial-auth-aad.md
     - text: 托管包含 CORS 的 RESTful API
       url: app-service-web-tutorial-rest-api.md
     - text: 将 CDN 添加到应用程序

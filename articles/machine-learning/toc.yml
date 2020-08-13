@@ -161,11 +161,8 @@
             - name: 管理用户和角色
               href: how-to-assign-roles.md
             - name: 使用虚拟网络
-              displayName: 'vnet, blob'
+              displayName: 'vnet, blob, private endpoint, private link'
               href: how-to-enable-virtual-network.md
-            - name: 使用专用链接
-              displayName: private endpoint
-              href: how-to-configure-private-link.md
             - name: 使用 TLS 保护 Web 服务
               displayName: ssl
               href: how-to-secure-web-service.md
@@ -457,8 +454,8 @@
         - name: 调试管道并排查管道问题
           displayName: designer
           href: how-to-debug-pipelines.md
-        - name: 在 Application Insights 中调试管道
-          href: how-to-debug-pipelines-application-insights.md
+        - name: 将管道数据记录到 Application Insights
+          href: how-to-log-pipelines-application-insights.md
         - name: 使用并行运行步骤
           displayName: score scoring batch consume pipeline parallelrunstep inference
           href: how-to-use-parallel-run-step.md
