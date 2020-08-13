@@ -6,12 +6,12 @@ documentationcenter: ruby
 ms.devlang: ruby
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: ef4bb8ba724a8ae1f708ab80a770a521f7879685
-ms.sourcegitcommit: 61d92af1d24510c0cc80afb1aebdc46180997c69
+ms.openlocfilehash: aba326a63558632bee3bf0c48d34e471bbe30886
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85336730"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067556"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>快速入门：如何通过 Ruby 使用服务总线主题和订阅
  
@@ -62,7 +62,7 @@ topic = azure_service_bus_service.create_topic(topic)
 
 默认情况下，订阅是永久性的。 除非删除它或与之相关的主题，否则订阅将继续存在。 如果应用程序包含创建订阅的逻辑，则它应首先使用 getSubscription 方法检查该订阅是否已经存在。
 
-可以通过设置 [AutoDeleteOnIdle 属性](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)来自动删除订阅。
+可以通过设置 [AutoDeleteOnIdle 属性](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)来自动删除订阅。
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>创建具有默认 (MatchAll) 筛选器的订阅
 如果在创建新订阅时未指定任何筛选器，则将使用默认的 MatchAll 筛选器。 使用 **MatchAll** 筛选器时，发布到主题的所有消息都会置于订阅的虚拟队列中。 以下示例创建了名为“all-messages”的订阅并使用了默认的 **MatchAll** 筛选器。
@@ -150,7 +150,7 @@ Service Bus 提供了相关功能来帮助你轻松地从应用程序错误或�
 如果应用程序在处理消息之后，但在调用 `delete_subscription_message()` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此情况通常称作“至少处理一次”，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 此逻辑通常可通过使用消息的 `message_id` 属性实现，该属性在多次传送尝试中保持不变。
 
 ## <a name="delete-topics-and-subscriptions"></a>删除主题和订阅
-除非设置 [AutoDeleteOnIdle 属性](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)，否则主题和订阅是永久性的。 可以通过 [Azure 门户][Azure portal]或以编程方式删除这些主题和订阅。 下面的示例演示如何删除名为 `test-topic` 的主题。
+除非设置 [AutoDeleteOnIdle 属性](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.autodeleteonidle)，否则主题和订阅是永久性的。 可以通过 [Azure 门户][Azure portal]或以编程方式删除这些主题和订阅。 下面的示例演示如何删除名为 `test-topic` 的主题。
 
 ```ruby
 azure_service_bus_service.delete_topic("test-topic")

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 18054e47a987a7e79e9083b6f7a2f20b059c7f28
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 470324799cd157c8b33311e1cae8b5b698433e1f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81254602"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88079903"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>教程：向 Azure 应用服务 Web 应用添加 Azure CDN
 
@@ -49,7 +49,7 @@ ms.locfileid: "81254602"
 
 ## <a name="create-the-web-app"></a>创建 Web 应用
 
-若要创建将使用的 Web 应用，通过“浏览到应用”步骤，按照[静态 HTML 快速入门](../app-service/app-service-web-get-started-html.md)的说明操作。
+若要创建将使用的 Web 应用，通过“浏览到应用”步骤，按照[静态 HTML 快速入门](../app-service/quickstart-html.md)的说明操作。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -60,7 +60,7 @@ ms.locfileid: "81254602"
 
 ## <a name="create-a-cdn-profile-and-endpoint"></a>创建 CDN 配置文件和终结点
 
-在左侧导航窗格中，选择“应用服务”，并选择在[静态 HTML 快速入门](../app-service/app-service-web-get-started-html.md)中创建的应用。
+在左侧导航窗格中，选择“应用服务”，并选择在[静态 HTML 快速入门](../app-service/quickstart-html.md)中创建的应用。
 
 ![在门户中选择应用服务应用](media/cdn-add-to-web-app/portal-select-app-services.png)
 

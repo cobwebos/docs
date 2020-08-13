@@ -8,12 +8,12 @@ metadata:
   ms.date: 08/30/2019
   ms.service: postgresql
   ms.topic: landing-page
-  ms.openlocfilehash: 4deeec3686d2e3b0a150b74a222f7f1eab0a93fd
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 432dfe4e7907d8599dd9655a3e3eb67987ea6f39
+  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73932227"
+  ms.lasthandoff: 08/11/2020
+  ms.locfileid: "88078013"
 landingContent:
 - title: 关于 Azure Database for PostgreSQL
   linkLists:
@@ -54,7 +54,7 @@ landingContent:
     - text: 使用 Azure CLI 设计数据库
       url: tutorial-design-database-using-azure-cli.md
     - text: 使用 Python 和 CLI 生成 Web 应用
-      url: /azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json
+      url: ../app-service/tutorial-python-postgresql-app.md?toc=%2fazure%2fpostgresql%2ftoc.json
     - text: 监视和优化服务
       url: tutorial-monitor-and-tune.md
 - title: 创建超大规模 (Citus) 群集

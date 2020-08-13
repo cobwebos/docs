@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: b-juche
-ms.openlocfilehash: 0b150491fff953434062cc583566e1113947a679
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 91fecbc68efec1adcee9a2c4013dea46f6da86af
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504897"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066468"
 ---
 # <a name="what-is-the-storage-hierarchy-of-azure-netapp-files"></a>Azure NetApp 文件的存储层次结构是怎样的
 
@@ -50,8 +50,6 @@ ms.locfileid: "86504897"
 - 卷按逻辑容量消耗进行度量，并且是可缩放的。 
 - 卷的容量消耗是依据其池的预配容量计数的。
 - 每个卷只属于一个池，但一个池可以包含多个卷。 
-- 不能在容量池之间移动卷。 <!--Within the same NetApp account, you can move a volume across pools.  -->   
-  例如，在下面的[存储层次结构的概念图](#conceptual_diagram_of_storage_hierarchy)中，无法将卷从容量池 1 移动到容量池 2。
 
 ## <a name="conceptual-diagram-of-storage-hierarchy"></a><a name="conceptual_diagram_of_storage_hierarchy"></a>存储层次结构的概念图 
 下面的示例显示了 Azure 订阅、NetApp 帐户、容量池和卷之间的关系。   

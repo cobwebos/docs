@@ -281,9 +281,9 @@
     - name: Azure 路线图
       href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
     - name: 博客
-      href: 'https://blogs.msdn.microsoft.com/servicebus/'
+      href: /archive/blogs/servicebus/
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-service-bus.html'
+      href: /answers/topics/azure-service-bus.html
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/service-bus/'
     - name: 定价计算器

@@ -25,38 +25,8 @@
           href: quickstart-existing-helm-chart.md
     - name: 教程
       items:
-        - name: Java（VS Code 和 CLI）
-          items:
-            - name: 1 - 入门
-              href: get-started-java.md
-            - name: 2 - 多服务开发
-              href: multi-service-java.md
-            - name: 3 - 团队开发
-              href: team-development-java.md
-        - name: .NET Core（VS Code 和 CLI）
-          items:
-            - name: 1 - 入门
-              href: get-started-netcore.md
-            - name: 2 - 多服务开发
-              href: multi-service-netcore.md
-            - name: 3 - 团队开发
-              href: team-development-netcore.md
-        - name: .NET Core (Visual Studio)
-          items:
-            - name: 1 - 入门
-              href: get-started-netcore-visualstudio.md
-            - name: 2 - 多服务开发
-              href: multi-service-netcore-visualstudio.md
-            - name: 3 - 团队开发
-              href: team-development-netcore-visualstudio.md
-        - name: Node.js（VS Code 和 CLI）
-          items:
-            - name: 1 - 入门
-              href: get-started-nodejs.md
-            - name: 2 - 多服务开发
-              href: multi-service-nodejs.md
-            - name: 3 - 团队开发
-              href: team-development-nodejs.md
+        - name: Visual Studio 入门
+          href: get-started-netcore-visualstudio.md
     - name: 概念
       items:
         - name: Dev Spaces 工作原理
@@ -83,8 +53,6 @@
           href: how-to/install-dev-spaces.md
         - name: 使用 Azure Cloud Shell 创建 Kubernetes 群集
           href: how-to/create-cluster-cloud-shell.md
-        - name: 共享 Azure Dev Spaces
-          href: how-to/share-dev-spaces.md
         - name: 管理机密
           href: how-to/manage-secrets.md
         - name: 使用自定义 NuGet 源

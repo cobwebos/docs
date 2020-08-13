@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 06/23/2020
 ms.author: spelluru
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 531322c49a772eaf416fadf1bb4f9a5fb6bf1ff6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: fafdf18a3593f7ec444e9970d99807cbfe0cb13d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430609"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080620"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azureservice-bus-package"></a>快速入门：如何将服务总线主题和订阅与 Node.js 和 azure/service-bus 包配合使用
 本教程介绍如何使用新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 包编写一个 Node.js 程序，用于将消息发送到服务总线主题，并从服务总线订阅接收消息。 此包使用速度更快的 [AMQP 1.0 协议](service-bus-amqp-overview.md)，而旧版 [azure-sb](https://www.npmjs.com/package/azure-sb) 包使用的是[服务总线 REST 运行时 API](/rest/api/servicebus/service-bus-runtime-rest)。 示例是使用 JavaScript 编写的。
@@ -22,7 +22,7 @@ ms.locfileid: "87430609"
 - 如果你没有可用的主题和订阅，请遵循[使用 Azure 门户创建服务总线主题和订阅](service-bus-quickstart-topics-subscriptions-portal.md)一文中的步骤创建主题和订阅。 记下服务总线实例的连接字符串，以及创建的主题和订阅的名称。 我们将在示例中使用这些值。
 
 > [!NOTE]
-> - 本教程将演练可以使用 [Nodejs](https://nodejs.org/) 复制和运行的示例。 有关如何创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站](../app-service/app-service-web-get-started-nodejs.md)或[使用 Windows PowerShell 创建 Node.js 云服务](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)。
+> - 本教程将演练可以使用 [Nodejs](https://nodejs.org/) 复制和运行的示例。 有关如何创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站](../app-service/quickstart-nodejs.md)或[使用 Windows PowerShell 创建 Node.js 云服务](../cloud-services/cloud-services-nodejs-develop-deploy-app.md)。
 > - 新的 [@azure/service-bus](https://www.npmjs.com/package/@azure/service-bus) 包目前不支持创建主题和订阅。 若要以编程方式创建队列，请使用 [@azure/arm-servicebus](https://www.npmjs.com/package/@azure/arm-servicebus) 包。
 
 ### <a name="use-node-package-manager-npm-to-install-the-package"></a>使用节点包管理器 (NPM) 安装包
@@ -33,7 +33,7 @@ npm install @azure/service-bus
 ```
 
 ## <a name="send-messages-to-a-topic"></a>将消息发送到主题
-若要与服务总线主题交互，首先需要实例化 [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) 类，并使用它来实例化 [TopicClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/topicclient) 类。 安装主题客户端后，可以创建发送方，并在其上使用 [send](https://docs.microsoft.com/javascript/api/%40azure/service-bus/sender#send-sendablemessageinfo-) 或 [sendBatch](https://docs.microsoft.com/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) 方法发送消息。
+若要与服务总线主题交互，首先需要实例化 [ServiceBusClient](/javascript/api/@azure/service-bus/servicebusclient) 类，并使用它来实例化 [TopicClient](/javascript/api/@azure/service-bus/topicclient) 类。 安装主题客户端后，可以创建发送方，并在其上使用 [send](/javascript/api/@azure/service-bus/sender#send-sendablemessageinfo-) 或 [sendBatch](/javascript/api/@azure/service-bus/sender#sendbatch-sendablemessageinfo---) 方法发送消息。
 
 1. 打开你喜好的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/)
 2. 创建一个名为 `send.js` 的文件，并将下面的代码粘贴到其中。 此代码会将 10 条消息发送到主题。
@@ -83,7 +83,7 @@ npm install @azure/service-bus
 服务总线主题在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 一个主题中包含的消息数量不受限制，但消息的总大小受限制。 此主题大小是在创建时定义的，上限为 5 GB。 有关配额的详细信息，请参阅 [服务总线配额](service-bus-quotas.md)。
 
 ## <a name="receive-messages-from-a-subscription"></a>从订阅接收消息
-若要与服务总线订阅交互，首先需要实例化 [ServiceBusClient](https://docs.microsoft.com/javascript/api/@azure/service-bus/servicebusclient) 类，并使用它来实例化 [SubscriptionClient](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient) 类。 安装订阅客户端后，可以创建接收方，并在其上使用 [receiveMessages](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#receivemessages-number--undefined---number-) 或 [registerMessageHandler](https://docs.microsoft.com/javascript/api/%40azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) 方法来接收消息。
+若要与服务总线订阅交互，首先需要实例化 [ServiceBusClient](/javascript/api/@azure/service-bus/servicebusclient) 类，并使用它来实例化 [SubscriptionClient](/javascript/api/@azure/service-bus/subscriptionclient) 类。 安装订阅客户端后，可以创建接收方，并在其上使用 [receiveMessages](/javascript/api/@azure/service-bus/receiver#receivemessages-number--undefined---number-) 或 [registerMessageHandler](/javascript/api/@azure/service-bus/receiver#registermessagehandler-onmessage--onerror--messagehandleroptions-) 方法来接收消息。
 
 1. 打开你喜好的编辑器，例如 [Visual Studio Code](https://code.visualstudio.com/)
 2. 创建一个名为 `recieve.js` 的文件，并将下面的代码粘贴到其中。 此代码尝试从订阅接收 10 条消息。 收到的实际消息计数取决于订阅中的消息数以及网络延迟。
@@ -121,7 +121,7 @@ npm install @azure/service-bus
 
 祝贺！ 你已从服务总线订阅收到了消息。
 
-[createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bus/subscriptionclient#createreceiver-receivemode-) 方法采用 `ReceiveMode`（值为 [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) 和 [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations) 的枚举）。 如果你使用 `PeekLock` 模式，请记得对消息使用 `complete()`、`abandon()`、`defer()` 或 `deadletter()` 来[最终处理消息](message-transfers-locks-settlement.md#settling-receive-operations)。
+[createReceiver](/javascript/api/@azure/service-bus/subscriptionclient#createreceiver-receivemode-) 方法采用 `ReceiveMode`（值为 [ReceiveAndDelete](message-transfers-locks-settlement.md#settling-receive-operations) 和 [PeekLock](message-transfers-locks-settlement.md#settling-receive-operations) 的枚举）。 如果你使用 `PeekLock` 模式，请记得对消息使用 `complete()`、`abandon()`、`defer()` 或 `deadletter()` 来[最终处理消息](message-transfers-locks-settlement.md#settling-receive-operations)。
 
 ## <a name="subscription-filters-and-actions"></a>订阅筛选器和操作
 服务总线支持[对订阅使用筛选器和操作](topic-filters.md)，这样，你就可以根据订阅筛选传入的消息并编辑其属性。
@@ -143,5 +143,3 @@ npm install @azure/service-bus
 - [队列、主题和订阅](service-bus-queues-topics-subscriptions.md)
 - 查看 [GitHub 上服务总线的其他 Nodejs 示例](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)
 - [Node.js 开发人员中心](https://azure.microsoft.com/develop/nodejs/)
-
-

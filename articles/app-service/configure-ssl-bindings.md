@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: c93938db4632f6509e386d440c9be75596ea254f
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: fb62d4d2ca22b6043e63645006c2d60cf0b7859b
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597889"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078625"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>在 Azure 应用服务中使用 TLS/SSL 绑定保护自定义 DNS 名称
 
@@ -24,7 +24,7 @@ ms.locfileid: "82597889"
 - [将专用证书添加到应用服务](configure-ssl-certificate.md)，以满足所有[专用证书要求](configure-ssl-certificate.md#private-certificate-requirements)。
 -  创建相应自定义域的 TLS 绑定。 本文介绍第二步。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 升级应用的定价层
@@ -50,18 +50,18 @@ ms.locfileid: "82597889"
 
 ## <a name="secure-a-custom-domain"></a>确保自定义域的安全
 
-请执行以下步骤：
+执行以下步骤：
 
-在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>”   。
+在 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>的左侧菜单中，选择“应用程序服务” > “\<app-name>” 。
 
-在应用的左侧导航窗格中，通过以下方式启动“TLS/SSL 绑定”对话框  ：
+在应用的左侧导航窗格中，通过以下方式启动“TLS/SSL 绑定”对话框：
 
-- 选择“自定义域” > “添加绑定”  
-- 选择“TLS/SSL 设置” > “添加 TLS/SSL 绑定”  
+- 选择“自定义域” > “添加绑定” 
+- 选择“TLS/SSL 设置” > “添加 TLS/SSL 绑定” 
 
 ![为域添加绑定](./media/configure-ssl-bindings/secure-domain-launch.png)
 
-在“自定义域”中，选择要添加绑定的自定义域  。
+在“自定义域”中，选择要添加绑定的自定义域。
 
 如果应用已具有所选自定义域的证书，请直接转到[创建绑定](#create-binding)。 反之，请继续操作。
 
@@ -77,7 +77,7 @@ ms.locfileid: "82597889"
 
 ### <a name="create-binding"></a>创建绑定
 
-根据下表的要求在“TLS/SSL 绑定”对话框中配置 TLS 绑定，然后单击“添加绑定”   。
+根据下表的要求在“TLS/SSL 绑定”对话框中配置 TLS 绑定，然后单击“添加绑定” 。
 
 | 设置 | 说明 |
 |-|-|
@@ -90,7 +90,7 @@ ms.locfileid: "82597889"
 ![TLS/SSL 绑定成功](./media/configure-ssl-bindings/secure-domain-finished.png)
 
 > [!NOTE]
-> “自定义域”中的状态为“安全”意味着已使用证书保护该域，但应用服务并未检查该证书是自签名证书还是已过期证书，这可能也会导致浏览器异常，例如显示错误或警告。  
+> “自定义域”中的状态为“安全”意味着已使用证书保护该域，但应用服务并未检查该证书是自签名证书还是已过期证书，这可能也会导致浏览器异常，例如显示错误或警告。 
 
 ## <a name="remap-records-for-ip-ssl"></a>重新映射 IP SSL 的记录
 
@@ -100,7 +100,7 @@ ms.locfileid: "82597889"
 
 - 默认情况下，应用使用共享的公共 IP 地址。 将证书与 IP SSL 绑定时，应用服务会为应用创建新的专用 IP 地址。 如果已将 A 记录映射到应用，请使用这个新的专用 IP 地址更新域注册表。
 
-    将使用新的专用 IP 地址更新应用的“自定义域”页。  [复制此 IP 地址](app-service-web-tutorial-custom-domain.md#info)，然后[将 A 记录重新映射](app-service-web-tutorial-custom-domain.md#map-an-a-record)到此新 IP 地址。
+    将使用新的专用 IP 地址更新应用的“自定义域”页。 [复制此 IP 地址](app-service-web-tutorial-custom-domain.md#info)，然后[将 A 记录重新映射](app-service-web-tutorial-custom-domain.md#map-an-a-record)到此新 IP 地址。
 
 - 如果已有到 `<app-name>.azurewebsites.net` 的 SNI SSL 绑定，请[重新映射任何 CNAME 映射](app-service-web-tutorial-custom-domain.md#map-a-cname-record)，让其改为指向 `sni.<app-name>.azurewebsites.net`（添加 `sni` 前缀）。
 
@@ -129,7 +129,7 @@ ms.locfileid: "82597889"
 
 默认情况下，任何人都仍可使用 HTTP 访问应用。 可以将所有 HTTP 请求都重定向到 HTTPS 端口。
 
-在应用页的左侧导航窗格中，选择“SSL 设置”  。 然后，在“仅 HTTPS”  中，选择“启用”  。
+在应用页的左侧导航窗格中，选择“SSL 设置”。 然后，在“仅 HTTPS”中，选择“启用”。
 
 ![实施 HTTPS](./media/configure-ssl-bindings/enforce-https.png)
 
@@ -143,7 +143,7 @@ ms.locfileid: "82597889"
 
 应用默认情况下允许 [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.2，这是行业标准（例如 [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)）建议的 TLS 级别。 若要强制实施不同的 TLS 版本，请按照下列步骤操作：
 
-在应用页的左侧导航窗格中，选择“SSL 设置”  。 然后，在“TLS 版本”  中，选择所需的最低 TLS 版本。 此设置仅控制入站调用。 
+在应用页的左侧导航窗格中，选择“SSL 设置”。 然后，在“TLS 版本”中，选择所需的最低 TLS 版本。 此设置仅控制入站调用。 
 
 ![强制实施 TLS 1.1 或 1.2](./media/configure-ssl-bindings/enforce-tls1-2.png)
 
@@ -153,7 +153,7 @@ ms.locfileid: "82597889"
 
 在应用服务中，[TLS 终止](https://wikipedia.org/wiki/TLS_termination_proxy)在网络负载均衡器上发生，因此，所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果应用逻辑需要检查用户请求是否已加密，可以检查 `X-Forwarded-Proto` 标头。
 
-特定于语言的配置指南，如 [Linux Node.js 配置](containers/configure-language-nodejs.md#detect-https-session)指南，介绍如何在应用程序代码中检测 HTTPS 会话。
+特定于语言的配置指南，如 [Linux Node.js 配置](configure-language-nodejs.md#detect-https-session)指南，介绍如何在应用程序代码中检测 HTTPS 会话。
 
 ## <a name="automate-with-scripts"></a>使用脚本自动化
 
