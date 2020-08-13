@@ -9,19 +9,19 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 32eafc41451c42a9c929e94d30450b923e7eae83
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 41ad20de6b7a800ff1f97a7ff371c8e0012fed27
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760917"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166971"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Azure Blob 存储中的网络文件系统 (NFS) 3.0 协议支持 (预览) 
 
 Blob 存储现在支持网络文件系统 (NFS) 3.0 协议。 通过此支持，Windows 或 Linux 客户端可以从 Azure 虚拟机 (VM) 或本地计算机中的 Azure 虚拟机装载容器。 
 
 > [!NOTE]
-> Azure Blob 存储中的 NFS 3.0 协议支持提供公共预览版，并在以下区域提供：美国东部、美国中部和加拿大中部。
+> Azure Blob 存储中的 NFS 3.0 协议支持是公共预览版，在以下区域提供：美国东部、美国中部、美国西部中部、澳大利亚东南部、北欧、英国西部、韩国中部、韩国南部和加拿大中部。
 
 ## <a name="general-workflow-mounting-a-storage-account-container"></a>常规工作流：装载存储帐户容器
 
