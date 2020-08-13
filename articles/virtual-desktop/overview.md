@@ -1,19 +1,17 @@
 ---
 title: 什么是 Windows 虚拟桌面？ - Azure
 description: Windows 虚拟桌面的概述。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 07/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6ff1f20314d79c507c696325d19c83e10ec4513f
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 003662beefcb2ee8f99a5f565ed680d406421a62
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386566"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002369"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>什么是 Windows 虚拟桌面？
 
@@ -132,14 +130,14 @@ Windows 虚拟桌面不支持 x86（32 位）、Windows 10 企业版 N 或 Windo
 
 |操作系统|Azure 映像库|手动 VM 部署|Azure 资源管理器模板集成|在 Azure 市场中预配主机池|
 |--------------------------------------|:------:|:------:|:------:|:------:|
-|Windows 10 多会话版本 1903|“是”|“是”|“是”|是|
-|Windows 10 多会话版本 1809|“是”|“是”|否|否|
-|Windows 10 Enterprise 版本 1903|“是”|“是”|“是”|是|
-|Windows 10 Enterprise 版本 1809|“是”|“是”|否|否|
-|Windows 7 Enterprise|“是”|“是”|否|否|
-|Windows Server 2019|“是”|“是”|否|否|
-|Windows Server 2016|“是”|“是”|“是”|“是”|
-|Windows Server 2012 R2|是|“是”|否|否|
+|Windows 10 多会话版本 1903|是|是|是|是|
+|Windows 10 多会话版本 1809|是|是|否|否|
+|Windows 10 Enterprise 版本 1903|是|是|是|是|
+|Windows 10 Enterprise 版本 1809|是|是|否|否|
+|Windows 7 Enterprise|是|是|否|否|
+|Windows Server 2019|是|是|否|否|
+|Windows Server 2016|是|是|是|是|
+|Windows Server 2012 R2|是|是|否|否|
 
 ## <a name="next-steps"></a>后续步骤
 

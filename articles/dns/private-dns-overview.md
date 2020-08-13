@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/12/2019
 ms.author: rohink
-ms.openlocfilehash: 97b266398b3ea46d09b04524dad34922f21b1a95
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 540c4d6f2dde64cef9b5795d635ac6259bfc69c3
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76939291"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985625"
 ---
 # <a name="what-is-azure-private-dns"></a>什么是 Azure 专用 DNS？
 
@@ -62,7 +62,7 @@ Azure DNS 具有以下限制：
 * 如果启用了自动注册 VM DNS 记录，则特定虚拟网络只能链接到一个专用区域。 但可以将多个虚拟网络链接到单个 DNS 区域。
 * 反向 DNS 仅适用于链接虚拟网络中的专用 IP 空间
 * 链接虚拟网络的专用 IP 地址的反向 DNS 返回“internal.cloudapp.net”  ，作为虚拟机的默认后缀。 对于链接到启用了自动注册的专用区域的虚拟网络，专用 IP 地址的反向 DNS 返回两个 FQDN：一个具有默认后缀 internal.cloudapp.net  ，另一个具有专用区域后缀。
-* 目前，条件转发不受本机支持。 在 Azure 和本地网络之间启用解析。 请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)
+* 目前，条件转发不受本机支持。 若要启用 Azure 和本地网络之间的解析，请参阅 [VM 和角色实例的名称解析](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。
  
 ## <a name="pricing"></a>定价
 

@@ -1,19 +1,17 @@
 ---
 title: Windows 虚拟桌面主机池服务更新 - Azure
 description: 如何创建验证主机池以在将更新推广到生产之前监视服务更新。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 177763e7939de082faa0c83d2ab661292f0758b2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8eac40ad958a10b8c853304ee2be8b2dc27af1a2
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292655"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008706"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>教程：创建主机池以验证服务更新
 
@@ -62,7 +60,7 @@ cmdlet 的结果应类似于以下输出：
     HostPoolName        : hostpoolname
     FriendlyName        :
     Description         :
-    Persistent          : False 
+    Persistent          : False
     CustomRdpProperty   : use multimon:i:0;
     MaxSessionLimit     : 10
     LoadBalancerType    : BreadthFirst
@@ -77,7 +75,7 @@ cmdlet 的结果应类似于以下输出：
 
 ## <a name="next-steps"></a>后续步骤
 
-既然已创建了验证主机池，接下来可以了解如何使用 Azure 服务运行状况来监视 Windows 虚拟桌面部署。 
+既然已创建了验证主机池，接下来可以了解如何使用 Azure 服务运行状况来监视 Windows 虚拟桌面部署。
 
 > [!div class="nextstepaction"]
 > [设置服务警报](./set-up-service-alerts.md)

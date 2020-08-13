@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9b141f3722a722a57e5ec7c5662ded4b9a8c790
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 1de6af0f30453d40348e9e836b2a5989652f49f1
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170422"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87925033"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SuccessFactors 集成
 
@@ -116,7 +116,7 @@ ms.locfileid: "86170422"
     - `https://<companyname>.sapsf.cn/<companyname>`
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [SuccessFactors 客户端支持团队](https://www.successfactors.com/content/ssf-site/en/support.html)获取这些值。
+    > 这些不是实际值。 使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [SuccessFactors 客户端支持团队](https://www.sap.com/support.html)获取这些值。
 
 4. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上     。
 
@@ -227,7 +227,7 @@ ms.locfileid: "86170422"
 
 要使 Azure AD 用户能够登录 SuccessFactors，必须将这些用户预配到 SuccessFactors 中。 对于 SuccessFactors，预配任务需要手动完成。
 
-若要在 SuccessFactors 中创建用户，需要联系 [SuccessFactors 支持团队](https://www.successfactors.com/content/ssf-site/en/support.html)。
+若要在 SuccessFactors 中创建用户，需要联系 [SuccessFactors 支持团队](https://www.sap.com/support.html)。
 
 ## <a name="test-sso"></a>测试 SSO 
 

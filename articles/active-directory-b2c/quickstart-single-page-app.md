@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a754873aeafe8d4e7b48d49647469874ff40f7e
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: db18c71b09cd9beb58799ad4fbcbc944061153fb
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80875859"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921752"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>快速入门：使用 Azure Active Directory B2C 为单页应用设置登录
 
@@ -75,6 +75,10 @@ Azure Active Directory B2C (Azure AD B2C) 提供云标识管理来保护应用�
 ![显示 Web API 响应的浏览器中的示例应用程序](./media/quickstart-single-page-app/call-api-spa.png)
 
 示例单页应用程序在对受保护的 Web API 资源的请求中包括访问令牌。
+
+## <a name="clean-up-resources"></a>清理资源
+
+如果打算尝试其他 Azure AD B2C 快速入门或教程，可以使用 Azure AD B2C 租户。 可以在不再需要时[删除 Azure AD B2C 租户](faq.md#how-do-i-delete-my-azure-ad-b2c-tenant)。
 
 ## <a name="next-steps"></a>后续步骤
 

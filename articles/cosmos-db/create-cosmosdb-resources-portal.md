@@ -7,13 +7,13 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 01/05/2020
-ms.openlocfilehash: d169c638869cd9488605117552c9017dfd10c911
-ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
+ms.date: 08/05/2020
+ms.openlocfilehash: 31bdcd9994ebfcea77b25422997463cc6a9bfddc
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/20/2020
-ms.locfileid: "85118315"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053501"
 ---
 # <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>快速入门：从 Azure 门户创建 Azure Cosmos 帐户、数据库、容器和项
 
@@ -81,7 +81,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 可以使用 Azure 门户中的数据资源管理器来创建数据库和容器。 
 
-1.  在 Azure Cosmos DB 帐户页上的左侧导航栏中选择“数据资源管理器”，然后选择“新建容器”。  
+1.  在 Azure Cosmos DB 帐户页上的左侧导航栏中选择“数据资源管理器”，然后选择“新建容器”。 
     
     可能需要向右滚动才能看到“添加容器”窗口。
     
@@ -105,7 +105,7 @@ Azure 订阅，或免费的 Azure Cosmos DB 试用帐户
 
 使用数据资源管理器将数据添加到新的数据库。
 
-1. 在“数据资源管理器”中展开“ToDoList”数据库，然后展开“项”容器。   接下来，依次选择“项”、“新建项”。  
+1. 在“数据资源管理器”中展开“ToDoList”数据库，然后展开“项”容器。 接下来，依次选择“项”、“新建项”。 
    
    :::image type="content" source="./media/create-sql-api-dotnet/azure-cosmosdb-new-document.png" alt-text="在 Azure 门户的数据资源管理器中创建新文档":::
    

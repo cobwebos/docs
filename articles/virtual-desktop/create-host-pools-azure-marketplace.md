@@ -1,19 +1,17 @@
 ---
 title: 使用 Azure 门户创建 Windows 虚拟桌面主机池 - Azure
 description: 如何使用 Azure 门户创建 Windows 虚拟桌面主机池。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e27bbdcec9b0c9e2bcabf4228a19d87e263d60f4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c9a421e15f3561bb4de7f528ab1c707a0251dfe5
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291439"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002668"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>教程：使用 Azure 门户创建主机池
 
@@ -61,7 +59,7 @@ ms.locfileid: "87291439"
 6. 为你的主机池输入一个唯一名称。
 
 7. 在“位置”字段中，从下拉菜单中选择要在其中创建主机池的区域。
-   
+
    与你选择的区域关联的 Azure 地理位置是此主机池及其相关对象的元数据将存储到的位置。 请确保在要用于存储服务元数据的地理位置选择区域。
 
      > [!div class="mx-imgBorder"]
@@ -140,7 +138,7 @@ ms.locfileid: "87291439"
 
     > [!div class="mx-imgBorder"]
     > ![安全组页的屏幕截图，其中的下拉菜单显示了可用端口列表。](media/available-ports.png)
-    
+
     如果选择“高级”，请选择已配置的现有网络安全组。
 
 10. 然后，选择是否要将虚拟机加入特定的域和组织单位。 如果选择“是”，请指定要加入到的域。 还可以添加要将虚拟机加入到的特定组织单位。
@@ -153,7 +151,7 @@ ms.locfileid: "87291439"
 
 ## <a name="workspace-information"></a>工作区信息
 
-主机池设置过程默认会创建一个桌面应用程序组。 要使主机池按预期方式工作，需将此应用组发布给用户或用户组，并且必须将此应用组注册到工作区。 
+主机池设置过程默认会创建一个桌面应用程序组。 要使主机池按预期方式工作，需将此应用组发布给用户或用户组，并且必须将此应用组注册到工作区。
 
 若要将桌面应用组注册到工作区，请执行以下操作：
 
@@ -167,10 +165,10 @@ ms.locfileid: "87291439"
 
     可以在此处添加标记，以便可以根据元数据将对象分组，为管理员的工作提供方便。
 
-4. 完成操作后，选择“查看 + 创建”。 
+4. 完成操作后，选择“查看 + 创建”。
 
      >[!NOTE]
-     >“查看 + 创建”过程不会检查你的密码是否符合安全标准，也不会检查你的体系结构是否正确，因此，你需要亲自检查密码和体系结构是否存在任何问题。 
+     >“查看 + 创建”过程不会检查你的密码是否符合安全标准，也不会检查你的体系结构是否正确，因此，你需要亲自检查密码和体系结构是否存在任何问题。
 
 5. 检查你的部署的相关信息，确保全部正确。 完成操作后，选择“创建”。 这会启动部署过程，该过程将创建以下对象：
 

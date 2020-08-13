@@ -1,19 +1,17 @@
 ---
 title: 为 Windows 虚拟桌面设置服务警报 - Azure
 description: 如何设置 Azure 服务运行状况以接收 Windows 虚拟桌面的服务通知。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/11/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: effe3125a2d41f0410a1a0b3a87c41da39feb6d9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0391102683ebafba63c429072c8afa9f24223955
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291350"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009420"
 ---
 # <a name="tutorial-set-up-service-alerts"></a>教程：设置服务警报
 

@@ -1,19 +1,17 @@
 ---
 title: 在 Windows 虚拟桌面（经典）中创建租户 - Azure
 description: 介绍如何在 Azure Active Directory 中设置 Windows 虚拟桌面（经典）租户。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a1f2dbf1f7cfc8fbb6a29129c7e445ffef87b070
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e2858daaa834552da5a85063fd9973d2c35209d7
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286353"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005612"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-classic"></a>教程：在 Windows 虚拟桌面（经典）中创建租户
 
@@ -82,12 +80,12 @@ ms.locfileid: "87286353"
    > ![在 Azure 门户中搜索企业应用程序的屏幕截图](../media/azure-portal-enterprise-applications.png)
 
 2. 在企业应用程序中，搜索“Windows 虚拟桌面” 。 将会看到在前一部分中提供了许可的两个应用程序。 在这两个应用中，选择“Windows 虚拟桌面”。
-   
+
    > [!div class="mx-imgBorder"]
    > ![该屏幕截图显示在企业应用程序中搜索“Windows 虚拟桌面”时出现的搜索结果。 名为“Windows 虚拟桌面”的应用突出显示。](../media/tenant-enterprise-app.png)
 
 3. 选择“用户和组”。 你可能会看到，已列出授予应用程序许可的管理员且已分配“默认访问”角色。 但这还不足以创建 Windows 虚拟桌面租户。 请继续按照这些说明向用户添加 TenantCreator 角色。
-   
+
    > [!div class="mx-imgBorder"]
    > ![一张屏幕截图，其中显示负责管理“Windows 虚拟桌面”企业应用程序的用户和组。 该屏幕截图仅显示“默认访问”的一项分配。](../media/tenant-default-access.png)
 
@@ -126,13 +124,13 @@ ms.locfileid: "87286353"
 
 要查找 Azure 订阅 ID，请执行以下操作：
 1. 在同一 [Azure 门户](https://portal.azure.com)会话中，搜索并选择“订阅”。
-   
+
    > [!div class="mx-imgBorder"]
    > ![一张屏幕截图，其中显示 Azure 门户中“Azure Active Directory”的搜索结果。 “服务”下的搜索结果突出显示。](../media/tenant-search-subscription.png)
 
 2. 选择要用于接收 Windows 虚拟桌面服务通知的 Azure 订阅。
 3. 查找“订阅 ID”，然后将鼠标悬停在该值上，直到出现剪贴板图标。 选择剪贴板图标，再将其粘贴到方便的位置，以便稍后可将其用作 **AzureSubscriptionId** 值。
-   
+
    > [!div class="mx-imgBorder"]
    > ![Azure 订阅属性的屏幕截图。 将鼠标悬停在剪贴板图标上来复制粘贴“订阅 ID”。](../media/tenant-subscription-id.png)
 

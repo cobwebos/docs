@@ -1,7 +1,7 @@
 ---
 title: 教程 - 模拟从主要区域读取数据时出现的故障
 titleSuffix: Azure Storage
-description: 模拟为读取访问异地区域冗余存储 (RA-GZRS) 配置了存储帐户时，从主要区域读取数据时的错误。 发生错误后，请从次要区域读取数据。
+description: 模拟为读取访问异地区域冗余存储 (RA-GZRS) 配置了存储帐户时，从主要区域读取数据时的错误。
 services: storage
 author: tamram
 ms.service: storage
@@ -11,12 +11,12 @@ ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: devx-track-javascript
-ms.openlocfilehash: a9aa58ec990170df99f330f67991fff7b61c2b49
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 59eb826d8d17ed2adb3027f0aab11a6933b47ae5
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87429839"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905731"
 ---
 # <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>教程：模拟从主要区域读取数据时出现的故障
 
@@ -26,7 +26,7 @@ ms.locfileid: "87429839"
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-此系列的第二部分介绍如何：
+本系列教程的第二部分将介绍如何：
 
 > [!div class="checklist"]
 > * 运行和暂停应用程序

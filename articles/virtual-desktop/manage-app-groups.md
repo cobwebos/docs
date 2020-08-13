@@ -1,19 +1,17 @@
 ---
 title: 使用门户管理 Windows 虚拟桌面的应用组 - Azure
 description: 如何使用 Azure 门户管理 Windows 虚拟桌面应用组。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5b0269b80cb879923f9f00861494915b6abe103e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 6baada4c3b376b936f693d45e39e5887e77ef54b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283395"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010083"
 ---
 # <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>教程：使用 Azure 门户管理应用组
 
@@ -49,16 +47,16 @@ ms.locfileid: "87283395"
     > ![Azure 门户中“基本信息”选项卡的屏幕截图。](media/basics-tab.png)
 
 6. 若要将应用程序组添加到主机池，请在屏幕左侧的菜单中选择“主机池”  。
-   
+
     接下来，选择要将应用程序组添加到的主机池的名称。
-   
+
     然后，在屏幕左侧的菜单中选择“应用程序组”，然后选择“+添加”   。
 
     最后，选择要在其中创建应用组的订阅组和资源组。 可以从下拉菜单中选择现有资源组的名称，或者选择“新建”以创建新的资源组  。
 
       >[!NOTE]
       >向主机池添加应用程序组时，与应用程序组相关的主机池已被选中，因为你是从该主机池导航的。
-      > 
+      >
       > [!div class="mx-imgBorder"]
       >![已预先选择主机池的“基本信息”选项卡的屏幕截图。](media/host-pool-selected.png)
 
@@ -80,7 +78,7 @@ ms.locfileid: "87283395"
 
 12.  选择“应用程序”选项卡，然后选择“+添加应用程序”   。
 
-13.  若要从开始菜单添加应用程序，请执行以下操作： 
+13.  若要从开始菜单添加应用程序，请执行以下操作：
 
       - 转到“应用程序源”，从下拉菜单中选择“开始菜单”   。 接下来，转到“应用程序”，从下拉菜单中选择应用程序  。
 
@@ -111,7 +109,7 @@ ms.locfileid: "87283395"
 16.  若要将应用组注册到工作区，请转到“注册应用程序组”并选择“是”   。 如果想在以后注册应用组，请选择“否”  。
 
 17.  如果选择“是”，可以选择要向其中注册应用组的现有工作区  。
-       
+
        >[!NOTE]
        >只能将应用组注册到在主机池所在的位置中创建的工作区。 此外， 如果以前已将同一主机池中的另一应用组作为新应用组注册到工作区，则系统会选择该应用组，并且你无法对其进行编辑。 必须将主机池中的所有应用组注册到同一个工作区。
 

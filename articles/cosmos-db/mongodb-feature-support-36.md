@@ -4,15 +4,15 @@ description: 了解 Azure Cosmos DB 的 API for MongoDB（3.6 版本）支持的
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: bd59b27b5af92d7aa90851c592ba4de495e41283
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2b389b71e15edcf0558b2ce60290c1ad7b171eab
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076837"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030533"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB 的 API for MongoDB（3.6 版本）：支持的功能和语法
 
@@ -495,10 +495,10 @@ $nearSphere |  是 |
 $geometry |  是 |
 $minDistance | 是 |
 $maxDistance | 是 |
-$center | 是 |
-$centerSphere | 是 |
-$box | 是 |
-$polygon |  是 |
+$center | 否 |
+$centerSphere | 否 |
+$box | 否 |
+$polygon |  否 |
 
 ## <a name="cursor-methods"></a>游标方法
 

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 08/05/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0da42ef51646f7775234ed870e59c442d54933c1
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: df9b417b6387a44004b6c363f4e8b12a6f692a94
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170544"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88032265"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datasite"></a>教程：Azure Active Directory 与 Datasite 的单一登录 (SSO) 集成
 
@@ -87,17 +87,7 @@ ms.locfileid: "87170544"
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://auth.<ENVIRONMENT>.com/sp/ACS.saml2`
 
     > [!NOTE]
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Datasite 客户端支持团队](mailto:applicationsupport@datasite.com)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
-
-1. Datasite 应用程序需要特定格式的 SAML 断言，这要求将自定义属性映射添加到 SAML 令牌属性配置。 以下屏幕截图显示了默认属性的列表。
-
-    ![图像](common/default-attributes.png)
-
-1. 除了上述属性，Datasite 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
-    
-    | 名称 | 源属性 |
-    | -------------| --------- |
-    | organizationId | < organizationId > |
+    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Datasite 客户端支持团队](mailto:service@datasite.com)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
@@ -139,11 +129,11 @@ ms.locfileid: "87170544"
 
 ## <a name="configure-datasite-sso"></a>配置 Datasite SSO
 
-若要在“Datasite”端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Datasite 支持团队](mailto:applicationsupport@datasite.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在“Datasite”端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Datasite 支持团队](mailto:service@datasite.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-datasite-test-user"></a>创建 Datasite 测试用户
 
-本部分将在 Datasite 中创建名为 B.Simon 的用户。 在  [Datasite 支持团队](mailto:applicationsupport@datasite.com)的配合下，将用户添加到 Datasite 平台。 使用单一登录前，必须先创建并激活用户。
+本部分将在 Datasite 中创建名为 B.Simon 的用户。 在  [Datasite 支持团队](mailto:service@datasite.com)的配合下，将用户添加到 Datasite 平台。 使用单一登录前，必须先创建并激活用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 

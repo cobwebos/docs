@@ -8,12 +8,12 @@ ms.workload: storage
 ms.topic: quickstart
 ms.date: 06/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c2ef52669a0bc5cd29bdcebf920beb1f409e65d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 92d92072fbc8ceebdd4fd9253620e5fba89bfb54
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533098"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987505"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>快速入门：设置 Azure NetApp 文件并创建 NFS 卷 
 
@@ -132,7 +132,7 @@ ms.locfileid: "87533098"
 
     > [!NOTE]
     > 有关受支持区域的列表，请参阅[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)。
-    > 若要获取命令行工具支持的区域名称，请使用 `az account list-locations -query "[].{Region:name}" --out table`
+    > 若要获取命令行工具支持的区域名称，请使用 `az account list-locations --query "[].{Region:name}" --out table`
     >
 
 2. 使用 [az group create](/cli/azure/group#az-group-create) 命令创建新的资源组：
