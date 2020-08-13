@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 07/16/2019
 ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.openlocfilehash: 8aaac1beaae70325bee9752ca51a499f2908bdda
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 4107b0785ef4635e0e5e745a35b605d2634a220d
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119226"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166222"
 ---
 # <a name="active-directory-federation-services-support-in-msalnet"></a>MSAL.NET 中的 Active Directory 联合身份验证服务支持
 使用 Windows Server 中的 Active Directory 联合身份验证服务 (AD FS) 可将基于 OpenID Connect 和 OAuth 2.0 的身份验证与授权添加到开发中的应用程序。 然后，这些应用程序可以根据 AD FS 直接对用户进行身份验证。 有关详细信息，请阅读[面向开发人员的 AD FS 方案](/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios)。
@@ -44,7 +44,7 @@ MSAL.NET 支持连接到 Azure AD，后者可将托管用户（在 Azure AD 中�
 此联合方案支持的 AD FS 版本为 AD FS v2、AD FS v3 (Windows Server 2012 R2) 和 AD FS v4 (AD FS 2016)。
 
 ### <a name="acquiring-a-token-using-acquiretokenbyintegratedauthentication-or-acquiretokenbyusernamepassword"></a>使用 AcquireTokenByIntegratedAuthentication 或 AcquireTokenByUsernamePassword 获取令牌
-使用 `AcquireTokenByIntegratedAuthentication` 或 `AcquireTokenByUsernamePassword` 方法获取令牌时，MSAL.NET 会让标识提供者根据用户名进行联系。  MSAL.NET 在与标识提供者联系后接收[SAML 1.1 令牌](reference-saml-tokens.md)。  然后，MSAL.NET 将 SAML 令牌以用户断言的形式提供给 Azure AD（类似于[代理流](msal-authentication-flows.md#on-behalf-of)），以取回 JWT。
+使用 `AcquireTokenByIntegratedAuthentication` 或 `AcquireTokenByUsernamePassword` 方法获取令牌时，MSAL.NET 会让标识提供者根据用户名进行联系。  MSAL.NET 在与标识提供者联系后接收 [SAML 1.1 令牌](reference-saml-tokens.md) 。  然后，MSAL.NET 将 SAML 令牌以用户断言的形式提供给 Azure AD（类似于[代理流](msal-authentication-flows.md#on-behalf-of)），以取回 JWT。
 
 ## <a name="msal-connects-directly-to-ad-fs"></a>MSAL 直接连接到 AD FS
 MSAL.NET 支持连接到 AD FS 2019，后者符合 Open ID Connect 规范并了解 PKCE 和范围。 此项支持要求将服务包 [KB 4490481](https://support.microsoft.com/en-us/help/4490481/windows-10-update-kb4490481) 应用到 Windows Server。 直接连接到 AD FS 时，用于生成应用程序的机构类似于 `https://mysite.contoso.com/adfs/`。

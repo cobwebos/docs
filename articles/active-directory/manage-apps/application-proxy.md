@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 6ed9d5eb8d230b05a090424d6105865acae69e61
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 96ebfecf01ff147a874674861c7cb64cb3725d52
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019346"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164914"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>通过 Azure AD 应用程序代理远程访问本地应用程序
 
@@ -41,7 +41,7 @@ Azure AD 应用程序代理的特性：
 * 驻留在[远程桌面网关](application-proxy-integrate-with-remote-desktop-services.md)后面的应用程序
 * 与 Microsoft 身份验证库 (MSAL) 集成的丰富客户端应用
 
-应用程序代理支持单一登录。 有关支持的方法的详细信息，请参阅[选择单一登录方法](what-is-single-sign-on.md#choosing-a-single-sign-on-method)。
+应用程序代理支持单一登录。 有关支持的方法的详细信息，请参阅[选择单一登录方法](sso-options.md#choosing-a-single-sign-on-method)。
 
 建议使用应用程序代理来使远程用户访问内部资源。 应用程序代理取代了对 VPN 或反向代理的需求。 它不适合企业网络中的内部用户。  不必要地使用应用程序代理的这些用户可能会造成意外的和不需要的性能问题。
 
@@ -60,7 +60,7 @@ Azure AD 应用程序代理的特性：
 
 | 组件 | 说明 |
 | --------- | ----------- |
-| 端点  | 终结点是 URL 或[最终用户门户](end-user-experiences.md)。 用户可通过访问外部 URL 访问位于你网络外部的应用程序。 网络内的用户可以通过 URL 或最终用户门户访问应用程序。 当用户转到其中一个终结点时，将在 Azure AD 中进行身份验证，并通过连接器路由到本地应用程序。|
+| 终结点  | 终结点是 URL 或[最终用户门户](end-user-experiences.md)。 用户可通过访问外部 URL 访问位于你网络外部的应用程序。 网络内的用户可以通过 URL 或最终用户门户访问应用程序。 当用户转到其中一个终结点时，将在 Azure AD 中进行身份验证，并通过连接器路由到本地应用程序。|
 | Azure AD | Azure AD 使用存储在云端的租户目录执行身份验证。 |
 | 应用程序代理服务 | 应用程序代理服务作为 Azure AD 的一部分在云中运行。 它将登录令牌从用户传递到应用程序代理连接器。 应用程序代理在收到请求时转发任何可访问的标头，并根据其协议将标头设置为客户端 IP 地址。 如果传入代理的请求已有该标头，则将客户端 IP 地址添加到逗号分隔列表的末尾，该地址为标头的值。|
 | 应用程序代理连接器 | 连接器是可在网络内的 Windows Server 上运行的轻型代理。 连接器管理云端应用程序代理服务与本地应用程序之间的通信。 它只使用出站连接，因此不需要开放任何入站端口或在 DMZ 中放置任何对象。 连接器是无状态的，可根据需要从云中提取信息。 有关连接器的详细信息（例如，它们如何均衡负载和执行身份验证），请参阅[了解 Azure AD 应用程序代理连接器](application-proxy-connectors.md)。|

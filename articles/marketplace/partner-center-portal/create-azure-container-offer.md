@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 77cc63945e5cfc612c074e75e38365ada26073ea
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 4b1c2ea437168d00823bc5527eaeda33db6ae733
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032775"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166733"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>在 Azure Marketplace 中创建 Azure 容器服务
 
@@ -252,9 +252,11 @@ ms.locfileid: "88032775"
 
 选择“保存草稿”，然后继续。
 
-### <a name="plan-overview"></a>计划概述
+## <a name="plan-overview"></a>计划概述
 
 使用此选项卡，可以在相同产品/服务中提供不同的计划选项。 计划 (以前称为 Sku) 的计划可能不同于云的可用性，如全球云、政府云和计划引用的映像。 若要在商业市场中列出你的产品/服务，必须至少设置一个计划。
+
+最多可为每个产品创建100个计划：最多可为45个。 详细了解[Microsoft 商业应用商店](../private-offers.md)中的专用产品/服务。
 
 创建计划后，“计划概述”选项卡将显示：
 
@@ -269,7 +271,7 @@ ms.locfileid: "88032775"
 - “删除草稿”- 如果计划状态为“草稿”。
 - “停止销售计划”- 如果计划状态为“已发布上线”。
 
-#### <a name="create-new-plan"></a>新建计划
+### <a name="create-new-plan"></a>新建计划
 
 选择“新建计划”。 此时将显示“新建计划”对话框。
 
@@ -301,7 +303,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 若要展示你在这些计划上获得的认证，可以提供多达 100 个链接来描述它们。 这些链接可以直接链接到你在这些计划上获得的认证一览，也可以链接到你自己的网站。 这些链接只对 Azure 政府客户可见。
 
-## <a name="plan-listing"></a>计划一览
+### <a name="plan-listing"></a>计划一览
 
 此选项卡显示当前产品/服务中每个不同计划的具体信息。
 
@@ -331,7 +333,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Azure 门户上的计划详细信息的图示。":::
 
-## <a name="plan-availability"></a>计划可用性
+### <a name="plan-availability"></a>计划可用性
 
 若要隐藏已发布的产品/服务，以便客户无法在市场中搜索、浏览或购买它，请选中“可用性”选项卡上的“隐藏计划”复选框。
 

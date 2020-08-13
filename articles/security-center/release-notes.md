@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2020
+ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: bf503cf90df7b08e5a957416d66eae2f1a599bed
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 034e72238375750651a1374a94b844d36fd97d03
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438944"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166444"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -29,11 +29,69 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 
 本页面会定期更新，请经常回来查看。 如果要查找 6 个月之前的项目，可查看 [Azure 安全中心的新增功能存档](release-notes-archive.md)。
 
+
+## <a name="august-2020"></a>2020 年 8 月
+
+### <a name="vulnerability-assessment-on-vms---recommendations-and-policies-consolidated"></a>Vm 上的漏洞评估-合并建议和策略
+
+安全中心会检查你的 Vm 是否正在运行漏洞评估解决方案。 如果未找到漏洞评估解决方案，安全中心将提供建议以简化部署。
+
+如果发现漏洞，安全中心将提供一个建议，用于汇总调查结果，以便在必要时进行调查和修正。
+
+为了确保所有用户都能获得一致的体验，无论他们使用哪种扫描仪类型，都可以将四个建议合并为以下两个：
+
+|统一建议|更改描述|
+|----|:----|
+|**应在虚拟机上启用漏洞评估解决方案**|替换以下两个建议：<br> **•** 在虚拟机上启用内置漏洞评估解决方案 (由 "标准" 层附带的 "Qualys (支持的)  (") <br> **•** 漏洞评估解决方案应安装在虚拟机上 (现已弃用)  (标准和免费层) |
+|**应修正虚拟机中的漏洞**|替换以下两个建议：<br>**•** 更正虚拟机上发现的 (由 Qualys) 支持的漏洞， (现已弃用) <br>**•** 漏洞评估解决方案应修正的漏洞 (现已弃用) |
+|||
+
+现在，你将使用相同的建议部署安全中心的漏洞评估扩展或私下许可的解决方案 ( "BYOL" ) 来自合作伙伴（例如 Qualys 或 Rapid7）。
+
+此外，如果发现安全中心并向其报告了漏洞，则单个建议会提醒你发现发现，而不考虑发现它们的漏洞评估解决方案。
+
+#### <a name="updating-dependencies"></a>正在更新依赖项
+
+如果有脚本、查询或自动化引用前面的建议或策略密钥/名称，请使用以下表格更新引用：
+
+##### <a name="before-august-2020"></a>2020年8月之前
+
+|建议|范围|
+|----|:----|
+|**启用 (通过 Qualys) 支持的虚拟机上的内置漏洞评估解决方案**<br>密钥：550e890b-e652-4d22-8274-60b3bdb24c63|内置|
+|修正虚拟机上发现的漏洞（由 Qualys 提供支持）<br>密钥：1195afff-c881-495e-9bc5-1486211ae03f|内置|
+|应在虚拟机上安装漏洞评估解决方案<br>密钥：01b1ed4c-b733-4fee-b145-f23236e70cf3|BYOL|
+|**应通过漏洞评估解决方案修复漏洞**<br>密钥：71992a2a-d168-42e0-b10e-6b45fa2ecddb|BYOL|
+||||
+
+
+|策略|范围|
+|----|:----|
+|**应在虚拟机上启用漏洞评估**<br>策略 ID：501541f7-f7e7-4cd6-868c-4190fdad3ac9|内置|
+|**漏洞评估解决方案应修正的漏洞**<br>策略 ID：760a85ff-6162-42b3-8d70-698e268f648c|BYOL|
+||||
+
+
+##### <a name="from-august-2020"></a>自8月2020
+
+|建议|范围|
+|----|:----|
+|**应在虚拟机上启用漏洞评估解决方案**<br>密钥： ffff0522-1e88-47fc-8382-2a80ba848f5d|内置 + BYOL|
+|**应修正虚拟机中的漏洞**<br>密钥：1195afff-c881-495e-9bc5-1486211ae03f|内置 + BYOL|
+||||
+
+|策略|范围|
+|----|:----|
+|[**应在虚拟机上启用漏洞评估**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>策略 ID：501541f7-f7e7-4cd6-868c-4190fdad3ac9 |内置 + BYOL|
+||||
+
+
+
 ## <a name="july-2020"></a>2020 年 7 月
 
 7月的更新包括：
 - [虚拟机的漏洞评估现在适用于非 marketplace 映像](#vulnerability-assessment-for-virtual-machines-is-now-available-for-non-marketplace-images)
-- [针对 Azure 存储的威胁防护已扩展为包括 Azure 文件和 Azure Data Lake Storage Gen2 （预览版）](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
+- [针对 Azure 存储的威胁防护已扩展为包括 Azure 文件和 Azure Data Lake Storage Gen2 (预览版) ](#threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview)
 - [启用威胁防护功能的八个新建议](#eight-new-recommendations-to-enable-threat-protection-features)
 - [容器安全改进-更快速的注册表扫描和刷新文档](#container-security-improvements---faster-registry-scanning-and-refreshed-documentation)
 - [使用新建议更新的自适应应用程序控件，并支持路径规则中的通配符](#adaptive-application-controls-updated-with-a-new-recommendation-and-support-for-wildcards-in-path-rules)
@@ -48,14 +106,14 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 
 从此更新中，已删除该检查，你现在可以将漏洞评估工具部署到 "自定义" Windows 和 Linux 计算机。 自定义映像是你从 marketplace 默认值修改的映像。
 
-尽管你现在可以在更多台计算机上部署集成漏洞评估扩展（由 Qualys 提供支持），但仅当使用[部署 Qualys 内置漏洞扫描程序](built-in-vulnerability-assessment.md#deploying-the-qualys-built-in-vulnerability-scanner)中列出的操作系统时，才提供支持。
+尽管你现在可以在多台计算机上部署由 Qualys) 支持的集成漏洞评估 (扩展，但仅当使用[部署 Qualys 内置漏洞扫描程序](built-in-vulnerability-assessment.md#deploying-the-qualys-built-in-vulnerability-scanner)中列出的操作系统时，才提供支持。
 
-了解有关[虚拟机集成漏洞扫描器的详细信息（仅适用于标准层）](built-in-vulnerability-assessment.md)。
+详细了解[虚拟机的集成漏洞扫描器 (仅) 标准层](built-in-vulnerability-assessment.md)。
 
 若要详细了解如何在[部署合作伙伴漏洞扫描解决方案](partner-vulnerability-assessment.md)中使用 Qualys 或 Rapid7 中的专用许可漏洞评估解决方案。
 
 
-### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>针对 Azure 存储的威胁防护已扩展为包括 Azure 文件和 Azure Data Lake Storage Gen2 （预览版）
+### <a name="threat-protection-for-azure-storage-expanded-to-include-azure-files-and-azure-data-lake-storage-gen2-preview"></a>针对 Azure 存储的威胁防护已扩展为包括 Azure 文件和 Azure Data Lake Storage Gen2 (预览版) 
 
 Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活动。 当安全中心检测到访问或利用存储帐户的尝试时，会显示警报。 
 
@@ -119,12 +177,14 @@ Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活�
 
 自适应应用程序控件功能已收到两个重要更新：
 
-- 新的建议确定以前未允许的潜在合法行为。 **应更新自适应应用程序控制策略中**的新建议允许列表规则，提示你向现有策略添加新规则，以减少自适应应用程序控制违规警报中的误报数。
+* 新的建议确定以前未允许的潜在合法行为。 **应更新自适应应用程序控制策略中**的新建议允许列表规则，提示你向现有策略添加新规则，以减少自适应应用程序控制违规警报中的误报数。
 
-- 路径规则现在支持通配符。 在此更新中，可以使用通配符配置允许的路径规则。 支持以下两种方案：
+* 路径规则现在支持通配符。 在此更新中，可以使用通配符配置允许的路径规则。 支持以下两种方案：
 
-    - 在路径末尾使用通配符以允许此文件夹和子文件夹中的所有可执行文件
-    - 使用路径中间的通配符，可通过更改的文件夹名称（例如，使用已知可执行文件的个人用户文件夹、自动生成的文件夹名称等）来启用已知的可执行文件名称。 
+    * 在路径末尾使用通配符以允许此文件夹和子文件夹中的所有可执行文件
+
+    * 使用路径中间的通配符启用具有更改的文件夹名称的已知可执行文件名称 (例如，具有已知可执行文件、自动生成的文件夹名称等) 的个人用户文件夹。
+
 
 [详细了解自适应应用程序控制](security-center-adaptive-application.md)。
 
@@ -150,18 +210,18 @@ Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活�
 ## <a name="june-2020"></a>2020 年 6 月
 
 6月的更新包括：
-- [安全分数 API （预览）](#secure-score-api-preview)
-- [SQL 计算机（Azure、其他云和本地）的高级数据安全性（预览版）](#advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview)
-- [将 Log Analytics 代理部署到 Azure Arc 计算机的两个新建议（预览版）](#two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview)
+- [安全评分 API (预览) ](#secure-score-api-preview)
+- [适用于 SQL 计算机 (Azure、其他云和本地)  (预览版的高级数据安全) ](#advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview)
+- [ (预览版将 Log Analytics 代理部署到 Azure Arc 计算机的两个新建议) ](#two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview)
 - [用于大规模创建连续导出和工作流自动化配置的新策略](#new-policies-to-create-continuous-export-and-workflow-automation-configurations-at-scale)
 - [使用 Nsg 保护非面向 internet 的虚拟机的新建议](#new-recommendation-for-using-nsgs-to-protect-non-internet-facing-virtual-machines)
 - [用于启用威胁防护和高级数据安全性的新策略](#new-policies-for-enabling-threat-protection-and-advanced-data-security)
 
 
 
-### <a name="secure-score-api-preview"></a>安全分数 API （预览）
+### <a name="secure-score-api-preview"></a>安全评分 API (预览) 
 
-你现在可以通过[安全评分 API](https://docs.microsoft.com/rest/api/securitycenter/securescores/) （当前为预览版）访问评分。 利用 API 方法可以灵活地查询数据，并在一段时间内构建你自己的安全评分报表机制。 例如，可以使用**安全评分**API 来获取特定订阅的分数。 此外，你可以使用**安全分数控制**API 列出你的订阅的安全控制和当前分数。
+你现在可以通过[安全分数 API](https://docs.microsoft.com/rest/api/securitycenter/securescores/) (当前在预览版) 中来访问你的评分。 利用 API 方法可以灵活地查询数据，并在一段时间内构建你自己的安全评分报表机制。 例如，可以使用**安全评分**API 来获取特定订阅的分数。 此外，你可以使用**安全分数控制**API 列出你的订阅的安全控制和当前分数。
 
 有关安全分数 API 可以实现外部工具的示例，请参阅[GitHub 社区的 secure 评分区](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)。
 
@@ -169,7 +229,7 @@ Azure 存储的威胁防护会在 Azure 存储帐户上检测潜在的有害活�
 
 
 
-### <a name="advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview"></a>SQL 计算机（Azure、其他云和本地）的高级数据安全性（预览版）
+### <a name="advanced-data-security-for-sql-machines-azure-other-clouds-and-on-prem-preview"></a>适用于 SQL 计算机 (Azure、其他云和本地)  (预览版的高级数据安全) 
 
 Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure 中、其他云环境甚至本地计算机上的 SQL Server。 这会扩展 Azure 本机 SQL Server 的保护，以完全支持混合环境。
 
@@ -185,14 +245,14 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 
 
-### <a name="two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview"></a>将 Log Analytics 代理部署到 Azure Arc 计算机的两个新建议（预览版）
+### <a name="two-new-recommendations-to-deploy-the-log-analytics-agent-to-azure-arc-machines-preview"></a> (预览版将 Log Analytics 代理部署到 Azure Arc 计算机的两个新建议) 
 
 添加了两个新建议来帮助你将[Log Analytics 代理](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent)部署到 azure Arc 计算机，并确保它们受 Azure 安全中心保护：
 
-- **Log Analytics 代理应安装在基于 Windows 的 Azure Arc 计算机上（预览）**
-- **Log Analytics 代理应安装在基于 Linux 的 Azure Arc 计算机上（预览版）**
+- **Log Analytics 代理应在基于 Windows 的 Azure Arc 计算机上安装 (预览版) **
+- **Log Analytics 代理应安装在基于 Linux 的 Azure Arc 计算机上 (预览版) **
 
-这些新建议将出现在与现有（相关）建议相同的四个安全控件中，**应在计算机上安装监视代理**：修正安全配置、应用自适应应用程序控制、应用系统更新和启用 endpoint protection。
+这些新建议将与与现有 (相关的) 建议相同的四个安全控件中出现，并且**应在计算机上安装监视代理**：修正安全配置、应用自适应应用程序控制、应用系统更新和启用 endpoint protection。
 
 建议还包括快速修复功能，可帮助加速部署过程。 
 
@@ -340,7 +400,7 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 要详细了解安全控件，请参阅 [Azure 安全中心的安全功能分数增强版（预览版）](secure-score-security-controls.md)。
 
-!["分组依据控件" 切换建议](./media/secure-score-security-controls/recommendations-group-by-toggle.gif)
+!["分组依据控件" 切换建议](\media\secure-score-security-controls\recommendations-group-by-toggle.gif)
 
 ### <a name="expanded-security-control-implement-security-best-practices"></a>扩展了“实现安全最佳做法”这一安全控件 
 
@@ -358,13 +418,13 @@ Azure 安全中心的 SQL 计算机高级数据安全现在保护托管在 Azure
 
 添加到控件中的两项新建议如下：
 
-- **应在 Windows 虚拟机（预览版）上安装来宾配置扩展**-使用[Azure 策略来宾配置](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration)在虚拟机中提供对服务器和应用程序设置的可见性（仅限 Windows）。
+- **应在 windows 虚拟机上安装来宾配置扩展 (预览) ** -使用[Azure 策略来宾配置](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration)可在虚拟机内部向服务器和应用程序设置提供 (仅限 Windows 的) 中的可见性。
 
-- **应在你的计算机上启用 Windows Defender 攻击防护（预览版）** -Windows Defender 攻击防护利用 Azure 策略来宾配置代理。 攻击防护服务具有 4 个组件，旨在锁定设备来阻隔各种攻击途径，并阻止恶意软件攻击中常用的行为，同时让企业能够平衡其安全风险和生产力要求（仅限 Windows）。
+- **应在计算机上启用 Windows Defender 攻击防护 (预览) ** -Windows Defender exploit Guard 利用 Azure 策略来宾配置代理。 攻击防护服务具有 4 个组件，旨在锁定设备来阻隔各种攻击途径，并阻止恶意软件攻击中常用的行为，同时让企业能够平衡其安全风险和生产力要求（仅限 Windows）。
 
 要详细了解 Windows Defender 攻击防护，可参阅[创建和部署攻击防护策略](https://docs.microsoft.com/mem/configmgr/protect/deploy-use/create-deploy-exploit-guard-policy)。
 
-详细了解[增强安全分数（预览版）](secure-score-security-controls.md)中的安全控制。
+了解更多有关安全控制的详细信息，请[ (预览) ](secure-score-security-controls.md)。
 
 
 
@@ -512,17 +572,4 @@ Azure 安全中心正在扩展其容器安全功能，现可保护 Azure Kuberne
 这些建议将不再在安全中心的建议列表中显示。 相关策略将不再包含在名为“安全中心默认设置”的计划中。
 
 详细了解[安全建议](recommendations-reference.md)。
-
-
-
-## <a name="february-2020"></a>2020 年 2 月
-
-### <a name="fileless-attack-detection-for-linux-preview"></a>面向 Linux 的无文件攻击检测（预览版）
-
-随着攻击者越来越多地采用更隐蔽的方法来避免被发现，除了 Windows 之外，Azure 安全中心还扩大了无文件攻击检测范围，现涵盖 Linux。 无文件攻击利用软件漏洞、将恶意有效负载注入良性系统进程，并隐藏在内存中。 这些技术：
-
-- 最大程度地减少或消除了磁盘上恶意软件的痕迹
-- 大大降低了基于磁盘的恶意软件扫描解决方案的检测机会
-
-为了应对这种威胁，Azure 安全中心于 2018 年 10 月发布了面向 Windows 的无文件攻击检测，现在还将该检测扩展到了 Linux 上。 
 

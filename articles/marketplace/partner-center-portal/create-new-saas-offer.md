@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 7fbb50308f14acbcec98c562fe72763341538df2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 6140d369c2dbc0968d2f28ff6b8cf447dd721d10
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031024"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166716"
 ---
 # <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>在商业应用商店中创建 SaaS 产品/服务
 
@@ -144,9 +144,9 @@ SaaS 产品/服务支持根据固定费用、每位用户按月或按年计费�
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. Title
+1. 标题
 2. 说明
-3. 有用的链接
+3. 有用链接
 4. 屏幕截图
 
 ## <a name="enable-a-test-drive"></a>启用体验版
@@ -351,6 +351,8 @@ Microsoft 提供标准协定模板。
 ## <a name="plan-overview"></a>计划概述
 
 借助此页，可以在同一产品/服务中提供各种计划选项。 这些计划（有时称为 SKU）在版本、盈利或服务层级方面可能有所不同。 你必须至少设置一个计划才能在市场上销售你的产品/服务。
+
+最多可为每个产品创建100个计划：最多可为45个。 详细了解[Microsoft 商业应用商店](../private-offers.md)中的专用产品/服务。
 
 创建后，你将看到计划名称、ID、定价模型，可用性（公用或专用）、当前发布状态以及任何可用的操作。
 

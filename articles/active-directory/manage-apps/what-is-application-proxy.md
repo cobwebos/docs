@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 4d9583e08591e8ea5792aad28e247dff178f1c08
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 68ccf3518a7011c0c39003d8e447a4e1d233fd91
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080654"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164574"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>使用 Azure AD 应用程序代理为远程用户发布本地应用
 
@@ -99,7 +99,7 @@ Azure AD 使用应用程序代理来跟踪需要访问本地发布的和云中�
 * [**基于表单或密码的身份验证**](application-proxy-configure-single-sign-on-password-vaulting.md)。 使用此身份验证方法时，用户在首次访问应用程序时使用用户名和密码登录。 首次登录后，Azure AD 会为应用程序提供用户名和密码。 在此方案中，身份验证由 Azure AD 处理。
 * [**SAML 身份验证**](application-proxy-configure-single-sign-on-on-premises-apps.md)。 使用 SAML 2.0 或 WS 联合身份验证协议的应用程序支持基于 SAML 的单一登录。 Azure AD 使用 SAML 单一登录通过用户的 Azure AD 帐户对应用程序进行身份验证。
 
-有关支持的方法的详细信息，请参阅[选择单一登录方法](what-is-single-sign-on.md#choosing-a-single-sign-on-method)。
+有关支持的方法的详细信息，请参阅[选择单一登录方法](sso-options.md#choosing-a-single-sign-on-method)。
 
 ### <a name="security-benefits"></a>安全优势
 

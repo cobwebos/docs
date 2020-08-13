@@ -4,19 +4,19 @@ description: '为 "外部标识" 自助注册 Azure Active Directory (Azure AD �
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: how-to
+ms.topic: article
 ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d1a4495b1d637b1cf8592f8c17e63ad456ea3c4
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: d664d7cd169593924917bb02a0220e4047eb0cdb
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908062"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165222"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>将自定义审批工作流添加到自助注册
 
@@ -65,7 +65,7 @@ ms.locfileid: "87908062"
 
   ![检查审批状态 API 连接器配置](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
-- **请求批准**-在用户完成 "属性收集" 页后，但在创建用户帐户之前，向审批系统发送调用以请求批准。 可以自动授予或手动查看批准请求。 "请求批准" API 连接器的示例。 选择**要发送**的任何声明，批准系统需要做出批准决定。
+- **请求批准**-在用户完成 "属性收集" 页后，但在创建用户帐户之前，向审批系统发送调用以请求批准。 可以自动授予或手动查看批准请求。 "请求批准" API 连接器的示例。 
 
   ![请求审批 API 连接器配置](./media/self-service-sign-up-add-approvals/create-approval-request-api-connector-config-alt.png)
 
@@ -90,28 +90,33 @@ ms.locfileid: "87908062"
 
 ## <a name="control-the-sign-up-flow-with-api-responses"></a>用 API 响应控制注册流
 
-你的批准系统可以使用两个 API 终结点的[api 响应类型](self-service-sign-up-add-api-connector.md#expected-response-types-from-the-web-api)来控制注册流。
+你的批准系统可以在调用来控制注册流时使用其响应。 
 
 ### <a name="request-and-responses-for-the-check-approval-status-api-connector"></a>"检查批准状态" API 连接器的请求和响应
 
 API 从 "检查批准状态" API 连接器接收的请求的示例：
 
 ```http
-POST <Approvals-API-endpoint>
+POST <API-endpoint>
 Content-type: application/json
 
 {
- "email": "johnsmith@outlook.com",
- "identities": [
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
+ "identities": [ //Sent for Google and Facebook identity providers
      {
      "signInType":"federated",
      "issuer":"facebook.com",
      "issuerAssignedId":"0123456789"
      }
  ],
+ "displayName": "John Smith",
+ "givenName":"John",
+ "lastName":"Smith",
  "ui_locales":"en-US"
 }
 ```
+
+发送到 API 的确切声明取决于标识提供者提供的信息。 始终发送 "email"。
 
 #### <a name="continuation-response-for-check-approval-status"></a>"检查批准状态" 的继续响应
 
@@ -169,12 +174,12 @@ Content-type: application/json
 来自 "请求批准" API 连接器的 API 收到的 HTTP 请求示例：
 
 ```http
-POST <Approvals-API-endpoint>
+POST <API-endpoint>
 Content-type: application/json
 
 {
- "email": "johnsmith@outlook.com",
- "identities": [
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
+ "identities": [ //Sent for Google and Facebook identity providers
      {
      "signInType":"federated",
      "issuer":"facebook.com",
@@ -182,11 +187,21 @@ Content-type: application/json
      }
  ],
  "displayName": "John Smith",
- "city": "Redmond",
- "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
+ "givenName":"John",
+ "surname":"Smith",
+ "jobTitle":"Supplier",
+ "streetAddress":"1000 Microsoft Way",
+ "city":"Seattle",
+ "postalCode": "12345",
+ "state":"Washington",
+ "country":"United States",
+ "extension_<extensions-app-id>_CustomAttribute1": "custom attribute value",
+ "extension_<extensions-app-id>_CustomAttribute2": "custom attribute value",
  "ui_locales":"en-US"
 }
 ```
+
+发送到 API 的确切声明取决于从用户收集的信息，或由标识提供者提供的信息。
 
 #### <a name="continuation-response-for-request-approval"></a>"请求批准" 的延续响应
 
@@ -257,7 +272,7 @@ Content-type: application/json
 
 如果用户使用 Google 或 Facebook 帐户登录，则可以使用[用户创建 API](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0&tabs=http)。
 
-1. 审批系统从用户流接收 HTTP 请求。
+1. 审批系统使用将从用户流接收 HTTP 请求。
 
 ```http
 POST <Approvals-API-endpoint>
@@ -303,7 +318,7 @@ Content-type: application/json
 }
 ```
 
-| 参数                                           | 必选 | 描述                                                                                                                                                            |
+| 参数                                           | 必选 | 说明                                                                                                                                                            |
 | --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | userPrincipalName                                   | 是      | 可以通过将 `email` 声明发送到 API，将该 `@` 字符替换 `_` 为，并预先将其挂起到来生成 `#EXT@<tenant-name>.onmicrosoft.com` 。 |
 | accountEnabled                                      | 是      | 必须设置为 `true`。                                                                                                                                                 |

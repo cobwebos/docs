@@ -15,16 +15,16 @@ ms.date: 11/08/2018
 ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94c434a2892060acfdd56c496a31e41597c21357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 31235936109361f0f15a071346baee128060375a
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84763425"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164982"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>如何使用组策略部署 Internet Explorer 的访问面板扩展
 
-本教程说明如何使用组策略在用户的计算机上远程安装 Internet Explorer 的访问面板扩展。 需要登录到使用[基于密码的单一登录](what-is-single-sign-on.md#password-based-sso)配置的应用程序的 Internet Explorer 用户必须使用此扩展。
+本教程说明如何使用组策略在用户的计算机上远程安装 Internet Explorer 的访问面板扩展。 需要登录到使用[基于密码的单一登录](sso-options.md#password-based-sso)配置的应用程序的 Internet Explorer 用户必须使用此扩展。
 
 建议管理员将此扩展的部署自动化。 否则，用户必须自行下载并安装扩展，这样很容易出现用户错误，并且需要管理员权限。 本教程介绍使用组策略自动化软件部署的一种方法。 [了解有关组策略的详细信息。](https://technet.microsoft.com/windowsserver/bb310732.aspx)
 
@@ -58,7 +58,7 @@ ms.locfileid: "84763425"
 
 ## <a name="step-2-create-the-group-policy-object"></a>步骤2：创建组策略对象
 
-1. 登录到承载 Active Directory 域服务（AD DS）安装的服务器。
+1. 登录到承载您的 Active Directory 域服务 (AD DS) 安装的服务器。
 1. 在服务器管理器中，请参阅 "**工具**"  >  **组策略管理**"。
 
     ![转到“工具”>“组策略管理”](./media/deploy-access-panel-browser-extension/tools-gpm.png)
@@ -66,7 +66,7 @@ ms.locfileid: "84763425"
 1. 在“组策略管理”窗口的左窗格中，查看组织单位 (OU) 层次结构并确定想要应用组策略的范围。**** 例如，可以选择一个小型 OU 并将其部署到少量用户以进行测试，或者选择一个顶级 OU 并将其部署到整个组织。
 
    > [!NOTE]
-   > 如果你想要创建或编辑你的组织单位（ou），请切换回服务器管理器，然后转到 "**工具**"  >  **Active Directory 用户和计算机**"。
+   > 若要创建或编辑组织单位 (ou) ，请切换回服务器管理器，然后转到 "**工具**"  >  **Active Directory "用户和计算机**"。
 
 1. 选择 OU 后，请右键单击它，并选择“在这个域中创建 GPO 并在此处链接它...”****
 
@@ -91,7 +91,7 @@ ms.locfileid: "84763425"
 
     ![从共享文件夹中选择安装包](./media/deploy-access-panel-browser-extension/select-package.png)
 
-1. 在“部署软件”提示窗口中，选择“已分配”作为部署方法。******** 。
+1. 在“部署软件”提示窗口中，选择“已分配”作为部署方法。******** 然后单击“确定”。
 
 扩展现已部署到选定的 OU。 [了解有关组策略软件安装的详细信息。](https://technet.microsoft.com/library/cc738858%28v=ws.10%29.aspx)
 
@@ -124,7 +124,7 @@ ms.locfileid: "84763425"
 
 现在，应该为选定 OU 中的计算机启用了该扩展。 [详细了解如何使用组策略启用或禁用 Internet Explorer 加载项。](https://technet.microsoft.com/library/dn454941.aspx)
 
-## <a name="step-5-optional-disable-remember-password-prompt"></a>步骤5（可选）：禁用 "记住密码" 提示
+## <a name="step-5-optional-disable-remember-password-prompt"></a>步骤 5 (可选) ：禁用 "记住密码" 提示
 
 当用户登录到使用访问面板扩展的网站时，Internet Explorer 可能显示以下提示，询问“是否存储密码?”
 

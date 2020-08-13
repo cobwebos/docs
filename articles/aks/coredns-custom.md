@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: f58232eac6727f10fdccb32e7795bf12a93b7cbb
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 08d3c61ca4b5988847676b12478a5865ac319d37
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405511"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164195"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>使用 Azure Kubernetes 服务自定义 CoreDNS
 
@@ -28,7 +28,7 @@ Azure Kubernetes 服务 (AKS) 可将适用于管理和解决群集 DNS 问题的
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-创建类似于以下示例的配置时，*数据*节中的名称必须以 *. server*或 *. override*结束。 此命名约定在默认 AKS CoreDNS Configmap 中定义，可以使用 `kubectl get configmaps --namespace=kube-system coredns -o yaml` 命令查看。
+创建类似于以下示例的配置时， *数据* 节中的名称必须以 *. server* 或 *. override*结束。 此命名约定在默认 AKS CoreDNS Configmap 中定义，可以使用 `kubectl get configmaps --namespace=kube-system coredns -o yaml` 命令查看。
 
 ## <a name="what-is-supportedunsupported"></a>支持的/不支持的插件
 
@@ -53,6 +53,9 @@ data:
         forward .  /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10, but that server must be able to resolve the rewritten domain name
     }
 ```
+
+> [!IMPORTANT]
+> 如果重定向到 DNS 服务器（如 CoreDNS 服务 IP），则 DNS 服务器必须能够解析重写的域名。
 
 使用 [kubectl apply configmap][kubectl-apply] 命令创建 ConfigMap，并指定 YAML 清单的名称：
 

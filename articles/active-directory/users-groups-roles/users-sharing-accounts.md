@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 206f87e45377287217b4895b8d481e14618c888c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 38b474d4b454c61b83bfb1d62230930a0b569b1d
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386939"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164217"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>使用 Azure AD 共享帐户
 
@@ -55,7 +55,7 @@ Azure AD 支持任何企业移动性套件 (EMS) 或 Azure AD Premium 许可计�
 
 支持帐户共享的 Azure AD 功能包括：
 
-* [密码单一登录](../manage-apps/what-is-single-sign-on.md#password-based-sso)
+* [密码单一登录](../manage-apps/sso-options.md#password-based-sso)
 * 密码单一登录代理
 * [组分配](groups-self-service-management.md)
 * 自定义密码应用

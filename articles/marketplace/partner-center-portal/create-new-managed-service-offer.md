@@ -7,12 +7,12 @@ ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
-ms.openlocfilehash: f58ec53d1c4f3ad95993fd2faff44f7164c4beeb
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 4d2a884bd6fd4cb62aa7cae5f3e53b865082fde8
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036600"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166597"
 ---
 # <a name="create-a-managed-service-offer"></a>创建托管服务产品
 
@@ -85,9 +85,9 @@ ms.locfileid: "88036600"
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. Title
+1. 标题
 2. 说明
-3. 有用的链接
+3. 有用链接
 4. 屏幕截图
 
 ### <a name="name"></a>名称
@@ -175,6 +175,8 @@ ms.locfileid: "88036600"
 ## <a name="plan-overview"></a>计划概述
 
 每个产品/服务必须有一个或多个计划 (以前称为 Sku) 。 可添加多个计划，以不同的价格支持不同的功能集，也可为有限数量的特定客户自定义特定计划。 客户可在父级产品/服务中查看可供其使用的计划。
+
+最多可为每个产品创建100个计划：最多可为45个。 详细了解 [Microsoft 商业应用商店](../private-offers.md)中的专用产品/服务。
 
 在“计划概述”页，选择“+ 创建新计划”。 然后输入“计划 ID”和“计划名称”。 这两个值只能包含小写的字母数字字符、短划线和下划线，且长度不得超过 50 个字符。 这些值可能会对客户可见，在发布产品/服务后，无法更改这些值。
 

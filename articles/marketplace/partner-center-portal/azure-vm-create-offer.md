@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 8d27594b33db72303c71ceb39de92b1d4340b9be
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 3e8822462cd7989f6bc1f051b3868d6241f591b1
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037263"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88166699"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure 市场创建 Azure 虚拟机产品/服务
 
@@ -292,6 +292,8 @@ ms.locfileid: "88037263"
 
 在合作伙伴中心内，可以在同一产品/服务中提供各种计划选项。 产品/服务需要至少一个名为 "SKU)  (的计划，盈利受众、Azure 区域、功能或 VM 映像可能会有所不同。
 
+最多可为每个产品创建100个计划：最多可为45个。 详细了解[Microsoft 商业应用商店](../private-offers.md)中的专用产品/服务。
+
 创建计划后，选择“计划概述”选项卡以显示：
 
 - 计划名称
@@ -539,7 +541,7 @@ Microsoft 将向你发送电子邮件，让你知道何时有预览版产品/服
 5. 隐私策略地址 (链接) 
 6. 产品名称
 7. 说明
-8. 有用的链接
+8. 有用链接
 9. 屏幕截图/视频
 
 <br>下面是有关如何在 Azure Marketplace 搜索结果中显示产品/服务的示例：
@@ -571,7 +573,7 @@ Microsoft 将向你发送电子邮件，让你知道何时有预览版产品/服
 
 1. 名称
 2. 说明
-3. 有用的链接
+3. 有用链接
 4. 屏幕截图/视频
 
 <br>下面是一个示例，说明了产品/服务信息在 "Azure 门户搜索" 结果中的显示方式：

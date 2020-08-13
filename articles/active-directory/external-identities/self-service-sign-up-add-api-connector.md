@@ -4,19 +4,19 @@ description: 配置要在用户流中使用的 web API。
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: how-to
+ms.topic: article
 ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88270d51bf50b2b175d9d8761685a8a2a8ae19b1
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 5f241fd038d0d7309d8e1e5578dd77f950261b68
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908194"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165169"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>向用户流添加 API 连接器
 
@@ -38,20 +38,54 @@ ms.locfileid: "87908194"
    - 目前仅支持基本身份验证。 如果希望出于开发目的使用没有基本身份验证的 API，只需输入 API 可以忽略的虚拟**用户名**和**密码**。 若要将 Azure 函数与 API 密钥一起使用，可以将代码作为查询参数包含在**终结点 URL**中 (例如，https： []() //contoso.azurewebsites.net/api/endpoint<b>？ code = 0123456789</b>) 。
 
    ![添加新的 API 连接器](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
+8. 选择“保存”。
 
-8. 选择要发送到 API 的声明。
-9. 选择你计划从 API 接收回的任何声明。
-
-   <!-- ![Set API connector claims](./media/self-service-sign-up-add-api-connector/api-connector-claims.png) -->
-
-10. 选择“保存”。
-
-### <a name="selection-of-claims-to-send-and-claims-to-receive"></a>选择 "要发送的声明" 和 "要接收的声明"
 > [!IMPORTANT]
-> 你可能会看到默认情况下选择的所有声明，如下所示。 所有 API 连接器都将更新为以这种方式运行。 你的 API 将接收所有可用的声明，并返回任何支持的声明，无需在 API 连接器定义中进行配置。 
+> 以前，你必须配置要发送到 API ( "声明发送" 的用户属性 ) 以及要从 API 中接受哪些用户属性 ( "声明接收" ) 。 现在，默认情况下，如果所有用户属性都具有值并且 API 可以在 "继续" 响应中返回任何用户属性，则默认情况下将发送所有用户属性。
 
-![设置 API 连接器声明](./media/self-service-sign-up-add-api-connector/api-connector-claims-new.png)
+## <a name="the-request-sent-to-your-api"></a>发送到 API 的请求
+API 连接器具体化为**HTTP POST**请求，发送 ( "声明" ) 为 JSON 正文中的键值对的用户属性。 特性的序列化与[Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0#properties)用户属性类似。 
 
+**示例请求**
+```http
+POST <API-endpoint>
+Content-type: application/json
+
+{
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
+ "identities": [ //Sent for Google and Facebook identity providers
+     {
+     "signInType":"federated",
+     "issuer":"facebook.com",
+     "issuerAssignedId":"0123456789"
+     }
+ ],
+ "displayName": "John Smith",
+ "givenName":"John",
+ "surname":"Smith",
+ "jobTitle":"Supplier",
+ "streetAddress":"1000 Microsoft Way",
+ "city":"Seattle",
+ "postalCode": "12345",
+ "state":"Washington",
+ "country":"United States",
+ "extension_<extensions-app-id>_CustomAttribute1": "custom attribute value",
+ "extension_<extensions-app-id>_CustomAttribute2": "custom attribute value",
+ "ui_locales":"en-US"
+}
+```
+
+只有**Azure Active Directory**  >  **External 标识**  >  **自定义用户属性**中列出的用户属性和自定义属性可在请求中发送。
+
+自定义属性在目录的**extension_ \<extensions-app-id> _AttributeName**格式中存在。 你的 API 应该会接收此相同序列化格式的声明。 有关自定义属性的详细信息，请参阅[定义自助服务注册流的自定义属性](user-flow-add-custom-attributes.md)。
+
+此外，默认情况下，在所有请求中发送** ( "ui_locales" ) 声明的 UI 区域设置**。 它提供在其设备上配置的用户区域设置 () ，API 可以使用此区域设置来返回国际化响应。
+
+> [!IMPORTANT]
+> 如果发送的声明在调用 API 终结点时没有值，则不会将该声明发送到 API。 API 应设计为显式检查其预期的值。
+
+> [!TIP] 
+> [**标识 ( "标识" ) **](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0)并且**电子邮件地址 ( "email" ) **声明在用户拥有租户中的帐户之前，你的 API 可以使用它来标识该用户。 当用户使用标识提供程序（如 Google 或 Facebook）进行身份验证时，将发送 "标识" 声明。 始终发送 "email"。
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>在用户流中启用 API 连接器
 
@@ -70,13 +104,72 @@ ms.locfileid: "87908194"
 
 6. 选择“保存”。
 
-了解[可在用户流中启用 API 连接器的位置](api-connectors-overview.md#where-you-can-enable-an-api-connector-in-a-user-flow)。
+## <a name="after-signing-in-with-an-identity-provider"></a>使用标识提供者登录后
 
-## <a name="request-sent-to-the-api"></a>请求已发送到 API
+在用户使用标识提供者进行身份验证 (Google、Facebook、Azure AD) 后，立即调用注册过程中的 API 连接器。 此步骤优先于 "***属性集合" 页***，它是向用户显示的用于收集用户属性的窗体。 
 
-API 连接器具体化为 HTTP POST 请求，以 JSON 正文形式发送所选声明作为键值对。 响应还应具有 HTTP 标头 `Content-Type: application/json` 。 特性的序列化与 Microsoft Graph 用户特性类似。 <!--# TODO: Add link to MS Graph or create separate reference.-->
+<!-- The following are examples of API connector scenarios you may enable at this step:
+- Use the email or federated identity that the user provided to look up claims in an existing system. Return these claims from the existing system, pre-fill the attribute collection page, and make them available to return in the token.
+- Validate whether the user is included in an allow or deny list, and control whether they can continue with the sign-up flow. -->
 
-### <a name="example-request"></a>示例请求
+### <a name="example-request-sent-to-the-api-at-this-step"></a>此步骤发送到 API 的示例请求
+```http
+POST <API-endpoint>
+Content-type: application/json
+
+{
+ "email": "johnsmith@fabrikam.onmicrosoft.com",
+ "identities": [ //Sent for Google and Facebook identity providers
+     {
+     "signInType":"federated",
+     "issuer":"facebook.com",
+     "issuerAssignedId":"0123456789"
+     }
+ ],
+ "displayName": "John Smith",
+ "givenName":"John",
+ "lastName":"Smith",
+ "ui_locales":"en-US"
+}
+```
+
+发送到 API 的确切声明取决于标识提供者提供的信息。 始终发送 "email"。
+
+### <a name="expected-response-types-from-the-web-api-at-this-step"></a>此步骤中的 web API 所需的响应类型
+
+当 web API 在用户流中从 Azure AD 收到 HTTP 请求时，它可以返回以下响应：
+
+- 继续响应
+- 阻止响应
+
+#### <a name="continuation-response"></a>继续响应
+
+继续响应指示用户流应继续执行下一步： "属性集合" 页。
+
+在继续响应中，API 可以返回声明。 如果 API 返回声明，则声明会执行以下操作：
+
+- 预先填充 "属性集合" 页中的输入字段。
+
+请参阅[继续响应](#example-of-a-continuation-response)的示例。
+
+#### <a name="blocking-response"></a>阻止响应
+
+阻止响应会退出用户流。 它可以由 API 有意颁发，通过向用户显示块页来停止用户流的继续。 "块" 页显示 `userMessage` API 提供的。
+
+查看[阻塞响应](#example-of-a-blocking-response)的示例。
+
+## <a name="before-creating-the-user"></a>创建用户之前
+
+如果包含 "属性集合" 页，则在注册过程中的此步骤调用 API 连接器。 在 Azure AD 中创建用户帐户之前，始终会调用此步骤。 
+
+<!-- The following are examples of scenarios you might enable at this point during sign-up: -->
+<!-- 
+- Validate user input data and ask a user to resubmit data.
+- Block a user sign-up based on data entered by the user.
+- Perform identity verification.
+- Query external systems for existing data about the user and overwrite the user-provided value. -->
+
+### <a name="example-request-sent-to-the-api-at-this-step"></a>此步骤发送到 API 的示例请求
 
 ```http
 POST <API-endpoint>
@@ -92,41 +185,52 @@ Content-type: application/json
      }
  ],
  "displayName": "John Smith",
- "postalCode": "33971",
+ "givenName":"John",
+ "surname":"Smith",
+ "jobTitle":"Supplier",
+ "streetAddress":"1000 Microsoft Way",
+ "city":"Seattle",
+ "postalCode": "12345",
+ "state":"Washington",
+ "country":"United States",
  "extension_<extensions-app-id>_CustomAttribute1": "custom attribute value",
  "extension_<extensions-app-id>_CustomAttribute2": "custom attribute value",
  "ui_locales":"en-US"
 }
 ```
+发送到 API 的确切声明取决于从用户收集的信息，或由标识提供者提供的信息。
 
-默认情况下，在所有请求中发送** ( "ui_locales" ) 声明的 UI 区域设置**。 它提供用户的区域设置 () 并可由 API 用来返回国际化响应。 它不会显示在 API 配置窗格中。
-
-如果发送的声明在调用 API 终结点时没有值，则不会将该声明发送到 API。
-
-可以使用**extension_ \<extensions-app-id> _AttributeName**格式为用户创建自定义属性。 你的 API 应该会接收此相同序列化格式的声明。 API 可以返回带有或不包含的声明 `<extensions-app-id>` 。 有关自定义属性的详细信息，请参阅[定义自助服务注册流的自定义属性](user-flow-add-custom-attributes.md)。
-
-> [!TIP] 
-> [**标识 ( "标识" ) **](https://docs.microsoft.com/graph/api/resources/objectidentity?view=graph-rest-1.0)并且**电子邮件地址 ( "email" ) **声明可用于标识用户，然后在租户中拥有帐户。 当用户使用 Google 或 Facebook 进行身份验证时，将发送 "标识" 声明，并且始终发送 "email"。
-
-## <a name="expected-response-types-from-the-web-api"></a>Web API 中的预期响应类型
+### <a name="expected-response-types-from-the-web-api-at-this-step"></a>此步骤中的 web API 所需的响应类型
 
 当 web API 在用户流中从 Azure AD 收到 HTTP 请求时，它可以返回以下响应：
 
-- [继续响应](#continuation-response)
-- [阻止响应](#blocking-response)
-- [验证-错误响应](#validation-error-response)
+- 继续响应
+- 阻止响应
+- 验证响应
 
-### <a name="continuation-response"></a>继续响应
+#### <a name="continuation-response"></a>继续响应
 
-继续响应指示用户流应继续下一步。 在继续响应中，API 可以返回声明。
+继续响应表示用户流应继续执行下一步：在目录中创建用户。
 
-如果由 API 返回声明，并将其选择为**要接收的声明**，则声明会执行以下操作：
+在继续响应中，API 可以返回声明。 如果 API 返回声明，则声明会执行以下操作：
 
-- 如果在显示页面之前调用 API 连接器，则预先填充 "属性集合" 页中的输入字段。
-- 重写已分配给声明的任何值。
-- 如果声明以前为 null，则为其分配一个值。
+- 从 "属性集合" 页重写已分配给声明的任何值。
 
-#### <a name="example-of-a-continuation-response"></a>继续响应示例
+请参阅[继续响应](#example-of-a-continuation-response)的示例。
+
+#### <a name="blocking-response"></a>阻止响应
+阻止响应会退出用户流。 它可以由 API 有意颁发，通过向用户显示块页来停止用户流的继续。 "块" 页显示 `userMessage` API 提供的。
+
+查看[阻塞响应](#example-of-a-blocking-response)的示例。
+
+### <a name="validation-error-response"></a>验证-错误响应
+ 当 API 使用验证错误响应进行响应时，用户流将停留在 "属性集合" 页上，并 `userMessage` 向用户显示。 然后，用户可以编辑和重新提交表单。 这种类型的响应可用于输入验证。
+
+查看[验证错误响应](#example-of-a-validation-error-response)的示例。
+
+## <a name="example-responses"></a>示例响应
+
+### <a name="example-of-a-continuation-response"></a>继续响应示例
 
 ```http
 HTTP/1.1 200 OK
@@ -142,16 +246,12 @@ Content-type: application/json
 
 | 参数                                          | 类型              | 必选 | 说明                                                                                                                                                                                                                                                                            |
 | -------------------------------------------------- | ----------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 版本                                            | String            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
-| action                                             | String            | 是      | 值必须是 `Continue`。                                                                                                                                                                                                                                                              |
+| 版本                                            | 字符串            | 是      | API 的版本。                                                                                                                                                                                                                                                                |
+| action                                             | 字符串            | 是      | 值必须是 `Continue`。                                                                                                                                                                                                                                                              |
 | \<builtInUserAttribute>                            | \<attribute-type> | 否       | 如果值被选为要在 API 连接器配置中**接收的声明**，则这些值可以存储在目录中，并可存储在用户流的**用户属性**中。 如果选择作为**应用程序声明**，则可以在令牌中返回值。                                              |
 | \<extension\_{extensions-app-id}\_CustomAttribute> | \<attribute-type> | 否       | 返回的声明不需要包含 `_<extensions-app-id>_` 。 如果值被选为要在 API 连接器配置和用户流的**用户属性**中**接收的声明**，则这些值将存储在目录中。 自定义属性不能在令牌中发回。 |
 
-### <a name="blocking-response"></a>阻止响应
-
-阻止响应会退出用户流。 它可以由 API 有意颁发，通过向用户显示块页来停止用户流的继续。 "块" 页显示 `userMessage` API 提供的。
-
-阻塞响应的示例：
+### <a name="example-of-a-blocking-response"></a>阻塞响应的示例
 
 ```http
 HTTP/1.1 200 OK
@@ -168,20 +268,16 @@ Content-type: application/json
 
 | 参数   | 类型   | 必选 | 说明                                                                |
 | ----------- | ------ | -------- | -------------------------------------------------------------------------- |
-| 版本     | String | 是      | API 的版本。                                                    |
-| action      | String | 是      | 值必须是 `ShowBlockPage`                                              |
-| userMessage | String | 是      | 要向用户显示的消息。                                            |
-| code        | String | 否       | 错误代码。 可用于调试目的。 不会向用户显示。 |
+| 版本     | 字符串 | 是      | API 的版本。                                                    |
+| action      | 字符串 | 是      | 值必须是 `ShowBlockPage`                                              |
+| userMessage | 字符串 | 是      | 要向用户显示的消息。                                            |
+| code        | 字符串 | 否       | 错误代码。 可用于调试目的。 不会向用户显示。 |
 
-#### <a name="end-user-experience-with-a-blocking-response"></a>阻止响应的最终用户体验
+**阻止响应的最终用户体验**
 
 ![示例块页](./media/api-connectors-overview/blocking-page-response.png)
 
-### <a name="validation-error-response"></a>验证-错误响应
-
-在属性集合页后调用的 API 调用可能会返回验证错误响应。 当这样做时，用户流将停留在 "属性集合" 页上，并 `userMessage` 向用户显示。 然后，用户可以编辑和重新提交表单。 这种类型的响应可用于输入验证。
-
-#### <a name="example-of-a-validation-error-response"></a>验证错误响应示例
+### <a name="example-of-a-validation-error-response"></a>验证错误响应示例
 
 ```http
 HTTP/1.1 400 Bad Request
@@ -198,18 +294,18 @@ Content-type: application/json
 
 | 参数   | 类型    | 必选 | 说明                                                                |
 | ----------- | ------- | -------- | -------------------------------------------------------------------------- |
-| 版本     | String  | 是      | API 的版本。                                                    |
-| action      | String  | 是      | 值必须是 `ValidationError`。                                           |
+| 版本     | 字符串  | 是      | API 的版本。                                                    |
+| action      | 字符串  | 是      | 值必须是 `ValidationError`。                                           |
 | 状态      | Integer | 是      | 必须是 `400` ValidationError 响应的值。                        |
-| userMessage | String  | 是      | 要向用户显示的消息。                                            |
-| code        | String  | 否       | 错误代码。 可用于调试目的。 不会向用户显示。 |
+| userMessage | 字符串  | 是      | 要向用户显示的消息。                                            |
+| code        | 字符串  | 否       | 错误代码。 可用于调试目的。 不会向用户显示。 |
 
-#### <a name="end-user-experience-with-a-validation-error-response"></a>验证-错误响应的最终用户体验
+**验证-错误响应的最终用户体验**
 
 !["验证" 页示例](./media/api-connectors-overview/validation-error-postal-code.png)
 
-### <a name="integration-with-azure-functions"></a>与 Azure Functions 集成
-可以在 Azure Functions 中使用 HTTP 触发器，作为创建用于 API 连接器的 API 的简单方式。 [例如](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)，使用 Azure 函数执行验证逻辑，并限制对特定域的登录。 还可以调用和调用其他 web Api、用户存储和其他云服务。
+## <a name="using-azure-functions"></a>使用 Azure Functions
+可以在 Azure Functions 中使用 HTTP 触发器，作为创建 api 终结点的简单方法，可用于 API 连接器。 [例如](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)，使用 Azure 函数执行验证逻辑，并限制对特定域的登录。 对于广泛的方案，你还可以从 Azure 功能调用并调用其他 web Api、用户存储和其他云服务。
 
 ## <a name="next-steps"></a>后续步骤
 
