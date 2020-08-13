@@ -1,6 +1,6 @@
 ---
 title: 用于 Node.js 的 Azure CDN SDK 入门 | Microsoft Docs
-description: 了解如何编写 Node.js 应用程序以管理 Azure CDN。
+description: 了解如何创建简单的 Node.js 控制台应用程序，该应用程序演示如何自动创建和管理 Azure CDN 的配置文件和终结点。
 services: cdn
 documentationcenter: nodejs
 author: zhangmanling
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 96dc7e8d9fb647779fc2188fe36fe9fbced2e53c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: da695975b92ea6f81de103da5edf730811a193f8
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387483"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190710"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 开发入门
 > [!div class="op_single_selector"]

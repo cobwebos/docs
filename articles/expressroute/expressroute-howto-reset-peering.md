@@ -1,18 +1,18 @@
 ---
 title: Azure ExpressRoute：重置线路对等互连
-description: 如何禁用和启用 ExpressRoute 线路的对等互连。
+description: 了解如何使用 Azure PowerShell 禁用和启用 Azure ExpressRoute 线路的对等互连。 配置对等互连时，默认情况下会启用它们。
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 01/13/2018
 ms.author: charwen
-ms.openlocfilehash: cc4266a92d510ac84118922f7db09c99234045b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e576fe2f08d54d2642603e3b7974e00feec8ce93
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84735245"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192178"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>重置 ExpressRoute 线路对等互连
 
@@ -50,7 +50,7 @@ ms.locfileid: "84735245"
    ```azurepowershell-interactive
    $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
    ```
-5. 标识要禁用或启用的对等互连。 对等互连是一个数组**。 在以下示例中，Peerings[0] 是 Azure 专用对等互连，而 Peerings[1] 是 Microsoft 对等互连。
+5. 标识要禁用或启用的对等互连。 对等互连是一个数组  。 在以下示例中，Peerings[0] 是 Azure 专用对等互连，而 Peerings[1] 是 Microsoft 对等互连。
 
    ```azurepowershell-interactive
    Name                             : ExpressRouteARMCircuit

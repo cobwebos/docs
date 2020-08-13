@@ -5,12 +5,12 @@ description: 了解如何安装和配置 NGINX 入口控制器，该控制器使
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: b25c431c7771e3c72280e936b2275f2fd10165b0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 485fda708c089fe253ee7ae82edc14275c67b971
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056833"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192207"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建 HTTPS 入口控制器
 
@@ -32,7 +32,7 @@ ms.locfileid: "87056833"
 
 本文还假定你在 AKS 群集所在的资源组中有一个包含[DNS 区域][dns-zone]的[自定义域][custom-domain]。
 
-本文使用 [Helm 3][helm] 安装 NGINX 入口控制器和证书管理器。 请确保使用 Helm 的最新版本。 有关升级说明，请参阅 [Helm 安装文档][helm-install]。有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
+本文使用 [Helm 3][helm] 安装 NGINX 入口控制器和证书管理器。 请确保使用最新版本的 Helm，并且有权访问 *稳定* 和 *jetstack* Helm 存储库。 有关升级说明，请参阅 [Helm 安装文档][helm-install]。有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
 
 本文还要求运行 Azure CLI 2.0.64 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -327,7 +327,7 @@ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
 
 接下来，必须创建证书资源。 证书资源定义了必需的 X.509 证书。 有关详细信息，请参阅[证书管理器证书][cert-manager-certificates]。 证书管理器已使用 ingress-shim（自 v0.2.2 以来随证书管理器自动部署）为你自动创建了证书对象。 有关详细信息，请参阅 [ingress-shim 文档][ingress-shim]。
 
-若要验证证书是否已成功创建，请使用 `kubectl get certificate --namespace ingress-basic` 命令并验证 "*就绪*" 为*True*，这可能需要几分钟的时间。
+若要验证证书是否已成功创建，请使用 `kubectl get certificate --namespace ingress-basic` 命令，并验证 *READY* 是否为 *True*，这可能需要数分钟。
 
 ```
 $ kubectl get certificate --namespace ingress-basic

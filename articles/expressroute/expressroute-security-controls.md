@@ -1,18 +1,18 @@
 ---
 title: Azure ExpressRoute：安全控制
-description: 用于评估 Azure ExpressRoute 的安全控制的清单
+description: 了解 Azure ExpressRoute 中的安全控制，这些控制是可帮助预防、检测和响应安全漏洞的特性或功能。
 services: expressroute
 ms.service: expressroute
 author: msmbaldwin
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: a288b44c07bc2df8529f07264dcee648f3af379a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a4589d1aa768548f2ae9ffa01f289c823c0b2e5
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74079933"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192425"
 ---
 # <a name="security-controls-for-azure-expressroute"></a>Azure ExpressRoute 的安全控制
 

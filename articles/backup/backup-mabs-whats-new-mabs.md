@@ -3,18 +3,18 @@ title: Microsoft Azure 备份服务器中的新增功能
 description: Microsoft Azure 备份服务器提供用于保护 VM、文件和文件夹、工作负载等的增强备份功能。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: d9d04d9f763549ce15e57f768432cd933cf1414c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a3ff38d9371ee9b95666ce638d0a6dc4b8822e20
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032436"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190843"
 ---
-# <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Microsoft Azure 备份服务器中的新增功能（MABS）
+# <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Microsoft Azure 备份 Server 中的新增功能 (MABS) 
 
 ## <a name="whats-new-in-mabs-v3-ur1"></a>MABS V3 UR1 中的新增功能
 
-Microsoft Azure 备份 Server （MABS）版本 3 UR1 是最新更新，其中包含重要的 bug 修复和其他功能及增强功能。 若要查看 MABS V3 UR1 中已修复的 bug 列表和安装说明，请参阅知识库文章 [4534062](https://support.microsoft.com/help/4534062)。
+Microsoft Azure 备份 Server (MABS) 版本 3 UR1 是最新的更新，并包含关键的 bug 修复程序以及其他功能和增强功能。 若要查看 MABS V3 UR1 中已修复的 bug 列表和安装说明，请参阅知识库文章 [4534062](https://support.microsoft.com/help/4534062)。
 
 >[!NOTE]
 >MABS v3 UR1 不再支持 32 位保护代理。 请参阅[弃用 32 位保护代理](#32-bit-protection-agent-deprecation)。
@@ -25,7 +25,7 @@ MABS V2 引入了[新式备份存储](backup-mabs-add-storage.md) (MBS)，从而
 
 若要通过 MBS 实现缩放和性能，建议将 MABS V3 UR1 的一小部分（占总存储的 4%）闪存 (SSD) 用作分层卷，并与 DPM HDD 存储结合使用。 具有分层存储的 MABS V3 UR1 的备份速度可提高 50-70%。 有关配置分层存储的步骤，请参阅 DPM 文章[使用分层存储设置 MBS](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)。
 
-### <a name="support-for-refs-volumes-and-refs-volumes-with-deduplication-enabled"></a>支持 ReFS 卷和启用了重复数据删除的 ReFS 卷
+### <a name="support-for-refs-volumes"></a>对 ReFS 卷的支持
 
 借助 MABS V3 UR1，可以备份 ReFS 卷和部署在 ReFS 卷上的工作负载。 可以备份 ReFS 卷上部署的以下工作负载：
 
@@ -36,6 +36,8 @@ MABS V2 引入了[新式备份存储](backup-mabs-add-storage.md) (MBS)，从而
 
 >[!NOTE]
 > MABS V3 支持备份 ReFS 卷上存储的 Hyper-V VM
+
+>无关紧要我们发现了一些备份删除了重复数据删除的 ReFS 卷的问题。 我们正在努力解决它们；一旦有修补程序可用，我们将立即更新此部分。 在此之前，我们从 MABSv3 UR1 中删除对已删除重复的 ReFS 卷的支持。
 
 ### <a name="azure-vmware-solution-protection-support"></a>Azure VMware 解决方案保护支持
 
@@ -56,7 +58,7 @@ MABS V3 UR1 为关键操作添加了额外的身份验证层。 当你执行“�
 
 ### <a name="offline-backup-improvements"></a>脱机备份改进
 
-MABS v3 UR1 通过 Azure 导入/导出服务改善了脱机备份体验。 有关详细信息，请参阅[此处](./backup-azure-backup-server-import-export.md)的更新步骤。
+MABS v3 UR1 通过 Azure 导入/导出服务改善了脱机备份体验。 有关详细信息，请参阅 [此处](./backup-azure-backup-server-import-export.md)的更新步骤。
 
 >[!NOTE]
 >此更新还会在 MABS 中使用 Azure Data Box 进行脱机备份的预览。 联系 [SystemCenterFeedback@microsoft.com](mailto:SystemCenterFeedback@microsoft.com) 以了解详细信息。

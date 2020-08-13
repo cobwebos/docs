@@ -1,6 +1,6 @@
 ---
 title: 使用 Key Vault Azure Key Vault 的最佳实践 |Microsoft Docs
-description: 本文档介绍了一些使用密钥保管库的最佳做法
+description: 了解 Azure Key Vault 的最佳实践，包括控制访问、何时使用单独的密钥保管库、备份、日志记录和恢复选项。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 93ada332fdf9179cf0f582195779afc085416e1a
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: cec3ad4e113fd6ee3f4e30ad2a6877b886a958e0
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386225"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189885"
 ---
 # <a name="best-practices-to-use-key-vault"></a>使用密钥保管库的最佳做法
 

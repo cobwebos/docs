@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli
 ms.author: larryfr
 author: Blackmist
 ms.date: 07/27/2020
-ms.openlocfilehash: 5ddd4fc368a4e479d3d720698c7447d2b3cdf3cc
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 6d1042ea21308dd0f82165c288824aaef000e36d
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986556"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192331"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>使用 Azure 资源管理器模板创建 Azure 机器学习的工作区
 
@@ -34,7 +34,7 @@ ms.locfileid: "87986556"
 
 ## <a name="workspace-resource-manager-template"></a>工作区资源管理器模板
 
-可以在 Azure 快速入门模板 GitHub 存储库的 "201-[计算机-学习-高级](https://github.com/Azure/azure-quickstart-templates/blob/master/201-machine-learning-advanced/azuredeploy.json)" 目录中找到整个文档中使用的 azure 资源管理器模板。
+可以在 Azure 快速入门模板 GitHub 存储库的 "201- [计算机-学习-高级](https://github.com/Azure/azure-quickstart-templates/blob/master/201-machine-learning-advanced/azuredeploy.json) " 目录中找到整个文档中使用的 azure 资源管理器模板。
 
 此模板创建以下 Azure 服务：
 
@@ -46,9 +46,9 @@ ms.locfileid: "87986556"
 
 资源组是保存服务的容器。 Azure 机器学习工作区需要多种服务。
 
-示例模板具有两个**必需**参数：
+示例模板具有两个 **必需** 参数：
 
-* 将在其中创建资源的**位置**。
+* 将在其中创建资源的 **位置** 。
 
     模板将使用你为大多数资源选择的位置。 例外的情况是 Application Insights 服务，它不像其他所有服务一样在所有位置都可用。 如果选择了 Application Insights 服务不可用的位置，将在美国中南部位置创建该服务。
 
@@ -76,7 +76,7 @@ ms.locfileid: "87986556"
 
 若要部署模板，你必须创建一个资源组。
 
-如果喜欢使用图形用户界面，请参阅[Azure 门户](#use-the-azure-portal)部分。
+如果喜欢使用图形用户界面，请参阅 [Azure 门户](#use-the-azure-portal) 部分。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -117,7 +117,7 @@ New-AzResourceGroupDeployment `
 
 ---
 
-默认情况下，作为模板的一部分创建的所有资源都是新的。 不过，您也可以选择使用现有资源。 通过向模板提供其他参数，可以使用现有资源。 例如，如果你想要使用现有的存储帐户，请将**storageAccountOption**值设置为 "**现有**"，并在**storageAccountName**参数中提供存储帐户的名称。
+默认情况下，作为模板的一部分创建的所有资源都是新的。 不过，您也可以选择使用现有资源。 通过向模板提供其他参数，可以使用现有资源。 例如，如果你想要使用现有的存储帐户，请将 **storageAccountOption** 值设置为 " **现有** "，并在 **storageAccountName** 参数中提供存储帐户的名称。
 
 > [!IMPORTANT]
 > 如果要使用现有的 Azure 存储帐户，则该帐户不能是高级帐户 (Premium_LRS 并 Premium_GRS) 。 它也不能 (与 Azure Data Lake Storage Gen2) 一起使用的分层命名空间。 工作区的默认存储帐户不支持高级存储或分层命名空间。
@@ -319,8 +319,8 @@ __要向密钥保管库添加访问策略，请使用以下命令__：
 成功完成上述步骤后，即可像往常一样部署模板。 若要允许使用客户托管密钥，请设置以下参数：
 
 * **Encryption_status** **启用**。
-* **cmk_keyvault**到 `cmk_keyvault` 前面步骤中获取的值。
-* **resource_cmk_uri**到 `resource_cmk_uri` 前面步骤中获取的值。
+* **cmk_keyvault** 到 `cmk_keyvault` 前面步骤中获取的值。
+* **resource_cmk_uri** 到 `resource_cmk_uri` 前面步骤中获取的值。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -351,9 +351,9 @@ New-AzResourceGroupDeployment `
 ```
 ---
 
-使用客户管理的密钥时，Azure 机器学习会创建一个包含 Cosmos DB 实例的辅助资源组。 有关详细信息，请参阅[静态加密-Cosmos DB](concept-enterprise-security.md#encryption-at-rest)。
+使用客户管理的密钥时，Azure 机器学习会创建一个包含 Cosmos DB 实例的辅助资源组。 有关详细信息，请参阅 [静态加密-Cosmos DB](concept-enterprise-security.md#encryption-at-rest)。
 
-可为数据提供的其他配置是将**confidential_data**参数设置为**true**。 这样做会执行以下操作：
+可为数据提供的其他配置是将 **confidential_data** 参数设置为 **true**。 这样做会执行以下操作：
 
 * 开始加密 Azure 机器学习计算群集的本地暂存磁盘，并提供未在订阅中创建任何以前的群集。 如果你之前在订阅中创建了一个群集，请打开支持票证，以便为你的计算群集启用暂存磁盘的加密。
 * 清除运行之间的本地暂存磁盘。
@@ -363,7 +363,7 @@ New-AzResourceGroupDeployment `
     > [!IMPORTANT]
     > 创建工作区后，无法更改机密数据、加密、密钥保管库 ID 或密钥标识符的设置。 要更改这些值，必须使用新值创建新工作区。
 
-  有关详细信息，请参阅[静态加密](concept-enterprise-security.md#encryption-at-rest)。
+  有关详细信息，请参阅 [静态加密](concept-enterprise-security.md#encryption-at-rest)。
 
 ## <a name="deploy-workspace-behind-a-virtual-network"></a>在虚拟网络后部署工作区
 
@@ -377,10 +377,10 @@ New-AzResourceGroupDeployment `
 
 ### <a name="only-deploy-workspace-behind-private-endpoint"></a>仅将工作区部署到专用终结点后面
 
-如果关联的资源不在虚拟网络后面，则可以将**privateEndpointType**参数设置为 `AutoAproval` 或， `ManualApproval` 以便将工作区部署到专用终结点之后。 此操作可用于新的和现有的工作区。 更新现有工作区时，请使用现有工作区中的信息填充模板参数。
+如果关联的资源不在虚拟网络后面，则可以将 **privateEndpointType** 参数设置为 `AutoAproval` 或， `ManualApproval` 以便将工作区部署到专用终结点之后。 此操作可用于新的和现有的工作区。 更新现有工作区时，请使用现有工作区中的信息填充模板参数。
 
 > [!IMPORTANT]
-> 部署仅在支持专用终结点的区域内有效。
+> 使用 Azure 专用链接为 Azure 机器学习工作区创建专用终结点当前为公共预览版。 此功能仅在 **美国东部** 和 **美国西部 2** 区域提供。 此预览版在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -410,7 +410,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="use-a-new-virtual-network"></a>使用新的虚拟网络
 
-若要在新的虚拟网络后面部署资源，请将**vnetOption**设置为 "新建"，并将相应资源的虚拟网络设置设置为 "**新建**"。 以下部署显示了如何使用新的虚拟网络后面的存储帐户资源部署工作区。
+若要在新的虚拟网络后面部署资源，请将 **vnetOption** 设置为 "新建"，并将相应资源的虚拟网络设置设置为 " **新建** "。 以下部署显示了如何使用新的虚拟网络后面的存储帐户资源部署工作区。
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
@@ -523,7 +523,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="use-an-existing-virtual-network--resources"></a>使用现有的虚拟网络 & 资源
 
-若要使用现有的关联资源部署工作区，你必须将**vnetOption**参数设置为 "**现有**" 以及子网参数。 但是，在部署**之前**，需要在虚拟网络中为每个资源创建服务终结点。 与新的虚拟网络部署类似，你可以在虚拟网络后使用一个或全部资源。
+若要使用现有的关联资源部署工作区，你必须将 **vnetOption** 参数设置为 " **现有** " 以及子网参数。 但是，在部署 **之前** ，需要在虚拟网络中为每个资源创建服务终结点。 与新的虚拟网络部署类似，你可以在虚拟网络后使用一个或全部资源。
 
 > [!IMPORTANT]
 > 子网应具有 `Microsoft.Storage` 服务终结点
@@ -640,8 +640,8 @@ New-AzResourceGroupDeployment `
 
 ## <a name="use-the-azure-portal"></a>使用 Azure 门户
 
-1. 遵循[从自定义模板部署资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)中的步骤。 当你到达 "__选择模板__" 屏幕时，从下拉列表中选择 " **201-计算机-高级**" 模板。
-1. 选择 "__选择模板__" 以使用模板。 根据你的部署方案，提供以下所需的信息和任何其他参数。
+1. 遵循[从自定义模板部署资源](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template)中的步骤。 当你到达 " __选择模板__ " 屏幕时，从下拉列表中选择 " **201-计算机-高级** " 模板。
+1. 选择 " __选择模板__ " 以使用模板。 根据你的部署方案，提供以下所需的信息和任何其他参数。
 
    * 订阅：选择用于这些资源的 Azure 订阅。
    * 资源组：选择或创建一个用于包含服务的资源组。
@@ -649,11 +649,11 @@ New-AzResourceGroupDeployment `
    * 工作区名称：要创建的 Azure 机器学习工作区所用的名称。 工作区名称的长度必须为 3 到 33 个字符。 只能包含字母数字字符和“-”。
    * 位置：选择要在其中创建资源的位置。
 1. 选择“查看 + 创建”。
-1. 在 "__查看__" 和 "创建" 屏幕中，同意列出的条款和条件，然后选择 "__创建__"。
+1. 在 " __查看__ " 和 "创建" 屏幕中，同意列出的条款和条件，然后选择 " __创建__"。
 
 有关详细信息，请参阅[从自定义模板部署资源](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 ### <a name="resource-provider-errors"></a>资源提供程序错误
 
@@ -754,7 +754,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="virtual-network-not-linked-to-private-dns-zone"></a>虚拟网络未链接到专用 DNS 区域
 
-使用专用终结点创建工作区时，模板会创建一个名为__privatelink.api.azureml.ms__的专用 DNS 区域。 __虚拟网络链接__自动添加到此专用 DNS 区域。 仅为在资源组中创建的第一个工作区和专用终结点添加链接;如果使用同一资源组中的专用终结点创建另一个虚拟网络和工作区，则可能无法将第二个虚拟网络添加到专用 DNS 区域。
+使用专用终结点创建工作区时，模板会创建一个名为 __privatelink.api.azureml.ms__的专用 DNS 区域。 __虚拟网络链接__自动添加到此专用 DNS 区域。 仅为在资源组中创建的第一个工作区和专用终结点添加链接;如果使用同一资源组中的专用终结点创建另一个虚拟网络和工作区，则可能无法将第二个虚拟网络添加到专用 DNS 区域。
 
 若要查看专用 DNS 区域已存在的虚拟网络链接，请使用以下 Azure CLI 命令：
 

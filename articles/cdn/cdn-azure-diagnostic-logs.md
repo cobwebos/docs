@@ -1,7 +1,7 @@
 ---
 title: 诊断日志
 titleSuffix: Azure Content Delivery Network
-description: 客户可为 Azure CDN 启用日志分析。
+description: 了解如何使用 Azure 诊断日志保存核心分析，使你能够从 Azure 内容交付网络终结点导出使用情况指标。
 services: cdn
 author: asudbring
 manager: KumudD
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: allensu
-ms.openlocfilehash: dbaba67a163bb0f948de5ba2ebbdba5497ad5ff9
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: 164560fff27adc2d4e63cc8471a26d1d710b89a5
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116975"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191279"
 ---
 # <a name="diagnostic-logs---azure-content-delivery-network"></a>诊断日志-Azure 内容分发网络
 
@@ -36,7 +36,7 @@ ms.locfileid: "87116975"
 * 将数据导出到事件中心，并关联到其他 Azure 服务的数据。
 * 将数据导出到 Azure Monitor 日志，并在自己的 Log Analytics 工作区中查看数据
 
-需要 Azure CDN 配置文件才能执行以下步骤。 继续之前，请参阅[创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。
+需要 Azure CDN 配置文件才能执行以下步骤。 继续之前，请参阅 [创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md) 。
 
 ## <a name="enable-logging-with-the-azure-portal"></a>使用 Azure 门户启用日志记录
 
@@ -48,20 +48,20 @@ ms.locfileid: "87116975"
 
 2. 选择要为其启用诊断日志的 CDN 终结点：
 
-    :::image type="content" source="./media/cdn-diagnostics-log/02_browse-to-diagnostics-logs.png" alt-text="选择 CDN 终结点。" border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/02_browse-to-diagnostics-logs.png" alt-text="选择 "CDN 终结点"。" border="true":::
 
 3. 在 "**监视**" 部分选择 "**诊断日志**"：
 
-    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="选择 诊断日志。" border="true":::
+    :::image type="content" source="./media/cdn-diagnostics-log/03_diagnostics-logs-options.png" alt-text="选择 "诊断日志"。" border="true":::
 
 ### <a name="enable-logging-with-azure-storage"></a>使用 Azure 存储启用日志记录
 
 若要使用存储帐户来存储日志，请执行以下步骤：
 
  >[!NOTE] 
- >若要完成这些步骤，需要一个存储帐户。 有关详细信息，请参阅：**[创建 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)**。
+ >若要完成这些步骤，需要一个存储帐户。 有关详细信息，请参阅： **[创建 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-account-create?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)** 。
     
-1. 对于 "**诊断设置名称**"，请输入诊断日志设置的名称。
+1. 对于 " **诊断设置名称**"，请输入诊断日志设置的名称。
  
 2. 选择“存档到存储帐户”****，然后选择“CoreAnalytics”****。 
 
@@ -71,41 +71,41 @@ ms.locfileid: "87116975"
 
     :::image type="content" source="./media/cdn-diagnostics-log/04_diagnostics-logs-storage.png" alt-text="诊断日志-存储。" border="true":::
 
-3. 选择“保存” 。
+3. 选择“保存”。
 
 ### <a name="send-to-log-analytics"></a>发送到 Log Analytics
 
 若要对日志使用 Log Analytics，请执行以下步骤：
 
 >[!NOTE] 
->需要使用 log analytics 工作区才能完成这些步骤。 有关详细信息，请参阅：**[在 Azure 门户中创建 Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)**。
+>需要使用 log analytics 工作区才能完成这些步骤。 有关详细信息，请参阅： **[在 Azure 门户中创建 Log Analytics 工作区](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)** 。
     
-1. 对于 "**诊断设置名称**"，请输入诊断日志设置的名称。
+1. 对于 " **诊断设置名称**"，请输入诊断日志设置的名称。
 
-2. 选择 "**发送到 Log Analytics**"，然后选择 " **CoreAnalytics**"。 
+2. 选择 " **发送到 Log Analytics**"，然后选择 " **CoreAnalytics**"。 
 
 3. 为日志选择 "订阅" 和 "Log Analytics" 工作区。
 
    :::image type="content" source="./media/cdn-diagnostics-log/05-la-workspace.png" alt-text="诊断日志-Log Analytics。" border="true":::
 
-4. 选择“保存” 。
+4. 选择“保存”。
 
 ### <a name="stream-to-an-event-hub"></a>流式传输到事件中心
 
 若要将事件中心用于日志，请执行以下步骤：
 
 >[!NOTE] 
->需要使用事件中心才能完成这些步骤。 有关详细信息，请参阅：**[快速入门：使用 Azure 门户创建事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)**。
+>需要使用事件中心才能完成这些步骤。 有关详细信息，请参阅： **[快速入门：使用 Azure 门户创建事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)** 。
     
-1. 对于 "**诊断设置名称**"，请输入诊断日志设置的名称。
+1. 对于 " **诊断设置名称**"，请输入诊断日志设置的名称。
 
-2. 选择 "**流式传输到事件中心**"，然后选择 " **CoreAnalytics**"。 
+2. 选择 " **流式传输到事件中心**"，然后选择 " **CoreAnalytics**"。 
 
 3. 选择日志的订阅和事件中心命名空间。
 
    :::image type="content" source="./media/cdn-diagnostics-log/06-eventhub-namespace.png" alt-text="诊断日志-事件中心。" border="true":::
 
-4. 选择“保存” 。
+4. 选择“保存”。
 
 
 ## <a name="enable-logging-with-powershell"></a>使用 PowerShell 启用日志记录
@@ -187,7 +187,7 @@ ms.locfileid: "87116975"
 ### <a name="using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 存储资源管理器
 若要下载该工具，请参阅 [Azure 存储资源管理器](https://storageexplorer.com/)。 下载并安装软件后，请将其配置为使用已配置为 CDN 诊断日志目标的同一 Azure 存储帐户。
 
-1.  打开**Microsoft Azure 存储资源管理器**
+1.  打开 **Microsoft Azure 存储资源管理器**
 2.  找到存储帐户
 3.  展开该存储帐户下的“Blob 容器”节点。****
 4.  选择名为 *insights-logs-coreanalytics* 的容器。
@@ -210,8 +210,8 @@ ms.locfileid: "87116975"
 |资源组名称 |CDN 资源所属资源组的名称。|
 |配置文件名称 |CDN 配置文件的名称|
 |终结点名称 |CDN 终结点的名称|
-|年份|  年份的四位数表示形式，例如 2017|
-|月| 月份的两位数表示形式。 01 = 一月 .。。12 = 12 月|
+|年龄|  年份的四位数表示形式，例如 2017|
+|月份| 月份的两位数表示形式。 01 = 一月 .。。12 = 12 月|
 |天|   月份中日的两位数表示形式|
 |PT1H.json| 实际存储分析数据的 JSON 文件|
 
@@ -221,7 +221,7 @@ ms.locfileid: "87116975"
 
 该工具的使用方式如下：
 
-1.  访问 GitHub 链接：[https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
+1.  访问 GitHub 链接： [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  下载代码。
 3.  遵照说明进行编译和配置。
 4.  运行该工具。
@@ -249,7 +249,7 @@ Microsoft 当前仅提供核心分析日志，其中包含一些显示 HTTP 响�
 并非所有提供商提供的所有指标都可用，尽管这种差异很小。 此表还显示了某提供商的给定指标是否可用。 这些指标仅适用于在其上拥有流量的 CDN 终结点。
 
 
-|指标                     | 描述 | Microsoft | Verizon | Akamai |
+|指标                     | 说明 | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
 | RequestCountTotal         | 在此期间请求命中的总次数。 | 是 | 是 |是 |
 | RequestCountHttpStatus2xx | 导致 2xx HTTP 代码（例如 200 和 202）的所有请求的计数。 | 是 | 是 |是 |

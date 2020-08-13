@@ -1,6 +1,6 @@
 ---
 title: 证书创建方法
-description: 在 Key Vault 中创建证书的方法。
+description: 了解用于在 Azure Key Vault 中创建或导入 Key Vault 证书的不同选项。 有多种方法可以创建 Key Vault 证书。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7450dd79247078afe02d1bb63727cfd260d674fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 312f04ff4b1d860724640dfc9e5ea9d75bb76bae
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81866259"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189980"
 ---
 # <a name="certificate-creation-methods"></a>证书创建方法
 

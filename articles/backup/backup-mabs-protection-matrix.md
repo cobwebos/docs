@@ -3,12 +3,12 @@ title: MABS（Azure 备份服务器）V3 UR1 保护矩阵
 description: 本文提供了一个支持矩阵，列出了受 Azure 备份服务器保护的所有工作负荷、数据类型和安装。
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: cdbe874baf45d9858acbf891af3c0aae4bd0c2d2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fa8e2a33718c17df7b918b2aaa545ca80c473c29
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036719"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190849"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS（Azure 备份服务器）V3 UR1 保护矩阵
 
@@ -25,7 +25,7 @@ ms.locfileid: "88036719"
 * 保护和恢复 - 列出工作负荷的详细信息，如支持的存储容器或支持的部署。
 
 >[!NOTE]
->MABS v3 UR1 不推荐使用对32位保护代理的支持。 请参阅[32 位保护代理弃用](backup-mabs-whats-new-mabs.md#32-bit-protection-agent-deprecation)。
+>MABS v3 UR1 不推荐使用对32位保护代理的支持。 请参阅 [32 位保护代理弃用](backup-mabs-whats-new-mabs.md#32-bit-protection-agent-deprecation)。
 
 ## <a name="protection-support-matrix"></a>保护支持矩阵
 
@@ -40,7 +40,7 @@ ms.locfileid: "88036719"
 | **工作负载**               | **版本**                                                  | **Azure 备份服务器安装**                       | **支持的 Azure 备份服务器** | **保护和恢复**                                  |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------- | ------------------------------------------------------------ |
 | 客户端计算机（64 位） | Windows 10                                                  | 物理服务器  <br><br>    Hyper-V 虚拟机   <br><br>   VMware 虚拟机 | V3 UR1                            | 卷、共享、文件夹、文件、已删除重复数据的卷   <br><br>   受保护的卷必须采用 NTFS 格式。 不支持 FAT 和 FAT32。  <br><br>    卷必须至少有 1 GB 空间。 Azure 备份服务器使用卷影复制服务 (VSS) 来创建数据快照；仅当卷至少有 1 GB 空间时，快照才能正常工作。 |
-| 服务器（64 位）          | Windows Server 2019、2016、2012 R2、2012                    | Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）  <br><br>    物理服务器  <br><br>    Hyper-V 虚拟机 <br><br>     VMware 虚拟机  <br><br>    Azure Stack | V3 UR1                            | 卷、共享、文件夹、文件、已删除重复数据的卷（NTFS 和 ReFS）  <br><br>   系统状态和裸机（当工作负荷作为 Azure 虚拟机运行时不支持） |
+| 服务器（64 位）          | Windows Server 2019、2016、2012 R2、2012                    | Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）  <br><br>    物理服务器  <br><br>    Hyper-V 虚拟机 <br><br>     VMware 虚拟机  <br><br>    Azure Stack | V3 UR1                            | 卷、共享、文件夹、文件 <br><br>    重复数据卷仅 (NTFS)   <br><br>   系统状态和裸机（当工作负荷作为 Azure 虚拟机运行时不支持） |
 | 服务器（64 位）          | Windows Server 2008 R2 SP1、Windows Server 2008 SP2（需安装 [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855)） | 物理服务器  <br><br>    Hyper-V 虚拟机  <br><br>      VMware 虚拟机  <br><br>   Azure Stack | V3 UR1                            | 卷、共享、文件夹、文件、系统状态/裸机        |
 | SQL Server                | SQL Server 2019、2017、2016 和[支持的 SP](https://support.microsoft.com/lifecycle/search?alpha=SQL%20Server%202016)、2014 和支持的 [SP](https://support.microsoft.com/lifecycle/search?alpha=SQL%20Server%202014) | 物理服务器  <br><br>     Hyper-V 虚拟机   <br><br>     VMware 虚拟机  <br><br>   Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）  <br><br>     Azure Stack | V3 UR1                            | 所有部署方案：数据库       <br><br>  MABS v3 UR1 支持备份基于 ReFS 卷的 SQL 数据库                  |
 | Exchange                   | Exchange 2019、2016                                         | 物理服务器   <br><br>   Hyper-V 虚拟机  <br><br>      VMware 虚拟机  <br><br>   Azure Stack  <br><br>    Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时） | V3 UR1                            | 保护（所有部署方案）：独立 Exchange 服务器、数据库可用性组 (DAG) 下的数据库  <br><br>    恢复（所有部署方案）：邮箱、DAG 下的邮箱数据库    <br><br>  MABS v3 UR1 支持备份基于 ReFS 的 Exchange |

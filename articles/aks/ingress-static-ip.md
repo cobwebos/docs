@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中使用静态
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: 38caddeece7b8e2a49d09e25a22e9996cf65d069
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 61996aed50861d60064a8a5c0b691bb9d7ae9ceb
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87335947"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192093"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用静态公共 IP 地址创建入口控制器
 
@@ -29,7 +29,7 @@ ms.locfileid: "87335947"
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-本文使用 [Helm 3][helm] 安装 NGINX 入口控制器和证书管理器。 请确保使用 Helm 的最新版本。 有关升级说明，请参阅 [Helm 安装文档][helm-install]。有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
+本文使用 [Helm 3][helm] 安装 NGINX 入口控制器和证书管理器。 请确保使用最新版本的 Helm，并且有权访问 *稳定* 和 *jetstack* Helm 存储库。 有关升级说明，请参阅 [Helm 安装文档][helm-install]。有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
 
 本文还要求运行 Azure CLI 2.0.64 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -50,7 +50,7 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 ```
 
 > [!NOTE]
-> 如果删除 AKS 群集，上述命令将创建一个要删除的 IP 地址。 另外，还可以在不同的资源组中创建一个 IP 地址，该资源组可以与 AKS 群集分开管理。 如果在不同的资源组中创建 IP 地址，请确保 AKS 群集使用的服务主体已将权限委派给其他资源组，如*网络参与者*。
+> 如果删除 AKS 群集，上述命令将创建一个要删除的 IP 地址。 另外，还可以在不同的资源组中创建一个 IP 地址，该资源组可以与 AKS 群集分开管理。 如果在不同的资源组中创建 IP 地址，请确保 AKS 群集使用的服务主体已将权限委派给其他资源组，如 *网络参与者*。
 
 现在，通过 Helm 部署 *nginx-ingress* 图表。 对于增加的冗余，NGINX 入口控制器的两个副本会在部署时具备 `--set controller.replicaCount` 参数。 若要充分利用正在运行的入口控制器副本，请确保 AKS 群集中有多个节点。
 
@@ -67,10 +67,10 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 > [!TIP]
 > 若要为对群集中容器的请求启用[客户端源 IP 保留][client-source-ip]，请将 `--set controller.service.externalTrafficPolicy=Local` 添加到 Helm install 命令中。 客户端源 IP 存储在 X-Forwarded-For 下的请求头中。 使用启用了“客户端源 IP 保留”的入口控制器时，TLS 直通将不起作用。
 
-使用入口控制器的**IP 地址**以及要用于 FQDN 前缀的**唯一名称**更新以下脚本。
+使用入口控制器的 **IP 地址** 以及要用于 FQDN 前缀的 **唯一名称** 更新以下脚本。
 
 > [!IMPORTANT]
-> 运行命令时，必须更新替换*STATIC_IP* ，并将其*DNS_LABEL*为自己的 IP 地址和唯一名称。
+> 运行命令时，必须更新替换 *STATIC_IP* ，并将其 *DNS_LABEL* 为自己的 IP 地址和唯一名称。
 
 ```console
 # Create a namespace for your ingress resources

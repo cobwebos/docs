@@ -1,6 +1,6 @@
 ---
 title: Azure 密钥保管库的虚拟网络服务终结点 - Azure 密钥保管库 | Microsoft Docs
-description: Key Vault 的虚拟网络服务终结点概述
+description: 了解 Azure Key Vault 的虚拟网络服务终结点如何允许你限制对指定的虚拟网络（包括使用方案）的访问。
 services: key-vault
 author: amitbapat
 ms.author: ambapat
@@ -9,12 +9,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 34e1b7e58a3ceb6c1c2d2b6bc4efd34ee93e9e4e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 891ea69dc6d53370f5f73f8bb3072a9795f07635
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090478"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190590"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault 的虚拟网络服务终结点
 
@@ -80,7 +80,7 @@ ms.locfileid: "87090478"
 |Azure 事件中心|[允许访问客户托管密钥方案的密钥保管库](https://docs.microsoft.com/azure/event-hubs/configure-customer-managed-key)|
 |Azure 服务总线|[允许访问客户托管密钥方案的密钥保管库](https://docs.microsoft.com/azure/service-bus-messaging/configure-customer-managed-key)|
 |Azure 导入/导出| [将 Azure Key Vault 中的客户管理的密钥用于导入/导出服务](https://docs.microsoft.com/azure/storage/common/storage-import-export-encryption-key-portal)
-|Azure 容器注册表|[使用客户托管密钥的注册表加密](../../container-registry/container-registry-customer-managed-keys.md)<br><br/>[将项目传输到另一个注册表](../../container-registry/container-registry-transfer-images.md)
+|Azure 容器注册表|[使用客户管理的密钥进行注册表加密](../../container-registry/container-registry-customer-managed-keys.md)<br><br/>[将项目传输到另一个注册表](../../container-registry/container-registry-transfer-images.md)
 
 > [!NOTE]
 > 必须设置相关 Key Vault 访问策略，才能允许相应的服务访问 Key Vault。

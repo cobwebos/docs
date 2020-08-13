@@ -3,20 +3,20 @@ title: 已知问题与故障排除
 titleSuffix: Azure Machine Learning
 description: 获取有关在 Azure 机器学习中查找和更正错误或失败的帮助。 了解已知问题、故障排除和解决方法。
 services: machine-learning
-author: j-martens
-ms.author: jmartens
+author: likebupt
+ms.author: keli19
 ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
-ms.date: 08/06/2020
-ms.openlocfilehash: 17d6137dd243c3bce011a1841ea9bca64e0b64ba
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.date: 08/13/2020
+ms.openlocfilehash: 71457be4e572a0e04dfffd0689bfbd458f7c2622
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120756"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190501"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure 机器学习中的已知问题和故障排除
 
@@ -203,7 +203,7 @@ ms.locfileid: "88120756"
 |查看映像时，最近添加标签的映像不显示。     |   若要加载所有带标签的映像，请选择“第一个”按钮。 按下“第一个”按钮会返回到列表的最前面，但会加载所有带标签的数据。      |
 |在为对象检测提供标记时按 Esc 键会在左上角创建大小为零的标签。 在此状态下提交标签会失败。     |   单击标签旁边的打叉标记来删除该标签。  |
 
-### <a name="data-drift-monitors"></a><a name="data-drift"></a>数据偏移监视器
+### <a name="data-drift-monitors"></a><a name="data-drift"></a> 数据偏移监视器
 
 数据偏移监视器的限制和已知问题：
 
@@ -219,11 +219,11 @@ ms.locfileid: "88120756"
     | 分类 | string、bool、int、float | 特征中的唯一值数小于 100，并小于行数的 5%。 | Null 被视为其自身的类别。 | 
     | 数值 | int、float | 特征中的值为数字数据类型，且不符合分类特征的条件。 | 如果 15% 以上的值为 null，则会删除特征。 | 
 
-* 如果已[创建数据偏移监视器](how-to-monitor-datasets.md)，但在 Azure 机器学习 studio 中看不到数据**集监视器**页上的数据，请尝试以下。
+* 如果已 [创建数据偏移监视器](how-to-monitor-datasets.md) ，但在 Azure 机器学习 studio 中看不到数据 **集监视器** 页上的数据，请尝试以下。
 
     1. 检查是否已在页面顶部选择了正确的日期范围。  
-    1. 在 "**数据集监视器**" 选项卡上，选择 "试验" 链接以检查运行状态。  此链接位于表的最右侧。
-    1. 如果运行已成功完成，请检查驱动程序日志以查看已生成的指标数，或者是否有任何警告消息。  单击试验后，在 "**输出 + 日志**" 选项卡中查找驱动程序日志。
+    1. 在 " **数据集监视器** " 选项卡上，选择 "试验" 链接以检查运行状态。  此链接位于表的最右侧。
+    1. 如果运行已成功完成，请检查驱动程序日志以查看已生成的指标数，或者是否有任何警告消息。  单击试验后，在 " **输出 + 日志** " 选项卡中查找驱动程序日志。
 
 * 如果 SDK `backfill()` 函数未生成预期的输出，则可能是由于身份验证问题。  创建要传入到此函数中的计算时，请勿使用 `Run.get_context().experiment.workspace.compute_targets`，  而应使用 [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py)（例如以下代码）来创建要传入到该 `backfill()` 函数中的计算： 
 
@@ -248,6 +248,27 @@ ms.locfileid: "88120756"
 ```python
 import time
 time.sleep(600)
+```
+
+* **实时终结点的日志：**
+
+实时终结点的日志是客户数据。 对于实时终结点故障排除，可以使用以下代码来启用日志。 
+
+有关详细信息，请参阅 [本文](https://docs.microsoft.com/azure/machine-learning/how-to-enable-app-insights#query-logs-for-deployed-models)中的监视 web 服务终结点。
+
+```python
+from azureml.core import Workspace
+from azureml.core.webservice import Webservice
+
+ws = Workspace.from_config()
+service = Webservice(name="service-name", workspace=ws)
+logs = service.get_logs()
+```
+如果有多个租户，则可能需要先添加下面的身份验证代码 `ws = Workspace.from_config()`
+
+```python
+from azureml.core.authentication import InteractiveLoginAuthentication
+interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in which your workspace resides")
 ```
 
 ## <a name="train-models"></a>训练模型
@@ -303,14 +324,14 @@ time.sleep(600)
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
     ```
 * **automl_setup 失败**： 
-    * 在 Windows 上，从 Anaconda 提示符运行 automl_setup。 若要安装 Miniconda) ，请单击[此处](https://docs.conda.io/en/latest/miniconda.html)。
+    * 在 Windows 上，从 Anaconda 提示符运行 automl_setup。 若要安装 Miniconda) ，请单击 [此处](https://docs.conda.io/en/latest/miniconda.html)。
     * 通过运行命令确保安装了 conda 64 位，而不是32位 `conda info` 。 `platform`应该 `win-64` 适用于 Windows 或 `osx-64` for Mac。
     * 确保已安装 conda 4.4.10 或更高版本。 可以通过命令检查版本 `conda -V` 。 如果你安装了以前的版本，则可以使用命令进行更新： `conda update conda` 。
-    * Linux`gcc: error trying to exec 'cc1plus'`
+    * Linux `gcc: error trying to exec 'cc1plus'`
       *  如果 `gcc: error trying to exec 'cc1plus': execvp: No such file or directory` 遇到错误，请使用管理中心捆绑命令安装 build essentials `sudo apt-get install build-essential` 。
       * 将新名称作为第一个参数传递给 automl_setup 以创建新的 conda 环境。 使用查看现有的 conda 环境 `conda env list` ，并使用将其删除 `conda env remove -n <environmentname>` 。
       
-* **automl_setup_linux sh 失败**：如果 automl_setup_linus，则在 Ubuntu Linux 出现错误：`unable to execute 'gcc': No such file or directory`-
+* **automl_setup_linux sh 失败**：如果 automl_setup_linus，则在 Ubuntu Linux 出现错误： `unable to execute 'gcc': No such file or directory`-
   1. 确保启用出站端口53和80。 在 Azure VM 上，可以通过在 Azure 门户中选择 VM 并单击 "网络" 来执行此操作。
   2. 运行命令 `sudo apt-get update`
   3. 运行命令 `sudo apt-get install build-essential --fix-missing`
@@ -329,7 +350,7 @@ time.sleep(600)
   1. 确保 ipynb 笔记本已成功运行。
   2. 如果正在运行的文件夹不在运行的文件夹下运行 `configuration.ipynb` ，请将文件夹 aml_config，并将其包含的文件 config.js到新文件夹中。 From_config 读取笔记本文件夹或其父文件夹的 config.js。
   3. 如果正在使用新的订阅、资源组、工作区或区域，请确保 `configuration.ipynb` 再次运行笔记本。 仅当工作区在指定的订阅下指定的资源组中已存在时，才能直接更改 config.js。
-  4. 若要更改区域，请更改工作区、资源组或订阅。 `Workspace.create`如果工作区已经存在，则不会创建或更新它，即使指定的区域不同也是如此。
+  4. 若要更改区域，请更改工作区、资源组或订阅。 `Workspace.create` 如果工作区已经存在，则不会创建或更新它，即使指定的区域不同也是如此。
   
 * **示例笔记本失败**：如果示例笔记本失败并出现错误，preperty、方法或库不存在：
   * 确保已在 jupyter 笔记本中选择 correctcorrect 内核。 内核显示在笔记本页面的右上方。 默认值为 azure_automl。 请注意，内核将作为笔记本的一部分保存。 因此，如果切换到新的 conda 环境，则必须在笔记本中选择新内核。

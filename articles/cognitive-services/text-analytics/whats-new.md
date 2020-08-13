@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 95e9b208159e9af41563f12ce8af7892e13f6629
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1a5f7dcd37a970d5e039ebc38f1059839424ff68
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121844"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192027"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
@@ -26,15 +26,15 @@ ms.locfileid: "88121844"
 ### <a name="general-api-updates"></a>常规 API 更新
 
 * V3 的模型版本 `2020-07-01` `/keyphrases` `/pii` 和 `/languages` 终结点，这些终结点用于添加：
-    * 命名实体识别的其他政府和国家特定[实体类别](named-entity-types.md?tabs=personal)。
-* 对于超过已发布[数据限制](concepts/data-limits.md)的 v3 API 请求，将返回 HTTP 400 错误。 
+    * 命名实体识别的其他政府和国家特定 [实体类别](named-entity-types.md?tabs=personal) 。
+* 对于超过已发布 [数据限制](concepts/data-limits.md)的 v3 API 请求，将返回 HTTP 400 错误。 
 
 ### <a name="text-analytics-for-health-container-august-updates"></a>运行状况容器的文本分析8月更新
 
 以下更新仅特定于运行状况容器文本分析的8月发行版。
 
-* 新模型-版本文本分析用于运行状况：`2020-07-24`
-* 用于发送运行状况请求的文本分析的新 URL：`http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` 
+* 新模型-版本文本分析用于运行状况： `2020-07-24`
+* 用于发送运行状况请求文本分析的新 URL： `http://<serverURL>:5000/text/analytics/v3.2-preview.1/entities/health` (请注意，需要使用浏览器缓存才能使用此新容器映像中包含的 demo web 应用) 
 
 JSON 响应中的以下属性已更改：
 
@@ -44,7 +44,7 @@ JSON 响应中的以下属性已更改：
     * `EXAMINATION_RELATION` 已重命名为 `RelationalOperator`。
     * `EXAMINATION_UNIT` 已重命名为 `MeasurementUnit`。
     * `EXAMINATION_VALUE` 已重命名为 `MeasurementValue`。
-    * `ROUTE_OR_MODE`已重命名 `MedicationRoute` 。
+    * `ROUTE_OR_MODE` 已重命名 `MedicationRoute` 。
     * 关系实体已 `ROUTE_OR_MODE_OF_MEDICATION` 重命名为 `RouteOfMedication` 。
 
 添加了以下实体：
@@ -114,7 +114,7 @@ JSON 响应中以下属性的名称已更改（如果适用）：
 > [详细了解文本分析 API v3](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/Languages)
 
 ### <a name="text-analytics-api-v31-public-preview"></a>文本分析 API 3.1 公共预览版
-   * 新情绪分析功能-[观点挖掘](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
+   * 新情绪分析功能- [观点挖掘](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
    * [ `PII`) 域筛选器的新个人 (](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) () 中的受保护的健康信息 `PHI` 。
 
 > [!div class="nextstepaction"]
@@ -135,11 +135,11 @@ JSON 响应中以下属性的名称已更改（如果适用）：
 
 ### <a name="named-entity-recognition-v3-public-preview"></a>命名实体识别 v3 公共预览版
 
-其他实体类型现已在命名实体识别 (NER) v3 公共预览服务中提供，因为我们展开了在文本中找到的 "常规" 和 "个人" 信息实体的检测。 此更新引入了[模型版本](concepts/model-versioning.md) `2020-02-01` ，其中包括：
+其他实体类型现已在命名实体识别 (NER) v3 公共预览服务中提供，因为我们展开了在文本中找到的 "常规" 和 "个人" 信息实体的检测。 此更新引入了 [模型版本](concepts/model-versioning.md) `2020-02-01` ，其中包括：
 
 * 以下常规实体类型的识别仅 (英语) ：
     * PersonType
-    * Products
+    * 产品
     * 事件
     * 地缘政治实体 (GPE) 作为 "位置" 下的子类型
     * 技能
@@ -151,7 +151,7 @@ JSON 响应中以下属性的名称已更改（如果适用）：
     * 日期作为 DateTime 下的子类型
     * 电子邮件 
     * 电话号码 (仅限我们) 
-    * URL
+    * 代码
     * IP 地址
 
 > [!div class="nextstepaction"]
@@ -161,9 +161,9 @@ JSON 响应中以下属性的名称已更改（如果适用）：
 
 #### <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
 
-* 用于识别个人信息实体类型的[新终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii)仅 (英语) 
+* 用于识别个人信息实体类型的 [新终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) 仅 (英语) 
 
-* 用于[实体识别](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)和[实体链接](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking)的不同终结点。
+* 用于 [实体识别](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) 和 [实体链接](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking)的不同终结点。
 
 * [模型版本](concepts/model-versioning.md) `2019-10-01` ，其中包括：
     * 扩展了文本中实体的检测和分类。 
@@ -175,7 +175,7 @@ JSON 响应中以下属性的名称已更改（如果适用）：
 
 #### <a name="sentiment-analysis-v3-public-preview"></a>情绪分析 v3 公共预览版
 
-* 用于分析情绪的[新终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment)。
+* 用于分析情绪的 [新终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) 。
 * [模型版本](concepts/model-versioning.md) `2019-10-01` ，其中包括：
 
     * API 文本分类和评分的准确性和详细信息的显著改进。

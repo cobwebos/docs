@@ -1,6 +1,6 @@
 ---
 title: Azure CDN 规则引擎的 HTTP 变量 | Microsoft Docs
-description: HTTP 变量可用于检索 HTTP 请求和响应元数据。
+description: 了解 HTTP 变量，它们允许你获取某些规则引擎功能的 HTTP 请求和响应元数据。 使用元数据更改请求/响应。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: 6e601e3e06965faf8ec0fd238c54115570150b61
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: a2d9fc98ba6f514afbd88e543a859a69e0fc6c6b
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203563"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192667"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN 规则引擎的 HTTP 变量
 HTTP 变量提供各种检索 HTTP 请求和响应元数据的方法。 随后可使用此元数据动态更改请求或响应。 以下规则引擎功能对 HTTP 变量的使用具有一定的限制：
@@ -96,13 +96,13 @@ HTTP 变量名仅支持字母字符和下划线。 请将不支持的字符转�
 | --------- | ----------- |
 | := | 指示变量为以下情况时将向其分配默认值： <br />- 缺失 <br />- 设置为 NULL。 |
 | :+ | 指示变量已分配有一个值时将向其分配默认值。 |
-| 解码的字符： | 指示将扩展分配给变量的值的子字符串。 |
+| : | 指示将扩展分配给变量的值的子字符串。 |
 | # | 指示此分隔符出现在与变量关联的值的开头时，应删除在其后面指定的模式。 |
 | % | 指示此分隔符出现在与变量关联的值的末尾时，应删除在其后面指定的模式。 <br />此定义仅适用于 % 符号用作分隔符的情况。 |
 | / | 分隔 HTTP 变量或模式。 |
 | // | 查找和替换指定模式的所有实例。 |
 | /= | 查找、复制和重写指定模式的所有匹配项。 |
-| ， | 将与 HTTP 变量关联的值转换为小写。 |
+| , | 将与 HTTP 变量关联的值转换为小写。 |
 | ^ | 将与 HTTP 变量关联的值转换为大写。 |
 | ,, | 将与 HTTP 变量关联的值中的指定字符的所有实例转换为小写。 |
 | ^^ | 将与 HTTP 变量关联的值中的指定字符的所有实例转换为大写。 |

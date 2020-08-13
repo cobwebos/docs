@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和配
 services: container-service
 ms.topic: article
 ms.date: 07/20/2020
-ms.openlocfilehash: 2c75d41d827ad1838898736ba8ff41aaef0b6f13
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 6a34649bba275fa4b11a4c5a0c0084235d83fd4a
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927043"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190763"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建入口控制器
 
@@ -27,7 +27,7 @@ ms.locfileid: "87927043"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-本文使用 [Helm 3][helm] 安装 NGINX 入口控制器。
+本文使用 [Helm 3][helm] 安装 NGINX 入口控制器。 请确保使用最新版本的 Helm 并具有对 *稳定* Helm 存储库的访问权限。
 
 本文还要求运行 Azure CLI 2.0.64 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 

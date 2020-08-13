@@ -1,6 +1,6 @@
 ---
 title: 密钥保管库 .NET 2.x API 发行说明 | Microsoft Docs
-description: .NET 开发人员可使用此 API 来编写 Azure 密钥保管库的代码
+description: '了解如何更新为 Azure Key Vault 早期版本编写的应用程序，以使用适用于 c # 和 .NET 的2.0 版 Azure Key Vault 库。'
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 436b9c1569d7c33f79a126cd4d0513bac9385d8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 018570019b306dced76760fefa4441ee7d86ad2a
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81431912"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189833"
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure 密钥保管库 .NET 2.0 - 发行说明和迁移指南
 以下信息有助于迁移到 C# 和 .NET 的 Azure Key Vault 库版本 2.0。  针对早期版本所编写的应用需进行更新，以支持最新版本。  为完全支持新增和改进的功能（如 Key Vault 证书），这些更改是必需的  。

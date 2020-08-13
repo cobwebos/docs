@@ -1,22 +1,22 @@
 ---
 title: 网络合作伙伴：Azure 网络 | Microsoft Docs
-description: 本文提供了 MSP 网络合作伙伴列表
+description: 了解 Azure 网络托管服务提供商合作伙伴计划并查找提供云和混合网络服务的合作伙伴列表。
 services: networking
 author: skishen525
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: 69129ad0ecda6b5893a5f758b8cac9a30dd0b093
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 841c4d85dee829eeebaef17e6ff12343d9940d03
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282103"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192047"
 ---
 # <a name="about-azure-networking-msp-partners"></a>关于 Azure 网络 MSP 合作伙伴
 
-[Azure 网络托管服务提供商（MSP）合作伙伴计划](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/)可让网络服务重点 Msp、Telcos 和系统集成商（si）提供围绕 Azure 的网络产品和服务组合的云和混合网络服务。
+[ (MSP) 合作伙伴计划的 Azure 网络托管服务提供商](https://azure.microsoft.com/blog/enhancing-the-customer-experience-with-the-azure-networking-msp-partner-program/)允许网络服务重点 Msp、Telcos 和系统集成商 (SIs) 提供围绕 Azure 的网络产品和服务组合的云和混合网络服务。
 
 Azure 网络 MSP 是一组专门的托管服务提供商，可解决云和混合网络各个方面的企业云网络需求和挑战。 托管网络服务包括以下一项或多项服务：网络体系结构、规划、部署、操作、维护和优化。
 
@@ -55,7 +55,7 @@ Azure 网络 MSP 是一组专门的托管服务提供商，可解决云和混合
 |[Vigilant IT](https://vigilant.it/manage-cloud-service/)|[Azure 运行状况检查：5 日评估](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute：5 日实现](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis 托管 ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Fortinet 提供支持的 Vandis 托管 VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview)；[Palo Alto Networks 提供支持的 Vandis 托管 VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-以下 Azure 网络 MSP 合作伙伴提供的 azure Marketplace 适用于托管 ExpressRoute、虚拟 WAN、安全服务和私有边缘区域服务： [Amdocs](https://www.amdocs.com/); [德国 Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406); [IX 范围](https://www.ixreach.com/services/sdn-cloud-connect/); [InterCloud](https://intercloud.com/partners/microsoft-azure/); [KINX](https://www.kinx.net/service/cloud/?lang=en);[OmniClouds](https://omniclouds.com/); [Sejong 电信](https://www.sejongtelecom.net/en/pages/service/cloud_ms);
+以下 Azure 网络 MSP 合作伙伴提供的 azure Marketplace 适用于托管 ExpressRoute、虚拟 WAN、安全服务和私有边缘区域服务： [Amdocs](https://www.amdocs.com/);  [德国 Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406);  [IX 范围](https://www.ixreach.com/services/sdn-cloud-connect/);  [InterCloud](https://intercloud.com/partners/microsoft-azure/);  [KINX](https://www.kinx.net/service/cloud/?lang=en); [OmniClouds](https://omniclouds.com/);  [Sejong 电信](https://www.sejongtelecom.net/en/pages/service/cloud_ms);
 
 ## <a name="expressroute-partners"></a><a name="expressroute"></a>ExpressRoute 合作伙伴
 

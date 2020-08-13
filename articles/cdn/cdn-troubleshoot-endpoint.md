@@ -1,6 +1,6 @@
 ---
 title: Azure CDN 终结点疑难解答-404 状态代码
-description: 排查 Azure CDN 终结点的 404 响应代码。
+description: 了解如何排查返回 404 HTTP 响应状态代码的 Azure 内容分发网络终结点的问题。
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 6476993627708670a210cce50072f1b183d90a8a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d6ad0b8b37bd4f04c22ed52d4ac6717202f22889
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84888683"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192495"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>排查 Azure CDN 终结点返回 404 状态代码的问题
 本文帮助你排查 Azure 内容分发网络 (CDN) 终结点返回 404 HTTP 响应状态代码的问题。
@@ -71,7 +71,7 @@ ms.locfileid: "84888683"
 验证“源类型”和“源主机名”的值是否正确。******** 在此示例 https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt 中，URL 的主机名部分是 *cdndocdemo.blob.core.windows.net*，这是正确的。 由于 Azure 存储、Web 应用和云服务源使用“源主机名”字段的下拉列表值，因此无需担心拼写正确问题。**** 但是，如果使用自定义源，请确保主机名拼写正确。
 
 #### <a name="http-and-https-ports"></a>HTTP 和 HTTPS 端口
-检查**HTTP**和**HTTPS 端口**。 在大多数情况下，80 和 443 都正确，无需任何更改。  但是，如果源服务器正在侦听其他端口，则应在此处表示出来。 如果不能确定，请查看源文件的 URL。 HTTP 和 HTTPS 规范使用端口 80 和 443 作为默认值。 在示例 URL https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt 中未指定端口，因此假设 443 为默认端口，并且设置是正确的。  
+检查 **HTTP** 和 **HTTPS 端口**。 在大多数情况下，80 和 443 都正确，无需任何更改。  但是，如果源服务器正在侦听其他端口，则应在此处表示出来。 如果不能确定，请查看源文件的 URL。 HTTP 和 HTTPS 规范使用端口 80 和 443 作为默认值。 在示例 URL https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt 中未指定端口，因此假设 443 为默认端口，并且设置是正确的。  
 
 但是，假设之前测试的源文件的 URL 为 http:\//www.contoso.com:8080/file.txt， 请注意主机名段末尾的 *:8080* 部分。 该数字指示浏览器使用端口8080连接到 www contoso.com 上的 web 服务器 \. ，因此需要在 " **HTTP 端口**" 字段中输入*8080* 。 请务必注意，这些端口设置只会影响该终结点用来从源中检索信息的那些端口。
 

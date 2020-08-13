@@ -11,19 +11,19 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/28/2020
-ms.openlocfilehash: 28fa3fdfdb8915d528d0765bd1fded8128621208
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bdb7ba30d9fa2d0bd1eff9368d6e30e516b53895
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166512"
+ms.locfileid: "88192718"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a> (预览版为 Azure 机器学习工作区配置 Azure 专用链接) 
 
 本文档介绍如何将 Azure 专用链接与 Azure 机器学习工作区配合使用。 
 
 > [!IMPORTANT]
-> 将 Azure Private Link 与 Azure 机器学习工作区结合使用目前为公共预览版。 此功能仅在**美国东部**和**美国西部 2**区域提供。 此预览版在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 将 Azure Private Link 与 Azure 机器学习工作区结合使用目前为公共预览版。 此功能仅在 **美国东部** 和 **美国西部 2** 区域提供。 此预览版在提供时没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 使用 Azure 专用链接，可以通过专用终结点连接到工作区。 专用终结点是虚拟网络中的一组专用 IP 地址。 然后，你可以限制工作区访问权限，只允许通过专用 IP 地址访问你的工作区。 专用链接有助于降低数据外泄风险。 若要详细了解专用终结点，请参阅 [Azure 专用链接](/azure/private-link/private-link-overview)一文。
 
@@ -39,9 +39,9 @@ ms.locfileid: "88166512"
 > [!IMPORTANT]
 > 目前，我们仅支持在创建新的 Azure 机器学习工作区时启用专用终结点。
 
-[https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced)可用于创建具有专用终结点的工作区。
+中的模板 [https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) 可用于创建具有专用终结点的工作区。
 
-有关使用此模板（包括专用终结点）的信息，请参阅[使用 Azure 资源管理器模板创建 Azure 机器学习的工作区](how-to-create-workspace-template.md)。
+有关使用此模板（包括专用终结点）的信息，请参阅 [使用 Azure 资源管理器模板创建 Azure 机器学习的工作区](how-to-create-workspace-template.md)。
 
 ## <a name="using-a-workspace-over-a-private-endpoint"></a>通过专用终结点使用工作区
 

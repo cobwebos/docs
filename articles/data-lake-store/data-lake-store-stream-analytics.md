@@ -1,17 +1,17 @@
 ---
 title: 将数据从流分析流式传输到 Data Lake Storage Gen1-Azure
-description: 使用 Azure 流分析将数据流式传输到 Azure Data Lake Storage Gen1。
+description: 了解如何使用 Azure Data Lake Storage Gen1 作为 Azure 流分析作业的输出，以及从 Azure 存储 blob 读取数据的简单方案。
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: 42c7894c33fe0f09748beee20508e7670545c0ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ef3d7400b64617df8d81c7b84e680496776b5bd
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515166"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192140"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>使用 Azure 流分析将 Azure 存储 Blob 中的数据流式传输至 Azure Data Lake Storage Gen1 中
 本文介绍如何使用 Azure Data Lake Storage Gen1 作为 Azure 流分析作业的输出。 本文演示了一个简单的方案：从 Azure 存储 blob（输入）读取数据并将数据写入 Data Lake Storage Gen1（输出）。
@@ -90,7 +90,7 @@ ms.locfileid: "85515166"
     
 ## <a name="run-the-stream-analytics-job"></a>运行流分析作业
 
-1. 若要运行流分析作业，必须从 "**查询**" 选项卡运行查询。对于本教程，可以通过将占位符替换为作业输入和输出别名来运行示例查询，如下面的屏幕截图中所示。
+1. 若要运行流分析作业，必须从 " **查询** " 选项卡运行查询。对于本教程，可以通过将占位符替换为作业输入和输出别名来运行示例查询，如下面的屏幕截图中所示。
 
     ![运行查询](./media/data-lake-store-stream-analytics/run.query.png "运行查询")
 

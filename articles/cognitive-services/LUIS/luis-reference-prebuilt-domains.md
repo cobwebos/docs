@@ -11,19 +11,19 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 05ad340b3856291832ba0521c7da70ad55260384
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d41ec3abfa2e562d5a6e11dd9ed0fcbcffead5c6
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78270616"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191970"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>LUIS 应用的预构建的域参考
 此参考提供有关[预构建的域](luis-how-to-use-prebuilt-domains.md)的信息，这些参考是 LUIS 提供的意向和实体的预构建集合。
 
 相比之下，[自定义域](luis-how-to-start-new-app.md)从无意向和模型开始。 可将任何预构建的域意向和实体添加到自定义模型中。
 
-## <a name="custom-domains-per-language"></a>每种语言的自定义域数
+## <a name="prebuilt-domains-per-language"></a>预生成的域/语言
 
 下表汇总了当前支持的域。 英语区域支持的域通常比其他语言区域更多。
 

@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 08/12/2020
-ms.openlocfilehash: 33521a5aed38cacbc7ce87b4a2a917ade866e378
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 62dfa3214b86139a8f836b3d9bd72585653b7fa2
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142428"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189936"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例的高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -75,12 +75,12 @@ SQL 数据库和 SQL 托管实例均在最新稳定版本的 SQL Server 数据�
 
 ## <a name="zone-redundant-configuration"></a>区域冗余配置
 
-默认情况下，将在同一数据中心内创建高级可用性模型的节点群集。 引入[Azure 可用性区域](../../availability-zones/az-overview.md)后，SQL 数据库可以将业务关键数据库的不同副本放置到同一区域中的不同可用性区域。 若要消除单一故障点，还要将控件环跨区域地复制为三个网关环 (GW)。 到特定网关环的路由受 [Azure 流量管理器](../../traffic-manager/traffic-manager-overview.md) (ATM) 控制。 由于高级或业务关键服务层中的区域冗余配置不会创建其他数据库冗余，因此你可以无需额外付费即可启用此功能。 通过选择区域冗余配置，你可以使你的高级或业务关键数据库弹性应对一组更大的故障，包括灾难性的数据中心中断，而不会对应用程序逻辑进行任何更改。 还可以将所有现有“高级”或“业务关键”数据库或池转换到区域冗余配置。
+默认情况下，将在同一数据中心内创建高级可用性模型的节点群集。 引入 [Azure 可用性区域](../../availability-zones/az-overview.md)后，SQL 数据库可以将业务关键数据库的不同副本放置到同一区域中的不同可用性区域。 若要消除单一故障点，还要将控件环跨区域地复制为三个网关环 (GW)。 到特定网关环的路由受 [Azure 流量管理器](../../traffic-manager/traffic-manager-overview.md) (ATM) 控制。 由于高级或业务关键服务层中的区域冗余配置不会创建其他数据库冗余，因此你可以无需额外付费即可启用此功能。 通过选择区域冗余配置，你可以使你的高级或业务关键数据库弹性应对一组更大的故障，包括灾难性的数据中心中断，而不会对应用程序逻辑进行任何更改。 还可以将所有现有“高级”或“业务关键”数据库或池转换到区域冗余配置。
 
 由于区域冗余数据库的副本在不同的数据中心具有一定距离，因此增加的网络延迟可能会增加提交时间，从而影响某些 OLTP 工作负载的性能。 始终可以通过禁用区域冗余设置返回到单个区域配置。 此过程是一种联机操作，类似于常规的服务层升级。 在此进程结束时，该数据库或池将从区域冗余环迁移到单个区域环，反之亦然。
 
 > [!IMPORTANT]
-> 目前，只有在 "高级" 和 "业务关键" 服务层中，才支持区域冗余数据库和弹性池。 使用业务关键层时，区域冗余配置仅在选择 Gen5 计算硬件时可用。 有关支持区域冗余数据库的区域的最新信息，请参阅[按区域提供的服务支持](../../availability-zones/az-region.md)。
+> 目前，只有在 "高级" 和 "业务关键" 服务层中，才支持区域冗余数据库和弹性池。 使用业务关键层时，区域冗余配置仅在选择 Gen5 计算硬件时可用。 有关支持区域冗余数据库的区域的最新信息，请参阅 [按区域提供的服务支持](../../availability-zones/az-region.md)。
 
 > [!NOTE]
 > 此功能在 SQL 托管实例中不可用。
@@ -101,8 +101,8 @@ SQL 数据库和 SQL 托管实例均在最新稳定版本的 SQL Server 数据�
 
 |部署类型|PowerShell|REST API| Azure CLI|
 |:---|:---|:---|:---|
-|数据库|[AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[数据库故障转移](/rest/api/sql/databases(failover)/failover/)|[az rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest)可用于从 Azure CLI 调用 REST API 调用|
-|弹性池|[AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[弹性池故障转移](/rest/api/sql/elasticpools(failover)/failover/)|[az rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest)可用于从 Azure CLI 调用 REST API 调用|
+|数据库|[AzSqlDatabaseFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqldatabasefailover)|[数据库故障转移](/rest/api/sql/databases(failover)/failover/)|[az rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest) 可用于从 Azure CLI 调用 REST API 调用|
+|弹性池|[AzSqlElasticPoolFailover](https://docs.microsoft.com/powershell/module/az.sql/invoke-azsqlelasticpoolfailover)|[弹性池故障转移](/rest/api/sql/elasticpools(failover)/failover/)|[az rest](https://docs.microsoft.com/cli/azure/reference-index#az-rest) 可用于从 Azure CLI 调用 REST API 调用|
 |托管实例|[AzSqlInstanceFailover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover/)|[托管实例-故障转移](https://docs.microsoft.com/rest/api/sql/managed%20instances%20-%20failover/failover)|[az sql mi 故障转移](/cli/azure/sql/mi/#az-sql-mi-failover)|
 
 > [!IMPORTANT]
@@ -117,4 +117,5 @@ Azure SQL 数据库和 Azure SQL 托管实例提供与 Azure 平台深度集成�
 - 了解 [Azure 可用性区域](../../availability-zones/az-overview.md)
 - 了解 [Service Fabric](../../service-fabric/service-fabric-overview.md)
 - 了解 [Azure 流量管理器](../../traffic-manager/traffic-manager-overview.md)
+- 了解 [如何在 SQL 托管实例上启动手动故障转移](../managed-instance/user-initiated-failover.md)
 - 有关高可用性和灾难恢复的更多选项，请参阅[业务连续性](business-continuity-high-availability-disaster-recover-hadr-overview.md)

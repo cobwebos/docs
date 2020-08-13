@@ -1,6 +1,6 @@
 ---
 title: Azure ExpressRoute：配置 ExpressRoute Direct： CLI
-description: 本文将帮助你使用 Azure CLI
+description: 了解如何使用 Azure CLI 将 Azure ExpressRoute Direct 配置为直接连接到世界各地的对等互连位置上的 Microsoft 全球网络。
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/20/2019
 ms.author: cherylmc
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4cbacf997413c4eba1e8a142925cc6cde58fb0ec
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5d1e1d6ab5a8d4444ad4a5a4748859fd12aa3c1e
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87488000"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192259"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>使用 Azure CLI 配置 ExpressRoute Direct
 
@@ -285,9 +285,9 @@ ms.locfileid: "87488000"
 
 只能在 ExpressRoute Direct 上使用其他线路带宽来支持上面概述的场景。 带宽为 40 Gbps 和 100 Gbps。
 
-**SkuTier**可以是本地、标准或高级。
+**SkuTier** 可以是本地、标准或高级。
 
-**SkuFamily**必须是 MeteredData，因为 ExpressRoute 直接不支持。
+**SkuFamily** 必须是 MeteredData，因为 ExpressRoute 直接不支持。
 在 ExpressRoute Direct 资源上创建线路：
 
   ```azurecli

@@ -1,17 +1,17 @@
 ---
 title: 性能优化-Azure Data Lake Storage Gen1 上的 Hive
-description: 适用于 Hive on HdInsight 和 Azure Data Lake Storage Gen1 的性能优化指南。
+description: 了解针对 HdInsight 上的 Hive 和 Azure Data Lake Storage Gen1 的性能优化。 对于 i/o 密集型查询，优化 Hive 以获得更好的性能。
 author: stewu
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 9e05773955fb79007a5d5899babf8680c69aa654
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d10b1811257e14238cb04a79ff184cee57aab471
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281712"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189952"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Hive on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
 
@@ -20,10 +20,10 @@ ms.locfileid: "87281712"
 ## <a name="prerequisites"></a>先决条件
 
 * **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Data Lake Storage Gen1 帐户**。 有关如何创建一个的说明，请参阅[Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
+* **Data Lake Storage Gen1 帐户**。 有关如何创建一个的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
 * 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集****。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
 * **在 HDInsight 上运行 Hive**。  若要了解有关在 HDInsight 上运行 Hive 作业的信息，请参阅[在 HDInsight 上使用 Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
-* **Data Lake Storage Gen1 的性能优化指南**。  有关一般的性能概念，请参阅[Data Lake Storage Gen1 性能优化指南](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
+* **Data Lake Storage Gen1 的性能优化指南**。  有关一般的性能概念，请参阅 [Data Lake Storage Gen1 性能优化指南](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
 
 ## <a name="parameters"></a>参数
 

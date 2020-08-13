@@ -1,18 +1,18 @@
 ---
 title: Azure ExpressRoute：监视、指标和警报
-description: 此页提供有关 ExpressRoute 监视的信息
+description: 了解有关使用 Azure Monitor 的 Azure ExpressRoute 监视、指标和警报，一种是跨 Azure 的所有指标、警报和诊断日志的一站。
 services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 08/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6622a6e9f6865dbbafa145d6773440599b0c2777
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 49e5acb7fc0cfe947d846f2943fb5071d6554ea5
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84738900"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192476"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute 监视、指标和警报
 

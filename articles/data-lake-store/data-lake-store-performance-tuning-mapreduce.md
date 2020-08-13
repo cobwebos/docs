@@ -1,33 +1,33 @@
 ---
 title: Azure Data Lake Storage Gen1 性能优化-MapReduce
-description: Data Lake Storage Gen1 MapReduce 性能优化指南
+description: 了解 Azure Data Lake Storage Gen1 中的 MapReduce 性能优化，包括参数、指南、示例计算和限制。
 author: stewu
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 27dadb7ef5b93f5d6b674116ca8bba1d6e2597fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03c35d0af97cf24d1683d0ff21f10a0371391616
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85510915"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190214"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>MapReduce on HDInsight 和 Azure Data Lake Storage Gen1 性能优化指南
 
 ## <a name="prerequisites"></a>先决条件
 
-* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
-* **Azure Data Lake Storage Gen1 帐户**。 有关如何创建一个的说明，请参阅[Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
+* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure Data Lake Storage Gen1 帐户**。 有关如何创建一个的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
 * 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集****。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 请确保对该群集启用远程桌面。
 * **在 HDInsight 上使用 MapReduce**。 有关详细信息，请参阅[在 HDInsight 上的 Hadoop 中使用 MapReduce](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)
-* **查看 Data Lake Storage Gen1 的性能优化指南**。 有关一般的性能概念，请参阅[Data Lake Storage Gen1 性能优化指南](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
+* **查看 Data Lake Storage Gen1 的性能优化指南**。 有关一般的性能概念，请参阅 [Data Lake Storage Gen1 性能优化指南](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
 
 ## <a name="parameters"></a>参数
 
 运行 MapReduce 作业时，以下是可配置以提高 Azure Data Lake Storage Gen1 性能的最重要参数：
 
-|参数      | 描述  |
+|参数      | 说明  |
 |---------|---------|
 |`Mapreduce.map.memory.mb`  |  要分配给每个映射器的内存量。  |
 |`Mapreduce.job.maps`     |  每个作业的映射任务数。  |
@@ -36,7 +36,7 @@ ms.locfileid: "85510915"
 
 ### <a name="mapreducemapmemory--mapreducereducememory"></a>Mapreduce .map。内存/Mapreduce. 减少内存
 
-根据映射和/或缩减任务所需的内存量调整此数字。 可以 `mapreduce.map.memory` `mapreduce.reduce.memory` 通过 Yarn 配置在 Ambari 中查看和的默认值。 在 Ambari 中，导航到 "YARN" 并查看 "配置 **" 选项卡**。将显示 YARN 内存。
+根据映射和/或缩减任务所需的内存量调整此数字。 可以 `mapreduce.map.memory` `mapreduce.reduce.memory` 通过 Yarn 配置在 Ambari 中查看和的默认值。 在 Ambari 中，导航到 "YARN" 并查看 "配置 **" 选项卡** 。将显示 YARN 内存。
 
 ### <a name="mapreducejobmaps--mapreducejobreduces"></a>Mapreduce. maps/Mapreduce。
 
@@ -54,7 +54,7 @@ ms.locfileid: "85510915"
 
 ### <a name="step-3-determine-total-yarn-memory"></a>步骤3：确定总 YARN 内存
 
-若要优化 mapreduce/mapreduce，请考虑可供使用的总 YARN 内存量。 该信息在 Ambari 中提供。 导航到 YARN 并**查看 "配置" 选项卡**。YARN 内存显示在此窗口中。 将 YARN 内存与群集中的节点数相乘，以获取总 YARN 内存。
+若要优化 mapreduce/mapreduce，请考虑可供使用的总 YARN 内存量。 该信息在 Ambari 中提供。 导航到 YARN 并 **查看 "配置" 选项卡** 。YARN 内存显示在此窗口中。 将 YARN 内存与群集中的节点数相乘，以获取总 YARN 内存。
 
 `Total YARN memory = nodes * YARN memory per node`
 

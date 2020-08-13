@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和配
 services: container-service
 ms.topic: article
 ms.date: 07/21/2020
-ms.openlocfilehash: a20ef3155e41a438aed7cea7e7d9814b3add4d14
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bda90967919474af5e1317e8e88cae110b05e94a
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056979"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191105"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建内部虚拟网络的入口控制器
 
@@ -27,7 +27,7 @@ ms.locfileid: "87056979"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-本文使用 [Helm 3][helm] 安装 NGINX 入口控制器和证书管理器。 有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
+本文使用 [Helm 3][helm] 安装 NGINX 入口控制器。 请确保使用最新版本的 Helm 并具有对 *稳定* Helm 存储库的访问权限。 有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
 
 本文还要求运行 Azure CLI 2.0.64 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -35,7 +35,7 @@ ms.locfileid: "87056979"
 
 默认情况下，NGINX 入口控制器通过动态公共 IP 地址分配创建。 常见的配置要求是使用内部专用网络和 IP 地址。 此方法仅限内部用户访问你的服务，不允许外部访问。
 
-根据以下示例清单文件创建名为 *internal-ingress.yaml* 的文件。 此示例将 *10.240.0.42* 分配给 *loadBalancerIP* 资源。 提供自己的可以与入口控制器配合使用的内部 IP 地址。 请确保该 IP 地址尚未在虚拟网络中使用。 此外，如果使用现有的虚拟网络和子网，则必须使用正确的权限配置 AKS 群集，以管理虚拟网络和子网。 有关详细信息，请参阅[在 Azure Kubernetes service （AKS）中将 kubenet 网络与你自己的 IP 地址范围配合使用][aks-configure-kubenet-networking]或[在 azure KUBERNETES service （AKS）中配置 azure CNI 网络][aks-configure-advanced-networking]。
+根据以下示例清单文件创建名为 *internal-ingress.yaml* 的文件。 此示例将 *10.240.0.42* 分配给 *loadBalancerIP* 资源。 提供自己的可以与入口控制器配合使用的内部 IP 地址。 请确保该 IP 地址尚未在虚拟网络中使用。 此外，如果使用现有的虚拟网络和子网，则必须使用正确的权限配置 AKS 群集，以管理虚拟网络和子网。 有关详细信息，请参阅 [在 Azure Kubernetes service 中将 kubenet 网络与你自己的 IP 地址范围配合使用 (AKS) ][aks-configure-kubenet-networking] 或 [在 azure Kubernetes Service 中配置 azure CNI 网络 (AKS) ][aks-configure-advanced-networking] 。
 
 ```yaml
 controller:
