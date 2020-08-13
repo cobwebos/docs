@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: 822390200b7a94f2bbf8aac56d26812f36b5f12a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1efae6563b88f82318f9b8358d255b234c6cb7fd
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85387603"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88116200"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory 代码示例（v1.0 终结点）
 
@@ -124,4 +124,4 @@ ASP.NET Web 应用  | ![此图显示了 .NET 徽标](media/sample-v2-code/logo-n
 
 - [Azure Active Directory 开发人员指南](v1-overview.md)
 - [Azure Active Directory 身份验证库](active-directory-authentication-libraries.md)
-- [Microsoft Graph API 概念和参考](https://docs.microsoft.com/graph/use-the-api)
+- [Microsoft Graph API 概念和参考](/graph/use-the-api)

@@ -12,12 +12,12 @@ ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv, marsma
 ms.custom: aaddev
-ms.openlocfilehash: 504caffe0505a4e8a66608fcad528130630a5cc8
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 23ab8c5092a546a7b66b93900c6c083ac8e84394
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86236199"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117764"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Microsoft 标识平台的发展
 
@@ -49,7 +49,7 @@ Azure 门户[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体�
 
 要与 Azure AD B2C 集成（对社交或本地身份进行身份验证时），需要在 Azure AD B2C 租户中注册应用程序。 这种体验也是 Azure 门户的一部分。
 
-使用[应用程序 API](https://docs.microsoft.com/graph/api/resources/application?view=graph-rest-1.0) 以编程方式配置与 Microsoft 标识平台集成的应用程序，以对 Microsoft 标识进行身份验证。
+使用[应用程序 API](/graph/api/resources/application?view=graph-rest-1.0) 以编程方式配置与 Microsoft 标识平台集成的应用程序，以对 Microsoft 标识进行身份验证。
 
 ### <a name="msal-libraries"></a>MSAL 库
 
@@ -57,7 +57,7 @@ Azure 门户[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)体�
 
 还可使用 MSAL 库将应用程序与 Azure AD B2C 集成。
 
-用于构建 Web 应用和 Web API 的服务器端库已正式发布：[ASP.NET](https://docs.microsoft.com/aspnet/overview) 和 [ASP.NET Core](https://docs.microsoft.com/aspnet/core/?view=aspnetcore-2.2)
+用于构建 Web 应用和 Web API 的服务器端库已正式发布：[ASP.NET](/aspnet/overview) 和 [ASP.NET Core](/aspnet/core/?view=aspnetcore-2.2)
 
 ### <a name="microsoft-identity-platform-endpoint"></a>Microsoft 标识平台终结点
 

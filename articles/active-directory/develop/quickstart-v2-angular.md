@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: a7553eea8941b93e589f38f8229ef35b70361f8e
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: bf921ce4ce3ad65f0787ccab2f0a064da8973af1
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129179"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115231"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>快速入门：在 Angular 单页应用程序中将用户登录并获取访问令牌
 
@@ -47,7 +47,7 @@ ms.locfileid: "87129179"
 >
 > 1. 登录 [Azure 门户](https://portal.azure.com)。
 > 1. 如果帐户有权访问多个租户，请在右上角选择该帐户，然后将门户会话设置为要使用的 Azure AD 租户。
-> 1. 按照说明在 Azure 门户中[注册单页应用程序](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration)。
+> 1. 按照说明在 Azure 门户中[注册单页应用程序](./scenario-spa-app-registration.md)。
 > 1. 在应用注册的“身份验证”窗格中添加新的平台，并注册重定向 URI：`http://localhost:4200/`。
 > 1. 本快速入门使用[隐式授权流](v2-oauth2-implicit-grant-flow.md)。 针对“ID 令牌”和“访问令牌”选择“隐式授权”设置。 由于此应用要将用户登录并调用 API，因此需要 ID 令牌和访问令牌。
 
@@ -99,7 +99,7 @@ ms.locfileid: "87129179"
 >|值名称|说明|
 >|---------|---------|
 >|Enter_the_Application_Id_Here|在应用程序注册的“概览”页中，这是你的“应用程序(客户端) ID”值。 |
->|Enter_the_Cloud_Instance_Id_Here|这是 Azure 云的实例。 对于主要云或全球 Azure 云，请输入 **https://login.microsoftonline.com** 。 对于国家/地区云（例如中国云），请参阅[国家/地区云](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)。|
+>|Enter_the_Cloud_Instance_Id_Here|这是 Azure 云的实例。 对于主要云或全球 Azure 云，请输入 **https://login.microsoftonline.com** 。 对于国家/地区云（例如中国云），请参阅[国家/地区云](./authentication-national-cloud.md)。|
 >|Enter_the_Tenant_Info_Here| 设置为以下选项之一：如果应用程序支持此组织目录中的帐户，请将此值替换为目录（租户）ID 或租户名称（例如 contoso.microsoft.com）。 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为 **organizations**。 如果应用程序支持“任何组织目录中的帐户和个人 Microsoft 帐户”，请将此值替换为 **common**。 若要限制对“仅限个人 Microsoft 帐户”的支持，请将此值替换为 **consumers**。 |
 >|Enter_the_Redirect_Uri_Here|替换为 http://localhost:4200 。|
 >|cacheLocation  | （可选）针对身份验证状态设置浏览器存储。 默认值为 sessionStorage。   |
@@ -142,5 +142,4 @@ ms.locfileid: "87129179"
 接下来，在 Angular 教程中了解如何将用户登录和获取令牌：
 
 > [!div class="nextstepaction"]
-> [Angular 教程](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-angular)
-
+> [Angular 教程](./tutorial-v2-angular.md)

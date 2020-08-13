@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c0d8d2b009194b58c76dbd0a171f701f90df4086
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f62f6702b36915c6a6e1350072982e231cd9c07e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058286"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118223"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>向 ASP.NET Web 应用添加 Microsoft 登录功能
 
@@ -264,7 +264,7 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
     ```
 
 ### <a name="more-information"></a>详细信息
-此页以 SVG 格式添加登录按钮，背景为黑色：<br/>![Microsoft 登录](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> 有关更多登录按钮，请转到[品牌准则](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "品牌准则")。
+此页以 SVG 格式添加登录按钮，背景为黑色：<br/>![Microsoft 登录](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> 有关更多登录按钮，请转到[品牌准则](./howto-add-branding-in-azure-ad-apps.md "品牌准则")。
 
 ## <a name="add-a-controller-to-display-users-claims"></a>添加控制器来显示用户声明
 此控制器演示如何使用 `[Authorize]` 属性来保护控制器。 此属性只允许通过身份验证的用户，从而限制对控制器的访问。 以下代码使用该属性来显示作为登录的一部分被检索的用户声明：
@@ -403,7 +403,7 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
 - 应用程序开发人员添加了任何需要“管理员许可”的附加权限。
 - 或者，在配置的租户（“企业应用程序”->“用户设置”）中，用户无法许可代表他们访问公司数据的应用。
 
-有关详细信息，请参阅 [Microsoft 标识平台终结点中的权限和许可](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)。
+有关详细信息，请参阅 [Microsoft 标识平台终结点中的权限和许可](./v2-permissions-and-consent.md)。
 
 ### <a name="view-application-results"></a>查看应用程序结果
 
@@ -424,7 +424,7 @@ OpenIDConnectAuthenticationOptions 中提供的参数充当应用程序与 Micro
 |**主题** |使用者 |唯一标识 Web 上用户的字符串|
 |**租户 ID** |Guid | 唯一表示用户的 Azure AD 组织的 **guid**|
 
-此外，还应当显示包含身份验证请求中所有声明的表格。 有关详细信息，请参阅 [ID 令牌中的声明列表](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)。
+此外，还应当显示包含身份验证请求中所有声明的表格。 有关详细信息，请参阅 [ID 令牌中的声明列表](./id-tokens.md)。
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>测试对具有 Authorize 属性的方法的访问（可选）
 
@@ -484,6 +484,6 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 了解如何生成调用 Microsoft Graph 的 Web 应用：
 
 > [!div class="nextstepaction"]
-> [Microsoft Graph ASP.NET 教程](https://docs.microsoft.com/graph/tutorials/aspnet)
+> [Microsoft Graph ASP.NET 教程](/graph/tutorials/aspnet)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

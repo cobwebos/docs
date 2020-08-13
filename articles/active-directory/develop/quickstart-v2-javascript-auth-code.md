@@ -12,18 +12,18 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-javascript
-ms.openlocfilehash: 02652243b3c25c0a02e325c8b7b1d7e7c226abcd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 461f05b90b79852194d657a5dcbc3ba7583cff8d
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87311936"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88115180"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>快速入门：使用授权代码流在 JavaScript SPA 中登录用户并获取访问令牌
 
 本快速入门通过一个代码示例演示 JavaScript 单页应用程序 (SPA) 如何通过使用授权代码流使用个人帐户、工作帐户和学校帐户将用户登录。 此代码示例还演示如何获取访问令牌来调用 Web API，在本例中为 Microsoft Graph API。 有关说明，请参阅[示例工作原理](#how-the-sample-works)。
 
-本快速入门将 MSAL.js 2.0 与授权代码流配合使用。 若要查看将 MSAL 1.0 与隐式流结合使用的类似快速入门，请参阅 [快速入门：在 JavaScript 单页应用中登录用户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-javascript)。
+本快速入门将 MSAL.js 2.0 与授权代码流配合使用。 若要查看将 MSAL 1.0 与隐式流结合使用的类似快速入门，请参阅 [快速入门：在 JavaScript 单页应用中登录用户](./quickstart-v2-javascript.md)。
 
 [!INCLUDE [MSAL.js 2.0 and Azure AD B2C temporary incompatibility notice](../../../includes/msal-b2c-cors-compatibility-notice.md)]
 
@@ -152,7 +152,7 @@ ms.locfileid: "87311936"
 >
 > [!div renderon="docs"]
 >
-> `Enter_the_Graph_Endpoint_Here` 是将针对其进行 API 调用的终结点。 对于主要或全局 Microsoft Graph API 服务，请输入 `https://graph.microsoft.com/`（包括末尾的正斜杠）。 若要详细了解国家云上的 Microsoft Graph，请参阅[国家云部署](https://docs.microsoft.com/graph/deployments)。
+> `Enter_the_Graph_Endpoint_Here` 是将针对其进行 API 调用的终结点。 对于主要或全局 Microsoft Graph API 服务，请输入 `https://graph.microsoft.com/`（包括末尾的正斜杠）。 若要详细了解国家云上的 Microsoft Graph，请参阅[国家云部署](/graph/deployments)。
 >
 > 如果使用的是主要（全球）Microsoft Graph API 服务，则 graphConfig.js 中的 `graphMeEndpoint` 和`graphMailEndpoint` 值应该类似于：
 >
@@ -202,4 +202,4 @@ npm install @azure/msal-browser
 若要查看生成本快速入门中使用的应用程序的详细分步指南，请参阅以下教程：
 
 > [!div class="nextstepaction"]
-> [有关登录和调用 MS Graph 的教程 >](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-javascript-auth-code)
+> [有关登录和调用 MS Graph 的教程 >](./tutorial-v2-javascript-auth-code.md)

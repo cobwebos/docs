@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-javascript
-ms.openlocfilehash: 787f30302d163dc0097cde1be31e745d7f29bb64
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 1e537c6f61a7c461b2a9edb4097fba95f5c66a6f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87129774"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120518"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>快速入门：在 JavaScript SPA 中登录用户并获得访问令牌
 
@@ -111,7 +111,7 @@ ms.locfileid: "87129774"
 >
 > 其中：
 > - \<Enter_the_Application_Id_Here> 是所注册应用程序的应用程序（客户端）ID。
-> - \<Enter_the_Cloud_Instance_Id_Here> 是 Azure 云的实例。 对于主要或全球 Azure 云，只需输入 *https://login.microsoftonline.com* 。 对于**国家**云（例如“中国”云），请参阅[国家云](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud)。
+> - \<Enter_the_Cloud_Instance_Id_Here> 是 Azure 云的实例。 对于主要或全球 Azure 云，只需输入 *https://login.microsoftonline.com* 。 对于**国家**云（例如“中国”云），请参阅[国家云](./authentication-national-cloud.md)。
 > - \<Enter_the_Tenant_info_here> 设置为以下选项之一：
 >    - 如果应用程序支持“此组织目录中的帐户”，请将此值替换为“租户 ID”或“租户名称”（例如，*contoso.microsoft.com*）。
 >    - 如果应用程序支持“任何组织目录中的帐户”，请将此值替换为 **organizations**。
@@ -144,7 +144,7 @@ ms.locfileid: "87129774"
 > [!div renderon="docs"]
 >
 > 其中：
-> - \<Enter_the_Graph_Endpoint_Here> 是将针对其进行 API 调用的终结点。 对于主要或全局 Microsoft Graph API 服务，只需输入 `https://graph.microsoft.com`。 有关详细信息，请参阅[国家云部署](https://docs.microsoft.com/graph/deployments)
+> - \<Enter_the_Graph_Endpoint_Here> 是将针对其进行 API 调用的终结点。 对于主要或全局 Microsoft Graph API 服务，只需输入 `https://graph.microsoft.com`。 有关详细信息，请参阅[国家云部署](/graph/deployments)
 >
 > #### <a name="step-4-run-the-project"></a>步骤 4：运行项目
 
@@ -300,7 +300,7 @@ myMSALObj.acquireTokenPopup(requestObj)
 有关为本快速入门生成应用程序的更详细分步指导，请参阅：
 
 > [!div class="nextstepaction"]
-> [有关登录和调用 MS Graph 的教程](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-javascriptspa)
+> [有关登录和调用 MS Graph 的教程](./tutorial-v2-javascript-spa.md)
 
 若要浏览 MSAL 存储库中的文档、常见问题解答、问题等，请参阅：
 

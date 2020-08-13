@@ -12,12 +12,12 @@ ms.date: 1/15/2020
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b2f74d2d441007f195abd38ca26ca7fa73605318
-ms.sourcegitcommit: d187fe0143d7dbaf8d775150453bd3c188087411
+ms.openlocfilehash: f49a5703b19a76095c8eafe358742b442725d3d0
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80886426"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88118240"
 ---
 # <a name="tutorial-use-shared-device-mode-in-your-android-application"></a>教程：在 Android 应用程序中使用共享设备模式
 
@@ -28,11 +28,11 @@ ms.locfileid: "80886426"
 
 ## <a name="developer-guide"></a>开发人员指南
 
-本指南为开发人员提供了使用 Microsoft 身份验证库 (MSAL) 在 Android 应用程序中实现共享设备模式的指导。 请参阅 [MSAL Android 教程](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android)，了解如何将 MSAL 与 Android 应用集成、将用户登录、调用 Microsoft Graph 以及将用户注销。
+本指南为开发人员提供了使用 Microsoft 身份验证库 (MSAL) 在 Android 应用程序中实现共享设备模式的指导。 请参阅 [MSAL Android 教程](./tutorial-v2-android.md)，了解如何将 MSAL 与 Android 应用集成、将用户登录、调用 Microsoft Graph 以及将用户注销。
 
 ### <a name="download-the-sample"></a>下载示例
 
-从 GitHub 克隆[示例应用程序](https://github.com/Azure-Samples/ms-identity-android-java/)。 示例能够在[单帐户或多帐户模式](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account)下工作。
+从 GitHub 克隆[示例应用程序](https://github.com/Azure-Samples/ms-identity-android-java/)。 示例能够在[单帐户或多帐户模式](./single-multi-account.md)下工作。
 
 ### <a name="add-the-msal-sdk-to-your-local-maven-repository"></a>将 MSAL SDK 添加到本地 Maven 存储库
 
@@ -46,7 +46,7 @@ dependencies{
 
 ### <a name="configure-your-app-to-use-shared-device-mode"></a>将应用配置为使用共享设备模式
 
-有关设置配置文件的详细信息，请参阅[配置文档](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration)。
+有关设置配置文件的详细信息，请参阅[配置文档](./msal-configuration.md)。
 
 在 MSAL 配置文件中将 `"shared_device_mode_supported"` 设置为 `true`。
 
@@ -204,7 +204,7 @@ private void onSignOutClicked()
 
 首先，在你的组织租户中注册应用程序。 然后，在 auth_config.json 中提供以下值，以便你的应用程序能够正常运行。
 
-有关如何执行此操作的信息，请参阅[注册应用程序](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-android#register-your-application)。
+有关如何执行此操作的信息，请参阅[注册应用程序](./tutorial-v2-android.md#register-your-application)。
 
 > [!NOTE]
 > 注册应用时，请使用左侧的快速入门指南，然后选择“Android”  。 这会出现一个页面，要求你为应用提供**包名称**和**签名哈希**。 这些值对于确保你的应用程序配置正常运行非常重要。 然后，你会收到一个配置对象，可将其用于你要剪切并粘贴到 auth_config.json 文件中的应用。

@@ -12,12 +12,12 @@ ms.date: 07/09/2020
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: identityplatformtop40
-ms.openlocfilehash: 566893a9babc3f771e3198970e0a5ae97592e322
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: e34eeeca3b17087fb5bd43ae353e43b5ab355831
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231669"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119549"
 ---
 # <a name="microsoft-identity-platform-overview"></a>Microsoft 标识平台概述
 
@@ -59,7 +59,7 @@ Microsoft 标识平台由多个组件组成：
 
 通过以下推荐文章，了解核心身份验证和 Azure AD 概念如何应用于 Microsoft 标识平台：
 
-- [身份验证基础知识](authentication-scenarios.md)
+- [身份验证基础知识](./authentication-vs-authorization.md)
 - [应用程序和服务主体](app-objects-and-service-principals.md)
 - [受众](v2-supported-account-types.md)
 - [权限和许可](v2-permissions-and-consent.md)
@@ -71,7 +71,7 @@ Microsoft 标识平台由多个组件组成：
 
 [Azure AD B2C](../../active-directory-b2c/overview.md) - 构建面向客户的应用程序，使你的用户可以使用 Facebook 或 Google 等社交帐户登录，也可以使用电子邮件地址和密码登录。
 
-[Azure AD B2B](../b2b/what-is-b2b.md) - 邀请外部用户加入你的 Azure AD 租户，作为可向其分配权限（用于授权）的“来宾”用户，同时他们可以使用其现有凭据进行身份验证。
+[Azure AD B2B](../external-identities/what-is-b2b.md) - 邀请外部用户加入你的 Azure AD 租户，作为可向其分配权限（用于授权）的“来宾”用户，同时他们可以使用其现有凭据进行身份验证。
 
 > [!TIP]
 > 是否正在寻找 Azure Active Directory 开发人员平台 (v1.0) 文档？ 请参阅[适用于开发人员的 Azure Active Directory (v1.0) 概述](../azuread-dev/v1-overview.md)。
