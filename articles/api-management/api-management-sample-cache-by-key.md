@@ -9,17 +9,18 @@ editor: ''
 ms.assetid: 772bc8dd-5cda-41c4-95bf-b9f6f052bc85
 ms.service: api-management
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: a366cf6d4e17e83fd89ae21631ad5b40e8971c1b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: cf9901b4e49460dd2fb91dceaf239571058c5284
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903436"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213328"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Azure API 管理中的自定义缓存
 Azure API 管理服务使用资源 URL 作为键，提供对 [HTTP 响应缓存](api-management-howto-cache.md)的内置支持。 可以使用 `vary-by` 属性根据请求标头修改键。 这对于缓存整个 HTTP 响应（ (也称为表示) 形式）非常有用，但有时只需缓存表示形式的一部分。 使用新的 [cache-lookup-value](./api-management-caching-policies.md#GetFromCacheByKey) 和 [cache-store-value](./api-management-caching-policies.md#StoreToCacheByKey) 策略可以存储和检索策略定义中的任意数据。 此功能使得以前推出的 [send-request](./api-management-advanced-policies.md#SendRequest) 策略更有作用，因为现在可以缓存来自外部服务的响应。

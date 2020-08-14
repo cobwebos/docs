@@ -3,21 +3,18 @@ title: 从包运行 Azure Functions
 description: 通过装载包含函数应用项目文件的部署包文件，让 Azure Functions 运行时运行函数。
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: d40896d6a4659945dbeda9ca965366f0b2ca4bd2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6a2633550c9bcbdc59baf99f79559655afbb9b74
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79365265"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214237"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>从包文件运行 Azure Functions
 
 在 Azure 中，可以直接从函数应用中的部署包文件运行函数。 另一种做法是在函数应用的 `d:\home\site\wwwroot` 目录中部署文件。
 
 本文介绍从包运行函数的好处。 此外，介绍如何在函数应用中启用此功能。
-
-> [!IMPORTANT]
-> 将函数部署到[高级计划](functions-scale.md#premium-plan)中的 Linux 函数应用时，应始终从包文件运行并[使用 Azure Functions Core Tools 发布应用](functions-run-local.md#project-file-deployment)。
 
 ## <a name="benefits-of-running-from-a-package-file"></a>从包文件运行的好处
   
@@ -35,7 +32,7 @@ ms.locfileid: "79365265"
 
 若要使函数应用从包运行，只需将 `WEBSITE_RUN_FROM_PACKAGE` 设置添加到函数应用设置。 `WEBSITE_RUN_FROM_PACKAGE` 设置可以使用以下值之一：
 
-| “值”  | 描述  |
+| 值  | 说明  |
 |---------|---------|
 | **`1`**  | 建议用于在 Windows 上运行的函数应用。 从函数应用的 `d:\home\data\SitePackages` 文件夹中的某个包文件运行。 如果不[使用 zip deploy 进行部署](#integration-with-zip-deployment)，则此选项要求该文件夹同时包含名为 `packagename.txt` 的文件。 此文件仅包含文件夹中包文件的名称（没有任何空白字符）。 |
 |**`<URL>`**  | 要运行的特定包文件的位置。 使用 Blob 存储时，应通过[共享访问签名 (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) 使用专用容器，使 Functions 运行时能够访问包。 可以使用 [Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)将包文件上传到 Blob 存储帐户。 指定 URL 时，还必须在发布更新的包后[同步触发器](functions-deployment-technologies.md#trigger-syncing)。 |
@@ -59,13 +56,13 @@ ms.locfileid: "79365265"
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 - Run From Package 将 `wwwroot` 设为只读，因此在将文件写入此目录时将收到一个错误。
 - 不支持 Tar 和 gzip 格式。
 - 此功能不与本地缓存组合。
 - 若要提高冷启动性能，请使用本地 Zip 选项 (`WEBSITE_RUN_FROM_PACKAGE`=1)。
-- "从包中运行" 与部署自定义选项（）不兼容 `SCM_DO_BUILD_DURING_DEPLOYMENT=true` ，则在部署过程中将忽略生成步骤。
+- “从包运行”与部署自定义选项 (`SCM_DO_BUILD_DURING_DEPLOYMENT=true`) 不兼容，在部署期间将忽略生成步骤。
 
 ## <a name="next-steps"></a>后续步骤
 

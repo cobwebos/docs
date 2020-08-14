@@ -1,24 +1,24 @@
 ---
 title: 概念-网络互连
-description: 了解 Azure VMware 解决方案（AVS）中的网络和互连的主要方面和使用案例
+description: '了解 Azure VMware 解决方案中的网络和互连的主要方面和使用案例 (AVS) '
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: c0416da9c745ccf92970ff39f623a782d5784983
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f1f1f5a089781f1f7e882c9c8692f0c845ae485
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062846"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214107"
 ---
-# <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware 解决方案（AVS）预览版联网和互连的概念
+# <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware 解决方案 (AVS) 预览版网络和互连概念
 
-Azure VMware 解决方案（AVS）私有云和本地环境或 Azure 中的虚拟网络之间的网络互连可让你访问和使用你的私有云。 在本文中，我们将介绍几个关键概念，这些概念建立了网络和互连的基础。
+Azure VMware 解决方案 (AVS) 私有云和本地环境或 Azure 中的虚拟网络之间的网络互连可让你访问和使用你的私有云。 在本文中，我们将介绍几个关键概念，这些概念建立了网络和互连的基础。
 
 对互连的一种很有用的观点是考虑以下两种类型的 AVS 私有云实现：
 
-1. [**仅限 azure 的基本互连**](#azure-virtual-network-interconnectivity)使你可以在 Azure 中管理和使用只有单个虚拟网络的私有云。 此实现最适用于无需从本地环境访问的 AVS 评估或实现。
+1. [**仅限 azure 的基本互连**](#azure-virtual-network-interconnectivity) 使你可以在 Azure 中管理和使用只有单个虚拟网络的私有云。 此实现最适用于无需从本地环境访问的 AVS 评估或实现。
 
-1. [**完整本地到私有云互连**](#on-premises-interconnectivity)扩展了基于 Azure 的基本实现，以在本地与 AVS 私有云之间包括互连。
+1. [**完整本地到私有云互连**](#on-premises-interconnectivity) 扩展了基于 Azure 的基本实现，以在本地与 AVS 私有云之间包括互连。
  
 可在以下各节中找到有关要求的详细信息和两种类型的 AVS 私有云互连实现。
 
@@ -26,9 +26,9 @@ Azure VMware 解决方案（AVS）私有云和本地环境或 Azure 中的虚拟
 
 AVS 私有云的用例包括：
 - 云中的新 VMware VM 工作负荷
-- VM 工作负荷突发到云（仅本地到 AVS）
-- VM 工作负荷迁移到云（仅本地到 AVS）
-- 灾难恢复（AVS 到 AVS 或本地到 AVS）
+- VM 工作负荷突发到云 (仅限本地到 AVS) 
+- VM 工作负荷迁移到云 (仅限本地到 AVS) 
+- 灾难恢复 (AVS 到 AVS 或本地到 AVS) 
 - Azure 服务的消耗
 
  可以通过本地到私有云连接来启用 AVS 服务的所有用例。 
@@ -46,7 +46,7 @@ AVS 私有云的用例包括：
 
 ## <a name="routing-and-subnet-requirements"></a>路由和子网要求
 
-路由基于边界网关协议（BGP），默认情况下，对于每个私有云部署自动预配和启用该路由。 对于 AVS 私有云，你需要计划私有云网络地址空间，其中至少有/22 个前缀长度为子网的 CIDR 网络地址块，如下表所示。 地址块不应与订阅和本地网络中的其他虚拟网络中使用的地址块重叠。 在此地址块中，将自动设置管理、设置和 vMotion 网络。
+路由基于 (BGP) 边界网关协议，默认情况下，每个私有云部署自动预配并启用该路由。 对于 AVS 私有云，你需要计划私有云网络地址空间，其中至少有/22 个前缀长度为子网的 CIDR 网络地址块，如下表所示。 地址块不应与订阅和本地网络中的其他虚拟网络中使用的地址块重叠。 在此地址块中，将自动设置管理、设置和 vMotion 网络。
 
 示例 `/22` CIDR 网络地址块：`10.10.0.0/22`
 
@@ -81,12 +81,12 @@ AVS 私有云的用例包括：
 
 :::image type="content" source="media/concepts/adjacency-overview-drawing-double.png" alt-text="虚拟网络和本地完整私有云连接" border="false":::
 
-对于私有云，请 Global Reach 启用 ExpressRoute，然后在 Azure 门户中请求 Global Reach 的授权密钥和专用对等互连 ID。 授权密钥和对等互连 ID 用于在你的订阅中的 ExpressRoute 线路与新的私有云的 ExpressRoute 线路之间建立 Global Reach。 链接后，这两条 ExpressRoute 线路将本地环境之间的网络流量路由到私有云。  有关请求和使用授权密钥和对等互连 ID 的过程，请参阅[创建与私有云的 ExpressRoute Global Reach 对等互连教程](tutorial-expressroute-global-reach-private-cloud.md)。
+对于私有云，请 Global Reach 启用 ExpressRoute，然后在 Azure 门户中请求 Global Reach 的授权密钥和专用对等互连 ID。 授权密钥和对等互连 ID 用于在你的订阅中的 ExpressRoute 线路与新的私有云的 ExpressRoute 线路之间建立 Global Reach。 链接后，这两条 ExpressRoute 线路将本地环境之间的网络流量路由到私有云。  有关请求和使用授权密钥和对等互连 ID 的过程，请参阅 [创建与私有云的 ExpressRoute Global Reach 对等互连教程](tutorial-expressroute-global-reach-private-cloud.md) 。
 
 
 ## <a name="next-steps"></a>后续步骤 
 
-下一步是了解[私有云存储的概念](concepts-storage.md)。
+下一步是了解 [私有云存储的概念](concepts-storage.md)。
 
 <!-- LINKS - external -->
 [enable Global Reach]: ../expressroute/expressroute-howto-set-global-reach.md

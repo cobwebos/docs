@@ -5,13 +5,14 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 05/01/2017
-ms.openlocfilehash: 4854fabb3dccc276ec32a596a42263acd07ac276
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7692bfda16ac1b8789ee49469c46ef8276c97f8a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316077"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213310"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Azure Redis 缓存的 ASP.NET 会话状态提供程序
 
@@ -81,8 +82,8 @@ NuGet 包会下载并添加所需的程序集引用，并将以下节添加到 w
 
 在 Microsoft Azure 门户中使用缓存边栏选项卡中的值配置属性，并根据需要配置其他值。 有关访问缓存属性的说明，请参阅[配置 Azure Redis 缓存设置](cache-configure.md#configure-azure-cache-for-redis-settings)。
 
-* **主机**–指定缓存终结点。
-* **端口**–使用非 TLS/ssl 端口或 TLS/ssl 端口，具体取决于 tls 设置。
+* **主机** –指定缓存终结点。
+* **端口** –使用非 TLS/ssl 端口或 TLS/ssl 端口，具体取决于 tls 设置。
 * **accessKey** –使用缓存的主密钥或辅助密钥。
 * **ssl** –如果要保护与 TLS 的缓存/客户端通信，则为 true;否则为 false。 请务必指定正确的端口。
   * 默认情况下，将为新缓存禁用非 TLS 端口。 为此设置指定“true”可使用 TLS 端口。 有关启用非 TLS 端口的详细信息，请参阅[配置缓存](cache-configure.md)主题中的[访问端口](cache-configure.md#access-ports)部分。

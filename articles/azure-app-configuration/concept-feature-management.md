@@ -4,14 +4,15 @@ description: 使用 Azure 应用配置打开和关闭功能
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
+ms.custom: devx-track-dotnet
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 8227810c154078fc8424b2cadd373394d07e9730
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b77f0063b37adbfaecaff68387e858d0077561b3
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77523724"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212664"
 ---
 # <a name="feature-management-overview"></a>功能管理概述
 
@@ -31,7 +32,7 @@ ms.locfileid: "77523724"
 
 下面是与功能管理相关的几个新术语：
 
-* **功能标志**：功能标志是二进制状态为*on*或*off*的变量。 功能标志还具有关联的代码块。 功能标志的状态将触发代码块是否运行。
+* **功能标志**：功能标志是二进制状态为 *on* 或 *off*的变量。 功能标志还具有关联的代码块。 功能标志的状态将触发代码块是否运行。
 * **功能管理器**：功能管理器是一个应用程序包，用于处理应用程序中所有功能标志的生命周期。 功能管理器还提供附加功能，包括缓存功能标志并更新其状态。
 * **筛选**器：筛选器是用于评估功能标志的状态的规则。 潜在筛选器包括用户组、设备或浏览器类型、地理位置和时间窗口。
 

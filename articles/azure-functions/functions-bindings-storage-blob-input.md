@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 7e8cb6dfd2a1983ac4a98f0be0af1fd92c902fc4
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: de590af49e39832a52bf733319b86300ecab2a34
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843141"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213283"
 ---
 # <a name="azure-blob-storage-input-binding-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储输入绑定
 
@@ -278,7 +278,7 @@ public static void Run(
 }
 ```
 
-可以使用 `StorageAccount` 特性在类、方法或参数级别指定存储帐户。 有关详细信息，请参阅[触发器-特性和批注](./functions-bindings-storage-blob-trigger.md#attributes-and-annotations)。
+可以使用 `StorageAccount` 特性在类、方法或参数级别指定存储帐户。 有关详细信息，请参阅 [触发器-特性和批注](./functions-bindings-storage-blob-trigger.md#attributes-and-annotations)。
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
@@ -308,7 +308,7 @@ Python 不支持特性。
 |**direction** | 不适用 | 必须设置为 `in`。 [用法](#usage)部分中已阐述异常。 |
 |**name** | 不适用 | 表示函数代码中的 Blob 的变量的名称。|
 |**路径** |**BlobPath** | Blob 的路径。 |
-|连接 |**Connection**| 应用设置的名称，其中包含要用于此绑定的[存储连接字符串](../storage/common/storage-configure-connection-string.md)。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将设置 `connection` 为 "MyStorage"，函数运行时将查找名为 "AzureWebJobsMyStorage" 的应用程序设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
+|连接 |**Connection**| 应用设置的名称，其中包含要用于此绑定的 [存储连接字符串](../storage/common/storage-configure-connection-string.md) 。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将设置 `connection` 为 "MyStorage"，函数运行时将查找名为 "AzureWebJobsMyStorage" 的应用程序设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。<br><br>连接字符串必须属于某个常规用途存储帐户，而不能属于[仅限 Blob 的存储帐户](../storage/common/storage-account-overview.md#types-of-storage-accounts)。|
 |不适用 | **访问** | 表示是要读取还是写入。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -329,7 +329,7 @@ Python 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-通过类型为[InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的参数访问 blob 数据。 有关详细信息，请参阅[输入示例](#example)。
+通过类型为 [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的参数访问 blob 数据。 有关详细信息，请参阅[输入示例](#example)。
 
 # <a name="java"></a>[Java](#tab/java)
 

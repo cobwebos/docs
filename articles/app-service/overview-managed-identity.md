@@ -6,13 +6,13 @@ ms.topic: article
 ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.custom: devx-track-python
-ms.openlocfilehash: a33a739014b33303389b4f880da3687db852633e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: f5255041a97a56e6577f33b571403ff454bb65b4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850264"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211882"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>如何使用应用服务和 Azure Functions 的托管标识
 
@@ -43,7 +43,7 @@ ms.locfileid: "87850264"
 
 
 > [!NOTE] 
-> 若要在 Azure 门户中的 "**企业应用程序**" 下查找 web 应用或槽应用的托管标识，请在 "**用户设置**" 部分中查看。 通常，槽名称类似于 `<app name>/slots/<slot name>` 。
+> 若要在 Azure 门户中的 " **企业应用程序**" 下查找 web 应用或槽应用的托管标识，请在 " **用户设置** " 部分中查看。 通常，槽名称类似于 `<app name>/slots/<slot name>` 。
 
 
 ### <a name="using-the-azure-cli"></a>使用 Azure CLI
@@ -440,7 +440,7 @@ $accessToken = $tokenResponse.access_token
 
 ### <a name="using-the-microsoftazureservicesappauthentication-library-for-net"></a><a name="asal"></a>使用用于.NET 的 Microsoft.Azure.Services.AppAuthentication 库
 
-对于 .NET 应用程序和函数，使用托管标识最简单的方法是通过 Microsoft.Azure.Services.AppAuthentication 包。 此库还允许通过 Visual Studio、[Azure CLI](/cli/azure) 或 Active Directory 集成身份验证使用用户帐户，在开发计算机上对代码进行本地测试。 在云中托管时，将默认使用系统分配的标识，但你可以使用引用用户分配的标识的客户端 ID 的连接字符串环境变量自定义此行为。 有关此库的开发选项的详细信息，请参阅[microsoft.azure.services.appauthentication 参考]。 本部分演示如何开始在代码中使用此库。
+对于 .NET 应用程序和函数，使用托管标识最简单的方法是通过 Microsoft.Azure.Services.AppAuthentication 包。 此库还允许通过 Visual Studio、[Azure CLI](/cli/azure) 或 Active Directory 集成身份验证使用用户帐户，在开发计算机上对代码进行本地测试。 在云中托管时，将默认使用系统分配的标识，但你可以使用引用用户分配的标识的客户端 ID 的连接字符串环境变量自定义此行为。 有关此库的开发选项的详细信息，请参阅 [microsoft.azure.services.appauthentication 参考]。 本部分演示如何开始在代码中使用此库。
 
 1. 向应用程序添加对 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) 和任何其他必需 NuGet 包的引用。 以下示例还使用 [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault)。
 
@@ -466,7 +466,7 @@ $accessToken = $tokenResponse.access_token
     var azureServiceTokenProvider2 = new AzureServiceTokenProvider(identityConnectionString2);
 ```
 
-若要详细了解如何配置 AzureServiceTokenProvider 以及它所公开的操作，请参阅[microsoft.azure.services.appauthentication 参考]和[应用服务和包含 MSI .net 的 KeyVault 示例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
+若要详细了解如何配置 AzureServiceTokenProvider 以及它所公开的操作，请参阅 [microsoft.azure.services.appauthentication 参考] 和 [应用服务和包含 MSI .net 的 KeyVault 示例](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
 
 ### <a name="using-the-azure-sdk-for-java"></a>使用用于 Java 的 Azure SDK
 

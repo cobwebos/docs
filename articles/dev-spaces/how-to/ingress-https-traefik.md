@@ -6,12 +6,12 @@ ms.topic: conceptual
 description: 了解如何配置 Azure Dev Spaces 以使用自定义 traefik 入口控制器并使用该入口控制器配置 HTTPS
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 ms.custom: devx-track-javascript
-ms.openlocfilehash: e6c50dd8d27af8276ddbf47f7a3719ab59d87a7d
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 3938209e80eb211afc332997b5b241c12a0f6eb9
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421580"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212457"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>使用自定义 traefik 入口控制器并配置 HTTPS
 
@@ -21,14 +21,14 @@ ms.locfileid: "87421580"
 
 * Azure 订阅。 如果没有帐户，可以[创建一个免费帐户][azure-account-create]。
 * [已安装 Azure CLI][az-cli]。
-* [启用 Azure Dev Spaces 的 Azure Kubernetes 服务（AKS）群集][qs-cli]。
+* [) 启用了 Azure Dev Spaces 的 Azure Kubernetes Service (AKS][qs]。
 * 已安装[kubectl][kubectl] 。
 * [已安装 Helm 3][helm-installed]。
 * 具有[DNS 区域][dns-zone]的[自定义域][custom-domain]。 本文假定自定义域和 DNS 区域与 AKS 群集位于同一资源组中，但可以在不同的资源组中使用自定义域和 DNS 区域。
 
 ## <a name="configure-a-custom-traefik-ingress-controller"></a>配置自定义 traefik 入口控制器
 
-使用[kubectl][kubectl]和 Kubernetes 命令行客户端连接到群集。 若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。
+使用 [kubectl][kubectl]和 Kubernetes 命令行客户端连接到群集。 若要将 `kubectl` 配置为连接到 Kubernetes 群集，请使用 [az aks get-credentials][az-aks-get-credentials] 命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据。
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKS
@@ -42,7 +42,7 @@ NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 ```
 
-添加[官方稳定的 Helm 存储库][helm-stable-repo]，其中包含 traefik 入口控制器 Helm 图表。
+添加 [官方稳定的 Helm 存储库][helm-stable-repo]，其中包含 traefik 入口控制器 Helm 图表。
 
 ```console
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
@@ -51,7 +51,7 @@ helm repo add stable https://kubernetes-charts.storage.googleapis.com/
 为 traefik 入口控制器创建 Kubernetes 命名空间，并使用安装它 `helm` 。
 
 > [!NOTE]
-> 如果 AKS 群集未启用 RBAC，请删除 *--set RBAC. enabled = true*参数。
+> 如果 AKS 群集未启用 RBAC，请删除 *--set RBAC. enabled = true* 参数。
 
 ```console
 kubectl create ns traefik
@@ -65,13 +65,13 @@ helm install traefik stable/traefik --namespace traefik --set kubernetes.ingress
 > ```
 > 此专用终结点在部署 AKS 群集的虚拟网络中公开。
 
-使用[kubectl get][kubectl-get]获取 traefik 入口控制器服务的 IP 地址。
+使用 [kubectl get][kubectl-get]获取 traefik 入口控制器服务的 IP 地址。
 
 ```console
 kubectl get svc -n traefik --watch
 ```
 
-示例输出显示*traefik*命名空间中所有服务的 IP 地址。
+示例输出显示 *traefik* 命名空间中所有服务的 IP 地址。
 
 ```console
 NAME      TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)                      AGE
@@ -90,7 +90,7 @@ az network dns record-set a add-record \
     --ipv4-address MY_EXTERNAL_IP
 ```
 
-上面的示例将*A*记录添加到*MY_CUSTOM_DOMAIN* DNS 区域。
+上面的示例将 *A* 记录添加到 *MY_CUSTOM_DOMAIN* DNS 区域。
 
 本文使用 [Azure Dev Spaces 单车共享示例应用程序](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp)来演示 Azure Dev Spaces 的用法。 从 GitHub 克隆此应用程序，然后导航到其目录中：
 
@@ -99,9 +99,9 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-打开[yaml][values-yaml]并进行以下更新：
-* 将 *<REPLACE_ME_WITH_HOST_SUFFIX>* 的所有实例替换为*traefik。MY_CUSTOM_DOMAIN*使用域进行*MY_CUSTOM_DOMAIN*。 
-* 替换*kubernetes.io/ingress.class： traefik-azds # Dev Spaces-特定于* *kubernetes.io/ingress.class： Traefik # 自定义入口*。 
+打开 [yaml][values-yaml] 并进行以下更新：
+* 将 *<REPLACE_ME_WITH_HOST_SUFFIX>* 的所有实例替换为 *traefik。MY_CUSTOM_DOMAIN* 使用域进行 *MY_CUSTOM_DOMAIN*。 
+* 替换 *kubernetes.io/ingress.class： traefik-azds # Dev Spaces-特定于* *kubernetes.io/ingress.class： Traefik # 自定义入口*。 
 
 下面是已更新文件的示例 `values.yaml` ：
 
@@ -126,7 +126,7 @@ gateway:
 
 保存更改并关闭该文件。
 
-使用创建使用的示例应用程序的*开发*环境 `azds space select` 。
+使用创建使用的示例应用程序的 *开发* 环境 `azds space select` 。
 
 ```console
 azds space select -n dev -y
@@ -138,7 +138,7 @@ azds space select -n dev -y
 helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 ```
 
-上面的示例将示例应用程序部署到*dev*命名空间。
+上面的示例将示例应用程序部署到 *dev* 命名空间。
 
 显示使用访问示例应用程序的 Url `azds list-uris` 。
 
@@ -160,14 +160,14 @@ http://dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 > [!NOTE]
 > 如果看到错误页面而不是*bikesharingweb*服务，请验证是否已在*yaml*文件**中更新** *kubernetes.io/ingress.class*批注和主机。
 
-使用 `azds space select` 命令在 "*开发*" 下创建子空间，并列出用于访问子开发人员空间的 url。
+使用 `azds space select` 命令在 " *开发* " 下创建子空间，并列出用于访问子开发人员空间的 url。
 
 ```console
 azds space select -n dev/azureuser1 -y
 azds list-uris
 ```
 
-以下输出显示了中的示例 Url `azds list-uris` ，可用于访问*azureuser1*子开发人员空间中的示例应用程序。
+以下输出显示了中的示例 Url `azds list-uris` ，可用于访问 *azureuser1* 子开发人员空间中的示例应用程序。
 
 ```console
 Uri                                                  Status
@@ -180,7 +180,7 @@ http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 
 ## <a name="configure-the-traefik-ingress-controller-to-use-https"></a>将 traefik 入口控制器配置为使用 HTTPS
 
-将 traefik 入口控制器配置为使用 HTTPS 时，请使用[证书管理器][cert-manager]自动管理 TLS 证书。 使用 `helm` 安装*certmanager*图表。
+将 traefik 入口控制器配置为使用 HTTPS 时，请使用 [证书管理器][cert-manager] 自动管理 TLS 证书。 使用 `helm` 安装 *certmanager* 图表。
 
 ```console
 kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml --namespace traefik
@@ -218,10 +218,10 @@ spec:
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
 ```
 
-删除以前的*traefik* *ClusterRole*和*ClusterRoleBinding*，然后将 traefik 升级到使用 HTTPS `helm` 。
+删除以前的 *traefik* *ClusterRole* 和 *ClusterRoleBinding*，然后将 traefik 升级到使用 HTTPS `helm` 。
 
 > [!NOTE]
-> 如果 AKS 群集未启用 RBAC，请删除 *--set RBAC. enabled = true*参数。
+> 如果 AKS 群集未启用 RBAC，请删除 *--set RBAC. enabled = true* 参数。
 
 ```console
 kubectl delete ClusterRole traefik
@@ -229,13 +229,13 @@ kubectl delete ClusterRoleBinding traefik
 helm upgrade traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set rbac.enabled=true --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --version 1.85.0 --set ssl.enabled=true --set ssl.enforced=true --set ssl.permanentRedirect=true
 ```
 
-使用[kubectl get][kubectl-get]获取 traefik 入口控制器服务的已更新 IP 地址。
+使用 [kubectl get][kubectl-get]获取 traefik 入口控制器服务的已更新 IP 地址。
 
 ```console
 kubectl get svc -n traefik --watch
 ```
 
-示例输出显示*traefik*命名空间中所有服务的 IP 地址。
+示例输出显示 *traefik* 命名空间中所有服务的 IP 地址。
 
 ```console
 NAME      TYPE           CLUSTER-IP    EXTERNAL-IP          PORT(S)                      AGE
@@ -262,7 +262,7 @@ az network dns record-set a remove-record \
 
 上面的示例将*MY_CUSTOM_DOMAIN* DNS 区域中的*A*记录更新为使用*PREVIOUS_EXTERNAL_IP*。
 
-将[yaml][values-yaml]更新为包含使用*证书管理器*和 HTTPS 的详细信息。 下面是已更新文件的示例 `values.yaml` ：
+将 [yaml][values-yaml] 更新为包含使用 *证书管理器* 和 HTTPS 的详细信息。 下面是已更新文件的示例 `values.yaml` ：
 
 ```yaml
 # This is a YAML-formatted file.
@@ -299,7 +299,7 @@ gateway:
 helm upgrade bikesharingsampleapp . --namespace dev --atomic
 ```
 
-导航到*dev/azureuser1*子空间中的示例应用程序，注意将重定向到 "使用 HTTPS"。
+导航到 *dev/azureuser1* 子空间中的示例应用程序，注意将重定向到 "使用 HTTPS"。
 
 > [!IMPORTANT]
 > DNS 更改可能需要30分钟或更长时间才能完成，并且你的示例应用程序可供访问。
@@ -310,7 +310,7 @@ helm upgrade bikesharingsampleapp . --namespace dev --atomic
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.
 ```
 
-若要修复此错误，请更新[BikeSharingWeb/azds yaml][azds-yaml] ，以将*traefik*用于*kubernetes.io/ingress.class* ，并将自定义域用于 *$ （hostSuffix）*。 例如：
+若要修复此错误，请更新 [BikeSharingWeb/azds][azds-yaml] ，以将 *traefik* 用于 *kubernetes.io/ingress.class* ，并使用自定义域 *) $ (hostSuffix *。 例如：
 
 ```yaml
 ...
@@ -359,14 +359,14 @@ cd ../BikeSharingWeb/
 azds up
 ```
 
-导航到*dev/azureuser1*子空间中的示例应用程序，请注意，将重定向到使用 HTTPS，但不会出现任何错误。
+导航到 *dev/azureuser1* 子空间中的示例应用程序，请注意，将重定向到使用 HTTPS，但不会出现任何错误。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 Azure Dev Spaces 如何帮助开发跨多个容器的更复杂应用程序，以及如何通过在不同的空间中使用不同的代码版本或分支来简化协作式开发。
+详细了解 Azure Dev Spaces 的工作方式。
 
 > [!div class="nextstepaction"]
-> [Azure Dev Spaces 中的团队开发][team-development-qs]
+> [Azure Dev Spaces 工作原理](../how-dev-spaces-works.md)
 
 
 [az-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
@@ -375,9 +375,6 @@ azds up
 [az-network-dns-record-set-a-remove-record]: /cli/azure/network/dns/record-set/a?view=azure-cli-latest#az-network-dns-record-set-a-remove-record
 [custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-the-domain
 [dns-zone]: ../../dns/dns-getstarted-cli.md
-[qs-cli]: ../quickstart-cli.md
-[team-development-qs]: ../quickstart-team-development.md
-
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml
 [azure-account-create]: https://azure.microsoft.com/free
 [cert-manager]: https://cert-manager.io/

@@ -5,12 +5,12 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: 了解如何在 AKS 群集上启用 Azure Dev Spaces 并安装客户端工具。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: ac010a466f7db7b829cc3d6f0687dbdbefdd7b6c
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: eb7c9b4d3d03b6f4f1f21e6fb2b2a60aa303b181
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407891"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212434"
 ---
 # <a name="enable-azure-dev-spaces-on-an-aks-cluster-and-install-the-client-side-tools"></a>在 AKS 群集上启用 Azure Dev Spaces 并安装客户端工具
 
@@ -65,7 +65,7 @@ Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is
 azds remove -g MyResourceGroup -n MyAKS
 ```
 
-以下示例输出显示了从*MyAKS*群集中删除 Azure Dev Spaces。
+以下示例输出显示了从 *MyAKS* 群集中删除 Azure Dev Spaces。
 
 ```azurecli
 $ azds remove -g MyResourceGroup -n MyAKS
@@ -78,16 +78,14 @@ Deleting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup'
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 Azure Dev Spaces 如何帮助开发跨多个容器的更复杂应用程序，以及如何通过在不同的空间中使用不同的代码版本或分支来简化协作式开发。
+详细了解 Azure Dev Spaces 的工作方式。
 
 > [!div class="nextstepaction"]
-> [Azure Dev Spaces 中的团队开发][team-development-qs]
+> [Azure Dev Spaces 工作原理](../how-dev-spaces-works.md)
 
 [create-aks-cli]: ../../aks/kubernetes-walkthrough.md#create-a-resource-group
 [install-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[team-development-qs]: ../quickstart-team-development.md
-
 [az-portal]: https://portal.azure.com
 [az-portal-create-account]: https://azure.microsoft.com/free
 [cli-linux]: https://aka.ms/get-azds-linux

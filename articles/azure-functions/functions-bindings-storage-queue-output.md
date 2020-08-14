@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
-ms.custom: cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 29f90261e4d9a0e76c7760a2e3142f178510f6d6
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
+ms.openlocfilehash: 06d9ea895607332c8de25176376d52987ceed7a1
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844875"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212272"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>适用于 Azure Functions 的 Azure 队列存储输出绑定
 
@@ -367,7 +367,7 @@ public class HttpTriggerQueueOutput {
 
 有两个选项可用于从函数输出事件中心消息：
 
-- **返回值**：将 `name` *function.js上*的属性设置为 `$return` 。 使用此配置时，函数的返回值将持久保存为队列存储消息。
+- **返回值**：将 `name` *function.js上* 的属性设置为 `$return` 。 使用此配置时，函数的返回值将持久保存为队列存储消息。
 
 - **命令式**：向声明为[Out](/python/api/azure-functions/azure.functions.out?view=azure-python)类型的参数的[set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法传递值。 传递给的值 `set` 将持久保存为队列存储消息。
 

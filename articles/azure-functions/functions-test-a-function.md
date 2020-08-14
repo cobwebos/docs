@@ -3,14 +3,15 @@ title: 测试 Azure Functions
 description: 为 Visual Studio 中的 C# 函数和 VS Code 中的 JavaScript 函数创建自动测试
 author: craigshoemaker
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: be406744dc9752dd3c924c636e85f43e133c1cca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e0abfc9be0031f899071d6e5e22274481ba76e10
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085072"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212902"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中测试代码的策略
 
@@ -36,21 +37,21 @@ ms.locfileid: "87085072"
 若要设置环境，请创建一个函数和测试应用。 以下步骤可帮助你创建用于支持测试的应用和函数：
 
 1. [创建新函数应用](./functions-create-first-azure-function.md)并将其命名为 **Functions**
-2. [从模板创建一个 HTTP 函数](./functions-create-first-azure-function.md)，并将其命名为**MyHttpTrigger**。
-3. [从模板创建计时器函数](./functions-create-scheduled-function.md)，并将其命名为**MyTimerTrigger**。
-4. 在解决方案中[创建 XUnit 测试应用](https://xunit.github.io/docs/getting-started-dotnet-core)，并将其命名为**函数。测试**。
+2. [从模板创建 HTTP 函数](./functions-create-first-azure-function.md)并将其命名为“MyHttpTrigger”。
+3. [从模板创建计时器函数](./functions-create-scheduled-function.md)并将其命名为“MyTimerTrigger”。
+4. 在解决方案中[创建 xUnit 测试应用](https://xunit.github.io/docs/getting-started-dotnet-core)并将其命名为“Functions.Tests”。
 5. 使用 NuGet 从测试应用添加对 [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/) 的引用
-6. [引用函数*Functions*应用](/visualstudio/ide/managing-references-in-a-project?view=vs-2017)程序的*函数。*
+6. [从 Functions.Tests 应用引用 Functions 应用](/visualstudio/ide/managing-references-in-a-project?view=vs-2017)。
 
 ### <a name="create-test-classes"></a>创建测试类
 
-创建项目后，可以创建用于运行自动测试的类。
+创建项目后，可以创建用于运行自动化测试的类。
 
 每个函数采用 [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) 的实例来处理消息日志记录。 有些测试不记录消息，或者与日志记录的实现方式无关。 还有一些测试需要评估记录的消息，以确定是否通过了测试。
 
-你将创建一个名为的新类 `ListLogger` ，其中包含要在测试期间计算的内部消息列表。 若要实现所需的 `ILogger` 接口，类需要范围。 下面的类模拟要传递给类的测试用例的作用域 `ListLogger` 。
+你将创建一个名为“`ListLogger`”的新类，其中包含要在测试过程中评估的消息的内部列表。 若要实现所需的 `ILogger` 接口，类需要范围。 下面的类模拟要传递给 `ListLogger` 类的测试用例的范围。
 
-在函数中创建一个新类 *。测试*名为**NullScope.cs**的项目，并输入以下代码：
+在 Functions.Tests 项目中创建一个名为“NullScope.cs”的新类，并输入以下代码：
 
 ```csharp
 using System;
@@ -68,7 +69,7 @@ namespace Functions.Tests
 }
 ```
 
-接下来，在函数中创建一个新类 *。测试*名为**ListLogger.cs**的项目，并输入以下代码：
+接下来，在 Functions.Tests 项目中创建一个名为“ListLogger.cs”的新类，并输入以下代码：
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -106,15 +107,15 @@ namespace Functions.Tests
 
 `ListLogger` 类实现 `ILogger` 接口收缩的以下成员：
 
-- **BeginScope**：作用域将上下文添加到日志记录。 在本例中，测试只是指向 `NullScope` 类中的静态实例，使测试能够正常运行。
+- **BeginScope**：范围将上下文添加到日志记录。 在本例中，测试只是指向 `NullScope` 类中的静态实例，使测试能够正常运行。
 
-- **IsEnabled**：提供的默认值 `false` 。
+- **IsEnabled**：提供 `false` 的默认值。
 
-- **日志**：此方法使用提供的 `formatter` 函数设置消息的格式，然后将生成的文本添加到 `Logs` 集合中。
+- **Log**：此方法使用提供的 `formatter` 函数来设置消息格式，然后将生成的文本添加到 `Logs` 集合。
 
 `Logs` 集合是 `List<string>` 的实例，在构造函数中初始化。
 
-接下来 *，在*LoggerTypes.cs 项目中创建一个名为 " **LoggerTypes.cs** " 的新文件，并输入以下代码：
+接下来，在 Functions.Tests 项目中创建一个名为“LoggerTypes.cs”的新文件，并输入以下代码：
 
 ```csharp
 namespace Functions.Tests
@@ -129,7 +130,7 @@ namespace Functions.Tests
 
 此枚举指定测试使用的记录器类型。
 
-现在，在函数中创建一个新类 *。测试*名为**TestFactory.cs**的项目，并输入以下代码：
+现在，在 Functions.Tests 项目中创建一个名为“TestFactory.cs”的新类，并输入以下代码：
 
 ```csharp
 using Microsoft.AspNetCore.Http;
@@ -192,15 +193,15 @@ namespace Functions.Tests
 
 `TestFactory` 类实现以下成员：
 
-- **数据**：此属性返回示例数据的[IEnumerable](/dotnet/api/system.collections.ienumerable)集合。 键/值对表示传入查询字符串中的值。
+- **Data**：此属性返回示例数据的 [IEnumerable](/dotnet/api/system.collections.ienumerable) 集合。 键/值对表示传入查询字符串中的值。
 
-- **CreateDictionary**：此方法接受键/值对作为参数，并返回一个新的， `Dictionary` 用于 `QueryCollection` 表示查询字符串值。
+- **CreateDictionary**：此方法接受键/值对作为参数，并返回新的 `Dictionary` 用于创建 `QueryCollection` 来表示查询字符串值。
 
 - **CreateHttpRequest**：此方法创建使用给定查询字符串参数初始化的 HTTP 请求。
 
-- **CreateLogger**：根据记录器类型，此方法返回用于测试的记录器类。 `ListLogger` 跟踪可在测试中评估的记录消息。
+- **CreateLogger**：此方法基于记录器类型返回用于测试的记录器类。 `ListLogger` 跟踪可在测试中评估的记录消息。
 
-最后，在函数中创建一个新类 *。测试*名为**FunctionsTests.cs**的项目，并输入以下代码：
+最后，在 Functions.Tests 项目中创建一个名为“FunctionsTests.cs”的新类，并输入以下代码：
 
 ```csharp
 using Microsoft.AspNetCore.Mvc;
@@ -244,23 +245,23 @@ namespace Functions.Tests
 
 在此类中实现的成员包括：
 
-- **Http_trigger_should_return_known_string**：此测试使用查询字符串值 `name=Bill` 向 Http 函数创建请求，并检查是否返回了预期的响应。
+- **Http_trigger_should_return_known_string**：此测试创建对 HTTP 函数发出的、其查询字符串值为 `name=Bill` 的请求，并检查是否返回了预期的响应。
 
-- **Http_trigger_should_return_string_from_member_data**：此测试使用 xUnit 属性向 Http 函数提供示例数据。
+- **Http_trigger_should_return_string_from_member_data**：此测试使用 xUnit 属性为 HTTP 函数提供示例数据。
 
-- **Timer_should_log_message**：此测试会创建的实例 `ListLogger` ，并将其传递给计时器函数。 运行该函数后，将检查日志以确保存在预期的消息。
+- **Timer_should_log_message**：此测试创建 `ListLogger` 的实例并将其传递给计时器函数。 运行该函数后，将检查日志以确保存在预期的消息。
 
 如果要在测试中访问应用程序设置，可以使用 [System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)。
 
 ### <a name="run-tests"></a>运行测试
 
-若要运行测试，请导航到“测试资源管理器”并单击“全部运行”。********
+若要运行测试，请导航到“测试资源管理器”并单击“全部运行”。 
 
 ![使用 Visual Studio 中的 C# 测试 Azure Functions](./media/functions-test-a-function/azure-functions-test-visual-studio-xunit.png)
 
 ### <a name="debug-tests"></a>调试测试
 
-若要调试测试，请在测试中设置一个断点，导航到“测试资源管理器”，然后单击“运行”>“调试上次运行”。********
+若要调试测试，请在测试中设置一个断点，导航到“测试资源管理器”，然后单击“运行”>“调试上次运行”。 
 
 ## <a name="javascript-in-vs-code"></a>VS Code 中的 JavaScript
 

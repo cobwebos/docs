@@ -1,19 +1,19 @@
 ---
 title: 从 Azure 门户将混合计算机连接到 Azure
-description: 本文介绍如何安装代理，并通过 Azure 门户使用 Azure Arc for servers（预览版）将计算机连接到 Azure。
+description: 本文介绍如何使用支持 Azure Arc 的服务器 (预览) 从 Azure 门户中安装代理并将计算机连接到 Azure。
 ms.date: 08/07/2020
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 08f2563aaa67cdd45760af34ef3bef3e8e472ae7
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 23415bc648ae31b9073adb71d6f066a28c144c9d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120977"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213510"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>从 Azure 门户将混合计算机连接到 Azure
 
-可以通过手动执行一系列步骤，为环境中的一台或少量 Windows 或 Linux 计算机启用 Azure Arc for servers（预览版）。 或者，可以运行我们提供的模板脚本来使用自动化方法。 此脚本可以自动下载和安装两个代理。
+你可以通过手动执行一组步骤，为你的环境中的一台或少数几台 Windows 或 Linux 计算机 (预览) 启用启用了 Azure Arc 的服务器。 或者，可以运行我们提供的模板脚本来使用自动化方法。 此脚本可以自动下载和安装两个代理。
 
 这种安装和配置代理的方法要求你在计算机上拥有管理员权限。 在 Linux 上，需使用 root 帐户；在 Windows 上，你需是“本地管理员组”的成员。
 
@@ -34,7 +34,7 @@ Azure 门户中提供了用于自动下载和安装以及与 Azure Arc 建立连
 1. 在“生成脚本”页上，选择你要在 Azure 中管理的计算机所在的订阅和资源组。 选择要将计算机元数据存储到的 Azure 位置。
 
     >[!NOTE]
-    >Azure Arc for servers（预览版）仅支持以下区域：
+    >已启用 Azure Arc 的服务器 (预览版) 仅支持以下区域：
     >- EastUS
     >- 美国西部 2
     >- 西欧
@@ -147,7 +147,7 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 ## <a name="verify-the-connection-with-azure-arc"></a>验证是否与 Azure Arc 连接
 
-安装代理并将其配置为连接到用于服务器 (预览) 的 Azure Arc 后，请切换到 Azure 门户验证服务器是否已成功连接。 在 [Azure 门户](https://aka.ms/hybridmachineportal)中查看计算机。
+安装代理并将其配置为连接到已启用 Azure Arc 的服务器 (预览) ，请参阅 Azure 门户，验证服务器是否已成功连接。 在 [Azure 门户](https://aka.ms/hybridmachineportal)中查看计算机。
 
 ![服务器连接成功](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 

@@ -3,14 +3,15 @@ title: Azure Functions SignalR 服务触发器绑定
 description: 了解如何从 Azure Functions 发送 SignalR 服务消息。
 author: chenyl
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: ec2952a3093661f0f6ef32908307a8a82c6367ed
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e2651afbcdc3bae71bb531aa0e821f83264c295d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540224"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212587"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Azure Functions 的 SignalR 服务触发器绑定
 
@@ -170,7 +171,7 @@ def main(invocation) -> None:
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**| 不适用 | 必须设置为 `SignalRTrigger`。|
+|type| 不适用 | 必须设置为 `SignalRTrigger`。|
 |**direction**| 不适用 | 必须设置为 `in`。|
 |**name**| 不适用 | 在函数代码中用于“触发器调用上下文”对象的变量名称。 |
 |**hubName**|**HubName**| 此值必须设置为要触发的函数的 SignalR 中心的名称。|

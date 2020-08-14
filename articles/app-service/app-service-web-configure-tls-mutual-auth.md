@@ -4,13 +4,13 @@ description: 了解如何在 TLS 上对客户端证书进行身份验证。 Azur
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 10/01/2019
-ms.custom: seodec18
-ms.openlocfilehash: 143317cd424428d7f480f4880d3aab750853890b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 145b999d7bf8597c06d6e3d4a36d01b182c8ae68
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82592360"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213639"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>为 Azure 应用服务配置 TLS 相互身份验证
 
@@ -24,7 +24,7 @@ ms.locfileid: "82592360"
 
 ## <a name="enable-client-certificates"></a>启用客户端证书
 
-若要将应用设置为需要客户端证书，可以通过从 Azure 门户选择“配置” > “常规设置”将“需要传入证书”切换到“开”，或者需要将应用的 `clientCertEnabled` 设置设为 `true`。 若要设置此设置，请在[Cloud Shell](https://shell.azure.com)中运行以下命令。
+若要将应用设置为需要客户端证书，可以通过从 Azure 门户选择“配置” > “常规设置”将“需要传入证书”切换到“开”，或者需要将应用的 `clientCertEnabled` 设置设为 `true`。 若要设置此设置，请在 [Cloud Shell](https://shell.azure.com)中运行以下命令。
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
