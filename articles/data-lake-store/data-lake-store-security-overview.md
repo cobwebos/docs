@@ -1,18 +1,18 @@
 ---
 title: Azure Data Lake Storage Gen1 中的安全性概述 | Microsoft Docs
-description: 了解 Azure Data Lake Storage Gen1 是更安全的大数据存储的原因
+description: 了解 Azure Data Lake Storage Gen1 的安全功能，包括身份验证、授权、网络隔离、数据保护和审核。
 services: data-lake-store
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: twooley
-ms.openlocfilehash: 4992be004a4b60b7b5fb591d834e8938cf03f34f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: ec0e62297e6eee995fc571589d450176c81f8aac
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926274"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192829"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的安全性
 
@@ -52,9 +52,9 @@ Azure Active Directory 对用户进行身份验证，以便用户可以访问 Da
 
 | 角色 | 管理权限 | 数据访问权限 | 说明 |
 | --- | --- | --- | --- |
-| 未分配角色 |None |受 ACL 约束 |用户不能使用 Azure 门户或 Azure PowerShell cmdlet 来浏览 Data Lake Storage Gen1。 用户只可以使用命令行工具。 |
+| 未分配角色 |无 |受 ACL 约束 |用户不能使用 Azure 门户或 Azure PowerShell cmdlet 来浏览 Data Lake Storage Gen1。 用户只可以使用命令行工具。 |
 | 所有者 |全部 |全部 |所有者角色为超级用户。 此角色可以管理所有内容，并具有对数据的完全访问权限。 |
-| 读取器 |只读 |受 ACL 约束 |Reader 角色可以查看与帐户管理相关的所有内容，例如，向角色分配的用户。 Reader 角色不能进行任何更改。 |
+| 读者 |只读 |受 ACL 约束 |Reader 角色可以查看与帐户管理相关的所有内容，例如，向角色分配的用户。 Reader 角色不能进行任何更改。 |
 | 参与者 |除了添加和删除角色的所有角色 |受 ACL 约束 |参与者角色可以管理帐户的某些方面，如部署、创建和管理警报。 参与者角色不能添加或删除角色。 |
 | 用户访问管理员 |添加和删除角色 |受 ACL 约束 |用户访问管理角色可以管理对帐户的用户访问权限。 |
 
@@ -74,7 +74,7 @@ Data Lake Storage Gen1 是一个类似于 Hadoop 分布式文件系统 (HDFS) �
 
 ![防火墙设置和 IP 访问](./media/data-lake-store-security-overview/firewall-ip-access.png "防火墙设置和 IP 地址")
 
-Azure 虚拟网络 (VNet) 支持 Data Lake 第1代服务标记。 服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。 有关详细信息，请参阅[Azure 服务标记概述](../virtual-network/service-tags-overview.md)。
+Azure 虚拟网络 (VNet) 支持 Data Lake 第1代服务标记。 服务标记代表给定 Azure 服务中的一组 IP 地址前缀。 Microsoft 会管理服务标记包含的地址前缀，并会在地址发生更改时自动更新服务标记。 有关详细信息，请参阅 [Azure 服务标记概述](../virtual-network/service-tags-overview.md)。
 
 ## <a name="data-protection"></a>数据保护
 
