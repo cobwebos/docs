@@ -117,30 +117,16 @@
   items:
     - name: 文本转语音文档
       href: index-text-to-speech.yml
-    - name: 概述
-      items:
-        - name: 什么是文本转语音？
-          href: text-to-speech.md
-        - name: “文本转语音”基本知识
-          href: text-to-speech-basics.md
-    - name: 快速入门
-      items:
-        - name: 将语音合成到扬声器
-          href: quickstarts/text-to-speech.md
-        - name: 将语音合成到音频文件
-          href: quickstarts/text-to-speech-audio-file.md
-        - name: 将语音合成为长格式音频
-          href: quickstarts/text-to-speech/async-synthesis-long-form-audio.md
+    - name: 什么是文本转语音？
+      href: text-to-speech.md
+    - name: 文本转语音快速入门
+      href: get-started-text-to-speech.md
     - name: 操作指南
       items:
         - name: 通过 SSML 改进合成
           href: speech-synthesis-markup.md
         - name: 使用长音频 API 合成语音
           href: long-audio-api.md
-        - name: 使用 REST 获取语音列表 (Python)
-          href: quickstart-python-get-text-to-speech-voices.md
-        - name: 使用 REST 将文本转换为语音 (Python)
-          href: quickstart-python-text-to-speech.md
     - name: 自定义
       items:
         - name: 合理部署

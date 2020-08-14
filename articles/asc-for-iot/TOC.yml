@@ -29,6 +29,8 @@
       href: quickstart-configure-your-solution.md
     - name: 创建适用于 IoT 的 Azure 安全中心模块克隆
       href: quickstart-create-security-twin.md
+    - name: 调查安全建议
+      href: quickstart-investigate-security-recommendations.md
     - name: 创建自定义安全警报
       href: quickstart-create-custom-alerts.md
     - name: 调查安全警报

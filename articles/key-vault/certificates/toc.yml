@@ -46,6 +46,8 @@
       href: how-to-integrate-certificate-authority.md
     - name: 疑难解答 - 导入证书
       href: import-cert-faqs.md
+    - name: 导出来自 Key Vault 的证书
+      href: how-to-export-certificate.md
 - name: 参考
   items:
     - name: Azure PowerShell

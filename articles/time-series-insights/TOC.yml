@@ -142,53 +142,17 @@
         - name: 数据访问第 2 代
           items:
             - name: 概述
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/preview'
-            - name: 模型设置
-              items:
-                - name: 概述
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings'
-                - name: 获取
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/get'
-                - name: 更新
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/modelsettings/update'
-            - name: 查询
-              items:
-                - name: 概述
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query'
-                - name: 执行
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute'
-                - name: 获取可用性
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/getavailability'
-                - name: 获取事件架构
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/geteventschema'
-            - name: 时序层次结构
-              items:
-                - name: 概述
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies'
-                - name: 执行批处理
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/executebatch'
-                - name: 获取
-                  href: 'https://docs.microsoft.com/en-us/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/list'
-            - name: 时序实例
-              items:
-                - name: 概述
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances'
-                - name: 执行批处理
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/executebatch'
-                - name: 获取
-                  href: 'https://docs.microsoft.com/en-us/rest/api/time-series-insights/dataaccessgen2/timeserieshierarchies/list'
-                - name: 搜索
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/search'
-                - name: 建议
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriesinstances/suggest'
-            - name: 时序类型
-              items:
-                - name: 概述
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes'
-                - name: 执行批处理
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/executebatch'
-                - name: 获取
-                  href: 'https://docs.microsoft.com/en-us/rest/api/time-series-insights/dataaccessgen2/timeseriestypes/list'
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-data-access-overview'
+            - name: 环境 API
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-environments-apis'
+            - name: 模型 API
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-model-apis'
+            - name: 查询 API
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-query-apis'
+            - name: 时序表达式 (TSX)
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-time-series-expression-syntax'
+            - name: API 限制
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/reference-api-limits'
         - name: 数据访问第 1 代
           items:
             - name: 概述
@@ -196,13 +160,13 @@
             - name: 查询
               items:
                 - name: 查询
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga-query'
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1-query'
                 - name: API
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api'
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-api'
                 - name: 语法
-                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax'
+                  href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1-query-syntax'
             - name: 参考数据 API
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api'
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1-reference-data-api'
     - name: 客户端 SDK
       items:
         - name: JavaScript 客户端 SDK

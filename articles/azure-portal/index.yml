@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Azure 门户文档
-summary: Azure 门户是一种基于 Web 的统一控制台，它提供了命令行工具的替代方法。 可以通过 Azure 门户管理 Azure 订阅。 生成、管理和监视一切内容，从简单的 Web 应用到复杂的云部署。 为资源的组织视图创建自定义仪表板，并配置辅助功能选项以获得最佳体验。
+summary: Azure 门户是基于 Web 的统一控制台，提供可替代命令行工具的方法。 可以通过 Azure 门户管理 Azure 订阅。 生成、管理和监视一切内容，从简单的 Web 应用到复杂的云部署。 为资源的组织视图创建自定义仪表板，并配置辅助功能选项以获得最佳体验。
 metadata:
   title: Azure 门户文档
   description: 了解如何使用基于 Web 的 Azure 门户控制台管理 Azure 订阅和资源。 Azure 门户是命令行工具的替代方法。
@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: mblythe
   ms.author: mblythe
-  ms.date: 12/19/2019
-  ms.openlocfilehash: 277326eb6b120c4cc1b456a17c6f58791c66dd16
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 08/05/2020
+  ms.openlocfilehash: f45fc98073dcc6eeee10c691fe9f93860e0fb654
+  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "75890777"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88212088"
 landingContent:
 - title: 关于 Azure 门户
   linkLists:
@@ -47,7 +47,7 @@ landingContent:
       url: azure-portal-dashboard-share-access.md
   - linkListType: learn
     links:
-    - text: 管理 Azure 中的资源
+    - text: 在 Azure 中管理资源
       url: /learn/paths/manage-resources-in-azure/
     - text: 使用基于角色的访问控制 (RBAC) 保护 Azure 资源
       url: /learn//modules/secure-azure-resources-with-rbac/
@@ -65,7 +65,7 @@ landingContent:
     links:
     - text: Azure 基础
       url: /learn/paths/azure-fundamentals/
-    - text: 云概念 - 云计算原则
+    - text: 云概念 - 云计算的原则
       url: /learn/modules/principles-cloud-computing/
 - title: 使用辅助功能选项
   linkLists:
@@ -76,7 +76,7 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 启用高对比度
-      url: azure-portal-change-theme-high-contrast.md
+      url: set-preferences.md#choose-a-theme-or-enable-high-contrast
 - title: 创建和管理支持请求
   linkLists:
   - linkListType: how-to-guide

@@ -169,14 +169,16 @@
               href: howto-move-regions-portal.md
     - name: 超大规模 (Citus)
       items:
-        - name: Nodes
-          href: concepts-hyperscale-nodes.md
         - name: 分布式数据
-          href: concepts-hyperscale-distributed-data.md
-        - name: 选择分布列
-          href: concepts-hyperscale-choose-distribution-column.md
-        - name: 表共置
-          href: concepts-hyperscale-colocation.md
+          items:
+            - name: 节点和表
+              href: concepts-hyperscale-nodes.md
+            - name: 确定应用程序类型
+              href: concepts-hyperscale-app-type.md
+            - name: 选择分布列
+              href: concepts-hyperscale-choose-distribution-column.md
+            - name: 表共置
+              href: concepts-hyperscale-colocation.md
         - name: 数据访问和安全性
           items:
             - name: 防火墙规则
@@ -341,12 +343,16 @@
       items:
         - name: 创建用户
           href: howto-hyperscale-create-users.md
-        - name: 缩放
+        - name: 服务器组大小
           href: howto-hyperscale-scaling.md
         - name: 管理防火墙
           items:
             - name: Azure 门户
               href: howto-hyperscale-manage-firewall-using-portal.md
+        - name: 分布式数据
+          items:
+            - name: 分发和修改表
+              href: howto-hyperscale-modify-distributed-tables.md
         - name: 高可用性
           href: howto-hyperscale-high-availability.md
         - name: 监视
@@ -361,12 +367,22 @@
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
 - name: 参考
   items:
-    - name: Azure CLI
-      href: /cli/azure/postgres
-    - name: REST API
-      href: /rest/api/postgresql
-    - name: 资源管理器模板
-      href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: 单个服务器
+      items:
+        - name: Azure CLI
+          href: /cli/azure/postgres
+        - name: REST API
+          href: /rest/api/postgresql
+        - name: 资源管理器模板
+          href: /azure/templates/microsoft.dbforpostgresql/allversions
+    - name: 超大规模 (Citus)
+      items:
+        - name: SQL API 函数
+          href: reference-hyperscale-functions.md
+        - name: 服务器参数
+          href: reference-hyperscale-parameters.md
+        - name: 系统表
+          href: reference-hyperscale-metadata.md
 - name: 资源
   items:
     - name: 利用 Microsoft Learn 掌握技能

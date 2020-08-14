@@ -1,14 +1,14 @@
 ---
 title: 介质蓝图示例概述
 description: 介质蓝图示例概述。 此蓝图示例可帮助客户评估特定介质控制要求。
-ms.date: 02/26/2020
+ms.date: 08/13/2020
 ms.topic: sample
-ms.openlocfilehash: ee4f15d52eea668ebffb8d5f639dd9c86ae04610
-ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+ms.openlocfilehash: db7e67cb7f96a19a04efc001bc7752f7c9a02e73
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2020
-ms.locfileid: "78201500"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208237"
 ---
 # <a name="overview-of-the-media-blueprint-sample"></a>介质蓝图示例概述
 

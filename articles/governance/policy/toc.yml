@@ -10,16 +10,22 @@
   items:
     - name: 分配策略 - 门户
       displayName: 'assign, compliance'
-      href: assign-policy-portal.md
-    - name: 分配策略 - Azure PowerShell
-      displayName: 'assign, compliance'
-      href: assign-policy-powershell.md
+      href: ./assign-policy-portal.md
     - name: 分配策略 - Azure CLI
       displayName: 'assign, compliance'
-      href: assign-policy-azurecli.md
+      href: ./assign-policy-azurecli.md
+    - name: 分配策略 - Azure PowerShell
+      displayName: 'assign, compliance'
+      href: ./assign-policy-powershell.md
+    - name: 分配策略 - Python
+      displayName: 'assign, compliance'
+      href: ./assign-policy-python.md
+    - name: 分配策略 - REST
+      displayName: 'armclient, postman'
+      href: ./assign-policy-rest-api.md
     - name: 分配策略 - ARM 模板
       displayName: 'assign, compliance, resource manager'
-      href: assign-policy-template.md
+      href: ./assign-policy-template.md
 - name: 教程
   items:
     - name: 创建和管理 Azure Policy

@@ -6,6 +6,16 @@
       href: ./kubernetes/overview.md
     - name: 关于已启用 Azure Arc 的服务器
       href: ./servers/overview.md
+- name: 快速入门
+  items:
+    - name: 管理用于服务器的 Arc 代理
+      href: ./servers/learn/quick-enable-hybrid-vm.md
+- name: 教程
+  items:
+    - name: 分配策略来评估符合性
+      href: ./servers/learn/tutorial-assign-policy-portal.md
+    - name: 监视计算机
+      href: ./servers/learn/tutorial-enable-vm-insights.md
 - name: 示例
   items:
     - name: Azure Policy 内置策略定义

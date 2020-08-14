@@ -188,6 +188,8 @@
           href: event-hubs-kafka-flink-tutorial.md
         - name: 将 Apache Kafka Connect 与中心集成（预览版）
           href: event-hubs-kafka-connect-tutorial.md
+        - name: 将 Apache Kafka Connect（预览版）与 Debezium 集成
+          href: event-hubs-kafka-connect-debezium.md
         - name: 将 Akka Streams 连接到事件中心
           href: event-hubs-kafka-akka-streams-tutorial.md
         - name: 常见问题解答 - 用于 Kafka 的事件中心

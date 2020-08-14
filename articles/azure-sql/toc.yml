@@ -72,7 +72,7 @@
               items:
                 - name: 配置 Azure AD 身份验证
                   href: database/authentication-aad-configure.md
-                - name: 多重 AAD 身份验证
+                - name: 多重 Azure AD 身份验证
                   href: database/authentication-mfa-ssms-overview.md
                 - name: 配置多重身份验证
                   href: database/authentication-mfa-ssms-configure.md
@@ -845,7 +845,7 @@
                           href: 'https://docs.microsoft.com/sql/machine-learning/package-management/tips-for-using-r-packages?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
         - name: 功能
           items:
-            - name: 链接的服务器
+            - name: 链接服务器
               href: 'https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine?toc=/azure/azure-sql/toc.json'
             - name: Service Broker
               href: 'https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/azure-sql/toc.json'
@@ -891,8 +891,10 @@
           href: managed-instance/threat-detection-configure.md
         - name: 连接应用程序
           href: managed-instance/connect-application-instance.md
-        - name: 创建警报
+        - name: 对托管实例创建警报
           href: managed-instance/alerts-create.md
+        - name: 在托管实例上手动启动故障转移
+          href: managed-instance/user-initiated-failover.md
     - name: 示例
       items:
         - name: Azure CLI

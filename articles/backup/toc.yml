@@ -24,7 +24,7 @@
       href: tutorial-backup-vm-at-scale.md
     - name: 使用 PowerShell 备份 Azure VM
       href: tutorial-backup-azure-vm.md
-    - name: 还原磁盘
+    - name: 使用 Azure CLI 还原 VM
       href: tutorial-restore-disk.md
     - name: 还原单个文件
       href: tutorial-restore-files.md
@@ -161,7 +161,7 @@
               href: install-mars-agent.md
             - name: 升级 MARS 代理
               href: upgrade-mars-agent.md
-        - name: Backup
+        - name: 备份
           items:
             - name: 备份 Windows Server 文件和文件夹
               href: backup-windows-with-mars-agent.md
@@ -197,7 +197,7 @@
               href: manage-afs-backup-cli.md
         - name: 使用 PowerShell
           items:
-            - name: Backup
+            - name: 备份
               href: backup-azure-afs-automation.md
             - name: 还原
               href: restore-afs-powershell.md
@@ -215,7 +215,7 @@
       items:
         - name: 概述
           href: sap-hana-db-about.md
-        - name: Backup
+        - name: 备份
           href: backup-azure-sap-hana-database.md
         - name: 还原
           href: sap-hana-db-restore.md

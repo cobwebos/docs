@@ -91,8 +91,6 @@
           href: concept-customer-managed-keys.md
         - name: 使用专用终结点保护配置存储
           href: concept-private-endpoint.md
-        - name: 与 Azure 托管标识集成
-          href: howto-integrate-azure-managed-service-identity.md
         - name: 使用 Azure Active Directory 启用访问权限
           href: concept-enable-rbac.md
         - name: 分配 Azure 托管标识
@@ -115,6 +113,8 @@
       href: howto-app-configuration-event.md
     - name: 自动备份配置存储
       href: howto-backup-config-store.md
+    - name: 使用托管标识来访问应用程序配置
+      href: howto-integrate-azure-managed-service-identity.md
 - name: 参考
   items:
     - name: 配置
