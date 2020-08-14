@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8116abda71ae78b05786ede03256eb9e9bb59345
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: devx-track-csharp, H1Hack27Feb2017
+ms.openlocfilehash: 9a3ffeb4ff58cc4af2309268f1a95cd9d354de8b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540258"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206627"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions 的 Twilio 绑定
 
@@ -203,7 +203,7 @@ module.exports = function (context, myQueueItem) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-下面的示例演示如何使用输出绑定发送 SMS 消息，如以下*function.js*中所定义。
+下面的示例演示如何使用输出绑定发送 SMS 消息，如以下 *function.js*中所定义。
 
 ```json
     {
@@ -241,7 +241,7 @@ def main(req: func.HttpRequest, twilioMessage: func.Out[str]) -> func.HttpRespon
 
 # <a name="java"></a>[Java](#tab/java)
 
-下面的示例演示如何使用[TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput)批注发送短信。 `to` `from` 属性定义中需要、和的值， `body` 即使您以编程方式重写它们也是如此。
+下面的示例演示如何使用 [TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) 批注发送短信。 `to` `from` 属性定义中需要、和的值， `body` 即使您以编程方式重写它们也是如此。
 
 ```java
 package com.function;
@@ -303,7 +303,7 @@ public static CreateMessageOptions Run(
 }
  ```
 
-有关完整示例，请参阅[c # 示例](#example)。
+有关完整示例，请参阅 [c # 示例](#example)。
 
 # <a name="c-script"></a>[C# 脚本](#tab/csharp-script)
 
@@ -319,7 +319,7 @@ Python 不支持特性。
 
 # <a name="java"></a>[Java](#tab/java)
 
-将[TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput)批注放置在 [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) 参数上 `T` ，其中可以是任何本机 Java 类型 `int` ，如、 `String` 、 `byte[]` 或 POJO 类型。
+将 [TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.twiliosmsoutput) 批注放置在 [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) 参数上 `T` ，其中可以是任何本机 Java 类型 `int` ，如、 `String` 、 `byte[]` 或 POJO 类型。
 
 ---
 
@@ -329,11 +329,11 @@ Python 不支持特性。
 
 | v1 function.json 属性 | v2 function.json 属性 | Attribute 属性 |说明|
 |---------|---------|---------|----------------------|
-|**type**|**type**| 必须设置为 `twilioSms`。|
+|type|type| 必须设置为 `twilioSms`。|
 |**direction**|**direction**| 必须设置为 `out`。|
 |**name**|**name**| 在 Twilio 短信的函数代码中使用的变量名。 |
-|**accountSid**|**accountSidSetting**| **AccountSidSetting**| 此值必须设置为保留 Twilio 帐户 Sid （）的应用设置的名称 `TwilioAccountSid` 。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAccountSid”。 |
-|**authToken**|**AuthTokenSetting**|**AuthTokenSetting**| 此值必须设置为保留 Twilio 身份验证令牌（）的应用设置的名称 `TwilioAccountAuthToken` 。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAuthToken”。 |
+|**accountSid**|**accountSidSetting**| **AccountSidSetting**| 此值必须设置为保留 Twilio 帐户 Sid 的应用设置的名称 (`TwilioAccountSid`) 。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAccountSid”。 |
+|**authToken**|**AuthTokenSetting**|**AuthTokenSetting**| 此值必须设置为保留 Twilio 身份验证令牌 () 的应用设置的名称 `TwilioAccountAuthToken` 。 如果未设置，默认应用设置名称为“AzureWebJobsTwilioAuthToken”。 |
 |**to**| 不适用 - 在代码中指定 | **收件人**| 此值设置为短信将发送到的电话号码。|
 |**from**|**from** | **From**| 此值设置为发送短信的电话号码。|
 |**body**|**body** | **正文**| 如果不需要在函数的代码中动态设置短信，则可以使用此值对其进行硬编码。 |  

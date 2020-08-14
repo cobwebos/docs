@@ -4,13 +4,13 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中创建跨可用性
 services: container-service
 ms.custom: fasttrack-edit, references_regions
 ms.topic: article
-ms.date: 02/27/2020
-ms.openlocfilehash: feea8c3cba170244be2ca3ec7a11c36a3c39f700
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/13/2020
+ms.openlocfilehash: 6bca57f799681a9f51b983da6f565bb465da8814
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281219"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214255"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>创建使用可用性区域的 Azure Kubernetes 服务 (AKS) 群集
 
@@ -99,7 +99,7 @@ az aks create \
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-接下来，使用[kubectl 说明][kubectl-describe]命令列出群集中的节点并按*failure-domain.beta.kubernetes.io/zone*值进行筛选。 以下示例适用于 Bash shell。
+接下来，使用 [kubectl 说明][kubectl-describe] 命令列出群集中的节点并按 *failure-domain.beta.kubernetes.io/zone* 值进行筛选。 以下示例适用于 Bash shell。
 
 ```console
 kubectl describe nodes | grep -e "Name:" -e "failure-domain.beta.kubernetes.io/zone"

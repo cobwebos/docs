@@ -5,13 +5,13 @@ keywords: azure 应用服务, web 应用, 应用设置, 环境变量
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
-ms.custom: seodec18
-ms.openlocfilehash: 9371b39bd37ba2514256a3b2fa90812f45c7ce5e
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.custom: devx-track-csharp, seodec18
+ms.openlocfilehash: 57039149afd22546bbd584db47e7a015b8b5f85c
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077367"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213581"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>在 Azure 门户中配置应用服务应用
 
@@ -96,11 +96,11 @@ ms.locfileid: "88077367"
 
 在运行时，连接字符串可用作环境变量，其前缀为以下连接类型：
 
-* SQLServer`SQLCONNSTR_`  
+* SQLServer `SQLCONNSTR_`  
 * MySQL： `MYSQLCONNSTR_` 
-* SQLAzure`SQLAZURECONNSTR_` 
+* SQLAzure `SQLAZURECONNSTR_` 
 * 自定义：`CUSTOMCONNSTR_`
-* PostgreSQL`POSTGRESQLCONNSTR_`  
+* PostgreSQL `POSTGRESQLCONNSTR_`  
 
 例如，可以使用环境变量 `MYSQLCONNSTR_connectionString1` 的形式访问名为 *connectionstring1* 的 MySql 连接字符串。 有关特定语言堆栈的步骤，请参阅：
 
@@ -172,11 +172,11 @@ ms.locfileid: "88077367"
       > [!NOTE]
       > 使用 Always On 功能时，前端负载均衡器会将请求发送到应用程序根目录。 无法配置应用服务的此应用程序终结点。
     - **托管管道版本**：IIS [管道模式]。 如果某个旧式应用需要旧版 IIS，请将此选项设置为“经典”。 
-    - **HTTP 版本**：设置为**2.0**以启用对[HTTPS/2](https://wikipedia.org/wiki/HTTP/2)协议的支持。
+    - **HTTP 版本**：设置为 **2.0** 以启用对 [HTTPS/2](https://wikipedia.org/wiki/HTTP/2) 协议的支持。
     > [!NOTE]
-    > 大多数新型浏览器仅支持通过 TLS 的 HTTP/2 协议，而非加密流量继续使用 HTTP/1.1。 若要确保客户端浏览器通过 HTTP/2 连接到应用程序，请保护自定义 DNS 名称。 有关详细信息，请参阅[在 Azure App Service 中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
+    > 大多数新型浏览器仅支持通过 TLS 的 HTTP/2 协议，而非加密流量继续使用 HTTP/1.1。 若要确保客户端浏览器通过 HTTP/2 连接到应用程序，请保护自定义 DNS 名称。 有关详细信息，请参阅 [在 Azure App Service 中使用 TLS/SSL 绑定保护自定义 DNS 名称](configure-ssl-bindings.md)。
     - **ARR 相关性**：在多实例部署中，请确保在会话的整个生存期内，将客户端路由到同一实例。 对于无状态应用程序，请将此选项设置为“关闭”。 
-- **调试**：启用[ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)、 [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)或[Node.js](configure-language-nodejs.md#debug-remotely)应用的远程调试。 此选项在 48 小时后会自动关闭。
+- **调试**：启用 [ASP.NET](troubleshoot-dotnet-visual-studio.md#remotedebug)、 [ASP.NET Core](/visualstudio/debugger/remote-debugging-azure)或 [Node.js](configure-language-nodejs.md#debug-remotely) 应用的远程调试。 此选项在 48 小时后会自动关闭。
 - **传入的客户端证书**：要求在[相互身份验证](app-service-web-configure-tls-mutual-auth.md)中使用客户端证书。
 
 ## <a name="configure-default-documents"></a>配置默认文档
@@ -215,12 +215,12 @@ ms.locfileid: "88077367"
 
 ### <a name="containerized-apps"></a>容器化应用
 
-你可以[为容器化应用添加自定义存储](configure-connect-to-azure-storage.md)。 容器化应用包括所有 Linux 应用，还包括在应用服务上运行的 Windows 和 Linux 自定义容器。 单击 "**新建 Azure 存储**"，并按如下所示配置自定义存储：
+你可以 [为容器化应用添加自定义存储](configure-connect-to-azure-storage.md)。 容器化应用包括所有 Linux 应用，还包括在应用服务上运行的 Windows 和 Linux 自定义容器。 单击 " **新建 Azure 存储** "，并按如下所示配置自定义存储：
 
 - **名称**：显示名称。
-- **配置选项**：**基本**或**高级**。
+- **配置选项**： **基本** 或 **高级**。
 - **存储帐户**：包含所需容器的存储帐户。
-- **存储类型**： **Azure Blob**或**azure 文件**。
+- **存储类型**： **Azure Blob** 或 **azure 文件**。
   > [!NOTE]
   > Windows 容器应用仅支持 Azure 文件。
 - **存储容器**：对于基本配置，为所需的容器。
@@ -228,7 +228,7 @@ ms.locfileid: "88077367"
 - **访问密钥**：对于高级配置，为 "访问密钥"。
 - **装载路径**：容器中用于装载自定义存储的绝对路径。
 
-有关详细信息，请参阅[从应用服务中的容器访问 Azure 存储为网络共享](configure-connect-to-azure-storage.md)。
+有关详细信息，请参阅 [从应用服务中的容器访问 Azure 存储为网络共享](configure-connect-to-azure-storage.md)。
 
 ## <a name="configure-language-stack-settings"></a>配置语言堆栈设置
 
@@ -243,7 +243,7 @@ ms.locfileid: "88077367"
 
 ## <a name="configure-custom-containers"></a>配置自定义容器
 
-请参阅[为 Azure App Service 配置自定义 Linux 容器](configure-custom-container.md)
+请参阅 [为 Azure App Service 配置自定义 Linux 容器](configure-custom-container.md)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 上将 GPU 用于高�
 services: container-service
 ms.topic: article
 ms.date: 03/27/2020
-ms.openlocfilehash: 30cbac0984236717581c994700483b85829c4571
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ed655a6809f2932bbe8e85fb1cd9fd7996cf7647
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244287"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213188"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 上将 GPU 用于计算密集型工作负荷
 
@@ -20,7 +20,7 @@ ms.locfileid: "86244287"
 
 目前，使用支持 GPU 的节点池这一功能仅适用于 Linux 节点池。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 本文假定你拥有现有的 AKS 群集，其中包含支持 GPU 的节点。 AKS 群集须运行 Kubernetes 1.10 或更高版本。 如果需要满足这些要求的 AKS 群集，请参阅本文第一部分来[创建 AKS 群集](#create-an-aks-cluster)。
 
@@ -28,7 +28,7 @@ ms.locfileid: "86244287"
 
 ## <a name="create-an-aks-cluster"></a>创建 AKS 群集
 
-如果需要可满足最低要求（启用了 GPU 的节点和 Kubernetes 版本 1.10 或更高版本）的 AKS 群集，请完成以下步骤。 如果已有满足这些要求的 AKS 群集，请[跳到下一节](#confirm-that-gpus-are-schedulable)。
+如果需要可满足最低要求（启用了 GPU 的节点和 Kubernetes 版本 1.10 或更高版本）的 AKS 群集，请完成以下步骤。 如果已有满足这些要求的 AKS 群集，请 [跳到下一节](#confirm-that-gpus-are-schedulable)。
 
 首先，使用 [az group create][az-group-create] 命令为群集创建资源组。 以下示例在“Eastus”区域创建名为“myResourceGroup”的资源组****：
 
@@ -52,7 +52,7 @@ az aks create \
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="install-nvidia-drivers"></a>安装 NVIDIA 驱动程序
+## <a name="install-nvidia-device-plugin"></a>安装 NVIDIA 设备插件
 
 在使用节点中的 GPU 之前，必须为 NVIDIA 设备插件部署 DaemonSet。 此 DaemonSet 在会每个节点上运行 pod，以便为 GPU 提供所需驱动程序。
 
@@ -110,7 +110,7 @@ spec:
             path: /var/lib/kubelet/device-plugins
 ```
 
-现在，使用[kubectl apply][kubectl-apply]命令创建 DaemonSet，并确认已成功创建 NVIDIA 设备插件，如下面的示例输出所示：
+现在，使用 [kubectl apply][kubectl-apply] 命令创建 DaemonSet，并确认已成功创建 NVIDIA 设备插件，如下面的示例输出所示：
 
 ```console
 $ kubectl apply -f nvidia-device-plugin-ds.yaml
@@ -188,7 +188,7 @@ Non-terminated Pods:         (9 in total)
 创建名为“samples-tf-mnist-demo.yaml”的文件并粘贴以下 YAML 清单**。 以下作业清单包括资源限制 `nvidia.com/gpu: 1`：
 
 > [!NOTE]
-> 如果在调用驱动程序时收到版本不匹配错误，如，CUDA 驱动程序版本不足以使用 CUDA 运行时版本，请查看 NVIDIA 驱动程序矩阵兼容性图表-[https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
+> 如果在调用驱动程序时收到版本不匹配错误，如，CUDA 驱动程序版本不足以使用 CUDA 运行时版本，请查看 NVIDIA 驱动程序矩阵兼容性图表- [https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
 
 ```yaml
 apiVersion: batch/v1
@@ -222,7 +222,7 @@ kubectl apply -f samples-tf-mnist-demo.yaml
 
 ## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>查看启用了 GPU 的工作负荷的状态和输出
 
-将 [kubectl get jobs][kubectl-get] 命令与 `--watch` 参数配合使用，监视作业的进度。 先拉取映像并处理数据集可能需要几分钟时间。 当*完成*列显示*1/1*时，该作业已成功完成。 使用 *Ctrl-C* 退出 `kubetctl --watch` 命令：
+将 [kubectl get jobs][kubectl-get] 命令与 `--watch` 参数配合使用，监视作业的进度。 先拉取映像并处理数据集可能需要几分钟时间。 当 *完成* 列显示 *1/1*时，该作业已成功完成。 使用 *Ctrl-C* 退出 `kubetctl --watch` 命令：
 
 ```console
 $ kubectl get jobs samples-tf-mnist-demo --watch

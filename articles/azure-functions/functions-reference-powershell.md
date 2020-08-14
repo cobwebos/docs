@@ -3,23 +3,24 @@ title: Azure Functions 的 PowerShell 开发人员参考
 description: 了解如何使用 PowerShell 开发函数。
 author: eamonoreilly
 ms.topic: conceptual
+ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: 8b8c84583bd80a7c3cbadde1caba231eed801c1f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 06838ecee809c5159bc8a290ecb4f589fd3ce04f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86506122"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207410"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 开发人员指南
 
 本文详细介绍如何使用 PowerShell 编写 Azure Functions。
 
-PowerShell Azure function （函数）表示为触发时执行的 PowerShell 脚本。 每个函数脚本都有一个相关 `function.json` 文件，用于定义该函数的行为方式，如其触发方式及其输入和输出参数。 若要了解详细信息，请参阅[触发器和绑定一文](functions-triggers-bindings.md)。 
+PowerShell Azure function (函数) 表示为触发时执行的 PowerShell 脚本。 每个函数脚本都有一个相关 `function.json` 文件，用于定义该函数的行为方式，如其触发方式及其输入和输出参数。 若要了解详细信息，请参阅 [触发器和绑定一文](functions-triggers-bindings.md)。 
 
 与其他类型的函数一样，PowerShell 脚本函数采用与在文件中定义的所有输入绑定的名称相匹配的参数 `function.json` 。 `TriggerMetadata`还传递了一个参数，该参数包含有关启动函数的触发器的附加信息。
 
-本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 还应已完成 PowerShell 的[函数快速入门](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)，以创建第一个 powershell 函数。
+本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 还应已完成 PowerShell 的 [函数快速入门](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell) ，以创建第一个 powershell 函数。
 
 ## <a name="folder-structure"></a>文件夹结构
 
@@ -48,11 +49,11 @@ PSFunctionApp
  | - bin
 ```
 
-在项目的根目录中，有一个 [`host.json`](functions-host-json.md) 可用于配置 function app 的共享文件。 每个函数都有一个具有其自己的代码文件（ps1）和绑定配置文件（）的文件夹 `function.json` 。 文件的父目录 function.js名称始终是函数的名称。
+在项目的根目录中，有一个 [`host.json`](functions-host-json.md) 可用于配置 function app 的共享文件。 每个函数都有一个文件夹，该文件夹具有其自己的代码文件 ( ps1) 并绑定配置文件 (`function.json`) 。 文件的父目录 function.js名称始终是函数的名称。
 
 某些绑定需要 `extensions.csproj` 文件存在。 [版本2.x 和更高版本](functions-versions.md)的函数运行时中所需的绑定扩展在文件中定义 `extensions.csproj` ，实际库文件位于 `bin` 文件夹中。 本地开发时，必须[注册绑定扩展](functions-bindings-register.md#extension-bundles)。 在 Azure 门户中开发函数时，系统将为你完成此注册。
 
-在 PowerShell Function Apps 中，你可以选择在 `profile.ps1` 函数应用开始运行时运行它（也称为*[冷启动](#cold-start)*）。 有关详细信息，请参阅[PowerShell 配置文件](#powershell-profile)。
+在 PowerShell Function Apps 中，你可以选择在 `profile.ps1` 函数应用开始运行时运行它，否则会将其作为 *[冷启动](#cold-start)* (。 有关详细信息，请参阅 [PowerShell 配置文件](#powershell-profile)。
 
 ## <a name="defining-a-powershell-script-as-a-function"></a>将 PowerShell 脚本定义为函数
 
@@ -76,14 +77,14 @@ $TriggerMetadata.sys
 | properties   | 描述                                     | 类型     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | 当触发函数时，采用 UTC 格式        | DateTime |
-| MethodName | 触发的函数的名称     | string   |
-| RandGuid   | 此函数执行的唯一 guid | string   |
+| MethodName | 触发的函数的名称     | 字符串   |
+| RandGuid   | 此函数执行的唯一 guid | 字符串   |
 
-每个触发器类型都有一组不同的元数据。 例如，的 `$TriggerMetadata` `QueueTrigger` 包含、、等 `InsertionTime` `Id` `DequeueCount` 。 有关队列触发器的元数据的详细信息，请参阅[队列触发器的官方文档](functions-bindings-storage-queue-trigger.md#message-metadata)。 查看正在处理的[触发器](functions-triggers-bindings.md)的相关文档，了解触发器元数据内部的内容。
+每个触发器类型都有一组不同的元数据。 例如，的 `$TriggerMetadata` `QueueTrigger` 包含、、等 `InsertionTime` `Id` `DequeueCount` 。 有关队列触发器的元数据的详细信息，请参阅 [队列触发器的官方文档](functions-bindings-storage-queue-trigger.md#message-metadata)。 查看正在处理的 [触发器](functions-triggers-bindings.md) 的相关文档，了解触发器元数据内部的内容。
 
 ## <a name="bindings"></a>绑定
 
-在 PowerShell 中，在上的函数 function.js中配置和定义[绑定](functions-triggers-bindings.md)。 函数通过多种方式来与绑定交互。
+在 PowerShell 中，在上的函数 function.js中配置和定义 [绑定](functions-triggers-bindings.md) 。 函数通过多种方式来与绑定交互。
 
 ### <a name="reading-trigger-and-input-data"></a>读取触发器和输入数据
 
@@ -113,7 +114,7 @@ param($MyFirstInputBinding, $MySecondInputBinding)
 Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 ```
 
-`Push-OutputBinding`的行为方式与为指定的值不同 `-Name` ：
+`Push-OutputBinding` 的行为方式与为指定的值不同 `-Name` ：
 
 * 当指定的名称无法解析为有效的输出绑定时，将引发错误。
 
@@ -128,8 +129,8 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 | 名称 | 类型 | 位置 | 说明 |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | 字符串 | 1 | 要设置的输出绑定的名称。 |
-| **`-Value`** | Object | 2 | 要设置的输出绑定的值，它从管道 ByValue 接受。 |
-| **`-Clobber`** | SwitchParameter | 名为 | 可有可无指定时，将强制为指定的输出绑定设置值。 | 
+| **`-Value`** | 对象 | 2 | 要设置的输出绑定的值，它从管道 ByValue 接受。 |
+| **`-Clobber`** | SwitchParameter | 名为 |  (可选) 指定时，将强制为指定的输出绑定设置值。 | 
 
 还支持以下常见参数： 
 * `Verbose`
@@ -142,7 +143,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 * `PipelineVariable`
 * `OutVariable` 
 
-有关详细信息，请参阅[About CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216)。
+有关详细信息，请参阅 [About CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216)。
 
 #### <a name="push-outputbinding-example-http-responses"></a>OutputBinding 示例： HTTP 响应
 
@@ -175,7 +176,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 
 #### <a name="push-outputbinding-example-queue-output-binding"></a>OutputBinding 示例：队列输出绑定
 
-`Push-OutputBinding`用于将数据发送到输出绑定，如[Azure 队列存储输出绑定](functions-bindings-storage-queue-output.md)。 在下面的示例中，写入队列的消息的值为 "output #1"：
+`Push-OutputBinding` 用于将数据发送到输出绑定，如 [Azure 队列存储输出绑定](functions-bindings-storage-queue-output.md)。 在下面的示例中，写入队列的消息的值为 "output #1"：
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #1"
@@ -212,7 +213,7 @@ MyQueue                        myData
 MyOtherQueue                   myData
 ```
 
-`Get-OutputBinding`还包含一个名为的参数 `-Name` ，该参数可用于筛选返回的绑定，如以下示例中所示：
+`Get-OutputBinding` 还包含一个名为的参数 `-Name` ，该参数可用于筛选返回的绑定，如以下示例中所示：
 
 ```powershell
 Get-OutputBinding -Name MyQ*
@@ -224,7 +225,7 @@ Name                           Value
 MyQueue                        myData
 ```
 
-中支持通配符（*） `Get-OutputBinding` 。
+ ( * ) 支持通配符 `Get-OutputBinding` 。
 
 ## <a name="logging"></a>日志记录
 
@@ -234,14 +235,14 @@ PowerShell 函数中的日志记录类似于常规的 PowerShell 日志记录。
 | ------------- | -------------- |
 | 错误 | **`Write-Error`** |
 | 警告 | **`Write-Warning`**  | 
-| 信息 | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | 信息 | 写入_信息_级别日志记录。 |
+| 信息 | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | 信息 | 写入 _信息_ 级别日志记录。 |
 | 调试 | **`Write-Debug`** |
 | 跟踪 | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
 除了这些 cmdlet 外，写入管道的任何内容都将重定向到 `Information` 日志级别并以默认的 PowerShell 格式显示。
 
 > [!IMPORTANT]
-> 使用 `Write-Verbose` 或 `Write-Debug` cmdlet 不足以查看详细和调试级别日志记录。 你还必须配置日志级别阈值，该阈值声明你实际关注的日志级别。 若要了解详细信息，请参阅[配置函数应用日志级别](#configure-the-function-app-log-level)。
+> 使用 `Write-Verbose` 或 `Write-Debug` cmdlet 不足以查看详细和调试级别日志记录。 你还必须配置日志级别阈值，该阈值声明你实际关注的日志级别。 若要了解详细信息，请参阅 [配置函数应用日志级别](#configure-the-function-app-log-level)。
 
 ### <a name="configure-the-function-app-log-level"></a>配置 function app 日志级别
 
@@ -275,14 +276,14 @@ Azure Functions 允许您定义阈值级别，以便轻松控制函数写入日�
 所有触发器和绑定在代码中表示为一些真实的数据类型：
 
 * Hashtable
-* string
+* 字符串
 * byte[]
 * int
 * Double
 * HttpRequestContext
 * HttpResponseContext
 
-此列表中的前五个类型是标准 .NET 类型。 最后两个仅由[HttpTrigger 触发器](#http-triggers-and-bindings)使用。
+此列表中的前五个类型是标准 .NET 类型。 最后两个仅由 [HttpTrigger 触发器](#http-triggers-and-bindings)使用。
 
 函数中的每个绑定参数都必须是这些类型之一。
 
@@ -294,25 +295,25 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 传递到脚本的请求对象的类型为 `HttpRequestContext` ，它具有以下属性：
 
-| properties  | 说明                                                    | 类型                      |
+| properties  | 描述                                                    | 类型                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | 一个包含请求正文的对象。 `Body`基于数据序列化为最佳类型。 例如，如果数据是 JSON，则以哈希表形式传递。 如果数据是字符串，则以字符串的形式传递。 | object |
+| **`Body`**    | 一个包含请求正文的对象。 `Body` 基于数据序列化为最佳类型。 例如，如果数据是 JSON，则以哈希表形式传递。 如果数据是字符串，则以字符串的形式传递。 | object |
 | **`Headers`** | 包含请求标头的字典。                | Dictionary<string，string><sup>*</sup> |
-| **`Method`** | 请求的 HTTP 方法。                                | string                    |
+| **`Method`** | 请求的 HTTP 方法。                                | 字符串                    |
 | **`Params`**  | 一个包含请求的路由参数的对象。 | Dictionary<string，string><sup>*</sup> |
 | **`Query`** | 一个包含查询参数的对象。                  | Dictionary<string，string><sup>*</sup> |
-| **`Url`** | 请求的 URL。                                        | string                    |
+| **`Url`** | 请求的 URL。                                        | 字符串                    |
 
-<sup>*</sup>所有 `Dictionary<string,string>` 键都不区分大小写。
+<sup>*</sup> 所有 `Dictionary<string,string>` 键都不区分大小写。
 
 #### <a name="response-object"></a>响应对象
 
 应发送回的响应对象的类型为 `HttpResponseContext` ，它具有以下属性：
 
-| properties      | 说明                                                 | 类型                      |
+| properties      | 描述                                                 | 类型                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | 一个包含响应正文的对象。           | object                    |
-| **`ContentType`** | 用于设置响应的内容类型的简短内容。 | string                    |
+| **`ContentType`** | 用于设置响应的内容类型的简短内容。 | 字符串                    |
 | **`Headers`** | 一个包含响应标头的对象。               | 字典或哈希表   |
 | **`StatusCode`**  | 响应的 HTTP 状态代码。                       | 字符串或整数             |
 
@@ -372,11 +373,11 @@ param([string] $myBlob)
 
 ## <a name="powershell-profile"></a>PowerShell 配置文件
 
-在 PowerShell 中，有一个 PowerShell 配置文件的概念。 如果你不熟悉 PowerShell 配置文件，请参阅[关于配置文件](/powershell/module/microsoft.powershell.core/about/about_profiles)。
+在 PowerShell 中，有一个 PowerShell 配置文件的概念。 如果你不熟悉 PowerShell 配置文件，请参阅 [关于配置文件](/powershell/module/microsoft.powershell.core/about/about_profiles)。
 
-在 PowerShell 函数中，配置文件脚本在函数应用启动时执行。 函数应用在首次部署时开始，在空闲后启动（[冷启动](#cold-start)）。
+在 PowerShell 函数中，配置文件脚本在函数应用启动时执行。 函数应用在第一次部署时开始，在空闲后开始)  ([冷启动](#cold-start) 。
 
-使用工具（如 Visual Studio Code 和 Azure Functions Core Tools）创建函数应用时，将 `profile.ps1` 为您创建一个默认值。 默认配置文件将保留[在核心工具 GitHub 存储库中](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1)，并包含：
+使用工具（如 Visual Studio Code 和 Azure Functions Core Tools）创建函数应用时，将 `profile.ps1` 为您创建一个默认值。 默认配置文件将保留 [在核心工具 GitHub 存储库中](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1) ，并包含：
 
 * 自动对 Azure 进行 MSI 身份验证。
 * 如果需要，可以打开 Azure PowerShell `AzureRM` PowerShell 别名。
@@ -387,14 +388,14 @@ param([string] $myBlob)
 
 | Functions 版本 | PowerShell 版本                             |
 |-------------------|------------------------------------------------|
-| 1.x               | Windows PowerShell 5.1 （由运行时锁定） |
+| 1.x               | Windows PowerShell 5.1 (由运行时锁定)  |
 | 2.x               | PowerShell Core 6                              |
 
 可以通过从任何函数进行打印来查看当前版本 `$PSVersionTable` 。
 
 ## <a name="dependency-management"></a>依赖项管理
 
-函数可让你利用[PowerShell 库](https://www.powershellgallery.com)来管理依赖项。 启用依赖关系管理后，requirements.psd1 文件用于自动下载所需的模块。 可以通过 `managedDependency` 在文件的host.js的根目录中将属性设置为来启用此行为 `true` ，如以下示例中所示： [host.json file](functions-host-json.md)
+函数可让你利用 [PowerShell 库](https://www.powershellgallery.com) 来管理依赖项。 启用依赖关系管理后，requirements.psd1 文件用于自动下载所需的模块。 可以通过 `managedDependency` 在文件的host.js的根目录中将属性设置为来启用此行为 `true` ，如以下示例中所示： [host.json file](functions-host-json.md)
 
 ```json
 {
@@ -422,9 +423,9 @@ param([string] $myBlob)
 
 | Function App 设置              | 默认值             | 说明                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
-| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00`（7天）     | 每个 PowerShell 工作进程启动时对 PowerShell 库上的模块升级进行检查，每隔一次 `MDMaxBackgroundUpgradePeriod` 。 当 PowerShell 库中有新的模块版本时，它将安装到文件系统，并提供给 PowerShell 辅助角色。 减小此值后，函数应用可以更快地获取较新的模块版本，但它还会增加应用资源使用情况（网络 i/o、CPU、存储）。 增加此值会减少应用的资源使用情况，但也可能会延迟将新的模块版本传递给你的应用。 | 
-| **`MDNewSnapshotCheckPeriod`**         | `01:00:00`（1小时）       | 将新模块版本安装到文件系统后，必须重新启动每个 PowerShell 工作进程。 重新启动 PowerShell 辅助角色会影响应用可用性，因为它可以中断当前函数执行。 在重新启动所有 PowerShell 工作进程之前，函数调用可能会使用旧的或新的模块版本。 在内重新启动所有 PowerShell 辅助角色 `MDNewSnapshotCheckPeriod` 。 增大此值可降低中断的频率，但也可能增加函数调用使用旧模块版本或新模块版本不确定的时间段。 |
-| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00`（1天）     | 若要避免频繁的工作线程重新启动时进行过多的模块升级，则当任何工作线程已启动最后一个检查时，不会执行模块升级检查 `MDMinBackgroundUpgradePeriod` 。 |
+| **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 天)      | 每个 PowerShell 工作进程启动时对 PowerShell 库上的模块升级进行检查，每隔一次 `MDMaxBackgroundUpgradePeriod` 。 当 PowerShell 库中有新的模块版本时，它将安装到文件系统，并提供给 PowerShell 辅助角色。 减小此值后，函数应用可以更快地获取较新的模块版本，但它还会增加 (网络 i/o、CPU、存储) 的应用资源使用情况。 增加此值会减少应用的资源使用情况，但也可能会延迟将新的模块版本传递给你的应用。 | 
+| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 小时)        | 将新模块版本安装到文件系统后，必须重新启动每个 PowerShell 工作进程。 重新启动 PowerShell 辅助角色会影响应用可用性，因为它可以中断当前函数执行。 在重新启动所有 PowerShell 工作进程之前，函数调用可能会使用旧的或新的模块版本。 在内重新启动所有 PowerShell 辅助角色 `MDNewSnapshotCheckPeriod` 。 增大此值可降低中断的频率，但也可能增加函数调用使用旧模块版本或新模块版本不确定的时间段。 |
+| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` (1 天)      | 若要避免频繁的工作线程重新启动时进行过多的模块升级，则当任何工作线程已启动最后一个检查时，不会执行模块升级检查 `MDMinBackgroundUpgradePeriod` 。 |
 
 利用您自己的自定义模块与通常的方式不同。
 
@@ -507,17 +508,17 @@ Write-Host $env:WEBSITE_SITE_NAME
 PSWorkerInProcConcurrencyUpperBound
 ```
 
-在 Function App 的 "[应用设置](functions-app-settings.md)" 中设置此环境变量。
+在 Function App 的 " [应用设置](functions-app-settings.md) " 中设置此环境变量。
 
 ### <a name="considerations-for-using-concurrency"></a>使用并发的注意事项
 
-默认情况下，PowerShell 是_单线程_脚本语言。 但是，可以在同一进程中使用多个 PowerShell 运行空间来添加并发。 创建的运行空间量将与 PSWorkerInProcConcurrencyUpperBound 应用程序设置匹配。 吞吐量将受到选定计划中可用的 CPU 和内存量的影响。
+默认情况下，PowerShell 是 _单线程_ 脚本语言。 但是，可以在同一进程中使用多个 PowerShell 运行空间来添加并发。 创建的运行空间量将与 PSWorkerInProcConcurrencyUpperBound 应用程序设置匹配。 吞吐量将受到选定计划中可用的 CPU 和内存量的影响。
 
-Azure PowerShell 使用某些_进程级_上下文和状态，以帮助节省额外的键入内容。 但是，如果在函数应用中打开并发，并调用更改状态的操作，则可能会出现争用条件。 这些争用条件很难调试，因为一个调用依赖于某种状态，另一个调用更改了状态。
+Azure PowerShell 使用某些 _进程级_ 上下文和状态，以帮助节省额外的键入内容。 但是，如果在函数应用中打开并发，并调用更改状态的操作，则可能会出现争用条件。 这些争用条件很难调试，因为一个调用依赖于某种状态，另一个调用更改了状态。
 
-Azure PowerShell 的并发性存在巨大的价值，因为某些操作可能需要相当长的时间。 但是，必须谨慎操作。 如果怀疑遇到争用条件，请将 PSWorkerInProcConcurrencyUpperBound 应用设置设置为， `1` 并改为对并发使用[语言工作进程级隔离](functions-app-settings.md#functions_worker_process_count)。
+Azure PowerShell 的并发性存在巨大的价值，因为某些操作可能需要相当长的时间。 但是，必须谨慎操作。 如果怀疑遇到争用条件，请将 PSWorkerInProcConcurrencyUpperBound 应用设置设置为， `1` 并改为对并发使用 [语言工作进程级隔离](functions-app-settings.md#functions_worker_process_count) 。
 
-## <a name="configure-function-scriptfile"></a>配置函数`scriptFile`
+## <a name="configure-function-scriptfile"></a>配置函数 `scriptFile`
 
 默认情况下，从中执行 PowerShell 函数 `run.ps1` ，该文件与对应的父目录共享相同的父目录 `function.json` 。
 
@@ -593,11 +594,11 @@ Export-ModuleMember -Function "Invoke-PSTestFunc"
 
 ### <a name="cold-start"></a>冷启动
 
-在[无服务器托管模型](functions-scale.md#consumption-plan)中开发 Azure Functions 时，冷启动就会成为现实。 *冷启动*是指函数应用开始运行以处理请求所用的时间段。 在消耗计划中，冷启动会更频繁，因为函数应用在非活动期间关闭。
+在 [无服务器托管模型](functions-scale.md#consumption-plan)中开发 Azure Functions 时，冷启动就会成为现实。 *冷启动* 是指函数应用开始运行以处理请求所用的时间段。 在消耗计划中，冷启动会更频繁，因为函数应用在非活动期间关闭。
 
-### <a name="bundle-modules-instead-of-using-install-module"></a>绑定模块，而不是使用`Install-Module`
+### <a name="bundle-modules-instead-of-using-install-module"></a>绑定模块，而不是使用 `Install-Module`
 
-脚本将在每次调用时运行。 避免 `Install-Module` 在脚本中使用。 改为 `Save-Module` 在发布前使用，以便您的函数无需浪费时间来下载模块。 如果冷启动会影响你的功能，请考虑将 function app 部署到[应用服务计划](functions-scale.md#app-service-plan)，将其设置为*Always on*或[高级计划](functions-scale.md#premium-plan)。
+脚本将在每次调用时运行。 避免 `Install-Module` 在脚本中使用。 改为 `Save-Module` 在发布前使用，以便您的函数无需浪费时间来下载模块。 如果冷启动会影响你的功能，请考虑将 function app 部署到 [应用服务计划](functions-scale.md#app-service-plan) ，将其设置为 *Always on* 或 [高级计划](functions-scale.md#premium-plan)。
 
 ## <a name="next-steps"></a>后续步骤
 

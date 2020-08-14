@@ -4,13 +4,13 @@ description: 了解如何通过本地计算机上的命令提示符或终端编�
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 5c6761b083200556314d7133d5040f7811066e30
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: devx-track-csharp, 80e4ff38-5174-43
+ms.openlocfilehash: 18263f9e77961fb4c169559f221ab94eb4a38840
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037025"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207446"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -41,7 +41,7 @@ Azure Functions Core Tools 有三个版本。 使用的版本取决于本地开�
 
 ## <a name="prerequisites"></a>先决条件
 
-Azure Functions Core Tools 当前依赖于 Azure CLI 通过 Azure 帐户进行身份验证。 这意味着，必须在[本地安装 Azure CLI](/cli/azure/install-azure-cli) ，才能从 Azure Functions Core Tools[发布到 Azure](#publish) 。 
+Azure Functions Core Tools 当前依赖于 Azure CLI 通过 Azure 帐户进行身份验证。 这意味着，必须在 [本地安装 Azure CLI](/cli/azure/install-azure-cli) ，才能从 Azure Functions Core Tools [发布到 Azure](#publish) 。 
 
 ## <a name="install-the-azure-functions-core-tools"></a>安装 Azure Functions Core Tools
 
@@ -56,11 +56,11 @@ Azure Functions Core Tools 当前依赖于 Azure CLI 通过 Azure 帐户进行�
 
 # <a name="windows"></a>[Windows](#tab/windows)
 
-以下步骤使用 Windows installer (MSI) 来安装核心工具 v3. x。 若要详细了解安装 Core Tools v2 所需的其他基于包的安装程序，请参阅[Core tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
+以下步骤使用 Windows installer (MSI) 来安装核心工具 v3. x。 若要详细了解安装 Core Tools v2 所需的其他基于包的安装程序，请参阅 [Core tools 自述文件](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)。
 
 1. 下载并运行基于你的 Windows 版本的 Core Tools 安装程序：
 
-    -  (建议使用[v3. x 64 位](https://go.microsoft.com/fwlink/?linkid=2135274)。 [Visual Studio Code 调试](functions-develop-vs-code.md#debugging-functions-locally)需要64位。 ) 
+    -  (建议使用[v3. x 64 位](https://go.microsoft.com/fwlink/?linkid=2135274)。 [Visual Studio Code 调试](functions-develop-vs-code.md#debugging-functions-locally) 需要64位。 ) 
     - [v3. x-Windows 32 位](https://go.microsoft.com/fwlink/?linkid=2135275)
 
 1. 如果不打算使用[扩展捆绑包](functions-bindings-register.md#extension-bundles)，请安装[用于 Windows 的 .NET Core 3.x SDK](https://dotnet.microsoft.com/download)。
@@ -200,10 +200,10 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 | **`--language`** | 初始化语言特定的项目。 当前在设置为时受支持 `--worker-runtime` `node` 。 选项包括 `typescript` 和 `javascript`。 你还可以使用 `--worker-runtime javascript` 或 `--worker-runtime typescript` 。  |
 | **`--managed-dependencies`**  | 安装托管依赖项。 目前，只有 PowerShell 辅助运行时支持此功能。 |
 | **`--source-control`** | 控制是否创建 git 存储库。 默认不会创建存储库。 如果为 `true`，则会创建存储库。 |
-| **`--worker-runtime`** | 设置项目的语言运行时。 支持的值包括： `csharp` 、 `dotnet` 、 `javascript` 、 `node` (JavaScript) 、 `powershell` 、 `python` 和 `typescript` 。 对于 Java，请使用[Maven](functions-reference-java.md#create-java-functions)。如果未设置，则系统会提示你在初始化期间选择运行时。 |
+| **`--worker-runtime`** | 设置项目的语言运行时。 支持的值包括： `csharp` 、 `dotnet` 、 `javascript` 、 `node` (JavaScript) 、 `powershell` 、 `python` 和 `typescript` 。 对于 Java，请使用 [Maven](functions-reference-java.md#create-java-functions)。如果未设置，则系统会提示你在初始化期间选择运行时。 |
 |
 > [!IMPORTANT]
-> 默认情况下，版本2.x 和更高版本的核心工具会将 .NET 运行时的函数应用项目创建为[c # 类项目](functions-dotnet-class-library.md)， ( .csproj) 。 这些 C# 项目可以与 Visual Studio 或 Visual Studio Code 结合使用，在测试期间以及发布到 Azure 时进行编译。 如果希望创建并使用在版本 1.x 和门户中创建的相同 C# 脚本 (.csx) 文件，则在创建和部署函数时必须包含 `--csx` 参数。
+> 默认情况下，版本2.x 和更高版本的核心工具会将 .NET 运行时的函数应用项目创建为 [c # 类项目](functions-dotnet-class-library.md) ， ( .csproj) 。 这些 C# 项目可以与 Visual Studio 或 Visual Studio Code 结合使用，在测试期间以及发布到 Azure 时进行编译。 如果希望创建并使用在版本 1.x 和门户中创建的相同 C# 脚本 (.csx) 文件，则在创建和部署函数时必须包含 `--csx` 参数。
 
 ## <a name="register-extensions"></a>注册扩展
 
@@ -345,7 +345,7 @@ func start
 ```
 func start
 ```
-此命令必须[在虚拟环境中运行](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#create-venv)。
+此命令必须 [在虚拟环境中运行](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#create-venv)。
 
 # <a name="typescript"></a>[TypeScript](#tab/ts)
 
@@ -515,7 +515,7 @@ func azure functionapp publish <FunctionAppName>
 
 | 选项     | 说明                            |
 | ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  将 local.settings.json 中的设置发布到 Azure，如果该设置已存在，则提示进行覆盖。 如果使用的是 Microsoft Azure 存储模拟器，请先将应用设置更改为[实际的存储连接](#get-your-storage-connection-strings)。 |
+| **`--publish-local-settings -i`** |  将 local.settings.json 中的设置发布到 Azure，如果该设置已存在，则提示进行覆盖。 如果使用的是 Microsoft Azure 存储模拟器，请先将应用设置更改为 [实际的存储连接](#get-your-storage-connection-strings)。 |
 | **`--overwrite-settings -y`** | 使用 `--publish-local-settings -i` 时隐藏覆盖应用设置的提示。|
 
 仅限版本2.x 和更高版本支持以下发布选项：

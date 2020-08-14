@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
-ms.openlocfilehash: 5fe674fa7ab6a6a3f222a215ebc6912549776fee
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 2ffe9d525e92fa2154889cea43f681a0f31a18ab
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88067352"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214218"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>使用用户定义的路由自定义群集出口
 
@@ -71,7 +71,8 @@ AKS 资源提供程序将部署一个标准负载均衡器 (SLB)。 不会为负
 > [!IMPORTANT]
 > UDR 的出站类型要求路由表中有 0.0.0.0/0 的路由和 NVA（网络虚拟设备）的下一个跃点目标。
 > 路由表已具有默认的 0.0.0.0/0 到 Internet 的路由，但没有连接 SNAT 的公共 IP，光是添加此路由不会为你提供出口。 AKS 将验证你没有创建指向 Internet 的 0.0.0.0/0 路由，而是创建了指向 NVA 或网关等的路由。
-
+> 
+> 使用 UDR 的出站类型时，不会创建负载平衡器公共 IP 地址，除非已配置了类型为 *loadbalancer* 的服务。
 
 ## <a name="next-steps"></a>后续步骤
 

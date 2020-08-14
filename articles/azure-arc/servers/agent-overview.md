@@ -1,18 +1,18 @@
 ---
 title: Connected Machine Windows 代理概述
-description: 本文详细概述了可用的服务器 (预览版) 代理，它支持监视混合环境中托管的虚拟机。
+description: 本文详细概述了可用的 Azure Arc 服务器 (预览版) 代理，该服务器支持监视混合环境中托管的虚拟机。
 ms.date: 08/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8e8abfcc3c6ec7b7893563c67dc6bb82ccdda850
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: d922652537034bef258c5bcde78fb178b092ed16
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121827"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212972"
 ---
-# <a name="overview-of-azure-arc-for-servers-preview-agent"></a> (预览) 代理的服务器的 Azure Arc 概述
+# <a name="overview-of-azure-arc-enabled-servers-preview-agent"></a> (预览版) 代理概述启用了 Azure Arc 的服务器
 
-用于服务器 (预览版的 Azure Arc) 连接的计算机代理可让你在公司网络或其他云提供商上管理在 Azure 外部托管的 Windows 和 Linux 计算机。 本文提供该代理的详细概述、系统和网络要求以及不同的部署方法。
+通过支持 Azure Arc 的服务器 (预览版) 连接的计算机代理，你可以在公司网络或其他云提供商上管理在 Azure 外部托管的 Windows 和 Linux 计算机。 本文提供该代理的详细概述、系统和网络要求以及不同的部署方法。
 
 ## <a name="agent-component-details"></a>代理组件详细信息
 
@@ -61,11 +61,11 @@ Azure Connected Machine 代理正式支持以下版本的 Windows 和 Linux 操�
 
 * 若要将计算机加入，你必须是 **Azure Connected Machine 加入**角色的成员。
 
-* 若要读取、修改、重新载入和删除计算机，你是**Azure 连接的计算机资源管理员**角色的成员。 
+* 若要读取、修改、重新载入和删除计算机，你是 **Azure 连接的计算机资源管理员** 角色的成员。 
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure 订阅和服务限制
 
-在用 Azure Arc 为服务器配置计算机 (预览) 之前，请查看 Azure 资源管理器[订阅限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)和[资源组限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)以规划要连接的计算机的数量。
+在将计算机配置为启用了 Azure Arc 的服务器 (预览) 之前，请查看 Azure 资源管理器 [订阅限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) 和 [资源组限制](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) ，以规划要连接的计算机的数量。
 
 ### <a name="transport-layer-security-12-protocol"></a>传输层安全性1.2 协议
 
@@ -105,7 +105,7 @@ URL：
 
 ### <a name="register-azure-resource-providers"></a>注册 Azure 资源提供程序
 
-Azure Arc for servers（预览版）依赖于通过订阅中的以下 Azure 资源提供程序来使用此服务：
+已启用 Azure Arc 的服务器 (预览版) 取决于订阅中的以下 Azure 资源提供程序，以便使用此服务：
 
 * Microsoft.HybridCompute
 * Microsoft.GuestConfiguration
@@ -248,4 +248,4 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始评估 Azure Arc for servers（预览版），请阅读[从 Azure 门户将混合计算机连接到 Azure](onboard-portal.md) 一文。
+若要开始评估启用了 Azure Arc 的服务器 (预览版) ，请按照将 [混合计算机从 Azure 门户连接到 Azure](onboard-portal.md)一文进行操作。

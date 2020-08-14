@@ -2,13 +2,14 @@
 title: 使用 Visual Studio 开发 Azure Functions
 description: 了解如何使用 Visual Studio Code 的 Azure Functions 扩展开发和测试 Azure Functions。
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: d8ccb93013b16fc919630251aa02edf48e30ce6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 610c80dc5552eae4f2ad8442fa11b85f2eab35eb
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083117"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206740"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>使用 Visual Studio 开发 Azure Functions
 
@@ -244,7 +245,7 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
     ![函数应用设置](./media/functions-develop-vs-code/function-app-publish-project.png)
 
-1. 如果你未登录，系统会提示“登录到 Azure”。 你还可以**创建免费的 Azure 帐户**。 从浏览器登录后，返回到 Visual Studio Code。
+1. 如果你未登录，系统会提示“登录到 Azure”。 你还可以 **创建免费的 Azure 帐户**。 从浏览器登录后，返回到 Visual Studio Code。
 
 1. 如果你有多个订阅，请为函数应用**选择一个订阅**，然后选择“+ 在 Azure 中创建新的函数应用...”**_“高级”_**。 使用此“高级”选项可以更好地控制在 Azure 中创建的资源。 
 
@@ -264,7 +265,7 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
 ## <a name="republish-project-files"></a>重新发布项目文件
 
-设置[连续部署](functions-continuous-deployment.md)时，只要在连接的源位置中更新了源文件，就会更新 Azure 中的函数应用。 建议持续部署，但也可以从 Visual Studio Code 重新发布项目文件更新。
+设置 [连续部署](functions-continuous-deployment.md)时，只要在连接的源位置中更新了源文件，就会更新 Azure 中的函数应用。 建议持续部署，但也可以从 Visual Studio Code 重新发布项目文件更新。
 
 > [!IMPORTANT]
 > 发布到现有函数应用将覆盖该应用在 Azure 中的内容。
@@ -383,7 +384,7 @@ HTTP 触发器的请求 URL 显示在终端输出中。 在本地运行项目时
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
 
 > [!NOTE]
-> 流日志仅支持单个 Functions 宿主实例。 将函数扩展为多个实例时，不会在日志流中显示来自其他实例的数据。 Application Insights 中的[实时指标流](../azure-monitor/app/live-stream.md)支持多个实例。 同时，在近乎实时的情况下，流式分析基于[抽样数据](functions-monitoring.md#configure-sampling)。
+> 流日志仅支持单个 Functions 宿主实例。 将函数扩展为多个实例时，不会在日志流中显示来自其他实例的数据。 Application Insights 中的[实时指标流](../azure-monitor/app/live-stream.md)支持多个实例。 同时，在近乎实时的情况下，流式分析基于 [抽样数据](functions-monitoring.md#configure-sampling)。
 
 ### <a name="application-insights"></a>Application Insights
 
@@ -412,7 +413,7 @@ Azure Functions 扩展在区域提供一个有用的图形界面，用于与 Azu
 |Azure Functions 命令  | 说明  |
 |---------|---------|
 |**添加新设置**  |  在 Azure 中创建新的应用程序设置。 有关详细信息，请参阅[发布应用程序设置](#publish-application-settings)。 可能还需要[将此设置下载到本地设置](#download-settings-from-azure)。 |
-| **配置部署源** | 将 Azure 中的函数应用连接到本地 Git 存储库。 若要了解详细信息，请参阅[Azure Functions 的持续部署](functions-continuous-deployment.md)。 |
+| **配置部署源** | 将 Azure 中的函数应用连接到本地 Git 存储库。 若要了解详细信息，请参阅 [Azure Functions 的持续部署](functions-continuous-deployment.md)。 |
 | **连接到 GitHub 存储库** | 将函数应用连接到 GitHub 存储库。 |
 | **复制函数 URL** | 获取 Azure 中运行的 HTTP 触发函数的远程 URL。 有关详细信息，请参阅[获取已部署的函数的 URL](#get-the-url-of-the-deployed-function)。 |
 | **在 Azure 中创建函数应用** | 在 Azure 中的订阅内创建新的函数应用。 有关详细信息，请参阅有关如何[发布到 Azure 中的新函数应用](#publish-to-azure)的部分。        |
@@ -421,7 +422,7 @@ Azure Functions 扩展在区域提供一个有用的图形界面，用于与 Azu
 |**删除函数**  | 从 Azure 中的函数应用内删除现有的函数。 由于此删除操作不会影响本地项目，因此请考虑在本地删除函数，然后[重新发布项目](#republish-project-files)。 |
 | **删除代理** | 从 Azure 中的函数应用内删除 Azure Functions 代理。 有关代理的详细信息，请参阅[使用 Azure Functions 代理](functions-proxies.md)。 |
 | **删除设置** | 删除 Azure 中的函数应用设置。 此操作不影响 local.settings.json 文件中的设置。 |
-| **从存储库断开连接**  | 删除 Azure 中的函数应用与源代码管理存储库之间的[连续部署](functions-continuous-deployment.md)连接。 |
+| **从存储库断开连接**  | 删除 Azure 中的函数应用与源代码管理存储库之间的 [连续部署](functions-continuous-deployment.md) 连接。 |
 | **下载远程设置** | 将 Azure 中所选函数应用的设置下载到 local.settings.json 文件中。 如果本地文件已加密，则会将其解密、更新，然后再次加密。 如果两个位置中的设置使用了有冲突的值，系统会提示你选择如何继续。 在运行此命令之前，请确保已保存对 local.settings.json 文件所做的更改。 |
 | **编辑设置** | 更改 Azure 中现有函数应用设置的值。 此命令不影响 local.settings.json 文件中的设置。  |
 | **加密设置** | 加密[本地设置](#local-settings-file)中 `Values` 数组内的单个项。 在此文件中，`IsEncrypted` 也设置为 `true`，指定本地运行时在使用设置之前先将其解密。 加密本地设置可以减少泄露重要信息的风险。 在 Azure 中，应用程序设置始终以加密的形式进行存储。 |

@@ -9,14 +9,16 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 543644495a99bacd40edc3f2d9151e4c15808c50
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 47a8d58d6ca0a8a04823fe09fb52490f13cfead7
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038420"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208731"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>使用 Azure 认知搜索索引器进行字段映射和转换
+
+![索引器阶段](./media/search-indexer-field-mappings/indexer-stages-field-mappings.png "索引器阶段")
 
 使用 Azure 认知搜索索引器时，你有时会发现，输入数据与目标索引的架构不完全匹配。 在这种情况下，可以在索引编制过程中使用**字段映射**来调整数据的形状。
 
@@ -41,7 +43,7 @@ ms.locfileid: "87038420"
 字段映射将添加到索引器定义的 `fieldMappings` 数组中。
 
 > [!NOTE]
-> 如果未添加任何字段映射，则索引器将假定数据源字段映射到具有相同名称的索引字段。 添加字段映射会删除源和目标字段的这些默认字段映射。 某些索引器（例如[blob 存储索引器](search-howto-indexing-azure-blob-storage.md)）为索引键字段添加默认字段映射。
+> 如果未添加任何字段映射，则索引器将假定数据源字段映射到具有相同名称的索引字段。 添加字段映射将删除源和目标字段的这些默认字段映射。 一些索引器（如 [Blob 存储索引器](search-howto-indexing-azure-blob-storage.md)）为索引键字段添加默认字段映射。
 
 ## <a name="map-fields-using-the-rest-api"></a>使用 REST API 映射字段
 
@@ -140,9 +142,9 @@ Azure 认知搜索文档键中只能使用 URL 安全字符（因为客户必须
   }]
  ```
 
-#### <a name="example---preserve-original-values"></a>示例-保留原始值
+#### <a name="example---preserve-original-values"></a>示例 - 保留原始值
 
-如果未指定字段映射，则[blob 存储索引器](search-howto-indexing-azure-blob-storage.md)会自动将字段映射从 `metadata_storage_path` blob 的 URI 添加到索引键字段。 此值是 Base64 编码的，因此可以安全地将其用作 Azure 认知搜索文档键。 下面的示例演示如何将的*URL 安全*Base64 编码版本同时映射 `metadata_storage_path` 到 `index_key` 字段并在字段中保留原始值 `metadata_storage_path` ：
+如果未指定字段映射，[blob 存储索引器](search-howto-indexing-azure-blob-storage.md)会自动将字段映射从 `metadata_storage_path`（blob 的 URI）添加到索引键字段。 此值是 Base64 编码的，因此可以安全地作为 Azure 认知搜索文档键使用。 下面的示例演示如何同时将 `metadata_storage_path` 的 URL 安全 Base64 编码版本映射到 `index_key` 字段和将原始值保留在 `metadata_storage_path` 字段中：
 
 ```JSON
 
@@ -169,7 +171,7 @@ Azure 认知搜索支持两种不同的 Base64 编码： 在编码和解码同�
 
 ### <a name="base64decode-function"></a>base64Decode 函数
 
-执行输入字符串的 Base64 解码。 假设输入是 URL 安全的 Base64 编码字符串。**
+执行输入字符串的 Base64 解码。 假设输入是 URL 安全的 Base64 编码字符串。
 
 #### <a name="example---decode-blob-metadata-or-urls"></a>示例 - 解码 Blob 元数据或 URL
 
@@ -212,7 +214,7 @@ Azure 认知搜索中的 .NET 库采用完整的 .NET 框架来提供内置编�
 | 带填充的 Base64 | `MDA+MDA/MDA=` | 使用 URL 安全字符并删除填充 | 使用标准 base64 字符并添加填充 |
 | 不带填充的 Base64 | `MDA+MDA/MDA` | 使用 URL 安全字符 | 使用标准 base64 字符 |
 | 带填充的 URL 安全 Base64 | `MDA-MDA_MDA=` | 删除填充 | 添加填充 |
-| 不带填充的 URL 安全 Base64 | `MDA-MDA_MDA` | None | None |
+| 不带填充的 URL 安全 Base64 | `MDA-MDA_MDA` | 无 | 无 |
 
 <a name="extractTokenAtPositionFunction"></a>
 

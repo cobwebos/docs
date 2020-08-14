@@ -4,13 +4,13 @@ description: 了解如何将 Azure Application Insights 和 Azure Functions 结�
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.custom: fasttrack-edit
-ms.openlocfilehash: a1e72fba4ece24afffba573d954c7627af46a6cd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.custom: devx-track-csharp, fasttrack-edit
+ms.openlocfilehash: 239d1da028a06d4272ed9b22b624413394aa142f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87273367"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212998"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -264,7 +264,7 @@ Application Insights 具有[采样](../azure-monitor/app/sampling.md)功能，�
 }
 ```
 
-在版本2.x 中，可以从采样中排除某些类型的遥测数据。 在上面的示例中，类型的数据 `Request` 从采样中排除。 这可确保记录*所有*函数执行（请求），而其他类型的遥测仍会受到采样的限制。
+在版本2.x 中，可以从采样中排除某些类型的遥测数据。 在上面的示例中，类型的数据 `Request` 从采样中排除。 这可确保记录)  (请求的 *所有* 函数执行，而其他类型的遥测仍会受到采样的限制。
 
 ### <a name="version-1x"></a>版本 1.x 
 
@@ -537,7 +537,7 @@ namespace functionapp0915
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>在 JavaScript 函数中记录自定义遥测
 
-下面是用[Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js)发送自定义遥测数据的示例代码片段：
+下面是用 [Application Insights Node.js SDK](https://github.com/microsoft/applicationinsights-node.js)发送自定义遥测数据的示例代码片段：
 
 ### <a name="version-2x-and-later"></a>版本 2.x 和更高版本
 
@@ -598,7 +598,7 @@ Functions v2 自动收集 HTTP 请求、ServiceBus、EventHub 和 SQL 的依赖�
 ![应用程序映射](./media/functions-monitoring/app-map.png)
 
 > [!NOTE]
-> 依赖关系是在信息级别编写的。 如果在警告或更高版本中进行筛选，将看不到此数据。 此外，自动收集依赖项在非用户范围内进行。 因此，请确保级别至少设置为 host.js上的用户范围外的**信息**（即函数之外的 <YOUR_FUNCTION_NAME>。用户密钥）（如果你想要捕获这些依赖项）。
+> 依赖关系是在信息级别编写的。 如果在警告或更高版本中进行筛选，将看不到此数据。 此外，自动收集依赖项在非用户范围内进行。 因此，请确保级别至少设置为 host.js上的用户范围之外的 **信息** (即函数之外。 <YOUR_FUNCTION_NAME>。如果要捕获这些依赖项，) 用户密钥。
 
 ## <a name="enable-application-insights-integration"></a>启用 Application Insights 集成
 
@@ -682,13 +682,13 @@ az webapp log tail --resource-group <RESOURCE_GROUP_NAME> --name <FUNCTION_APP_N
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-可以使用 [Azure PowerShell](/powershell/azure/) 启用流式处理日志。 对于 PowerShell，请使用[AzWebApp](/powershell/module/az.websites/set-azwebapp)命令在 function app 上启用日志记录，如以下代码片段所示： 
+可以使用 [Azure PowerShell](/powershell/azure/) 启用流式处理日志。 对于 PowerShell，请使用 [AzWebApp](/powershell/module/az.websites/set-azwebapp) 命令在 function app 上启用日志记录，如以下代码片段所示： 
 
 :::code language="powershell" source="~/powershell_scripts/app-service/monitor-with-logs/monitor-with-logs.ps1" range="19-20":::
 
-有关详细信息，请参阅[完整的代码示例](../app-service/scripts/powershell-monitor.md#sample-script)。 
+有关详细信息，请参阅 [完整的代码示例](../app-service/scripts/powershell-monitor.md#sample-script)。 
 
-## <a name="scale-controller-logs-preview"></a>缩放控制器日志（预览）
+## <a name="scale-controller-logs-preview"></a> (预览缩放控制器日志) 
 
 此功能为预览版。 
 

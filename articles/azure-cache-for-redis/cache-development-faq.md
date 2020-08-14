@@ -5,13 +5,14 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 08/06/2020
-ms.openlocfilehash: 1a0bcfadb79d6d2cb13c67b3ebadfcba97bc1fb9
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ef85b6f9e4595e7b4ff367da415fad777de68679
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010275"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211312"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>适用于 Redis 开发的 Azure 缓存常见问题解答
 
@@ -135,10 +136,10 @@ Redis Microsoft Azure 缓存基于流行的开源内存中数据存储 Redis。 
 Redis 数据库就是同一 Redis 实例中的数据的逻辑隔离。 缓存内存在所有数据库之间共享，给定数据库的实际内存消耗取决于该数据库中存储的键/值。 例如，C6 缓存的内存为 53 GB，P5 的内存为 120 GB。 可以选择将全部 53 GB/120 GB 放置在一个数据库中，也可以将其分配到多个数据库中。 
 
 > [!NOTE]
-> 使用启用了群集功能的高级 Azure Redis 缓存时，仅数据库 0 可用。 此限制是固有的 Redis 限制，并不特定于 Azure Redis 缓存。 有关详细信息，请参阅[是否需要对客户端应用程序进行更改才能使用群集功能？](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)。
+> 使用启用了群集功能的高级 Azure Redis 缓存时，仅数据库 0 可用。 此限制是固有的 Redis 限制，并不特定于 Azure Redis 缓存。 有关详细信息，请参阅 [是否需要对客户端应用程序进行更改才能使用群集功能？](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)。
 > 
 > 
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[适用于 Redis 的其他 Azure 缓存的常见问题](cache-faq.md)。
+了解 [适用于 Redis 的其他 Azure 缓存的常见问题](cache-faq.md)。

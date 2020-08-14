@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: fasttrack-edit, devx-track-python
-ms.openlocfilehash: 78b15e0ba73743f6d88d28b03c99ca64d73dfae1
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
+ms.openlocfilehash: 96daa93c28617bd34f263b11afcd244e3b7bacf0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848428"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214130"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions 的 Azure 事件网格触发器
 
@@ -311,7 +311,7 @@ Python 不支持特性。
 |---------|---------|
 | type | 必需 - 必须设置为 `eventGridTrigger`。 |
 | **direction** | 必需 - 必须设置为 `in`。 |
-| name | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
+| **name** | 必需 - 在函数代码中对接收事件数据的参数使用的变量名称。 |
 
 ## <a name="usage"></a>使用情况
 

@@ -1,19 +1,19 @@
 ---
 title: 体系结构：全局传输网络体系结构
 titleSuffix: Azure Virtual WAN
-description: 了解虚拟 WAN 的全局传输网络体系结构
+description: 了解 Azure 虚拟 WAN 如何通过在云工作负荷之间启用无处不在的连接来实现全局传输网络体系结构。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: c0ab2b2f61c4aa7a83d82b0300bb28cae91992d2
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 63a9c3a6c23d78411c04250359dac3c3aacde2ba
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056884"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212700"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>全局传输网络体系结构和虚拟 WAN
 

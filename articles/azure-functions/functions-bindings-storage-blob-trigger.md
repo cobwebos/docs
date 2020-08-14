@@ -5,19 +5,19 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 28b608446c543fc568a5c322ffce1df6100d4a73
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 67e1f1dff43939ce7ef279db57bee4b18bd12dc8
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852457"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213946"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>适用于 Azure Functions 的 Azure Blob 存储触发器
 
 检测到新的或更新的 Blob 时，Blob 存储触发器会启动某个函数。 Blob 内容以[函数输入](./functions-bindings-storage-blob-input.md)的形式提供。
 
-Azure Blob 存储触发器需要使用常规用途存储帐户。 还支持具有[分层命名空间](../storage/blobs/data-lake-storage-namespace.md)的存储 V2 帐户。 若要使用仅限 Blob 的帐户，或者，如果应用程序有特殊需求，请查看使用此触发器的替代方法。
+Azure Blob 存储触发器需要使用常规用途存储帐户。 还支持具有 [分层命名空间](../storage/blobs/data-lake-storage-namespace.md) 的存储 V2 帐户。 若要使用仅限 Blob 的帐户，或者，如果应用程序有特殊需求，请查看使用此触发器的替代方法。
 
 若要了解设置和配置详细信息，请参阅[概述](./functions-bindings-storage-blob.md)。
 
@@ -301,7 +301,7 @@ Python 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-通过类型为[InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的参数访问 blob 数据。 有关详细信息，请参阅[触发器示例](#example)。
+通过类型为 [InputStream](/python/api/azure-functions/azure.functions.inputstream?view=azure-python)的参数访问 blob 数据。 有关详细信息，请参阅[触发器示例](#example)。
 
 # <a name="java"></a>[Java](#tab/java)
 

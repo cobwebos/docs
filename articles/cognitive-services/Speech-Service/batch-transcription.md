@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 3e7f310f37bd016a73c589db3c9a23e197465427
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 70977c30edce124aa0d39bcc57d4ccd015d65961
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053910"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214058"
 ---
 # <a name="what-is-batch-transcription"></a>什么是批量听录？
 
@@ -63,7 +63,7 @@ ms.locfileid: "88053910"
 
 批量听录 API 支持以下格式：
 
-| 格式 | 编解码器 | 比特率 | 采样率                     |
+| 格式 | 编解码器 | 每个样本的位数 | 采样率             |
 |--------|-------|---------|---------------------------------|
 | WAV    | PCM   | 16 位  | 8 kHz 或 16 kHz，单声道或立体声 |
 | MP3    | PCM   | 16 位  | 8 kHz 或 16 kHz，单声道或立体声 |

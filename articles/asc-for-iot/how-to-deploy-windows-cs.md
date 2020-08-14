@@ -10,17 +10,18 @@ editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
 ms.subservice: asc-for-iot
 ms.devlang: na
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 4d7d2f0a423a50f85160a856480eaa973be7e2b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 64b9176a16f4d8d2b7ee7f33e00714d811c5f070
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81537604"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209078"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>为 Windows 部署适用于 IoT 的 Azure 安全中心基于 C# 的安全代理
 
@@ -36,7 +37,7 @@ ms.locfileid: "81537604"
 
 ## <a name="prerequisites"></a>先决条件
 
-有关其他平台和代理风格，请参阅[选择正确的安全代理](how-to-deploy-agent.md)。
+有关其他平台和代理风格，请参阅 [选择正确的安全代理](how-to-deploy-agent.md)。
 
 1. 要在其上安装的计算机上的本地管理员权限。
 
@@ -69,18 +70,18 @@ ms.locfileid: "81537604"
     .\InstallSecurityAgent.ps1 -Install -aui Device -aum SymmetricKey -f c:\Temp\Key.txt -hn MyIotHub.azure-devices.net -di Mydevice1 -cl store
     ```
 
-    有关身份验证参数的详细信息，请参阅[如何配置身份验证](concept-security-agent-authentication-methods.md)。
+    有关身份验证参数的详细信息，请参阅 [如何配置身份验证](concept-security-agent-authentication-methods.md)。
 
 此脚本执行以下操作：
 
 * 安装必备组件。
-* 添加服务用户（禁用交互式登录）。
+* 添加已禁用交互式登录) 的服务用户 (。
 * 将代理作为**系统服务**安装。
 * 使用提供的身份验证参数配置代理。
 
 有关更多帮助，请在 PowerShell 中使用 Get-help 命令。
 
-Get-help 示例：```Get-Help .\InstallSecurityAgent.ps1```
+Get-help 示例：    ```Get-Help .\InstallSecurityAgent.ps1```
 
 ### <a name="verify-deployment-status"></a>验证部署状态
 
@@ -98,13 +99,13 @@ Get-help 示例：```Get-Help .\InstallSecurityAgent.ps1```
     .\InstallSecurityAgent.ps1 -Uninstall
     ```
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果代理无法启动，请启用日志记录（日志记录默认设置为“禁用”**）以获取更多信息。
 
 若要启用日志记录，请执行以下操作：
 
-1. 使用标准文件编辑器打开配置文件（General.config）进行编辑。
+1. 使用标准文件编辑器打开 ( # A0) 的配置文件进行编辑。
 
 1. 编辑以下值：
 
@@ -141,7 +142,7 @@ Get-help 示例：```Get-Help .\InstallSecurityAgent.ps1```
 
 ## <a name="next-steps"></a>后续步骤
 
-* 阅读 Azure 安全中心以获取 IoT 服务[概述](overview.md)
+* 阅读 Azure 安全中心以获取 IoT 服务 [概述](overview.md)
 * 详细了解用于 IoT[体系结构](architecture.md)的 Azure 安全中心
 * 启用该[服务](quickstart-onboard-iot-hub.md)
 * 阅读[常见问题解答](resources-frequently-asked-questions.md)

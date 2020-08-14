@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 824520e04bd4a98b1a00c8369848163a38bcf54b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: eb81e5a72ff1f5a8d4442e6e1f211ad2368f6277
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908046"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206297"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B 协作故障排除
 
@@ -93,11 +93,11 @@ ms.locfileid: "87908046"
 
 该用户具有 Azure 用户帐户，是已被放弃的或非托管的病毒性租户。 此外，租户中没有全局或公司管理员。
 
-若要解决此问题，你必须接管被放弃的租户。 请参阅[在 Azure Active Directory 中以管理员身份接管非托管目录](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。 你还必须访问相关域后缀的面向 Internet 的 DNS，以便提供直接证据来证明你控制着该命名空间。 在租户返回到托管状态后，请与客户讨论保留用户和经验证的域名是否是其组织的最佳选择。
+若要解决此问题，你必须接管被放弃的租户。 请参阅  [在 Azure Active Directory 中以管理员身份接管非托管目录](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。 你还必须访问相关域后缀的面向 Internet 的 DNS，以便提供直接证据来证明你控制着该命名空间。 在租户返回到托管状态后，请与客户讨论保留用户和经验证的域名是否是其组织的最佳选择。
 
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>具有实时或“病毒性”租户的来宾用户无法重置其密码
 
-如果标识租户是实时 (JIT) 或病毒性租户（独立的不受管 Azure 租户），则只有来宾用户可以重置其密码。 有时，组织会接管在员工使用其工作电子邮件地址注册服务时创建[的病毒租户的管理](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover)。 组织接管病毒性租户后，只有该组织中的管理员可以重置用户密码或启用 SSPR。 如果需要，作为邀请方组织，你可以从目录中删除来宾用户帐户并重新发送邀请。
+如果标识租户是实时 (JIT) 或病毒性租户（独立的不受管 Azure 租户），则只有来宾用户可以重置其密码。 有时，组织会接管在员工使用其工作电子邮件地址注册服务时创建 [的病毒租户的管理](https://docs.microsoft.com/azure/active-directory/users-groups-roles/domains-admin-takeover) 。 组织接管病毒性租户后，只有该组织中的管理员可以重置用户密码或启用 SSPR。 如果需要，作为邀请方组织，你可以从目录中删除来宾用户帐户并重新发送邀请。
 
 ## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>来宾用户无法使用 AzureAD PowerShell V1 模块
 
@@ -105,8 +105,8 @@ ms.locfileid: "87908046"
 
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>在 Azure 美国政府租户中，无法邀请 B2B 协作来宾用户
 
-在 Azure 美国政府版云中，当前仅支持在 Azure 美国政府云中的租户之间进行 B2B 协作，并且两者都支持 B2B 协作。 如果你邀请不属于 Azure 美国政府云的租户中的用户，或者不支持 B2B 协作，则会出现错误。 有关详细信息和限制，请参阅[Azure Active Directory Premium P1 和 P2 变体](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)。
+在 Azure 美国政府版云中，当前仅支持在 Azure 美国政府云中的租户之间进行 B2B 协作，并且两者都支持 B2B 协作。 如果你邀请不属于 Azure 美国政府云的租户中的用户，或者不支持 B2B 协作，则会出现错误。 有关详细信息和限制，请参阅 [Azure Active Directory Premium P1 和 P2 变体](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2)。
 
 ## <a name="next-steps"></a>后续步骤
 
-[获取对 B2B 协作的支持](/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto.md)
+[获取对 B2B 协作的支持](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-troubleshooting-support-howto)

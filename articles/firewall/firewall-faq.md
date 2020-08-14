@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 1dc9521555f2eb158209b494e43fd815e6bab6e8
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: efb793898da03d2a024b559075a2d55e79b20d65
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141187"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208514"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 
@@ -95,8 +95,10 @@ Set-AzFirewall -AzureFirewall $azfw
 
 $azfw = Get-AzFirewall -Name "FW Name" -ResourceGroupName "RG Name"
 $vnet = Get-AzVirtualNetwork -ResourceGroupName "RG Name" -Name "VNet Name"
-$publicip = Get-AzPublicIpAddress -Name "Public IP Name" -ResourceGroupName "RG Name"
-$azfw.Allocate($vnet, $publicip)
+$publicip1 = Get-AzPublicIpAddress -Name "Public IP1 Name" -ResourceGroupName "RG Name"
+$publicip2 = Get-AzPublicIpAddress -Name "Public IP2 Name" -ResourceGroupName "RG Name"
+$azfw.Allocate($vnet,@($publicip,$publicip2))
+
 Set-AzFirewall -AzureFirewall $azfw
 ```
 
@@ -133,11 +135,11 @@ Azure 防火墙必须具有直接的 Internet 连接。 如果 AzureFirewallSubn
 
 ## <a name="when-configuring-dnat-for-inbound-internet-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>为入站 Internet 网络流量配置 DNAT 时，是否还需要配置相应的网络规则以允许该流量？
 
-不是。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
+否。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>应用程序规则目标 FQDN 中的通配符有什么作用？
 
-当前只能在 FQDN 的左侧使用通配符。 例如，***. contoso.com**和 ***contoso.com**。
+当前只能在 FQDN 的左侧使用通配符。 例如，***. contoso.com** 和 ***contoso.com**。
 
 如果配置 * **.contoso.com**，则允许 *anyvalue*.contoso.com，但不允许 contoso.com（域顶点）。 如果希望允许域顶点，必须显式将其配置为目标 FQDN。
 
@@ -162,7 +164,7 @@ Azure 防火墙在缩放时必须预配更多的虚拟机实例。 /26 地址空
 
 ## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>在服务缩放时，防火墙子网大小是否需要更改？
 
-不是。 Azure 防火墙不需要大于 /26 的子网。
+否。 Azure 防火墙不需要大于 /26 的子网。
 
 ## <a name="how-can-i-increase-my-firewall-throughput"></a>如何提高防火墙吞吐量？
 
@@ -176,7 +178,7 @@ Azure 防火墙的初始吞吐容量为 2.5 - 3 Gbps，可以横向扩展到 30 
 
 ## <a name="does-azure-firewall-allow-access-to-active-directory-by-default"></a>默认情况下，Azure 防火墙是否允许访问 Active Directory？
 
-不是。 Azure 防火墙默认阻止 Active Directory 访问。 若要允许访问，请配置 AzureActiveDirectory 服务标记。 有关详细信息，请参阅 [Azure 防火墙服务标记](service-tags.md)。
+否。 Azure 防火墙默认阻止 Active Directory 访问。 若要允许访问，请配置 AzureActiveDirectory 服务标记。 有关详细信息，请参阅 [Azure 防火墙服务标记](service-tags.md)。
 
 ## <a name="can-i-exclude-a-fqdn-or-an-ip-address-from-azure-firewall-threat-intelligence-based-filtering"></a>能否从基于 Azure 防火墙威胁情报的筛选中排除 FQDN 或 IP 地址？
 
