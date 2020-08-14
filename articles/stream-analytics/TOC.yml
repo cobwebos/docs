@@ -1,4 +1,4 @@
-- name: 流分析文档
+- name: Azure 流分析文档
   href: index.yml
 - name: 概述
   items:
@@ -122,7 +122,7 @@
       href: stream-analytics-concepts-checkpoint-replay.md
     - name: 错误策略
       href: stream-analytics-output-error-policy.md
-- name: 操作方式指南
+- name: 操作指南
   items:
     - name: 管理
       items:
@@ -294,7 +294,7 @@
             - name: 聚合函数概述
               href: /stream-analytics-query/aggregate-functions-azure-stream-analytics
               maintainContext: true
-            - name: 平均值
+            - name: AVG
               href: /stream-analytics-query/avg-azure-stream-analytics
               maintainContext: true
             - name: COUNT
@@ -309,7 +309,7 @@
             - name: MAX
               href: /stream-analytics-query/max-azure-stream-analytics
               maintainContext: true
-            - name: 最小值
+            - name: MIN
               href: /stream-analytics-query/min-azure-stream-analytics
               maintainContext: true
             - name: Percentile_Cont
