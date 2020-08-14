@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.openlocfilehash: e9bb4a6c0f37ceaf1e9fc6c28f08b98bb4449e65
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.date: 8/13/2020
+ms.openlocfilehash: 582e4ea93a64164b09892fab2752f48fcde43ab1
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171304"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225693"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>在 Azure Database for MySQL 中进行监视
 监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for MySQL 提供了各种指标来帮助用户深入了解服务器的行为。
@@ -26,7 +26,7 @@ ms.locfileid: "87171304"
 |---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|使用的 CPU 百分比。|
 |memory_percent|内存百分比|百分比|使用的内存百分比。|
-|io_consumption_percent|IO 百分比|百分比|使用的 IO 百分比。 （不适用于基本层服务器。）|
+|io_consumption_percent|IO 百分比|百分比|使用的 IO 百分比。  (不适用于基本层服务器) |
 |storage_percent|存储百分比|百分比|所用存储占服务器最大存储的百分比。|
 |storage_used|已用的存储量|字节|使用的存储量。 服务使用的存储可能包括数据库文件、事务日志和服务器日志。|
 |serverlog_storage_percent|服务器日志存储空间百分比|百分比|所用服务器日志存储占服务器最大服务器日志存储的百分比。|
@@ -35,10 +35,10 @@ ms.locfileid: "87171304"
 |storage_limit|存储限制|字节|此服务器的最大存储。|
 |active_connections|活动连接数|计数|服务器的活动连接数。|
 |connections_failed|失败的连接数|计数|服务器的失败连接数。|
-|seconds_behind_master|复制延迟（秒）|计数|副本服务器滞后于主服务器的秒数。|
+|seconds_behind_master|复制延迟（秒）|计数|副本服务器滞后于主服务器的秒数。  (不适用于基本层服务器) |
 |network_bytes_egress|网络传出|字节|跨活动连接的网络传出。|
 |network_bytes_ingress|网络传入|字节|跨活动连接的网络传入。|
-|backup_storage_used|使用的备份存储|字节|已使用的备份存储量。 此指标表示根据为服务器设置的备份保留期保留的所有数据库备份、差异备份和日志备份占用的存储量之和。 备份的频率为服务管理，并在[概念一文](concepts-backup.md)中对此进行了说明。 对于异地冗余存储，备份存储使用情况是本地冗余存储的两倍。|
+|backup_storage_used|使用的备份存储|字节|已使用的备份存储量。 此指标表示根据为服务器设置的备份保留期保留的所有数据库备份、差异备份和日志备份占用的存储量之和。 备份的频率为服务管理，并在 [概念一文](concepts-backup.md)中对此进行了说明。 对于异地冗余存储，备份存储使用情况是本地冗余存储的两倍。|
 
 ## <a name="server-logs"></a>服务器日志
 可以在服务器上启用慢查询和审核日志。 这些日志也可通过 Azure Monitor 日志、事件中心和存储帐户中的 Azure 诊断日志获得。 若要详细了解日志记录，请访问 [审核日志](concepts-audit-logs.md)和[慢查询日志](concepts-server-logs.md)文章。
@@ -73,7 +73,7 @@ ms.locfileid: "87171304"
 有关如何创建服务运行状况警报的详细步骤，请参阅 [创建有关服务通知的活动日志警报](../service-health/alerts-activity-log-service-notifications.md)。
 
 > [!IMPORTANT]
-> 计划内维护通知当前在美国西部地区**以外**的所有区域中提供预览版
+> 计划内维护通知当前在美国西部地区 **以外** 的所有区域中提供预览版
 
 ## <a name="next-steps"></a>后续步骤
 - 有关如何基于指标创建警报的指南，请参阅[如何设置警报](howto-alert-on-metric.md)。

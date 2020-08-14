@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/13/2020
 ms.author: b-juche
-ms.openlocfilehash: 48e3f895fb123429f1bedd106bd92113533c84ae
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 8ed9f6565da55d3ffbe522bbdf404265c487f67c
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055796"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225608"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>使用 Azure NetApp 文件的解决方案体系结构
 本文介绍了可帮助你了解使用 Azure NetApp 文件的解决方案体系结构的最佳做法。  
@@ -85,6 +85,7 @@ ms.locfileid: "88055796"
 
 ### <a name="windows-virtual-desktop"></a>Windows 虚拟桌面
 
+* [将 Windows 虚拟桌面用于 Azure NetApp 文件](solutions-windows-virtual-desktop.md)
 * [Windows 虚拟桌面中的 FSLogix 配置文件容器的存储选项](https://docs.microsoft.com/azure/virtual-desktop/store-fslogix-profile#azure-platform-details)
 * [使用 Azure NetApp 文件为主机池创建 FSLogix 配置文件容器](https://docs.microsoft.com/azure/virtual-desktop/create-fslogix-profile-container)
 * [企业级 Windows 虚拟桌面规模](https://docs.microsoft.com/azure/architecture/example-scenario/wvd/windows-virtual-desktop)
@@ -109,7 +110,7 @@ ms.locfileid: "88055796"
 * [使用 Azure NetApp 文件实现电子设计自动化的好处](solutions-benefits-azure-netapp-files-electronic-design-automation.md)
 * [Azure CycleCloud： EDA HPC 实验室与 Azure NetApp 文件](https://github.com/Azure/cyclecloud-hands-on-labs/blob/master/EDA/README.md)
 
-### <a name="analytics"></a>分析
+### <a name="analytics"></a>Analytics
 
 * [Azure NetApp 文件：用于 Microsoft Azure 上的 SAS 网格的新共享文件系统](https://communities.sas.com/t5/Architecture/Azure-NetApp-Files-A-new-shared-file-system-to-use-with-SAS-Grid/m-p/606978)
 

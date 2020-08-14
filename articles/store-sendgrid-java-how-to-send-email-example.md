@@ -1,6 +1,6 @@
 ---
 title: store-sendgrid-java-how-to-send-email-example
-description: 如何在 Azure 部署中通过 Java 使用 SendGrid 发送电子邮件
+description: 在 Azure 部署中通过 Java 使用 SendGrid 发送电子邮件。 生成的应用程序会提示用户提供电子邮件值。
 services: ''
 documentationcenter: java
 author: thinkingserious
@@ -16,12 +16,12 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
 ms.custom: devx-track-java
-ms.openlocfilehash: 8d35937f813fb10a0c39b724b97014c02fee99f1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3957d7501634be01a978481787885ae13ad3273b
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304150"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225948"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>如何在 Azure 部署中通过 Java 使用 SendGrid 发送电子邮件
 以下示例演示如何能够使用 SendGrid 从在 Azure 中托管的网页上发送电子邮件。 生成的应用程序将提示用户提供电子邮件值，如以下屏幕截图所示。

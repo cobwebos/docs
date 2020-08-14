@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 6979ce65022f350a93f533951d634b8e436283bc
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 91adafedfc8f4e6b4948b0dcfe541e2754b47556
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88186333"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226121"
 ---
 **数据收集量和保留期** 
 
@@ -64,7 +64,7 @@ ms.locfileid: "88186333"
 | 列名称的最大字符数 | 500 | |
 | 数据导出 | 当前不可用 | 使用 Azure 函数或逻辑应用聚合和导出数据。 | 
 
-**数据引入速率**
+**<a name="data-ingestion-volume-rate">数据引入速率</a>**
 
 Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 引入量速率限制旨在保护 Azure Monitor 客户免受多租户环境中突然出现的引入高峰的影响。 默认的引入量速率阈值为 500 M（压缩量），适用于工作区，大约等于未压缩时的每分钟 6 GB 的速率 - 根据日志长度及其压缩率，不同数据类型的实际大小可能不同。 此阈值适用于所有引入的数据，无论是使用[诊断设置](../articles/azure-monitor/platform/diagnostic-settings.md)、[数据收集器 API](../articles/azure-monitor/platform/data-collector-api.md) 还是代理从 Azure 发送都适用。
 

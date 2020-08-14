@@ -4,12 +4,12 @@ description: 获取页面视图和会话计数、Web 客户端数据、单页应
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 7c5abb109018bd8bc5b501fe728a3a0f422a3db7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3acb7379644b5bfcb22ed86b6bde7031095fef24
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905819"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224846"
 ---
 # <a name="application-insights-for-web-pages"></a>适用于网页的 Application Insights
 
@@ -40,7 +40,7 @@ npm i --save @microsoft/applicationinsights-web
 ```
 
 > [!Note]
-> **Typings 包含在此包**中，因此你**不**需要安装单独的 Typings 包。
+> **Typings 包含在此包**中，因此你 **不** 需要安装单独的 Typings 包。
     
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -217,8 +217,8 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 | 扩展 |
 |---------------|
-| [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
-| [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
+| [React](javascript-react-plugin.md)|
+| [React Native](javascript-react-native-plugin.md)|
 
 ## <a name="correlation"></a>相关性
 
@@ -227,7 +227,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 - XHR/AJAX 请求 
 - 提取请求 
 
-与请求的客户端与服务器端相关**不受支持** `GET` `POST` 。
+与请求的客户端与服务器端相关 **不受支持** `GET` `POST` 。
 
 ### <a name="enable-cross-component-correlation-between-client-ajax-and-server-requests"></a>启用客户端 AJAX 和服务器请求之间的跨组件关联
 
@@ -235,7 +235,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 根据 `Access-Control-Allow-Headers` 服务器端的配置，通常需要通过手动添加和扩展服务器端列表 `Request-Id` `Request-Context` 。
 
-访问控制-允许-标头： `Request-Id` 、 `Request-Context` 、`<your header>`
+访问控制-允许-标头： `Request-Id` 、 `Request-Context` 、 `<your header>`
 
 如果客户端与之通信的任何第三方服务器都无法接受 `Request-Id` 和 `Request-Context` 标头，并且无法更新其配置，则需要通过配置属性将其放入排除列表中 `correlationHeaderExcludeDomains` 。 此属性支持通配符。
 
@@ -375,7 +375,7 @@ Chrome 最新版 ✔ |  Firefox 最新版 ✔ | IE 9 + 和 Microsoft Edge ✔<br
 
 Application Insights JavaScript SDK 是开源的，用户可查看其源代码；若要对该项目做贡献，请访问[官方 GitHub 存储库](https://github.com/Microsoft/ApplicationInsights-JS)。 
 
-有关最新的更新和 bug 修复，[请参阅发行说明](./release-notes.md)。
+有关最新的更新和 bug 修复， [请参阅发行说明](./release-notes.md)。
 
 ## <a name="next-steps"></a><a name="next"></a> 后续步骤
 * [跟踪使用情况](usage-overview.md)

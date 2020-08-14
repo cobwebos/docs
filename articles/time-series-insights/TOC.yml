@@ -156,7 +156,7 @@
         - name: 数据访问第 1 代
           items:
             - name: 概述
-              href: 'https://docs.microsoft.com/rest/api/time-series-insights/ga'
+              href: 'https://docs.microsoft.com/rest/api/time-series-insights/gen1'
             - name: 查询
               items:
                 - name: 查询

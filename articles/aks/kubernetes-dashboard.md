@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: 69e60c3e4ac91a5d0ca9a0245dc61f090c625c60
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 35424c0a9e566a9dfa780c524e23945348335040
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86499851"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225982"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>访问 Azure Kubernetes 服务 (AKS) 中的 Kubernetes Web 仪表板
 
@@ -20,7 +20,7 @@ Kubernetes 包含一个可用于基本管理操作的 Web 仪表板。 使用此
 有关 Kubernetes 仪表板的详细信息，请参阅 [Kubernetes Web UI 仪表板][kubernetes-dashboard]。 AKS 使用版本 2.0 及更高版本的开源仪表板。
 
 > [!WARNING]
-> **AKS 仪表板加载项已设置为弃用。** 
+> **AKS 仪表板外接程序设置为弃用。改 [为使用 Azure 门户中的 Kubernetes 资源视图 (预览版) ][kubernetes-portal] 。** 
 > * 默认情况下，为运行的 Kubernetes 版本低于 1.18 的群集启用 Kubernetes 仪表板。
 > * 默认情况下，在 Kubernetes 1.18 或更高版本上创建的所有新群集都将禁用仪表板加载项。 
  > * 从 Kubernetes 1.19 预览版开始，AKS 将不再支持安装托管的 kube-dashboard 加载项。 
@@ -28,7 +28,7 @@ Kubernetes 包含一个可用于基本管理操作的 Web 仪表板。 使用此
 
 ## <a name="before-you-begin"></a>准备阶段
 
-本文档详述的步骤假设你已创建 AKS 群集并已通过该群集建立 `kubectl` 连接。 如果需要创建 AKS 群集，请参阅[快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务群集][aks-quickstart]。
+本文档详述的步骤假设你已创建 AKS 群集并已通过该群集建立 `kubectl` 连接。 如果需要创建 AKS 群集，请参阅 [快速入门：使用 Azure CLI 部署 Azure Kubernetes 服务群集][aks-quickstart]。
 
 还需要安装并配置 Azure CLI 2.6.0 或更高版本。 运行  `az --version`  即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
@@ -209,3 +209,4 @@ Kubernetes 仪表板可以提供基本的监视指标和故障排除信息，例
 [az-aks-browse]: /cli/azure/aks#az-aks-browse
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [install-azure-cli]: /cli/azure/install-azure-cli
+[kubernetes-portal]: ./kubernetes-portal.md

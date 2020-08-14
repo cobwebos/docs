@@ -1,17 +1,17 @@
 ---
-title: 监视-Azure Database for MariaDB
+title: 监视 - Azure Database for MariaDB
 description: 本文介绍了用于对 Azure Database for MariaDB 进行监视并发出警报的指标，包括 CPU、存储和连接统计信息。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/25/2020
-ms.openlocfilehash: 708b243d9db16ee8454b4bc0f5c136b9f4399916
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 8/13/2020
+ms.openlocfilehash: 088d2c0a11f7d145f0c8a7ccb2c0aac5bd2d140d
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85413189"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224079"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>在 Azure Database for MariaDB 中进行监视
 监视服务器的相关数据有助于排查工作负荷故障及优化工作负荷。 Azure Database for MariaDB 提供了各种指标来帮助用户深入了解服务器的行为。
@@ -28,7 +28,7 @@ ms.locfileid: "85413189"
 |---|---|---|---|
 |cpu_percent|CPU 百分比|百分比|使用的 CPU 百分比。|
 |memory_percent|内存百分比|百分比|使用的内存百分比。|
-|io_consumption_percent|IO 百分比|百分比|使用的 IO 百分比。 （不适用于基本层服务器。）|
+|io_consumption_percent|IO 百分比|百分比|使用的 IO 百分比。  (不适用于基本层服务器) |
 |storage_percent|存储百分比|百分比|所用存储占服务器最大存储的百分比。|
 |storage_used|已用的存储量|字节|使用的存储量。 服务使用的存储可能包括数据库文件、事务日志和服务器日志。|
 |serverlog_storage_percent|服务器日志存储空间百分比|百分比|所用服务器日志存储占服务器最大服务器日志存储的百分比。|
@@ -37,12 +37,14 @@ ms.locfileid: "85413189"
 |storage_limit|存储限制|字节|此服务器的最大存储。|
 |active_connections|活动连接数|计数|服务器的活动连接数。|
 |connections_failed|失败的连接数|计数|服务器的失败连接数。|
+|seconds_behind_master|复制延迟（秒）|计数|副本服务器滞后于主服务器的秒数。  (不适用于基本层服务器) |
 |network_bytes_egress|网络传出|字节|跨活动连接的网络传出。|
 |network_bytes_ingress|网络传入|字节|跨活动连接的网络传入。|
+|backup_storage_used|使用的备份存储|字节|已使用的备份存储量。 此指标表示根据为服务器设置的备份保留期保留的所有数据库备份、差异备份和日志备份占用的存储量之和。 备份的频率为服务管理，并在 [概念一文](concepts-backup.md)中对此进行了说明。 对于异地冗余存储，备份存储使用情况是本地冗余存储的两倍。|
 
 ## <a name="server-logs"></a>服务器日志
 
-可以在服务器上启用慢查询日志。 这些日志也可通过 Azure Monitor 日志、事件中心和存储帐户中的 Azure 诊断日志获得。 若要了解有关日志记录的详细信息，请访问 [服务器日志](concepts-server-logs.md)页。
+可以在服务器上启用慢查询日志记录。 这些日志也可通过 Azure Monitor 日志、事件中心和存储帐户中的 Azure 诊断日志获得。 若要了解有关日志记录的详细信息，请访问 [服务器日志](concepts-server-logs.md)页。
 
 ## <a name="query-store"></a>查询存储
 
@@ -50,7 +52,7 @@ ms.locfileid: "85413189"
 
 ## <a name="query-performance-insight"></a>Query Performance Insight
 
-[Query Performance Insight](concepts-query-performance-insight.md) 与查询存储协同工作以提供可以从 Azure 门户访问的可视化效果。 这些图表使你能够识别对性能造成影响的关键查询。 Query Performance Insight 可在 Azure Database for MariaDB 服务器门户页面的 "**智能性能**" 部分中访问。
+[Query Performance Insight](concepts-query-performance-insight.md) 与查询存储协同工作以提供可以从 Azure 门户访问的可视化效果。 这些图表使你能够识别对性能造成影响的关键查询。 可以在 Azure Database for MariaDB 服务器门户页的“智能性能”部分中访问 Query Performance Insight。
 
 ## <a name="performance-recommendations"></a>性能建议
 
@@ -58,7 +60,7 @@ ms.locfileid: "85413189"
 
 ## <a name="planned-maintenance-notification"></a>计划内维护通知
 
-**计划内维护通知**可用于接收有关即将进行的计划内维护到 Azure Database for MariaDB 的警报。 这些通知与[服务运行状况](../service-health/overview.md)计划内维护集成，允许你在同一位置查看你的订阅的所有计划内维护。 它还有助于将通知扩展到不同资源组的适当受众，因为你可能有不同的联系人负责不同的资源。 你将在事件发生前的 72 小时收到有关即将进行的维护的通知。
+**计划内维护通知** 可用于接收有关即将进行的计划内维护到 Azure Database for MariaDB 的警报。 这些通知与[服务运行状况](../service-health/overview.md)计划内维护集成，允许你在同一位置查看你的订阅的所有计划内维护。 它还有助于将通知扩展到不同资源组的适当受众，因为你可能有不同的联系人负责不同的资源。 你将在事件发生前的 72 小时收到有关即将进行的维护的通知。
 
 > [!Note]
 > 我们将尽一切努力为所有事件提供**计划内维护通知** 72 小时通知。 但是，对于关键或安全修补程序，通知可能会在事件快要发生时更晚一点发送，或者会被忽略。
@@ -77,9 +79,9 @@ ms.locfileid: "85413189"
 有关如何创建服务运行状况警报的详细步骤，请参阅 [创建有关服务通知的活动日志警报](../service-health/alerts-activity-log-service-notifications.md)。
 
 > [!IMPORTANT]
-> 计划内维护通知当前在美国西部地区**以外**的所有区域中提供预览版
+> 计划内维护通知当前在美国西部地区 **以外** 的所有区域中提供预览版
 
 ## <a name="next-steps"></a>后续步骤
 
 - 若要深入了解如何使用 Azure 门户、REST API 或 CLI 访问和导出指标，请参阅 [Azure 指标概述](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。
-  - 请参阅[如何设置警报](howto-alert-metric.md)，以获取针对指标创建警报的指南。
+  - 有关如何基于指标创建警报的指南，请参阅[如何设置警报](howto-alert-metric.md)。

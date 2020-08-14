@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 681bd0aff909552531d682186d5b22dce5ef33f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 757b297d3d74365928cda0934485c0018f28ffee
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010761"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225642"
 ---
 # <a name="preview-create-an-image-from-a-vm"></a>预览版：从 VM 创建映像
 
@@ -133,11 +133,11 @@ $job.State
 > [!NOTE]
 > 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。
 >
-> 创建映像版本时，还可以通过添加 `-StorageAccountType Premium_LRS` 在高级存储中存储映像，或者通过添加 `-StorageAccountType Standard_ZRS` 在[区域冗余存储](../storage/common/storage-redundancy.md)中存储映像。
+> 你还可以通过添加 `-StorageAccountType Premium_LRS` ，或者在创建映像版本时添加 [区域冗余存储](../storage/common/storage-redundancy.md) ，在高级存储中存储映像 `-StorageAccountType Standard_ZRS` 。
 >
 
 ## <a name="next-steps"></a>后续步骤
 
 验证新映像版本正常工作后，即可创建 VM。 从[专用化映像版本](vm-specialized-image-version-powershell.md)或[通用化映像版本](vm-generalized-image-version-powershell.md)创建 VM。
 
-有关如何提供购买计划信息的信息，请参阅[创建映像时提供 Azure Marketplace 购买计划信息](marketplace-images.md)。
+有关如何提供购买计划信息的信息，请参阅 [创建映像时提供 Azure Marketplace 购买计划信息](marketplace-images.md)。

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 27615d1367bd0faa035e68bf9f03df05cdccfa7f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: f2c8dbebce685eea67672a2b8c93d51e356ac69c
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903844"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226034"
 ---
 # <a name="deploy-azure-file-sync"></a>部署 Azure 文件同步
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -26,14 +26,14 @@ ms.locfileid: "87903844"
 1. 要部署 Azure 文件同步的同一区域中的 Azure 文件共享。有关详细信息，请参阅：
     - Azure 文件同步的[适用地区](storage-sync-files-planning.md#azure-file-sync-region-availability)。
     - [创建文件共享](storage-how-to-create-file-share.md)，了解创建文件共享的分步说明。
-1. 至少有一个受支持的 Windows Server 或 Windows Server 群集实例与 Azure 文件同步同步。有关支持的 Windows Server 版本和推荐的系统资源的详细信息，请参阅[windows file Server 注意事项](storage-sync-files-planning.md#windows-file-server-considerations)。
+1. 至少有一个受支持的 Windows Server 或 Windows Server 群集实例与 Azure 文件同步同步。有关支持的 Windows Server 版本和推荐的系统资源的详细信息，请参阅 [windows file Server 注意事项](storage-sync-files-planning.md#windows-file-server-considerations)。
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 1. 要部署 Azure 文件同步的同一区域中的 Azure 文件共享。有关详细信息，请参阅：
     - Azure 文件同步的[适用地区](storage-sync-files-planning.md#azure-file-sync-region-availability)。
     - [创建文件共享](storage-how-to-create-file-share.md)，了解创建文件共享的分步说明。
-1. 至少有一个受支持的 Windows Server 或 Windows Server 群集实例与 Azure 文件同步同步。有关支持的 Windows Server 版本和推荐的系统资源的详细信息，请参阅[windows file Server 注意事项](storage-sync-files-planning.md#windows-file-server-considerations)。
+1. 至少有一个受支持的 Windows Server 或 Windows Server 群集实例与 Azure 文件同步同步。有关支持的 Windows Server 版本和推荐的系统资源的详细信息，请参阅 [windows file Server 注意事项](storage-sync-files-planning.md#windows-file-server-considerations)。
 
 1. Az PowerShell 模块可与 PowerShell 5.1 或 PowerShell 6 + 一起使用。 你可以在任何支持的系统（包括非 Windows 系统）上使用 Az PowerShell module for Azure 文件同步，但必须始终在要注册的 Windows Server 实例上运行服务器注册 cmdlet (可以直接或通过 PowerShell 远程处理) 执行此操作。 在 Windows Server 2012 R2 上，可以验证是否至少运行了 PowerShell 5.1。 \*通过查看 **$PSVersionTable**对象的**PSVersion**属性的值：
 
@@ -41,14 +41,14 @@ ms.locfileid: "87903844"
     $PSVersionTable.PSVersion
     ```
 
-    如果**PSVersion**值小于5.1， \* 则与大多数全新安装的 Windows Server 2012 R2 一样，你可以通过下载并安装[WINDOWS Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616)来轻松升级。 为 Windows Server 2012 R2 下载和安装的合适包是**win 8.1 andw2k12r2-KB \* \* \* \* \* \* \* -x64**。 
+    如果 **PSVersion** 值小于5.1， \* 则与大多数全新安装的 Windows Server 2012 R2 一样，你可以通过下载并安装 [WINDOWS Management Framework (WMF) 5.1](https://www.microsoft.com/download/details.aspx?id=54616)来轻松升级。 为 Windows Server 2012 R2 下载和安装的合适包是**win 8.1 andw2k12r2-KB \* \* \* \* \* \* \* -x64**。 
 
-    PowerShell 6 + 可用于任何受支持的系统，并且可以通过其[GitHub 页面](https://github.com/PowerShell/PowerShell#get-powershell)下载。 
+    PowerShell 6 + 可用于任何受支持的系统，并且可以通过其 [GitHub 页面](https://github.com/PowerShell/PowerShell#get-powershell)下载。 
 
     > [!Important]  
     > 如果你计划使用服务器注册 UI，而不是直接从 PowerShell 注册，则必须使用 PowerShell 5.1。
 
-1. 如果已选择使用 PowerShell 5.1，请确保至少安装了 .NET 4.7.2。 详细了解系统上的[.NET Framework 版本和依赖关系](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies)。
+1. 如果已选择使用 PowerShell 5.1，请确保至少安装了 .NET 4.7.2。 详细了解系统上的 [.NET Framework 版本和依赖关系](https://docs.microsoft.com/dotnet/framework/migration-guide/versions-and-dependencies) 。
 
     > [!Important]  
     > 如果在 Windows Server Core 上安装 .NET 4.7.2 +，则必须用 `quiet` 和标志安装， `norestart` 否则安装将失败。 例如，如果安装 .NET 4.8，则命令将如下所示：
@@ -56,7 +56,7 @@ ms.locfileid: "87903844"
     > Start-Process -FilePath "ndp48-x86-x64-allos-enu.exe" -ArgumentList "/q /norestart" -Wait
     > ```
 
-1. Az PowerShell 模块，可按照此处的说明进行安装：[安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
+1. Az PowerShell 模块，可按照此处的说明进行安装： [安装和配置 Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
      
     > [!Note]  
     > 安装 Az PowerShell 模块后，将自动安装 Az Storagesync.sys 模块。
@@ -66,15 +66,15 @@ ms.locfileid: "87903844"
 1. 要部署 Azure 文件同步的同一区域中的 Azure 文件共享。有关详细信息，请参阅：
     - Azure 文件同步的[适用地区](storage-sync-files-planning.md#azure-file-sync-region-availability)。
     - [创建文件共享](storage-how-to-create-file-share.md)，了解创建文件共享的分步说明。
-1. 至少有一个受支持的 Windows Server 或 Windows Server 群集实例与 Azure 文件同步同步。有关支持的 Windows Server 版本和推荐的系统资源的详细信息，请参阅[windows file Server 注意事项](storage-sync-files-planning.md#windows-file-server-considerations)。
+1. 至少有一个受支持的 Windows Server 或 Windows Server 群集实例与 Azure 文件同步同步。有关支持的 Windows Server 版本和推荐的系统资源的详细信息，请参阅 [windows file Server 注意事项](storage-sync-files-planning.md#windows-file-server-considerations)。
 
 1. [安装 Azure CLI](/cli/azure/install-azure-cli)
 
    如果愿意，还可以使用 Azure Cloud Shell 来完成本教程中的步骤。  Azure Cloud Shell 是一种通过浏览器使用的交互式 Shell 环境。  使用以下方法之一开始 Cloud Shell：
 
-   - 选择代码块右上角的“试用”。 **尝试它**将打开 Azure Cloud Shell，但不会自动将代码复制到 Cloud Shell。
+   - 选择代码块右上角的“试用”。 **尝试它** 将打开 Azure Cloud Shell，但不会自动将代码复制到 Cloud Shell。
 
-   - 通过转到打开 Cloud Shell[https://shell.azure.com](https://shell.azure.com)
+   - 通过转到打开 Cloud Shell [https://shell.azure.com](https://shell.azure.com)
 
    - 选择菜单栏上[Azure 门户](https://portal.azure.com)中右上角的 " **Cloud Shell** " 按钮
 
@@ -88,13 +88,13 @@ ms.locfileid: "87903844"
 
     遵循终端中显示的步骤完成身份验证过程。
 
-1. 安装[az filesync](/cli/azure/ext/storagesync/storagesync) Azure CLI 扩展。
+1. 安装 [az filesync](/cli/azure/ext/storagesync/storagesync) Azure CLI 扩展。
 
    ```azurecli
    az extension add --name storagesync
    ```
 
-   安装**storagesync.sys**扩展引用后，您将收到以下警告。
+   安装 **storagesync.sys** 扩展引用后，您将收到以下警告。
 
    ```output
    The installed extension 'storagesync' is experimental and not covered by customer support. Please use with discretion.
@@ -153,7 +153,7 @@ Azure 文件同步的部署过程首先会将一个“存储同步服务”资�
 > 存储同步服务将从它已部署到的订阅和资源组继承访问权限。 我们建议仔细检查谁有权访问该服务。 具有写访问权限的实体可以开始从已注册到此存储同步服务的服务器同步新的文件集，使数据流向这些实体可以访问的 Azure 存储。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
-若要部署存储同步服务，请单击 " [Azure 门户](https://portal.azure.com/)"，再单击 "*创建资源*"，然后搜索 Azure 文件同步。在搜索结果中，选择 " **Azure 文件同步**"，然后选择 "**创建**" 以打开 "**部署存储同步**" 选项卡。
+若要部署存储同步服务，请单击 " [Azure 门户](https://portal.azure.com/)"，再单击 " *创建资源* "，然后搜索 Azure 文件同步。在搜索结果中，选择 " **Azure 文件同步**"，然后选择 " **创建** " 以打开 " **部署存储同步** " 选项卡。
 
 在打开的窗格中，输入以下信息：
 
@@ -228,7 +228,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 
 建议执行以下操作：
 - 保留默认安装路径(C:\Program Files\Azure\StorageSyncAgent)，以简化故障排除和服务器维护。
-- 启用 Microsoft 更新，使 Azure 文件同步保持最新。 Azure 文件同步代理的所有更新（包括功能更新和修补程序）都可从 Microsoft 更新进行。 建议将最新更新安装到 Azure 文件同步。有关详细信息，请参阅[Azure 文件同步更新策略](storage-sync-files-planning.md#azure-file-sync-agent-update-policy)。
+- 启用 Microsoft 更新，使 Azure 文件同步保持最新。 Azure 文件同步代理的所有更新（包括功能更新和修补程序）都可从 Microsoft 更新进行。 建议将最新更新安装到 Azure 文件同步。有关详细信息，请参阅 [Azure 文件同步更新策略](storage-sync-files-planning.md#azure-file-sync-agent-update-policy)。
 
 Azure 文件同步代理安装完成后，服务器注册 UI 自动打开。 在注册之前，必须创建存储同步服务；请参阅下一部分了解如何创建存储同步服务。
 
@@ -279,7 +279,7 @@ Remove-Item -Path ".\StorageSyncAgent.msi" -Recurse -Force
 > [!Note]
 > 服务器注册使用你的 Azure 凭据在存储同步服务与 Windows Server 之间创建信任关系，但是，服务器随后会创建并使用自身有效的标识，前提是该服务器保持已注册状态，并且当前的共享访问签名令牌（存储 SAS）有效。 取消注册服务器后，无法将新的 SAS 令牌颁发给服务器，因此，服务器无法访问 Azure 文件共享，并停止任何同步。
 
-注册服务器的管理员必须是给定的存储同步服务的管理角色**所有者**或**参与者**的成员。 这可以在存储同步服务的 Azure 门户中的 "**访问控制" (IAM) **进行配置。
+注册服务器的管理员必须是给定的存储同步服务的管理角色 **所有者** 或 **参与者** 的成员。 这可以在存储同步服务的 Azure 门户中的 " **访问控制" (IAM) ** 进行配置。
 
 此外，还可以区分管理员将服务器注册到允许的服务器，也可以在存储同步服务中配置同步。 为此，您需要创建一个自定义角色，其中列出了只允许注册服务器的管理员，并为您的自定义角色提供下列权限：
 
@@ -319,10 +319,10 @@ $registeredServer = Register-AzStorageSyncServer -ParentObject $storageSync
 > [!Important]  
 > 可对同步组中的任何云终结点或服务器终结点进行更改，并将文件同步到同步组中的其他终结点。 如果直接对云终结点（Azure 文件分享）进行更改，首先需要通过 Azure 文件同步更改检测作业来发现更改。 每 24 小时仅针对云终结点启动一次更改检测作业。 有关详细信息，请参阅 [Azure 文件常见问题解答](storage-files-faq.md#afs-change-detection)。
 
-创建云终结点的管理员必须是包含云终结点指向的 Azure 文件共享的存储帐户的管理角色**所有者**的成员。 这可以在 "**访问控制" (IAM) **在存储帐户的 Azure 门户中进行配置。
+创建云终结点的管理员必须是包含云终结点指向的 Azure 文件共享的存储帐户的管理角色 **所有者** 的成员。 这可以在 " **访问控制" (IAM) ** 在存储帐户的 Azure 门户中进行配置。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
-若要创建同步组，请在[Azure 门户](https://portal.azure.com/)中，请前往你的存储同步服务，然后选择 " **+ 同步组**"：
+若要创建同步组，请在 [Azure 门户](https://portal.azure.com/)中，请前往你的存储同步服务，然后选择 " **+ 同步组**"：
 
 ![在 Azure 门户中创建新的同步组](media/storage-sync-files-deployment-guide/create-sync-group-1.png)
 
@@ -380,7 +380,7 @@ New-AzStorageSyncCloudEndpoint `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-使用[az storagesync.sys](/cli/azure/ext/storagesync/storagesync/sync-group#ext-storagesync-az-storagesync-sync-group-create)命令创建新的同步组。  若要为所有 CLI 命令默认设置资源组，请使用[az configure](/cli/azure/reference-index#az-configure)。
+使用 [az storagesync.sys](/cli/azure/ext/storagesync/storagesync/sync-group#ext-storagesync-az-storagesync-sync-group-create) 命令创建新的同步组。  若要为所有 CLI 命令默认设置资源组，请使用 [az configure](/cli/azure/reference-index#az-configure)。
 
 ```azurecli
 az storagesync sync-group create --resource-group myResourceGroupName \
@@ -388,7 +388,7 @@ az storagesync sync-group create --resource-group myResourceGroupName \
                                  --storage-sync-service myStorageSyncServiceName \
 ```
 
-使用[az storagesync.sys](/cli/azure/ext/storagesync/storagesync/sync-group/cloud-endpoint#ext-storagesync-az-storagesync-sync-group-cloud-endpoint-create)命令创建新的云终结点。
+使用 [az storagesync.sys](/cli/azure/ext/storagesync/storagesync/sync-group/cloud-endpoint#ext-storagesync-az-storagesync-sync-group-cloud-endpoint-create) 命令创建新的云终结点。
 
 ```azurecli
 az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup \
@@ -405,26 +405,29 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 服务器终结点代表已注册服务器上的特定位置，例如服务器卷中的文件夹。 服务器终结点必须是已注册的服务器（而不是装载的共享）上的路径；若要使用云分层，该路径必须在非系统卷上。 不支持网络附加存储 (NAS)。
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
-若要添加服务器终结点，请前往新创建的同步组，然后选择 "**添加服务器终结点**"。
+若要添加服务器终结点，请前往新创建的同步组，然后选择 " **添加服务器终结点**"。
 
 ![在“同步组”窗格中添加一个新的服务器终结点](media/storage-sync-files-deployment-guide/create-sync-group-2.png)
 
-在 "**添加服务器终结点**" 窗格中，输入以下信息以创建服务器终结点：
+在 " **添加服务器终结点** " 窗格中，输入以下信息以创建服务器终结点：
 
 - **已注册服务器**：要在其中创建服务器终结点的服务器或群集的名称。
 - **路径**：要作为同步组的一部分进行同步的 Windows Server 路径。
 - 云分层：启用或禁用云分层的开关****。 通过云分层可以将不常使用或访问的文件分层到 Azure 文件。
 - **卷可用**空间：要在服务器终结点所在的卷上保留的可用空间量。 例如，如果有一个服务器终结点的卷上的卷可用空间设置为 50%，则约有一半数据会分层为 Azure 文件。 不管是否启用云分层，Azure 文件共享在同步组中始终具有完整的数据副本。
+- **初始下载模式**：这是可选选择，从代理版本11开始，在 Azure 文件共享中存在文件但服务器上没有文件时，这会很有用。 例如，如果您创建一个服务器终结点来向同步组添加另一个分支机构服务器，或者在灾难恢复失败的服务器时，则可能存在这种情况。 如果启用了云分层，则默认情况下将仅重新调用命名空间，最初不会有任何文件内容。 如果你认为用户访问请求应决定将哪些文件内容撤回到服务器，这会很有用。 如果已禁用云分层，则默认情况下将先下载命名空间，然后将根据上次修改的时间戳撤回文件，直到达到本地容量。 但是，可以将初始下载模式改为仅命名空间。 如果为此服务器终结点禁用了云分层，则只能使用第三种模式。 此模式避免首先撤回命名空间。 如果文件有机会完全下载，则文件将仅出现在本地服务器上。 此模式在以下情况下非常有用：应用程序要求存在完整文件，并且无法容忍其命名空间中的分层文件。
 
-若要添加服务器终结点，请选择 "**创建**"。 现在，文件在 Azure 文件共享和 Windows Server 之间保持保存。 
+若要添加服务器终结点，请选择 " **创建**"。 现在，文件在 Azure 文件共享和 Windows Server 之间保持保存。 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-执行以下 PowerShell 命令创建服务器终结点（请务必将 `<your-server-endpoint-path>` 和 `<your-volume-free-space>` 替换为所需值）。
+执行以下 PowerShell 命令来创建服务器终结点，并确保将和替换为 `<your-server-endpoint-path>` `<your-volume-free-space>` 所需的值，并检查可选的可选设置以获取可选的初始下载策略。
 
 ```powershell
 $serverEndpointPath = "<your-server-endpoint-path>"
 $cloudTieringDesired = $true
 $volumeFreeSpacePercentage = <your-volume-free-space>
+# Optional property. Choose from: [NamespaceOnly] default when cloud tiering is enabled. [NamespaceThenModifiedFiles] default when cloud tiering is disabled. [AvoidTieredFiles] only available when cloud tiering is disabled.
+$initialDownloadPolicy = NamespaceOnly
 
 if ($cloudTieringDesired) {
     # Ensure endpoint path is not the system volume
@@ -441,42 +444,45 @@ if ($cloudTieringDesired) {
         -ServerResourceId $registeredServer.ResourceId `
         -ServerLocalPath $serverEndpointPath `
         -CloudTiering `
-        -VolumeFreeSpacePercent $volumeFreeSpacePercentage
+        -VolumeFreeSpacePercent $volumeFreeSpacePercentage `
+        -InitialDownloadPolicy $initialDownloadPolicy
 } else {
     # Create server endpoint
     New-AzStorageSyncServerEndpoint `
         -Name $registeredServer.FriendlyName `
         -SyncGroup $syncGroup `
         -ServerResourceId $registeredServer.ResourceId `
-        -ServerLocalPath $serverEndpointPath 
+        -ServerLocalPath $serverEndpointPath `
+        -InitialDownloadPolicy $initialDownloadPolicy
 }
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-使用[az storagesync.sys-endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/server-endpoint#ext-storagesync-az-storagesync-sync-group-server-endpoint-create)命令创建新的服务器终结点。
+使用 [az storagesync.sys-endpoint](/cli/azure/ext/storagesync/storagesync/sync-group/server-endpoint#ext-storagesync-az-storagesync-sync-group-server-endpoint-create) 命令创建新的服务器终结点。
 
 ```azurecli
 # Create a new sync group server endpoint 
 az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
                                                  --name myNewServerEndpointName
-                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96c286e0
                                                  --server-local-path d:\myPath
                                                  --storage-sync-service myStorageSyncServiceNAme
                                                  --sync-group-name mySyncGroupName
 
 # Create a new sync group server endpoint with additional optional parameters
 az storagesync sync-group server-endpoint create --resource-group myResourceGroupName \
-                                                 --name myNewServerEndpointName \
-                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96cf286e0 \
-                                                 --server-local-path d:\myPath \
                                                  --storage-sync-service myStorageSyncServiceName \
                                                  --sync-group-name mySyncGroupName \
+                                                 --name myNewServerEndpointName \
+                                                 --registered-server-id 91beed22-7e9e-4bda-9313-fec96c286e0 \
+                                                 --server-local-path d:\myPath \
                                                  --cloud-tiering on \
+                                                 --volume-free-space-percent 85 \
+                                                 --tier-files-older-than-days 15 \
+                                                 --initial-download-policy NamespaceOnly [OR] NamespaceThenModifiedFiles [OR] AvoidTieredFiles
                                                  --offline-data-transfer on \
                                                  --offline-data-transfer-share-name myfilesharename \
-                                                 --tier-files-older-than-days 15 \
-                                                 --volume-free-space-percent 85 \
 
 ```
 
@@ -488,10 +494,10 @@ az storagesync sync-group server-endpoint create --resource-group myResourceGrou
 如果要将 Azure 文件同步配置为使用防火墙和虚拟网络设置，请执行以下操作：
 
 1. 在 Azure 门户中，导航到要保护的存储帐户。
-1. 选择左侧菜单中的 "**防火墙和虚拟网络**" 按钮。
+1. 选择左侧菜单中的 " **防火墙和虚拟网络** " 按钮。
 1. 在 "**允许访问**" 下选择**所选网络**。
 1. 确保你的服务器 IP 或虚拟网络列在相应的部分下。
-1. 请确保选中 "**允许受信任的 Microsoft 服务访问此存储帐户**"。
+1. 请确保选中 " **允许受信任的 Microsoft 服务访问此存储帐户** "。
 1. 选择“保存”以保存设置。
 
 ![配置防火墙和虚拟网络设置以使用 Azure 文件同步](media/storage-sync-files-deployment-guide/firewall-and-vnet.png)
@@ -565,8 +571,42 @@ Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
 
 每个卷的默认最大 VSS 快照数 (64) 以及用于执行该操作的默认计划，将导致信息工作者可以从其还原的以前版本中的最大值为45天，具体取决于你可以在卷上存储多少个 VSS 快照。
 
-如果最大值。64每个卷的 VSS 快照不是正确的设置，你可以[通过注册表项更改](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies)该值。
+如果最大值。64每个卷的 VSS 快照不是正确的设置，你可以 [通过注册表项更改](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies)该值。
 要使新的限制生效，你需要重新运行 cmdlet，以便在以前启用它的每个卷上启用以前版本的兼容性，并使用-Force 标志将新的每个卷的最大 VSS 快照数考虑在内。 这将导致新计算的兼容天数。 请注意，此更改只会对新的分层文件生效，并覆盖你可能已执行的 VSS 计划中的任何自定义。
+
+<a id="proactive-recall"></a>
+## <a name="proactively-recall-new-and-changed-files-from-an-azure-file-share"></a>主动从 Azure 文件共享撤回新文件和更改的文件
+
+对于代理版本11，新模式在服务器终结点上可用。 即使在本地用户访问任何文件之前，此模式也允许全球分布的公司预先填充的远程区域中的服务器缓存。 在服务器终结点上启用时，此模式将导致此服务器撤回在 Azure 文件共享中已创建或更改的文件。
+
+### <a name="scenario"></a>场景
+
+全球分布式公司在美国和印度有分支机构。 早上 (我们的时间) 信息工作者为全新的项目创建一个新文件夹和新文件，并在其上工作一整天。 Azure 文件同步会将文件夹和文件同步到 (云终结点) 的 Azure 文件共享。 印度的信息工作者将继续在其时区中处理该项目。 在上午，印度的本地 Azure 文件同步启用的服务器需要在本地提供这些新文件，使印度团队能够有效地使用本地缓存。 启用此模式可防止初始文件访问速度较慢，因为需要重新调用，并使服务器能够在 Azure 文件共享中更改或创建文件后主动重新调用文件。
+
+> [!IMPORTANT]
+> 必须认识到，跟踪服务器上的 Azure 文件共享中的更改可能会增加传出流量并从 Azure 计费。 如果在本地不需要回调到服务器的文件，则对服务器的不必要的撤回可能会产生负面影响。 如果你知道在云中最近更改的服务器上预填充缓存，则使用此模式将对使用该服务器上的文件的用户或应用程序产生积极影响。
+
+### <a name="enable-a-server-endpoint-to-proactively-recall-what-changed-in-an-azure-file-share"></a>启用服务器终结点以主动撤回 Azure 文件共享中的更改
+
+# <a name="portal"></a>[门户](#tab/proactive-portal)
+
+1. 在 [Azure 门户](https://portal.azure.com/)中，请切换到存储同步服务，选择正确的同步组，然后在 Azure 文件共享 (云终结点) 中，确定要密切跟踪其更改的服务器终结点。
+1. 在 "云分层" 部分中，找到 "Azure 文件共享下载" 主题。 你将看到当前所选模式，可以将其更改为跟踪 Azure 文件共享更改，并主动地将其重新与服务器撤回。
+
+:::image type="content" source="media/storage-sync-files-deployment-guide/proactive-download.png" alt-text="显示当前生效的服务器终结点的 Azure 文件共享下载行为的图像，以及用于打开允许更改该服务的菜单的按钮。":::
+
+# <a name="powershell"></a>[PowerShell](#tab/proactive-powershell)
+
+可以通过 [AzStorageSyncServerEndpoint](https://docs.microsoft.com/powershell/module/az.storagesync/set-azstoragesyncserverendpoint) Cmdlet 修改 PowerShell 中的服务器终结点属性。
+
+```powershell
+# Optional parameter. Default: "UpdateLocallyCachedFiles", alternative behavior: "DownloadNewAndModifiedFiles"
+$recallBehavior = "DownloadNewAndModifiedFiles"
+
+Set-AzStorageSyncServerEndpoint -InputObject <PSServerEndpoint> -LocalCacheMode $recallBehavior
+```
+
+---
 
 ## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>将 DFS 复制 (DFS-R) 部署迁移至 Azure 文件同步
 若要将 DFS-R 部署迁移至 Azure 文件同步，请执行以下操作：

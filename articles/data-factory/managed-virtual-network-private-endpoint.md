@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/15/2020
-ms.openlocfilehash: c0f23c864430b6cb2f49f924d5aaa8bde296037c
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 14a3a76ef4fefb7a33b272b846e1f1cb66644c3e
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135957"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225676"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure 数据工厂托管的虚拟网络 (预览) 
 
@@ -82,17 +82,13 @@ Azure 数据工厂支持专用链接。 通过专用链接，你可以访问 Azu
 - Azure Synapse Analytics（以前称为 Azure SQL 数据仓库）
 - Azure CosmosDB SQL
 - Azure Key Vault
-- Azure 专用链接
+- Azure 专用链接服务
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>从 ADF 托管虚拟网络通过公共终结点进行的出站通信
 - 对于出站通信，只打开端口443。
 - 不支持将 Azure 存储和 Azure Data Lake Gen2 从 ADF 托管的虚拟网络通过公共终结点进行连接。
 
-### <a name="other-known-issues"></a>其他已知问题
-CosmosDB 连接的调试运行不起作用，包括数据流调试和管道调试。
-
-
 ## <a name="next-steps"></a>后续步骤
 
-- 教程：[使用托管的虚拟网络和专用终结点构建复制管道](tutorial-copy-data-portal-private.md) 
-- 教程：[使用托管的虚拟网络和专用终结点生成映射数据流管道](tutorial-data-flow-private.md)
+- 教程： [使用托管的虚拟网络和专用终结点构建复制管道](tutorial-copy-data-portal-private.md) 
+- 教程： [使用托管的虚拟网络和专用终结点生成映射数据流管道](tutorial-data-flow-private.md)

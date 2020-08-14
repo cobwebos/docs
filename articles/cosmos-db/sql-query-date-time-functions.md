@@ -4,15 +4,15 @@ description: 了解 Azure Cosmos DB 中的日期和时间 SQL 系统函数，以
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/09/2020
+ms.date: 08/09/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: e3666f58b12855c19dd9b8ecf5519ab772c49743
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 460abbc0b2a2f277aaeed57c5b938de530696776
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246931"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224945"
 ---
 # <a name="date-and-time-functions-azure-cosmos-db"></a>日期和时间函数 (Azure Cosmos DB)
 
@@ -24,6 +24,7 @@ ms.locfileid: "86246931"
 
 * [GetCurrentDateTime](sql-query-getcurrentdatetime.md)
 * [GetCurrentTimestamp](sql-query-getcurrenttimestamp.md)
+* [GetCurrentTicks](sql-query-getcurrentticks.md)
 
 ## <a name="functions-to-work-with-datetime-values"></a>用于处理 DateTime 值的函数
 
@@ -32,6 +33,8 @@ ms.locfileid: "86246931"
 * [DateTimeAdd](sql-query-datetimeadd.md)
 * [DateTimeDiff](sql-query-datetimediff.md)
 * [DateTimeFromParts](sql-query-datetimefromparts.md)
+* [DateTimePart](sql-query-datetimepart.md)
+* [DateTimeToTicks](sql-query-datetimetoticks.md)
 
 ## <a name="next-steps"></a>后续步骤
 

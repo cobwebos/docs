@@ -7,17 +7,18 @@ ms.date: 06/03/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: dc8bd3877297db1677c4b838132b954fb033fe0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: references_regions
+ms.openlocfilehash: 53467f1c07a5bcfa3b717026217d7320d3c8d0f0
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84337371"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225185"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure 有哪些可用的磁盘类型？
 [!INCLUDE [virtual-machines-disk-types](../../../includes/virtual-machines-managed-disks-types-overview.md)]
 
-如果你想要开始使用超磁盘，请参阅主题：[使用 Azure 超磁盘](disks-enable-ultra-ssd.md)中的文章。
+如果你想要开始使用超磁盘，请参阅主题： [使用 Azure 超磁盘](disks-enable-ultra-ssd.md)中的文章。
 
 [!INCLUDE [virtual-machines-managed-disks-types-ga](../../../includes/virtual-machines-managed-disks-types-ga.md)]
 

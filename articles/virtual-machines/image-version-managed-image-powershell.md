@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: c119ebc8d87c00608fc515099711463f47b8ed1a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: c1b40cc8d52ffe5655401f7698790cdc05898331
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87901804"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225528"
 ---
 # <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>从托管映像迁移到共享映像库映像
 
@@ -117,7 +117,7 @@ $job.State
 > [!NOTE]
 > 需等待映像版本彻底生成并复制完毕，然后才能使用同一托管映像来创建另一映像版本。 
 >
-> 创建映像版本时，还可以通过添加 `-StorageAccountType Premium_LRS` 在高级存储中存储映像，或者通过添加 `-StorageAccountType Standard_ZRS` 在[区域冗余存储](../storage/common/storage-redundancy.md)中存储映像。
+> 你还可以通过添加 `-StorageAccountType Premium_LRS` ，或者在创建映像版本时添加 [区域冗余存储](../storage/common/storage-redundancy.md) ，在高级存储中存储映像 `-StorageAccountType Standard_ZRS` 。
 >
 
 ## <a name="delete-the-managed-image"></a>删除托管映像
@@ -134,4 +134,4 @@ Remove-AzImage `
 
 确认复制完成后，可以从[通用化映像](vm-generalized-image-version-powershell.md)创建 VM。
 
-有关如何提供购买计划信息的信息，请参阅[创建映像时提供 Azure Marketplace 购买计划信息](marketplace-images.md)。
+有关如何提供购买计划信息的信息，请参阅 [创建映像时提供 Azure Marketplace 购买计划信息](marketplace-images.md)。

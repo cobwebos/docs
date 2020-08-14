@@ -1,4 +1,4 @@
-- name: 数据目录文档
+- name: Azure 数据目录文档
   href: index.yml
 - name: 概述
   items:
@@ -23,7 +23,7 @@
       href: data-catalog-adopting-data-catalog.md
     - name: 常见问题解答
       href: data-catalog-frequently-asked-questions.md
-- name: 如何
+- name: 操作指南
   items:
     - name: 注册数据源
       href: data-catalog-how-to-register.md

@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 07/29/2020
-ms.openlocfilehash: 4189ea5fd0b2b52b5bf1e0614e4b43b9411df31d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 02ff222337e1b1c22df79724c232d4ca2b8b9f67
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530363"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225727"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>复制 Azure SQL 数据库中数据库的事务一致性副本
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Azure SQL 数据库提供多种方法，用于在同一服务器或不同服务器上创建现有[数据库](single-database-overview.md)的副本。 您可以使用 Azure 门户、PowerShell、Azure CLI 或 T-sql 来复制数据库。
+Azure SQL 数据库提供多种方法，用于在同一服务器或不同服务器上创建现有 [数据库](single-database-overview.md) 的副本。 您可以使用 Azure 门户、PowerShell、Azure CLI 或 T-sql 来复制数据库。
 
 ## <a name="overview"></a>概述
 
@@ -118,7 +118,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 > [Azure 门户](https://portal.azure.com)、PowerShell 和 Azure CLI 不支持将数据库复制到其他订阅。
 
 > [!TIP]
-> 使用 T-sql 的数据库复制支持从其他 Azure 租户中的订阅复制数据库。
+> 使用 T-sql 的数据库复制支持从其他 Azure 租户中的订阅复制数据库。 仅当使用 SQL 身份验证登录名登录目标服务器时才支持此项。
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>监视复制操作的进度
 

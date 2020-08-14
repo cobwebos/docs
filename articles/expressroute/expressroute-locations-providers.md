@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 08/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6fb065e48b744a31bcce2ca3249d0d6bd0216049
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 73a22efdc43911869c27a15c3f6918be4e35bc38
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066417"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225557"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -99,7 +99,7 @@ ExpressRoute 位置（有时称为对等互连位置或交会位置）是 Micros
 | **法兰克福** | [Interxion FRA11](https://www.interxion.com/Locations/frankfurt/) | 1 | 德国中西部 | 10G，100G | &T NetBond，CenturyLink Cloud Connect，Colt，CIX，Equinix，euNetworks，GEANT，Interxion，Megaport，橙色，Telia 电信 |
 | **日内瓦** | [Equinix GV2](https://www.equinix.com/locations/europe-colocation/switzerland-colocation/geneva-data-centers/gv2/) | 1 | 瑞士西部 | 10G，100G | Equinix、Megaport |
 | **中国香港特别行政区** | [Equinix HK1](https://www.equinix.com/locations/asia-colocation/hong-kong-colocation/hong-kong-data-center/hk1/) | 2 | 东亚 | 10G | Aryaka Networks、British Telecom、CenturyLink Cloud Connect、Chief Telecom、China Telecom Global、Equinix、InterCloud、Megaport、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Telia Carrier、Verizon |
-| **香港特别行政区 2** | [MEGA-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | 东亚 | 10G | 中国区国际，中国电信全局，PCCW 全球有限 |
+| **香港特别行政区 2** | [MEGA-i](https://www.iadvantage.net/index.php/locations/mega-i) | 2 | 东亚 | 10G | 中国区国际，中国电信全球性，PCCW 全球有限，SingTel |
 | **雅加达** | Telkom Indonesia | 4 | 不适用 | 10G | |
 | **约翰内斯堡** | [Teraco JB1](https://www.teraco.co.za/data-centre-locations/johannesburg/#jb1) | 3 | 南非北部 | 10G | BCX、British Telecom、Internet Solutions - Cloud Connect、Liquid Telecom、Orange、Teraco |
 | **吉隆坡** | [TIME dotCom Menara AIMS](https://www.time.com.my/enterprise/connectivity/direct-cloud) | 2 | 不适用 | 不适用 | TIME dotCom |

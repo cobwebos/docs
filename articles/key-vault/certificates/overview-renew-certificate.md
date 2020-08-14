@@ -10,16 +10,16 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 41085ee629189c32c1bc7196f23805c9c48d154a
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: beea6f7472d6bc871b4a2df323445b05671a621f
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056272"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224554"
 ---
 # <a name="about-azure-key-vault-certificate-renewal"></a>关于 Azure Key Vault 证书续订
 
-Azure Key Vault 使你能轻松地为网络预配、管理和部署数字证书，并支持应用程序的安全通信。 有关证书的更多常规信息，请参阅[Azure Key Vault 证书](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates)
+Azure Key Vault 使你能轻松地为网络预配、管理和部署数字证书，并支持应用程序的安全通信。 有关证书的更多常规信息，请参阅 [Azure Key Vault 证书](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates)
 
 具有短暂的生存期证书或提高证书轮换的频率会限制攻击者的范围。
 
@@ -32,7 +32,7 @@ Key vault 中创建了三类证书。 本指南将帮助你了解如何才能实
 -   自签名证书
 
 ## <a name="renewal-of-integrated-ca-certificate"></a>续订集成 CA 证书 
-好消息！ Azure 密钥保管库负责对由 Microsoft 信任的 Ca （即 DigiCert 和 GlobalSign）颁发的证书进行端到端维护。 了解如何将[受信任的 CA 与密钥保管库集成](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)。
+好消息！ Azure 密钥保管库负责对由 Microsoft 信任的 Ca （即 DigiCert 和 GlobalSign）颁发的证书进行端到端维护。 了解如何将 [受信任的 CA 与密钥保管库集成](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)。
 
 ## <a name="renewal-of-non-integrated-ca-certificate"></a>续订非集成 CA 证书 
 Azure 密钥保管库为其用户提供从任何 CA 导入证书的好处，使其用户能够与多个 Azure 资源集成并简化部署。 如果您担心您的证书已过期，或者发现您的证书已过期，然后 Key Vault 可以帮助你保持最新状态。 对于非集成 CA 证书，密钥保管库允许其用户设置近过期电子邮件通知。 还可以为多个用户设置这些通知。
@@ -41,27 +41,30 @@ Azure 密钥保管库为其用户提供从任何 CA 导入证书的好处，使�
 
 **在 Azure 门户中要遵循的步骤：-**
 1.  打开要续订的证书。
-2.  选择 "证书" 屏幕上的 " **+ 新建版本**" 按钮。
-3.  选择**证书操作**
-4.  选择 "**下载 CSR**"。 这会在本地驱动器上下载一个 csr 文件。
+2.  选择 "证书" 屏幕上的 " **+ 新建版本** " 按钮。
+3.  选择 **证书操作**
+4.  选择 " **下载 CSR**"。 这会在本地驱动器上下载一个 csr 文件。
 5.  将 CSR 引入你选择的 CA 来签署请求
-6.  返回签名的请求，并在相同证书操作屏幕上选择**合并 CSR** 。
+6.  返回签名的请求，并在相同证书操作屏幕上选择 **合并 CSR** 。
 
 > [!NOTE]
 > 必须将签名的 CSR 与创建的同一 CSR 请求合并，否则该键将不匹配。
 
-步骤类似于创建新证书，详细信息请参阅[此]( https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request#azure-portal)文。
+步骤类似于创建新证书，详细信息请参阅 [此]( https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request#azure-portal)文。
 
 ## <a name="renewal-of-self-signed-certificate"></a>续订自签名证书
 
-好消息！ Azure 密钥保管库还将负责自动续订其用户的自签名证书。 若要详细了解如何更改颁发策略和更新证书的生存期操作属性，请[在此处](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate)阅读详细信息。
+好消息！ Azure 密钥保管库还将负责自动续订其用户的自签名证书。 若要详细了解如何更改颁发策略和更新证书的生存期操作属性，请 [在此处](https://docs.microsoft.com/azure/key-vault/certificates/tutorial-rotate-certificates#update-lifecycle-attributes-of-a-stored-certificate)阅读详细信息。
 
 ### <a name="troubleshoot"></a>疑难解答
 如果颁发的证书处于 Azure 门户中的 "已禁用" 状态，请继续查看证书操作，以查看该证书的错误消息。
 
 ### <a name="frequently-asked-questions"></a>常见问题
-自动续订证书后是否复制标记？
-不会，除非用户手动复制标记本身，否则标记不会复制。
+* 如何测试证书的 autorotation 功能？
+  创建有效期为1个月的证书，然后将旋转的生命时间操作设置为1%。 此设置将在7.2 小时内轮替证书。
+  
+* 自动续订证书后是否复制标记？
+  不会，除非用户手动复制标记本身，否则标记不会复制。
 
 ### <a name="see-also"></a>另请参阅
 *   [将 Key Vault 与 DigiCert 证书颁发机构集成](how-to-integrate-certificate-authority.md)

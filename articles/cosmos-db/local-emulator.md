@@ -6,12 +6,12 @@ ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
 ms.date: 01/31/2020
-ms.openlocfilehash: 7a115de449588ea69951e6d997aa5332e5d55ad1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 87fe128a79413af024d72726d936b85db3f9ef52
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119515"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225965"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模拟器进行本地开发和测试
 
@@ -114,12 +114,13 @@ Account key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZ
 
 ### <a name="sql-api"></a>SQL API
 
-在桌面上运行 Azure Cosmos 模拟器后，可使用任意受支持的 [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) 或 [Azure Cosmos DB REST API](/rest/api/cosmos-db/) 与模拟器进行交互。 Azure Cosmos 模拟器还包括内置数据资源管理器，它让你无需编写任何代码即可为 SQL API 创建容器（或为 Mongo DB API 创建 Cosmos DB）并查看和编辑项目。
+在桌面上运行 Azure Cosmos 模拟器后，可使用任意受支持的 [Azure Cosmos DB SDK](sql-api-sdk-dotnet-standard.md) 或 [Azure Cosmos DB REST API](/rest/api/cosmos-db/) 与模拟器进行交互。 Azure Cosmos 模拟器还包括内置数据资源管理器，它让你无需编写任何代码即可为 SQL API 创建容器（或为 Mongo DB API 创建 Cosmos DB）并查看和编辑项目。
 
 ```csharp
 // Connect to the Azure Cosmos Emulator running locally
-DocumentClient client = new DocumentClient(
-   new Uri("https://localhost:8081"), "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
+CosmosClient client = new CosmosClient(
+   "https://localhost:8081", 
+    "C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==");
 
 ```
 
@@ -428,7 +429,7 @@ cd $env:LOCALAPPDATA\CosmosDBEmulator\bind-mount
 
 ## <a name="running-on-mac-or-linux"></a>在 Mac 或 Linux 上运行<a id="mac"></a>
 
-目前 Cosmos 模拟器只能在 Windows 上运行。 运行 Mac 或 Linux 的用户可以在托管虚拟机监控程序（如 Parallels 或 VirtualBox）的 Windows 虚拟机中运行模拟器。 以下是启用此功能的步骤。
+目前 Cosmos 模拟器只能在 Windows 上运行。 运行 Mac 或 Linux 的用户可以在托管于虚拟机监控程序中的 Windows 虚拟机上运行模拟器，如类似或 VirtualBox。 以下是启用此功能的步骤。
 
 在 Windows VM 中运行以下命令并记下 IPv4 地址。
 
@@ -444,7 +445,36 @@ ipconfig.exe
 Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
 ```
 
-最后，我们需要将模拟器 CA 证书导入到 Linux 或 Mac 环境中。
+最后，我们需要解析在 Linux 或 Mac 环境和模拟器上运行的应用程序之间的证书信任过程。 有两种做法：
+
+1. 在应用程序中禁用 SSL 验证：
+
+# <a name="net-standard-21"></a>[.NET Standard 2.1 +](#tab/ssl-netstd21)
+
+   对于在与 .NET Standard 2.1 或更高版本兼容的框架中运行的任何应用程序，我们可以利用 `CosmosClientOptions.HttpClientFactory` ：
+
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard21)]
+
+# <a name="net-standard-20"></a>[.NET Standard 2.0](#tab/ssl-netstd20)
+
+   对于在与 .NET Standard 2.0 兼容的框架中运行的任何应用程序，我们可以利用 `CosmosClientOptions.HttpClientFactory` ：
+
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos.Samples/Usage/HttpClientFactory/Program.cs?name=DisableSSLNETStandard20)]
+
+# <a name="nodejs"></a>[Node.js](#tab/ssl-nodejs)
+
+   对于 Node.js 应用程序，可以修改 `package.json` 文件，以便在 `NODE_TLS_REJECT_UNAUTHORIZED` 启动应用程序时设置：
+
+   ```json
+   "start": NODE_TLS_REJECT_UNAUTHORIZED=0 node app.js
+   ```
+
+--- 
+
+> [!NOTE]
+> 禁用 SSL 验证只是为了进行开发而不应在生产环境中运行时执行。
+
+2. 将模拟器 CA 证书导入到 Linux 或 Mac 环境：
 
 ### <a name="linux"></a>Linux
 
@@ -490,7 +520,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 完成这些步骤后，当连接到通过 `/AllowNetworkAccess` 公开的 IP 地址时，你的环境将信任模拟器使用的证书。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 使用以下提示来帮助解决使用 Azure Cosmos 模拟器时遇到的问题：
 
@@ -508,7 +538,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 - 如果收到“服务不可用”消息，模拟器可能无法初始化网络堆栈。 请查看是否安装了 Pulse 安全客户端或 Juniper 网络客户端，因为其网络筛选器驱动程序可能会导致该问题。 卸载第三方网络筛选器驱动程序通常可修复此问题。 或者，使用 /DisableRIO 启动模拟器，这会将模拟器网络通信切换到常规 Winsock。 
 
-- 如果你遇到 **"禁止"，则 "消息"： "请求是在传输协议或密码中使用禁止的加密进行的。检查帐户 SSL/TLS 允许的最小协议设置 ... "** 连接问题，这可能是由于 OS 中的全局更改 (例如有问必答 Preview Build 20170) 或启用 TLS 1.3 作为默认值的浏览器设置导致的。 使用 SDK 对 Cosmos 模拟器执行请求时可能会发生类似的错误，例如**Microsoft.Azure.Documents.DocumentClientException：请求是在传输协议或密码中使用禁止的加密进行的。检查 "帐户 SSL/TLS 允许的最小协议" 设置**。 此时应该会出现这种情况，因为 Cosmos 模拟器仅接受并使用 TLS 1.2 协议。 建议的解决方法是将设置和默认值更改为 TLS 1.2;例如，在 IIS 管理器中，导航到 "站点"-> "默认网站"，找到端口8081的 "网站绑定" 并对其进行编辑以禁用 TLS 1.3。 可以通过 "设置" 选项对 Web 浏览器执行类似操作。
+- 如果你遇到 **"禁止"，则 "消息"： "请求是在传输协议或密码中使用禁止的加密进行的。检查帐户 SSL/TLS 允许的最小协议设置 ... "** 连接问题，这可能是由于 OS 中的全局更改 (例如有问必答 Preview Build 20170) 或启用 TLS 1.3 作为默认值的浏览器设置导致的。 使用 SDK 对 Cosmos 模拟器执行请求时可能会发生类似的错误，例如 **Microsoft.Azure.Documents.DocumentClientException：请求是在传输协议或密码中使用禁止的加密进行的。检查 "帐户 SSL/TLS 允许的最小协议" 设置**。 此时应该会出现这种情况，因为 Cosmos 模拟器仅接受并使用 TLS 1.2 协议。 建议的解决方法是将设置和默认值更改为 TLS 1.2;例如，在 IIS 管理器中，导航到 "站点"-> "默认网站"，找到端口8081的 "网站绑定" 并对其进行编辑以禁用 TLS 1.3。 可以通过 "设置" 选项对 Web 浏览器执行类似操作。
 
 - 在模拟器运行时，如果计算机进入了睡眠模式或运行了任何 OS 更新，则你可能会看到“服务当前不可用”消息。 请右键单击 Windows 通知托盘中显示的图标，再选择“重置数据”来重置模拟器的数据。
 
