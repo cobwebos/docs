@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d73782d9de7da2c5daacbff5397d9a365ff9ae03
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f93df91f87f8119a503f2f7c452b61e3af5924f8
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038403"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208805"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure 认知搜索中的索引器
 
@@ -38,7 +38,7 @@ Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure �
 
 ## <a name="permissions"></a>权限
 
-与索引器相关的所有操作（包括对状态或定义的 GET 请求）都需要[管理员 api-key](search-security-api-keys.md)。 
+与索引器相关的所有操作（包括对状态或定义的 GET 请求）都需要[管理员 api-key](search-security-api-keys.md)。
 
 <a name="supported-data-sources"></a>
 
@@ -54,7 +54,44 @@ Azure 认知搜索中的*索引器*是一种爬网程序，它从外部 Azure �
 * [Azure 虚拟机中的 SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 * [SQL 托管实例](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
+## <a name="indexer-stages"></a>索引器阶段
+
+在首次运行时，当索引为空时，索引器将读取表或容器中提供的所有数据。 在后续运行中，索引器通常可以只检测并检索已更改的数据。 对于 blob 数据，更改检测是自动进行的。 对于其他数据源（如 Azure SQL 或 Cosmos DB），必须启用更改检测。
+
+对于它引入的每个文档，索引器实现或协调多个步骤，从文档检索到最终搜索引擎 "移交" 进行索引。 （可选）索引器还有助于驱动技能组合执行和输出，假设定义了技能组合。
+
+![索引器阶段](./media/search-indexer-overview/indexer-stages.png "索引器阶段")
+
+### <a name="stage-1-document-cracking"></a>阶段1：文档破解
+
+文档破解是打开文件和提取内容的过程。 根据数据源的类型，索引器将尝试执行不同的操作来提取可能可索引的内容。  
+
+示例：  
+
+* 当该文档是 [AZURE SQL 数据源](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)中的记录时，该索引器将提取该记录的每个字段。
+* 如果文档是 [Azure Blob 存储数据源](search-howto-indexing-azure-blob-storage.md)中的 PDF 文件，则索引器将提取该文件的文本、图像和元数据。
+* 如果文档是 [Cosmos DB 数据源](search-howto-index-cosmosdb.md)中的记录，则索引器将从 Cosmos DB 文档中提取字段和子字段。
+
+### <a name="stage-2-field-mappings"></a>阶段2：字段映射 
+
+索引器从源字段中提取文本，并将其发送到索引或知识库中的目标字段。 当字段名称和类型一致时，路径会被清除。 不过，您可能希望输出中有不同的名称或类型，在这种情况下，您需要告诉索引器如何映射字段。 此步骤在文档破解后、转换之前、在索引器读取源文档时出现。 定义 [字段映射](search-indexer-field-mappings.md)时，源字段的值将按原样发送到目标字段，而不做任何修改。 字段映射是可选的。
+
+### <a name="stage-3-skillset-execution"></a>阶段3：技能组合执行
+
+技能组合执行是一个可选步骤，用于调用内置或自定义 AI 处理。 对于光学字符识别，您可能需要用到图像分析形式 (OCR) ，否则可能需要语言翻译。 无论是哪种转换，技能组合执行都是扩充发生的位置。 如果索引器是管道，则可以将 [技能组合](cognitive-search-defining-skillset.md) 视为 "管道内的管道"。 技能组合有自己的一系列称为技能的步骤。
+
+### <a name="stage-4-output-field-mappings"></a>阶段4：输出字段映射
+
+技能组合的输出实际上是一棵称为 "扩充的文档" 的信息树。 通过输出字段映射，可以选择此树中要映射到索引中的字段的部分。 了解如何 [定义输出字段映射](cognitive-search-output-field-mapping.md)。
+
+与将原义值从源字段关联的字段映射一样，输出字段映射会告知索引器如何将已放大文档中的已转换值关联到索引中的目标字段。 与被视为可选的字段映射不同，你始终需要为需要驻留在索引中的任何已转换内容定义输出字段映射。
+
+下图显示了索引器阶段的示例索引器 [调试会话](cognitive-search-debug-session.md) 表示形式： "文档破解"、"字段映射"、"技能组合执行" 和 "输出字段映射"。
+
+:::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="示例调试会话" lightbox="media/search-indexer-overview/sample-debug-session.png":::
+
 ## <a name="basic-configuration-steps"></a>基本配置步骤
+
 索引器可提供数据源独有的功能。 因此，索引器或数据源配置的某些方面会因索引器类型而不同。 但是，所有索引器的基本构成元素和要求都相同。 下面介绍所有索引器都适用的共同步骤。
 
 ### <a name="step-1-create-a-data-source"></a>步骤 1：创建数据源
@@ -133,7 +170,7 @@ api-key: [Search service admin key]
 ## <a name="next-steps"></a>后续步骤
 了解基本概念后，下一步是查看每种数据源特定的要求和任务。
 
-* [Azure 虚拟机上的 azure SQL 数据库、SQL 托管实例或 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
+* [Azure 虚拟机上的 Azure SQL 数据库、SQL 托管实例或 SQL Server](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob 存储](search-howto-indexing-azure-blob-storage.md)
 * [Azure 表存储](search-howto-indexing-azure-tables.md)

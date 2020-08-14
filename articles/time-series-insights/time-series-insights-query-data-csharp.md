@@ -11,19 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: a7307a5ecdc5f6aa4b90480fa769f87317605a61
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 0e1976f51251913197eeec1a342eb1e891ddcaa6
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168059"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206308"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-gen1-environment-using-c-sharp"></a>使用 C 升查询 Azure 时序见解 Gen1 环境中的数据
 
 本 C# 示例演示如何使用[Gen1 查询 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query) 查询 Azure 时序见解 Gen1 环境中的数据。
 
 > [!TIP]
-> 可以访问 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/csharp-tsi-ga-sample) 查看 Gen1 C# 代码示例。
+> 可以访问 [https://github.com/Azure-Samples/Azure-Time-Series-Insights](https://github.com/Azure-Samples/Azure-Time-Series-Insights/tree/master/gen1-sample/csharp-tsi-gen1-sample) 查看 Gen1 C# 代码示例。
 
 ## <a name="summary"></a>总结
 

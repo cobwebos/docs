@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.custom: sfrev
-ms.openlocfilehash: 1dcb2095416b74eb8dd805d811ecc7142a6bafb8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 005a04833b95e893758fda768113801c5a4f6f66
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091617"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207464"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上准备开发环境
 
@@ -21,7 +21,7 @@ ms.locfileid: "87091617"
 >
 >
 
-若要在 Windows 开发计算机上生成并运行[Azure Service Fabric 应用程序][1]，请安装 Service Fabric 运行时、SDK 和工具。 此外，还需要启用 SDK 中包含的 [Windows PowerShell 脚本执行](#enable-powershell-script-execution)。
+若要在 Windows 开发计算机上生成并运行 [Azure Service Fabric 应用程序][1] ，请安装 Service Fabric 运行时、SDK 和工具。 此外，还需要启用 SDK 中包含的 [Windows PowerShell 脚本执行](#enable-powershell-script-execution)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -37,7 +37,7 @@ ms.locfileid: "87091617"
 
 > [!NOTE]
 > Windows 7 支持：
-> - 默认情况下，Windows 7 仅包含 Windows PowerShell 2.0。 Service Fabric PowerShell cmdlet 需要 PowerShell 3.0 或更高版本。 你可以从 Microsoft 下载中心[下载 Windows PowerShell 5.1][powershell5-download] 。
+> - 默认情况下，Windows 7 仅包含 Windows PowerShell 2.0。 Service Fabric PowerShell cmdlet 需要 PowerShell 3.0 或更高版本。 你可以从 Microsoft 下载中心 [下载 Windows PowerShell 5.1][powershell5-download] 。
 > - 在 Windows 7 上无法使用 Service Fabric 反向代理。
 
 ## <a name="install-the-sdk-and-tools"></a>安装 SDK 和工具
@@ -68,8 +68,8 @@ Service Fabric 工具是 Visual Studio 2017 和 2019 中 Azure 开发工作负�
 
 当前版本包括：
 
-* Service Fabric SDK 和工具4.1.428
-* Service Fabric 运行时7.1.428
+* Service Fabric SDK 和工具4.1.456
+* Service Fabric 运行时7.1.456
 
 有关支持版本的列表，请参阅 [Service Fabric 版本](service-fabric-versions.md)
 

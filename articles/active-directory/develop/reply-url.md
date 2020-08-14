@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: lenalepa, manrath
-ms.openlocfilehash: 6a8cc588ff7325242e7e010e9869eaa9a24f6fc2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 8be13a299de0fc3de0acaf0001722d8c96a460e6
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033330"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205938"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a> (回复 URL 重定向 URI) 限制和限制
 
@@ -43,15 +43,15 @@ ms.locfileid: "88033330"
 
 ## <a name="supported-schemes"></a>支持的方案
 
-Azure Active Directory (Azure AD) 应用程序模型目前支持在任何组织的 Azure AD 租户中登录工作或学校帐户的应用的 HTTP 和 HTTPS 方案。 这些帐户类型由 `AzureADMyOrg` 和 `AzureADMultipleOrgs` 应用程序清单的字段中的值指定 `signInAudience` 。 对于登录到个人 Microsoft 帐户的应用 (MSA) *以及*工作和学校帐户 (也就是说，将 `signInAudience` 设置为 `AzureADandPersonalMicrosoftAccount`) ，只允许使用 HTTPS 方案。
+Azure Active Directory (Azure AD) 应用程序模型目前支持在任何组织的 Azure AD 租户中登录工作或学校帐户的应用的 HTTP 和 HTTPS 方案。 这些帐户类型由 `AzureADMyOrg` 和 `AzureADMultipleOrgs` 应用程序清单的字段中的值指定 `signInAudience` 。 对于登录到个人 Microsoft 帐户的应用 (MSA) *以及* 工作和学校帐户 (也就是说，将 `signInAudience` 设置为 `AzureADandPersonalMicrosoftAccount`) ，只允许使用 HTTPS 方案。
 
-若要将具有 HTTP 方案的重定向 Uri 添加到登录工作帐户或学校帐户的应用注册，需要使用 Azure 门户中[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)的应用程序清单编辑器。 但是，虽然可以使用清单编辑器来设置基于 HTTP 的重定向 URI，但我们*强烈*建议使用 HTTPS 方案作为重定向 uri。
+若要将具有 HTTP 方案的重定向 Uri 添加到登录工作帐户或学校帐户的应用注册，需要使用 Azure 门户中 [应用注册](https://go.microsoft.com/fwlink/?linkid=2083908) 的应用程序清单编辑器。 但是，虽然可以使用清单编辑器来设置基于 HTTP 的重定向 URI，但我们 *强烈* 建议使用 HTTPS 方案作为重定向 uri。
 
 ## <a name="localhost-exceptions"></a>Localhost 例外
 
-每个[RFC 8252 部分 8.3](https://tools.ietf.org/html/rfc8252#section-8.3)和[7.3](https://tools.ietf.org/html/rfc8252#section-7.3)、"环回" 或 "Localhost" 重定向 uri 都具有两个特殊的注意事项：
+每个 [RFC 8252 部分 8.3](https://tools.ietf.org/html/rfc8252#section-8.3) 和 [7.3](https://tools.ietf.org/html/rfc8252#section-7.3)、"环回" 或 "Localhost" 重定向 uri 都具有两个特殊的注意事项：
 
-1. `http`URI 方案是可接受的，因为重定向绝不会离开设备。 因此，这两个都是可接受的：
+1. `http` URI 方案是可接受的，因为重定向绝不会离开设备。 因此，这两个都是可接受的：
     - `http://127.0.0.1/myApp`
     - `https://127.0.0.1/myApp`
 1. 由于本机应用程序通常需要临时端口范围，因此 (`:5001` 或 `:443`) 会被忽略，以匹配重定向 URI。 因此，所有这些都被视为等效项：
@@ -62,9 +62,9 @@ Azure Active Directory (Azure AD) 应用程序模型目前支持在任何组织�
 
 从开发的角度来看，这意味着：
 
-1. 不要注册多个重定向 Uri，其中只有端口不同。 登录服务器将任意选择一个，并使用与该重定向 URI 关联的行为 (例如，它是 `web` -、 `native` -或 `spa` -类型重定向) 。
-1. 如果需要在本地主机上注册多个重定向 Uri 以在开发过程中测试不同的流，请使用 URI 的*路径*组件来区分它们。 例如， `http://127.0.0.1/MyWebApp` 不匹配 `http://127.0.0.1/MyNativeApp` 。
-1. 根据 RFC 指南，不应 `localhost` 在重定向 URI 中使用。 相反，请使用实际环回 IP 地址 `127.0.0.1` 。 这可防止应用程序被错误配置的防火墙或重命名的网络接口中断。
+* 不要注册多个重定向 Uri，其中只有端口不同。 登录服务器将任意选择一个，并使用与该重定向 URI 关联的行为 (例如，它是 `web` -、 `native` -或 `spa` -类型重定向) 。
+* 如果需要在本地主机上注册多个重定向 Uri 以在开发过程中测试不同的流，请使用 URI 的 *路径* 组件来区分它们。 例如， `http://127.0.0.1/MyWebApp` 不匹配 `http://127.0.0.1/MyNativeApp` 。
+* 根据 RFC 指南，不应 `localhost` 在重定向 URI 中使用。 相反，请使用实际环回 IP 地址 `127.0.0.1` 。 这可防止应用程序被错误配置的防火墙或重命名的网络接口中断。
 
     当前不支持 () 的 IPv6 环回地址 `[::1]` 。
 
@@ -74,9 +74,9 @@ Azure Active Directory (Azure AD) 应用程序模型目前支持在任何组织�
 
 在配置为登录个人 Microsoft 帐户和工作或学校帐户的应用注册中，当前不支持通配符 Uri。 但是，对于配置为仅登录组织的 Azure AD 租户中的工作或学校帐户的应用，允许使用通配符 Uri。
 
-若要将包含通配符的重定向 Uri 添加到登录工作帐户或学校帐户的应用注册，需要使用 Azure 门户中[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)的应用程序清单编辑器。 尽管可以通过使用清单编辑器来设置重定向 URI 和通配符，但*强烈*建议遵循[RFC 6749 的3.1.2 部分](https://tools.ietf.org/html/rfc6749#section-3.1.2)，并仅使用绝对 uri。
+若要将包含通配符的重定向 Uri 添加到登录工作帐户或学校帐户的应用注册，需要使用 Azure 门户中 [应用注册](https://go.microsoft.com/fwlink/?linkid=2083908) 的应用程序清单编辑器。 尽管可以通过使用清单编辑器来设置重定向 URI 和通配符，但 *强烈* 建议遵循 [RFC 6749 的3.1.2 部分](https://tools.ietf.org/html/rfc6749#section-3.1.2) ，并仅使用绝对 uri。
 
-如果方案需要的重定向 Uri 比允许的最大限制多，请考虑使用[以下方法](#use-a-state-parameter)，而不是添加通配符重定向 URI。
+如果方案需要的重定向 Uri 比允许的最大限制多，请考虑使用 [以下方法](#use-a-state-parameter) ，而不是添加通配符重定向 URI。
 
 ### <a name="use-a-state-parameter"></a>使用状态参数
 
@@ -95,4 +95,4 @@ Azure Active Directory (Azure AD) 应用程序模型目前支持在任何组织�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解应用注册[应用程序清单](reference-app-manifest.md)。
+了解应用注册 [应用程序清单](reference-app-manifest.md)。

@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: 7616f6c502f0b5402aa784f707d0dafa31268d78
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 2f4647f4e13677d9136ce7fdb090e809943cdf0d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853052"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88206690"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 表存储绑定
 
@@ -603,7 +603,7 @@ Python 不支持特性。
 
 # <a name="python"></a>[Python](#tab/python)
 
-表数据作为 JSON 字符串传递给函数。 通过调用来反序列化消息， `json.loads` 如输入[示例](#input)中所示。
+表数据作为 JSON 字符串传递给函数。 通过调用来反序列化消息， `json.loads` 如输入 [示例](#input)中所示。
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -976,7 +976,7 @@ Python 不支持特性。
 
 有两个选项可用于从函数输出表存储行消息：
 
-- **返回值**：将 `name` *function.js上*的属性设置为 `$return` 。 使用此配置时，函数的返回值将持久保存为表存储行。
+- **返回值**：将 `name` *function.js上* 的属性设置为 `$return` 。 使用此配置时，函数的返回值将持久保存为表存储行。
 
 - **命令式**：向声明为[Out](/python/api/azure-functions/azure.functions.out?view=azure-python)类型的参数的[set](/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none)方法传递值。 传递给的值 `set` 将持久保存为事件中心消息。
 

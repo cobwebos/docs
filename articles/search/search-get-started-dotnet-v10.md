@@ -9,24 +9,24 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/05/2020
-ms.openlocfilehash: 4d8a38666991760fbb133e617984ba23788034ca
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 4a8a2455ea3e5889293cb8285f36699942a46437
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908384"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209331"
 ---
 # <a name="quickstart-create-a-search-index-using-the-microsoftazuresearch-v10-client-library"></a>快速入门：使用 v10 客户端库创建搜索索引
 
 本文是适用于旧版 (的 c # 快速入门版) 客户端库，现已由 Azure.Search.Documents (版本 11) 客户端库所取代。 如果现有的搜索解决方案使用的是 Microsoft Azure，则可以使用本快速入门来了解这些 Api。 
 
-对于新解决方案，建议新的 Azure.Search.Documents 库。 有关简介，请参阅[快速入门：使用 Azure.Search.Documents 库创建搜索索引](search-get-started-dotnet.md)。
+对于新解决方案，建议新的 Azure.Search.Documents 库。 有关简介，请参阅 [快速入门：使用 Azure.Search.Documents 库创建搜索索引](search-get-started-dotnet.md)。
 
 ## <a name="about-this-quickstart"></a>关于本快速入门
 
-在 c # 中创建一个 .NET Core 控制台应用程序，该应用程序使用 Visual Studio 和[Microsoft azure](https://docs.microsoft.com/dotnet/api/overview/azure/search/client10?view=azure-dotnet)认知搜索索引创建、加载和查询 Azure 索引。 
+在 c # 中创建一个 .NET Core 控制台应用程序，该应用程序使用 Visual Studio 和 [Microsoft azure](https://docs.microsoft.com/dotnet/api/overview/azure/search/client10?view=azure-dotnet)认知搜索索引创建、加载和查询 Azure 索引。 
 
-本文介绍如何创建应用程序。 你还可以[下载并运行完整的应用程序](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v10)。
+本文介绍如何创建应用程序。 你还可以 [下载并运行完整的应用程序](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart-v10)。
 
 > [!NOTE]
 > 本文中的演示代码使用 Azure 认知搜索第10版 .NET SDK 的同步方法，以便于简单。 但是，对于生产场景，建议你在自己的应用程序中使用异步方法，使应用程序保持可缩放且响应迅速。 例如，可以使用 `CreateAsync` 和 `DeleteAsync`，而不是 `Create` 和 `Delete`。
@@ -106,9 +106,9 @@ ms.locfileid: "87908384"
 
 1. 将两个空的类定义添加到你的项目：Address.Methods.cs、Hotel.Methods.cs
 
-1. 在 Address.Methods.cs 中，使用以下代码（[1-25 行](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Address.Methods.cs/#L1-L25)）覆盖默认内容。
+1. 在 Address.Methods.cs 中，使用以下代码（[1-25 行](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Address.Methods.cs#L1-L25)）覆盖默认内容。
 
-1. 在 Hotel.Methods.cs 中，复制 [1-68 行](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Hotel.Methods.cs/#L1-L68)。
+1. 在 Hotel.Methods.cs 中，复制 [1-68 行](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/quickstart-v10/AzureSearchQuickstart/Hotel.Methods.cs#L1-L68)。
 
 ## <a name="1---create-index"></a>1 - 创建索引
 

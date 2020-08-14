@@ -10,17 +10,18 @@ editor: ''
 ms.assetid: b0982203-c3c8-4a0b-8717-5b5ac4038d8c
 ms.subservice: asc-for-iot
 ms.devlang: na
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 40c6ea91fd84a0f088ed770cd7c4c3ea7b8b1c91
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 460e3f3955778945600bb3a1f9762a0ac50f5805
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81311148"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205923"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>为 Linux 部署适用于 IoT 的 Azure 安全中心基于 C# 的安全代理
 
@@ -36,7 +37,7 @@ ms.locfileid: "81311148"
 
 ## <a name="prerequisites"></a>先决条件
 
-有关其他平台和代理风格，请参阅[选择正确的安全代理](how-to-deploy-agent.md)。
+有关其他平台和代理风格，请参阅 [选择正确的安全代理](how-to-deploy-agent.md)。
 
 1. 若要部署安全代理，需要在安装计算机上拥有本地管理员权限。
 
@@ -46,29 +47,29 @@ ms.locfileid: "81311148"
 
 若要部署安全代理，请使用以下步骤：
 
-1. 从[GitHub](https://aka.ms/iot-security-github-cs)下载最新版本到您的计算机。
+1. 从 [GitHub](https://aka.ms/iot-security-github-cs)下载最新版本到您的计算机。
 
-1. 提取包的内容，然后导航到 _/Install_文件夹。
+1. 提取包的内容，然后导航到 _/Install_ 文件夹。
 
 1. 运行 `chmod +x InstallSecurityAgent.sh`，将运行权限添加到 **InstallSecurityAgent 脚本**
 
-1. 接下来，请在**根权限**下运行以下命令：
+1. 接下来，请在 **根权限**下运行以下命令：
 
    ```
    ./InstallSecurityAgent.sh -i -aui <authentication identity>  -aum <authentication method> -f <file path> -hn <host name>  -di <device id> -cl <certificate location kind>
    ```
 
-   有关身份验证参数的详细信息，请参阅[如何配置身份验证](concept-security-agent-authentication-methods.md)。
+   有关身份验证参数的详细信息，请参阅 [如何配置身份验证](concept-security-agent-authentication-methods.md)。
 
 此脚本可执行以下操作：
 
 - 安装必备组件。
 
-- 添加服务用户（禁用交互式登录）。
+- 添加已禁用交互式登录) 的服务用户 (。
 
-- 将代理安装为**后台**程序-假定设备使用**systemd**进行经典部署模型。
+- 将代理安装为 **后台** 程序-假定设备使用 **systemd** 进行经典部署模型。
 
-- 将**sudoers**配置为允许代理以 root 身份执行特定任务。
+- 将 **sudoers** 配置为允许代理以 root 身份执行特定任务。
 
 - 使用提供的身份验证参数配置代理。
 
@@ -81,7 +82,7 @@ ms.locfileid: "81311148"
 > [!NOTE]
 > 卸载时，不会删除在安装过程中安装的任何缺失的必备组件。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 1. 运行以下命令来检查部署状态：
 
@@ -122,7 +123,7 @@ ms.locfileid: "81311148"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读 Azure 安全中心以获取 IoT 服务[概述](overview.md)
+- 阅读 Azure 安全中心以获取 IoT 服务 [概述](overview.md)
 - 详细了解用于 IoT[体系结构](architecture.md)的 Azure 安全中心
 - 启用该[服务](quickstart-onboard-iot-hub.md)
 - 阅读[常见问题解答](resources-frequently-asked-questions.md)

@@ -6,15 +6,16 @@ author: avanigupta
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
+ms.custom: devx-track-dotnet
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.author: avgupta
-ms.openlocfilehash: b06d38d69f331df2f48637c6cdee527090955a47
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a3c1699dd4b7b828c7dc652f14f431878f785061
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830111"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207140"
 ---
 # <a name="back-up-app-configuration-stores-automatically"></a>自动备份应用配置存储
 
@@ -41,7 +42,7 @@ ms.locfileid: "87830111"
 - Azure 订阅。 [免费创建一个](https://azure.microsoft.com/free/)。 
 - 适用于 Azure 开发工作负荷的[Visual Studio 2019](https://visualstudio.microsoft.com/vs) 。
 - [.NET Core SDK](https://dotnet.microsoft.com/download)。
-- 最新版本的 Azure CLI (2.3.1 或更高版本) 。 若要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果使用 Azure CLI，则必须先使用登录 `az login` 。 您可以选择使用 Azure Cloud Shell。
+- 最新版本的 Azure CLI (2.3.1 或更高版本) 。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 如果使用 Azure CLI，则必须先使用登录 `az login` 。 您可以选择使用 Azure Cloud Shell。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -123,7 +124,7 @@ az eventgrid event-subscription create \
 - Azure Functions 运行时版本3。x
 - 每10分钟由计时器触发的函数
 
-为了使你能够更轻松地开始备份数据，我们已经[测试并发布了一个函数](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup)，你可以使用它，而无需对代码进行任何更改。 下载项目文件，并[从 Visual Studio 将其发布到你自己的 Azure function app](/azure/azure-functions/functions-develop-vs#publish-to-azure)。
+为了使你能够更轻松地开始备份数据，我们已经 [测试并发布了一个函数](https://github.com/Azure/AppConfiguration/tree/master/examples/ConfigurationStoreBackup) ，你可以使用它，而无需对代码进行任何更改。 下载项目文件，并 [从 Visual Studio 将其发布到你自己的 Azure function app](/azure/azure-functions/functions-develop-vs#publish-to-azure)。
 
 > [!IMPORTANT]
 > 不要对下载的代码中的环境变量进行任何更改。 你将在下一节中创建所需的应用设置。
@@ -132,13 +133,13 @@ az eventgrid event-subscription create \
 ### <a name="build-your-own-function"></a>构建您自己的函数
 
 如果前面提供的示例代码不满足您的要求，您还可以创建自己的函数。 函数必须能够执行下列任务才能完成备份：
-- 定期读取队列中的内容，以查看它是否包含来自事件网格的任何通知。 有关实现的详细信息，请参阅[存储队列 SDK](/azure/storage/queues/storage-quickstart-queues-dotnet) 。
-- 如果队列包含事件[网格中的事件通知](/azure/azure-app-configuration/concept-app-configuration-event?branch=pr-en-us-112982#event-schema)，请从事件消息中提取所有的唯一 `<key, label>` 信息。 键和标签的组合是主存储区中键/值更改的唯一标识符。
-- 从主存储中读取所有设置。 仅更新辅助存储中在队列中具有相应事件的那些设置。 删除在队列中存在但在主存储中不存在的辅助存储中的所有设置。 可以使用[应用配置 SDK](https://github.com/Azure/AppConfiguration#sdks)以编程方式访问配置存储。
+- 定期读取队列中的内容，以查看它是否包含来自事件网格的任何通知。 有关实现的详细信息，请参阅 [存储队列 SDK](/azure/storage/queues/storage-quickstart-queues-dotnet) 。
+- 如果队列包含事件 [网格中的事件通知](/azure/azure-app-configuration/concept-app-configuration-event?branch=pr-en-us-112982#event-schema)，请从事件消息中提取所有的唯一 `<key, label>` 信息。 键和标签的组合是主存储区中键/值更改的唯一标识符。
+- 从主存储中读取所有设置。 仅更新辅助存储中在队列中具有相应事件的那些设置。 删除在队列中存在但在主存储中不存在的辅助存储中的所有设置。 可以使用 [应用配置 SDK](https://github.com/Azure/AppConfiguration#sdks) 以编程方式访问配置存储。
 - 如果在处理过程中没有异常，则从队列中删除消息。
 - 根据需要实现错误处理。 请参阅前面的代码示例，了解一些可能需要处理的常见异常。
 
-若要了解有关创建函数的详细信息，请参阅：[在 Azure 中创建由计时器触发的函数](/azure/azure-functions/functions-create-scheduled-function)，并[使用 Visual Studio 开发 Azure Functions](/azure/azure-functions/functions-develop-vs)。
+若要了解有关创建函数的详细信息，请参阅： [在 Azure 中创建由计时器触发的函数](/azure/azure-functions/functions-create-scheduled-function) ，并 [使用 Visual Studio 开发 Azure Functions](/azure/azure-functions/functions-develop-vs)。
 
 
 > [!IMPORTANT]
@@ -149,9 +150,9 @@ az eventgrid event-subscription create \
 ## <a name="create-function-app-settings"></a>创建函数应用设置
 
 如果你使用的是我们提供的函数，则在 function app 中需要以下应用设置：
-- `PrimaryStoreEndpoint`：主应用配置存储的终结点。 例如 `https://{primary_appconfig_name}.azconfig.io` 。
-- `SecondaryStoreEndpoint`：辅助应用配置存储的终结点。 例如 `https://{secondary_appconfig_name}.azconfig.io` 。
-- `StorageQueueUri`：队列 URI。 例如 `https://{unique_storage_name}.queue.core.windows.net/{queue_name}` 。
+- `PrimaryStoreEndpoint`：主应用配置存储的终结点。 示例为 `https://{primary_appconfig_name}.azconfig.io`。
+- `SecondaryStoreEndpoint`：辅助应用配置存储的终结点。 示例为 `https://{secondary_appconfig_name}.azconfig.io`。
+- `StorageQueueUri`：队列 URI。 示例为 `https://{unique_storage_name}.queue.core.windows.net/{queue_name}`。
 
 以下命令在 function app 中创建所需的应用设置。 将 `<function_app_name>` 替换为你的函数应用的名称。
 
@@ -166,16 +167,16 @@ az functionapp config appsettings set --name $functionAppName --resource-group $
 
 ## <a name="grant-access-to-the-managed-identity-of-the-function-app"></a>向 function app 的托管标识授予访问权限
 
-使用以下命令或[Azure 门户](/azure/app-service/overview-managed-identity#add-a-system-assigned-identity)为 function app 添加系统分配的托管标识。
+使用以下命令或 [Azure 门户](/azure/app-service/overview-managed-identity#add-a-system-assigned-identity) 为 function app 添加系统分配的托管标识。
 
 ```azurecli-interactive
 az functionapp identity assign --name $functionAppName --resource-group $resourceGroupName
 ```
 
 > [!NOTE]
-> 若要执行所需的资源创建和角色管理，你 `Owner` 的帐户需要 (订阅或资源组) 的适当范围内的权限。 如果需要有关角色分配的帮助，请了解[如何使用 Azure 门户添加或删除 Azure 角色分配](/azure/role-based-access-control/role-assignments-portal)。
+> 若要执行所需的资源创建和角色管理，你 `Owner` 的帐户需要 (订阅或资源组) 的适当范围内的权限。 如果需要有关角色分配的帮助，请了解 [如何使用 Azure 门户添加或删除 Azure 角色分配](/azure/role-based-access-control/role-assignments-portal)。
 
-使用以下命令或[Azure 门户](/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity#grant-access-to-app-configuration)授予对你的应用配置存储的函数应用访问的托管标识。 使用以下角色：
+使用以下命令或 [Azure 门户](/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity#grant-access-to-app-configuration) 授予对你的应用配置存储的函数应用访问的托管标识。 使用以下角色：
 - `App Configuration Data Reader`在主应用配置存储中分配角色。
 - `App Configuration Data Owner`在辅助应用配置存储中分配角色。
 
@@ -195,7 +196,7 @@ az role assignment create \
     --scope $secondaryAppConfigId
 ```
 
-使用以下命令或[Azure 门户](/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal)授予对你的 function app 的托管标识对你的队列的访问权限。 分配 `Storage Queue Data Contributor` 队列中的角色。
+使用以下命令或 [Azure 门户](/azure/storage/common/storage-auth-aad-rbac-portal#assign-azure-roles-using-the-azure-portal) 授予对你的 function app 的托管标识对你的队列的访问权限。 分配 `Storage Queue Data Contributor` 队列中的角色。
 
 ```azurecli-interactive
 az role assignment create \
@@ -215,7 +216,7 @@ az appconfig kv set --name $primaryAppConfigName --key Foo --value Bar --yes
 您已经触发了该事件。 几分钟后，事件网格会将事件通知发送到队列。 在*下一次计划的函数运行之后*，查看辅助存储中的配置设置，以查看它是否包含主存储区中更新后的键值。
 
 > [!NOTE]
-> 你可以在测试和故障排除期间[手动触发函数](/azure/azure-functions/functions-manually-run-non-http)，而无需等待计划的计时器触发器。
+> 你可以在测试和故障排除期间 [手动触发函数](/azure/azure-functions/functions-manually-run-non-http) ，而无需等待计划的计时器触发器。
 
 确保备份功能成功运行后，可以看到该密钥现在存在于辅助存储中。
 
@@ -236,15 +237,15 @@ az appconfig kv show --name $secondaryAppConfigName --key Foo
 }
 ```
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果未在辅助存储中看到新设置：
 
-- 请确保在主存储中创建设置*后*触发了 backup 函数。
+- 请确保在主存储中创建设置 *后* 触发了 backup 函数。
 - 事件网格可能无法及时向队列发送事件通知。 检查你的队列是否仍包含来自你的主存储的事件通知。 如果是这样，则再次触发 backup 函数。
-- 检查[Azure Functions 日志](/azure/azure-functions/functions-create-scheduled-function#test-the-function)中是否有任何错误或警告。
-- 使用[Azure 门户](/azure/azure-functions/functions-how-to-use-azure-function-app-settings#get-started-in-the-azure-portal)确保 Azure function app 包含 Azure Functions 尝试读取的应用程序设置的正确值。
-- 还可以通过使用[Azure 应用程序 Insights](/azure/azure-functions/functions-monitoring?tabs=cmd)来设置 Azure Functions 的监视和警报。 
+- 检查 [Azure Functions 日志](/azure/azure-functions/functions-create-scheduled-function#test-the-function) 中是否有任何错误或警告。
+- 使用 [Azure 门户](/azure/azure-functions/functions-how-to-use-azure-function-app-settings#get-started-in-the-azure-portal) 确保 Azure function app 包含 Azure Functions 尝试读取的应用程序设置的正确值。
+- 还可以通过使用 [Azure 应用程序 Insights](/azure/azure-functions/functions-monitoring?tabs=cmd)来设置 Azure Functions 的监视和警报。 
 
 
 ## <a name="clean-up-resources"></a>清理资源

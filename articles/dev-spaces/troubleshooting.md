@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: 了解如何排查和解决在启用和使用 Azure Dev Spaces 时遇到的常见问题
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 7696cc8eaeef9ba5e2e0955bad6f17d28e95b5e5
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: e26f066294cb0a6a48c5a3299213206fe4226ad0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077027"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210835"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces 故障排除
 
@@ -55,8 +55,6 @@ azds remove -g <resource group name> -n <cluster name>
 ```azurecli
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
-
-可以从 CLI 或 Visual Studio 重新创建该控制器。 有关示例，请参阅[团队开发](quickstart-team-development.md)或[使用 .NET Core 进行开发](quickstart-netcore-visualstudio.md)快速入门。
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>由于控制器名称长度问题，无法创建控制器
 
@@ -105,7 +103,7 @@ azure-cli                         2.0.60 *
 
 当 Azure Dev Spaces 无法连接到 AKS 群集的 API 服务器时，你可能会看到此错误。
 
-如果已锁定对 AKS 群集 API 服务器的访问，或者如果已为 AKS 群集启用了[API 服务器授权的 IP 地址范围](../aks/api-server-authorized-ip-ranges.md)，则还必须[创建](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled)或[更新](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges)群集，以[允许基于你的区域的其他范围](configure-networking.md#aks-cluster-network-requirements)
+如果已锁定对 AKS 群集 API 服务器的访问，或者如果已为 AKS 群集启用了 [API 服务器授权的 IP 地址范围](../aks/api-server-authorized-ip-ranges.md) ，则还必须 [创建](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) 或 [更新](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) 群集，以 [允许基于你的区域的其他范围](configure-networking.md#aks-cluster-network-requirements)
 
 通过运行 kubectl 命令来确保 API 服务器是可用的。 如果 API 服务器不可用，请联系 AKS 支持部门，然后在 API 服务器正常运行时重试。
 
@@ -282,7 +280,7 @@ Service cannot be started.
 
 ### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>错误 "找不到 pod 的 AzureAssignedIdentity： azds/azds- \<id\> 已分配的状态"
 
-在安装了[托管标识](../aks/use-managed-identity.md)和[pod 托管标识](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities)的 AKS 群集上运行带有 Azure Dev Spaces 的服务时，该进程可能会在*图表安装*步骤后停止响应。 如果在 azds 命名空间中检查 azds-injector-webhook，可能会看到此错误。
+在安装了 [托管标识](../aks/use-managed-identity.md) 和 [pod 托管标识](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) 的 AKS 群集上运行带有 Azure Dev Spaces 的服务时，该进程可能会在 *图表安装* 步骤后停止响应。 如果在 azds 命名空间中检查 azds-injector-webhook，可能会看到此错误。
 
 Azure Dev Spaces 在群集上运行的服务利用群集的托管标识与群集外的 Azure Dev Spaces 后端服务进行通信。 在 Pod 托管标识安装后，会在群集的节点上配置网络规则，以将托管标识凭据的所有调用重定向到[群集上安装的节点托管标识 (NMI) DaemonSet](https://github.com/Azure/aad-pod-identity#node-managed-identity)。 此 NMI DaemonSet 对调用 Pod 进行标识，并确保 Pod 已被正确标记来访问请求获取的托管标识。 Azure Dev Spaces 无法检测群集是否安装了 Pod 托管标识，也无法执行必要的配置来允许 Azure Dev Spaces 服务访问群集的托管标识。 由于尚未将 Azure Dev Spaces 服务配置为访问群集的托管标识，因此，NMI DaemonSet 将不允许它们获取托管标识的 Azure AD 令牌，并且无法与 Azure Dev Spaces 后端服务进行通信。
 
@@ -498,7 +496,7 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 
 ### <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>用于调用 Dev Spaces 控制器和 API 的 RBAC 权限不正确
 
-访问 Azure Dev Spaces 控制器的用户必须有权读取 AKS 群集上的管理员 kubeconfig。 例如，[内置的 Azure Kubernetes 服务群集管理员角色](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)中包含此权限。 访问 Azure Dev Spaces 控制器的用户还必须具有该控制器的*参与者*或*所有者*Azure 角色。 若要详细了解如何更新用户对 AKS 群集的权限，请单击[此处](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group)。
+访问 Azure Dev Spaces 控制器的用户必须有权读取 AKS 群集上的管理员 kubeconfig。 例如，[内置的 Azure Kubernetes 服务群集管理员角色](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)中包含此权限。 访问 Azure Dev Spaces 控制器的用户还必须具有该控制器的 *参与者* 或 *所有者* Azure 角色。 若要详细了解如何更新用户对 AKS 群集的权限，请单击[此处](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group)。
 
 更新控制器的用户的 Azure 角色：
 
@@ -598,7 +596,7 @@ kubectl -n my-namespace delete pod --all
 | gcr.io | HTTP:443 | 用于拉取 helm/tiller 映像|
 | storage.googleapis.com | HTTP:443 | 用于拉取 helm/tiller 映像|
 
-更新防火墙或安全配置，以允许与上述所有 Fqdn 和[Azure Dev Spaces 基础结构服务](../dev-spaces/configure-networking.md#virtual-network-or-subnet-configurations)的网络流量。
+更新防火墙或安全配置，以允许与上述所有 Fqdn 和 [Azure Dev Spaces 基础结构服务](../dev-spaces/configure-networking.md#virtual-network-or-subnet-configurations)的网络流量。
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>错误 "找不到 \<cluster\> 订阅中的群集 \<subscriptionId\> "
 

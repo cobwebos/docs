@@ -4,15 +4,16 @@ description: 了解如何将托管缓存服务和角色中缓存应用程序迁�
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 07/23/2020
 ms.author: yegu
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4e867f28209230cf33b0f94e7cc8ca12d015ff15
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: beb6014a9b6d90d1bc9a3c3236877a720a44a0c4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008553"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211116"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis-deprecated"></a>从托管缓存服务迁移到 Azure Cache for Redis (弃用) 
 在将使用 Azure 托管缓存服务的应用程序迁移到 Azure Redis 缓存时，只需对应用程序略做更改，具体情况取决于缓存应用程序所使用的托管缓存服务功能。 API 虽非完全相同，但却极为类似，而且使用托管缓存服务来访问缓存的多数现有代码，只需略做更改即可重复使用。 本文介绍了为迁移托管缓存服务应用程序以使用 Azure Redis 缓存，如何进行必要的配置和应用程序更改；还介绍了如何使用 Azure Redis 缓存的某些功能实现托管缓存服务缓存功能。
@@ -48,7 +49,7 @@ Azure 托管缓存服务与 Azure Redis 缓存类似，但两者在实现某些�
 | 过期策略 |默认过期策略为“绝对”，默认过期间隔为 10 分钟。 另外也提供“滑动”和“永不”策略。 |默认情况下，缓存中的项不会过期，但可以使用缓存集重载，对每次写入配置过期时间。 |
 | 区域和标记 |区域是缓存项的子组。 区域也支持使用称为标记的额外描述性字符串为缓存项添加批注。 区域支持对该区域内的任何标记项执行搜索操作的能力。 区域内的所有项全部位于缓存群集的单个节点内。 |Azure Redis 缓存由单个节点组成（除非已启用 Redis 群集），因此托管缓存服务区域的概念不适用。 Redis 支持在检索键时执行搜索和通配符操作，让描述性标记可以嵌入键名称内并在后面用于检索项。 有关使用 Redis 实现标记解决方案的示例，请参阅[使用 Redis 实现缓存标记](https://stackify.com/implementing-cache-tagging-redis/)。 |
 | 序列化 |托管缓存支持 NetDataContractSerializer 和 BinaryFormatter，也支持使用自定义序列化程序。 默认值为 NetDataContractSerializer。 |由客户端应用程序负责先将 .NET 对象序列化，再将它们放入缓存中，至于要选择使用哪个序列化程序则由客户端应用程序开发人员决定。 有关详细信息和示例代码，请参阅[处理缓存中的 .NET 对象](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)。 |
-| 缓存模拟器 |托管缓存提供本地缓存模拟器。 |适用于 Redis 的 Azure 缓存没有模拟器，但你可以在[本地运行 Redis](cache-development-faq.md#is-there-a-local-emulator-for-azure-cache-for-redis)以提供模拟器体验。 |
+| 缓存模拟器 |托管缓存提供本地缓存模拟器。 |适用于 Redis 的 Azure 缓存没有模拟器，但你可以在 [本地运行 Redis](cache-development-faq.md#is-there-a-local-emulator-for-azure-cache-for-redis) 以提供模拟器体验。 |
 
 ## <a name="choose-a-cache-offering"></a>选择缓存产品/服务
 Microsoft Azure Redis 缓存在下述层中提供：
@@ -59,7 +60,7 @@ Microsoft Azure Redis 缓存在下述层中提供：
 
 每个级别在功能和定价方面存在差异。 在本指南的后面将介绍这些功能，而有关定价的详细信息，则请参阅[缓存定价详细信息](https://azure.microsoft.com/pricing/details/cache/)。
 
-迁移操作的第一步是选择与以前的托管缓存服务缓存大小匹配的大小，并根据应用程序的需求进行增减。 有关选择正确的 Azure Cache for Redis 产品/服务的详细信息，请参阅[选择正确的层](cache-overview.md#choosing-the-right-tier)。
+迁移操作的第一步是选择与以前的托管缓存服务缓存大小匹配的大小，并根据应用程序的需求进行增减。 有关选择正确的 Azure Cache for Redis 产品/服务的详细信息，请参阅 [选择正确的层](cache-overview.md#choosing-the-right-tier)。
 
 ## <a name="create-a-cache"></a>创建缓存
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]

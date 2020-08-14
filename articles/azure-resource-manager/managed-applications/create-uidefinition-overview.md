@@ -5,16 +5,16 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 4ee489e8b596adf0767856e3358c9bdcb17fbb6a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e2aee194d3c97655dd4ec5aaeea46fb607c4c5e
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004353"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210958"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>适合 Azure 托管应用程序的创建体验的 CreateUiDefinition.json
 
-本文档介绍了**有关文件createUiDefinition.js**的核心概念。 Azure 门户在创建托管应用程序时使用此文件来定义用户界面。
+本文档介绍了 ** 有关文件createUiDefinition.js** 的核心概念。 Azure 门户在创建托管应用程序时使用此文件来定义用户界面。
 
 模板如下所示
 
@@ -49,7 +49,7 @@ parameters 属性的架构取决于所指定的 handler 和 version 的组合。
 
 可以使用 JSON 编辑器创建 createUiDefinition，然后在 [createUiDefinition 沙盒](https://portal.azure.com/?feature.customPortal=false&#blade/Microsoft_Azure_CreateUIDef/SandboxBlade)中对其进行测试，以便预览它。 有关沙盒的详细信息，请参阅[测试 Azure 托管应用程序的门户接口](test-createuidefinition.md)。
 
-## <a name="basics"></a>基础
+## <a name="basics"></a>基础知识
 
 **基础**步骤是 Azure 门户分析文件时生成的第一步。 默认情况下，"基本" 步骤使用户可以选择要部署的订阅、资源组和位置。
 
@@ -77,51 +77,58 @@ parameters 属性的架构取决于所指定的 handler 和 version 的组合。
 当你需要覆盖基本步骤的默认行为时，可以指定 config 元素。 下面的示例显示了可用的属性。
 
 ```json
-"config": {  
-    "basics": {  
-        "description": "Customized description with **markdown**, see [more](https://www.microsoft.com).",
-        "subscription": {
-            "constraints": {
-                "validations": [
-                    {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid subscription."
-                    },
+"config": {
+    "basics": {
+        "description": "Customized description with **markdown**, see [more](https://www.microsoft.com).",
+        "subscription": {
+            "constraints": {
+                "validations": [
                     {
-                        "permission": "<Resource Provider>/<Action>",
-                        "message": "Must have correct permission to complete this step."
-                    }
-                ]
-            },
-            "resourceProviders": [ "<Resource Provider>" ]
-        },
-        "resourceGroup": {
-            "constraints": {
-                "validations": [
-                    {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid resource group."
-                    }
-                ]
-            },
-            "allowExisting": true
-        },
-        "location": {  
-            "label": "Custom label for location",  
-            "toolTip": "provide a useful tooltip",  
-            "resourceTypes": [ "Microsoft.Compute/virtualMachines" ],
-            "allowedValues": [ "eastus", "westus2" ],  
-            "visible": true  
-        }  
-    }  
-},  
+                        "isValid": "[expression for checking]",
+                        "message": "Please select a valid subscription."
+                    },
+                    {
+                        "permission": "<Resource Provider>/<Action>",
+                        "message": "Must have correct permission to complete this step."
+                    }
+                ]
+            },
+            "resourceProviders": [
+                "<Resource Provider>"
+            ]
+        },
+        "resourceGroup": {
+            "constraints": {
+                "validations": [
+                    {
+                        "isValid": "[expression for checking]",
+                        "message": "Please select a valid resource group."
+                    }
+                ]
+            },
+            "allowExisting": true
+        },
+        "location": {
+            "label": "Custom label for location",
+            "toolTip": "provide a useful tooltip",
+            "resourceTypes": [
+                "Microsoft.Compute/virtualMachines"
+            ],
+            "allowedValues": [
+                "eastus",
+                "westus2"
+            ],
+            "visible": true
+        }
+    }
+},
 ```
 
 对于 `description` ，请提供用于描述资源的 markdown 的字符串。 支持多行格式和链接。
 
-对于 `location` ，请指定要重写的位置控件的属性。 任何未重写的属性均设置为其默认值。 `resourceTypes`接受包含完全限定的资源类型名称的字符串数组。 Location 选项仅限支持资源类型的区域。  `allowedValues`  接受区域字符串的数组。 下拉列表中仅显示这些区域。您可以设置 `allowedValues`   和  `resourceTypes` 。 结果是这两个列表的交集。 最后， `visible` 属性可用于有条件地或完全禁用位置下拉列表。  
+对于 `location` ，请指定要重写的位置控件的属性。 任何未重写的属性均设置为其默认值。 `resourceTypes` 接受包含完全限定的资源类型名称的字符串数组。 Location 选项仅限支持资源类型的区域。  `allowedValues`  接受区域字符串的数组。 下拉列表中仅显示这些区域。您可以设置 `allowedValues`   和  `resourceTypes` 。 结果是这两个列表的交集。 最后， `visible` 属性可用于有条件地或完全禁用位置下拉列表。  
 
-使用 `subscription` 和 `resourceGroup` 元素可以指定其他验证。 用于指定验证的语法与 "自定义验证"[文本框](microsoft-common-textbox.md)的语法相同。 你还可以 `permission` 在订阅或资源组上指定验证。  
+使用 `subscription` 和 `resourceGroup` 元素可以指定其他验证。 用于指定验证的语法与 "自定义验证" [文本框](microsoft-common-textbox.md)的语法相同。 你还可以 `permission` 在订阅或资源组上指定验证。  
 
 订阅控件接受资源提供程序命名空间的列表。 例如，**可以指定 ""。** 当用户选择不支持资源提供程序的订阅时，它将显示一条错误消息。 如果资源提供程序未在该订阅上注册，并且用户没有注册资源提供程序的权限，则会发生此错误。  
 

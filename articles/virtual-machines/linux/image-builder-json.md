@@ -3,17 +3,17 @@ title: 创建 Azure 映像生成器模板（预览版）
 description: 了解如何创建与 Azure 映像生成器配合使用的模板。
 author: danielsollondon
 ms.author: danis
-ms.date: 08/03/2020
+ms.date: 08/13/2020
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: imaging
 ms.reviewer: cynthn
-ms.openlocfilehash: 2f1db4e6c45602fb7fde84079e8ef78179a4ec6b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 095aa4ddbdc9ceb04c65d8c896642a0f1a91e547
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830336"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205548"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>预览版：创建 Azure 映像生成器模板 
 
@@ -87,7 +87,7 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 
 ## <a name="osdisksizegb"></a>osDiskSizeGB
 
-映像生成器默认不会更改映像的大小，它会使用源映像中的大小。 你**只能**增加操作系统磁盘的大小 (Win 和 Linux) ，这是可选的，值为0表示保留与源映像相同的大小。 不能将 OS 磁盘大小减少到小于源映像的大小。
+映像生成器默认不会更改映像的大小，它会使用源映像中的大小。 你 **只能** 增加操作系统磁盘的大小 (Win 和 Linux) ，这是可选的，值为0表示保留与源映像相同的大小。 不能将 OS 磁盘大小减少到小于源映像的大小。
 
 ```json
  {
@@ -120,7 +120,7 @@ Azure 映像生成器使用一个 .json 文件将信息传入映像生成器服�
 
 ## <a name="identity"></a>标识
 
-必需-若要使映像生成器有权读取/写入映像，请从 Azure 存储中读取脚本，你必须创建一个拥有单个资源权限的 Azure 用户分配的标识。 有关映像生成器权限如何工作的详细信息以及相关步骤，请查看[文档](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)。
+必需-若要使映像生成器有权读取/写入映像，请从 Azure 存储中读取脚本，你必须创建一个拥有单个资源权限的 Azure 用户分配的标识。 有关映像生成器权限如何工作的详细信息以及相关步骤，请查看 [文档](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)。
 
 
 ```json
@@ -151,7 +151,7 @@ API 需要通过一个“SourceType”来定义用于生成映像的源，目前
 
 
 > [!NOTE]
-> 使用现有的 Windows 自定义映像时，可在单个 Windows 映像上运行 Sysprep 命令最多8次，有关详细信息，请参阅[Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)文档。
+> 使用现有的 Windows 自定义映像时，可在单个 Windows 映像上运行 Sysprep 命令最多8次，有关详细信息，请参阅 [Sysprep](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep) 文档。
 
 ### <a name="platformimage-source"></a>PlatformImage 源 
 Azure 映像生成器支持 Windows Server 和客户端以及 Linux Azure 市场映像。有关完整列表，请参阅[此文](../windows/image-builder-overview.md#os-support)。 
@@ -435,7 +435,8 @@ Customize 属性：
 - **filters** -（可选）用于指定一个筛选器来包含或排除更新。
 - **updateLimit** -（可选）定义可安装的更新数，默认值为 1000。
  
- 
+> [!NOTE]
+> 如果有任何未完成的 Windows 重启或仍在运行的应用程序安装，Windows 更新定制器可能会失败，通常您可能会在自定义日志中看到此 `System.Runtime.InteropServices.COMException (0x80240016): Exception from HRESULT: 0x80240016` 错误。 我们强烈建议你在 Windows 重启中添加和/或允许应用程序在运行 Windows 更新之前，使用 [睡眠] 或等待命令 https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep?view=powershell-7) 在内联命令或脚本中 (来完成安装。
 
 ### <a name="generalize"></a>通用化 
 默认情况下，Azure 映像生成器还会在每个映像自定义阶段结束时运行“deprovision”代码，以“通用化”映像。 通用化是设置映像并使其可重复用于创建多个 VM 的过程。 对于 Windows VM，Azure 映像生成器将使用 Sysprep。 对于 Linux，Azure 映像生成器将运行“waagent -deprovision”。 
@@ -590,7 +591,7 @@ Azure 共享映像库是一个新的映像管理服务，可用于管理映像�
 - **type** - sharedImage  
 - **galleryImageId** –共享映像库的 ID，可采用以下两种格式指定：
     * 自动版本控制-映像生成器将为你生成单调版本号，这对于你想要从同一模板中重新生成映像很有用：格式为： `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>` 。
-    * 显式版本控制-可以传入希望映像生成器使用的版本号。 格式为：`/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
+    * 显式版本控制-可以传入希望映像生成器使用的版本号。 格式为： `/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
 
 - **runOutputName** - 用于标识分发的唯一名称。  
 - **artifactTags** -（可选）用户指定的键值对标记。
@@ -658,7 +659,7 @@ az resource invoke-action \
 ### <a name="cancelling-an-image-build"></a>取消映像生成
 如果你运行的是你认为不正确的映像生成，等待用户输入，或者你认为永远不会成功完成，则可以取消生成。
 
-可随时取消生成。 如果分发阶段已开始，你仍可以取消，但你将需要清除可能未完成的任何映像。 "取消" 命令不等待 "取消" 完成，请 `lastrunstatus.runstate` 使用这些状态[命令](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#get-statuserror-of-the-template-submission-or-template-build-status)监视取消进度。
+可随时取消生成。 如果分发阶段已开始，你仍可以取消，但你将需要清除可能未完成的任何映像。 "取消" 命令不等待 "取消" 完成，请 `lastrunstatus.runstate` 使用这些状态 [命令](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#get-statuserror-of-the-template-submission-or-template-build-status)监视取消进度。
 
 
 命令示例 `cancel` ：

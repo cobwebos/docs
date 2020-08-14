@@ -8,23 +8,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 901815ba40459bd50562e557a0a766474c731ce0
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 84bf041f64a2f85f3aa3eada1dc1955c93dc034a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475987"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208193"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>分配给云组的角色疑难解答
 
-下面是在 Azure Active Directory （Azure AD）中为组分配角色时的一些常见问题和疑难解答技巧。
+下面是一些常见问题和疑难解答技巧，用于将角色分配到 Azure Active Directory (Azure AD) 中的组。
 
-**问：** 我是组管理员，但看不**到可以分配给组交换机的 Azure AD 角色**。
+**问：** 我是组管理员，但看不 **到可以分配给组交换机的 Azure AD 角色** 。
 
 **答：** 只有特权角色管理员或全局管理员才能创建适合角色分配的组。 只有这些角色中的用户才会看到此控制。
 
@@ -43,15 +43,15 @@ ms.locfileid: "87475987"
 - [Get-AzureADUserOwnedObject](https://docs.microsoft.com/powershell/module/azuread/get-azureaduserownedobject?view=azureadps-2.0)  
 - [列出 ownedObjects](https://docs.microsoft.com/graph/api/user-list-ownedobjects?view=graph-rest-1.0&tabs=http)
 
-**问：** 能否对可分配到 Azure AD 角色的组创建访问评审（具体而言，将 isAssignableToRole 属性设置为 true 的组）？  
+**问：** 能否对可分配给 Azure AD 角色的组创建访问评审 (具体而言，将 isAssignableToRole 属性设置为 true) 的组？  
 
-**答：** 是的，你可以。 如果你使用的是最新版本的访问评审，则默认情况下，你的审阅者会定向到 "我的访问"，只有全局管理员才能在可分配角色的组上创建访问评审。 但是，如果你使用的是较旧版本的访问评审，则默认情况下，你的审阅者会定向到访问面板，全局管理员和用户管理员可以在可分配角色的组上创建访问评审。 新体验将于7月 28 2020 日推出给所有客户，但是，如果你想要更早升级，请[在访问注册中发出 Azure AD 访问评审-已更新的审阅者体验](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5dv-S62099HtxdeKIcgO-NUOFJaRDFDWUpHRk8zQ1BWVU1MMTcyQ1FFUi4u)的请求。
+**答：** 是的，你可以。 如果你使用的是最新版本的访问评审，则默认情况下，你的审阅者会定向到 "我的访问"，只有全局管理员才能在可分配角色的组上创建访问评审。 但是，如果你使用的是较旧版本的访问评审，则默认情况下，你的审阅者会定向到访问面板，全局管理员和用户管理员可以在可分配角色的组上创建访问评审。 新体验将于7月 28 2020 日推出给所有客户，但是，如果你想要更早升级，请 [在访问注册中发出 Azure AD 访问评审-已更新的审阅者体验](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5dv-S62099HtxdeKIcgO-NUOFJaRDFDWUpHRk8zQ1BWVU1MMTcyQ1FFUi4u)的请求。
 
 **问：** 是否可以创建访问包并将可以分配给 Azure AD 角色的组添加到其中？
 
 **答：** 是的，你可以。 全局管理员和用户管理员可以将任何组放在访问包中。 全局管理员没有任何更改，但用户管理员角色权限略有变化。 若要将角色分配的组放入访问包，你必须是用户管理员，并且还必须是角色可分配的组的所有者。 下面是显示了哪些用户可以在企业许可证管理中创建访问包的完整表：
 
-Azure AD 目录角色 | 权利管理角色 | 可以添加安全组\* | 可以添加 Office 365 组\* | 可以添加应用 | 可以添加 SharePoint Online 站点
+Azure AD 目录角色 | 权利管理角色 | 可以添加安全组\* | 可以添加 Microsoft 365 组\* | 可以添加应用 | 可以添加 SharePoint Online 站点
 ----------------------- | --------------------------- | ----------------------- | ------------------------- | ----------- |  -----------------------------
 全局管理员 | 不适用 | ✔️ | ✔️ | ✔️  | ✔️
 用户管理员  | 不适用  | ✔️  | ✔️  | ✔️
@@ -69,30 +69,30 @@ SharePoint 管理员 | 目录所有者 | &nbsp; | ✔️  | &nbsp;  | ✔️
 
 **答：** 此答案仅适用于 Azure AD Premium P1 组织。
 
-1. 登录到[Azure 门户](https://portal.azure.com)并打开**Azure Active Directory**。
+1. 登录到 [Azure 门户](https://portal.azure.com) 并打开 **Azure Active Directory**。
 1. 选择 "用户" 并打开一个用户配置文件。
-1. 选择 "**分配的角色**"。
+1. 选择 " **分配的角色**"。
 1. 选择齿轮图标。 此时会打开一个窗格，可给出此信息。 直接分配旁边有 "删除" 按钮。 若要删除间接角色分配，请从已分配角色的组中删除用户。
 
 **问：** 如何实现查看所有可分配角色的组？
 
 **答：** 请按照以下步骤操作：
 
-1. 登录到[Azure 门户](https://portal.azure.com)并打开**Azure Active Directory**。
+1. 登录到 [Azure 门户](https://portal.azure.com) 并打开 **Azure Active Directory**。
 1. 选择 "**组**" "  >  **所有组**"。
-1. 选择 "**添加筛选器**"。
-1. 筛选为可**分配的角色**。
+1. 选择 " **添加筛选器**"。
+1. 筛选为可 **分配的角色**。
 
 **问：** 如何实现知道哪个角色直接和间接分配到了某个主体？
 
 **答：** 请按照以下步骤操作：
 
-1. 登录到[Azure 门户](https://portal.azure.com)并打开**Azure Active Directory**。
+1. 登录到 [Azure 门户](https://portal.azure.com) 并打开 **Azure Active Directory**。
 1. 选择 "用户" 并打开一个用户配置文件。
-1. 选择 "**分配的角色**"，然后：
+1. 选择 " **分配的角色**"，然后：
 
     - 在 Azure AD Premium P1 许可组织：选择齿轮图标。 此时会打开一个窗格，可给出此信息。
-    - 在 Azure AD Premium P2 授权组织中：你将在 "**成员身份**" 列中找到直接和继承的许可证信息。
+    - 在 Azure AD Premium P2 授权组织中：你将在 " **成员身份** " 列中找到直接和继承的许可证信息。
 
 **问：** 我们为何强制创建新的云组来将其分配给角色？  
 
@@ -101,4 +101,4 @@ SharePoint 管理员 | 目录所有者 | &nbsp; | ✔️  | &nbsp;  | ✔️
 ## <a name="next-steps"></a>后续步骤
 
 - [使用云组来管理角色分配](roles-groups-concept.md)
-- [创建角色分配的组](roles-groups-create-eligible.md)
+- [创建可分配角色的组](roles-groups-create-eligible.md)

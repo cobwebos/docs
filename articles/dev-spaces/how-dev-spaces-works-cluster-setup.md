@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: 描述如何为 Azure Dev Spaces 设置 Azure Kubernetes 服务群集
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: 60f6c466e7c016ccd07e37b2f0d1ce9989fb8f9f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 41b955fac7abcc700d73d8ace601f80982b2253d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995881"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207952"
 ---
 # <a name="how-setting-up-a-cluster-for-azure-dev-spaces-works"></a>如何为 Azure Dev Spaces 设置群集
 
@@ -19,8 +19,6 @@ Azure Dev Spaces 为你提供了多种方法来快速循环访问和调试 Kuber
 ## <a name="prepare-your-aks-cluster"></a>准备 AKS 群集
 
 若要为 Dev Spaces 准备 AKS 群集，请验证 AKS 群集位于 [Azure Dev Spaces 支持的][supported-regions]区域中，并且你正在运行 Kubernetes 1.10.3 或更高版本。 可以通过运行从 Azure CLI 启用 Azure Dev Spaces `az aks use-dev-spaces` 。
-
-有关为 Dev Spaces 设置 AKS 群集的示例，请参阅[团队开发快速入门][quickstart-team]。
 
 在 AKS 群集上启用 Azure Dev Spaces 时，它将为群集安装控制器。 控制器位于 AKS 群集外部， 并且驱动客户端工具与 AKS 群集之间的行为和通信。 启用控制器后，你便可以使用客户端工具与控制器进行交互。
 
@@ -92,10 +90,8 @@ Kubernetes Webhook 许可服务器侦听在 AKS 群集中创建的任何新 Pod�
 
 若要了解有关使用客户端工具在开发空间中准备和运行代码的更多信息，请参阅[如何为 Azure Dev Spaces 准备项目][how-it-works-prep]。
 
-若要开始使用 Azure Dev Spaces 进行团队开发，请参阅 [Azure Dev Spaces 中的团队开发][quickstart-team]快速入门。
 
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md
 [how-it-works-up]: how-dev-spaces-works-up.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[quickstart-team]: quickstart-team-development.md

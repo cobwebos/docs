@@ -1,18 +1,18 @@
 ---
 title: 将混合计算机大规模连接到 Azure
-description: 本文介绍如何使用 Azure Arc for servers（预览版）通过服务主体将计算机连接到 Azure。
+description: 本文介绍如何使用支持 Azure Arc 的服务器 (预览版) 使用服务主体将计算机连接到 Azure。
 ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0f599ae6bab8a2b1ce442df677ba5de206d11ab2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 07266ce7fb9579e1d4fb1b65394e0b7fdf7aa13d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121810"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211410"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>将混合计算机大规模连接到 Azure
 
-你可以根据自己的需求，使用多个灵活的选项，为环境中的多个 Windows 或 Linux 计算机启用 Azure Arc for servers（预览版）。 使用我们提供的模板脚本，可以自动完成每个安装步骤，包括与 Azure Arc 建立连接。但是，必须使用在目标计算机和 Azure 中拥有提升权限的帐户以交互方式执行此脚本。 若要将计算机连接到 Azure Arc for servers，可以使用 Azure Active Directory [服务主体](../../active-directory/develop/app-objects-and-service-principals.md)，而不要使用特权标识[以交互方式连接计算机](onboard-portal.md)。 服务主体是一种特殊的受限管理标识，它只被授予了使用 `azcmagent` 命令将计算机连接到 Azure 所需的最低权限。 这比使用较高特权的帐户（例如租户管理员）更安全，并且可以遵循我们的访问控制安全性最佳做法。 服务主体只会在加入期间使用，不会用于任何其他目的。  
+你可以在环境中启用启用了 Azure Arc 的服务器 (预览) ，其中包含几个灵活的选项，具体取决于你的要求。 使用我们提供的模板脚本，可以自动完成每个安装步骤，包括与 Azure Arc 建立连接。但是，必须使用在目标计算机和 Azure 中拥有提升权限的帐户以交互方式执行此脚本。 若要将计算机连接到已启用 Azure Arc 的服务器 (预览版) ，可以使用 Azure Active Directory [服务主体](../../active-directory/develop/app-objects-and-service-principals.md) ，而不是使用特权标识以 [交互方式连接计算机](onboard-portal.md)。 服务主体是一种特殊的受限管理标识，它只被授予了使用 `azcmagent` 命令将计算机连接到 Azure 所需的最低权限。 这比使用较高特权的帐户（例如租户管理员）更安全，并且可以遵循我们的访问控制安全性最佳做法。 服务主体只会在加入期间使用，不会用于任何其他目的。  
 
 安装和配置 Connected Machine 代理的安装方法要求你在计算机上拥有管理员权限。 在 Linux 上，需使用 root 帐户；在 Windows 上，需要以“本地管理员组”的成员身份使用这些方法。
 
@@ -20,7 +20,7 @@ ms.locfileid: "88121810"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-此过程结束时，即已成功将混合计算机连接到 Azure Arc for servers。
+在此过程结束时，已成功将混合计算机连接到已启用 Azure Arc 的服务器 (预览) 。
 
 ## <a name="create-a-service-principal-for-onboarding-at-scale"></a>创建服务主体以用于大规模加入
 
@@ -133,7 +133,7 @@ azcmagent connect \
 >[!NOTE]
 >若要运行**azcmagent**，必须具有 Linux 计算机上的*根*访问权限。
 
-安装代理并将其配置为连接到 Azure Arc for servers（预览版）后，请转到 Azure 门户，以验证是否已成功连接服务器。 在 [Azure 门户](https://aka.ms/hybridmachineportal)中查看计算机。
+安装代理并将其配置为连接到已启用 Azure Arc 的服务器 (预览) ，请参阅 Azure 门户，验证服务器是否已成功连接。 在 [Azure 门户](https://aka.ms/hybridmachineportal)中查看计算机。
 
 ![服务器连接成功](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 
