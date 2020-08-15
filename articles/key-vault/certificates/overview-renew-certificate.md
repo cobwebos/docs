@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: beea6f7472d6bc871b4a2df323445b05671a621f
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: bbd65cdfc7c8ebbc08b914158577337cc49ec887
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/14/2020
-ms.locfileid: "88224554"
+ms.locfileid: "88236057"
 ---
 # <a name="about-azure-key-vault-certificate-renewal"></a>关于 Azure Key Vault 证书续订
 
@@ -64,7 +64,7 @@ Azure 密钥保管库为其用户提供从任何 CA 导入证书的好处，使�
   创建有效期为1个月的证书，然后将旋转的生命时间操作设置为1%。 此设置将在7.2 小时内轮替证书。
   
 * 自动续订证书后是否复制标记？
-  不会，除非用户手动复制标记本身，否则标记不会复制。
+  是的，将在自动续订后复制标记。
 
 ### <a name="see-also"></a>另请参阅
 *   [将 Key Vault 与 DigiCert 证书颁发机构集成](how-to-integrate-certificate-authority.md)

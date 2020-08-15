@@ -1,6 +1,6 @@
 ---
 title: Azure Windows 虚拟机上的 SQL Server 概述 | Microsoft Docs
-description: 了解如何在 Azure 虚拟机上运行完整版本的 SQL Server。
+description: 了解如何在云中的 Azure 虚拟机上运行完整版的 SQL Server，无需管理任何本地硬件。
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 161722d1f80e4bada35548b4e2b4e903c56215ec
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 4bf5b9b6f683783a39b7d34c430f1c6671c35885
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926683"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236363"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure 虚拟机 (Windows) 上的 SQL Server 是什么？
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -77,7 +77,7 @@ Azure 虚拟机提供的虚拟机大小取决于工作负荷需求。 SQL Server
 ### <a name="bring-your-own-license"></a><a id="BYOL"></a> 自带许可
 也可以自带许可 (BYOL)。 在此方案中，你只需支付 VM 费用，SQL Server 许可不需要任何额外的费用。  自带许可证长时间会节省资金，因为可以持续使用生产型工作负荷。 有关使用此选项的要求，请参阅 [SQL Server Azure VM 定价指南](pricing-guidance.md#byol)。
 
-若要自带许可证，可以转换现有的按用量付费的 SQL Server VM，也可以部署前缀为 {BYOL} 的映像。 若要详细了解如何在按使用量付费和 BYOL 之间切换许可模式，请参阅[如何更改 SQL Server VM 的许可模式](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
+若要自带许可证，可以转换现有的按用量付费的 SQL Server VM，也可以部署前缀为 {BYOL} 的映像。 若要详细了解如何在按使用量付费和 BYOL 之间切换许可模式，请参阅 [如何更改 SQL Server VM 的许可模式](licensing-model-azure-hybrid-benefit-ahb-change.md)。 
 
 | 版本 | 操作系统 | 版本 |
 | --- | --- | --- |
@@ -128,7 +128,7 @@ Azure 门户提供了一个页面，可以在其中管理[所有 Azure SQL 资�
 - [创建托管实例](../../managed-instance/instance-create-quickstart.md)
 - [创建 SQL Server 虚拟机](sql-vm-create-portal-quickstart.md)
 
-## <a name="sql-server-vm-image-refresh-policy"></a><a id="lifecycle"></a>SQL Server VM 映像刷新策略
+## <a name="sql-server-vm-image-refresh-policy"></a><a id="lifecycle"></a> SQL Server VM 映像刷新策略
 对于每种支持的操作系统和版本的组合，Azure 只保留一个虚拟机映像。 这意味着，随着时间的推移，映像会进行刷新，旧映像会被删除。 有关详细信息，请参阅[SQL Server VM 常见问题解答](frequently-asked-questions-faq.md#images)的“映像”部分。
 
 ## <a name="customer-experience-improvement-program-ceip"></a>客户体验改善计划 (CEIP)

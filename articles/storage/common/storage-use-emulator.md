@@ -7,19 +7,19 @@ ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: e50c1e3efc33fb761068b3009979079b2ba4b760
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 3bef3ba1e993d91fee8b6f6ef2734f008c91d1a1
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447145"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236822"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 存储模拟器进行开发和测试
 
 Microsoft Azure 存储模拟器是一种用于模拟 Azure Blob、队列和表服务以进行本地开发的工具。 可以在本地针对存储服务测试应用程序，而无需创建 Azure 订阅且不会产生任何费用。 如果对应用程序在模拟器中的工作情况感到满意，则可以切换到在云中使用 Azure 存储帐户。
 
 > [!IMPORTANT]
-> Azure 存储模拟器不再处于活动状态。 [**Azurite**](storage-use-azurite.md)是要转发的存储模拟器平台。 Azurite 取代了 Azure 存储仿真器。 Azurite 将持续更新，以支持最新版本的 Azure 存储 API。 有关详细信息，请参阅[**将 Azurite 模拟器用于本地 Azure 存储开发**](storage-use-azurite.md)。
+> Azure 存储模拟器不再处于活动状态。 [**Azurite**](storage-use-azurite.md) 是要转发的存储模拟器平台。 Azurite 取代了 Azure 存储仿真器。 Azurite 将持续更新，以支持最新版本的 Azure 存储 API。 有关详细信息，请参阅 [**将 Azurite 模拟器用于本地 Azure 存储开发**](storage-use-azurite.md)。
 
 ## <a name="get-the-storage-emulator"></a>获取存储模拟器
 
@@ -51,7 +51,7 @@ Microsoft Azure 存储模拟器是一种用于模拟 Azure Blob、队列和表�
 存储模拟器启动时，会显示“命令提示符”窗口。 可以使用此控制台窗口启动和停止存储模拟器。 还可以从命令提示符清除数据、获取状态和初始化模拟器。 有关详细信息，请参阅本文后面的[存储模拟器命令行工具参考](#storage-emulator-command-line-tool-reference)部分。
 
 > [!NOTE]
-> 如果在系统上运行其他存储模拟器 (如 Azurite), 则 Azure 存储模拟器可能无法正常启动。
+> 如果在系统上运行其他存储模拟器（如 Azurite），则 Azure 存储模拟器可能无法正常启动。
 
 运行模拟器时，在 Windows 任务栏通知区域中会显示一个图标。
 
@@ -182,12 +182,12 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 若要查看选项列表，请在命令提示符下键入 `/help`。
 
-| 选项 | 描述 | 命令 | 自变量 |
+| 选项 | 说明 | 命令 | 自变量 |
 | --- | --- | --- | --- |
 | **启动** |启动存储模拟器。 |`AzureStorageEmulator.exe start [-inprocess]` |*-* 重新处理：在当前进程中启动模拟器，而不是创建新进程。 |
 | **Stop** |停止存储模拟器。 |`AzureStorageEmulator.exe stop` | |
 | **Status** |打印存储模拟器的状态。 |`AzureStorageEmulator.exe status` | |
-| **清除** |清除命令行上指定的所有服务中的数据。 |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob*：清除 blob 数据。 <br/>*queue*：清除队列数据。 <br/>*table*：清除表数据。 <br/>*all*：清除所有服务中的所有数据。 |
+| **Clear** |清除命令行上指定的所有服务中的数据。 |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob*：清除 blob 数据。 <br/>*queue*：清除队列数据。 <br/>*table*：清除表数据。 <br/>*all*：清除所有服务中的所有数据。 |
 | **Init** |执行一次性初始化以设置模拟器。 |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName*：指定托管 SQL 实例的服务器。 <br/>*-sqlinstance instanceName*：指定要在默认服务器实例中使用的 SQL 实例的名称。 <br/>*-forcecreate*：强制创建 SQL 数据库，即使它已存在。 <br/>*-skipcreate*：跳过创建 SQL 数据库的步骤。 此命令优先于 -forcecreate。<br/>*-reserveports*：尝试保留与服务关联的 HTTP 端口。<br/>*-unreserveports*：尝试取消预留与服务关联的 HTTP 端口。 此命令优先于 -reserveports。<br/>*-inprocess*：在当前进程中执行初始化，而不是生成新的进程。 如果更改端口预留，必须使用提升的权限启动当前进程。 |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>存储模拟器与 Azure 存储之间的差异

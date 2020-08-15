@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 03/19/2020
 ms.author: kenwith
-ms.openlocfilehash: ef4fbf582baf1e4b81d49c81a8b0e16674e64841
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e34656d6ce515cabe955c101f7b52ac0f2ade8db
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781716"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235811"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>操作说明：导出预配配置并回滚到已知的良好状态
 
@@ -30,26 +30,26 @@ ms.locfileid: "84781716"
 
 导出配置：
 
-1. 在 [Azure 门户](https://portal.azure.com/)的左侧导航面板中，选择“Azure Active Directory”。****
-1. 在 " **Azure Active Directory** " 窗格中，选择 "**企业应用程序**"，然后选择你的应用程序。
-1. 在左侧导航窗格中，选择 "**设置**"。 在 "设置配置" 页上，单击 "**属性映射**"，然后单击 "**显示高级选项**"，最后**检查架构**。 这会将你转到 "架构编辑器"。
+1. 在 [Azure 门户](https://portal.azure.com/)的左侧导航面板中，选择“Azure Active Directory”。
+1. 在 " **Azure Active Directory** " 窗格中，选择 " **企业应用程序** "，然后选择你的应用程序。
+1. 在左侧导航窗格中，选择 " **设置**"。 在 "设置配置" 页上，单击 " **属性映射**"，然后单击 " **显示高级选项**"，最后 **检查架构**。 这会将你转到 "架构编辑器"。
 1. 在页面顶部的命令栏中单击 "下载"，下载架构。
 
 ### <a name="disaster-recovery---roll-back-to-a-known-good-state"></a>灾难恢复-回退到已知的良好状态
 
 导出和保存配置使你可以回滚到配置的以前版本。 建议导出预配配置并将其保存，以便在以后对属性映射或范围筛选器进行更改时使用。 只需打开上面步骤中下载的 JSON 文件，复制 JSON 文件的全部内容，在架构编辑器中替换 JSON 有效负载的全部内容，然后保存。 如果有活动的预配周期，则它将完成，下一个周期将使用更新后的架构。 下一个周期还将是一个初始周期，它根据新配置重新评估每个用户和组。 回滚到以前的配置时，请注意以下事项：
 
-- 将再次评估用户以确定它们是否应在范围内。 如果范围筛选器更改了某个用户不在范围内，则将禁用这些筛选器。 虽然在大多数情况下这是所需的行为，但有时你可能需要防止这种情况，并且可以使用[跳过范围删除](https://docs.microsoft.com/azure/active-directory/app-provisioning/skip-out-of-scope-deletions)功能。 
-- 更改预配配置将重新启动该服务，并触发[初始周期](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#provisioning-cycles-initial-and-incremental)。
+- 将再次评估用户以确定它们是否应在范围内。 如果范围筛选器更改了某个用户不在范围内，则将禁用这些筛选器。 虽然在大多数情况下这是所需的行为，但有时你可能需要防止这种情况，并且可以使用 [跳过范围删除](./skip-out-of-scope-deletions.md) 功能。 
+- 更改预配配置将重新启动该服务，并触发 [初始周期](./how-provisioning-works.md#provisioning-cycles-initial-and-incremental)。
 
 ## <a name="export-and-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>使用 Microsoft Graph API 导出和导入预配配置
 
 你可以使用 Microsoft Graph API 和 Microsoft Graph 资源管理器将用户预配属性映射和架构导出到 JSON 文件，然后将其导入回 Azure AD 中。 你还可以使用此处捕获的步骤来创建预配配置的备份。
 
-### <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>步骤1：检索预配应用服务主体 ID （对象 ID）
+### <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>步骤1：检索预配应用服务主体 ID (对象 ID) 
 
-1. 启动[Azure 门户](https://portal.azure.com)，并导航到预配应用程序的 "属性" 部分。 例如，如果要将*Workday 导出到 AD 用户预配应用程序*映射，请导航到该应用的属性部分。
-1. 在预配应用的“属性”部分中，复制与“对象 ID”字段关联的 GUID 值**。 此值也称为应用的**ServicePrincipalId** ，它将用于 Microsoft Graph 资源管理器操作。
+1. 启动 [Azure 门户](https://portal.azure.com)，并导航到预配应用程序的 "属性" 部分。 例如，如果要将 *Workday 导出到 AD 用户预配应用程序* 映射，请导航到该应用的属性部分。
+1. 在预配应用的“属性”部分中，复制与“对象 ID”字段关联的 GUID 值**。 此值也称为应用的 **ServicePrincipalId** ，它将用于 Microsoft Graph 资源管理器操作。
 
    ![Workday 应用服务主体 ID](./media/export-import-provisioning-configuration/wd_export_01.png)
 
@@ -103,4 +103,4 @@ ms.locfileid: "84781716"
 
    [![请求标头](./media/export-import-provisioning-configuration/wd_export_05.png)](./media/export-import-provisioning-configuration/wd_export_05.png#lightbox)
 
-选择 "**运行查询**" 以导入新架构。
+选择 " **运行查询** " 以导入新架构。

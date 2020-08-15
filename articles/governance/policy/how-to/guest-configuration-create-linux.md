@@ -3,12 +3,12 @@ title: 如何创建适用于 Linux 的来宾配置策略
 description: 了解如何创建适用于 Linux 的 Azure Policy 来宾配置策略。
 ms.date: 03/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 5ce6dce034c9479924901e5a20b38c343dd8bac6
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: fef5bdea1b7f98e19f9f8ee8bc9bce8553107fda
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026706"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236584"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何创建适用于 Linux 的来宾配置策略
 
@@ -51,6 +51,10 @@ ms.locfileid: "86026706"
 - macOS
 - Windows
 
+> [!NOTE]
+> Cmdlet "GuestConfigurationPackage" 需要 OpenSSL 版本1.0，因为对 OMI 有依赖关系。
+> 这会导致 OpenSSL 1.1 或更高版本的任何环境出现错误。
+
 来宾配置资源模块需要以下软件：
 
 - PowerShell 6.2 或更高版本。 若尚未安装，请遵循[这些说明](/powershell/scripting/install/installing-powershell)。
@@ -81,7 +85,7 @@ ms.locfileid: "86026706"
 
 #### <a name="configuration-requirements"></a>配置要求
 
-自定义配置的名称必须在所有位置都保持一致。 内容包的 .zip 文件的名称、MOF 文件中的配置名称以及 Azure 资源管理器模板（ARM 模板）中的来宾分配名称必须相同。
+自定义配置的名称必须在所有位置都保持一致。 内容包的 .zip 文件名称、MOF 文件中的配置名称，以及 Azure 资源管理器模板（ARM 模板）中的来宾分配名称必须相同。
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux 上的自定义来宾配置
 
@@ -260,6 +264,8 @@ $uri = publish `
 - **版本**：策略版本。
 - **路径**：在其中创建策略定义的目标路径。
 - Platform：来宾配置策略和内容包的目标平台 (Windows/Linux)。
+- Tag 向策略定义添加一个或多个标记筛选器
+- Category 在策略定义中设置类别元数据字段
 
 下面的示例在自定义策略包的指定路径中创建策略定义：
 
@@ -280,15 +286,7 @@ New-GuestConfigurationPolicy `
 - deployIfNotExists.json
 - Initiative.json
 
-cmdlet 输出返回一个对象，其中包含策略文件的计划显示名称和路径。
-
-> [!Note]
-> 最新的来宾配置模块包含新参数：
-> - Tag 向策略定义添加一个或多个标记筛选器
->   - 请参阅[使用标记筛选来宾配置策略](#filtering-guest-configuration-policies-using-tags)部分。
-> - Category 在策略定义中设置类别元数据字段
->   - 如果不包含此参数，类别默认为“来宾配置”。
-> 这些功能目前处于预览状态，需要来宾配置模块版本 1.20.1（可以使用 `Install-Module GuestConfiguration -AllowPrerelease` 来安装）。
+cmdlet 输出中会返回一个对象，其中包含策略文件的计划显示名称和路径。
 
 最后，使用 `Publish-GuestConfigurationPolicy` cmdlet 发布策略定义。
 cmdlet 只有 Path 参数，此参数指向 `New-GuestConfigurationPolicy` 创建的 JSON 文件的位置。
@@ -347,7 +345,7 @@ describe file(attr_path) do
 end
 ```
 
-Cmdlet `New-GuestConfigurationPolicy` 并 `Test-GuestConfigurationPolicyPackage` 包括一个名为**参数**的参数。 此参数需要使用包含每个参数的所有详细信息的哈希表，并自动创建用于创建每个 Azure Policy 定义的文件的所有必需部分。
+cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包含名为“Parameter”的参数。 此参数需要使用包含每个参数的所有详细信息的哈希表，并自动创建用于创建每个 Azure Policy 定义的文件的所有必需部分。
 
 下面的示例创建策略定义来审核文件路径，其中用户在策略分配时提供路径。
 
@@ -404,9 +402,6 @@ Configuration AuditFilePathExists
 
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>使用标记筛选来宾配置策略
-
-> [!Note]
-> 此功能目前处于预览状态，需要来宾配置模块版本 1.20.1（可以使用 `Install-Module GuestConfiguration -AllowPrerelease` 来安装）。
 
 来宾配置模块中由 cmdlet 创建的策略可以视需要选择包括标记筛选器。 `New-GuestConfigurationPolicy` 的 -Tag 参数支持包含各个标记条目的哈希表数组。 标记会被添加到策略定义的 `If` 部分，并且不能通过策略分配进行修改。
 

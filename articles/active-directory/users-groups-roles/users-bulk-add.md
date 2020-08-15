@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 04/27/2020
+ms.date: 08/11/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f603623e2b47a8ac1a8530880e10c919f63b66c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d4cb24a89d19abb753e2be704dbad7fd5b2ddcad
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423603"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236550"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>在 Azure Active Directory 中批量创建用户
 
@@ -34,12 +34,15 @@ Azure Active Directory (Azure AD) 支持批量用户创建和删除操作，并�
 
 ![用于上传和调出的电子表格，说明了每一行和每一列的用途和值](./media/users-bulk-add/create-template-example.png)
 
+> [!WARNING]
+> 如果尝试仅在 CSV 模板中添加一个条目，则必须保留第3行并将新条目添加到第4行。 
+
 ### <a name="csv-template-structure"></a>CSV 模板结构
 
 下载的 CSV 模板中的行如下所示：
 
 - **版本号**：包含版本号的第一行必须包含在上传的 CSV 中。
-- 列标题：列标题的格式为：&lt;项名称&gt; [PropertyName] &lt;必需或空白&gt;。 例如，`Name [displayName] Required` 。 某些较旧版本的模板可能会略有不同。
+- 列标题：列标题的格式为：&lt;项名称&gt; [PropertyName] &lt;必需或空白&gt;。 例如，`Name [displayName] Required`。 某些较旧版本的模板可能会略有不同。
 - 示例行：我们已经在模板中包含了一行示例，说明每列可接受的值。 必须删除示例行并将其替换为你自己的项。
 
 ### <a name="additional-guidance"></a>其他指南
@@ -48,7 +51,7 @@ Azure Active Directory (Azure AD) 支持批量用户创建和删除操作，并�
 - 所需的列会先列出。
 - 建议不要将新列添加到模板。 所添加的任何其他列都会被忽略，不进行处理。
 - 建议尽可能经常下载 CSV 模板的最新版本。
-- 请确保检查任何字段前面/后面没有任何意外的空格。 对于**用户主体名称**，具有此类空格会导致导入失败。
+- 请确保检查任何字段前面/后面没有任何意外的空格。 对于 **用户主体名称**，具有此类空格会导致导入失败。
 
 ## <a name="to-create-users-in-bulk"></a>批量创建用户
 

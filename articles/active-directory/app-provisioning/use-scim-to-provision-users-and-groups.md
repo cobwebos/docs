@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 38973e5484ece0b47e2f81ad78c716b5ee49cead
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 70938bf1dcd06ce9936767c66ffead0f8627c5a7
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829690"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235462"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>使用 Azure AD 生成 SCIM 终结点并配置用户预配
 
@@ -751,7 +751,7 @@ Azure AD 预配服务当前在 AzureActiveDirectory 和 AzureActiveDirectoryDoma
 
 既然你已设计了架构并了解了 Azure AD SCIM 实现，现在可以开始开发 SCIM 终结点了。 可以依赖于由 SCIM 社区发布的许多开源 SCIM 库，而不必从头开始完全靠自己构建实现。
 
-Azure AD 预配团队发布的开源 .NET Core [参考代码](https://aka.ms/SCIMReferenceCode)就是其中一种可以立即开始进行开发的资源。 生成 SCIM 终结点之后，你将需要对其进行测试。可以使用作为参考代码一部分提供的 [postman 测试](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)集合，也可以运行[上面](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations)提供的示例请求/响应。  
+Azure AD 预配团队发布的开源 .NET Core [参考代码](https://aka.ms/SCIMReferenceCode)就是其中一种可以立即开始进行开发的资源。 生成 SCIM 终结点之后，你将需要对其进行测试。可以使用作为参考代码一部分提供的 [postman 测试](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)集合，也可以运行[上面](#user-operations)提供的示例请求/响应。  
 
    > [!Note]
    > 该参考代码按“原样”提供，旨在帮助你开始生成 SCIM 终结点。 欢迎社区供稿，以帮助构建和维护代码。
@@ -799,7 +799,7 @@ SCIM 服务必须具有 HTTP 地址和服务器身份验证证书，其中的根
 * Microsoft.SCIM.WebHostSample： https://localhost:5001
 * IIS Express： https://localhost:44359/
 
-有关 ASP.NET Core 中 HTTPS 的详细信息，请使用以下链接：[在 ASP.NET Core 中强制使用 HTTPS](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl)
+有关 ASP.NET Core 中 HTTPS 的详细信息，请使用以下链接：[在 ASP.NET Core 中强制使用 HTTPS](/aspnet/core/security/enforcing-ssl)
 
 ### <a name="handling-endpoint-authentication"></a>处理终结点身份验证
 
@@ -918,7 +918,7 @@ https://docs.microsoft.com/aspnet/core/fundamentals/environments)
 Azure Active Directory `externalId` 在 Azure AD 中查询其属性值与用户的 mailNickname 属性值相匹配的用户的服务。 查询以类似此例的超文本传输协议 (HTTP) 请求形式表示，其中，jyoung 是 Azure Active Directory 中某个用户的 mailNickname 示例。
 
 >[!NOTE]
-> 这只是一个示例。 并非所有用户都具有 mailNickname 属性，并且该用户具有的值可能不是目录中的唯一值。 此外，用于匹配的属性 (在此情况下 `externalId`) 可在[Azure AD 属性映射](customize-application-attributes.md)中进行配置。
+> 这只是一个示例。 并非所有用户都具有 mailNickname 属性，并且该用户具有的值可能不是目录中的唯一值。 此外，用于匹配的属性 (在此情况下 `externalId`) 可在 [Azure AD 属性映射](customize-application-attributes.md)中进行配置。
 
 ```
 GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
@@ -1168,12 +1168,12 @@ GET https://.../scim/Users?filter=externalId eq jyoung HTTP/1.1
 
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>步骤 5：将应用程序发布到 Azure AD 应用程序库
 
-如果要构建将由多个租户使用的应用程序，则可以将其置于 Azure AD 应用程序库。 这样，组织就可以轻松发现应用程序和配置预配。 轻松地在 Azure AD 库中发布应用并将预配提供给其他人。 在[此处](../develop/howto-app-gallery-listing.md)查看步骤。 Microsoft 将与你合作，将应用程序集成到库中、测试终结点，并发布上架[文档](../saas-apps/tutorial-list.md)供客户使用。 
+如果要构建将由多个租户使用的应用程序，则可以将其置于 Azure AD 应用程序库。 这样，组织就可以轻松发现应用程序和配置预配。 轻松地在 Azure AD 库中发布应用并将预配提供给其他人。 在[此处](../azuread-dev/howto-app-gallery-listing.md)查看步骤。 Microsoft 将与你合作，将应用程序集成到库中、测试终结点，并发布上架[文档](../saas-apps/tutorial-list.md)供客户使用。 
 
 ### <a name="gallery-onboarding-checklist"></a>库上架清单
 请按照下面的清单进行操作，以确保应用程序能够快速上架，并且客户可以享受顺畅的部署体验。 当上架到库时，系统将向你收集相关信息。 
 > [!div class="checklist"]
-> * 支持 [SCIM 2.0](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-2-understand-the-azure-ad-scim-implementation) 用户和组终结点（仅需要其中一项支持，但建议同时确保这两项支持）
+> * 支持 [SCIM 2.0](#step-2-understand-the-azure-ad-scim-implementation) 用户和组终结点（仅需要其中一项支持，但建议同时确保这两项支持）
 > * 支持每个租户每秒至少 25 个请求（必需）
 > * 确定工程和支持联系人，以便在上架到库后为客户提供指导（必需）
 > * 3 个应用程序的未过期测试凭据（必需）

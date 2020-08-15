@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 4831a084153c28576cca7c40dfefeb8c5ff3c4e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 299bbfa31584b260f85dfa7bafddea268084f876
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036380"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235156"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>尝试通过远程桌面连接到 Azure VM 时发生内部错误
 
@@ -55,13 +55,13 @@ ms.locfileid: "87036380"
 
 #### <a name="step-1-check-the-rdp-port"></a>步骤 1：检查 RDP 端口
 
-1. 在 PowerShell 实例中，使用 [NETSTAT](/windows-server/administration/windows-commands/netstat) 检查端口 8080 是否被其他应用程序占用：
+1. 在 PowerShell 实例中，使用 [NETSTAT](/windows-server/administration/windows-commands/netstat) 检查端口3389是否由其他应用程序使用：
 
     ```powershell
     Netstat -anob |more
     ```
 
-2. 如果 Termservice.exe 正在使用端口 8080，请转到步骤 2。 如果除 Termservice.exe 以外的其他服务或应用程序正在使用端口 8080，请执行以下步骤：
+2. 如果 Termservice.exe 使用3389端口，请跳到步骤2。 如果 Termservice.exe 的其他服务或应用程序使用3389端口，请执行以下步骤：
 
     1. 停止正在使用 3389 服务的应用程序的服务：
 

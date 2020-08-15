@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
-ms.openlocfilehash: 1e858f1141ade52a1872d8a9822f515796d9182c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1765c6a7d19a11730567acd5e41deebc0a20cec2
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781950"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235802"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>使用范围筛选器进行基于属性的应用程序预配
 本文的目的是说明如何使用范围筛选器定义基于属性的规则，用于确定哪些用户将预配到应用程序。
@@ -86,15 +86,15 @@ ms.locfileid: "84781950"
 
    f. **不为 NULL**。 如果评估的属性不为空，则子句返回“true”。
 
-   如， **REGEX MATCH**。 如果评估的属性与正则表达式模式匹配，则子句返回“true”。 示例：([1-9][0-9]) 与介于 10 和 99 之间的任意数字匹配。
+   g. **REGEX MATCH**。 如果评估的属性与正则表达式模式匹配，则子句返回“true”。 示例：([1-9][0-9]) 与介于 10 和 99 之间的任意数字匹配。
 
-   h.如果该值不存在，请单击“添加行”。 **NOT REGEX MATCH**。 如果评估的属性与正则表达式模式不匹配，则子句返回“true”。
+   h. **NOT REGEX MATCH**。 如果评估的属性与正则表达式模式不匹配，则子句返回“true”。
    
    i. **Greater_Than。** 如果计算的属性大于值，则子句返回 "true"。 作用域筛选器上指定的值必须为整数，并且用户上的属性必须是整数 [0，1，2,...]。 
    
    j. **Greater_Than_OR_EQUALS。** 如果计算属性大于或等于值，则子句返回 "true"。 作用域筛选器上指定的值必须为整数，并且用户上的属性必须是整数 [0，1，2,...]。 
    
-   k. **涵盖.** 如果计算的属性包含字符串值（区分大小写），则子句返回 "true"，如[此处](https://docs.microsoft.com/dotnet/api/system.string.contains?view=netframework-4.8)所述。 
+   k. **涵盖.** 如果计算的属性包含的字符串值 (区分大小写) ，则该子句返回 "true"，如 [此处](/dotnet/api/system.string.contains?view=netframework-4.8)所述。 
 
 
 >[!IMPORTANT] 
@@ -112,11 +112,11 @@ ms.locfileid: "84781950"
 13. 在“属性映射”屏幕上选择“保存”********。 
 
 >[!IMPORTANT] 
-> 保存新的范围筛选器将触发新的应用程序完全同步，其中将针对新的范围筛选器再次对源系统中的所有用户进行评估。 如果应用程序中的用户以前在预配范围内，但现在不在范围内，则会在应用程序中禁用或取消预配其帐户。 若要替代此默认行为，请参阅[跳过对超出范围的用户帐户的删除](../app-provisioning/skip-out-of-scope-deletions.md)。
+> 保存新的范围筛选器将触发新的应用程序完全同步，其中将针对新的范围筛选器再次对源系统中的所有用户进行评估。 如果应用程序中的用户以前在预配范围内，但现在不在范围内，则会在应用程序中禁用或取消预配其帐户。 若要替代此默认行为，请参阅 [跳过对超出范围的用户帐户的删除](../app-provisioning/skip-out-of-scope-deletions.md)。
 
 
 ## <a name="common-scoping-filters"></a>常见范围筛选器
-| 目标属性| 操作员 | 值 | 描述|
+| 目标属性| 运算符 | 值 | 说明|
 |----|----|----|----|
 |userPrincipalName|正则表达式匹配|.\*@domain.com |具有域的 userPrincipal 的所有用户 @domain.com 将处于预配范围内|
 |userPrincipalName|不匹配 REGEX|.\*@domain.com|具有域的 userPrincipal 的所有用户将不在 @domain.com 预配范围内|
@@ -130,4 +130,3 @@ ms.locfileid: "84781950"
 * [帐户预配通知](../app-provisioning/user-provisioning.md)
 * [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 * [有关如何集成 SaaS 应用的教程列表](../saas-apps/tutorial-list.md)
-

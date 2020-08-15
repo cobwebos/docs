@@ -2,18 +2,18 @@
 title: 对 Azure 存储表数据进行加密 | Microsoft Docs
 description: 了解 Azure 存储中的表数据加密。 .NET Azure 存储客户端库使你可以加密插入和替换操作的字符串实体。
 services: storage
-author: MarkMcGeeAtAquent
+author: tamram
+ms.author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 04/11/2018
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: fec213b9d7429714beb948f061445fd37d698624
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b921be718bfeb5eb95d4a802fb4d2a8cdd0946c1
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037484"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236771"
 ---
 # <a name="encrypt-table-data"></a>对表数据进行加密
 .NET Azure 存储客户端库支持对插入和替换操作的字符串实体属性进行加密。 加密的字符串作为二进制属性存储在服务中，并在解密之后转换回字符串。    
@@ -24,7 +24,7 @@ ms.locfileid: "88037484"
 
 当前不支持合并。 由于一部分属性可能以前已使用不同的密钥加密，因此只合并新属性和更新元数据会导致数据丢失。 合并需要进行额外的服务调用以从服务中读取预先存在的实体，或者需要为属性使用一个新密钥，由于性能方面的原因，这两种方案都不适用。     
 
-有关对表数据进行加密的信息，请参阅[Microsoft Azure 存储的客户端加密和 Azure Key Vault](../common/storage-client-side-encryption.md)。  
+有关对表数据进行加密的信息，请参阅 [Microsoft Azure 存储的客户端加密和 Azure Key Vault](../common/storage-client-side-encryption.md)。  
 
 ## <a name="next-steps"></a>后续步骤
 

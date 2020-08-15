@@ -4,12 +4,12 @@ description: SDK、REST API、CLI 用于以编程语言开发语言理解 (LUIS)
 ms.topic: reference
 ms.date: 05/19/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 7a7769d04d3cf41cee9f28b49d38e80deeaddcf9
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 01cbaf5a7e8eb733680381da21a7b1f9aa5c2cea
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404984"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235989"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>用于语言理解 (LUIS) 的 SDK、REST 和 CLI 开发人员资源
 
@@ -60,7 +60,7 @@ LUIS 目前有 2 种类型的终结点：
 |目的|URL|
 |--|--|
 |在训练终结点上进行 V2 创作|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/api/v2.0/apps/{appID}/`|
-|对定型终结点进行 V3 创作|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/authoring/v3.0-preview/apps/{appID}/`|
+|在训练终结点上进行 V3 创作|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/authoring/v3.0-preview/apps/{appID}/`|
 |V2 预测 - 运行时终结点上的所有预测|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]`|
 |V3 预测 - 运行时终结点上的版本预测|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/versions/{versionId}/predict?query={query}[&verbose][&log][&show-all-intents]`|
 |V3 预测 - 运行时终结点上的槽预测|`https://{your-resource-name}.api.cognitive.microsoft.com/luis/prediction/v3.0/apps/{appId}/slots/{slotName}/predict?query={query}[&verbose][&log][&show-all-intents]`|
@@ -80,17 +80,17 @@ LUIS 目前有 2 种类型的终结点：
 
 ## <a name="app-schema"></a>应用架构
 
-[应用架构](app-schema-definition.md)以或格式导入和导出 `.json` `.lu` 。
+[应用架构](app-schema-definition.md)以 `.json` 或 `.lu` 格式导入和导出。
 
 ### <a name="language-based-sdks"></a>基于语言的 SDK
 
 |语言 |参考文档|程序包|快速入门|
 |--|--|--|--|
-|C#|[创作](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[预测](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet 创作](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet 预测](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[创作](sdk-authoring.md?pivots=programming-language-csharp)<br>[查询预测](sdk-query-prediction-endpoint.md?pivots=programming-language-csharp)|
+|C#|[创作](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[预测](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet 创作](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet 预测](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[创作](quickstart-sdk.md?pivots=programming-language-csharp)<br>[查询预测](quickstart-sdk.md?pivots=programming-language-csharp)|
 |Go|[创作和预测](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
 |Java|[创作和预测](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven 创作](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven 预测](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
-|JavaScript|[创作](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[预测](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM 创作](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM 预测](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[创作](sdk-query-prediction-endpoint.md?pivots=programming-language-javascript)<br>[预测](sdk-query-prediction-endpoint.md?pivots=programming-language-javascript)|
-|Python|[创作和预测](sdk-authoring.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[创作](sdk-authoring.md?pivots=programming-language-python)<br>[预测](sdk-query-prediction-endpoint.md?pivots=programming-language-python)|
+|Javascript|[创作](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[预测](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM 创作](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM 预测](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[创作](quickstart-sdk.md?pivots=programming-language-javascript)<br>[预测](quickstart-sdk.md?pivots=programming-language-javascript)|
+|Python|[创作和预测](quickstart-sdk.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[创作](quickstart-sdk.md?pivots=programming-language-python)<br>[预测](quickstart-sdk.md?pivots=programming-language-python)|
 
 
 ### <a name="containers"></a>容器
@@ -109,8 +109,8 @@ LUIS 目前有 2 种类型的终结点：
 
 ## <a name="continuous-integration-tools"></a>持续集成工具
 
-* GitHub：（预览版）[使用 DevOps 实践开发 LUIS 应用](https://github.com/Azure-Samples/LUIS-DevOps-Template)
-* GitHub： [NLU。DevOps](https://github.com/microsoft/NLU.DevOps)支持持续集成和部署 NLU 服务。
+* GitHub： (预览版) [使用 DevOps 实践开发 LUIS 应用](https://github.com/Azure-Samples/LUIS-DevOps-Template)
+* GitHub： [NLU。DevOps](https://github.com/microsoft/NLU.DevOps) 支持持续集成和部署 NLU 服务。
 
 ## <a name="bot-framework-tools"></a>Bot Framework 工具
 

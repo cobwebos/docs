@@ -11,17 +11,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: e1e6c9254c3906b79c3a20de4672dff1b9ac6c63
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0e44280c0a6c0d39c98e3aeecd5e9a3707332e81
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121453"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236567"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL 数据库和 SQL 托管实例中的新增功能有哪些？
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-本文列出了当前以公共预览版形式提供的 Azure SQL 数据库和 Azure SQL 托管实例的功能。 有关 SQL 数据库和 SQL 托管实例更新和改进，请参阅[Sql 数据库 & sql 托管实例服务更新](https://azure.microsoft.com/updates/?product=sql-database)。 有关对其他 Azure 服务的更新和改进，请参阅[服务更新](https://azure.microsoft.com/updates)。
+本文列出了当前以公共预览版形式提供的 Azure SQL 数据库和 Azure SQL 托管实例的功能。 有关 SQL 数据库和 SQL 托管实例更新和改进，请参阅 [Sql 数据库 & sql 托管实例服务更新](https://azure.microsoft.com/updates/?product=sql-database)。 有关对其他 Azure 服务的更新和改进，请参阅 [服务更新](https://azure.microsoft.com/updates)。
 
 ## <a name="whats-new"></a>新增功能
 
@@ -56,8 +56,8 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 | 弹性查询 | 有关信息，请参阅[弹性查询概述](elastic-query-overview.md)。 |
 | 弹性事务 | [跨云数据库的分布式事务](elastic-transactions-overview.md)。 |
 | Azure 门户中的查询编辑器 |有关信息，请参阅[使用 Azure 门户的 SQL 查询编辑器进行连接并查询数据](connect-query-portal.md)。|
-| 带有单一数据库和弹性池的 R services/机器学习 |有关信息，请参阅[AZURE SQL 数据库中的机器学习服务](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database)。|
-|SQL Analytics|有关信息，请参阅[Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md)。|
+| 带有单一数据库和弹性池的 R services/机器学习 |有关信息，请参阅 [AZURE SQL 数据库中的机器学习服务](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database)。|
+|SQL Analytics|有关信息，请参阅 [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md)。|
 | &nbsp; |
 
 ### <a name="azure-sql-managed-instance"></a>[Azure SQL 托管实例](#tab/managed-instance)
@@ -97,6 +97,7 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 
 |问题  |发现日期  |状态  |解决日期  |
 |---------|---------|---------|---------|
+|[服务主体无法访问 Azure AD 和 AKV](#service-principal-cannot-access-azure-ad-and-akv)|2020年8月|具有解决方法||
 |[没有使用 CHECKSUM 的手动备份可能无法还原](#restoring-manual-backup-without-checksum-might-fail)|2020 年 5 月|已解决|2020 年 6 月|
 |[在修改、禁用或启用现有作业后代理无响应](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020 年 5 月|已解决|2020 年 6 月|
 |[资源组上的权限不应用于 SQL 托管实例](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|2020 年 2 月|具有解决方法||
@@ -124,6 +125,11 @@ Azure SQL 数据库和 Azure SQL 托管实例的相关文档已拆分为单独�
 |使用具有安全连接的外部（非 Azure）邮件服务器时出现数据库邮件功能问题||已解决|2019 年 10 月|
 |SQL 托管实例不支持包含的数据库||已解决|2019 年 8 月|
 
+### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>服务主体无法访问 Azure AD 和 AKV
+
+在某些情况下，服务主体可能存在一个用于访问 Azure AD 和 Azure Key Vault (AKV) 服务的问题。 因此，此问题会影响 Azure AD 身份验证以及透明数据库加密 (TDE) 与 SQL 托管实例一起使用。 这可能是间歇性连接问题，或者无法运行语句，如从外部提供程序创建登录名/用户或将其作为登录名/用户执行。 在某些情况下，在新的 Azure SQL 托管实例上使用客户管理的密钥设置 TDE 可能也不起作用。
+
+**解决方法**：若要在执行任何更新命令之前防止此问题出现在 SQL 托管实例上，或在更新命令后遇到此问题，请访问 Azure 门户，访问 SQL 托管实例 [Active Directory 管理边栏选项卡](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal)。 验证是否可以看到错误消息 "托管实例需要服务主体才能访问 Azure Active Directory。 单击此处创建服务主体。 如果你遇到此错误消息，请单击它，然后按照提供的分步说明进行操作，直到此错误得以解决。
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>没有使用 CHECKSUM 的手动备份可能无法还原
 
@@ -189,9 +195,9 @@ SQL Server 和 SQL 托管实例[不允许用户删除不为空的文件](/sql/re
 
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>故障转移后，可能需要重新配置“业务关键”服务层级上的 Resource Governor
 
-利用[Resource Governor](/sql/relational-databases/resource-governor/resource-governor)功能，你可以限制分配给用户工作负荷的资源，在故障转移后可能会错误地分类某些用户工作负荷，或者在用户启动的服务层更改 (例如，更改 max vCore 或最大实例存储大小) 。
+利用 [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) 功能，你可以限制分配给用户工作负荷的资源，在故障转移后可能会错误地分类某些用户工作负荷，或者在用户启动的服务层更改 (例如，更改 max vCore 或最大实例存储大小) 。
 
-**解决方法**： `ALTER RESOURCE GOVERNOR RECONFIGURE` 如果使用[Resource Governor](/sql/relational-databases/resource-governor/resource-governor)，则在启动实例时，将定期运行或作为 sql 代理作业的一部分执行 sql 任务。
+**解决方法**： `ALTER RESOURCE GOVERNOR RECONFIGURE` 如果使用 [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)，则在启动实例时，将定期运行或作为 sql 代理作业的一部分执行 sql 任务。
 
 ### <a name="cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade"></a>升级服务层级后必须重新初始化跨数据库 Service Broker 对话
 
@@ -291,7 +297,7 @@ using (var scope = new TransactionScope())
 
 ```
 
-**解决方法 (自2020年3月版以后无需) **：使用[ChangeDatabase (String) ](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase)在连接上下文中使用其他数据库，而不是使用两个连接。
+**解决方法 (自2020年3月版以后无需) **：使用 [ChangeDatabase (String) ](/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) 在连接上下文中使用其他数据库，而不是使用两个连接。
 
 ### <a name="clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address"></a>CLR 模块和链接的服务器有时无法引用本地 IP 地址
 
@@ -301,9 +307,9 @@ using (var scope = new TransactionScope())
 
 ## <a name="updates"></a>更新
 
-有关 SQL 数据库更新和改进的列表，请参阅[Sql 数据库服务更新](https://azure.microsoft.com/updates/?product=sql-database)。
+有关 SQL 数据库更新和改进的列表，请参阅 [Sql 数据库服务更新](https://azure.microsoft.com/updates/?product=sql-database)。
 
-有关所有 Azure 服务的更新和改进，请参阅[服务更新](https://azure.microsoft.com/updates)。
+有关所有 Azure 服务的更新和改进，请参阅 [服务更新](https://azure.microsoft.com/updates)。
 
 ## <a name="contribute-to-content"></a>参与内容制作
 

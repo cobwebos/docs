@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 7dae16140c376bc9288fec5b8744ac6cd14051e5
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 69ea1964449143a25f447375f2aae15d9feeff10
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445608"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235717"
 ---
 # <a name="how-provisioning-works"></a>预配工作原理
 
@@ -44,7 +44,7 @@ Azure AD 预配服务使用 [SCIM 2.0 协议](https://techcommunity.microsoft.co
 
 Azure AD 需要凭据才能连接到应用程序的用户管理 API。 在为应用程序配置自动用户预配时，需要输入有效凭据。 可以参考应用教程来查找应用程序的凭据类型和要求。 在 Azure 门户中，你将能够让 Azure AD 尝试使用提供的凭据连接到该应用的预配应用来测试凭据。
 
-如果还为应用程序配置了基于 SAML 的单一登录，则 Azure AD 内部的每个应用程序存储限制为 1024 个字节。 此限制包括与应用程序单个实例关联的所有证书、机密令牌、凭据以及相关配置数据（在 Azure AD 中也称为服务主体记录）。 当配置了基于 SAML 的单一登录时，用来对 SAML 令牌进行签名的证书通常会占用该空间的 50% 以上。 在用户预配安装过程中输入的任何其他项（机密令牌、URI、通知电子邮件地址、用户名和密码）都可能超过存储限制。 有关详细信息，请参阅[配置用户预配时保存管理员凭据出现问题](../manage-apps/application-provisioning-config-problem-storage-limit.md)。
+如果还为应用程序配置了基于 SAML 的单一登录，则 Azure AD 内部的每个应用程序存储限制为 1024 个字节。 此限制包括与应用程序单个实例关联的所有证书、机密令牌、凭据以及相关配置数据（在 Azure AD 中也称为服务主体记录）。 当配置了基于 SAML 的单一登录时，用来对 SAML 令牌进行签名的证书通常会占用该空间的 50% 以上。 在用户预配安装过程中输入的任何其他项（机密令牌、URI、通知电子邮件地址、用户名和密码）都可能超过存储限制。 有关详细信息，请参阅[配置用户预配时保存管理员凭据出现问题](./application-provisioning-config-problem-storage-limit.md)。
 
 ## <a name="mapping-attributes"></a>映射属性
 
@@ -54,7 +54,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 
 在设置预配时，重要的是查看并配置属性映射和工作流，它们可以确定哪些用户（或组）属性将从 Azure AD 流向应用程序。 检查并配置用于在两个系统之间唯一标识和匹配用户/组的匹配属性（“使用此属性匹配对象”）。
 
-可以根据业务需求自定义默认的属性映射。 因此，可以更改或删除现有属性映射或者创建新的属性映射。 有关详细信息，请参阅[为 SaaS 应用程序自定义用户预配属性映射](../manage-apps/customize-application-attributes.md)。
+可以根据业务需求自定义默认的属性映射。 因此，可以更改或删除现有属性映射或者创建新的属性映射。 有关详细信息，请参阅[为 SaaS 应用程序自定义用户预配属性映射](./customize-application-attributes.md)。
 
 将预配配置到 SaaS 应用程序时，表达式映射是可指定的属性映射类型之一。 对于这些映射，必须编写一个类似于脚本的表达式，允许将用户的数据转换为 SaaS 应用程序更可接受的格式。 有关详细信息，请参阅[为属性映射编写表达式](functions-for-customizing-application-data.md)。
 
@@ -81,13 +81,13 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 
 ### <a name="b2b-guest-users"></a>B2B（来宾）用户
 
-可以使用 Azure AD 用户预配服务将 Azure AD 中的 B2B（或来宾）用户预配到 SaaS 应用程序。 但是，为使 B2B 用户使用 Azure AD 登录 SaaS 应用程序，SaaS 应用程序必须通过特定的方式配置其基于 SAML 的单一登录功能。 有关如何配置 SaaS 应用程序以支持 B2B 用户的登录的详细信息，请参阅[为 B2B 协作配置 SaaS 应用](../b2b/configure-saas-apps.md)。
+可以使用 Azure AD 用户预配服务将 Azure AD 中的 B2B（或来宾）用户预配到 SaaS 应用程序。 但是，为使 B2B 用户使用 Azure AD 登录 SaaS 应用程序，SaaS 应用程序必须通过特定的方式配置其基于 SAML 的单一登录功能。 有关如何配置 SaaS 应用程序以支持 B2B 用户的登录的详细信息，请参阅[为 B2B 协作配置 SaaS 应用](../external-identities/configure-saas-apps.md)。
 
 注意，来宾用户的 userPrincipalName 通常存储为“alias#EXT#@domain.com”。 当 userPrincipalName 作为源属性包含在属性映射中时，将从 userPrincipalName 中除去 #EXT#。 如果需要保留 EXT，请将 userPrincipalName 替换为 originalUserPrincipalName 并作为源属性。 
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>预配周期：初始和增量
 
-如果 Azure AD 是源系统，预配服务将使用[使用增量查询跟踪 Microsoft Graph 数据中的更改](https://docs.microsoft.com/graph/delta-query-overview)来监视用户和组。 预配服务针对源系统和目标系统运行初始周期，然后运行定期的增量周期。
+如果 Azure AD 是源系统，预配服务将使用[使用增量查询跟踪 Microsoft Graph 数据中的更改](/graph/delta-query-overview)来监视用户和组。 预配服务针对源系统和目标系统运行初始周期，然后运行定期的增量周期。
 
 ### <a name="initial-cycle"></a>初始周期
 
@@ -154,11 +154,11 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 
 ### <a name="quarantine"></a>隔离
 
-如果某个错误（例如管理员凭据无效）导致针对目标系统发出的大部分或所有调用持续失败，则预配作业会进入“隔离”状态。 [预配摘要报告](../manage-apps/check-status-user-account-provisioning.md)中会指示此状态，如果在 Azure 门户中配置了电子邮件通知，则会通过电子邮件告知此状态。
+如果某个错误（例如管理员凭据无效）导致针对目标系统发出的大部分或所有调用持续失败，则预配作业会进入“隔离”状态。 [预配摘要报告](./check-status-user-account-provisioning.md)中会指示此状态，如果在 Azure 门户中配置了电子邮件通知，则会通过电子邮件告知此状态。
 
 处于隔离状态后，增量周期的频率会逐渐减少为每天一次。
 
-解决所有错误并开始下一个同步周期后，预配作业将退出隔离状态。 如果预配作业在隔离区中保留四周以上，则会禁用预配作业。 可在[此处](../manage-apps/application-provisioning-quarantine-status.md)了解有关隔离状态的详细信息。
+解决所有错误并开始下一个同步周期后，预配作业将退出隔离状态。 如果预配作业在隔离区中保留四周以上，则会禁用预配作业。 可在[此处](./application-provisioning-quarantine-status.md)了解有关隔离状态的详细信息。
 
 ### <a name="how-long-provisioning-takes"></a>预配花费多长时间
 
@@ -166,13 +166,13 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 
 ### <a name="how-to-tell-if-users-are-being-provisioned-properly"></a>如何判断用户预配是否正确
 
-Azure AD [预配日志（预览）](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)中记录了用户预配服务运行的所有操作。 该日志包括对源系统和目标系统执行的所有读写操作，以及在每次操作期间读取或写入的用户数据。 若要了解如何在 Azure 门户中读取预配日志，请参阅[预配报告指南](../manage-apps/check-status-user-account-provisioning.md)。
+Azure AD [预配日志（预览）](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)中记录了用户预配服务运行的所有操作。 该日志包括对源系统和目标系统执行的所有读写操作，以及在每次操作期间读取或写入的用户数据。 若要了解如何在 Azure 门户中读取预配日志，请参阅[预配报告指南](./check-status-user-account-provisioning.md)。
 
 ## <a name="de-provisioning"></a>取消预配
 
 当用户不应该再拥有访问权限时，Azure AD 预配服务通过取消预配帐户来使源系统和目标系统保持同步。 
 
-当应用程序支持软删除时，Azure AD 预配服务将软删除应用程序中的用户（具有 active = false 的更新请求），并发生以下任何事件：
+当应用程序支持软删除时，Azure AD 预配服务会软删除应用程序中的用户， (update 请求中包含 active = false) 并发生以下任何事件：
 
 * 已在 Azure AD 中删除用户帐户
 *   从应用程序中取消分配用户
@@ -190,8 +190,8 @@ Azure AD [预配日志（预览）](../reports-monitoring/concept-provisioning-l
 
 [规划自动用户预配部署](../app-provisioning/plan-auto-user-provisioning.md)
 
-[为库应用配置预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
+[为库应用配置预配](./configure-automatic-user-provisioning-portal.md)
 
 [创建自己的应用时，生成 SCIM 终结点并配置预配](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
-[对在应用程序中配置和预配用户时出现的问题进行故障排除](../manage-apps/application-provisioning-config-problem.md)。
+[对在应用程序中配置和预配用户时出现的问题进行故障排除](./application-provisioning-config-problem.md)。

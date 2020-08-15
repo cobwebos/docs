@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: ff5480e6b78beda7fe50dc772eae925ccdb80664
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 9922601d67393d103b95da7286d8db71d913434a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905340"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235239"
 ---
 # <a name="get-started-with-storage-explorer"></a>存储资源管理器入门
 
@@ -109,7 +109,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 * [使用连接字符串](#use-a-connection-string)。 如果已获取存储帐户的连接字符串，请使用此选项。 存储资源管理器支持密钥和[共享访问签名](storage/common/storage-dotnet-shared-access-signature-part-1.md)连接字符串。
 * [使用共享访问签名 URI](#use-a-shared-access-signature-uri)。 如果已获取 Blob 容器、文件共享、队列或表的[共享访问签名 URI](storage/common/storage-dotnet-shared-access-signature-part-1.md)，请使用它附加到资源。 若要获取共享访问签名 URI，可以使用[存储资源管理器](#generate-a-sas-in-storage-explorer)或 [Azure 门户](https://portal.azure.com)。
 * [使用名称和密钥](#use-a-name-and-key)。 如果你知道存储帐户的任一帐户密钥，则可以使用此选项快速建立连接。 在 [Azure 门户](https://portal.azure.com)中选择“设置” > “访问密钥”，在存储帐户页中找到你的密钥。 
-* [附加到本地仿真器](#attach-to-a-local-emulator)。 如果你正在使用某个可用的 Azure 存储仿真器，则使用此选项可以轻松连接到该仿真器。
+* [附加到本地仿真器](#attach-to-a-local-emulator)。 如果使用的是可用 Azure 存储模拟器之一，请使用此选项轻松连接到模拟器。
 * [使用连接字符串连接到 Azure Cosmos DB 帐户](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string)。 如果已获取 CosmosDB 实例的连接字符串，请使用此选项。
 * [通过 URI 连接到 Azure Data Lake Store](#connect-to-azure-data-lake-store-by-uri)。 如果已获取 Azure Data Lake Store 的 URI，请使用此选项。
 
@@ -183,7 +183,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
 存储资源管理器目前支持两个官方存储仿真器：
 
-* [Azure 存储仿真器](storage/common/storage-use-emulator.md)（仅适用于 Windows）
+* [Azure 存储模拟器](storage/common/storage-use-emulator.md) (仅限 Windows) 
 * [Azurite](https://github.com/azure/azurite)（Windows、macOS 或 Linux）
 
 如果仿真器正在侦听默认端口，则你可以使用“仿真器 - 默认端口”节点访问仿真器。 请留意“本地和附加” > “存储帐户”下的“仿真器 - 默认端口”。  
@@ -233,7 +233,7 @@ snap connect storage-explorer:password-manager-service :password-manager-service
 
     ![“连接到 Data Lake Store”操作结果](./media/vs-azure-tools-storage-manage-with-storage-explorer/storage-explorer-attach-data-lake-finished.png)
 
-本示例使用 Data Lake Storage Gen1。 Azure Data Lake Storage Gen2 现已推出。 有关详细信息，请参阅[什么是 Azure Data Lake Storage Gen1](./data-lake-store/data-lake-store-overview.md)。
+本示例使用 Data Lake Storage Gen1。 Azure Data Lake Storage Gen2 现已推出。 有关详细信息，请参阅 [什么是 Azure Data Lake Storage Gen1](./data-lake-store/data-lake-store-overview.md)。
 
 ## <a name="generate-a-shared-access-signature-in-storage-explorer"></a>在存储资源管理器中生成共享访问签名<a name="generate-a-sas-in-storage-explorer"></a>
 

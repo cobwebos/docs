@@ -12,19 +12,19 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 7e7f8ded24e71fec8ed6bfbc78f9057ddb98dacc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c42a83b4f7f3c6b5ff501525a04ebd96c2a692a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781984"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234833"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>在 Azure 门户中管理企业应用的用户帐户预配
 
 本文介绍管理支持它的应用程序的自动用户帐户预配和取消预配的常规步骤。 *用户帐户预配*是一种在应用程序的本地用户配置文件存储中，创建、更新和/或禁用用户帐户记录的操作。 大多数云应用程序和 SaaS 应用程序将用户角色和权限存储在用户自身的本地用户配置文件存储中，并且单一登录和访问工作需要用户本地存储中存在此类用户记录。 若要了解有关用户帐户自动预配的详细信息，请参阅[使用 Azure Active Directory 自动化 SaaS 应用程序用户预配和取消预配](user-provisioning.md)。
 
 > [!IMPORTANT]
-> Azure Active Directory (Azure AD) 有一个库，其中包含数千个预先集成的应用程序，这些应用程序通过 Azure AD 启用了自动预配。 首先应在[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)中找到特定于应用程序的预配设置教程。 你可能会找到有关配置应用程序和 Azure AD 以创建预配连接的分步指导。
+> Azure Active Directory (Azure AD) 有一个库，其中包含数千个预先集成的应用程序，这些应用程序通过 Azure AD 启用了自动预配。 首先应在[有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](../saas-apps/tutorial-list.md)中找到特定于应用程序的预配设置教程。 你可能会找到有关配置应用程序和 Azure AD 以创建预配连接的分步指导。
 
 ## <a name="finding-your-apps-in-the-portal"></a>在门户中查找应用
 
@@ -85,4 +85,4 @@ ms.locfileid: "84781984"
 
 将“预配状态”更改为“关”以暂停预配服务。 在这种状态下，Azure 不会创建、更新或删除应用中的任何用户或组对象。 将状态重新更改为“开”，服务会从中断的位置继续。
 
-“清除当前状态并重新开始同步”会触发初始周期。 服务随后会再次评估源系统中的所有用户，并确定它们是否处于预配的范围中。 当应用程序当前处于隔离中或者需要更改属性映射时，这可能会很有用。 请注意，由于需要评估的对象数，初始周期的完成时间比典型增量周期更长。 可在[此处](application-provisioning-when-will-provisioning-finish-specific-user.md)详细了解初始和增量周期的性能。 
+“清除当前状态并重新开始同步”会触发初始周期。 服务随后会再次评估源系统中的所有用户，并确定它们是否处于预配的范围中。 当应用程序当前处于隔离中或者需要更改属性映射时，这可能会很有用。 请注意，由于需要评估的对象数，初始周期的完成时间比典型增量周期更长。 可在[此处](application-provisioning-when-will-provisioning-finish-specific-user.md)详细了解初始和增量周期的性能。

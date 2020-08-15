@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 479bbe2dbef2d28a2744b667184c45e85faf9adc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7ffdef43aa0fdcaab9e8ceae519cef9dfe5cdf6e
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283089"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235632"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>为多租户应用程序启用自动用户预配
 
@@ -32,11 +32,11 @@ ms.locfileid: "87283089"
 
 * 减少实际和感知的客户工作量以采用你的应用程序。
 
-* 通过使用系统进行跨域标识管理（SCIM）的预配，降低与多个标识提供者（Idp）集成的成本以实现自动用户预配。
+* 通过使用系统进行跨域身份管理 (SCIM) 的预配，降低与多个标识提供者集成的成本 (Idp) 进行自动用户预配。
 
 * 通过提供丰富的日志来帮助客户解决用户预配问题，降低支持成本。
 
-* 提高应用程序在[Azure AD 应用库](https://azuremarketplace.microsoft.com/marketplace/apps)中的可见性。
+* 提高应用程序在 [Azure AD 应用库](https://azuremarketplace.microsoft.com/marketplace/apps)中的可见性。
 
 * 获取应用教程页面中的优先顺序列表。
 
@@ -52,32 +52,32 @@ ms.locfileid: "87283089"
 
 Azure AD 提供了多个集成路径，以便为应用程序启用自动用户预配。
 
-* [Azure AD 预配服务](../app-provisioning/user-provisioning.md)可管理用户对应用程序（出站预配）和从应用程序到 Azure AD （入站预配）的 Azure AD 的设置和取消预配。 服务将连接到应用程序提供的跨域标识管理（SCIM）用户管理 API 终结点的系统。
+* [Azure AD 预配服务](../app-provisioning/user-provisioning.md)可管理从 Azure AD 到应用程序的用户的设置和取消预配， (出站预配) 和从应用程序到 Azure AD 入站预配 (。 服务将连接到应用程序提供 (SCIM) 用户管理 API 终结点的跨域标识管理的系统。
 
-* 使用[Microsoft Graph](https://docs.microsoft.com/graph/)时，应用程序通过查询 Microsoft Graph API 来管理用户和组对 Azure AD 到应用程序的入站和出站预配。
+* 使用 [Microsoft Graph](/graph/)时，应用程序通过查询 Microsoft Graph API 来管理用户和组对 Azure AD 到应用程序的入站和出站预配。
 
-* 如果你的应用程序使用 SAML 进行联合身份验证，则可以启用安全断言标记语言实时（SAML JIT）用户预配。 它使用在 SAML 令牌中发送的声明信息来预配用户。
+* 如果你的应用程序使用 SAML 进行联合身份验证，则可以启用安全断言标记语言实时 (SAML JIT) 用户预配。 它使用在 SAML 令牌中发送的声明信息来预配用户。
 
 若要帮助确定要用于应用程序的集成选项，请参阅高级比较表，然后查看每个选项的详细信息。
 
-| 自动预配启用或增强的功能| Azure AD 预配服务（SCIM 2.0）| Microsoft Graph API （OData 4.0）| SAML JIT |
+| 自动预配启用或增强的功能| Azure AD 预配服务 (SCIM 2.0) | Microsoft Graph API (OData v4.0) | SAML JIT |
 |---|---|---|---|
 | Azure AD 中的用户和组管理| √| √| 仅用户 |
 | 管理从本地 Active Directory 同步的用户和组| √*| √*| 仅用户 * |
-| 在设置访问 O365 数据（团队、SharePoint、电子邮件、日历、文档等）期间访问用户和组之外的数据| X+| √| X |
+| 在设置访问 O365 数据时访问用户和组之外的数据 (团队、SharePoint、电子邮件、日历、文档等 ) | X+| √| X |
 | 基于业务规则创建、读取和更新用户| √| √| √ |
 | 基于业务规则删除用户| √| √| X |
 | 从 Azure 门户管理所有应用程序的自动用户预配| √| X| √ |
 | 支持多个标识提供程序| √| X| √ |
-| 支持来宾帐户（B2B）| √| √| √ |
-| 支持非企业帐户（B2C）| X| √| √ |
+|  (B2B) 支持来宾帐户| √| √| √ |
+| 支持 (B2C) 的非企业帐户| X| √| √ |
 
-<sup>*</sup>–要求安装程序将用户从 AD 同步到 Azure AD Azure AD Connect。  
-<sup>+</sup >–使用 SCIM 进行设置不会阻止你将应用程序与 MIcrosoft Graph 集成以实现其他目的。
+<sup>*</sup> –要求安装程序将用户从 AD 同步到 Azure AD Azure AD Connect。  
+<sup>+</sup >–使用 SCIM 进行设置不会阻止你将应用程序与用于其他目的的 Microsoft Graph 集成。
 
-## <a name="azure-ad-provisioning-service-scim"></a>Azure AD 预配服务（SCIM）
+## <a name="azure-ad-provisioning-service-scim"></a>Azure AD 预配服务 (SCIM) 
 
-Azure AD 预配服务使用[SCIM](https://aka.ms/SCIMOverview)，这是许多标识提供者（idp）和应用程序（例如，可宽比、g Suite、Dropbox）支持的预配的行业标准。 如果除了 Azure AD 之外还需要支持 Idp，则建议使用 Azure AD 预配服务，因为任何符合 SCIM 的 IdP 都可以连接到 SCIM 终结点。 生成简单的/User 终结点，你可以启用预配，而不必维护自己的同步引擎。 
+Azure AD 预配服务使用 [SCIM](https://aka.ms/SCIMOverview)，这是许多标识提供者 (idp) 和应用 (程序（例如，可宽比、g Suite、Dropbox) ）提供的预配支持的行业标准。 如果除了 Azure AD 之外还需要支持 Idp，则建议使用 Azure AD 预配服务，因为任何符合 SCIM 的 IdP 都可以连接到 SCIM 终结点。 生成简单的/User 终结点，你可以启用预配，而不必维护自己的同步引擎。 
 
 有关 Azure AD 预配服务用户 SCIM 的详细信息，请参阅： 
 
@@ -89,17 +89,17 @@ Azure AD 预配服务使用[SCIM](https://aka.ms/SCIMOverview)，这是许多标
 
 ## <a name="microsoft-graph-for-provisioning"></a>用于预配的 Microsoft Graph
 
-使用用于预配的 Microsoft Graph 时，可以访问图形中提供的所有丰富的用户数据。 除了用户和组的详细信息外，还可以获取其他信息，如用户的角色、经理和直接下属、拥有和注册的设备，以及[Microsoft Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0)中提供的数百个其他数据片段。 
+使用用于预配的 Microsoft Graph 时，可以访问图形中提供的所有丰富的用户数据。 除了用户和组的详细信息外，还可以获取其他信息，如用户的角色、经理和直接下属、拥有和注册的设备，以及 [Microsoft Graph](/graph/api/overview?view=graph-rest-1.0)中提供的数百个其他数据片段。 
 
-15000000多家组织和90% 的财富500公司使用 Azure AD，同时订阅 Office 365、Microsoft Azure、企业移动性套件或 Microsoft 365 等 Microsoft 云服务。 你可以使用 Microsoft Graph 将你的应用与管理工作流（如员工加入（和终止）、配置文件维护等）集成。 
+15000000多家组织和90% 的财富500公司使用 Azure AD，同时订阅 Office 365、Microsoft Azure、企业移动性套件或 Microsoft 365 等 Microsoft 云服务。 你可以使用 Microsoft Graph 将你的应用与管理工作流（如员工加入 (和终止) 、配置文件维护等）集成。 
 
 详细了解如何使用 Microsoft Graph 进行预配：
 
 * [Microsoft Graph 主页](https://developer.microsoft.com/graph)
 
-* [Microsoft Graph 概述](https://docs.microsoft.com/graph/overview)
+* [Microsoft Graph 概述](/graph/overview)
 
-* [Microsoft Graph 身份验证概述](https://docs.microsoft.com/graph/auth/)
+* [Microsoft Graph 身份验证概述](/graph/auth/)
 
 * [Microsoft Graph 入门](https://developer.microsoft.com/graph/get-started)
 
@@ -113,6 +113,6 @@ SAML JIT 使用 SAML 令牌中的声明信息来创建和更新应用程序中�
 
 * [为应用程序启用单一登录](../manage-apps/isv-sso-content.md)
 
-* [提交你的应用程序列表](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)并与 microsoft 合作，以便在 microsoft 网站上创建文档。
+* [提交你的应用程序列表](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) 并与 microsoft 合作，以便在 microsoft 网站上创建文档。
 
-* [加入 Microsoft 合作伙伴网络（免费）并创建你的走向市场计划](https://partner.microsoft.com/explore/commercial)。
+* [加入 Microsoft 合作伙伴网络 (免费) ，并创建你的走向市场计划](https://partner.microsoft.com/explore/commercial)。

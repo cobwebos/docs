@@ -2,18 +2,18 @@
 title: 在 Azure 表存储设计中建模关系 |Microsoft Docs
 description: 了解设计 Azure 表存储解决方案时的建模过程。 阅读有关一对多、一对一和继承关系的信息。
 services: storage
-author: MarkMcGeeAtAquent
 ms.service: storage
+author: tamram
+ms.author: tamram
 ms.topic: article
 ms.date: 04/23/2018
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 8c803a7b11aee3d57d6145bed296bd40ddd9bb5e
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: a7316bc60ea26968e30bb11ef97d63bddb33895a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036039"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235955"
 ---
 # <a name="modeling-relationships"></a>为关系建模
 本文讨论可帮助设计 Azure 表存储解决方案的建模流程。
@@ -100,7 +100,7 @@ ms.locfileid: "88036039"
 
 还有可能引导在表服务中实现一对一关系的实现注意事项：  
 
-* 处理大型实体 (有关详细信息，请参阅[大型实体模式](table-storage-design-patterns.md#large-entities-pattern)) 。  
+* 处理大型实体 (有关详细信息，请参阅 [大型实体模式](table-storage-design-patterns.md#large-entities-pattern)) 。  
 * 实施访问控制（有关详细信息），请参阅“使用共享访问签名控制访问权限”。  
 
 ## <a name="join-in-the-client"></a>在客户端中联接
