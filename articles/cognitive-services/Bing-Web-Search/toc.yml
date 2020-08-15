@@ -11,7 +11,7 @@
   items:
     - name: REST API
       items:
-        - name: 'C#'
+        - name: C#
           href: quickstarts/csharp.md
         - name: Go
           href: quickstarts/go.md
@@ -88,7 +88,7 @@
 - name: 资源
   items:
     - name: 获取 API 密钥
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api'
+      href: 'https://azure.microsoft.com/free/cognitive-services'
     - name: 必应 Web 搜索终结点
       href: web-search-endpoints.md
     - name: 定价

@@ -12,7 +12,7 @@
   items:
     - name: REST API
       items:
-        - name: '使用 C#'
+        - name: 使用 C#
           href: quickstarts/csharp.md
         - name: 使用 Java
           href: quickstarts/java.md
@@ -93,7 +93,7 @@
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/image/'
     - name: UserVoice
       href: 'https://cognitive.uservoice.com/forums/555907-bing-search'
-    - name: 堆栈溢出
+    - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/bing-search'
     - name: 区域可用性
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
@@ -102,7 +102,7 @@
     - name: 知识库
       href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
     - name: 获取 API 密钥
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api'
+      href: 'https://azure.microsoft.com/free/cognitive-services'
     - name: 试试看！
       href: 'https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/'
     - name: 必应图像搜索终结点

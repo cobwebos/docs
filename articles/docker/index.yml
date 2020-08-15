@@ -3,19 +3,19 @@ title: “Azure 上的 Docker”文档
 summary: Docker 是一种常用的容器管理和映像处理平台，用于在 Linux 和 Windows 上快速操作容器。 了解如何在 Azure 上利用 Docker。
 metadata:
   title: “Azure 上的 Docker”文档
-  description: Docker 是一种常用的容器管理和映像处理平台，用于在 Linux 和 Windows 上快速操作容器。 了解如何在 Azure 上利用 Docker。
+  description: Docker 是一种常用的容器管理和映像处理平台，用于在 Linux 和 Windows 上快速操作容器。
   services: multiple
   ms.service: multiple
   ms.topic: landing-page
   author: georgewallace
   ms.author: gwallace
   ms.date: 03/08/2020
-  ms.openlocfilehash: 9205a47ee0ba3e6e0b328c8f481b15fe593ec5fb
-  ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+  ms.openlocfilehash: 94d5dd74aad11e2271de52dd082cfb9287eb10c1
+  ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/11/2020
-  ms.locfileid: "88080379"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88224571"
 landingContent:
 - title: 在 Azure 上部署 Docker
   linkLists:
