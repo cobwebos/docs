@@ -4,12 +4,12 @@ description: Azure 应用服务的应用程序性能监视。 对加载和响应
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: d30d5fa8532b9bdec2b231daf9a59732dc1ebce8
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 0921d7bbba90fa2199ea212bae6ad4c35e0fb051
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079682"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245479"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -114,8 +114,8 @@ ms.locfileid: "88079682"
 
 可以选择为 ASP.NET 启用客户端监视。 若要启用客户端监视：
 
-* 选择“设置”>“应用程序设置”。
-   * 在“应用程序设置”下，添加新的**应用设置名称**和**值**：
+* **设置** **>****配置**
+   * 在 "应用程序设置" 下，创建一个 **新的应用程序设置**：
 
      名称：`APPINSIGHTS_JAVASCRIPT_ENABLED`
 
@@ -133,8 +133,8 @@ ms.locfileid: "88079682"
 
 如果出于某种原因想要禁用客户端监视：
 
-* 选择“设置” > “应用程序设置”。 
-   * 在“应用程序设置”下，添加新的**应用设置名称**和**值**：
+* **设置** **>****配置**
+   * 在 "应用程序设置" 下，创建一个 **新的应用程序设置**：
 
      名称：`APPINSIGHTS_JAVASCRIPT_ENABLED`
 
@@ -401,7 +401,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 
 使用 Azure 应用 Services 中的或运行时创建 web 应用时， `ASP.NET` `.NET Core` 它会将单个静态 HTML 页作为入门网站部署。 静态网页还会在 IIS 中加载 .NET 托管 web 部件。 这允许测试无代码置备服务器端监视，但不支持自动客户端监视。
 
-如果你想要在 Azure 应用 Services web 应用中测试无代码置备服务器和客户端监视的 ASP.NET 或 ASP.NET Core，我们建议遵循[创建 ASP.NET Core web 应用](../../app-service/quickstart-dotnetcore.md)和[创建 ASP.NET Framework web 应用](../../app-service/quickstart-dotnet-framework.md)的官方指南，并使用当前文章中的说明来启用监视。
+如果你想要在 Azure 应用 Services web 应用中测试无代码置备服务器和客户端监视的 ASP.NET 或 ASP.NET Core，我们建议遵循 [创建 ASP.NET Core web 应用](../../app-service/quickstart-dotnetcore.md) 和 [创建 ASP.NET Framework web 应用](../../app-service/quickstart-dotnet-framework.md) 的官方指南，并使用当前文章中的说明来启用监视。
 
 ### <a name="php-and-wordpress-are-not-supported"></a>不支持 PHP 和 WordPress
 
