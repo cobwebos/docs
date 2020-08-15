@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 458cda927a6a123fcd9962efc6ab705e13f43286
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 740311226a662ea3d3f8bba3ee5156e14f74516b
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878776"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244289"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>使用 Docker Compose 部署多个容器
 
@@ -29,7 +29,7 @@ ms.locfileid: "80878776"
 
 此过程要求必须在本地安装和运行多个工具：
 
-* Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+* Azure 订阅。 如果还没有该订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services)。
 * [Docker 引擎](https://www.docker.com/products/docker-engine)。 确认 Docker CLI 是否可在控制台窗口中工作。
 * 具有适当定价层的 Azure 资源。 只有以下定价层适用于此容器：
   * 仅限使用 F0 或标准定价层的“计算机视觉”资源。****
@@ -87,9 +87,9 @@ services:
 使用 Docker Compose 文件可以管理所定义服务的生命周期中的所有阶段：启动、停止和重新生成服务；查看服务状态；记录流。 从项目目录（docker-compose.yaml 文件所在的位置）打开命令行接口。
 
 > [!NOTE]
-> 为了避免出错，请确保主计算机与 Docker 引擎正确共享驱动器。 例如，如果将*E:\publicpreview*用作*docker yaml*文件中的目录，请将驱动器**E**与 docker 共享。
+> 为了避免出错，请确保主计算机与 Docker 引擎正确共享驱动器。 例如，如果将 *E:\publicpreview* 用作 *docker yaml* 文件中的目录，请将驱动器 **E** 与 docker 共享。
 
-在命令行界面中，执行以下命令以启动（或重新启动） *docker yaml*文件中定义的所有服务：
+在命令行界面中，执行以下命令以启动 (或重启) 在 *docker yaml* 文件中定义的所有服务：
 
 ```console
 docker-compose up
@@ -172,7 +172,7 @@ IMAGE ID            REPOSITORY                                                  
 
 ### <a name="test-containers"></a>测试容器
 
-在主计算机上打开浏览器，并使用*yaml*文件中的指定端口（例如）来使用**localhost** http://localhost:5021/swagger/index.html 。 例如，可以在 API 中使用 "**尝试 It** " 功能来测试窗体识别器终结点。 这两个容器 swagger 页面应可用且可测试。
+在主计算机上打开浏览器，并使用*yaml*文件中的指定端口（例如）来使用**localhost** http://localhost:5021/swagger/index.html 。 例如，可以在 API 中使用 " **尝试 It** " 功能来测试窗体识别器终结点。 这两个容器 swagger 页面应可用且可测试。
 
 ![“表单识别器”容器](media/form-recognizer-swagger-page.png)
 

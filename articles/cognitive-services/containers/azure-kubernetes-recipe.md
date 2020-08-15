@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 24e04e166c13f787f756c97716e2bf0143eecbdb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b53476bcb05d6e91b157c24795c963c04e6f4bb4
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128567"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244482"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>将文本分析语言检测容器部署到 Azure Kubernetes 服务
 
@@ -25,7 +25,7 @@ ms.locfileid: "87128567"
 
 此过程要求必须在本地安装和运行多个工具。 请勿使用 Azure Cloud Shell。
 
-* 使用 Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
+* 使用 Azure 订阅。 如果你还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services)。
 * 适用于操作系统的 [Git](https://git-scm.com/downloads)，以便克隆此过程中使用的[示例](https://github.com/Azure-Samples/cognitive-services-containers-samples)。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [Docker 引擎](https://www.docker.com/products/docker-engine)并验证 Docker CLI 是否可在控制台窗口中工作。
@@ -311,14 +311,14 @@ ms.locfileid: "87128567"
 
 1. 根据下表更改 `language.yml` 的语言前端部署行，以添加自己的容器注册表映像名称、客户端密码和文本分析设置。
 
-    语言前端部署设置|目的|
+    语言前端部署设置|用途|
     |--|--|
     |第 32 行<br> `image` 属性|容器注册表中的前端映像的映像位置<br>`<container-registry-name>.azurecr.io/language-frontend:v1`|
     |第 44 行<br> `name` 属性|映像的容器注册表机密，在上一节中称为 `<client-secret>`。|
 
 1. 根据下表更改 `language.yml` 的语言部署行，以添加自己的容器注册表映像名称、客户端密码和文本分析设置。
 
-    |语言部署设置|目的|
+    |语言部署设置|用途|
     |--|--|
     |第 78 行<br> `image` 属性|容器注册表中语言映像的映像位置<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
     |第 95 行<br> `name` 属性|映像的容器注册表机密，在上一节中称为 `<client-secret>`。|

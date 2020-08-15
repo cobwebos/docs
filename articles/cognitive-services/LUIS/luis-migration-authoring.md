@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/13/2020
 ms.author: diberry
-ms.openlocfilehash: 390080fecefcc22decd8bec70d043b28311a725d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 4c9dc04770e5fadd72c5460a4b44c05ffda47cb7
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212631"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245445"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>迁移到 Azure 资源创作密钥
 
@@ -52,7 +52,7 @@ ms.locfileid: "88212631"
 
 ## <a name="migration-prerequisites"></a>迁移先决条件
 
-* 需要与有效的 Azure 订阅相关联。 要求租户管理员将你添加到订阅，或者注册一个 [免费](https://azure.microsoft.com/free/)订阅。
+* 需要与有效的 Azure 订阅相关联。 要求租户管理员将你添加到订阅，或者注册一个 [免费](https://azure.microsoft.com/free/cognitive-services)订阅。
 * 需要从 LUIS 门户或 Azure 门户创建 LUIS Azure 创作资源。 从 LUIS 门户创建创作资源是下一节中讨论的迁移流程的一部分。
 * 如果你是应用程序的协作者，应用程序将不会自动迁移。 建议你通过导出或使用 [导出 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40)来备份这些应用程序。 迁移后，可以将应用导入回 LUIS。 导入过程使用新的应用 ID 创建新应用，你是其所有者。
 * 如果你是应用程序的所有者，则无需导出应用，因为它们会自动迁移。 建议保存每个应用的协作者列表。 提供此列表的电子邮件模板在迁移过程中是可选的。
@@ -60,7 +60,7 @@ ms.locfileid: "88212631"
 
 |门户|目的|
 |--|--|
-|[Azure](https://azure.microsoft.com/free/)| 创建预测和创作资源。<br> 分配资源的参与者。|
+|[Azure](https://azure.microsoft.com/free/cognitive-services)| 创建预测和创作资源。<br> 分配资源的参与者。|
 |[LUIS](https://www.luis.ai)| 迁移到新的创作资源。<br> 在迁移流程中创建新的创作资源。<br> 从 "**管理**  >  **Azure 资源**" 页为应用分配或取消分配预测和创作资源。 <br> 将应用程序从一个创作资源移动到另一个创作资源。  |
 
 > [!Note]

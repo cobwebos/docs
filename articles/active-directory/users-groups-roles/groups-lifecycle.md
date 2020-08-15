@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff0a1fb386776a3ab1a3b7689c69dea7dc717d1e
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: afc9a32c4f0fa5b4b6a2f6c0ec56bbc35b6dde68
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213778"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244476"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>为 Microsoft 365 组配置过期策略
 
@@ -79,7 +79,7 @@ ms.locfileid: "88213778"
 
 3. 在 " **过期** " 页上，您可以：
 
-    - 设置组的生存期（天）。 可以从预设值中任选其一，或自定义一个值（应为 31 天或以上）。
+    - 设置组的生存期（天）。 您可以选择一个预设值，或自定义值 (应为30天或更) 。
     - 指定当组没有所有者时续订和过期通知应发送到的电子邮件地址。
     - 选择过期的 Microsoft 365 组。 可以为以下内容设置过期时间：
       - **全部** Microsoft 365 组

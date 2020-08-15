@@ -7,27 +7,25 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: 2bd38bc7a499aa9178d49f54e27a88a38206e521
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5b688d64641f6dd8779d699bcd1d646e40b19b87
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317563"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245666"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“下载”仪表板
 
 本文提供了有关在合作伙伴中心下载仪表板的信息。 此仪表板显示过去30天内下载请求的列表。
 
-要访问 "下载" 仪表板，请在 "商用 Marketplace" 下打开 "**[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)**" 仪表板。
+要访问 "下载" 仪表板，请在 "商用 Marketplace" 下打开 " **[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** " 仪表板。
 
 >[!NOTE]
 > 有关分析术语的详细定义，请参阅[适用于商业市场分析的常见问题和术语](./faq-terminology.md)。
 
 ## <a name="downloads-dashboard"></a>下载仪表板
 
-"**分析**" 菜单的 "**下载**" 仪表板显示对包含超过1000行的客户或订单数据的任何下载的请求。
-
-当你请求下载包含超过1000行的数据时，你将收到弹出通知和电子邮件，其中包含指向 "**下载**" 仪表板的链接。 这些数据下载将在30天内可用，然后将被删除。
+"**分析**" 菜单的 "**下载**" 仪表板显示对包含超过1000行的客户或订单数据的任何下载的请求。 这些数据下载将在30天内可用，然后将被删除。
 
 ## <a name="next-steps"></a>后续步骤
 

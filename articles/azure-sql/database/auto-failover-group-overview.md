@@ -12,17 +12,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2020
-ms.openlocfilehash: d4398b2bf37ad5dcf60a931f5d4991a3ad00845a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 5a7f13982de000478b14eb75d7341ed2e99c1274
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87826528"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245564"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-自动故障转移组可用于管理服务器中一组数据库或托管实例中所有数据库到另一区域的复制和故障转移。 它是建立在现有[活动异地复制](active-geo-replication-overview.md)功能基础之上的声明性抽象，旨在简化异地复制的数据库的大规模部署和管理。 可以手动启动故障转移，也可以基于用户定义的策略委托 Azure 服务进行故障转移。 使用后一种做法可在发生下述情况后自动恢复次要区域中的多个相关数据库：灾难性故障或其他导致主要区域中 SQL 数据库或 SQL 托管实例完全或部分丧失可用性的计划外事件。 一个故障转移组可以包含一个或多个数据库，通常由同一个应用程序使用。 此外，你还可以使用可读辅助数据库卸载只读查询工作负荷。 由于自动故障转移组涉及多个数据库，因此这些数据库必须在主服务器上进行配置。 自动故障转移组支持将组中所有的数据库复制到另一个区域中唯一的辅助服务器或实例。
+使用自动故障转移组功能，可以管理服务器上的一组数据库或托管实例中的所有数据库到另一个区域的复制和故障转移。 它是建立在现有[活动异地复制](active-geo-replication-overview.md)功能基础之上的声明性抽象，旨在简化异地复制的数据库的大规模部署和管理。 可以手动启动故障转移，也可以基于用户定义的策略委托 Azure 服务进行故障转移。 使用后一种做法可在发生下述情况后自动恢复次要区域中的多个相关数据库：灾难性故障或其他导致主要区域中 SQL 数据库或 SQL 托管实例完全或部分丧失可用性的计划外事件。 一个故障转移组可以包含一个或多个数据库，通常由同一个应用程序使用。 此外，你还可以使用可读辅助数据库卸载只读查询工作负荷。 由于自动故障转移组涉及多个数据库，因此这些数据库必须在主服务器上进行配置。 自动故障转移组支持将组中所有的数据库复制到另一个区域中唯一的辅助服务器或实例。
 
 > [!NOTE]
 > 如果希望多个 Azure SQL 数据库辅助数据库在相同或不同的区域中，请使用[活动异地复制](active-geo-replication-overview.md)。
@@ -135,7 +135,7 @@ ms.locfileid: "87826528"
   
 ## <a name="permissions"></a>权限
 
-故障转移组的权限通过[AZURE RBAC)  (azure 基于角色的访问控制](../../role-based-access-control/overview.md)进行管理。 [SQL Server 参与者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)角色拥有管理故障转移组所需的全部权限。
+故障转移组的权限通过 [AZURE RBAC)  (azure 基于角色的访问控制 ](../../role-based-access-control/overview.md)进行管理。 [SQL Server 参与者](../../role-based-access-control/built-in-roles.md#sql-server-contributor)角色拥有管理故障转移组所需的全部权限。
 
 ### <a name="create-failover-group"></a>创建故障转移组
 
@@ -203,7 +203,7 @@ ms.locfileid: "87826528"
 1. 执行计划性故障转移，将主服务器切换到 B。服务器 A 将成为新的辅助服务器。 故障转移可能会导致几分钟的停机。 实际时间取决于故障转移组的大小。
 2. 使用[活动异地复制](active-geo-replication-overview.md)，在服务器 C 中为服务器 B 上的每个数据库创建额外的辅助数据库。 服务器 B 上的每个数据库具有两个辅助数据库，其中一个位于服务器 A 上，另一个位于服务器 C 上。这可以保证主数据库在转换过程中仍受保护。
 3. 删除故障转移组。 此时，登录将会失败。 这是因为，故障转移组侦听器的 SQL 别名已删除，因此网关无法识别故障转移组名称。
-4. 在服务器 A 与 C 之间重新创建同名的故障转移组。此时，登录将不再失败。
+4. 在服务器 B 和 C 之间重新创建同名的故障转移组。此时，登录名将停止失败。
 5. 将服务器 B 上的所有主数据库添加到新的故障转移组。
 6. 执行故障转移组的计划性故障转移来切换 B 和 C。现在，服务器 C 将成为主服务器，B 将成为辅助服务器。 服务器 A 上的所有辅助数据库将自动链接到 C 上的主数据库。如步骤 1 中所述，故障转移可能会导致几分钟的停机。
 7. 删除服务器 A。服务器 A 上的所有数据库将自动删除。
@@ -231,7 +231,7 @@ ms.locfileid: "87826528"
 > [!IMPORTANT]
 > 在子网中创建的第一个托管实例确定同一子网中所有后续实例的 DNS 区域。 这意味着，同一子网中的两个实例不能属于不同的 DNS 区域。
 
-有关在主要实例所在的 DNS 区域中创建辅助 SQL 托管实例的详细信息，请参阅[创建辅助托管实例](../managed-instance/failover-group-add-instance-tutorial.md#3---create-a-secondary-managed-instance)。
+有关在主要实例所在的 DNS 区域中创建辅助 SQL 托管实例的详细信息，请参阅[创建辅助托管实例](../managed-instance/failover-group-add-instance-tutorial.md#create-a-secondary-managed-instance)。
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>在两个实例之间启用复制流量
 
@@ -239,7 +239,7 @@ ms.locfileid: "87826528"
 
 ### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>在不同订阅中的托管实例之间创建故障转移组
 
-可以在两个不同订阅中的 SQL 托管实例之间创建故障转移组，前提是订阅与同一个[Azure Active Directory 租户](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)相关联。 使用 PowerShell API 时，可以通过 `PartnerSubscriptionId` 为辅助 SQL 托管实例指定参数来执行此操作。 使用 REST API 时，`properties.managedInstancePairs` 参数中包含的每个实例 ID 都可以有自己的订阅 ID。
+可以在两个不同订阅中的 SQL 托管实例之间创建故障转移组，前提是订阅与同一个 [Azure Active Directory 租户](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis#terminology)相关联。 使用 PowerShell API 时，可以通过 `PartnerSubscriptionId` 为辅助 SQL 托管实例指定参数来执行此操作。 使用 REST API 时，`properties.managedInstancePairs` 参数中包含的每个实例 ID 都可以有自己的订阅 ID。
   
 > [!IMPORTANT]
 > Azure 门户不支持创建跨不同订阅的故障转移组。 此外，对于跨不同订阅和/或资源组的现有故障转移组，无法通过门户从主要 SQL 托管实例手动启动故障转移。 改为从异地辅助实例启动它。
@@ -398,7 +398,7 @@ CREATE LOGIN foo WITH PASSWORD = '<enterStrongPasswordHere>', SID = <login_sid>;
 
 ## <a name="programmatically-managing-failover-groups"></a>以编程方式管理故障转移组
 
-如上所述，也可以使用 Azure PowerShell 和 REST API 以编程方式管理自动故障转移组和活动异地复制。 下表描述了可用的命令集。 活动异地复制包括一组用于管理的 Azure 资源管理器 API，其中包括 [Azure SQL 数据库 REST API](https://docs.microsoft.com/rest/api/sql/) 和 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/)。 这些 API 需要使用资源组，并支持基于角色的安全性 (RBAC)。 有关如何实现访问角色的详细信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制](../../role-based-access-control/overview.md)。
+如上所述，也可以使用 Azure PowerShell 和 REST API 以编程方式管理自动故障转移组和活动异地复制。 下表描述了可用的命令集。 活动异地复制包括一组用于管理的 Azure 资源管理器 API，其中包括 [Azure SQL 数据库 REST API](https://docs.microsoft.com/rest/api/sql/) 和 [Azure PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/)。 这些 API 需要使用资源组，并支持基于角色的安全性 (RBAC)。 有关如何实现访问角色的详细信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制 ](../../role-based-access-control/overview.md)。
 
 ### <a name="manage-sql-database-failover"></a>管理 SQL 数据库故障转移
 

@@ -3,34 +3,41 @@ title: 预览版 - 创建使用你自己的密钥加密的映像版本
 description: 使用客户管理的加密密钥在共享映像库中创建映像版本。
 author: cynthn
 ms.service: virtual-machines
+ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 08/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 469e225a1cc40dc2ecc45339d9355484e87c4af2
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 0d2b840b401dc90b332f91c93a9eda03d6643432
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86223578"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245547"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>预览版：使用客户管理的密钥加密映像
 
 库映像是作为托管磁盘存储的，因此会使用服务器端加密来自动对其进行加密。 服务器端加密使用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)，这是可用的最强分组加密技术之一，并且符合 FIPS 140-2 规范。 有关作为 Azure 托管磁盘基础的加密模块的详细信息，请参阅[加密 API：下一代](/windows/desktop/seccng/cng-portal)。
 
-可以使用平台管理的密钥加密映像，也可以使用你自己的密钥管理加密。 如果你选择管理使用自己的密钥进行的加密，可以指定客户管理的密钥，用于加密和解密映像中的所有磁盘。 
+你可以依赖于平台管理的密钥来加密映像、使用你自己的密钥，或者可以同时使用这两个密钥进行双重加密。 如果你选择管理使用自己的密钥进行的加密，可以指定客户管理的密钥，用于加密和解密映像中的所有磁盘。 
 
 通过客户管理的密钥进行的服务器端加密使用 Azure Key Vault。 可将 [RSA 密钥](../key-vault/keys/hsm-protected-keys.md)导入到 Key Vault，或者在 Azure Key Vault 中生成新的 RSA 密钥。
 
-若要对映像使用客户管理的密钥，首先需要一个 Azure Key Vault。 接下来，创建一个磁盘加密集。 然后，在创建映像版本时使用该磁盘加密集。
+## <a name="prerequisites"></a>先决条件
 
-有关创建和使用磁盘加密集的详细信息，请参阅[客户管理的密钥](./windows/disk-encryption.md#customer-managed-keys)。
+本文要求您已将磁盘加密设置为可用于映像。
+
+- 若要仅使用客户托管的密钥，请参阅使用[Azure 门户](./windows/disks-enable-customer-managed-keys-portal.md)或[PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset)**启用使用服务器端加密的客户管理**的密钥。
+
+- 若要同时使用平台管理的密钥和客户托管的密钥 (进行双重加密) ，请参阅使用[Azure 门户](./windows/disks-enable-double-encryption-at-rest-portal.md)或[PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md)**启用静态加密**。
+    > [!IMPORTANT]
+    > 必须使用此链接 [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates) 访问 Azure 门户。 双重加密当前在公共 Azure 门户中不可见，不使用链接。
 
 ## <a name="limitations"></a>限制
 
 使用客户管理的密钥加密共享映像库映像时存在几项限制：  
 
-- 加密密钥集必须与映像位于同一订阅和区域中。
+- 加密密钥集必须与映像在同一订阅和区域中。
 
 - 不能共享使用客户管理的密钥的映像。 
 
@@ -90,7 +97,7 @@ $encryption1 = @{OSDiskImage=$osDiskImageEncryption;DataDiskImages=$dataDiskImag
 
 $region1 = @{Name='West US';ReplicaCount=1;StorageAccountType=Standard_LRS;Encryption=$encryption1}
 
-$targetRegion = @{$region1}
+$targetRegion = @($region1)
 
 
 # Create the image
@@ -150,6 +157,7 @@ az provider register -n Microsoft.Compute
 az sig image-version create \
    -g MyResourceGroup \
    --gallery-image-version 1.0.0 \
+   --location westus \
    --target-regions westus=2=standard_lrs \
    --target-region-encryption DiskEncryptionSet1,0,DiskEncryptionSet2 \
    --gallery-name MyGallery \
@@ -165,11 +173,12 @@ az sig image-version create \
 az sig image-version create \
    -g MyResourceGroup \
    --gallery-image-version 1.0.0 \
+   --location westus\
    --target-regions westus=2=standard_lrs \
    --target-region-encryption DiskEncryptionSet1,0,DiskEncryptionSet2 \
-   --os-snapshot "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/myOSSnapshot"
-   --data-snapshot-luns 0
-   --data-snapshots "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/myDDSnapshot"
+   --os-snapshot "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/myOSSnapshot" \
+   --data-snapshot-luns 0 \
+   --data-snapshots "/subscriptions/<subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/snapshots/myDDSnapshot" \
    --gallery-name MyGallery \
    --gallery-image-definition MyImage 
    
@@ -182,18 +191,22 @@ az sig image-version create \
 
 ## <a name="portal"></a>门户
 
-在门户中创建映像版本时，可以使用“加密”选项卡输入有关存储加密集的信息。
+在门户中创建映像版本时，可以使用 " **加密** " 选项卡输入 "应用存储加密集"。
+
+> [!IMPORTANT]
+> 若要使用双加密，必须使用此链接 [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates) 访问 Azure 门户。 双重加密当前在公共 Azure 门户中不可见，不使用链接。
+
 
 1. 在“创建映像版本”页中，选择“加密”选项卡。 
-2. 在“加密类型”中，选择“使用客户管理的密钥进行静态加密”。  
+2. 在 " **加密类型**" 中，选择 "静态加密"，同时选择 "使用 **客户管理的密钥** " 或 " **使用平台管理的密钥和客户托管的密钥进行双重加密**"。 
 3. 对于映像中的每个磁盘，从下拉列表中选择要使用的“磁盘加密集”。 
 
 ### <a name="create-the-vm"></a>创建 VM
 
-可以从共享映像库创建 VM，并使用客户管理的密钥来加密磁盘。 在门户中创建 VM 时，请在“磁盘”选项卡上，选择“使用客户管理的密钥进行静态加密”作为“加密类型”。   然后可以从下拉列表中选择加密集。
+可以从映像版本创建 VM，并使用客户管理的密钥来加密磁盘。 当你在门户中创建 VM 时，请在 " **磁盘** " 选项卡上，选择 "以 **客户管理的密钥加密** " 或 " **通过平台管理的密钥和客户托管的密钥** 加密" 作为 **加密类型**。 然后可以从下拉列表中选择加密集。
 
 ## <a name="next-steps"></a>后续步骤
 
 详细了解[服务器端磁盘加密](./windows/disk-encryption.md)。
 
-有关如何提供购买计划信息的信息，请参阅[创建映像时提供 Azure Marketplace 购买计划信息](marketplace-images.md)。
+有关如何提供购买计划信息的信息，请参阅 [创建映像时提供 Azure Marketplace 购买计划信息](marketplace-images.md)。

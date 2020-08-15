@@ -4,12 +4,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI�
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: b1bf459c530195b8855169123b8f496e4969403b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 93cbe6d2a682009ee883d11bdd99fd69b693c5c4
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872423"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246006"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 
@@ -82,12 +82,12 @@ AKS 群集中每个节点的最大 Pod 数为 250。 每个节点的默认最大
 > 上表中的最小值由 AKS 服务严格强制实施。 不能将 maxPods 值设置为低于所示的最小值，因为这样做可能会阻止群集启动。
 
 * **Azure CLI**：使用 [az aks create][az-aks-create] 命令部署群集时，请指定 `--max-pods` 参数。 最大值为 250。
-* **资源管理器模板**：在 `maxPods` 使用资源管理器模板部署群集时，在[ManagedClusterAgentPoolProfile]对象中指定属性。 最大值为 250。
+* **资源管理器模板**：在 `maxPods` 使用资源管理器模板部署群集时，在 [ManagedClusterAgentPoolProfile] 对象中指定属性。 最大值为 250。
 * **Azure 门户**：使用 Azure 门户部署群集时，不能更改每个节点的最大 Pod 数。 使用 Azure 门户部署时，Azure CNI 网络群集中每个节点的 Pod 数限制为 30 个。
 
 ### <a name="configure-maximum---existing-clusters"></a>配置最大值 - 现有群集
 
-创建新节点池时，可以定义“每个节点的 maxPod”设置。 如果需要增加现有群集的“每个节点的 maxPod”设置，请使用新的所需 maxPod 计数添加新的节点池。 将 Pod 迁移到新池后，请删除旧池。 若要在群集中删除任何较旧的池，请确保正在设置 "[系统节点池" 文档][system-node-pools]中定义的节点池模式。
+创建新节点池时，可以定义“每个节点的 maxPod”设置。 如果需要增加现有群集的“每个节点的 maxPod”设置，请使用新的所需 maxPod 计数添加新的节点池。 将 Pod 迁移到新池后，请删除旧池。 若要在群集中删除任何较旧的池，请确保正在设置 " [系统节点池" 文档][system-node-pools]中定义的节点池模式。
 
 ## <a name="deployment-parameters"></a>部署参数
 
@@ -152,6 +152,10 @@ az aks create \
 * 是否可以在群集子网中部署 VM？
 
   是的。
+
+* *对于源自 Azure CNI 的 pod 的流量，哪些源 IP 对外部系统进行查看？*
+
+  与 AKS 群集处于同一虚拟网络中的系统，请参阅 pod IP 作为来自 pod 的任何流量的源地址。 AKS 群集虚拟网络外部的系统会看到节点 IP 作为来自 pod 的任何流量的源地址。 
 
 * *是否可以配置基于 Pod 的网络策略？*
 

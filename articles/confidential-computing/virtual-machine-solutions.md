@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 6e853edf5b7ba756aaedceaf59b1f7d1d7e48b39
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: f9b73e0919d660947edd0417f7379b3f6e6140c0
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985420"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245846"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure 虚拟机上的解决方案
 
@@ -32,45 +32,22 @@ Azure 机密计算虚拟机旨在保护云中处理的数据和代码的机密�
 若要获取可用区域和可用性区域中所有正式版机密计算 VM 大小的列表，请在 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) 中运行以下命令：
 
 ```azurecli-interactive
-az vm list-skus 
-    --size dc 
-    --query "[?family=='standardDCSv2Family'].{name:name,locations:locationInfo[0].location,AZ_a:locationInfo[0].zones[0],AZ_b:locationInfo[0].zones[1],AZ_c:locationInfo[0].zones[2]}" 
-    --all 
+az vm list-skus `
+    --size dc `
+    --query "[?family=='standardDCSv2Family'].{name:name,locations:locationInfo[0].location,AZ_a:locationInfo[0].zones[0],AZ_b:locationInfo[0].zones[1],AZ_c:locationInfo[0].zones[2]}" `
+    --all `
     --output table
-```
-
-从 2020 年 5 月开始，这些 SKU 已在以下区域和可用性区域中推出：
-
-```output
-Name              Locations      AZ_a
-----------------  -------------  ------
-Standard_DC8_v2   eastus         2
-Standard_DC1s_v2  eastus         2
-Standard_DC2s_v2  eastus         2
-Standard_DC4s_v2  eastus         2
-Standard_DC8_v2   CanadaCentral
-Standard_DC1s_v2  CanadaCentral
-Standard_DC2s_v2  CanadaCentral
-Standard_DC4s_v2  CanadaCentral
-Standard_DC8_v2   uksouth        3
-Standard_DC1s_v2  uksouth        3
-Standard_DC2s_v2  uksouth        3
-Standard_DC4s_v2  uksouth        3
-Standard_DC8_v2   CentralUSEUAP
-Standard_DC1s_v2  CentralUSEUAP
-Standard_DC2s_v2  CentralUSEUAP
-Standard_DC4s_v2  CentralUSEUAP
 ```
 
 若要更详细地了解上述大小，请运行以下命令：
 
 ```azurecli-interactive
-az vm list-skus 
-    --size dc 
+az vm list-skus `
+    --size dc `
     --query "[?family=='standardDCSv2Family']"
 ```
 ### <a name="dedicated-host-requirements"></a>专用主机要求
-在 DCSv2 系列 VM 系列中部署**Standard_DC8_v2**虚拟机大小将占用整个主机，而不会与其他租户或订阅共享。 此 VM SKU 系列提供了你可能需要的隔离，以满足通常通过专用主机服务实现的符合性和安全法规要求。 选择**Standard_DC8_v2** SKU 时，物理主机服务器会将所有可用的硬件资源（包括 EPC 内存）分配给虚拟机。 请注意，此功能在基础结构设计中存在，并且将支持**Standard_DC8_v2**的所有功能。 此部署与其他 Azure VM 系列提供的[Azure 专用主机](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)服务不同。
+在 DCSv2 系列 VM 系列中部署 **Standard_DC8_v2** 虚拟机大小将占用整个主机，而不会与其他租户或订阅共享。 此 VM SKU 系列提供了你可能需要的隔离，以满足通常通过专用主机服务实现的符合性和安全法规要求。 选择 **Standard_DC8_v2** SKU 时，物理主机服务器会将所有可用的硬件资源（包括 EPC 内存）分配给虚拟机。 请注意，此功能在基础结构设计中存在，并且将支持 **Standard_DC8_v2** 的所有功能。 此部署与其他 Azure VM 系列提供的 [Azure 专用主机](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts) 服务不同。
 
 
 ## <a name="deployment-considerations"></a>部署注意事项
@@ -101,17 +78,17 @@ az vm list-skus
 
 Azure 机密计算目前不支持通过可用性区域实现区域冗余。 若要实现机密计算的最高可用性和冗余，请使用[可用性集](../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)。 由于硬件限制，机密计算实例的可用性集最多只能包含 10 个更新域。 
 
-## <a name="deploying-via-an-azure-resource-manager-template"></a>通过 Azure 资源管理器模板部署 
+## <a name="deployment-with-azure-resource-manager-arm-template"></a>用 Azure 资源管理器 (ARM) 模板进行部署
 
 Azure 资源管理器是 Azure 的部署和管理服务。 它提供一个管理层用于在 Azure 订阅中创建、更新和删除资源。 部署后，可以使用访问控制、锁和标记等管理功能来保护和组织资源。
 
-若要了解 Azure 资源管理器模板，请参阅[模板部署概述](../azure-resource-manager/templates/overview.md)。
+若要了解 ARM 模板，请参阅 [模板部署概述](../azure-resource-manager/templates/overview.md)。
 
-若要在 Azure 资源管理器模板中部署 DCsv2 系列 VM，可以利用[虚拟机资源](../virtual-machines/windows/template-description.md)。 确保为 **vmSize** 和 **imageReference** 指定正确的属性。
+若要在 ARM 模板中部署 DCsv2 系列 VM，你将利用 [虚拟机资源](../virtual-machines/windows/template-description.md)。 确保为 **vmSize** 和 **imageReference** 指定正确的属性。
 
 ### <a name="vm-size"></a>VM 大小
 
-在 Azure 资源管理器模板中为虚拟机资源指定以下大小之一。 此字符串用作 **properties** 中的 **vmSize**。
+在虚拟机资源的 ARM 模板中指定以下大小之一。 此字符串用作 **properties** 中的 **vmSize**。
 
 ```json
   [

@@ -3,18 +3,23 @@ title: 检查注册表运行状况
 description: 了解如何运行快速诊断命令，以便确定使用 Azure 容器注册表时常见的问题，包括本地 Docker 配置和连接到注册表的问题
 ms.topic: article
 ms.date: 07/02/2019
-ms.openlocfilehash: ea4432c9e92c4a0380517e39678814e2d1cb3bfc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f27a99818260553cbd7ba26158db0064c145a21f
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74456411"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245377"
 ---
 # <a name="check-the-health-of-an-azure-container-registry"></a>检查 Azure 容器注册表的运行状况
 
 使用 Azure 容器注册表时，可能会偶尔遇到问题。 例如，由于本地环境中的 Docker 出现问题，可能无法拉取容器映像。 或者，可能会因网络问题而无法连接到注册表。 
 
 进行诊断时，首先请运行 [az acr check-health][az-acr-check-health] 命令，了解环境的运行状况，并可选择访问目标注册表。 此命令可在 Azure CLI 2.0.67 或更高版本中使用。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli]。
+
+有关其他注册表疑难解答指南，请参阅：
+* [注册表登录疑难解答](container-registry-troubleshoot-login.md)
+* [对注册表中的网络问题进行故障排除](container-registry-troubleshoot-access.md)
+* [注册表性能疑难解答](container-registry-troubleshoot-performance.md)
 
 ## <a name="run-az-acr-check-health"></a>运行 az acr check-health
 

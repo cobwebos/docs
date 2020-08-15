@@ -11,35 +11,35 @@ ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: erhopf
 ms.custom: seodec18, seo-javascript-october2019
-ms.openlocfilehash: c15601b4c58ce072881b3c244f10bc196bceb853
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d7464d1788101eef7bdad95545056bb32e46c395
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167804"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245462"
 ---
 # <a name="try-the-speech-service-for-free"></a>免费试用语音服务
 
 在本文中，你将选择一个选项来轻松地免费测试语音服务，以便你能够发现服务的功能，并决定它是否适合你的需求。 选择以下两个选项之一，具体取决于你的情况和用例：
 
-- [选项 1](#no-card)：立即获取**免费试用版**API 密钥，而无需提供任何信用卡信息 (需要具有现有的 Azure 帐户) 。 **免费试用**期限为30天，数据将在结束时删除。 此选项最适合用于对服务的快速试验。
-- [选项 2](#new-resource)：在 Azure 中创建新的语音资源，免费**免费订阅** (所需的信用卡信息) 。 **免费订阅**主要有比付费订阅更苛刻的速率限制。 若要测试服务，计划在将来升级到付费订阅，并且不希望丢失数据，则可使用此选项。
+- [选项 1](#no-card)：立即获取 **免费试用版** API 密钥，而无需提供任何信用卡信息 (需要具有现有的 Azure 帐户) 。 **免费试用**期限为30天，数据将在结束时删除。 此选项最适合用于对服务的快速试验。
+- [选项 2](#new-resource)：在 Azure 中创建新的语音资源，免费 **免费订阅** (所需的信用卡信息) 。 **免费订阅**主要有比付费订阅更苛刻的速率限制。 若要测试服务，计划在将来升级到付费订阅，并且不希望丢失数据，则可使用此选项。
 
 ## <a name="try-the-speech-service-without-credit-card-info"></a><a id="no-card"></a>试用语音服务，无需信用卡信息
 
 完成以下步骤以激活30天免费试用版并获取 API 密钥。 在完成以下步骤后，你的试用期将立即开始。
 
-1. 请[尝试 "试用认知服务](https://azure.microsoft.com/try/cognitive-services/)"。
+1. 请 [尝试 "试用认知服务](https://azure.microsoft.com/free/cognitive-services)"。
 1. 选择“语音 API”选项卡。****
-1. 选择 "**获取 API 密钥**"。
+1. 选择 " **获取 API 密钥**"。
 
 系统会提供计费选项。 选择 "免费" 选项，然后阅读并批准用户协议。 你将看到可用于在30天内免费试用语音服务的密钥。
 
 ## <a name="try-the-speech-service-by-creating-an-azure-resource"></a><a id="new-resource"></a>通过创建 Azure 资源来试用语音服务
 
-对于以下步骤，你需要 Microsoft 帐户和 Azure 帐户。 如果没有 Microsoft 帐户，则可以在[Microsoft 帐户门户](https://account.microsoft.com/account)上免费注册一个帐户。 选择**Microsoft 登录**然后在系统要求登录时，选择 "**创建 Microsoft 帐户**"。 按步骤创建并验证新的 Microsoft 帐户。
+对于以下步骤，你需要 Microsoft 帐户和 Azure 帐户。 如果没有 Microsoft 帐户，则可以在 [Microsoft 帐户门户](https://account.microsoft.com/account)上免费注册一个帐户。 选择 **Microsoft 登录** 然后在系统要求登录时，选择 " **创建 Microsoft 帐户**"。 按步骤创建并验证新的 Microsoft 帐户。
 
-拥有 Microsoft 帐户后，请在[Azure 注册页](https://azure.microsoft.com/free/ai/)上，选择 "**开始免费**"，然后使用 Microsoft 帐户创建新的 Azure 帐户。
+拥有 Microsoft 帐户后，请在 [Azure 注册页](https://azure.microsoft.com/free/ai/)上，选择 " **开始免费**"，然后使用 Microsoft 帐户创建新的 Azure 帐户。
 
 > [!NOTE]
 > 语音服务有两个服务层级：免费和订阅，它们具有不同的限制和优势。 当你注册一个免费的 Azure 帐户时，它附带了 $200 服务信用额度，你可以将其应用于付费语音服务订阅，有效期为30天。
@@ -87,7 +87,7 @@ ms.locfileid: "88167804"
 
 ## <a name="about-regions"></a>关于区域
 
-- 如果你的应用程序使用[语音 SDK](speech-sdk.md)，则在 `westus` 创建语音配置时提供区域标识符，如。
+- 如果你的应用程序使用 [语音 SDK](speech-sdk.md)，则在 `westus` 创建语音配置时提供区域标识符，如。
 - 如果应用程序使用某个语音服务的 [REST API](rest-apis.md)，则区域是你在发出请求时使用的终结点 URI 的一部分。
 - 为某个区域创建的密钥仅在该区域有效。 尝试在其他区域使用此类密钥会导致身份验证错误。
 

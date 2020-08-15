@@ -5,16 +5,21 @@ author: sajayantony
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: sajaya
-ms.openlocfilehash: 1c2330f1ba71e2a72a1a44df7af6444181f5f9ea
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 02facedda206a5621cabe62a07520303635dc3ff
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836388"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245360"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>有关 Azure 容器注册表的常见问题解答
 
 本文解答有关 Azure 容器注册表的常见问题和已知问题。
+
+有关注册表疑难解答指南，请参阅：
+* [注册表登录疑难解答](container-registry-troubleshoot-login.md)
+* [对注册表中的网络问题进行故障排除](container-registry-troubleshoot-access.md)
+* [注册表性能疑难解答](container-registry-troubleshoot-performance.md)
 
 ## <a name="resource-management"></a>资源管理
 
@@ -28,7 +33,7 @@ ms.locfileid: "87836388"
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>是否可以使用资源管理器模板创建 Azure 容器注册表？
 
-是的。 下面是可用于创建注册表的[模版](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry)。
+是的。 这里提供了[模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry)，可以用来创建注册表。
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>ACR 中是否提供对映像的安全漏洞扫描？
 
@@ -254,7 +259,7 @@ ACR 支持提供不同权限级别的[自定义角色](container-registry-roles.
 
 ### <a name="how-do-i-enable-anonymous-pull-access"></a>如何实现匿名提取访问？
 
-为匿名（公共）提取访问设置 Azure 容器注册表目前是一项预览功能。 如果你在注册表中有任何[范围映射 (用户) 或令牌资源](https://aka.ms/acr/repo-permissions)，请先删除它们，然后再 (系统范围映射) 。 若要启用公共访问，请在 https://aka.ms/acr/support/create-ticket 中开具支持票证。 有关详细信息，请参阅 [Azure 反馈论坛](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)。
+为匿名（公共）提取访问设置 Azure 容器注册表目前是一项预览功能。 如果你在注册表中有任何 [范围映射 (用户) 或令牌资源](https://aka.ms/acr/repo-permissions) ，请先删除它们，然后再 (系统范围映射) 。 若要启用公共访问，请在 https://aka.ms/acr/support/create-ticket 中开具支持票证。 有关详细信息，请参阅 [Azure 反馈论坛](https://feedback.azure.com/forums/903958-azure-container-registry/suggestions/32517127-enable-anonymous-access-to-registries)。
 
 
 
@@ -435,7 +440,7 @@ curl $redirect_url
 
 请与网络管理员联系，或者检查网络配置和连接性。 尝试使用 Azure CLI 来运行 `az acr check-health -n yourRegistry`，以便检查环境是否能够连接到容器注册表。 另外，也可尝试在浏览器中使用 incognito 或专用会话，避免使用任何过时的浏览器缓存或 Cookie。
 
-### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>为什么我的拉取或推送请求失败，出现操作不被允许的情况？
+### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>为什么拉取或推送请求失败，并出现不受允许的操作？
 
 以下是一些可能出现不允许进行操作的情况：
 * 不再支持经典注册表。 请使用 [az acr update](/cli/azure/acr?view=azure-cli-latest#az-acr-update)或 Azure 门户升级到受支持的[服务层](https://aka.ms/acr/skus)。
@@ -503,8 +508,8 @@ az acr task list-runs -r $myregistry --run-status Running --query '[].runId' -o 
 
 | Git 服务 | 源上下文 | 手动生成 | 通过“提交”触发器自动生成 |
 |---|---|---|---|
-| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | “是” | “是” |
-| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | “是” | 是 |
+| GitHub | `https://github.com/user/myapp-repo.git#mybranch:myfolder` | 是 | 是 |
+| Azure Repos | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` | 是 | 是 |
 | GitLab | `https://gitlab.com/user/myapp-repo.git#mybranch:myfolder` | 是 | 否 |
 | BitBucket | `https://user@bitbucket.org/user/mayapp-repo.git#mybranch:myfolder` | 是 | 否 |
 

@@ -5,12 +5,12 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-javascript
 ms.topic: how-to
-ms.openlocfilehash: 18ccec5332e3751a86225ab087a1f68b0577cf96
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 447b8a07f6bbda42be4def96ee8f1244fa752526
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406089"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245581"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>快速入门： Node.js 的 QnA Maker REST Api
 
@@ -31,9 +31,9 @@ ms.locfileid: "87406089"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
+* Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 * 最新版本的 [Node.js](https://nodejs.org)。
-* 您必须具有[QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和终结点（包括资源名称），请在 Azure 门户中为资源选择“快速入门”****。
+* 您必须具有 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)。 若要检索密钥和终结点（包括资源名称），请在 Azure 门户中为资源选择“快速入门”****。
 
 ## <a name="setting-up"></a>设置
 
@@ -88,7 +88,7 @@ const request = require("requestretry");
 
 设置以下环境值：
 
-* `QNAMAKER_RESOURCE_KEY`-**密钥**为32字符串，在 "Azure 门户" 的 "QnA Maker 资源" 的 "**快速启动**" 页上提供。 这与预测终结点密钥不同。
+* `QNAMAKER_RESOURCE_KEY` - **密钥** 为32字符串，在 "Azure 门户" 的 "QnA Maker 资源" 的 " **快速启动** " 页上提供。 这与预测终结点密钥不同。
 * `QNAMAKER_AUTHORING_ENDPOINT` - 创作终结点的格式为 `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`，其中包括**资源名称**。 这与用于查询预测终结点的 URL 不同。
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=authorization)]

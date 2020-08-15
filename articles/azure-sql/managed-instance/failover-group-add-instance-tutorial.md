@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: 47f33d8b1a7792487491cbe7f2ddb5c7f5b087af
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c898eeaf99b8a24b992f1daa82b9149327b7a457
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88002982"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245770"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>教程：将 SQL 托管实例添加到故障转移组
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -52,7 +52,7 @@ ms.locfileid: "88002982"
 ---
 
 
-## <a name="1---create-a-resource-group-and-primary-managed-instance"></a>1 - 创建资源组和主托管实例
+## <a name="create-a-resource-group-and-primary-managed-instance"></a>创建资源组和主托管实例
 
 此步骤将使用 Azure 门户或 PowerShell 为故障转移组创建资源组和主托管实例。 
 
@@ -61,13 +61,13 @@ ms.locfileid: "88002982"
 
 使用 Azure 门户创建资源组和主托管实例。 
 
-1. 在 Azure 门户的左侧菜单中选择“Azure SQL”。 如果**AZURE SQL**不在列表中，请选择 "**所有服务**"，然后 `Azure SQL` 在 "搜索" 框中键入。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
+1. 在 Azure 门户的左侧菜单中选择“Azure SQL”。 如果 **AZURE SQL** 不在列表中，请选择 " **所有服务**"，然后 `Azure SQL` 在 "搜索" 框中键入。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
 1. 选择“+ 添加”以打开“选择 SQL 部署选项”页。 可以通过在“数据库”**** 磁贴上选择“显示详细信息”**** 来查看有关不同数据库的其他信息。
 1. 在 " **SQL 托管实例**" 磁贴上选择 "**创建**"。 
 
     ![选择 SQL 托管实例](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
-1. 在 "**创建 AZURE SQL 托管实例**" 页上的 "**基本**信息" 选项卡上：
+1. 在 " **创建 AZURE SQL 托管实例** " 页上的 " **基本** 信息" 选项卡上：
     1. 在“项目详细信息”下，从下拉列表中选择你的订阅，然后选择“创建新资源组”。   键入资源组的名称，例如 `myResourceGroup`。 
     1. 在“SQL 托管实例详细信息”下，提供托管实例的名称以及要将该实例部署到的区域。 将“计算 + 存储”保留为默认值。 
     1. 在“管理员帐户”下，提供管理员登录名（例如 `azureuser`）和复杂的管理员密码。 
@@ -404,7 +404,7 @@ ms.locfileid: "88002982"
 
 ---
 
-## <a name="2---create-secondary-virtual-network"></a>2 - 创建辅助虚拟网络
+## <a name="create-secondary-virtual-network"></a>创建辅助虚拟网络
 
 如果使用 Azure 门户创建托管实例，则需要单独创建虚拟网络，因为主托管实例和辅助托管实例的子网不得使用重叠的范围。 如果使用 PowerShell 配置托管实例，请直接跳到步骤 3。 
 
@@ -444,7 +444,7 @@ ms.locfileid: "88002982"
 
 ---
 
-## <a name="3---create-a-secondary-managed-instance"></a>3 - 创建辅助托管实例
+## <a name="create-a-secondary-managed-instance"></a>创建辅助托管实例
 此步骤将在 Azure 门户中创建一个辅助托管实例，同时在两个托管实例之间配置网络。 
 
 第二个托管实例必须：
@@ -455,7 +455,7 @@ ms.locfileid: "88002982"
 
 使用 Azure 门户创建辅助托管实例。 
 
-1. 在 Azure 门户的左侧菜单中选择“Azure SQL”。 如果**AZURE SQL**不在列表中，请选择 "**所有服务**"，然后 `Azure SQL` 在 "搜索" 框中键入。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
+1. 在 Azure 门户的左侧菜单中选择“Azure SQL”。 如果 **AZURE SQL** 不在列表中，请选择 " **所有服务**"，然后 `Azure SQL` 在 "搜索" 框中键入。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
 1. 选择“+ 添加”以打开“选择 SQL 部署选项”页。 可以通过在“数据库”**** 磁贴上选择“显示详细信息”**** 来查看有关不同数据库的其他信息。
 1. 在 " **SQL 托管实例**" 磁贴上选择 "**创建**"。 
 
@@ -734,9 +734,9 @@ ms.locfileid: "88002982"
 
 ---
 
-## <a name="4---create-a-primary-gateway"></a>4 - 创建主网关 
+## <a name="create-a-primary-gateway"></a>创建主网关 
 
-对于要参与故障转移组的两个托管实例，必须在这两个托管实例的虚拟网络之间配置 ExpressRoute 或网关，以便能够进行网络通信。 如果选择配置 [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 而不是连接两个 VPN 网关，请跳到[步骤 7](#7---create-a-failover-group)。  
+对于要参与故障转移组的两个托管实例，必须在这两个托管实例的虚拟网络之间配置 ExpressRoute 或网关，以便能够进行网络通信。 如果选择配置 [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) 而不是连接两个 VPN 网关，请跳到[步骤 7](#create-a-failover-group)。  
 
 本文提供了创建两个 VPN 网关并将它们连接起来的步骤，但如果你已配置 ExpressRoute，则可以改为创建故障转移组。 
 
@@ -767,7 +767,6 @@ ms.locfileid: "88002982"
     | **网关类型** | 选择“VPN”。 |
     | **VPN 类型** | 选择“基于路由”。 |
     | **SKU**| 保留默认值 `VpnGw1`。 |
-    | **位置**| 主托管实例和主虚拟网络所在的位置。   |
     | **虚拟网络**| 选择在第 2 部分创建的虚拟网络，例如 `vnet-sql-mi-primary`。 |
     | **公共 IP 地址**| 选择“新建”。 |
     | **公共 IP 地址名称**| 输入 IP 地址的名称，例如 `primary-gateway-IP`。 |
@@ -831,7 +830,7 @@ ms.locfileid: "88002982"
 ---
 
 
-## <a name="5---create-secondary-gateway"></a>5 - 创建辅助网关 
+## <a name="create-secondary-gateway"></a>创建辅助网关 
 此步骤使用 Azure 门户为辅助托管实例的虚拟网络创建网关。 
 
 
@@ -849,8 +848,7 @@ ms.locfileid: "88002982"
    | **网关类型** | 选择“VPN”。 |
    | **VPN 类型** | 选择“基于路由”。 |
    | **SKU**| 保留默认值 `VpnGw1`。 |
-   | **位置**| 辅助托管实例和辅助虚拟网络所在的位置。   |
-   | **虚拟网络**| 选择在第 2 部分创建的虚拟网络，例如 `vnet-sql-mi-secondary`。 |
+   | **虚拟网络**| 选择辅助托管实例的虚拟网络，例如 `vnet-sql-mi-secondary` 。 |
    | **公共 IP 地址**| 选择“新建”。 |
    | **公共 IP 地址名称**| 输入 IP 地址的名称，例如 `secondary-gateway-IP`。 |
    | &nbsp; | &nbsp; |
@@ -883,7 +881,7 @@ ms.locfileid: "88002982"
                      -VirtualNetwork $secondaryVirtualNetwork
    $drLocation = $secondaryVirtualNetwork.Location
    
-   Write-host "Creating primary gateway..."
+   Write-host "Creating secondary gateway..."
    Write-host "This will take some time."
    $secondaryGWPublicIP = New-AzPublicIpAddress -Name $secondaryGWPublicIPAddress -ResourceGroupName $resourceGroupName `
             -Location $drLocation -AllocationMethod Dynamic
@@ -911,7 +909,7 @@ ms.locfileid: "88002982"
 ---
 
 
-## <a name="6---connect-the-gateways"></a>6 - 连接网关
+## <a name="connect-the-gateways"></a>连接网关
 此步骤在两个虚拟网络的两个网关之间创建双向连接。 
 
 
@@ -923,21 +921,24 @@ ms.locfileid: "88002982"
 1. 在 [Azure 门户](https://portal.azure.com)中选择“创建资源”。
 1. 在搜索框中键入 `connection`，然后按 Enter 进行搜索；随后你会转到 Microsoft 发布的“连接”资源。
 1. 选择“创建”以创建连接。 
-1. 在“基本信息”选项卡上选择以下值，然后选择“确定”。  
+1. 在 " **基本** 信息" 页上，选择以下值，然后选择 **"确定"**。 
     1. 为“连接类型”选择 `VNet-to-VNet`。 
     1. 从下拉列表中选择订阅。 
     1. 在下拉列表中选择 SQL 托管实例的资源组。 
     1. 在下拉列表中选择主托管实例的位置。 
-1. 在“设置”选项卡上选择或输入以下值，然后选择“确定”： 
-    1. 为“第一个虚拟网络网关”选择主网络网关，例如 `Primary-Gateway`。  
-    1. 为“第二个虚拟网络网关”选择辅助网络网关，例如 `Secondary-Gateway`。 
+1. 在 " **设置** " 页上，选择或输入以下值，然后选择 **"确定"**：
+    1. 为“第一个虚拟网络网关”选择主网络网关，例如 `primaryGateway`。  
+    1. 为“第二个虚拟网络网关”选择辅助网络网关，例如 `secondaryGateway`。 
     1. 选中“建立双向连接”旁边的复选框。 
     1. 保留默认的主连接名称，或将其重命名为所选的值。 
     1. 提供连接的“共享密钥(PSK)”，例如 `mi1m2psk`。 
+    1. 选择“确定”保存设置****。 
 
-   ![创建网关连接](./media/failover-group-add-instance-tutorial/create-gateway-connection.png)
+    ![创建网关连接](./media/failover-group-add-instance-tutorial/create-gateway-connection.png)
 
-1. 在“摘要”选项卡上查看双向连接的设置，然后选择“确定”以创建连接。  
+    
+
+1. 在 " **查看** " 和 "创建" 页上，查看双向连接的设置，然后选择 **"确定"** 以创建连接。 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -970,7 +971,7 @@ ms.locfileid: "88002982"
 ---
 
 
-## <a name="7---create-a-failover-group"></a>7 - 创建故障转移组
+## <a name="create-a-failover-group"></a>创建故障转移组
 此步骤将创建故障转移组，并将两个托管实例添加到其中。 
 
 
@@ -978,7 +979,7 @@ ms.locfileid: "88002982"
 使用 Azure 门户创建故障转移组。 
 
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”。 如果**AZURE SQL**不在列表中，请选择 "**所有服务**"，然后 `Azure SQL` 在 "搜索" 框中键入。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
+1. 在 [Azure 门户](https://portal.azure.com)的左侧菜单中选择“Azure SQL”。 如果 **AZURE SQL** 不在列表中，请选择 " **所有服务**"，然后 `Azure SQL` 在 "搜索" 框中键入。 （可选）选择“Azure SQL”旁边的星号将其收藏并将其添加为左侧导航栏中的项。 
 1. 选择在第一部分中创建的主托管实例，例如 `sql-mi-primary`。 
 1. 在“设置”下，导航到“实例故障转移组”，然后选择“添加组”，打开“实例故障转移组”页面   。 
 
@@ -1013,7 +1014,7 @@ ms.locfileid: "88002982"
 ---
 
 
-## <a name="8---test-failover"></a>8 - 测试故障转移
+## <a name="test-failover"></a>测试故障转移
 此步骤将故障转移组故障转移到辅助服务器，然后使用 Azure 门户故障回复。 
 
 
