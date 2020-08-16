@@ -3,12 +3,12 @@ title: 如何设计 Application Insights 部署 - 一个资源与多个资源？
 description: 为开发、测试和生产戳记直接遥测不同的资源。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 4f539862432fcdc67632e91caadf71d6584fbc3e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 264cbe35e7af50577b345d686b639e47760f428d
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420560"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258720"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>应该部署多少个 Application Insights 资源
 
@@ -41,7 +41,7 @@ ms.locfileid: "87420560"
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 动态检测密钥
 
-为了在代码在不同生产阶段中移动时更轻松地更改 ikey，请在代码中而非在配置文件中设置 ikey。
+为了更轻松地更改 ikey，因为代码在生产阶段之间移动，而是在代码中动态引用密钥，而不是使用硬编码/静态值。
 
 在初始化方法中设置密钥，如 ASP.NET 服务中的 global.aspx.cs：
 

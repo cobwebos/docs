@@ -10,17 +10,73 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/11/2020
+ms.date: 8/15/2020
 ms.author: yohaddad
-ms.openlocfilehash: 3fb9c863b94c65d7a4333d734648d308a904e355
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 21dcc10be255c0795058886188b4380266679963
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142343"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258292"
 ---
 # <a name="azure-guest-os"></a>Azure 来宾 OS
 下表显示了适用于 Azure 来宾 OS 的 Microsoft 安全响应中心 (MSRC) 更新。 要确定特定的更新是否适用于使用的来宾 OS，请搜索本文。 引入这些更新的特定[系列][family-explain]始终会包含这些更新。
+
+## <a name="august-2020-guest-os"></a>2020年8月来宾操作系统
+>[!NOTE]
+>8月版来宾 OS 当前正在推出给为自动更新配置的云服务 Vm。 推出完成后，此版本将可通过 Azure 门户和配置文件进行手动更新。 8月版来宾操作系统中包含以下修补程序。 此列表可能随时变动。
+
+
+| 产品类别 | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |
+| --- | --- | --- | --- | --- |
+|  Rel 20-08 |  [4571687]  |  IE 累积更新 | 2.101、3.88、4.81 | 8月11日，2020 |
+|  Rel 20-08 |  [4561600]  |  闪存更新 | 3.88、4.81、5.46、6.22 | 2020 年 6 月 9 日 |
+|  Rel 20-08 |  [4571694]  |  最新累积更新 | 6.22 | 8月11日，2020 |
+|  Rel 20-08 |  [4565349]  |  最新累积更新 | 5.46 | 8月11日，2020 |
+|  Rel 20-08 |  [4570673]  |  服务堆栈更新 | 2.101 | 8月11日，2020 |
+|  Rel 20-08 |  [4571729]  |  每月汇总 | 2.101 | 8月11日，2020 |
+|  Rel 20-08 |  [4569767]  |  .NET Framework 3.5.1 安全和质量汇总 | 2.101 | 8月11日，2020 |
+|  Rel 20-08 |  [4569780]  |  .NET Framework 4.5.2 安全和质量汇总 | 2.101 | 8月11日，2020 |
+|  Rel 20-08 |  [4569765]  |  .NET Framework 3.5 安全和质量汇总 | 3.88 | 8月11日，2020 |
+|  Rel 20-08 |  [4569779]  |  .NET Framework 4.5.2 安全和质量汇总 | 3.88 | 8月11日，2020 |
+|  Rel 20-08 |  [4566426]  |  服务堆栈更新 | 3.88 | 7月14日2020 |
+|  Rel 20-08 |  [4571736]  |  每月汇总 | 3.88 | 8月11日，2020 |
+|  Rel 20-08 |  [4566425]  |  服务堆栈更新 | 4.81 | 7月14日2020 |
+|  Rel 20-08 |  [4571703]  |  每月汇总 | 4.81 | 8月11日，2020 |
+|  Rel 20-08 |  [4569768]  |  .NET Framework 3.5 安全和质量汇总 | 4.81 | 8月11日，2020 |
+|  Rel 20-08 |  [4569778]  |  .NET Framework 4.5.2 安全和质量汇总 | 4.81 | 8月11日，2020 |
+|  Rel 20-08 |  [4494175]  |  编码 | 5.46 | 2020年2月25日 |
+|  Rel 20-08 |  [4565912]  |  服务堆栈更新 | 5.46 | 7月14日2020 |
+|  Rel 20-08 |  [4569746]  |  .NET Framework 4.8 安全和质量汇总 | 5.46 | 8月11日，2020 |
+|  Rel 20-08 |  [4569776]  |  .NET Framework 3.5 和4.7.2 累积更新 | 6.22 | 8月11日，2020 |
+|  Rel 20-08 |  [4569750]  |  .NET Framework 3.5 和4.8 累积更新 | 6.22 | 8月11日，2020 |
+|  Rel 20-08 |  [4566424]  |  服务堆栈更新 | 6.22 | 8月11日，2020 |
+
+
+
+[4571687]: https://support.microsoft.com/kb/4571687
+[4561600]: https://support.microsoft.com/kb/4561600
+[4571694]: https://support.microsoft.com/kb/4571694
+[4565349]: https://support.microsoft.com/kb/4565349
+[4570673]: https://support.microsoft.com/kb/4570673
+[4571729]: https://support.microsoft.com/kb/4571729
+[4569767]: https://support.microsoft.com/kb/4569767
+[4569780]: https://support.microsoft.com/kb/4569780
+[4569765]: https://support.microsoft.com/kb/4569765
+[4569779]: https://support.microsoft.com/kb/4569779
+[4566426]: https://support.microsoft.com/kb/4566426
+[4571736]: https://support.microsoft.com/kb/4571736
+[4566425]: https://support.microsoft.com/kb/4566425
+[4571703]: https://support.microsoft.com/kb/4571703
+[4569768]: https://support.microsoft.com/kb/4569768
+[4569778]: https://support.microsoft.com/kb/4569778
+[4494175]: https://support.microsoft.com/kb/4494175
+[4565912]: https://support.microsoft.com/kb/4565912
+[4569746]: https://support.microsoft.com/kb/4569746
+[4569776]: https://support.microsoft.com/kb/4569776
+[4569750]: https://support.microsoft.com/kb/4569750
+[4566424]: https://support.microsoft.com/kb/4566424
+
 
 ## <a name="july-2020-guest-os"></a>2020年7月来宾 OS
 >[!NOTE]
@@ -1632,7 +1688,7 @@ ms.locfileid: "88142343"
 | MS15-040 |[3045711] |ADFS 中的漏洞可能导致信息泄露 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 | MS15-041 |[3048010] |.NET Framework 中的漏洞可能导致信息泄露 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 | MS15-042 |[3047234] |Windows Hyper-V 中的漏洞可能导致拒绝服务 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
-| NA |[3045755] |更新后改进了 PKU2U 身份验证 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
+| 不可用 |[3045755] |更新后改进了 PKU2U 身份验证 |4.20、3.27、2.39 |2015 年 4 月 17 日 |
 
 ## <a name="april-2015-guest-os"></a>2015 年 4 月来宾 OS
 | 公告 ID | 上层知识库文章 | 漏洞描述 | 来宾 OS | 首次引入日期 |

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 08/14/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ef42dbb4cad1d40a35af28845baa402763acfc9b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6cf9f7a005a80ab34e05ee293c20209e9d0b3f01
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119617"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258581"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 授权代码流
 
@@ -36,7 +36,7 @@ OAuth 2.0 授权代码授予可用于设备上所安装的应用，以访问受�
 
 ## <a name="redirect-uri-setup-required-for-single-page-apps"></a>单页面应用需要重定向 URI 设置
 
-单页应用程序的授权代码流需要一些其他设置。  按照[创建单页应用程序](scenario-spa-app-registration.md#redirect-uri-msaljs-20-with-auth-code-flow)的说明，将重定向 URI 正确地标记为已为 CORS 启用。 若要更新现有的重定向 URI 以启用 CORS，请打开清单编辑器，并 `type` `spa` 在部分中将重定向 uri 的字段设置为 `replyUrlsWithType` 。 还可以单击 "身份验证" 选项卡的 "Web" 部分中的重定向 URI，并选择要使用授权代码流迁移到的 Uri。
+单页应用程序的授权代码流需要一些其他设置。  按照 [创建单页应用程序](scenario-spa-app-registration.md#redirect-uri-msaljs-20-with-auth-code-flow) 的说明，将重定向 URI 正确地标记为已为 CORS 启用。 若要更新现有的重定向 URI 以启用 CORS，请打开清单编辑器，并 `type` `spa` 在部分中将重定向 uri 的字段设置为 `replyUrlsWithType` 。 还可以单击 "身份验证" 选项卡的 "Web" 部分中的重定向 URI，并选择要使用授权代码流迁移到的 Uri。
 
 `spa`重定向类型与隐式流向后兼容。 当前使用隐式流来获取令牌的应用可以移动到 `spa` 重定向 URI 类型而不会出现问题，然后继续使用隐式流。
 
@@ -60,6 +60,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_mode=query
 &scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 &state=12345
+&code_challenge=YTFjNjI1OWYzMzA3MTI4ZDY2Njg5M2RkNmVjNDE5YmEyZGRhOGYyM2IzNjdmZWFhMTQ1ODg3NDcxY2Nl
+&code_challenge_method=S256
 ```
 
 > [!TIP]
@@ -79,7 +81,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `login_hint`  | 可选    | 如果事先知道用户名，可用于预先填充用户登录页的用户名/电子邮件地址字段。 通常，应用会在重新身份验证期间使用此参数，并且已经使用 `preferred_username` 声明从前次登录提取用户名。   |
 | `domain_hint`  | 可选    | 如果已包含在内，它将跳过用户在登录页面上经历的基于电子邮件的发现过程，从而实现更加流畅的用户体验，例如，将其发送给联合标识提供者。 通常，应用将在重新身份验证期间使用此参数，方法是从上次登录提取 `tid`。 如果 `tid` 声明值是 `9188040d-6c67-4c5b-b112-36a304b66dad`，应该使用 `domain_hint=consumers`。 否则使用 `domain_hint=organizations`。  |
 | `code_challenge`  | 建议/必需 | 用于通过 Proof Key for Code Exchange (PKCE) 保护授权代码授权。 如果包含 `code_challenge_method`，则需要。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 现在建议用于所有应用程序类型 - 本机应用、SPA 和机密客户端（如 Web 应用）。 |
-| `code_challenge_method` | 建议/必需 | 用于为 `code_challenge` 参数编码 `code_verifier` 的方法。 可以是以下值之一：<br/><br/>- `plain` <br/>- `S256`<br/><br/>如果已排除在外，且包含了 `code_challenge`，则假定 `code_challenge` 为纯文本。 Microsoft 标识平台支持 `plain` 和 `S256`。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 这是[使用授权代码流的单页应用](reference-third-party-cookies-spas.md)所必需的。|
+| `code_challenge_method` | 建议/必需 | 用于为 `code_challenge` 参数编码 `code_verifier` 的方法。 这 *应该* 是 `S256` ，但是， `plain` 如果出于某种原因，客户端无法支持 SHA256，则此规范允许使用。 <br/><br/>如果已排除在外，且包含了 `code_challenge`，则假定 `code_challenge` 为纯文本。 Microsoft 标识平台支持 `plain` 和 `S256`。 有关详细信息，请参阅 [PKCE RFC](https://tools.ietf.org/html/rfc7636)。 这是[使用授权代码流的单页应用](reference-third-party-cookies-spas.md)所必需的。|
 
 
 此时，将请求用户输入凭据并完成身份验证。 Microsoft 标识平台终结点还会确保用户已许可 `scope` 查询参数中指定的权限。 如果用户未曾同意这些权限的任何一项，则请求用户同意请求的权限。 [此处提供了权限、许可与多租户应用](v2-permissions-and-consent.md)的详细信息。
@@ -150,6 +152,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &code=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq3n8b2JRLk4OxVXr...
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &grant_type=authorization_code
+&code_verifier=ThisIsntRandomButItNeedsToBe43CharactersLong 
 &client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: Only required for web apps. This secret needs to be URL-Encoded.
 ```
 

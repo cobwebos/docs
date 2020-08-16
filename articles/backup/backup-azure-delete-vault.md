@@ -3,12 +3,12 @@ title: 删除 Microsoft Azure 恢复服务保管库
 description: 本文介绍了如何先删除依赖项，然后删除 Azure 备份恢复服务保管库。
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 5446c54ac070555987dfc05afa67825f307ee61b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41d0cbc8e1c59f33efc24f38b535aa9cf91b2cc9
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055200"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257960"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>删除 Azure 备份恢复服务保管库
 
@@ -43,10 +43,11 @@ ms.locfileid: "87055200"
 - **步骤 3**：你必须检查以下全部三个位置，以便验证是否有任何受保护的项：
 
   - **云中受保护的项**：转到保管库仪表板菜单 >“备份项”。 必须通过“停止备份”或“删除备份数据”删除此处列出的所有项及其备份数据。  请[按这些步骤操作](#delete-protected-items-in-the-cloud)来删除这些项。
+  - **SQL Server 实例**：请在保管库仪表板菜单 >**备份基础结构**  >  **保护的服务器**。 在“受保护的服务器”中，选择要取消注册的服务器。 若要删除保管库，必须取消注册所有服务器。 右键单击受保护的服务器，然后选择 " **注销**"。
   - **受 MARS 保护的服务器**：转到保管库仪表板菜单 >“备份基础结构” > “受保护的服务器”。 如果你拥有受 MARS 保护的服务器，则必须删除此处列出的所有项及其备份数据。 请[按这些步骤操作](#delete-protected-items-on-premises)，以便删除受 MARS 保护的服务器。
-  - **MABS 或 DPM 管理服务器**：转到保管库仪表板菜单 >“备份基础结构” > “备份管理服务器”。 如果你有 DPM 或 Azure 备份服务器 (MABS)，则必须删除或注销此处列出的所有项及其备份数据。 请[按这些步骤操作](#delete-protected-items-on-premises)，以便删除管理服务器。
+   - **MABS 或 DPM 管理服务器**：转到保管库仪表板菜单 >“备份基础结构” > “备份管理服务器”。 如果你有 DPM 或 Azure 备份服务器 (MABS)，则必须删除或注销此处列出的所有项及其备份数据。 请[按这些步骤操作](#delete-protected-items-on-premises)，以便删除管理服务器。
 
-- **步骤 4**：必须确保删除所有已注册的存储帐户。 转到保管库仪表板菜单 >“备份基础结构” > “存储帐户”。 如果此处列出了你的存储帐户，则必须注销所有这些帐户。 若要了解如何注销帐户，请参阅[取消注册存储帐户](manage-afs-backup.md#unregister-a-storage-account)。
+- **步骤 4**：必须确保删除所有已注册的存储帐户。 转到保管库仪表板菜单 >“备份基础结构” > “存储帐户”。 如果此处列出了你的存储帐户，则必须注销所有这些帐户。 若要了解如何注销帐户，请参阅 [取消注册存储帐户](manage-afs-backup.md#unregister-a-storage-account)。
 
 完成这些步骤后，你可以继续[删除保管库](#delete-the-recovery-services-vault)。
 
@@ -90,7 +91,7 @@ ms.locfileid: "87055200"
 
       - 对于 MABS 或 DPM，请选择“备份管理服务器”。 然后选择要删除的服务器。
 
-          ![对于 MABS 或 DPM，选择保管库以打开其仪表板。](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
+          ![对于 MABS 或 DPM，请选择保管库以打开其仪表板。](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
 3. 此时会显示包含警告消息的“删除”窗格。
 
@@ -119,7 +120,7 @@ ms.locfileid: "87055200"
 ### <a name="delete-backup-items-from-the-mars-management-console"></a>从 MARS 管理控制台删除备份项
 
 >[!NOTE]
->如果在不停止备份的情况下删除或丢失了源计算机，则下一个计划的备份将失败。 旧恢复点会根据策略过期，但会始终保留最后一个恢复点，直到你停止备份并删除数据。 可以按照[本部分](#delete-protected-items-on-premises)中的步骤执行此操作。
+>如果在不停止备份的情况下删除或丢失了源计算机，则下一个计划的备份将失败。 旧恢复点将根据策略过期，但始终会保留最后一个恢复点，直至你停止备份并删除数据。 为此，可以按照[本部分](#delete-protected-items-on-premises)的这些步骤操作。
 
 1. 打开 MARS 管理控制台，转到“操作”窗格并选择“计划备份”。 
 2. 在“修改或停止计划的备份”页中选择“停止使用此备份计划并删除所有存储的备份”选项。  然后，选择“下一步”。
@@ -145,7 +146,7 @@ ms.locfileid: "87055200"
 ### <a name="delete-backup-items-from-the-mabs-or-dpm-management-console"></a>从 MABS 或 DPM 管理控制台删除备份项
 
 >[!NOTE]
->如果在不停止备份的情况下删除或丢失了源计算机，则下一个计划的备份将失败。 旧恢复点会根据策略过期，但会始终保留最后一个恢复点，直到你停止备份并删除数据。 可以按照[本部分](#delete-protected-items-on-premises)中的步骤执行此操作。
+>如果在不停止备份的情况下删除或丢失了源计算机，则下一个计划的备份将失败。 旧恢复点将根据策略过期，但始终会保留最后一个恢复点，直至你停止备份并删除数据。 为此，可以按照[本部分](#delete-protected-items-on-premises)的这些步骤操作。
 
 可以使用两种方法从 MABS 或 DPM 管理控制台删除备份项。
 
@@ -171,7 +172,7 @@ ms.locfileid: "87055200"
 
 #### <a name="method-2"></a>方法 2
 
-打开**MABS 管理**控制台或**DPM 管理**控制台。 在“选择数据保护方法”下，清除“我需要在线保护”复选框。 
+打开“MABS 管理”或“DPM 管理”控制台 。 在“选择数据保护方法”下，清除“我需要在线保护”复选框。 
 
   ![选择数据保护方法。](./media/backup-azure-delete-vault/data-protection-method.png)
 
@@ -211,7 +212,7 @@ ms.locfileid: "87055200"
 
   [详细了解](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection)如何对 Azure 备份保护的项禁用保护。
 
-- 停止保护并删除云中所有受备份保护的项的数据（例如： IaaS VM、Azure 文件共享等）：
+- 停止保护并删除云中 (中所有受备份保护的项的数据，例如： IaaS VM、Azure 文件共享等) ：
 
     ```PowerShell
        Disable-AzRecoveryServicesBackupProtection
@@ -237,7 +238,7 @@ ms.locfileid: "87055200"
 
     *Microsoft Azure 备份。确实要删除此备份策略吗?删除的备份数据会保留 14 天。之后，备份数据将永久删除。<br/> [Y] 是 [A] 全部为“是”[N] 否 [L] 全部为“否”[S] 暂停 [?] 帮助(默认选项为“Y”):*
 
-- 对于使用 MABS （Microsoft Azure 备份 Server）或 DPM （System Center Data Protection Manager）保护的本地计算机到 Azure，请使用以下命令删除 Azure 中的已备份数据。
+- 对于使用 MABS 保护的本地计算机 (Microsoft Azure 备份 Server) 或 DPM (System Center Data Protection Manager) 到 Azure，请使用以下命令删除 Azure 中的备份数据。
 
     ```powershell
     Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>

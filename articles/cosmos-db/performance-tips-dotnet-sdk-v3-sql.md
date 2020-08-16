@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: 9816ea7dd9f5aef9dcdd62319f8cc4408eff3fd8
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 90b4ffb273fc314a7c92971490fb09b6f0c131ee
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987250"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258344"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>适用于 Azure Cosmos DB 和 .NET 的性能提示
 
@@ -71,15 +71,12 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
      如果应用程序在有严格防火墙限制的企业网络中运行，则网关模式是最佳选择，因为它使用标准 HTTPS 端口与单个终结点。 但是，对于性能的影响是：每次在 Azure Cosmos DB 中读取或写入数据时，网关模式都涉及到额外的网络跃点。 因此，直接模式因为网络跃点较少，可以提供更好的性能。 在套接字连接数量有限的环境中运行应用程序时，我们也建议使用网关连接模式。
 
      在 Azure Functions 中使用 SDK 时，尤其是在[消耗计划](../azure-functions/functions-scale.md#consumption-plan)中使用时，请注意当前的[连接限制](../azure-functions/manage-connections.md)。 这种情况下，如果还在 Azure Functions 应用程序中使用其他基于 HTTP 的客户端，则使用网关模式可能更好。
-
-
-在网关模式下，当你使用 Azure Cosmos DB API for MongoDB 时，Azure Cosmos DB 会使用端口 443 以及端口 10250、10255 和 10256。 端口 10250 映射到没有异地复制功能的默认 MongoDB 实例。 端口 10255 和 10256 映射到具有异地复制功能的 MongoDB 实例。
      
-在直接模式下使用时 TCP 时，除了网关端口，还需确保 10000 到 20000 这个范围的端口处于打开状态，因为 Azure Cosmos DB 使用动态 TCP 端口（在[专用终结点](./how-to-configure-private-endpoints.md)上使用直接模式时，必须打开所有 TCP 端口（即从 0 到 65535））。 默认情况下，标准 Azure VM 配置的端口是打开的。 如果这些端口未处于打开状态，你会在尝试使用 TCP 时收到“503 服务不可用”错误。 下表显示了可用于各种 API 的连接模式，以及用于每个 API 的服务端口：
+在直接模式下使用 TCP 时，除了网关端口外，还需确保端口范围为10000到20000，因为 Azure Cosmos DB 使用动态 TCP 端口。 当对 [专用终结点](./how-to-configure-private-endpoints.md)使用直接模式时，TCP 端口的完整范围应为0到65535。 默认情况下，标准 Azure VM 配置的端口是打开的。 如果这些端口未处于打开状态，你会在尝试使用 TCP 时收到“503 服务不可用”错误。 下表显示了可用于各种 Api 的连接模式以及用于每个 API 的服务端口：
 
 |连接模式  |支持的协议  |支持的 SDK  |API/服务端口  |
 |---------|---------|---------|---------|
-|网关  |   HTTPS    |  所有 SDK    |   SQL (443)、MongoDB（10250、10255、10256）、表 (443)、Cassandra (10350)、Graph (443)    |
+|网关  |   HTTPS    |  所有 SDK    |   SQL (443)、MongoDB（10250、10255、10256）、表 (443)、Cassandra (10350)、Graph (443) <br> 端口10250映射到 MongoDB 实例的默认 Azure Cosmos DB API，无地域复制。 而端口10255和10256映射到具有异地复制的实例。   |
 |直接    |     TCP    |  .NET SDK    | 使用公用/服务终结点时：端口介于 10000 到 20000 之间<br>使用专用终结点时：端口介于 0 到 65535 之间 |
 
 Azure Cosmos DB 提供基于 HTTPS 的简单开放 RESTful 编程模型。 此外，它提供高效的 TCP 协议，该协议在其通信模型中也是 RESTful，可通过 .NET 客户端 SDK 获得。 TCP 协议使用 TLS 来进行初始身份验证和加密通信。 为了获得最佳性能，请尽可能使用 TCP 协议。
@@ -107,8 +104,8 @@ new CosmosClientOptions
 
 在具有稀疏访问权限的情况下，如果在与网关模式访问比较时发现连接计数更高，则可以：
 
-* 将[CosmosClientOptions. PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode)属性配置为 `PrivatePortPool` (与 framework 版本>= 4.6.1 和 .net Core 版本 >= 2.0) 一起使用：此属性允许 SDK 为不同 Azure Cosmos DB 目标终结点使用少量临时端口。
-* 配置[CosmosClientOptions. IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout)属性必须大于或等于10分钟。 建议值介于20分钟到24小时之间。
+* 将 [CosmosClientOptions. PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) 属性配置为 `PrivatePortPool` (与 framework 版本>= 4.6.1 和 .net Core 版本 >= 2.0) 一起使用：此属性允许 SDK 为不同 Azure Cosmos DB 目标终结点使用少量临时端口。
+* 配置 [CosmosClientOptions. IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout) 属性必须大于或等于10分钟。 建议值介于20分钟到24小时之间。
 
 <a id="same-region"></a>
 

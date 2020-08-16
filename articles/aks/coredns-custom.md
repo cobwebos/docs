@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: 08d3c61ca4b5988847676b12478a5865ac319d37
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: e99d841dcfb18b41df128283c37f46682e3fa129
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164195"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257128"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>使用 Azure Kubernetes 服务自定义 CoreDNS
 
@@ -28,7 +28,7 @@ Azure Kubernetes 服务 (AKS) 可将适用于管理和解决群集 DNS 问题的
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-创建类似于以下示例的配置时， *数据* 节中的名称必须以 *. server* 或 *. override*结束。 此命名约定在默认 AKS CoreDNS Configmap 中定义，可以使用 `kubectl get configmaps --namespace=kube-system coredns -o yaml` 命令查看。
+创建类似下面示例的配置时，data 部分中的名称必须以 .server 或 .override 结尾  。 这个命名约定是在默认的 AKS CoreDNS Configmap 中定义的，可以使用 `kubectl get configmaps --namespace=kube-system coredns -o yaml` 命令查看。
 
 ## <a name="what-is-supportedunsupported"></a>支持的/不支持的插件
 
@@ -50,6 +50,11 @@ data:
         errors
         cache 30
         rewrite name substring <domain to be rewritten>.com default.svc.cluster.local
+        kubernetes cluster.local in-addr.arpa ip6.arpa {
+          pods insecure
+          upstream
+          fallthrough in-addr.arpa ip6.arpa
+        }
         forward .  /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10, but that server must be able to resolve the rewritten domain name
     }
 ```
@@ -80,7 +85,7 @@ kubectl delete pod --namespace kube-system -l k8s-app=kube-dns
 
 ## <a name="custom-forward-server"></a>自定义转发服务器
 
-如果需要为网络流量指定转发服务器，可以创建一个 ConfigMap 来自定义 DNS。 在以下示例中，请将 `forward` 名称和地址更新为你自己的环境的值。 创建名为 `corednsms.yaml` 的文件并粘贴以下示例配置：
+如需为网络流量指定转发服务器，可以创建 ConfigMap 以自定义 DNS。 在以下示例中，请将 `forward` 名称和地址更新为你自己的环境的值。 创建名为 `corednsms.yaml` 的文件并粘贴以下示例配置：
 
 ```yaml
 apiVersion: v1
@@ -180,7 +185,7 @@ data:
           }
 ```
 
-## <a name="enable-logging-for-dns-query-debugging"></a>为 DNS 查询调试启用日志记录 
+## <a name="enable-logging-for-dns-query-debugging"></a>启用日志记录以进行 DNS 查询调试 
 
 若要启用 DNS 查询日志记录，请在 coredns-custom ConfigMap 中应用以下配置：
 

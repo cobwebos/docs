@@ -4,12 +4,12 @@ description: Azure 应用服务的应用程序性能监视。 对加载和响应
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 0921d7bbba90fa2199ea212bae6ad4c35e0fb051
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 33ad4503b744b4737c2d63f74e146a79d36080e1
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245479"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258738"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -123,8 +123,6 @@ ms.locfileid: "88245479"
 
    * **保存**设置并**重新启动**应用。
 
-![应用程序设置 UI 的屏幕截图](./media/azure-web-apps/appinsights-javascript-enabled.png)
-
 若要禁用客户端监视，请从“应用程序设置”中删除关联的键值对，或将值设置为 false。
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
@@ -141,8 +139,6 @@ ms.locfileid: "88245479"
      值：`false`
 
    * **保存**设置并**重新启动**应用。
-
-![应用程序设置 UI 的屏幕截图](./media/azure-web-apps/appinsights-javascript-disabled.png)
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 

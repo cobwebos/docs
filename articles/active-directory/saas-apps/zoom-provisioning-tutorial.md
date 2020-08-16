@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3a2e4bbff1274a2473ac961b8355ca4193dcc69f
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 52700df5c2977f33c988fcb34cdc3d67844d1d49
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87924897"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257577"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>教程：为自动用户预配配置缩放
 
-本教程介绍了在缩放和 Azure Active Directory (Azure AD) 配置自动用户预配时需要执行的步骤。 配置时，Azure AD 会自动预配和取消预配用户和组，以使用 Azure AD 预配服务进行[缩放](https://zoom.us/pricing/)。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了在缩放和 Azure Active Directory (Azure AD) 配置自动用户预配时需要执行的步骤。 配置时，Azure AD 会自动预配和取消预配用户和组，以使用 Azure AD 预配服务进行 [缩放](https://zoom.us/pricing/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -32,7 +32,7 @@ ms.locfileid: "87924897"
 > * 在缩放中创建用户
 > * 如果用户不再需要访问，请在 "缩放" 中删除用户
 > * 使用户属性在 Azure AD 和缩放之间保持同步
-> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-tutorial)到缩放 (建议) 
+> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-tutorial) 到缩放 (建议) 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,15 +46,15 @@ ms.locfileid: "87924897"
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
 1. 了解[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
 2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
-3. 确定要[在 Azure AD 和缩放之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
+3. 确定要 [在 Azure AD 和缩放之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
 
-## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置缩放以支持设置 Azure AD
+## <a name="step-2-configure-zoom-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置缩放以支持设置 Azure AD
 
-1. 登录到[缩放管理控制台](https://zoom.us/signin)。 导航到左侧导航窗格中**的 "高级 > 缩放开发人员**"。
+1. 登录到 [缩放管理控制台](https://zoom.us/signin)。 导航到左侧导航窗格中的 " **高级 > 应用商店** "。
 
     ![缩放集成](media/zoom-provisioning-tutorial/zoom01.png)
 
-2. 在页面的右上角导航到 "**管理**"。 
+2. 在页面的右上角导航到 " **管理** "。 
 
     ![缩放安装](media/zoom-provisioning-tutorial/zoom02.png)
 
@@ -62,11 +62,11 @@ ms.locfileid: "87924897"
     
     ![缩放应用](media/zoom-provisioning-tutorial/zoom03.png)
 
-4. 在左侧导航窗格中选择 "**应用凭据**"。
+4. 在左侧导航窗格中选择 " **应用凭据** "。
 
     ![缩放应用](media/zoom-provisioning-tutorial/zoom04.png)
 
-5. 复制并保存**JWT 标记**。 此值将输入到 Azure 门户中缩放应用程序 "预配" 选项卡的 "**机密令牌**" 字段中。 如果需要新的不过期令牌，将需要重新配置过期时间，这将自动生成新令牌。 
+5. 复制并保存 **JWT 标记**。 此值将输入到 Azure 门户中缩放应用程序 "预配" 选项卡的 " **机密令牌** " 字段中。 如果需要新的不过期令牌，将需要重新配置过期时间，这将自动生成新令牌。 
 
     ![缩放安装](media/zoom-provisioning-tutorial/zoom05.png)
 
@@ -78,7 +78,7 @@ ms.locfileid: "87924897"
 
 使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
 
-* 将用户和组分配到 "缩放" 时，必须选择 "**默认" 访问权限**以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
+* 将用户和组分配到 "缩放" 时，必须选择 " **默认" 访问权限**以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
 
 * 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
@@ -105,7 +105,7 @@ ms.locfileid: "87924897"
 
     ![“预配”选项卡](common/provisioning-automatic.png)
 
-5. 在 "**管理员凭据**" 部分中，输入 " `https://api.zoom.us/scim` **租户 URL**"。 输入先前在 "**机密令牌**" 中检索到的**JWT 令牌**值。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 "缩放"。 如果连接失败，请确保缩放帐户具有管理员权限，然后重试。
+5. 在 " **管理员凭据** " 部分中，输入 " `https://api.zoom.us/scim` **租户 URL**"。 输入先前在 "**机密令牌**" 中检索到的**JWT 令牌**值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 "缩放"。 如果连接失败，请确保缩放帐户具有管理员权限，然后重试。
 
     ![缩放设置](./media/zoom-provisioning-tutorial/provisioning.png)
 
@@ -115,9 +115,9 @@ ms.locfileid: "87924897"
 
 7. 选择“保存”。
 
-8. 在 "**映射**" 部分下，选择 "**同步 Azure Active Directory 用户进行缩放**"。
+8. 在 " **映射** " 部分下，选择 " **同步 Azure Active Directory 用户进行缩放**"。
 
-9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 "缩放" 的用户属性。 选为 "**匹配**" 属性的属性用于匹配缩放中的用户帐户以执行更新操作。 如果选择更改[匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保缩放 API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
+9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 "缩放" 的用户属性。 选为 " **匹配** " 属性的属性用于匹配缩放中的用户帐户以执行更新操作。 如果选择更改 [匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保缩放 API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
    |Attribute|类型|
    |---|---|

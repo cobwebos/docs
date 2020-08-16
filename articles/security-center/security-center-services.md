@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 95b514999d7c38140bd3dd275b8ba103ee9af20e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3055d8c31307cfacad575d892db0ed812a03a9e4
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519219"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258621"
 ---
 # <a name="feature-coverage-for-machines"></a>适用于计算机的功能覆盖范围
 
@@ -91,18 +91,18 @@ ms.locfileid: "86519219"
 
 | 终结点保护| 平台 | 安全中心安装 | 安全中心发现 |
 |------|------|-----|-----|
-| Windows Defender (Microsoft Antimalware)| Windows Server 2016| 否，内置到 OS| 是 |
+| Windows Defender (Microsoft Antimalware)| Windows Server 2016 或更高版本| 否，内置到 OS| 是 |
 | System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2（请参阅以下备注） | 通过扩展 | 是 |
-| 趋势微–深度安全 | Windows Server 系列  | No | 是 |
-| Symantec v12.1.1100+| Windows Server 系列  | No | 是 |
-| McAfee v10+ | Windows Server 系列  | No | 是 |
+| 趋势微–深度安全 | Windows Server 系列  | 否 | 是 |
+| Symantec v12.1.1100+| Windows Server 系列  | 否 | 是 |
+| McAfee v10+ | Windows Server 系列  | 否 | 是 |
 | McAfee v10+ | Linux 服务器系列  | 否 | 是 **\*** |
 | Sophos V9+| Linux 服务器系列  | 否 | 是  **\***  |
 
  **\*** 覆盖状态和支持数据目前仅在与受保护订阅关联的 Log Analytics 工作区中提供。 这些数据不会在 Azure 安全中心门户中反映。
 
 > [!NOTE]
-> Windows Server 2008 R2 虚拟机上的 System Center Endpoint Protection （SCEP）检测要求在 PowerShell （3.0 或更高版本）后安装 SCEP。
+> Windows Server 2008 R2 虚拟机上的 System Center Endpoint Protection (SCEP) 检测要求在 PowerShell (3.0 版或更高版本的) 后安装 SCEP。
 
 
 ## <a name="next-steps"></a>后续步骤

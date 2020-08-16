@@ -3,31 +3,16 @@ title: 利用 Advisor 提高应用程序的可靠性
 description: 使用 Azure 顾问确保并提高业务关键 Azure 部署的可靠性。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 1eba688a67a8684cdbb6846b389f83e61b349abe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0d96974e53f24d5a01eeee8b08eee578177a9ad2
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057671"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258500"
 ---
 # <a name="improve-the-reliability-of-your-application-by-using-azure-advisor"></a>使用 Azure Advisor 提高应用程序的可靠性
 
-Azure 顾问可帮助确保并提高业务关键应用程序的连续性。 可以在顾问仪表板的 "**可靠性**" 选项卡上通过 advisor 获取可靠性建议。
-
-## <a name="ensure-virtual-machine-fault-tolerance"></a>确保虚拟机容错
-
-若要为应用程序提供冗余，我们建议你将两个或更多虚拟机组合到一个可用性集中。 Advisor 标识不属于可用性集的虚拟机，并建议将它们移到其中一个。 此配置可确保在计划内或计划外维护期间至少有一个虚拟机可用，并满足 Azure 虚拟机 SLA 要求。 可以选择为虚拟机创建可用性集，或将虚拟机添加到现有可用性集。
-
-> [!NOTE]
-> 如果选择创建可用性集，则需要将至少一个虚拟机添加到其中。 建议在可用性集中对两个或更多虚拟机进行分组，确保其中一台虚拟机在出现故障期间可用。
-
-## <a name="ensure-availability-set-fault-tolerance"></a>确保可用性集容错
-
-若要为应用程序提供冗余，我们建议你将两个或更多虚拟机组合到一个可用性集中。 顾问标识包含单个虚拟机的可用性集，并建议向其中添加一个或多个虚拟机。此配置可确保在计划内或计划外维护期间至少有一个虚拟机可用，并满足 Azure 虚拟机 SLA 要求。 可以选择创建虚拟机，或将现有的虚拟机添加到可用性集。  
-
-## <a name="use-managed-disks-to-improve-data-reliability"></a>使用托管磁盘提高数据可靠性
-
-如果可用性集中的虚拟机具有共享存储帐户或存储缩放单位的磁盘，则在中断过程中无法恢复单个存储缩放单位的故障。 顾问会标识这些可用性集，并建议迁移到 Azure 托管磁盘。 此迁移将确保可用性集中虚拟机的磁盘充分隔离，以避免单点故障。 
+Azure 顾问可帮助确保并提高业务关键应用程序的连续性。 可以在顾问仪表板的 " **可靠性** " 选项卡上通过 advisor 获取可靠性建议。
 
 ## <a name="check-the-version-of-your-check-point-network-virtual-appliance-image"></a>检查检查点网络虚拟设备映像的版本
 
@@ -47,7 +32,7 @@ Azure 顾问可帮助确保并提高业务关键应用程序的连续性。 可�
 
 ## <a name="create-azure-service-health-alerts-to-be-notified-when-azure-problems-affect-you"></a>创建 Azure 服务运行状况警报，以便在 Azure 问题影响时收到通知
 
-建议设置 Azure 服务运行状况警报，以便在 Azure 服务问题影响你时收到通知。 [Azure 服务运行状况](https://azure.microsoft.com/features/service-health/)是一种免费服务，在受 Azure 服务问题影响时提供个性化指导和支持。 顾问标识未配置警报并建议对其进行配置的订阅。
+建议设置 Azure 服务运行状况警报，以便在 Azure 服务问题影响你时收到通知。 [Azure 服务运行状况](https://azure.microsoft.com/features/service-health/) 是一种免费服务，在受 Azure 服务问题影响时提供个性化指导和支持。 顾问标识未配置警报并建议对其进行配置的订阅。
 
 ## <a name="configure-traffic-manager-endpoints-for-resiliency"></a>配置流量管理器终结点以便进行复原
 
@@ -55,7 +40,7 @@ Azure 顾问可帮助确保并提高业务关键应用程序的连续性。 可�
 
 如果为邻近路由配置的流量管理器配置文件中的所有终结点都位于同一区域中，则其他区域中的用户可能会遇到连接延迟。 如果一个区域中的所有终结点都出现故障，则将一个终结点添加或移动到另一个区域会提高整体性能并提供更好的可用性。 顾问会识别为邻近路由配置的流量管理器配置文件（其中所有终结点都位于同一区域中）。 它会建议将一个终结点添加或移动到另一个 Azure 区域。
 
-如果为地理路由配置了流量管理器配置文件，则流量将根据定义的区域路由到终结点。 如果某个区域发生故障，则没有预定义的故障转移。 如果你有一个终结点，其中区域分组配置为 "**所有（世界）**"，则可以避免丢弃流量并提高服务可用性。 Advisor 识别为地理路由配置的流量管理器配置文件，其中没有任何终结点被配置为将区域分组为 "**所有（世界）**"。 建议更改配置，使终结点成为**全部（世界）**。
+如果为地理路由配置了流量管理器配置文件，则流量将根据定义的区域路由到终结点。 如果某个区域发生故障，则没有预定义的故障转移。 如果你有一个终结点，其中区域分组配置为 **全部 (World) **，你可以避免丢弃流量并提高服务可用性。 Advisor 识别为地理路由配置的流量管理器配置文件，其中没有任何终结点配置为将区域分组为 **所有 (World) **。 建议更改配置，使终结点 **全部 (世界) **。
 
 ## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-after-accidental-overwrite-or-deletion"></a>使用 Azure 存储帐户上的软删除在意外覆盖或删除后保存和恢复数据
 
@@ -73,6 +58,21 @@ Azure 顾问检查是否有任何使用基本 SKU 的 VPN 网关，并建议改�
 - 主动-主动配置选项。 
 - 自定义 Ipsec/IKE 策略。 
 - 更高的稳定性和可用性。
+
+## <a name="ensure-virtual-machine-fault-tolerance-temporarily-disabled"></a>确保暂时禁用虚拟机容错 () 
+
+若要为应用程序提供冗余，我们建议你将两个或更多虚拟机组合到一个可用性集中。 Advisor 标识不属于可用性集的虚拟机，并建议将它们移到其中一个。 此配置可确保在计划内或计划外维护期间至少有一个虚拟机可用，并满足 Azure 虚拟机 SLA 要求。 可以选择为虚拟机创建可用性集，或将虚拟机添加到现有可用性集。
+
+> [!NOTE]
+> 如果选择创建可用性集，则需要将至少一个虚拟机添加到其中。 建议在可用性集中对两个或更多虚拟机进行分组，确保其中一台虚拟机在出现故障期间可用。
+
+## <a name="ensure-availability-set-fault-tolerance-temporarily-disabled"></a>确保 (暂时禁用可用性集容错) 
+
+若要为应用程序提供冗余，我们建议你将两个或更多虚拟机组合到一个可用性集中。 顾问标识包含单个虚拟机的可用性集，并建议向其中添加一个或多个虚拟机。此配置可确保在计划内或计划外维护期间至少有一个虚拟机可用，并满足 Azure 虚拟机 SLA 要求。可以选择创建虚拟机，或将现有的虚拟机添加到可用性集。  
+
+## <a name="use-managed-disks-to-improve-data-reliability-temporarily-disabled"></a>使用托管磁盘来改善 (临时禁用的数据可靠性) 
+
+如果可用性集中的虚拟机具有共享存储帐户或存储缩放单位的磁盘，则在中断过程中无法恢复单个存储缩放单位的故障。 顾问会标识这些可用性集，并建议迁移到 Azure 托管磁盘。 此迁移将确保可用性集中虚拟机的磁盘充分隔离，以避免单点故障。 
 
 ## <a name="repair-invalid-log-alert-rules"></a>修复无效的日志警报规则
 
@@ -113,7 +113,7 @@ Azure 顾问会识别使用旧版本 Azure Cosmos DB Spark 连接器 Azure Cosmo
 
 1. 登录 [Azure 门户](https://portal.azure.com)，并打开[顾问](https://aka.ms/azureadvisordashboard)。
 
-2.  在顾问仪表板上，选择 "**高可用性**" 选项卡。
+2.  在顾问仪表板上，选择 " **高可用性** " 选项卡。
 
 ## <a name="next-steps"></a>后续步骤
 
