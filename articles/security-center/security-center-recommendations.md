@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/29/2019
 ms.author: memildin
-ms.openlocfilehash: 4d65b43dad80cb130d582132d21e2d10bd8051dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6363100c844d071a3bb47521cec6ff7e988f6af8
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791378"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263194"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Azure 安全中心的安全建议 
 本主题说明如何查看和了解 Azure 安全中心内的建议，以帮助你保护 Azure 资源。
@@ -31,14 +31,13 @@ ms.locfileid: "84791378"
 
 建议是为了保护资源而要采取的措施。
 
-安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后向你提供有关如何删除这些安全漏洞的建议。
+安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后，提供有关如何修正这些漏洞的建议。
 
 每项建议都提供：
 
-- 建议的简短说明。
-- 为实施建议而要执行的补救步骤。 <!-- In some cases, Quick Fix remediation is available. -->
-- 哪些资源需要你对其执行建议的操作。
-- 安全功能分数影响，这是如果你实施此建议，安全功能分数将增加的数量。
+- 问题的简短说明。
+- 为实施建议而要执行的补救步骤。
+- 受影响的资源。
 
 ## <a name="monitor-recommendations"></a>监视建议 <a name="monitor-recommendations"></a>
 
@@ -48,29 +47,31 @@ ms.locfileid: "84791378"
 
 1. 选择“概述”下的“建议”磁贴。 这会打开“建议”列表。
 
-      ![查看建议](./media/security-center-recommendations/view-recommendations.png)
+1. 建议分组到安全控件中。
 
-    可筛选建议。 要筛选建议，请选择“建议”边栏选项卡上的“筛选器”。  此时会打开“筛选器”边栏选项卡，选择要查看严重性和状态值。
+      ![按安全控制分组的建议](./media/security-center-recommendations/view-recommendations.png)
 
-   * **建议**：建议。
-   * **安全功能分数影响**：安全中心使用你的安全建议并应用高级算法来确定每个建议的重要性而生成的分数。 有关详细信息，请参阅[安全功能分数计算](secure-score-security-controls.md#how-your-secure-score-is-calculated)。
-   * **资源**：列出了此建议适用的资源。
-   * **状态栏**：描述该特定建议的严重性：
-       * **高（红色）** ：重要资源（如应用程序、VM 或网络安全组）存在漏洞，需要提请注意。
-       * **中等（橙色）** ：存在漏洞，需要采取非关键步骤或额外步骤来消除它或完成某个过程。
-       * **低（蓝色）** ：存在需要解决的漏洞，但不需立即处理。 （默认情况下，不显示严重性低的建议，但如果用户需要查看这些建议，可以将其筛选出来。） 
-       * **正常（绿色）** ：
-       * **不可用（灰色）** ：
+1. 展开控件并选择特定的建议，以查看 "建议" 页。
 
-1. 若要查看每个建议的详细信息，请单击该建议。
+    :::image type="content" source="./media/security-center-recommendations/recommendation-details-page.png" alt-text="建议详细信息页。" lightbox="./media/security-center-recommendations/recommendation-details-page.png":::
 
-    ![建议详细信息](./media/security-center-recommendations/recommendation-details.png)
+    页面包括：
 
->[!NOTE] 
-> 有关 Azure 资源，请参阅[经典和资源管理器部署模型](../azure-classic-rm.md)。
+    - **严重性指标**
+    - **刷新间隔**  (相关)  
+    - **说明** -问题的简短说明
+    - **修正步骤** -说明修正受影响资源上的安全问题所需的手动步骤。 有关 "快速修复" 的建议，可以在将建议的修补程序应用于资源之前选择 " **查看修正逻辑** "。 
+    - **受影响的资源** -将资源分组到选项卡：
+        - **正常资源** –不受影响的相关资源，或已修正问题的相关资源。
+        - 不**正常资源**–仍会受到确定问题影响的资源。
+        - **不适用的资源** –建议无法提供明确答案的资源。 "不适用" 选项卡还包括每个资源的原因。 
+
+            :::image type="content" source="./media/security-center-recommendations/recommendations-not-applicable-reasons.png" alt-text="由于原因而不适用的资源。":::
+
+
  
 ## <a name="next-steps"></a>后续步骤
 
 在本文档中，已向你介绍安全中心的安全建议。 了解如何修正建议：
 
-* [修正建议](security-center-remediate-recommendations.md)-了解如何配置 Azure 订阅和资源组的安全策略。
+* [修正建议](security-center-remediate-recommendations.md) -了解如何配置 Azure 订阅和资源组的安全策略。

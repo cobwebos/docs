@@ -7,13 +7,13 @@ author: kromerm
 manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 04/27/2020
-ms.openlocfilehash: 2edd5b661240b6156cf8a02059b2b9a668c402f3
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.date: 08/16/2020
+ms.openlocfilehash: 0a691b562ebf030712eb0c13a688ea9a52fdb164
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83829114"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263463"
 ---
 # <a name="troubleshoot-data-flows-in-azure-data-factory"></a>排查 Azure 数据工厂中的数据流问题
 
@@ -70,6 +70,13 @@ ms.locfileid: "83829114"
 - 原因：这是后端服务错误。 可以重试此操作，并重启调试会话。
 - **建议**：如果重试操作和重启会话无法解决问题，请联系客户支持。
 
+### <a name="error-code-debug-data-preview-no-output-data-on-join"></a>错误代码：调试数据预览在联接时无输出数据
+
+- **消息**：由于采样了太少的行，导致空值太多或缺少值。 请尝试更新调试行限制并刷新数据。
+- **原因**：联接条件与任何行都不匹配，或在数据预览期间导致了大量的 null 值。
+- **建议**：中转到 "调试" 设置，并增加源行限制中的行数。 请确保已选择并 Azure IR 具有足够大的数据流群集来处理更多数据。
+
+
 ## <a name="general-troubleshooting-guidance"></a>一般故障排除指南
 
 1. 检查数据集连接状态。 在每个源转换和接收器转换中，访问要使用的每个数据集的链接服务，然后测试连接。
@@ -79,9 +86,9 @@ ms.locfileid: "83829114"
 ## <a name="next-steps"></a>后续步骤
 
 若要获取故障排除方面的更多帮助，请尝试参阅以下资源：
-*  [数据工厂博客](https://azure.microsoft.com/blog/tag/azure-data-factory/)
+*  [数据工厂博客](https://techcommunity.microsoft.com/t5/azure-data-factory/bg-p/AzureDataFactoryBlog)
 *  [数据工厂功能请求](https://feedback.azure.com/forums/270578-data-factory)
-*  [Azure 视频](https://azure.microsoft.com/resources/videos/index/?sort=newest&services=data-factory)
+*  [Azure 视频](https://www.youtube.com/channel/UC2S0k7NeLcEm5_IhHUwpN0g/videos)
 *  [Microsoft Q&A 问题页](https://docs.microsoft.com/answers/topics/azure-data-factory.html)
 *  [数据工厂 Stack Overflow 论坛](https://stackoverflow.com/questions/tagged/azure-data-factory)
 *  [关于数据工厂的 Twitter 信息](https://twitter.com/hashtag/DataFactory)

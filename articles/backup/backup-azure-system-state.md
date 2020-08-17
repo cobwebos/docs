@@ -1,14 +1,14 @@
 ---
 title: 将 Windows 系统状态备份到 Azure
-description: 了解如何将 Windows Server 的系统状态和/或 Windows 计算机备份到 Azure。
+description: 了解如何将 Windows Server 计算机的系统状态备份到 Azure。
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: ea38b76d9a8b7b8ccc1898ed9450177da2cb2458
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a56e500cc0330a6406b4465ab5baeafa39b544aa
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003705"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263038"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>将 Windows 系统状态备份到 Azure
 
@@ -24,16 +24,16 @@ ms.locfileid: "87003705"
 
 在创建恢复服务保管库时，请确保存储冗余配置为所希望的方式。
 
-1. 从“恢复服务保管库”边栏选项卡中，单击新保管库  。
+1. 从 " **恢复服务保管库** " 窗格中选择新的保管库。
 
     ![在恢复服务保管库列表中选择新保管库](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
 
-    选择保管库时，“恢复服务保管库”边栏选项卡会缩窄，“设置”边栏选项卡（*顶部有保管库的名称*）和保管库详细信息边栏选项卡会打开。****
+    当你选择保管库时，" **恢复服务保管库** " 窗格会缩小，"设置" 窗格 (*其顶部有保管库的名称*) 并且保管库详细信息窗格将打开。
 
     ![查看新保管库的存储配置](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
-2. 在新保管库的“设置”边栏选项卡中，使用垂直滚动条向下滚动到“管理”部分，并单击“备份基础结构”。****
-    此时会打开“备份基础结构”边栏选项卡。
-3. 在“备份基础结构”边栏选项卡中，单击“备份配置”打开“备份配置”边栏选项卡。********
+2. 在新的保管库的 "设置" 窗格中，使用垂直滑动向下滚动到 "管理" 部分，并选择 " **备份基础结构**"。
+    此时将打开 "备份基础结构" 窗格。
+3. 在 "备份基础结构" 窗格中，选择 " **备份配置** "，打开 " **备份配置** " 窗格。
 
     ![设置新保管库的存储配置](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
 4. 为保管库选择合适的存储复制选项。
@@ -46,49 +46,49 @@ ms.locfileid: "87003705"
 
 ## <a name="configure-the-vault"></a>配置保管库
 
-1. 在“恢复服务保管库”边栏选项卡（对应于刚创建的保管库）的“开始”部分单击“备份”，并在“开始使用备份”边栏选项卡上选择“备份目标”。************
+1. 在 "恢复服务保管库" 窗格中 (刚刚创建的保管库) ，请在 "入门" 部分中选择 " **备份**"，然后在 " **入门备份** " 窗格中选择 " **备份目标**"。
 
-    ![打开备份目标边栏选项卡](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
+    ![打开备份设置](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
 
-    此时会打开“备份目标”边栏选项卡。****
+    此时将打开 " **备份目标** " 窗格。
 
-    ![打开备份目标边栏选项卡](./media/backup-try-azure-backup-in-10-mins/backup-goal-blade.png)
+    ![打开备份目标窗格](./media/backup-try-azure-backup-in-10-mins/backup-goal-blade.png)
 
-2. 从“工作负荷的运行位置?”下拉菜单中选择“本地”********。
+2. 从“工作负荷的运行位置?”下拉菜单中选择“本地” 。
 
-    之所以选择“本地”，是因为 Windows Server 或 Windows 计算机是不在 Azure 中的物理机。****
+    选择 **"本地"** ，因为 windows Server 或 windows 计算机是不在 Azure 中的物理计算机。
 
-3. 从“要备份的项?”菜单中选择“系统状态”，并单击“确定”************。
+3. 从 " **要备份的内容"** 菜单中，选择 " **系统状态**"，然后选择 **"确定"**。
 
     ![配置文件和文件夹](./media/backup-azure-system-state/backup-goal-system-state.png)
 
-    单击“确定”后，会在“备份目标”旁边显示一个复选标记，并会打开“准备基础结构”边栏选项卡。********
+    单击 "确定" 后，会在 " **备份目标**" 旁边显示一个复选标记，并会打开 " **准备基础结构** " 窗格。
 
-    ![配置备份目标以后，接下来准备基础结构](./media/backup-try-azure-backup-in-10-mins/backup-goal-configed.png)
+    ![已配置备份目标，接下来准备基础结构](./media/backup-try-azure-backup-in-10-mins/backup-goal-configed.png)
 
-4. 在“准备基础结构”边栏选项卡上，单击“下载 Windows Server 或 Windows 客户端的代理”********。
+4. 在 " **准备基础结构** " 窗格中，选择 " **下载 Windows Server 或 windows 客户端的代理**"。
 
     ![准备基础结构](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
 
-    如果使用的是 Windows Server Essential，则选择下载 Windows Server Essential 的代理。 弹出菜单会提示用户运行或保存 MARSAgentInstaller.exe。
+    如果使用的是 Windows Server 必需的，请选择下载适用于 Windows Server 的代理。 弹出菜单会提示用户运行或保存 MARSAgentInstaller.exe。
 
     ![MARSAgentInstaller 对话框](./media/backup-try-azure-backup-in-10-mins/mars-installer-run-save.png)
 
-5. 在下载弹出窗口中单击“保存”****。
+5. 在 "下载" 弹出菜单中，选择 " **保存**"。
 
-    默认情况下，**MARSagentinstaller.exe** 文件将保存到 Downloads 文件夹。 下载完安装程序以后，会显示一个弹出窗口，询问用户是要运行安装程序，还是要打开文件夹。
+    默认情况下，**MARSagentinstaller.exe** 文件将保存到 Downloads 文件夹。 安装程序完成后，你将看到一个弹出窗口，询问你是要运行安装程序，还是打开该文件夹。
 
-    ![准备基础结构](./media/backup-try-azure-backup-in-10-mins/mars-installer-complete.png)
+    ![MARS 安装程序已完成](./media/backup-try-azure-backup-in-10-mins/mars-installer-complete.png)
 
     此时还不需要安装代理。 下载保管库凭据之后，即可安装代理。
 
-6. 在“准备基础结构”边栏选项卡上，单击“下载”********。
+6. 在 " **准备基础结构** " 窗格中，选择 " **下载**"。
 
     ![下载保管库凭据](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    保管库凭据下载到 Downloads 文件夹。 下载完保管库凭据以后，会显示一个弹出窗口，询问用户是要打开还是要保存凭据。 单击“保存” 。 如果意外地单击了“打开”****，可以让尝试打开保管库凭据的对话框关闭。 不能打开保管库凭据。 继续下一步。 保管库凭据位于 Downloads 文件夹中。
+    保管库凭据下载到 **下载** 文件夹。 保管库凭据下载完成后，会显示一个弹出窗口，询问你是要打开还是要保存凭据。 选择“保存” 。 如果意外选择了 " **打开**"，则让尝试打开保管库凭据的对话框失败。 你将无法打开保管库凭据。 继续执行下一步。 保管库凭据位于 " **下载** " 文件夹中。
 
-    ![保管库凭据下载完毕](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
+    ![已下载保管库凭据](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
    > 保管库凭据只能保存到打算使用代理的 Windows Server 的本地位置。
    >
@@ -103,11 +103,11 @@ ms.locfileid: "87003705"
 
 1. 在 Downloads 文件夹（或其他保存位置）中找到并双击 **MARSagentinstaller.exe**。
 
-    安装程序会在提取、安装和注册恢复服务代理时提供一系列的消息。
+    安装程序会在提取、安装和注册恢复服务代理时提供一系列消息。
 
     ![运行恢复服务代理安装程序凭据](./media/backup-try-azure-backup-in-10-mins/mars-installer-registration.png)
 
-2. 完成 Microsoft Azure 恢复服务代理安装向导。 要完成该向导，需要：
+2. 完成 Microsoft Azure 恢复服务代理安装向导。 若要完成该向导，需完成以下操作：
 
    * 选择安装和缓存文件夹的位置。
    * 如果使用代理服务器来连接 Internet，请提供代理服务器信息。
@@ -142,48 +142,48 @@ ms.locfileid: "87003705"
 
     ![启动 Azure 恢复服务代理](./media/backup-try-azure-backup-in-10-mins/snap-in-search.png)
 
-2. 在恢复服务代理中，单击“ **计划备份**”。
+2. 在恢复服务代理中，选择 " **计划备份**"。
 
     ![计划 Windows Server 备份](./media/backup-try-azure-backup-in-10-mins/schedule-first-backup.png)
 
-3. 在计划备份向导的“开始使用”页上，单击“**下一步**”。
+3. 在计划备份向导的 " **入门** " 页上，选择 " **下一步**"。
 
-4. 在“选择要备份的项”页上，单击“**添加项**”。
+4. 在 " **选择要备份的项** " 页上，选择 " **添加项**"。
 
-5. 选择“系统状态”，并单击“确定”********。
+5. 选择 " **系统状态** "，然后选择 **"确定"**。
 
-6. 单击“下一步”。
+6. 选择“**下一页**”。
 
 7. 在后续页中选择系统状态备份所需的备份频率和保留策略。
 
-8. 在“确认”页上检查信息，并单击“完成”****。
+8. 在 "确认" 页上，查看信息，然后选择 " **完成**"。
 
-9. 在向导完成创建备份计划后，请单击“**关闭**”。
+9. 在向导完成创建备份计划后，选择“关闭”。
 
 ### <a name="to-back-up-windows-server-system-state-for-the-first-time"></a>首次备份 Windows Server 系统状态
 
 1. 请确保需要重启的 Windows Server 没有挂起的更新。
 
-2. 在恢复服务代理中单击“ **立即备份** ”，以通过网络完成初始种子设定。
+2. 在恢复服务代理中，选择 " **立即备份** " 以通过网络完成初始种子设定。
 
     ![立即备份 Windows Server](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
 
-3. 在出现的“选择备份项”屏幕上选择“系统状态”，然后单击“下一步”。************
+3. 在出现的 "**选择备份项目**" 屏幕上选择 "**系统状态**"，然后选择 "**下一步**"
 
-4. 在“确认”页上复查“立即备份向导”用于备份计算机的设置。 然后单击“备份”。
+4. 在“确认”页上复查“立即备份向导”用于备份计算机的设置。 然后选择 " **备份**"。
 
-5. 单击“**关闭**”以关闭向导。 如果在备份过程完成之前关闭向导，向导将继续在后台运行。
+5. 选择“关闭”以关闭向导。 如果在备份过程完成之前关闭向导，向导将继续在后台运行。
     > [!NOTE]
-    > 在每次系统状态备份之前，MARS 代理都会在预检查过程中触发 SFC /verifyonly。 这是为了确保作为系统状态一部分备份的文件具有与 Windows 版本相对应的正确版本。 在[本文](/windows-server/administration/windows-commands/sfc)中详细了解系统文件检查器 (SFC)。
+    > MARS 代理在 `SFC /verifyonly` 每次系统状态备份之前都触发为预检查的一部分。 这是为了确保作为系统状态一部分备份的文件具有与 Windows 版本相对应的正确版本。 在[本文](/windows-server/administration/windows-commands/sfc)中详细了解系统文件检查器 (SFC)。
     >
 
-完成初始备份后，备份控制台中会显示“**作业已完成**”状态。
+完成初始备份后，备份控制台中显示“**作业已完成**”状态。
 
   ![IR 完成](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
 
-## <a name="questions"></a>有疑问？
+## <a name="questions"></a>是否有任何问题?
 
-如果有疑问，或者希望包含某种功能，请 [给我们反馈](https://feedback.azure.com/forums/258995-azure-backup)。
+如果有疑问，请 [向我们发送反馈](https://feedback.azure.com/forums/258995-azure-backup)。
 
 ## <a name="next-steps"></a>后续步骤
 
