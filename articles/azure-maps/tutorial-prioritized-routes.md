@@ -1,6 +1,6 @@
 ---
 title: 教程：按出行模式查找多个路线 | Microsoft Azure Maps
-description: 本教程介绍如何使用 Microsoft Azure Maps 查找不同出行模式的路线。
+description: 了解如何使用 Azure Maps 查找以特定出行模式到兴趣点的路线。 了解如何在地图上显示多条路线。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 01/14/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 0cb3c1eadae426cef59b7aad8821343c23e76d79
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7d17b9474edef245f7db16f33c72d722f356f712
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289543"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037586"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>教程：使用 Azure Maps 查找不同出行模式的路线
 

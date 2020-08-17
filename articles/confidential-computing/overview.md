@@ -8,12 +8,12 @@ ms.subservice: workloads
 ms.topic: overview
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 44006bdfd9ffe6e78380adefe9271f42c0a76f84
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 4e92f974ce7d6c03143276808c4ca4d09d607a84
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773273"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835810"
 ---
 # <a name="confidential-computing-on-azure"></a>Azure 上的机密计算
 
@@ -52,7 +52,7 @@ TEE 是强制仅执行已授权代码的环境。 TEE 外部的任何代码都�
 
 开发应用程序时，可以使用[软件工具](#oe-sdk)来屏蔽领地内部的代码和数据部分。 这些工具确保受信任环境外部的任何人都不能查看或修改你的代码和数据。 
 
-从根本上讲，可将领地视为一个黑盒。 加密的代码和数据将放入该盒子中。 在盒子的外部看不到任何内容。 你为领地指定一个用于解密数据的密钥，然后，在从领地发出数据之前，会再次对数据进行处理和加密。
+从根本上讲，可将领地视为一个安全盒。 加密的代码和数据将放入该盒子中。 在盒子的外部看不到任何内容。 你为领地指定一个用于解密数据的密钥，然后，在从领地发出数据之前，会再次对数据进行处理和加密。
 
 ### <a name="attestation"></a>证明
 

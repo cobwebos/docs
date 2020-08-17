@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: be04b690add70468335ac694e3be54fa55a94249
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 9a393e29c4b5b2faa48cbcd273c7bc7a46169ba3
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475645"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904184"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>教程：创建 Azure Red Hat OpenShift 4 群集
 
@@ -49,9 +49,9 @@ Red Hat 拉取机密使群集能够访问 Red Hat 容器注册表以及其他内
 
    你将需要使用你的企业电子邮件登录 Red Hat 帐户或创建一个新的 Red Hat 帐户，并接受条款和条件。
 
-2. 单击“下载拉取机密”。
+2. 如果你是第一次创建群集，请转到 [OpenShift 产品页](https://developers.redhat.com/products/codeready-containers)。 注册后，请转到 [Red Hat OpenShift 群集管理器页](https://cloud.redhat.com/openshift/)，可以其中单击“下载拉取机密”，然后下载用于 ARO 群集的拉取机密 。
 
-将保存的 `pull-secret.txt` 文件保存在一个安全的位置 - 每次创建群集时都要使用该文件。
+将已保存的 `pull-secret.txt` 文件保存在安全的位置。 如果需要创建包含 Red Hat 或认证合作伙伴的示例或运算符的群集，则该文件将用于每个群集创建。
 
 运行 `az aro create` 命令时，可以使用 `--pull-secret @pull-secret.txt` 参数引用拉取机密。 从存储 `pull-secret.txt` 文件的目录执行 `az aro create`。 否则，将 `@pull-secret.txt` 替换为 `@<path-to-my-pull-secret-file>`。
 

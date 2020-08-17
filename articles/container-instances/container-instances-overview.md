@@ -2,14 +2,14 @@
 title: Azure 中的无服务器容器
 description: Azure 容器实例服务提供了在 Azure 中运行隔离容器的最简捷方式，既无需管理虚拟机，也不必采用更高级的业务流程协调程序。
 ms.topic: overview
-ms.date: 07/28/2020
+ms.date: 08/10/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 2871aabe4d81cfb1441e9c74c8fa24e4e906d3b9
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bd68fab380754eca38eebf3fd52634508f282cf6
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498678"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121657"
 ---
 # <a name="what-is-azure-container-instances"></a>什么是 Azure 容器实例？
 
@@ -35,10 +35,15 @@ ms.locfileid: "87498678"
 > [!IMPORTANT]
 > 从 2020 年 1 月 13 日开始，Azure 容器实例将要求服务器和应用程序的所有安全连接都使用 TLS 1.2。 对 TLS 1.0 和 1.1 的支持将停用。
 
-## <a name="hypervisor-level-security"></a>虚拟机监控程序级别的安全性
+## <a name="compliant-deployments"></a>合规部署
+
+### <a name="hypervisor-level-security"></a>虚拟机监控程序级别的安全性
 
 从历史上看，容器提供了应用程序依赖项隔离和资源调控功能，但不能认为其功能已强大到可以进行恶意的多租户使用。 Azure 容器实例保证容器中的应用程序像在 VM 中一样保持隔离状态。
 
+### <a name="customer-data"></a>客户数据
+
+ACI 服务存储确保容器组按预期运行所需的最少客户数据。 将客户数据存储到一个区域目前仅适用于亚太地域的东南亚区域（新加坡）。 对于其他所有区域，客户数据存储在以下[地域](https://azure.microsoft.com/global-infrastructure/geographies/)。 若要了解详细信息，请与 Azure 支持人员联系。
 
 ## <a name="custom-sizes"></a>自定义大小
 

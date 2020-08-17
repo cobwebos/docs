@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen2 简介
-description: 提供 Azure Data Lake Storage Gen2 的概述
+description: 查看 Azure Data Lake Storage Gen2 简介。 了解关键功能。 查看支持的 Blob 存储功能、Azure 服务集成和平台。
 author: normesta
 ms.service: storage
 ms.topic: overview
@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: ee9f2f0366cc680c874c6748d27e02dcadb82e35
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: d85b0cd2f9fa7eb81f5c39bd5d163188e3cd7106
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673303"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835759"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 简介
 
@@ -41,9 +41,9 @@ Data Lake Storage Gen2 在 Blob 存储的基础上构建，并通过以下方式
 
 -   POSIX 权限的超集：Data Lake Gen2 的安全模型支持 ACL 和 POSIX 权限，以及特定于 Data Lake Storage Gen2 的一些额外粒度。 可以通过存储资源管理器或 Hive 和 Spark 等框架来配置设置。
 
--   **经济高效**：Data Lake Storage Gen2 提供低成本的存储容量和事务。 随着数据在其整个生命周期中的转换，记帐费率变化通过诸如 [Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)的内置功能使成本保持在最低水平。
+-   **经济高效**：Data Lake Storage Gen2 提供了低成本的存储容量和事务。 随着数据在其整个生命周期中的转换，记帐费率变化通过诸如 [Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)的内置功能使成本保持在最低水平。
 
--   已优化的驱动程序：ABFS 驱动程序已针对大数据分析[专门进行了优化](data-lake-storage-abfs-driver.md)。 相应的 REST API 通过终结点 `dfs.core.windows.net` 进行显示。
+-   **优化的驱动程序**：ABFS 驱动程序已针对大数据分析进行[专门优化](data-lake-storage-abfs-driver.md)。 相应的 REST API 通过终结点 `dfs.core.windows.net` 进行显示。
 
 ### <a name="scalability"></a>可伸缩性
 

@@ -9,12 +9,12 @@ ms.date: 07/30/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5d4b87c14422744fd62d42a4d8e5b1ca0f34ffac
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 07945926600163a3fca228ef6d848b50efc4318d
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439721"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042796"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>教程：在边缘使用自定义视觉服务进行图像分类
 
@@ -433,9 +433,9 @@ Visual Studio Code 中的 Python 模块模板包含一些可以在运行后对 I
 在 Visual Studio Code 中右键单击 IoT Edge 设备的名称，选择“开始监视内置事件终结点”。 
 
 > [!NOTE]
-> 最初可能会在 cameraCapture 模块的输出中看到一些连接错误。 这是由于所部署的模块与启动的模块之间的延迟导致的。
+> 最初可能会在 cameraCapture 模块的输出中看到连接错误。 这是由于所部署的模块与启动的模块之间的延迟导致的。
 >
-> cameraCapture 模块会自动重新尝试连接，直至成功。 随后，你应看到如下所述的预期图像分类消息。
+> cameraCapture 模块会自动重新尝试连接，直至成功。 成功连接后，你将看到如下所述的预期图像分类消息。
 
 自定义视觉模块中的结果是从 cameraCapture 模块作为消息发送的，其中包括图像为铁杉树或樱花树的概率。 由于图像为铁杉，因此会看到概率为 1.0。
 

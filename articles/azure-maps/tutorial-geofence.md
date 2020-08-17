@@ -1,20 +1,20 @@
 ---
 title: 教程：在 Microsoft Azure Map 上创建地理围栏并跟踪设备
-description: 了解如何使用 Microsoft Azure Maps 空间服务设置地理围栏并跟踪相对于地理围栏的设备。
+description: 了解如何设置地理围栏。 请参阅如何使用 Azure Maps 空间服务跟踪与地理围栏相关的设备。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 7/15/2020
+ms.date: 8/11/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 775d98b992f2bca4441c868873ceaeb2389db81a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b88d9132ec1548c9d94fc418af35b55ac2836e96
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86517319"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121232"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>教程：使用 Azure Maps 设置地域隔离区
 
@@ -25,7 +25,7 @@ ms.locfileid: "86517319"
 Azure Maps 提供许多服务来支持上述场景中对进入和退出构造区域的设备的跟踪。 在本教程中，我们介绍如何执行以下操作：
 
 > [!div class="checklist"]
-> * 上传用于定义要监视的构造站点的[地理围栏 GeoJSON 数据](geofence-geojson.md)。 我们将使用[数据上传 API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) 将地理围栏作为多边形坐标上传到你的 Azure Maps 账户。
+> * 上传用于定义要监视的构造站点区域的[地理围栏 GeoJSON 数据](geofence-geojson.md)。 我们将使用[数据上传 API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) 将地理围栏作为多边形坐标上传到你的 Azure Maps 账户。
 > * 设置两个[逻辑应用](https://docs.microsoft.com/azure/event-grid/handler-webhooks#logic-apps)，当设备进入或退出地理围栏区域，将触发应用并向构造站点的运营管理员发送邮件通知。
 > * 使用 [Azure 事件网格](https://docs.microsoft.com/azure/event-grid/overview)订阅 Azure Maps 地理围栏进入和退出事件。 我们将设置两个 Webhook 事件订阅，用于调用两个逻辑应用中定义的 HTTP 终结点。 然后，逻辑应用将发送有关设备移出或移入地理围栏的相应邮件通知。
 > * 使用[搜索地理围栏 GET API](https://docs.microsoft.com/rest/api/maps/spatial/getgeofence) 在有设备退出和进入地理围栏区域时接收通知。

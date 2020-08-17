@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: 7bc2da2043c6607cfff62ff524be88efb79c6f18
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: d38a4ba04529e70ecfd772eef7f60179041f0273
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148253"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927362"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>创建和共享 Log Analytics 数据的仪表板
 
@@ -54,7 +54,7 @@ Log Analytics 仪表板可直观显示所有已保存的日志查询，使你能
 
 ![在 Azure 门户中共享新的仪表板](media/tutorial-logs-dashboards/log-analytics-share-dashboard.png) 
 
-系统会要求选择可将仪表板发布到的订阅和资源组。 为方便起见，门户的发布体验会引导完成将仪表板放在名为**仪表板**的资源组中的模式。  验证所选订阅，然后单击“发布”。  通过 [Azure 基于资源的访问控制](../../role-based-access-control/role-assignments-portal.md)来控制对仪表板中所显示信息的访问。   
+系统会要求选择可将仪表板发布到的订阅和资源组。 为方便起见，门户的发布体验会引导完成将仪表板放在名为**仪表板**的资源组中的模式。  验证所选订阅，然后单击“发布”。  通过 [Azure 基于角色的访问控制 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) 来控制对仪表板中所显示信息的访问。   
 
 ## <a name="visualize-a-log-query"></a>直观显示日志查询
 [Log Analytics](../log-query/get-started-portal.md) 是一个用于处理日志查询及其结果的专用门户。 这些功能包括在多行上编辑查询、选择性地执行代码、上下文相关 Intellisense 和智能分析。 在本教程中，你将使用 Log Analytics 创建图形形式的性能视图，将其保存以供将来查询，并将其固定到之前创建的共享仪表板。

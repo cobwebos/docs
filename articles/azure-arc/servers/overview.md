@@ -1,20 +1,16 @@
 ---
 title: Azure Arc for servers（预览版）概述
 description: 了解如何使用 Azure Arc for servers 管理托管在 Azure 外部的计算机，就如同管理 Azure 资源一样。
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
 keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical, hybrid
-ms.date: 03/24/2020
+ms.custom: references_regions
+ms.date: 08/06/2020
 ms.topic: overview
-ms.openlocfilehash: e775945526a5453085946ed4eea2a2e19761ba78
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: f11eedaf5f70cb24fa6c1588b7f26b2eed4734ce
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85482184"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121793"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>什么是 Azure Arc for servers（预览版）？
 
@@ -28,10 +24,15 @@ ms.locfileid: "85482184"
 
 ## <a name="supported-scenarios"></a>支持的方案
 
-Azure Arc for servers（预览版）支持以下使用联网计算机的方案：
+将计算机连接到 Azure Arc for servers（预览版）时，它可以执行以下配置管理任务：
 
 - 使用与适用于 Azure 虚拟机的策略分配相同的体验，分配 [Azure Policy 来宾配置](../../governance/policy/concepts/guest-configuration.md)。
-- Log Analytics 代理收集的日志数据，存储在计算机注册的 Log Analytics 工作区中。 混合计算机中的日志数据现在包含特定于计算机的属性，例如，可用于支持[资源上下文](../../azure-monitor/platform/design-logs-deployment.md#access-mode)日志访问的资源 ID。
+
+- 监视已连接的计算机来宾操作系统性能，并发现应用程序组件，以使用[用于 VM 的 Azure Monitor](../../azure-monitor/insights/vminsights-overview.md) 来监视其进程以及与应用程序通信的其他资源的依赖项。
+
+- 使用其他 Azure 服务（如使用受支持的 [Azure VM 扩展](manage-vm-extensions.md)的 Azure 自动化状态配置和 Azure Monitor Log Analytics 工作区）为非 Azure Windows 或 Linux 计算机简化部署。 这包括使用自定义脚本扩展执行部署后配置或软件安装。
+
+从混合计算机收集并存储在 Log Analytics 工作区中的日志数据现在包含特定于计算机的属性，例如资源 ID。 这可用于支持[资源上下文](../../azure-monitor/platform/design-logs-deployment.md#access-mode)日志访问。
 
 ## <a name="supported-regions"></a>支持的区域
 
@@ -42,7 +43,7 @@ Azure Arc for servers（预览版）支持以下使用联网计算机的方案�
 - 西欧
 - SoutheastAsia
 
-在大多数情况下，创建安装脚本时选择的位置应该是在地理位置上最接近你的计算机位置的 Azure 区域。 静态数据将存储在包含你指定区域的 Azure 地理区域中，如果你有数据驻留要求，这可能也会影响你对区域的选择。 如果你的计算机连接到的 Azure 区域受中断影响，则已连接的计算机不受影响，但使用 Azure 的管理操作可能无法完成。 为了在发生区域性中断时具有恢复能力，如果你有提供地理冗余服务的多个位置，最好将每个位置的计算机连接到不同的 Azure 区域。
+在大多数情况下，创建安装脚本时选择的位置应该是在地理位置上最接近你的计算机位置的 Azure 区域。 静态数据将存储在包含你指定区域的 Azure 地理区域中，如果你有数据驻留要求，这可能也会影响你对区域的选择。 如果你的计算机连接到的 Azure 区域受中断影响，则已连接的计算机不受影响，但使用 Azure 的管理操作可能无法完成。 发生区域性服务中断时，如果你有可提供异地冗余服务的多个位置，最好将每个位置的计算机连接到不同的 Azure 区域。
 
 ### <a name="agent-status"></a>代理状态
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c6cdde3ae63a2f816db7a978557f72b4b60d2677
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 7ec61bf4db949649c993fad4a3255b55626cb259
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439131"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056221"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>教程：开发适用于 Linux 设备的 IoT Edge 模块
 
@@ -152,6 +152,9 @@ Azure IoT Edge Tools 扩展为 Visual Studio Code 中支持的所有 IoT Edge �
 
 环境文件存储容器注册表的凭据，并将其与 IoT Edge 运行时共享。 运行时需要这些凭据才能将容器映像拉取到 IoT Edge 设备中。
 
+>[!NOTE]
+>如果你未将 localhost:5000 值替换为 Azure 容器注册表中的登录服务器值，则在[创建项目模板](#create-a-project-template)步骤中，部署清单的 .env 文件和 registryCredentials 部分将缺失  。 
+
 IoT Edge 扩展尝试从 Azure 中拉取容器注册表凭据并将其填充到环境文件中。 检查凭据是否已包含在内。 如果没有，请立即添加：
 
 1. 打开模块解决方案中的 **.env** 文件。
@@ -263,7 +266,7 @@ Visual Studio Code 现在有权访问容器注册表，因此可以将解决方�
 
 <!--Alternative steps: Use VS Code Docker tools to view ACR images with tags-->
 
-### <a name="troubleshoot"></a>故障排除
+### <a name="troubleshoot"></a>疑难解答
 
 如果在生成并推送模块映像时遇到错误，这通常与开发计算机上的 Docker 配置有关。 使用以下检查来检查配置：
 

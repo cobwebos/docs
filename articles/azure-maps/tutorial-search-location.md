@@ -1,6 +1,6 @@
 ---
 title: 教程：在地图上搜索附近位置 | Microsoft Azure Maps
-description: 在本教程中，你将了解如何使用 Microsoft Azure Maps 在地图上搜索兴趣点。
+description: 了解如何在地图上搜索兴趣点。 请参阅如何使用 Azure Maps Web SDK 向地图添加搜索功能和交互式弹出框。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 1/15/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 4e16c4e88d749f6dbc4f6271a7ceaf77661a208c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 8dc430febb25283ab5bd32496bb2f71ba19c895b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281525"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035852"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>教程：使用 Azure Maps 搜索附近兴趣点
 
@@ -173,7 +173,7 @@ Map Control API 是一个便利的客户端库。 使用此 API，可以轻松�
 
 ### <a name="service-module"></a>服务模块
 
-1. 在地图 `ready` 事件处理程序中，添加以下 Javascript 代码来构造搜索服务 URL。
+1. 在地图 `ready` 事件处理程序中，添加以下 JavaScript 代码来构造搜索服务 URL。
 
     ```JavaScript
    // Use SubscriptionKeyCredential with a subscription key

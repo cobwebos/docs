@@ -4,12 +4,12 @@ description: 本文解答有关使用 Azure 备份服务备份 Azure VM 的常�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 268146430a71cca4e620381ec4ce8666f808fefd
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 03e2f004fa54ee235eabc49afd6abd7532a6ee44
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190894"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262766"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
 
@@ -100,6 +100,10 @@ Azure 虚拟机备份策略支持的最短保持期为 7 天，最长为 9999 �
 ### <a name="can-i-back-up-or-restore-selective-disks-attached-to-a-vm"></a>能否备份或还原附加到 VM 的选择性磁盘？
 
 Azure 备份现在支持使用 Azure 虚拟机备份解决方案进行选择性磁盘备份和还原。 有关详细信息，请参阅 [Azure vm 的选择性磁盘备份和还原](selective-disk-backup-restore.md)。
+
+### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>如果在备份期间发生了租户更改，是否保留托管标识？
+
+如果发生 [租户更改](https://docs.microsoft.com/azure/devops/organizations/accounts/change-azure-ad-connection) ，则需要禁用并重新启用 [托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) ，才能使备份再次工作。
 
 ## <a name="restore"></a>还原
 

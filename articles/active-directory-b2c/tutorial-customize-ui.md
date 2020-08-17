@@ -1,7 +1,7 @@
 ---
 title: 教程：自定义用户界面
 titleSuffix: Azure AD B2C
-description: 了解如何使用 Azure 门户在 Azure Active Directory B2C 中自定义应用程序的用户界面 (UI)。
+description: 按照此教程进行操作，了解如何使用 Azure 门户在 Azure Active Directory B2C 中自定义应用程序的用户界面 (UI)。
 services: B2C
 author: msmimart
 manager: celestedg
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 29a03f1d1b1007845c1df516192da22d74705af0
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: a9ca6d91be95bfb1a47f85b20f3775a57518ffcf
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87481727"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922126"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中自定义用户界面体验
 

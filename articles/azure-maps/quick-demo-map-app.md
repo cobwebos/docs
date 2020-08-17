@@ -1,6 +1,6 @@
 ---
 title: 快速入门：使用 Azure Maps 执行交互式地图搜索
-description: 了解如何使用 Microsoft Azure Maps Web SDK 创建用于交互式地图搜索的演示 Web 应用程序。
+description: 了解如何创建交互式可搜索的地图。 了解如何创建 Azure Maps 帐户、获取主密钥，以及使用 Web SDK 设置地图应用程序。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 7/10/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: bb6c5ee48e22e0c913e7fc6150d3986af805a08f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fa5cab35416f2629d39ec04803f90fae1a2e5f6d
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004592"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031040"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>快速入门：使用 Azure Maps 创建交互式搜索地图
 
@@ -39,12 +39,12 @@ ms.locfileid: "87004592"
 1. 在 [Azure 门户](https://portal.azure.com)的左上角单击“创建资源”。
 2. 在“在市场中搜索”框中，键入“Azure Maps”。
 3. 从“结果”中，选择“Azure Maps”。 单击地图下面显示的“创建”按钮。
-4. 在“创建 Maps 帐户”页上，输入以下值：
+4. 在“创建 Maps 帐户”页上，输入以下值  ：
     * 要用于此帐户的订阅。
     * 此帐户的资源组名称。 可以选择新建或使用现有的资源组。
     * 新帐户的名称。
-    * 此帐户的定价层。
-    * 阅读许可证和隐私声明，并选择复选框接受这些条款 。
+    * 此帐户的定价层  。
+    * 阅读许可证和隐私声明，并选择复选框接受这些条款   。
     * 单击“创建”  按钮。
 
     :::image type="content" source="./media/quick-demo-map-app/create-account.png" alt-text="在门户中创建 Maps 帐户":::
@@ -56,7 +56,7 @@ ms.locfileid: "87004592"
 成功创建 Maps 帐户后，检索查询 Maps API 的主密钥。
 
 1. 在门户中打开 Maps 帐户。
-2. 在设置部分中，选择“身份验证”。
+2. 在设置部分中，选择“身份验证”  。
 3. 将“主密钥”复制到剪贴板。 本地保存它以便稍后在本教程中使用。
 
 >[!NOTE]

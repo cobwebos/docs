@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 门户导入 SOAP API 并将其转换为 REST | Microsoft Docs
-description: 了解如何使用 API 管理导入 SOAP API 并将其转换为 REST。
+description: 了解如何导入 SOAP API，如何使用 API 管理将其转换为 REST，以及如何在 Azure 和开发人员门户中测试该 API。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: a2bec6401ae3ac53f46e92e9be38abf57a92163d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a87f4d0748d14ab995f75279b6a192f350165d6f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74108101"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843821"
 ---
 # <a name="import-a-soap-api-and-convert-to-rest"></a>导入 SOAP API 并将其转换为 REST
 

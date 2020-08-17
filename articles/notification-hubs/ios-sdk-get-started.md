@@ -3,17 +3,17 @@ title: 使用 Azure 通知中心和 iOS SDK 向 iOS 发送推送通知
 description: 在本教程，你将学习如何使用 Azure 通知中心和 Apple Push Notification 服务向 iOS 设备发送推送通知。
 author: sethmanheim
 ms.author: sethm
-ms.date: 06/19/2020
+ms.date: 08/10/2020
 ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: 94e930c996710c2b25d4114c7cfcb17129c5177d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7cdf095898bfe85e6f3b14fa1dcdb7b0c94ccde6
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022423"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042439"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 iOS 应用发送推送通知
 
@@ -102,6 +102,9 @@ Apple Push Notification 服务 (APNS) 使用证书对推送通知进行身份验
 4. 在“证书、标识符和配置文件”页面的“标识符”下，找到你刚刚创建的应用 ID 行项，并选择其所在的行，显示“编辑应用 ID 配置”屏幕。 ****   ****  ****  
 
 ## <a name="create-a-certificate-for-notification-hubs"></a>为通知中心创建证书
+
+> [!NOTE]
+> 在发布 iOS 13 后，只能使用基于令牌的身份验证接收无声通知。 如果将基于证书的身份验证用于 APNS 凭据，则必须改用基于令牌的身份验证。
 
 需要提供证书才能使通知中心与 APNS 一起使用。 **** 可通过以下两种方式之一实现此目的：
 

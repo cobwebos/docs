@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Data Box 快速入门 | Microsoft Docs
-description: 了解如何在 Azure 门户中快速部署 Azure Data Box
+description: 通过本快速入门教程了解如何使用 Azure 门户部署 Azure Data Box 以执行导入订单。 将 Azure Data Box 和复制数据配置为上传到 Azure。
 services: databox
 author: alkohli
 ms.service: databox
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: dd429dadcbe67f0ac91da19d6606626b39f34ef5
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 2ee9d1edefb0e248d0eba13e2d0b9f1c651fdd42
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86201094"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87924506"
 ---
 # <a name="get-started-with-azure-data-box-to-import-data-into-azure"></a>开始使用 Azure Data Box 将数据导入 Azure
 
@@ -158,9 +158,9 @@ ms.locfileid: "86201094"
 
 此步骤需要 2-3 分钟才能完成。
 
-- 在订单尚未处理的情况下，可以在 Azure 门户中取消 Data Box 订单。 订单处理后，无法取消订单。 订单处理会不断进行，直到完成。 若要取消订单，请转到“概况”，然后在命令栏中单击“取消”。 
+- 在订单尚未处理的情况下，可以在 Azure 门户中取消 Data Box 订单。 订单处理后，无法取消订单。 订单处理会不断进行，直到完成。 若要取消订单，请转到“概况”，然后在命令栏中单击“取消”。
 
-- 在 Azure 门户中的状态显示为“已完成”或“已取消”后，即可删除订单。  若要删除订单，请转到“概况”，然后在命令栏中单击“删除”。 
+- 在 Azure 门户中的状态显示为“已完成”或“已取消”后，即可删除订单。 若要删除订单，请转到“概况”，然后在命令栏中单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

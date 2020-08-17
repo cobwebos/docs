@@ -1,6 +1,6 @@
 ---
 title: Azure PowerShell 脚本示例 - 创建 VPN 网关 | Microsoft Docs
-description: 使用 powershell 创建 VPN 网关。
+description: 了解如何使用 PowerShell 脚本创建虚拟网络、网络子网和基于路由的 VPN 网关。
 services: vpn-gateway
 documentationcenter: vpn-gateway
 author: kumudD
@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 01/09/2020
 ms.author: alzam
-ms.openlocfilehash: 1531bf7fdb2ec23be49f5a31145e3d8c2487aedc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1fc8339b3d5d5f02611c750e8016c2fc3df1d8a3
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086976"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035342"
 ---
 # <a name="create-a-vpn-gateway-with-powershell"></a>使用 PowerShell 创建 VPN 网关
 

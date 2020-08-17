@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 08/10/2020
 ms.author: banders
-ms.openlocfilehash: 8b0ba7b597921d82883f2c7ba505ebb10eee1876
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 592a5d9573cb4e475c5d1ca6b4f06002f949e197
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039761"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136246"
 ---
 # <a name="cancel-your-azure-subscription"></a>取消 Azure 订阅
 
@@ -32,10 +32,10 @@ Microsoft 建议你在取消订阅之前执行以下操作，虽然这不是必�
 ## <a name="cancel-subscription-in-the-azure-portal"></a>在 Azure 门户中取消订阅
 
 1. 从 [Azure 门户中的“订阅”页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)选择订阅。
-2. 选择要取消的订阅。
-3. 选择“概述”，然后选择“取消订阅” 。
+1. 选择要取消的订阅。
+1. 选择“概述”，然后选择“取消订阅” 。
     ![显示“取消”按钮的屏幕截图](./media/cancel-azure-subscription/cancel_ibiza.png)
-3. 按照提示进行操作并完成取消。
+1. 按照提示进行操作并完成取消。
 
 ## <a name="who-can-cancel-a-subscription"></a>谁可以取消订阅？
 
@@ -49,11 +49,20 @@ Microsoft 建议你在取消订阅之前执行以下操作，虽然这不是必�
 
 ## <a name="what-happens-after-i-cancel-my-subscription"></a>取消订阅之后会发生什么情况？
 
-取消后，会立即停止计费。 但是，可能需要花费多达 10 分钟，取消才会显示在门户中。 如果在计费周期中途取消订阅，我们会在周期结束后于标准发票日期发送最终账单。 
+取消后，会立即停止计费。 但是，可能需要花费多达 10 分钟，取消才会显示在门户中。 如果在计费周期中途取消订阅，我们会在周期结束后于标准发票日期发送最终账单。
 
 取消后，你的服务将被禁用。 那意味着虚拟机已解除分配，临时 IP 地址已释放，并且存储是只读的。
 
-Microsoft 会先等待 30 - 90 天，然后才会永久删除用户的数据，这样做是考虑到用户可能需要访问这些数据，或者改变了主意。 我们不会因为保留这些数据而向你收费。 若要了解详细信息，请参阅 [Microsoft Trust Center - How we manage your data](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409)（Microsoft 信任中心 - 我们如何管理用户的数据）。
+取消订阅后，Microsoft 会先等待 30 - 90 天，然后才会永久删除用户的数据，这样做是考虑到用户可能需要访问这些数据，或者改变了主意。 我们不会因为保留这些数据而向你收费。 若要了解详细信息，请参阅 [Microsoft Trust Center - How we manage your data](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409)（Microsoft 信任中心 - 我们如何管理用户的数据）。
+
+## <a name="delete-free-trial-subscription"></a>删除免费试用版订阅
+
+如果你有免费试用版订阅，则无需等待 30 天的订阅自动删除期。 你可以在取消订阅三天后将其删除。 “删除订阅”选项在你取消订阅三天后才可用。
+
+1. 取消订阅后，请等待三天。
+1. 在 Azure 门户中的[“订阅”页](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)上选择你的订阅。
+1. 选择要删除的订阅。
+1. 选择“概述”，然后选择“删除订阅” 。
 
 ## <a name="reactivate-subscription"></a>重新激活订阅
 

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 05/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 15b96a8bb5460064d6f50f81809f7e3850b30a4c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9d4e709b2a844db9d0be55de2630ce799edb01ff
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281916"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921667"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Azure Active Directory B2C 的技术和功能概述
 
@@ -262,7 +262,4 @@ Azure AD B2C 发出审核日志，其中包含有关其资源、颁发的令牌�
 
 ## <a name="next-steps"></a>后续步骤
 
-更深入地了解 Azure Active Directory B2C 的功能和技术方面后，可以通过创建一个 B2C 租户开始使用该服务：
-
-> [!div class="nextstepaction"]
-> [教程：创建 Azure Active Directory B2C 租户 >](tutorial-create-tenant.md)
+现在你已更深入地了解 Azure Active Directory B2C 的功能和技术方面，可以开始使用[创建 Azure Active Directory B2C 租户教程](tutorial-create-tenant.md)了。

@@ -6,18 +6,18 @@ ms.author: t-trtr
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: 7acdee98e5e433567a3d177400ee4e7043d0895c
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: e70ee75344a939ea1632df3549d796617c7596af
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921561"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901991"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>教程：为 Kubernetes 上的机密存储 CSI 驱动程序配置并运行 Azure Key Vault 提供程序
 
 在本教程中，你将使用机密存储容器存储接口 (CSI) 驱动程序从 Azure 密钥保管库访问和检索机密，以便将机密装载到 Kubernetes Pod。
 
-在本教程中，你将了解如何执行以下操作：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建服务主体或使用托管标识。
@@ -71,7 +71,7 @@ az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
-1. 若要显示已创建的 AKS 群集的元数据，请使用以下命令。 复制 principalId、clientId、subscriptionId 和 nodeResourceGroup 供稍后使用   。
+1. 若要显示已创建的 AKS 群集的元数据，请使用以下命令。 复制 principalId、clientId、subscriptionId 和 nodeResourceGroup 供稍后使用   。 如果在创建 ASK 群集时未启用托管标识，则 principalId 和 clientId 将为 null 。 
 
     ```azurecli
     az aks show --name contosoAKSCluster --resource-group contosoResourceGroup
@@ -166,7 +166,7 @@ spec:
 
 ### <a name="assign-a-service-principal"></a>分配服务主体
 
-如果使用的是服务主体，请向其授予访问密钥保管库并检索机密的权限。 通过执行以下操作分配“读取者”角色并向服务主体授予从密钥保管库获取机密的权限 ：
+如果使用的是服务主体，请向其授予访问密钥保管库并检索机密的权限。 通过执行以下命令分配“读取者”角色并向服务主体授予从密钥保管库获取机密的权限 ：
 
 1. 将服务主体分配到现有密钥保管库。 $AZURE_CLIENT_ID 参数是在创建服务主体后复制的 appId 。
     ```azurecli
@@ -204,10 +204,10 @@ az ad sp credential reset --name contosoServicePrincipal --credential-descriptio
 
 如果使用的是托管标识，请将特定角色分配给所创建的 AKS 群集。 
 
-1. 若要创建、列出或读取用户分配的托管标识，需要为 AKS 群集分配[托管标识参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-contributor)角色。 请确保 $clientId 是 Kubernetes 群集的 clientId。
+1. 若要创建、列出或读取用户分配的托管标识，需要为 AKS 群集分配[托管标识操作员](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-operator)角色。 请确保 $clientId 是 Kubernetes 群集的 clientId。 就范围而言，它处于 Azure 订阅服务（特别是创建 AKS 群集时创建的节点资源组）下。 此范围将确保仅该组中的资源受下面分配的角色的影响。 
 
     ```azurecli
-    az role assignment create --role "Managed Identity Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
+    az role assignment create --role "Managed Identity Operator" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     
     az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     ```

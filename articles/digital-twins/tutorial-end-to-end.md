@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: aae1797f7f1a252a4f094ee9f1b079fb60ba72f3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 0407046dcafb0dcc1872d5083669e09b378a75cd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131729"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827301"
 ---
 # <a name="build-out-an-end-to-end-solution"></a>扩建端到端解决方案
 
@@ -95,6 +95,20 @@ Query
 
 在本部分中，你将发布预先编写的函数应用，并确保该函数应用可通过向其分配 Azure Active Directory (Azure AD) 标识来访问 Azure 数字孪生。 完成这些步骤后，本教程的其余部分即可使用函数应用中的函数。 
 
+返回到打开 AdtE2ESample 项目的 Visual Studio 窗口中，该函数应用位于 SampleFunctionsApp 项目文件中__ __。 你可以在“解决方案资源管理器”窗格中进行查看。
+
+### <a name="update-dependencies"></a>更新依赖项
+
+在发布应用之前，最好确保依赖项是最新版本，以确保具有所有包含的包的最新版本。
+
+在“解决方案资源管理器”窗格中，展开“SampleFunctionsApp”>“依赖项” 。 右键选择“包”，并选择“管理 NuGet 包...” 。
+
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-1.png" alt-text="Visual Studio：管理 SampleFunctionsApp 项目的 NuGet 包" border="false":::
+
+这将打开 NuGet 包管理器。 选择“更新”选项卡，如果有任何要更新的包，请选中此复选框以“选择所有的包” 。 然后点击“更新”。
+
+:::image type="content" source="media/tutorial-end-to-end/update-dependencies-2.png" alt-text="Visual Studio：选择更新 NuGet 包管理器中的所有包":::
+
 ### <a name="publish-the-app"></a>发布应用
 
 返回到打开 AdtE2ESample 项目的 Visual Studio 窗口中，从“解决方案资源管理器”窗格中，右键选择 SampleFunctionsApp 项目文件，然后点击“发布” 。
@@ -134,19 +148,21 @@ Query
 :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="在 Visual Studio 中发布 Azure 函数：发布":::
 
 > [!NOTE]
-> 你可能会看到如下所示的弹出窗口：:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="在 Visual Studio 中发布 Azure 函数：发布凭据" border="false":::
-> 如果出现弹出窗口，请依次选择“尝试从 Azure 检索凭据”和“保存” 。
+> 如果看到如下所示的弹出窗口：:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="在 Visual Studio 中发布 Azure 函数：发布凭据" border="false":::
+> 依次选择“尝试从 Azure 检索凭据”和“保存” 。
 >
-> 若看到“你的 Functions 运行时版本与在 Azure中运行的版本不匹配”警告，请按照提示升级到最新的 Azure Functions 运行时版本。 若使用旧版本的 Visual Studio 而不是本教程开头的“先决条件”部分中推荐的版本，则可能出现此问题。
+> 若看到“升级 Azure 上的 Functions 版本”或“你的 Functions 运行时版本与在 Azure 中运行的版本不匹配”警告 ：
+>
+> 请按照提示升级到最新的 Azure Functions 运行时版本。 若使用旧版本的 Visual Studio 而不是本教程开头的“先决条件”部分中推荐的版本，则可能出现此问题。
 
 ### <a name="assign-permissions-to-the-function-app"></a>向函数应用分配权限
 
-为了使函数应用能够访问 Azure 数字孪生，下一步是配置应用设置，为应用分配系统管理的 Azure AD 标识，并为此标识授予 Azure 数字孪生实例的“所有者”权限。
+为了使函数应用能够访问 Azure 数字孪生，下一步是配置应用设置，为应用分配系统管理的 Azure AD 标识，并为此标识授予 Azure 数字孪生实例的“Azure 数字孪生所有者(预览版)”角色。 要对实例执行许多数据平面活动的任何用户或函数都需要此角色。 关于安全性和角色分配，可以在[概念：Azure 数字孪生解决方案的安全性](concepts-security.md)中了解详细信息。
 
-在 Azure Cloud Shell 中，使用以下命令设置一个应用程序设置，供函数应用用来引用数字孪生实例。
+在 Azure Cloud Shell 中，使用以下命令设置一个应用程序设置，供函数应用用来引用 Azure 数字孪生实例。
 
 ```azurecli-interactive
-az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-digital-twin-instance-URL>"
+az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
 
 使用以下命令创建系统管理的标识。 记下输出中的 principalId 字段。
@@ -155,7 +171,7 @@ az functionapp config appsettings set -g <your-resource-group> -n <your-App-Serv
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-在以下命令中，使用 principalId 值将函数应用的标识分配给 Azure 数字孪生实例的“所有者”角色 ：
+在以下命令的输出中，使用 principalId 值将函数应用的标识分配给 Azure 数字孪生实例的“Azure 数字孪生所有者(预览版)”角色 ：
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"
@@ -339,7 +355,7 @@ az dt endpoint create eventgrid --dt-name <your-Azure-Digital-Twins-instance> --
 az dt endpoint show --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name <your-Azure-Digital-Twins-endpoint> 
 ```
 
-在输出中查找 `provisioningState` 字段，检查其值是否为“Succeeded”。
+在输出中查找 `provisioningState` 字段，检查其值是否为“Succeeded”。 它也可能显示“Provisioning”，这意味着仍在创建终结点。 在这种情况下，请等待几秒钟，然后再次运行该命令，以检查它是否已成功完成。
 
 :::image type="content" source="media/tutorial-end-to-end/output-endpoints.png" alt-text="终结点的查询结果，其中显示 provisioningState 为 Succeeded":::
 
@@ -354,6 +370,9 @@ az dt route create --dt-name <your-Azure-Digital-Twins-instance> --endpoint-name
 ```
 
 此命令的输出是一些有关已创建的路由的信息。
+
+>[!NOTE]
+>必须先完成终结点（来自上一步）的预配工作，然后才能设置使用这些终结点的事件路由。 如果由于终结点未就绪而导致路由创建失败，请等待几分钟，然后重试。
 
 #### <a name="connect-the-function-to-event-grid"></a>将函数连接到事件网格
 

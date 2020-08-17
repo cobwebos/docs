@@ -7,12 +7,12 @@ ms.date: 7/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 0cde9caa2f2b68b1e75eac635a81865cc4b6b33c
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 571f0e0ceff0adfbf1814abc627fcab6b23acbe1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87351719"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905848"
 ---
 # <a name="tutorial-connect-a-sample-iot-plug-and-play-preview-multiple-component-device-application-to-iot-hub-python"></a>教程：将示例 IoT 即插即用预览版多个组件设备应用程序连接到 IoT 中心 (Python)
 
@@ -86,26 +86,26 @@ azure-iot-sdk-python\azure-iot-device\samples\pnp 文件夹包含 IoT 即插即�
 
 1. 导入 `pnp_helper_preview_refresh.py` 以获取对帮助器方法的访问权限。
 
-1. 定义两个数字孪生模型标识符 (DTMI)，它们唯一表示 DTDL 模型中定义的两个不同接口。 实际温度控制器中的组件应实现这两个接口。 这两个接口已在中央存储库中发布。 这些 DTMI 必须为用户所知，并且根据设备实现方案而有所不同。 对于当前示例，这两个接口表示：
+2. 定义两个数字孪生模型标识符 (DTMI)，它们唯一表示 DTDL 模型中定义的两个不同接口。 实际温度控制器中的组件应实现这两个接口。 这两个接口已在中央存储库中发布。 这些 DTMI 必须为用户所知，并且根据设备实现方案而有所不同。 对于当前示例，这两个接口表示：
 
   - 调温器
   - Azure 开发的设备信息。
 
-. 为要实现的设备定义 DTMI `model_id`。 DTMI 是用户定义的，必须与 DTDL 模型文件中的 DTMI 匹配。
+3. 为要实现的设备定义 DTMI `model_id`。 DTMI 是用户定义的，必须与 DTDL 模型文件中的 DTMI 匹配。
 
-1. 定义为 DTDL 文件中的组件提供的名称。 DTDL 中有两个调温器和一个设备信息组件。 名为 `serial_number` 的常量也是在根接口中定义的。 设备的 `serial_number` 无法更改。
+4. 定义为 DTDL 文件中的组件提供的名称。 DTDL 中有两个调温器和一个设备信息组件。 名为 `serial_number` 的常量也是在根接口中定义的。 设备的 `serial_number` 无法更改。
 
-1. 定义命令处理程序实现。 它们定义设备接收命令请求时执行哪些操作。
+5. 定义命令处理程序实现。 它们定义设备接收命令请求时执行哪些操作。
 
-1. 定义创建命令响应的函数。 它们定义设备如何响应命令请求。 如果命令需要将自定义响应发送回 IoT 中心，你可以创建命令响应函数。 如果未提供命令的响应函数，则发送通用响应。 在此示例中，只有 getMaxMinReport 命令具有自定义响应。
+6. 定义创建命令响应的函数。 它们定义设备如何响应命令请求。 如果命令需要将自定义响应发送回 IoT 中心，你可以创建命令响应函数。 如果未提供命令的响应函数，则发送通用响应。 在此示例中，只有 getMaxMinReport 命令具有自定义响应。
 
-1. 定义一个函数，用于从此设备发送遥测数据。 调温器和根接口都会发送遥测数据。 此函数采用可选的组件名称参数，这让它能够识别哪个组件发送了遥测数据。
+7. 定义一个函数，用于从此设备发送遥测数据。 调温器和根接口都会发送遥测数据。 此函数采用可选的组件名称参数，这让它能够识别哪个组件发送了遥测数据。
 
-1. 定义命令请求的侦听器。
+8. 定义命令请求的侦听器。
 
-1. 定义所需属性更新的侦听器。
+9. 定义所需属性更新的侦听器。
 
-1. 有一个 `main` 函数：
+10. 有一个 `main` 函数：
 
     1. 使用设备 SDK 创建设备客户端并连接到 IoT 中心。 设备发送 `model_id`，以便 IoT 中心可以将设备标识为 IoT 即插即用设备。
 
@@ -148,7 +148,7 @@ python pnp_temp_controller_with_thermostats.py
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了如何将 IoT 即插即用设备和组件连接到 IoT 中心。 若要详细了解 IoT 即插即用设备模型，请参阅：
+本教程已介绍如何将 IoT 即插即用设备和组件连接到 IoT 中心。 若要详细了解 IoT 即插即用设备模型，请参阅：
 
 > [!div class="nextstepaction"]
 > [IoT 即插即用预览版建模开发人员指南](concepts-developer-guide.md)

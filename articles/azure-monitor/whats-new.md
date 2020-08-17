@@ -6,16 +6,74 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: b36469a89c7bae39ae3c2d62792c2ccde0fcfda9
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 10d4cb8160d0bf9111903b193574e9e820ded221
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799321"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827735"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Azure Monitor 文档中有哪些新增内容？
 
 本文提供新的或已经过重大更新的 Azure Monitor 文章列表。 在每个月的第一周，本文将会刷新，以包含上个月的文章更新。
+
+## <a name="july-2020"></a>2020 年 7 月
+
+### <a name="general"></a>常规
+- [部署 Azure Monitor](deploy-scale.md) - 用于 VM 的 Azure Monitor 加入内容的重构。
+- [使用 Azure 专用链接将网络安全地连接到 Azure Monitor](platform/private-link-security.md) - 增加了有关限制的部分。
+
+### <a name="alerts"></a>警报
+- [Azure Monitor 警报的操作规则](platform/alerts-action-rules.md) - 增加了 CLI 进程。
+- [在 Azure 门户中创建和管理操作组](platform/action-groups.md) - 已更新以反映 UI 中的更改。
+- [在 Azure Monitor Log Analytics 中保存的查询](log-query/saved-queries.md) - 新文章。
+- [排除 Azure Monitor 中的日志警报故障](platform/alerts-troubleshoot-log.md) - 增加了有关警报规则配额的部分。
+- [排除 Azure 指标警报故障](platform/alerts-troubleshoot-metric.md) - 增加了有关尚未发出的自定义指标的警报规则部分。
+- [了解指标警报在 Azure Monitor 中的工作原理](platform/alerts-metric-overview.md) - 添加了有关选择聚合粒度的建议。
+
+### <a name="application-insights"></a>Application Insights
+- [Azure Web 应用扩展的发行说明 - Application Insights](app/web-app-extension-release-notes.md) - 新文章。
+- [Application Insights 资源的资源管理器模板示例](samples/resource-manager-app-resource.md) - 新文章。
+- [排除 Azure Application Insights Profiler 的问题](app/profiler-troubleshooting.md) - 增加了有关在 Azure 应用服务上运行 ASP.NET Core 应用探查器时出现的 bug 的注释。 
+
+### <a name="containers"></a>容器
+- [Azure Monitor 中的容器日志警报](insights/container-insights-log-alerts.md) - 新文章。
+- [Azure Monitor 中的容器指标警报](insights/container-insights-metric-alerts.md) - 新文章。
+
+### <a name="logs"></a>日志
+- [Azure Monitor 客户托管的密钥](platform/customer-managed-keys.md) - 增加了错误消息和用于查询的 CMK 配置部分。
+- [Azure Monitor HTTP 数据收集器 API](platform/data-collector-api.md) - 增加了 Python 3 示例。
+- [在 Azure Monitor 中优化日志查询](log-query/query-optimization.md) - 增加了有关在使用子查询时避免多次数据扫描的部分。
+- [教程：Log Analytics 查询入门](log-query/get-started-portal.md) - 增加了视频。
+
+### <a name="platform-logs"></a>平台日志
+- [创建诊断设置以将平台日志和指标发送到不同目标](platform/diagnostic-settings.md) - 增加了视频。
+- [Azure Monitor 的资源管理器模板示例](samples/resource-manager-samples.md) - 增加了使用日志目标类型的 ARM 示例。 
+
+### <a name="solutions"></a>解决方案
+- [Azure Monitor 中的监视解决方案](insights/solutions.md) - 增加了 CLI 进程。
+- [Azure 中的 Office 365 管理解决方案](insights/solution-office-365.md) - 更改了停用日期。
+
+### <a name="virtual-machines"></a>虚拟机
+
+用于 VM 的 Azure Monitor 内容重构的新文章和更新的文章
+
+- [什么是用于 VM 的 Azure Monitor？](insights/vminsights-overview.md)
+- [为用于 VM 的 Azure Monitor 配置 Log Analytics 工作区](insights/vminsights-configure-workspace.md)
+- [将 Linux 计算机连接到 Azure Monitor](platform/agent-linux.md)
+- [为混合环境启用 Azure Monitor](insights/vminsights-enable-hybrid.md)
+- [在 Azure 门户中为单个虚拟机或虚拟机规模集启用 Azure Monitor](insights/vminsights-enable-portal.md)
+- [使用 Azure Policy 启用用于 VM 的 Azure Monitor](insights/vminsights-enable-at-scale-policy.md)
+- [启用用于 VM 的 Azure Monitor 概述](insights/vminsights-enable-overview.md)
+- [使用 PowerShell 启用用于 VM 的 Azure Monitor](insights/vminsights-enable-powershell.md)
+- [使用资源管理器模板启用用于 VM 的 Azure Monitor](insights/vminsights-enable-resource-manager.md)
+- [使用 PowerShell 或模板启用用于 VM 的 Azure Monitor](insights/vminsights-enable-at-scale-powershell.md)
+
+
+### <a name="visualizations"></a>可视化效果
+- [升级 Log Analytics 仪表板可视化效果](log-query/dashboard-upgrade.md) - 已更新刷新频率。
+- [可视化 Azure Monitor 中的数据](visualizations.md) - 增加了视频。
+
 
 ## <a name="june-2020"></a>2020 年 6 月
 
@@ -66,7 +124,8 @@ ms.locfileid: "87799321"
 - [使用 Azure 门户将 Azure 活动日志发送到 Log Analytics 工作区](learn/quick-collect-activity-log-portal.md) - 新文章。
 - [使用 Azure 资源管理器模板将 Azure 活动日志发送到 Log Analytics 工作区](learn/quick-collect-activity-log-arm.md) - 新文章。
 
-#### <a name="new-and-updated-articles-from-restructure-and-consolidation-of-platform-log-content"></a>来自平台日志内容重构和整合的新文章和更新文章
+来自平台日志内容重构和整合的新文章和更新文章
+
 - [将 Azure 资源日志存档到存储帐户](./platform/resource-logs.md#send-to-azure-storage)
 - [Azure 活动日志事件架构](platform/activity-log-schema.md)
 - [Azure 活动日志](platform/activity-log.md)
@@ -84,7 +143,7 @@ ms.locfileid: "87799321"
 - [在 Azure Monitor 中查看 Azure 活动日志事件](./platform/activity-log.md#view-the-activity-log)
 
 ### <a name="virtual-machines"></a>虚拟机
-- [在 Azure 门户中启用用于 VM 的 Azure Monitor](insights/vminsights-enable-single-vm.md) - 更新为包含 Azure Arc。
+- [在 Azure 门户中启用用于 VM 的 Azure Monitor](./insights/vminsights-enable-portal.md) - 更新为包含 Azure Arc。
 - [启用用于 VM 的 Azure Monitor 概述](insights/vminsights-enable-overview.md) - 更新为包含 Azure Arc。
 - [什么是用于 VM 的 Azure Monitor？](insights/vminsights-overview.md) - 更新为包含 Azure Arc。
 
@@ -293,7 +352,7 @@ ms.locfileid: "87799321"
 
 - [什么是用于 VM 的 Azure Monitor？](insights/vminsights-overview.md)
 - [用于 VM 的 Azure Monitor（正式版）常见问题解答](insights/vminsights-ga-release-faq.md) 
-- [使用 Azure Policy 启用用于 VM 的 Azure Monitor](insights/vminsights-enable-at-scale-policy.md) 
+- [使用 Azure Policy 启用用于 VM 的 Azure Monitor](./insights/vminsights-enable-policy.md) 
 - [如何使用用于 VM 的 Azure Monitor 绘制性能图表](insights/vminsights-performance.md)
 - [如何从用于 VM 的 Azure Monitor 查询日志](insights/vminsights-log-search.md)
 - [使用用于 VM 的 Azure Monitor 查看应用依赖项](insights/vminsights-maps.md) 

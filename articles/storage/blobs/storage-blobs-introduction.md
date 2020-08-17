@@ -1,7 +1,7 @@
 ---
 title: Blob（对象）存储简介
 titleSuffix: Azure Storage
-description: Azure Blob 存储可存储巨量的非结构化对象数据，例如文本或二进制数据。 Azure Blob 存储高度可缩放且高度可用。 客户端可通过 PowerShell 或 Azure CLI、以编程方式通过 Azure Storage 客户端库或者使用 REST 访问 Blob 存储中的数据对象。
+description: 使用 Azure Blob 存储来存储巨量的非结构化对象数据，例如文本或二进制数据。 Azure Blob 存储高度可缩放且高度可用。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/24/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 0d05e85a06ae1e893d5d7faa7e5389da78ad6389
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 55059f4edea19a1e559ea1ad99d9e7e60756cc96
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85559523"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836371"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Azure Blob 存储简介
 
@@ -34,7 +34,7 @@ Blob 存储提供了三种类型的资源：
 
 ### <a name="storage-accounts"></a>存储帐户
 
-存储帐户在 Azure 中为数据提供唯一的命名空间。 在 Azure 存储中存储的每个对象都具有一个包含唯一帐户名称的地址。 帐户名称与 Azure 存储 blob 终结点的组合构成了存储帐户中对象的基址。
+存储帐户在 Azure 中为数据提供唯一的命名空间。 存储在 Azure 存储中的每个对象都有一个地址，其中包含唯一的帐户名称。 帐户名称与 Azure 存储 blob 终结点的组合构成了存储帐户中对象的基址。
 
 例如，如果存储帐户名为 mystorageaccount，则 Blob 存储的默认终结点为：
 

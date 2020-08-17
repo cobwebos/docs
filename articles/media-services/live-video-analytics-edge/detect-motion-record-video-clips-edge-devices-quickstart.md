@@ -3,12 +3,12 @@ title: 检测运动并在边缘设备上录制视频 - Azure
 description: 本快速入门演示了如何使用 IoT Edge 上的实时视频分析来分析（模拟）IP 相机的实时视频源，检测是否存在任何运动，如果存在，则将 MP4 视频剪辑录制到边缘设备上的本地文件系统中。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 14dcc7b298244a1d53a9b820c641ea87c4f9a016
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 796def7cad3632dd50184bea751dc9f348569216
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091855"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067650"
 ---
 # <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>快速入门：检测运动并在边缘设备上录制视频
  
@@ -89,11 +89,20 @@ ms.locfileid: "87091855"
 
 在[生成和部署 IoT Edge 部署清单](detect-motion-emit-events-quickstart.md#generate-and-deploy-the-deployment-manifest)步骤中，在 Visual Studio Code 中，展开 AZURE IOT 中心（在左下部分）下的“lva-sample-device”节点 。 应会看到已部署以下模块：
 
-* 实时视频分析模块，名为“lvaEdge”
-* rtspsim 模块，可模拟 RTSP 服务器，充当实时视频源的源
+* 实时视频分析模块，名为 `lvaEdge`
+* `rtspsim` 模块，可模拟 RTSP 服务器，充当实时视频源的源
 
   ![模块](./media/quickstarts/lva-sample-device-node.png)
 
+> [!NOTE]
+> 如果使用的是自己的边缘设备，而不是设置脚本预配的边缘设备，请转到你的边缘设备并使用管理员权限运行以下命令，以拉取并存储该快速入门所使用的示例视频文件：  
+
+```
+mkdir /home/lvaadmin/samples
+mkdir /home/lvaadmin/samples/input    
+curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
+chown -R lvaadmin /home/lvaadmin/samples/  
+```
 
 ## <a name="review---prepare-for-monitoring-events"></a>查看 - 准备监视事件
 请确保已完成[准备监视事件](detect-motion-emit-events-quickstart.md#prepare-to-monitor-events)的步骤。
@@ -105,54 +114,55 @@ ms.locfileid: "87091855"
 1. 通过选择 F5 键启动调试会话。 “终端”窗口会打印一些消息。
 1. operations.json 代码调用直接方法 `GraphTopologyList` 和 `GraphInstanceList`。 如果在学完先前的快速入门后清理了资源，则该过程将返回空列表，然后暂停。 按 Enter 键。
 
-    ```
-    --------------------------------------------------------------------------
-    Executing operation GraphTopologyList
-    -----------------------  Request: GraphTopologyList  --------------------------------------------------
-    {
-      "@apiVersion": "1.0"
-    }
-    ---------------  Response: GraphTopologyList - Status: 200  ---------------
-    {
-      "value": []
-    }
-    --------------------------------------------------------------------------
-    Executing operation WaitForInput
-    Press Enter to continue
-    ```
+```
+--------------------------------------------------------------------------
+Executing operation GraphTopologyList
+-----------------------  Request: GraphTopologyList  --------------------------------------------------
+{
+  "@apiVersion": "1.0"
+}
+---------------  Response: GraphTopologyList - Status: 200  ---------------
+{
+  "value": []
+}
+--------------------------------------------------------------------------
+Executing operation WaitForInput
+Press Enter to continue
+```
 
-    “终端”窗口将显示下一组直接方法调用：
+  “终端”窗口将显示下一组直接方法调用：  
+  * 使用前面的 `topologyUrl` 调用 `GraphTopologySet` 
+  * 对 `GraphInstanceSet` 的调用，该调用使用以下正文：
 
-     * 使用前面的 `topologyUrl` 调用 `GraphTopologySet` 
-     * 对 `GraphInstanceSet` 的调用，该调用使用以下正文：
+```
+{
+  "@apiVersion": "1.0",
+  "name": "Sample-Graph",
+  "properties": {
+    "topologyName": "EVRToFilesOnMotionDetection",
+    "description": "Sample graph description",
+    "parameters": [
+      {
+        "name": "rtspUrl",
+        "value": "rtsp://rtspsim:554/media/lots_015.mkv"
+      },
+      {
+        "name": "rtspUserName",
+        "value": "testuser"
+      },
+      {
+        "name": "rtspPassword",
+        "value": "testpassword"
+      }
+    ]
+  }
+}
+```
 
-         ```
-         {
-           "@apiVersion": "1.0",
-           "name": "Sample-Graph",
-           "properties": {
-             "topologyName": "EVRToFilesOnMotionDetection",
-             "description": "Sample graph description",
-             "parameters": [
-               {
-                 "name": "rtspUrl",
-                 "value": "rtsp://rtspsim:554/media/lots_015.mkv"
-               },
-               {
-                 "name": "rtspUserName",
-                 "value": "testuser"
-               },
-               {
-                 "name": "rtspPassword",
-                 "value": "testpassword"
-               }
-             ]
-           }
-         }
-         ```
-     * 对 `GraphInstanceActivate` 的调用，用于启动图形实例和视频流
-     * 对 `GraphInstanceList` 的第二次调用，显示图形实例处于运行状态
-1. “终端”窗口中的输出会在出现 `Press Enter to continue` 时暂停。 暂时不要选择 Enter。 向上滚动，查看调用的直接方法的 JSON 响应有效负载。
+  * 对 `GraphInstanceActivate` 的调用，用于启动图形实例和视频流
+  * 对 `GraphInstanceList` 的第二次调用，显示图形实例处于运行状态  
+
+3. “终端”窗口中的输出会在出现 `Press Enter to continue` 时暂停。 暂时不要选择 Enter。 向上滚动，查看调用的直接方法的 JSON 响应有效负载。
 1. 切换到 Visual Studio Code 中的“输出”窗口。 你将看到 IoT Edge 模块上的实时视频分析正发送到 IoT 中心的消息。 本快速入门中的以下部分将讨论这些消息。
 
 1. 媒体图将继续运行并打印结果。 RTSP 模拟器不断循环源视频。 若要停止媒体图，请返回“终端”窗口，并选择 Enter。 
@@ -239,7 +249,7 @@ ms.locfileid: "87091855"
 
 ## <a name="play-the-mp4-clip"></a>播放 MP4 文件剪辑
 
-通过使用 OUTPUT_VIDEO_FOLDER_ON_DEVICE 密钥，将 MP4 文件写入在 .env 文件中配置的边缘设备上的目录中。 如果使用了默认值，则结果应位于 /home/lvaadmin/samples/output/ 文件夹中。
+通过使用 OUTPUT_VIDEO_FOLDER_ON_DEVICE 密钥，将 MP4 文件写入在 .env 文件中配置的边缘设备上的目录中。 如果使用了默认值，则结果应位于 /var/media/ 文件夹中。
 
 播放 MP4 文件剪辑：
 
@@ -250,7 +260,7 @@ ms.locfileid: "87091855"
     ![VM](./media/quickstarts/virtual-machine.png)
 
 1. 使用[设置 Azure 资源](detect-motion-emit-events-quickstart.md#set-up-azure-resources)时生成的凭据登录。 
-1. 在命令提示符下，转到相关目录。 默认位置是 /home/lvaadmin/samples/output。 应会在目录中看到 MP4 文件。
+1. 在命令提示符下，转到相关目录。 默认位置为 /var/media。 应会在目录中看到 MP4 文件。
 
     ![输出](./media/quickstarts/samples-output.png) 
 

@@ -1,6 +1,6 @@
 ---
 title: 什么是 Azure 单一登录 (SSO)？
-description: 了解如何在 Azure Active Directory (Azure AD) 中配置应用程序时选择单一登录方法。 使用单一登录，这样用户就无需记住个每应用程序的密码，而且简化了帐户管理。
+description: 了解如何将单一登录 (SSO) 与 Azure Active Directory 配合使用。 使用 SSO，使用户无需记住每个应用程序的密码。 还可以使用 SSO 简化帐户管理。
 services: active-directory
 author: kenwith
 manager: celestedg
@@ -11,23 +11,39 @@ ms.topic: overview
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b641437b7e15334d59c544b95d5be0f20f2a8df
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 6f3c6351a7bcd87ae25dfae53cb17f634bbef146
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387534"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121504"
 ---
 # <a name="what-is-single-sign-on-sso"></a>什么是单一登录 (SSO)？
 
-当用户在 Azure Active Directory (Azure AD) 中登录到应用程序时，单一登录 (SSO) 可以增加安全性和便利性。 本文介绍单一登录方法，并帮助你选择在配置应用程序时最适合的 SSO 方法。
+单一登录意味着用户无需登录使用的每个应用程序。 用户登录一次，该凭据也可用于其他应用。
+
+如果你是最终用户，可能并不关心 SSO 的详细信息。 你只想使用能提高工作效率而无需频繁输入密码的应用。 可在以下位置找到应用： https://myapps.microsoft.com 。
+ 
+如果你是管理员或 IT 专业人员，请继续阅读，详细了解如何在 Azure 中实现 SSO。
+
+## <a name="single-sign-on-basics"></a>单一登录基础知识
+单一登录在用户登录和使用应用程序方面实现了巨大的飞跃。 基于单一登录的身份验证系统通常称为“新式身份验证”。 若要了解如何进行单一登录，请查看此视频。
+> [!VIDEO https://www.youtube.com/embed/fbSVgC8nGz4]
+
+## <a name="understanding-where-an-app-is-hosted"></a>了解应用的托管位置
+如何实现应用的单一登录与应用的托管位置有很大关系。 由于路由网络流量来访问应用的方式不同，托管位置非常重要。 如果应用托管在本地网络上，并通过本地网络访问（称为本地应用），则用户无需访问 Internet 即可使用该应用。 如果应用托管在其他位置（称为云托管应用），则用户需要访问 Internet 才能使用该应用。
+
+> [!TIP]
+> 云应用也称为软件即服务 (SaaS) 应用。 
+
+> [!TIP]
+> 术语“云”和“Internet”通常可以互换。 这与网络图有关。 由于绘制每个组件是不可行的，因此通常会在图中将大型计算机网络表示为云的形状。 Internet 是最著名的网络，因此这两个术语很容易互换使用。 但是，任何计算机网络都可以被称为云。
+
+## <a name="choosing-a-single-sign-on-method"></a>选择单一登录方法
 
 - 使用单一登录，用户可以使用一个帐户登录一次，即可访问加入域的设备、公司资源、软件即服务 (SaaS) 应用程序和 Web 应用程序。 登录后，用户可以从 Office 365 门户或 Azure AD MyApps 访问面板启动应用程序。 管理员可以集中管理用户帐户，并根据组成员身份自动添加或删除用户对应用程序的访问权限。
 
 - 不使用单一登录，用户必须记住特定于应用程序的密码并登录每个应用程序。 IT 人员需要为每个应用程序（如 Office 365、Box 和 Salesforce）创建和更新用户帐户。 用户需要记住他们的密码，并且花时间登录每个应用程序。
-
-## <a name="choosing-a-single-sign-on-method"></a>选择单一登录方法
 
 有几种方法可以配置应用程序以实现单一登录。 选择哪种单一登录方法取决于为应用程序配置的身份验证方式。
 
@@ -42,7 +58,7 @@ ms.locfileid: "87387534"
 
 | 单一登录方法 | 应用程序类型 | 何时使用 |
 | :------ | :------- | :----- |
-| [OpenID Connect 和 OAuth](#openid-connect-and-oauth) | 仅限云 | 在开发新应用程序时使用 OpenID Connect 和 OAuth。 此协议简化应用程序配置，有易用的 SDK，并且允许应用程序使用 MS Graph。
+| [OpenID Connect 和 OAuth](#openid-connect-and-oauth) | 云和本地 | 在开发新应用程序时使用 OpenID Connect 和 OAuth。 此协议简化应用程序配置，有易用的 SDK，并且允许应用程序使用 MS Graph。
 | [SAML](#saml-sso) | 云和本地 | 尽可能为不使用 OpenID Connect 或 OAuth 的现有应用程序选择 SAML。 SAML 适用于使用某个 SAML 协议进行身份验证的应用程序。|
 | [基于密码](#password-based-sso) | 云和本地 | 在应用程序使用用户名和密码进行身份验证时选择“基于密码”。 基于密码的单一登录允许使用 Web 浏览器扩展插件或移动应用安全存储和重放应用程序的密码。 此方法使用应用程序提供的现有登录过程，但允许管理员管理密码。 |
 | [链接](#linked-sign-on) | 云和本地 | 当应用程序配置为在其他标识提供者服务中进行单一登录时，选择链接的登录。 此选项不会向应用程序添加单一登录。 不过，应用程序可能已经使用其他服务（如 Active Directory 联合身份验证服务）实现了单一登录。|
@@ -197,10 +213,5 @@ Azure AD 管理员管理凭据时：
 
 有关详细信息，请参阅 [Azure Active Directory 版本](../fundamentals/active-directory-whatis.md)。
 
-## <a name="related-articles"></a>相关文章
+## <a name="next-steps"></a>后续步骤
 * [应用程序管理的快速入门系列](view-applications-portal.md)
-* [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](../saas-apps/tutorial-list.md)
-* [配置基于密码的单一登录](configure-password-single-sign-on-non-gallery-applications.md)
-* [配置链接登录](configure-linked-sign-on.md)
-* [管理对应用程序的访问简介](what-is-access-management.md)
-* 下载链接：[单一登录部署计划](https://aka.ms/SSODeploymentPlan)。

@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 45b535db9fccb41542ee74cb28845d49211e16ec
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0e17ecea6c85329b22310ebe1d06e2fe63cdd773
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281049"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042813"
 ---
 # <a name="what-is-azure-digital-twins"></a>Azure 数字孪生是什么？
 
-**Azure 数字孪生**是一个服务型平台 (PaaS)，可用于创建整个环境的完整数字模型。 这些环境可能是建筑物、工厂、农场、能源网络、铁路，体育场等，甚至是整个城市。 这些数字模型可用于获取洞察力，以推动产品改进、运营优化、成本降低和客户体验突破。
+Azure 数字孪生是一个服务型平台 (PaaS)，可用于基于整个环境的数字模型创建知识图。 这些环境可能是建筑物、工厂、农场、能源网络、铁路，体育场等，甚至是整个城市。 这些数字模型可用于获取洞察力，以推动产品改进、运营优化、成本降低和客户体验突破。
 
 利用你基于 Azure 数字孪生的领域专业知识来构建自定义的连接解决方案，这些解决方案：
 * 为任何环境建模，并以可缩放且安全的方式将数字孪生引入生活

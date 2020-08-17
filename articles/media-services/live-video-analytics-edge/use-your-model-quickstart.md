@@ -3,12 +3,12 @@ title: 使用自己的模型分析实时视频 - Azure
 description: 在本快速入门中，你将应用计算机视觉来分析来自（模拟）IP 相机的实时视频源。
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: dc8c2d1f0620a92a13cb1f4c0b83c2452f964fd6
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 75e18917b0d44dc33999d17360cd66a538c83d2b
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170627"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065193"
 ---
 # <a name="quickstart-analyze-live-video-by-using-your-own-model"></a>快速入门：使用自己的模型分析实时视频
 
@@ -31,7 +31,7 @@ ms.locfileid: "87170627"
 ## <a name="review-the-sample-video"></a>观看示例视频
 设置 Azure 资源时，一个高速公路车流量短视频被复制到 Azure 中用作 IoT Edge 设备的 Linux VM 上。 此快速入门使用视频文件来模拟实时流。
 
-打开一个应用程序，例如 [VLC 媒体播放器](https://www.videolan.org/vlc/)。 选择“Ctrl+N”，然后粘贴[视频](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv)的链接以开始播放。 可以看到许多车辆在高速公路上行驶的镜头。
+打开一个应用程序，例如 [VLC 媒体播放器](https://www.videolan.org/vlc/)。 选择 `Ctrl+N`，然后粘贴指向[高速公路交叉口示例视频](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv)的链接以开始播放。 可以看到许多车辆在高速公路上行驶的镜头。
 
 在本快速入门中，你在 IoT Edge 上使用实时视频分析来检测车辆和人员等对象。 将关联的推理事件发布到 IoT Edge 中心。
 
@@ -107,9 +107,18 @@ HTTP 扩展节点扮演代理的角色。 它将视频帧转换为指定的图�
 1. 如果系统提示你选择 IoT 中心设备，请选择“lva-sample-device”。
 1. 大约 30 秒后，在该窗口的左下角刷新 Azure IoT 中心。 边缘设备现在显示以下已部署的模块：
 
-    * 实时视频分析模块，名为“lvaEdge”
-    * rtspsim 模块，可模拟 RTSP 服务器，充当实时视频源的源
-    * yolov3 模块，它是 YOLOv3 对象检测模型，该模型将计算机视觉应用于图像并返回对象类型的多个类
+    * 实时视频分析模块，名为 `lvaEdge`
+    * `rtspsim` 模块，可模拟 RTSP 服务器，充当实时视频源的源
+    > [!NOTE]
+    > 如果使用的是自己的边缘设备，而不是设置脚本预配的边缘设备，请转到你的边缘设备并使用管理员权限运行以下命令，以拉取并存储该快速入门所使用的示例视频文件：  
+
+    ```
+    mkdir /home/lvaadmin/samples
+    mkdir /home/lvaadmin/samples/input    
+    curl https://lvamedia.blob.core.windows.net/public/camera-300s.mkv > /home/lvaadmin/samples/input/camera-300s.mkv  
+    chown -R lvaadmin /home/lvaadmin/samples/  
+    ```
+    * `yolov3` 模块，是 YoloV3 对象检测模型，该模型将计算机视觉应用于图像并返回对象类型的多个类
  
       ![部署在边缘设备中的模块](./media/quickstarts/yolov3.png)
 
@@ -284,7 +293,7 @@ HTTP 扩展处理器节点从 yolov3 模块接收推理结果。 然后它通过
 
 ## <a name="next-steps"></a>后续步骤
 
-* 试用[安全版本的 YOLOv3 模型](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/tls-yolov3-onnx/readme.md)并将其部署到 IOT 边缘设备。 
+* 试用[安全版本的 YoloV3 模型](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/tls-yolov3-onnx/readme.md)并将其部署到 IoT Edge 设备。 
 
 查看高级用户面临的其他挑战：
 

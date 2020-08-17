@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 07/28/2020
+ms.date: 08/10/2020
 ms.author: victorh
-ms.openlocfilehash: 748adbcc719df2cdcf734f308bd4b083e9ca6ec0
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 8cca982e291d5d4caf7856e0d807515511c41dc8
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372359"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055031"
 ---
 # <a name="azure-firewall-manager-deployment-overview"></a>Azure 防火墙管理器部署概述
 
@@ -65,6 +65,8 @@ ms.locfileid: "87372359"
 > - 每个区域的每个虚拟 WAN 最多只有一个中心。 但可以在区域中添加多个虚拟 WAN 来实现多个中心。
 > - 在 vWAN 中，多个中心不能具有重叠的 IP 空间。
 > - 中心 VNet 连接必须与中心位于同一区域。
+>
+> 有关更多已知问题，请参阅[什么是 Azure 防火墙管理器？](overview.md#known-issues)
 
 ## <a name="convert-virtual-networks"></a>转换虚拟网络
 

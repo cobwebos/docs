@@ -1,23 +1,23 @@
 ---
-title: Azure CLI - 使用专用链接限制对托管磁盘的导入/导出访问（预览版）
-description: 使用 Azure CLI 为托管磁盘启用专用链接（预览版）。 仅允许在虚拟网络中安全地导出和导入磁盘。
+title: Azure CLI - 使用专用链接限制对托管磁盘的导入/导出访问
+description: 使用 Azure CLI 为托管磁盘启用专用链接。 仅允许在虚拟网络中安全地导出和导入磁盘。
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 5df11e704987098d61ced7afbff5e6234d4d5f04
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 009f8ec69261103faaa4de1e27ae7383257a13ca
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420272"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136399"
 ---
-# <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links-preview"></a>Azure CLI - 使用专用链接限制对托管磁盘的导入/导出访问（预览版）
+# <a name="azure-cli---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure CLI - 使用专用链接限制对托管磁盘的导入/导出访问
 
-可以使用[专用终结点](../../private-link/private-endpoint-overview.md)（预览版）来限制托管磁盘的导出和导入，并通过[专用链接](../../private-link/private-link-overview.md)从 Azure 虚拟网络上的客户端安全地访问数据。 专用终结点将虚拟网络地址空间中的 IP 地址用于托管磁盘服务。 虚拟网络上客户端与托管磁盘之间的网络流量将穿过虚拟网络以及 Microsoft 主干网络上的专用链接，因此不会从公共 Internet 公开。 
+目前以预览版形式提供对具有托管磁盘的专用链接的支持。 可以使用[专用终结点](../../private-link/private-endpoint-overview.md)来限制托管磁盘的导出和导入，并通过[专用链接](../../private-link/private-link-overview.md)从 Azure 虚拟网络上的客户端安全地访问数据。 专用终结点将虚拟网络地址空间中的 IP 地址用于托管磁盘服务。 虚拟网络上客户端与托管磁盘之间的网络流量仅穿过虚拟网络以及 Microsoft 主干网络上的专用链接，因此不会从公共 Internet 公开。
 
 若要使用专用链接导出/导入托管磁盘，首先要创建磁盘访问资源，并通过创建专用终结点将其链接到同一订阅中的虚拟网络。 然后，将磁盘或快照与磁盘访问的实例相关联。 最后，将磁盘或快照的 NetworkAccessPolicy 属性设置为 `AllowPrivate`。 这将限制对虚拟网络的访问。 
 

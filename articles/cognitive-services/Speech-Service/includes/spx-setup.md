@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: abfb4f6ba9452581811db1f462089cbafc771266
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c92d6569e3c92d3bad3575599283c7796bd78225
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86544584"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88068598"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -51,6 +51,58 @@ ms.locfileid: "86544584"
 
 若要查看语音 CLI 的帮助，请键入 `spx`。
 
+#### <a name="docker-install"></a>[Docker 安装](#tab/dockerinstall)
+
+按照以下步骤在 Docker 容器中安装语音 CLI：
+
+1. [为平台安装并运行 Docker Desktop](https://www.docker.com/get-started)。
+1. 在新的命令提示符或终端中，键入以下命令：`docker pull msftspeech/spx`
+1. 键入此命令。 你应看到语音 CLI 的帮助信息：`docker run -it --rm msftspeech/spx help`
+
+### <a name="mount-a-directory-in-the-container"></a>在容器中装载目录
+
+语音 CLI 工具会将配置设置保存为文件，并在执行任何命令时加载这些文件（帮助命令除外）。
+在 Docker 容器中使用语音 CLI 时，必须从容器装载本地目录，以便该工具可以存储或查找配置设置，并且还可以读取或写入命令所需的任何文件，例如语音音频文件。
+
+在 Windows 上，键入以下命令以创建一个语音 CLI 可以在容器内使用的本地目录：
+
+`mkdir c:\spx-data`
+
+或者在 Linux 或 Mac 上，在终端中键入以下命令以创建目录并查看其绝对路径：
+
+```bash
+mkdir ~/spx-data
+cd ~/spx-data
+pwd
+```
+
+调用语音 CLI 时，将使用绝对路径。
+
+### <a name="run-speech-cli-in-the-container"></a>在容器中运行语音 CLI
+
+本文档显示了在非 Docker 安装中使用的语音 CLI `spx` 命令。
+在 Docker 容器中调用 `spx` 命令时，必须将容器中的目录装载到文件系统中，语音 CLI 可在其中存储和查找配置值以及读取和写入文件。
+在 Windows 上，命令会以下方的方式开始：
+
+`docker run -it -v c:\spx-data:/data --rm msftspeech/spx`
+
+在 Linux 或 Mac 上，命令会以下方的方式开始：
+
+`sudo docker run -it -v /ABSOLUTE_PATH:/data --rm msftspeech/spx`
+
+> [!NOTE]
+> 将 `/ABSOLUTE_PATH` 替换为上一节中 `pwd` 命令显示的绝对路径。
+
+若要使用安装在容器中的 `spx` 命令，请始终输入上面所示的完整命令，然后输入请求的参数。
+例如，在 Windows 上，此命令将设置密钥：
+
+`docker run -it -v c:\spx-data:/data --rm msftspeech/spx config @key --set SUBSCRIPTION-KEY`
+
+> [!NOTE]
+> 在 Docker 容器中运行语音 CLI 时，不能使用计算机的麦克风或扬声器。
+> 若要使用这些设备，请向/从语音 CLI 传递音频文件，以在 Docker 容器外部进行录制/播放。
+> 语音 CLI 工具可访问上面步骤中设置的本地目录。
+
 ***
 
 ## <a name="create-subscription-config"></a>创建订阅配置
@@ -58,8 +110,8 @@ ms.locfileid: "86544584"
 若要开始使用语音 CLI，首先需要输入语音订阅密钥和区域信息。 请查看[区域支持](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-sdk)页，找到你的区域标识符。 获得订阅密钥和区域标识符后（例如 `eastus` 和 `westus`），运行以下命令。
 
 ```shell
-spx config @key --set YOUR-SUBSCRIPTION-KEY
-spx config @region --set YOUR-REGION-ID
+spx config @key --set SUBSCRIPTION-KEY
+spx config @region --set REGION
 ```
 
 现在会存储订阅身份验证，用于将来的 SPX 请求。 如果需要删除这些已存储值中的任何一个，请运行 `spx config @region --clear` 或 `spx config @key --clear`。

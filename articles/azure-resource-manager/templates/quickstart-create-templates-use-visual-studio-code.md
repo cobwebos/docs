@@ -2,15 +2,15 @@
 title: 创建模板 - Visual Studio Code
 description: 使用 Visual Studio Code 和可在资源管理器模板上运行的 Azure 资源管理器工具扩展。
 author: neilpeterson
-ms.date: 04/17/2020
+ms.date: 08/09/2020
 ms.topic: quickstart
 ms.author: nepeters
-ms.openlocfilehash: 06e7d3f291d32cecdcbf4d1f22ff9976d8970109
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5375fedcd05aefa5d23ee872325373ce631d43bb
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87040516"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88034969"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-with-visual-studio-code"></a>快速入门：使用 Visual Studio Code 创建 Azure 资源管理器模板
 
@@ -26,7 +26,7 @@ ms.locfileid: "87040516"
 
 选择 `arm!` 以创建一个仅限用于 Azure 资源组部署的模板。
 
-![此图显示了 Azure 资源管理器基架](./media/quickstart-create-templates-use-visual-studio-code/1.png)
+![此图显示了 Azure 资源管理器基架片段](./media/quickstart-create-templates-use-visual-studio-code/1.png)
 
 此片段将创建 ARM 模板的构建基块。
 
@@ -68,7 +68,7 @@ ms.locfileid: "87040516"
 
 现在，创建并使用一个参数来指定存储帐户名称。
 
-将光标置于 parameters 块内，添加一个回车符，键入 `par`，然后选择 `arm-param-value` 片段。 此操作会将一个泛型参数添加到模板。
+将光标置于 parameters 块内，添加一个回车符，键入 `"`，然后选择 `new-parameter` 片段。 此操作会将一个泛型参数添加到模板。
 
 ![此图显示了正在向 ARM 模板中添加的参数](./media/quickstart-create-templates-use-visual-studio-code/9.png)
 

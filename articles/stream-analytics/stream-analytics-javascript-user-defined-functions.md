@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-javascript
 ms.date: 06/16/2020
-ms.openlocfilehash: ff4af372fa0ec1b6b24698184eb3f52449e28d46
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6540b35925a92ebd6a8bcced427b5457785603db
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430810"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056901"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Azure 流分析中 JavaScript 用户定义的函数
  
@@ -81,23 +81,23 @@ Azure 流分析 JavaScript 用户定义的函数支持标准的内置 JavaScript
 
 流分析查询语言与 JavaScript 支持的类型有差别。 下表列出了两者之间的转换映射：
 
-流分析 | JavaScript
+流分析 | Javascript
 --- | ---
 bigint | Number（JavaScript 只能精确呈现最大 2^53 的整数）
 DateTime | Date（JavaScript 仅支持毫秒）
 Double | Number
-nvarchar(MAX) | String
+nvarchar(MAX) | 字符串
 Record | 对象
 Array | Array
 Null | Null
 
 下面是 JavaScript 到流分析的转换：
 
-JavaScript | 流分析
+Javascript | 流分析
 --- | ---
 Number | 如果数字已舍入并介于 long.MinValue 和 long.MaxValue 之间，则为 Bigint；否则为 double
 Date | DateTime
-String | nvarchar(MAX)
+字符串 | nvarchar(MAX)
 对象 | Record
 Array | Array
 Null、Undefined | Null
@@ -130,6 +130,60 @@ INTO
     output
 FROM
     input PARTITION BY PARTITIONID
+```
+
+### <a name="cast-string-to-json-object-to-process"></a>将字符串强制转换为要处理的 JSON 对象
+
+如果你有一个 JSON 字符串字段，并想将其转换为 JSON 对象以在 JavaScript UDF 中进行处理，则可以使用 JSON.parse() 函数来创建一个随后可使用的 JSON 对象。
+
+**JavaScript 用户定义的函数定义：**
+
+```javascript
+function main(x) {
+var person = JSON.parse(x);  
+return person.name;
+}
+```
+
+**示例查询：**
+```SQL
+SELECT
+    UDF.getName(input) AS Name
+INTO
+    output
+FROM
+    input
+```
+
+### <a name="use-trycatch-for-error-handling"></a>使用 try/catch 进行错误处理
+
+Try/catch 块可帮助确定传递给 JavaScript UDF 的格式错误的输入数据的问题。
+
+**JavaScript 用户定义的函数定义：**
+
+```javascript
+function main(input, x) {
+    var obj = null;
+
+    try{
+        obj = JSON.parse(x);
+    }catch(error){
+        throw input;
+    }
+    
+    return obj.Value;
+}
+```
+
+示例查询：将整个记录作为第一个参数进行传递，以便在出现错误时可将其返回。
+```SQL
+SELECT
+    A.context.company AS Company,
+    udf.getValue(A, A.context.value) as Value
+INTO
+    output
+FROM
+    input A
 ```
 
 ## <a name="next-steps"></a>后续步骤

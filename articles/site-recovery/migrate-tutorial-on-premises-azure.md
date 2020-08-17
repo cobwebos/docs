@@ -1,18 +1,17 @@
 ---
-title: 使用 Azure Site Recovery 迁移本地计算机
-description: 本文将介绍如何使用 Azure Site Recovery 将本地计算机迁移到 Azure。
-author: rayne-wiselman
+title: 使用 Azure Migrate 迁移本地计算机
+description: 本文总结了如何将本地计算机迁移到 Azure，并推荐 Azure Migrate。
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
-ms.openlocfilehash: 3c421845d4e15ef13ce98d0de111270159f564fe
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e0e60ee346d20113b2ec7970390d9874522cc770
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285350"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87847306"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>将本地计算机迁移到 Azure
 
@@ -20,7 +19,7 @@ ms.locfileid: "87285350"
 
 ## <a name="migrate-with-azure-migrate"></a>使用 Azure Migrate 进行迁移
 
-建议使用 [Azure Migrate](../migrate/migrate-services-overview.md) 服务将计算机迁移到 Azure。 Azure Migrate 提供一个集中式中心，用于使用 Azure Migrate、其他 Azure 服务和第三方工具评估本地计算机并将其迁移到 Azure。
+建议使用 [Azure Migrate](../migrate/migrate-services-overview.md) 服务将计算机迁移到 Azure。 Azure Migrate 是专门为服务器迁移而构建的。 Azure Migrate 提供了一个集中式中心，用于发现、评估本地计算机以及将本地计算机迁移到 Azure。
 
 请访问以下链接以使用 Azure Migrate 进行迁移：
 

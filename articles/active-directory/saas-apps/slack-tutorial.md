@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 05/19/2020
+ms.date: 07/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ffc9d3f4feb003d537b52cde15356e756aa11c0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bd5e3e2a0e6d50340954600c5a452b6d026e5afc
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500100"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987424"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Slack 集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "86500100"
 * Slack 支持 SP 发起的 SSO
 * Slack 支持实时用户预配
 * Slack 支持[自动用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/slack-provisioning-tutorial)
-* 配置 Slack 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 配置 Slack 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-slack-from-the-gallery"></a>从库中添加 Slack
 
@@ -159,15 +159,15 @@ ms.locfileid: "86500100"
 
 2. 导航到“Microsoft Azure AD”，并转到“团队设置”。
 
-     ![在应用端配置单一登录](./media/slack-tutorial/tutorial-slack-001.png)
+     ![在应用端配置单一登录](./media/slack-tutorial/tutorial-slack-team-settings.png)
 
 3. 在“团队设置”部分中，单击“身份验证”选项卡，并单击“更改设置”。
 
-    ![在应用端配置单一登录](./media/slack-tutorial/tutorial-slack-002.png)
+    ![在应用端配置单一登录](./media/slack-tutorial/tutorial-slack-authentication.png)
 
 4. 在“SAML 身份验证设置”对话框中，执行以下步骤：
 
-    ![在应用端配置单一登录](./media/slack-tutorial/tutorial-slack-003.png)
+    ![在应用端配置单一登录](./media/slack-tutorial/tutorial-slack-save-authentication.png)
 
     a.  在“SAML 2.0 终结点(HTTP)”文本框中，粘贴从 Azure 门户复制的“登录 URL”值 。
 
@@ -177,7 +177,7 @@ ms.locfileid: "86500100"
 
     d. 根据 Slack 团队的需要配置上述三个设置。 有关设置的详细信息，请在此处查看 **Slack 的 SSO 配置指南**。 `https://get.slack.help/hc/articles/220403548-Guide-to-single-sign-on-with-Slack%60`
 
-    ![在应用端配置单一登录](./media/slack-tutorial/tutorial-slack-004.png)
+    ![在应用端配置单一登录](./media/slack-tutorial/tutorial-slack-expand.png)
 
     e. 单击“展开”并在“服务提供者颁发者”文本框中输入 `https://slack.com`。
 

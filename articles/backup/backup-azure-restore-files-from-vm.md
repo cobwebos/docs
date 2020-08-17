@@ -4,12 +4,12 @@ description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3a7fe7ca2e439739cbdeeb626fea9d2fb3983b83
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 01235e116ca93f9c73e698e4d72ae0cb561824d5
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236295"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262664"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -32,7 +32,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 3. 在备份仪表板菜单中，选择 " **文件恢复**"。
 
-    ![“文件恢复”按钮](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+    ![选择文件恢复](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
 
     此时将打开“文件恢复”菜单。
 
@@ -42,7 +42,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 5. 若要下载用于从恢复点复制文件的软件，请选择 "下载 Windows Azure Vm 的 **可执行** () 或下载适用于 Linux azure Vm 的 **脚本** (，并) 生成 python 脚本。
 
-    ![生成的密码](./media/backup-azure-restore-files-from-vm/download-executable.png)
+    ![下载可执行文件](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
     Azure 会将该可执行文件或脚本下载到本地计算机。
 
@@ -56,7 +56,7 @@ Azure 备份提供从 Azure VM 备份（也称恢复点）还原 [Azure 虚拟�
 
 7. 请确保[使用符合要求的计算机](#selecting-the-right-machine-to-run-the-script)来执行脚本。 如果符合要求的计算机与下载脚本的计算机相同，则可以继续下载部分的操作。 从下载位置（通常是“下载”文件夹），右键单击可执行文件或脚本，然后用管理员凭据运行。 出现提示时，键入密码或粘贴内存中的密码，然后按 Enter。 输入有效的密码后，脚本将连接到恢复点。
 
-    ![文件恢复菜单](./media/backup-azure-restore-files-from-vm/executable-output.png)
+    ![可执行输出](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
 8. 对于 Linux 计算机，将生成一个 Python 脚本。 用户需要下载该脚本并将其复制到相关/兼容的 Linux 服务器。 你可能必须修改权限才能使用 ```chmod +x <python file name>``` 执行该脚本。 然后使用 ```./<python file name>``` 运行 Python 文件。
 
@@ -348,7 +348,7 @@ mount [RAID Disk Path] [/mountpath]
 - 用户每次下载脚本时，Azure 备份将开始准备用于下载的恢复点。 对于大磁盘，此过程需要相当长的时间。 如果连续出现大量请求，目标准备将造成下载激增。 因此，建议从门户/PowerShell/CLI 下载脚本，等待 20 - 30 分钟（探索性步骤），然后运行该脚本。 此时，目标应准备就绪，可以从脚本进行连接。
 - 在文件恢复后，请确保返回到门户，然后选择无法在其中装入卷的恢复点的 " **卸载磁盘** "。 从本质上来说，此步骤将清理所有现有进程/会话并提高恢复的可能性。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 如果从虚拟机恢复文件时遇到问题，请查看下表了解更多信息。
 

@@ -3,12 +3,12 @@ title: 使用管理组来组织资源 - Azure 治理
 description: 了解管理组、其权限的工作方式以及如何使用它们。
 ms.date: 07/06/2020
 ms.topic: overview
-ms.openlocfilehash: 787658cebcb8345edd616bcdde485883ea43e8dc
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: c1c054ab67a94b5782187092c572e1e73752c8c2
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87529341"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920154"
 ---
 # <a name="what-are-azure-management-groups"></a>什么是 Azure 管理组？
 
@@ -25,7 +25,7 @@ ms.locfileid: "87529341"
 
 例如，可以创建应用一个策略的层次结构，该策略将 VM 位置限制到名为“生产”的组中的“美国西部”区域。 此策略将继承到作为该管理组后代的所有企业协议 (EA) 订阅，并将应用于这些订阅下的所有 VM。 此安全策略不能由资源或订阅所有者更改，因此增强了治理效果。
 
-使用管理组的另一个场景是向用户提供对多个订阅的访问权限。 通过移动该管理组下的多个订阅，可对该管理组创建一个[基于角色的访问控制](../../role-based-access-control/overview.md) (RBAC) 分配，该分配将这种访问权限继承到所有订阅。 管理组的一个分配就能让用户访问所需的一切内容，而无需基于多个订阅编写 RBAC 分配的脚本。
+使用管理组的另一个场景是向用户提供对多个订阅的访问权限。 通过移动该管理组下的多个订阅，可对该管理组创建一个 [Azure 角色分配](../../role-based-access-control/overview.md)，该分配将这种访问权限继承到所有订阅。 管理组的一个分配就能让用户访问所需的一切内容，而无需基于多个订阅编写 RBAC 分配的脚本。
 
 ### <a name="important-facts-about-management-groups"></a>关于管理组的重要事实
 

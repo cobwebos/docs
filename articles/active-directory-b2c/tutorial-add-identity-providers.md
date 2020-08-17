@@ -1,7 +1,7 @@
 ---
 title: 教程：将标识提供程序添加到应用
 titleSuffix: Azure AD B2C
-description: 了解如何使用 Azure 门户向 Azure Active Directory B2C 应用程序添加标识提供程序。
+description: 按照此教程进行操作，了解如何使用 Azure 门户将标识提供程序添加到 Azure Active Directory B2C 中的应用程序。
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1bdb7637624a1da5270eb1cba49e9f66e5042ccf
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9f9abf9105da773ec5f8321c0f8e70e20516618c
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87481999"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922143"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>教程：将标识提供程序添加到 Azure Active Directory B2C 应用程序
 

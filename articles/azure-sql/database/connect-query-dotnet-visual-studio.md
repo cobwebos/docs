@@ -11,13 +11,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 05/29/2020
-ms.openlocfilehash: 497de36d63a909d2c53374482dfe09d1f19dfded
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/10/2020
+ms.openlocfilehash: ed0ad6c5597d63c411eeb323cf00dcb7f044f667
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033099"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067811"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>快速入门：使用 Visual Studio 中的 .NET 和 C# 来连接和查询 Azure SQL 数据库中的数据库或 Azure SQL 托管实例
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,7 +51,7 @@ ms.locfileid: "87033099"
 
 获取连接到数据库所需的连接信息。 在后续过程中，将需要完全限定的服务器名称或主机名称、数据库名称和登录信息。
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 2. 导航到“SQL 数据库”或“SQL 托管实例”页。
 
@@ -62,7 +62,7 @@ ms.locfileid: "87033099"
 
 ## <a name="create-code-to-query-the-database-in-azure-sql-database"></a>创建用于查询 Azure SQL 数据库中的数据库的代码
 
-1. 在 Visual Studio 中，选择“文件” > “新建” > “项目”。 
+1. 在 Visual Studio 中，创建新的项目。 
    
 1. 在“新建项目”对话框中，选择“Visual C#”，然后选择“控制台应用(.NET Framework)”  。
    
@@ -70,9 +70,9 @@ ms.locfileid: "87033099"
    
 1. 选择“项目” > “管理 NuGet 包” 。 
    
-1. 在“NuGet 包管理器”中，选择“浏览”选项卡，然后搜索并选择“System.Data.SqlClient”  。
+1. 在“NuGet 包管理器”中，选择“浏览”选项卡，然后搜索并选择“Microsoft.Data.SqlClient”  。
    
-1. 在“System.Data.SqlClient”页上选择“安装” 。 
+1. 在“Microsoft.Data.SqlClient”页上选择“安装” 。 
    - 如果出现提示，请选择“确定”继续安装。 
    - 如果显示“接受许可证”窗口，则选择“我接受” 。
    
@@ -85,7 +85,7 @@ ms.locfileid: "87033099"
    
    ```csharp
    using System;
-   using System.Data.SqlClient;
+   using Microsoft.Data.SqlClient;
    using System.Text;
    
    namespace sqltest

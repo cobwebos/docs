@@ -1,5 +1,6 @@
 ---
-title: 快速入门：访问应用的 Web API - Microsoft 标识平台 | Azure
+title: 快速入门：配置应用以访问 Web API | Azure
+titleSuffix: Microsoft identity platform
 description: 本快速入门介绍如何配置注册到 Microsoft 标识平台的应用，以包含用于访问 Web API 的重定向 URI、凭据或权限。
 services: active-directory
 author: rwike77
@@ -8,18 +9,18 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 04/22/2020
+ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 210ed5b8ad53fd59a46e160fe5fc72633d115d44
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: 800b399e73be032cfd9d2849b004018aa9d9031f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82082316"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120858"
 ---
-# <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>快速入门：配置客户端应用程序以访问 Web API
+# <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>快速入门：配置客户端应用程序以访问 Web API
 
 在本快速入门中，你将添加重定向 URI、凭据或权限，用于访问应用程序的 Web API。 Web 或机密客户端应用程序需要建立安全凭据，才能参与需要身份验证的授权流。 Azure 门户支持的默认身份验证方法为“客户端 ID + 机密密钥”。 应用将在此过程中获取访问令牌。
 
@@ -27,15 +28,14 @@ ms.locfileid: "82082316"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 完成[快速入门：将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)。
-* 查看 [Microsoft 标识平台终结点中的权限和许可](v2-permissions-and-consent.md)。
-* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)。
+* 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* 完成[快速入门：配置应用程序以公开 Web API](quickstart-configure-app-expose-web-apis.md)。
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>登录到 Azure 门户，并选择应用
 
 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 1. 如果帐户有权访问多个租户，请在右上角选择该帐户。 将门户会话设置为所需的 Azure AD 租户。
-1. 搜索并选择“Azure Active Directory”  。 在“管理”下，选择“应用注册”。  
+1. 搜索并选择“Azure Active Directory”。 在“管理”下，选择“应用注册”。  
 1. 找到并选择要配置的应用程序。 选择应用后，会看到应用程序的“概述”页或主注册页。 
 
 使用以下过程配置应用程序以访问 Web API。
@@ -60,7 +60,7 @@ ms.locfileid: "82082316"
 1. 为应用程序选择一个或多个重定向 URI。 还可以输入自定义重定向 URI。 如果不确定要使用哪个值，请参阅库文档。
 1. 选择“保存”。 
 
-某些限制适用于重定向 URI。 有关详细信息，请参阅[重定向 URI/回复 URL 的限制和局限性](https://docs.microsoft.com/azure/active-directory/develop/reply-url)。
+某些限制适用于重定向 URI。 有关详细信息，请参阅[重定向 URI/回复 URL 的限制和局限性](./reply-url.md)。
 
 > [!NOTE]
 > 尝试新的“身份验证设置”体验，在其中可以根据要面向的平台或设备配置应用程序的设置。 
@@ -113,7 +113,7 @@ ms.locfileid: "82082316"
    | **移动和桌面应用程序**  | 可选。 为桌面和设备生成应用时，请选择**建议的重定向 URI** 之一。<br/>可选。 输入一个**自定义重定向 URI**，用作 Azure AD 在响应身份验证请求时将用户重定向到的位置。 例如，对于要交互的 .NET Core 应用程序，请使用 `http://localhost`。 |
 
    > [!NOTE]
-   > 在 Active Directory 联合身份验证服务 (AD FS) 和 Azure AD B2C 上，还必须指定端口号。  例如：`http://localhost:1234`。 
+   > 在 Active Directory 联合身份验证服务 (AD FS) 和 Azure AD B2C 上，还必须指定端口号。  例如：`http://localhost:1234`。
 
    > [!IMPORTANT]
    > 对于不使用最新 Microsoft 身份验证库 (MSAL) 或不使用中介的移动应用程序，必须在“桌面 + 设备”中为这些应用程序配置重定向 URI。 
@@ -200,16 +200,7 @@ ms.locfileid: "82082316"
 
 ## <a name="next-steps"></a>后续步骤
 
-继续学习下一篇文章了解如何公开 Web API。
+转到本系列的下一个快速入门，了解如何配置可以访问应用程序的帐户类型。 例如，你可能希望将访问权限仅限于你的组织（单租户）中的用户，或者允许其他 Azure AD 租户（多租户）中的用户和拥有个人 Microsoft 帐户 (MSA) 的用户。
+
 > [!div class="nextstepaction"]
-> [快速入门：配置应用程序以公开 Web API](quickstart-configure-app-expose-web-apis.md)
-
-* 了解有关表示已注册应用程序的两个 Azure AD 对象及它们之间的关系的详细信息，请参阅[应用程序对象和服务主体对象](app-objects-and-service-principals.md)。
-
-* 深入了解使用 Azure Active Directory 开发应用程序时应使用的品牌准则，请参阅[应用程序的品牌准则](howto-add-branding-in-azure-ad-apps.md)。
-
-* [快速入门：将应用程序注册到 Microsoft 标识平台](quickstart-register-app.md)
-
-* [快速入门：修改应用程序支持的帐户](quickstart-modify-supported-accounts.md)
-
-* [快速入门：删除已注册到 Microsoft 标识平台的应用程序](quickstart-remove-app.md)
+> [修改应用程序支持的帐户](quickstart-modify-supported-accounts.md)

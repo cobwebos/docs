@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure Migrate 将 AWS VM 迁移到 Azure�
 ms.topic: tutorial
 ms.date: 06/16/2020
 ms.custom: MVC
-ms.openlocfilehash: 61a7bee52179ac525b42ad696d118f4f753f6931
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 9aad6993af4a90acb41316da0056da84f2e95f70
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534817"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88066638"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>发现、评估 Amazon Web Services (AWS) VM 并将其迁移到 Azure
 
@@ -99,7 +99,7 @@ ms.locfileid: "87534817"
 为设备部署做好准备，如下所述：
 
 - 设置单独的 EC2 VM 以托管复制设备。 此实例必须正在运行 Windows Server 2012 R2 或 Windows Server 2016。 [查看](./migrate-replication-appliance.md#appliance-requirements)设备的硬件、软件和网络要求。
-- 该设备不得安装在要复制的源 VM 上。 它应部署在其他 VM 上。
+- 该设备不应安装在要复制的源 VM 上，也不应安装在以前可能已安装的 Azure Migrate 发现和评估设备上。 它应部署在其他 VM 上。
 - 要迁移的源 AWS VM 应具有到复制设备的网络线路。 配置所需的安全组规则来启用它。 建议将复制设备部署到要迁移的源 VM 所在的 VPC 中。 如果复制设备需要位于其他 VPC 中，则需要通过 VPC 对等互连来连接这些 VPC。
 - 源 AWS VM 在端口 HTTPS 443（控制通道业务流程）和 TCP 9443（数据传输）上与复制设备进行入站通信，从而管理复制和传输复制数据。 然后，复制设备会通过端口 HTTPS 443 出站来协调复制数据并将该数据发送到 Azure。 若要配置这些规则，请编辑安全组入站/出站规则，在其中加入相应的端口和源 IP 信息。
 

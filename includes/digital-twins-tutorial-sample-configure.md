@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 5/25/2020
 ms.author: baanders
-ms.openlocfilehash: ad9eb95c9e3a21cd33a367cc864a4d791888afb9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 3b68df1b3fc2f03d7659205fe03fdae09ecc3f7a
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124540"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827298"
 ---
 ## <a name="configure-the-sample-project"></a>配置示例项目
 
@@ -18,7 +18,7 @@ ms.locfileid: "87124540"
 
 导航到已在计算机上下载的文件，然后将其解压缩。
 
-打开解压缩的文件夹后，导航到 AdtSampleApp/。 在 Visual Studio 2019 中打开 AdtE2ESample.sln。 
+打开解压缩的文件夹后，导航到 AdtSampleApp。 在 Visual Studio 2019 中打开 AdtE2ESample.sln。 
 
 在 Visual Studio 中，使用“解决方案资源管理器”窗格创建 SampleClientApp > serviceConfig.json.TEMPLATE 文件的副本（可使用右键菜单进行复制和粘贴）。 重命名副本 serviceConfig.json。 该副本将充当预设置的 JSON 文件，其中包含运行项目所需的配置变量。
 
@@ -31,6 +31,8 @@ ms.locfileid: "87124540"
   "instanceUrl": "https://<your-Azure-Digital-Twins-instance-hostName>"
 }
 ```
+
+
 
 保存并关闭该文件。 
 

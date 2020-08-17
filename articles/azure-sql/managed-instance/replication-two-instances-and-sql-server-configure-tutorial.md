@@ -10,17 +10,21 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: 680f8394ad1d10a564033ae5a2b9f59063589f73
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: d89bc33b0ddd0793a3c55dbd64bef9678bd723e7
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87532520"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920137"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>教程：在 Azure SQL 托管实例和 SQL Server 之间配置事务复制
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-本教程介绍如何执行下列操作：
+通过事务复制可以将数据从一个数据库复制到 SQL Server 或 [Azure SQL 托管实例](sql-managed-instance-paas-overview.md)中托管的另一个数据库。 SQL 托管实例可以是复制拓扑中的发布服务器、分发服务器或订阅服务器。 有关可用配置，请参阅[事务复制配置](replication-transactional-overview.md#common-configurations)。 
+
+事务复制目前提供了用于 SQL 托管实例的公共预览版。 
+
+在本教程中，你将了解如何执行以下操作：
 
 > [!div class="checklist"]
 >
@@ -30,11 +34,11 @@ ms.locfileid: "87532520"
 
 ![托管实例发布服务器、托管实例分发服务器与 SQL Server 订阅服务器之间的复制](./media/replication-two-instances-and-sql-server-configure-tutorial/sqlmi-to-sql-replication.png)
 
-本教程适用于经验丰富的受众，并假定用户熟悉如何在 Azure 中部署和连接到这两个托管实例和 SQL Server VM。 因此本教程中略去了某些步骤。
+本教程适用于经验丰富的受众，并假定用户熟悉如何在 Azure 中部署和连接到这两个托管实例和 SQL Server VM。 
 
-有关详细信息，请参阅 [Azure SQL 托管实例概述](sql-managed-instance-paas-overview.md)和 [SQL 事务复制](replication-transactional-overview.md)文章。
 
-若要配置托管实例发布服务器和托管实例订阅服务器之间的复制，请参阅[在两个托管实例之间配置事务复制](replication-between-two-instances-configure-tutorial.md)。
+> [!NOTE]
+> 本文介绍了如何在 Azure SQL 托管实例中使用[事务复制](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication)。 它与[故障转移组](https://docs.microsoft.com/azure/sql-database/sql-database-auto-failover-group)无关，这是一项 Azure SQL 托管实例功能，可用于创建单个实例的完整可读副本。 配置[故障转移组的事务复制](replication-transactional-overview.md#with-failover-groups)时还有其他注意事项。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -192,7 +196,7 @@ Get-AzVirtualNetworkPeering `
 
 ## <a name="7---create-a-database"></a>7 - 创建数据库
 
-在发布服务器托管实例上创建新数据库。 为此，请执行以下步骤：
+在发布服务器托管实例上创建新数据库。 为此，请执行下列步骤：
 
 1. 在 SQL Server 上启动 SQL Server Management Studio。
 1. 连接到 `sql-mi-publisher` 托管实例。
@@ -240,7 +244,7 @@ GO
 
 ## <a name="8---configure-distribution"></a>8 - 配置分发
 
-建立连接并具有示例数据库后，可以在 `sql-mi-distributor` 托管实例上配置分发。 为此，请执行以下步骤：
+建立连接并具有示例数据库后，可以在 `sql-mi-distributor` 托管实例上配置分发。 为此，请执行下列步骤：
 
 1. 在 SQL Server 上启动 SQL Server Management Studio。
 1. 连接到 `sql-mi-distributor` 托管实例。
@@ -275,18 +279,18 @@ GO
 
 ## <a name="9---create-the-publication"></a>9 - 创建发布
 
-配置分发后，现在可以创建发布。 为此，请执行以下步骤：
+配置分发后，现在可以创建发布。 为此，请执行下列步骤：
 
 1. 在 SQL Server 上启动 SQL Server Management Studio。
 1. 连接到 `sql-mi-publisher` 托管实例。
 1. 在“对象资源管理器”中，展开“复制”节点，然后右键单击“本地发布”文件夹  。 单击“新建发布...”。
 1. 选择“下一步”，离开“欢迎”页。
 1. 在“发布数据库”页上，选择之前创建的 `ReplTutorial` 数据库。 选择“**下一步**”。
-1. 在“发布类型”页上，选择“事务发布” 。 选择“**下一步**”。
-1. 在“项目”页上，选中“表”旁边的框 。 选择“**下一步**”。
+1. 在“发布类型”页上，选择“事务发布” 。 选择“**下一页**”。
+1. 在“项目”页上，选中“表”旁边的框 。 选择“**下一页**”。
 1. 在“筛选器表行”页上，选择“下一步”而不添加任何筛选器 。
-1. 在“快照代理”页上，选中“立即创建快照并使快照保持可用状态，以初始化订阅”旁边的框 。 选择“**下一步**”。
-1. 在“代理安全性”页上，选择“安全设置…” 。提供要用于快照代理的 SQL Server 登录凭据，并连接到发布服务器。 选择“确定”以关闭“快照代理安全性”页 。 选择“**下一步**”。
+1. 在“快照代理”页上，选中“立即创建快照并使快照保持可用状态，以初始化订阅”旁边的框 。 选择“**下一页**”。
+1. 在“代理安全性”页上，选择“安全设置…” 。提供要用于快照代理的 SQL Server 登录凭据，并连接到发布服务器。 选择“确定”以关闭“快照代理安全性”页 。 选择“**下一页**”。
 
    ![配置快照代理安全性](./media/replication-two-instances-and-sql-server-configure-tutorial/snapshot-agent-security.png)
 
@@ -296,7 +300,7 @@ GO
 
 ## <a name="10---create-the-subscription"></a>10 - 创建订阅
 
-创建发布后，可以创建订阅。 为此，请执行以下步骤：
+创建发布后，可以创建订阅。 为此，请执行下列步骤：
 
 1. 在 SQL Server 上启动 SQL Server Management Studio。
 1. 连接到 `sql-mi-publisher` 托管实例。

@@ -1,14 +1,14 @@
 ---
 title: 脱机备份 Data Protection Manager (DPM) 和 Microsoft Azure 备份 Server (MABS) -早期版本
-description: 借助 Azure 备份，可以使用 Azure 导入/导出服务在网外发送数据。 本文说明 DPM 和 Azure 备份服务器的脱机备份工作流。
+description: 借助 Azure 备份，可以使用 Azure 导入/导出服务在网外发送数据。 本文介绍以前版本的 DPM 和 Azure 备份服务器的脱机备份工作流。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 128051210984a55620be60a5965a7067e74de7c7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e986baaf6ac2943bd210761ff2194eacdee5984a
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186939"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261916"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM 和 Azure 备份服务器 (早期版本的脱机备份工作流) 
 
@@ -61,7 +61,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
     | 美国 | [链接](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade)。 |
     | 中国 | [链接](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade)。 |
 
-* 在下载发布设置文件的订阅中已创建了采用资源管理器部署模型的 Azure 存储帐户。 在存储帐户中创建新的 blob 容器，该容器将用作目标。
+* 在下载发布设置文件的订阅中已创建了采用资源管理器部署模型的 Azure 存储帐户。 在存储帐户中，创建一个新的 blob 容器，该容器将用作目标。
 
   ![创建采用资源管理器开发模式的存储帐户](./media/offline-backup-dpm-mabs-previous-versions/storage-account-resource-manager.png)
 
@@ -72,7 +72,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 ## <a name="prepare-the-server-for-the-offline-backup-process"></a>为脱机备份过程准备服务器
 
 >[!NOTE]
-> 如果你找不到列出的实用程序（如*AzureOfflineBackupCertGen.exe*），则在安装 MARS 代理的过程中，将写入以 AskAzureBackupTeam@microsoft.com 获取对它们的访问权限。
+> 如果你找不到列出的实用程序（如 *AzureOfflineBackupCertGen.exe*），则在安装 MARS 代理的过程中，将写入以 AskAzureBackupTeam@microsoft.com 获取对它们的访问权限。
 
 * 在服务器上打开权限提升的命令提示符，并运行以下命令：
 
@@ -106,8 +106,8 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
     ![在“拥有的应用程序”选项卡上找到应用程序](./media/offline-backup-dpm-mabs-previous-versions/owned-applications.png)
 
 1. 选择应用程序。 在左侧窗格中的“管理”下，转到“证书和机密”。 
-1. 检查现有的证书或公钥。 如果没有证书或公钥，可以选择应用程序“概述”页上的“删除”按钮安全删除该应用程序。  然后，可以重试[为脱机备份准备服务器](#prepare-the-server-for-the-offline-backup-process)过程中的步骤，并跳过后面的步骤。 否则，请在要配置脱机备份的 DPM 实例或 Azure 备份服务器服务器中继续执行以下步骤。
-1. 从 "**开始**" – "**运行**"，键入*certlm.msc*。 在 "**证书-本地计算机**" 窗口中，选择 "**证书–本地计算机**  >  **个人**" 选项卡。查找名称为的证书 `CB_AzureADCertforOfflineSeeding_<ResourceId>` 。
+1. 检查预先存在的证书或公钥。 如果没有证书或公钥，可以选择应用程序“概述”页上的“删除”按钮安全删除该应用程序。  然后，可以重试[为脱机备份准备服务器](#prepare-the-server-for-the-offline-backup-process)过程中的步骤，并跳过后面的步骤。 否则，请在要配置脱机备份的 DPM 实例或 Azure 备份服务器服务器中继续执行以下步骤。
+1. 从 " **开始** " – " **运行**"，键入 *certlm.msc*。 在 "**证书-本地计算机**" 窗口中，选择 "**证书–本地计算机**  >  **个人**" 选项卡。查找名称为的证书 `CB_AzureADCertforOfflineSeeding_<ResourceId>` 。
 1. 选择该证书，右键单击“所有任务”并选择“导出”，以导出 .cer 格式的不包含私钥的证书。 
 1. 在 Azure 门户中转到 Azure 脱机备份应用程序。
 1. 选择“管理” > “证书和机密” > “上传证书”。   上传在上一步骤中导出的证书。
@@ -189,7 +189,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 
     | 参数 | 说明 |
     | --- | --- |
-    | s：&lt;暂存位置路径&gt; |此项必需的输入用于提供在“启动脱机备份”部分的工作流中所输入的暂存位置的路径。 |
+    | s:&lt;*Staging Location Path*&gt; |此项必需的输入用于提供在“启动脱机备份”部分的工作流中所输入的暂存位置的路径。 |
     | p:&lt;*Path to PublishSettingsFile*&gt; |此可选输入用于提供在“启动脱机备份”部分的工作流中所输入的 Azure 发布设置文件的路径。 |
 
     > [!NOTE]

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/18/2019
 ms.author: yelevin
-ms.openlocfilehash: 5bc6ca30b9dff3686b16fe5237f815f16f849e9e
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: f75731fab9a238ffcac2e620235c9d8c5da97549
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85558474"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053484"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>教程：在 Azure Sentinel 中设置自动威胁响应
 
@@ -60,7 +60,7 @@ ms.locfileid: "85558474"
 按照以下步骤在 Azure Sentinel 中创建新的安全性 playbook：
 
 1. 打开“Azure Sentinel”仪表板。
-2. 在“管理”下，选择“Playbooks” 。
+2. 在“配置”下选择“Playbook” 。
 
    ![逻辑应用](./media/tutorial-respond-threats-playbook/playbookimg.png)
 

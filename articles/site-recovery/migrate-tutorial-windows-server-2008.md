@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Site Recovery 将 Windows Server 2008 服务器迁移到 Azure
-description: 本文介绍如何使用 Azure Site Recovery 将本地 Windows Server 2008 计算机迁移到 Azure。
+title: 使用 Azure Migrate/Site Recovery 将 Windows Server 2008 服务器迁移到 Azure
+description: 本文介绍如何将本地 Windows Server 2008 计算机迁移到 Azure，并推荐 Azure Migrate。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/27/2020
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 8d672c1113f265f9fbbabc7caed8df071f548f2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d8cd8bf2e1a29b122fb4bac7a12454f102183fe3
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503814"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87845555"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>将运行 Windows Server 2008 的服务器迁移到 Azure
 
@@ -31,9 +31,11 @@ ms.locfileid: "87503814"
 
 ## <a name="migrate-with-azure-migrate"></a>使用 Azure Migrate 进行迁移
 
-建议使用 [Azure Migrate](../migrate/migrate-services-overview.md) 服务将计算机迁移到 Azure。 Azure Migrate 提供一个集中式中心，用于使用 Azure Migrate、其他 Azure 服务和第三方工具评估本地计算机以及将其迁移到 Azure。 Azure Site Recovery 应仅用于灾难恢复，而不用于迁移。
+建议使用 [Azure Migrate](../migrate/migrate-services-overview.md) 服务将计算机迁移到 Azure。 
 
-Azure Migrate 支持迁移运行 Windows Server 2008 的服务器。
+- Azure Migrate 是专门为服务器迁移而构建的。
+- Azure Migrate 提供了一个集中式中心，用于发现、评估本地计算机以及将本地计算机迁移到 Azure。 Azure Site Recovery 应仅用于灾难恢复，而不用于迁移。
+- Azure Migrate 支持迁移运行 Windows Server 2008 的服务器。
 
 
 ## <a name="migrate-with-site-recovery"></a>使用 Site Recovery 进行迁移

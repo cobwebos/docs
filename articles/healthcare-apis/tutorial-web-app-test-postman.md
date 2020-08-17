@@ -5,16 +5,16 @@ services: healthcare-apis
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: tutorial
-ms.reviewer: mihansen
+ms.reviewer: matjazl
 ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
-ms.openlocfilehash: a6805fc686d0bc5bd0e2357828d59d40ba05f248
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 1c64468a2e420734ca51a5b9308bb52e13712c51
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "84870383"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852916"
 ---
 # <a name="testing-the-fhir-api"></a>测试 FHIR API
 在前两个步骤中，你已部署 Azure API for FHIR 并注册了客户端应用程序。 现在，可以测试客户端应用程序中是否设置了 Azure API for FHIR。 
@@ -22,7 +22,7 @@ ms.locfileid: "84870383"
 ## <a name="retrieve-capability-statement"></a>检索功能语句
 首先，我们将获取 Azure API for FHIR 的功能语句。 
 1. 打开 Postman
-1. 执行 GET https://\<FHIR-SERVER-NAME>.azurehealthcareapis.com/metadata 检索功能语句。 在下图中，FHIR 服务器名称为 **fhirserver**。
+1. 通过执行 GET https://\<FHIR-SERVER-NAME>.azurehealthcareapis.com/metadata 检索功能声明。 在下图中，FHIR 服务器名称为 **fhirserver**。
 
 ![功能语句](media/tutorial-web-app/postman-capability-statement.png)
 
@@ -41,9 +41,9 @@ ms.locfileid: "84870383"
 |令牌名称           |令牌的名称                                               |
 |授权类型           |授权代码                                                  |
 |回调 URL         |https://www.getpostman.com/oauth2/callback                          |
-|身份验证 URL             |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/oauth2/?resource=https://\<FHIR-SERVER-NAME>.azurehealthcareapis.com|
-|访问令牌 URL     |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID>/oauth2/token|
-|客户端 ID            |在前面步骤中复制的客户端 ID             |
+|身份验证 URL             |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID> /oauth2/?resource=https://\<FHIR-SERVER-NAME>.azurehealthcareapis.com|
+|访问令牌 URL     |https://login.microsoftonline.com/\<AZURE-AD-TENANT-ID> /oauth2/token|
+|客户端 ID            |在前面的步骤中复制的客户端 ID             |
 |客户端机密        |\<BLANK>                                                            |
 |范围                |\<BLANK>                                                            |
 |状态                |1234                                                                |

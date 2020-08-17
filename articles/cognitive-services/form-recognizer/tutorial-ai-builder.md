@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 07/01/2020
 ms.author: pafarley
-ms.openlocfilehash: 16869ab3a1961879cfcda1eaa383073cd2309a01
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 981c6f6bb2b0eb597b32ce8e428ef0aa7d19929b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433333"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003364"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>教程：使用 AI Builder 创建表单处理应用
 
@@ -33,7 +33,7 @@ ms.locfileid: "87433333"
 ## <a name="prerequisites"></a>先决条件
 
 * 一组具有相同类型的表单，至少五个，用于训练/测试数据。 有关整理训练数据集的提示和选项，请参阅[生成训练数据集](./build-training-data-set.md)。 对于本快速入门，可以使用[示例数据集](https://go.microsoft.com/fwlink/?linkid=2128080)的 **Train** 文件夹下的文件。
-* Power Apps 或 Power Automate 许可证 - 请参阅[许可指南](https://go.microsoft.com/fwlink/?linkid=2085130)。 许可证必须包含 [Dataflex Pro](https://powerplatform.microsoft.com/en-us/common-data-service/)。
+* Power Apps 或 Power Automate 许可证 - 请参阅[许可指南](https://go.microsoft.com/fwlink/?linkid=2085130)。 许可证必须包含 [Common Data Service](https://powerplatform.microsoft.com/en-us/common-data-service/)。
 * AI Builder [附加产品或试用版](https://go.microsoft.com/fwlink/?LinkId=2113956&clcid=0x409)。
 
 

@@ -1,6 +1,6 @@
 ---
-title: 将托管磁盘的快照复制到订阅 - CLI 示例
-description: Azure CLI 脚本示例 - 使用 CLI 将托管磁盘的快照复制（移动）到同一订阅或不同订阅
+title: 将托管磁盘的快照复制到订阅 - CLI 示例，Windows VM
+description: Azure CLI 脚本示例 - 在 Windows VM 上使用 CLI 将托管磁盘的快照复制（移动）到同一订阅或不同订阅
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -15,14 +15,14 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 54029e2ccbf592dfcde484728fa9cb969a668edd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 05b73bf62bfce456e65fde153379690bc9823e6a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87010082"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056731"
 ---
-# <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>使用 CLI 将托管磁盘的快照复制到同一订阅或不同订阅
+# <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli-on-a-windows-vm"></a>在 Windows VM 上使用 CLI 将托管磁盘的快照复制到同一订阅或不同订阅
 
 此脚本会将托管磁盘的快照复制到同一订阅或不同订阅。 将此脚本用于以下方案：
 

@@ -67,7 +67,9 @@
       items:
         - name: 身份验证和授权
           href: time-series-insights-authentication-and-authorization.md
-        - name: 使用 C# 查询数据
+        - name: 使用 C# 查询数据 - Gen2
+          href: time-series-insights-update-query-data-csharp.md
+        - name: 使用 C# 查询数据 - Gen1
           href: time-series-insights-query-data-csharp.md
         - name: 使用 C# 管理参考数据
           href: time-series-insights-manage-reference-data-csharp.md

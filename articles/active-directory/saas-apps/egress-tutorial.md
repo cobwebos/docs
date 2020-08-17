@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 07/17/2020
+ms.date: 07/29/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ce816b74c12333477203cce690c955d5aaf1cda
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3a197c879e4c091c9b421c194e1f6a50b91d24bb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093202"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007349"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egress"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Egress 的集成
 
@@ -45,7 +45,7 @@ ms.locfileid: "87093202"
 
 * Egress 支持 SP 和 IDP 发起的 SSO
 * Egress 支持实时用户预配
-* 配置 Egress 后，就可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 Egress 后，可以强制实施会话控制，实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 ## <a name="adding-egress-from-the-gallery"></a>从库中添加 Egress
 
@@ -130,7 +130,7 @@ ms.locfileid: "87093202"
 
 1. 在下面的页中执行以下步骤。
 
-    ![Egress 配置](./media/egress-tutorial/configure1.PNG)
+    ![Egress 配置](./media/egress-tutorial/configure-1.PNG)
 
     a. 在左侧菜单中，单击“SSO 配置”。
 
@@ -150,11 +150,11 @@ ms.locfileid: "87093202"
 
 1. 单击左侧菜单中的“邀请用户”，然后单击“邀请单个用户”以添加该用户 。
 
-    ![Egress 创建测试用户](./media/egress-tutorial/createuser1.PNG)
+    ![Egress 创建测试用户](./media/egress-tutorial/create-user-1.PNG)
 
 1. 填写必填字段，然后单击“邀请”。
 
-    ![Egress 创建测试用户](./media/egress-tutorial/createuser2.PNG)
+    ![Egress 创建测试用户](./media/egress-tutorial/create-user-2.PNG)
 
 ## <a name="test-sso"></a>测试 SSO 
 

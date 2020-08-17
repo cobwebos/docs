@@ -148,6 +148,12 @@
         - name: 疑难解答
           expanded: false
           items:
+            - name: 登录故障排除
+              href: container-registry-troubleshoot-login.md
+            - name: 网络问题故障排除
+              href: container-registry-troubleshoot-access.md
+            - name: 注册表性能故障排除
+              href: container-registry-troubleshoot-performance.md
             - name: 检测常见问题
               href: container-registry-check-health.md
             - name: 常见问题解答

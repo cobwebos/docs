@@ -1,20 +1,20 @@
 ---
 title: 教程：使用 Azure Maps 创建店铺定位器应用程序 | Microsoft Azure Maps
-description: 本教程介绍如何使用 Microsoft Azure Maps Web SDK 创建店铺定位器 Web 应用程序。
+description: 了解如何创建店铺定位器 Web 应用程序。 使用 Azure Maps Web SDK 创建网页、查询搜索服务并在地图上显示结果。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 01/14/2020
+ms.date: 08/11/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-javascript
-ms.openlocfilehash: 4bb0a4a0a621881fe1d9a59585476baa2ce05f8e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 1ec4dbb1ce55919fda6c73d198100db34f5f57ea
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87289561"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121249"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>教程：使用 Azure Maps 创建店铺定位器
 
@@ -31,25 +31,24 @@ ms.locfileid: "87289561"
 
 <a id="Intro"></a>
 
-跳转到[现场店铺定位器示例](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator)或[源代码](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)。 
+跳转到[现场店铺定位器示例](https://azuremapscodesamples.azurewebsites.net/?sample=Simple%20Store%20Locator)或[源代码](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)。
 
 ## <a name="prerequisites"></a>先决条件
 
-若要完成本教程中的步骤，首先需要创建一个 Azure Maps 帐户并获取主密钥（订阅密钥）。 按照[创建帐户](quick-demo-map-app.md#create-an-azure-maps-account)中的说明使用 S1 定价层创建 Azure Maps 帐户订阅，并按照[获取主密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)中的步骤获取帐户的主密钥。 有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
+1. [创建使用 S1 定价层的 Azure Maps 帐户](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [获取主订阅密钥](quick-demo-map-app.md#get-the-primary-key-for-your-account)（亦称为“主密钥”或“订阅密钥”）。
+
+有关 Azure Maps 中身份验证的详细信息，请参阅[在 Azure Maps 中管理身份验证](how-to-manage-authentication.md)。
 
 ## <a name="design"></a>设计
 
 在跳转到代码之前，最好是从某个设计开始。 店铺定位器可以十分简单，也可以非常复杂，具体视需求而定。 在本教程中，我们将创建一个简单的店铺定位器。 在整个过程中，我们会提供一些提示，以帮助你根据需要扩展某些功能。 我们将为一家名为 Contoso Coffee 的虚构公司创建店铺定位器。 下图显示了本教程中要生成的店铺定位器的常规布局框图：
 
-<center>
-
-![Contoso Coffee 店铺位置的店铺定位器应用程序框图](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
+![Contoso Coffee 店铺位置的店铺定位器应用程序框图](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)
 
 为了最大程度地利用此店铺定位器，我们包含了一种响应式布局，当用户的屏幕宽度小于 700 像素时，该布局可以调整。 在移动设备等的小型屏幕上，响应式布局可让我们轻松使用店铺定位器。 下面是小屏幕布局的框图：  
 
-<center>
-
-![移动设备上的 Contoso Coffee 店铺定位器应用程序框图](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+![移动设备上的 Contoso Coffee 店铺定位器应用程序框图](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</
 
 框图中显示了一个相当简洁的应用程序。 该应用程序包含一个搜索框、附近店铺的列表，以及包含一些标记（例如符号）的地图。 此外，它还包含一个弹出窗口，当用户选择某个标记时，该窗口会显示附加信息。 下面是我们要在本教程所述的店铺定位器中生成的功能的更多详细信息：
 
@@ -71,45 +70,36 @@ ms.locfileid: "87289561"
 
 在开发店铺定位器应用程序之前，需要创建要在地图上显示的店铺的数据集。 在本教程中，我们将使用一家名为 Contoso Coffee 的虚构咖啡厅的数据集。 此简单店铺定位器的数据集在 Excel 工作簿中进行管理。 该数据集包含分布在 9 个国家/地区的 10,213 家 Contoso Coffee 咖啡厅位置：美国、加拿大、英国、法国、德国、意大利、荷兰、丹麦和西班牙。 下面是数据外观的屏幕截图：
 
-<center>
+![Excel 工作簿中店铺定位器数据的屏幕截图](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)
 
-![Excel 工作簿中店铺定位器数据的屏幕截图](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
-
-可以[下载该 Excel 工作簿](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)。 
+可以[下载该 Excel 工作簿](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)。
 
 在数据屏幕截图中，我们可以发现：
-    
+
 * 位置信息是使用 **AddressLine**、**City**、**Municipality**（国家）、**AdminDivision**（州/省）、**PostCode**（邮政编码）和 **Country** 列存储的。  
 * **Latitude** 和 **Longitude** 列包含每个 Contoso Coffee 咖啡厅位置的坐标。 如果没有坐标信息，可以使用 Azure Maps 中的搜索服务来确定位置坐标。
 * 某些附加列包含咖啡厅相关的元数据：电话号码、布尔值列，以及营业和停业时间（24 小时格式）。 布尔值列指示是否提供 Wi-Fi 和轮椅通道。 你可以创建自己的列来包含与位置数据更相关的元数据。
 
-> [!Note]
-> Azure Maps 在球面 Mercator 投影“EPSG:3857”中呈现数据，但在使用 WGS84 数据的“EPSG:4325”中读取数据。 
+> [!NOTE]
+> Azure Maps 在球面 Mercator 投影“EPSG:3857”中呈现数据，但在使用 WGS84 数据的“EPSG:4325”中读取数据。
 
-可通过多种方法向应用程序公开数据集。 其中一种方法是将数据载入数据库并公开查询数据的 Web 服务。 然后可将结果发送到用户的浏览器。 这种做法非常适合大型数据集或经常更新的数据集。 但是，这种做法会增加开发工作量，并且成本较高。 
+可通过多种方法向应用程序公开数据集。 其中一种方法是将数据载入数据库并公开查询数据的 Web 服务。 然后可将结果发送到用户的浏览器。 这种做法非常适合大型数据集或经常更新的数据集。 但是，这种做法会增加开发工作量，并且成本较高。
 
 另一种方法是将此数据集转换成浏览器可轻松分析的平面文本文件。 该文件本身可与应用程序的剩余部分托管在一起。 这种做法能够简化开发，但只适合小型数据集，因为用户需要下载所有数据。 由于数据文件大小小于 1 MB，因此我们对此数据集使用了平面文本文件。  
 
-若要将工作簿转换为平面文本文件，请将工作簿另存为制表符分隔的文件。 每个列由制表符分隔，因此可以方便地在代码中分析列。 可以使用逗号分隔值 (CSV) 格式，但这样做需要其他分析逻辑。 将两边带有逗号的任何字段括在引号中。 若要在 Excel 中以制表符分隔文件的格式导出此数据，请选择“另存为”。 在“保存类型”下拉列表中，选择“文本(制表符分隔)(*.txt)”。  将文件命名为 *ContosoCoffee.txt*。 
+若要将工作簿转换为平面文本文件，请将工作簿另存为制表符分隔的文件。 每个列由制表符分隔，因此可以方便地在代码中分析列。 可以使用逗号分隔值 (CSV) 格式，但这样做需要其他分析逻辑。 将两边带有逗号的任何字段括在引号中。 若要在 Excel 中以制表符分隔文件的格式导出此数据，请选择“另存为”。 在“保存类型”下拉列表中，选择“文本(制表符分隔)(*.txt)”。  将文件命名为 *ContosoCoffee.txt*。
 
-<center>
-
-![“另存为类型”对话框的屏幕截图](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
+![“另存为类型”对话框的屏幕截图](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)
 
 如果在记事本中打开该文本文件，其外观如下图所示：
 
-<center>
-
-![演示制表符分隔数据集的 Notepad 文件的屏幕截图](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
-
+![演示制表符分隔数据集的记事本文件的屏幕截图](./media/tutorial-create-store-locator/StoreDataTabFile.png)
 
 ## <a name="set-up-the-project"></a>设置项目
 
 若要创建项目，可以使用 [Visual Studio](https://visualstudio.microsoft.com) 或所选的代码编辑器。 在项目文件夹中创建三个文件：*index.html*、*index.css* 和 *index.js*。 这些文件定义应用程序的布局、样式和逻辑。 创建名为 *data* 的文件夹并将 *ContosoCoffee.txt* 添加到其中。 创建名为 *images* 的另一个文件夹。 我们将在此应用程序中使用 10 张图像作为地图上的图标、按钮和标记。 可以[下载这些图像](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data)。 现在，项目文件夹应如下图所示：
 
-<center>
-
-![简单店铺定位器项目文件夹的屏幕截图](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
+![简单店铺定位器项目文件夹的屏幕截图](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)
 
 ## <a name="create-the-user-interface"></a>创建用户界面
 
@@ -922,23 +912,17 @@ ms.locfileid: "87289561"
 
 现已创建一个完全正常运行的店铺定位器。 在 Web 浏览器中，打开该店铺定位器的 *index.html* 文件。 当聚集显示在地图上时，可以通过使用搜索框、选择“我的位置”按钮、选择聚集或放大地图来搜索位置，以查看各个位置。
 
-当用户首次选择“我的位置”按钮时，浏览器会显示一条安全警告，要求提供访问用户位置的权限。 如果用户同意共享其位置，则地图将在用户位置放大，并显示附近的咖啡厅。 
+当用户首次选择“我的位置”按钮时，浏览器会显示一条安全警告，要求提供访问用户位置的权限。 如果用户同意共享其位置，则地图将在用户位置放大，并显示附近的咖啡厅。
 
-<center>
-
-![浏览器中请求访问用户位置的屏幕截图](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
+![浏览器请求访问用户位置的屏幕截图](./media/tutorial-create-store-locator/GeolocationApiWarning.png)
 
 如果在包含咖啡厅位置的区域中将地图放到足够大，则聚集将分离成单独的位置。 在地图上选择某个图标或者在侧面板中选择一个项会显示一个弹出窗口。 此弹出窗口显示所选位置的信息。
 
-<center>
+![成品店铺定位器的屏幕截图](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)
 
-![成品店铺定位器的屏幕截图](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
+如果将浏览器窗口宽度调整为小于 700 像素或者在移动设备上打开该应用程序，则布局将会更改，更适合小屏幕。
 
-如果将浏览器窗口宽度调整为小于 700 像素或者在移动设备上打开该应用程序，则布局将会更改，更适合小屏幕。 
-
-<center>
-
-![店铺定位器小屏幕版本的屏幕截图](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>
+![店铺定位器小屏幕版本的屏幕截图](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -950,7 +934,7 @@ ms.locfileid: "87289561"
 > * 允许用户[筛选路线中的位置](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Data%20Along%20Route)。 
 > * 添加[设置筛选器](https://azuremapscodesamples.azurewebsites.net/?sample=Filter%20Symbols%20by%20Property)的功能。 
 > * 添加使用查询字符串指定初始搜索值的支持。 如果在店铺定位器中包含此选项，则用户可以添加书签和共享搜索。 它还可让你轻松地从另一个页面向此页面传递搜索。  
-> * 将店铺定位器部署为 [Azure 应用服务 Web 应用](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html)。 
+> * 将店铺定位器部署为 [Azure 应用服务 Web 应用](https://docs.microsoft.com/azure/app-service/quickstart-html)。 
 > * 将数据存储在数据库中，并搜索附近的位置。 有关详细信息，请参阅 [SQL Server 空间数据类型概述](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017)和[查询最近的邻域的空间数据](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017)。
 
 > [!div class="nextstepaction"]

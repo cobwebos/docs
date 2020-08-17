@@ -1,20 +1,20 @@
 ---
 title: Azure Data Box 寄回教程 | Microsoft Docs
-description: 了解如何将 Azure Data Box 寄送到 Microsoft
+description: 在本教程中，了解如何寄回 Azure Data Box（包括准备装运、装运 Data Box）、验证数据上传以及从 Data Box 中擦除数据。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/20/2019
+ms.date: 07/21/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: efcc5e8f629c8b6ccc903478473b54989c0e9fd6
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 577c184f78c5784b29db7562f3c33a3cb7518f0c
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959433"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142037"
 ---
 ::: zone target="docs"
 
@@ -35,6 +35,7 @@ ms.locfileid: "85959433"
 在本教程中，你将了解如下主题：
 
 > [!div class="checklist"]
+>
 > * 先决条件
 > * 准备交付
 > * 将 Data Box 寄送到 Microsoft
@@ -45,8 +46,8 @@ ms.locfileid: "85959433"
 
 在开始之前，请确保：
 
-- 已完成[教程：将数据复制到 Azure Data Box 并进行验证](data-box-deploy-copy-data.md)。 
-- 复制作业已完成，且在“连接并复制”页上没有错误。 如果复制作业正在进行或“连接并复制”页中存在错误，则准备交付将无法运行。
+* 已完成[教程：将数据复制到 Azure Data Box 并进行验证](data-box-deploy-copy-data.md)。
+* 复制作业已完成，且在“连接并复制”页上没有错误。 如果复制作业正在进行或“连接并复制”页中存在错误，则准备交付将无法运行。
 
 ## <a name="prepare-to-ship"></a>准备交付
 
@@ -77,7 +78,7 @@ ms.locfileid: "85959433"
 
 ::: zone-end
 
-## <a name="in-us-canada-europe"></a>[在美国、加拿大和欧洲](#tab/in-us-canada-europe)
+## <a name="us-canada-europe"></a>[美国、加拿大和欧洲](#tab/in-us-canada-europe)
 
 如果在美国、加拿大或欧洲退回设备，请执行以下步骤。
 
@@ -86,9 +87,9 @@ ms.locfileid: "85959433"
 3. 确保发货标签显示在电子墨水显示屏上，并与承运人安排好取件。 如果该标签损坏或丢失，或者未显示在电子墨水显示屏上，请联系 Microsoft 支持部门。 在支持部门建议的情况下，可以在 Azure 门户中转到“概览”>“下载发货标签”。 下载发货标签，将其贴在设备上。 
 4. 如果要寄回设备，请安排 UPS 提货。 安排提货：
 
-    - 给本地 UPS 打电话（特定于国家/地区的免费电话号码）。
-    - 在通话中，引用反向装运跟踪号码，如电子墨水显示屏或打印的标签中所示。
-    - 如果未引用跟踪号码，UPS 将要求你在提货时支付额外费用。
+    * 给本地 UPS 打电话（特定于国家/地区的免费电话号码）。
+    * 在通话中，引用反向装运跟踪号码，如电子墨水显示屏或打印的标签中所示。
+    * 如果未引用跟踪号码，UPS 将要求你在提货时支付额外费用。
 
     也可以在最近的卸货位置放置 Data Box，而不是安排提货。
 4. 承运人提取 Data Box 并进行扫描后，门户中的订单状态将更新为“已提货”。 此外还会显示一个跟踪 ID。
@@ -100,7 +101,7 @@ ms.locfileid: "85959433"
 [!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
 
 ## <a name="erasure-of-data-from-data-box"></a>从 Data Box 中擦除数据
- 
+
 上传到 Azure 完成后，Data Box 将根据 [NIST SP 800-88 修订版 1 准则](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)擦除其磁盘上的数据。
 
 ::: zone-end
@@ -109,15 +110,11 @@ ms.locfileid: "85959433"
 
 [!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
-
-
 ::: zone-end
 
-
-## <a name="in-australia"></a>[在澳大利亚](#tab/in-australia)
+## <a name="australia"></a>[澳大利亚](#tab/in-australia)
 
 澳大利亚的 Azure 数据中心会提供额外的安全通知。 所有入境装运必须收到提前通知。 若要在澳大利亚寄送，请执行以下步骤。
-
 
 1. 保留寄送设备所用的原始包装盒供退回寄送时使用。
 2. 确保数据复制到设备已完成，并且“准备交付”运行成功。
@@ -132,7 +129,7 @@ ms.locfileid: "85959433"
 [!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
 
 ## <a name="erasure-of-data-from-data-box"></a>从 Data Box 中擦除数据
- 
+
 上传到 Azure 完成后，Data Box 将根据 [NIST SP 800-88 修订版 1 准则](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)擦除其磁盘上的数据。
 
 ::: zone-end
@@ -143,7 +140,7 @@ ms.locfileid: "85959433"
 
 ::: zone-end
 
-## <a name="in-japan"></a>[在日本](#tab/in-japan) 
+## <a name="japan"></a>[日本](#tab/in-japan)
 
 1. 保留寄送设备所用的原始包装盒供退回寄送时使用。
 2. 关闭设备电源并拔下电缆。
@@ -151,13 +148,13 @@ ms.locfileid: "85959433"
 4. 在托运单上写下公司名称和地址信息作为发件人信息。
 5. 使用以下电子邮件模板将电子邮件发送给 Quantium Solution。
 
-    - 如果日本邮政货到付款托运单未包含在内或缺失，请在这封电子邮件中注明。 Quantium Solutions Japan 将请求日本邮政在取件时带上托运单。
-    - 如果你有多个订单，请分别发送电子邮件以确保单独取件。
+    * 如果日本邮政货到付款托运单未包含在内或缺失，请在这封电子邮件中注明。 Quantium Solutions Japan 将请求日本邮政在取件时带上托运单。
+    * 如果你有多个订单，请分别发送电子邮件以确保单独取件。
 
     ```
     To: Customerservice.JP@quantiumsolutions.com
     Subject: Pickup request for Azure Data Box｜Job name： 
-    Body: 
+    Body:
     - Japan Post Yu-Pack tracking number (reference number)：
     - Requested pickup date：mmdd (Select a requested time slot from below).
     a. 08：00-13：00 
@@ -166,12 +163,12 @@ ms.locfileid: "85959433"
     d. 17：00-19：00 
     ```
 
-3. 在预订完取件后，将会收到 Quantium Solutions 发来的电子邮件确认函。 该电子邮件确认函还包含与货到付款托运单相关的信息。
+6. 在预订完取件后，将会收到 Quantium Solutions 发来的电子邮件确认函。 该电子邮件确认函还包含与货到付款托运单相关的信息。
 
 如果需要，可通过以下信息联系 Quantium Solution 支持（日语）： 
 
-- 电子邮件：Customerservice.JP@quantiumsolutions.com 
-- 电话：03-5755-0150 
+* 电子邮件：Customerservice.JP@quantiumsolutions.com 
+* 电话：03-5755-0150 
 
 ::: zone target="chromeless"
 
@@ -191,17 +188,17 @@ ms.locfileid: "85959433"
 
 ::: zone-end
 
-## <a name="in-singapore"></a>[在新加坡](#tab/in-singapore) 
+## <a name="singapore"></a>[新加坡](#tab/in-singapore)
 
 1. 保留寄送设备所用的原始包装盒供退回寄送时使用。
-2. 记下跟踪编号（在 Data Box 本地 Web UI 的“准备交付”页面上显示为参考编号）。 这在“准备交付”步骤成功完成后可用。 从此页面上下载发货标签并粘贴在包装箱上。 
+2. 记下跟踪编号（在 Data Box 本地 Web UI 的“准备交付”页面上显示为参考编号）。 这在“准备交付”步骤成功完成后可用。 从此页面上下载发货标签并粘贴在包装箱上。
 3. 关闭设备电源并拔下电缆。
 4. 将设备随附的电源线卷好并安全地放在设备后面。 
 5. 使用带有跟踪编号的以下电子邮件模板向 SingPost 客户服务发送电子邮件。
 
     ```
     To: kadcustcare@singpost.com
-    Subject: Microsoft Azure Pick-up - OrderName 
+    Subject: Microsoft Azure Pickup - OrderName 
     Body: 
         1. Requestor name  
         2. Requestor contact number
@@ -211,8 +208,89 @@ ms.locfileid: "85959433"
 
    > [!NOTE]
    > 对于在工作日内的以下时间收到的预订请求：
-   > - 如果在下午 3 点之前收到，分拣将在下一个工作日的上午 9 点到下午 1 点进行。
-   > - 如果在下午 3 点之后收到，分拣将在下一个工作日的下午 2 点到下午 6 点进行。  
+   > * 如果在下午 3 点之前收到，分拣将在下一个工作日的上午 9 点到下午 1 点进行。
+   > * 如果在下午 3 点之后收到，分拣将在下一个工作日的下午 2 点到下午 6 点进行。  
+
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>验证 Azure 中的数据上传
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+## <a name="erasure-of-data-from-data-box"></a>从 Data Box 中擦除数据
+
+上传到 Azure 完成后，Data Box 将根据 [NIST SP 800-88 修订版 1 准则](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)擦除其磁盘上的数据。
+
+::: zone-end
+
+::: zone target="docs"
+
+[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
+
+::: zone-end
+
+## <a name="south-africa"></a>[南非](#tab/in-sa)
+
+1. 在原始包装盒中打包设备以退回寄送。
+2. 将设备随附的电源线卷好并安全地放在设备后面。
+3. 使用 DHL 预订取件：
+
+    * 请致电客户服务联系中心，电话为 +27(0) 11 9213600，选择选项 1，然后指定运单号码。
+    * 必须在下午 2:00 之前拨打电话才能安排取件。
+    * 使用以下模板将电子邮件发送到 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com)：
+
+    ```output
+    To: Priority.Support@dhl.com
+    Subject: Pickup request for Microsoft Azure
+    Body: Need pick up for the below shipment
+      *  DHL tracking number (reference number/waybill number)
+      *  Requested pickup date: yyyy/mm/dd;time:HH MM
+    ```
+
+    * 或者，也可以将包裹放在最近的 DHL 服务点。
+
+4. 如果遇到任何问题，请向 [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) 发送电子邮件，说明所遇到的问题的详细信息，并将运单号放入主题行。 还可以致电 +27(0)119213902。
+
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>验证 Azure 中的数据上传
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+## <a name="erasure-of-data-from-data-box"></a>从 Data Box 中擦除数据
+
+上传到 Azure 完成后，Data Box 将根据 [NIST SP 800-88 修订版 1 准则](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)擦除其磁盘上的数据。
+
+::: zone-end
+
+::: zone target="docs"
+
+[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
+
+::: zone-end
+
+## <a name="hong-kong"></a>[中国香港特别行政区](#tab/in-hk)
+
+1. 在原始包装盒中打包设备以退回寄送。
+2. 将设备随附的电源线卷好并安全地放在设备后面。
+3. 请在办公时间（星期一到星期五的上午 9 点到下午 6 点）拨打 Quantium Solutions 热线 (852) 2318 1213 。  
+4. 请注明“Microsoft Azure 取件”和参考编号以及退货发货标签上的跟踪编号（条形码上方），以便安排收件。
+5. 你将会收到有关该取件安排的口头确认。 如果快递公司未前来收件，请拨打 Quantium Solutions 热线安排其他快递公司。
+6. 通过 Quantium 预定取件后，请使用以下模板与 [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) 共享确认信息：
+
+    ```output
+    To: adbo@microsoft.com
+    Subject: Microsoft Data Box Job: [order name] has completed copy
+    Body:
+    We have confirmed the pickup details with Quantium.
+
+       * Requestor name:
+       * Requestor contact number:
+       * Pickup Date:  
+       * Pickup time:
+    ```
+
+如果遇到任何问题，请向 Data Box Operations Asia [adbo@microsoft.com](mailto:adbo@microsoft.com) 发送电子邮件，在主题标头中提供作业名称和遇到的问题。
 
 ::: zone target="chromeless"
 
@@ -231,7 +309,6 @@ ms.locfileid: "85959433"
 [!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
-
 
 <!--## [In Korea](#tab/in-korea) 
 
@@ -273,24 +350,26 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 ::: zone-end
 -->
 
-## <a name="self-managed"></a>[自托管](#tab/in-selfmanaged) 
+## <a name="self-managed"></a>[自托管](#tab/in-selfmanaged)
 
-如果在日本、新加坡、韩国和西欧使用 Data Box，并在创建订单时选择了自托管寄送选项，请按以下说明操作。 
+如果在日本、新加坡、韩国、印度、南非和西欧使用 Data Box，并在创建订单时选择了自托管寄送选项，请按以下说明操作。 
 
 1. 成功完成此步骤后，请记下 Data Box 本地 Web UI 的“准备交付”页上显示的授权代码。
 2. 关闭设备电源并拔下电缆。 将设备随附的电源线卷好并安全地放在设备后面。
 3. 准备好返回设备时，请使用以下模板将电子邮件发送到 Azure Data Box 运营团队。
-    
+
     ```
-    To: adbops@microsoft.com 
-    Subject: Request for Azure Data Box drop-off for order: ‘orderName’ 
-    Body: 
+    To: adbops@microsoft.com
+    Subject: Request for Azure Data Box drop-off for order: 'orderName'
+    Body:
         1. Order name  
         2. Authorization code available after Prepare to Ship has completed [Yes/No]  
         3. Contact name of the person dropping off. You will need to display a Government approved ID during the drop off.
     ```
 
 ::: zone target="chromeless"
+
+---
 
 ## <a name="verify-data-upload-to-azure"></a>验证 Azure 中的数据上传
 

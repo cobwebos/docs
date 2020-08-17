@@ -3,12 +3,12 @@ title: ISO 27001 蓝图示例控件
 description: ISO 27001 蓝图示例的控制映射。 每个控制都映射到一个或多个协助评估的 Azure 策略。
 ms.date: 07/13/2020
 ms.topic: sample
-ms.openlocfilehash: d6a8b1c1f08b6eed54e27e5027e2e9bce1bafc10
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5ae720bd5be9d80d8e1be8315d2aea88a99dc54e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006817"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927260"
 ---
 # <a name="control-mapping-of-the-iso-27001-blueprint-sample"></a>ISO 27001 蓝图示例的控制映射
 
@@ -34,7 +34,7 @@ Azure 的 [SQL 漏洞评估服务](../../../../azure-sql/database/sql-vulnerabil
 
 ## <a name="a912-access-to-networks-and-network-services"></a>A.9.1.2 访问网络和网络服务
 
-Azure 实施[基于角色的访问控制](../../../../role-based-access-control/overview.md) (RBAC) 来管理谁有权访问 Azure 资源。 此蓝图可帮助你通过分配七个 [Azure Policy](../../../policy/overview.md) 定义来控制对 Azure 资源的访问。 这些策略将审核可能允许更高资源访问权限的资源类型和配置的使用。
+Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 来管理谁有权访问 Azure 资源。 此蓝图可帮助你通过分配七个 [Azure Policy](../../../policy/overview.md) 定义来控制对 Azure 资源的访问。 这些策略将审核可能允许更高资源访问权限的资源类型和配置的使用。
 了解违反这些策略的资源有助于采取纠正措施来确保仅限已授权的用户访问 Azure 资源。
 
 - 部署必备组件以审核其中的帐户没有密码的 Linux VM
@@ -69,7 +69,7 @@ Azure 实施[基于角色的访问控制](../../../../role-based-access-control/
 
 ## <a name="a925-review-of-user-access-rights"></a>A.9.2.5 评审用户访问权限
 
-Azure 实施了[基于角色的访问控制](../../../../role-based-access-control/overview.md) (RBAC) 来帮助你管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图分配四个 [Azure Policy](../../../policy/overview.md) 定义用于审核应该优先评审的帐户，包括已淘汰的帐户，以及具有提升权限的外部帐户。
+Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 来帮助你管理谁有权访问 Azure 中的资源。 使用 Azure 门户可以评审有权访问 Azure 资源的用户及其权限。 此蓝图分配四个 [Azure Policy](../../../policy/overview.md) 定义用于审核应该优先评审的帐户，包括已淘汰的帐户，以及具有提升权限的外部帐户。
 
 - 应从订阅中删除弃用的帐户
 - 应从订阅中删除拥有所有者权限的已弃用帐户
@@ -78,7 +78,7 @@ Azure 实施了[基于角色的访问控制](../../../../role-based-access-contr
 
 ## <a name="a926-removal-or-adjustment-of-access-rights"></a>A.9.2.6 删除或调整访问权限
 
-Azure 实施了[基于角色的访问控制](../../../../role-based-access-control/overview.md) (RBAC) 来帮助你管理谁有权访问 Azure 中的资源。 使用 [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) 和 RBAC 可以更新用户角色，以反映组织变化。 如果需要，可以阻止帐户登录（或将其删除），这会立即删除其 Azure 资源访问权限。 此蓝图分配两个 [Azure Policy](../../../policy/overview.md) 定义用于审核应该考虑删除的已淘汰帐户。
+Azure 实施 [Azure 基于角色的访问控制 (Azure RBAC)](../../../../role-based-access-control/overview.md) 来帮助你管理谁有权访问 Azure 中的资源。 使用 [Azure Active Directory](../../../../active-directory/fundamentals/active-directory-whatis.md) 和 RBAC 可以更新用户角色，以反映组织变化。 如果需要，可以阻止帐户登录（或将其删除），这会立即删除其 Azure 资源访问权限。 此蓝图分配两个 [Azure Policy](../../../policy/overview.md) 定义用于审核应该考虑删除的已淘汰帐户。
 
 - 应从订阅中删除弃用的帐户
 - 应从订阅中删除拥有所有者权限的已弃用帐户

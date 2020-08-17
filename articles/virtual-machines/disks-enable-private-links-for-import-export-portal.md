@@ -1,23 +1,23 @@
 ---
-title: Azure 门户 - 使用专用链接限制对托管磁盘的导入/导出访问（预览版）
-description: 使用 Azure 门户为托管磁盘启用专用链接（预览版）。 仅允许在虚拟网络中安全地导出和导入磁盘。
+title: Azure 门户 - 使用专用链接限制对托管磁盘的导入/导出访问
+description: 使用 Azure 门户为托管磁盘启用专用链接（当前提供预览）。 允许在虚拟网络中安全地导出和导入磁盘。
 author: roygara
 ms.service: virtual-machines
 ms.topic: overview
-ms.date: 07/15/2020
+ms.date: 08/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 75b5ba995ff87649ec8a7a96a7c816bf2bec7e44
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 83f204a35e48962e525ad7d64c018eef301f9933
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86535475"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135838"
 ---
-# <a name="azure-portal---restrict-importexport-access-for-managed-disks-with-private-links-preview"></a>Azure 门户 - 使用专用链接限制对托管磁盘的导入/导出访问（预览版）
+# <a name="azure-portal---restrict-importexport-access-for-managed-disks-with-private-links"></a>Azure 门户 - 使用专用链接限制对托管磁盘的导入/导出访问
 
-可以为未连接的托管磁盘和快照生成有时间限制的共享访问签名 (SAS) URI，用于将数据导出到其他区域以进行区域扩展、灾难恢复，以及读取数据以进行取证分析。 还可以使用 SAS URI 将 VHD 从本地直接上传到空磁盘。  现在，可以利用[专用链接](../private-link/private-link-overview.md)（预览）将托管磁盘的导出和导入限制为仅通过 Azure 虚拟网络进行。 此外，你可以放心，当你使用专用链接时，数据永远不会通过公共 internet 传输，并且始终在安全的 Microsoft 主干网络中传输。 
+对托管磁盘的专用链接支持当前提供预览，这项功能让你能够限制托管磁盘的导出和导入，使其仅发生在 Azure 虚拟网络中。 可以为未连接的托管磁盘和快照生成有时间限制的共享访问签名 (SAS) URI，用于将数据导出到其他区域以进行区域扩展、灾难恢复，以及读取数据以进行取证分析。 还可以使用 SAS URI 将 VHD 从本地直接上传到空磁盘。 虚拟网络上的客户端与托管磁盘之间的网络流量仅穿过虚拟网络以及 Microsoft 主干网络上的专用链接，因此不会对公共 Internet 公开。
 
 可以创建磁盘访问资源，并通过创建专用终结点将其链接到同一订阅中的虚拟网络。 必须将磁盘或快照与磁盘访问关联，才能通过专用链接导出和导入数据。 此外，还需要将磁盘或快照的 NetworkAccessPolicy 属性设置为 `AllowPrivate`。 
 

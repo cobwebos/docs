@@ -3,23 +3,23 @@ title: Azure Migrate 服务器评估中的 Azure VM 评估
 description: 了解 Azure Migrate 服务器评估中的评估
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: 7664c8296f0d47f37f9542dee82d3c718be40126
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1d9c887f42089611ce7402aa32174958cd8c0b07
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87825984"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261848"
 ---
-# <a name="azure-vm-assessments-in-azure-migrate-server-assessment"></a>Azure Migrate 中的 Azure VM 评估：服务器评估
+# <a name="server-assessment-overview-migrate-to-azure-vms"></a>服务器评估概述 (迁移到 Azure Vm) 
 
-本文概述了[Azure Migrate：服务器评估](migrate-services-overview.md#azure-migrate-server-assessment-tool)工具中的评估。 该工具可评估用于迁移到 Azure 的本地 VMware 虚拟机、Hyper-v Vm 和物理服务器。
+本文概述了 [Azure Migrate：服务器评估](migrate-services-overview.md#azure-migrate-server-assessment-tool) 工具中的评估。 该工具可评估用于迁移到 Azure 的本地 VMware 虚拟机、Hyper-v Vm 和物理服务器。
 
 ## <a name="whats-an-assessment"></a>什么是评估？
 
 使用服务器评估工具的评估可衡量准备情况并估计将本地服务器迁移到 Azure 的影响。
 
 > [!NOTE]
-> 在 Azure 政府版中，查看[支持的目标](migrate-support-matrix.md#supported-geographies-azure-government)评估位置。 请注意，评估版中的 VM 大小建议将专用于政府云区域的 VM 系列。 [详细了解](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines)VM 类型。
+> 在 Azure 政府版中，查看 [支持的目标](migrate-support-matrix.md#supported-geographies-azure-government) 评估位置。 请注意，评估版中的 VM 大小建议将专用于政府云区域的 VM 系列。 [详细了解](https://azure.microsoft.com/global-infrastructure/services/?regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia&products=virtual-machines) VM 类型。
 
 ## <a name="types-of-assessments"></a>评估类型
 
@@ -54,7 +54,7 @@ ms.locfileid: "87825984"
 
 设备开始发现计算机后，你可以将你想要评估的计算机收集到一个组中，并为具有评估类型 " **AZURE VM**" 的组运行评估。
 
-按照我们有关[VMware](tutorial-prepare-vmware.md)、 [hyper-v](tutorial-prepare-hyper-v.md)或[物理服务器](tutorial-prepare-physical.md)的教程操作，尝试这些步骤。
+按照我们有关 [VMware](tutorial-prepare-vmware.md)、 [hyper-v](tutorial-prepare-hyper-v.md)或 [物理服务器](tutorial-prepare-physical.md) 的教程操作，尝试这些步骤。
 
 ## <a name="how-do-i-assess-with-imported-data"></a>如何实现评估导入的数据？
 
@@ -64,11 +64,11 @@ ms.locfileid: "87825984"
 1. 对于第一个评估，请创建一个 Azure 项目并向其添加服务器评估工具。
 1. 下载 CSV 模板并向其中添加服务器数据。
 1. 将模板导入到服务器评估中。
-1. 发现通过导入添加的服务器，将其收集到一个组中，并运行评估类型为**AZURE VM**的组的评估。
+1. 发现通过导入添加的服务器，将其收集到一个组中，并运行评估类型为 **AZURE VM**的组的评估。
 
 ## <a name="what-data-does-the-appliance-collect"></a>设备会收集哪些数据？
 
-如果要使用 Azure Migrate 设备进行评估，请参阅针对[VMware](migrate-appliance.md#collected-data---vmware)和[hyper-v](migrate-appliance.md#collected-data---hyper-v)收集的元数据和性能数据。
+如果要使用 Azure Migrate 设备进行评估，请参阅针对 [VMware](migrate-appliance.md#collected-data---vmware) 和 [hyper-v](migrate-appliance.md#collected-data---hyper-v)收集的元数据和性能数据。
 
 ## <a name="how-does-the-appliance-calculate-performance-data"></a>设备如何计算性能数据？
 
@@ -82,7 +82,7 @@ ms.locfileid: "87825984"
 
 1. 设备将示例点组合起来，每10分钟创建一个数据点。 为了创建数据点，设备从所有示例中选择最大值。 然后，它将数据点发送到 Azure。
 1. 服务器评估存储上个月的10分钟数据点。
-1. 创建评估时，服务器评估会确定要用于合理精简的相应数据点。 标识基于*性能历史记录*和*百分比利用率*的百分位值。
+1. 创建评估时，服务器评估会确定要用于合理精简的相应数据点。 标识基于 *性能历史记录* 和 *百分比利用率*的百分位值。
 
     - 例如，如果性能历史记录为一周，百分比利用率为95%，则服务器评估会对最后一周的10分钟示例点进行排序。 它将按升序排序，并选取合理精简的第95百分位值。
     - 95% 的值可以确保忽略任何离群值，如果选择了99% 百分点值，则可能会包含这些离群值。
@@ -117,17 +117,17 @@ ms.locfileid: "87825984"
 **目标位置** | 要迁移到的位置。 服务器评估目前支持以下目标 Azure 区域：<br/><br/> 澳大利亚东部，澳大利亚东南部、巴西南部、加拿大中部、加拿大东部、美国东部、美国中北部、中国东部、中国北部、东亚、美国东部、美国东部、日本西部、韩国北部、日本东部、日本西部、韩国中部、韩国南部、美国中北部、北欧、美国中南部、英国西部英国南部 US Gov 亚利桑那州、US Gov 德克萨斯州、US Gov 弗吉尼亚州、美国西部、西欧、印度西部、美国西部和美国西部2。
 **目标存储磁盘 (大小调整) ** | 要用于 Azure 中的存储的磁盘类型。 <br/><br/> 将目标存储磁盘指定为高级托管、标准 SSD 管理或标准 HDD 管理。
 **目标存储磁盘 (基于性能的大小调整) ** | 将目标存储磁盘的类型指定为自动、高级托管、标准 HDD 管理或标准 SSD 管理。<br/><br/> **自动**：磁盘建议基于磁盘的性能数据，即 IOPS 和吞吐量。<br/><br/>**高级或标准**：评估建议选定存储类型中的磁盘 SKU。<br/><br/> 如果需要单实例 VM 服务级别协议 (SLA) 为99.9%，请考虑使用高级托管磁盘。 此使用确保将评估中的所有磁盘作为高级托管磁盘。<br/><br/> Azure Migrate 仅支持用于迁移评估的托管磁盘。
-**Azure 保留 VM 实例** | 指定[保留实例](https://azure.microsoft.com/pricing/reserved-vm-instances/)，以便评估评估中的成本。<br/><br/> 选择 "保留实例" 时，"折扣 (% ) " 和 "VM 运行时间" 属性不适用。<br/><br/> Azure Migrate 当前仅支持即用即付产品/服务的 Azure 保留 VM 实例。
+**Azure 保留 VM 实例** | 指定 [保留实例](https://azure.microsoft.com/pricing/reserved-vm-instances/) ，以便评估评估中的成本。<br/><br/> 选择 "保留实例" 时，"折扣 (% ) " 和 "VM 运行时间" 属性不适用。<br/><br/> Azure Migrate 当前仅支持即用即付产品/服务的 Azure 保留 VM 实例。
 **调整大小标准** | 用于将 Azure VM。<br/><br/> 使用按原样调整大小或基于性能的大小调整。
 **性能历史记录** | 用于基于性能的大小调整。 性能历史记录指定评估性能数据时使用的持续时间。
 **百分位使用率** | 用于基于性能的大小调整。 百分点利用率指定用于合理精简的性能示例的百分位数值。
 **VM 系列** | 要用于合理精简的 Azure VM 系列。 例如，如果你没有需要在 Azure 中使用 A 系列 Vm 的生产环境，则可以从序列列表中排除 A 系列。
-**舒适因子** | 评估过程中使用的缓冲区。 它适用于 Vm 的 CPU、RAM、磁盘和网络使用率数据。 它可解决季节性使用情况、简短性能历史记录等问题，并可能会在将来的使用量上增加。<br/><br/> 例如，利用率为20% 的10核 VM 通常会产生两核 VM。 如果使用的是2.0，则结果是一个四核 VM。
-**产品/服务** | 你注册的[Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/)。 服务器评估将估计该产品/服务的成本。
+**舒适因子** | 评估过程中使用的缓冲区。 它适用于 Vm 的 CPU、RAM、磁盘和网络数据。 它可解决季节性使用情况、简短性能历史记录等问题，并可能会在将来的使用量上增加。<br/><br/> 例如，利用率为20% 的10核 VM 通常会产生两核 VM。 如果使用的是2.0，则结果是一个四核 VM。
+**产品/服务** | 你注册的 [Azure 产品/服务](https://azure.microsoft.com/support/legal/offer-details/) 。 服务器评估将估计该产品/服务的成本。
 **货币** | 帐户的计费货币。
 **折扣 (%)** | 在 Azure 产品/服务上收到的任何特定于订阅的折扣。 默认设置是 0%。
 **VM 运行时间** | 不连续运行的 Azure Vm 每月的持续时间（以天为单位）和每天的小时数。 成本估算基于该持续时间。<br/><br/> 默认值为每月31天，每天24小时。
-**Azure 混合权益** | 指定您是否具有软件保障并且有资格使用[Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。 如果设置的默认值为 "是"，则对于 Windows Vm，将考虑除 Windows 以外的操作系统的 Azure 价格。
+**Azure 混合权益** | 指定您是否具有软件保障并且有资格使用 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。 如果设置的默认值为 "是"，则对于 Windows Vm，将考虑除 Windows 以外的操作系统的 Azure 价格。
 **EA 订阅** | 指定企业协议 (EA) 订阅用于成本估算。 考虑适用于订阅的折扣。 <br/><br/> 保留保留实例、折扣 (% ) 和 VM 运行时间属性及其默认设置的设置。
 
 
@@ -151,17 +151,17 @@ ms.locfileid: "87825984"
 属性 | 详细信息 | Azure 迁移就绪性状态
 --- | --- | ---
 **启动类型** | Azure 支持启动类型为 BIOS 而不是 UEFI 的 Vm。 | 如果启动类型为 UEFI，则有条件地准备就绪
-**核心数** | 每台计算机的核心数不得超过128个，这是 Azure VM 支持的最大数量。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内核数以进行比较。 如果评估设置指定了舒适的因素，则使用的内核数乘以舒适系数。<br/><br/> 如果没有性能历史记录，Azure Migrate 将使用已分配的内核，而不应用舒适因子。 | 如果内核数在限制范围内，则已准备就绪
-**RAM** | 每台计算机都必须具有超过 3892 GB 的 RAM，这是 Azure M 系列 Standard_M128m &nbsp; <sup>2</sup> VM 支持的最大大小。 [了解详细信息](../virtual-machines/sizes.md)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会将使用的 RAM 视为比较。 如果指定了舒适的因素，则使用的 RAM 将乘以舒适系数。<br/><br/> 如果没有历史记录，则使用分配的 RAM，而不应用舒适因子。<br/><br/> | 如果 RAM 量在限制范围内，则已准备就绪
+**核心数** | 每台计算机的核心数不得超过128个，这是 Azure VM 支持的最大数量。<br/><br/> 如果性能历史记录可用，Azure Migrate 会考虑已利用的内核数以进行比较。 如果评估设置指定了舒适的因素，则使用的内核数乘以舒适系数。<br/><br/> 如果没有性能历史记录，Azure Migrate 将使用已分配的内核来应用舒适因子。 | 如果内核数在限制范围内，则已准备就绪
+**RAM** | 每台计算机都必须具有超过 3892 GB 的 RAM，这是 Azure M 系列 Standard_M128m &nbsp; <sup>2</sup> VM 支持的最大大小。 [了解详细信息](../virtual-machines/sizes.md)。<br/><br/> 如果性能历史记录可用，Azure Migrate 会将使用的 RAM 视为比较。 如果指定了舒适的因素，则使用的 RAM 将乘以舒适系数。<br/><br/> 如果没有历史记录，则使用分配的 RAM 来应用舒适的因素。<br/><br/> | 如果 RAM 量在限制范围内，则已准备就绪
 **存储磁盘** | 分配的磁盘大小不得超过 32 TB。 尽管 Azure 支持 64 TB 磁盘和 Azure 超级 SSD 磁盘，Azure Migrate：服务器评估目前检查 32 TB 作为磁盘大小限制，因为它尚不支持超级 SSD。 <br/><br/> 附加到计算机的磁盘数（包括 OS 磁盘）必须是65或更少。 | 如果磁盘大小和数量处于限制范围内，则已准备就绪
-**网络** | 计算机上的网络接口 (不能超过32个) 附加到它的 Nic。 | 如果 Nic 数在限制范围内，则已准备就绪
+**联网** | 计算机上的网络接口 (不能超过32个) 附加到它的 Nic。 | 如果 Nic 数在限制范围内，则已准备就绪
 
 ### <a name="guest-operating-system"></a>来宾操作系统
 
 对于 Azure VM 评估以及查看 VM 属性，服务器评估会查看计算机的来宾操作系统，以确定它是否可在 Azure 上运行。
 
 > [!NOTE]
-> 为了处理 VMware Vm 的来宾分析，服务器评估使用在 vCenter Server 中为 VM 指定的操作系统。 但 vCenter Server 不提供 Linux VM 操作系统的内核版本。 若要发现版本，需要设置[应用程序发现](./how-to-discover-applications.md)。 然后，设备会使用在设置应用发现时指定的来宾凭据来发现版本信息。
+> 为了处理 VMware Vm 的来宾分析，服务器评估使用在 vCenter Server 中为 VM 指定的操作系统。 但 vCenter Server 不提供 Linux VM 操作系统的内核版本。 若要发现版本，需要设置 [应用程序发现](./how-to-discover-applications.md)。 然后，设备会使用在设置应用发现时指定的来宾凭据来发现版本信息。
 
 
 服务器评估使用以下逻辑来识别基于操作系统的 Azure 准备情况：
@@ -173,12 +173,12 @@ Windows Server 2012 R2 和所有 SP | Azure 提供完全支持。 | 适用于 Az
 Windows Server 2012 和所有 SP | Azure 提供完全支持。 | 适用于 Azure。
 Windows Server 2008 R2 和所有 SP | Azure 提供完全支持。| 适用于 Azure。
 Windows Server 2008（32 位和 64 位） | Azure 提供完全支持。 | 适用于 Azure。
-Windows Server 2003 和 Windows Server 2003 R2 | 这些操作系统已超过其支持终止日期，需要[自定义支持协议 (CSA) ](https://aka.ms/WSosstatement) ，以支持 Azure 中的支持。 | Azure 有条件的就绪。 请考虑在迁移到 Azure 之前升级 OS。
+Windows Server 2003 和 Windows Server 2003 R2 | 这些操作系统已超过其支持终止日期，需要 [自定义支持协议 (CSA) ](https://aka.ms/WSosstatement) ，以支持 Azure 中的支持。 | Azure 有条件的就绪。 请考虑在迁移到 Azure 之前升级 OS。
 Windows 2000、Windows 98、Windows 95、Windows NT、Windows 3.1 和 MS-DOS | 这些操作系统已超过其支持结束日期。 计算机可能会在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪。 建议在迁移到 Azure 之前升级 OS。
-Windows 7、Windows 8 和 Windows 10 | Azure[仅支持 Visual Studio 订阅。](../virtual-machines/windows/client-images.md) | Azure 有条件的就绪。
+Windows 7、Windows 8 和 Windows 10 | Azure [仅支持 Visual Studio 订阅。](../virtual-machines/windows/client-images.md) | Azure 有条件的就绪。
 Windows 10 专业版 | Azure 提供了对[多租户托管权限](../virtual-machines/windows/windows-desktop-multitenant-hosting-deployment.md)的支持。 | Azure 有条件的就绪。
 Windows Vista 和 Windows XP Professional | 这些操作系统已超过其支持结束日期。 计算机可能会在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪。 建议在迁移到 Azure 之前升级 OS。
-Linux | 请参阅 Azure 予以认可的[Linux 操作系统](../virtual-machines/linux/endorsed-distros.md)。 其他 Linux 操作系统可能会在 Azure 中启动。 但建议你在迁移到 Azure 之前，将 OS 升级到认可的版本。 | 如果版本受到认可，则为 Azure 已就绪。<br/><br/>如果版本未认可，则有条件地准备就绪。
+Linux | 请参阅 Azure 予以认可的 [Linux 操作系统](../virtual-machines/linux/endorsed-distros.md) 。 其他 Linux 操作系统可能会在 Azure 中启动。 但建议你在迁移到 Azure 之前，将 OS 升级到认可的版本。 | 如果版本受到认可，则为 Azure 已就绪。<br/><br/>如果版本未认可，则有条件地准备就绪。
 Oracle Solaris、Apple macOS 和 FreeBSD 等其他操作系统 | Azure 不认可这些操作系统。 计算机可能会在 Azure 中启动，但 Azure 不提供 OS 支持。 | Azure 有条件的就绪。 建议在迁移到 Azure 之前安装受支持的操作系统。  
 vCenter Server 中指定为“其他”的 OS | 在这种情况下 Azure Migrate 无法识别 OS。 | 就绪性未知。 确保 Azure 支持在 VM 内运行的 OS。
 32 位操作系统 | 计算机可能会在 Azure 中启动，但 Azure 可能不提供完全支持。 | Azure 有条件的就绪。 迁移到 Azure 之前，请考虑升级到64位操作系统。
@@ -297,6 +297,6 @@ Azure Migrate 中的每个基于性能的 Azure VM 评估都与置信度分级�
 
 [查阅](best-practices-assessment.md)关于创建评估的最佳做法。 
 
-- 了解如何为[VMware vm](tutorial-prepare-vmware.md)、 [hyper-v vm](tutorial-prepare-hyper-v.md)和[物理服务器](tutorial-prepare-physical.md)运行评估。
-- 了解如何评估[使用 CSV 文件导入](tutorial-assess-import.md)的服务器。
-- 了解如何设置[依赖项可视化](concepts-dependency-visualization.md)。
+- 了解如何为 [VMware vm](tutorial-prepare-vmware.md)、 [hyper-v vm](tutorial-prepare-hyper-v.md)和 [物理服务器](tutorial-prepare-physical.md)运行评估。
+- 了解如何评估 [使用 CSV 文件导入](tutorial-assess-import.md)的服务器。
+- 了解如何设置 [依赖项可视化](concepts-dependency-visualization.md)。

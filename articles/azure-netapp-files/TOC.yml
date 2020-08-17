@@ -43,6 +43,8 @@
               href: solutions-benefits-azure-netapp-files-oracle-database.md
             - name: 使用 Azure NetApp 文件实现电子设计自动化的好处
               href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
+            - name: 将 Windows 虚拟桌面用于 Azure NetApp 文件
+              href: solutions-windows-virtual-desktop.md
     - name: 有关 Azure NetApp 文件的常见问题解答
       href: azure-netapp-files-faqs.md
 - name: 操作指南
@@ -61,16 +63,24 @@
           href: azure-netapp-files-create-volumes.md
         - name: 配置 NFSv 4.1 默认域
           href: azure-netapp-files-configure-nfsv41-domain.md
+        - name: 配置 NFSv 4.1 Kerberos 加密
+          href: configure-kerberos-encryption.md
+        - name: 为 Azure NetApp 文件配置 NFS 客户端
+          href: configure-nfs-clients.md
         - name: 为 NFS 卷配置导出策略
           href: azure-netapp-files-configure-export-policy.md
     - name: 创建 SMB 卷
       href: azure-netapp-files-create-volumes-smb.md
+    - name: 创建双协议卷
+      href: create-volumes-dual-protocol.md
     - name: 为 Windows 或 Linux 虚拟机装载或卸载卷
       href: azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md
     - name: 管理快照
       href: azure-netapp-files-manage-snapshots.md
     - name: 重设容量池或卷的大小
       href: azure-netapp-files-resize-capacity-pools-or-volumes.md
+    - name: 动态更改卷的服务级别
+      href: dynamic-change-volume-service-level.md
     - name: 开发
       items:
         - name: REST API
