@@ -1,14 +1,14 @@
 ---
 title: 在 Azure 开发测试实验室中向实验室添加标记 | Microsoft Docs
-description: 了解如何在 Azure 开发测试实验室中向实验室添加标记
+description: 了解如何在 Azure 开发测试实验室中创建自定义标记并使用标记对资源进行分类。 你可以查看订阅中具有标记的所有资源。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 30f0f2ed4b8cc98985326db652371b8ceb16bfb4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: a4d2b328626f0d0f096082fa88bb170894ccf3e4
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287581"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270727"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中向实验室添加标记
 
@@ -30,7 +30,7 @@ ms.locfileid: "87287581"
 ## <a name="steps-to-manage-tags-in-an-existing-lab"></a>在现有实验室中管理标记的具体步骤
 
 1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
-1. 如果需要，请选择“所有服务”****，并从列表中选择“开发测试实验室”****。 你的实验室可能已显示在 "**所有资源**" 下的仪表板中。
+1. 如果需要，请选择“所有服务”****，并从列表中选择“开发测试实验室”****。 你的实验室可能已显示在 " **所有资源**" 下的仪表板中。
 1. 在实验室列表中，选择要在其中添加或管理标记的实验室。
 1. 在实验室的“概览”**** 区域中，选择“配置和策略”****。
 
@@ -58,4 +58,4 @@ ms.locfileid: "87287581"
 
 ## <a name="next-steps"></a>后续步骤
 * 可使用自定义策略对订阅应用限制和约定。 定义的策略可能要求所有资源具有特定标记的值。 有关详细信息，请参阅[设置策略和计划](devtest-lab-set-lab-policy.md)。
-* 探索[开发测试 Labs Azure 资源管理器快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。
+* 探索 [开发测试 Labs Azure 资源管理器快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。
