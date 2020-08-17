@@ -1,4 +1,4 @@
-- name: 用于 PostgreSQL 的 Azure DB 文档
+- name: Azure DB for PostgreSQL 文档
   href: index.yml
 - name: 概述
   items:
@@ -163,10 +163,6 @@
               href: concepts-read-replicas.md
             - name: 逻辑解码
               href: concepts-logical.md
-        - name: 在区域之间移动
-          items:
-            - name: Azure 门户
-              href: howto-move-regions-portal.md
     - name: 超大规模 (Citus)
       items:
         - name: 分布式数据
@@ -339,6 +335,10 @@
               href: howto-read-replicas-cli.md
             - name: 管理只读副本 - Azure PowerShell
               href: howto-read-replicas-powershell.md
+        - name: 在区域之间移动
+          items:
+            - name: Azure 门户
+              href: howto-move-regions-portal.md
     - name: 超大规模 (Citus)
       items:
         - name: 创建用户

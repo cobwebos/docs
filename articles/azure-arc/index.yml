@@ -7,20 +7,20 @@ metadata:
   author: mgoedtel
   ms.service: azure-arc
   ms.topic: landing-page
-  ms.date: 06/26/2020
+  ms.date: 08/13/2020
   ms.author: magoedte
-  ms.openlocfilehash: f9d4da85185d3a8541c165b407d276af0a25ccc6
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: afb1dd4986220bcf3f244532a730faf6b80e6074
+  ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87008483"
+  ms.lasthandoff: 08/14/2020
+  ms.locfileid: "88212783"
 landingContent:
-- title: Azure Arc 概述
+- title: 关于 Azure Arc
   linkLists:
   - linkListType: overview
     links:
-    - text: 了解有关 Azure Arc 的详细信息
+    - text: 什么是 Azure Arc？
       url: https://aka.ms/Azure-Arc-Info
 - title: 使用已启用 Azure Arc 的服务器将计算机连接到 Azure
   linkLists:
@@ -30,12 +30,18 @@ landingContent:
       url: ./servers/overview.md
   - linkListType: quickstart
     links:
+    - text: 启用支持 Arc 的服务器代理
+      url: ./servers/learn/quick-enable-hybrid-vm.md
+  - linkListType: how-to-guide
+    links:
     - text: 从 Azure 门户将计算机连接到 Azure Arc
       url: ./servers/onboard-portal.md
     - text: 使用服务主体大规模连接计算机
       url: ./servers/onboard-service-principal.md
     - text: 通过 PowerShell DSC 将计算机连接到 Azure
       url: ./servers/onboard-dsc.md
+    - text: 管理和使用 Azure VM 扩展
+      url: ./servers/manage-vm-extensions.md
 - title: 使用 Azure Arc 将 Kubernetes 群集连接到 Azure
   linkLists:
   - linkListType: overview

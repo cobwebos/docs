@@ -287,8 +287,10 @@
       items:
         - name: 概述
           href: offline-backup-overview.md
-        - name: 使用 Azure Data Box 进行脱机备份
+        - name: 使用 Azure Data Box 进行脱机备份 (MARS)
           href: offline-backup-azure-data-box.md
+        - name: 使用 Azure Data Box 进行脱机备份 (DPM/MABS)
+          href: offline-backup-azure-data-box-dpm-mabs.md
         - name: 使用导入/导出 (MARS) 进行脱机备份
           href: backup-azure-backup-import-export.md
         - name: 使用导入/导出 (DPM/MABS) 进行脱机备份

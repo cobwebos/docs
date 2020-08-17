@@ -44,6 +44,8 @@
           items:
             - name: Azure 门户
               href: service-bus-quickstart-topics-subscriptions-portal.md
+            - name: Azure CLI
+              href: service-bus-tutorial-topics-subscriptions-cli.md
             - name: ARM 模板
               href: service-bus-resource-manager-namespace-topic.md
         - name: 发布和订阅消息
@@ -62,12 +64,8 @@
               href: service-bus-ruby-how-to-use-topics-subscriptions.md
 - name: 教程
   items:
-    - name: 更新清单 - PowerShell
-      href: service-bus-tutorial-topics-subscriptions-powershell.md
-    - name: 更新清单 - 门户
+    - name: 更新清单
       href: service-bus-tutorial-topics-subscriptions-portal.md
-    - name: 更新清单 - CLI
-      href: service-bus-tutorial-topics-subscriptions-cli.md
     - name: 通过事件网格响应事件
       href: service-bus-to-event-grid-integration-example.md
 - name: 示例

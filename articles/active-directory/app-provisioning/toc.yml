@@ -57,7 +57,9 @@
           href: export-import-provisioning-configuration.md
     - name: 排查应用程序预配问题
       items:
-        - name: 排查应用预配问题
+        - name: 已知问题
+          href: known-issues.md
+        - name: 排查配置问题
           href: application-provisioning-config-problem.md
         - name: 隔离状态
           href: application-provisioning-quarantine-status.md

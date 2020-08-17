@@ -8,7 +8,7 @@
       href: ./servers/overview.md
 - name: 快速入门
   items:
-    - name: 管理用于服务器的 Arc 代理
+    - name: 启用支持 Arc 的服务器代理
       href: ./servers/learn/quick-enable-hybrid-vm.md
 - name: 教程
   items:

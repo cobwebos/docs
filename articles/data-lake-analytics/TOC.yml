@@ -32,7 +32,7 @@
           href: ./security-controls-policy.md
         - name: Azure 安全基准的安全基线
           href: security-baseline.md
-- name: 如何
+- name: 操作指南
   items:
     - name: 管理 Data Lake Analytics
       items:
