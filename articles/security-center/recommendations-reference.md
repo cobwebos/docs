@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 8038ace4469123e50d98d9296a1aecf0107efbf2
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 1609fc720474f92b3a3fa8c0631452164a7e4d0f
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262545"
+ms.locfileid: "88272020"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>安全建议 - 参考指南
 
@@ -181,6 +181,7 @@ ms.locfileid: "88262545"
 |**只多只为订阅指定 3 个所有者**|指定少于 3 个订阅所有者，以减少已遭入侵的所有者做出违规行为的可能性。<br>（相关策略：最多只能为订阅指定 3 个所有者）|高|N|订阅|
 |**应对 Azure Key Vault 的保管库启用高级威胁防护**|Azure 安全中心包含针对 Azure Key Vault 的 Azure 原生高级威胁防护，提供额外的安全情报层。<br>重要提示：修正此建议将导致保护 AKV 保管库的费用。 如果此订阅中没有任何 AKV 保管库，则不会产生任何费用。 如果以后在此订阅上创建任何 AKV 保管库，则这些保管库将自动受到保护，并将从该时间开始收费。<br> (相关策略： [应在 Azure Key Vault 保管库上启用高级威胁防护](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f0e6763cc-5078-4e64-889d-ff4d9a839047)) |高|**是**|订阅|
 |**应启用 Key Vault 的诊断日志**|启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。<br>（相关策略：应启用密钥保管库的诊断日志）|低|**是**|Key Vault|
+|**应使用服务主体来保护订阅，而不是管理证书**|管理证书允许向他们进行身份验证的任何用户管理与其关联)  (的订阅。 为了更安全地管理订阅，建议将服务主体与资源管理器结合使用，以限制在证书泄露的情况下的冲击半径。 它还自动化了资源管理。|中型|否|订阅|
 ||||||
 
 

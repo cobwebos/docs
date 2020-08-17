@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT 先决条件 - Azure
-description: Avere vFXT for Azure 的先决条件
+description: 了解在 Azure 的 Avere vFXT 中创建群集之前要执行的任务，包括处理订阅、配额和存储服务终结点。
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 538f3f18e1c8889834b9ee6588b85c9094dfbebe
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: be5c640ef069690c408460b7374aee82c35b3a67
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496706"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272410"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>准备创建 Avere vFXT
 
@@ -32,13 +32,13 @@ ms.locfileid: "87496706"
 
 具有订阅所有者权限的用户应创建 vFXT 群集。 群集创建需要所有者接受软件条款，并授权对网络和存储资源进行更改。
 
-有一些解决方法可允许非所有者创建 Azure 群集的 Avere vFXT。 这些方案涉及限制资源并向创建者分配其他 Azure 角色。 在所有这些情况下，订阅所有者还必须提前[接受 Avere vFXT 软件条款](#accept-software-terms)。
+有一些解决方法可允许非所有者创建 Azure 群集的 Avere vFXT。 这些方案涉及限制资源并向创建者分配其他 Azure 角色。 在所有这些情况下，订阅所有者还必须提前 [接受 Avere vFXT 软件条款](#accept-software-terms) 。
 
 | 方案 | 限制 | 创建 Avere vFXT 群集所需的访问角色 |
 |----------|--------|-------|
 | 资源组管理员创建 vFXT | 必须在资源组中创建虚拟网络、群集控制器和群集节点。 | "[用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator)" 和 "[参与者](../role-based-access-control/built-in-roles.md#contributor)" 角色，作用域为目标资源组。 |
-| 使用现有的外部虚拟网络 | 群集控制器和群集节点是在 vFXT 的资源组中创建的，但使用其他资源组中的现有虚拟网络。 | （1） "[用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator)" 和 "[参与者](../role-based-access-control/built-in-roles.md#contributor)" 角色的作用域为 vFXT 资源组;和（2）[虚拟机参与者](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)、[用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator)和[Avere 参与者](../role-based-access-control/built-in-roles.md#avere-contributor)角色，作用域为虚拟网络的资源组。 |
-| 群集创建者的自定义角色 | 无资源放置限制。 此方法提供非所有者重要权限。 | 如[本文](avere-vfxt-non-owner.md)中所述，订阅所有者将创建 Azure 自定义角色。 |
+| 使用现有的外部虚拟网络 | 群集控制器和群集节点是在 vFXT 的资源组中创建的，但使用其他资源组中的现有虚拟网络。 |  (1) [用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator) 和作用域为 vFXT 资源组的 [参与者](../role-based-access-control/built-in-roles.md#contributor) 角色;和 (2) [虚拟机参与者](../role-based-access-control/built-in-roles.md#virtual-machine-contributor)、 [用户访问管理员](../role-based-access-control/built-in-roles.md#user-access-administrator)和 [Avere 参与者](../role-based-access-control/built-in-roles.md#avere-contributor) 角色，作用域为虚拟网络的资源组。 |
+| 群集创建者的自定义角色 | 无资源放置限制。 此方法提供非所有者重要权限。 | 如 [本文](avere-vfxt-non-owner.md)中所述，订阅所有者将创建 Azure 自定义角色。 |
 
 ## <a name="quota-for-the-vfxt-cluster"></a>vFXT 群集的配额
 
@@ -51,7 +51,7 @@ ms.locfileid: "87496706"
 
 |Azure 组件|Quota|
 |----------|-----------|
-|虚拟机|3个或更多 E32s_v3 （每个群集节点一个） |
+|虚拟机|3个或更多 E32s_v3 (每个群集节点一个)  |
 |高级 SSD 存储|200 GB OS 空间加上每个节点的 1 TB 到 4 TB 缓存空间 |
 |存储帐户（可选） |v2|
 |数据后端存储（可选） |一个新的 LRS Blob 容器 |
@@ -81,7 +81,7 @@ ms.locfileid: "87496706"
    az vm image accept-terms --urn microsoft-avere:vfxt:avere-vfxt-controller:latest
    ```
 
-## <a name="create-a-storage-service-endpoint-in-your-virtual-network-if-needed"></a>在虚拟网络中创建存储服务终结点（如果需要）
+## <a name="create-a-storage-service-endpoint-in-your-virtual-network-if-needed"></a>如果需要，请在虚拟网络中创建存储服务终结点 () 
 
 [服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)将 Azure Blob 通信保留为本地，而不是将其路由到虚拟网络之外。 建议为 Azure 群集使用 Azure Blob 进行后端数据存储的任何 Avere vFXT。
 
@@ -96,7 +96,7 @@ ms.locfileid: "87496706"
 
 1. 在门户中，打开虚拟网络列表。
 1. 选择群集的虚拟网络。
-1. 在左侧菜单中单击 "**服务终结点**"。
+1. 在左侧菜单中单击 " **服务终结点** "。
 1. 单击顶部的“添加”****。
 1. 选择服务 ``Microsoft.Storage`` 。
 1. 选择群集的子网。

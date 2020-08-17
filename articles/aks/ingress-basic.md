@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和配置基本的 NGINX 入口控制器。
 services: container-service
 ms.topic: article
-ms.date: 07/20/2020
-ms.openlocfilehash: 6a34649bba275fa4b11a4c5a0c0084235d83fd4a
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.date: 08/17/2020
+ms.openlocfilehash: 08d9e100e5f1c3f3be41473f5b6ccda02cf0b6c3
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190763"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272860"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建入口控制器
 
@@ -163,7 +163,7 @@ kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 
 在以下示例中，发往 EXTERNAL_IP 的流量将路由到名为 `aks-helloworld-one` 的服务。 发往 EXTERNAL_IP/hello-world-two 的流量将路由到 `aks-helloworld-two` 服务。 发往 EXTERNAL_IP/static 的流量将路由到静态资产的名为 `aks-helloworld-one` 的服务。
 
-创建名为 " *yaml* " 的文件，并复制以下示例 yaml。
+在以下示例中，创建一个名为 hello-world-ingress.yaml 的文件，并将其复制到以下 YAML 中。
 
 ```yaml
 apiVersion: networking.k8s.io/v1beta1
@@ -174,7 +174,8 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
   - http:
@@ -187,6 +188,10 @@ spec:
           serviceName: aks-helloworld-two
           servicePort: 80
         path: /hello-world-two(/|$)(.*)
+      - backend:
+          serviceName: aks-helloworld-one
+          servicePort: 80
+        path: /(.*)
 ---
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress

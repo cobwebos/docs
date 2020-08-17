@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 08/12/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 127629cb0102c2736995364db9202cd837d99a17
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 23c3dfc6670c96f44a10b2ad5d5bfeb3ff96382c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214274"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270999"
 ---
 # <a name="known-issues-application-provisioning"></a>已知问题：应用程序预配
 使用应用程序设置时应注意的已知问题。 你可以在 UserVoice 上提供有关应用程序预配服务的反馈，请参阅 [Azure AD 应用程序预配 UserVoice](https://aka.ms/appprovisioningfeaturerequest)。 我们密切关注 UserVoice，以便我们改进服务。 
@@ -66,9 +66,11 @@ Azure AD 当前无法预配 null 属性。 如果用户对象上的属性为 nul
 - 不支持预配嵌套组。 
 - 由于租户规模的原因，不支持预配到 B2C 租户。 
 
+**预配间隔已修复** 预配周期的间隔 [时间](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user#how-long-will-it-take-to-provision-users) 当前不可配置。 
+
 **更改不会从目标应用移动到 Azure AD**
 
-应用预配服务不知道外部应用中所做的更改。 因此，不会执行回滚操作。 应用预配服务依赖于在 Azure AD 所做的更改。  
+应用预配服务不知道外部应用中所做的更改。 因此，不会执行回滚操作。 应用预配服务依赖于在 Azure AD 所做的更改。 
 
 **预配周期持续到完成**
 

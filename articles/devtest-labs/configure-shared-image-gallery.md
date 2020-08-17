@@ -1,29 +1,29 @@
 ---
 title: 在 Azure 开发测试实验室中配置共享映像库 |Microsoft Docs
-description: 了解如何在 Azure 开发测试实验室中配置共享映像库
+description: 了解如何在 Azure 开发测试实验室中配置共享映像库，使用户能够在创建实验室资源的同时从共享位置访问映像。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: f4a80062a245530c5d15e761a9eb7dc95fee091e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7ec08fa741c1b52d3dd1d1e2b4247d3689190020
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85483782"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271033"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中配置共享映像库
-开发测试实验室现在支持[共享映像库](../virtual-machines/windows/shared-image-galleries.md)功能。 它允许实验室用户在创建实验室资源的同时访问共享位置中的图像。 它还可帮助你围绕自定义托管 VM 映像构建结构和组织。 共享映像库功能支持：
+开发测试实验室现在支持 [共享映像库](../virtual-machines/windows/shared-image-galleries.md) 功能。 它允许实验室用户在创建实验室资源的同时访问共享位置中的图像。 它还可帮助你围绕自定义托管 VM 映像构建结构和组织。 共享映像库功能支持：
 
 - 托管的映像全局复制
 - 对图像进行版本控制和分组以便于管理
-- 使映像在支持可用性区域的区域中使用区域冗余存储（ZRS）帐户高度可用。 ZRS 提高了针对区域性故障的恢复能力。
-- 使用基于角色的访问控制（RBAC），在多个订阅之间共享，甚至在租户之间共享。
+- 在支持可用性区域的区域中，使用区域冗余存储 (ZRS) 帐户使映像高度可用。 ZRS 提高了针对区域性故障的恢复能力。
+- 使用基于角色的访问控制 (RBAC) ，在多个订阅之间共享，甚至在租户之间共享。
 
-有关详细信息，请参阅[共享映像库文档](../virtual-machines/windows/shared-image-galleries.md)。 
+有关详细信息，请参阅 [共享映像库文档](../virtual-machines/windows/shared-image-galleries.md)。 
  
 如果你有大量的托管映像需要维护，并想要使其在整个公司中可用，可将共享映像库用作存储库，以便更轻松地更新和共享映像。 作为实验室所有者，你可以将现有的共享映像库附加到实验室。 附加此库后，实验室用户可以从这些最新映像创建计算机。 此功能的一个主要优点是，开发测试实验室现在可以利用跨实验室、跨订阅和跨区域共享映像的优势。 
 
 > [!NOTE]
-> 若要了解与共享映像库服务相关的成本，请参阅[共享图像库的帐单](../virtual-machines/windows/shared-image-galleries.md#billing)。
+> 若要了解与共享映像库服务相关的成本，请参阅 [共享图像库的帐单](../virtual-machines/windows/shared-image-galleries.md#billing)。
 
 ## <a name="considerations"></a>注意事项
 - 一次只能将一个共享映像库附加到实验室。 如果要附加其他库，则需要分离现有库，并附加另一个库。 
@@ -32,26 +32,26 @@ ms.locfileid: "85483782"
 - 尽管开发测试实验室会自动尽力确保共享图像库将图像复制到实验室所在的区域，但并不总是这样。 若要避免用户在从这些映像中创建 Vm 时遇到问题，请确保已将映像复制到实验室的区域。 "
 
 ## <a name="use-azure-portal"></a>使用 Azure 门户
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 选择左侧导航菜单中的 "**所有服务**"。
-1. 从列表中选择 "**开发测试实验室**"。
-1. 从实验室列表中，选择**实验室**。
+1. 登录 [Azure 门户](https://portal.azure.com)。
+1. 选择左侧导航菜单中的 " **所有服务** "。
+1. 从列表中选择 " **开发测试实验室** "。
+1. 从实验室列表中，选择 **实验室**。
 1. 在左侧菜单的 "**设置**" 部分中选择 "**配置和策略**"。
 1. 在左侧菜单中的 "**虚拟机**" 下选择**共享映像库**。
 
     ![共享图像库菜单](./media/configure-shared-image-gallery/shared-image-galleries-menu.png)
-1. 单击 "**附加**" 按钮，然后在下拉列表中选择库，将现有的共享映像库附加到实验室。
+1. 单击 " **附加** " 按钮，然后在下拉列表中选择库，将现有的共享映像库附加到实验室。
 
     ![Attach](./media/configure-shared-image-gallery/attach-options.png)
-1. 附加图像库后，选择它以跳到连接的库。 将库配置为**启用或禁用**用于创建 VM 的共享映像。 从列表中选择一个映像库以对其进行配置。 
+1. 附加图像库后，选择它以跳到连接的库。 将库配置为 **启用或禁用** 用于创建 VM 的共享映像。 从列表中选择一个映像库以对其进行配置。 
 
-    默认情况下，"**允许将所有映像用作虚拟机库**" 设置为 **"是"**。 这意味着在创建新的实验室 VM 时，会向实验室用户提供附加的共享映像库中可用的所有映像。 如果需要限制对某些映像的访问，请将 "**允许所有映像全部使用为虚拟机库**" 更改为 "**否**"，并选择要在创建 vm 时允许的映像，然后选择 "**保存**" 按钮。
+    默认情况下，" **允许将所有映像用作虚拟机库** " 设置为 **"是"**。 这意味着在创建新的实验室 VM 时，会向实验室用户提供附加的共享映像库中可用的所有映像。 如果需要限制对某些映像的访问，请将 " **允许所有映像全部使用为虚拟机库** " 更改为 " **否**"，并选择要在创建 vm 时允许的映像，然后选择 " **保存** " 按钮。
 
     :::image type="content" source="./media/configure-shared-image-gallery/enable-disable.png" alt-text="启用或禁用映像":::
 
     > [!NOTE]
     > 共享映像库中的通用映像和专用映像都受支持。 
-1. 然后，实验室用户可以使用启用的映像创建虚拟机，方法是单击 " **+ 添加**"，然后在 "**选择基本**页" 中查找映像。
+1. 然后，实验室用户可以使用启用的映像创建虚拟机，方法是单击 " **+ 添加** "，然后在 " **选择基本** 页" 中查找映像。
 
     ![实验室用户](./media/configure-shared-image-gallery/lab-users.png)
 ## <a name="use-azure-resource-manager-template"></a>使用 Azure Resource Manager 模板
@@ -80,7 +80,7 @@ ms.locfileid: "85483782"
 }
 ```
 
-有关完整的资源管理器模板示例，请参阅公共 GitHub 存储库中的以下资源管理器模板示例：[创建实验室时配置共享映像库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-lab-shared-gallery-configured)。
+有关完整的资源管理器模板示例，请参阅公共 GitHub 存储库中的以下资源管理器模板示例： [创建实验室时配置共享映像库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-lab-shared-gallery-configured)。
 
 ## <a name="use-rest-api"></a>使用 REST API
 
@@ -119,4 +119,4 @@ GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下文章，了解如何使用连接的共享映像库中的映像创建 VM：[使用库中的共享映像创建 vm](add-vm-use-shared-image.md)
+请参阅以下文章，了解如何使用连接的共享映像库中的映像创建 VM： [使用库中的共享映像创建 vm](add-vm-use-shared-image.md)

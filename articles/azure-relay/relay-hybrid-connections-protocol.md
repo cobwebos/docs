@@ -3,12 +3,12 @@ title: Azure 中继混合连接协议指南 | Microsoft 文档
 description: 本文介绍如何与混合连接中继的客户端交互，以连接侦听器和发送方角色中的客户端。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 798be7f0003509aee6ae616ba33fcc41e5c86275
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec021d961a17102f8d979c61ee46af6b938f073
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316649"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272003"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure 中继混合连接协议
 
@@ -467,7 +467,7 @@ https://{namespace-address}/{path}?sbc-hc-token=...
 
 _namespace-address_ 是托管混合连接的 Azure 中继命名空间的完全限定域名，通常格式为 `{myname}.servicebus.windows.net`。
 
-请求可以包含任意其他 HTTP 头，包括应用程序定义的头。 提供的所有标头（RFC7230 中直接定义的标头除外，请参阅[请求消息](#Request message)）均流向侦听器并可在**请求**消息的 `requestHeader` 对象上找到。
+请求可以包含任意其他 HTTP 头，包括应用程序定义的头。 所有提供的标头（在 RFC7230 中直接定义的标头除外 (参阅 [请求消息](#request-message)) 流向侦听器，并可在 `requestHeader` **请求** 消息的对象上找到。
 
 查询字符串参数选项如下所示：
 

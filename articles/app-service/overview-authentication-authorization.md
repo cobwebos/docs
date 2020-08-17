@@ -6,30 +6,30 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 8362cc3b8f8477f77d8ec672144e7c68d2e3434d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: b6984e16d1ddcee7d3f276ddcdf8c89609f14fe5
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080722"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271016"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Azure 应用服务和 Azure Functions 中的身份验证和授权
 
 Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应用、RESTful API、移动后端和 [Azure Functions](../azure-functions/functions-overview.md) 中编写少量的代码或根本无需编写代码，就能让用户登录和访问数据。 本文介绍应用服务如何帮助简化应用的身份验证和授权。
 
-安全身份验证和授权需要深入了解安全性，包括联合身份验证、加密、 [JSON web 令牌 (JWT) ](https://wikipedia.org/wiki/JSON_Web_Token)管理、[授予类型](https://oauth.net/2/grant-types/)，等等。 应用服务提供这些实用工具，让你将更多的时间和精力花费在为客户提供业务价值上。
+安全身份验证和授权需要深入了解安全性，包括联合身份验证、加密、 [JSON web 令牌 (JWT) ](https://wikipedia.org/wiki/JSON_Web_Token) 管理、 [授予类型](https://oauth.net/2/grant-types/)，等等。 应用服务提供这些实用工具，让你将更多的时间和精力花费在为客户提供业务价值上。
 
 > [!IMPORTANT]
 > 你并非必须使用此功能进行身份验证和授权。 可以在所选的 Web 框架中使用捆绑的安全功能，也可以编写自己的实用程序。 但请记住，[Chrome 80 针对 Cookie 对其实现 SameSite 的方式进行了中断性变更](https://www.chromestatus.com/feature/5088147346030592)（发布日期在 2020 年 3 月左右）；自定义远程身份验证或依赖于跨站点 Cookie 发布的其他方案可能会在客户端 Chrome 浏览器更新时中断。 解决方法很复杂，因为需要针对不同的浏览器支持不同的 SameSite 行为。 
 >
-> 应用服务托管的 ASP.NET Core 2.1 及更高版本已针对此中断性变更进行了修补，并且会相应地处理 Chrome 80 和更低版本的浏览器。 此外，ASP.NET Framework 4.7.2 的相同修补程序已部署在2020年1月的应用服务实例上。 有关详细信息，请参阅[Azure App Service SameSite cookie 更新](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)。
+> 应用服务托管的 ASP.NET Core 2.1 及更高版本已针对此中断性变更进行了修补，并且会相应地处理 Chrome 80 和更低版本的浏览器。 此外，ASP.NET Framework 4.7.2 的相同修补程序已部署在2020年1月的应用服务实例上。 有关详细信息，请参阅 [Azure App Service SameSite cookie 更新](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)。
 >
 
 > [!NOTE]
 > 身份验证/授权功能有时也称为 "轻松身份验证"。
 
 > [!NOTE]
-> 如果启用此功能，将导致对应用程序的**所有**不安全 HTTP 请求自动重定向到 HTTPS，而不考虑应用服务配置设置是否[强制执行 https](configure-ssl-bindings.md#enforce-https)。 如果需要，你可以通过 " `requireHttps` [身份验证设置" 配置文件](app-service-authentication-how-to.md#configuration-file-reference)中的设置来禁用此设置，但必须注意确保没有任何安全令牌通过非安全 HTTP 连接进行传输。
+> 如果启用此功能，将导致对应用程序的 **所有** 不安全 HTTP 请求自动重定向到 HTTPS，而不考虑应用服务配置设置是否 [强制执行 https](configure-ssl-bindings.md#enforce-https)。 如果需要，你可以通过 " `requireHttps` [身份验证设置" 配置文件](app-service-authentication-how-to.md#configuration-file-reference)中的设置来禁用此设置，但必须注意确保没有任何安全令牌通过非安全 HTTP 连接进行传输。
 
 有关特定于本机移动应用的信息，请参阅[使用 Azure 应用服务对移动应用进行用户身份验证和授权](../app-service-mobile/app-service-mobile-auth.md)。
 
@@ -52,18 +52,18 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 ### <a name="on-containers"></a>在容器上
 
-身份验证和授权模块在独立于应用程序代码的单独容器中运行。 使用所谓的[代表模式](https://docs.microsoft.com/azure/architecture/patterns/ambassador)，它与传入流量交互，以执行与 Windows 相同的功能。 由于它不在进程内运行，因此不能与特定的语言框架直接集成;但是，应用需要的相关信息通过使用请求标头（如下所述）进行传递。
+身份验证和授权模块在独立于应用程序代码的单独容器中运行。 使用所谓的 [代表模式](https://docs.microsoft.com/azure/architecture/patterns/ambassador)，它与传入流量交互，以执行与 Windows 相同的功能。 由于它不在进程内运行，因此不能与特定的语言框架直接集成;但是，应用需要的相关信息通过使用请求标头（如下所述）进行传递。
 
 ### <a name="userapplication-claims"></a>用户/应用程序声明
 
-对于所有语言框架，应用服务都通过将传入令牌（无论是来自经过身份验证的最终用户还是来自客户端应用程序）中的声明注入请求标头，使其可供代码使用。 对于 ASP.NET 4.6 应用，应用服务会在 [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) 中填充经过身份验证的用户声明，使你能够遵循标准的 .NET 代码模式（包括 `[Authorize]` 属性）。 同样，对于 PHP 应用，应用服务会填充 `_SERVER['REMOTE_USER']` 变量。 对于 Java 应用，[可从 Tomcat servlet 访问](configure-language-java.md#authenticate-users-easy-auth)声明。
+对于所有语言框架，应用服务都通过将传入令牌（无论是来自经过身份验证的最终用户还是来自客户端应用程序）中的声明注入请求标头，使其可供代码使用。 对于 ASP.NET 4.6 应用，应用服务会在 [ClaimsPrincipal.Current](/dotnet/api/system.security.claims.claimsprincipal.current) 中填充经过身份验证的用户声明，使你能够遵循标准的 .NET 代码模式（包括 `[Authorize]` 属性）。 同样，对于 PHP 应用，应用服务会填充 `_SERVER['REMOTE_USER']` 变量。 对于 Java 应用， [可从 Tomcat servlet 访问](configure-language-java.md#authenticate-users-easy-auth)声明。
 
 对于 [Azure Functions](../azure-functions/functions-overview.md)，没有为 .NET 代码填充 `ClaimsPrincipal.Current`，但你仍然可以在请求标头中找到用户声明，也可通过请求上下文甚至通过绑定参数来获取 `ClaimsPrincipal` 对象。 有关详细信息，请参阅[使用客户端标识](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities)。
 
 有关详细信息，请参阅[访问用户声明](app-service-authentication-how-to.md#access-user-claims)。
 
 > [!NOTE]
-> 目前，ASP.NET Core 不支持为当前用户填充身份验证/授权功能。 但是，对于某些[第三方，开源中间件组件](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)存在以帮助填补这一空白。
+> 目前，ASP.NET Core 不支持为当前用户填充身份验证/授权功能。 但是，对于某些 [第三方，开源中间件组件](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 存在以帮助填补这一空白。
 >
 
 ### <a name="token-store"></a>令牌存储
@@ -77,7 +77,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 为经过身份验证的会话缓存 ID 令牌、访问令牌和刷新令牌，并且只能由关联的用户访问。  
 
-如果不需要在应用中使用令牌，可以禁用令牌存储。
+如果不需要在应用中使用令牌，可以在应用的 " **身份验证/授权** " 页中禁用令牌存储。
 
 ### <a name="logging-and-tracing"></a>日志记录和跟踪
 
@@ -85,7 +85,7 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 
 ## <a name="identity-providers"></a>标识提供者
 
-应用服务使用[联合标识](https://en.wikipedia.org/wiki/Federated_identity)，其中第三方标识提供者为你管理用户标识和身份验证流。 默认提供五个标识提供者： 
+应用服务使用 [联合标识](https://en.wikipedia.org/wiki/Federated_identity)，其中第三方标识提供者为你管理用户标识和身份验证流。 默认提供五个标识提供者： 
 
 | 提供程序 | 登录终结点 |
 | - | - |
@@ -94,11 +94,11 @@ Azure 应用服务提供内置的身份验证和授权支持。只需在 Web 应
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
 | [Google](https://developers.google.com/identity/choose-auth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
-| 任何[OpenID connect](https://openid.net/connect/)提供程序 (预览)  | `/.auth/login/<providerName>` |
+| 任何 [OpenID connect](https://openid.net/connect/) 提供程序 (预览)  | `/.auth/login/<providerName>` |
 
 对其中一个提供程序启用身份验证和授权时，其登录终结点可用于用户身份验证，以及验证来自提供程序的身份验证令牌。 可以轻松为用户提供其中任意数量的登录选项。
 
-存在用于与其他标识提供者或自定义身份验证解决方案集成的[旧扩展路径][custom-auth]，但不建议这样做。 请考虑使用 OpenID Connect 支持。
+存在用于与其他标识提供者或自定义身份验证解决方案集成的 [旧扩展路径][custom-auth] ，但不建议这样做。 请考虑使用 OpenID Connect 支持。
 
 ## <a name="authentication-flow"></a>身份验证流
 

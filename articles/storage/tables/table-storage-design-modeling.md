@@ -8,12 +8,12 @@ ms.author: tamram
 ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
-ms.openlocfilehash: a7316bc60ea26968e30bb11ef97d63bddb33895a
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 3023b478ef7a4aaf6d9239e997bdf63282b56210
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235955"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271186"
 ---
 # <a name="modeling-relationships"></a>为关系建模
 本文讨论可帮助设计 Azure 表存储解决方案的建模流程。
@@ -51,7 +51,7 @@ ms.locfileid: "88235955"
 <td>
 <ul>
 <li>可以使用单个操作来更新部门实体。</li>
-<li>如果需要在更新/插入/删除员工实体时修改部门实体，则可以使用 EGT 来保持一致性。 例如，如果维护每个部门的部门员工计数。</li>
+<li>如果需要在更新/插入/删除员工实体时修改部门实体，则可以使用实体组事务 * (EGT) 来保持一致性。 例如，如果维护每个部门的部门员工计数。</li>
 </ul>
 </td>
 <td>
@@ -92,6 +92,9 @@ ms.locfileid: "88235955"
 </td>
 </tr>
 </table>
+
+* 有关详细信息，请参阅 [实体组事务](table-storage-design.md#entity-group-transactions)  
+
 
 如何在这些选项中进行选择，以及哪些优点和缺点最重要，取决于特定应用程序方案。 例如，修改部门实体的频率；所有员工查询是否都需要附加部门信息；有多接近对分区或存储帐户的伸缩性限制？  
 

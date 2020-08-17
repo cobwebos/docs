@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: caad034c2cc3403bc88ee5f50d101702ec692c35
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: a635f32c5e5f1132d70fb503058267c8b33beb7c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192257"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272054"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -31,6 +31,30 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 
 
 ## <a name="august-2020"></a>2020 年 8 月
+
+8月的更新包括：
+
+- [资产清单-资产安全状况的强大新视图](#asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets)
+- [添加了服务主体建议](#service-principals-recommendation-added)
+- [Vm 上的漏洞评估-合并建议和策略](#vulnerability-assessment-on-vms---recommendations-and-policies-consolidated)
+
+
+### <a name="asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets"></a>资产清单-资产安全状况的强大新视图
+
+安全中心的资产清单提供了一种方法，用于查看已连接到安全中心的资源的安全状况。
+
+安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后，提供有关如何修正这些漏洞的建议。 当任何资源具有未完成的建议时，它们将显示在清单中。
+
+您可以使用视图及其筛选器来浏览您的安全状况数据，并根据您的发现采取更多操作。
+
+了解有关 [资产清单](asset-inventory.md)的详细信息。
+
+
+### <a name="service-principals-recommendation-added"></a>添加了服务主体建议
+
+安全中心客户使用管理证书管理其订阅的新建议。
+
+建议使用 **服务主体来保护订阅，而不是管理证书** ，建议使用服务主体或 Azure 资源管理器更安全地管理你的订阅。 
 
 ### <a name="vulnerability-assessment-on-vms---recommendations-and-policies-consolidated"></a>Vm 上的漏洞评估-合并建议和策略
 

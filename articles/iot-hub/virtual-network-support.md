@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: jlian
-ms.openlocfilehash: 7776345ee4e02baa2d2a6ae7bc08389aa94bd09b
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 3c097260812e72dfaa3678a4aade556a337e6a6c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534475"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272893"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT 中心支持具有专用链接和托管标识的虚拟网络
 
@@ -48,7 +48,7 @@ IoT 中心的功能，包括[消息路由](./iot-hub-devguide-messages-d2c.md)�
 
 ### <a name="set-up-a-private-endpoint-for-iot-hub-ingress"></a>设置一个用于 IoT 中心入口的专用终结点
 
-专用终结点适用于 IoT 中心设备 Api （如设备到云的消息）和服务 Api （如创建和更新设备）。
+专用终结点适用于 IoT 中心设备 Api (例如设备到云的消息) 和服务 Api (如创建和更新设备) 。
 
 1. 在 Azure 门户中，依次选择“网络”、“专用终结点连接”，然后单击 “+专用终结点”  。
 
@@ -71,7 +71,7 @@ IoT 中心的功能，包括[消息路由](./iot-hub-devguide-messages-d2c.md)�
 IoT 中心的 [IP 筛选器](iot-hub-ip-filtering.md)也不会控制对内置终结点的公共访问。 若要完全阻止公共网络访问 IoT 中心，必须执行以下操作： 
 
 1. 为 IoT 中心配置专用终结点访问
-1. [关闭公共网络访问](iot-hub-public-network-access.md)，或使用 ip 筛选器阻止所有 IP
+1. [关闭公共网络访问](iot-hub-public-network-access.md) ，或使用 ip 筛选器阻止所有 IP
 1. 通过[将路由设置为不向其发送数据](iot-hub-devguide-messages-d2c.md)来停止使用内置的事件中心终结点
 1. 关闭[回退路由](iot-hub-devguide-messages-d2c.md#fallback-route)
 1. 使用[受信任的 Microsoft 服务](#egress-connectivity-from-iot-hub-to-other-azure-resources)来配置指向其他 Azure 资源的出口
@@ -182,7 +182,7 @@ IoT 中心可将消息路由到客户拥有的存储帐户。 为了允许路由
 
 5. 导航到“自定义终结点”部分，然后单击“添加” 。 选择“存储”作为终结点类型。
 
-6. 在显示的页面上，为终结点提供名称，选择要在 blob 存储中使用的容器，提供编码，以及文件名格式。 选择“系统分配”作为存储终结点的“身份验证类型” 。 单击“创建”按钮。
+6. 在显示的页面上，为终结点提供名称，选择要在 blob 存储中使用的容器，提供编码，以及文件名格式。 选择 " **基于身份** " 作为存储终结点的 **身份验证类型** 。 单击“创建”  按钮。
 
 现在，已将自定义存储终结点设置为使用中心的系统分配的标识，且即使存在防火墙限制，它仍有权访问存储资源。 现在可以使用此终结点来设置路由规则。
 
@@ -234,7 +234,7 @@ IoT 中心的文件上传功能允许设备将文件上传到客户拥有的存�
 
 4. 在 IoT 中心的“资源”页上，导航到“文件上传”选项卡。
 
-5. 在显示的页面上，选择要在 blob 存储中使用的容器，根据需要配置“文件通知设置”、“SAS TTL”、“默认 TT”和“最大传送计数”   。 选择“系统分配”作为存储终结点的“身份验证类型” 。 单击“创建”  按钮。
+5. 在显示的页面上，选择要在 blob 存储中使用的容器，根据需要配置“文件通知设置”、“SAS TTL”、“默认 TT”和“最大传送计数”   。 选择 " **基于身份** " 作为存储终结点的 **身份验证类型** 。 单击“创建”  按钮。
 
 现在，已将用于上传文件的存储终结点设置为使用中心的系统分配的标识，且即使存在防火墙限制，它仍有权访问存储资源。
 

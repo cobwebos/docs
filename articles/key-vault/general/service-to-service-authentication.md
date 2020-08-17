@@ -9,17 +9,17 @@ ms.date: 08/08/2020
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: d48e9ac71ba12ecd2eaadb8ba333f5440c68af4b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 56ada47e46d788ca77f65e354836e19f4d3969d2
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034781"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272750"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>使用 .NET 向 Azure Key Vault 进行服务到服务身份验证
 
 > [!NOTE]
-> 不建议将**microsoft.azure.services.appauthentication**用于新的 Key Vault SDK。 它被替换为适用于 .NET、Java、TypeScript 和 Python 的新 Azure 标识库**DefaultAzureCredentials** ，适用于所有新的开发。 可在以下网页中找到详细信息：[身份验证和 AZURE SDK](https://devblogs.microsoft.com/azure-sdk/authentication-and-the-azure-sdk/)。
+> 不建议将**microsoft.azure.services.appauthentication**用于新的 Key Vault SDK。 它已替换为适用于 .NET、Java、TypeScript 和 Python 的新 Azure 标识库 **DefaultAzureCredentials** ，适用于所有新的开发。 可在以下网页中找到详细信息： [身份验证和 AZURE SDK](https://devblogs.microsoft.com/azure-sdk/authentication-and-the-azure-sdk/)。
 
 若要对 Azure Key Vault 进行身份验证，需要提供 Azure Active Directory (Azure AD) 凭据（共享机密或证书）。
 
@@ -90,7 +90,7 @@ ms.locfileid: "88034781"
 
 1. 登录到 Azure 门户：运行 *az login* 登录到 Azure。
 
-1. 通过输入*az account get-help--resource https： \/ /vault.azure.net*验证访问权限。 如果收到错误，请检查是否正确安装了适当版本的 Azure CLI。
+1. 通过输入 *az account get-help--resource https： \/ /vault.azure.net*验证访问权限。 如果收到错误，请检查是否正确安装了适当版本的 Azure CLI。
 
    如果未将 Azure CLI 安装到默认目录，则可能会收到错误，指出 `AzureServiceTokenProvider` 找不到 Azure CLI 的路径。 请使用 **AzureCLIPath** 环境变量来定义 Azure CLI 安装文件夹。 `AzureServiceTokenProvider` 在需要时将 **AzureCLIPath** 环境变量中指定的目录添加到 **Path** 环境变量。
 
@@ -283,7 +283,7 @@ AzureServiceTokenProvider 在默认安装位置查找 Azure CLI。 如果找不�
 
 #### <a name="managed-identity-isnt-set-up-on-the-app-service"></a>未在应用服务中设置托管标识
 
-使用[Kudu 调试控制台](https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/)检查环境变量 MSI_ENDPOINT 和 MSI_SECRET 存在。 如果这些环境变量不存在，则不会在应用服务中启用托管标识。
+使用 [Kudu 调试控制台](https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/)检查环境变量 MSI_ENDPOINT 和 MSI_SECRET 存在。 如果这些环境变量不存在，则不会在应用服务中启用托管标识。
 
 ### <a name="common-issues-when-deployed-locally-with-iis"></a>在本地与 IIS 一起部署时出现的常见问题
 

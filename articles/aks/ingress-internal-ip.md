@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和配置适用于内部专用网络的 NGINX 入口控制器。
 services: container-service
 ms.topic: article
-ms.date: 07/21/2020
-ms.openlocfilehash: bda90967919474af5e1317e8e88cae110b05e94a
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.date: 08/17/2020
+ms.openlocfilehash: f7bb917387accb986f1fc97a9ebc752281234b35
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191105"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272610"
 ---
 # <a name="create-an-ingress-controller-to-an-internal-virtual-network-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中创建内部虚拟网络的入口控制器
 
@@ -35,7 +35,7 @@ ms.locfileid: "88191105"
 
 默认情况下，NGINX 入口控制器通过动态公共 IP 地址分配创建。 常见的配置要求是使用内部专用网络和 IP 地址。 此方法仅限内部用户访问你的服务，不允许外部访问。
 
-根据以下示例清单文件创建名为 *internal-ingress.yaml* 的文件。 此示例将 *10.240.0.42* 分配给 *loadBalancerIP* 资源。 提供自己的可以与入口控制器配合使用的内部 IP 地址。 请确保该 IP 地址尚未在虚拟网络中使用。 此外，如果使用现有的虚拟网络和子网，则必须使用正确的权限配置 AKS 群集，以管理虚拟网络和子网。 有关详细信息，请参阅 [在 Azure Kubernetes service 中将 kubenet 网络与你自己的 IP 地址范围配合使用 (AKS) ][aks-configure-kubenet-networking] 或 [在 azure Kubernetes Service 中配置 azure CNI 网络 (AKS) ][aks-configure-advanced-networking] 。
+根据以下示例清单文件创建名为 *internal-ingress.yaml* 的文件。 此示例将 *10.240.0.42* 分配给 *loadBalancerIP* 资源。 提供自己的可以与入口控制器配合使用的内部 IP 地址。 请确保该 IP 地址尚未在虚拟网络中使用。 此外，如果你使用的是现有虚拟网络和子网，则必须使用正确的权限配置 AKS 群集，以管理虚拟网络和子网。 有关详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中结合自己的 IP 地址范围使用 kubenet 网络][aks-configure-kubenet-networking]或[在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络][aks-configure-advanced-networking]。
 
 ```yaml
 controller:
@@ -193,6 +193,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
@@ -201,11 +202,15 @@ spec:
       - backend:
           serviceName: aks-helloworld
           servicePort: 80
-        path: /(.*)
+        path: /hello-world-one(/|$)(.*)
       - backend:
           serviceName: ingress-demo
           servicePort: 80
         path: /hello-world-two(/|$)(.*)
+      - backend:
+          serviceName: aks-helloworld
+          servicePort: 80
+        path: /(.*)
 ```
 
 使用 `kubectl apply -f hello-world-ingress.yaml` 命令创建入口资源。

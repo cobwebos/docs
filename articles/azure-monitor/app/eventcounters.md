@@ -3,12 +3,12 @@ title: Application Insights 中的事件计数器 | Microsoft Docs
 description: 监视 Application Insights 中的系统和自定义的 .NET/.NET Core EventCounters。
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 42140f68a5f383a2a60fe8327f5023754366e6b7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 000486ecd4fddd5749e4c7cc9f9210a1f0f8666c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324397"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272359"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters 简介
 
@@ -45,10 +45,6 @@ Application Insights 支持使用 `EventCounterCollectionModule` 收集 `EventCo
 |`System.Runtime` | `threadpool-queue-length` |
 |`System.Runtime` | `threadpool-completed-items-count` |
 |`System.Runtime` | `active-timer-count` |
-|`Microsoft.AspNetCore.Hosting` | `requests-per-second` |
-|`Microsoft.AspNetCore.Hosting` | `total-requests` |
-|`Microsoft.AspNetCore.Hosting` | `current-requests` |
-|`Microsoft.AspNetCore.Hosting` | `failed-requests` |
 
 > [!NOTE]
 > Microsoft.AspNetCore.Hosting 类别的计数器仅添加到 ASP.NET Core 应用程序中。

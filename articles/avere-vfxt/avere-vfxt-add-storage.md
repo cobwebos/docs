@@ -1,17 +1,17 @@
 ---
 title: 配置 Avere vFXT 存储 - Azure
-description: 如何为 Avere vFXT for Azure 添加后端存储系统
+description: 了解如何为 Azure 的 Avere vFXT 中的群集添加后端存储系统。 如果创建了包含群集的 Azure Blob 容器，则可以使用。
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: e011b349c9296fd0ca15d119b35c1e6ec6af268a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c17d3c7cd2cf6fe5bca725cf94344b2d2cb50bf2
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85505743"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271135"
 ---
 # <a name="configure-storage"></a>配置存储
 
@@ -32,12 +32,12 @@ ms.locfileid: "85505743"
 
 ## <a name="create-a-core-filer"></a>创建核心文件管理器
 
-"核心文件服务器" 是后端存储系统的 vFXT 术语。 存储器可以是 NetApp 或 Isilon 等硬件 NAS 设备，也可以是云对象存储。 有关核心文件的详细信息，请参阅[Avere 群集设置指南](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers)。
+"核心文件服务器" 是后端存储系统的 vFXT 术语。 存储器可以是 NetApp 或 Isilon 等硬件 NAS 设备，也可以是云对象存储。 有关核心文件的详细信息，请参阅 [Avere 群集设置指南](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers)。
 
 要添加核心文件管理器，请选择以下两种主要类型的核心文件管理器之一：
 
 * [NAS 核心文件管理器](#nas-core-filer) - 介绍如何添加 NAS 核心文件管理器
-* [Azure 存储云核心文件服务器](#azure-blob-storage-cloud-core-filer)-介绍如何添加 azure Blob 存储容器作为云核心文件服务器
+* [Azure 存储云核心文件服务器](#azure-blob-storage-cloud-core-filer) -介绍如何添加 azure Blob 存储容器作为云核心文件服务器
 
 ### <a name="nas-core-filer"></a>NAS 核心文件管理器
 
@@ -80,7 +80,7 @@ NAS 核心文件服务器可以是本地 NetApp 或 Isilon 设备，也可以是
 * 创建客户端用于挂载核心文件管理器的命名空间交接点（[创建交接点](#create-a-junction)，硬件和云存储的交接点都一样）
 
 > [!TIP]
-> 如果在创建 Azure 群集的 Avere vFXT 时创建新的 Blob 容器，则部署模板会自动将该容器配置为核心文件服务器。 （如果使用的是在请求时可用的创建脚本，也是如此。）以后无需配置核心文件管理器。
+> 如果在创建 Azure 群集的 Avere vFXT 时创建新的 Blob 容器，则部署模板会自动将该容器配置为核心文件服务器。  (如果你使用在请求时可用的创建脚本，也会出现此情况。 ) 你以后无需配置核心文件管理器。
 >
 > 群集创建工具为你执行以下配置任务：
 >
@@ -111,7 +111,7 @@ NAS 核心文件服务器可以是本地 NetApp 或 Isilon 设备，也可以是
 
    ![Azure 门户中的新存储帐户](media/avere-vfxt-new-storage-acct.png)
 
-1. 创建新的 Blob 容器：单击 "概述" 页上的 "**容器**"，然后单击 " **+ 容器**"。 使用任何容器名称，并确保访问权限设置为“专用”****。
+1. 创建新的 Blob 容器：单击 "概述" 页上的 " **容器** "，然后单击 " **+ 容器**"。 使用任何容器名称，并确保访问权限设置为“专用”****。
 
    ![在弹出页中使用 "+ 容器" 按钮进行了圆圈并创建新容器的 "存储 blob" 页](media/avere-vfxt-new-blob.png)
 
@@ -128,7 +128,7 @@ NAS 核心文件服务器可以是本地 NetApp 或 Isilon 设备，也可以是
    | 字段 | 值 |
    | --- | --- |
    | 凭据名称 | 任何描述性名称 |
-   | 服务类型 | （选择 Azure 存储访问密钥） |
+   | 服务类型 |  (选择 Azure 存储访问密钥)  |
    | 租户 | 存储帐户名称 |
    | 订阅 | 订阅 ID |
    | 存储访问密钥 | Azure 存储帐户密钥（在上一步中复制） |
@@ -151,7 +151,7 @@ NAS 核心文件服务器可以是本地 NetApp 或 Isilon 设备，也可以是
    * 将“Bucket 内容”设置为“空”********
    * 将“证书验证”更改为“禁用”********
    * 将“压缩模式”更改为“无”********
-   * 单击“下一步” 。
+   * 单击 **“下一步”** 。
    * 在第四页上，在“Bucket 名称”中输入容器的名称 storage_account_name/container_name********。
    * （可选）将“加密类型”设置为“无”********。  Azure 存储默认已加密。
    * 单击“添加文件管理器”****。
@@ -176,7 +176,7 @@ NAS 核心文件服务器可以是本地 NetApp 或 Isilon 设备，也可以是
 * 提供以“/”（正斜杠）开头的命名空间路径，如 ``/vfxt/data``。
 * 选择核心文件管理器。
 * 选择核心文件管理器导出。
-* 单击“下一步” 。
+* 单击 **“下一步”** 。
 
   ![“添加新交接点”页面的屏幕截图，其中包含为交接点、核心文件管理器和导出完成的字段](media/avere-vfxt-add-junction.png)
 
