@@ -236,7 +236,7 @@
       items:
         - name: 配置专用终结点
           href: configure-private-endpoints.md
-        - name: 配置 IP 防火墙（预览版）
+        - name: 配置 IP 防火墙
           href: configure-firewall.md
         - name: 通过 AAD 保护 WebHook
           href: secure-webhook-delivery.md

@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概述
   items:
-    - name: 什么是 Azure AD 标识保护？
+    - name: 什么是“标识保护”？
       href: overview-identity-protection.md
 - name: 概念
   expanded: false

@@ -423,7 +423,7 @@
         - name: 迁移概述
           href: migration-classic-resource-manager-overview.md
         - name: 深入了解迁移
-          href: migration-classic-resource-manager-deep-dive.md
+          href: ../migration-classic-resource-manager-deep-dive.md
         - name: 规划迁移
           href: migration-classic-resource-manager-plan.md
         - name: 使用 PowerShell 迁移
@@ -432,8 +432,8 @@
           href: migration-classic-resource-manager-errors.md
         - name: 用于迁移的社区工具
           href: migration-classic-resource-manager-community-tools.md
-        - name: 常见问题解答
-          href: migration-classic-resource-manager-faq.md
+        - name: 常见问题
+          href: ../migration-classic-resource-manager-faq.md
     - name: 使用映像
       displayName: 'SIG, AMI, image'
       items:
@@ -689,7 +689,7 @@
           items:
             - name: 代理概述
               href: ../../azure-monitor/platform/agents-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: 常见问题解答
+            - name: 常见问题
               href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json#agents
             - name: Azure 诊断扩展
               items:
@@ -853,7 +853,7 @@
           href: detach-disk.md
         - name: 使用 ARM 模板部署磁盘
           displayName: Azure Resource Manager
-          href: using-managed-disks-template-deployments.md
+          href: ../using-managed-disks-template-deployments.md
         - name: 启用共享磁盘
           href: disks-shared-enable.md
         - name: 将 vhd 上传到磁盘 - PowerShell
@@ -901,7 +901,7 @@
         - name: 性能
           items:
             - name: 启用写入加速器
-              href: how-to-enable-write-accelerator.md
+              href: ../how-to-enable-write-accelerator.md
             - name: 使用超级磁盘
               href: disks-enable-ultra-ssd.md
             - name: 对磁盘进行基准检验
@@ -941,7 +941,7 @@
           href: ../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: PowerShell
           href: ../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: Azure 资源管理器模板
+        - name: Azure Resource Manager 模板
           displayName: ARM
           href: ../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: REST
@@ -1066,5 +1066,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-machine'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
-    - name: 常见问题解答
+    - name: 常见问题
       href: faq.md

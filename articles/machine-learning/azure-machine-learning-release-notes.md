@@ -9,18 +9,65 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: b1f45cad5def0e7d9a576a05299b065705ff3e30
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: d93e01cdec79f739367dc219d81028c1abc2d66e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553433"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508203"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure 机器学习发行说明
 
 本文介绍 Azure 机器学习的版本。  有关完整的 SDK 参考内容，请访问 Azure 机器学习的[**适用于 Python 的主要 SDK**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 参考页。
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
+
+## <a name="2020-08-17"></a>2020-08-17
+
+### <a name="azure-machine-learning-sdk-for-python-v1120"></a>用于 Python 的 Azure 机器学习 SDK 1.12。0
+
++ **Bug 修复与改进**
+  + **azure-cli-ml**
+    + 将 image_name 和 image_label 参数添加到 Model ( # A1，以启用重命名已生成的包映像。
+  + **azureml-automl-core**
+    + 如果在读取内容时修改内容，AutoML 将从 dataprep 引发新的错误代码。
+  + **azureml-automl-runtime**
+    + 当数据包含缺失值但特征化已关闭时，为用户添加了警报。
+    + 修复了当数据包含 nan 并且特征化已关闭时的子运行失败。
+    + 如果在读取内容时修改内容，AutoML 将从 dataprep 引发新的错误代码。
+    + 更新了用于预测指标的规范化以获得粒度。
+    + 在禁用 lookback 功能时，改进了预测分位数的计算。
+    + 修复了 AutoML 之后计算解释时的 bool 稀疏矩阵处理。
+  + **azureml-core**
+    + 新方法 `run.get_detailed_status()` 现在显示当前运行状态的详细说明。 它当前仅显示状态的说明 `Queued` 。
+    + 将 image_name 和 image_label 参数添加到 Model ( # A1，以启用重命名已生成的包映像。
+    + `set_pip_requirements()`用于一次设置整个 pip 部分的新方法 [`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) 。
+    + 允许注册不 ADLS Gen2 数据存储的无凭据。
+    + 改进了尝试下载或装载不正确的数据集类型时的错误消息。
+    + 更新 timeseries 数据集筛选器示例笔记本，其中包含提供筛选器优化 partition_timestamp 的更多示例。
+    + 更改 sdk 和 cli，以在删除专用终结点连接时接受 subscriptionId、resourceGroup、workspaceName、peConnectionName 作为参数而不是 ArmResourceId。
+    + 试验性修饰器显示类名称以便于识别。
+    + 不会再根据运行自动生成模型内的资产的描述。
+  + **azureml-datadrift**
+    + 将 DataDriftDetector 中的 API create_from_model 标记为已弃用。
+  + **azureml-dataprep**
+    + 改进了尝试下载或装载不正确的数据集类型时的错误消息。
+  + **azureml-pipeline-core**
+    + 修复了对包含已注册数据集的管道图形进行反序列化时的错误。
+  + **azureml-pipeline-steps**
+    + RScriptStep 支持 RSection。
+    + 已从公共 API 中删除 passthru_automl_config 参数 `AutoMLStep` ，并将其转换为仅限内部参数。
+  + **azureml-train-automl-client**
+    + 删除了本地异步托管环境，从 AutoML 运行。 所有本地运行都将在启动运行的环境中运行。
+    + 修复了提交 AutoML 运行时未提供用户提供脚本的快照问题。
+    + 修复了当数据包含 nan 并且特征化已关闭时的子运行失败。
+  + **azureml-train-automl-runtime**
+    + 如果在读取内容时修改内容，AutoML 将从 dataprep 引发新的错误代码。
+    + 修复了提交 AutoML 运行时未提供用户提供脚本的快照问题。
+    + 修复了当数据包含 nan 并且特征化已关闭时的子运行失败。
+  + **azureml-train-core**
+    + 添加了对指定 pip 选项的支持 (例如，将 pip 要求文件中的额外索引 url) 传递给 [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) 通过 `pip_requirements_file` 参数。
+
 
 ## <a name="2020-08-03"></a>2020-08-03
 
@@ -36,7 +83,7 @@ ms.locfileid: "87553433"
     + AutoML 中未经处理的异常现在指向一个已知问题 HTTP 页面，此时会出现有关错误的详细信息。
   + **azureml-core**
     + 模型名称长度为255个字符。
-    + 环境 get_image_details ( # A1 返回对象类型已更改。 `DockerImageDetails`类已替换 `dict` ，可以从新的类属性获取映像详细信息。 更改是向后兼容。
+    + 环境 get_image_details ( # A1 返回对象类型已更改。 `DockerImageDetails` 类已替换 `dict` ，可以从新的类属性获取映像详细信息。 更改是向后兼容。
     + 修复环境的 bug。 from_pip_requirements ( # A1 以保留依赖关系结构
     + 修复了一个 bug，如果在同一列表中包含 int 和 double，则 log_list 会失败。
     + 在现有工作区上启用 "专用" 链接时，请注意，如果存在与工作区关联的计算目标，则如果这些目标不在工作区专用终结点所在的虚拟网络后面，则这些目标将不起作用。
@@ -97,7 +144,7 @@ ms.locfileid: "87553433"
     + 将 get_model_path ( # A1 替换为 AutoML 自动生成计分脚本中的 AZUREML_MODEL_DIR 环境变量。 还添加了遥测数据，以便在初始化 ( # A1 期间跟踪失败。
     + 删除了指定 `enable_cache` 为 AutoMLConfig 的一部分的功能
     + 修复了一个 bug，其中在特定的预测运行期间运行可能会失败并出现服务错误
-    + 改进了在`get_output`
+    + 改进了在 `get_output`
     + 修复了对 fitted_model 的调用。适合 (X、y) 用于具有 y 转换器的分类
     + 为预测任务启用自定义的正向填充 imputer
     + 将使用新的 ForecastingParameters 类而不是 dict 格式的预测参数
@@ -1243,7 +1290,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
 
 ### <a name="azure-machine-learning-sdk-for-python-v1065"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.65
 
-  + **新增功能**
+  + **新功能**
     + 添加了组织有序的环境。 这些环境中已预先配置用于常用机器学习任务的库，并且已预先生成并缓存为 Docker 映像，以加快执行速度。 默认情况下，这些环境会显示在工作区的环境列表中，其前缀为“AzureML”。
     + 添加了组织有序的环境。 这些环境中已预先配置用于常用机器学习任务的库，并且已预先生成并缓存为 Docker 映像，以加快执行速度。 默认情况下，这些环境会显示在[工作区](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace%28class%29)的环境列表中，其前缀为“AzureML”。
 
@@ -1459,7 +1506,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
 ## <a name="2019-08-19"></a>2019-08-19
 
 ### <a name="azure-machine-learning-sdk-for-python-v1057"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.57
-+ **新增功能**
++ **新功能**
   + 使 `TabularDataset` 能够被 AutomatedML 使用。 有关 `TabularDataset` 的详细信息，请访问 https://aka.ms/azureml/howto/createdatasets 。
 
 + **Bug 修复与改进**
@@ -1540,7 +1587,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
 
 ### <a name="azure-machine-learning-sdk-for-python-v1055"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.55
 
-+ **新增功能**
++ **新功能**
   + 现在，针对 AKS 上部署的评分终结点发出的调用支持基于令牌的身份验证。 我们将继续支持当前的基于密钥的身份验证，用户每次可以使用其中的一种身份验证机制。
   + 可将虚拟网络 (VNet) 后面的 Blob 存储注册为数据存储。
 
@@ -1689,7 +1736,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
 
 ### <a name="azure-machine-learning-data-prep-sdk-v119"></a>Azure 机器学习数据准备 SDK v1.1.9
 
-+ **新增功能**
++ **新功能**
   + 添加了对从 HTTP 或 HTTPS URL 直接读取文件的支持。
 
 + **Bug 修复与改进**
@@ -1823,7 +1870,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
 
 ### <a name="azure-machine-learning-sdk-for-python-v1023"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.23
 
-+ **新增功能**
++ **新功能**
   + Azure 机器学习 SDK 现在支持 Python 3.7。
   + Azure 机器学习 DNN 评估器现在提供内置的多版本支持。 例如，`TensorFlow` 评估器现在接受 `framework_version` 参数，用户可以指定版本“1.10”或“1.12”。 如需当前 SDK 发行版支持的版本列表，请对所需的框架类调用 `get_supported_versions()`（例如 `TensorFlow.get_supported_versions()`）。
   有关最新 SDK 发行版支持的版本列表，请参阅 [DNN 评估器文档](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py)。
@@ -1845,7 +1892,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1017"></a>Azure 机器学习数据准备 SDK v1.0.17
 
-+ **新增功能**
++ **新功能**
   + 现在支持使用表达式语言添加两个数字列来生成结果列。
 
 + **Bug 修复与改进**
@@ -1862,7 +1909,7 @@ Azure 机器学习现在是事件网格的资源提供程序，你可以通过 A
 
 ### <a name="azure-machine-learning-sdk-for-python-v1017"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.17
 
-+ **新增功能**
++ **新功能**
 
   + Azure 机器学习现在为流行的 DNN 框架 Chainer 提供一流的支持。 用户可以使用 [`Chainer`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) 类轻松训练和部署 Chainer 模型。
     + 了解如何[使用 ChainerMN 运行分布式训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/chainer/training/distributed-chainer/distributed-chainer.ipynb)

@@ -146,7 +146,11 @@
         - name: 概述
           href: backup-azure-sql-database.md
         - name: 备份
-          href: backup-sql-server-database-azure-vms.md
+          items:
+            - name: 从保管库备份多个 SQL Server VM
+              href: backup-sql-server-database-azure-vms.md
+            - name: 从 VM 窗格备份 SQL Server VM
+              href: backup-sql-server-vm-from-vm-pane.md
         - name: 还原
           href: restore-sql-database-azure-vm.md
         - name: 管理
