@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2e8a2030acd4297ab3032e8f1e3bde5b6df66659
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: references_regions
+ms.openlocfilehash: aab06b4870efd88893b4a14c1127de7ffcd2ba68
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037161"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520511"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 可以通过两种主要方式部署[Azure 文件](storage-files-introduction.md)：直接装载无服务器 Azure 文件共享，或使用 Azure 文件同步在本地缓存 azure 文件共享。你选择哪种部署选项会更改你在规划部署时需要考虑的事项。 
@@ -21,7 +22,7 @@ ms.locfileid: "88037161"
 
 - **使用 Azure 文件同步在本地缓存 Azure 文件共享**：借助 Azure 文件同步，可以在 Azure 文件存储中集中管理组织的文件共享，同时又能保留本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将本地（或云中的）Windows Server 转换为 Azure 文件共享的快速缓存。 
 
-本文主要阐述有关部署可供本地或云客户端直接装载的 Azure 文件共享时的部署注意事项。 若要规划 Azure 文件同步部署，请参阅[规划 Azure 文件同步部署](storage-sync-files-planning.md)。
+本文主要阐述有关部署可供本地或云客户端直接装载的 Azure 文件共享时的部署注意事项。 若要规划 Azure 文件同步部署，请参阅 [规划 Azure 文件同步部署](storage-sync-files-planning.md)。
 
 ## <a name="management-concepts"></a>管理概念
 [!INCLUDE [storage-files-file-share-management-concepts](../../../includes/storage-files-file-share-management-concepts.md)]
@@ -40,9 +41,9 @@ ms.locfileid: "88037161"
 - **Azure Active Directory 域服务 (AZURE AD DS) **： Azure AD ds 提供了可用于 Azure 资源的 Microsoft 托管域控制器。 将你的存储帐户加入到 Azure AD DS 的域可为加入到客户拥有的 Active Directory 的域提供类似的好处。 此部署选项最适用于需要基于 AD 的权限的应用程序提升和移动方案。 由于 Azure AD DS 提供了基于 AD 的身份验证，因此此选项还使用 Kerberos 身份验证协议。
 - **Azure 存储帐户密钥**：还可以使用 azure 存储帐户密钥装载 azure 文件共享。 若要以这种方式装载文件共享，需使用存储帐户名称作为用户名，使用存储帐户密钥作为密码。 使用存储帐户密钥装载 Azure 文件共享实际上是一项管理员操作，因为装载的文件共享对其上的所有文件和文件夹拥有完全权限，即使对这些文件和文件夹应用了 ACL。 使用存储帐户密钥通过 SMB 装载时，将使用 NTLMv2 身份验证协议。
 
-对于从本地文件服务器迁移的客户，或在 Azure 文件中创建新的文件共享以与 Windows 文件服务器或 NAS 设备的行为类似，建议选择将存储帐户加入到**客户拥有的 Active Directory**域。 若要详细了解如何将存储帐户“域加入”到客户拥有的 Active Directory，请参阅 [Azure 文件存储 Active Directory 概述](storage-files-active-directory-overview.md)。
+对于从本地文件服务器迁移的客户，或在 Azure 文件中创建新的文件共享以与 Windows 文件服务器或 NAS 设备的行为类似，建议选择将存储帐户加入到 **客户拥有的 Active Directory** 域。 若要详细了解如何将存储帐户“域加入”到客户拥有的 Active Directory，请参阅 [Azure 文件存储 Active Directory 概述](storage-files-active-directory-overview.md)。
 
-如果要使用存储帐户密钥来访问 Azure 文件共享，我们建议使用 "[网络](#networking)" 部分中所述的服务终结点。
+如果要使用存储帐户密钥来访问 Azure 文件共享，我们建议使用 " [网络](#networking) " 部分中所述的服务终结点。
 
 ## <a name="networking"></a>网络
 可在任意位置通过存储帐户的公共终结点访问 Azure 文件共享。 这意味着，已经过身份验证的请求（例如已由用户登录标识授权的请求）可以安全地从 Azure 内部或外部发起。 在许多客户环境中，最初在本地工作站上装载 Azure 文件共享的操作会失败，尽管可以成功地从 Azure VM 装载。 其原因是，许多组织和 Internet 服务提供商 (ISP) 阻止 SMB 用来通信的端口 445。 如需大致了解允许或禁止从端口 445 进行访问的 ISP，请访问 [TechNet](https://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx)。
@@ -84,26 +85,26 @@ Azure 文件具有多层方法，可确保你的数据已备份、可恢复并�
 
 建议为大多数文件共享启用软删除。 如果你的工作流中存在共享删除的常用和预期，你可能会决定保留时间非常短，或者根本没有启用软删除。
 
-有关软删除的详细信息，请参阅[防止意外删除数据](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion)。
+有关软删除的详细信息，请参阅 [防止意外删除数据](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion)。
 
 ### <a name="backup"></a>备份
-可以通过共享快照备份 Azure 文件共享，[共享快照](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)是共享的只读时间点副本。 快照是增量快照，这意味着它们只包含自上一个快照以来已更改的数据量。 每个文件共享最多可以有200个快照，并将其保留长达10年。 你可以通过 PowerShell 或命令行接口 (CLI) 手动获取这些 Azure 门户快照，或者可以使用[Azure 备份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)。 快照存储在文件共享中，这意味着，如果删除文件共享，则还会删除快照。 若要保护快照备份不被意外删除，请确保为共享启用软删除。
+可以通过共享快照备份 Azure 文件共享， [共享快照](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files)是共享的只读时间点副本。 快照是增量快照，这意味着它们只包含自上一个快照以来已更改的数据量。 每个文件共享最多可以有200个快照，并将其保留长达10年。 你可以通过 PowerShell 或命令行接口 (CLI) 手动获取这些 Azure 门户快照，或者可以使用 [Azure 备份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)。 快照存储在文件共享中，这意味着，如果删除文件共享，则还会删除快照。 若要保护快照备份不被意外删除，请确保为共享启用软删除。
 
 Azure[文件共享的 Azure 备份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)处理快照的计划和保留。 它的祖父- (GFS) 功能意味着您可以每日、每周、每月和每年的快照，每个快照都具有自己的独特的保留期。 Azure 备份还会协调软删除的启用，并在存储帐户中的任何文件共享配置为进行备份时立即对存储帐户执行删除锁定。 最后，Azure 备份提供某些关键的监视和警报功能，使客户能够获得其备份空间的合并视图。
 
 可以使用 Azure 备份在 Azure 门户中执行项级和共享级还原。 只需选择特定快照) 的还原点、特定的文件或目录（如果相关），然后选择要还原到的原始或备用) 位置 ( (。 备份服务会处理复制快照数据，并在门户中显示还原进度。
 
-有关备份的详细信息，请参阅[关于 Azure 文件共享备份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)。
+有关备份的详细信息，请参阅 [关于 Azure 文件共享备份](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json)。
 
 ### <a name="advanced-threat-protection-for-azure-files-preview"></a> (预览版的 Azure 文件的高级威胁防护) 
 高级威胁防护 (适用于 Azure 存储的 ATP) 提供额外的安全智能层，当它检测到你的存储帐户上的异常活动（例如，意外尝试访问存储帐户）时，它将提供警报。 ATP 还会运行恶意软件哈希信誉分析，并对已知的恶意软件发出警报。 可以通过 Azure 安全中心在订阅或存储帐户级别上配置 ATP。 
 
-有关详细信息，请参阅[Azure 存储的高级威胁防护](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)。
+有关详细信息，请参阅 [Azure 存储的高级威胁防护](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection)。
 
 ## <a name="storage-tiers"></a>存储层
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
-通常，Azure 文件存储功能以及与其他服务的互操作性在高级文件共享和标准文件共享之间是相同的，但有几个重要区别：
+通常情况下，Azure 文件的功能和与其他服务的互操作性在高级文件共享和标准文件共享之间是相同的 (包括) 的事务优化、热和冷文件共享，但有几个重要的区别：
 - **计费模式**
     - 高级文件共享使用预配的计费模式进行计费，这意味着你需要为预配的存储量而不是实际请求的存储量付费。 
     - 标准文件共享使用即用即付模型进行计费，其中包括实际使用的存储量的基本成本，并根据使用共享的方式增加事务成本。 如果使用标准文件共享，则在 Azure 文件共享) 使用 (读/写/装载时，计费将会增加。
@@ -114,7 +115,7 @@ Azure[文件共享的 Azure 备份](https://docs.microsoft.com/azure/backup/azur
     - 高级文件共享最多可预配 100 TiB，无需任何额外的操作。
     - 默认情况下，标准文件共享的上限是 5 TiB，但可以通过选择“大文件共享”存储帐户功能标志将共享限制增加到 100 TiB。 对于本地冗余存储帐户或区域冗余存储帐户，标准文件共享的上限是 100 TiB。 有关增加文件共享大小的详细信息，请参阅[启用和创建大文件共享](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share)。
 - **区域可用性**
-    - 高级文件共享在每个区域中都不可用，区域冗余支持在一小部分区域中提供。 若要确定高级文件共享目前是否可在你的区域中使用，请参阅 Azure 的[产品的上市区域](https://azure.microsoft.com/global-infrastructure/services/?products=storage)页。 若要找出哪些区域支持 ZRS，请参阅[按区域的 Azure 可用性区域支持](../../availability-zones/az-region.md)。 若要帮助我们确定新的区域和高级层功能的优先级，请填写此[调查](https://aka.ms/pfsfeedback)。
+    - 高级文件共享在每个区域中都不可用，区域冗余支持在一小部分区域中提供。 若要确定高级文件共享目前是否可在你的区域中使用，请参阅 Azure 的[产品的上市区域](https://azure.microsoft.com/global-infrastructure/services/?products=storage)页。 若要找出哪些区域支持 ZRS，请参阅 [按区域的 Azure 可用性区域支持](../../availability-zones/az-region.md)。 若要帮助我们确定新的区域和高级层功能的优先级，请填写此 [调查](https://aka.ms/pfsfeedback)。
     - 标准文件共享在每个 Azure 区域中可用。
 - Azure Kubernetes 服务 (AKS) 在 1.13 及更高版本中支持高级文件共享。
 
@@ -154,7 +155,7 @@ Azure[文件共享的 Azure 备份](https://docs.microsoft.com/azure/backup/azur
 |102,400     | 100,000 | 最大 100,000 | 6,204 | 4,136   |
 
 > [!NOTE]
-> 文件共享性能与计算机网络限制、可用网络带宽、IO 大小、并行度和其他许多因素相关。 例如，基于具有8个 KiB 读取/写入 IO 大小的内部测试，通过 SMB 连接到高级文件共享的单个 Windows 虚拟机（*标准 F16s_v2*）可实现20K 读取 Iops 和15K 写入 iops。 对于 512 MiB 读取/写入 IO 大小，同一 VM 可以实现 1.1 GiB/s 出口和 370 MiB/秒的入口吞吐量。 若要实现最大性能规模，请将负载分散到多个 VM。 有关一些常见性能问题和解决方法，请参阅[故障排除指南](storage-troubleshooting-files-performance.md)。
+> 文件共享性能与计算机网络限制、可用网络带宽、IO 大小、并行度和其他许多因素相关。 例如，基于具有8个 KiB 读取/写入 IO 大小的内部测试，通过 SMB 连接到高级文件共享的单个 Windows 虚拟机（ *标准 F16s_v2*）可实现20K 读取 Iops 和15K 写入 iops。 对于 512 MiB 读取/写入 IO 大小，同一 VM 可以实现 1.1 GiB/s 出口和 370 MiB/秒的入口吞吐量。 若要实现最大性能规模，请将负载分散到多个 VM。 有关一些常见性能问题和解决方法，请参阅[故障排除指南](storage-troubleshooting-files-performance.md)。
 
 #### <a name="bursting"></a>突发
 高级文件共享最大可按系数 3 突发其 IOPS。 突发是自动进行的，根据额度系统运行。 突发采用“尽力而为”的原则，突发限制没有保证，文件共享只能在限制范围内突发。
@@ -186,7 +187,7 @@ Azure[文件共享的 Azure 备份](https://docs.microsoft.com/azure/backup/azur
 ## <a name="migration"></a>迁移
 在很多情况下，你不想要为组织建立全新的文件共享，而是将现有文件共享从本地文件服务器或 NAS 设备迁移到 Azure 文件存储。 为你的方案选择适当的迁移策略和工具对于迁移的成功非常重要。 
 
-"[迁移概述](storage-files-migration-overview.md)" 一文简要介绍了基础知识，并包含一个表，该表格可引导你使用可能涵盖方案的迁移指南。
+" [迁移概述](storage-files-migration-overview.md) " 一文简要介绍了基础知识，并包含一个表，该表格可引导你使用可能涵盖方案的迁移指南。
 
 ## <a name="next-steps"></a>后续步骤
 * [规划 Azure 文件同步部署](storage-sync-files-planning.md)

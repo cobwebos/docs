@@ -2,27 +2,22 @@
 title: 有关与 Azure AD 结合使用的 SaaS 应用集成教程 | Microsoft Docs
 description: 将与各种第三方软件的 Azure Active Directory 单一登录集成配置为服务应用程序。
 services: active-directory
-documentationcenter: ''
 author: jeevansd
-manager: daveba
-ms.assetid: 08c0c52b-76d9-4250-936a-6bec0edb8816
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/10/2019
 ms.author: jeedes
 ms.custom: it-pro
-ms.reviewer: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a63527ce6fcb334d5a6f6c790f090bc39d702f66
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.reviewer: celested
+ms.openlocfilehash: 6d5632e6c50b33396eee5b476281c7a2c0a8366e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86167532"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534007"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>用于将 SaaS 应用程序与 Azure Active Directory 集成的教程
 
@@ -30,7 +25,7 @@ ms.locfileid: "86167532"
 
 有关已预先集成到 Azure AD 中的所有 SaaS 应用的列表，请参阅 [Active Directory 市场](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps)。
 
-使用[应用程序网络门户](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)，请求将启用[SCIM](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)的应用程序添加到库中，以实现自动预配，或将启用 SAML/OIDC 的应用程序添加到 SSO 的库。
+使用 [应用程序网络门户](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing) ，请求将启用 [SCIM](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups) 的应用程序添加到库中，以实现自动预配，或将启用 SAML/OIDC 的应用程序添加到 SSO 的库。
 
 ## <a name="quick-links"></a>快速链接
 

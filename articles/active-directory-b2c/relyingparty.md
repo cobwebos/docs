@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/20/2020
+ms.date: 08/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c8c4e65c7ee97b33acbd68bfd8267a334508e25c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40672ac958e84d816d4b582472ae04502a910c6a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203735"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521257"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -134,7 +134,7 @@ SingleSignOn 元素包含在以下属性中：
 
 JourneyInsights 元素包含以下属性：
 
-| 特性 | 必需 | 描述 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | TelemetryEngine | 是 | 值必须是 `ApplicationInsights`。 |
 | InstrumentationKey | 是 | 一个字符串，其中包含 application insights 元素的检测密钥。 |
@@ -155,15 +155,15 @@ JourneyInsights 元素包含以下属性：
 
 ContentDefinitionParameters 元素包含以下元素：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | ContentDefinitionParameter | 0:n | 一个字符串，包含追加到内容定义负载 URI 查询字符串的键值对。 |
 
 ContentDefinitionParameters 元素包含以下属性：
 
-| 特性 | 必需 | 描述 |
+| 属性 | 必需 | 描述 |
 | --------- | -------- | ----------- |
-| “属性” | 是 | 键值对的名称。 |
+| 名称 | 是 | 键值对的名称。 |
 
 有关详细信息，请参阅[使用自定义策略配置包含动态内容的 UI](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri)
 
@@ -171,13 +171,13 @@ ContentDefinitionParameters 元素包含以下属性：
 
 **TechnicalProfile** 元素包含以下属性：
 
-| 特性 | 必需 | 描述 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ID | 是 | 值必须是 `PolicyProfile`。 |
 
 **TechnicalProfile** 包含以下元素：
 
-| 元素 | 出现次数 | 描述 |
+| 元素 | 出现次数 | 说明 |
 | ------- | ----------- | ----------- |
 | DisplayName | 1:1 | 一个字符串，其中包含技术配置文件的名称。 |
 | 说明 | 0:1 | 一个字符串，其中包含技术配置文件的说明。 |
@@ -190,9 +190,17 @@ Protocol 元素包含以下属性：
 
 | 属性 | 必需 | 描述 |
 | --------- | -------- | ----------- |
-| “属性” | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值：`OpenIdConnect` 或 `SAML2`。 `OpenIdConnect` 值表示根据 OpenID 基本规范的 OpenID Connect 1.0 协议标准。 `SAML2` 表示根据 OASIS 规范的 SAML 2.0 协议标准。 |
+| 名称 | 是 | Azure AD B2C 支持的有效协议的名称，用作技术配置文件的一部分。 可能的值：`OpenIdConnect` 或 `SAML2`。 `OpenIdConnect` 值表示根据 OpenID 基本规范的 OpenID Connect 1.0 协议标准。 `SAML2` 表示根据 OASIS 规范的 SAML 2.0 协议标准。 |
 
-## <a name="outputclaims"></a>OutputClaims
+### <a name="metadata"></a>Metadata
+
+如果协议为 `SAML` ，则 metadata 元素包含以下元素。
+
+| 属性 | 必需 | 描述 |
+| --------- | -------- | ----------- |
+| XmlSignatureAlgorithm | 否 | Azure AD B2C 使用来为 SAML 响应签名的方法。 可能的值：`Sha256`、`Sha384`、`Sha512` 或 `Sha1`。 确保在两端配置具有相同值的签名算法。 仅使用证书支持的算法。 若要配置 SAML 断言，请参阅 [saml 颁发者技术配置文件元数据](saml-issuer-technical-profile.md#metadata)。 |
+
+### <a name="outputclaims"></a>OutputClaims
 
 OutputClaims 元素包含以下元素：
 
@@ -202,7 +210,7 @@ OutputClaims 元素包含以下元素：
 
 OutputClaim 元素包含以下属性：
 
-| 特性 | 必需 | 描述 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | 是 | 对在策略文件的 ClaimsSchema 部分定义的 ClaimType 的引用。 |
 | DefaultValue | 否 | 一个默认值，如果声明值为空，则可以使用该值。 |
@@ -212,13 +220,14 @@ OutputClaim 元素包含以下属性：
 
 使用 SubjectNameingInfo 元素，可以控制令牌使用者的值：
 - **JWT 令牌** - `sub` 声明。 这是令牌针对其断言信息的主体，例如应用程序的用户。 此值固定不变，无法重新分配或重复使用。 可使用它安全地执行授权检查，例如，使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。 有关详细信息，请参阅[令牌、会话和单一登录配置](session-behavior.md)。
-- SAML 令牌 - 标识使用者元素的 `<Subject><NameID>` 元素。
+- SAML 令牌 - 标识使用者元素的 `<Subject><NameID>` 元素。 可以修改 NameId 格式。
 
 SubjectNamingInfo 元素包含以下属性：
 
-| 属性 | 必需 | 描述 |
+| 属性 | 必需 | 说明 |
 | --------- | -------- | ----------- |
 | ClaimType | 是 | 对输出声明的 PartnerClaimType 的引用。 输出声明必须在信赖方策略 OutputClaims 集合中定义。 |
+| 格式 | 否 | 用于 SAML 信赖方设置 SAML 断言中返回的 **NameId 格式** 。 |
 
 下面的示例演示如何定义 OpenID Connect 信赖方。 使用者名称信息配置为 `objectId`：
 
@@ -248,4 +257,25 @@ JWT 令牌包括带用户 objectId 的 `sub` 声明：
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",
   ...
 }
+```
+
+下面的示例演示如何定义 SAML 信赖方。 使用者名称信息配置为 `objectId` ，并且 `format` 已提供 NameId：
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient"/>
+  </TechnicalProfile>
+</RelyingParty>
 ```

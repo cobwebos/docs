@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 6ba0be3a6fba35e413270dd6770f5d3f47586b5e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 28b6a70297efb8d8237f085e1f5b08dbb6a09072
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873326"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522600"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>在监管合规仪表板中自定义标准集
 
@@ -73,6 +73,8 @@ Microsoft 还会自行跟踪监管标准，并随时间推移自动改进其在�
     - Canada PBMM
     
     ![将监管包添加到 Azure 安全中心的监管合规仪表板](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
+
+1. 选择 " **添加** "，然后输入特定计划的所有必要详细信息，如范围、参数和修正。
 
 1. 从安全中心的边栏中，再次选择“监管合规”以返回到监管合规仪表板。
     * 新标准会出现在行业和监管标准的列表中。 

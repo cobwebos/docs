@@ -4,12 +4,12 @@ description: 排查 Azure 备份服务器的安装和注册以及应用程序工
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: a4882867f9bbe5123df275b8d1c69fe4e163f294
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 54b7295eaed5f04a118cf5097ebc7b25b18f67d2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054837"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522838"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>对 Azure 备份服务器进行故障排除
 
@@ -20,13 +20,46 @@ ms.locfileid: "87054837"
 我们建议你在开始对 Microsoft Azure 备份服务器 (MABS) 进行故障排除之前执行以下验证：
 
 - [确保 Microsoft Azure 恢复服务 (MARS) 代理是最新版本](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
-- [确保在 MARS 代理和 Azure 之间存在网络连接](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
+- [确保 MARS 代理与 Azure 之间存在网络连接](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - 确保 Microsoft Azure 恢复服务正在运行（在服务控制台中）。 如有必要，请重启并重试操作
 - [确保在暂存文件夹位置有 5-10% 的可用卷空间](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
-- 如果注册失败，请确保你尝试安装 Azure 备份服务器的服务器尚未在其他保管库中注册
+- 如果注册失败，则确保你尝试安装的服务器 Azure 备份服务器尚未注册到另一个保管库
 - 如果推送安装失败，请检查 DPM 代理是否存在。 如果该代理存在，请将其卸载，然后重试安装
 - [确保没有其他进程或防病毒软件在干扰 Azure 备份](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>
 - 确保 SQL 代理服务正在运行并在 MABS 服务器中设为自动<br>
+
+## <a name="configure-antivirus-for-mabs-server"></a>为 MABS 服务器配置防病毒软件
+
+MABS 与最常见的防病毒软件产品兼容。 我们建议执行以下步骤以避免冲突：
+
+1. **禁用实时监视** -禁用防病毒软件对以下项的实时监视：
+    - `C:\Program Files<MABS Installation path>\XSD` 文件夹
+    - `C:\Program Files<MABS Installation path>\Temp` 文件夹
+    - 新式备份存储卷的驱动器号
+    - 副本和传输日志：若要执行此操作，请禁用位于文件夹中的 **dpmra.exe**的实时监视 `Program Files\Microsoft Azure Backup Server\DPM\DPM\bin` 。 实时监视会降低性能，因为防病毒软件会在 MABS 每次与受保护服务器同步时扫描副本，并在每次 MABS 将更改应用于副本时扫描所有受影响的文件。
+    - 管理员控制台：为了避免对性能产生影响，请禁用 **csc.exe** 过程的实时监视。 **csc.exe**过程是 C \# 编译器，实时监视会降低性能，因为防病毒软件会扫描**csc.exe**进程在生成 XML 消息时发出的文件。 **CSC.exe** 位于以下路径中：
+        - `\Windows\Microsoft.net\Framework\v2.0.50727\csc.exe`
+        - `\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe`
+    - 对于安装在 MABS 服务器上的 MARS 代理，我们建议你排除以下文件和位置：
+        - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\bin\cbengine.exe` 作为进程
+        - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\folder`
+        - 暂存位置（如果没有使用标准位置）
+2. **禁用受保护服务器上的实时监视**：在受保护的服务器上禁用位于文件夹中的 **dpmra.exe**的实时监视 `C:\Program Files\Microsoft Data Protection Manager\DPM\bin` 。
+3. **将防病毒软件配置为删除受保护的服务器和 MABS 服务器上感染病毒的文件**：若要防止副本和恢复点的数据损坏，请将防病毒软件配置为删除感染的文件，而不是自动清除或隔离它们。 自动清除和隔离可能会导致防病毒软件修改文件，并使 MABS 无法检测到的更改。
+
+应运行手动同步，保持一致性。 每次防病毒软件从副本中删除文件时均检查作业，即使副本标记为不一致也是如此。
+
+### <a name="mabs-installation-folders"></a>MABS 安装文件夹
+
+DPM 的默认安装文件夹如下所示：
+
+- `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM`
+
+你还可运行以下命令，查找安装文件夹路径：
+
+```cmd
+Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
+```
 
 ## <a name="invalid-vault-credentials-provided"></a>提供的保管库凭据无效
 
@@ -38,13 +71,13 @@ ms.locfileid: "87054837"
 
 | 操作 | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| Backup | 副本不一致 | 检查是否已在保护组向导中启用自动一致性检查选项。 若要详细了解复制选项和一致性检查，请参阅[这篇文章](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)。<br> <ol><li> 对于系统状态/BMR 备份，请检查是否已在受保护服务器上安装 Windows Server 备份。</li><li> 检查 DPM/Microsoft Azure 备份服务器上的 DPM 存储池中是否存在空间相关的问题，并根据需要分配存储。</li><li> 检查受保护服务器上卷影复制服务的状态。 如果该服务处于禁用状态，请将其设置为手动启动。 在服务器上启动该服务。 然后返回到 DPM/Microsoft Azure 备份服务器控制台，开始与一致性检查作业同步。</li></ol>|
+| 备份 | 副本不一致 | 检查是否已在保护组向导中启用自动一致性检查选项。 若要详细了解复制选项和一致性检查，请参阅[这篇文章](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)。<br> <ol><li> 对于系统状态/BMR 备份，请检查是否已在受保护服务器上安装 Windows Server 备份。</li><li> 检查 DPM/Microsoft Azure 备份服务器上的 DPM 存储池中是否存在空间相关的问题，并根据需要分配存储。</li><li> 检查受保护服务器上卷影复制服务的状态。 如果该服务处于禁用状态，请将其设置为手动启动。 在服务器上启动该服务。 然后返回到 DPM/Microsoft Azure 备份服务器控制台，开始与一致性检查作业同步。</li></ol>|
 
 ## <a name="online-recovery-point-creation-failed"></a>在线恢复点创建失败
 
 | 操作 | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| Backup | 在线恢复点创建失败 | **错误消息**：Windows Azure Backup Agent was unable to create a snapshot of the selected volume.（Windows Azure 备份代理无法创建选定卷的快照。） <br> **解决方法**：请尝试增加副本和恢复点卷中的空间。<br> <br> **错误消息**：The Windows Azure Backup Agent cannot connect to the OBEngine service（Windows Azure 备份代理无法连接到 OBEngine 服务） <br> **解决方法**：请验证并确保 OBEngine 存在于计算机上正在运行的服务的列表中。 如果未运行 OBEngine 服务，请使用“net start OBEngine”命令启动 OBEngine 服务。 <br> <br> **错误消息**：The encryption passphrase for this server is not set. Please configure an encryption passphrase.（未设置此服务器的加密通行短语。请配置加密通行短语。） <br> **解决方法**：请尝试配置加密通行短语。 如果此方法不起作用，请执行以下步骤： <br> <ol><li>检查是否存在暂存位置。 注册表项 **HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Config** 中提到的名为 **ScratchLocation** 的位置应该存在。</li><li> 如果暂存位置存在，请尝试使用旧通行短语重新注册。 *配置加密通行短语时，请将其保存在安全的位置。*</li><ol>|
+| 备份 | 在线恢复点创建失败 | **错误消息**：Windows Azure Backup Agent was unable to create a snapshot of the selected volume.（Windows Azure 备份代理无法创建选定卷的快照。） <br> **解决方法**：请尝试增加副本和恢复点卷中的空间。<br> <br> **错误消息**：The Windows Azure Backup Agent cannot connect to the OBEngine service（Windows Azure 备份代理无法连接到 OBEngine 服务） <br> **解决方法**：请验证并确保 OBEngine 存在于计算机上正在运行的服务的列表中。 如果未运行 OBEngine 服务，请使用“net start OBEngine”命令启动 OBEngine 服务。 <br> <br> **错误消息**：The encryption passphrase for this server is not set. Please configure an encryption passphrase.（未设置此服务器的加密通行短语。请配置加密通行短语。） <br> **解决方法**：请尝试配置加密通行短语。 如果此方法不起作用，请执行以下步骤： <br> <ol><li>检查是否存在暂存位置。 注册表项 **HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Config** 中提到的名为 **ScratchLocation** 的位置应该存在。</li><li> 如果暂存位置存在，请尝试使用旧通行短语重新注册。 *配置加密通行短语时，请将其保存在安全的位置。*</li><ol>|
 
 ## <a name="the-original-and-external-dpm-servers-must-be-registered-to-the-same-vault"></a>原始和外部 DPM 服务器必须注册到同一保管库
 
@@ -56,7 +89,7 @@ ms.locfileid: "87054837"
 
 | 操作 | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| Backup | VMware VM 的联机恢复点创建作业失败。 DPM 在尝试获取 ChangeTracking 信息时遇到 VMware 错误。 ErrorCode - FileFaultFault (ID 33621) |  <ol><li> 在 VMware 上对受影响的 VM 重置 CTK。</li> <li>检查 VMware 上是否未部署独立磁盘。</li> <li>停止对受影响 VM 的保护，然后使用“刷新”按钮重新保护。 </li><li>对受影响的 VM 运行 CC（一致性检查）。</li></ol>|
+| 备份 | VMware VM 的联机恢复点创建作业失败。 DPM 在尝试获取 ChangeTracking 信息时遇到 VMware 错误。 ErrorCode - FileFaultFault (ID 33621) |  <ol><li> 在 VMware 上对受影响的 VM 重置 CTK。</li> <li>检查 VMware 上是否未部署独立磁盘。</li> <li>停止对受影响 VM 的保护，然后使用“刷新”按钮重新保护。 </li><li>对受影响的 VM 运行 CC（一致性检查）。</li></ol>|
 
 ## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>代理操作失败，因为服务器上的 DPM 代理协调器服务出现通信错误
 
@@ -86,17 +119,17 @@ ms.locfileid: "87054837"
 | 配置保护组 | DPM 无法枚举受保护计算机（受保护计算机名称）上的应用程序组件。 | 在相关数据源/组件级别的“配置保护组”UI 屏幕上选择“刷新”。 |
 | 配置保护组 | 无法配置保护 | 如果受保护的服务器是 SQL Server，请根据[此文](/system-center/dpm/back-up-sql-server?view=sc-dpm-2019)中所述，检查是否已在受保护计算机上将 sysadmin 角色权限提供给系统帐户 (NTAuthority\System)。
 | 配置保护组 | 此保护组的存储池中没有足够的可用空间。 | 添加到存储池的磁盘[不应包含分区](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)。 删除磁盘上的所有现有卷。 然后将磁盘添加到存储池。|
-| 策略更改 |无法修改备份策略。 错误：由于内部服务错误 [0x29834]，当前操作失败。 请在一段时间后重试操作。 如果问题持续出现，请联系 Microsoft 支持。 | **原因：**<br/>在以下三种情况下会发生此错误：启用安全设置、尝试缩短保留期至低于前面指定的最小值，以及使用不受支持的版本。 （不受支持的版本包括低于 Microsoft Azure 备份服务器版本 2.0.9052 和 Azure 备份服务器 Update 1 的版本。） <br/>**建议的操作：**<br/> 若要继续执行策略相关的更新，请将保留期设置为高于指定的最短保留期。 （每日、每周、每月和每年备份的最短保留期分别为 7 天、4 周、3 个月和 1 年）。 <br><br>（可选）另一种首选方法是更新备份代理和 Azure 备份服务器，以利用所有安全更新。 |
+| 策略更改 |无法修改备份策略。 错误：由于内部服务错误 [0x29834]，当前操作失败。 请在一段时间后重试操作。 如果问题持续出现，请联系 Microsoft 支持。 | 原因：<br/>在以下三种情况下会发生此错误：启用安全设置、尝试缩短保留期至低于前面指定的最小值，以及使用不受支持的版本。 （不受支持的版本包括低于 Microsoft Azure 备份服务器版本 2.0.9052 和 Azure 备份服务器 Update 1 的版本。） <br/>**建议的操作：**<br/> 若要继续执行策略相关的更新，请将保留期设置为高于指定的最短保留期。 （每日、每周、每月和每年备份的最短保留期分别为 7 天、4 周、3 个月和 1 年）。 <br><br>（可选）另一种首选方法是更新备份代理和 Azure 备份服务器，以利用所有安全更新。 |
 
 ## <a name="backup"></a>Backup
 
 | 操作 | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| Backup | 运行作业时发生意外错误。 设备未准备就绪。 | **如果产品中显示的建议操作不起作用，请执行以下步骤：** <br> <ul><li>将卷影副本存储空间设置为不对保护组中的项进行限制，然后运行一致性检查。<br></li> （或者） <li>尝试删除现有的保护组，并创建多个新组。 每个新保护组应包含单个项。</li></ul> |
-| Backup | 如果只备份系统状态，请验证受保护计算机上是否有足够的可用空间来存储系统状态备份。 | <ol><li>检查是否已在受保护计算机上安装 Windows Server 备份。</li><li>检查受保护计算机上是否存在用于系统状态的足够空间。 执行此项检查的最简单方法是转到受保护的计算机，打开“Windows Server 备份”并单击相关选项，然后选择“BMR”。 UI 会告知需要多少空间。 打开“WSB” > “本地备份” > “备份计划” > “选择备份配置” > “完整服务器”（大小已显示）。 使用该大小进行验证。</li></ol>
-| Backup | BMR 备份失败 | 如果 BMR 很大，可将某些应用程序文件移到 OS 驱动器，并重试。 |
-| Backup | 在新的 Microsoft Azure 备份服务器上重新保护 VMware VM 的选项未显示为可添加。 | VMware 属性指向已停用的旧 Microsoft Azure 备份服务器实例。 若要解决此问题，请执行下列操作：<br><ol><li>在 VCenter（类似的程序为 SC-VMM）中，转到“摘要”选项卡，然后选择“自定义属性”。 </li>  <li>从 **DPMServer** 值中删除旧的 Microsoft Azure 备份服务器名称。</li>  <li>返回到新的 Microsoft Azure 备份服务器并修改 PG。  选择“刷新”按钮后，将显示带有复选框的 VM，可将其添加到保护列表。</li></ol> |
-| Backup | 访问文件/共享文件夹时出错 | 尝试按照此文（[在 DPM 服务器上运行防病毒软件](/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)）中的建议修改防病毒设置。|
+| 备份 | 运行作业时发生意外错误。 设备未准备就绪。 | **如果产品中显示的建议操作不起作用，请执行以下步骤：** <br> <ul><li>将卷影副本存储空间设置为不对保护组中的项进行限制，然后运行一致性检查。<br></li> （或者） <li>尝试删除现有的保护组，并创建多个新组。 每个新保护组应包含单个项。</li></ul> |
+| 备份 | 如果只备份系统状态，请验证受保护计算机上是否有足够的可用空间来存储系统状态备份。 | <ol><li>检查是否已在受保护计算机上安装 Windows Server 备份。</li><li>检查受保护计算机上是否存在用于系统状态的足够空间。 执行此项检查的最简单方法是转到受保护的计算机，打开“Windows Server 备份”并单击相关选项，然后选择“BMR”。 UI 会告知需要多少空间。 打开“WSB” > “本地备份” > “备份计划” > “选择备份配置” > “完整服务器”（大小已显示）。 使用该大小进行验证。</li></ol>
+| 备份 | BMR 备份失败 | 如果 BMR 很大，可将某些应用程序文件移到 OS 驱动器，并重试。 |
+| 备份 | 在新的 Microsoft Azure 备份服务器上重新保护 VMware VM 的选项未显示为可添加。 | VMware 属性指向已停用的旧 Microsoft Azure 备份服务器实例。 若要解决此问题，请执行下列操作：<br><ol><li>在 VCenter（类似的程序为 SC-VMM）中，转到“摘要”选项卡，然后选择“自定义属性”。 </li>  <li>从 **DPMServer** 值中删除旧的 Microsoft Azure 备份服务器名称。</li>  <li>返回到新的 Microsoft Azure 备份服务器并修改 PG。  选择“刷新”按钮后，将显示带有复选框的 VM，可将其添加到保护列表。</li></ol> |
+| 备份 | 访问文件/共享文件夹时出错 | 尝试按照此文（[在 DPM 服务器上运行防病毒软件](/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)）中的建议修改防病毒设置。|
 
 ## <a name="change-passphrase"></a>更改通行短语
 

@@ -3,46 +3,42 @@ title: 教程：在 Azure Active Directory 中配置 Workday 写回Microsoft Doc
 description: 了解如何配置从 Azure AD 到 Workday 的属性写回
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: ad255bd4-9e50-43a1-a92b-359215867b6b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 1d76fb96676ad49ce28ff4ef0d6c4fbc84636638
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 324d3a21e1694d243f03beca28ac8376bedffa4d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84026468"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88526824"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>教程：配置从 Azure AD 到 Workday 的属性写回
 本教程的目的是说明从 Azure AD 到 Workday 的写回属性需要执行的步骤。 Workday 写回预配应用支持将值分配给以下 Workday 属性：
 * 工作电子邮件 
 * Workday 用户名
-* Work 座机电话号码（包括国家/地区代码、区号、号码和分机号码）
+* 工作座机电话号码 (包括国家/地区代码、区号、数字和分机) 
 * 工作座机电话号码主标志
-* 工作手机号码（包括国家/地区代码、区号、数字）
+* 工作 mobile number (包括国家/地区代码、区号、数字) 
 * 工作移动主要标志
 
 ## <a name="overview"></a>概述
 
-使用[workday 到本地 AD](workday-inbound-tutorial.md)预配应用或[workday 将](workday-inbound-cloud-only-tutorial.md)入站预配集成设置为 Azure AD 预配应用程序后，可以选择配置 workday 写回应用程序，将联系人信息（如工作电子邮件和电话号码）写入 Workday。 
+使用 [workday 到本地 AD](workday-inbound-tutorial.md) 预配应用或 [workday 将](workday-inbound-cloud-only-tutorial.md) 入站预配集成设置为 Azure AD 预配应用程序后，可以选择配置 workday 写回应用程序，将联系人信息（如工作电子邮件和电话号码）写入 Workday。 
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>此用户预配解决方案最适合哪些对象？
 
 此 Workday 写回用户预配解决方案非常适合于：
 
-* 使用 Office 365 的组织希望将它管理的权威属性（如电子邮件地址、用户名和电话号码）写回到 Workday
+* 使用 Office 365 的组织希望对其管理的权威属性进行写回 (如电子邮件地址、用户名和电话号码) 返回到 Workday
 
 ## <a name="configure-integration-system-user-in-workday"></a>在 Workday 中配置集成系统用户
 
-请参阅[配置集成系统用户](workday-inbound-tutorial.md#configure-integration-system-user-in-workday)以创建有权检索辅助数据的 Workday 集成系统用户帐户部分。 
+请参阅 [配置集成系统用户](workday-inbound-tutorial.md#configure-integration-system-user-in-workday) 以创建有权检索辅助数据的 Workday 集成系统用户帐户部分。 
 
 ## <a name="configuring-azure-ad-attribute-writeback-to-workday"></a>配置 Azure AD 属性写回到 Workday
 
@@ -86,9 +82,9 @@ ms.locfileid: "84026468"
 
 在此部分中，你将配置写回属性从 Azure AD 流到 Workday 的方式。 
 
-1. 在 "**映射**" 下的 "设置" 选项卡上，单击映射名称。
+1. 在 " **映射**" 下的 "设置" 选项卡上，单击映射名称。
 
-2. 在 "**源对象范围**" 字段中，你可以选择筛选，Azure Active Directory 中的哪些用户集应属于写回。 默认范围是“Azure AD 中的所有用户”。
+2. 在 " **源对象范围** " 字段中，你可以选择筛选，Azure Active Directory 中的哪些用户集应属于写回。 默认范围是“Azure AD 中的所有用户”。
 
 3. 在“属性映射”部分中，更新匹配的 ID 以指明 Azure Active Directory 中存储着 Workday 工作人员 ID 或员工 ID 的属性。 常用的匹配方法是将 Workday 工作人员 ID 或员工 ID 同步到 Azure AD 中的 extensionAttribute1-15，然后使用 Azure AD 中的此属性来重新匹配 Workday 中的用户。
 
@@ -103,25 +99,25 @@ ms.locfileid: "84026468"
      |-------------------------|----------------|------------------|
      | WorkphoneLandlineIsPrimary | true/false | 其输出为 "true" 或 "false" 字符串值的常量或表达式映射。 |
      | WorkphoneLandlineCountryCodeName | [三字母 ISO 3166-1 国家/地区代码](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) | 其输出为三个字母国家/地区代码的常量或表达式映射。 |
-     | WorkphoneLandlineCountryCodeNumber | [国际国家/地区电话号码](https://en.wikipedia.org/wiki/List_of_country_calling_codes) | 其输出为有效国家/地区代码（无 + 号）的常量或表达式映射。 |
-     | WorkphoneLandlineNumber | 包含区号的完整电话号码 | 映射到*telephoneNumber*属性。 使用 regex 删除空格、方括号和国家/地区代码。 请参阅以下示例。 |
-     | WorkphoneLandlineExtension | 分机号 | 如果*telephoneNumber*包含 extension，请使用 regex 提取值。 |
+     | WorkphoneLandlineCountryCodeNumber | [国际国家/地区电话号码](https://en.wikipedia.org/wiki/List_of_country_calling_codes) | 其输出为有效国家/地区代码 (没有 + 号) 的常量或表达式映射。 |
+     | WorkphoneLandlineNumber | 包含区号的完整电话号码 | 映射到 *telephoneNumber* 属性。 使用 regex 删除空格、方括号和国家/地区代码。 请参阅以下示例。 |
+     | WorkphoneLandlineExtension | 分机号 | 如果 *telephoneNumber* 包含 extension，请使用 regex 提取值。 |
      | WorkphoneMobileIsPrimary | true/false | 输出为 "true" 或 "false" 字符串值的常量映射或表达式映射 |
      | WorkphoneMobileCountryCodeName | [三字母 ISO 3166-1 国家/地区代码](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) | 其输出为三个字母国家/地区代码的常量或表达式映射。 |
-     | WorkphoneMobileCountryCodeNumber | [国际国家/地区电话号码](https://en.wikipedia.org/wiki/List_of_country_calling_codes) | 其输出为有效国家/地区代码（无 + 号）的常量或表达式映射。 |
-     | WorkphoneMobileNumber | 包含区号的完整电话号码 | 映射到*移动*属性。 使用 regex 删除空格、方括号和国家/地区代码。 请参阅以下示例。 |
+     | WorkphoneMobileCountryCodeNumber | [国际国家/地区电话号码](https://en.wikipedia.org/wiki/List_of_country_calling_codes) | 其输出为有效国家/地区代码 (没有 + 号) 的常量或表达式映射。 |
+     | WorkphoneMobileNumber | 包含区号的完整电话号码 | 映射到 *移动* 属性。 使用 regex 删除空格、方括号和国家/地区代码。 请参阅以下示例。 |
 
      > [!NOTE]
      > 调用 Change_Work_Contact Workday web 服务时，Azure AD 发送以下常数值： <br>
-     > * **Communication_Usage_Type_ID**设置为常量字符串 "WORK" <br>
+     > * **Communication_Usage_Type_ID** 设置为常量字符串 "WORK" <br>
      > * 对于移动电话号码， **Phone_Device_Type_ID**设置为常量字符串 "Mobile"; 对于座机电话号码，则设置为 "座机"。 <br>
      > 
-     > 如果 Workday 租户使用不同 Type_IDs，则会遇到写回失败。 若要防止此类失败，可以使用 Workday**维护引用 id**任务并更新 Type_IDs，以匹配 Azure AD 使用的值。 <br>
+     > 如果 Workday 租户使用不同 Type_IDs，则会遇到写回失败。 若要防止此类失败，可以使用 Workday **维护引用 id** 任务并更新 Type_IDs，以匹配 Azure AD 使用的值。 <br>
      >  
 
      **引用 regex 表达式-示例1**
 
-     如果 Azure AD 中的电话号码使用自助服务密码重置（SSPR）所需的格式设置，请使用下面的正则表达式。 <br>
+     如果 Azure AD 中的电话号码使用自助服务密码重置所需的格式设置 (SSPR) ，请使用下面的正则表达式。 <br>
      示例：如果电话号码值为 + 1 1112223333->，则正则表达式将输出1112223333
 
      ```C#
@@ -130,8 +126,8 @@ ms.locfileid: "84026468"
 
      **引用 regex 表达式-示例2**
 
-     使用下面的正则表达式，前提是 Azure AD 中的电话号码是使用格式（XXX） XXX-XXXX 设置的。 <br>
-     示例：如果电话号码值为（111） 222-3333->，则正则表达式将输出1112223333
+     如果 Azure AD 中的电话号码是使用 (XXX) XXX-XXXX 格式设置的，请使用下面的正则表达式。 <br>
+     示例：如果电话号码值为 (111) 222-3333->，则 regex 表达式将输出1112223333
 
      ```C#
      Replace([mobile], , "[()\\s-]+", , "", , )
@@ -154,7 +150,7 @@ Workday 预配应用配置完成后，可在 Azure 门户中启用预配服务�
 
 4. 无论何时，检查 Azure 门户中的“审核日志”选项卡都可以查看预配服务执行的操作。 审核日志会列出预配服务执行的所有单个同步事件，例如要从源导入并导出到目标应用程序的用户。  
 
-5. 初始同步完成后，它将在 "**预配**" 选项卡中写入摘要报告，如下所示。
+5. 初始同步完成后，它将在 " **预配** " 选项卡中写入摘要报告，如下所示。
 
      > [!div class="mx-imgBorder"]
      > ![设置进度栏](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)

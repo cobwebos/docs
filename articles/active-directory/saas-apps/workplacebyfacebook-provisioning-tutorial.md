@@ -2,36 +2,31 @@
 title: 教程：使用 Azure Active Directory 为 Workplace by Facebook 配置自动用户预配 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Workplace by Facebook 间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: 6341e67e-8ce6-42dc-a4ea-7295904a53ef
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e014ddda212689b00d646e861025d6a4fef1898b
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: ea5a7a0cd89b9aad78ce789517aa8f75767955d8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920579"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88526374"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>教程：为 Workplace by Facebook 配置自动用户预配
 
-本教程介绍了需要在 Workplace by Facebook 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置时，Azure AD 会使用 Azure AD 预配服务自动将用户和组预配到[Workplace By Facebook](https://work.workplace.com/)并取消其预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
+本教程介绍了需要在 Workplace by Facebook 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置时，Azure AD 会使用 Azure AD 预配服务自动将用户和组预配到 [Workplace By Facebook](https://work.workplace.com/) 并取消其预配。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。
 
 ## <a name="capabilities-supported"></a>支持的功能
 > [!div class="checklist"]
 > * 在 Workplace by Facebook 中创建用户
 > * 不需要访问权限时，在 Workplace by Facebook 中删除用户
 > * 使用户属性在 Azure AD 和 Workplace by Facebook 之间保持同步
-> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/workplacebyfacebook-tutorial)到 Workplace by Facebook (建议) 
+> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/workplacebyfacebook-tutorial) 到 Workplace by Facebook (建议) 
 
 >[!VIDEO https://www.youtube.com/embed/oF7I0jjCfrY]
 
@@ -40,7 +35,7 @@ ms.locfileid: "87920579"
 本教程中概述的方案假定你已具有以下先决条件：
 
 * [Azure AD 租户](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
-* Azure AD 中的一个用户帐户，有[权](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles)配置预配 (例如，应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员) 
+* Azure AD 中的一个用户帐户，有 [权](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) 配置预配 (例如，应用程序管理员、云应用程序管理员、应用程序所有者或全局管理员) 
 * 已启用 Workplace by Facebook 单一登录的订阅
 
 > [!NOTE]
@@ -54,9 +49,9 @@ ms.locfileid: "87920579"
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
 1. 了解[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
 2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
-3. 确定要[在 Azure AD 和 Workplace By Facebook 之间映射的](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)数据。
+3. 确定要 [在 Azure AD 和 Workplace By Facebook 之间映射的](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)数据。
 
-## <a name="step-2-configure-workplace-by-facebook-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Workplace by Facebook 以支持使用 Azure AD 进行预配
+## <a name="step-2-configure-workplace-by-facebook-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Workplace by Facebook 以支持使用 Azure AD 进行预配
 
 在配置和启用预配服务前，需确定 Azure AD 中哪些用户和/或组表示需要访问 Workplace by Facebook 应用的用户。 确定后，可按照此处的说明将这些用户分配到你的 Workplace by Facebook 应用：
 
@@ -72,7 +67,7 @@ ms.locfileid: "87920579"
 
 使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
 
-* 将用户和组分配到 Workplace by Facebook 时，必须选择 "**默认" 访问权限**以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
+* 将用户和组分配到 Workplace by Facebook 时，必须选择 " **默认" 访问权限**以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
 
 * 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
@@ -92,7 +87,7 @@ ms.locfileid: "87920579"
 
     ![“预配”选项卡](common/provisioning-automatic.png)
 
-5. 在 "**管理员凭据**" 部分中，单击 "**授权**"。 你将被重定向到 Workplace by Facebook 的授权页。 输入 Workplace by Facebook 用户名，并单击 "**继续**" 按钮。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 Workplace by Facebook。 如果连接失败，请确保 Workplace by Facebook 帐户具有管理员权限，然后重试。
+5. 在 " **管理员凭据** " 部分中，单击 " **授权**"。 你将被重定向到 Workplace by Facebook 的授权页。 输入 Workplace by Facebook 用户名，并单击 " **继续** " 按钮。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Workplace by Facebook。 如果连接失败，请确保 Workplace by Facebook 帐户具有管理员权限，然后重试。
 
     ![预配](./media/workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
@@ -104,9 +99,9 @@ ms.locfileid: "87920579"
 
 7. 选择“保存”。
 
-8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Workplace by Facebook**"。
+8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Workplace by Facebook**"。
 
-9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Workplace by Facebook 的用户属性。 选为“匹配”属性的属性将用于匹配 Workplace by Facebook 中的用户帐户以执行更新操作****。 如果选择更改[匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 Workplace BY Facebook API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
+9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Workplace by Facebook 的用户属性。 选为“匹配”属性的属性将用于匹配 Workplace by Facebook 中的用户帐户以执行更新操作****。 如果选择更改 [匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 Workplace BY Facebook API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
    |Attribute|类型|
    |---|---|

@@ -3,12 +3,12 @@ title: ASP.NET Core 应用程序的 Azure 应用程序见解 |Microsoft Docs
 description: 监视 ASP.NET Core Web 应用程序的可用性、性能和使用情况。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 99d2a85e96aff650573e142368a136886945dcb0
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 81d7ab38080aac941bce1f5d1dd17145f8075036
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270914"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518078"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>适用于 ASP.NET Core 应用程序的 Application Insights
 
@@ -36,6 +36,8 @@ ms.locfileid: "88270914"
 - 有效的 Application Insights 检测密钥。 将任何遥测数据发送到 Application Insights 都需要使用此密钥。 如果需要创建新的 Application Insights 资源来获取检测密钥，请参阅[创建 Application Insights 资源](./create-new-resource.md)。
 
 ## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>启用 Application Insights 服务器端遥测 (Visual Studio)
+
+对于 Visual Studio for Mac 请使用 [手册指导](#enable-application-insights-server-side-telemetry-no-visual-studio)。 只有 Windows 版本的 Visual Studio 支持此过程。
 
 1. 在 Visual Studio 中打开项目。
 

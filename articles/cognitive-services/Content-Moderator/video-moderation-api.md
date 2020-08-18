@@ -10,18 +10,18 @@ ms.subservice: content-moderator
 ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 081f512fd421bf46a86f3789eadd75e178e1b6f5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e1054edbece83804b8e49394f979dbaaf0b99917
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685312"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516582"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>在 C# 中分析令人反感的视频内容
 
 本文中的信息和代码示例可帮助你快速开始使用[适用于 .NET 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 来扫描视频中的成人或猥亵内容。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。 
 
 ## <a name="prerequisites"></a>必备条件
 - 任何版本的 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/)

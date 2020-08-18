@@ -4,12 +4,12 @@ description: 本文解答有关 Microsoft Azure 备份服务器 (MABS) 和 DPM (
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 07/05/2019
-ms.openlocfilehash: 35957a1e8a3d6c3d9be06d9d44dbcd47efa0e6ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b2994e250c37d707eee5428e83c151728f83a1ab
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74173157"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522923"
 ---
 # <a name="azure-backup-server-and-dpm---faq"></a>Azure 备份服务器和 DPM - 常见问题解答
 
@@ -36,6 +36,10 @@ ms.locfileid: "74173157"
 ### <a name="why-cant-i-add-an-external-dpm-server-after-installing-ur7-and-latest-azure-backup-agent"></a>在安装 UR7 以及最新 Azure 备份代理之后，为何无法添加外部 DPM 服务器？
 
 对于通过云对数据源进行保护的 DPM 服务器（使用 Update Rollup 7 之前的更新汇总），必须在安装 UR7 及最新 Azure 备份代理之后等待至少一天，然后才能开始“添加外部 DPM 服务器”  。 需要一天的时间才能将 DPM 保护组的元数据上传到 Azure。 首次上传保护组元数据时通过一个每晚执行的作业实现。
+
+### <a name="are-there-recommendations-for-configuring-exclusions-for-antivirus-software"></a>是否有针对防病毒软件配置排除的建议？
+
+是，建议配置防病毒排除。 对于 DPM 排除，请参阅 [在 dpm 服务器上运行防病毒软件](https://docs.microsoft.com/system-center/dpm/run-antivirus-server?view=sc-dpm-2019)。 有关 MABS 的排除项，请参阅为 [MABS 服务器配置防病毒软件](backup-azure-mabs-troubleshoot.md#configure-antivirus-for-mabs-server)。
 
 ## <a name="vmware-and-hyper-v-backup"></a>VMware 和 Hyper-V 备份
 
