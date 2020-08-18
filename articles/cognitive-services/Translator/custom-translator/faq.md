@@ -1,20 +1,20 @@
 ---
-title: 常见问题解答 - 自定义翻译
+title: 常见问题-自定义转换器
 titleSuffix: Azure Cognitive Services
 description: 本文包含有关 Azure 认知服务自定义转换器的常见问题的解答。
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: reference
-ms.openlocfilehash: 2edc5e9e255af321a30521ba1e707eea30d81f73
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: 06caafe75682a2375a8023787f9905ca1e8117c9
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85957590"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507223"
 ---
 # <a name="custom-translator-frequently-asked-questions"></a>自定义翻译人员常见问题
 
@@ -41,7 +41,7 @@ ms.locfileid: "85957590"
 
 ## <a name="how-do-you-access-a-deployed-system"></a>如何访问已部署的系统？
 
-通过指定类别 Id，可以通过转换器访问部署的系统。 有关转换器的详细信息，请参阅[API 参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)网页。
+可以使用 Microsoft 文本翻译 API V3 并指定 CategoryID 来访问已部署的系统。 在 [API 参考](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)网页中可以找到有关文本翻译 API 的详细信息。
 
 ## <a name="how-do-i-skip-alignment-and-sentence-breaking-if-my-data-is-already-sentence-aligned"></a>如果我的数据已进行句子对齐，如何跳过对齐和断句？
 
@@ -49,6 +49,7 @@ ms.locfileid: "85957590"
 
 如果提取的句子数与具有相同基本名称的两个文件不匹配，自定义翻译仍会针对 `.align` 文件运行句子对齐程序。
 
-## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>我已尝试上传 TMX，但出现“文档处理失败”消息。
+## <a name="i-tried-uploading-my-tmx-but-it-says-document-processing-failed"></a>我尝试上传我的 TMX，但显示 "文档处理失败"
+
 
 请确保 TMX 符合 <https://www.gala-global.org/tmx-14b> 中的 TMX 1.4b 规范。

@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: f86400f1fb45217133bbd715788986994f5f77cc
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f6dc732a512368b007a289c3aaabc3123a696d96
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836252"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505251"
 ---
 # <a name="mv2-series"></a>Mv2 系列
 
@@ -28,7 +28,7 @@ Mv2 系列 VM 的 Intel®超线程技术功能
 
 内存保留更新：不支持
 
-写入加速器：[支持](./windows/how-to-enable-write-accelerator.md)
+写入加速器： [支持](./how-to-enable-write-accelerator.md)
 
 |大小 | vCPU | 内存:GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 非缓存磁盘最大吞吐量：IOPS / MBps | 最大 NIC 数 | 预期网络带宽 (Mbps)  |
 |---|---|---|---|---|---|---|---|---|
@@ -37,7 +37,7 @@ Mv2 系列 VM 的 Intel®超线程技术功能
 | Standard_M416ms_v2<sup>1</sup> | 416 | 11400 | 8192 | 64 | 250000/1600 (14080)  | 80000 / 2000 | 8 | 32000 |
 | Standard_M416s_v2<sup>1</sup> | 416 | 5700 | 8192 | 64 | 250000/1600 (14080)  | 80000 / 2000 | 8 | 32000 |
 
-<sup>1</sup> Mv2 系列 vm 仅为第2代，并且支持第2代支持映像的子集。 请参阅下面的 Mv2 系列支持映像的完整列表。 如果你使用的是 Linux，请参阅对[Azure 上的第2代 vm 的支持](./linux/generation-2.md)，了解有关如何查找并选择映像的说明。 如果使用的是 Windows，请参阅对[Azure 上的第2代 vm 的支持](./windows/generation-2.md)，了解有关如何查找和选择映像的说明。 
+<sup>1</sup> Mv2 系列 vm 仅为第2代，并且支持第2代支持映像的子集。 请参阅下面的 Mv2 系列支持映像的完整列表。 如果你使用的是 Linux，请参阅对 [Azure 上的第2代 vm 的支持](./linux/generation-2.md) ，了解有关如何查找并选择映像的说明。 如果使用的是 Windows，请参阅对 [Azure 上的第2代 vm 的支持](./windows/generation-2.md) ，了解有关如何查找和选择映像的说明。 
 
 - Windows Server 2019 或更高版本
 - SUSE Linux Enterprise Server 12 SP4 及更高版本或 SUSE Linux Enterprise Server 15 SP1 及更高版本
@@ -57,9 +57,9 @@ Mv2 系列 VM 的 Intel®超线程技术功能
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
 
-定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
+定价计算器： [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 
-有关磁盘类型的详细信息：[磁盘类型](./linux/disks-types.md#ultra-disk)
+有关磁盘类型的详细信息： [磁盘类型](./linux/disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>后续步骤

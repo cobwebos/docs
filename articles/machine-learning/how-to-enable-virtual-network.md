@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 947f7afba6a8b40e9b1c71ac817239dd039539f7
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 9f92e703dd45e893a3dfdd8a4c1d6aa3e9b8e96e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192400"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506492"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>使用专用虚拟网络进行训练和推理期间的网络隔离
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -49,7 +49,7 @@ __虚拟网络__充当安全边界，可将 Azure 资源与公共 Internet 相�
 > [!TIP]
 > 可以结合使用虚拟网络和专用链接，以保护你的工作区和其他 Azure 资源之间的通信。 不过，有些组合需要 Enterprise Edition 工作区。 若要了解哪些方案需要 Enterprise Edition，请参阅下表：
 >
-> | 场景 | Enterprise</br>edition | 基本</br>edition |
+> | 方案 | Enterprise</br>edition | 基本</br>edition |
 > | ----- |:-----:|:-----:| 
 > | 无虚拟网络或专用链接 | ✔ | ✔ |
 > | 无专用链接的工作区。 虚拟网络中的其他资源（Azure 容器注册表除外） | ✔ | ✔ |
@@ -92,7 +92,7 @@ __虚拟网络__充当安全边界，可将 Azure 资源与公共 Internet 相�
 
 将你的工作区和存储帐户添加到同一虚拟网络，以便它们可以相互访问。
 
-1. 若要将工作区连接到虚拟网络，请[启用 Azure 专用链接](how-to-configure-private-link.md)。 此功能目前以预览版形式在“美国东部”、“美国西部 2”、“美国中南部”区域提供。
+1. 若要将工作区连接到虚拟网络，请[启用 Azure 专用链接](how-to-configure-private-link.md)。 此功能目前以预览版提供，在美国东部和美国西部2区域提供。
 
 1. 若要将存储帐户连接到虚拟网络，请[配置防火墙和虚拟网络设置](#use-a-storage-account-for-your-workspace)。
 

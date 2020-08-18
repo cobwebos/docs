@@ -91,16 +91,6 @@
           href: application-proxy-high-availability-load-balancing.md
         - name: 比较远程访问解决方案
           href: application-proxy-migration.md
-    - name: 将应用推向市场
-      items:
-        - name: 为多租户应用程序启用 SSO
-          href: isv-sso-content.md
-        - name: 为多租户应用程序创建 Azure 租户
-          href: isv-tenant-multi-tenant-app.md
-        - name: 选择多租户联合身份验证
-          href: isv-choose-multi-tenant-federation.md
-        - name: 为多租户应用程序创建文档
-          href: isv-create-sso-documentation.md
 - name: 操作指南
   expanded: false
   items:

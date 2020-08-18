@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc2030f589185fd39c0f10b00c012db038a4e008
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 394a4c171153ecf50ff5d755c42e3c5f939b2ec7
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848709"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507172"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 网络策略服务器扩展集成 VPN 基础结构与 Azure MFA
 
@@ -228,9 +228,9 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 2. 在“服务器管理器”中，选择“工具”，然后选择“路由和远程访问”。 
 
-3. 在 "**路由和远程访问**" 窗口中，右键单击 " ** \<server name> （本地）**"，然后选择 "**属性**"。
+3. 在 "**路由和远程访问**" 窗口中，右键单击 " ** \<server name> (本地) **"，然后选择 "**属性**"。
 
-4. 在 " ** \<server name> （本地）属性**" 窗口中，选择 "**安全**" 选项卡。
+4. 在 " ** \<server name> (本地) 属性**" 窗口中，选择 "**安全**" 选项卡。
 
 5. 在“安全”选项卡的“身份验证提供程序”下，选择“RADIUS 身份验证”，然后选择“配置”。   
 
@@ -308,17 +308,23 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 本部分将说明如何配置 VPN，以通过 VPN 服务器使用 MFA 进行客户端身份验证。
 
+> [!NOTE]
+> REQUIRE_USER_MATCH 注册表项区分大小写。 所有值必须以大写格式设置。
+>
+
 安装和配置 NPS 扩展后，此服务器处理的所有基于 RADIUS 的客户端身份验证都需要使用 MFA。 如果所有 VPN 用户都未在 Azure 多重身份验证中注册，可以执行以下任一操作：
 
 * 设置另一个 RADIUS 服务器对未配置为使用 MFA 的用户进行身份验证。
 
 * 如果用户在 Azure 多重身份验证中注册了，则创建一个注册表项，使得被质询的用户可提供二次身份验证因素。
 
-创建一个名为 REQUIRE_USER_MATCH in HKLM\SOFTWARE\Microsoft\AzureMfa 的新字符串值，并将值设置为 True 或 False。 
+_在 HKLM\SOFTWARE\Microsoft\AzureMfa 中_创建一个名为 REQUIRE_USER_MATCH 的新字符串值，并将该值设置为*TRUE*或*FALSE*。
 
 ![“要求用户匹配”设置](./media/howto-mfa-nps-extension-vpn/image34.png)
 
-如果值设置为 True，或者空白，则所有身份验证请求都将受到 MFA 的质询。 如果值设为 False，则仅向在 Azure 多重身份验证中注册的用户发出 MFA 质询。 仅在在测试或生产环境中，载入期间使用 False 设置。
+如果将该值设置为 *TRUE* 或为空，则所有身份验证请求都将受到 MFA 质询的约束。 如果该值设置为 *FALSE*，则仅向在 Azure 多重身份验证中注册的用户发出 MFA 质询。 在载入期间，只能在测试或生产环境中使用 *FALSE* 设置。
+
+
 
 ### <a name="obtain-the-azure-active-directory-tenant-id"></a>获取 Azure Active Directory 租户 ID
 
@@ -326,7 +332,7 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 1. 以 Azure 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com)。
 1. 在 Azure 门户菜单中，选择“Azure Active Directory”，或在任意页面中搜索并选择“Azure Active Directory”。
-1. 在 "**概述**" 页上，将显示*租户信息*。 在 "*租户 ID*" 旁边，选择 "**复制**" 图标，如以下示例屏幕截图所示：
+1. 在 " **概述** " 页上，将显示 *租户信息* 。 在 " *租户 ID*" 旁边，选择 " **复制** " 图标，如以下示例屏幕截图所示：
 
    ![正在从 Azure 门户获取租户 ID](./media/howto-mfa-nps-extension-vpn/azure-active-directory-tenant-id-portal.png)
 

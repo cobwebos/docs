@@ -16,12 +16,12 @@ ms.date: 07/22/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa18b55884a22f6c64f1c08bd5be8a71b265029a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a01f945496d2f0bc81a108c5e58c89587c1c4e38
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034377"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505472"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>委托和角色 Azure AD 的权利管理
 
@@ -51,7 +51,7 @@ ms.locfileid: "87034377"
 
     请注意，Mamta、Mark 和 Joe 看不到彼此的目录。
 
-1. Mamta 创建一个**营销**目录，它是资源的容器。
+1. Mamta 创建一个 **营销** 目录，它是资源的容器。
 
 1. Mamta 向此目录添加其市场营销部拥有的资源。
 
@@ -116,7 +116,7 @@ ms.locfileid: "87034377"
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>将资源添加到目录所需的角色
 
-全局管理员可以在目录中添加或删除任何组（云创建的安全组或云创建的 Office 365 组）、应用程序或 SharePoint Online 站点。 用户管理员可以在目录中添加或删除任何组或应用程序。
+全局管理员可以在目录中添加或删除 (云创建的安全组或云创建的 Office 365 组) 、应用程序或 SharePoint Online 站点中的任何组。 用户管理员可以在目录中添加或删除任何组或应用程序，而将组配置为可分配给目录角色。
 
 对于不充当全局管理员或用户管理员的用户，若要将组、应用程序或 SharePoint Online 站点添加到目录，该用户必须同时具有所需的 Azure AD 目录角色和目录所有者权利管理角色。** 下表列出了将资源添加到目录所需的角色组合。 若要从目录中删除资源，必须具有相同的角色。
 
@@ -131,6 +131,9 @@ ms.locfileid: "87034377"
 | [应用程序管理员](../users-groups-roles/directory-assign-admin-roles.md) | 目录所有者 |  |  | :heavy_check_mark: |  |
 | [云应用程序管理员](../users-groups-roles/directory-assign-admin-roles.md) | 目录所有者 |  |  | :heavy_check_mark: |  |
 | 用户 | 目录所有者 | 仅限组所有者 | 仅限组所有者 | 仅限应用所有者 |  |
+
+> [!NOTE]
+> 如果用户添加安全组或 Office 365 组，则该组不能是可分配角色的组。 如果用户在创建访问包时添加了可分配角色的组，则这些组也必须是该角色可分配的组的所有者。 有关详细信息，请参阅 [在 Azure Active Directory 中创建可分配角色的组](../users-groups-roles/roles-groups-create-eligible.md)。
 
 若要确定任务的最小特权角色，还可以参考[按 Azure Active Directory 中的管理员任务划分的管理员角色](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)。
 

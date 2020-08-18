@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure PowerShell 创建 Azure AD 域服务资源林 |Microsoft Docs
-description: 本文介绍如何使用 Azure PowerShell 创建和配置 Azure Active Directory 域服务资源林和出站林到本地 Active Directory 域服务环境。
+title: 使用 Azure PowerShell 创建 Azure AD 域服务资源林 | Microsoft Docs
+description: 在本文中，可了解如何使用 Azure PowerShell 创建和配置 Azure Active Directory 域服务资源林以及到本地 Active Directory 域服务环境的出站林。
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -9,16 +9,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: eb627b8069bcd9efd1d56adab5eda45dc34a1a10
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 50a8e4f6d966a63a8e727dbacefbc7bb21f5f98b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921990"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506322"
 ---
-# <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>使用 Azure PowerShell 创建与本地域的 Azure Active Directory 域服务资源林和出站林信任
+# <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>使用 Azure PowerShell 创建 Azure Active Directory 域服务资源林以及到本地域的出站林信任
 
-在无法同步密码哈希的环境中，或者用户只使用智能卡登录，因此他们不知道密码的情况下，你可以在 Azure Active Directory 域服务 (Azure AD DS) 中使用资源林。 资源林使用从 Azure AD DS 到一个或多个本地 AD DS 环境的单向出站信任。 这种信任关系可让用户、应用程序和计算机通过 Azure AD DS 托管域向本地域进行身份验证。 在资源林中，本地密码哈希永远不会同步。
+在无法同步密码哈希的环境中，或者用户只使用智能卡登录，因此他们不知道密码的情况下，你可以在 Azure Active Directory 域服务 (Azure AD DS) 中使用资源林。 资源林使用从 Azure AD DS 到一个或多个本地 AD DS 环境的单向出站信任。 这种信任关系可让用户、应用程序和计算机通过 Azure AD DS 托管域向本地域进行身份验证。 在资源林中，本地密码哈希从不会进行同步。
 
 ![从 Azure AD DS 到本地 AD DS 的林信任关系图](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
@@ -34,7 +34,7 @@ ms.locfileid: "87921990"
 如果还没有 Azure 订阅，可以在开始前[创建一个帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 > [!IMPORTANT]
-> 托管域资源林目前不支持 Azure HDInsight 或 Azure 文件。 默认托管域用户林同时支持这两个附加服务。
+> 托管域资源林目前不支持 Azure HDInsight 或 Azure 文件存储。 默认托管域用户林支持这两个附加服务。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -56,25 +56,25 @@ ms.locfileid: "87921990"
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
-本文介绍如何使用 Azure 门户从托管域创建和配置出站林信任。 若要开始操作，请登录到 [Azure 门户](https://portal.azure.com)。
+在文本中，会使用 Azure 门户从托管域创建并配置出站林信任。 若要开始操作，请登录到 [Azure 门户](https://portal.azure.com)。
 
 ## <a name="deployment-process"></a>部署过程
 
-这是创建托管域资源林以及与本地 AD DS 的信任关系的多部分过程。 以下高级步骤构建你的可信混合环境：
+这是一个多部分过程，用于创建托管域资源林以及与本地 AD DS 的信任关系。 以下高级步骤可构建受信任混合环境：
 
 1. 创建托管域服务主体。
 1. 创建托管域资源林。
 1. 使用站点到站点 VPN 或 Express Route 创建混合网络连接。
-1. 创建信任关系的托管域方。
+1. 创建信任关系的托管域端。
 1. 创建信任关系的本地 AD DS 端。
 
-在开始之前，请确保了解[网络注意事项、林命名和 DNS 要求](tutorial-create-forest-trust.md#networking-considerations)。 部署后，无法更改托管域林名称。
+在开始之前，请确保了解[网络注意事项、林命名和 DNS 要求](tutorial-create-forest-trust.md#networking-considerations)。 部署后，便无法更改托管域林名称。
 
 ## <a name="create-the-azure-ad-service-principal"></a>创建 Azure AD 服务主体
 
-Azure AD DS 要求服务主体从 Azure AD 同步数据。 必须先在 Azure AD 租户中创建此主体，然后才能创建托管域资源林。
+Azure AD DS 需要一个服务主体从 Azure AD 同步数据。 必须先在 Azure AD 租户中创建此主体，然后再创建托管域资源林。
 
-创建用于 Azure AD DS 的 Azure AD 服务主体，以便进行通信和身份验证。 使用名称为“域控制器服务”的特定应用程序 ID 2565bd9d-da50-47d4-8b85-4c97f669dc36。 请不要更改此应用程序 ID。
+创建一个 Azure AD 服务主体，使 Azure AD DS 能够通信并对自身进行身份验证。 使用名称为“域控制器服务”的特定应用程序 ID 2565bd9d-da50-47d4-8b85-4c97f669dc36。 请不要更改此应用程序 ID。
 
 使用 [Get-AzureADServicePrincipal][New-AzureADServicePrincipal] cmdlet 创建 Azure AD 服务主体：
 
@@ -84,46 +84,46 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
 ## <a name="create-a-managed-domain-resource-forest"></a>创建托管域资源林
 
-若要创建托管域资源林，请使用 `New-AzureAaddsForest` 脚本。 此脚本是支持创建和管理托管域资源林的一组更广泛的命令的一部分，包括在下一部分中创建单向绑定林。 这些脚本可从[PowerShell 库](https://www.powershellgallery.com/)提供，由 Azure AD 工程团队进行数字签名。
+若要创建托管域资源林，请使用 `New-AzureAaddsForest` 脚本。 此脚本是一组更广泛的命令的一部分，这些命令支持创建和管理托管域资源林，包括在下一部分中创建单向绑定林。 这些脚本可从 [PowerShell 库](https://www.powershellgallery.com/)获取，由 Azure AD 工程团队进行数字签名。
 
-1. 首先，使用[AzResourceGroup][New-AzResourceGroup] cmdlet 创建资源组。 在以下示例中，资源组被命名为 myResourceGroup，并且是在 westus 区域中创建的。  使用自己的名称和所需区域：
+1. 首先，使用 [New-AzResourceGroup][New-AzResourceGroup] cmdlet 创建一个资源组。 以下示例中，资源组名为 myResourceGroup，在 westus 区域中创建。  使用自己的名称和所需区域：
 
-    ```azure-powershell
+    ```azurepowershell
     New-AzResourceGroup `
       -Name "myResourceGroup" `
       -Location "WestUS"
     ```
 
-1. `New-AaddsResourceForestTrust`使用[安装脚本][Install-Script]cmdlet 从[PowerShell 库][powershell-gallery]安装脚本：
+1. 使用 [Install-Script][Install-Script] cmdlet，从 [PowerShell 库][powershell-gallery]安装 `New-AaddsResourceForestTrust` 脚本：
 
     ```powershell
     Install-Script -Name New-AaddsResourceForestTrust
     ```
 
-1. 查看脚本所需的以下参数 `New-AzureAaddsForest` 。 请确保也具有必备**Azure PowerShell**和**Azure AD PowerShell**模块。 请确保已计划虚拟网络要求，以便提供应用程序和本地连接。
+1. 查看 `New-AzureAaddsForest` 脚本所需的以下参数。 确保还具有必备的 Azure PowerShell 和 Azure AD PowerShell 模块 。 确保计划了虚拟网络要求，以提供应用程序和本地连接。
 
-    | “属性”                         | 脚本参数          | 说明 |
+    | 名称                         | 脚本参数          | 说明 |
     |:-----------------------------|---------------------------|:------------|
-    | 订阅                 | *-azureSubscriptionId*    | 用于 Azure AD DS 计费的订阅 ID。 可以使用[get-azurermsubscription][Get-AzureRMSubscription] cmdlet 获取订阅列表。 |
-    | 资源组               | *-aaddsResourceGroupName* | 托管域和关联资源的资源组的名称。 |
-    | 位置                     | *-aaddsLocation*          | 承载托管域的 Azure 区域。 有关可用区域的详细 Azure AD，请参阅[支持的区域。](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all) |
-    | Azure AD DS 管理员    | *-aaddsAdminUser*         | 第一个托管域管理员的用户主体名称。 此帐户必须是 Azure Active Directory 中的现有云用户帐户。 用户以及运行脚本的用户将添加到*AAD DC 管理员*组。 |
-    | Azure AD DS 域名      | *-aaddsDomainName*        | 托管域的 FQDN，基于前面有关如何选择林名称的指南。 |
+    | 订阅                 | -azureSubscriptionId    | 用于 Azure AD DS 计费的订阅 ID。 可以使用 [Get-AzureRMSubscription][Get-AzureRMSubscription] cmdlet 获取订阅列表。 |
+    | 资源组               | -aaddsResourceGroupName | 托管域和关联资源的资源组的名称。 |
+    | 位置                     | -aaddsLocation          | 承载托管域的 Azure 区域。 有关可用区域，请参阅 [Azure AD DS 支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all)。 |
+    | Azure AD DS 管理员    | -aaddsAdminUser         | 第一个托管域管理员的用户主体名称。 此帐户必须是 Azure Active Directory 中的现有云用户帐户。 该用户（以及运行脚本的用户）会添加到“AAD DC 管理员”组中。 |
+    | Azure AD DS 域名      | -aaddsDomainName        | 托管域的 FQDN，基于前面有关如何选择林名称的指导。 |
 
-    `New-AzureAaddsForest`如果这些资源尚不存在，该脚本可以创建 Azure 虚拟网络并 AZURE AD DS 子网。 指定该脚本时，可以选择创建工作负荷子网：
+    如果这些资源尚未存在，则 `New-AzureAaddsForest` 脚本可以创建 Azure 虚拟网络和 Azure AD DS 子网。 如果进行了指定，脚本可以选择创建工作负载子网：
 
-    | “属性”                              | 脚本参数                  | 描述 |
+    | 名称                              | 脚本参数                  | 描述 |
     |:----------------------------------|:----------------------------------|:------------|
-    | 虚拟网络名称              | *-aaddsVnetName*                  | 托管域的虚拟网络的名称。|
-    | 地址空间                     | *-aaddsVnetCIDRAddressSpace*      | 如果创建虚拟网络) ，则 (CIDR 表示法中的虚拟网络地址范围。|
-    | Azure AD DS 子网名称           | *-aaddsSubnetName*                | 托管托管域的*aaddsVnetName*虚拟网络的子网名称。 不要将自己的 Vm 和工作负载部署到此子网中。 |
-    | Azure AD DS 地址范围         | *-aaddsSubnetCIDRAddressRange*    | AAD DS 实例的子网地址范围，以 CIDR 表示法表示，例如*192.168.1.0/24*。 地址范围必须包含在虚拟网络的地址范围内，并且不同于其他子网。 |
-    | 工作负荷子网名称 (可选)    | *-workloadSubnetName*             | *AaddsVnetName*虚拟网络中子网的可选名称，用于创建你自己的应用程序工作负荷。 Vm 和应用程序，并改为连接到对等互连 Azure 虚拟网络。 |
-    | 工作负荷地址范围 (可选)  | *-workloadSubnetCIDRAddressRange* | 适用于应用程序工作负荷的可选子网地址范围，如*192.168.2.0/24*。 地址范围必须包含在虚拟网络的地址范围内，并且不同于其他子网。|
+    | 虚拟网络名称              | -aaddsVnetName                  | 托管域的虚拟网络的名称。|
+    | 地址空间                     | -aaddsVnetCIDRAddressSpace      | 采用 CIDR 表示法的虚拟网络地址范围（如果创建虚拟网络）。|
+    | Azure AD DS 子网名称           | -aaddsSubnetName                | 承载托管域的 aaddsVnetName 虚拟网络的子网名称。 不要将自己的 VM 和工作负载部署到此子网中。 |
+    | Azure AD DS 地址范围         | -aaddsSubnetCIDRAddressRange    | AAD DS 实例的子网地址范围（采用 CIDR 表示法），例如 192.168.1.0/24。 地址范围必须包含在虚拟网络的地址范围中，并且与其他子网不同。 |
+    | 工作负载子网名称（可选）   | -workloadSubnetName             | 在 aaddsVnetName 虚拟网络中要为自己的应用程序工作负载创建的子网的可选名称。 VM 和应用程序，也改为连接到对等互连 Azure 虚拟网络。 |
+    | 工作负载地址范围（可选） | -workloadSubnetCIDRAddressRange | 用于应用程序工作负载的可选子网地址范围（采用 CIDR 表示法），如 192.168.2.0/24。 地址范围必须包含在虚拟网络的地址范围中，并且与其他子网不同。|
 
-1. 现在，使用脚本创建托管域资源林 `New-AzureAaaddsForest` 。 以下示例创建名为*addscontoso.com*的林，并创建工作负荷子网。 提供自己的参数名称和 IP 地址范围或现有虚拟网络。
+1. 现在使用 `New-AzureAaaddsForest` 脚本创建托管域资源林。 以下示例创建名为 addscontoso.com 的林，并创建工作负载子网。 提供自己的参数名称和 IP 地址范围或现有虚拟网络。
 
-    ```azure-powershell
+    ```azurepowershell
     New-AzureAaddsForest `
         -azureSubscriptionId <subscriptionId> `
         -aaddsResourceGroupName "myResourceGroup" `
@@ -138,40 +138,40 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
         -workloadSubnetCIDRAddressRange "192.168.2.0/24"
     ```
 
-    创建托管域资源林和支持资源需要花费很长时间。 允许脚本完成。 转到下一节，配置本地网络连接，同时 Azure AD 资源林在后台设置。
+    创建托管域资源林和支持资源需要花费大量时间。 允许脚本完成。 继续进行下一部分，配置本地网络连接，同时 Azure AD 资源林在后台进行预配。
 
 ## <a name="configure-and-validate-network-settings"></a>配置和验证网络设置
 
-随着托管域继续部署，配置和验证与本地数据中心的混合网络连接。 还需要一个用于管理域的管理 VM，以便定期维护。 你的环境中可能已存在一些混合连接，或者你可能需要与团队中的其他连接来配置连接。
+随着托管域继续部署，配置和验证与本地数据中心的混合网络连接。 还需要一个管理 VM，用于管理域以便进行定期维护。 你的环境中可能已存在一些混合连接，或者你可能需要与团队中的其他人员合作配置连接。
 
 在开始之前，请确保了解[网络注意事项和建议](tutorial-create-forest-trust.md#networking-considerations)。
 
-1. 使用 Azure VPN 或 Azure ExpressRoute 连接创建到本地网络到 Azure 的混合连接。 混合网络配置超出了本文档的范围，你的环境中可能已存在此配置。 有关特定方案的详细信息，请参阅以下文章：
+1. 使用 Azure VPN 或 Azure ExpressRoute 连接创建与 Azure 的本地网络的混合连接。 混合网络配置超出了本文档的范围，你的环境中可能已存在该配置。 有关特定方案的详细信息，请参阅以下文章：
 
     * [Azure 站点到站点 VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways)。
     * [Azure ExpressRoute 概述](/azure/expressroute/expressroute-introduction)。
 
     > [!IMPORTANT]
-    > 如果直接创建连接到托管域的虚拟网络，请使用单独的网关子网。 不要在托管域的子网中创建网关。
+    > 如果直接创建与托管域的虚拟网络的连接，请使用单独的网关子网。 请勿在托管域的子网中创建网关。
 
-1. 若要管理托管域，请创建管理 VM，将其加入托管域，并安装所需的 AD DS 管理工具。
+1. 若要管理托管域，请创建管理 VM，将它加入托管域，并安装所需 AD DS 管理工具。
 
-    在部署托管域资源林时，[创建 Windows SERVER VM](https://docs.microsoft.com/azure/active-directory-domain-services/join-windows-vm) ，然后[安装核心 AD DS 管理工具](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-management-vm)来安装所需的管理工具。 在成功部署域后，请等待将管理 VM 加入托管域，直到执行以下步骤之一。
+    在部署托管域资源林期间，[创建 Windows Server VM](https://docs.microsoft.com/azure/active-directory-domain-services/join-windows-vm)，然后[安装核心 AD DS 管理工具](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-management-vm)以安装所需管理工具。 等待将管理 VM 加入托管域，直到在成功部署域之后执行以下步骤之一。
 
-1. 验证本地网络和 Azure 虚拟网络之间的网络连接。
+1. 验证本地网络与 Azure 虚拟网络之间的网络连接。
 
-    * 例如，确认你的本地域控制器可以使用或远程桌面连接到托管 VM `ping` 。
-    * 验证你的管理 VM 是否可以使用等实用工具再次连接到你的本地域控制器 `ping` 。
+    * 例如，使用 `ping` 或远程桌面确认本地域控制器可以连接到托管 VM。
+    * 再次使用诸如 `ping` 之类的实用工具验证管理 VM 是否可以连接到本地域控制器。
 
-1. 在 Azure 门户中，搜索并选择“Azure AD 域服务”。 选择托管域（如*aaddscontoso.com* ），并等待状态报告为 "**正在运行**"。
+1. 在 Azure 门户中，搜索并选择“Azure AD 域服务”。 选择托管域（如 aaddscontoso.com），并等待状态报告为“正在运行”。
 
-    运行时，请[更新 Azure 虚拟网络的 DNS 设置](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)，然后[为 Azure AD DS 启用用户帐户](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，以便为托管域资源林完成配置。
+    运行时，[更新 Azure 虚拟网络的 DNS 设置](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network)，然后[为 Azure AD DS 启用用户帐户](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)，以便为托管域资源林完成配置。
 
-1. 记下 "概述" 页上显示的 DNS 地址。 在以下部分配置信任关系的本地 Active Directory 端时，需要使用这些地址。
-1. 重新启动管理 VM 以接收新的 DNS 设置，然后将[VM 加入托管域](join-windows-vm.md#join-the-vm-to-the-managed-domain)。
-1. 管理 VM 加入托管域后，请使用远程桌面再次连接。
+1. 记下概述页上显示的 DNS 地址。 在后续部分中配置信任关系的本地 Active Directory 端时，需要使用这些地址。
+1. 重启管理 VM 以便它可接收新 DNS 设置，然后[将 VM 加入托管域](join-windows-vm.md#join-the-vm-to-the-managed-domain)。
+1. 管理 VM 加入托管域之后，再次使用远程桌面进行连接。
 
-    在命令提示符下，使用 `nslookup` 和托管域资源林名称来验证资源林的名称解析。
+    在命令提示符下，使用 `nslookup` 和托管域资源林名称验证资源林的名称解析。
 
     ```console
     nslookup aaddscontoso.com
@@ -181,30 +181,30 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
 ## <a name="create-the-forest-trust"></a>创建林信任
 
-林信任分为两部分：托管域资源林中的单向出站林信任，以及本地 AD DS 林中的单向入站林信任。 手动创建此信任关系的双方。 创建双方后，用户和资源可以使用林信任成功进行身份验证。 托管域资源林支持到本地林的最高 5 1 向出站林信任。
+林信任具有两个部分：托管域资源林中的单向出站林信任，以及本地 AD DS 林中的单向入站林信任。 需手动创建此信任关系的两端。 创建两端后，用户和资源可以使用林信任成功进行身份验证。 托管域资源林支持多达五个到本地林的单向出站林信任。
 
-### <a name="create-the-managed-domain-side-of-the-trust-relationship"></a>创建信任关系的托管域方
+### <a name="create-the-managed-domain-side-of-the-trust-relationship"></a>创建信任关系的托管域端
 
-使用 `Add-AaddsResourceForestTrust` 脚本创建信任关系的托管域方。 首先， `Add-AaddsResourceForestTrust` 使用[安装脚本][Install-Script]cmdlet 从[PowerShell 库][powershell-gallery]安装脚本：
+使用 `Add-AaddsResourceForestTrust` 脚本可创建信任关系的托管域端。 首先，使用 [Install-Script][Install-Script] cmdlet，从 [PowerShell 库][powershell-gallery]安装 `Add-AaddsResourceForestTrust` 脚本：
 
 ```powershell
 Install-Script -Name Add-AaddsResourceForestTrust
 ```
 
-现在，请提供以下信息：
+现在请为脚本提供以下信息：
 
-| “属性”                               | 脚本参数     | 描述 |
+| 名称                               | 脚本参数     | 描述 |
 |:-----------------------------------|:---------------------|:------------|
-| Azure AD DS 域名            | *-ManagedDomainFqdn* | 托管域的 FQDN，如*aaddscontoso.com* |
-| 本地 AD DS 域名      | *-TrustFqdn*         | 受信任林的 FQDN，如*onprem.contoso.com* |
-| 信任友好名称                | *-TrustFriendlyName* | 信任关系的友好名称。 |
-| 本地 AD DS DNS IP 地址 | *-TrustDnsIPs*       | 列出的受信任域的 DNS 服务器 IPv4 地址的逗号分隔列表。 |
-| 信任密码                     | *-TrustPassword*     | 信任关系的复杂密码。 在本地 AD DS 中创建单向入站信任时也会输入此密码。 |
-| 凭据                        | *-凭据*       | 用于向 Azure 进行身份验证的凭据。 用户必须位于*AAD DC 管理员组*中。 如果未提供，则脚本会提示进行身份验证。 |
+| Azure AD DS 域名            | -ManagedDomainFqdn | 托管域的 FQDN，如 aaddscontoso.com |
+| 本地 AD DS 域名      | -TrustFqdn         | 受信任林的 FQDN，如 onprem.contoso.com |
+| 信任友好名称                | -TrustFriendlyName | 信任关系的友好名称。 |
+| 本地 AD DS DNS IP 地址 | -TrustDnsIPs       | 所列受信任域的 DNS 服务器 IPv4 地址的逗号分隔列表。 |
+| 信任密码                     | -TrustPassword     | 信任关系的复杂密码。 在本地 AD DS 中创建单向入站信任时也会输入此密码。 |
+| 凭据                        | -Credentials       | 用于对 Azure 进行身份验证的凭据。 用户必须处于 AAD DC 管理员组中。 如果未提供，则脚本会提示进行身份验证。 |
 
-以下示例创建名为*myAzureADDSTrust*的信任关系到*onprem.contoso.com*。 使用自己的参数名称和密码：。
+下面的示例创建到 onprem.contoso.com 的信任关系，名为 myAzureADDSTrust 。 使用自己的参数名称和密码：
 
-```azure-powershell
+```azurepowershell
 Add-AaddsResourceForestTrust `
     -ManagedDomainFqdn "aaddscontoso.com" `
     -TrustFqdn "onprem.contoso.com" `
@@ -214,7 +214,7 @@ Add-AaddsResourceForestTrust `
 ```
 
 > [!IMPORTANT]
-> 请记住你的信任密码。 创建信任的本地端时，必须使用相同的密码。
+> 请记住信任密码。 创建信任的本地端时，必须使用相同密码。
 
 ## <a name="configure-dns-in-the-on-premises-domain"></a>在本地域中配置 DNS
 
@@ -223,8 +223,8 @@ Add-AaddsResourceForestTrust `
 1. 选择“开始”|“管理工具”|“DNS”
 1. 右键单击 DNS 服务器（例如 myAD01）并选择“属性”
 1. 选择“转发器”，然后选择“编辑”以添加更多转发器。 
-1. 添加托管域的 IP 地址，例如 " *10.0.1.4* " 和 " *10.0.1.5*"。
-1. 在本地命令提示符下，使用托管域资源林域名的**nslookup**验证名称解析。 例如， `Nslookup aaddscontoso.com` 应返回托管域资源林的两个 IP 地址。
+1. 添加托管域的 IP 地址，例如 10.0.1.4 和 10.0.1.5 。
+1. 在本地命令提示符下，使用托管域资源林域名的 nslookup 验证名称解析。 例如，`Nslookup aaddscontoso.com` 应返回托管域资源林的两个 IP 地址。
 
 ## <a name="create-inbound-forest-trust-in-the-on-premises-domain"></a>在本地域中创建入站林信任
 
@@ -235,11 +235,11 @@ Add-AaddsResourceForestTrust `
 1. 选择“开始”|“管理工具”|“Active Directory 域和信任”
 1. 右键单击域（例如 onprem.contoso.com）并选择“属性”
 1. 依次选择“信任”选项卡、“新建信任” 
-1. 输入托管域的名称（例如*aaddscontoso.com*），然后选择 "**下一步**"
+1. 输入托管域的名称（如 aaddscontoso.com），然后选择“下一步”
 1. 选择创建“林信任”的选项，然后选择创建“单向: 传入”信任的选项。 
 1. 选择创建“仅限此域”的信任。 在下一步骤中，你将在 Azure 门户中为托管域创建信任。
 1. 选择使用“全林性身份验证”，然后输入并确认信任密码。 在下一部分中，也要在 Azure 门户中输入同一密码。
-1. 在接下来的几个窗口中使用默认选项完成每个步骤，然后选择选项“否，不要确认传出信任”。 无法验证信任关系，因为委派的管理员帐户不具有所需的权限。 此行为是设计使然。
+1. 在接下来的几个窗口中使用默认选项完成每个步骤，然后选择选项“否，不要确认传出信任”。 无法验证信任关系，因为针对托管域资源林的委托管理员帐户没有所需权限。 此行为是设计使然。
 1. 选择“完成”
 
 ## <a name="validate-resource-authentication"></a>验证资源身份验证
@@ -257,10 +257,10 @@ Add-AaddsResourceForestTrust `
 
 应已将 Windows Server 虚拟机加入托管域资源域。 使用此虚拟机来测试本地用户是否可在虚拟机上进行身份验证。
 
-1. 使用远程桌面和托管域管理员凭据连接到已加入托管域资源林的 Windows Server VM。 如果网络级别身份验证 (NLA) 错误，请检查你使用的用户帐户不是域用户帐户。
+1. 使用远程桌面和托管域管理员凭据连接到已加入托管域资源林的 Windows Server VM。 如果收到网络级别身份验证 (NLA) 错误，请检查所使用的用户帐户是否不是域用户帐户。
 
     > [!TIP]
-    > 若要安全地连接到已加入到 Azure AD 域服务的 Vm，可以在支持的 Azure 区域使用[Azure 堡垒主机服务](https://docs.microsoft.com/azure/bastion/bastion-overview)。
+    > 若要安全地连接到已加入 Azure AD 域服务的 VM，可以在支持的 Azure 区域中使用 [Azure 堡垒主机服务](https://docs.microsoft.com/azure/bastion/bastion-overview)。
 
 1. 打开命令提示符，使用 `whoami` 命令显示当前已通过身份验证的用户的可分辨名称：
 
@@ -279,14 +279,14 @@ Add-AaddsResourceForestTrust `
 
 ### <a name="access-resources-in-the-azure-ad-ds-resource-forest-using-on-premises-user"></a>使用本地用户访问 Azure AD DS 资源林中的资源
 
-使用已加入托管域资源林的 Windows Server VM，可以测试当用户通过本地域中的用户进行身份验证时，用户可以访问资源林中托管的资源的情况。 以下示例展示了如何创建并测试各种常用方案。
+使用已加入托管域资源林的 Windows Server VM，可以测试当用户以本地域中的用户身份从本地域中的计算机进行身份验证时，是否可以访问资源林中托管的资源。 以下示例展示了如何创建并测试各种常用方案。
 
 #### <a name="enable-file-and-printer-sharing"></a>启用文件和打印机共享
 
-1. 使用远程桌面和托管域管理员凭据连接到已加入托管域资源林的 Windows Server VM。 如果网络级别身份验证 (NLA) 错误，请检查你使用的用户帐户不是域用户帐户。
+1. 使用远程桌面和托管域管理员凭据连接到已加入托管域资源林的 Windows Server VM。 如果收到网络级别身份验证 (NLA) 错误，请检查所使用的用户帐户是否不是域用户帐户。
 
     > [!TIP]
-    > 若要安全地连接到已加入到 Azure AD 域服务的 Vm，可以在支持的 Azure 区域使用[Azure 堡垒主机服务](https://docs.microsoft.com/azure/bastion/bastion-overview)。
+    > 若要安全地连接到已加入 Azure AD 域服务的 VM，可以在支持的 Azure 区域中使用 [Azure 堡垒主机服务](https://docs.microsoft.com/azure/bastion/bastion-overview)。
 
 1. 打开“Windows 设置”，然后搜索并选择“网络和共享中心”。 
 1. 选择“更改高级共享设置”的选项。
@@ -305,13 +305,13 @@ Add-AaddsResourceForestTrust `
 1. 在“输入要选择的对象名称”框中键入“域用户”。 选择“检查名称”，提供本地 Active Directory 的凭据，然后选择“确定”。 
 
     > [!NOTE]
-    > 必须提供凭据，因为信任关系只是单向的。 这意味着，托管域中的用户无法访问资源或搜索受信任 (本地) 域中的用户或组。
+    > 必须提供凭据，因为信任关系只是单向的。 这意味着，托管域中的用户无法访问资源或搜索受信任的（本地）域中的用户或组。
 
 1. 本地 Active Directory 中的“域用户”组应是“FileServerAccess”组的成员。  选择“确定”以保存该组并关闭窗口。
 
 #### <a name="create-a-file-share-for-cross-forest-access"></a>创建文件共享用于跨林访问
 
-1. 在加入托管域资源林中的 Windows Server VM 上，创建一个文件夹并提供名称，例如*CrossForestShare*。
+1. 在已加入托管域资源林的 Windows Server VM 上，创建一个文件夹并提供名称（例如 CrossForestShare）。
 1. 右键单击该文件夹并选择“属性”。
 1. 依次选择“安全性”选项卡、“编辑”。 
 1. 在“CrossForestShare 的权限”对话框中，选择“添加”。
@@ -335,21 +335,21 @@ Add-AaddsResourceForestTrust `
 
 ## <a name="update-or-remove-outbound-forest-trust"></a>更新或删除出站林信任
 
-如果需要从托管域更新现有的单向出站林，可以使用 `Get-AaddsResourceForestTrusts` 和 `Set-AaddsResourceForestTrust` 脚本。 这些脚本可帮助你想要更新林信任友好名称或信任密码。 若要从托管域中删除单向出站信任，可以使用 `Remove-AaddsResourceForestTrust` 脚本。 你必须手动删除关联的本地 AD DS 林中的单向入站林信任。
+如果需要从托管域更新现有单向出站林，可以使用 `Get-AaddsResourceForestTrusts` 和 `Set-AaddsResourceForestTrust` 脚本。 这些脚本在需要更新林信任友好名称或信任密码的方案中会有所帮助。 若要从托管域中删除单向出站信任，可以使用 `Remove-AaddsResourceForestTrust` 脚本。 必须手动删除关联本地 AD DS 林中的单向入站林信任。
 
 ### <a name="update-a-forest-trust"></a>更新林信任
 
-在正常操作中，托管域林和本地林在其各自之间协商定期密码更新过程。 这是正常 AD DS 信任关系安全过程的一部分。 如果信任关系遇到问题并且你想要手动重置为已知密码，则无需手动轮换信任密码。 有关详细信息，请参阅[受信任的域对象密码更改](concepts-forest-trust.md#tdo-password-changes)。
+在正常操作中，托管域林和本地林在各自之间协商定期密码更新过程。 这是正常 AD DS 信任关系安全过程的一部分。 除非信任关系遇到问题并且你要手动重置为已知密码，否则无需手动轮换信任密码。 有关详细信息，请参阅[受信任的域对象密码更改](concepts-forest-trust.md#tdo-password-changes)。
 
-以下示例步骤说明了在需要手动重置出站信任密码时，如何更新现有的信任关系：
+以下示例步骤演示在需要手动重置出站信任密码时，如何更新现有信任关系：
 
-1. `Get-AaddsResourceForestTrusts` `Set-AaddsResourceForestTrust` 使用[安装脚本][Install-Script]cmdlet 从[PowerShell 库][powershell-gallery]安装和脚本：
+1. 使用 [Install-Script][Install-Script] cmdlet，从 [PowerShell 库][powershell-gallery]安装 `Get-AaddsResourceForestTrusts` 和 `Set-AaddsResourceForestTrust` 脚本：
 
     ```powershell
     Install-Script -Name Get-AaddsResourceForestTrusts,Set-AaddsResourceForestTrust
     ```
 
-1. 在可以更新现有信任之前，请先使用脚本获取信任资源 `Get-AaddsResourceForestTrusts` 。 在下面的示例中，将现有信任分配给名为*existingTrust*的对象。 指定你自己的托管域林名称和要更新的本地林名称：
+1. 在可以更新现有信任之前，请先使用 `Get-AaddsResourceForestTrusts` 脚本获取信任资源。 在下面的示例中，将现有信任分配给名为 existingTrust 的对象。 指定自己的托管域林名称和本地林名称以进行更新：
 
     ```powershell
     $existingTrust = Get-AaddsResourceForestTrust `
@@ -358,7 +358,7 @@ Add-AaddsResourceForestTrust `
         -TrustFriendlyName "myAzureADDSTrust"
     ```
 
-1. 若要更新现有的信任密码，请使用 `Set-AaddsResourceForestTrust` 脚本。 指定上一步中的现有信任对象，然后指定新的信任关系密码。 PowerShell 不会强制执行密码复杂性，因此请确保为环境生成并使用安全密码。
+1. 若要更新现有信任密码，请使用 `Set-AaddsResourceForestTrust` 脚本。 指定来自上一步的现有信任对象，然后指定新的信任关系密码。 PowerShell 未强制执行任何密码复杂性，因此请确保为环境生成并使用安全密码。
 
     ```powershell
     Set-AaddsResourceForestTrust `
@@ -368,15 +368,15 @@ Add-AaddsResourceForestTrust `
 
 ### <a name="delete-a-forest-trust"></a>删除林信任
 
-如果不再需要从托管域到本地 AD DS 林的单向出站林信任，则可以将其删除。 请确保在删除信任之前，应用程序或服务不需要针对本地 AD DS 林进行身份验证。 还必须手动删除本地 AD DS 林中的单向入站信任。
+如果不再需要从托管域到本地 AD DS 林的单向出站林信任，则可以删除它。 请确保在删除信任之前，没有应用程序或服务需要对本地 AD DS 林进行身份验证。 还必须手动删除本地 AD DS 林中的单向入站信任。
 
-1. `Remove-AaddsResourceForestTrust`使用[安装脚本][Install-Script]cmdlet 从[PowerShell 库][powershell-gallery]安装脚本：
+1. 使用 [Install-Script][Install-Script] cmdlet，从 [PowerShell 库][powershell-gallery]安装 `Remove-AaddsResourceForestTrust` 脚本：
 
     ```powershell
     Install-Script -Name Remove-AaddsResourceForestTrust
     ```
 
-1. 现在使用脚本删除林信任 `Remove-AaddsResourceForestTrust` 。 在下面的示例中，删除了名为*aaddscontoso.com*的托管域林和本地林*onprem.contoso.com*之间名为*myAzureADDSTrust*的信任。 指定你自己的托管域林名称和要删除的本地林名称：
+1. 现在使用 `Remove-AaddsResourceForestTrust` 脚本删除林信任。 在下面的示例中，删除名为 aaddscontoso.com 的托管域林与本地林 onprem.contoso.com 之间名为 myAzureADDSTrust 的信任。 指定自己的托管域林名称和本地林名称以进行删除：
 
     ```powershell
     Remove-AaddsResourceForestTrust `
@@ -385,12 +385,12 @@ Add-AaddsResourceForestTrust `
         -TrustFriendlyName "myAzureADDSTrust"
     ```
 
-若要从本地 AD DS 林删除单向入站信任，请连接到有权访问本地 AD DS 林的管理计算机，并完成以下步骤：
+若要从本地 AD DS 林中删除单向入站信任，请连接到有权访问本地 AD DS 林的管理计算机并完成以下步骤：
 
 1. 选择“开始”|“管理工具”|“Active Directory 域和信任”
 1. 右键单击域（例如 onprem.contoso.com）并选择“属性”
-1. 选择 "**信任**" 选项卡，然后从托管域林中选择现有的传入信任。
-1. 选择 "**删除**"，然后确认是否要删除传入信任。
+1. 选择“信任”选项卡，然后从托管域林中选择现有传入信任。
+1. 选择“删除”，然后确认要删除传入信任。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,20 +1,20 @@
 ---
 title: 文档格式和命名约定 - 自定义翻译
 titleSuffix: Azure Cognitive Services
-description: 本指南介绍自定义翻译中的文档格式和命名约定。 这些概念可帮助你更好地管理文档名称，避免发生命名冲突。
+description: 本指南介绍自定义翻译中的文档格式和命名约定。 此概念有助于更好地管理文档名称并避免命名冲突。
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: e976b59c0128adef6536e78985e7cf89d256062c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 46a19cd4396e598a74f9099727ac80d44c0a44f5
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992702"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507240"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>文档格式和命名约定指南
 
@@ -47,7 +47,7 @@ ms.locfileid: "83992702"
 
 {document name}\_{language code}：其中，{document name} 是文档的名称，{language code} 是 ISO 语言 ID（两个字符），指示文档包含采用该语言的句子。 语言代码的前面必须有下划线 (_)。
 
-例如，若要将一个 zip 中的两个并行文档上传到西班牙语系统，应将这些文件命名为 "data_en" 和 "data_es"。
+例如，若要在 zip 中为英语到西班牙语翻译系统上传两个并行文档，则应将文件命名为“data_en”和“data_es”。
 
 无需翻译记忆库文件（TMX、XLF、XLIFF、LCL、XLSX）即可遵循特定的语言命名约定。  
 

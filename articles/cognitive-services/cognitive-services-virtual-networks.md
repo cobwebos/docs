@@ -9,23 +9,23 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: db1b88b9c22012cb4e6b5025dda31432c9278ff8
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 808d42c821272882bbf0e01a36e49f7f10b30efa
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080892"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505021"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>配置 Azure 认知服务虚拟网络
 
-Azure 认知服务提供分层的安全模型。 借助此模型，可保护认知服务帐户，使其可供网络的特定子集访问。 配置网络规则后，仅通过指定网络集请求数据的应用程序才能访问帐户。 可以使用请求筛选来限制对资源的访问。 仅允许来自特定 IP 地址、IP 范围或[Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)中的子网列表的请求。
+Azure 认知服务提供分层的安全模型。 借助此模型，可保护认知服务帐户，使其可供网络的特定子集访问。 配置网络规则后，仅通过指定网络集请求数据的应用程序才能访问帐户。 可以使用请求筛选来限制对资源的访问。 仅允许来自特定 IP 地址、IP 范围或 [Azure 虚拟网络](../virtual-network/virtual-networks-overview.md)中的子网列表的请求。
 
 当网络规则生效时访问认知服务资源的应用程序需要授权。 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) 凭据或使用有效的 API 密钥，则支持授权。
 
 > [!IMPORTANT]
 > 默认情况下，打开认知服务帐户的防火墙规则会阻止传入的数据请求。 为了允许请求，需要满足以下条件之一：
 
-> * 该请求应源自在目标认知服务帐户的 "允许的子网" 列表中 (VNet) 在 Azure 虚拟网络中运行的服务。 请求中源自 VNet 的终结点需要设置为认知服务帐户的[自定义子域](cognitive-services-custom-subdomains.md)。
+> * 该请求应源自在目标认知服务帐户的 "允许的子网" 列表中 (VNet) 在 Azure 虚拟网络中运行的服务。 请求中源自 VNet 的终结点需要设置为认知服务帐户的 [自定义子域](cognitive-services-custom-subdomains.md) 。
 > * 或请求应源自允许的 IP 地址列表。
 >
 > 被阻止的请求包括来自其他 Azure 服务、来自 Azure 门户、来自日志记录和指标服务等的请求。
@@ -40,7 +40,7 @@ Azure 认知服务提供分层的安全模型。 借助此模型，可保护认�
 
 ## <a name="supported-regions-and-service-offerings"></a>支持的区域和服务产品
 
-支持[认知服务的区域](https://azure.microsoft.com/global-infrastructure/services/)支持虚拟网络 (vnet) 。 如果未列出认知服务，则当前不支持虚拟网络。
+支持 [认知服务的区域](https://azure.microsoft.com/global-infrastructure/services/)支持虚拟网络 (vnet) 。 如果未列出认知服务，则当前不支持虚拟网络。
 
 > [!div class="checklist"]
 > * [异常检测器](./anomaly-detector/index.yml)
@@ -54,10 +54,11 @@ Azure 认知服务提供分层的安全模型。 借助此模型，可保护认�
 > * [文本分析](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
 > * [文本翻译](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
+> * [沉浸式阅读器](./immersive-reader/index.yml)
 
 ## <a name="service-tags"></a>服务标记
 
-认知服务支持网络规则配置服务标记。 下面列出的服务包含在**CognitiveServicesManagement**服务标记中。
+认知服务支持网络规则配置服务标记。 下面列出的服务包含在 **CognitiveServicesManagement** 服务标记中。
 
 > [!div class="checklist"]
 > * [异常检测器](./anomaly-detector/index.yml)
@@ -72,6 +73,7 @@ Azure 认知服务提供分层的安全模型。 借助此模型，可保护认�
 > * [QnA Maker](./qnamaker/index.yml)
 > * [翻译](./translator/index.yml)
 > * [语音服务](./speech-service/index.yml)
+> * [沉浸式阅读器](./immersive-reader/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>更改默认网络访问规则
 
@@ -92,7 +94,7 @@ Azure 认知服务提供分层的安全模型。 借助此模型，可保护认�
 
    ![虚拟网络选项](media/vnet/virtual-network-blade.png)
 
-1. 若要默认拒绝访问，请选择允许从“所选网络”进行访问。 如果选择 "仅**选择的网络**" 设置，则通过配置的**虚拟网络**或**地址范围**进行 unaccompanied-所有访问都被拒绝。 拒绝所有访问时，不允许尝试使用认知服务资源的请求。 仍可以使用 Azure 门户、Azure PowerShell 或 Azure CLI 来配置认知服务资源。
+1. 若要默认拒绝访问，请选择允许从“所选网络”进行访问。 如果选择 "仅 **选择的网络** " 设置，则通过配置的 **虚拟网络** 或 **地址范围** 进行 unaccompanied-所有访问都被拒绝。 拒绝所有访问时，不允许尝试使用认知服务资源的请求。 仍可以使用 Azure 门户、Azure PowerShell 或 Azure CLI 来配置认知服务资源。
 1. 若要允许来自所有网络的流量，请选择允许从“所有网络”进行访问。
 
    ![虚拟网络拒绝](media/vnet/virtual-network-deny.png)
@@ -101,7 +103,7 @@ Azure 认知服务提供分层的安全模型。 借助此模型，可保护认�
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. 安装[Azure PowerShell](/powershell/azure/install-az-ps)并[登录](/powershell/azure/authenticate-azureps)，或选择 "**试用**"。
+1. 安装 [Azure PowerShell](/powershell/azure/install-az-ps) 并 [登录](/powershell/azure/authenticate-azureps)，或选择 " **试用**"。
 
 1. 显示认知服务资源的默认规则状态。
 
@@ -137,7 +139,7 @@ Azure 认知服务提供分层的安全模型。 借助此模型，可保护认�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. 安装[Azure CLI](/cli/azure/install-azure-cli)并[登录](/cli/azure/authenticate-azure-cli)，或选择 "**试用**"。
+1. 安装 [Azure CLI](/cli/azure/install-azure-cli) 并 [登录](/cli/azure/authenticate-azure-cli)，或选择 " **试用**"。
 
 1. 显示认知服务资源的默认规则状态。
 
@@ -169,13 +171,13 @@ Azure 认知服务提供分层的安全模型。 借助此模型，可保护认�
 
 你可以将认知服务资源配置为仅允许来自特定子网的访问。 允许的子网可能属于同一订阅或不同订阅中的 VNet，包括属于不同 Azure Active Directory 租户的订阅。
 
-为 VNet 中的 Azure 认知服务启用[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)。 服务终结点将流量从 VNet 路由到 Azure 认知服务服务的最佳路径。 子网和虚拟网络的标识也随每个请求进行传输。 然后，管理员可以为认知服务资源配置网络规则，以允许从 VNet 中的特定子网接收请求。 通过这些网络规则授予访问权限的客户端必须继续满足认知服务资源访问数据的授权要求。
+为 VNet 中的 Azure 认知服务启用 [服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md) 。 服务终结点将流量从 VNet 路由到 Azure 认知服务服务的最佳路径。 子网和虚拟网络的标识也随每个请求进行传输。 然后，管理员可以为认知服务资源配置网络规则，以允许从 VNet 中的特定子网接收请求。 通过这些网络规则授予访问权限的客户端必须继续满足认知服务资源访问数据的授权要求。
 
-每个认知服务资源最多支持100个虚拟网络规则，这些规则可以与[IP 网络规则](#grant-access-from-an-internet-ip-range)结合。
+每个认知服务资源最多支持100个虚拟网络规则，这些规则可以与 [IP 网络规则](#grant-access-from-an-internet-ip-range)结合。
 
 ### <a name="required-permissions"></a>所需的权限
 
-若要将虚拟网络规则应用到认知服务资源，用户必须对所添加的子网具有适当的权限。 所需的权限是默认*参与者*角色或*认知服务参与者*角色。 还可以将所需权限添加到自定义角色定义。
+若要将虚拟网络规则应用到认知服务资源，用户必须对所添加的子网具有适当的权限。 所需的权限是默认 *参与者* 角色或 *认知服务参与者* 角色。 还可以将所需权限添加到自定义角色定义。
 
 认知服务资源和授予访问权限的虚拟网络可能位于不同的订阅中，其中包括属于不同 Azure AD 租户的订阅。
 
@@ -194,19 +196,19 @@ Azure 认知服务提供分层的安全模型。 借助此模型，可保护认�
 
 1. 检查并确保已选择允许从“所选网络”进行访问。
 
-1. 若要使用现有网络规则授予对虚拟网络的访问权限，请在 "**虚拟网络**" 下选择 "**添加现有虚拟网络**"。
+1. 若要使用现有网络规则授予对虚拟网络的访问权限，请在 " **虚拟网络**" 下选择 " **添加现有虚拟网络**"。
 
    ![添加现有 vNet](media/vnet/virtual-network-add-existing.png)
 
-1. 选择 "**虚拟网络**" 和 "**子网**" 选项，然后选择 "**启用**"。
+1. 选择 " **虚拟网络** " 和 " **子网** " 选项，然后选择 " **启用**"。
 
    ![添加现有 vNet 详细信息](media/vnet/virtual-network-add-existing-details.png)
 
-1. 若要创建新的虚拟网络并授予其访问权限，请选择 "**添加新的虚拟网络**"。
+1. 若要创建新的虚拟网络并授予其访问权限，请选择 " **添加新的虚拟网络**"。
 
    ![添加新 vNet](media/vnet/virtual-network-add-new.png)
 
-1. 提供创建新虚拟网络所需的信息，然后选择 "**创建**"。
+1. 提供创建新虚拟网络所需的信息，然后选择 " **创建**"。
 
    ![创建 vNet](media/vnet/virtual-network-create.png)
 
@@ -215,7 +217,7 @@ Azure 认知服务提供分层的安全模型。 借助此模型，可保护认�
     >
     > 目前，在创建规则期间，只会显示属于同一 Azure Active Directory 租户的虚拟网络供用户选择。 若要对属于其他租户的虚拟网络中的子网授予访问权限，请使用 Powershell、CLI 或 REST API。
 
-1. 若要删除虚拟网络或子网规则，请选择 " **...** " 以打开虚拟网络或子网的上下文菜单，然后选择 "**删除**"。
+1. 若要删除虚拟网络或子网规则，请选择 " **...** " 以打开虚拟网络或子网的上下文菜单，然后选择 " **删除**"。
 
    ![删除 vNet](media/vnet/virtual-network-remove.png)
 
@@ -223,7 +225,7 @@ Azure 认知服务提供分层的安全模型。 借助此模型，可保护认�
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. 安装[Azure PowerShell](/powershell/azure/install-az-ps)并[登录](/powershell/azure/authenticate-azureps)，或选择 "**试用**"。
+1. 安装 [Azure PowerShell](/powershell/azure/install-az-ps) 并 [登录](/powershell/azure/authenticate-azureps)，或选择 " **试用**"。
 
 1. 列出虚拟网络规则。
 
@@ -283,7 +285,7 @@ Azure 认知服务提供分层的安全模型。 借助此模型，可保护认�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. 安装[Azure CLI](/cli/azure/install-azure-cli)并[登录](/cli/azure/authenticate-azure-cli)，或选择 "**试用**"。
+1. 安装 [Azure CLI](/cli/azure/install-azure-cli) 并 [登录](/cli/azure/authenticate-azure-cli)，或选择 " **试用**"。
 
 1. 列出虚拟网络规则。
 
@@ -340,7 +342,7 @@ Azure 认知服务提供分层的安全模型。 借助此模型，可保护认�
 
 你可以将认知服务资源配置为允许来自特定公共 internet IP 地址范围的访问。 此配置授予对特定服务和本地网络的访问权限，从而有效地阻止一般的 internet 流量。
 
-使用[CIDR 表示法](https://tools.ietf.org/html/rfc4632) `16.17.18.0/24` 或以单个 IP 地址（如）提供允许的 internet 地址范围 `16.17.18.19` 。
+使用 [CIDR 表示法](https://tools.ietf.org/html/rfc4632) `16.17.18.0/24` 或以单个 IP 地址（如）提供允许的 internet 地址范围 `16.17.18.19` 。
 
    > [!Tip]
    > 不支持使用“/31”或“/32”前缀大小的小型地址范围。 这些范围应使用单独的 IP 地址规则配置。
@@ -350,13 +352,13 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
    > [!NOTE]
    > IP 网络规则不会影响来自与认知服务资源位于同一 Azure 区域的请求。 请使用[虚拟网络规则](#grant-access-from-a-virtual-network)来允许相同区域的请求。
 
-目前仅支持 IPV4 地址。 每个认知服务资源最多支持100个 IP 网络规则，这些规则可与[虚拟网络规则](#grant-access-from-a-virtual-network)结合。
+目前仅支持 IPV4 地址。 每个认知服务资源最多支持100个 IP 网络规则，这些规则可与 [虚拟网络规则](#grant-access-from-a-virtual-network)结合。
 
 ### <a name="configuring-access-from-on-premises-networks"></a>配置从本地网络的访问
 
 若要使用 IP 网络规则将本地网络中的访问权限授予认知服务资源，必须确定网络使用的面向 internet 的 IP 地址。 若要获得帮助，请联系网络管理员。
 
-如果要将[ExpressRoute](../expressroute/expressroute-introduction.md)本地用于公共对等互连或 Microsoft 对等互连，则需要确定 NAT IP 地址。 对于公共对等互连，默认情况下，每条 ExpressRoute 线路都使用两个 NAT IP 地址。 当流量进入 Microsoft Azure 网络主干时，每个都应用于 Azure 服务流量。 对于 Microsoft 对等互连，使用的 NAT IP 地址是客户提供的或由服务提供商提供的。 若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这些公共 IP 地址。 若要查找公共对等互连 ExpressRoute 线路 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 详细了解[适用于 ExpressRoute 公共对等互连和 Microsoft 对等互连的 NAT](../expressroute/expressroute-nat.md#nat-requirements-for-azure-public-peering)。
+如果要将 [ExpressRoute](../expressroute/expressroute-introduction.md) 本地用于公共对等互连或 Microsoft 对等互连，则需要确定 NAT IP 地址。 对于公共对等互连，默认情况下，每条 ExpressRoute 线路都使用两个 NAT IP 地址。 当流量进入 Microsoft Azure 网络主干时，每个都应用于 Azure 服务流量。 对于 Microsoft 对等互连，使用的 NAT IP 地址是客户提供的或由服务提供商提供的。 若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这些公共 IP 地址。 若要查找公共对等互连 ExpressRoute 线路 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 详细了解[适用于 ExpressRoute 公共对等互连和 Microsoft 对等互连的 NAT](../expressroute/expressroute-nat.md#nat-requirements-for-azure-public-peering)。
 
 ### <a name="managing-ip-network-rules"></a>管理 IP 网络规则
 
@@ -382,7 +384,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-1. 安装[Azure PowerShell](/powershell/azure/install-az-ps)并[登录](/powershell/azure/authenticate-azureps)，或选择 "**试用**"。
+1. 安装 [Azure PowerShell](/powershell/azure/install-az-ps) 并 [登录](/powershell/azure/authenticate-azureps)，或选择 " **试用**"。
 
 1. 列出 IP 网络规则。
 
@@ -440,7 +442,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. 安装[Azure CLI](/cli/azure/install-azure-cli)并[登录](/cli/azure/authenticate-azure-cli)，或选择 "**试用**"。
+1. 安装 [Azure CLI](/cli/azure/install-azure-cli) 并 [登录](/cli/azure/authenticate-azure-cli)，或选择 " **试用**"。
 
 1. 列出 IP 网络规则。
 
@@ -488,21 +490,21 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 ## <a name="use-private-endpoints"></a>使用专用终结点
 
-你可以将[专用终结点](../private-link/private-endpoint-overview.md)用于认知服务资源，以允许虚拟网络上的客户端 (VNet) 通过[专用链接](../private-link/private-link-overview.md)安全地访问数据。 专用终结点使用 VNet 地址空间中的 IP 地址来处理认知服务资源。 VNet 和资源上的客户端之间的网络流量通过 Microsoft 主干网络上的 VNet 和专用链接，消除了公共 internet 的泄露。
+你可以将 [专用终结点](../private-link/private-endpoint-overview.md) 用于认知服务资源，以允许虚拟网络上的客户端 (VNet) 通过 [专用链接](../private-link/private-link-overview.md)安全地访问数据。 专用终结点使用 VNet 地址空间中的 IP 地址来处理认知服务资源。 VNet 和资源上的客户端之间的网络流量通过 Microsoft 主干网络上的 VNet 和专用链接，消除了公共 internet 的泄露。
 
 认知服务资源的专用终结点可让你：
 
 * 将防火墙配置为阻止认知服务服务公共终结点上的所有连接，从而保护认知服务资源。
 * 通过使你能够阻止渗透 VNet 中的数据，提高 VNet 的安全性。
-* 使用[VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)或[ExpressRoutes](../expressroute/expressroute-locations.md)与专用对等互连，从连接到 VNet 的本地网络安全连接到认知服务资源。
+* 使用 [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) 或 [ExpressRoutes](../expressroute/expressroute-locations.md) 与专用对等互连，从连接到 VNet 的本地网络安全连接到认知服务资源。
 
 ### <a name="conceptual-overview"></a>概念概述
 
-专用终结点是[VNet](../virtual-network/virtual-networks-overview.md)中 Azure 资源的特殊网络接口。 为认知服务资源创建专用终结点可在 VNet 中的客户端和资源之间提供安全连接。 从 VNet 的 IP 地址范围为专用终结点分配 IP 地址。 专用终结点和认知服务服务之间的连接使用安全的专用链接。
+专用终结点是 [VNet](../virtual-network/virtual-networks-overview.md)中 Azure 资源的特殊网络接口。 为认知服务资源创建专用终结点可在 VNet 中的客户端和资源之间提供安全连接。 从 VNet 的 IP 地址范围为专用终结点分配 IP 地址。 专用终结点和认知服务服务之间的连接使用安全的专用链接。
 
-VNet 中的应用程序可以使用相同的连接字符串和它们将使用的授权机制，以无缝方式连接到专用终结点上的服务。 语音服务例外，需要单独的终结点。 请参阅[语音服务专用终结点](#private-endpoints-with-the-speech-service)上的部分。 专用终结点可用于认知服务资源支持的所有协议，包括 REST。
+VNet 中的应用程序可以使用相同的连接字符串和它们将使用的授权机制，以无缝方式连接到专用终结点上的服务。 语音服务例外，需要单独的终结点。 请参阅 [语音服务专用终结点](#private-endpoints-with-the-speech-service)上的部分。 专用终结点可用于认知服务资源支持的所有协议，包括 REST。
 
-可以在使用[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)的子网中创建专用终结点。 子网中的客户端可以使用专用终结点连接到一个认知服务资源，同时使用服务终结点访问其他资源。
+可以在使用 [服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)的子网中创建专用终结点。 子网中的客户端可以使用专用终结点连接到一个认知服务资源，同时使用服务终结点访问其他资源。
 
 在 VNet 中创建认知服务资源的专用终结点时，会将同意请求发送到认知服务资源所有者。 如果请求创建专用终结点的用户也是资源的所有者，则此许可请求会自动获得批准。
 
@@ -518,9 +520,9 @@ VNet 中的应用程序可以使用相同的连接字符串和它们将使用的
 
 ### <a name="connecting-to-private-endpoints"></a>连接到专用终结点
 
-当客户端连接到公共终结点时，使用专用终结点的 VNet 中的客户端应使用与认知服务资源相同的连接字符串。 语音服务例外，需要单独的终结点。 请参阅[语音服务专用终结点](#private-endpoints-with-the-speech-service)上的部分。 我们依赖 DNS 解析，通过专用链接自动将来自 VNet 的连接路由到认知服务资源。 语音服务 
+当客户端连接到公共终结点时，使用专用终结点的 VNet 中的客户端应使用与认知服务资源相同的连接字符串。 语音服务例外，需要单独的终结点。 请参阅 [语音服务专用终结点](#private-endpoints-with-the-speech-service)上的部分。 我们依赖 DNS 解析，通过专用链接自动将来自 VNet 的连接路由到认知服务资源。 语音服务 
 
-默认情况下，我们创建附加到 VNet 的[专用 DNS 区域](../dns/private-dns-overview.md)，其中包含专用终结点的必要更新。 但是，如果使用自己的 DNS 服务器，则可能需要对 DNS 配置进行其他更改。 以下[DNS 更改](#dns-changes-for-private-endpoints)部分介绍了专用终结点所需的更新。
+默认情况下，我们创建附加到 VNet 的 [专用 DNS 区域](../dns/private-dns-overview.md) ，其中包含专用终结点的必要更新。 但是，如果使用自己的 DNS 服务器，则可能需要对 DNS 配置进行其他更改。 以下 [DNS 更改](#dns-changes-for-private-endpoints) 部分介绍了专用终结点所需的更新。
 
 ### <a name="private-endpoints-with-the-speech-service"></a>带有语音服务的专用终结点
 
@@ -528,7 +530,7 @@ VNet 中的应用程序可以使用相同的连接字符串和它们将使用的
 
 ### <a name="dns-changes-for-private-endpoints"></a>专用终结点的 DNS 更改
 
-创建专用终结点时，会将认知服务资源的 DNS CNAME 资源记录更新为前缀为 "*privatelink*" 的子域中的别名。 默认情况下，我们还会创建一个[专用 dns 区域](../dns/private-dns-overview.md)，该区域与 "*privatelink*" 子域相对应，其中 dns a 用于专用终结点的资源记录。
+创建专用终结点时，会将认知服务资源的 DNS CNAME 资源记录更新为前缀为 "*privatelink*" 的子域中的别名。 默认情况下，我们还会创建一个 [专用 dns 区域](../dns/private-dns-overview.md)，该区域与 "*privatelink*" 子域相对应，其中 dns a 用于专用终结点的资源记录。
 
 当你通过专用终结点将终结点 URL 从 VNet 外部解析时，它将解析为认知服务资源的公共终结点。 当从承载专用终结点的 VNet 解析时，终结点 URL 解析为专用终结点的 IP 地址。
 
@@ -550,5 +552,5 @@ VNet 中的应用程序可以使用相同的连接字符串和它们将使用的
 
 ## <a name="next-steps"></a>后续步骤
 
-* 探索各种[Azure 认知服务](welcome.md)
+* 探索各种 [Azure 认知服务](welcome.md)
 * 了解有关[Azure 虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)的详细信息
