@@ -6,13 +6,13 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 07/22/2020
-ms.openlocfilehash: cd46821b74803d62be0361346166ed78a5f53286
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.date: 08/07/2020
+ms.openlocfilehash: cc38210690c88fec826dc727775d01884dedd997
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132358"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008876"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>快速入门：使用 Azure 逻辑应用创建自动化任务、流程和工作流 - Visual Studio
 
@@ -28,7 +28,7 @@ ms.locfileid: "87132358"
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。
+* Azure 帐户和订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。 如果有 Azure 政府订阅，请按照以下附加步骤[为 Azure 政府云设置 Visual Studio](#azure-government)。
 
 * 下载并安装以下工具（如果没有）：
 
@@ -51,12 +51,6 @@ ms.locfileid: "87132358"
   
     可以直接从 Visual Studio Marketplace 下载并安装 Azure 逻辑应用工具，或了解[如何从 Visual Studio 内部安装此扩展](/visualstudio/ide/finding-and-using-visual-studio-extensions)。 完成安装后，请务必重启 Visual Studio。
 
-  * 若要将 Azure 政府订阅与 Visual Studio 结合使用，请参阅以下主题以进行其他设置：
-
-    * Visual Studio 2019：[快速入门：使用 Visual Studio 连接到 Azure 政府](../azure-government/documentation-government-connect-vs.md)
-
-    * Visual Studio 2017：[介绍 Azure 环境选择器 Visual Studio 扩展](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/)，你可以从 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector) 下载并安装该扩展。
-
 * 使用嵌入式逻辑应用设计器时访问 Web
 
   设计器需要通过 Internet 连接在 Azure 中创建资源，以及从逻辑应用中的连接器读取属性和数据。
@@ -65,6 +59,34 @@ ms.locfileid: "87132358"
 
   > [!IMPORTANT]
   > 如果要使用 Gmail 连接器，则只有 G-Suite 商业帐户可以在逻辑应用中不受限制地使用此连接器。 如果有 Gmail 用户帐户，则只能将此连接器与 Google 批准的特定服务一起使用，也可以[创建用于通过 Gmail 连接器进行身份验证的 Google 客户端应用](/connectors/gmail/#authentication-and-bring-your-own-application)。 有关详细信息，请参阅 [Azure 逻辑应用中 Google 连接器的数据安全和隐私策略](../connectors/connectors-google-data-security-privacy-policy.md)。
+
+<a name="azure-government"></a>
+
+## <a name="set-up-visual-studio-for-azure-government"></a>设置适用于 Azure 政府的 Visual Studio
+
+### <a name="visual-studio-2017"></a>Visual Studio 2017
+
+可以使用 [Azure 环境选择器 Visual Studio 扩展](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/)，你可以从 [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector) 下载并安装该扩展。
+
+### <a name="visual-studio-2019"></a>Visual Studio 2019
+
+若要在 Azure 逻辑应用中使用 Azure 政府订阅，需要[将 Azure 政府云的发现终结点添加到 Visual Studio](../azure-government/documentation-government-connect-vs.md)。 但在使用 Azure 政府帐户登录 Visual Studio 之前，需要重命名添加发现终结点后生成的 JSON 文件，请按照以下步骤操作：
+
+1. 关闭 Visual Studio。
+
+1. 在以下位置找到名为 `Azure U.S. Government-A3EC617673C6C70CC6B9472656832A26.Configuration` 的生成的 JSON 文件：
+
+   `%localappdata%\.IdentityService\AadConfigurations`
+ 
+1. 将该 JSON 文件重命名为 `AadProvider.Configuration.json`。
+
+1. 重启 Visual Studio。
+
+1. 继续按步骤操作，使用 Azure 政府帐户登录。
+
+若要还原此设置，请删除以下位置的 JSON 文件，然后重启 Visual Studio：
+
+`%localappdata%\.IdentityService\AadConfigurations\AadProvider.Configuration.json`
 
 <a name="create-resource-group-project"></a>
 
