@@ -1,14 +1,14 @@
 ---
 title: 大规模管理 Azure Sentinel 工作区
 description: 了解如何在委派的客户资源上有效地管理 Azure Sentinel。
-ms.date: 06/17/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: fc6d66a31ed46766bbe664fd8656792c97ff69fd
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 1734efb57b18cfc559144b13aaecb882612ca73b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163231"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511246"
 ---
 # <a name="manage-azure-sentinel-workspaces-at-scale"></a>大规模管理 Azure Sentinel 工作区
 
@@ -69,9 +69,9 @@ MSSP 将管理的每个客户订阅都必须 [载入 Azure Lighthouse](onboard-c
 
 你还可以直接在你管理的单个租户中部署工作簿，以便为特定于该客户的方案进行管理。
 
-## <a name="run-queries-across-azure-sentinel-workspaces"></a>跨 Azure Sentinel 工作区运行查询
+## <a name="run-log-analytics-and-hunting-queries-across-azure-sentinel-workspaces"></a>跨 Azure Sentinel 工作区运行 Log Analytics 和搜寻查询
 
-可以集中在管理租户中创建和保存用于威胁检测的 Log Analytics 查询。 然后，可以通过使用 Union 运算符和工作区 ( # A1 表达式，在所有客户的 Azure Sentinel 工作区中运行这些查询。 有关详细信息，请参阅 [跨工作区查询](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying)。
+可以在管理租户中集中创建和保存用于威胁检测的 Log Analytics 查询，包括 [搜寻查询](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-hunting)。 然后，可以通过使用 Union 运算符和工作区 ( # A1 表达式，在所有客户的 Azure Sentinel 工作区中运行这些查询。 有关详细信息，请参阅 [跨工作区查询](../../sentinel/extend-sentinel-across-workspaces-tenants.md#cross-workspace-querying)。
 
 ## <a name="use-automation-for-cross-workspace-management"></a>使用自动化跨工作区管理
 

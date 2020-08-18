@@ -6,20 +6,20 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: a7d83c327eb1c37478c0c2e5725136d43a91a009
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 271d3c0ca44c500a6fd8ee50ed5f1698e46cd511
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061214"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510260"
 ---
 # <a name="ingest-historical-telemetry-data"></a>引入历史遥测数据
 
 本文介绍如何将历史传感器数据引入 Azure FarmBeats。
 
-在 FarmBeats 中，引入（IoT）资源（如设备和传感器）的历史物联网数据是常见的方案。 为设备和传感器创建元数据，然后将历史数据以规范格式引入 FarmBeats。
+FarmBeats 中常见的方案是物联网 (IoT) 资源，如设备和传感器等。 为设备和传感器创建元数据，然后将历史数据以规范格式引入 FarmBeats。
 
-## <a name="before-you-begin"></a>准备阶段
+## <a name="before-you-begin"></a>开始之前
 
 在继续阅读本文之前，请确保已安装 FarmBeats 并从 IoT 设备收集的历史数据。 还需要启用合作伙伴访问权限，如以下步骤中所述。
 
@@ -33,38 +33,38 @@ ms.locfileid: "87061214"
 - 客户端机密
 - EventHub 连接字符串
 
-执行以下步骤：
+执行以下步骤:
 
 > [!NOTE]
 > 您必须是管理员才能执行以下步骤。
 
 1. 登录 https://portal.azure.com/ 。
 
-2. **如果你使用的是 FarmBeats 版本1.2.7 或更高版本，请跳过步骤 a、b 和 c，然后转到步骤3。** 可以通过选择 FarmBeats UI 右上角的 "**设置**" 图标来检查 FarmBeats 版本。
+2. **如果你使用的是 FarmBeats 版本1.2.7 或更高版本，请跳过步骤 a、b 和 c，然后转到步骤3。** 可以通过选择 FarmBeats UI 右上角的 " **设置** " 图标来检查 FarmBeats 版本。
 
       a.  中转到**Azure Active Directory**  >  **应用注册**
 
-      b. 选择在 FarmBeats 部署过程中创建的**应用注册**。 它的名称与你的 FarmBeats datahub 相同。
+      b. 选择在 FarmBeats 部署过程中创建的 **应用注册** 。 它的名称与你的 FarmBeats datahub 相同。
 
-      c. 选择 "**公开 API** > 选择"**添加客户端应用程序**"并输入**04B07795-8ddb-461a-bbee-02f9e1bf7b46**并检查**授权作用域**。 这将授予对 Azure CLI （Cloud Shell）的访问权限，以执行以下步骤：
+      c. 选择 " **公开 API** > 选择" **添加客户端应用程序** "并输入 **04B07795-8ddb-461a-bbee-02f9e1bf7b46** 并检查 **授权作用域**。 这将授予对 Azure CLI 的访问权限 (Cloud Shell) 执行以下步骤：
 
 3. 打开 Cloud Shell。 此选项位于 Azure 门户右上角工具栏中。
 
     ![Azure 门户工具栏](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-4. 确保环境设置为**PowerShell**。 默认情况下，它设置为 Bash。
+4. 确保环境设置为 **PowerShell**。 默认情况下，它设置为 Bash。
 
     ![PowerShell 工具栏设置](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
 5. 中转到主目录。
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
     cd
     ```
-    
+
 6. 运行以下命令。 这会连接经过身份验证的帐户以用于 Azure AD 请求
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
     Connect-AzureAD
     ```
 
@@ -78,13 +78,13 @@ ms.locfileid: "87061214"
 
 8. 运行以下脚本。 该脚本要求提供租户 ID，该 ID 可从**Azure Active Directory**  >  **概述**"页获取。
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
     ./generatePartnerCredentials.ps1
 
     ```
 
-9. 按照屏幕上的说明来捕获**API 终结点**、**租户 ID**、**客户端 ID**、**客户端密钥**和**EventHub 连接字符串**的值。
+9. 按照屏幕上的说明来捕获 **API 终结点**、 **租户 ID**、 **客户端 ID**、 **客户端密钥**和 **EventHub 连接字符串**的值。
 
 
 ## <a name="create-device-or-sensor-metadata"></a>创建设备或传感器元数据
@@ -94,7 +94,7 @@ ms.locfileid: "87061214"
  FarmBeats Datahub 提供了以下 Api，可用于创建和管理设备或传感器元数据。
 
  > [!NOTE]
- > 作为合作伙伴，你只需读取、创建和更新元数据;**删除选项限制为合作伙伴。**
+ > 作为合作伙伴，你只需读取、创建和更新元数据; **删除选项限制为合作伙伴。**
 
 - /**DeviceModel**： DeviceModel 对应于设备的元数据，如制造商和设备类型（网关或节点）。
 - /**Device**：Device 对应于存在于场上的物理设备。
@@ -142,11 +142,11 @@ ms.locfileid: "87061214"
 |    说明      | 提供有意义的说明。|
 |    属性        |制造商提供的其他属性。|
 
-有关对象的详细信息，请参阅[Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
+有关对象的详细信息，请参阅 [Swagger](https://aka.ms/FarmBeatsDatahubSwagger)。
 
 ### <a name="api-request-to-create-metadata"></a>用于创建元数据的 API 请求
 
-若要发出 API 请求，请将 HTTP （POST）方法、API 服务的 URL 和用于查询、将数据提交到、创建或删除请求的 URI 组合在一起。 然后添加一个或多个 HTTP 请求标头。 API 服务的 URL 是 API 终结点，即 Datahub URL （https:// \<yourdatahub> . azurewebsites.net）。
+若要发出 API 请求，请将 HTTP (POST) 方法、API 服务的 URL 和用于查询、将数据提交到、创建或删除请求的资源的 URI 组合在一起。 然后添加一个或多个 HTTP 请求标头。 API 服务的 URL 是 API 终结点，即 Datahub URL (https:// \<yourdatahub> . azurewebsites.net) 。
 
 ### <a name="authentication"></a>身份验证
 
@@ -336,7 +336,7 @@ response = requests.post(ENDPOINT + "/DeviceModel", data=payload, headers=header
 
 ### <a name="create-a-telemetry-client"></a>创建一个遥测客户端
 
-必须将遥测发送到 Azure 事件中心进行处理。 Azure 事件中心是一个服务，可用于从连接的设备和应用程序引入实时数据（遥测）。 若要将遥测数据发送到 FarmBeats，请创建一个客户端，将消息发送到 FarmBeats 中的事件中心。 有关发送遥测数据的详细信息，请参阅[Azure 事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)。
+必须将遥测发送到 Azure 事件中心进行处理。 Azure 事件中心是一个服务，可用于从连接的设备和应用程序引入实时数据（遥测）。 若要将遥测数据发送到 FarmBeats，请创建一个客户端，将消息发送到 FarmBeats 中的事件中心。 有关发送遥测数据的详细信息，请参阅 [Azure 事件中心](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)。
 
 ### <a name="send-a-telemetry-message-as-the-client"></a>将遥测消息作为客户端发送
 
@@ -435,11 +435,11 @@ write_client.stop()
 
 **纠正措施**：
 
-1. 请确保已完成相应的合作伙伴注册-可以通过转到 datahub swagger 来检查此项，导航到/Partner API，执行 Get 操作并检查伙伴是否已注册。 否则，请按照[此处的步骤](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats)添加合作伙伴。
+1. 请确保已完成相应的合作伙伴注册-可以通过转到 datahub swagger 来检查此项，导航到/Partner API，执行 Get 操作并检查伙伴是否已注册。 否则，请按照 [此处的步骤](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) 添加合作伙伴。
 
-2. 确保已使用合作伙伴客户端凭据创建元数据（DeviceModel、设备、SensorModel、传感器）。
+2. 请确保已使用合作伙伴客户端凭据创建了元数据 (DeviceModel、设备、SensorModel、传感器) 。
 
-3. 确保使用了正确的遥测消息格式（如下所示）：
+3. 确保使用了正确的遥测消息格式 (如下所示) ：
 
 ```json
 {
@@ -466,4 +466,4 @@ write_client.stop()
 
 ## <a name="next-steps"></a>后续步骤
 
-有关基于 REST API 的集成详细信息的详细信息，请参阅[REST API](rest-api-in-azure-farmbeats.md)。
+有关基于 REST API 的集成详细信息的详细信息，请参阅 [REST API](rest-api-in-azure-farmbeats.md)。

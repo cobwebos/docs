@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
-ms.openlocfilehash: c43ed412116d0cb30f7d06ba65467fd529f367ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcff550b5411ac00dc54d2103278812f32f56543
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552693"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509971"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>使用 Azure 前端 API 进行身份验证
 
@@ -64,7 +64,7 @@ struct AzureFrontendAccountInfo
 
 每个打开/创建的 ```AzureSession``` 都会保留对创建它的前端的引用。 要彻底关闭，必须先解除分配所有会话，然后才能解除分配前端。
 
-解除分配会话不会停止 Azure 上的 VM，必须显式调用 `AzureSession.StopAsync`。
+若要解除分配会话，则必须显式调用 Azure 上的服务器 `AzureSession.StopAsync` 。
 
 创建会话并将其状态标记为就绪后，便可以使用 `AzureSession.ConnectToRuntime` 连接到远程渲染运行时。
 

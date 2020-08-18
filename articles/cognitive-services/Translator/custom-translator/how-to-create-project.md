@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 03f6f045e0809f79117518a22abfd74520b6d0a6
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 3043ec0600f802a409387f0114aae5f56151da16
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992770"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510961"
 ---
 # <a name="create-a-project"></a>创建一个项目
 
@@ -52,7 +52,7 @@ ms.locfileid: "83992770"
 
 选择某个项目后，会在项目页上看到以下信息：
 
-- CategoryID：CategoryID 是通过连接 WorkspaceID、项目标签和类别代码创建的。 使用带有文本转换器的 "类别 Id" 来获取自定义翻译。
+- CategoryID：CategoryID 是通过连接 WorkspaceID、项目标签和类别代码创建的。 在文本翻译 API 中使用 CategoryID 可以获取自定义译文。 若要复制，请单击 "复制" 图标。
 
 - 训练按钮：使用此按钮可以开始[训练模型](how-to-train-model.md)。
 

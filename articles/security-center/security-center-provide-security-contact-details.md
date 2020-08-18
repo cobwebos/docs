@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: 9bbb4ee4a2fd41ca0605d7dd5d8c66c83d475744
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: dda61b81ee2c357ddac29701832fe4780ea06859
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506459"
+ms.locfileid: "88516293"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>为安全警报设置电子邮件通知 
 
@@ -65,4 +65,4 @@ ms.locfileid: "88506459"
 
 * [安全警报-参考指南](alerts-reference.md) --了解你可能在 Azure 安全中心的威胁防护模块中看到的安全警报
 * [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md) -了解如何管理和响应安全警报
-- [工作流自动化](workflow-automation.md) --通过自定义通知逻辑自动响应警报
+* [工作流自动化](workflow-automation.md) --通过自定义通知逻辑自动响应警报

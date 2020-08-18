@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: c8c4bbcfdd8f06d4c2b4759b84a72c5b3cff5a5d
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 97327517b40e715294393a97e8a26c078173e762
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996340"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510838"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>并行文档中的句子配对和对齐
 
@@ -38,13 +38,13 @@ ms.locfileid: "83996340"
 |------------|--------------------------------------------|--------------------------------|
 | 培训   | 10,000                                     | 没有上限                 |
 | 优化     | 500                                      | 2,500       |
-| 测试    | 500                                      | 2,500  |
+| 正在测试    | 500                                      | 2,500  |
 | 字典 | 0                                          | 没有上限                 |
 
 > [!NOTE]
 > - 如果未满足定型的10000最小句子计数，则训练将不会启动，并且会失败。 
 > - 优化和测试是可选的。 如果未提供这些值，系统将从培训中删除适当的百分比用于验证和测试。 
-> - 可以仅使用字典数据来训练模型。 请参阅[什么是字典](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/what-is-dictionary)。
+> - 可以仅使用字典数据来训练模型。 请参阅 [什么是字典](https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/what-is-dictionary)。
 
 ## <a name="next-steps"></a>后续步骤
 

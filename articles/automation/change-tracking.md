@@ -3,14 +3,14 @@ title: Azure 自动化 - 更改跟踪和库存概述
 description: 本文介绍了更改跟踪和清单功能，可帮助你在环境中识别软件和 Microsoft 服务的更改。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 06/08/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca96f817407aaef808fa10fbedec7af7b5912dc8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2fe92942e263cf53b9827ccbcb13a2d7bafc367c
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447927"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511042"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>更改跟踪和库存概述
 
@@ -26,10 +26,10 @@ ms.locfileid: "87447927"
 > [!NOTE]
 > 若要跟踪 Azure 资源管理器的属性更改，请参阅 Azure Resource Graph [更改历史记录](../governance/resource-graph/how-to/get-resource-changes.md)。
 
-更改跟踪和库存从 Azure Monitor 中获取其数据。 连接到 Log Analytics 工作区的虚拟机使用 Log Analytics 代理来收集有关受监视服务器上的已安装软件、Microsoft 服务、Windows 注册表和文件和 Linux 守护程序的更改的数据。 数据可用时，代理会将其发送到 Azure Monitor 进行处理。 Azure Monitor 将逻辑应用于接收的数据，记录这些数据并使其可用。 
+更改跟踪和库存从 Azure Monitor 中获取其数据。 连接到 Log Analytics 工作区的虚拟机使用 Log Analytics 代理收集有关受监视服务器上的已安装软件、Microsoft 服务、Windows 注册表和文件和 Linux 守护程序的更改的数据。 数据可用时，代理会将其发送到 Azure Monitor 进行处理。 Azure Monitor 将逻辑应用于接收的数据，记录这些数据并使其可用。
 
 > [!NOTE]
-> 若要使用更改跟踪和库存功能，必须在自动化帐户的同一订阅和区域中查找所有 VM。
+> 更改跟踪和清单要求将 Log Analytics 工作区链接到自动化帐户。 有关受支持区域的明确列表，请参阅 [Azure 工作区映射](./how-to/region-mappings.md)。 区域映射不会影响在单独的区域中管理自动化帐户内 VM 的功能。
 
 更改跟踪和库存当前不支持以下项：
 
@@ -49,13 +49,13 @@ ms.locfileid: "87447927"
 
 - 不会在 Windows Server 2016 Core RS3 计算机上收集修补程序更新。
 
-- 即使未发生任何更改，Linux 守护程序也可能会显示已更改的状态。 发生此问题的原因 `SvcRunLevels` 是捕获 Azure Monitor [ConfigurationChange](/azure/azure-monitor/reference/tables/configurationchange)日志中的数据的方式。
+- 即使未发生任何更改，Linux 守护程序也可能会显示已更改的状态。 发生此问题的原因 `SvcRunLevels` 是捕获 Azure Monitor [ConfigurationChange](/azure/azure-monitor/reference/tables/configurationchange) 日志中的数据的方式。
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 
-满足 Log Analytics 代理要求的所有操作系统都支持更改跟踪和库存。 官方操作系统版本为 Windows Server 2008 SP1 或更高版本以及 Windows 7 SP1 或更高版本。 许多 Linux 操作系统也支持此功能。 有关支持 Log Analytics 的操作系统，请参阅[Log Analytics 代理概述](../azure-monitor/platform/log-analytics-agent.md)。
+满足 Log Analytics 代理要求的所有操作系统都支持更改跟踪和库存。 官方操作系统版本为 Windows Server 2008 SP1 或更高版本以及 Windows 7 SP1 或更高版本。 许多 Linux 操作系统也支持此功能。 有关支持的操作系统的列表，请参阅 [Log Analytics 代理概述](../azure-monitor/platform/log-analytics-agent.md)。
 
-若要了解 TLS 1.2 的客户端要求，请参阅[Azure 自动化的 TLS 1.2 强制执行](automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
+若要了解 TLS 1.2 的客户端要求，请参阅[强制 Azure 自动化执行 TLS 1.2](automation-managing-data.md#tls-12-enforcement-for-azure-automation)。
 
 ## <a name="network-requirements"></a>网络要求
 
@@ -98,7 +98,7 @@ ms.locfileid: "87447927"
 - Linux 守护程序
 
 > [!NOTE]
-> 启用完整的更改跟踪和库存功能可能会产生额外的费用。 请参阅[自动化定价](https://azure.microsoft.com/pricing/details/automation/)。 可以从 Azure 门户中提供[的已安装监视解决方案列表](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions)中删除 FIM。 请参阅[删除监视解决方案](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)。
+> 启用完整的更改跟踪和库存功能可能会产生额外的费用。 请参阅[自动化定价](https://azure.microsoft.com/pricing/details/automation/)。 可以从 Azure 门户中提供 [的已安装监视解决方案列表](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions) 中删除 FIM。 请参阅 [删除监视解决方案](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)。
 
 ## <a name="tracking-of-file-changes"></a>跟踪文件更改
 
@@ -121,8 +121,8 @@ ms.locfileid: "87447927"
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Group Policy\Scripts\Shutdown` | 监视关机时运行的脚本。
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Run` | 监视用户登录 Windows 帐户之前加载的注册表项。 该注册表项用于在 64 位计算机上运行的 32 位应用程序。
 > |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Active Setup\Installed Components` | 监视应用程序设置的更改。
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | 监视直接挂钩到 Windows 资源管理器中的上下文菜单处理程序，并且通常与**explorer.exe**在进程内运行。
-> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | 监视直接挂钩到 Windows 资源管理器并在**explorer.exe**中运行的复制挂钩处理程序。
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\ShellEx\ContextMenuHandlers` | 监视直接挂钩到 Windows 资源管理器中的上下文菜单处理程序，并且通常与 **explorer.exe**在进程内运行。
+> |`HKEY\LOCAL\MACHINE\Software\Classes\Directory\Shellex\CopyHookHandlers` | 监视直接挂钩到 Windows 资源管理器并在 **explorer.exe**中运行的复制挂钩处理程序。
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | 监视图标覆盖处理程序注册。
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Explorer\ShellIconOverlayIdentifiers` | 监视在 64 位计算机上运行的 32 位应用程序的图标覆盖处理程序注册。
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows\CurrentVersion\Explorer\Browser Helper Objects` | 监视 Internet Explorer 的新浏览器帮助程序对象插件。 用于访问当前页的文档对象模型 (DOM) 并控制导航。
@@ -186,7 +186,7 @@ Windows 服务的默认收集频率为 30 分钟。 可以使用“编辑设置�
 
 ## <a name="support-for-alerts-on-configuration-state"></a>支持有关配置状态的警报
 
-更改跟踪和库存的主要功能是就混合环境的配置状态更改发出警报。 可以触发许多有用的操作来响应警报，例如对 Azure 函数、自动化 runbook、webhook 等触发的操作。 对计算机的**c:\windows\system32\drivers\etc\hosts**文件进行更改时发出警报是更改跟踪和清单数据的一个良好的警报。 还有更多的警报方案，包括下表中定义的查询方案。
+更改跟踪和库存的主要功能是就混合环境的配置状态更改发出警报。 可以触发许多有用的操作来响应警报，例如对 Azure 函数、自动化 runbook、webhook 等触发的操作。 对计算机的 **c:\windows\system32\drivers\etc\hosts** 文件进行更改时发出警报是更改跟踪和清单数据的一个良好的警报。 还有更多的警报方案，包括下表中定义的查询方案。
 
 |查询  |说明  |
 |---------|---------|
@@ -203,7 +203,7 @@ Windows 服务的默认收集频率为 30 分钟。 可以使用“编辑设置�
 
 - 若要从自动化帐户启用此功能，请参阅[从自动化帐户启用更改跟踪和库存](automation-enable-changes-from-auto-acct.md)。
 
-- 若要通过浏览 Azure 门户来启用此功能，请参阅[从 Azure 门户启用更改跟踪和清单](automation-enable-changes-from-browse.md)。
+- 若要通过浏览 Azure 门户来启用此功能，请参阅 [从 Azure 门户启用更改跟踪和清单](automation-enable-changes-from-browse.md)。
 
 - 若要从 runbook 启用此功能，请参阅[从 runbook 启用更改跟踪和库存](automation-enable-changes-from-runbook.md)。
 

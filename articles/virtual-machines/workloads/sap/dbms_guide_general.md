@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34b7f4bc55fc8e33b7d66f53e6f2fc241801f965
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ad6bbc1d3c20659441b8b062898526471f4d713a
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827412"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510226"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -221,7 +221,7 @@ Azure 存储帐户是一种管理构造，还是一个具有各种限制的主�
 
 对于 Azure 高级存储，建议对 SAP 数据库的数据文件使用“读取缓存”，对磁盘的日志文件选择“不缓存” 。
 
-对于 M 系列部署，建议将 Azure 写入加速器用于 DBMS 部署。 有关 Azure 写入加速器的详细信息、限制和部署，请参阅[启用写入加速器](../../windows/how-to-enable-write-accelerator.md)。
+对于 M 系列部署，建议将 Azure 写入加速器用于 DBMS 部署。 有关 Azure 写入加速器的详细信息、限制和部署，请参阅[启用写入加速器](../../how-to-enable-write-accelerator.md)。
 
 
 ### <a name="azure-nonpersistent-disks"></a>Azure 非持久性磁盘

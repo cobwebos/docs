@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 07/30/2020
 ms.author: absha
-ms.openlocfilehash: 9315884db30c053d86c889ff3b45aaea17d48b17
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: 32809c33e1c365d8d333bb89a5c2f773b311c2ff
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87438913"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511076"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -38,11 +38,13 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 如果配置了专用前端 IP，则应用程序网关将使用每个实例的 1 个专用 IP 地址，以及另一个专用 IP 地址。
 
-另外，Azure 会在每个子网中保留 5 个 IP 地址供内部使用：前 4 个 IP 地址和最后一个 IP 地址。 例如，假设有 15 个应用程序网关实例没有专用前端 IP。 至少需要为此子网提供 20 个 IP 地址：5 个 IP 地址供内部使用，15 个 IP 地址供应用程序网关实例使用。 因此，需要 /27 或更大的子网大小。
+另外，Azure 会在每个子网中保留 5 个 IP 地址供内部使用：前 4 个 IP 地址和最后一个 IP 地址。 例如，假设有 15 个应用程序网关实例没有专用前端 IP。 至少需要为此子网提供 20 个 IP 地址：5 个 IP 地址供内部使用，15 个 IP 地址供应用程序网关实例使用。
 
-假设某个子网包含 27 个应用程序网关实例，并且包含一个用作专用前端 IP 的 IP 地址。 在这种情况下，需要 33 个 IP 地址：27 个 IP 地址用于应用程序网关实例，1 个 IP 地址用于专用前端，5 个 IP 地址供内部使用。 因此，需要 /26 或更大的子网大小。
+假设某个子网包含 27 个应用程序网关实例，并且包含一个用作专用前端 IP 的 IP 地址。 在这种情况下，需要 33 个 IP 地址：27 个 IP 地址用于应用程序网关实例，1 个 IP 地址用于专用前端，5 个 IP 地址供内部使用。
 
-我们建议至少使用 /28 子网大小。 这种大小可以提供 11 个可用的 IP 地址。 如果应用程序负载需要 10 个以上的应用程序网关实例，请考虑 /27 或 /26 子网大小。
+应用程序网关 (Standard 或 WAF) SKU 最多支持32实例 (32 实例 IP 地址 + 1 个专用前端 IP + 5 Azure 保留) –因此建议使用最小子网大小/26
+
+应用程序网关 (Standard_v2 或 WAF_v2 SKU) 最多可支持125实例 (125 实例 IP 地址 + 1 个专用前端 IP + 5 Azure 保留) –因此建议使用最小子网大小/24
 
 #### <a name="network-security-groups-on-the-application-gateway-subnet"></a>应用程序网关子网中的网络安全组
 
@@ -55,7 +57,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
   - 不要删除默认出站规则。
   - 不要创建拒绝任何出站连接的其他出站规则。
 
-- **必须允许**来自带有目标子网的**AzureLoadBalancer**标记的流量。
+- 必须允许目标子网为“任意”的 AzureLoadBalancer 标记的流量 。
 
 #### <a name="allow-application-gateway-access-to-a-few-source-ips"></a>允许应用程序网关访问一些源 IP
 
@@ -65,7 +67,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 2. 允许特定的传入请求，这些请求来自采用 **GatewayManager** 服务标记的源，其目标为“任意”，目标端口为 65503-65534（适用于应用程序网关 v1 SKU）或 65200-65535（适用于 v2 SKU），可以进行[后端运行状况通信](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)。 此端口范围是进行 Azure 基础结构通信所必需的。 这些端口受 Azure 证书的保护（处于锁定状态）。 如果没有适当的证书，外部实体将无法对这些终结点做出任何更改。
 3. 允许[网络安全组](https://docs.microsoft.com/azure/virtual-network/security-overview)中的传入 Azure 负载均衡器探测（*AzureLoadBalancer* 标记）和入站虚拟网络流量（*VirtualNetwork* 标记）。
 4. 使用“全部拒绝”规则阻止其他所有传入流量。
-5. 允许所有目标的出站流量发送到 Internet。
+5. 允许所有目的地的 Internet 出站流量。
 
 #### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>应用程序网关子网支持用户定义的路由
 
@@ -74,7 +76,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 - **v1**
 
-   使用 v1 SKU 时，只要用户定义的路由 (UDR) 未更改端到端请求/响应通信，则应用程序网关子网就会支持这些 UDR。 例如，可以在应用程序网关子网中设置一个指向防火墙设备的、用于检查数据包的 UDR。 但是，必须确保数据包在检查后可以访问其预期目标。 否则，可能会导致不正确的运行状况探测或流量路由行为。 这包括已探测到的路由，或者通过 Azure ExpressRoute 或 VPN 网关在虚拟网络中传播的默认 0.0.0.0/0 路由。 V1 不支持 0.0.0.0/0 需要在本地（强制隧道）进行重定向的任何情况。
+   使用 v1 SKU 时，只要用户定义的路由 (UDR) 未更改端到端请求/响应通信，则应用程序网关子网就会支持这些 UDR。 例如，可以在应用程序网关子网中设置一个指向防火墙设备的、用于检查数据包的 UDR。 但是，必须确保数据包在检查后可以访问其预期目标。 否则，可能会导致不正确的运行状况探测或流量路由行为。 这包括已探测到的路由，或者通过 Azure ExpressRoute 或 VPN 网关在虚拟网络中传播的默认 0.0.0.0/0 路由。 V1 不支持需要在本地（强制隧道）重定向 0.0.0.0/0 的任何情况。
 
 - **v2**
 
@@ -122,17 +124,17 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 ## <a name="front-end-ip"></a>前端 IP
 
-可将应用程序网关配置为使用公共 IP 地址和/或专用 IP 地址。 当你托管客户端必须通过面向 Internet 的虚拟 IP （VIP）通过 Internet 访问的后端时，需要公共 IP。
+可将应用程序网关配置为使用公共 IP 地址和/或专用 IP 地址。 托管需要由客户端在 Internet 中通过面向 Internet 的虚拟 IP (VIP) 访问的后端时，必须使用公共 IP。
 
 > [!NOTE]
 > 应用程序网关 V2 目前不支持专用 IP 模式。 它支持以下组合：
 >* 专用 IP 和公共 IP
 >* 仅公共 IP
 >
-> 有关详细信息，请参阅[应用程序网关](application-gateway-faq.md#how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address)的常见问题。
+> 有关详细信息，请参阅[有关应用程序网关的常见问题解答](application-gateway-faq.md#how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address)。
 
 
-不会向 Internet 公开的内部终结点不需要公共 IP。 该终结点称为内部负载均衡器 (ILB) 终结点或专用前端 IP。 对于不向 Internet 公开的内部业务线应用程序，应用程序网关 ILB 非常有用。 这对于不向 Internet 公开但需要轮循负载分发、会话粘性或 TLS 终止的安全边界内的多层应用程序中的服务和层也很有用。
+不向 Internet 公开的内部终结点不需要公共 IP。 该终结点称为内部负载均衡器 (ILB) 终结点或专用前端 IP。 应用程序网关 ILB 适合用于不向 Internet 公开的内部业务线应用程序。 对于位于不向 Internet 公开的安全边界内的多层级应用程序中的服务和层级，ILB 也很有用，但需要启用轮循机制负载分配、会话粘性或 TLS 终止。
 
 仅支持一个公共 IP 地址或一个专用 IP 地址。 在创建应用程序网关时选择前端 IP。
 
@@ -154,7 +156,7 @@ Azure 应用程序网关由多个组件构成，可根据不同的方案以不�
 
 - 如果你希望自己的所有请求（针对任何域）都能够被接受并转发到后端池，请选择“基本”。 了解[如何创建包含基本侦听器的应用程序网关](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)。
 
-- 如果希望基于*主机*头或主机名将请求转发到不同的后端池，请选择 "多站点侦听器"，其中你还必须指定与传入请求匹配的主机名。 这是因为，应用程序网关需要使用 HTTP 1.1 主机标头才能在相同的公共 IP 地址和端口上托管多个网站。 若要了解详细信息，请参阅[使用应用程序网关托管多个站点](multiple-site-overview.md)。
+- 如果希望根据主机头或主机名将请求转发到不同的后端池，请选择多站点侦听器，并且还必须在其中指定与传入请求匹配的主机名。 这是因为，应用程序网关需要使用 HTTP 1.1 主机标头才能在相同的公共 IP 地址和端口上托管多个网站。 如需了解详细信息，请参阅[使用应用程序网关托管多个站点](multiple-site-overview.md)。
 
 #### <a name="order-of-processing-listeners"></a>侦听器的处理顺序
 
@@ -289,9 +291,9 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="rewrite-http-headers-and-url"></a>重写 HTTP 标头和 URL
 
-通过使用重写规则，你可以添加、删除或更新 HTTP （S）请求和响应标头以及 URL 路径和查询字符串参数，因为请求和响应数据包将通过应用程序网关在客户端和后端池之间移动。
+通过使用重写规则，当请求和响应数据包通过应用程序网关在客户端和后端池之间移动时，你可以添加、删除或更新 HTTP(S) 请求和响应标头以及 URL 路径和查询字符串参数。
 
-标头和 URL 参数可以设置为静态值，也可以设置为其他标头和服务器变量。 这有助于处理重要的用例，例如提取客户端 IP 地址、删除有关后端的敏感信息、添加更多安全性等。
+这些标头和 URL 参数可以设置为静态值，也可以设置为其他标头和服务器变量。 这有助于处理重要的用例，例如提取客户端 IP 地址、删除有关后端的敏感信息、添加更多安全性等。
 有关详细信息，请参阅：
 
  - [重写 HTTP 标头和 URL 概述](rewrite-http-headers-url.md)
@@ -315,7 +317,7 @@ Azure 应用程序网关使用网关托管 Cookie 来维护用户会话。 当�
 请注意，默认关联 Cookie 名称是 *ApplicationGatewayAffinity*，可以对其进行更改。 如果使用自定义相关性 Cookie 名称，则会添加一个以 CORS 为后缀的附加 Cookie。 例如，*CustomCookieNameCORS*。
 
 > [!NOTE]
-> 如果设置了属性 *SameSite = None*，则 Cookie 还必须包含 *Secure* 标志，并且必须通过 HTTPS 发送。  如果需要基于 CORS 的会话相关性，则必须将工作负载迁移到 HTTPS。 请参阅此处的应用程序网关的 TLS 卸载和端到端 TLS 文档–[概述](ssl-overview.md)：[使用 AZURE 门户配置具有 TLS 终止的应用程序网关](create-ssl-portal.md)，[并通过门户使用应用程序网关配置端到端 tls](end-to-end-ssl-portal.md)。
+> 如果设置了属性 *SameSite = None*，则 Cookie 还必须包含 *Secure* 标志，并且必须通过 HTTPS 发送。  如果需要基于 CORS 的会话相关性，则必须将工作负载迁移到 HTTPS。 请参阅此处的应用程序网关的 TLS 卸载和端到端 TLS 文档– [概述](ssl-overview.md)： [使用 AZURE 门户配置具有 TLS 终止的应用程序网关](create-ssl-portal.md)， [并通过门户使用应用程序网关配置端到端 tls](end-to-end-ssl-portal.md)。
 
 ### <a name="connection-draining"></a>连接清空
 
@@ -377,7 +379,7 @@ Azure 应用程序网关使用网关托管 Cookie 来维护用户会话。 当�
 
 例如，使用多租户服务作为后端时。 应用服务是使用共享空间和单个 IP 地址的多租户服务。 因此，只能通过自定义域设置中配置的主机名访问应用服务。
 
-默认情况下，自定义域名为*example.azurewebsites.net*。 若要通过未显式注册到应用服务中的主机名或者通过应用程序网关的 FQDN 使用应用程序网关访问应用服务，请将原始请求中的主机名替代为应用服务的主机名。 为此，请启用“从后端地址中选取主机名”设置。
+默认情况下，自定义域名为 *example.azurewebsites.net*。 若要通过未显式注册到应用服务中的主机名或者通过应用程序网关的 FQDN 使用应用程序网关访问应用服务，请将原始请求中的主机名替代为应用服务的主机名。 为此，请启用“从后端地址中选取主机名”设置。
 
 对于其现有自定义 DNS 名称已映射到应用服务的自定义域，不需要启用此设置。
 

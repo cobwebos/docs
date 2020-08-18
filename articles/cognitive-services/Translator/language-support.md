@@ -1,7 +1,7 @@
 ---
 title: 语言支持-翻译人员
 titleSuffix: Azure Cognitive Services
-description: 认知服务转换器支持使用神经机器翻译（NMT）转换文本到文本转换的以下语言。
+description: 认知服务转换器支持使用神经机器翻译 (NMT) 进行文本到文本转换的以下语言。
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 4e4200e291db81ff759e21eac5b1a9b785b5657f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d692daf2f7f8b77358e73246fd8d8760f95982ac
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888308"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510787"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文本和语音翻译的语言和区域支持
 
-使用转换器可以转换为任何60多个文本翻译语言的内容。 对于高质量的 AI 计算机翻译，神经计算机翻译（NMT）是新标准，可在神经系统可用时使用转换器的 V3 作为默认值。
+使用转换器转换为70多个文本翻译语言的任何语言。 神经机器翻译 (NMT) 是高质量 AI 计算机翻译的新标准，可在神经系统可用时使用转换器的 V3 作为默认值。
 
 你还可以结合使用转换器与自定义转换器来构建神经翻译系统，以了解你自己的业务和行业中使用的术语，并使用 Microsoft Speech Service 将语音翻译添加到应用中。
 
@@ -47,6 +47,7 @@ ms.locfileid: "84888308"
 |中文(繁体)|   `zh-Hant`       |
 |克罗地亚语|  `hr`    |
 |捷克语| `cs`    |
+|达里语|  `prs`   |
 |丹麦语|    `da`        |
 |荷兰语| `nl`|
 |英语|   `en`    |
@@ -83,6 +84,8 @@ ms.locfileid: "84888308"
 |毛利语| `mi`  |
 |马拉地语| `mr`  |
 |挪威语| `nb`    |
+|奥里亚语|  `or`    |
+|普什图语|    `ps`    |
 |波斯语|   `fa`    |
 |波兰语|    `pl`    |
 |葡萄牙语（巴西）|   `pt-br` |
@@ -111,7 +114,7 @@ ms.locfileid: "84888308"
 |尤卡坦玛雅语|  `yua`   |
 
 > [!NOTE]
-> 语言代码 `pt` 将默认为 `pt-br` 、葡萄牙语（巴西）。
+> 语言代码 `pt` 将默认为 `pt-br` ，葡萄牙 (巴西) 。
 
 ### <a name="detect"></a>Detect
 
@@ -210,7 +213,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 
 字典使用 Lookup 和 Examples 方法支持以下将语言翻译成英语或将英语翻译为以下语言。
 
-查看[字典查找](reference/v3-0-dictionary-lookup.md)和[字典示例](reference/v3-0-dictionary-examples.md)操作的参考文档。
+查看 [字典查找](reference/v3-0-dictionary-lookup.md) 和 [字典示例](reference/v3-0-dictionary-examples.md) 操作的参考文档。
 
 | 语言    | 语言代码 |
 |:----------- |:-------------:|
@@ -273,7 +276,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 
 ## <a name="customization"></a>自定义
 
-以下语言可供使用[自定义转换器](https://aka.ms/CustomTranslator)的自定义或从英语进行自定义。
+以下语言可供使用 [自定义转换器](https://aka.ms/CustomTranslator)的自定义或从英语进行自定义。
 
 | 语言    | 语言代码 |
 |:----------- |:-------------:|
@@ -326,12 +329,12 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 威尔士语 | `cy` |
 
 ## <a name="speech-translation"></a>语音翻译
-语音翻译可通过使用带有认知服务语音服务的转换器获得。 查看[语音服务文档](https://docs.microsoft.com/azure/cognitive-services/speech-service/)，了解有关使用语音翻译和查看所有[可用语言选项](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)的详细信息。
+语音翻译可通过使用带有认知服务语音服务的转换器获得。 查看 [语音服务文档](https://docs.microsoft.com/azure/cognitive-services/speech-service/) ，了解有关使用语音翻译和查看所有 [可用语言选项](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)的详细信息。
 
 ### <a name="speech-to-text"></a>语音转文本
 将语音转换为文本，以便转换为所选的文本语言。 语音转换文本用于语音转换文本，或在与语音合成一起使用时用于语音到语音转换。
 
-| 语言    |
+| Language    |
 |:----------- |
 |阿拉伯语|
 |粤语(繁体)|
@@ -348,7 +351,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 |Hindi|
 |意大利语|
 |日语|
-|韩语|
+|朝鲜语|
 |马拉地语|
 |挪威语|
 |波兰语|
@@ -365,7 +368,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 ### <a name="text-to-speech"></a>文本转语音
 将文本转换为语音。 使用文本到语音功能可以在使用语音到文本时添加语音转换结果的音频输出，或用于语音语音转换。 
 
-| 语言    |
+| Language    |
 |:----------- |
 |阿拉伯语|
 |保加利亚语|
@@ -388,7 +391,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 |印度尼西亚语|
 |意大利语|
 |日语|
-|韩语|
+|朝鲜语|
 |马来语|
 |挪威语|
 |波兰语|

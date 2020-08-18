@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 17f98f452764abdc8458cdc38661d464ecb0a60d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c4c6be7c8a6287c5a8ec6a60121751ff9fc0dc9
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808545"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509221"
 ---
 # <a name="limitations"></a>限制
 
@@ -26,7 +26,7 @@ ms.locfileid: "84808545"
 * 单个类型允许的对象总数（Entity、CutPlaneComponent 等）：16,777,215。
 * 允许的活动剪切平面总数：8.
 
-## <a name="geometry"></a>Geometry
+## <a name="geometry"></a>几何结构
 
 * 资产中允许的材料总数：65,535。
 * 单个纹理的最大尺寸： 16384 x 16384。 转换过程会缩减更大的源纹理。
@@ -35,12 +35,12 @@ ms.locfileid: "84808545"
 
 所有已加载模型允许的多边形数量取决于传递给[会话管理 REST API](../how-tos/session-rest-api.md#create-a-session) 的 VM 大小：
 
-| VM 大小 | 最大多边形数量 |
+| 服务器大小 | 最大多边形数量 |
 |:--------|:------------------|
 |standard| 2000 万 |
 |高级| 无限制 |
 
-有关此限制的更多详细信息，请参阅[VM 大小](../reference/vm-sizes.md)章节。
+有关此限制的更多详细信息，请参阅 " [服务器大小](../reference/vm-sizes.md) " 一章。
 
 ## <a name="platform-limitations"></a>平台限制
 
