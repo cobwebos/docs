@@ -2,25 +2,20 @@
 title: 教程：使用 Azure Active Directory 为 GoToMeeting 配置自动用户预配 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 GoToMeeting 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: 0f59fedb-2cf8-48d2-a5fb-222ed943ff78
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0ac06fc3018b4230cbf32712067c48400599082
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 23af7ff9e4740b88d3d1f8cffb3d79a46c8d0d61
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058257"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544445"
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>教程：为 GoToMeeting 配置自动用户预配
 
@@ -57,13 +52,13 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ### <a name="to-configure-automatic-user-account-provisioning"></a>配置用户帐户自动预配：
 
-1. 在[Azure 门户](https://portal.azure.com)中，浏览到**Azure Active Directory > 企业应用 > 所有应用程序**"部分。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到 **Azure Active Directory > 企业应用 > 所有应用程序** "部分。
 
 1. 如果已为 GoToMeeting 配置了单一登录，请使用搜索字段搜索 GoToMeeting 实例。 否则，请选择“添加”****，然后在应用程序库中搜索“GoToMeeting”****。 从搜索结果中选择 GoToMeeting，并将其添加到应用程序列表。
 
 1. 选择你的 GoToMeeting 实例，然后选择“预配”**** 选项卡。
 
-1. 将**预配**模式设置为 "**自动**"。 
+1. 将 **预配** 模式设置为 " **自动**"。 
 
     ![预配](./media/citrixgotomeeting-provisioning-tutorial/provisioning.png)
 

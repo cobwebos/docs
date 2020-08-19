@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 73b568057bbb846958b6fe95f11c285326fe3688
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: bfc18332553d1aee713ccb8fc269ba63d2b5af12
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495176"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540590"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>为块 blob 配置对象复制（预览）
 
@@ -44,7 +44,7 @@ ms.locfileid: "87495176"
 若要在 Azure 门户中创建复制策略，请按照以下步骤操作：
 
 1. 在 Azure 门户中，转到源存储帐户。
-1. 在**Blob 服务**下，选择**对象复制**。
+1. 在 **Blob 服务**下，选择 **对象复制**。
 1. 选择“设置复制”。
 1. 选择目标订阅和存储帐户。
 1. 在“容器对”部分中，选择源帐户中的源容器，以及目标帐户中的目标容器。 每个复制策略最多可以创建 10 个容器对。
@@ -69,7 +69,7 @@ ms.locfileid: "87495176"
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要使用 PowerShell 创建复制策略，请先安装[2.0.1 版-预览版](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview)或更高版本。 若要安装预览版模块，请按照以下步骤操作：
+若要使用 PowerShell 创建复制策略，请先安装 [2.0.1 版-预览版](https://www.powershellgallery.com/packages/Az.Storage/2.0.1-preview) 或更高版本。 若要安装预览版模块，请按照以下步骤操作：
 
 1. 使用“设置”下的“应用和功能”设置从 Windows 中卸载以前安装的所有 Azure PowerShell。
 
@@ -175,15 +175,18 @@ az login
 在源存储帐户和目标存储帐户上启用 blob 版本控制，在源帐户上启用更改源。 请注意将尖括号中的值替换为你自己的值：
 
 ```azurecli
-az storage blob service-properties update --resource-group <resource-group> \
+az storage blob service-properties update \
+    --resource-group <resource-group> \
     --account-name <source-storage-account> \
     --enable-versioning
 
-az storage blob service-properties update --resource-group <resource-group> \
+az storage blob service-properties update \
+    --resource-group <resource-group> \
     --account-name <source-storage-account> \
     --enable-change-feed
 
-az storage blob service-properties update --resource-group <resource-group> \
+az storage blob service-properties update \
+    --resource-group <resource-group> \
     --account-name <dest-storage-account> \
     --enable-versioning
 ```
@@ -191,17 +194,30 @@ az storage blob service-properties update --resource-group <resource-group> \
 在它们各自的存储帐户中创建源容器和目标容器。
 
 ```azurecli
-az storage container create --account-name <source-storage-account> --name source-container3 --auth-mode login
-az storage container create --account-name <source-storage-account> --name source-container4 --auth-mode login
+az storage container create \
+    --account-name <source-storage-account> \
+    --name source-container3 \
+    --auth-mode login
+az storage container create \
+    --account-name <source-storage-account> \
+    --name source-container4 \
+    --auth-mode login
 
-az storage container create --account-name <dest-storage-account> --name source-container3 --auth-mode login
-az storage container create --account-name <dest-storage-account> --name source-container4 --auth-mode login
+az storage container create \
+    --account-name <dest-storage-account> \
+    --name source-container3 \
+    --auth-mode login
+az storage container create \
+    --account-name <dest-storage-account> \
+    --name source-container4 \
+    --auth-mode login
 ```
 
 在目标帐户上新建复制策略及其关联的规则。
 
 ```azurecli
-az storage account or-policy create --account-name <dest-storage-account> \
+az storage account or-policy create \
+    --account-name <dest-storage-account> \
     --resource-group <resource-group> \
     --source-account <source-storage-account> \
     --destination-account <dest-storage-account> \
@@ -210,7 +226,8 @@ az storage account or-policy create --account-name <dest-storage-account> \
     --min-creation-time '2020-05-10T00:00:00Z' \
     --prefix-match a
 
-az storage account or-policy rule add --account-name <dest-storage-account> \
+az storage account or-policy rule add \
+    --account-name <dest-storage-account> \
     --destination-container dest-container4 \
     --policy-id <policy-id> \
     --resource-group <resource-group> \
@@ -221,7 +238,8 @@ az storage account or-policy rule add --account-name <dest-storage-account> \
 使用策略 ID 在源帐户上创建策略。
 
 ```azurecli
-az storage account or-policy show --resource-group <resource-group> \
+az storage account or-policy show \
+    --resource-group <resource-group> \
     --name <dest-storage-account> \
     --policy-id <policy-id> |
     --az storage account or-policy create --resource-group <resource-group> \

@@ -3,41 +3,37 @@ title: 教程：在 Azure Active Directory 中配置 Workday 入站预配Microso
 description: 了解如何配置从 Workday 到 Azure AD 的入站预配
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: fac4f61e-d942-4429-a297-9ba74db95077
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 6fb80af84379a1a0bc174a7318c8150a98bea95e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 69c3246c910a83d889151d6ad749e1be86340e8c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84026498"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540960"
 ---
 # <a name="tutorial-configure-workday-to-azure-ad-user-provisioning"></a>教程：配置 Workday 以 Azure AD 用户预配
 本教程的目的是说明将工作人员数据从 Workday 预配到 Azure Active Directory 需要执行的步骤。 
 
 >[!NOTE]
->如果要从 Workday 预配的用户是不需要本地 AD 帐户的仅限云的用户，请使用本教程。 如果用户仅需要本地 AD 帐户或同时需要 AD 和 Azure AD 帐户，请参阅[配置 Workday 以 Active Directory](workday-inbound-tutorial.md)用户预配教程。 
+>如果要从 Workday 预配的用户是不需要本地 AD 帐户的仅限云的用户，请使用本教程。 如果用户仅需要本地 AD 帐户或同时需要 AD 和 Azure AD 帐户，请参阅 [配置 Workday 以 Active Directory](workday-inbound-tutorial.md) 用户预配教程。 
 
 ## <a name="overview"></a>概述
 
 [Azure Active Directory 用户预配服务](../app-provisioning/user-provisioning.md)与 [Workday Human Resources API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) 集成，以便能够预配用户帐户。 Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下人力资源和标识生命周期管理方案自动化：
 
-* **招聘新员工**-将新员工添加到 Workday 时，会自动在 Azure Active Directory 和 Azure AD 支持的 Office 365 和[其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)中创建用户帐户，并将电子邮件地址写回到 Workday。
+* **招聘新员工** -将新员工添加到 Workday 时，会自动在 Azure Active Directory 和 Azure AD 支持的 Office 365 和 [其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)中创建用户帐户，并将电子邮件地址写回到 Workday。
 
-* **员工属性和配置文件更新**-在 Workday 中更新员工记录（例如，其名称、标题或经理）时，将自动更新其用户帐户 Azure Active Directory 365 和[Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
+* **员工属性和配置文件更新** -在 Workday (中更新员工记录（例如，其名称、标题或经理) ）时，将自动更新其用户帐户 Azure Active Directory，并选择性地 [支持 Azure AD 的 Office 365 和其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
 
-* **员工**离职-当员工在 Workday 中终止时，他们的用户帐户会在 Azure Active Directory 和[Azure AD 支持的 Office 365 和其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)中自动禁用。
+* **员工** 离职-当员工在 Workday 中终止时，他们的用户帐户会在 Azure Active Directory 和 [Azure AD 支持的 Office 365 和其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)中自动禁用。
 
-* **员工 rehires** -当员工在 Workday 中 rehired 时，可以根据你的喜好自动重新激活或重新设置其旧帐户（取决于你的首选项），以 Azure Active Directory 以及（可选） Office 365 和[Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)。
+* **员工 rehires** -当员工在 Workday 中 rehired 时，可以根据你的首选项) Azure Active Directory 365 和 [Azure AD 支持的其他 SaaS 应用程序](../app-provisioning/user-provisioning.md)，自动重新激活或重新设置其旧帐户 (。
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>此用户预配解决方案最适合哪些对象？
 
@@ -55,17 +51,17 @@ ms.locfileid: "84026498"
 
 本部分介绍仅限云的用户的端到端用户预配解决方案体系结构。 有两个相关的流：
 
-* **权威 HR 数据流–从 Workday 到 Azure Active Directory：** 在此流工作人员事件（例如新员工、转移、终止）中，第一次在 Workday 中发生，然后事件数据流入 Azure Active Directory。 根据事件，可能会导致在 Azure AD 中创建/更新/启用/禁用操作。
+* **权威 HR 数据流–从 Workday 到 Azure Active Directory：** 在此流工作人员事件 (例如，新员工、转移、终止) 在 Workday 中第一次发生，然后事件数据流入 Azure Active Directory。 根据事件，可能会导致在 Azure AD 中创建/更新/启用/禁用操作。
 * **写回流–从本地 Active Directory 到 Workday：** 帐户创建在 Active Directory 中完成后，会通过 Azure AD Connect 与 Azure AD 同步，并且可以将电子邮件、用户名和电话号码等信息写回到 Workday。
 
   ![概述](./media/workday-inbound-tutorial/workday-cloud-only-provisioning.png)
 
 ### <a name="end-to-end-user-data-flow"></a>端到端用户数据流
 
-1. HR 团队在 Workday 员工中心执行工作人员交易（Joiners/搬运工/离开者或新聘用/转让/终止）
+1. HR 团队执行工作事务 (Joiners/搬运工/离开者，或 Workday 员工中心) 的新招聘/转让/终止
 2. Azure AD 预配服务运行 Workday EC 计划的标识同步，并标识需要处理的更改，以便与本地 Active Directory 同步。
 3. Azure AD 预配服务确定更改，并在 Azure AD 中为用户调用创建/更新/启用/禁用操作。
-4. 如果配置了[Workday 写回](workday-writeback-tutorial.md)应用，则它将从 Azure AD 检索诸如电子邮件、用户名和电话号码之类的属性。 
+4. 如果配置了 [Workday 写回](workday-writeback-tutorial.md) 应用，则它将从 Azure AD 检索诸如电子邮件、用户名和电话号码之类的属性。 
 5. Azure AD 预配服务在 Workday 中设置电子邮件、用户名和电话号码。
 
 ## <a name="planning-your-deployment"></a>计划部署
@@ -77,11 +73,11 @@ ms.locfileid: "84026498"
 * 属性转换 
 * 范围筛选器
 
-有关这些主题的综合指导原则，请参阅[云 HR 部署计划](../app-provisioning/plan-cloud-hr-provision.md)。 
+有关这些主题的综合指导原则，请参阅 [云 HR 部署计划](../app-provisioning/plan-cloud-hr-provision.md) 。 
 
 ## <a name="configure-integration-system-user-in-workday"></a>在 Workday 中配置集成系统用户
 
-请参阅[配置集成系统用户](workday-inbound-tutorial.md#configure-integration-system-user-in-workday)以创建有权检索辅助数据的 Workday 集成系统用户帐户部分。 
+请参阅 [配置集成系统用户](workday-inbound-tutorial.md#configure-integration-system-user-in-workday) 以创建有权检索辅助数据的 Workday 集成系统用户帐户部分。 
 
 ## <a name="configure-user-provisioning-from-workday-to-azure-ad"></a>配置从 Workday 到 Azure AD 的用户预配
 
@@ -103,7 +99,7 @@ ms.locfileid: "84026498"
 
 4. 依次选择“添加应用程序”、“所有”类别。 
 
-5. 搜索**Workday 以 Azure AD 用户预配**，并从库中添加该应用。
+5. 搜索 **Workday 以 Azure AD 用户预配**，并从库中添加该应用。
 
 6. 添加应用并显示应用详细信息屏幕后，请选择“预配”。
 
@@ -124,9 +120,9 @@ ms.locfileid: "84026498"
      | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #。# | 是 |
 
       > [!NOTE]
-     > 如果 URL 中未指定任何版本信息，则应用使用 Workday Web Services （WWS） v 21.1，且不需要对应用附带的默认 XPATH API 表达式进行任何更改。 若要使用特定的 WWS API 版本，请在 URL 中指定版本号 <br>
-     > 示例：`https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v34.0` <br>
-     > <br> 如果你使用的是 WWS API v 30.0 +，则在启用预配作业之前，**请在 "** **属性映射-> 高级选项-> 编辑用于 Workday 的编辑属性列表**" 中引用[管理配置](workday-inbound-tutorial.md#managing-your-configuration)和[Workday 属性引用](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)部分。  
+     > 如果 URL 中未指定任何版本信息，则应用将使用 Workday Web 服务 (WWS) v 21.1，而不需要对应用附带的默认 XPATH API 表达式进行任何更改。 若要使用特定的 WWS API 版本，请在 URL 中指定版本号 <br>
+     > 示例： `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v34.0` <br>
+     > <br> 如果你使用的是 WWS API v 30.0 +，则在启用预配作业之前， **请在 "** **属性映射-> 高级选项-> 编辑用于 Workday 的编辑属性列表** " 中引用 [管理配置](workday-inbound-tutorial.md#managing-your-configuration) 和 [Workday 属性引用](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30)部分。  
 
    * **通知电子邮件 -** 输入电子邮件地址，然后选中“如果失败，则发送电子邮件”复选框。
 
