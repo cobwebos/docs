@@ -47,6 +47,8 @@
       href: ./policy-samples.md
 - name: 概念
   items:
+    - name: 了解应用和部署
+      href: spring-cloud-concept-understand-app-and-deployment.md
     - name: 了解配额和限制
       href: spring-cloud-quotas.md
     - name: 了解指标

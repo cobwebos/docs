@@ -13,19 +13,19 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: daccc4195877ad18441640f562556d97a04b10f0
-  ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+  ms.openlocfilehash: 549309a01602206b85a54b47df297735dfc5e709
+  ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/29/2020
-  ms.locfileid: "87386480"
+  ms.lasthandoff: 08/17/2020
+  ms.locfileid: "88262596"
 highlightedContent:
   items:
   - title: Azure Key Vault 简介
     itemType: overview
     url: ./general/overview.md
   - title: 对软删除的重要更改
-    itemType: overview
+    itemType: whats-new
     url: ./general/soft-delete-change.md
   - title: 身份验证
     itemType: overview
@@ -58,7 +58,7 @@ conceptualContent:
     footerLink:
       url: ./certificates/index.yml
       text: 查看详细信息
-  - title: 密钥
+  - title: 键
     links:
     - url: ./keys/about-keys.md
       itemType: overview
@@ -88,7 +88,24 @@ conceptualContent:
       text: 为单用户资源轮换机密
     footerLink:
       url: ./secrets/index.yml
-      text: 查看更多
+      text: 查看详细信息
+  - title: 客户端库
+    links:
+    - url: ./general/client-libraries.md
+      itemType: reference
+      text: Azure Key Vault 的客户端库
+    - url: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+      itemType: reference
+      text: .NET 客户端库
+    - url: /python/api/overview/azure/key-vault-index?view=azure-python
+      itemType: reference
+      text: Python 客户端库
+    - url: https://azure.github.io/azure-sdk-for-java/keyvault.html
+      itemType: reference
+      text: Java 客户端库
+    - url: /javascript/api/overview/azure/key-vault-index?view=azure-node-latest
+      itemType: reference
+      text: Node.js 客户端库
   - title: 将 Key Vault 与存储配合使用
     links:
     - url: ./secrets/overview-storage-keys.md

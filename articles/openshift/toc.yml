@@ -79,6 +79,8 @@
   items:
     - name: Azure Red Hat OpenShift 4 群集中的网络
       href: concepts-networking.md
+    - name: 从 Azure Red Hat OpenShift 3.11 迁移到 Azure Red Hat OpenShift 4
+      href: migration.md
 - name: 参考
   items:
     - name: Azure Red Hat OpenShift CLI

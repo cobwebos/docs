@@ -11,12 +11,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: 365f0b07370937a73d3925373be0be544a182865
-  ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+  ms.openlocfilehash: be76cd9d3c358864d1278cad77be43048dec7a71
+  ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/29/2020
-  ms.locfileid: "87386769"
+  ms.lasthandoff: 08/17/2020
+  ms.locfileid: "88263446"
 landingContent:
 - title: 证书
   linkLists:
@@ -46,6 +46,18 @@ landingContent:
       url: quick-create-python.md
     - text: 在 Key Vault 中导入证书
       url: tutorial-import-certificate.md
+- title: Key Vault 证书的客户端库
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET 客户端库
+      url: /dotnet/api/azure.security.keyvault.certificates?view=azure-dotnet
+    - text: Python 客户端库
+      url: /python/api/overview/azure/keyvault-certificates-readme?view=azure-python
+    - text: Java 客户端库
+      url: https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.2.0/index.html
+    - text: Node.js 客户端库
+      url: /javascript/api/@azure/keyvault-certificates/?view=azure-node-latest
 - title: 有关 Key Vault 的详细信息
   linkLists:
   - linkListType: overview
