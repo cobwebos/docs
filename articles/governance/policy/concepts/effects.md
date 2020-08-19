@@ -1,14 +1,14 @@
 ---
 title: 了解效果的工作原理
 description: Azure Policy 定义具有各种效果，用来确定如何对符合性进行管理和报告。
-ms.date: 06/15/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 54c2a687c6386c075ef5802826bc60b87b4d3ee4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0cfa8215d828de6d5426c3883ca1968e7a7cb542
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791412"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544717"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -24,24 +24,24 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 - [已禁用](#disabled)
 - [修改](#modify)
 
-以下效果已_弃用_：
+以下效果已 _弃用_：
 
 - [EnforceOPAConstraint](#enforceopaconstraint)
 - [EnforceRegoPolicy](#enforceregopolicy)
 
 > [!IMPORTANT]
-> 使用 "_审核_" 和 "_拒绝_" 作为 "资源提供程序" 模式，而不是**EnforceOPAConstraint**或**EnforceRegoPolicy**影响 `Microsoft.Kubernetes.Data` 。 已更新内置策略定义。 当修改这些内置策略定义的现有策略分配时，必须将_effect_参数更改为 "已更新_allowedValues_ " 列表中的值。
+> 使用 "_审核_" 和 "_拒绝_" 作为 "资源提供程序" 模式，而不是**EnforceOPAConstraint**或**EnforceRegoPolicy**影响 `Microsoft.Kubernetes.Data` 。 已更新内置策略定义。 当修改这些内置策略定义的现有策略分配时，必须将 _effect_ 参数更改为 "已更新 _allowedValues_ " 列表中的值。
 
 ## <a name="order-of-evaluation"></a>评估顺序
 
-Azure 策略首先评估创建或更新资源的请求。 Azure Policy 会创建将应用于资源的所有分配列表，然后根据每个定义评估资源。 对于[资源管理器模式](./definition-structure.md#resource-manager-modes)，Azure 策略会在将请求提交到相应的资源提供程序之前处理多个影响。 当资源不满足 Azure 策略的设计治理控制时，此顺序可防止资源提供程序进行不必要的处理。 使用[资源提供程序模式](./definition-structure.md#resource-provider-modes)，资源提供程序管理评估和结果，并将结果报告回 Azure 策略。
+Azure Policy 首先评估创建或更新资源的请求。 Azure Policy 会创建将应用于资源的所有分配列表，然后根据每个定义评估资源。 对于[资源管理器模式](./definition-structure.md#resource-manager-modes)，Azure Policy 在将请求转交给相应的资源提供程序之前处理多个效果。 此顺序可以防止资源提供程序在资源不符合 Azure Policy 的设计治理控制时进行不必要的处理。 使用[资源提供程序模式](./definition-structure.md#resource-provider-modes)，资源提供程序管理评估和结果，并将结果报告回 Azure Policy。
 
 - 首先检查**已禁用**效果以确定是否应评估策略规则。
 - 然后评估“附加”和“修改”。  由于这两个效果可能会改变请求，因此所做的更改可能会阻止“审核”或“拒绝”效果的触发。 这些效果仅在资源管理器模式下可用。
 - 然后评估“拒绝”。 通过在“审核”之前评估“拒绝”，可以防止两次记录不需要的资源。
-- 最后评估**审核**。
+- 最后评估审核。
 
-资源提供程序在资源管理器模式请求上返回成功代码之后， **AuditIfNotExists**和**DeployIfNotExists**会进行评估，以确定是否需要其他符合性日志记录或操作。
+资源提供程序针对资源管理器模式请求返回成功代码后，AuditIfNotExists 和 DeployIfNotExists 将进行评估以确定是否需要其他符合性日志记录或操作 。
 
 ## <a name="append"></a>附加
 
@@ -77,7 +77,7 @@ Azure 策略首先评估创建或更新资源的请求。 Azure Policy 会创建
 }
 ```
 
-示例 2：单个“字段/值”对使用具有数组值的 \[\*\] [别名](definition-structure.md#aliases)在存储帐户上设置 IP 规则。   通过使用 \[\*\] 别名，附加效果会将值附加到可能预先存在的数组。  如果该数组尚不存在，则创建它。
+示例 2：单个“字段/值”对使用具有数组值的 \[\*\] [别名](definition-structure.md#aliases)在存储帐户上设置 IP 规则。   通过使用 \[\*\] 别名，附加效果会将值附加到可能预先存在的数组。  如果数组尚不存在，将会创建它。
 
 ```json
 "then": {
@@ -98,24 +98,24 @@ Azure 策略首先评估创建或更新资源的请求。 Azure Policy 会创建
 
 ### <a name="audit-evaluation"></a>“审核”评估
 
-“审核”是 Azure Policy 在创建或更新资源期间检查的最后一个效果。 对于资源管理器模式，Azure 策略会将资源发送到资源提供程序。 “审核”对于资源请求和评估周期的工作方式相同。 Azure Policy 将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志，并将资源标记为不符合。
+“审核”是 Azure Policy 在创建或更新资源期间检查的最后一个效果。 对于资源管理器模式，Azure Policy 会将资源发送到资源提供程序。 “审核”对于资源请求和评估周期的工作方式相同。 Azure Policy 将 `Microsoft.Authorization/policies/audit/action` 操作添加到活动日志，并将资源标记为不符合。
 
 ### <a name="audit-properties"></a>“审核”属性
 
-对于资源管理器模式，审核效果没有任何其他属性可用于策略定义的**then**条件。
+对于资源管理器模式，Audit 效果没有任何其他属性可用于策略定义的 then 条件。
 
-对于的资源提供程序模式 `Microsoft.Kubernetes.Data` ，审核效果具有以下附加的**详细信息**。
+对于 `Microsoft.Kubernetes.Data` 的资源提供程序模式，Audit 效果具有以下 details 的附加子属性。
 
-- **constraintTemplate** （必需）
+- constraintTemplate（必选）
   - 约束模板 CustomResourceDefinition (CRD) 定义新约束。 该模板定义 Rego 逻辑、约束架构和通过 Azure Policy 的值传递的约束参数。
-- **约束**（必需）
-  - 约束模板的 CRD 实现。 使用通过值传递的参数，如 `{{ .Values.<valuename> }}`。 在下面的示例2中，这些值为 `{{ .Values.excludedNamespaces }}` 和 `{{ .Values.allowedContainerImagesRegex }}` 。
-- **值**（可选）
+- constraint（必选）
+  - 约束模板的 CRD 实现。 使用通过值传递的参数，如 `{{ .Values.<valuename> }}`。 在下面的示例 2 中，这些值为 `{{ .Values.excludedNamespaces }}` 和 `{{ .Values.allowedContainerImagesRegex }}`。
+- values（可选）
   - 定义要传递给约束的任何参数和值。 每个值都必须在约束模板 CRD 中存在。
 
 ### <a name="audit-example"></a>“审核”示例
 
-示例1：对资源管理器模式使用审核效果。
+示例 1：对资源管理器模式使用 Audit 效果。
 
 ```json
 "then": {
@@ -123,7 +123,7 @@ Azure 策略首先评估创建或更新资源的请求。 Azure Policy 会创建
 }
 ```
 
-示例2：将审核效果用于的资源提供程序模式 `Microsoft.Kubernetes.Data` 。 **详细**信息中的其他信息定义了要在 Kubernetes 中使用以限制允许的容器映像的约束模板和 .crd。
+示例 2：对 `Microsoft.Kubernetes.Data` 的资源提供程序模式使用 Audit 效果。 details 中的附加信息定义了要在 Kubernetes 中使用以限制允许的容器映像的约束模板和 CRD。
 
 ```json
 "then": {
@@ -141,7 +141,7 @@ Azure 策略首先评估创建或更新资源的请求。 Azure Policy 会创建
 
 ## <a name="auditifnotexists"></a>AuditIfNotExists
 
-AuditIfNotExists_启用与资源_匹配**if**条件的资源，但不在**then**条件的**详细信息**中指定属性。
+AuditIfNotExists 对与匹配 if 条件的资源相关的资源启用审核，但没有在 then 条件的 details 中指定的属性  。
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists 评估
 
@@ -151,7 +151,7 @@ AuditIfNotExists 在资源提供程序处理资源创建或更新请求并返回
 
 AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资源的所有子属性。
 
-- **类型**（必需）
+- Type（必选）
   - 指定要匹配的相关资源的类型。
   - 如果 details.type 是 if 条件资源下的一个资源类型，则策略会在已评估资源范围内查询此“类型”的资源。   否则，策略会在与已评估资源同一资源组范围内查询。
 - **Name**（可选）
@@ -211,26 +211,26 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 
 ### <a name="deny-evaluation"></a>“拒绝”评估
 
-在资源管理器模式下创建或更新匹配资源时，deny 会在将请求发送到资源提供程序之前阻止请求。 该请求返回为 `403 (Forbidden)`。 在门户中，可以将 Forbidden（禁止）视为策略分配阻止的部署状态。 对于资源提供程序模式，资源提供程序管理资源的评估。
+在资源管理器模式下创建或更新匹配的资源时，Deny 会在发送给资源提供程序之前阻止请求。 该请求返回为 `403 (Forbidden)`。 在门户中，可以将 Forbidden（禁止）视为策略分配阻止的部署状态。 对于资源提供程序模式，资源提供程序管理资源的评估。
 
 在评估现有资源期间，与“拒绝”策略定义匹配的资源将标记为不合规。
 
 ### <a name="deny-properties"></a>“拒绝”属性
 
-对于资源管理器模式，拒绝效果没有任何其他属性可用于策略定义的**then**条件。
+对于资源管理器模式，Deny 效果没有任何其他属性可用于策略定义的 then 条件。
 
-对于的资源提供程序模式 `Microsoft.Kubernetes.Data` ，拒绝效果具有以下附加的**详细信息**。
+对于 `Microsoft.Kubernetes.Data` 的资源提供程序模式，Deny 效果具有以下 details 的附加子属性。
 
-- **constraintTemplate** （必需）
+- constraintTemplate（必选）
   - 约束模板 CustomResourceDefinition (CRD) 定义新约束。 该模板定义 Rego 逻辑、约束架构和通过 Azure Policy 的值传递的约束参数。
-- **约束**（必需）
-  - 约束模板的 CRD 实现。 使用通过值传递的参数，如 `{{ .Values.<valuename> }}`。 在下面的示例2中，这些值为 `{{ .Values.excludedNamespaces }}` 和 `{{ .Values.allowedContainerImagesRegex }}` 。
-- **值**（可选）
+- constraint（必选）
+  - 约束模板的 CRD 实现。 使用通过值传递的参数，如 `{{ .Values.<valuename> }}`。 在下面的示例 2 中，这些值为 `{{ .Values.excludedNamespaces }}` 和 `{{ .Values.allowedContainerImagesRegex }}`。
+- values（可选）
   - 定义要传递给约束的任何参数和值。 每个值都必须在约束模板 CRD 中存在。
 
 ### <a name="deny-example"></a>“拒绝”示例
 
-示例1：对资源管理器模式使用 deny 效果。
+示例 1：对资源管理器模式使用 Deny 效果。
 
 ```json
 "then": {
@@ -238,7 +238,7 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 }
 ```
 
-示例2：对的资源提供程序模式使用 "拒绝" 效果 `Microsoft.Kubernetes.Data` 。 **详细**信息中的其他信息定义了要在 Kubernetes 中使用以限制允许的容器映像的约束模板和 .crd。
+示例 2：对 `Microsoft.Kubernetes.Data` 的资源提供程序模式使用 Deny 效果。 details 中的附加信息定义了要在 Kubernetes 中使用以限制允许的容器映像的约束模板和 CRD。
 
 ```json
 "then": {
@@ -272,7 +272,7 @@ DeployIfNotExists 将在资源提供程序处理创建或更新资源请求并�
 
 DeployIfNotExists 效果的“details”属性具有定义要匹配的相关资源和要执行的模板部署的所有子属性。
 
-- **类型**（必需）
+- Type（必选）
   - 指定要匹配的相关资源的类型。
   - 首先尝试提取 if 条件资源下的资源，然后在与 if 条件资源相同的资源组中进行查询。
 - **Name**（可选）
@@ -296,14 +296,14 @@ DeployIfNotExists 效果的“details”属性具有定义要匹配的相关资�
   - 如果任何匹配的相关资源评估结果为 true，该效果就会得到满足并且不会触发部署。
   - 可以使用 [field()] 检查 if 条件中的值的等效性。
   - 例如，可用于验证父资源（位于 if 条件中）与匹配的相关资源位于相同的资源位置。
-- **roleDefinitionIds** （必需）
+- roleDefinitionIds（必选）
   - 此属性必须包含与可通过订阅访问的基于角色的访问控制角色 ID 匹配的字符串数组。 有关详细信息，请参阅[修正 - 配置策略定义](../how-to/remediate-resources.md#configure-policy-definition)。
 - **DeploymentScope**（可选）
   - 允许的值为 Subscription 和 ResourceGroup。
   - 设置要触发的部署类型。 _Subscription_ 指示[在订阅级别部署](../../../azure-resource-manager/templates/deploy-to-subscription.md)，_ResourceGroup_ 指示部署到资源组。
   - 使用订阅级别部署时，必须在 _Deployment_ 中指定 _location_ 属性。
   - 默认值是 ResourceGroup。
-- **部署**（必需）
+- Deployment（必选）
   - 该属性应包含完整的模板部署，因为它将传递给 `Microsoft.Resources/deployments` PUT API。 有关详细信息，请参阅[部署 REST API](/rest/api/resources/deployments)。
 
   > [!NOTE]
@@ -366,7 +366,7 @@ DeployIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 
 对于测试情况以及在策略定义已参数化效果时，此效果很有用。 借助这种灵活性可以禁用单个分配，而无需禁用该策略的所有分配。
 
-禁用效果的替代方法是在策略分配上设置的**enforcementMode**。
+Disabled 效果的替代方法是 enforcementMode，可在策略分配上设置。
 enforcementMode 已禁用时，仍可评估资源。 日志（例如活动日志）和策略效果不会出现。 有关详细信息，请参阅[策略分配 - 强制模式](./assignment-structure.md#enforcement-mode)。
 
 ## <a name="enforceopaconstraint"></a>EnforceOPAConstraint
@@ -374,7 +374,7 @@ enforcementMode 已禁用时，仍可评估资源。 日志（例如活动日志
 此效果与 `Microsoft.Kubernetes.Data` 的策略定义模式一起使用。 它用于对 Azure 上的 Kubernetes 群集将使用 [OPA Constraint Framework](https://github.com/open-policy-agent/frameworks/tree/master/constraint#opa-constraint-framework) 定义的 Gatekeeper v3 许可控制规则传递到 [Open Policy Agent](https://www.openpolicyagent.org/) (OPA)。
 
 > [!NOTE]
-> [适用于 Kubernetes 的 Azure Policy](./policy-for-kubernetes.md) 为预览版，仅支持 Linux 节点池和内置策略定义。 内置策略定义属于“Kubernetes”类别。 受限制的预览版策略定义与**EnforceOPAConstraint**效果和相关的**Kubernetes 服务**类别即将_弃用_。 请改用 "使用_审核_和_拒绝_" 作为资源提供程序模式 `Microsoft.Kubernetes.Data` 。
+> [适用于 Kubernetes 的 Azure Policy](./policy-for-kubernetes.md) 为预览版，仅支持 Linux 节点池和内置策略定义。 内置策略定义属于“Kubernetes”类别。 受限制的预览版策略定义与 **EnforceOPAConstraint** 效果和相关的 **Kubernetes 服务** 类别即将 _弃用_。 请改用 "使用 _审核_ 和 _拒绝_ " 作为资源提供程序模式 `Microsoft.Kubernetes.Data` 。
 
 ### <a name="enforceopaconstraint-evaluation"></a>EnforceOPAConstraint 评估
 
@@ -385,11 +385,11 @@ Open Policy Agent 许可控制器会实时评估群集上的任何新请求。
 
 EnforceOPAConstraint 效果的 Details 属性具有描述 Gatekeeper v3 许可控制规则的子属性。
 
-- **constraintTemplate** （必需）
+- constraintTemplate（必选）
   - 约束模板 CustomResourceDefinition (CRD) 定义新约束。 该模板定义 Rego 逻辑、约束架构和通过 Azure Policy 的值传递的约束参数。
-- **约束**（必需）
+- constraint（必选）
   - 约束模板的 CRD 实现。 使用通过值传递的参数，如 `{{ .Values.<valuename> }}`。 在下面的示例中，这些值为 `{{ .Values.cpuLimit }}` 和 `{{ .Values.memoryLimit }}`。
-- **值**（可选）
+- values（可选）
   - 定义要传递给约束的任何参数和值。 每个值都必须在约束模板 CRD 中存在。
 
 ### <a name="enforceopaconstraint-example"></a>EnforceOPAConstraint 示例
@@ -430,7 +430,7 @@ EnforceOPAConstraint 效果的 Details 属性具有描述 Gatekeeper v3 许可�
 此效果与 `Microsoft.ContainerService.Data` 的策略定义模式一起使用。 它用于在 [Azure Kubernetes](../../../aks/intro-kubernetes.md) 服务上将使用 [Rego](https://www.openpolicyagent.org/docs/latest/policy-language/#what-is-rego) 定义的 Gatekeeper v2 许可控制规则传递到 [Open Policy Agent](https://www.openpolicyagent.org/) (OPA)。
 
 > [!NOTE]
-> [适用于 Kubernetes 的 Azure Policy](./policy-for-kubernetes.md) 为预览版，仅支持 Linux 节点池和内置策略定义。 内置策略定义属于“Kubernetes”类别。 对“EnforceRegoPolicy”效果和相关“Kubernetes 服务”的有限预览策略定义已被弃用。  请改用 "使用_审核_和_拒绝_" 作为资源提供程序模式 `Microsoft.Kubernetes.Data` 。
+> [适用于 Kubernetes 的 Azure Policy](./policy-for-kubernetes.md) 为预览版，仅支持 Linux 节点池和内置策略定义。 内置策略定义属于“Kubernetes”类别。 对“EnforceRegoPolicy”效果和相关“Kubernetes 服务”的有限预览策略定义已被弃用。  请改用 "使用 _审核_ 和 _拒绝_ " 作为资源提供程序模式 `Microsoft.Kubernetes.Data` 。
 
 ### <a name="enforceregopolicy-evaluation"></a>EnforceRegoPolicy 评估
 
@@ -441,11 +441,11 @@ Open Policy Agent 许可控制器会实时评估群集上的任何新请求。
 
 EnforceRegoPolicy 效果的 Details 属性具有描述 Gatekeeper v2 许可控制规则的子属性。
 
-- **policyId** （必需）
+- **policyId** (必需) 
   - 作为参数传递给 Rego 许可控制规则的唯一名称。
-- **策略**（必需）
+- **策略** (必需) 
   - 指定 Rego 许可控制规则的 URI。
-- **policyParameters** （可选）
+- **policyParameters** (可选) 
   - 定义要传递给 Rego 策略的任何参数和值。
 
 ### <a name="enforceregopolicy-example"></a>EnforceRegoPolicy 示例
@@ -494,21 +494,21 @@ EnforceRegoPolicy 效果的 Details 属性具有描述 Gatekeeper v2 许可控�
 
 修改效果的“Details”属性包含定义修正所需权限以及用于添加、更新或删除标记值操作的所有子属性。 
 
-- **roleDefinitionIds** （必需）
+- roleDefinitionIds（必选）
   - 此属性必须包含与可通过订阅访问的基于角色的访问控制角色 ID 匹配的字符串数组。 有关详细信息，请参阅[修正 - 配置策略定义](../how-to/remediate-resources.md#configure-policy-definition)。
   - 定义的角色必须包括所有授予[参与者](../../../role-based-access-control/built-in-roles.md#contributor)角色的操作。
-- **conflictEffect** （可选）
-  - 确定在多个策略定义修改相同属性时哪个策略定义 "入选"。
-    - 对于新的或更新的资源，具有_deny_的策略定义优先。 带有_审核_的策略定义将跳过所有**操作**。 如果有多个策略定义_拒绝_，则该请求将被拒绝为冲突。 如果所有策略定义都具有_审核_，则不会处理冲突的策略定义的任何**操作**。
-    - 对于现有资源，如果有多个策略定义_拒绝_，则符合性状态为 "_冲突_"。 如果一个或多个策略定义具有_deny_，则每个分配都将返回符合性状态 "_不符合_"。
-  - 可用值：_审核_、_拒绝_、_禁用_。
-  - 默认值为 "_拒绝_"。
-- **操作**（必需）
+- conflictEffect（可选）
+  - 确定在多个策略定义修改同一属性的情况下，哪个策略定义“胜出”。
+    - 对于新的或更新的资源，具有 Deny 的策略定义优先。 具有 Audit 的策略定义会跳过所有操作。 如果多个策略定义具有 Deny，则该请求作为冲突被拒绝。 如果所有策略定义都具有 Audit，则不处理冲突策略定义的任何操作。
+    - 对于现有资源，如果多个策略定义具有 Deny，则符合性状态为“冲突” 。 如果一个或更少的策略定义具有 Deny，则每个分配都返回“不符合”的符合性状态 。
+  - 可用值：audit、deny、disabled  。
+  - 默认值为 deny。
+- operations（必选）
   - 要在匹配资源上完成的所有标记操作的数组。
   - 属性：
-    - **操作**（必需）
+    - operation（必选）
       - 定义要在匹配资源上执行的操作。 选项为：_addOrReplace_ _添加_ _删除_。 _添加_行为与 [附加](#append)效果类似。
-    - **field** （必需）
+    - field（必选）
       - 要添加、替换或删除的标记。 对于其他[字段](./definition-structure.md#fields)，标记名称必须遵循相同的命名约定。
     - **值** (可选)
       - 要设置标记的值。

@@ -1,14 +1,14 @@
 ---
 title: 如何创建适用于 Windows 的来宾配置策略
 description: 了解如何创建适用于 Windows 的 Azure Policy 来宾配置策略。
-ms.date: 03/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 31c40640babea961ef3bb255112306f59772bae2
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 4ee0c9d1912338235e53eb287bfc86a14b75cc97
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236533"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547658"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>如何创建适用于 Windows 的来宾配置策略
 
@@ -16,8 +16,7 @@ ms.locfileid: "88236533"
  
 若要了解如何创建适用于 Linux 的来宾配置策略，请参阅[如何创建适用于 Linux 的来宾配置策略](./guest-configuration-create-linux.md)页
 
-审核 Windows 时，来宾配置使用 [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) 资源模块创建配置文件。 DSC 配置定义了计算机应处于的条件。
-如果配置评估失败，则会触发策略效果 auditIfNotExists，并将计算机视为不符合。
+审核 Windows 时，来宾配置使用 [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) 资源模块创建配置文件。 DSC 配置定义了计算机应处于的条件。 如果配置评估失败，则会触发策略效果 auditIfNotExists，并将计算机视为不符合。
 
 [Azure Policy 来宾配置](../concepts/guest-configuration.md)只能用于审核计算机内部的设置。 还不能修正计算机内部的设置。
 
@@ -56,7 +55,7 @@ ms.locfileid: "88236533"
 
 - PowerShell 6.2 或更高版本。 若尚未安装，请遵循[这些说明](/powershell/scripting/install/installing-powershell)。
 - Azure PowerShell 1.5.0 或更高版本。 若尚未安装，请遵循[这些说明](/powershell/azure/install-az-ps)。
-  - 只需要 AZ 模块“Az.Accounts”和“Az.Resources”。
+  - 仅 Az 模块 "Az. Accounts" 和 "Az" 是必需的。
 
 ### <a name="install-the-module"></a>安装模块
 
@@ -90,8 +89,7 @@ ms.locfileid: "88236533"
 1. 该函数返回的布尔值确定来宾分配的 Azure 资源管理器状态是合规还是不合规。
 1. 提供程序运行 `Get-TargetResource` 以返回每个设置的当前状态，因此，会获得有关计算机为何不合规的详细信息，以及用于确认当前状态是否合规的详细信息。
 
-Azure 策略中将值传递给“来宾配置”分配信息的参数必须为字符串类型。
-即使 DSC 资源支持数组，也无法通过参数传递数组。
+Azure 策略中将值传递给“来宾配置”分配信息的参数必须为字符串类型。 即使 DSC 资源支持数组，也无法通过参数传递数组。
 
 ### <a name="get-targetresource-requirements"></a>Get-TargetResource 要求
 
@@ -121,7 +119,7 @@ return @{
 }
 ```
 
-还必须将 Reasons 属性作为嵌入类添加到资源的架构 MOF。
+必须将原因属性添加到作为嵌入类的资源的架构 MOF。
 
 ```mof
 [ClassVersion("1.0.0.0")] 
@@ -166,8 +164,7 @@ PowerShell cmdlet 可帮助创建包。
 ### <a name="storing-guest-configuration-artifacts"></a>存储来宾配置项目
 
 .zip 包必须存储在可由托管虚拟机访问的位置。
-示例包括 GitHub 存储库、Azure 存储库或 Azure 存储。 如果你不想使包公开，则可以在 URL 中包含 [SAS 令牌](../../../storage/common/storage-sas-overview.md)。
-还可以为专用网络中的计算机实现[服务终结点](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)，不过此配置仅适用于访问包，而不适用于与服务通信。
+示例包括 GitHub 存储库、Azure 存储库或 Azure 存储。 如果你不想使包公开，则可以在 URL 中包含 [SAS 令牌](../../../storage/common/storage-sas-overview.md)。 还可以为专用网络中的计算机实现[服务终结点](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)，不过此配置仅适用于访问包，而不适用于与服务通信。
 
 ## <a name="step-by-step-creating-a-custom-guest-configuration-audit-policy-for-windows"></a>逐步创建适用于 Windows 的自定义来宾配置审核策略
 
@@ -372,7 +369,7 @@ New-AzRoleDefinition -Role $role
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>使用标记筛选来宾配置策略
 
-来宾配置模块中由 cmdlet 创建的策略定义可以视需要选择包括标记筛选器。 `New-GuestConfigurationPolicy` 的 Tag 参数支持包含各个标记条目的哈希表数组。 标记会添加到策略定义的 `If` 部分，并且不能通过策略分配进行修改。
+来宾配置模块中由 cmdlet 创建的策略定义可以视需要选择包括标记筛选器。 `New-GuestConfigurationPolicy` 的 Tag 参数支持包含各个标记条目的哈希表数组。 标记将添加到 `If` 策略定义的部分，并且不能通过策略分配进行修改。
 
 下面给出了筛选标记的策略定义的示例代码片段。
 
@@ -536,7 +533,7 @@ wmi_service -out ./Config
 
 支持文件必须打包在一起。 来宾配置使用已完成的包来创建 Azure Policy 定义。
 
-`New-GuestConfigurationPackage` cmdlet 创建包。 对于第三方内容，使用 FilesToInclude 参数将 InSpec 内容添加到包。 不需要如同 Linux 包一样指定 ChefProfilePath。
+`New-GuestConfigurationPackage` cmdlet 创建包。 对于第三方内容，使用 FilesToInclude 参数将 InSpec 内容添加到包。 对于 Linux 包，无需指定 **ChefProfilePath** 。
 
 - **Name**：来宾配置包名称。
 - **配置**：已编译的配置文档完整路径。
@@ -602,5 +599,5 @@ $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何使用[来宾配置](../concepts/guest-configuration.md)审核 VM。
-- 了解如何[以编程方式创建策略](programmatically-create.md)。
-- 了解如何[获取符合性数据](get-compliance-data.md)。
+- 了解如何[以编程方式创建策略](./programmatically-create.md)。
+- 了解如何[获取符合性数据](./get-compliance-data.md)。

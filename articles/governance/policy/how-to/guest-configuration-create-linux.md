@@ -1,14 +1,14 @@
 ---
 title: 如何创建适用于 Linux 的来宾配置策略
 description: 了解如何创建适用于 Linux 的 Azure Policy 来宾配置策略。
-ms.date: 03/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: fef5bdea1b7f98e19f9f8ee8bc9bce8553107fda
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 8bf01d8f69439f7b4d60fba76de0b7abf636c274
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236584"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547714"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>如何创建适用于 Linux 的来宾配置策略
 
@@ -25,9 +25,8 @@ ms.locfileid: "88236584"
 > [!IMPORTANT]
 > 包含来宾配置的自定义策略是一项预览功能。
 >
-> 必须有来宾配置扩展，才能在 Azure 虚拟机中执行审核。
-> 若要在所有 Linux 计算机上大规模部署此扩展，请分配以下策略定义：
->   - [部署必备组件以在 Linux VM 上启用 Guest Configuration 策略](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> 必须有来宾配置扩展，才能在 Azure 虚拟机中执行审核。 若要在所有 Linux 计算机上大规模部署此扩展，请分配以下策略定义：
+> - [部署必备组件以在 Linux VM 上启用 Guest Configuration 策略](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ## <a name="install-the-powershell-module"></a>安装 PowerShell 模块
 
@@ -52,14 +51,13 @@ ms.locfileid: "88236584"
 - Windows
 
 > [!NOTE]
-> Cmdlet "GuestConfigurationPackage" 需要 OpenSSL 版本1.0，因为对 OMI 有依赖关系。
-> 这会导致 OpenSSL 1.1 或更高版本的任何环境出现错误。
+> Cmdlet "GuestConfigurationPackage" 需要 OpenSSL 版本1.0，因为对 OMI 有依赖关系。 这会导致 OpenSSL 1.1 或更高版本的任何环境出现错误。
 
 来宾配置资源模块需要以下软件：
 
 - PowerShell 6.2 或更高版本。 若尚未安装，请遵循[这些说明](/powershell/scripting/install/installing-powershell)。
 - Azure PowerShell 1.5.0 或更高版本。 若尚未安装，请遵循[这些说明](/powershell/azure/install-az-ps)。
-  - 只需要 AZ 模块“Az.Accounts”和“Az.Resources”。
+  - 仅 Az 模块 "Az. Accounts" 和 "Az" 是必需的。
 
 ### <a name="install-the-module"></a>安装模块
 
@@ -81,7 +79,8 @@ ms.locfileid: "88236584"
 
 ## <a name="guest-configuration-artifacts-and-policy-for-linux"></a>适用于 Linux 的来宾配置项目和策略
 
-即使在 Linux 环境中，来宾配置也使用 Desired State Configuration 作为语言抽象。 实现基于本机代码 (C++)，因此不需要加载 PowerShell。 不过，它需要描述环境详细信息的配置 MOF。 DSC 充当 InSpec 的包装器，用于标准化它的执行方式、参数提供方式，以及如何将输出返回到服务。 处理自定义 InSpec 内容时，需要掌握的 DSC 知识很少。
+即使在 Linux 环境中，来宾配置也使用 Desired State Configuration 作为语言抽象。 实现基于本机代码 (C++)，因此不需要加载 PowerShell。 不过，它需要描述环境详细信息的配置 MOF。
+DSC 充当 InSpec 的包装器，用于标准化它的执行方式、参数提供方式，以及如何将输出返回到服务。 处理自定义 InSpec 内容时，需要掌握的 DSC 知识很少。
 
 #### <a name="configuration-requirements"></a>配置要求
 
@@ -141,8 +140,6 @@ AuditFilePathExists -out ./Config
 将这个名为 `config.ps1` 的文件保存到项目文件夹中。 通过在终端中执行 `./config.ps1`，在 PowerShell 中运行它。 将创建一个新的 mof 文件。
 
 从技术上讲，`Node AuditFilePathExists` 命令不是必需的，但它会生成一个名为 `AuditFilePathExists.mof`（而不是默认的 `localhost.mof`）的文件。 让 .mof 文件名遵循配置，可以在大规模操作时轻松地组织许多文件。
-
-
 
 你现在应该有如下所示的项目结构：
 
@@ -288,8 +285,7 @@ New-GuestConfigurationPolicy `
 
 cmdlet 输出中会返回一个对象，其中包含策略文件的计划显示名称和路径。
 
-最后，使用 `Publish-GuestConfigurationPolicy` cmdlet 发布策略定义。
-cmdlet 只有 Path 参数，此参数指向 `New-GuestConfigurationPolicy` 创建的 JSON 文件的位置。
+最后，使用 `Publish-GuestConfigurationPolicy` cmdlet 发布策略定义。 cmdlet 只有 Path 参数，此参数指向 `New-GuestConfigurationPolicy` 创建的 JSON 文件的位置。
 
 必须有权在 Azure 中创建策略，才能运行发布命令。 [Azure Policy 概述](../overview.md)页中收录了具体的授权要求。 最合适的内置角色是“资源策略参与者”。
 
@@ -347,7 +343,7 @@ end
 
 cmdlet `New-GuestConfigurationPolicy` 和 `Test-GuestConfigurationPolicyPackage` 包含名为“Parameter”的参数。 此参数需要使用包含每个参数的所有详细信息的哈希表，并自动创建用于创建每个 Azure Policy 定义的文件的所有必需部分。
 
-下面的示例创建策略定义来审核文件路径，其中用户在策略分配时提供路径。
+下面的示例创建一个策略定义用于审核文件路径，其中用户在策略分配时提供路径。
 
 ```azurepowershell-interactive
 $PolicyParameterInfo = @(
@@ -459,5 +455,5 @@ Key Vault 访问策略必须允许计算资源提供程序在部署过程中访�
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何使用[来宾配置](../concepts/guest-configuration.md)审核 VM。
-- 了解如何[以编程方式创建策略](programmatically-create.md)。
-- 了解如何[获取符合性数据](get-compliance-data.md)。
+- 了解如何[以编程方式创建策略](./programmatically-create.md)。
+- 了解如何[获取符合性数据](./get-compliance-data.md)。

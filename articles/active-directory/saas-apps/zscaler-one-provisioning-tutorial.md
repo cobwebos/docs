@@ -2,29 +2,25 @@
 title: 教程：为 Zscaler 配置自动用户预配 Azure Active Directory |Microsoft Docs
 description: 了解如何配置 Azure Active Directory 以便自动预配和取消设置用户帐户 Zscaler。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: 72f6ba2b-73ed-420a-863a-aff672f26fa3
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 87413932acee576934ee50b59546371b03ceaf7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 978f8ff5e57a5a9a1df10152713c8c42901b3b6f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77064166"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545854"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>教程：为 Zscaler 配置自动用户预配
 
-本教程演示在 Zscaler 中执行的步骤，并 Azure Active Directory （Azure AD）将 Azure AD 配置为自动预配和取消设置用户和组 Zscaler。
+本教程演示在 Zscaler 中执行的步骤，并 Azure Active Directory (Azure AD) 将 Azure AD 配置为自动预配和取消设置用户和组 Zscaler。
 
 > [!NOTE]
 > 本教程介绍在 Azure AD 用户预配服务基础上构建的连接器。 有关此服务的功能、工作原理以及常见问题的信息，请参阅[使用 Azure Active Directory 自动将用户预配到软件即服务 (SaaS) 应用程序和取消预配](../active-directory-saas-app-provisioning.md)。
@@ -67,7 +63,7 @@ ms.locfileid: "77064166"
 
 Azure Active Directory 使用称为分配的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户或组。
 
-在配置和启用自动用户预配之前，决定 Azure AD 中的哪些用户或组需要访问 Zscaler。 若要将这些用户或组分配到 Zscaler，请按照[向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)中的说明进行操作。
+在配置和启用自动用户预配之前，决定 Azure AD 中的哪些用户或组需要访问 Zscaler。 若要将这些用户或组分配到 Zscaler，请按照 [向企业应用分配用户或组](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)中的说明进行操作。
 
 ### <a name="important-tips-for-assigning-users-to-zscaler-one"></a>将用户分配到 Zscaler 的重要提示
 
@@ -80,11 +76,11 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 本部分将指导你完成配置 Azure AD 预配服务的步骤。 使用它基于 Azure AD 中的用户或组分配在 Zscaler 中创建、更新和禁用用户或组。
 
 > [!TIP]
-> 还可以为 Zscaler 启用基于 SAML 的单一登录。 按照[Zscaler 单一登录教程](zscaler-One-tutorial.md)中的说明进行操作。 可以独立于自动用户预配配置单一登录，尽管这两个功能互相补充。
+> 还可以为 Zscaler 启用基于 SAML 的单一登录。 按照 [Zscaler 单一登录教程](zscaler-One-tutorial.md)中的说明进行操作。 可以独立于自动用户预配配置单一登录，尽管这两个功能互相补充。
 
 ### <a name="configure-automatic-user-provisioning-for-zscaler-one-in-azure-ad"></a>在 Azure AD 中为 Zscaler 配置自动用户预配
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**" "  >  **所有应用程序**  >  **Zscaler**"。
+1. 登录 [Azure 门户](https://portal.azure.com)。 选择 "**企业应用程序**" "  >  **所有应用程序**  >  **Zscaler**"。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -100,19 +96,19 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
     ![Zscaler 一种设置模式](./media/zscaler-one-provisioning-tutorial/provisioning-credentials.png)
 
-5. 在 "**管理员凭据**" 部分下，根据步骤6中所述，在 "**租户 URL** " 和 "**机密令牌**" 框中填写 Zscaler 的设置。
+5. 在 " **管理员凭据** " 部分下，根据步骤6中所述，在 " **租户 URL** " 和 " **机密令牌** " 框中填写 Zscaler 的设置。
 
 6. 若要获取租户 URL 和机密令牌，请**Administration**  >  在 Zscaler One portal UI 中转到 "管理" "**身份验证设置**"。 在“身份验证类型”下选择“SAML”。********
 
     ![Zscaler 一个身份验证设置](./media/zscaler-one-provisioning-tutorial/secret-token-1.png)
 
-    a. 选择 "**配置 saml** " 打开 "**配置 saml**选项"。
+    a. 选择 " **配置 saml** " 打开 " **配置 saml** 选项"。
 
     ![Zscaler One 配置 SAML](./media/zscaler-one-provisioning-tutorial/secret-token-2.png)
 
-    b. 选择 "**启用基于 SCIM 的设置**"，以获取**基本 URL**和**持有者令牌**中的设置。 然后保存设置。 将**基 url**设置复制到 Azure 门户中的**租户 url** 。 将 "**持有者令牌**" 设置复制到 Azure 门户中的 "**机密令牌**"。
+    b. 选择 " **启用基于 SCIM 的设置** "，以获取 **基本 URL** 和 **持有者令牌**中的设置。 然后保存设置。 将 **基 url** 设置复制到 Azure 门户中的 **租户 url** 。 将 " **持有者令牌** " 设置复制到 Azure 门户中的 " **机密令牌** "。
 
-7. 填写步骤5中所示的框后，请选择 "**测试连接**" 以确保 Azure AD 可以连接到 Zscaler。 如果连接失败，请确保 Zscaler 一个帐户具有管理员权限，然后重试。
+7. 填写步骤5中所示的框后，请选择 " **测试连接** " 以确保 Azure AD 可以连接到 Zscaler。 如果连接失败，请确保 Zscaler 一个帐户具有管理员权限，然后重试。
 
     ![Zscaler 一个测试连接](./media/zscaler-one-provisioning-tutorial/test-connection.png)
 
@@ -122,25 +118,25 @@ Azure Active Directory 使用称为分配的概念来确定哪些用户应收到
 
 9. 选择“保存”。
 
-10. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Zscaler**"。
+10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Zscaler**"。
 
     ![Zscaler 一个用户同步](./media/zscaler-one-provisioning-tutorial/user-mappings.png)
 
-11. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Zscaler 的用户属性。 选为 "**匹配**" 属性的特性用于匹配 Zscaler 中的用户帐户以执行更新操作。 若要保存任何更改，请选择“保存”。
+11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Zscaler 的用户属性。 选为 " **匹配** " 属性的特性用于匹配 Zscaler 中的用户帐户以执行更新操作。 若要保存任何更改，请选择“保存”。
 
     ![Zscaler 一个匹配的用户属性](./media/zscaler-one-provisioning-tutorial/user-attribute-mappings.png)
 
-12. 在 "**映射**" 部分下，选择 "**同步 Azure Active Directory 组" 以 Zscaler 一个组**。
+12. 在 " **映射** " 部分下，选择 " **同步 Azure Active Directory 组" 以 Zscaler 一个组**。
 
     ![Zscaler 一个组同步](./media/zscaler-one-provisioning-tutorial/group-mappings.png)
 
-13. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Zscaler 的组属性。 选为 "**匹配**" 属性的特性用于匹配 Zscaler 中的组以执行更新操作。 若要保存任何更改，请选择“保存”。
+13. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Zscaler 的组属性。 选为 " **匹配** " 属性的特性用于匹配 Zscaler 中的组以执行更新操作。 若要保存任何更改，请选择“保存”。
 
     ![Zscaler 一个匹配的组属性](./media/zscaler-one-provisioning-tutorial/group-attribute-mappings.png)
 
 14. 若要配置范围筛选器，请按照[范围筛选器教程](./../active-directory-saas-scoping-filters.md)中的说明进行操作。
 
-15. 若要为 Zscaler 启用 Azure AD 预配服务，请在 "**设置**" 部分中，将 "**预配状态**" 更改为 **"打开**"。
+15. 若要为 Zscaler 启用 Azure AD 预配服务，请在 " **设置** " 部分中，将 " **预配状态** " 更改为 **"打开**"。
 
     ![Zscaler 一个预配状态](./media/zscaler-one-provisioning-tutorial/provisioning-status.png)
 

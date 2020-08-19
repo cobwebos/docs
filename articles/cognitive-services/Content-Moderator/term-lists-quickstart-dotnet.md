@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 68da335875752d326ee718cade3d501623c70b49
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a9c64d1a5c4c7ada666b5fe3a8bcc70b39871850
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72935953"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545618"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>对照以 C# 编写的自定义术语列表检查文本
 
@@ -32,7 +32,7 @@ Azure 内容审查器中的默认全局术语列表足以满足大多数内容�
 - 编辑列表信息。
 - 筛选索引，使新的扫描中包含列表更改项。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。 
 
 ## <a name="sign-up-for-content-moderator-services"></a>注册内容审查器服务
 
@@ -69,7 +69,7 @@ using System.Threading;
 
 ### <a name="create-the-content-moderator-client"></a>Create the Content Moderator client
 
-添加以下代码来为订阅创建内容审查器客户端。 将`AzureEndpoint`和`CMSubscriptionKey`字段更新为你的终结点 URL 和订阅密钥的值。 可以在 Azure 门户的资源的 "**快速启动**" 选项卡中找到这些项。
+添加以下代码来为订阅创建内容审查器客户端。 使用终结点 URL 和订阅密钥的值更新 `AzureEndpoint` 和 `CMSubscriptionKey` 字段。 可在 Azure 门户中资源的“快速启动”**** 选项卡中找到它们。
 
 ```csharp
 /// <summary>
@@ -264,7 +264,7 @@ static void RefreshSearchIndex (ContentModeratorClient client, string list_id)
 - MIME 类型，可以是“text/html”、“text/xml”、“text/markdown”或“text/plain”。
 - 要屏蔽的文本。
 - 布尔值。 将此字段设置为 true，在屏蔽它之前自动更正文本****。
-- 布尔值。 将此字段设置为**true**可检测文本中的个人数据。
+- 布尔值。 将此字段设置为 **true** 可检测文本中的个人数据。
 - 术语列表 ID。
 
 有关详细信息，请参阅 [API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f)。

@@ -2,25 +2,20 @@
 title: 教程：使用 Azure Active Directory 为 Jive 配置自动用户预配 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Jive 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.assetid: 6fbfdbe7-d66c-4305-9fea-76d6a6a92830
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602eed65745eea1fd9096508c442a27ea79bcba9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec959ee34f9491b6510390d4b390e652690897e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77057728"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547080"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>教程：为 Jive 配置自动用户预配
 
@@ -60,7 +55,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 本部分的目的是概述如何对 Jive 启用 Active Directory 用户帐户的用户预配。
 在此过程中，需要提供从 Jive.com 发出请求所需的用户安全令牌。
 
-1. 在[Azure 门户](https://portal.azure.com)中，浏览到**Azure Active Directory > 企业应用 > 所有应用程序**"部分。
+1. 在 [Azure 门户](https://portal.azure.com)中，浏览到 **Azure Active Directory > 企业应用 > 所有应用程序** "部分。
 
 1. 如果已为 Jive 配置单一登录，请使用搜索字段搜索 Jive 实例。 否则，请选择“添加”**** 并在应用程序库中搜索“Jive”****。 从搜索结果中选择 Jive，并将其添加到应用程序列表。
 

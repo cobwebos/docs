@@ -1,17 +1,17 @@
 ---
 title: 高可用性 - Azure Database for PostgreSQL（单一服务器）
 description: 本文提供了有关 Azure Database for PostgreSQL（单一服务器）中的高可用性的信息
-author: jasonwhowell
-ms.author: jasonh
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 33c66fff681b0458d1cff1ff6176c34f4771b38e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 16ce5b42e35ff3d650ba18aa95ab80b83fdbfdad
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88508458"
+ms.locfileid: "88547675"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Azure Database for PostgreSQL 中的高可用性–单一服务器
 Azure Database for PostgreSQL –单服务器服务可提供有保证的高级别可用性，其中包含 [99.99%](https://azure.microsoft.com/support/legal/sla/postgresql) 运行时间 (SLA) 的财务支持服务级别协议。 Azure Database for PostgreSQL 在发生计划内事件（例如用户发起的缩放计算操作）期间提供高可用性，并且还在发生基础硬件、软件或网络故障等计划外事件时提供高可用性。 Azure Database for PostgreSQL 在发生大多数严重状况时都可以快速恢复，确保用户在使用此服务时应用程序几乎不会停机。
@@ -61,7 +61,7 @@ Azure Database for PostgreSQL 设计为在计划内停机操作期间提供高�
 
 | **方案** | **自动恢复** |
 | ---------- | ---------- |
-| <B>数据库服务器故障 | 如果数据库服务器由于某些基础硬件故障而关闭，则会丢弃处于活动状态的连接，并中止任何正在进行的事务。 将自动部署新的数据库服务器，并将远程数据存储附加到新的数据库服务器。 在数据库恢复完成后，客户端可以通过网关连接到新的数据库服务器。 <br /> <br />  (RTO) 的恢复时间取决于各种因素，包括发生故障时的活动（如大规模事务）和数据库服务器启动过程中要执行的恢复量。 <br /> <br /> 所构建的使用 PostgreSQL 数据库的应用程序需要能够检测并重试丢弃的连接和失败的事务。  当应用程序重试时，网关会将连接透明地重定向到新创建的数据库服务器。 |
+| <B>数据库服务器故障 | 如果数据库服务器由于某些基础硬件故障而关闭，则会丢弃处于活动状态的连接，并中止任何正在进行的事务。 将自动部署新的数据库服务器，并将远程数据存储附加到新的数据库服务器。 在数据库恢复完成后，客户端可以通过网关连接到新的数据库服务器。 <br /> <br />  (RTO) 的恢复时间取决于各种因素，包括发生故障时的活动，例如，在执行数据库服务器启动过程中的大型事务和恢复量。 <br /> <br /> 所构建的使用 PostgreSQL 数据库的应用程序需要能够检测并重试丢弃的连接和失败的事务。  当应用程序重试时，网关会将连接透明地重定向到新创建的数据库服务器。 |
 | <B>存储故障 | 对于任何与存储相关的问题（例如磁盘故障或物理块损坏），应用程序看不到任何影响。 由于数据存储在 3 个副本中，因此将由未发生故障的存储提供数据的副本。 块损坏会自动修复。 如果丢失了数据的副本，则会自动创建数据的新副本。 |
 
 下面是需要用户执行操作来进行恢复的一些故障场景：

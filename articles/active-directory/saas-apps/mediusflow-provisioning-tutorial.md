@@ -2,25 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 MediusFlow 配置自动用户预配 | Microsoft Docs
 description: 了解如何在 Azure AD 中自动向 MediusFlow 预配和取消预配用户帐户。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: c6c65170-c5cb-44f6-81f8-25d972759e2c
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 724068950153e6bc4687679892edf55ab89f3bf2
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e8a64b3f42e52363f70d536963594bb6083a0992
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927396"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548066"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>教程：为 MediusFlow 配置自动用户预配
 
@@ -59,8 +55,8 @@ ms.locfileid: "87927396"
 若要使登录流 Microsoft 365/Azure AD 请参阅 [此] (https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-login-setup) 文章。
 
 #### <a name="user-transfer-configuration"></a>用户传输配置
-若要启用用户的配置门户进行设置，请参阅[此](
-https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-sync-setup)文 Azure AD。
+若要启用用户的配置门户进行设置，请参阅 [此](
+https://success.mediusflow.com/documentation/administration_guide/user_login_and_transfer/office365userintegration/#user-sync-setup) 文 Azure AD。
 
 #### <a name="configure-user-provisioning"></a>配置用户设置
 
