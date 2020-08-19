@@ -58,10 +58,10 @@
               href: connect-azure-security-center.md
             - name: 适用于 IoT 的 Azure 安全中心
               href: connect-asc-iot.md
+            - name: Azure Web 应用程序防火墙 (WAF)
+              href: connect-azure-waf.md
             - name: 域名服务器
               href: connect-dns.md
-            - name: Azure Web 应用程序防火墙
-              href: connect-azure-waf.md
             - name: Windows 防火墙
               href: connect-windows-firewall.md
             - name: Windows 安全事件

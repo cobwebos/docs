@@ -43,7 +43,7 @@
                   href: storage-quickstart-blobs-python.md
                 - name: Python (v2.1 SDK)
                   href: storage-quickstart-blobs-python-legacy.md
-            - name: Javascript
+            - name: JavaScript
               items:
                 - name: JavaScript（适用于 Node.js 的 v12 SDK）
                   href: storage-quickstart-blobs-nodejs.md
@@ -103,7 +103,7 @@
           href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Python
           href: ../common/storage-samples-python.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Javascript
+        - name: JavaScript
           href: ../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 其他语言
           href: ../common/storage-samples.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -118,6 +118,19 @@
       items:
         - name: 存储帐户
           href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: 授权
+          items:
+            - name: 授权数据操作
+              href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              items:
+                - name: 通过 Azure AD 授权
+                  href: ../common/storage-auth-aad.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 通过共享密钥进行授权
+                  href: /rest/api/storageservices/authorize-with-shared-key
+                - name: 使用共享访问签名 (SAS) 委托访问
+                  href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 授权管理操作
+              href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 安全性
           items:
             - name: 安全建议
@@ -131,17 +144,6 @@
                   href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: 请求中客户提供的密钥
                   href: ../common/encryption-customer-provided-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 授权数据操作
-              href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-              items:
-                - name: 通过 Azure AD 授权
-                  href: ../common/storage-auth-aad.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 通过共享密钥进行授权
-                  href: /rest/api/storageservices/authorize-with-shared-key
-                - name: 使用共享访问签名 (SAS) 委托访问
-                  href: ../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: 授权管理操作
-              href: ../common/authorization-resource-provider.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: 不可变 blob
               href: storage-blob-immutable-storage.md
             - name: 高级威胁防护
@@ -313,64 +315,64 @@
               href: storage-blob-properties-metadata.md
             - name: 复制 Blob (.NET)
               href: storage-blob-copy.md
+        - name: 授予对 Blob 数据的访问权限
+          items:
+            - name: 用户的授权选项
+              items:
+                - name: 门户
+                  href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: PowerShell
+                  href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Azure CLI
+                  href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 使用 RBAC 管理访问权限
+              items:
+                - name: 门户
+                  href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: PowerShell
+                  href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: Azure CLI
+                  href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 通过 Azure AD 进行身份验证和授权
+              items:
+                - name: 通过托管标识授权
+                  href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 从应用程序授权
+                  href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 通过共享密钥进行授权
+              items:
+                - name: 查看和管理帐户密钥
+                  href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 配置连接字符串
+                  href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 使用 Azure 存储 REST API
+                  href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 使用共享访问签名 (SAS) 委托访问
+              items:
+                - name: 创建用户委托 SAS
+                  items:
+                    - name: PowerShell
+                      href: storage-blob-user-delegation-sas-create-powershell.md
+                    - name: Azure CLI
+                      href: storage-blob-user-delegation-sas-create-cli.md
+                    - name: .NET
+                      href: storage-blob-user-delegation-sas-create-dotnet.md
+                - name: 创建服务 SAS (.NET)
+                  href: storage-blob-service-sas-create-dotnet.md
+                - name: 创建帐户 SAS (.NET)
+                  href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+                - name: 定义存储访问策略
+                  href: ../common/storage-stored-access-policy-define-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: 管理对 Blob 数据的匿名读取访问
+              items:
+                - name: 配置对容器和 Blob 的匿名读取访问
+                  href: anonymous-read-access-configure.md
+                - name: 防止对 Blob 数据的匿名读取访问
+                  href: anonymous-read-access-prevent.md
+                - name: 匿名访问公共容器和 Blob (.NET)
+                  href: anonymous-read-access-client.md
         - name: 保护 Blob 数据
           items:
-            - name: 授予对 Blob 数据的访问权限
-              items:
-                - name: 用户的授权选项
-                  items:
-                    - name: 门户
-                      href: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: PowerShell
-                      href: ../common/authorize-active-directory-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Azure CLI
-                      href: ../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 使用 RBAC 管理访问权限
-                  items:
-                    - name: 门户
-                      href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: PowerShell
-                      href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: Azure CLI
-                      href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 通过 Azure AD 进行身份验证和授权
-                  items:
-                    - name: 通过托管标识授权
-                      href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: 从应用程序授权
-                      href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 通过共享密钥进行授权
-                  items:
-                    - name: 查看和管理帐户密钥
-                      href: ../common/storage-account-keys-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: 配置连接字符串
-                      href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: 使用 Azure 存储 REST API
-                      href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 使用共享访问签名 (SAS) 委托访问
-                  items:
-                    - name: 创建用户委托 SAS
-                      items:
-                        - name: PowerShell
-                          href: storage-blob-user-delegation-sas-create-powershell.md
-                        - name: Azure CLI
-                          href: storage-blob-user-delegation-sas-create-cli.md
-                        - name: .NET
-                          href: storage-blob-user-delegation-sas-create-dotnet.md
-                    - name: 创建服务 SAS (.NET)
-                      href: storage-blob-service-sas-create-dotnet.md
-                    - name: 创建帐户 SAS (.NET)
-                      href: ../common/storage-account-sas-create-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                    - name: 定义存储访问策略
-                      href: ../common/storage-stored-access-policy-define-dotnet.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 管理对 Blob 数据的匿名读取访问
-                  items:
-                    - name: 配置对容器和 Blob 的匿名读取访问
-                      href: anonymous-read-access-configure.md
-                    - name: 防止对 Blob 数据的匿名读取访问
-                      href: anonymous-read-access-prevent.md
-                    - name: 匿名访问公共容器和 Blob (.NET)
-                      href: anonymous-read-access-client.md
             - name: 管理 Azure 存储加密
               items:
                 - name: 检查 Blob 是否已加密
@@ -725,7 +727,7 @@
               href: data-lake-storage-directory-file-acl-java.md
             - name: Python
               href: data-lake-storage-directory-file-acl-python.md
-            - name: Javascript
+            - name: JavaScript
               href: data-lake-storage-directory-file-acl-javascript.md
             - name: PowerShell
               href: data-lake-storage-directory-file-acl-powershell.md
@@ -775,7 +777,7 @@
           href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html'
         - name: Python
           href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html'
-        - name: Javascript
+        - name: JavaScript
           href: 'https://www.npmjs.com/package/@azure/storage-file-datalake/v/12.0.0-preview.6'
         - name: REST
           href: /rest/api/storageservices/data-lake-storage-gen2
