@@ -10,14 +10,14 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 06/30/2020
 ms.author: aahi
-ms.openlocfilehash: 585731212fa31be2757d5b5d4c4e0a2ef1212ca8
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: 86742568d8f0c7c951d872e7df23b8ce1cb0920f
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85980204"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244221"
 ---
-# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>快速入门：使用异常检测器 REST API 和 C# 检测时序数据的异常 
+# <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>快速入门：使用异常检测器 REST API 和 C# 检测时序数据的异常
 
 参考本快速入门可以开始使用异常检测器 API 的两种检测模式来检测时序数据的异常。 此 C# 应用程序发送两个包含 JSON 格式的时序数据的 API 请求，并获取响应。
 
@@ -30,13 +30,13 @@ ms.locfileid: "85980204"
 
 ## <a name="prerequisites"></a>先决条件
 
-- Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/)
+- Azure 订阅 - [免费创建订阅](https://azure.microsoft.com/free/cognitive-services)
 - 拥有 Azure 订阅后，可在 Azure 门户中<a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title="创建异常检测器资源"  target="_blank">创建异常检测器资源<span class="docon docon-navigate-external x-hidden-focus"></span></a>来获取密钥和终结点。 等待其部署并单击“转到资源”按钮。
     - 需要从创建的资源获取密钥和终结点，以便将应用程序连接到异常检测器 API。 你稍后会在快速入门中将密钥和终结点粘贴到下方的代码中。
     可以使用免费定价层 (`F0`) 试用该服务，然后再升级到付费层进行生产。
 - 任何版本的 [Visual Studio 2017 或更高版本](https://visualstudio.microsoft.com/downloads/)
 - [Json.NET](https://www.newtonsoft.com/json) 框架，可以 NuGet 包的形式提供。 若要在 Visual Studio 中以 NuGet 包的形式安装 Newtonsoft.Json，请执行以下操作：
-    
+
     1. 在**解决方案资源管理器**中右键单击你的项目。
     2. 选择“管理 NuGet 包”。
     3. 搜索 *Newtonsoft.Json* 并安装该包。
@@ -49,7 +49,7 @@ ms.locfileid: "85980204"
 
 ## <a name="create-a-new-application"></a>创建新应用程序
 
-1. 在 Visual Studio 中，创建新的控制台解决方案并添加以下包。 
+1. 在 Visual Studio 中，创建新的控制台解决方案并添加以下包。
 
     [!code-csharp[using statements](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=usingStatements)]
 
@@ -60,7 +60,7 @@ ms.locfileid: "85980204"
     |------------------------------------|--------------------------------------------------|
     | 批量检测                    | `/anomalydetector/v1.0/timeseries/entire/detect` |
     | 对最新数据点进行检测 | `/anomalydetector/v1.0/timeseries/last/detect`   |
-        
+
     [!code-csharp[initial variables for endpoint, key and data file](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=vars)]
 
 ## <a name="create-a-function-to-send-requests"></a>创建用于发送请求的函数
@@ -79,7 +79,7 @@ ms.locfileid: "85980204"
 
 2. 反序列化 JSON 对象，并将其写入控制台。
 
-3. 如果响应包含 `code` 字段，请输出错误代码和错误消息。 
+3. 如果响应包含 `code` 字段，请输出错误代码和错误消息。
 
 4. 否则，请查找异常在数据集中的位置。 响应的 `isAnomaly` 字段包含布尔值数组，其中每个值都指示数据点是否为异常。 使用响应对象的 `ToObject<bool[]>()` 函数将其转换为字符串数组。 循环访问该数组，并输出任何 `true` 值的索引。 如果找到任何此类值，这些值对应于异常数据点的索引。
 
@@ -93,10 +93,10 @@ ms.locfileid: "85980204"
 2. 反序列化 JSON 对象，并将其写入控制台。
 
     [!code-csharp[Detect anomalies latest](~/samples-anomaly-detector/quickstarts/csharp-detect-anomalies.cs?name=detectAnomaliesLatest)]
- 
+
 ## <a name="load-your-time-series-data-and-send-the-request"></a>加载时序数据并发送请求
 
-1. 在应用程序的 main 方法中，使用 `File.ReadAllText()` 加载 JSON 时序数据。 
+1. 在应用程序的 main 方法中，使用 `File.ReadAllText()` 加载 JSON 时序数据。
 
 2. 调用上面创建的异常检测函数。 使用 `System.Console.ReadKey()`，在运行应用程序后让控制台窗口保持打开状态。
 

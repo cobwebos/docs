@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.date: 04/04/2020
 ms.author: jhakulin
 ms.topic: include
-ms.openlocfilehash: 2af0d0eb2411c5ffe9f80498a3e93d48fe0a769b
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 0434ddb1e90789628d14d4782eccb6514fccf8d8
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88057747"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226330"
 ---
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,7 +29,7 @@ ms.locfileid: "88057747"
 
 现在，添加定义应用程序用户界面的 XAML 代码，并添加 C# 代码隐藏实现。
 
-1. 在“解决方案资源管理器”中打开 `MainPage.xaml`。
+1. 在“解决方案资源管理器”  中打开 `MainPage.xaml`。
 
 1. 在设计器的 XAML 视图中，将以下 XAML 代码片段插入到“Grid”标记中（位于 `<Grid>` 和 `</Grid>` 之间）：
 
@@ -43,9 +43,9 @@ ms.locfileid: "88057747"
 
 1. 在此文件的 `SpeechTranslationFromMicrophone_ButtonClicked` 处理程序中，查找字符串 `YourSubscriptionKey`，将其替换为订阅密钥。
 
-1. 在 `SpeechTranslationFromMicrophone_ButtonClicked` 处理程序中，找到字符串 `YourServiceRegion` 并将其替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)。 （例如，将 `westus` 用于免费试用版订阅。）
+1. 在 `SpeechTranslationFromMicrophone_ButtonClicked` 处理程序中，找到字符串 `YourServiceRegion` 并将其替换为与订阅关联的[区域](~/articles/cognitive-services/Speech-Service/regions.md)。
 
-1. 在菜单栏中，选择“文件”   > “全部保存”  以保存所做的更改。
+1. 在菜单栏中，选择“文件” > “全部保存”以保存所做的更改。
 
 ## <a name="build-and-run-the-application"></a>生成并运行应用程序
 
