@@ -6,13 +6,13 @@ ms.author: sebansal
 ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
-ms.openlocfilehash: f775a0e1dcb82afc9a458ce4ee608a52ec06dc4c
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.topic: how-to
+ms.openlocfilehash: f31782fb4e91b72f51d6f0550fe9010cba7ca3d6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135906"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585451"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>排查 Azure 密钥保管库访问策略问题
 

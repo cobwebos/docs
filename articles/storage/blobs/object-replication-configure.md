@@ -10,12 +10,12 @@ ms.date: 07/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: bfc18332553d1aee713ccb8fc269ba63d2b5af12
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: dd85504ac2321310288efe5d0a1ef7dfcde60f21
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540590"
+ms.locfileid: "88566057"
 ---
 # <a name="configure-object-replication-for-block-blobs-preview"></a>为块 blob 配置对象复制（预览）
 
@@ -45,7 +45,7 @@ ms.locfileid: "88540590"
 
 1. 在 Azure 门户中，转到源存储帐户。
 1. 在 **Blob 服务**下，选择 **对象复制**。
-1. 选择“设置复制”。
+1. 选择 " **设置复制规则**"。
 1. 选择目标订阅和存储帐户。
 1. 在“容器对”部分中，选择源帐户中的源容器，以及目标帐户中的目标容器。 每个复制策略最多可以创建 10 个容器对。
 

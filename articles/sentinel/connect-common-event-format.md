@@ -1,6 +1,6 @@
 ---
 title: 将 CEF 数据连接到 Azure Sentinel Preview |Microsoft Docs
-description: 使用 Linux 计算机作为代理，连接外部解决方案，以将通用事件格式（CEF）消息发送到 Azure Sentinel。
+description: 使用 Linux 计算机作为代理，连接外部解决方案，该解决方案将 (CEF) 消息发送到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2019
 ms.author: yelevin
-ms.openlocfilehash: 34091e0c9f18cb87a240054f534f474710eb421d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b7f03c11b53c6dc61fad6b916e7c08086917b416
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563929"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565734"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>使用通用事件格式连接外部解决方案
 
 
 当你连接用于发送 CEF 消息的外部解决方案时，使用 Azure Sentinel 连接三个步骤：
 
-步骤1：[通过部署代理连接 CEF](connect-cef-agent.md)步骤2：[执行特定于解决方案的步骤](connect-cef-solution-config.md)步骤3：[验证连接性](connect-cef-verify.md)
+步骤1： [通过部署代理连接 CEF](connect-cef-agent.md) 步骤2： [执行特定于解决方案的步骤](connect-cef-solution-config.md) 步骤3： [验证连接性](connect-cef-verify.md)
 
-本文介绍连接的工作原理，提供系统必备组件，并提供有关在 Syslog 上发送常见事件格式（CEF）消息的安全解决方案上部署代理的步骤。 
+本文介绍了连接的工作原理，提供了先决条件，并为你提供了在安全解决方案上部署代理的步骤，这些解决方案将在 Syslog 之上发送常见事件格式 (CEF) 消息。 
 
 > [!NOTE] 
 > 数据存储在运行 Azure Sentinel 的工作区的地理位置。
 
-若要进行此连接，需要在专用 Linux 计算机（VM 或本地）上部署代理，以支持设备与 Azure Sentinel 之间的通信。 下图说明了 Azure 中 Linux VM 的情况下的设置。
+若要进行此连接，需要在专用 Linux 计算机 (VM 或本地) 上部署代理，以支持设备与 Azure Sentinel 之间的通信。 下图说明了 Azure 中 Linux VM 的情况下的设置。
 
  ![Azure 中的 CEF](./media/connect-cef/cef-syslog-azure.png)
 
@@ -44,9 +44,9 @@ ms.locfileid: "85563929"
 
 ## <a name="security-considerations"></a>安全注意事项
 
-请确保根据组织的安全策略配置计算机的安全性。 例如，你可以将网络配置为与你的企业网络安全策略一致，并更改守护程序中的端口和协议以符合你的要求。 你可以使用以下说明来改善计算机安全配置：  [Azure 中的安全 VM](../virtual-machines/linux/security-policy.md)、[网络安全的最佳做法](../security/fundamentals/network-best-practices.md)。
+请确保根据组织的安全策略配置计算机的安全性。 例如，你可以将网络配置为与你的企业网络安全策略一致，并更改守护程序中的端口和协议以符合你的要求。 你可以使用以下说明来改善计算机安全配置：  [Azure 中的安全 VM](../virtual-machines/linux/security-policy.md)、 [网络安全的最佳做法](../security/fundamentals/network-best-practices.md)。
 
-若要在安全解决方案和 Syslog 计算机之间使用 TLS 通信，需要将 Syslog 守护程序（rsyslog 或 syslog-ng）配置为在 TLS 中进行通信：[使用 tls Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)，使用[tls 加密日志消息– Syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
+若要在安全解决方案和 Syslog 计算机之间使用 TLS 通信，需要将 Syslog 守护程序 (rsyslog 或 syslog-ng) 配置为在 TLS 中通信： [使用 Rsyslog 加密 Syslog 流量](https://www.rsyslog.com/doc/v8-stable/tutorials/tls_cert_summary.html)，使用 [tls 加密日志消息– Syslog-ng](https://support.oneidentity.com/technical-documents/syslog-ng-open-source-edition/3.22/administration-guide/60#TOPIC-1209298)。
 
  
 ## <a name="prerequisites"></a>先决条件
@@ -77,7 +77,7 @@ ms.locfileid: "85563929"
  
 请确保您的计算机还满足以下要求： 
 - 权限
-    - 您的计算机上必须具有提升的权限（sudo）。 
+    - 你的计算机上必须具有提升的权限 (sudo) 。 
 - 软件要求
     - 请确保在计算机上运行 Python
 

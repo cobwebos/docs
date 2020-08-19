@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 3a628a70d8ce62827f79c1f7e16d2826be8d80f5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1dd38f0360a4471124497d8357481283cd98383c
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827242"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566295"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>适用于 Azure 逻辑应用的连接器
 
@@ -61,16 +61,16 @@ ms.locfileid: "87827242"
 
 ### <a name="connect-from-an-integration-service-environment-ise"></a>从 integration service 环境连接 (ISE) 
 
-对于需要直接访问 Azure 虚拟网络中的资源的逻辑应用，你可以[ (ISE) 创建专用 integration service 环境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，你可以在该环境中生成、部署和运行针对专用资源的逻辑应用。 在逻辑应用设计器中，当你在 ISE 中浏览要用于逻辑应用的连接器时，内置触发器和操作上将显示一个**核心**标签，而**ISE**标签显示在某些连接器上。
+对于需要直接访问 Azure 虚拟网络中的资源的逻辑应用，你可以 [ (ISE) 创建专用 integration service 环境 ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) ，你可以在该环境中生成、部署和运行针对专用资源的逻辑应用。 在逻辑应用设计器中，当你在 ISE 中浏览要用于逻辑应用的连接器时，内置触发器和操作上将显示一个 **核心** 标签，而 **ISE** 标签显示在某些连接器上。
 
 > [!NOTE]
-> 在 ISE 及其连接器中运行的逻辑应用，不管这些连接器的运行位置如何，都遵循固定定价计划与基于消耗的定价计划。 有关详细信息，请参阅[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)和[逻辑应用定价详细](https://azure.microsoft.com/pricing/details/logic-apps/)信息。
+> 在 ISE 及其连接器中运行的逻辑应用，不管这些连接器的运行位置如何，都遵循固定定价计划与基于消耗的定价计划。 有关详细信息，请参阅 [逻辑应用定价模型](../logic-apps/logic-apps-pricing.md) 和 [逻辑应用定价详细](https://azure.microsoft.com/pricing/details/logic-apps/)信息。
 
-| 标签 | 示例 | 说明 |
+| Label | 示例 | 说明 |
 |-------|---------|-------------|
 | **转储** | ![ISE 连接器示例](./media/apis-list/example-core-connector.png) | 此标签的内置触发器和操作与逻辑应用在同一 ISE 中运行。 |
-| **ISE** | ![ISE 连接器示例](./media/apis-list/example-ise-connector.png) | 此标签的托管连接器与逻辑应用在同一 ISE 中运行。 如果你的本地系统已连接到 Azure 虚拟网络，则 ISE 允许你的逻辑应用直接访问该系统，而无需使用[本地数据网关](../logic-apps/logic-apps-gateway-connection.md)。 相反，你可以使用该系统的**ISE**连接器（如果有）、HTTP 操作或[自定义连接器](#custom)。 对于没有**ISE**连接器的本地系统，请使用本地数据网关。 若要查看可用的 ISE 连接器，请参阅[ise 连接器](#ise-connectors)。 |
-| 无标签 | ![多租户连接器示例](./media/apis-list/example-multi-tenant-connector.png) | 无**核心**或**ISE**标签的所有其他连接器，你可以继续使用该标签，在全局多租户逻辑应用服务中运行。 |
+| **ISE** | ![ISE 连接器示例](./media/apis-list/example-ise-connector.png) | 此标签的托管连接器与逻辑应用在同一 ISE 中运行。 如果你的本地系统已连接到 Azure 虚拟网络，则 ISE 允许你的逻辑应用直接访问该系统，而无需使用 [本地数据网关](../logic-apps/logic-apps-gateway-connection.md)。 相反，你可以使用该系统的 **ISE** 连接器（如果有）、HTTP 操作或 [自定义连接器](#custom)。 对于没有 **ISE** 连接器的本地系统，请使用本地数据网关。 若要查看可用的 ISE 连接器，请参阅 [ise 连接器](#ise-connectors)。 |
+| 无标签 | ![多租户连接器示例](./media/apis-list/example-multi-tenant-connector.png) | 无 **核心** 或 **ISE** 标签的所有其他连接器，你可以继续使用该标签，在全局多租户逻辑应用服务中运行。 |
 |||
 
 <a name="built-ins"></a>
@@ -270,7 +270,7 @@ ms.locfileid: "87827242"
 
 ## <a name="ise-connectors"></a>ISE 连接器
 
-对于在[ (ISE) 的专用 integration service 环境](#integration-service-environment)中创建和运行的逻辑应用，逻辑应用设计器通过使用 "**核心**" 标签来标识在 ISE 中运行的内置触发器和操作。 在 ISE 中运行的托管连接器会显示**ISE**标签，而在全局多租户逻辑应用服务中运行的连接器不会显示任何一个标签。 此列表显示当前具有 ISE 版本的连接器：
+对于在 [ (ISE) 的专用 integration service 环境 ](#integration-service-environment)中创建和运行的逻辑应用，逻辑应用设计器通过使用 " **核心** " 标签来标识在 ISE 中运行的内置触发器和操作。 在 ISE 中运行的托管连接器会显示 **ISE** 标签，而在全局多租户逻辑应用服务中运行的连接器不会显示任何一个标签。 此列表显示当前具有 ISE 版本的连接器：
 
 :::row:::
     :::column:::
@@ -396,17 +396,21 @@ ms.locfileid: "87827242"
 若要调用运行自定义代码或者无法作为连接器使用的 API，可以通过[创建自定义 API 应用](../logic-apps/logic-apps-create-api-app.md)来扩展逻辑应用平台。 还可以针对任何基于 REST 或 SOAP 的 API [创建自定义连接器](../logic-apps/custom-connector-overview.md)，使这些 API 可供 Azure 订阅中的任何逻辑应用使用。 若要使自定义 API 应用或连接器可供任何人在 Azure 中使用，可以[提交连接器进行 Microsoft 认证](/connectors/custom-connectors/submit-certification)。
 
 > [!NOTE]
-> 在 integration service 环境中部署和运行的逻辑应用[ (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)可以直接访问 Azure 虚拟网络中的资源。 如果你有需要本地数据网关的自定义连接器，并且你在 ISE 外部创建了这些连接器，则 ISE 中的逻辑应用还可以使用这些连接器。
+> 在 integration service 环境中部署和运行的逻辑应用 [ (ISE) ](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) 可以直接访问 Azure 虚拟网络中的资源。 如果你有需要本地数据网关的自定义连接器，并且你在 ISE 外部创建了这些连接器，则 ISE 中的逻辑应用还可以使用这些连接器。
 >
 > 在 ISE 中创建的自定义连接器不适用于本地数据网关。 但是，这些连接器可以直接访问连接到托管 ISE 的 Azure 虚拟网络的本地数据源。 因此，在与这些资源通信时，ISE 中的逻辑应用最有可能不需要数据网关。
 >
-> 有关创建 ISEs 的详细信息，请参阅[从 Azure 逻辑应用连接到 azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
+> 有关创建 ISEs 的详细信息，请参阅 [从 Azure 逻辑应用连接到 azure 虚拟网络](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)。
 
 <a name="block-connections"></a>
 
 ## <a name="block-creating-connections"></a>阻止创建连接
 
 如果组织不允许使用 Azure 逻辑应用中的连接器连接到特定资源，则可以在逻辑应用工作流中使用 [Azure Policy](../governance/policy/overview.md) [阻止为特定连接器创建这些连接的功能](../logic-apps/block-connections-connectors.md)。 有关详细信息，请参阅[在 Azure 逻辑应用中阻止特定连接器创建的连接](../logic-apps/block-connections-connectors.md)。
+
+## <a name="get-ready-for-deployment"></a>准备部署
+
+尽管从逻辑应用中创建连接，但连接是使用其自己的资源定义分隔的 Azure 资源。 若要查看这些连接资源定义，可以 [通过使用 Azure 门户检查逻辑应用的资源组](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#view-resource-definitions) ，或将 [逻辑应用从 Azure 下载到 Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)中，这是创建最适用于部署的有效参数化逻辑应用模板的最简单方法。
 
 ## <a name="next-steps"></a>后续步骤
 

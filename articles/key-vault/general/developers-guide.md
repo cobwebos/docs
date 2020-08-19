@@ -5,15 +5,15 @@ services: key-vault
 author: msmbaldwin
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/11/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c1a5d302f63f57a142d014c8ef66d02405e119ea
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 2f90ba0bb732930b4cf3b1c832c6954683119f5f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531160"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585859"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure 密钥保管库开发人员指南
 
@@ -24,7 +24,7 @@ ms.locfileid: "87531160"
 - 应用程序可以使用密钥进行签名和加密，不过使密钥管理与应用程序分开，可以使解决方案适用于地理分散的应用。
 - 管理 Key Vault 证书。 有关详细信息，请参阅[证书](../certificates/about-certificates.md)
 
-有关 Azure Key Vault 的更多常规信息，请参阅[什么是 Key Vault](overview.md)）。
+有关 Azure Key Vault 的更多常规信息，请参阅 [什么是 Key Vault](overview.md)) 。
 
 ## <a name="public-previews"></a>公共预览版
 
@@ -51,8 +51,8 @@ ms.locfileid: "87531160"
 - [REST 的机密操作](/rest/api/keyvault/#secret-operations)
 - [使用 Python 设置和检索机密](../secrets/quick-create-python.md)
 - [使用 Java 设置和检索机密](../secrets/quick-create-java.md)
-- [使用 Node.js设置和检索机密](../secrets/quick-create-node.md)
-- [使用 .NET 设置和检索机密（v4 SDK）](../secrets/quick-create-net.md)
+- [使用 Node.js设置和检索机密 ](../secrets/quick-create-node.md)
+- [使用 .NET (v4 SDK 设置和检索机密) ](../secrets/quick-create-net.md)
 - [通过 Azure Resource Manager 模板创建密钥保管库并添加机密](../secrets/quick-create-template.md)
 
 ### <a name="set-and-retrieve-keys"></a>设置和检索密钥
@@ -134,13 +134,13 @@ ms.locfileid: "87531160"
 
 这些文章介绍了使用 Key Vault 或与之集成的其他方案和服务。
 
-- [Azure 磁盘加密](../../security/fundamentals/encryption-overview.md)利用 Windows 的行业标准[BitLocker](https://technet.microsoft.com/library/cc732774.aspx)功能和 Linux 的[dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)功能为 OS 和数据磁盘提供卷加密。 该解决方案与 Azure 密钥保管库集成，可帮助你控制和管理密钥保管库订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据可在 Azure 存储中静态加密。
+- [Azure 磁盘加密](../../security/fundamentals/encryption-overview.md) 利用 Windows 的行业标准 [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 功能和 Linux 的 [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) 功能为 OS 和数据磁盘提供卷加密。 该解决方案与 Azure 密钥保管库集成，可帮助你控制和管理密钥保管库订阅中的磁盘加密密钥和机密，同时确保虚拟机磁盘中的所有数据可在 Azure 存储中静态加密。
 - [Azure Data Lake Store](../../data-lake-store/data-lake-store-get-started-portal.md) 提供了对帐户中存储的数据进行加密的选项。 对于密钥管理，Data Lake Store 提供两种用于管理主加密密钥 (MEK) 的模式，这两种模式可用于解密在 Data Lake Store 中存储的任何数据。 可以让 Data Lake Store 代为管理 MEK，或选择使用 Azure 密钥保管库帐户保留 MEK 所有权。 创建 Data Lake Store 帐户时可以指定密钥管理模式。
 - [Azure 信息保护](/azure/information-protection/plan-implement-tenant-key)允许管理自己的租户密钥。 例如，不是由 Microsoft 管理租户密钥（默认设置），可以管理自己的租户密钥，以遵守适用于组织的具体规定。 管理自己的租户密钥也称为自带密钥（简称 BYOK）。
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault 概述和概念
 
-- [Key Vault 软删除行为](soft-delete-overview.md)）描述允许恢复已删除的对象的功能，不管是有意还是有意删除。
+- [Key Vault 软删除行为](soft-delete-overview.md)) 描述允许恢复已删除的对象的功能，无论是有意还是无意删除。
 - [Key Vault 客户端限制](overview-throttling.md)介绍了有关限制的基本概念，并针对应用提供了限制方法。
 - [Key Vault 安全体系](overview-security-worlds.md)介绍了区域与安全领域之间的关系。
 

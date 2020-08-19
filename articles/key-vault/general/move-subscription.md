@@ -7,16 +7,16 @@ manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: b95cecdc5470e50830371b7a6556f9526dae7591
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d37fae18cd2f3e3bfad647cc176253dc6bb101ab
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87096617"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585723"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>将 Azure Key Vault 移动到另一个订阅
 
@@ -27,7 +27,7 @@ ms.locfileid: "87096617"
 > [!IMPORTANT]
 > **将密钥保管库移动到另一个订阅会导致环境发生中断性变更。**
 > 在决定将密钥保管库移动到新订阅之前，请确保你了解此变更的影响，并仔细遵循本文中的指导。
-> 如果你使用的是托管服务标识（MSI），请阅读本文档末尾的移动后说明。 
+> 如果 (MSI 使用托管服务标识) 请阅读文档末尾的移动后说明。 
 
 创建密钥保管库时，它会自动绑定到创建它的订阅的默认 Azure Active Directory 租户 ID。 所有访问策略条目也都绑定到此租户 ID。 如果将 Azure 订阅从租户 A 移到租户 B，租户 B 中的服务主体（用户和应用程序）将无法访问现有的密钥保管库。若要解决此问题，需执行以下操作：
 

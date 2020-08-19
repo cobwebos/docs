@@ -8,12 +8,12 @@ ms.author: nibaccam
 author: nibaccam
 ms.date: 08/05/2020
 ms.custom: how-to, tracking-python
-ms.openlocfilehash: 54408b20ebba60de2e1a696e5bd9b06f55e860ba
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 96eeafd7e434e2c3a42311999fcd4979531df2aa
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513095"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88584873"
 ---
 # <a name="create-azure-machine-learning-datasets-from-azure-open-datasets"></a>从 Azure 开放数据集创建 Azure 机器学习数据集
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -75,7 +75,7 @@ tabular_dataset = MNIST.get_tabular_dataset()
 file_dataset = MNIST.get_file_dataset()
 ```
 
-在此示例中，糖尿病 `opendatasets` 类只可用作 `TabularDataset` ，因此使用 `get_tabular_dataset()`
+在此示例中，糖尿病 `opendatasets` 类只可用作 `TabularDataset` ，因此使用 `get_tabular_dataset()` 。
 
 ```python
 
@@ -98,7 +98,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 ## <a name="create-datasets-with-the-studio"></a>用工作室创建数据集
 
-你还可以使用 [Azure 机器学习 studio](https://ml.azure.com)创建开放式数据集中的数据集，这是一个合并的 web 界面，其中包括用于针对所有技能级别的数据科学专业人员执行数据科学方案的机器学习工具。
+你还可以使用 [Azure 机器学习 studio](https://ml.azure.com)创建 Azure 开放数据集中的 Azure 机器学习数据集，这是一个合并的 web 界面，其中包含用于针对所有技能级别的数据科学专业人员执行数据科学方案的机器学习工具。
 
 > [!Note]
 > 通过 Azure 机器学习 studio 创建的数据集自动注册到工作区。
@@ -111,7 +111,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
     ![选择数据集](./media/how-to-create-dataset-from-open-dataset/open-datasets-2.png)
 
-1. 选择数据集的注册名称，并（可选）使用可用的筛选器筛选数据。 在这种情况下，对于 **公共假日** 数据集，请将时间段筛选为一年，将国家/地区代码筛选为仅限美国。 选择“创建” 。
+1. 选择数据集的注册名称，并（可选）使用可用的筛选器筛选数据。 在这种情况下，对于 **公共假日** 数据集，请将时间段筛选为一年，将国家/地区代码筛选为仅限美国。 有关数据的详细信息，请参阅 [Azure 开放数据集目录](https://azure.microsoft.com/services/op[en-datasets/catalog/) ，例如字段说明和日期范围。 选择“创建” 。
 
     ![设置数据集参数并创建数据集](./media/how-to-create-dataset-from-open-dataset/open-datasets-3.png)
 

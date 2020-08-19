@@ -4,12 +4,12 @@ description: 与代理、扩展和磁盘相关的 Azure 备份失败的症状、
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 99982af7f16431ac5b1c2c4a0e419d647d3d2ca0
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 53c0ede07040e782b683e8ff4b0b08e6fe0a9caf
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262851"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585554"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
@@ -65,7 +65,7 @@ Azure 备份使用 VM 快照扩展对 Azure 虚拟机进行应用程序一致的
 
 - **确保 vss 编写器服务已启动并正在运行**：请按照以下步骤 [解决 vss 编写器问题](backup-azure-vms-troubleshoot.md#extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state)。
 - **遵循备份最佳做法指南**：查看 [启用 Azure VM 备份的最佳实践](backup-azure-vms-introduction.md#best-practices)。
-- **查看加密磁盘的准则**：如果要为具有加密磁盘的 vm 启用备份，请确保已提供所有必需的权限。 若要了解详细信息，请参阅 [备份和还原加密的 AZURE VM](backup-azure-vms-encryption.md#encryption-support)。
+- **查看加密磁盘的准则**：如果要为具有加密磁盘的 vm 启用备份，请确保已提供所有必需的权限。 若要了解详细信息，请参阅 [备份和还原加密的 AZURE VM](backup-azure-vms-encryption.md)。
 
 ## <a name="usererrorguestagentstatusunavailable---vm-agent-unable-to-communicate-with-azure-backup"></a><a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable - VM 代理无法与 Azure 备份通信
 

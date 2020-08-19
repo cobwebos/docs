@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 08/11/2020
-ms.openlocfilehash: c7b4cf688d02ebbcb099f116c0eb7b4ebe7c6074
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a53ac9387664aafc218f13834e0499fde417d87d
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88212411"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566074"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>在 Azure 逻辑应用中保护访问和数据
 
@@ -159,7 +159,7 @@ POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group
 
 在启用此身份验证之前，请查看以下注意事项：
 
-* 对逻辑应用的入站调用只能使用一个授权方案，Azure AD OAuth 或[共享访问签名 (SAS)](#sas)。 “请求”触发器仅支持 OAuth 令牌，而该令牌仅支持 [Bearer-type](../active-directory/develop/active-directory-v2-protocols.md#tokens) 授权方案。
+* 对逻辑应用的入站调用只能使用一个授权方案，Azure AD OAuth 或[共享访问签名 (SAS)](#sas)。 使用一个方案不会禁用另一个方案，但同时使用这两种方法会导致错误，因为服务不知道要选择哪种方案。 “请求”触发器仅支持 OAuth 令牌，而该令牌仅支持 [Bearer-type](../active-directory/develop/active-directory-v2-protocols.md#tokens) 授权方案。
 
 * 逻辑应用限制为最大授权策略数。 每个授权策略还具有最大[声明](../active-directory/develop/developer-glossary.md#claim)数。 有关详细信息，请参阅 [Azure 逻辑应用的限制和配置](../logic-apps/logic-apps-limits-and-config.md#authentication-limits)。
 

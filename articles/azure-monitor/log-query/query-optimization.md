@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: dca320168805e9f7c8f6336b39c4f9394255f9b8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ec5717135ec7bbf2236b5f5672dbf0b5d1413b44
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87416309"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565717"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>优化 Azure Monitor 中的日志查询
 Azure Monitor 日志使用 [Azure 数据资源管理器 (ADX)](/azure/data-explorer/) 来存储日志数据，并运行查询来分析这些数据。 它为你创建、管理和维护 ADX 群集，并针对你的日志分析工作负荷优化它们。 运行查询时，将对其进行优化，并将其路由到存储着工作区数据的相应 ADX 群集。 Azure Monitor 日志和 Azure 数据资源管理器都使用许多自动查询优化机制。 虽然自动优化已提供了显著的性能提升，但在某些情况下，你还可以显著提高查询性能。 本文介绍了性能注意事项和解决相关问题的几种方法。
@@ -73,8 +73,8 @@ SecurityEvent
 | extend Details = parse_xml(EventData)
 | extend FilePath = tostring(Details.UserData.RuleAndFileData.FilePath)
 | extend FileHash = tostring(Details.UserData.RuleAndFileData.FileHash)
-| summarize count() by FileHash, FilePath
 | where FileHash != "" and FilePath !startswith "%SYSTEM32"  // Problem: irrelevant results are filtered after all processing and parsing is done
+| summarize count() by FileHash, FilePath
 ```
 ```Kusto
 //more efficient
@@ -84,6 +84,7 @@ SecurityEvent
 | extend Details = parse_xml(EventData)
 | extend FilePath = tostring(Details.UserData.RuleAndFileData.FilePath)
 | extend FileHash = tostring(Details.UserData.RuleAndFileData.FileHash)
+| where FileHash != "" and FilePath !startswith "%SYSTEM32"  // exact removal of results. Early filter is not accurate enough
 | summarize count() by FileHash, FilePath
 | where FileHash != "" // No need to filter out %SYSTEM32 here as it was removed before
 ```
@@ -223,7 +224,7 @@ SecurityEvent
 ### <a name="avoid-multiple-scans-of-same-source-data-using-conditional-aggregation-functions-and-materialize-function"></a>避免使用条件聚合函数和具体化函数对相同源数据进行多次扫描
 如果查询包含多个使用联接运算符或联合运算符合并的子查询，则每个子查询将单独扫描整个源，然后合并结果。 这会将数据扫描的次数与非常大的数据集中的关键因素进行了乘积。
 
-避免这种情况的一种方法是使用条件聚合函数。 在 summary 运算符中使用的大多数[聚合函数](/azure/data-explorer/kusto/query/summarizeoperator#list-of-aggregation-functions)都有一个有条件的版本，允许您对多个条件使用单个 summary 运算符。 
+避免这种情况的一种方法是使用条件聚合函数。 在 summary 运算符中使用的大多数 [聚合函数](/azure/data-explorer/kusto/query/summarizeoperator#list-of-aggregation-functions) 都有一个有条件的版本，允许您对多个条件使用单个 summary 运算符。 
 
 例如，下面的查询显示了登录事件的数目以及每个帐户的进程执行事件数。 它们返回相同的结果，但第一次扫描数据两次，第二次只扫描一次数据：
 
@@ -247,7 +248,7 @@ SecurityEvent
 | summarize LoginCount = countif(EventID == 4624), ExecutionCount = countif(EventID == 4688), ExecutedProcesses = make_set_if(Process,EventID == 4688)  by Account
 ```
 
-无需子查询的另一种情况是对[分析运算符](/azure/data-explorer/kusto/query/parseoperator?pivots=azuremonitor)进行预筛选，以确保它仅处理与特定模式匹配的记录。 这是不必要的，因为分析运算符和其他类似的运算符在模式不匹配时返回空结果。 下面是两个查询，在第二次查询仅扫描数据一次时返回的结果完全相同。 在第二个查询中，每个 parse 命令仅适用于其事件。 扩展运算符随后显示了如何引用空的数据情况。
+无需子查询的另一种情况是对 [分析运算符](/azure/data-explorer/kusto/query/parseoperator?pivots=azuremonitor) 进行预筛选，以确保它仅处理与特定模式匹配的记录。 这是不必要的，因为分析运算符和其他类似的运算符在模式不匹配时返回空结果。 下面是两个查询，在第二次查询仅扫描数据一次时返回的结果完全相同。 在第二个查询中，每个 parse 命令仅适用于其事件。 扩展运算符随后显示了如何引用空的数据情况。
 
 ```Kusto
 //Scan SecurityEvent table twice
@@ -274,7 +275,7 @@ SecurityEvent
 | distinct FilePath, CallerProcessName1
 ```
 
-当上述不允许使用子查询时，另一种方法是提示查询引擎，其中每个源数据都使用[具体化（）函数](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor)。 当源数据来自在查询中多次使用的函数时，这将非常有用。
+当上述不允许使用子查询时，另一种方法是提示查询引擎，其中每个源数据都使用 [具体化 ( # A1 函数](/azure/data-explorer/kusto/query/materializefunction?pivots=azuremonitor)使用。 当源数据来自在查询中多次使用的函数时，这将非常有用。
 
 
 
