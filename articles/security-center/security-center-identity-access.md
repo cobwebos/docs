@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/16/2020
 ms.author: memildin
-ms.openlocfilehash: 57e13f3ed619fa88f29397fe44b783bd3650f636
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 313f10c77da499f4c405134028b975900d2d2a9e
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759160"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590228"
 ---
 # <a name="monitor-identity-and-access"></a>监视标识和访问
 
@@ -60,7 +60,7 @@ ms.locfileid: "83759160"
 
 - 如果拥有高级版 AD，请使用[条件访问](../active-directory/conditional-access/concept-conditional-access-policy-common.md)启用 MFA。
 
-- AD 免费版用户可按照 [AD 文档](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)中的说明在 Azure Active Directory 中启用安全默认设置，但仍会显示有关启用 MFA 的安全中心建议。
+- 如果使用的是 AD 免费版，请在 Azure Active Directory 中启用 **安全默认设置** ，如 [广告文档](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)中所述。
 
 
 ## <a name="next-steps"></a>后续步骤

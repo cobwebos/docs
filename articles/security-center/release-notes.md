@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: a635f32c5e5f1132d70fb503058267c8b33beb7c
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: dbd040bf7caf3dbe9ed9820bf189bc1f74475c09
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272054"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586888"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -35,6 +35,7 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 8月的更新包括：
 
 - [资产清单-资产安全状况的强大新视图](#asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets)
+- [添加了对多重身份验证 (Azure Active Directory 安全默认值的支持) ](#added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication)
 - [添加了服务主体建议](#service-principals-recommendation-added)
 - [Vm 上的漏洞评估-合并建议和策略](#vulnerability-assessment-on-vms---recommendations-and-policies-consolidated)
 
@@ -50,11 +51,27 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 了解有关 [资产清单](asset-inventory.md)的详细信息。
 
 
+### <a name="added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication"></a>添加了对多重身份验证 (Azure Active Directory 安全默认值的支持) 
+
+安全中心已为 [安全默认设置](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)（Microsoft 的免费标识安全保护）提供完全支持。
+
+安全默认值提供预先配置的标识安全设置，以使你的组织免受与常见标识相关的攻击。 安全默认值已保护超过5000000个租户;50000租户还受安全中心保护。
+
+安全中心在标识 Azure 订阅时，无论是否启用了安全默认设置，现在都提供安全建议。 到目前为止，安全中心建议使用条件性访问启用多重身份验证，这是 Azure Active Directory (AD) premium 许可证的一部分。 对于使用 Azure AD 免费版的客户，我们现在建议启用安全默认设置。 
+
+我们的目标是通过 MFA 鼓励更多的客户保护其云环境，同时降低最有影响力的[风险。](https://docs.microsoft.com/azure/security-center/secure-score-security-controls)
+
+详细了解 [安全默认值](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)。
+
+
 ### <a name="service-principals-recommendation-added"></a>添加了服务主体建议
 
-安全中心客户使用管理证书管理其订阅的新建议。
+添加了新的建议，建议安全中心客户使用管理证书管理其订阅，并切换到服务主体。
 
 建议使用 **服务主体来保护订阅，而不是管理证书** ，建议使用服务主体或 Azure 资源管理器更安全地管理你的订阅。 
+
+详细了解 [Azure Active Directory 中的应用程序和服务主体对象](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)。
+
 
 ### <a name="vulnerability-assessment-on-vms---recommendations-and-policies-consolidated"></a>Vm 上的漏洞评估-合并建议和策略
 

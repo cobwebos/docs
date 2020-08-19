@@ -8,12 +8,12 @@ ms.date: 08/17/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c144442ecd93ca87683179adef496a5d68cce98e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1c48c48ef438f99f3b144c3300cb2415e4d387e7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88525891"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586675"
 ---
 # <a name="configuring-azure-files-network-endpoints"></a>配置 Azure 文件存储网络终结点
 
@@ -136,7 +136,7 @@ Address: 192.168.0.5
 
 #### <a name="disable-access-to-the-public-endpoint"></a>禁止对公共终结点的访问
 
-禁止对公共终结点的访问时，仍可通过存储帐户的专用终结点来访问该存储帐户。 否则，对存储帐户的公共终结点发出的有效请求将被拒绝。 
+禁止对公共终结点的访问时，仍可通过存储帐户的专用终结点来访问该存储帐户。 否则，将拒绝对存储帐户的公共终结点的有效请求，除非它们来自 [特定允许的源](#restrict-access-to-the-public-endpoint-to-specific-virtual-networks)。 
 
 # <a name="portal"></a>[门户](#tab/azure-portal)
 [!INCLUDE [storage-files-networking-endpoints-public-disable-portal](../../../includes/storage-files-networking-endpoints-public-disable-portal.md)]

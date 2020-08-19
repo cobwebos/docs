@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d0a6b6561b5d0995d7794993608a4991b1da2718
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 72c038bda88ecc9b7518f1f764a41bd4c49f52c6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810133"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589412"
 ---
 # <a name="azure-security-baseline-for-backup"></a>备份的 Azure 安全基线
 
@@ -150,7 +150,7 @@ ms.locfileid: "87810133"
 
 **Azure 安全中心监视**：目前不可用
 
-责任：客户
+**责任**：客户
 
 ### <a name="23-enable-audit-logging-for-azure-resources"></a>2.3：为 Azure 资源启用审核日志记录
 
@@ -350,7 +350,7 @@ ms.locfileid: "87810133"
 
 - [如何配置 Azure 备份以使用 Azure AD 登录](../app-service/configure-authentication-provider-aad.md)
 
-- [如何创建和配置 AAD 实例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+- [如何创建和配置 Azure AD 实例](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure 安全中心监视**：是
 
@@ -902,7 +902,7 @@ Microsoft 对基础平台进行了扫描和修补。 查看 Microsoft Azure 备�
 
 - [如何在 Azure 中备份密钥保管库密钥](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [了解 Azure 备份中的加密](./backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys)
+- [了解 Azure 备份中的加密](./backup-encryption.md)
 
 **Azure 安全中心监视**：不适用
 

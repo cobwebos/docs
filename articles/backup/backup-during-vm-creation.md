@@ -3,12 +3,12 @@ title: 在创建 Azure VM 时启用备份
 description: 介绍了如何在创建 Azure VM 时通过 Azure 备份启用备份。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7fb6fd25f5031669633641ea02f34180f6f795d4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c744f6aa2bef6d3d6800aa6b6dc077915fc5205b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032844"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586692"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>在创建 Azure VM 时启用备份
 
@@ -28,7 +28,7 @@ ms.locfileid: "87032844"
 
 1. 在 Azure 门户中，单击“创建资源”。
 
-2. 在 Azure 市场中，单击“计算”，然后选择一个 VM 映像。
+2. 在 Azure Marketplace 中，单击 " **计算**"，然后选择 VM 映像。
 
 3. 根据适用于 [Windows](../virtual-machines/windows/quick-create-portal.md) 或 [Linux](../virtual-machines/linux/quick-create-portal.md) 的说明设置 VM。
 
@@ -47,6 +47,9 @@ ms.locfileid: "87032844"
     - [详细了解](backup-instant-restore-capability.md)即时还原功能。
 
       ![默认备份策略](./media/backup-during-vm-creation/daily-policy.png)
+
+>[!NOTE]
+>[SSE 和 PMK 是 Azure vm 的默认加密方法](backup-encryption.md) 。 Azure 备份支持这些 Azure Vm 的备份和还原。
 
 ## <a name="azure-backup-resource-group-for-virtual-machines"></a>虚拟机的 Azure 备份资源组
 

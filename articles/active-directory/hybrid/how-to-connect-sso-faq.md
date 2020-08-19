@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f621ed1342928b7f05fc8b84bfc2fceadf494fb5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea5c3e0ffc000d3d239e87e9771d1b49d98fd206
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019725"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589038"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory 无缝单一登录：常见问题
 
@@ -104,7 +104,7 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
    2. 调用 `Update-AzureADSSOForest -OnPremCredentials $creds`。 此命令会在此特定 AD 林中更新 `AZUREADSSO` 计算机帐户的 Kerberos 解密密钥，并在 Azure AD 中对其进行更新。
    
    >[!NOTE]
-   >如果你不是域管理员，并且域管理员已为你分配了权限，则应该调用`Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
+   >如果你不是域管理员，并且域管理员已为你分配了权限，则应该调用 `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount`
    
    3. 针对已设置了此功能的每个 AD 林重复上述步骤。
 
@@ -135,6 +135,8 @@ Seamless SSO 是一项免费功能，不需要拥有任何付费版本的 Azure 
    3. 使用以下命令导入无缝 SSO PowerShell 模块：`Import-Module .\AzureADSSO.psd1`。
    4. 以管理员身份运行 PowerShell。 在 PowerShell 中，调用 `New-AzureADSSOAuthenticationContext`。 此命令可提供一个弹出窗口，用以输入租户的全局管理员凭据。
    5. 调用 `Enable-AzureADSSO -Enable $false`。
+   
+   此时，无缝 SSO 处于禁用状态，但是，如果你想要启用无缝 SSO，则域仍将保持配置状态。 如果要完全从无缝 SSO 配置中删除域，请在完成上述步骤5后调用以下 cmdlet： `Disable-AzureADSSOForest -DomainFqdn <fqdn>` 。
 
    >[!IMPORTANT]
    >使用 PowerShell 禁用无缝 SSO 不会更改 Azure AD Connect 中的状态。 无缝 SSO 在“更改用户登录”页面中将显示为已启用。

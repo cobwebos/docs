@@ -3,12 +3,12 @@ title: 安全功能概述
 description: 了解 Azure 备份中的安全功能，这些功能可帮助你保护备份数据并满足企业的安全需求。
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 944ef2e86ad8e56501692b29d0958bc4fc19bf0a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8a63585635f578f55b274c3257807fc731eacc47
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319297"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589378"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure 备份中的安全功能概述
 
@@ -16,7 +16,7 @@ ms.locfileid: "87319297"
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>管理和控制标识与用户访问
 
-恢复服务保管库使用的存储帐户是隔离的，恶意用户无法对其进行访问。 仅允许通过 Azure 备份管理操作（例如还原）进行访问。 使用 azure 备份可以通过使用[azure 基于角色的访问控制（AZURE RBAC）](./backup-rbac-rs-vault.md)进行细粒度访问来控制托管的操作。 RBAC 可以在团队内部实现职责分离，仅向用户授予其履行自己的职责所需的访问权限级别。
+恢复服务保管库使用的存储帐户是隔离的，恶意用户无法对其进行访问。 仅允许通过 Azure 备份管理操作（例如还原）进行访问。 使用 azure 备份，可以通过使用 [AZURE RBAC)  (基于角色的访问控制 ](./backup-rbac-rs-vault.md)精细访问控制托管操作。 RBAC 可以在团队内部实现职责分离，仅向用户授予其履行自己的职责所需的访问权限级别。
 
 Azure 备份提供了三个[内置角色](../role-based-access-control/built-in-roles.md)来控制备份管理操作：
 
@@ -46,13 +46,13 @@ Azure 备份服务中内置了多个安全控制机制，用于防止、检测�
 
 加密可以保护数据，并帮助组织履行在安全性与合规性方面做出的承诺。 数据加密发生在 Azure 备份的多个阶段：
 
-* 在 Azure 中，Azure 存储和保管库之间传输的数据[受 HTTPS 的保护](backup-support-matrix.md#network-traffic-to-azure)。 此数据保留在 Azure 主干网络上。
+* 在 Azure 中，Azure 存储和保管库之间传输的数据 [受 HTTPS 的保护](backup-support-matrix.md#network-traffic-to-azure)。 此数据保留在 Azure 主干网络上。
 
-* 使用[Microsoft 托管密钥](backup-encryption.md#encryption-of-backup-data-using-platform-managed-keys)自动对备份数据进行加密，并且无需执行任何显式操作即可启用。 你还可以使用存储在 Azure Key Vault 中的[客户托管密钥](encryption-at-rest-with-cmk.md)来加密备份的数据。 这种加密适用于要备份到恢复服务保管库的所有工作负荷。
+* 使用 [平台托管密钥](backup-encryption.md)自动对备份数据进行加密，并且无需执行任何显式操作即可启用。 你还可以使用存储在 Azure Key Vault 中的 [客户托管密钥](encryption-at-rest-with-cmk.md) 来加密备份的数据。 这种加密适用于要备份到恢复服务保管库的所有工作负荷。
 
-* Azure 备份支持备份和还原使用[Azure 磁盘加密（ADE）](backup-encryption.md#backup-of-vms-encrypted-using-ade)加密的 OS/data 磁盘的 azure vm，以及[包含 CMK 加密磁盘的 vm](backup-encryption.md#backup-of-managed-disk-vms-encrypted-using-customer-managed-keys)的备份和还原。 有关详细信息，请[参阅有关加密的 Azure vm 和 Azure 备份的详细](./backup-azure-vms-encryption.md)信息。
+* Azure 备份支持备份和还原使用 Azure 磁盘加密进行加密的 Azure Vm 的备份和还原 [ (使用 Azure 磁盘加密 ](backup-azure-vms-encryption.md#encryption-support-using-ade) 进行加密的数据磁盘) 和 [具有 CMK 加密磁盘的 vm](backup-azure-vms-encryption.md#encryption-using-customer-managed-keys)。 有关详细信息，请 [参阅有关加密的 Azure vm 和 Azure 备份的详细](./backup-azure-vms-encryption.md)信息。
 
-* 当使用 MARS 代理从本地服务器备份数据时，将使用密码对数据进行加密，然后再将其上载到 Azure 备份，并在从 Azure 备份下载后进行解密。 阅读有关[安全功能的详细信息，帮助保护混合备份](#security-features-to-help-protect-hybrid-backups)。
+* 当使用 MARS 代理从本地服务器备份数据时，将使用密码对数据进行加密，然后再将其上载到 Azure 备份，并在从 Azure 备份下载后进行解密。 阅读有关 [安全功能的详细信息，帮助保护混合备份](#security-features-to-help-protect-hybrid-backups)。
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>防止意外删除备份数据
 

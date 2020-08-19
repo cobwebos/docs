@@ -1,27 +1,22 @@
 ---
-title: Azure AD 应用程序代理中的自定义域 | Microsoft 文档
+title: Azure AD 应用程序代理中的自定义域
 description: 在 Azure AD 应用程序代理中配置和管理自定义域。
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 646a32509921709711b208c263ac6b077555eac5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6688875385d34fcbece964d43827c6d62ae7ced4
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764904"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587763"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理配置自定义域
 
@@ -91,11 +86,11 @@ ms.locfileid: "84764904"
    
    ![选择自定义域](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
-6. 如果域已有证书，“证书”字段会显示证书信息。 否则，选择“证书”字段。 
+6. 如果域已有证书，“证书”字段会显示证书信息。 否则，选择“证书”字段。
    
    ![单击以上传证书](./media/application-proxy-configure-custom-domain/certificate.png)
    
-7. 在“SSL 证书”页面上，浏览到 PFX 证书文件并将其选中。 输入证书的密码，然后选择“上传证书”。 有关证书的详细信息，请参阅[自定义域的证书](#certificates-for-custom-domains)部分。
+7. 在“SSL 证书”页面上，浏览到 PFX 证书文件并将其选中。 输入证书的密码，然后选择“上传证书”。 有关证书的详细信息，请参阅[自定义域的证书](#certificates-for-custom-domains)部分。 如果证书无效或密码有问题，您将看到一条错误消息。 [应用程序代理常见问题](application-proxy-faq.md#application-configuration)包含一些可尝试的故障排除步骤。
    
    ![上传证书](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
@@ -126,7 +121,7 @@ ms.locfileid: "84764904"
 
 必须使用 PFX 证书，以确保包含所有必需的中间证书。 该证书必须包含私钥。
 
-证书签名方法没有限制。 椭圆曲线加密 (ECC)、使用者可选名称 (SAN) 和其他常见证书类型都受支持。 
+支持最常见的证书签名方法，如使用者备用名称 (SAN) 。 
 
 只要通配符与外部 URL 匹配，就可使用通配符证书。 必须对[通配符应用程序](application-proxy-wildcard.md)使用通配符证书。 如果还希望使用证书来访问子域，则必须在同一证书中将子域通配符添加为使用者可选名称。 例如，\*.adventure-works.com 的证书将不可用于 \*.apps.adventure-works.com，除非你将 \*.apps.adventure-works.com 添加为使用者可选名称  。 
 
@@ -138,7 +133,7 @@ ms.locfileid: "84764904"
 
 所有证书管理都是通过各个应用程序页面进行的。 请转到应用程序“应用程序代理”页面，访问“证书”字段 。
 
-为应用程序上载证书后，该证书也会自动应用到使用相同证书配置的**新**应用程序。 需要为租户中的现有应用重新上传证书。
+为应用程序上载证书后，该证书也会自动应用到使用相同证书配置的 **新** 应用程序。 需要为租户中的现有应用重新上传证书。
 
 证书过期时，你将收到警告，上面通知你上传其他证书。 如果撤销了证书，用户在访问该应用时可能会看到安全警告。 若要更新应用的证书，请导航到应用的“应用程序代理”页面，选择“证书”，然后上传新证书 。 如果旧证书未由其他应用使用，则会自动删除该证书。 
 

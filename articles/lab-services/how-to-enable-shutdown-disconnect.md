@@ -1,34 +1,44 @@
 ---
-title: 启用在断开 Azure 实验室服务时关闭 VM | Microsoft Docs
+title: 在 Azure 实验室服务中配置实验室的 Vm 自动关闭
 description: 了解如何启用或禁用在断开远程桌面连接时自动关闭 VM。
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 0c5c22d5e4a9d66413e37cce095f5497915bd122
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/17/2020
+ms.openlocfilehash: 7941a3eed502f2329f5d2acf244eec7cef322615
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445706"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589753"
 ---
-# <a name="enable-automatic-shutdown-of-vms-on-disconnect"></a>启用在断开连接时自动关闭 VM
-本文介绍如何启用或禁用“断开远程桌面连接后自动关闭 Windows 10 实验室 VM (模板 VM 或学生 VM)”。 还可以指定 VM 在自动关闭之前应等待用户重新连接的时间。
+# <a name="configure-automatic-shutdown-of-vms-for-a-lab"></a>配置实验室的 Vm 自动关闭
+
+本文介绍如何配置实验室的 Vm 自动关闭。
+
+可以启用多个自动关闭成本控制功能，以便在不使用虚拟机的情况主动阻止额外成本。 以下三种自动关闭和断开连接功能的组合将捕获用户意外离开其虚拟机运行的大多数情况：
+ 
+* 自动断开用户与 OS 认为空闲 (仅限 Windows) 的虚拟机的连接。
+* 当用户断开 (Windows & Linux) 时，自动关闭虚拟机。
+* 自动关闭已启动但用户不连接的虚拟机。
+
+若要详细了解自动关闭功能，请参阅 [自动关闭设置的最大化成本控制](cost-management-guide.md#maximize-cost-control-with-auto-shutdown-settings) 部分。
 
 实验室帐户管理员可以为你在其中创建实验室的实验室帐户配置此设置。 有关详细信息，请参阅[为实验室帐户配置“断开连接时自动关闭 VM”](how-to-configure-lab-accounts.md)。 作为实验室所有者，你可以在创建实验室时或在创建实验室后重写该设置。 
 
-## <a name="configure-when-creating-a-lab"></a>在创建实验室时配置
-在“实验室创建向导”的“步骤 3”页上，可以启用或禁用此功能，还可以指定 VM 在自动关闭之前应等待用户重新连接的时间。 
+## <a name="configure-for-the-lab-level"></a>为实验室级别配置
 
-![在创建实验室时配置](./media/how-to-enable-shutdown-disconnect/configure-lab-creation.png)
+可以在 [Azure 实验室服务](https://labs.azure.com/)中配置自动关闭设置。
 
-## <a name="configure-after-the-lab-is-created"></a>在创建实验室后配置
-可以在“设置”页上配置此设置，如下图所示： 
+* 在 **实验室策略**) 创建实验室 (时，或
+* 创建实验室后 (**设置**) 
 
-![在创建实验室后配置](./media/how-to-enable-shutdown-disconnect/configure-lab-automatic-shutdown.png)
+> [!div class="mx-imgBorder"]
+> ![在创建实验室时配置](./media/how-to-enable-shutdown-disconnect/configure-lab-creation.png)
+
+请确保在 " [利用自动关闭设置最大化成本控制](cost-management-guide.md#maximize-cost-control-with-auto-shutdown-settings) " 部分中查看有关自动关闭的详细信息。
 
 > [!WARNING]
 > 如果你在断开与 VM 的 RDP 会话连接之前，在 VM 上关闭 Windows 操作系统 (OS)，自动关闭功能将无法正常工作。  
 
 ## <a name="next-steps"></a>后续步骤
-请参阅以下文章：
 
-- [用于课堂实验室的仪表板](use-dashboard.md)
+[用于课堂实验室的仪表板](use-dashboard.md)

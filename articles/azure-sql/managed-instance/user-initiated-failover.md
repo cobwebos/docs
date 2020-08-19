@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, carlrab, sstein
-ms.date: 08/12/2020
-ms.openlocfilehash: e1a5cb4a5ce02954a14a6936ec14379701354a79
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.date: 08/18/2020
+ms.openlocfilehash: 1833f0343aa3e41119e215e7ce022f122d13489b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88191190"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589497"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>SQL 托管实例上用户启动的手动故障转移
 
@@ -99,7 +99,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 需要在 API 调用中传递以下属性：
 
-| **API 属性** | **参数** |
+| **API 属性** | **Parameter** |
 | --- | --- |
 | subscriptionId | 托管实例所部署到的订阅 ID |
 | resourceGroupName | 包含托管实例的资源组 |
@@ -126,9 +126,12 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 
 对于 BC，你将不能看到与下面显示的 GP 服务层相同的输出。 这是因为 GP 服务层只基于单个节点。 对于 GP 服务层，t-sql 查询输出将只在故障转移前后显示单个节点。 在故障转移过程中，客户端在故障转移期间断开连接（通常持续时间很长）会指示故障转移的执行。
 
+> [!NOTE]
+> 故障转移过程完成后 (不是实际的短可用性) 在 **高强度** 工作负荷的情况下，可能需要几分钟时间。 这是因为实例引擎正在处理主节点上的所有当前事务，并在辅助节点上运行，然后才能进行故障转移。
+
 > [!IMPORTANT]
 > 用户启动的手动故障转移的功能限制如下：
-> - 在同一托管实例上，可能每隔30分钟启动一次 (1) 故障转移。
+> - 在同一托管实例上，可能每隔 **30 分钟**启动一次 (1) 故障转移。
 > - 对于 BC 实例，要接受故障转移请求，必须存在仲裁副本。
 > - 对于 BC 实例，不能指定要在其上启动故障转移的可读辅助副本。
 

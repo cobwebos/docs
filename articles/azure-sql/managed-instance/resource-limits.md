@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 02/25/2020
-ms.openlocfilehash: faa338e32577e713472601fde52e038a685b7826
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/14/2020
+ms.openlocfilehash: 902fa34be149f0b876729409c530186e34c706e5
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086823"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587304"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL 托管实例资源限制概述
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,7 +33,7 @@ SQL 托管实例的某些特征和资源限制取决于底层基础结构和体�
 
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
-| **硬件** | Intel E5-2673 v3 (Haswell) 2.4-GHz 处理器、附加的 SSD vCore = 1 PP（物理核心） | Intel E5-2673 v4 (Broadwell) 2.3-GHz 处理器和 Intel SP-8160 (Skylake) 处理器、快速 NVMe SSD、vCore=1 LP（超线程） |
+| **硬件** | Intel® E5-2673 v3 (Haswell) 2.4 GHz 处理器，附加 SSD vCore = 1 PP (物理内核)  | Intel® E5-2673 v4 (Broadwell) 2.3 GHz、Intel® SP-8160 (Skylake) 和 Intel® 8272CL 2.5 () GHz 处理器，fast NVMe SSD，vCore = 1 LP (超线程)  |
 | **vCore 数目** | 8、16、24 个 vCore | 4、8、16、24、32、40、64、80 个 vCore |
 | **最大内存（内存/核心比）** | 每个 vCore 7 GB<br/>添加更多 vCore 以获得更多内存。 | 每个 vCore 5.1 GB<br/>添加更多 vCore 以获得更多内存。 |
 | **最大内存中 OLTP 存储** | 实例限制：每个 vCore 1 - 1.5 GB| 实例限制：每个 vCore 0.8 - 1.65 GB |
@@ -68,7 +68,7 @@ SQL 托管实例有两个服务层级：[常规用途](../database/service-tier-
 | **功能** | **常规用途** | **业务关键** |
 | --- | --- | --- |
 | vCore 数目\* | Gen4：8、16、24<br/>Gen5：4、8、16、24、32、40、64、80 | Gen4：8、16、24 <br/> Gen5：4、8、16、24、32、40、64、80 <br/>\*相同数量的 vCore 专用于只读查询。 |
-| 最大内存 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：20.4 GB - 408 GB (5.1GB/vCore)<br/>添加更多 Vcore 以获得更多内存。 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5： 20.4 GB-408 GB （5.1 GB/vCore）用于读写查询<br/>为只读查询额外提供 20.4 GB - 408 GB (5.1GB/vCore)。<br/>添加更多 vCore 以获得更多内存。 |
+| 最大内存 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5：20.4 GB - 408 GB (5.1GB/vCore)<br/>添加更多 vCore 以获得更多内存。 | Gen4：56 GB - 168 GB (7GB/vCore)<br/>Gen5： 20.4 GB-408 GB (5.1 GB/vCore) 用于读写查询<br/>为只读查询额外提供 20.4 GB - 408 GB (5.1GB/vCore)。<br/>添加更多 vCore 以获得更多内存。 |
 | 最大实例存储大小（预留） | - 4 个 vCore 2 TB（仅限 Gen5）<br/>- 8 TB，适用于其他大小 | Gen4：1 TB <br/> Gen5： <br/>- 1 TB，适用于 4、8、16 个 vCore<br/>- 2 TB（适用于 24 个 vCore）<br/>- 32、40、64、80 个 vCore 4 TB |
 | 最大数据库大小 | 不超过当前可用的实例大小（最大为 2 TB - 8 TB，具体取决于 vCore 数）。 | 不超过当前可用的实例大小（最大为 1 TB - 4 TB，具体取决于 vCore 数）。 |
 | 最大 tempDB 大小 | 限制为 24 GB/vCore (96 - 1,920 GB) 和当前可用的实例存储大小。<br/>添加更多 Vcore 以获得更多 TempDB 空间。<br/> 日志文件大小限制为 120 GB。| 不超过当前可用的实例存储大小。 |
@@ -95,7 +95,7 @@ SQL 托管实例有两个服务层级：[常规用途](../database/service-tier-
   可以使用[自动故障转移组](../database/auto-failover-group-configure.md)在不同的 Azure 区域中创建另一个可读副本
 - 最大实例 IOPS 取决于工作负荷的文件布局和分布。 例如，如果创建 7 个 1 TB 文件（每个文件最大 5K IOPS）和 7 个小文件（小于 128 GB，每个文件 500 IOPS），并且工作负载可以使用所有文件，则每个实例可以处理 38500 IOPS (7x5000+7x500)。 请注意，某些 IOPS 还将用于自动备份。
 
-有关详细信息，请查看[本文中 SQL 托管实例池的资源限制](instance-pools-overview.md#resource-limitations)。
+有关详细信息，请查看 [本文中 SQL 托管实例池的资源限制](instance-pools-overview.md#resource-limitations)。
 
 ### <a name="file-io-characteristics-in-general-purpose-tier"></a>“常规用途”层级中的文件 IO 特征
 
@@ -112,7 +112,7 @@ SQL 托管实例有两个服务层级：[常规用途](../database/service-tier-
 
 ## <a name="supported-regions"></a>支持的区域
 
-SQL 托管实例只能在[支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)中创建。 若要在当前不受支持的区域中创建 SQL 托管实例，可以[通过 Azure 门户发送支持请求](../database/quota-increase-request.md)。
+SQL 托管实例只能在[支持的区域](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)中创建。 若要在当前不受支持的区域中创建 SQL 托管实例，可以 [通过 Azure 门户发送支持请求](../database/quota-increase-request.md)。
 
 ## <a name="supported-subscription-types"></a>支持的订阅类型
 
@@ -128,38 +128,38 @@ SQL 托管实例当前仅支持以下类型的订阅上的部署：
 ## <a name="regional-resource-limitations"></a>区域资源限制
 
 > [!Note]
-> 有关订阅的区域可用性的最新信息，请首先选中 "[选择区域](https://aka.ms/sqlcapacity)"。
+> 有关订阅的区域可用性的最新信息，请首先选中 " [选择区域](https://aka.ms/sqlcapacity)"。
 
-支持的订阅类型可以包含每个区域的有限数量的资源。 对于每个 Azure 区域，SQL 托管实例有两个默认限制（可以根据订阅类型的类型，在[Azure 门户中创建特殊支持请求](../database/quota-increase-request.md)来按需增加此值：
+支持的订阅类型可以包含每个区域的有限数量的资源。 对于每个 Azure 区域，SQL 托管实例有两个默认的限制 (根据订阅类型的类型，可以通过在 Azure 门户中创建特殊的 [支持请求](../database/quota-increase-request.md) 来提高按需增加的数量：
 
 - **子网限制**：在单个区域中部署 SQL 托管实例的实例的子网数目上限。
 - **vCore 单元限制**：可跨单一区域的所有实例部署的 vCore 单元数上限。 一个 GP vCore 使用一个 vCore 单元，一个 BC vCore 采用 4 个 vCore 单位。 实例总数不受限制，只要在 vCore 单元限制内即可。
 
 > [!Note]
-> 这些限制是默认设置，不是技术限制。 如果在当前区域中需要更多实例，则可以通过在[Azure 门户中创建特殊支持请求](../database/quota-increase-request.md)来提高限制。 或者，可以在另一个 Azure 区域中创建 SQL 托管实例的新实例，而无需发送支持请求。
+> 这些限制是默认设置，不是技术限制。 如果在当前区域中需要更多实例，则可以通过在 [Azure 门户中创建特殊支持请求](../database/quota-increase-request.md) 来提高限制。 或者，可以在另一个 Azure 区域中创建 SQL 托管实例的新实例，而无需发送支持请求。
 
 下表显示了支持的订阅类型的**默认区域限制**（可以使用下面所述的支持请求扩展默认限制）：
 
 |订阅类型| SQL 托管实例子网的最大数目 | vCore 单元数目上限* |
 | :---| :--- | :--- |
 |即用即付|3|320|
-|CSP |8（在某些区域中为 15 * *）|960（在某些区域中为 1440 * *）|
+|CSP |8 (15 在某些区域中 * * ) |960 (1440 在某些地区 * * ) |
 |即用即付开发/测试|3|320|
 |Enterprise 开发/测试|3|320|
-|EA|8（在某些区域中为 15 * *）|960（在某些区域中为 1440 * *）|
+|EA|8 (15 在某些区域中 * * ) |960 (1440 在某些地区 * * ) |
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional 和 MSDN 平台|2|32|
 
-\*在规划部署时，请考虑业务关键（BC）服务层需要四（4）倍于常规用途（GP）服务层的 vCore。 例如： 1 GP vCore = 1 vCore unit 和 1 BC vCore = 4 vCore 单位。 若要简化对默认限制的消耗分析，请汇总部署了 SQL 托管实例的区域中所有子网的 vCore 单位，并将结果与订阅类型的实例单位限制进行比较。 **VCore 单位限制的最大数量**适用于区域中的每个订阅。 每个子网没有任何限制，只不过跨多个子网部署的所有 Vcore 的总和必须小于或等于**vCore 单元的最大数目**。
+\* 在规划部署时，请考虑业务关键 (BC) 服务层需要四 (4) 倍于常规用途 (GP) 服务层的容量。 例如： 1 GP vCore = 1 vCore unit 和 1 BC vCore = 4 vCore 单位。 若要简化对默认限制的消耗分析，请汇总部署了 SQL 托管实例的区域中所有子网的 vCore 单位，并将结果与订阅类型的实例单位限制进行比较。 **VCore 单位限制的最大数量** 适用于区域中的每个订阅。 每个子网没有任何限制，只不过跨多个子网部署的所有 Vcore 的总和必须小于或等于 **vCore 单元的最大数目**。
 
-\*\*以下区域提供了更大的子网和 vCore 限制：澳大利亚东部、美国东部、美国东部2、北欧、美国中南部、东南亚、英国南部、西欧、美国西部2。
+\*\* 以下区域提供了更大的子网和 vCore 限制：澳大利亚东部、美国东部、美国东部2、北欧、美国中南部、东南亚、英国南部、西欧、美国西部2。
 
 > [!IMPORTANT]
 > 如果 vCore 和子网限制为0，则表示未设置订阅类型的默认区域限制。 还可以按照相同的过程提供所需的 vCore 和子网值，使用配额增加请求，以在特定区域中获取订阅访问权限。
 
 ## <a name="request-a-quota-increase"></a>请求增加配额
 
-如果您在当前区域需要更多实例，则发送支持请求以使用 Azure 门户扩展配额。 有关详细信息，请参阅[AZURE SQL 数据库的请求配额增加](../database/quota-increase-request.md)。
+如果您在当前区域需要更多实例，则发送支持请求以使用 Azure 门户扩展配额。 有关详细信息，请参阅 [AZURE SQL 数据库的请求配额增加](../database/quota-increase-request.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,12 +3,12 @@ title: 恢复服务保管库概述
 description: 恢复服务保管库和 Azure 备份保管库的概述和比较。
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: 2b292a39e38ef5e298f45c2babbee9fbd20c39ea
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 5334bc2aea5ddbf734c3fd3ef314ff4da609d61d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261865"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587746"
 ---
 # <a name="recovery-services-vaults-overview"></a>恢复服务保管库概述
 
@@ -32,10 +32,19 @@ ms.locfileid: "88261865"
 
 - 若要详细了解存储冗余，请参阅有关[异地](../storage/common/storage-redundancy.md)冗余和[本地](../storage/common/storage-redundancy.md)冗余的这些文章。
 
-### <a name="additional-resources"></a>其他资源
+## <a name="encryption-settings-in-the-recovery-services-vault"></a>恢复服务保管库中的加密设置
 
-- [保管库支持和不支持的方案](backup-support-matrix.md#vault-support)
-- [保管库常见问题](backup-azure-backup-faq.md)
+本部分介绍可用于对恢复服务保管库中存储的备份数据进行加密的选项。
+
+### <a name="encryption-of-backup-data-using-platform-managed-keys"></a>使用平台托管的密钥加密备份数据
+
+默认情况下，所有数据将使用平台托管的密钥进行加密。 无需执行任何显式操作即可启用此加密。 这种加密适用于要备份到恢复服务保管库的所有工作负荷。
+
+### <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客户托管密钥加密备份数据
+
+可以选择使用所拥有和管理的加密密钥来加密数据。 Azure 备份允许你使用存储在 Azure 密钥保管库中的 RSA 密钥对备份进行加密。 用于加密备份的加密密钥可能与用于源的加密密钥不同。 数据受到基于 AES 256 的数据加密密钥 (DEK) 的保护，而 DEK 又受到你的密钥的保护。 这使你可以完全控制数据和密钥。 若要允许加密，必须向恢复服务保管库授予对 Azure Key Vault 中的加密密钥的访问权限。 可以根据需要禁用密钥或撤销访问权限。 但是，在你尝试保护保管库中的任何项目之前，必须先使用你的密钥启用加密。
+
+阅读有关如何 [使用客户管理的密钥](encryption-at-rest-with-cmk.md)加密备份数据的详细信息。
 
 ## <a name="azure-advisor"></a>Azure 顾问
 
@@ -45,9 +54,15 @@ Azure 顾问为未备份的 VM 提供每小时[建议](../advisor/advisor-high-a
 
 ![Azure 顾问](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
+## <a name="additional-resources"></a>其他资源
+
+- [保管库支持和不支持的方案](backup-support-matrix.md#vault-support)
+- [保管库常见问题](backup-azure-backup-faq.md)
+
 ## <a name="next-steps"></a>后续步骤
 
-使用以下文章了解相关操作：</br>
-[备份 IaaS VM](backup-azure-arm-vms-prepare.md)</br>
-[备份 Azure 备份服务器](backup-azure-microsoft-azure-backup.md)</br>
-[备份 Windows Server](backup-windows-with-mars-agent.md)
+使用以下文章了解相关操作：
+
+- [备份 IaaS VM](backup-azure-arm-vms-prepare.md)
+- [备份 Azure 备份服务器](backup-azure-microsoft-azure-backup.md)
+- [备份 Windows Server](backup-windows-with-mars-agent.md)

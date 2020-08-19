@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: cfcf68b1e00e9f3333a8cd1fdb21ec71712f0e95
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7408d7609cbceb4ac39298680b6d3854a2d71306
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550664"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589208"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>教程：为 GitHub 配置自动用户预配
 
@@ -29,6 +29,7 @@ ms.locfileid: "88550664"
 * 一家在 [GitHub 企业云](https://help.github.com/articles/github-s-products/#github-enterprise)（需要 [GitHub Enterprise 计费计划](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)）中创建的 GitHub 组织
 * GitHub 中具有组织管理员权限的用户帐户
 * 确保为你的组织提供了 OAuth 访问权限，如[此处](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization)所述
+* 仅当在组织级别启用了 SSO 时，才支持 SCIM 预配到单个组织
 
 > [!NOTE]
 > Azure AD 预配集成依赖于 github [SCIM API](https://developer.github.com/v3/scim/)，该 API 可供 github 企业级 [云](https://help.github.com/articles/github-s-products/#github-enterprise) 客户在 [github 企业计费计划](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)中使用。
@@ -78,7 +79,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 8. 在“通知电子邮件”字段中输入应接收预配错误通知的个人或组的电子邮件地址，并选中复选框“发生故障时发送电子邮件通知”****。
 
-9. 单击“ **保存**”。
+9. 单击“保存” 。
 
 10. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 GitHub”****。
 

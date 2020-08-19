@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 06/25/2020
-ms.openlocfilehash: 7194e4553386c25691bb3ede8096da7fb63c5dc0
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.date: 08/14/2020
+ms.openlocfilehash: 72d0745e5a885ddbc57a9a849a7537a40e0b1215
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055187"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590058"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>什么是 Azure SQL 托管实例？
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -73,8 +73,8 @@ SQL 托管实例[基于 vCore 的购买模型](../database/service-tiers-vcore.m
 
 在 vCore 模型中，可在以下两代硬件中进行选择。
 
-- Gen4 逻辑 CPU 基于 Intel E5-2673 v3 (Haswell) 2.4-GHz 处理器，采用附加 SSD 和物理核心（每个核心 7 GB RAM），计算大小为 8 到 24 个 vCore。
-- Gen5 逻辑 CPU 基于 Intel E5-2673 v4 (Broadwell) 2.3-GHz 和 Intel SP-8160 (Skylake) 处理器，采用快速 NVMe SSD 和超线程逻辑核心，计算大小为 4 到 80 个核心。
+- **Gen4** 逻辑 Cpu 基于 Intel® E5-2673 V3 (Haswell) 2.4 GHz 处理器、附加的 SSD、物理内核、每核 7 GB RAM 以及8到 24 vcore 之间的计算大小。
+- **Gen5** 逻辑 Cpu 基于 Intel® E5-2673 V4 (Broadwell) 2.3 GHz、INTEL® SP 8160 (Skylake) 和 INTEL® 8272CL (级联 Lake) 2.5 GHz 处理器，快速 NVMe SSD，超线程逻辑核心，以及4到80核心之间的计算大小。
 
 若要详细了解两代硬件之间的区别，请参阅 [SQL 托管实例资源限制](resource-limits.md#hardware-generation-characteristics)。
 
@@ -115,7 +115,7 @@ SQL 托管实例可在两个服务层级中提供：
 
 ## <a name="management-operations"></a>管理操作
 
-Azure SQL 托管实例提供管理操作，你可以使用这些操作来自动部署新的托管实例、更新实例属性，以及删除不再需要的实例。 有关管理操作的详细说明，请参阅[托管实例管理操作概述](management-operations-overview.md)页。
+Azure SQL 托管实例提供管理操作，你可以使用这些操作来自动部署新的托管实例、更新实例属性，以及删除不再需要的实例。 有关管理操作的详细说明，请参阅 [托管实例管理操作概述](management-operations-overview.md) 页。
 
 ## <a name="advanced-security-and-compliance"></a>高级安全性和符合性
 
@@ -219,7 +219,7 @@ SQL 托管实例受益于云中的一贯最新状态，这意味着 SQL Server �
 
 ### <a name="administration-features"></a>管理功能
 
-SQL 托管实例可以减少系统管理员花费在管理任务上的时间，因为该服务可以自行执行这些任务，或者大大简化这些任务。 例如， [OS/RDBMS 安装和修补](../database/high-availability-sla.md)、[动态实例大小调整和配置](../database/single-database-scale.md)、[备份](../database/automated-backups-overview.md)、[数据库复制](replication-between-two-instances-configure-tutorial.md) (包括系统数据库) 、[高可用性配置](../database/high-availability-sla.md)，以及运行状况和[性能监视](../../azure-monitor/insights/azure-sql.md)数据流的配置。
+SQL 托管实例可以减少系统管理员花费在管理任务上的时间，因为该服务可以自行执行这些任务，或者大大简化这些任务。 例如， [OS/RDBMS 安装和修补](../database/high-availability-sla.md)、 [动态实例大小调整和配置](../database/single-database-scale.md)、 [备份](../database/automated-backups-overview.md)、 [数据库复制](replication-between-two-instances-configure-tutorial.md) (包括系统数据库) 、 [高可用性配置](../database/high-availability-sla.md)，以及运行状况和 [性能监视](../../azure-monitor/insights/azure-sql.md) 数据流的配置。
 
 有关详细信息，请参阅[支持和不支持的 SQL 托管实例功能列表](../database/features-comparison.md)以及 [SQL 托管实例和 SQL Server 之间的 T-SQL 差异](transact-sql-tsql-differences-sql-server.md)。
 
@@ -241,5 +241,5 @@ SQL 托管实例可以减少系统管理员花费在管理任务上的时间，�
 - 有关 VNet 配置的详细信息，请参阅 [SQL 托管实例 VNet 配置](connectivity-architecture-overview.md)。
 - 有关创建托管实例以及从备份文件还原数据库的快速入门，请参阅[创建托管实例](instance-create-quickstart.md)。
 - 有关使用 Azure 数据库迁移服务进行迁移的教程，请参阅[使用数据库迁移服务进行 SQL 托管实例迁移](../../dms/tutorial-sql-server-to-managed-instance.md)。
-- 有关内置疑难解答智能的 SQL 托管实例数据库性能的高级监视，请参阅[使用 Azure SQL Analytics 监视 AZURE SQL 托管实例](../../azure-monitor/insights/azure-sql.md)。
+- 有关内置疑难解答智能的 SQL 托管实例数据库性能的高级监视，请参阅 [使用 Azure SQL Analytics 监视 AZURE SQL 托管实例](../../azure-monitor/insights/azure-sql.md)。
 - 有关定价信息，请参阅 [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/managed/)。

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/12/2020
+ms.date: 08/18/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 27c5b166565dd8f0803f3bca05d137e643325368
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: fea14c62afb03a6c0d9f1bf6894f02bd3fd06c7f
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185734"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586964"
 ---
 # <a name="choose-how-to-authorize-access-to-blob-or-queue-data-in-the-azure-portal"></a>选择如何授权访问 Azure 门户中的 blob 或队列数据
 
@@ -25,7 +25,7 @@ ms.locfileid: "88185734"
 
 ## <a name="permissions-needed-to-access-blob-or-queue-data"></a>访问 Blob 或队列数据所需的权限
 
-根据你要如何授权访问 Azure 门户中的 Blob 或队列数据，你将需要特定权限。 在大多数情况下，这些权限是通过基于角色的访问控制 (RBAC) 提供的。 有关 RBAC 的详细信息，请参阅[什么是 AZURE rbac) 的 azure 基于角色的访问控制 (？](../../role-based-access-control/overview.md)。
+根据你要如何授权访问 Azure 门户中的 Blob 或队列数据，你将需要特定权限。 在大多数情况下，这些权限是通过基于角色的访问控制 (RBAC) 提供的。 有关 RBAC 的详细信息，请参阅 [什么是 AZURE rbac) 的 azure 基于角色的访问控制 (？](../../role-based-access-control/overview.md)。
 
 ### <a name="use-the-account-access-key"></a>使用帐户访问密钥
 
@@ -57,7 +57,7 @@ ms.locfileid: "88185734"
 - [存储队列数据参与者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)：对队列的读取/写入/删除权限。
 - [存储队列数据读取者](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader)：对队列的只读权限。
 
-自定义角色能够支持内置角色所提供的相同权限的不同组合。 有关创建 Azure 自定义角色的详细信息，请参阅[azure 自定义角色](../../role-based-access-control/custom-roles.md)和[了解 azure 资源的角色定义](../../role-based-access-control/role-definitions.md)。
+自定义角色能够支持内置角色所提供的相同权限的不同组合。 有关创建 Azure 自定义角色的详细信息，请参阅 [azure 自定义角色](../../role-based-access-control/custom-roles.md) 和 [了解 azure 资源的角色定义](../../role-based-access-control/role-definitions.md)。
 
 不支持使用经典订阅管理员角色列出队列。 若要列出队列，用户必须拥有 Azure 资源管理器“读取者”角色、“存储队列数据读取者”角色或“存储队列数据参与者”角色。  
 

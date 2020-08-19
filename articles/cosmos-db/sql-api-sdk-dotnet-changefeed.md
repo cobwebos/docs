@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
-ms.openlocfilehash: f38b2715115efadef4e09a95e9392b1dfd4c68b0
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 6d25eb2965e31211c0d30ec8d5e3e376176147c0
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135736"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590041"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET 更改源处理器 SDK：下载和发行说明
 
@@ -27,7 +27,8 @@ ms.locfileid: "88135736"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [弹簧数据 v2](sql-api-sdk-java-spring-v2.md)
+> * [弹簧数据 v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 连接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST] (/rest/api
@@ -51,7 +52,7 @@ ms.locfileid: "88135736"
 ### <a name="v2-builds"></a>v2 版本
 
 ### <a name="232"></a><a name="2.3.2"/>2.3.2
-* 添加了与[V3 SDK](sql-api-sdk-dotnet-standard.md)的租赁存储兼容性，可实现热迁移路径。 应用程序可以迁移到 V3 SDK 并迁移回更改源处理器库，而不会丢失任何状态。
+* 添加了与 [V3 SDK](sql-api-sdk-dotnet-standard.md) 的租赁存储兼容性，可实现热迁移路径。 应用程序可以迁移到 V3 SDK 并迁移回更改源处理器库，而不会丢失任何状态。
 
 ### <a name="231"></a><a name="2.3.1"/>2.3.1
 * `FeedProcessing.ChangeFeedObserverCloseReason.Unknown` `FeedProcessing.IChangeFeedObserver.CloseAsync` 如果找不到分区或者目标副本与读取会话不是最新的，则在将关闭原因发送到时更正了此情况。 在这些情况下 `FeedProcessing.ChangeFeedObserverCloseReason.ResourceGone` ， `FeedProcessing.ChangeFeedObserverCloseReason.ReadSessionNotAvailable` 现在使用了关闭原因。
@@ -190,14 +191,14 @@ ms.locfileid: "88135736"
 Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺利转换到更新的/受支持的版本。 新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新的 SDK 版本。
 
 > [!WARNING]
-> 2022年8月31日之后，Azure Cosmos DB 将不再进行 bug 修复、添加新功能并为 SQL API 的 Azure Cosmos DB .NET 或 .NET Core SDK 提供支持。 如果不想升级，则从 SDK 的版本1.x 发送的请求将继续由 Azure Cosmos DB 服务提供服务。
+> 在 2022 年 8 月 31 日之后，Azure Cosmos DB 将不再进行 bug 修复，不再添加新功能，也不再支持 1.x 版的 Azure Cosmos DB .NET 或 .NET Core SDK for SQL API。 如果你不想升级，则从 1.x 版 SDK 发送的请求将继续由 Azure Cosmos DB 服务处理。
 
 <br/>
 
 | 版本 | 发布日期 | 停用日期 |
 | --- | --- | --- |
-| [2.3.2](#2.3.2) |2020年8月11日 |--- |
-| [2.3.1](#2.3.1) |2020年7月30日 |--- |
+| [2.3.2](#2.3.2) |2020 年 8 月 11 日 |--- |
+| [2.3.1](#2.3.1) |2020 年 7 月 30 日 |--- |
 | [2.3.0](#2.3.0) |2020 年 4 月 2 日 |--- |
 | [2.2.8](#2.2.8) |2019 年 10 月 28 日 |--- |
 | [2.2.7](#2.2.7) |2019 年 5 月 14 日 |--- |

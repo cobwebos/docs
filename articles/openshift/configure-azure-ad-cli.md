@@ -8,20 +8,20 @@ author: sabbour
 ms.author: asabbour
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc
-ms.openlocfilehash: 45da3034891e5a82fb8423adb6bcd5e867f9d4e2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 393185d2167e18df3f8c1319e7367efbc437de1a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82204996"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590330"
 ---
-# <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>为 Azure Red Hat OpenShift 4 群集配置 Azure Active Directory 身份验证（CLI）
+# <a name="configure-azure-active-directory-authentication-for-an-azure-red-hat-openshift-4-cluster-cli"></a>为 Azure Red Hat OpenShift 4 群集 (CLI 配置 Azure Active Directory 身份验证) 
 
-如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 版本2.0.75 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果选择在本地安装并使用 CLI，本文要求运行 Azure CLI 版本2.6.0 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 检索用于配置 Azure Active Directory 应用程序的特定于群集的 Url。
 
-构造群集的 OAuth 回调 URL，并将其存储在变量**oauthCallbackURL**中。 请确保将**aro-rg**替换为资源组的名称，并将**aro 群集**名称替换为群集的名称。
+构造群集的 OAuth 回调 URL，并将其存储在变量 **oauthCallbackURL**中。 请确保将 **aro-rg** 替换为资源组的名称，并将 **aro 群集** 名称替换为群集的名称。
 
 > [!NOTE]
 > `AAD`Oauth 回调 URL 中的部分应与稍后要设置的 oauth 标识提供者名称相匹配。
@@ -46,7 +46,7 @@ az ad app create \
   --password '<ClientSecret>'
 ```
 
-你应返回类似于下面的内容。 请记下它，因为这是你将在后面的步骤中需要的**AppId** 。
+你应返回类似于下面的内容。 请记下它，因为这是你将在后面的步骤中需要的 **AppId** 。
 
 ```output
 6a4cb4b2-f102-4125-b5f5-9ad6689f7224
@@ -58,7 +58,7 @@ az ad app create \
 az account show --query tenantId -o tsv
 ```
 
-你应返回类似于下面的内容。 请记下它，因为这是稍后步骤中需要的**TenantId** 。
+你应返回类似于下面的内容。 请记下它，因为这是稍后步骤中需要的 **TenantId** 。
 
 ```output
 72f999sx-8sk1-8snc-js82-2d7cj902db47
@@ -66,7 +66,7 @@ az account show --query tenantId -o tsv
 
 ## <a name="create-a-manifest-file-to-define-the-optional-claims-to-include-in-the-id-token"></a>创建清单文件以定义要包含在 ID 令牌中的可选声明
 
-应用程序开发人员可以在其 Azure AD 的应用程序中使用[可选的声明](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)，以指定要发送到其应用程序的令牌中的声明。
+应用程序开发人员可以在其 Azure AD 的应用程序中使用 [可选的声明](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims) ，以指定要发送到其应用程序的令牌中的声明。
 
 使用可选声明可以：
 
@@ -76,7 +76,7 @@ az account show --query tenantId -o tsv
 
 我们会将 OpenShift 配置为使用 `email` 声明，并回退到 `upn` 以设置首选用户名，方法是将添加 `upn` 为 AZURE ACTIVE DIRECTORY 返回的 ID 令牌的一部分。
 
-在文件**上创建manifest.js** ，以配置 Azure Active Directory 应用程序。
+在文件 ** 上创建manifest.js** ，以配置 Azure Active Directory 应用程序。
 
 ```bash
 cat > manifest.json<< EOF
@@ -111,7 +111,7 @@ az ad app update \
 
 **\<AppID>** 将替换为前面获取的 ID。
 
-添加**Azure Active Directory**的权限，以启用登录和读取用户配置文件。
+添加 **Azure Active Directory** 的权限，以启用登录和读取用户配置文件。
 
 ```azurecli-interactive
 az ad app permission add \
@@ -123,11 +123,11 @@ az ad app permission add \
 > [!NOTE]
 > 除非你作为此 Azure Active Directory 的全局管理员进行身份验证，否则你可以忽略该消息以授予同意，因为在你登录自己的帐户后，系统将要求你执行此操作。
 
-## <a name="assign-users-and-groups-to-the-cluster-optional"></a>将用户和组分配到群集（可选）
+## <a name="assign-users-and-groups-to-the-cluster-optional"></a>将用户和组分配给群集 (可选) 
 
 默认情况下，在 Azure Active Directory (Azure AD) 租户中注册的应用程序可供租户的所有已成功进行身份验证的用户使用。 租户管理员和开发人员可以通过 Azure AD 将应用限制为仅供租户中特定的一组用户或安全组使用。
 
-按照 Azure Active Directory 文档上的说明向[应用程序分配用户和组](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users#app-registration)。
+按照 Azure Active Directory 文档上的说明向 [应用程序分配用户和组](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users#app-registration)。
 
 ## <a name="configure-openshift-openid-authentication"></a>配置 OpenShift OpenID 身份验证
 
@@ -160,9 +160,9 @@ oc login $apiServer -u kubeadmin -p <kubeadmin password>
 oc create secret generic openid-client-secret-azuread \
   --namespace openshift-config \
   --from-literal=clientSecret=<ClientSecret>
-```    
+```
 
-创建**oidc yaml**文件，以根据 Azure Active Directory 配置 OpenShift OpenID 身份验证。 **\<AppID>** 将和替换 **\<TenantId>** 为前面检索到的值。
+创建 **oidc yaml** 文件，以根据 Azure Active Directory 配置 OpenShift OpenID 身份验证。 **\<AppID>** 将和替换 **\<TenantId>** 为前面检索到的值。
 
 ```bash
 cat > oidc.yaml<< EOF
@@ -177,20 +177,20 @@ spec:
     type: OpenID
     openID:
       clientID: <AppId>
-      clientSecret: 
+      clientSecret:
         name: openid-client-secret-azuread
-      extraScopes: 
+      extraScopes:
       - email
       - profile
-      extraAuthorizeParameters: 
+      extraAuthorizeParameters:
         include_granted_scopes: "true"
       claims:
-        preferredUsername: 
+        preferredUsername:
         - email
         - upn
-        name: 
+        name:
         - name
-        email: 
+        email:
         - email
       issuer: https://login.microsoftonline.com/<TenantId>
 EOF
@@ -210,6 +210,6 @@ oauth.config.openshift.io/cluster configured
 
 ## <a name="verify-login-through-azure-active-directory"></a>验证登录名 Azure Active Directory
 
-如果你现在注销了 OpenShift Web 控制台并尝试再次登录，则会看到一个新选项，用于使用**AAD**登录。 可能需要等待几分钟时间。
+如果你现在注销了 OpenShift Web 控制台并尝试再次登录，则会看到一个新选项，用于使用 **AAD**登录。 可能需要等待几分钟时间。
 
 ![Azure Active Directory 选项的登录屏幕](media/aro4-login-2.png)
