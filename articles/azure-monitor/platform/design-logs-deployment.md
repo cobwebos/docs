@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 8b74fa39c47f9032e57d2b6630be1a3ef45990a3
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: b74fd1ad5c3783b2e456fa5f3c24fb8bc7875d4d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185173"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551316"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>设计 Azure Monitor 日志部署
 
@@ -127,20 +127,20 @@ Azure Monitor 根据执行日志搜索时所在的上下文自动确定正确的
 
 ## <a name="ingestion-volume-rate-limit"></a>引入量速率限制
 
-Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 卷速率限制旨在保护 Azure Monitor 客户免受多租户环境中突然引入的高峰。 默认的摄取量速率阈值 500 MB (压缩的) 适用于工作区（大约**6 GB/最小**）的工作区-根据日志长度和其压缩率，实际大小可能会有所不同。 此阈值适用于所有引入数据，无论是使用[诊断设置](diagnostic-settings.md)、[数据收集器 API](data-collector-api.md)还是代理从 Azure 资源发送。
+Azure Monitor 是一种大规模数据服务，每月为成千上万的客户发送数 TB 的数据，并且此数据仍在不断增长。 卷速率限制旨在将 Azure Monitor 客户与多租户环境中的突然引入峰值隔离开来。 工作区中定义了 500 MB (压缩) 的默认引入量速率阈值，此值转换为大约 **6 GB/最小值** （未压缩），这取决于日志长度及其压缩率。 卷速率限制适用于所有引入数据，无论是使用 [诊断设置](diagnostic-settings.md)、 [数据收集器 API](data-collector-api.md) 还是代理从 Azure 资源发送。
 
-如果将数据发送到工作区中配置的阈值高于80% 的工作区，则每隔6小时就会将事件发送到工作区中的*操作*表，同时将继续超出阈值。 当引入 volume rate 高于阈值时，某些数据会被删除，并且每隔6小时就会将事件发送到工作区中的*操作*表，而阈值仍会被超过。 如果引入量的速率持续超出阈值，或者您很快就会到达，则可以通过打开支持请求来请求在您的工作区中增加它。 
+如果将数据发送至工作区时采用的引入量速率高于工作区中配置的阈值的 80%，则当继续超过阈值时，会每 6 小时向你工作区中的“操作”表发送一个事件。 如果引入量速率超过阈值，则当继续超过阈值时，某些数据会被放弃，并且每 6 小时向你工作区中的“操作”表发送一个事件。 如果引入量的速率持续超出阈值，或者您很快就会到达此阈值，则可以通过打开支持请求来请求增加此阈值。 
 
-若要在你的工作区中收到此类事件的通知，请使用以下查询创建[日志警报规则](alerts-log.md)，该规则使用以下查询，其中的结果大于数为0，评估期为5分钟，频率为5分钟。
+若要在你的工作区中收到 approching 或达到引入量速率限制的通知，请使用以下查询创建 [日志警报规则](alerts-log.md) ，并在结果数为大于的情况下使用警报逻辑基数，计算时间为5分钟，频率为5分钟。
 
-引入量速率达到80% 的阈值：
+引入量速率达到阈值的 80%：
 ```Kusto
 Operation
 |where OperationCategory == "Ingestion"
 |where Detail startswith "The data ingestion volume rate crossed 80% of the threshold"
 ```
 
-已达到引入速率阈值阈值：
+引入量速率达到阈值：
 ```Kusto
 Operation
 |where OperationCategory == "Ingestion"

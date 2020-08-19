@@ -3,12 +3,12 @@ title: 关于 Azure VM 备份
 description: 本文介绍 Azure 备份服务如何备份 Azure 虚拟机，以及如何遵循最佳做法。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 3c73b489404d1e8198fbd984b5188a7a2ccb973f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 04ea9fa49d95ced3245f88fee58a23ba67aaa0d7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091039"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587491"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>概要了解 Azure VM 备份
 
@@ -51,8 +51,8 @@ Azure 备份还针对数据库工作负荷（例如 [SQL Server](backup-azure-sq
 
 **加密** | **详细信息** | **支持**
 --- | --- | ---
+**SSE** | Azure 存储使用 SSE 提供静态加密，在存储数据之前，它会自动加密数据。 Azure 存储还会在检索数据之前解密数据。 Azure 备份支持具有两种类型的存储服务加密的 Vm 备份：<li> **使用平台托管密钥的 SSE**：默认情况下，vm 中的所有磁盘都是此加密。 [在此处](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys)查看详细信息。<li> **包含客户管理的密钥的 SSE**。 使用 CMK，你可以管理用于对磁盘进行加密的密钥。 [在此处](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)查看详细信息。 | Azure 备份使用 SSE 对 Azure VM 进行静态加密。
 **Azure 磁盘加密** | Azure 磁盘加密可以加密 Azure VM 的 OS 磁盘和数据磁盘。<br/><br/> Azure 磁盘加密与在 Key Vault 中作为机密受到保护的 BitLocker 加密密钥 (BEK) 相集成。 Azure 磁盘加密还与 Azure Key Vault 密钥加密密钥 (KEK) 相集成。 | Azure 备份支持备份仅使用 BEK 加密的，或者同时使用 BEK 和 KEK 加密的托管型和非托管型 Azure VM。<br/><br/> BEK 和 KEK 都会得到备份和加密。<br/><br/> 由于 KEK 和 BEK 都会得到备份，拥有相应权限的用户可根据需要，将密钥和机密还原到 Key Vault。 这些用户还可以恢复已加密的 VM。<br/><br/> 未经授权的用户或 Azure 无法读取已加密的密钥和机密。
-**SSE** | Azure 存储使用 SSE 提供静态加密，在存储数据之前，它会自动加密数据。 Azure 存储还会在检索数据之前解密数据。 | Azure 备份使用 SSE 对 Azure VM 进行静态加密。
 
 对于托管和非托管 Azure VM，备份服务支持仅经过 BEK 加密的或者同时经过 BEK 和 KEK 加密的 VM。
 
@@ -64,7 +64,7 @@ Azure 备份还针对数据库工作负荷（例如 [SQL Server](backup-azure-sq
 
 Azure 备份根据备份计划创建快照。
 
-- **Windows VM：** 对于 Windows VM，备份服务将与 VSS 相配合，来创建 VM 磁盘的应用一致性快照。  默认情况下，Azure 备份会执行完整的 VSS 备份（它在备份时会截断 SQL Server 等应用程序的日志，以获取应用程序级别的一致备份）。  如果使用的是 Azure VM 备份上的 SQL Server 数据库，则可以修改设置以执行 VSS 副本备份（以保留日志）。 有关详细信息，请参阅[此文章](./backup-azure-vms-troubleshoot.md#troubleshoot-vm-snapshot-issues)。
+- **Windows VM：** 对于 Windows VM，备份服务将与 VSS 相配合，来创建 VM 磁盘的应用一致性快照。  默认情况下，Azure 备份会执行完整的 VSS 备份（它在备份时会截断 SQL Server 等应用程序的日志，以获取应用程序级别的一致备份）。  如果你使用的是 Azure VM 备份上的 SQL Server 数据库，则可以修改设置以执行 VSS 副本备份 (以保留日志) 。 有关详细信息，请参阅[此文章](./backup-azure-vms-troubleshoot.md#troubleshoot-vm-snapshot-issues)。
 
 - **Linux VM：** 若要创建 Linux VM 的应用一致性快照，请使用 Linux 前脚本和后脚本框架编写自己的自定义脚本，以确保一致性。
 
@@ -83,7 +83,7 @@ Azure 备份根据备份计划创建快照。
 **崩溃一致** | 如果在备份时 Azure VM 关闭，则往往会发生崩溃一致性快照。 仅会捕获和备份备份时磁盘上已存在的数据。 | 从 VM 启动过程开始，然后进行磁盘检查以修复损坏错误。 在崩溃之前未传输到磁盘的任何内存中数据或写入操作将会丢失。 应用实现自身的数据验证。 例如，数据库应用可以使用其事务日志进行验证。 如果事务日志中有条目不在数据库中，则数据库软件将回滚事务，直到数据一致。 | VM 处于关闭（已停止/已解除分配）状态。
 
 >[!NOTE]
-> 如果预配状态为 "**成功**"，则 Azure 备份会执行文件系统一致的备份。 如果预配状态为 "**不可用**" 或 "**失败**"，则会执行崩溃一致的备份。 如果预配状态为 "**正在创建**" 或 "**正在删除**"，则表示 Azure 备份正在重试操作。
+> 如果预配状态为 " **成功**"，则 Azure 备份会执行文件系统一致的备份。 如果预配状态为 " **不可用** " 或 " **失败**"，则会执行崩溃一致的备份。 如果预配状态为 " **正在创建** " 或 " **正在删除**"，则表示 Azure 备份正在重试操作。
 
 ## <a name="backup-and-restore-considerations"></a>备份和还原注意事项
 
@@ -112,7 +112,7 @@ Azure 备份根据备份计划创建快照。
 
 - 修改策略中设置的默认计划时间。 例如，如果策略中的默认时间是凌晨 12:00，请将时间递增几分钟，确保以最佳方式使用资源。
 - 如果从单个保管库还原 VM，强烈建议你使用不同的[常规用途 v2 存储帐户](../storage/common/storage-account-upgrade.md)，以确保目标存储帐户不会受到限制。 例如，每个 VM 必须具有不同的存储帐户。 例如，如果还原 10 个 VM，请使用 10 个不同的存储帐户。
-- 对于使用高级存储和即时还原的 Vm 的备份，我们建议分配总分配存储空间的*50%* 可用空间（**仅限**第一次备份需要）。 第一次备份完成后，不需要50% 的可用空间
+- 对于使用高级存储和即时还原的 Vm 的备份，我们建议分配总分配存储空间的 *50%* 可用空间（ **仅限** 第一次备份需要）。 第一次备份完成后，不需要50% 的可用空间
 - 每个存储帐户的磁盘数量限制与在基础结构即服务 (IaaS) VM 上运行的应用程序访问磁盘的频率有关。 通常情况下，如果单个存储帐户上存在 5 至 10 个或以上磁盘，则通过将一些磁盘移动到单独的存储帐户以均衡负载。
 
 ## <a name="backup-costs"></a>备份成本
@@ -140,4 +140,4 @@ OS 磁盘 | 32 TB | 17 GB
 
 ## <a name="next-steps"></a>后续步骤
 
-现在请[准备进行 Azure VM 备份](backup-azure-arm-vms-prepare.md)。
+- [准备 AZURE VM 备份](backup-azure-arm-vms-prepare.md)。

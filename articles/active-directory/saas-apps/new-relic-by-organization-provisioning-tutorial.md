@@ -2,29 +2,25 @@
 title: 教程：使用 Azure Active Directory 配置新的 Relic 按组织进行自动用户预配 |Microsoft Docs
 description: 了解如何自动将用户 Azure AD 帐户预配到 Relic，并取消其预配。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 7fd0d976-4f70-4ce5-992e-3ea4ed8e5d60
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2020
 ms.author: Zhchia
-ms.openlocfilehash: da260221f42bb7e191040857abe4222f449257f5
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c7061be06f8a87c2304b678790a2b1eb63ea81f7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926835"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554414"
 ---
 # <a name="tutorial-configure-new-relic-by-organization-for-automatic-user-provisioning"></a>教程：按组织为自动用户预配配置新的 Relic
 
-本教程介绍了需要在新的 Relic （按组织）和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置后，Azure AD 会使用 Azure AD 预配服务自动设置用户和组，并将其预配到[新 Relic](https://newrelic.com/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了需要在新的 Relic （按组织）和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置后，Azure AD 会使用 Azure AD 预配服务自动设置用户和组，并将其预配到 [新 Relic](https://newrelic.com/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -46,9 +42,9 @@ ms.locfileid: "87926835"
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
 1. 了解[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
 2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
-3. 确定要[按组织 Azure AD 和新的 Relic 之间映射的](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)数据。 
+3. 确定要 [按组织 Azure AD 和新的 Relic 之间映射的](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)数据。 
 
-## <a name="step-2-configure-new-relic-by-organization-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置新的 Relic by 组织以支持设置 Azure AD
+## <a name="step-2-configure-new-relic-by-organization-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置新的 Relic by 组织以支持设置 Azure AD
 
 联系你的客户代表或在 support.newrelic.com 上获得支持，为你的组织配置 SCIM 和 SSO。 你将需要为你的帐户代表提供：
 
@@ -72,7 +68,7 @@ SCIM 持有者令牌允许在新 Relic 上预配用户，因此请保持此值�
 
 使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
 
-* 将用户和组分配到组织的新 Relic 时，必须选择 "**默认" 访问权限**以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
+* 将用户和组分配到组织的新 Relic 时，必须选择 " **默认" 访问权限**以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
 
 * 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
@@ -87,7 +83,7 @@ SCIM 持有者令牌允许在新 Relic 上预配用户，因此请保持此值�
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-2. 在应用程序列表中，选择 "**新建 Relic By 组织**"。
+2. 在应用程序列表中，选择 " **新建 Relic By 组织**"。
 
     ![应用程序列表中的 New Relic 链接](common/all-applications.png)
 
@@ -99,7 +95,7 @@ SCIM 持有者令牌允许在新 Relic 上预配用户，因此请保持此值�
 
     ![预配选项卡](common/provisioning-automatic.png)
 
-5. 在“管理员凭据”部分下，在“租户 URL”中输入 `https://scim-provisioning.service.newrelic.com/scim/v2`。 输入先前在**机密令牌**中检索到的 SCIM authentication 令牌值。 单击 "**测试连接**" 以确保 Azure AD 可以连接到新 Relic。 如果连接失败，请确保新 Relic 帐户具有管理员权限，然后重试。
+5. 在“管理员凭据”部分下，在“租户 URL”中输入 `https://scim-provisioning.service.newrelic.com/scim/v2`。 输入先前在 **机密令牌**中检索到的 SCIM authentication 令牌值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到新 Relic。 如果连接失败，请确保新 Relic 帐户具有管理员权限，然后重试。
 
     ![预配](./media/new-relic-by-organization-provisioning-tutorial/provisioning.png)
 
@@ -109,9 +105,9 @@ SCIM 持有者令牌允许在新 Relic 上预配用户，因此请保持此值�
 
 7. 选择“保存”。
 
-8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到组织的新 Relic**"。
+8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到组织的新 Relic**"。
 
-9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到新 Relic 的用户属性。 选为 "**匹配**" 属性的属性用于匹配 New Relic by 组织中的用户帐户以执行更新操作。 如果选择更改[匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保新的 Relic BY 组织 API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
+9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到新 Relic 的用户属性。 选为 " **匹配** " 属性的属性用于匹配 New Relic by 组织中的用户帐户以执行更新操作。 如果选择更改 [匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保新的 Relic BY 组织 API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
    |Attribute|类型|
    |---|---|
@@ -123,9 +119,9 @@ SCIM 持有者令牌允许在新 Relic 上预配用户，因此请保持此值�
    |name.formatted|字符串|
    |timezone|字符串|
 
-10. 在 "**映射**" 部分下，选择 "**按组织将 Azure Active Directory 组同步到新 Relic**"。
+10. 在 " **映射** " 部分下，选择 " **按组织将 Azure Active Directory 组同步到新 Relic**"。
 
-11. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到新 Relic 的组属性。 选为 "**匹配**" 属性的属性用于匹配 New Relic by groups 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
+11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到新 Relic 的组属性。 选为 " **匹配** " 属性的属性用于匹配 New Relic by groups 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
       |Attribute|类型|
       |---|---|

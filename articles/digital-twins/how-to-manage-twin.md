@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8e0f0b37dd429578194c18e5a9a1f063b74fb693
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 9f140594ef18df7f9a6a3b919998962c966cde76
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506526"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587593"
 ---
 # <a name="manage-digital-twins"></a>管理数字孪生
 
@@ -37,18 +37,22 @@ await client.CreateDigitalTwinAsync("myNewTwinID", initData);
 
 （可选）可以为数字输出的所有属性提供初始值。 
 
-模型和初始属性值通过 `initData` 参数提供，它是一个包含相关数据的 JSON 字符串。
+模型和初始属性值通过 `initData` 参数提供，它是一个包含相关数据的 JSON 字符串。 有关构造此对象的详细信息，请转到下一节。
 
 > [!TIP]
 > 创建或更新克隆后，可能会有长达10秒的延迟，更改将反映在 [查询](how-to-query-graph.md)中。 `GetDigitalTwin`[本文后面](#get-data-for-a-digital-twin)所述的 API () 不会遇到此延迟，因此，如果需要即时响应，请使用 api 调用而不是查询来查看新创建的孪生。 
 
-### <a name="initialize-properties"></a>初始化属性
+### <a name="initialize-model-and-properties"></a>初始化模型和属性
 
-克隆创建 API 接受一个对象，该对象可以序列化为克隆属性的有效 JSON 说明。 请参阅 " [*概念：数字孪生" 和 "克隆图形"*](concepts-twins-graph.md) ，以获取对一种对的 JSON 格式的说明。
+克隆创建 API 接受序列化为克隆属性的有效 JSON 说明的对象。 请参阅 " [*概念：数字孪生" 和 "克隆图形"*](concepts-twins-graph.md) ，以获取对一种对的 JSON 格式的说明。 
+
+首先，您将创建一个数据对象来表示克隆及其属性数据。 然后，可以使用 `JsonSerializer` 将的序列化版本传递到用于参数的 API 调用 `initdata` 。
 
 可以手动创建参数对象，也可以使用提供的帮助器类创建参数对象。 下面是每个的示例。
 
 #### <a name="create-twins-using-manually-created-data"></a>使用手动创建的数据创建孪生
+
+如果不使用任何自定义帮助器类，则可以在中表示克隆的属性 `Dictionary<string, object>` ，其中 `string` 是属性的名称， `object` 是表示属性及其值的对象。
 
 ```csharp
 // Define the model type for the twin to be created
@@ -68,6 +72,8 @@ client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<Dictionary<stri
 
 #### <a name="create-twins-with-the-helper-class"></a>用 helper 类创建孪生
 
+使用的帮助程序类，可以 `BasicDigitalTwin` 更直接地将属性字段存储在 "双子" 对象中。 你仍可以使用生成属性列表 `Dictionary<string, object>` ，然后可以将其直接添加到克隆的对象 `CustomProperties` 。
+
 ```csharp
 BasicDigitalTwin twin = new BasicDigitalTwin();
 twin.Metadata = new DigitalTwinMetadata();
@@ -80,6 +86,13 @@ twin.CustomProperties = props;
 
 client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
 ```
+
+>[!NOTE]
+> `BasicDigitalTwin` 对象附带了一个 `Id` 字段。 可以将此字段保留为空，但如果添加了一个 ID 值，则它需要与传递给调用的 ID 参数匹配 `CreateDigitalTwin` 。 对于上面的示例，此示例如下所示：
+>
+>```csharp
+>twin.Id = "myNewRoomID";
+>```
 
 ## <a name="get-data-for-a-digital-twin"></a>获取数字克隆的数据
 

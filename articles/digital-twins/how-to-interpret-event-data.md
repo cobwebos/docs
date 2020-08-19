@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d32ad29bf652cad62a5950859ebff0366e09fc6f
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 10b74f7b795df2cf8c19d044fce44da3f798af7a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510022"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587627"
 ---
 # <a name="understand-event-data"></a>了解事件数据
 
@@ -30,7 +30,7 @@ Azure 数字孪生中的不同事件会生成 **通知**，这使解决方案后
 
 通知消息标头用键值对表示。 根据 (MQTT、AMQP 或 HTTP) 使用的协议，将以不同的方式序列化消息标头。 本部分讨论通知消息的常规标头信息，而不考虑所选的特定协议和序列化。
 
-某些通知符合 CloudEvents 标准。 CloudEvents 一致性如下所示。
+某些通知符合 [CloudEvents](https://cloudevents.io/) 标准。 CloudEvents 一致性如下所示。
 * 从设备发出的通知继续遵循现有的通知规范
 * IoT 中心处理和发出的通知继续遵循现有的通知规范，但 IoT 中心选择支持 CloudEvents （如通过事件网格）
 * 从 [数字孪生](concepts-twins-graph.md) 发出的包含 [模型](concepts-models.md) 的通知符合 CloudEvents
@@ -99,15 +99,15 @@ Azure 数字孪生向事件网格发出的通知将自动格式化为 CloudEvent
 * 创建数字克隆
 * 删除数字克隆
 
-#### <a name="properties"></a>“属性”
+#### <a name="properties"></a>属性
 
 下面是生命周期通知正文中的字段。
 
-| 名称 | Value |
+| 名称 | 值 |
 | --- | --- |
 | `id` | 通知的标识符，如由服务维护的 UUID 或计数器。 `source` + `id` 对于每个 distinct 事件都是唯一的。 |
 | `source` | IoT 中心或 Azure 数字孪生实例的名称，例如 *myhub.azure-devices.net* 或 *mydigitaltwins.westus2.azuredigitaltwins.net* |
-| `specversion` | *1.0*<br>消息符合此版本的 CloudEvents 规范。 |
+| `specversion` | *1.0*<br>消息符合此版本的 [CloudEvents 规范](https://github.com/cloudevents/spec)。 |
 | `type` | `Microsoft.DigitalTwins.Twin.Create`<br>`Microsoft.DigitalTwins.Twin.Delete` |
 | `datacontenttype` | `application/json` |
 | `subject` | 数字输出的 ID |
@@ -185,15 +185,15 @@ Azure 数字孪生向事件网格发出的通知将自动格式化为 CloudEvent
 
 当创建、更新或删除数字克隆的任何关系时，将触发**关系更改通知**。 
 
-#### <a name="properties"></a>“属性”
+#### <a name="properties"></a>属性
 
 下面是边缘更改通知正文中的字段。
 
-| 名称    | Value |
+| 名称    | 值 |
 | --- | --- |
 | `id` | 通知的标识符，如由服务维护的 UUID 或计数器。 `source` + `id` 对于每个 distinct 事件都是唯一的 |
 | `source` | Azure 数字孪生实例的名称，如 *mydigitaltwins.westus2.azuredigitaltwins.net* |
-| `specversion` | *1.0*<br>消息符合此版本的 CloudEvents 规范。 |
+| `specversion` | *1.0*<br>消息符合此版本的 [CloudEvents 规范](https://github.com/cloudevents/spec)。 |
 | `type` | `Microsoft.DigitalTwins.Relationship.Create`<br>`Microsoft.DigitalTwins.Relationship.Update`<br>`Microsoft.DigitalTwins.Relationship.Delete`
 |`datacontenttype`| `application/json` |
 | `subject` | 关系的 ID，例如 `<twinID>/relationships/<relationshipID>` |
@@ -241,15 +241,15 @@ Azure 数字孪生向事件网格发出的通知将自动格式化为 CloudEvent
 * 属性值或元数据的更改时间。
 * 数字克隆或组件元数据发生更改时。 这种情况的一个示例是，更改数字克隆的模型。
 
-#### <a name="properties"></a>“属性”
+#### <a name="properties"></a>属性
 
 下面是数字克隆更改通知正文中的字段。
 
-| 名称    | Value |
+| 名称    | 值 |
 | --- | --- |
 | `id` | 通知的标识符，如由服务维护的 UUID 或计数器。 `source` + `id` 对于每个 distinct 事件都是唯一的 |
 | `source` | IoT 中心或 Azure 数字孪生实例的名称，例如 *myhub.azure-devices.net* 或 *mydigitaltwins.westus2.azuredigitaltwins.net*
-| `specversion` | *1.0*<br>消息符合此版本的 CloudEvents 规范。 |
+| `specversion` | *1.0*<br>消息符合此版本的 [CloudEvents 规范](https://github.com/cloudevents/spec)。 |
 | `type` | `Microsoft.DigitalTwins.Twin.Update` |
 | `datacontenttype` | `application/json` |
 | `subject` | 数字输出的 ID |

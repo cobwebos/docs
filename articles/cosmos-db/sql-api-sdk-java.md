@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: f36a4b223c12662eec1369bd4ec1a1175e459198
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 406690eb1303a25002d3d787e746bd091dd83fc6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851777"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586122"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -26,7 +26,8 @@ ms.locfileid: "87851777"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [弹簧数据 v2](sql-api-sdk-java-spring-v2.md)
+> * [弹簧数据 v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 连接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -262,7 +263,7 @@ ms.locfileid: "87851777"
 Microsoft 至少会在停用 SDK 的 **12 个月**之前发出通知，以便顺利转换到更新的/受支持的版本。 新特性和功能以及优化仅添加到当前 SDK，因此建议始终尽早升级到最新 SDK 版本。
 
 > [!WARNING]
-> 30 2020 月30日后，Azure Cosmos DB 将不再进行 bug 修复、添加新功能，并为 SQL API Azure Cosmos DB Java SDK 的版本1.x 提供支持。 如果不想升级，则从 SDK 的版本1.x 发送的请求将继续由 Azure Cosmos DB 服务提供服务。
+> 30 2020 月30日后，Azure Cosmos DB 将不再进行 bug 修复、添加新功能，并为 SQL API Azure Cosmos DB Java SDK 的版本1.x 提供支持。 如果你不想升级，则从 1.x 版 SDK 发送的请求将继续由 Azure Cosmos DB 服务处理。
 >
 > 2016年2月29日后，Azure Cosmos DB 将不再进行 bug 修复、添加新功能，并为适用于 SQL API 的 Azure Cosmos DB Java SDK 提供版本1.x 支持。 如果不想升级，则从 SDK 的版本4.x 发送的请求将继续由 Azure Cosmos DB 服务提供服务。
 

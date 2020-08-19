@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB SQL Python API、SDK 和资源
 description: 了解有关 SQL Python API 和 SDK 的全部信息，包括发布日期、停用日期和 Azure Cosmos DB Python SDK 各版本之间所做的更改。
-author: anfeldma-ms
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: 44d9521e9d02195cb1d4ff61fd519f31ce9c0018
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e9f9daea2c0d570efb81603784ee730b11668426
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876251"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585978"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Python SDK：发行说明和资源
 
@@ -27,7 +27,8 @@ ms.locfileid: "87876251"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [弹簧数据 v2](sql-api-sdk-java-spring-v2.md)
+> * [弹簧数据 v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark 连接器](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -45,6 +46,20 @@ ms.locfileid: "87876251"
 |**当前受支持的平台**|[Python 2.7](https://www.python.org/downloads/) 和 [Python 3.5.3+](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>版本历史记录
+
+### <a name="410-2020-08-10"></a>4.1.0 (2020-08-10) 
+
+- 为 "延迟" 索引模式添加了弃用警告。 后端不再允许创建具有此模式的容器，而是将其设置为一致。
+
+**新功能**
+- 添加了在创建新容器时设置分析存储 TTL 的功能。
+
+**Bug 修复**
+- 修复了对 dicts 作为 get_client Api 的输入的支持。
+- 修复了查询迭代器中的 Python 2/3 兼容性。
+- 固定类型提示错误 (#12570) 问题。
+- 修复了选项标头未添加到 upsert_item 函数的 bug。 问题 #11791-谢谢 @aalapatirvbd 。
+- 修复了在项中使用了非字符串 ID 时引发的错误。 它现在会引发 TypeError，而不是 #11793)  (问题。
 
 ### <a name="400"></a>4.0.0
 

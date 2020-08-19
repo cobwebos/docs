@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 07/27/2020
-ms.openlocfilehash: f98e540a6764869f1d37edfbb0f00bf8d1cc2198
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/17/2020
+ms.openlocfilehash: 3eb1a4cbfcf62617796af6a26cb4688b734eb617
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499171"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551834"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>使用 Azure SQL 配置和管理 Azure AD 身份验证
 
@@ -31,12 +31,12 @@ Azure AD 身份验证支持以下身份验证方法：
 
 - Azure AD 仅限云的标识
 - Azure AD 混合标识，此类标识支持：
-  - 具有两个选项的云身份验证与无缝单一登录（SSO）结合
+  - 具有两个选项的云身份验证，结合无缝单一登录 (SSO) 
     - Azure AD 密码哈希身份验证
     - Azure AD 传递身份验证
   - 联合身份验证
 
-有关 Azure AD 身份验证方法以及要选择哪种方法的详细信息，请参阅为[Azure Active Directory 混合标识解决方案选择正确的身份验证方法](../../active-directory/hybrid/choose-ad-authn.md)。
+有关 Azure AD 身份验证方法以及要选择哪种方法的详细信息，请参阅为 [Azure Active Directory 混合标识解决方案选择正确的身份验证方法](../../active-directory/hybrid/choose-ad-authn.md)。
 
 有关 Azure AD 混合标识、设置和同步的详细信息，请参阅：
 
@@ -71,7 +71,9 @@ Azure 中的每个[服务器](logical-servers.md)（托管 SQL 数据库或 Azur
 ## <a name="provision-azure-ad-admin-sql-managed-instance"></a>预配 Azure AD 管理员（SQL 托管实例）
 
 > [!IMPORTANT]
-> 若要预配 Azure SQL 托管实例，则只执行以下步骤。 在 Azure AD 中，只能由全局/公司管理员或特权角色管理员执行此操作。 以下步骤介绍在目录中为具有不同权限的用户授予权限的过程。
+> 若要预配 Azure SQL 托管实例，则只执行以下步骤。 在 Azure AD 中，只能由全局/公司管理员或特权角色管理员执行此操作。
+>
+> 在 **公共预览版**中，你可以将 **目录读取** 者角色分配到 Azure AD 中的组。 然后，组所有者可以将托管实例标识作为此组的成员添加，这将允许你为 SQL 托管实例预配 Azure AD 管理员。 有关此功能的详细信息，请参阅 [AZURE SQL Azure Active Directory 中的目录读者角色](authentication-aad-directory-readers-role.md)。
 
 SQL 托管实例需要权限来读取 Azure AD，以成功完成通过安全组成员资格验证用户身份或创建新用户等任务。 为此，需要授予 SQL 托管实例读取 Azure AD 的权限。 可以使用 Azure 门户或 PowerShell 执行此操作。
 
@@ -216,7 +218,7 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 也可通过调用以下 CLI 命令来预配 SQL 托管实例的 Azure AD 管理员：
 
-| 命令 | 描述 |
+| 命令 | 说明 |
 | --- | --- |
 |[az sql mi ad-admin create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | 预配 SQL 托管实例（必须来自当前订阅）的 Azure Active Directory 管理员。 |
 |[az sql mi ad-admin delete](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | 删除 SQL 托管实例的 Azure Active Directory 管理员。 |
@@ -322,7 +324,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 可以通过调用以下 CLI 命令来预配 Azure AD 管理员：
 
-| 命令 | 描述 |
+| 命令 | 说明 |
 | --- | --- |
 |[az sql server ad-admin create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | 为托管 SQL 数据库或 Azure Synapse 的服务器预配 Azure Active Directory 管理员。 （必须来自当前订阅） |
 |[az sql server ad-admin delete](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | 为托管 SQL 数据库或 Azure Synapse 的服务器删除 Azure Active Directory 管理员。 |
@@ -446,11 +448,11 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 
 2. 在“用户名”框中，以 **username\@domain.com** 格式键入 Azure Active Directory 用户名。 用户名必须是来自 Azure Active Directory 的帐户，或者是来自托管域或联合域的帐户 Azure Active Directory。
 
-3. 在 "**密码**" 框中，为 Azure Active Directory 帐户或托管/联合域帐户键入你的用户密码。
+3. 在 " **密码** " 框中，为 Azure Active Directory 帐户或托管/联合域帐户键入你的用户密码。
 
     ![选择 AD 密码身份验证][12]
 
-4. 选择“选项”**** 按钮，在“连接属性”**** 页上的“连接到数据库”**** 框中，键入所要连接的用户数据库的名称。 （请参阅前一选项的图。）
+4. 选择“选项”按钮，在“连接属性”页上的“连接到数据库”框中，键入所要连接的用户数据库的名称。 （请参阅前一选项的图。）
 
 ### <a name="active-directory-interactive-authentication"></a>Active Directory 交互式身份验证
 
@@ -467,7 +469,7 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 若要使用集成的 Windows 身份验证，你的域的 Active Directory 必须与 Azure Active Directory 联合，或者应该是为传递或密码哈希身份验证配置为无缝单一登录的托管域。 有关详细信息，请参阅 [Azure Active Directory 无缝单一登录](../../active-directory/hybrid/how-to-connect-sso.md)。
 
 > [!NOTE]
-> 对于直通和密码哈希身份验证，不支持集成 Windows 身份验证的[MSAL.NET （客户端）](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)进行无缝单一登录。
+> MSAL.NET (用于集成 Windows 身份验证的[客户端) ](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki#roadmap)不支持传递和密码哈希身份验证的无缝单一登录。
 
 连接到数据库的客户端应用程序（或服务）必须运行在已使用用户的域凭据加入域的计算机上。
 
@@ -528,7 +530,7 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 
 ## <a name="troubleshoot-azure-ad-authentication"></a>Azure AD 身份验证疑难解答
 
-有关 Azure AD 身份验证问题的疑难解答指南，请参阅以下博客：<https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
+有关 Azure AD 身份验证问题的疑难解答指南，请参阅以下博客： <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -536,8 +538,8 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 - 有关数据库主体的详细信息，请参阅[主体](https://msdn.microsoft.com/library/ms181127.aspx)。
 - 有关数据库角色的详细信息，请参阅[数据库角色](https://msdn.microsoft.com/library/ms189121.aspx)。
 - 有关 SQL 数据库中的防火墙规则的详细信息，请参阅 [SQL 数据库防火墙规则](firewall-configure.md)。
-- 有关如何将 Azure AD guest 用户设置为 Azure AD 管理员的信息，请参阅[创建 Azure AD 来宾用户并将其设置为 Azure AD 管理员](authentication-aad-guest-users.md)。
-- 有关如何使用 Azure SQL 提供服务主体的信息，请参阅[使用 Azure AD 应用程序创建 Azure AD 用户](authentication-aad-service-principal-tutorial.md)
+- 有关如何将 Azure AD guest 用户设置为 Azure AD 管理员的信息，请参阅 [创建 Azure AD 来宾用户并将其设置为 Azure AD 管理员](authentication-aad-guest-users.md)。
+- 有关如何使用 Azure SQL 提供服务主体的信息，请参阅 [使用 Azure AD 应用程序创建 Azure AD 用户](authentication-aad-service-principal-tutorial.md)
 
 <!--Image references-->
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 40485014d819026c6fbc1f82da57c494f7a6a182
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: dd0a9bf69a3b5a6a17d91f0521bebd0fc78f606f
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272586"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566210"
 ---
 # <a name="security-alerts---a-reference-guide"></a>安全警报 - 参考指南
 
@@ -283,7 +283,6 @@ ms.locfileid: "88272586"
 | **来自异常位置的登录**             | 对 SQL Server 的访问模式发生了变化，有人从异常的地理位置登录到了服务器。 在某些情况下，警报会检测合法操作（发布新应用程序或开发人员维护）。 在其他情况下，警报会检测到恶意操作（前员工或外部攻击者）。                                                                                             | 利用                       | 中型   |
 | **潜在的 SQL 暴力攻击尝试**           | 出现异常多的使用不同凭据的失败登录尝试。 在某些情况下，警报会检测操作中的渗透测试。 在其他情况下，警报会检测暴力破解攻击。                                                                                                                                                                                                                      | 探测                            | 高     |
 | **潜在 SQL 注入**                     | 攻击者主动利用已确定的应用程序漏洞进行 SQL 注入攻击。 这意味着，攻击者正在尝试使用有漏洞的应用程序代码或存储过程注入恶意 SQL 语句。                                                                                                                                                                                                            | -                                  | 高     |
-| **潜在的不安全操作**                   | 已在 SQL Server 中执行通常在恶意会话中使用的高特权 SQL 命令。 建议默认禁用这些命令。 在某些情况下，警报会检测到合法操作（运行管理员脚本）。 在其他情况下，警报会检测到恶意操作（攻击者借助 SQL 信任破坏 Windows 层）。                                                                               | 执行                          | 高     |
 | **异常的导出位置**                     | SQL 导入和导出操作的导出存储目标发生了变化。 在某些情况下，警报会检测到合法操作（新的备份目标）。 在其他情况下，警报会检测到恶意操作（攻击者轻松地将外泄数据导出为文件）。                                                                                                                                                          | 外泄                       | 高     |
 |                                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                             |                                    |          |
 

@@ -9,15 +9,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 89e3bf95a6b048e5e97cfb151ef9302b70eac1c9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0989c31611b2f42c0219324fa517adc5c216c6c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77048555"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586599"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure 专用 HSM 部署体系结构
 
@@ -33,7 +33,7 @@ HSM 分布于 Microsoft 数据中心，并可以作为高度可用解决方案�
 * 美国东部 2
 * 美国西部
 * 美国中南部
-* 东南亚
+* Southeast Asia
 * 东亚
 * 印度中部
 * 印度南部

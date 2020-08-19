@@ -8,53 +8,53 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 08/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d2716c49c72674b53e52b021972a90cf89bd843a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 952659746bbb99108c6177166ad60ad2272cbce6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85397899"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88584931"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>通过 SendGrid 进行自定义电子邮件验证
 
-使用 Azure Active Directory B2C （Azure AD B2C）中的自定义电子邮件向注册使用你的应用程序的用户发送自定义电子邮件。 通过使用[DisplayControls](display-controls.md) （目前为预览版）和第三方电子邮件提供商 SendGrid，你可以使用自己的电子邮件模板，*从：* 地址和主题，以及支持本地化和自定义一次性密码（OTP）设置。
+使用 Azure Active Directory B2C (Azure AD B2C) 中的自定义电子邮件向注册使用你的应用程序的用户发送自定义电子邮件。 通过使用当前在预览版中的 [DisplayControls](display-controls.md) () 和第三方电子邮件提供商 SendGrid，你可以使用自己的电子邮件模板， *从：* 地址和主题，以及支持 (OTP) 设置的本地化和自定义一次性密码。
 
-自定义电子邮件验证要求使用第三方电子邮件提供程序，例如[SendGrid](https://sendgrid.com)、 [Mailjet](https://Mailjet.com)或[SparkPost](https://sparkpost.com)、自定义 REST API 或任何基于 HTTP 的电子邮件提供程序（包括你自己的）。 本文介绍如何设置使用 SendGrid 的解决方案。
+自定义电子邮件验证要求使用第三方电子邮件提供程序，例如 [SendGrid](https://sendgrid.com)、 [Mailjet](https://Mailjet.com)或 [SparkPost](https://sparkpost.com)、自定义 REST API 或任何基于 HTTP 的电子邮件提供程序 (包括你自己的) 。 本文介绍如何设置使用 SendGrid 的解决方案。
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="create-a-sendgrid-account"></a>创建 SendGrid 帐户
 
-如果还没有帐户，请首先设置 SendGrid 帐户（Azure 客户每月可解锁25000免费电子邮件）。 有关安装说明，请参阅[如何在 Azure 中使用 SendGrid 发送电子邮件](../sendgrid-dotnet-how-to-send-email.md)中的[创建 SendGrid 帐户](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account)部分。
+如果你还没有 SendGrid 帐户，请先设置一个帐户， (Azure 客户每月可解锁25000免费电子邮件) 。 有关安装说明，请参阅[如何在 Azure 中使用 SendGrid 发送电子邮件](../sendgrid-dotnet-how-to-send-email.md)中的[创建 SendGrid 帐户](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account)部分。
 
-请确保完成[创建 SENDGRID API 密钥](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key)的部分。 记录 API 密钥以便在后面的步骤中使用。
+请确保完成 [创建 SENDGRID API 密钥](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key)的部分。 记录 API 密钥以便在后面的步骤中使用。
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>创建 Azure AD B2C 策略密钥
 
 接下来，将 SendGrid API 密钥存储在 Azure AD B2C 策略密钥中，以供策略参考。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
 1. 请确保使用的是包含 Azure AD B2C 租户的目录。 选择顶部菜单中的“目录 + 订阅”筛选器，然后选择 Azure AD B2C 的目录。
 1. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C” 。
 1. 在“概述”页上选择“标识体验框架”。
 1. 选择“策略密钥”，然后选择“添加”。
-1. 对于**选项**，请选择 "**手动**"。
-1. 输入策略密钥的**名称**。 例如，`SendGridSecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
+1. 对于 **选项**，请选择 " **手动**"。
+1. 输入策略密钥的**名称**。 例如，`SendGridSecret` 。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 1. 在“机密”中，输入前面记录的应用程序机密。
 1. 对于“密钥用法”，请选择“签名” 。
 1. 选择“创建”。
 
 ## <a name="create-sendgrid-template"></a>创建 SendGrid 模板
 
-创建 SendGrid 帐户并将 SendGrid API 密钥存储在 Azure AD B2C 策略密钥中，创建 SendGrid[动态事务模板](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)。
+创建 SendGrid 帐户并将 SendGrid API 密钥存储在 Azure AD B2C 策略密钥中，创建 SendGrid [动态事务模板](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)。
 
-1. 在 SendGrid 站点上，打开 "[事务模板](https://sendgrid.com/dynamic_templates)" 页，然后选择 "**创建模板**"。
-1. 输入一个唯一的模板名称（如） `Verification email` ，然后选择 "**保存**"。
-1. 若要开始编辑新模板，请选择 "**添加版本**"。
-1. 选择 "**代码编辑器**"，然后**继续**。
+1. 在 SendGrid 站点上，打开 " [事务模板](https://sendgrid.com/dynamic_templates) " 页，然后选择 " **创建模板**"。
+1. 输入一个唯一的模板名称（如） `Verification email` ，然后选择 " **保存**"。
+1. 若要开始编辑新模板，请选择 " **添加版本**"。
+1. 选择 " **代码编辑器** "，然后 **继续**。
 1. 在 HTML 编辑器中，粘贴以下 HTML 模板或使用自己的模板。 `{{otp}}`和 `{{email}}` 参数将动态地替换为一次性密码值和用户电子邮件地址。
 
     ```HTML
@@ -151,16 +151,16 @@ ms.locfileid: "85397899"
     </html>
     ```
 
-1. 展开左侧的 "**设置**"，对于 "**电子邮件主题**"，输入 `{{subject}}` 。
-1. 选择 "**保存模板**"。
-1. 通过选择 "返回" 箭头返回到 "**事务模板**" 页。
-1. 记录创建的模板**ID** ，以便在后面的步骤中使用。 例如 `d-989077fbba9746e89f3f6411f596fb96`。 [添加声明转换](#add-the-claims-transformation)时，可以指定此 ID。
+1. 展开左侧的 " **设置** "，对于 " **电子邮件主题**"，输入 `{{subject}}` 。
+1. 选择 " **保存模板**"。
+1. 通过选择 "返回" 箭头返回到 " **事务模板** " 页。
+1. 记录创建的模板 **ID** ，以便在后面的步骤中使用。 例如，`d-989077fbba9746e89f3f6411f596fb96` 。 [添加声明转换](#add-the-claims-transformation)时，可以指定此 ID。
 
 ## <a name="add-azure-ad-b2c-claim-types"></a>添加 Azure AD B2C 声明类型
 
 在策略中，将以下声明类型添加到 `<ClaimsSchema>` 中的元素 `<BuildingBlocks>` 。
 
-这些声明类型是使用一次性密码（OTP）代码生成和验证电子邮件地址所必需的。
+这些声明类型是使用一次性密码 (OTP) 代码生成和验证电子邮件地址所必需的。
 
 ```xml
 <ClaimType Id="Otp">
@@ -183,11 +183,11 @@ ms.locfileid: "85397899"
 
 接下来，需要一个声明转换来输出 JSON 字符串声明，该声明将是发送到 SendGrid 的请求正文。
 
-JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimTypes 的点表示法中的 ID 定义。 点表示法中的数字表示数组。 值来自 InputClaims 的值和 InputParameters 的“Value”属性。 有关 JSON 声明转换的详细信息，请参阅[json 声明转换](json-transformations.md)。
+JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimTypes 的点表示法中的 ID 定义。 点表示法中的数字表示数组。 值来自 InputClaims 的值和 InputParameters 的“Value”属性。 有关 JSON 声明转换的详细信息，请参阅 [json 声明转换](json-transformations.md)。
 
 将以下声明转换添加到 `<ClaimsTransformations>` 中的元素 `<BuildingBlocks>` 。 对声明转换 XML 进行以下更新：
 
-* 将 `template_id` InputParameter 值更新为先前在[创建 SendGrid 模板](#create-sendgrid-template)中创建的 SendGrid 事务模板的 ID。
+* 将 `template_id` InputParameter 值更新为先前在 [创建 SendGrid 模板](#create-sendgrid-template)中创建的 SendGrid 事务模板的 ID。
 * 更新 `from.email` 地址值。 使用有效的电子邮件地址可帮助防止验证电子邮件被标记为垃圾邮件。
 * `personalizations.0.dynamic_template_data.subject`使用适用于你的组织的主题行更新主题行输入参数的值。
 
@@ -213,11 +213,14 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
 
 ## <a name="add-datauri-content-definition"></a>添加 DataUri 内容定义
 
-在中的声明转换下 `<BuildingBlocks>` ，添加以下[ContentDefinition](contentdefinitions.md)以引用版本2.0.0 数据 URI：
+在中的声明转换下 `<BuildingBlocks>` ，添加以下 [ContentDefinition](contentdefinitions.md) 以引用版本2.0.0 数据 URI：
 
 ```xml
 <ContentDefinitions>
  <ContentDefinition Id="api.localaccountsignup">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+  </ContentDefinition>
+  <ContentDefinition Id="api.localaccountpasswordreset">
     <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
   </ContentDefinition>
 </ContentDefinitions>
@@ -267,7 +270,7 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
 
 ## <a name="add-otp-technical-profiles"></a>添加 OTP 技术配置文件
 
-`GenerateOtp`技术配置文件为电子邮件地址生成代码。 `VerifyOtp`技术配置文件验证与电子邮件地址关联的代码。 你可以更改格式的配置以及一次性密码的过期时间。 有关 OTP 技术配置文件的详细信息，请参阅[定义一次性密码技术配置文件](one-time-password-technical-profile.md)。
+`GenerateOtp`技术配置文件为电子邮件地址生成代码。 `VerifyOtp`技术配置文件验证与电子邮件地址关联的代码。 你可以更改格式的配置以及一次性密码的过期时间。 有关 OTP 技术配置文件的详细信息，请参阅 [定义一次性密码技术配置文件](one-time-password-technical-profile.md)。
 
 将以下技术配置文件添加到 `<ClaimsProviders>` 元素。
 
@@ -311,7 +314,7 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
 
 ## <a name="add-a-rest-api-technical-profile"></a>添加 REST API 技术配置文件
 
-此 REST API 技术配置文件生成电子邮件内容（使用 SendGrid 格式）。 有关 RESTful 技术配置文件的详细信息，请参阅[定义 RESTful 技术配置文件](restful-technical-profile.md)。
+此 REST API 技术配置文件使用 SendGrid 格式) 生成 (电子邮件内容。 有关 RESTful 技术配置文件的详细信息，请参阅 [定义 RESTful 技术配置文件](restful-technical-profile.md)。
 
 对于 OTP 技术配置文件，请将以下技术配置文件添加到 `<ClaimsProviders>` 元素。
 
@@ -344,31 +347,22 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
 
 ## <a name="make-a-reference-to-the-displaycontrol"></a>引用控件
 
-在最后一步中，添加对所创建的控件的引用。 `LocalAccountSignUpWithLogonEmail`如果使用的是早期版本的 Azure AD B2C 策略，请将现有的自断言技术配置文件替换为以下项。 此技术配置文件 `DisplayClaims` 与对 "控件" 的引用一起使用。
+在最后一步中，添加对所创建的控件的引用。 `LocalAccountSignUpWithLogonEmail`将现有和 `LocalAccountDiscoveryUsingEmailAddress` 自断言技术配置文件替换为以下项。 如果你使用的是早期版本的 Azure AD B2C 策略。 这些技术配置文件 `DisplayClaims` 与对 "控件" 的引用一起使用。
 
-有关详细信息，请参阅[自断言技术配置文件](restful-technical-profile.md)和显示[控件](display-controls.md)。
+有关详细信息，请参阅 [自断言技术配置文件](restful-technical-profile.md) 和显示 [控件](display-controls.md)。
 
 ```xml
 <ClaimsProvider>
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
-      <DisplayName>Email signup</DisplayName>
-      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
-        <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
-        <Item Key="ContentDefinitionReferenceId">api.localaccountsignup</Item>
-        <Item Key="language.button_continue">Create</Item>
-        
         <!--OTP validation error messages-->
         <Item Key="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</Item>
         <Item Key="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</Item>
         <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
         <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
       </Metadata>
-      <InputClaims>
-        <InputClaim ClaimTypeReferenceId="email" />
-      </InputClaims>
       <DisplayClaims>
         <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
         <DisplayClaim ClaimTypeReferenceId="displayName" Required="true" />
@@ -377,17 +371,18 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
         <DisplayClaim ClaimTypeReferenceId="newPassword" Required="true" />
         <DisplayClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
       </DisplayClaims>
-      <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="email" Required="true" />
-        <OutputClaim ClaimTypeReferenceId="objectId" />
-        <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
-        <OutputClaim ClaimTypeReferenceId="authenticationSource" />
-        <OutputClaim ClaimTypeReferenceId="newUser" />
-      </OutputClaims>
-      <ValidationTechnicalProfiles>
-        <ValidationTechnicalProfile ReferenceId="AAD-UserWriteUsingLogonEmail" />
-      </ValidationTechnicalProfiles>
-      <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
+    </TechnicalProfile>
+    <TechnicalProfile Id="LocalAccountDiscoveryUsingEmailAddress">
+      <Metadata>
+        <!--OTP validation error messages-->
+        <Item Key="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</Item>
+        <Item Key="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</Item>
+        <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
+        <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
+      </Metadata>
+      <DisplayClaims>
+        <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
+      </DisplayClaims>
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
@@ -395,10 +390,10 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
 
 ## <a name="optional-localize-your-email"></a>可有可无本地化电子邮件
 
-若要本地化电子邮件，必须向 SendGrid 或电子邮件提供商发送已本地化的字符串。 例如，你可以本地化电子邮件主题、正文、你的代码消息或电子邮件签名。 为此，可以使用[GetLocalizedStringsTransformation](string-transformations.md)声明转换将本地化的字符串复制到声明类型。 `GenerateEmailRequestBody`生成 JSON 有效负载的声明转换使用包含本地化字符串的输入声明。
+若要本地化电子邮件，必须向 SendGrid 或电子邮件提供商发送已本地化的字符串。 例如，你可以本地化电子邮件主题、正文、你的代码消息或电子邮件签名。 为此，可以使用 [GetLocalizedStringsTransformation](string-transformations.md) 声明转换将本地化的字符串复制到声明类型。 `GenerateEmailRequestBody`生成 JSON 有效负载的声明转换使用包含本地化字符串的输入声明。
 
 1. 在策略中，定义以下字符串声明： subject、message、codeIntro 和签名。
-1. 定义[GetLocalizedStringsTransformation](string-transformations.md)声明转换，以将本地化字符串值替换为步骤1中的声明。
+1. 定义 [GetLocalizedStringsTransformation](string-transformations.md) 声明转换，以将本地化字符串值替换为步骤1中的声明。
 1. 更改 `GenerateEmailRequestBody` 声明转换，将输入声明用于以下 XML 代码片段。
 1. 将 SendGrid 模板更新为使用动态参数来替换所有将通过 Azure AD B2C 本地化的字符串。
 
@@ -431,7 +426,7 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
     </ClaimsTransformation>
     ```
 
-1. 添加以下[本地化](localization.md)元素。
+1. 添加以下 [本地化](localization.md) 元素。
 
     ```xml
     <Localization Enabled="true">
@@ -439,7 +434,7 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
         <SupportedLanguage>en</SupportedLanguage>
         <SupportedLanguage>es</SupportedLanguage>
       </SupportedLanguages>
-      <LocalizedResources Id="api.localaccountsignup.en">
+      <LocalizedResources Id="api.custom-email.en">
         <LocalizedStrings>
           <!--Email template parameters-->
           <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Contoso account email verification code</LocalizedString>
@@ -448,7 +443,7 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
           <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_signature">Sincerely</LocalizedString>
         </LocalizedStrings>
       </LocalizedResources>
-      <LocalizedResources Id="api.localaccountsignup.es">
+      <LocalizedResources Id="api.custom-email.es">
         <LocalizedStrings>
           <!--Email template parameters-->
           <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Código de verificación del correo electrónico de la cuenta de Contoso</LocalizedString>
@@ -460,19 +455,28 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
     </Localization>
     ```
 
-1. 通过更新[ContentDefinitions](contentdefinitions.md)元素添加对 LocalizedResources 元素的引用。
+1. 通过更新 [ContentDefinitions](contentdefinitions.md) 元素添加对 LocalizedResources 元素的引用。
 
     ```XML
-    <ContentDefinition Id="api.localaccountsignup">
-      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
-      <LocalizedResourcesReferences MergeBehavior="Prepend">
-        <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
-        <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
-      </LocalizedResourcesReferences>
-    </ContentDefinition>
+    <ContentDefinitions>
+      <ContentDefinition Id="api.localaccountsignup">
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+        <LocalizedResourcesReferences MergeBehavior="Prepend">
+          <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.custom-email.en" />
+          <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.custom-email.es" />
+        </LocalizedResourcesReferences>
+      </ContentDefinition>
+      <ContentDefinition Id="api.localaccountpasswordreset">
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+        <LocalizedResourcesReferences MergeBehavior="Prepend">
+          <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.custom-email.en" />
+          <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.custom-email.es" />
+        </LocalizedResourcesReferences>
+      </ContentDefinition>
+    </ContentDefinitions>
     ```
 
-1. 最后，将以下输入声明转换添加到 LocalAccountSignUpWithLogonEmail 技术配置文件。
+1. 最后，将以下输入声明转换添加到 `LocalAccountSignUpWithLogonEmail` 和 `LocalAccountDiscoveryUsingEmailAddress` 技术配置文件。
 
     ```XML
     <InputClaimsTransformations>
@@ -485,4 +489,4 @@ JSON 对象的结构由 InputClaims 的 InputParameters 和 TransformationClaimT
 可在 GitHub 上找到自定义电子邮件验证策略的示例：
 
 - [自定义电子邮件验证-DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
-- 有关使用自定义 REST API 或任何基于 HTTP 的 SMTP 电子邮件提供程序的信息，请参阅[在 Azure AD B2C 自定义策略中定义 RESTful 技术配置文件](restful-technical-profile.md)。
+- 有关使用自定义 REST API 或任何基于 HTTP 的 SMTP 电子邮件提供程序的信息，请参阅 [在 Azure AD B2C 自定义策略中定义 RESTful 技术配置文件](restful-technical-profile.md)。

@@ -2,29 +2,25 @@
 title: 教程：为 Mixpanel 配置自动用户预配 Azure Active Directory |Microsoft Docs
 description: 了解如何自动将用户 Azure AD 帐户预配到 Mixpanel 以及取消其预配。
 services: active-directory
-documentationcenter: ''
 author: Zhchia
 writer: Zhchia
-manager: beatrizd
-ms.assetid: 565cdc45-4377-4b70-870b-64edf3dcc92c
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: Zhchia
-ms.openlocfilehash: b47d377e710d1c56f560b650e34fa67cce6e5b21
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c17d0d927fab86774f25a3ada1fbb3e675957af8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926308"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552499"
 ---
 # <a name="tutorial-configure-mixpanel-for-automatic-user-provisioning"></a>教程：为 Mixpanel 配置自动用户预配
 
-本教程介绍了需要在 Mixpanel 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组并取消其预配到[Mixpanel](https://mixpanel.com/pricing/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程介绍了需要在 Mixpanel 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置自动用户预配。 配置后，Azure AD 使用 Azure AD 预配服务自动设置用户和组并取消其预配到 [Mixpanel](https://mixpanel.com/pricing/) 。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -33,7 +29,7 @@ ms.locfileid: "87926308"
 > * 当用户不再需要访问权限时，删除 Mixpanel 中的用户
 > * 使用户属性在 Azure AD 和 Mixpanel 之间保持同步
 > * 在 Mixpanel 中预配组和组成员身份
-> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/mixpanel-tutorial)到 Mixpanel (建议) 
+> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/mixpanel-tutorial) 到 Mixpanel (建议) 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -47,10 +43,10 @@ ms.locfileid: "87926308"
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
 1. 了解[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
 2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
-3. 确定要[在 Azure AD 与 Mixpanel 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
+3. 确定要 [在 Azure AD 与 Mixpanel 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
 
-## <a name="step-2-configure-mixpanel-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Mixpanel 以支持 Azure AD 的预配
-1. 若要设置 SSO 并申报域，请参阅[此](https://help.mixpanel.com/hc/articles/360036428871-Single-Sign-On)。
+## <a name="step-2-configure-mixpanel-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Mixpanel 以支持 Azure AD 的预配
+1. 若要设置 SSO 并申报域，请参阅 [此](https://help.mixpanel.com/hc/articles/360036428871-Single-Sign-On)。
 2. 之后，你将需要在你的组织设置的 "访问安全" 部分的 "SCIM" 选项卡中生成 SCIM 标记。
 ![Mixpanel 标记](./media/mixpanel-provisioning-tutorial/mixpanelscim.png)
 
@@ -63,7 +59,7 @@ ms.locfileid: "87926308"
 
 使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
 
-* 将用户和组分配到 Mixpanel 时，必须选择 "**默认" 访问权限**以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
+* 将用户和组分配到 Mixpanel 时，必须选择 " **默认" 访问权限**以外的其他角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
 
 * 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
@@ -90,7 +86,7 @@ ms.locfileid: "87926308"
 
     ![“预配”选项卡](common/provisioning-automatic.png)
 
-5. 在 "**管理员凭据**" 部分中，输入你的 MIXPANEL**租户 URL**和**机密令牌**。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 Mixpanel。 如果连接失败，请确保 Mixpanel 帐户具有管理员权限，然后重试。
+5. 在 " **管理员凭据** " 部分中，输入你的 MIXPANEL **租户 URL** 和 **机密令牌**。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Mixpanel。 如果连接失败，请确保 Mixpanel 帐户具有管理员权限，然后重试。
 
     ![预配](./media/mixpanel-provisioning-tutorial/provisioning.png)
 
@@ -100,18 +96,18 @@ ms.locfileid: "87926308"
 
 7. 选择“保存”。
 
-8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Mixpanel**"。
+8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Mixpanel**"。
 
-9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Mixpanel 的用户属性。 选为 "**匹配**" 属性的特性用于匹配 Mixpanel 中的用户帐户以执行更新操作。 如果选择更改[匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 Mixpanel API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
+9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Mixpanel 的用户属性。 选为 " **匹配** " 属性的特性用于匹配 Mixpanel 中的用户帐户以执行更新操作。 如果选择更改 [匹配的目标属性](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)，将需要确保 Mixpanel API 支持基于该属性筛选用户。 选择“保存”按钮以提交任何更改。
 
    |Attribute|类型|
    |---|---|
    |userName|字符串|
-   |displayName|字符串|
+   |displayName|String|
 
-10. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 组同步到 Mixpanel**"。
+10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 组同步到 Mixpanel**"。
 
-11. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Mixpanel 的组属性。 选为 "**匹配**" 属性的特性用于匹配 Mixpanel 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
+11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Mixpanel 的组属性。 选为 " **匹配** " 属性的特性用于匹配 Mixpanel 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
       |Attribute|类型|
       |---|---|

@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 107cd113645a2cbd4b452f9350fa67d734ee6df8
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: f65aa4b307108682fa6e190a229e9d82b6efdec0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143645"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553195"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity-preview"></a>使用托管标识设置到 Cosmos DB 数据库的索引器连接（预览）
 
 > [!IMPORTANT] 
-> 对于使用托管标识设置到数据源的连接的支持目前处于封闭的公开预览阶段。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。
-> 可以填写[此表单](https://aka.ms/azure-cognitive-search/mi-preview-request)来请求访问预览版。
+> 目前提供了有关使用托管标识建立与数据源的连接的支持。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。
 
 本页描述如何使用托管标识设置到 Azure Cosmos DB 数据库的索引器连接，而不是在数据源对象连接字符串中提供凭据。
 
@@ -58,11 +57,9 @@ ms.locfileid: "86143645"
 
 ### <a name="3---create-the-data-source"></a>3 - 创建数据源
 
-**数据源**指定要编制索引的数据、凭据和用于识别数据更改（如修改或删除了集合内的文档）的策略。 数据源定义为独立的资源，以便它可以被多个索引器使用。
+[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)、Azure 门户和[.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)支持托管标识连接字符串。 下面的示例演示如何使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 和托管标识连接字符串创建数据源以索引 Cosmos DB 的数据。 对于 REST API、.NET SDK 和 Azure 门户，托管标识连接字符串格式是相同的。
 
-使用托管标识对数据源进行身份验证时，凭据将不包括帐户密钥。
-
-如何使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 创建 Cosmos DB 数据源对象的示例：
+使用托管标识进行身份验证时， **凭据** 将不包括帐户密钥。
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -85,7 +82,7 @@ api-key: [Search service admin key]
 
 请求正文包含数据源定义，其中应包括以下字段：
 
-| 字段   | 说明 |
+| 字段   | 描述 |
 |---------|-------------|
 | name | 必需。 选择任意名称来表示你的数据源对象。 |
 |type| 必需。 必须是 `cosmosdb`。 |
@@ -93,8 +90,6 @@ api-key: [Search service admin key]
 | **容器** | 包含下列元素： <br/>**名称**：必需。 指定要编制索引的数据库集合的 ID。<br/>**查询**：可选。 可以指定一个查询来将一个任意 JSON 文档平整成 Azure 认知搜索可编制索引的平面架构。<br/>对于 MongoDB API、Gremlin API 和 Cassandra API，不支持查询。 |
 | **dataChangeDetectionPolicy** | 建议 |
 |**dataDeletionDetectionPolicy** | 可选 |
-
-Azure 门户和 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) 也支持托管标识连接字符串。 Azure 门户需要一个功能标志，在使用此页顶部的链接注册预览版时，系统将提供该标志。 
 
 ### <a name="4---create-the-index"></a>4 - 创建索引
 

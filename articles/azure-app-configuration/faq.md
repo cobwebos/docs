@@ -1,18 +1,18 @@
 ---
 title: Azure 应用配置常见问题
-description: 有关 Azure 应用配置的常见问题
+description: 阅读常见问题解答 (常见问题的答案) 有关 Azure 应用配置，例如它与 Azure Key Vault 的不同之处。
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 25187fd055f40e8b32d840ead2a9c54882446b88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1483230313b9e1b8e59cafea478b14ba0dfcc70
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80348790"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587338"
 ---
 # <a name="azure-app-configuration-faq"></a>Azure 应用配置常见问题
 
@@ -37,7 +37,7 @@ ms.locfileid: "80348790"
 
 尽管应用配置提供强化的安全性，但 Key Vault 仍是存储应用程序机密的最佳位置。 Key Vault 提供硬件级别的加密、精细的访问策略和管理操作，如证书轮换。
 
-你可以创建引用存储在 Key Vault 中的密钥的应用配置值。 有关详细信息，请参阅[在 ASP.NET Core 应用中使用 Key Vault 引用](./use-key-vault-references-dotnet-core.md)。
+你可以创建引用存储在 Key Vault 中的密钥的应用配置值。 有关详细信息，请参阅 [在 ASP.NET Core 应用中使用 Key Vault 引用](./use-key-vault-references-dotnet-core.md)。
 
 ## <a name="does-app-configuration-encrypt-my-data"></a>应用配置是否对数据进行加密？
 
@@ -45,7 +45,7 @@ ms.locfileid: "80348790"
 
 ## <a name="how-is-app-configuration-different-from-azure-app-service-settings"></a>应用配置与 Azure App Service 设置有何不同？
 
-Azure App Service 允许你为每个应用服务实例定义应用设置。 这些设置作为环境变量传递给应用程序代码。 如果需要，可以将设置与特定的部署槽相关联。 有关详细信息，请参阅[配置应用设置](/azure/app-service/configure-common#configure-app-settings)。
+Azure App Service 允许你为每个应用服务实例定义应用设置。 这些设置作为环境变量传递给应用程序代码。 如果需要，可以将设置与特定的部署槽相关联。 有关详细信息，请参阅 [配置应用设置](/azure/app-service/configure-common#configure-app-settings)。
 
 相反，Azure 应用配置允许您定义可在多个应用之间共享的设置。 这包括应用服务中运行的应用以及其他平台。 应用程序代码通过适用于 .NET 和 Java 的配置提供程序、通过 Azure SDK 或通过 REST Api 直接访问这些设置。
 
@@ -55,15 +55,15 @@ Azure App Service 允许你为每个应用服务实例定义应用设置。 这�
 
 单个键值项的限制为 10 KB。
 
-## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>如何为多个环境（测试、过渡、生产等）存储配置？
+## <a name="how-should-i-store-configurations-for-multiple-environments-test-staging-production-and-so-on"></a>如何将多个环境的配置存储 (测试、过渡、生产等) ？
 
 可以在每个商店级别控制谁可以访问应用配置。 对于需要不同权限的每个环境，请使用单独的存储区。 此方法可提供最佳的安全隔离。
 
-如果不需要在环境之间进行安全隔离，可以使用标签来区分配置值。 [使用标签为不同环境启用不同配置](./howto-labels-aspnet-core.md)提供了一个完整的示例。
+如果不需要在环境之间进行安全隔离，可以使用标签来区分配置值。 [使用标签为不同环境启用不同配置](./howto-labels-aspnet-core.md) 提供了一个完整的示例。
 
 ## <a name="what-are-the-recommended-ways-to-use-app-configuration"></a>使用应用配置的建议方法有哪些？
 
-请参阅[最佳实践](./howto-best-practices.md)。
+请参阅 [最佳实践](./howto-best-practices.md)。
 
 ## <a name="how-much-does-app-configuration-cost"></a>应用配置的成本是多少？
 
@@ -97,15 +97,15 @@ Azure App Service 允许你为每个应用服务实例定义应用设置。 这�
 
 你可以随时从免费层升级到标准层。
 
-不能将存储从标准层降级到免费层。 可以在免费层中创建新的存储，然后将[配置数据导入到该存储](howto-import-export-data.md)中。
+不能将存储从标准层降级到免费层。 可以在免费层中创建新的存储，然后将 [配置数据导入到该存储](howto-import-export-data.md)中。
 
 ## <a name="are-there-any-limits-on-the-number-of-requests-made-to-app-configuration"></a>对应用配置发出的请求数是否有任何限制？
 
 免费层中的配置存储每天限制为1000请求。 当请求速率超过每小时20000请求时，标准层中的配置存储可能会遇到临时限制。
 
-当存储达到其限制时，它将为所有发出的请求返回 HTTP 状态代码429，直到时间段过期。 `retry-after-ms`响应中的标头在重试请求之前提供建议的等待时间（以毫秒为单位）。
+当存储达到其限制时，它将为所有发出的请求返回 HTTP 状态代码429，直到时间段过期。 `retry-after-ms`响应中的标头在重试请求之前，提供 (以毫秒为单位的建议等待时间) 。
 
-如果你的应用程序定期遇到 HTTP 状态代码429响应，请考虑重新设计它以减少发出的请求数。 有关详细信息，请参阅[减少对应用配置发出的请求](./howto-best-practices.md#reduce-requests-made-to-app-configuration)
+如果你的应用程序定期遇到 HTTP 状态代码429响应，请考虑重新设计它以减少发出的请求数。 有关详细信息，请参阅 [减少对应用配置发出的请求](./howto-best-practices.md#reduce-requests-made-to-app-configuration)
 
 ## <a name="my-application-receives-http-status-code-429-responses-why"></a>我的应用程序收到 HTTP 状态代码429响应。 为什么？
 
@@ -120,11 +120,11 @@ Azure App Service 允许你为每个应用服务实例定义应用设置。 这�
 
 ## <a name="how-can-i-receive-announcements-on-new-releases-and-other-information-related-to-app-configuration"></a>如何收到有关新版本以及与应用配置相关的其他信息的公告？
 
-订阅[GitHub 公告](https://github.com/Azure/AppConfiguration-Announcements)存储库。
+订阅 [GitHub 公告](https://github.com/Azure/AppConfiguration-Announcements)存储库。
 
 ## <a name="how-can-i-report-an-issue-or-give-a-suggestion"></a>如何报告问题或提出建议？
 
-你可以直接在[GitHub](https://github.com/Azure/AppConfiguration/issues)上联系我们。
+你可以直接在 [GitHub](https://github.com/Azure/AppConfiguration/issues)上联系我们。
 
 ## <a name="next-steps"></a>后续步骤
 

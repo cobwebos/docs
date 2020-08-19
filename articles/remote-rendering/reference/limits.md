@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 5c4c6be7c8a6287c5a8ec6a60121751ff9fc0dc9
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: af935aeaaeee11ab50b327b7f7b5b77246cb974b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88509221"
+ms.locfileid: "88566040"
 ---
 # <a name="limitations"></a>限制
 
@@ -46,7 +46,6 @@ ms.locfileid: "88509221"
 
 **Windows 10 桌面**
 
-* UWP/x86 是唯一受支持的 UWP 平台。 不支持 UWP/x64。
 * Win32/x64 是唯一受支持的 Win32 平台。 Win32/x86 不受支持。
 
 **Hololens 2**

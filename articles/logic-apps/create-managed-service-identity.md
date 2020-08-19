@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: f9c5de4fb4e38d3f9ccb79c89be988fe0bbebc3c
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 95d892bf7a0c0e395289d4a5535cd9b6b789b055
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760288"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565921"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的托管标识对 Azure 资源的访问进行身份验证
 
@@ -33,7 +33,7 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 
 ## <a name="prerequisites"></a>先决条件
 
-* Azure 订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。 托管标识和需要访问的目标 Azure 资源必须使用相同的 Azure 订阅。
+* Azure 帐户和订阅。 如果没有订阅，可以[注册免费的 Azure 帐户](https://azure.microsoft.com/free/)。 托管标识和需要访问的目标 Azure 资源必须使用相同的 Azure 订阅。
 
 * 若要为托管标识提供对 Azure 资源的访问权限，需要为该标识向目标资源添加一个角色。 若要添加角色，你需要 [Azure AD 管理员权限](../active-directory/users-groups-roles/directory-assign-admin-roles.md)，可以将角色分配给相应的 Azure AD 租户中的标识。
 
@@ -358,7 +358,7 @@ Azure 逻辑应用支持[系统分配的](../active-directory/managed-identities
 
    例如，HTTP 触发器或操作可使用为逻辑应用启用的系统分配的标识。 通常，HTTP 触发器或操作使用这些属性来指定要访问的资源或实体：
 
-   | properties | 必选 | 说明 |
+   | properties | 必须 | 说明 |
    |----------|----------|-------------|
    | **方法** | 是 | 要运行的操作所使用的 HTTP 方法 |
    | **URI** | 是 | 用于访问目标 Azure 资源或实体的终结点 URL。 URI 语法通常包含 Azure 资源或服务的[资源 ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)。 |

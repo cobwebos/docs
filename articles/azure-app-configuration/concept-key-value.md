@@ -1,23 +1,23 @@
 ---
 title: 了解 Azure 应用配置键值存储
-description: 了解配置数据存储在 Azure 应用配置中的方式。
+description: 了解 Azure 应用配置中的键-值存储，将配置数据存储为键值。 键-值为应用程序设置的表示形式。
 author: lisaguthrie
 ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
-ms.openlocfilehash: 9a0ed747ea0c894214a633bdbc8141e95e95b5fb
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: b1998532c3d9e4272d91280d57d9ea2f6e7a262c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830030"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586386"
 ---
 # <a name="keys-and-values"></a>键和值
 
 Azure 应用配置将配置数据存储为键值。 键-值是开发人员使用的应用程序设置的简单而灵活的表示形式。
 
-## <a name="keys"></a>键
+## <a name="keys"></a>密钥
 
 键用作键值的标识符，用于存储和检索相应的值。 使用字符分隔符（如 `/` 或 `:`）将键组织到分层命名空间中是一种常见做法。 使用最适合你的应用程序的约定。 应用配置将密钥视为一个整体。 不会解析键以弄清楚其名字是如何构成的，也不会强制执行任何规则。
 
@@ -28,7 +28,7 @@ Azure 应用配置将配置数据存储为键值。 键-值是开发人员使用
     AppName:Service2:ApiEndpoint
 ```
 
-在应用程序框架中使用配置数据可能会为键值指定特定的命名方案。 例如，Java 春季 Cloud framework 定义了 `Environment` 向弹簧应用程序提供设置的资源。  这些参数由包括*应用程序名称*和*配置文件*的变量参数化。 Spring Cloud 相关配置数据的键通常以这两个元素开头，由一个分隔符分开。
+在应用程序框架中使用配置数据可能会为键值指定特定的命名方案。 例如，Java 春季 Cloud framework 定义了 `Environment` 向弹簧应用程序提供设置的资源。  这些参数由包括 *应用程序名称* 和 *配置文件*的变量参数化。 Spring Cloud 相关配置数据的键通常以这两个元素开头，由一个分隔符分开。
 
 存储在应用配置中的密钥是区分大小写的、基于 unicode 的字符串。 “app1”和“App1”键在应用程序配置存储区中是有所区分的****。 在应用程序中使用配置设置时，请记住这一点，因为有些框架处理配置键时不区分大小写。 不建议使用 case 来区分键。
 
@@ -61,7 +61,7 @@ Azure 应用配置将配置数据存储为键值。 键-值是开发人员使用
 使用标签可创建键值的多个版本。 例如，可以在标签中输入应用程序版本号或 Git 提交 ID，以标识与特定软件版本关联的键值。
 
 > [!NOTE]
-> 如果正在查找更改版本，则应用配置会自动保留在过去特定时间段内发生的键值的所有更改。 有关更多详细信息，请参阅[时间点快照](./concept-point-time-snapshot.md)。
+> 如果正在查找更改版本，则应用配置会自动保留在过去特定时间段内发生的键值的所有更改。 有关更多详细信息，请参阅 [时间点快照](./concept-point-time-snapshot.md) 。
 
 ### <a name="query-key-values"></a>查询键-值
 
@@ -72,7 +72,7 @@ Azure 应用配置将配置数据存储为键值。 键-值是开发人员使用
 | 省略 `key` 或 `key=*` | 匹配所有密钥 |
 | `key=abc` | 完全匹配键名称 abc**** |
 | `key=abc*` | 匹配以 abc 开头的密钥名称**** |
-| `key=abc,xyz` | 匹配项名称**abc**或**xyz**。 限5个 Csv |
+| `key=abc,xyz` | 匹配项名称 **abc** 或 **xyz**。 限5个 Csv |
 
 还可以包含以下标签模式：
 
@@ -92,7 +92,7 @@ Azure 应用配置将配置数据存储为键值。 键-值是开发人员使用
 分配给键的值也是 unicode 字符串。 可以将所有 unicode 字符用于值。
 
 ### <a name="use-content-type"></a>使用 Content-type
-应用配置中的每个键-值都具有 content 类型属性。 您可以选择使用此属性将有关值类型的信息存储在可帮助您的应用程序正确处理的键值中。 您可以使用任何格式作为 content-type。 应用配置使用[媒体类型]( https://www.iana.org/assignments/media-types/media-types.xhtml) (也称为 MIME 类型) 用于内置数据类型，例如功能标志、Key Vault 引用和 JSON 键-值。
+应用配置中的每个键-值都具有 content 类型属性。 您可以选择使用此属性将有关值类型的信息存储在可帮助您的应用程序正确处理的键值中。 您可以使用任何格式作为 content-type。 应用配置使用 [媒体类型]( https://www.iana.org/assignments/media-types/media-types.xhtml) (也称为 MIME 类型) 用于内置数据类型，例如功能标志、Key Vault 引用和 JSON 键-值。
 
 ## <a name="next-steps"></a>后续步骤
 

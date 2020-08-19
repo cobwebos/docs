@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c57f23a5cad2f47311b54728d576eb810ad88a4
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 3c4869859e11cb6c0cc868ec9deacb3e5cb972c6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506016"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586564"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>在 Azure AD 的权利管理中添加连接的组织
 
@@ -131,6 +131,10 @@ Azure AD 目录或域中的用户进行身份验证的方式取决于身份验�
     目前，只有在没有连接的用户的情况下，才能删除连接的组织。
 
     ![连接的组织 "删除" 按钮](./media/entitlement-management-organization/organization-delete.png)
+
+## <a name="managing-a-connected-organization-programmatically"></a>以编程方式管理连接的组织
+
+你还可以使用 Microsoft Graph 创建、列出、更新和删除连接的组织。 具有具有委托权限的应用程序的相应角色中的用户 `EntitlementManagement.ReadWrite.All` 可以调用 API 来管理 [connectedOrganization](https://docs.microsoft.com/graph/api/resources/connectedorganization?view=graph-rest-beta) 对象和为其设置主办方。
 
 ## <a name="next-steps"></a>后续步骤
 

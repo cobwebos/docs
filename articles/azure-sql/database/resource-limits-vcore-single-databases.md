@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 07/21/2020
-ms.openlocfilehash: 64a21c0d0edcd035bdf42c3b17c5f2c0131dabfa
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: bb69d48fe4e65d0fc27db027aecab0f1a745e8d5
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87117027"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566176"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>使用 vCore 购买模型的单一数据库的资源限制
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -58,7 +58,7 @@ ms.locfileid: "87117027"
 |读取横向扩展|空值|空值|空值|空值|空值|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
 ### <a name="gen5-compute-generation-part-2"></a>第 5 代计算（第 2 部分）
 
@@ -81,12 +81,12 @@ ms.locfileid: "87117027"
 |最大并发会话数|30,000|30,000|30,000|30,000|
 |副本数|1|1|1|1|
 |Multi-AZ|空值|空值|空值|空值|
-|读取横向扩展|空值|空值|空值|不适用|
+|读取横向扩展|空值|空值|空值|空值|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
-### <a name="gen5-compute-generation-part-3"></a>Gen5 计算生成（第3部分）
+### <a name="gen5-compute-generation-part-3"></a>Gen5 计算生成 (第3部分) 
 
 |计算大小（服务目标）|GP_S_Gen5_18|GP_S_Gen5_20|GP_S_Gen5_24|GP_S_Gen5_32|GP_S_Gen5_40|
 |:--- | --: |--: |--: |--: |--:|
@@ -95,9 +95,9 @@ ms.locfileid: "87117027"
 |最小-最大内存 (GB)|6.75-54|7.5-60|9-72|12-96|15-120|
 |最小-最大自动暂停延迟（分钟）|60-10080|60-10080|60-10080|60-10080|60-10080|
 |列存储支持|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|不可用|不可用|不可用|不可用|空值|
+|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|
 |最大数据大小 (GB)|3072|3072|4096|4096|4096|
-|最大日志大小 (GB)|922|922|1229|1229|1229|
+|最大日志大小 (GB)|922|922|1024|1024|1024|
 |TempDB 最大数据大小 (GB)|576|640|768|1024|1280|
 |存储类型|远程 SSD|远程 SSD|远程 SSD|远程 SSD|远程 SSD|
 |IO 延迟（近似）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|
@@ -106,11 +106,11 @@ ms.locfileid: "87117027"
 |最大并发工作线程数（请求数）|1350|1500|1800|2400|3000|
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|
 |副本数|1|1|1|1|1|
-|Multi-AZ|不可用|不可用|不可用|不可用|不可用|
-|读取横向扩展|空值|不可用|不可用|不可用|不可用|
+|Multi-AZ|空值|空值|空值|空值|空值|
+|读取横向扩展|空值|空值|空值|空值|空值|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
 
 ## <a name="hyperscale---provisioned-compute---gen4"></a>超大规模 - 预配的计算 - Gen4
@@ -124,7 +124,7 @@ ms.locfileid: "87117027"
 |内存 (GB)|7|14|21|28|35|42|
 |[RBPEX](service-tier-hyperscale.md#compute) 大小|3 倍内存|3 倍内存|3 倍内存|3 倍内存|3 倍内存|3 倍内存|
 |列存储支持|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|空值|不可用|不可用|不可用|不可用|空值|
+|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|
 |最大数据大小 (TB)|100 |100 |100 |100 |100 |100|
 |最大日志大小 (TB)|无限制 |无限制 |无限制 |无限制 |无限制 |无限制 |
 |TempDB 最大数据大小 (GB)|32|64|96|128|160|192|
@@ -135,12 +135,12 @@ ms.locfileid: "87117027"
 |最大并发工作线程数（请求数）|200|400|600|800|1000|1200|
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|
 |次要副本|0-4|0-4|0-4|0-4|0-4|0-4|
-|Multi-AZ|空值|不可用|不可用|不可用|不可用|不可用|
+|Multi-AZ|空值|空值|空值|空值|空值|空值|
 |读取横向扩展|是|是|是|是|是|是|
 |备份存储保留期|7 天|7 天|7 天|7 天|7 天|7 天|
 |||
 
-\*除了本地 SSD IO 以外，工作负载还将使用远程[页服务器](service-tier-hyperscale.md#page-server)io。 有效 IOPS 将取决于工作负荷。 有关详细信息，请参阅[数据 Io 调控](resource-limits-logical-server.md#resource-governance)和[资源利用率统计信息中的数据 io](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)。
+\* 除了本地 SSD IO 以外，工作负载还将使用远程 [页服务器](service-tier-hyperscale.md#page-server) io。 有效 IOPS 将取决于工作负荷。 有关详细信息，请参阅 [数据 Io 调控](resource-limits-logical-server.md#resource-governance)和 [资源利用率统计信息中的数据 io](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)。
 
 ### <a name="gen4-compute-generation-part-2"></a>第 4 代计算（第 2 部分）
 
@@ -151,7 +151,7 @@ ms.locfileid: "87117027"
 |内存 (GB)|49|56|63|70|112|159.5|
 |[RBPEX](service-tier-hyperscale.md#compute) 大小|3 倍内存|3 倍内存|3 倍内存|3 倍内存|3 倍内存|3 倍内存|
 |列存储支持|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|不可用|不可用|不可用|不可用|不可用|空值|
+|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|
 |最大数据大小 (TB)|100 |100 |100 |100 |100 |100 |
 |最大日志大小 (TB)|无限制 |无限制 |无限制 |无限制 |无限制 |无限制 |
 |TempDB 最大数据大小 (GB)|224|256|288|320|512|768|
@@ -162,12 +162,12 @@ ms.locfileid: "87117027"
 |最大并发工作线程数（请求数）|1400|1600|1800|2000|3200|4800|
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|
 |次要副本|0-4|0-4|0-4|0-4|0-4|0-4|
-|Multi-AZ|空值|不可用|不可用|不可用|不可用|空值|
+|Multi-AZ|空值|空值|空值|空值|空值|空值|
 |读取横向扩展|是|是|是|是|是|是|
 |备份存储保留期|7 天|7 天|7 天|7 天|7 天|7 天|
 |||
 
-\*除了本地 SSD IO 以外，工作负载还将使用远程[页服务器](service-tier-hyperscale.md#page-server)io。 有效 IOPS 将取决于工作负荷。 有关详细信息，请参阅[数据 Io 调控](resource-limits-logical-server.md#resource-governance)和[资源利用率统计信息中的数据 io](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)。
+\* 除了本地 SSD IO 以外，工作负载还将使用远程 [页服务器](service-tier-hyperscale.md#page-server) io。 有效 IOPS 将取决于工作负荷。 有关详细信息，请参阅 [数据 Io 调控](resource-limits-logical-server.md#resource-governance)和 [资源利用率统计信息中的数据 io](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)。
 
 ## <a name="hyperscale---provisioned-compute---gen5"></a>超大规模 - 预配的计算 - Gen5
 
@@ -180,7 +180,7 @@ ms.locfileid: "87117027"
 |内存 (GB)|10.4|20.8|31.1|41.5|51.9|62.3|72.7|
 |[RBPEX](service-tier-hyperscale.md#compute) 大小|3 倍内存|3 倍内存|3 倍内存|3 倍内存|3 倍内存|3 倍内存|3 倍内存|
 |列存储支持|是|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|空值|不可用|不可用|不可用|不可用|不可用|空值|
+|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|空值|
 |最大数据大小 (TB)|100 |100 |100 |100 |100 |100 |100|
 |最大日志大小 (TB)|无限制 |无限制 |无限制 |无限制 |无限制 |无限制 |无限制 |
 |TempDB 最大数据大小 (GB)|64|128|192|256|320|384|448|
@@ -191,12 +191,12 @@ ms.locfileid: "87117027"
 |最大并发工作线程数（请求数）|200|400|600|800|1000|1200|1400|
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |次要副本|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
-|Multi-AZ|空值|不可用|不可用|不可用|不可用|不可用|空值|
+|Multi-AZ|空值|空值|空值|空值|空值|空值|空值|
 |读取横向扩展|是|是|是|是|是|是|是|
 |备份存储保留期|7 天|7 天|7 天|7 天|7 天|7 天|7 天|
 |||
 
-\*除了本地 SSD IO 以外，工作负载还将使用远程[页服务器](service-tier-hyperscale.md#page-server)io。 有效 IOPS 将取决于工作负荷。 有关详细信息，请参阅[数据 Io 调控](resource-limits-logical-server.md#resource-governance)和[资源利用率统计信息中的数据 io](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)。
+\* 除了本地 SSD IO 以外，工作负载还将使用远程 [页服务器](service-tier-hyperscale.md#page-server) io。 有效 IOPS 将取决于工作负荷。 有关详细信息，请参阅 [数据 Io 调控](resource-limits-logical-server.md#resource-governance)和 [资源利用率统计信息中的数据 io](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)。
 
 ### <a name="gen5-compute-generation-part-2"></a>第 5 代计算（第 2 部分）
 
@@ -207,7 +207,7 @@ ms.locfileid: "87117027"
 |内存 (GB)|83|93.4|103.8|124.6|166.1|207.6|415.2|
 |[RBPEX](service-tier-hyperscale.md#compute) 大小|3 倍内存|3 倍内存|3 倍内存|3 倍内存|3 倍内存|3 倍内存|3 倍内存|
 |列存储支持|是|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|不可用|不可用|不可用|不可用|不可用|不可用|空值|
+|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|空值|
 |最大数据大小 (TB)|100 |100 |100 |100 |100 |100 |100 |
 |最大日志大小 (TB)|无限制 |无限制 |无限制 |无限制 |无限制 |无限制 |无限制 |
 |TempDB 最大数据大小 (GB)|512|576|640|768|1024|1280|2560|
@@ -218,12 +218,12 @@ ms.locfileid: "87117027"
 |最大并发工作线程数（请求数）|1600|1800|2000|2400|3200|4000|8000|
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |次要副本|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
-|Multi-AZ|空值|不可用|不可用|不可用|不可用|不可用|不可用|
+|Multi-AZ|空值|空值|空值|空值|空值|空值|空值|
 |读取横向扩展|是|是|是|是|是|是|是|
 |备份存储保留期|7 天|7 天|7 天|7 天|7 天|7 天|7 天|
 |||
 
-\*除了本地 SSD IO 以外，工作负载还将使用远程[页服务器](service-tier-hyperscale.md#page-server)io。 有效 IOPS 将取决于工作负荷。 有关详细信息，请参阅[数据 Io 调控](resource-limits-logical-server.md#resource-governance)和[资源利用率统计信息中的数据 io](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)。
+\* 除了本地 SSD IO 以外，工作负载还将使用远程 [页服务器](service-tier-hyperscale.md#page-server) io。 有效 IOPS 将取决于工作负荷。 有关详细信息，请参阅 [数据 Io 调控](resource-limits-logical-server.md#resource-governance)和 [资源利用率统计信息中的数据 io](hyperscale-performance-diagnostics.md#data-io-in-resource-utilization-statistics)。
 
 #### <a name="notes"></a>注释
 
@@ -244,7 +244,7 @@ ms.locfileid: "87117027"
 |vCore 数|1|2|3|4|5|6|
 |内存 (GB)|7|14|21|28|35|42|
 |列存储支持|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|空值|不可用|不可用|不可用|不可用|空值|
+|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|
 |最大数据大小 (GB)|1024|1024|1536|1536|1536|3072|
 |最大日志大小 (GB)|307|307|461|461|461|922|
 |TempDB 最大数据大小 (GB)|32|64|96|128|160|192|
@@ -255,11 +255,11 @@ ms.locfileid: "87117027"
 |最大并发工作线程数（请求数）|200|400|600|800|1000|1200|
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|
 |副本数|1|1|1|1|1|1|
-|Multi-AZ|空值|不可用|不可用|不可用|不可用|不可用|
-|读取横向扩展|空值|空值|空值|空值|空值|不可用|
+|Multi-AZ|空值|空值|空值|空值|空值|空值|
+|读取横向扩展|空值|空值|空值|空值|空值|空值|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
 ### <a name="gen4-compute-generation-part-2"></a>第 4 代计算（第 2 部分）
 
@@ -269,7 +269,7 @@ ms.locfileid: "87117027"
 |vCore 数|7|8|9|10|16|24|
 |内存 (GB)|49|56|63|70|112|159.5|
 |列存储支持|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|不可用|不可用|不可用|不可用|不可用|空值|
+|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|
 |最大数据大小 (GB)|3072|3072|3072|3072|4096|4096|
 |最大日志大小 (GB)|922|922|922|922|1229|1229|
 |TempDB 最大数据大小 (GB)|224|256|288|320|512|768|
@@ -280,11 +280,11 @@ ms.locfileid: "87117027"
 |最大并发工作线程数（请求数）|1400|1600|1800|2000|3200|4800|
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|
 |副本数|1|1|1|1|1|1|
-|Multi-AZ|不可用|不可用|不可用|不可用|不可用|不可用|
-|读取横向扩展|空值|不可用|不可用|不可用|不可用|空值|
+|Multi-AZ|空值|空值|空值|空值|空值|空值|
+|读取横向扩展|空值|空值|空值|空值|空值|空值|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
 ## <a name="general-purpose---provisioned-compute---gen5"></a>常规用途 - 预配的计算 - Gen5
 
@@ -296,7 +296,7 @@ ms.locfileid: "87117027"
 |vCore 数|2|4|6|8|10|12|14|
 |内存 (GB)|10.4|20.8|31.1|41.5|51.9|62.3|72.7|
 |列存储支持|是|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|空值|不可用|不可用|不可用|不可用|不可用|空值|
+|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|空值|
 |最大数据大小 (GB)|1024|1024|1536|1536|1536|3072|3072|
 |最大日志大小 (GB)|307|307|461|461|461|922|922|
 |TempDB 最大数据大小 (GB)|64|128|192|256|320|384|384|
@@ -307,11 +307,11 @@ ms.locfileid: "87117027"
 |最大并发工作线程数（请求数）|200|400|600|800|1000|1200|1400|
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |副本数|1|1|1|1|1|1|1|
-|Multi-AZ|不可用|不可用|不可用|不可用|不可用|不可用|不可用|
-|读取横向扩展|空值|不可用|不可用|不可用|不可用|不可用|空值|
+|Multi-AZ|空值|空值|空值|空值|空值|空值|空值|
+|读取横向扩展|空值|空值|空值|空值|空值|空值|空值|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
 ### <a name="gen5-compute-generation-part-2"></a>第 5 代计算（第 2 部分）
 
@@ -321,9 +321,9 @@ ms.locfileid: "87117027"
 |vCore 数|16|18|20|24|32|40|80|
 |内存 (GB)|83|93.4|103.8|124.6|166.1|207.6|415.2|
 |列存储支持|是|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|不可用|不可用|不可用|不可用|不可用|不可用|空值|
+|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|空值|
 |最大数据大小 (GB)|3072|3072|3072|4096|4096|4096|4096|
-|最大日志大小 (GB)|922|922|922|1229|1229|1229|1229|
+|最大日志大小 (GB)|922|922|922|1024|1024|1024|1024|
 |TempDB 最大数据大小 (GB)|512|576|640|768|1024|1280|2560|
 |存储类型|远程 SSD|远程 SSD|远程 SSD|远程 SSD|远程 SSD|远程 SSD|远程 SSD|
 |IO 延迟（近似）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|
@@ -332,15 +332,15 @@ ms.locfileid: "87117027"
 |最大并发工作线程数（请求数）|1600|1800|2000|2400|3200|4000|8000|
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
 |副本数|1|1|1|1|1|1|1|
-|Multi-AZ|空值|不可用|不可用|不可用|不可用|不可用|不可用|
-|读取横向扩展|空值|不可用|不可用|不可用|不可用|不可用|不可用|
+|Multi-AZ|空值|空值|空值|空值|空值|空值|空值|
+|读取横向扩展|空值|空值|空值|空值|空值|空值|空值|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
 ## <a name="general-purpose---provisioned-compute---fsv2-series"></a>常规用途预配的 Fsv2 系列
 
-### <a name="fsv2-series-compute-generation-part-1"></a>Fsv2 系列计算生成（第1部分）
+### <a name="fsv2-series-compute-generation-part-1"></a>Fsv2 系列计算生成 (第1部分) 
 
 |计算大小（服务目标）|GP_Fsv2_8|GP_Fsv2_10|GP_Fsv2_12|GP_Fsv2_14| GP_Fsv2_16|
 |:---| ---:|---:|---:|---:|---:|
@@ -348,7 +348,7 @@ ms.locfileid: "87117027"
 |vCore 数|8|10|12|14|16|
 |内存 (GB)|15.1|18.9|22.7|26.5|30.2|
 |列存储支持|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|不可用|不可用|不可用|不可用|空值|
+|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|
 |最大数据大小 (GB)|1024|1024|1024|1024|1536|
 |最大日志大小 (GB)|336|336|336|336|512|
 |TempDB 最大数据大小 (GB)|333|333|333|333|333|
@@ -360,13 +360,13 @@ ms.locfileid: "87117027"
 |最大并发登录数|800|1000|1200|1400|1600|
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|
 |副本数|1|1|1|1|1|
-|Multi-AZ|不可用|不可用|不可用|不可用|不可用|
-|读取横向扩展|空值|不可用|不可用|不可用|不可用|
+|Multi-AZ|空值|空值|空值|空值|空值|
+|读取横向扩展|空值|空值|空值|空值|空值|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
-### <a name="fsv2-series-compute-generation-part-2"></a>Fsv2 系列计算生成（第2部分）
+### <a name="fsv2-series-compute-generation-part-2"></a>Fsv2 系列计算生成 (第2部分) 
 
 |计算大小（服务目标）|GP_Fsv2_18|GP_Fsv2_20|GP_Fsv2_24|GP_Fsv2_32| GP_Fsv2_36|GP_Fsv2_72|
 |:---| ---:|---:|---:|---:|---:|---:|
@@ -374,7 +374,7 @@ ms.locfileid: "87117027"
 |vCore 数|18|20|24|32|36|72|
 |内存 (GB)|34.0|37.8|45.4|60.5|68.0|136.0|
 |列存储支持|是|是|是|是|是|是|
-|内存中 OLTP 存储 (GB)|不可用|不可用|不可用|不可用|不可用|空值|
+|内存中 OLTP 存储 (GB)|空值|空值|空值|空值|空值|空值|
 |最大数据大小 (GB)|1536|1536|1536|3072|3072|4096|
 |最大日志大小 (GB)|512|512|512|1024|1024|1024|
 |TempDB 最大数据大小 (GB)|83.25|92.5|111|148|166.5|333|
@@ -386,11 +386,11 @@ ms.locfileid: "87117027"
 |最大并发登录数|1800|2000|2400|3200|3600|7200|
 |最大并发会话数|30,000|30,000|30,000|30,000|30,000|30,000|
 |副本数|1|1|1|1|1|1|
-|Multi-AZ|不可用|不可用|不可用|不可用|不可用|不可用|
-|读取横向扩展|空值|不可用|不可用|不可用|不可用|空值|
+|Multi-AZ|空值|空值|空值|空值|空值|空值|
+|读取横向扩展|空值|空值|空值|空值|空值|空值|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
 ## <a name="business-critical---provisioned-compute---gen4"></a>业务关键 - 预配的计算 - Gen4
 
@@ -421,7 +421,7 @@ ms.locfileid: "87117027"
 |读取横向扩展|是|是|是|是|是|是|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
 ### <a name="gen4-compute-generation-part-2"></a>第 4 代计算（第 2 部分）
 
@@ -447,7 +447,7 @@ ms.locfileid: "87117027"
 |读取横向扩展|是|是|是|是|是|是|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
 ## <a name="business-critical---provisioned-compute---gen5"></a>业务关键 - 预配的计算 - Gen5
 
@@ -475,7 +475,7 @@ ms.locfileid: "87117027"
 |读取横向扩展|是|是|是|是|是|是|是|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
 ### <a name="gen5-compute-generation-part-2"></a>第 5 代计算（第 2 部分）
 
@@ -487,7 +487,7 @@ ms.locfileid: "87117027"
 |列存储支持|是|是|是|是|是|是|是|
 |内存中 OLTP 存储 (GB)|15.77|18.14|20.51|25.25|37.94|52.23|131.64|
 |最大数据大小 (GB)|3072|3072|3072|4096|4096|4096|4096|
-|最大日志大小 (GB)|922|922|922|1229|1229|1229|1229|
+|最大日志大小 (GB)|922|922|922|1024|1024|1024|1024|
 |TempDB 最大数据大小 (GB)|512|576|640|768|1024|1280|2560|
 |存储类型|本地 SSD|本地 SSD|本地 SSD|本地 SSD|本地 SSD|本地 SSD|本地 SSD|
 |IO 延迟（近似）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|1-2 毫秒（写入）<br>1-2 毫秒（读取）|
@@ -501,11 +501,11 @@ ms.locfileid: "87117027"
 |读取横向扩展|是|是|是|是|是|是|是|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
 ## <a name="business-critical---provisioned-compute---m-series"></a>关键业务预配的计算-M 系列
 
-### <a name="m-series-compute-generation-part-1"></a>M 系列计算生成（第1部分）
+### <a name="m-series-compute-generation-part-1"></a>M 系列计算生成 (第1部分) 
 
 |计算大小（服务目标）|BC_M_8|BC_M_10|BC_M_12|BC_M_14|BC_M_16|BC_M_18|
 |:---| ---:|---:|---:|---:|---:|---:|
@@ -529,12 +529,12 @@ ms.locfileid: "87117027"
 |读取横向扩展|是|是|是|是|是|是|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](file-space-manage.md)。
 
-### <a name="m-series-compute-generation-part-2"></a>M 系列计算生成（第2部分）
+### <a name="m-series-compute-generation-part-2"></a>M 系列计算生成 (第2部分) 
 
 |计算大小（服务目标）|BC_M_20|BC_M_24|BC_M_32|BC_M_64|BC_M_128|
 |:---| ---:|---:|---:|---:|---:|
@@ -558,7 +558,7 @@ ms.locfileid: "87117027"
 |读取横向扩展|是|是|是|是|是|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅[数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
+\* IO 大小的最大值，范围为 8 KB 到 64 KB。 实际 IOPS 与工作负荷相关。 有关详细信息，请参阅 [数据 IO 调控](resource-limits-logical-server.md#resource-governance)。
 
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](file-space-manage.md)。

@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 073a92f07d17614cb386c5c33a8058af9b59aaea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dacfeeff06d58a084d4313ca50b51f262cf61381
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084069"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553074"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity-preview"></a>使用托管标识设置到 Azure 存储帐户的连接（预览）
 
 > [!IMPORTANT] 
-> 对于使用托管标识设置到数据源的连接的支持目前处于封闭的公开预览阶段。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。
-> 可以填写[此表单](https://aka.ms/azure-cognitive-search/mi-preview-request)来请求访问预览版。
+> 目前提供了有关使用托管标识建立与数据源的连接的支持。 提供的预览版功能不附带服务级别协议，我们不建议将其用于生产工作负荷。
 
 本页介绍如何使用托管标识设置到 Azure 存储帐户的索引器连接，而不是在数据源对象连接字符串中提供凭据。
 
@@ -34,7 +33,7 @@ ms.locfileid: "87084069"
 
 ### <a name="1---turn-on-system-assigned-managed-identity"></a>1 - 打开系统分配的托管标识
 
-启用系统分配的托管标识后，Azure 将为搜索服务创建一个标识，该标识可用于对同一租户和订阅中的其他 Azure 服务进行身份验证。 然后，可以在基于角色的访问控制 (RBAC) 分配中使用此标识，该分配允许在索引期间访问数据。
+启用系统分配的托管标识后，Azure 将为搜索服务创建一个标识，该标识可用于对同一租户和订阅中的其他 Azure 服务进行身份验证。 然后，可以在基于角色的访问控制 (RBAC) 分配中使用此标识，该分配允许在编制索引期间访问数据。
 
 ![打开系统分配的托管标识](./media/search-managed-identities/turn-on-system-assigned-identity.png "打开系统分配的托管标识")
 
@@ -53,11 +52,11 @@ ms.locfileid: "87084069"
     ![添加角色分配](./media/search-managed-identities/add-role-assignment-storage.png "添加角色分配")
 
 4. 根据要为其编制索引的存储帐户类型选择适当的角色：
-    1. Azure Blob 存储要求你将搜索服务添加到**存储 Blob 数据读取器**角色。
-    1. Azure Data Lake Storage Gen2 要求你将搜索服务添加到**存储 Blob 数据读取器**角色。
-    1. Azure 表存储要求向 "读取者"**和 "数据访问**" 角色添加搜索服务。
+    1. Azure Blob 存储要求你将搜索服务添加到 **存储 Blob 数据读取器** 角色。
+    1. Azure Data Lake Storage Gen2 要求你将搜索服务添加到 **存储 Blob 数据读取器** 角色。
+    1. Azure 表存储要求向 "读取者" **和 "数据访问** " 角色添加搜索服务。
 5.  将“分配访问权限至”保留为“Azure AD 用户、组或服务主体” 
-6.  搜索你的搜索服务，选中，然后选择“保存”
+6.  搜索你的搜索服务，选中它，然后选择“保存”
 
     Azure Blob 存储和 Azure Data Lake Storage Gen2 的示例：
 
@@ -68,6 +67,8 @@ ms.locfileid: "87084069"
     ![添加读者和数据访问角色分配](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "添加读者和数据访问角色分配")
 
 ### <a name="3---create-the-data-source"></a>3 - 创建数据源
+
+[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)、Azure 门户和[.net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet)支持托管标识连接字符串。 下面的示例演示如何使用 [REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) 和托管标识连接字符串创建数据源以索引存储帐户中的数据。 对于 REST API、.NET SDK 和 Azure 门户，托管标识连接字符串格式是相同的。
 
 从存储帐户编制索引时，数据源必须具有以下必需属性：
 
@@ -96,8 +97,6 @@ api-key: [admin key]
     "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
 }   
 ```
-
-Azure 门户和 [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) 也支持托管标识连接字符串。 Azure 门户需要一个功能标志，在使用此页顶部的链接注册预览版时，系统将提供该标志。 
 
 ### <a name="4---create-the-index"></a>4 - 创建索引
 

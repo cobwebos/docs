@@ -6,15 +6,15 @@ author: ghogen
 manager: jillfra
 ms.service: key-vault
 ms.custom: vs-azure
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: e8c452ffb40b27ed84061e93c1758b3d403052fe
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 52c9584ca94117db58a5427c46269d7f2612861a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054404"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588477"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>使用 Visual Studio 连接服务将 Key Vault 添加到 Web 应用程序
 
@@ -24,8 +24,8 @@ ms.locfileid: "88054404"
 
 ## <a name="prerequisites"></a>先决条件
 
-- **一个 Azure 订阅**。 如果没有订阅，请注册[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-- **Visual Studio 2019 版本 16.3**或更高版本[立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
+- **一个 Azure 订阅**。 如果没有订阅，请注册 [免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
+- **Visual Studio 2019 版本 16.3** 或更高版本 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
 
 
 ## <a name="add-key-vault-support-to-your-project"></a>将 Key Vault 支持添加到项目
@@ -34,11 +34,11 @@ ms.locfileid: "88054404"
 
 1. 在**解决方案资源管理器**中，右键单击要向其添加 Key Vault 支持的项目，然后选择 "**添加**  >  **连接的服务**" "  >  **添加**"。
    此时会显示“连接服务”页，其中包含可添加到项目的服务。
-1. 在可用服务的菜单中，选择 " **Azure Key Vault** "，然后单击 "**下一步**"。
+1. 在可用服务的菜单中，选择 " **Azure Key Vault** "，然后单击 " **下一步**"。
 
    ![选择 "Azure Key Vault"](../media/vs-key-vault-add-connected-service/key-vault-connected-service.png)
 
-1. 选择要使用的订阅，然后选择现有的 Key Vault，然后单击 "**完成**"。 
+1. 选择要使用的订阅，然后选择现有的 Key Vault，然后单击 " **完成**"。 
 
    ![选择订阅](../media/vs-key-vault-add-connected-service/key-vault-connected-service-select-vault.png)
 
@@ -46,7 +46,7 @@ ms.locfileid: "88054404"
 
 ## <a name="access-your-secrets-in-code-aspnet-core"></a>在代码中访问机密 (ASP.NET Core)
 
-1. 打开其中一个页面文件（如*Index.cshtml.cs* ）并编写以下代码：
+1. 打开其中一个页面文件（如 *Index.cshtml.cs* ）并编写以下代码：
    1. 通过此 using 指令包含对 `Microsoft.Extensions.Configuration` 的引用：
 
        ```csharp
@@ -88,7 +88,7 @@ ms.locfileid: "88054404"
 ## <a name="access-your-secrets-aspnet"></a>访问机密 (ASP.NET)
 可以设置配置，使 web.config 文件中的 `appSettings` 元素中包含一个虚拟值，在运行时，该值将由 true 值替换。 然后，可以通过 `ConfigurationManager.AppSettings` 数据结构访问此配置。
 
-1. 在解决方案资源管理器中，右键单击项目，然后选择 "管理 NuGet 包"。 在 "浏览" 选项卡中，找到并安装[Microsoft.Configuration.ConfigurationBuilders](https://www.nuget.org/packages/Microsoft.Configuration.ConfigurationBuilders.Azure/)
+1. 在解决方案资源管理器中，右键单击项目，然后选择 "管理 NuGet 包"。 在 "浏览" 选项卡中，找到并安装 [Microsoft.Configuration.ConfigurationBuilders](https://www.nuget.org/packages/Microsoft.Configuration.ConfigurationBuilders.Azure/)
  
 1. 打开 web.config 文件，并编写以下代码：
     1. 添加 `configSections` 和 `configBuilders` ：
