@@ -62,7 +62,7 @@ ms.locfileid: "88566193"
 1. 在 Azure 门户的实验室主页上，选择左侧菜单中的 " **配置和策略** "。 
 1. 在 "**配置和策略**" 页上的 "**加密**" 部分中，选择 "**磁盘 (预览") ** 。 默认情况下，**使用平台托管密钥**将**加密类型**设置为 "静态加密"。
 
-    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disks-page.png" alt-text=""配置和策略" 页的 "磁盘" 选项卡":::
+    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disks-page.png" alt-text="配置和策略 页的 磁盘 选项卡":::
 1. 对于 " **加密类型**"，请从下拉列表中选择 "静态加密"，并选择 " **客户管理的密钥** "。 
 1. 对于 " **磁盘加密集**"，请选择之前创建的磁盘加密集。 它与系统分配的实验室标识可访问的磁盘加密集相同。
 1. 在工具栏上选择“保存”。  
