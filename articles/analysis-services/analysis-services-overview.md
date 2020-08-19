@@ -4,16 +4,16 @@ description: 了解 Azure Analysis Services，它是一种可在云中提供企�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 06/24/2020
+ms.date: 08/12/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
-ms.openlocfilehash: f1e70c5b7eb4efdde1bfc20b1ec3e058bfa5b054
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: 7878ecd2b1ce223a95c229b93713a875636daa09
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85918948"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88164302"
 ---
 # <a name="what-is-azure-analysis-services"></a>什么是 Azure Analysis Services？
 
@@ -88,6 +88,7 @@ Azure Analysis Services 集成许多 Azure 服务，因此可以生成复杂的�
 |美国东部 2     |     S8、S9、S8v2、S9v2   |    1    |
 |美国中北部     |     B1、B2、S0、S1、S2、S4、D1     |    1     |
 |美国中部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
+|美国中部     |    S8v2、S9v2     |    1     |
 |美国中南部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |美国中西部   |     B1、B2、S0、S1、S2、S4、D1    |    3     |
 |美国西部     |    B1、B2、S0、S1、S2、S4、D1    |    7   |
@@ -150,7 +151,7 @@ DirectQuery 模式* 利用后端关系数据库进行存储和查询执行。 �
 
 Azure Analysis Services 中的表格模型支持各种数据源：从简单的文本文件，到 Azure Data Lake Store 中的大数据。 若要了解详细信息，请参阅 [Azure Analysis Services 中支持的数据源](analysis-services-datasource.md)。
 
-## <a name="compatibility-level"></a>兼容性级别
+## <a name="compatibility-level"></a>兼容级别
 
 “兼容性级别”是指 Analysis Services 引擎中特定于发布的行为。 Azure Analysis Services 支持 1200 和更高兼容级别的表格模型。 若要了解详细信息，请参阅[表格模型的兼容性级别](https://docs.microsoft.com/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services)。
 

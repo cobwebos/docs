@@ -7,12 +7,12 @@ ms.date: 03/12/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: a0e27927c91c8b8ed1cfca410e08a5eb90117f58
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 84f89b9def3fc5d98ebb669b9f5b86523854f7a8
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87076717"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185717"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>快速入门：适用于 .NET 的 Azure Key Vault 客户端库 (SDK v4)
 
@@ -240,7 +240,6 @@ namespace key_vault_console_app
 
 若要详细了解 Key Vault 以及如何将其与应用程序集成，请继续阅读以下文章。
 
-- 实现[使用 .NET 对 Azure Key Vault 进行服务到服务的身份验证](../general/service-to-service-authentication.md)
 - 阅读 [Azure Key Vault 概述](../general/overview.md)
 - 参阅 [Azure Key Vault 开发人员指南](../general/developers-guide.md)
 - 查看 [Azure Key Vault 最佳做法](../general/best-practices.md)

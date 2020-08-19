@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: alkohli
-ms.openlocfilehash: 332b4fdb6e0a26437edbf4309ee0b89b79f7eb23
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 04e4394e6a439c923558ef90e13c14c0adaa4020
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845793"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142105"
 ---
 # <a name="tutorial-return-azure-data-box-preview"></a>教程：退回 Azure Data Box（预览版）
 
@@ -176,7 +176,7 @@ ms.locfileid: "87845793"
 
 ## <a name="self-managed"></a>[自托管](#tab/in-selfmanaged)
 
-如果在日本、新加坡、韩国和西欧使用 Data Box，并在创建订单时选择了自托管寄送选项，请按以下说明操作。
+如果在日本、新加坡、韩国、印度、南非和西欧使用 Data Box，并在创建订单时选择了自托管寄送选项，请按以下说明操作。
 
 1. 成功完成此步骤后，请记下 Data Box 本地 Web UI 的“准备交付”页上显示的授权代码。
 2. 关闭设备电源并拔下电缆。 将设备随附的电源线卷好并安全地放在设备后面。

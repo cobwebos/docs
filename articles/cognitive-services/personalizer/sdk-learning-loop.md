@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 07/30/2020
 ms.custom: devx-track-python, devx-track-javascript
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 480e860952c2659d053f8a5659e312feacff2d2b
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 76504da214a3777dba7b2356bea160e86999bb45
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87874480"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207544"
 ---
 # <a name="quickstart-personalizer-client-library"></a>快速入门：个性化体验创建服务客户端库
 
@@ -48,4 +48,4 @@ ms.locfileid: "87874480"
 * [什么是个性化体验创建服务？](what-is-personalizer.md)
 * [可在哪种场合下使用个性化体验创建服务？](where-can-you-use-personalizer.md)
 * [故障排除](troubleshooting.md)
-* 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py) 上找到此示例的源代码。
+* 可以在 [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/Personalizer) 上找到此示例的源代码。

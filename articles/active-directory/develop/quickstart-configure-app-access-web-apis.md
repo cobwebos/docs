@@ -13,12 +13,12 @@ ms.date: 08/05/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
-ms.openlocfilehash: 800b399e73be032cfd9d2849b004018aa9d9031f
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 87c21587567ffe3462e4b702985114ac10454886
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120858"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88140796"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>快速入门：配置客户端应用程序以访问 Web API
 
@@ -148,7 +148,7 @@ ms.locfileid: "88120858"
 
 ## <a name="add-permissions-to-access-web-apis"></a>添加用于访问 Web API 的权限
 
-默认已选择[图形 API 登录和读取用户配置文件权限](https://developer.microsoft.com/graph/docs/concepts/permissions_reference#user-permissions)。 对于每个 Web API，可以从[两种类型的权限](developer-glossary.md#permissions)中进行选择：
+默认已选择[图形 API 登录和读取用户配置文件权限](/graph/permissions-reference#user-permissions)。 对于每个 Web API，可以从[两种类型的权限](developer-glossary.md#permissions)中进行选择：
 
 * **应用程序权限**。 客户端应用程序需要自行直接访问 Web API，不使用用户上下文。 此权限类型需要管理员许可。 此权限不适用于桌面和移动客户端应用程序。
 * **委托的权限**。 客户端应用程序需要以登录用户的身份访问 Web API，但访问权限受所选权限的限制。 除非权限需要管理员许可，否则用户可以授予此类型的权限。

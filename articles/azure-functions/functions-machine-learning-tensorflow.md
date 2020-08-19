@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/15/2020
 ms.author: antchu
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: bd46044b6ba6d4dfca8dd90612d8f2530638c6f8
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 03f27315a1506a67f41bec929f42f3cf6278f126
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844450"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142275"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>教程：在 Azure Functions 中使用 Python 和 TensorFlow 应用机器学习模型
 
@@ -86,7 +86,7 @@ cd start
 ```
 
 ```powershell
-py -m venv .venv
+py -3.7 -m venv .venv
 ```
 
 ```powershell
@@ -100,7 +100,7 @@ cd start
 ```
 
 ```cmd
-py -m venv .venv
+py -3.7 -m venv .venv
 ```
 
 ```cmd

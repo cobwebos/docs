@@ -10,13 +10,13 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 38bd83f8bd713f2d5bda658e052c919dd3d7625d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.custom: devx-track-csharp, aaddev, identityplatformtop40
+ms.openlocfilehash: acdc23c664f84882916b91b8f8698ee36b1e6cd3
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119702"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88165543"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>从通用 Windows 平台应用程序 (XAML) 调用 Microsoft Graph API
 
@@ -340,7 +340,7 @@ private async Task DisplayMessageAsync(string message)
 
 现在需注册应用程序：
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 1. 选择“Azure Active Directory” > “应用注册”。 
 1. 选择“新注册”。 输入一个会显示给应用用户的有意义的应用程序名称，例如 UWP-App-calling-MSGraph。
 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”（例如 Skype、Xbox） 。 然后选择“注册”并继续。
@@ -350,7 +350,7 @@ private async Task DisplayMessageAsync(string message)
 
 1. 回到 [Azure 门户](https://portal.azure.com)中，在“管理”下选择“身份验证”。 
 1. 在“重定向 URI” | “建议用于公共客户端(移动、桌面)的重定向 URI”部分中，选中 https://login.microsoftonline.com/common/oauth2/nativeclient 。
-1. 选择“保存” 。
+1. 选择“保存”。
 
 为应用程序配置 API 权限：
 

@@ -4,14 +4,14 @@ description: 了解如何在 Azure 应用服务中运行 .NET Core 应用，同�
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.custom: mvc, cli-validate, seodec18
+ms.custom: devx-track-csharp, mvc, cli-validate, seodec18
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 148b22e7abc4fca7b9cb104f3616562b74c73004
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 10182abb99788e4974e08c9bfc5c9c53df2a201b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88081896"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212935"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-sql-database-app-in-azure-app-service"></a>教程：在 Azure 应用服务中生成 ASP.NET Core 和 SQL 数据库应用
 
@@ -155,7 +155,7 @@ az sql db create --resource-group myResourceGroup --server <server-name> --name 
 使用 [`az sql db show-connection-string`](/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-show-connection-string) 命令获取连接字符串。
 
 ```azurecli-interactive
-az sql db show-connection-string --client ado.net --server cephalin-core --name coreDB
+az sql db show-connection-string --client ado.net --server <server-name> --name coreDB
 ```
 
 在命令输出中，将 \<username> 和 \<password> 替换为你先前使用的数据库管理员凭据 。

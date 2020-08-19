@@ -6,12 +6,12 @@ ms.topic: overview
 description: 了解 Azure Dev Spaces 如何为团队提供 Azure Kubernetes 服务群集的一种快速、迭代的 Kubernetes 开发体验
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 691845cd888e4d24c1144f2805402a3baf14a86e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ad884d5e054f23269b238b791e250c732d70a9b8
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006958"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210638"
 ---
 # <a name="what-is-azure-dev-spaces"></a>Azure Dev Spaces 是什么？
 
@@ -42,8 +42,10 @@ Azure Dev Spaces 提供的工具可用于为项目生成 Docker 和 Kubernetes �
 
 ## <a name="next-steps"></a>后续步骤
 
-使用 Azure Dev Spaces 的团队可以通过[团队开发快速入门][team-development-quickstart]详细了解如何进行快速的迭代开发。
+深入了解 Azure Dev Spaces 的工作方式。
+
+> [!div class="nextstepaction"]
+> [Azure Dev Spaces 工作原理](how-dev-spaces-works.md)
 
 [how-dev-spaces-works]: how-dev-spaces-works.md
 [supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
-[team-development-quickstart]: quickstart-team-development.md

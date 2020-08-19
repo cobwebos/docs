@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
-ms.openlocfilehash: 6933321ad402104fa5529af2b7fdf38e329e0168
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6422874f57b490773f70b6fb27d5b65c654ded07
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87830903"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212743"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 
@@ -76,7 +76,7 @@ Azure Maps 出行服务缩短了具有公共交通功能（例如公交路线规
 
 ### <a name="render-service"></a>呈现服务
 
-现处于预览阶段的[呈现服务 V2](https://docs.microsoft.com/est/api/maps/renderv2) 引入了 [Get Map Tile V2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) 的新版本。 现在，客户可以使用 Get Map Tile V2 API 请求 Azure Maps 道路图块、天气图块或使用 Azure Maps Creator 创建的地图图块。 建议使用新的 Get Map Tile V2 API。  
+现处于预览阶段的[呈现服务 V2](https://docs.microsoft.com/rest/api/maps/renderv2) 引入了 [Get Map Tile V2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) 的新版本。 现在，客户可以使用 Get Map Tile V2 API 请求 Azure Maps 道路图块、天气图块或使用 Azure Maps Creator 创建的地图图块。 建议使用新的 Get Map Tile V2 API。  
 
 :::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="来自呈现服务 V2 的地图示例":::
 
