@@ -8,15 +8,15 @@ manager: jhakulin
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 8985d8ab0b5fa8477a636254d1a5179cd2187963
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 8df54adf8f3aeaa58e30d6d9218cec8bec8c1121
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505799"
+ms.locfileid: "88525915"
 ---
 # <a name="speech-service-release-notes"></a>语音服务发行说明
 
@@ -26,13 +26,13 @@ ms.locfileid: "88505799"
 
 * **神经 TTS：新的 `en-US` 说话风格Aria 声音**。 阅读新闻时，AriaNeural 可能像是一个 newscaster。 "Newscast" 风格听起来更严重，而 "newscast" 样式更宽松，非正式。 请参阅 [如何在 SSML 中使用讲话样式](speech-synthesis-markup.md)。
 
-* **自定义语音：发布了一项新功能，可自动检查定型数据质量**。 当你上传数据时，数据检查功能将检查你的音频和脚本的各个方面，并在出现问题时自动修复或筛选数据，以便提高语音模型的质量。 这涉及到音频的音量、噪音级别、语音的读音准确性、语音与规范化文本的对齐方式、音频中的静默性，以及音频和脚本格式。 
+* **自定义语音：发布了一项新功能，可自动检查定型数据质量**。 当你上传数据时，系统将检查你的音频和记录数据的各个方面，并自动修复或筛选问题以提高语音模型的质量。 这涉及到音频的音量、噪音级别、语音的读音准确性、语音与规范化文本的对齐方式、音频中的静默性，以及音频和脚本格式。 
 
 * **音频内容创建：一组新功能，可实现更强大的语音微调和音频管理功能**。
 
     * 发音：将发音优化功能更新为最新的音素集。 可以从库中选取正确的音素元素，并优化所选字词的发音。 
 
-    * 下载：音频 "下载"/"导出" 功能已增强，可支持每个段落生成音频。 可以轻松地在同一文件/SSML 中编辑不同的内容，同时生成多个音频输出。 还改进了 "下载" 的文件结构。 现在，可以轻松地获取一个文件夹中的所有音频。 
+    * 下载：音频 "下载"/"导出" 功能已增强，支持按段落生成音频。 可以在生成多个音频输出时在同一文件/SSML 中编辑内容。 还改进了 "下载" 的文件结构。 现在，可以轻松地获取一个文件夹中的所有音频。 
 
     * 任务状态：改进了多文件导出体验。 在过去导出多个文件时，如果其中一个文件失败，整个任务将失败。 但现在，所有其他文件都将成功导出。 此任务报告具有更详细和结构化的信息。 您可以通过报表查看所有失败文件和句子的日志。 
 
@@ -42,7 +42,7 @@ ms.locfileid: "88505799"
 
 ### <a name="general-tts-voice-quality-improvements"></a>一般性的 TTS 语音质量改进
 
-* 减少了 56% )  (错误的单词级别发音错误% `ru-RU` ， `sv-SE` (错误降低了 49% ) 
+* 降低了 56% )  (错误的单词级发音错误百分比 `ru-RU` ，以及 `sv-SE` 49% 降低了 (错误 ) 
 
 * 提高了 `en-US` 40% 的神经声音上的复调单词读数。 复调单词的示例包括 "读取"、"实时"、"内容"、"记录"、"对象" 等。 
 
@@ -62,9 +62,9 @@ ms.locfileid: "88505799"
 ### <a name="bug-fixes"></a>Bug 修复
 
 * 修复了 "音频内容创建" 工具的许多 bug 
-    * 解决了自动刷新问题。 
-    * 修复了南部东亚区域中 zh-chs-CN 中样式的问题
-    * 修复了稳定性问题，包括带有 "break" 标记的导出错误、标点符号中的错误    
+    * 已修复自动刷新问题。 
+    * 修复了 zh-chs-南部东亚区域中的语音样式的问题。
+    * 修复了稳定性问题，其中包含带有 "break" 标记的导出错误和标点符号中的错误。    
 
 ## <a name="new-speech-to-text-locales-2020-august-release"></a>新的语音到文本区域设置： 2020-8 月发行版
 在8月发布的 "语音到文本" 发布了26个新区域设置：2个欧洲语言 `cs-CZ` 和 `hu-HU` 5 个英语区域设置，以及涵盖最多南美国家/地区的19个西班牙语区域。 下面是新区域设置的列表。 请在 [此处](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support)查看完整的语言列表。

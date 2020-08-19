@@ -2,25 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 ServiceNow 配置自动用户预配 | Microsoft Docs
 description: 了解如何将用户帐户从 Azure AD 自动预配到 ServiceNow 及如何取消预配。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
-ms.assetid: 4d6f06dd-a798-4c22-b84f-8a11f1b8592a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 099216d5ffde48c404ae733c09b568b3859c25ad
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 218a3ad04d4f7366604784e06c558a9c568ad77e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922160"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528057"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>教程：为 ServiceNow 配置自动用户预配
 
@@ -60,13 +56,13 @@ ms.locfileid: "87922160"
 
    ![ServiceNow 管理员角色](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
 
-3. 检查以确保在 ServiceNow 中**禁用**了以下设置：
+3. 检查以确保在 ServiceNow 中 **禁用** 了以下设置：
 
    1. 选择 "**系统安全**  >  **高级安全设置**"  >  **要求对传入架构请求进行基本身份验证**。
    2. 选择 "**系统属性**"  >  **Web 服务**  >  **需要对传入 SOAP 请求进行基本授权**。
      
    > [!IMPORTANT]
-   > 如果*启用*了这些设置，则设置引擎将无法与 ServiceNow 通信。
+   > 如果 *启用*了这些设置，则设置引擎将无法与 ServiceNow 通信。
 
 ## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>步骤 3. 从 Azure AD 应用程序库添加 ServiceNow
 
@@ -153,7 +149,7 @@ ms.locfileid: "87922160"
   
   `Details: Your ServiceNow instance name appears to be invalid.  Please provide a current ServiceNow administrative user name and          password along with the name of a valid ServiceNow instance.`                                                              
 
-   此错误表示与 ServiceNow 实例通信时出现问题。 仔细检查以确保在 ServiceNow 中*禁用*了以下设置：
+   此错误表示与 ServiceNow 实例通信时出现问题。 仔细检查以确保在 ServiceNow 中 *禁用* 了以下设置：
    
    1. 选择 "**系统安全**  >  **高级安全设置**"  >  **要求对传入架构请求进行基本身份验证**。
    2. 选择 "**系统属性**"  >  **Web 服务**  >  **需要对传入 SOAP 请求进行基本授权**。

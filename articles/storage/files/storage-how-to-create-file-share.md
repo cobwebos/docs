@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: a642aa9735c4360c11d50cf475e5de63259c55df
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.custom: devx-track-azurecli, references_regions
+ms.openlocfilehash: aaba608ba80a751c40cd300dee80f673897c22a8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87495703"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525643"
 ---
 # <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
 若要创建 Azure 文件共享，需要回答有关你将如何使用它的三个问题：
@@ -26,9 +26,9 @@ ms.locfileid: "87495703"
     标准文件共享最多可以涵盖 100 TiB 的空间，但默认不会启用此功能；如果所需的文件共享大于 5 TiB，则需要为存储帐户启用大型文件共享功能。 高级文件共享最多可扩展到 100 TiB 而无需任何特殊设置，但高级文件共享是经过预配的，而不像标准文件共享一样即付即用。 这意味着，预配一个远超所需大小的文件共享会增加存储的总成本。
 
 - **Azure 文件共享在冗余方面的要求是什么？**  
-    标准文件共享提供本地冗余（LRS）、区域冗余（ZRS）、异地冗余（GRS）或地理区域冗余（GZRS）存储，但是，仅在本地冗余和区域冗余文件共享上支持大型文件共享功能。 高级文件共享不支持任何形式的异地冗余。
+    标准文件共享提供本地冗余 (LRS) 、区域冗余 (ZRS) 、异地冗余 (GRS) 或地理区域冗余 (GZRS) 存储，但是，仅在本地冗余和区域冗余文件共享上支持大型文件共享功能。 高级文件共享不支持任何形式的异地冗余。
 
-    在大多数区域中提供存储帐户和区域冗余的高级文件共享都可用于较小的区域子集。 若要确定高级文件共享目前是否可在你的区域中使用，请参阅 Azure 的[产品的上市区域](https://azure.microsoft.com/global-infrastructure/services/?products=storage)页。 有关支持 ZRS 的区域的信息，请参阅[Azure 存储冗余](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
+    在大多数区域中提供存储帐户和区域冗余的高级文件共享都可用于较小的区域子集。 若要确定高级文件共享目前是否可在你的区域中使用，请参阅 Azure 的[产品的上市区域](https://azure.microsoft.com/global-infrastructure/services/?products=storage)页。 有关支持 ZRS 的区域的信息，请参阅 [Azure 存储冗余](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)。
 
 有关这三个选项的详细信息，请参阅[规划 Azure 文件存储部署](storage-files-planning.md)。
 
@@ -65,7 +65,7 @@ Azure 文件共享将部署到存储帐户。存储帐户是代表存储共享�
 - **资源组**：要部署到的存储帐户所在的资源组。 可以创建新的资源组，也可以使用现有资源组。 资源组是对 Azure 资源进行分组的逻辑容器。 在创建存储帐户时，可以选择创建新的资源组，也可以使用现有资源组。
 - **存储帐户名称**：要创建的存储帐户资源的名称。 此名称必须全局唯一，但可以是所需的任何名称。 通过 SMB 装载 Azure 文件共享时，存储帐户名称将用作服务器名称。
 - **位置**：要部署到的存储帐户所在的区域。 此区域可以是与资源组关联的区域，也可以是任何其他可用区域。
-- **复制**：尽管此字段标记为 "复制"，但此字段实际上表示**冗余**;这是所需的冗余级别：本地冗余（LRS）、区域冗余（ZRS）、异地冗余（GRS）和地域冗余。 此下拉列表还包含读取访问地域冗余（GRS）和读取访问地域冗余（RA-GZRS），这不适用于 Azure 文件共享;所选存储帐户中创建的任何文件共享都将分别为异地冗余或地域冗余。 根据所在的区域或所选的存储帐户类型，可能不允许使用某些冗余选项。
+- **复制**：尽管此字段标记为 "复制"，但此字段实际上表示 **冗余**;这是所需的冗余级别：本地冗余 (LRS) 、区域冗余 (ZRS) 、异地冗余 (GRS) 和地域冗余。 此下拉列表还包含读取访问地域冗余 (RA-GRS) 和读取访问地域冗余 (GZRS) ，这不适用于 Azure 文件共享;所选存储帐户中创建的任何文件共享都将分别为异地冗余或地域冗余。 根据所在的区域或所选的存储帐户类型，可能不允许使用某些冗余选项。
 - **访问层**：此字段不适用于 Azure 文件存储，因此可以选中任一单选按钮。
 
 #### <a name="the-networking-blade"></a>“网络”边栏选项卡
@@ -230,7 +230,61 @@ az storage share create \
 > [!Note]  
 > 文件共享的名称必须是全部小写。 若要全面且详细地了解如何为文件共享和文件命名，请参阅 [命名和引用共享、目录、文件和元数据](https://msdn.microsoft.com/library/azure/dn167011.aspx)。
 
+### <a name="create-a-hot-or-cool-file-share"></a>创建热文件共享或冷文件共享
+常规用途 v2 中的文件共享 ** (GPv2) 存储帐户** 可以包含事务优化、热或冷文件共享 (或其) 混合。 事务优化的共享在所有 Azure 区域中均可用，但热和冷文件共享仅 [在区域的一个子集内](storage-files-planning.md#storage-tiers)可用。 您可以使用 Azure PowerShell 预览模块或 Azure CLI 创建热或冷文件共享。 
+
+# <a name="portal"></a>[门户](#tab/azure-portal)
+Azure 门户尚不支持创建热和冷文件共享，或者将现有事务优化文件共享移动到 "热" 或 "冷"。 请查看使用 PowerShell 或 Azure CLI 创建文件共享的说明。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+```PowerShell
+# Update the Azure storage module to use the preview version. You may need to close and 
+# reopen PowerShell before running this command. If you are running PowerShell 5.1, ensure 
+# the following:
+# - Run the below cmdlets as an administrator.
+# - Have PowerShellGet 2.2.3 or later. Uncomment the following line to check.
+# Get-Module -ListAvailable -Name PowerShellGet
+Remove-Module -Name Az.Storage -ErrorAction SilentlyContinue
+Uninstall-Module -Name Az.Storage
+Install-Module -Name Az.Storage -RequiredVersion "2.1.1-preview" -AllowClobber -AllowPrerelease 
+
+# Assuming $resourceGroupName and $storageAccountName from earlier in this document have already
+# been populated. The access tier parameter may be TransactionOptimized, Hot, or Cool for GPv2 
+# storage accounts. Standard tiers are only available in standard storage accounts. 
+$shareName = "myhotshare"
+
+New-AzRmStorageShare `
+    -ResourceGroupName $resourceGroupName `
+    -StorageAccountName $storageAccountName `
+    -Name $shareName `
+    -AccessTier Hot
+
+# You can also change an existing share's tier.
+Update-AzRmStorageShare `
+    -ResourceGroupName $resourceGroupName `
+    -StorageAccountName $storageAccountName `
+    -Name $shareName `
+    -AccessTier Cool
+```
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+最新 Azure CLI 更新中提供了用于创建或将文件共享移动到特定层的功能。 更新 Azure CLI 特定于所使用的操作系统/Linux 分发。 有关如何更新系统上 Azure CLI 的说明，请参阅 [安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。
+
+```bash
+# Assuming $resourceGroupName and $storageAccountName from earlier in this document have already
+# been populated. The access tier parameter may be TransactionOptimized, Hot, or Cool for GPv2
+# storage accounts. Standard tiers are only available in standard storage accounts.
+shareName="myhotshare"
+
+az storage share-rm create \
+    --resource-group $resourceGroupName \
+    --storage-account $storageAccountName \
+    --name $shareName \
+    --access-tier "Hot"
+```
+---
+
 ## <a name="next-steps"></a>后续步骤
-- [规划 Azure 文件部署](storage-files-planning.md)或[计划部署 Azure 文件同步](storage-sync-files-planning.md)。 
+- [规划 Azure 文件部署](storage-files-planning.md) 或 [计划部署 Azure 文件同步](storage-sync-files-planning.md)。 
 - [网络概述](storage-files-networking-overview.md)。
 - 在 [Windows](storage-how-to-use-files-windows.md)、[macOS](storage-how-to-use-files-mac.md) 与 [Linux](storage-how-to-use-files-linux.md) 上连接和装载文件共享。
