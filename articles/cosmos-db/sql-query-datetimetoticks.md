@@ -4,20 +4,20 @@ description: 了解 Azure Cosmos DB 中的 SQL 系统函数 DateTimeToTicks。
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/14/2020
+ms.date: 08/18/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: a6fcff691ee5278ed0a9e1c132f8ecebbee9431c
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 2e2c9e8f2bf0d4760bf030fb19a90737cdb54525
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227017"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605137"
 ---
 # <a name="datetimetoticks-azure-cosmos-db"></a>DateTimeToTicks (Azure Cosmos DB) 
 
-将指定的 DateTime 转换为刻度。 一个计时周期表示一百纳秒，即一千万分之一秒。
-  
+将指定的 DateTime 转换为刻度。 一个计时周期表示一百纳秒，即一千万分之一秒。 
+
 ## <a name="syntax"></a>语法
   
 ```sql
@@ -31,9 +31,9 @@ DateTimeToTicks (<DateTime>)
 
 ## <a name="return-types"></a>返回类型
 
-返回一个正整数值。
+返回一个有符号的数字值，从 Unix epoch 开始，当前的100毫微秒计时周期数。 换句话说，DateTimeToTicks 返回自00:00:00 星期四（100年 1 1970 月1日）起已经过的毫微秒计时周期数。
 
-## <a name="remarks"></a>备注
+## <a name="remarks"></a>注解
 
 `undefined`如果 DateTime 不是有效的 ISO 8601 datetime，则 DateTimeDateTimeToTicks 将返回
 

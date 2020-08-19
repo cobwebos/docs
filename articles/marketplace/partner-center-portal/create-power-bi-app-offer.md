@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 4705919f9c6c11678984c016716fe38cb6191557
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 5b9752107aac1f90a67fb7c87a14492a74a124aa
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030738"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604645"
 ---
-# <a name="create-a-power-bi-app-offer"></a>创建 Power BI 应用服务
+# <a name="create-a-power-bi-app-offer"></a>创建 Power BI 应用套餐
 
 本文介绍如何创建 Power BI 应用程序产品/服务并发布到 Microsoft [AppSource](https://appsource.microsoft.com/)。
 
@@ -29,7 +29,7 @@ ms.locfileid: "88030738"
    ![阐释左侧导航菜单。](./media/new-offer-power-bi-app.png)
 
 > [!NOTE]
-> 发布产品/服务后，在合作伙伴中心对其进行的编辑仅在重新发布该产品/服务后才会显示在店面中。 确保在进行更改后始终重新发布。
+> 发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅会在重新发布产品/服务后出现在联机商店中。 确保在进行更改后始终重新发布。
 
 > [!IMPORTANT]
 > 如果未显示或未启用“Power BI 服务应用”，则帐户无权创建此产品/服务类型。 请检查是否已满足此产品/服务类型的所有[要求](create-power-bi-app-overview.md)，包括开发人员帐户注册。
@@ -55,10 +55,10 @@ ms.locfileid: "88030738"
 
 它包含用于根据你所做的选择对此产品/服务执行操作的链接。 例如：
 
-- 如果产品/服务是草稿版的草稿[提议](update-existing-offer.md#delete-a-draft-offer)) 
-- 如果产品/服务是实时的，则[停止销售该产品/服务](update-existing-offer.md#stop-selling-an-offer-or-plan)) 
+- 如果产品/服务是草稿版的草稿 [提议](update-existing-offer.md#delete-a-draft-offer)) 
+- 如果产品/服务是实时的，则 [停止销售该产品/服务](update-existing-offer.md#stop-selling-an-offer-or-plan)) 
 - 如果[产品/服务为预览版) ](publishing-status.md#publisher-approval)
-- 如果尚未完成发布服务器注销-请[取消发布](update-existing-offer.md#cancel-publishing)) 
+- 如果尚未完成发布服务器注销-请 [取消发布](update-existing-offer.md#cancel-publishing)) 
 
 ## <a name="offer-setup"></a>产品/服务设置
 
@@ -97,9 +97,9 @@ ms.locfileid: "88030738"
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
 - 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
-- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用**"。
 
-请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
+请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
 
 ### <a name="industry"></a>行业
 
@@ -257,4 +257,4 @@ ms.locfileid: "88030738"
 
 若要提交产品/服务进行发布，请选择“发布”。
 
-我们会向你发送电子邮件，让你知道何时有预览版产品/服务可供审阅和审核。 若要将产品/服务发布到公众，请前往 "合作伙伴中心" 并选择 "**上线**"。
+我们会向你发送电子邮件，让你知道何时有预览版产品/服务可供审阅和审核。 若要将产品/服务发布到公众，请前往 "合作伙伴中心" 并选择 " **上线**"。

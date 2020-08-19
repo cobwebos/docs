@@ -7,12 +7,12 @@ ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
-ms.openlocfilehash: 4d2a884bd6fd4cb62aa7cae5f3e53b865082fde8
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 75c604df2f44e9c732fa9c2ce2093237e4e484a4
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166597"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606055"
 ---
 # <a name="create-a-managed-service-offer"></a>创建托管服务产品
 
@@ -29,7 +29,7 @@ ms.locfileid: "88166597"
     ![左侧导航菜单图示。](./media/new-offer-managed-service.png)
 
 >[!NOTE]
->发布产品/服务后，在合作伙伴中心对其进行的编辑仅在重新发布该产品/服务后才会显示在店面中。 确保在进行更改后始终重新发布。
+>发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅会在重新发布产品/服务后出现在联机商店中。 确保在进行更改后始终重新发布。
 
 ## <a name="new-offer"></a>新产品/服务
 
@@ -85,7 +85,7 @@ ms.locfileid: "88166597"
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. 标题
+1. Title
 2. 说明
 3. 有用链接
 4. 屏幕截图

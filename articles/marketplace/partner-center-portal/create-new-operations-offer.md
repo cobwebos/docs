@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 553fd4e49d274fcf4c25356764182d54b91149e4
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: bdce311efbe7e41e09a3be76562c6be752a4b5c1
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036634"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606104"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations 产品/服务
 
@@ -32,7 +32,7 @@ ms.locfileid: "88036634"
     ![展示了左侧导航菜单。](./media/new-offer-dynamics-365-operations.png)
 
 > [!NOTE]
-> 在产品/服务发布后，在合作伙伴中心内对它进行的编辑只会在产品/服务重新发布后才显示在店面中。 请务必在进行更改后始终进行重新发布。
+> 发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅会在重新发布产品/服务后出现在联机商店中。 请务必在进行更改后始终进行重新发布。
 
 ## <a name="new-offer"></a>新产品/服务
 
@@ -71,7 +71,7 @@ ms.locfileid: "88036634"
 
 ### <a name="test-drive"></a>体验版
 
-体验版是一种向潜在客户展示你的产品/服务的好方法，让他们可以选择“先试后买”，从而提高转化率，并开发出高质量的潜在客户。 若要了解详细信息，请从[什么是测试驱动器](../what-is-test-drive.md)开始。
+体验版是一种向潜在客户展示你的产品/服务的好方法，让他们可以选择“先试后买”，从而提高转化率，并开发出高质量的潜在客户。 若要了解详细信息，请从 [什么是测试驱动器](../what-is-test-drive.md)开始。
 
 若要在固定时间段内启用体验版，请选中“启用体验版”复选框。 若要从产品/服务中删除体验版，请取消选中此复选框。
 
@@ -92,9 +92,9 @@ ms.locfileid: "88036634"
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
 - 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
-- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用**"。
 
-请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
+请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
 
 ### <a name="industry"></a>行业
 
@@ -260,11 +260,11 @@ ms.locfileid: "88036634"
 
 ## <a name="test-drive-technical-configuration"></a>体验版技术配置
 
-可使用此页设置演示（“体验版”），让客户可在购买之前试用你的产品/服务。 有关详细信息[，请参阅什么是测试驱动器](../what-is-test-drive.md)。
+可使用此页设置演示（“体验版”），让客户可在购买之前试用你的产品/服务。 有关详细信息 [，请参阅什么是测试驱动器](../what-is-test-drive.md)。
 
 若要启用体验版，请在[“产品/服务设置”](#test-drive)选项卡上选中“启用体验版”复选框。若要从产品/服务中删除体验版，请取消选中此复选框。
 
-完成设置测试驱动器后，请选择 "**保存草稿**"，然后继续。
+完成设置测试驱动器后，请选择 " **保存草稿** "，然后继续。
 
 ## <a name="supplemental-content"></a>补充内容
 
@@ -298,7 +298,7 @@ ms.locfileid: "88036634"
     - 未开始 - 尚未涉及此部分，应完成。
     - 未完成 - 此部分包含需要修复的错误或需要提供详细信息。 返回到一个或多个相应部分并进行更新。
     - 完成 - 此部分已完成，已提供所有必需的数据，并且没有错误。 产品/服务的所有部分都必须处于完成状态，然后才能提交产品/服务。
-- 在“认证说明”部分，除了有助于理解应用的任何补充说明之外，还可以向认证团队提供测试说明，以确保应用得到正确测试。 有关测试说明和完成首次发布的详细信息，请参阅[AppSource Dynamics 365 财务和操作功能验证](https://docs.microsoft.com/azure/marketplace/dynamics-365-finance-operations-functional-validation)。
+- 在“认证说明”部分，除了有助于理解应用的任何补充说明之外，还可以向认证团队提供测试说明，以确保应用得到正确测试。 有关测试说明和完成首次发布的详细信息，请参阅 [AppSource Dynamics 365 财务和操作功能验证](https://docs.microsoft.com/azure/marketplace/dynamics-365-finance-operations-functional-validation)。
 - 通过选择“提交”来提交要发布的产品/服务。 我们将向你发送一封电子邮件，告知你产品/服务的预览版本可供评审和审批。 返回到 "合作伙伴中心"，并选择 "产品 **/** 服务"，将产品/服务发布到公共产品/服务。
 
 ## <a name="next-step"></a>后续步骤

@@ -7,27 +7,28 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: ff77d6cad60b459b1fe6a4f83641c7aebe204dfa
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: e65fecb70b7e3adf009396c0daa00fc50b81b519
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460093"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604533"
 ---
 # <a name="manage-the-mobility-agent"></a>管理移动代理 
 
 使用 Azure Site Recovery 进行从 VMware VM 和物理服务器到 Azure 的灾难恢复时，请在服务器上设置移动代理。 移动代理协调受保护计算机、配置服务器/横向扩展进程服务器之间的通信，并管理数据复制。 本文概述了在部署移动代理后对其进行管理时要执行的常见任务。
 
 >[!TIP]
->若要下载特定 OS/Linux 发行版的安装程序，请参阅[此处](vmware-physical-mobility-service-overview.md#locate-installer-files)的指南。 若要从门户自动更新，无需下载安装程序。 [ASR 自动从配置服务器中提取安装程序并更新代理](#update-mobility-service-from-azure-portal)。
+>若要下载特定 OS/Linux 发行版的安装程序，请参阅 [此处](vmware-physical-mobility-service-overview.md#locate-installer-files)的指南。 若要从门户自动更新，无需下载安装程序。 [ASR 自动从配置服务器中提取安装程序并更新代理](#update-mobility-service-from-azure-portal)。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="update-mobility-service-from-azure-portal"></a>从 Azure 门户更新移动服务
 
 1. 开始在受保护的计算机上更新移动服务之前，请确保部署中的配置服务器、横向扩展进程服务器及所有主目标服务器均已更新。
-2. 在门户中打开保管库 >“复制的项”。 
-3. 如果配置服务器是最新版本，则会看到一条通知，指出“新的 Site Recovery 复制代理更新已可用。 单击可安装。”
+    1. 从 [9.36 版本](https://support.microsoft.com/help/4578241/) 开始，对于 SUSE LINUX ENTERPRISE SERVER 11 SP4，请确保 [配置服务器和横向扩展进程服务器上有](vmware-physical-mobility-service-overview.md#download-latest-mobility-agent-installer-for-suse-11-sp3-server)最新的安装程序。
+1. 在门户中打开保管库 >“复制的项”。 
+1. 如果配置服务器是最新版本，则会看到一条通知，指出“新的 Site Recovery 复制代理更新已可用。 单击可安装。”
 
      ![“复制的项”窗口](./media/vmware-azure-install-mobility-service/replicated-item-notif.png)
 
@@ -54,7 +55,7 @@ Update-AzRecoveryServicesAsrMobilityService -ReplicationProtectedItem $rpi -Acco
 2. 根据服务器的操作系统[找到代理安装程序](vmware-physical-mobility-service-overview.md#locate-installer-files)。
 
 >[!IMPORTANT]
-> 如果要在不同的 Azure 区域之间复制 Azure IaaS VM，请不要使用此方法。 有关所有可用选项的信息，请参阅[我们的指南](azure-to-azure-autoupdate.md)。
+> 如果要在不同的 Azure 区域之间复制 Azure IaaS VM，请不要使用此方法。 有关所有可用选项的信息，请参阅 [我们的指南](azure-to-azure-autoupdate.md) 。
 
 3. 将安装文件复制到受保护的计算机上，并运行该文件以更新移动代理。
 

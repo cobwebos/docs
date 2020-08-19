@@ -3,12 +3,12 @@ title: 在 Azure 实验室服务中配置实验室的 Vm 自动关闭
 description: 了解如何启用或禁用在断开远程桌面连接时自动关闭 VM。
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 7941a3eed502f2329f5d2acf244eec7cef322615
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3188117ac651f31057b4db88e32dfb42c45abb60
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589753"
+ms.locfileid: "88604884"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab"></a>配置实验室的 Vm 自动关闭
 
@@ -22,7 +22,7 @@ ms.locfileid: "88589753"
 
 若要详细了解自动关闭功能，请参阅 [自动关闭设置的最大化成本控制](cost-management-guide.md#maximize-cost-control-with-auto-shutdown-settings) 部分。
 
-实验室帐户管理员可以为你在其中创建实验室的实验室帐户配置此设置。 有关详细信息，请参阅[为实验室帐户配置“断开连接时自动关闭 VM”](how-to-configure-lab-accounts.md)。 作为实验室所有者，你可以在创建实验室时或在创建实验室后重写该设置。 
+实验室帐户管理员可以为你在其中创建实验室的实验室帐户配置此设置。 有关详细信息，请参阅 [配置实验室帐户的 vm 自动关闭](how-to-configure-lab-accounts.md)。 作为实验室所有者，你可以在创建实验室时或在创建实验室后重写该设置。 
 
 ## <a name="configure-for-the-lab-level"></a>为实验室级别配置
 

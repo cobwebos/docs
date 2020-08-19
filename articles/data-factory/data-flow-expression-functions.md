@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 43623e6841c3776e6e83453ad9cb47549fc16021
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: b48fc6ad448b829bb399c151d3f1507c804ad471
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170286"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605110"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>映射数据流中的数据转换表达式
 
@@ -101,21 +101,13 @@ ___
 <code><b>byNames(<i>&lt;column names&gt;</i> : array, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
 在流中按名称选择列的数组。 可以将可选流名称作为第二个参数传递。 如果有多个匹配项，则返回第一个匹配项。 如果列没有匹配项，则整个输出为 NULL 值。 返回的值需要类型转换函数（toDate、toString...）。设计时已知的列名应该只按名称进行寻址。 不支持计算输入，但可以使用参数替换。
 * ``toString(byNames(['parent', 'child']))``
-* ````
 * ``byNames(['parent']) ? string``
-* ````
 * ``toLong(byNames(['income']))``
-* ````
 * ``byNames(['income']) ? long``
-* ````
 * ``toBoolean(byNames(['foster']))``
-* ````
 * ``toLong(byNames($debtCols))``
-* ````
 * ``toString(byNames(['a Column']))``
-* ````
 * ``toString(byNames(['a Column'], 'DeriveStream'))``
-* ````
 * ``byNames(['orderItem']) ? (itemName as string, itemQty as integer)``
 ___
 ### <code>byPosition</code>
@@ -354,7 +346,7 @@ ___
 ___
 ### <code>iif</code>
 <code><b>iif(<i>&lt;condition&gt;</i> : boolean, <i>&lt;true_expression&gt;</i> : any, [<i>&lt;false_expression&gt;</i> : any]) => any</b></code><br/><br/>
-根据条件应用一个值或另一个值。 如果未指定另一个值，则将它视为 NULL。 这两个值都必须兼容 (numeric，string ... ) 。* ``iif(10 + 20 == 30, 'dumbo', 'gumbo') -> 'dumbo'``  
+根据条件应用一个值或另一个值。 如果未指定另一个值，则将它视为 NULL。 这两个值都必须兼容 (numeric，string ... ) 。 * ``iif(10 + 20 == 30, 'dumbo', 'gumbo') -> 'dumbo'``  
 * ``iif(10 > 30, 'dumbo', 'gumbo') -> 'gumbo'``  
 * ``iif(month(toDate('2018-12-01')) == 12, 345.12, 102.67) -> 345.12``  
 ___
@@ -968,7 +960,7 @@ ___
 <code><b>year(<i>&lt;value1&gt;</i> : datetime) => integer</b></code><br/><br/>
 获取日期的年份值。  
 * ``year(toDate('2012-8-8')) -> 2012``  
-##聚合函数下面的函数仅可用于聚合、透视、逆透视和窗口转换。
+## 聚合函数下面的函数仅可用于聚合、透视、逆透视和窗口转换。
 ___
 ### <code>avg</code>
 <code><b>avg(<i>&lt;value1&gt;</i> : number) => number</b></code><br/><br/>
@@ -1161,7 +1153,7 @@ ___
 <code><b>varianceSampleIf(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : number) => double</b></code><br/><br/>
 基于条件，获取列的无偏差方差。  
 * ``varianceSampleIf(region == 'West', sales)``  
-##窗口函数只能在窗口转换中使用以下函数。
+## 窗口函数只能在窗口转换中使用以下函数。
 ___
 ### <code>cumeDist</code>
 <code><b>cumeDist() => integer</b></code><br/><br/>

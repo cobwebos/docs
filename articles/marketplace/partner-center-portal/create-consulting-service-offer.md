@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: f020d3e98a5c13848a67ed4d8c9ded485b2f9450
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: f8ddbc66b8e7775fa35d2407bf3aa8614fe8e835
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88032588"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606156"
 ---
 # <a name="create-a-consulting-service-offer"></a>创建咨询服务套餐
 
@@ -38,7 +38,7 @@ ms.locfileid: "88032588"
     ![阐释左侧导航菜单。](./media/new-offer-consulting-service.png)
 
 >[!NOTE]
->发布产品/服务后，在合作伙伴中心对其进行的编辑仅在重新发布该产品/服务后才会显示在店面中。 确保在进行更改后始终重新发布。
+>发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅会在重新发布产品/服务后出现在联机商店中。 确保在进行更改后始终重新发布。
 
 ## <a name="new-offer"></a>新产品/服务
 
@@ -96,9 +96,9 @@ ms.locfileid: "88032588"
     - **概念证明**：进行有限范围的实施，以确定解决方案是否满足客户的要求。
     - **研讨会**：在客户场地开展的交互式活动。 可以涉及到培训、简报、评估，或根据客户数据或环境制作的演示。
 
-3. 如果选择了 " **Azure**作为主要产品"，请选择最多三个**解决方案区域**。 这样会使 Azure 市场中的客户更轻松地找到你的产品/服务。 如果未选择 Azure，请跳过此步骤。
+3. 如果选择了 " **Azure** 作为主要产品"，请选择最多三个 **解决方案区域**。 这样会使 Azure 市场中的客户更轻松地找到你的产品/服务。 如果未选择 Azure，请跳过此步骤。
 
-    - 分析
+    - Analytics
     - 应用现代化
     - 存档
     - AI + 机器学习
@@ -115,9 +115,9 @@ ms.locfileid: "88032588"
     - 安全性
     - 存储
 
-1. 如果选择了 " **Azure**作为主要产品"，则可以选择最多六个**行业**。 这样会使 Azure 市场中的客户更轻松地找到你的产品/服务。 请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的行业完整列表。 如果未选择 "Azure"，请跳过此步骤。
+1. 如果选择了 " **Azure** 作为主要产品"，则可以选择最多六个 **行业**。 这样会使 Azure 市场中的客户更轻松地找到你的产品/服务。 请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的行业完整列表。 如果未选择 "Azure"，请跳过此步骤。
 1. 如果选择了除 Azure 之外的主产品，则最多选择三个适用的产品。 这样会使 AppSource 中的客户更轻松地找到你的产品/服务。 有关详细信息，请参阅 [Microsoft AppSource 咨询服务列出准则](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF)。
-1. 如果选择了除*Azure 之外的主要产品，* 可以选择最多选择**两个行业和两****个行业**。 这样会使 AppSource 中的客户更轻松地找到你的产品/服务。 请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的行业和纵向完整列表。
+1. 如果选择了除*Azure 之外的主要产品，* 可以选择最多选择**两个行业和两****个行业**。 这样会使 AppSource 中的客户更轻松地找到你的产品/服务。 请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的行业和纵向完整列表。
 1. 最多添加贵公司已赢得的三个资格，以显示在咨询服务产品列表中。 至少需要一个资格，Azure 专家 MSP 和 Azure 网络 MSP 除外。
 
 选择“保存草稿”，然后继续。

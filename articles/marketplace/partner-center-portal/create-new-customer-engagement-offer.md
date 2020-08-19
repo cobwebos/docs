@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 000413267d09f5f51ffdb50ccc5aeaab78a18b5e
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 159cdef6b2c831e8c20d7249334bebac4f2061c5
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036651"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606124"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>创建 Dynamics 365 for Customer Engagement & PowerApps 产品/服务
 
@@ -29,7 +29,7 @@ ms.locfileid: "88036651"
     ![展示了左侧导航菜单。](./media/new-offer-dynamics-365-customer-engagement-powerapps.png)
 
 > [!NOTE]
-> 在产品/服务发布后，在合作伙伴中心内对它进行的编辑只会在产品/服务重新发布后才显示在店面中。 确保在进行更改后始终重新发布。
+> 发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅会在重新发布产品/服务后出现在联机商店中。 确保在进行更改后始终重新发布。
 
 ## <a name="new-offer"></a>新产品/服务
 
@@ -73,7 +73,7 @@ ms.locfileid: "88036651"
 
 ### <a name="test-drive"></a>体验版
 
-体验版是一种向潜在客户展示你的产品/服务的好方法，它为潜在客户提供“在购买前试用”这一选择，从而提高了转化率并开发出优质的潜在顾客。 若要了解详细信息，请从[什么是测试驱动器](../what-is-test-drive.md)开始。
+体验版是一种向潜在客户展示你的产品/服务的好方法，它为潜在客户提供“在购买前试用”这一选择，从而提高了转化率并开发出优质的潜在顾客。 若要了解详细信息，请从 [什么是测试驱动器](../what-is-test-drive.md)开始。
 
 若要在固定时间段内启用体验版，请选中“启用体验版”复选框。 若要从产品/服务中删除体验版，请清除此复选框。
 
@@ -94,9 +94,9 @@ ms.locfileid: "88036651"
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
 - 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
-- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用**"。
 
-请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
+请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。
 
 ### <a name="industry"></a>行业
 
@@ -278,11 +278,11 @@ ms.locfileid: "88036651"
 
 ## <a name="test-drive-technical-configuration"></a>体验版技术配置
 
-可使用此页设置演示（“体验版”），让客户可在购买之前试用你的产品/服务。 有关详细信息[，请参阅什么是测试驱动器](../what-is-test-drive.md)。
+可使用此页设置演示（“体验版”），让客户可在购买之前试用你的产品/服务。 有关详细信息 [，请参阅什么是测试驱动器](../what-is-test-drive.md)。
 
 若要启用体验版，请在[“产品/服务设置”](#test-drive)选项卡上选中“启用体验版”复选框。若要从产品/服务中删除体验版，请取消选中此复选框。
 
-完成设置测试驱动器后，请选择 "**保存草稿**"，然后继续。
+完成设置测试驱动器后，请选择 " **保存草稿** "，然后继续。
 
 ## <a name="supplemental-content"></a>补充内容
 

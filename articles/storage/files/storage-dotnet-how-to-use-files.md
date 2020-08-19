@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bbee9881addf66d762f1eadb837e5a4e41bf79de
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 7ef9d87db1981c7721c2398e858404c2527dd274
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167889"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605793"
 ---
 # <a name="develop-for-azure-files-with-net"></a>使用 .NET 针对 Azure 文件进行开发
 
@@ -99,7 +99,7 @@ API | 何时使用 | 说明
 ```
 
 > [!NOTE]
-> 最新版本的 Azure 存储模拟器不支持 Azure 文件。 连接字符串必须针对云中要使用 Azure 文件的 Azure 存储帐户。
+> 最新版本的 Azure 存储模拟器和 Azurite 开源模拟器不支持 Azure 文件。 连接字符串必须针对云中要使用 Azure 文件的 Azure 存储帐户。
 
 ## <a name="add-using-directives"></a>添加 using 指令
 
@@ -424,7 +424,7 @@ CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTim
 
 Azure 存储分析现在支持用于 Azure 文件的指标。 使用指标数据，可以跟踪请求和诊断问题。
 
-可以从[Azure 门户](https://portal.azure.com)为 Azure 文件启用指标。 还可以通过 REST API 或存储客户端库中的类似物之一调用“设置文件服务属性”操作，以编程方式启用指标。
+可以从 [Azure 门户](https://portal.azure.com)为 Azure 文件启用指标。 还可以通过 REST API 或存储客户端库中的类似物之一调用“设置文件服务属性”操作，以编程方式启用指标。
 
 以下代码示例演示如何使用适用于 .NET 的存储客户端库启用 Azure 文件的指标。
 

@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 6140d369c2dbc0968d2f28ff6b8cf447dd721d10
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 7500eddc2416a1cb705ef207930c5fe4c6f1068a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166716"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604753"
 ---
 # <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>在商业应用商店中创建 SaaS 产品/服务
 
 若要开始在商业市场中创建软件即服务 (SaaS) 产品/服务，请确保先[创建合作伙伴中心帐户](./create-account.md)，然后打开[商业市场仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)，并选择“概述”选项卡。
 
 > [!NOTE]
-> 如果要创建事务 SaaS 产品/服务，请确保实现与[SaaS 履单 api](./pc-saas-fulfillment-apis.md)的集成。  与 Api 的集成是 transactability 在 Marketplace 中的唯一工作方式。 还需要确保你的应用在 (SSO) 上使用 Azure AD 身份验证和单一登录。 请参阅[商业应用商店中的 Azure AD 和事务 SaaS 产品](../azure-ad-saas.md)。
+> 如果要创建事务 SaaS 产品/服务，请确保实现与 [SaaS 履单 api](./pc-saas-fulfillment-apis.md)的集成。  与 Api 的集成是 transactability 在 Marketplace 中的唯一工作方式。 还需要确保你的应用在 (SSO) 上使用 Azure AD 身份验证和单一登录。 请参阅 [商业应用商店中的 Azure AD 和事务 SaaS 产品](../azure-ad-saas.md)。
 
 ## <a name="create-a-new-offer"></a>创建新套餐
 
@@ -30,7 +30,7 @@ ms.locfileid: "88166716"
    ![左侧导航菜单图示。](./media/new-offer-saas.png)
 
 > [!NOTE]
-> 在产品/服务发布后，在合作伙伴中心内对它进行的编辑只会在产品/服务重新发布后才显示在店面中。 确保在进行更改后始终重新发布。
+> 发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅会在重新发布产品/服务后出现在联机商店中。 确保在进行更改后始终重新发布。
 
 ## <a name="new-offer"></a>新产品/服务
 
@@ -97,7 +97,7 @@ SaaS 产品/服务支持根据固定费用、每位用户按月或按年计费�
 - 在此示例中，Microsoft 向客户收取 $100.00 美元的软件许可证费用，并向发布者支付 $80.00 美元。
 
 > [!NOTE]
-> **降低 Marketplace 服务费用**–对于在商业市场上发布的特定 SaaS 产品/服务，microsoft 将从 20% (降低其 Marketplace 服务费用，如 Microsoft Publisher 协议) 到10% 中所述。 为了使你的产品/服务 () 合格，你的产品/服务 () 必须已由 Microsoft 指定为 Azure IP 共同销售 incentivized。 至少必须在每个日历月结束之前至少满足5个 (5) 的工作日内才能接收该月的降低 Marketplace 服务费用。 降低的 Marketplace 服务费用还适用于 Azure IP 共同销售 incentivized Vm、托管应用以及通过商业市场提供的任何其他合格事务 IaaS 产品/服务。
+> **降低 Marketplace 服务费用** –对于在商业市场上发布的特定 SaaS 产品/服务，microsoft 将从 20% (降低其 Marketplace 服务费用，如 Microsoft Publisher 协议) 到10% 中所述。 为了使你的产品/服务 () 合格，你的产品/服务 () 必须已由 Microsoft 指定为 Azure IP 共同销售 incentivized。 至少必须在每个日历月结束之前至少满足5个 (5) 的工作日内才能接收该月的降低 Marketplace 服务费用。 降低的 Marketplace 服务费用还适用于 Azure IP 共同销售 incentivized Vm、托管应用以及通过商业市场提供的任何其他合格事务 IaaS 产品/服务。
 
 ### <a name="list-through-microsoft"></a>通过 Microsoft 列出
 
@@ -105,11 +105,11 @@ SaaS 产品/服务支持根据固定费用、每位用户按月或按年计费�
 
 #### <a name="get-it-now-free"></a>立即获取（免费）
 
-通过提供有效的地址 (以*http*或*https*) 开头向客户免费列出你的产品/服务，他们可以使用 Azure Active Directory (Azure AD) ) 来通过[一次单击身份验证](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)获得试用。 例如，`https://contoso.com/saas-app` 。
+通过提供有效的地址 (以 *http* 或 *https*) 开头向客户免费列出你的产品/服务，他们可以使用 Azure Active Directory (Azure AD) ) 来通过 [一次单击身份验证 ](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials) 获得试用。 例如，`https://contoso.com/saas-app` 。
 
 #### <a name="free-trial-listing"></a>免费试用版（列出）
 
-向客户列出你的产品/服务，其中包含到免费试用版的链接，方法是：提供有效的地址 (（以*http*或*https*) 开头），他们可以[使用 Azure Active Directory (Azure AD) ) 来通过一次单击身份验证](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials)获得试用。 例如，`https://contoso.com/trial/saas-app` 。 产品/服务列表免费试用版由你的服务创建、管理和配置，并且不包含由 Microsoft 管理的订阅。
+向客户列出你的产品/服务，其中包含到免费试用版的链接，方法是：提供有效的地址 (（以 *http* 或 *https*) 开头），他们可以 [使用 Azure Active Directory (Azure AD) ) 来通过一次单击身份验证 ](../marketplace-saas-applications-technical-publishing-guide.md#using-azure-active-directory-to-enable-trials) 获得试用。 例如，`https://contoso.com/trial/saas-app` 。 产品/服务列表免费试用版由你的服务创建、管理和配置，并且不包含由 Microsoft 管理的订阅。
 
 > [!NOTE]
 > 应用程序将通过试用链接收到的令牌只能用于通过 Azure AD 获取用户信息，从而在应用中自动创建帐户。 Microsoft 帐户 (MSA) 不支持使用此令牌进行身份验证。
@@ -144,7 +144,7 @@ SaaS 产品/服务支持根据固定费用、每位用户按月或按年计费�
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. 标题
+1. Title
 2. 说明
 3. 有用链接
 4. 屏幕截图
@@ -180,12 +180,12 @@ SaaS 产品/服务支持根据固定费用、每位用户按月或按年计费�
 
 ### <a name="category"></a>类别
 
-你的产品/服务将发布到 AppSource 或 Azure Marketplace，具体取决于与产品/服务关联的事务功能和你的类别选择。 有关详细信息，请参阅[比较 Microsoft AppSource 和 Azure Marketplace](../comparing-appsource-azure-marketplace.md) 。 选择最适合你的产品/服务和目标受众的类别和子类别。 选择：
+你的产品/服务将发布到 AppSource 或 Azure Marketplace，具体取决于与产品/服务关联的事务功能和你的类别选择。 有关详细信息，请参阅 [比较 Microsoft AppSource 和 Azure Marketplace](../comparing-appsource-azure-marketplace.md) 。 选择最适合你的产品/服务和目标受众的类别和子类别。 选择：
 
 - 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
-- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用**"。
 
-请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中适用于每个店面的类别和子类别的完整列表。
+请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中适用于每个在线商店的类别和子类别的完整列表。
 
 ### <a name="industries"></a>行业
 
@@ -282,14 +282,14 @@ Microsoft 提供标准协定模板。
 #### <a name="files-and-images"></a>文件和映像
 
 -  (必需) 的**文档**–为产品/服务添加相关营销文档（PDF 格式），其中至少有一个和多达三个文档。
-- **图像**–以 PNG 格式上传徽标图像：
+- **图像**  –以 PNG 格式上传徽标图像：
 
   - **小写** (48 x 48 像素，必需) 
   - **中型** (90 x 90 像素，必需) 
   - **大** (216 x 216 像素，必需) 
   - **宽** (255 x 115 像素)  (可选) 
 
-   这三种徽标尺寸用于商店中的不同位置：
+   这三种徽标大小用于在线商店中的不同位置：
 
    -   小徽标 (48 x 48 像素) 出现在 Azure Marketplace 搜索结果和 Microsoft AppSource 主页和 "搜索结果" 页上。 
    -   当你在 Microsoft Azure 中创建新资源时，将显示中等徽标 (90 x 90 像素) 。
@@ -325,20 +325,20 @@ Microsoft 提供标准协定模板。
 
 ## <a name="technical-configuration"></a>技术配置
 
-"**技术配置**" 选项卡定义 marketplace 用于与 SaaS 服务通信的技术详细信息。 通过此连接，我们可以为最终用户预配你的产品/服务，前提是他们选择获取和管理产品。
+" **技术配置** " 选项卡定义 marketplace 用于与 SaaS 服务通信的技术详细信息。 通过此连接，我们可以为最终用户预配你的产品/服务，前提是他们选择获取和管理产品。
 
 >[!NOTE]
->在产品/服务的详细信息中配置这些详细信息之前，必须实现与[SaaS 履单 api](./pc-saas-fulfillment-api-v2.md)的集成。 还必须创建一个登陆页面，应用必须通过单一登录 (SSO) 使用 Azure AD 身份验证。 有关详细信息，请参阅[商业应用商店中的 Azure AD 和事务 SaaS 产品](../azure-ad-saas.md)。
+>在产品/服务的详细信息中配置这些详细信息之前，必须实现与 [SaaS 履单 api](./pc-saas-fulfillment-api-v2.md) 的集成。 还必须创建一个登陆页面，应用必须通过单一登录 (SSO) 使用 Azure AD 身份验证。 有关详细信息，请参阅 [商业应用商店中的 Azure AD 和事务 SaaS 产品](../azure-ad-saas.md)。
 
-适用于[api](./pc-saas-fulfillment-api-v2.md)的文档中提供了介绍所收集字段的用法的关系图和详细说明。
+适用于 [api](./pc-saas-fulfillment-api-v2.md)的文档中提供了介绍所收集字段的用法的关系图和详细说明。
 
-- **登录页 url** (必需的) –定义 SAAS 网站 URL (例如) ： `https://contoso.com/signup` 最终客户从 marketplace 获取产品/服务后，最终客户将居住在其上，并从新创建的 SaaS 订阅触发配置过程。  此 URL 将与 marketplace 购买标识令牌参数一起调用，此参数唯一标识特定最终客户的 SaaS 购买。  必须使用[解析](./pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)API 为相应的 SaaS 订阅详细信息交换此标记。  应将这些详细信息以及要收集的任何其他内容用作客户交互式网页的一部分，以完成最终客户注册并激活其购买。  在此页上，用户应通过使用 Azure Active Directory (Azure AD) 注册一次单击身份验证。 <br> <br> 当最终用户从 Azure 门户或 M365 管理中心启动托管 SaaS 体验时，还将调用具有 marketplace 购买标识令牌参数的 URL。 你应在为新客户购买后首次提供令牌时处理两个流，并为现有客户提供该令牌，以便管理其 SaaS。 <br> <br> 你在此处配置的登录页面应已启动并运行24/7。 这是你在 marketplace 中新购买的 SaaS 产品或产品/服务的活动订阅的配置请求时，你将收到的通知。
+- **登录页 url** (必需的) –定义 SAAS 网站 URL (例如) ： `https://contoso.com/signup` 最终客户从 marketplace 获取产品/服务后，最终客户将居住在其上，并从新创建的 SaaS 订阅触发配置过程。  此 URL 将与 marketplace 购买标识令牌参数一起调用，此参数唯一标识特定最终客户的 SaaS 购买。  必须使用 [解析](./pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) API 为相应的 SaaS 订阅详细信息交换此标记。  应将这些详细信息以及要收集的任何其他内容用作客户交互式网页的一部分，以完成最终客户注册并激活其购买。  在此页上，用户应通过使用 Azure Active Directory (Azure AD) 注册一次单击身份验证。 <br> <br> 当最终用户从 Azure 门户或 M365 管理中心启动托管 SaaS 体验时，还将调用具有 marketplace 购买标识令牌参数的 URL。 你应在为新客户购买后首次提供令牌时处理两个流，并为现有客户提供该令牌，以便管理其 SaaS。 <br> <br> 你在此处配置的登录页面应已启动并运行24/7。 这是你在 marketplace 中新购买的 SaaS 产品或产品/服务的活动订阅的配置请求时，你将收到的通知。
 
 - **连接 webhook** (必需的) –对于 Microsoft 需要发送给你的所有异步事件 (例如，已取消 SaaS 订阅) ，我们需要你提供连接 webhook URL。 我们将调用此 URL 来通知你事件。 <br> <br> 提供的 webhook 应启动并运行24/7，因为这是你将会收到有关通过 marketplace 购买的客户 SaaS 订阅的更新的通知。  如果尚未准备好 webhook 系统，最简单的配置是创建一个 HTTP 终结点逻辑应用，该应用将侦听发送到该系统的任何事件，并适当地处理它们 (例如 `https://prod-1westus.logic.azure.com:443/work`) 。 有关详细信息，请参阅[在逻辑应用中使用 HTTP 终结点调用、触发或嵌套工作流](../../logic-apps/logic-apps-http-endpoint.md)。
 
-- **Azure AD 租户 ID** (必需) –在 Azure 门户内部，我们要求你[创建 Azure Active Directory (AD) 应用](../../active-directory/develop/howto-create-service-principal-portal.md)，以便我们可以验证两个服务之间的连接是否在经过身份验证的通信之后。 若要查找[租户 ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) ，请参阅 Azure Active Directory 并选择 "**属性**"，然后查找 (的**目录 ID**号，如 50c464d3-4930-494c-963c-1e951d15360e) 。
+- **Azure AD 租户 ID** (必需) –在 Azure 门户内部，我们要求你 [创建 Azure Active Directory (AD) 应用](../../active-directory/develop/howto-create-service-principal-portal.md) ，以便我们可以验证两个服务之间的连接是否在经过身份验证的通信之后。 若要查找 [租户 ID](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in)) ，请参阅 Azure Active Directory 并选择 " **属性**"，然后查找 (的 **目录 ID** 号，如 50c464d3-4930-494c-963c-1e951d15360e) 。
 
-- **Azure AD 应用 id** (必需) –还需要) 的[应用程序 id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) 。 若要获取其值，请转到 Azure Active Directory 并选择**应用注册**，然后查找 (列出的**应用程序 ID**号，例如 `50c464d3-4930-494c-963c-1e951d15360e`) 。
+- **Azure AD 应用 id** (必需) –还需要) 的 [应用程序 id](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) 。 若要获取其值，请转到 Azure Active Directory 并选择 **应用注册**，然后查找 (列出的 **应用程序 ID** 号，例如 `50c464d3-4930-494c-963c-1e951d15360e`) 。
 
 >[!NOTE]
 >Azure AD 应用 ID 关联到合作伙伴中心帐户中的发布者 ID。  请确保你的所有产品/服务中都使用相同的应用程序 ID。
@@ -352,7 +352,7 @@ Microsoft 提供标准协定模板。
 
 借助此页，可以在同一产品/服务中提供各种计划选项。 这些计划（有时称为 SKU）在版本、盈利或服务层级方面可能有所不同。 你必须至少设置一个计划才能在市场上销售你的产品/服务。
 
-最多可为每个产品创建100个计划：最多可为45个。 详细了解[Microsoft 商业应用商店](../private-offers.md)中的专用产品/服务。
+最多可为每个产品创建100个计划：最多可为45个。 详细了解 [Microsoft 商业应用商店](../private-offers.md)中的专用产品/服务。
 
 创建后，你将看到计划名称、ID、定价模型，可用性（公用或专用）、当前发布状态以及任何可用的操作。
 
@@ -484,7 +484,7 @@ Microsoft 提供标准协定模板。
   - **未完成** - 本部分包含需要修复的错误或需要提供详细信息。 需要返回该部分并进行更新。
   - **完成** - 该部分已完成，已提供所有必需的数据，并且没有错误。 产品/服务的所有部分都必须处于完成状态，然后才能提交产品/服务。
 - 向认证团队提供测试说明，以确保正确测试您的应用程序，以及任何有助于了解应用程序的补充说明。
-- 通过选择“提交”来提交要发布的产品/服务。 我们将向你发送一封电子邮件，告知你产品/服务的预览版本可供评审和审批。 返回到 "合作伙伴中心" 并选择 "**上线**"，将产品/服务发布到公共 (或专用用户) 。
+- 通过选择“提交”来提交要发布的产品/服务。 我们将向你发送一封电子邮件，告知你产品/服务的预览版本可供评审和审批。 返回到 "合作伙伴中心" 并选择 " **上线** "，将产品/服务发布到公共 (或专用用户) 。
 
 ## <a name="next-steps"></a>后续步骤
 

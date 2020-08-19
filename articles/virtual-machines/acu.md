@@ -9,16 +9,16 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
 ms.reviewer: davberg
-ms.openlocfilehash: 072e42f642de3daf3d0d03a706435cffa8953888
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 07d222139f48e91637405660ae0e0c65ef3acdb6
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543616"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605012"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure 计算单元 (ACU)
 
-Azure 计算单位 (ACU) 这一概念提供一种比较 Azure SKU 的计算 (CPU) 性能的方法。 这有助于轻松确定最有可能满足性能需求的 SKU。 ACU 目前在小型（Standard_A1） VM 为100，而所有其他 Sku 表示 SKU 在运行标准基准测试时大约快得多。
+Azure 计算单位 (ACU) 这一概念提供一种比较 Azure SKU 的计算 (CPU) 性能的方法。 这有助于轻松确定最有可能满足性能需求的 SKU。 ACU 目前在小型 (上进行了标准化 Standard_A1) VM 为100，而所有其他 Sku 表示 SKU 在运行标准基准测试时大约快得多
 
 *ACU 使用 Intel® Turbo 技术来增加 CPU 频率和提升性能。  性能提升程度可能因 VM 大小、工作负荷和同一主机上运行的其他工作负荷而有所不同。
 
@@ -69,7 +69,7 @@ Azure 计算单位 (ACU) 这一概念提供一种比较 Azure SKU 的计算 (CPU
 | [L4s - L32s](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [L8s_v2 - L80s_v2](lsv2-series.md) |150 - 175** | 2:1 |
 | [M](m-series.md) | 160 - 180 | 2:1\*\*\* |
-| [NV4](nvv4-series.md) |230-260 * * | 2:1 |
+| [NVv4](nvv4-series.md) |230-260 * * | 2:1 |
 
 有关各种大小的详细信息，请访问以下链接：
 

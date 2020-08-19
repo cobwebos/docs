@@ -5,12 +5,12 @@ author: rbest
 ms.author: rbest
 ms.date: 08/16/2020
 ms.topic: article
-ms.openlocfilehash: 98ce4d5e82d65d911984dc45615253ddcae33ae1
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 0aaa454df05cd8981b314abe238163caced7864c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589840"
+ms.locfileid: "88604593"
 ---
 # <a name="cost-management-for-azure-lab-services"></a>Azure 实验室服务的成本管理
 
@@ -129,8 +129,8 @@ ms.locfileid: "88589840"
     
 有关如何在断开连接时配置和启用 Vm 自动关闭的信息，请参阅以下文章：
 
-* [为实验室帐户配置“断开连接时自动关闭 VM”设置](how-to-configure-lab-accounts.md)
-* [启用在断开连接时自动关闭 VM](how-to-enable-shutdown-disconnect.md)
+* [为实验室帐户配置 Vm 自动关闭](how-to-configure-lab-accounts.md)
+* [配置实验室的 Vm 自动关闭](how-to-enable-shutdown-disconnect.md)
 
 ### <a name="quota-vs-scheduled-time"></a>配额与计划时间
 

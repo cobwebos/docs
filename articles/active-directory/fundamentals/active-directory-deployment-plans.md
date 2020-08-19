@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d839fc71992802e9ee2b6a66d0bc407c5caaecf
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 1f85d4203c0fe3978f776b418ab6d7850061416c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799049"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605369"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory 部署计划
 正在寻找有关部署 Azure Active Directory (Azure AD) 功能的端到端指南吗？ Azure AD 部署计划将引导你完成成功部署常见 Azure AD 功能所需的业务价值、规划注意事项和操作过程。
@@ -54,7 +54,7 @@ ms.locfileid: "87799049"
 
 在第一轮中，面向 IT、可用性和其他可测试和提供反馈的适当用户。 此反馈应该用于进一步开发您向用户发送的通信和说明，并深入了解支持人员可能会看到的问题类型。 
 
-将部署扩展到更大的用户组应通过增加)  (的组的范围来执行。 这可以通过[动态组成员身份](../users-groups-roles/groups-dynamic-membership.md)来完成，也可以通过手动将用户添加到目标组 () 。
+将部署扩展到更大的用户组应通过增加)  (的组的范围来执行。 这可以通过 [动态组成员身份](../users-groups-roles/groups-dynamic-membership.md)来完成，也可以通过手动将用户添加到目标组 () 。
 
 
 ## <a name="deploy-authentication"></a>部署身份验证
@@ -97,3 +97,4 @@ ms.locfileid: "87799049"
 | -| -|
 | [Privileged Identity Management](../privileged-identity-management/pim-deployment-plan.md)| Azure AD Privileged Identity Management (PIM) 可帮助跨 Azure AD、Azure 资源和其他 Microsoft 联机服务管理特权管理角色。 PIM 提供实时访问、请求审批工作流和完全集成的访问评审等解决方案，让用户可以实时识别、发现并防止特权角色的恶意活动。 |
 | [报告和监视](../reports-monitoring/plan-monitoring-and-reporting.md)| Azure AD 报告和监视解决方案的设计取决于你的法律、安全和运营要求以及你的现有环境和过程。 本文介绍各种设计选项，并指导您正确部署策略。 |
+| [访问评审](../governance/deploy-access-reviews.md) | 访问评审是您的管理策略的重要组成部分，它使您可以了解和管理谁有权访问的人员以及他们有权访问的内容。 本文可帮助你规划和部署访问评审，以实现所需的安全和协作 postures。 |
