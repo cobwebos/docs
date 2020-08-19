@@ -3,12 +3,12 @@ title: 管理知识库-QnA Maker
 description: QnA Maker 允许您通过提供对知识库设置和内容的访问权限来管理您的知识库。
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 4eb07b30b10826c361f4f9b805b517e372fc5ea1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 08736ce61e6768cfd9ac3d3ded7092a4ab93fca9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756800"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551772"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>创建知识库并管理设置
 
@@ -17,8 +17,8 @@ QnA Maker 允许您通过提供对知识库设置和数据源的访问权限来�
 ## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
-> * 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-> * 在 Azure 门户中创建[QnA Maker 资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 请记住你在创建资源时选择的 Azure Active Directory ID、订阅、QnA 资源名称。
+> * 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
+> * 在 Azure 门户中创建 [QnA Maker 资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) 。 请记住你在创建资源时选择的 Azure Active Directory ID、订阅、QnA 资源名称。
 
 ## <a name="create-a-knowledge-base"></a>创建知识库
 
@@ -36,7 +36,7 @@ QnA Maker 允许您通过提供对知识库设置和数据源的访问权限来�
 
    ![选择 QnA Maker 服务知识库的屏幕截图](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. 在**步骤 3**中，命名您的`My Sample QnA KB`知识库。
+1. 在 **步骤 3**中，命名您的知识库 `My Sample QnA KB` 。
 
 1. 在**步骤 4** 中，按照下表配置设置：
 
@@ -45,9 +45,9 @@ QnA Maker 允许您通过提供对知识库设置和数据源的访问权限来�
     |**允许从 URL、.pdf 或 .docx 文件进行多轮提取。**|已选中|
     |**默认答案文本**| `Quickstart - default answer not found.`|
     |**+ 添加 URL**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
-    |**聊天内容**|选择“专业” |
+    |**聊天内容**|选择“专业”|
 
-1. 在**步骤 5**中，选择 "**创建知识库**"。
+1. 在 **步骤 5**中，选择 " **创建知识库**"。
 
     提取过程需要一些时间来读取文档并确定问题和解答。
 
@@ -63,7 +63,7 @@ QnA Maker 允许您通过提供对知识库设置和数据源的访问权限来�
 
 1. 选择特定的知识库以对其进行编辑。
 
-1.  选择“设置”  。 以下列表包含可更改的字段。
+1.  选择“设置”。 以下列表包含可更改的字段。
 
        |目标|操作|
        |--|--|
@@ -71,10 +71,10 @@ QnA Maker 允许您通过提供对知识库设置和数据源的访问权限来�
        |删除 URL|可以通过选择删除图标（垃圾桶）来删除现有 URL。|
        |刷新内容|如果希望知识库抓取现有 URL 的最新内容，请选中“刷新”**** 复选框。 这将更新包含最新 URL 内容一次的知识库。 这不会设置定期更新计划。|
        |添加文件|可以通过选择“管理知识库”**** 并选择“+ 添加文件”**** 将受支持的文件文档添加为知识库的一部分。|
-    |导入|您还可以通过选择 "**导入知识库**" 按钮导入任何现有知识库。 |
+    |导入|您还可以通过选择 " **导入知识库** " 按钮导入任何现有知识库。 |
     |更新|知识库的更新取决于在创建与知识库关联的 QnA Maker 服务时使用的**管理定价层**。 如果需要，还可以从 Azure 门户更新管理层。
 
-  1. 完成对知识库的更改后，请选择页面右上角的 "**保存并训练**"，以便保存更改。
+  1. 完成对知识库的更改后，请选择页面右上角的 " **保存并训练** "，以便保存更改。
 
        ![保存和训练](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 
@@ -101,11 +101,11 @@ QnA Maker 允许您通过提供对知识库设置和数据源的访问权限来�
 
 删除知识库 (KB) 是一项永久性操作， 无法撤消。 删除知识库之前，应该从 QnA Maker 门户的“设置”**** 页导出知识库。
 
-如果与协作者共享知识库，] （base.md），然后将其删除，则所有人都无法访问 KB。
+如果与协作者共享知识库，] (collaborate-knowledge-base.md) 然后将其删除，每个人都不会失去访问权限。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何[管理](language-knowledge-base.md)资源中所有知识库的语言。
+了解如何 [管理](language-knowledge-base.md) 资源中所有知识库的语言。
 
 * 编辑 QnA 对
 * 管理 QnA Maker 使用的 Azure 资源

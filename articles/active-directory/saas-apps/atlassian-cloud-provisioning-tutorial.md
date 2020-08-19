@@ -2,28 +2,25 @@
 title: 教程：为 Atlassian Cloud 配置 Azure Active Directory 的自动用户预配 |Microsoft Docs
 description: 了解如何配置 Azure Active Directory 以自动将用户帐户预配到 Atlassian Cloud 并取消其预配。
 services: active-directory
-documentationcenter: ''
 author: zhchia
 writer: zhchia
-manager: beatrizd-msft
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 12e94cfd576ced8c0e2768dd508e7f6f1a0056eb
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 14418d4d280f4da629aecd5a95b5a49e6856e2c1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927464"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549380"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>教程：为 Atlassian Cloud 配置自动用户预配
 
-本教程的目的是演示要在 Atlassian Cloud 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置 Azure AD 自动将用户和/或组预配到[Atlassian 云](https://www.atlassian.com/licensing/cloud)。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
+本教程的目的是演示要在 Atlassian Cloud 和 Azure Active Directory (Azure AD) 中执行的步骤，以配置 Azure AD 自动将用户和/或组预配到 [Atlassian 云](https://www.atlassian.com/licensing/cloud)。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../manage-apps/user-provisioning.md)。 
 
 
 ## <a name="capabilities-supported"></a>支持的功能
@@ -32,7 +29,7 @@ ms.locfileid: "87927464"
 > * 如果用户不需要访问，请在 Atlassian 云中删除用户
 > * 使用户属性在 Azure AD 和 Atlassian Cloud 之间保持同步
 > * 在 Atlassian 云中预配组和组成员身份
-> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/atlassian-cloud-tutorial)到 Atlassian Cloud (推荐) 
+> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/atlassian-cloud-tutorial) 到 Atlassian Cloud (推荐) 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -46,15 +43,15 @@ ms.locfileid: "87927464"
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
 1. 了解[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
 2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
-3. 确定要[在 Azure AD 和 Atlassian Cloud 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。
+3. 确定要 [在 Azure AD 和 Atlassian Cloud 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。
 
-## <a name="step-2-configure-atlassian-cloud-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Atlassian 云以支持 Azure AD 的预配
+## <a name="step-2-configure-atlassian-cloud-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Atlassian 云以支持 Azure AD 的预配
 
-1. 导航到[Atlassian 组织管理器](https://admin.atlassian.com) **> 选择 "org > 目录"**。
+1. 导航到 [Atlassian 组织管理器](https://admin.atlassian.com) **> 选择 "org > 目录"**。
 
     ![Atlassian 云预配](./media/atlassian-cloud-provisioning-tutorial/select-directory.png)
 
-2. 单击 "**用户设置**"，然后单击 "**创建目录**"。 在 Azure AD 门户中的 Atlassian 云应用程序的 "设置" 选项卡中，复制将在 "**租户 url** " 和 "**机密令牌**" 字段中输入的**目录基 URL**和**持有者令牌**。
+2. 单击 " **用户设置** "，然后单击 " **创建目录**"。 在 Azure AD 门户中的 Atlassian 云应用程序的 "设置" 选项卡中，复制将在 "**租户 url** " 和 "**机密令牌**" 字段中输入的**目录基 URL**和**持有者令牌**。
 
     ![Atlassian 云预配 ](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![ Atlassian 云预配 ](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png) ![ Atlassian 云预配](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
 
@@ -67,7 +64,7 @@ ms.locfileid: "87927464"
 
 使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
 
-* 将用户和组分配到 Atlassian Cloud 时，必须选择 "**默认" 访问权限**以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
+* 将用户和组分配到 Atlassian Cloud 时，必须选择 " **默认" 访问权限**以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
 
 * 先小部分测试。 在向全员推出之前，请先使用少量的用户和组进行测试。 如果预配范围设置为分配的用户和组，则可以先尝试将一两个用户或组分配到应用。 当预配范围设置为所有用户和组时，可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
@@ -78,7 +75,7 @@ ms.locfileid: "87927464"
 
 ### <a name="to-configure-automatic-user-provisioning-for-atlassian-cloud-in-azure-ad"></a>若要在 Azure AD 中配置 Atlassian Cloud 的自动用户预配：
 
-1. 登录到[Azure 门户](https://portal.azure.com)，选择 "**企业应用程序**"，选择 "**所有应用程序**"，然后选择 " **Atlassian Cloud**"。
+1. 登录到 [Azure 门户](https://portal.azure.com) ，选择 " **企业应用程序**"，选择 " **所有应用程序**"，然后选择 " **Atlassian Cloud**"。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -94,7 +91,7 @@ ms.locfileid: "87927464"
 
     ![“预配”选项卡](common/provisioning-automatic.png)
 
-5. 在 "**管理员凭据**" 部分中，输入先前从 Atlassian 云帐户中检索到的**租户 URL**和**机密令牌**。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 Atlassian Cloud。 如果连接失败，请确保 Atlassian 云帐户具有管理员权限，然后重试。
+5. 在 " **管理员凭据** " 部分中，输入先前从 Atlassian 云帐户中检索到的 **租户 URL** 和 **机密令牌** 。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Atlassian Cloud。 如果连接失败，请确保 Atlassian 云帐户具有管理员权限，然后重试。
 
     ![租户 URL + 令牌](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -102,11 +99,11 @@ ms.locfileid: "87927464"
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存”  。
+7. 单击“保存” 。
 
-8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Atlassian Cloud**"。
+8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Atlassian Cloud**"。
 
-9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Atlassian Cloud 的用户属性。 选为 "**匹配**" 属性的属性用于匹配 Atlassian Cloud 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Atlassian Cloud 的用户属性。 选为 " **匹配** " 属性的属性用于匹配 Atlassian Cloud 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
    |Attribute|类型|
    |---|---|
@@ -116,9 +113,9 @@ ms.locfileid: "87927464"
    |name.givenName|字符串|
    |emails[type eq "work"].value|字符串|   
 
-10. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 组同步到 Atlassian Cloud**"。
+10. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 组同步到 Atlassian Cloud**"。
 
-11. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Atlassian Cloud 的组属性。 选为 "**匹配**" 属性的属性用于匹配 Atlassian Cloud 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
+11. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Atlassian Cloud 的组属性。 选为 " **匹配** " 属性的属性用于匹配 Atlassian Cloud 中的组以执行更新操作。 选择“保存”按钮以提交任何更改。
 
       |Attribute|类型|
       |---|---|
@@ -151,9 +148,9 @@ ms.locfileid: "87927464"
 
 ## <a name="connector-limitations"></a>连接器限制
 
-* Atlassian Cloud 仅允许从[已验证的域](https://confluence.atlassian.com/cloud/organization-administration-938859734.html)预配用户。
+* Atlassian Cloud 仅允许从 [已验证的域](https://confluence.atlassian.com/cloud/organization-administration-938859734.html)预配用户。
 * Atlassian Cloud 目前不支持组重命名。 这意味着，对 Azure AD 中组的 displayName 的任何更改都不会在 Atlassian Cloud 中更新和反映。
-* 仅当用户具有 Microsoft Exchange 邮箱时，才填充 Azure AD 中**邮件**用户属性的值。 如果用户没有用户，则建议将不同的所需属性映射到 Atlassian Cloud 中的**电子邮件**属性。
+* 仅当用户具有 Microsoft Exchange 邮箱时，才填充 Azure AD 中 **邮件** 用户属性的值。 如果用户没有用户，则建议将不同的所需属性映射到 Atlassian Cloud 中的 **电子邮件** 属性。
 
 ## <a name="change-log"></a>更改日志
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4a618b00b211ce65b170379cc14d6b83a1183d28
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: bb6793bc1e3d5bb55426c1f344520ae19a22a9f9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460348"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549559"
 ---
 # <a name="sampling-in-application-insights"></a>在 Application Insights 中采样
 
@@ -187,6 +187,8 @@ public void ConfigureServices(IServiceCollection services)
 > 如果使用此方法配置采样，请确保在调用 `AddApplicationInsightsTelemetry()` 时将 `aiOptions.EnableAdaptiveSampling` 属性设置为 `false`。
 
 ```csharp
+using Microsoft.ApplicationInsights.Extensibility
+
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, TelemetryConfiguration configuration)
 {
     var builder = configuration.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
@@ -210,7 +212,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 ### <a name="configuring-adaptive-sampling-for-azure-functions"></a>为 Azure Functions 配置自适应采样
 
-按照[此页](../../azure-functions/functions-monitoring.md#configure-sampling)中的说明配置 Azure Functions 中运行的应用的自适应采样。
+按照 [此页](../../azure-functions/functions-monitoring.md#configure-sampling) 中的说明配置 Azure Functions 中运行的应用的自适应采样。
 
 ## <a name="fixed-rate-sampling"></a>固定速率采样
 
@@ -311,7 +313,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, Telemetr
 
 #### <a name="configuring-java-agent"></a>配置 Java 代理
 
-1. 下载[applicationinsights-agent-3.0.0-preview](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar)
+1. 下载 [applicationinsights-agent-3.0.0-PREVIEW.5.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar)
 
 1. 若要启用采样，请将以下内容添加到 `ApplicationInsights.json` 文件：
 

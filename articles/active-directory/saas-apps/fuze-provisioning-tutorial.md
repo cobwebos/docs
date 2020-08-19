@@ -2,29 +2,25 @@
 title: 教程：为 Fuze 配置自动用户预配 Azure Active Directory |Microsoft Docs
 description: 了解如何配置 Azure Active Directory 以自动将用户帐户预配到 Fuze 以及取消其预配。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 34718201-4f0e-4260-9af0-b3b70a1e8265
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: b552b175074262d961e455a2b46727d0fa656b45
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 08fe2cd87200e1a22f36ab01b58c6cf82fd1f007
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87920460"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550815"
 ---
 # <a name="tutorial-configure-fuze-for-automatic-user-provisioning"></a>教程：为 Fuze 配置自动用户预配
 
-本教程的目的是演示要在 Fuze 和 Azure Active Directory (Azure AD) 中执行的步骤，以将 Azure AD 自动预配和取消预配到[Fuze](https://www.fuze.com/)。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。
+本教程的目的是演示要在 Fuze 和 Azure Active Directory (Azure AD) 中执行的步骤，以将 Azure AD 自动预配和取消预配到 [Fuze](https://www.fuze.com/)。 有关此服务的功能、工作原理以及常见问题的重要详细信息，请参阅[使用 Azure Active Directory 自动将用户预配到 SaaS 应用程序和取消预配](../app-provisioning/user-provisioning.md)。
 
 > [!NOTE]
 > 此连接器目前以公共预览版提供。 若要详细了解 Microsoft Azure 预览版功能的一般使用条款，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -35,7 +31,7 @@ ms.locfileid: "87920460"
 > * 在 Fuze 中创建用户
 > * 当用户不再需要访问权限时，删除 Fuze 中的用户
 > * 使用户属性在 Azure AD 和 Fuze 之间保持同步
-> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/fuze-tutorial)到 Fuze (建议) 
+> * [单一登录](https://docs.microsoft.com/azure/active-directory/saas-apps/fuze-tutorial) 到 Fuze (建议) 
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -50,9 +46,9 @@ ms.locfileid: "87920460"
 ## <a name="step-1-plan-your-provisioning-deployment"></a>步骤 1。 规划预配部署
 1. 了解[预配服务的工作原理](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)。
 2. 确定谁在[预配范围](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)中。
-3. 确定要[在 Azure AD 与 Fuze 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
+3. 确定要 [在 Azure AD 与 Fuze 之间映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)的数据。 
 
-## <a name="step-2-configure-fuze-to-support-provisioning-with-azure-ad"></a>步骤 2。 配置 Fuze 以支持 Azure AD 的预配
+## <a name="step-2-configure-fuze-to-support-provisioning-with-azure-ad"></a>步骤 2. 配置 Fuze 以支持 Azure AD 的预配
 
 将 Fuze 配置为使用 Azure AD 进行自动用户预配之前，需要在 Fuze 上启用 SCIM 设置。 
 
@@ -74,9 +70,9 @@ ms.locfileid: "87920460"
 
 使用 Azure AD 预配服务，可以根据对应用程序的分配和/或用户/组的属性来限定谁在预配范围内。 如果选择根据分配来查看要将谁预配到应用，则可以使用以下[步骤](../manage-apps/assign-user-or-group-access-portal.md)将用户和组分配给应用程序。 如果选择仅根据用户或组的属性来限定要对谁进行预配，可以使用[此处](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)所述的范围筛选器。 
 
-* 将用户分配到 Fuze 时，必须选择 "**默认" 访问权限**以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
+* 将用户分配到 Fuze 时，必须选择 " **默认" 访问权限**以外的角色。 具有“默认访问”角色的用户将从预配中排除，并在预配日志中被标记为未有效授权。 如果应用程序上唯一可用的角色是默认访问角色，则可以[更新应用程序清单](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps)以添加其他角色。 
 
-* 先小部分测试。 使用少量用户进行测试，然后再向所有人推出。 如果设置的作用域设置为 "分配的用户"，则可以通过将一个或两个用户分配到应用来对此进行控制。 如果作用域设置为 "所有用户"，则可以指定[基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
+* 先小部分测试。 使用少量用户进行测试，然后再向所有人推出。 如果设置的作用域设置为 "分配的用户"，则可以通过将一个或两个用户分配到应用来对此进行控制。 如果作用域设置为 "所有用户"，则可以指定 [基于属性的范围筛选器](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)。 
 
 ## <a name="step-5-configuring-automatic-user-provisioning-to-fuze"></a>步骤 5。 配置 Fuze 的自动用户预配 
 
@@ -100,7 +96,7 @@ ms.locfileid: "87920460"
 
     ![“预配”选项卡](common/provisioning-automatic.png)
 
-5. 在 "**管理员凭据**" 部分下，输入先前从**租户 Url**和**机密令牌**中的 Fuze 代表那里检索到的**SCIM 2.0 基 url 和 SCIM Authentication 令牌**值。 单击 "**测试连接**" 以确保 Azure AD 可以连接到 Fuze。 如果连接失败，请确保 Fuze 帐户具有管理员权限，然后重试。
+5. 在 "**管理员凭据**" 部分下，输入先前从**租户 Url**和**机密令牌**中的 Fuze 代表那里检索到的**SCIM 2.0 基 url 和 SCIM Authentication 令牌**值。 单击 " **测试连接** " 以确保 Azure AD 可以连接到 Fuze。 如果连接失败，请确保 Fuze 帐户具有管理员权限，然后重试。
 
     ![租户 URL 标记](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -108,11 +104,11 @@ ms.locfileid: "87920460"
 
     ![通知电子邮件](common/provisioning-notification-email.png)
 
-7. 单击“保存”  。
+7. 单击“保存” 。
 
-8. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Fuze**"。
+8. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Fuze**"。
 
-9. 在 "**属性映射**" 部分中，查看从 Azure AD 同步到 Fuze 的用户属性。 选为 "**匹配**" 属性的特性用于匹配 Fuze 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+9. 在 " **属性映射** " 部分中，查看从 Azure AD 同步到 Fuze 的用户属性。 选为 " **匹配** " 属性的特性用于匹配 Fuze 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
    |Attribute|类型|
    |---|---|
@@ -147,7 +143,7 @@ ms.locfileid: "87920460"
 
 ## <a name="connector-limitations"></a>连接器限制
 
-* Fuze 支持称为 "**权利**" 的自定义 SCIM 属性。 仅可创建和不更新这些属性。 
+* Fuze 支持称为 " **权利**" 的自定义 SCIM 属性。 仅可创建和不更新这些属性。 
 
 ## <a name="change-log"></a>更改日志
 

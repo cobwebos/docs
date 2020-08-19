@@ -2,26 +2,21 @@
 title: 教程： Asana 的用户预配-Azure AD
 description: 了解如何将 Azure Active Directory 配置为自动将用户帐户预配到 Asana 和取消其预配。
 services: active-directory
-documentationcenter: ''
 author: ArvindHarinder1
 manager: CelesteDG
-ms.assetid: 0b38ee73-168b-42cb-bd8b-9c5e5126d648
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.reviewer: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: abeac030db419f7fb7d561df5dcd407684f20ca2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.reviewer: celested
+ms.openlocfilehash: 11e0606568fdaad20f996a7ae20a622576acea15
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "77058901"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549460"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>教程：为 Asana 配置自动用户预配
 
@@ -40,7 +35,7 @@ ms.locfileid: "77058901"
 
 ## <a name="assign-users-to-asana"></a>将用户分配到 Asana
 
-Azure AD 使用称为 "*分配*" 的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户和组。
+Azure AD 使用称为 " *分配* " 的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户和组。
 
 配置和启用预配服务前，需确定 Azure AD 中的哪些用户或组需访问 Google Apps 应用。 确定后，可以按照此处的说明将这些用户分配到 Asana 应用：
 
@@ -83,11 +78,11 @@ Azure AD 使用称为 "*分配*" 的概念来确定哪些用户应收到对所�
 
 1. 在 Azure 门户中，选择“测试连接”确保 Azure AD 可连接到 Asana 应用****。 如果连接失败，请确保 Asana 帐户具有管理员权限，并重试“测试连接”**** 步骤。
 
-1. 输入要在**通知电子邮件**中接收设置错误通知的个人或组的电子邮件地址。 然后选中复选框。
+1. 输入要在  **通知电子邮件**中接收设置错误通知的个人或组的电子邮件地址。 然后选中复选框。
 
 1. 选择“保存”。
 
-1. 在 "**映射**" 部分下，选择 "**将 Azure Active Directory 用户同步到 Asana**"。
+1. 在 " **映射** " 部分下，选择 " **将 Azure Active Directory 用户同步到 Asana**"。
 
 1. 在“属性映射”**** 部分中，查看将从 Azure AD 同步到 Asana 的用户属性。 选为“匹配”**** 属性的特性用于匹配 Asana 中的用户帐户以执行更新操作。 选择“保存”，提交所有更改。 有关详细信息，请参阅[自定义用户预配属性映射](../app-provisioning/customize-application-attributes.md)。
 

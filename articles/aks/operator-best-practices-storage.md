@@ -5,12 +5,12 @@ description: 了解有关 Azure Kubernetes 服务 (AKS) 中的存储、数据加
 services: container-service
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 26af9e0ab2bd3a52c159e947f1f40300f9e84dd4
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: c683cbf7802fbf5420ec95d49e2dfda624ce093f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562832"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551789"
 ---
 # <a name="best-practices-for-storage-and-backups-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的存储和备份的最佳做法
 
@@ -34,9 +34,9 @@ ms.locfileid: "87562832"
 
 | 使用案例 | 卷插件 | 读/写一次 | 只读多次 | 读/写多次 | Windows Server 容器支持 |
 |----------|---------------|-----------------|----------------|-----------------|--------------------|
-| 共享配置       | Azure 文件   | 是 | 是 | “是” | “是” |
-| 结构化应用数据        | Azure 磁盘   | “是” | 否  | 否  | 是 |
-| 非结构化的数据，文件系统操作 | [BlobFuse][blobfuse] | “是” | “是” | “是” | 否 |
+| 共享配置       | Azure 文件   | 是 | 是 | 是 | 是 |
+| 结构化应用数据        | Azure 磁盘   | 是 | 否  | 否  | 是 |
+| 非结构化的数据，文件系统操作 | [BlobFuse][blobfuse] | 是 | 是 | 是 | 否 |
 
 为 AKS 中的卷提供的两种主要存储类型由 Azure 磁盘或 Azure 文件支持。 为了提高安全性，两种类型的存储都默认使用 Azure 存储服务加密 (SSE) 来加密静态数据。 目前无法使用 AKS 节点级别的 Azure 磁盘加密对磁盘进行加密。
 
@@ -88,7 +88,7 @@ AKS 节点作为 Azure VM 运行。 有不同类型和大小的 VM 可使用。 
 
 ## <a name="secure-and-back-up-your-data"></a>保护和备份数据
 
-**最佳做法指南** - 使用适合自己存储类型的工具（例如 Velero 或 Azure Site Recovery）来备份数据。 验证这些备份的完整性和安全性。
+**最佳做法指南** -使用适用于存储类型的工具（如 Velero 或 Azure 备份）备份数据。 验证这些备份的完整性和安全性。
 
 当应用程序存储和使用永久存储在磁盘或文件中的数据时，需要定期备份或创建数据的快照。 Azure 磁盘可以使用内置快照技术。 在执行快照操作之前，可能需要查找应用程序以将写入刷新到磁盘。 [Velero][velero] 可以备份永久性卷以及其他群集资源和配置。 如果无法[从应用程序中删除状态][remove-state]，请从永久性卷备份数据并定期测试还原操作以验证数据完整性和所需的过程。
 
