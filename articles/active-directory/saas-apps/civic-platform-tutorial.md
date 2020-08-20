@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Civic Platform 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Civic Platform 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1d790454-143e-40ac-b3cb-5a256977b4db
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ccf124c5a4160715df4e685e405dcd591c49ae7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 47ffaef940b3fe2ffe033405a712195c5c74d774
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68496442"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520356"
 ---
 # <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>教程：将 Civic Platform 与 Azure Active Directory 集成
 

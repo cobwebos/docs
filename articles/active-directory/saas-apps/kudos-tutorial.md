@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Kudos 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Kudos 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 39c47ce6-4944-47ba-8f53-3afa95398034
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 1fb1a1bc7bfd8b3cc9d7758bf8e80d8759f9357e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1ac613776729f6e67456a65695cc6017c453da15
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74227482"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88519625"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kudos"></a>教程：Azure Active Directory 与 Kudos 的集成
 

@@ -1,15 +1,15 @@
 ---
 title: 快速入门：带有模板的新策略分配
 description: 本快速入门介绍如何使用 Azure 资源管理器模板（ARM 模板）来创建策略分配以识别不合规的资源。
-ms.date: 05/21/2020
+ms.date: 08/17/2020
 ms.topic: quickstart
 ms.custom: subject-armqs
-ms.openlocfilehash: f4cb4cb1fc56d06ab1e061b2d0e9a031e0e511dc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 93c8e907190a3e87c3c0ce3392ccfd7fd4d2e515
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242043"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520866"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建策略分配以识别不合规的资源
 
