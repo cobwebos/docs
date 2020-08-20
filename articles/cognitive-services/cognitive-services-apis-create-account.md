@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: aahi
-ms.openlocfilehash: 00a4f7f6de207d5e8ad1bcd448cc587e3106d3a6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: a28a8f22a8aa20612a177d88fd99a66660c74618
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87316962"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607554"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>使用 Azure 门户创建认知服务资源
 
@@ -25,7 +25,7 @@ ms.locfileid: "87316962"
 
 ## <a name="prerequisites"></a>先决条件
 
-* 有效的 Azure 订阅-[免费创建一个](https://azure.microsoft.com/free/cognitive-services/)。
+* 有效的 Azure 订阅- [免费创建一个](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="create-a-new-azure-cognitive-services-resource"></a>新建 Azure 认知服务资源
 
@@ -43,7 +43,7 @@ ms.locfileid: "87316962"
     - 语言理解 (LUIS)
     - 文本分析
     - 转换器
-    - 必应搜索 v7 <br>（Web、图像、新闻、视频、视觉对象）
+    - 必应搜索 v7 <br> (Web、图像、新闻、视频、视觉对象) 
     - 必应自定义搜索
     - 必应实体搜索
     - 必应自动建议
@@ -120,5 +120,6 @@ ms.locfileid: "87316962"
 
 * [对 Azure 认知服务的请求进行身份验证](authentication.md)
 * [什么是 Azure 认知服务？](Welcome.md)
+* [使用 Azure 管理客户端库创建新资源](.\cognitive-services-apis-create-account-client-library.md)
 * [自然语言支持](language-support.md)
 * [Docker 容器支持](cognitive-services-container-support.md)

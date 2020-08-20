@@ -4,12 +4,12 @@ description: 提供有关在使用 Azure 备份服务备份 Azure VM 时的支�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: c7cd3ed863153762e42a0b6420623fec52e779e1
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: cfa8a6c7cb2da35929151dfce09c0bc31ee69bb2
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566312"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611528"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 
@@ -35,7 +35,7 @@ ms.locfileid: "88566312"
 
 ## <a name="supported-backup-actions"></a>支持的备份操作
 
-**操作** | **支持**
+**Action** | **支持**
 --- | ---
 备份已关闭/脱机的 VM | 支持。<br/><br/> 仅创建崩溃一致性快照，不会创建应用一致性快照。
 迁移到托管磁盘后备份磁盘 | 支持。<br/><br/> 备份将继续工作。 因此不需要执行任何操作。
@@ -68,7 +68,7 @@ Azure 备份不支持 32 位操作系统。
 
 下面是在需要备份 Linux 计算机的情况下的支持项目。
 
-**操作** | **支持**
+**Action** | **支持**
 --- | ---
 使用 Linux Azure VM 代理备份 Linux Azure VM | 文件一致性备份。<br/><br/> 使用[自定义脚本](backup-azure-linux-app-consistent.md)的应用一致性备份。<br/><br/> 在还原过程中，可以创建新的 VM、还原某个磁盘并使用它来创建 VM，或者还原某个磁盘并使用它来替换现有 VM 上的磁盘。 还可以还原单个文件和文件夹。
 使用 MARS 代理备份 Linux Azure VM | 不支持。<br/><br/> MARS 代理只能安装在 Windows 计算机上。
@@ -141,7 +141,7 @@ VM 大小 |至少有 2 个 CPU 核心和 1-GB RAM 的任意 Azure VM 大小。<b
 备份[可用性集](../virtual-machines/availability.md#availability-sets)中的 VM | 。<br/><br/> 无法使用快速创建 VM 的选项来还原可用性集中的 VM。 还原 VM 时，请还原磁盘并用它来部署 VM，或者还原磁盘并用它来替换现有磁盘。
 备份使用[混合使用权益 (HUB)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) 部署的 VM | 支持。
 备份[规模集](../virtual-machine-scale-sets/overview.md)中部署的 VM |支持。 对于容错域，[业务流程模式](../virtual-machine-scale-sets/orchestration-modes.md)应设置为2。 可用性集不受支持。
-备份从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images)部署的 VM<br/><br/> （由 Microsoft 或第三方发布） |支持。<br/><br/> VM 必须运行受支持的操作系统。<br/><br/> 恢复 VM 上的文件时，可以仅还原到兼容的 OS（不是早期版本或更高版本的 OS）。 我们不会还原作为 Vm 支持的 Azure Marketplace Vm，因为这些 Vm 需要购买信息。 它们只能还原为磁盘。
+备份从[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images)部署的 vm<br/><br/> （由 Microsoft 或第三方发布） |支持。<br/><br/> VM 必须运行受支持的操作系统。<br/><br/> 恢复 VM 上的文件时，可以仅还原到兼容的 OS（不是早期版本或更高版本的 OS）。 我们不会还原作为 Vm 支持的 Azure Marketplace Vm，因为这些 Vm 需要购买信息。 它们只能还原为磁盘。
 备份从自定义映像部署的 VM（第三方） |支持。<br/><br/> VM 必须运行受支持的操作系统。<br/><br/> 恢复 VM 上的文件时，可以仅还原到兼容的 OS（不是早期版本或更高版本的 OS）。
 备份已迁移到 Azure 的 VM| 支持。<br/><br/> 若要备份 VM，必须在迁移的计算机上安装 VM 代理。
 备份多 VM 一致性 | Azure 备份不提供跨多个 Vm 的数据和应用程序一致性。

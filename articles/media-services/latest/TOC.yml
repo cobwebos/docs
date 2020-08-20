@@ -246,10 +246,7 @@
     - name: 创建和管理资产
       items:
         - name: 创建资产
-          href: cli-create-asset.md
-        - name: 管理资产
-          href: manage-asset-concept.md
-          displayName: 'name, naming, file name, upload, output, download'
+          href: how-to-create-asset.md
     - name: 上传内容
       items:
         - name: 从 HTTPS

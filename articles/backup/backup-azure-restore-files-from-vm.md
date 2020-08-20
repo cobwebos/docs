@@ -4,12 +4,12 @@ description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: 01235e116ca93f9c73e698e4d72ae0cb561824d5
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: ba97a5812359fc72e52d68e337762f7234aa3883
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262664"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611834"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -234,7 +234,7 @@ mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
 
 > [!WARNING]
-> 不要使用 "mount-a"。 此命令装入 "/etc/fstab" 中所述的所有设备。 这可能意味着可能会装载重复的设备。 可以将数据重定向到脚本创建的、不保存数据的设备，因此可能会导致数据丢失。
+> 不要使用 "mount-a"。 此命令装入 "/etc/fstab" 中所述的所有设备。 这可能意味着可能会装载重复的设备。 数据可以重定向到脚本创建的、不保存数据的设备，因此可能会导致数据丢失。
 
 #### <a name="for-raid-arrays"></a>对于 RAID 阵列
 

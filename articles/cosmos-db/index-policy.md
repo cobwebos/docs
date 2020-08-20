@@ -4,14 +4,14 @@ description: 了解如何配置和更改默认索引策略，以便自动编制�
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 08/19/2020
 ms.author: tisande
-ms.openlocfilehash: e1254b31bffa72918b46c550e8354bd1c2195dfb
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: f723d7ac218869313f02212d27d9f96b74bb7f0f
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077588"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607520"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
 
@@ -30,11 +30,11 @@ Azure Cosmos DB 支持两种索引模式：
 - **无**：针对该容器禁用索引。 将容器用作单纯的键-值存储时，通常会使用此设置，在此情况下无需使用辅助索引。 它还可用于改善批量操作的性能。 批量操作完成后，可将索引模式设置为“一致”，然后使用 [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) 进行监视，直到完成。
 
 > [!NOTE]
-> Azure Cosmos DB 还支持延迟索引模式。 当引擎未执行任何其他工作时，延迟索引将以低得多的优先级对索引执行更新。 这可能导致查询结果**不一致或不完整**。 如果计划查询 Cosmos 容器，则不应选择“延迟索引”。 2020 年 6 月，我们引入了一项更改，不再允许将新容器设置为“延迟索引”模式。 如果 Azure Cosmos DB 帐户已经包含至少一个具有延迟索引的容器，则将自动从更改中免除此帐户。 还可以通过联系 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)来请求免除。
+> Azure Cosmos DB 还支持延迟索引模式。 当引擎未执行任何其他工作时，延迟索引将以低得多的优先级对索引执行更新。 这可能导致查询结果**不一致或不完整**。 如果计划查询 Cosmos 容器，则不应选择“延迟索引”。 2020 年 6 月，我们引入了一项更改，不再允许将新容器设置为“延迟索引”模式。 如果 Azure Cosmos DB 帐户已经包含至少一个具有延迟索引的容器，则将自动从更改中免除此帐户。 你还可以通过联系 [azure 支持部门](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 请求豁免 (除非你使用不支持延迟索引) 的 [无服务器](serverless.md) 模式下的 azure Cosmos 帐户。
 
 默认情况下，索引策略设置为 `automatic`。 为此，可将索引策略中的 `automatic` 属性设置为 `true`。 将此属性设置为 `true` 可让 Azure CosmosDB 在写入文档时自动为文档编制索引。
 
-## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>包括和排除属性路径
+## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a> 包括和排除属性路径
 
 自定义索引策略可以指定要在索引编制中显式包含或排除的属性路径。 通过优化已编制索引的路径数，你可以显著减少写入操作的延迟和 RU 费用。 这些路径是遵循[索引概述部分所述的方法](index-overview.md#from-trees-to-property-paths)定义的，补充要求如下：
 
@@ -261,6 +261,9 @@ SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.time
 
 随时可以[使用 Azure 门户或某个支持的 SDK](how-to-manage-indexing-policy.md) 更新容器的索引策略。 索引策略的更新会触发从旧索引到新索引的转换，这种转换在联机和就地 (执行，因此在操作) 期间不会消耗额外的存储空间。 旧策略的索引将有效地转换为新策略，而不会影响在容器上预配的写入可用性、读取可用性或吞吐量。 索引转换是一个异步操作，完成该操作所需的时间取决于预配的吞吐量、项的数目及其大小。
 
+> [!IMPORTANT]
+> 索引转换是使用 [请求单位](request-units.md)的操作。 如果使用 [无服务器](serverless.md) 容器，则当前不会对索引转换使用的请求单元计费。 在无服务器公开发布后，这些请求单位将计费。
+
 > [!NOTE]
 > 可以[使用某个 SDK](how-to-manage-indexing-policy.md) 跟踪索引转换的进度。
 
@@ -275,7 +278,7 @@ SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.time
 
 ## <a name="indexing-policies-and-ttl"></a>索引策略和 TTL
 
-使用[生存时间 (TTL) 功能](time-to-live.md)需要编制索引。 这意味着：
+使用 [生存时间 (TTL) 功能](time-to-live.md) 需要编制索引。 这意味着：
 
 - 无法在索引模式设置为“无”的容器中激活 TTL。
 - 无法在已激活 TTL 的容器中将索引模式设置为“无”。

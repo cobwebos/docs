@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 author: markjbrown
 ms.author: mjbrown
-ms.date: 01/31/2020
-ms.openlocfilehash: 87fe128a79413af024d72726d936b85db3f9ef52
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.date: 08/19/2020
+ms.openlocfilehash: 40c32226f0e79e66db45d0c32614eaa4c5b543f9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88225965"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607538"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>使用 Azure Cosmos 模拟器进行本地开发和测试
 
@@ -35,12 +35,13 @@ Azure Cosmos 模拟器提供对 Azure Cosmos DB 服务的高保真模拟。 它�
 
 * 目前，模拟器中的数据资源管理器支持 SQL API 的客户端。 不完全支持在数据资源管理器查看和操作 Azure Cosmos DB API，例如 MongoDB API、表 API、Graph API 和 Cassandra API。
 * Azure Cosmos 模拟器只支持单一固定帐户和公开的主密钥。 不可在 Azure Cosmos 模拟器中重新生成密钥，但可使用命令行选项更改默认密钥。
+* Azure Cosmos 模拟器支持 [预配吞吐量](set-throughput.md) 模式下的 azure Cosmos 帐户;它目前不支持 [无服务器](serverless.md) 模式下的 Azure Cosmos 帐户。
 * Azure Cosmos 模拟器是一项不可伸缩的服务，不支持大量容器。
 * Azure Cosmos 模拟器只提供一种 [Azure Cosmos DB 一致性级别](consistency-levels.md)。
 * Azure Cosmos 模拟器不提供[多区域复制](distribute-data-globally.md)。
 * 由于 Azure Cosmos 模拟器副本并不总是能反映出 Azure Cosmos DB 服务中的最新更改，因此应使用 [Azure Cosmos DB 容量规划器](https://www.documentdb.com/capacityplanner)来准确估计应用程序的生产吞吐量 (RU) 需求。
 * 默认使用 Azure Cosmos 模拟器时，可最多创建 25 个固定大小的容器（仅支持使用 Azure Cosmos DB SDK 创建），或使用 Azure Cosmos 模拟器创建 5 个不受限容器。 有关如何更改此值的详细信息，请参阅[设置 PartitionCount 值](#set-partitioncount)。
-* 模拟器支持的最大 ID 属性大小为 254 个字符。
+* 模拟器支持的最大 ID 属性大小为254个字符。
 
 ## <a name="system-requirements"></a>系统要求
 
@@ -247,7 +248,7 @@ Microsoft.Azure.Cosmos.Emulator.exe [/Shutdown] [/DataPath] [/Port] [/MongoPort]
 |[无参数] | 使用默认设置启动 Azure Cosmos 模拟器。 |Microsoft.Azure.Cosmos.Emulator.exe| |
 |[帮助] |显示支持的命令行参数列表。|Microsoft.Azure.Cosmos.Emulator.exe /? | |
 | GetStatus |获取 Azure Cosmos 模拟器的状态。 状态由退出代码指示：1 = 正在启动，2 = 正在运行，3 = 已停止。 退出代码为负表示发生了错误。 不生成其他输出。 | Microsoft.Azure.Cosmos.Emulator.exe /GetStatus| |
-| 关机| 关闭 Azure Cosmos 模拟器。| Microsoft.Azure.Cosmos.Emulator.exe /Shutdown | |
+| Shutdown| 关闭 Azure Cosmos 模拟器。| Microsoft.Azure.Cosmos.Emulator.exe /Shutdown | |
 |DataPath | 指定要在其中存储数据文件的路径。 默认值为 %LocalAppdata%\CosmosDBEmulator。 | Microsoft.Azure.Cosmos.Emulator.exe /DataPath=\<datapath\> | \<datapath\>：可访问路径 |
 |端口 | 指定用于模拟器的端口号。 默认值为 8081。 |Microsoft.Azure.Cosmos.Emulator.exe /Port=\<port\> | \<port\>：单个端口号 |
 | ComputePort | 指定用于计算互操作网关服务的端口号。 该网关的 HTTP 终结点探测端口计算得出 ComputePort + 79。 因此，ComputePort 和 ComputePort + 79 必须打开且可使用。 默认值为 8900。 | Microsoft.Azure.Cosmos.Emulator.exe /ComputePort=\<computeport\> | \<computeport\>：单个端口号 |
@@ -520,7 +521,7 @@ Microsoft.Azure.Cosmos.Emulator.exe /AllowNetworkAccess /Key=C2y6yDjf5/R+ob0N8A7
 
 完成这些步骤后，当连接到通过 `/AllowNetworkAccess` 公开的 IP 地址时，你的环境将信任模拟器使用的证书。
 
-## <a name="troubleshooting"></a>故障排除
+## <a name="troubleshooting"></a>疑难解答
 
 使用以下提示来帮助解决使用 Azure Cosmos 模拟器时遇到的问题：
 

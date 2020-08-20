@@ -1,14 +1,14 @@
 ---
 title: 部署 SWIFT CSP-CSCF v2020 蓝图示例
 description: SWIFT CSP-CSCF v2020 蓝图示例的部署步骤，包括蓝图项目参数详细信息。
-ms.date: 05/13/2020
+ms.date: 08/18/2020
 ms.topic: sample
-ms.openlocfilehash: 84d219f47df99e5bb87bab13b9ff43b79484117f
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: b65dc9cdd601f9fd2d7972b74435702a00244e8e
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044254"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612718"
 ---
 # <a name="deploy-the-swift-csp-cscf-v2020-blueprint-sample"></a>部署 SWIFT CSP-CSCF v2020 蓝图示例
 
@@ -93,18 +93,16 @@ ms.locfileid: "86044254"
 
 |项目名称|项目类型|参数名称|说明|
 |-|-|-|-|
-|\[预览\]：审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|应启用诊断日志的资源类型列表|用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 诊断日志架构](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas)中提供了可接受的值。|
+|\[预览\]：审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|应启用诊断日志的资源类型列表|用于审核是否未启用诊断日志设置的资源类型列表。 [Azure Monitor 诊断日志架构](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)中提供了可接受的值。|
 |\[预览\]：审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|连接的工作区 ID|Log Analytics 代理应连接到的工作区 ID 的列表（以分号分隔）|
 |\[预览\]：审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|应该包括在 Windows VM 管理员组中的用户的列表|以分号分隔的应包括在管理员本地组中的成员列表。 例如：管理员；myUser1；myUser2|
 |\[预览\]：审核 SWIFT CSP-CSCF v2020 控制措施并部署特定 VM 扩展以支持审核要求|策略分配|域名 (FQDN)|Windows VM 应加入到的完全限定域名 (FQDN)|
-|\[预览\]：为 Linux VM 规模集(VMSS)部署 Log Analytics 代理|策略分配|Linux VM 规模集 (VMSS) 的 Log Analytics 工作区|如果此工作区超出分配范围，则必须手动将“Log Analytics 参与者”权限（或类似权限）授予策略分配的主体 ID。|
-|\[预览\]：为 Linux VM 规模集(VMSS)部署 Log Analytics 代理|策略分配|可选：支持将 Linux OS 添加到范围的 VM 映像列表|可以使用空数组来表示没有可选参数：\[\]|
-|\[预览\]：为 Linux VM 部署 Log Analytics 代理|策略分配|Linux VM 的 Log Analytics 工作区|如果此工作区超出分配范围，则必须手动将“Log Analytics 参与者”权限（或类似权限）授予策略分配的主体 ID。|
-|\[预览\]：为 Linux VM 部署 Log Analytics 代理|策略分配|可选：支持将 Linux OS 添加到范围的 VM 映像列表|可以使用空数组来表示没有可选参数：\[\]|
-|\[预览\]：为 Windows VM 规模集(VMSS)部署 Log Analytics 代理|策略分配|Windows VM 规模集 (VMSS) 的 Log Analytics 工作区|如果此工作区超出分配范围，则必须手动将“Log Analytics 参与者”权限（或类似权限）授予策略分配的主体 ID。|
-|\[预览\]：为 Windows VM 规模集(VMSS)部署 Log Analytics 代理|策略分配|可选：支持将 Windows OS 添加到范围的 VM 映像列表|可以使用空数组来表示没有可选参数：\[\]|
-|\[预览\]：为 Windows VM 部署 Log Analytics 代理|策略分配|Windows VM 的 Log Analytics 工作区|如果此工作区超出分配范围，则必须手动将“Log Analytics 参与者”权限（或类似权限）授予策略分配的主体 ID。|
-|\[预览\]：为 Windows VM 部署 Log Analytics 代理|策略分配|可选：支持将 Windows OS 添加到范围的 VM 映像列表|可以使用空数组来表示没有可选参数：\[\]|
+|为 Linux VM 部署 Log Analytics 代理|策略分配|Linux VM 的 Log Analytics 工作区|如果此工作区超出分配范围，则必须手动将“Log Analytics 参与者”权限（或类似权限）授予策略分配的主体 ID。|
+|为 Linux VM 部署 Log Analytics 代理|策略分配|可选：支持将 Linux OS 添加到范围的 VM 映像列表|可以使用空数组来表示没有可选参数：\[\]|
+|为 Windows VM 规模集(VMSS)部署 Log Analytics 代理|策略分配|Windows VM 规模集 (VMSS) 的 Log Analytics 工作区|如果此工作区超出分配范围，则必须手动将“Log Analytics 参与者”权限（或类似权限）授予策略分配的主体 ID。|
+|为 Windows VM 规模集(VMSS)部署 Log Analytics 代理|策略分配|可选：支持将 Windows OS 添加到范围的 VM 映像列表|可以使用空数组来表示没有可选参数：\[\]|
+|为 Windows VM 部署 Log Analytics 代理|策略分配|Windows VM 的 Log Analytics 工作区|如果此工作区超出分配范围，则必须手动将“Log Analytics 参与者”权限（或类似权限）授予策略分配的主体 ID。|
+|为 Windows VM 部署 Log Analytics 代理|策略分配|可选：支持将 Windows OS 添加到范围的 VM 映像列表|可以使用空数组来表示没有可选参数：\[\]|
 |在存储帐户上部署高级威胁防护|策略分配|效果|有关策略效果的信息，可参阅[了解 Azure Policy 效果](../../../policy/concepts/effects.md)|
 |对 SQL 服务器部署审核|策略分配|保持期的值（天数，0 表示保持期无限制）|保留天数（可选，如果未指定，则为 180 天）|
 |对 SQL 服务器部署审核|策略分配|要进行 SQL Server 审核的存储帐户的资源组名称|审核针对 Azure 存储帐户（将在 SQL Server 所在的每个区域中创建的存储帐户，由该区域中的所有服务器共享）中审核日志的写入数据库事件。 重要提示 - 为了正确地进行审核，请勿删除或重命名资源组或存储帐户。|

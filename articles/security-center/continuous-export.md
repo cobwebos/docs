@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: d101acd3e72e68efd9198cb273fd352967a0cd54
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: eb7f642e36bd72f963481cb392d7e3a6c2555816
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192368"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612378"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>导出安全警报和建议
 
@@ -57,7 +57,29 @@ Azure 安全中心生成详细的安全警报和建议。 可以在门户中或�
 
 1. 从 "导出目标" 区域中，选择要将数据保存到的位置。 数据可以保存在不同订阅的目标中 (例如，在中央事件中心实例或中心 Log Analytics 工作区) 上保存。
 
-1. 单击“ **保存**”。
+1. 选择“保存”。
+
+
+## <a name="setting-up-continuous-export-via-the-rest-api"></a>通过 REST API 设置连续导出
+
+可以通过 Azure 安全中心 [自动化 API](https://docs.microsoft.com/rest/api/securitycenter/automations)配置和管理连续导出功能。 使用此 API 创建或更新自动化，以便导出到以下任何可能的目标：
+
+- Azure 事件中心
+- Log Analytics 工作区
+- Azure 逻辑应用 
+
+API 提供 Azure 门户中没有的其他功能，例如：
+
+* **更大的卷** -API 允许在单个订阅上创建多个导出配置。 安全中心门户 UI 中的 **连续导出** 页面仅支持每个订阅一个导出配置。
+
+* **其他功能** -API 提供 UI 中未显示的其他参数。 例如，你可以将标记添加到自动化资源，并根据一组更广泛的警报和建议属性定义导出，而不是在安全中心的门户 UI 中的 **连续导出** 页面中提供。
+
+* **更具针对性的作用域** -API 为导出配置的作用域提供更精细的级别。 使用 API 定义导出时，可以在资源组级别执行此操作。 如果在安全中心的门户 UI 中使用 **连续导出** 页面，则必须在订阅级别定义它。
+
+    > [!TIP]
+    > 如果使用 API 设置了多个导出配置，或者如果使用了仅限 API 的参数，则这些额外功能不会显示在安全中心 UI 中。 相反，会出现一个横幅，通知您存在其他配置。
+
+在 [REST API 文档](https://docs.microsoft.com/rest/api/securitycenter/automations)中了解有关自动化 API 的详细信息。
 
 
 
@@ -109,7 +131,7 @@ Azure Monitor 提供了一种统一的警报体验，包括诊断日志、指标
 
 若要在 Azure Monitor 中查看安全中心的警报和建议，请根据 Log Analytics 查询 (日志警报) 来配置警报规则：
 
-1. 在 Azure Monitor 的 " **警报** " 页中，单击 " **新建警报规则**"。
+1. 在 Azure Monitor 的 " **警报** " 页中，选择 " **新建警报规则**"。
 
     ![Azure Monitor 的 "警报" 页](./media/continuous-export/azure-monitor-alerts.png)
 
@@ -126,12 +148,25 @@ Azure Monitor 提供了一种统一的警报体验，包括诊断日志、指标
 
 ## <a name="manual-one-time-export-of-security-alerts"></a>手动一次性导出安全警报
 
-若要为警报或建议下载 CSV 报表，请打开 " **安全警报** " 或 " **建议** " 页，然后单击 " **下载 CSV 报表** " 按钮。
+若要为警报或建议下载 CSV 报表，请打开 " **安全警报** " 或 " **建议** " 页，然后选择 " **下载 CSV 报表** " 按钮。
 
 [![将警报数据作为 CSV 文件下载](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
 
 > [!NOTE]
 > 这些报表包含当前所选订阅中的资源的警报和建议。
+
+
+
+## <a name="faq---continuous-export"></a>常见问题解答-连续导出
+
+### <a name="what-are-the-costs-involved-in-exporting-data"></a>导出数据所涉及的成本是多少？
+
+启用连续导出不会产生费用。 根据你的配置，在 Log Analytics 工作区中引入和保留数据可能会产生成本。 
+
+了解 [Log Analytics 工作区定价](https://azure.microsoft.com/pricing/details/monitor/)的详细信息。
+
+详细了解 [Azure 事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。
+
 
 ## <a name="next-steps"></a>后续步骤
 

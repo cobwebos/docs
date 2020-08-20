@@ -16,18 +16,18 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a0ee226fcddb3bfc216e1e160b5571fde59a41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da5cefbacbd3851d2609a687c1948d9bcba5ffae
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807581"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612463"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>混合 Azure AD 加入所需的配置后任务
 
 运行 Azure AD Connect 为组织配置混合 Azure AD 加入后，必须执行几个附加的步骤才能最终完成该设置。  请仅执行适用于自己设备的步骤。
 
-## <a name="1-configure-controlled-rollout-optional"></a>1. 配置受控推出（可选）
+## <a name="1-configure-controlled-rollout-optional"></a>1. 配置受控推出 (可选) 
 完成所有配置步骤后，运行 Windows 10 和 Windows Server 2016 的所有已加入域的设备会自动注册到 Azure AD。 如果你希望进行受控的实施而不是执行这种自动注册，可以使用组策略有选择地启用或禁用自动实施。  在开始其他配置步骤之前，应设置此组策略：
 * 在 Active Directory 中创建组策略对象。
 * 将其命名为 (ex- Hybrid Azure AD join)。
@@ -72,7 +72,7 @@ ms.locfileid: "85807581"
 * 在 Azure 门户中登录到自己的帐户。
 * 转到：“Azure Active Directory”>“设备”>“设备设置”
 * 将“用户可以向 Azure AD 注册其设备”设置为“全部”。
-* 点击“保存”
+* 点击“保存”(Save)
 
 ## <a name="8-add-azure-ad-endpoint-to-windows-down-level-devices"></a>8. 将 Azure AD 终结点添加到 Windows 下层设备
 
@@ -86,10 +86,7 @@ ms.locfileid: "85807581"
 
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10. 配置组策略以允许设备注册
 
-有关如何允许混合 Azure AD 联接单个设备的信息，请参阅[混合 Azure AD 联接的受控验证](../devices/hybrid-azuread-join-control.md)。
-
-> [!NOTE]
-> 2012 R2 的策略设置位于**计算机配置 > 策略 > 管理模板 > Windows 组件 > Workplace Join > 自动工作区加入客户端计算机**。
+有关如何允许混合 Azure AD 联接单个设备的信息，请参阅 [混合 Azure AD 联接的受控验证](../devices/hybrid-azuread-join-control.md)。
 
 ## <a name="next-steps"></a>后续步骤
 [配置设备写回](how-to-connect-device-writeback.md)

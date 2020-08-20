@@ -3,12 +3,12 @@ title: MABS 和 System Center DPM 支持矩阵
 description: 本文汇总了使用 Microsoft Azure 备份服务器 (MABS) 或 System Center DPM 备份本地和 Azure VM 资源时的 Azure 备份支持。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: a97c37accd1275fa99437862a8d939df31360e87
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 4ed4452cf8f1f44e90cfc991c2b1d13d30dddcd2
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810422"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612769"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 备份服务器或 System Center DPM 进行备份时的支持矩阵
 
@@ -94,7 +94,7 @@ Azure 备份可以备份运行以下任何操作系统的 DPM/MABS 实例。 操
 
 **组件** | **详细信息**
 --- | ---
-**Azure Stack VM 上的 MABS** | 至少使用 A2 大小。 我们建议从 Azure 市场中提供的 Windows Server 2012 R2 或 Windows Server 2016 映像着手。<br/><br/> 不要在 MABS VM 上安装其他任何组件。
+**Azure Stack VM 上的 MABS** | 至少使用 A2 大小。 建议从 Azure Marketplace 开始使用 Windows Server 2012 R2 或 Windows Server 2016 映像。<br/><br/> 不要在 MABS VM 上安装其他任何组件。
 **MABS 存储** | 对 MABS VM 使用单独的存储帐户。 MABS 上运行的 MARS 代理需要使用临时存储作为缓存位置，以及保存从云中还原的数据。
 **MABS 存储池** | MABS 存储池的大小取决于附加到 MABS VM 的磁盘数目和大小。 每个 Azure Stack VM 大小具有最大磁盘数。 例如，A2 是四个磁盘。
 **MABS 保留** | 不要在本地 MABS 磁盘上将备份数据保留 5 天以上。
@@ -158,7 +158,7 @@ DPM 服务器/MABS 需要以下 URL 的访问权限：
 |要求 |详细信息 |
 |---------|---------|
 |Domain    | DPM/MABS 服务器应该在 Windows Server 2019、Windows Server 2016、Windows Server 2012 R2、Windows Server 2012 域中。        |
-|域信任   |  只要您在单独的林之间建立了林级别的双向信任关系，DPM/MABS 就支持跨林的数据保护。   <BR><BR>   DPM/MABS 可跨域保护服务器和工作站，这些域与 DPM/MABS 服务器域具有双向信任关系的林中。 若要保护工作组或不受信任的域中的计算机，请参阅[备份和还原工作组和不受信任的域中的工作负荷。](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)  |
+|域信任   |  只要您在单独的林之间建立了林级别的双向信任关系，DPM/MABS 就支持跨林的数据保护。   <BR><BR>   DPM/MABS 可跨域保护服务器和工作站，这些域与 DPM/MABS 服务器域具有双向信任关系的林中。 若要保护工作组或不受信任的域中的计算机，请参阅 [备份和还原工作组和不受信任的域中的工作负荷。](/system-center/dpm/back-up-machines-in-workgroups-and-untrusted-domains?view=sc-dpm-2019)  |
 
 ## <a name="dpmmabs-storage-support"></a>DPM/MABS 存储支持
 

@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: dd5eb8acb76fe5901149d90a6d551d8d14d363cc
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 8a253723367681d947a9bd94c1505ab4cc156c08
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007770"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612633"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>为 Windows 虚拟桌面配置图形处理单元 (GPU) 加速
 
@@ -51,7 +51,7 @@ Windows 虚拟桌面仅支持 Azure 分发的驱动程序。 此外，对于具�
 1. 使用具有本地管理员特权的帐户连接到 VM 的桌面。
 2. 打开“开始”菜单，键入“gpedit.msc”以打开组策略编辑器。
 3. 在树中导航到“计算机配置” > “管理模板” > “Windows 组件” > “远程桌面服务” > “远程桌面会话主机” > “远程会话环境”。
-4. 选择“为所有远程桌面服务会话使用硬件默认图形适配器”策略，并将此策略设置为“已启用”以在远程会话中启用 GPU 渲染。
+4. 选择 "策略" **将硬件图形适配器用于所有远程桌面服务会话** ，并将此策略设置为 " **启用** "，以在远程会话中启用 GPU 呈现。
 
 ## <a name="configure-gpu-accelerated-frame-encoding"></a>配置 GPU 加速的帧编码
 
@@ -89,7 +89,7 @@ Windows 虚拟桌面仅支持 Azure 分发的驱动程序。 此外，对于具�
 
 若要验证应用是否正在使用 GPU 进行渲染，请尝试执行以下任一操作：
 
-* 对于具有 NVIDIA GPU 的 Azure Vm，请使用 `nvidia-smi` 在运行应用时[验证驱动程序安装](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation)中所述的实用程序来检查 GPU 使用率。
+* 对于具有 NVIDIA GPU 的 Azure Vm，请使用 `nvidia-smi` 在运行应用时 [验证驱动程序安装](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) 中所述的实用程序来检查 GPU 使用率。
 * 在受支持的操作系统版本上，可以使用任务管理器来检查 GPU 利用率。 在“性能”选项卡中选择 GPU，查看应用是否正在使用 GPU。
 
 ## <a name="verify-gpu-accelerated-frame-encoding"></a>验证 GPU 加速的帧编码

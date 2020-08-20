@@ -2,13 +2,13 @@
 title: Azure Site Recovery 中的新增功能
 description: 提供 Azure Site Recovery 服务中的新功能和最新更新的摘要。
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: 28bdf902ab74bf4bb94a6bc02a558bf200b25e52
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.date: 08/20/2020
+ms.openlocfilehash: d7e3a8e29800943b28c64848fc66f27f888d439f
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836626"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611732"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -22,23 +22,31 @@ ms.locfileid: "87836626"
 
 **更新** |  **统一安装程序** | **配置服务器 ova** | **移动服务代理** | **Site Recovery 提供程序** | **恢复服务代理**
 --- | --- | --- | --- | --- | ---
+[汇总49](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
 [汇总48](https://support.microsoft.com/help/4573888/) | 9.35.5659.1 | 5.1.6200.0 | 9.35.5659.1 | 5.1.6200.0 | 2.0.9186.0
 [汇总47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | HyperV 计算机-2.0.9183。0 <br> VMware 计算机-2.0.9177。0
-[汇总46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
+[汇总 46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
 [汇总 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
-[汇总 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
-[汇总 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
 
 [详细了解](service-updates-how-to.md)更新安装和支持。
 
-> [!NOTE]
-> 该表中未显示更新汇总 44，因为它不包括对 Site Recovery 提供程序和代理的更新。
+
+## <a name="updates-august-2020"></a>2020年8月 (更新) 
+
+### <a name="update-rollup-49"></a>更新汇总49
+
+[更新汇总 49](https://support.microsoft.com/help/4578241/update-rollup-49-for-azure-site-recovery) 提供以下更新：
+
+**更新** | **详细信息**
+--- | ---
+**提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）。
+**问题修复/改进** | 汇总中详细说明的一些修复和改进。
 
 ## <a name="updates-july-2020"></a>2020年7月 (更新) 
 
 ### <a name="update-rollup-48"></a>更新汇总48
 
-[更新汇总 48](https://support.microsoft.com/help/4573888/update-rollup-48-for-azure-site-recovery)提供以下更新：
+[更新汇总 48](https://support.microsoft.com/help/4573888/update-rollup-48-for-azure-site-recovery) 提供以下更新：
 
 **更新** | **详细信息**
 --- | ---
@@ -50,18 +58,18 @@ ms.locfileid: "87836626"
 
 ### <a name="update-rollup-47"></a>更新汇总47
 
-[更新汇总 47](https://support.microsoft.com/help/4570609/update-rollup-47-for-azure-site-recovery)提供以下更新：
+[更新汇总 47](https://support.microsoft.com/help/4570609/update-rollup-47-for-azure-site-recovery) 提供以下更新：
 
 **更新** | **详细信息**
 --- | ---
 **提供程序和代理** | 对 Site Recovery 代理和提供程序的更新（请参阅汇总中的详述）。
 **问题修复/改进** | 汇总中详细说明的一些修复和改进。
 
-## <a name="updates-june-2020"></a>2020年6月 (更新) 
+## <a name="updates-june-2020"></a>更新（2020 年 6 月）
 
-### <a name="update-rollup-46"></a>更新汇总46
+### <a name="update-rollup-46"></a>更新汇总 46
 
-[更新汇总 46](https://support.microsoft.com/help/4564347/update-rollup-46-for-azure-site-recovery)提供以下更新：
+[更新汇总 46](https://support.microsoft.com/help/4564347/update-rollup-46-for-azure-site-recovery) 提供以下更新：
 
 **更新** | **详细信息**
 --- | ---

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5431a0844a418ddcdbd595546253c1d03fda35c0
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 94da428862e1af66ee58e739b3ad3b5b95be3310
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006564"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612361"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows 虚拟桌面合作伙伴集成
 
@@ -36,7 +36,7 @@ Microsoft Azure 上的 VMware 范围云是一种本机云服务，可让组织�
 作为 Windows 虚拟桌面批准的提供程序，VMware 可以帮助希望使用 Windows 虚拟桌面的客户，同时还享有 VMware 范围随附的其他功能，例如集成和易用的电源管理、基于云的监视和群发极限协议。 这些功能可适应动态变化的网络条件，提供一致的用户体验。 VMware 地平线云还附带了 VMware 应用程序卷和动态环境管理器，它添加了适用于 .MSIX 应用连接和 FSLogix 的高级应用程序和用户环境管理功能。
 
 - [请参阅合作伙伴网站](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html)。
-- [阅读 VMWare 地平线云技术文档](https://techzone.vmware.com/mastering-horizon-cloud-microsoft-azure)。
+- [阅读 VMware 地平线云技术文档](https://techzone.vmware.com/mastering-horizon-cloud-microsoft-azure)。
 
 ## <a name="10zig"></a>10ZiG
 

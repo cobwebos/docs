@@ -1,17 +1,17 @@
 ---
-title: '将 Azure Active Directory 与 Azure Kubernetes Service 集成 (旧版) '
-description: '了解如何使用 Azure CLI 创建和 Azure Active Directory 启用的 Azure Kubernetes 服务 (AKS) 群集 (旧版) '
+title: 将 Azure Active Directory 与 Azure Kubernetes 服务（旧版）集成
+description: 了解如何使用 Azure CLI 创建支持 Azure Active Directory 的 Azure Kubernetes 服务 (AKS) 群集（旧版）
 services: container-service
 author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: dfcbf214c374f449a04139ce7bf4fbb6853ed524
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ab25ec5406c75316aaa1ee8efd0192dc0207ad79
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006853"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612412"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>使用 Azure CLI (旧) 将 Azure Active Directory 与 Azure Kubernetes 服务集成
 
@@ -22,11 +22,12 @@ ms.locfileid: "88006853"
 有关本文中使用的完整示例脚本，请参阅 [Azure CLI 示例 - AKS 与 Azure AD 集成][complete-script]。
 
 > [!Important]
-> AKS 提供了一个经过改进的新[AKS Azure AD][managed-aad]体验，无需管理服务器或客户端应用程序。 如果要迁移，请按照[此处][managed-aad-migrate]的说明进行操作。
+> AKS 提供了一个经过改进的新 [AKS Azure AD][managed-aad] 体验，无需管理服务器或客户端应用程序。 如果要迁移，请按照 [此处][managed-aad-migrate]的说明进行操作。
 
 ## <a name="the-following-limitations-apply"></a>以下限制适用：
 
-- 只能在启用 RBAC 的群集上启用 Azure AD。
+- Azure AD 只能在支持 RBAC 的群集上启用。
+- Azure AD 传统集成只能在群集创建过程中启用。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -133,7 +134,7 @@ az ad app permission grant --id $clientApplicationId --api $serverApplicationId
 
 ## <a name="deploy-the-cluster"></a>部署群集
 
-创建两个 Azure AD 应用程序后，请创建 AKS 群集本身。 首先使用 [az group create][az-group-create] 命令创建资源组。 以下示例在*EastUS*区域中创建资源组：
+创建两个 Azure AD 应用程序后，请创建 AKS 群集本身。 首先使用 [az group create][az-group-create] 命令创建资源组。 以下示例在 *EastUS* 区域中创建资源组：
 
 为群集创建资源组：
 
@@ -176,7 +177,7 @@ az ad signed-in-user show --query userPrincipalName -o tsv
 > [!IMPORTANT]
 > 如果为其授予 RBAC 绑定的用户在同一个 Azure AD 租户中，请根据 *userPrincipalName* 分配权限。 如果该用户位于不同的 Azure AD 租户中，请查询并改用 *objectId* 属性。
 
-创建名为 `basic-azure-ad-binding.yaml` 的 YAML 清单并粘贴以下内容。 在最后一行中，将*userPrincipalName_or_objectId*替换为前一命令中的 UPN 或对象 ID 输出：
+创建名为 `basic-azure-ad-binding.yaml` 的 YAML 清单并粘贴以下内容。 在最后一行中，将 *userPrincipalName_or_objectId*  替换为前一命令中的 UPN 或对象 ID 输出：
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1

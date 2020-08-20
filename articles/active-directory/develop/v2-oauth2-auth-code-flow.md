@@ -13,12 +13,12 @@ ms.date: 08/14/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 6cf9f7a005a80ab34e05ee293c20209e9d0b3f01
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 6648cfb717ade4b842e8ff470a46bf744b630363
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258581"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612310"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 授权代码流
 
@@ -233,6 +233,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `interaction_required` | 非标准，因为 OIDC 规范仅在 `/authorize` 终结点上调用。请求需要用户交互。 例如，需要额外的身份验证步骤。 | 请 `/authorize` 用相同的作用域重试该请求。 |
 | `temporarily_unavailable` | 服务器暂时繁忙，无法处理请求。 | 请在短暂延迟后重试该请求。 客户端应用程序可能向用户说明，其响应由于临时状况而延迟。 |
 |`consent_required` | 请求需要用户同意。 此错误是非标准的，因为通常仅在 `/authorize` 每个 OIDC 规范的终结点上返回。 当 `scope` 参数用于客户端应用无权请求的代码兑换流时返回。  | 客户端应将用户发送回 `/authorize` 具有正确范围的终结点，以便触发许可。 |
+|`invalid_scope` | 应用请求的范围无效。  | 将身份验证请求中 scope 参数的值更新为有效的值。 |
 
 > [!NOTE]
 > 单页应用可能会收到 `invalid_request` 错误，指明仅“单页应用程序”客户端类型允许进行跨源令牌兑换。  这表明用于请求令牌的重定向 URI 未标记为 `spa` 重定向 URI。  有关如何启用此流的信息，请查看[应用程序注册步骤](#redirect-uri-setup-required-for-single-page-apps)。

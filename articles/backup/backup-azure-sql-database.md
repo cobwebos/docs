@@ -3,12 +3,12 @@ title: 将 SQL Server 数据库备份到 Azure
 description: 本文介绍如何将 SQL Server 备份到 Azure。 此外还介绍 SQL Server 的恢复。
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: 28644065619771069e556c941d2c5a77626e1ba6
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 92097f4be02e81d3a8d306f6dc00bb0e8c939005
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922891"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612531"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>关于 Azure VM 中的 SQL Server 备份
 
@@ -27,7 +27,7 @@ ms.locfileid: "87922891"
 
 * 指定要保护的 SQL Server VM 并查询其中的数据库后，Azure 备份服务将在此 VM 上以 `AzureBackupWindowsWorkload` 扩展名安装工作负荷备份扩展。
 * 此扩展包含协调器和 SQL 插件。 协调器负责触发多种操作（如配置备份、备份和还原）的工作流，插件负责实际数据流。
-* 为了能够发现此 VM 上的数据库，Azure 备份将创建帐户 `NT SERVICE\AzureWLBackupPluginSvc`。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。 `NT SERVICE\AzureWLBackupPluginSvc` 帐户是[虚拟服务帐户](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)，因此不需要任何密码管理。 Azure 备份利用 `NT AUTHORITY\SYSTEM` 帐户进行数据库发现/查询，因此此帐户需是 SQL 上的公共登录名。 如果 SQL Server VM 不是从 Azure 市场创建的，你可能会收到错误 **UserErrorSQLNoSysadminMembership**。 如果发生此错误，请[遵照这些说明](#set-vm-permissions)予以解决。
+* 为了能够发现此 VM 上的数据库，Azure 备份将创建帐户 `NT SERVICE\AzureWLBackupPluginSvc`。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。 `NT SERVICE\AzureWLBackupPluginSvc` 帐户是[虚拟服务帐户](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)，因此不需要任何密码管理。 Azure 备份利用 `NT AUTHORITY\SYSTEM` 帐户进行数据库发现/查询，因此此帐户需是 SQL 上的公共登录名。 如果未从 Azure Marketplace 创建 SQL Server VM，可能会收到错误 **UserErrorSQLNoSysadminMembership**。 如果发生此错误，请[遵照这些说明](#set-vm-permissions)予以解决。
 * 在所选数据库上触发配置保护后，备份服务将使用备份计划和其他策略详细信息设置协调器，扩展将这些详细信息本地缓存在 VM 上。
 * 在计划的时间，协调器与插件通信，并开始使用 VDI 从 SQL 服务器流式处理备份数据。  
 * 插件将数据直接发送到恢复服务保管库，因此不需要暂存位置。 Azure 备份服务在存储帐户中加密和存储数据。
@@ -40,7 +40,7 @@ ms.locfileid: "87922891"
 在开始之前，请验证以下条件：
 
 1. 确保有一个 SQL Server 实例在 Azure 中运行。 可以在市场中[快速创建 SQL Server 实例](../azure-sql/virtual-machines/windows/sql-vm-create-portal-quickstart.md)。
-2. 查看[功能注意事项](sql-support-matrix.md#feature-considerations-and-limitations)和[方案支持](sql-support-matrix.md#scenario-support)。
+2. 查看 [功能注意事项](sql-support-matrix.md#feature-considerations-and-limitations) 和 [方案支持](sql-support-matrix.md#scenario-support)。
 3. 查看有关此方案的[常见问题解答](faq-backup-sql-server.md)。
 
 ## <a name="set-vm-permissions"></a>设置 VM 权限
@@ -51,7 +51,7 @@ ms.locfileid: "87922891"
 * 创建 NT SERVICE\AzureWLBackupPluginSvc 帐户，以发现虚拟机上的数据库。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。
 * Azure 备份使用 NT AUTHORITY\SYSTEM 帐户来发现 VM 上运行的数据库。 此帐户必须是 SQL 上的公共登录名。
 
-如果你未在 Azure 市场中创建 SQL Server VM，或者在 SQL 2008 和 2008 R2 上操作，可能会收到 **UserErrorSQLNoSysadminMembership** 错误。
+如果未在 Azure Marketplace 中创建 SQL Server VM，或者使用的是 SQL 2008 和 2008 R2，则可能会收到 **UserErrorSQLNoSysadminMembership** 错误。
 
 有关在使用 Windows 2008 R2 上运行的 **SQL 2008** 和 **2008 R2** 时如何授予权限，请参阅[此文](#give-sql-sysadmin-permissions-for-sql-2008-and-sql-2008-r2)。
 

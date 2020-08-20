@@ -3,12 +3,12 @@ title: 备份和还原已加密的 Azure VM
 description: 介绍如何使用 Azure 备份服务备份和还原已加密的 Azure VM。
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: 304196f6b517c353cb4fc142129fa4d3007a1d9c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 74658f695387a776fe12cef97887075ae0bc161d
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585316"
+ms.locfileid: "88611290"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>备份和还原已加密的 Azure 虚拟机
 
@@ -69,7 +69,7 @@ Azure 备份可以在使用或者不使用 Azure AD 应用的情况下，通过 
 1. 在“备份目标” > “工作负荷在哪里运行?”中，选择“Azure”。  
 1. 在 **"要备份什么？"** 中，选择 " **虚拟机**"。 然后选择 " **备份**"。
 
-      ![“方案”边栏选项卡](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
+      ![方案窗格](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
 1. 在“备份策略” > “选择备份策略”中，选择要与保管库关联的策略。  然后选择“确定”。 
     - 备份策略指定备份的时间和存储时间。

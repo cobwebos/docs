@@ -4,12 +4,12 @@ description: Azure 即时还原功能以及有关 VM 备份堆栈、资源管理
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 6ea4c3757da4e24ae0455cf35f119bf57ed644a6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: bb9a7a32306fc76ea8852787601f3b3b3828daf8
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531823"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611799"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>使用 Azure 备份即时还原功能获得更高的备份和还原性能
 
@@ -24,7 +24,7 @@ ms.locfileid: "87531823"
 * 最大支持 32 TB 的磁盘大小。 Azure 备份不建议重设磁盘大小。
 * 支持标准 SSD 磁盘、标准 HDD 磁盘和高级 SSD 磁盘。
 * 还原时可以使用非托管 VM 的原始存储帐户（按磁盘）。 即使 VM 的磁盘跨存储帐户进行分布，也具备此能力。 这可以加快各种 VM 配置的还原操作。
-* 对于在存储帐户中使用非托管高级磁盘的 VM 的备份（使用即时还原），建议从总的已分配存储空间中分配 50% 的可用空间，这仅在首次备份时是必需的。 首次备份完成后，50% 的可用空间不再是备份的要求。
+* 对于在存储帐户中使用非托管高级磁盘的 VM 的备份（使用即时还原），建议从总的已分配存储空间中分配 50% 的可用空间，这仅在首次备份时是必需的。 第一次备份完成后，不需要50% 的可用空间。
 
 ## <a name="whats-new-in-this-feature"></a>功能亮点
 
@@ -42,17 +42,17 @@ ms.locfileid: "87531823"
 ## <a name="feature-considerations"></a>功能注意事项
 
 * 快照将连同磁盘一起存储，以提高恢复点的创建速度并加快还原操作。 因此，可以查看 7 天内创建的快照的相应存储成本。
-* 增量快照作为页 blob 存储。 使用非托管磁盘的所有用户需要为其本地存储帐户中存储的快照付费。 由于托管 VM 备份使用的还原点集合在基础存储级别使用 Blob 快照，因此对于托管磁盘，你将看到与 Blob 快照定价对应的成本，并且成本是递增的。
+* 增量快照作为页 blob 存储。 使用非托管磁盘的所有用户需要为其本地存储帐户中存储的快照付费。 由于托管 VM 备份使用的还原点集合使用底层存储级别的 blob 快照，对于托管磁盘，你将看到与 blob 快照定价对应的成本，它们是增量的。
 * 对于高级存储帐户，为即时恢复点创建的快照计入分配空间的 10-TB 限制。
-* 可以根据还原需求配置快照保留期。 可按如下所述，在备份策略边栏选项卡中根据要求将快照保留期设置为最短一天。 如果不经常执行还原，这可帮助节省保留快照的成本。
-* 这是单向升级，一旦升级到即时还原，就不能回退。
+* 可以根据还原需求配置快照保留期。 根据要求，你可以在 "备份策略" 窗格中将快照保留设置为至少一天，如下所述。 如果不经常执行还原，这可帮助节省保留快照的成本。
+* 这是一个单向升级。 升级到 "即时还原" 后，无法返回。
 
 >[!NOTE]
 >使用此即时还原升级，所有客户（**包含新客户和现有客户**）的快照保留期都将设置为两天的默认值。 但是，可以根据需要将持续时间设置为 1 到 5 天之间的任意值。
 
 ## <a name="cost-impact"></a>成本影响
 
-增量快照存储在 VM 的存储帐户中，用于即时恢复。 使用增量快照意味着快照占用的空间等于创建该快照后写入的页面所占用的空间。 仍然对快照占用的每 GB 使用空间计费，每 GB 价格与[定价页](https://azure.microsoft.com/pricing/details/managed-disks/)上提到的价格相同。 对于使用非托管磁盘的 VM，可以在每个磁盘的 VHD 文件的菜单中看到快照。 对于托管磁盘，快照存储在指定资源组的还原点集合资源中，并且快照本身不直接可见。
+增量快照存储在 VM 的存储帐户中，用于即时恢复。 使用增量快照意味着快照占用的空间等于创建该快照后写入的页面所占用的空间。 仍然对快照占用的每 GB 使用空间计费，每 GB 价格与[定价页](https://azure.microsoft.com/pricing/details/managed-disks/)上提到的价格相同。 对于使用非托管磁盘的 VM，可以在每个磁盘的 VHD 文件的菜单中看到快照。 对于托管磁盘，快照存储在指定资源组中的还原点集合资源中，并且这些快照本身不会直接显示。
 
 >[!NOTE]
 > 就每周策略来说，快照保留期固定为 5 天。
@@ -61,7 +61,7 @@ ms.locfileid: "87531823"
 
 ### <a name="using-azure-portal"></a>使用 Azure 门户
 
-在 Azure 门户中可以看到，“即时还原”部分下的“VM 备份策略”边栏选项卡中添加了一个字段。  对于与特定备份策略关联的所有 VM，可以在“VM 备份策略”边栏选项卡中更改快照保留持续时间。
+在 Azure 门户中，可以在 "**即时还原**" 部分下的 " **VM 备份策略**" 窗格中看到添加的字段。 对于与特定备份策略关联的所有 Vm，你可以从 " **VM 备份策略** " 窗格中更改快照保持期。
 
 ![即时还原功能](./media/backup-azure-vms/instant-restore-capability.png)
 
@@ -106,13 +106,13 @@ Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 
 ### <a name="what-happens-if-i-select-retention-period-of-restore-point-tier-2-less-than-the-snapshot-tier1-retention-period"></a>如果选择的还原点（第 2 层）保留期小于快照（第 1 层）保留期，会发生什么情况？
 
-除非删除快照（第 1 层），否则新模型不允许删除还原点（第 2 层）。 建议将还原点（第 2 层）保留期设置为大于快照保留期。
+新模型不允许删除 (Tier2) 的还原点，除非删除快照 (Tier1) 。 建议将还原点（第 2 层）保留期设置为大于快照保留期。
 
 ### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>为何我即使在备份策略中设置了保留期，我的快照也仍然存在？
 
-如果恢复点包含快照并且存在最新可用的 RP，则该快照会一直保留到下一次成功备份为止。 这符合当前设计的“垃圾回收”(GC) 策略，该策略强制要求始终至少有一个最新的 RP，以防 VM 中的问题导致所有备份进一步出错。 正常情况下，在 RP 过期后，将在最多 24 小时内予以清理。
+如果恢复点具有快照，并且是可用的最新 RP，则会一直保留，直到下一次成功备份。 这符合当前设计的“垃圾回收”(GC) 策略，该策略强制要求始终至少有一个最新的 RP，以防 VM 中的问题导致所有备份进一步出错。 正常情况下，在 RP 过期后，将在最多 24 小时内予以清理。
 
 ### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>我不需要即时还原功能。 是否可以禁用它？
 
-为所有人启用了即时还原功能，不能禁用它。 可以将快照保留期缩短到最少一天。
+为所有人启用了 "即时还原" 功能，并且不能禁用。 可以将快照保留期缩短到最少一天。
 

@@ -4,12 +4,12 @@ description: 汇总了 Azure Migrate 服务的支持设置和限制。
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: raynew
-ms.openlocfilehash: fae5af9c8717604d71ec2bf2628ea25125d5b2d5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: aac7b7d39102a1fe115ddea483aee36af79e7fc4
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87022712"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612106"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate 支持矩阵
 
@@ -23,7 +23,7 @@ ms.locfileid: "87022712"
 --- | --- 
 **发现** | 可以发现计算机元数据和动态性能数据。
 **应用程序发现** | 可以发现 VMware VM 上运行的应用、角色和功能。 目前，此功能仅限于发现。 评估目前处于计算机级别。 我们尚未提供应用、角色或基于功能的评估。 
-**评估** | 评估 VMware VM、Hyper-V VM 和物理服务器上运行的本地工作负荷和数据。 使用 Azure Migrate Server 评估、Microsoft 数据迁移助手（DMA）以及其他工具和 ISV 产品进行评估。
+**评估** | 评估 VMware VM、Hyper-V VM 和物理服务器上运行的本地工作负荷和数据。 使用 Azure Migrate Server 评估、Microsoft 数据迁移助手 (DMA) 以及其他工具和 ISV 产品评估。
 **迁移** | 将物理服务器、VMware VM、Hyper-V VM、物理服务器以及基于云的 VM 上运行的工作负荷和数据迁移到 Azure。 使用 Azure Migrate 服务器评估和 Azure 数据库迁移服务 (DMS) 以及其他工具和 ISV 产品/服务进行迁移。
 
 > [!NOTE]
@@ -45,7 +45,7 @@ Azure Migrate 服务器迁移 | NA | 迁移 [VMware VM](tutorial-migrate-vmware.
 [DMA](/sql/dma/dma-overview?view=sql-server-2017) | 评估 SQL Server 的数据库。 | NA
 [DMS](../dms/dms-overview.md) | NA | 迁移 SQL Server、Oracle、MySQL、PostgreSQL、MongoDB。 
 [Lakeside](https://go.microsoft.com/fwlink/?linkid=2104908) | 评估虚拟桌面基础结构 (VDI) | NA
-[Movere](https://www.movere.io/) | 评估 VMWare VM、Hyper-V VM、Xen VM、物理计算机、工作站（包括 VDI）、公有云工作负荷 | NA
+[Movere](https://www.movere.io/) | 评估 VMware Vm、Hyper-v Vm、Xen Vm、物理计算机、工作站 (包括 VDI) 、公有云工作负荷 | NA
 [RackWare](https://go.microsoft.com/fwlink/?linkid=2102735) | NA | 迁移 VMware VM、Hyper-V VM、Xen VM、KVM VM、物理计算机、公有云工作负荷 
 [Turbonomic](https://go.microsoft.com/fwlink/?linkid=2094295)  | 评估 VMware VM、Hyper-V VM、物理服务器、公有云工作负荷。 | NA
 [UnifyCloud](https://go.microsoft.com/fwlink/?linkid=2097195) | 评估 VMware VM、Hyper-V VM、物理服务器、公有云工作负荷和 SQL Server 数据库。 | NA
@@ -93,15 +93,15 @@ Canada | 加拿大中部或加拿大东部
 日本 |  日本东部或日本西部
 韩国 | 韩国中部或韩国南部
 United Kingdom | 英国南部或英国西部
-美国 | 美国中部或美国西部 2
+United States | 美国中部或美国西部 2
 
 
 ## <a name="supported-geographies-azure-government"></a>支持的地理区域（Azure 政府）
 
 **任务** | **地域** | **详细信息**
 --- | --- | ---
-创建项目 | 美国 | 元数据存储在 US Gov 亚利桑那州、US Gov 弗吉尼亚州
-目标评估 | 美国 | 目标区域：US Gov 亚利桑那州、US Gov 弗吉尼亚州、US Gov 德克萨斯州
+创建项目 | United States | 元数据存储在 US Gov 亚利桑那州、US Gov 弗吉尼亚州
+目标评估 | United States | 目标区域：US Gov 亚利桑那州、US Gov 弗吉尼亚州、US Gov 德克萨斯州
 目标复制 | United States | 目标区域：US DoD 中部、US DoD 东部、US Gov 亚利桑那州、US Gov 爱荷华州、US Gov 德克萨斯州、US Gov 弗吉尼亚州
 
 

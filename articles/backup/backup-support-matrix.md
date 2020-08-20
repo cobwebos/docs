@@ -4,12 +4,12 @@ description: 汇总 Azure 备份服务的支持设置和限制。
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: f2f3d26f74c6227ad257c188d4088fd41fca7075
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 5871e61229277d8036727c11b42d9d7a061bad99
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922310"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612514"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure 备份的支持矩阵
 
@@ -79,8 +79,8 @@ Azure 备份使用恢复服务保管库来安排和管理备份。 它还使用�
 --- | ---
 **直接备份运行 Linux 的本地计算机** | 不支持。 MARS 代理只能安装在 Windows 计算机上。
 **使用代理扩展备份运行 Linux 的 Azure VM** | 使用[自定义脚本](backup-azure-linux-app-consistent.md)的应用一致性备份。<br/><br/> 文件级恢复。<br/><br/> 通过从恢复点或磁盘创建 VM 进行还原。
-**使用 DPM 备份运行 Linux 的本地计算机** | 在 Hyper-V 和 VMWare 上对 Linux 来宾 VM 进行文件一致性备份。<br/><br/> 对 Hyper-V 和 VMWare Linux 来宾 VM 进行 VM 还原。
-**使用 MABS 备份运行 Linux 的本地计算机** | 在 Hyper-V 和 VMWare 上对 Linux 来宾 VM 进行文件一致性备份。<br/><br/> 对 Hyper-V 和 VMWare Linux 来宾 VM 进行 VM 还原。
+**使用 DPM 备份运行 Linux 的本地计算机** | Hyper-v 和 VMware 上对 Linux 来宾 Vm 进行文件一致性备份。<br/><br/> Hyper-v 和 VMware Linux 来宾 Vm 的 VM 还原。
+**使用 MABS 备份运行 Linux 的本地计算机** | Hyper-v 和 VMware 上对 Linux 来宾 Vm 进行文件一致性备份。<br/><br/> Hyper-v 和 VMware Linux 来宾 Vm 的 VM 还原。
 **使用 MABS 或 DPM 备份 Linux Azure VM** | 不支持。
 
 ## <a name="daylight-saving-time-support"></a>夏令时支持
@@ -127,8 +127,8 @@ Azure 备份支持对备份流量进行压缩，详细情况汇总在下表中�
 
 **计算机** | **压缩到 MABS/DPM (TCP)** | **压缩到保管库 (HTTPS)**
 --- | --- | ---
-**直接备份本地 Windows 计算机** | 不可用 | ![是][green]
-**使用 VM 扩展的 Azure VM 备份** | 不可用 | 不可用
+**直接备份本地 Windows 计算机** | NA | ![是][green]
+**使用 VM 扩展的 Azure VM 备份** | 不可用 | NA
 **使用 MABS/DPM 在本地计算机/Azure 计算机上备份** | ![是][green] | ![是][green]
 
 ## <a name="retention-limits"></a>保留期限制
