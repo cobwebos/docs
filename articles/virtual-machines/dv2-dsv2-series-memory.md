@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: bcefe19183ea5f511ce8255914b3ea8edd4306e8
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: e2c1b9bb8d8fa1e7b82bebfa31963be19d9024af
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837085"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648490"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>内存优化的 Dv2 和 Dsv2 系列
 
@@ -66,7 +66,7 @@ ACU：210 - 250 <sup>1</sup>
 | Standard_DS15_v2 <sup>2</sup> | 20 | 140 | 280 | 64 | 80000/640 (720) | 64000/960 | 8|25000 <sup>4</sup> |
 
 <sup>1</sup> DSv2 系列 VM 可能的最大磁盘吞吐量（IOPS 或 Mbps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请参阅[为实现高性能而设计](./windows/premium-storage-performance.md)。
-<sup>2</sup>实例隔离于基于 Intel Haswell 的硬件并专用于单个客户。  
+<sup>2</sup>  实例隔离于基于 Intel Haswell 的硬件并专用于单个客户。  
 <sup>3</sup> 受约束的可用核心大小。  
 <sup>4</sup> 25000 Mbps，具有加速网络。
 
@@ -81,9 +81,9 @@ ACU：210 - 250 <sup>1</sup>
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
 
-定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
+定价计算器： [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 
-有关磁盘类型的详细信息：[磁盘类型](./linux/disks-types.md#ultra-disk)
+有关磁盘类型的详细信息： [磁盘类型](./disks-types.md#ultra-disk)
 
 
 ## <a name="next-steps"></a>后续步骤

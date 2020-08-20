@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 08/18/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 947f50c1a92985c057f39a5efb1be250bf8ef06c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 5805fe1f3fe25a1e2d7fbc5c0d0fb443586479d2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587151"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649606"
 ---
 # <a name="ibm-db2-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 IBM Db2 Azure 虚拟机 DBMS 部署
 
@@ -82,7 +82,7 @@ SAP 支持说明 [1928533]中列出的任何 VM 类型都支持 IBM DB2 For Sap 
 下面是适用于各种规模的基准配置，以及从小到大的 Db2 部署使用 SAP：
 
 #### <a name="extra-small-sap-system-database-size-50---200-gb-example-solution-manager"></a>超大小型 SAP 系统：数据库大小 50-200 GB：示例解决方案管理器
-| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | 缓存 |
+| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E4ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  ||  |
 |vCPU：4 |/db2/ <SID> /sapdata |P10 |2 |1.000  |200  |256  |7.000  |340  |256 KB |ReadOnly |
@@ -91,7 +91,7 @@ SAP 支持说明 [1928533]中列出的任何 VM 类型都支持 IBM DB2 For Sap 
 | |/db2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3.500  |170  || |
 
 #### <a name="small-sap-system-database-size-200---750-gb-small-business-suite"></a>小型 SAP 系统：数据库大小 200-750 GB：小型企业套件
-| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | 缓存 |
+| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E16ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  || |
 |vCPU：16 |/db2/ <SID> /sapdata |P15 |4 |4.400  |500  |1.024  |14.000  |680  |256 KB |ReadOnly |
@@ -100,7 +100,7 @@ SAP 支持说明 [1928533]中列出的任何 VM 类型都支持 IBM DB2 For Sap 
 | |/db2/ <SID> /offline_log_dir |P10 |1 |500  |100  |128  |3.500  |170  ||| 
 
 #### <a name="medium-sap-system-database-size-500---1000-gb-small-business-suite"></a>中型 SAP 系统：数据库大小 500-1000 GB：小型企业套件
-| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | 缓存 |
+| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E32ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  || |
 |vCPU：32 |/db2/ <SID> /sapdata |P30 |2 |10.000  |400  |2.048  |10.000  |400  |256 KB |ReadOnly |
@@ -109,7 +109,7 @@ SAP 支持说明 [1928533]中列出的任何 VM 类型都支持 IBM DB2 For Sap 
 | |/db2/ <SID> /offline_log_dir |P15 |1 |1.100  |125  |256  |3.500  |170  ||| 
 
 #### <a name="large-sap-system-database-size-750---2000-gb-business-suite"></a>大型 SAP 系统：数据库大小 750-2000 GB：业务套件
-| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | 缓存 |
+| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |E64ds_v4 |/db2 |P6 |1 |240  |50  |64  |3.500  |170  || |
 |vCPU：64 |/db2/ <SID> /sapdata |P30 |4 |20.000  |800  |4.096  |20.000  |800  |256 KB |ReadOnly |
@@ -118,7 +118,7 @@ SAP 支持说明 [1928533]中列出的任何 VM 类型都支持 IBM DB2 For Sap 
 | |/db2/ <SID> /offline_log_dir |P20 |1 |2.300  |150  |512  |3.500  |170  || |
 
 #### <a name="large-multi-terabyte-sap-system-database-size-2tb-global-business-suite-system"></a>大型多 tb SAP 系统：数据库大小 2TB +：全局业务套件系统
-| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | 缓存 |
+| VM 名称/大小 |Db2 装入点 |Azure 高级磁盘 |磁盘数 |IOPS |吞吐量 [MB/秒] |大小 [GB] |突发 IOPS |突发将 [GB] | 条带大小 | Caching |
 | --- | --- | --- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 |M128s |/db2 |P10 |1 |500  |100  |128  |3.500  |170  || |
 |vCPU：128 |/db2/ <SID> /sapdata |P40 |4 |30.000  |1.000  |8.192  |30.000  |1.000  |256 KB |ReadOnly |
@@ -402,7 +402,7 @@ SAP 支持说明 [1928533]中列出的任何 VM 类型都支持 IBM DB2 For Sap 
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/disks-types.md
+[storage-premium-storage-preview-portal]:../../disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md

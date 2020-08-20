@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: a88804d85bde13a1e8b333e96053f7d85c4bd2d5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 41dbb42637db98dcd97e3487f252e88f2ba5f9a3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87837119"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649884"
 ---
 # <a name="dcsv2-series"></a>DCsv2 系列
 
@@ -41,7 +41,7 @@ DCsv2 系列可以在公有云中处理数据和代码时帮助保护数据和�
 | Standard_DC8_v2  | 8   | 32          | 400                    | 8              | 16000/128                                                                                         | 2   | 168                                         |
 
 - DCsv2 系列 VM 是[第 2 代 VM](./linux/generation-2.md#creating-a-generation-2-vm)，仅支持 `Gen2` 映像。
-- 当前在[此处](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all)列出的区域中可用。
+- 当前在 [此处](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines&regions=all)列出的区域中可用。
 - 上一代机密计算 VM：[DC 系列](sizes-previous-gen.md#preview-dc-series)
 - 使用 [Azure 门户](./linux/quick-create-portal.md)或 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.acc-virtual-machine-v2?tab=overview)创建 DCsv2 VM
 
@@ -56,9 +56,9 @@ DCsv2 系列可以在公有云中处理数据和代码时帮助保护数据和�
 - [高性能计算](sizes-hpc.md)
 - [前几代](sizes-previous-gen.md)
 
-定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
+定价计算器： [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 
-有关磁盘类型的详细信息：[磁盘类型](./linux/disks-types.md#ultra-disk)
+有关磁盘类型的详细信息： [磁盘类型](./disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>后续步骤
 

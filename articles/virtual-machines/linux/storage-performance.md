@@ -10,14 +10,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: 520754c08fc9bf89949739987b41974eccdcd29d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: cd9e539e01e8e11d866186552ab3b8dde7e03f91
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292142"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654763"
 ---
-# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>优化 Lsv2 系列虚拟机上的性能
+# <a name="optimize-performance-on-the-lsv2-series-linux-virtual-machines"></a>优化 Lsv2 系列 Linux 虚拟机上的性能
 
 Lsv2 系列虚拟机支持需要在各种应用与行业的本地存储中提供高 I/O 和吞吐量的各种工作负荷。  Lsv2 系列非常适用于大数据、SQL、NoSQL 数据库、数据仓库，以及大型事务数据库（包括 Cassandra、MongoDB、Cloudera 和 Redis）。
 
@@ -83,7 +83,7 @@ Lsv2 系列 VM 使用基于 Zen 微体系结构的 AMD EYPC™ 服务器处理�
 - VM 由于硬件问题而变得不正常，必须在另一个节点上进行检修和修复。
 - 少量的计划内维护检修操作要求将 VM 重新分配到另一台主机进行检修。
 
-若要详细了解用于在本地存储中备份数据的选项，请参阅 [Azure IaaS 磁盘的备份和灾难恢复](backup-and-disaster-recovery-for-azure-iaas-disks.md)。
+若要详细了解用于在本地存储中备份数据的选项，请参阅 [Azure IaaS 磁盘的备份和灾难恢复](../backup-and-disaster-recovery-for-azure-iaas-disks.md)。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

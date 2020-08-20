@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: 81bfde964fa993b69bc464214dab0810a8f2bfe5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a5a3887efe9b8f19608fac63216ca53576d9ec3f
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832580"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654729"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>B 系列可突增虚拟机大小
 
@@ -88,7 +88,7 @@ B16 特征：
 
 <sup>1</sup> 累积的积分/在一小时中使用的积分等于：`((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes`。  
 
-对于具有16个个 vcpu 和 64 GiB 内存的 D16s_v3，每小时费率为 $0.936 个小时 (每月 $673.92) ; 对于带有16个 vcpu 和 64 GiB 内存的 B16ms，速度为每小时 $0.794 (每小时 $547.86 月) 。 <b>这会节省15% 的费用！</b>
+对于具有16个个 vcpu 和 64 GiB 内存的 D16s_v3，每小时费率为 $0.936 个小时 (每月 $673.92) ; 对于带有16个 vcpu 和 64 GiB 内存的 B16ms，速度为每小时 $0.794 (每小时 $547.86 月) 。 <b> 这会节省15% 的费用！</b>
 
 ## <a name="q--a"></a>问题解答
 
@@ -136,7 +136,7 @@ B16 特征：
 
 ### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>问：如果我在 B1ls 上部署不受支持的 OS 映像，会发生什么情况？
 
-**答**： B1ls 仅支持 Linux 映像，如果部署任何其他操作系统映像，则可能不会获得最佳的客户体验。
+**答** ： B1ls 仅支持 Linux 映像，如果部署任何其他操作系统映像，则可能不会获得最佳的客户体验。
 
 ## <a name="other-sizes-and-information"></a>其他大小和信息
 
@@ -147,9 +147,9 @@ B16 特征：
 - [GPU 优化](sizes-gpu.md)
 - [高性能计算](sizes-hpc.md)
 
-定价计算器：[定价计算器](https://azure.microsoft.com/pricing/calculator/)
+定价计算器： [定价计算器](https://azure.microsoft.com/pricing/calculator/)
 
-有关磁盘类型的详细信息：[磁盘类型](./linux/disks-types.md#ultra-disk)
+有关磁盘类型的详细信息： [磁盘类型](./disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>后续步骤
 
