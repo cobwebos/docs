@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 的单一登录 (SSO) 与 SmartHR 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 SmartHR 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 340d2a77-2278-449a-a154-01673ba91cc8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46d3ac6947293529308ad0abba9cd175d6b4dd6c
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: f2c5cbf2df2e439af8ac95e5823a43b5d38f2001
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407330"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88524929"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-smarthr"></a>教程：Azure Active Directory 单一登录 (SSO) 与 SmartHR 集成
 

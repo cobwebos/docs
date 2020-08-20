@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Weekdone 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Weekdone 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 34921f9a-5637-4420-ab4c-9beb34421909
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 43ade2035e6f831f9d665d2b53dabb3afb96f41d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 613509f59d759bfecc11bd16cdafcb5fc49413cc
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67087361"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523576"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-weekdone"></a>教程：Azure Active Directory 与 Weekdone 集成
 

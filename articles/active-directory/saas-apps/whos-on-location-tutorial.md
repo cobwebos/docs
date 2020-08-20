@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 WhosOnLocation 的单一登录 (SSO) 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 WhosOnLocation 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4126cc8d-46a3-485f-8a51-8fe56b6f2f69
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84d14789f63e1868a145388c7dde4aec251fa399
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ba9fe6b727ec3f2f5ec8133901fb1aea287fbcd8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524779"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523093"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-whosonlocation"></a>教程：Azure Active Directory 单一登录 (SSO) 与 WhosOnLocation 集成
 

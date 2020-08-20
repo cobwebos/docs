@@ -6,14 +6,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/20/2020
+ms.date: 08/14/2020
 ms.author: victorh
-ms.openlocfilehash: 0c5302f35665b034bffa343ee90fd4fd609f56e5
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c73e09e241baff7c4719acfd4257f537e27b010a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290155"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236181"
 ---
 # <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>教程：使用 Azure 门户创建和配置托管多个网站的应用程序网关
 
@@ -33,9 +33,9 @@ ms.locfileid: "87290155"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+## <a name="prerequisites"></a>先决条件
 
-通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
@@ -237,7 +237,7 @@ ms.locfileid: "87290155"
 1. 在 Azure 门户的左侧菜单上选择“资源组”  。
 2. 在“资源组”页的列表中搜索“myResourceGroupAG”，然后将其选中。
 3. 在“资源组”页上，选择“删除资源组”   。
-4. 在“键入资源组名称”字段中输入“myResourceGroupAG”，然后选择“删除”
+4. 在“键入资源组名称”字段中输入“myResourceGroupAG”，然后选择“删除”。 
 
 ## <a name="next-steps"></a>后续步骤
 
