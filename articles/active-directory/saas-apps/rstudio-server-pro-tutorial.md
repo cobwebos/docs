@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 RStudio Server Pro 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 RStudio Server Pro 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 457ce95e-bf6e-46b2-85ae-c512687c3158
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1988468ba9cfd056b3b760652fb56f3166431f9d
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: e3d88404079d3d4285c0011f914f6ad5f76d1743
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87514099"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543600"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rstudio-server-pro"></a>教程：Azure Active Directory 单一登录 (SSO) 与 RStudio Server Pro 的集成
 

@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Pavaso Digital Close 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Pavaso Digital Close 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 23d83f82-39c3-4fc2-88c9-f8074cc44d43
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f5390c578a80f8391ba879f9e7cbe7acc1cfd8f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4ef4515b7ecee3ea814d9a34d3bf3c217d551934
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160235"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543737"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pavaso-digital-close"></a>教程：Azure Active Directory 与 Pavaso Digital Close 的集成
 

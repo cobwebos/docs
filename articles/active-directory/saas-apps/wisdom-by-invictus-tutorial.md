@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Wisdom by Invictus 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Wisdom by Invictus 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 07900b81-a566-40ff-9575-edc57722bedd
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66714f1a4c28972e288637cb7844ffe3a10f5fd7
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 3206d00520d31607bf4fcec8c0bb4a2cd6611f62
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80503596"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88541349"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-wisdom-by-invictus"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Wisdom by Invictus 的集成
 
