@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Replicon 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Replicon 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 02a62f15-917c-417c-8d80-fe685e3fd601
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84a93d4fb8a6a3890ddd2c94b4f0a5c9114bd84d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8394191820226a0d4fdcfe1a078e85e1caafa37f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87058207"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534272"
 ---
 # <a name="tutorial-integrate-replicon-with-azure-active-directory"></a>教程：将 Replicon 与 Azure Active Directory 集成
 
