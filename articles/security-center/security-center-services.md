@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 3055d8c31307cfacad575d892db0ed812a03a9e4
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 489f0138caa54105cced9c9ef4e8846657d84717
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258621"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607128"
 ---
 # <a name="feature-coverage-for-machines"></a>适用于计算机的功能覆盖范围
 
@@ -91,7 +91,7 @@ ms.locfileid: "88258621"
 
 | 终结点保护| 平台 | 安全中心安装 | 安全中心发现 |
 |------|------|-----|-----|
-| Windows Defender (Microsoft Antimalware)| Windows Server 2016 或更高版本| 否，内置到 OS| 是 |
+| Microsoft Defender 防病毒| Windows Server 2016 或更高版本| 否，内置到 OS| 是 |
 | System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2（请参阅以下备注） | 通过扩展 | 是 |
 | 趋势微–深度安全 | Windows Server 系列  | 否 | 是 |
 | Symantec v12.1.1100+| Windows Server 系列  | 否 | 是 |

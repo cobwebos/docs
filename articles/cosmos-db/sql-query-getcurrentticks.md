@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 08/14/2020
 ms.author: tisande
 ms.custom: query-reference
-ms.openlocfilehash: 6b3cd5ab5849c33172e4a629c79fb792b82f1255
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: 2ca76d75edba6688dbe93f11a51a0ad67942677a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227073"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606933"
 ---
 # <a name="getcurrentticks-azure-cosmos-db"></a>GetCurrentTicks (Azure Cosmos DB) 
 
-返回以计时周期度量的当前日期和时间。
+返回自00:00:00 星期四（100年 1 1970 月1日）起已经过的毫微秒计时周期数。
   
 ## <a name="syntax"></a>语法
   
@@ -26,9 +26,11 @@ GetCurrentTicks ()
 
 ## <a name="return-types"></a>返回类型
 
-返回一个正整数值。
+返回一个有符号的数字值，从 Unix epoch 开始，当前的100毫微秒计时周期数。 换句话说，GetCurrentTicks 返回自00:00:00 星期四（100年 1 1970 月1日）起已经过的毫微秒计时周期数。
 
-## <a name="remarks"></a>备注
+## <a name="remarks"></a>注解
+
+GetCurrentTicks ( # A1 是不确定性函数。 返回的结果采用 UTC（协调世界时）格式。
 
 此系统函数不会使用索引。
 

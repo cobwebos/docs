@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/11/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 164a0e295179bb0c1e8d7da6b43d8e07a4e9f4e9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 4c5d8b438764fa9aa3838b2225c63d412afc519b
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304405"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606800"
 ---
 # <a name="common-questions-about-saas-fulfillment-apis"></a>有关 SaaS 履单 Api 的常见问题
 
@@ -20,7 +20,7 @@ ms.locfileid: "87304405"
 
 ## <a name="discovery-experience"></a>发现体验
 
-一旦发布了 SaaS 产品，Azure 用户就可以在 Azure Marketplace 中发现它。 你的客户可以根据产品类型（SaaS）筛选产品/服务，并发现他们感兴趣的 SaaS 服务。
+一旦发布了 SaaS 产品，Azure 用户就可以在 Azure Marketplace 中发现它。 你的客户可以根据产品类型 (SaaS) 来筛选产品/服务，并发现他们感兴趣的 SaaS 服务。
 
 ## <a name="purchase-experience"></a>购买体验
 
@@ -38,15 +38,15 @@ ms.locfileid: "87304405"
 
 ### <a name="how-are-you-notified-when-a-user-subscribes-to-your-saas-offer"></a>当用户订阅 SaaS 产品/服务时，如何通知你？
 
-订阅产品/服务后，Azure 用户可以在 Azure 中发现和管理其所有产品/服务。 默认情况下，新订阅的 SaaS 产品/服务的状态显示为**预配，履单完成**。 在此状态下，系统将提示 Azure 用户**配置帐户**，以便浏览到 Azure 门户中的 SaaS 订阅管理体验。
+订阅产品/服务后，Azure 用户可以在 Azure 中发现和管理其所有产品/服务。 默认情况下，新订阅的 SaaS 产品/服务的状态显示为 **预配，履单完成**。 在此状态下，系统将提示 Azure 用户 **配置帐户**，以便浏览到 Azure 门户中的 SaaS 订阅管理体验。
 
-当用户选择 "**配置帐户**" 时，它们将被重定向到 SaaS 服务网站。 发布者在发布产品/服务时配置了 URL。 此页面称为发布者登录页。 Azure 用户基于 Azure 中现有的 AAD 凭据登录到 SaaS 登陆页面。
+当用户选择 " **配置帐户**" 时，它们将被重定向到 SaaS 服务网站。 发布者在发布产品/服务时配置了 URL。 此页面称为发布者登录页。 Azure 用户基于 Azure 中现有的 AAD 凭据登录到 SaaS 登陆页面。
 
 将 Azure 用户重定向到登陆页面后，会将一个令牌添加到查询 URL。 此令牌生存期较短，且有效期为24小时。 然后，你可以检测该令牌是否存在，并调用 Microsoft 的 API 来获取与该令牌关联的更多上下文。
 
 ![客户订阅流](media/saas-metering-service-integration-flow-a.png)
 
-有关用于处理 SaaS 产品生命周期中的事务的 API 协定的详细信息，请参阅[saas 履单 API](pc-saas-fulfillment-api-v2.md)。
+有关用于处理 SaaS 产品生命周期中的事务的 API 协定的详细信息，请参阅 [saas 履单 API](pc-saas-fulfillment-api-v2.md)。
 
 ### <a name="how-do-you-know-the-saas-offer-to-which-the-user-subscribes-in-azure"></a>如何知道用户在 Azure 中订阅的 SaaS 产品/服务？
 
@@ -58,7 +58,7 @@ ms.locfileid: "87304405"
 
 * 在计费周期内随时可以执行转换。 系统将提示你确认任何转换，这将在确认之后生效。
 
-* 预先支付的计划（**每月**或**每年**）费率按比例收费。 在下一张发票中，将按下一张发票对发出到转换时间的任何超额费用收费。 新的超额将根据新计划发出。
+* 预支付计划 (**每月** 或 **每年**) 费率按比例收费。 在下一张发票中，将按下一张发票对发出到转换时间的任何超额费用收费。 新的超额将根据新计划发出。
 
 >[!Note]
 >如果您不想支持特定的转换路径，则可以阻止降级。
@@ -67,9 +67,9 @@ ms.locfileid: "87304405"
 
 ![客户计划更改流](media/saas-metering-service-integration-flow-b.png)
 
-以下序列会在 Azure 客户更改 Microsoft 店面的计划时捕获流
+以下序列会在 Azure 客户更改 Microsoft 在线商店中的计划时捕获流：
 
-![客户店面计划更改流](media/saas-metering-service-integration-flow-c.png)
+![客户在线商店计划更改流](media/saas-metering-service-integration-flow-c.png)
 
 ### <a name="how-can-the-azure-user-unsubscribe-from-the-plan-associated-with-azure-subscription"></a>Azure 用户如何取消订阅与 Azure 订阅关联的计划？
 
@@ -79,9 +79,9 @@ Azure 客户在 SaaS 体验中取消订阅 SaaS 产品/服务时，以下序列�
 
 ![在 SaaS 体验中取消订阅客户](media/saas-metering-service-integration-flow-d.png)
 
-Azure 用户在 Microsoft 店面中取消订阅时，以下序列捕获流：
+Azure 用户在 Microsoft 在线商店取消订阅时，以下序列捕获流：
 
-![Microsoft 店面的客户取消订阅](media/saas-metering-service-integration-flow-e.png)
+![Microsoft 在线商店中的客户取消订阅](media/saas-metering-service-integration-flow-e.png)
 
 ## <a name="next-steps"></a>后续步骤
 

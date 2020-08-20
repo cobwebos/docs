@@ -7,12 +7,12 @@ ms.topic: article
 author: AarathiN
 ms.author: aarathin
 ms.date: 07/14/2020
-ms.openlocfilehash: 420ca9ff6a3ccc0e0bb76887e777f05dd955e97b
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: f62483880d2572b6487c87bbd73e0dd7033238d3
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166682"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606181"
 ---
 # <a name="create-an-azure-application-offer"></a>创建 Azure 应用程序产品/服务
 
@@ -103,7 +103,7 @@ ms.locfileid: "88166682"
 ## <a name="create-a-new-offer"></a>创建新套餐
 
 >[!NOTE]
->发布产品/服务后，在合作伙伴中心对其进行的编辑在重新发布该产品/服务之前不会显示在店面中。 确保在进行更改后始终重新发布产品/服务。
+>发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑将不会显示在 "联机" 商店中，直到您重新发布该产品/服务。 确保在进行更改后始终重新发布产品/服务。
 
 1. 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/home)。
 
@@ -197,7 +197,7 @@ ms.locfileid: "88166682"
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. 标题
+1. Title
 2. 说明
 3. 有用链接
 4. 屏幕截图

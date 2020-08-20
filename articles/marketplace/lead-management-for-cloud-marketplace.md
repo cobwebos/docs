@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: d0aea0594a97990c7c89434e73fcd4982b01e20f
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: b08324654a046b5a2296f6e533107c1b26a0e1fc
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035172"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606893"
 ---
 # <a name="lead-management-for-the-commercial-marketplace"></a>商业应用程序的潜在客户管理
 
@@ -170,7 +170,7 @@ title = MSFT_TEST_636573304831318844
 
 **我收到了来自市场的电子邮件，为什么找不到 CRM 中的潜在顾客？**  
 
-最终用户的电子邮件域可能来自 .edu。 出于隐私原因，我们不会传递来自 .edu 域的个人身份数据。 在[帮助和支持](https://aka.ms/marketplacepublishersupport)中提交支持工单。
+最终用户的电子邮件域可能来自 .edu。 出于隐私原因，我们不会从. edu 域传递个人身份数据。 在[帮助和支持](https://aka.ms/marketplacepublishersupport)中提交支持工单。
 
 **已将 Azure Table/Azure BLOB 配置为潜在顾客目标，如何查看潜在顾客？** 
 

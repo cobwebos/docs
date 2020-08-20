@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 312f04ff4b1d860724640dfc9e5ea9d75bb76bae
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 71d8961af372f927fab909073daa715766542f87
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88189980"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606676"
 ---
 # <a name="certificate-creation-methods"></a>证书创建方法
 
@@ -82,7 +82,7 @@ KV 证书创建是一个异步过程。 此操作会创建 KV 证书请求并返
 
 |提供程序|证书类型|配置设置  
 |--------------|----------------------|------------------|  
-|DigiCert|Key Vault 提供 DigiCert 的 OV 或 EV SSL 证书| [集成指南](https://docs.digicert.com/certificate-tools/azure-key-vault-integration-guide/)
+|DigiCert|Key Vault 提供 DigiCert 的 OV 或 EV SSL 证书| [集成指南](https://docs.microsoft.com/azure/key-vault/certificates/how-to-integrate-certificate-authority)
 |GlobalSign|Key Vault 提供 GlobalSign 的 OV 或 EV SSL 证书| [集成指南](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
 
  证书颁发者是 Azure Key Vault (KV) 中表示为 CertificateIssuer 资源的实体。 它用于提供有关 KV 证书来源的信息，例如颁发者名称、提供者、凭据和其他管理详细信息。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/15/2020
-ms.openlocfilehash: 0b707b2aed68359f8c04f6cd6bee6c95b495178b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 168d343ea4582d8c19a577cedadf6f1bc3c39971
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119474"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607359"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模块
 
@@ -38,9 +38,9 @@ IoT Edge 模块套餐类型是在 IoT Edge 设备上运行的一种特定类型�
 
 ## <a name="publishing-your-iot-edge-module"></a>发布 IoT Edge 模块
 
-**选择正确的店面**
+**选择正确的在线商店**
 
-IoT Edge 模块仅发布到 Azure 市场，AppSource 不适用。  有关店面差异和目标受众的详细信息，请参阅[确定解决方案的发布选项](determine-your-listing-type.md)。
+IoT Edge 模块仅发布到 Azure 市场，AppSource 不适用。  有关在线商店中的差异和目标受众的详细信息，请参阅 [确定发布选项](determine-your-listing-type.md)。
  
 **计费选项**
 
@@ -73,17 +73,9 @@ Microsoft Azure 市场协议和策略的所有条款都适用于 IoT Edge 模块
 
 若要详细了解帮助 IoT Edge 模块获得认证并在 Azure 市场中发布的主要技术要求，请参阅[准备 IoT Edge 模块技术资产](./partner-center-portal/create-iot-edge-module-asset.md)。
 
-## <a name="documentation-and-resources"></a>文档和资源
-
-[创建 IoT Edge 模块产品/服务](./partner-center-portal/azure-iot-edge-module-creation.md) - 在合作伙伴中心中发布新 IoT Edge 模块套餐的步骤。
-
 ## <a name="next-steps"></a>后续步骤
 
-如果尚未注册，
-
-- [了解](https://azuremarketplace.microsoft.com/sell)有关市场的信息。
-
-若要在合作伙伴中心中注册，并开始创建新产品/服务或正在使用现有产品/服务，
-
+- [了解](https://azuremarketplace.microsoft.com/sell) 商用 marketplace。
+- [Create a IoT Edge module 产品/服务]。
 - 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建或完成产品/服务。
 - 有关如何发布 IoT Edge 模块产品/服务的信息，请参阅 [创建 IoT Edge 模块产品/服务](./partner-center-portal/azure-iot-edge-module-creation.md)。

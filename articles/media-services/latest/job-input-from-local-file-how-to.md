@@ -3,20 +3,20 @@ title: 从本地文件创建 Azure 媒体服务作业输入 | Microsoft Docs
 description: 本文演示如何从本地文件创建 Azure 媒体服务作业输入。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/26/2020
-ms.author: juliako
-ms.openlocfilehash: a635a75a64db59fc56c6890f79af967a58735853
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/18/2020
+ms.author: inhenkel
+ms.openlocfilehash: 4d7e6d9daa5d30c5cbf5b198a147564d0c05c074
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001122"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607225"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>从本地文件创建作业输入
 
@@ -25,14 +25,13 @@ ms.locfileid: "87001122"
 ## <a name="prerequisites"></a>必备条件 
 
 * [创建媒体服务帐户](./create-account-howto.md)。
-* 查看[管理资产](manage-asset-concept.md)。
 
 ## <a name="net-sample"></a>.NET 示例
 
 以下代码演示如何创建输入资产并将其用作作业的输入。 此 CreateInputAsset 函数执行以下操作：
 
 * 创建资产
-* 获取资产的[存储中容器](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container)的可写 [SAS URL](../../storage/common/storage-sas-overview.md)
+* 获取[存储中资产容器](../../storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-a-container)的可写[SAS URL](../../storage/common/storage-sas-overview.md)
 * 使用 SAS URL 将文件上传到存储中的容器中
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateInputAsset)]

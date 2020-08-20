@@ -4,8 +4,6 @@
   items:
     - name: 什么是 Azure 负载均衡器？
       href: load-balancer-overview.md
-    - name: 新增功能
-      href: whats-new.md
 - name: 快速入门
   items:
     - name: 创建公共负载均衡器 - 门户
@@ -45,6 +43,8 @@
       href: powershell-samples.md
 - name: 概念
   items:
+    - name: 新增功能
+      href: whats-new.md
     - name: 组件
       href: components.md
     - name: 概念

@@ -7,20 +7,20 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: efe60079814958116d8042991e1cfd6e2f6f71f5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 7bf4860e8c42ef8aacc2e564dacd6de1a7d39149
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213883"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607405"
 ---
 # <a name="offer-listing-best-practices"></a>套餐列出最佳做法
 
 本文提供了有关创建和吸引 Microsoft 商用 marketplace 产品/服务的建议。 下表概述了有关在合作伙伴中心填写产品/服务信息的最佳做法。 若要分析你的产品/服务的业绩，请在合作伙伴中心转到[市场见解仪表板](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/marketplaceinsights)。 
 
-## <a name="storefront-offer-details"></a>店面产品/服务详细信息
+## <a name="online-store-offer-details"></a>在线商店产品/服务详细信息
 
-| 店面设置 | 最佳做法 |
+| 设置 | 最佳做法 |
 |:--- |:--- |  
 | 产品名称 | 对于应用程序，提供清晰的标题，其中包括搜索关键字，以帮助客户发现你的产品/服务。 <br> <br> 对于咨询服务，请遵循以下格式： [产品名称： [Duration] [产品类型] (例如，Contoso：2周实现)  |
 | 产品/服务描述 | 在前几个句子中提供说明产品/服务的价值主张的清楚说明。  请记住，这些句子可以在搜索引擎结果中使用。 值主张的核心组件应包括： <ul> <li>产品或解决方案的说明。 </li> <li> 受益于产品或解决方案的用户角色。 </li> <li> 客户需要或获得产品或解决方案地址。 </li> </ul> <br> 尽可能使用行业标准词汇或基于权益的措辞。  不要依赖于特性和功能来销售产品。  而应该强调提供的价值。 <br> <br> 对于咨询服务列表，请明确陈述您提供的专业服务。 |
@@ -28,11 +28,11 @@ ms.locfileid: "88213883"
 > [!IMPORTANT]
 > 请确保您的产品/服务说明符合 **[Microsoft 商标和品牌准则](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)** ，以及其他相关的特定于产品的指导原则，在提及 microsoft 商标和 microsoft 软件、产品和服务的名称时，也是如此。
 
-## <a name="storefront-listing-details"></a>店面列表详细信息
+## <a name="online-store-listing-details"></a>在线商店列表详细信息
 
-不同店面的类别和行业将适用于不同的产品/服务类型。
+不同在线商店的类别和行业将适用于不同的产品/服务类型。
 
-| 店面 | 类别 <br>通过店面 | 类别 <br>通过店面 | 行业 <br> 对于 AppSource |
+| 在线商店 | 类别 <br>按在线商店 | 类别 <br>按在线商店 | 行业 <br> 对于 AppSource |
 | :------------------- |:----------------:|:------:|:-------------:|
 | **产品类型**   |  **Azure 市场**  | **AppSource**  |
 | Azure 应用 | X | |
@@ -48,9 +48,9 @@ ms.locfileid: "88213883"
 
 ### <a name="categories"></a>类别
 
-Microsoft AppSource 和 Azure Marketplace 是用于满足独特客户需求的两个不同商店。 Azure Marketplace 面向 IT 专业人员和开发人员在 Azure 上构建解决方案。  Microsoft AppSource 面向查找企业和/或行业 SaaS 应用程序的业务用户、Dynamics 365 外接程序、Microsoft 365 加载项和 Power Platform 应用。
+Microsoft AppSource 和 Azure Marketplace 是两个不同的在线商店，它们可满足独特的客户需求。 Azure Marketplace 面向 IT 专业人员和开发人员在 Azure 上构建解决方案。  Microsoft AppSource 面向查找企业和/或行业 SaaS 应用程序的业务用户、Dynamics 365 外接程序、Microsoft 365 加载项和 Power Platform 应用。
 
-类别和子类别基于目标受众映射到每个店面。 你的产品/服务将发布到 Microsoft AppSource 或 Azure Marketplace，具体取决于产品/服务的产品/服务和类别/子类别选择的产品/服务类型。 
+类别和子类别基于目标受众映射到每个在线商店。 你的产品/服务将发布到 Microsoft AppSource 或 Azure Marketplace，具体取决于产品/服务的产品/服务和类别/子类别选择的产品/服务类型。 
 
 选择最适合你的产品/服务和目标受众的类别和子类别。 可以选择：
 
@@ -61,9 +61,9 @@ Microsoft AppSource 和 Azure Marketplace 是用于满足独特客户需求的�
 
 **重要说明： SaaS 提供和 Microsoft 365 外接程序**
 
-请参阅 " [产品/服务类型](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) " 中的指南，了解有关使用情况的详细信息。 对于 SaaS 产品/服务，产品/服务的交易功能以及类别选择将确定发布产品/服务的店面：
+请参阅 " [产品/服务类型](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) " 中的指南，了解有关使用情况的详细信息。 对于 SaaS 产品/服务，产品/服务的交易功能以及类别选择将确定发布产品/服务的在线商店：
 
-| SaaS 产品/服务    | SaaS 产品/服务   | SaaS 产品/服务  | SaaS 产品/服务   | SaaS 产品/服务   | SaaS 产品/服务   | SaaS 产品/服务    | 适用店面 | 适用店面 |
+| SaaS 套餐    | SaaS 套餐   | SaaS 套餐  | SaaS 套餐   | SaaS 套餐   | SaaS 套餐   | SaaS 套餐    | 适用的在线商店| 适用的在线商店 |
 |:-------------:|:---:|:--------:|:---------:|:--:|:--:|:---:|:---------------------:|:-------------:|
 | 计费计费 | Microsoft 365 外接程序 | 与我联系 | 事务 (至少有1个计划)  | 仅私有计划 | 仅限公用计划 | 公用 & 专用计划 | AppSource | Azure 市场 |
 |  | X |  |  |  |  |  | X |  |
@@ -117,8 +117,8 @@ Microsoft AppSource 和 Azure Marketplace 是用于满足独特客户需求的�
 
 关键字可帮助客户找到你的产品/服务。 确定产品/服务的高频搜索关键字，并将其包含在产品/服务摘要和说明中，以及产品/服务展示详细信息部分的关键字部分中。
 
-## <a name="storefront-marketing-details"></a>店面市场营销详细信息
-| 店面设置 | 最佳做法 |
+## <a name="online-store-marketing-details"></a>在线商店市场营销详细信息
+| 设置 | 最佳做法 |
 |:--- |:--- |  
 | 产品/服务徽标（PNG 格式，48&nbsp;&times;&nbsp;48）：搜索页 | 针对数字媒体设计和优化徽标。<br>将 PNG 格式的徽标上传到产品/服务的搜索页。 |
 | 产品/服务徽标（PNG 格式， 216&nbsp;&times;&nbsp;216）：应用详细信息页 | 针对数字媒体设计和优化徽标。<br>将 PNG 格式的徽标上传到产品/服务的应用详细信息列表页。 |

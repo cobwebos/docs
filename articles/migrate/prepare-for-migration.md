@@ -4,12 +4,12 @@ description: 了解如何准备好要通过 Azure Migrate 进行迁移的本地�
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.custom: MVC
-ms.openlocfilehash: b92a26732f59235dac4c03f4e648d36dadd6c4ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8acbb867d98a547787e207c410d4e1a852aa68f3
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077970"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606829"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>准备好要迁移到 Azure 的本地计算机
 
@@ -129,6 +129,7 @@ ms.locfileid: "87077970"
 **启用 SSH** | 确保启用 SSH，并将 sshd 服务设置为在重新启动时自动启动。<br/><br/> 确保传入的 SSH 连接请求未被 OS 防火墙或脚本化规则阻止。| 除以上所示版本之外的所有版本，都需要手动启用。
 
 下表总结了针对上面列出的操作系统自动执行的步骤。
+
 
 | 操作                                      | 基于代理的 VMware 迁移 | 无代理 VMware 迁移 | Hyper\-V   |
 |---------------------------------------------|-------------------------------|----------------------------|------------|

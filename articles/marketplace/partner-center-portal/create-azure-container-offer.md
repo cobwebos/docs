@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 4b1c2ea437168d00823bc5527eaeda33db6ae733
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9196bea663d037f269316dc108f99d3f2c282ec7
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166733"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606361"
 ---
-# <a name="create-an-azure-container-offer-in-azure-marketplace"></a>在 Azure Marketplace 中创建 Azure 容器服务
+# <a name="create-an-azure-container-offer-in-azure-marketplace"></a>在 Azure 市场中创建 Azure 容器套餐
 
 本文介绍如何为 Azure 市场创建和发布容器产品/服务。 开始前，请先[在合作伙伴中心内创建商业市场帐户](create-account.md)（如果尚未创建的话）。 确保帐户已注册加入商业市场计划。
 
@@ -29,7 +29,7 @@ ms.locfileid: "88166733"
    ![左侧导航菜单图示。](./media/new-offer-azure-container.png)
 
 > [!TIP]
-> 发布产品/服务后，在合作伙伴中心内对它进行的编辑只会在重新发布产品/服务后才会显示在店面中。 请确保在进行更改后始终重新发布。
+> 发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅会在重新发布产品/服务后出现在联机商店中。 请确保在进行更改后始终重新发布。
 
 ### <a name="offer-id-and-alias"></a>产品/服务 ID 和别名
 
@@ -96,9 +96,9 @@ ms.locfileid: "88166733"
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
 - 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
-- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用**"。
 
-请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。 容器始终**显示在 "容器"** 下，然后显示 "**容器映像**" 类别。
+请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。 容器始终 **显示在 "容器"** 下，然后显示 " **容器映像** " 类别。
 
 #### <a name="legal"></a>合法
 
@@ -256,7 +256,7 @@ ms.locfileid: "88166733"
 
 使用此选项卡，可以在相同产品/服务中提供不同的计划选项。 计划 (以前称为 Sku) 的计划可能不同于云的可用性，如全球云、政府云和计划引用的映像。 若要在商业市场中列出你的产品/服务，必须至少设置一个计划。
 
-最多可为每个产品创建100个计划：最多可为45个。 详细了解[Microsoft 商业应用商店](../private-offers.md)中的专用产品/服务。
+最多可为每个产品创建100个计划：最多可为45个。 详细了解 [Microsoft 商业应用商店](../private-offers.md)中的专用产品/服务。
 
 创建计划后，“计划概述”选项卡将显示：
 
@@ -288,9 +288,9 @@ ms.locfileid: "88166733"
 
 #### <a name="azure-regions"></a>Azure 区域
 
-Azure 容器产品/服务的所有计划都将自动提供给**Azure Global**。  所有使用商业应用商店的全球 Azure 区域的客户都可以使用你的计划。 有关详细信息，请参阅[地理区域可用性和货币支持](../marketplace-geo-availability-currencies.md)。
+Azure 容器产品/服务的所有计划都将自动提供给 **Azure Global**。  所有使用商业应用商店的全球 Azure 区域的客户都可以使用你的计划。 有关详细信息，请参阅[地理区域可用性和货币支持](../marketplace-geo-availability-currencies.md)。
 
-选择[Azure 政府](../../azure-government/documentation-government-welcome.md)版选项，使解决方案显示在此处。 这是政府社区云，会对来自美国联邦、州、地方或部落政府机构的客户和有资格服务于他们的合作伙伴进行访问控制。 作为发布者，你要对此云社区的任何符合性控制、安全措施和最佳做法负责。 Azure 政府使用物理隔离的数据中心和网络（仅位于美国）。 在[发布](../../azure-government/documentation-government-manage-marketplace-partners.md)到 Azure 政府前，请先在相应区域中测试并确认你的解决方案，因为结果可能会有所不同。 若要创建和测试你的解决方案，请通过 [Microsoft Azure 政府试用版](https://azure.microsoft.com/global-infrastructure/government/request/)申请试用帐户。
+选择 [Azure 政府](../../azure-government/documentation-government-welcome.md) 版选项，使解决方案显示在此处。 这是政府社区云，会对来自美国联邦、州、地方或部落政府机构的客户和有资格服务于他们的合作伙伴进行访问控制。 作为发布者，你要对此云社区的任何符合性控制、安全措施和最佳做法负责。 Azure 政府使用物理隔离的数据中心和网络（仅位于美国）。 在[发布](../../azure-government/documentation-government-manage-marketplace-partners.md)到 Azure 政府前，请先在相应区域中测试并确认你的解决方案，因为结果可能会有所不同。 若要创建和测试你的解决方案，请通过 [Microsoft Azure 政府试用版](https://azure.microsoft.com/global-infrastructure/government/request/)申请试用帐户。
 
 > [!NOTE]
 > 在您的计划发布并在特定区域中可用后，您将无法删除该区域。
@@ -360,7 +360,7 @@ Azure 资源组名称 - 提供包含具有容器映像的 Azure 容器注册表�
 
 Azure 容器注册表名称 - 提供包含容器映像的 [Azure 容器注册表](../../container-registry/container-registry-intro.md)的名称。 容器注册表必须位于你之前提供的 Azure 资源组中。 仅包括注册表名称，而不包括完整的登录服务器名称。 请务必从名称中省略 azurecr.io。 可以在 Azure 门户的[“容器注册表”页](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)上找到注册表名称。
 
-**Azure 容器注册表的管理员用户名**–提供[管理员用户名](../../container-registry/container-registry-authentication.md#admin-account)) 与具有容器映像的 Azure 容器注册表链接。 用户名和密码是必需的，以确保公司有权访问注册表。 若要获取管理员用户名和密码，请使用 Azure 命令行接口 (CLI) 将“管理员已启用”属性设置为“True”。 在 Azure 门户中，可以视需要选择将“管理员用户”设置为“启用”。
+**Azure 容器注册表的管理员用户名** –提供 [管理员用户名](../../container-registry/container-registry-authentication.md#admin-account)) 与具有容器映像的 Azure 容器注册表链接。 用户名和密码是必需的，以确保公司有权访问注册表。 若要获取管理员用户名和密码，请使用 Azure 命令行接口 (CLI) 将“管理员已启用”属性设置为“True”。 在 Azure 门户中，可以视需要选择将“管理员用户”设置为“启用”。
 
  :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="“更新容器注册表”对话框的图示。":::
 
@@ -404,7 +404,7 @@ Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器
 
 我们会向你发送电子邮件，让你知道何时有预览版产品/服务可供审阅和审核。
 
-若要将产品/服务发布到公众，请前往 "合作伙伴中心" 并选择 "**上线**"。
+若要将产品/服务发布到公众，请前往 "合作伙伴中心" 并选择 " **上线**"。
 
 ## <a name="next-step"></a>后续步骤
 

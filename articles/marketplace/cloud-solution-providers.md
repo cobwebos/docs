@@ -7,16 +7,16 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 8ac69d7d611aa75584955ed6ed83ab79c70ed73a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 51f4c9a5748896eff9e9f3ae9719b2e7e7cdd4e7
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082794"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607477"
 ---
 # <a name="cloud-solution-provider-program"></a>云解决方案提供商计划
 
-本文介绍如何配置要在云解决方案提供商 (CSP) 计划中提供的产品/服务。 除了通过[商业市场 Web 店面](comparing-appsource-azure-marketplace.md)发布产品/服务以外，还可以通过 CSP 计划，向该计划所服务的数百万符合条件的 Microsoft 客户销售产品/服务。
+本文介绍如何配置要在云解决方案提供商 (CSP) 计划中提供的产品/服务。 除了通过 [商业 marketplace 在线商店](comparing-appsource-azure-marketplace.md)发布你的产品/服务，你还可以通过 CSP 计划进行销售，以便向该计划提供的数百万个合格 Microsoft 客户。
 
 可以按照“选择加入”的原则配置要在 CSP 计划中提供的新的或现有的产品/服务，以允许 CSP 合作伙伴销售你的产品并为客户创建捆绑式解决方案。
 
@@ -30,7 +30,7 @@ ms.locfileid: "87082794"
 - 托管应用程序
 
 > [!NOTE]
-> 默认情况下，"容器" 和 "自带许可证（BYOL）" VM 计划选择加入 CSP 计划中的合作伙伴。
+> 默认情况下，容器和自带许可证 (BYOL) VM 计划选择加入到 CSP 计划中的合作伙伴销售。
 
 ## <a name="how-to-configure-an-offer"></a>如何配置产品/服务
 
@@ -166,7 +166,7 @@ ms.locfileid: "87082794"
 
 ## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>与 CSP 计划中的合作伙伴共享销售和支持材料
 
-若要帮助云解决方案提供商计划中的合作伙伴最有效地表示你的产品/服务并与你的组织合作，你必须提交经销商提供的销售和支持材料。 这些资源不会透露给市场店面中的客户。
+若要帮助云解决方案提供商计划中的合作伙伴最有效地表示你的产品/服务并与你的组织合作，你必须提交经销商提供的销售和支持材料。 这些资源不会向在线商店中的客户公开。
 
 ### <a name="partner-center-csp-channel"></a>合作伙伴中心 CSP 渠道
 

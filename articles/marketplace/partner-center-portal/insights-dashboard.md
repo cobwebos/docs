@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 07/22/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 877d5436628fdeb973f6d7f30cc71e91eeb92364
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cc950c4915a57dd949941fbb9802c51a47c9a00d
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323275"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607151"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>合作伙伴中心内的市场见解仪仪表板
 
-本文提供有关合作伙伴中心内的市场见解仪表板的信息。 此仪表板显示 marketplace web analytics 的摘要，使发布者能够度量商业 marketplace 商店商店： Microsoft AppSource 和 Azure Marketplace 上列出的相应产品详细信息页的客户参与情况。
+本文提供有关合作伙伴中心内的市场见解仪表板的信息。 此仪表板显示 marketplace web analytics 的摘要，使发布者能够度量商业 marketplace 在线商店： Microsoft AppSource 和 Azure Marketplace 中列出的相应产品详细信息页的客户参与情况。
 
 ## <a name="marketplace-insights-dashboard"></a>市场见解仪表板
 
@@ -27,7 +27,7 @@ ms.locfileid: "87323275"
 - [市场见解摘要](#marketplace-insights-summary)
 - [按地理位置列出的页面访问次数](#page-visits-by-geography)  
 - [页面访问次数与唯一访问者数量趋势](#page-visits-versus-unique-visitors-trend)
-- [通过 CTAs 调用操作（CTA）与独特的访问者](#call-to-action-versus-unique-visitors-with-ctas)
+- [通过 CTAs (CTA) 与唯一访问者的操作进行调用](#call-to-action-versus-unique-visitors-with-ctas)
 - [页面访问次数和按产品/服务列出的行动号召单击次数](#page-visits-and-calls-to-action-by-offers)
 - [行动号召单击次数百分比趋势](#call-to-action-percentage-trend)
 - [页面访问次数和按推荐域列出的行动号召单击次数](#page-visits-and-calls-to-action-by-referral-domains)
@@ -42,11 +42,11 @@ ms.locfileid: "87323275"
 
 以各种方式查看商业市场指标：
 
-- “店面”选项卡
+- 在线商店选项卡
 - 页面筛选器
 - 日期筛选器
 
-**“店面”选项卡**：你可以通过 AppSource 和 Azure 市场选项卡单独查看产品/服务指标。 从右侧的产品/服务下拉列表中选择产品/服务，以查看所选产品/服务指标的可视化效果。 默认情况下，所有产品/服务均处于选中状态。
+**在线商店选项卡**：可以通过 AppSource & Azure Marketplace "选项卡单独查看产品/服务的指标。 从右侧的产品/服务下拉列表中选择产品/服务，以查看所选产品/服务指标的可视化效果。 默认情况下，所有产品/服务均处于选中状态。
 
 ![合作伙伴中心见解仪表板产品/服务下拉列表](./media/insights-offer-dropdown.png)
 
@@ -96,7 +96,7 @@ ms.locfileid: "87323275"
 
 ## <a name="page-visits-versus-unique-visitors-trend"></a>页面访问次数与唯一访问者数量趋势
 
-下面的柱形表示每月的页面访问计数，这些访问次数显示在 Y 轴（图表左侧的轴）上。 趋势线表示唯一访问者数量的每月趋势，显示在辅助 Y 轴（图表右侧的轴）上，适用的对象是你在以下店面中发布的产品/服务：（Azure 市场和 AppSource）中的精选解决方案。
+下面的柱形表示每月的页面访问计数，这些访问次数显示在 Y 轴（图表左侧的轴）上。 趋势线表示唯一访问者的每月趋势，在图表) 右侧的辅助 Y 轴 (轴上显示，对于在线商店中发布的产品： Azure Marketplace 和 AppSource。
 
 ![合作伙伴中心见解“页面访问次数与唯一访问者数量趋势”](./media/insights-page-vists-unique-visitors.png)
 

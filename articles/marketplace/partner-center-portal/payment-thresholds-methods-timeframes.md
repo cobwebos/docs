@@ -1,22 +1,22 @@
 ---
 title: 按区域的付款详细信息 - Microsoft 商业市场
-description: 了解转账付款的估计时间，以及你可以从中接收付款的 Microsoft 店面，根据你所在的国家/地区和付款帐户类型而异。
+description: 了解如何传输付款的预计时间以及可从中接收付款的 Microsoft 在线商店，具体取决于您所在的国家/地区和帐户类型。
 author: mingshen-ms
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 44246fa122b7c602e47c44e48c43c2a42d01de77
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f5614da7eac0717894d2bcb3c9cfdd959cb57f72
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327321"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607288"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>付款阈值、方法和时间范围
 
-转账付款的估计时间，以及你可以从中接收付款的店面，根据你所在的国家/地区和付款帐户类型而异。 本文概述每个国家和地区支持的付款方式。
+估计的付款传输时间以及你可以从其接收付款的在线商店可能因你的国家/地区和帐户类型而异。 本文概述每个国家和地区支持的付款方式。
 
 对于任何给定的国家和地区，我们使用 ACH/SEPA 或电汇方式付费。 某些国家和地区还支持 PayPal 作为付款方式。
 

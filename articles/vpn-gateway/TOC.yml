@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概述
   items:
-    - name: 关于 VPN 网关
+    - name: 什么是 VPN 网关？
       href: vpn-gateway-about-vpngateways.md
 - name: 教程
   items:

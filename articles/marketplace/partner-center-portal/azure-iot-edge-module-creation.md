@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 38e51f8bc66e8c47807a9b265ade3f196745db26
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 2584d10a73f183958e3b7010255979cc47bc2cd9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167175"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606338"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>创建 IoT Edge 模块产品/服务
 
@@ -27,7 +27,7 @@ ms.locfileid: "88167175"
     ![展示了左侧导航菜单。](./media/new-offer-iot-edge.png)
 
 > [!IMPORTANT]
-> 在产品/服务发布后，在合作伙伴中心内对它进行的编辑只会在产品/服务重新发布后才显示在店面中。 请确保在进行更改后始终重新发布。
+> 发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅会在重新发布产品/服务后出现在联机商店中。 请确保在进行更改后始终重新发布。
 
 ### <a name="offer-id-and-alias"></a>产品/服务 ID 和别名
 
@@ -94,9 +94,9 @@ ms.locfileid: "88167175"
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
 - 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
-- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用**"。
 
-请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。 在 marketplace 中，IoT Edge 模块始终显示在 " **物联网**  >  **IoT Edge" 模块**"   类别下。
+请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。 在 marketplace 中，IoT Edge 模块始终显示在 " **物联网**  >  **IoT Edge" 模块**"   类别下。
 
 #### <a name="legal"></a>合法
 
@@ -292,7 +292,7 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 
 使用此选项卡，可以在合作伙伴中心内的相同产品/服务中提供不同的计划选项。 计划 (以前称为 Sku) 的计划可能不同于云的可用性，如全球云、政府云和计划引用的映像。 若要在市场中列出你的产品/服务，至少必须设置一个计划。
 
-最多可为每个产品创建100个计划：最多可为45个。 详细了解[Microsoft 商业应用商店](../private-offers.md)中的专用产品/服务。
+最多可为每个产品创建100个计划：最多可为45个。 详细了解 [Microsoft 商业应用商店](../private-offers.md)中的专用产品/服务。
 
 创建计划后，“计划概述”选项卡将显示：
 
@@ -326,9 +326,9 @@ IoT Edge 模块产品/服务必须在说明底部添加最低硬件要求段落�
 
 #### <a name="azure-regions"></a>Azure 区域
 
-IoT Edge 模块产品/服务的所有计划自动在**Azure Global**中提供。  使用 marketplace 的所有全球 Azure 区域中的客户都可以使用你的计划。 有关详细信息，请参阅[地理区域可用性和货币支持](../marketplace-geo-availability-currencies.md)。
+IoT Edge 模块产品/服务的所有计划自动在 **Azure Global**中提供。  使用 marketplace 的所有全球 Azure 区域中的客户都可以使用你的计划。 有关详细信息，请参阅[地理区域可用性和货币支持](../marketplace-geo-availability-currencies.md)。
 
-选择[Azure 政府](../../azure-government/documentation-government-welcome.md)版选项，使解决方案显示在此处。 这是政府社区云，会对来自美国联邦、州、地方或部落政府机构的客户和有资格服务于他们的合作伙伴进行访问控制。 作为发布者，你要对此云社区的任何符合性控制、安全措施和最佳做法负责。 Azure 政府使用物理隔离的数据中心和网络（仅位于美国）。 在[发布](../../azure-government/documentation-government-manage-marketplace-partners.md)到 Azure 政府前，请先在相应区域中测试并确认你的解决方案，因为结果可能会有所不同。 若要暂存和测试你的解决方案，请通过 [Microsoft Azure 政府试用版](https://azure.microsoft.com/global-infrastructure/government/request/)申请试用帐户。
+选择 [Azure 政府](../../azure-government/documentation-government-welcome.md) 版选项，使解决方案显示在此处。 这是政府社区云，会对来自美国联邦、州、地方或部落政府机构的客户和有资格服务于他们的合作伙伴进行访问控制。 作为发布者，你要对此云社区的任何符合性控制、安全措施和最佳做法负责。 Azure 政府使用物理隔离的数据中心和网络（仅位于美国）。 在[发布](../../azure-government/documentation-government-manage-marketplace-partners.md)到 Azure 政府前，请先在相应区域中测试并确认你的解决方案，因为结果可能会有所不同。 若要暂存和测试你的解决方案，请通过 [Microsoft Azure 政府试用版](https://azure.microsoft.com/global-infrastructure/government/request/)申请试用帐户。
 
 > [!NOTE]
 > 在您的计划发布并在特定区域中可用后，您将无法删除该区域。
@@ -410,7 +410,7 @@ Azure 资源组名称：提供包含具有容器映像的 Azure 容器注册表�
 
 Azure 容器注册表名称：提供包含容器映像的 [Azure 容器注册表](../../container-registry/container-registry-intro.md)的名称。 容器注册表必须位于你前面提供的 Azure 资源组中。 只提供注册表名称，而不提供完整的登录服务器名称。 请务必从名称中省略 azurecr.io。 可以在 Azure 门户的[“容器注册表”页](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries)上找到注册表名称。
 
-**Azure 容器注册表的管理员用户名**：提供与具有容器映像的 Azure 容器注册表关联) 的[管理员用户名](../../container-registry/container-registry-authentication.md#admin-account)。 用户名和密码是必需的，以确保公司有权访问注册表。 若要获取管理员用户名和密码，请使用 Azure 命令行接口 (CLI) 将“管理员已启用”属性设置为“True”。 在 Azure 门户中，可以视需要选择将“管理员用户”设置为“启用”。
+**Azure 容器注册表的管理员用户名**：提供与具有容器映像的 Azure 容器注册表关联) 的 [管理员用户名](../../container-registry/container-registry-authentication.md#admin-account) 。 用户名和密码是必需的，以确保公司有权访问注册表。 若要获取管理员用户名和密码，请使用 Azure 命令行接口 (CLI) 将“管理员已启用”属性设置为“True”。 在 Azure 门户中，可以视需要选择将“管理员用户”设置为“启用”。
 
 :::image type="content" source="media/example-iot-update-container-registry.png" alt-text="展示了“更新容器注册表”对话框。":::
 
@@ -442,7 +442,7 @@ Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器
 
 默认路由。 IoT Edge 中心管理模块、IoT 中心与设备之间的通信。 可以为模块和 IoT 中心之间的数据输入和输出设置路由，这样就能灵活地将消息发送到需要发送的位置，而无需使用其他服务来处理消息或编写额外的代码。 路由是使用名称/值对构造而成的。 最多可以定义五个默认路由名称，每个名称最长可包含 512 个字符。
 
-请确保使用正确的[路由语法](../../iot-edge/module-composition.md#declare-routes)) 路由值中 (通常定义为 "FROM"/"message"/* $upstream) 。 也就是说，任何模块发送的任何消息都发送到 IoT 中心。 若要引用模块，请使用它的默认模块名称，即不包含空格或特殊字符的产品/服务名称。 若要引用未知的其他模块，请使用 <FROM_MODULE_NAME> 约定来告知客户他们需要更新此信息。 有关 IoT Edge 路由的详细信息，请参阅) [声明路由](../../iot-edge/module-composition.md#declare-routes)。
+请确保使用正确的 [路由语法](../../iot-edge/module-composition.md#declare-routes)) 路由值中 (通常定义为 "FROM"/"message"/* $upstream) 。 也就是说，任何模块发送的任何消息都发送到 IoT 中心。 若要引用模块，请使用它的默认模块名称，即不包含空格或特殊字符的产品/服务名称。 若要引用未知的其他模块，请使用 <FROM_MODULE_NAME> 约定来告知客户他们需要更新此信息。 有关 IoT Edge 路由的详细信息，请参阅) [声明路由](../../iot-edge/module-composition.md#declare-routes) 。
 
 例如，如果模块 ContosoModule 侦听 ContosoInput 上的输入数据和 ContosoOutput 上的输出数据，最好定义以下两个默认路由：
 
@@ -451,7 +451,7 @@ Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器
 - 名称 #2：FromContosoModuleToCloud
 - 值 #2：FROM /messages/modules/ContonsoModule/outputs/ContosoOutput INTO $upstream
 
-默认模块孪生所需属性。 模块孪生是 IoT 中心内的 JSON 文档，用于存储模块实例状态信息，包括所需属性。 所需属性与报告的属性一起用于同步模块配置或条件。 解决方案后端可以设置所需属性，模块可以读取它们。 模块还可以接收所需属性的更改通知。 所需属性是使用最多五个名称/值对创建的，并且每个默认值必须少于512个字符。 最多可以定义五个名称/值孪生所需属性。 孪生所需属性的值必须是有效的 JSON、未转义且不包含数组，最多可包含四级嵌套层次结构。 如果默认值所需的参数（例如客户服务器的 IP 地址）没有意义，可以添加一个参数作为默认值。 若要详细了解成对出现的所需属性，请参阅) 中[定义或更新所需属性](../../iot-edge/module-composition.md#define-or-update-desired-properties)。
+默认模块孪生所需属性。 模块孪生是 IoT 中心内的 JSON 文档，用于存储模块实例状态信息，包括所需属性。 所需属性与报告的属性一起用于同步模块配置或条件。 解决方案后端可以设置所需属性，模块可以读取它们。 模块还可以接收所需属性的更改通知。 所需属性是使用最多五个名称/值对创建的，并且每个默认值必须少于512个字符。 最多可以定义五个名称/值孪生所需属性。 孪生所需属性的值必须是有效的 JSON、未转义且不包含数组，最多可包含四级嵌套层次结构。 如果默认值所需的参数（例如客户服务器的 IP 地址）没有意义，可以添加一个参数作为默认值。 若要详细了解成对出现的所需属性，请参阅) 中 [定义或更新所需属性](../../iot-edge/module-composition.md#define-or-update-desired-properties) 。
 
 例如，如果某个模块使用孪生所需属性支持可动态配置的刷新频率，最好定义以下默认孪生所需属性：
 
@@ -487,7 +487,7 @@ Azure 容器注册表中的存储库名称。 提供包含映像的 Azure 容器
 
 若要提交产品/服务进行发布，请选择“发布”。
 
-我们会向你发送电子邮件，让你知道何时有预览版产品/服务可供审阅和审核。 若要将产品/服务发布到公众，请前往 "合作伙伴中心" 并选择 "**上线**"。
+我们会向你发送电子邮件，让你知道何时有预览版产品/服务可供审阅和审核。 若要将产品/服务发布到公众，请前往 "合作伙伴中心" 并选择 " **上线**"。
 
 ## <a name="next-steps"></a>后续步骤
 

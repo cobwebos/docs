@@ -4,21 +4,21 @@ titleSuffix: Azure Media Services
 description: 介绍何为资产以及 Azure 媒体服务如何使用这些资产。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/09/2020
-ms.author: juliako
+ms.date: 08/18/2020
+ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 6c9f69a39f725b082771b66959a219581c281ed5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 27082499263af6eedd7d9d628b7b1746a9177672
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87043510"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606843"
 ---
 # <a name="assets-in-azure-media-services-v3"></a>Azure 媒体服务 v3 中的资产
 
@@ -28,7 +28,7 @@ ms.locfileid: "87043510"
 
 当帐户使用常规用途 v2 (GPv2) 存储时，媒体服务支持 Blob 层。 使用 GPv2 可将文件移到[冷存储或存档存储](../../storage/blobs/storage-blob-storage-tiers.md)。 **存档**存储适合存档不再需要的源文件（例如，编码后的源文件）。
 
-建议仅将**存档**存储用于已编码的，并且其编码作业输出已放入输出 Blob 容器中的极大型源文件。 要与资产关联并使用流式处理或分析内容的输出容器中的 blob 必须存在于**热**或**冷**存储层中。
+建议仅将**存档**存储用于已编码的，并且其编码作业输出已放入输出 Blob 容器中的极大型源文件。 要与资产关联并使用流式处理或分析内容的输出容器中的 blob 必须存在于 **热** 或 **冷** 存储层中。
 
 ## <a name="naming"></a>命名 
 
@@ -42,7 +42,7 @@ ms.locfileid: "87043510"
 
 ## <a name="next-steps"></a>后续步骤
 
-[管理媒体服务中的资产](manage-asset-concept.md)
+[媒体服务概述](media-services-overview.md)
 
 ## <a name="see-also"></a>另请参阅
 

@@ -8,12 +8,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 25a164fc8709d7c9f6249336ece34bd8a5378f23
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 702486a0728a7394d8d8febffc11b11bc113a030
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496009"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606758"
 ---
 # <a name="marketplace-rewards"></a>Marketplace Rewards
 
@@ -27,11 +27,11 @@ Rewards 团队成员将在产品/服务上线时联系你，具体取决于你�
 
 对于事务处理合作伙伴，通过市场平台实现结算销售额增长时，便可以解锁每一层的更大权益。
 
-在店面中发布的最低要求是 MPNID，因此，无论 MPN 能力状态或合作伙伴类型如何，这些权益均会提供给所有合作伙伴。 每位合作伙伴都有权通过将市场作为平台来拓展业务。
+在在线商店中发布的最低要求是 MPNID 的，因此，所有合作伙伴都可以使用这些权益，而不考虑 MPN 的胜任度状态或合作伙伴类型。 每位合作伙伴都有权通过将市场作为平台来拓展业务。
 
 你将获得了解可用资源以及实现最佳做法方面的支持，并且还可以[自行查看](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)。
 
-请在[此处](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)查看 Marketplace 奖励计划的资格。
+请在 [此处](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)查看 Marketplace 奖励计划的资格。
 
 入门步骤很简单：
 

@@ -427,7 +427,7 @@
           href: migration-classic-resource-manager-errors.md
         - name: 用于迁移的社区工具
           href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-        - name: 常见问题
+        - name: 常见问题解答
           href: ../migration-classic-resource-manager-faq.md
     - name: 使用映像
       displayName: 'SIG, AMI, image'
@@ -754,7 +754,7 @@
           items:
             - name: 代理概述
               href: ../../azure-monitor/platform/agents-overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
-            - name: 常见问题
+            - name: 常见问题解答
               href: ../../azure-monitor/faq.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json#agents
             - name: Azure 诊断扩展
               items:
@@ -894,6 +894,8 @@
           href: docker-compose-quickstart.md
     - name: 运行应用程序
       items:
+        - name: Red Hat
+          href: ../workloads/redhat/overview.md
         - name: Cloud Foundry
           href: ../../cloudfoundry/index.yml
         - name: Cassandra
@@ -1170,7 +1172,7 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-virtual-machine'
     - name: 视频
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
-    - name: 常见问题
+    - name: 常见问题解答
       href: faq.md
 - name: 疑难解答
   href: ../troubleshooting/index.yml

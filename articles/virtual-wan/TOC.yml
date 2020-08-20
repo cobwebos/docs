@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概述
   items:
-    - name: 关于虚拟 WAN
+    - name: 什么是虚拟 WAN？
       href: virtual-wan-about.md
     - name: 体系结构
       items:
