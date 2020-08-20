@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Clear Review 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Clear Review 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8264159a-11a2-4a8c-8285-4efea0adac8c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed7900373c5d8897fd360c708434d96e5dfbc73d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 06c4945c6fee82b3ce622304351c3ad6d9ae282d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034373"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544654"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>教程：Azure Active Directory 与 Clear Review 的集成
 

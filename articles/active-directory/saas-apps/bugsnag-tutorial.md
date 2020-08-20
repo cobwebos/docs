@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Bugsnag 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Bugsnag 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f08b8a14-ef69-42a7-ac9d-da95f2e36287
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 9ae95bbdb3136aade1278b026164c6c3b6e4bbe6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4f5994aa4114f12b55f2e232ea5a35fa2df87626
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73157538"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547709"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bugsnag"></a>教程：Azure Active Directory 与 Bugsnag 集成
 

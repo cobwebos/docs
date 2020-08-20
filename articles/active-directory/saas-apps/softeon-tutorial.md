@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Softeon WMS 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Softeon WMS 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 07c5de0d-90aa-43b3-b24e-0cc334b2f9b0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: ff01d9bc07408fa825fa933966d583b3d6ff7f56
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5d5f489d0aa224e61180d3ec33c9115128cad9a9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67089962"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545125"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-softeon-wms"></a>教程：Azure Active Directory 与 Softeon WMS 集成
 

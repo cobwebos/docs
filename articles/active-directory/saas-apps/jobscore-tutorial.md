@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 JobScore 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 JobScore 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 30f51b32-e55c-4c66-96e8-50a2f9c2194a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b12f8d4ca78f0f374638a743bd4d62d1f9435be
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a0d6484c46f08a98a918d11a161e1dd9219b2ea7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73157980"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547042"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscore"></a>教程：Azure Active Directory 与 JobScore 集成
 

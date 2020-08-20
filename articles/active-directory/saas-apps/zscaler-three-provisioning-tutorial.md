@@ -2,25 +2,21 @@
 title: 教程：使用 Azure Active Directory 为 Zscaler Three 配置自动用户预配 | Microsoft Docs
 description: 本教程介绍如何将 Azure Active Directory 配置为自动为 Zscaler Three 预配和取消预配用户帐户。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd-msft
-ms.assetid: 385a1153-0f47-4e41-8f44-da1b49d7629e
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 177bc34162c2b5e4dadc54e1166c5f6061068bae
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b7cb55b5d14208128c894a007d13f4e73fc54b3b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77064098"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545798"
 ---
 # <a name="tutorial-configure-zscaler-three-for-automatic-user-provisioning"></a>教程：为 Zscaler Three 配置自动用户预配
 

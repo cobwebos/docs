@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Symantec Web Security Service (WSS) 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Symantec Web Security Service (WSS) 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: d6e4d893-1f14-4522-ac20-0c73b18c72a5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d496015440deb80a0159ed0ec234ae60c2c64a66
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7e2087fdd5568156a96645b25cb105cc5f3ca6b7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159945"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544938"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-symantec-web-security-service-wss"></a>教程：Azure Active Directory 与 Symantec Web Security Service (WSS) 集成
 

@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 eDigitalResearch 的集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 eDigitalResearch 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c6b66ea0-16ba-45b4-b550-e81c56262b1f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 3c2c77d4d6c816b23b86a7daea7cf5f20e98262d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b2d4d22e00150d7699d037c6d05c46c746ef3560
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67103617"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544360"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>教程：Azure Active Directory 与 eDigitalResearch 的集成
 

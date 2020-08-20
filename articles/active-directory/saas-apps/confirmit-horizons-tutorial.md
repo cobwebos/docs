@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Confirmit Horizons 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Confirmit Horizons 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4134ee87-a7df-4328-ba09-4c9a729a29ee
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 04d6d79000b38116cbda6de960f078608964b6ca
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 0ff197a5603480e9143a14a4760f14dccf8b101b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799592"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544514"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confirmit-horizons"></a>教程：Azure Active Directory 与 Confirmit Horizons 的集成
 

@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Robin 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Robin 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 1d626d14-8755-437a-87ce-1516debd8ac8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 964ba7ba9ebac84e2895e5a50f3fa31f1dbdd874
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 878a067e23142ddfb0819402d5e8bc093bea03fa
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75659689"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546718"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-robin"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Robin 的集成
 

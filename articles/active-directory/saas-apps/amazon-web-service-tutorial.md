@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Amazon Web Services (AWS) 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Amazon Web Services (AWS) 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7561c20b-2325-4d97-887f-693aa383c7be
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/14/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79e23f516fe31b4a21232f75286540e6c0d9019d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 7377c6ea92ea53ca14525938e7522448afac541c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922961"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548346"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Amazon Web Services (AWS) 集成
 
@@ -385,8 +381,6 @@ ms.locfileid: "87922961"
 * 角色必须满足以下要求才有资格从 AWS 导入 Azure AD：
 
   * 角色必须仅有一个在 AWS 中定义的 saml-provider
-
-  * 要导入的角色的角色 ARN 和 saml-provider ARN 的组合长度必须为 119 个字符或更少
 
 ## <a name="additional-resources"></a>其他资源
 

@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Bizagi for Digital Process Automation 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Bizagi for Digital Process Automation 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: af3d4613-c3fb-485c-b7b9-c385713e6f8f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a374ef8c6605aef8dfb54379017781507339306e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5f8126f497bfd66544576b218a903c50e58106b5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83740542"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544496"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bizagi-for-digital-process-automation"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Bizagi for Digital Process Automation 的集成
 

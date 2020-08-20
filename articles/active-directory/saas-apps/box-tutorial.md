@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Box 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Box 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3b565c8d-35e2-482a-b2f4-bf8fd7d8731f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/24/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54964759d9afbacd0e410b713336cdd8d5b2c6c6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8045076ce77e98345c0db3cd19293b4ef76293e4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018207"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548180"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-box"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Box 集成
 
@@ -96,7 +92,7 @@ ms.locfileid: "87018207"
     > [!NOTE]
     > 登录 URL 值不是实际值。 请使用实际登录 URL 更新此值。 请联系 [Box 客户端支持团队](https://community.box.com/t5/custom/page/page-id/submit_sso_questionaire)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
-1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上   。
+1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中找到“联合元数据 XML”，选择“下载”以下载该证书并将其保存在计算机上     。
 
     ![证书下载链接](common/metadataxml.png)
 

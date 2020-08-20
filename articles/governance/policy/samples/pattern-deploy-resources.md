@@ -1,14 +1,14 @@
 ---
 title: 模式：使用策略定义部署资源
 description: 此 Azure Policy 模式提供了有关如何使用策略定义部署资源的示例。
-ms.date: 01/31/2020
+ms.date: 08/17/2020
 ms.topic: sample
-ms.openlocfilehash: 7ce93f4895a86905cd31889e853f95a3de640b13
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.openlocfilehash: 705c751183a0b71c8628a505f08ef112bca1cbb7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85970852"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545601"
 ---
 # <a name="azure-policy-pattern-deploy-resources"></a>Azure Policy 模式：部署资源
 

@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 C3M Cloud Control 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 C3M Cloud Control 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5c37579b-dd78-47b9-939e-06a05e714796
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1452995ab0bdd3c3e240ab02afa198ab63190b28
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 80cc281329ed570a4ea608d622e66dfab4ab80c5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093216"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547529"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-c3m-cloud-control"></a>教程：Azure Active Directory 与 C3M Cloud Control 的单一登录 (SSO) 集成
 

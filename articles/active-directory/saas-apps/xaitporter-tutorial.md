@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 XaitPorter 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 XaitPorter 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d33c7cb7-0550-425b-882a-619a713a71b7
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 8652073eb3d7d154958566b68fb6e27c35d8da30
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: bdea7fc3c295016204a80772bdf367dda7e194fb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67086522"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546298"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>教程：Azure Active Directory 与 XaitPorter 集成
 

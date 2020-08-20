@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 06/29/2020
 ms.author: pafarley
-ms.openlocfilehash: ec39b4c6a478af22363e7ff30fee81ae3509f724
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: ff56a3e9c15d6f4bf04765c30084a9ca68df0e73
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85555868"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544751"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>教程：使用 Azure 内容审查器审查电子商务产品图像
 
@@ -32,7 +32,7 @@ ms.locfileid: "85555868"
 
 GitHub 上的[电子商务目录审查示例](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)存储库中提供了完整的示例代码。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 
 ## <a name="prerequisites"></a>先决条件
 

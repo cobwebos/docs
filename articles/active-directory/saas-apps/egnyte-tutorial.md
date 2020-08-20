@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Egnyte 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Egnyte 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8c2101d4-1779-4b36-8464-5c1ff780da18
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f8eb0f0d566d656436da11141ea7f6c521b7b82
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 512b96b6b785c0694bb41fab657f0a45c4321f10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76983637"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544326"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egnyte"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Egnyte 的集成
 

@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 ThousandEyes 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 ThousandEyes 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 790e3f1e-1591-4dd6-87df-590b7bf8b4ba
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/04/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd179049f88454c62244cf1819cee08ef78d0633
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 2b99d5ea33693431fb3811af50385891684a366e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72373238"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546451"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-thousandeyes"></a>教程：Azure Active Directory 单一登录 (SSO) 与 ThousandEyes 集成
 
