@@ -3,7 +3,7 @@ title: Azure AD 身份验证入门
 description: 了解如何访问 Azure Active Directory (Azure AD) 身份验证来使用 Azure 媒体服务 API。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.date: 05/21/2020
-ms.author: juliako
-ms.openlocfilehash: a039e1d4442490d3747a302754d521f1f3402bcf
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.author: inhenkel
+ms.openlocfilehash: 9528efb0ce7dd9df57db21ccdcf19e54a969d2e4
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035785"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654831"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>获取访问媒体服务 API 的凭据  
 
@@ -38,9 +38,9 @@ ms.locfileid: "88035785"
 - 一个 Azure 帐户。 如果没有帐户，请从 [Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)入手。 
 - 一个媒体服务帐户。 有关详细信息，请参阅[利用 Azure 门户创建 Azure 媒体服务帐户](create-account-howto.md)。
 
-## <a name="use-the-azure-portal"></a>使用 Azure 门户
+## <a name="portal"></a>[门户](#tab/portal/)
 
-### <a name="api-access"></a>API 访问 
+### <a name="api-access"></a>API 访问
 
 通过“API 访问”页面，可选择要用来连接 API 的身份验证方法。 该页面还提供了连接到 API 所需的值。
 
@@ -70,7 +70,7 @@ ms.locfileid: "88035785"
 
 从“连接到媒体服务 API”部分复制凭据来连接用户应用程序。 可获取文本值，也可复制 JSON 或 XML 块。
 
-[!INCLUDE [media-services-cli-instructions](../../../includes/media-services-cli-instructions.md)]
+## <a name="cli"></a>[CLI](#tab/cli/)
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 

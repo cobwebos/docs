@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 668f8ffdc4b797219dc1f3c23fecb858d8f706ad
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 819ac1f01cc182c79571de35ec0753f694dc7722
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510855"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653607"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>适用于 SAP 工作负载的 Azure 存储类型
 Azure 有许多不同的存储类型，这些类型在功能、吞吐量、延迟和价格方面有所不同。 某些存储类型不是或不可用于 SAP 方案。 但对于特定的 SAP 工作负荷方案，多个 Azure 存储类型非常适合或进行了优化。 特别是对于 SAP HANA，某些 Azure 存储类型已通过 SAP HANA 使用进行了认证。 在本文档中，我们将浏览不同类型的存储，并介绍 SAP 工作负荷和 SAP 组件的功能和可用性。
@@ -36,7 +36,7 @@ Microsoft Azure 存储标准 HDD、标准 SSD、Azure 高级存储和超磁盘�
 
 ### <a name="azure-managed-disks"></a>Azure 托管磁盘
 
-托管磁盘是 Azure 资源管理器中的一种资源类型，可用于替代 Azure 存储帐户中存储的 Vhd。 托管磁盘会自动与它们附加到的虚拟机的 [可用性集] [虚拟机-管理可用性] 一致，因此可以提高虚拟机和虚拟机上运行的服务的可用性。 有关详细信息，请阅读[概述文章](../../windows/managed-disks-overview.md)。
+托管磁盘是 Azure 资源管理器中的一种资源类型，可用于替代 Azure 存储帐户中存储的 Vhd。 托管磁盘会自动与它们附加到的虚拟机的 [可用性集] [虚拟机-管理可用性] 一致，因此可以提高虚拟机和虚拟机上运行的服务的可用性。 有关详细信息，请阅读[概述文章](../../managed-disks-overview.md)。
 
 与复原相关，此示例演示了托管磁盘的优点：
 
@@ -61,7 +61,7 @@ Microsoft Azure 存储标准 HDD、标准 SSD、Azure 高级存储和超磁盘�
 - 包含 NetWeaver 或 S/4HANA 的全局传输目录的文件共享或共享磁盘。 这些共享的内容由多个 Vm 中运行的软件使用，或用于构建高可用性故障转移群集方案
 - EDI 进程的/sapmnt 目录或通用文件共享，或类似。 这些共享的内容由多个 Vm 中运行的软件使用，或用于构建高可用性故障转移群集方案
 
-在接下来的几个部分中，我们讨论了适用于上述四种方案的不同 Azure 存储类型及其可用性。 有关如何使用不同的 Azure 存储类型的一般分类说明，请参见 [Azure 中的可用磁盘类型](../../linux/disks-types.md)一文。 针对 SAP 工作负荷使用不同 Azure 存储类型的建议并不 majorly。
+在接下来的几个部分中，我们讨论了适用于上述四种方案的不同 Azure 存储类型及其可用性。 有关如何使用不同的 Azure 存储类型的一般分类说明，请参见 [Azure 中的可用磁盘类型](../../disks-types.md)一文。 针对 SAP 工作负荷使用不同 Azure 存储类型的建议并不 majorly。
 
 有关 S/4HANA 的 SAP NetWeaver/应用程序层对 Azure 存储类型的支持限制，请阅读 [sap 支持说明 2015553](https://launchpad.support.sap.com/#/notes/2015553) ，了解 SAP HANA 认证和受支持的 azure 存储类型 [SAP HANA azure 虚拟机存储配置](./hana-vm-operations-storage.md)。
 
@@ -123,7 +123,7 @@ Azure 高级 SSD 存储已引入，旨在提供：
 * IOPS 和吞吐量 Sla
 * I/o 延迟的可变性更少
 
-这种类型的存储面向 DBMS 工作负荷，需要低单位数毫秒延迟的存储流量，在 Azure 高级存储的情况下，针对 IOPS 和吞吐量开销的 Sla 并不是存储在此类磁盘中的实际数据量，而是此类磁盘的大小类别，与存储在磁盘中的数据量无关。 你还可以在高级存储上创建不直接映射到 [高级 SSD](../../linux/disks-types.md#premium-ssd)文章所示大小类别中的磁盘。 本文的结论如下：
+这种类型的存储面向 DBMS 工作负荷，需要低单位数毫秒延迟的存储流量，在 Azure 高级存储的情况下，针对 IOPS 和吞吐量开销的 Sla 并不是存储在此类磁盘中的实际数据量，而是此类磁盘的大小类别，与存储在磁盘中的数据量无关。 你还可以在高级存储上创建不直接映射到 [高级 SSD](../../disks-types.md#premium-ssd)文章所示大小类别中的磁盘。 本文的结论如下：
 
 - 存储按范围组织。 例如，513 GiB 到 1024 GiB 容量范围内的磁盘共用相同的功能和每月的成本
 - 每个 GiB 的 IOPS 不会跨大小类别跟踪。 低于 32 GiB 的较小磁盘具有更高的每 GiB IOPS 速率。 对于超过 32 GiB 到 1024 GiB 的磁盘，每个 GiB 的 IOPS 速率介于每个 GiB 的 4-5 IOPS 之间。 对于容量高达 32767 GiB 的大型磁盘，每个 GiB 的 IOPS 速率将低于1
@@ -184,8 +184,8 @@ Azure 超级磁盘为 Azure IaaS VM 提供高吞吐量、高 IOPS 和一贯低�
 创建超磁盘时，可以定义三个维度：
 
 - 磁盘的容量。 范围是从 4 GiB 到 65536 GiB
-- 磁盘的预配 IOPS。 不同的最大值适用于磁盘容量。 阅读有关更多详细 [信息的详细](../../linux/disks-types.md#ultra-disk) 信息
-- 预配的存储带宽。 不同的最大带宽适用于磁盘的容量。 阅读有关更多详细 [信息的详细](../../linux/disks-types.md#ultra-disk) 信息
+- 磁盘的预配 IOPS。 不同的最大值适用于磁盘容量。 阅读有关更多详细 [信息的详细](../../disks-types.md#ultra-disk) 信息
+- 预配的存储带宽。 不同的最大带宽适用于磁盘的容量。 阅读有关更多详细 [信息的详细](../../disks-types.md#ultra-disk) 信息
 
 单个磁盘的开销取决于你可以为特定磁盘单独定义的三个维度。 
 

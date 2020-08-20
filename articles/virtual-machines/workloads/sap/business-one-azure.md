@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 293a0fcd1211739be07e58f414bd6861bf47eb76
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ccec58f012dcd4b6371c15e79fa964600e775f54
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831101"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654644"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure 虚拟机上的 SAP Business One
 本文档提供在 Azure 虚拟机上部署 SAP Business One 的指南。 本文档不能替代 SAP Business One 的安装文档。 本文档涵盖运行 Business One 应用程序所在的 Azure 基础结构的基本规划和部署指南。
@@ -77,7 +77,7 @@ Business One 是一个具有两层的应用程序：
 
 作为用于托管 Business One 客户端组件和 DBMS 主机的 Azure 虚拟机，只允许使用支持 SAP NetWeaver 的 VM。 若要查找支持 SAP NetWeaver 的 Azure VM 列表，请阅读 [SAP 说明 #1928533](https://launchpad.support.sap.com/#/notes/1928533)。
 
-作为 DBMS 后端的运行 SAP HANA 作为业务单一的 DBMS 后端，hana 仅支持在 hana 已[认证 IaaS 平台列表](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One)中的 hana 上为 business 列出的 vm。 Business One 客户端组件不受 SAP HANA 作为 DBMS 系统的这一更强限制的影响。
+作为 DBMS 后端的运行 SAP HANA 作为业务单一的 DBMS 后端，hana 仅支持在 hana 已 [认证 IaaS 平台列表](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) 中的 hana 上为 business 列出的 vm。 Business One 客户端组件不受 SAP HANA 作为 DBMS 系统的这一更强限制的影响。
 
 ### <a name="operating-system-releases-to-use-for-sap-business-one"></a>用于 SAP Business One 的操作系统版本
 
@@ -107,7 +107,7 @@ Business One 是一个具有两层的应用程序：
 对于用户通过 Internet 连接而没有任何专用连接进入 Azure 的情况，Azure 中的网络设计应符合 Azure 参考体系结构中记录的 [Azure 和 Internet 之间的 DMZ](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz) 原则。
 
 ### <a name="business-one-database-server"></a>Business One 数据库服务器
-对于数据库类型，可以使用 SQL Server 和 SAP HANA。 与 DBMS 无关，你应该阅读[有关 SAP 工作负荷的 Azure 虚拟机 DBMS 部署](./dbms_guide_general.md)的文档注意事项，以大致了解 azure vm 中的 dbms 部署以及相关的网络和存储主题。
+对于数据库类型，可以使用 SQL Server 和 SAP HANA。 与 DBMS 无关，你应该阅读 [有关 SAP 工作负荷的 Azure 虚拟机 DBMS 部署](./dbms_guide_general.md) 的文档注意事项，以大致了解 azure vm 中的 dbms 部署以及相关的网络和存储主题。
 
 已在特定和通用的数据库文档中强调过，你需要熟悉：
 
@@ -118,7 +118,7 @@ Business One 是一个具有两层的应用程序：
 
 原则上应该：
 
-- 使用高级 SSD 而非标准 HDD。 若要详细了解可用的磁盘类型，请参阅我们的文章[选择磁盘类型](../../windows/disks-types.md)
+- 使用高级 SSD 而非标准 HDD。 若要详细了解可用的磁盘类型，请参阅我们的文章[选择磁盘类型](../../disks-types.md)
 - 使用 Azure 托管磁盘而不是非托管磁盘
 - 确保通过磁盘配置来配置足够的 IOPS 和 I/O 吞吐量
 - 组合使用 /hana/data 和 /hana/log 卷，以便拥有具有成本效益的存储配置

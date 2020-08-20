@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e6e4b8d7cc3b22737e7e76c31fd1377912fe28cb
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: cd5aaea5e7f176a0741671d4815188a5fb94830e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167141"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653556"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>在 Azure 机器学习中创建 & 使用软件环境
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ ms.locfileid: "88167141"
 * 使用环境进行训练。
 * 使用环境进行 Web 服务部署。
 
-若要大致了解环境在 Azure 机器学习中的工作原理，请参阅[什么是 ML 环境？](concept-environments.md) 有关配置开发环境的信息，请参阅[此处](how-to-configure-environment.md)。
+若要大致了解环境在 Azure 机器学习中的工作原理，请参阅 [什么是 ML 环境？](concept-environments.md) 有关配置开发环境的信息，请参阅 [此处](how-to-configure-environment.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -51,7 +51,7 @@ ms.locfileid: "88167141"
 
 * _AzureML-Tutorial_ 环境包含常用的数据科学包。 这些包包括 Scikit-learn、Pandas 和 Matplotlib，以及更大的 azureml-sdk 包集。
 
-有关特选环境的列表，请参阅[特选环境一文](resource-curated-environments.md)。
+有关特选环境的列表，请参阅 [特选环境一文](resource-curated-environments.md)。
 
 使用 `Environment.get` 方法选择一个特选环境：
 
@@ -188,7 +188,7 @@ myenv.environment_variables = {"MESSAGE":"Hello from Azure Machine Learning"}
 
 ### <a name="private-python-packages"></a>专用 Python 包
 
-若要在不将 Python 包公开到公共 internet 的情况下安全地使用它，请参阅[如何使用专用 Python 包](how-to-use-private-python-packages.md)一文。
+若要在不将 Python 包公开到公共 internet 的情况下安全地使用它，请参阅 [如何使用专用 Python 包](how-to-use-private-python-packages.md)一文。
 
 ## <a name="manage-environments"></a>管理环境
 
@@ -266,7 +266,7 @@ myenv.docker.enabled = True
 默认情况下，新生成的 Docker 映像显示在与工作区关联的容器注册表中。  存储库名称的格式为“azureml/azureml_\<uuid\>”。 该名称的唯一标识符 (*uuid*) 部分对应于基于环境配置计算出的哈希。 这种对应使得服务能够确定给定的环境是否已存在可重复使用的映像。
 
 ### <a name="use-a-custom-docker-image-or-dockerfile"></a>使用自定义 Docker 映像或 Dockerfile 
-服务会自动使用一个基于 Ubuntu Linux 的[基准映像](https://github.com/Azure/AzureML-Containers)。 它会安装指定的 Python 包。 基础映像具有 CPU 版本和 GPU 版本。 Azure 机器学习会自动检测要使用的版本。 还可以使用[自定义 Docker 基本映像](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image#create-a-custom-base-image)。
+服务会自动使用一个基于 Ubuntu Linux 的 [基准映像](https://github.com/Azure/AzureML-Containers)。 它会安装指定的 Python 包。 基础映像具有 CPU 版本和 GPU 版本。 Azure 机器学习会自动检测要使用的版本。 还可以使用 [自定义 Docker 基本映像](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image#create-a-custom-base-image)。
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults
@@ -325,7 +325,7 @@ myenv.python.interpreter_path = "/opt/miniconda/bin/python"
 
 ### <a name="retrieve-image-details"></a>检索映像详细信息
 
-对于已注册的环境，你可以使用以下代码检索映像详细信息，其中 `details` ，是[DockerImageDetails](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockerimagedetails?view=azure-ml-py)的实例 (AzureML Python SDK >= 1.11) ，并提供有关环境映像的所有信息，例如 dockerfile、注册表和映像名称。
+对于已注册的环境，你可以使用以下代码检索映像详细信息，其中 `details` ，是 [DockerImageDetails](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockerimagedetails?view=azure-ml-py) 的实例 (AzureML Python SDK >= 1.11) ，并提供有关环境映像的所有信息，例如 dockerfile、注册表和映像名称。
 
 ```python
 details = environment.get_image_details()
@@ -422,10 +422,6 @@ service = Model.deploy(
 ## <a name="notebooks"></a>笔记本
 
 [本文](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#add-new-kernels)提供了有关如何在笔记本中将 Conda 环境安装为内核的信息。
-
-此[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments)扩展了本文中演示的概念和方法。
-
-此[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local/train-on-local.ipynb)演示如何使用不同类型的环境在本地定型模型。
 
 [使用自定义 Docker 基础映像部署模型](how-to-deploy-custom-docker-image.md)演示了如何使用自定义的 Docker 基础映像部署模型。
 

@@ -3,12 +3,12 @@ title: 利用 Advisor 提高 Azure 应用程序的性能
 description: 使用 Azure 顾问中的性能建议，提高关键业务应用程序的速度和响应能力。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: bdca8cd39427fb0d25f8b3308eaf2be24e0eb81a
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 0112e94e7652026e020e99ca82ad757c236a0c53
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257470"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653301"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>使用 Azure 顾问提高 Azure 应用程序的性能
 
@@ -51,32 +51,32 @@ Advisor 会标识具有标准磁盘的虚拟机，这些磁盘在存储帐户中
 
 Azure 高级存储为运行 I/O 密集型工作负荷的虚拟机提供高性能、低延迟的磁盘支持。 使用高级存储帐户的虚拟机磁盘将数据存储在固态硬盘上， (Ssd) 。 为实现应用程序的最佳性能，建议将需要高 IOPS 的虚拟机磁盘迁移到高级存储。
 
-## <a name="remove-data-skew-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>删除 SQL 数据仓库表的数据偏斜以提高查询性能
+## <a name="remove-data-skew-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>消除 Azure Synapse 分析表的数据歪斜以提高查询性能
 
 运行工作负荷时，数据歪斜可能导致不必要的数据移动或资源瓶颈。 顾问检测到超过15% 的分布数据偏差。 建议你重新分发数据并重新访问表分布键选择。 若要了解有关识别和删除倾斜的详细信息，请参阅[倾斜疑难解答](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-distribute.md#how-to-tell-if-your-distribution-column-is-a-good-choice)。
 
-## <a name="create-or-update-outdated-table-statistics-in-your-sql-data-warehouse-tables-to-increase-query-performance"></a>在 SQL 数据仓库表中创建或更新过期的表统计信息以提高查询性能
+## <a name="create-or-update-outdated-table-statistics-in-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>在 Azure Synapse Analytics 表中创建或更新过期的表统计信息，以提高查询性能
 
-顾问标识不具有最新 [表统计信息](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics.md) 的表，并建议创建或更新统计信息。 Azure SQL 数据仓库中的查询优化器使用最新的统计信息来估计查询结果中的基数或行数。 通过这些估计，查询优化器可以创建一个查询计划，以提供最快的性能。
+顾问标识不具有最新 [表统计信息](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-statistics.md) 的表，并建议创建或更新统计信息。 Azure Synapse Analytics 中的查询优化器使用最新的统计信息来估计查询结果中的基数或行数。 通过这些估计，查询优化器可以创建一个查询计划，以提供最快的性能。
 
 ## <a name="improve-mysql-connection-management"></a>改进 MySQL 连接管理
 
 顾问分析可以指示连接到 MySQL 服务器的应用程序可能没有有效地管理连接。 这种情况可能会导致不必要的资源消耗和应用程序的总体延迟。 为了改进连接管理，建议你减少短期连接数并消除不必要的空闲连接。 可以通过配置服务器端连接池程序（例如 ProxySQL）来进行这些改进。
 
 
-## <a name="scale-up-to-optimize-cache-utilization-on-your-sql-data-warehouse-tables-to-increase-query-performance"></a>通过纵向扩展来优化 SQL 数据仓库上的缓存利用率，从而提升查询性能
+## <a name="scale-up-to-optimize-cache-utilization-on-your-azure-synapse-analytics-tables-to-increase-query-performance"></a>增加以优化 Azure Synapse 分析表的缓存利用率以提高查询性能
 
-Azure 顾问会检测 SQL 数据仓库表中是否有高缓存使用百分比和低命中率百分比。 这种情况表示高速缓存逐出，这可能会影响 SQL 数据仓库实例的性能。 顾问建议升级 SQL 数据仓库实例，以确保为工作负荷分配足够的缓存容量。
+Azure 顾问将检测 Azure Synapse 分析表是否具有高缓存使用百分比和低命中率百分比。 这种情况表示高速缓存逐出，这可能会影响 Azure Synapse Analytics 实例的性能。 顾问建议增加 Azure Synapse Analytics 实例，以确保为工作负荷分配足够的缓存容量。
 
-## <a name="convert-sql-data-warehouse-tables-to-replicated-tables-to-increase-query-performance"></a>将 SQL 数据仓库表转换为复制表以提高查询性能
+## <a name="convert-azure-synapse-analytics-tables-to-replicated-tables-to-increase-query-performance"></a>将 Azure Synapse 分析表转换为复制的表以提高查询性能
 
 顾问标识不是复制表，但会受益于转换的表。 建议转换这些表。 建议基于：
 - 复制的表的大小。 
 - 列数。 
 - 表分布类型。 
-- SQL 数据仓库表中的分区数。 
+- Azure Synapse Analytics 表中的分区数。 
 
-建议为上下文提供其他试探法。 若要详细了解如何确定此建议，请参阅 [SQL 数据仓库建议](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations.md#replicate-tables)。 
+建议为上下文提供其他试探法。 若要详细了解如何确定此建议，请参阅 [Azure Synapse Analytics 建议](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-concept-recommendations.md#replicate-tables)。 
 
 ## <a name="migrate-your-storage-account-to-azure-resource-manager-to-get-the-latest-azure-features"></a>将存储帐户迁移到 Azure 资源管理器以获取最新的 Azure 功能
 
@@ -160,7 +160,7 @@ Azure 顾问会在过去7天内分析系统日志，并确定群集是否遇到�
 这些情况指示你的群集遇到了高写入延迟。 这可能是因为在群集上执行了大量工作负荷。若要提高群集的性能，你可能需要考虑使用 Azure HDInsight HBase 提供的加速写入功能。 适用于 HDInsight Apache HBase 群集的加速写入功能可将高级 SSD 托管磁盘附加到每个 RegionServer（工作器节点），而不是使用云存储。 因此，请提供应用程序的低写入延迟和更好的复原能力。 若要[了解](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)有关此功能的详细信息，请参阅
 
 ## <a name="review-azure-data-explorer-table-cache-period-policy-for-better-performance-preview"></a>查看 Azure 数据资源管理器表缓存- (策略) ，以获得更好的性能 (预览版) 
-此推荐值为 Azure 数据资源管理器表，其中包含大量查询，这些查询在 (策略) 之前查看超过配置的缓存周期， (你将看到按查询百分比访问缓存不足数据) 的前10个表。 提高群集性能的建议操作：将此表的查询限制为已定义策略) 中 (的最小必要时间范围。 或者，如果需要整个时间范围内的数据，请将缓存期增加到建议的值。
+此建议显示 Azure 数据资源管理器表，这些表具有大量查询，可追溯到配置的缓存周期（策略）之外（你将看到按访问缓存外数据的查询百分比排序的前 10 个表）。 提高群集性能的建议操作：将此表上的查询限制为所需的最小时间范围（在定义的策略内）。 或者，如果需要整个时间范围内的数据，请将缓存周期增加为建议值。
 
 ## <a name="improve-performance-by-optimizing-mysql-temporary-table-sizing"></a>通过优化 MySQL 临时表的大小来提高性能
 顾问分析表明，由于临时表参数设置较低，MySQL 服务器可能会导致不必要的 i/o 开销。 这可能会导致不必要的基于磁盘的事务并降低性能。 建议增大“tmp_table_size”和“max_heap_table_size”参数值，以减少基于磁盘的事务数。 [了解详细信息](https://aka.ms/azure_mysql_tmp_table)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2019
 ms.author: juliako
-ms.openlocfilehash: 16c74e10e88d3f8eacd8f59222adbdb19be813ef
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e35a5fe2243c3a9880359900c63f74c6dc90e586
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053206"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654355"
 ---
 # <a name="configure-postman-for-media-services-v3-rest-api-calls"></a>配置 Postman 以进行媒体服务 v3 REST API 调用
 
@@ -99,7 +99,6 @@ ms.locfileid: "87053206"
 
 ## <a name="see-also"></a>另请参阅
 
-- [将文件上传到媒体服务帐户 - REST](upload-files-rest-how-to.md)
 - [使用媒体服务创建筛选器 - REST](filters-dynamic-manifest-rest-howto.md)
 - [基于 Azure 资源管理器的 REST API](https://github.com/Azure-Samples/media-services-v3-arm-templates)
 

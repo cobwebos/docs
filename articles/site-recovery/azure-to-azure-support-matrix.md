@@ -4,12 +4,12 @@ description: 汇总了使用 Azure Site Recovery 将 Azure VM 灾难恢复到次
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: 823e116b659a582ceb9a09b752179ee5a78f4ebd
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6cb2f3d099c328f00fab335e1cbe9ea146c0fc55
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607046"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653641"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>在 Azure 区域之间进行 Azure VM 灾难恢复的支持矩阵
 
@@ -206,8 +206,8 @@ RBAC 策略 | 不支持 | Vm 上基于角色的访问控制 (RBAC) 策略不会�
 
 **组件** | **支持** | **详细信息**
 --- | --- | ---
-OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/windows/managed-disks-overview.md)VM 磁盘相关信息。
-临时磁盘 | 不支持 | 始终从复制中排除临时磁盘。<br/><br/> 请勿在临时磁盘上存储任何持久性数据。 [了解详细信息](../virtual-machines/windows/managed-disks-overview.md)。
+OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/managed-disks-overview.md)VM 磁盘相关信息。
+临时磁盘 | 不支持 | 始终从复制中排除临时磁盘。<br/><br/> 请勿在临时磁盘上存储任何持久性数据。 [了解详细信息](../virtual-machines/managed-disks-overview.md)。
 数据磁盘的最大大小 | 托管磁盘为 8192 GB<br></br>非托管磁盘为 4095 GB|
 数据磁盘最小大小 | 对非托管磁盘没有限制。 托管磁盘为 2 GB |
 数据磁盘的最大数量 | 最多为 64，根据对特定的 Azure VM 大小的支持而定 | [深入了解 ](../virtual-machines/sizes.md)VM 大小相关信息。

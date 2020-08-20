@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 备份服务管理和监视 Microsoft Azur
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 581141ea5ffaecf774d292f66a05da5e40c8dc54
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 71cec82550ae8ca2bc6ddd7bda6452870e5e0818
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263293"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654219"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 备份服务管理 Microsoft Azure 恢复服务 (MARS) 代理备份
 
@@ -92,7 +92,7 @@ ms.locfileid: "88263293"
   - 此选项会停止将来所有备份作业的保护。
   - Azure 备份服务将继续保留所有现有恢复点。  
   - 可以还原尚未过期的恢复点的备份数据。
-  - 如果你决定恢复保护，可以使用“重新启用备份计划”选项。 然后，将会根据新的保留策略保留数据。
+  - 如果你决定恢复保护，可以使用“重新启用备份计划”选项。 然后，将根据新的保留策略保留数据。
 - **停止保护并删除备份数据**。
   - 此选项将使所有将来的备份作业停止保护你的数据，并会删除所有恢复点。
   - 你将收到 "删除备份数据" 警报电子邮件，其中包含一条已 *删除此备份项目的数据的消息。此数据暂时可用于14天，之后它将被永久删除* ，建议操作 *在14天内重新保护备份项目以恢复数据。*

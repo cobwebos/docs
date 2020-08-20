@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: dbd040bf7caf3dbe9ed9820bf189bc1f74475c09
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 7bec65867373293ff06a2295f08a05db6ffaa480
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586888"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653828"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -38,6 +38,7 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 - [添加了对多重身份验证 (Azure Active Directory 安全默认值的支持) ](#added-support-for-azure-active-directory-security-defaults-for-multi-factor-authentication)
 - [添加了服务主体建议](#service-principals-recommendation-added)
 - [Vm 上的漏洞评估-合并建议和策略](#vulnerability-assessment-on-vms---recommendations-and-policies-consolidated)
+- [新的 AKS 安全策略已添加到 ASC_default 计划-仅供个人预览版客户使用](#new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only)
 
 
 ### <a name="asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets"></a>资产清单-资产安全状况的强大新视图
@@ -59,7 +60,7 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 
 安全中心在标识 Azure 订阅时，无论是否启用了安全默认设置，现在都提供安全建议。 到目前为止，安全中心建议使用条件性访问启用多重身份验证，这是 Azure Active Directory (AD) premium 许可证的一部分。 对于使用 Azure AD 免费版的客户，我们现在建议启用安全默认设置。 
 
-我们的目标是通过 MFA 鼓励更多的客户保护其云环境，同时降低最有影响力的[风险。](https://docs.microsoft.com/azure/security-center/secure-score-security-controls)
+我们的目标是鼓励更多客户通过 MFA 保护其云环境，并缓解最高的风险，这也是最有影响力的 [安全分数](https://docs.microsoft.com/azure/security-center/secure-score-security-controls)。
 
 详细了解 [安全默认值](https://docs.microsoft.com/azure/active-directory/fundamentals/concept-fundamentals-security-defaults)。
 
@@ -126,6 +127,17 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 |[**应在虚拟机上启用漏洞评估**](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f501541f7-f7e7-4cd6-868c-4190fdad3ac9)<br>策略 ID：501541f7-f7e7-4cd6-868c-4190fdad3ac9 |内置 + BYOL|
 ||||
 
+
+### <a name="new-aks-security-policies-added-to-asc_default-initiative--for-use-by-private-preview-customers-only"></a>新的 AKS 安全策略已添加到 ASC_default 计划-仅供个人预览版客户使用
+
+为了确保 Kubernetes 工作负荷在默认情况下是安全的，安全中心添加 Kubernetes 级别策略和强化建议，包括 Kubernetes 许可控制的强制选项。
+
+此项目的早期阶段包括个人预览版，并在默认情况下禁用新 () 策略添加到 ASC_default 计划。
+
+你可以放心地忽略这些策略，而不会对环境造成任何影响。 如果你想要启用它们，请在中注册预览， https://aka.ms/SecurityPrP 并从以下选项中进行选择：
+
+1. **单一预览** –只加入此个人预览版。 明确提及 "ASC 连续扫描" 作为要加入的预览。
+1. **正在进行的程序** -将添加到此和将来的专用预览。 你将需要完成个人资料和隐私协议。
 
 
 ## <a name="july-2020"></a>2020 年 7 月

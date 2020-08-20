@@ -3,16 +3,16 @@ title: 将群集节点升级为使用 Azure 托管磁盘
 description: 本文介绍了如何在只需群集短暂停机甚至无需其停机的前提下，将现有 Service Fabric 群集升级为使用 Azure 托管磁盘。
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 1ca85af86df28691e2194c40e1cdde1abd7c8a4d
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 74b4ec803229ceb0168da6540fcbda685f0df16e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192300"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653692"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>将群集节点升级为使用 Azure 托管磁盘
 
-[Azure 托管磁盘](../virtual-machines/windows/managed-disks-overview.md)是推荐用于 Azure 虚拟机的磁盘存储产品/服务，可以持久存储数据。 将你的节点类型所基于的虚拟机规模集升级为使用托管磁盘，可以改善 Service Fabric 工作负荷的复原能力。 本文介绍了如何在只需群集短暂停机甚至无需其停机的前提下，将现有 Service Fabric 群集升级为使用 Azure 托管磁盘。
+[Azure 托管磁盘](../virtual-machines/managed-disks-overview.md)是推荐用于 Azure 虚拟机的磁盘存储产品/服务，可以持久存储数据。 将你的节点类型所基于的虚拟机规模集升级为使用托管磁盘，可以改善 Service Fabric 工作负荷的复原能力。 本文介绍了如何在只需群集短暂停机甚至无需其停机的前提下，将现有 Service Fabric 群集升级为使用 Azure 托管磁盘。
 
 将 Service Fabric 群集节点升级为使用托管磁盘的一般策略是：
 

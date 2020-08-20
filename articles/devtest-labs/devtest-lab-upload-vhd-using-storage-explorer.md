@@ -3,18 +3,18 @@ title: 使用存储资源管理器将 VHD 文件上传到 Azure 开发测试实�
 description: 使用 Microsoft Azure 存储资源管理器将 VHD 文件上传到实验室的存储帐户
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: ccdf27488147bc4840d1e505ba2761bf328d6a32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6ed6ace63a135628b6d306b946c0356091bf1bd2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85480756"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654508"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 存储资源管理器将 VHD 文件上传到实验室的存储帐户
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-在 Azure 开发测试实验室中，可使用 VHD 文件创建用于预配虚拟机的自定义映像。 本文演示如何使用 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)将 VHD 文件上传到实验室的存储帐户。 上传 VHD 文件后，[后续步骤部分](#next-steps)将列出一些文章说明如何基于已上传的 VHD 文件创建自定义映像。 有关 Azure 中的磁盘和 VHD 的详细信息，请参阅[托管磁盘简介](../virtual-machines/linux/managed-disks-overview.md)
+在 Azure 开发测试实验室中，可使用 VHD 文件创建用于预配虚拟机的自定义映像。 本文演示如何使用 [Microsoft Azure 存储资源管理器](../vs-azure-tools-storage-manage-with-storage-explorer.md)将 VHD 文件上传到实验室的存储帐户。 上传 VHD 文件后，[后续步骤部分](#next-steps)将列出一些文章说明如何基于已上传的 VHD 文件创建自定义映像。 有关 Azure 中的磁盘和 VHD 的详细信息，请参阅[托管磁盘简介](../virtual-machines/managed-disks-overview.md)
 
 ## <a name="step-by-step-instructions"></a>分步说明
 
@@ -24,9 +24,9 @@ ms.locfileid: "85480756"
 
 1. 使用 Azure 门户获取实验室的存储帐户名称：
 
-    1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
+    1. 登录 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
     
-    1. 选择 "**所有服务**"，然后从列表中选择 "**开发测试实验室**"。
+    1. 选择 " **所有服务**"，然后从列表中选择 " **开发测试实验室** "。
     
     1. 从实验室列表，选择所需的实验室。  
     
@@ -80,7 +80,7 @@ ms.locfileid: "85480756"
 
     1. 展开实验室的存储帐户节点，以显示“Blob 容器”****、“文件共享”****、“队列”**** 和“表”**** 的节点。
     
-    1. 展开“Blob 容器”**** 节点。
+    1. 展开“Blob 容器”节点。
     
     1. 选择“上传 blob 容器”，在右窗格中显示其内容。
         
@@ -102,7 +102,7 @@ ms.locfileid: "85480756"
     
     1. 返回到“上传文件”**** 对话框时，将“Blob 类型”**** 更改为“页 Blob”****。
     
-    1. 选择**上载**。
+    1. 选择“上传”。
 
         ![选择文件][9]  
     

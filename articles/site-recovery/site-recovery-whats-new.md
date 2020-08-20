@@ -3,12 +3,12 @@ title: Azure Site Recovery 中的新增功能
 description: 提供 Azure Site Recovery 服务中的新功能和最新更新的摘要。
 ms.topic: conceptual
 ms.date: 08/20/2020
-ms.openlocfilehash: d7e3a8e29800943b28c64848fc66f27f888d439f
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 09afd4416efc8e6904b7c487d5ed2f3be22db081
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611732"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654814"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery 中的新增功能
 
@@ -378,7 +378,7 @@ Site Recovery 现在支持将常规用途 v2 存储帐户用于缓存存储或�
 **功能** | **详细信息**
 --- | ---
 **网络映射** | 对于 Azure VM 灾难恢复，现在可以在启用复制时使用任何可用的目标网络。
-**标准 SSD** | 现在可以使用[标准 SSD 磁盘](../virtual-machines/windows/disks-types.md#standard-ssd)对 Azure VM 设置灾难恢复。
+**标准 SSD** | 现在可以使用[标准 SSD 磁盘](../virtual-machines/disks-types.md#standard-ssd)对 Azure VM 设置灾难恢复。
 **存储空间直通** | 可以使用[存储空间直通](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)对 Azure VM 应用中运行的应用设置灾难恢复，以实现高可用性。  将存储空间直通 (S2D) 与 Site Recovery 结合使用可为 Azure VM 工作负荷提供全面的保护。 使用 S2D 可在 Azure 中托管来宾群集。 当 VM 托管了关键应用程序（例如 SAP ASCS 层、SQL Server 或横向扩展文件服务器）时，此功能特别有用。
 
 

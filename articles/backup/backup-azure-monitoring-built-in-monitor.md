@@ -4,12 +4,12 @@ description: 本文介绍使用 Azure 门户对 Azure 备份工作负荷执行�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 645bf701a8f8561b2cb4f19378036ada82c4bedd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 07c22f4af08fd4032eeab91f0eada7797d04ebaa
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054542"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654117"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>监视 Azure 备份工作负荷
 
@@ -44,7 +44,7 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 以下方案由服务定义为可发出警报的方案。
 
 - 备份/还原失败
-- 备份成功，Microsoft Azure 恢复服务（MARS）代理的警告
+- 备份成功，并 Microsoft Azure 恢复服务 (MARS) 代理的警告
 - 停止保护并保留数据/停止保护并删除数据
 
 ### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>此处会显示以下 Azure 备份解决方案中的警报
@@ -52,7 +52,7 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 - Azure VM 备份
 - Azure 文件备份
 - Azure 工作负荷备份，例如 SQL 备份、SAP HANA 备份
-- Microsoft Azure 恢复服务 (MARS) 代理 
+- Microsoft Azure 恢复服务 (MARS) 代理
 
 > [!NOTE]
 > 此处不会显示 System Center Data Protection Manager (SC-DPM) 和 Microsoft Azure 备份服务器 (MABS) 中的警报。
@@ -83,7 +83,7 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 ## <a name="notification-for-backup-alerts"></a>备份警报的通知
 
 > [!NOTE]
-> 只能通过 Azure 门户配置通知。 不支持使用 PS/CLI/REST API/Azure 资源管理器模板。
+> 只能通过 Azure 门户来配置通知。 不支持使用 PS/CLI/REST API/Azure 资源管理器模板。
 
 一旦引发警报，用户就会收到通知。 Azure 备份通过电子邮件提供内置通知机制。 可以指定在生成警报时接收通知的个人电子邮件地址或通讯组列表。 还可以选择是要接收每个警报的通知，还是将这些警报分组成按小时摘要，然后接收通知。
 
@@ -100,7 +100,7 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 
 ## <a name="inactivating-alerts"></a>停用警报
 
-若要停用/解决某个活动警报，可以单击与要停用的警报相对应的列表项。 这将打开一个屏幕，其中会显示有关警报的详细信息，顶部有一个“停用”按钮。 单击该按钮会将警报的状态更改为“非活动”。 还可以通过以下方式停用警报：右键单击与警报对应的列表项并选择“停用”。
+若要停用/解决活动警报，您可以选择与要禁用的警报相对应的列表项。 此时将打开一个屏幕，其中显示有关警报的详细信息，并在顶部显示 " **停** 用" 按钮。 单击此按钮会将警报的状态更改为 " **非活动**"。 您还可以通过右键单击对应于该警报的列表项并选择 " **停**用" 来停用警报。
 
 ![停用恢复服务保管库警报](media/backup-azure-monitoring-laworkspace/vault-alert-inactivation.png)
 

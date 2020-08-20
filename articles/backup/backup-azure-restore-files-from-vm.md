@@ -4,12 +4,12 @@ description: 本文介绍如何从 Azure 虚拟机恢复点恢复文件和文件
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: ba97a5812359fc72e52d68e337762f7234aa3883
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: ab0722bfee0f8165971b5e3351640f0d3c00bea3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611834"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654151"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -398,7 +398,7 @@ mount [RAID Disk Path] [/mountpath]
 
 父/备份 VM 中 (ACL) 的任何文件访问控制列表也会保留在已装载的文件系统中。
 
-此脚本提供对恢复点的只读访问权限，并且仅在 12 小时内有效。 如果你希望提前删除此访问权限，则可登录到 Azure 门户/PowerShell/CLI 并针对该特定恢复点执行**卸载磁盘**操作。 脚本将立即失效。
+此脚本提供对恢复点的只读访问权限，并且仅在 12 小时内有效。 如果要删除之前的访问权限，请登录 Azure 门户/PowerShell/CLI，并为该特定恢复点执行 **卸载磁盘** 。 脚本将立即失效。
 
 ## <a name="next-steps"></a>后续步骤
 

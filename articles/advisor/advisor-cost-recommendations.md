@@ -3,12 +3,12 @@ title: 使用 Azure 顾问降低服务成本
 description: 使用 Azure 顾问优化 Azure 部署的成本。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 15f357248a6174de1e0890a4b45e9fa3930a06fe
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: d234e89d0d042999805fae73d3df24c03d1027c9
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258538"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654032"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>使用 Azure 顾问降低服务成本
 
@@ -71,7 +71,7 @@ Azure 顾问通过识别空闲和未充分利用的资源，帮助优化和减�
 ### <a name="mariadb-mysql-and-postgresql-reserved-capacity"></a>MariaDB、MySQL 和 PostgreSQL 保留容量
 顾问会分析过去30天内 Azure Database for MariaDB、Azure Database for MySQL 和 Azure Database for PostgreSQL 的使用模式。 然后，它建议保留的容量购买，以优化成本。 通过使用预留容量，你可以预购买 MariaDB、MySQL 和 PostgreSQL 每小时的使用情况，并节省当前成本。 预留容量是一项计费权益，并自动应用于新的和现有的部署。 顾问使用3年保留价格和过去30天内观察到的使用模式来计算各个订阅的节省估计值。 共享范围的建议适用于预留容量购买，并可提高节省费用。
 
-### <a name="synapse-analytics-formerly-sql-data-warehouse-reserved-capacity"></a>Synapse Analytics (以前的 SQL 数据仓库) 保留容量
+### <a name="azure-synapse-analytics-formerly-sql-data-warehouse-reserved-capacity"></a>Azure Synapse Analytics (以前的 SQL 数据仓库) 保留容量
 顾问会在过去30天内分析 Azure Synapse Analytics 使用模式，并建议使用保留容量购买来优化成本。 通过使用预留容量，你可以预购买 Synapse Analytics 每小时的使用情况，并按需成本保存。 预留容量是一项计费权益，并自动应用于新的和现有的部署。 顾问使用3年保留价格和过去30天内观察到的使用模式来计算各个订阅的节省估计值。 共享范围的建议适用于预留容量购买，并可提高节省费用。
 
 ## <a name="delete-unassociated-public-ip-addresses-to-save-money"></a>删除未关联的公共 IP 地址可节省资金

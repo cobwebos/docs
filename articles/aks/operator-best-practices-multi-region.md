@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: efa4ca24dadb2fb5d347d79de20eebfacc9a58e0
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 110a25fca0b0e764650665635dbe545de7a350cd
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142173"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653990"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中实现业务连续性和灾难恢复的最佳做法
 
@@ -34,7 +34,7 @@ ms.locfileid: "88142173"
 一个 AKS 群集部署到单个区域中。 为避免系统受到区域故障的影响，可以跨不同区域将应用程序部署到多个 AKS 群集中。 规划 AKS 群集的部署位置时，请考虑：
 
 * [**AKS 区域可用性**](./quotas-skus-regions.md#region-availability)：选择靠近用户的区域。 AKS 不断向新区域扩展。
-* [**Azure 配对区域**](../best-practices-availability-paired-regions.md)：对于地理区域，请选择两个相互配对的区域。 配对区域协调平台更新，并在需要时确定恢复工作的优先级。
+* [**Azure 配对区域**](../best-practices-availability-paired-regions.md)：对于你的地理区域，选择两个相互配对的区域。 配对区域协调平台更新，并在需要时确定恢复工作的优先级。
 * **服务可用性**：确定配对区域应采用热/热、热/暖还是热/冷配置。 是否要同时运行两个区域，其中一个区域已准备好开始提供流量？ 或者，是否要运行一个区域，以便有时间来准备好提供流量？
 
 AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部署到配对区域中，这些区域旨在一起管理区域灾难恢复。 例如，AKS 现已在美国东部和美国西部推出。 这些区域是配对的。 创建 AKS BC/DR 策略时，请选择这两个区域。
@@ -59,7 +59,7 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 
 ### <a name="application-routing-with-azure-front-door-service"></a>应用程序与 Azure 前门服务的路由
 
-使用基于 TCP 的拆分协议， [Azure 前门服务](../frontdoor/front-door-overview.md)确保最终用户能够立即连接到最近的前门 POP (状态) 。 Azure 前门服务的其他功能包括 TLS 终止、自定义域、web 应用程序防火墙、URL 重写和会话相关性。 查看应用程序流量的需求，以了解哪种解决方案是最合适。
+使用基于 TCP 的拆分协议， [Azure 前门服务](../frontdoor/front-door-overview.md) 确保最终用户能够立即连接到最近的前门 POP (状态) 。 Azure 前门服务的其他功能包括 TLS 终止、自定义域、web 应用程序防火墙、URL 重写和会话相关性。 查看应用程序流量的需求，以了解哪种解决方案是最合适。
 
 ### <a name="interconnect-regions-with-global-virtual-network-peering"></a>使用虚拟网络对等互连将区域互连
 
@@ -122,7 +122,7 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 如果使用 Azure 托管磁盘，可以选择如下所述的复制和 DR 解决方案：
 
 * [Azure 上的 Velero](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
-* [Azure Site Recovery](https://azure.microsoft.com/blog/asr-managed-disks-between-azure-regions/)
+* [Azure 备份](../backup/backup-overview.md)
 
 ### <a name="application-based-asynchronous-replication"></a>基于应用程序的异步复制
 

@@ -1,5 +1,5 @@
 ---
-title: include 文件
+title: 包含文件
 description: include 文件
 services: virtual-machines
 author: roygara
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/17/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 37d9cf0b0ac7145e389f9fc768ff0b593b27ae1a
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 93c97c70a65be40b5801b202ba277b8f86ad1566
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88515171"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88655053"
 ---
 ## <a name="limitations"></a>限制
 
@@ -137,7 +137,7 @@ New-AzDisk -ResourceGroupName 'myResourceGroup' -DiskName 'mySharedDisk' -Disk $
 使用部署共享磁盘后 `maxShares>1` ，可以将该磁盘装载到一台或多台 vm。
 
 > [!NOTE]
-> 如果要部署的是 ultra 磁盘，请确保它符合必要的要求。 有关详细信息，请参阅《超级磁盘的 [PowerShell](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) 或 [CLI](../articles/virtual-machines/linux/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) 部分。
+> 如果要部署的是 ultra 磁盘，请确保它符合必要的要求。 有关详细信息，请参阅《超级磁盘的 [PowerShell](../articles/virtual-machines/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm-1) 或 [CLI](../articles/virtual-machines/disks-enable-ultra-ssd.md#enable-ultra-disk-compatibility-on-an-existing-vm) 部分。
 
 ```azurepowershell-interactive
 

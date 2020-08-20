@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 78a4a22771f7880c48722f410f3a2fae0c66e9c8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035785"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653590"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>使用 Azure 可用性区域的 SAP 工作负荷配置
 [Azure 可用性区域](../../../availability-zones/az-overview.md)是 Azure 提供的高可用性功能之一。 使用可用性区域可提高 Azure 上 SAP 工作负荷的整体可用性。 此功能已在某些 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中推出。 今后会在更多的区域中推出。
@@ -30,7 +30,7 @@ ms.locfileid: "87035785"
 
 ![标准高可用性配置](./media/sap-ha-availability-zones/standard-ha-config.png)
 
-SAP 应用程序层部署在一个 Azure[可用性集](../../windows/manage-availability.md)内。 若要实现 SAP Central Services 的高可用性，可在单独的可用性集中部署两个 VM。 使用 Windows Server 故障转移群集或 Pacemaker (Linux) 作为高可用性框架，并在出现基础结构或软件问题时自动进行故障转移。 若要了解有关这些部署的详细信息，请参阅：
+SAP 应用程序层部署在一个 Azure [可用性集](../../windows/manage-availability.md)内。 若要实现 SAP Central Services 的高可用性，可在单独的可用性集中部署两个 VM。 使用 Windows Server 故障转移群集或 Pacemaker (Linux) 作为高可用性框架，并在出现基础结构或软件问题时自动进行故障转移。 若要了解有关这些部署的详细信息，请参阅：
 
 - [使用群集共享磁盘在 Windows 故障转移群集上群集 SAP ASCS/SCS 实例](./sap-high-availability-guide-wsfc-shared-disk.md)
 - [使用文件共享在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例的群集](./sap-high-availability-guide-wsfc-file-share.md)
@@ -57,8 +57,8 @@ SAP 应用程序层部署在一个 Azure[可用性集](../../windows/manage-avai
 
 - 部署到 Azure 可用性区域时必须使用 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)。 
 - 区域枚举到物理区域的映射限定为 Azure 订阅。 如果使用不同的订阅部署 SAP 系统，则需要为每个订阅定义理想的区域。
-- 除非使用[Azure 邻近度放置组](../../linux/co-location.md)，否则无法在 Azure 可用性区域内部署 azure 可用性集。 如何跨区域部署 SAP DBMS 层和中心服务以及同时部署 SAP 应用程序层（使用可用性集）和仍可实现虚拟机的密切接近，请参阅[Azure 邻近度布局组，以实现 sap 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。 如果不使用 Azure 邻近性放置组，则需要选择其中一项作为虚拟机的部署框架。
-- 不能使用 [Azure 基本负载均衡器](../../../load-balancer/load-balancer-overview.md)基于 Windows Server 故障转移群集或 Linux Pacemaker 创建故障转移群集解决方案。 相反，你需要使用[Azure 标准负载均衡器 SKU](../../../load-balancer/load-balancer-standard-availability-zones.md)。
+- 除非使用 [Azure 邻近度放置组](../../linux/co-location.md)，否则无法在 Azure 可用性区域内部署 azure 可用性集。 如何跨区域部署 SAP DBMS 层和中心服务以及同时部署 SAP 应用程序层（使用可用性集）和仍可实现虚拟机的密切接近，请参阅 [Azure 邻近度布局组，以实现 sap 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。 如果不使用 Azure 邻近性放置组，则需要选择其中一项作为虚拟机的部署框架。
+- 不能使用 [Azure 基本负载均衡器](../../../load-balancer/load-balancer-overview.md)基于 Windows Server 故障转移群集或 Linux Pacemaker 创建故障转移群集解决方案。 相反，你需要使用 [Azure 标准负载均衡器 SKU](../../../load-balancer/load-balancer-standard-availability-zones.md)。
 
 
 
@@ -76,7 +76,7 @@ SAP 应用程序层部署在一个 Azure[可用性集](../../windows/manage-avai
 - 找到网络延迟最低的两个区域后，部署该 VM SKU 的另外三个 VM，用作跨三个可用性区域的应用层 VM。 针对所选的两个 DBMS 区域中的两个 DBMS VM 测量网络延迟。 
 - 使用 **niping** 作为测量工具。 SAP 支持说明 [#500235](https://launchpad.support.sap.com/#/notes/500235) 和 [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) 中介绍了 SAP 提供的此工具。 请重点关注所述的延迟测量命令。 由于 **ping** 无法穿透 Azure 加速网络代码路径，因此我们不建议使用它。
 
-无需手动执行这些测试。 你可以找到 PowerShell 过程[可用性区域延迟测试](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/master/AvZone-Latency-Test)，它可自动执行所述的延迟测试。 
+无需手动执行这些测试。 你可以找到 PowerShell 过程 [可用性区域延迟测试](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/master/AvZone-Latency-Test) ，它可自动执行所述的延迟测试。 
 
 根据测量结果以及可用性区域中 VM SKU 的可用性，需要做出一些决策：
 
@@ -104,12 +104,12 @@ SAP 应用程序层部署在一个 Azure[可用性集](../../windows/manage-avai
 
 以下注意事项适用于此配置：
 
-- 如果不使用[Azure 邻近性放置组](../../linux/co-location.md)，则会将 Azure 可用性区域视为所有 vm 的容错域和更新域，因为可用性集不能部署在 Azure 可用性区域中。
-- 如果要合并 DBMS 层和中心服务的区域部署，但要为应用程序层使用 Azure 可用性集，则需要使用 azure 邻近性组一文中所述的 Azure 邻近组，以[实现 SAP 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。
+- 如果不使用 [Azure 邻近性放置组](../../linux/co-location.md)，则会将 Azure 可用性区域视为所有 vm 的容错域和更新域，因为可用性集不能部署在 Azure 可用性区域中。
+- 如果要合并 DBMS 层和中心服务的区域部署，但要为应用程序层使用 Azure 可用性集，则需要使用 azure 邻近性组一文中所述的 Azure 邻近组，以 [实现 SAP 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。
 - 对于 SAP Central Services 故障转移群集以及 DBMS 层的负载均衡器，需要使用[标准 SKU Azure 负载均衡器](../../../load-balancer/load-balancer-standard-availability-zones.md)。 基本负载均衡器不能跨区域工作。
 - 所部署的用于托管 SAP 系统的 Azure 虚拟网络及其子网将跨区域延伸。 不需要隔离每个区域的虚拟网络。
-- 对于部署的所有虚拟机，需要使用[Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)。 区域部署不支持非托管磁盘。
-- Azure 高级存储和[超级 SSD 存储](../../windows/disks-types.md#ultra-disk)不支持跨区域的任何存储复制类型。 应用程序（DBMS 或 SAP Central Services）必须复制重要数据。
+- 对于部署的所有虚拟机，需要使用 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)。 区域部署不支持非托管磁盘。
+- Azure 高级存储和[超级 SSD 存储](../../disks-types.md#ultra-disk)不支持跨区域的任何存储复制类型。 应用程序（DBMS 或 SAP Central Services）必须复制重要数据。
 - 这一点同样适用于共享的 sapmnt 目录，包括共享磁盘 (Windows)、CIFS 共享 (Windows) 或 NFS 共享 (Linux)。 需要采用某种技术来复制此类共享磁盘或者在区域之间共享。 支持以下技术：
   - 对于 Windows，支持使用 SIOS DataKeeper 的群集解决方案，具体请参阅[使用 Azure 中的群集共享磁盘在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例群集](./sap-high-availability-guide-wsfc-shared-disk.md)。
   - 对于 SUSE Linux，支持根据 [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性](./high-availability-guide-suse-nfs.md)中所述构建的 NFS 共享。
@@ -120,7 +120,7 @@ SAP 应用程序层部署在一个 Azure[可用性集](../../windows/manage-avai
 - 你可能想要在每个区域中部署一些休眠对话实例。 这样，在使用了一部分应用程序实例的区域出现服务中断时，可以立即恢复以前的资源容量。
 
 > [!IMPORTANT]
-> 在此主动/主动方案中，带宽的额外费用由 Microsoft 从04/01/2020 发布。 查看文档[带宽定价详细信息](https://azure.microsoft.com/pricing/details/bandwidth/)。 SAP 应用程序层和 SAP DBMS 层之间的数据传输非常密集。 因此，主动/主动方案可能会产生相当多的成本。 继续检查本文以获得确切的成本 
+> 在此主动/主动方案中，带宽的额外费用由 Microsoft 从04/01/2020 发布。 查看文档 [带宽定价详细信息](https://azure.microsoft.com/pricing/details/bandwidth/)。 SAP 应用程序层和 SAP DBMS 层之间的数据传输非常密集。 因此，主动/主动方案可能会产生相当多的成本。 继续检查本文以获得确切的成本 
 
 
 ## <a name="activepassive-deployment"></a>主动/被动部署
@@ -132,12 +132,12 @@ SAP 应用程序层部署在一个 Azure[可用性集](../../windows/manage-avai
 
 以下注意事项适用于此配置：
 
-- 不能在 Azure 可用性区域中部署可用性集。 若要弥补这一点，可以使用 azure 近程放置组一文中所述的 Azure 邻近性组，以[实现 SAP 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。
+- 不能在 Azure 可用性区域中部署可用性集。 若要弥补这一点，可以使用 azure 近程放置组一文中所述的 Azure 邻近性组，以 [实现 SAP 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。
 - 使用此体系结构时，需要进行密切监视状态，并尝试使主动 DBMS 和 SAP Central Services 实例与所部署的应用层位于同一区域。 故障转移 SAP Central Services 或 DBMS 实例时，请确保能够尽快手动故障回复到包含所部署的 SAP 应用层的区域。
 - 对于 SAP Central Services 故障转移群集以及 DBMS 层的负载均衡器，需要使用[标准 SKU Azure 负载均衡器](../../../load-balancer/load-balancer-standard-availability-zones.md)。 基本负载均衡器不能跨区域工作。
 - 所部署的用于托管 SAP 系统的 Azure 虚拟网络及其子网将跨区域延伸。 不需要隔离每个区域的虚拟网络。
-- 对于部署的所有虚拟机，需要使用[Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)。 区域部署不支持非托管磁盘。
-- Azure 高级存储和[超级 SSD 存储](../../windows/disks-types.md#ultra-disk)不支持跨区域的任何存储复制类型。 应用程序（DBMS 或 SAP Central Services）必须复制重要数据。
+- 对于部署的所有虚拟机，需要使用 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)。 区域部署不支持非托管磁盘。
+- Azure 高级存储和[超级 SSD 存储](../../disks-types.md#ultra-disk)不支持跨区域的任何存储复制类型。 应用程序（DBMS 或 SAP Central Services）必须复制重要数据。
 - 这一点同样适用于共享的 sapmnt 目录，包括共享磁盘 (Windows)、CIFS 共享 (Windows) 或 NFS 共享 (Linux)。 需要采用某种技术来复制此类共享磁盘或者在区域之间共享。 支持以下技术：
     - 对于 Windows，支持使用 SIOS DataKeeper 的群集解决方案，具体请参阅[使用 Azure 中的群集共享磁盘在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例群集](./sap-high-availability-guide-wsfc-shared-disk.md)。
     - 对于 SUSE Linux，支持根据 [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性](./high-availability-guide-suse-nfs.md)中所述构建的 NFS 共享。
@@ -160,14 +160,14 @@ Microsoft 不会共享有关托管 Azure 区域中不同 Azure 可用性区域�
 
 以下注意事项适用于此配置：
 
-- 假设托管可用性区域的设施之间的距离很大，或者你不能离开特定的 Azure 区域。 不能在 Azure 可用性区域中部署可用性集。 若要弥补这一点，可以使用 azure 近程放置组一文中所述的 Azure 邻近性组，以[实现 SAP 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。
+- 假设托管可用性区域的设施之间的距离很大，或者你不能离开特定的 Azure 区域。 不能在 Azure 可用性区域中部署可用性集。 若要弥补这一点，可以使用 azure 近程放置组一文中所述的 Azure 邻近性组，以 [实现 SAP 应用程序的最佳网络延迟](sap-proximity-placement-scenarios.md)。
 - 使用此体系结构时，需要进行密切监视状态，并尝试使主动 DBMS 和 SAP Central Services 实例与所部署的应用层位于同一区域。 故障转移 SAP Central Services 或 DBMS 实例时，请确保能够尽快手动故障回复到包含所部署的 SAP 应用层的区域。
 - VM 中应该预装了运行主动 QA 应用程序实例的生产应用程序实例。
 - 发生区域性故障时，需要关闭 QA 应用程序实例并启动生产实例。 请注意，需要使用应用程序实例的虚拟名称才能进行此操作。
 - 对于 SAP Central Services 故障转移群集以及 DBMS 层的负载均衡器，需要使用[标准 SKU Azure 负载均衡器](../../../load-balancer/load-balancer-standard-availability-zones.md)。 基本负载均衡器不能跨区域工作。
 - 所部署的用于托管 SAP 系统的 Azure 虚拟网络及其子网将跨区域延伸。 不需要隔离每个区域的虚拟网络。
-- 对于部署的所有虚拟机，需要使用[Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)。 区域部署不支持非托管磁盘。
-- Azure 高级存储和[超级 SSD 存储](../../windows/disks-types.md#ultra-disk)不支持跨区域的任何存储复制类型。 应用程序（DBMS 或 SAP Central Services）必须复制重要数据。
+- 对于部署的所有虚拟机，需要使用 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)。 区域部署不支持非托管磁盘。
+- Azure 高级存储和[超级 SSD 存储](../../disks-types.md#ultra-disk)不支持跨区域的任何存储复制类型。 应用程序（DBMS 或 SAP Central Services）必须复制重要数据。
 - 这一点同样适用于共享的 sapmnt 目录，包括共享磁盘 (Windows)、CIFS 共享 (Windows) 或 NFS 共享 (Linux)。 需要采用某种技术来复制此类共享磁盘或者在区域之间共享。 支持以下技术：
     - 对于 Windows，支持使用 SIOS DataKeeper 的群集解决方案，具体请参阅[使用 Azure 中的群集共享磁盘在 Windows 故障转移群集上组建 SAP ASCS/SCS 实例群集](./sap-high-availability-guide-wsfc-shared-disk.md)。
     - 对于 SUSE Linux，支持根据 [SUSE Linux Enterprise Server 上 Azure VM 中的 NFS 的高可用性](./high-availability-guide-suse-nfs.md)中所述构建的 NFS 共享。

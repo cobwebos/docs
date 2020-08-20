@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f5a2205ec835fb630933dd85b4b0e5846ae864cb
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 42738ff71432284a156d0dfbb1f6cf160cbf4032
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86235891"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653235"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>将日志磁盘迁移到超磁盘
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,27 +30,27 @@ ms.locfileid: "86235891"
 
 ## <a name="back-up-database"></a>备份数据库
 
-完成数据库[完整备份](backup-restore.md)。 
+完成数据库 [完整备份](backup-restore.md) 。 
 
 ## <a name="attach-disk"></a>附加磁盘
 
 启用 VM 上的 ultradisk 兼容性后，将超级 SSD 附加到虚拟机。 
 
-VM 大小和区域的子集都支持 Ultra 磁盘。 在继续之前，请验证你的 VM 是否位于支持超小型磁盘的区域、区域和大小。 可以使用 Azure CLI 或 PowerShell 来[确定和验证 VM 大小和区域](../../../virtual-machines/windows/disks-enable-ultra-ssd.md#determine-vm-size-and-region-availability)。 
+VM 大小和区域的子集都支持 Ultra 磁盘。 在继续之前，请验证你的 VM 是否位于支持超小型磁盘的区域、区域和大小。 可以使用 Azure CLI 或 PowerShell 来 [确定和验证 VM 大小和区域](../../../virtual-machines/disks-enable-ultra-ssd.md#determine-vm-size-and-region-availability) 。 
 
 ### <a name="enable-compatibility"></a>启用兼容性
 
 若要启用兼容性，请执行以下步骤：
 
-1. 在[Azure 门户](https://portal.azure.com/)中转到你的虚拟机。 
+1. 在 [Azure 门户](https://portal.azure.com/)中转到你的虚拟机。 
 1. 停止/解除分配虚拟机。 
 1. 选择 "**设置**" 下的 "**磁盘**"，然后选择 "**其他设置**"。 
 
    :::image type="content" source="media/storage-migrate-to-ultradisk/additional-disks-settings-azure-portal.png" alt-text="为 "设置" 下的 "磁盘" 选择其他设置 Azure 门户":::
 
-1. 选择 **"是"** 以**启用超高磁盘兼容性**。 
+1. 选择 **"是"** 以 **启用超高磁盘兼容性**。 
 
-   :::image type="content" source="../../../../includes/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="为 "设置" 下的 "磁盘" 选择其他设置 Azure 门户":::
+   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="为 "设置" 下的 "磁盘" 选择其他设置 Azure 门户":::
 
 1. 选择“保存”。 
 
@@ -58,7 +58,7 @@ VM 大小和区域的子集都支持 Ultra 磁盘。 在继续之前，请验证
 
 ### <a name="attach-disk"></a>附加磁盘
 
-使用 Azure 门户将超磁盘附加到你的虚拟机。 有关详细信息，请参阅[附加超磁盘](../../../virtual-machines/windows/disks-enable-ultra-ssd.md#attach-an-ultra-disk-using-the-azure-portal)
+使用 Azure 门户将超磁盘附加到你的虚拟机。 有关详细信息，请参阅 [附加超磁盘](../../../virtual-machines/disks-enable-ultra-ssd.md#attach-an-ultra-disk-using-the-azure-portal)
 
 附加磁盘后，请使用 Azure 门户再次启动 VM。 
 
@@ -71,7 +71,7 @@ VM 大小和区域的子集都支持 Ultra 磁盘。 在继续之前，请验证
 若要设置超磁盘的格式，请执行以下步骤：
 
 1. 使用远程桌面协议 (RDP) 连接到 VM。
-1. 使用 "[磁盘管理](/windows-server/storage/disk-management/overview-of-disk-management)" 对新附加的超磁盘进行格式化和分区。 
+1. 使用 " [磁盘管理](/windows-server/storage/disk-management/overview-of-disk-management) " 对新附加的超磁盘进行格式化和分区。 
 
 
 ## <a name="use-disk-for-log"></a>将磁盘用于日志
@@ -84,8 +84,8 @@ VM 大小和区域的子集都支持 Ultra 磁盘。 在继续之前，请验证
 1. 导航至新磁盘。 
 1. ) 要用于日志文件的 (或多个文件夹创建一个文件夹。 
 1. 右键单击该文件夹并选择“属性”。****
-1. 在 "**安全**" 选项卡上，对 SQL Server 服务帐户授予 "完全控制" 权限。 
-1. 选择 **"确定"** 以保存设置。 
+1. 在 " **安全** " 选项卡上，对 SQL Server 服务帐户授予 "完全控制" 权限。 
+1. 选择 **"确定"**  以保存设置。 
 1. 对你计划包含 SQL 数据的每个根级别的文件夹重复此操作。 
 
 ### <a name="use-new-log-drive"></a>使用新的日志驱动器 
@@ -101,7 +101,7 @@ VM 大小和区域的子集都支持 Ultra 磁盘。 在继续之前，请验证
 
 使用 T-sql 将现有文件移动到新位置：
 
-1. 在 SQL Server Management Studio 中连接到数据库，然后打开一个**新的查询**窗口。 
+1. 在 SQL Server Management Studio 中连接到数据库，然后打开一个 **新的查询** 窗口。 
 1. 获取现有文件和位置：
 
    ```sql
@@ -143,7 +143,7 @@ VM 大小和区域的子集都支持 Ultra 磁盘。 在继续之前，请验证
 使用 SSMS 将现有文件移动到新位置：
 
 1. SQL Server Management Studio (SSMS) 连接到数据库。 
-1. 右键单击该数据库，选择 "**属性**"，然后选择 "**文件**"。 
+1. 右键单击该数据库，选择 " **属性** "，然后选择 " **文件**"。 
 1. 记下现有文件的路径。 
 1. 选择“确定”以关闭该对话框。**** 
 1. 右键单击该数据库，然后选择 "**任务**  >  **分离**"。 
@@ -161,7 +161,7 @@ VM 大小和区域的子集都支持 Ultra 磁盘。 在继续之前，请验证
 
 ## <a name="next-steps"></a>后续步骤
 
-查看[性能最佳实践](performance-guidelines-best-practices.md)以了解其他设置以提高性能。 
+查看 [性能最佳实践](performance-guidelines-best-practices.md) 以了解其他设置以提高性能。 
 
 有关 Azure 虚拟机上的 SQL Server 的概述，请参阅以下文章：
 
