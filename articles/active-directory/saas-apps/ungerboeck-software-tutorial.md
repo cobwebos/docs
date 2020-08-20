@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Ungerboeck Software 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Ungerboeck Software 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: bd861069-8a15-4d29-aa26-0d7be3a0a94a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 654abe0900cd1cecd4964c344a01dafe40caeb85
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0999cbcb53edad8c496dc2f6dbd27471c93f3e4c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86166972"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88532706"
 ---
 # <a name="tutorial-integrate-ungerboeck-software-with-azure-active-directory"></a>教程：将 Ungerboeck Software 与 Azure Active Directory 集成
 

@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 vxMaintain 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 vxMaintain 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 841a1066-593c-4603-9abe-f48496d73d10
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 642af77d62b88d2e22748c55b901a31bbc0db9b9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 9f970453485af4a692e21c1b8b2ef7e5ad3582de
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67087329"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531440"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>教程：Azure Active Directory 与 vxMaintain 集成
 
