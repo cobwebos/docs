@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 8/16/2020
+ms.date: 8/20/2020
 ms.subservice: alerts
-ms.openlocfilehash: 877134fb1d4417c04da3bf6a96267b413389ecb2
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 05586f95de03b09b95eb589812935970126b12f2
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258454"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661310"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Monitor 中的指标警报支持的资源
 
@@ -44,7 +44,7 @@ Azure Monitor 现在支持[新型指标警报类型](./alerts-overview.md)，它
 |Microsoft.ClassicStorage/storageAccounts/queueServices | 是 | 否 | |
 |Microsoft.ClassicStorage/storageAccounts/tableServices | 是 | 否 | |
 |Microsoft.CognitiveServices/accounts | 是 | 否 | [认知服务](./metrics-supported.md#microsoftcognitiveservicesaccounts) |
-|Microsoft.Compute/virtualMachines | 是 | 是 | [虚拟机](./metrics-supported.md#microsoftcomputevirtualmachines) |
+|Microsoft.Compute/virtualMachines | 是 | 是<sup>1</sup> | [虚拟机](./metrics-supported.md#microsoftcomputevirtualmachines) |
 |Microsoft.Compute/virtualMachineScaleSets | 是 | 否 |[虚拟机规模集](./metrics-supported.md#microsoftcomputevirtualmachinescalesets) |
 |Microsoft.ContainerInstance/containerGroups | 是| 否 | [容器组](./metrics-supported.md#microsoftcontainerinstancecontainergroups) |
 |Microsoft.ContainerRegistry/registries | 否 | 否 | [容器注册表](./metrics-supported.md#microsoftcontainerregistryregistries) |
@@ -111,6 +111,8 @@ Azure Monitor 现在支持[新型指标警报类型](./alerts-overview.md)，它
 |Microsoft.Web/serverfarms | 是 | 否 | [应用服务计划](./metrics-supported.md#microsoftwebserverfarms)|
 |Microsoft.Web/sites | 是 | 否 | [应用程序服务](./metrics-supported.md#microsoftwebsites-excluding-functions)和 [Functions](./metrics-supported.md#microsoftwebsites-functions)|
 |Microsoft.Web/sites/slots | 是 | 否 | [应用服务槽](./metrics-supported.md#microsoftwebsitesslots)|
+
+<sup>1</sup> 仅支持平台指标 (自定义指标) 
 
 ## <a name="payload-schema"></a>负载架构
 

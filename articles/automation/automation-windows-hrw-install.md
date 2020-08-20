@@ -3,14 +3,14 @@ title: 在 Azure 自动化中部署 Windows 混合 Runbook 辅助角色
 description: 本文介绍如何部署混合 Runbook 辅助角色，你可使用该角色在本地数据中心或云环境的基于 Windows 的计算机上运行 Runbook。
 services: automation
 ms.subservice: process-automation
-ms.date: 06/24/2020
+ms.date: 08/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 90b16f10cfa94ce427a9f6249c72842f8ef6278a
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 74657743d14b9365f66ed3373592b708a07e11dc
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88270574"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660506"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合 Runbook 辅助角色
 
@@ -29,6 +29,9 @@ ms.locfileid: "88270574"
 如果没有 Azure Monitor Log Analytics 工作区，请在创建工作区前查看 [Azure Monitor 日志设计指南](../azure-monitor/platform/design-logs-deployment.md)。
 
 如果你有工作区，但它没有与你的自动化帐户关联，则启用自动化功能会添加 Azure 自动化的功能，包括对混合 Runbook 辅助角色的支持。 当你在 Log Analytics 工作区中启用 Azure 自动化功能之一时，特别 [更新管理](update-management/update-mgmt-overview.md) 或 [更改跟踪和清单](change-tracking.md)，辅助角色组件会自动推送到代理计算机。
+
+> [!NOTE]
+> 启用更新管理或更改跟踪和清单功能时，Azure 自动化仅支持某些区域来链接 Log Analytics 工作区和自动化帐户。 有关支持的映射对的列表，请参阅[自动化帐户和 Log Analytics 工作区的区域映射](how-to/region-mappings.md)。 启用任一功能之前，请查看 azure 自动化的 [azure 定价](https://azure.microsoft.com/pricing/details/automation/) 信息。
 
    若要将更新管理功能添加到工作区，请运行以下 PowerShell cmdlet：
 
@@ -123,9 +126,6 @@ Windows 混合 Runbook 辅助角色的最低要求如下：
 | `SubscriptionID` | 必需 | 与自动化帐户关联的 Azure 订阅的标识符。 |
 | `TenantID` | 可选 | 与自动化帐户关联的租户组织的标识符。 |
 | `WorkspaceName` | 可选 | Log Analytics 工作区名称。 如果没有 Log Analytics 工作区，该脚本会创建并配置一个。 |
-
-> [!NOTE]
-> 在启用功能时，Azure 自动化仅支持某些区域链接 Log Analytics 工作区和自动化帐户。 有关支持的映射对的列表，请参阅[自动化帐户和 Log Analytics 工作区的区域映射](how-to/region-mappings.md)。
 
 ### <a name="step-2---open-windows-powershell-command-line-shell"></a>步骤 2 - 打开 Windows PowerShell 命令行 shell
 

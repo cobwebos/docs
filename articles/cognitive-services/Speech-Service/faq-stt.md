@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/4/2019
+ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 2c84b291aad5ec2da2946e40075b23cc4496ef65
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: a14ac8089aa29a592164168e6ccfc4fd2342f68c
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921023"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661514"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>语音转文本常见问题解答
 
@@ -71,11 +71,11 @@ ms.locfileid: "85921023"
 
 **问：是否会记录我的请求？**
 
-**答**：默认情况下不会记录请求（音频和脚本）。 如果需要，你可以在[创建自定义终结点](how-to-custom-speech-deploy-model.md)时选择 "从此*终结点中记录内容*" 选项以启用跟踪。 然后，请求将记录在 Azure 的安全存储中。
+**答**：默认情况下不记录请求（既不进行音频记录，也不进行听录）。 如果需要，可以在[创建自定义终结点](how-to-custom-speech-deploy-model.md)时选择“从此终结点记录内容”选项以启用跟踪。 然后，请求会记录在 Azure 的安全存储中。
 
 **问：我的请求是否受到限制？**
 
-**答**：REST API 将请求限制为每 5 秒 25 个。 可以在我们的[语音转文本](speech-to-text.md)页面中找到详细信息。
+**答**：请参阅 [语音服务配额和限制](speech-services-quotas-and-limits.md)。
 
 **问：双声道音频如何收费？**
 
@@ -85,52 +85,14 @@ ms.locfileid: "85921023"
 > 如果有禁止使用自定义语音识别服务的其他隐私问题，请联系其中一个支持渠道。
 
 ## <a name="increasing-concurrency"></a>提高并发性
+请参阅 [语音服务配额和限制](speech-services-quotas-and-limits.md)。
 
-**问：如果我的已部署模型需要比门户提供的并发性更高的并发性，该怎么办？**
-
-**答**：以 20 个并发请求为增量纵向扩展模型。
-
-使用所需信息，在 [Azure 支持门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)中创建支持请求。 请勿在[支持页面](support.md)上提到的任何公共渠道（GitHub、Stackoverflow 等）上发布信息。
-
-为了增加自定义模型的并发性，我们需要以下信息：
-
-- 部署模型的区域；
-- 已部署模型的终结点 ID：
-  - 转到[自定义语音识别门户](https://aka.ms/customspeech)，
-  - 视需要登录；
-  - 选择项目和部署；
-  - 选择需要增加其并发性的终结点；
-  - 复制 `Endpoint ID`。
-
-为了增加基础模型的并发性，我们需要以下信息：
-
-- 服务的区域；
-
-以及
-
-- 订阅的访问令牌（查看[此文](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-speech-to-text#how-to-get-an-access-token)）；
-
-或
-
-- 订阅的资源 ID：
-  - 转到 [Azure 门户](https://portal.azure.com)；
-  - 在搜索框中选择 `Cognitive Services`；
-  - 从显示的服务中，选取需要增加其并发性的语音服务；
-  - 显示此服务的 `Properties`；
-  - 复制完整的 `Resource ID`。
-  
-**问：增加并发限制会增加成本吗？**
-
-**答**：不能，成本取决于使用情况。 增加并发性不会导致更高的成本。 有关成本的详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。 
-  
->[!NOTE]
->[容器](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-container-howto)不需要增加并发限制，因为容器只受承载它们的硬件的 cpu 的约束。
 
 ## <a name="importing-data"></a>导入数据
 
 **问：数据集大小的限制是什么？为何限制？**
 
-**答**：答：数据集的当前限制为 2 GB。 之所以有此限制，是由于 HTTP 上传文件大小存在限制。
+**答**：由于 HTTP 上传的文件大小限制，限制。 请参阅 [语音服务配额和](speech-services-quotas-and-limits.md) 实际限制的限制。
 
 **问：是否可以压缩文本文件，以便上传更大的文本文件？**
 
@@ -190,15 +152,15 @@ ms.locfileid: "85921023"
 
 **答**：上传字词列表会将字词添加到词汇中，但不会告知系统这些字词的通常用法。 通过提供完整或部分话语（用户很可能会说事物的句子或短语），语言模型可以学习这些新字词及其用法。 自定义语言模型不仅适用于向系统中添加新字词，还适用于调整应用程序已知字词的概率。 提供完整话语可帮助系统更好地学习。
 
-## <a name="tenant-model-custom-speech-with-office-365-data"></a>租户模型（自定义语音 Office 365 数据）
+## <a name="tenant-model-custom-speech-with-office-365-data"></a>自定义语音 Office 365 数据的租户模型 () 
 
 **问：租户模型中包含哪些信息，如何创建？**
 
-**答：** 租户模型是使用[公用组](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)电子邮件和文档生成的，你的组织中的任何人都可以看到该模型。
+**答：** 租户模型是使用 [公用组](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) 电子邮件和文档生成的，你的组织中的任何人都可以看到该模型。
 
 **问：租户模型改进了哪些语音体验？**
 
-**答：** 启用并发布租户模型后，它将用于改进使用语音服务生成的任何企业应用程序的识别;这也会传递指示企业成员身份的用户 AAD 标记。
+**答：** 启用并发布租户模型后，它将用于改进使用语音服务生成的任何企业应用程序的识别;这也会传递一个用户 Azure AD 标记，指示企业的成员身份。
 
 当你为语音服务应用程序创建租户模型时，Office 365 中内置的语音体验（如听写和 PowerPoint 字幕）不会更改。
 

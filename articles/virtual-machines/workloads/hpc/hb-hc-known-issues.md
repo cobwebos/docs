@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/19/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 2de2680ccd0ecf385598080747e80eed5ead3bc8
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 6316bcc91bb381facb4f77b2d8dbd8b22f9ed387
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652859"
+ms.locfileid: "88660089"
 ---
 # <a name="known-issues-with-h-series-and-n-series-vms"></a>H 系列和 N 系列 VM 的已知问题
 
@@ -35,10 +35,6 @@ HB-ACCT-WC 系列 Vm 此时只能向来宾 Vm 公开 228 GB 的 RAM。 这是因
 ## <a name="qp0-access-restriction"></a>qp0 访问限制
 
 若要防止可能导致安全漏洞的低级别硬件访问，来宾 Vm 将无法访问队列对0。 这只会影响通常与 ConnectX-5 NIC 的管理相关的操作，并运行一些不受影响的诊断（如 ibdiagnet），而不是最终用户应用程序本身。
-
-## <a name="ud-transport"></a>UD 传输
-
-在启动时，HB-ACCT-WC 和 HC 不支持 (DCT) 动态连接的传输。 将随着时间的推移实现对 DCT 的支持。 可靠连接 (RC) 和不可靠的数据报 (UD) 传输。
 
 ## <a name="gss-proxy"></a>GSS 代理
 

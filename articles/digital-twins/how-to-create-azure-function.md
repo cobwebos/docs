@@ -7,12 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d9f9957209c6df91185059085f57636a16a3961c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: ab013a310997f43d1019d849e87c0cf1b0d151ee
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589395"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661089"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>连接 Azure Functions 应用以处理数据
 
@@ -95,8 +95,8 @@ Function app 使用 [适用于 (.net 的 Azure IoT 数字克隆客户端库 ) ](
 向 Azure 函数添加以下 using 语句。
 
 ```csharp
-using Azure.Identity;
 using Azure.DigitalTwins.Core;
+using Azure.Identity;
 using System.Net.Http;
 using Azure.Core.Pipeline;
 ```
@@ -157,7 +157,7 @@ namespace FunctionSample
 az functionapp identity assign -g <your-resource-group> -n <your-App-Service-(function-app)-name>
 ```
 
-在以下命令中，使用 principalId 值将函数应用的标识分配给 Azure 数字孪生实例的“所有者”角色 ：
+使用以下命令中的 *principalId* 值将 function app 的标识分配给 Azure 数字 *孪生所有者 (预览 * azure 数字孪生实例的) 角色。 这将为实例中的 function app 权限指定执行数据平面活动。
 
 ```azurecli
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<principal-ID>" --role "Azure Digital Twins Owner (Preview)"

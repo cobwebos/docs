@@ -8,13 +8,13 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/05/2020
-ms.openlocfilehash: 390376216700b760e96c2348b1ad61bb4561aad2
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.date: 08/20/2020
+ms.openlocfilehash: 83208ec792f40661861dd558ac2c1a1521c1d7fb
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88211510"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88660963"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>升级到 Azure 认知搜索 .NET SDK 版本11
 
@@ -67,8 +67,8 @@ ms.locfileid: "88211510"
 
 | 版本10 | 版本11等效项 |
 |------------|-----------------------|
-| [索引](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.index) | [SearchIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindex) |
-| 字段 | [SearchField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield) |
+| [Index](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.index) | [SearchIndex](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindex) |
+| [字段](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field) | [SearchField](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfield) |
 | [DataType](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datatype) | [SearchFieldDataType](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchfielddatatype) |
 | [ItemError](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.itemerror) | [SearchIndexerError](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.searchindexererror) |
 | [分析器](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer) | [LexicalAnalyzer](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.models.lexicalanalyzer) (还 `AnalyzerName` `LexicalAnalyzerName`)  |
@@ -147,9 +147,18 @@ Azure 认知搜索客户端库的每个版本都面向 REST API 的相应版本�
    using Azure.Search.Documents.Models;
    ```
 
-1. 将 [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchcredentials) 替换为 [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential)。
+1. 修改客户端身份验证代码。 在以前的版本中，你将使用客户端对象上的属性设置 API 密钥 (例如，) 的 [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) 属性。 在当前版本中，使用 [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential) 类作为凭据传递密钥，以便在需要时可以更新 API 密钥，而无需创建新的客户端对象。
 
-1. 更新与索引器相关的对象的客户端引用。 如果使用索引器、数据源或技能集，请将客户端引用更改为 [SearchIndexerClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient)。 此客户端是版本11中的新客户端，没有 antecedent。
+   已简化了客户端属性 `Endpoint` ， `ServiceName` 并 `IndexName` (适当的) 。 下面的示例使用系统 [Uri](https://docs.microsoft.com/dotnet/api/system.uri) 类提供要读入密钥值的终结点和 [环境](https://docs.microsoft.com//dotnet/api/system.environment) 类：
+
+   ```csharp
+   Uri endpoint = new Uri(Environment.GetEnvironmentVariable("SEARCH_ENDPOINT"));
+   AzureKeyCredential credential = new AzureKeyCredential(
+      Environment.GetEnvironmentVariable("SEARCH_API_KEY"));
+   SearchIndexClient indexClient = new SearchIndexClient(endpoint, credential);
+   ```
+
+1. 为索引器相关对象添加新的客户端引用。 如果使用索引器、数据源或技能集，请将客户端引用更改为 [SearchIndexerClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.searchindexerclient)。 此客户端是版本11中的新客户端，没有 antecedent。
 
 1. 更新查询和数据导入的客户端引用。 应将 [SearchIndexClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient) 的实例更改为 [SearchClient](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclient)。 若要避免名称混乱，请确保在继续下一步之前捕获所有实例。
 

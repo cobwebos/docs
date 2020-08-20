@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: de3b0ed309863a09003b1ff7709481d763163e07
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: f2bf360d9b09be4db84d0ff00b1a777fe8b188ea
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652196"
+ms.locfileid: "88661327"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 
@@ -1803,7 +1803,7 @@ Azure 中的 SAP 高可用性与本地物理或虚拟环境中的 SAP 高可用�
 * 计划内维护事件是指由 Microsoft 对底层 Azure平台进行定期更新，以改进虚拟机运行时所在的平台基础结构的总体可靠性、性能和安全性。
 * 计划外维护事件见于虚拟机所在硬件或物理基础结构出现某类故障的情况。 此类故障可能包括：本地网络故障、本地磁盘故障，或者其他机架级别的故障。 检测到此类故障时，Azure 平台会自动将虚拟机从所在的不健康物理服务器迁移到健康的物理服务器。 此类事件很少见，但也会导致虚拟机重启。
 
-可以在此文档中找到更多详细信息：<https://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
+有关更多详细信息，请参阅 [azure 中的 Windows 虚拟机的可用性](../../windows/manage-availability.md) 和 [azure 中 Linux 虚拟机的可用性](../../linux/manage-availability.md)。
 
 #### <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -1811,7 +1811,7 @@ Azure 中的 SAP 高可用性与本地物理或虚拟环境中的 SAP 高可用�
 
 由于 Azure 存储默认保留 3 个数据映像，因此不需要部署跨多个 Azure 磁盘的 RAID5 或 RAID1。
 
-可以在此文章中找到更多详细信息：<https://azure.microsoft.com/documentation/articles/storage-redundancy/>
+有关更多详细信息，请参阅 [Azure 存储冗余](../../../storage/common/storage-redundancy.md)。
 
 #### <a name="utilizing-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-sap-applications"></a>利用 Azure 基础结构 VM 重新启动来实现 SAP 应用程序的更高可用性
 

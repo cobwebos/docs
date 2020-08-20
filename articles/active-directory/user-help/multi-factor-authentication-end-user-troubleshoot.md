@@ -9,15 +9,16 @@ ms.workload: identity
 ms.service: active-directory
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 08/04/2020
+ms.date: 08/20/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 754d456f557b6c9500cdb64ee01a42124a18ab9c
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+metadata ms.custom: contperfq1
+ms.openlocfilehash: b21b2a9f2d2bd483ed48a4c30b504908bb54a101
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036668"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661431"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>双因素验证以及工作或学校帐户的常见问题
 
@@ -31,14 +32,10 @@ ms.locfileid: "88036668"
 
 2FV 比密码更安全，因为2FV 需要你_知道_的东西和某些_东西。_ 无黑客的物理电话。
 
-<center>
-
-![身份验证方法的概念图](../authentication/media/concept-mfa-howitworks/methods.png)</center>
-
 >[!Important]
 >如果你是管理员，可以在 [Azure AD 文档](https://docs.microsoft.com/azure/active-directory)中详细了解如何创建和管理 Azure AD 环境。
->
->另外，本文内容也只适用于解决工作或学校帐户出现的问题，即由组织提供给你的帐户（例如 alain@contoso.com）。 如果在结合使用双因素验证和个人 Microsoft 帐户（即你为自己创建的帐户，例如 danielle@outlook.com）时遇到问题，请参阅[为你的 Microsoft 帐户启用或禁用双因素验证](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
+
+此内容旨在帮助你使用工作或学校帐户，这是你的组织提供给你的帐户 (例如 dritan@contoso.com) 。 如果你在个人 Microsoft 帐户上遇到双重验证问题（这是你自行设置的帐户 (例如， danielle@outlook.com) ，请参阅 [为你的 Microsoft 帐户打开或关闭双因素验证](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
 
 ## <a name="i-dont-have-my-mobile-device-with-me"></a>我没有随身携带移动设备
 
@@ -71,7 +68,7 @@ ms.locfileid: "88036668"
 --------- | ------------
 重启移动设备 | 有时，设备只是需要刷新一下。 重新启动设备时，将结束所有后台进程和服务。 重新启动还会关闭设备的核心组件。 重新启动设备时，将刷新任何服务或组件。
 验证安全信息是否正确无误 | 确保你的安全验证方法信息是准确的，特别是你的电话号码。 如果你输入了错误的电话号码，那么所有警报都会发送到这一错误号码。 幸运的是，这名用户无法使用警报执行任何操作，但这也不能帮助你登录帐户。 若要确保你的信息正确无误，请参阅[管理双因素验证方法设置](multi-factor-authentication-end-user-manage-settings.md)一文中的说明。
-验证是否已启用通知 | 请确保移动设备启用了通知。 确保允许以下通知模式： <br/><br/> &bull;电话呼叫 <br/> &bull;身份验证应用 <br/> &bull;短信应用 <br/><br/> 确保这些模式创建在设备上_可见_的警报。
+验证是否已启用通知 | 请确保移动设备启用了通知。 确保允许以下通知模式： <br/><br/> &bull; 电话呼叫 <br/> &bull; 身份验证应用 <br/> &bull; 短信应用 <br/><br/> 确保这些模式创建在设备上 _可见_ 的警报。
 确保设备有信号且已连接 Internet | 确保你的移动设备能够接听电话和接收短信。 让朋友给你打电话和发短信，以确保你都能收到。 如果未收到呼叫或短信，请首先检查以确保移动设备已打开。 如果设备已打开，但仍未收到呼叫或文本，则可能是网络有问题。 需要与提供商联系。 如果你经常遇到与信号相关的问题，建议你在移动设备上安装并使用 [Microsoft Authenticator 应用](user-help-auth-app-download-install.md)。 此 Authenticator 应用可以生成用于登录的随机安全码，而不需要任何手机信号或 Internet 连接。
 禁用“请勿打扰” | 确保没有在移动设备上启用“请勿打扰”功能。 在此功能启用后，就会禁止在移动设备上发出通知来提醒你。 若要了解如何禁用此功能，请参阅移动设备的手册。
 取消阻止电话号码 | 在美国，Microsoft 语音呼叫的号码如下：+1 (866) 539 4191、+1 (855) 330 8653 和 +1 (877) 668 6536。
@@ -82,7 +79,7 @@ ms.locfileid: "88036668"
 
 使用你的用户名和密码登录到你的工作或学校帐户。 接下来，系统会提示你提供附加的安全验证信息。 如果未出现提示，则可能尚未设置设备。 必须将移动设备设置为使用特定的附加安全验证方法。
 
-若要确保移动设备已打开且可用，请参阅[管理双因素验证方法设置](multi-factor-authentication-end-user-manage-settings.md)一文。 如果你知道自己还没有设置设备或帐户，可以立即按照[为我的帐户设置双重验证](multi-factor-authentication-end-user-first-time.md)一文中的步骤操作。
+若要确保移动设备已打开且可用，请参阅 [管理双因素验证方法设置](multi-factor-authentication-end-user-manage-settings.md) 一文。 如果你知道自己还没有设置设备或帐户，可以立即按照[为我的帐户设置双重验证](multi-factor-authentication-end-user-first-time.md)一文中的步骤操作。
 
 ## <a name="i-have-a-new-phone-number-and-i-want-to-add-it"></a>我有一个新的电话号码，我想添加它
 
@@ -92,19 +89,19 @@ ms.locfileid: "88036668"
 
 如果你使用的是新的移动设备，则需要将其设置为使用双因素验证。 这是一个多步骤的解决方案：
 
-1. 按照为[双重验证设置帐户一](multi-factor-authentication-end-user-first-time.md)文中的步骤操作，将设备设置为使用你的帐户。
+1. 按照为 [双重验证设置帐户一](multi-factor-authentication-end-user-first-time.md) 文中的步骤操作，将设备设置为使用你的帐户。
 
-1. 在 "**其他安全性验证**" 页中更新帐户和设备信息。 通过删除旧设备并添加新设备来执行更新。 有关详细信息，请参阅[更改双因素验证方法设置](multi-factor-authentication-end-user-manage-settings.md)一文。
+1. 在 " **其他安全性验证** " 页中更新帐户和设备信息。 通过删除旧设备并添加新设备来执行更新。 有关详细信息，请参阅[更改双因素验证方法设置](multi-factor-authentication-end-user-manage-settings.md)一文。
 
 可选步骤：
 
-- 在移动设备上安装并设置 Microsoft Authenticator 应用。 按照[下载并安装 Microsoft Authenticator 应用](user-help-auth-app-download-install.md)一文中的步骤进行安装。
+- 在移动设备上安装并设置 Microsoft Authenticator 应用。 按照 [下载并安装 Microsoft Authenticator 应用](user-help-auth-app-download-install.md) 一文中的步骤进行安装。
 
 - 为受信任的设备启用双因素验证 (2FV) 。 按照 "[管理双因素验证方法设置](multi-factor-authentication-end-user-manage-settings.md#turn-on-two-factor-verification-prompts-on-a-trusted-device)" 一文中的 "**在受信任的设备上启用双重验证"** 一节中的步骤，打开2FV。
 
 ## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>旅行时，我在移动设备上登录时遇到问题
 
-你可能会发现，当你身处国外时，使用与移动设备相关的验证方法（比如短信）会更加困难。 你的移动设备还可能会导致产生漫游费用。 对于这种情况，建议使用带有连接到 Wi-Fi 热点的选项的 Microsoft Authenticator 应用。 有关如何在移动设备上设置 Microsoft Authenticator 应用的详细信息，请参阅[下载并安装 Microsoft Authenticator 应用](user-help-auth-app-download-install.md)一文。
+你可能会发现，当你身处国外时，使用与移动设备相关的验证方法（比如短信）会更加困难。 你的移动设备还可能会导致产生漫游费用。 对于这种情况，建议使用带有连接到 Wi-Fi 热点的选项的 Microsoft Authenticator 应用。 有关如何在移动设备上设置 Microsoft Authenticator 应用的详细信息，请参阅 [下载并安装 Microsoft Authenticator 应用](user-help-auth-app-download-install.md) 一文。
 
 ## <a name="i-cant-get-my-app-passwords-to-work"></a>我的应用密码不起作用
 

@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 5f42079d271a933cb9a722c7e33e6f646f7c4d1b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: fe779ebf8bb041fb90b8eb38a9469a783127ffd3
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210510"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661412"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL 托管实例常见问题解答 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -192,7 +192,7 @@ ms.locfileid: "88210510"
 
 **能否在 SQL 托管实例上创建指标警报？**
 
-是。 有关说明，请参阅为 [SQL 托管实例创建警报](alerts-create.md)。
+是的。 有关说明，请参阅为 [SQL 托管实例创建警报](alerts-create.md)。
 
 **能否在托管实例中的数据库上创建指标警报？**
 
@@ -223,12 +223,15 @@ SQL 托管实例的存储大小取决于所选的服务层级（“常规用途�
 不是，备份存储不是从托管实例的存储空间中扣减出来的。 备份存储与实例存储空间无关，其大小不受限制。 备份存储限制为保留实例数据库备份的时间段，可配置最多35天。 有关详细信息，请参阅[自动化备份](../database/automated-backups-overview.md)。
 
 **如何查看托管实例上的自动备份？**
+
 若要跟踪何时对托管实例执行了自动备份，请参阅 [如何跟踪 AZURE SQL 托管实例的自动备份](https://techcommunity.microsoft.com/t5/azure-database-support-blog/lesson-learned-128-how-to-track-the-automated-backup-for-an/ba-p/1442355)。
 
 **是否支持按需备份？**
+
 是的，你可以在其 Azure Blob 存储中创建仅复制完整备份，但它只能在托管实例中进行还原。 有关详细信息，请参阅 [仅复制备份](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server?view=sql-server-ver15)。 但是，如果数据库由服务托管的 TDE 加密，则不可能进行仅复制备份，因为用于加密的证书不可访问。 在这种情况下，请使用时间点还原功能将数据库移到另一个 SQL 托管实例或切换到客户托管的密钥。
 
 ** (从 .bak 文件) 到托管实例受支持的本机还原吗？**
+
 是的，它受支持，可用于 SQL Server 2005 以上版本。  若要使用本机还原，请将 .bak 文件上传到 Azure blob 存储并执行 T-sql 命令。 有关更多详细信息，请参阅 [从 URL 本机还原](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate#native-restore-from-url)。
 
 ## <a name="business-continuity"></a>业务连续性
@@ -251,22 +254,22 @@ SQL 托管实例负责设置管理端口的规则。 这是通过名为 [服务�
 
 **能否获取用于入站管理流量的源 IP 范围？**
 
-是。 可以通过 [配置网络观察程序流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#analyze-traffic-to-or-from-a-network-security-group)来分析通过网络安全组传入的流量。
+是的。 可以通过 [配置网络观察程序流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#analyze-traffic-to-or-from-a-network-security-group)来分析通过网络安全组传入的流量。
 
 **是否可以将 NSG 设置为控制对 (端口 1433) 的数据终结点的访问？**
 
-是。 设置托管实例后，可以设置控制对端口1433的入站访问的 NSG。 建议尽可能缩小其 IP 范围。
+是的。 设置托管实例后，可以设置控制对端口1433的入站访问的 NSG。 建议尽可能缩小其 IP 范围。
 
 **是否可以设置 NVA 或本地防火墙以根据 Fqdn 筛选出站管理流量？**
 
-否。 由于以下几个原因，不支持此操作：
+不是。 由于以下几个原因，不支持此操作：
 -   表示对入站管理请求的响应的路由流量将是非对称的，因此无法运行。
 -   转到存储的路由流量将受到吞吐量限制和延迟的影响，因此，我们无法提供预期的服务质量和可用性。
 -   根据经验，这些配置容易出错并且不受支持。
 
 **能否为出站非管理流量设置 NVA 或防火墙？**
 
-是。 实现此目的的最简单方法是将0/0 规则添加到与托管实例子网关联的 UDR，以通过 NVA 路由流量。
+是的。 实现此目的的最简单方法是将0/0 规则添加到与托管实例子网关联的 UDR，以通过 NVA 路由流量。
  
 **托管实例需要多少 IP 地址？**
 
@@ -278,7 +281,7 @@ SQL 托管实例负责设置管理端口的规则。 这是通过名为 [服务�
 
 **是否需要空的子网来创建托管实例？**
 
-否。 你可以使用已包含托管实例 (s) 的空子网或子网。 
+不是。 你可以使用已包含托管实例 (s) 的空子网或子网。 
 
 **能否更改子网地址范围？**
 
@@ -286,7 +289,7 @@ SQL 托管实例负责设置管理端口的规则。 这是通过名为 [服务�
 
 **是否可以将托管实例移到另一个子网？**
 
-否。 这是当前托管实例的设计限制。 但是，你可以在另一个子网中预配新的实例，并在旧实例与新实例之间手动备份和还原数据，或执行跨实例 [时间点还原](point-in-time-restore.md?tabs=azure-powershell)。
+不是。 这是当前托管实例的设计限制。 但是，你可以在另一个子网中预配新的实例，并在旧实例与新实例之间手动备份和还原数据，或执行跨实例 [时间点还原](point-in-time-restore.md?tabs=azure-powershell)。
 
 **是否需要空虚拟网络来创建托管实例？**
 
@@ -294,7 +297,7 @@ SQL 托管实例负责设置管理端口的规则。 这是通过名为 [服务�
 
 **是否可以将托管实例与其他服务一起放入子网？**
 
-否。 目前，我们不支持将托管实例放置在已包含其他资源类型的子网中。
+不是。 目前，我们不支持将托管实例放置在已包含其他资源类型的子网中。
 
 ## <a name="connectivity"></a>连接 
 
@@ -313,7 +316,7 @@ SQL 托管实例负责设置管理端口的规则。 这是通过名为 [服务�
 
 **托管实例是否有公用终结点？**
 
-是。 托管实例具有一个公共终结点，该终结点默认仅用于服务管理，但客户也可以启用它来访问数据。 有关更多详细信息，请参阅 [将 SQL 托管实例与公共终结点一起使用](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely)。 若要配置公共终结点，请参阅 [在 SQL 托管实例中配置公共终结点](public-endpoint-configure.md)。
+是的。 托管实例具有一个公共终结点，该终结点默认仅用于服务管理，但客户也可以启用它来访问数据。 有关更多详细信息，请参阅 [将 SQL 托管实例与公共终结点一起使用](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-securely)。 若要配置公共终结点，请参阅 [在 SQL 托管实例中配置公共终结点](public-endpoint-configure.md)。
 
 **托管实例如何控制对公共终结点的访问？**
 
@@ -323,7 +326,7 @@ SQL 托管实例负责设置管理端口的规则。 这是通过名为 [服务�
 
 **是否可以使用公共终结点来访问托管实例数据库中的数据？**
 
-是。 客户需要从[Azure 门户](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)PowerShell/ARM 启用公共终结点数据访问  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) ，并将 NSG 配置为锁定对 (端口号 3342) 的数据端口的访问。 有关详细信息，请参阅 [在 AZURE sql 托管实例中配置公共终结点](public-endpoint-configure.md) 和通过 [公共终结点安全使用 Azure SQL 托管实例](public-endpoint-overview.md)。 
+是的。 客户需要从[Azure 门户](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal)PowerShell/ARM 启用公共终结点数据访问  /  [PowerShell](public-endpoint-configure.md#enabling-public-endpoint-for-a-managed-instance-using-powershell) ，并将 NSG 配置为锁定对 (端口号 3342) 的数据端口的访问。 有关详细信息，请参阅 [在 AZURE sql 托管实例中配置公共终结点](public-endpoint-configure.md) 和通过 [公共终结点安全使用 Azure SQL 托管实例](public-endpoint-overview.md)。 
 
 **能否为 SQL 数据终结点 (s) 指定自定义端口？**
 
@@ -353,7 +356,7 @@ SQL 托管实例负责设置管理端口的规则。 这是通过名为 [服务�
 
 **能否为 SQL 托管实例配置自定义 DNS？**
 
-是。 请参阅 [如何为 AZURE SQL 托管实例配置自定义 DNS](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns)。
+是的。 请参阅 [如何为 AZURE SQL 托管实例配置自定义 DNS](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns)。
 
 **是否可以执行 DNS 刷新？**
 
@@ -503,6 +506,14 @@ ALTER LOGIN <login_name> WITH CHECK_EXPIRATION = OFF;
 ```
 
 （将“test”替换为所需的登录 ID，并调整策略和过期时间值）
+
+
+## <a name="service-updates"></a>服务更新
+
+**什么是 SQL 托管实例的计划内维护事件？**
+
+请参阅 [规划 SQL 托管实例中的 Azure 维护事件](https://docs.microsoft.com/azure/azure-sql/database/planned-maintenance)。 
+
 
 ## <a name="azure-feedback-and-support"></a>Azure 反馈和支持
 

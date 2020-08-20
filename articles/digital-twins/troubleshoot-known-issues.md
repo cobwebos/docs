@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: 9130a3248e881c9d4e2c9bfe9017f43198d50f51
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 0c008061d2d4fafa96eda934d5026c92839a0bdb
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88590160"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661480"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure 数字孪生中的已知问题
 
@@ -69,9 +69,9 @@ Cloud Shell 中的命令可能会间歇性地失败，并出现错误 "400 客�
 
 ### <a name="possible-causes"></a>可能的原因
 
-这是 Azure 数字孪生与最新版本的 Azure. 标识库版本 **1.2.0**之间的不兼容性。 
+这与最新版本的 Azure. 标识库 (版本 **1.2.0**) ： [*在使用 InteractiveBrowserCredential 时无法进行身份验证*](https://github.com/Azure/azure-sdk-for-net/issues/13940)。
 
-如果你在应用程序中使用版本 **1.2.0** ，或者在未指定 (版本的情况下将库添加到项目，则会出现此问题，) 也会默认使用此版本。
+如果在 Azure 数字孪生应用程序中使用版本 **1.2.0** ，或将库添加到项目中，但未指定版本 (，则会看到此问题，这也是默认情况下) 的最新版本。
 
 ## <a name="next-steps"></a>后续步骤
 

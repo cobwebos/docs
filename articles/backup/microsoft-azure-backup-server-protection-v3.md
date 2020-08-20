@@ -3,12 +3,12 @@ title: Azure 备份服务器 V3 RTM 可备份的内容
 description: 本文提供保护矩阵，其中列出 Azure 备份服务器 V3 RTM 保护的所有工作负荷、数据类型和安装。
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 86e192e13b49b89e8d66c5f912ef88f02a1b21b4
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 30da2efd161d789cd73829c270b64f3610945413
+ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611970"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88661276"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure 备份服务器 V3 RTM 保护矩阵
 
@@ -32,9 +32,9 @@ ms.locfileid: "88611970"
 |服务器（32 位和 64 位）|Windows Server 2012/2012 SP1 - Datacenter 和 Standard|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|V3、V2|卷、共享、文件夹、文件、系统状态/裸机<br /><br />Azure 备份服务器必须至少在 Windows Server 2012 R2 上运行才能保护 Windows Server 2012 已删除重复数据的卷。|
 |服务器（32 位和 64 位）|Windows Server 2012/2012 SP1 - Datacenter 和 Standard|Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）<br /> <br /> Azure Stack|V3、V2|卷、共享、文件夹、文件<br /><br />Azure 备份服务器必须至少在 Windows Server 2012 R2 上运行才能保护 Windows Server 2012 已删除重复数据的卷。|
 |服务器（32 位和 64 位）|Windows Server 2012/2012 SP1 - Datacenter 和 Standard|VMware 中的 windows 虚拟机 (保护 VMware 中的 Windows 虚拟机上运行的工作负荷) <br /> <br /> Azure Stack|V3、V2|卷、共享、文件夹、文件、系统状态/裸机<br /><br />Azure 备份服务器必须至少在 Windows Server 2012 R2 上运行才能保护 Windows Server 2012 已删除重复数据的卷。|
-|服务器（32 位和 64 位）|Windows Server 2008 R2 SP1 - Standard 和 Enterprise|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|V3、V2<br />需要运行 SP1 并安装 [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855)|卷、共享、文件夹、文件、系统状态/裸机|
-|服务器（32 位和 64 位）|Windows Server 2008 R2 SP1 - Standard 和 Enterprise|Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）<br /> <br /> Azure Stack|V3、V2<br />需要运行 SP1 并安装 [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855)|卷、共享、文件夹、文件|
-|服务器（32 位和 64 位）|Windows Server 2008 R2 SP1 - Standard 和 Enterprise|VMware 中的 windows 虚拟机 (保护 VMWare 中的 Windows 虚拟机上运行的工作负荷) <br /> <br /> Azure Stack|V3、V2<br />需要运行 SP1 并安装 [Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855)|卷、共享、文件夹、文件、系统状态/裸机|
+|服务器（32 位和 64 位）|Windows Server 2008 R2 SP1 - Standard 和 Enterprise|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|V3、V2<br />需要运行 SP1 并安装 [Windows Management Framework](https://www.microsoft.com/download/details.aspx?id=54616)|卷、共享、文件夹、文件、系统状态/裸机|
+|服务器（32 位和 64 位）|Windows Server 2008 R2 SP1 - Standard 和 Enterprise|Azure 虚拟机（工作负荷作为 Azure 虚拟机运行时）<br /> <br /> Azure Stack|V3、V2<br />需要运行 SP1 并安装 [Windows Management Framework](https://www.microsoft.com/download/details.aspx?id=54616)|卷、共享、文件夹、文件|
+|服务器（32 位和 64 位）|Windows Server 2008 R2 SP1 - Standard 和 Enterprise|VMware 中的 windows 虚拟机 (保护 VMWare 中的 Windows 虚拟机上运行的工作负荷) <br /> <br /> Azure Stack|V3、V2<br />需要运行 SP1 并安装 [Windows Management Framework](https://www.microsoft.com/download/details.aspx?id=54616)|卷、共享、文件夹、文件、系统状态/裸机|
 |服务器（32 位和 64 位）|Windows Server 2008 SP2|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|不支持|卷、共享、文件夹、文件、系统状态/裸机|
 |服务器（32 位和 64 位）|Windows Server 2008 SP2|VMware 中的 windows 虚拟机 (保护 VMware 中的 Windows 虚拟机上运行的工作负荷) <br /> <br /> Azure Stack|V3、V2|卷、共享、文件夹、文件、系统状态/裸机|
 |服务器（32 位和 64 位）|Windows Storage Server 2008|物理服务器<br /><br />本地 Hyper-V 虚拟机<br /> <br /> Azure Stack|V3、V2|卷、共享、文件夹、文件、系统状态/裸机|
