@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 51e31977a5f31777252920f9cd18bf069bad6d1e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 8bc99be12b4bd4e56163150f939e5d9ace4b59bd
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507189"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652553"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>创建 Azure 机器学习数据集
 
@@ -257,5 +257,5 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[如何使用数据集进行训练](how-to-train-with-datasets.md)。
-* 通过自动化机器学习[使用 TabularDataset 进行训练](https://aka.ms/automl-dataset)。
-* 有关更多数据集训练示例，请参阅[示例笔记本](https://aka.ms/dataset-tutorial)。
+* 通过自动化机器学习[使用 TabularDataset 进行训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)。
+* 有关更多数据集训练示例，请参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/)。

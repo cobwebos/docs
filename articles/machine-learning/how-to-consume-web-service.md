@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: e5fb19b0d8d94b5ccc07c465c3e9f3bf0de50ab7
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6e34bd91a1deb5bbd28c11e8f23ea2b812333aaf
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843039"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652587"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>使用部署为 Web 服务的 Azure 机器学习模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -93,7 +93,7 @@ Azure 机器学习提供了两种方法来控制对 Web 服务的访问。
 
 将请求发送到由密钥或令牌保护的服务时，请使用 __Authorization__ 标头来传递密钥或令牌。 密钥或令牌的格式必须为 `Bearer <key-or-token>`，其中 `<key-or-token>` 为密钥或令牌值。
 
-密钥与标记之间的主要区别在于，**密钥是静态的，可以手动重新生成**，并且**令牌需要在过期时刷新**。 Azure 容器实例和 Azure Kubernetes 服务部署的 Web 服务支持基于密钥的身份验证，而基于令牌的身份验证仅能用于 Azure Kubernetes 服务部署****。 请参阅身份验证[操作说明](how-to-setup-authentication.md#web-service-authentication)，了解更多信息和特定代码示例。
+密钥与标记之间的主要区别在于， **密钥是静态的，可以手动重新生成**，并且 **令牌需要在过期时刷新**。 Azure 容器实例和 Azure Kubernetes 服务部署的 Web 服务支持基于密钥的身份验证，而基于令牌的身份验证仅能用于 Azure Kubernetes 服务部署****。 请参阅身份验证[操作说明](how-to-setup-authentication.md#web-service-authentication)，了解更多信息和特定代码示例。
 
 
 #### <a name="authentication-with-keys"></a>使用密钥进行身份验证
@@ -157,30 +157,6 @@ REST API 预期请求正文是采用以下结构的 JSON 文档：
 
 > [!IMPORTANT]
 > 数据结构需要符合服务中评分脚本和模型的预期。 评分脚本在将数据传递到模型之前可以修改数据。
-
-例如，[在笔记本中训练](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)示例中的模型预期存在由 10 个数字构成的数组。 此示例的评分脚本从请求创建一个 Numpy 数组，并将其传递给模型。 以下示例演示此服务预期的数据：
-
-```json
-{
-    "data": 
-        [
-            [
-                0.0199132141783263, 
-                0.0506801187398187, 
-                0.104808689473925, 
-                0.0700725447072635, 
-                -0.0359677812752396, 
-                -0.0266789028311707, 
-                -0.0249926566315915, 
-                -0.00259226199818282, 
-                0.00371173823343597, 
-                0.0403433716478807
-            ]
-        ]
-}
-```
-
-Web 服务可以接受一个请求中的多个数据集。 它会返回包含响应数组的 JSON 文档。
 
 ### <a name="binary-data"></a>Binary data
 

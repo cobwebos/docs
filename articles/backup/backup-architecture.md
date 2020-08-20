@@ -3,12 +3,12 @@ title: 体系结构概述
 description: 概述 Azure 备份服务使用的体系结构、组件和流程。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: fc57f275d7693c9cf93adf04dc5dcc7524ba0567
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 6da6cedc7841e31876bef8788458531b1ec375a8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835725"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652774"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 备份体系结构和组件
 
@@ -42,7 +42,7 @@ Azure 备份将备份的数据存储在恢复服务保管库中。 保管库是 
 - 使用保管库可以方便地组织备份数据，并将管理开销降至最低。
 - 在每个 Azure 订阅中，最多可以创建 500 个保管库。
 - 可以监视保管库中的已备份项，包括 Azure Vm 和本地计算机。
-- 可以使用[AZURE RBAC)  (azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)来管理保管库访问权限。
+- 可以使用 [AZURE RBAC)  (azure 基于角色的访问控制 ](../role-based-access-control/role-assignments-portal.md)来管理保管库访问权限。
 - 指定如何复制保管库中的数据以实现冗余：
   - **本地冗余存储 (LRS)** ：若要防范数据中心发生故障，可以使用 LRS。 LRS 将数据复制到存储缩放单元。 [了解详细信息](../storage/common/storage-redundancy.md)。
   - **异地冗余存储 (GRS)** ：若要防范区域范围的服务中断，可以使用 GRS。 GRS 会将数据复制到次要区域。 [了解详细信息](../storage/common/storage-redundancy.md)。
@@ -122,11 +122,11 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 
 ### <a name="additional-reference"></a>其他参考
 
-- Azure VM 计算机：如何[创建](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings)和[修改](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm)策略。
-- Azure 虚拟机中的 SQL Server 数据库：如何[创建](./backup-sql-server-database-azure-vms.md#create-a-backup-policy)和[修改](./manage-monitor-sql-database-backup.md#modify-policy)策略。
-- Azure 文件共享：如何[创建](./backup-afs.md)和[修改](./manage-afs-backup.md#modify-policy)策略。
-- SAP HANA：如何[创建](./backup-azure-sap-hana-database.md#create-a-backup-policy)和[修改](./sap-hana-db-manage.md#change-policy)策略。
-- MARS：如何[创建](./backup-windows-with-mars-agent.md#create-a-backup-policy)和[修改](./backup-azure-manage-mars.md#modify-a-backup-policy)策略。
+- Azure VM 计算机：如何 [创建](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings) 和 [修改](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm) 策略。
+- Azure 虚拟机中的 SQL Server 数据库：如何 [创建](./backup-sql-server-database-azure-vms.md#create-a-backup-policy) 和 [修改](./manage-monitor-sql-database-backup.md#modify-policy) 策略。
+- Azure 文件共享：如何 [创建](./backup-afs.md) 和 [修改](./manage-afs-backup.md#modify-policy) 策略。
+- SAP HANA：如何 [创建](./backup-azure-sap-hana-database.md#create-a-backup-policy) 和 [修改](./sap-hana-db-manage.md#change-policy) 策略。
+- MARS：如何 [创建](./backup-windows-with-mars-agent.md#create-a-backup-policy) 和 [修改](./backup-azure-manage-mars.md#modify-a-backup-policy) 策略。
 - [根据工作负荷类型计划备份是否有任何限制？](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
 - [如果更改保留策略，现有恢复点会发生什么情况？](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
 
@@ -193,18 +193,17 @@ Azure VM 使用磁盘来存储其操作系统、应用和数据。 每个 Azure 
 
 有关磁盘存储和 VM 可用的磁盘类型的详细信息，请参阅以下文章：
 
-- [适用于 Windows VM 的 Azure 托管磁盘](../virtual-machines/windows/managed-disks-overview.md)
-- [适用于 Linux VM 的 Azure 托管磁盘](../virtual-machines/linux/managed-disks-overview.md)
-- [VM 可用的磁盘类型](../virtual-machines/windows/disks-types.md)
+- [适用于 Linux VM 的 Azure 托管磁盘](../virtual-machines/managed-disks-overview.md)
+- [VM 可用的磁盘类型](../virtual-machines/disks-types.md)
 
 ### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>备份和还原使用高级存储的 Azure VM
 
 可以通过 Azure 备份来备份使用高级存储的 Azure VM：
 
 - 在备份使用高级存储的 VM 过程中，备份服务将在存储帐户中创建名为 *AzureBackup-* 的临时暂存位置。 暂存位置大小与恢复点快照大小相同。
-- 确保高级存储帐户有足够的可用空间，可以容纳临时暂存位置。 有关详细信息，请参阅[高级页 blob 存储帐户的可伸缩性目标](../storage/blobs/scalability-targets-premium-page-blobs.md)。 不要修改暂存位置。
+- 确保高级存储帐户有足够的可用空间，可以容纳临时暂存位置。 有关详细信息，请参阅 [高级页 blob 存储帐户的可伸缩性目标](../storage/blobs/scalability-targets-premium-page-blobs.md)。 不要修改暂存位置。
 - 备份作业完成后，将删除暂存位置。
-- 用于暂存位置的存储的价格与[高级存储定价](../virtual-machines/windows/disks-types.md#billing)相一致。
+- 用于暂存位置的存储的价格与[高级存储定价](../virtual-machines/disks-types.md#billing)相一致。
 
 还原使用高级存储的 Azure VM 时，可将其还原到高级或标准存储。 通常情况下，你会将它们还原到高级存储。 但如果你只需要 VM 中的一部分文件，则还原到标准存储可能更具成本效益。
 
@@ -223,7 +222,7 @@ Azure VM 使用磁盘来存储其操作系统、应用和数据。 每个 Azure 
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看支持矩阵，[了解备份方案支持的功能和限制](backup-support-matrix.md)。
+- 查看支持矩阵， [了解备份方案支持的功能和限制](backup-support-matrix.md)。
 - 为以下方案之一设置备份：
   - [备份 Azure VM](backup-azure-arm-vms-prepare.md)。
   - 不使用备份服务器[直接备份 Windows 计算机](tutorial-backup-windows-server-to-azure.md)。

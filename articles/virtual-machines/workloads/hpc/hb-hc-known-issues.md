@@ -10,22 +10,23 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 08/19/2020
 ms.author: amverma
-ms.openlocfilehash: e85ae50321b9aa034f6a6d2cadcc329a24dafa62
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.reviewer: cynthn
+ms.openlocfilehash: 2de2680ccd0ecf385598080747e80eed5ead3bc8
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500012"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652859"
 ---
-# <a name="known-issues-with-hb-series-and-hc-series-vms"></a>HB 系列和 HC 系列 VM 的已知问题
+# <a name="known-issues-with-h-series-and-n-series-vms"></a>H 系列和 N 系列 VM 的已知问题
 
-本文提供使用 HB-ACCT-WC 系列和 HC 系列 Vm 时最常见的问题和解决方案。
+本文提供使用 [H 系列](../../sizes-hpc.md) 和 [N 系列](../../sizes-gpu.md) vm 时最常见的问题和解决方案。
 
 ## <a name="dram-on-hb-series"></a>HB-ACCT-WC 系列上的 DRAM
 
-HB-ACCT-WC 系列 Vm 此时只能向来宾 Vm 公开 228 GB 的 RAM。 这是因为 Azure 虚拟机监控程序的已知限制阻止将页面分配到为来宾 VM 保留的 AMD CCX （NUMA 域）的本地 DRAM。
+HB-ACCT-WC 系列 Vm 此时只能向来宾 Vm 公开 228 GB 的 RAM。 这是因为 Azure 虚拟机监控程序的已知限制阻止将页面分配给来宾 VM) 为 CCX 的本地 DRAM (NUMA 域。
 
 ## <a name="accelerated-networking"></a>加速网络
 
@@ -37,7 +38,7 @@ HB-ACCT-WC 系列 Vm 此时只能向来宾 Vm 公开 228 GB 的 RAM。 这是因
 
 ## <a name="ud-transport"></a>UD 传输
 
-启动时，HB-ACCT-WC 和 HC 不支持动态连接的传输（DCT）。 将随着时间的推移实现对 DCT 的支持。 支持可靠连接（RC）和不可靠的数据报（UD）传输。
+在启动时，HB-ACCT-WC 和 HC 不支持 (DCT) 动态连接的传输。 将随着时间的推移实现对 DCT 的支持。 可靠连接 (RC) 和不可靠的数据报 (UD) 传输。
 
 ## <a name="gss-proxy"></a>GSS 代理
 
@@ -53,7 +54,7 @@ sed -i 's/GSS_USE_PROXY="yes"/GSS_USE_PROXY="no"/g' /etc/sysconfig/nfs
 
 ![命令提示符屏幕截图](./media/known-issues/cache-cleaning-1.png)
 
-使用 `numactl -H` 将显示使用哪个 NUMAnode 缓冲内存（可能全部）。 在 Linux 中，用户可以通过三种方式清理缓存，以将缓冲或缓存的内存返回到 "免费"。 你需要是根或具有 sudo 权限。
+使用 `numactl -H` 将显示哪些 NUMAnode (s) 内存通过 (可能全部) 进行缓冲。 在 Linux 中，用户可以通过三种方式清理缓存，以将缓冲或缓存的内存返回到 "免费"。 你需要是根或具有 sudo 权限。
 
 ```console
 echo 1 > /proc/sys/vm/drop_caches [frees page-cache]
@@ -87,6 +88,15 @@ echo 3 > /proc/sys/vm/drop_caches [cleans page-cache and slab objects]
 
 您可以忽略此警告。 这是因为将在一段时间内解决的 Azure 虚拟机监控程序的已知限制。
 
+
+## <a name="infiniband-driver-installation-on-infiniband-enabled-n-series-vm-sizes"></a>在启用了 N 系列 VM 大小的情况上安装无限驱动程序
+
+NC24r_v3 和 ND40r_v2 在 NC24r 和 NC24r_v2 未启用 SR-IOV 时启用 SR-IOV。 有关分叉的详细信息，请参阅 [此处](../../sizes-hpc.md#rdma-capable-instances)。
+可在启用了 SR-IOV 的 VM 大小和 OFED 驱动程序的情况下配置可 (IB) ，而非 SR-IOV VM 大小需要 ND 驱动程序。 此 IB 支持在 [CentOS-HPC VMIs](configure.md)上适当提供。 对于 Ubuntu，请参阅 [此处的说明](https://techcommunity.microsoft.com/t5/azure-compute/configuring-infiniband-for-ubuntu-hpc-and-gpu-vms/ba-p/1221351) ，安装 OFED 和 ND 驱动程序，如 [文档](enable-infiniband.md#vm-images-with-infiniband-drivers)中所述。
+
+
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 Azure 中的[高性能计算](/azure/architecture/topics/high-performance-computing/)。
+- 查看 [HB 系列概述](hb-series-overview.md)和 [HC 系列概述](hc-series-overview.md)，以了解如何对工作负载进行优化配置以提高性能和可伸缩性。
+- 在 [Azure 计算技术社区博客](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)上阅读最新公告以及一些 HPC 示例和结果。
+- 若要从体系结构角度更概略性地看待如何运行 HPC 工作负荷，请参阅 [Azure 上的高性能计算 (HPC)](/azure/architecture/topics/high-performance-computing/)。

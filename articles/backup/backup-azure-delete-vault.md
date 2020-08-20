@@ -3,12 +3,12 @@ title: 删除 Microsoft Azure 恢复服务保管库
 description: 本文介绍了如何先删除依赖项，然后删除 Azure 备份恢复服务保管库。
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 41d0cbc8e1c59f33efc24f38b535aa9cf91b2cc9
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: ffe8005ed6c2583763a10ba515ff19f0ef62ae0d
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257960"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652814"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>删除 Azure 备份恢复服务保管库
 
@@ -18,7 +18,7 @@ ms.locfileid: "88257960"
 
 不能删除具有以下任何依赖项的恢复服务保管库：
 
-- 不能删除包含受保护数据源（例如 IaaS VM、SQL 数据库、Azure 文件共享等）的保管库。  
+- 不能删除包含受保护数据源的保管库 (例如，IaaS Vm、SQL 数据库、Azure 文件共享) 。
 - 不能删除包含备份数据的保管库。 删除备份数据后，它将进入已软删除状态。
 - 不能删除包含处于已软删除状态的备份数据的保管库。
 - 不能删除包含已注册存储帐户的保管库。
@@ -45,7 +45,7 @@ ms.locfileid: "88257960"
   - **云中受保护的项**：转到保管库仪表板菜单 >“备份项”。 必须通过“停止备份”或“删除备份数据”删除此处列出的所有项及其备份数据。  请[按这些步骤操作](#delete-protected-items-in-the-cloud)来删除这些项。
   - **SQL Server 实例**：请在保管库仪表板菜单 >**备份基础结构**  >  **保护的服务器**。 在“受保护的服务器”中，选择要取消注册的服务器。 若要删除保管库，必须取消注册所有服务器。 右键单击受保护的服务器，然后选择 " **注销**"。
   - **受 MARS 保护的服务器**：转到保管库仪表板菜单 >“备份基础结构” > “受保护的服务器”。 如果你拥有受 MARS 保护的服务器，则必须删除此处列出的所有项及其备份数据。 请[按这些步骤操作](#delete-protected-items-on-premises)，以便删除受 MARS 保护的服务器。
-   - **MABS 或 DPM 管理服务器**：转到保管库仪表板菜单 >“备份基础结构” > “备份管理服务器”。 如果你有 DPM 或 Azure 备份服务器 (MABS)，则必须删除或注销此处列出的所有项及其备份数据。 请[按这些步骤操作](#delete-protected-items-on-premises)，以便删除管理服务器。
+  - **MABS 或 DPM 管理服务器**：转到保管库仪表板菜单 >“备份基础结构” > “备份管理服务器”。 如果你有 DPM 或 Azure 备份服务器 (MABS)，则必须删除或注销此处列出的所有项及其备份数据。 请[按这些步骤操作](#delete-protected-items-on-premises)，以便删除管理服务器。
 
 - **步骤 4**：必须确保删除所有已注册的存储帐户。 转到保管库仪表板菜单 >“备份基础结构” > “存储帐户”。 如果此处列出了你的存储帐户，则必须注销所有这些帐户。 若要了解如何注销帐户，请参阅 [取消注册存储帐户](manage-afs-backup.md#unregister-a-storage-account)。
 
@@ -130,7 +130,7 @@ ms.locfileid: "88257960"
 3. 在“停止计划的备份”页中选择“完成”。 
 
     ![停止计划的备份。](./media/backup-azure-delete-vault/stop-schedule-backup.png)
-4. 系统会提示输入安全 PIN（个人标识号）。必须手动生成该 PIN。 为此，请先登录到 Azure 门户。
+4. 系统会提示输入安全 PIN (个人识别码) ，必须手动生成。 为此，请先登录到 Azure 门户。
 5. 转到“恢复服务保管库” > “设置” > “属性”。
 6. 在“安全 PIN”下选择“生成” 。 复制此 PIN。 该 PIN 的有效时间仅为五分钟。
 7. 在管理控制台中粘贴该 PIN，然后选择“确定”。
@@ -234,7 +234,7 @@ ms.locfileid: "88257960"
     Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
     ```
 
-    然后，将显示以下提示：
+    之后，将显示以下提示：
 
     *Microsoft Azure 备份。确实要删除此备份策略吗?删除的备份数据会保留 14 天。之后，备份数据将永久删除。<br/> [Y] 是 [A] 全部为“是”[N] 否 [L] 全部为“否”[S] 暂停 [?] 帮助(默认选项为“Y”):*
 
@@ -244,7 +244,7 @@ ms.locfileid: "88257960"
     Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
     ```
 
-    然后，将显示以下提示：
+    之后，将显示以下提示：
 
    Microsoft Azure 备份 确实要删除此备份策略吗? 删除的备份数据会保留 14 天。 该时间过后，备份数据会被永久删除。 <br/>
    [Y] 是 [A] 全部是 [N] 否 [L] 全部否 [S] 暂停  [?] 帮助 (默认值为 "Y"):*
@@ -337,7 +337,7 @@ ms.locfileid: "88257960"
 
 仅当已删除所有依赖项后，仍然收到“保管库删除错误”时，才建议使用删除恢复服务保管库的选项。 请尝试以下任意或所有提示：
 
-- 在“概要”窗格中的保管库菜单内，确认是否未列出任何备份项、备份管理服务器或复制的项。 如果存在备份项，请参阅[开始之前](#before-you-start)部分。
+- 在“概要”窗格中的保管库菜单内，确认是否未列出任何备份项、备份管理服务器或复制的项。 如果有备份项，请参阅 " [开始之前](#before-you-start) " 部分。
 - 重试[从门户删除保管库](#delete-the-recovery-services-vault)。
 - 如果删除了所有依赖项，但仍收到“保管库删除错误”，请使用 ARMClient 工具执行以下步骤（注释后面的步骤）。
 
