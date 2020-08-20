@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 68ccf3518a7011c0c39003d8e447a4e1d233fd91
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ce159bc61a1f21c52b8d182c1248ba1d436462da
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164574"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640508"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>使用 Azure AD 应用程序代理为远程用户发布本地应用
 
@@ -76,7 +76,7 @@ Azure AD 使用应用程序代理来跟踪需要访问本地发布的和云中�
 
 此功能的组件包括应用程序代理服务（在云中运行）、应用程序代理连接器（在本地服务器上运行的轻型代理）和 Azure AD（标识提供者）。 所有三个组件协同工作，为用户提供单一登录体验来访问本地 Web 应用程序。
 
-登录后，外部用户可在其桌面或 iOS/MAC 设备上使用熟悉的 URL 或[“我的应用”访问面板](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)访问本地 Web 应用程序。 例如，应用代理可为远程桌面、SharePoint 站点、Tableau、Qlik、Outlook Web 版和业务线 (LOB) 应用程序提供远程访问和单一登录功能。
+登录后，外部用户可以使用熟悉的 URL 或其桌面或 iOS/MAC 设备上的 [应用](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access) 访问本地 web 应用程序。 例如，应用代理可为远程桌面、SharePoint 站点、Tableau、Qlik、Outlook Web 版和业务线 (LOB) 应用程序提供远程访问和单一登录功能。
 
 ![Azure AD 应用程序代理体系结构](media/what-is-application-proxy/azure-ad-application-proxy-architecture.png)
 

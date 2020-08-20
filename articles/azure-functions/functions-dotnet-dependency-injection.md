@@ -1,18 +1,18 @@
 ---
 title: 在 .NET Azure Functions 中使用依赖项注入
 description: 了解如何在 .NET 函数中使用依赖项注入来注册和使用服务
-author: craigshoemaker
+author: ggailey777
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/15/2020
-ms.author: cshoe
+ms.author: glenga
 ms.reviewer: jehollan
-ms.openlocfilehash: 4919dc8f08a745a029eb6c3755f8cfc9c39f827f
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6fe6079ca4cdf76757088cbdc00dd1af3c2225ea
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88603869"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642361"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>在 .NET Azure Functions 中使用依赖项注入
 

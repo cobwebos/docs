@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: f26addda79d57a055f7b431968319138d499ef18
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: d5417bfcfbaa183c34808d9017d5863506429a81
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272929"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642276"
 ---
 # <a name="sparkcruise-on-azure-hdinsight"></a>Azure HDInsight 上的 SparkCruise
 
@@ -148,6 +148,7 @@ sudo /opt/peregrine/analyze/peregrine.sh clean
 
 ## <a name="next-steps"></a>后续步骤
 
+* [使用工作负荷见解笔记本确定 SparkCruise 的优点](https://github.com/Azure-Samples/azure-sparkcruise-samples/tree/main/SparkCruise)
 * [使用 Azure HDInsight IO 缓存提高 Apache Spark 工作负载的性能](apache-spark-improve-performance-iocache.md)
 * [在 HDInsight 中优化 Apache Spark 作业](./apache-spark-perf.md)
 * [SparkCruise： Handsfree 计算在 Spark 中重复使用](https://people.cs.umass.edu/~aroy/sparkcruise-vldb19.pdf)

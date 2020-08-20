@@ -1,5 +1,5 @@
 ---
-title: 什么是批量听录 - 语音服务
+title: 如何使用批量听录 - 语音服务
 titleSuffix: Azure Cognitive Services
 description: 如果要听录存储（如 Azure Blob）中的大量音频，则批量听录是理想的选择。 使用专用 REST API 可以通过共享访问签名 (SAS) URI 指向音频文件并异步接收听录。
 services: cognitive-services
@@ -10,20 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 70977c30edce124aa0d39bcc57d4ccd015d65961
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: df1266070e9fb69ec94811a3120412d9b238e470
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88214058"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640151"
 ---
-# <a name="what-is-batch-transcription"></a>什么是批量听录？
+# <a name="how-to-use-batch-transcription"></a>如何使用批量听录
 
 批量听录是一组 REST API 操作，可用于听录存储中的大量音频。 你可以指向具有共享访问签名 (SAS) URI 的音频文件并异步接收听录结果。 使用新的 v3.0 API，你可以选择听录一个或多个音频文件，或者处理整个存储容器。
 
 异步语音转文本听录只是其中的一项功能。 可以使用批量听录 REST API 调用以下方法：
-
-
 
 |    批量听录操作                                             |    方法    |    REST API 调用                                   |
 |------------------------------------------------------------------------------|--------------|----------------------------------------------------|
@@ -46,22 +44,16 @@ ms.locfileid: "88214058"
 
 ## <a name="prerequisites"></a>先决条件
 
-### <a name="subscription-key"></a>订阅密钥
-
 与语音服务的其他所有功能一样，需要按照[入门指南](get-started.md)通过 [Azure 门户](https://portal.azure.com)创建订阅密钥。
 
 >[!NOTE]
 > 若要使用批量听录，需要具备语音服务的标准订阅 (S0)。 免费订阅密钥 (F0) 无效。 有关详细信息，请参阅[定价和限制](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)。
 
-### <a name="custom-models"></a>自定义模式
-
 如果计划自定义模型，请按照[声音自定义](how-to-customize-acoustic-models.md)和[语言自定义](how-to-customize-language-model.md)中的步骤操作。 若要在批量听录中使用所创建的模型，需要提供其模型位置。 可以在检查模型的详细信息（`self` 属性）时检索模型位置。 批量听录服务不需要已部署的自定义终结点。
 
-## <a name="the-batch-transcription-api"></a>批量听录 API
+## <a name="batch-transcription-api"></a>批量听录 API
 
-### <a name="supported-formats"></a>支持的格式
-
-批量听录 API 支持以下格式：
+批处理脚本 API 支持以下格式：
 
 | 格式 | 编解码器 | 每个样本的位数 | 采样率             |
 |--------|-------|---------|---------------------------------|
@@ -185,7 +177,7 @@ ms.locfileid: "88214058"
 
 批量听录支持使用 [Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)来读取音频以及将听录内容写入存储。
 
-## <a name="the-batch-transcription-result"></a>批量听录结果
+## <a name="batch-transcription-result"></a>批处理脚本结果
 
 对于每一个输入音频，都将创建一个听录结果文件。 可以通过调用[获取听录文件](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles)来获取结果文件列表。 此方法返回此听录的结果文件列表。 若要查找特定输入文件的听录文件，请使用 `kind` == `Transcription` 和 `name` == `{originalInputName.suffix}.json` 来筛选所有返回的文件。
 
@@ -289,9 +281,9 @@ ms.locfileid: "88214058"
       已识别文本的显示形式。 包括添加的标点和大小写。
 :::row-end:::
 
-## <a name="speaker-separation-diarization"></a>讲述人分离（分割聚类）
+## <a name="speaker-separation-diarization"></a>Diarization) 的扬声器分离 (
 
-分割聚类是将讲述人语音分隔成音频片段的过程。 Batch 管道支持分割聚类，并且能够识别单声道录制内容中的两个讲述人。 此功能不适用于立体声录音。
+分割聚类是将讲述人语音分隔成音频片段的过程。 批处理管道支持 diarization，并且能够识别 mono 通道录制中的两个扬声器。 此功能不适用于立体声录音。
 
 对于每个听录短语，启用了分割聚类的听录的输出都包含一个 `Speaker` 项。 如果未使用分割聚类，JSON 输出中不会有属性 `Speaker`。 对于分割聚类，我们支持两段语音，因此讲述人标识为 `1` 或 `2`。
 
@@ -317,7 +309,7 @@ ms.locfileid: "88214058"
 
 ## <a name="best-practices"></a>最佳实践
 
-听录服务可以处理大量的已提交听录内容。 可以通过[获取听录](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions)中的 `GET` 来查询听录的状态。 检索结果后，请定期从服务中调用[删除听录](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)。 或者，请将 `timeToLive` 属性设置为一个合理值，以确保最终删除结果。
+批处理脚本服务可处理大量提交的转录。 可以通过[获取听录](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions)中的 `GET` 来查询听录的状态。 检索结果后，请定期从服务中调用[删除听录](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)。 或者，请将 `timeToLive` 属性设置为一个合理值，以确保最终删除结果。
 
 ## <a name="sample-code"></a>代码示例
 

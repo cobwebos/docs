@@ -9,18 +9,18 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 1c70950426b2f34d94bd66d2287550e19253874c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 2c96e4b7baa2c463c42db9440cadb3cb396fde1b
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233164"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642463"
 ---
 # <a name="what-is-azure-sql-edge-preview"></a>什么是 Azure SQL Edge（预览版）？
 
 Azure SQL Edge（预览版）是已针对 IoT 和 IoT Edge 部署进行了优化的关系数据库引擎。 它提供为 IoT 应用程序和解决方案创建高性能数据存储和处理层的功能。 Azure SQL Edge 提供了流式传输、处理和分析关系和非关系数据（如 JSON、图形和时序数据）的功能，这使其成为各种新式 IoT 应用程序的正确选择。
 
-Azure SQL Edge 基于最新版本的 [Microsoft SQL Server 数据库引擎](/sql/sql-server/sql-server-technical-documentation?toc=/azure/azure-sql-edge/toc.json)而构建，提供行业领先的性能、安全性和查询处理功能。 由于 Azure SQL Edge 建立在与 SQL Server 和 Azure SQL 数据库相同的引擎上，因此它提供相同的 T-SQL 编程外围应用，使应用程序或解决方案的开发更简单且快速，同时使应用程序在 IoT Edge 设备、数据中心和云之间的可移植性变得简单。
+Azure SQL Edge 是在 Microsoft SQL 数据库引擎 (/sql/sql-server/sql-server-technical-documentation？ toc =/azure/azure-sql-edge/) toc.js的最新版本的基础上构建的，它提供行业领先的性能、安全性和查询处理功能。 由于 Azure SQL Edge 建立在与 [SQL Server](/sql/sql-server/sql-server-technical-documentation?toc=/azure/azure-sql-edge/toc.json) 和 [Azure sql](https://docs.microsoft.com/azure/azure-sql/)相同的引擎上，因此它提供了相同的 t-sql 编程外围应用程序，使应用程序或解决方案的开发变得更简单、更快，同时使应用程序或解决方案在 IoT Edge 设备、数据中心和云之间更易于移植。
 
 > [!NOTE]
 > Azure SQL Edge 目前以预览版形式提供，因此不应在生产环境中使用。

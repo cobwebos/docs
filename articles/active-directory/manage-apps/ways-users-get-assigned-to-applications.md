@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45124862fffa3a1ef6f601733407fbbea4eb5e74
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 516bffa7057f8fee3b8e38d46f3b2da905880044
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84762949"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639930"
 ---
 # <a name="how-to-assign-users-to-applications"></a>如何将用户分配给应用程序
 
@@ -44,9 +44,9 @@ ms.locfileid: "84762949"
 
     * [所有用户](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-dedicated-groups)组
 
-3.  管理员启用[自助服务应用程序访问](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)以允许用户**无需业务批准**，即可使用[应用程序访问面板的“添加应用”](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **** 功能添加应用程序
+3.  管理员启用[自助服务应用程序访问](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)以允许用户使用["我的应用"](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **添加**应用程序，**无需企业批准**即可添加应用功能
 
-4.  管理员启用[自助服务应用程序访问](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)以允许用户在经过**选定业务批准者的事先批准**的情况下，使用[应用程序访问面板的“添加应用”](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **** 功能添加应用程序
+4.  管理员启用[自助服务应用程序访问](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)以允许用户使用["我的应用" "](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) **添加应用**" 功能添加应用程序，但仅限**从所选的一组业务审批者**那里进行审批
 
 5.  管理员启用[自助服务组管理](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management)以允许用户**无需业务批准**，即可加入已对其分配应用程序的组
 

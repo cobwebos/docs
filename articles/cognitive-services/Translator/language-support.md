@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: d692daf2f7f8b77358e73246fd8d8760f95982ac
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: a0ea0a7580bbb7a6106880d2733f36f5ab7a7690
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510787"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639777"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>文本和语音翻译的语言和区域支持
 
@@ -186,7 +186,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 [查看直译操作参考文档](reference/v3-0-translate.md)
 
 
-| 语言    | 语言代码 | Script | 到/从 | Script|
+| 语言    | 语言代码 | 脚本 | 到/从 | 脚本|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | 阿拉伯语 | `ar` | 阿拉伯语 `Arab` | <--> | 拉丁语 `Latn` |
 | Bangla  | `bn` | 孟加拉语 `Beng` | <--> | 拉丁语 `Latn` |
@@ -296,6 +296,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 法语      | `fr`          |
 | 德语      | `de`          |
 | 希腊语      | `el`          |
+| 古吉拉特语| `gu`    |
 | 希伯来语      | `he`          |
 | Hindi      | `hi`          |
 | 匈牙利语      | `hu`          |
@@ -309,11 +310,14 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 拉脱维亚语      | `lv`          |
 | 立陶宛语      | `lt`          |
 | 马达加斯加语| `mg`    |
+| 马来语|    `ms`        |
 | 毛利语| `mi`  |
+| 马拉地语| `mr`  |
 | 挪威语      | `nb`          |
 | 波斯语      | `fa`          |
 | 波兰语      | `pl`          |
-| 葡萄牙语(巴西) | `pt-br` |
+| 葡萄牙语（巴西） | `pt-br` |
+| 旁遮普语|`pa`|
 | 罗马尼亚语      | `ro`          |
 | 俄语      | `ru`          |
 | 萨摩亚语|   `sm`    |
@@ -325,6 +329,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 泰语      | `th`          |
 | 土耳其语      | `tr`          |
 | 乌克兰语      | `uk`          |
+| 乌尔都语| `ur`    |
 | 越南语      | `vi`          |
 | 威尔士语 | `cy` |
 
@@ -334,7 +339,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 ### <a name="speech-to-text"></a>语音转文本
 将语音转换为文本，以便转换为所选的文本语言。 语音转换文本用于语音转换文本，或在与语音合成一起使用时用于语音到语音转换。
 
-| Language    |
+| 语言    |
 |:----------- |
 |阿拉伯语|
 |粤语(繁体)|
@@ -351,7 +356,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 |Hindi|
 |意大利语|
 |日语|
-|朝鲜语|
+|韩语|
 |马拉地语|
 |挪威语|
 |波兰语|
@@ -368,7 +373,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 ### <a name="text-to-speech"></a>文本转语音
 将文本转换为语音。 使用文本到语音功能可以在使用语音到文本时添加语音转换结果的音频输出，或用于语音语音转换。 
 
-| Language    |
+| 语言    |
 |:----------- |
 |阿拉伯语|
 |保加利亚语|
@@ -391,7 +396,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 |印度尼西亚语|
 |意大利语|
 |日语|
-|朝鲜语|
+|韩语|
 |马来语|
 |挪威语|
 |波兰语|

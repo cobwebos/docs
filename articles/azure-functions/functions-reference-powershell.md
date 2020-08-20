@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: 06838ecee809c5159bc8a290ecb4f589fd3ce04f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: dd3978ee1f371d59119e406c5f023718d57ad99b
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88207410"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642208"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 开发人员指南
 
@@ -74,7 +74,7 @@ param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 $TriggerMetadata.sys
 ```
 
-| properties   | 描述                                     | 类型     |
+| 属性   | 说明                                     | 类型     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | 当触发函数时，采用 UTC 格式        | DateTime |
 | MethodName | 触发的函数的名称     | 字符串   |
@@ -279,7 +279,7 @@ Azure Functions 允许您定义阈值级别，以便轻松控制函数写入日�
 * 字符串
 * byte[]
 * int
-* Double
+* double
 * HttpRequestContext
 * HttpResponseContext
 
@@ -295,9 +295,9 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 传递到脚本的请求对象的类型为 `HttpRequestContext` ，它具有以下属性：
 
-| properties  | 描述                                                    | 类型                      |
+| 属性  | 说明                                                    | 类型                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | 一个包含请求正文的对象。 `Body` 基于数据序列化为最佳类型。 例如，如果数据是 JSON，则以哈希表形式传递。 如果数据是字符串，则以字符串的形式传递。 | object |
+| **`Body`**    | 一个包含请求正文的对象。 `Body` 基于数据序列化为最佳类型。 例如，如果数据是 JSON，则以哈希表形式传递。 如果数据是字符串，则以字符串的形式传递。 | 对象 (object) |
 | **`Headers`** | 包含请求标头的字典。                | Dictionary<string，string><sup>*</sup> |
 | **`Method`** | 请求的 HTTP 方法。                                | 字符串                    |
 | **`Params`**  | 一个包含请求的路由参数的对象。 | Dictionary<string，string><sup>*</sup> |
@@ -310,9 +310,9 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 
 应发送回的响应对象的类型为 `HttpResponseContext` ，它具有以下属性：
 
-| properties      | 描述                                                 | 类型                      |
+| 属性      | 说明                                                 | 类型                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | 一个包含响应正文的对象。           | object                    |
+| **`Body`**  | 一个包含响应正文的对象。           | 对象 (object)                    |
 | **`ContentType`** | 用于设置响应的内容类型的简短内容。 | 字符串                    |
 | **`Headers`** | 一个包含响应标头的对象。               | 字典或哈希表   |
 | **`StatusCode`**  | 响应的 HTTP 状态代码。                       | 字符串或整数             |
@@ -382,14 +382,14 @@ param([string] $myBlob)
 * 自动对 Azure 进行 MSI 身份验证。
 * 如果需要，可以打开 Azure PowerShell `AzureRM` PowerShell 别名。
 
-## <a name="powershell-version"></a>PowerShell 版本
+## <a name="powershell-versions"></a>PowerShell 版本
 
-下表显示了每个主要版本的函数运行时所使用的 PowerShell 版本：
+下表显示了每个主要版本的函数运行时支持的 PowerShell 版本，以及所需的 .NET 版本：
 
-| Functions 版本 | PowerShell 版本                             |
-|-------------------|------------------------------------------------|
-| 1.x               | Windows PowerShell 5.1 (由运行时锁定)  |
-| 2.x               | PowerShell Core 6                              |
+| Functions 版本 | PowerShell 版本                               | .NET 版本  | 
+|-------------------|--------------------------------------------------|---------------|
+| 1.x (建议)  | PowerShell 7 (建议) <br/>PowerShell Core 6 | .NET Core 3.1<br/>.NET Core 3.1 |
+| 2.x               | PowerShell Core 6                                | .NET Core 2.2 |
 
 可以通过从任何函数进行打印来查看当前版本 `$PSVersionTable` 。
 

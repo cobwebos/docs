@@ -16,12 +16,12 @@ ms.date: 03/12/2019
 ms.author: kenwith
 ms.reviewer: japere, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb3d1d921be858531372130264e777f8c04a9328
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 54673e0018f83024d1c01599d0096c71b6b1d0ae
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764938"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642123"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>如何配置应用程序代理应用程序的单一登录
 
@@ -43,13 +43,13 @@ ms.locfileid: "84764938"
 
 -   **基于标头的登录**：通过合作关系启用基于标头的登录，需要提供一些其他配置。 有关为使用标头进行身份验证的应用程序配置单一登录的合作关系和分步说明的详细信息，请参阅 [Azure AD 的 PingAccess 文档](application-proxy-configure-single-sign-on-with-ping-access.md)。
 
--   **Saml 单一登录**：使用 saml 单一登录，Azure AD 使用用户的 Azure AD 帐户对应用程序进行身份验证。 Azure AD 通过连接协议将登录信息传递给应用程序。 使用基于 SAML 的单一登录，可以根据在 SAML 声明中定义的规则将用户映射到特定的应用程序角色。 有关设置 SAML 单一登录的信息，请参阅[saml For Application Proxy 单一登录](application-proxy-configure-single-sign-on-on-premises-apps.md)。
+-   **Saml 单一登录**：使用 saml 单一登录，Azure AD 使用用户的 Azure AD 帐户对应用程序进行身份验证。 Azure AD 通过连接协议将登录信息传递给应用程序。 使用基于 SAML 的单一登录，可以根据在 SAML 声明中定义的规则将用户映射到特定的应用程序角色。 有关设置 SAML 单一登录的信息，请参阅 [saml For Application Proxy 单一登录](application-proxy-configure-single-sign-on-on-premises-apps.md)。
 
 可通过以下方式找到这些选项：转到“企业应用程序”中的应用程序，打开左侧菜单上的“单一登录”**** 页。 请注意，如果在旧门户中创建了应用程序，则可能看不到所有这些选项。
 
 在此页上，还可以看到另一个登录选项：链接登录。 此选项也受应用程序代理支持。 但是，此选项不会将单一登录添加到应用程序。 也就是说，应用程序可能已经使用另一个服务（如 Active Directory 联合身份验证服务）实现了单一登录。 
 
-此选项允许管理员在访问应用程序时创建一个指向用户首次登录的应用程序的链接。 例如，如果某一个应用程序配置为使用 Active Directory 联合身份验证服务 2.0 验证用户身份，则管理员可以使用“链接登录”选项在访问面板上创建指向该应用程序的链接。
+此选项允许管理员在访问应用程序时创建一个指向用户首次登录的应用程序的链接。 例如，如果有一个应用程序配置为使用 Active Directory 联合身份验证服务2.0 对用户进行身份验证，则管理员可以使用 "链接登录" 选项在我的应用程序上创建指向该应用程序的链接。
 
 ## <a name="next-steps"></a>后续步骤
 - [使用应用程序代理通过密码存储进行单一登录](application-proxy-configure-single-sign-on-password-vaulting.md)

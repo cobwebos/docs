@@ -10,16 +10,16 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: 972eb3f9983004ec7dbb3cb0df7bb3c59bdc9122
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 66a2fde47f71536661431959b957246e28c81d6a
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042008"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639795"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>创建沉浸式读者资源并配置 Azure Active Directory 身份验证
 
-本文提供了一个脚本，该脚本将创建一个沉浸式读者资源并配置 Azure Active Directory （Azure AD）身份验证。 每次创建沉浸式读者资源时，无论是使用此脚本还是在门户中，都必须使用 Azure AD 权限进行配置。 此脚本将为你提供帮助。
+本文提供了一个脚本，该脚本将创建一个沉浸式读者资源并配置 Azure Active Directory (Azure AD) 身份验证。 每次创建沉浸式读者资源时，无论是使用此脚本还是在门户中，都必须使用 Azure AD 权限进行配置。 此脚本将为你提供帮助。
 
 此脚本旨在为你创建和配置所有必要的沉浸式读取器和 Azure AD 资源，只需一步即可实现。 不过，你也可以仅为现有沉浸式读者资源配置 Azure AD 身份验证，例如，在 Azure 门户中已创建了一个身份验证。
 
@@ -29,7 +29,7 @@ ms.locfileid: "86042008"
 
 ## <a name="set-up-powershell-environment"></a>设置 PowerShell 环境
 
-1. 首先打开[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。 请确保在左上角下拉列表中或键入时，将 Cloud Shell 设置为 PowerShell `pwsh` 。
+1. 首先打开 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)。 请确保在左上角下拉列表中或键入时，将 Cloud Shell 设置为 PowerShell `pwsh` 。
 
 1. 将以下代码片段复制并粘贴到 shell 中。
 
@@ -44,7 +44,8 @@ ms.locfileid: "86042008"
         [Parameter(Mandatory=$true)] [String] $ResourceGroupLocation,
         [Parameter(Mandatory=$true)] [String] $AADAppDisplayName="ImmersiveReaderAAD",
         [Parameter(Mandatory=$true)] [String] $AADAppIdentifierUri,
-        [Parameter(Mandatory=$true)] [String] $AADAppClientSecret
+        [Parameter(Mandatory=$true)] [String] $AADAppClientSecret,
+        [Parameter(Mandatory=$true)] [String] $AADAppClientSecretExpiration
     )
     {
         $unused = ''
@@ -93,12 +94,13 @@ ms.locfileid: "86042008"
         $clientId = az ad app show --id $AADAppIdentifierUri --query "appId" -o tsv
         if (-not $clientId) {
             Write-Host "Creating new Azure Active Directory app"
-            $clientId = az ad app create --password $AADAppClientSecret --display-name $AADAppDisplayName --identifier-uris $AADAppIdentifierUri --query "appId" -o tsv
+            $clientId = az ad app create --password $AADAppClientSecret --end-date "$AADAppClientSecretExpiration" --display-name $AADAppDisplayName --identifier-uris $AADAppIdentifierUri --query "appId" -o tsv
 
             if (-not $clientId) {
                 throw "Error: Failed to create Azure Active Directory app"
             }
-            Write-Host "Azure Active Directory app created successfully"
+            Write-Host "Azure Active Directory app created successfully."
+            Write-Host "NOTE: To manage your Active Directory app client secrets after this Immersive Reader Resource has been created please visit https://portal.azure.com and go to Home -> Azure Active Directory -> App Registrations -> $AADAppDisplayName -> Certificates and Secrets blade -> Client Secrets section" -ForegroundColor Yellow
         }
 
         # Create a service principal if it doesn't already exist
@@ -155,6 +157,7 @@ ms.locfileid: "86042008"
       -AADAppDisplayName '<AAD_APP_DISPLAY_NAME>' `
       -AADAppIdentifierUri '<AAD_APP_IDENTIFIER_URI>' `
       -AADAppClientSecret '<AAD_APP_CLIENT_SECRET>'
+      -AADAppClientSecretExpiration '<AAD_APP_CLIENT_SECRET_Expiration>'
     ```
 
     | 参数 | 注释 |
@@ -162,13 +165,18 @@ ms.locfileid: "86042008"
     | SubscriptionName |要用于沉浸式读者资源的 Azure 订阅的名称。 若要创建资源，您必须拥有订阅。 |
     | ResourceName |  必须为字母数字，并且可能包含 "-"，但前提是 "-" 不是第一个或最后一个字符。 长度不能超过63个字符。|
     | ResourceSubdomain |沉浸式读者资源需要自定义子域。 在调用沉浸式读卡器服务启动读取器时，SDK 将使用子域。 子域必须是全局唯一的。 子域必须为字母数字，并且可能包含 "-"，但前提是 "-" 不是第一个或最后一个字符。 长度不能超过63个字符。 如果该资源已存在，则此参数是可选的。 |
-    | ResourceSKU |选项： `S0` 。 请访问我们的[认知服务定价页](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/)，了解有关每个可用 SKU 的详细信息。 如果该资源已存在，则此参数是可选的。 |
+    | ResourceSKU |选项： `S0` 。 请访问我们的 [认知服务定价页](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) ，了解有关每个可用 SKU 的详细信息。 如果该资源已存在，则此参数是可选的。 |
     | ResourceLocation |选项： `eastus` 、 `eastus2` 、 `southcentralus` 、 `westus` 、 `westus2` 、 `australiaeast` 、 `southeastasia` 、 `centralindia` `japaneast` `northeurope` `uksouth` 、、、、 `westeurope` 。 如果该资源已存在，则此参数是可选的。 |
     | ResourceGroupName |资源是在订阅中的资源组中创建的。 提供现有资源组的名称。 如果资源组不存在，则将创建一个具有此名称的新资源组。 |
-    | ResourceGroupLocation |如果资源组不存在，则需要提供要在其中创建组的位置。 若要查找位置列表，请运行 `az account list-locations` 。 使用返回的结果的 "*名称*" 属性（不含空格）。 如果资源组已存在，则此参数是可选的。 |
+    | ResourceGroupLocation |如果资源组不存在，则需要提供要在其中创建组的位置。 若要查找位置列表，请运行 `az account list-locations` 。 使用 *名称* 属性 (在返回的结果中不包含空格) 。 如果资源组已存在，则此参数是可选的。 |
     | AADAppDisplayName |Azure Active Directory 应用程序的显示名称。 如果未找到现有 Azure AD 应用程序，则将创建一个具有此名称的新应用程序。 如果 Azure AD 应用程序已存在，则此参数是可选的。 |
-    | AADAppIdentifierUri |Azure AD 应用程序的 URI。 如果未找到现有 Azure AD 应用，将创建一个具有此 URI 的新应用。 例如 `https://immersivereaderaad-mycompany`。 |
-    | AADAppClientSecret |创建的密码，稍后在获取用于启动沉浸式读取器的令牌时进行身份验证。 密码长度必须至少为16个字符，至少包含1个特殊字符，且至少包含1个数字字符。 |
+    | AADAppIdentifierUri |Azure AD 应用程序的 URI。 如果未找到现有 Azure AD 应用，将创建一个具有此 URI 的新应用。 例如，`https://immersivereaderaad-mycompany`。 |
+    | AADAppClientSecret |创建的密码，稍后在获取用于启动沉浸式读取器的令牌时进行身份验证。 密码长度必须至少为16个字符，至少包含1个特殊字符，且至少包含1个数字字符。 若要在创建此资源之后管理 Azure AD 应用程序客户端机密，请访问 https://portal.azure.com "> Azure Active Directory > 应用注册-> `[AADAppDisplayName]` > 证书和机密" 边栏选项卡，> 客户端密钥 "部分 (，如下面 Azure AD 的" 管理) 应用程序机密 "屏幕截图所示。 |
+    | AADAppClientSecretExpiration |截止日期或日期时间，在该日期或日期时间之后 `[AADAppClientSecret]` 将过期 (例如 "2020-12-31T11：59： 59 + 00： 00" 或 "2020-12-31" ) 。 |
+
+    管理你的 Azure AD 应用程序机密
+
+    ![Azure 门户的 "证书和机密" 边栏选项卡](./media/client-secrets-blade.png)
 
 1. 将 JSON 输出复制到文本文件中，以供以后使用。 输出应如下所示。
 
@@ -184,8 +192,8 @@ ms.locfileid: "86042008"
 ## <a name="next-steps"></a>后续步骤
 
 * 查看 [Node.js 快速入门](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)，了解通过 Node.js 使用沉浸式阅读器 SDK 还可以做什么
-* 查看[android 教程](./tutorial-android.md)，了解如何使用适用于 Android 的 Java 或 Kotlin 对沉浸式读者 SDK 执行哪些操作
-* 查看[ios 教程](./tutorial-ios.md)，了解如何使用适用于 IOS 的 Swift 对沉浸式读者 SDK 执行哪些操作
+* 查看 [Android 教程](./tutorial-android.md)，了解通过 Java 或 Kotlin for Android 使用沉浸式阅读器 SDK 可执行的其他操作
+* 查看 [iOS 教程](./tutorial-ios.md)，了解通过 Swift for iOS 使用沉浸式阅读器 SDK 可执行的其他操作
 * 查看 [Python 教程](./tutorial-python.md)，了解通过 Python 使用沉浸式阅读器 SDK 还可以做什么
 * 浏览[沉浸式阅读器 SDK ](https://github.com/microsoft/immersive-reader-sdk)和[沉浸式阅读器 SDK 参考](./reference.md)
 

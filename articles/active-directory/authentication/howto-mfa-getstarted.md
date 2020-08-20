@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15d519e1cede27b3626d715c48790af620589e43
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 1ab69e3f4ca89e2069ff25470773e597009ec238
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83757590"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641069"
 ---
 # <a name="plan-an-azure-multi-factor-authentication-deployment"></a>计划 Azure 多重身份验证部署
 
@@ -108,6 +108,9 @@ Azure Active Directory 标识保护检测到的某些风险检测是实时发生
 ## <a name="plan-authentication-methods"></a>计划身份验证方法
 
 管理员可以选择要为用户提供的[身份验证方法](../authentication/concept-authentication-methods.md)。 请务必允许多种身份验证方法，以便用户在其主要方法不可用时具有可用的备用方法。 管理员可以使用以下方法：
+
+> [!TIP]
+> Microsoft 建议使用移动应用作为 Azure 多重身份验证的主要方法，以获得最佳安全和用户体验。
 
 ### <a name="notification-through-mobile-app"></a>通过移动应用发送通知
 

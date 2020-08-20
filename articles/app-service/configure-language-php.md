@@ -5,12 +5,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 306afb2bfba7c222798bbfd1bef334387b6f9771
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 440815d7d24cde9708c214bf407a2dd9206a1706
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080073"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642038"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>为 Azure App Service 配置 PHP 应用
 
@@ -56,7 +56,7 @@ az webapp list-runtimes --linux | grep PHP
 
 ::: zone pivot="platform-windows"  
 
-在[Cloud Shell](https://shell.azure.com)中运行以下命令，将 PHP 版本设置为7.4：
+在 [Cloud Shell](https://shell.azure.com) 中运行以下命令，将 PHP 版本设置为7.4：
 
 ```azurecli-interactive
 az webapp config set --name <app-name> --resource-group <resource-group-name> --php-version 7.4
@@ -78,20 +78,20 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 ## <a name="run-composer"></a>运行编辑器
 
-如果希望应用服务在部署时运行[编辑器](https://getcomposer.org/)，最简单的方法是将编辑器包含在存储库中。
+如果希望应用服务在部署时运行 [编辑器](https://getcomposer.org/) ，最简单的方法是将编辑器包含在存储库中。
 
-在本地终端窗口中，将目录更改为存储库根目录，然后按照[下载书写器](https://getcomposer.org/download/)中的说明将*composer.phar*下载到目录根目录。
+在本地终端窗口中，将目录更改为存储库根目录，然后按照 [下载书写器](https://getcomposer.org/download/) 中的说明将 *composer.phar* 下载到目录根目录。
 
-运行以下命令 (需要安装[npm](https://www.npmjs.com/get-npm)) ：
+运行以下命令 (需要安装 [npm](https://www.npmjs.com/get-npm)) ：
 
 ```bash
 npm install kuduscript -g
 kuduscript --node --scriptType bash --suppressPrompt
 ```
 
-存储库根现在包含两个附加文件： *. deployment*和*deploy.sh*。
+存储库根现在包含两个附加文件： *. deployment* 和 *deploy.sh*。
 
-打开*deploy.sh*并找到如下所 `Deployment` 示的部分：
+打开 *deploy.sh* 并找到如下所 `Deployment` 示的部分：
 
 ```bash
 ##################################################################################################################################
@@ -99,7 +99,7 @@ kuduscript --node --scriptType bash --suppressPrompt
 # ----------
 ```
 
-添加代码部分，需要*在节末尾*运行所需的工具 `Deployment` ：
+添加代码部分，需要 *在节末尾* 运行所需的工具 `Deployment` ：
 
 ```bash
 # 4. Use composer
@@ -117,7 +117,7 @@ fi
 
 ## <a name="run-gruntbowergulp"></a>运行 Grunt/Bower/Gulp
 
-如果希望应用服务在部署时运行常用的自动化工具，如 Grunt、Bower 或 Gulp，则需要提供[自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)。 当你通过 Git 进行部署或启用了生成自动化的[Zip 部署](deploy-zip.md)时，应用服务将运行此脚本。 
+如果希望应用服务在部署时运行常用的自动化工具，如 Grunt、Bower 或 Gulp，则需要提供 [自定义部署脚本](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)。 当你通过 Git 进行部署或启用了生成自动化的 [Zip 部署](deploy-zip.md) 时，应用服务将运行此脚本。 
 
 若要使存储库能够运行这些工具，需要将它们添加到*package.js上*的依赖项。 例如：
 
@@ -130,16 +130,16 @@ fi
 }
 ```
 
-在本地终端窗口中，将目录更改为存储库根，并运行以下命令 (需要安装[npm](https://www.npmjs.com/get-npm)) ：
+在本地终端窗口中，将目录更改为存储库根，并运行以下命令 (需要安装 [npm](https://www.npmjs.com/get-npm)) ：
 
 ```bash
 npm install kuduscript -g
 kuduscript --node --scriptType bash --suppressPrompt
 ```
 
-存储库根现在包含两个附加文件： *. deployment*和*deploy.sh*。
+存储库根现在包含两个附加文件： *. deployment* 和 *deploy.sh*。
 
-打开*deploy.sh*并找到如下所 `Deployment` 示的部分：
+打开 *deploy.sh* 并找到如下所 `Deployment` 示的部分：
 
 ```bash
 ##################################################################################################################################
@@ -147,13 +147,13 @@ kuduscript --node --scriptType bash --suppressPrompt
 # ----------
 ```
 
-此部分结束于运行 `npm install --production` 。 添加代码部分，需要*在节末尾*运行所需的工具 `Deployment` ：
+此部分结束于运行 `npm install --production` 。 添加代码部分，需要 *在节末尾* 运行所需的工具 `Deployment` ：
 
 - [Bower](#bower)
 - [Gulp](#gulp)
 - [Grunt](#grunt)
 
-请参阅[MEAN.js 示例中的示例](https://github.com/Azure-Samples/meanjs/blob/master/deploy.sh#L112-L135)，在该示例中，部署脚本也运行自定义 `npm install` 命令。
+请参阅 [MEAN.js 示例中的示例](https://github.com/Azure-Samples/meanjs/blob/master/deploy.sh#L112-L135)，在该示例中，部署脚本也运行自定义 `npm install` 命令。
 
 ### <a name="bower"></a>Bower
 
@@ -241,9 +241,9 @@ getenv("DB_HOST")
 
 ::: zone pivot="platform-windows"  
 
-所选的 Web 框架可能使用子目录作为站点根路径。 例如， [Laravel](https://laravel.com/)使用*公共/* 子目录作为网站根目录。
+所选的 Web 框架可能使用子目录作为站点根路径。 例如， [Laravel](https://laravel.com/)使用 *公共/* 子目录作为网站根目录。
 
-若要自定义站点根，请使用命令设置应用的虚拟应用程序路径 [`az resource update`](/cli/azure/resource#az-resource-update) 。 下面的示例将站点根目录设置为存储库中的*公共/* 子目录。 
+若要自定义站点根，请使用命令设置应用的虚拟应用程序路径 [`az resource update`](/cli/azure/resource#az-resource-update) 。 下面的示例将站点根目录设置为存储库中的 *公共/* 子目录。 
 
 ```azurecli-interactive
 az resource update --name web --resource-group <group-name> --namespace Microsoft.Web --resource-type config --parent sites/<app-name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
@@ -276,8 +276,8 @@ az resource update --name web --resource-group <group-name> --namespace Microsof
 在应用服务中，[SSL 终止](https://wikipedia.org/wiki/TLS_termination_proxy)在网络负载均衡器上发生，因此，所有 HTTPS 请求将以未加密的 HTTP 请求形式访问你的应用。 如果应用逻辑需要检查用户请求是否已加密，可以检查 `X-Forwarded-Proto` 标头。
 
 ```php
-if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'https') {
-  // Do something when HTTPS is used
+if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') {
+// Do something when HTTPS is used
 }
 ```
 
@@ -295,7 +295,7 @@ if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'h
 
 ::: zone pivot="platform-windows"  
 
-若要自定义 PHP_INI_USER、PHP_INI_PERDIR 和 PHP_INI_ALL 指令 (参阅[php.ini 指令](https://www.php.net/manual/ini.list.php)) ，请将 `.user.ini` 文件添加到应用程序的根目录中。
+若要自定义 PHP_INI_USER、PHP_INI_PERDIR 和 PHP_INI_ALL 指令 (参阅 [php.ini 指令](https://www.php.net/manual/ini.list.php)) ，请将 `.user.ini` 文件添加到应用程序的根目录中。
 
 使用会在 `php.ini` 文件中使用的语法，将配置设置添加到 `.user.ini` 文件。 例如，如果希望启用 `display_errors` 设置，并将 `upload_max_filesize` 设置设为 10 分钟，则 `.user.ini` 文件应包含以下文本：
 
@@ -310,7 +310,7 @@ if (isset($_SERVER['X-Forwarded-Proto']) && $_SERVER['X-Forwarded-Proto'] === 'h
 
 通过更改重新部署应用，然后重启该应用。
 
-作为使用文件的替代方法 `.user.ini` ，可以在应用中使用[ini_set ( # B1](https://www.php.net/manual/function.ini-set.php)来自定义这些非 PHP_INI_SYSTEM 指令。
+作为使用文件的替代方法 `.user.ini` ，可以在应用中使用 [ini_set ( # B1 ](https://www.php.net/manual/function.ini-set.php) 来自定义这些非 PHP_INI_SYSTEM 指令。
 
 ::: zone-end
 
@@ -452,7 +452,7 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
 
 ::: zone pivot="platform-windows"  
 
-使用标准[error_log ( # B1](https://php.net/manual/function.error-log.php)实用工具使诊断日志显示在 Azure App Service 中。
+使用标准 [error_log ( # B1 ](https://php.net/manual/function.error-log.php) 实用工具使诊断日志显示在 Azure App Service 中。
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-no-h.md)]
 

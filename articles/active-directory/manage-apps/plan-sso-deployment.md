@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 85ec94ccf853d4f8b02a14ba08e9515170b36b5e
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: e8aa5515bf8ae8e842a98656167f4198ac652981
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88054794"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642378"
 ---
 # <a name="plan-a-single-sign-on-deployment"></a>计划单一登录部署
 
@@ -34,45 +34,45 @@ Azure Marketplace 具有超过3000个具有预先集成 SSO 连接的应用程�
 
 ## <a name="licensing"></a>许可
 
-- **Azure AD 的授权**-SSO 适用于预先集成的 SaaS 应用程序。 但是，目录中的对象数以及要部署的功能可能需要额外的许可证。 有关许可证要求的完整列表，请参阅[Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
-- **应用程序授权**-你将需要适用于你的 SaaS 应用程序的许可证，以满足你的业务需求。 与应用程序所有者合作，确定分配到应用程序的用户是否具有其在应用程序中的角色的相应许可证。 如果 Azure AD 基于角色管理自动预配，则在 Azure AD 中分配的角色必须与应用程序中拥有的许可证数量一致。 应用程序中拥有的许可证数量不正确可能会导致在用户的预配/更新过程中出现错误。
+- **Azure AD 的授权** -SSO 适用于预先集成的 SaaS 应用程序。 但是，目录中的对象数以及要部署的功能可能需要额外的许可证。 有关许可证要求的完整列表，请参阅 [Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
+- **应用程序授权** -你将需要适用于你的 SaaS 应用程序的许可证，以满足你的业务需求。 与应用程序所有者合作，确定分配到应用程序的用户是否具有其在应用程序中的角色的相应许可证。 如果 Azure AD 基于角色管理自动预配，则在 Azure AD 中分配的角色必须与应用程序中拥有的许可证数量一致。 应用程序中拥有的许可证数量不正确可能会导致在用户的预配/更新过程中出现错误。
 
 ## <a name="plan-your-sso-team"></a>规划 SSO 团队
 
-- **吸引正确的利益干系人**-当技术项目发生故障时，这通常是由于对影响、结果和责任的预期不匹配而导致的。 若要避免这些问题，请[确保你参与了正确的利益干系人](https://aka.ms/deploymentplans)，并且利益干系人了解他们的角色。
-- **规划通信**-通信对任何新服务的成功至关重要。 主动向用户传达其体验如何发生更改、何时发生更改，以及如何在遇到问题时获得支持。 查看[最终用户将如何访问启用 SSO 的应用程序](end-user-experiences.md)的选项，并创建你的通信以匹配你的选择。 
+- **吸引正确的利益干系人** -当技术项目发生故障时，这通常是由于对影响、结果和责任的预期不匹配而导致的。 若要避免这些问题，请 [确保你参与了正确的利益干系人](https://aka.ms/deploymentplans) ，并且利益干系人了解他们的角色。
+- **规划通信** -通信对任何新服务的成功至关重要。 主动向用户传达其体验如何发生更改、何时发生更改，以及如何在遇到问题时获得支持。 查看 [最终用户将如何访问启用 SSO 的应用程序](end-user-experiences.md)的选项，并创建你的通信以匹配你的选择。 
 
 ## <a name="plan-your-sso-protocol"></a>规划 SSO 协议
 
-基于联合身份验证协议的 SSO 实现可以提高安全性、可靠性和最终用户体验，并且更容易实现。 许多应用程序都是在 Azure AD 中预先集成的，其中[提供了循序渐进指南](../saas-apps/tutorial-list.md)。 可以在我们的[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/)中找到它们。 有关每种 SSO 方法的详细信息，请参阅文章[单一登录到应用程序中的 Azure Active Directory](what-is-single-sign-on.md)。
+基于联合身份验证协议的 SSO 实现可以提高安全性、可靠性和最终用户体验，并且更容易实现。 许多应用程序都是在 Azure AD 中预先集成的，其中 [提供了循序渐进指南](../saas-apps/tutorial-list.md)。 可以在我们的 [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/)中找到它们。 有关每种 SSO 方法的详细信息，请参阅文章 [单一登录到应用程序中的 Azure Active Directory](what-is-single-sign-on.md)。
 
 可通过两种主要方式使用户能够单一登录到应用：
 
-- **具有联合单一登录**Azure AD 使用 Azure AD 帐户对应用程序进行身份验证。 支持 SAML 2.0、WS 联合身份验证或 OpenID Connect 等协议的应用程序支持此方法，它是单一登录的最丰富模式。 建议在应用程序支持时使用联合 SSO 和 Azure AD，而不是基于密码的 SSO 和 ADFS。
+- **具有联合单一登录** Azure AD 使用 Azure AD 帐户对应用程序进行身份验证。 支持 SAML 2.0、WS 联合身份验证或 OpenID Connect 等协议的应用程序支持此方法，它是单一登录的最丰富模式。 建议在应用程序支持时使用联合 SSO 和 Azure AD，而不是基于密码的 SSO 和 ADFS。
 
-- **使用基于密码的单一登录**用户首次登录应用程序时，他们将访问该用户名和密码。 首次登录后，Azure AD 会为应用程序提供用户名和密码。 基于密码的单一登录允许使用 Web 浏览器扩展插件或移动应用安全存储和重放应用程序的密码。 此选项利用应用程序提供的现有登录过程，使管理员能够管理密码，而不要求用户知道密码。
+- **使用基于密码的单一登录** 用户首次登录应用程序时，他们将访问该用户名和密码。 首次登录后，Azure AD 会为应用程序提供用户名和密码。 基于密码的单一登录允许使用 Web 浏览器扩展插件或移动应用安全存储和重放应用程序的密码。 此选项利用应用程序提供的现有登录过程，使管理员能够管理密码，而不要求用户知道密码。
 
 ### <a name="considerations-for-federation-based-sso"></a>基于联合的 SSO 的注意事项
 
-- **使用 OpenID connect 和 OAuth** -如果要连接的应用程序支持该应用程序，请使用 OIDC/OAuth 2.0 方法将 SSO 启用到该应用程序。 此方法需要较少的配置，并支持更丰富的用户体验。 有关详细信息，请参阅[OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)、 [OpenID connect 1.0](../develop/v2-protocols-oidc.md)和[Azure Active Directory 开发人员指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)。
-- **基于 saml 的 SSO 的终结点配置**-如果使用 saml，则开发人员在配置应用程序之前将需要特定信息。 有关详细信息，请参阅[配置基于 SAML 的单一登录](configure-saml-single-sign-on.md)。
-- **基于 SAML 的 sso 的证书管理-为**应用程序启用联合 sso 时，Azure AD 会创建默认情况下有效期为三年的证书。 如果需要，可以自定义该证书的到期日期。 确保已准备好处理证书，以便在证书过期之前续订证书。 若要了解详细信息，请参阅[Azure AD 管理证书](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)。
+- **使用 OpenID connect 和 OAuth** -如果要连接的应用程序支持该应用程序，请使用 OIDC/OAuth 2.0 方法将 SSO 启用到该应用程序。 此方法需要较少的配置，并支持更丰富的用户体验。 有关详细信息，请参阅 [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)、 [OpenID connect 1.0](../develop/v2-protocols-oidc.md)和 [Azure Active Directory 开发人员指南](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)。
+- **基于 saml 的 SSO 的终结点配置** -如果使用 saml，则开发人员在配置应用程序之前将需要特定信息。 有关详细信息，请参阅 [配置基于 SAML 的单一登录](configure-saml-single-sign-on.md)。
+- **基于 SAML 的 sso 的证书管理-为** 应用程序启用联合 sso 时，Azure AD 会创建默认情况下有效期为三年的证书。 如果需要，可以自定义该证书的到期日期。 确保已准备好处理证书，以便在证书过期之前续订证书。 若要了解详细信息，请参阅 [Azure AD 管理证书](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)。
 
 ### <a name="considerations-for-password-based-sso"></a>基于密码的 SSO 的注意事项
 
-使用基于密码的 SSO 的 Azure AD 需要部署一个浏览器扩展，该扩展将安全地检索凭据并填写登录窗体。 定义一种机制，用于使用[受支持的浏览器](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)大规模部署扩展。 选项包括：
+使用基于密码的 SSO 的 Azure AD 需要部署一个浏览器扩展，该扩展将安全地检索凭据并填写登录窗体。 定义一种机制，用于使用 [受支持的浏览器](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)大规模部署扩展。 选项包括：
 
 - [Internet Explorer 组策略](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
 - [Internet Explorer Configuration Manager](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 - [用户驱动的 Chrome、Firefox、Microsoft Edge 或 IE 的下载和配置](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
-若要了解详细信息，请参阅[如何配置密码单一登录](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery)。
+若要了解详细信息，请参阅 [如何配置密码单一登录](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-password-sso-non-gallery)。
 
 #### <a name="capturing-login-forms-metadata-for-applications-that-arent-in-the-gallery"></a>捕获不在库中的应用程序的登录窗体元数据
 
 Microsoft 支持捕获 web 应用程序上的元数据以进行密码保管 (捕获 "用户名" 和 "密码" 字段) 。 在配置应用程序的过程中导航到登录 URL，以捕获窗体元数据。 向应用程序所有者询问确切的登录 URL。 在登录过程中将使用此信息，在登录过程中将 Azure AD 凭据映射到应用程序。
 
-若要了解详细信息，请参阅[什么是应用程序访问和 SSO 与 Azure AD？-基于密码的 sso](https://azure.microsoft.com/documentation/articles/active-directory-appssoaccess-whatis/)。
+若要了解详细信息，请参阅 [什么是应用程序访问和 SSO 与 Azure AD？-基于密码的 sso](https://azure.microsoft.com/documentation/articles/active-directory-appssoaccess-whatis/)。
 
 #### <a name="indications-that-metadata-in-forms-needs-to-be-recaptured"></a>指示窗体中的元数据需要回收
 
@@ -96,7 +96,7 @@ Microsoft 支持捕获 web 应用程序上的元数据以进行密码保管 (捕
 
 选择正确的身份验证方法是设置 Azure AD 混合标识解决方案至关重要的第一个决定。 请实现通过使用 Azure AD Connect（还可在云中预配用户）配置的身份验证方法。
 
-若要选择身份验证方法，需要考虑时间、现有基础结构、复杂性和实现所选内容的成本。 这些因素对每个组织都不同，并可能随时间变化。 你应选择最符合你的特定方案的一个。 有关详细信息，请参阅[为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)。
+若要选择身份验证方法，需要考虑时间、现有基础结构、复杂性和实现所选内容的成本。 这些因素对每个组织都不同，并可能随时间变化。 你应选择最符合你的特定方案的一个。 有关详细信息，请参阅 [为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn)。
 
 ## <a name="plan-your-security-and-governance"></a>规划您的安全和管理 
 
@@ -104,7 +104,7 @@ Microsoft 支持捕获 web 应用程序上的元数据以进行密码保管 (捕
 
 ### <a name="plan-access-reviews"></a>规划访问评审
 
-[访问评审](https://docs.microsoft.com/azure/active-directory/governance/create-access-review)使组织能够有效地管理组成员身份、访问企业应用程序和角色分配。 你应计划定期查看用户访问权限，以确保只有正确的人员才能继续访问。
+[访问评审](https://docs.microsoft.com/azure/active-directory/governance/create-access-review) 使组织能够有效地管理组成员身份、访问企业应用程序和角色分配。 你应计划定期查看用户访问权限，以确保只有正确的人员才能继续访问。
 
 设置访问评审时要规划的一些关键主题包括：
 
@@ -116,7 +116,7 @@ Microsoft 支持捕获 web 应用程序上的元数据以进行密码保管 (捕
 
 ### <a name="plan-auditing"></a>规划审核
 
-Azure AD 提供了[包含技术和业务见解的报表](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/)。 
+Azure AD 提供了 [包含技术和业务见解的报表](https://azure.microsoft.com/documentation/articles/active-directory-view-access-usage-reports/)。 
 
 安全和活动报告都可用。 安全报表显示标记为有风险的用户和有风险的登录。活动报表通过详细说明登录活动，并提供所有登录名的审核线索，来帮助你了解组织中用户的行为。 你可以使用报表来管理风险、提高工作效率和监视符合性。
 
@@ -139,31 +139,31 @@ Microsoft Cloud App Security (MCAS) 是云访问安全代理 (CASB) 解决方案
 - 使用条件访问应用控制保护，以实时查看和控制云应用中的访问和活动
 - 通过设置，然后不断地调整策略，帮助你进行连续控制。
 
-Microsoft 云应用程序安全 (MCAS) 会话控制可用于任何操作系统上任何主要平台上的任何浏览器。 也可阻止或允许移动应用和桌面应用。 通过本机方式与 Azure AD 进行集成，可以支持在 Azure AD 中配置了 SAML 或 Open ID Connect 应用程序的任何应用，包括[多个特色应用](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)。
+Microsoft 云应用程序安全 (MCAS) 会话控制可用于任何操作系统上任何主要平台上的任何浏览器。 也可阻止或允许移动应用和桌面应用。 通过本机方式与 Azure AD 进行集成，可以支持在 Azure AD 中配置了 SAML 或 Open ID Connect 应用程序的任何应用，包括 [多个特色应用](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)。
 
-有关 MCAS 的信息，请参阅[Microsoft Cloud App Security 概述](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)。 MCAS 是基于用户的订阅服务。 可以在[MCAS 授权数据表](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE2NXYO)中查看许可详细信息。
+有关 MCAS 的信息，请参阅 [Microsoft Cloud App Security 概述](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security)。 MCAS 是基于用户的订阅服务。 可以在 [MCAS 授权数据表](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE2NXYO)中查看许可详细信息。
 
 ### <a name="use-conditional-access"></a>使用条件访问
 
 使用条件性访问，你可以针对云应用自动执行基于条件的访问控制决策。
 
-完成第一因素身份验证后将强制执行条件访问策略。 因此，条件性访问不应作为 (DoS) 攻击等方案的第一线防御，但可以使用来自这些事件的信号来确定访问权限。 例如，可以使用登录风险级别、请求的位置等等。 有关条件性访问的详细信息，请参阅[概述](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)和[部署计划](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)。
+完成第一因素身份验证后将强制执行条件访问策略。 因此，条件性访问不应作为 (DoS) 攻击等方案的第一线防御，但可以使用来自这些事件的信号来确定访问权限。 例如，可以使用登录风险级别、请求的位置等等。 有关条件性访问的详细信息，请参阅 [概述](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access) 和 [部署计划](https://docs.microsoft.com/azure/active-directory/conditional-access/plan-conditional-access)。
 
 ## <a name="azure-sso-technical-requirements"></a>Azure SSO 技术要求
 
-以下部分详细说明了配置特定应用程序的要求，其中包括所需的环境 () 、终结点、声明映射、所需的属性、证书以及所使用的协议。 在[Azure AD 门户](https://portal.azure.com/)中配置 SSO 需要此信息。
+以下部分详细说明了配置特定应用程序的要求，其中包括所需的环境 () 、终结点、声明映射、所需的属性、证书以及所使用的协议。 在 [Azure AD 门户](https://portal.azure.com/)中配置 SSO 需要此信息。
 
 ### <a name="authentication-mechanism-details"></a>身份验证机制详细信息
 
 对于所有预先集成的 SaaS 应用程序，Microsoft 提供教程，不需要此信息。 如果应用程序不在我们的应用程序 marketplace/库中，你可能需要收集以下数据片段：
 
 - **应用程序使用的当前标识提供程序（如果适用）** -例如： AD FS、PingFederate、Okta
-- **目标应用程序支持的协议**-例如，SAML 2.0、OpenID Connect、OAuth、基于窗体的身份验证、ws-federation、ws 信任
-- **用 Azure AD 配置的协议**-例如，SAML 2.0 或1.1、OpenID Connect、OAuth、基于窗体的 WS 进纸
+- **目标应用程序支持的协议** -例如，SAML 2.0、OpenID Connect、OAuth、基于窗体的身份验证、ws-federation、ws 信任
+- **用 Azure AD 配置的协议** -例如，SAML 2.0 或1.1、OpenID Connect、OAuth、基于窗体的 WS 进纸
 
 ### <a name="attribute-requirements"></a>特性要求
 
-Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预先配置的属性和属性映射。 某些应用管理其他类型的对象，如组。 计划将用户属性从 Azure AD 映射到应用程序，并根据业务需求[自定义默认属性映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes)。
+Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预先配置的属性和属性映射。 某些应用管理其他类型的对象，如组。 计划将用户属性从 Azure AD 映射到应用程序，并根据业务需求 [自定义默认属性映射](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) 。
 
 ### <a name="certificate-requirements"></a>证书要求
 
@@ -171,9 +171,9 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 
 可以通过两种方法来管理证书。 
 
-- **自动证书滚动更新**-Microsoft 支持[Azure AD 中的签名密钥滚动更新](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover)。 虽然这是用于管理证书的首选方法，但并非所有 ISV 都支持此方案。
+- **自动证书滚动更新** -Microsoft 支持 [Azure AD 中的签名密钥滚动更新](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover)。 虽然这是用于管理证书的首选方法，但并非所有 ISV 都支持此方案。
 
-- **手动更新**-每个应用程序都有自己的基于定义方式过期的证书。 在应用程序的证书过期之前，请创建新的证书并将其发送到 ISV。 此信息可从联合元数据提取。 [在此处阅读有关联合元数据的详细信息。](https://docs.microsoft.com/azure/active-directory/develop/active-directory-federation-metadata)
+- **手动更新** -每个应用程序都有自己的基于定义方式过期的证书。 在应用程序的证书过期之前，请创建新的证书并将其发送到 ISV。 此信息可从联合元数据提取。 [在此处阅读有关联合元数据的详细信息。](https://docs.microsoft.com/azure/active-directory/develop/active-directory-federation-metadata)
 
 ## <a name="implement-sso"></a>实现 SSO
 
@@ -189,11 +189,11 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 
 - **配置 SSO**
 
-   在[应用程序列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)中，找到并打开应用程序的 SSO 教程，然后按照本教程中的步骤操作，成功配置 SaaS 应用程序。
+   在 [应用程序列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)中，找到并打开应用程序的 SSO 教程，然后按照本教程中的步骤操作，成功配置 SaaS 应用程序。
 
-   如果找不到应用程序，请参阅[自定义应用程序文档](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery)。 这将引导你完成如何添加不位于 Azure AD 库中的应用程序。
+   如果找不到应用程序，请参阅 [自定义应用程序文档](https://docs.microsoft.com/azure/active-directory/application-config-sso-how-to-configure-federated-sso-non-gallery)。 这将引导你完成如何添加不位于 Azure AD 库中的应用程序。
 
-   或者，你可以使用[Microsoft 指南文档](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)，为企业应用程序使用在 SAML 令牌中颁发的声明。 确保这会映射到你预期在应用程序的 SAML 响应中收到的内容。 如果在配置过程中遇到问题，请使用有关[如何调试 SSO 集成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)的指南。
+   或者，你可以使用 [Microsoft 指南文档](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)，为企业应用程序使用在 SAML 令牌中颁发的声明。 确保这会映射到你预期在应用程序的 SAML 响应中收到的内容。 如果在配置过程中遇到问题，请使用有关 [如何调试 SSO 集成](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)的指南。
 
 ### <a name="provide-sso-change-communications-to-end-users"></a>向最终用户提供 SSO 更改通信
 
@@ -231,7 +231,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 
 ### <a name="required-administrative-roles"></a>必需的管理角色
 
-始终使用具有最少权限的角色来完成 Azure Active Directory 中所需的任务。 Microsoft 建议[查看可用的不同角色](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)，并选择正确的角色以解决此应用程序的每个角色的需求。 在部署完成后，可能需要暂时应用某些角色并将其删除。
+始终使用具有最少权限的角色来完成 Azure Active Directory 中所需的任务。 Microsoft 建议 [查看可用的不同角色](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) ，并选择正确的角色以解决此应用程序的每个角色的需求。 在部署完成后，可能需要暂时应用某些角色并将其删除。
 
 | 增添| 角色 | Azure AD 角色 (（如果需要）)  |
 |--------|-------|-----------------------------|
@@ -241,7 +241,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 | 基础结构管理员 | 证书滚动更新所有者 | 全局管理员 |
 | 业务所有者/利益干系人 | 应用程序中的用户证明，具有权限的用户配置 | 无 |
 
-建议使用[Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) 来管理角色，以便为具有目录权限的用户提供其他审核、控制和访问评审。
+建议使用 [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) (PIM) 来管理角色，以便为具有目录权限的用户提供其他审核、控制和访问评审。
 
 ### <a name="sso-certificate-lifecycle-management"></a>SSO 证书生命周期管理
 
@@ -265,7 +265,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 
 ### <a name="access-management"></a>访问管理
 
-建议在管理对资源的访问权限时选择缩放的方法。 常见的方法包括通过使用 Azure AD Connect 进行同步、[基于用户属性在 Azure AD 中创建动态组](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal)，或在资源所有者管理 Azure AD 中创建[自助服务组](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management)，从而利用本地组。
+建议在管理对资源的访问权限时选择缩放的方法。 常见的方法包括通过使用 Azure AD Connect 进行同步、 [基于用户属性在 Azure AD 中创建动态组](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal)，或在资源所有者管理 Azure AD 中创建 [自助服务组](https://docs.microsoft.com/azure/active-directory/active-directory-accessmanagement-self-service-group-management) ，从而利用本地组。
 
 ### <a name="monitor-security"></a>监视安全性
 
@@ -285,7 +285,7 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在一组预�
 
 - [从自定义门户登录时遇到的问题](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-deeplink)
 
-- [从访问面板登录时出现问题](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
+- [从我的应用程序登录时出现问题](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-other-problem-access-panel)
 
 - [应用程序登录页上的错误](https://docs.microsoft.com/azure/active-directory/manage-apps/application-sign-in-problem-application-error)
 

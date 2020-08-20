@@ -6,22 +6,22 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 04/02/2020
+ms.date: 08/19/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 24118e6ae5c31399ce5d33361dd60e3a08424681
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 4c6c2774e0d71ec33449565efab797c040aa264f
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055762"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640593"
 ---
 # <a name="blob-snapshots"></a>Blob 快照
 
 快照是在某一时间点拍摄的只读版本的 Blob。
 
 > [!NOTE]
-> Blob 版本控制 (预览) 提供另一种方法来维护 blob 的历史副本。 有关详细信息，请参阅[Blob 版本控制 (预览) ](versioning-overview.md)。
+> Blob 版本控制 (预览) 提供另一种方法来维护以前版本的 blob。 有关详细信息，请参阅 [Blob 版本控制 (预览) ](versioning-overview.md)。
 
 ## <a name="about-blob-snapshots"></a>关于 Blob 快照
 
@@ -33,7 +33,7 @@ Blob 的快照与其基本 Blob 相同，不过，Blob URI 的后面追加了一
 > 所有快照共享基本 Blob 的 URI。 基本 Blob 与快照之间的唯一区别体现在追加的 **DateTime** 值。
 >
 
-一个 Blob 可以有任意数目的快照。 快照会一直保留，直到被显式删除（独立或作为基本 blob 的删除 Blob 操作的一部分）。 可以枚举与基本 Blob 关联的快照，以跟踪当前快照。
+一个 Blob 可以有任意数目的快照。 快照会一直保留，直到被显式删除（独立或作为基本 blob 的 [删除 Blob](/rest/api/storageservices/delete-blob) 操作的一部分）。 可以枚举与基本 Blob 关联的快照，以跟踪当前快照。
 
 创建 Blob 的快照时，会将该 Blob 的系统属性复制到具有相同值的快照。 基本 Blob 的元数据也会复制到快照，除非创建快照时为其指定了单独的元数据。 创建快照后，可以读取、复制或删除它，但无法修改它。
 
@@ -51,15 +51,15 @@ VHD 文件用于存储 VM 磁盘的当前信息和状态。 可以将磁盘从 V
 
 - 不管唯一的块或页是在 Blob 还是快照中，存储帐户都会产生费用。 在更新快照所基于的 Blob 之前，你的帐户不会就与 Blob 关联的快照产生额外费用。 更新基本 Blob 后，它与其快照分离。 发生这种情况时，需要支付每个 Blob 或快照中唯一块或页的费用。
 - 在替换块 Blob 中的某个块后，会将该块作为唯一块进行收费。 即使该块具有的块 ID 和数据与它在快照中所具有的 ID 和数据相同也是如此。 重新提交块后，它将偏离它在任何快照中的对应部分，并且要为数据支付费用。 对于使用相同数据更新的页 Blob 中的页面来说，情况也是如此。
-- 通过调用 [UploadFromFile][dotnet_UploadFromFile]、[UploadText][dotnet_UploadText]、[UploadFromStream][dotnet_UploadFromStream] 或 [UploadFromByteArray][dotnet_UploadFromByteArray] 方法来替换块 Blob 即可替换该 Blob 中的所有块。 如果你有与该 Blob 关联的快照，则基本 Blob 和快照中的所有块现在将发生偏离，你需要为这两个 Blob 中的所有块支付费用。 即使基本 Blob 和快照中的数据保持相同也是如此。
+- 通过调用覆盖 blob 的全部内容的方法更新块 blob 将替换 blob 中的所有块。 如果你有与该 Blob 关联的快照，则基本 Blob 和快照中的所有块现在将发生偏离，你需要为这两个 Blob 中的所有块支付费用。 即使基本 Blob 和快照中的数据保持相同也是如此。
 - Azure Blob 服务无法确定这两个块是否包含相同的数据。 每个上传和提交的块均被视为唯一的快，即使它具有相同的数据和块 ID 也是如此。 由于唯一的块会产生费用，因此必须考虑到：在更新具有快照的 Blob 时，会产生额外的唯一块，因此也会产生额外的费用。
 
-### <a name="minimize-cost-with-snapshot-management"></a>将快照管理成本降至最低
+### <a name="minimize-costs-with-snapshot-management"></a>通过快照管理降低成本
 
 我们建议仔细管理快照，避免额外费用。 遵循下述最佳做法可以将存储快照的费用降至最低：
 
 - 除非应用程序设计需要保留与 Blob 关联的快照，否则请在更新 Blob 时删除并重新创建这些快照，即使你使用相同的数据进行更新也是如此。 通过删除并重新创建 Blob 的快照，可以确保 Blob 和快照不会发生偏离。
-- 如果要保留 Blob 的快照，请避免调用 [UploadFromFile][dotnet_UploadFromFile]、[UploadText][dotnet_UploadText]、[UploadFromStream][dotnet_UploadFromStream] 或 [UploadFromByteArray][dotnet_UploadFromByteArray] 来更新该 Blob。 这些方法将替换 Blob 中的所有块，导致基本 Blob 和其快照发生明显偏离。 请改为使用 [PutBlock][dotnet_PutBlock] 和 [PutBlockList][dotnet_PutBlockList] 方法更新尽可能少的块。
+- 如果要保留 blob 的快照，请避免在更新 blob 时调用覆盖整个 blob 的方法。 应更新尽可能少的块数，以降低成本。
 
 ### <a name="snapshot-billing-scenarios"></a>快照计费方案
 
@@ -85,9 +85,12 @@ VHD 文件用于存储 VM 磁盘的当前信息和状态。 可以将磁盘从 V
 
 #### <a name="scenario-4"></a>方案 4
 
-在方案 4 中，已完全更新基本 Blob，并且其中不包含任何原始块。 因此，帐户需要为所有八个唯一块支付费用。 如果使用 [UploadFromFile][dotnet_UploadFromFile]、[UploadText][dotnet_UploadText]、[UploadFromStream][dotnet_UploadFromStream] 或 [UploadFromByteArray][dotnet_UploadFromByteArray] 等更新方法，则会出现此情况，因为这些方法将替换 Blob 的所有内容。
+在方案 4 中，已完全更新基本 Blob，并且其中不包含任何原始块。 因此，帐户需要为所有八个唯一块支付费用。
 
 ![Azure 存储资源](./media/snapshots-overview/storage-blob-snapshots-billing-scenario-4.png)
+
+> [!TIP]
+> 避免调用覆盖整个 blob 的方法，而是更新各个块以降低成本。
 
 ## <a name="next-steps"></a>后续步骤
 

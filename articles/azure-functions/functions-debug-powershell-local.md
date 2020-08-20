@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 51edbc18a929f4f954fb1a582a417bc1600d1a6f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: dc5bfacf470980a5d38832ec6299c8ff1426ee05
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082981"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642225"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>本地调试 PowerShell Azure Functions
 
@@ -22,7 +22,7 @@ Azure Functions 允许你将函数作为 PowerShell 脚本进行开发。
 * [Visual Studio Code](https://code.visualstudio.com/)： Microsoft 的免费、轻型和开源文本编辑器，其中提供了 powershell 扩展，提供完整的 powershell 开发体验。
 * PowerShell 控制台：使用与调试任何其他 PowerShell 进程相同的命令进行调试。
 
-[Azure Functions Core Tools](functions-run-local.md)支持 Azure Functions 的本地调试，包括 PowerShell 函数。
+[Azure Functions Core Tools](functions-run-local.md) 支持 Azure Functions 的本地调试，包括 PowerShell 函数。
 
 ## <a name="example-function-app"></a>示例函数应用
 
@@ -38,7 +38,7 @@ PSFunctionApp
  | - profile.ps1
 ```
 
-此函数应用与完成[PowerShell 快速入门](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)时获取的应用类似。
+此函数应用与完成 [PowerShell 快速入门](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)时获取的应用类似。
 
 中的函数代码 `run.ps1` 类似于以下脚本：
 
@@ -95,7 +95,7 @@ if($name) {
 * [适用于 Visual Studio Code 的 Azure Functions 扩展](functions-create-first-function-vs-code.md)
 * [PowerShell Core 6.2 或更高版本](/powershell/scripting/install/installing-powershell-core-on-windows)
 
-安装这些依赖项后，加载现有的 PowerShell 函数项目，或者[创建第一个 Powershell 函数项目](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)。
+安装这些依赖项后，加载现有的 PowerShell 函数项目，或者 [创建第一个 Powershell 函数项目](./functions-create-first-function-vs-code.md?pivots=programming-language-powershell)。
 
 >[!NOTE]
 > 如果你的项目没有所需的配置文件，则系统会提示你添加它们。
@@ -106,17 +106,17 @@ PowerShell Core 与 Windows PowerShell 并行安装。 将 PowerShell Core 设�
 
 1. 按 F1 显示命令托盘，然后搜索 `Session` 。
 
-1. 选择**PowerShell：显示会话菜单**。
+1. 选择 **PowerShell：显示会话菜单**。
 
-1. 如果**当前会话**不是**PowerShell core 6**，请选择 "**切换到： PowerShell core 6**"。
+1. 如果 **当前会话** 不是 **PowerShell core 6**，请选择 " **切换到： PowerShell core 6**"。
 
-打开 PowerShell 文件后，会看到该版本在窗口右下角显示为绿色。 选择此文本还会显示 "会话" 菜单。 若要了解详细信息，请参阅[选择用于扩展的 PowerShell 版本](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension)。
+打开 PowerShell 文件后，会看到该版本在窗口右下角显示为绿色。 选择此文本还会显示 "会话" 菜单。 若要了解详细信息，请参阅 [选择用于扩展的 PowerShell 版本](/powershell/scripting/components/vscode/using-vscode#choosing-a-version-of-powershell-to-use-with-the-extension)。
 
 ### <a name="start-the-function-app"></a>启动函数应用
 
 验证 `Wait-Debugger` 是否在要附加调试器的函数中进行了设置。  `Wait-Debugger`添加后，可以使用 Visual Studio Code 调试函数应用。
 
-选择 "**调试**" 窗格，并**附加到 PowerShell 函数**。
+选择 " **调试** " 窗格，并 **附加到 PowerShell 函数**。
 
 ![调试器](https://user-images.githubusercontent.com/2644648/56166073-8a7b3780-5f89-11e9-85ce-36ed38e221a2.png)
 
@@ -129,7 +129,7 @@ PowerShell Core 与 Windows PowerShell 并行安装。 将 PowerShell Core 设�
 * 将 PowerShell 调试器附加到函数运行时中的 PowerShell 运行空间。
 
 >[!NOTE]
-> 需要确保 PSWorkerInProcConcurrencyUpperBound 设置为1，以确保 Visual Studio Code 中的调试体验正确。 这是默认设置。
+> 需要确保 PSWorkerInProcConcurrencyUpperBound 设置为1，以确保 Visual Studio Code 中的调试体验正确。 这是默认值。
 
 函数应用运行后，需要一个单独的 PowerShell 控制台来调用 HTTP 触发的函数。
 
@@ -141,9 +141,9 @@ PowerShell Core 与 Windows PowerShell 并行安装。 将 PowerShell Core 设�
 Invoke-RestMethod "http://localhost:7071/api/HttpTrigger?Name=Functions"
 ```
 
-你会注意到响应不会立即返回。 这是因为， `Wait-Debugger` 已附加调试器，并且 PowerShell 执行会尽快进入中断模式。 这是由于 BreakAll 的[概念](#breakall-might-cause-your-debugger-to-break-in-an-unexpected-place)，稍后将对此进行说明。 按下按钮后 `continue` ，调试器现在会在行的后面立即中断 `Wait-Debugger` 。
+你会注意到响应不会立即返回。 这是因为， `Wait-Debugger` 已附加调试器，并且 PowerShell 执行会尽快进入中断模式。 这是由于 BreakAll 的 [概念](#breakall-might-cause-your-debugger-to-break-in-an-unexpected-place)，稍后将对此进行说明。 按下按钮后 `continue` ，调试器现在会在行的后面立即中断 `Wait-Debugger` 。
 
-此时，已附加调试器，可以执行所有正常的调试器操作。 有关在 Visual Studio Code 中使用调试器的详细信息，请参阅[官方文档](https://code.visualstudio.com/Docs/editor/debugging#_debug-actions)。
+此时，已附加调试器，可以执行所有正常的调试器操作。 有关在 Visual Studio Code 中使用调试器的详细信息，请参阅 [官方文档](https://code.visualstudio.com/Docs/editor/debugging#_debug-actions)。
 
 继续并完全调用脚本后，你会注意到：
 
@@ -155,7 +155,7 @@ Invoke-RestMethod "http://localhost:7071/api/HttpTrigger?Name=Functions"
 ## <a name="debugging-in-a-powershell-console"></a>在 PowerShell 控制台中调试
 
 >[!NOTE]
-> 本部分假设你已阅读[Azure Functions Core Tools 文档](functions-run-local.md)，并了解如何使用 `func host start` 命令启动函数应用。
+> 本部分假设你已阅读 [Azure Functions Core Tools 文档](functions-run-local.md) ，并了解如何使用 `func host start` 命令启动函数应用。
 
 `cd`在函数应用的目录中打开控制台，并运行以下命令：
 
@@ -220,7 +220,7 @@ At /Path/To/PSFunctionApp/HttpTriggerFunction/run.ps1:13 char:1
 [DBG]: [Process:49988]: [Runspace1]: PS /Path/To/PSFunctionApp>>
 ```
 
-此时，你会在[PowerShell 调试器](/powershell/module/microsoft.powershell.core/about/about_debuggers)中的断点处停止。 在这里，你可以执行所有常见的调试操作：逐过程执行、逐过程执行、继续、退出以及其他操作。 若要查看控制台中可用的完整调试命令集，请运行 `h` 或 `?` 命令。
+此时，你会在 [PowerShell 调试器](/powershell/module/microsoft.powershell.core/about/about_debuggers)中的断点处停止。 在这里，你可以执行所有常见的调试操作：逐过程执行、逐过程执行、继续、退出以及其他操作。 若要查看控制台中可用的完整调试命令集，请运行 `h` 或 `?` 命令。
 
 还可以通过 cmdlet 在此级别设置断点 `Set-PSBreakpoint` 。
 
@@ -229,13 +229,13 @@ At /Path/To/PSFunctionApp/HttpTriggerFunction/run.ps1:13 char:1
 * 你执行的 PowerShell 控制台 `Invoke-RestMethod` 现在返回结果。
 * 你执行的 PowerShell 控制台 `Debug-Runspace` 正在等待脚本执行。
 
-您可以再次调用相同的函数（例如，使用 `Invoke-RestMethod` ），并且调试器会在命令后立即中断 `Wait-Debugger` 。
+您可以再次调用相同的函数 (`Invoke-RestMethod` 例如) ，调试器会在命令后立即中断 `Wait-Debugger` 。
 
 ## <a name="considerations-for-debugging"></a>调试注意事项
 
 在调试函数代码时，请注意以下问题。
 
-### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll`可能导致调试器在意外的位置中断
+### <a name="breakall-might-cause-your-debugger-to-break-in-an-unexpected-place"></a>`BreakAll` 可能导致调试器在意外的位置中断
 
 PowerShell 扩展使用 `Debug-Runspace` ，后者又依赖于 PowerShell 的 `BreakAll` 功能。 此功能告知 PowerShell 在执行的第一个命令处停止。 此行为使你有机会在调试的运行空间内设置断点。
 
@@ -243,6 +243,16 @@ PowerShell 扩展使用 `Debug-Runspace` ，后者又依赖于 PowerShell 的 `B
 
 如果发生此中断，请运行 `continue` 或 `c` 命令跳过此断点。 然后，在预期的断点处停止。
 
+## <a name="troubleshooting"></a>疑难解答
+
+如果在调试过程中遇到困难，应检查以下各项：
+
+| 勾选标记 | 操作 |
+|------|------|
+| `func --version`从终端运行。 如果收到一个 `func` 找不到的错误，则可能是本地变量中缺少 ( # A0) 的核心工具 `path` 。| [重新安装核心工具](functions-run-local.md#v2)。|  
+| 在 Visual Studio Code 中，默认终端需要有权访问 func.exe。 请确保未使用未安装核心工具的默认终端，如适用于 Linux 的 Windows 子系统 (WSL) 。  | 将 Visual Studio Code 中的默认 shell 设置为 PowerShell 7 (推荐的) 或 Windows PowerShell 5.1。|
+  
+
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关使用 PowerShell 开发函数的详细信息，请参阅[Azure Functions powershell 开发人员指南](functions-reference-powershell.md)。
+若要了解有关使用 PowerShell 开发函数的详细信息，请参阅 [Azure Functions powershell 开发人员指南](functions-reference-powershell.md)。

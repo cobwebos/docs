@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 62c3dad980b65c3e8cfc64c98ba173f667e0b5fe
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: ab11060924c29dbddc965aa94064d0091a7b348e
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447062"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639845"
 ---
 # <a name="high-availability-ports-overview"></a>高可用性端口概述
 
@@ -92,7 +92,7 @@ HA 端口功能在所有全局 Azure 区域中均可用。
 ## <a name="limitations"></a>限制
 
 - HA 端口负载均衡规则仅适用于内部标准负载均衡器。
-- 不支持将 HA 端口负载均衡规则和指向相同后端 ipconfiguration 的非 HA 端口负载均衡规则组合在一起，除非这两者都启用了浮动 IP。
+- **不**支持将 HA 端口负载平衡规则和非 ha 端口负载平衡规则与指向同一)  (后端 IP 配置的非 HA 端口负载平衡规则结合使用，除非同时启用了浮动 ip。
 - 现有 IP 片段将由 HA 端口负载均衡规则转发到与第一个数据包相同的目标。  不支持对 UDP 或 TCP 数据包进行 IP 分段。
 - 只有使用方式如上方的示意图所示并且使用了 HA 端口负载均衡规则时，才会通过后端实例和单一 NIC（以及单 IP 配置）来支持流对称（主要是针对 NVA 方案）。 任何其他方案中都不提供此功能。 这意味着，两个或多个负载均衡器资源和及其各自的规则都独立做出决策，永远不会进行协调。 请参阅[网络虚拟设备](#nva)的说明和示意图。 如果使用了多个 NIC 或者将 NVA 置于公共负载均衡器与内部负载均衡器之间，则流对称功能不可用。  通过对发往设备 IP 的传入流执行来源 NAT 操作以允许回复到达同一 NVA，也许能够解决此问题。  但是，强烈建议使用单一 NIC，并使用上方示意图中所示的参考体系结构。
 

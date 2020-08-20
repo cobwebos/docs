@@ -153,6 +153,8 @@
       href: concept-ml-pipelines.md
     - name: 企业就绪情况和安全性
       items:
+        - name: 安全基线
+          href: security-baseline.md
         - name: 企业安全和管理
           items:
             - name: 企业安全概述

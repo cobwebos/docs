@@ -4,12 +4,12 @@ description: 了解如何使用 Pythong 开发函数
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 776355ce981ba5cc2a24bfe473da2f55427eadf6
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f9b81a7263dc9a1bdae9fd881519ac734da2c6bc
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850740"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642191"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -87,7 +87,6 @@ Python 函数项目的建议文件夹结构如以下示例所示：
 * requirements.txt：包含系统在发布到 Azure 时安装的包列表。
 * *host.json*：包含在函数应用中影响所有函数的全局配置选项。 此文件会被发布到 Azure。 本地运行时，并非所有选项都受支持。 若要了解详细信息，请参阅 [host.json](functions-host-json.md)。
 * .funcignore：（可选）声明不应发布到 Azure 的文件。
-* .gitignore：（可选）声明从 git 存储库中排除的文件，如 local.settings.json。
 * Dockerfile：（可选）在[自定义容器](functions-create-function-linux-custom-image.md)中发布项目时使用。
 
 每个函数都有自己的代码文件和绑定配置文件 (function.json)。
@@ -330,7 +329,7 @@ def main():
 
 ### <a name="use-multiple-language-worker-processes"></a>使用多个语言工作进程
 
-默认情况下，每个函数主机实例都有一个语言工作进程。 利用 [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) 应用程序设置，你可以增加每个主机的工作进程数（多达 10 个）。 然后，Azure Functions 尝试在这些辅助角色之间均匀分配同时发出的函数调用。
+默认情况下，每个函数主机实例都有一个语言工作进程。 使用 [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) 应用程序设置可增加每个主机的工作进程数（最多 10 个）。 然后，Azure Functions 会尝试在这些工作进程之间平均分配同步函数调用。
 
 FUNCTIONS_WORKER_PROCESS_COUNT 适用于 Functions 在横向扩展应用程序来满足需求时创建的每一个主机。
 
@@ -430,11 +429,11 @@ pip install -r requirements.txt
 
 有三个生成操作支持将 Python 项目发布到 Azure：远程生成、本地生成和使用自定义依赖项的生成。
 
-你还可以使用 Azure Pipelines 来构建依赖项，并使用持续交付 (CD) 发布。 若要了解详细信息，请参阅[使用 Azure DevOps 持续交付](functions-how-to-azure-devops.md)。
+你还可以使用 Azure Pipelines 来构建依赖项，并使用持续交付 (CD) 发布。 若要了解详细信息，请参阅 [使用 Azure DevOps 持续交付](functions-how-to-azure-devops.md)。
 
 ### <a name="remote-build"></a>远程生成
 
-使用远程生成时，在服务器上还原的依赖项和本机依赖项与生产环境匹配。 这会生成较小的部署包。 在 Windows 上开发 Python 应用时使用远程生成。 如果你的项目具有自定义依赖项，则可以[将远程生成用于额外的索引 URL](#remote-build-with-extra-index-url)。
+使用远程生成时，在服务器上还原的依赖项和本机依赖项与生产环境匹配。 这会生成较小的部署包。 在 Windows 上开发 Python 应用时使用远程生成。 如果你的项目具有自定义依赖项，则可以 [将远程生成用于额外的索引 URL](#remote-build-with-extra-index-url)。
 
 依赖项是根据 requirements.txt 文件的内容远程获取的。 [远程生成](functions-deployment-technologies.md#remote-build)是推荐的生成方法。 默认情况下，使用下面的 [func azure functionapp publish](functions-run-local.md#publish) 命令将 Python 项目发布到 Azure 时，Azure Functions Core Tools 会请求远程生成。
 
@@ -462,13 +461,13 @@ func azure functionapp publish <APP_NAME> --build local
 
 ### <a name="custom-dependencies"></a>自定义依赖项
 
-如果你的项目在[Python 包索引](https://pypi.org/)中找不到依赖项，则可以通过两种方式生成项目。 生成方法取决于生成项目的方式。
+如果你的项目在 [Python 包索引](https://pypi.org/)中找不到依赖项，则可以通过两种方式生成项目。 生成方法取决于生成项目的方式。
 
 #### <a name="remote-build-with-extra-index-url"></a>具有额外索引 URL 的远程生成
 
-如果包可从可访问的自定义包索引中获取，请使用远程生成。 在发布之前，请确保[创建一个](functions-how-to-use-azure-function-app-settings.md#settings)名为的应用设置 `PIP_EXTRA_INDEX_URL` 。 此设置的值为自定义包索引的 URL。 使用此设置可告诉远程生成 `pip install` 使用 `--extra-index-url` 选项运行。 若要了解详细信息，请参阅[Python pip 安装文档](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format)。
+如果包可从可访问的自定义包索引中获取，请使用远程生成。 在发布之前，请确保 [创建一个](functions-how-to-use-azure-function-app-settings.md#settings) 名为的应用设置 `PIP_EXTRA_INDEX_URL` 。 此设置的值为自定义包索引的 URL。 使用此设置可告诉远程生成 `pip install` 使用 `--extra-index-url` 选项运行。 若要了解详细信息，请参阅 [Python pip 安装文档](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format)。
 
-你还可以将基本身份验证凭据用于额外的包索引 Url。 若要了解详细信息，请参阅 Python 文档中的[基本身份验证凭据](https://pip.pypa.io/en/stable/user_guide/#basic-authentication-credentials)。
+你还可以将基本身份验证凭据用于额外的包索引 Url。 若要了解详细信息，请参阅 Python 文档中的 [基本身份验证凭据](https://pip.pypa.io/en/stable/user_guide/#basic-authentication-credentials) 。
 
 #### <a name="install-local-packages"></a>安装本地包
 
@@ -663,7 +662,7 @@ Python 标准库包含每个 Python 分发附带的内置 Python 模块列表。
 
 ### <a name="azure-functions-python-library"></a>Azure Functions Python 库
 
-每个 Python 辅助角色更新包括[Azure Functions Python 库 (](https://github.com/Azure/azure-functions-python-library)的新版本) 。 由于每个更新都是向后兼容的，因此这种方法可以更轻松地持续更新 Python 函数应用。 可以在[azure 功能 PyPi](https://pypi.org/project/azure-functions/#history)中找到此库的版本列表。
+每个 Python 辅助角色更新包括 [Azure Functions Python 库 (](https://github.com/Azure/azure-functions-python-library)的新版本) 。 由于每个更新都是向后兼容的，因此这种方法可以更轻松地持续更新 Python 函数应用。 可以在 [azure 功能 PyPi](https://pypi.org/project/azure-functions/#history)中找到此库的版本列表。
 
 运行时库版本由 Azure 修复，不能通过 requirements.txt 重写。 `azure-functions`requirements.txt 中的条目仅适用于 linting 和客户认知。
 
@@ -679,8 +678,8 @@ getattr(azure.functions, '__version__', '< 1.2.1')
 
 |  Functions 运行时  | Debian 版本 | Python 版本 |
 |------------|------------|------------|
-| 版本 2.x | 拉伸  | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
-| 3\.x 版 | Buster | [Python 3.6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+| 版本 2.x | 拉伸  | [Python 3。6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
+| 3\.x 版 | Buster | [Python 3。6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3.8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
 
 ## <a name="cross-origin-resource-sharing"></a>跨域资源共享
 

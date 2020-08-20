@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 18ca9244f818fa745725f13d79a23c1a232e01ed
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c41207bedbea96c76f0a9a6ffd45ea6efa09138b
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545380"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88641766"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>适用于 Windows 的 Key Vault 虚拟机扩展
 
@@ -83,16 +83,16 @@ ms.locfileid: "88545380"
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
 | apiVersion | 2019-07-01 | date |
-| publisher | Microsoft.Azure.KeyVault | string |
+| publisher | Microsoft.Azure.KeyVault | 字符串 |
 | type | KeyVaultForWindows | string |
 | typeHandlerVersion | 1.0 | int |
-| pollingIntervalInS | 3600 | string |
-| certificateStoreName | MY | string |
+| pollingIntervalInS | 3600 | 字符串 |
+| certificateStoreName | MY | 字符串 |
 | linkOnRenewal | false | boolean |
-| certificateStoreLocation  | LocalMachine | string |
+| certificateStoreLocation  | LocalMachine 或 CurrentUser (区分大小写)  | 字符串 |
 | requiredInitialSync | true | boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | 字符串数组
-| msiEndpoint | http://169.254.169.254/metadata/identity | string |
+| msiEndpoint | http://169.254.169.254/metadata/identity | 字符串 |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | string |
 
 

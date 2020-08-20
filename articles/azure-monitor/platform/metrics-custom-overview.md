@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: ca697fe0174a62532f3fa9ffbc5b3fcfc0c06ad7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 73c9b2bf8cf88ca5e8576c451c9d9ac5f0eae8a3
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321269"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88639896"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的自定义指标（预览版）
 
@@ -26,13 +26,14 @@ Azure Monitor 自定义指标目前为公开预览版。
 
 可以通过多种方法将自定义指标发送到 Azure Monitor：
 - 使用 Azure Application Insights SDK 检测应用程序并将自定义遥测数据发送到 Azure Monitor。 
+- 在 [Windows 或 Linux AZURE VM](azure-monitor-agent-overview.md) 上安装 Azure Monitor 代理 (预览版) ，并使用 [数据收集规则](data-collection-rule-azure-monitor-agent.md) 将性能计数器发送到 Azure Monitor 度量值。
 - 在 [Azure VM](collect-custom-metrics-guestos-resource-manager-vm.md)、[虚拟机规模集](collect-custom-metrics-guestos-resource-manager-vmss.md)、[经典 VM](collect-custom-metrics-guestos-vm-classic.md) 或[经典云服务](collect-custom-metrics-guestos-vm-cloud-service-classic.md)上安装 Windows Azure 诊断 (WAD) 扩展，并将性能计数器发送到 Azure Monitor。 
 - 在 Azure Linux VM 上安装 [InfluxData Telegraf 代理](collect-custom-metrics-linux-telegraf.md)，并使用 Azure Monitor 输出插件发送指标。
 - 将自定义指标[直接发送到 Azure Monitor REST API](./metrics-store-custom-rest-api.md)：`https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics`。
 
 ## <a name="pricing-model-and-retention"></a>定价模型和保留期
 
-查看 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)，了解何时为自定义指标和指标查询启用计费的详细信息。 本页提供所有指标的特定价格详细信息，包括自定义指标和指标查询。 总而言之，将标准指标（平台指标）引入 Azure Monitor 度量值存储没有开销，但当自定义指标进入正式上市时，它们会产生成本。 指标 API 查询会产生成本。
+查看 [Azure Monitor 定价页](https://azure.microsoft.com/pricing/details/monitor/)，了解何时为自定义指标和指标查询启用计费的详细信息。 本页提供所有指标的特定价格详细信息，包括自定义指标和指标查询。 总而言之，将标准指标 (平台指标) 引入 Azure Monitor 指标存储不会产生成本，但自定义指标在输入正式上市后会产生成本。 指标 API 查询会产生成本。
 
 自定义指标的保留时间[与平台指标的保留时间相同](data-platform-metrics.md#retention-of-metrics)。 
 
@@ -195,7 +196,7 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 |美国中南部| https： \/ /southcentralus.monitoring.azure.com |
 |美国中部      | https： \/ /centralus.monitoring.azure.com |
 |加拿大中部 | https： \/ /canadacentral.monitoring.azure.com |
-|East US| https： \/ /eastus.monitoring.azure.com |
+|美国东部| https： \/ /eastus.monitoring.azure.com |
 |美国东部 2 | https： \/ /eastus2.monitoring.azure.com |
 | **欧洲** | |
 |北欧    | https： \/ /northeurope.monitoring.azure.com |
@@ -207,8 +208,8 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 | **亚洲** | |
 |印度中部 | https： \/ /centralindia.monitoring.azure.com |
 |澳大利亚东部 | https： \/ /australiaeast.monitoring.azure.com |
-|Japan East | https： \/ /japaneast.monitoring.azure.com |
-|Southeast Asia  | https： \/ /southeastasia.monitoring.azure.com |
+|日本东部 | https： \/ /japaneast.monitoring.azure.com |
+|东南亚  | https： \/ /southeastasia.monitoring.azure.com |
 |东亚 | https： \/ /eastasia.monitoring.azure.com |
 |韩国中部   | https： \/ /koreacentral.monitoring.azure.com |
 

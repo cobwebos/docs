@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/10/2020
-ms.openlocfilehash: af5324373359cea643a3e31b6bb94e614ddb7e36
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.date: 08/19/2020
+ms.openlocfilehash: 32993ba41a612ccf0f02a242ed610feab2fac78f
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082935"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88640729"
 ---
 # <a name="data-collection-rules-in-azure-monitor-preview"></a>Azure Monitor (预览版中的数据收集规则) 
 数据收集规则 (DCR) 定义传入 Azure Monitor 的数据，并指定应发送或存储数据的位置。 本文概述了数据收集规则，其中包括内容和结构，以及如何创建和使用它们。
@@ -19,7 +19,7 @@ ms.locfileid: "88082935"
 ## <a name="input-sources"></a>输入源
 数据收集规则当前支持以下输入源：
 
-- 具有 Azure Monitor 代理的 Azure 虚拟机。 请参阅[配置 Azure Monitor 代理的数据收集 (预览版) ](data-collection-rule-azure-monitor-agent.md)。
+- 具有 Azure Monitor 代理的 Azure 虚拟机。 请参阅 [配置 Azure Monitor 代理的数据收集 (预览版) ](data-collection-rule-azure-monitor-agent.md)。
 
 
 
@@ -67,8 +67,8 @@ ms.locfileid: "88082935"
 ## <a name="create-a-dcr"></a>创建 DCR
 目前有两种方法可用于创建 DCR：
 
-- [使用 Azure 门户](data-collection-rule-azure-monitor-agent.md)创建数据收集规则并将其与一个或多个虚拟机相关联。
-- 直接在 JSON 中编辑数据收集规则并使用 REST API 进行提交。
+- [使用 Azure 门户](data-collection-rule-azure-monitor-agent.md) 创建数据收集规则并将其与一个或多个虚拟机相关联。
+- 直接在 JSON 中编辑数据收集规则并 [使用 REST API 进行提交](https://docs.microsoft.com/rest/api/monitor/datacollectionrules)。
 
 ## <a name="sample-data-collection-rule"></a>示例数据收集规则
 下面的示例数据收集规则适用于具有 Azure 管理代理的虚拟机，并提供以下详细信息：

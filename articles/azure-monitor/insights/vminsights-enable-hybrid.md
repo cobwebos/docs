@@ -6,29 +6,29 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 3b30cefdd72286c15095828c409a87f173200a7b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: d994df4d56f4958784256ff9cd92ce1e6f3b3e50
+ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828398"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88642157"
 ---
 # <a name="enable-azure-monitor-for-vms-for-a-hybrid-virtual-machine"></a>启用混合虚拟机的用于 VM 的 Azure Monitor
 本文介绍如何为 Azure 之外的虚拟机（包括本地和其他云环境）启用用于 VM 的 Azure Monitor。
 
 > [!IMPORTANT]
-> 启用混合 Vm 的建议方法是首先为[服务器启用 Azure Arc](../../azure-arc/servers/overview.md) ，以便可以使用类似于 Azure vm 的进程为用于 VM 的 Azure Monitor 启用 vm。 本文介绍如果选择不使用 Azure Arc，如何载入混合 Vm。
+> 启用混合 Vm 的建议方法是首先为 [服务器启用 Azure Arc](../../azure-arc/servers/overview.md) ，以便可以使用类似于 Azure vm 的进程为用于 VM 的 Azure Monitor 启用 vm。 本文介绍如果选择不使用 Azure Arc，如何载入混合 Vm。
 
-## <a name="prerequisites"></a>必备条件
+## <a name="prerequisites"></a>先决条件
 
 - [创建并配置 Log Analytics 工作区](vminsights-configure-workspace.md)。
-- 请参阅[支持的操作系统](vminsights-enable-overview.md#supported-operating-systems)，以确保正在启用的虚拟机或虚拟机规模集的操作系统受支持。 
+- 请参阅 [支持的操作系统](vminsights-enable-overview.md#supported-operating-systems) ，以确保正在启用的虚拟机或虚拟机规模集的操作系统受支持。 
 
 
 ## <a name="overview"></a>概述
 Azure 之外的虚拟机需要用于 Azure Vm 的相同 Log Analytics 代理和依赖项代理。 尽管你无法使用 VM 扩展来安装代理，但你必须手动将它们安装在来宾操作系统中，或通过其他方法安装它们。 
 
-有关部署 Log Analytics 代理的详细信息，请参阅[将 Windows 计算机连接到 Azure Monitor](../platform/agent-windows.md)或[将 Linux 计算机连接到 Azure Monitor](../platform/agent-linux.md) 。 本文提供了依赖关系代理的详细信息。 
+有关部署 Log Analytics 代理的详细信息，请参阅 [将 Windows 计算机连接到 Azure Monitor](../platform/agent-windows.md) 或 [将 Linux 计算机连接到 Azure Monitor](../platform/agent-linux.md) 。 本文提供了依赖关系代理的详细信息。 
 
 ## <a name="firewall-requirements"></a>防火墙要求
 [Log Analytics 代理概述](../platform/log-analytics-agent.md#network-requirements)中提供了 Log Analytics 代理的防火墙要求。 用于 VM 的 Azure Monitor 映射依赖项代理本身不传输任何数据，它不需要对防火墙或端口做出任何更改。 映射数据始终由 Log Analytics 代理传输到 Azure Monitor 服务 - 要么采用直接传输的方式，要么通过 [Operations Management Suite 网关](../../azure-monitor/platform/gateway.md)进行传输（如果 IT 安全策略不允许网络中的计算机连接到 Internet）。
@@ -43,13 +43,13 @@ Azure 之外的虚拟机需要用于 Azure Vm 的相同 Log Analytics 代理和�
 
 | 文件 | (OS) | Version | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.4.10090 | B4E1FF9C1E5CD254AA709AEF9723A81F04EC0763C327567C582CE99C0C5A0BAE  |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.4.10090 | A56E310D297CE3B343AE8F4A6F72980F1C3173862D6169F1C713C2CA09660A9F |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.5.10940 | C27A56D0BE9CF162DF73292DFBB2083F5FF749F2B80FCAD2545BC8B14B64A8D7  |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.5.10940 | 71B4E1DA5116E61E03317C49C6702B5069F01A0C9A7CB860F6ACFAF5C198740E |
 
 
 ## <a name="install-the-dependency-agent-on-windows"></a>在 Windows 上安装依赖项代理
 
-可通过运行 `InstallDependencyAgent-Windows.exe` 在 Windows 计算机上手动安装 Dependency Agent。 如果在没有任何选项的情况下运行此可执行文件，它将启动一个安装向导，以交互方式指导用户安装代理。 需要来宾操作系统上的*管理员*权限才能安装或卸载代理。
+可通过运行 `InstallDependencyAgent-Windows.exe` 在 Windows 计算机上手动安装 Dependency Agent。 如果在没有任何选项的情况下运行此可执行文件，它将启动一个安装向导，以交互方式指导用户安装代理。 需要来宾操作系统上的 *管理员* 权限才能安装或卸载代理。
 
 下表突出显示了通过命令行安装代理时支持的参数。
 
