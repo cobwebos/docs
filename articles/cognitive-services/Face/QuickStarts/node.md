@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 44bd0a766574889334601a354b47946a80fc475a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 245cb90fa49e844b6e190f6acb8a44f339fd29dd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87833686"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88539312"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>快速入门：使用人脸 REST API 和 Node.js 检测图像中的人脸
 
 本快速入门将通过 Node.js 使用 Azure 人脸 REST API 检测图像中的人脸。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。 
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。 
 
 ## <a name="prerequisites"></a>先决条件
 

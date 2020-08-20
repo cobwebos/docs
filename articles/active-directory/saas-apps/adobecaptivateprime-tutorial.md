@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Adobe Captivate Prime 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Adobe Captivate Prime 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2f95b226-1465-47f4-b8b7-de4b0772abbc
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdc93cb5d04630307026c2786fda117e16f60f4e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a705119120af9e5eca5815880096b884b5199a09
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73153990"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88537834"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-captivate-prime"></a>教程：Azure Active Directory 与 Adobe Captivate Prime 集成
 
