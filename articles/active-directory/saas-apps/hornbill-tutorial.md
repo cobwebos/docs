@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Hornbill 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Hornbill 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 173061e4-ac1d-458f-bb9b-e9a2493aab0e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2770a1c5826b8eebaadb6694068afa29118a3037
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 315c6ecaeb466f3a04ed33dc9040ddab49361575
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86500004"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521882"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hornbill"></a>教程：Azure Active Directory 与 Hornbill 的集成
 

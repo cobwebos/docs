@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Lynda.com 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Lynda.com 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f6c92789-8b64-4049-bac9-8cb928398433
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7550ba7f375cb7d8b291c0adf7f0ebded16f0990
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 575f92e89bad90cf2aa5fc80689ebccde91575b9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74227512"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521745"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lyndacom"></a>教程：Azure Active Directory 与 Lynda.com 的集成
 
