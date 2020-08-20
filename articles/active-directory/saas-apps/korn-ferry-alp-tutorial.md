@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Korn Ferry ALP 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Korn Ferry ALP 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 6f5b53b7-6d1d-4bed-a95a-127e2d4d8b3f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83efecea84073020e87b25a83a3a26c6d25ea08c
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 52de9ca9dbd4e8018224f15aa643d0756b0d29be
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799745"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549902"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-korn-ferry-alp"></a>教程：Azure Active Directory 与 Korn Ferry ALP 的集成
 

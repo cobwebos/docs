@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与云服务 PICCO 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和云服务 PICCO 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 4808d390-a74e-4c98-8538-391a4a58aa62
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0937fa513616a3774198d27aeb160de04aa8b83d
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0b6f8abb4d447ab17bb3114d05b7d74c0fce891e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73157379"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551813"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-service-picco"></a>教程：Azure Active Directory 与云服务 PICCO 的集成
 

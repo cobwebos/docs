@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9dcc1b6f6f3792682f81c0d37ef2046bd1840657
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1865d307e7b79e7e40b0e98f2dcfa2535b0313fd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526990"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551701"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>教程：在 Azure 中备份和还原 Linux 虚拟机的文件
 
@@ -45,7 +45,7 @@ ms.locfileid: "86526990"
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 在左侧菜单中选择“虚拟机”。 
 3. 从列表中选择要备份的 VM。
-4. 在 VM 边栏选项卡上的“设置”部分中，单击“备份”。  此时会打开“启用备份”边栏选项卡。
+4. 在 VM 边栏选项卡上的“操作”部分中，单击“备份”。  此时会打开“启用备份”边栏选项卡。
 5. 在“恢复服务保管库”中，单击“新建”并为新保管库提供名称。 将在与虚拟机相同的资源组和位置中创建新保管库。
 6. 单击“备份策略”。 对于本示例，请保留默认值，并单击“确定”。
 7. 在“启用备份”边栏选项卡中，单击“启用备份”。 这会根据默认的计划创建每日备份。

@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 HappyFox 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 HappyFox 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8204ee77-f64b-4fac-b64a-25ea534feac0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e5e43bd32e7e0ddbe0a7b5f63d74a1fd46f68d9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 6282e159a537eb3b9bf5d9a44c7498f3f1db0019
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159127"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550688"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-happyfox"></a>教程：Azure Active Directory 与 HappyFox 集成
 

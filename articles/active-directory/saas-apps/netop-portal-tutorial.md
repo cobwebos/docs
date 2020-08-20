@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Netop Portal 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Netop Portal 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 63f7eab5-412a-4a5c-84bc-7473087abb49
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/18/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2e456114d186e548cede656da8e8d227efa09aa
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: f316d7bab4b9d5b1f08d7a12cdc892be252128ae
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75550088"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549001"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netop-portal"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Netop Portal 的集成
 
@@ -142,7 +137,7 @@ ms.locfileid: "75550088"
 
 ## <a name="configure-netop-portal-sso"></a>配置 Netop Portal SSO
 
-若要在 Netop Portal  端配置单一登录，需要发送下载的“联合元数据 XML”  以及从 Azure 门户获得的登录 URL。 按照[此处](https://kb.netop.com/assets/netop_portal_adfs_and_azure_ad_integration.pdf)的文档的步骤 3 中的说明操作，以便配置适用于 Azure AD 身份验证的 NetOp Portal。
+若要在 Netop Portal  端配置单一登录，需要发送下载的“联合元数据 XML”  以及从 Azure 门户获得的登录 URL。 按照[此处](https://kb.netop.com/article/netop-remote-control-portal-adfs-and-azure-ad-integration-456.html)的文档的步骤 3 中的说明操作，以便配置适用于 Azure AD 身份验证的 NetOp Portal。
 
 ### <a name="create-netop-portal-test-user"></a>创建 Netop Portal 测试用户
 
