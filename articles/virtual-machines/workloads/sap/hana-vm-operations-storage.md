@@ -15,22 +15,22 @@ ms.workload: infrastructure
 ms.date: 08/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e1b510ed970b253adedef0fb6efb4abe0c3b65b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: aa6aba12af08e2b5e044eaeb299ec6090ab6d750
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506390"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650462"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure 虚拟机存储配置
 
 对于正在运行 SAP HANA 的 Azure VM，Azure 提供其他适用的存储类型。 下面列出了一些可用于 SAP HANA 部署的 SAP HANA 认证的 Azure 存储类型： 
 
 - Azure 高级 SSD 或高级存储 
-- [超级磁盘](../../linux/disks-enable-ultra-ssd.md)
+- [超级磁盘](../../disks-enable-ultra-ssd.md)
 - [Azure NetApp 文件](https://azure.microsoft.com/services/netapp/) 
 
-若要了解这些磁盘类型，请参阅 [Azure 存储类型 SAP 工作负荷](./planning-guide-storage.md) 一文和 [选择磁盘类型](../../linux/disks-types.md)
+若要了解这些磁盘类型，请参阅 [Azure 存储类型 SAP 工作负荷](./planning-guide-storage.md) 一文和 [选择磁盘类型](../../disks-types.md)
 
 Azure 为 Azure 标准和高级存储上的 Vhd 提供了两种部署方法。 我们希望你能够利用 azure [托管磁盘](https://azure.microsoft.com/services/managed-disks/) 进行 azure 块存储部署。 
 
@@ -59,7 +59,7 @@ Azure 为 Azure 标准和高级存储上的 Vhd 提供了两种部署方法。 �
 
 选择 HANA 存储配置时，一些指导原则可以按如下方式列出：
 
-- 根据 [SAP 工作负荷的 Azure 存储类型](./planning-guide-storage.md) 决定存储类型，并 [选择磁盘类型](../../linux/disks-types.md)
+- 根据 [SAP 工作负荷的 Azure 存储类型](./planning-guide-storage.md) 决定存储类型，并 [选择磁盘类型](../../disks-types.md)
 - 调整或确定 VM 时的总体 VM i/o 吞吐量和 IOPS 限制。 [内存优化虚拟机大小](../../sizes-memory.md)一文中记录了总体 VM 存储吞吐量
 - 在确定存储配置时，请尝试将 VM 的总体吞吐量保持在 **/hana/data** 卷配置的下方。 写入保存点，SAP HANA 可以是主动的、发出的 i/o。 写入保存点时，可以轻松地将 **/hana/data** 卷的吞吐量限制增加到最大值。 如果) 生成 **/hana/data** 卷的 (磁盘的吞吐量比 VM 允许的吞吐量更高，则可能会出现以下情况：保存点写入利用的吞吐量与重做日志写入操作的吞吐量要求产生了干扰。 可能影响应用程序吞吐量的情况
 - 如果你使用的是 Azure 高级存储，开销最少的配置是使用逻辑卷管理器来构建带区集以生成 **/hana/data** 和 **/hana/log** 卷
@@ -218,7 +218,7 @@ SAP **/hana/data** 卷的配置：
 
 
 ## <a name="azure-ultra-disk-storage-configuration-for-sap-hana"></a>适用于 SAP HANA 的 Azure 超级磁盘存储配置
-其他 Azure 存储类型称为 [Azure Ultra 磁盘](../../windows/disks-types.md#ultra-disk)。 目前提供的 Azure 存储与超级磁盘之间的显著区别在于，磁盘功能不再受到磁盘大小的约束。 作为客户，你可以为超级磁盘定义以下功能：
+其他 Azure 存储类型称为 [Azure Ultra 磁盘](../../disks-types.md#ultra-disk)。 目前提供的 Azure 存储与超级磁盘之间的显著区别在于，磁盘功能不再受到磁盘大小的约束。 作为客户，你可以为超级磁盘定义以下功能：
 
 - 磁盘大小范围（从 4 GiB 到 65,536 GiB）
 - IOPS 范围（从 100 IOPS 到 160K IOPS，最大值也取决于 VM 类型）

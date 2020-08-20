@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: dee74c787f6546494d12ea582eab383fbd99079d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 186839425e6ab2fb5430a82650615425bb93d51a
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876897"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651754"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>使用 Azure 机器学习训练模型
 
@@ -90,7 +90,7 @@ Azure 机器学习提供多种方法来训练模型，从使用 SDK 的代码优
 * [教程：使用 Azure 机器学习管道进行批处理评分](tutorial-pipeline-batch-scoring-classification.md)
 * [示例：Jupyter Notebook 机器学习管道示例](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines)
 * [示例：使用自动化机器学习的管道](https://aka.ms/pl-automl)
-* [示例：使用估算器的管道](https://aka.ms/pl-estimator)
+* [示例：使用估算器的管道](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-estimatorstep.ipynb)
 
 ### <a name="understand-what-happens-when-you-submit-a-training-job"></a>了解提交定型作业时会发生的情况
 
@@ -101,18 +101,18 @@ Azure 培训生命周期包括：
 1. 构建 dockerfile 并将其下载到计算节点 
     1. 系统计算的哈希值为： 
         - 基本映像 
-        - 自定义 docker 步骤 (参阅[使用自定义 docker 基本映像部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)) 
-        - Conda 定义 YAML (参阅[在 Azure 机器学习中创建 & 使用软件环境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)) 
+        - 自定义 docker 步骤 (参阅 [使用自定义 docker 基本映像部署模型](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image)) 
+        - Conda 定义 YAML (参阅 [在 Azure 机器学习中创建 & 使用软件环境](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments)) 
     1. 系统使用此哈希作为工作区 Azure 容器注册表 (ACR 的查找密钥) 
     1. 如果找不到，它将在全局 ACR 中查找匹配项
     1. 如果找不到它，系统将生成一个新的映像 (将使用工作区 ACR 缓存并注册该映像) 
 1. 将压缩的项目文件下载到计算节点上的临时存储
 1. 解压缩项目文件
-1. 计算节点正在执行`python <entry script> <arguments>`
+1. 计算节点正在执行 `python <entry script> <arguments>`
 1. 将日志、模型文件和其他写入的文件保存到 `./outputs` 与工作区关联的存储帐户
 1. 缩减计算，包括删除临时存储 
 
-如果选择在本地计算机上定型 ( "配置为本地运行" ) ，则无需使用 Docker。 如果选择 (请参阅[配置 ML 管道](https://docs.microsoft.com/azure/machine-learning/how-to-debug-pipelines#configure-ml-pipeline )部分以获取示例) 部分。
+如果选择在本地计算机上定型 ( "配置为本地运行" ) ，则无需使用 Docker。 如果选择 (请参阅 [配置 ML 管道](https://docs.microsoft.com/azure/machine-learning/how-to-debug-pipelines#configure-ml-pipeline ) 部分以获取示例) 部分。
 
 ## <a name="r-sdk"></a>R SDK
 
@@ -156,7 +156,7 @@ R SDK 使你能够将 R 语言与 Azure 机器学习结合使用。 SDK 使用�
 
 ## <a name="vs-code"></a>VS Code
 
-您可以使用 VS Code 扩展来运行和管理您的培训作业。 请参阅[VS Code 资源管理操作方法指南](how-to-manage-resources-vscode.md#experiments)，了解详细信息。
+您可以使用 VS Code 扩展来运行和管理您的培训作业。 请参阅 [VS Code 资源管理操作方法指南](how-to-manage-resources-vscode.md#experiments) ，了解详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 

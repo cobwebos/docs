@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 093f86f0373791326cf4658bdab7179fbca1307d
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: e0cb9492f6e0b52cb0816d16be5d67d3b92cfe56
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849652"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651397"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>设置并使用模型训练的计算目标 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -102,7 +102,7 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
 
 
 > [!TIP]
-> 一般情况下，只要所需核心数方面的配额足够，群集就可以扩展到多达 100 个节点。 默认情况下，设置群集时会启用群集节点之间的通信（例如，为了支持 MPI 作业）。 不过，你可以通过简单地[提出支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)并请求允许列出你的订阅、工作区或特定群集来禁用节点间通信，从而将群集缩放到1000次的节点。 
+> 一般情况下，只要所需核心数方面的配额足够，群集就可以扩展到多达 100 个节点。 默认情况下，设置群集时会启用群集节点之间的通信（例如，为了支持 MPI 作业）。 不过，你可以通过简单地 [提出支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)并请求允许列出你的订阅、工作区或特定群集来禁用节点间通信，从而将群集缩放到1000次的节点。 
 
 可在不同的运行中重复使用 Azure 机器学习计算。 计算可与工作区中的其他用户共享，并在每次运行之后保留，它会根据提交的运行数以及群集上设置的 max_nodes 自动纵向扩展或缩减节点。 min_nodes 设置控制可用节点数的下限。
 
@@ -127,9 +127,9 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
 
 附加计算并配置运行后，下一步是[提交训练运行](#submit)。
 
- ### <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a>降低计算群集成本
+ ### <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> 降低计算群集成本
 
-你还可以选择使用[低优先级 vm](concept-plan-manage-cost.md#low-pri-vm)来运行部分或全部工作负荷。 这些 VM 的可用性未得到保证，在使用时可能会被占用。 对于被占用的作业，在重新可用时将重新启动，而不是直接续用。 
+你还可以选择使用 [低优先级 vm](concept-plan-manage-cost.md#low-pri-vm) 来运行部分或全部工作负荷。 这些 VM 的可用性未得到保证，在使用时可能会被占用。 对于被占用的作业，在重新可用时将重新启动，而不是直接续用。 
 
 使用以下任一方法指定低优先级 VM：
     
@@ -180,8 +180,6 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
      
     run = experiment.submit(config=src)
     ```
-
-有关适用于计算实例的更多命令，请参阅笔记本 [train-on-computeinstance](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)。 此笔记本也可在“training/train-on-computeinstance” 中的工作室 **Samples** 文件夹中找到。
 
 附加计算并配置运行后，下一步是[提交训练运行](#submit)
 

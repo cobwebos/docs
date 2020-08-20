@@ -11,18 +11,18 @@ author: jpe316
 ms.date: 06/03/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, devx-track-python
-ms.openlocfilehash: 0c78245a64fa9bcb7faef2c07973d1d7b5080e76
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 263038ee1be8b31d493282cd920f386132420156
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843090"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648779"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>什么是现场可编程门阵列 (FPGA) 以及如何部署
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-本文介绍现场可编程的入口数组 (FPGA) ，并演示如何使用[Azure 机器学习](overview-what-is-azure-ml.md)到 Azure FPGA 部署模型。
+本文介绍现场可编程的入口数组 (FPGA) ，并演示如何使用 [Azure 机器学习](overview-what-is-azure-ml.md) 到 Azure FPGA 部署模型。
 
 ## <a name="what-are-fpgas"></a>什么是 Fpga
 
@@ -67,7 +67,7 @@ Azure 上的 FPGA 支持：
   
 以下 Azure 区域提供 Fpga：
   - 美国东部
-  - Southeast Asia
+  - 东南亚
   - 西欧
   - 美国西部 2
 
@@ -78,7 +78,7 @@ Azure VM 的 PBS 系列包含 Intel Arria 10 FPGA****。 查看 Azure 配额分�
 
 ## <a name="deploy-models-on-fpgas"></a>在 FPGA 上部署模型
 
-你可以使用[Azure 机器学习硬件加速模型](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py)将模型部署为 fpga 上的 web 服务。 使用 FPGA 可实现超低的延迟推理，即使只有一个批数据大小。 推理或模型评分是将部署的模型用于预测（通常针对生产数据）的阶段。
+你可以使用 [Azure 机器学习硬件加速模型](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py)将模型部署为 fpga 上的 web 服务。 使用 FPGA 可实现超低的延迟推理，即使只有一个批数据大小。 推理或模型评分是将部署的模型用于预测（通常针对生产数据）的阶段。
 
 将模型部署到 FPGA 涉及以下步骤：
 
@@ -91,7 +91,7 @@ Azure VM 的 PBS 系列包含 Intel Arria 10 FPGA****。 查看 Azure 配额分�
 
 ### <a name="prerequisites"></a>先决条件
 
-- Azure 订阅。 如果没有，则需要创建一个即[用即付](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go)帐户， (免费 Azure 帐户不符合 FPGA 配额) 的要求。
+- Azure 订阅。 如果没有，则需要创建一个即 [用即付](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go) 帐户， (免费 Azure 帐户不符合 FPGA 配额) 的要求。
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - FPGA 配额。 使用 Azure CLI 检查是否有配额：
 
@@ -163,7 +163,7 @@ Azure VM 的 PBS 系列包含 Intel Arria 10 FPGA****。 查看 Azure 配额分�
    print(feature_tensor.shape)
    ```
 
-1. 添加分类器。 已在 ImageNet 数据集上训练该分类器。  [示例笔记本](https://aka.ms/aml-notebooks)集中提供了用于转移学习和训练自定义权重的多个示例。
+1. 添加分类器。 已在 ImageNet 数据集上训练该分类器。  [示例笔记本](https://github.com/Azure/MachineLearningNotebooks)集中提供了用于转移学习和训练自定义权重的多个示例。
 
    ```python
    classifier_output = model_graph.get_default_classifier(feature_tensor)
@@ -405,7 +405,7 @@ converted_model.delete()
 
 请访问以下笔记本、视频和博客：
 
-+ 若干[示例笔记本](https://aka.ms/aml-accel-models-notebooks)
++ 若干[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/accelerated-models)
 + 若要保护 FPGA Web 服务，请参阅[保护 Web 服务](how-to-secure-web-service.md)文档。
 + [超大规模硬件：大规模在 Azure + FPGA 上的 ML：生成 2018 (视频) ](https://channel9.msdn.com/events/Build/2018/BRK3202)
 + [Inside the Microsoft FPGA-based configurable cloud (video)](https://channel9.msdn.com/Events/Build/2017/B8063)（深入了解基于 Microsoft FPGA 的可配置云（视频））

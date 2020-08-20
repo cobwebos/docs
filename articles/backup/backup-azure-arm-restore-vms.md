@@ -4,12 +4,12 @@ description: 使用 Azure 门户从恢复点还原 Azure 虚拟机
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: af9b505e762e201713b8e554b7886e5e2062dfef
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 4aca863dd4e9c418872cd67bdf54df616a7a0c5b
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263004"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651142"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -184,7 +184,7 @@ Azure 备份提供多种方法用于还原 VM。
 
 ## <a name="restoring-unmanaged-vms-and-disks-as-managed"></a>将非托管 Vm 和磁盘还原为托管
 
-在还原过程中，系统会提供一个选项，用于将 [非托管磁盘](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks) 还原为 [托管磁盘](../virtual-machines/windows/managed-disks-overview.md) 。 默认情况下，非托管 Vm/磁盘会还原为非托管 Vm/磁盘。 但是，如果选择将还原为托管 Vm/磁盘，现在可以执行此操作。 这些还原不会从快照阶段触发，而只会从保管库阶段触发。 此功能不适用于非托管的加密 Vm。
+在还原过程中，系统会提供一个选项，用于将 [非托管磁盘](../storage/common/storage-disaster-recovery-guidance.md#azure-unmanaged-disks) 还原为 [托管磁盘](../virtual-machines/managed-disks-overview.md) 。 默认情况下，非托管 Vm/磁盘会还原为非托管 Vm/磁盘。 但是，如果选择将还原为托管 Vm/磁盘，现在可以执行此操作。 这些还原不会从快照阶段触发，而只会从保管库阶段触发。 此功能不适用于非托管的加密 Vm。
 
 ![还原为托管磁盘](./media/backup-azure-arm-restore-vms/restore-as-managed-disks.png)
 

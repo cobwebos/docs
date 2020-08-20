@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/28/2019
-ms.openlocfilehash: 44370b378899228949aa1bddcc92570ad282fe92
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 094b78fa35da451101f4f5664cca46292d78d146
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284721"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650547"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Azure 中虚拟机的区域
 
@@ -30,7 +30,7 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 * **US Gov 弗吉尼亚州**和 **US Gov 爱荷华州**
   * 适用于美国政府代理和合作伙伴的 Azure 物理和逻辑网络隔离实例，由甄选出来的美国公民操作。 包括其他合规认证，例如 [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) 和 [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA)。 详细了解 [Azure Government](https://azure.microsoft.com/features/gov/)。
 * **中国东部**和**中国北部**
-  * 这些区域在 Microsoft 和 21Vianet 达成唯一合作关系之后可供用户使用，有了这种关系，Microsoft 就不需直接维护相关数据中心。 详细了解[Azure 中国世纪互联](https://www.windowsazure.cn/)。
+  * 这些区域在 Microsoft 和 21Vianet 达成唯一合作关系之后可供用户使用，有了这种关系，Microsoft 就不需直接维护相关数据中心。 详细了解 [Azure 中国世纪互联](https://www.windowsazure.cn/)。
 * **德国中部**和**德国东北部**
   * 用户可以通过数据信托模式来使用这些区域。这种方式将客户数据保留在德国，由 T-Systems（一家德国电信公司）充当德国的数据受托方来控制数据。
 
@@ -43,13 +43,13 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 
 区域对的示例包括：
 
-| 主要 | 辅助副本 |
+| 主 | 辅助副本 |
 |:--- |:--- |
 | 美国西部 |美国东部 |
 | 北欧 |西欧 |
-| Southeast Asia |东亚 |
+| 东南亚 |东亚 |
 
-可在[此处查看区域对的完整列表](../best-practices-availability-paired-regions.md#what-are-paired-regions)。
+可在 [此处查看区域对的完整列表](../best-practices-availability-paired-regions.md#what-are-paired-regions)。
 
 ## <a name="feature-availability"></a>功能可用性
 某些服务或 VM 功能（例如特定的 VM 大小或存储类型）仅在特定区域提供。 也有一些全球性 Azure 服务不需要用户选择特定的区域，例如 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)、[流量管理器](../traffic-manager/traffic-manager-overview.md)或 [Azure DNS](../dns/dns-overview.md)。 若要更好地设计应用程序环境，可查看 [Azure 服务在每个区域的可用性](https://azure.microsoft.com/regions/#services)。 此外，还可以[以编程方式查询受支持的 VM 大小和每个区域中的限制](../azure-resource-manager/templates/error-sku-not-available.md)。
@@ -75,11 +75,11 @@ Azure 在世界各地的多个数据中心运行。 这些数据中心分组到�
 
 | 复制策略 | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| 数据在多个设施之间进行复制。 |否 |是 |“是” |“是” |
+| 数据在多个设施之间进行复制。 |否 |是 |是 |是 |
 | 可以从辅助位置和主位置读取数据。 |否 |否 |否 |是 |
 | 在单独的节点上维护的数据副本数。 |3 |3 |6 |6 |
 
-可以在[此处](../storage/common/storage-redundancy.md)详细了解 Azure 存储复制选项。 有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](./windows/managed-disks-overview.md)。
+可以在[此处](../storage/common/storage-redundancy.md)详细了解 Azure 存储复制选项。 有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘概述](./managed-disks-overview.md)。
 
 ### <a name="storage-costs"></a>存储成本
 价格根据所选存储类型和可用性的不同而异。

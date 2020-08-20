@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 07/03/2020
-ms.openlocfilehash: ad5fb077596b6cc444c1c4df81af32cbcfa7c1db
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.date: 08/19/2020
+ms.openlocfilehash: 77dda42b27aa6f5fb505fe65667876523cb3f5d2
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475543"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88650887"
 ---
 # <a name="monitor-data-flows"></a>监视数据流
 
@@ -60,7 +60,7 @@ ms.locfileid: "87475543"
 
 ## <a name="total-sink-processing-time-vs-transformation-processing-time"></a>总接收器处理时间与转换处理时间
 
-每个转换阶段都包括在每个分区执行时间汇总后完成该阶段的总时间。 单击接收器时，将显示 "接收器处理时间"。 此时间包括转换时间*和*将数据写入目标存储所需的 i/o 时间的总和。 接收器处理时间与转换总数之间的差异是写入数据的 i/o 时间。
+每个转换阶段都包括在每个分区执行时间汇总后完成该阶段的总时间。 单击接收器时，将显示 "接收器处理时间"。 此时间包括转换时间 *和* 将数据写入目标存储所需的 i/o 时间的总和。 接收器处理时间与转换总数之间的差异是写入数据的 i/o 时间。
 
 如果在 ADF 管道监视视图中打开数据流活动的 JSON 输出，还可以查看每个分区转换步骤的详细计时。 JSON 包含每个分区的毫秒计时，而 UX 监视视图是添加分区的聚合计时：
 
@@ -76,6 +76,10 @@ ms.locfileid: "87475543"
          ]
 }
 ```
+
+### <a name="post-processing-time"></a>后处理时间
+
+当你在映射中选择接收器转换图标时，右侧的滑动面板将在底部显示名为 "post 处理时间" 的其他数据点。 这是加载、转换和写入数据 *后* 在 Spark 群集上执行作业所花费的时间。 此时间可能包括关闭连接池、驱动程序关闭、删除文件、合并文件，等等。当你在流中执行操作（如 "移动文件" 和 "输出到单个文件"）时，你可能会看到 post 处理时间值增加。
   
 ## <a name="monitor-icons"></a>监视图标
 

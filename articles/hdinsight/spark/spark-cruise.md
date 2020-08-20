@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.openlocfilehash: d5417bfcfbaa183c34808d9017d5863506429a81
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 1a73b4707f83d6a23dffc20d95aa7b8a0fa465b3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642276"
+ms.locfileid: "88649051"
 ---
 # <a name="sparkcruise-on-azure-hdinsight"></a>Azure HDInsight 上的 SparkCruise
 
@@ -58,7 +58,7 @@ SparkCruise 在所有具有 Spark 2.3 或2.4 的 HDInsight 4.0 群集上可用�
     sudo /opt/peregrine/analyze/peregrine.sh show
     ```
 
-该 `analyze` 命令分析查询计划并创建工作负荷的表格表示形式。 然后，该 `views` 命令标识常见子计划表达式，并选择感兴趣的子计划表达式，以便以后具体化和重用。 输出是包含用于将来的 Spark SQL 查询的批注的反馈文件。 
+该 `analyze` 命令分析查询计划并创建工作负荷的表格表示形式。 可以使用[HDInsight SparkCruise 示例](https://github.com/Azure-Samples/azure-sparkcruise-samples)存储库中包含的*WorkloadInsights*笔记本来查询此工作负荷表。 然后，该 `views` 命令标识常见子计划表达式，并选择感兴趣的子计划表达式，以便以后具体化和重用。 输出是包含用于将来的 Spark SQL 查询的批注的反馈文件。 
 
 该 `show` 命令显示类似于以下文本的输出：
 

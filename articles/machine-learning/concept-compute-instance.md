@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/27/2020
-ms.openlocfilehash: f4938d517d9a5c244045798a79f31b96bacd03f5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: c72777bf2a4415a7f773f82a21a121f5e58f2ec0
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829435"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651909"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>什么是 Azure 机器学习计算实例？
 
@@ -154,27 +154,23 @@ Python 包都安装在 **Python 3.6 - AzureML** 环境中。
 也可以通过以下方式创建实例
 * 直接从[集成式笔记本体验](tutorial-1st-experiment-sdk-setup.md#azure)
 * 在 Azure 门户中配置
-* 从 Azure 资源管理器模板。 有关示例模板，请参阅[创建 Azure 机器学习计算实例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)。
-* 使用 [Azure 机器学习 SDK](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)
+* 从 Azure 资源管理器模板。 有关示例模板，请参阅 [创建 Azure 机器学习计算实例模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance)。
+* 使用 Azure 机器学习 SDK
 * 从 [Azure 机器学习的 CLI 扩展](reference-azure-machine-learning-cli.md#computeinstance)
 
 应用于计算实例创建过程的每区域每 VM 系列专用核心数配额和区域总配额 与 Azure 机器学习训练计算群集配额统一并共享。 停止计算实例不会释放配额，因此无法确保你能够重启计算实例。
 
 ## <a name="compute-target"></a>计算目标
 
-计算实例可用作类似于 Azure 机器学习计算训练群集的[训练计算目标](concept-compute-target.md#train)。 
+计算实例可以用作 [训练计算目标](concept-compute-target.md#train) ，类似于 Azure 机器学习计算群集。 
 
 计算实例：
 * 具有作业队列。
 * 在虚拟网络环境中安全地运行作业，无需企业打开 SSH 端口。 作业在容器化环境中执行，并将模型依赖项打包到 Docker 容器中。
 * 可以并行运行多个小型作业（预览版）。  每个核心可以并行运行两个作业，而剩余的作业将排队。
+* 支持单节点多 GPU 分布式培训作业
 
 可以使用计算实例作为测试/调试方案的本地推理部署目标。
-
-> [!NOTE]
-> 计算实例不支持分布式训练作业。  对于分布式训练，请使用[计算群集](how-to-set-up-training-targets.md#amlcompute)。
-
-有关更多详细信息，请参阅笔记本 [train-on-computeinstance](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-computeinstance/train-on-computeinstance.ipynb)。 此笔记本也可在“training/train-on-computeinstance” 中的工作室 **Samples** 文件夹中找到。
 
 ## <a name="what-happened-to-notebook-vm"></a><a name="notebookvm"></a>Notebook VM 发生了什么情况？
 

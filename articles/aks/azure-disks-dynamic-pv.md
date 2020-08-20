@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 中使用 Azure 磁�
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 0e7bc057d756215b1aa155f0e227c75c99c8737c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3d01b2c2098dcbe896ecaa7f854d91477eba2cab
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518005"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648762"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中动态创建永久性卷并将其用于 Azure 磁盘
 
@@ -31,14 +31,14 @@ ms.locfileid: "86518005"
 
 存储类用于定义使用永久性卷动态创建存储单位的方式。 有关 Kubernetes 存储类的详细信息，请参阅 [Kubernetes 存储类][kubernetes-storage-classes]。
 
-每个 AKS 群集都包含四个预先创建的存储类，两个类配置为使用 Azure 磁盘：
+每个 AKS 群集包含四个预先创建的存储类，其中两个配置为使用 Azure 磁盘：
 
-* *默认*存储类预配标准 SSD Azure 磁盘。
-    * 标准存储由标准 Ssd 提供支持，并提供经济高效的存储，同时仍然提供可靠的性能。 
+* default 存储类可预配标准 SSD Azure 磁盘。
+    * 标准存储由标准 SSD 提供支持，可以在交付可靠性能的同时提供经济高效的存储。 
 * managed-premium 存储类可预配高级 Azure 磁盘。
     * 高级磁盘由基于 SSD 的高性能、低延迟磁盘提供支持。 完美适用于运行生产工作负荷的 VM。 如果群集中的 AKS 节点使用高级存储，请选择 managed-premium 类。
     
-如果使用默认存储类之一，则创建存储类后将无法更新卷大小。 若要能够在创建存储类后更新卷大小，请将行 `allowVolumeExpansion: true` 添加到其中一个默认存储类，或者也可以创建自己的自定义存储类。 请注意，不支持减小 PVC 大小（以防数据丢失）。 可以使用 `kubectl edit sc` 命令编辑现有存储类。 
+如果使用默认存储类之一，则创建存储类后将无法更新卷大小。 若要能够在创建存储类后更新卷大小，请将行 `allowVolumeExpansion: true` 添加到其中一个默认存储类，或者也可以创建自己的自定义存储类。 注意，不支持减小 PVC 的大小（以防数据丢失）。 可以使用 `kubectl edit sc` 命令编辑现有存储类。 
 
 例如，如果要使用大小为 4 TiB 的磁盘，需要创建一个定义 `cachingmode: None` 的存储类，因为[磁盘缓存不支持 4 TiB 及更大的磁盘](../virtual-machines/windows/premium-storage-performance.md#disk-caching)。
 
@@ -153,7 +153,7 @@ Events:
 ```
 
 ## <a name="use-ultra-disks"></a>使用超磁盘
-若要利用超磁盘，请参阅[在 Azure Kubernetes Service 上使用 Ultra 磁盘（AKS）](use-ultra-disks.md)。
+若要利用超磁盘，请参阅 [使用 Azure Kubernetes Service 上的 Ultra 磁盘 (AKS) ](use-ultra-disks.md)。
 
 ## <a name="back-up-a-persistent-volume"></a>备份永久性卷
 
@@ -276,7 +276,7 @@ Volumes:
 <!-- LINKS - internal -->
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
-[premium-storage]: ../virtual-machines/windows/disks-types.md
+[premium-storage]: ../virtual-machines/disks-types.md
 [az-disk-list]: /cli/azure/disk#az-disk-list
 [az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
 [az-disk-create]: /cli/azure/disk#az-disk-create

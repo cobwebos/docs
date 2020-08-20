@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7a0fd4178df92cc9102456c1fa2ae4e8927337e4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f49a66fc6e233658b228b7ad9bacdaa23917afef
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547318"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88648728"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>在 Azure ML 定型运行中启用日志记录
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -70,8 +70,6 @@ run = exp.submit(src, show_output=True)
 run.wait_for_completion(show_output=True)
 ```
 
-有关使用 ScriptRunConfigs 日志的完整示例笔记本，请参阅在 [本地定型模型](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local/train-on-local.ipynb)。
-
 ## <a name="native-python-logging"></a>本机 Python 日志记录
 
 SDK 中的某些日志可能包含错误，指示你将日志记录级别设置为 "调试"。 若要设置日志记录级别，请在脚本中添加以下代码。
@@ -88,9 +86,7 @@ Azure 机器学习还可以在训练期间记录来自其他源的信息，例�
 有关 Azure 机器学习设计器中的日志记录度量值的信息 (预览版) ，请参阅 [如何在设计器中记录度量值 (预览版) ](how-to-track-designer-experiments.md)
 
 ## <a name="example-notebooks"></a>示例笔记本
-下面的笔记本展示了本文中的概念：
-* [how-to-use-azureml/training/train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
-* [how-to-use-azureml/training/train-on-local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
+以下笔记本演示了本文中的概念：
 * [how-to-use-azureml/track-and-monitor-experiments/logging-api](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api)
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../includes/aml-clone-for-examples.md)]

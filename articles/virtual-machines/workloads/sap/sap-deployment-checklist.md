@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3402f4ff719752cca6e1d7a4aeeb3b7e12c3e28
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: f195d4096baaa1d6a03b4b6c7c589ccef8fbd036
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88511136"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88651720"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷：规划和部署清单
 
@@ -110,9 +110,9 @@ ms.locfileid: "88511136"
            -  [Azure 中 Linux 虚拟机的大小](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 请务必考虑用于调整大小的 *最大非缓存磁盘吞吐量* 。
    2. 存储。
         - 查看文档 [Azure 存储类型的 SAP 工作负荷](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage)
-        - 至少，将 [Azure 标准 SSD 存储](../../windows/disks-types.md#standard-ssd) 用于代表 SAP 应用程序层的 vm，并用于部署不区分性能的 dbms。
-        - 通常，我们不建议使用 [Azure 标准 HDD 磁盘](../../windows/disks-types.md#standard-hdd)。
-        - 对远程性能敏感的任何 DBMS Vm 使用 [Azure 高级存储](../../windows/disks-types.md#premium-ssd) 。
+        - 至少，将 [Azure 标准 SSD 存储](../../disks-types.md#standard-ssd) 用于代表 SAP 应用程序层的 vm，并用于部署不区分性能的 dbms。
+        - 通常，我们不建议使用 [Azure 标准 HDD 磁盘](../../disks-types.md#standard-hdd)。
+        - 对远程性能敏感的任何 DBMS Vm 使用 [Azure 高级存储](../../disks-types.md#premium-ssd) 。
         - 使用 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)。
         - 对于使用 M 系列的 DBMS 日志驱动器，请使用 Azure 写入加速器。 请注意写入加速器限制和用法，如 [写入加速器](../../how-to-enable-write-accelerator.md)中所述。
         - 对于不同的 DBMS 类型，请查看一般的 [与 SAP 相关的 dbms 文档](./dbms_guide_general.md) 和一般文档指向的 DBMS 特定文档。

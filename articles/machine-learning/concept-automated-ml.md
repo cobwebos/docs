@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: 8d94acabb434d0e722e352de46197a86e994e145
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 081da2b3f6fbe97ebce21940d7e0ca8978793b15
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290028"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88652094"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>什么是自动化机器学习 (AutoML)？
 
@@ -98,7 +98,7 @@ ms.locfileid: "87290028"
 
 模型生成是自动化的，同时，你也可以[了解特征对于生成的模型而言如何重要或者彼此相关](how-to-configure-auto-train.md#explain)。
 
-了解如何使用[远程计算目标](how-to-auto-train-remote.md)。
+了解如何使用 [远程计算目标](how-to-auto-train-remote.md)。
 
 
 
@@ -136,7 +136,7 @@ ms.locfileid: "87290028"
 
 + Azure 机器学习工作室：[通过以下步骤](how-to-use-automated-ml-for-ml-models.md#customize-featurization)在“查看其他配置”部分中启用“自动特征化”。
 
-+ Python SDK：在 [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) 对象中指定 `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'`。 了解有关[启用特征化](how-to-configure-auto-features.md)的详细信息。 
++ Python SDK：在 [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) 对象中指定 `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'`。 了解有关 [启用特征化](how-to-configure-auto-features.md)的详细信息。 
 
 ## <a name="ensemble-models"></a><a name="ensemble"></a> 系综模型
 
@@ -174,7 +174,7 @@ ms.locfileid: "87290028"
 
  使用远程计算时，有更多的功能可用，如下表中所示。 其中一些功能仅在企业工作区中可用。
 
-| Feature                                                    | Remote | Local | 需要 <br>企业工作区 |
+| 功能                                                    | Remote | Local | 需要 <br>企业工作区 |
 |------------------------------------------------------------|--------|-------|-------------------------------|
 | 数据流式处理（最高 100 GB 的大数据支持）          | ✓      |       | ✓                             |
 | 基于 DNN-BERT 的文本特征化和训练             | ✓      |       | ✓                             |
@@ -201,8 +201,6 @@ ms.locfileid: "87290028"
 * 预测每家店铺的销售额
 * 对数百口油井进行预测性维护
 * 为个人用户定制体验。
-
-有关详细信息，请参阅 GitHub 上的[多模型解决方案加速器](https://aka.ms/many-models)。
 
 ## <a name="automl-in-azure-machine-learning"></a>Azure 机器学习中的 AutoML
 
@@ -289,7 +287,7 @@ ONNX 运行时还支持 C#。因此，你可以在 C# 应用中使用自动生�
 
 ### <a name="jupyter-notebook-samples"></a>Jupyter 笔记本示例 
 
-查看 GitHub 笔记本存储库中的详细代码示例和用例[以获取自动机器学习示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)。
+查看 GitHub 笔记本存储库中的详细代码示例和用例 [以获取自动机器学习示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)。
 
 ### <a name="python-sdk-reference"></a>Python SDK 参考 
 
