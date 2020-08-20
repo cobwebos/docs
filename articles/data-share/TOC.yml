@@ -6,6 +6,11 @@
       href: overview.md
     - name: 支持的数据存储
       href: supported-data-stores.md
+- name: 快速入门
+  items:
+    - name: 创建数据共享 - ARM 模板
+      displayName: Resource Manager
+      href: share-your-data-arm.md
 - name: 教程
   expanded: true
   items:

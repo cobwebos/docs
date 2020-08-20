@@ -136,6 +136,10 @@
       items:
         - name: 日志和指标
           href: logs-metrics.md
+    - name: 专用链接
+      items:
+        - name: 配置专用链接连接
+          href: howto-private-link.md
 - name: 参考
   items:
     - name: Azure PowerShell

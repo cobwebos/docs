@@ -24,6 +24,8 @@
       href: classroom-labs-fundamentals.md
     - name: 容量限制
       href: capacity-limits.md
+    - name: 实验室成本管理
+      href: cost-management-guide.md
     - name: 方案
       items:
         - name: 使用实验室服务进行授课
@@ -66,7 +68,7 @@
           href: how-to-manage-lab-accounts.md
         - name: 管理实验室帐户中的实验室
           href: manage-labs.md
-        - name: 配置 VM 的自动关闭
+        - name: 为实验室帐户配置 VM 的自动关闭
           href: how-to-configure-lab-accounts.md
         - name: 添加实验室创建者
           href: add-lab-creator.md
@@ -86,8 +88,6 @@
           href: specify-marketplace-images.md
         - name: 指定支持信息（实验室帐户所有者）
           href: lab-account-owner-support-information.md
-        - name: 实验室成本管理
-          href: cost-management-guide.md
     - name: 创建和配置教室实验室（教师）
       items:
         - name: 创建和管理教室实验室
@@ -106,7 +106,7 @@
           href: how-to-use-shared-image-gallery.md
         - name: 启用适用于 Linux 的远程桌面连接
           href: how-to-enable-remote-desktop-linux.md
-        - name: 允许在断开连接时自动关闭
+        - name: 为实验室配置 VM 的自动关闭
           href: how-to-enable-shutdown-disconnect.md
         - name: 在模板 VM 上启用嵌套虚拟化
           items:
