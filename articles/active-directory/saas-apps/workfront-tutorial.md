@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Workfront 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Workfront 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: aab8bd2f-f9dd-42da-a18e-d707865687d7
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51fd45729a4e34fa1669f758c5a9c8f5cbec498f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0ef7a9d7d327bd6349147e56c8c9e9e829620216
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67087025"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88527105"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workfront"></a>教程：Azure Active Directory 与 Workfront 的集成
 

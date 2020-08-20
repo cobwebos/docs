@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Lecorpio 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Lecorpio 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce3684f6170e731298cdb9e73c39e2a833c1f537
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: dec5f612cd9ce843e0c516fca3a9f56c491b7359
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159530"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528912"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lecorpio"></a>教程：Azure Active Directory 与 Lecorpio 的集成
 
