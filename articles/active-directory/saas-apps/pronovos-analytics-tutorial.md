@@ -2,26 +2,21 @@
 title: 教程：教程：Azure Active Directory 单一登录 (SSO) 与 ProNovos Analytics 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 ProNovos Analytics 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 38b06fdd-2e9d-4208-bfe5-7f72cd7c371d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03dcc0c62781b6bec0369b7e642976e6d6f9c2f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 07dab851137d90d3a0106c9b7c25c937e78947e2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72026631"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553406"
 ---
 # <a name="tutorial-tutorial-azure-active-directory-single-sign-on-sso-integration-with-pronovos-analytics"></a>教程：教程：Azure Active Directory 单一登录 (SSO) 与 ProNovos Analytics 集成
 

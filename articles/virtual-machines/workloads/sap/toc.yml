@@ -108,6 +108,8 @@
           href: sap-hana-high-availability.md
         - name: 在 RHEL 上设置 SAP HANA 系统复制
           href: sap-hana-high-availability-rhel.md
+        - name: 使用 ANF 在 RHEL 上设置 SAP HANA 系统复制
+          href: sap-hana-high-availability-netapp-files-red-hat.md
         - name: 排查 SAP HANA 横向扩展和 SLES 上的 Pacemaker 问题
           href: hana-vm-troubleshoot-scale-out-ha-on-sles.md
         - name: 在 SLES 上通过 Azure NetApp 文件使用备用节点横向扩展 SAP HANA

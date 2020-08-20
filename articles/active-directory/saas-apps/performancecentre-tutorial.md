@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 PerformanceCentre 集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 PerformanceCentre 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 65288c32-f7e6-4eb3-a6dc-523c3d748d1c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 08f0f1c1e9bbfcd27f97cd58fa6c6e40f448f9f5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d0a19a95a0a0d2353070068b2113e11efe471ccc
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67094631"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553932"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>教程：Azure Active Directory 与 PerformanceCentre 的集成
 
@@ -110,7 +106,7 @@ ms.locfileid: "67094631"
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`http://<companyname>.performancecentre.com`
 
     > [!NOTE]
-    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [PerformanceCentre 客户端支持团队](https://www.performancecentre.com/contact-us/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [PerformanceCentre 客户端支持团队](https://www.performio.co/contact-us)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 4. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上     。
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/26/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: dececd066597682e240e737727d3bcaf8f8f3619
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: c1a8fbb5558d5b9069c5b8103bca2fc3f8bcddf3
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375386"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507565"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>用户是否需要将中心辐射型拓扑与 SD-WAN/VPN 设备配合使用才能使用 Azure 虚拟 WAN？
 
@@ -187,7 +187,7 @@ ms.locfileid: "87375386"
 
 ### <a name="is-there-a-network-throughput-or-connection-limit-when-using-azure-virtual-wan"></a>使用 Azure 虚拟 WAN 时是否存在网络吞吐量或连接限制？
 
-网络吞吐量基于虚拟 WAN 中心的每项服务。 尽管你可以根据需要拥有任意数量的虚拟 WAN，但是每个虚拟 WAN 只允许每个区域有 1 个中心。 在每个中心，VPN 聚合吞吐量最高可达 20 Gbps，ExpressRoute 聚合吞吐量最高可达 20 Gbps，用户 VPN/点到站点 VPN 聚合吞吐量最高可达 20 Gbps。 虚拟中心的路由器最多支持 50 Gbps 的 VNet 到 VNet 流量流，并假设虚拟 WAN 中心的所有 VNet 总共有 2000 个 VM 工作负载。
+网络吞吐量基于虚拟 WAN 中心的每项服务。 尽管你可以根据需要拥有任意数量的虚拟 WAN，但是每个虚拟 WAN 只允许每个区域有 1 个中心。 在每个中心，VPN 聚合吞吐量最高可达 20 Gbps，ExpressRoute 聚合吞吐量最高可达 20 Gbps，用户 VPN/点到站点 VPN 聚合吞吐量最高可达 20 Gbps。 虚拟中心的路由器最多支持 50 Gbps 的 VNet 到 VNet 流量流，并假设连接到单个虚拟中心的所有 VNet 总共有 2000 个 VM 工作负载。
 
 当 VPN 站点连接到中心时，它们通过连接来完成此操作。 对于每个虚拟中心，虚拟 WAN 最多支持 1000 个连接或 2000 个 IPsec 隧道。 当远程用户连接到虚拟中心时，他们将连接到 P2S VPN 网关，该网关最多支持 10000 位用户，具体取决于为虚拟中心的 P2S VPN 网关选择的缩放单元（带宽）。
 

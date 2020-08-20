@@ -121,6 +121,8 @@
           href: howto-create-custom-analytics.md
         - name: 在 Power BI 中直观显示数据
           href: howto-connect-powerbi.md
+        - name: 配置和使用文件上传
+          href: howto-configure-file-uploads.md
     - name: 管理
       items:
         - name: 管理应用程序

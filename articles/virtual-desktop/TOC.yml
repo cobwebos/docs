@@ -116,6 +116,14 @@
       href: faq.md
     - name: Windows 10 Enterprise 多会话常见问题解答
       href: windows-10-multisession-faq.md
+    - name: MSIX 应用附加
+      items:
+        - name: 什么是 MSIX 应用附加？
+          href: what-is-app-attach.md
+        - name: 术语表
+          href: app-attach-glossary.md
+        - name: 常见问题解答
+          href: app-attach-faq.md
     - name: 数据位置
       href: data-locations.md
 - name: 疑难解答
@@ -150,6 +158,8 @@
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Azure 命令行接口 (CLI)
       href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
+    - name: Azure 示例方案
+      href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
 - name: 资源
   items:
     - name: PowerShell

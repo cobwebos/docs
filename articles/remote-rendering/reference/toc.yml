@@ -1,4 +1,4 @@
-- name: VM 大小
+- name: 服务器大小
   href: vm-sizes.md
 - name: 模型格式的材料映射
   href: material-mapping.md

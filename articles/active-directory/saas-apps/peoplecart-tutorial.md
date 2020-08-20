@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Peoplecart 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Peoplecart 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c83b5d9d-2638-4689-b9f0-f56a9159e7a0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: f39cfa37ca6b88828d0ab948387429b5a3a2267f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5acb1268079334a036fae1ea99bec206474cc564
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67094741"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552401"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peoplecart"></a>教程：Azure Active Directory 与 Peoplecart 的集成
 

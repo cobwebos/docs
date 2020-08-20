@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Fieldglass 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Fieldglass 间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2510195f-d5b1-4684-b3da-283fb8619df2
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05a5c405095a3c045a3bf1dd7c62486ffda73825
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 442445bc930408097f213329fad98b84200943ee
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85798870"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555140"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fieldglass"></a>教程：Azure Active Directory 与 Fieldglass 的集成
 

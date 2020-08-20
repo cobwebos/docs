@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Flatter Files 的集成 | Microsoft 文档
 description: 了解如何在 Azure Active Directory 和 Flatter Files 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f86fe5e3-0e91-40d6-869c-3df6912d27ea
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 13012474e34af80c84b034703a3b34f0208036bc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7dd13df6222f6441b7edb2bd9a789c1f102168d7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73156271"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554953"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>教程：Azure Active Directory 与 Flatter Files 的集成
 

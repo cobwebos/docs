@@ -1,27 +1,26 @@
 ---
-title: PowerShell 示例-使用默认域的应用程序代理应用
-description: PowerShell 示例，列出了所有使用默认域（msappproxy.net）的 Azure Active Directory （Azure AD）应用程序代理应用程序。
+title: PowerShell 示例 - 使用默认域的应用程序代理应用
+description: PowerShell 示例，其中列出了正在使用默认域 (.msappproxy.net) 的所有 Azure Active Directory (Azure AD) 应用程序代理应用程序。
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40a9f7ce86981d6f03b25237a7a73869fd5fd4ba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: 9de36d27b592576300728f3720087073c165a672
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75483370"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511195"
 ---
 # <a name="get-all-application-proxy-apps-using-default-domains-msappproxynet"></a>获取所有使用默认域 (.msappproxy.net) 的应用程序代理应用
 
-此 PowerShell 脚本示例列出了所有使用默认域（msappproxy.net）的 Azure Active Directory （Azure AD）应用程序代理应用程序。
+在该 PowerShell 脚本示例中，可找到正在使用默认域 (.msappproxy.net) 的所有 Azure Active Directory (Azure AD) 应用程序代理应用程序。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,7 +28,7 @@ ms.locfileid: "75483370"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-此示例需要用于图形模块（AzureAD）的[AzureAD V2 powershell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)或[graph 模块预览版本](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview)（AzureADPreview）的 AzureAD v2 powershell。
+此示例需要[适用于 Graph 的 AzureAD V2 PowerShell 模块](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) (AzureAD) 或[适用于 Graph 的 AzureAD V2 PowerShell 模块预览版](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0-preview) (AzureADPreview)。
 
 ## <a name="sample-script"></a>示例脚本
 
@@ -45,6 +44,6 @@ ms.locfileid: "75483370"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 Azure AD PowerShell 模块的详细信息，请参阅[Azure AD powershell 模块概述](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)。
+要详细了解 Azure AD PowerShell 模块，请参阅 [Azure AD PowerShell 模块概述](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)。
 
-有关应用程序代理的其他 PowerShell 示例，请参阅[Azure AD 应用程序代理的 Azure AD powershell 示例](../application-proxy-powershell-samples.md)。
+有关应用程序代理的其他 PowerShell 示例，请参阅 [Azure AD 应用程序代理的 Azure AD PowerShell 示例](../application-proxy-powershell-samples.md)。

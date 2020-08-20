@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 PagerDuty 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 PagerDuty 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0410456a-76f7-42a7-9bb5-f767de75a0e0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 330066a950165d3424ca7900493ac89ce746b309
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 2bc486987dd25d899728af4861c0b71ef14d9f4a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904524"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554074"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pagerduty"></a>教程：Azure Active Directory 与 PagerDuty 的单一登录 (SSO) 集成
 
