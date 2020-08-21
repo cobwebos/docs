@@ -1,6 +1,6 @@
 ---
 title: 预填充联系信息以获取自助服务密码重置-Azure Active Directory
-description: 了解如何为 Azure Active Directory 自助服务密码重置（SSPR）的用户预填充联系信息，以便他们可以使用该功能，而无需完成注册过程。
+description: 了解如何为 Azure Active Directory 自助服务密码重置 (SSPR) 的用户预填充联系信息，以便他们可以使用该功能，而无需完成注册过程。
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,21 +11,21 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 116fa2a4c71fc8ebc67387cf02090bbd664b862a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 22037468c47de45513351e1d6126d3f3e5fccadc
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035377"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717789"
 ---
-# <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>为 Azure Active Directory 自助服务密码重置（SSPR）预先填充用户身份验证联系信息
+# <a name="pre-populate-user-authentication-contact-information-for-azure-active-directory-self-service-password-reset-sspr"></a>预先填充用户身份验证联系信息以 Azure Active Directory 自助服务密码重置 (SSPR) 
 
-若要使用 Azure Active Directory （Azure AD）自助服务密码重置（SSPR），用户的身份验证联系信息必须存在。 某些组织让用户自行注册其身份验证数据。 其他组织想要从 Active Directory 域服务（AD DS）中已存在的身份验证数据中同步。 此同步数据可用于 Azure AD 和 SSPR，无需用户交互。 用户需要更改或重置其密码时，即使尚未注册其联系信息，也可以这样做。
+若要使用 Azure Active Directory (Azure AD) 自助服务密码重置 (SSPR) ，用户的身份验证联系信息必须存在。 某些组织让用户自行注册其身份验证数据。 其他组织倾向于从已存在于 Active Directory 域服务 (AD DS) 中的身份验证数据进行同步。 此同步数据可用于 Azure AD 和 SSPR，无需用户交互。 用户需要更改或重置其密码时，即使尚未注册其联系信息，也可以这样做。
 
 如果满足以下要求，可以预先填充身份验证联系信息：
 
 * 已正确格式化本地目录中的数据。
-* 已为 Azure AD 租户配置[Azure AD Connect](../hybrid/how-to-connect-install-express.md) 。
+* 已为 Azure AD 租户配置 [Azure AD Connect](../hybrid/how-to-connect-install-express.md) 。
 
 电话号码的格式必须为 *+ CountryCode PhoneNumber*，如 *+ 1 4251234567*。
 
@@ -70,9 +70,9 @@ ms.locfileid: "87035377"
 * **身份验证电子邮件**
 * **安全问答**
 
-如果提供了*移动电话*或*备用电子邮件*的值，用户可以立即使用这些值重置密码，即使他们尚未注册该服务。
+如果提供了 *移动电话* 或 *备用电子邮件*的值，用户可以立即使用这些值重置密码，即使他们尚未注册该服务。
 
-用户在首次注册时会看到这些值，如果需要，还可以修改它们。 成功注册后，这些值将分别保存在 "*身份验证电话*" 和 "*身份验证电子邮件*" 字段中。
+用户在首次注册时会看到这些值，如果需要，还可以修改它们。 成功注册后，这些值将分别保存在 " *身份验证电话* " 和 " *身份验证电子邮件* " 字段中。
 
 ## <a name="set-and-read-the-authentication-data-through-powershell"></a>通过 PowerShell 设置和读取身份验证数据
 
@@ -84,11 +84,11 @@ ms.locfileid: "87035377"
     * 仅当未与本地目录同步时，才能设置。
 
 > [!IMPORTANT]
-> PowerShell v1 和 PowerShell v2 之间的命令功能缺少奇偶校验。 [身份验证方法的 Microsoft Graph REST API （beta）](/graph/api/resources/authenticationmethods-overview)是当前工程设计的重点，旨在提供新式交互。
+> PowerShell v1 和 PowerShell v2 之间的命令功能缺少奇偶校验。 [身份验证方法的 Microsoft Graph REST API (beta) ](/graph/api/resources/authenticationmethods-overview)是当前工程设计的重点，旨在提供新式交互。
 
 ### <a name="use-powershell-version-1"></a>使用 PowerShell 版本 1
 
-首先，[下载并安装 Azure AD PowerShell 模块](https://msdn.microsoft.com/library/azure/jj151815.aspx#bkmk_installmodule)。 安装完成后，使用以下步骤配置每个字段。
+首先，[下载并安装 Azure AD PowerShell 模块](/previous-versions/azure/jj151815(v=azure.100)#bkmk_installmodule)。 安装完成后，使用以下步骤配置每个字段。
 
 #### <a name="set-the-authentication-data-with-powershell-version-1"></a>使用 PowerShell 版本 1 设置身份验证数据
 
@@ -126,7 +126,7 @@ Get-MsolUser -UserPrincipalName user@domain.com | select -Expand StrongAuthentic
 
 ### <a name="use-powershell-version-2"></a>使用 PowerShell 版本 2
 
-若要开始，请[下载并安装 Azure AD 版本 2 PowerShell 模块](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0)。
+若要开始，请 [下载并安装 Azure AD 版本 2 PowerShell 模块](/powershell/module/azuread/?view=azureadps-2.0)。
 
 若要从支持的最新版本的 PowerShell 快速安装 `Install-Module` ，请运行以下命令。 第一行检查是否已安装该模块：
 

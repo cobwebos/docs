@@ -3,12 +3,12 @@ title: 将群集节点升级为使用 Azure 托管磁盘
 description: 本文介绍了如何在只需群集短暂停机甚至无需其停机的前提下，将现有 Service Fabric 群集升级为使用 Azure 托管磁盘。
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 74b4ec803229ceb0168da6540fcbda685f0df16e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 152bdaea121e65de8332fcde8543b8158ff11714
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653692"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717517"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>将群集节点升级为使用 Azure 托管磁盘
 
@@ -365,7 +365,7 @@ foreach($name in $nodeNames){
 
 了解如何：
 
-* [纵向扩展 Service Fabric 群集主节点类型](service-fabric-scale-up-node-type.md)
+* [纵向扩展 Service Fabric 群集主节点类型](service-fabric-scale-up-primary-node-type.md)
 
 * [将规模集模板转换为使用托管磁盘](../virtual-machine-scale-sets/virtual-machine-scale-sets-convert-template-to-md.md)
 

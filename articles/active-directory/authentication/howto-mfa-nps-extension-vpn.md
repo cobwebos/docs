@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 394a4c171153ecf50ff5d755c42e3c5f939b2ec7
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 13ed87903845d9f8295e56f187b643d73fbfb04e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507172"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717857"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 网络策略服务器扩展集成 VPN 基础结构与 Azure MFA
 
@@ -41,7 +41,7 @@ ms.locfileid: "88507172"
 * 建立和强制执行网络访问保护 (NAP) 客户端健康策略，可确定是授予设备对网络资源的无限制还是受限制的访问权限。
 
 * 提供一种强制进行身份验证和授权，以访问支持 802.1x 无线访问点和以太网交换机的方式。
-  有关详细信息，请参阅[网络策略服务器](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)。
+  有关详细信息，请参阅[网络策略服务器](/windows-server/networking/technologies/nps/nps-top)。
 
 若要增强安全性，并提供高级别的符合性，组织可以将 NPS 与 Azure 多重身份验证集成，以确保用户使用双重验证连接到 VPN 服务器上的虚拟端口。 已授予访问权限的用户，他们必须提供其用户名和密码组合与他们控制的其他信息。 此信息必须受信任且不易复制。 可以包括手机号码、座机号码或者移动设备上的应用程序。
 
@@ -94,7 +94,7 @@ ms.locfileid: "88507172"
 
 网络策略和访问服务提供 RADIUS 服务器和客户端功能。 本文假设已在环境中的成员服务器或域控制器上安装网络策略和访问服务角色。 在本指南中，要配置 RADIUS 以实现 VPN 配置。 在服务器上而非 VPN 服务器上，安装网络策略和访问服务角色。
 
-有关安装网络策略和访问服务角色服务 Windows Server 2012 或更高版本的详细信息，请参阅[安装 NAP 健康策略服务器](https://technet.microsoft.com/library/dd296890.aspx)。 Windows Server 2016 已弃用 NAP。 有关 NPS 最佳做法的说明，包括在域控制器上安装 NPS 的建议，请参阅 [NPS 最佳做法](https://technet.microsoft.com/library/cc771746)。
+有关安装网络策略和访问服务角色服务 Windows Server 2012 或更高版本的详细信息，请参阅[安装 NAP 健康策略服务器](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd296890(v=ws.10))。 Windows Server 2016 已弃用 NAP。 有关 NPS 最佳做法的说明，包括在域控制器上安装 NPS 的建议，请参阅 [NPS 最佳做法](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771746(v=ws.10))。
 
 ### <a name="azure-mfa-license"></a>Azure MFA 许可证
 
@@ -446,13 +446,13 @@ Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL
 
 ![“Azure 多重身份验证”日志](./media/howto-mfa-nps-extension-vpn/image48.png)
 
-要执行高级故障排除，请参阅安装了 NPS 服务的 NPS 数据库格式日志文件。 这些日志文件以逗号分隔的文本文件形式在 %SystemRoot%\System32\Logs 文件夹中创建。 有关这些日志文件的说明，请参阅[解释 NPS 数据库格式日志文件](https://technet.microsoft.com/library/cc771748.aspx)。
+要执行高级故障排除，请参阅安装了 NPS 服务的 NPS 数据库格式日志文件。 这些日志文件以逗号分隔的文本文件形式在 %SystemRoot%\System32\Logs 文件夹中创建。 有关这些日志文件的说明，请参阅[解释 NPS 数据库格式日志文件](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc771748(v=ws.10))。
 
 如果不将这些日志文件中的条目导入电子表格或数据库，可能难以解释这些条目。 可以在线找到多个 Internet 身份验证服务 (IAS) 分析工具，可帮助解释日志文件。 其中一种可下载的[共享性应用程序](https://www.deepsoftware.com/iasviewer)的输出如下所示：
 
 ![示例共享性应用 IAS 分析程序](./media/howto-mfa-nps-extension-vpn/image49.png)
 
-若要执行其他故障排除，你可以使用协议分析器，例如 Wireshark 或 [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)。 下图来自 Wireshark，显示了 VPN 服务器与 NPS 之间的 RADIUS 消息。
+若要执行其他故障排除，你可以使用协议分析器，例如 Wireshark 或 [Microsoft Message Analyzer](/message-analyzer/microsoft-message-analyzer-operating-guide)。 下图来自 Wireshark，显示了 VPN 服务器与 NPS 之间的 RADIUS 消息。
 
 ![显示筛选的流量的 Microsoft 消息分析器](./media/howto-mfa-nps-extension-vpn/image50.png)
 
