@@ -9,50 +9,66 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: cabc3d2a0f8eb3a75938d1768bb0085aab528391
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: e0df3de5eadfd2cc5c00c52da5c4942b42a68b2b
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584597"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722562"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure 认知服务容器图像标记
 
 Azure 认知服务提供许多容器映像。 容器注册表和相应的存储库在容器映像之间有所不同。 每个容器映像名称提供多个标记。 容器映像标记是对容器映像进行版本控制的机制。 本文旨在用作列出所有认知服务容器映像及其可用标记的综合性参考。
 
 > [!TIP]
-> 使用时 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) ，请密切关注容器注册表、存储库、容器映像名称和相应的标记的大小写，因为它们**区分大小写**。
+> 使用时 [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) ，请密切关注容器注册表、存储库、容器映像名称和相应的标记的大小写，因为它们 **区分大小写**。
 
 ## <a name="anomaly-detector"></a>异常检测器
 
-可以在容器注册表联合中找到[异常探测器][ad-containers]容器映像 `mcr.microsoft.com` 。 它驻留在 `azure-cognitive-services` 存储库中，并命名为 `anomaly-detector` 。 完全限定的容器映像名称为， `mcr.microsoft.com/azure-cognitive-services/anomaly-detector` 。
+可以在容器注册表联合中找到 [异常探测器][ad-containers] 容器映像 `mcr.microsoft.com` 。 它驻留在 `azure-cognitive-services` 存储库中，并命名为 `anomaly-detector` 。 完全限定的容器映像名称为， `mcr.microsoft.com/azure-cognitive-services/anomaly-detector` 。
 
 此容器映像提供以下标记：
 
-| 图像标记                    | 备注 |
+| 图像标记                    | 说明 |
 |-------------------------------|:------|
 | `latest`                      |       |
 
 ## <a name="computer-vision"></a>计算机视觉
 
-可以在容器注册表中找到[计算机视觉][cv-containers]容器映像 `containerpreview.azurecr.io` 。 它驻留在 `microsoft` 存储库中，并命名为 `cognitive-services-read` 。 完全限定的容器映像名称为， `containerpreview.azurecr.io/microsoft/cognitive-services-read` 。
+可以在容器注册表中找到 [计算机视觉][cv-containers] 读取 OCR 容器映像 `containerpreview.azurecr.io` 。 它驻留在 `microsoft` 存储库中，并命名为 `cognitive-services-read` 。 完全限定的容器映像名称为， `containerpreview.azurecr.io/microsoft/cognitive-services-read` 。
 
 此容器映像提供以下标记：
 
-| 图像标记                    | 备注 |
+| 图像标记                    | 说明 |
 |-------------------------------|:------|
-| `latest`                      |       |
+| `latest ( (2.0.013250001-amd64-preview)` | •进一步降低容器的内存使用率。 |
+|                                          | •多箱安装程序需要外部缓存。 例如，设置 Redis 用于缓存。 |
+|                                          | •当 Redis 缓存设置为0时，修复缺少问题的结果。  |
+|                                          | •删除26MB 的请求正文大小限制。 容器现在可以接受 >26MB 文件。  |
+|                                          | •向控制台日志记录添加时间戳和生成版本。  |
+| `1.1.013050001-amd64-preview`            | * 添加了 ReadEngineConfig： ResultExpirationPeriod 容器初始化配置，用于指定系统何时应清除识别结果。 |
+|                                          | 设置以小时为单位，默认值为48hr。   |
+|                                          |   此设置可以减少结果存储的内存使用情况，尤其是在使用容器内存中存储时。  |
+|                                          |    * 示例1。 ReadEngineConfig： ResultExpirationPeriod = 1，系统将在进程后清除识别结果1hr。   |
+|                                          |    * 示例2。 ReadEngineConfig： ResultExpirationPeriod = 0，系统将在结果检索后清除识别结果。  |
+|                                          | 修复了在将无效图像格式传入系统时出现500内部服务器错误。 它现在将返回400错误：   |
+|                                          | `{`  |
+|                                          | `"error": {`  |
+|                                          |      `"code": "InvalidImageSize",`  |
+|                                          |      `"message": "Image must be between 1024 and 209715200 bytes."`  |
+|                                          |          `}`  |
+|                                          | `}`  |
 | `1.1.011580001-amd64-preview` |       |
 | `1.1.009920003-amd64-preview` |       |
 | `1.1.009910003-amd64-preview` |       |
 
 ## <a name="face"></a>人脸
 
-可以在容器注册表中找到人[脸][fa-containers]容器映像 `containerpreview.azurecr.io` 。 它驻留在 `microsoft` 存储库中，并命名为 `cognitive-services-face` 。 完全限定的容器映像名称为， `containerpreview.azurecr.io/microsoft/cognitive-services-face` 。
+可以在容器注册表中找到人 [脸][fa-containers] 容器映像 `containerpreview.azurecr.io` 。 它驻留在 `microsoft` 存储库中，并命名为 `cognitive-services-face` 。 完全限定的容器映像名称为， `containerpreview.azurecr.io/microsoft/cognitive-services-face` 。
 
 此容器映像提供以下标记：
 
-| 图像标记                    | 备注 |
+| 图像标记                    | 说明 |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -66,11 +82,11 @@ Azure 认知服务提供许多容器映像。 容器注册表和相应的存储�
 
 ## <a name="form-recognizer"></a>表单识别器
 
-可以在容器注册表中找到[窗体识别器][fr-containers]容器映像 `containerpreview.azurecr.io` 。 它驻留在 `microsoft` 存储库中，并命名为 `cognitive-services-form-recognizer` 。 完全限定的容器映像名称为， `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` 。
+可以在容器注册表中找到 [窗体识别器][fr-containers] 容器映像 `containerpreview.azurecr.io` 。 它驻留在 `microsoft` 存储库中，并命名为 `cognitive-services-form-recognizer` 。 完全限定的容器映像名称为， `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` 。
 
 此容器映像提供以下标记：
 
-| 图像标记                    | 备注 |
+| 图像标记                    | 说明 |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -79,11 +95,11 @@ Azure 认知服务提供许多容器映像。 容器注册表和相应的存储�
 
 ## <a name="language-understanding-luis"></a>语言理解 (LUIS)
 
-可在容器注册表联合中找到[LUIS][lu-containers]容器映像 `mcr.microsoft.com` 。 它驻留在 `azure-cognitive-services` 存储库中，并命名为 `luis` 。 完全限定的容器映像名称为， `mcr.microsoft.com/azure-cognitive-services/luis` 。
+可在容器注册表联合中找到 [LUIS][lu-containers] 容器映像 `mcr.microsoft.com` 。 它驻留在 `azure-cognitive-services` 存储库中，并命名为 `luis` 。 完全限定的容器映像名称为， `mcr.microsoft.com/azure-cognitive-services/luis` 。
 
 此容器映像提供以下标记：
 
-| 图像标记                    | 备注 |
+| 图像标记                    | 说明 |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.010330004-amd64-preview` |       |
@@ -97,11 +113,11 @@ Azure 认知服务提供许多容器映像。 容器注册表和相应的存储�
 
 ## <a name="custom-speech-to-text"></a>自定义语音转文本
 
-可以在容器注册表中找到[自定义语音到文本][sp-cstt]的容器映像 `containerpreview.azurecr.io` 。 它驻留在 `microsoft` 存储库中，并命名为 `cognitive-services-custom-speech-to-text` 。 完全限定的容器映像名称为， `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` 。
+可以在容器注册表中找到 [自定义语音到文本][sp-cstt] 的容器映像 `containerpreview.azurecr.io` 。 它驻留在 `microsoft` 存储库中，并命名为 `cognitive-services-custom-speech-to-text` 。 完全限定的容器映像名称为， `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` 。
 
 此容器映像提供以下标记：
 
-| 图像标记            | 备注 |
+| 图像标记            | 说明 |
 |-----------------------|:------|
 | `latest`              |       |
 | `2.2.0-amd64-preview` |       |
@@ -112,22 +128,22 @@ Azure 认知服务提供许多容器映像。 容器注册表和相应的存储�
 
 ## <a name="custom-text-to-speech"></a>自定义文本到语音转换
 
-可以在容器注册表中找到[自定义的文本到语音转换][sp-ctts]容器图像 `containerpreview.azurecr.io` 。 它驻留在 `microsoft` 存储库中，并命名为 `cognitive-services-custom-text-to-speech` 。 完全限定的容器映像名称为， `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech` 。
+可以在容器注册表中找到 [自定义的文本到语音转换][sp-ctts] 容器图像 `containerpreview.azurecr.io` 。 它驻留在 `microsoft` 存储库中，并命名为 `cognitive-services-custom-text-to-speech` 。 完全限定的容器映像名称为， `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech` 。
 
 此容器映像提供以下标记：
 
-| 图像标记            | 备注 |
+| 图像标记            | 说明 |
 |-----------------------|:------|
 | `latest`              |       |
 | `1.3.0-amd64-preview` |       |
 
 ## <a name="speech-to-text"></a>语音转文本
 
-可以在容器注册表中找到 "[语音到文本][sp-stt]" 容器图像 `containerpreview.azurecr.io` 。 它驻留在 `microsoft` 存储库中，并命名为 `cognitive-services-speech-to-text` 。 完全限定的容器映像名称为， `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` 。
+可以在容器注册表中找到 " [语音到文本][sp-stt] " 容器图像 `containerpreview.azurecr.io` 。 它驻留在 `microsoft` 存储库中，并命名为 `cognitive-services-speech-to-text` 。 完全限定的容器映像名称为， `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` 。
 
 此容器映像提供以下标记：
 
-| 图像标记                  | 备注                                    |
+| 图像标记                  | 说明                                    |
 |-----------------------------|:-----------------------------------------|
 | `latest`                    | 具有区域设置的容器映像 `en-US` 。 |
 | `2.2.0-amd64-ar-ae-preview` | 具有区域设置的容器映像 `ar-AE` 。 |
@@ -445,11 +461,11 @@ Azure 认知服务提供许多容器映像。 容器注册表和相应的存储�
 
 ## <a name="text-to-speech"></a>文本转语音
 
-可以在容器注册表中找到[文本到语音的][sp-tts]容器图像 `containerpreview.azurecr.io` 。 它驻留在 `microsoft` 存储库中，并命名为 `cognitive-services-text-to-speech` 。 完全限定的容器映像名称为， `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech` 。
+可以在容器注册表中找到 [文本到语音的][sp-tts] 容器图像 `containerpreview.azurecr.io` 。 它驻留在 `microsoft` 存储库中，并命名为 `cognitive-services-text-to-speech` 。 完全限定的容器映像名称为， `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech` 。
 
 此容器映像提供以下标记：
 
-| 图像标记                                  | 备注                                                                      |
+| 图像标记                                  | 说明                                                                      |
 |---------------------------------------------|:---------------------------------------------------------------------------|
 | `latest`                                    | 具有 `en-US` 区域设置和语音的容器映像 `en-US-JessaRUS` 。        |
 | `1.3.0-amd64-ar-eg-hoda-preview`            | 具有 `ar-EG` 区域设置和语音的容器映像 `ar-EG-Hoda` 。            |
@@ -621,11 +637,11 @@ Azure 认知服务提供许多容器映像。 容器注册表和相应的存储�
 
 ## <a name="key-phrase-extraction"></a>关键短语提取
 
-可以在容器注册表 "联合" 中找到[关键短语提取][ta-kp]容器映像 `mcr.microsoft.com` 。 它驻留在 `azure-cognitive-services` 存储库中，并命名为 `keyphrase` 。 完全限定的容器映像名称为， `mcr.microsoft.com/azure-cognitive-services/keyphrase` 。
+可以在容器注册表 "联合" 中找到 [关键短语提取][ta-kp] 容器映像 `mcr.microsoft.com` 。 它驻留在 `azure-cognitive-services` 存储库中，并命名为 `keyphrase` 。 完全限定的容器映像名称为， `mcr.microsoft.com/azure-cognitive-services/keyphrase` 。
 
 此容器映像提供以下标记：
 
-| 图像标记                    | 备注 |
+| 图像标记                    | 说明 |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -636,11 +652,11 @@ Azure 认知服务提供许多容器映像。 容器注册表和相应的存储�
 
 ## <a name="language-detection"></a>语言检测
 
-可以在容器注册表 "联合" 中找到[语言检测][ta-la]容器映像 `mcr.microsoft.com` 。 它驻留在 `azure-cognitive-services` 存储库中，并命名为 `language` 。 完全限定的容器映像名称为， `mcr.microsoft.com/azure-cognitive-services/language` 。
+可以在容器注册表 "联合" 中找到 [语言检测][ta-la] 容器映像 `mcr.microsoft.com` 。 它驻留在 `azure-cognitive-services` 存储库中，并命名为 `language` 。 完全限定的容器映像名称为， `mcr.microsoft.com/azure-cognitive-services/language` 。
 
 此容器映像提供以下标记：
 
-| 图像标记                    | 备注 |
+| 图像标记                    | 说明 |
 |-------------------------------|:------|
 | `latest`                      |       |
 | `1.1.009301-amd64-preview`    |       |
@@ -651,23 +667,23 @@ Azure 认知服务提供许多容器映像。 容器注册表和相应的存储�
 
 ## <a name="sentiment-analysis"></a>情绪分析
 
-可以在容器注册表 "联合" 中找到[情绪分析][ta-se]容器映像 `mcr.microsoft.com` 。 它驻留在 `azure-cognitive-services` 存储库中，并命名为 `sentiment` 。 完全限定的容器映像名称为， `mcr.microsoft.com/azure-cognitive-services/sentiment` 。
+可以在容器注册表 "联合" 中找到 [情绪分析][ta-se] 容器映像 `mcr.microsoft.com` 。 它驻留在 `azure-cognitive-services` 存储库中，并命名为 `sentiment` 。 完全限定的容器映像名称为， `mcr.microsoft.com/azure-cognitive-services/sentiment` 。
 
 此容器映像提供以下标记：
 
-| 图像标记 | 备注                                         |
+| 图像标记 | 说明                                         |
 |------------|:----------------------------------------------|
 | `latest`   |                                               |
-| `3.0-en`   | 情绪分析 v3 （英语）               |
-| `3.0-es`   | 情绪分析 v3 （西班牙语）               |
-| `3.0-fr`   | 情绪分析 v3 （法语）                |
-| `3.0-it`   | 情绪分析 v3 （意大利语）               |
-| `3.0-de`   | 情绪分析 v3 （德语）                |
-| `3.0-zh`   | 情绪分析 v3 （简体中文）  |
-| `3.0-zht`  | 情绪分析 v3 （中文-繁体） |
-| `3.0-ja`   | 情绪分析 v3 （日语）              |
-| `3.0-pt`   | 情绪分析 v3 （葡萄牙语）            |
-| `3.0-nl`   | 情绪分析 v3 （荷兰语）                 |
+| `3.0-en`   | 情绪分析 v3 (英语)                |
+| `3.0-es`   | 情绪分析 v3 (西班牙语)                |
+| `3.0-fr`   | 情绪分析 v3 (法语)                 |
+| `3.0-it`   | 情绪分析 v3 (意大利语)                |
+| `3.0-de`   | 情绪分析 v3 (德语)                 |
+| `3.0-zh`   | 情绪分析 v3 (简体中文)   |
+| `3.0-zht`  | 情绪分析 v3 (中文-繁体)  |
+| `3.0-ja`   | 情绪分析 v3 (日语)               |
+| `3.0-pt`   | 情绪分析 v3 (葡萄牙语)             |
+| `3.0-nl`   | 情绪分析 v3 (荷兰语)                  |
 | `1.1.009301-amd64-preview`    | 情绪分析 v2      |
 | `1.1.008510001-amd64-preview` |       |
 | `1.1.007750002-amd64-preview` |       |

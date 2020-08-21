@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2020
 ms.author: memildin
-ms.openlocfilehash: 7bec65867373293ff06a2295f08a05db6ffaa480
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: c7df035aec199953bdf9a6bd56262af70a5a77e7
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653828"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723956"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Azure 安全中心的新增功能
 
@@ -43,7 +43,7 @@ Azure 安全中心正在积极开发中，并不断得到改进。 为及时了�
 
 ### <a name="asset-inventory---powerful-new-view-of-the-security-posture-of-your-assets"></a>资产清单-资产安全状况的强大新视图
 
-安全中心的资产清单提供了一种方法，用于查看已连接到安全中心的资源的安全状况。
+安全中心的资产清单 (当前为预览版) 提供一种方法来查看已连接到安全中心的资源的安全状况。
 
 安全中心会定期分析 Azure 资源的安全状态，以识别潜在的安全漏洞。 然后，提供有关如何修正这些漏洞的建议。 当任何资源具有未完成的建议时，它们将显示在清单中。
 

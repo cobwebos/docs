@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: ab0192d6b7e69f3915281acd080d2c7baabfb241
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 219a41874f4bb4a5b7773c5726638fce6b90f200
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87851913"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88724177"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>配置应用程序的 SSL 连接性以安全连接到 Azure Database for MySQL
 Azure Database for MySQL 支持使用安全套接字层 (SSL) 将 Azure Database for MySQL 服务器连接到客户端应用程序。 通过在数据库服务器与客户端应用程序之间强制实施 SSL 连接，可以加密服务器与应用程序之间的数据流，有助于防止“中间人”攻击。
@@ -21,11 +21,11 @@ Azure Database for MySQL 支持使用安全套接字层 (SSL) 将 Azure Database
 从 [https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem) 下载通过 SSL 与 Azure Database for MySQL 服务器通信所需的证书，再将证书文件保存到本地驱动器（例如，本教程使用 c:\ssl）。
 **对于 Microsoft Internet Explorer 和 Microsoft Edge：** 下载完成之后，将证书重命名为 BaltimoreCyberTrustRoot.crt.pem。
 
-请参阅以下链接，了解主权云中服务器的证书： [Azure 政府](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)版、 [azure 中国](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)版和[azure 德国](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt)版。
+请参阅以下链接，了解主权云中服务器的证书： [Azure 政府](https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem)版、 [azure 中国](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)版和 [azure 德国](https://www.d-trust.net/cgi-bin/D-TRUST_Root_Class_3_CA_2_2009.crt)版。
 
 ## <a name="step-2-bind-ssl"></a>步骤 2：绑定 SSL
 
-有关特定的编程语言连接字符串，请参阅下面的[示例代码](howto-configure-ssl.md#sample-code)。
+对于特定的编程语言连接字符串，请参考下面的[示例代码](howto-configure-ssl.md#sample-code)。
 
 ### <a name="connecting-to-server-using-mysql-workbench-over-ssl"></a>使用 MySQL Workbench 通过 SSL 连接到服务器
 配置 MySQL Workbench，以便安全地通过 SSL 连接。 
@@ -134,7 +134,7 @@ client = Mysql2::Client.new(
         :username => 'myadmin@mydemoserver',
         :password => 'yourpassword',
         :database => 'quickstartdb',
-        :ssl_ca => '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'
+        :sslca => '/var/www/html/BaltimoreCyberTrustRoot.crt.pem'
     )
 ```
 

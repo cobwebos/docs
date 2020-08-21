@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 将 GitOps 和 Helm 配合用于启用了 Azure Arc 的群集配置（预览版）
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes 服务, 容器
-ms.openlocfilehash: 44803338a27fc492f4dc896a0edb398b2ce486ea
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: cca48910b679ff8f72ee06f4ed990bd480fb2200
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926121"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723633"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>使用启用了 GitOps on Arc 的 Kubernetes 群集 (预览部署 Helm 图表) 
 
@@ -53,7 +53,7 @@ arc-helm-demo  eastus      k8s-clusters
 
 ```bash
 ├── charts
-│   └── azure-vote
+│   └── azure-arc-sample
 │       ├── Chart.yaml
 │       ├── templates
 │       │   ├── NOTES.txt
@@ -61,25 +61,25 @@ arc-helm-demo  eastus      k8s-clusters
 │       │   └── service.yaml
 │       └── values.yaml
 └── releases
-    └── vote-app.yaml
+    └── app.yaml
 ```
 
-在 git 存储库中，我们有两个目录，一个包含 Helm 图表，另一个包含版本配置。在 `releases` 目录中， `vote-app.yaml` 包含如下所示的 HelmRelease 配置：
+在 git 存储库中，我们有两个目录，一个包含 Helm 图表，另一个包含版本配置。在 `releases` 目录中， `app.yaml` 包含如下所示的 HelmRelease 配置：
 
-```bash
+```yaml
 apiVersion: helm.fluxcd.io/v1
 kind: HelmRelease
 metadata:
-  name: vote-app
+  name: azure-arc-sample
   namespace: arc-k8s-demo
 spec:
   releaseName: arc-k8s-demo
   chart:
     git: https://github.com/Azure/arc-helm-demo
     ref: master
-    path: charts/azure-vote
+    path: charts/azure-arc-sample
   values:
-    frontendServiceName: arc-k8s-demo-vote-front
+    serviceName: arc-k8s-demo
 ```
 
 Helm 发布配置包含以下字段：
@@ -96,10 +96,10 @@ HelmRelease spec.values 中指定的选项将替代图表源中的 values.yaml �
 
 ## <a name="create-a-configuration"></a>创建配置
 
-让我们使用适用于 `k8sconfiguration` 的 Azure CLI 扩展，将已连接的群集链接到示例 git 存储库。 我们将此配置命名为 `azure-voting-app`，并在 `arc-k8s-demo` 命名空间中部署 Flux Operator。
+让我们使用适用于 `k8sconfiguration` 的 Azure CLI 扩展，将已连接的群集链接到示例 git 存储库。 我们将此配置命名为 `azure-arc-sample`，并在 `arc-k8s-demo` 命名空间中部署 Flux Operator。
 
 ```bash
-az k8sconfiguration create --name azure-voting-app \
+az k8sconfiguration create --name azure-arc-sample \
   --resource-group $RESOURCE_GROUP --cluster-name $CLUSTER_NAME \
   --operator-instance-name flux --operator-namespace arc-k8s-demo \
   --operator-params='--git-readonly --git-path=releases' \
@@ -118,7 +118,7 @@ az k8sconfiguration create --name azure-voting-app \
 使用 Azure CLI 验证 `sourceControlConfiguration` 是否已成功创建。
 
 ```console
-az k8sconfiguration show --resource-group $RESOURCE_GROUP --name azure-voting-app --cluster-name $CLUSTER_NAME --cluster-type connectedClusters
+az k8sconfiguration show --resource-group $RESOURCE_GROUP --name azure-arc-sample --cluster-name $CLUSTER_NAME --cluster-type connectedClusters
 ```
 
 `sourceControlConfiguration`资源将更新为符合性状态、消息和调试信息。
@@ -139,8 +139,8 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
     "chartValues": "--set helm.versions=v3",
     "chartVersion": "0.6.0"
   },
-  "id": "/subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/AzureArcTest/providers/Microsoft.Kubernetes/connectedClusters/AzureArcTest1/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/azure-voting-app",
-  "name": "azure-voting-app",
+  "id": "/subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/AzureArcTest/providers/Microsoft.Kubernetes/connectedClusters/AzureArcTest1/providers/Microsoft.KubernetesConfiguration/sourceControlConfigurations/azure-arc-sample",
+  "name": "azure-arc-sample",
   "operatorInstanceName": "flux",
   "operatorNamespace": "arc-k8s-demo",
   "operatorParams": "--git-readonly --git-path=releases",
@@ -156,10 +156,10 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 ## <a name="validate-application"></a>验证应用程序
 
-运行以下命令并 `localhost:3000` 在浏览器中导航到，验证应用程序是否正在运行。
+运行以下命令并 `localhost:8080` 在浏览器中导航到，验证应用程序是否正在运行。
 
 ```bash
-kubectl port-forward -n arc-k8s-demo svc/arc-k8s-demo-vote-front 3000:80
+kubectl port-forward -n arc-k8s-demo svc/arc-k8s-demo 8080:8080
 ```
 
 ## <a name="next-steps"></a>后续步骤

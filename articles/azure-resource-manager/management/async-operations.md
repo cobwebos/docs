@@ -2,14 +2,14 @@
 title: 异步操作的状态
 description: 介绍如何在 Azure 中跟踪异步操作。 它显示用于获取长时间运行操作的状态的值。
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 08/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 68a00e50c7d3e0da757ee7a3a09274c5f1dbecad
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: e2c5ba137d5277466cf1b382d2b0b1bc02259f00
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718418"
+ms.locfileid: "88723446"
 ---
 # <a name="track-asynchronous-azure-operations"></a>跟踪异步 Azure 操作
 
@@ -31,7 +31,7 @@ ms.locfileid: "88718418"
 
 获取201或202响应代码后，就可以监视操作的状态了。
 
-## <a name="use-url-to-monitor-status"></a>使用 URL 监视状态
+## <a name="url-to-monitor-status"></a>用于监视状态的 URL
 
 可以通过两种不同的方式监视异步操作的状态。 通过检查从原始请求返回的标头值来确定正确的方法。 首先，查找：
 
@@ -45,7 +45,9 @@ ms.locfileid: "88718418"
 
 ## <a name="azure-asyncoperation-request-and-response"></a>Azure-AsyncOperation 请求和响应
 
-如果你有来自 `Azure-AsyncOperation` 标头值的 URL，请将 GET 请求发送到该 url。 使用中的值 `Retry-After` 来计划检查状态的频率。 响应属性可能有所不同，但始终包括异步操作的状态。
+如果你有来自 `Azure-AsyncOperation` 标头值的 URL，请将 GET 请求发送到该 url。 使用中的值 `Retry-After` 来计划检查状态的频率。 你将获得一个指示操作状态的响应对象。 使用 URL 检查操作的状态时，将返回不同的响应 `Location` 。 有关位置 URL 响应的详细信息，请参阅 [创建存储帐户 (202，并在) 之后重试 ](#create-storage-account-202-with-location-and-retry-after)。
+
+响应属性可能有所不同，但始终包括异步操作的状态。
 
 ```json
 {

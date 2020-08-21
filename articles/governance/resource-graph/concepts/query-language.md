@@ -1,14 +1,14 @@
 ---
 title: 理解查询语言
 description: 介绍 Resource Graph 表以及可用于 Azure Resource Graph 的 Kusto 数据类型、运算符和函数。
-ms.date: 08/03/2020
+ms.date: 08/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: b59811ecd877b9b2e22a43c00329ed7d02dfb97d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: ea274c349c968852b77f3c3f2d39637f91484335
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541815"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723428"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
@@ -66,10 +66,10 @@ Resources
 
 ## <a name="resource-graph-custom-language-elements"></a>资源关系图自定义语言元素
 
-### <a name="shared-query-syntax-preview"></a><a name="shared-query-syntax"></a>共享查询语法（预览）
+### <a name="shared-query-syntax-preview"></a><a name="shared-query-syntax"></a>共享查询语法 (预览) 
 
-作为预览功能，可以直接在资源关系图查询中访问[共享查询](../tutorials/create-share-query.md)。 这种情况下，可以创建标准查询作为共享查询并重用它们。 若要在资源关系图查询中调用共享查询，请使用 `{{shared-query-uri}}` 语法。 共享查询的 URI 是该查询的 "**设置**" 页上共享查询的_资源 ID_ 。 在此示例中，我们的共享查询 URI 是 `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS` 。
-此 URI 指向要在另一个查询中引用的共享查询的订阅、资源组和完整名称。 此查询与在[教程：创建和共享查询](../tutorials/create-share-query.md)中创建的查询相同。
+作为预览功能，可以直接在资源关系图查询中访问 [共享查询](../tutorials/create-share-query.md) 。 这种情况下，可以创建标准查询作为共享查询并重用它们。 若要在资源关系图查询中调用共享查询，请使用 `{{shared-query-uri}}` 语法。 共享查询的 URI 是该查询的 "**设置**" 页上共享查询的_资源 ID_ 。 在此示例中，我们的共享查询 URI 是 `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SharedQueries/providers/Microsoft.ResourceGraph/queries/Count VMs by OS` 。
+此 URI 指向要在另一个查询中引用的共享查询的订阅、资源组和完整名称。 此查询与在 [教程：创建和共享查询](../tutorials/create-share-query.md)中创建的查询相同。
 
 > [!NOTE]
 > 不能将引用共享查询的查询另存为共享查询。
@@ -93,7 +93,7 @@ Resources
 
 ## <a name="supported-kql-language-elements"></a>支持的 KQL 语言元素
 
-Resource Graph 支持所有 KQL [数据类型](/azure/kusto/query/scalar-data-types/)、[标量函数](/azure/kusto/query/scalarfunctions)、[标量运算符](/azure/kusto/query/binoperators)和[聚合函数](/azure/kusto/query/any-aggfunction)。 Resource Graph 支持特定[表格运算符](/azure/kusto/query/queries)，其中一些运算符具有不同的行为。
+资源图表支持 KQL [数据类型](/azure/kusto/query/scalar-data-types/)、 [标量函数](/azure/kusto/query/scalarfunctions)、 [标量运算符](/azure/kusto/query/binoperators)和 [聚合函数](/azure/kusto/query/any-aggfunction)的子集。 Resource Graph 支持特定[表格运算符](/azure/kusto/query/queries)，其中一些运算符具有不同的行为。
 
 ### <a name="supported-tabulartop-level-operators"></a>支持的表格/顶级运算符
 
@@ -123,8 +123,8 @@ Resource Graph 支持所有 KQL [数据类型](/azure/kusto/query/scalar-data-ty
 查询从中返回资源的订阅的作用域取决于访问资源关系图的方法。 Azure CLI 和 Azure PowerShell 根据授权用户的上下文填充要包含在请求中的订阅列表。 可以分别为每**个订阅的订阅和****订阅**参数分别定义订阅列表。
 在 REST API 和所有其他 Sdk 中，必须在请求中显式定义要包含的资源的订阅列表。
 
-作为**预览**，REST API 版本 `2020-04-01-preview` 将添加一个属性，用于将查询范围限定为[管理组](../../management-groups/overview.md)。 此预览 API 还可选择订阅属性。 如果管理组或订阅列表均未定义，则查询范围是经过身份验证的用户可以访问的所有资源。 新 `managementGroupId` 属性采用管理组 ID，该 ID 不同于管理组的名称。
-当 `managementGroupId` 指定时，将包含指定管理组层次结构中或下的前5000个订阅中的资源。 `managementGroupId`不能与一起使用 `subscriptions` 。
+作为 **预览**，REST API 版本 `2020-04-01-preview` 将添加一个属性，用于将查询范围限定为 [管理组](../../management-groups/overview.md)。 此预览 API 还可选择订阅属性。 如果管理组或订阅列表均未定义，则查询范围是经过身份验证的用户可以访问的所有资源。 新 `managementGroupId` 属性采用管理组 ID，该 ID 不同于管理组的名称。
+当 `managementGroupId` 指定时，将包含指定管理组层次结构中或下的前5000个订阅中的资源。 `managementGroupId` 不能与一起使用 `subscriptions` 。
 
 示例：查询名为 "我的管理组"、ID 为 "myMG" 的管理组层次结构中的所有资源。
 

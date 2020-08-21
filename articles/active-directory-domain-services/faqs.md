@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: iainfou
-ms.openlocfilehash: 912cf31e29854e9fcd54bbc358bb954c0d7bf389
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6a18dbf5c00c3f3aba2b2d58f060856aba9fb080
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116693"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722887"
 ---
-# <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>常见问题 (常见问题解答) 有关 Azure Active Directory (AD) 域服务
+# <a name="frequently-asked-questions-faqs-about-azure-active-directory-ad-domain-services"></a>有关 Azure Active Directory (AD) 域服务的常见问题 (FAQ)
 
 本页面解答了有关 Azure Active Directory 域服务的常见问题。
 
@@ -61,7 +61,7 @@ ms.locfileid: "88116693"
 但是，如果使用 Azure AD Connect 进行密码哈希同步，则可以使用 Azure AD 域服务，因为密码哈希值存储在 Azure AD 中。
 
 ### <a name="can-i-make-azure-ad-domain-services-available-in-multiple-virtual-networks-within-my-subscription"></a>是否可以在订阅中的多个虚拟网络内使用 Azure AD 域服务？
-域服务本身无法直接支持这种方案。 托管域每次只能在一个虚拟网络中使用。 但是，可以在多个虚拟网络之间配置连接，将 Azure AD 域服务公开到其他虚拟网络。 有关详细信息，请参阅[如何使用 VPN 网关](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)或[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)连接 Azure 中的虚拟网络。
+域服务本身无法直接支持这种方案。 托管域每次只能在一个虚拟网络中使用。 但是，可以在多个虚拟网络之间配置连接，将 Azure AD 域服务公开到其他虚拟网络。 有关详细信息，请参阅[如何使用 VPN 网关](../vpn-gateway/vpn-gateway-howto-vnet-vnet-portal-classic.md)或[虚拟网络对等互连](../virtual-network/virtual-network-peering-overview.md)连接 Azure 中的虚拟网络。
 
 ### <a name="can-i-enable-azure-ad-domain-services-using-powershell"></a>是否可以使用 PowerShell 来启用 Azure AD 域服务？
 是的。 有关详细信息，请参阅[如何使用 PowerShell 启用 Azure AD 域服务](powershell-create-instance.md)。
@@ -73,14 +73,14 @@ ms.locfileid: "88116693"
 否。 Azure AD 域服务提供的域是托管域。 你不需要预配、配置或以其他方式管理此域的域控制器。 这些管理活动由 Microsoft 以服务形式提供。 因此，你无法为托管域添加其他域控制器（读写或只读）。
 
 ### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>邀请到我的目录中的来宾用户能否使用 Azure AD 域服务？
-否。 使用 [Azure AD B2B](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) 邀请进程邀请到 Azure AD 目录的来宾用户会同步到 Azure Active Directory 域服务托管域。 但这些用户的密码不会存储在 Azure AD 目录中。 因此，Azure AD 域服务无法将这些用户的 NTLM 和 Kerberos 哈希同步到托管域。 这类用户可以登录到或者将计算机加入到托管域。
+否。 使用 [Azure AD B2B](../active-directory/external-identities/what-is-b2b.md) 邀请进程邀请到 Azure AD 目录的来宾用户会同步到 Azure Active Directory 域服务托管域。 但这些用户的密码不会存储在 Azure AD 目录中。 因此，Azure AD 域服务无法将这些用户的 NTLM 和 Kerberos 哈希同步到托管域。 这类用户可以登录到或者将计算机加入到托管域。
 
 ### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>是否可将现有 Azure AD 域服务托管域移动到不同的订阅、资源组、区域或虚拟网络？
 否。 创建 Azure AD 域服务托管域后，无法将托管域移到其他资源组、虚拟网络、订阅等位置。部署托管域时，请注意选择最合适的订阅、资源组、区域和虚拟网络。
 
 ### <a name="does-azure-ad-domain-services-include-high-availability-options"></a>Azure AD 域服务是否包含高可用性选项？
 
-是的。 每个 Azure AD 域服务托管域都包括两个域控制器。 你不需要管理或连接到这些域控制器，它们是托管服务的一部分。 如果将 Azure AD 域服务部署到支持可用性局部区域的区域中，则域控制器将分布到各个局部区域中。 在不支持可用性局部区域的区域中，域控制器将分布在多个可用性集中。 对于此分布，你无法通过选项进行配置，也无法进行管理控制。 有关详细信息，请参阅 [Azure 中虚拟机的可用性选项](../virtual-machines/windows/availability.md)。
+是的。 每个 Azure AD 域服务托管域都包括两个域控制器。 你不需要管理或连接到这些域控制器，它们是托管服务的一部分。 如果将 Azure AD 域服务部署到支持可用性局部区域的区域中，则域控制器将分布到各个局部区域中。 在不支持可用性局部区域的区域中，域控制器将分布在多个可用性集中。 对于此分布，你无法通过选项进行配置，也无法进行管理控制。 有关详细信息，请参阅 [Azure 中虚拟机的可用性选项](../virtual-machines/availability.md)。
 
 ## <a name="administration-and-operations"></a>管理和操作
 
@@ -119,9 +119,9 @@ ms.locfileid: "88116693"
 ### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>什么是托管域上的密码生存期策略？
 Azure AD 域服务托管域上的默认密码生存期为 90 天。 此密码生存期与在 Azure AD 中配置的密码生存期不同步。 因此，可能会出现用户密码在托管域中已过期，但在 Azure AD 中仍然有效的情况。 在这种情况下，用户需要更改 Azure AD 中的密码，并且将新密码同步到托管域。 如果要更改托管域中的默认密码生存期，可以[创建和配置自定义密码策略。](password-policy.md)
 
-此外， *DisablePasswordExpiration*的 Azure AD 密码策略将同步到托管域。 将*DisablePasswordExpiration*应用到 Azure AD 中的用户时，托管域中的已同步用户的*UserAccountControl*值将应用*DONT_EXPIRE_PASSWORD* 。
+此外， *DisablePasswordExpiration* 的 Azure AD 密码策略将同步到托管域。 将 *DisablePasswordExpiration* 应用到 Azure AD 中的用户时，托管域中的已同步用户的 *UserAccountControl* 值将应用 *DONT_EXPIRE_PASSWORD* 。
 
-当用户在 Azure AD 重置其密码时，将应用*forceChangePasswordNextSignIn = True*属性。 托管域从 Azure AD 同步此属性。 当托管域检测到 Azure AD 为同步用户设置*forceChangePasswordNextSignIn*时，托管域中的*pwdLastSet*属性将设置为*0*，这会使当前设置的密码无效。
+当用户在 Azure AD 重置其密码时，将应用 *forceChangePasswordNextSignIn = True* 属性。 托管域从 Azure AD 同步此属性。 当托管域检测到 Azure AD 为同步用户设置 *forceChangePasswordNextSignIn* 时，托管域中的 *pwdLastSet* 属性将设置为 *0*，这会使当前设置的密码无效。
 
 ### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Azure AD 域服务是否提供 AD 帐户锁定保护？
 是的。 在托管域上于 2 分钟内尝试五个无效密码将导致用户帐户锁定 30 分钟。 30 分钟后用户帐户将自动解锁。 在 Azure AD 中，在托管域上尝试无效密码不会锁定用户帐户。 仅在 Azure AD 域服务托管域中锁定用户帐户。 有关详细信息，请参阅[托管域中的密码和帐户锁定策略](password-policy.md)。
@@ -148,7 +148,7 @@ Azure 的免费试用版中包含 Azure AD 域服务。 可以注册 [Azure 一�
 否。 一旦启用 Azure AD 域服务托管域，即可在选定的虚拟网络中使用该服务，直到删除托管域为止。 无法暂停该服务。 删除托管域前，会按小时对服务计费。
 
 ### <a name="can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>对于 DR 事件，是否可以将 Azure AD 域服务故障转移到另一个区域？
-否。 Azure AD 域服务当前未提供异地冗余部署模型。 它被限制到 Azure 区域中的单个虚拟网络。 如果希望利用多个 Azure 区域，需要在 Azure IaaS VM 上运行 Active Directory 域控制器。 有关体系结构指南，请参阅将[本地 Active Directory 域扩展到 Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain)。
+否。 Azure AD 域服务当前未提供异地冗余部署模型。 它被限制到 Azure 区域中的单个虚拟网络。 如果希望利用多个 Azure 区域，需要在 Azure IaaS VM 上运行 Active Directory 域控制器。 有关体系结构指南，请参阅将 [本地 Active Directory 域扩展到 Azure](/azure/architecture/reference-architectures/identity/adds-extend-domain)。
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>是否可以从企业移动性套件 (EMS) 获取 Azure AD 域服务？ 是否需要 Azure AD Premium 才能使用 Azure AD 域服务？
 否。 Azure AD 域服务是即用即付的 Azure 服务，未包含在 EMS 中。 Azure AD 域服务可用于所有版本的 Azure AD（免费版和高级版）。 它按小时计费，具体取决于使用量。

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: 50a8e4f6d966a63a8e727dbacefbc7bb21f5f98b
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 893085179c27ce88c3e310170715e2f83a59ddc7
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506322"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723157"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>使用 Azure PowerShell 创建 Azure Active Directory 域服务资源林以及到本地域的出站林信任
 
@@ -148,15 +148,15 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
 1. 使用 Azure VPN 或 Azure ExpressRoute 连接创建与 Azure 的本地网络的混合连接。 混合网络配置超出了本文档的范围，你的环境中可能已存在该配置。 有关特定方案的详细信息，请参阅以下文章：
 
-    * [Azure 站点到站点 VPN](/azure/vpn-gateway/vpn-gateway-about-vpngateways)。
-    * [Azure ExpressRoute 概述](/azure/expressroute/expressroute-introduction)。
+    * [Azure 站点到站点 VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md)。
+    * [Azure ExpressRoute 概述](../expressroute/expressroute-introduction.md)。
 
     > [!IMPORTANT]
     > 如果直接创建与托管域的虚拟网络的连接，请使用单独的网关子网。 请勿在托管域的子网中创建网关。
 
 1. 若要管理托管域，请创建管理 VM，将它加入托管域，并安装所需 AD DS 管理工具。
 
-    在部署托管域资源林期间，[创建 Windows Server VM](https://docs.microsoft.com/azure/active-directory-domain-services/join-windows-vm)，然后[安装核心 AD DS 管理工具](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-management-vm)以安装所需管理工具。 等待将管理 VM 加入托管域，直到在成功部署域之后执行以下步骤之一。
+    在部署托管域资源林期间，[创建 Windows Server VM](./join-windows-vm.md)，然后[安装核心 AD DS 管理工具](./tutorial-create-management-vm.md)以安装所需管理工具。 等待将管理 VM 加入托管域，直到在成功部署域之后执行以下步骤之一。
 
 1. 验证本地网络与 Azure 虚拟网络之间的网络连接。
 
@@ -260,7 +260,7 @@ Add-AaddsResourceForestTrust `
 1. 使用远程桌面和托管域管理员凭据连接到已加入托管域资源林的 Windows Server VM。 如果收到网络级别身份验证 (NLA) 错误，请检查所使用的用户帐户是否不是域用户帐户。
 
     > [!TIP]
-    > 若要安全地连接到已加入 Azure AD 域服务的 VM，可以在支持的 Azure 区域中使用 [Azure 堡垒主机服务](https://docs.microsoft.com/azure/bastion/bastion-overview)。
+    > 若要安全地连接到已加入 Azure AD 域服务的 VM，可以在支持的 Azure 区域中使用 [Azure 堡垒主机服务](../bastion/bastion-overview.md)。
 
 1. 打开命令提示符，使用 `whoami` 命令显示当前已通过身份验证的用户的可分辨名称：
 
@@ -286,7 +286,7 @@ Add-AaddsResourceForestTrust `
 1. 使用远程桌面和托管域管理员凭据连接到已加入托管域资源林的 Windows Server VM。 如果收到网络级别身份验证 (NLA) 错误，请检查所使用的用户帐户是否不是域用户帐户。
 
     > [!TIP]
-    > 若要安全地连接到已加入 Azure AD 域服务的 VM，可以在支持的 Azure 区域中使用 [Azure 堡垒主机服务](https://docs.microsoft.com/azure/bastion/bastion-overview)。
+    > 若要安全地连接到已加入 Azure AD 域服务的 VM，可以在支持的 Azure 区域中使用 [Azure 堡垒主机服务](../bastion/bastion-overview.md)。
 
 1. 打开“Windows 设置”，然后搜索并选择“网络和共享中心”。 
 1. 选择“更改高级共享设置”的选项。

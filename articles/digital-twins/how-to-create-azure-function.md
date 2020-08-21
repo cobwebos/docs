@@ -2,17 +2,17 @@
 title: 设置用于处理数据的 Azure 函数
 titleSuffix: Azure Digital Twins
 description: 请参阅如何创建可通过数字孪生访问和触发的 Azure 函数。
-author: cschormann
-ms.author: cschorm
+author: baanders
+ms.author: baanders
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: ab013a310997f43d1019d849e87c0cf1b0d151ee
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: f371f52b0a110afeef6f3f72fb459b30842f77eb
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661089"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723701"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>连接 Azure Functions 应用以处理数据
 
@@ -36,11 +36,11 @@ ms.locfileid: "88661089"
 
 在 Visual Studio 2019 中，选择 " *文件" > "新建项目*"。 搜索 *Azure Functions* 模板，将其选中，然后按 "下一步"。
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-new-project.png" alt-text="Visual Studio： 新建项目 对话框":::
+:::image type="content" source="media/how-to-create-azure-function/visual-studio-new-project.png" alt-text="Visual Studio： "新建项目" 对话框":::
 
 指定函数应用的名称，并按 "创建"。
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-project-config.png" alt-text="Visual Studio： 配置项目 对话框":::
+:::image type="content" source="media/how-to-create-azure-function/visual-studio-project-config.png" alt-text="Visual Studio： "配置项目" 对话框":::
 
 选择 " *事件网格" 触发器* 并按 "创建"。
 

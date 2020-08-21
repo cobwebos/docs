@@ -2,17 +2,17 @@
 title: 分析和验证模型
 titleSuffix: Azure Digital Twins
 description: 了解如何使用分析器库分析 DTDL 模型。
-author: cschormann
-ms.author: cschorm
+author: baanders
+ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: e63acd0277e100ee34bdfc59d33dd9d4db2b7934
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 69b52be3a3eca2ab48ed09f6401780ea033f223c
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987531"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723973"
 ---
 # <a name="parse-and-validate-models-with-the-dtdl-parser-library"></a>用 DTDL 分析器库分析和验证模型
 
@@ -24,11 +24,11 @@ Azure 数字孪生中的[模型](concepts-models.md)是使用基于 JSON LD 的�
 
 ## <a name="use-the-dtdl-validator-sample"></a>使用 DTDL 验证程序示例
 
-[**DTDL 验证**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)程序是一个可以验证模型文档以确保 DTDL 有效的示例项目。 它基于 .NET 分析器库生成，并与语言无关。 可以通过示例链接上的 "*下载 ZIP* " 按钮获取它。
+[**DTDL 验证**](https://docs.microsoft.com/samples/azure-samples/dtdl-validator/dtdl-validator)程序是一个可以验证模型文档以确保 DTDL 有效的示例项目。 它基于 .NET 分析器库生成，并与语言无关。 可以通过示例链接上的 " *下载 ZIP* " 按钮获取它。
 
 源代码显示了如何使用分析器库的示例。 可以使用验证程序示例作为命令行实用工具来验证 DTDL 文件的目录树。 它还提供交互模式。
 
-在 DTDL 验证程序示例的文件夹中，请参阅*readme.md*文件，了解有关如何将示例打包到独立的可执行文件中的说明。
+在 DTDL 验证程序示例的文件夹中，请参阅 *readme.md* 文件，了解有关如何将示例打包到独立的可执行文件中的说明。
 
 构建自包含包并将可执行文件添加到路径后，可以在计算机上的控制台中使用以下命令运行该验证程序：
 
@@ -36,7 +36,7 @@ Azure 数字孪生中的[模型](concepts-models.md)是使用基于 JSON LD 的�
 DTDLValidator
 ```
 
-利用默认选项，该示例将 `*.json` 在当前目录和所有子目录中搜索文件。 你还可以添加以下选项，使示例搜索位于所指示的目录中，以及扩展名为*dtdl*的文件的所有子目录：
+利用默认选项，该示例将 `*.json` 在当前目录和所有子目录中搜索文件。 你还可以添加以下选项，使示例搜索位于所指示的目录中，以及扩展名为 *dtdl*的文件的所有子目录：
 
 ```cmd/sh
 DTDLValidator -d C:\Work\DTDL -e dtdl 
@@ -52,7 +52,7 @@ DTDLValidator -i
 
 ## <a name="use-the-net-parser-library"></a>使用 .NET 分析器库 
 
-[**DigitalTwins**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)库提供对 DTDL 定义的模型访问，本质上充当 DTDL 的 c # 反射的等效项。 此库可独立于任何[Azure 数字孪生 SDK](how-to-use-apis-sdks.md)使用，尤其适用于在可视化或文本编辑器中进行 DTDL 验证。 在尝试将模型定义文件上传到服务之前，此方法有助于确保模型定义文件有效。
+[**DigitalTwins**](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/)库提供对 DTDL 定义的模型访问，本质上充当 DTDL 的 c # 反射的等效项。 此库可独立于任何 [Azure 数字孪生 SDK](how-to-use-apis-sdks.md)使用，尤其适用于在可视化或文本编辑器中进行 DTDL 验证。 在尝试将模型定义文件上传到服务之前，此方法有助于确保模型定义文件有效。
 
 若要使用分析器库，请向其提供一组 DTDL 的文档。 通常情况下，你将从服务中检索这些模型文档，但你也可以在本地提供这些文档，前提是你的客户端在首次将其上传到服务。 
 
@@ -69,7 +69,7 @@ DTDLValidator -i
 * 确定模型是否可从另一个模型分配。
 
 > [!NOTE]
-> [IoT 即插即用 (PnP) ](../iot-pnp/overview-iot-plug-and-play.md)设备使用小型语法变体来描述其功能。 此语法变体是在 Azure 数字孪生中使用的 DTDL 的语义上兼容的子集。 使用分析器库时，无需知道使用哪种语法变体来创建数字输出的 DTDL。 默认情况下，分析器将始终为 PnP 和 Azure 数字孪生语法返回相同的模型。
+> [IoT 即插即用 (PnP) ](../iot-pnp/overview-iot-plug-and-play.md) 设备使用小型语法变体来描述其功能。 此语法变体是在 Azure 数字孪生中使用的 DTDL 的语义上兼容的子集。 使用分析器库时，无需知道使用哪种语法变体来创建数字输出的 DTDL。 默认情况下，分析器将始终为 PnP 和 Azure 数字孪生语法返回相同的模型。
 
 ### <a name="code-with-the-parser-library"></a>带分析器库的代码
 
@@ -78,7 +78,7 @@ DTDLValidator -i
 为了支持下面的分析器代码示例，请考虑在 Azure 数字孪生实例中定义的多个模型：
 
 > [!TIP] 
-> 该 `dtmi:com:contoso:coffeeMaker` 模型使用*功能模型*语法，这意味着它是通过连接用于公开该模型的 PnP 设备在服务中安装的。
+> 该 `dtmi:com:contoso:coffeeMaker` 模型使用 *功能模型* 语法，这意味着它是通过连接用于公开该模型的 PnP 设备在服务中安装的。
 
 ```json
 {
