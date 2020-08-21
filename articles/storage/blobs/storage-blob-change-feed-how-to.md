@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: dedf1174e00f5bb75822fb720a592af86121ec2d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: baed9ef099ed818fa0967c7a3e7ab61fb4921f75
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691422"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719302"
 ---
 # <a name="process-change-feed-in-azure-blob-storage-preview"></a>处理 Azure Blob 存储中的更改源（预览版）
 
@@ -22,15 +22,16 @@ ms.locfileid: "88691422"
 若要详细了解更改源，请参阅 [Azure Blob 存储中的更改源（预览版）](storage-blob-change-feed.md)。
 
 > [!NOTE]
-> 更改源以公共预览版提供，并在 **westcentralus** 和 **westus2** 区域中提供。 若要了解有关此功能以及已知问题和限制的详细信息，请参阅 [Azure Blob 存储中的更改源支持](storage-blob-change-feed.md)。 更改源处理器库将在现在和此库公开上市时进行更改。
+> 更改源以公共预览版提供，在有限区域中提供。 若要了解有关此功能以及已知问题和限制的详细信息，请参阅 [Azure Blob 存储中的更改源支持](storage-blob-change-feed.md)。 更改源处理器库将在现在和此库公开上市时进行更改。
 
 ## <a name="get-the-blob-change-feed-processor-library"></a>获取 Blob 更改源处理器库
 
 1. 打开命令窗口， (例如： Windows PowerShell) 。
-2. 从项目目录中安装 **Changefeed** NuGet 包。
+2. 从项目目录中安装[ **Changefeed** NuGet 包](https://www.nuget.org/packages/Azure.Storage.Blobs.ChangeFeed/)。
 
 ```console
-dotnet add package Azure.Storage.Blobs.ChangeFeed --source https://azuresdkartifacts.blob.core.windows.net/azure-sdk-for-net/index.json --version 12.0.0-dev.20200604.2
+dotnet add package Azure.Storage.Blobs --version 12.5.1
+dotnet add package Azure.Storage.Blobs.ChangeFeed --version 12.0.0-preview.4
 ```
 ## <a name="read-records"></a>读取记录
 
@@ -117,7 +118,7 @@ public async Task<(string, List<BlobChangeFeedEvent>)> ChangeFeedResumeWithCurso
 
 ## <a name="stream-processing-of-records"></a>记录的流式处理
 
-可以选择在更改源记录到达时对其进行处理。 请参阅[规范](storage-blob-change-feed.md#specifications)。 建议你每隔一小时轮询一次更改。
+您可以选择在提交到更改源时处理更改源记录。 请参阅[规范](storage-blob-change-feed.md#specifications)。 更改事件将在平均60秒的时间段内发布到更改源。 建议你在指定轮询间隔时，轮询此期间的新更改。
 
 此示例定期轮询更改。  如果存在更改记录，此代码将处理这些记录并保存更改源游标。 这样一来，如果进程停止并再次启动，则应用程序可以使用游标来恢复上次停止的处理记录。 此示例将光标保存到本地应用程序配置文件，但你的应用程序可以将其保存为适用于你的方案的任何形式。 
 
@@ -181,7 +182,7 @@ public void SaveCursor(string cursor)
 
 ## <a name="reading-records-within-a-time-range"></a>读取时间范围内的记录
 
-您可以读取位于特定时间范围内的记录。 此示例将循环访问数据源中的所有记录，该更改源介于3:00 年3月 2 2017 和 2:00 AM 的 7 2019 上午，将其添加到列表中，然后将该列表返回给调用方。
+您可以读取位于特定时间范围内的记录。 此示例将循环访问更改源中的所有记录，该更改源介于3:00 年3月 2 2020 和 2:00 AM 到8月 7 2020 之间，将其添加到列表中，然后将该列表返回给调用方。
 
 ### <a name="selecting-segments-for-a-time-range"></a>根据时间范围选择段
 
@@ -198,8 +199,8 @@ public async Task<List<BlobChangeFeedEvent>> ChangeFeedBetweenDatesAsync(string 
     // Create the start and end time.  The change feed client will round start time down to
     // the nearest hour, and round endTime up to the next hour if you provide DateTimeOffsets
     // with minutes and seconds.
-    DateTimeOffset startTime = new DateTimeOffset(2017, 3, 2, 15, 0, 0, TimeSpan.Zero);
-    DateTimeOffset endTime = new DateTimeOffset(2020, 10, 7, 2, 0, 0, TimeSpan.Zero);
+    DateTimeOffset startTime = new DateTimeOffset(2020, 3, 2, 15, 0, 0, TimeSpan.Zero);
+    DateTimeOffset endTime = new DateTimeOffset(2020, 8, 7, 2, 0, 0, TimeSpan.Zero);
 
     // You can also provide just a start or end time.
     await foreach (BlobChangeFeedEvent changeFeedEvent in changeFeedClient.GetChangesAsync(

@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: f31782fb4e91b72f51d6f0550fe9010cba7ca3d6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 270e5ba1879b229fbe9f5e6c8692bd8b4e9eebc7
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88585451"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688634"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>排查 Azure 密钥保管库访问策略问题
 
@@ -25,7 +25,7 @@ ms.locfileid: "88585451"
 如果开始扩展服务，则发送到密钥保管库的请求数将增加。 这可能会增加请求的延迟时间，并且在极端情况下，会导致请求被限制，从而影响服务的性能。 你可以监视密钥保管库性能指标，并获得特定阈值的警报，有关配置监视的分步指南，请[了解详细信息](https://docs.microsoft.com/azure/key-vault/general/alert)。
 
 ### <a name="how-can-i-assign-access-control-per-key-vault-object"></a>如何为每个密钥保管库对象分配访问控制？ 
-将在此处通知每个机密/密钥/证书访问控制功能的可用性。[了解详细信息](https://feedback.azure.com/forums/906355-azure-key-vault/suggestions/.32213176-per-secret-key-certificate-access-control)
+将在此处通知每个机密/密钥/证书访问控制功能的可用性。[了解详细信息](https://feedback.azure.com/forums/906355-azure-key-vault/suggestions/32213176-per-secret-key-certificate-access-control)
 
 ### <a name="how-can-i-provide-key-vault-authenticate-using-access-control-policy"></a>如何使用访问控制策略提供密钥保管库身份验证？
 在 Key Vault 中对基于云的应用程序进行身份验证的最简单方法是使用托管标识；有关详细信息，请参阅[使用应用服务托管标识访问 Azure Key Vault]( https://docs.microsoft.com/azure/key-vault/general/managed-identity)。

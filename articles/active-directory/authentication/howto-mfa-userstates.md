@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d949f4b10bc6b7b592556d78edfcf02a05ec7144
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 433cfa3789aa37f4145982da97719526c0abfc47
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565768"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719489"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>启用按用户的 Azure 多重身份验证来保护登录事件
 
@@ -43,8 +43,8 @@ ms.locfileid: "88565768"
 | 状态 | 说明 | 旧的身份验证受影响 | 受影响的浏览器应用 | 新式身份验证受影响 |
 |:---:| --- |:---:|:--:|:--:|
 | 已禁用 | 未在每用户 Azure 多重身份验证中注册的用户的默认状态。 | 否 | 否 | 否 |
-| 已启用 | 用户已在每用户 Azure 多重身份验证中注册，但仍可使用其密码进行旧身份验证。 如果用户尚未注册 MFA 身份验证方法，则会在下次使用新式身份 (验证（例如通过 web 浏览器) ）登录时收到注册提示。 | 否。 旧身份验证将继续工作，直到注册过程完成。 | 是的。 会话过期后，需要进行 Azure 多重身份验证注册。| 是的。 访问令牌过期后，需要进行 Azure 多重身份验证注册。 |
-| 强制 | 用户在 Azure 多重身份验证中向每个用户注册。 如果用户尚未注册身份验证方法，则会在下次使用新式身份 (验证（例如通过 web 浏览器) ）登录时收到注册提示。 在处于 " *已启用* " 状态下完成注册的用户会自动移到 " *强制* " 状态。 | 是的。 应用需要应用密码。 | 是的。 登录时需要 Azure 多重身份验证。 | 是的。 登录时需要 Azure 多重身份验证。 |
+| Enabled | 用户已在每用户 Azure 多重身份验证中注册，但仍可使用其密码进行旧身份验证。 如果用户尚未注册 MFA 身份验证方法，则会在下次使用新式身份 (验证（例如通过 web 浏览器) ）登录时收到注册提示。 | 不是。 旧身份验证将继续工作，直到注册过程完成。 | 是的。 会话过期后，需要进行 Azure 多重身份验证注册。| 是的。 访问令牌过期后，需要进行 Azure 多重身份验证注册。 |
+| 强制 | 用户在 Azure 多重身份验证中向每个用户注册。 如果用户尚未注册身份验证方法，则会在下次使用新式身份 (验证（例如通过 web 浏览器) ）登录时收到注册提示。 在处于 " *已启用* " 状态下完成注册的用户会自动移到 " *强制* " 状态。 | 是的。 应用需要应用密码。 | 是的。 登录时需要 Azure 多重身份验证。 | 是。 登录时需要 Azure 多重身份验证。 |
 
 所有用户的初始状态均为“已禁用”。 在按用户 Azure 多重身份验证注册用户时，其状态将更改为 " *已启用*"。 当已启用的用户登录并完成注册过程后，用户的状态将更改为“强制”。 管理员可以将用户移动到 "状态" 之间，包括 "已*强制**启用*" 或 "*已禁用*"。
 
@@ -76,7 +76,7 @@ ms.locfileid: "88565768"
 
 1. 在打开的弹出窗口中确认你的选择。
 
-启用用户后，通过电子邮件通知他们。 告诉用户显示了提示，要求他们在下次登录时注册。 此外，如果你的组织使用不支持新式身份验证的非浏览器应用，则他们需要创建应用密码。 请参阅 [Azure 多重身份验证最终用户指南](../user-help/multi-factor-authentication-end-user.md)来了解详细信息以帮助他们开始使用。
+启用用户后，通过电子邮件通知他们。 告诉用户显示了提示，要求他们在下次登录时注册。 此外，如果你的组织使用不支持新式身份验证的非浏览器应用，则他们需要创建应用密码。 请参阅 [Azure 多重身份验证最终用户指南](../user-help/multi-factor-authentication-end-user-first-time.md)来了解详细信息以帮助他们开始使用。
 
 ## <a name="change-state-using-powershell"></a>使用 PowerShell 更改状态
 

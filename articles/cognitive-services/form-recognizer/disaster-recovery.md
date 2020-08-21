@@ -9,16 +9,16 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 42faf4ba0a596fc5b2b34f403a5117e5ceea82ed
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ac934f88d00521b13fd2b134c80f19656c63117b
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87903334"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718809"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>备份和恢复窗体识别器模型
 
-在 Azure 门户中创建窗体识别器资源时，请指定一个区域。 从那开始，你的资源及其所有操作与该特定的 Azure 服务器区域保持关联。 这种情况很少出现，但并不是不可能遇到的网络问题。 如果你的解决方案需要始终可用，则应将其设计为故障转移到另一个区域，或在两个或多个区域之间拆分工作负荷。 这两种方法在不同区域中至少需要两个窗体识别器资源，并且能够跨区域同步[自定义模型](./quickstarts/curl-train-extract.md)。
+在 Azure 门户中创建窗体识别器资源时，请指定一个区域。 从那开始，你的资源及其所有操作与该特定的 Azure 服务器区域保持关联。 这种情况很少出现，但并不是不可能遇到的网络问题。 如果你的解决方案需要始终可用，则应将其设计为故障转移到另一个区域，或在两个或多个区域之间拆分工作负荷。 这两种方法在不同区域中至少需要两个窗体识别器资源，并且能够跨区域同步 [自定义模型](./quickstarts/curl-train-extract.md) 。
 
 复制 API 允许您将自定义模型从一个窗体识别器帐户或其他人（可以存在于任何受支持的地理区域）复制到其他模型，从而实现了这种方案。 本指南说明如何将复制 REST API 与卷曲一起使用。 你还可以使用 HTTP 请求服务（如 Postman）发出请求。
 
@@ -29,7 +29,7 @@ ms.locfileid: "87903334"
 ##  <a name="prerequisites"></a>先决条件
 
 1. 两个窗体识别不同 Azure 区域中的 Azure 资源。 如果没有这些资源，请参阅 Azure 门户，并 <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer" title=" 创建新的窗体识别器资源 " target="_blank"> 创建新的窗体识别器资源 <span class="docon docon-navigate-external x-hidden-focus"></span> </a> 。
-1. 你的窗体识别器资源的订阅密钥、终结点 URL 和订阅 ID。 可以在 Azure 门户上资源的 "**概述**" 选项卡中找到这些值。
+1. 你的窗体识别器资源的订阅密钥、终结点 URL 和订阅 ID。 可以在 Azure 门户上资源的 " **概述** " 选项卡中找到这些值。
 
 
 ## <a name="copy-api-overview"></a>复制 API 概述
@@ -39,6 +39,9 @@ ms.locfileid: "87903334"
 1. 首先向目标资源 &mdash; （即将接收复制的模型的资源）发出对目标资源的复制授权请求。 返回新创建的目标模型的 URL，它将接收复制的数据。
 1. 接下来，将复制请求发送到源资源， &mdash; 其中包含要复制的模型的资源。 您将获得一个 URL，您可以查询该 URL 以跟踪操作的进度。
 1. 你将使用源资源凭据来查询进度 URL，直到操作成功为止。 您还可以在目标资源中查询新的模型 ID 以获取新模型的状态。
+
+> [!CAUTION]
+> 复制 API 目前不支持 [组合自定义模型](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/Compose)的模型 id。 模型撰写是 v 2.1-preview. 1 预览版中的预览功能。 
 
 ## <a name="generate-copy-authorization-request"></a>生成复制授权请求
 
@@ -77,7 +80,7 @@ Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
 > [!NOTE]
-> 复制 API 以透明方式支持[AEK/CMK](https://msazure.visualstudio.com/Cognitive%20Services/_wiki/wikis/Cognitive%20Services.wiki/52146/Customer-Managed-Keys)功能。 这不需要任何特殊处理，但请注意，如果在未加密的资源之间复制到已加密的资源，则需要包含请求标头 `x-ms-forms-copy-degrade: true` 。 如果未包括此标头，则复制操作将失败，并返回 `DataProtectionTransformServiceError` 。
+> 复制 API 以透明方式支持 [AEK/CMK](https://msazure.visualstudio.com/Cognitive%20Services/_wiki/wikis/Cognitive%20Services.wiki/52146/Customer-Managed-Keys) 功能。 这不需要任何特殊处理，但请注意，如果在未加密的资源之间复制到已加密的资源，则需要包含请求标头 `x-ms-forms-copy-degrade: true` 。 如果未包括此标头，则复制操作将失败，并返回 `DataProtectionTransformServiceError` 。
 
 你将收到 `202\Accepted` 包含操作位置标头的响应。 此值是用于跟踪操作进度的 URL。 将其复制到临时位置，以供下一步使用。
 
@@ -90,12 +93,12 @@ Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecog
 
 |错误|解决方法|
 |:--|:--|
-| 400/错误的请求`"code:" "1002"` | 指示验证错误或格式不正确的复制请求。 常见问题包括：) 无效或已修改的 `copyAuthorization` 有效负载。 b (有效负载的) 过期值 `expirationDateTimeTicks` `copyAuhtorization`) 24 小时有效。 c) 无效或不受支持 `targetResourceRegion` 。 d) 无效或格式不正确 `targetResourceId` 的字符串。
+| 400/错误的请求 `"code:" "1002"` | 指示验证错误或格式不正确的复制请求。 常见问题包括：) 无效或已修改的 `copyAuthorization` 有效负载。 b (有效负载的) 过期值 `expirationDateTimeTicks` `copyAuhtorization`) 24 小时有效。 c) 无效或不受支持 `targetResourceRegion` 。 d) 无效或格式不正确 `targetResourceId` 的字符串。
 |
 
 ## <a name="track-copy-progress"></a>跟踪复制进度
 
-通过根据源资源终结点查询**获取副本模型结果**API 来跟踪进度。
+通过根据源资源终结点查询 **获取副本模型结果** API 来跟踪进度。
 
 ```
 GET https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1 HTTP/1.1
@@ -122,7 +125,7 @@ Content-Type: application/json; charset=utf-8
 
 ### <a name="optional-track-the-target-model-id"></a>可有可无跟踪目标模型 ID 
 
-你还可以使用**获取自定义模型**API 来跟踪操作的状态，方法是查询目标模型。 使用在第一步中复制的目标模型 ID 调用此 API。
+你还可以使用 **获取自定义模型** API 来跟踪操作的状态，方法是查询目标模型。 使用在第一步中复制的目标模型 ID 调用此 API。
 
 ```
 GET https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d HTTP/1.1

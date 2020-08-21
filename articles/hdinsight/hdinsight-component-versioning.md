@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
-ms.date: 05/28/2020
-ms.openlocfilehash: 7a6a672cef42eb15cbd8f2f254207e0a9d96ee33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/13/2020
+ms.openlocfilehash: 5c3586e9ba405cb5a7338b8f7f22858a238b9271
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736197"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717245"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>适用于 Azure HDInsight 的 Apache 组件和版本
 
@@ -43,15 +43,15 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 从 2017 �
 | Apache Storm           | -             | 1.1.0                       |
 | Apache Mahout          | -             | 0.9.0+                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
-| Apache Spark           | 2.4.4         | 2.3.2、2.2.0、2.1。0         |
-| Apache Livy            | 0.5           | 0.4、0.4、0.3               |
-| Apache Kafka           | 2.1.1         | 1.1                        |
+| Apache Spark           | 2.4.4         | 2.3.2.                      |
+| Apache Livy            | 0.5           | 0.4。                        |
+| Apache Kafka           | 2.1.1         | 1.1                         |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
 | Apache Zeppelin        | 0.8.0         | 0.7.3                       |
 | Mono                   | 4.2.1         | 4.2.1                       |
 
 > [!NOTE]
-> HDInsight 4.0：完全支持 Spark 2.4 和 Kafka 2.1。 但是，不提供 Spark 2.3 和 Kafka 1.1 群集类型。 HDInsight 3.6：完全支持 Spark 2.3 和 Kafka 1.1。  
+> HDInsight 4.0：完全支持 Spark 2.4 和 Kafka 2.1。 但是，不再为 Spark 2.3 和 Kafka 1.1 群集类型提供服务。 HDInsight 3.6：完全支持 Spark 2.3 和 Kafka 1.1。  
 
 ## <a name="check-for-current-apache-component-version-information"></a>检查当前的 Apache 组件版本信息
 
@@ -75,15 +75,28 @@ Azure HDInsight 支持多个可随时部署的 Hadoop 群集版本。 从 2017 �
 
 此表列出了可通过 Azure 门户和其他部署方法（如 PowerShell 和 .NET SDK）使用的 HDInsight 版本。
 
-| HDInsight 版本 | VM OS | 发布日期 | 支持到期日期 | 停用日期 | 高可用性 |  在 Azure 门户中的可用性 |
+| HDInsight 版本 | VM OS | 发行日期 | 支持到期日期 | 停用日期 | 高可用性 |  在 Azure 门户中的可用性 |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |2018 年 9 月 24 日 | | |是 |是 |
-| HDInsight 3.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日 | 2020 年 12 月 31 日 |2020 年 12 月 31 日 |是 |是 |
+| HDInsight 3.6 |Ubuntu 16.0.4 LTS |2017 年 4 月 4 日      | * 2021 年6月31日 |2021年6月31日 |是 |是 |
 
-Spark 2.1、2.2 和 Kafka 1.0 群集支持在年6月 30 2020 日过期。
+* 我们正在扩展某些 HDInsight 3.6 群集类型的支持时间范围
+
+| 群集类型                    | Framework 版本 | 当前支持到期        | 新的支持到期日期 |
+|---------------------------------|-------------------|-----------------------------------|-----------------------------|
+| HDInsight 3.6 Hadoop            | 2.7.3             | 12月31日，2020                      | 2021年6月30日               |
+| HDInsight 3.6 Spark             | 2.3               | 12月31日，2020                      | 2021年6月30日               |
+| HDInsight 3.6 Spark             | 2.2               | 2020年6月30日停用          |                             |
+| HDInsight 3.6 Spark             | 2.1               | 2020年6月30日停用          |                             |
+| HDInsight 3.6 Kafka             | 1.1               | 12月31日，2020                      | 2021年6月30日               |
+| HDInsight 3.6 Kafka             | 1.0               | 于2020年6月30日停用。         |                             |
+| HDInsight 3.6 HBase             | 1.1               | 12月31日，2020                      | 2021年6月30日               |
+| HDInsight 3.6 交互查询 | 2.1               | 12月31日，2020                      | 2021年6月30日               |
+| HDInsight 3.6 风暴             | 1.1               | 12月31日，2020                      | 2021年6月30日               |
+| HDInsight 3.6 ML 服务      | 9.3               | 12月31日，2020                      | 12月31日，2020                |
 
 > [!NOTE]
-> 群集版本的支持到期后，可能无法通过 Azure 门户获取该版本。 在某些情况下，可以继续使用 Windows PowerShell [AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster)命令和 .net SDK 中的**version**参数获取群集版本，直至版本停用日期。
+> 对某个群集版本的支持到期后，无法通过 Azure 门户使用该版本。 在某些情况下，可以继续通过 Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) 命令中的 **Version** 参数和 .NET SDK 使用群集版本，直到版本停用的那天为止。
 
 ### <a name="retired-versions"></a>已停用的版本
 
@@ -115,7 +128,7 @@ Spark 2.1、2.2 和 Kafka 1.0 群集支持在年6月 30 2020 日过期。
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>群集的默认节点配置和虚拟机大小
 
-有关要为群集选择哪种虚拟机 SKU 的详细信息，请参阅 [Azure HDInsight 群集配置详细信息](hdinsight-supported-node-configuration.md)。
+有关要为群集选择哪些虚拟机 SKU 的详细信息，请参阅 [Azure HDInsight 群集配置详细信息](hdinsight-supported-node-configuration.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,20 +1,20 @@
 ---
-title: 如何为 Azure 自动化创建更新部署更新管理
+title: 如何为 Azure 自动化更新管理创建更新部署
 description: 本文介绍如何计划更新部署并查看其状态。
 services: automation
 ms.subservice: update-management
-ms.date: 07/28/2020
+ms.date: 08/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2a81376b284e0d1df84a69b969335c0e63999a00
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 4336ba272dd83ad2a35060c1c7524a564b928484
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87450032"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717687"
 ---
 # <a name="how-to-deploy-updates-and-review-results"></a>如何部署更新和查看结果
 
-本文介绍如何计划更新部署并在部署完成后查看该过程。
+本文介绍如何计划更新部署并在部署完成后查看执行过程。
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
@@ -31,7 +31,7 @@ ms.locfileid: "87450032"
 
 1. 在自动化帐户中，转到“更新管理”下的“更新管理”，然后选择“安排更新部署”  。
 
-2. 在 "**新建更新部署**" 下，在 "**名称**" 字段中输入部署的唯一名称。
+2. 在“新建更新部署”下的“名称”字段中，输入部署的唯一名称 。
 
 3. 选择更新部署的目标操作系统。
 
@@ -41,8 +41,10 @@ ms.locfileid: "87450032"
 
 6. 使用“更新分类”区域为产品指定[更新分类](update-mgmt-view-update-assessments.md#work-with-update-classifications)。 对于每个产品，请取消选择所有受支持的更新分类，但要包含在更新部署中的分类除外。
 
-7. 使用“包括/排除更新”区域来选择要部署的特定更新。 “包括/排除”页按知识库文章 ID 号显示要包括或排除的更新。
-    
+    如果你的部署只是要应用一组选择的更新，则必须在配置 " **包括/排除更新** " 选项时取消选择所有预选的更新分类，如下一步中所述。 这可确保目标计算机上仅安装已指定要 *包括* 在此部署中的更新。
+
+7. 使用 " **包括/排除更新** " 区域可以在部署中添加或排除所选更新。 在 " **包括/排除** " 页上，输入要包括或排除的知识库文章 ID 号。
+
    > [!IMPORTANT]
    > 请记住，排除项会替代包含项。 例如，如果定义了 `*` 排除规则，更新管理会从安装中排除所有修补程序或包。 已排除的修补程序仍显示为计算机缺少此项。 对于 Linux 计算机，如果包含一个具有依赖包的包，而该依赖包已被排除，则更新管理不会安装主包。
 
@@ -51,7 +53,7 @@ ms.locfileid: "87450032"
 
 8. 选择“计划设置”。 默认开始时间为晚于当前时间 30 分钟。 可以将开始时间设置为 10 分钟之后的任何将来时间。
 
-9. 使用 "**定期**" 字段指定部署是发生一次还是使用定期计划，然后选择 **"确定"**。
+9. 使用“重复周期”字段指定是部署一次还是定期部署，然后选择“确定” 。
 
 10. 在“前脚本 + 后脚本(预览)”区域，选择要在部署前和部署后运行的脚本。 若要了解详细信息，请参阅[管理前脚本和后脚本](update-mgmt-pre-post-scripts.md)。
     
@@ -74,7 +76,7 @@ ms.locfileid: "87450032"
     > [!NOTE]
     > 如果“重新启动选项”设置为“永不重新启动”，则[用于管理重启的注册表项](/windows/deployment/update/waas-restart#registry-keys-used-to-manage-restart)下列出的注册表项可能会导致重新启动事件 。
 
-13. 完成部署计划的配置后，选择 "**创建**"。
+13. 配置部署计划后，选择“创建”。
 
     ![更新“计划设置”窗格](./media/update-mgmt-deploy-updates/manageupdates-schedule-win.png)
 
@@ -92,9 +94,9 @@ ms.locfileid: "87450032"
 
 ## <a name="view-results-of-a-completed-update-deployment"></a>查看已完成的更新部署的结果
 
-部署完成后，可以选择它以查看其结果。
+部署完成后，可选择它以查看其结果。
 
-[![更新特定部署的部署状态仪表板](./media/update-mgmt-deploy-updates/manageupdates-view-results.png)](./media/update-mgmt-deploy-updates/manageupdates-view-results-expanded.png#lightbox)
+[ ![特定部署的更新部署状态仪表板](./media/update-mgmt-deploy-updates/manageupdates-view-results.png)](./media/update-mgmt-deploy-updates/manageupdates-view-results-expanded.png#lightbox)
 
 “更新结果”下的摘要提供了目标 VM 上的更新和部署结果的总数。 右侧的表显示了更新的细目以及每个更新的安装结果。
 
@@ -113,4 +115,4 @@ ms.locfileid: "87450032"
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解如何创建警报以通知有关更新部署结果的信息，请参阅[为更新管理创建警报](update-mgmt-configure-alerts.md)。
+若要了解如何创建警报来就更新部署结果进行通知，请参阅[为更新管理创建警报](update-mgmt-configure-alerts.md)。

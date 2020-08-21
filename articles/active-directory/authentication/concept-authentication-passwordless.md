@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2055730505b360ef8d5bf50cd83532627fb8e08
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 70f7082de204cedd25b3b87b7157376505598712
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245411"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718078"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Azure Active Directory 的无密码 authentication 选项
 
@@ -52,7 +52,7 @@ Windows Hello 企业版非常适合拥有自己的指定 Windows PC 的信息工
 1. 云 AP 提供程序接收带会话密钥的加密 PRT。 使用设备的专用传输密钥，云 AP 提供程序会解密会话密钥，并使用设备的受信任的平台模块 (TPM) 来保护会话密钥。
 1. 云 AP 提供程序向 Windows 返回成功的身份验证响应。 然后，用户可以访问 Windows 以及云和本地应用程序，而无需再次 (SSO) 进行身份验证。
 
-Windows Hello 企业版 [规划指南](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide) 可用于帮助您决定 Windows Hello 企业版部署的类型以及需要考虑的选项。
+Windows Hello 企业版 [规划指南](/windows/security/identity-protection/hello-for-business/hello-planning-guide) 可用于帮助您决定 Windows Hello 企业版部署的类型以及需要考虑的选项。
 
 ## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator 应用
 
@@ -60,7 +60,7 @@ Windows Hello 企业版 [规划指南](https://docs.microsoft.com/windows/securi
 
 ![通过 Microsoft Authenticator 应用登录 Microsoft Edge](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
-验证器应用会将任何 iOS 或 Android 手机变成强、无密码凭据。 用户可以通过以下方式登录到任何平台或浏览器：向其手机发送通知，将屏幕上显示的数字与电话上的一个数字匹配，然后使用其生物识别 (触摸或面部) 或 PIN 以确认。 有关安装的详细信息，请参阅 [下载并安装 Microsoft Authenticator 应用](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) 。
+验证器应用会将任何 iOS 或 Android 手机变成强、无密码凭据。 用户可以通过以下方式登录到任何平台或浏览器：向其手机发送通知，将屏幕上显示的数字与电话上的一个数字匹配，然后使用其生物识别 (触摸或面部) 或 PIN 以确认。 有关安装的详细信息，请参阅 [下载并安装 Microsoft Authenticator 应用](../user-help/user-help-auth-app-download-install.md) 。
 
 使用验证器应用的无密码 authentication 遵循与 Windows Hello 企业版相同的基本模式。 这会稍微复杂一些，因为需要识别用户，以便 Azure AD 可以找到正在使用的 Microsoft Authenticator 应用程序版本：
 

@@ -3,161 +3,202 @@ title: 在 windows 虚拟桌面中的 Windows 10 虚拟机上安装语言包-Azu
 description: 如何在 Windows 虚拟桌面中安装适用于 Windows 10 多会话 Vm 的语言包。
 author: Heidilohr
 ms.topic: how-to
-ms.date: 04/03/2020
+ms.date: 08/21/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 542163511a1b4fc0acde9b44d73be6ffc042d5d3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: de495d18220500e5aa5653e89776c2634d5b1c85
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008757"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719133"
 ---
-# <a name="install-language-packs"></a>安装语言包
+# <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>将语言包添加到 Windows 10 多会话映像
 
-当你在国际上设置 Windows 虚拟桌面部署时，最好确保你的部署支持多种语言。 你可以在 Windows 10 企业多会话虚拟机 (VM) 映像上安装语言包，以支持你的组织所需的多种语言。 本文将介绍如何安装语言包并捕获图像，使用户能够选择自己的显示语言。
+Windows 虚拟桌面是你的用户可以随时随地部署的一种服务。 这就是你的用户可以自定义其 Windows 10 企业多会话图像显示的语言很重要的原因。
 
-若要详细了解如何在 Azure 中部署 VM，请参阅[使用 Azure 门户在可用性区域中创建 Windows 虚拟机](../virtual-machines/windows/create-portal-availability-zone.md)。
+可以通过两种方式来适应用户的语言需求：
 
->[!NOTE]
->本文适用于 Windows 10 企业多会话 Vm。
+- 使用每种语言的自定义映像构建专用的主机池。
+- 在同一主机池中具有不同语言和本地化要求的用户，但可以自定义其图像，以确保他们可以选择所需的任何语言。
 
-## <a name="install-a-language-pack"></a>安装语言包
+后一种方法更高效且更具成本效益。 不过，您决定哪种方法最适合您的需求。 本文将介绍如何自定义映像的语言。
 
-若要创建具有语言包的 VM 映像，首先需要将语言包安装到计算机上，并捕获该计算机的映像。
+## <a name="prerequisites"></a>先决条件
 
-若要安装语言包：
+你需要执行以下操作来自定义 Windows 10 企业多会话映像以添加多种语言：
 
-1. 以管理员身份登录。
-2. 请确保已安装所有最新的 Windows 和 Windows 应用商店更新。
-3. 请参阅**Settings**  >  **Time & Language**  >  **Region**。
-4. 在 "**国家或地区**" 下，从下拉菜单中选择首选国家或地区。
-    在此示例中，我们将选择 "**华北**"，如以下屏幕截图所示：
+- 使用 Windows 10 企业多会话版本1903或更高版本的 Azure 虚拟机 (VM) 
 
-    > [!div class="mx-imgBorder"]
-    > ![区域页的屏幕截图。 当前选择的区域为华北。](media/region-page-france.png)
+- 语言 ISO 和按需功能 (映像使用的操作系统版本) 磁盘1。 可以在此处下载：
+     
+     - 语言 ISO：
+        - [Windows 10 版本1903或1909语言包 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
+        - [Windows 10 版本2004语言包 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_CLIENTLANGPACKDVD_OEM_MULTI.iso)
 
-5. 然后选择 "**语言**"，然后选择 "**添加语言**"。 从列表中选择要安装的语言，然后选择 "**下一步**"。
-6. 当 "**安装语言功能**" 窗口打开时，选中标记为 **"安装语言包" 的复选框，并将其设置为 Windows 显示语言**。
-7. 选择“安装”  。
-8. 若要一次添加多个语言，请选择 "**添加语言**"，然后重复此过程以添加步骤5和6中的语言。 对于要安装的每种语言，请重复此过程。 但是，你一次只能设置一种语言作为显示语言。
+     - FOD Disk 1 ISO：
+        - [Windows 10 版本1903或 1909 FOD Disk 1 ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
+        - [Windows 10，版本 2004 FOD Disk 1 ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_FOD-PACKAGES_OEM_PT1_amd64fre_MULTI.iso)
 
-    让我们通过快速直观的演示来运行。 以下图像显示了如何安装法语和荷兰语包，然后将法语设置为显示语言。
-
-    > [!div class="mx-imgBorder"]
-    > ![进程开头的语言页的屏幕截图。 所选 Windows 显示语言为英语。](media/language-page-default.png)
-
-    > [!div class="mx-imgBorder"]
-    > ![语言选择窗口的屏幕截图。 用户已在搜索栏中输入 "法语" 以查找法语包。](media/select-language-french.png)
-
-    > [!div class="mx-imgBorder"]
-    > !["安装语言功能" 页的屏幕截图。 选择法语作为首选语言。 选择的选项包括 "设置我的显示语言"、"安装语言包"、"语音识别" 和 "手写"。](media/install-language-features.png)
-
-    安装语言包之后，你应该会看到语言包的名称出现在语言列表中。
-
-    > [!div class="mx-imgBorder"]
-    > ![安装了新语言包的 "语言" 页的屏幕截图。 法语和荷兰语言包在 "首选语言" 下列出。](media/language-page-complete.png)
-
-9. 如果出现窗口，要求您从会话中注销。 注销，然后再次登录。 您的显示语言现在应为您选择的语言。
-
-10.  请参阅 **"控制面板**  >  **时钟和区域**  >  **区域**"。
-
-11.  在 "**区域**" 窗口打开时，选择 "**管理**" 选项卡，然后选择 "**复制设置**"。
-
-12.  选中标有 "**欢迎屏幕" 和 "系统帐户**" 和 "**新用户帐户**" 的复选框。
-
-13.  选择“确定”。
-
-14.  将打开一个窗口，告诉你重新启动会话。 选择 "**立即重新启动**"。
-
-15.  重新登录后，返回到 **"控制面板**  >  **时钟和区域**"  >  **Region**。
-
-16.  选择 "**管理**" 选项卡。
-
-17.  选择 "**更改系统区域设置**"。
-
-18. 在 "**当前系统区域设置**" 下的下拉菜单中，选择要使用的区域设置语言。 完成后，选择 **"确定"**。
-
-19. 选择 "**立即重新启动**" 以重新启动你的会话。
-
-恭喜，你已安装语言包！
-
-继续之前，请确保系统已安装最新版本的 Windows 和 Windows 应用商店。
-
-## <a name="sysprep"></a>Sysprep
-
-接下来，需要对计算机执行 sysprep 操作，以便为映像捕获过程做好准备。
-
-Sysprep 计算机：
-
-1. 以管理员身份打开 PowerShell。
-2. 运行以下 cmdlet 以切换到正确的目录：
-
-    ```powershell
-    cd Windows\System32\Sysprep
-    ```
-
-3. 接下来，运行以下 cmdlet：
-
-    ```powershell
-    .\sysprep.exe
-    ```
-
-4. 当 "系统准备工具" 窗口打开时，选中**标记为 "** **通用化**" 的复选框，然后从下拉菜单中选择 "**关闭**"。
+- Windows 文件服务器虚拟机上的 Azure 文件共享或文件共享
 
 >[!NOTE]
->Syprep 过程需要几分钟才能完成。 VM 关闭时，远程会话将断开连接。
+>必须可以从你计划用于创建自定义映像的 Azure VM 访问) 文件共享 (存储库。
 
-### <a name="resolve-sysprep-errors"></a>解决 sysprep 错误
+## <a name="create-a-content-repository-for-language-packages-and-features-on-demand"></a>根据需要创建语言包和功能的内容存储库
 
-如果在 sysprep 过程中看到错误消息，则应执行以下操作：
+创建语言包和 FODs 的内容存储库：
 
-1. 打开**驱动器 C**并前往**Windows**  >  **System32 Sysprep**  >  **Panther**，并打开**setuperr.log**文件。
+1. 在 Azure VM 上，从 [必备组件](#prerequisites)中的链接下载 Windows 10 多语言 ISO 和 FODs for Windows 10 企业多会话版本1903、1909和2004映像。
 
-   错误文件中的文本会告诉你需要卸载特定语言包，如下图所示。 复制下一步的语言包名称。
+2. 打开并在 VM 上装载 ISO 文件。
 
-   > [!div class="mx-imgBorder"]
-   > ![Setuperr.log 文件的屏幕快照。 带有包名称的文本将突出显示为深蓝色。](media/setuperr-package-name.png)
+3. 请访问语言包 ISO 并复制 **LocalExperiencePacks** 和 **x64 \\ langpacks** 文件夹中的内容，然后将内容粘贴到文件共享中。
 
-2. 打开新的 PowerShell 窗口，并使用在步骤2中复制的包名称运行以下 cmdlet，以删除语言包：
+4. 请访问 **FOD ISO 文件**，复制其所有内容，并将其粘贴到文件共享中。
 
-   ```powershell
-   Remove-AppxPackage <package name>
-   ```
+     >[!NOTE]
+     > 如果使用的是有限存储，只需复制你知道的用户所需语言的文件。 您可以通过查看文件名称中的语言代码来区分这些文件。 例如，法语文件的名称中包含代码 "fr-fr"。 有关所有可用语言的完整语言代码列表，请参阅 [适用于 Windows 的可用语言包](/windows-hardware/manufacture/desktop/available-language-packs-for-windows)。
 
-3. 检查以确保已通过再次运行 cmdlet 删除了包 `Remove-AppxPackage` 。 如果已成功删除了包，则应该会看到一条消息，指出你尝试删除的包不存在。
+     >[!IMPORTANT]
+     > 某些语言需要附属包中包含的其他字体，这些字体遵循不同的命名约定。 例如，日语字体文件名包括 "Jpan"。
+     >
+     > [!div class="mx-imgBorder"]
+     > ![日语语言包的示例，其文件名中包含 "Jpan" 语言标记。](media/language-pack-example.png)
 
-4. 再次运行 `sysprep.exe` cmdlet。
+5. 设置对语言内容存储库共享的权限，以便您拥有用于构建自定义映像的 VM 的读取访问权限。
 
-## <a name="capture-the-image"></a>捕获映像
+## <a name="create-a-custom-windows-10-enterprise-multi-session-image-manually"></a>手动创建自定义 Windows 10 企业多会话映像
 
-你的系统已准备就绪，你可以捕获映像，以便其他用户可以开始使用基于你的系统的 Vm，而无需重复配置过程。
+手动创建自定义 Windows 10 企业多会话映像：
 
-捕获映像：
+1. 部署 Azure VM，然后在 Azure 库中选择要使用的 Windows 10 企业多会话的当前版本。
+2. 部署 VM 后，请使用 RDP 作为本地管理员连接到该 VM。
+3. 请确保 VM 具有所有最新的 Windows 更新。 下载更新，并在必要时重新启动 VM。
+4. 连接到语言包和 FOD 文件共享存储库，并将其装载到驱动器号 (例如，驱动器 E) 。
 
-1. 中转到 Azure 门户并选择在 "[安装语言包](#install-a-language-pack)和[sysprep](#sysprep)" 中配置的计算机的名称。
+## <a name="create-a-custom-windows-10-enterprise-multi-session-image-automatically"></a>自动创建自定义 Windows 10 企业多会话映像
 
-2. 选择 "**捕获**"。
+如果你希望通过自动化过程安装语言，则可以在 PowerShell 中设置脚本。 你可以使用以下脚本示例，安装适用于 Windows 10 企业多会话版本2004的西班牙语 (西班牙) 、法语 (法国) 和中文 (PRC) 语言包和附属包。 该脚本将语言界面包和所有必要的附属包集成到映像中。 但是，您还可以修改此脚本以安装其他语言。 只需确保从已提升权限的 PowerShell 会话中运行该脚本，否则它将不起作用。
 
-3. 在 "**名称**" 字段中输入映像的名称，并使用 "**资源组**" 下拉菜单将其分配给资源组，如下图所示。
+```powershell
+########################################################
+## Add Languages to running Windows Image for Capture##
+########################################################
 
-   > [!div class="mx-imgBorder"]
-   > !["创建映像" 窗口的屏幕截图。 用户为此测试映像指定的名称为 "vmwvd"，并且已将其分配给 "testwvdimagerg" 资源组。](media/create-image.png)
+##Disable Language Pack Cleanup##
+Disable-ScheduledTask -TaskPath "\Microsoft\Windows\AppxDeploymentClient\" -TaskName "Pre-staged app cleanup"
 
-4. 选择“创建”。
+##Set Language Pack Content Stores##
+[string]$LIPContent = "E:"
 
-5. 等待几分钟让捕获过程完成。 映像准备就绪后，你应该会在 "通知" 中心看到一条消息，告知你已捕获该映像。
+##Spanish##
+Add-AppProvisionedPackage -Online -PackagePath $LIPContent\es-es\LanguageExperiencePack.es-es.Neutral.appx -LicensePath $LIPContent\es-es\License.xml
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Client-Language-Pack_x64_es-es.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Basic-es-es-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Handwriting-es-es-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-OCR-es-es-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Speech-es-es-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-TextToSpeech-es-es-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-NetFx3-OnDemand-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-InternetExplorer-Optional-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-MSPaint-FoD-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Notepad-FoD-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-PowerShell-ISE-FOD-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Printing-WFS-FoD-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-StepsRecorder-Package~31bf3856ad364e35~amd64~es-es~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-WordPad-FoD-Package~31bf3856ad364e35~amd64~es-es~.cab
+$LanguageList = Get-WinUserLanguageList
+$LanguageList.Add("es-es")
+Set-WinUserLanguageList $LanguageList -force
 
-你现在可以使用新映像部署 VM。 部署 VM 时，请确保按照[使用 Azure 门户在可用性区域中创建 Windows 虚拟机](../virtual-machines/windows/create-portal-availability-zone.md)中的说明进行操作。
+##French##
+Add-AppProvisionedPackage -Online -PackagePath $LIPContent\fr-fr\LanguageExperiencePack.fr-fr.Neutral.appx -LicensePath $LIPContent\fr-fr\License.xml
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Client-Language-Pack_x64_fr-fr.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Basic-fr-fr-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Handwriting-fr-fr-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-OCR-fr-fr-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Speech-fr-fr-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-TextToSpeech-fr-fr-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-NetFx3-OnDemand-Package~31bf3856ad364e35~amd64~fr-fr~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-InternetExplorer-Optional-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-MSPaint-FoD-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Notepad-FoD-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-PowerShell-ISE-FOD-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Printing-WFS-FoD-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-StepsRecorder-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-WordPad-FoD-Package~31bf3856ad364e35~amd64~fr-FR~.cab
+$LanguageList = Get-WinUserLanguageList
+$LanguageList.Add("fr-fr")
+Set-WinUserLanguageList $LanguageList -force
 
-### <a name="how-to-change-display-language-for-standard-users"></a>如何更改标准用户的显示语言
+##Chinese(PRC)##
+Add-AppProvisionedPackage -Online -PackagePath $LIPContent\zh-cn\LanguageExperiencePack.zh-cn.Neutral.appx -LicensePath $LIPContent\zh-cn\License.xml
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Client-Language-Pack_x64_zh-cn.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Basic-zh-cn-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Fonts-Hans-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Handwriting-zh-cn-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-OCR-zh-cn-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-Speech-zh-cn-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-LanguageFeatures-TextToSpeech-zh-cn-Package~31bf3856ad364e35~amd64~~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-NetFx3-OnDemand-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-InternetExplorer-Optional-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-MSPaint-FoD-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Notepad-FoD-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-PowerShell-ISE-FOD-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-Printing-WFS-FoD-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-StepsRecorder-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+Add-WindowsPackage -Online -PackagePath $LIPContent\Microsoft-Windows-WordPad-FoD-Package~31bf3856ad364e35~amd64~zh-cn~.cab
+$LanguageList = Get-WinUserLanguageList
+$LanguageList.Add("zh-cn")
+Set-WinUserLanguageList $LanguageList -force
+```
 
-标准用户可以更改其 Vm 上的显示语言。
+>[!IMPORTANT]
+>Windows 10 Enterprise 版本1903和1909不需要 `Microsoft-Windows-Client-Language-Pack_x64_<language-code>.cab` 包文件。
 
-更改显示语言：
+该脚本可能需要一段时间，具体取决于安装所需的语言数量。
 
-1. 请参阅 "**语言设置**"。 如果你不知道该位置，可以在 "开始" 菜单的搜索栏中输入**语言**。
+脚本运行完毕后，请通过转到 "**开始**  >  **设置**" "  >  **& 语言**" 来确保正确安装了语言包  >  **Language**。 如果语言文件在那里，则一切都已设置完毕。
 
-2. 在 Windows "显示语言" 下拉菜单中，选择要用作显示语言的语言。
+完成后，请确保断开共享的连接。
 
-3. 从会话注销，然后重新登录。 显示语言现在应为在步骤2中选择的语言。
+## <a name="finish-customizing-your-image"></a>完成自定义映像
+
+安装语言包之后，可以安装要添加到自定义映像的任何其他软件。
+
+完成自定义映像后，需 (sysprep) 运行系统准备工具。
+
+运行 sysprep：
+
+1. 打开提升的命令提示符，并运行以下命令来通用化映像：  
+   
+     ```cmd
+     C:\Windows\System32\Sysprep\sysprep.exe /oobe /generalize /shutdown
+     ```
+
+2. 按照在 [Azure 中创建通用 VM 的托管映像](../virtual-machines/windows/capture-image-resource.md)中的说明，关闭 VM，然后将其捕获到托管映像中。
+
+3. 你现在可以使用自定义映像来部署 Windows 虚拟机主机池。 若要了解如何部署主机池，请参阅 [教程：使用 Azure 门户创建主机池](create-host-pools-azure-marketplace.md)。
+
+## <a name="enable-languages-in-windows-settings-app"></a>在 Windows 设置应用中启用语言
+
+最后，需要将语言添加到每个用户的语言列表中，以便他们可以在 "设置" 菜单中选择其首选语言。
+
+若要确保你的用户可以选择你安装的语言，请以用户身份登录，然后运行以下 PowerShell cmdlet 以将安装的语言包添加到 "语言" 菜单。 你还可以将此脚本设置为自动执行的任务，该任务会在用户登录到其会话时激活。
+
+```powershell
+$LanguageList = Get-WinUserLanguageList
+$LanguageList.Add("es-es")
+$LanguageList.Add("fr-fr")
+$LanguageList.Add("zh-cn")
+Set-WinUserLanguageList $LanguageList -force
+```
+
+用户更改其语言设置后，他们将需要注销其 Windows 虚拟桌面会话，并再次登录以使更改生效。 
+
+## <a name="next-steps"></a>后续步骤
+
+如果对语言包的已知问题感到好奇，请参阅 [在 Windows 10 版本1803及更高版本中添加语言包：已知问题](/windows-hardware/manufacture/desktop/language-packs-known-issue)。
+
+如果你有关于 Windows 10 企业多会话的任何其他问题，请查看我们的 [常见问题解答](windows-10-multisession-faq.md)。

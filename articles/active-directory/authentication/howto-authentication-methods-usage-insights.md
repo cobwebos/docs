@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 053b052abf6f23c385dc7447639aa40b6c2c58a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f75c08f0a390e798435b70bbe2409ec4a9732214
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81680190"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717160"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>身份验证方法的使用情况和见解（预览版）
 
@@ -98,6 +98,6 @@ ms.locfileid: "81680190"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用身份验证方法使用情况报告 API](https://docs.microsoft.com/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
+- [使用身份验证方法使用情况报告 API](/graph/api/resources/authenticationmethods-usage-insights-overview?view=graph-rest-beta)
 - [为你的组织选择身份验证方法](concept-authentication-methods.md)
 - [组合注册体验](concept-registration-mfa-sspr-combined.md)

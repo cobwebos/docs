@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ca244136178c9c05f2b88a917219035451d5e391
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 35842520b26d3a98342660244295e26e934e7d3c
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848473"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717364"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
 
@@ -50,7 +50,7 @@ NPS 扩展需与现有基础结构配合工作。 在开始之前，请确保满
 
 ### <a name="licenses"></a>许可证
 
-适用于 Azure MFA 的 NPS 扩展向持有 [Azure 多重身份验证许可证](multi-factor-authentication.md)（Azure AD Premium、EMS 或 MFA 独立证书已随附）的客户提供。 Azure MFA 的基于使用量的许可证（例如，按用户或按身份验证许可证）与 NPS 扩展不兼容。 
+适用于 Azure MFA 的 NPS 扩展向持有 [Azure 多重身份验证许可证](./concept-mfa-howitworks.md)（Azure AD Premium、EMS 或 MFA 独立证书已随附）的客户提供。 Azure MFA 的基于使用量的许可证（例如，按用户或按身份验证许可证）与 NPS 扩展不兼容。 
 
 ### <a name="software"></a>软件
 
@@ -73,11 +73,11 @@ Windows Server 2008 R2 SP1 或更高版本。
 
 使用 NPS 扩展的任何用户必须使用 Azure AD Connect 同步到 Azure Active Directory，并且必须注册 MFA。
 
-安装该扩展时，需要 Azure AD 租户的*租户 ID*和管理员凭据。 若要获取租户 ID，请完成以下步骤：
+安装该扩展时，需要 Azure AD 租户的 *租户 ID* 和管理员凭据。 若要获取租户 ID，请完成以下步骤：
 
 1. 以 Azure 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com)。
 1. 搜索并选择 " **Azure Active Directory**"。
-1. 在 "**概述**" 页上，将显示*租户信息*。 在 "*租户 ID*" 旁边，选择 "**复制**" 图标，如以下示例屏幕截图所示：
+1. 在 " **概述** " 页上，将显示 *租户信息* 。 在 " *租户 ID*" 旁边，选择 " **复制** " 图标，如以下示例屏幕截图所示：
 
    ![正在从 Azure 门户获取租户 ID](./media/howto-mfa-nps-extension/azure-active-directory-tenant-id-portal.png)
 
@@ -201,16 +201,16 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 3. 运行安装程序创建的 PowerShell 脚本。
 
    > [!IMPORTANT]
-   > 对于使用 Azure 政府版或 Azure 中国世纪互联云的客户，请先 `Connect-MsolService` 在*AzureMfaNpsExtnConfigSetup.ps1*脚本中编辑 cmdlet，使其包含所需云的*AzureEnvironment*参数。 例如，指定 *-AzureEnvironment USGovernment*或 *-AzureEnvironment AzureChinaCloud*。
+   > 对于使用 Azure 政府版或 Azure 中国世纪互联云的客户，请先 `Connect-MsolService` 在 *AzureMfaNpsExtnConfigSetup.ps1* 脚本中编辑 cmdlet，使其包含所需云的 *AzureEnvironment* 参数。 例如，指定 *-AzureEnvironment USGovernment* 或 *-AzureEnvironment AzureChinaCloud*。
    >
-   > 有关详细信息，请参阅[connect-msolservice 参数引用](/powershell/module/msonline/connect-msolservice#parameters)。
+   > 有关详细信息，请参阅 [connect-msolservice 参数引用](/powershell/module/msonline/connect-msolservice#parameters)。
 
    ```powershell
    .\AzureMfaNpsExtnConfigSetup.ps1
    ```
 
 4. 以管理员身份登录到 Azure AD。
-5. PowerShell 会提示输入租户 ID。 使用从 "先决条件" 部分中的 Azure 门户复制的*租户 ID* GUID。
+5. PowerShell 会提示输入租户 ID。 使用从 "先决条件" 部分中的 Azure 门户复制的 *租户 ID* GUID。
 6. 脚本完成后，PowerShell 会显示一条成功消息。  
 
 在要针对负载均衡设置的任何其他 NPS 服务器上重复这些步骤。
@@ -218,7 +218,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 如果以前的计算机证书已过期，并且已生成新证书，则应删除所有过期的证书。 证书过期会导致 NPS 扩展启动出现问题。
 
 > [!NOTE]
-> 如果使用自己的证书，而不是使用 PowerShell 脚本生成的证书，请确保它们符合 NPS 命名约定。 使用者名称必须是**CN = \<TenantID\> ，OU = Microsoft NPS Extension**。
+> 如果使用自己的证书，而不是使用 PowerShell 脚本生成的证书，请确保它们符合 NPS 命名约定。 使用者名称必须是 **CN = \<TenantID\> ，OU = Microsoft NPS Extension**。
 
 ### <a name="microsoft-azure-government-or-azure-china-21vianet-additional-steps"></a>Microsoft Azure 政府或 Azure 中国世纪互联的其他步骤
 
@@ -227,7 +227,7 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 > [!IMPORTANT]
 > 仅当你是 Azure 政府版或 Azure 中国世纪互联客户时才配置这些注册表设置。
 
-1. 如果你是 Azure 政府版或 Azure 中国世纪互联客户，请在 NPS 服务器上打开**注册表编辑器**。
+1. 如果你是 Azure 政府版或 Azure 中国世纪互联客户，请在 NPS 服务器上打开 **注册表编辑器** 。
 1. 导航到 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa`。
 1. 对于 Azure 政府版客户，请设置以下键值：
 
@@ -276,7 +276,7 @@ NPS 扩展的 1.0.1.32 版本现在支持读取多个证书。 此功能有助�
 
 如果你的某些用户未注册 MFA，你可以确定当他们尝试身份验证时要发生什么行为。 使用注册表路径 *HKLM\Software\Microsoft\AzureMFA* 中的注册表设置 *REQUIRE_USER_MATCH* 可以控制功能行为。 此项设置提供单个配置选项：
 
-| 密钥 | “值” | 默认 |
+| 密钥 | 值 | 默认 |
 | --- | ----- | ------- |
 | REQUIRE_USER_MATCH | TRUE/FALSE | 未设置（相当于 TRUE） |
 
@@ -290,13 +290,13 @@ NPS 扩展的 1.0.1.32 版本现在支持读取多个证书。 此功能有助�
 
 对 NPS 扩展进行故障排除时，可以使用以下脚本执行基本的运行状况检查步骤。
 
-[MFA_NPS_Troubleshooter.ps1](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
+[MFA_NPS_Troubleshooter.ps1](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)
 
 ---
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>如何验证是否已按预期安装了客户端证书？
 
-请在证书存储中查找安装程序创建的自签名证书，然后检查私钥中是否包含授予“网络服务”用户的权限。 证书的使用者名称为**CN \<tenantid\> ，OU = Microsoft NPS Extension**
+请在证书存储中查找安装程序创建的自签名证书，然后检查私钥中是否包含授予“网络服务”用户的权限。 证书的使用者名称为 **CN \<tenantid\> ，OU = Microsoft NPS Extension**
 
 由 AzureMfaNpsExtnConfigSetup.ps1 脚本生成的自签名证书的有效期也为两年。 验证是否已安装证书时，还应检查证书是否尚未过期。
 
@@ -365,7 +365,7 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>管理 TLS/SSL 协议和密码套件
 
-建议禁用或删除较旧和较弱的密码套件，除非组织需要这些套件。 若要了解如何完成此任务，可以参阅[为 AD FS 管理 SSL/TLS 协议和密码套件](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)一文。
+建议禁用或删除较旧和较弱的密码套件，除非组织需要这些套件。 若要了解如何完成此任务，可以参阅[为 AD FS 管理 SSL/TLS 协议和密码套件](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs)一文。
 
 ### <a name="additional-troubleshooting"></a>更多故障排除方法
 
@@ -373,7 +373,7 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Windows Server 中网络策略服务器的概述和配置](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)
+- [Windows Server 中网络策略服务器的概述和配置](/windows-server/networking/technologies/nps/nps-top)
 
 - 在[适用于多重身份验证 NPS 扩展的高级配置选项](howto-mfa-nps-extension-advanced.md)中配置登录名的备用 ID 或设置不应执行双重验证的 IP 的异常列表
 

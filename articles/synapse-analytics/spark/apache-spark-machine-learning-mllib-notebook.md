@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: f31e238c705a4b03c400a38fa6eb5f42db7204b0
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e1ece0add7b0749cfd808b0a3ec7962dd43a302d
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535019"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88719336"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>使用 Apache Spark MLlib 和 Azure Synapse Analytics 构建机器学习应用
 
@@ -71,7 +71,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
 
 由于原始数据是 Parquet 格式，因此可以使用 Spark 上下文直接将文件作为数据帧提取到内存中。 尽管下面的代码使用默认选项，但如果需要，可以强制映射数据类型和其他架构属性。
 
-1. 通过将代码粘贴到新单元格，运行以下行来创建 Spark 数据帧。 这会通过开放式数据集 API 检索数据。 拉取所有这些数据将生成约 15 亿行。 根据 Spark 池（预览版）的大小，原始数据可能太大或需要花费太长时间来操作。 可以将此数据筛选为较小的数据。 使用 start_date 和 end_date 应用返回月份数据的筛选器。
+1. 通过将代码粘贴到新单元格，运行以下行来创建 Spark 数据帧。 这会通过开放式数据集 API 检索数据。 拉取所有这些数据将生成约 15 亿行。 根据 Spark 池（预览版）的大小，原始数据可能太大或需要花费太长时间来操作。 可以将此数据筛选为较小的数据。 下面的代码示例使用 start_date 和 end_date 应用返回单个月数据的筛选器。
 
     ```python
     from azureml.opendatasets import NycTlcYellow
@@ -96,7 +96,7 @@ MLlib 是一个核心 Spark 库，提供许多可用于机器学习任务的实�
     display(sampled_taxi_df)
     ```
 
-4. 根据生成的数据集大小和多次试验或运行笔记本的需要，建议在工作区本地缓存数据集。 有三种方法可以执行显式缓存：
+4. 根据生成的数据集大小和多次试验或运行笔记本的需要，建议在工作区本地缓存数据集。 可以通过三种方式执行显式缓存：
 
    - 将数据帧作为文件本地保存
    - 将数据帧另存为临时表或视图
@@ -126,7 +126,7 @@ ax1.set_ylabel('Counts')
 plt.suptitle('')
 plt.show()
 
-# How many passengers tip'd by various amounts
+# How many passengers tipped by various amounts
 ax2 = sampled_taxi_pd_df.boxplot(column=['tipAmount'], by=['passengerCount'])
 ax2.set_title('Tip amount by Passenger count')
 ax2.set_xlabel('Passenger count')
@@ -157,7 +157,7 @@ plt.show()
 - 通过筛选删除离群值/错误值。
 - 删除不需要的列。
 - 创建从原始数据派生的新列，使模型更有效地工作，有时称为特征化。
-- 标记，因为在进行二进制分类（给定行程中是否有提示）时，需要将提示数量转换为值 0 或 1。
+- 标记-由于您正在执行二元分类 (会出现一条提示，) 需要将 tip 数量转换为0或1值。
 
 ```python
 taxi_df = sampled_taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'paymentType', 'rateCodeId', 'passengerCount'\
@@ -196,7 +196,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 最后一项任务是将标签数据转换为逻辑回归可分析的格式。 逻辑回归算法的输入需是一组标签特征矢量对，其中特征矢量是表示输入点的数字矢量 。 因此，需要将分类列转换为数字。 `trafficTimeBins` 和 `weekdayString` 列需要转换为整数表示形式。 有多种方法可执行转换，但在此示例中采用常用方法 OneHotEncoding。
 
 ```python
-# The sample uses an algorithm that only works with numeric features convert them so they can be consumed
+# Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
 sI1 = StringIndexer(inputCol="trafficTimeBins", outputCol="trafficTimeBinsIndex")
 en1 = OneHotEncoder(dropLast=False, inputCol="trafficTimeBinsIndex", outputCol="trafficTimeBinsVec")
 sI2 = StringIndexer(inputCol="weekdayString", outputCol="weekdayIndex")
@@ -225,7 +225,7 @@ train_data_df, test_data_df = encoded_final_df.randomSplit([trainingFraction, te
 现在有两个数据帧，下一个任务就是创建模型公式并针对训练数据帧运行公式，然后针对测试数据帧进行验证。 你应该试验不同版本的模型公式，以查看不同组合的影响。
 
 > [!Note]
-> 若要保存模型，需要存储 Blob 数据参与者 Azure 角色。 在存储帐户下，导航到“访问控制(IAM)”，然后选择“添加角色分配”。 将存储 Blob 数据参与者 Azure 角色分配到 SQL 数据库服务器。 只有具有“所有者”特权的成员能够执行此步骤。 有关各种 Azure 内置角色，请参阅本[指南](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
+> 若要保存模型，需要存储 Blob 数据参与者 Azure 角色。 在存储帐户下，导航到 " (IAM) 的" 访问控制 "，然后选择" **添加角色分配**"。 将存储 Blob 数据参与者 Azure 角色分配到 SQL 数据库服务器。 只有具有“所有者”特权的成员能够执行此步骤。 有关各种 Azure 内置角色，请参阅此[指南](../../role-based-access-control/built-in-roles.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)。
 
 ```python
 ## Create a new LR object for the model
@@ -250,7 +250,7 @@ metrics = BinaryClassificationMetrics(predictionAndLabels)
 print("Area under ROC = %s" % metrics.areaUnderROC)
 ```
 
-此单元格的输出为
+此单元格的输出为：
 
 ```shell
 Area under ROC = 0.9779470729751403

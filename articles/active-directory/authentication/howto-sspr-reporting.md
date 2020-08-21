@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e3425407fdb131fb1499b2cd085fbe6d427804a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9c8557457e3a1dc7d0ed1e50da3070360b1fd76f
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035292"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88717721"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
@@ -53,7 +53,7 @@ ms.locfileid: "87035292"
 
 ### <a name="combined-registration"></a>合并注册
 
-如果已启用[组合注册](https://docs.microsoft.com/azure/active-directory/authentication/concept-registration-mfa-sspr-combined)，则在 "**安全**  >  **身份验证方法**" 下会找到有关审核日志中的用户活动的信息。
+如果已启用[组合注册](./concept-registration-mfa-sspr-combined.md)，则在 "**安全**  >  **身份验证方法**" 下会找到有关审核日志中的用户活动的信息。
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure 门户中报表列的说明
 
@@ -179,7 +179,7 @@ ms.locfileid: "87035292"
 * [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
 * [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR 有哪些策略选项？](concept-sspr-policy.md)
-* [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
+* [什么是密码写回？我为什么关心它？](./tutorial-enable-sspr-writeback.md)
 * [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
 * [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
 * [我有在别处未涵盖的问题](active-directory-passwords-faq.md)

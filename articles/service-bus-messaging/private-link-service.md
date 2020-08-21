@@ -5,12 +5,12 @@ author: spelluru
 ms.author: spelluru
 ms.date: 06/23/2020
 ms.topic: article
-ms.openlocfilehash: ef469eb74c3dd7d82dec908dba8c53136df206e4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 4f3b67794d1a7f3935c79c70f18b8bd4a1e0d7ef
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423416"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716616"
 ---
 # <a name="allow-access-to-azure-service-bus-namespaces-via-private-endpoints"></a>允许通过专用终结点访问 Azure 服务总线命名空间
 
@@ -46,7 +46,7 @@ ms.locfileid: "87423416"
 
 - 服务总线命名空间。
 - 一个 Azure 虚拟网络。
-- 虚拟网络中的子网。 可以使用**默认**子网。 
+- 虚拟网络中的子网。 可以使用 **默认** 子网。 
 - 对服务总线命名空间和虚拟网络拥有所有者或参与者权限。
 
 专用终结点和虚拟网络必须位于同一区域。 使用门户选择专用终结点的区域时，只会自动筛选该区域中的虚拟网络。 服务总线命名空间可以位于不同的区域中。 并且，专用终结点使用虚拟网络中的专用 IP 地址。
@@ -63,14 +63,14 @@ ms.locfileid: "87423416"
     > [!NOTE]
     > 只有**高级**命名空间才会显示 "**网络**" 选项卡。  
     
-    默认情况下，选择 "**所选网络**" 选项。 如果未在此页上至少添加一个 IP 防火墙规则或虚拟网络，则可以通过公共 internet （使用访问密钥）访问该命名空间。
+    默认情况下，选择 " **所选网络** " 选项。 如果未在此页上至少添加一个 IP 防火墙规则或一个虚拟网络，则可以使用访问密钥) 通过公共 internet (访问该命名空间。
 
     :::image type="content" source="./media/service-bus-ip-filtering/default-networking-page.png" alt-text="网络页-默认" lightbox="./media/service-bus-ip-filtering/default-networking-page.png":::
     
-    如果选择 "**所有网络**" 选项，则服务总线命名空间接受来自任何 IP 地址（使用访问密钥）的连接。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。 
+    如果选择 " **所有网络** " 选项，则服务总线命名空间接受来自任何 IP 地址的连接 (使用访问密钥) 。 此默认设置等效于接受 0.0.0.0/0 IP 地址范围的规则。 
 
-    ![防火墙 - 已选择“所有网络”选项](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
-5. 若要允许通过专用终结点访问命名空间，请选择页面顶部的 "**专用终结点连接**" 选项卡
+    ![防火墙 - 选中了“所有网络”选项](./media/service-bus-ip-filtering/firewall-all-networks-selected.png)
+5. 若要允许通过专用终结点访问命名空间，请选择页面顶部的 " **专用终结点连接** " 选项卡
 6. 在页面顶部选择“+ 专用终结点”按钮。
 
     ![“添加专用终结点”按钮](./media/private-link-service/private-link-service-3.png)
@@ -234,7 +234,7 @@ $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName  `
 
 ## <a name="validate-that-the-private-link-connection-works"></a>验证专用链接连接是否有效
 
-应该验证专用终结点资源的同一子网中的资源是否可以通过专用 IP 地址连接到服务总线命名空间，以及它们是否具有正确的专用 DNS 区域集成。
+应该验证专用终结点的虚拟网络中的资源是否通过专用 IP 地址连接到服务总线命名空间，以及它们是否具有正确的专用 DNS 区域集成。
 
 首先，遵循[在 Azure 门户中创建 Windows 虚拟机](../virtual-machines/windows/quick-create-portal.md)中的步骤创建一个虚拟机。
 

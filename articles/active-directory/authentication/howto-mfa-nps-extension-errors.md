@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 6a292201796ccb08f684d2c44a3cee71442edbfe
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: f991e38c184fe44f63af63809deb14eda22f8f4c
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848675"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716718"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>解决 Azure 多重身份验证的 NPS 扩展出现的错误消息
 
@@ -27,7 +27,7 @@ ms.locfileid: "85848675"
 
 | 错误代码 | 疑难解答步骤 |
 | ---------- | --------------------- |
-| **CONTACT_SUPPORT** | [联系支持人员](#contact-microsoft-support)，并指明收集日志的步骤列表。 提供尽可能多的信息，以了解错误之前发生的情况，包括租户 ID 和用户主体名称（UPN）。 |
+| **CONTACT_SUPPORT** | [联系支持人员](#contact-microsoft-support)，并指明收集日志的步骤列表。 提供尽可能多的信息，以了解错误之前发生的情况，包括租户 ID 和用户主体名称 (UPN) 。 |
 | **CLIENT_CERT_INSTALL_ERROR** | 客户端证书的安装方式或者与租户的关联方式可能有问题。 遵循[排查 MFA NPS 扩展问题](howto-mfa-nps-extension.md#troubleshooting)中的说明调查客户端证书问题。 |
 | **ESTS_TOKEN_ERROR** | 遵循[排查 MFA NPS 扩展问题](howto-mfa-nps-extension.md#troubleshooting)中的说明调查客户端证书和 ADAL 令牌问题。 |
 | **HTTPS_COMMUNICATION_ERROR** | NPS 服务器无法从 Azure MFA 接收响应。 验证防火墙是否双向打开，用于传入和传出 https://adnotifications.windowsazure.com 的流量 |
@@ -43,7 +43,7 @@ ms.locfileid: "85848675"
 | 错误代码 | 错误消息 | 疑难解答步骤 |
 | ---------- | ------------- | --------------------- |
 | **ALTERNATE_LOGIN_ID_ERROR** | 错误：userObjectSid 查找失败 | 验证用户是否存在于本地 Active Directory 实例中。 如果使用跨林信任，请[联系支持人员](#contact-microsoft-support)，以获得进一步的帮助。 |
-| **ALTERNATE_LOGIN_ID_ERROR** | 错误：备用 LoginId 查找失败 | 验证 LDAP_ALTERNATE_LOGINID_ATTRIBUTE 是否已设置为[有效的 Active Directory 属性](https://msdn.microsoft.com/library/ms675090(v=vs.85).aspx)。 <br><br> 如果 LDAP_FORCE_GLOBAL_CATALOG 设置为 True，或者 LDAP_LOOKUP_FORESTS 配置了非空值，请验证是否已配置全局目录以及是否已将 AlternateLoginId 属性添加到它。 <br><br> 如果 LDAP_LOOKUP_FORESTS 配置了非空值，请验证该值是否正确。 如果有多个林名称，必须用分号（而不是空格）分隔名称。 <br><br> 如果这些步骤不能解决此问题，请[与支持人员联系](#contact-microsoft-support)获取更多帮助。 |
+| **ALTERNATE_LOGIN_ID_ERROR** | 错误：备用 LoginId 查找失败 | 验证 LDAP_ALTERNATE_LOGINID_ATTRIBUTE 是否已设置为[有效的 Active Directory 属性](/windows/win32/adschema/attributes-all)。 <br><br> 如果 LDAP_FORCE_GLOBAL_CATALOG 设置为 True，或者 LDAP_LOOKUP_FORESTS 配置了非空值，请验证是否已配置全局目录以及是否已将 AlternateLoginId 属性添加到它。 <br><br> 如果 LDAP_LOOKUP_FORESTS 配置了非空值，请验证该值是否正确。 如果有多个林名称，必须用分号（而不是空格）分隔名称。 <br><br> 如果这些步骤不能解决此问题，请[与支持人员联系](#contact-microsoft-support)获取更多帮助。 |
 | **ALTERNATE_LOGIN_ID_ERROR** | 错误：备用 LoginId 值为空 | 验证是否为用户配置了 AlternateLoginId 属性。 |
 
 ## <a name="errors-your-users-may-encounter"></a>用户可能会遇到的错误
@@ -99,7 +99,7 @@ ms.locfileid: "85848675"
 
 ### <a name="health-check-script"></a>运行状况检查脚本
 
-排查 NPS 扩展问题时， [AZURE MFA NPS 扩展运行状况检查脚本](https://docs.microsoft.com/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/)会执行基本运行状况检查。 运行脚本并选择选项3。
+排查 NPS 扩展问题时， [AZURE MFA NPS 扩展运行状况检查脚本](/samples/azure-samples/azure-mfa-nps-extension-health-check/azure-mfa-nps-extension-health-check/) 会执行基本运行状况检查。 运行脚本并选择选项3。
 
 ### <a name="contact-microsoft-support"></a>请与 Microsoft 支持部门联系
 
