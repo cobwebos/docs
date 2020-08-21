@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 01c7d5610daa703e910fb485b5e9d945a6cdc940
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 37a687a17df266fe0589c24b392c0527e001f976
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87831288"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683889"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前几代虚拟机大小
 
@@ -59,7 +59,7 @@ ACU：210 - 250
 
 Mbps = 每秒 10^6 字节，GiB = 1024^3 字节。
 
-<sup>1</sup> Fs 系列 VM 可能的最大磁盘吞吐量（IOPS 或 Mbps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请了解如何为 [Windows](windows/premium-storage-performance.md) 或 [Linux](linux/premium-storage-performance.md) 进行面向高性能的设计。  
+<sup>1</sup> Fs 系列 VM 可能的最大磁盘吞吐量（IOPS 或 Mbps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请参阅 [高性能 ( 的设计) 。
 
 
 ## <a name="nvv2-series"></a>NVv2 系列
@@ -169,7 +169,7 @@ A8-A11 和 H 系列大小也称为 *计算密集型实例*。 运行这些大小
 
 ### <a name="d-series"></a>D 系列  
 
-**较新的大小建议**： [Dav4 系列](dav4-dasv4-series.md)、 [Dv4 系列](dv4-dsv4-series.md)和[Ddv4 系列](ddv4-ddsv4-series.md)
+**较新的大小建议**： [Dav4 系列](dav4-dasv4-series.md)、 [Dv4 系列](dv4-dsv4-series.md) 和 [Ddv4 系列](ddv4-ddsv4-series.md)
 
 ACU：160-250 <sup>1</sup>
 
@@ -190,7 +190,7 @@ ACU：160-250 <sup>1</sup>
 
 ### <a name="d-series---memory-optimized"></a>D 系列 - 内存优化  
 
-**较新的大小建议**： [Dav4 系列](dav4-dasv4-series.md)、 [Dv4 系列](dv4-dsv4-series.md)和[Ddv4 系列](ddv4-ddsv4-series.md)
+**较新的大小建议**： [Dav4 系列](dav4-dasv4-series.md)、 [Dv4 系列](dv4-dsv4-series.md) 和 [Ddv4 系列](ddv4-ddsv4-series.md)
 
 ACU：160-250 <sup>1</sup>
 
@@ -226,12 +226,12 @@ DC 系列使用最新版本的 3.7 GHz Intel 至强 E-2176G 处理器和 SGX 技
 
 > [!IMPORTANT]
 >
-> DC 系列 Vm 是[第2代 vm](./linux/generation-2.md#creating-a-generation-2-vm) ，仅支持 `Gen2` 映像。
+> DC 系列 Vm 是 [第2代 vm](./linux/generation-2.md#creating-a-generation-2-vm) ，仅支持 `Gen2` 映像。
 
 
 ### <a name="ds-series"></a>DS 系列  
 
-**较新的大小建议**： [Dasv4 系列](dav4-dasv4-series.md)、 [Dsv4 系列](dv4-dsv4-series.md)和[Ddsv4 系列](ddv4-ddsv4-series.md)
+**较新的大小建议**： [Dasv4 系列](dav4-dasv4-series.md)、 [Dsv4 系列](dv4-dsv4-series.md) 和 [Ddsv4 系列](ddv4-ddsv4-series.md)
 
 ACU：160-250 <sup>1</sup>
 
@@ -252,7 +252,7 @@ ACU：160-250 <sup>1</sup>
 
 ### <a name="ds-series---memory-optimized"></a>DS 系列 - 内存优化  
 
-**较新的大小建议**： [Dasv4 系列](dav4-dasv4-series.md)、 [Dsv4 系列](dv4-dsv4-series.md)和[Ddsv4 系列](ddv4-ddsv4-series.md)
+**较新的大小建议**： [Dasv4 系列](dav4-dasv4-series.md)、 [Dsv4 系列](dv4-dsv4-series.md) 和 [Ddsv4 系列](ddv4-ddsv4-series.md)
 
 ACU：160-250 <sup>1,2</sup>
 
@@ -267,7 +267,7 @@ ACU：160-250 <sup>1,2</sup>
 | Standard_DS13 | 8  | 56  | 112 | 32 | 32000/256 (288) | 25600/256 | 8/4000 |
 | Standard_DS14 | 16 | 112 | 224 | 64 | 64000/512 (576) | 51200/512 | 8/8000 |
 
-<sup>1</sup> DS 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请了解如何为 [Windows](windows/premium-storage-performance.md) 或 [Linux](linux/premium-storage-performance.md) 进行面向高性能的设计。
+<sup>1</sup> DS 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请参阅 [高性能 ( 的设计) 。
 <sup>2</sup> VM 系列可以在下述 CPU 之一上运行：2.2 GHz Intel Xeon® E5-2660 v2、2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) 或 2.3 GHz Intel XEON® E5-2673 v4 (Broadwell)  
 
 <br>
@@ -293,13 +293,13 @@ ACU：180-240
 | Standard_L16s  | 16 | 128 | 2807 | 64 | 80000/800 | 20000/500 | 8/16000 |
 | Standard_L32s &nbsp; <sup>1</sup> | 32 | 256 | 5630 | 64 | 160000/1600 | 40000/1000 | 8/20000 |
 
-Ls 系列 VM 可能的最大磁盘吞吐量可能受限于任何附加磁盘的数量、大小和条带化。 有关详细信息，请了解如何为 [Windows](windows/premium-storage-performance.md) 或 [Linux](linux/premium-storage-performance.md) 进行面向高性能的设计。
+Ls 系列 VM 可能的最大磁盘吞吐量可能受限于任何附加磁盘的数量、大小和条带化。 有关详细信息，请参阅 [高性能 ( 的设计) 。
 
 <sup>1</sup> 实例对于专用于单个客户的硬件独立。
 
 ### <a name="gs-series"></a>GS 系列
 
-**较新的大小建议**： [Easv4 系列](eav4-easv4-series.md)、 [Esv4 系列](ev4-esv4-series.md)、 [Edsv4 系列](edv4-edsv4-series.md)和[M 系列](m-series.md)
+**较新的大小建议**： [Easv4 系列](eav4-easv4-series.md)、 [Esv4 系列](ev4-esv4-series.md)、 [Edsv4 系列](edv4-edsv4-series.md) 和 [M 系列](m-series.md)
 
 ACU：180 - 240 <sup>1</sup>
 
@@ -315,7 +315,7 @@ ACU：180 - 240 <sup>1</sup>
 | Standard_GS4&nbsp;<sup>3</sup> | 16 | 224 | 448 | 64 | 80000/800 (2112)  | 40000/1000 | 8/16000 |
 | Standard_GS5&nbsp;<sup>2,&nbsp;3</sup> | 32 | 448 |896 | 64 |160000/1600 (4224)  | 80000/2000 | 8/20000 |
 
-<sup>1</sup> GS 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。 有关详细信息，请了解如何为 [Windows](windows/premium-storage-performance.md) 或 [Linux](linux/premium-storage-performance.md) 进行面向高性能的设计。
+<sup>1</sup> GS 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。 有关详细信息，请参阅 [高性能 ( 的设计) 。
 
 <sup>2</sup> 实例对于专用于单个客户的硬件独立。
 
@@ -325,7 +325,7 @@ ACU：180 - 240 <sup>1</sup>
 
 ### <a name="g-series"></a>G 系列
 
-**较新的大小建议**： [Eav4 系列](eav4-easv4-series.md)、 [Ev4 系列](ev4-esv4-series.md)和[Edv4 系列](edv4-edsv4-series.md)和[M 系列](m-series.md)
+**较新的大小建议**： [Eav4 系列](eav4-easv4-series.md)、 [Ev4 系列](ev4-esv4-series.md) 和 [Edv4 系列](edv4-edsv4-series.md) 和 [M 系列](m-series.md)
 
 ACU：180 - 240
 
@@ -345,7 +345,7 @@ ACU：180 - 240
 <br>
 
 ## <a name="nv-series"></a>NV 系列
-**较新的大小建议**： [NVv3 系列](nvv3-series.md)和[NVv4 系列](nvv4-series.md)
+**较新的大小建议**： [NVv3 系列](nvv3-series.md) 和 [NVv4 系列](nvv4-series.md)
 
 NV 系列虚拟机采用 [NVIDIA Tesla M60 ](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU 和 NVIDIA GRID 技术，适用于桌面加速型应用程序和虚拟桌面，方便客户将其数据或模拟可视化。 用户可以在 NV 实例上直观显示其图形密集型工作流以获取高级图形功能，并可额外运行单精度工作负荷，例如编码和渲染。 NV 系列 Vm 还由 Intel 强 2690 v3 (Haswell) Cpu 提供支持。
 

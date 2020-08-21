@@ -1,5 +1,5 @@
 ---
-title: ML Studio （经典）： Azure AI 库-Azure
+title: ML Studio (经典) ： Azure AI 库-Azure
 description: 在 Azure AI 库中共享和发现分析资源以及更多内容。 学习其他人的经验，为社区做出自己的贡献。
 services: machine-learning
 ms.service: machine-learning
@@ -9,32 +9,31 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 7918f684fea1092cbd7c11fade3d8f40c1e44240
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 1c03f52802881bcf4c916ce3ed438e465e574090
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431208"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691252"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>在 Azure AI 库中共享和发现资源
 
-**适用于：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） ![ no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
 
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 
 **[Azure AI 库](https://gallery.azure.ai)** 是一个社区驱动的站点，用于发现和共享使用 Azure AI 构建的解决方案。
 该库包含各种可用于开发自己的分析解决方案的资源。
 
 ## <a name="what-can-i-find-in-the-gallery"></a>可以在库中查找哪些内容？
 
-Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资源。 其中包括:
+Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资源。 其中包括：
 
 * **试验** - 该库包含在 Azure 机器学习工作室（经典）中开发的各种试验。 涵盖了从演示特定机器学习技术的快速概念证明实验，到完全开发的解决复杂机器学习问题的解决方案。
 * **教程** - 可以通过一些教程来了解机器学习技术和概念，或描述解决各种机器学习问题的高级方法。
 * **集合** - 使用集合可将提出特定解决方案或概念的试验、API 以及其他库资源组合在一起。
 * **自定义模块** - 可将自定义模块下载到工作室（经典）工作区，以便在自己的试验中使用。
-* **Jupyter Notebook** - Jupyter Notebook 在单一的交互式画布中包括代码、数据可视化和文档。 库中的笔记本提供了有关高级机器学习技术和解决方案的教程和详细说明。
 
 ## <a name="discover-and-contribute"></a>发现和参与
 
@@ -49,12 +48,12 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
 
 在登录到库时你即会成为库社区的一名成员。 这样就可以下载资源或者贡献自己的库项，使其他人可以从你发现的解决方案中受益。
 
-可以下载**试验**、**自定义模块**和 **Jupyter Notebook**，以便在开发自己的分析解决方案时使用。
+您可以下载 **试验**、用于开发自己的分析解决方案的 **自定义模块** 。
 可以在库中贡献**试验**、**教程**和**集合**。
 
-## <a name="download-experiments-modules-notebooks"></a>下载试验、模块和 Notebook
+## <a name="download-experiments-modules"></a>下载试验，模块
 
-可将**试验**、**自定义模块**和 **Jupyter Notebook** 下载到自己的机器学习工作室（经典）工作区中，以便在开发自己的分析解决方案时使用。
+你可以将 **试验**、 **自定义模块** 下载到你自己的机器学习 Studio (经典) 工作区中，以用于开发你自己的解决方案。
 
 从 AI 库内部下载资源：
 
@@ -90,7 +89,7 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
 
 1. 在试验画布下面的操作列表中，选择“发布到库”****。
 
-1. 在库中，输入描述性的**名称**和**标记**。 突出显示使用过的技术或要解决的实际问题。 描述性实验标题的示例是 "二元分类： Twitter 情绪分析"。
+1. 在库中，输入描述性的**名称**和**标记**。 突出显示使用过的技术或要解决的实际问题。 描述性实验标题的示例是“二元分类：Twitter 情绪分析”。
 
 1. 在“摘要”**** 框中，输入实验的摘要。 简要描述实验解决的问题以及处理方式。
 
@@ -153,16 +152,16 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
 
 1. 选择“新建项”****。
 
-1. 在“说明”**** 页上，为“项类型”**** 选择“教程”**** 或“集合”****。 输入名称、简短摘要、详细说明和任何可能有助于其他用户找到贡献内容的标记。 。
+1. 在“说明”**** 页上，为“项类型”**** 选择“教程”**** 或“集合”****。 输入名称、简短摘要、详细说明和任何可能有助于其他用户找到贡献内容的标记。 然后单击“下一步”。
 
-1. 在“图像选择”**** 页上，选择随贡献内容一同显示的图像。 可以上传自己的图像文件，或者选择内置图像。 选择可帮助用户识别贡献内容及其用途的图像。 。
+1. 在“图像选择”**** 页上，选择随贡献内容一同显示的图像。 可以上传自己的图像文件，或者选择内置图像。 选择可帮助用户识别贡献内容及其用途的图像。 然后单击“下一步”。
 
 1. 在“设置”**** 页上，针对“可见性”**** 选择贡献内容是“公开”****（任何人都可以查看）还是“未列出”****（只有收到了直接链接的人可以查看）。
 
    > [!TIP]
    > 如果想要在公开发布文档前先确保它没有问题，可以先将实验发布为“未列出”****。 以后可以在实验详细信息页上将可见性设置更改为“公开”****。 请注意，将试验设置为“公开”之后，无法将其更改为“未列出”。********
 
-1. 选择“创建”  。
+1. 选择“创建”。
 
 贡献内容随即会加入 Azure AI 库中。 贡献内容将在帐户页上的“项”**** 选项卡中列出。
 
@@ -187,11 +186,11 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
 
 随贡献内容一起提交的图像用于创建磁贴。 我们建议图像应小于 500 KB，纵横比为 3:2，分辨率为 960 x 640。
 
-**我在实验中使用的数据集会发生什么情况呢？数据集是否还会发布到库中？**
+**在试验中使用的数据集会发生什么情况？数据集是否还会在库中发布？**
 
 如果数据集包含在试验中，并且未通过“导入数据”模块导入，数据集将作为试验的一部分发布到库中。 确保随试验一起发布的数据集具有相应的许可条款。 许可条款应允许任何人共享和下载数据。 库发表内容均遵循 Azure [使用条款](https://azure.microsoft.com/support/legal/website-terms-of-use/)。
 
-**我有一个使用 "导入数据" 模块从 Azure HDInsight 或 SQL Server 提取数据的实验。它使用我的凭据来检索数据。能否发布这种试验？如何确保我的凭据不会被共享？**
+**我有一个使用“导入数据”模块从 Azure HDInsight 或 SQL Server 中提取数据的实验。它使用我的凭据来检索数据。是否可以发布这类实验？如何确保我的凭据不共享？**
 
 目前，无法在库中发布使用凭据的试验。
 

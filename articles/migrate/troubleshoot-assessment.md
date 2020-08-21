@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 24e7a1660da4dd021ef7ceb2594b4db2340cf104
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: e9b9e0b27e46c95ca4c2bc3a5c547259bada5fda
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263021"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88685402"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>排查评估/依赖项可视化问题
 
@@ -36,10 +36,10 @@ ms.locfileid: "88263021"
 找不到所需存储性能的 VM | 计算机所需的每秒输入/输出操作数（IOPS）和吞吐量) 的存储性能 (超过了 Azure VM 支持。 在迁移之前，减少计算机的存储需求。
 找不到所需网络性能的 VM | 计算机所需的网络性能（输入/输出）超出了 Azure VM 支持。 减少计算机的网络要求。
 在指定位置找不到 VM | 在迁移之前使用不同目标位置。
-一个或多个不合适的磁盘 | 附加到 VM 的一个或多个磁盘不满足 Azure 要求。的<br/><br/> Azure Migrate：服务器评估目前不支持超级 SSD 磁盘，并根据高级托管磁盘的磁盘限制 (32 TB) 评估磁盘。<br/><br/> 对于附加到 VM 的每个磁盘，请确保磁盘大小 < 64 TB (超级 SSD 磁盘) 支持。<br/><br/> 如果不是这样，请在迁移到 Azure 之前减小磁盘大小，或者在 Azure 中使用多个磁盘并将它们放在 [一起](../virtual-machines/windows/premium-storage-performance.md#disk-striping) ，以获得更高的存储限制。 请确保 Azure [托管的虚拟机磁盘](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)支持每个磁盘所需的性能 (IOPS 和吞吐量) 。
+一个或多个不合适的磁盘 | 附加到 VM 的一个或多个磁盘不满足 Azure 要求。的<br/><br/> Azure Migrate：服务器评估目前不支持超级 SSD 磁盘，并根据高级托管磁盘的磁盘限制 (32 TB) 评估磁盘。<br/><br/> 对于附加到 VM 的每个磁盘，请确保磁盘大小 < 64 TB (超级 SSD 磁盘) 支持。<br/><br/> 如果不是这样，请在迁移到 Azure 之前减小磁盘大小，或者在 Azure 中使用多个磁盘并将它们放在 [一起](../virtual-machines/premium-storage-performance.md#disk-striping) ，以获得更高的存储限制。 请确保 Azure [托管的虚拟机磁盘](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits)支持每个磁盘所需的性能 (IOPS 和吞吐量) 。
 存在一个或多个不合适网络适配器。 | 在迁移之前从计算机中删除未使用的网络适配器。
 磁盘计数超过限制 | 在迁移之前从计算机中删除未使用的磁盘。
-磁盘大小超过限制 | Azure Migrate：服务器评估目前不支持超级 SSD 磁盘，并根据高级磁盘限制 (32 TB) 评估磁盘。<br/><br/> 但是，Azure 支持的磁盘大小最高可达 64 TB () 超级 SSD 磁盘。 在迁移之前将磁盘缩减为小于 64 TB，或在 Azure 中使用多个磁盘并将它们放在 [一起](../virtual-machines/windows/premium-storage-performance.md#disk-striping) ，以获得更高的存储限制。
+磁盘大小超过限制 | Azure Migrate：服务器评估目前不支持超级 SSD 磁盘，并根据高级磁盘限制 (32 TB) 评估磁盘。<br/><br/> 但是，Azure 支持的磁盘大小最高可达 64 TB () 超级 SSD 磁盘。 在迁移之前将磁盘缩减为小于 64 TB，或在 Azure 中使用多个磁盘并将它们放在 [一起](../virtual-machines/premium-storage-performance.md#disk-striping) ，以获得更高的存储限制。
 指定位置中磁盘不可用 | 在迁移之前请确保磁盘已在目标位置。
 不可用于指定冗余的磁盘 | 磁盘应使用在评估设置中定义的冗余存储类型（默认为 LRS）。
 由于内部错误，无法确定磁盘的适用性 | 请尝试为组创建一个新评估。

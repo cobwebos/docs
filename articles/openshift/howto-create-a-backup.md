@@ -8,12 +8,12 @@ author: troy0820
 ms.author: b-trconn
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc
-ms.openlocfilehash: 40a915531aa58567b17a774a15504dc92770479f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 046cd30c0f93a468287c73573a3d18f4ba66221b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87854198"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690215"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-cluster-application-backup"></a>创建 Azure Red Hat OpenShift 4 群集应用程序备份
 
@@ -29,7 +29,7 @@ ms.locfileid: "87854198"
 
 ### <a name="install-velero"></a>安装 Velero
 
-若要在系统上[安装](https://velero.io/docs/master/basic-install/)Velero，请遵循适用于你的操作系统的建议过程。
+若要在系统上 [安装](https://velero.io/docs/main/basic-install/) Velero，请遵循适用于你的操作系统的建议过程。
 
 ### <a name="set-up-azure-storage-account-and-blob-container"></a>设置 Azure 存储帐户和 Blob 容器
 
@@ -90,7 +90,7 @@ EOF
 
 ## <a name="install-velero-on-azure-red-hat-openshift-4-cluster"></a>在 Azure Red Hat OpenShift 4 群集上安装 Velero
 
-此步骤会将 velero 安装到其自己的项目中，以及执行备份和还原 Velero 所需的[自定义资源定义](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/)。 请确保已成功登录到 Azure Red Hat OpenShift v4 群集。
+此步骤会将 velero 安装到其自己的项目中，以及执行备份和还原 Velero 所需的 [自定义资源定义](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) 。 请确保已成功登录到 Azure Red Hat OpenShift v4 群集。
 
 
 ```bash
@@ -122,7 +122,7 @@ oc get backups -n velero <name of backup> -o yaml
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了 Azure Red Hat OpenShift 4 群集应用程序的备份。 你已学习了如何执行以下操作：
+本文介绍了 Azure Red Hat OpenShift 4 群集应用程序的备份。 你已了解如何：
 
 > [!div class="checklist"]
 > * 使用 Velero 创建 OpenShift v4 群集应用程序备份

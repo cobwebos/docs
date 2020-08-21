@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 2a69bc40090e74ad5885c2576c040693f90d5d03
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 5c2fb330149d3e6530e7cb0fc3350d5db3fa24cf
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095897"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683872"
 ---
 # <a name="tutorial-for-configuring-experian-with-azure-active-directory-b2c"></a>有关配置 Experian 与 Azure Active Directory B2C 的教程
 
-在此示例教程中，我们提供了有关如何将 Azure AD B2C 与[Experian](https://www.experian.com/decision-analytics/account-opening-fraud/microsoft-integration)集成的指导。 Experian 提供多种解决方案，可在[此处](https://www.experian.com/)找到。
+在此示例教程中，我们提供了有关如何将 Azure AD B2C 与 [Experian](https://www.experian.com/decision-analytics/account-opening-fraud/microsoft-integration)集成的指导。 Experian 提供多种解决方案，可在 [此处](https://www.experian.com/)找到。
 
-在此示例中，使用了 Experian 的集成数字标识和欺诈风险平台**CrossCore** 。 CrossCore 是用于验证用户标识的 ID 验证服务。 它根据用户在注册流期间提供的信息来进行风险分析。 CrossCore 用来确定是否应允许用户继续登录。 以下属性可用于 CrossCore 风险分析：
+在此示例中，使用了 Experian 的集成数字标识和欺诈风险平台 **CrossCore** 。 CrossCore 是用于验证用户标识的 ID 验证服务。 它根据用户在注册流期间提供的信息来进行风险分析。 CrossCore 用来确定是否应允许用户继续登录。 以下属性可用于 CrossCore 风险分析：
 
 - 电子邮件
 - IP 地址
@@ -69,7 +69,7 @@ Experian 集成包括以下组件：
 
 ## <a name="onboard-with-experian"></a>内置 Experian
 
-1. 若要创建 Experian 帐户，请联系[Experian](https://www.experian.com/decision-analytics/account-opening-fraud/microsoft-integration)
+1. 若要创建 Experian 帐户，请联系 [Experian](https://www.experian.com/decision-analytics/account-opening-fraud/microsoft-integration)
 
 2. 创建帐户后，你将收到 API 配置所需的信息。 以下各节介绍了该过程。
 
@@ -77,14 +77,14 @@ Experian 集成包括以下组件：
 
 ### <a name="part-1---deploy-the-api"></a>第1部分-部署 API
 
-将提供的 API 代码部署到 Azure 服务。 可以按照这些[说明](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)从 Visual Studio 发布代码。
+将提供的 API 代码部署到 Azure 服务。 可以按照这些 [说明](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)从 Visual Studio 发布代码。
 
 >[!NOTE]
 >需要部署的服务的 URL 来配置 Azure AD，并提供所需的设置。
 
 ### <a name="part-2---deploy-the-client-certificate"></a>第2部分-部署客户端证书
 
-Experian API 调用受到客户端证书的保护。 此客户端证书将由 Experian 提供。 按照本[文档](https://docs.microsoft.com/azure/app-service/environment/certificates#private-client-certificate)中所述的说明，证书必须上传到 Azure 应用服务。 示例策略在过程中使用以下键步骤：
+Experian API 调用受到客户端证书的保护。 此客户端证书将由 Experian 提供。 按照本 [文档](https://docs.microsoft.com/azure/app-service/environment/certificates#private-client-certificate)中所述的说明，证书必须上传到 Azure 应用服务。 示例策略在过程中使用以下键步骤：
 
 - 上传证书
 
@@ -92,7 +92,7 @@ Experian API 调用受到客户端证书的保护。 此客户端证书将由 Ex
 
 ### <a name="part-3---configure-the-api"></a>第3部分-配置 API
 
-可以[在 Azure 中的应用服务中配置](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)应用程序设置。 使用此方法，可以安全地配置设置，而无需将其签入存储库。 需要为 Rest API 提供以下设置：
+可以 [在 Azure 中的应用服务中配置](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)应用程序设置。 使用此方法，可以安全地配置设置，而无需将其签入存储库。 需要为 Rest API 提供以下设置：
 
 | 应用程序设置 | Source | 注释 |
 | :-------- | :------------| :-----------|
@@ -110,7 +110,7 @@ Experian API 调用受到客户端证书的保护。 此客户端证书将由 Ex
 
 ### <a name="part-4---create-api-policy-keys"></a>第4部分-创建 API 策略密钥
 
-请参阅本[文档](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api#add-rest-api-username-and-password-policy-keys)并创建两个策略密钥–一个用于 api 用户名，另一个用于为 HTTP 基本身份验证定义的 api 密码。
+请参阅本 [文档](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api#add-rest-api-username-and-password-policy-keys) 并创建两个策略密钥–一个用于 api 用户名，另一个用于为 HTTP 基本身份验证定义的 api 密码。
 
 >[!NOTE]
 >稍后需要用到的密钥来配置策略。
@@ -129,27 +129,27 @@ Experian API 调用受到客户端证书的保护。 此客户端证书将由 Ex
 | {your_tenant_extensions_app_objectid}                  | 租户的存储应用程序的对象 ID                                   | 01234567-89ab-cdef-0123-456789abcdef         |
 | {your_api_username_key_name}                           | [此处](#part-4---create-api-policy-keys)创建的用户名密钥的名称             | B2C \_ 1a \_ RestApiUsername                     |
 | {your_api_password_key_name}                           | 在[此处](#part-4---create-api-policy-keys)创建的密码密钥的名称             | B2C \_ 1a \_ RestApiPassword                     |
-| {your_app_service_URL}                                 | 已设置的应用服务的 URL                                             | <https://yourapp.azurewebsites.net>          |
+| {your_app_service_URL}                                 | 已设置的应用服务的 URL                                             | `https://yourapp.azurewebsites.net`          |
 
 ### <a name="part-6---configure-the-azure-ad-b2c-policy"></a>第6部分-配置 Azure AD B2C 策略
 
-请参阅本[文档](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack)，了解有关如何设置 Azure AD B2C 租户和配置策略的说明。
+请参阅本 [文档](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) ，了解有关如何设置 Azure AD B2C 租户和配置策略的说明。
 
 >[!NOTE]
->此示例策略基于[本地帐户 starter pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)。
+>此示例策略基于 [本地帐户 starter pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/LocalAccounts)。
 
 >[!NOTE]
 > 作为最佳做法，我们建议客户在 "属性集合" 页中添加许可通知。 通知用户信息将发送到第三方服务进行身份验证。
 
 ## <a name="test-the-user-flow"></a>测试用户流
 
-1. 打开 Azure AD B2C 租户，并在 "策略" 下选择 "**用户流**"。
+1. 打开 Azure AD B2C 租户，并在 "策略" 下选择 " **用户流**"。
 
-2. 选择以前创建的**用户流**。
+2. 选择以前创建的 **用户流**。
 
-3. 选择 "**运行用户流**"，然后选择设置：
+3. 选择 " **运行用户流** "，然后选择设置：
 
-   a. **应用程序**：选择已注册的应用（示例为 JWT）
+   a. **应用程序**：选择注册应用 (示例为 JWT) 
 
    b. **回复 url**：选择 "**重定向 url** "
 
@@ -161,7 +161,7 @@ Experian API 调用受到客户端证书的保护。 此客户端证书将由 Ex
 
 6. 经历登录流  
 
-7. 输入**continue**后，CrossCore 谜会弹出。
+7. 输入 **continue**后，CrossCore 谜会弹出。
 
 ## <a name="next-steps"></a>后续步骤
 

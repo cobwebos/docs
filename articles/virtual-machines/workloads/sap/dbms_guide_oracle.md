@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75f8a1f42c5d5702fdb4a588b0829636c30f80a6
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 66837a0e4118695b19776972fdb4fd88a70ee561
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654610"
+ms.locfileid: "88690317"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署
 
@@ -444,7 +444,7 @@ SAP 应用程序使用 Oracle Database 的特定方案也受支持。 详细信�
 
 Azure 上的 Oracle Database 文件支持 ext4、xfs 或 Oracle ASM 的文件系统。 所有数据库文件都必须存储在基于 VHD 或托管磁盘的这些文件系统上。 这些磁盘装载到 Azure VM，基于 [Azure 页 Blob 存储](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>)或 [Azure 托管磁盘](../../managed-disks-overview.md)。
 
-对于 Oracle Linux UEK 内核，支持 [Azure 高级 SSD](../../windows/premium-storage-performance.md#disk-caching) 至少需要 UEK 版本 4。
+对于 Oracle Linux UEK 内核，支持 [Azure 高级 SSD](../../premium-storage-performance.md#disk-caching) 至少需要 UEK 版本 4。
 
 强烈建议使用 [Azure 托管磁盘](../../managed-disks-overview.md)。 另外，还强烈建议使用 [Azure 高级 SSD](../../disks-types.md) 进行 Oracle Database 部署。
 

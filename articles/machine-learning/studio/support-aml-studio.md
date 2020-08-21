@@ -1,5 +1,5 @@
 ---
-title: ML Studio （经典）教程支持 & 培训-Azure
+title: ML Studio (经典) 教程支持 & 培训-Azure
 description: 获取 Azure 机器学习工作室（经典）的支持和培训并为其提供反馈
 services: machine-learning
 ms.service: machine-learning
@@ -8,19 +8,19 @@ ms.topic: troubleshooting
 author: peterclu
 ms.author: peterlu
 ms.date: 01/18/2019
-ms.openlocfilehash: ccf38dd6ed531c620719f25c7b70de5549fa2262
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 6962198fbce3b46a8310d39cf3aa3f78ed0a130b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431822"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88690719"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-studio-classic"></a>获取 Azure 机器学习工作室（经典）的支持和培训
 
-**适用于：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） ![ no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
 
 
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
+
 
 本文介绍如何了解有关 Azure 机器学习工作室（经典）的详细信息，以及如何获取相关问题的支持。
 
@@ -40,7 +40,7 @@ ms.locfileid: "87431822"
 
 + **面向 Azure 客户的技术支持**：通过 Azure 门户[提交和管理支持请求](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)。
 
-+ **用户论坛**：提出问题、解答问题，并与[Azure 机器学习 Studio （经典）支持论坛](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)中的其他用户进行连接。
++ **用户论坛**：提出问题、解答问题，并与 Azure 机器学习 Studio 中的其他用户进行联系 [ (经典) 支持论坛](https://docs.microsoft.com/answers/topics/azure-machine-learning.html)。
 
 + **Stack Overflow**：访问 [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) 上标记为“Azure-Machine-Learning”的 Azure 机器学习社区。
 

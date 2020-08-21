@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 08/05/2020
-ms.openlocfilehash: 0d3e49fbb11af92d016910e91b0144f6de998238
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 3f051d9fc1599c0877e1e8a58935d09d224ce22b
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829367"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689671"
 ---
 # <a name="mitigate-fairness-in-machine-learning-models-preview"></a>降低计算机学习模型的公平 (预览) 
 
-了解机器学习和[Fairlearn](https://fairlearn.github.io/)的开源 Python 包如何帮助您减少机器学习模型中的公平问题。 如果不努力了解公平性问题以及如何在构建机器学习模型时评估公平性，那么你构建的模型可能会产生不公平的结果。
+了解机器学习和 [Fairlearn](https://fairlearn.github.io/) 的开源 Python 包如何帮助您减少机器学习模型中的公平问题。 如果不努力了解公平性问题以及如何在构建机器学习模型时评估公平性，那么你构建的模型可能会产生不公平的结果。
 
 Fairlearn 开源包[用户指南](https://fairlearn.github.io/user_guide/index.html)的以下摘要介绍了如何使用它来评估正在构建的 AI 系统的公平性。  Fairlearn 开源包还可以提供一些选项，以帮助缓解或减少你观察到的任何公平性问题。  请参阅[如何](how-to-machine-learning-fairness-aml.md)在 Azure 机器学习培训[sample notebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)期间启用 AI 系统的公平评估。
 
@@ -28,7 +28,7 @@ Fairlearn 开源包[用户指南](https://fairlearn.github.io/user_guide/index.h
 >[!NOTE]
 > 公平性是一个社会性的技术难题。 公平性的许多方面（例如公正和正当程序）没有通过量化的公平性指标进行捕获。 另外，许多量化的公平性指标无法同时得到满足。 Fairlearn 开源包的目标是使人类能够评估不同的影响和缓解策略。 最终，由构建人工智能和机器学习模型的人类用户负责根据其应用场景进行权衡。
 
-人工智能和机器学习系统可能会表现出不公平的行为。 定义不公平行为的一种方法是按其损害或对人的影响来定义。 人工智能系统可以造成许多类型的损害。 有关详细信息，请参阅[Kate Crawford 的 NeurIPS 2017 主题](https://www.youtube.com/watch?v=fMym_BKWQzk)。
+人工智能和机器学习系统可能会表现出不公平的行为。 定义不公平行为的一种方法是按其损害或对人的影响来定义。 人工智能系统可以造成许多类型的损害。 有关详细信息，请参阅 [Kate Crawford 的 NeurIPS 2017 主题](https://www.youtube.com/watch?v=fMym_BKWQzk) 。
 
 人工智能造成的两种常见损害是：
 
@@ -79,7 +79,7 @@ Fairlearn 开源包有两个组件：
 Fairlearn 开源包包括了各种不公平性缓解算法。 这些算法支持对预测器行为的一组约束（称为**奇偶校验约束**或条件）。 奇偶校验约束要求预测器行为的某些方面在敏感特征所定义的群体（例如不同的种族）之间具有可比性。 Fairlearn 开源包中的缓解算法使用此类奇偶校验约束来缓解所观察到的公平性问题。
 
 >[!NOTE]
-> 缓解模型中的不公平性意味着降低不公平性，但这种技术上的缓解无法完全消除此不公平性。  Fairlearn 开源包中的不公平性缓解算法可提供建议的缓解策略，以帮助减少机器学习模型中的不公平性，但它们并不是用来完全消除不公平性的解决方案。  每个特定开发人员的机器学习模型可能还有其他应考虑的奇偶校验约束或条件。 使用 Azure 机器学习的开发人员必须自行确定，缓解措施是否充分消除其机器学习模型的预期使用和部署中的任何不公平性。  
+> 缓解模型中的不公平性意味着降低不公平性，但这种技术上的缓解无法完全消除此不公平性。  Fairlearn 开源包中的不公平性缓解算法可提供建议的缓解策略，以帮助减少机器学习模型中的不公平性，但它们并不是用来完全消除不公平性的解决方案。  对于每个特定开发人员的机器学习模型，还应考虑其他奇偶校验约束或条件。 使用 Azure 机器学习的开发人员必须自行确定，缓解措施是否充分消除其机器学习模型的预期使用和部署中的任何不公平性。  
 
 Fairlearn 开源包支持下列类型的奇偶校验约束： 
 
@@ -102,12 +102,12 @@ Fairlearn 开源包提供了后期处理和降低不公平性的缓解算法：
 | 算法 | 说明 | 机器学习任务 | 敏感特征 | 支持的奇偶校验约束 | 算法类型 |
 | --- | --- | --- | --- | --- | --- |
 | `ExponentiatedGradient` | [A Reductions Approach to Fair Classification](https://arxiv.org/abs/1803.02453)（公平分类的约简方法）中描述的公平分类的黑盒方法 | 二元分类 | 分类 | [人口统计奇偶校验](#parity-constraints)、[均等几率](#parity-constraints) | 约简 |
-| `GridSearch` | [A Reductions Approach to Fair Classification](https://arxiv.org/abs/1803.02453)（公平分类的约简方法）中描述的黑盒方法| 二元分类 | 二进制 | [人口统计奇偶校验](#parity-constraints)、[均等几率](#parity-constraints) | 约简 |
-| `GridSearch` | 一种黑盒方法，它通过[公平回归：量化的定义和基于约简的算法](https://arxiv.org/abs/1905.12843)中描述的用于有界群体损失的算法实现公平回归的网格搜索变体。 | 回归 | 二进制 | [有界群体损失](#parity-constraints) | 约简 |
+| `GridSearch` | [A Reductions Approach to Fair Classification](https://arxiv.org/abs/1803.02453)（公平分类的约简方法）中描述的黑盒方法| 二元分类 | Binary | [人口统计奇偶校验](#parity-constraints)、[均等几率](#parity-constraints) | 约简 |
+| `GridSearch` | 一种黑盒方法，它通过[公平回归：量化的定义和基于约简的算法](https://arxiv.org/abs/1905.12843)中描述的用于有界群体损失的算法实现公平回归的网格搜索变体。 | 回归 | Binary | [有界群体损失](#parity-constraints) | 约简 |
 | `ThresholdOptimizer` | 基于 [Equality of Opportunity in Supervised Learning](https://arxiv.org/abs/1610.02413)（监督式学习中的机会均等性）一文的后期处理算法。 此方法采用现有分类器和敏感特征作为输入，并派生分类器预测的单一转换，以强制实施指定的奇偶校验约束。 | 二元分类 | 分类 | [人口统计奇偶校验](#parity-constraints)、[均等几率](#parity-constraints) | 后处理 |
 
 ## <a name="next-steps"></a>后续步骤
 
-- 查看 Fairlearn 的 [GitHub](https://github.com/fairlearn/fairlearn/)、[用户指南](https://fairlearn.github.io/user_guide/index.html)、[示例](https://fairlearn.github.io/auto_examples/notebooks/index.html)和[示例笔记本](https://github.com/fairlearn/fairlearn/tree/master/notebooks)，以了解如何使用各种组件。
-- 了解[如何](how-to-machine-learning-fairness-aml.md)在 Azure 机器学习中启用机器学习模型的公平评估。
+- 查看 Fairlearn 的 [GitHub](https://github.com/fairlearn/fairlearn/)、[用户指南](https://fairlearn.github.io/user_guide/index.html)、[示例](https://fairlearn.github.io/auto_examples/)和[示例笔记本](https://github.com/fairlearn/fairlearn/tree/master/notebooks)，以了解如何使用各种组件。
+- 了解 [如何](how-to-machine-learning-fairness-aml.md) 在 Azure 机器学习中启用机器学习模型的公平评估。
 - 有关 Azure 机器学习中的其他公平性评估方案，请参阅[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/contrib/fairness)。 

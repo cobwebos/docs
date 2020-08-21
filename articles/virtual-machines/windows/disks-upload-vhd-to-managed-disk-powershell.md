@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 4cc00ecb3810b1499f52ea9f3a0c110e92c75dff
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ec765e2eb635449140d60ee98762e35aea12fe44
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87009606"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88689603"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-powershell"></a>将 VHD 上传到 Azure，或将托管磁盘复制到其他区域 - Azure PowerShell
 
@@ -28,7 +28,7 @@ ms.locfileid: "87009606"
 
 ## <a name="getting-started"></a>入门
 
-如果希望通过 GUI 上传磁盘，可以使用 Azure 存储资源管理器。 有关详细信息，请参阅：[使用 Azure 存储资源管理器管理 Azure 托管磁盘](disks-use-storage-explorer-managed-disks.md)
+如果希望通过 GUI 上传磁盘，可以使用 Azure 存储资源管理器。 有关详细信息，请参阅：[使用 Azure 存储资源管理器管理 Azure 托管磁盘](../disks-use-storage-explorer-managed-disks.md)
 
 若要将 VHD 上传到 Azure，需要创建一个针对此上传过程配置的空托管磁盘。 在创建托管磁盘之前，应了解有关这些磁盘的一些附加信息。
 
@@ -49,7 +49,7 @@ ms.locfileid: "87009606"
 替换 `<yourdiskname>`、`<yourresourcegroupname>` 和 `<yourregion>`，然后运行以下命令：
 
 > [!TIP]
-> 如果要创建 OS 磁盘，请将-HyperVGeneration " <yourGeneration> " 添加到 `New-AzDiskConfig` 。
+> 如果要创建 OS 磁盘，请将 -HyperVGeneration <yourGeneration> 添加到 `New-AzDiskConfig`。
 
 ```powershell
 $vhdSizeBytes = (Get-Item "<fullFilePathHere>").length
@@ -100,10 +100,10 @@ Revoke-AzDiskAccess -ResourceGroupName '<yourresourcegroupname>' -DiskName '<you
 > [!IMPORTANT]
 > 提供 Azure 中托管磁盘的磁盘大小（以字节为单位）时，需要添加 512 偏移量。 这是因为，Azure 在返回磁盘大小时会省略脚注。 如果不添加此偏移量，复制将会失败。 以下脚本中已添加此偏移量。
 
-将 `<sourceResourceGroupHere>` 、、 `<sourceDiskNameHere>` 、 `<targetDiskNameHere>` `<targetResourceGroupHere>` `<yourOSTypeHere>` 和 `<yourTargetLocationHere>` （位置值的示例为 uswest2）替换为你的值，然后运行以下脚本，以便复制托管磁盘。
+替换 `<sourceResourceGroupHere>` 、 `<sourceDiskNameHere>` 、 `<targetDiskNameHere>` 、 `<targetResourceGroupHere>` `<yourOSTypeHere>` 和 `<yourTargetLocationHere>` (位置值的示例将与值 uswest2) ，然后运行以下脚本，以便复制托管磁盘。
 
 > [!TIP]
-> 如果要创建 OS 磁盘，请将-HyperVGeneration " <yourGeneration> " 添加到 `New-AzDiskConfig` 。
+> 如果要创建 OS 磁盘，请将 -HyperVGeneration <yourGeneration> 添加到 `New-AzDiskConfig`。
 
 ```powershell
 

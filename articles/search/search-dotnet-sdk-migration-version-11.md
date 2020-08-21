@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/20/2020
-ms.openlocfilehash: 83208ec792f40661861dd558ac2c1a1521c1d7fb
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 6880706300597e925267dae1230a87d17cd5c028
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660963"
+ms.locfileid: "88688345"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>升级到 Azure 认知搜索 .NET SDK 版本11
 
@@ -28,6 +28,9 @@ ms.locfileid: "88660963"
 + 新的包名称： `Azure.Search.Documents` 而不是 `Microsoft.Azure.Search` 。
 + 三个客户端，而不是两个： `SearchClient` 、 `SearchIndexClient` 、 `SearchIndexerClient`
 + 跨一系列 Api 命名差异以及简化某些任务的小型结构差异
+
+> [!NOTE]
+> 查看 [**更改日志**](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) 以了解 .net SDK 版本11中的更改详细列表。
 
 ## <a name="package-and-library-consolidation"></a>包和库合并
 
@@ -114,19 +117,23 @@ Azure 认知搜索客户端库的每个版本都面向 REST API 的相应版本�
 
 版本11针对 [2020-06-30 搜索服务](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/search/data-plane/Azure.Search/preview/2020-06-30/searchservice.json)。 由于第11版也是从根本上构建的新的客户端库，因此，大多数开发工作的重点是使用版本10，并且某些 REST API 功能支持仍处于挂起状态。
 
-版本11完全支持以下对象和操作：
+版本11.0 完全支持以下对象和操作：
 
 + 索引的创建和管理
 + 同义词映射的创建和管理
 + 除地理空间筛选器外 (所有查询类型和语法) 
 + 用于索引 Azure 数据源的索引器对象和操作，包括数据源和技能集
 
+版本11.1 添加了以下内容：
+
++ 11.1) 中添加了[FieldBuilder](https://docs.microsoft.com/dotnet/api/azure.search.documents.indexes.fieldbuilder) (
++ [序列化程序属性](https://docs.microsoft.com/dotnet/api/azure.search.documents.searchclientoptions.serializer) (添加到 11.1) 以支持自定义序列化
+
 ### <a name="pending-features"></a>挂起的功能
 
-版本11中尚不提供以下版本10功能。 如果使用这些功能，请在迁移之前保留迁移。
+版本11中尚不提供以下版本10功能。 如果需要这些功能，请在迁移之前保留迁移。
 
 + 地理空间类型
-+ 尽管可以使用[此解决方法](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/tests/Samples/FieldBuilder/FieldBuilder.cs)) [FieldBuilder](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.fieldbuilder) (。
 + [知识存储](knowledge-store-concept-intro.md)
 
 <a name="UpgradeSteps"></a>
@@ -176,7 +183,7 @@ Azure 认知搜索客户端库的每个版本都面向 REST API 的相应版本�
 
 由于对库和 Api 进行了全面的更改，升级到版本11是一项非常重要的升级，并在意义上形成了重大更改。 若要全面了解差异，请参阅的 [更改日志](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/search/Azure.Search.Documents/CHANGELOG.md) `Azure.Search.Documents` 。
 
-就服务版本而言，从10个迁移到11会引入以下行为更改： 
+就服务版本更新而言，版本11中的代码更改与现有功能 (而不只是重构 Api) ，你会发现以下行为更改：
 
 + [BM25 排名算法](index-ranking-similarity.md)将以前的排名算法替换为更新的技术。 新服务将自动使用此算法。 对于现有服务，必须将参数设置为使用新算法。
 

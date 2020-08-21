@@ -1,5 +1,5 @@
 ---
-title: ML Studio （经典）：创建工作区-Azure
+title: ML Studio (经典) ：创建工作区-Azure
 description: 若要使用 Azure 机器学习工作室（经典版），你必须拥有一个机器学习工作室（经典）工作区。 此工作区包含创建、管理和发布试验所需的工具。
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 89c79f668da3ff924dbb7f27574260118003655f
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: c283ef2f6eb28dca7ca5bc5e391ef30465c65dc0
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87433240"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691269"
 ---
-# <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>创建并共享机器学习 Studio （经典）工作区
+# <a name="create-and-share-an-machine-learning-studio-classic-workspace"></a>创建并共享机器学习 Studio (经典) 工作区
 
-**适用于：** ![是 ](../../../includes/media/aml-applies-to-skus/yes.png) 机器学习 Studio （经典） ![ no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)  
+**适用于：**  ![yes](../../../includes/media/aml-applies-to-skus/yes.png)机器学习工作室（经典）   ![no](../../../includes/media/aml-applies-to-skus/no.png)[Azure 机器学习](../compare-azure-ml-to-studio-classic.md)
 
 若要使用 Azure 机器学习工作室（经典版），你必须拥有一个机器学习工作室（经典）工作区。 此工作区包含创建、管理和发布试验所需的工具。
 
@@ -70,7 +70,7 @@ ms.locfileid: "87433240"
 
 
 ## <a name="share-an-azure-machine-learning-studio-classic-workspace"></a>共享 Azure 机器学习工作室（经典）工作区
-创建机器学习工作室工作区（经典）后，可以邀请用户进入工作区，以共享对工作区及其所有试验、数据集、笔记本等的访问权限。可以将用户添加到以下两个角色之一：
+创建机器学习 Studio (经典) 工作区后，可以邀请用户进入工作区，以便共享对工作区及其所有试验、数据集等的访问权限。你可以将用户添加到以下两个角色之一：
 
 * **用户** - 工作区用户可以在工作区中创建、打开、修改和删除试验、数据集等。
 * **所有者** - 除了指定用户可以执行的操作之外，所有者还可以邀请和删除工作区中的用户。

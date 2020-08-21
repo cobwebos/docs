@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: alexeyo
-ms.openlocfilehash: 86182130daf5cbb61df7a751aaeff392dd608a67
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 554dd0967979bc2457c3a9c8371152e09535381f
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88662580"
+ms.locfileid: "88690130"
 ---
 # <a name="speech-services-quotas-and-limits"></a>语音服务配额和限制
 
@@ -132,7 +132,7 @@ ms.locfileid: "88662580"
   - 用于检查现有限制的 "配额或使用情况验证"
 - 单击 "*下一步：解决方案*"
 - 继续执行请求创建
-- 当在 *详细信息* 字段中输入 " *说明* " 字段时：
+- 当在 " *详细信息* " 选项卡的 " *说明* " 字段中输入时：
   - 请注意，请求是关于 **语音到文本** 的配额
   - **基本** 或 **自定义** 模型
   - [之前收集](#have-the-required-information-ready)的 Azure 资源信息 
@@ -184,7 +184,7 @@ ms.locfileid: "88662580"
   - 用于检查现有限制的 "配额或使用情况验证"
 - 单击 "*下一步：解决方案*"
 - 继续执行请求创建
-- 当在 *详细信息* 字段中输入 " *说明* " 字段时：
+- 当在 " *详细信息* " 选项卡的 " *说明* " 字段中输入时：
   - 请注意，请求是关于 **文本到语音的** 配额
   - [之前收集](#prepare-the-required-information)的 Azure 资源信息 
   - 完成输入所需信息，然后单击 "*查看 + 创建*" 选项卡中的 "*创建*" 按钮

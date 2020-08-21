@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0754c8e2be62c0a5568e97e7e5cf4376fb3c593
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: d1f77d6189e5b32ca771d17ae9902341bcaa1871
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88210910"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688124"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect 的先决条件
 本文介绍 Azure Active Directory (Azure AD) 连接的先决条件和硬件要求。
@@ -54,7 +54,7 @@ Azure AD Connect 服务器包含关键的标识数据。 确保对此服务器�
 
 若要详细了解如何保护 Active Directory 环境，请参阅 [保护 Active Directory 的最佳实践](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/best-practices-for-securing-active-directory)。
 
-#### <a name="installation-prerequisites"></a>安装的先决条件
+#### <a name="installation-prerequisites"></a>安装先决条件
 
 - Azure AD Connect 必须安装在已加入域的 Windows Server 2012 或更高版本上。 
 - 在2019之前，不能在 Small Business Server 或 Windows Server Essentials 上安装 Azure AD Connect，) 支持 (Windows Server Essentials 2019。 该服务器必须使用 Windows Server Standard 或更高版本。 
@@ -73,6 +73,7 @@ Azure AD Connect 服务器包含关键的标识数据。 确保对此服务器�
 - 将 Azure AD Connect 服务器的管理访问权限仅限于域管理员或其他严格控制的安全组。
 - [为具有特权访问权限的所有人员创建专用帐户](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)。 管理员不应该浏览 web、检查电子邮件，以及通过具有高特权帐户的日常工作效率任务。
 - 按照 [保护特权访问](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)中提供的指南进行操作。 
+- 拒绝对 AADConnect 服务器使用 NTLM 身份验证。 下面是执行此操作的一些方法： [在 AADConnect 服务器上限制 ntlm](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) 并 [在域上限制 ntlm](https://docs.microsoft.com/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-ntlm-authentication-in-this-domain)
 - 确保每台计算机都具有唯一的本地管理员密码。 有关详细信息，请参阅 [本地管理员密码解决方案 (LAPS) ](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) 可以在每个工作站上配置唯一的随机密码，并将服务器存储在受 ACL 保护的 Active Directory 中。 只有符合条件的授权用户才可以读取或请求重置这些本地管理员帐户密码。 你可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)获取用于工作站和服务器的 LAPS。 有关使用 LAPS 和特权访问工作站 (Paw) 操作环境的其他指南，请参阅 [基于清洁源原则的操作标准](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)。 
 - 为拥有组织信息系统的特许访问权限的所有人员实现专用的 [特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations) 。 
 - 遵循这些 [附加指导原则](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface) ，降低 Active Directory 环境的受攻击面。

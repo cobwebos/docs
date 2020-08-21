@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 580d3cea94e3c550954fc0fa1aa6f2c3a73e9386
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 5ff2fe74a0dd5064232fcef3178aec2967ef6812
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87554767"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88683855"
 ---
 # <a name="tutorial-for-configuring-onfido-with-azure-active-directory-b2c"></a>有关配置 Onfido 与 Azure Active Directory B2C 的教程
 
-在此示例教程中，我们提供了有关如何将 Azure AD B2C 与[Onfido](https://onfido.com/)集成的指导。 Onfido 是文档 ID 和面部生物识别验证应用。 它允许公司实时*了解你的客户*和标识要求。 Onfido 使用基于 AI 的复杂身份验证，该验证首先验证照片 ID，然后将其与面部生物识别进行匹配。 此解决方案将数字标识与真实人员联系在一起，并在降低欺诈的同时提供安全的载入体验。
+在此示例教程中，我们提供了有关如何将 Azure AD B2C 与 [Onfido](https://onfido.com/)集成的指导。 Onfido 是文档 ID 和面部生物识别验证应用。 它允许公司实时 *了解你的客户* 和标识要求。 Onfido 使用基于 AI 的复杂身份验证，该验证首先验证照片 ID，然后将其与面部生物识别进行匹配。 此解决方案将数字标识与真实人员联系在一起，并在降低欺诈的同时提供安全的载入体验。
 
 在此示例中，我们在注册或登录流中连接 Onfido 的服务，以进行身份验证。 根据 Onfido 的结果，确定用户可以访问的产品和服务的明智决策。
 
@@ -32,7 +32,7 @@ ms.locfileid: "87554767"
 
 - 链接到 Azure 订阅的[Azure AD B2C 租户](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant)。
 
-- Onfido[试用帐户](https://onfido.com/signup/)。
+- Onfido [试用帐户](https://onfido.com/signup/)。
 
 ## <a name="scenario-description"></a>方案描述
 
@@ -61,28 +61,28 @@ Onfido 集成包括以下组件：
 
 ## <a name="onboard-with-onfido"></a>内置 Onfido
 
-1. 若要创建 Onfido 帐户，请联系[Onfido](https://onfido.com/signup/)。
+1. 若要创建 Onfido 帐户，请联系 [Onfido](https://onfido.com/signup/)。
 
-2. 创建帐户后，创建[API 密钥](https://documentation.onfido.com/)。 实时密钥是可计费的，但是，你可以使用[沙盒密钥来测试](https://documentation.onfido.com/?javascript#sandbox-and-live-differences)解决方案。 沙盒密钥生成与实时密钥相同的结果结构，但是，结果始终是预先确定的。 不处理或保存文档。
+2. 创建帐户后，创建 [API 密钥](https://documentation.onfido.com/)。 实时密钥是可计费的，但是，你可以使用 [沙盒密钥来测试](https://documentation.onfido.com/?javascript#sandbox-and-live-differences) 解决方案。 沙盒密钥生成与实时密钥相同的结果结构，但是，结果始终是预先确定的。 不处理或保存文档。
 
 >[!NOTE]
 > 稍后将需要此密钥。
 
-有关 Onfido 的详细信息，请参阅[ONFIDO API 文档](https://documentation.onfido.com)和[Onfido 开发人员中心](https://developers.onfido.com)。  
+有关 Onfido 的详细信息，请参阅 [ONFIDO API 文档](https://documentation.onfido.com) 和 [Onfido 开发人员中心](https://developers.onfido.com)。  
 
 ## <a name="configure-azure-ad-b2c-with-onfido"></a>配置 Onfido Azure AD B2C
 
 ### <a name="part-1---deploy-the-api"></a>第1部分-部署 API
 
-- 将提供的[API 代码](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/API/Onfido.Api)部署到 Azure 服务。 可以按照这些[说明](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)从 Visual Studio 发布代码。
-- 设置 CORS，将允许的**源**添加为 https：//{your_tenant_name}. b2clogin .com
+- 将提供的 [API 代码](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/OnFido-Combined/API/Onfido.Api) 部署到 Azure 服务。 可以按照这些 [说明](https://docs.microsoft.com/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019)从 Visual Studio 发布代码。
+- 设置 CORS，将允许的 **源** 添加为 https：//{your_tenant_name}. b2clogin .com
 
 >[!NOTE]
 >需要部署的服务的 URL 来配置 Azure AD，并提供所需的设置。
 
 #### <a name="adding-sensitive-configuration-settings"></a>添加敏感配置设置
 
-可以在[Azure 中的应用服务](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)中配置应用程序设置。 应用服务允许安全配置设置，而无需将其签入存储库。 Rest API 需要以下设置：
+可以在 [Azure 中的应用服务](https://docs.microsoft.com/azure/app-service/configure-common#configure-app-settings)中配置应用程序设置。 应用服务允许安全配置设置，而无需将其签入存储库。 Rest API 需要以下设置：
 
 | 应用程序设置名称 | Source | 注释 |
 |:-------------------------|:-------|:-------|
@@ -100,7 +100,7 @@ Onfido 集成包括以下组件：
 
    a. 请在 "**设置**  > **允许的源**" 中输入 `https://{your_tenant_name}.b2clogin.com` 。 将你的租户-name 替换为你的 Azure AD B2C 租户的名称。 例如， https://fabrikam.b2clogin.com 。 输入租户名称时全部使用小写字母。
 
-   b. 对于**允许的方法**，请选择 `GET` 和 `PUT` 。
+   b. 对于 **允许的方法**，请选择 `GET` 和 `PUT` 。
 
    c. 选择“保存”。
 
@@ -110,7 +110,7 @@ Onfido 集成包括以下组件：
 
 2. 打开每个 html 文件。
 
-3. 查找并将 {ui blob-url} 替换为 UI **ocean_blue**、 **dist**和**资产**文件夹所在位置的 url
+3. 查找并将 {ui blob-url} 替换为 UI **ocean_blue**、 **dist**和 **资产** 文件夹所在位置的 url
 
 4. 查找并将 {中间 api url} 替换为中间 API 应用服务的 URL。
 
@@ -118,7 +118,7 @@ Onfido 集成包括以下组件：
 
 1. 将 ui 文件从 UI 文件夹存储到 blob 容器。
 
-2. 使用[Azure 存储资源管理器](https://docs.microsoft.com/azure/virtual-machines/windows/disks-use-storage-explorer-managed-disks)管理文件和访问权限。
+2. 使用 [Azure 存储资源管理器](https://docs.microsoft.com/azure/virtual-machines/windows/disks-use-storage-explorer-managed-disks) 管理文件和访问权限。
 
 ### <a name="part-3---configure-azure-ad-b2c"></a>第3部分-配置 Azure AD B2C
 
@@ -135,25 +135,25 @@ Onfido 集成包括以下组件：
 | {your_tenant_extensions_appid}                         | 租户的存储应用程序的应用 ID                                      | 01234567-89ab-cdef-0123-456789abcdef         |
 | {your_tenant_extensions_app_objectid}                  | 租户的存储应用程序的对象 ID                                   | 01234567-89ab-cdef-0123-456789abcdef         |
 | {your_app_insights_instrumentation_key} | App insights 实例的检测密钥 *| 01234567-89ab-cdef-0123-456789abcdef|
-|{your_ui_file_base_url}| UI **ocean_blue**、 **dist**和**资产**文件夹所在位置的 URL | https://yourstorage.blob.core.windows.net/UI/|
-| {your_app_service_URL}                                 | 已设置的应用服务的 URL                                             | <https://yourapp.azurewebsites.net>          |
+|{your_ui_file_base_url}| UI **ocean_blue**、 **dist**和 **资产** 文件夹所在位置的 URL | https://yourstorage.blob.core.windows.net/UI/|
+| {your_app_service_URL}                                 | 已设置的应用服务的 URL                                             | `https://yourapp.azurewebsites.net`          |
 
 * App insights 可以在不同的租户中。 此步骤是可选的。 删除相应的技术配置文件和 OrchestrationSteps （如果不需要）。
 
 ### <a name="part-4---configure-the-azure-ad-b2c-policy"></a>第4部分-配置 Azure AD B2C 策略
 
-请参阅本[文档](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack)，了解有关如何设置 Azure AD B2C 租户和配置策略的说明。
+请参阅本 [文档](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications#custom-policy-starter-pack) ，了解有关如何设置 Azure AD B2C 租户和配置策略的说明。
 
 >[!NOTE]
 > 作为最佳做法，我们建议客户在 "属性集合" 页中添加许可通知。 通知用户信息将发送到第三方服务进行身份验证。
 
 ## <a name="test-the-user-flow"></a>测试用户流
 
-1. 打开 Azure AD B2C 租户，并在 "策略" 下选择 "**标识体验框架**"。
+1. 打开 Azure AD B2C 租户，并在 "策略" 下选择 " **标识体验框架**"。
 
-2. 选择先前创建的**SignUpSignIn**。
+2. 选择先前创建的 **SignUpSignIn**。
 
-3. 选择 "**运行用户流**"，然后选择设置：
+3. 选择 " **运行用户流** "，然后选择设置：
 
    a. **应用程序**：选择注册应用 (示例为 JWT) 
 

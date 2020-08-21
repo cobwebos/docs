@@ -8,16 +8,16 @@ ms.date: 6/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cb1511736b993032df8ca52fac01243f1feafdf4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3bc9344459802f4bb4268093d905a051525d78dc
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092381"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684450"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-tpm-on-linux"></a>使用 Linux 上的 TPM 创建和预配 IoT Edge 设备
 
-本文介绍如何使用受信任的平台模块（TPM）在 Linux IoT Edge 设备上测试自动预配。 可以通过[设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备。 如果你不熟悉自动预配过程，请在继续操作之前查看[自动预配的概念](../iot-dps/concepts-auto-provisioning.md)。
+本文介绍如何使用受信任的平台模块 (TPM) ，在 Linux IoT Edge 设备上测试自动预配。 可以通过 [设备预配服务](../iot-dps/index.yml)自动预配 Azure IoT Edge 设备。 如果你不熟悉自动预配过程，请在继续操作之前查看[自动预配的概念](../iot-dps/concepts-auto-provisioning.md)。
 
 这些任务如下所示：
 
@@ -61,7 +61,7 @@ ms.locfileid: "87092381"
 
 ### <a name="create-virtual-machine"></a>创建虚拟机
 
-1. 下载虚拟机使用的磁盘映像文件，并将其保存在本地。 例如， [Ubuntu server 18.04](http://releases.ubuntu.com/18.04.4/)。 有关 IoT Edge 设备支持的操作系统的信息，请参阅[Azure IoT Edge 支持的系统](support.md)。
+1. 下载虚拟机使用的磁盘映像文件，并将其保存在本地。 例如， [Ubuntu server 18.04](http://releases.ubuntu.com/18.04/)。 有关 IoT Edge 设备支持的操作系统的信息，请参阅 [Azure IoT Edge 支持的系统](support.md)。
 
 2. 在 hyper-v 管理器中，在**Action**  >  **New**  >  "**操作**" 菜单中选择 "操作" "新建**虚拟机**"。
 
@@ -79,7 +79,7 @@ ms.locfileid: "87092381"
 
 创建 VM 后，打开其设置以启用允许你自动预配设备的虚拟受信任平台模块 (TPM)。
 
-1. 在 "Hyper-v 管理器" 中，右键单击 VM，然后选择 "**设置**"。
+1. 在 "Hyper-v 管理器" 中，右键单击 VM，然后选择 " **设置**"。
 
 2. 导航到“安全性”。
 
@@ -112,7 +112,7 @@ ms.locfileid: "87092381"
    sudo ./tpm_device_provision
    ```
 
-1. "输出" 窗口将显示设备的 "**注册 ID** " 和 "**认可密钥**"。 复制这些值，以便以后在为设备创建单个注册时使用。
+1. "输出" 窗口将显示设备的 " **注册 ID** " 和 " **认可密钥**"。 复制这些值，以便以后在为设备创建单个注册时使用。
 
 获得注册 ID 和认可密钥后，请继续[设置 IoT 中心设备预配服务](#set-up-the-iot-hub-device-provisioning-service)部分
 
@@ -147,7 +147,7 @@ ms.locfileid: "87092381"
 在 DPS 中创建注册时，可以声明“初始设备孪生状态”。 在设备孪生中可以设置标记，以便按解决方案中所需的任何指标（例如区域、环境、位置或设备类型）将设备分组。 这些标记用于创建[自动部署](how-to-deploy-at-scale.md)。
 
 > [!TIP]
-> 在 Azure CLI 中，可以创建一个[注册](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment)，并使用**启用了边缘**的标志来指定设备是 IoT Edge 设备。
+> 在 Azure CLI 中，可以创建一个 [注册](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/dps/enrollment) ，并使用 **启用了边缘** 的标志来指定设备是 IoT Edge 设备。
 
 1. 在 [Azure 门户](https://portal.azure.com)中，导航到 IoT 中心设备预配服务的实例。
 
@@ -166,9 +166,9 @@ ms.locfileid: "87092381"
 
    4. 选择“True”，以声明此虚拟机是 IoT Edge 设备。
 
-   5. 选择要将设备连接到的链接 IoT 中心，或选择 "**链接到新的 Iot 中心**"。 你可以选择多个中心，并根据所选的分配策略将设备分配给其中的一个中心。
+   5. 选择要将设备连接到的链接 IoT 中心，或选择 " **链接到新的 Iot 中心**"。 你可以选择多个中心，并根据所选的分配策略将设备分配给其中的一个中心。
 
-   6. 根据需要，将标记值添加到“初始设备孪生状态”。 可以使用标记将设备组指定为模块部署的目标。 有关详细信息，请参阅[大规模部署 IoT Edge 模块](how-to-deploy-at-scale.md)。
+   6. 根据需要，将标记值添加到“初始设备孪生状态”。 可以使用标记将设备组指定为模块部署的目标。 有关详细信息，请参阅 [大规模部署 IoT Edge 模块](how-to-deploy-at-scale.md)。
 
    7. 选择“保存” 。
 
@@ -180,7 +180,7 @@ IoT Edge 运行时部署在所有 IoT Edge 设备上。 该运行时的组件在
 
 在开始学习本文之前，请了解与设备类型匹配的 DPS“ID 范围”和设备“注册 ID”。  如果已安装示例 Ubuntu 服务器，请使用 **x64** 说明。 确保将 IoT Edge 运行时配置为自动预配而不是手动预配。
 
-在转到配置安全守护程序的步骤时，请确保选择 "[选项 2" "自动预配](how-to-install-iot-edge-linux.md#option-2-automatic-provisioning)"，并配置 TPM 证明。
+在转到配置安全守护程序的步骤时，请确保选择 " [选项 2" "自动预配](how-to-install-iot-edge-linux.md#option-2-automatic-provisioning) "，并配置 TPM 证明。
 
 [在 Linux 上安装 Azure IoT Edge 运行时](how-to-install-iot-edge-linux.md)
 

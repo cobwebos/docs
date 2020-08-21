@@ -3,17 +3,17 @@ title: 使用 Creator 创建室内定位
 description: 使用 Azure Maps Creator 创建室内定位。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/17/2020
+ms.date: 08/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 7ea1995b6d1232b3e4c6371313e5b3d45bdbb756
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bf2fbb48c34631bc74a3b712e135b618a1718d8e
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075409"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688074"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>使用 Creator 创建室内定位
 
@@ -40,7 +40,7 @@ ms.locfileid: "87075409"
 本教程使用 [Postman](https://www.postman.com/) 应用，但你也可以选择其他 API 开发环境。
 
 >[!IMPORTANT]
-> 此文档中的 API url 可能必须根据创建者资源的位置进行调整。 有关更多详细信息，请参阅[访问 Creator 服务](how-to-manage-creator.md#access-to-creator-services)。
+> 此文档中的 API url 可能必须根据创建者资源的位置进行调整。 有关更多详细信息，请参阅 [访问 Creator 服务](how-to-manage-creator.md#access-to-creator-services)。
 
 ## <a name="upload-a-drawing-package"></a>上传绘图包
 
@@ -64,13 +64,13 @@ ms.locfileid: "87075409"
 
 5. 单击蓝色的“发送”按钮，然后等待请求处理完成。 在请求处理完成后，立即转到响应的“头”选项卡。 复制“位置”键的值，即 `status URL`。
 
-6. 若要检查 API 调用的状态，请在上创建**GET** HTTP 请求 `status URL` 。 为了进行身份验证，需要将主订阅密钥追加到 URL 中。 **GET**请求应类似于以下 URL：
+6. 检查 API 调用的状态，在 `status URL` 上创建“GET”HTTP 请求。 为了进行身份验证，需要将主订阅密钥追加到 URL 中。 **GET**请求应类似于以下 URL：
 
     ```http
     https://atlas.microsoft.com/mapData/operations/<operationId>?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-7. 当**GET** HTTP 请求成功完成后，它将返回 `resourceLocation` 。 `resourceLocation`包含 `udid` 上传内容的唯一。 或者，你可以 `resourceLocation` 在下一步中使用 URL 从此资源检索元数据。
+7. “GET”HTTP 请求成功完成后，它将返回 `resourceLocation`。 `resourceLocation` 包含更新内容的唯一 `udid`。 （可选）可以使用 `resourceLocation` URL 在下一步中从此资源中检索元数据。
 
     ```json
     {
@@ -79,13 +79,13 @@ ms.locfileid: "87075409"
     }
     ```
 
-8. 若要检索内容元数据， **GET**请在 `resourceLocation` 步骤7中检索到的 URL 上创建 GET HTTP 请求。 请确保将主要订阅密钥追加到 URL 进行身份验证。 **GET**请求应类似于以下 URL：
+8. 要检索内容元数据，请在第 7 步中检索到的 `resourceLocation` URL 上创建“GET”HTTP 请求。 为了进行身份验证，请确保将主订阅密钥追加到 URL 中。 “GET”请求应如以下 URL 所示：
 
     ```http
    https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-9. 当**GET** HTTP 请求成功完成时，响应正文将包含 `udid` 步骤7中指定的 `resourceLocation` 、将来要访问/下载内容的位置以及有关内容（如创建/更新的日期、大小等）的其他元数据。 整体响应的示例如下：
+9. “GET”HTTP 请求成功完成后，响应正文将包含第 7 步的 `resourceLocation` 中指定的 `udid`、以后的内容访问/下载位置，以及有关创建/更新日期、大小等内容的其他元数据。 整体响应的示例如下：
 
     ```json
     {
@@ -109,16 +109,25 @@ ms.locfileid: "87075409"
     ```http
     https://atlas.microsoft.com/conversion/convert?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&udid={udid}&inputType=DWG
     ```
+
     >[!IMPORTANT]
-    > 此文档中的 API url 可能必须根据创建者资源的位置进行调整。 有关更多详细信息，请参阅[访问 Creator 服务](how-to-manage-creator.md#access-to-creator-services)。
+    > 此文档中的 API url 可能必须根据创建者资源的位置进行调整。 有关更多详细信息，请参阅 [访问 Creator 服务](how-to-manage-creator.md#access-to-creator-services)。
 
-3. 单击“发送”按钮，然后等待请求处理完成。 在请求处理完成后，立即转到响应的“头”选项卡，然后查找“位置”键。 复制“位置”键的值，即转换请求的 `status URL`。
+3. 单击“发送”按钮，然后等待请求处理完成。 在请求处理完成后，立即转到响应的“头”选项卡，然后查找“位置”键。 复制“位置”键的值，即转换请求的 `status URL`。 你将在下一步中使用它。
 
-4. 在生成器选项卡中，启动新的 GET HTTP 方法。将 Azure Maps 主订阅密钥追加到 `status URL` 中。 在上一步中复制的 `status URL` 处发出 GET 请求。 如果转换过程还没有完成，你可能会看到如下所示的 JSON 响应：
+    :::image type="content" source="./media/tutorial-creator-indoor-maps/copy-location-uri-dialog.png" border="true" alt-text="复制 location 键的值":::
+
+4. 在生成器选项卡中，启动新的 GET HTTP 方法。将 Azure Maps 主订阅密钥追加到 `status URL` 中。 在**GET** `status URL` 步骤3中复制的上发出 GET 请求。 类似于 `status URL` 以下 URL：
+
+    ```http
+    https://atlas.microsoft.com/conversion/operations/<operationId>?api-version=1.0
+    ```
+
+    如果转换过程还没有完成，你可能会看到如下所示的 JSON 响应：
 
     ```json
     {
-        "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:39:54.9518496+00:00",
         "status": "Running"
     }
@@ -128,7 +137,7 @@ ms.locfileid: "87075409"
 
     ```json
    {
-        "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:39:54.9518496+00:00",
         "status": "Succeeded",
         "resourceLocation": "https://atlas.microsoft.com/conversion/{conversionId}?api-version=1.0",
@@ -143,7 +152,7 @@ ms.locfileid: "87075409"
 
 ```json
 {
-    "operationId": "77dc9262-d3b8-4e32-b65d-74d785b53504",
+    "operationId": "<operationId>",
     "created": "2020-04-22T19:39:54.9518496+00:00",
     "status": "Failed",
     "resourceLocation": "https://atlas.microsoft.com/conversion/{conversionId}?api-version=1.0",
@@ -177,7 +186,7 @@ ms.locfileid: "87075409"
 
     ```json
     {
-        "operationId": "a93570cb-3e4f-4e45-a2b1-360df174180a",
+        "operationId": "<operationId>",
         "created": "2020-04-22T19:52:38.9352189+00:00",
         "status": "Succeeded",
         "resourceLocation": "https://azure.microsoft.com/dataset/{datasetiId}?api-version=1.0"
@@ -206,7 +215,7 @@ ms.locfileid: "87075409"
 
     ```json
     {
-        "operationId": "a93570cb-3e4f-4e45-a2b1-360df174180a",
+        "operationId": "<operationId>",
         "createdDateTime": "3/11/2020 8:45:13 PM +00:00",
         "status": "Succeeded",
         "resourceLocation": "https://atlas.microsoft.com/tileset/{tilesetId}?api-version=1.0"

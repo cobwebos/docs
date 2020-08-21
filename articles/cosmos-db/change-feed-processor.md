@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 8353b7290f0e0073faf93b4ea23bcc0ba50bb89e
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: faf46a90a04e35eb041deb31913980575b1e0d28
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88236465"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88688039"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB 更改源处理器
 
@@ -100,8 +100,8 @@ ms.locfileid: "88236465"
 更改源处理器可以托管在支持长时间运行的进程或任务的任何平台中：
 
 * 连续运行 [Azure WebJob](https://docs.microsoft.com/learn/modules/run-web-app-background-task-with-webjobs/)。
-* [Azure 虚拟机](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-virtual-machines)中的进程。
-* [Azure Kubernetes 服务](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-kubernetes-service)中的后台作业。
+* [Azure 虚拟机](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-virtual-machines)中的进程。
+* [Azure Kubernetes 服务](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs#azure-kubernetes-service)中的后台作业。
 * [ASP.NET 托管服务](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services)。
 
 尽管更改源处理器可以在较短的生存期环境中运行，但由于租赁容器维持了状态，这些环境的启动和停止周期将增加接收通知的延迟， (因为每次启动环境时启动处理器的开销都) 。

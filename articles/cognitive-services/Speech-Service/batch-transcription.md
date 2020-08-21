@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/18/2020
+ms.date: 08/20/2020
 ms.author: wolfma
-ms.openlocfilehash: 519a9cdac678e8852bef9bd66e3fbb98278cbb3b
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: b30a314977755b94bdcfdf7526d1b9ae61fcf100
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660868"
+ms.locfileid: "88689739"
 ---
 # <a name="how-to-use-batch-transcription"></a>如何使用批量听录
 
@@ -174,7 +174,7 @@ ms.locfileid: "88660868"
 
 ### <a name="storage"></a>存储
 
-批处理脚本可以从 internet URI 读取音频，并可以使用 [Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)读取音频或写入转录。
+批处理脚本可以从公共可见 internet URI 读取音频，还可以使用 SAS URI 和 [Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)读取音频或写入转录。
 
 ## <a name="batch-transcription-result"></a>批处理脚本结果
 
@@ -243,7 +243,7 @@ ms.locfileid: "88660868"
 }
 ```
 
-结果包含以下形式：
+结果包含以下字段：
 
 :::row:::
    :::column span="1":::
@@ -309,7 +309,8 @@ ms.locfileid: "88660868"
 
 ## <a name="best-practices"></a>最佳实践
 
-批处理脚本服务可处理大量提交的转录。 可以通过[获取听录](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions)中的 `GET` 来查询听录的状态。 检索结果后，请定期从服务中调用[删除听录](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)。 或者，请将 `timeToLive` 属性设置为一个合理值，以确保最终删除结果。
+批处理脚本服务可处理大量提交的转录。 可以通过 [Get 转录](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions)查询转录的状态。
+检索结果后，请定期从服务中调用[删除听录](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription)。 或者设置 `timeToLive` 属性以确保最终删除结果。
 
 ## <a name="sample-code"></a>代码示例
 

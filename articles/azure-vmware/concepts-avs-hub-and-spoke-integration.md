@@ -2,13 +2,13 @@
 title: 概念-在中心辐射型体系结构中集成 Azure VMware 解决方案部署
 description: 了解有关在 Azure 上的现有或新的中心和辐射型体系结构中集成 Azure VMware 解决方案部署的建议。
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: a1ba75369a1d6f19ca7ae1f36107170f219f72d0
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.date: 08/20/2020
+ms.openlocfilehash: deb2756f7e83250ff58836098dc4954ec482fbda
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649578"
+ms.locfileid: "88684472"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>在中心和辐射型体系结构中集成 Azure VMware 解决方案
 
@@ -28,10 +28,7 @@ ms.locfileid: "88649578"
 
 此图显示了通过 ExpressRoute 连接到本地和 Azure VMware 解决方案的 Azure 中的中心和分支部署的示例。
 
-:::image type="content" source="./media/hub-spoke/avs-hub-and-spoke-deployment.png" alt-text="Azure VMware 解决方案中心和分支集成部署":::
-
-
-
+:::image type="content" source="./media/hub-spoke/avs-hub-and-spoke-deployment.png" alt-text="Azure VMware 解决方案中心和分支集成部署" border="false":::
 
 该体系结构包括以下主要组件：
 
@@ -64,12 +61,12 @@ ExpressRoute 连接使流量能够在本地、Azure VMware 解决方案和 Azure
 
 * **本地到 Azure VMware 解决方案流量流**
 
-  :::image type="content" source="media/hub-spoke/on-prem-to-avs-traffic-flow.png" alt-text="本地到 Azure VMware 解决方案流量流":::
+  :::image type="content" source="media/hub-spoke/on-prem-to-avs-traffic-flow.png" alt-text="本地到 Azure VMware 解决方案流量流" border="false":::
 
 
 * **Azure VMware 解决方案到中心 VNET 的通信流**
 
-  :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="Azure VMware 解决方案到中心虚拟网络流量流":::
+  :::image type="content" source="media/hub-spoke/avs-to-hub-vnet-traffic-flow.png" alt-text="Azure VMware 解决方案到中心虚拟网络流量流" border="false":::
 
 
 有关 azure VMware 解决方案网络和互连的详细信息，请 [参阅 Azure Vmware 解决方案产品文档](./concepts-networking.md)。
@@ -97,7 +94,7 @@ ExpressRoute 连接使流量能够在本地、Azure VMware 解决方案和 Azure
 
 已使用在作为后端池的 Azure VMware 解决方案虚拟机上运行的 web 应用来测试 Azure 应用程序网关 V1 和 V2。 应用程序网关目前是唯一受支持的方法，可将 Azure VMware 解决方案 Vm 上运行的 web 应用公开到 internet。 它也可以安全地向内部用户公开应用程序。
 
-:::image type="content" source="media/hub-spoke/avs-second-level-traffic-segmentation.png" alt-text="使用网络安全组的第二级流量分段":::
+:::image type="content" source="media/hub-spoke/avs-second-level-traffic-segmentation.png" alt-text="使用网络安全组的第二级流量分段" border="false":::
 
 
 ### <a name="jumpbox-and-azure-bastion"></a>Jumpbox 和 Azure 堡垒
@@ -110,7 +107,7 @@ ExpressRoute 连接使流量能够在本地、Azure VMware 解决方案和 Azure
 > 不要向 Jumpbox VM 提供公共 IP 地址，也不要向公共 internet 公开 3389/TCP 端口。 
 
 
-:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Azure 堡垒中心虚拟网络":::
+:::image type="content" source="media/hub-spoke/azure-bastion-hub-vnet.png" alt-text="Azure 堡垒中心虚拟网络" border="false":::
 
 
 ## <a name="azure-dns-resolution-considerations"></a>Azure DNS 解析注意事项
