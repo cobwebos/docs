@@ -3,12 +3,12 @@ title: 教程 - 备份 Azure VM 中的 SAP HANA 数据库
 description: 在本教程中，了解如何将 Azure VM 上运行的 SAP HANA 数据库备份到 Azure 备份恢复服务保管库。
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: e892bf2b943d35728b15a9354308e149af2e478e
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 3903630a657c2cf8a0b39f3e4c8fc22456097941
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810201"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611817"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>教程：备份 Azure VM 中的 SAP HANA 数据库
 

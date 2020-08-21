@@ -283,7 +283,7 @@
             - name: 数据资源管理器
               href: /azure/data-explorer/pricing-reserved-capacity
             - name: 磁盘存储
-              href: ../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
+              href: ../virtual-machines/disks-reserved-capacity.md?toc=/azure/cost-management-billing/toc.json
             - name: 专用主机
               href: ../virtual-machines/prepay-dedicated-hosts-reserved-instances.md?toc=/azure/cost-management-billing/toc.json
             - name: 软件计划

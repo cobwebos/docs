@@ -125,20 +125,26 @@
           href: partition-data.md
         - name: 合成分区键
           href: synthetic-partition-keys.md
-    - name: 预配的吞吐量
+    - name: 容量
       items:
         - name: 请求单位
           displayName: 'RUs, RU'
           href: request-units.md
-        - name: 预配的吞吐量简介
-          displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
-          href: set-throughput.md
-        - name: 预配自动缩放吞吐量
-          href: provision-throughput-autoscale.md
-        - name: 在自动缩放吞吐量和标准（手动）吞吐量之间选择
-          href: how-to-choose-offer.md
-        - name: 自动缩放常见问题解答
-          href: autoscale-faq.md
+        - name: 预配的吞吐量
+          items:
+            - name: 预配的吞吐量简介
+              displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
+              href: set-throughput.md
+            - name: 预配自动缩放吞吐量
+              href: provision-throughput-autoscale.md
+            - name: 在自动缩放吞吐量和标准（手动）吞吐量之间选择
+              href: how-to-choose-offer.md
+            - name: 自动缩放常见问题解答
+              href: autoscale-faq.md
+        - name: 无服务器
+          href: serverless.md
+        - name: 在预配吞吐量和无服务器之间进行选择
+          href: throughput-serverless.md
     - name: SQL 查询 (SQL query)
       items:
         - name: 入门
@@ -238,6 +244,9 @@
                     - name: DateTimeToTicks
                       displayName: 'DateTimeToTicks, date time to ticks, date and time functions, datetime, ticks'
                       href: sql-query-datetimetoticks.md
+                    - name: DateTimeToTimestamp
+                      displayName: 'DateTimeToTimestamp, date time to timestamp, date and time functions, datetime, timestamp'
+                      href: sql-query-datetimetotimestamp.md
                     - name: GetCurrentDateTime
                       displayName: 'GetCurrentDateTime, get current date time, date and time functions, datetime'
                       href: sql-query-getcurrentdatetime.md
@@ -247,6 +256,12 @@
                     - name: GetCurrentTimestamp
                       displayName: 'GetCurrentTimestamp, get current timestamp, timestamp, date and time functions, datetime'
                       href: sql-query-getcurrenttimestamp.md
+                    - name: TicksToDateTime
+                      displayName: 'TicksToDateTime, ticks to date time, date and time functions, datetime, ticks'
+                      href: sql-query-tickstodatetime.md
+                    - name: TimestampToDateTime
+                      displayName: 'TimestampToDateTime, timestamp to date time, date and time functions, datetime, timestamp'
+                      href: sql-query-timestamptodatetime.md
                 - name: 数学函数
                   items:
                     - name: 数学函数
@@ -953,26 +968,28 @@
           href: how-to-manage-conflicts.md
         - name: 转换会话令牌格式
           href: how-to-convert-session-token.md
-    - name: 预配的吞吐量
+    - name: 容量
       items:
-        - name: 在容器上预配标准（手动）吞吐量
-          displayName: 'request units, RUs, RU, collection level'
-          href: how-to-provision-container-throughput.md
-        - name: 在数据库上预配标准（手动）吞吐量
-          displayName: 'request units, RUs, RU, shared throughput, database level'
-          href: how-to-provision-database-throughput.md
-        - name: 在数据库或容器上预配自动缩放吞吐量
-          displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
-          href: how-to-provision-autoscale-throughput.md
-        - name: 使用 Cosmos 容量规划器估算 RU/秒
-          displayName: 'request units, RUs, RU, capacity'
-          href: estimate-ru-with-capacity-planner.md
         - name: 查找请求单位费用
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge.md
-        - name: 使用 Azure Functions 计时器缩放
-          displayName: 'request units, RUs, RU, timer'
-          href: scale-on-schedule.md
+        - name: 预配的吞吐量
+          items:
+            - name: 在容器上预配标准（手动）吞吐量
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-container-throughput.md
+            - name: 在数据库上预配标准（手动）吞吐量
+              displayName: 'request units, RUs, RU, shared throughput, database level'
+              href: how-to-provision-database-throughput.md
+            - name: 在数据库或容器上预配自动缩放吞吐量
+              displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
+              href: how-to-provision-autoscale-throughput.md
+            - name: 使用 Cosmos 容量规划器估算 RU/秒
+              displayName: 'request units, RUs, RU, capacity'
+              href: estimate-ru-with-capacity-planner.md
+            - name: 使用 Azure Functions 计时器缩放
+              displayName: 'request units, RUs, RU, timer'
+              href: scale-on-schedule.md
     - name: 使用容器和项
       items:
         - name: 使用 Cosmos DB 数据

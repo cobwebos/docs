@@ -10,12 +10,12 @@ metadata:
   author: genlin
   ms.author: genli
   ms.date: 09/09/2019
-  ms.openlocfilehash: b78ce7baf60431e0f9ee1b1218d2d57019b35359
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: 78310d35361a3c34992e9fb3f08d8432b4ec4fb8
+  ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87068978"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88650518"
 landingContent:
 - title: 排查部署失败问题
   linkLists:
@@ -92,9 +92,9 @@ landingContent:
     - text: 排查在调整 VM 大小时出现的分配失败问题
       url: ./allocation-failure.md
     - text: 了解 VM 上的临时驱动器
-      url: ../linux/managed-disks-overview.md#temporary-disk
+      url: ../managed-disks-overview.md#temporary-disk
     - text: Azure 托管磁盘概述
-      url: ../linux/managed-disks-overview.md
+      url: ../managed-disks-overview.md
     - text: 有关 Azure VM 磁盘以及托管和非托管高级磁盘的常见问题解答
       url: ../linux/convert-unmanaged-to-managed-disks.md
 - title: 磁盘加密问题

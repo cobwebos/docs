@@ -11,20 +11,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: 60e8a0dc93e19dfec0982080d0353466b08373de
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 3509b99d1b222fc4f0bfa48effe42496c209d9ae
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586828"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88654474"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure 负载均衡器 SKU
 
-Azure 负载均衡器有两种风格或 SKU。
+Azure 负载均衡器有两种 SKU。
 
 ## <a name="sku-comparison"></a><a name="skus"></a> SKU 比较
 
-负载均衡器支持基本和标准 SKU。 这些 SKU 在场景规模、功能和定价方面有差异。 使用基本负载均衡器可以实现的任何方案都可以使用标准负载均衡器来创建。
+负载均衡器支持标准和基本 SKU。 这些 SKU 在场景规模、功能和定价方面有差异。 使用基本负载均衡器可以实现的任何方案都可以使用标准负载均衡器来创建。
 
 请参阅下表来比较和了解差别。 有关详细信息，请参阅 [Azure 标准负载均衡器概述](load-balancer-standard-overview.md)。
 
@@ -37,11 +37,11 @@ Azure 负载均衡器有两种风格或 SKU。
 | [后端池大小](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer) | 最多支持 1000 个实例。 | 最多支持 300 个实例。 |
 | 后端池终结点 | 单个虚拟网络中的任何虚拟机或虚拟机规模集。 | 单个可用性集或虚拟机规模集中的虚拟机。 |
 | [运行状况探测](./load-balancer-custom-probe-overview.md#types) | TCP、HTTP、HTTPS | TCP、HTTP |
-| [运行状况探测停止行为](./load-balancer-custom-probe-overview.md#probedown) | TCP 连接在实例探测停止时以及在所有探测停止时保持活动状态。 | TCP 连接在实例探测停止时保持活动状态。 所有 TCP 连接在所有探测停止时都会终止。 |
+| [运行状况探测停止行为](./load-balancer-custom-probe-overview.md#probedown) | TCP 连接在实例探测停止时以及在所有探测停止时保持活动状态。 | TCP 连接在实例探测停止时保持活动状态。 所有探测都关闭时，所有 TCP 连接都会结束。 |
 | **可用性区域** | 用于入站和出站流量的区域冗余和区域前端。 | 不可用 |
 | **诊断** | [Azure Monitor 多维指标](./load-balancer-standard-diagnostics.md) | [Azure Monitor 日志](./load-balancer-monitor-log.md) |
 | HA 端口 | [可用于内部负载均衡器](./load-balancer-ha-ports-overview.md) | 不可用 |
-| 默认保护 | 除非网络安全组允许，否则对入站流关闭。 请注意，允许从 VNet 到内部负载均衡器的内部流量。 | 默认处于打开状态。 可选的网络安全组。 |
+| 默认保护 | 除非网络安全组允许，否则对入站流关闭。 允许从虚拟网络到内部负载均衡器的内部流量。 | 默认处于打开状态。 可选的网络安全组。 |
 | **出站规则** | [声明性出站 NAT 配置](./load-balancer-outbound-rules-overview.md) | 不可用 |
 | **在空闲时重置 TCP** | [可用于任何规则](./load-balancer-tcp-reset.md) | 不可用 |
 | [多个前端](./load-balancer-multivip-overview.md) | 入站和[出站](./load-balancer-outbound-connections.md) | 仅限入站 |

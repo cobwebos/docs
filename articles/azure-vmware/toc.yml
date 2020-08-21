@@ -58,8 +58,10 @@
               href: set-up-mabs-for-avs.md
             - name: 使用备份服务器来备份 AVS VM
               href: backup-avs-vms-with-mabs.md
-        - name: AVS 上的应用程序网关
+        - name: AVS 的应用程序网关
           href: protect-avs-web-apps-with-app-gateway.md
+        - name: AVS 的流量管理器
+          href: deploy-traffic-manager-to-balance-avs-workloads.md
     - name: VMware 解决方案
       items:
         - name: 设置 vRealize Operations for AVS

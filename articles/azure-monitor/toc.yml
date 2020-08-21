@@ -462,7 +462,7 @@
           href: platform/autoscale-get-started.md
         - name: 配置设置
           href: platform/autoscale-understanding-settings.md
-        - name: 最佳实践
+        - name: 最佳做法
           href: platform/autoscale-best-practices.md
         - name: 常见指标
           href: platform/autoscale-common-metrics.md
@@ -476,22 +476,18 @@
           href: platform/autoscale-virtual-machine-scale-sets.md
         - name: 使用 Webhook 和电子邮件通知
           href: platform/autoscale-webhook-email.md
-        - name: 故障排除
+        - name: 疑难解答
           href: platform/autoscale-troubleshoot.md
         - name: 资源日志架构
           href: platform/autoscale-resource-log-schema.md
     - name: 警报
       items:
-        - name: 应用程序警报规则
-          items:
-            - name: 可用性
-              href: app/monitor-web-app-availability.md
-            - name: 指标警报
-              href: ./platform/alerts-log.md
         - name: 指标警报规则
           items:
             - name: 管理指标警报
               href: platform/alerts-metric.md
+            - name: 可用性
+              href: app/monitor-web-app-availability.md
             - name: 使用动态阈值
               href: platform/alerts-dynamic-thresholds.md
             - name: 针对多个系列的单个警报
@@ -716,7 +712,7 @@
                       href: app/status-monitor-v2-get-started.md
                     - name: 详细说明
                       href: app/status-monitor-v2-detailed-instructions.md
-                    - name: 故障排除
+                    - name: 疑难解答
                       href: app/status-monitor-v2-troubleshoot.md
                     - name: API 参考
                       href: app/status-monitor-v2-api-reference.md
@@ -754,7 +750,7 @@
               href: app/availability-alerts.md
             - name: 性能测试
               href: app/performance-testing.md
-            - name: 故障排除
+            - name: 疑难解答
               displayname: 'availability, troubleshoot, troubleshoot availability'
               href: app/troubleshoot-availability.md
         - name: 分布式跟踪
@@ -1142,7 +1138,7 @@
           items:
             - name: 访问控制
               href: platform/workbooks-access-control.md
-            - name: parameters
+            - name: 参数
               items:
                 - name: 参数摘要
                   href: platform/workbooks-parameters.md
