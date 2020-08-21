@@ -40,7 +40,7 @@ ms.locfileid: "88661089"
 
 指定函数应用的名称，并按 "创建"。
 
-:::image type="content" source="media/how-to-create-azure-function/visual-studio-project-config.png" alt-text="Visual Studio： "配置项目" 对话框":::
+:::image type="content" source="media/how-to-create-azure-function/visual-studio-project-config.png" alt-text="Visual Studio： 配置项目 对话框":::
 
 选择 " *事件网格" 触发器* 并按 "创建"。
 
