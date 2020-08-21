@@ -3,16 +3,12 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/20/2018
-ms.openlocfilehash: 6d53d3d6e115742b7b91d9c7e5888ba2cc0478f5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 08/17/2020
+ms.openlocfilehash: 6c0f4aec5ee3861dd9016014e828c1fbae8bb3e2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68697206"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88602431"
 ---
-文本分析资源的密钥和终结点。 Azure 认知服务由你订阅的 Azure 资源表示。 在本地计算机上使用 [Azure 门户](../articles/cognitive-services/cognitive-services-apis-create-account.md)或 [Azure CLI](../articles/cognitive-services/cognitive-services-apis-create-account-cli.md) 创建用于文本分析的资源。 你还可以：
-
-* 免费获取在七天内有效的[试用密钥](https://azure.microsoft.com/try/cognitive-services/#lang)。 注册之后，它将在 [Azure 网站](https://azure.microsoft.com/try/cognitive-services/my-apis/)上提供。
-
-* 在 [Azure 门户](https://portal.azure.com/)上查看资源
+文本分析资源的密钥和终结点。 Azure 认知服务由你订阅的 Azure 资源表示。 在本地计算机上使用 [Azure 门户](../articles/cognitive-services/cognitive-services-apis-create-account.md)或 [Azure CLI](../articles/cognitive-services/cognitive-services-apis-create-account-cli.md) 创建用于文本分析的资源。 还可以在 [Azure 门户](https://portal.azure.com/)上查看资源

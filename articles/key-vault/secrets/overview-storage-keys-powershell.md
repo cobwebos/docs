@@ -1,19 +1,19 @@
 ---
 title: Azure Key Vault 托管存储帐户 - PowerShell 版本
 description: 托管存储帐户功能在 Azure Key Vault 与 Azure 存储帐户之间提供无缝集成。
-ms.topic: conceptual
+ms.topic: tutorial
 ms.service: key-vault
 ms.subservice: secrets
 author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 87dc1ccb887638226607a1e398c7532de8d2c94f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
-ms.translationtype: MT
+ms.openlocfilehash: 8e8479179aa74f2fb2ead41dec28d247de9657c3
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534526"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585094"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>使用 Key Vault 和 Azure PowerShell 管理存储帐户密钥
 
@@ -99,7 +99,7 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -St
 
 ### <a name="give-key-vault-access-to-your-storage-account"></a>向 Key Vault 授予对你的存储帐户的访问权限
 
-只有在授权 Key Vault 访问你的存储帐户之后，它才可以访问和管理存储帐户密钥。 Key Vault 应用程序标识需要有权列出和重新生成存储帐户的密钥。 这些权限通过 Azure 内置角色[存储帐户密钥操作员服务角色](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)启用。 
+只有在授权 Key Vault 访问你的存储帐户之后，它才可以访问和管理存储帐户密钥。 Key Vault 应用程序标识需要有权列出和重新生成存储帐户的密钥。 可通过 Azure 内置角色[存储帐户密钥操作员服务角色](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)启用这些权限。 
 
 使用 Azure PowerShell [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment?view=azps-2.6.0) cmdlet 将此角色分配到 Key Vault 服务主体，以将范围限定为你的存储帐户。
 
@@ -164,7 +164,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>启用密钥重新生成
 
-如果希望 Key Vault 定期重新生成存储帐户密钥，可以使用 Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) cmdlet 设置重新生成周期。 此示例将重新生成周期设置为 3 天。 当需要进行旋转时，Key Vault 会重新生成未激活的密钥，然后将新创建的密钥设置为活动密钥。 一次只使用一个密钥来颁发 SAS 令牌。 这是活动密钥。
+如果希望 Key Vault 定期重新生成存储帐户密钥，可以使用 Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) cmdlet 设置重新生成周期。 此示例将重新生成周期设置为 3 天。 当需要轮换时，Key Vault 将重新生成非活动状态的密钥，然后将新创建的密钥设置为活动密钥。 在任何时间都只有一个密钥用于颁发 SAS 令牌。 这就是活动密钥。
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)

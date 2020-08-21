@@ -8,7 +8,7 @@
     - name: 商业市场概述和权益
       href: ./marketplace-publishers-guide.md
       items:
-        - name: 一个市场，两个店面
+        - name: 一个市场，两个在线商店
           href: ./comparing-appsource-azure-marketplace.md
         - name: 发布选项和注意事项
           href: ./determine-your-listing-type.md

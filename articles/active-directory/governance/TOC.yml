@@ -86,6 +86,8 @@
               href: entitlement-management-request-access.md
     - name: 访问评审
       items:
+        - name: 规划访问评审部署
+          href: deploy-access-reviews.md
         - name: 访问包
           items:
             - name: 创建访问评审

@@ -20,10 +20,8 @@
       href: index-speech-to-text.yml
     - name: 概述
       items:
-        - name: 什么是实时语音转文本？
+        - name: 什么是语音转文本？
           href: speech-to-text.md
-        - name: 什么是批量语音转文本？
-          href: batch-transcription.md
         - name: 语音识别基础知识
           href: speech-to-text-basics.md
     - name: 快速入门
@@ -53,6 +51,8 @@
           href: how-to-select-audio-input-devices.md
         - name: 使用自动源语言检测
           href: how-to-automatic-language-detection.md
+        - name: 使用批量听录 API
+          href: batch-transcription.md
     - name: 教程
       items:
         - name: 使用租户模型提高准确性
@@ -638,10 +638,12 @@
     - name: 主权云
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
       href: sovereign-clouds.md
-    - name: 定价和限制
+    - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: 定价计算器
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
+    - name: 配额和限制
+      href: speech-services-quotas-and-limits.md
     - name: 合规性
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 加密

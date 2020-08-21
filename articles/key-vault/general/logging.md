@@ -1,21 +1,21 @@
 ---
 title: Azure Key Vault 日志记录 | Microsoft Docs
-description: 借助本教程开始使用 Azure 密钥保管库日志记录。
+description: 了解如何通过启用 Azure Key Vault 的日志记录来监视对密钥保管库的访问权限，以便在提供的 Azure 存储帐户中保存信息。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9c5b07d402219907337a590e1131691fb1e24cc2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e9507525dc2c52f584bd7883a12da401b5999f50
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090580"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585910"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault 日志记录
 

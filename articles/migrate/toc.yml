@@ -168,6 +168,8 @@
       href: troubleshoot-appliance-discovery.md
     - name: 排查评估/依赖项可视化问题
       href: troubleshoot-assessment.md
+    - name: 排查无代理 VMware 迁移中的复制问题
+      href: troubleshoot-changed-block-tracking-replication.md
 - name: 资源
   items:
     - name: 云采用框架中的迁移
