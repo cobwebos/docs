@@ -42,7 +42,7 @@ ms.locfileid: "88642838"
 
 1. 选择 " **提供程序** " 选项卡以添加要配置的提供程序。 可以逐个添加多个提供程序，也可以在部署监视资源后添加。 
 
-   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="显示 "提供程序" 选项卡，为 SAP 解决方案添加其他提供程序到 Azure Monitor。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
+   :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-3.png" alt-text="显示 提供程序 选项卡，为 SAP 解决方案添加其他提供程序到 Azure Monitor。" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-3.png":::
 
 2. 选择 " **添加提供程序** "，并从下拉菜单中选择 " **SAP HANA** "。 
 
