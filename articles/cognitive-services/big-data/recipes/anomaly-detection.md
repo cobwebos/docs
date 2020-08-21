@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.custom: devx-track-python
-ms.openlocfilehash: 823d61d94913122fc279e81698933b7e648dd114
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 4f6fa73130e3e78b573a866dbb6524acbc88c50c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88244340"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691456"
 ---
 # <a name="recipe-predictive-maintenance-with-the-cognitive-services-for-big-data"></a>食谱：针对大数据的认知维护和认知服务
 
@@ -37,7 +37,7 @@ ms.locfileid: "88244340"
 
 ### <a name="create-an-anomaly-detector-resource"></a>创建异常检测器资源
 
-Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) 或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)为转换器创建资源。 你还可以：
+Azure 认知服务由你订阅的 Azure 资源表示。 使用 [Azure 门户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) 或 [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli)为转换器创建资源。 也可执行以下操作：
 
 - 查看  [Azure 门户](https://portal.azure.com/)中的现有资源。
 
@@ -151,4 +151,4 @@ plt.show()
 
 ## <a name="next-steps"></a>后续步骤
 
-了解如何通过 Azure 认知服务、Azure Synapse Analytics 和 Azure CosmosDB 进行大规模预测性维护。 有关详细信息，请参阅 [GitHub](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples/tree/master/IoT)上的完整示例。
+了解如何通过 Azure 认知服务、Azure Synapse Analytics 和 Azure CosmosDB 进行大规模预测性维护。 有关详细信息，请参阅 [GitHub](https://github.com/Azure-Samples/cosmosdb-synapse-link-samples)上的完整示例。

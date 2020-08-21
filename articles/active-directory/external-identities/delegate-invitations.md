@@ -5,22 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 05/11/2020
+ms.date: 08/20/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6a2c1a9b908503ee5afc2687ebef473ffed626a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: ae8bb66141e4cc4e67f1502b208cf519d37c0374
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87908311"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705975"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>启用 B2B 外部协作并管理谁可以邀请来宾
 
-本文介绍如何启用 Azure Active Directory (Azure AD) B2B 协作并确定谁可以邀请来宾。 默认情况下，目录中的所有用户和来宾都可以邀请来宾，即使未为他们分配管理员角色。 使用外部协作设置可为组织中不同类型的用户启用或禁用来宾邀请功能。 还可以将邀请委托给个人用户，只需向他们分配有权邀请来宾的角色即可。
+本文介绍如何启用 Azure Active Directory (Azure AD) B2B 协作、指定谁可以邀请客人，并确定来宾用户在 Azure AD 中的权限。 
+
+默认情况下，目录中的所有用户和来宾都可以邀请来宾，即使未为他们分配管理员角色。 使用外部协作设置可为组织中不同类型的用户启用或禁用来宾邀请功能。 还可以将邀请委托给个人用户，只需向他们分配有权邀请来宾的角色即可。
+
+Azure AD 允许你限制外部来宾用户可以在你的 Azure AD 目录中看到的内容。 默认情况下，来宾用户设置为限制用户、组或其他目录资源的受限权限级别，但允许他们查看非隐藏组的成员身份。 使用新的预览设置，可以进一步限制来宾访问，使来宾只能查看自己的个人资料信息。 
 
 ## <a name="configure-b2b-external-collaboration-settings"></a>配置 B2B 外部协作设置
 
@@ -38,19 +42,38 @@ ms.locfileid: "87908311"
 1. 以租户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“Azure Active Directory” 。
 3. 选择“外部标识” > “外部协作设置”。
-6. 在“外部协作设置”页上，选择要启用的策略。
 
-   ![外部协作设置](./media/delegate-invitations/control-who-to-invite.png)
+4. 在 " **来宾用户访问限制 (预览") **下，选择希望来宾用户具有的访问级别：
 
-  - **来宾用户权限处于限制状态**：此策略确定目录中来宾的权限。 选择“是”会阻止来宾执行某些目录任务，例如枚举用户、组或其他目录资源。 选择“否”会向来宾授予与目录中普通用户相同的目录数据访问权限。
+   > [!IMPORTANT]
+   > 很短时间，来宾用户权限的这些新门户控件将仅使用 URL 来查看 [https://aka.ms/AADRestrictedGuestAccess](https://aka.ms/AADRestrictedGuestAccess) 。 有关详细信息，请参阅 [限制来宾访问权限 (预览) ](https://aka.ms/exid-users-restrict-guest-permissions)。
+
+   - **来宾用户具有与成员相同的访问权限 () **：此选项为来宾提供与成员用户 Azure AD 资源和目录数据相同的访问权限。
+
+   - **来宾用户对目录对象的属性和成员身份具有有限的访问权限**： (默认值) 此设置阻止某些目录任务的来宾，如枚举用户、组或其他目录资源。 来宾可以查看所有非隐藏组的成员身份。
+
+   - **Guest 用户访问仅限于其自己的目录对象的属性和成员身份 (最严格的) **：使用此设置，来宾只能访问他们自己的配置文件。 不允许来宾查看其他用户的配置文件、组或组成员身份。
+  
+    ![来宾用户访问限制设置](./media/delegate-invitations/guest-user-access.png)
+
+5. 在 " **来宾邀请设置**" 下，选择适当的设置：
+
    - **管理员和具有“来宾邀请者”角色的用户可以邀请**：若要允许充当“来宾邀请者”角色的管理员和用户邀请来宾，请将此策略设置为“是”。
+
    - **成员可以邀请**：若要允许目录的非管理员成员邀请来宾，请将此策略设置为“是”。
+
    - **来宾可以邀请**：若要允许来宾邀请其他来宾，请将此策略设置为“是”。
-   - 为来宾启用电子邮件一次性密码(预览)：有关一次性密码功能的详细信息，请参阅[电子邮件一次性密码身份验证（预览）](one-time-passcode.md)。
-   - **协作限制**：若要详细了解如何允许或阻止向特定的域发送邀请，请参阅[允许或阻止向特定组织中的 B2B 用户发送邀请](allow-deny-list.md)。
-   
+
+   - 为**来宾 (预览) 启用电子邮件一次性密码**：有关一次性密码功能的详细信息，请参阅[电子邮件一次性密码身份验证 (预览) ](one-time-passcode.md)。
+
+   - **通过用户流 (预览) 启用来宾自助注册 **：有关此设置的详细信息，请参阅 [向应用添加自助服务注册用户流 (预览) ](self-service-sign-up-user-flow.md)。
+
    > [!NOTE]
    > 如果“成员可以邀请”设为“否”，而“来宾邀请者角色中的管理员和用户可以邀请”设为“是”，则“来宾邀请者”角色中的用户仍将能够邀请来宾。
+
+    ![来宾邀请设置](./media/delegate-invitations/guest-invite-settings.png)
+
+6. 在 " **协作限制**" 下，选择是允许还是拒绝指定的域的邀请。 有关详细信息，请参阅[允许或阻止向特定组织中的 B2B 用户发送邀请](allow-deny-list.md)。
 
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>将“来宾邀请者”角色分配给用户
 

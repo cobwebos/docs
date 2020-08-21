@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 8d48a8a9f52c3edb4350c16a25deda9894dcdda1
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 4dd253aa5dc1b8b89b1b387a555dde416c601f9c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88271152"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691490"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>使用 Azure Functions 将 API 添加到 Azure 静态 Web 应用预览版
 
@@ -147,7 +147,7 @@ Visual Studio Code 与 [Azure Functions Core Tools](../azure-functions/functions
 
     :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="使用 Visual Studio Code 创建新的 Azure Functions":::
 
-1. 在核心工具运行的情况下，导航到以下 URL 以验证 API 是否正常运行： <http://localhost:7071/api/message> 。
+1. 在核心工具运行的情况下，导航到以下 URL 以验证 API 是否正常运行： `http://localhost:7071/api/message` 。
 
    浏览器中的响应应类似于以下示例：
 

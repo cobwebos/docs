@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/30/2020
-ms.openlocfilehash: 1b0846c68f6860b5c7dac9e93808088dac4f6a05
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 4a27ace4e45d00a2fbb35b9e0e3e9b7c03383681
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607430"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705871"
 ---
 # <a name="determine-your-publishing-option"></a>确定发布选项
 
@@ -47,9 +47,9 @@ ms.locfileid: "88607430"
 
 &#42;&#42; Microsoft 365 产品/服务可免费安装，并可通过 SaaS 产品/服务作为授权服务实现盈利。 有关详细信息，请参阅[通过 Microsoft 商业市场利用 Office 365 加载项实现盈利](/office/dev/store/monetize-addins-through-microsoft-commercial-marketplace)。
 
-## <a name="choose-a-call-to-action"></a>选择操作调用
+## <a name="choose-a-listing-option"></a>选择列表选项
 
-可用的发布选项提供差异化的客户参与度，并允许你访问潜在客户共享资料和[商业市场权益](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)。 请注意与发布选项相对应的广告语：
+可用的列表选项提供了不同的客户参与，同时为你提供访问潜在客户和 [商业 marketplace 权益](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)的权限。 请注意与发布选项对应的列表选项：
 
 | **发布选项**    | **说明**  |
 | :------------------- | :-------------------|

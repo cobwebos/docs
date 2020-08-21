@@ -8,30 +8,30 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 702486a0728a7394d8d8febffc11b11bc113a030
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 465543e639514753bc0a6762dbbeb888d490ccd2
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606758"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705038"
 ---
 # <a name="marketplace-rewards"></a>Marketplace Rewards
 
-Marketplace 奖励支持你在特定的增长阶段，从认知活动开始，帮助你获取第一个客户。 当你通过商业市场发展时，你就可以解除新的优势，旨在帮助你转换客户和完成交易。
+Marketplace 奖励支持你在特定的增长阶段，从认知活动开始，帮助你获取第一个客户。 当你通过 Microsoft 商业应用商店发展时，你将能够解锁旨在帮助你转换客户和结束交易的新权益。
 
 该计划将创建一个积极的反馈循环：每个增长阶段的优势有助于你完成下一阶段，使你能够将你的业务发展到 Microsoft 客户、Microsoft 现场，以及通过利用商业市场作为你的平台，通过 Microsoft 渠道。
 
-权益根据产品/服务属于以下哪种类型来区分：[列出、试用、事务处理](../determine-your-listing-type.md#choose-a-call-to-action)。
+权益根据产品/服务属于以下哪种类型来区分：[列出、试用、事务处理](../determine-your-listing-type.md#choose-a-listing-option)。
 
 Rewards 团队成员将在产品/服务上线时联系你，具体取决于你的资格。
 
-对于事务处理合作伙伴，通过市场平台实现结算销售额增长时，便可以解锁每一层的更大权益。
+对于业务合作伙伴，在通过商业应用商店平台增长计费的销售时，每个层都有更多的权益。
 
-在在线商店中发布的最低要求是 MPNID 的，因此，所有合作伙伴都可以使用这些权益，而不考虑 MPN 的胜任度状态或合作伙伴类型。 每位合作伙伴都有权通过将市场作为平台来拓展业务。
+在在线商店中发布的最低要求是 MPNID 的，因此，所有合作伙伴都可以使用这些权益，而不考虑 MPN 的胜任度状态或合作伙伴类型。 每个合作伙伴都可以通过商业市场以平台的形式增长业务。
 
 你将获得了解可用资源以及实现最佳做法方面的支持，并且还可以[自行查看](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)。
 
-请在 [此处](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace)查看 Marketplace 奖励计划的资格。
+若要检查 Marketplace 奖励计划的资格，请参阅合作伙伴中心的 [Marketplace 奖励](https://partner.microsoft.com/dashboard/mpn/program/commercialmarketplace) 页面。
 
 入门步骤很简单：
 

@@ -11,18 +11,18 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
-ms.openlocfilehash: d0f6655d22818c119d1098bbce96ea3699a42a50
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bb9bc978e49cddab13ab1e4f7ec4f0b74d369ac1
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168127"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705837"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Azure 实例元数据服务 (IMDS) 
 
 Azure 实例元数据服务 (IMDS) 提供有关当前正在运行的虚拟机实例的信息，可用于管理和配置虚拟机。
 这些信息包括 SKU、存储、网络配置和即将发生的维护事件。 有关提供的数据的完整列表，请参阅[元数据 API](#metadata-apis)。
-实例元数据服务适用于 VM 和虚拟机规模集实例。 它仅可用于运行使用 [Azure 资源管理器](/rest/api/resources/)创建/管理的 VM。
+实例元数据服务可用于运行虚拟机和虚拟机规模集实例。 所有 Api 都支持使用 [Azure 资源管理器](/rest/api/resources/)创建/管理的 vm。 只有证明和网络终结点支持经典 (非 ARM) Vm，而证明仅支持有限的范围。
 
 Azure 的 IMDS 是一个 REST 终结点，位于已知不可路由的 IP 地址 (`169.254.169.254`)，只能从 VM 中访问。 VM 与 IMDS 之间的通信绝不会离开主机。
 最佳做法是让 HTTP 客户端在查询 IMDS 时绕过 VM 中的 web 代理并同等对待 `169.254.169.254` 和 [`168.63.129.16`](../../virtual-network/what-is-ip-address-168-63-129-16.md)。
@@ -161,7 +161,7 @@ API | 默认数据格式 | 其他格式
 /attested | json | 无
 /identity | json | 无
 /instance | json | text
-/scheduledevents | json | none
+/scheduledevents | json | 无
 
 若要访问非默认响应格式，请在请求中将所请求的格式指定为查询字符串参数。 例如：
 
@@ -424,7 +424,7 @@ Azure 环境的云和值列在下面。
  云   | Azure 环境
 ---------|-----------------
 [全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/)     | AzurePublicCloud
-[Azure 政府](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
 [Azure 中国世纪互联](https://azure.microsoft.com/global-infrastructure/china/)         | AzureChinaCloud
 [Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
@@ -684,7 +684,7 @@ Nonce 是一个可选的 10 位字符串。 如果未提供，IMDS 将在其所�
 }
 ```
 
-签名 Blob 是 [pkcs7](https://aka.ms/pkcs7) 签名的文档版本。 它包含用于签名的证书以及 VM 详情，如 vmId、sku、nonce、subscriptionId、文档创建和到期的时间戳，以及关于映像的计划信息。 该计划信息只针对 Azure 市场映像进行填充。 证书可从响应中提取，用于验证响应是否有效、是否来自 Azure。
+签名 Blob 是 [pkcs7](https://aka.ms/pkcs7) 签名的文档版本。 它包含用于签名的证书以及特定于 VM 的特定详细信息。 对于 ARM Vm，这包括 vmId、sku、nonce、subscriptionId、创建和过期文档的时间戳以及有关映像的计划信息。 该计划信息只针对 Azure 市场映像进行填充。 对于经典 (非 ARM) Vm，只保证可以填充 vmId。 证书可从响应中提取，用于验证响应是否有效、是否来自 Azure。
 该文档包含以下字段：
 
 数据 | 说明
@@ -696,6 +696,9 @@ timestamp/expiresOn | 签名文档到期时的 UTC 时间戳
 vmId |  VM 的[唯一标识符](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
 subscriptionId | 虚拟机的 Azure 订阅，引入自 `2019-04-30`
 sku | `2019-11-01` 中介绍了 VM 映像的特定 SKU
+
+> [!NOTE]
+> 对于经典 (非 ARM) Vm，只保证可以填充 vmId。
 
 ### <a name="sample-2-validating-that-the-vm-is-running-in-azure"></a>示例 2：验证 VM 是否在 Azure 中运行
 
@@ -771,7 +774,7 @@ openssl verify -verbose -CAfile /etc/ssl/certs/Baltimore_CyberTrust_Root.pem -un
 云 | 证书
 ------|------------
 [全球所有公开上市的 Azure 区域](https://azure.microsoft.com/regions/) | *.metadata.azure.com
-[Azure 政府](https://azure.microsoft.com/overview/clouds/government/)          | *.metadata.azure.us
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)          | *.metadata.azure.us
 [Azure 中国世纪互联](https://azure.microsoft.com/global-infrastructure/china/)     | *.metadata.azure.cn
 [Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)                | *.metadata.microsoftazure.de
 

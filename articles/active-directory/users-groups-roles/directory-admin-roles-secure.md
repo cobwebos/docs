@@ -1,6 +1,6 @@
 ---
 title: Azure AD 中面向管理员的安全访问做法 | Microsoft Docs
-description: 确保组织的管理访问权限和管理帐户是安全的。 适用于配置 Azure AD、Azure 和 Microsoft Online Services 的系统架构师和 IT 专业人员。
+description: 确保组织的管理访问权限和管理员帐户是安全的。 适用于配置 Azure AD、Azure 和 Microsoft Online Services 的系统架构师和 IT 专业人员。
 services: active-directory
 keywords: ''
 author: curtand
@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51b18b05dc9fee06b0a9866f59b4bf52ad54e0ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d303f8a04a9159eeb4dc5e78ef09b57f5a966c72
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807853"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691354"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -40,7 +40,7 @@ ms.locfileid: "85807853"
 在你关注的 Microsoft 服务中以一种管理加报告的方式保护你的特权访问。 如果你有本地管理员帐户，请参阅[保护特权访问](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)中提供的有关 Active Directory 中的本地和混合特权访问的指导。
 
 > [!NOTE]
-> 本文中的指南主要讲述 Azure Active Directory Premium 计划 P1 和 P2 中包括的 Azure Active Directory 功能。 Azure Active Directory Premium P2 包括在 EMS E5 套件和 Microsoft 365 E5 套件中。 本指南假定你的组织已经为你的用户购买 Azure AD Premium P2 许可证。 如果没有这些许可证，某些指南内容可能不适用于你的组织。 另外，本文中的“全局管理员”一词与“公司管理员”或“租户管理员”同义。
+> 本文中的指南主要讲述 Azure Active Directory Premium 计划 P1 和 P2 中包括的 Azure Active Directory 功能。 Azure Active Directory Premium P2 包括在 EMS E5 套件和 Microsoft 365 E5 套件中。 本指南假定你的组织已经为你的用户购买 Azure AD Premium P2 许可证。 如果没有这些许可证，某些指南内容可能不适用于你的组织。 此外，在本文中，"全局管理员" (或 "全局管理员" 这一术语) 意味着与 "公司管理员" 或 "租户管理员" 相同。
 
 ## <a name="develop-a-roadmap"></a>制定路线图
 
@@ -68,7 +68,7 @@ Microsoft 建议你制定并遵循一个路线图，防止特权访问受到网�
 
 #### <a name="turn-on-azure-ad-privileged-identity-management"></a>启用 Azure AD Privileged Identity Management
 
-我们建议在 Azure AD 生产环境中启用 Azure AD Privileged Identity Management (PIM)。 启用 PIM 后，你会收到有关特权访问角色更改的通知电子邮件。 向高特权角色添加更多用户时，通知可以提供预先警告。
+我们建议在 Azure AD 生产环境中启用 Azure AD Privileged Identity Management (PIM)。 启用 PIM 后，将收到有关特权访问角色更改的通知电子邮件。 向高特权角色添加更多用户时，通知可以提供预先警告。
 
 Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5 中。 请注册[企业移动性 + 安全性 90 天免费试用版](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-trial)，它有助于保护对本地和云中应用程序与资源的访问。 Azure AD Privileged Identity Management 和 Azure AD 标识保护使用 Azure AD 的报告、审核和警报功能来监视安全活动。
 
@@ -114,7 +114,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>启用多重身份验证，并注册所有其他的特许权限高的单用户非联合管理员帐户
 
-需要在登录时进行 Azure 多重身份验证（MFA），以便将所有被永久分配给一个或多个 Azure AD 管理员角色的用户：全局管理员、特权角色管理员、Exchange 管理员和 SharePoint 管理员。 根据指南启用[针对管理员帐户的多重身份验证 (MFA)](../authentication/howto-mfa-userstates.md)，确保所有这些用户都已注册到 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。 有关详细信息，可参阅[保护对 Office 365 中数据和服务的访问权限](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)指南的步骤 2 和步骤 3。 
+需要 Azure 多重身份验证 (MFA) 在登录时，将永久分配给一个或多个 Azure AD 管理员角色的单个用户：全局管理员、特权角色管理员、Exchange 管理员和 SharePoint 管理员。 根据指南启用[针对管理员帐户的多重身份验证 (MFA)](../authentication/howto-mfa-userstates.md)，确保所有这些用户都已注册到 [https://aka.ms/mfasetup](https://aka.ms/mfasetup)。 有关详细信息，可参阅[保护对 Office 365 中数据和服务的访问权限](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)指南的步骤 2 和步骤 3。 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>阶段 2：缓解经常使用的攻击
 
@@ -137,7 +137,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
   * 附加了工作电子邮件地址
   * 已注册 Azure 多重身份验证或在本地使用 MFA
 * 要求用户提供进行管理访问的业务理由。
-* 删除那些不需要管理员访问权限的个人和服务的此类权限。
+* 删除不需要的个人和服务的管理员访问权限。
 
 #### <a name="identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts"></a>确定管理角色中那些需要切换到工作或学校帐户的 Microsoft 帐户
 
@@ -173,11 +173,11 @@ Azure AD 建议你要求所有用户执行多重身份验证 (MFA)。 请务必�
 
 #### <a name="configure-identity-protection"></a>配置“标识保护”
 
-Azure AD 标识保护是一种基于算法的监视和报告工具，可用于检测影响组织标识的潜在漏洞。 可以配置自动响应，以便对那些检测到的可疑活动进行响应，并采取相应的解决措施。 有关详细信息，请参阅 [Azure Active Directory 标识保护](../active-directory-identityprotection.md)。
+Azure AD Identity Protection 是一种基于算法的监视和报告工具，用于检测影响组织标识的潜在漏洞。 可以配置自动响应，以便对那些检测到的可疑活动进行响应，并采取相应的解决措施。 有关详细信息，请参阅 [Azure Active Directory 标识保护](../active-directory-identityprotection.md)。
 
 #### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>获取 Office 365 安全评分（如果使用 Office 365）
 
-安全评分会查看你正在使用的 Office 365 服务的设置和活动，并将其与 Microsoft 建立的基线进行比较。 将会根据你遵循安全做法的情况对你评分。 对 Office 365 业务高级版或企业版订阅拥有管理员权限的任何人都可以通过 [https://securescore.office.com](https://securescore.office.com/) 访问安全评分。
+安全分数查看你正在使用的 Office 365 服务的设置和活动，并将其与 Microsoft 建立的基线进行比较。 你将根据你对安全做法的对齐方式获得评分。 对 Office 365 业务高级版或企业版订阅拥有管理员权限的任何人都可以通过 [https://securescore.office.com](https://securescore.office.com/) 访问安全评分。
 
 #### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>查看 Office 365 安全性和符合性指南（如果使用 Office 365）
 
@@ -259,7 +259,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>查看美国国家标准与技术协会提供的有关如何处理事件的建议
 
-国家标准与技术协会 (NIST) 提供处理事件的指南，尤其是分析事件相关数据并确定每个事件的适当响应的指南。 有关详细信息，请参阅 [The (NIST) Computer Security Incident Handling Guide (SP 800-61, Revision 2)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)（(NIST) 计算机安全事件处理指南（SP 800-61，修订版 2））。
+美国国家标准与技术研究院 (NIST) 提供事件处理的指导原则，特别是用于分析与事件相关的数据，并确定每个事件的适当响应。 有关详细信息，请参阅 [The (NIST) Computer Security Incident Handling Guide (SP 800-61, Revision 2)](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)（(NIST) 计算机安全事件处理指南（SP 800-61，修订版 2））。
 
 #### <a name="implement-privileged-identity-management-pim-for-jit-to-additional-administrative-roles"></a>对其他管理角色实施适用于 JIT 的 Privileged Identity Management (PIM)
 
@@ -275,7 +275,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
   * 查看审核报告
   * 创建访问评审，用于识别每个有资格激活管理特权的用户
 
-如果已在使用 Azure AD Privileged Identity Management，请根据需要调整具有时限的特权的时间范围（例如，设置维护时段）。
+如果已在使用 Azure AD Privileged Identity Management，请根据需要调整时间限制的时间范围 (例如，维护时段) 。
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>确定是否向基于密码的登录协议公开（如果使用 Exchange Online）
 
@@ -310,7 +310,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 #### <a name="inventory-your-privileged-accounts-within-hosted-virtual-machines"></a>清点托管的虚拟机中的特权帐户
 
-通常不需要为用户提供可以访问所有 Azure 订阅或资源的不受限权限。 使用 Azure AD 管理员角色可以仅向用户授予他们在完成工作时所需的访问权限。 可以使用 Azure AD 管理员角色，让一个管理员只管理某个订阅中的 VM，让另一个管理员管理同一订阅中的 SQL 数据库。 有关详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](../../role-based-access-control/overview.md)。
+通常不需要向用户授予对所有 Azure 订阅或资源的无限制权限。 使用 Azure AD 管理员角色可以仅向用户授予他们在完成工作时所需的访问权限。 可以使用 Azure AD 管理员角色，让一个管理员只管理某个订阅中的 VM，让另一个管理员管理同一订阅中的 SQL 数据库。 有关详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](../../role-based-access-control/overview.md)。
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>为 Azure AD 管理员角色实施 PIM
 
@@ -318,7 +318,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>使用 Azure 日志集成将相关的 Azure 日志发送到 SIEM 系统
 
-可以通过 Azure 日志集成将原始日志从 Azure 资源集成到组织的现有安全信息和事件管理 (SIEM) 系统。 [Azure 日志集成](../../security/fundamentals/azure-log-integration-overview.md)从 Windows 事件查看器日志收集 Windows 事件，并从以下位置收集 Azure 资源：
+可以通过 azure 日志集成将 Azure 资源中的原始日志集成到组织的现有安全信息和事件管理 (SIEM) 系统。 [Azure 日志集成](../../security/fundamentals/azure-log-integration-overview.md)从 Windows 事件查看器日志收集 Windows 事件，并从以下位置收集 Azure 资源：
 
 * Azure 活动日志
 * Azure 安全中心警报
@@ -373,7 +373,7 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 * 仅在需要的时候才授予特许访问权限，操作完后即将其删除（适时）
 * 保留与特权帐户相关的审核活动日志
 
-若要深入了解如何构建完整的安全路线图，请参阅 [Microsoft 云 IT 体系结构资源](https://docs.microsoft.com/office365/enterprise/microsoft-cloud-it-architecture-resources)。 若要与 Microsoft 服务互动以实施路线图中的任一环节，请联系 Microsoft 代表或参阅[构建关键的网络防御来保护企业](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)。
+若要深入了解如何构建完整的安全路线图，请参阅 [Microsoft 云 IT 体系结构资源](https://almbok.com/office365/microsoft_cloud_it_architecture_resources)。 若要与 Microsoft 服务互动以实施路线图中的任一环节，请联系 Microsoft 代表或参阅[构建关键的网络防御来保护企业](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)。
 
 这个最后进行的阶段的安全特权访问路线图包括以下组件。
 
@@ -418,7 +418,7 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 5. 查看 [Azure AD 登录报告](../reports-monitoring/overview-reports.md)。 事件发生时间与在报告中包含该事件的时间可能存在一段时差。
 
-6. 对于混合环境，如果联合的本地基础结构和 AD FS 服务器不可用，则你可以暂时从联合身份验证切换到密码哈希同步。这种切换会将域联合身份验证还原为托管身份验证，直至 AD FS 服务器可用。
+6. 对于混合环境，如果你的本地基础结构联合并且 AD FS 服务器不可用，则可以暂时从联合身份验证切换为使用密码哈希同步。此开关会将域联合身份验证回托管身份验证，直至 AD FS 服务器可用。
 
 7. 监视特权帐户的电子邮件。
 
@@ -428,25 +428,25 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 ## <a name="faq-answers-for-securing-privileged-access"></a>常见问题解答：有关保护特权访问的解答  
 
-**问：** 如果还没有实施任何安全访问组件，该怎么办？
+**问：** 如果尚未实施任何安全访问组件，该怎么办？
 
 **答：** 定义至少两个“不受限”帐户，指定对特权管理员帐户实施 MFA，并将用户帐户与全局管理员帐户分开。
 
 **问：** 在遭到攻击后，首先需要解决的最重要问题是什么？
 
-**答：** 务必要求对身份暴露可能性高的个人进行最强的身份验证。
+**答案：** 请确保对高度公开的个人要求最强的身份验证。
 
 **问：** 如果停用了特权管理员，该怎么办？
 
 **答：** 请创建一个始终保持最新的全局管理员帐户。
 
-**问：** 如果只剩下一位全局管理员，而该管理员联系不上，该怎么办？
+**问：** 如果只剩下一个全局管理员，并且无法访问，会发生什么情况？
 
 **答：** 使用其中一个“不受限”帐户，立即获取特许访问权限。
 
 **问：** 如何保护组织中的管理员？
 
-**答：** 让管理员始终以标准的“非特权”用户身份执行日常业务操作。
+**答案：** 让管理员始终以标准的 "非特权" 用户的形式执行日常业务。
 
 **问：** 在 Azure AD 中创建管理员帐户的最佳做法是什么？
 
@@ -468,7 +468,7 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 * [Microsoft 信任中心确保产品安全性](https://www.microsoft.com/trustcenter/security) - Microsoft 云产品和服务的安全特性
 
-* [Microsoft 信任中心 - 符合性](https://www.microsoft.com/trustcenter/compliance/complianceofferings) - Microsoft 推出的一组范围广泛的符合性产品/服务，适用于云服务
+* [Microsoft 信任中心-合规性](https://www.microsoft.com/trustcenter/compliance/complianceofferings) – microsoft 提供的针对云服务的全面的符合性产品/服务
 
 * [有关如何执行风险评估的指南](https://www.microsoft.com/trustcenter/guidance/risk-assessment) - 管理 Microsoft 云服务的安全性与合规性要求
 

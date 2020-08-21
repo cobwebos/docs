@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/19/2020
 ms.author: b-juche
-ms.openlocfilehash: 4a54858f4a09cd62bb555a6df2c12efa2290dd69
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 20cbc9b33e567ffe306aae694bb835d95c2d861e
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653165"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88704971"
 ---
 # <a name="configure-an-nfs-client-for-azure-netapp-files"></a>为 Azure NetApp 文件配置 NFS 客户端
 
-可在 Azure NetApp 文件中使用多种 Linux 分发版。 本文介绍两种更常用的环境配置： RHEL 8 和 Ubuntu 18.04。 本文中所述的 NFS 客户端配置是在 [配置 nfsv 4.1 Kerberos 加密](configure-kerberos-encryption.md) 或 [创建双协议卷](create-volumes-dual-protocol.md)时安装的一部分。  
+本文中所述的 NFS 客户端配置是在 [配置 nfsv 4.1 Kerberos 加密](configure-kerberos-encryption.md) 或 [创建双协议卷](create-volumes-dual-protocol.md)时安装的一部分。 可在 Azure NetApp 文件中使用多种 Linux 分发版。 本文介绍两种更常用的环境配置： RHEL 8 和 Ubuntu 18.04。 
 
 无论使用何种 Linux 风格，都需要以下配置：
 * 配置 NTP 客户端以避免出现时间偏差问题。

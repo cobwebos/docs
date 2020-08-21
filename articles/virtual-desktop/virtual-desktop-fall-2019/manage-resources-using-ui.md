@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ed6587cab1e90c9b4bd4ceffa64c77fa5d8de574
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: c261ea174f37de51a8fbd5b36aeb40c26d44e6a9
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88005697"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88691388"
 ---
 # <a name="deploy-a-windows-virtual-desktop-classic-management-tool-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署 Windows 虚拟桌面 (经典) 管理工具
 
@@ -83,7 +83,7 @@ GitHub Azure 资源管理器模板完成后，你会在 Azure 门户中看到一
 
 决定要使用哪个用户提供许可后，请遵照以下说明为工具提供许可：
 
-1. 转到你的 Azure 资源，选择具有你在模板中提供的名称的 Azure 应用服务资源 (例如，Apr3UX) 并导航到与其关联的 URL;例如， <https://rdmimgmtweb-210520190304.azurewebsites.net> 。
+1. 转到你的 Azure 资源，选择具有你在模板中提供的名称的 Azure 应用服务资源 (例如，Apr3UX) 并导航到与其关联的 URL;例如，  `https://rdmimgmtweb-210520190304.azurewebsites.net` 。
 2. 使用相应的 Azure Active Directory 用户帐户登录。
 3. 如果已使用全局管理员帐户进行身份验证，则现在可以选中“代表组织提供许可”复选框。**** 选择“接受”以提供许可。****
 

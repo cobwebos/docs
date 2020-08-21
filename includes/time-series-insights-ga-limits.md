@@ -9,12 +9,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 1e07f56bc2e820b325414e124c7825c1d356ca26
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1aff5780aa5f4cf21d862a5cee3b140179dac03c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87046425"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88704487"
 ---
 下面概述了 Azure 时序见解 Gen1 中的主要限制。
 
@@ -44,7 +44,7 @@ S2 SKU 环境每月支持更多的事件，并具有显著更高的入口容量�
 
 ### <a name="property-limits"></a>属性限制
 
-Gen1 属性限制取决于所选的 SKU 环境。 提供的事件属性具有可在[Azure 时序见解资源管理器](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart)中查看的相应 JSON、CSV 和图表列。
+Gen1 属性限制取决于所选的 SKU 环境。 提供的事件属性具有可在 [Azure 时序见解资源管理器](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart)中查看的相应 JSON、CSV 和图表列。
 
 | SKU | 最大属性数 |
 | --- | --- |
@@ -60,4 +60,4 @@ Gen1 属性限制取决于所选的 SKU 环境。 提供的事件属性具有可
 
 ### <a name="api-limits"></a>API 限制
 
-[REST API 参考文档](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#limits)中指定了 Azure 时序见解 Gen1 REST API 限制。
+[REST API 参考文档](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/getavailability)中指定了 Azure 时序见解 Gen1 REST API 限制。

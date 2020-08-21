@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/10/2020
-ms.openlocfilehash: e38d59ff1eb31dd5fc3ecf6b7df6b12504141d5e
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: ff70beef89f6db240db244de1e11e54193858be0
+ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88082933"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88705769"
 ---
 # <a name="azure-monitor-agent-overview-preview"></a> (预览版 Azure Monitor 代理概述) 
 Azure Monitor 代理 (AMA) 从虚拟机的来宾操作系统收集监视数据，并将其传送到 Azure Monitor。 本文概述了 Azure Monitor 代理，包括如何安装它以及如何配置数据收集。
@@ -19,9 +19,9 @@ Azure Monitor 代理 (AMA) 从虚拟机的来宾操作系统收集监视数据�
 ## <a name="relationship-to-other-agents"></a>与其他代理的关系
 Azure Monitor 代理会将 Azure Monitor 当前使用的以下代理替换为从虚拟机收集来宾数据：
 
-- [Log Analytics 代理](log-analytics-agent.md)-将数据发送到 Log Analytics 工作区，并支持用于 VM 的 Azure Monitor 和监视解决方案。
-- [诊断扩展](diagnostics-extension-overview.md)-仅 (Windows) 、Azure 事件中心和 azure 存储中的 Azure Monitor 度量值发送数据。
-- [Telegraf 代理](collect-custom-metrics-linux-telegraf.md)-仅 (Linux) 将数据发送到 Azure Monitor 度量值。
+- [Log Analytics 代理](log-analytics-agent.md) -将数据发送到 Log Analytics 工作区，并支持用于 VM 的 Azure Monitor 和监视解决方案。
+- [诊断扩展](diagnostics-extension-overview.md) -仅 (Windows) 、Azure 事件中心和 azure 存储中的 Azure Monitor 度量值发送数据。
+- [Telegraf 代理](collect-custom-metrics-linux-telegraf.md) -仅 (Linux) 将数据发送到 Azure Monitor 度量值。
 
 除了将此功能合并到单个代理外，Azure Monitor 代理还在现有代理上具有以下优势：
 
@@ -37,7 +37,7 @@ Azure Monitor 代理会将 Azure Monitor 当前使用的以下代理替换为从
 
 - 诊断扩展具有每个虚拟机的配置。 这可以轻松定义不同虚拟机的独立定义，但难以集中管理。 它只能将数据发送到 Azure Monitor 指标、Azure 事件中心或 Azure 存储。 对于 Linux 代理，需要开源 Telegraf 代理才能将数据发送到 Azure Monitor 指标。
 
-Azure Monitor 代理使用[ (DCR) 的数据收集规则](data-collection-rule-overview.md)来配置要从每个代理收集的数据。 数据收集规则实现了大规模的集合设置的可管理性，同时还为计算机的子集启用了唯一的作用域配置。 它们独立于工作区，并且独立于虚拟机，这允许定义一次并在计算机和环境中重复使用。 请参阅[配置 Azure Monitor 代理的数据收集 (预览版) ](data-collection-rule-azure-monitor-agent.md)。
+Azure Monitor 代理使用 [ (DCR) 的数据收集规则 ](data-collection-rule-overview.md) 来配置要从每个代理收集的数据。 数据收集规则实现了大规模的集合设置的可管理性，同时还为计算机的子集启用了唯一的作用域配置。 它们独立于工作区，并且独立于虚拟机，这允许定义一次并在计算机和环境中重复使用。 请参阅 [配置 Azure Monitor 代理的数据收集 (预览版) ](data-collection-rule-azure-monitor-agent.md)。
 
 
 
@@ -60,15 +60,15 @@ Azure Monitor 代理可以与现有代理共存，因此你可以在评估或迁
 
 
 ## <a name="costs"></a>成本
-Azure Monitor 代理无需支付费用，但可能会产生数据引入的费用。 有关 Log Analytics 数据收集和保留以及客户指标的详细信息，请参阅[Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。
+Azure Monitor 代理无需支付费用，但可能会产生数据引入的费用。 有关 Log Analytics 数据收集和保留以及客户指标的详细信息，请参阅 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/) 。
 
 ## <a name="data-sources-and-destinations"></a>数据源和目标
-下表列出了当前可以使用数据收集规则与 Azure Monitor 代理一起收集的数据类型，以及可以发送该数据的位置。 若要查看使用 Azure Monitor 代理收集其他类型的数据的见解、解决方案和其他解决方案的列表，请参阅[Azure Monitor 监视的内容](../monitor-reference.md)。
+下表列出了当前可以使用数据收集规则与 Azure Monitor 代理一起收集的数据类型，以及可以发送该数据的位置。 若要查看使用 Azure Monitor 代理收集其他类型的数据的见解、解决方案和其他解决方案的列表，请参阅 [Azure Monitor 监视的内容](../monitor-reference.md) 。
 
 
 Azure Monitor 代理会将数据发送到 Azure Monitor 指标或支持 Azure Monitor 日志的 Log Analytics 工作区。
 
-| “数据源” | Destinations | 说明 |
+| 数据源 | Destinations | 说明 |
 |:---|:---|:---|
 | 性能        | Azure Monitor 指标<br>Log Analytics 工作区 | 测量操作系统和工作负载不同方面性能的数值。 |
 | Windows 事件日志 | Log Analytics 工作区 | 发送到 Windows 事件日志记录系统的信息。 |
@@ -97,33 +97,33 @@ Azure Monitor 代理目前支持以下操作系统。
 
 
 ## <a name="security"></a>安全性
-Azure Monitor 代理无需任何密钥，而是需要[系统分配的托管标识](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)。 部署代理之前，必须在每个虚拟机上启用系统分配的托管标识。
+Azure Monitor 代理无需任何密钥，而是需要 [系统分配的托管标识](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#system-assigned-managed-identity)。 部署代理之前，必须在每个虚拟机上启用系统分配的托管标识。
 
 
 ## <a name="install-the-azure-monitor-agent"></a>安装 Azure Monitor 代理
-使用下表中的详细信息将 Azure Monitor 代理实现为[AZURE VM 扩展](../../virtual-machines/extensions/overview.md)。 
+使用下表中的详细信息将 Azure Monitor 代理实现为 [AZURE VM 扩展](../../virtual-machines/extensions/overview.md) 。 
 
 | properties | Windows | Linux |
 |:---|:---|:---|
 | 发布者 | Microsoft Azure。监视器  | Microsoft Azure。监视器 |
 | 类型      | AzureMonitorWindowsAgent | AzureMonitorLinuxAgent  |
-| TypeHandlerVersion  | 1.0 | 0.9 |
+| TypeHandlerVersion  | 1.0 | 1.5 |
 
-使用任意方法安装 Azure Monitor 代理，使用 PowerShell 或 CLI 安装虚拟机代理，包括以下各项。 另外，还可以使用门户在 Azure 订阅中的虚拟机上安装代理，并使用[配置 Azure Monitor 代理 (预览版) 的数据收集](data-collection-rule-azure-monitor-agent.md#create-using-the-azure-portal)过程中所述的过程来配置数据收集。
+使用任意方法安装 Azure Monitor 代理，使用 PowerShell 或 CLI 安装虚拟机代理，包括以下各项。 另外，还可以使用门户在 Azure 订阅中的虚拟机上安装代理，并使用 [配置 Azure Monitor 代理 (预览版) 的数据收集 ](data-collection-rule-azure-monitor-agent.md#create-using-the-azure-portal)过程中所述的过程来配置数据收集。
 
 ### <a name="windows"></a>Windows
 
 # <a name="cli"></a>[CLI](#tab/CLI1)
 
 ```azurecli
-az vm extension set --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.Monitor --version 1.0 --ids {resource ID of the VM}
+az vm extension set --name AzureMonitorWindowsAgent --publisher Microsoft.Azure.Monitor --ids {resource ID of the VM}
 
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell1)
 
 ```powershell
-Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -Version 1.0 -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
+Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
 ```
 ---
 
@@ -133,17 +133,17 @@ Set-AzVMExtension -Name AMAWindows -ExtensionType AzureMonitorWindowsAgent -Publ
 # <a name="cli"></a>[CLI](#tab/CLI2)
 
 ```azurecli
-az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --version 0.9 --ids {resource ID of the VM}
+az vm extension set --name AzureMonitorLinuxAgent --publisher Microsoft.Azure.Monitor --ids {resource ID of the VM}
 
 ```
 
 # <a name="powershell"></a>[PowerShell](#tab/PowerShell2)
 
 ```powershell
-Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -Version 0.9 -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
+Set-AzVMExtension -Name AMALinux -ExtensionType AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName {Resource Group Name} -VMName {VM name} -Location eastus
 ```
 ---
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建数据收集规则](data-collection-rule-azure-monitor-agent.md)以从代理收集数据并将其发送到 Azure Monitor。
+- [创建数据收集规则](data-collection-rule-azure-monitor-agent.md) 以从代理收集数据并将其发送到 Azure Monitor。
