@@ -46,11 +46,11 @@ VM 大小和区域的子集都支持 Ultra 磁盘。 在继续之前，请验证
 1. 停止/解除分配虚拟机。 
 1. 选择 "**设置**" 下的 "**磁盘**"，然后选择 "**其他设置**"。 
 
-   :::image type="content" source="media/storage-migrate-to-ultradisk/additional-disks-settings-azure-portal.png" alt-text="为 "设置" 下的 "磁盘" 选择其他设置 Azure 门户":::
+   :::image type="content" source="media/storage-migrate-to-ultradisk/additional-disks-settings-azure-portal.png" alt-text="为 设置 下的 磁盘 选择其他设置 Azure 门户":::
 
 1. 选择 **"是"** 以 **启用超高磁盘兼容性**。 
 
-   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="为 "设置" 下的 "磁盘" 选择其他设置 Azure 门户":::
+   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="为 设置 下的 磁盘 选择其他设置 Azure 门户":::
 
 1. 选择“保存”。 
 
