@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ed517f2f6e04f60ec1c9c808f2fdf03203fb891b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 0d697f2100360732666c9f5ea8050800dad154b4
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498967"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653811"
 ---
 # <a name="prepare-azure-for-on-premises-disaster-recovery-to-azure"></a>准备 Azure 以实现本地到 Azure 的灾难恢复
 
@@ -94,4 +94,4 @@ ms.locfileid: "87498967"
 - 若要实现 Hyper-V 灾难恢复，请[准备本地 Hyper-V 基础结构](hyper-v-prepare-on-premises-tutorial.md)。
 - 若要实现物理服务器灾难恢复，请[设置配置服务器和源环境](physical-azure-disaster-recovery.md)。
 - [了解](../virtual-network/virtual-networks-overview.md) Azure 网络。
-- [了解](../virtual-machines/windows/managed-disks-overview.md)托管磁盘。
+- [了解](../virtual-machines/managed-disks-overview.md)托管磁盘。

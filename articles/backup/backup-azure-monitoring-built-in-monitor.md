@@ -4,12 +4,12 @@ description: 本文介绍使用 Azure 门户对 Azure 备份工作负荷执行�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 07c22f4af08fd4032eeab91f0eada7797d04ebaa
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: ec0453725186ddef359f85f8c3e5554ff240d3e3
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654117"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755715"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>监视 Azure 备份工作负荷
 
@@ -95,7 +95,7 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 
 > [!NOTE]
 >
-> - 如果执行了破坏性操作（例如“停止保护并删除数据”），那么，即使未针对恢复服务保管库配置通知，也会引发警报，并向订阅所有者、管理员和共同管理员发送电子邮件。
+> - 如果执行了破坏性操作（如 " **停止保护并删除数据** "），则会发出警报，并将电子邮件发送给订阅所有者、管理员和共同管理员，即使未为恢复服务保管库配置通知。
 > - 若要针对成功的作业配置通知，请使用 [Log Analytics](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-workspace)。
 
 ## <a name="inactivating-alerts"></a>停用警报

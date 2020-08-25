@@ -4,15 +4,15 @@ description: 介绍 Azure Analysis Services 中的表格 1200 和更高版本数
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 72a1a37bf240355e6bc87cbfd62b0dc2d25ce68b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: b99ac957c9c5030b484b244223847be4aa53a39d
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503593"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749088"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
@@ -30,7 +30,7 @@ ms.locfileid: "87503593"
 |Azure Data Lake Store Gen1      |   是       |    否      |<sup>[1](#tab1400a)</sup> |
 |Azure Data Lake Store Gen2       |   是       |    否      |<sup>[1](#tab1400a)</sup>，<sup>[5](#gen2)</sup>|
 |Azure HDInsight HDFS    |     是     |   否       |<sup>[1](#tab1400a)</sup> |
-|Azure HDInsight Spark     |   “是”       |   否       |<sup>[1](#tab1400a)</sup><sup>[4](#databricks)</sup>|
+|Azure HDInsight Spark     |   是       |   否       |<sup>[1](#tab1400a)</sup><sup>[4](#databricks)</sup>|
 ||||
 
 注意：
@@ -45,34 +45,34 @@ ms.locfileid: "87503593"
 
 |数据源 | 内存中 | DirectQuery |注释   |
 |  --- | --- | --- | --- |
-|Access 数据库     |  “是” | 否 |  |
-|Active Directory     |  “是” | 否 | <sup>[6](#tab1400b)</sup>  |
-|Analysis Services     |  “是” | 否 |  |
-|分析平台系统     |  “是” | 否 |  |
-|CSV 文件  |“是” | 否 |  |
-|Dynamics 365     |  “是” | 否 | <sup>[6](#tab1400b)</sup> |
-|Excel 工作簿     |  “是” | 否 |  |
-|Exchange      |  “是” | 否 | <sup>[6](#tab1400b)</sup> |
-|文件夹      |“是” | 否 | <sup>[6](#tab1400b)</sup> |
-|IBM Informix  |“是” | 否 |  |
-|JSON 文档      |  “是” | 否 | <sup>[6](#tab1400b)</sup> |
-|二进制文件中的行      | “是” | 否 | <sup>[6](#tab1400b)</sup> |
-|MySQL 数据库     | “是” | 否 |  |
-|OData 源      |  “是” | 否 | <sup>[6](#tab1400b)</sup> |
-|ODBC 查询     | “是” | 否 |  |
-|OLE DB     |   “是” | 否 |  |
-|Oracle  | “是”  |“是”  | <sup>[9](#oracle)</sup> |
-|PostgreSQL 数据库   | “是” | 否 | <sup>[6](#tab1400b)</sup> |
-|Salesforce 对象|  “是” | 否 | <sup>[6](#tab1400b)</sup> |
-|Salesforce 报表 |“是” | 否 | <sup>[6](#tab1400b)</sup> |
-|SAP HANA     |  “是” | 否 |  |
+|Access 数据库     |  是 | 否 |  |
+|Active Directory     |  是 | 否 | <sup>[6](#tab1400b)</sup>  |
+|Analysis Services     |  是 | 否 |  |
+|分析平台系统     |  是 | 否 |  |
+|CSV 文件  |是 | 否 |  |
+|Dynamics 365     |  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|Excel 工作簿     |  是 | 否 |  |
+|Exchange      |  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|文件夹      |是 | 否 | <sup>[6](#tab1400b)</sup> |
+|IBM Informix  |是 | 否 |  |
+|JSON 文档      |  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|二进制文件中的行      | 是 | 否 | <sup>[6](#tab1400b)</sup> |
+|MySQL 数据库     | 是 | 否 |  |
+|OData 源      |  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|ODBC 查询     | 是 | 否 |  |
+|OLE DB     |   是 | 否 |  |
+|Oracle  | 是  |是  | <sup>[9](#oracle)</sup> |
+|PostgreSQL 数据库   | 是 | 否 | <sup>[6](#tab1400b)</sup> |
+|Salesforce 对象|  是 | 否 | <sup>[6](#tab1400b)</sup> |
+|Salesforce 报表 |是 | 否 | <sup>[6](#tab1400b)</sup> |
+|SAP HANA     |  是 | 否 |  |
 |SAP Business Warehouse    |  是 | 否 | <sup>[6](#tab1400b)</sup> |
 |SharePoint 列表      |   是 | 否 | <sup>[6](#tab1400b)</sup>、<sup>[11](#filesSP)</sup> |
-|SQL Server |是   | “是”  | <sup>[7](#sqlim)</sup>、<sup>[8](#instgw)</sup> |
-|SQL Server 数据仓库 |“是”   | “是”  | <sup>[7](#sqlim)</sup>、<sup>[8](#instgw)</sup> |
-|Sybase 数据库     |  “是” | 否 |  |
-|Teradata | “是”  | “是”  | <sup>[10](#teradata)</sup> |
-|TXT 文件  |“是” | 否 |  |
+|SQL Server |是   | 是  | <sup>[7](#sqlim)</sup>、<sup>[8](#instgw)</sup> |
+|SQL Server 数据仓库 |是   | 是  | <sup>[7](#sqlim)</sup>、<sup>[8](#instgw)</sup> |
+|Sybase 数据库     |  是 | 否 |  |
+|Teradata | 是  | 是  | <sup>[10](#teradata)</sup> |
+|TXT 文件  |是 | 否 |  |
 |XML 表    |  是 | 否 | <sup>[6](#tab1400b)</sup> |
 | | | |
 
@@ -80,7 +80,7 @@ ms.locfileid: "87503593"
 <a name="tab1400b">6</a> - 仅限表格 1400 和更高版本的模型。  
 <a name="sqlim">7</a> - 在表格 1200 和更高版本的模型中指定为“提供程序”数据源时，请指定 Microsoft OLE DB Driver for SQL Server MSOLEDBSQL（推荐）、SQL Server Native Client 11.0 或 .NET Framework Data Provider for SQL Server。  
 <a name="instgw">8</a> - 如果指定 MSOLEDBSQL 作为数据提供程序，则可能需要在本地数据网关所在的同一计算机上下载并安装 [Microsoft OLE DB Driver for SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server)。  
-<a name="oracle">9</a> - 对于表格 1200 模型，或者作为表格 1400+ 模型中的“提供程序”数据源时，请指定用于 .NET 的 Oracle 数据提供程序。 如果指定为结构化数据源，请务必[启用 Oracle 托管提供程序](#enable-oracle-managed-provider)。   
+<a name="oracle">9</a> - 对于表格 1200 模型，或者作为表格 1400+ 模型中的“提供程序”数据源时，请指定用于 .NET 的 Oracle 数据提供程序。 如果指定为结构化数据源，请务必 [启用 Oracle 托管提供程序](#enable-oracle-managed-provider)。   
 <a name="teradata">10</a> - 对于表格 1200 模型，或者作为表格 1400+ 模型中的“提供程序”数据源时，请指定用于 .NET 的 Teradata 数据提供程序。  
 <a name="filesSP">11</a> - 不支持本地 SharePoint 中的文件。
 
@@ -120,7 +120,7 @@ ms.locfileid: "87503593"
 
 ## <a name="oauth-credentials"></a>OAuth 凭据
 
-对于在 1400 和更高兼容性级别下使用内存模式的表格模型，Azure SQL 数据库、Azure Synapse（以前称为 SQL 数据仓库）、Dynamics 365 和 SharePoint 列表支持 OAuth 凭据。 Azure Analysis Services 管理 OAuth 数据源的令牌刷新，以避免长时间运行的刷新操作超时。 若要生成有效的令牌，请使用 SSMS 设置凭据。
+对于在 1400 和更高兼容性级别下使用内存模式的表格模型，Azure SQL 数据库、Azure Synapse（以前称为 SQL 数据仓库）、Dynamics 365 和 SharePoint 列表支持 OAuth 凭据。 Azure Analysis Services 管理 OAuth 数据源的令牌刷新，以避免长时间运行的刷新操作超时。 若要生成有效的令牌，请使用 Power Query 设置凭据。
 
 OAuth 凭据不支持直接查询模式。
 
@@ -128,14 +128,14 @@ OAuth 凭据不支持直接查询模式。
 
 在某些情况下，对 Oracle 数据源的 DAX 查询可能会返回意外的结果。 这可能是因为用于数据源连接的访问接口。
 
-如 "[了解提供程序](#understanding-providers)" 部分中所述，表格模型作为*结构化*数据源或*提供程序*数据源连接到数据源。 对于指定为提供程序数据源的 Oracle 数据源的模型，请确保指定的提供程序是适用于 .NET 的 Oracle 数据提供程序（DataAccess）。 
+如 " [了解提供程序](#understanding-providers) " 部分中所述，表格模型作为 *结构化* 数据源或 *提供程序* 数据源连接到数据源。 对于指定为提供程序数据源的 Oracle 数据源的模型，请确保指定的提供程序是 .NET 的 Oracle 数据提供程序 (DataAccess) 。 
 
-如果将 Oracle 数据源指定为结构化数据源，请启用 " **MDataEngine\UseManagedOracleProvider**服务器" 属性。 设置此属性可确保模型使用适用于 .NET 托管提供程序的建议 Oracle 数据提供程序连接到 Oracle 数据源。
+如果将 Oracle 数据源指定为结构化数据源，请启用 " **MDataEngine\UseManagedOracleProvider** 服务器" 属性。 设置此属性可确保模型使用适用于 .NET 托管提供程序的建议 Oracle 数据提供程序连接到 Oracle 数据源。
  
 若要启用 Oracle 托管提供程序：
 
 1. 在 SQL Server Management Studio 中，连接到服务器。
-2. 使用以下脚本创建 XMLA 查询。 将**ServerName**替换为完整的服务器名称，然后执行查询。
+2. 使用以下脚本创建 XMLA 查询。 将 **ServerName** 替换为完整的服务器名称，然后执行查询。
 
     ```xml
     <Alter AllowCreate="true" ObjectExpansion="ObjectProperties" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">

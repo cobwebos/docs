@@ -1,15 +1,15 @@
 ---
 title: 如何移动 Azure 备份恢复服务保管库
-description: 有关如何跨 Azure 订阅和资源组移动恢复服务保管库的说明。
+description: 有关如何在 Azure 订阅和资源组之间移动恢复服务保管库的说明。
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 4751a6068904ef03a4d30d322a285e4074476b70
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: b4de4c58e6a6551fa7c27db9755bb02a11700721
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650907"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755732"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>跨 Azure 订阅和资源组移动恢复服务保管库
 
@@ -50,7 +50,7 @@ ms.locfileid: "88650907"
 
 ## <a name="use-azure-portal-to-move-recovery-services-vault-to-different-resource-group"></a>使用 Azure 门户将恢复服务保管库移到不同的资源组
 
-将恢复服务保管库及其关联的资源移到不同的资源组
+若要将恢复服务保管库及其关联的资源移到不同的资源组，请执行以下操作：
 
 1. 登录 [Azure 门户](https://portal.azure.com/)。
 2. 打开“恢复服务保管库”列表，并选择要移动的保管库。**** 当保管库仪表板打开时，其外观如下图所示。

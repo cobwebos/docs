@@ -1,6 +1,6 @@
 ---
 title: 在 PIM 中使用 Azure 自定义角色-Azure AD |Microsoft Docs
-description: 了解如何在 Azure AD Privileged Identity Management （PIM）中使用 Azure 自定义角色。
+description: 了解如何使用 Azure AD Privileged Identity Management (PIM) 中的 Azure 自定义角色。
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -14,12 +14,12 @@ ms.subservice: pim
 ms.date: 11/08/2019
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1c9255de6b9f449a89a994cb3286139daa28ea9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24b7845ec66a85e6ced4f1df9caec409a94016bf
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87034093"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782594"
 ---
 # <a name="use-azure-custom-roles-in-privileged-identity-management"></a>在 Privileged Identity Management 中使用 Azure 自定义角色
 
@@ -31,7 +31,7 @@ ms.locfileid: "87034093"
 
 ## <a name="create-the-custom-role"></a>创建自定义角色
 
-若要为资源创建自定义角色，请按照[Azure 自定义角色](../role-based-access-control-custom-roles.md)中所述的步骤进行操作。
+若要为资源创建自定义角色，请按照 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)中所述的步骤进行操作。
 
 创建自定义角色后，请提供一个描述性名称，以便可以轻松记住你打算复制的内置角色。
 

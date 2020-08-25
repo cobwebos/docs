@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: bee22391664250888816dc2b4bbb93622cab7942
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: f8522171fca6a88f81c3b8f0161fc382041aae1e
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87335556"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782560"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
@@ -111,13 +111,14 @@ IoT 中心强制实施其他操作限制：
 | 自动设备和模块配置<sup>1</sup> | 每个付费 SKU 中心 100 个配置。 每个免费 SKU 中心 20 个配置。 |
 | IoT Edge 自动部署<sup>1</sup> | 每个部署 50 个模块。 每个付费 SKU 中心 100 个部署（包括分层部署）。 每个免费 SKU 中心 10 个部署。 |
 | 孪生<sup>1</sup> | 所需属性和报告的属性部分的最大大小各为 32 KB。 标记部分的最大大小为 8 KB。 |
-| 共享访问策略 | 共享访问策略的最大数目为 16 |
+| 共享访问策略 | 共享访问策略的最大数目为16。 |
+| CA 证书 | 可以注册的最大 x.509 CA 证书数为25。 |
 
 <sup>1</sup>此功能在 IoT 中心的基本层内不可用。 有关详细信息，请参阅[如何选择正确的 IoT 中心](iot-hub-scaling.md)。
 
 ## <a name="increasing-the-quota-or-throttle-limit"></a>提高配额或限制
 
-无论何时，都可通过[增加 IoT 中心内的预配单位数](iot-hub-upgrade.md)来提高配额或限制。
+在任意给定时间，你都可以通过 [增加 IoT 中心的预配单位数](iot-hub-upgrade.md)来提高配额或限制限制。
 
 ## <a name="latency"></a>延迟
 
@@ -127,9 +128,9 @@ IoT 中心致力于降低所有操作的延迟。 但是，由于网络条件和
 * 在离设备最近的 Azure 区域预配 IoT 中心。
 * 请考虑在设备上或在离设备近的网关上使用 Azure IoT Edge 执行易受延迟影响的操作。
 
-如上所述，多个 IoT 中心单位影响限制，但未提供任何附加延迟权益或保证。
+如前所述，多个 IoT 中心单位影响限制，但未提供任何附加延迟权益或保证。
 
-如果发现操作延迟意外增加，请与 [Microsoft 支持](https://azure.microsoft.com/support/options/)联系。
+如果发现操作延迟意外增加，请与 [Microsoft 支持部门](https://azure.microsoft.com/support/options/)联系。
 
 ## <a name="next-steps"></a>后续步骤
 

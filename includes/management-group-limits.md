@@ -7,16 +7,16 @@ ms.topic: include
 ms.date: 03/26/2020
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: 9b2bf8763d175bca028be1fcceda921e87eb5b23
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 204ca121045d1bd53fd507acc7ea9691bfeac12e
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80334574"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88748832"
 ---
 | 资源 | 限制 |
 | --- | --- |
-| 每个目录的管理组数 | 10,000 |
+| 每 Azure AD 租户的管理组 | 10,000 |
 | 每个管理组的订阅数 | 不受限制。 |
 | 管理组层次结构的级别数 | 根级别加上 6 个级别<sup>1</sup> |
 | 每个管理组的直接父管理组数 | 一种 |
