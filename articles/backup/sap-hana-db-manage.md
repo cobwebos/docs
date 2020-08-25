@@ -3,12 +3,12 @@ title: 管理 Azure VM 上已备份的 SAP HANA 数据库
 description: 本文介绍了对在 Azure 虚拟机上运行的 SAP HANA 数据库进行管理和监视时的常见任务。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 98dd67668d1b88a25dfa3b91174cd96730c435e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7e23ffc2fe39389725519f7b94a0fe6ffaecf69c
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049469"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826695"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>管理和监视已备份的 SAP HANA 数据库
 
@@ -129,7 +129,7 @@ Azure 备份在 Azure 门户的“备份作业”部分中显示所有手动触�
 >[!NOTE]
 > 保留期内的所有更改都将以回溯方式应用于除新恢复点以外的所有旧恢复点。
 >
-> 增量备份策略不能用于 SAP HANA 数据库。 这些数据库目前不支持增量备份。
+> 增量备份策略不能用于 SAP HANA 的数据库。 对于这些数据库，目前不支持增量备份。
 
 ### <a name="modify-policy"></a>修改策略
 
@@ -171,7 +171,7 @@ Azure 备份在 Azure 门户的“备份作业”部分中显示所有手动触�
 
 如果选择保留恢复点，请记住以下详细内容：
 
-* 所有恢复点都将永久保持不变，所有删除操作都应在停止保护时停止，并保留数据。
+* 所有恢复点都将始终保持不变，并且所有的修剪都将停止保护并保留数据。
 * 你将为受保护的实例和使用的存储付费。 有关详细信息，请参阅 [Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。
 * 如果在不停止备份的情况下删除数据源，则新备份会失败。
 
@@ -214,7 +214,7 @@ Azure 备份在 Azure 门户的“备份作业”部分中显示所有手动触�
 
 ### <a name="upgrading-from-sdc-to-mdc-without-a-sid-change"></a>从 SDC 升级到 MDC 而未更改 SID
 
-了解如何在[从 SDC 升级到 MDC 后](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-no-change-in-sid)，继续备份其 SID 尚未更改 SAP HANA 的数据库。
+了解如何在 [从 SDC 升级到 MDC 后](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-no-change-in-sid)，继续备份其 SID 尚未更改 SAP HANA 的数据库。
 
 ### <a name="unregister-an-sap-hana-instance"></a>取消注册 SAP HANA 实例
 

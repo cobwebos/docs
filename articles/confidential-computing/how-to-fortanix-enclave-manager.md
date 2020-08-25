@@ -9,19 +9,19 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: d46354b18d5c3317cc1ed67d839feb26b7b6b5d0
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: b5b0f9acc45dba81bb7653c844bb8c78a8bd29ba
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815838"
+ms.locfileid: "88826287"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>如何：使用 Fortanix Enclave Manager 运行应用程序 
 
 在 Azure 机密计算中使用 [Fortanix Enclave Manager](https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.enclave_manager?tab=Overview) 和 [Fortanix 节点代理](https://azuremarketplace.microsoft.com/marketplace/apps/fortanix.rte_node_agent) 从 [Fortanix](https://www.fortanix.com/)开始运行应用程序。
 
 
-Fortanix 是第三方软件供应商，其中的产品和服务构建在 Azure 基础结构之上。 其他第三方提供商在 Azure 上提供类似的机密计算服务，例如 [Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) 和 [Scone](https://sconedocs.github.io)。  
+Fortanix 是第三方软件供应商，其中的产品和服务构建在 Azure 基础结构之上。 其他第三方提供商在 Azure 上提供类似的机密计算服务。
 
 > [!Note] 
  > 本文档中提及的产品不受 MICROSOFT 控制。 MICROSOFT 仅为你提供此信息，并且对这些非 MICROSOFT 产品的引用不表示 MICROSOFT 认可。
@@ -162,7 +162,7 @@ Fortanix EM 图像是应用程序的软件版本或版本。 每个映像都与�
 
 如果不再需要资源组、虚拟机和关联的资源，可以将其删除。 删除资源组将取消注册与转换后的映像相关联的节点。 
 
-选择虚拟机的资源组，然后选择“删除”。 确认资源组的名称，以完成删除资源的操作。
+选择虚拟机的资源组，然后选择“删除”。 确认资源组名称，以完成资源删除。
 
 若要删除创建的 Fortanix Enclave 管理器帐户，请在 Enclave 管理器中转到 " [帐户" 页](https://em.fortanix.com/accounts) 。 将鼠标悬停在要删除的帐户上。 选择右上角的黑色黑色点，然后选择 " **删除帐户**"。
 
@@ -174,3 +174,4 @@ Fortanix EM 图像是应用程序的软件版本或版本。 每个映像都与�
 
 若要了解有关 Azure 机密计算产品/服务的详细信息，请参阅 [azure 机密计算概述](overview.md)
 
+ 了解如何使用 Azure 上的其他第三方产品（例如 [Anjuna](https://azuremarketplace.microsoft.com/marketplace/apps/anjuna-5229812.aee-az-v1) 和 [Scone](https://sconedocs.github.io)）完成类似的任务。  

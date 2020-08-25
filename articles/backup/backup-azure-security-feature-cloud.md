@@ -3,12 +3,12 @@ title: Azure 备份的软删除
 description: 了解如何在 Azure 备份中使用安全功能，使备份更加安全。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: b3ccd944ce1f6a30b4441c205a83e71374e7aff2
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: d791b76698330cd14c56f01cf5da62c8a64bec29
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763433"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826967"
 ---
 # <a name="soft-delete-for-azure-backup"></a>Azure 备份的软删除
 
@@ -29,7 +29,7 @@ ms.locfileid: "88763433"
 
 软删除在新创建的保管库上默认启用，目的是防止意外或恶意删除备份数据。  建议不要禁用此功能。 唯一应该考虑禁用软删除的情况是，你打算将受保护的项移到新保管库，需要在删除后重新进行保护，因此等不及要求的 14 天（例如在测试环境中）。只有保管库所有者可以禁用此功能。 如果禁用此功能，将来删除任何受保护项将导致立即删除，而无法还原。 禁用此功能之前，以软删除状态存在的备份数据将在 14 天内保持软删除状态。 若要立即永久删除这些项，则需先取消删除，然后再次将其删除，这样就可以永久删除它们。
 
- 请记住，禁用软删除后，将为所有类型的工作负载（包括 SQL server 和 SAP HANA 工作负载）禁用该功能。 例如，为某个订阅启用了 [SQL Server/SAP HANA 预览](./soft-delete-sql-saphana-in-azure-vm.md#steps-to-enroll-in-preview)后，就不可能仅对 SQL Server 或 SAP HANA DB 禁用软删除而仍为同一保管库中的虚拟机保留软删除的启用状态。 可以创建单独的保管库以进行精细控制。
+ 请记住，禁用软删除后，将为所有类型的工作负载（包括 SQL server 和 SAP HANA 工作负载）禁用该功能。 例如，一旦为某个订阅启用了 [SQL Server/SAP HANA 预览版](./soft-delete-sql-saphana-in-azure-vm.md#steps-to-enroll-in-preview) ，就不可能仅对 SQL Server 或 SAP HANA 数据库禁用软删除功能，同时使其为同一保管库中的虚拟机启用。 可以创建单独的保管库以进行精细控制。
 
 ### <a name="disabling-soft-delete-using-azure-portal"></a>使用 Azure 门户禁用软删除
 
@@ -44,9 +44,9 @@ ms.locfileid: "88763433"
 ### <a name="disabling-soft-delete-using-azure-powershell"></a>使用 Azure PowerShell 禁用软删除
 
 > [!IMPORTANT]
-> 使用 Azure PS 软删除所需的 Az.RecoveryServices 版本最低为 2.2.0。 可使用 ```Install-Module -Name Az.RecoveryServices -Force``` 获取最新版本。
+> 使用 Azure PowerShell 进行软删除所需的 Az.RecoveryServices 版本最低为 2.2.0。 可使用 ```Install-Module -Name Az.RecoveryServices -Force``` 获取最新版本。
 
-若要禁用，请使用 [AzRecoveryServicesVaultBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) PS cmdlet。
+若要禁用，请使用 [AzRecoveryServicesVaultBackupProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) PowerShell cmdlet。
 
 ```powershell
 Set-AzRecoveryServicesVaultProperty -VaultId $myVaultID -SoftDeleteFeatureState Disable
@@ -176,7 +176,7 @@ AppVM1           DeleteBackupData     Completed            12/5/2019 12:44:15 PM
 
 ### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>是否可以在 PowerShell 或 CLI 中执行软删除操作？
 
-可以使用 PowerShell 执行软删除操作。 目前不支持 CLI。
+可以使用 PowerShell 执行软删除操作。 目前，CLI 不受支持。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -3,12 +3,12 @@ title: 排查 SQL Server 数据库备份问题
 description: 有关使用 Azure 备份来备份在 Azure VM 上运行的 SQL Server 数据库的故障排除信息。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 98240254a71695fa72acaf5c7f930c11d9f99cae
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 53b701e5bfae9313732f4b76a4e13b63afb3864a
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756905"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826712"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>排查使用 Azure 备份进行 SQL Server 数据库备份的问题
 
@@ -62,7 +62,7 @@ ms.locfileid: "88756905"
 
 | severity | 说明 | 可能的原因 | 建议的操作 |
 |---|---|---|---|
-| 警告 | 此数据库的当前设置不支持关联策略中的特定备份类型。 | <li>只能对 master 数据库执行完整数据库备份操作。 不可能进行差异备份和事务日志备份。 </li> <li>简单恢复模式中的任何数据库都不允许备份事务日志。</li> | 将数据库设置修改为支持策略中的所有备份类型。 或者，将当前策略更改为只包含受支持的备份类型。 否则，在计划备份期间将跳过不受支持的备份类型，或者按需备份的备份作业将失败。
+| 警告 | 此数据库的当前设置不支持关联策略中的特定备份类型。 | <li>只能对 master 数据库执行完整数据库备份操作。 不可能进行差异备份和事务日志备份。 </li> <li>简单恢复模式中的任何数据库都不允许备份事务日志。</li> | 修改数据库设置 sp 支持策略中的所有备份类型。 或者，将当前策略更改为仅包括支持的备份类型。 否则，在计划备份期间将跳过不受支持的备份类型，或者按需备份的备份作业将失败。
 
 ### <a name="usererrorsqlpodoesnotsupportbackuptype"></a>UserErrorSQLPODoesNotSupportBackupType
 

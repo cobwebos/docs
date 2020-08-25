@@ -4,12 +4,12 @@ description: 本文介绍如何使用 REST API 配置、启动和管理 Azure VM
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 89bf2df0b5b9279053ca8258e6d21b00e2789557
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: a0ad08e9fd750166f8df82a1b3a36cecd8f12f27
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762872"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826406"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>通过 REST API 使用 Azure 备份来备份 Azure VM
 
@@ -302,7 +302,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 #### <a name="example-request-body-for-on-demand-backup"></a>按需备份的示例请求正文
 
-以下请求正文定义了触发受保护项的备份所需的属性。 如果未指定保留期，则保留期将为触发备份作业开始后的 30 天。
+以下请求正文定义了触发受保护项的备份所需的属性。 如果未指定保持期，则在备份作业触发时将保留30天。
 
 ```json
 {
@@ -445,7 +445,7 @@ DELETE 操作是一种[异步操作](../azure-resource-manager/management/async-
 |202 已接受     |         |     已接受    |
 
 > [!IMPORTANT]
-> 为了防止意外删除方案，有一个可用于恢复服务保管库的 [软删除功能](use-restapi-update-vault-properties.md#soft-delete-state) 。 如果保管库的软删除状态设置为“已启用”，则删除操作不会立即删除数据。 数据会保留 14 天，然后才会被永久清除。 在这个 14 天内不会向客户收取存储费用。 若要撤消删除操作，请参阅[“撤消删除”部分](#undo-the-deletion)。
+> 为了防止意外删除方案，有一个可用于恢复服务保管库的 [软删除功能](use-restapi-update-vault-properties.md#soft-delete-state) 。 如果保管库的软删除状态设置为 "已启用"，则删除操作将不会立即删除数据。 数据会保留 14 天，然后才会被永久清除。 你不需要支付此14天的存储费用。 若要撤消删除操作，请参阅[“撤消删除”部分](#undo-the-deletion)。
 
 ### <a name="undo-the-deletion"></a>撤消删除
 

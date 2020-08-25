@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/21/2020
-ms.openlocfilehash: ba3c7304b0ce52cb720a9e2ac7ae6cf1b5ffeeea
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 08/25/2020
+ms.openlocfilehash: 0587a179b98a410cdba46b7817d86567f275f25d
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751476"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826814"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Azure HDInsight 发行说明
 
@@ -75,4 +75,4 @@ HDInsight 会持续改善群集的可靠性和性能。
 
 ## <a name="known-issues"></a>已知问题
 
-尝试从 Azure 门户创建 Azure HDInsight 群集并使用 SSH 身份验证类型的公钥时，用户在单击 " **查看 + 创建**" 时遇到错误。 门户中的错误为 "不得包含 SSH 用户名中的任何三个连续字符。" 正在解决此问题;但是，如果遇到此错误，则解决方法是使用 ARM 模板创建群集。 
+Azure 门户中已修复了一个问题，即用户使用 SSH 身份验证类型的公钥创建 Azure HDInsight 群集时遇到错误。 当用户单击 " **查看 + 创建**" 时，他们将收到 "不得包含 SSH 用户名中的任何三个连续字符" 的错误。 此问题已修复，但可能要求你通过按 CTRL + F5 来加载已更正的视图来刷新浏览器缓存。 此问题的解决方法是使用 ARM 模板创建群集。 

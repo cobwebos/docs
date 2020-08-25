@@ -4,12 +4,12 @@ description: 本文介绍如何使用 REST API 创建和管理备份策略（计
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 2fa35ed5e03ad174407e4c82fb5d4bbe69ee8131
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6a045ff1653c58a3a583b6c64941fff26f480861
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497805"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826386"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>使用 REST API 创建 Azure 恢复服务备份策略
 
@@ -129,7 +129,7 @@ PUT https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 ```
 
 > [!IMPORTANT]
-> 计划和保留期的时间格式仅支持日期时间， 不支持单独的时间格式。
+> 计划和保留期的时间格式仅支持日期时间， 它们不支持单独的时间格式。
 
 ## <a name="responses"></a>响应
 

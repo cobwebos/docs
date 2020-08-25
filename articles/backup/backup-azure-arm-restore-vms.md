@@ -4,12 +4,12 @@ description: 使用 Azure 门户从恢复点还原 Azure 虚拟机
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 66d29294d74e9fee28dd88d34f67ed3bdc4b8e7b
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 0607133f26113123f1c75d714c6c71f19cf2db63
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756480"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826508"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -171,8 +171,8 @@ Azure 备份提供多种方法用于还原 VM。
 
 >[!NOTE]
 >
->- 在触发还原后并处于数据传输阶段时，无法取消还原作业。
->- 跨区域还原功能将 (客户管理的密钥) 启用的 Azure Vm 恢复，这些虚拟机不会在启用了 CMK 的恢复服务保管库中备份，如辅助区域中未启用 CMK 的 Vm。
+>- 触发还原并在数据传输阶段中，无法取消还原作业。
+>- 跨区域还原功能将 (客户管理的密钥) 启用的 Azure Vm 恢复，这些虚拟机不会在启用了 CMK 的恢复服务保管库中备份为辅助区域中启用了 CMK 的 Vm。
 >- 在次要区域中恢复所需的 Azure 角色与主要区域中的角色相同。
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>监视次要区域还原作业

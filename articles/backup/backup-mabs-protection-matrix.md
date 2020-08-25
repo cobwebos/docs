@@ -3,12 +3,12 @@ title: MABS（Azure 备份服务器）V3 UR1 保护矩阵
 description: 本文提供了一个支持矩阵，列出了受 Azure 备份服务器保护的所有工作负荷、数据类型和安装。
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: 541f7b18059dd049670b5c42d20ae409b3aee38a
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 70d8b8cd26a40b0c7ec8b538bcb702d281f829e6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660037"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826831"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS（Azure 备份服务器）V3 UR1 保护矩阵
 
@@ -51,7 +51,7 @@ ms.locfileid: "88660037"
 | **工作负载**                                                 | **版本**                                             | **Azure 备份服务器安装**                      | **支持的 Azure 备份服务器** | **保护和恢复**                                 |
 | ------------------------------------------------------------ | ------------------------------------------------------- | ------------------------------------------------------------ | ---------------------------------- | ------------------------------------------------------------ |
 | Hyper-V 主机 - Hyper-V 主机服务器、群集或 VM 上的 MABS 保护代理 | Windows Server 2019、2016、2012 R2、2012               | 物理服务器  <br><br>    Hyper-V 虚拟机 <br><br>    VMware 虚拟机 | V3 UR1                             | 保护：Hyper-V 计算机、群集共享卷 (CSV)  <br><br>    恢复：虚拟机恢复，以及文件和文件夹（仅适用于 Windows）、卷、虚拟硬盘的项级恢复 |
-| VMware VM                                                  | VMware 服务器 5.5、6.0、6.5 或 6.7（经许可版本） | Hyper-V 虚拟机  <br><br>   VMware 虚拟机         | V3 UR1                             | 保护：群集共享卷 (CSV)、NFS 和 SAN 存储中的 VMware VM   <br><br>     恢复：虚拟机恢复，以及文件和文件夹（仅适用于 Windows）、卷、虚拟硬盘的项级恢复 <br><br>    不支持 VMware vApp。 |
+| VMware VM                                                  | VMware 服务器 5.5、6.0、6.5 或 6.7（经许可版本） | Hyper-V 虚拟机  <br><br>   VMware 虚拟机         | V3 UR1                             | 保护：群集共享卷 (CSV)、NFS 和 SAN 存储中的 VMware VM   <br><br>     恢复：虚拟机恢复，以及文件和文件夹（仅适用于 Windows）、卷、虚拟硬盘的项级恢复 <br><br>    不支持 VMware vApps。 |
 
 ## <a name="linux"></a>Linux
 

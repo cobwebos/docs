@@ -4,19 +4,19 @@ description: 了解虚拟机的软删除如何使备份更安全。
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
-ms.openlocfilehash: 19de26024a6a31a213130ec419132fd7dd8134a0
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 90d55e8ed6c831adf4efaf0663d191697177ea63
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763688"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826474"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>虚拟机的软删除
 
 VM 的软删除可保护 VM 的备份免遭意外删除。 即使删除了备份，这些备份也会以软删除状态再保留 14 天。
 
 > [!NOTE]
-> 软删除只是保护已删除的备份数据。 如果删除未备份的 VM，则软删除功能不会保留数据。 应使用 Azure 备份保护所有资源，以确保能够完全复原。
+> 软删除只是保护已删除的备份数据。 如果在没有备份的情况下删除 VM，软删除功能不会保留数据。 应使用 Azure 备份保护所有资源，以确保能够完全复原。
 >
 
 ## <a name="supported-regions"></a>支持的区域
@@ -38,7 +38,7 @@ VM 的软删除可保护 VM 的备份免遭意外删除。 即使删除了备份
    ![Azure 门户中处于软删除状态的 VM 的屏幕截图](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
    > [!NOTE]
-   > 如果保管库中存在任何已软删除的备份项，此时无法删除该保管库。 在永久删除备份项后，尝试删除保管库，保管库中没有剩余的软删除状态项。
+   > 如果保管库中存在任何软删除的备份项，则无法在该时间删除该保管库。 在永久删除备份项后，尝试删除保管库，保管库中没有剩余的软删除状态项。
 
 4. 若要还原软删除的 VM，必须先将其取消删除。 若要取消删除，请选择软删除的 VM，然后选择“取消删除”选项。****
 
@@ -62,13 +62,13 @@ VM 的软删除可保护 VM 的备份免遭意外删除。 即使删除了备份
 ## <a name="soft-delete-for-vms-using-azure-powershell"></a>使用 Azure PowerShell 对 VM 进行软删除
 
 > [!IMPORTANT]
-> 使用 Azure PS 软删除所需的 Az.RecoveryServices 版本最低为 2.2.0。 可使用 ```Install-Module -Name Az.RecoveryServices -Force``` 获取最新版本。
+> 使用 Azure PowerShell 进行软删除所需的 Az.RecoveryServices 版本最低为 2.2.0。 可使用 ```Install-Module -Name Az.RecoveryServices -Force``` 获取最新版本。
 
 如上所述 Azure 门户，使用 Azure PowerShell 时，步骤顺序是相同的。
 
 ### <a name="delete-the-backup-item-using-azure-powershell"></a>使用 Azure PowerShell 删除备份项
 
-使用 [Disable-AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PS cmdlet 删除备份项。
+使用 [AzRecoveryServicesBackupProtection](/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection) PowerShell cmdlet 删除备份项。
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $myBkpItem -RemoveRecoveryPoints -VaultId $myVaultID -Force
@@ -95,7 +95,7 @@ VM;iaasvmcontainerv2;selfhostrg;AppVM1    AzureVM             iaasvmcontainerv2;
 $myBkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -VaultId $myVaultID -Name AppVM1
 ```
 
-然后，使用 [Undo-AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PS cmdlet 执行撤消-删除操作。
+然后，使用 [AzRecoveryServicesBackupItemDeletion](/powershell/module/az.recoveryservices/undo-azrecoveryservicesbackupitemdeletion) PowerShell cmdlet 执行撤消删除操作。
 
 ```powershell
 Undo-AzRecoveryServicesBackupItemDeletion -Item $myBKpItem -VaultId $myVaultID -Force

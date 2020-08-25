@@ -3,12 +3,12 @@ title: DPM 和 MABS Azure Data Box 的脱机备份
 description: 你可以使用 Azure Data Box 将初始备份数据从 DPM 和 MABS 脱机。
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: d6305607170e02c2f6e104ff8b18011b8657947b
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 974be6d337c3376d10e09ba6211f7804c2c8cada
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762447"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824553"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>使用 DPM 和 MABS (预览版的 Azure Data Box 进行脱机种子设定) 
 
@@ -26,7 +26,7 @@ ms.locfileid: "88762447"
 
 - Azure 备份（MARS 代理）可以直接将备份数据写入支持的 Azure Data Box SKU。 此功能使你无需为初始备份数据预配暂存位置。 也不需要使用实用工具来格式化数据并将其复制到磁盘上。
 
-## <a name="supported-platforms"></a>支持的平台
+## <a name="supported-platforms"></a>受支持的平台
 
 支持的平台如下：
 
@@ -67,7 +67,7 @@ DPM/MABS 上运行的 MARS 代理应升级到 [最新版本](https://aka.ms/azur
 在触发脱机备份之前，请确保所需 Data Box 设备处于 "已 *交付* " 状态。 若要订购最符合你要求的 SKU，请参阅[备份数据大小和支持的 Data Box SKU](#backup-data-size-and-supported-data-box-skus)。 执行[本文](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-ordered)中的步骤，订购和接收 Data Box 设备。
 
 > [!IMPORTANT]
-> 不要为**帐户类型**选择*BlobStorage* 。 DPM/MABS 服务器需要支持页 Blob 的帐户，在选择 *BlobStorage* 时不支持该页 blob。 在为 Azure Data Box 作业创建目标存储帐户时，选择 "  **存储 v2 (常规用途 V2) ** 作为 **帐户类型** 。
+> 不要为**帐户类型**选择*BlobStorage* 。 DPM/MABS 服务器需要一个支持页 Blob 的帐户，在选择 *BlobStorage* 时不支持该页 blob。 在为 Azure Data Box 作业创建目标存储帐户时，选择 "  **存储 v2 (常规用途 V2) ** 作为 **帐户类型** 。
 
 ![设置 Azure Data Box](./media/offline-backup-azure-data-box-dpm-mabs/setup-azure-databox.png)
 
@@ -131,7 +131,7 @@ DPM/MABS 服务器在系统上下文中运行，因此需要向连接 Azure Data
     ![选择初始联机复制](./media/offline-backup-azure-data-box-dpm-mabs/choose-initial-online-replication.png)
 
     >[!NOTE]
-    > 选择 **使用 Microsoft 拥有的磁盘传输** 的选项不可用于 MABS v3，因为该功能处于预览阶段。 [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com)如果你想要对 MABS v3 使用此功能，请访问我们的。
+    > **使用 Microsoft 拥有的磁盘选择传输**的选项不适用于 MABS v3，因为该功能处于预览阶段。 [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com)如果你想要对 MABS v3 使用此功能，请访问我们的。
 
 12. 出现提示时，使用对 Azure 订阅具有所有者访问权限的用户凭据登录 Azure。 成功登录后，将显示以下屏幕：
 
@@ -149,7 +149,7 @@ DPM/MABS 服务器在系统上下文中运行，因此需要向连接 Azure Data
           - Azure.Storage       4.6.1<br>
      >  - Azure AD 应用程序注册为 AzureOfflineBackup_\<object GUID of the user>。
 
-13. 选择正确的 Data Box 订单，以便打开包装、连接和解锁 Data Box Disk。 选择“**下一步**”。
+13. 选择正确的 Data Box 订单，以便打开包装、连接和解锁 Data Box Disk。 选择“**下一页**”。
 
     ![选择 Data Box](./media/offline-backup-azure-data-box-dpm-mabs/select-databox.png)
 
@@ -165,7 +165,7 @@ DPM/MABS 服务器在系统上下文中运行，因此需要向连接 Azure Data
     > 例如，如果磁盘的路径为 `\\mydomain\myserver\disk1\` ，并且 *disk1* 包含一个名为 *PageBlob*的目录，则 DPM/MABS 服务器向导上提供的路径为 `\\mydomain\myserver\disk1\` 。
     > 如果[设置 Azure Data Box 100 TB 设备](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box#setup-azure-data-box)，请提供以下信息作为设备 `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` 的网络路径。
 
-15. 选择“**下一步**”。 在 " **摘要** " 页上，检查设置并选择 " **创建组**"。
+15. 选择“**下一页**”。 在 " **摘要** " 页上，检查设置并选择 " **创建组**"。
 
     ![检测 Data Box](./media/offline-backup-azure-data-box-dpm-mabs/detect-databox.png)
 
@@ -234,7 +234,7 @@ DPM 服务器上的 Microsoft Azure 备份 (MAB) 代理会在你的租户中为�
 2. 如果没有其他服务器配置了脱机种子设定并且没有其他服务器依赖于 `AzureOfflineBackup_<Azure User Id>` 应用程序，则从“Azure 门户”>“Azure Active Directory”>“应用程序注册”删除此应用程序。
 
    > [!NOTE]
-   > 检查应用程序 `AzureOfflineBackup_<Azure User Id>` 是否未配置任何其他脱机种子设定，以及是否没有其他服务器依赖于此应用程序。 转到“公钥”部分下的“设置”>“密钥”，它不应添加任何其他“公钥”。 有关参考信息，请查看以下屏幕截图：
+   > 检查应用程序是否 `AzureOfflineBackup_<Azure User Id>` 未配置任何其他脱机种子设定，也没有其他服务器依赖于此应用程序。 请参阅 "公钥" 部分下的 " **设置" > 项** 。 不应添加任何其他 **公钥** 。 有关参考信息，请查看以下屏幕截图：
    >
    > ![公钥](./media/offline-backup-azure-data-box-dpm-mabs/public-keys.png)
 

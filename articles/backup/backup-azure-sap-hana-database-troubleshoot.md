@@ -3,12 +3,12 @@ title: 排查 SAP HANA 数据库备份错误
 description: 介绍如何排查在使用 Azure 备份对 SAP HANA 数据库进行备份时可能发生的常见错误。
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 88d8f5e500c39f51e5bc1afbc2ec7804b9bc79db
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 6216c39231ad17a55f0d428fe5e1f85e64cef403
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503602"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826984"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>排查 Azure 上的 SAP HANA 数据库备份问题
 
@@ -96,7 +96,7 @@ ms.locfileid: "86503602"
 请注意以下几点：
 
 - 默认情况下会使用备份项名称填充还原的数据库名称。 在本例中为 h21(sdc)。
-- 选择 H11 作为目标不会自动更改已还原的数据库名称。 **应将其编辑为 h11(sdc)** 。 对于 SDC，还原的数据库名称将是小写字母形式的目标实例 ID，并且在括号中追加了“sdc”。
+- 选择目标为 "H11" 不会自动更改还原的数据库名称。 **应将其编辑为 h11(sdc)** 。 对于 SDC，还原的数据库名称将是小写字母形式的目标实例 ID，并且在括号中追加了“sdc”。
 - 由于 SDC 只能包含一个数据库，因此还需要单击相应的复选框，以允许使用恢复点数据替代现有的数据库数据。
 - 在 Linux 中，此项输入区分大小写。 因此请小心保留大小写。
 

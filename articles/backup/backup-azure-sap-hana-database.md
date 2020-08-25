@@ -3,12 +3,12 @@ title: 使用 Azure 备份将 SAP HANA 数据库备份到 Azure
 description: 本文介绍如何使用 Azure 备份服务将 SAP HANA 数据库备份到 Azure 虚拟机。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: b4917129b7b6dd3799f5e79dab881a1bcaa130d5
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 61a1dae356209126af47837ec7e8940c394b77a5
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761655"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827046"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>备份 Azure VM 中的 SAP HANA 数据库
 
@@ -63,7 +63,7 @@ SAP HANA 数据库是关键工作负荷，要求较低的恢复点目标 (RPO) �
 
 1. 在“设置”下选择“出站安全规则”。
 
-1. 选择“添加”  。 根据[安全规则设置](../virtual-network/manage-network-security-group.md#security-rule-settings)中所述，输入创建新规则所需的所有详细信息。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为“AzureBackup”。
+1. 选择 **添加** 。 根据[安全规则设置](../virtual-network/manage-network-security-group.md#security-rule-settings)中所述，输入创建新规则所需的所有详细信息。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为“AzureBackup”。
 
 1. 单击“添加”，保存新创建的出站安全规则。
 
@@ -183,7 +183,7 @@ SAP HANA 数据库是关键工作负荷，要求较低的恢复点目标 (RPO) �
 10. 完成定义备份策略后，单击“确定”。
 
 > [!NOTE]
-> 每个日志备份都链接到上一个完整备份，以形成恢复链。 此完整备份将一直保留到最后一个日志备份的保留期结束为止。 这可能意味着完整备份会保留一段额外的时间，以确保所有日志都可以恢复。 假设用户有每周完整备份、每日差异备份和 2 小时日志备份。 所有这些备份都将保留 30 天。 但是，只有在下一个完整备份可用后（即 30 + 7 天后），才能真正清除/删除这个每周完整备份。 假设每周完整备份发生在 11 月 16 日。 根据保留策略，它应保留到 12 月 16 日。 该完整备份的最后一次日志备份发生在下一次计划的完整备份之前，即 11 月 22 日。 必须等到 12 月 22 日此日志备份可用后，才能删除 11 月 16 日的完整备份。 因此，11 月 16 日的完整备份将保留到 12 月 22 日。
+> 每个日志备份都链接到上一个完整备份，以形成恢复链。 此完整备份将一直保留到最后一个日志备份的保留期结束为止。 这可能意味着完整备份会保留一段额外的时间，以确保所有日志都可以恢复。 假设用户有每周完整备份、每日差异备份和 2 小时日志备份。 所有这些备份都将保留 30 天。 但是，只有在下一次完整备份可用之后（即30到7天后），才能真正清除/删除每周的完全备份。 对于示例，每周一次完整备份在11月16日执行。 根据保留策略，它应保留到 12 月 16 日。 该完整备份的最后一次日志备份发生在下一次计划的完整备份之前，即 11 月 22 日。 必须等到 12 月 22 日此日志备份可用后，才能删除 11 月 16 日的完整备份。 因此，11 月 16 日的完整备份将保留到 12 月 22 日。
 
 ## <a name="run-an-on-demand-backup"></a>运行按需备份
 

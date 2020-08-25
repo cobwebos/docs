@@ -1,18 +1,18 @@
 ---
 title: 使用 MABS 备份 Hyper-V 虚拟机
-description: 本文包含使用 Microsoft Azure 备份 Server （MABS）对虚拟机进行备份和恢复的过程。
+description: 本文包含使用 Microsoft Azure 备份 Server (MABS) 备份和恢复虚拟机的过程。
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.openlocfilehash: bf267285e47f6695f2c6104cbc1817f5e733fa29
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 364426956d665d54885182e7b63af93df3d30e1f
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514539"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88823958"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>使用 Azure 备份服务器备份 Hyper-V 虚拟机
 
-本文介绍如何使用 Microsoft Azure 备份 Server （MABS）备份 Hyper-v 虚拟机。
+本文介绍如何使用 Microsoft Azure 备份 Server (MABS) 备份 Hyper-v 虚拟机。
 
 ## <a name="supported-scenarios"></a>支持的方案
 
@@ -139,7 +139,7 @@ MABS 按如下步骤使用 VSS 执行备份。 为清楚起见，本说明中的
     - 恢复到原始实例：恢复到原始实例时，原始 VHD 会被删除。 MABS 使用 Hyper-V VSS 编写器将 VHD 和其他配置文件恢复到原始位置。 在恢复过程结束时，虚拟机仍高度可用。
         必须存在资源组才能进行恢复。 如果其不可用，请恢复到备用位置，然后使虚拟机高度可用。
 
-    - 作为虚拟机恢复到任何主机：MABS 支持备用位置恢复 (ALR)，该功能可将受保护的 Hyper-V 虚拟机无缝恢复到不同的 Hyper-V 主机，而不受处理器体系结构的影响。 恢复到群集节点的 Hyper-V 虚拟机不具有高可用性。 如果选择此选项，恢复向导将向你显示一个用于标识目标和目标路径的附加屏幕。
+    - 作为虚拟机恢复到任何主机：MABS 支持备用位置恢复 (ALR)，该功能可将受保护的 Hyper-V 虚拟机无缝恢复到不同的 Hyper-V 主机，而不受处理器体系结构的影响。 恢复到群集节点的 hyper-v 虚拟机不会高度可用。 如果选择此选项，恢复向导将向你显示一个用于标识目标和目标路径的附加屏幕。
 
     - 复制到网络文件夹：MABS 支持项级恢复 (ILR)，这允许你将文件、文件夹、卷和虚拟硬盘 (VHD) 从主机级别备份的 Hyper-V 虚拟机中进行项级恢复，恢复到网络共享或受 MABS 保护的服务器上的卷。 无需在来宾内部安装 MABS 保护代理即可执行项级恢复。 如果选择此选项，恢复向导将向你显示一个用于标识目标和目标路径的附加屏幕。
 

@@ -3,12 +3,12 @@ title: 大规模配置保管库诊断设置
 description: 使用 Azure Policy 为给定范围内的所有保管库配置 Log Analytics 诊断设置
 ms.topic: conceptual
 ms.date: 02/14/2020
-ms.openlocfilehash: 58ef8af56bb3f44664ffaec6a17bab5f5e92808e
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: dabf9798ba80600d638318304c8ef3c7e40d7ecf
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612497"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824043"
 ---
 # <a name="configure-vault-diagnostics-settings-at-scale"></a>大规模配置保管库诊断设置
 
@@ -78,7 +78,7 @@ Azure 备份提供的报告解决方案利用了 Log Analytics (LA)。 为了将
 >
 > 如果保管库具有已启用资源特定子集的类别的现有诊断设置，并配置为将数据发送到特定的 LA 工作区（例如“工作区 X”），则当策略分配中提供的目标 LA 工作区与“工作区 X”相同时，修正任务将失败（仅针对该保管库） 。
 >
->这是因为，如果在同一资源上由两个不同诊断设置启用的事件以某种形式重叠，则这些设置不能具有与目标相同的 LA 工作区。 你将需要手动解决此故障，方法是导航到相关保管库并使用不同的 LA 工作区作为目标来配置诊断设置。
+>这是因为，如果同一资源的两个不同诊断设置启用的事件在某种形式下 **重叠** ，则设置不能与目标具有相同的 LA 工作区。 你将需要手动解决此故障，方法是导航到相关保管库并使用不同的 LA 工作区作为目标来配置诊断设置。
 >
 > 请注意，如果现有诊断设置仅启用 AzureBackupReport（以工作区 X 为目标），则修正任务不会失败，因为在这种情况下，现有设置启用的事件与修正任务创建的设置启用的事件之间不会重叠。
 

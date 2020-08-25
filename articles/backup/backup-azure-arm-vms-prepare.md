@@ -3,12 +3,12 @@ title: 将 Azure VM 备份到恢复服务保管库中
 description: 介绍如何使用 Azure 备份将 Azure VM 备份到恢复服务保管库中
 ms.topic: conceptual
 ms.date: 07/28/2020
-ms.openlocfilehash: 1ae501be57be672238c8b55f431b6f5962a5fd99
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: fd958fe658306fd068356764100e6aaa15f4fc67
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261933"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826304"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>将 Azure VM 备份到恢复服务保管库中
 
@@ -89,7 +89,7 @@ ms.locfileid: "88261933"
      ![“选择虚拟机”窗格](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
 
     >[!NOTE]
-    > 与保管库位于同一区域和订阅中的所有 Vm 都可用于配置备份。 配置备份时，你可以浏览到虚拟机名称及其资源组，即使你对这些 Vm 没有所需的权限。 如果 VM 处于软删除状态，则不会在此列表中显示。 如果需要重新保护 VM，则需要等待软删除周期过期或从软删除列表中删除 VM。 有关详细信息，请参阅 [适用于 vm 的软删除文章](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal)。
+    > 与保管库位于同一区域和订阅中的所有 Vm 都可用于配置备份。 配置备份时，你可以浏览到虚拟机名称及其资源组，即使你对这些 Vm 没有所需的权限。 如果 VM 处于软删除状态，则在此列表中不可见。 如果需要重新保护 VM，则需要等待软删除周期过期或从软删除列表中删除 VM。 有关详细信息，请参阅 [适用于 vm 的软删除文章](soft-delete-virtual-machines.md#soft-delete-for-vms-using-azure-portal)。
 
 1. 在“备份”中，选择“启用备份”。  这会将策略部署到保管库和 VM，并在 Azure VM 上运行的 VM 代理中安装备份扩展。
 

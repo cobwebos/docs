@@ -3,12 +3,12 @@ title: 还原已加密 VM 的密钥保管库密钥和机密
 description: 了解如何使用 PowerShell 在 Azure 备份中还原密钥保管库密钥和机密
 ms.topic: conceptual
 ms.date: 08/28/2017
-ms.openlocfilehash: 2323ca17dad214d3797b65285e8c79c4140ce240
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 456ce18f253ffa02cd6b13826a7839f18beecba7
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88649527"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827080"
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>使用 Azure 备份还原已加密 VM 的密钥保管库密钥和机密
 
@@ -92,7 +92,7 @@ Restore-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -InputFile $sec
 
 > [!NOTE]
 >
-> * 可以通过引用 $encryptionObject.OsDiskKeyAndSecretDetails.SecretUrl 的输出并使用 secrets/ 后的文本获取 $secretname 值，例如输出机密 URL 为 `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163`，则机密名称为 B3284AAA-DAAA-4AAA-B393-60CAA848AAAA
+> * $Secretname 的值可以通过引用 Secrets/之后的 $encryptionObject 输出并在密码后使用文本（例如，输出机密 URL 为 `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` ，而机密名称为 B3284AAA-DAAA-4AAA-B393-60CAA848AAAA）来获取。
 > * 标记 DiskEncryptionKeyFileName 的值与机密名称相同。
 >
 >
@@ -128,7 +128,7 @@ Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -
 
 > [!NOTE]
 >
-> * 可以通过引用 $rp1.KeyAndSecretDetails.SecretUrl 的输出和使用机密后的文本（例如输出机密 URL 为 `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` 且机密名称为 B3284AAA-DAAA-4AAA-B393-60CAA848AAAA）获取 $secretname 值
+> * 可以通过引用 $rp 1 的输出来获取 $secretname 的值。并 Secrets/之后并在机密后使用文本（例如，输出机密 URL 为， `https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163` 而机密名称为 B3284AAA-DAAA-4AAA-B393-60CAA848AAAA）
 > * 标记 DiskEncryptionKeyFileName 的值与机密名称相同。
 > * 还原密钥并使用 [Get-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/get-azurekeyvaultkey) cmdlet 后，即可从密钥保管库获得 DiskEncryptionKeyEncryptionKeyURL 的值
 >

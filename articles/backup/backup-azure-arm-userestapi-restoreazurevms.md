@@ -4,12 +4,12 @@ description: 本文介绍如何使用 REST API 管理 Azure 虚拟机备份的�
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: eef30808dddfb20d01fcb6e25a88b9a64e4445d8
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 03815cd9956e323583d6d66097e0eeaa3d492f44
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763535"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826355"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 还原 Azure 虚拟机
 
@@ -210,7 +210,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="restore-disks"></a>还原磁盘
 
-如果需要自定义从备份数据创建 VM 的过程，只需将磁盘还原到所选的存储帐户，然后根据要求从这些磁盘创建 VM 即可。 存储帐户应与恢复服务保管库位于同一区域，且不应是区域冗余。 磁盘以及已备份 VM 的配置（“vmconfig.json”）将存储在给定的存储帐户中。 [如上所述，下面](#restore-operations)提供了有关还原磁盘的相关请求正文。
+如果需要自定义从备份数据创建 VM 的过程，只需将磁盘还原到所选存储帐户，并根据其要求从这些磁盘创建 VM。 存储帐户应与恢复服务保管库位于同一区域，且不应是区域冗余。 磁盘以及已备份 VM 的配置 ( "vmconfig.js上的" ) 将存储在给定的存储帐户中。 [如上所述，下面](#restore-operations)提供了有关还原磁盘的相关请求正文。
 
 #### <a name="create-request-body"></a>创建请求正文
 

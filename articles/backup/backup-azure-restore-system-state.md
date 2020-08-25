@@ -3,12 +3,12 @@ title: 将系统状态还原为 Windows Server
 description: 有关从 Azure 中的备份还原 Windows Server 系统状态的分步说明。
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 727268b2dc9473a6bda79f023e8a75202d43afe4
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 1adf20b08a5c7f93108b3af5077afae9555f2219
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263429"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827097"
 ---
 # <a name="restore-system-state-to-windows-server"></a>将系统状态还原为 Windows Server
 
@@ -73,7 +73,7 @@ ms.locfileid: "88263429"
 * *示例保管库* – *源计算机* 和 *目标计算机* 注册到的恢复服务保管库。
 
 > [!NOTE]
-> 从一台计算机创建的备份无法还原到运行更低版本操作系统的计算机。 例如，从 Windows Server 2016 计算机创建的备份不能还原到 Windows Server 2012 R2。 但是，可进行反向操作。 可使用 Windows Server 2012 R2 中的备份还原 Windows Server 2016。
+> 从一台计算机创建的备份无法还原到运行早期版本的操作系统的计算机。 例如，从 Windows Server 2016 计算机创建的备份不能还原到 Windows Server 2012 R2。 但是，可进行反向操作。 可使用 Windows Server 2012 R2 中的备份还原 Windows Server 2016。
 >
 
 1. 在*目标计算机*上打开 " **Microsoft Azure 备份**" 管理单元。

@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 9f92e703dd45e893a3dfdd8a4c1d6aa3e9b8e96e
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0a7a5f21ee868da2b9c3a6c7dc8bb5968531d0d0
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88506492"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824196"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>使用专用虚拟网络进行训练和推理期间的网络隔离
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -72,7 +72,7 @@ __虚拟网络__充当安全边界，可将 Azure 资源与公共 Internet 相�
 如果你的数据存储在虚拟网络中，则必须使用工作区[托管标识](../active-directory/managed-identities-azure-resources/overview.md)授予工作室对你的数据的访问权限。
 
 > [!IMPORTANT]
-> 尽管大多数 studio 都适用于虚拟网络中存储的数据，但集成笔记本不 __会__。 集成笔记本不支持使用虚拟网络中的存储。 相反，可以使用来自计算实例的 Jupyter 笔记本。 有关详细信息，请参阅 [访问计算实例笔记本中的数据](#access-data-in-a-compute-instance-notebook) 部分。
+> 尽管大多数工作室都可与虚拟网络中存储的数据配合使用，但集成笔记本并非如此。 集成笔记本不支持使用虚拟网络中的存储。 但你可以从计算实例使用 Jupyter Notebook。 有关详细信息，请参阅[访问计算实例笔记本中的数据](#access-data-in-a-compute-instance-notebook)部分。
 
 如果无法向工作室授予访问权限，你将收到“`Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.`”错误，以下操作会被禁用：
 
@@ -116,20 +116,20 @@ __虚拟网络__充当安全边界，可将 Azure 资源与公共 Internet 相�
 
 ### <a name="azure-machine-learning-designer-default-datastore"></a>Azure 机器学习设计器默认数据存储
 
-默认情况下，设计器使用附加到工作区的存储帐户来存储输出。 不过，您可以指定它将输出存储到您有权访问的任何数据存储。 如果你的环境使用虚拟网络，则可以使用这些控件确保你的数据保持安全且可访问。
+默认情况下，该设计器使用附加到工作区的存储帐户来存储输出。 不过，可以指定它将输出存储到你有权访问的任何数据存储。 如果环境使用虚拟网络，你可以使用这些控制确保数据保持安全且可访问。
 
-为管道设置新的默认存储：
+若要为管道设置新的默认存储，请执行以下操作：
 
-1. 在 "管道草稿" 中，选择管道标题附近的 " **设置" 齿轮图标** 。
-1. 选择 " **选择默认数据存储**"。
+1. 在管道草稿中，选择管道标题附近的“设置”齿轮图标。
+1. 选择“选择默认数据存储”。
 1. 指定新的数据存储。
 
-还可以基于每个模块覆盖默认数据存储。 这使您可以控制每个模块的存储位置。
+还可以基于每个模块替代默认数据存储。 这使你可以控制每一单个模块的存储位置。
 
 1. 选择要指定其输出的模块。
-1. 展开 " **输出设置** " 部分。
-1. 选择 " **替代默认输出设置**"。
-1. 选择 " **设置输出设置**"。
+1. 展开“输出设置”部分。
+1. 选择“替代默认输出设置”。
+1. 选择“设置输出设置”。
 1. 指定新的数据存储。
 
 ### <a name="azure-data-lake-storage-gen2-access-control"></a>Azure Data Lake Storage Gen2 访问控制
@@ -350,13 +350,13 @@ Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (N
 
 ### <a name="forced-tunneling"></a>强制隧道
 
-如果要在 Azure 机器学习计算中使用 [强制隧道](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm) ，则必须允许从包含计算资源的子网与公共 internet 通信。 此通信用于任务计划和访问 Azure 存储。
+若要将[强制隧道](/azure/vpn-gateway/vpn-gateway-forced-tunneling-rm)与机器学习计算配合使用，必须允许从包含计算资源的子网与公共 Internet 进行通信。 此通信用于计划和访问 Azure 存储的任务。
 
 可以通过两种方式来实现此目的：
 
-* 使用 [虚拟网络 NAT](../virtual-network/nat-overview.md)。 NAT 网关为虚拟网络中的一个或多个子网提供出站 internet 连接。 有关信息，请参阅 [设计具有 NAT 网关资源的虚拟网络](../virtual-network/nat-gateway-resource.md)。
+* 使用[虚拟网络 NAT](../virtual-network/nat-overview.md)。 NAT 网关为虚拟网络中的一个或多个子网提供出站 Internet 连接。 有关信息，请参阅[设计使用 NAT 网关资源的虚拟网络](../virtual-network/nat-gateway-resource.md)。
 
-* 将 [用户定义的路由 (udr) ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) 添加到包含计算资源的子网。 为资源所在区域中的 Azure Batch 服务使用的每个 IP 地址建立一个 UDR。 借助这些 UDR，Batch 服务可以与计算节点进行通信，以便进行任务计划编制。 还要添加资源所在的 Azure 机器学习服务 IP 地址，因为这是访问计算实例所必需的。 若要获取 Batch 服务和 Azure 机器学习服务的 IP 地址列表，请使用以下方法之一：
+* 将[用户定义的路由 (UDR)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview) 添加到包含计算资源的子网。 为资源所在区域中的 Azure Batch 服务使用的每个 IP 地址建立一个 UDR。 借助这些 UDR，Batch 服务可以与计算节点进行通信，以便进行任务计划编制。 还要添加资源所在的 Azure 机器学习服务 IP 地址，因为这是访问计算实例所必需的。 若要获取 Batch 服务和 Azure 机器学习服务的 IP 地址列表，请使用以下方法之一：
 
     * 下载 [Azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=56519)，并在文件中搜索 `BatchNodeManagement.<region>` 和 `AzureMachineLearning.<region>`（其中 `<region>` 是你的 Azure 区域）。
 
@@ -366,6 +366,12 @@ Batch 服务在附加到 VM 的网络接口 (NIC) 级别添加网络安全组 (N
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'Batch')] | [?properties.region=='eastus2']"
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
         ```
+
+        > [!TIP]
+        > 如果你使用的是美国-弗吉尼亚州、美国东部地区或中国东部-2 区域，则这些命令不会返回任何 IP 地址。 而是使用以下链接之一下载 IP 地址列表：
+        >
+        > * [Azure 政府版的 azure IP 范围和服务标记](https://www.microsoft.com/download/details.aspx?id=57063)
+        > * [适用于 Azure 中国的 azure IP 范围和服务标记](https://www.microsoft.com//download/details.aspx?id=57062)
     
     添加 UDR 时，请为每个相关的 Batch IP 地址前缀定义路由，并将“下一跃点类型”设置为“Internet”。  下图显示了 Azure 门户中此 UDR 的示例：
 
@@ -509,29 +515,29 @@ aks_target = ComputeTarget.create(workspace=ws,
 #### <a name="network-contributor-role"></a>网络参与者角色
 
 > [!IMPORTANT]
-> 如果通过提供先前创建的虚拟网络来创建或附加 AKS 群集，则必须向 AKS 群集的服务主体 (SP) 或托管标识授予对包含虚拟网络的资源组的 " _网络参与者_ " 角色。 必须在尝试将内部负载均衡器更改为专用 IP 之前完成此操作。
+> 如果通过提供之前创建的虚拟网络来创建或附加 AKS 群集，则必须向 AKS 群集的服务主体 (SP) 或托管标识授予对包含虚拟网络的资源组的_网络参与者_角色。 必须在尝试将内部负载均衡器更改为专用 IP 之前完成此操作。
 >
-> 若要将标识作为网络参与者添加，请执行以下步骤：
+> 若要将标识添加为网络参与者，请执行以下步骤：
 
-1. 若要查找 AKS 的服务主体或托管标识 ID，请使用以下 Azure CLI 命令。 将 `<aks-cluster-name>` 替换为群集的名称。 将替换 `<resource-group-name>` 为 _包含 AKS 群集_的资源组的名称：
+1. 若要查找 AKS 的服务主体或托管标识 ID，请使用以下 Azure CLI 命令。 将 `<aks-cluster-name>` 替换为群集的名称。 将 `<resource-group-name>` 替换为包含 AKS 群集的资源组的名称：
 
     ```azurecli-interactive
     az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query servicePrincipalProfile.clientId
     ``` 
 
-    如果此命令返回的值 `msi` ，则使用以下命令来标识托管标识的主体 ID：
+    如果此命令返回的值为 `msi`，请使用以下命令来识别托管标识的主体 ID：
 
     ```azurecli-interactive
     az aks show -n <aks-cluster-name> --resource-group <resource-group-name> --query identity.principalId
     ```
 
-1. 若要查找包含虚拟网络的资源组的 ID，请使用以下命令。 将替换 `<resource-group-name>` 为 _包含虚拟网络_的资源组的名称：
+1. 若要查找包含虚拟网络的资源组的 ID，请使用以下命令。 将 `<resource-group-name>` 替换为包含虚拟网络的资源组的名称：
 
     ```azurecli-interactive
     az group show -n <resource-group-name> --query id
     ```
 
-1. 若要将服务主体或托管标识作为网络参与者添加，请使用以下命令。 替换为 `<SP-or-managed-identity>` 服务主体或托管标识返回的 ID。 `<resource-group-id>`将替换为包含虚拟网络的资源组返回的 ID：
+1. 若要将服务主体或托管标识添加为网络参与者，请使用以下命令。 使用为服务主体或托管标识返回的 ID 替换 `<SP-or-managed-identity>`。 使用为包含虚拟网络的资源组返回的 ID 替换 `<resource-group-id>`：
 
     ```azurecli-interactive
     az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
@@ -607,11 +613,11 @@ az rest --method put --uri https://management.azure.com/subscriptions/<subscript
 } 
 ```
 
-将 __现有群集附加__ 到工作区时，必须等到附加操作完成后，才能配置负载均衡器。
+将现有群集附加到工作区时，必须等到附加操作完成后才能配置负载均衡器。
 
-有关附加群集的信息，请参阅 [附加现有的 AKS 群集](how-to-deploy-azure-kubernetes-service.md#attach-an-existing-aks-cluster)。
+有关附加群集的信息，请参阅[附加现有的 AKS 群集](how-to-deploy-azure-kubernetes-service.md#attach-an-existing-aks-cluster)。
 
-附加现有群集后，你可以更新群集以使用专用 IP。
+附加现有群集后，可以更新群集以使用专用 IP。
 
 ```python
 import azureml.core
@@ -637,7 +643,7 @@ Azure 容器实例在部署模型时动态创建。 你必须为部署使用的�
 > [!WARNING]
 > 在虚拟网络中使用 Azure 容器实例时，虚拟网络必须与 Azure 机器学习工作区位于同一资源组中。
 >
-> 在虚拟网络中使用 Azure 容器实例时，工作区的 Azure 容器注册表 (ACR) 也不能在虚拟网络中。
+> 在虚拟网络中使用 Azure 容器实例时，你的工作区的 Azure 容器注册表 (ACR) 不能也在该虚拟网络中。
 
 若要将虚拟网络中的 ACI 用于工作区，请按照以下步骤操作：
 

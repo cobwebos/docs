@@ -3,12 +3,12 @@ title: 删除 Microsoft Azure 恢复服务保管库
 description: 本文介绍了如何先删除依赖项，然后删除 Azure 备份恢复服务保管库。
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: a7e922069f567a0b907c2f2cd28fe09de040cdee
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: c0b75d147abba45a745f811de5e4b8ac45088bd8
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757211"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826729"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>删除 Azure 备份恢复服务保管库
 
@@ -101,7 +101,7 @@ ms.locfileid: "88757211"
     > [!NOTE]
     >
     >- 如果受保护的服务器已与 Azure 服务同步，并且备份项存在，则许可复选框将显示相关备份项的数量，以及用于查看备份项的链接。
-    >- 如果受保护的服务器未与 Azure 服务同步，并且备份项存在，则许可复选框只会显示备份项的数量。
+    >- 如果受保护的服务器未与 Azure 服务同步并且存在备份项，则同意复选框将仅显示备份项的数量。
     >- 如果没有任何备份项，则许可复选框将要求确认删除。
 
 4. 选中许可复选框，然后选择“删除”。
@@ -301,7 +301,7 @@ ms.locfileid: "88757211"
 首先，请阅读 **[开始之前](#before-you-start)** 部分，以了解依赖项和保管库删除过程。
 
 > [!NOTE]
-> 目前，Azure 备份 CLI 仅支持管理 Azure VM 备份，因此，仅当保管库包含 Azure VM 备份时，以下命令才能删除保管库。 如果保管库包含非 Azure VM 类型的任何备份项，则无法使用 Azure 备份 CLI 删除该保管库。
+> 目前，Azure 备份 CLI 仅支持管理 Azure VM 备份，因此，仅当保管库包含 Azure VM 备份时，以下命令才能删除保管库。 如果保管库包含 Azure Vm 以外的其他类型的备份项，则无法使用 Azure 备份 CLI 删除保管库。
 
 若要删除现有的恢复服务保管库，请执行以下步骤：
 

@@ -3,12 +3,12 @@ title: 还原 Azure VM 上的 SQL Server 数据库
 description: 本文介绍如何还原 Azure VM 上运行的、使用 Azure 备份服务备份的 SQL Server 数据库。
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 97cf8a7d7fcae0e31dde14e045b222c5899dbb02
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 682540e498c7531777032b5375f0105c03ce4ec6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921140"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826550"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>还原 Azure VM 上的 SQL Server 数据库
 
@@ -65,7 +65,7 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
     - 最旧和最新的还原点。
     - 处于完整和批量日志记录恢复模式的、且已配置事务日志备份的数据库在过去 24 小时的日志备份状态。
 
-6. 选择 "**还原**"。
+6. 选择“还原”。
 
     ![选择“还原”](./media/backup-azure-sql-database/restore-db.png)
 
@@ -85,7 +85,7 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
 1. 选择要将数据库还原到其中的 SQL Server 名称和实例。
 1. 在“还原数据库名称”框中，输入目标数据库的名称。
 1. 如果适用，请选择“当选定的 SQL 实例上已存在同名的 DB 时覆盖”。****
-1. 选择 "**还原点**"，并选择是[还原到特定的时间点](#restore-to-a-specific-point-in-time)还是[还原到特定的恢复点](#restore-to-a-specific-restore-point)。
+1. 选择 " **还原点**"，并选择是 [还原到特定的时间点](#restore-to-a-specific-point-in-time) 还是 [还原到特定的恢复点](#restore-to-a-specific-restore-point)。
 
     ![选择还原点](./media/backup-azure-sql-database/select-restore-point.png)
 
@@ -93,12 +93,12 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
 
 1. 在“高级配置”菜单中：****
 
-    - 如果要在还原后保留数据库 nonoperational，请**使用 NORECOVERY 启用 restore**。
+    - 如果要在还原后保留数据库 nonoperational，请 **使用 NORECOVERY 启用 restore**。
     - 如果要更改目标服务器上的还原位置，请输入新的目标路径。
 
         ![输入目标路径](./media/backup-azure-sql-database/target-paths.png)
 
-1. 单击 **"确定"** 以触发还原。 在 "**通知**" 区域中跟踪还原进度，或在保管库中的 "**备份作业**" 视图下跟踪还原进度。
+1. 单击 **"确定"** 以触发还原。 在 " **通知** " 区域中跟踪还原进度，或在保管库中的 " **备份作业** " 视图下跟踪还原进度。
 
     > [!NOTE]
     > 时间点还原仅适用于采用完整和批量日志记录恢复模式的数据库日志备份。
@@ -109,7 +109,7 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
 
     ![选择“覆盖数据库”](./media/backup-azure-sql-database/restore-configuration-overwrite-db.png)
 
-2. 在“选择还原点”中选择“日志(时间点)”，以[还原到特定的时间点](#restore-to-a-specific-point-in-time)。  或者选择 "**完全 & 差异**" 以还原到[特定恢复点](#restore-to-a-specific-restore-point)。
+2. 在“选择还原点”中选择“日志(时间点)”，以[还原到特定的时间点](#restore-to-a-specific-point-in-time)。  或者选择 " **完全 & 差异** " 以还原到 [特定恢复点](#restore-to-a-specific-restore-point)。
 
     > [!NOTE]
     > 时间点还原仅适用于采用完整和批量日志记录恢复模式的数据库日志备份。
@@ -118,7 +118,7 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
 
 若要将备份数据作为 .bak 文件而不是数据库还原，请选择“作为文件还原”。**** 将文件转储到指定的路径后，可将这些文件放在要将其作为数据库还原到的任何计算机上。 由于可以将这些文件移到任何计算机上，因此你现在可以跨订阅和区域还原数据。
 
-1. 在 "要**还原的位置和操作方式**" 下，选择 "**还原为文件**"。
+1. 在 "要 **还原的位置和操作方式**" 下，选择 " **还原为文件**"。
 1. 选择要将备份还原到的 SQL Server 名称。
 1. 在“服务器上的目标路径”中，输入在步骤 2 中选择的服务器上的文件夹路径。**** 此位置是服务要将全部所需备份文件转储到的位置。 通常，如果将网络共享路径或已装载的 Azure 文件共享的路径指定为目标路径，会使同一网络中的其他计算机或其上装载的同一 Azure 文件共享更加轻松地访问这些文件。<BR>
 
@@ -126,15 +126,15 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
     >
     >- 运行 `PsExec -s cmd` 以进入 NT AUTHORITY\SYSTEM shell
     >   - 执行 `cmdkey /add:<storageacct>.file.core.windows.net /user:AZURE\<storageacct> /pass:<storagekey>`
-    >   - 使用验证访问`dir \\<storageacct>.file.core.windows.net\<filesharename>`
+    >   - 使用验证访问 `dir \\<storageacct>.file.core.windows.net\<filesharename>`
     >- 将备份保管库中的文件作为路径进行还原 `\\<storageacct>.file.core.windows.net\<filesharename>`<BR>
-    可以从[Sysinternals](/sysinternals/downloads/psexec)页下载 PsExec。
+    可以从 [Sysinternals](/sysinternals/downloads/psexec) 页下载 PsExec。
 
 1. 选择“确定”。
 
     ![选择“作为文件还原”](./media/backup-azure-sql-database/restore-as-files.png)
 
-1. 选择 "**还原点**"，并选择是[还原到特定的时间点](#restore-to-a-specific-point-in-time)还是[还原到特定的恢复点](#restore-to-a-specific-restore-point)。
+1. 选择 " **还原点**"，并选择是 [还原到特定的时间点](#restore-to-a-specific-point-in-time) 还是 [还原到特定的恢复点](#restore-to-a-specific-restore-point)。
 
 1. 与所选恢复点关联的所有备份文件将转储到目标路径中。 您可以使用 SQL Server Management Studio 将文件还原为其上存在的任何计算机上的数据库。
 
@@ -150,7 +150,7 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
     ![打开日历](./media/backup-azure-sql-database/recovery-point-logs-calendar.png)
 
 1. 选择日期后，时间线图会显示连续范围内的可用恢复点。
-1. 在时间线图表中指定恢复时间，或选择一个时间。 然后选择“确定”。
+1. 在时间线图表中指定恢复时间，或选择一个时间。 然后选择“确定”。 
 
 ### <a name="restore-to-a-specific-restore-point"></a>还原到特定还原点
 
@@ -161,11 +161,11 @@ Azure 备份可以还原 Azure VM 上运行的 SQL Server 数据库，如下所�
     ![选择完整恢复点](./media/backup-azure-sql-database/choose-full-recovery-point.png)
 
     >[!NOTE]
-    > 默认情况下，将显示过去30天内的恢复点。 可以通过单击 "**筛选器**" 并选择自定义范围来显示30天之前的恢复点。
+    > 默认情况下，将显示过去30天内的恢复点。 可以通过单击 " **筛选器** " 并选择自定义范围来显示30天之前的恢复点。
 
 ### <a name="restore-databases-with-large-number-of-files"></a>还原包含大量文件的数据库
 
-如果数据库中文件的总字符串大小超过[特定限制](backup-sql-server-azure-troubleshoot.md#size-limit-for-files)，Azure 备份会将数据库文件的列表存储在不同的 pit 组件中，以便在还原操作期间不能设置目标还原路径。 文件将还原到 SQL 默认路径。
+如果数据库中文件的总字符串大小超过 [特定限制](backup-sql-server-azure-troubleshoot.md#size-limit-for-files)，Azure 备份会将数据库文件的列表存储在不同的 pit 组件中，因此在还原操作过程中无法设置目标还原路径。 文件将还原到 SQL 默认路径。
 
   ![还原包含大文件的数据库](./media/backup-azure-sql-database/restore-large-files.jpg)
 

@@ -4,12 +4,12 @@ description: 使用 Azure Monitor 监视 Azure 备份工作负荷及创建自定
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: fbd1c7f5e7fab9f77815e782160e855a9a854dc9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3f5f663a2f0ed0f91cc414d352e975a2ff3b9649
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054609"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827148"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>使用 Azure Monitor 进行大规模监视
 
@@ -46,7 +46,7 @@ Azure 备份在恢复服务保管库中提供[内置的监视和警报功能](ba
 如果需要，可以编辑 Kusto 查询。 选择阈值、期限和频率。 阈值确定何时引发警报。 期限是运行查询的时间范围。 例如，如果阈值大于 0，期限为 5 分钟，频率为 5 分钟，那么，该规则将每隔 5 分钟运行一次查询，并检查前 5 分钟的数据。 如果结果数大于 0，则系统将通过所选的操作组通知你。
 
 > [!NOTE]
-> 若要为在给定日期创建的所有事件/日志每天运行一次预警规则，请将“时间范围”和“频率”值都更改为 1440（即 24小时）。
+> 若要每天对在给定日期创建的所有事件/日志运行一次警报规则，请将 "period" 和 "frequency" 的值更改为1440，即24小时。
 
 #### <a name="alert-action-groups"></a>警报操作组
 

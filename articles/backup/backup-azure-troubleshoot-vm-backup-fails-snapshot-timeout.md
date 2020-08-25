@@ -4,12 +4,12 @@ description: 与代理、扩展和磁盘相关的 Azure 备份失败的症状、
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 26050dfb9fdde5988fe3ae922dae5486d17f4317
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 99e175f20247058a57bb64a47465cce1ce7fbd75
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755362"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826047"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
@@ -119,7 +119,7 @@ Azure VM 代理可能已停止、已过期、处于不一致状态或未安装�
 建议的操作：<br>
 若要解决此问题，请删除 VM 资源组中的锁，并重试触发清理的操作。
 > [!NOTE]
-> 备份服务将创建一个单独的资源组而非 VM 的资源组来存储还原点集合。 建议客户不要锁定为备份服务使用而创建的资源组。 备份服务创建的资源组的命名格式为：AzureBackupRG_`<Geo>`_`<number>` 例如：AzureBackupRG_northeurope_1
+> 备份服务将创建一个单独的资源组而非 VM 的资源组来存储还原点集合。 建议你不要锁定为备份服务使用而创建的资源组。 备份服务创建的资源组的命名格式为： AzureBackupRG_ `<Geo>` _ `<number>` 。 例如： *AzureBackupRG_northeurope_1*
 
 **步骤 1：[删除还原点资源组中的锁](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **步骤 2：[清理还原点集合](#clean_up_restore_point_collection)**<br>
@@ -227,7 +227,7 @@ VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理可帮
 1. 按照[更新 Linux VM 代理](../virtual-machines/extensions/update-linux-agent.md)的说明进行操作。
 
    > [!NOTE]
-   > *强烈建议* 只通过分发存储库更新代理。 建议不要直接从 GitHub 下载代理代码并将其更新。 如果分发没有可用的最新代理，请联系分发支持部门，了解如何安装最新代理。 若要检查最新代理，请转到 GitHub 存储库中的 [Microsoft Azure Linux 代理](https://github.com/Azure/WALinuxAgent/releases)页。
+   > *强烈建议* 只通过分发存储库更新代理。 我们不建议直接从 GitHub 下载代理代码并对其进行更新。 如果分发没有可用的最新代理，请联系分发支持部门，了解如何安装最新代理。 若要检查最新代理，请转到 GitHub 存储库中的 [Microsoft Azure Linux 代理](https://github.com/Azure/WALinuxAgent/releases)页。
 
 2. 运行以下命令，确保 Azure 代理可在 VM 上运行：`ps -e`
 
@@ -297,7 +297,7 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 
 #### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a><a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>通过运行按需备份来清理还原点集合
 
-删除锁后，将触发按需备份。 此操作可以确保自动清理还原点。 预期此按需操作第一次会失败；但是，它可以确保自动完成清理，而无需手动删除还原点。 清理后，下一个计划的备份应会成功。
+删除锁后，将触发按需备份。 此操作可以确保自动清理还原点。 预期此按需操作第一次失败。 但是，它将确保自动清理，而不是手动删除还原点。 清理后，下一个计划的备份应会成功。
 
 > [!NOTE]
 > 自动清理将在触发按需备份的数小时后发生。 如果计划的备份仍然失败，请尝试使用[此处](#clean-up-restore-point-collection-from-azure-portal)列出的步骤手动删除还原点集合。
@@ -320,4 +320,4 @@ VM 备份依赖于向基础存储帐户发出快照命令。 备份失败的原�
 6. 再次重试备份操作。
 
 > [!NOTE]
- >如果资源（RP 集合）具有大量还原点，则从门户中将其删除的操作可能会超时并失败。 这是已知的 CRP 问题，其中所有还原点不会在规定时间内都删除且操作会超时；但是，删除操作通常会在 2 次或 3 次重试后成功。
+ >如果资源（RP 集合）具有大量还原点，则从门户中将其删除的操作可能会超时并失败。 这是一个已知的 CRP 问题，其中所有还原点都不会在规定时间内删除，并且操作将超时。但是，删除操作通常会在两次或三次重试后成功完成。

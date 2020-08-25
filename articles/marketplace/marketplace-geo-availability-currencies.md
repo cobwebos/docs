@@ -7,18 +7,18 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: b1baeaa31eddc13a68f2cc1d374b850f1c1a26bd
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 2ff8d962479188ddf324dc5ff75d22eac4fed3d6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136331"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826763"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>商业市场的地域可用性和货币支持
 
 ## <a name="supported-geographic-locations"></a>支持的地理位置
 
-可在按客户的帐单地址定义的 141 个地理位置购买商业市场产品/服务，并可使用 17 个币种完成交易。 下表列出了每个受支持的地理位置、其[ISO 3166 2 位字母代码](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)和分配的货币。
+可在按客户的帐单地址定义的 141 个地理位置购买商业市场产品/服务，并可使用 17 个币种完成交易。 下表列出了每个受支持的地理位置、其 [ISO 3166 2 位字母代码](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)和分配的货币。
 
 |   国家/地区名称               |   ISO-2   |   货币   |
 |-------------------------------------|-----------|--------------|
@@ -172,12 +172,19 @@ ms.locfileid: "88136331"
 
 ## <a name="how-we-convert-currency"></a>如何转换货币
 
-对于所有付费产品/服务类型，Isv 可以选择输入以 USD 表示的价格或按本地货币上传价格。 在保存页面时，以 USD 输入的价格自动转换为本地货币。 每日更新合作伙伴中心使用费率。 Isv 可以导出价格并查看转换后的等效项。
+对于所有付费产品/服务类型，你可以选择输入以 USD 表示的价格或按本地货币上传价格。 在保存页面时，以 USD 输入的价格自动转换为本地货币。 每日更新合作伙伴中心使用费率。 您可以导出价格并查看转换后的等效项。
 
 若要在发布之前调整任何价格，只需导出定价电子表格，对其进行修改，并将其上传到更改。
 
 > [!NOTE]
 > 发布计划中某个市场的价格后，无法再更改。 若要确保价格发布之前是正确的，请导出定价电子表格，并查看每个市场中的价格。
+
+产品/服务的价格始终以当地货币向客户显示。 在合作伙伴中心中选择的价格将根据你在合作伙伴中心中保存价格时的汇率转换为客户的当地货币。 除非重新发布产品/服务，否则在线商店中的客户所显示的价格不会改变。
+
+Microsoft 以当地货币接收来自客户的付款，并以当地货币为您支付。 Microsoft 使用购买日的汇率将客户本地货币转换为本地货币。
+
+> [!NOTE]
+> Microsoft 使用 Microsoft 国库券的汇率来转换优惠价格。
 
 ## <a name="retrieving-currency-information-by-api"></a>按 API 检索货币信息
 
@@ -189,7 +196,7 @@ ms.locfileid: "88136331"
 - [创建 Azure 容器产品/服务](partner-center-portal/create-azure-container-offer.md)
 - [创建 Azure 虚拟机套餐](partner-center-portal/azure-vm-create-offer.md)
 - [创建咨询服务套餐](partner-center-portal/create-consulting-service-offer.md)
-- [为客户参与 & PowerApps 产品/服务创建 Dynamics 365](partner-center-portal/create-new-customer-engagement-offer.md)
+- [创建 Dynamics 365 for Customer Engagement & PowerApps 套餐](partner-center-portal/create-new-customer-engagement-offer.md)
 - [Dynamics 365 for Operations 产品/服务](partner-center-portal/create-new-operations-offer.md)
 - [Dynamics 365 Business Central 产品/服务](partner-center-portal/create-new-business-central-offer.md)
 - [创建 IoT Edge 模块产品/服务](partner-center-portal/azure-iot-edge-module-creation.md)

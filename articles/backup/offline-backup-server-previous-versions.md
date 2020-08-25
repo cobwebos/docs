@@ -3,12 +3,12 @@ title: 脱机备份 Data Protection Manager (DPM) 和 Microsoft Azure 备份 Ser
 description: 借助 Azure 备份，可以使用 Azure 导入/导出服务在网外发送数据。 本文介绍以前版本的 DPM 和 Azure 备份服务器的脱机备份工作流。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: e986baaf6ac2943bd210761ff2194eacdee5984a
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 45518607b96848dc211c1a787ecfa85432cd842e
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88261916"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826593"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM 和 Azure 备份服务器 (早期版本的脱机备份工作流) 
 
@@ -46,7 +46,7 @@ Azure 备份的脱机种子设定过程与 [Azure 导入/导出服务](../storag
 > * 使用 MABS 备份所有工作负荷和文件。
 
 >[!NOTE]
->Azure CSP 订阅不支持用于 DPM 2019 RTM 和更早版本以及 MABS v3 RTM 和更早版本的脱机种子设定。 仍支持通过网络进行联机备份。
+>Azure CSP 订阅不支持用于 DPM 2019 RTM 和更早版本的脱机种子设定以及 MABS v3 RTM 和更早版本。 仍支持通过网络进行联机备份。
 
 ## <a name="prerequisites"></a>先决条件
 

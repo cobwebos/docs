@@ -3,12 +3,12 @@ title: 使用 MARS 代理将文件还原到 Windows 服务器
 description: 在本文中，了解如何使用 Microsoft Azure 恢复服务 (MARS) 代理将存储在 Azure 中的数据还原到 Windows 服务器或 Windows 计算机。
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: d9bc22204156f7562290f53db77272b9cabe6c69
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: e5158681971c5c10e813187fedb61bc0022ee9e1
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757075"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827063"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>使用 MARS 代理将文件还原到 Windows 服务器
 
@@ -47,7 +47,7 @@ ms.locfileid: "88757075"
 
     !["恢复数据" 向导的屏幕截图 (还原到相同计算机，请选择 "恢复模式" 页) ](./media/backup-azure-restore-windows-server/samemachine_selectrecoverymode_instantrestore.png)
    > [!IMPORTANT]
-   > 还原单个文件和文件夹的选项需要 .NET Framework 4.5.2 或更高版本。 如果未看到“单个文件和文件夹”选项，则必须将 .NET Framework 升级到 4.5.2 或更高版本，然后重试。
+   > 还原单个文件和文件夹的选项需要 .NET Framework 4.5.2 或更高版本。 如果看不到 " **单个文件和文件夹** " 选项，则必须将 .NET Framework 升级到4.5.2 或更高版本，然后重试。
 
    > [!TIP]
    > 使用“单个文件和文件夹”选项可以快速访问恢复点数据。 它适用于恢复单个文件（总大小不超过 80 GB），并且在恢复期间提供高达 6 MBps 的传输或复制速度。 “卷”选项恢复指定卷中的所有备份数据。 此选项提供更快的传输速度（最高 40 MBps），非常适合恢复大型数据或整个卷。
@@ -75,7 +75,7 @@ ms.locfileid: "88757075"
     !["恢复数据" 向导的屏幕截图 "浏览和恢复文件" 页面 (还原到相同的计算机) -确认恢复卷卸载](./media/backup-azure-restore-windows-server/samemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > 如果不选择“卸载”，恢复卷将保持装载 6 个小时（从装载时算起）。 但是，如果正在持续进行文件复制，装载时间延长至最多 24 小时。 装载卷时，不会运行任何备份操作。 计划为在装载卷时运行的任何备份操作会在卸载恢复卷后运行。
+    > 如果未选择 " **卸载**"，恢复卷将保持装载6个小时（从装载的时间开始）。 但是，如果正在持续进行文件复制，装载时间延长至最多 24 小时。 装载卷时，不会运行任何备份操作。 计划为在装载卷时运行的任何备份操作会在卸载恢复卷后运行。
     >
 
 ## <a name="use-instant-restore-to-restore-data-to-an-alternate-machine"></a>使用即时还原将数据还原到另一台计算机
@@ -138,7 +138,7 @@ ms.locfileid: "88757075"
     ![卸载卷 (还原到备用计算机) ](./media/backup-azure-restore-windows-server/alternatemachine_unmount_instantrestore.png)
 
     > [!Important]
-    > 如果不选择“卸载”，恢复卷将保持装载 6 个小时（从装载时算起）。 但是，如果正在持续进行文件复制，装载时间延长至最多 24 小时。 装载卷时，不会运行任何备份操作。 计划为在装载卷时运行的任何备份操作会在卸载恢复卷后运行。
+    > 如果未选择 " **卸载**"，恢复卷将保持装载6个小时（从装载的时间开始）。 但是，如果正在持续进行文件复制，装载时间延长至最多 24 小时。 装载卷时，不会运行任何备份操作。 计划为在装载卷时运行的任何备份操作会在卸载恢复卷后运行。
     >
 
 ## <a name="next-steps"></a>后续步骤

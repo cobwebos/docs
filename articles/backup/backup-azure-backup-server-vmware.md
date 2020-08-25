@@ -3,12 +3,12 @@ title: 使用 Azure 备份服务器备份 VMware VM
 description: 本文介绍如何使用 Azure 备份服务器备份 VMware vCenter/ESXi 服务器上运行的 VMware VM。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 892d308df15ef745f34419ec315e2c5000b0852c
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: f498a7b7d2faf9ff857b504043233c46c843a961
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263531"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826933"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>使用 Azure 备份服务器备份 VMware VM
 
@@ -167,15 +167,15 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 | Virtual machine.Guest Operations.Guest Operation Queries                   | Virtual machine.Guest Operations.Guest Operation Queries                   |
 | Virtual machine .Interaction .Device connection                            | Virtual machine .Interaction .Device connection                            |
 | Virtual machine .Interaction .Guest operating system management by VIX API | Virtual machine .Interaction .Guest operating system management by VIX API |
-| Virtual machine.Interaction.Power Off                                    | Virtual machine.Interaction.Power Off                                    |
-| Virtual machine.Inventory.Create new                                      | Virtual machine.Inventory.Create new                                      |
+| Virtual machine.Interaction.Power Off                                    | Virtual machine .Interaction .Power Off                                    |
+| Virtual machine.Inventory.Create new                                      | Virtual machine .Inventory.Create new                                      |
 | Virtual machine .Inventory.Remove                                          | Virtual machine .Inventory.Remove                                          |
 | Virtual machine .Inventory.Register                                        | Virtual machine .Inventory.Register                                        |
 | Virtual machine .Provisioning.Allow disk access                            | Virtual machine .Provisioning.Allow disk access                            |
 | Virtual machine .Provisioning.Allow file access                            | Virtual machine .Provisioning.Allow file access                            |
 | Virtual machine .Provisioning.Allow read-only disk access                  | Virtual machine .Provisioning.Allow read-only disk access                  |
 | Virtual machine .Provisioning.Allow virtual machine download               | Virtual machine .Provisioning.Allow virtual machine download               |
-| Virtual machine .Snapshot management. 创建快照                      | Virtual machine .Snapshot management. Create snapshot                      |
+| Virtual machine .Snapshot management. Create snapshot                      | Virtual machine .Snapshot management. Create snapshot                      |
 | Virtual machine .Snapshot management.Remove Snapshot                       | Virtual machine .Snapshot management.Remove Snapshot                       |
 | Virtual machine .Snapshot management.Revert to snapshot                    | Virtual machine .Snapshot management.Revert to snapshot                    |
 
@@ -281,7 +281,7 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
     ![指定凭据](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
-6. 选择 " **添加** " 将 VMware 服务器添加到 "服务器" 列表中。 然后，选择“下一步”  。
+6. 选择 " **添加** " 将 VMware 服务器添加到 "服务器" 列表中。 选择“下一步”  。
 
     ![添加 VMWare 服务器和凭据](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
@@ -309,14 +309,14 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
 1. 在 " **选择保护组类型** " 页上，选择 " **服务器** "，然后选择 " **下一步**"。 此时会显示“选择组成员”页。
 
-1. 在“选择组成员”中，选择要备份的 VM（或 VM 文件夹）。 然后，选择“下一步”  。
+1. 在“选择组成员”中，选择要备份的 VM（或 VM 文件夹）。 选择“下一步”  。
 
     - 选择某个文件夹时，也会选择该文件夹中的 VM 或子文件夹进行备份。 可以取消选中不想要备份的文件夹或 VM。
 1. 如果 VM 或文件夹已在备份，则无法选择它。 这可以确保不会为 VM 创建重复的恢复点。
 
     ![选择组成员](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
-1. 在“选择数据保护方法”页中，输入保护组的名称和保护设置。 若要备份到 Azure，请将短期保护设置为“磁盘”，并启用联机保护。 然后，选择“下一步”  。
+1. 在“选择数据保护方法”页中，输入保护组的名称和保护设置。 若要备份到 Azure，请将短期保护设置为“磁盘”，并启用联机保护。 选择“下一步”  。
 
     ![选择数据保护方法](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
@@ -347,17 +347,17 @@ Azure 备份服务器需要一个有权访问 V-Center 服务器/ESXi 主机的�
 
     ![选择副本创建方法](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. 在“一致性检查选项”中，选择如何以及何时自动执行一致性检查。 然后，选择“下一步”  。
+1. 在“一致性检查选项”中，选择如何以及何时自动执行一致性检查。 选择“下一步”  。
       - 当副本数据变得不一致时，可以运行一致性检查；也可以根据设置的计划运行该检查。
       - 如果不想配置自动一致性检查，可运行手动检查。 为此，请右键单击保护组并选择“执行一致性检查”。
 
-1. 在“指定联机保护数据”页中，选择要备份的 VM 或 VM 文件夹。 您可以单独选择成员，或选择 " **全选** " 以选择所有成员。 然后，选择“下一步”  。
+1. 在“指定联机保护数据”页中，选择要备份的 VM 或 VM 文件夹。 您可以单独选择成员，或选择 " **全选** " 以选择所有成员。 选择“下一步”  。
 
     ![指定在线保护数据](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. 在“指定联机备份计划”页中，指定将数据从本地存储备份到 Azure 的频率。
 
-    - 将根据计划生成数据的云恢复点。 然后，选择“下一步”  。
+    - 将根据计划生成数据的云恢复点。 选择“下一步”  。
     - 生成恢复点后，该恢复点将传输到 Azure 中的恢复服务保管库。
 
     ![指定联机备份计划](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)

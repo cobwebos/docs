@@ -4,12 +4,12 @@ description: 有关如何在 Azure 订阅和资源组之间移动恢复服务保
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: b4de4c58e6a6551fa7c27db9755bb02a11700721
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 0b06b12c2bb989e4c0fc4e04440fc5f452df2da3
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755732"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827114"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>跨 Azure 订阅和资源组移动恢复服务保管库
 
@@ -106,7 +106,7 @@ ms.locfileid: "88755732"
 7. 选择**我了解，在将其更新为使用新的资源 id 选项进行确认，然后选择 "确定" 之前，与移动资源关联的工具和脚本将不起作用**。 **OK**
 
 > [!NOTE]
-> 不支持跨订阅的备份（RS 保管库和受保护 VM 位于不同的订阅中）。 此外，在执行保管库移动操作期间，无法将存储冗余选项从本地冗余存储 (LRS) 修改为全局冗余存储 (GRS)，反之亦然。
+> 跨订阅备份 (RS vault 和受保护的 Vm 在不同的订阅中) 不是受支持的方案。 此外，还不能在保管库移动操作过程中修改本地冗余存储 (LRS) 到全局冗余存储的存储冗余选项 (GRS) ，反之亦然。
 >
 >
 

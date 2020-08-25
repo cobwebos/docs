@@ -3,19 +3,19 @@ title: 将 SQL Server 数据库备份到 Azure
 description: 本文介绍如何将 SQL Server 备份到 Azure。 此外还介绍 SQL Server 的恢复。
 ms.topic: conceptual
 ms.date: 06/18/2019
-ms.openlocfilehash: edcc77c98737b9f4e76ade0471d273f5e0070969
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 88ac95a3e21269ccb5ca2c0fed1c1444af2f4d11
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763416"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826916"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>关于 Azure VM 中的 SQL Server 备份
 
 [Azure 备份](backup-overview.md)提供了一个基于流的专业解决方案，用于备份在 Azure VM 中运行的 SQL Server。 此解决方案考虑到了 Azure 备份的零基础结构备份、长期保留和集中管理的优点。 它还特别为 SQL Server 提供了以下优势：
 
 1. 工作负荷感知备份，支持所有备份类型（完整备份、差异备份和日志备份）
-2. 15 分钟 RPO（恢复点目标），频繁进行日志备份
+2. 通过频繁的日志备份 (恢复点目标) 15 分钟 RPO
 3. 最多一秒的时点恢复
 4. 单数据库级别的备份和还原
 
@@ -27,7 +27,7 @@ ms.locfileid: "88763416"
 
 * 指定要保护的 SQL Server VM 并查询其中的数据库后，Azure 备份服务将在此 VM 上以 `AzureBackupWindowsWorkload` 扩展名安装工作负荷备份扩展。
 * 此扩展包含协调器和 SQL 插件。 协调器负责触发多种操作（如配置备份、备份和还原）的工作流，插件负责实际数据流。
-* 为了能够发现此 VM 上的数据库，Azure 备份将创建帐户 `NT SERVICE\AzureWLBackupPluginSvc`。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。 `NT SERVICE\AzureWLBackupPluginSvc` 帐户是[虚拟服务帐户](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)，因此不需要任何密码管理。 Azure 备份利用 `NT AUTHORITY\SYSTEM` 帐户进行数据库发现/查询，因此此帐户需是 SQL 上的公共登录名。 如果 SQL Server VM 不是从 Azure 市场创建的，你可能会收到错误 UserErrorSQLNoSysadminMembership。 如果发生此错误，请[遵照这些说明](#set-vm-permissions)予以解决。
+* 为了能够发现此 VM 上的数据库，Azure 备份将创建帐户 `NT SERVICE\AzureWLBackupPluginSvc`。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。 该 `NT SERVICE\AzureWLBackupPluginSvc` 帐户是一个 [虚拟服务帐户](/windows/security/identity-protection/access-control/service-accounts#virtual-accounts)，因此不需要任何密码管理。 Azure 备份使用 `NT AUTHORITY\SYSTEM` 帐户进行数据库发现/查询，因此此帐户必须是 SQL 上的公用登录。 如果 SQL Server VM 不是从 Azure 市场创建的，你可能会收到错误 UserErrorSQLNoSysadminMembership。 如果发生此错误，请[遵照这些说明](#set-vm-permissions)予以解决。
 * 在所选数据库上触发配置保护后，备份服务将使用备份计划和其他策略详细信息设置协调器，扩展将这些详细信息本地缓存在 VM 上。
 * 在计划的时间，协调器与插件通信，并开始使用 VDI 从 SQL 服务器流式处理备份数据。  
 * 该插件会直接将数据发送到恢复服务保管库，从而无需暂存位置。 Azure 备份服务在存储帐户中加密和存储数据。

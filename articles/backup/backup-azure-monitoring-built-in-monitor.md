@@ -4,12 +4,12 @@ description: 本文介绍使用 Azure 门户对 Azure 备份工作负荷执行�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 9a4558367d3af6858310ce4455cbf1df2a596312
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 2fae7cfdb8b316341e01d15b43811d3f0e7638ef
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763467"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827182"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>监视 Azure 备份工作负荷
 
@@ -30,7 +30,7 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 - Azure 工作负荷备份，例如 SQL 和 SAP HANA 备份
 - Microsoft Azure 恢复服务 (MARS) 代理
 
-不会显示 System Center Data Protection Manager (SC-DPM) 和 Microsoft Azure 备份服务器 (MABS) 中的作业。
+System Center Data Protection Manager (SC-DPM) Microsoft Azure 备份 Server (MABS) 中的作业不会显示。
 
 > [!NOTE]
 > Azure VM 中的 Azure 工作负荷（例如 SQL 和 SAP HANA 备份）包含大量的备份作业。 例如，日志备份可能每隔 15 分钟运行一次。 因此，对于此类数据库工作负荷，只会显示用户触发的操作。 不显示计划的备份操作。
@@ -55,7 +55,7 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 - Microsoft Azure 恢复服务 (MARS) 代理
 
 > [!NOTE]
-> 此处不会显示 System Center Data Protection Manager (SC-DPM) 和 Microsoft Azure 备份服务器 (MABS) 中的警报。
+>  (SC-DPM) Data Protection Manager 的警报，Microsoft Azure 备份 Server (MABS) 未在此处显示。
 
 ### <a name="consolidated-alerts"></a>合并的警报
 
@@ -83,7 +83,7 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 ## <a name="notification-for-backup-alerts"></a>备份警报的通知
 
 > [!NOTE]
-> 只能通过 Azure 门户来配置通知。 不支持使用 PS/CLI/REST API/Azure 资源管理器模板。
+> 只能通过 Azure 门户来配置通知。 不支持 PS/CLI/REST API/Azure 资源管理器模板支持。
 
 一旦引发警报，用户就会收到通知。 Azure 备份通过电子邮件提供内置通知机制。 可以指定在生成警报时接收通知的个人电子邮件地址或通讯组列表。 还可以选择是要接收每个警报的通知，还是将这些警报分组成按小时摘要，然后接收通知。
 

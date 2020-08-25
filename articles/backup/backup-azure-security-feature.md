@@ -4,12 +4,12 @@ description: 了解如何在 Azure 备份中使用安全功能，使备份更加
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
-ms.openlocfilehash: 170ecf364e01ba4b098da289f9d213716e74e0ee
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: a793b67b88f11988a584e3f57a296c69606cdd5f
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757024"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826899"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>有助于保护使用 Azure 备份的混合备份的安全功能
 
@@ -20,14 +20,14 @@ ms.locfileid: "88757024"
 - **恢复**。 删除的备份数据自删除之日起将另外保留 14 天。 这可以确保能够在给定的时间段内恢复数据，因此即使遭到攻击，也不会丢失数据。 此外，还保留了更多的最小恢复点，以防止数据损坏。
 
 > [!NOTE]
-> 如果使用基础结构即服务 (IaaS) VM 备份，则不应启用安全功能。 这些功能对于 IaaS VM 备份尚不可用，因此启用这些功能没有任何影响。 只有使用以下项才应启用安全功能： <br/>
+> 如果使用基础结构即服务 (IaaS) VM 备份，则不应启用安全功能。 这些功能对于 IaaS VM 备份尚不可用，因此启用这些功能不会产生任何影响。 只有使用以下项才应启用安全功能： <br/>
 >
 > - **Azure 备份代理**。 最小代理版本 2.0.9052。 启用这些功能后，应升级到此代理版本，以执行关键操作。 <br/>
 > - **Azure 备份服务器**。 Azure 备份服务器 Update 1 的最低 Azure 备份代理版本为 2.0.9052。 <br/>
 > - **System Center Data Protection Manager**。 Data Protection Manager 2012 R2 UR12 或 Data Protection Manager 2016 UR2 的最低 Azure 备份代理版本为 2.0.9052。 <br/>
 
 > [!NOTE]
-> 这些功能仅可用于恢复服务保管库。 默认情况下，所有新创建的恢复服务保管库均具有这些功能。 对于现有的恢复服务保管库，用户可以使用以下部分所述步骤启用这些功能。 这些功能在启用后，会应用到所有注册到保管库的恢复服务代理计算机、Azure 备份服务器实例以及 Data Protection Manager 服务器。 启用此设置是一次性操作，启用这些功能后不能禁用它们。
+> 这些功能仅可用于恢复服务保管库。 默认情况下，所有新创建的恢复服务保管库均具有这些功能。 对于现有的恢复服务保管库，用户可以使用以下部分所述步骤启用这些功能。 这些功能在启用后，会应用到所有注册到保管库的恢复服务代理计算机、Azure 备份服务器实例以及 Data Protection Manager 服务器。 启用此设置是一次性操作，在启用这些功能后，您将无法禁用这些功能。
 >
 
 ## <a name="enable-security-features"></a>启用安全功能
@@ -84,7 +84,7 @@ ms.locfileid: "88757024"
 
 > [!NOTE]
 >
-> 目前，对于 DPM 和 MABS，**停止保护并删除数据**不支持安全 PIN。
+> 目前，不支持通过删除 DPM 和 MABS **数据的停止保护** 安全 pin。
 
 若要接收此 PIN，请执行以下操作：
 

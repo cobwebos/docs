@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: 7d9bc6365070c0aec96def2f55758204925fe7ba
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: e3f078cdaa54246d91e6bff5393171c05935d755
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88205944"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826780"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Azure 门户中的键盘快捷方式
 
@@ -52,6 +52,10 @@ ms.locfileid: "88205944"
 |转到“所有资源” |G+A |
 |转到“资源组” |G+R |
 |打开此位置的左边栏项 |G+数字|
+
+## <a name="keyboard-shortcuts-for-specific-pages-in-the-azure-portal"></a>Azure 门户中特定页面的键盘快捷方式
+
+- [Azure Resource Graph 资源管理器](../governance/resource-graph/reference/keyboard-shortcuts.md)
 
 ## <a name="next-steps"></a>后续步骤
 

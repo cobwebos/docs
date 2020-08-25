@@ -3,12 +3,12 @@ title: 使用 Azure Policy 在创建 VM 时自动启用备份
 description: 本文介绍如何使用 Azure Policy 为在给定范围内创建的所有 VM 自动启用备份
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: fd54c25899bc1e58a753821d2c7c2df8ff213865
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: de4923000bc842203535e03727fd532c67a8f517
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763586"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826066"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>使用 Azure Policy 在创建 VM 时自动启用备份
 
@@ -52,7 +52,7 @@ ms.locfileid: "88763586"
 
 > [!NOTE]
 >
-> 建议不要一次将此策略分配给超过 200 个 VM。 如果将此策略分配给超过 200 个 VM，则可能导致备份触发时间比计划指定的时间晚几个小时。
+> 建议不要一次将此策略分配到200个以上的 Vm。 如果将策略分配给超过200个 Vm，则可能会导致在数小时后触发备份，超过计划所指定的时间。
 
 ## <a name="next-steps"></a>后续步骤
 

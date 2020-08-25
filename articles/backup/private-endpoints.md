@@ -3,12 +3,12 @@ title: 专用终结点
 description: 了解创建 Azure 备份的专用终结点的过程以及使用专用终结点帮助维护资源安全的方案。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: bbb59439677f6c7297aabbecbafeb04327f482b5
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 5c2c994b48fb2b950afb67f5c8b6d3c4f7d01e39
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762906"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826644"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 备份的专用终结点
 
@@ -60,7 +60,7 @@ ms.locfileid: "88762906"
 1. 此时将生成一个“对象 ID”，它是保管库的托管标识。
 
     >[!NOTE]
-    >启用后，不得禁用托管标识（即使是暂时禁用）。 禁用托管标识可能导致出现不一致的行为。
+    >启用后， **不** 能 (禁用托管标识，即使暂时) 也是如此。 禁用托管标识可能导致出现不一致的行为。
 
 ## <a name="dns-changes"></a>DNS 更改
 
@@ -192,7 +192,7 @@ ms.locfileid: "88762906"
 ## <a name="adding-dns-records"></a>添加 DNS 记录
 
 >[!NOTE]
-> 如果使用的是集成的 DNS 区域，则不需要执行此步骤。 但是，如果你已创建自己的 Azure 专用 DNS 区域，或者使用的是自定义专用 DNS 区域，请确保按照此部分中的说明进行输入。
+> 如果使用的是集成 DNS 区域，则不需要执行此步骤。 但是，如果你已创建自己的 Azure 专用 DNS 区域，或者使用的是自定义专用 DNS 区域，请确保按照此部分中的说明进行输入。
 
 为保管库创建可选的专用 DNS 区域和专用终结点后，需要将 DNS 记录添加到 DNS 区域。 可以手动执行此操作，也可以使用 PowerShell 脚本执行此操作。 只需对备份 DNS 区域执行此操作，Blob 和队列的区域会自动更新。
 

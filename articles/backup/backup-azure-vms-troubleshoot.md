@@ -4,12 +4,12 @@ description: 在本文中，学习如何排查在备份和还原 Azure 虚拟机
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 104fb177a1379d5a09dc54cf6f78c401744d697f
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: bf2a811098138663f1b7f2acd174d6bca4aa6150
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763297"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826234"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上的备份失败问题
 
@@ -23,12 +23,12 @@ ms.locfileid: "88763297"
 
 * 确保 VM 代理（WA 代理）为[最新版本](./backup-azure-arm-vms-prepare.md#install-the-vm-agent)。
 * 确保 Windows 或 Linux VM OS 版本受支持，详见 [IaaS VM 备份支持矩阵](./backup-support-matrix-iaas.md)。
-* 验证另一备份服务是否在运行。
+* 验证其他备份服务未运行。
   * 若要确保没有快照扩展问题，请[卸载扩展，然后强制重新加载并重试备份](./backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)。
 * 验证 VM 是否已建立 Internet 连接。
-  * 确保另一备份服务未运行。
+  * 请确保其他备份服务未运行。
 * 在 `Services.msc` 中确保 **Windows Azure 来宾代理**服务处于“正在运行”状态。 如果 **Windows Azure 来宾代理**服务缺失，请按照[在恢复服务保管库中备份 Azure VM](./backup-azure-arm-vms-prepare.md#install-the-vm-agent) 中的说明来安装它。
-* **事件日志**可能会显示其他备份产品（例如 Windows Server 备份）的备份故障，而不是因 Azure 备份导致的故障。 通过以下步骤确定问题是否来自 Azure 备份：
+* **事件日志**可能会显示来自其他备份产品的备份失败，例如 Windows Server backup，不是由于 Azure 备份而导致的。 通过以下步骤确定问题是否来自 Azure 备份：
   * 如果事件源或消息的“备份”条目出现错误，请检查 Azure IaaS VM Backup 备份是否已成功，以及是否已使用所需快照类型创建一个还原点。
   * 如果 Azure 备份正常运行，则问题可能出在其他备份解决方案。
   * 下面是一个示例，介绍了事件查看器错误 517，其中的 Azure 备份正常运行，但“Windows Server 备份”发生故障：<br>
@@ -71,7 +71,7 @@ ms.locfileid: "88763297"
 错误代码：UserErrorFsFreezeFailed <br/>
 错误消息：未能冻结一个或多个 VM 装入点来获取文件系统一致快照。
 
-* 使用“umount”命令卸载未清除文件系统状态的设备。
+* 使用 **卸载** 命令卸载未清理其文件系统状态的设备。
 * 使用 **fsck** 命令在这些设备上运行文件系统一致性检查。
 * 再次装载设备，并重试备份操作。</ol>
 
@@ -114,7 +114,7 @@ ms.locfileid: "88763297"
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
 ```
 
-添加此注册表项将导致无法为 blob 快照创建线程，并将防止超时。
+添加此注册表项将导致不会为 blob 快照创建线程，并阻止超时。
 
 ### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure - 无法分析备份扩展的配置
 
@@ -167,12 +167,12 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 
 由于某些附加的磁盘已超出快照限制，因此快照操作失败。 请完成以下故障排除步骤，然后重试该操作。
 
-* 删除不需要的磁盘 Blob 快照。 注意不要删除磁盘 blob，只应删除快照 blob。
-* 如果在 VM 磁盘存储帐户上启用了软删除，请配置软删除保留，以使现有快照小于任何时间点允许的最大值。
+* 删除磁盘 blob-不需要的快照。 请注意不要删除磁盘 blob。 只应删除快照 blob。
+* 如果在 VM 磁盘存储帐户上启用软删除，请配置软删除保留，以使现有快照小于任何时间点允许的最大值。
 * 如果在备份的 VM 中启用了 Azure Site Recovery，请执行以下步骤：
 
   * 确保在 /etc/azure/vmbackup.conf 中将“isanysnapshotfailed”的值设置为 false
-  * 在不同时间计划 Azure Site Recovery，使其不会与备份操作产生冲突。
+  * 请在不同时间计划 Azure Site Recovery，使其不会对备份操作产生冲突。
 
 ### <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive - 快照操作因 VM 资源不足而失败
 

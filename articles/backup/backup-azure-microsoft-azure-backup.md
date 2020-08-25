@@ -3,12 +3,12 @@ title: 使用 Azure 备份服务器备份工作负荷
 description: 本文介绍了如何准备环境，以使用 Microsoft Azure 备份服务器 (MABS) 来保护和备份工作负荷。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 802b7919abcd510db68396b2d9576f8cacc06a6e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 74d4d01d535f7148d3c3878a431dac2f951ae134
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88756004"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827369"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器
 
@@ -62,7 +62,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 可以使用 Windows Server 重复数据删除来删除 DPM 存储中的重复数据。 了解有关在 Hyper-V VM 中部署时 [DPM 和重复数据删除](/system-center/dpm/deduplicate-dpm-storage?view=sc-dpm-2019)如何配合工作的详细信息。
 
 > [!NOTE]
-> Azure 备份服务器设计为在专用的单一用途服务器上运行。 不能在以下计算机上安装 Azure 备份服务器：
+> Azure 备份服务器设计为在专用的单一用途服务器上运行。 无法在上安装 Azure 备份服务器：
 >
 > * 作为域控制器运行的计算机
 > * 安装了应用程序服务器角色的计算机
@@ -70,7 +70,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 > * 运行 Exchange Server 的计算机
 > * 作为群集节点的计算机
 >
-> Windows Server Core 或 Microsoft Hyper-V Server 不支持安装 Azure 备份服务器。
+> Windows Server Core 或 Microsoft Hyper-V 服务器不支持安装 Azure 备份服务器。
 
 请始终将 Azure 备份服务器加入域。 如果计划将服务器移到其他域，请先安装 Azure 备份服务器，然后将服务器加入到新域。 部署之后，*不支持*将现有 Azure 备份服务器计算机移到新域中。
 
@@ -170,7 +170,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
     >[!NOTE]
     >如果你要使用自己的 SQL Server，受支持的 SQL Server 版本包括 SQL Server 2014 SP1 或更高版本、2016 和 2017。  所有 SQL Server 版本都应当是 Standard 或 Enterprise 64 位。
-    >Azure 备份服务器不能与远程 SQL Server 实例配合使用。 Azure 备份服务器使用的实例需在本地。 如果对 MABS 使用现有的 SQL Server，则 MABS 安装程序仅支持使用 SQL Server 命名实例。
+    >Azure 备份服务器不能与远程 SQL Server 实例一起使用。 Azure 备份服务器使用的实例需在本地。 如果使用现有的 SQL server 进行 MABS，则 MABS 安装程序仅支持使用 SQL server 的 *命名实例* 。
 
     ![Azure 备份服务器 - SQL 检查](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
@@ -292,10 +292,10 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 | 连接状态 | Azure 订阅 | 备份到 Azure | 备份到磁盘 | 从 Azure 还原 | 从磁盘还原 |
 | --- | --- | --- | --- | --- | --- |
 | 连续 |活动 |允许 |允许 |允许 |允许 |
-| 连续 |已过期 |已停止 |已停止 |允许 |允许 |
+| 连续 |Expired |已停止 |已停止 |允许 |允许 |
 | 连续 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
 | 连接断开超过 15 天 |活动 |已停止 |已停止 |允许 |允许 |
-| 连接断开超过 15 天 |已过期 |已停止 |已停止 |允许 |允许 |
+| 连接断开超过 15 天 |Expired |已停止 |已停止 |允许 |允许 |
 | 连接断开超过 15 天 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>连接断开后进行恢复
@@ -333,7 +333,7 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 
 > [!NOTE]
 >
-> MABS V2 不是安装 MABS V3 的先决条件。 但是，只能从 MABS V2 升级到 MABS V3。
+> MABS V2 并非安装 MABS V3 的必备组件。 但是，只能从 MABS V2 升级到 MABS V3。
 
 使用以下步骤升级 MABS：
 
@@ -343,7 +343,7 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 
    > [!NOTE]
    >
-   > 升级 SQL 实例期间请不要退出，否则会卸载 SQL 报告实例，导致重新升级 MABS 的尝试失败。
+   > 升级 SQL 实例时，请勿退出。 退出将卸载 SQL reporting 实例，因此尝试重新升级 MABS 将会失败。
 
    > [!IMPORTANT]
    >

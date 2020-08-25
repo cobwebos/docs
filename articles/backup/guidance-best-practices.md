@@ -3,12 +3,12 @@ title: 指南和最佳做法
 description: 了解将云和本地工作负载备份到云的最佳实践和指南
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 21d3d6b8983d8ce3d0b563785423bc1e503649f3
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 6daa3051a00093f74b8b5dac5c81befe006107a4
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757585"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825573"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>将云和本地工作负载备份到云
 
@@ -108,7 +108,7 @@ Azure 备份策略有两个组件： *计划* (何时进行备份) 和 *保留* 
 
 * 长期保留：
   * 计划的 (符合性要求) -如果事先知道数据是当前时间所必需的年份，请使用长期保留。
-  * 计划外的 (按需需求) -如果事先不知道，则可以使用按需使用特定的自定义保留设置， (这些自定义保留设置不受策略设置) 影响。
+  * 计划外的 (按需需求) -如果事先不知道，请使用特定自定义保留设置的按需， (这些自定义保留设置不受策略设置) 影响。
 
 * 使用自定义保留的按需备份-如果需要执行不是通过备份策略计划的备份，则可以使用按需备份。 这对于执行不适合你计划的备份的备份或执行细化备份 (例如，每天有多个 IaaS VM 备份，因为计划的备份每日只允许一个备份) 。 请务必注意，在计划策略中定义的保留策略不适用于按需备份。
 
@@ -247,13 +247,13 @@ Azure 备份服务的功能可让你灵活地管理你的成本，并仍能满�
 
 * Azure 备份通过电子邮件为故障、警告和关键操作提供 **内置的警报** 通知机制。 你可以指定要在生成警报时通知的单个电子邮件地址或通讯组列表。 还可以选择是要接收每个警报的通知，还是将这些警报分组成按小时摘要，然后接收通知。
   * 这些警报由服务定义，并提供对有限方案的支持-备份/还原失败、停止保护并保留数据/停止保护并删除数据等等。 [在此处了解详细信息](backup-azure-monitoring-built-in-monitor.md#alert-scenarios)。
-  * 如果执行了破坏性操作（如 "停止保护并删除数据"），则会发出警报，并将电子邮件发送给订阅所有者、管理员和共同管理员，即使未为恢复服务保管库配置通知。
+  * 如果执行了破坏性操作（如 "停止保护并删除数据"），则会发出警报，并将电子邮件发送给订阅所有者、管理员和共同管理员，即使 **未** 为恢复服务保管库配置通知。
   * 某些工作负荷可能会产生较高的故障频率 (例如，每15分钟 SQL Server) 。 若要防止在出现每个失败事件时引发的警报淹没，会合并警报。 [在此处了解详细信息](backup-azure-monitoring-built-in-monitor.md#consolidated-alerts)。
   * 生成的警报不能自定义，并且仅限于 Azure 门户中定义的电子邮件。
 
 * 如果需要 **创建自定义警报** (例如，成功作业的警报) 然后使用 Log Analytics。 在 Azure Monitor 中，可以在 Log Analytics 工作区内创建你自己的警报。  (DPM/MABS) 的混合工作负载还可以将数据发送到 LA，并使用 LA 在 Azure 备份支持的工作负荷之间提供常见警报。
 
-* 还可以通过内置的恢复服务保管库 **活动日志**获取通知;但是，它支持有限的方案并且不适用于计划备份之类的操作，这些操作与活动日志相比，与资源日志更好。 若要了解有关这些限制的详细信息，以及如何使用 Log Analytics 的工作区对受 Azure 备份保护的所有工作负荷进行大规模监视和警报，请参阅此 [文](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale)。
+* 还可以通过内置的恢复服务保管库 **活动日志**获取通知。 但是，它支持有限的方案并且不适用于计划备份之类的操作，这些操作与活动日志相比，与资源日志更好。 若要了解有关这些限制的详细信息，以及如何使用 Log Analytics 的工作区对受 Azure 备份保护的所有工作负荷进行大规模监视和警报，请参阅此 [文](backup-azure-monitoring-use-azuremonitor.md#using-log-analytics-to-monitor-at-scale)。
 
 ## <a name="next-steps"></a>后续步骤
 

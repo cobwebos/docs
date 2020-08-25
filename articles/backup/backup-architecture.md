@@ -3,12 +3,12 @@ title: 体系结构概述
 description: 概述 Azure 备份服务使用的体系结构、组件和流程。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: 6da6cedc7841e31876bef8788458531b1ec375a8
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 1081de6b467b896bd8cc62b84c9a67c329b11e02
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652774"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824026"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure 备份体系结构和组件
 
@@ -143,7 +143,7 @@ Azure 备份提供不同的备份代理，具体取决于要备份哪种类型�
 1. 创建快照后，数据将传输到保管库。
     - 只会复制自上次备份以来发生更改的数据块。
     - 不会加密数据。 Azure 备份可以备份使用 Azure 磁盘加密进行加密的 Azure VM。
-    - 快照数据可能不会立即复制到保管库。 在高峰期，可能需要好几个小时才能完成备份。 每日备份策略规定的 VM 备份总时间不会超过 24 小时。
+    - 快照数据可能不会立即复制到保管库。 在高峰期，可能需要好几个小时才能完成备份。 每日备份策略规定，VM 总备份时间不超过 24 小时。
 1. 将数据发送到保管库后，将创建恢复点。 默认情况下，快照会保留两天，然后再删除。 此功能允许从这些快照执行还原操作，从而缩短还原时间。 它减少了从保管库转换数据和复制回数据所需的时间。 请参阅 [Azure 备份即时还原功能](./backup-instant-restore-capability.md)。
 
 无需显式允许 internet 连接来备份 Azure Vm。

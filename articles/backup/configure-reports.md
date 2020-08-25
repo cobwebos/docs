@@ -3,12 +3,12 @@ title: 配置 Azure 备份报表
 description: 使用 Log Analytics 和 Azure 工作簿配置和查看 Azure 备份的报表
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: bcb9e75cea06be6ce69c6baccb5ac252c1666d4d
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 4e5e9258540e5cdab14e438cde96cd89aad7498d
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755256"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88826848"
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 
@@ -82,14 +82,14 @@ Azure 备份还提供内置 Azure Policy 定义，该定义会自动配置给定
 
    ![“备份项”选项卡](./media/backup-azure-configure-backup-reports/backup-items.png)
 
-##### <a name="usage"></a>用法
+##### <a name="usage"></a>使用情况
 
 使用此选项卡查看备份的按键帐单参数。 此选项卡上显示的信息可归于计费实体（受保护容器）级别。 例如，如果要将 DPM 服务器备份到 Azure，则可以查看 DPM 服务器使用的受保护实例和云存储的趋势。 同样，如果在 Azure 备份中使用 SQL，或者在 Azure 备份中使用 SAP HANA，此选项卡将在包含这些数据库的虚拟机级别上提供与使用情况相关的信息。
 
    ![“使用情况”选项卡](./media/backup-azure-configure-backup-reports/usage.png)
 
 > [!NOTE]
-> 对于 DPM 工作负荷，用户可能会发现，在报表中显示的使用值与 "恢复服务保管库 **概述** " 选项卡中所示的聚合使用值相比，在报表中所示的使用值之间，每个 DPM) 服务器 (的顺序略有不同。这种差异的原因在于，为备份注册的每个 DPM 服务器都有关联的 "metadata" 数据源，该数据源未作为报告的项目出现。
+> 对于 DPM 工作负荷，用户可能会发现，在报表中显示的使用值与 "恢复服务保管库 **概述** " 选项卡中所示的聚合使用值相比，在报表中所示的使用值之间，每个 DPM) 服务器 (的顺序略有不同。这种差异的原因在于，为备份注册的每个 DPM 服务器都有关联的 "元数据" 数据源，而不会将其视为报告的项目。
 
 ##### <a name="jobs"></a>作业
 
@@ -109,7 +109,7 @@ Azure 备份还提供内置 Azure Policy 定义，该定义会自动配置给定
 
 ###### <a name="inactive-resources"></a>非活动资源
 
-使用此视图，您可以识别在很长一段时间内未成功备份的备份项。 这可能意味着正在备份的底层计算机不再存在 (，因此会导致备份失败) ，或者存在一些问题，导致无法可靠地执行备份。
+使用此视图，您可以识别在很长一段时间内未成功备份的那些备份项。 这可能意味着正在备份的底层计算机不再存在 (，因此会导致备份失败) ，或者存在一些问题，导致无法可靠地执行备份。
 
 若要查看非活动资源，请导航到 " **优化** " 选项卡，然后选择 " **非活动资源** " 磁贴。 选择此磁贴会显示一个网格，其中包含所选范围内的所有非活动资源的详细信息。 默认情况下，此网格显示在过去7天内没有恢复点的项。 若要在不同时间范围内查找非活动资源，可以在该选项卡的顶部调整 **时间范围** 筛选器。
 
