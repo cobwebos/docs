@@ -134,8 +134,10 @@
           href: load-balancer-troubleshoot.md
         - name: 排查常见部署错误
           href: load-balancer-common-deployment-errors.md
-        - name: 解决常见的出站连接问题
+        - name: 排查常见的出站连接问题
           href: troubleshoot-outbound-connection.md
+        - name: 排查资源运行状况和入站可用性问题
+          href: troubleshoot-rhc.md
 - name: 参考
   items:
     - name: 代码示例

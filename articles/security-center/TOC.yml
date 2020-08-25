@@ -39,6 +39,8 @@
       href: security-center-enable-data-collection.md
     - name: 设置电子邮件通知
       href: security-center-provide-security-contact-details.md
+    - name: 使用 ARM 模板创建对警报的自动响应
+      href: quickstart-automation-alert.md
 - name: 教程
   items:
     - name: 规划和操作指南

@@ -83,6 +83,8 @@
           href: devtest-lab-internal-support-message.md
         - name: 设置策略和计划
           href: devtest-lab-set-lab-policy.md
+        - name: "配置实验室标识\_"
+          href: configure-lab-identity.md
         - name: 将实验室配置为使用远程桌面网关
           href: configure-lab-remote-desktop-gateway.md
         - name: 在实验室中发布公告
@@ -95,8 +97,6 @@
           href: devtest-lab-auto-startup-vm.md
         - name: 缩放实验室
           href: devtest-lab-scale-lab.md
-        - name: 为实验室 VM 启用托管标识
-          href: enable-managed-identities-lab-vms.md
         - name: 管理虚拟机基础映像
           items:
             - name: 配置 Azure 市场映像
@@ -167,6 +167,8 @@
           href: start-machines-use-automation-runbooks.md
         - name: 从另一个实验室导入虚拟机
           href: import-virtual-machines-from-another-lab.md
+        - name: 为实验室 VM 启用托管标识
+          href: enable-managed-identities-lab-vms.md
     - name: 在实验室中使用环境
       items:
         - name: 创建环境

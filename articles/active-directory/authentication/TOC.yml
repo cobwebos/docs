@@ -43,7 +43,7 @@
         - name: 许可证
           href: concept-mfa-licensing.md
         - name: 用于 Office 365 的 MFA
-          href: 'https://docs.microsoft.com/office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide'
+          href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication?view=o365-worldwide
         - name: 常见问题解答
           href: multi-factor-authentication-faq.md
     - name: 无密码身份验证
@@ -87,7 +87,7 @@
         - name: Directory 联合身份验证
           items:
             - name: Windows Server 2016 AD FS 适配器
-              href: 'https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa'
+              href: /windows-server/identity/ad-fs/operations/configure-ad-fs-and-azure-mfa
             - name: 联合身份验证服务
               href: multi-factor-authentication-get-started-adfs.md
             - name: 使用 AD FS
@@ -119,7 +119,7 @@
         - name: 无密码的手机登录
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello for Business
-          href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'
+          href: /windows/security/identity-protection/hello-for-business/hello-identity-verification
     - name: 安全信息注册
       items:
         - name: 启用合并注册
@@ -220,7 +220,7 @@
 - name: 参考
   items:
     - name: MFA 用户指南
-      href: ./end-user/current/multi-factor-authentication-end-user.md
+      href: ../user-help/multi-factor-authentication-end-user-first-time.md
     - name: 代码示例
       href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
     - name: Azure PowerShell cmdlet
@@ -234,7 +234,7 @@
     - name: Azure 反馈论坛
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: Microsoft Q&A 问题页面
-      href: 'https://docs.microsoft.com/answers/topics/azure-active-directory.html'
+      href: /answers/topics/azure-active-directory.html
     - name: 定价
       href: 'https://azure.microsoft.com/pricing/details/active-directory/'
     - name: 服务更新

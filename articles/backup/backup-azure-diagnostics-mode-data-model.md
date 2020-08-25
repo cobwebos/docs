@@ -3,12 +3,12 @@ title: Azure Monitor 日志数据模型
 description: 本文介绍 Azure 备份数据的 Azure Monitor Log Analytics 数据模型详细信息。
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 73247dac1ca829a7893192101da0981c3edcf8d8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 897431feae6cd3166b594d4d6848204df76fe3fa
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539068"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761400"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Azure 备份数据的 Log Analytics 数据模型
 
@@ -461,35 +461,37 @@ ms.locfileid: "86539068"
     ````
 
 ## <a name="v1-schema-vs-v2-schema"></a>V1 架构与 V2 架构
-之前，Azure 备份代理和 Azure VM 备份的诊断数据已发送到称为“V1 架构”的架构中的 Azure 诊断表。 随后，添加了新列以支持其他方案和工作负载，并且已将诊断数据推送到称为“V2 架构”的新架构。 
 
-出于向后兼容的原因，Azure 备份代理和 Azure VM 备份的诊断数据当前发送到 V1 和 V2 架构中的 Azure 诊断表（V1 架构现在位于弃用路径上）。 可以通过在日志查询中筛选 SchemaVersion_s=="V1" 的记录来确定 Log Analytics 中的哪些记录属于 V1 架构。 
+之前，Azure 备份代理和 Azure VM 备份的诊断数据已发送到称为“V1 架构”的架构中的 Azure 诊断表。 随后，添加了新列以支持其他方案和工作负载，并且已将诊断数据推送到称为“V2 架构”的新架构。  
+
+出于向后兼容的原因，Azure 备份代理和 Azure VM 备份的诊断数据当前发送到 V1 和 V2 架构中的 Azure 诊断表（V1 架构现在位于弃用路径上）。 可以通过在日志查询中筛选 SchemaVersion_s=="V1" 的记录来确定 Log Analytics 中的哪些记录属于 V1 架构。
 
 请参阅上面所述的[数据模型](#using-azure-backup-data-model)中的第三列“说明”，以确定哪些列仅属于 V1 架构。
 
 ### <a name="modifying-your-queries-to-use-the-v2-schema"></a>修改查询以使用 V2 架构
+
 由于 V1 架构位于弃用路径上，因此建议在 Azure 备份诊断数据的所有自定义查询中仅使用 V2 架构。 下面的示例演示如何更新查询以删除 V1 架构的依赖项：
 
-1. 确定查询是否正在使用仅适用于 V1 架构的任何字段。 假设你有一个用于列出所有备份项及其关联的受保护服务器的查询，如下所示：
+1. 确定查询是否正使用仅适用于 V1 架构的任何字段。 假设你有一个用于列出所有备份项及其关联的受保护服务器的查询，如下所示：
 
-````Kusto
-AzureDiagnostics
-| where Category=="AzureBackupReport"
-| where OperationName=="BackupItemAssociation"
-| distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
-````
+    ````Kusto
+    AzureDiagnostics
+    | where Category=="AzureBackupReport"
+    | where OperationName=="BackupItemAssociation"
+    | distinct BackupItemUniqueId_s, ProtectedServerUniqueId_s
+    ````
 
-以上查询使用仅适用于 V1 架构 ProtectedServerUniqueId_s 字段。 此字段的 V2 架构等效项 ProtectedContainerUniqueId_s （请参阅上表）。 该字段 BackupItemUniqueId_s 适用于 V2 架构，并且可以在此查询中使用相同的字段。
+    以上查询使用字段 ProtectedServerUniqueId_s，该字段仅适用于 V1 架构。 此字段的 V2 架构等效项是 ProtectedContainerUniqueId_s（请参阅上表）。 字段 BackupItemUniqueId_s 甚至适用于 V2 架构，并且可以在此查询中使用相同的字段。
 
-2. 将查询更新为使用 V2 架构字段名称。 建议在所有查询中使用筛选器 "where SchemaVersion_s = =" V2 ""，以便查询仅分析与 V2 架构相对应的记录：
+2. 更新查询以使用 V2 架构字段名称。 建议在所有查询中使用筛选器 'where SchemaVersion_s=="V2"'，以便查询仅解析与 V2 架构对应的记录：
 
-````Kusto
-AzureDiagnostics
-| where Category=="AzureBackupReport"
-| where OperationName=="BackupItemAssociation"
-| where SchemaVersion_s=="V2"
-| distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s 
-````
+    ````Kusto
+    AzureDiagnostics
+    | where Category=="AzureBackupReport"
+    | where OperationName=="BackupItemAssociation"
+    | where SchemaVersion_s=="V2"
+    | distinct BackupItemUniqueId_s, ProtectedContainerUniqueId_s
+    ````
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: bd575eb5f646b749b431516670c64c764f4d4c9c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: a78e1b9cc1d9ca8a815fdb586287983020232fd1
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828500"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88782934"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor 常见问题解答
 
@@ -81,6 +81,10 @@ Azure 数据资源管理器是一项快速且高度可缩放的数据探索服�
 ### <a name="how-do-i-retrieve-log-data"></a>如何检索日志数据？
 可使用以 Kusto 查询语言 (KQL) 编写的日志查询从 Log Analytics 工作区检索所有数据。 你可编写自己的查询，也可使用包含特定应用程序或服务的日志查询的解决方案和见解。 请参阅 [Azure Monitor 中的日志查询概述](log-query/log-query-overview.md)。
 
+### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>能否从 Log Analytics 工作区中删除数据？
+根据数据的 [保留期](platform/manage-cost-storage.md#change-the-data-retention-period)，将数据从工作区中删除。 出于隐私或合规性原因，可以删除特定数据。 有关详细信息，请参阅 [如何导出和删除私有数据](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data) 。
+
+
 ### <a name="what-is-a-log-analytics-workspace"></a>什么是 Log Analytics 工作区？
 Azure Monitor 收集的所有日志数据都存储在 Log Analytics 工作区中。 工作区实质上是从各种来源收集日志数据的容器。 可为所有监视数据使用一个 Log Analytics 工作区，也可要求使用多个工作区。 请参阅[设计 Azure Monitor 日志部署](platform/design-logs-deployment.md)。
 
@@ -137,7 +141,7 @@ Azure 诊断扩展适用于 Azure 虚拟机，它将数据收集到 Azure Monito
 到 Azure Monitor 的流量使用 Microsoft 对等互连 ExpressRoute 线路。 有关不同类型的 ExpressRoute 流量的说明，请参阅 [ExpressRoute 文档](../expressroute/expressroute-faqs.md#supported-services)。 
 
 ### <a name="how-can-i-confirm-that-the-log-analytics-agent-is-able-to-communicate-with-azure-monitor"></a>如何确认 Log Analytics 代理能否与 Azure Monitor 通信？
-在代理计算机上的控制面板中，选择 "**安全 & 设置**"，然后选择 "Microsoft Monitoring Agent"。 在“Azure Log Analytics (OMS)”选项卡下，绿色勾号图标表示代理能够与 Azure Monitor 进行通信。 黄色警告图标表示代理存在问题。 一个常见的原因是 Microsoft Monitoring Agent 服务已停止。 请使用服务控制管理器重启该服务。
+在代理计算机上的控制面板中，选择 " **安全 & 设置**"，然后选择 "Microsoft Monitoring Agent"。 在“Azure Log Analytics (OMS)”选项卡下，绿色勾号图标表示代理能够与 Azure Monitor 进行通信。 黄色警告图标表示代理存在问题。 一个常见的原因是 Microsoft Monitoring Agent 服务已停止。 请使用服务控制管理器重启该服务。
 
 ### <a name="how-do-i-stop-the-log-analytics-agent-from-communicating-with-azure-monitor"></a>如何停止 Log Analytics 代理与 Azure Monitor 之间的通信？
 对于直接连接到 Log Analytics 的代理，请打开控制面板，然后依次选择“安全性和设置”和“Microsoft Monitoring Agent” 。 在“Azure Log Analytics (OMS)”选项卡下，删除列出的所有工作区。 在 System Center Operations Manager 中，从 Log Analytics 托管的计算机的列表中删除该计算机。 Operations Manager 会更新该代理的配置以便不再向 Log Analytics 进行报告。 
@@ -315,7 +319,7 @@ WireData
 
 * 浏览器遥测：收集发送方的 IP 地址。
 * 服务器遥测：Application Insights 模块收集客户端 IP 地址。 如果设置了 `X-Forwarded-For`，则不会进行收集。
-* 若要详细了解如何在中收集 IP 地址和地理位置数据 Application Insights 参阅此[文](./app/ip-collection.md)。
+* 若要详细了解如何在中收集 IP 地址和地理位置数据 Application Insights 参阅此 [文](./app/ip-collection.md)。
 
 
 可以配置 `ClientIpHeaderTelemetryInitializer`，从不同的标头获取 IP 地址。 例如，在某些系统中，代理、负载均衡器或 CDN 会将其移动到 `X-Originating-IP`。 [了解详细信息](https://apmtips.com/posts/2016-07-05-client-ip-address/)。
@@ -517,7 +521,7 @@ Azure 警报仅出现在指标上。 创建一个每当事件发生时都跨越�
 
 但是，在某些情况下，即使在应用程序的 web 服务器上启用了服务器端监视，也不会 Application Insights 捕获502或503错误。 许多新式 web 服务器不允许客户端直接通信，而是使用反向代理等解决方案在客户端和前端 web 服务器之间来回传递信息。 
 
-在此方案中，由于反向代理层出现问题，可能会将502或503响应返回到客户端，并且 Application Insights 不会将其内置。 若要帮助检测该层中的问题，可能需要将日志从反向代理转发到 Log Analytics，并创建自定义规则来检查502/503 响应。 若要了解有关502和503错误的常见原因的详细信息，请参阅 Azure App Service[疑难解答文章 "502 错误的网关" 和 "503 服务不可用"](../app-service/troubleshoot-http-502-http-503.md)。     
+在此方案中，由于反向代理层出现问题，可能会将502或503响应返回到客户端，并且 Application Insights 不会将其内置。 若要帮助检测该层中的问题，可能需要将日志从反向代理转发到 Log Analytics，并创建自定义规则来检查502/503 响应。 若要了解有关502和503错误的常见原因的详细信息，请参阅 Azure App Service [疑难解答文章 "502 错误的网关" 和 "503 服务不可用"](../app-service/troubleshoot-http-502-http-503.md)。     
 
 ## <a name="azure-monitor-for-containers"></a>用于容器的 Azure Monitor
 
@@ -664,7 +668,7 @@ LogEntry : ({"Hello": "This example has multiple lines:","Docker/Moby": "will no
 本 Microsoft 常见问题解答列出了用于 VM 的 Azure Monitor 的常见问题。 如果对该解决方案还有其他任何问题，请访问[论坛](https://feedback.azure.com/forums/34192--general-feedback)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
 
 ### <a name="can-i-onboard-to-an-existing-workspace"></a>是否可以载入到现有工作区？
-如果虚拟机已连接到 Log Analytics 工作区，则在加入用于 VM 的 Azure Monitor 时，你可以继续使用该工作区，前提是该工作区位于某个[受支持的区域](insights/vminsights-configure-workspace.md#supported-regions)中。
+如果虚拟机已连接到 Log Analytics 工作区，则在加入用于 VM 的 Azure Monitor 时，你可以继续使用该工作区，前提是该工作区位于某个 [受支持的区域](insights/vminsights-configure-workspace.md#supported-regions)中。
 
 
 ### <a name="can-i-onboard-to-a-new-workspace"></a>是否可以载入到新工作区？ 

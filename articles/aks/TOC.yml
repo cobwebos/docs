@@ -66,7 +66,7 @@
       href: concepts-scale.md
     - name: 节点自动修复
       href: node-auto-repair.md
-    - name: 最佳实践
+    - name: 最佳做法
       items:
         - name: 概述
           href: best-practices.md
@@ -141,7 +141,7 @@
           href: uptime-sla.md
         - name: 使用邻近放置组（预览版）
           href: reduce-latency-ppg.md
-        - name: 升级节点映像（预览版）
+        - name: 升级节点映像
           href: node-image-upgrade.md
         - name: 处理节点 OS 更新
           href: node-updates-kured.md

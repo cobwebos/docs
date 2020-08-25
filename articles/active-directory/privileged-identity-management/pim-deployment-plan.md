@@ -14,12 +14,12 @@ ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e8250661fdbd6c67faade31caaed61ee8a399fe
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 14df46a921b482b182e0f17754293af37146d1e7
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008078"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783206"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>部署 Azure AD Privileged Identity Management (PIM)
 
@@ -80,9 +80,9 @@ Azure AD Privileged Identity Management 可帮助跨 Azure AD、Azure 资源和�
 
 ### <a name="roles-that-can-be-managed-by-privileged-identity-management"></a>可以通过 Privileged Identity Management 管理的角色
 
-**Azure AD 角色**–这些角色全部在 Azure Active Directory (如全局管理员、Exchange 管理员和安全管理员) 中。 可通过 [Azure Active Directory 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)，了解更多有关角色及其功能的信息。 如需帮助来确定向管理员分配哪个角色，请参阅[按任务划分的最小特权角色](../users-groups-roles/roles-delegate-by-task.md)。
+**Azure AD 角色** –这些角色全部在 Azure Active Directory (如全局管理员、Exchange 管理员和安全管理员) 中。 可通过 [Azure Active Directory 中的管理员角色权限](../users-groups-roles/directory-assign-admin-roles.md)，了解更多有关角色及其功能的信息。 如需帮助来确定向管理员分配哪个角色，请参阅[按任务划分的最小特权角色](../users-groups-roles/roles-delegate-by-task.md)。
 
-**Azure 资源角色**-这些角色链接到 azure 资源、资源组、订阅或管理组。 Privileged Identity Management 同时提供对内置角色（如所有者、用户访问管理员和参与者）和[自定义角色](../../role-based-access-control/custom-roles.md)的实时访问。 有关 Azure 资源角色的详细信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制](../../role-based-access-control/overview.md)。
+**Azure 资源角色** -这些角色链接到 azure 资源、资源组、订阅或管理组。 Privileged Identity Management 同时提供对内置角色（如所有者、用户访问管理员和参与者）和[自定义角色](../../role-based-access-control/custom-roles.md)的实时访问。 有关 Azure 资源角色的详细信息，请参阅 azure [RBAC)  (azure 基于角色的访问控制 ](../../role-based-access-control/overview.md)。
 
 有关详细信息，请参阅[无法在 Privileged Identity Management 中管理的角色](pim-roles.md)。
 
@@ -142,7 +142,7 @@ Azure AD Privileged Identity Management 可帮助跨 Azure AD、Azure 资源和�
 
 1. 通过阅读和理解[可用的 Azure AD 管理员角色](../users-groups-roles/directory-assign-admin-roles.md#available-roles)来了解角色粒度。 你和你的团队还应参阅 [Azure AD 中按标识任务划分的管理员角色](../users-groups-roles/roles-delegate-by-task.md)，其中解释了特定任务的最低权限角色。
 
-1. 列出组织中有特权角色的人员。 您可以使用 Privileged Identity Management[发现和见解 (预览版) ](pim-security-wizard.md)来访问如下所示的页面。
+1. 列出组织中有特权角色的人员。 您可以使用 Privileged Identity Management [发现和见解 (预览版) ](pim-security-wizard.md) 来访问如下所示的页面。
 
     ![发现和见解 (预览) 页面，通过特权角色降低曝光](./media/pim-deployment-plan/new-preview-page.png)
 
@@ -291,7 +291,7 @@ Azure 资源的 Privileged Identity Management 支持时限服务帐户。 应�
 
 ### <a name="test-implementation"></a>测试实现
 
-现已标识测试用户，请使用此步骤为测试用户配置 Privileged Identity Management。 如果组织要将 Privileged Identity Management 工作流并入内部的应用程序中，而不是使用 Azure 门户内的 Privileged Identity Management，[图形 API](https://docs.microsoft.com/graph/api/resources/privilegedidentitymanagement-root) 也支持 Privileged Identity Management 中的所有操作。
+现已标识测试用户，请使用此步骤为测试用户配置 Privileged Identity Management。 如果组织要将 Privileged Identity Management 工作流并入内部的应用程序中，而不是使用 Azure 门户内的 Privileged Identity Management，[图形 API](/graph/api/resources/privilegedidentitymanagement-root) 也支持 Privileged Identity Management 中的所有操作。
 
 #### <a name="configure-privileged-identity-management-for-azure-ad-roles"></a>针对 Azure AD 角色配置 Privileged Identity Management
 
@@ -413,4 +413,4 @@ Azure 资源的 Privileged Identity Management 支持时限服务帐户。 应�
 如果要在较长时间内自动存储审核事件，Privileged Identity Management 的审核日志将自动同步到 [Azure AD 审核日志](../reports-monitoring/concept-audit-logs.md)中。
 
 > [!TIP]
-> ： heavy_check_mark： **Microsoft 建议**将[azure 日志监视](../reports-monitoring/concept-activity-logs-azure-monitor.md)设置为在 azure 存储帐户中存档审核事件，以满足安全性和符合性要求。
+> ： heavy_check_mark： **Microsoft 建议** 将 [azure 日志监视](../reports-monitoring/concept-activity-logs-azure-monitor.md) 设置为在 azure 存储帐户中存档审核事件，以满足安全性和符合性要求。

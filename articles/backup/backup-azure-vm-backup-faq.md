@@ -4,12 +4,12 @@ description: 本文解答有关使用 Azure 备份服务备份 Azure VM 的常�
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 03e2f004fa54ee235eabc49afd6abd7532a6ee44
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: b29f1a11f6600f013fdf1d5aa71883ab44dfe635
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88262766"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761502"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
 
@@ -195,8 +195,8 @@ VM 是使用已修改策略或新策略中的计划和保留设置备份的。
 
 ### <a name="how-can-i-view-the-retention-settings-for-my-backups"></a>如何查看备份的保持期设置？
 
-目前，可以根据分配给 VM 的备份策略，在 (VM) 级别的备份项上查看保留设置。 
+目前，可以根据分配给 VM 的备份策略，在 (VM) 级别的备份项上查看保留设置。
 
 查看备份的保持设置的一种方法是，在 Azure 门户中导航到 VM 的 "备份项" [仪表板](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard) 。 单击指向其备份策略的链接可帮助你查看与 VM 关联的所有每日、每周、每月和每年保留点的保留期。
 
-你还可以使用 [备份资源管理器](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) 查看单个窗格内所有 vm 的保留设置。 导航到任何恢复服务保管库中的备份资源管理器，转到 " **备份项** " 选项卡，然后选择 "高级" 视图，查看每个 VM 的详细保留信息。  
+你还可以使用 [备份资源管理器](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer) 查看单个窗格内所有 vm 的保留设置。 导航到任何恢复服务保管库中的备份资源管理器，转到 " **备份项** " 选项卡，然后选择 "高级" 视图，查看每个 VM 的详细保留信息。

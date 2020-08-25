@@ -4,12 +4,12 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 02/24/2020
 ms.author: tomfitz
-ms.openlocfilehash: 33a63280f6973d2c5e29db29f7a6f3fc68c57c77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: MT
+ms.openlocfilehash: f0ab7c2efc499c43245680e56a7e5ca1b5261397
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84424705"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88748769"
 ---
 | 资源 | 限制 |
 | --- | --- |
@@ -17,12 +17,12 @@ ms.locfileid: "84424705"
 | 每个资源组的资源（按资源类型） |800 - 某些资源类型可能超过 800 的限制。 请参阅[不限于每个资源组 800 个实例的资源](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md)。 |
 | 部署历史记录中每个资源组的部署数 |800<sup>1</sup> |
 | 每个部署的资源数 |800 |
-| 管理锁数（按唯一的作用域） |20 个 |
+| 管理锁数（按唯一的[作用域](../articles/azure-resource-manager/management/overview.md#understand-scope)）  |20 个 |
 | 标记数（按资源或资源组） |50 |
 | 标记键长度 |512 |
 | 标记值长度 |256 |
 
-<sup>1</sup>从2020年6月开始，将在你接近限制时自动从历史记录中删除部署。 从部署历史记录中删除条目不会影响已部署的资源。 有关详细信息，请参阅[从部署历史记录中自动删除](../articles/azure-resource-manager/templates/deployment-history-deletions.md)。
+<sup>1</sup>从 2020 年 6 月开始，在你接近限制时，部署将自动从历史记录中删除。 从部署历史记录中删除条目不会影响已部署的资源。 有关详细信息，请参阅[从部署历史记录中自动删除](../articles/azure-resource-manager/templates/deployment-history-deletions.md)。
 
 #### <a name="template-limits"></a>模板限制
 

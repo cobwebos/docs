@@ -4,12 +4,12 @@ description: 在本文中，学习如何排查在备份和还原 Azure 虚拟机
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 0f598e0058d817fbba8d816500ab252134be0eb5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: f6085554f64c71c66587587ee03a58ee73c6639a
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371730"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761757"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上的备份失败问题
 
@@ -43,7 +43,7 @@ ms.locfileid: "87371730"
 
 错误代码： VMRestorePointInternalError
 
-如果在备份时，**事件查看器应用程序日志**将显示消息错误**应用程序名称： IaaSBcdrExtension.exe**然后，确认 VM 中配置的防病毒程序正在限制备份扩展的执行。
+如果在备份时， **事件查看器应用程序日志** 将显示消息错误 **应用程序名称： IaaSBcdrExtension.exe** 然后，确认 VM 中配置的防病毒程序正在限制备份扩展的执行。
 若要解决此问题，请在防病毒配置中排除以下目录，然后重试备份操作。
 
 * `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
@@ -122,7 +122,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 错误消息：无法分析备份扩展的配置。
 
 发生此错误的原因是 MachineKeys 目录 %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys  上的权限已更改。
-运行以下命令，验证**MachineKeys**目录的权限是否为默认目录： `icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys` 。
+运行以下命令，验证 **MachineKeys** 目录的权限是否为默认目录： `icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys` 。
 
 默认权限如下：
 
@@ -194,7 +194,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 **步骤 2**：尝试将备份计划更改到 VM 的负载较小（CPU/IOPS 等较小）的某个时间
 
-**步骤 3**：尝试[增加 VM 的大小](https://azure.microsoft.com/blog/resize-virtual-machines/)，然后重试该操作
+**步骤 3**：尝试 [增加 VM 的大小](https://azure.microsoft.com/blog/resize-virtual-machines/) ，然后重试该操作
 
 ### <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001，ResourceNotFound-无法执行操作，因为 VM 不再存在/400094，BCMV2VMNotFound-虚拟机不存在/找不到 Azure 虚拟机
 
@@ -218,9 +218,9 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机代理并重启注册操作。 <br> <ol> <li>检查 VM 代理是否安装正确。 <li>确保已正确设置 VM 配置中的标志。</ol> 阅读有关安装 VM 代理以及如何验证 VM 代理安装的详细信息。
 
-### <a name="extensionsnapshotbitlockererror---the-snapshot-operation-failed-with-the-volume-shadow-copy-service-vss-operation-error"></a>ExtensionSnapshotBitlockerError-快照操作失败，出现卷影复制服务（VSS）操作错误
+### <a name="extensionsnapshotbitlockererror---the-snapshot-operation-failed-with-the-volume-shadow-copy-service-vss-operation-error"></a>ExtensionSnapshotBitlockerError-快照操作失败，出现卷影复制服务 (VSS) 操作错误
 
-错误代码：ExtensionSnapshotBitlockerError <br/> 错误消息：快照操作失败，出现卷影复制服务（VSS）操作错误：**此驱动器已由 BitLocker 驱动器加密锁定。必须通过控制面板解锁此驱动器。**
+错误代码：ExtensionSnapshotBitlockerError <br/> 错误消息：快照操作失败，卷影复制服务 (VSS) 操作错误 **此驱动器已被 BitLocker 驱动器加密锁定。必须通过控制面板解锁此驱动器。**
 
 关闭 VM 上的所有驱动器的 BitLocker，并检查 VSS 问题是否得到解决。
 
@@ -231,7 +231,7 @@ VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机�
 * 如果 VM 处于“运行”和“关闭”之间的瞬时状态，请等待状态更改 。 然后触发备份作业。
 * 如果 VM 是 Linux VM 并使用安全性增强的 Linux 内核模块，则需要从安全策略排除 Azure Linux 代理路径 (/var/lib/waagent)，确保已安装备份扩展。
 
-* 虚拟机上不存在 VM 代理： <br>安装任何必备组件和 VM 代理。 然后，重启该操作。 |详细了解[如何安装 Vm 代理以及如何验证 Vm 代理安装](#vm-agent)。
+* 虚拟机上不存在 VM 代理： <br>安装任何必备组件和 VM 代理。 然后，重启该操作。 |详细了解 [如何安装 Vm 代理以及如何验证 Vm 代理安装](#vm-agent)。
 
 ### <a name="extensionsnapshotfailednosecurenetwork---the-snapshot-operation-failed-because-of-failure-to-create-a-secure-network-communication-channel"></a>ExtensionSnapshotFailedNoSecureNetwork-快照操作失败，因为创建安全网络通信通道失败
 
@@ -248,7 +248,7 @@ VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机�
 * 导航到 `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` 并安装 vcredist2013_x64。<br/>请确保允许此服务安装的注册表项值设置为正确的值。 也就是说，将 **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** 中的 **Start** 值设置为 **3**，而不是 **4**。 <br><br>如果仍然遇到安装问题，请通过权限提升的命令提示符运行“MSIEXEC /UNREGISTER”，接着运行“MSIEXEC /REGISTER”来重启安装服务 。
 * 检查事件日志以验证是否注意到与访问相关的问题。 例如：*Product:Microsoft Visual C++ 2013 x64 Minimum Runtime - 12.0.21005 -- Error 1401.Could not create key:Software\Classes.System error 5.请验证你是否拥有足够的权限访问该注册表项，或者与支持人员联系。* <br><br> 确保管理员或用户帐户有足够的权限更新注册表项“HKEY_LOCAL_MACHINE\SOFTWARE\Classes”。 提供足够的权限并重启 Windows Azure 来宾代理。<br><br> <li> 如果你安装了防病毒产品，请确保它们具有正确的排除规则以允许安装。
 
-### <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy-在 VM 上配置了无效的策略，该策略将阻止快照操作
+### <a name="usererrorrequestdisallowedbypolicy---an-invalid-policy-is-configured-on-the-vm-which-is-preventing-snapshot-operation"></a>UserErrorRequestDisallowedByPolicy - 在 VM 上配置了防止快照操作的无效策略
 
 错误代码：UserErrorRequestDisallowedByPolicy <BR> 错误消息：在 VM 上配置了防止快照操作的无效策略。
 
@@ -289,23 +289,23 @@ VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机�
 
 通常，VM 代理已存在于从 Azure 库创建的 VM 中。 但是，从本地数据中心迁移的虚拟机上将不会安装 VM 代理。 对于这些 VM，必须显式安装 VM 代理。
 
-#### <a name="windows-vms"></a>Windows VM
+#### <a name="windows-vms---set-up-the-agent"></a>Windows Vm-设置代理
 
 * 下载并安装 [代理 MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 需要有管理员权限才能完成安装。
 * 对于使用经典部署模型创建的虚拟机，请[更新 VM 属性](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms)以指示已安装代理。 Azure 资源管理器虚拟机不需要此步骤。
 
-#### <a name="linux-vms"></a>Linux VM
+#### <a name="linux-vms---set-up-the-agent"></a>Linux Vm-设置代理
 
 * 从分发存储库安装最新版本的代理。 有关包名称的详细信息，请参阅 [Linux 代理存储库](https://github.com/Azure/WALinuxAgent)。
 * 对于使用经典部署模型创建的 VM，请[更新 VM 属性](../virtual-machines/troubleshooting/install-vm-agent-offline.md#use-the-provisionguestagent-property-for-classic-vms)并验证是否已安装代理。 无需对资源管理器虚拟机执行此步骤。
 
 ### <a name="update-the-vm-agent"></a>更新 VM 代理
 
-#### <a name="windows-vms"></a>Windows VM
+#### <a name="windows-vms---update-the-agent"></a>Windows Vm-更新代理
 
 * 若要更新 VM 代理，请重新安装 [VM 代理二进制文件](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)。 在更新代理之前，请确保在更新 VM 代理期间不会执行备份操作。
 
-#### <a name="linux-vms"></a>Linux VM
+#### <a name="linux-vms---update-the-agent"></a>Linux Vm-更新代理
 
 * 要更新 Linux VM 代理，请按照[更新 Linux VM 代理](../virtual-machines/extensions/update-linux-agent.md?toc=/azure/virtual-machines/linux/toc.json)一文中的说明进行操作。
 
