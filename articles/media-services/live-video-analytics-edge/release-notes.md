@@ -3,12 +3,12 @@ title: IoT Edge 上的实时视频分析发行说明 - Azure
 description: 本主题提供 IoT Edge 上的实时视频分析版本的发行说明、改进、bug 修复和已知问题。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: c18977807d8cdca264a27d7fcff37aec7a61eb55
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: bad21297c5174c107a8eb03da0e2ed57ee7355d3
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690645"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750218"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>IoT Edge 上的实时视频分析发行说明
 
@@ -37,11 +37,12 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 * 你现在可以在 IoT Edge 上的实时视频分析与使用 gRPC framework 的自定义扩展之间获取高数据内容传输性能。 请参阅 [此](analyze-live-video-use-your-grpc-model-quickstart.md) 快速入门。
 * 更广泛的实时视频分析区域部署，并且仅更新了云服务。  
 * 实时视频分析现已在全球25个其他区域推出。 下面是所有可用区域的 [列表](https://azure.microsoft.com/global-infrastructure/services/?products=media-services) 。  
-* " [设置](https://aka.ms/lva-edge/setup-resources-for-samples) " "快速启动" 也已经更新。 
+* " [设置](https://aka.ms/lva-edge/setup-resources-for-samples) " "快速入门" 已更新，并支持新的区域。
+    * 对于已设置资源的用户，不需要进行任何操作
 
 ## <a name="bug-fixes"></a>Bug 修复 
 
-无 
+* 在设置脚本中删除不推荐使用的 azure 扩展
 
 ## <a name="july-13-2020"></a>7月13日，2020
 

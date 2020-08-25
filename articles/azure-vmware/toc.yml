@@ -1,14 +1,14 @@
-- name: Azure VMware 解决方案 (AVS)
+- name: Azure VMware 解决方案
   href: index.yml
 - name: 概述
   items:
-    - name: 关于 Azure VMware 解决方案 (AVS)
+    - name: 关于 Azure VMware 解决方案
       href: introduction.md
 - name: 教程
   items:
     - name: 1 - 网络规划
       href: tutorial-network-checklist.md
-    - name: 2 - 创建 AVS 私有云
+    - name: 2 - 创建私有云
       href: tutorial-create-private-cloud.md
     - name: 3 - 配置网络
       href: tutorial-configure-networking.md
@@ -38,7 +38,7 @@
       href: concepts-upgrades.md
 - name: 操作指南
   items:
-    - name: AVS 迁移评估
+    - name: 迁移评估
       href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
     - name: 设置 HCX
       href: hybrid-cloud-extension-installation.md
@@ -52,19 +52,19 @@
           href: concepts-api-management.md
         - name: 中心和分支
           href: concepts-avs-hub-and-spoke-integration.md
-        - name: 用于 AVS 的 Azure 备份服务器
+        - name: Azure 备份服务器
           items:
-            - name: 设置用于 AVS 的备份服务器
+            - name: 设置备份服务器
               href: set-up-mabs-for-avs.md
-            - name: 使用备份服务器来备份 AVS VM
+            - name: 使用备份服务器备份私有云 VM
               href: backup-avs-vms-with-mabs.md
-        - name: AVS 的应用程序网关
+        - name: 应用程序网关
           href: protect-avs-web-apps-with-app-gateway.md
         - name: AVS 的流量管理器
           href: deploy-traffic-manager-to-balance-avs-workloads.md
     - name: VMware 解决方案
       items:
-        - name: 设置 vRealize Operations for AVS
+        - name: 设置 vRealize Operations
           href: vrealize-operations-for-avs.md
 - name: 参考
   items: null
@@ -72,7 +72,7 @@
   items:
     - name: 疑难解答
       items:
-        - name: 获取有关 AVS 部署或预配失败的帮助
+        - name: 获取有关部署或预配失败的帮助
           href: fix-deployment-provisioning-failures.md
     - name: 常见问题解答
       href: faq.md

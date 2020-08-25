@@ -9,10 +9,10 @@ ms.date: 05/20/2019
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 6a12db8e34421dd16c12d167896ef66b3377d524
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "82853012"
 ---
 # <a name="tutorial-load-sample-data-into-a-cassandra-api-table-in-azure-cosmos-db"></a>教程：将示例数据加载到 Azure Cosmos DB 中的 Cassandra API 表
@@ -23,7 +23,7 @@ ms.locfileid: "82853012"
 
 > [!div class="checklist"]
 > * 将数据加载到 Cassandra 表
-> * 运行应用
+> * 运行应用程序
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -73,7 +73,7 @@ ms.locfileid: "82853012"
      repository.insertUser(preparedStatement, 5, "PeterS", "Everett");
    ```
 
-## <a name="run-the-app"></a>运行应用
+## <a name="run-the-app"></a>运行应用程序
 
 打开一个命令提示符或终端窗口，并将文件夹路径更改到你在其中创建了项目的位置。 运行“mvn clean install”命令，以在目标文件夹中生成 cosmosdb cassandra examples.jar 文件并运行应用程序。 
 

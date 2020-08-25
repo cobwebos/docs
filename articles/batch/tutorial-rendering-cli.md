@@ -5,15 +5,15 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.custom: mvc
 ms.openlocfilehash: e78580cc2f95f14be53c0432df4eb4bd38450832
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "82117125"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>教程：使用 Azure Batch 渲染场景 
 
-Azure Batch 提供云规模的渲染功能，按使用付费。 Azure Batch 支持渲染应用，包括 Autodesk Maya、3ds Max、Arnold 和 V-Ray。 本教程介绍如何执行相关步骤，以便使用 Azure 命令行界面通过 Batch 来渲染小型场景。 学习如何：
+Azure Batch 提供云规模的渲染功能，按使用付费。 Azure Batch 支持渲染应用，包括 Autodesk Maya、3ds Max、Arnold 和 V-Ray。 本教程介绍如何执行相关步骤，以便使用 Azure 命令行界面通过 Batch 来渲染小型场景。 你将学习如何执行以下操作：
 
 > [!div class="checklist"]
 > * 将场景上传到 Azure 存储
@@ -38,7 +38,7 @@ Azure Batch 提供云规模的渲染功能，按使用付费。 Azure Batch 支�
 
 在订阅中创建资源组、Batch 帐户和链接存储帐户（如果尚未这样做）。 
 
-使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 以下示例在“eastus2”  位置创建名为“myResourceGroup”的资源组  。
+使用 [az group create](/cli/azure/group#az-group-create) 命令创建资源组。 以下示例在“eastus2”位置创建名为“myResourceGroup”的资源组。
 
 ```azurecli-interactive 
 az group create \

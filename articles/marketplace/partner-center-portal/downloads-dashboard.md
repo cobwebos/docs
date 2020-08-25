@@ -1,31 +1,55 @@
 ---
-title: 合作伙伴中心的 Microsoft 商业 marketplace 分析中的 "下载" 仪表板
+title: 合作伙伴中心的 Microsoft 商业 marketplace 分析中的 "下载" 仪表板-Azure Marketplace
 description: 了解如何访问适用于 marketplace 产品/服务的下载请求。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
-ms.date: 12/11/2019
+ms.topic: article
+ms.date: 08/21/2020
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: 5b688d64641f6dd8779d699bcd1d646e40b19b87
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: f426b0466046b366655c183a9372b2468937565b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245666"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750298"
 ---
-# <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>商业市场分析中的“下载”仪表板
+# <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>商业 marketplace 分析中的下载仪表板
 
 本文提供了有关在合作伙伴中心下载仪表板的信息。 此仪表板显示过去30天内下载请求的列表。
 
-要访问 "下载" 仪表板，请在 "商用 Marketplace" 下打开 " **[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** " 仪表板。
+若要访问下载仪表板，请在商业市场下打开 " **[分析](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** " 仪表板。
 
 >[!NOTE]
 > 有关分析术语的详细定义，请参阅[适用于商业市场分析的常见问题和术语](./faq-terminology.md)。
 
 ## <a name="downloads-dashboard"></a>下载仪表板
 
-"**分析**" 菜单的 "**下载**" 仪表板显示对包含超过1000行的客户或订单数据的任何下载的请求。 这些数据下载将在30天内可用，然后将被删除。
+"**分析**" 菜单的 "**下载**" 仪表板显示对包含超过1000行的客户或订单数据的任何下载的请求。
+
+当你请求下载包含超过1000行的数据的下载时，你将收到一个弹出通知，其中包含指向 " **下载** " 仪表板的链接。 这些数据下载将在30天内可用，然后将被删除。
+
+## <a name="lifetime-export-of-commercial-marketplace-analytics-reports"></a>商业 marketplace 分析报表的生存期导出
+
+在 "下载" 页上，最终用户可以执行以下操作：
+
+- 采用 csv 和 tsv 格式的商业 marketplace 分析报表的生存期导出。
+- 导出任何日期范围的商业 marketplace 分析报表。
+- 6个月或12个月的商用 marketplace 分析报表导出。
+
+支持分析报表的生存期导出功能：
+
+| 报告 | 生存期导出 | 基于日期的任何持续时间 |
+| - | - | - |
+| Orders | ![绿色的选中标记](media/check-green-yes.png) | ![绿色的选中标记](media/check-green-yes.png) |
+| 客户 | ![绿色的选中标记](media/check-green-yes.png) | ![绿色的选中标记](media/check-green-yes.png) |
+| Marketplace 见解 | ![绿色的选中标记](media/check-green-yes.png) | ![绿色的选中标记](media/check-green-yes.png) |
+| 用法 | ![黑色 X 标记](media/check-black-no.png) | 最多一年 |
+|
+
+用户可以计划从 "下载" 部分下载报表的异步操作：
+
+[![从 "下载" 部分计划异步下载报表](media/download-reports.png)](media/download-reports.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 

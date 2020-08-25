@@ -3,12 +3,12 @@ title: MABS 和 System Center DPM 支持矩阵
 description: 本文汇总了使用 Microsoft Azure 备份服务器 (MABS) 或 System Center DPM 备份本地和 Azure VM 资源时的 Azure 备份支持。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4ed4452cf8f1f44e90cfc991c2b1d13d30dddcd2
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 34b15ea0752bf013d2b1e5c3a7434ff009e2d80a
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612769"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761332"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>使用 Microsoft Azure 备份服务器或 System Center DPM 进行备份时的支持矩阵
 

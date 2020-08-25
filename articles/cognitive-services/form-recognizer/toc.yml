@@ -34,6 +34,10 @@
               href: quickstarts/curl-receipts.md
             - name: Python
               href: quickstarts/python-receipts.md
+        - name: 使用预构建的名片模型
+          items:
+            - name: Python
+              href: quickstarts/python-business-cards.md
         - name: 获取文本布局信息
           items:
             - name: Python
@@ -44,6 +48,12 @@
       href: 'https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-form'
     - name: 将表单识别器与 AI Builder 搭配使用
       href: tutorial-ai-builder.md
+- name: 概念
+  items:
+    - name: Receipts
+      href: concept-receipts.md
+    - name: 名片
+      href: concept-business-cards.md
 - name: 操作指南
   items:
     - name: 生成训练数据集
@@ -64,6 +74,8 @@
       href: disaster-recovery.md
 - name: 参考
   items:
+    - name: 表单识别器 API v2.1 预览
+      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync'
     - name: 表单识别器 API v2.0
       href: 'https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm'
     - name: SDK

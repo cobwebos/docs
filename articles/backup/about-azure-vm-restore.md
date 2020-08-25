@@ -3,12 +3,12 @@ title: 关于 Azure 虚拟机还原过程
 description: 了解 Azure 备份服务如何还原 Azure 虚拟机
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: a604e146dbe387675e9ed82030639921cfc03167
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fb3f6bf729047dc6fe1c13c5ead1191188e30e5c
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87067464"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761383"
 ---
 # <a name="about-azure-vm-restore"></a>关于 Azure VM 还原
 
@@ -46,12 +46,6 @@ ms.locfileid: "87067464"
 | [还原 VM 内的特定文件](./backup-azure-restore-files-from-vm.md) | 选择还原点，浏览，选择文件并将它们还原到与备份的 VM 相同的（或兼容的）OS。 |  如果你知道要还原的具体文件，请使用此选项而不是还原整个 VM。 |
 | [还原加密的 VM](./backup-azure-vms-encryption.md) | 在门户中，还原磁盘，然后使用 PowerShell 创建 VM | <li> [带 Azure Active Directory (AAD) 的加密 VM](../virtual-machines/windows/disk-encryption-windows-aad.md)  <li> [不带 AAD 的加密 VM](../virtual-machines/windows/disk-encryption-windows.md) <li> [从带 AAD 的加密 VM 迁移到不带 AAD 的加密 VM ](../virtual-machines/windows/disk-encryption-faq.md#can-i-migrate-vms-that-were-encrypted-with-an-azure-ad-app-to-encryption-without-an-azure-ad-app) |
 | [跨区域还原](./backup-azure-arm-restore-vms.md#cross-region-restore) | 创建新的 VM，或将磁盘还原到次要区域（Azure 配对区域） | <li> **完全中断**：使用跨区域还原功能，在次要区域中恢复数据没有等待时间。 即使在 Azure 声明服务中断之前，也可以在次要区域中启动还原。 <li> **部分中断**：停机可能发生在特定的存储群集中（Azure 备份在其中存储着你的已备份数据），甚至可能发生在网络中（该网络连接 Azure 备份与那些与你的已备份数据相关联的存储群集）。 使用跨区域还原，你可以使用次要区域中已备份数据的副本在次要区域中执行还原。 <li> **无中断**：出于审核或合规性目的，你可以使用次要区域数据进行业务连续性和灾难恢复 (BCDR) 演练。 这样，即使主要区域中没有发生完全或部分中断，你也能够在次要区域中执行已备份数据的还原，以进行业务连续性和灾难恢复演练。  |
-
-------
-
-
-
-
 
 ## <a name="next-steps"></a>后续步骤
 
