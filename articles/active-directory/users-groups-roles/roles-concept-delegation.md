@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c26951d5ab7552dc6c63288ce92cdb8134bd58ed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 468b874ae4a19b8b5ea2a9a91a258722cef60e3a
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498219"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798595"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>在 Azure Active Directory 中委托管理权限
 
@@ -38,7 +38,7 @@ ms.locfileid: "87498219"
 
 在 Azure AD 门户中，可以[查看任何角色的所有成员](directory-manage-roles-portal.md)，以帮助快速检查部署和委托权限。
 
-如果你有兴趣委派对 Azure 资源的访问权限，而不是 Azure AD 中的管理访问权限，请参阅[分配 azure 角色](../../role-based-access-control/role-assignments-portal.md)。
+如果你有兴趣委派对 Azure 资源的访问权限，而不是 Azure AD 中的管理访问权限，请参阅 [分配 azure 角色](../../role-based-access-control/role-assignments-portal.md)。
 
 ## <a name="delegation-planning"></a>委托规划
 
@@ -60,7 +60,7 @@ ms.locfileid: "87498219"
 应该评估每个任务的频率、重要性和难度。 这些标准是任务定义至关重要的方面，因为它们决定了是否要委托某个权限：
 
 * 日常执行的、风险有限的和容易完成的任务非常适合委托权限。
-* 至于极少执行但会在整个组织中造成很大影响且需要较高技能的任务，在委托权限之前应慎重考虑。 可以[暂时将某个帐户提升到所需的角色](../active-directory-privileged-identity-management-configure.md)，或重新分配任务。
+* 至于极少执行但会在整个组织中造成很大影响且需要较高技能的任务，在委托权限之前应慎重考虑。 可以[暂时将某个帐户提升到所需的角色](../privileged-identity-management/pim-configure.md)，或重新分配任务。
 
 ## <a name="delegate-app-administration"></a>委托应用管理权限
 
@@ -110,7 +110,7 @@ Azure AD 提供了一篇综合性的指南来帮助你规划和执行 Azure AD �
 
 ## <a name="elevate-privilege-temporarily"></a>暂时提升特权
 
-对于大多数日常活动，并非所有用户都需要全局管理员权限，也不应将所有用户永久分配到全局管理员角色。 当用户需要全局管理员权限时，应使用其自己的帐户或备用管理帐户在 Azure AD [Privileged Identity Management](../active-directory-privileged-identity-management-configure.md) 中激活角色分配。
+对于大多数日常活动，并非所有用户都需要全局管理员权限，也不应将所有用户永久分配到全局管理员角色。 当用户需要全局管理员权限时，应使用其自己的帐户或备用管理帐户在 Azure AD [Privileged Identity Management](../privileged-identity-management/pim-configure.md) 中激活角色分配。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b13de16b2080d28d3b779921456cfb20d99f0af9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3148f8ba84674c79764d0fc69acdbc02e7a12dc4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84415965"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798986"
 ---
 # <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>使用 Microsoft Authenticator 应用备份和恢复帐户凭据
 
@@ -81,7 +81,7 @@ Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例�
 
 ### <a name="to-provide-more-verification-for-personal-accounts"></a>为个人帐户提供更多验证
 
-1. 在 Microsoft Authenticator 应用程序的 "**帐户**" 屏幕上，点击要恢复的帐户以打开该帐户的全屏视图。
+1. 在 Microsoft Authenticator 应用程序的 " **帐户** " 屏幕上，点击要恢复的帐户以打开该帐户的全屏视图。
 
     :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="Microsoft Authenticator 应用，显示可用帐户磁贴" border="true":::
 
@@ -91,7 +91,7 @@ Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例�
 
 ### <a name="to-provide-more-verification-for-work-or-school-accounts"></a>为工作或学校帐户提供更多验证
 
-1. 在 Microsoft Authenticator 应用程序的 "**帐户**" 屏幕上，点击要恢复的帐户以打开该帐户的全屏视图。
+1. 在 Microsoft Authenticator 应用程序的 " **帐户** " 屏幕上，点击要恢复的帐户以打开该帐户的全屏视图。
 
     :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="Microsoft Authenticator 应用，显示可用帐户磁贴" border="true":::
 
@@ -100,7 +100,7 @@ Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例�
     :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="身份验证器将一次性密码提供为验证码" border="true":::
 
 >[!NOTE]
->有关 QR 码以及如何获取 QR 码的详细信息，请参阅 [Microsoft Authenticator 应用入门](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)或[设置安全信息以使用 Authenticator 应用](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app)，具体取决于管理员是否已启用安全信息。
+>有关 QR 码以及如何获取 QR 码的详细信息，请参阅 [Microsoft Authenticator 应用入门](./user-help-auth-app-download-install.md)或[设置安全信息以使用 Authenticator 应用](./security-info-setup-auth-app.md)，具体取决于管理员是否已启用安全信息。
 >
 >如果这是你首次设置 Microsoft Authenticator 应用，则可能会收到一个提示，询问你是允许该应用访问你的相机 (iOS)，还是允许该应用拍摄照片和录制视频 (Android)。 你必须选择“允许”，以便验证器应用可以访问你的相机，在下一步中拍摄 QR 码的照片。 如果你不允许使用相机，仍然可以设置验证器应用，但需要手动添加代码信息。 有关如何手动添加代码的信息，请参阅[手动将帐户添加到应用](user-help-auth-app-add-account-manual.md)。
 
@@ -130,4 +130,4 @@ Microsoft Authenticator 应用可将帐户凭据和相关的应用设置（例�
 
 - [Microsoft Authenticator 应用常见问题解答](user-help-auth-app-faq.md)
 
-- [多重身份验证](https://docs.microsoft.com/azure/multi-factor-authentication/)
+- [多重身份验证](/azure/multi-factor-authentication/)

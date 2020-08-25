@@ -150,41 +150,45 @@
       href: concept-ml-pipelines.md
     - name: 企业就绪情况和安全性
       items:
+        - name: 企业安全概述
+          displayName: authorization authentication encryption aad azure active directory
+          href: concept-enterprise-security.md
         - name: 安全基线
           href: security-baseline.md
-        - name: 企业安全和管理
+        - name: 标识和访问管理
           items:
-            - name: 企业安全概述
-              displayName: authorization authentication encryption aad azure active directory
-              href: concept-enterprise-security.md
+            - name: 设置身份验证
+              displayName: 'authentication, auth, oauth'
+              href: how-to-setup-authentication.md
             - name: 管理用户和角色
               href: how-to-assign-roles.md
+            - name: 在 AKS 部署中使用 Azure AD 标识
+              href: how-to-use-azure-ad-identity.md
+        - name: 网络安全
+          items:
             - name: 使用虚拟网络
               displayName: 'vnet, blob'
               href: how-to-enable-virtual-network.md
             - name: 使用专用链接
               displayName: private endpoint
               href: how-to-configure-private-link.md
-            - name: 使用 TLS 保护 Web 服务
-              displayName: ssl
+            - name: 配置安全的 Web 服务
+              displayName: 'ssl, tls'
               href: how-to-secure-web-service.md
+            - name: 配置防火墙
+              href: how-to-access-azureml-behind-firewall.md
+        - name: 数据保护
+          items:
             - name: 提高复原能力
               displayName: 'high availability, disaster recovery'
               href: how-to-high-availability-machine-learning.md
-            - name: 在 AKS 部署中使用 Azure AD 标识
-              href: how-to-use-azure-ad-identity.md
             - name: 重新生成存储访问密钥
               href: how-to-change-storage-access-key.md
-            - name: 使用 Azure 防火墙
-              href: how-to-access-azureml-behind-firewall.md
-            - name: 安全编码
-              href: concept-secure-code-best-practice.md
-              displayName: security threat
-        - name: 设置身份验证
-          displayName: 'authentication, auth, oauth'
-          href: how-to-setup-authentication.md
         - name: 监视 Azure 机器学习
           href: monitor-azure-machine-learning.md
+        - name: 安全编码
+          href: concept-secure-code-best-practice.md
+          displayName: security threat
     - name: 负责的 ML
       items:
         - name: “负责的 ML”概述

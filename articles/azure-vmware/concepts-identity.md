@@ -1,20 +1,20 @@
 ---
 title: 概念-标识和访问
-description: 了解 Azure VMware 解决方案（AVS）的标识和访问概念
+description: 了解 Azure VMware 解决方案的标识和访问概念
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: ce85b60b38db86af14b9e9aa06e568436dc76658
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9d5b7b4c7c2e0d55cffc99a3f371494f40320a16
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82740949"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750585"
 ---
-# <a name="azure-vmware-solution-avs-identity-concepts"></a>Azure VMware 解决方案（AVS）标识概念
+# <a name="azure-vmware-solution-identity-concepts"></a>Azure VMware 解决方案标识概念
 
 部署私有云时，将设置 vCenter 服务器和 NSX-T 管理器。 你使用 vCenter 来管理虚拟机工作负荷，并使用 NSX-T 管理器来扩展私有云软件定义的网络。
 
-访问和身份管理使用 CloudAdmin 组权限，以便对 NSX-T 管理器使用 vCenter 和受限的管理员权限。 此策略可确保你的私有云平台可以自动升级。 这会定期提供最新的功能和修补程序。 有关私有云升级的更多详细信息，请参阅[私有云升级概念一文][concepts-upgrades]。
+访问和身份管理使用 CloudAdmin 组权限，以便对 NSX-T 管理器使用 vCenter 和受限的管理员权限。 此策略可确保你的私有云平台可以自动升级。 这会定期提供最新的功能和修补程序。 有关私有云升级的更多详细信息，请参阅 [私有云升级概念一文][concepts-upgrades] 。
 
 ## <a name="vcenter-access-and-identity"></a>vCenter 访问和标识
 
@@ -41,7 +41,7 @@ VCenter 中的权限通过 CloudAdmin 组提供。 该组可以在 vCenter 本�
 |  资源                |  CloudAdmin 用户具有所有资源权限。        |      --       | --   |
 |  计划任务          |  CloudAdmin 用户具有所有 ScheduleTask 权限。   |   --   | -- |
 |  会话                |  GlobalMessage、ValidateSession      |   --   |  Microsoft 执行所有其他会话操作。  |
-|  存储视图           |  StorageViews   |        --          |  Microsoft 执行其他所有存储查看操作（配置服务）。  |
+|  存储视图           |  StorageViews   |        --          |  Microsoft 执行所有其他存储视图操作 (配置服务) 。  |
 |  任务                   |  --  |  --   |  Microsoft 管理管理任务的扩展。  |
 |  vApp                    |  CloudAdmin 用户具有所有 vApp 权限。  |  --  |  --  |
 |  虚拟机         |  CloudAdmin 用户具有所有 VirtualMachine 权限。  |  --  |  --  |
@@ -53,7 +53,7 @@ VCenter 中的权限通过 CloudAdmin 组提供。 该组可以在 vCenter 本�
   
 ## <a name="next-steps"></a>后续步骤
 
-下一步是了解[私有云升级概念][concepts-upgrades]。
+下一步是了解 [私有云升级概念][concepts-upgrades]。
 
 <!-- LINKS - external -->
 

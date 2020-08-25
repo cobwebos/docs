@@ -4,12 +4,12 @@ description: 本文介绍如何使用 REST API 更新保管库配置。
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 1f0fee505443b15ba2ea97710efc220ef05df738
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c3f964032d10988bf7ae615eb64d3b56b99a7747
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513109"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757296"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>使用 REST API 更新 Azure 恢复服务保管库配置
 
@@ -65,7 +65,7 @@ GET 操作的成功响应如下所示：
 
 ### <a name="update-soft-delete-state-using-rest-api"></a>使用 REST API 更新软删除状态
 
-若要使用 REST API 更新恢复服务保管库的软删除状态，请使用以下 PATCH 操作
+若要使用 REST API 更新恢复服务保管库的软删除状态，请使用以下 *修补* 操作
 
 ```http
 PATCH https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
@@ -103,7 +103,7 @@ PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-0000000
 }
 ```
 
-#### <a name="responses"></a>响应
+#### <a name="responses-for-the-patch-operation"></a>修补操作的响应
 
 PATCH 操作的成功响应如下所示：
 
@@ -111,7 +111,7 @@ PATCH 操作的成功响应如下所示：
 |---------|---------|---------|
 |200 正常     |   [BackupResourceVaultConfig](/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
-##### <a name="example-response"></a>示例响应
+##### <a name="example-response-for-the-patch-operation"></a>修补操作的示例响应
 
 提交 PATCH 请求后，将返回 200 （成功）响应。
 

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
 ms.openlocfilehash: b450d8463c09647b8f87547afe9d714c4b8659c4
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/06/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "82858559"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>教程：将数据迁移到 Azure Cosmos DB 中的 Cassandra API 帐户
@@ -66,7 +66,7 @@ ms.locfileid: "82858559"
 
 * **增加吞吐量：** 数据迁移的持续时间取决于为 Azure Cosmos DB 中的表预配的吞吐量。 在迁移期间增加吞吐量。 提高吞吐量后，可避免受到速率限制，并缩短迁移时间。 完成迁移后，减少吞吐量以节约成本。 此外，还建议在源数据库所在的同一区域中拥有 Azure Cosmos 帐户。 
 
-* 启用 TLS：  Azure Cosmos DB 具有严格的安全要求和标准。 请确保在与帐户进行交互时启用 TLS。 当你将 CQL 与 SSH 配合使用时，可以选择提供 TLS 信息。
+* 启用 TLS：Azure Cosmos DB 具有严格的安全要求和标准。 请确保在与帐户进行交互时启用 TLS。 当你将 CQL 与 SSH 配合使用时，可以选择提供 TLS 信息。
 
 ## <a name="options-to-migrate-data"></a>迁移数据的选项
 
@@ -83,7 +83,7 @@ ms.locfileid: "82858559"
 
    * 登录到 [Azure 门户](https://portal.azure.com)，导航到你的 Azure Cosmos 帐户。
 
-   * 打开“连接字符串”  窗格，其中包含从 cqlsh 连接到 Cassandra API 帐户所需的所有信息。
+   * 打开“连接字符串”窗格，其中包含从 cqlsh 连接到 Cassandra API 帐户所需的所有信息。
 
 2. 使用门户中的连接信息登录到 cqlsh。
 
@@ -105,7 +105,7 @@ ms.locfileid: "82858559"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要资源组、Azure Cosmos 帐户和所有相关的资源时，可将其删除。 为此，请选择虚拟机的资源组，选择“删除”  ，然后确认要删除的资源组的名称。
+不再需要资源组、Azure Cosmos 帐户和所有相关的资源时，可将其删除。 为此，请选择虚拟机的资源组，选择“删除”，然后确认要删除的资源组的名称。
 
 ## <a name="next-steps"></a>后续步骤
 

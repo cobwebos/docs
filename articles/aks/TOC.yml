@@ -366,6 +366,8 @@
           href: ssh.md
         - name: Linux 性能工具
           href: troubleshoot-linux.md
+        - name: 检查资源运行状况事件（预览）
+          href: aks-resource-health.md
 - name: 参考
   items:
     - name: Azure CLI

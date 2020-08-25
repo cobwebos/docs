@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: 720a768679cdbd45224e5c9a05b8f8d0c9b9ea81
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 34e81076c27086ad838cca23de0e150a3c1b076c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326080"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798901"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -38,7 +38,9 @@ ms.locfileid: "87326080"
 NPM 可从以下任一区域托管的工作区监视世界上任何地方网络和应用程序之间的连接：
 * 北欧
 * 西欧
+* 瑞士北部
 * 法国中部
+* 南非北部
 * 加拿大中部
 * 美国西部
 * 美国中西部
@@ -58,6 +60,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 * 韩国中部
 * 印度中部
 * 美国弗吉尼亚州政府
+* 美国政府亚利桑那州
 * 中国东部 2
 
 
@@ -137,7 +140,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
    ![“网络性能监视器配置”页](media/network-performance-monitor/npm-private-peerings.png)
     
-针对这些线路和对等互连的监视功能一开始处于禁用状态。 选择要监视的每个资源，然后从右侧的详细信息视图中配置相应的监视功能。 选择 "**保存**" 以保存配置。 要了解详细信息，请参阅“配置 ExpressRoute 监视”一文。 
+针对这些线路和对等互连的监视功能一开始处于禁用状态。 选择要监视的每个资源，然后从右侧的详细信息视图中配置相应的监视功能。 选择“保存”以保存配置。 要了解详细信息，请参阅“配置 ExpressRoute 监视”一文。 
 
 安装完成以后，数据的填充需要 30 分钟到 1 小时。 当解决方案正从网络聚合数据时，网络性能监视器“概览”磁贴中会显示“解决方案需要进行额外配置”消息******。 收集数据并为其编制索引以后，“概览”磁贴会变化，并以摘要形式告知网络运行状况****。 然后，你可以对安装了 Log Analytics 代理的节点以及从环境中发现的子网的监视进行编辑。
 
@@ -150,7 +153,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 1. 选中或清除 **子网 ID** 旁的复选框。 然后，请确保根据情况选中或清除“用于监视”。**** 可以选择或清除多个子网。 禁用时，不会监视子网，但会更新代理以停止 ping 其他代理。 
 2. 在特定子网中选择要监视的节点。 从列表中选择子网，并在包含未监视节点的列表与包含已监视节点的列表之间移动所需节点。 可以向子网添加自定义说明。
-3. 选择 "**保存**" 以保存配置。 
+3. 选择“保存”以保存配置。 
 
 #### <a name="choose-nodes-to-monitor"></a>选择要监视的节点
 

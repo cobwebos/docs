@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: troubleshooting, contperfq4
 ms.date: 08/13/2020
-ms.openlocfilehash: 71457be4e572a0e04dfffd0689bfbd458f7c2622
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 02c733c7849c89f9d48ddbe75ffbb2235e1be58e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88190501"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757279"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Azure 机器学习中的已知问题和故障排除
 
@@ -121,6 +121,18 @@ ms.locfileid: "88190501"
     pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
     ```
 
+* **Azure 机器学习 SDK 安装失败，出现异常： ModuleNotFoundError：没有名为 "ruamel" 或 "ImportError：没有名为 ruamel. yaml 的模块"**
+   
+   在适用于 Python 的 Azure 机器学习 SDK 的所有发行版本的 conda 基本环境中，在基本环境中安装适用于 Python 的 Azure 机器学习 SDK for)  ( Python 时遇到此问题。 请参阅以下解决方法：
+
+    * 避免在 conda 基本环境上安装 Python SDK，而是在新创建的用户环境上创建 conda 环境并安装 SDK。 最新的 pip 应在这个新的 conda 环境中工作。
+
+    * 若要在 docker 中创建映像，而不能脱离 conda 基本环境，请在 docker 文件中固定 pip<= 20.1.1。
+
+    ```Python
+    conda install -c r -y conda python=3.6.2 pip=20.1.1
+    ```
+    
 * 安装包时 Databricks 失败
 
     安装更多包时，Azure Databricks 上的 Azure 机器学习 SDK 安装失败。 某些包（如 `psutil`）可能会导致冲突。 为了避免安装错误，请通过冻结库版本来安装包。 此问题与 Databricks 相关，而与 Azure 机器学习 SDK 无关。 使用其他库时也可能会遇到此问题。 示例：
@@ -163,8 +175,8 @@ ms.locfileid: "88190501"
 
 * **Azure 门户**：如果直接通过 SDK 或门户的共享链接查看工作区，则将无法在扩展程序中查看包含订阅信息的常规“概述”页。 也将无法切换到另一个工作区。 如果需要查看其他工作区，请直接转到 [Azure 机器学习工作室](https://ml.azure.com)并搜索工作区名称。
 
-* **Azure 机器学习 studio web 门户中支持的浏览器**：建议使用与操作系统兼容的最新浏览器。 支持以下浏览器：
-  * Microsoft Edge (新的 Microsoft Edge （最新版本）。 不是 Microsoft Edge 旧) 
+* **Azure 机器学习工作室 Web 门户支持的浏览器**：建议使用与操作系统兼容的最新浏览器。 支持以下浏览器：
+  * Microsoft Edge（新的 Microsoft Edge（最新版）， 不是旧版 Microsoft Edge）
   * Safari（最新版本，仅限 Mac）
   * Chrome（最新版本）
   * Firefox（最新版本）
@@ -207,7 +219,7 @@ ms.locfileid: "88190501"
 
 数据偏移监视器的限制和已知问题：
 
-* 分析历史数据的时间范围限制为监视器频率设置的31个间隔。 
+* 分析历史数据时的时间范围限制为监视器频率设置的 31 个间隔。 
 * 除非未指定特征列表（使用所有特征），否则特征限制为 200 个。
 * 计算大小必须足够大才能处理数据。
 * 确保数据集包含处于给定监视器运行的开始和结束日期范围内的数据。
@@ -222,8 +234,8 @@ ms.locfileid: "88190501"
 * 如果已 [创建数据偏移监视器](how-to-monitor-datasets.md) ，但在 Azure 机器学习 studio 中看不到数据 **集监视器** 页上的数据，请尝试以下。
 
     1. 检查是否已在页面顶部选择了正确的日期范围。  
-    1. 在 " **数据集监视器** " 选项卡上，选择 "试验" 链接以检查运行状态。  此链接位于表的最右侧。
-    1. 如果运行已成功完成，请检查驱动程序日志以查看已生成的指标数，或者是否有任何警告消息。  单击试验后，在 " **输出 + 日志** " 选项卡中查找驱动程序日志。
+    1. 在“数据集监视器”选项卡上，选择试验链接以检查运行状态。  此链接位于表的最右侧。
+    1. 如果运行已成功完成，请检查驱动程序日志，以便查看已生成的指标数，或者查看是否有任何警告消息。  单击试验后，在“输出 + 日志”选项卡中查找驱动程序日志。
 
 * 如果 SDK `backfill()` 函数未生成预期的输出，则可能是由于身份验证问题。  创建要传入到此函数中的计算时，请勿使用 `Run.get_context().experiment.workspace.compute_targets`，  而应使用 [ServicePrincipalAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py)（例如以下代码）来创建要传入到该 `backfill()` 函数中的计算： 
 
@@ -239,11 +251,11 @@ ms.locfileid: "88190501"
 
 ## <a name="azure-machine-learning-designer"></a>Azure 机器学习设计器
 
-* **计算准备时间较长：**
+* 计算准备时间很长：
 
-第一次连接或创建计算目标时，可能需要几分钟或更长时间。 
+第一次连接或创建计算目标可能需要几分钟甚至更长的时间。 
 
-从模型数据收集器中，最多需要 (，但通常不会) 超过10分钟的时间，数据就会到达 blob 存储帐户。 等待10分钟，以确保下面的单元格将运行。
+在模型数据收集器中，数据到达 blob 存储帐户最多需要（但通常不到）10 分钟。 等待 10 分钟以确保运行下面的单元。
 
 ```python
 import time
@@ -431,9 +443,9 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 
 例如，如果尝试通过一个为实施远程执行操作而提交的机器学习管道创建或附加计算目标，会收到错误。
 
-## <a name="missing-user-interface-items-in-studio"></a>Studio 中缺少用户界面项
+## <a name="missing-user-interface-items-in-studio"></a>工作室中缺少用户界面项
 
-可以使用 Azure 基于角色的访问控制来限制可使用 Azure 机器学习执行的操作。 这些限制可以防止用户界面项显示在 Azure 机器学习 studio 中。 例如，如果分配了无法创建计算实例的角色，则创建计算实例的选项将不会出现在 studio 中。
+可以使用 Azure 基于角色的访问控制来限制可使用 Azure 机器学习执行的操作。 这些限制可以防止用户界面项显示在 Azure 机器学习工作室中。 例如，如果分配了无法创建计算实例的角色，则创建计算实例的选项不会出现在工作室中。
 
 有关详细信息，请参阅[管理用户和角色](how-to-assign-roles.md)。
 

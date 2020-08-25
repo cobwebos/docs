@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 07/18/2019
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: c7e2b522d475a49f694a8cb57bf57f62900948b0
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 42ced6632ebfa56af8fe13a02f531b9835e13df3
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743192"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799377"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>使用双重验证或安全信息登录
 
@@ -90,9 +90,9 @@ ms.locfileid: "83743192"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 在[安全信息（预览版）概述](user-help-security-info-overview.md)一文中了解安全信息。
+- 在[安全信息（预览版）概述](./security-info-setup-signin.md)一文中了解安全信息。
 
-- 在[双重验证概述](user-help-two-step-verification-overview.md)一文中了解双重验证。
+- 在[双重验证概述](./multi-factor-authentication-end-user-first-time.md)一文中了解双重验证。
 
 - 如果丢失或忘记密码，请从[密码重置门户](https://passwordreset.microsoftonline.com/)重置密码
 

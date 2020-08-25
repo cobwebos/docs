@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 8519daffd8ee0ad6c12be2f40fd8030caaaf34c8
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 1c9e40738d70b6fbb9fed267a6a047d8330023b7
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88724962"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749301"
 ---
 # <a name="business-card-concepts"></a>名片概念
 
@@ -63,12 +63,14 @@ Azure 窗体识别器可以使用其预生成模型之一来分析和提取名�
 
 |字段| 类型 | 可能值 |
 |:-----|:----:|:----|
-|状态 | 字符串 | notStarted：分析操作尚未开始。 |
+|状态 | string | notStarted：分析操作尚未开始。 |
 | |  | 正在运行：分析操作正在进行。 |
 | |  | 失败：分析操作失败。 |
 | |  | succeeded：分析操作成功。 |
 
 当 " **状态** " 字段的值为 " **成功** " 时，JSON 响应将包括 "业务卡理解" 和 "文本识别" 结果。 业务卡理解结果被组织为命名字段值的字典，其中每个值都包含提取的文本、规范化值、边界框、置信度和对应的单词元素。 文本识别结果组织为带有文本、边界框和置信度信息的线条和单词的层次结构。
+
+![Contoso smample 结果](./media/business-card-results.png)
 
 ### <a name="sample-json-output"></a>示例 JSON 输出
 
@@ -374,7 +376,7 @@ Azure 窗体识别器可以使用其预生成模型之一来分析和提取名�
 }
 ```
 
-按照 [提取提取名片数据](./QuickStarts/python-business-cards.md) 快速入门中的步骤，使用 Python 和 REST API 来实现名片数据提取。
+按照 [提取名片数据](./QuickStarts/python-business-cards.md) 快速入门中的步骤，使用 Python 和 REST API 来实现名片数据提取。
 
 ## <a name="customer-scenarios"></a>客户方案  
 

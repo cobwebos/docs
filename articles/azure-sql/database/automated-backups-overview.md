@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 08/04/2020
-ms.openlocfilehash: 3e37d907d00acd3e2b368700b70b4e268bad3ec9
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 5fd835418a8429fa07325c22b106ee675ba3e2e1
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921939"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756718"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>自动备份 - Azure SQL 数据库和 SQL 托管实例
 
@@ -36,14 +36,12 @@ SQL 数据库和 SQL 托管实例都使用 SQL Server 技术，每周创建[完�
 
 ### <a name="backup-storage-redundancy"></a>备份存储冗余
 
-> [!IMPORTANT]
-> 用于备份的可配置存储冗余目前仅适用于 SQL 托管实例，只能在创建托管实例过程中指定。 预配资源后，无法更改备份存储冗余选项。
+默认情况下，SQL 数据库和 SQL 托管实例将数据存储在复制到[配对区域](../../best-practices-availability-paired-regions.md)的异地冗余 (GRS) [存储 blob](../../storage/common/storage-redundancy.md)中。 这有助于防止影响主要区域中的备份存储的中断，并使你能够在发生灾难时将服务器还原到不同的区域。 
 
-配置备份存储冗余的选项可以灵活地在本地冗余 (LRS) 、区域冗余 (ZRS) 或异地冗余 (GRS) [存储 blob](../../storage/common/storage-redundancy.md)之间进行选择。 存储冗余机制存储数据的多个副本，使其免受计划内和计划外事件的影响，包括暂时性的硬件故障、网络中断或电源中断或大规模灾难。 此功能目前仅适用于 SQL 托管实例。
+SQL 托管实例引入了将存储冗余更改为本地冗余 (LRS) 或区域冗余 (ZRS) 存储 blob 的功能，以确保你的数据保持在部署托管实例的同一区域中。 存储冗余机制存储数据的多个副本，使其免受计划内和计划外事件的影响，包括暂时性的硬件故障、网络中断或电源中断或大规模灾难。 
 
-将 GRS 存储 blob 复制到[配对区域](../../best-practices-availability-paired-regions.md)，以防止影响主要区域中的备份存储的中断，并使你能够在发生灾难时将服务器还原到不同的区域。 
+配置备份存储冗余的选项为 SQL 托管实例提供在 LRS、ZRS 或 GRS 存储 blob 之间进行选择的灵活性。 在托管实例创建过程中配置备份存储冗余，就像预配资源后，将无法再更改存储冗余。  (区域冗余存储 (ZRS) 目前仅在 [特定区域](../../storage/common/storage-redundancy.md#zone-redundant-storage)) 提供。
 
-相反，LRS 和 ZRS 存储 blob 确保你的数据保持在部署 SQL 数据库或 SQL 托管实例的同一区域中。 区域冗余存储 (ZRS) 当前仅在[特定区域](../../storage/common/storage-redundancy.md#zone-redundant-storage)) 提供。
 
 > [!IMPORTANT]
 > 在 SQL 托管实例中，配置的备份冗余适用于用于时间点还原的短期备份保留设置 (PITR) ，以及用于长期备份的长期保留备份 (LTR) 。
@@ -52,7 +50,7 @@ SQL 数据库和 SQL 托管实例都使用 SQL Server 技术，每周创建[完�
 
 可使用这些备份：
 
-- **现有数据库**  -  的时间点还原使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 将[现有数据库还原到保持期过去的某个时间点](recovery-using-backups.md#point-in-time-restore)。 对于 SQL 数据库，此操作会在与原始数据库相同的服务器上创建一个新的数据库，但使用不同的名称以避免覆盖原始数据库。 还原完成后，可以删除原始数据库。 或者，您可以[重命名](https://docs.microsoft.com/sql/relational-databases/databases/rename-a-database)原始数据库，然后将还原的数据库重命名为原始数据库名称。 同样，对于 SQL 托管实例，此操作将在同一订阅和同一区域中的相同或不同的托管实例上创建数据库的副本。
+- **现有数据库**  -  的时间点还原使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 将[现有数据库还原到保持期过去的某个时间点](recovery-using-backups.md#point-in-time-restore)。 对于 SQL 数据库，此操作会在与原始数据库相同的服务器上创建一个新的数据库，但使用不同的名称以避免覆盖原始数据库。 还原完成后，可以删除原始数据库。 或者，您可以 [重命名](https://docs.microsoft.com/sql/relational-databases/databases/rename-a-database) 原始数据库，然后将还原的数据库重命名为原始数据库名称。 同样，对于 SQL 托管实例，此操作将在同一订阅和同一区域中的相同或不同的托管实例上创建数据库的副本。
 - **已删除数据库**  -  的时间点还原将[删除的数据库还原到删除时的时间](recovery-using-backups.md#deleted-database-restore)点或保留期内的任何时间点。 仅可在创建原始数据库所在的同一服务器或托管实例上还原已删除的数据库。 删除数据库时，该服务会在删除前执行最终事务日志备份，以防止任何数据丢失。
 - **异地还原**  - [将数据库还原到另一个地理区域](recovery-using-backups.md#geo-restore)。 在无法访问主要区域中的数据库和备份时，异地还原可帮助从地理位置灾难中恢复。 它可在任何 Azure 区域中的任意现有服务器或托管实例上创建新的数据库。
    > [!IMPORTANT]
@@ -118,7 +116,7 @@ SQL 数据库和 SQL 托管实例按累积值形式计算使用的总备份存�
 
 ## <a name="backup-retention"></a>备份保留
 
-对于所有新的、还原和复制的数据库，Azure SQL 数据库和 Azure SQL 托管实例会默认保留足以实现过去 7 天的 PITR 的备份量。 除了超大规模数据库之外，可以更改1-35 天范围内每个活动数据库的[备份保留期](#change-the-pitr-backup-retention-period)。 如[备份存储消耗量](#backup-storage-consumption)中所述，为启用 PITR 而存储的备份可能早于保留期。 仅适用于 Azure SQL 托管实例，一旦在0-35 天内删除了数据库，就可以设置 PITR 备份保留速率。 
+对于所有新的、还原和复制的数据库，Azure SQL 数据库和 Azure SQL 托管实例会默认保留足以实现过去 7 天的 PITR 的备份量。 除了超大规模数据库之外，可以更改1-35 天范围内每个活动数据库的 [备份保留期](#change-the-pitr-backup-retention-period) 。 如[备份存储消耗量](#backup-storage-consumption)中所述，为启用 PITR 而存储的备份可能早于保留期。 仅适用于 Azure SQL 托管实例，一旦在0-35 天内删除了数据库，就可以设置 PITR 备份保留速率。 
 
 如果删除数据库，系统会保留数据库的备份至特定的保留期，与为任何一个联机数据库的保留方式一样。 不能更改已删除的数据库的备份保留期。
 
@@ -135,7 +133,7 @@ SQL 数据库和 SQL 托管实例按累积值形式计算使用的总备份存�
 
 ## <a name="storage-costs"></a>存储费用
 
-备份存储的价格各不相同，具体取决于采购模式 (DTU 或 vCore) 、选择的备份存储冗余选项以及你所在的区域。 备份存储按每 GB/月的使用量计费，有关定价，请参阅[AZURE Sql 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/single/)页和[azure sql 托管实例定价](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)页。
+备份存储的价格各不相同，具体取决于采购模式 (DTU 或 vCore) 、选择的备份存储冗余选项以及你所在的区域。 备份存储按每 GB/月的使用量计费，有关定价，请参阅 [AZURE Sql 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/single/) 页和 [azure sql 托管实例定价](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/) 页。
 
 ### <a name="dtu-model"></a>DTU 模型
 
@@ -176,16 +174,16 @@ SQL 数据库和 SQL 托管实例按累积值形式计算所有备份文件的�
 - ZRS 价格 = 1.25 x
 - GRS 价格 = 2x
 
-有关备份存储定价的详细信息，请访问[AZURE Sql 数据库定价页](https://azure.microsoft.com/pricing/details/sql-database/single/)和[azure sql 托管实例定价页](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)。
+有关备份存储定价的详细信息，请访问 [AZURE Sql 数据库定价页](https://azure.microsoft.com/pricing/details/sql-database/single/) 和 [azure sql 托管实例定价页](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)。
 
 > [!IMPORTANT]
 > 用于备份的可配置存储冗余目前仅适用于 SQL 托管实例，只能在创建托管实例过程中指定。 预配资源后，无法更改备份存储冗余选项。
 
 ### <a name="monitor-costs"></a>监视成本
 
-要了解备份存储成本，请在 Azure 门户中的 "**成本管理 + 计费**" 下，选择 "**成本管理**"，然后选择 "**成本分析**"。 选择所需的订阅作为**作用域**，然后筛选所需的时间段和服务。
+要了解备份存储成本，请在 Azure 门户中的 " **成本管理 + 计费** " 下，选择 " **成本管理**"，然后选择 " **成本分析**"。 选择所需的订阅作为 **作用域**，然后筛选所需的时间段和服务。
 
-为 "**服务名称**" 添加筛选器，然后在下拉列表中选择 " **sql 数据库**"。 使用 "**计量子类别**" 筛选器选择服务的帐单计数器。 对于单一数据库或弹性数据库池，请选择 "**单一/弹性池 pitr 备份存储**"。 对于托管实例，请选择 " **mi pitr 备份存储**"。 **存储**和**计算**子类别可能也会给您带来兴趣，但它们并不与备份存储成本相关联。
+为 " **服务名称**" 添加筛选器，然后在下拉列表中选择 " **sql 数据库** "。 使用 " **计量子类别** " 筛选器选择服务的帐单计数器。 对于单一数据库或弹性数据库池，请选择 " **单一/弹性池 pitr 备份存储**"。 对于托管实例，请选择 " **mi pitr 备份存储**"。 **存储**和**计算**子类别可能也会给您带来兴趣，但它们并不与备份存储成本相关联。
 
 ![备份存储成本分析](./media/automated-backups-overview/check-backup-storage-cost-sql-mi.png)
 
@@ -200,7 +198,7 @@ SQL 数据库和 SQL 托管实例按累积值形式计算所有备份文件的�
 
 Azure SQL 工程团队持续不断地自动测试自动数据库备份的还原。 （此测试当前不适用于 SQL 托管实例。）完成时间点还原后，数据库还会接受 DBCC CHECKDB 完整性检查。
 
-在完整性检查期间发现的任何问题都将导致向工程团队发出警报。 有关详细信息，请参阅[SQL 数据库中的数据完整性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)。
+在完整性检查期间发现的任何问题都将导致向工程团队发出警报。 有关详细信息，请参阅 [SQL 数据库中的数据完整性](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)。
 
 所有类型的数据库备份都提供 CHECKSUM 选项，以便增加备份完整度。
 
@@ -256,7 +254,7 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup
 
 #### <a name="sql-managed-instance"></a>[SQL 托管实例](#tab/managed-instance)
 
-若要为**单个活动**的 SQL 托管实例数据库更改 PITR 备份保留，请使用以下 PowerShell 示例。
+若要为 **单个活动** 的 SQL 托管实例数据库更改 PITR 备份保留，请使用以下 PowerShell 示例。
 
 ```powershell
 # SET new PITR backup retention period on an active individual database
@@ -264,7 +262,7 @@ Set-AzSqlDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup
 Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resourceGroup -InstanceName testserver -DatabaseName testDatabase -RetentionDays 1
 ```
 
-若要为**所有活动**的 SQL 托管实例数据库更改 PITR 备份保留，请使用以下 PowerShell 示例。
+若要为 **所有活动** 的 SQL 托管实例数据库更改 PITR 备份保留，请使用以下 PowerShell 示例。
 
 ```powershell
 # SET new PITR backup retention period for ALL active databases
@@ -272,7 +270,7 @@ Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -ResourceGroupName resou
 Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName testserver | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 1
 ```
 
-若要为**单个已删除**的 SQL 托管实例数据库更改 PITR 备份保留，请使用以下 PowerShell 示例。
+若要为 **单个已删除** 的 SQL 托管实例数据库更改 PITR 备份保留，请使用以下 PowerShell 示例。
  
 ```powershell
 # SET new PITR backup retention on an individual deleted database
@@ -280,7 +278,7 @@ Get-AzSqlInstanceDatabase -ResourceGroupName resourceGroup -InstanceName testser
 Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName resourceGroup -InstanceName testserver -DatabaseName testDatabase | Set-AzSqlInstanceDatabaseBackupShortTermRetentionPolicy -RetentionDays 0
 ```
 
-若要更改**所有已删除**SQL 托管实例数据库的 PITR 备份保留，请使用以下 PowerShell 示例。
+若要更改 **所有已删除** SQL 托管实例数据库的 PITR 备份保留，请使用以下 PowerShell 示例。
 
 ```powershell
 # SET new PITR backup retention for ALL deleted databases
@@ -366,14 +364,14 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 > [!NOTE]
 > 用于备份的可配置存储冗余目前仅适用于 SQL 托管实例，只能在创建托管实例过程中指定。 预配资源后，无法更改备份存储冗余选项。
 
-可以在创建实例期间设置托管实例的备份存储冗余。 默认值为异地冗余存储 (GRS) 。 有关本地冗余 (LRS) 的区域冗余 (ZRS) 和异地冗余 (RA-GRS) 备份存储的定价差异，请访问[托管实例定价页](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)。
+可以在创建实例期间设置托管实例的备份存储冗余。 默认值为异地冗余存储 (GRS) 。 有关本地冗余 (LRS) 的区域冗余 (ZRS) 和异地冗余 (RA-GRS) 备份存储的定价差异，请访问 [托管实例定价页](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/)。
 
 ### <a name="configure-backup-storage-redundancy-by-using-the-azure-portal"></a>使用 Azure 门户配置备份存储冗余
 
 在 Azure 门户中，当你创建 SQL 托管实例时，"**基本**信息" 选项卡上的 "**配置托管实例**" 选项可从 "**计算 + 存储**" 边栏选项卡上找到 "更改备份存储冗余" 选项。
 ![打开计算 + 存储配置-边栏选项卡](./media/automated-backups-overview/open-configuration-blade-mi.png)
 
-找到选择 "**计算 + 存储**" 边栏选项卡上的 "备份存储冗余" 的选项。
+找到选择 " **计算 + 存储** " 边栏选项卡上的 "备份存储冗余" 的选项。
 ![配置备份存储冗余](./media/automated-backups-overview/select-backup-storage-redundancy-mi.png)
 
 ## <a name="next-steps"></a>后续步骤
@@ -383,4 +381,4 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 - 获取有关如何[使用 PowerShell 将数据库还原到某个时间点](scripts/restore-database-powershell.md)的详细信息。
 - 有关如何使用 Azure 门户配置和管理 Azure Blob 存储中的自动备份的长期保留，并从这些备份进行还原的信息，请参阅[使用 Azure 门户管理长期备份保留](long-term-backup-retention-configure.md)。
 - 有关如何使用 PowerShell 配置和管理 Azure Blob 存储中的自动备份的长期保留，并从这些备份进行还原的信息，请参阅[使用 PowerShell 管理长期备份保留](long-term-backup-retention-configure.md)。
-- 若要了解如何优化备份存储的保留期和 Azure SQL 托管实例的成本，请参阅[托管实例的微调备份存储成本](https://aka.ms/mi-backup-tuning)。
+- 若要了解如何优化备份存储的保留期和 Azure SQL 托管实例的成本，请参阅 [托管实例的微调备份存储成本](https://aka.ms/mi-backup-tuning)。

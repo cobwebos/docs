@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59f80b986a9d1a3b2be9aa413ce4175d8eb88bc4
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 46d692b81d24b6c5088ffc42644ed1dd7f45b2d2
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88213837"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795322"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>向 Azure Active Directory 中的 Microsoft 365 组分配敏感度标签
 
-Azure Active Directory (Azure AD) 支持将 [Microsoft 365 合规中心](https://sip.protection.office.com/homepage) 发布的敏感度标签应用到 Microsoft 365 组。 敏感度标签适用于各种服务，例如 Outlook、Microsoft 团队和 SharePoint。 此功能目前已公开上市。 有关 Office 365 应用支持的详细信息，请参阅 [office 365 支持敏感度标签](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels)。
+Azure Active Directory (Azure AD) 支持将 [Microsoft 365 合规中心](https://sip.protection.office.com/homepage) 发布的敏感度标签应用到 Microsoft 365 组。 敏感度标签适用于各种服务，例如 Outlook、Microsoft 团队和 SharePoint。 此功能目前已公开上市。 有关 Office 365 应用支持的详细信息，请参阅 [office 365 支持敏感度标签](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels)。
 
 > [!IMPORTANT]
 > 若要配置此功能，你的 Azure AD 组织中必须至少有一个活动 Azure Active Directory Premium P1 许可证。
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) 支持将 [Microsoft 365 合规中心](https:/
     ```
 
     > [!NOTE]
-    > 如果没有为此 Azure AD 组织创建组设置，则必须先创建设置。 按照 Azure Active Directory cmdlet 中的步骤 [配置组设置](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-cmdlets) ，为此 Azure AD 组织创建组设置。
+    > 如果没有为此 Azure AD 组织创建组设置，则必须先创建设置。 按照 Azure Active Directory cmdlet 中的步骤 [配置组设置](./groups-settings-cmdlets.md) ，为此 Azure AD 组织创建组设置。
 
 1. 接下来，显示当前组设置。
 
@@ -100,7 +100,7 @@ Azure Active Directory (Azure AD) 支持将 [Microsoft 365 合规中心](https:/
 1. 从 " **所有组** " 页中，选择要从中删除标签的组。
 1. 在 " **组** " 页上，选择 " **属性**"。
 1. 选择“删除” 。
-1. 选择“保存”应用所做的更改。
+1. 单击“保存”应用所做的更改。
 
 ## <a name="using-classic-azure-ad-classifications"></a>使用经典 Azure AD 分类
 
@@ -135,7 +135,7 @@ Azure Active Directory (Azure AD) 支持将 [Microsoft 365 合规中心](https:/
 1. 选择“组”。
 1. 从 " **所有组** " 页中，选择要标记的组。
 1. 在选定组的页上，选择 " **属性** "，然后从列表中选择一个新的敏感度标签。
-1. 选择“保存”。
+1. 选择“保存” 。
 
 ### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>组设置对已发布标签所做的更改不会在组中更新
 
@@ -145,7 +145,7 @@ Azure Active Directory (Azure AD) 支持将 [Microsoft 365 合规中心](https:/
 
 ## <a name="next-steps"></a>后续步骤
 
-- [结合使用敏感度标签和 Microsoft 团队、Microsoft 365 组和 SharePoint 站点](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
+- [结合使用敏感度标签和 Microsoft 团队、Microsoft 365 组和 SharePoint 站点](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites)
 - [标签策略后更新组 Azure AD PowerShell 脚本手动更改](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1)
-- [编辑组设置](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal)
-- [使用 PowerShell 命令管理组](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-settings-v2-cmdlets)
+- [编辑组设置](../fundamentals/active-directory-groups-settings-azure-portal.md)
+- [使用 PowerShell 命令管理组](./groups-settings-v2-cmdlets.md)
