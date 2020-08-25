@@ -9,26 +9,22 @@ ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3d680fb105b6bde26e5b02544359009f316647bb
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: f29a7e48fc1872f83b5a6ce127f38c1a559b2691
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513717"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762311"
 ---
 # <a name="about-virtual-hub-routing"></a>关于虚拟中心路由
 
 虚拟中心的路由功能由路由器提供，该路由器使用边界网关协议 (BGP) 管理网关之间的所有路由。 虚拟中心可以包含多个网关，例如站点到站点 VPN 网关、ExpressRoute 网关、点到站点网关、Azure 防火墙。 该路由器还提供与虚拟中心连接的虚拟网络之间的传输连接，最高可支持 50 Gbps 的总吞吐量。 这些路由功能适用于标准虚拟 WAN 客户。 
 
-若要配置路由，请参阅[如何配置虚拟中心路由](how-to-virtual-hub-routing.md)。
+若要配置路由，请参阅 [如何配置虚拟中心路由](how-to-virtual-hub-routing.md)。
 
 ## <a name="routing-concepts"></a><a name="concepts"></a>路由概念
 
 以下部分介绍了虚拟中心路由的关键概念。
-
-> [!NOTE]
-> 在虚拟网络连接中，一些用于中心路由表、关联、传播和静态路由的新概念可能仍在推出，并应在8月17日的某个星期完成。
->
 
 ### <a name="hub-route-table"></a><a name="hub-route"></a>中心路由表
 
@@ -77,21 +73,23 @@ ms.locfileid: "87513717"
 
 * **在虚拟中心中具有预先存在的路由的标准虚拟 WAN 客户**：
 
-若要使用新的路由表功能，请等到8月17日的第几周结束，才能完成 Azure 中的推出。 如果在 Azure 门户中的中心的 "路由" 部分中具有预先存在的路由，则需要先删除它们，然后尝试创建新的路由表（在 Azure 门户中的中心的 "路由表" 部分中提供）
+如果在 Azure 门户中的中心的 "路由" 部分中存在预先存在的路由，则需要先删除它们，然后尝试在 Azure 门户的 "路由表" 部分中创建新的路由表 () 
 
-* **具有虚拟中心中预先存在的路由的基本虚拟 WAN 客户**：若要使用新的路由表功能，请等到8月17日开始推出，才能完成 Azure 中的推出。 如果你在 Azure 门户中的中心的“路由”部分具有预先存在的路由，则需要首先删除它们，再将虚拟 WAN 从基本版升级到标准版。 请参阅[将虚拟 WAN 从基本版升级到标准版](upgrade-virtual-wan.md)。
+* **虚拟中心中具有预先存在的路由的基本虚拟 WAN 客户**：如果在 Azure 门户中的中心已有路由的现有路由，则需先将其删除，然后将基本虚拟 wan **升级** 到标准虚拟 wan。 请参阅[将虚拟 WAN 从基本版升级到标准版](upgrade-virtual-wan.md)。
 
 ## <a name="virtual-wan-routing-considerations"></a><a name="considerations"></a>虚拟 WAN 路由注意事项
 
 配置虚拟 WAN 路由时，请考虑以下事项：
 
-* 所有分支连接（点到站点、站点到站点和 ExpressRoute）都需要与默认路由表相关联。 这样，所有分支都将学习相同的前缀。
+* 所有分支连接 (点到站点、站点到站点和 ExpressRoute) 需要与默认路由表相关联。 这样，所有分支都将学习相同的前缀。
 * 所有分支连接都需要将其路由传播到同一组路由表。 例如，如果您决定分支应传播到默认路由表，则此配置应在所有分支中保持一致。 因此，所有与默认路由表关联的连接都可以访问所有分支。
 * 当前不支持通过 Azure 防火墙进行分支到分支。
 * 在多个区域使用 Azure 防火墙时，所有辐射虚拟网络都必须关联到相同的路由表。 例如，具有 Vnet 的子集，而其他 Vnet 在同一虚拟中心绕过 Azure 防火墙是不可能的。
+* 每个 VNet 连接可以配置一个下一个跃点 IP。
+* 虚拟中心不支持 0.0.0.0/0 和下一跃点虚拟网络连接 (或 VNet 连接中设备的 IP 的静态路由) 
 
 ## <a name="next-steps"></a>后续步骤
 
-若要配置路由，请参阅[如何配置虚拟中心路由](how-to-virtual-hub-routing.md)。
+若要配置路由，请参阅 [如何配置虚拟中心路由](how-to-virtual-hub-routing.md)。
 
 有关虚拟 WAN 的详细信息，请参阅[常见问题解答](virtual-wan-faq.md)。

@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/05/2019
-ms.openlocfilehash: 4d0ee48a42814ab2c4229c5f8f239aa1a1c28544
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 8/6/2020
+ms.openlocfilehash: 5b5840c1b668e9a509f58d7edf65175f621d9e4c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87314214"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88794297"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>流分析和 Power BI：针对流式处理数据的实时分析仪表板
 
@@ -39,7 +39,10 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
 2. 在左侧菜单中，选择“作业拓扑结构”下的“输出” 。 然后从下拉菜单中依次选择“+ 添加”和“Power BI” 。
 
-3. 选择“+ 添加” > “Power BI”。 然后在窗体中填写以下详细信息并选择“授权”：
+3. 选择“+ 添加” > “Power BI”。 然后，使用以下详细信息填充窗体，并选择 " **授权** " 以使用自己的用户标识连接到 Power BI (该令牌在90天) 有效。 
+
+>[!NOTE]
+>对于生产作业，我们建议连接到 [使用托管标识对 Azure 流分析作业进行身份验证，以便 Power BI](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)。
 
    |**设置**  |**建议的值**  |
    |---------|---------|
@@ -173,7 +176,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 
     * 转到“可视化效果类型”后，选择“折线图” 。 
     * 添加轴，然后选择“windowend”。 
-    * 添加值，然后选择“fraudulentcalls”。
+    * 添加值，然后选择“fraudulentcalls”****。
     * 对于“要显示的时间窗口”，请选择最近 10 分钟。
 
       ![在 Power BI 中创建折线图磁贴](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
@@ -230,3 +233,4 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
 * [流分析输出](stream-analytics-define-outputs.md)
 * [Azure 流分析查询语言参考](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
 * [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [使用托管标识对 Azure 流分析作业进行身份验证，以便 Power BI](https://docs.microsoft.com/azure/stream-analytics/powerbi-output-managed-identity)

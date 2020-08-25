@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: e9fd4308f89873183e4f5f57cee56887ce181fae
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d7bf31f7b16fa987bb9c710835d1a3aff8214604
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87307278"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783257"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>在 Azure IoT 中心设置 X.509 安全性
 
@@ -49,6 +49,9 @@ IoT 中心基于 X.509 证书的安全性需从 [X.509 证书链](https://en.wik
 ## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>将 X.509 CA 证书注册到 IoT 中心
 
 这些步骤说明如何通过门户将新的证书颁发机构添加到 IoT 中心。
+
+> [!NOTE]
+> 可注册到 IoT 中心的 x.509 CA 证书的最大数目为25。 有关详细信息，请参阅 [Azure IoT 中心配额和限制](iot-hub-devguide-quotas-throttling.md)。
 
 1. 在 Azure 门户中，导航到你的 IoT 中心，并选择中心的“设置” > “证书”。 
 
@@ -147,7 +150,7 @@ IoT 中心基于 X.509 证书的安全性需从 [X.509 证书链](https://en.wik
     }
     ```
 
-1. 最后，将以下代码行添加到**Main**函数，并根据安装程序的要求替换占位符_设备 id_、_你的 iot 中心名称_和_绝对路径到设备-pfx 文件_。
+1. 最后，将以下代码行添加到 **Main** 函数，并根据安装程序的要求替换占位符 _设备 id_、 _你的 iot 中心名称_和 _绝对路径到设备-pfx 文件_ 。
 
     ```csharp
     try

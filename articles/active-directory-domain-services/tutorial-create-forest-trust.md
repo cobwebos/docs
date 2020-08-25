@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: a17764984e33e4312b9d81a5743d851dc14b5c05
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 24928ec4117b321cfec7177fdad40f2a3ab7a1f4
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87492150"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722715"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>教程：在 Azure Active Directory 域服务中创建到本地域的出站林信任
 
-在无法同步密码哈希的环境中，或者用户只使用智能卡登录，因此他们不知道密码的情况下，你可以在 Azure Active Directory 域服务 (Azure AD DS) 中使用资源林。 资源林使用从 Azure AD DS 到一个或多个本地 AD DS 环境的单向出站信任。 这种信任关系可让用户、应用程序和计算机通过 Azure AD DS 托管域向本地域进行身份验证。 在资源林中，本地密码哈希从不会进行同步。
+在无法同步密码哈希的环境中，或者用户只使用智能卡登录，因此他们不知道密码的情况下，你可以在 Azure Active Directory 域服务 (Azure AD DS) 中使用资源林。 资源林使用从 Azure AD DS 到一个或多个本地 AD DS 环境的单向出站信任。 这种信任关系可让用户、应用程序和计算机通过 Azure AD DS 托管域向本地域进行身份验证。 在资源林中，本地密码哈希永远不会同步。
 
 ![从 Azure AD DS 到本地 AD DS 的林信任关系图](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
@@ -128,7 +128,7 @@ ms.locfileid: "87492150"
 
 应事先将 Windows Server 虚拟机加入托管域。 使用此虚拟机来测试本地用户是否可在虚拟机上进行身份验证。 如果需要，请[创建 Windows VM，并将其加入托管域][join-windows-vm]。
 
-1. 使用 [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) 和 Azure AD DS 管理员凭据连接到已加入 Azure AD DS 资源林的 Windows Server VM。
+1. 使用 [Azure Bastion](../bastion/bastion-overview.md) 和 Azure AD DS 管理员凭据连接到已加入 Azure AD DS 资源林的 Windows Server VM。
 1. 打开命令提示符，使用 `whoami` 命令显示当前已通过身份验证的用户的可分辨名称：
 
     ```console
@@ -150,7 +150,7 @@ ms.locfileid: "87492150"
 
 #### <a name="enable-file-and-printer-sharing"></a>启用文件和打印机共享
 
-1. 使用 [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) 和 Azure AD DS 管理员凭据连接到已加入 Azure AD DS 资源林的 Windows Server VM。
+1. 使用 [Azure Bastion](../bastion/bastion-overview.md) 和 Azure AD DS 管理员凭据连接到已加入 Azure AD DS 资源林的 Windows Server VM。
 
 1. 打开“Windows 设置”，然后搜索并选择“网络和共享中心”。 
 1. 选择“更改高级共享设置”的选项。

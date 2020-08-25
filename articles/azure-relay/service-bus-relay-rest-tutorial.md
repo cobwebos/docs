@@ -4,10 +4,10 @@ description: 教程：生成一个公开基于 REST 的接口的 Azure 中继主
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.openlocfilehash: 0d42bd664be0881ee0c1f036231acc67e49b6f8a
-ms.sourcegitcommit: 01cd19edb099d654198a6930cebd61cae9cb685b
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85316631"
 ---
 # <a name="tutorial-azure-wcf-relay-rest-tutorial"></a>教程：Azure WCF 中继 REST 教程
@@ -52,18 +52,18 @@ WCF 协定和 REST 样式的协定的主要区别在于是否向 [OperationContr
 
 1. 以管理员身份启动 Microsoft Visual Studio。 为此，请右键单击 Visual Studio 程序图标，并选择“以管理员身份运行”。
 1. 在 Visual Studio 中选择“创建新项目”。
-1. 在“创建新项目”中，选择适用于 C# 的“控制台应用(.NET Framework)”，然后选择“下一步”。  
+1. 在“创建新项目”中，选择适用于 C# 的“控制台应用(.NET Framework)”，然后选择“下一步”。
 1. 将项目命名为 *ImageListener*。 使用默认的**位置**，然后选择“创建”。
 
    对于 C# 项目，Visual Studio 会创建 *Program.cs* 文件。 此类包含一个空的 `Main()` 方法，需要此方法才能正确生成控制台应用程序项目。
 
 1. 在“解决方案资源管理器”中，右键单击“ImageListener”项目，并选择“管理 NuGet 包” 。
-1. 选择“浏览”，然后搜索并选择“WindowsAzure.ServiceBus”。  选择“安装”并接受使用条款。
+1. 选择“浏览”，然后搜索并选择“WindowsAzure.ServiceBus”。 选择“安装”并接受使用条款。
 
     此步骤添加对服务总线和 *System.ServiceModel.dll* 的引用。 该包自动添加对服务总线库和 WCF `System.ServiceModel` 的引用。
 
 1. 将对 `System.ServiceModel.Web.dll` 的引用显式添加到项目中。 在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”，并选择“添加引用” 。
-1. 在“添加引用”中选择“框架”，然后在“搜索”中输入 *System.ServiceModel.Web*。   选择“System.ServiceModel.Web”复选框，并单击“确定”。
+1. 在“添加引用”中选择“框架”，然后在“搜索”中输入 *System.ServiceModel.Web*。 选择“System.ServiceModel.Web”复选框，并单击“确定”。
 
 接下来，对项目进行以下代码更改：
 
@@ -199,7 +199,7 @@ namespace Microsoft.ServiceBus.Samples
 
    1. 右键单击项目，并选择“添加”。
    1. 然后选择“现有项”。
-   1. 使用“添加现有项”浏览到相应的 .jpg，然后选择“添加”。 添加文件时，请在“文件名”旁边的下拉列表中选择“所有文件”。 
+   1. 使用“添加现有项”浏览到相应的 .jpg，然后选择“添加”。 添加文件时，请在“文件名”旁边的下拉列表中选择“所有文件”。
 
    本教程的余下部分假定图像的名称为 *image.jpg*。 如果 .jpg 文件名不是这样，则必须重命名图像，或更改代码进行弥补。
 
@@ -324,7 +324,7 @@ namespace Microsoft.ServiceBus.Samples
     </appSettings>
     ```
 
-1. 选择“生成” > “生成解决方案”以生成整个解决方案。 
+1. 选择“生成” > “生成解决方案”以生成整个解决方案。
 
 ### <a name="example-that-implements-the-rest-based-wcf-service-contract"></a>实现基于 REST 的 WCF 服务协定的示例
 

@@ -4,10 +4,10 @@ description: 在此教程中，我们使用 Azure 门户在 Azure 开发测试�
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: 9d016b38beb2f338a97ac862a060dc5ec3a77780
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85476557"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>教程：使用 Azure 开发测试实验室设置实验室

@@ -4,12 +4,12 @@ description: 了解如何使用 System Center 2012 R2 DPM 将 Exchange Server �
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 2d547b1d86b95a4f90d3faaa2f676c7cc37255d3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c9d54bb8e9875bcd622c5ce5343dc6f8baa3f2be
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091124"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763569"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份
 
@@ -32,7 +32,7 @@ ms.locfileid: "87091124"
 * 代理和保管库凭据已下载到 DPM 服务器。
 * DPM 服务器上已安装代理。
 * DPM 服务器已使用保管库凭据注册。
-* 若要保护 Exchange 2016，请升级到 DPM 2012 R2 UR9 或更高版本
+* 如果要保护 Exchange 2016，请升级到 DPM 2012 R2 UR9 或更高版本
 
 ## <a name="dpm-protection-agent"></a>DPM 保护代理
 

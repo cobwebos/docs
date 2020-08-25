@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38b474d4b454c61b83bfb1d62230930a0b569b1d
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: ba22720901cf4b7505d8d5b5295ca4e0c271953f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88164217"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798391"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>使用 Azure AD 共享帐户
 
@@ -59,7 +59,7 @@ Azure AD 支持任何企业移动性套件 (EMS) 或 Azure AD Premium 许可计�
 * 密码单一登录代理
 * [组分配](groups-self-service-management.md)
 * 自定义密码应用
-* [应用使用情况仪表板/报告](../active-directory-passwords-get-insights.md)
+* [应用使用情况仪表板/报告](../authentication/howto-sspr-reporting.md)
 * 最终用户访问门户
 * [应用代理](../manage-apps/application-proxy.md)
 * [Active Directory 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)
@@ -72,10 +72,10 @@ Azure AD 支持任何企业移动性套件 (EMS) 或 Azure AD Premium 许可计�
 * 将应用程序配置为使用密码单一登录 (SSO)
 * 使用[基于组的分配](groups-saasapps.md)，并选择输入共享凭据的选项
 
-还可使用多重身份验证 (MFA) 提高共享帐户的安全性（深入了解[使用 Azure AD 保护应用程序](../authentication/concept-mfa-whichversion.md)），并可使用 [Azure AD 自助服务](groups-self-service-management.md)组管理来委派有关谁有权访问应用程序的管理权。
+还可使用多重身份验证 (MFA) 提高共享帐户的安全性（深入了解[使用 Azure AD 保护应用程序](../authentication/concept-mfa-howitworks.md)），并可使用 [Azure AD 自助服务](groups-self-service-management.md)组管理来委派有关谁有权访问应用程序的管理权。
 
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure Active Directory 中的应用程序管理](../manage-apps/what-is-application-management.md)
-* [使用条件访问保护应用](../active-directory-conditional-access-azure-portal.md)
+* [使用条件访问保护应用](../conditional-access/overview.md)
 * [自助服务组管理/SSAA](groups-self-service-management.md)

@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84bf041f64a2f85f3aa3eada1dc1955c93dc034a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: a3f2a23da5baa3a5d1955b10d18411fcedc3acd1
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88208193"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798289"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>分配给云组的角色疑难解答
 
@@ -40,8 +40,8 @@ ms.locfileid: "88208193"
 
 **答：** 用户可以是可分配角色的组的所有者。 我们保护可分配角色的组的所有者，以避免权限提升。 例如，如果将组 Contoso_Security_Admins 分配到安全管理员角色，其中 Bob 是组所有者，而 Alice 是组织中的密码管理员，则可能会出现这种情况。 如果此保护不存在，Alice 可能会重置 Bob 的凭据并接管其身份。 之后，Alice 可以向组中添加用户或任何人，Contoso_Security_Admins 组成为组织中的安全管理员。 若要找出用户是否是组所有者，请获取该用户拥有的对象的列表，并查看是否有任何组的 isAssignableToRole 设置为 true。 如果是，则保护该用户，并且该行为是设计的行为。 请参阅以下文档获取拥有的对象：
 
-- [Get-AzureADUserOwnedObject](https://docs.microsoft.com/powershell/module/azuread/get-azureaduserownedobject?view=azureadps-2.0)  
-- [列出 ownedObjects](https://docs.microsoft.com/graph/api/user-list-ownedobjects?view=graph-rest-1.0&tabs=http)
+- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject?view=azureadps-2.0)  
+- [列出 ownedObjects](/graph/api/user-list-ownedobjects?tabs=http&view=graph-rest-1.0)
 
 **问：** 能否对可分配给 Azure AD 角色的组创建访问评审 (具体而言，将 isAssignableToRole 属性设置为 true) 的组？  
 

@@ -3,12 +3,12 @@ title: 将新式备份存储与 Azure 备份服务器一起使用
 description: 了解 Azure 备份服务器中的新功能。 本文介绍如何升级备份服务器安装。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: ee55355b0f2cabe97f5d2a838edcbd5cfddf44e6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5c7533a5ee2fc65beb86c0c803a522e0acb1df6d
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513704"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762430"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>将存储添加到 Azure 备份服务器
 
@@ -18,7 +18,7 @@ Azure 备份服务器 V2 及更高版本支持新式备份存储，后者可提�
 > 若要使用新式备份存储，必须在 Windows Server 2016 上运行备份服务器 V2 或 V3，或者在 Windows Server 2019 上运行备份服务器 V3。
 > 如果在早期版本的 Windows Server 上运行备份服务器 V2，则 Azure 备份服务器无法利用新式备份存储。 而是采用与备份服务器 V1 相同的方式来保护工作负载。 有关详细信息，请参阅备份服务器版本[保护矩阵](backup-mabs-protection-matrix.md)。
 >
-> 若要实现增强的备份性能，建议在 Windows Server 2019 上部署包含分层存储的 MABS v3。 有关配置分层存储的步骤，请参阅 DPM 文章 "[设置带分层存储的 mb](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)"。
+> 若要实现增强的备份性能，建议在 Windows Server 2019 上部署包含分层存储的 MABS v3。 有关配置分层存储的步骤，请参阅 DPM 文章 "[通过分层存储设置 mb](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)"。
 
 ## <a name="volumes-in-backup-server"></a>备份服务器中的卷
 
@@ -28,9 +28,9 @@ Azure 备份服务器 V2 及更高版本支持新式备份存储，后者可提�
 2. 在存储池中的虚拟磁盘上创建卷：
     1. 将磁盘添加到存储池，然后使用简单布局创建虚拟磁盘。
     2. 添加任何其他磁盘，然后扩展虚拟磁盘。
-    3. 在虚拟磁盘上创建卷。
+    3. 在虚拟磁盘上创建卷
 3. 将卷添加到备份服务器。
-4. 配置可感知工作负载的存储。
+4. 配置负载感知存储。
 
 ## <a name="create-a-volume-for-modern-backup-storage"></a>为新式备份存储创建卷
 
@@ -38,7 +38,7 @@ Azure 备份服务器 V2 及更高版本支持新式备份存储，后者可提�
 
 1. 在服务器管理器中，选择 "**文件和存储服务**  >  **卷**" "  >  **存储池**"。 在“物理磁盘”****，选择“新建存储池”****。
 
-    ![创建新存储池](./media/backup-mabs-add-storage/mabs-add-storage-1.png)
+    ![创建新的存储池](./media/backup-mabs-add-storage/mabs-add-storage-1.png)
 
 2. 在“任务”**** 下拉框中，选择“新建虚拟磁盘”****。
 
@@ -64,8 +64,8 @@ Azure 备份服务器 V2 及更高版本支持新式备份存储，后者可提�
 
 > [!NOTE]
 >
-> - 仅将一个磁盘添加到池，使列计数保持为 1。 然后，可以根据需要添加磁盘。
-> - 如果一次将多个磁盘添加到存储池，则磁盘数将存储为列数。 添加更多磁盘时，它们只能是列数的倍数。
+> - 在池中仅添加一个磁盘可使列数保持为 1。 然后，可以根据需要添加磁盘。
+> - 如果一次性将多个磁盘添加到存储池，则磁盘数量将存储为列数。 添加更多磁盘时，它们仅可以为列数的倍数。
 
 若要将卷添加到备份服务器，请在“管理”**** 窗格中，重新扫描存储，然后选择“添加”****。 可用于为备份服务器存储添加的所有卷的列表随即出现。 将可用卷添加到所选卷的列表之后，可以为它们提供友好名称以帮助管理它们。 若要将这些卷格式化为 ReFS 以便备份服务器可以利用新式备份存储的优点，请选择“确定”****。
 

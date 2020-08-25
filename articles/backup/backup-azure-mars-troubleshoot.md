@@ -3,12 +3,12 @@ title: 排查 Azure 备份代理问题
 description: 本文介绍如何排查 Azure 备份代理的安装和注册问题。
 ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 1afe437239ec7015bf3bbc195cf0b90e75698142
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 64996737a18add8ca1bee25e32929f1d602f9018
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87564106"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763501"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>排查 Microsoft Azure 恢复服务 (MARS) 代理问题
 
@@ -79,7 +79,7 @@ ms.locfileid: "87564106"
 
 | 错误  | 可能的原因 | 建议的操作 |
 | ---     | ---     | ---    |
-| 无法使用指定的保管库凭据文件，因为它未从与此服务器关联的保管库下载。  (ID： 100110) 请提供相应的保管库凭据。 | 保管库凭据文件与此服务器已注册到的保管库不同。 | 确保目标计算机和源计算机已还原到同一个恢复服务保管库。 如果目标服务器已注册到不同的保管库，请使用**Register server**选项注册到正确的保管库。  
+| 无法使用指定的保管库凭据文件，因为它未从与此服务器关联的保管库下载。  (ID： 100110) 请提供相应的保管库凭据。 | 保管库凭据文件与此服务器已注册到的保管库不同。 | 确保目标计算机和源计算机已还原到同一个恢复服务保管库。 如果目标服务器已注册到不同的保管库，请使用 **Register server** 选项注册到正确的保管库。  
 
 ## <a name="backup-jobs-completed-with-warning"></a>备份作业已完成，但出现警告
 
@@ -93,7 +93,7 @@ ms.locfileid: "87564106"
   - 其他进程干扰（例如，包含文件句柄的防病毒软件可能会阻止 MARS 代理访问文件）
   - 应用程序锁定的文件  
 
-- 备份服务会将日志文件中的这些文件标记为失败，采用以下命名约定*LastBackupFailedFilesxxxx.txt* ：在*C:\Program Files\Microsoft Azure Recovery 服务 Agent\temp*文件夹下。
+- 备份服务会将日志文件中的这些文件标记为失败，采用以下命名约定 *LastBackupFailedFilesxxxx.txt* ：在 *C:\Program Files\Microsoft Azure Recovery 服务 Agent\temp* 文件夹下。
 - 若要解决此问题，请查看日志文件以了解问题的性质：
 
   | 错误代码             | 原因                                             | 建议                                              |
@@ -177,16 +177,16 @@ Set-ExecutionPolicy Unrestricted
 
 ![作业无法启动，因为另一个作业正在进行中](./media/backup-azure-mars-troubleshoot/job-could-not-be-started.png)
 
-若要解决此问题，请执行以下操作：
+若要解决此问题，请执行下列操作：
 
-1. 在 "运行" 窗口中键入*taskschd.msc* ，启动任务计划程序管理单元
+1. 在 "运行" 窗口中键入 *taskschd.msc* ，启动任务计划程序管理单元
 1. 在左窗格中，导航到**任务计划程序库**  ->  **Microsoft**  ->  **缺少 onlinebackup.kek**"。
 1. 对于此库中的每个任务，双击该任务以打开 "属性"，然后执行以下步骤：
     1. 切换到“设置”选项卡。
 
          ![“设置”选项卡](./media/backup-azure-mars-troubleshoot/settings-tab.png)
 
-    1. **如果任务已在运行，请更改的选项，然后应用以下规则**。 选择 "**不启动新实例**"。
+    1. **如果任务已在运行，请更改的选项，然后应用以下规则**。 选择 " **不启动新实例**"。
 
          ![更改规则以不启动新实例](./media/backup-azure-mars-troubleshoot/change-rule.png)
 
@@ -234,19 +234,19 @@ Set-ExecutionPolicy Unrestricted
 
 ### <a name="increase-shadow-copy-storage"></a>增加影子副本存储
 
-如果没有足够的卷影副本存储空间来保护数据源，则备份操作可能会失败。 若要解决此问题，请使用**vssadmin**增加受保护卷上的卷影副本存储空间，如下所示：
+如果没有足够的卷影副本存储空间来保护数据源，则备份操作可能会失败。 若要解决此问题，请使用 **vssadmin** 增加受保护卷上的卷影副本存储空间，如下所示：
 
 - 在提升的命令提示符下检查当前的影子存储空间：<br/>
   `vssadmin List ShadowStorage /For=[Volume letter]:`
-- 使用以下命令增加影子存储空间：<br/>
+- 使用以下命令增加卷影存储空间：<br/>
   `vssadmin Resize ShadowStorage /On=[Volume letter]: /For=[Volume letter]: /Maxsize=[size]`
 
 ### <a name="another-process-or-antivirus-software-blocking-access-to-cache-folder"></a>阻止访问缓存文件夹的其他进程或防病毒软件
 
 如果你在服务器上安装了防病毒软件，请将所需的排除规则添加到这些文件和文件夹的防病毒扫描项中：  
 
-- scratch 文件夹。 其默认位置为`C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
-- 中的 bin 文件夹`C:\Program Files\Microsoft Azure Recovery Services Agent\Bin`
+- scratch 文件夹。 其默认位置为 `C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch`
+- 中的 bin 文件夹 `C:\Program Files\Microsoft Azure Recovery Services Agent\Bin`
 - CBengine.exe
 - CSC.exe
 
@@ -258,13 +258,13 @@ Set-ExecutionPolicy Unrestricted
 
 错误消息 | 建议的操作
 --|--
-Microsoft Azure 恢复服务代理无法访问存储在暂存位置的备份校验和 | 若要解决此问题，请执行以下操作，然后重启服务器 <br/> - [检查是否存在防病毒或其他进程锁定暂存位置文件](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [检查暂存位置是否有效并可由 MARS 代理访问。](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+Microsoft Azure 恢复服务代理无法访问存储在暂存位置的备份校验和 | 若要解决此问题，请执行以下步骤并重启服务器 <br/> - [检查是否存在防病毒或其他进程锁定暂存位置文件](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [检查暂存位置是否有效并可由 MARS 代理访问。](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
 ### <a name="salvhdinitializationerror"></a>SalVhdInitializationError
 
 错误消息 | 建议的操作
 --|--
-Microsoft Azure 恢复服务代理无法访问暂存位置，因此无法初始化 VHD | 若要解决此问题，请执行以下操作，然后重启服务器 <br/> - [检查防病毒或其他进程是否正在锁定暂存位置文件](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [检查暂存位置是否有效并可由 MARS 代理访问。](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
+Microsoft Azure 恢复服务代理无法访问暂存位置，因此无法初始化 VHD | 若要解决此问题，请执行以下步骤并重启服务器 <br/> - [检查防病毒或其他进程是否正在锁定暂存位置文件](#another-process-or-antivirus-software-blocking-access-to-cache-folder)<br/> - [检查暂存位置是否有效并可由 MARS 代理访问。](backup-azure-file-folder-backup-faq.md#how-to-check-if-scratch-folder-is-valid-and-accessible)
 
 ### <a name="sallowdiskspace"></a>SalLowDiskSpace
 

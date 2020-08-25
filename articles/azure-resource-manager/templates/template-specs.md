@@ -2,21 +2,21 @@
 title: 模板规格概述
 description: 描述如何创建模板规范并将其与组织中的其他用户共享。
 ms.topic: conceptual
-ms.date: 08/06/2020
+ms.date: 08/24/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: f5151550b9f23ba63380688f53325f8976f14a51
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: a88e799d2298cb21b5196f5aa143e5453c0447c0
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921872"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783784"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure 资源管理器模板规格 (预览版) 
 
 模板规范是用于在 Azure 中存储 Azure 资源管理器模板 (ARM) 模板以供以后部署的新资源类型。 此资源类型使你可以与组织中的其他用户共享 ARM 模板。 就像任何其他 Azure 资源一样，你可以使用基于角色的访问控制 (RBAC) 来共享模板规范。
 
-对于模板规格，" **templateSpecs** " 是新的资源类型。 它包含主模板和任意数量的链接模板。 Azure 将模板规范安全地存储在资源组中。 模板规范支持[版本控制](#versioning)。
+对于模板规格，" **templateSpecs** " 是新的资源类型。 它包含主模板和任意数量的链接模板。 Azure 将模板规范安全地存储在资源组中。 模板规范支持 [版本控制](#versioning)。
 
 若要部署模板规范，请使用 Azure 等标准 Azure 工具、Azure CLI、Azure 门户、REST 以及其他受支持的 Sdk 和客户端。 使用与模板相同的命令。
 
@@ -37,58 +37,96 @@ ms.locfileid: "87921872"
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storageAccountType": {
-            "type": "string",
-            "defaultValue": "Standard_LRS",
-            "allowedValues": [
-                "Standard_LRS",
-                "Standard_GRS",
-                "Standard_ZRS",
-                "Premium_LRS"
-            ]
-        }
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2019-06-01",
-            "name": "[concat('store', uniquestring(resourceGroup().id))]",
-            "location": "[resourceGroup().location]",
-            "kind": "StorageV2",
-            "sku": {
-                "name": "[parameters('storageAccountType')]"
-            }
-        }
-    ]
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageAccountType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_ZRS",
+        "Premium_LRS"
+      ]
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2019-06-01",
+      "name": "[concat('store', uniquestring(resourceGroup().id))]",
+      "location": "[resourceGroup().location]",
+      "kind": "StorageV2",
+      "sku": {
+        "name": "[parameters('storageAccountType')]"
+      }
+    }
+  ]
 }
 ```
 
-创建模板规范时，会将主模板文件传递给 PowerShell 或 CLI 命令。 如果主模板引用链接的模板，则命令将查找并打包它们以创建模板规范。若要了解详细信息，请参阅[使用链接模板创建模板规范](#create-a-template-spec-with-linked-templates)。
+创建模板规范时，会将主模板文件传递给 PowerShell 或 CLI 命令。 如果主模板引用链接的模板，则命令将查找并打包它们以创建模板规范。若要了解详细信息，请参阅 [使用链接模板创建模板规范](#create-a-template-spec-with-linked-templates)。
 
 使用以下内容创建模板规范：
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
-New-AzTemplateSpec -Name storageSpec -Version 1.0 -ResourceGroupName templateSpecsRg -TemplateJsonFile ./mainTemplate.json
+New-AzTemplateSpec -Name storageSpec -Version 1.0 -ResourceGroupName templateSpecsRg -Location westus2 -TemplateJsonFile ./mainTemplate.json
 ```
 
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az template-specs create \
+  --name storageSpec \
+  --version "1.0" \
+  --resource-group templateSpecRG \
+  --location "westus2" \
+  --template-file "./mainTemplate.json"
+```
+
+---
+
 你可以通过使用查看订阅中的所有模板规范：
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Get-AzTemplateSpec
 ```
 
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az template-specs list
+```
+
+---
+
 可以查看模板规范的详细信息，包括其版本：
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 Get-AzTemplateSpec -ResourceGroupName templateSpecsRG -Name storageSpec
 ```
 
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az template-specs show \
+    --name storageSpec \
+    --resource-group templateSpecRG \
+    --version "1.0"
+```
+
+---
+
 ## <a name="deploy-template-spec"></a>部署模板规格
 
-创建模板规范后，具有模板规范的**读取**访问权限的用户可以对其进行部署。 有关授予访问权限的信息，请参阅[教程：使用 Azure PowerShell 向组授予对 Azure 资源的访问权限](../../role-based-access-control/tutorial-role-assignments-group-powershell.md)。
+创建模板规范后，具有模板规范的 **读取** 访问权限的用户可以对其进行部署。 有关授予访问权限的信息，请参阅 [教程：使用 Azure PowerShell 向组授予对 Azure 资源的访问权限](../../role-based-access-control/tutorial-role-assignments-group-powershell.md)。
 
 可以通过门户、PowerShell、Azure CLI 或更大模板部署中的链接模板来部署模板规范。 组织中的用户可以将模板规范部署到 Azure (资源组、订阅、管理组或租户) 中的任何范围。
 
@@ -98,7 +136,9 @@ Get-AzTemplateSpec -ResourceGroupName templateSpecsRG -Name storageSpec
 
 请注意，资源 ID 包括模板规范的版本号。
 
-例如，使用以下 PowerShell 命令部署模板规范。
+例如，使用以下命令部署模板规范。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/templateSpecsRG/providers/Microsoft.Resources/templateSpecs/storageSpec/versions/1.0"
@@ -108,15 +148,41 @@ New-AzResourceGroupDeployment `
   -ResourceGroupName demoRG
 ```
 
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+id = "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/templateSpecsRG/providers/Microsoft.Resources/templateSpecs/storageSpec/versions/1.0"
+
+az deployment group create \
+  --resource-group demoRG \
+  --template-spec $id
+```
+
+---
+
 在实践中，您通常会运行 `Get-AzTemplateSpec` 以获取您要部署的模板规范的 ID。
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 ```azurepowershell
 $id = (Get-AzTemplateSpec -Name storageSpec -ResourceGroupName templateSpecsRg -Version 1.0).Version.Id
 
 New-AzResourceGroupDeployment `
-  -TemplateSpecId $id `
-  -ResourceGroupName demoRG
+  -ResourceGroupName demoRG `
+  -TemplateSpecId $id
 ```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+id = $(az template-specs show --name storageSpec --resource-group templateSpecRG --version "1.0" --query "id")
+
+az deployment group create \
+  --resource-group demoRG \
+  --template-spec $id
+```
+
+---
 
 ## <a name="parameters"></a>parameters
 
@@ -124,12 +190,25 @@ New-AzResourceGroupDeployment `
 
 若要以内联方式传递参数，请使用：
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroupDeployment `
   -TemplateSpecId $id `
   -ResourceGroupName demoRG `
   -StorageAccountType Standard_GRS
 ```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --resource-group demoRG \
+  --template-spec $id \
+  --parameters storageAccountType='Standard_GRS'
+```
+
+---
 
 若要创建本地参数文件，请使用：
 
@@ -147,12 +226,25 @@ New-AzResourceGroupDeployment `
 
 然后，将该参数文件传递给：
 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
 ```azurepowershell
 New-AzResourceGroupDeployment `
   -TemplateSpecId $id `
   -ResourceGroupName demoRG `
   -TemplateParameterFile ./mainTemplate.parameters.json
 ```
+
+# <a name="cli"></a>[CLI](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --resource-group demoRG \
+  --template-spec $id \
+  --parameters "./mainTemplate.parameters.json"
+```
+
+---
 
 ## <a name="create-a-template-spec-with-linked-templates"></a>使用链接模板创建模板规范
 
@@ -162,40 +254,39 @@ New-AzResourceGroupDeployment `
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    ...
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            ...
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "relativePath": "artifacts/webapp.json"
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            ...
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "relativePath": "artifacts/database.json"
-                }
-            }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  ...
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      ...
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "artifacts/webapp.json"
         }
-    ],
-    "outputs": {}
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      ...
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "artifacts/database.json"
+        }
+      }
+    }
+  ],
+  "outputs": {}
 }
-
 ```
 
 如果对前面的示例执行了创建模板规范的 PowerShell 或 CLI 命令，该命令将查找三个文件-主模板、web 应用模板 (`webapp.json`) 和数据库模板 (`database.json`) 并将其打包到模板规范。
 
-有关详细信息，请参阅[教程：使用链接模板创建模板规范](template-specs-create-linked.md)。
+有关详细信息，请参阅 [教程：使用链接模板创建模板规范](template-specs-create-linked.md)。
 
 ## <a name="deploy-template-spec-as-a-linked-template"></a>将模板规范部署为链接模板
 
@@ -203,43 +294,43 @@ New-AzResourceGroupDeployment `
 
 例如，你可以创建一个部署网络资源的模板规范，以及另一个部署存储资源的模板规范。 在 ARM 模板中，你可以在任何需要配置网络或存储资源的情况下链接到这两个模板规范。
 
-下面的示例与前面的示例类似，但使用 `id` 属性链接到模板规范，而不是链接 `relativePath` 到本地模板的属性。 用于 `2020-06-01` 部署资源的 API 版本。 在此示例中，模板规范位于名为**templateSpecsRG**的资源组中。
+下面的示例与前面的示例类似，但使用 `id` 属性链接到模板规范，而不是链接 `relativePath` 到本地模板的属性。 用于 `2020-06-01` 部署资源的 API 版本。 在此示例中，模板规范位于名为 **templateSpecsRG**的资源组中。
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    ...
-    "resources": [
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "networkingDeployment",
-            ...
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "id": "[resourceId('templateSpecsRG', 'Microsoft.Resources/templateSpecs/versions', 'networkingSpec', '1.0')]"
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "storageDeployment",
-            ...
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "id": "[resourceId('templateSpecsRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0')]"
-                }
-            }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  ...
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      "name": "networkingDeployment",
+      ...
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "id": "[resourceId('templateSpecsRG', 'Microsoft.Resources/templateSpecs/versions', 'networkingSpec', '1.0')]"
         }
-    ],
-    "outputs": {}
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-06-01",
+      "name": "storageDeployment",
+      ...
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "id": "[resourceId('templateSpecsRG', 'Microsoft.Resources/templateSpecs/versions', 'storageSpec', '1.0')]"
+        }
+      }
+    }
+  ],
+  "outputs": {}
 }
 ```
 
-有关链接模板规范的详细信息，请参阅[教程：将模板规范部署为链接模板](template-specs-deploy-linked-template.md)。
+有关链接模板规范的详细信息，请参阅 [教程：将模板规范部署为链接模板](template-specs-deploy-linked-template.md)。
 
 ## <a name="versioning"></a>版本控制
 
@@ -247,8 +338,8 @@ New-AzResourceGroupDeployment `
 
 ## <a name="next-steps"></a>后续步骤
 
-* 若要创建和部署模板规范，请参阅[快速入门：创建和部署模板规范](quickstart-create-template-specs.md)。
+* 若要创建和部署模板规范，请参阅 [快速入门：创建和部署模板规范](quickstart-create-template-specs.md)。
 
-* 有关模板规范中链接模板的详细信息，请参阅[教程：使用链接模板创建模板规范](template-specs-create-linked.md)。
+* 有关模板规范中链接模板的详细信息，请参阅 [教程：使用链接模板创建模板规范](template-specs-create-linked.md)。
 
-* 有关将模板规范部署为链接模板的详细信息，请参阅[教程：将模板规范部署为链接模板](template-specs-deploy-linked-template.md)。
+* 有关将模板规范部署为链接模板的详细信息，请参阅 [教程：将模板规范部署为链接模板](template-specs-deploy-linked-template.md)。

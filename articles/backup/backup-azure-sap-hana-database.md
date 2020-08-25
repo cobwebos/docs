@@ -3,12 +3,12 @@ title: 使用 Azure 备份将 SAP HANA 数据库备份到 Azure
 description: 本文介绍如何使用 Azure 备份服务将 SAP HANA 数据库备份到 Azure 虚拟机。
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 0efd26272bbfc4c8f63f7f02a605d48e53577390
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: b4917129b7b6dd3799f5e79dab881a1bcaa130d5
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809130"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761655"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>备份 Azure VM 中的 SAP HANA 数据库
 
@@ -25,7 +25,7 @@ SAP HANA 数据库是关键工作负荷，要求较低的恢复点目标 (RPO) �
 > * 运行按需备份作业
 
 >[!NOTE]
->截至8月1日，2020，RHEL (7.4、7.6、7.7 & 8.1) 的 SAP HANA 备份已正式发布。
+>自 2020 年 8 月 1 日起，适用于 RHEL 的 SAP HANA 备份（7.4、7.6、7.7 和 8.1）已正式发布。
 
 >[!NOTE]
 >**针对 Azure VM 中 SQL 服务器的软删除以及针对 Azure VM 工作负荷中 SAP HANA 的软删除**现已推出预览版。<br>
@@ -63,7 +63,7 @@ SAP HANA 数据库是关键工作负荷，要求较低的恢复点目标 (RPO) �
 
 1. 在“设置”下选择“出站安全规则”。
 
-1. 选择 **添加** 。 根据[安全规则设置](../virtual-network/manage-network-security-group.md#security-rule-settings)中所述，输入创建新规则所需的所有详细信息。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为“AzureBackup”。
+1. 选择“添加”  。 根据[安全规则设置](../virtual-network/manage-network-security-group.md#security-rule-settings)中所述，输入创建新规则所需的所有详细信息。 请确保将选项“目标”设置为“服务标记”，将“目标服务标记”设置为“AzureBackup”。
 
 1. 单击“添加”，保存新创建的出站安全规则。
 
@@ -203,13 +203,13 @@ SAP HANA 数据库是关键工作负荷，要求较低的恢复点目标 (RPO) �
 1. 为此，请双击“systemdb” > “配置” > “选择数据库” > “筛选器(日志)”。   
 1. 将 **enable_auto_log_backup** 设置为 **No**。
 1. 将 **log_backup_using_backint** 设置为 **False**。
-1. 将**catalog_backup_using_backint**设置为**False**。
+1. 将 **catalog_backup_using_backint** 设置为 **False**。
 1. 创建数据库的完整备份。
 1. 等待完整备份和目录备份完成。
 1. 将前面的设置恢复为 Azure 的设置：
     * 将 **enable_auto_log_backup** 设置为 **Yes**。
     * 将 **log_backup_using_backint** 设置为 **True**。
-    * 将**catalog_backup_using_backint**设置为**True**。
+    * 将 **catalog_backup_using_backint** 设置为 **True**。
 
 ## <a name="next-steps"></a>后续步骤
 

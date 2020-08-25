@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b27bd52ad8794222d52d37032b0cd4fdf99f47b7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f1b9e2af7cb6dd234e58218c6a33c01f321de947
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057931"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798510"
 ---
 # <a name="assign-custom-admin-roles-using-the-microsoft-graph-api-in-azure-active-directory"></a>在 Azure Active Directory 中使用 Microsoft 图形 API 分配自定义管理员角色 
 
@@ -136,7 +136,7 @@ HTTP/1.1 400 Bad Request
 }
 ```
 
-仅为管理单元范围启用了部分内置角色。 请参阅[此文档](https://docs.microsoft.com/azure/active-directory/users-groups-roles/roles-admin-units-assign-roles)，了解通过管理单元支持的内置角色的列表。
+仅为管理单元范围启用了部分内置角色。 请参阅 [此文档](./roles-admin-units-assign-roles.md) ，了解通过管理单元支持的内置角色的列表。
 
 ## <a name="get-operations-on-roleassignment"></a>RoleAssignment 上的 GET 操作
 

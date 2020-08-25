@@ -262,6 +262,8 @@
           href: howto-read-replicas-powershell.md
     - name: 疑难解答
       items:
+        - name: 排查常见错误
+          href: howto-troubleshoot-common-errors.md
         - name: 排查连接错误
           href: howto-troubleshoot-common-connection-issues.md
         - name: 查询性能故障排除

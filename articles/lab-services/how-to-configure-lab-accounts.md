@@ -3,12 +3,12 @@ title: 在 Azure 实验室服务中配置 VM 的自动关闭
 description: 本文介绍如何在实验室帐户中配置 VM 的自动关闭。
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 8dbc54ad14530006b56bf336d9d78e7d59843485
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 8647aed0e66993b8a7b8e5c0a42c8ceabbb1fb9e
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88603902"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798442"
 ---
 # <a name="configure-automatic-shutdown-of-vms-for-a-lab-account"></a>为实验室帐户配置 Vm 自动关闭
 
@@ -18,7 +18,7 @@ ms.locfileid: "88603902"
 - 当用户断开 (Windows & Linux) 时，自动关闭虚拟机。
 - 自动关闭已启动但用户不连接的虚拟机。
 
-若要详细了解自动关闭功能，请参阅 [自动关闭设置的最大化成本控制](cost-management-guide.md#maximize-cost-control-with-auto-shutdown-settings) 部分。
+若要详细了解自动关闭功能，请参阅 [自动关闭设置的最大化成本控制](cost-management-guide.md#automatic-shutdown-settings-for-cost-control) 部分。
 
 ## <a name="enable-automatic-shutdown"></a>启用自动关闭
 
