@@ -7,41 +7,41 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: 5e061e4d6f9e67cc7d92548f54add94097ede7d1
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: dafea083e68b2afe6b6bcf45b4cff8779f817049
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905189"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749018"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure 数字孪生：度量值疑难解答
 
 本文中所述的指标为你介绍 Azure 订阅中 Azure 数字孪生资源的状态信息。 Azure 数字孪生指标可帮助你评估 Azure 数字孪生服务的总体运行状况以及连接到它的资源。 这些面向用户的统计信息可帮助你查看 Azure 数字孪生所发生的情况，并帮助对问题执行根本原因分析，而无需联系 Azure 支持部门。
 
-默认启用度量值。 可以从[Azure 门户](https://portal.azure.com)查看 Azure 数字孪生指标。
+默认启用度量值。 可以从 [Azure 门户](https://portal.azure.com)查看 Azure 数字孪生指标。
 
 ## <a name="how-to-view-azure-digital-twins-metrics"></a>如何查看 Azure 数字孪生指标
 
-1. 创建 Azure 数字孪生实例。 可以在[*如何：设置实例和身份验证*](how-to-set-up-instance-scripted.md)中找到有关如何设置 Azure 数字孪生实例的说明。
+1. 创建 Azure 数字孪生实例。 可以在 [*如何：设置实例和身份验证*](how-to-set-up-instance-scripted.md)中找到有关如何设置 Azure 数字孪生实例的说明。
 
-2. 在[Azure 门户](https:/portal.azure.com)中找到你的 Azure 数字孪生实例 (通过在门户搜索栏中键入其名称) 可以打开该实例的页面。 
+2. 在 [Azure 门户](https:/portal.azure.com) 中找到你的 Azure 数字孪生实例 (通过在门户搜索栏中键入其名称) 可以打开该实例的页面。 
 
-    从实例的菜单中，选择 "**指标**"。
+    从实例的菜单中，选择 " **指标**"。
    
     :::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="显示 Azure 数字孪生的 "指标" 页的屏幕截图":::
 
     此页面显示 Azure 数字孪生实例的指标。 你还可以通过从列表中选择你想要查看的指标来创建其自定义视图。
     
-3. 你可以选择将指标数据发送到事件中心终结点或 Azure 存储帐户，方法是从菜单中选择 "**诊断设置**"，然后单击 "**添加诊断设置**"。
+3. 你可以选择将指标数据发送到事件中心终结点或 Azure 存储帐户，方法是从菜单中选择 " **诊断设置** "，然后单击 " **添加诊断设置**"。
 
     :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="显示 "诊断设置" 页和要添加的按钮的屏幕截图":::
 
-    有关此过程的详细信息，请参阅[*故障排除：设置诊断*](troubleshoot-diagnostics.md)。
+    有关此过程的详细信息，请参阅 [*故障排除：设置诊断*](troubleshoot-diagnostics.md)。
 
-4. 通过从菜单中选择 "**警报**"，然后选择 " **+ 新建警报规则**"，可以选择为指标数据设置警报。
+4. 通过从菜单中选择 " **警报** "，然后选择 " **+ 新建警报规则**"，可以选择为指标数据设置警报。
     :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="显示 "警报" 页和要添加的按钮的屏幕截图":::
 
-    有关此过程的详细信息，请参阅[*故障排除：设置诊断*](troubleshoot-diagnostics.md)。
+    有关此过程的详细信息，请参阅 [*故障排除：设置诊断*](troubleshoot-diagnostics.md)。
 
 ## <a name="azure-digital-twins-metrics-and-how-to-use-them"></a>Azure 数字孪生指标以及如何使用它们
 
@@ -64,7 +64,7 @@ Azure 数字孪生提供了多个指标，可让你概括了解实例及其关�
 与计费有关的指标：
 
 >[!NOTE]
-> 在预览期间，**计费为零成本**。 尽管这些指标仍显示在可选列表中，但在预览期间不适用，并且在服务超出预览状态之前将保持为零。
+> 在预览期间， **计费为零成本**。 尽管这些指标仍显示在可选列表中，但在预览期间不适用，并且在服务超出预览状态之前将保持为零。
 
 | 指标 | 指标显示名称 | 计价单位 | 聚合类型| 说明 | 维度 |
 | --- | --- | --- | --- | --- | --- |
@@ -88,9 +88,9 @@ Azure 数字孪生提供了多个指标，可让你概括了解实例及其关�
 
 | 指标 | 指标显示名称 | 计价单位 | 聚合类型| 说明 | 维度 |
 | --- | --- | --- | --- | --- | --- |
-| MessagesRouted |  (预览路由的消息)  | 计数 | 总计 | 路由到终结点 Azure 服务（如事件中心、服务总线或事件网格）的消息数。 | 运作 <br>结果 |
-| RoutingFailureRate | 路由失败率 (预览)  | 百分比 | 平均值 | 导致错误的事件百分比，因为这些事件从 Azure 数字孪生路由到终结点 Azure 服务（如事件中心、服务总线或事件网格）。 | 运作 <br>结果 |
-| RoutingLatency |  (预览的路由延迟)  | 毫秒 | 平均值 | 在事件从 Azure 数字孪生路由到终结点（例如事件中心、服务总线或事件网格）发送到该服务之间所经过的时间。 | 运作 <br>结果 |
+| MessagesRouted |  (预览路由的消息)  | 计数 | 总计 | 路由到终结点 Azure 服务（如事件中心、服务总线或事件网格）的消息数。 | 终结点类型， <br>结果 |
+| RoutingFailureRate | 路由失败率 (预览)  | 百分比 | 平均值 | 导致错误的事件百分比，因为这些事件从 Azure 数字孪生路由到终结点 Azure 服务（如事件中心、服务总线或事件网格）。 | 终结点类型， <br>结果 |
+| RoutingLatency |  (预览的路由延迟)  | 毫秒 | 平均值 | 在事件从 Azure 数字孪生路由到终结点（例如事件中心、服务总线或事件网格）发送到该服务之间所经过的时间。 | 终结点类型， <br>结果 |
 
 ## <a name="dimensions"></a>维度
 
@@ -100,7 +100,7 @@ Azure 数字孪生提供了多个指标，可让你概括了解实例及其关�
 | --- | --- |
 | 身份验证 | OAuth |
 | API 请求的操作 ()  | DigitalTwins/DigitalTwins/delete， <br>DigitalTwins/DigitalTwins/write， <br>DigitalTwins/DigitalTwins/read， <br>DigitalTwins/eventroutes/read， <br>DigitalTwins/eventroutes/write， <br>DigitalTwins/eventroutes/delete， <br>DigitalTwins/模型/读取、 <br>DigitalTwins/模型/写入， <br>DigitalTwins/模型/删除， <br>DigitalTwins/查询/操作 |
-| 路由) 的操作 ( | 事件网格， <br>事件中心， <br>服务总线 |
+| 终结点类型 | 事件网格， <br>事件中心， <br>服务总线 |
 | 协议 | HTTPS |
 | 结果 | 辉煌 <br>失败 |
 | 状态代码 | 200、404、500等。 |
@@ -109,4 +109,4 @@ Azure 数字孪生提供了多个指标，可让你概括了解实例及其关�
 
 ## <a name="next-steps"></a>后续步骤
 
-若要详细了解如何管理 Azure 数字孪生的记录指标，请参阅[*故障排除：设置诊断*](troubleshoot-diagnostics.md)。
+若要详细了解如何管理 Azure 数字孪生的记录指标，请参阅 [*故障排除：设置诊断*](troubleshoot-diagnostics.md)。

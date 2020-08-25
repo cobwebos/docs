@@ -89,6 +89,8 @@
       href: ../../data-lake-analytics/security-baseline.md
     - name: DDOS 防护安全基线
       href: ../fundamentals/ddos-protection-security-baseline.md
+    - name: 事件网格安全基线
+      href: ../../event-grid/security-baseline.md
     - name: 事件中心安全基线
       href: ../../event-hubs/security-baseline.md
     - name: ExpressRoute 安全基线

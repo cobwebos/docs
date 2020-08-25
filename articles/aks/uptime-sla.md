@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: cc23e32db71439067421a9be8b18a1827515bd9c
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 6523e16bfe3bf0592b78da544d7d52dc3d969af4
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563273"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749117"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes 服务 (AKS) 运行时间 SLA
 
@@ -25,9 +25,8 @@ ms.locfileid: "87563273"
 
 ## <a name="region-availability"></a>上市区域
 
-运行时间 SLA 适用于[支持 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)的公共区域。
+运行时间 SLA 适用于 [支持 AKS](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)的公共区域和 Azure 政府区域。
 
-* 当前不支持 Azure 政府版。
 * 当前不支持 Azure 中国世纪互联。
 
 ## <a name="limitations"></a>限制
@@ -40,7 +39,7 @@ ms.locfileid: "87563273"
 
 ## <a name="before-you-begin"></a>开始之前
 
-* 安装[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)版本2.8.0 或更高版本
+* 安装 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 版本2.8.0 或更高版本
 
 ## <a name="creating-a-new-cluster-with-uptime-sla"></a>创建具有运行时间 SLA 的新群集
 

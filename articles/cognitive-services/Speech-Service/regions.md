@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 27e26bb37b444b49797d46dd4e12b61f8fe11b16
-ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
+ms.openlocfilehash: b0574c41042e172af78365bb273c81729ce204ab
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84782528"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749313"
 ---
 # <a name="speech-service-supported-regions"></a>语音服务支持的区域
 
@@ -24,7 +24,11 @@ ms.locfileid: "84782528"
 
 此处提供了对所有区域的语音体验执行自定义配置的语音门户： https://speech.microsoft.com
 
-对于语音服务的调用，请确保调用与订阅的区域匹配。
+考虑区域时，请注意以下几点：
+
+* 如果你的应用程序使用 [语音 SDK](speech-sdk.md)，则在 `westus` 创建语音配置时提供区域标识符，如。
+* 如果应用程序使用某个语音服务的 [REST API](rest-apis.md)，则区域是你在发出请求时使用的终结点 URI 的一部分。
+* 为某个区域创建的密钥仅在该区域有效。 尝试在其他区域使用此类密钥会导致身份验证错误。
 
 ## <a name="speech-sdk"></a>语音 SDK
 

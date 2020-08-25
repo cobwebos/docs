@@ -8,7 +8,14 @@
   expanded: true
   items:
     - name: 构建第一个静态 Web 应用
-      href: getting-started.md
+      expanded: true
+      items:
+        - name: Visual Studio Code
+          href: getting-started.md
+        - name: Azure 门户
+          href: get-started-portal.md
+        - name: Azure CLI
+          href: get-started-cli.md
 - name: 概念
   items:
     - name: 通过 Azure Functions 提供 API 支持

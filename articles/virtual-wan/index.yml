@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: cherylmc
   ms.author: cherylmc
-  ms.date: 05/08/2020
-  ms.openlocfilehash: 14336a28630e7a62a19e2b3a51934950cf12e2f8
-  ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+  ms.date: 08/19/2020
+  ms.openlocfilehash: 1a0a64864c4e8229b4a0f2211af06920fc1e73cc
+  ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 06/30/2020
-  ms.locfileid: "85564038"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88654542"
 landingContent:
 - title: 关于虚拟 WAN
   linkLists:
@@ -39,24 +39,60 @@ landingContent:
       url: virtual-wan-expressroute-portal.md
     - text: 创建用户 VPN（点到站点）连接
       url: virtual-wan-point-to-site-portal.md
-  - linkListType: how-to-guide
-    links:
-    - text: 为虚拟 WAN 合作伙伴配置自动化
-      url: virtual-wan-configure-automation-providers.md
   - linkListType: concept
     links:
     - text: IPsec 连接的默认策略
       url: virtual-wan-ipsec.md
+    - text: 适用于虚拟 WAN 合作伙伴的自动化指南
+      url: virtual-wan-configure-automation-providers.md
+  - linkListType: how-to-guide
+    links:
+    - text: 在中心内创建 NVA
+      url: how-to-nva-hub.md
+    - text: 为虚拟 WAN 配置基于 ExpressRoute 的 IPsec
+      url: vpn-over-expressroute.md
+    - text: 将 VPN 网关连接到虚拟 WAN
+      url: connect-virtual-network-gateway-vwan.md
 - title: 体系结构
   linkLists:
   - linkListType: concept
     links:
     - text: 迁移到虚拟 WAN
       url: migrate-from-hub-spoke-topology.md
+  - linkListType: architecture
+    links:
     - text: 全球传输网络体系结构
       url: virtual-wan-global-transit-network-architecture.md
     - text: SD-WAN 连接体系结构
       url: sd-wan-connectivity-architecture.md
+- title: 路由
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 关于虚拟中心路由
+      url: about-virtual-hub-routing.md
+    - text: 场景 - 通过 NVA 路由流量
+      url: scenario-route-through-nva.md
+    - text: 场景 - 任意位置到任意位置
+      url: scenario-any-to-any.md
+    - text: 场景 - 隔离 VNet
+      url: scenario-isolate-vnets.md
+    - text: 场景 - 共享服务 VNet
+      url: scenario-shared-services-vnet.md
+  - linkListType: how-to-guide
+    links:
+    - text: 配置虚拟中心路由
+      url: how-to-virtual-hub-routing.md
+- title: 监视
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 使用 Azure Monitor 见解进行监视
+      url: azure-monitor-insights.md
+  - linkListType: how-to-guide
+    links:
+    - text: 配置 Azure Monitor 日志和指标
+      url: azure-monitor-insights.md
 - title: 参考
   linkLists:
   - linkListType: reference
