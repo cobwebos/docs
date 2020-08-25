@@ -98,7 +98,7 @@ ms.locfileid: "88750596"
 
 4. 在左侧导航栏中，选择 " **HTTP 设置** "，并在左窗格中选择 " **添加** "。 填写详细信息以创建新的 HTTP 设置，然后选择 " **保存**"。
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-03.png" alt-text="填写详细信息以创建新的 HTTP 设置，然后选择 "保存"。" lightbox="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-03.png":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-03.png" alt-text="填写详细信息以创建新的 HTTP 设置，然后选择 保存。" lightbox="media/protect-avs-web-apps-with-app-gw/app-gateway-multi-backend-pool-avs-03.png":::
 
 5. 在左侧菜单的 " **规则** " 部分中创建规则。 将每个规则与相应的侦听器相关联。 选择 **添加** 。
 
@@ -153,7 +153,7 @@ ms.locfileid: "88750596"
 
 5. 在左侧菜单的 " **规则** " 部分中创建规则。 将每个规则与以前创建的侦听器相关联。 然后配置主后端池和 HTTP 设置。 选择 **添加** 。
 
-    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-07.png" alt-text="在左侧菜单的 "规则" 部分中创建规则。":::
+    :::image type="content" source="media/protect-avs-web-apps-with-app-gw/app-gateway-url-route-backend-pool-avs-07.png" alt-text="在左侧菜单的 规则 部分中创建规则。":::
 
 6. 测试配置。 访问 Azure 门户上的应用程序网关，在 " **概述** " 部分中，复制 "公共 IP 地址"。 然后打开新的浏览器窗口并输入 URL `http://<app-gw-ip-address>:8080` 。 
 
