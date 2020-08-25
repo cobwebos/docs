@@ -3,12 +3,12 @@ title: Azure VM 中 SQL Server 的软删除和 Azure VM 工作负荷中 SAP HANA
 description: 了解 Azure VM 中 SQL Server 的软删除以及 Azure VM 工作负荷中 SAP HANA 的软删除如何使备份更安全。
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: c0eaedea2d5428376befaade42f87348cf84e7bc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: bf9cc2551d85c1bc663db2f9e61e2ea6895f1d23
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538184"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757466"
 ---
 # <a name="soft-delete-for-sql-server-in-azure-vm-and-sap-hana-in-azure-vm-workloads"></a>Azure VM 中 SQL Server 的软删除和 Azure VM 工作负荷中 SAP HANA 的软删除
 
@@ -62,7 +62,7 @@ Azure 备份现在为 Azure VM 中的 SQL Server 和 Azure VM 工作负荷中的
 >[!NOTE]
 >这些说明也适用于 Azure VM 中的 SAP HANA。
 
-1. 若要删除 SQL Server 中数据库的备份数据，必须停止备份。 在 Azure 门户中转到你的恢复服务保管库，转到备份项，然后选择“停止备份”****。
+1. 若要删除 SQL Server 中数据库的备份数据，必须停止备份。 在 Azure 门户中，请参阅恢复服务保管库，中转到 "备份" 项，然后选择 " **停止备份**"。
 
    ![停止备份](./media/soft-delete-sql-saphana-in-azure-vm/stop-backup.png)
 
@@ -70,7 +70,7 @@ Azure 备份现在为 Azure VM 中的 SQL Server 和 Azure VM 工作负荷中的
 
    ![删除备份数据](./media/soft-delete-sql-saphana-in-azure-vm/delete-backup-data.png)
 
-3. 在这 14 天内，恢复服务保管库中已软删除的项旁边会显示一个红色的“软删除”图标。
+3. 在14天内，在恢复服务保管库中，软删除项旁边会显示一个红色的 "软删除" 图标。
 
    ![已软删除的项](./media/soft-delete-sql-saphana-in-azure-vm/soft-deleted-items.png)
 

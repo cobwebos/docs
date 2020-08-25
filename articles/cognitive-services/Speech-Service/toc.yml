@@ -3,10 +3,8 @@
 - name: 概述
   expanded: true
   items:
-    - name: 什么是语音服务？
+    - name: 语音服务概述
       href: overview.md
-    - name: 免费试用语音服务
-      href: get-started.md
     - name: 语言和语音支持
       displayName: 'languages,locales,voice,gender,language code,locale,locale code,neural voice,standard voice'
       href: language-support.md

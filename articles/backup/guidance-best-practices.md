@@ -3,16 +3,16 @@ title: 指南和最佳做法
 description: 了解将云和本地工作负载备份到云的最佳实践和指南
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 1e2680c5fbcdb685e13b6ad990aaf98b013c98bb
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 21d3d6b8983d8ce3d0b563785423bc1e503649f3
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88650870"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757585"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>将云和本地工作负载备份到云
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 Azure 备份通过一种简单、安全且经济高效的解决方案来全面保护 Azure 中的数据资产，该解决方案需要零基础结构。 它 Azure's 内置的数据保护解决方案，适用于各种工作负荷。 它可帮助保护在云中运行的任务关键型工作负荷，并确保你的备份始终可用，并可跨整个备份空间进行大规模管理。
 
@@ -143,7 +143,7 @@ Azure 备份策略有两个组件： *计划* (何时进行备份) 和 *保留* 
 
 * Azure 备份有多个内置于服务中的安全控件，用于防止、检测和响应安全漏洞 (详细了解) 
 
-* 恢复服务保管库使用的存储帐户是隔离的，恶意用户无法对其进行访问。 仅允许通过 Azure 备份管理操作（例如还原）进行访问。
+* 恢复服务保管库使用的存储帐户是独立的，用户不能出于任何恶意目的对其进行访问。 仅允许通过 Azure 备份管理操作（例如还原）进行访问。
 
 ### <a name="encryption-of-data-in-transit-and-at-rest"></a>传输中数据和静态数据的加密
 
@@ -247,7 +247,7 @@ Azure 备份服务的功能可让你灵活地管理你的成本，并仍能满�
 
 * Azure 备份通过电子邮件为故障、警告和关键操作提供 **内置的警报** 通知机制。 你可以指定要在生成警报时通知的单个电子邮件地址或通讯组列表。 还可以选择是要接收每个警报的通知，还是将这些警报分组成按小时摘要，然后接收通知。
   * 这些警报由服务定义，并提供对有限方案的支持-备份/还原失败、停止保护并保留数据/停止保护并删除数据等等。 [在此处了解详细信息](backup-azure-monitoring-built-in-monitor.md#alert-scenarios)。
-  * 如果执行了破坏性操作（如 "停止保护并删除数据"），则会发出警报，并将电子邮件发送给订阅所有者、管理员和共同管理员，即使没有为恢复服务保管库配置通知。
+  * 如果执行了破坏性操作（如 "停止保护并删除数据"），则会发出警报，并将电子邮件发送给订阅所有者、管理员和共同管理员，即使未为恢复服务保管库配置通知。
   * 某些工作负荷可能会产生较高的故障频率 (例如，每15分钟 SQL Server) 。 若要防止在出现每个失败事件时引发的警报淹没，会合并警报。 [在此处了解详细信息](backup-azure-monitoring-built-in-monitor.md#consolidated-alerts)。
   * 生成的警报不能自定义，并且仅限于 Azure 门户中定义的电子邮件。
 

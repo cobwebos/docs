@@ -4,12 +4,12 @@ description: 本文介绍如何创建和配置恢复服务保管库，用于存�
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 7084fb9b599e127fac2b8c75748448d37d3f5365
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 309d87da11c6a015a9e4db8429587e498d55882c
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586182"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757738"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>创建和配置恢复服务保管库
 
@@ -20,7 +20,7 @@ ms.locfileid: "88586182"
 Azure 备份会自动处理保管库的存储。 需要指定如何复制该存储。
 
 > [!NOTE]
-> 在保管库中配置备份之前，必须更改恢复服务保管库的存储复制类型（本地冗余/异地冗余）。 配置备份后，将禁用修改选项。
+> 更改 **存储复制类型** (在保管库中配置备份之前，必须先完成恢复服务保管库的本地冗余/异地冗余) 。 配置备份后，将禁用修改选项。
 >
 >- 如果尚未配置备份，请 [按照以下步骤](#set-storage-redundancy) 查看并修改设置。
 >- 如果已配置备份，并且必须从 GRS 迁移到 LRS，请 [查看这些解决方法](#how-to-change-from-grs-to-lrs-after-configuring-backup)。

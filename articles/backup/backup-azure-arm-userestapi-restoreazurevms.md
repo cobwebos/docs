@@ -4,12 +4,12 @@ description: 本文介绍如何使用 REST API 管理 Azure 虚拟机备份的�
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: add4bdeaa202c244ce2e0e83f999f29afdca5c28
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: eef30808dddfb20d01fcb6e25a88b9a64e4445d8
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761468"
+ms.locfileid: "88763535"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 还原 Azure 虚拟机
 
@@ -115,11 +115,16 @@ X-Powered-By: ASP.NET
 
 上述响应中的 `{name}` 字段标识了恢复点。
 
-## <a name="restore-disks"></a>还原磁盘
+## <a name="restore-operations"></a>还原操作
 
-如果需要自定义从备份数据创建 VM 的过程，只需将磁盘还原到所选的存储帐户，然后根据要求从这些磁盘创建 VM 即可。 存储帐户应与恢复服务保管库位于同一区域，且不应是区域冗余。 磁盘以及已备份 VM 的配置（“vmconfig.json”）将存储在给定的存储帐户中。
+选择相关的 [还原点](#select-recovery-point)后，请继续触发还原操作。
 
-触发磁盘还原是一个 *POST* 请求。 若要详细了解“还原磁盘”操作，请参阅[“触发还原”REST API](/rest/api/backup/restores/trigger)。
+***对备份项执行的所有还原操作都是用相同的 *POST* API 执行的。只有请求正文随还原方案而更改。***
+
+> [!IMPORTANT]
+> [此处](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#restore-options)介绍了有关各种还原选项及其依赖项的所有详细信息。 请在继续触发这些操作之前查看。
+
+触发还原操作是一个 *POST* 请求。 若要了解有关 API 的详细信息，请参阅 ["触发器还原" REST API](/rest/api/backup/restores/trigger)。
 
 ```http
 POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
@@ -127,41 +132,15 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 `{containerName}` 和 `{protectedItemName}` 是按[此处](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation)所述构造的。 `{fabricName}` 是“Azure”，`{recoveryPointId}` 是[上述](#example-response)恢复点的 `{name}` 字段。
 
-### <a name="create-request-body"></a>创建请求正文
+获取恢复点后，需要为相关还原方案构造请求正文。 以下各节概述了每个方案的请求正文。
 
-若要触发从 Azure VM 备份还原磁盘的操作，需在请求正文中包含以下组成部分。
+- [还原磁盘](#restore-disks)
+- [替换磁盘](#replace-disks-in-a-backed-up-virtual-machine)
+- [还原为新虚拟机](#restore-as-another-virtual-machine)
 
-|名称  |类型  |说明  |
-|---------|---------|---------|
-|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+### <a name="restore-response"></a>还原响应
 
-有关请求正文的完整定义列表和其他详细信息，请参阅[“触发还原”REST API 文档](/rest/api/backup/restores/trigger#request-body)。
-
-#### <a name="example-request"></a>示例请求
-
-以下请求正文定义触发磁盘还原所需的属性。
-
-```json
-{
-  "properties": {
-    "objectType": "IaasVMRestoreRequest",
-    "recoveryPointId": "20982486783671",
-    "recoveryType": "RestoreDisks",
-    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
-    "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
-    "region": "westus",
-    "createNewCloudService": false,
-    "originalStorageAccountOption": false,
-    "encryptionDetails": {
-      "encryptionEnabled": false
-    }
-  }
-}
-```
-
-### <a name="response"></a>响应
-
-触发磁盘还原是一个[异步操作](../azure-resource-manager/management/async-operations.md)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
+任何还原操作的触发都是 [异步操作](../azure-resource-manager/management/async-operations.md)。 这意味着，此操作会创建另一个需要单独跟踪的操作。
 
 它将返回两个响应：创建另一个操作时为 202（已接受），该操作完成时为 200（正常）。
 
@@ -227,15 +206,90 @@ X-Powered-By: ASP.NET
 }
 ```
 
-由于备份作业是长时间运行的操作，因此应该根据[使用 REST API 监视作业](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)文档中所述对其进行跟踪。
+因为还原作业是长时间运行的操作，所以应按照 [使用 REST API 文档监视作业](backup-azure-arm-userestapi-managejobs.md#tracking-the-job)中的说明进行跟踪。
 
-长时间运行的作业完成后，磁盘以及已备份虚拟机的配置（“VMConfig.json”）将出现在给定的存储帐户中。
+### <a name="restore-disks"></a>还原磁盘
 
-## <a name="restore-as-another-virtual-machine"></a>作为另一个虚拟机还原
+如果需要自定义从备份数据创建 VM 的过程，只需将磁盘还原到所选的存储帐户，然后根据要求从这些磁盘创建 VM 即可。 存储帐户应与恢复服务保管库位于同一区域，且不应是区域冗余。 磁盘以及已备份 VM 的配置（“vmconfig.json”）将存储在给定的存储帐户中。 [如上所述，下面](#restore-operations)提供了有关还原磁盘的相关请求正文。
 
-[选择恢复点](#select-recovery-point)并根据下面的指定创建请求正文，以创建包含恢复点中的数据的另一个 Azure 虚拟机。
+#### <a name="create-request-body"></a>创建请求正文
 
-以下请求正文定义触发虚拟机还原所需的属性。
+若要触发从 Azure VM 备份还原磁盘的操作，需在请求正文中包含以下组成部分。
+
+|名称  |类型  |说明  |
+|---------|---------|---------|
+|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+
+有关请求正文的完整定义列表和其他详细信息，请参阅[“触发还原”REST API 文档](/rest/api/backup/restores/trigger#request-body)。
+
+##### <a name="example-request"></a>示例请求
+
+以下请求正文定义触发磁盘还原所需的属性。
+
+```json
+{
+  "properties": {
+    "objectType": "IaasVMRestoreRequest",
+    "recoveryPointId": "20982486783671",
+    "recoveryType": "RestoreDisks",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
+    "region": "westus",
+    "createNewCloudService": false,
+    "originalStorageAccountOption": false,
+    "encryptionDetails": {
+      "encryptionEnabled": false
+    }
+  }
+}
+```
+
+按 [如上所述](#responses)跟踪响应并完成长时间运行的作业后，会在给定的存储帐户中提供备份虚拟机的磁盘和配置 ( "VMConfig.js" ) 。
+
+### <a name="replace-disks-in-a-backed-up-virtual-machine"></a>替换已备份虚拟机中的磁盘
+
+还原磁盘从恢复点创建磁盘时，"替换磁盘" 会将备份 VM 的当前磁盘替换为恢复点中的磁盘。 [如上所述，下面](#restore-operations)提供了用于替换磁盘的相关请求正文。
+
+#### <a name="create-request-body"></a>创建请求正文
+
+若要从 Azure VM 备份触发磁盘更换，请遵循请求正文的组件。
+
+|名称  |类型  |说明  |
+|---------|---------|---------|
+|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+
+有关请求正文的完整定义列表和其他详细信息，请参阅[“触发还原”REST API 文档](/rest/api/backup/restores/trigger#request-body)。
+
+#### <a name="example-request"></a>示例请求
+
+以下请求正文定义触发磁盘还原所需的属性。
+
+```json
+{
+    "properties": {
+        "objectType": "IaasVMRestoreRequest",
+        "recoveryPointId": "20982486783671",
+        "recoveryType": "OriginalLocation",
+        "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+        "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",  
+        "region": "westus",
+        "createNewCloudService": false,
+        "originalStorageAccountOption": false,
+        "affinityGroup": "",
+        "diskEncryptionSetId": null,
+        "subnetId": null,
+        "targetDomainNameId": null,
+        "targetResourceGroupId": null,
+        "targetVirtualMachineId": null,
+        "virtualNetworkId": null
+     }
+}
+
+```
+
+### <a name="restore-as-another-virtual-machine"></a>作为另一个虚拟机还原
+
+[如上所述，以下](#restore-operations)请求正文定义了触发虚拟机还原所需的属性。
 
 ```json
 {
@@ -271,7 +325,7 @@ X-Powered-By: ASP.NET
 }
 ```
 
-应该根据[上文所述的还原磁盘](#response)的相同方式处理响应。
+应该根据[上文所述的还原磁盘](#responses)的相同方式处理响应。
 
 ## <a name="next-steps"></a>后续步骤
 

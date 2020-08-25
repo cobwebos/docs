@@ -3,12 +3,12 @@ title: 从 "VM" 窗格中备份 SQL Server VM
 description: 本文介绍如何从 VM 窗格备份 Azure 虚拟机上的 SQL Server 数据库。
 ms.topic: conceptual
 ms.date: 08/13/2020
-ms.openlocfilehash: dd30ca1fb138d3e3bd44633b9d5e71beae6d96be
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.openlocfilehash: d7cdf0a04acc57341200b363da4d012f04fe3454
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88227018"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755239"
 ---
 # <a name="back-up-a-sql-server-from-the-vm-pane"></a>从 "VM" 窗格中备份 SQL Server
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: a93901bd95d57b29aeb1464652737a77a1a84376
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 343f6b7a78ca98615d512d31d7ac1c10d9de8f10
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84791990"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799326"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>提升访问权限以管理所有 Azure 订阅和管理组
 
@@ -144,6 +144,22 @@ CanDelegate        : False
     ```
 
 ## <a name="azure-cli"></a>Azure CLI
+
+### <a name="elevate-access-for-a-global-administrator"></a>为局管理员提升访问权限
+
+使用以下基本步骤，通过 Azure CLI 提升全局管理员的访问权限。
+
+1. 使用 [az rest](/cli/azure/reference-index?view=azure-cli-latest#az-rest) 命令调用 `elevateAccess` 终结点，该终结点在根范围内授予用户访问管理员角色 (`/`) 。
+
+    ```azurecli
+    az rest --method post --url "/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01"
+    ```
+
+1. 以提升的访问权限做出所需的更改。
+
+    有关分配角色的信息，请参阅 [使用 Azure CLI 添加或删除 Azure 角色分配](role-assignments-cli.md)。
+
+1. 执行后续部分中的步骤以删除提升的访问权限。
 
 ### <a name="list-role-assignment-at-root-scope-"></a>列出根范围 (/) 的角色分配
 

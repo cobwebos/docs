@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: d19bfac318ab2ed20d021e10b43b691b525ba897
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 27c284ff7e806c9f194005ed26c05e99c4697083
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749141"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757636"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 上将 GPU 用于计算密集型工作负荷
 
@@ -158,12 +158,12 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-### <a name="use-the-aks-specialized-gpu-image-on-new-clusters-preview"></a>在新群集上使用 AKS 专用 GPU 映像 (预览) 
+### <a name="use-the-aks-specialized-gpu-image-on-new-clusters-preview"></a>在新群集上使用 AKS 专用 GPU 映像 (预览)     
 
 将群集配置为在创建群集时使用 AKS 专用 GPU 映像。 使用 `--aks-custom-headers` 新群集上的 GPU 代理节点标志来使用 AKS 专用 GPU 映像。
 
 ```azure-cli
-az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
+az aks create --name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true
 ```
 
 如果要使用常规 AKS 映像创建群集，可以通过省略自定义标记来执行此操作 `--aks-custom-headers` 。 还可以选择添加更多专用 GPU 节点池，如下所示。
@@ -178,6 +178,12 @@ az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myRe
 ```
 
 如果要使用常规 AKS 映像创建节点池，可以通过省略自定义标记来执行此操作 `--aks-custom-headers` 。 
+
+> [!NOTE]
+> 如果 GPU sku 需要第2代虚拟机，则可以执行以下操作：
+> ```azure-cli
+> az aks nodepool add --name gpu --cluster-name myAKSCluster --resource-group myResourceGroup --node-vm-size Standard_NC6s_v2 --node-count 1 --aks-custom-headers UseGPUDedicatedVHD=true,usegen2vm=true
+> ```
 
 ## <a name="confirm-that-gpus-are-schedulable"></a>确认 GPU 是可计划的
 

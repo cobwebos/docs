@@ -4,12 +4,12 @@ description: 了解如何使用 Azure 备份服务管理和监视 Microsoft Azur
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 71cec82550ae8ca2bc6ddd7bda6452870e5e0818
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: b6f6d9ca94b2fda54c9f9aa8048660af450e0d31
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654219"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757160"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>使用 Azure 备份服务管理 Microsoft Azure 恢复服务 (MARS) 代理备份
 
@@ -154,7 +154,7 @@ ms.locfileid: "88654219"
 
 ## <a name="re-generate-passphrase"></a>重新生成通行短语
 
-使用 MARS 代理向/从 Azure 备份或还原本地计算机时，通行短语用于加密和解密数据。 如果你丢失或忘记了通行短语，可以通过以下步骤重新生成通行短语（前提是计算机仍注册在恢复服务保管库中，并且已配置备份）：
+使用 MARS 代理向/从 Azure 备份或还原本地计算机时，通行短语用于加密和解密数据。 如果丢失或忘记了通行短语，则可以重新生成通行短语， (如果计算机仍注册了恢复服务保管库，并按照以下步骤) 配置了备份：
 
 1. 在 MARS 代理控制台中转到“操作”窗格  > “更改属性”>。  然后转到“加密”选项卡。<br>
 1. 选中“更改通行短语”复选框。<br>

@@ -3,18 +3,18 @@ title: 关于 Azure VM 中的 SAP HANA 数据库备份
 description: 本文介绍如何备份在 Azure 虚拟机上运行的 SAP HANA 数据库。
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: a6c4f627059a8d536e1d006103650dca5d2f5109
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: e30507e433ff9a828266c88ca79e576c508edc31
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533438"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757534"
 ---
 # <a name="about-sap-hana-database-backup-in-azure-vms"></a>关于 Azure VM 中的 SAP HANA 数据库备份
 
 SAP HANA 数据库是关键工作负荷，要求较低的恢复点目标 (RPO) 和较快的恢复时间目标 (RTO)。 现在可以使用 [Azure 备份](./backup-overview.md)来[备份在 Azure VM 上运行的 SAP HANA 数据库](./tutorial-backup-sap-hana-db.md)。
 
-Azure 备份通过 SAP[认证](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5)，通过利用 SAP HANA 的本机 api 提供本机备份支持。 Azure 备份中的此产品/服务可与 Azure 备份的**零基础结构**备份口头禅，从而无需部署和管理备份基础结构。 现在，你可以无缝地备份和还原在 Azure VM 上运行的 SAP HANA 数据库（现在还支持 [M 系列 VM](../virtual-machines/m-series.md)！）并利用 Azure 备份提供的企业管理功能。
+Azure 备份通过 SAP [认证](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d/solutions?id=8f3fd455-a2d7-4086-aa28-51d8870acaa5) ，通过利用 SAP HANA 的本机 api 提供本机备份支持。 Azure 备份中的此产品/服务可与 Azure 备份的 **零基础结构** 备份口头禅，从而无需部署和管理备份基础结构。 现在，你可以无缝地备份和还原在 Azure VM 上运行的 SAP HANA 数据库（现在还支持 [M 系列 VM](../virtual-machines/m-series.md)！）并利用 Azure 备份提供的企业管理功能。
 
 ## <a name="added-value"></a>附加价值
 
@@ -31,7 +31,7 @@ Azure 备份通过 SAP[认证](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d
 
 ![备份体系结构关系图](./media/sap-hana-db-about/backup-architecture.png)
 
-* 备份过程开始时将首先在 Azure 中[创建恢复服务保管库](./tutorial-backup-sap-hana-db.md#create-a-recovery-service-vault)。 此保管库将用来存储随时间推移创建的备份和恢复点。
+* 备份过程首先在 Azure 中 [创建恢复服务保管库](./tutorial-backup-sap-hana-db.md#create-a-recovery-services-vault) 。 此保管库将用来存储随时间推移创建的备份和恢复点。
 * 运行 SAP HANA 服务器的 Azure VM 向保管库进行注册，并且将[发现](./tutorial-backup-sap-hana-db.md#discover-the-databases)要备份的数据库。 若要使 Azure 备份服务能够发现数据库，必须在 HANA 服务器上以 root 用户身份运行[预注册脚本](https://aka.ms/scriptforpermsonhana)。
 * 此脚本在 **hdbuserstore** 中创建 **AZUREWLBACKUPHANAUSER** DB 用户和一个同名的对应键。 若要详细了解该脚本的功能，请参阅[预注册脚本的功能](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does)部分。
 * Azure 备份服务现在在已注册的 SAP HANA 服务器上安装**适用于 HANA 的 Azure 备份插件**。
@@ -58,9 +58,9 @@ Azure 备份通过 SAP[认证](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d
 
 除了使用 Azure 中的 SAP HANA 备份提供数据库级别的备份和恢复，还可以使用 Azure VM 备份解决方案来备份操作系统和非数据库磁盘。
 
-使用[Backint 认证的 Azure SAP HANA 备份解决方案](#backup-architecture)可用于数据库备份和恢复。
+使用 [Backint 认证的 Azure SAP HANA 备份解决方案](#backup-architecture) 可用于数据库备份和恢复。
 
-可以使用[AZURE VM 备份](backup-azure-vms-introduction.md)来备份操作系统和其他非数据库磁盘。 VM 备份每天创建一次，并备份所有磁盘（**写入加速器（WA）磁盘**和**超**磁盘除外）。 由于使用 Azure SAP HANA 备份解决方案来备份数据库，因此可以使用[适用于 Azure vm 的选择性磁盘备份](selective-disk-backup-restore.md)功能，仅对 OS 和非数据库磁盘执行文件一致性备份。
+可以使用[AZURE VM 备份](backup-azure-vms-introduction.md)来备份操作系统和其他非数据库磁盘。 VM 备份每天创建一次，并备份所有磁盘 (除了 **写入加速器 (WA) 磁盘** 和 **超磁盘**) 。 由于使用 Azure SAP HANA 备份解决方案来备份数据库，因此可以使用 [适用于 Azure vm 的选择性磁盘备份](selective-disk-backup-restore.md) 功能，仅对 OS 和非数据库磁盘执行文件一致性备份。
 
 >[!NOTE]
 > 使用带有 Azure VM 备份的预发布脚本将允许数据库的数据卷的应用一致性备份。 但是，如果日志区域位于 WA 磁盘上，拍摄这些磁盘的快照可能无法保证日志区域的一致性。 对于此确切原因，HANA 有一个明确的方法来生成日志备份。 在 SAP HANA 中启用相同的，并且可以使用 Azure SAP HANA 备份来备份它们。
@@ -69,10 +69,10 @@ Azure 备份通过 SAP[认证](https://www.sap.com/dmc/exp/2013_09_adpd/enEN/#/d
 
 * 从最新的恢复点，[从 AZURE VM 备份还原新的 VM](backup-azure-arm-restore-vms.md) 。 或创建新的空 VM，并将磁盘附加到最近的恢复点。
 * 由于不备份 WA 磁盘，因此它们不会还原。 创建空 WA 磁盘和日志区域。
-* 设置所有其他配置（如 IP、系统名称等）后，VM 将设置为从 Azure 备份接收数据库数据。
-* 现在，将数据库从[Azure SAP HANA db 备份](sap-hana-db-restore.md#restore-to-a-point-in-time-or-to-a-recovery-point)还原到所需的时间点。
+* 在设置了所有其他配置 (例如 IP、系统名称等) 后，VM 将设置为从 Azure 备份接收数据库数据。
+* 现在，将数据库从 [Azure SAP HANA db 备份](sap-hana-db-restore.md#restore-to-a-point-in-time-or-to-a-recovery-point) 还原到所需的时间点。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[还原在 AZURE VM 上运行的 SAP HANA 数据库](./sap-hana-db-restore.md)
+* 了解如何 [还原在 AZURE VM 上运行的 SAP HANA 数据库](./sap-hana-db-restore.md)
 * 了解如何[管理使用 Azure 备份进行备份的 SAP HANA 数据库](./sap-hana-db-manage.md)

@@ -7,31 +7,42 @@ author: tamram
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/21/2020
 ms.author: tamram
 ms.reviewer: ozgun
-ms.openlocfilehash: 3069ee020d5f127eb0bdb8cbaf251cd3f3cef8d9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: e037607d1f86e6df4d3f5b12e29ba8fde447ebc9
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86118404"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757925"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-storage"></a>配置 Azure 存储的高级威胁防护
 
 适用于 Azure 存储的高级威胁防护提供额外的安全智能层，用于检测访问或利用存储帐户的异常和潜在有害尝试。 这一层保护使你可以在不是安全专家或管理安全监视系统的情况下解决威胁。
 
-当活动出现异常时，会触发安全警报。 这些安全警报与[Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成，还会通过电子邮件发送给订阅管理员，并详细介绍了可疑活动以及如何调查和修正威胁的建议。
+当活动出现异常时，会触发安全警报。 这些安全警报与 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)集成，还会通过电子邮件发送给订阅管理员，并详细介绍了可疑活动以及如何调查和修正威胁的建议。
 
-服务引入对 Blob 存储和 Azure 文件（预览）的读取、写入和删除请求的资源日志，用于威胁检测。 若要调查高级威胁防护中的警报，可以使用存储分析日志记录查看相关的存储活动。 有关详细信息，请参阅在[Azure 门户中监视存储帐户](storage-monitor-storage-account.md#configure-logging)中的 "**配置日志记录**"。
+服务引入对 Blob 存储和 Azure 文件的读取、写入和删除请求的资源日志， (预览) 进行威胁检测。 若要调查高级威胁防护中的警报，可以使用存储分析日志记录查看相关的存储活动。 有关详细信息，请参阅在[Azure 门户中监视存储帐户](storage-monitor-storage-account.md#configure-logging)中的 "**配置日志记录**"。
 
 ## <a name="availability"></a>可用性
 
-Azure 存储的高级威胁防护目前可用于 Blob 存储、Azure 文件（预览版）和 Azure Data Lake Storage Gen2 （预览版）。 支持高级威胁防护的帐户类型包括常规用途 v2、块 blob 和 Blob 存储帐户。 高级威胁防护在所有公有云和美国政府云中提供，但在其他主权或 Azure 政府云区域中不可用。
+适用于 Azure 存储的高级威胁防护目前可用于 Blob 存储、Azure 文件 (预览版) 和 Azure Data Lake Storage Gen2 (预览) 。 支持高级威胁防护的帐户类型包括常规用途 v2、块 blob 和 Blob 存储帐户。 高级威胁防护在所有公有云和美国政府云中提供，但在其他主权或 Azure 政府云区域中不可用。
 
 为 Data Lake Storage 启用分层命名空间的帐户使用 Azure Blob 存储 Api 和 Data Lake Storage Api 支持事务。 Azure 文件共享通过 SMB 支持事务。
 
 如需定价详细信息（包括 30 天免费试用版的信息），请参阅 [Azure 安全中心定价页](https://azure.microsoft.com/pricing/details/security-center/)。
+
+以下列表总结了 Azure 存储的高级威胁防护的可用性：
+
+- 发布状态：
+  - [Blob 存储](https://azure.microsoft.com/services/storage/blobs/) (公开上市) 
+  - [Azure 文件](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (预览版支持 SMB 和 REST 事务) 
+  - Azure Data Lake Storage Gen2（预览版）
+- 云：<br>
+    ✔ 商业云<br>
+    ✔ US Gov<br>
+    ✘中国 Gov，其他 Gov
 
 ## <a name="set-up-advanced-threat-protection"></a>设置高级威胁防护
 
@@ -42,38 +53,38 @@ Azure 存储的高级威胁防护目前可用于 Blob 存储、Azure 文件（�
 当你订阅 Azure 安全中心的 "标准" 层时，会自动对所有存储帐户设置高级威胁防护。 你可以在特定订阅下为你的存储帐户启用或禁用高级威胁防护，如下所示：
 
 1. 在[Azure 门户](https://portal.azure.com)中启动**Azure 安全中心**。
-1. 在主菜单中，单击 "**定价 & 设置**"。
+1. 在主菜单中，单击 " **定价 & 设置**"。
 1. 单击要为其存储帐户启用或禁用威胁防护的订阅。
 
     ![选择订阅](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-subscription.png)
 
 1. 单击“定价层”****。
-1. 在 "**按资源类型选择定价层**" 部分的 "**存储帐户**" 行中，单击 "**已启用**" 或 "**已禁用**"。
+1. 在 " **按资源类型选择定价层** " 部分的 " **存储帐户** " 行中，单击 " **已启用** " 或 " **已禁用**"。
 
     ![在安全中心启用 ATP](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-pricing2.png)
 1. 单击“保存” 。
 
-### <a name="portal"></a>[Portal](#tab/azure-portal)
+### <a name="portal"></a>[门户](#tab/azure-portal)
 
 1. 启动 [Azure 门户](https://portal.azure.com/)。
-1. 导航到你的 Azure 存储帐户。 在 "**设置**" 下，选择 "**高级安全**"。
-1. 选择 "高级安全配置" 页上的 "**设置**" 链接。
-1. 将**高级安全**设置为 **"开"**。
-1. 单击 "**保存**" 以保存新的或更新的策略。
+1. 导航到你的 Azure 存储帐户。 在 " **设置**" 下，选择 " **高级安全**"。
+1. 选择 "高级安全配置" 页上的 " **设置** " 链接。
+1. 将 **高级安全** 设置为 **"开"**。
+1. 单击 " **保存** " 以保存新的或更新的策略。
 
     ![打开 Azure 存储高级威胁防护](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-turn-on.png)
 
 ### <a name="template"></a>[模板](#tab/template)
 
-使用 Azure 资源管理器模板来部署启用了高级威胁防护的 Azure 存储帐户。 有关详细信息，请参阅[具有高级威胁防护的存储帐户](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/)。
+使用 Azure 资源管理器模板来部署启用了高级威胁防护的 Azure 存储帐户。 有关详细信息，请参阅 [具有高级威胁防护的存储帐户](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/)。
 
 ### <a name="azure-policy"></a>[Azure Policy](#tab/azure-policy)
 
 使用 Azure 策略在特定订阅或资源组中的存储帐户之间启用高级威胁防护。
 
-1. 启动 "Azure**策略-定义**" 页。
+1. 启动 "Azure **策略-定义** " 页。
 
-1. 搜索 "**部署高级威胁防护存储帐户**" 策略。
+1. 搜索 " **部署高级威胁防护存储帐户** " 策略。
 
      ![搜索策略](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
 
@@ -118,7 +129,7 @@ Azure 存储的高级威胁防护目前可用于 Blob 存储、Azure 文件（�
 
 ![Azure 存储高级威胁防护警报电子邮件](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert-email.png)
 
-你可以从 Azure 安全中心的 "[安全警报" 磁贴](../../security-center/security-center-managing-and-responding-alerts.md)查看和管理当前的安全警报。 单击特定警报可提供详细信息以及用于调查当前威胁和解决潜在威胁的操作。
+你可以从 Azure 安全中心的 " [安全警报" 磁贴](../../security-center/security-center-managing-and-responding-alerts.md)查看和管理当前的安全警报。 单击特定警报可提供详细信息以及用于调查当前威胁和解决潜在威胁的操作。
 
 ![Azure 存储高级威胁防护警报电子邮件](./media/storage-advanced-threat-protection/storage-advanced-threat-protection-alert.png)
 

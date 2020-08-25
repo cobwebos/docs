@@ -40,6 +40,8 @@
       href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
     - name: 使用托管标识将 Key Vault 连接到 Azure Spring Cloud 应用
       href: spring-cloud-tutorial-managed-identities-key-vault.md
+    - name: 在虚拟网络中部署 Azure Spring Cloud
+      href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
 - name: 示例
   items:
     - name: Azure Policy 内置策略定义

@@ -3,12 +3,12 @@ title: 媒体图概念 - Azure
 description: 通过使用媒体图，你可以定义应从何处捕获媒体、应如何处理媒体以及应将结果交付到何处。 本文提供了媒体图概念的详细说明。
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 9889c7135a23a8817f4922d3e537eb51f26cdae0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 8c6775da6804b5079c89cae73d4621dd8067e90a
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690674"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798833"
 ---
 # <a name="media-graph"></a>媒体图
 
@@ -79,11 +79,11 @@ IoT Edge 上的实时视频分析支持媒体图中以下类型的节点：
 
 #### <a name="http-extension-processor"></a>HTTP 扩展处理器
 
-通过 HTTP 扩展处理器节点，你可以将自己的 IoT Edge 模块连接到媒体图。 此节点以解码的视频帧作为输入，并将此类帧中继到模块公开的 HTTP REST 终结点。 如果需要，此节点能够使用 REST 终结点进行身份验证。 此外，此节点具有内置的图像格式化程序，用于在视频帧中继到 REST 终结点之前对它们进行缩放和编码。 缩放程序可以对图像纵横比进行保留、填充或拉伸。 图像编码器支持 jpeg、png 或 bmp 格式。
+通过 HTTP 扩展处理器节点，你可以将自己的 IoT Edge 模块连接到媒体图。 此节点以解码的视频帧作为输入，并将此类帧中继到模块公开的 HTTP REST 终结点。 如果需要，此节点能够使用 REST 终结点进行身份验证。 此外，此节点具有内置的图像格式化程序，用于在视频帧中继到 REST 终结点之前对它们进行缩放和编码。 缩放程序可以对图像纵横比进行保留、填充或拉伸。 图像编码器支持 JPEG、PNG 或 BMP 格式。
 
 #### <a name="grpc-extension-processor"></a>gRPC 扩展处理器
 
-GRPC extension processor 节点会将解码的视频帧作为输入，并将此类帧中继到模块公开的 gRPC 终结点。 此外，在将视频帧中继到 gRPC 终结点之前，该节点还提供了用于缩放和编码的内置映像格式化程序。 缩放程序可以对图像纵横比进行保留、填充或拉伸。 图像编码器支持 jpeg、png 或 bmp 格式。
+GRPC extension processor 节点会将解码的视频帧作为输入，并将此类帧中继到模块公开的 [gRPC](terminology.md#grpc) 终结点。 此外，在将视频帧中继到 gRPC 终结点之前，该节点还提供了用于缩放和编码的内置映像格式化程序。 缩放程序可以对图像纵横比进行保留、填充或拉伸。 图像编码器支持 jpeg、png 或 bmp 格式。
 
 #### <a name="signal-gate-processor"></a>信号门处理器  
 
@@ -105,7 +105,7 @@ GRPC extension processor 节点会将解码的视频帧作为输入，并将此�
 
 ## <a name="rules-on-the-use-of-nodes"></a>使用节点的规则
 
-有关如何在媒体图中使用不同节点的其他规则，请参阅[配额](quotas-limitations.md#limitations-on-graph-topologies-at-preview)。
+有关如何在媒体图中使用不同节点的其他规则，请参阅 [关系图拓扑的限制](quotas-limitations.md#limitations-on-graph-topologies-at-preview) 。
 
 ## <a name="scenarios"></a>方案
 

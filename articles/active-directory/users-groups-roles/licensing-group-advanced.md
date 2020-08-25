@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2f055a6b8f4a8876c024bdd131a6001e21004e5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.openlocfilehash: 937c5dbf3417e5914a0b4285c3bb114d7499e0fb
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88209471"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799054"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>在 Azure Active Directory 中使用组管理许可的方案、限制和已知问题
 
@@ -211,7 +211,7 @@ ms.locfileid: "88209471"
 
 - 如果针对大型组（例如，100,000 个用户）分配或修改许可证，则可能会影响性能。 具体而言，Azure AD 自动化生成的大量更改可能会对 Azure AD 与本地系统之间的目录同步性能产生负面影响。
 
-- 如果使用动态组来管理用户的成员身份，请验证用户是否包含在组中，这是进行许可证分配所必需的。 如果为否，则对于动态组，请[检查成员身份规则的处理状态](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule)。
+- 如果使用动态组来管理用户的成员身份，请验证用户是否包含在组中，这是进行许可证分配所必需的。 如果为否，则对于动态组，请[检查成员身份规则的处理状态](./groups-create-rule.md)。
 
 - 在某些高负载情况下，处理组的许可证更改或处理具有现有许可证的组的成员身份更改可能需要很长时间。 如果发现对于 60000 及以下的用户群，处理更改所需时间超过 24 小时，请[开具支持票证](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest)以便我们调查。 
 

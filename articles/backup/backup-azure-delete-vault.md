@@ -3,12 +3,12 @@ title: 删除 Microsoft Azure 恢复服务保管库
 description: 本文介绍了如何先删除依赖项，然后删除 Azure 备份恢复服务保管库。
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: ffe8005ed6c2583763a10ba515ff19f0ef62ae0d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: a7e922069f567a0b907c2f2cd28fe09de040cdee
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652814"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757211"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>删除 Azure 备份恢复服务保管库
 
@@ -294,7 +294,7 @@ ms.locfileid: "88652814"
       [<CommonParameters>]
    ```
 
-[详细了解](/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault)如何删除恢复服务保管库。
+[详细了解](/powershell/module/az.recoveryservices/remove-azrecoveryservicesvault) 如何删除恢复服务保管库。
 
 ## <a name="delete-the-recovery-services-vault-by-using-cli"></a>使用 CLI 删除恢复服务保管库
 
@@ -303,7 +303,7 @@ ms.locfileid: "88652814"
 > [!NOTE]
 > 目前，Azure 备份 CLI 仅支持管理 Azure VM 备份，因此，仅当保管库包含 Azure VM 备份时，以下命令才能删除保管库。 如果保管库包含非 Azure VM 类型的任何备份项，则无法使用 Azure 备份 CLI 删除该保管库。
 
-若要删除现有的恢复服务保管库，请执行以下命令：
+若要删除现有的恢复服务保管库，请执行以下步骤：
 
 - 停止保护并删除备份数据
 
@@ -357,13 +357,13 @@ ms.locfileid: "88652814"
 1. 使用订阅 ID、资源组名称和保管库名称运行以下命令。 如果没有任何依赖项，则运行以下命令时会删除保管库：
 
    ```azurepowershell
-   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
+   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<Recovery Services vault name>?api-version=2015-03-15
    ```
 
 2. 如果保管库不为空，将出现以下错误消息：“由于此保管库中存在现有资源，因此无法删除此保管库。” 若要删除保管库中受保护的项或容器，请运行以下命令：
 
    ```azurepowershell
-   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
+   ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<Recovery Services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
 
 3. 在 Azure 门户中，确保已删除该保管库。

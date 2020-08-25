@@ -7,14 +7,15 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 06bb8f2005dae9e36fe55547a31c81c36d0c7068
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: contperfq1
+ms.openlocfilehash: 056060f8b94747651c78c757150d5e5a5982c7af
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737642"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757772"
 ---
-# <a name="memory-usage-optimization-for-apache-spark"></a>Apache Spark 的内存使用量优化
+# <a name="memory-usage-optimization-for-apache-spark"></a>Apache Spark 的内存使用情况优化
 
 本文介绍如何优化 Apache Spark 群集的内存管理，以在 Azure HDInsight 上获得最佳性能。
 
@@ -31,7 +32,7 @@ Spark 在运行时会将数据放在内存中。 因此，管理内存资源是�
 
 ## <a name="spark-memory-considerations"></a>Spark 内存注意事项
 
-如果使用 Apache Hadoop YARN，则 YARN 会控制每个 Spark 节点上的所有容器使用的内存。  下图展示了一些键对象及其关系。
+如果使用的是 Apache Hadoop YARN，则 YARN 会控制每个 Spark 节点上的所有容器使用的内存。  下图展示了一些键对象及其关系。
 
 ![YARN Spark 内存管理](./media/apache-spark-perf/apache-yarn-spark-memory.png)
 

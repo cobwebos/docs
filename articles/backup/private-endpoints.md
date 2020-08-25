@@ -3,12 +3,12 @@ title: 专用终结点
 description: 了解创建 Azure 备份的专用终结点的过程以及使用专用终结点帮助维护资源安全的方案。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: 789aab1174f599a2ae484c7b0d91ddba15bd4fd6
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: bbb59439677f6c7297aabbecbafeb04327f482b5
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88654695"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762906"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 备份的专用终结点
 
@@ -192,7 +192,7 @@ ms.locfileid: "88654695"
 ## <a name="adding-dns-records"></a>添加 DNS 记录
 
 >[!NOTE]
-> 如果使用的是集成的 DNS 区域，则不需要执行此步骤。 但是，如果你已创建自己的 Azure 专用 DNS 区域，或者使用的是自定义专用 DNS 区域，请确保按照本部分的说明创建条目。
+> 如果使用的是集成的 DNS 区域，则不需要执行此步骤。 但是，如果你已创建自己的 Azure 专用 DNS 区域，或者使用的是自定义专用 DNS 区域，请确保按照此部分中的说明进行输入。
 
 为保管库创建可选的专用 DNS 区域和专用终结点后，需要将 DNS 记录添加到 DNS 区域。 可以手动执行此操作，也可以使用 PowerShell 脚本执行此操作。 只需对备份 DNS 区域执行此操作，Blob 和队列的区域会自动更新。
 
@@ -239,9 +239,9 @@ ms.locfileid: "88654695"
 当 VNet 中为保管库创建的专用终结点获得批准后，即可开始使用它们来执行备份和还原。
 
 >[!IMPORTANT]
->在继续之前，请确保已成功完成文档中的上述所有步骤。 概括起来，必须完成以下清单中的步骤：
+>在继续操作之前，请确保已成功完成文档中所述的所有步骤。 概括起来，必须完成以下清单中的步骤：
 >
->1. 已创建（新的）恢复服务保管库
+>1. 已创建 (新的) 恢复服务保管库
 >1. 已启用保管库，以使用系统分配的托管标识
 >1. 已创建三个专用 DNS 区域（如果使用的是集成的 DNS 区域进行备份，则需创建两个区域）
 >1. 已将专用 DNS 区域链接到 Azure 虚拟网络
@@ -265,7 +265,7 @@ ms.locfileid: "88654695"
 
 ### <a name="create-a-recovery-services-vault-using-the-azure-resource-manager-client"></a>使用 Azure 资源管理器客户端创建恢复服务保管库
 
-可以使用 Azure 资源管理器客户端创建恢复服务保管库，并启用其托管标识（必须启用托管标识，稍后会进行介绍）。 执行此操作的示例如下所示：
+你可以创建恢复服务保管库并启用其托管标识 (需要启用托管标识，因为我们稍后将看到使用 Azure 资源管理器客户端) 。 执行此操作的示例如下所示：
 
 ```rest
 armclient PUT /subscriptions/<subscriptionid>/resourceGroups/<rgname>/providers/Microsoft.RecoveryServices/Vaults/<vaultname>?api-version=2017-07-01-preview @C:\<filepath>\MSIVault.json

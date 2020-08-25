@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9fb3113b02d20355e3ac9ede593bf8fc4136461
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.openlocfilehash: 0ed286cf2b11429d5f0f56b3a85f173c2a39bc81
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88705956"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799292"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>为 Microsoft 365 组配置过期策略
 
@@ -110,7 +110,7 @@ ms.locfileid: "88705956"
 
 ## <a name="how-to-retrieve-microsoft-365-group-expiration-date"></a>如何检索 Microsoft 365 组过期日期
 
-除了访问面板，用户可以在其中查看组详细信息（包括到期日期和上次续订日期），可以从 Microsoft Graph REST API Beta 中检索 Microsoft 365 组的到期日期。 Microsoft Graph Beta 中已启用 expirationDateTime 作为组属性。 可以使用 GET 请求来检索它。 有关更多详细信息，请参阅 [此示例](https://docs.microsoft.com/graph/api/group-get?view=graph-rest-beta#example)。
+除了访问面板，用户可以在其中查看组详细信息（包括到期日期和上次续订日期），可以从 Microsoft Graph REST API Beta 中检索 Microsoft 365 组的到期日期。 Microsoft Graph Beta 中已启用 expirationDateTime 作为组属性。 可以使用 GET 请求来检索它。 有关更多详细信息，请参阅 [此示例](/graph/api/group-get?view=graph-rest-beta#example)。
 
 > [!NOTE]
 > 若要在访问面板上管理组成员身份，需要在 Azure Active Directory 组 "常规" 设置中将 "限制访问访问面板中的组" 设置为 "否"。
@@ -172,7 +172,7 @@ ms.locfileid: "88705956"
    Remove-AzureADMSGroupLifecyclePolicy -Id "26fcc232-d1c3-4375-b68d-15c296f1f077"
    ```
   
-以下 cmdlet 可用于更详细地配置策略。 有关详细信息，请参阅 [PowerShell 文档](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&branch=master#groups)。
+以下 cmdlet 可用于更详细地配置策略。 有关详细信息，请参阅 [PowerShell 文档](/powershell/module/azuread/?branch=master&view=azureadps-2.0-preview#groups)。
 
 - Get-AzureADMSGroupLifecyclePolicy
 - New-AzureADMSGroupLifecyclePolicy

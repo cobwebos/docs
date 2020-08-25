@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 1c9e40738d70b6fbb9fed267a6a047d8330023b7
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 2fc87f08b30d648ec38d2b93e96a32d125b856be
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749301"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757908"
 ---
 # <a name="business-card-concepts"></a>名片概念
 
@@ -391,9 +391,8 @@ Azure 窗体识别器可以使用其预生成模型之一来分析和提取名�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 按照快速入门中的入门 
-- [名片 API Python 快速入门](./quickstarts/python-business-cards.md)
-- 了解 [窗体识别器 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer/api)
+- 按照快速入门 [快速入门](./quickstarts/python-business-cards.md)
+- 了解 [窗体识别器 REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync)
 - 了解有关[窗体识别器](overview.md)的详细信息
 
 

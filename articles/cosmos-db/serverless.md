@@ -6,12 +6,12 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: d99deea8271a3f9e630a7d2e8cd9f73bd41645a2
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: ef681f861a14fbbf86e7e350441d05f84fc95f58
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88608720"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757891"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB 无服务器 (预览版) 
 
@@ -82,7 +82,7 @@ Azure Cosmos DB 无服务器最适合的方案：
 无服务器资源会产生不同于预配的吞吐量资源提供的特定性能特征：
 
 - **可用性**：在无服务器产品/服务公开发布后，无服务器容器的可用性将被服务级别协议 (SLA) 99.9%，可用性区域 (不会使用区域冗余。 使用可用性区域时，SLA 为99.99%。
-- **延迟**： "无服务器" 产品/服务已正式发布后，无服务器容器的延迟将由服务级别目标 (SLO) 为10毫秒或更短（对于点读取）和30毫秒或更短（对于写入）。 点读取操作由其 ID 和分区键值获取单个项。
+- **延迟**： "无服务器" 产品/服务已正式发布后，无服务器容器的延迟将由服务级别目标 (SLO) 为10毫秒或更短（对于点读取）和30毫秒或更短（对于写入）。 点读取操作包含按其 ID 和分区键值提取单个项。
 - **Burstability**：在 "无服务器" 产品/服务已正式发布后，服务级别目标 (SLO) 为95%。 这意味着至少95% 的时间内可以获得最大 burstability。
 
 > [!NOTE]
@@ -93,5 +93,5 @@ Azure Cosmos DB 无服务器最适合的方案：
 以下文章介绍无服务器入门：
 
 - [Azure Cosmos DB 中的请求单位](request-units.md)
-- [选择预配吞吐量和无服务器](throughput-serverless.md)
+- [在预配吞吐量和无服务器之间进行选择](throughput-serverless.md)
 - [Azure Cosmos DB 中的定价模型](how-pricing-works.md)

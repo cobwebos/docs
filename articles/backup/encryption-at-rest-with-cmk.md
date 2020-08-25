@@ -3,12 +3,12 @@ title: 使用客户托管密钥加密备份数据
 description: 了解 Azure 备份如何允许使用客户管理的密钥加密备份数据， (CMK) 。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: dfed3f983867568befc77d7dbc81cdde70eef9ed
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 2c83350acad59e72cfabc8e40069aab46d785b63
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589599"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763110"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客户托管密钥加密备份数据
 
@@ -23,7 +23,7 @@ Azure 备份允许使用客户管理的密钥加密备份数据， (CMK) ，而�
 - 对使用客户管理的密钥加密的保管库执行备份
 - 从备份还原数据
 
-## <a name="before-you-start"></a>开始之前
+## <a name="before-you-start"></a>准备工作
 
 - 此功能仅允许加密 **新的恢复服务保管库**。 不支持任何包含注册或试图注册到它的现有项目的保管库。
 
@@ -133,7 +133,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 ### <a name="assign-encryption-key-to-the-rs-vault"></a>将加密密钥分配给 RS vault
 
 >[!NOTE]
-> 继续操作之前，请确保以下各项：
+> 继续下一步之前，请确保以下各项：
 >
 > - 上述所有步骤均已成功完成：
 >   - 恢复服务保管库的托管标识已启用，并且已分配有必需的权限
@@ -160,7 +160,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
         ![从密钥保管库中选择密钥](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. 单击“保存” 。
+1. 单击“保存”  。
 
 1. **跟踪加密密钥更新的进度：** 可以使用恢复服务保管库中的 **活动日志** 跟踪密钥分配的进度。 状态应更改为 " **成功**"。 现在，保管库会将具有指定密钥的所有数据加密为 KEK。
 

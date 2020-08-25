@@ -5,15 +5,15 @@ author: bwren
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 08/24/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: 9c2a87f3d70d3873771b3a59114b424efffe4fb9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 12bf87e16bf4506f2015dd75fb360f8de8399902
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130182"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797813"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>监视 Azure Cosmos DB
 
@@ -23,7 +23,7 @@ ms.locfileid: "87130182"
 
 * **通过 Azure Cosmos DB 门户监视：** 可以使用 Azure Cosmos 帐户的“指标”选项卡中提供的指标进行监视。 此选项卡上的指标包括吞吐量、存储、可用性、延迟、一致性和系统级指标。 默认情况下，这些指标的保留期为 7 天。 若要了解详细信息，请参阅本文的[从 Azure Cosmos DB 中收集的监视数据](#monitoring-from-azure-cosmos-db)部分。
 
-* **使用 Azure Monitor 中的指标进行监视：** 可以监视 Azure Cosmos 帐户的指标，并从 Azure Monitor 中创建仪表板。 默认情况下，Azure Monitor 收集 Azure Cosmos DB 指标，你无需显式配置任何内容。 这些指标以一分钟的粒度进行收集，粒度可能因所选指标而异。 默认情况下，这些指标的保留期为 30 天。 从前面选项中获得的大多数指标也可在这些指标中使用。 容器名称等指标的维度值不区分大小写。 因此，在对这些维度值进行字符串比较时，需要使用不区分大小写的比较。 若要了解详细信息，请参阅本文的[分析指标数据](#analyze-metric-data)部分。
+* **使用 Azure Monitor 中的指标进行监视：** 可以监视 Azure Cosmos 帐户的指标，并从 Azure Monitor 中创建仪表板。 默认情况下，Azure Monitor 收集 Azure Cosmos DB 指标，你无需显式配置任何内容。 这些指标以一分钟的粒度进行收集，粒度可能因所选指标而异。 默认情况下，这些指标的保留期为 30 天。 从前面选项中获得的大多数指标也可在这些指标中使用。 指标的维度值（例如容器名称）不区分大小写。 因此，在对这些维度值进行字符串比较时，需要使用不区分大小写的比较。 若要了解详细信息，请参阅本文的[分析指标数据](#analyze-metric-data)部分。
 
 * **使用 Azure Monitor 中的诊断日志进行监视：** 可以监视 Azure Cosmos 帐户的日志，并从 Azure Monitor 中创建仪表板。 以秒粒度发生的遥测（例如，事件和跟踪）将作为日志进行存储。 例如，如果容器的吞吐量发生变化，则 Cosmos 帐户的属性也会发生变化，这些事件将在日志中捕获。 可以通过对收集的数据运行查询来分析这些日志。 若要了解详细信息，请参阅本文的[分析日志数据](#analyze-log-data)部分。
 
@@ -56,7 +56,7 @@ Azure Cosmos DB 使用 [Azure Monitor](../azure-monitor/overview.md) 创建监�
 > [!NOTE]
 > 创建容器时，请确保不创建名称相同但大小写不同的两个容器。 这是因为 Azure 平台的某些部分不区分大小写，这可能会对具有此类名称的容器导致遥测和操作混乱/冲突。
 
-## <a name="monitor-data-collected-from-azure-cosmos-db-portal"></a><a id="monitoring-from-azure-cosmos-db"></a>监视从 Azure Cosmos DB 门户收集的数据
+## <a name="monitor-data-collected-from-azure-cosmos-db-portal"></a><a id="monitoring-from-azure-cosmos-db"></a> 监视从 Azure Cosmos DB 门户收集的数据
 
 Azure Cosmos DB 会收集与[来自 Azure 资源的监视数据](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data)中所述的其他 Azure 资源相同类型的监视数据。 有关 Azure Cosmos DB 创建的日志和指标的详细参考，请参阅 [Azure Cosmos DB 监视数据参考](monitor-cosmos-db-reference.md)。
 
@@ -64,7 +64,7 @@ Azure 门户中每个 Azure Cosmos 数据库的“概述”页都提供数据库
 
 :::image type="content" source="media/monitor-cosmos-db/overview-page.png" alt-text="概述页":::
 
-## <a name="analyzing-metric-data"></a><a id="analyze-metric-data"></a>分析指标数据
+## <a name="analyzing-metric-data"></a><a id="analyze-metric-data"></a> 分析指标数据
 
 Azure Cosmos DB 提供了一个自定义体验来用于处理指标。 若要详细了解如何使用此体验以及如何分析各种 Azure Cosmos DB 方案，请参阅[从 Azure Monitor 监视和调试 Azure Cosmos DB 指标](cosmos-db-azure-monitor-metrics.md)。
 
@@ -104,7 +104,7 @@ Azure Cosmos DB 提供了一个自定义体验来用于处理指标。 若要详
 
 :::image type="content" source="./media/monitor-cosmos-db/apply-metrics-splitting.png" alt-text="添加“应用拆分”筛选器":::
 
-## <a name="analyzing-log-data"></a><a id="analyze-log-data"></a>分析日志数据
+## <a name="analyzing-log-data"></a><a id="analyze-log-data"></a> 分析日志数据
 
 Azure Monitor 日志中的数据以表形式存储，每个表包含自己独有的属性集。 Azure Cosmos DB 将数据存储在以下表中。
 
@@ -147,7 +147,7 @@ Azure Monitor 日志中的数据以表形式存储，每个表包含自己独有
     | summarize count() by Resource
     ```
 
-## <a name="monitor-azure-cosmos-db-programmatically"></a><a id="monitor-cosmosdb-programmatically"></a>以编程方式监视 Azure Cosmos DB
+## <a name="monitor-azure-cosmos-db-programmatically"></a><a id="monitor-cosmosdb-programmatically"></a> 以编程方式监视 Azure Cosmos DB
 
 门户中可用的帐户级别指标（如帐户存储使用情况和请求总数）不可通过 SQL API 使用。 但是，可以使用 SQL API 在集合级别检索使用情况数据。 若要检索集合级别的数据，请执行以下操作：
 
@@ -158,14 +158,16 @@ Azure Monitor 日志中的数据以表形式存储，每个表包含自己独有
 若要访问其他指标，请使用 [Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights)。 可以通过调用以下命令检索可用的指标定义：
 
 ```http
-https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metricDefinitions?api-version=2015-04-08
+https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/providers/microsoft.insights/metricDefinitions?api-version=2018-01-01
 ```
 
-用于检索各个指标的查询使用以下格式：
+若要检索各个指标，请使用以下格式：
 
 ```http
-https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/metrics?api-version=2015-04-08&$filter=%28name.value%20eq%20%27Total%20Requests%27%29%20and%20timeGrain%20eq%20duration%27PT5M%27%20and%20startTime%20eq%202016-06-03T03%3A26%3A00.0000000Z%20and%20endTime%20eq%202016-06-10T03%3A26%3A00.0000000Z
+https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroup}/providers/Microsoft.DocumentDb/databaseAccounts/{DocumentDBAccountName}/providers/microsoft.insights/metrics?timespan={StartTime}/{EndTime}&interval={AggregationInterval}&metricnames={MetricName}&aggregation={AggregationType}&`$filter={Filter}&api-version=2018-01-01
 ```
+
+若要了解详细信息，请参阅 [Azure monitoring REST API](../azure-monitor/platform/rest-api-walkthrough.md) 一文。
 
 ## <a name="next-steps"></a>后续步骤
 

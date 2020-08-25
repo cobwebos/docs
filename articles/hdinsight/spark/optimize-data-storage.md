@@ -7,12 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 7162e2e8c42f3e83a47c46d739f93cfc4cfcaac6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: contperfq1
+ms.openlocfilehash: 092757728e791f60616d9dceca43e109e7f0019e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737625"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88757806"
 ---
 # <a name="data-storage-optimization-for-apache-spark"></a>Apache Spark 的数据存储优化
 
@@ -56,9 +57,9 @@ Spark 支持多种格式，比如 csv、json、xml、parquet、orc 和 avro。 S
 
 | 存储类型 | 文件系统 | Speed | 暂时性 | 用例 |
 | --- | --- | --- | --- | --- |
-| Azure Blob 存储 | **wasb:** //url/ | **Standard** | 是 | 暂时性群集 |
-| Azure Blob 存储（安全） | wasbs://url/ | **Standard** | 是 | 暂时性群集 |
-| Azure Data Lake Storage Gen 2| abfs://url/ | **较快** | 是 | 暂时性群集 |
+| Azure Blob 存储 | **wasb:** //url/ | **标准** | 是 | 暂时性群集 |
+| Azure Blob 存储（安全） | **wasbs:** //url/ | **标准** | 是 | 暂时性群集 |
+| Azure Data Lake Storage Gen 2| **abfs:** //url/ | **较快** | 是 | 暂时性群集 |
 | Azure Data Lake Storage Gen 1| **adl:** //url/ | **较快** | 是 | 暂时性群集 |
 | 本地 HDFS | **hdfs:** //url/ | **最快** | 否 | 全天候交互型群集 |
 
@@ -90,7 +91,7 @@ Spark 作业是分布式作业，因此，适当的数据序列化对实现最�
 
 ## <a name="use-bucketing"></a>使用 Bucket 存储
 
-Bucket 存储类似于数据分区。 但每个 Bucket 都可以保存一组列值，而不只是一个列值。 此方法适合对大量（数以百万计或更多）值分区，比如产品标识符。 通过哈希行的 Bucket 键可以确定 Bucket。 由 Bucket 存储的表可提供独一无二的优化，因为它们存储了有关其 Bucket 存储方式和排序方式的元数据。
+Bucket 存储类似于数据分区。 但每个 Bucket 都可以保存一组列值，而不只是一个列值。 此方法非常适合对大量（数以百万计或更多）值（比如产品标识符）分区。 通过哈希行的 Bucket 键可以确定 Bucket。 由 Bucket 存储的表可提供独一无二的优化，因为它们存储了有关其 Bucket 存储方式和排序方式的元数据。
 
 下面是一些高级 Bucket 存储功能：
 

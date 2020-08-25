@@ -4,12 +4,12 @@ description: 了解 Azure 备份中的加密功能如何帮助你保护你的备
 ms.topic: conceptual
 ms.date: 08/04/2020
 ms.custom: references_regions
-ms.openlocfilehash: 1350be3fb869e7b81eaba14f91aff7f0e9e3c992
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 71183e99522707737812096567d877df740c4bae
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586641"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763637"
 ---
 # <a name="encryption-in-azure-backup"></a>Azure 备份中的加密
 
@@ -27,7 +27,7 @@ Azure 备份包括两个级别的加密：
   - **Azure 虚拟机备份**： azure 备份支持备份具有使用 [平台托管密钥](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys)加密的磁盘的 vm，以及由你拥有和管理的 [客户托管密钥](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys) 。 此外，还可以备份使用 [Azure 磁盘加密](backup-azure-vms-encryption.md#encryption-support-using-ade)来加密其 OS 或数据磁盘的 Azure 虚拟机。 ADE 使用适用于 Windows Vm 的 BitLocker 和适用于 Linux Vm 的 DM Dm-crypt 来执行来宾内加密。
 
 >[!NOTE]
->基础结构加密目前处于有限预览版中，仅在美国东部、美国 West2、美国中南部、US Gov 亚利桑那州和美国 GOV 弗吉尼亚地区提供。 如果要在任何这些区域中使用该功能，请填写 [此表格](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) ，并通过电子邮件发送电子邮件 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 。
+>基础结构加密目前处于有限预览版中，仅在美国东部、美国 West2、美国中南部、US Gov 亚利桑那州和美国 GOV 弗吉尼亚地区提供。 如果要在这些区域中使用此功能，请填写 [此表格](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUN0VHNEpJS0ZUWklUNVdJSTEzR0hIOVRMVC4u) ，并通过电子邮件发送电子邮件 [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) 。
 
 ## <a name="next-steps"></a>后续步骤
 

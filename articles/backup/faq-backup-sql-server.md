@@ -4,12 +4,12 @@ description: 查找有关使用 Azure 备份在 Azure VM 上备份 SQL Server �
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 2781646e548f4f530b26ca41466f158597e817d9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a5fdbb78f6d700d14c2458a8d87a4b0f9a971207
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090971"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88762838"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有关备份 Azure VM 上运行的 SQL Server 数据库的常见问题解答
 
@@ -52,7 +52,7 @@ DefaultBackupTasksThreshold 的默认值为 **20**。
  尽管在备份应用程序消耗大量资源时此方法有所帮助，但使用 SQL Server [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) 可通过更常规的方式来指定传入应用程序请求可以使用的 CPU、物理 IO 和内存量限制。
 
 > [!NOTE]
-> 在 UX 中，仍可随时继续计划任意数量的备份，但是，这些备份将按某个滑动窗口进行处理，例如，在上述示例中，滑动窗口为 5。
+> 在 UX 中，你仍然可以在任何给定时间计划任意数量的备份。 不过，它们会在如上面的示例所示的滑动窗口中进行处理。
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>是否可以从次要副本运行完整备份？
 
