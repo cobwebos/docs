@@ -41,7 +41,7 @@
 - name: 示例
   items:
     - name: 代码示例
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&term=aci'
+      href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=container%20instance'
     - name: 资源管理器模板
       href: container-instances-samples-rm.md
 - name: 概念
@@ -104,7 +104,7 @@
       items:
         - name: Azure 文件共享
           href: container-instances-volume-azure-files.md
-        - name: 机密
+        - name: Secret
           href: container-instances-volume-secret.md
         - name: 空目录
           href: container-instances-volume-emptydir.md
@@ -170,5 +170,5 @@
       href: 'https://stackoverflow.com/questions/tagged/azure-container-instances'
     - name: 视频
       href: 'https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest'
-    - name: 常见问题解答
+    - name: 常见问题
       href: container-instances-faq.md

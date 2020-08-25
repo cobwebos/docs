@@ -3,12 +3,12 @@ title: 排查 SQL Server 数据库备份问题
 description: 有关使用 Azure 备份来备份在 Azure VM 上运行的 SQL Server 数据库的故障排除信息。
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: 1d692d0bacbcb26090d17bf905b959f870eed3f8
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 98240254a71695fa72acaf5c7f930c11d9f99cae
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88660117"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756905"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>排查使用 Azure 备份进行 SQL Server 数据库备份的问题
 
@@ -24,7 +24,7 @@ ms.locfileid: "88660117"
 
 创建和配置恢复服务保管库后，发现数据库和配置备份的过程分为两步。<br>
 
-![sql](./media/backup-azure-sql-database/sql.png)
+![备份目标-Azure VM 中的 SQL Server](./media/backup-azure-sql-database/sql.png)
 
 在备份配置过程中，如果 SQL VM 及其实例在 **vm 的发现** 数据库中不可见，并 **配置备份** (请参阅上述映像) 确保：
 
