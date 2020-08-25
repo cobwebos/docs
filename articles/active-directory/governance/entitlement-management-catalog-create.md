@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: hanki
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16a9c8ddfbc2c2a45067080dc68a759de226591b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0b8e107fb377a30b35f0941b89c490e11fc458c
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85339570"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783529"
 ---
 # <a name="create-and-manage-a-catalog-of-resources-in-azure-ad-entitlement-management"></a>在 Azure AD 的权利管理中创建和管理资源的目录
 
@@ -53,13 +53,13 @@ ms.locfileid: "85339570"
 
 ### <a name="creating-a-catalog-programmatically"></a>以编程方式创建目录
 
-你还可以使用 Microsoft Graph 创建目录。  具有具有委托权限的应用程序的相应角色中的用户 `EntitlementManagement.ReadWrite.All` 可以调用 API 来[创建 accessPackageCatalog](https://docs.microsoft.com/graph/api/accesspackagecatalog-post?view=graph-rest-beta)。
+你还可以使用 Microsoft Graph 创建目录。  具有具有委托权限的应用程序的相应角色中的用户 `EntitlementManagement.ReadWrite.All` 可以调用 API 来 [创建 accessPackageCatalog](/graph/api/accesspackagecatalog-post?view=graph-rest-beta)。
 
 ## <a name="add-resources-to-a-catalog"></a>将资源添加到目录
 
 若要在访问包中包含资源，这些资源必须存在于目录中。 可添加的资源类型包括组、应用程序和 SharePoint Online 站点。 这些组可以是云创建 Microsoft 365 组或云创建 Azure AD 安全组。 应用程序可以是 Azure AD 企业应用程序，包括 SaaS 应用程序，以及你自己的已联合到 Azure AD 的应用程序。 站点可以是 SharePoint Online 站点或 SharePoint Online 站点集合。
 
-**必备角色：** 查看[将资源添加到目录的所需角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
+**必备角色：** 查看 [将资源添加到目录的所需角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
@@ -69,7 +69,7 @@ ms.locfileid: "85339570"
 
 1. 单击“添加资源”。****
 
-1. 单击资源类型：**组和团队**、**应用程序**或**SharePoint 站点**。
+1. 单击资源类型： **组和团队**、 **应用程序**或 **SharePoint 站点**。
 
     如果未看到所要添加的资源或无法添加资源，请确保具有所需的 Azure AD 目录角色和权利管理角色。 可能需要求助某个具有所需角色的人员将资源添加到目录。 有关详细信息，请参阅[将资源添加到目录所需的角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)。
 
@@ -83,13 +83,13 @@ ms.locfileid: "85339570"
 
 ### <a name="adding-a-resource-to-a-catalog-programmatically"></a>以编程方式将资源添加到目录
 
-你还可以使用 Microsoft Graph 将资源添加到目录。  具有委托权限的应用程序 `EntitlementManagement.ReadWrite.All` 可以调用 API 来[创建 accessPackageResourceRequest](https://docs.microsoft.com/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta)，相应角色中的用户或目录和资源所有者。
+你还可以使用 Microsoft Graph 将资源添加到目录。  具有委托权限的应用程序 `EntitlementManagement.ReadWrite.All` 可以调用 API 来 [创建 accessPackageResourceRequest](/graph/api/accesspackageresourcerequest-post?view=graph-rest-beta)，相应角色中的用户或目录和资源所有者。
 
 ## <a name="remove-resources-from-a-catalog"></a>从目录中删除资源
 
 可以从目录中删除资源。 如果资源未在目录的任何访问包中使用时，才能从该目录中删除该资源。
 
-**必备角色：** 查看[将资源添加到目录的所需角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
+**必备角色：** 查看 [将资源添加到目录的所需角色](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog)
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
@@ -117,7 +117,7 @@ ms.locfileid: "85339570"
 
     ![目录角色和管理员](./media/entitlement-management-shared/catalog-roles-administrators.png)
 
-1. 单击 "**添加所有者**"，选择这些角色的成员。
+1. 单击 " **添加所有者** "，选择这些角色的成员。
 
 1. 单击“选择”以添加这些成员。****
 
@@ -137,7 +137,7 @@ ms.locfileid: "85339570"
 
     ![编辑目录设置](./media/entitlement-management-shared/catalog-edit.png)
 
-1. 单击“保存” 。
+1. 单击“保存”  。
 
 ## <a name="delete-a-catalog"></a>删除目录
 
@@ -155,7 +155,7 @@ ms.locfileid: "85339570"
 
 ### <a name="deleting-a-catalog-programmatically"></a>以编程方式删除目录
 
-你还可以使用 Microsoft Graph 删除目录。  具有具有委托权限的应用程序的相应角色中的用户 `EntitlementManagement.ReadWrite.All` 可以调用 API 来[删除 accessPackageCatalog](https://docs.microsoft.com/graph/api/accesspackagecatalog-delete?view=graph-rest-beta)。
+你还可以使用 Microsoft Graph 删除目录。  具有具有委托权限的应用程序的相应角色中的用户 `EntitlementManagement.ReadWrite.All` 可以调用 API 来 [删除 accessPackageCatalog](/graph/api/accesspackagecatalog-delete?view=graph-rest-beta)。
 
 ## <a name="next-steps"></a>后续步骤
 
