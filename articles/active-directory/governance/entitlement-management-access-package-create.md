@@ -57,7 +57,7 @@ ms.locfileid: "88783631"
 
 **必备角色：** 全局管理员、用户管理员、目录所有者或访问包管理员
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
+1. 登录 [Azure 门户](https://portal.azure.com)。
 
 1. 依次单击“Azure Active Directory”、“标识监管”。  
 
@@ -67,7 +67,7 @@ ms.locfileid: "88783631"
    
     ![Azure 门户中的权利管理](./media/entitlement-management-shared/access-packages-list.png)
 
-## <a name="basics"></a>入门
+## <a name="basics"></a>基础
 
 在“基本信息”选项卡上指定访问包的名称，并指定要在哪个目录中创建该访问包。****
 

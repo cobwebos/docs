@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cccab009ddd5624fcc98ad6f871fe40d9540823
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: bb74fae150d4c8e5dda6978c272d358bdec6ca25
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88603978"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783597"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>规划 Azure Active Directory 访问评审部署
 
@@ -180,7 +180,7 @@ ms.locfileid: "88603978"
 
 * [与单一登录 (Azure AD 集成的应用程序](../manage-apps/what-is-application-management.md) ，如 SaaS、业务线) 。
 
-* 组 [成员身份](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context) (同步到 Azure AD，或者在 Azure AD 或 Office 365 中创建，包括 Microsoft 团队) 。
+* 组 [成员身份](../fundamentals/active-directory-manage-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context) (同步到 Azure AD，或者在 Azure AD 或 Office 365 中创建，包括 Microsoft 团队) 。
 
 * 将资源 (组、应用和站点分组) 为单个包以管理访问权限的[访问包](/entitlement-management-overview.md)。
 
@@ -389,7 +389,7 @@ ms.locfileid: "88603978"
 
 ## <a name="plan-review-of-azure-ad-and-azure-resource-roles"></a>规划 Azure AD 和 Azure 资源角色的评审
 
-[Privileged Identity Management (PIM) ](../privileged-identity-management/pim-configure.md) 简化了企业如何管理对 Azure AD 中资源的特权访问。 这会使特权角色的列表在 [Azure AD](../users-groups-roles/directory-assign-admin-roles.md) 和 [Azure 资源](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) 中的规模大大降低，并提高目录的总体安全性。
+[Privileged Identity Management (PIM) ](../privileged-identity-management/pim-configure.md) 简化了企业如何管理对 Azure AD 中资源的特权访问。 这会使特权角色的列表在 [Azure AD](../users-groups-roles/directory-assign-admin-roles.md) 和 [Azure 资源](../../role-based-access-control/built-in-roles.md) 中的规模大大降低，并提高目录的总体安全性。
 
 访问评审允许审阅者证明用户是否仍需要处于角色中。 与访问包的访问评审一样，对 Azure AD 角色和 Azure 资源的检查都已集成到 PIM 管理员用户体验中。 建议定期查看下列角色分配：
 
@@ -452,9 +452,9 @@ ms.locfileid: "88603978"
 
 | 操作方法文章 | 说明 |
 | - | - |
- [创建访问评审](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-start-security-review?toc=/azure/active-directory/governance/toc.json)| 在 PIM 中创建特权 Azure AD 角色的访问评审 |
-| [自我审查你的访问权限](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-perform-security-review?toc=/azure/active-directory/governance/toc.json)| 如果分配到管理角色，请批准或拒绝对角色的访问权限 |
-| [完成访问评审](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-complete-review?toc=/azure/active-directory/governance/toc.json)| 查看访问评审并应用结果 |
+ [创建访问评审](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 在 PIM 中创建特权 Azure AD 角色的访问评审 |
+| [自我审查你的访问权限](../privileged-identity-management/pim-how-to-perform-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 如果分配到管理角色，请批准或拒绝对角色的访问权限 |
+| [完成访问评审](../privileged-identity-management/pim-how-to-complete-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 查看访问评审并应用结果 |
 
 
 ### <a name="review-azure-resource-roles"></a>查看 Azure 资源角色
@@ -467,14 +467,14 @@ ms.locfileid: "88603978"
 
 | 操作方法文章| 说明 |
 | - | -|
-| [创建访问评审](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-start-access-review?toc=/azure/active-directory/governance/toc.json)| 在 PIM 中为特权 Azure 资源角色创建访问评审 |
-| [自我审查你的访问权限](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-perform-access-review?toc=/azure/active-directory/governance/toc.json)| 如果分配到管理角色，请批准或拒绝对角色的访问权限 |
-| [完成访问评审](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-resource-roles-complete-access-review?toc=/azure/active-directory/governance/toc.json)| 查看访问评审并应用结果 |
+| [创建访问评审](../privileged-identity-management/pim-resource-roles-start-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 在 PIM 中为特权 Azure 资源角色创建访问评审 |
+| [自我审查你的访问权限](../privileged-identity-management/pim-resource-roles-perform-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 如果分配到管理角色，请批准或拒绝对角色的访问权限 |
+| [完成访问评审](../privileged-identity-management/pim-resource-roles-complete-access-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)| 查看访问评审并应用结果 |
 
 
 ## <a name="use-the-access-reviews-api"></a>使用访问评审 API
 
-请参阅 [图形 API 方法](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta) 和 [角色和应用程序权限授权检查](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta) 以与 reviewable 资源交互和管理这些资源。 Microsoft Graph API 中的访问评审方法可用于应用程序和用户上下文。 在应用程序上下文中运行脚本时，用于运行 API 的帐户 (服务主体) 必须向其授予 "AccessReview" 权限才能查询访问评审信息。
+请参阅 [图形 API 方法](/graph/api/resources/accessreviews-root?view=graph-rest-beta) 和 [角色和应用程序权限授权检查](/graph/api/resources/accessreviews-root?view=graph-rest-beta) 以与 reviewable 资源交互和管理这些资源。 Microsoft Graph API 中的访问评审方法可用于应用程序和用户上下文。 在应用程序上下文中运行脚本时，用于运行 API 的帐户 (服务主体) 必须向其授予 "AccessReview" 权限才能查询访问评审信息。
 
 常用访问审查任务，以使用图形 API 进行访问评审：
 
@@ -519,4 +519,3 @@ ms.locfileid: "88603978"
 
 * [什么是 Azure AD Privileged Identity Management？](../privileged-identity-management/pim-configure.md)
 
- 

@@ -3,12 +3,12 @@ title: 使用 Azure 备份服务器备份工作负荷
 description: 本文介绍了如何准备环境，以使用 Microsoft Azure 备份服务器 (MABS) 来保护和备份工作负荷。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 9ae8fd824144c70edeb1e084155e8cdff95cd8b9
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 802b7919abcd510db68396b2d9576f8cacc06a6e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612327"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756004"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>安装和升级 Azure 备份服务器
 
@@ -101,7 +101,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
    * 在资源列表中，键入“恢复服务”。
    * 开始键入时，会根据输入内容筛选该列表。 出现“**恢复服务保管库**”时，请选择它。
 
-     ![创建恢复服务保管库步骤 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
+     ![创建恢复服务保管库步骤1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
      此时显示恢复服务保管库列表。
    * 在恢复服务保管库列表中选择一个保管库。
@@ -135,7 +135,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
     ![快速启动向导更改](./media/backup-azure-microsoft-azure-backup/getting-started-prep-infra.png)
 
-6. 在打开的 " **准备基础结构** " 窗格中，选择 "安装 Azure 备份服务器 **下载** 链接" 和 "下载保管库凭据"。 在将 Azure 备份服务器注册到恢复服务保管库期间，请使用保管库凭据。 使用此链接转到“下载中心”，可从中下载软件包。
+6. 在打开的 " **准备基础结构** " 窗格中，选择 "安装 Azure 备份服务器 **下载** 链接" 和 "下载保管库凭据"。 在向恢复服务保管库注册 Azure 备份服务器期间使用保管库凭据。 使用此链接转到“下载中心”，可从中下载软件包。
 
     ![为 Azure 备份服务器准备基础结构](./media/backup-azure-microsoft-azure-backup/azure-backup-server-prep-infra.png)
 
@@ -143,7 +143,7 @@ Azure 备份服务器从 Data Protection Manager (DPM) 继承了大量工作负�
 
     ![下载中心 1](./media/backup-azure-microsoft-azure-backup/downloadcenter.png)
 
-    由于所有文件的下载大小合计超过了 3G，在 10-Mbps 下载链接上可能最多需要 60 分钟才能完成下载。
+    由于所有文件的下载大小均为 > 3 GB，因此，在 10 Mbps 下载链接上，下载完成最多可能需要60分钟。
 
 ### <a name="extracting-the-software-package"></a>解压缩软件包
 

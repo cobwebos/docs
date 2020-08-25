@@ -10,18 +10,18 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 42364e791711258e42883bdfcd658ba2c45ecd28
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 524e3682e39b6d9153beeef781deeb20e6ea8750
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723140"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749653"
 ---
 # <a name="azure-active-directory-domain-services-deployment-and-management-for-azure-cloud-solution-providers"></a>适用于 Azure 云解决方案提供商的 Azure Active Directory 域服务部署和管理
 
 Azure 云解决方案提供商 (CSP) 是 Microsoft 合作伙伴的计划，并为各种 Microsoft 云服务提供许可证通道。 通过 Azure CSP，合作伙伴可以管理销售、打理自己的账单关系、提供技术和计费支持以及成为客户的单一联系点。 此外，Azure CSP 还会提供一套完整的工具，包括自助服务门户和相应的 API。 这些工具使 CSP 合作伙伴可以轻松地预配和管理 Azure 资源，并提供针对客户及其订阅的计费。
 
-[合作伙伴中心门户](/azure/cloud-solution-provider/overview/partner-center-overview)是所有 Azure CSP 合作伙伴的入口点，它提供了丰富的客户管理功能、自动化处理和其他功能。 Azure CSP 合作伙伴可以通过多种方式使用合作伙伴中心功能，包括基于 Web 的 UI、PowerShell 及多种 API 调用。
+[合作伙伴中心门户](/partner-center/azure-plan-lp)是所有 Azure CSP 合作伙伴的入口点，它提供了丰富的客户管理功能、自动化处理和其他功能。 Azure CSP 合作伙伴可以通过多种方式使用合作伙伴中心功能，包括基于 Web 的 UI、PowerShell 及多种 API 调用。
 
 下图概括说明了 CSP 模型的工作原理。 此处，Contoso 有一个 Azure Active Directory (Azure AD) 租户。 他们与一个 CSP 之间有合作伙伴关系，该 CSP 在其 Azure CSP 订阅中部署和管理资源。 Contoso 还可能拥有常规（直接）Azure 订阅，由 Contoso 直接支付费用。
 
@@ -33,7 +33,7 @@ CSP 合作伙伴的租户有三个特殊的代理组 - 管理代理、支持人�
 
 当 CSP 合作伙伴为 Contoso 预配 Azure CSP 订阅时，其管理代理组会分配给该订阅的所有者角色。 因此，CSP 合作伙伴的管理代理具有代表 Contoso 预配虚拟机、虚拟网络和 Azure AD 域服务等 Azure 资源所需的权限。
 
-有关详细信息，请参阅 [Azure CSP overview](/azure/cloud-solution-provider/overview/azure-csp-overview)（Azure CSP 概述）
+有关详细信息，请参阅 [Azure CSP overview](/partner-center/azure-plan-lp)（Azure CSP 概述）
 
 ## <a name="benefits-of-using-azure-ad-ds-in-an-azure-csp-subscription"></a>使用 Azure CSP 订阅中的 Azure AD DS 的优势
 

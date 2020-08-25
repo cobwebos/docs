@@ -17,11 +17,27 @@
     - name: 检测运动，将视频录制到媒体服务
       href: detect-motion-record-video-clips-media-services-quickstart.md
     - name: 检测运动并发出事件
-      href: detect-motion-emit-events-quickstart.md
+      items:
+        - name: 使用直接方法调用
+          displayName: 'detect motion, emit events'
+          href: detect-motion-emit-events-quickstart.md
     - name: 检测运动，将视频录制到边缘设备
-      href: detect-motion-record-video-clips-edge-devices-quickstart.md
-    - name: 使用自己的模型运行实时视频分析
-      href: use-your-model-quickstart.md
+      items:
+        - name: 使用直接方法调用
+          displayName: 'detect motion, record video on edge devices'
+          href: detect-motion-record-video-clips-edge-devices-quickstart.md
+    - name: 使用自己的模型分析实时视频
+      items:
+        - name: 具有 HTTP 扩展
+          items:
+            - name: 使用直接方法调用
+              displayName: 'analyze, your own model, http'
+              href: use-your-model-quickstart.md
+        - name: 具有 gRPC 扩展
+          items:
+            - name: 使用直接方法调用
+              displayName: 'analyze, your own model, grpc'
+              href: analyze-live-video-use-your-grpc-model-quickstart.md
 - name: 教程
   items:
     - name: 连续视频录制
@@ -37,12 +53,16 @@
           href: use-intel-openvino-tutorial.md
 - name: 示例
   items:
-    - name: “ IoT Edge 上的实时视频分析”C# 示例
+    - name: C# 直接方法示例
       href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+    - name: Python 直接方法示例
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-python'
 - name: 概念
   items:
     - name: 媒体图
       href: media-graph-concept.md
+    - name: 媒体图扩展
+      href: media-graph-extension-concept.md
     - name: 视频录制
       href: video-recording-concept.md
     - name: 视频播放
@@ -67,14 +87,18 @@
       href: playback-recordings-how-to.md
     - name: 管理录制策略
       href: manage-recording-policy-how-to.md
-    - name: 使用你选择的 AI 分析实时视频
-      href: analyze-with-ai-your-choice-how-to.md
     - name: 通过门户调用直接方法
       href: use-azure-portal-to-invoke-direct-methods.md
     - name: 故障排除
       href: troubleshoot-how-to.md
 - name: 参考
   items:
+    - name: HTTP 数据协定
+      href: http-data-contract.md
+    - name: gRPC 数据协定
+      href: grpc-data-contract.md
+    - name: 推理元数据架构
+      href: inference-metadata-schema.md
     - name: 直接方法
       href: direct-methods.md
     - name: 模块孪生配置架构

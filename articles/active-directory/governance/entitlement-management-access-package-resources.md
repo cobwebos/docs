@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 006a79c91cd9bfb4c3bbf4a7e0ffb58314af49cc
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 56948b700f816c13d35915400658136ffcf48846
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798626"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783580"
 ---
 # <a name="change-resource-roles-for-an-access-package-in-azure-ad-entitlement-management"></a>在 Azure AD 权限管理中更改访问包的资源角色
 
@@ -39,9 +39,9 @@ ms.locfileid: "87798626"
 
 1. 在 Azure 门户中，依次单击“Azure Active Directory”、“标识监管”。  
 
-1. 在左侧菜单中，单击 "**目录**"，然后打开目录。
+1. 在左侧菜单中，单击 " **目录** "，然后打开目录。
 
-1. 在左侧菜单中，单击 "**资源**" 以查看此目录中的资源列表。
+1. 在左侧菜单中，单击 " **资源** " 以查看此目录中的资源列表。
 
     ![目录中的资源列表](./media/entitlement-management-access-package-resources/catalog-resources.png)
 
@@ -72,28 +72,28 @@ ms.locfileid: "87798626"
 - 如果组或团队是访问包的一部分，并且将用户分配到该访问包，则会将该用户添加到该组或团队（如果尚未存在）。
 - 当用户的访问包分配过期时，它们将从组或团队中删除，除非它们当前已分配给另一个访问包，其中包含相同的组或团队。
 
-你可以选择任何[Azure AD 安全组或 Office 365 组](../fundamentals/active-directory-groups-create-azure-portal.md)。 管理员可将任何组添加到目录；如果目录所有者是组的所有者，则他们可将任何组添加到该目录中。 选择组时，请记住以下 Azure AD 约束：
+你可以选择任何 [Azure AD 安全组或 Office 365 组](../fundamentals/active-directory-groups-create-azure-portal.md)。 管理员可将任何组添加到目录；如果目录所有者是组的所有者，则他们可将任何组添加到该目录中。 选择组时，请记住以下 Azure AD 约束：
 
 - 当用户（包括来宾）作为成员添加到组或团队时，他们可以查看该组或团队的所有其他成员。
 - Azure AD 无法更改使用 Azure AD Connect 从 Windows Server Active Directory 同步的组的成员身份，或在 Exchange Online 中作为通讯组创建的组的成员身份。  
 - 无法通过添加或删除成员来更新动态组的成员身份，因此，不适合在权利管理中使用动态组成员身份。
 
-有关详细信息，请参阅[比较组](https://docs.microsoft.com/office365/admin/create-groups/compare-groups)和[Office 365 组和 Microsoft 团队](https://docs.microsoft.com/microsoftteams/office-365-groups)。
+有关详细信息，请参阅 [比较组](/office365/admin/create-groups/compare-groups) 和 [Office 365 组和 Microsoft 团队](/microsoftteams/office-365-groups)。
 
-1. 在 "**将资源角色添加到访问包**" 页面上，单击 "**组和团队**" 以打开 "选择组" 窗格。
+1. 在 " **将资源角色添加到访问包** " 页面上，单击 " **组和团队** " 以打开 "选择组" 窗格。
 
 1. 选择要包括在访问包中的组和团队。
 
     ![访问包 - 添加资源角色 - 选择组](./media/entitlement-management-access-package-resources/group-select.png)
 
-1. 单击“选择”。
+1. 单击“选择”  。
 
-    选择组或团队后，"**子类型**" 列将列出以下子类型之一：
+    选择组或团队后，" **子类型** " 列将列出以下子类型之一：
 
-    | 子类型 | 描述 |
+    | 子类型 | 说明 |
     | --- | --- |
     | 安全性 | 用于授予对资源的访问权限。 |
-    | 分布 | 用于向一组人员发送通知。 |
+    | 分发 | 用于向一组人员发送通知。 |
     | O365 | 不是团队启用的 Office 365 组。 用于在公司内部和外部用户之间的协作。 |
     | 组 | 启用了团队的 Office 365 组。 用于在公司内部和外部用户之间的协作。 |
 
@@ -103,7 +103,7 @@ ms.locfileid: "87798626"
 
     ![访问包-添加组或团队的资源角色](./media/entitlement-management-access-package-resources/group-role.png)
 
-1. 单击 **添加**。
+1. 单击“添加”。
 
     添加了对访问包的现有分配的任何用户将自动成为该组或团队的成员。
 
@@ -111,7 +111,7 @@ ms.locfileid: "87798626"
 
 为用户分配访问包后，可让 Azure AD 自动为用户分配对 Azure AD 企业应用程序（包括 SaaS 应用程序，以及联合到 Azure AD 的组织应用程序）的访问权限。 对于通过联合单一登录与 Azure AD 相集成的应用程序，Azure AD 将为分配给该应用程序的用户颁发联合身份验证令牌。
 
-应用程序可以有多个角色。 将某个应用程序添加到访问包时，如果该应用程序有多个角色，则你需要为这些用户指定相应的角色。 如果要开发应用程序，可以在[如何：配置在用于企业应用程序的 SAML 令牌中颁发的角色声明](../develop/active-directory-enterprise-app-role-management.md)中了解有关如何将这些角色添加到应用程序的详细信息。
+应用程序可以有多个角色。 将某个应用程序添加到访问包时，如果该应用程序有多个角色，则你需要为这些用户指定相应的角色。 如果要开发应用程序，可以在 [如何：配置在用于企业应用程序的 SAML 令牌中颁发的角色声明](../develop/active-directory-enterprise-app-role-management.md)中了解有关如何将这些角色添加到应用程序的详细信息。
 
 一旦应用程序角色成为访问包的一部分：
 
@@ -128,13 +128,13 @@ ms.locfileid: "87798626"
 
     ![访问包 - 添加资源角色 - 选择应用程序](./media/entitlement-management-access-package-resources/application-select.png)
 
-1. 单击“选择”。
+1. 单击“选择”  。
 
 1. 在“角色”列表中，选择应用程序角色。****
 
     ![访问包 - 为应用程序添加资源角色](./media/entitlement-management-access-package-resources/application-role.png)
 
-1. 单击 **添加**。
+1. 单击“添加”。
 
     添加此应用程序时，在访问包中具有现有分配的任何用户将自动获得此应用程序的访问权限。
 
@@ -148,13 +148,13 @@ ms.locfileid: "87798626"
 
     ![访问包 - 添加资源角色 - 选择 SharePoint Online 站点](./media/entitlement-management-access-package-resources/sharepoint-site-select.png)
 
-1. 单击“选择”。
+1. 单击“选择”  。
 
 1. 在“角色”列表中，选择 SharePoint Online 站点角色。****
 
     ![访问包 - 为 SharePoint Online 站点添加资源角色](./media/entitlement-management-access-package-resources/sharepoint-site-role.png)
 
-1. 单击 **添加**。
+1. 单击“添加”。
 
     添加此 SharePoint Online 站点时，在访问包中具有现有分配的任何用户将自动获得此 SharePoint Online 站点的访问权限。
 
@@ -178,7 +178,7 @@ ms.locfileid: "87798626"
 
 在权利管理中，Azure AD 每天会多次处理访问包中的分配和资源的批量更改。 因此，如果你做了分配或更改了访问包的资源角色，可能需要在长达 24 小时之后，才会在 Azure AD 中做出该项更改，此外，还需要花费一段时间将这些更改传播到其他 Microsoft Online Services 或连接的 SaaS 应用程序。 如果所做的更改只影响几个对象，则更改可能在几分钟后即可在 Azure AD 中应用，之后，其他 Azure AD 组件会检测到该更改并更新 SaaS 应用程序。 如果所做的更改会影响数千个对象，则应用更改需要花费较长的时间。 例如，如果某个访问包具有 2 个应用程序分配和 100 个用户分配，而你决定将一个 SharePoint 站点角色添加到该访问包，则在将所有用户加入 SharePoint 站点角色之前可能会出现延迟。 可以通过 Azure AD 审核日志、Azure AD 预配日志和 SharePoint 站点审核日志来监视进度。
 
-删除团队成员时，也会将其从 Office 365 组中删除。 从团队的聊天功能中删除可能会延迟。 有关详细信息，请参阅[组成员身份](https://docs.microsoft.com/microsoftteams/office-365-groups#group-membership)。
+删除团队成员时，也会将其从 Office 365 组中删除。 从团队的聊天功能中删除可能会延迟。 有关详细信息，请参阅 [组成员身份](/microsoftteams/office-365-groups#group-membership)。
 
 ## <a name="next-steps"></a>后续步骤
 

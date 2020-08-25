@@ -32,6 +32,8 @@
           href: tutorial-micro-fulfillment-center.md
     - name: 视频分析 - 对象和运动检测
       items:
+        - name: 0 - 部署对象和运动检测应用程序
+          href: tutorial-video-analytics-deploy.md
         - name: 1 - 创建视频分析应用程序
           href: tutorial-video-analytics-create-app.md
         - name: 2 - 配置 IoT Edge 设备
@@ -64,8 +66,6 @@
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
 - name: 操作指南
   items:
-    - name: 部署对象和运动检测应用程序
-      href: howto-deploy-video-analytics-template.md
     - name: 连接设备
       items:
         - name: 准备和连接 Rigado Cascade 500

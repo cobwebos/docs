@@ -8,10 +8,10 @@ ms.date: 12/19/2019
 ms.author: stefsch
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 09c41c7480b262e6f1a912ad4b708e485d86bf56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85833496"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>应用服务环境的自定义配置设置
@@ -49,12 +49,12 @@ ms.locfileid: "85833496"
 ## <a name="use-azure-resource-explorer-to-update-an-app-service-environment"></a>使用 Azure 资源浏览器更新应用服务环境
 也可以使用 [Azure 资源浏览器](https://resources.azure.com)更新应用服务环境。  
 
-1. 在资源浏览器中，转到应用服务环境的节点（“订阅”   > “resourceGroups”   > “提供程序”   > “Micrososft.Web”   > “hostingEnvironments”  ）。 然后单击要更新的特定应用服务环境。
-2. 在右窗格中，单击上方工具栏中的“读/写”，允许在资源浏览器中进行交互式编辑。   
-3. 单击蓝色的“编辑”按钮，使 Resource Manager 模板可供编辑。 
+1. 在资源浏览器中，转到应用服务环境的节点（“订阅” > “resourceGroups” > “提供程序” > “Micrososft.Web” > “hostingEnvironments”）。 然后单击要更新的特定应用服务环境。
+2. 在右窗格中，单击上方工具栏中的“读/写”，允许在资源浏览器中进行交互式编辑。****  
+3. 单击蓝色的“编辑”按钮，使 Resource Manager 模板可供编辑。****
 4. 滚动到右窗格底部。 **clusterSettings** 属性位于最底部，可以在此输入或更新其值。
 5. 键入（或复制并粘贴）希望在 **clusterSettings** 属性中出现的配置值数组。  
-6. 单击右窗格顶部的绿色“PUT”按钮，以提交对应用服务环境的更改。 
+6. 单击右窗格顶部的绿色“PUT”按钮，以提交对应用服务环境的更改。****
 
 不过，提交更改后，约需 30 分钟乘以应用服务环境中前端数量的时间，更改才会生效。
 例如，如果应用服务环境有四个前端，大约需要两个小时才能完成配置更新。 实行配置更改时，就无法在应用服务环境中进行其他缩放操作或配置更改操作。

@@ -182,6 +182,8 @@
           href: geo-disaster-recovery.md
     - name: 安全性
       items:
+        - name: 安全基线
+          href: security-baseline.md
         - name: 对事件处理程序的事件传递进行身份验证
           href: security-authentication.md
         - name: 对发布客户端进行身份验证

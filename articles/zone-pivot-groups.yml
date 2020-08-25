@@ -488,22 +488,16 @@ groups:
     title: Java
   - id: programming-language-python
     title: Python
-- id: app-service-platform-windows-linux
-  title: 应用服务平台
-  prompt: 选择托管平台
+- id: programming-languages-spark-all-minus-sql
+  title: 编程语言
+  prompt: 选择语言
   pivots:
-  - id: platform-linux
-    title: Linux
-  - id: platform-windows
-    title: Windows
-- id: app-service-containers-windows-linux
-  title: 应用服务与自定义容器
-  prompt: 选择自定义容器平台
-  pivots:
-  - id: container-linux
-    title: Linux 容器
-  - id: container-windows
-    title: Windows 容器
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-scala
+    title: Scala
+  - id: programming-language-python
+    title: Python
 - id: aml-control-methods
   title: Azure 机器学习控制平面
   prompt: 选择 Azure 机器学习控制平面接口
@@ -540,10 +534,34 @@ groups:
     title: Java
   - id: programming-language-more
     title: 更多语言...
+- id: ams-lva-edge-programming-languages
+  title: IoT Edge 上的实时视频分析编程语言
+  prompt: 选择编程语言
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+- id: app-service-platform-windows-linux
+  title: 应用服务平台
+  prompt: 选择托管平台
+  pivots:
+  - id: platform-linux
+    title: Linux
+  - id: platform-windows
+    title: Windows
+- id: app-service-containers-windows-linux
+  title: 应用服务与自定义容器
+  prompt: 选择自定义容器平台
+  pivots:
+  - id: container-linux
+    title: Linux 容器
+  - id: container-windows
+    title: Windows 容器
 metadata:
-  ms.openlocfilehash: a51aa5fcc88269e718375ed08f0238867da7079b
-  ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+  ms.openlocfilehash: e9997400e1ed6708889f5f9f70078f5d3ec4c282
+  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88225625"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88691201"

@@ -4,10 +4,10 @@ description: 可通过这些示例体验在免费 Azure Notebooks 云服务中�
 ms.topic: sample
 ms.date: 01/11/2019
 ms.openlocfilehash: 397e40f628e6e935fef74d2225d2e477aac7b276
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "85833989"
 ---
 # <a name="discover-and-use-sample-notebooks-in-azure-notebooks-preview"></a>在 Azure Notebooks 预览版中发现并使用示例笔记本

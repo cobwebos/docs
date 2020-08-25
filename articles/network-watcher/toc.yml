@@ -61,6 +61,12 @@
           href: connection-monitor-preview-create-using-portal.md
         - name: 使用 ARMClient
           href: connection-monitor-preview-create-using-arm-client.md
+    - name: 迁移到连接监视器（预览）
+      items:
+        - name: 来自网络性能监视器
+          href: migrate-to-connection-monitor-preview-from-network-performance-monitor.md
+        - name: 来自连接监视器
+          href: migrate-to-connection-monitor-preview-from-connection-monitor.md
     - name: 诊断 VM 网络问题
       items:
         - name: 安装 VM 扩展

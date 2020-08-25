@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9d4f293f3835e26def97aa2f52dd0c42d9137c7
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: a98ff68500593c644e6f0fa5eacb338ab90f5604
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421716"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795384"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>在 Azure AD 中管理紧急访问帐户
 
@@ -44,7 +44,7 @@ ms.locfileid: "87421716"
 配置这些帐户时，必须满足以下要求：
 
 - 紧急访问帐户不应与组织中的任何单个用户相关联。 确保帐户未关联到任何员工提供的移动电话、会随单个员工流动的硬件令牌或其他特定于员工的凭据。 此预防措施介绍需要凭据而无法找到某个拥有凭据的员工时的情况。 请务必确保将任何已注册设备保存在与 Azure AD 有多种通信方式的已知安全位置。
-- 紧急访问帐户使用的身份验证机制应该不同于其他管理帐户（包括其他紧急访问帐户）使用的机制。  例如，如果管理员通过本地 MFA 正常登录，则 Azure MFA 是不同的机制。  但是，如果 Azure MFA 是管理帐户的主要身份验证部分，请考虑对这些帐户使用不同的方法，例如，通过[自定义控件](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)结合第三方 MFA 提供程序使用条件访问。
+- 紧急访问帐户使用的身份验证机制应该不同于其他管理帐户（包括其他紧急访问帐户）使用的机制。  例如，如果管理员通过本地 MFA 正常登录，则 Azure MFA 是不同的机制。  但是，如果 Azure MFA 是管理帐户的主要身份验证部分，请考虑对这些帐户使用不同的方法，例如，通过[自定义控件](../conditional-access/controls.md)结合第三方 MFA 提供程序使用条件访问。
 - 设备或凭据不得过期，或者由于使用次数不多而划归到自动清理的范围内。  
 - 应将全局管理员角色分配设为紧急访问帐户的永久角色。 
 
@@ -74,7 +74,7 @@ ms.locfileid: "87421716"
 
 ### <a name="prerequisites"></a>先决条件
 
-1. 向 Azure Monitor [发送 Azure AD 登录日志](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)。
+1. 向 Azure Monitor [发送 Azure AD 登录日志](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)。
 
 ### <a name="obtain-object-ids-of-the-break-glass-accounts"></a>获取破窗式帐户的对象 ID
 
@@ -156,5 +156,5 @@ ms.locfileid: "87421716"
 - [使用 Azure AD 添加用户](../fundamentals/add-users-azure-active-directory.md)并[将新用户分配到全局管理员角色](../fundamentals/active-directory-users-assign-role-azure-portal.md)
 - [注册 Azure AD Premium](../fundamentals/active-directory-get-started-premium.md)（如果尚未注册）
 - [如何要求用户进行双重验证](../authentication/howto-mfa-userstates.md)
-- 如果使用 Microsoft 365，则[在 Microsoft 365 中为全局管理员配置额外的保护](https://docs.microsoft.com/office365/enterprise/protect-your-global-administrator-accounts)
+- 如果使用 Microsoft 365，则[在 Microsoft 365 中为全局管理员配置额外的保护](/office365/enterprise/protect-your-global-administrator-accounts)
 - [启动全局管理员访问评审](../privileged-identity-management/pim-how-to-start-security-review.md)并[将现有全局管理员转换为更具体的管理员角色](directory-assign-admin-roles.md)
