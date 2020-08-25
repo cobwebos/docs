@@ -8,13 +8,13 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
-ms.date: 02/10/2020
-ms.openlocfilehash: 07c5e73ecd53bad0e5d5ec7959b288e0b6237a87
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.date: 08/17/2020
+ms.openlocfilehash: 04619df8009aca3fecf317481d030280d5532281
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86171918"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510906"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>快速入门：使用 REST API 在 Postman 中创建 Azure 认知搜索索引
 > [!div class="op_single_selector"]
@@ -25,9 +25,9 @@ ms.locfileid: "86171918"
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-若要探索 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice)，最轻松的方式之一是使用 Postman 或其他 Web 测试工具来构建 HTTP 请求并检查响应。 在编写任何代码之前，可以使用适当的工具按照这些说明发送请求和查看响应。
+本文介绍如何使用 [Azure 认知搜索 REST API](https://docs.microsoft.com/rest/api/searchservice) 和用于发送和接收请求的 API 客户端以交互方式构建 REST API 请求。 在编写任何代码之前，可以使用 API 客户端按照这些说明发送请求和查看响应。
 
-本文说明如何以交互方式表述请求。 或者，你可以[下载并导入 Postman 集合](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart)以使用预定义的请求。
+本文使用 Postman 应用程序。 如果偏爱使用预定义的请求，则可以[下载并导入 Postman 集合](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart)。 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -61,14 +61,14 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 请注意 HTTPS 前缀、服务的名称、对象（在本例中为索引集合）的名称和 [api-version](search-api-versions.md)。 api-version 是必需的小写字符串；对于当前版本，它指定为 `?api-version=2020-06-30`。 API 版本定期更新。 将 api-version 包括在每个请求中即可完全控制要使用的版本。  
 
-请求标头组合包括两个元素：内容类型，以及用于在 Azure 认知搜索中进行身份验证的 api-key。 将管理员 API 密钥 (YOUR-AZURE-SEARCH-ADMIN-API-KEY) 替换为一个有效值。 
+请求头组合包括两个元素：`Content-Type`，以及用于向 Azure 认知搜索进行身份验证的 `api-key`。 将管理员 API 密钥 (YOUR-AZURE-SEARCH-ADMIN-API-KEY) 替换为一个有效值。 
 
 ```http
 api-key: <YOUR-AZURE-SEARCH-ADMIN-API-KEY>
 Content-Type: application/json
 ```
 
-在 Postman 中，构建如以下屏幕截图所示的请求。 选择“GET”作为谓词，提供 URL，然后单击“发送”。   此命令连接到 Azure 认知搜索，读取索引集合，并在成功连接后返回 HTTP 状态代码 200。 如果服务已有索引，则响应还会包含索引定义。
+在 Postman 中，构建如以下屏幕截图所示的请求。 选择“GET”作为命令，提供 URL，然后单击“发送” 。 此命令连接到 Azure 认知搜索，读取索引集合，并在成功连接后返回 HTTP 状态代码 200。 如果服务已有索引，则响应还会包含索引定义。
 
 ![Postman 请求 URL 和标头](media/search-get-started-postman/postman-url.png "Postman 请求 URL 和标头")
 
@@ -80,7 +80,7 @@ Content-Type: application/json
 
 为此，请在 Postman 中：
 
-1. 将谓词更改为“PUT”。 
+1. 将命令更改为 PUT。
 
 2. 复制此 URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2020-06-30`。
 
@@ -92,7 +92,7 @@ Content-Type: application/json
 
 ### <a name="index-definition"></a>索引定义
 
-字段集合定义文档结构。 每个文档必须包含这些字段，每个字段必须具有一个数据类型。 字符串字段用于全文搜索，因此，如果要求数值数据可供搜索，则需将该内容强制转换为字符串。
+字段集合定义文档结构。 每个文档必须包含这些字段，每个字段必须具有一个数据类型。 字符串字段用于全文搜索。 如果你需要使数值数据可供搜索，则需要将数值数据强制转换为字符串。
 
 字段的属性决定了允许的操作。 默认情况下，REST API 允许很多操作。 例如，默认情况下，所有字符串均可供搜索、检索、筛选、分面。 通常，仅当需要禁用某种行为时，才要设置属性。
 
@@ -128,19 +128,19 @@ Content-Type: application/json
 
 ## <a name="2---load-documents"></a>2 - 加载文档
 
-创建索引和填充索引是分开的步骤。 在 Azure 认知搜索中，索引包含所有可搜索数据，这些数据可以作为 JSON 文档提供。 本任务将使用[添加、更新或删除文档 REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。 
+创建索引和填充索引是分开的步骤。 在 Azure 认知搜索中，索引包含所有可搜索的数据。 在此场景中，数据以 JSON 文档的形式提供。 本任务将使用[添加、更新或删除文档 REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents)。 
 
 需扩展 URL 以包含 `docs` 集合与 `index` 操作。
 
 为此，请在 Postman 中：
 
-1. 将谓词更改为  POST。
+1. 将命令更改为 POST。
 
 2. 复制此 URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2020-06-30`。
 
 3. 在请求的正文中提供 JSON 文档（复制就绪代码如下）。
 
-4. 单击“Send”  。
+4. 单击“Send”。
 
 ![请求正文中的 JSON 文档](media/search-get-started-postman/postman-docs.png "请求正文中的 JSON 文档")
 
@@ -236,30 +236,30 @@ Content-Type: application/json
 如果收到 207，则指示至少有一个文档无法上传。 如果收到 404，则表示请求的标头或正文有语法错误：请验证是否已更改终结点，使之包括 `/docs/index`。
 
 > [!Tip]
-> 对于所选数据源，可以选择备用的  indexer 方法，以便简化并减少进行索引操作所需的代码量。 有关详细信息，请参阅 [Indexer operations](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)（Indexer 操作）。
+> 对于所选数据源，可以选择备用的 ** indexer 方法，以便简化并减少进行索引操作所需的代码量。 有关详细信息，请参阅 [Indexer operations](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)（Indexer 操作）。
 
 
 ## <a name="3---search-an-index"></a>3 - 搜索索引
 
-现在，索引和文档已加载，可以使用[搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 针对它们发出查询了。
+现在，索引和文档集已加载，可以使用[搜索文档 REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) 针对它们发出查询了。
 
 需扩展 URL，以包含使用搜索运算符指定的查询表达式。
 
 为此，请在 Postman 中：
 
-1. 将谓词更改为 **GET**。
+1. 将命令更改为 GET。
 
 2. 复制此 URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2020-06-30`。
 
-3. 单击“Send”  。
+3. 单击“Send”。
 
-此查询为空，在搜索结果中返回文档的计数。 在单击“发送”后，请求和响应应类似于以下针对 Postman 的屏幕截图  。 状态代码应为 200。
+此查询为空，在搜索结果中返回文档的计数。 在单击“发送”后，请求和响应应类似于以下针对 Postman 的屏幕截图****。 状态代码应为 200。
 
  ![使用 URL 上的搜索字符串 GET](media/search-get-started-postman/postman-query.png "使用 URL 上的搜索字符串 GET")
 
 尝试其他查询示例来了解语法。 你可以执行字符串搜索、逐字筛选查询、限制结果集、将搜索范围限定为特定字段等。
 
-将当前 URL 替换为以下 URL，并每次单击“发送”以查看结果  。
+将当前 URL 替换为以下 URL，并每次单击“发送”以查看结果****。
 
 ```
 # Query example 1 - Search on restaurant and wifi
@@ -294,7 +294,7 @@ https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/
 
 在自己的订阅中操作时，最好在项目结束时确定是否仍需要已创建的资源。 持续运行资源可能会产生费用。 可以逐个删除资源，也可以删除资源组以删除整个资源集。
 
-可以使用左侧导航窗格中的“所有资源”或“资源组”链接   ，在门户中查找和管理资源。
+可以使用左侧导航窗格中的“所有资源”或“资源组”链接 ，在门户中查找和管理资源。
 
 如果使用的是免费服务，请记住只能设置三个索引、索引器和数据源。 可以在门户中删除单个项目，以不超出此限制。 
 

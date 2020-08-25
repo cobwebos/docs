@@ -4,21 +4,21 @@ description: Azure 存储在将数据保存到云之前会自动对其进行加�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 07/16/2020
+ms.date: 08/21/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 002eeaedf4ae479408cd1ba0c7a373d8a2661cdc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a5e7060b31a936bd54dc0a1f084f823beb076044
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089390"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756803"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>静态数据的 Azure 存储加密
 
-Azure 存储在将数据保存到云时会自动加密数据。 Azure 存储加密可以保护数据，并帮助组织履行在安全性与合规性方面做出的承诺。
+将数据保存到云时，Azure 存储会自动加密数据。 Azure 存储加密可以保护数据，并帮助组织履行在安全性与合规性方面做出的承诺。
 
 ## <a name="about-azure-storage-encryption"></a>关于 Azure 存储加密
 
@@ -32,14 +32,14 @@ Azure 存储中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.o
 
 有关 Azure 存储加密的底层加密模块的详细信息，请参见[加密 API：下一代](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)。
 
-有关 Azure 托管磁盘的加密和密钥管理的信息，请参阅适用于 Windows Vm[的 azure 托管磁盘的服务器端加密](../../virtual-machines/windows/disk-encryption.md)或适用于 Linux Vm 的[azure 托管磁盘的服务器端加密](../../virtual-machines/linux/disk-encryption.md)。
+有关 Azure 托管磁盘的加密和密钥管理的信息，请参阅适用于 Windows VM 的 [Azure 托管磁盘的服务器端加密](../../virtual-machines/windows/disk-encryption.md)或适用于 Linux VM 的 [Azure 托管磁盘的服务器端加密](../../virtual-machines/linux/disk-encryption.md)。
 
 ## <a name="about-encryption-key-management"></a>关于加密密钥管理
 
 新存储帐户中的数据使用 Microsoft 托管密钥加密。 可以依赖于使用 Microsoft 托管的密钥来加密数据，也可以使用你自己的密钥来管理加密。 如果你选择使用自己的密钥来管理加密，则可以采用两种做法：
 
 - 你可以为 Azure Key Vault 指定“客户管理的密钥”，以用于加密和解密 Blob 存储和 Azure 文件中的数据。<sup>1,2</sup> 有关客户管理的密钥的详细信息，请参阅[将客户管理的密钥与 Azure Key Vault 配合使用来管理 Azure 存储加密](encryption-customer-managed-keys.md)。
-- 可以在 Blob 存储操作中指定客户提供的密钥。 对 Blob 存储发出读取或写入请求的客户端可以在请求中包含加密密钥，以便精细控制 Blob 数据的加密和解密方式。 有关客户提供的密钥的详细信息，请参阅[在对 Blob 存储的请求中提供加密密钥](encryption-customer-provided-keys.md)。
+- 可以在 Blob 存储操作中指定客户提供的密钥。 对 Blob 存储发出读取或写入请求的客户端可以在请求中包含加密密钥，以便精细控制 Blob 数据的加密和解密方式。 有关客户提供的密钥的详细信息，请参阅 [在对 Blob 存储的请求中提供加密密钥](encryption-customer-provided-keys.md)。
 
 下表比较了 Azure 存储加密的密钥管理选项。
 
@@ -51,10 +51,10 @@ Azure 存储中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.o
 | 密钥轮换责任 | Microsoft | 客户 | 客户 |
 | 密钥控制 | Microsoft | 客户 | 客户 |
 
-<sup>1</sup>有关创建支持对队列存储使用客户托管密钥的帐户的信息，请参阅[创建支持队列的客户托管密钥的帐户](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。<br />
-<sup>2</sup>有关创建支持使用客户管理的密钥和表存储的帐户的信息，请参阅[创建支持表的客户托管密钥的帐户](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
+<sup>1</sup> 有关创建支持对队列存储使用客户托管密钥的帐户的信息，请参阅 [创建支持队列的客户托管密钥的帐户](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)。<br />
+<sup>2</sup> 有关创建支持使用客户管理的密钥和表存储的帐户的信息，请参阅 [创建支持表的客户托管密钥的帐户](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)。
 
-## <a name="encryption-scopes-for-blob-storage-preview"></a>Blob 存储的加密作用域（预览）
+## <a name="encryption-scopes-for-blob-storage-preview"></a>Blob 存储 (预览的加密范围) 
 
 默认情况下，存储帐户使用作用域为存储帐户的密钥进行加密。 你可以选择使用 Microsoft 管理的密钥或存储在 Azure Key Vault 中的客户托管密钥来保护和控制对加密数据的密钥的访问权限。
 
@@ -62,10 +62,10 @@ Azure 存储中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.o
 
 可以使用 Azure 存储资源提供程序为存储帐户创建一个或多个加密作用域。 当你创建加密作用域时，你可以指定是使用 Microsoft 托管密钥还是使用存储在 Azure Key Vault 中的客户托管密钥来保护作用域。 同一存储帐户上的不同加密范围可以使用 Microsoft 管理的密钥或客户管理的密钥。
 
-创建加密作用域后，可以在请求上指定加密作用域，以创建容器或 blob。 有关如何创建加密范围的详细信息，请参阅[创建和管理加密范围（预览）](../blobs/encryption-scope-manage.md)。
+创建加密作用域后，可以在请求上指定加密作用域，以创建容器或 blob。 有关如何创建加密范围的详细信息，请参阅 [创建和管理加密范围 (预览) ](../blobs/encryption-scope-manage.md)。
 
 > [!NOTE]
-> 预览期间，读取访问异地冗余存储（GRS）帐户不支持加密作用域。
+> 在预览期间 (GRS) 帐户的读取访问异地冗余存储不支持加密作用域。
 
 > [!IMPORTANT]
 > 加密范围预览版仅适用于非生产使用。 生产服务级别协议 (SLA) 当前不可用。
@@ -82,7 +82,7 @@ Azure 存储中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.o
 
 ### <a name="disable-an-encryption-scope"></a>禁用加密范围
 
-禁用加密作用域时，将会失败，并出现 HTTP 错误代码403（禁止访问），并会导致任何后续的读取或写入操作失败。 如果重新启用加密范围，读取和写入操作将再次正常继续。
+禁用加密作用域时，将会失败，并出现 HTTP 错误代码 403 (禁止) ，从而导致对加密作用域执行的任何后续读取或写入操作失败。 如果重新启用加密范围，读取和写入操作将再次正常继续。
 
 禁用加密作用域后，你将不再向其收费。 禁用不需要的任何加密范围以避免不必要的费用。
 

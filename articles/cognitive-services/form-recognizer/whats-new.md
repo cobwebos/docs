@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 3a48511c896a3e4c677c35ca3069ff236761c444
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: b3485ebbdf9cf428b09364b73197220e02e9ffa8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88724126"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751074"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表单识别器的新增功能
 
@@ -30,7 +30,7 @@ ms.locfileid: "88724126"
 - **REST API 引用可用** -请参阅 ws [2.1-preview. 1 引用](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) 
 - **除了英语以外**，还支持以下语言：对于 `Layout` 和 `Train Custom Model` ：英语 (EN) ，中文 (简化的)  (zh-chs-zh-chs) 、荷兰语 (NL) 、法语 (FR) 、德语 (DE) 、意大利语 ()  ()  () 。
 - **复选框/选择标记检测** -窗体识别器支持检测和提取选中标记（如复选框和单选按钮）。 选择标记是在中提取的 `Layout` ，你现在还可以在 "带标签的定型" 中标记和定型， `Train Custom Model`  -  _Train with Labels_以便提取选择标记的键值对。 
-- **模型撰写** 允许使用单个模型 Id 编写和调用多个模型。提交要使用组合模型 Id 分析的文档时，首先会执行分类步骤以将其路由到正确的自定义模型。 模型撰写可用于对 `Train Custom Model`  -  _标签进行定型_。
+- **模型撰写** 允许使用单个模型 ID 编写和调用多个模型。 提交要使用组合模型 ID 分析的文档时，首先会执行分类步骤以将其路由到正确的自定义模型。 模型撰写可用于对 `Train Custom Model`  -  _标签进行定型_。
 - **模型名称** 将友好名称添加到自定义模型，以便更轻松地进行管理和跟踪。
 - **新的智能卡预建模型** ，用于提取英语、语言名片中的公共字段。
 - 除 EN-US 外，**预建收据的新区域设置**现可用于 EN-US、en CA、EN-GB、en
@@ -50,8 +50,10 @@ GitHub 上提供了**新的示例**。
 ## <a name="july-2020"></a>2020 年 7 月
 
 ### <a name="new-features"></a>新增功能
+
 * **2.0 版本参考** 查看 v2.0 [API 参考](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeWithCustomForm) 和更新的适用于 [.net](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre?view=azure-dotnet)、 [Python](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)、 [Java](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)和 [JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)的 sdk。
 * **表增强和提取增强** 功能包括准确性改进和表提取增强功能，尤其是在 _不带标签的自定义训练_中了解表标头和结构的功能。 
+
 * **货币支持** 全局货币符号的检测和提取。
 * **Azure Gov** 表单识别器现已在 Azure Gov 中提供。
 * **增强的安全功能**： 
@@ -76,8 +78,8 @@ GitHub 上提供了**新的示例**。
 * **SDK 支持表单识别器 API V2.0 公共预览版** 本月，我们已将服务支持扩展为包含用于窗体识别器 v2.0 (预览) 版本的预览版 SDK。 使用以下链接开始使用你选择的语言： 
    * [.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/ai.formrecognizer-readme-pre?view=azure-dotnet)
    * [Java SDK](https://docs.microsoft.com/java/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-java-preview)
-   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/?view=azure-python)
-   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/?view=azure-node-latest)
+   * [Python SDK](https://docs.microsoft.com/python/api/overview/azure/ai-formrecognizer-readme-pre?view=azure-python-preview)
+   * [JavaScript SDK](https://docs.microsoft.com/javascript/api/overview/azure/ai-form-recognizer-readme-pre?view=azure-node-preview)
 
   新的 SDK 支持用于窗体识别器的 v2.0 REST API 的所有功能。 例如，你可以使用或不带标签来训练模型，并从窗体提取文本、键值对和表、从收据中提取数据以及预先生成的回执服务，并从文档中提取带有布局服务的文本和表。 可以通过 [Sdk 反馈窗体](https://aka.ms/FR_SDK_v1_feedback)在 sdk 上共享你的反馈。
  

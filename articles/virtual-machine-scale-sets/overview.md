@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 7539b951a4a138802150d9408221b6e4ad19e92b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0fcad26bb78e0e9a03d51818ac66a98af1ef0b18
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075534"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590381"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>什么是虚拟机规模集？
 使用 Azure 虚拟机规模集可以创建并管理一组负载均衡的 VM。 可以根据需求或定义的计划自动增减 VM 实例的数目。 规模集为应用程序提供高可用性，用于集中管理、配置和更新大量 VM。 可以使用虚拟机规模集为计算、大数据和容器工作负荷等领域构建大规模的服务。
@@ -60,6 +60,10 @@ Azure 虚拟机规模集为跨多个 VM 运行的应用程序提供管理功能�
 使用[用于 VM 的 Azure Monitor](../azure-monitor/insights/vminsights-overview.md)，它具有简单的载入过程，并将自动从规模集中的 VM 收集重要的 CPU、内存、磁盘和网络性能计数器。 它还包括额外的监视功能和预定义的可视化效果，这些可视化效果可以帮助你专注于规模集的可用性和性能。
 
 使用 Application Insights 启用对[虚拟机规模集应用程序](../azure-monitor/app/azure-vm-vmss-apps.md)的监视，以收集有关应用程序的详细信息，包括页面视图、应用程序请求和异常。 通过配置[可用性测试](../azure-monitor/app/monitor-web-app-availability.md)来模拟用户流量，进一步验证应用程序的可用性。
+
+## <a name="singapore-data-residency"></a>新加坡数据驻留
+
+在 Azure 中，将客户数据存储到一个区域的功能目前仅适用于亚太地域的东南亚区域（新加坡）。 对于其他所有区域，客户数据存储在以下地域。 有关详细信息，请参阅[信任中心](https://azuredatacentermap.azurewebsites.net/)。
 
 ## <a name="next-steps"></a>后续步骤
 若要开始，请在 Azure 门户中创建第一个虚拟机规模集。

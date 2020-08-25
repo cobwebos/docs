@@ -4,15 +4,15 @@ description: 教程 - 了解如何使用 Azure Batch 通过 Azure 数据工厂�
 author: mammask
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 07/29/2020
+ms.date: 08/12/2020
 ms.author: komammas
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 9b58aa06b67f01cf9ce0b30cef0326185124306c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f4c71cffe00faa6dd8cc440c59f94b8c2d60f712
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853307"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185105"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>教程：使用 Azure Batch 通过 Azure 数据工厂运行 Python 脚本
 
@@ -67,8 +67,7 @@ ms.locfileid: "87853307"
 1. 使用 Azure 凭据登录到存储资源管理器。
 1. 使用链接到批处理帐户的存储帐户，按照[创建 Blob 容器](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container)的步骤创建两个 Blob 容器（一个用于输入文件，一个用于输出文件）。
     * 在本例中，我们将调用输入容器 `input` 和输出容器 `output`。
-1. 遵循[管理 Blob 容器中的 Blob](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) 中的步骤，使用存储资源管理器将 `main.py` 和 [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) 上传到输入容器 `input`
-
+1. 遵循[管理 Blob 容器中的 Blob](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container) 中的步骤，使用存储资源管理器将 [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) 上传到输入容器 `input`
 
 ## <a name="develop-a-script-in-python"></a>在 Python 中开发脚本
 

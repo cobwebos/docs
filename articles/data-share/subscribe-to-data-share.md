@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
-ms.date: 07/30/2020
-ms.openlocfilehash: 999d99b0ed4701eb6758ed0bf7a71ca625e622b5
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 08/14/2020
+ms.openlocfilehash: 409f143ce67e301e3b2a973d8d2db80380fbd50e
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512085"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258649"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>教程：使用 Azure Data Share 接受和接收数据  
 
@@ -93,47 +93,44 @@ ms.locfileid: "87512085"
 
    对于“已接收共享的名称”字段，可以保留数据提供者指定的默认值，也可以为已接收共享指定新名称  。 
 
-   ![目标数据共享帐户](./media/target-data-share.png "目标数据共享帐户") 
-
-1. 同意使用条款并指定共享位置以后，请选择“接受并配置”  。 将创建共享订阅。
-
-   对于基于快照的共享，下一个屏幕会要求你选择要将数据复制到的目标存储帐户。 
+   同意使用条款并指定用于管理已接收共享的数据共享帐户以后，请选择“接受并配置”。 将创建共享订阅。 
 
    ![接受选项](./media/accept-options.png "接受选项") 
 
-   如果你希望现在就接受邀请但在以后再配置目标数据存储，请选择“接受并稍后配置”  。 若要在以后继续配置存储，请参阅[配置数据集映射](how-to-configure-mapping.md)页，其中的详细步骤说明了如何继续进行数据共享配置。 
+   这会转到数据共享帐户中的已接收共享。 
 
-   对于就地共享，请参阅[配置数据集映射](how-to-configure-mapping.md)页，其中的详细步骤说明了如何继续进行数据共享配置。 
+   如果不想接受邀请，请选择“拒绝”。** 
 
-   如果不想接受邀请，请选择“拒绝”。  
+## <a name="configure-received-share"></a>配置已接收共享
+按照以下步骤配置要接收数据的位置。
 
-## <a name="configure-storage"></a>配置存储
-1. 在“目标存储设置”下，  选择“订阅”、“资源组”以及用于接收数据的存储帐户。 
+1. 选择“数据集”选项卡。选中要为其分配目标位置的数据集旁边的复选框。 选择“+ 映射到目标”以选择目标数据存储。 
 
-   ![目标存储设置](./media/target-storage-settings.png "目标存储") 
+   ![映射到目标](./media/dataset-map-target.png "映射到目标") 
 
-1. 若要接收定期更新的数据，请确保启用快照设置。 请注意，如果数据提供者已在数据共享中包括了快照设置计划，你只会看到一个这样的计划。 
+1. 选择以哪种目标数据存储类型保存数据。 目标数据存储中具有相同路径和名称的任何数据文件或表将被覆盖。 
 
-   ![快照设置](./media/snapshot-settings.png "快照设置") 
+   对于就地共享，请选择指定“位置”中的数据存储。 “位置”是数据提供程序的源数据存储所在的 Azure 数据中心。 映射数据集之后，可以通过目标路径中的链接来访问数据。
 
-1. 选择“保存”。  
+   ![目标存储帐户](./media/dataset-map-target-sql.png "目标存储") 
 
-> [!IMPORTANT]
-> 如果你正在接收基于 SQL 的数据，并想要将该数据接收到基于 SQL 的源中，请访问[配置数据集映射](how-to-configure-mapping.md)操作指南，以了解如何将 SQL Server 配置为数据集的目标。 
+1. 对于基于快照的共享，如果数据提供程序已创建定期更新数据的快照计划，你还可以通过选择“快照计划”选项卡来启用快照计划。选中快照计划旁边的框，然后选择“+ 启用”。
+
+   ![启用快照计划](./media/enable-snapshot-schedule.png "启用快照计划")
 
 ## <a name="trigger-a-snapshot"></a>触发快照
 这些步骤仅适用于基于快照的共享。
 
-1. 可以在“已接收共享”->“详细信息”选项卡中触发快照，只需选择“触发快照”即可。  在这里，可以触发数据的完整或增量快照。 如果是首次从数据提供者处接收数据，请选择完整副本。 
+1. 可以通过依次选择“详细信息”选项卡、“触发快照”来触发快照 。 在这里，可以触发数据的完整或增量快照。 如果是首次从数据提供者处接收数据，请选择完整副本。 
 
    ![触发快照](./media/trigger-snapshot.png "触发快照") 
 
-1. 如果上次运行状态为“成功”，请转到目标数据存储来查看接收的数据。  选择“数据集”，然后单击“目标路径”中的链接。  
+1. 如果上次运行状态为“成功”，请转到目标数据存储来查看接收的数据。** 选择“数据集”，然后单击“目标路径”中的链接。**** 
 
    ![使用者数据集](./media/consumer-datasets.png "使用者数据集映射") 
 
 ## <a name="view-history"></a>查看历史记录
-若要查看快照历史记录，请导航到“已接收共享”->“历史记录”。 在这里可以找到一个历史记录，其中包含过去 60 天生成的的所有快照。 
+此步骤仅适用于基于快照的共享。 若要查看快照历史记录，请选择“历史记录”选项卡。在这里可以找到包含过去 30 天生成的所有快照的历史记录。 
 
 ## <a name="next-steps"></a>后续步骤
 本教程介绍了如何接受和接收 Azure Data Share。 若要详细了解 Azure Data Share 概念，请继续阅读[概念：Azure Data Share 术语](terminology.md)。

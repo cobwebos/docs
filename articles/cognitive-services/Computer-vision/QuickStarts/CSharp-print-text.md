@@ -1,29 +1,29 @@
 ---
-title: 快速入门：提取印刷体文本 (OCR) - REST、C#
+title: 快速入门：使用计算机视觉 2.0 REST API OCR 操作和 C# 提取文本
 titleSuffix: Azure Cognitive Services
-description: 在本快速入门中，你将使用计算机视觉 API 和 C# 从图像中提取印刷体文本。
+description: 在本快速入门中，你将使用计算机视觉 REST API OCR 操作和 C# 从图像中提取文本。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4ce9e530f536893fe3d9753e43928cf53f9dde53
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4306b82793dd62765c07dfa808add4e16dc06be5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835385"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209186"
 ---
-# <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-c"></a>快速入门：使用计算机视觉 REST API 和 C# 提取印刷体文本 (OCR)
+# <a name="quickstart-extract-text-using-the-computer-vision-20-rest-api-ocr-operation-and-c"></a>快速入门：使用计算机视觉 2.0 REST API OCR 操作和 C# 提取文本
 
-> [!NOTE]
-> 如果要提取英语文本，请考虑使用新的[读取操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)。 [C# 快速入门](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text)可用。 
+> [!IMPORTANT]
+> 如果要提取英语、荷兰语、法语、德语、意大利语、葡萄牙语、西班牙语或简体中文（预览版）文本，建议使用较新的 [Read 操作](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text)。 [C# 快速入门](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text)可用。 
 
-本快速入门将使用计算机视觉 REST API 通过光学字符识别 (OCR) 从图像中提取印刷体文本。 借助 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) 功能，可检测图像中的印刷体文本，并将识别的字符提取到计算机可用的字符流中。
+本快速入门将使用计算机视觉 REST API [OCR 操作](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)功能从图像中提取印刷体文本。 借助此操作，可检测图像中的印刷体文本，并将识别的字符提取到计算机可用的字符流中。
 
 ## <a name="prerequisites"></a>先决条件
 

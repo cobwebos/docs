@@ -1,21 +1,21 @@
 ---
-title: 教程 - 创建并运行 Jupyter 笔记本 - Azure Notebooks 预览版
+title: 教程 - 创建并运行 Jupyter Notebook - Azure Notebooks 预览版
 description: 了解如何在 Azure Notebooks 预览版中创建并运行一个用于演示数据科学线性回归过程的 Jupyter Notebook。
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: f6480a93610761061462be8e83ce3e719f3e8bdf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: cb8be1618de7e95a7096e4ea9dec78bf4aa277f6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87846906"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589245"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>教程：使用 Python 创建并运行 Jupyter Notebook
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-本教程引导你完成使用 Azure Notebooks 创建一个用于演示简单线性回归的完整 Jupyter Notebook 的过程。 在学习本教程的过程中，你将熟悉 Jupyter Notebook UI，包括创建不同的单元、运行单元，以及以幻灯片的形式演示 Notebook。
+本教程介绍如何使用 Azure Notebooks 创建一个用于演示简单线性回归的完整 Jupyter Notebook。 在学习本教程的过程中，你将熟悉 Jupyter Notebook UI，包括创建不同的单元、运行单元，以及以幻灯片的形式演示 Notebook。
 
 可以在 [GitHub - Azure Notebooks 示例](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps)中找到已完成的 Notebook。 但是，本教程将从一个新的项目和一个空的 Notebook 开始，让你体验如何逐步创建 Notebook。
 
@@ -417,9 +417,9 @@ Jupyter 提供主要 UI 元素的内置导航功能。 选择“帮助” > “�
 
 幸运的是，可以下载笔记本的 .ipynb 文件，然后使用 Python 扩展在 Visual Studio Code 中打开它  。 该扩展直接将笔记本作为单个代码文件导入，在注释中保留 Markdown 单元。 导入笔记本后，可以使用 Visual Studio Code 调试程序来逐步运行代码、设置断点、检查状态，等等。 在对代码进行更正后，从 Visual Studio Code 导出 .ipynb 文件并将其上传回 Azure Notebooks  。
 
-有关详细信息，请参阅 Visual Studio Code 文档中的[调试 Jupyter 笔记本](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook)。
+有关详细信息，请参阅 Visual Studio Code 文档中的[调试 Jupyter Notebook](https://code.visualstudio.com/docs/python/jupyter-support#debug-a-jupyter-notebook)。
 
-另请参阅 [Visual Studio Code - Jupyter 支持](https://code.visualstudio.com/docs/python/jupyter-support)，了解适用于 Jupyter 笔记本的 Visual Studio Code 的其他功能。
+另请参阅 [Visual Studio Code - Jupyter 支持](https://code.visualstudio.com/docs/python/jupyter-support)，了解适用于 Jupyter Notebook 的 Visual Studio Code 的其他功能。
 
 ## <a name="next-steps"></a>后续步骤
 

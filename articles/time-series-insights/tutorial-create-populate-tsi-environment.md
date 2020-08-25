@@ -7,14 +7,14 @@ ms.author: dpalled
 manager: diviso
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/30/2020
+ms.date: 08/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9f74be239bee1d6da3dfdb516c4fc410669e338d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 36687f6394ef03a3fceb70c73601680dd262d90c
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020645"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245394"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>教程：创建 Azure 时序见解 Gen1 环境
 
@@ -37,13 +37,13 @@ ms.locfileid: "87020645"
 
 ## <a name="review-video"></a>查看视频
 
-### <a name="learn-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-and-get-started-with-azure-time-series-insights-br"></a>了解如何使用 Azure IoT 解决方案加速器生成数据和开始使用 Azure 时序见解。 </br>
+了解如何使用 Azure IoT 解决方案加速器生成数据和开始使用 Azure 时序见解。
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
 
 ## <a name="overview"></a>概述
 
-Azure 时序见解环境是收集和存储设备数据的地方。 在数据存储后，[Azure 时序见解资源管理器](time-series-quickstart.md)和 [Azure 时序见解查询 API](/rest/api/time-series-insights/ga-query-api) 可用来查询和分析数据。
+Azure 时序见解环境是收集和存储设备数据的地方。 在数据存储后，[Azure 时序见解资源管理器](time-series-quickstart.md)和 [Azure 时序见解查询 API](/rest/api/time-series-insights/gen1-query-api) 可用来查询和分析数据。
 
 Azure IoT 中心是本教程中的所有设备（模拟设备或物理设备）用来安全地连接到 Azure 云并向其传输数据的事件源。
 
@@ -98,7 +98,7 @@ Azure IoT 中心是本教程中的所有设备（模拟设备或物理设备）�
 
    参数|说明
    ---|---
-   **环境名称** | 为 Azure 时序见解环境选择唯一名称。 该名称由 Azure 时序见解资源管理器和[查询 API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) 使用。
+   **环境名称** | 为 Azure 时序见解环境选择唯一名称。 该名称由 Azure 时序见解资源管理器和[查询 API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query) 使用。
    **订阅** | 订阅是 Azure 资源的容器。 选择一个订阅，以便创建 Azure 时序见解环境。
    **资源组** | 资源组是 Azure 资源的容器。 为 Azure 时序见解环境资源选择现有的资源组或创建新的资源组。
    **位置** | 为 Azure 时序见解环境选择数据中心区域。 为了避免额外的延迟，请在与其他 IoT 资源相同的区域中创建 Azure 时序见解环境。

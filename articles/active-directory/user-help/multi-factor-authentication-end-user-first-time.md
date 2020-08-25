@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: fc95e988b3f89402967cdbedd06c4b945a99f99a
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
-ms.translationtype: HT
+ms.openlocfilehash: e5b07f8f7ae766d110c87a495a3e1623b815e526
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266247"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795977"
 ---
 # <a name="what-is-the-additional-verification-page"></a>什么是“附加验证”页？
 
@@ -33,7 +33,7 @@ ms.locfileid: "84266247"
 双重验证可帮助阻止恶意黑客冒充你。 即使他们有你的密码，他们也不太可能有你的设备。
 
 >[!Important]
->如果你是管理员，正在查找有关如何为你的员工或其他用户启用双因素验证的信息，请参阅 [Azure Active Directory 身份验证文档](https://docs.microsoft.com/azure/active-directory/authentication/)。 本文适用于尝试通过工作或学校帐户（如 alain@contoso.com）使用双重验证的用户。
+>如果你是管理员，正在查找有关如何为你的员工或其他用户启用双因素验证的信息，请参阅 [Azure Active Directory 身份验证文档](../authentication/index.yml)。 本文适用于尝试通过工作或学校帐户（如 alain@contoso.com）使用双重验证的用户。
 
 ## <a name="who-decides-if-you-use-this-feature"></a>谁决定是否要使用此功能？
 

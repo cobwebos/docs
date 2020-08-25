@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79552c099adfa94f3515ff1b9c78103cb82830a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f0d7703af48ba33edea81ca45516191266a79fa4
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85611282"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799547"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>识别和解决 Azure Active Directory 中组的许可证分配问题
 
@@ -107,7 +107,7 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 > ```
 > Get-Recipient -ResultSize unlimited | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
 > ```
-> 有关此问题的详细信息，请参阅 [Exchange Online 中的“代理地址已被使用”错误消息](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)。 此文还包含有关[如何使用远程 PowerShell 连接到 Exchange Online](https://technet.microsoft.com/library/jj984289.aspx) 的信息。
+> 有关此问题的详细信息，请参阅 [Exchange Online 中的“代理地址已被使用”错误消息](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)。 此文还包含有关[如何使用远程 PowerShell 连接到 Exchange Online](/powershell/exchange/connect-to-exchange-online-powershell?view=exchange-ps) 的信息。
 
 为受影响的用户解决代理地址问题之后，请确保强制对组进行许可证处理，确保现在可以应用许可证。
 
@@ -120,7 +120,7 @@ Azure Active Directory (Azure AD) 中基于组的许可引入了处于许可错�
 ## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>审核日志中的 LicenseAssignmentAttributeConcurrencyException
 
 **问题：** 用户在审核日志中有针对许可证分配的 LicenseAssignmentAttributeConcurrencyException。
-当基于组的许可尝试处理对某个用户进行的相同许可证的并发许可证分配时，将在该用户上记录此异常。 当用户是分配有相同许可证的多个组的成员时，通常会发生这种情况。 Azure AD 将重试处理用户许可证，并解决此问题。 客户无需执行任何操作即可解决此问题。
+当基于组的许可尝试处理对某个用户进行的相同许可证的并发许可证分配时，将在该用户上记录此异常。 当用户是分配有相同许可证的多个组的成员时，通常会发生这种情况。 Azure AD 将重新尝试处理用户许可证，并解决此问题。 客户无需执行任何操作即可解决此问题。
 
 ## <a name="more-than-one-product-license-assigned-to-a-group"></a>分配给一个组的多个产品许可证
 

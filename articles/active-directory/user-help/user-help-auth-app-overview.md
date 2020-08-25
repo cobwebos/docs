@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
-ms.openlocfilehash: 60c2b3ed1f367dc5c501a51ed52440f7d9d3ed6b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: 7d630fac1f848e691ddb96dc47596a2e9927309f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83741184"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799428"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>什么是 Microsoft Authenticator 应用？
 
@@ -33,7 +33,7 @@ Microsoft Authenticator 应用可帮助你在使用双重验证的情况下登�
 > [!Important]
 > Microsoft Authenticator 应用可与使用双因素验证并支持基于时间的一次性密码 (TOTP) 标准的任何帐户配合使用。
 >
->本文适用于尝试下载并使用 Microsoft Authenticator 应用作为安全验证方法的用户。 如果你是管理员，正在查找有关如何使用 Authenticator 应用为你的员工和其他用户启用无密码登录的信息，请参阅[使用 Microsoft Authenticator 应用启用无密码登录(预览版)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-phone)。
+>本文适用于尝试下载并使用 Microsoft Authenticator 应用作为安全验证方法的用户。 如果你是管理员，正在查找有关如何使用 Authenticator 应用为你的员工和其他用户启用无密码登录的信息，请参阅[使用 Microsoft Authenticator 应用启用无密码登录(预览版)](../authentication/howto-authentication-passwordless-phone.md)。
 
 ## <a name="terminology"></a>术语
 

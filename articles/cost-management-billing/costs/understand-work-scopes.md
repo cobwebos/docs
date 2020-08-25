@@ -3,17 +3,17 @@ title: 了解和使用 Azure 成本管理范围
 description: 本文帮助你了解 Azure 中提供的计费和资源管理范围，以及如何在成本管理和 API 中使用范围。
 author: bandersmsft
 ms.author: banders
-ms.date: 04/06/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: ecc442049ba63b64f951335940c312dc71985453
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 31ec2e75f9bc1bd02d097af9076c9356598a9499
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501519"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167566"
 ---
 # <a name="understand-and-work-with-scopes"></a>了解并使用范围
 
@@ -25,7 +25,7 @@ ms.locfileid: "87501519"
 - 计费数据，例如付款和发票
 - 云服务，例如成本和策略监管
 
-你将在特定的范围内管理计费数据、获取特定于付款的角色、查看发票，以及执行常规的帐户管理。 对计费和帐户角色的管理独立于用于资源管理的范围（使用 [Azure RBAC](../../role-based-access-control/overview.md)）的管理。 为了明确区分不同范围的意图（包括访问控制的差异），这些范围分别称作计费范围和 RBAC 范围。 
+你将在特定的范围内管理计费数据、获取特定于付款的角色、查看发票，以及执行常规的帐户管理。 对计费和帐户角色的管理独立于对用于资源管理的角色（使用 [Azure RBAC](../../role-based-access-control/overview.md)）的管理。 为了明确区分不同范围的意图（包括访问控制的差异），我们分别将其称作计费范围和 RBAC 范围 。
 
 若要了解有关范围的详细信息，请观看 [Cost Management setting up hierarchies](https://www.youtube.com/watch?v=n3TLRaYJ1NY)（成本管理设置层次结构）视频。 若要观看其他视频，请访问[成本管理 YouTube 频道](https://www.youtube.com/c/AzureCostManagement)。
 
@@ -55,20 +55,20 @@ Azure 支持用于资源管理的三个范围。 每个范围支持管理访问�
 
 创建组织层次结构能够以组织有序的方式推行成本和策略合规性计划。 然后，每个主管可以查看和分析其当前成本。 他们可以创建预算来抑制不良的支出模式，并在最低级别根据顾问的建议优化成本。
 
-授予查看成本和（可选）管理成本配置（例如预算和导出）的访问权限是使用 Azure RBAC 在监管范围执行的。 可以使用 Azure RBAC 为 Azure AD 用户和组授予访问权限，以便在特定范围和更低的范围执行角色中预定义的一组操作。 例如，分配到管理组范围的角色还可以向嵌套的订阅和资源组授予相同的权限。
+授予查看成本和（可选）管理成本配置（例如预算和导出）的权限是使用 Azure RBAC 在治理范围执行的。 可以使用 Azure RBAC 为 Azure AD 用户和组授予访问权限，以便在特定范围和更低的范围执行角色中预定义的一组操作。 例如，分配到管理组范围的角色还可以向嵌套的订阅和资源组授予相同的权限。
 
 对于以下每个范围，Azure 成本管理支持以下内置角色：
 
 - [**所有者**](../../role-based-access-control/built-in-roles.md#owner) – 可以查看成本和管理所有内容（包括成本配置）。
 - [**参与者**](../../role-based-access-control/built-in-roles.md#contributor) – 可以查看成本和管理所有内容（包括成本配置，但不包括访问控制）。
-- [**读取者**](../../role-based-access-control/built-in-roles.md#reader) – 可以查看所有内容（包括成本数据和配置），但无法进行任何更改。
+- [**读取者**](../../role-based-access-control/built-in-roles.md#reader) - 可以查看所有内容（包括成本数据和配置），但无法进行任何更改。
 - [**成本管理参与者**](../../role-based-access-control/built-in-roles.md#cost-management-contributor) – 可以查看成本、管理成本配置和查看建议。
 - [**成本管理读取者**](../../role-based-access-control/built-in-roles.md#cost-management-reader) – 可以查看成本数据、成本配置和建议。
 
-成本管理参与者是建议的最低特权角色。 此角色授予创建和管理预算和导出的权限，以便更有效地监视和报告成本。 成本管理参与者还可能需要有其他角色才能支持端到端的成本管理方案。 请考虑下列情形：
+成本管理参与者是建议的最低特权角色。 此角色允许创建和管理预算和导出，以便更有效地监视和报告成本。 成本管理参与者还可能需要其他角色才能支持复杂的成本管理方案。 请考虑下列情形：
 
-- **报告资源使用情况** - Azure 成本管理显示 Azure 门户中的成本，包括使用情况，因为它与完整使用情况模式中的成本相关。 此报表还可以显示 API 和下载费用，但你可能还想要深入了解 Azure Monitor 中的详细使用情况指标，以便更深入理解前者。 请考虑在需要报告详细使用情况指标的任何适用范围上授权[监视读取者](../../role-based-access-control/built-in-roles.md#monitoring-reader)权限。
-- **超出预算时采取措施** – 成本管理参与者还需要拥有创建和/或管理操作组以自动对超额问题做出反应的访问权限。 请考虑将[监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)授予某个资源组，该资源组包含超出预算阈值时要使用的操作组。 自动执行特定的操作需要所用特定服务（例如自动化和 Azure Functions）的其他角色。
+- **报告资源使用情况** - Azure 成本管理在 Azure 门户中显示成本。 它包括使用情况，因为它与完整使用模式的成本有关。 此报表还可以显示 API 和下载费用，但你可能还想要深入了解 Azure Monitor 中的详细使用情况指标，以便更深入理解前者。 请考虑针对还需要报告详细使用指标的任何适用范围授予[监视读取者](../../role-based-access-control/built-in-roles.md#monitoring-reader)权限。
+- **超出预算时采取措施** - 成本管理参与者还需要拥有创建和管理操作组的权限才能自动对超额问题做出反应。 请考虑将[监视参与者](../../role-based-access-control/built-in-roles.md#monitoring-contributor)授予某个资源组，该资源组包含超出预算阈值时要使用的操作组。 自动执行特定的操作需要所用特定服务（例如自动化和 Azure Functions）的其他角色。
 - **计划成本数据导出** – 成本管理参与者还需要以下访问权限：管理存储帐户，以计划通过导出将数据复制到存储帐户。 请考虑将[存储帐户参与者](../../role-based-access-control/built-in-roles.md#storage-account-contributor)授予某个资源组，该资源组包含要将成本数据导出到的存储帐户。
 - **查看成本节省建议** – 默认情况下，成本管理读取者和成本管理参与者拥有查看成本建议的访问权限。 但是，需要访问各个资源才能获得处理成本建议的访问权限。 若要处理基于成本的建议，请考虑授予[服务特定的角色](../../role-based-access-control/built-in-roles.md#all)。
 
@@ -95,13 +95,13 @@ EA 计费范围支持以下角色：
 
 - **企业管理员** – 可以管理计费帐户设置和访问权限，可以查看所有成本，并可以管理成本配置。 例如预算和导出。 在功能方面，EA 计费范围与[成本管理参与者 Azure 角色](../../role-based-access-control/built-in-roles.md#cost-management-contributor)相同。
 - **企业只读用户** – 可以查看计费帐户设置、成本数据和成本配置。 例如预算和导出。 在功能方面，EA 计费范围与[成本管理读取者 Azure 角色](../../role-based-access-control/built-in-roles.md#cost-management-reader)相同。
-- **部门管理员** – 可以管理部门设置（例如成本中心），可以访问和查看所有成本，并可以管理成本配置。 例如预算和导出。  必须启用“DA 查看费用”计费帐户设置，才能让部门管理员和只读用户查看成本。 如果禁用了“DA 查看费用”，则即使部门用户是帐户或订阅所有者，他们也无法在任何级别查看成本。
-- **部门只读用户** – 可以查看部门设置、成本数据和成本配置。 例如预算和导出。 如果禁用了“DA 查看费用”，则即使部门用户是帐户或订阅所有者，他们也无法在任何级别查看成本。
+- **部门管理员** – 可以管理部门设置（例如成本中心），可以访问和查看所有成本，并可以管理成本配置。 例如预算和导出。  必须启用“DA 查看费用”计费帐户设置，才能让部门管理员和只读用户查看成本。 如果禁用了“DA 查看费用”选项，则即使部门用户是帐户或订阅所有者，他们也无法在任何级别查看成本。
+- **部门只读用户** – 可以查看部门设置、成本数据和成本配置。 例如预算和导出。 如果禁用了“DA 查看费用”选项，则即使部门用户是帐户或订阅所有者，他们也无法在任何级别查看成本。
 - **帐户所有者** – 可以管理注册帐户设置（例如成本中心）、查看所有成本，以及管理注册帐户的成本配置（例如预算和导出）。 必须启用“AO 查看费用”计费帐户设置，才能让帐户所有者和 RBAC 用户查看成本。
 
 EA 计费帐户用户无法直接访问发票。 可以从外部批量授权系统访问发票。
 
-Azure 订阅嵌套在注册帐户下。 计费用户有权在其各自范围下访问订阅和资源组的成本数据。 他们无权在 Azure 门户中查看或管理资源。 计费用户可以通过导航到 Azure 门户服务列表中的“成本管理 + 计费”来查看成本。 然后，他们可以按照需要报告的特定订阅和资源组筛选成本。
+Azure 订阅嵌套在注册帐户下。 计费用户有权在其各自范围下访问订阅和资源组的成本数据。 他们无权在 Azure 门户中查看或管理资源。 用户可以通过导航到 Azure 门户服务列表中的“成本管理 + 计费”来查看成本。 然后，他们可以按照需要报告的特定订阅和资源组筛选成本。
 
 计费用户无权访问管理组，因为他们并不显式属于特定的计费帐户。 必须向管理组显式授予访问权限。 管理组从所有嵌套订阅汇总成本。 但是，它们只包含基于用量的购买内容。 它们不包含预留项和第三方市场套餐等购买内容。 若要查看这些成本，请使用 EA 计费帐户。
 
@@ -133,7 +133,7 @@ Microsoft 客户协议计费帐户具有以下范围：
 
     资源类型：`Microsoft.Billing/billingAccounts/invoiceSections`
 
-- **客户** - 代表关联到特定客户的一组订阅，该客户已由合作伙伴加入到 Microsoft 客户协议。 此范围特定于 CSP。
+- **客户** - 代表关联到特定客户的一组订阅，该客户已由合作伙伴加入到 Microsoft 客户协议。 此范围特定于云解决方案提供商 (CSP)。
 
 与 EA 计费范围不同，客户协议计费帐户绑定到单个目录，不能包含多个 Azure AD 目录中的订阅。
 
@@ -179,11 +179,15 @@ Azure 订阅嵌套在发票科目下，就如同嵌套在 EA 注册帐户下一�
 
 只有具有“全局管理员”和“管理员代理”角色的用户才能直接在合作伙伴的 Azure 租户中管理和查看计费帐户、计费配置文件与客户的成本。  有关合作伙伴中心角色的详细信息，请参阅[分配用户角色和权限](/partner-center/permissions-overview)。
 
-仅当 CSP 合作伙伴客户签署了 Microsoft 客户协议时，Azure 成本管理才支持这些客户。 有关 CSP 支持的但尚未签署 Microsoft 客户协议的客户，请参阅[合作伙伴中心](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview)。
+仅当 CSP 合作伙伴客户签署了 Microsoft 客户协议时，Azure 成本管理才支持这些客户。 对于 CSP 支持的但尚未签署 Microsoft 客户协议的客户，请参阅[合作伙伴中心](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview)。
+
+成本管理不支持 CSP 范围中的管理组。 如果你有 CSP 订阅，并在成本分析中将范围设置为管理组，则会看到如下错误：
+
+`Management group <ManagementGroupName> does not have any valid subscriptions`
 
 ## <a name="switch-between-scopes-in-cost-management"></a>在成本管理中切换范围
 
-Azure 门户中所有成本管理视图的左上角都包含一个“范围”选项椭圆图标。 使用该图标可以快速更改范围。 单击“范围”椭圆图标打开范围选取器。 其中显示了计费帐户、根管理组，以及未嵌套在根管理组下的任何订阅。 若要选择范围，请单击背景将其突出显示，然后单击底部的“选择”。 若要深入到嵌套的范围（例如订阅中的资源组），请单击范围名称链接。 若要选择位于任一嵌套级别的父范围，请单击范围选取器顶部的“选择此 &lt;范围&gt;”。
+Azure 门户中所有成本管理视图的左上角都包含一个“范围”选项椭圆图标。 使用该图标可以快速更改范围。 选择“范围”椭圆图标打开范围选取器。 其中显示了计费帐户、根管理组，以及未嵌套在根管理组下的任何订阅。 若要选择范围，请选择背景将其突出显示，然后选择底部的“选择”。 若要深入到嵌套的范围（例如订阅中的资源组），请选择范围名称链接。 若要选择位于任一嵌套级别的父范围，请选择范围选取器顶部的“选择此 &lt;范围&gt;”。
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>标识范围的资源 ID
 
@@ -200,7 +204,7 @@ Azure 门户中所有成本管理视图的左上角都包含一个“范围”�
 
 1. 打开 Azure 门户，然后导航到服务列表中的“成本管理 + 计费”。
 2. 在计费帐户菜单中选择“计费配置文件”。
-3. 单击所需计费配置文件的名称。
+3. 选择计费配置文件的名称。
 4. 在计费配置文件菜单中选择“属性”。
 5. 复制计费帐户和计费配置文件 ID。
 6. 范围为：`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}"`
@@ -209,7 +213,7 @@ Azure 门户中所有成本管理视图的左上角都包含一个“范围”�
 
 1. 打开 Azure 门户，然后导航到服务列表中的“成本管理 + 计费”。
 2. 在计费帐户菜单中选择“发票科目”。
-3. 单击所需发票科目的名称。
+3. 选择发票部分的名称。
 4. 在发票科目菜单中选择“属性”。
 5. 复制计费帐户和发票科目 ID。
 6. 范围为：`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/invoiceSections/{invoiceSectionId}"`
@@ -218,7 +222,7 @@ Azure 门户中所有成本管理视图的左上角都包含一个“范围”�
 
 1. 打开 Azure 门户，然后导航到服务列表中的“成本管理 + 计费”。
 2. 在计费帐户菜单中选择“部门”。
-3. 单击所需部门的名称。
+3. 选择部门的名称。
 4. 在部门菜单中选择“属性”。
 5. 复制计费帐户和部门 ID。
 6. 范围为：`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}"`
@@ -227,7 +231,7 @@ Azure 门户中所有成本管理视图的左上角都包含一个“范围”�
 
 1. 打开 Azure 门户，然后导航到服务列表中的“成本管理 + 计费”。
 2. 在计费帐户菜单中选择“注册帐户”。
-3. 单击所需注册帐户的名称。
+3. 选择注册帐户的名称。
 4. 在注册帐户菜单中选择“属性”。
 5. 复制计费帐户和注册帐户 ID。
 6. 范围为：`"/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}"`
@@ -235,7 +239,7 @@ Azure 门户中所有成本管理视图的左上角都包含一个“范围”�
 ### <a name="management-group"></a>管理组
 
 1. 打开 Azure 门户，然后导航到服务列表中的“管理组”。
-2. 导航到所需的管理组。
+2. 导航到管理组。
 3. 复制表中的管理组 ID。
 4. 范围为：`"/providers/Microsoft.Management/managementGroups/{id}"`
 
@@ -248,7 +252,7 @@ Azure 门户中所有成本管理视图的左上角都包含一个“范围”�
 ### <a name="resource-groups"></a>资源组
 
 1. 打开 Azure 门户，然后导航到服务列表中的“资源组”。
-2. 单击所需资源组的名称。
+2. 选择资源组的名称。
 3. 在资源组菜单中选择“属性”。
 4. 复制资源 ID 字段值。
 5. 范围为：`"/subscriptions/{id}/resourceGroups/{name}"`

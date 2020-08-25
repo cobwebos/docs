@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 11/14/2019
+ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 8d48ea133aaabbe9fd44bda545d672e68c93c08d
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 02332e190def7770fa57977461d57766f3dee13a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81312200"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205569"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>教程：通过 Azure 门户使用基于路径的路由规则创建应用程序网关
 
@@ -33,9 +33,9 @@ ms.locfileid: "81312200"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+## <a name="prerequisites"></a>先决条件
 
-通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户
+在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 
 ## <a name="create-virtual-machines"></a>创建虚拟机
 
@@ -95,7 +95,7 @@ ms.locfileid: "81312200"
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
-1. 选择 Azure 门户左侧菜单上的“创建资源”  。 此时会显示“新建”窗口。 
+1. 选择 Azure 门户左侧菜单上的“创建资源”  。 此时会显示“新建”窗口。
 
 2. 选择“网络”  ，然后在“特色”列表中选择“应用程序网关”   。
 
@@ -131,7 +131,7 @@ ms.locfileid: "81312200"
 
 2. 在打开的“添加后端池”窗口中，输入以下值以创建空的后端池  ：
 
-    - **Name**：输入“myBackendPool”作为后端池的名称  。
+    - **名称**：输入“myBackendPool”作为后端池的名称  。
 3. 在“后端目标”  、“目标类型”  下，从下拉列表中选择“虚拟机”  。
 
 5. 在  “目标”下， 为 myVM1 选择网络接口  。
@@ -143,15 +143,15 @@ ms.locfileid: "81312200"
 
 ### <a name="configuration-tab"></a>配置选项卡
 
-在“配置”选项卡上，将连接使用传递规则创建的前端和后端池  。
+在“配置”选项卡上，将连接使用传递规则创建的前端和后端池。
 
 1. 选择“传递规则”列中的“添加规则”   。
 
-2. 在打开的“添加传递规则”窗口中，输入“myRoutingRule”作为规则名称    。
+2. 在打开的“添加传递规则”窗口中，输入“myRoutingRule”作为规则名称。
 
 3. 传递规则需要侦听器。 在“添加传递规则”窗口中的“侦听器”选项卡上，输入侦听器的以下值   ：
 
-    - **侦听器名称**：输入“myListener”作为侦听器名称  。
+    - **侦听器名称**：输入“myListener”作为侦听器名称。
     - **前端 IP**：选择“公共”，以选择为前端创建的公共 IP  。
     - **端口**：类型 *8080*
   
@@ -161,7 +161,7 @@ ms.locfileid: "81312200"
 
 5. 对于“HTTP 设置”，选择“新建”以创建新的 HTTP 设置   。 HTTP 设置将决定传递规则的行为。 
 
-6. 在打开的“添加 HTTP 设置”窗口中，为“HTTP 设置名称”输入“myHTTPSetting”    。 接受“添加 HTTP 设置”窗口中其他设置的默认值，然后选择“添加”以返回到“添加传递规则”窗口    。
+6. 在打开的“添加 HTTP 设置”窗口中，为“HTTP 设置名称”输入“myHTTPSetting”。 接受“添加 HTTP 设置”窗口中其他设置的默认值，然后选择“添加”以返回到“添加传递规则”窗口    。
 7. 在“基于路径的路由”下  ，选择“添加多个目标以创建基于路径的规则”  。
 8. 对于  “路径”，请键入 */images/* \*。
 9. 对于“路径规则名称”  ，请键入“图片”  。
@@ -204,7 +204,11 @@ ms.locfileid: "81312200"
 
    端口 8080 上的侦听器将此请求路由到“视频”  后端池。
 
+## <a name="clean-up-resources"></a>清理资源
+
+不再需要时，请删除资源组及所有相关资源。 为此，请选择资源组，然后选择“删除资源组”。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 Azure 应用程序网关上启用端到端 TLS](application-gateway-backend-ssl.md)
+> [!div class="nextstepaction"]
+> [在 Azure 应用程序网关上启用端到端 TLS](application-gateway-backend-ssl.md)

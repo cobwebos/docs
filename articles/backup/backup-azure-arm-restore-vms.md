@@ -4,12 +4,12 @@ description: 使用 Azure 门户从恢复点还原 Azure 虚拟机
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 4aca863dd4e9c418872cd67bdf54df616a7a0c5b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 66d29294d74e9fee28dd88d34f67ed3bdc4b8e7b
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88651142"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756480"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>如何在 Azure 门户中还原 Azure VM 数据
 
@@ -65,7 +65,7 @@ Azure 备份提供多种方法用于还原 VM。
     - **新建**：若要创建新的 VM，请使用此选项。 可以使用简单的设置创建 VM，或还原某个磁盘并创建自定义的 VM。
     - **替换现有项**：若要替换现有 VM 上的磁盘，请使用此选项。
 
-        ![还原配置向导](./media/backup-azure-arm-restore-vms/restore-configuration.png)
+        ![还原虚拟机配置向导](./media/backup-azure-arm-restore-vms/restore-configuration.png)
 
 1. 为选定的还原选项指定设置。
 
@@ -79,7 +79,7 @@ Azure 备份提供多种方法用于还原 VM。
 1. 在“虚拟网络”中，选择要将 VM 放入到的 VNet。 此时会显示与订阅关联的所有 VNet。 选择子网。 默认已选择第一个子网。
 1. 在 " **暂存位置**" 中，指定 VM 的存储帐户。 [了解详细信息](#storage-accounts)。
 
-    ![还原配置向导](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
+    ![还原配置向导-选择还原选项](./media/backup-azure-arm-restore-vms/recovery-configuration-wizard1.png)
 
 1. 选择 " **还原** " 以触发还原操作。
 

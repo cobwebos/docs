@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: f80d22adc432a81fcc88391e71ed7540399fa559
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 70550b61354c23889836b48be6f09475569ecd52
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995728"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589650"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>教程：使用 WPF 创建翻译应用
 
@@ -40,7 +40,7 @@ ms.locfileid: "83995728"
 | 服务 | Feature | 说明 |
 |---------|---------|-------------|
 | 转换器 | [获取语言](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) | 检索文本翻译支持的语言的完整列表。 |
-| 转换器 | [Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | 将文本翻译成 60 多种语言。 |
+| 转换器 | [Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate) | 将文本翻译成 70 多种语言。 |
 | 转换器 | [Detect](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect) | 检测输入文本的语言。 包含检测置信度评分。 |
 | 必应拼写检查 | [拼写检查](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference) | 更正拼写错误以提高翻译准确度。 |
 
@@ -263,7 +263,7 @@ ms.locfileid: "83995728"
 
 ## <a name="get-supported-languages"></a>获取支持的语言
 
-“翻译”目前支持 60 多种语言。 由于支持的新语言会不断增加，建议调用“翻译”公开的语言资源，而不要对应用中的语言列表进行硬编码。
+“翻译”目前支持 70 多种语言。 由于支持的新语言会不断增加，建议调用“翻译”公开的语言资源，而不要对应用中的语言列表进行硬编码。
 
 在本部分，我们将对语言资源创建 `GET` 请求，并指定我们希望提供可用于翻译的语言列表。
 

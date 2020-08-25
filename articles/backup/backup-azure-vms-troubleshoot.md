@@ -4,12 +4,12 @@ description: 在本文中，学习如何排查在备份和还原 Azure 虚拟机
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: f6085554f64c71c66587587ee03a58ee73c6639a
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 104fb177a1379d5a09dc54cf6f78c401744d697f
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761757"
+ms.locfileid: "88763297"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>排查 Azure 虚拟机上的备份失败问题
 
@@ -44,7 +44,7 @@ ms.locfileid: "88761757"
 错误代码： VMRestorePointInternalError
 
 如果在备份时， **事件查看器应用程序日志** 将显示消息错误 **应用程序名称： IaaSBcdrExtension.exe** 然后，确认 VM 中配置的防病毒程序正在限制备份扩展的执行。
-若要解决此问题，请在防病毒配置中排除以下目录，然后重试备份操作。
+若要解决此问题，请将下面的目录排除在防病毒配置中，然后重试备份操作。
 
 * `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 * `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
@@ -90,11 +90,11 @@ ms.locfileid: "88761757"
 
 * 尝试启动/重启 Windows 服务“COM+ 系统应用程序”（通过权限提升的命令提示符“- net start COMSysApp”）。
 * 确保“分布式事务处理协调器”服务作为“网络服务”帐户运行。  否则，请将其更改为以“网络服务”帐户的身份运行，并重启“COM+ 系统应用程序”。
-* 如果无法重启服务，则请通过以下步骤重新安装**分布式事务处理协调器**服务：
+* 如果无法重新启动服务，请执行以下步骤，重新安装 **分布式事务处理协调器** 服务：
   * 停止 MSDTC 服务
   * 打开命令提示符 (cmd)
-  * 运行命令“msdtc -uninstall”
-  * 运行命令“msdtc -install”
+  * 运行命令 `msdtc -uninstall`
+  * 运行命令 `msdtc -install`
   * 启动 MSDTC 服务
 * 启动 Windows 服务“COM+ 系统应用程序”。 “COM+ 系统应用程序”启动后，从 Azure 门户触发备份作业。</ol>
 
@@ -165,7 +165,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 错误代码：ExtensionFailedSnapshotLimitReachedError  <br/>
 错误消息：由于某些附加的磁盘已超出快照限制，因此快照操作失败
 
-由于某些附加的磁盘已超出快照限制，因此快照操作失败。 完成以下故障排除步骤，然后重试操作：
+由于某些附加的磁盘已超出快照限制，因此快照操作失败。 请完成以下故障排除步骤，然后重试该操作。
 
 * 删除不需要的磁盘 Blob 快照。 注意不要删除磁盘 blob，只应删除快照 blob。
 * 如果在 VM 磁盘存储帐户上启用了软删除，请配置软删除保留，以使现有快照小于任何时间点允许的最大值。
@@ -183,7 +183,7 @@ VM 上的备份操作由于执行快照操作时进行的网络调用发生延�
 
 **步骤 1**：通过主机创建快照
 
-从提升的（管理员）命令提示符下，运行以下命令：
+从权限提升的 (管理) 命令提示符下，运行以下命令：
 
 ```console
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotMethod /t REG_SZ /d firstHostThenGuest /f

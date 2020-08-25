@@ -7,12 +7,12 @@ ms.date: 01/30/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: d041bfe1187c48e5544e8933763eaf45a507a424
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 9a6a56491a327d5d4eafc2c05dc2b54b137096b8
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88701388"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752058"
 ---
 # <a name="reduce-costs-with-azure-disks-reservation"></a>通过 Azure 磁盘预留降低成本
 
@@ -31,7 +31,7 @@ ms.locfileid: "88701388"
 例如，假设你保留一个 P40 磁盘，其中有2个 TiB 的预配存储容量。 还假设只分配两个 P30 磁盘。 在这种情况下，P40 预订不会考虑 P30 消耗，并按即用即付费率支付 P30 磁盘。
 <br/>
 <br/>
-[!INCLUDE [disk-storage-premium-ssd-sizes](~/includes/disk-storage-premium-ssd-sizes.md)]
+[!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
 ## <a name="purchase-considerations"></a>购买注意事项
 
@@ -55,7 +55,7 @@ ms.locfileid: "88701388"
 
 ## <a name="buy-a-disk-reservation"></a>购买磁盘保留
 
-您可以通过 [Azure 门户](https://portal.azure.com/)购买 Azure 磁盘存储预订。 你可以为预留提前支付或按月支付。 有关每月支付购买的详细信息，请参阅 [每月支付的购买预留](~/articles/cost-management-billing/reservations/monthly-payments-reservations.md)。
+您可以通过 [Azure 门户](https://portal.azure.com/)购买 Azure 磁盘存储预订。 你可以为预留提前支付或按月支付。 有关每月支付购买的详细信息，请参阅 [每月支付的购买预留](../cost-management-billing/reservations/prepare-buy-reservation.md#buy-reservations-with-monthly-payments)。
 
 请按照以下步骤购买预留容量：
 
@@ -103,5 +103,5 @@ ms.locfileid: "88701388"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [什么是 Azure 预订？](~/articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
-- [了解预留折扣如何应用于 Azure 磁盘存储](~/articles/cost-management-billing/reservations/understand-disk-reservations.md)
+- [什么是 Azure 预订？](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [了解预留折扣如何应用于 Azure 磁盘存储](../cost-management-billing/reservations/understand-disk-reservations.md)

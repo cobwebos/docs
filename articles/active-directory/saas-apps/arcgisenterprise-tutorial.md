@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 ArcGIS Enterprise 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 ArcGIS Enterprise 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 24809e9d-a4aa-4504-95a9-e4fcf484f431
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57eda7e1d5ffedf7d5b867bfa7a59850fbadaf99
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: a544a98b3a9d5c2d30f95240325e91018d2f40c9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87904966"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549594"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-enterprise"></a>教程：Azure Active Directory 与 ArcGIS Enterprise 的集成
 
@@ -48,8 +43,6 @@ ms.locfileid: "87904966"
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
-
-
 
 * ArcGIS Enterprise 支持 **SP 和 IDP** 发起的 SSO
 * ArcGIS Enterprise 支持**实时**用户预配
@@ -132,21 +125,30 @@ ms.locfileid: "87904966"
 
 ### <a name="configure-arcgis-enterprise-single-sign-on"></a>配置 ArcGIS Enterprise 单一登录
 
-1. 在另一个 Web 浏览器窗口中，以管理员身份登录到 ArcGIS Enterprise 公司站点。
+1. 若要在 ArcGIS Enterprise 中自动执行配置，需要通过单击“安装扩展”来安装“我的应用安全登录浏览器扩展” 。
 
-2. 选择“组织”>“编辑设置”。****
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+1. 将扩展添加到浏览器后，单击“设置 ArcGIS Enterprise”会将你定向到 ArcGIS Enterprise 应用程序。 在此处，提供管理员凭据以登录到 ArcGIS Enterprise。 浏览器扩展会自动配置应用程序，并自动执行第 3-7 步。
+
+    ![设置配置](common/setup-sso.png)
+
+1. 如果想要手动设置 ArcGIS Enterprise，请以管理员身份登录到 ArcGIS Enterprise 公司网站。
+
+
+1. 选择“组织”>“编辑设置”。****
 
     ![ArcGIS Enterprise 配置](./media/arcgisenterprise-tutorial/configure1.png)
 
-3. 选择“安全性”选项卡。****
+1. 选择“安全性”选项卡。****
 
     ![ArcGIS Enterprise 配置](./media/arcgisenterprise-tutorial/configure2.png)
 
-4. 向下滚动到“通过 SAML 进行企业登录”部分，并选择“设置企业登录名”。********
+1. 向下滚动到“通过 SAML 进行企业登录”部分，并选择“设置企业登录名”。********
 
     ![ArcGIS Enterprise 配置](./media/arcgisenterprise-tutorial/configure3.png)
 
-5. 在“设置标识提供者”**** 部分执行以下步骤：
+1. 在“设置标识提供者”**** 部分执行以下步骤：
 
     ![ArcGIS Enterprise 配置](./media/arcgisenterprise-tutorial/configure4.png)
 

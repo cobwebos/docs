@@ -12,12 +12,12 @@ ms.date: 03/21/2019
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: ed1f06e4747492c43d19a00c1091b2b4d7f7050f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c5d1b08944417493d175de23c7738db58f1c7bd3
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741886"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798000"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>排查“我的应用”门户的相关问题
 
@@ -51,7 +51,7 @@ ms.locfileid: "83741886"
 
 - 确保密码正确且尚未过期。 有关详细信息，请参阅[重置工作或学校密码](active-directory-passwords-update-your-own-password.md)。
 
-- 确保验证信息是最新的，且准确无误。 有关详细信息，请参阅 [Azure 多重身份验证对我而言有什么用途？](multi-factor-authentication-end-user.md)或[更改安全信息方法和信息](security-info-add-update-methods-overview.md)。
+- 确保验证信息是最新的，且准确无误。 有关详细信息，请参阅 [Azure 多重身份验证对我而言有什么用途？](./multi-factor-authentication-end-user-first-time.md)或[更改安全信息方法和信息](./security-info-setup-auth-app.md)。
 
 - 将“我的应用”门户 URL 添加“Internet 属性”>“安全”>“受信任的站点”设置 。
 
@@ -75,7 +75,7 @@ ms.locfileid: "83741886"
 
 - 确保密码正确且尚未过期。 有关详细信息，请参阅[重置工作或学校密码](active-directory-passwords-update-your-own-password.md)。
 
-- 确保验证信息是最新的，且准确无误。 有关详细信息，请参阅 [Azure 多重身份验证对我而言有什么用途？](multi-factor-authentication-end-user.md)或[更改安全信息方法和信息](security-info-add-update-methods-overview.md)。
+- 确保验证信息是最新的，且准确无误。 有关详细信息，请参阅 [Azure 多重身份验证对我而言有什么用途？](./multi-factor-authentication-end-user-first-time.md)或[更改安全信息方法和信息](./security-info-setup-auth-app.md)。
 
 - 清除浏览器缓存，然后重新尝试登录。
 

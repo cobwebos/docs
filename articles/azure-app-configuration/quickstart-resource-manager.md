@@ -3,439 +3,119 @@ title: 有关自动完成使用 Azure 应用程序配置的 VM 部署的快速�
 description: 本快速入门演示如何使用 Azure PowerShell 模块和 Azure 资源管理器模板部署 Azure 应用程序配置存储。 然后使用该存储中的值来部署 VM。
 author: lisaguthrie
 ms.author: lcozzens
-ms.date: 04/14/2020
+ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
 ms.custom:
 - mvc
 - subject-armqs
-ms.openlocfilehash: 96d09de73e8b904a8e26eb4f365d34fab1401203
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9b609d4571d6240f428a0210aa5108ff19dc753b
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82137546"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235173"
 ---
-# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>快速入门：使用应用配置和资源管理器模板自动部署 VM
+# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template-arm-template"></a>快速入门：使用应用程序配置和资源管理器模板（ARM 模板）自动部署 VM
 
-Azure PowerShell 模块用于通过 PowerShell cmdlet 或脚本创建和管理 Azure 资源。 本快速入门介绍如何使用 Azure PowerShell 和 Azure 资源管理器模板部署 Azure 应用程序配置存储。 然后，介绍如何使用该存储中的键-值来部署 VM。
-
-你将使用必备模板创建应用程序配置存储，然后使用 Azure 门户或 Azure CLI 将键-值添加到存储中。 主模板引用现有配置存储中的现有键-值配置。 检索到的值用于设置模板创建的资源（例如本示例中的 VM）的属性。
+了解如何使用 Azure 资源管理器模板和 Azure PowerShell 部署 Azure 应用程序配置存储，如何将键值添加到存储中，以及如何使用该存储中的键值来部署 Azure 资源（例如本例中的 Azure 虚拟机）。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="before-you-begin"></a>开始之前
+如果你的环境满足先决条件，并且你熟悉如何使用 ARM 模板，请选择“部署到 Azure”按钮。 Azure 门户中会打开模板。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store%2Fazuredeploy.json)
 
-* 如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/)。
+## <a name="prerequisites"></a>先决条件
 
-* 本快速入门需要 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可找到在本地计算机上安装的版本。 如果需要进行安装或升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="sign-in-to-azure"></a>登录 Azure
+## <a name="review-the-templates"></a>查看模板
 
-使用 `Connect-AzAccount` 命令登录到 Azure 订阅，然后在弹出的浏览器中输入 Azure 凭据：
+本快速入门中使用的模板来自 [Azure 快速入门模板](https://azure.microsoft.com/resources/templates/)。 [第一个模板](https://azure.microsoft.comresources/templates/101-app-configuration-store/)创建应用程序配置存储：
 
-```azurepowershell-interactive
-# Connect to your Azure account
-Connect-AzAccount
-```
+:::code language="json" source="~/quickstart-templates/101-app-configuration-store/azuredeploy.json" range="1-37" highlight="27-35":::
 
-如果你有多个订阅，请运行以下 cmdlet，选择要在本快速入门中的订阅。 不要忘记将 `<your subscription name>` 替换为你的订阅名称。
+模板中定义了一个 Azure 资源：
 
-```azurepowershell-interactive
-# List all available subscriptions.
-Get-AzSubscription
+- [Microsoft.AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2019-10-01/configurationstores)：创建应用程序配置存储。
 
-# Select the Azure subscription you want to use to create the resource group and resources.
-Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubscription
-```
+[第二个模板](https://azure.microsoft.com/resources/templates/101-app-configuration/)使用存储中的键值创建虚拟机。 在执行此步骤之前，需要使用门户或 Azure CLI 添加键值。
 
-## <a name="create-a-resource-group"></a>创建资源组
+:::code language="json" source="~/quickstart-templates/101-app-configuration/azuredeploy.json" range="1-217" highlight="77, 181,189":::
 
-使用 [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) 创建 Azure 资源组。 资源组是在其中部署和管理 Azure 资源的逻辑容器。
+## <a name="deploy-the-templates"></a>部署模板
 
-```azurepowershell-interactive
-$resourceGroup = "StreamAnalyticsRG"
-$location = "WestUS2"
-New-AzResourceGroup `
-    -Name $resourceGroup `
-    -Location $location
-```
+### <a name="create-an-app-configuration-store"></a>创建应用配置存储区
 
-## <a name="deploy-an-azure-app-configuration-store"></a>部署 Azure 应用程序配置存储
+1. 选择下图登录到 Azure 并打开一个模板。 该模板会创建应用程序配置存储。
 
-在将键-值应用到 VM 之前，必须存在现有的 Azure 应用程序配置存储。 本部分详细介绍如何使用 Azure 资源管理器模板部署 Azure 应用程序配置存储。 如果已有一个应用程序配置存储，则可以转到本文的下一部分。 
+    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store%2Fazuredeploy.json)
 
-1. 将以下 JSON 代码复制并粘贴到名为 *prereq.azuredeploy.json* 的新文件中。
+1. 选择或输入以下值。
 
-   ```json
-   {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "configStoreName": {
-        "type": "string",
-        "metadata": {
-          "description": "Specifies the name of the app configuration store."
-        }
-      },
-      "location": {
-        "type": "string",
-        "defaultValue": "[resourceGroup().location]",
-        "metadata": {
-          "description": "Specifies the Azure location where the app configuration store should be created."
-        }
-      },
-      "skuName": {
-        "type": "string",
-        "defaultValue": "standard",
-        "metadata": {
-          "description": "Specifies the SKU of the app configuration store."
-        }
-      }
-    },
-    "resources": [
-      {
-        "type": "Microsoft.AppConfiguration/configurationStores",
-        "name": "[parameters('configStoreName')]",
-        "apiVersion": "2019-10-01",
-        "location": "[parameters('location')]",
-        "sku": {
-          "name": "[parameters('skuName')]"
-        }
-      }
-    ]
-   }
-   ```
+    - 订阅：选择用于创建应用程序配置存储的 Azure 订阅。
+    - 资源组：选择“新建”以创建新的资源组，除非你想使用现有资源组。
+    - 区域：选择资源组的位置。  例如“美国东部”。
+    - 配置存储名称：输入新的应用程序配置存储名称。
+    - 位置：指定应用程序配置存储的位置。  使用默认值。
+    - SKU 名称：指定应用程序配置存储的 SKU 名称。 使用默认值。
 
-1. 将以下 JSON 代码复制并粘贴到名为 *prereq.azuredeploy.parameters.json* 的新文件中。 将 **GET-UNIQUE** 替换为配置存储的唯一名称。
+1. 选择“查看 + 创建”。
+1. 验证该页是否显示“通过验证”，然后选择“创建” 。
 
-   ```json
-   {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "configStoreName": {
-        "value": "GET-UNIQUE"
-      }
-    }
-   }
-   ```
+记下资源组名称和应用程序配置存储名称。  部署虚拟机时需要这些值
+### <a name="add-vm-configuration-key-values"></a>添加 VM 配置键-值
 
-1. 在 PowerShell 窗口中，运行以下命令以部署 Azure 应用程序配置存储。 不要忘记替换资源组名称、模板文件路径和模板参数文件路径。
+创建应用程序配置存储后，可以使用 Azure 门户或 Azure CLI 将键值添加到该存储。
 
-   ```azurepowershell
-   New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>" `
-       -TemplateFile "<path to prereq.azuredeploy.json>" `
-       -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
-   ```
+1. 登录到 [Azure 门户](https://portal.azure.com)，然后导航到新创建的应用程序配置存储。
+1. 从左侧菜单中选择“配置资源管理器”。
+1. 选择“创建”以添加以下键值对：
 
-## <a name="add-vm-configuration-key-values"></a>添加 VM 配置键-值
+   |密钥|值|Label|
+   |-|-|-|
+   |windowsOsVersion|2019-Datacenter|template|
+   |diskSizeGB|1023|template|
 
-可以使用 Azure 资源管理器模板创建应用程序配置存储，但需要使用 Azure 门户或 Azure CLI 添加键-值。 在本快速入门中，你将使用 Azure 门户添加键-值。
+   将“内容类型”保留为空。
 
-1. 部署完成后，在 [Azure 门户](https://portal.azure.com)中导航到新建的应用程序配置存储。
+若要使用 Azure CLI，请参阅[使用 Azure 应用程序配置存储中的键值](./scripts/cli-work-with-keys.md)。
 
-1. 选择“设置” > “访问密钥”。   记下只读主密钥连接字符串。 稍后将使用此连接字符串来配置应用程序，以与创建的应用程序配置存储区进行通信。
-
-1. 选择“配置资源管理器” > “创建”来添加以下键-值对：  
-
-   |密钥|值|
-   |-|-|
-   |windowsOsVersion|2019-Datacenter|
-   |diskSizeGB|1023|
-  
-   为“标签”输入 *template*，但将“内容类型”保留为空。  
-
-## <a name="deploy-vm-using-stored-key-values"></a>使用存储的键-值部署 VM
+### <a name="deploy-vm-using-stored-key-values"></a>使用存储的键-值部署 VM
 
 将键-值添加到存储后，接下来可以使用 Azure 资源管理器模板部署 VM。 该模板引用创建的 **windowsOsVersion** 和 **diskSizeGB** 键。
 
 > [!WARNING]
 > ARM 模板无法引用已启用“专用链接”的应用配置存储中的密钥。
 
-1. 将以下 JSON 代码复制并粘贴到名为 *azuredeploy.json* 的新文件中，或者从 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.json)下载该文件。
+1. 选择下图登录到 Azure 并打开一个模板。 该模板使用应用程序配置存储中存储的键值创建虚拟机。
 
-   ```json
-   {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "adminUsername": {
-            "type": "string",
-            "metadata": {
-                "description": "Admin user name."
-            }
-        },
-        "adminPassword": {
-            "type": "securestring",
-            "metadata": {
-                "description": "Password for the Virtual Machine."
-            }
-        },
-        "appConfigStoreName": {
-            "type": "string",
-            "metadata": {
-                "description": "App configuration store name."
-            }
-        },
-        "appConfigStoreResourceGroup": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the resource group for the app config store."
-            }
-        },
-        "domainNameLabel": {
-            "type": "string",
-            "metadata": {
-                "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$."
-            }
-        },
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]",
-            "metadata": {
-                "description": "Location for all resources."
-            }
-        },
-        "vmSize": {
-            "type": "string",
-            "defaultValue": "Standard_D2_v3",
-            "metadata": {
-                "description": "Size of the VM"
-            }
-        },
-        "vmSkuKey": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the key in the app config store for the VM windows sku"
-            }
-        },
-        "diskSizeKey": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the key in the app config store for the VM disk size"
-            }
-        },
-        "storageAccountName": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the storage account."
-            }
-        }
-    },
-    "variables": {
-        "nicName": "myVMNic",
-        "addressPrefix": "10.0.0.0/16",
-        "subnetName": "Subnet",
-        "subnetPrefix": "10.0.0.0/24",
-        "publicIPAddressName": "myPublicIP",
-        "vmName": "SimpleWinVM",
-        "virtualNetworkName": "MyVNET",
-        "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
-        "appConfigRef": "[resourceId(parameters('appConfigStoreResourceGroup'), 'Microsoft.AppConfiguration/configurationStores', parameters('appConfigStoreName'))]",
-        "windowsOSVersionParameters": {
-            "key": "[parameters('vmSkuKey')]",
-            "label": "template"
-        },
-        "diskSizeGBParameters": {
-            "key": "[parameters('diskSizeKey')]",
-            "label": "template"
-        }
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2018-11-01",
-            "name": "[parameters('storageAccountName')]",
-            "location": "[parameters('location')]",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {
-            }
-        },
-        {
-            "type": "Microsoft.Network/publicIPAddresses",
-            "apiVersion": "2018-11-01",
-            "name": "[variables('publicIPAddressName')]",
-            "location": "[parameters('location')]",
-            "properties": {
-                "publicIPAllocationMethod": "Dynamic",
-                "dnsSettings": {
-                    "domainNameLabel": "[parameters('domainNameLabel')]"
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Network/virtualNetworks",
-            "apiVersion": "2018-11-01",
-            "name": "[variables('virtualNetworkName')]",
-            "location": "[parameters('location')]",
-            "properties": {
-                "addressSpace": {
-                    "addressPrefixes": [
-                        "[variables('addressPrefix')]"
-                    ]
-                },
-                "subnets": [
-                    {
-                        "name": "[variables('subnetName')]",
-                        "properties": {
-                            "addressPrefix": "[variables('subnetPrefix')]"
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "type": "Microsoft.Network/networkInterfaces",
-            "apiVersion": "2018-11-01",
-            "name": "[variables('nicName')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
-            ],
-            "properties": {
-                "ipConfigurations": [
-                    {
-                        "name": "ipconfig1",
-                        "properties": {
-                            "privateIPAllocationMethod": "Dynamic",
-                            "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
-                            },
-                            "subnet": {
-                                "id": "[variables('subnetRef')]"
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "type": "Microsoft.Compute/virtualMachines",
-            "apiVersion": "2018-10-01",
-            "name": "[variables('vmName')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]",
-                "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
-            ],
-            "properties": {
-                "hardwareProfile": {
-                    "vmSize": "[parameters('vmSize')]"
-                },
-                "osProfile": {
-                    "computerName": "[variables('vmName')]",
-                    "adminUsername": "[parameters('adminUsername')]",
-                    "adminPassword": "[parameters('adminPassword')]"
-                },
-                "storageProfile": {
-                    "imageReference": {
-                        "publisher": "MicrosoftWindowsServer",
-                        "offer": "WindowsServer",
-                        "sku": "[listKeyValue(variables('appConfigRef'), '2019-10-01', variables('windowsOSVersionParameters')).value]",
-                        "version": "latest"
-                    },
-                    "osDisk": {
-                        "createOption": "FromImage"
-                    },
-                    "dataDisks": [
-                        {
-                            "diskSizeGB": "[listKeyValue(variables('appConfigRef'), '2019-10-01', variables('diskSizeGBParameters')).value]",
-                            "lun": 0,
-                            "createOption": "Empty"
-                        }
-                    ]
-                },
-                "networkProfile": {
-                    "networkInterfaces": [
-                        {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
-                        }
-                    ]
-                },
-                "diagnosticsProfile": {
-                    "bootDiagnostics": {
-                        "enabled": true,
-                        "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))).primaryEndpoints.blob]"
-                    }
-                }
-            }
-        }
-    ],
-    "outputs": {
-        "hostname": {
-            "type": "string",
-            "value": "[reference(variables('publicIPAddressName')).dnsSettings.fqdn]"
-        }
-    }
-   }
-   ```
+    [![部署到 Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration%2Fazuredeploy.json)
 
-1. 将以下 JSON 代码复制并粘贴到名为 *azuredeploy.parameters.json* 的新文件中，或者从 [Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.parameters.json)下载该文件。
+1. 选择或输入以下值。
 
-   ```json
-   {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "adminPassword": {
-        "value": "GEN-PASSWORD"
-      },
-      "appConfigStoreName":{
-        "value": "GEN-APPCONFIGSTORE-NAME"
-      },
-      "appConfigStoreResourceGroup": {
-         "value": "GEN-APPCONFIGSTORE-RESOURCEGROUP-NAME"
-      },
-      "vmSkuKey":{
-        "value": "GEN-APPCONFIGSTORE-WINDOWSOSVERSION"
-      },
-      "diskSizeKey" :{
-         "value": "GEN-APPCONFIGSTORE-DISKSIZEGB"
-      },
-      "adminUsername":{
-        "value": "GEN-UNIQUE"
-      },
-      "storageAccountName":{
-        "value": "GEN-UNIQUE"
-      },
-      "domainNameLabel":{
-        "value": "GEN-UNIQUE"
-      }
-    }
-   }
-   ```
+    - 订阅：选择用于创建虚拟机的 Azure 订阅。
+    - 资源组：指定与应用程序配置存储相同的资源组，或选择“新建”以创建新的资源组。
+    - 区域：选择资源组的位置。  例如“美国东部”。
+    - 位置：指定虚拟机的位置。 使用默认值。
+    - 管理员用户名：指定虚拟机的管理员用户名。
+    - 管理员密码：指定虚拟机的管理员密码。
+    - 域名标签：指定唯一的域名。
+    - 存储帐户名称：为与虚拟机关联的存储帐户指定唯一的名称。
+    - 应用程序配置存储资源组：指定包含应用程序配置存储的资源组。
+    - 应用程序配置存储名称：指定 Azure 应用程序配置存储的名称。
+    - VM SKU 密钥：指定 windowsOsVersion。  这是你添加到存储的密钥值名称。
+    - 磁盘大小密钥：指定 diskSizeGB。 这是你添加到存储的密钥值名称。
 
-   将模板中的参数值替换为以下值：
+1. 选择“查看 + 创建”。
+1. 验证该页是否显示“通过验证”，然后选择“创建” 。
 
-   |参数|值|
-   |-|-|
-   |adminPassword|VM 的管理员密码。|
-   |appConfigStoreName|Azure 应用程序配置存储的名称。|
-   |appConfigStoreResourceGroup|包含应用程序配置存储的资源组。|
-   |vmSkuKey|*windowsOSVersion*|
-   |diskSizeKey|*diskSizeGB*|
-   |adminUsername|VM 的管理员用户名。|
-   |storageAccountName|与 VM 关联的存储帐户的唯一名称。|
-   |domainNameLabel|唯一的域名。|
+## <a name="review-deployed-resources"></a>查看已部署的资源
 
-1. 在 PowerShell 窗口中，运行以下命令以部署 VM。 不要忘记替换资源组名称、模板文件路径和模板参数文件路径。
-
-   ```azurepowershell
-   New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>"
-       -TemplateFile "<path to azuredeploy.json>" `
-       -TemplateParameterFile "<path to azuredeploy.parameters.json>"
-   ```
-
-祝贺你！ 现已使用 Azure 应用程序配置中存储的配置部署了一个 VM。
+1. 登录到 [Azure 门户](https://portal.azure.com)，然后导航到新创建的虚拟机。
+1. 从左侧菜单中选择“概述”，并验证“SKU”是否为“2019-Datacenter”  。
+1. 从左侧菜单中选择“磁盘”，并验证数据磁盘的大小是否为“2013” 。
 
 ## <a name="clean-up-resources"></a>清理资源
 

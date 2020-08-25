@@ -3,12 +3,12 @@ title: Azure 备份服务器 V3 RTM 可备份的内容
 description: 本文提供保护矩阵，其中列出 Azure 备份服务器 V3 RTM 保护的所有工作负荷、数据类型和安装。
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 30da2efd161d789cd73829c270b64f3610945413
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 21c5fbcdf8aa3454a9af968509cb4cbf76b31f9e
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661276"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763603"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure 备份服务器 V3 RTM 保护矩阵
 
@@ -92,7 +92,7 @@ ms.locfileid: "88661276"
 * `.microsoftonline.com`
 * `.windows.net`
 
-如果使用 Microsoft 对等互连，请选择以下服务/区域和相关社区值：
+使用 Microsoft 对等互连，选择以下服务/区域和相关社区值：
 
 * Azure Active Directory (12076:5060)
 * Microsoft Azure 区域（根据恢复服务保管库的位置）

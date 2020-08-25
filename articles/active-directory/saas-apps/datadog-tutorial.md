@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Datadog 的单一登录 (SSO) 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Datadog 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b7845bdd-7bcd-4888-84fd-2551345054ee
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/12/2020
+ms.date: 08/13/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7329c042618623806f28aacf5282e1ab6c718c5f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3bb0ad5305ccba412a403352405711be8f183a2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79472282"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555916"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datadog"></a>教程：Azure Active Directory 与 Datadog 的单一登录 (SSO) 集成
 
@@ -44,7 +40,7 @@ ms.locfileid: "79472282"
 本教程在测试环境中配置并测试 Azure AD SSO。
 
 * Datadog 支持 **SP 和 IDP** 发起的 SSO
-* 配置 Datadog 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 配置 Datadog 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制扩展自条件访问。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 
 ## <a name="adding-datadog-from-the-gallery"></a>从库中添加 Datadog
@@ -59,7 +55,7 @@ ms.locfileid: "79472282"
 1. 从结果面板中选择“Datadog”，然后添加该应用  。 在该应用添加到租户时等待几秒钟。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-datadog"></a>配置并测试 Datadog 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-datadog"></a>配置并测试 Datadog 的 Azure AD SSO
 
 使用名为 **B.Simon** 的测试用户配置并测试 Datadog 的 Azure AD SSO。 若要使 SSO 正常工作，需要在 Azure AD 用户与 Datadog 中的相关用户之间建立链接关系。
 
@@ -89,7 +85,7 @@ ms.locfileid: "79472282"
     在“登录 URL”  文本框中，使用以下模式键入 URL：`https://app.datadoghq.com/account/login/id/<CUSTOM_IDENTIFIER>`
 
     > [!NOTE]
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Datadog 客户端支持团队](mailto:xuefwu@microsoft.com)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
+    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Datadog 客户端支持团队](mailto:support@datadoghq.com)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”  部分中显示的模式。
 
 1. 单击“ **保存**”。
 
@@ -134,11 +130,11 @@ ms.locfileid: "79472282"
 
 ## <a name="configure-datadog-sso"></a>配置 Datadog SSO
 
-若要在 **Datadog** 端配置单一登录，需要将下载的“联合元数据 XML”  以及从 Azure 门户复制的相应 URL 发送给 [Datadog 支持团队](mailto:xuefwu@microsoft.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **Datadog** 端配置单一登录，需要将下载的“联合元数据 XML”  以及从 Azure 门户复制的相应 URL 发送给 [Datadog 支持团队](mailto:support@datadoghq.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-datadog-test-user"></a>创建 Datadog 测试用户
 
-在本部分，我们将在 Datadog 中创建名为 B.Simon 的测试用户。 请与 [Datadog 支持团队](mailto:xuefwu@microsoft.com)协作，将用户添加到 Datadog 平台中。
+在本部分，我们将在 Datadog 中创建名为 B.Simon 的测试用户。 请与 [Datadog 支持团队](mailto:support@datadoghq.com)协作，将用户添加到 Datadog 平台中。
 
 ## <a name="test-sso"></a>测试 SSO 
 

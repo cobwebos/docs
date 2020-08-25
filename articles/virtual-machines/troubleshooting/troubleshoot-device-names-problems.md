@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 6d3e35f44d11cd9ed41badbc64ff7528b5b15558
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 31f64a504156134b1d622705d5301d9cd5a5f5b1
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86084386"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756820"
 ---
 # <a name="troubleshoot-linux-vm-device-name-changes"></a>排查 Linux VM 设备名更改问题
 
@@ -42,11 +42,11 @@ ms.locfileid: "86084386"
 
 若要解决此问题，请使用持久命名。 有四个方法可使用持久命名：按文件系统标签、按 UUID、按 ID 或按路径。 我们建议对 Azure Linux VM 使用文件系统标签或 UUID。
 
-大多数分发都提供 `fstab` nofail 或 nobootwait 参数   。 在启动时若无法装载磁盘，这些参数可使系统启动。 有关这些参数的详细信息，请查看分发文档。 有关在添加数据磁盘时如何将 Linux VM 配置为使用 UUID 的信息，请参阅[连接到 Linux VM 以装载新磁盘](../linux/add-disk.md#connect-to-the-linux-vm-to-mount-the-new-disk)。
+大多数分发都提供 `fstab` nofail 或 nobootwait 参数   。 在启动时若无法装载磁盘，这些参数可使系统启动。 有关这些参数的详细信息，请查看分发文档。 有关在添加数据磁盘时如何将 Linux VM 配置为使用 UUID 的信息，请参阅[连接到 Linux VM 以装载新磁盘](../linux/add-disk.md#format-and-mount-the-disk)。
 
 在 VM 上安装 Azure Linux 代理后，该代理使用 Udev 规则在 /dev/disk/azure 路径下构造一组符号链接。 应用程序和脚本使用 Udev 规则来识别附加到 VM 的磁盘，以及磁盘类型和磁盘 LUN。
 
-如果已按照无法启动 VM 的方式编辑 fstab，但无法通过 SSH 连接到 VM，则可以使用[VM 串行控制台](./serial-console-linux.md)输入[单用户模式](./serial-console-grub-single-user-mode.md)并修改 fstab。
+如果已按照无法启动 VM 的方式编辑 fstab，但无法通过 SSH 连接到 VM，则可以使用 [VM 串行控制台](./serial-console-linux.md) 输入 [单用户模式](./serial-console-grub-single-user-mode.md) 并修改 fstab。
 
 ### <a name="identify-disk-luns"></a>识别磁盘 LUN
 
