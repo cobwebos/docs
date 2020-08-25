@@ -3,12 +3,12 @@ title: 使用 PowerShell 备份和恢复 Azure VM
 description: 介绍如何使用 Azure 备份与 PowerShell 来备份和恢复 Azure VM
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: e695fae087ca4e10a1d900a45cb02947bd5afa0b
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 23ae2b5b04823bc809712190a3e1617fec65e73a
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88652740"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763365"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>使用 PowerShell 备份和恢复 Azure VM
 
@@ -196,7 +196,7 @@ DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 P
 * [New-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) cmdlet 创建用于保存备份策略信息的 PowerShell 对象。
 * 计划和保留策略对象将用作 New-AzRecoveryServicesBackupProtectionPolicy cmdlet 的输入。
 
-默认情况下，会在“计划策略对象”中定义开始时间。 请使用以下示例将开始时间更改为所需的开始时间。 所需的开始时间也应采用 UTC 格式。 以下示例假设在进行每日备份时，所需的开始时间为 UTC 时间凌晨 1:00。
+默认情况下，会在“计划策略对象”中定义开始时间。 请使用以下示例将开始时间更改为所需的开始时间。 所需的开始时间也应采用 UTC 格式。 下面的示例假定所需的开始时间为每日备份 01:00 AM UTC。
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
@@ -206,7 +206,7 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 ```
 
 > [!IMPORTANT]
-> 只需以 30 分钟的倍数提供开始时间。 在上面的示例中，开始时间只能是“01:00:00”或“02:30:00”。 开始时间不能为“01:15:00”
+> 只需以 30 分钟的倍数提供开始时间。 在上面的示例中，它只能是 "01:00:00" 或 "02:30:00"。 开始时间不能为“01:15:00”
 
 以下示例将计划策略和保留策略存储在变量中。 此示例使用这些变量来定义在创建保护策略 *NewPolicy* 时要使用的参数。
 
@@ -462,7 +462,7 @@ BackupManagementType        : AzureVM
 
 ### <a name="restore-the-disks"></a>还原磁盘
 
-请使用 [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) cmdlet 将备份项的数据和配置还原到某个恢复点。 确定某个恢复点后，即可使用它作为 **-RecoveryPoint** 参数的值。 在上面的示例中， **$rp[0]** 是要使用的恢复点。 在下面的示例代码中， **$rp[0]** 是还原磁盘时要使用的恢复点。
+请使用 [Restore-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem) cmdlet 将备份项的数据和配置还原到某个恢复点。 确定某个恢复点后，即可使用它作为 **-RecoveryPoint** 参数的值。 在上面的示例中， **$rp [0]** 是要使用的恢复点。 在下面的示例代码中， **$rp[0]** 是还原磁盘时要使用的恢复点。
 
 还原磁盘和配置信息：
 
@@ -516,7 +516,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 
 ## <a name="replace-disks-in-azure-vm"></a>更换 Azure VM 中的磁盘
 
-若要更换磁盘和配置信息，请执行以下步骤：
+若要替换磁盘和配置信息，请执行以下步骤：
 
 * 步骤 1：[还原磁盘](backup-azure-vms-automation.md#restore-the-disks)
 * 步骤 2：[使用 PowerShell 分离数据磁盘](../virtual-machines/windows/detach-disk.md#detach-a-data-disk-using-powershell)
@@ -638,7 +638,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 
     * **不使用 Azure AD 的非托管加密 VM（仅限 BEK）** - 对于不使用 Azure AD 的非托管加密 VM（仅限使用 BEK 加密），如果源 **keyVault/机密不可用**，请使用[从 Azure 备份恢复点还原未加密的虚拟机](backup-azure-restore-key-secret.md)中的过程，将机密还原到 Key Vault。 然后，执行以下脚本以在已还原的 OS blob 上设置加密详细信息 (数据 blob) 不需要此步骤。 可从已还原的 keyVault 提取 $dekurl。
 
-    仅当源 keyVault/机密不可用时，才需要执行下面的脚本。
+    仅当源 keyVault/机密不可用时，才需要执行以下脚本。
 
     ```powershell
         $dekUrl = "https://ContosoKeyVault.vault.azure.net/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
@@ -652,7 +652,7 @@ $details = Get-AzRecoveryServicesBackupJobDetails -Job $restorejob -VaultId $tar
 
     **机密可用**并且同时在 OS Blob 上设置加密详细信息之后，使用下面提供的脚本附加磁盘。
 
-    如果源 keyVault/机密已经可用，则不需要执行上述脚本。
+    如果源 keyVault/机密已可用，则不需要执行上述脚本。
 
     ```powershell
         Set-AzVMOSDisk -VM $vm -Name "osdisk" -VhdUri $obj.'properties.StorageProfile'.osDisk.vhd.Uri -CreateOption "Attach"

@@ -11,10 +11,10 @@ ms.topic: include
 ms.date: 07/26/2018
 ms.author: diberry
 ms.openlocfilehash: d7fc8210d96993c20366b1b139152d7d9540698b
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "88057627"
 ---
 不再需要 LUIS 应用时，请将其删除。 为此，请在左上角的菜单中选择“我的应用”。  在应用列表中选择应用名称右侧的省略号 (***...***)，然后选择“删除”。  在弹出的“删除应用?”对话框中，选择“确定”   。 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 2b8a5cf1bd3df1405f148c5fe84701c04a4d0c0a
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 53089fa42c536cbdc59865f80f63a77c76720e2c
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88657991"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752014"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure 有哪些可用的磁盘类型？
 
@@ -26,7 +26,7 @@ Azure 托管磁盘当前提供四种磁盘类型，每种类型都面向特定�
 | 详细信息 | 超级磁盘 | 高级 SSD | 标准 SSD | 标准 HDD |
 | ------ | ---------- | ----------- | ------------ | ------------ |
 |磁盘类型   |SSD   |SSD   |SSD   |HDD   |
-|方案   |IO 密集型工作负荷，例如 [SAP HANA](~/articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)、顶层数据库 (例如，SQL、Oracle) 和其他事务密集型工作负荷。   |生产和性能敏感型工作负荷   |Web 服务器、不常使用的企业应用程序和开发/测试   |备份、非关键、不常访问   |
+|方案   |IO 密集型工作负荷，例如 [SAP HANA](workloads/sap/hana-vm-operations-storage.md)、顶层数据库 (例如，SQL、Oracle) 和其他事务密集型工作负荷。   |生产和性能敏感型工作负荷   |Web 服务器、不常使用的企业应用程序和开发/测试   |备份、非关键、不常访问   |
 |最大磁盘大小   |65,536 GB (GiB)    |32,767 GiB    |32,767 GiB   |32,767 GiB   |
 |最大吞吐量   |2,000 MB/秒    |900 MB/秒   |750 MB/秒   |500 MB/秒   |
 |最大 IOPS   |160,000    |20,000   |6,000   |2,000   |
@@ -62,7 +62,7 @@ Azure 超级磁盘为 Azure IaaS VM 提供高吞吐量、高 IOPS 和一贯低�
 
 ### <a name="ga-scope-and-limitations"></a>GA 范围和限制
 
-[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](~/includes/managed-disks-ultra-disks-GA-scope-and-limitations.md)]
+[!INCLUDE [managed-disks-ultra-disks-GA-scope-and-limitations](../../includes/managed-disks-ultra-disks-GA-scope-and-limitations.md)]
 
 
 如果你想要开始使用超磁盘，请参阅主题： [使用 Azure 超磁盘](disks-enable-ultra-ssd.md)中的文章。
@@ -71,10 +71,10 @@ Azure 超级磁盘为 Azure IaaS VM 提供高吞吐量、高 IOPS 和一贯低�
 
 Azure 高级 SSD 为运行输入/输出 (IO) 密集型工作负荷的虚拟机 (VM) 提供高性能、低延迟的磁盘支持。 若要利用高级存储磁盘的速度和性能优势，可将现有的 VM 磁盘迁移到高级 SSD。 高级 SSD 适用于任务关键型生产应用程序。 高级 SSD 只能用于与高级存储兼容的 VM 系列。
 
-若要详细了解 Azure 中适用于 Windows 的各个 VM 类型和大小（包括哪些大小与高级存储兼容），请参阅 [Windows VM 大小](~/articles/virtual-machines/windows/sizes.md)。 若要详细了解 Azure 中适用于 Linux 的各个 VM 类型和大小（包括哪些大小与高级存储兼容），请参阅 [Linux VM 大小](~/articles/virtual-machines/linux/sizes.md)。 在这些文章中，需要检查每个 VM 大小的文章，以确定其是否与高级存储兼容。
+若要详细了解适用于 Windows 或 Linux 的 Azure 中的单个 VM 类型和大小，包括与高级存储兼容的大小，请参阅 [Azure 中虚拟机的大小](sizes.md)。 若要详细了解 Azure 中适用于 Linux 的 VM 类型和大小，包括与高级存储兼容的大小，请参阅 [Azure 中虚拟机的大小](sizes.md)。 在这些文章中，需要检查每个 VM 大小的文章，以确定其是否与高级存储兼容。
 
 ### <a name="disk-size"></a>磁盘大小
-[!INCLUDE [disk-storage-premium-ssd-sizes](~/includes/disk-storage-premium-ssd-sizes.md)]
+[!INCLUDE [disk-storage-premium-ssd-sizes](../../includes/disk-storage-premium-ssd-sizes.md)]
 
 预配高级存储磁盘时，可以获得该磁盘的容量、IOPS 和吞吐量保证，这与标准存储不同。 例如，如果创建 P50 磁盘，Azure 将为此磁盘预配 4,095-GB 存储容量、7,500 IOPS 和 250-MB/秒的吞吐量。 应用程序可以使用全部或部分容量与性能。 高级 SSD 磁盘的设计目的是在 99.9% 的时间内提供较低的个位数毫秒延迟以及上表所述的目标 IOPS 和吞吐量。
 
@@ -82,7 +82,7 @@ Azure 高级 SSD 为运行输入/输出 (IO) 密集型工作负荷的虚拟机 (
 
 比 P30 容量小的高级 SSD 现在提供磁盘突发，并可以将每个磁盘的 IOPS 突发为 3500，并将其带宽提高到 170 Mbps。 突发是自动进行的，根据额度系统运行。 当磁盘流量低于预配的性能目标时，信用会自动累计，而当流量超出目标值时，将自动消耗信用，直到达到最大突发限制。 最大突发限制定义了磁盘 IOPS 和宽带的上限，即使有可供使用的突发积分，也不能超过此上限。 磁盘突发能更好地容许 IO 模式出现不可预测的变化情况。 可以最大程度地利用磁盘突发来应对 OS 磁盘启动时和应用程序的流量高峰。    
 
-默认在磁盘大小适用情况下的新磁盘部署上启用磁盘突发支持，无需用户执行任何操作。 对于大小适用的现有磁盘，可以使用以下两个选项中的任一选项启用突发：分离并重新附加磁盘，或停止并重新启动连接的 VM。 将磁盘附加到支持最大持续时间（峰值突发限制为 30 分钟）的虚拟机后，所有支持突发的磁盘大小最初会获得一个完整的突发积分桶。 若要详细了解突发在 Azure 磁盘上的工作原理，请参阅[高级 SSD 突发](~/articles/virtual-machines/linux/disk-bursting.md)。 
+默认在磁盘大小适用情况下的新磁盘部署上启用磁盘突发支持，无需用户执行任何操作。 对于大小适用的现有磁盘，可以使用以下两个选项中的任一选项启用突发：分离并重新附加磁盘，或停止并重新启动连接的 VM。 将磁盘附加到支持最大持续时间（峰值突发限制为 30 分钟）的虚拟机后，所有支持突发的磁盘大小最初会获得一个完整的突发积分桶。 若要详细了解突发在 Azure 磁盘上的工作原理，请参阅[高级 SSD 突发](linux/disk-bursting.md)。 
 
 ### <a name="transactions"></a>事务
 
@@ -93,7 +93,7 @@ Azure 高级 SSD 为运行输入/输出 (IO) 密集型工作负荷的虚拟机 (
 Azure 标准 SSD 是经济高效的存储选项，已针对需要一致性能和较低 IOPS 级别的工作负荷进行优化。 对于想要迁移到云的用户而言，标准 SSD 提供良好的入门级体验，尤其是在本地 HDD 解决方案中运行各种工作负荷遇到问题时。 与标准 HDD 相比，标准 SSD 提供更好的可用性、一致性、可靠性和延迟。 标准 SSD 适用于 Web 服务器、低 IOPS 应用程序服务器、较少使用的企业应用程序和开发/测试工作负荷。 与标准 HDD 一样，标准 SSD 也可以在所有 Azure VM 上使用。
 
 ### <a name="disk-size"></a>磁盘大小
-[!INCLUDE [disk-storage-standard-ssd-sizes](~/includes/disk-storage-standard-ssd-sizes.md)]
+[!INCLUDE [disk-storage-standard-ssd-sizes](../../includes/disk-storage-standard-ssd-sizes.md)]
 
 标准 SSD 的设计目的是在 99% 的时间内提供个位数毫秒延迟，以及不超过上表中所述限制的 IOPS 和吞吐量。 实际 IOPS 和吞吐量有时根据流量模式而异。 相比 HDD 磁盘，标准 SSD 提供更加一致的性能，并且延迟更低。
 
@@ -106,7 +106,7 @@ Azure 标准 SSD 是经济高效的存储选项，已针对需要一致性能和
 Azure 标准 HDD 为运行不区分延迟的工作负荷提供可靠、低成本的磁盘支持。 使用标准存储，将数据存储在硬盘驱动器 (HDD)。 与基于 SSD 的磁盘相比，标准 HDD 磁盘的延迟、IOPS 和吞吐量可能变化更大。 标准 HDD 磁盘旨在为大多数 IO 操作提供低于 10 毫秒的写入延迟和低于 20 毫秒的读取延迟，但是实际性能可能会因 IO 大小和工作负荷模式而异。 使用 VM 时，可将标准 HDD 磁盘用于开发/测试方案和不太重要的工作负荷。 标准 HDD 可在所有 Azure 区域中使用，并可与所有 Azure VM 一起使用。
 
 ### <a name="disk-size"></a>磁盘大小
-[!INCLUDE [disk-storage-standard-hdd-sizes](~/includes/disk-storage-standard-hdd-sizes.md)]
+[!INCLUDE [disk-storage-standard-hdd-sizes](../../includes/disk-storage-standard-hdd-sizes.md)]
 
 ### <a name="transactions"></a>事务
 
@@ -139,7 +139,7 @@ Azure 标准 HDD 为运行不区分延迟的工作负荷提供可靠、低成本
 Azure Vm 可以指示它们是否与超磁盘兼容。 与超级磁盘兼容的 VM 在计算 VM 实例与块存储缩放单元之间分配专用的带宽容量，以优化性能并降低延迟。 在 VM 上添加此功能会导致预留费用，不过，这笔费用是仅当在 VM 上启用了超级磁盘功能但未将超级磁盘附加到 VM 时才产生的。 如果将超级磁盘附加到与超级磁盘兼容的 VM，则不会收取此费用。 此费用根据 VM 上预配的每个 vCPU 计收。 
 
 > [!Note]
-> 对于 [受约束的核心 VM 大小](~/articles/virtual-machines/linux/constrained-vcpu.md)，预订费用将基于个 vcpu 的实际数量，而不是受约束的内核数。 对于 Standard_E32 8s_v3，预订费用将基于32核心。 
+> 对于 [受约束的核心 VM 大小](constrained-vcpu.md)，预订费用将基于个 vcpu 的实际数量，而不是受约束的内核数。 对于 Standard_E32 8s_v3，预订费用将基于32核心。 
 
 有关超高磁盘定价的详细信息，请参阅 [Azure 磁盘定价页](https://azure.microsoft.com/pricing/details/managed-disks/) 。
 

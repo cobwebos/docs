@@ -3,12 +3,12 @@ title: 使用恢复服务保管库的诊断设置
 description: 本文介绍如何使用 Azure 备份的新旧诊断事件。
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 2b562ee7fc4afbc28119aa36cfa071291dd61f12
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 908420a3447869d3e417da51e6b2501fbf2fa5a0
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612616"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763518"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>使用恢复服务保管库的诊断设置
 
@@ -29,7 +29,7 @@ Azure 备份提供以下诊断事件。 每个事件都提供一组特定的备�
 * AddonAzureBackupPolicy
 * AddonAzureBackupStorage
 
-如果使用[旧事件](#legacy-event) AzureBackupReport，则建议尽快切换到使用上述事件。
+如果仍在使用 [旧事件](#legacy-event) AzureBackupReport，我们建议使用以上事件切换到。
 
 有关详细信息，请参阅 [Azure 备份诊断事件的数据模型](./backup-azure-reports-data-model.md)。
 

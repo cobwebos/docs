@@ -4,12 +4,12 @@ description: 排查 Azure 备份服务器的安装和注册以及应用程序工
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: 54b7295eaed5f04a118cf5097ebc7b25b18f67d2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 40f461c1c2e62b12497800bb1a4d1c0ee0b04579
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522838"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763484"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>对 Azure 备份服务器进行故障排除
 
@@ -17,7 +17,7 @@ ms.locfileid: "88522838"
 
 ## <a name="basic-troubleshooting"></a>基本故障排除
 
-我们建议你在开始对 Microsoft Azure 备份服务器 (MABS) 进行故障排除之前执行以下验证：
+建议你在开始排查 Microsoft Azure 备份 Server (MABS) 之前执行以下验证：
 
 - [确保 Microsoft Azure 恢复服务 (MARS) 代理是最新版本](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [确保 MARS 代理与 Azure 之间存在网络连接](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
@@ -83,7 +83,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | 操作 | 错误详细信息 | 解决方法 |
 | --- | --- | --- |
-| 还原 | **错误代码**：CBPServerRegisteredVaultDontMatchWithCurrent/保管库凭据错误：100110 <br/> <br/>**错误消息**：原始和外部 DPM 服务器必须注册到同一保管库 | **原因：** 此问题在以下情况下发生：尝试使用外部 DPM 恢复选项将文件从原始服务器还原到备用服务器，且要恢复的服务器和从中备份数据的原始服务器没有与同一恢复服务保管库关联。<br/> <br/>解决方法：若要解决此问题，请确保原始服务器和备用服务器都注册到同一保管库。|
+| 还原 | **错误代码**：CBPServerRegisteredVaultDontMatchWithCurrent/保管库凭据错误：100110 <br/> <br/>**错误消息**：原始和外部 DPM 服务器必须注册到同一保管库 | **原因**：当你尝试使用外部 DPM 恢复选项将文件从原始服务器还原到备用服务器，并且如果要恢复的服务器和从其备份数据的原始服务器不与同一恢复服务保管库相关联时，会出现此问题。<br/> <br/>解决方法：若要解决此问题，请确保原始服务器和备用服务器都注册到同一保管库。|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>VMware VM 的联机恢复点创建作业失败
 
@@ -119,7 +119,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 | 配置保护组 | DPM 无法枚举受保护计算机（受保护计算机名称）上的应用程序组件。 | 在相关数据源/组件级别的“配置保护组”UI 屏幕上选择“刷新”。 |
 | 配置保护组 | 无法配置保护 | 如果受保护的服务器是 SQL Server，请根据[此文](/system-center/dpm/back-up-sql-server?view=sc-dpm-2019)中所述，检查是否已在受保护计算机上将 sysadmin 角色权限提供给系统帐户 (NTAuthority\System)。
 | 配置保护组 | 此保护组的存储池中没有足够的可用空间。 | 添加到存储池的磁盘[不应包含分区](/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019)。 删除磁盘上的所有现有卷。 然后将磁盘添加到存储池。|
-| 策略更改 |无法修改备份策略。 错误：由于内部服务错误 [0x29834]，当前操作失败。 请在一段时间后重试操作。 如果问题持续出现，请联系 Microsoft 支持。 | 原因：<br/>在以下三种情况下会发生此错误：启用安全设置、尝试缩短保留期至低于前面指定的最小值，以及使用不受支持的版本。 （不受支持的版本包括低于 Microsoft Azure 备份服务器版本 2.0.9052 和 Azure 备份服务器 Update 1 的版本。） <br/>**建议的操作：**<br/> 若要继续执行策略相关的更新，请将保留期设置为高于指定的最短保留期。 （每日、每周、每月和每年备份的最短保留期分别为 7 天、4 周、3 个月和 1 年）。 <br><br>（可选）另一种首选方法是更新备份代理和 Azure 备份服务器，以利用所有安全更新。 |
+| 策略更改 |无法修改备份策略。 错误：由于内部服务错误 [0x29834]，当前操作失败。 请在一段时间后重试操作。 如果问题持续出现，请联系 Microsoft 支持。 | 原因：<br/>在以下三种情况下会发生此错误：启用安全设置、尝试缩短保留期至低于前面指定的最小值，以及使用不受支持的版本。  (不受支持的版本低于 Microsoft Azure 备份服务器版本2.0.9052 和 Azure 备份服务器 update 1。 )  <br/>**建议的操作：**<br/> 若要继续执行策略相关的更新，请将保留期设置为高于指定的最短保留期。 （每日、每周、每月和每年备份的最短保留期分别为 7 天、4 周、3 个月和 1 年）。 <br><br>（可选）另一种首选方法是更新备份代理和 Azure 备份服务器，以利用所有安全更新。 |
 
 ## <a name="backup"></a>Backup
 

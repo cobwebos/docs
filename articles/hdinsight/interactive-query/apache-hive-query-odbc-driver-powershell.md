@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 06/27/2019
 ms.openlocfilehash: f6139bb98fa0272e43c8e180d4ec029f7a7538bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 08/25/2020
 ms.locfileid: "73494322"
 ---
 # <a name="tutorial-query-apache-hive-with-odbc-and-powershell"></a>教程：使用 ODBC 和 PowerShell 查询 Apache Hive
@@ -30,9 +30,9 @@ ms.locfileid: "73494322"
 
 ## <a name="prerequisites"></a>先决条件
 
-开始学习本教程之前，必须做好以下准备：
+要阅读本教程，必须具备以下项：
 
-* HDInsight 上的一个交互式查询群集。 要创建此群集，请参阅 [Azure HDInsight 入门](../hdinsight-hadoop-provision-linux-clusters.md)。 选择“交互式查询”作为群集类型  。
+* HDInsight 上的一个交互式查询群集。 要创建此群集，请参阅 [Azure HDInsight 入门](../hdinsight-hadoop-provision-linux-clusters.md)。 选择“交互式查询”作为群集类型。
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>安装 Microsoft Hive ODBC 驱动程序
 
@@ -42,27 +42,27 @@ ms.locfileid: "73494322"
 
 下列步骤演示如何创建 Apache Hive ODBC 数据源。
 
-1. 从 Windows 中导航到“开始”   > “Windows 管理工具”   > “ODBC 数据源(32 位)/(64 位)  。  此时将打开“ODBC 数据源管理员”  窗口。
+1. 从 Windows 中导航到“开始” > “Windows 管理工具” > “ODBC 数据源(32 位)/(64 位)。  此时将打开“ODBC 数据源管理员”窗口。
 
-    ![OBDC 数据源管理器](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "使用 ODBC 数据源管理器配置 DSN")
+    ![ODBC 数据源管理器](./media/apache-hive-query-odbc-driver-powershell/hive-odbc-driver-dsn-setup.png "使用ODBC 数据源管理器配置 DSN")
 
-1. 在”用户 DSN”选项卡中，选择“添加”，打开“创建新数据源”窗口    。
+1. 在”用户 DSN”选项卡中，选择“添加”，打开“创建新数据源”窗口  。
 
-1. 选择“Microsoft Hive ODBC 驱动程序”，然后选择“完成”，打开“Microsoft Hive ODBC 驱动程序 DSN 设置”窗口    。
+1. 选择“Microsoft Hive ODBC 驱动程序”，然后选择“完成”，打开“Microsoft Hive ODBC 驱动程序 DSN 设置”窗口  。
 
 1. 键入或选择以下值：
 
-   | properties | 说明 |
+   | 属性 | 说明 |
    | --- | --- |
    |  数据源名称 |为数据源提供名称 |
    |  主机 |输入 `CLUSTERNAME.azurehdinsight.net`。 例如： `myHDICluster.azurehdinsight.net` |
    |  端口 |使用 **443**。|
-   |  数据库 |使用“默认”  。 |
-   |  机制 |选择“Windows Azure HDInsight 服务”  |
+   |  数据库 |使用“默认”。 |
+   |  机制 |选择“Windows Azure HDInsight 服务” |
    |  用户名 |输入 HDInsight 群集 HTTP 用户的用户名。 默认的用户名为 **admin**。 |
-   |  密码 |输入 HDInsight 群集用户的密码。 选中“保存密码(已加密)”  复选框。|
+   |  密码 |输入 HDInsight 群集用户的密码。 选中复选框“保存密码(加密)”。|
 
-1. 可选：选择“高级选项”  。  
+1. 可选：选择“高级选项”。  
 
    | 参数 | 说明 |
    | --- | --- |
@@ -72,13 +72,13 @@ ms.locfileid: "73494322"
 
     ![高级 DSN 配置选项](./media/apache-hive-query-odbc-driver-powershell/odbc-data-source-advanced-options.png "高级 DSN 配置选项")
 
-1. 选择“测试”以测试数据源  。 如果数据源配置正确，测试结果会显示“成功”  。  
+1. 选择“测试”以测试数据源。 如果数据源配置正确，测试结果会显示“成功”。  
 
-1. 选择“确定”以关闭“测试”窗口  。  
+1. 选择“确定”以关闭“测试”窗口。  
 
-1. 选择“确定”以关闭“Microsoft Hive ODBC 驱动程序 DSN 设置”窗口   。  
+1. 选择“确定”以关闭“Microsoft Hive ODBC 驱动程序 DSN 设置”窗口 。  
 
-1. 选择“确定”以关闭“ODBC 数据源管理器”窗口   。  
+1. 选择“确定”以关闭“ODBC 数据源管理器”窗口 。  
 
 ## <a name="query-data-with-powershell"></a>使用 PowerShell 查询数据
 
@@ -109,7 +109,7 @@ function Get-ODBC-Data {
 }
 ```
 
-以下代码片段使用上述函数对你在本教程开头创建的交互式查询群集执行查询。 将 `DATASOURCENAME` 替换为已在“Microsoft Hive ODBC 驱动程序 DSN 设置”屏幕上指定的“数据源名称”   。 在系统提示输入凭据时，输入创建群集时在“群集登录用户名”和“群集登录密码”下输入的用户名和密码   。
+以下代码片段使用上述函数对你在本教程开头创建的交互式查询群集执行查询。 将 `DATASOURCENAME` 替换为已在“Microsoft Hive ODBC 驱动程序 DSN 设置”屏幕上指定的“数据源名称” 。 在系统提示输入凭据时，输入创建群集时在“群集登录用户名”和“群集登录密码”下输入的用户名和密码 。
 
 ```powershell
 
@@ -122,7 +122,7 @@ Get-ODBC-Data -query $query -dsn $dsn
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要资源组、HDInsight 群集和存储帐户，请将其删除。 为此，请选择已创建群集的资源组，然后单击“删除”  。
+如果不再需要资源组、HDInsight 群集和存储帐户，请将其删除。 为此，请选择已创建群集的资源组，然后单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
 

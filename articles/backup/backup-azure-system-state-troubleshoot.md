@@ -4,12 +4,12 @@ description: 本文介绍如何为本地 Windows 服务器解决系统状态备�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: e588ce4e3458634be32a7129b40906c98fc02ac0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: add54955def7df31f8e1688f56382067343616fe
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86513837"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763382"
 ---
 # <a name="troubleshoot-system-state-backup"></a>解决系统状态备份的问题
 
@@ -17,7 +17,7 @@ ms.locfileid: "86513837"
 
 ## <a name="basic-troubleshooting"></a>基本故障排除
 
-建议在开始对系统状态备份进行故障排除之前执行以下验证：
+建议你在开始排查系统状态备份之前执行以下验证步骤：
 
 - [确保 Microsoft Azure 恢复服务 (MARS) 代理是最新版本](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409)
 - [确保在 MARS 代理和 Azure 之间存在网络连接](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
@@ -42,7 +42,7 @@ ms.locfileid: "86513837"
 
 ## <a name="prerequisites"></a>先决条件
 
-使用 Azure 备份解决系统状态备份的问题之前，请检查以下先决条件。  
+在对 Azure 备份进行系统状态备份的故障排除之前，请执行以下先决条件检查。  
 
 ### <a name="verify-windows-server-backup-is-installed"></a>验证是否已安装 Windows Server 备份
 
@@ -77,20 +77,20 @@ Get-WindowsFeature Windows-Server-Backup
 3. 从服务器池中选择服务器，然后单击“下一步”。 在“服务器角色”中，保留默认选择，然后单击“下一步”。
 4. 在“功能”选项卡中，选择“Windows Server 备份”，然后单击“下一步”  。
 
-    ![features](./media/backup-azure-system-state-troubleshoot/features.png)
+    ![选择功能窗口](./media/backup-azure-system-state-troubleshoot/features.png)
 
 5. 在“确认”选项卡中，单击“安装”以启动安装进程 。
 6. “结果”选项卡中将显示 Windows Server 备份功能已成功安装到 Windows Server 上。
 
-    ![result](./media/backup-azure-system-state-troubleshoot/results.jpg)
+    ![安装结果](./media/backup-azure-system-state-troubleshoot/results.jpg)
 
 ### <a name="system-volume-information-permission"></a>系统卷信息权限
 
-确保本地系统可以完全控制安装有 Windows 的卷中的“系统卷信息”文件夹。 通常，该文件夹为 C:\System Volume Information。 如果未正确设置上述权限，则 Windows Server 备份可能会失败
+确保本地系统可以完全控制安装有 Windows 的卷中的“系统卷信息”文件夹。 通常，该文件夹为 C:\System Volume Information。 如果上面的权限设置不正确，Windows Server backup 可能会失败。
 
 ### <a name="dependent-services"></a>依赖的服务
 
-确保以下服务都处于“正在运行”状态：
+请确保下面的服务处于 "正在运行" 状态：
 
 **服务名称** | **启动类型**
 --- | ---
@@ -113,7 +113,7 @@ Microsoft 软件影子副本提供程序(SWPRV) | 手动
 
     - 如果失败并提示此错误，请在服务器计算机上重新安装 Windows Server 备份功能，如先决条件的步骤 1 中所述。
 
-  - 从权限提升的命令提示符运行以下命令，确保 WSB 备份正常工作：
+  - 通过从提升的命令提示符运行以下命令，确保 WSB 备份正常工作：
 
       `wbadmin start systemstatebackup -backuptarget:X: -quiet`
 

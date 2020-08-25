@@ -2,24 +2,24 @@
 title: StorSimple 8000 系列设备中的数据迁移选项
 description: 概述从 StorSimple 8000 系列迁移数据的选项。
 services: storsimple
-author: priestlg
+author: twooley
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.author: v-grpr
-ms.openlocfilehash: 39c78e1dc579f74207ba828f2f6a49ad44dd4a43
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: twooley
+ms.openlocfilehash: 92ab570b3e06d67d7986a8103e9622e95eb57e7e
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514704"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783903"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>用于从 StorSimple 8000 系列迁移数据的选项
 
 > [!IMPORTANT]
-> 2022年12月31日，StorSimple 8000 系列将达到支持终止（EOS）的状态。 建议将 StorSimple 8000 系列客户迁移到文档中所述的一种替代方案。
+> 2022年12月31日，StorSimple 8000 系列将 (EOS) 状态的支持终止。 建议将 StorSimple 8000 系列客户迁移到文档中所述的一种替代方案。
 
-StorSimple 8000 系列在12月 2022[结束支持](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)。 运行 StorSimple 8000 系列的客户可以选择升级到其他 Azure 第一方混合服务。 本文介绍可用于迁移数据的 Azure 混合选项。
+StorSimple 8000 系列在12月 2022 [结束支持](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series) 。 运行 StorSimple 8000 系列的客户可以选择升级到其他 Azure 第一方混合服务。 本文介绍可用于迁移数据的 Azure 混合选项。
 
 ## <a name="migration-options"></a>迁移选项
 
@@ -31,7 +31,7 @@ StorSimple 8000 系列在12月 2022[结束支持](https://support.microsoft.com/
 
 这种全新的迁移选项使客户能够将其组织的文件共享存储在 Azure 文件中。 然后可以集中这些文件共享，以使用 Azure 文件同步 (AFS) 进行本地访问。 可在 Windows Server 主机上部署 AFS。 然后，可以通过主机复制或迁移工具执行实际的数据迁移。
 
-有关如何将数据迁移到 Azure 文件同步的详细信息，请参阅[StorSimple 8100 和8600迁移到 Azure 文件同步](https://docs.microsoft.com/azure/storage/files/storage-files-migration-storsimple-8000)。
+有关如何将数据迁移到 Azure 文件同步的详细信息，请参阅 [StorSimple 8100 和8600迁移到 Azure 文件同步](https://docs.microsoft.com/azure/storage/files/storage-files-migration-storsimple-8000)。
 
 ### <a name="third-party-options"></a>第三方选项
 
@@ -43,7 +43,7 @@ Panzura 支持此迁移，客户可以通过在 [Panzura 网站](https://panzura
 
 #### <a name="migrate-to-nasuni"></a>迁移到 Nasuni
 
-使用 Nasuni 可以轻松地将整个 StorSimple 环境迁移到稳定、安全、高性能的文件服务平台。 Nasuni 提供本地文件存储的安全性和性能，同时将其与 Azure 的可伸缩性和持久性相结合。  作为一家领先的 Azure 独立软件供应商（ISV），Nasuni 提供了将 StorSimple 数据迁移到现代平台所需的所有工具，使您可以跨多个位置共享和协作处理您的文件。
+使用 Nasuni 可以轻松地将整个 StorSimple 环境迁移到稳定、安全、高性能的文件服务平台。 Nasuni 提供本地文件存储的安全性和性能，同时将其与 Azure 的可伸缩性和持久性相结合。  作为一家领先的 Azure 独立软件供应商 (ISV) ，Nasuni 提供了将 StorSimple 数据迁移到现代平台所需的所有工具，使你能够跨多个位置共享和协作处理你的文件。
 
 立即开始： [Nasuni 网站](https://info.nasuni.com/storsimple8000-webinar)。
 
@@ -71,7 +71,7 @@ Learn more about how to evolve to a cloud-consolidated enterprise at https://www
 
 ### <a name="q-when-do-the-storsimple-8000-series-devices-reach-end-of-service"></a>问： StorSimple 8000 系列设备何时到达服务结束？
 
-A. StorSimple 8000 系列在12月 2022[结束支持](https://support.microsoft.com/[lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)。 支持结束表示在2022年12月之后，Microsoft 将不再能够为这些设备的硬件和软件提供支持。 我们强烈建议立即开始制定计划，以从这些设备迁移数据。
+A. StorSimple 8000 系列在12月 2022 [结束支持](https://support.microsoft.com/[lifecycle/search?alpha=Azure%20StorSimple%208000%20Series) 。 支持结束表示在2022年12月之后，Microsoft 将不再能够为这些设备的硬件和软件提供支持。 我们强烈建议立即开始制定计划，以从这些设备迁移数据。
 
 ### <a name="q-what-happens-to-the-data-i-have-stored-in-azure"></a>问： 在 Azure 中存储的数据会发生什么情况？  
 
@@ -99,11 +99,11 @@ A. 是的。 支持迁移到使用数据主机复制的其他存储解决方案�
 
 ### <a name="q-is-migration-supported-by-microsoft"></a>问： Microsoft 是否为迁移提供支持？
 
-A. 从8000系列迁移是完全受支持的操作。 事实上，Microsoft 建议在开始迁移之前联系支持人员。 迁移当前是一项辅助的操作。 如果要从 StorSimple 8000 系列设备迁移数据，请[联系 storsimple 支持](mailto:storsimp@microsoft.com)部门。
+A. 从8000系列迁移是完全受支持的操作。 事实上，Microsoft 建议在开始迁移之前联系支持人员。 迁移当前是一项辅助的操作。 如果要从 StorSimple 8000 系列设备迁移数据，请 [联系 storsimple 支持](mailto:storsimp@microsoft.com)部门。
 
 ### <a name="q-what-is-the-pricing-model-for-migration-to-azure-file-sync"></a>问： 迁移到 Azure 文件同步的定价模型是什么？
 
-A. 使用 Azure 文件同步时，服务的订阅费用可能适用。 客户还需要支付持续的存储成本。 请参阅[AFS 定价]( https://azure.microsoft.com/pricing/details/storage/files/)了解估算值。
+A. 使用 Azure 文件同步时，服务的订阅费用可能适用。 客户还需要支付持续的存储成本。 请参阅 [AFS 定价]( https://azure.microsoft.com/pricing/details/storage/files/) 了解估算值。
 
 ### <a name="q-how-long-does-it-take-to-complete-a-migration"></a>问： 完成迁移需要多长时间？
 

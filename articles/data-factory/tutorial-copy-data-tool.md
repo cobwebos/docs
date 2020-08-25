@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 06/08/2020
 ms.openlocfilehash: 2165efd6b522d3809dba285cf2c3050fc50b2d28
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/10/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84660959"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>使用“复制数据”工具，将数据从 Azure Blob 存储复制到 SQL 数据库
@@ -93,7 +93,7 @@ ms.locfileid: "84660959"
 1. 选择要在其中创建新数据工厂的 Azure **订阅**。
 1. 对于“资源组”，请执行以下步骤之一：
 
-    a. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。
+    a. 选择“使用现有资源组”，并从下拉列表选择现有的资源组。 
 
     b. 选择“新建”，并输入资源组的名称。
     
@@ -134,7 +134,7 @@ ms.locfileid: "84660959"
 
     b. 单击“下一步”转到下一步骤。
 
-1. 在“文件格式设置”页面上，选中“第一行作为标题”复选框。 注意，该工具会自动检测列分隔符与行分隔符。 选择“**下一页**”。 还可以在此页中预览数据，以及查看输入数据的架构。
+1. 在“文件格式设置”页面上，选中“第一行作为标题”复选框。 注意，该工具会自动检测列分隔符与行分隔符。 选择“**下一步**”。 还可以在此页中预览数据，以及查看输入数据的架构。
 
     ![文件格式设置](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 1. 在“目标数据存储”页上，完成以下步骤：

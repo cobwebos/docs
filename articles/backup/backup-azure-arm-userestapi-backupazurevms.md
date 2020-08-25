@@ -4,12 +4,12 @@ description: 本文介绍如何使用 REST API 配置、启动和管理 Azure VM
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 48b5a8c596ec5b23d2962acb9c1f95a1d5aafbc0
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 89bf2df0b5b9279053ca8258e6d21b00e2789557
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761672"
+ms.locfileid: "88762872"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>通过 REST API 使用 Azure 备份来备份 Azure VM
 
@@ -162,7 +162,7 @@ X-Powered-By: ASP.NET
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>为 Azure VM 启用保护
 
-在“缓存”和“识别”相关 VM 后，选择要保护的策略。 若要了解有关保管库中现有策略的更多信息，请参阅[列出策略 API](/rest/api/backup/backuppolicies/list)。 然后，通过引用策略名称来选择[相关策略](/rest/api/backup/protectionpolicies/get)。 若要创建策略，请参阅[创建策略教程](backup-azure-arm-userestapi-createorupdatepolicy.md)。 下面的示例中选择了“DefaultPolicy”。
+在“缓存”和“识别”相关 VM 后，选择要保护的策略。 若要了解有关保管库中现有策略的更多信息，请参阅[列出策略 API](/rest/api/backup/backuppolicies/list)。 然后，通过引用策略名称来选择[相关策略](/rest/api/backup/protectionpolicies/get)。 若要创建策略，请参阅[创建策略教程](backup-azure-arm-userestapi-createorupdatepolicy.md)。 下面的示例中选择了 "DefaultPolicy"。
 
 启用保护是一种异步 PUT 操作，可创建“受保护的项”。
 
@@ -445,9 +445,9 @@ DELETE 操作是一种[异步操作](../azure-resource-manager/management/async-
 |202 已接受     |         |     已接受    |
 
 > [!IMPORTANT]
-> 为了防止意外删除方案，有一个可用于恢复服务保管库的 [软删除功能](use-restapi-update-vault-properties.md#soft-delete-state) 。 如果保管库的软删除状态设置为“已启用”，则删除操作不会立即删除数据。 数据会保留 14 天，然后才会被永久清除。 在这个 14 天内不会向客户收取存储费用。 若要撤消删除操作，请参阅[“撤消删除”部分](#undo-the-stop-protection-and-delete-data)。
+> 为了防止意外删除方案，有一个可用于恢复服务保管库的 [软删除功能](use-restapi-update-vault-properties.md#soft-delete-state) 。 如果保管库的软删除状态设置为“已启用”，则删除操作不会立即删除数据。 数据会保留 14 天，然后才会被永久清除。 在这个 14 天内不会向客户收取存储费用。 若要撤消删除操作，请参阅[“撤消删除”部分](#undo-the-deletion)。
 
-### <a name="undo-the-stop-protection-and-delete-data"></a>撤消“停止保护并删除数据”
+### <a name="undo-the-deletion"></a>撤消删除
 
 撤消意外删除类似于创建备份项。 撤消删除后，会保留该项，但不会触发任何将来的备份。
 

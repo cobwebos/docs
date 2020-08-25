@@ -1,15 +1,15 @@
 ---
 title: 创建区块链应用程序 - Azure Blockchain Workbench
 description: 有关如何在 Azure Blockchain Workbench 预览版中创建区块链应用程序的教程。
-ms.date: 10/14/2019
+ms.date: 08/24/2020
 ms.topic: tutorial
-ms.reviewer: brendal
-ms.openlocfilehash: 7be79757f506ea9fb854a248e77f0ff4f1b74f47
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.reviewer: ravastra
+ms.openlocfilehash: add790a069d2e0ea66d84bbd632825cf9331fd38
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073117"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88784022"
 ---
 # <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>教程：创建适用于 Azure Blockchain Workbench 的区块链应用程序
 
@@ -40,7 +40,7 @@ ms.locfileid: "87073117"
 
 ## <a name="configuration-file"></a>配置文件
 
-配置元数据定义区块链应用程序的高级工作流和交互模型。 配置元数据表示区块链应用程序的工作流阶段和交互模型。
+配置元数据定义区块链应用程序的高级工作流和交互模型。 配置元数据表示区块链应用程序的工作流阶段和交互模型。 有关配置文件内容的详细信息，请参阅 [Azure 区块链工作流配置参考](configuration.md)。
 
 1. 在偏好的编辑器中，创建名为 `HelloBlockchain.json` 的文件。
 2. 添加以下 JSON 以定义区块链应用程序的配置。
@@ -211,8 +211,6 @@ ms.locfileid: "87073117"
 ### <a name="workflows"></a>工作流
 
 工作流定义合约的一个或多个阶段与操作。 在请求-响应方案中，工作流的第一个阶段（状态）是请求方（角色）执行某个操作（转换）以发送请求（函数）。 下一个阶段（状态）是响应方（角色）执行某个操作（转换）以发送响应（函数）。 应用程序的工作流可能涉及到描述合约流所需的属性、函数和状态。
-
-有关配置文件内容的详细信息，请参阅 [Azure 区块链工作流配置参考](configuration.md)。
 
 ## <a name="smart-contract-code-file"></a>智能合约代码文件
 

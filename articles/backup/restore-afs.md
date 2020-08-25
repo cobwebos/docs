@@ -3,12 +3,12 @@ title: 还原 Azure 文件共享
 description: 了解如何使用 Azure 门户从 Azure 备份创建的还原点还原整个文件共享或特定文件。
 ms.topic: conceptual
 ms.date: 01/12/2020
-ms.openlocfilehash: 92cc40d1a6b332ab524049322eb2d1afcb76082e
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: bb846c4615377259a1c17653cc26e96f37dc32ec
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761842"
+ms.locfileid: "88762815"
 ---
 # <a name="restore-azure-file-shares"></a>还原 Azure 文件共享
 

@@ -4,12 +4,12 @@ description: 了解虚拟机的软删除如何使备份更安全。
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
-ms.openlocfilehash: e447db2c3f862d2f577a9e7d8767946375abf4e0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 19de26024a6a31a213130ec419132fd7dd8134a0
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86503534"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763688"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>虚拟机的软删除
 
@@ -25,7 +25,7 @@ VM 的软删除可保护 VM 的备份免遭意外删除。 即使删除了备份
 
 ## <a name="soft-delete-for-vms-using-azure-portal"></a>使用 Azure 门户对 VM 进行软删除
 
-1. 若要删除 VM 的备份数据，必须停止备份。 在 Azure 门户中转到你的恢复服务保管库，右键单击备份项，然后选择“停止备份”。****
+1. 若要删除 VM 的备份数据，必须停止备份。 在 Azure 门户中，请参阅恢复服务保管库，右键单击备份项，然后选择 " **停止备份**"。
 
    ![Azure 门户中备份项的屏幕截图](./media/backup-azure-security-feature-cloud/backup-stopped.png)
 
@@ -33,12 +33,12 @@ VM 的软删除可保护 VM 的备份免遭意外删除。 即使删除了备份
 
    ![Azure 门户中“停止备份”屏幕的屏幕截图](./media/backup-azure-security-feature-cloud/delete-backup-data.png)
 
-3. 在这 14 天内，恢复服务保管库中已软删除的 VM 旁边会显示一个红色的“软删除”图标。
+3. 在14天内，在恢复服务保管库中，软删除的 VM 旁边会显示一个红色的 "软删除" 图标。
 
    ![Azure 门户中处于软删除状态的 VM 的屏幕截图](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
    > [!NOTE]
-   > 如果保管库中存在任何已软删除的备份项，此时无法删除该保管库。 请在永久删除了备份项，并且保管库中未留下任何处于软删除状态的项之后，尝试删除保管库。
+   > 如果保管库中存在任何已软删除的备份项，此时无法删除该保管库。 在永久删除备份项后，尝试删除保管库，保管库中没有剩余的软删除状态项。
 
 4. 若要还原软删除的 VM，必须先将其取消删除。 若要取消删除，请选择软删除的 VM，然后选择“取消删除”选项。****
 
@@ -110,7 +110,7 @@ AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM
 ## <a name="soft-delete-for-vms-using-rest-api"></a>使用 REST API 对 VM 进行软删除
 
 - 如[此处](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)所述，使用 REST API 删除备份。
-- 如果用户想要撤消这些删除操作，请参阅[此处](backup-azure-arm-userestapi-backupazurevms.md#undo-the-stop-protection-and-delete-data)所述的步骤。
+- 如果用户想要撤消这些删除操作，请参阅[此处](backup-azure-arm-userestapi-backupazurevms.md#undo-the-deletion)所述的步骤。
 
 ## <a name="how-to-disable-soft-delete"></a>如何禁用软删除
 

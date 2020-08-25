@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: a77bb5211d13f9b0566f4226163918a5310287bd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ed5c0a140c69e9042fc9b85589719a54b65e985e
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075721"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763127"
 ---
 # <a name="partitioning-tables-in-synapse-sql-pool"></a>在 Synapse SQL 池中对表进行分区
 
@@ -249,11 +249,11 @@ UPDATE STATISTICS [dbo].[FactInternetSales];
 
 ### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>通过一个步骤将新数据加载到包含数据的分区中
 
-将数据加载到分区切换的分区是一种简便的方法，可以在对用户不可见的表中暂存新数据。  在繁忙且需要处理与分区切换相关联的锁定争用的系统中，这可能很具挑战性。  
+将数据加载到使用分区开关的分区中，可以很方便地将新数据暂存在对用户不可见的表中。  在繁忙且需要处理与分区切换相关联的锁定争用的系统中，这可能很具挑战性。  
 
 在过去，若要清除分区中的现有数据，需要使用 `ALTER TABLE` 将数据切换出来，  然后需要使用另一 `ALTER TABLE` 将新数据切换进去。  
 
-在 Synapse SQL 池中，支持在 `ALTER TABLE` 命令中使用 `TRUNCATE_TARGET` 选项。  带 `TRUNCATE_TARGET` 的 `ALTER TABLE` 命令会使用新数据覆盖分区中的现有数据。  下面的示例使用 `CTAS` 创建包含现有数据的新表、插入新数据，然后将所有数据切换回目标表，并覆盖现有数据。
+在 Synapse SQL 池中，支持在 `ALTER TABLE` 命令中使用 `TRUNCATE_TARGET` 选项。  带 `TRUNCATE_TARGET` 的 `ALTER TABLE` 命令会使用新数据覆盖分区中的现有数据。  下面是一个示例。此示例使用 `CTAS` 创建一个包含现有数据的新表，插入新数据，然后将所有数据切换回目标表中，覆盖现有的数据。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]
@@ -355,7 +355,7 @@ ALTER TABLE dbo.FactInternetSales_NewSales SWITCH PARTITION 2 TO dbo.FactInterne
     DROP TABLE #partitions;
     ```
 
-使用此方法时，源代码管理中的代码将保持静态，而分区边界值允许动态;随着时间的推移，数据库不断发展。
+使用这种方法时，源代码管理中的代码保持静态，允许动态的分区边界值，并不断地与数据库一起演进。
 
 ## <a name="next-steps"></a>后续步骤
 

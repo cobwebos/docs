@@ -11,10 +11,10 @@ ms.date: 02/14/2020
 ms.topic: include
 ms.author: diberry
 ms.openlocfilehash: 8901f107ca2af609059670a0b31184080849d2b6
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "87375648"
 ---
 通过 pattern.any 实体，可找到自由格式数据，其中实体的用语方式比较晦涩，难以从话语的其余部分来确定实体的结尾。
