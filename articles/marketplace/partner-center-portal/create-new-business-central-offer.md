@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 08/07/2020
-ms.openlocfilehash: 0d00f779031ec294523c861a4e9868f7cbbe790d
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 4226f9cc45589b8c555d3d54918e31a04acbfc6b
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606134"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817045"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Dynamics 365 Business Central 产品/服务
 
@@ -182,16 +182,16 @@ ms.locfileid: "88606134"
 
 ### <a name="marketplace-images"></a>市场映像
 
-提供适合你的产品/服务的徽标和图像。 所有图像都必须为 PNG 格式。 
+提供 **大** 徽标徽标的 PNG 文件。 合作伙伴中心将使用此来创建 **小** 徽标。 稍后，可以选择将此替换为其他映像。
 
-[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+- **大型** (从 216 x 216 到 350 x 350 px，必需) 
+- **小写** (48 x 48 px，可选) 
 
-按两种大小上传产品/服务徽标：
-
-* 小（48 x 48 像素）
-* 大（216 x 216 像素）
+在列表中的不同位置使用这些徽标：
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 >[!NOTE]
 >如果在上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 `https://upload.xboxlive.com` 服务。
@@ -208,7 +208,7 @@ ms.locfileid: "88606134"
 
 [市场产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)
 
-选择“保存草稿”，然后继续。
+选择“保存草稿”，然后继续操作。
 
 ## <a name="availability"></a>可用性
 
@@ -229,11 +229,11 @@ ms.locfileid: "88606134"
 
 ### <a name="preview-audience"></a>预览版受众
 
-在将产品/服务发布到更广泛的市场产品/服务前，需要先将其提供给有限的预览版受众。 在此处输入隐藏密钥（任何只使用小写字母和/或数字的字符串）。 预览版受众的成员可以将此隐藏密钥用作令牌，以查看市场中产品/服务的预览。
+在将产品/服务发布到更广泛的市场产品/服务前，需要先将其提供给有限的预览版受众。 在此处输入隐藏密钥（任何只使用小写字母和/或数字的字符串）。 预览版受众的成员可以将此隐藏密钥用作令牌，以查看市场中产品/服务的预览版。
 
 然后，当你准备好提供产品/服务并删除预览限制时，需要删除该隐藏密钥并再次发布。
 
-选择“保存草稿”，然后继续。
+选择“保存草稿”，然后继续操作。
 
 ## <a name="technical-configuration"></a>技术配置
 
@@ -270,9 +270,9 @@ ms.locfileid: "88606134"
 
 ## <a name="test-drive-technical-configuration"></a>体验版技术配置
 
-在此页中可以设置演示（“体验版”），让客户可在购买之前试用你的产品/服务。 有关详细信息 [，请参阅什么是测试驱动器](../what-is-test-drive.md)。
+可使用此页设置演示（“体验版”），让客户可在购买之前试用你的产品/服务。 有关详细信息 [，请参阅什么是测试驱动器](../what-is-test-drive.md)。
 
-若要启用体验版，请在[产品/服务设置](#test-drive)选项卡上选中“启用体验版”复选框。若要从产品/服务中删除体验版，请清除此复选框。
+若要启用体验版，请在[“产品/服务设置”](#test-drive)选项卡上选中“启用体验版”复选框。若要从产品/服务中删除体验版，请取消选中此复选框。
 
 完成设置测试驱动器后，请选择 " **保存草稿** "，然后继续。
 

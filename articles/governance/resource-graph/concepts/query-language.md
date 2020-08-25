@@ -1,14 +1,14 @@
 ---
 title: 理解查询语言
 description: 介绍 Resource Graph 表以及可用于 Azure Resource Graph 的 Kusto 数据类型、运算符和函数。
-ms.date: 08/21/2020
+ms.date: 08/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: ea274c349c968852b77f3c3f2d39637f91484335
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.openlocfilehash: 4d7ca949e9eef075adb130bb84b2617749950bec
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88723428"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798544"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>了解 Azure Resource Graph 查询语言
 
@@ -63,6 +63,25 @@ Resources
 
 > [!NOTE]
 > 限制具有 `project` 的 `join` 结果时，`join` 用于关联两个表的属性（在上述示例中为 subscriptionId）必须包含在 `project` 中。
+
+## <a name="extended-properties-preview"></a><a name="extended-properties"></a> (预览的扩展属性) 
+
+作为 _预览_ 功能，资源图中的某些资源类型具有其他与类型相关的属性，可用于查询 Azure 资源管理器提供的属性以外的其他类型。 这组值（称为 " _扩展属性_"）存在于中支持的资源类型 `properties.extended` 。 若要查看哪些资源类型具有 _扩展属性_，请使用以下查询：
+
+```kusto
+Resources
+| where isnotnull(properties.extended)
+| distinct type
+| order by type asc
+```
+
+示例：获取虚拟机计数，按 `instanceView.powerState.code` ：
+
+```kusto
+Resources
+| where type == 'microsoft.compute/virtualmachines'
+| summarize count() by tostring(properties.extended.instanceView.powerState.code)
+```
 
 ## <a name="resource-graph-custom-language-elements"></a>资源关系图自定义语言元素
 
@@ -123,8 +142,7 @@ Resources
 查询从中返回资源的订阅的作用域取决于访问资源关系图的方法。 Azure CLI 和 Azure PowerShell 根据授权用户的上下文填充要包含在请求中的订阅列表。 可以分别为每**个订阅的订阅和****订阅**参数分别定义订阅列表。
 在 REST API 和所有其他 Sdk 中，必须在请求中显式定义要包含的资源的订阅列表。
 
-作为 **预览**，REST API 版本 `2020-04-01-preview` 将添加一个属性，用于将查询范围限定为 [管理组](../../management-groups/overview.md)。 此预览 API 还可选择订阅属性。 如果管理组或订阅列表均未定义，则查询范围是经过身份验证的用户可以访问的所有资源。 新 `managementGroupId` 属性采用管理组 ID，该 ID 不同于管理组的名称。
-当 `managementGroupId` 指定时，将包含指定管理组层次结构中或下的前5000个订阅中的资源。 `managementGroupId` 不能与一起使用 `subscriptions` 。
+作为 **预览**，REST API 版本 `2020-04-01-preview` 将添加一个属性，用于将查询范围限定为 [管理组](../../management-groups/overview.md)。 此预览 API 还可选择订阅属性。 如果未定义管理组或订阅列表，则查询范围是经过身份验证的用户可以访问的所有资源。 新 `managementGroupId` 属性采用管理组 ID，该 ID 不同于管理组的名称。 当 `managementGroupId` 指定时，将包含指定管理组层次结构中或下的前5000个订阅中的资源。 `managementGroupId` 不能与一起使用 `subscriptions` 。
 
 示例：查询名为 "我的管理组"、ID 为 "myMG" 的管理组层次结构中的所有资源。
 

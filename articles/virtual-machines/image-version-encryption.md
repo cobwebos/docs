@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 0d2b840b401dc90b332f91c93a9eda03d6643432
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.openlocfilehash: 21e6dc5a975f43456a077559eebafd975cea66a1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/15/2020
-ms.locfileid: "88245547"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816484"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>预览版：使用客户管理的密钥加密映像
 
@@ -27,9 +27,9 @@ ms.locfileid: "88245547"
 
 本文要求您已将磁盘加密设置为可用于映像。
 
-- 若要仅使用客户托管的密钥，请参阅使用[Azure 门户](./windows/disks-enable-customer-managed-keys-portal.md)或[PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset)**启用使用服务器端加密的客户管理**的密钥。
+- 若要仅使用客户托管的密钥，请参阅使用[Azure 门户](./disks-enable-customer-managed-keys-portal.md)或[PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset)**启用使用服务器端加密的客户管理**的密钥。
 
-- 若要同时使用平台管理的密钥和客户托管的密钥 (进行双重加密) ，请参阅使用[Azure 门户](./windows/disks-enable-double-encryption-at-rest-portal.md)或[PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md)**启用静态加密**。
+- 若要同时使用平台管理的密钥和客户托管的密钥 (进行双重加密) ，请参阅使用[Azure 门户](./disks-enable-double-encryption-at-rest-portal.md)或[PowerShell](./windows/disks-enable-double-encryption-at-rest-powershell.md)**启用静态加密**。
     > [!IMPORTANT]
     > 必须使用此链接 [https://aka.ms/diskencryptionupdates](https://aka.ms/diskencryptionupdates) 访问 Azure 门户。 双重加密当前在公共 Azure 门户中不可见，不使用链接。
 

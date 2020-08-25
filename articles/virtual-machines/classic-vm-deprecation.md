@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: tagore
-ms.openlocfilehash: c1807da76fe25d31581a07706489967d6e83f748
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0b2b995a6fe4cedd14b2e4ceeddc5747ec2423cf
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505302"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88754797"
 ---
 # <a name="migrate-your-iaas-resources-to-azure-resource-manager-by-march-1-2023"></a>请于 2023 年 3 月 1 日之前将 IaaS 资源迁移到 Azure 资源管理器 
 
@@ -39,6 +39,8 @@ ms.locfileid: "88505302"
 
 - 立即开始规划到 Azure 资源管理器的迁移。 
 
+- 列出所有受影响的 Vm。 [Azure 门户 Vm 边栏选项卡](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ClassicCompute%2FVirtualMachines)上的 vm 类型 "虚拟机 (经典) " 是订阅中所有受影响的 vm。 
+
 - [详细了解](./windows/migration-classic-resource-manager-overview.md)如何将经典 [Linux](./linux/migration-classic-resource-manager-plan.md) 和 [Windows](./windows/migration-classic-resource-manager-plan.md) VM 迁移到 Azure 资源管理器。
 
 - 有关详细信息，请参阅[有关从经典部署模型迁移到 Azure 资源管理器部署模型的常见问题](./migration-classic-resource-manager-faq.md)
@@ -57,5 +59,5 @@ ms.locfileid: "88505302"
 
 - [Microsoft 快速跟踪](https://www.microsoft.com/fasttrack)： Microsoft 快速跟踪团队可以在迁移到符合条件的客户时提供技术帮助。 
 
-- 如果你的公司/组织已与 microsoft 合作，并/或与 Microsoft 代表（如 (云解决方案架构师 (CSA) 、技术客户经理 (Tam) # A5）合作，请与他们合作以获得更多的迁移资源。 
+- 如果你的公司/组织已与 Microsoft 合作，并/或与 Microsoft 代表（如 (云解决方案架构师 (CSA) 、技术客户经理 (Tam) # A5）合作，请与他们合作以获得更多的迁移资源。 
 

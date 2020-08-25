@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 159cdef6b2c831e8c20d7249334bebac4f2061c5
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 93e7a720e9d39eca6d808c8c49b3b340226997ff
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606124"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817028"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>创建 Dynamics 365 for Customer Engagement & PowerApps 产品/服务
 
@@ -197,12 +197,16 @@ ms.locfileid: "88606124"
 
 #### <a name="store-logos"></a>应用商店徽标
 
-提供以下三个像素大小的产品/服务徽标：
-- **小**（必需；48 x 48）
-- **大**（必需；216 x 216）
-- **宽**（可选；255 x 115）
+提供 **大** 徽标徽标的 PNG 文件。 合作伙伴中心将使用此来创建 **小** 徽标。 稍后，可以选择将此替换为其他映像。
+
+- **大型** (从 216 x 216 到 350 x 350 px，必需) 
+- **小写** (48 x 48 px，可选) 
+
+在列表中的不同位置使用这些徽标：
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>屏幕截图
 

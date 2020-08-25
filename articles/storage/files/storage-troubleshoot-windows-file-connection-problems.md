@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 322a3b4e8d362d1b751b2c016e6f7cf904f11d7e
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: e9384dd3865b106488dc8ec303b060736f23ded7
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752340"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797779"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
@@ -369,7 +369,7 @@ Cmdlet 按顺序执行以下检查，并为故障提供指导：
 
 ### <a name="error-the-directory-service-was-unable-to-allocate-a-relative-identifier"></a>错误： "目录服务无法分配相对标识符"
 
-如果包含 RID 主机 FSMO 角色的域控制器不可用或已从域中删除并已从备份还原，则可能会发生这种错误。  确认所有域控制器都正在运行且可用。
+如果保留 RID 主机 FSMO 角色的域控制器不可用或已从域中删除并已从备份还原，则可能出现此错误。  确认所有域控制器都正在运行且可用。
 
 ### <a name="error-cannot-bind-positional-parameters-because-no-names-were-given"></a>错误： “无法绑定位置参数，因为未指定名称”
 
