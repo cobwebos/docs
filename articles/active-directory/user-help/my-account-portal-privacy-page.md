@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: ec050f3dfd2537f8cffde353772d61c32cb9d676
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 5104783aff5684471819ecf04e965670fff2798b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422348"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798136"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>查看组织如何使用与隐私相关的数据
 
@@ -30,7 +30,7 @@ ms.locfileid: "87422348"
 
     !["我的帐户" 页，& 隐私链接显示突出显示的设置](media/my-account-portal/my-account-portal-privacy.png)
 
-3. 选择 "**隐私**"，如下面的示例屏幕截图所示，然后查看信息，其中包括：
+3. 选择 " **隐私**"，如下面的示例屏幕截图所示，然后查看信息，其中包括：
 
     !["设置" & "隐私" 页，显示突出显示的隐私选项卡选项](media/my-account-portal/my-account-portal-privacy-tab.png)
 
@@ -42,7 +42,7 @@ ms.locfileid: "87422348"
 
 查看组织如何使用自己的数据后，可以执行以下操作：
 
-- 查看或管理[安全信息](user-help-security-info-overview.md)。
+- 查看或管理[安全信息](./security-info-setup-signin.md)。
 
 - 查看或管理已连接的[设备](my-account-portal-devices-page.md)。
 

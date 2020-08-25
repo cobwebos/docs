@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 2fc87f08b30d648ec38d2b93e96a32d125b856be
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 039f7343bcef64db9ad9eae558cd3e97f3678c59
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757908"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88799275"
 ---
 # <a name="business-card-concepts"></a>名片概念
 
@@ -70,7 +70,7 @@ Azure 窗体识别器可以使用其预生成模型之一来分析和提取名�
 
 当 " **状态** " 字段的值为 " **成功** " 时，JSON 响应将包括 "业务卡理解" 和 "文本识别" 结果。 业务卡理解结果被组织为命名字段值的字典，其中每个值都包含提取的文本、规范化值、边界框、置信度和对应的单词元素。 文本识别结果组织为带有文本、边界框和置信度信息的线条和单词的层次结构。
 
-![Contoso smample 结果](./media/business-card-results.png)
+![示例名片输出](./media/business-card-results.png)
 
 ### <a name="sample-json-output"></a>示例 JSON 输出
 
@@ -90,8 +90,8 @@ Azure 窗体识别器可以使用其预生成模型之一来分析和提取名�
                 "width": 4032,
                 "height": 3024,
                 "unit": "pixel",
-    "lines": 
-         {
+                "lines": 
+                          {
                         "text": "Dr. Avery Smith",
                         "boundingBox": [
                             419.3,

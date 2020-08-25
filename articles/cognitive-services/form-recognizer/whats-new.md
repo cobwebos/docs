@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: b3485ebbdf9cf428b09364b73197220e02e9ffa8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: ddd1f61ada539ebb00341dd83919f1c851a0f3e1
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751074"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816365"
 ---
 # <a name="whats-new-in-form-recognizer"></a>表单识别器的新增功能
 
@@ -28,12 +28,12 @@ ms.locfileid: "88751074"
 
 
 - **REST API 引用可用** -请参阅 ws [2.1-preview. 1 引用](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-1/operations/AnalyzeBusinessCardAsync) 
-- **除了英语以外**，还支持以下语言：对于 `Layout` 和 `Train Custom Model` ：英语 (EN) ，中文 (简化的)  (zh-chs-zh-chs) 、荷兰语 (NL) 、法语 (FR) 、德语 (DE) 、意大利语 ()  ()  () 。
+- **除了英语以外**，还支持以下 [语言](language-support.md) ：对于 `Layout` 和 `Train Custom Model` ：英语 (`en`) ，中文 (简化)  () `zh-Hans` 、荷兰语 (`nl`) 、法语 () `fr` 、德语 (`de`) 、意大利语 (`it`) 、葡萄牙语 (`pt`) 和西班牙语 (`es`) 。
 - **复选框/选择标记检测** -窗体识别器支持检测和提取选中标记（如复选框和单选按钮）。 选择标记是在中提取的 `Layout` ，你现在还可以在 "带标签的定型" 中标记和定型， `Train Custom Model`  -  _Train with Labels_以便提取选择标记的键值对。 
 - **模型撰写** 允许使用单个模型 ID 编写和调用多个模型。 提交要使用组合模型 ID 分析的文档时，首先会执行分类步骤以将其路由到正确的自定义模型。 模型撰写可用于对 `Train Custom Model`  -  _标签进行定型_。
 - **模型名称** 将友好名称添加到自定义模型，以便更轻松地进行管理和跟踪。
-- **新的智能卡预建模型** ，用于提取英语、语言名片中的公共字段。
-- 除 EN-US 外，**预建收据的新区域设置**现可用于 EN-US、en CA、EN-GB、en
+- **[新的智能卡预建模型](concept-business-cards.md)** ，用于提取英语、语言名片中的公共字段。
+- 除 EN-US 外，**[预建收据的新区域设置](concept-receipts.md)** 现可用于 EN-US、en CA、EN-GB、en
 - **质量改进** `Layout` ， `Train Custom Model`  -  _无标签定型_，并_为标签定型_。
 
 
@@ -43,6 +43,7 @@ v2.0**包含以下**更新：
 
 GitHub 上提供了**新的示例**。 
 - [知识提取食谱-窗体操作手册](https://github.com/microsoft/knowledge-extraction-recipes-forms)从真实的窗体识别器客户约定中收集最佳实践，并提供用于开发这些项目的可用代码示例、清单和示例管道。 
+- [示例标记工具](https://github.com/microsoft/OCR-Form-Tools)已更新，以支持新的2.1 版功能。 请参阅此 [快速入门](quickstarts/label-tool.md) ，了解如何开始学习此工具。 
 - [智能展台](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md)窗体识别器示例显示了如何集成 `Analyze Receipt` 和 `Train Custom Model`  -  _定型无标签_。
 
 

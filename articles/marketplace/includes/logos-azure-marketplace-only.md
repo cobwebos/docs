@@ -7,14 +7,14 @@ ms.topic: include
 author: dannyevers
 ms.author: mingshen
 ms.reviewer: trkeya
-ms.date: 08/07/2020
-ms.openlocfilehash: 5dcf1f932e72473b6d4bc2442b19b5a674becaa4
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.date: 08/18/2020
+ms.openlocfilehash: 3659b9dbdd6108a650ffc44169bed1d33b140345
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88031476"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815618"
 ---
--   小徽标 (48 x 48 像素) 出现在 Azure Marketplace 搜索结果中。
--   当你在 Microsoft Azure 中创建新资源时，将显示中等徽标 (90 x 90 像素) 。
--   ) 在 Azure Marketplace 中的产品/服务列表页上， (216 x 216 和 350 x 350 像素之间的大徽标。
+- 大徽标显示在 Azure Marketplace 中的产品/服务列表页上。
+- 在 Microsoft Azure 中创建新资源时，将显示 "中 (可选) 。
+- 小徽标 (可选) 出现在 Azure Marketplace 搜索结果中。

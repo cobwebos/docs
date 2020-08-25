@@ -5,12 +5,12 @@ author: eamonoreilly
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 04/22/2019
-ms.openlocfilehash: dd3978ee1f371d59119e406c5f023718d57ad99b
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 206f941360b5c7912db548c6d2cfdc9d3d6a41dc
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642208"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816399"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell 开发人员指南
 
@@ -77,8 +77,8 @@ $TriggerMetadata.sys
 | 属性   | 说明                                     | 类型     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | 当触发函数时，采用 UTC 格式        | DateTime |
-| MethodName | 触发的函数的名称     | 字符串   |
-| RandGuid   | 此函数执行的唯一 guid | 字符串   |
+| MethodName | 触发的函数的名称     | string   |
+| RandGuid   | 此函数执行的唯一 guid | string   |
 
 每个触发器类型都有一组不同的元数据。 例如，的 `$TriggerMetadata` `QueueTrigger` 包含、、等 `InsertionTime` `Id` `DequeueCount` 。 有关队列触发器的元数据的详细信息，请参阅 [队列触发器的官方文档](functions-bindings-storage-queue-trigger.md#message-metadata)。 查看正在处理的 [触发器](functions-triggers-bindings.md) 的相关文档，了解触发器元数据内部的内容。
 
@@ -227,7 +227,7 @@ MyQueue                        myData
 
  ( * ) 支持通配符 `Get-OutputBinding` 。
 
-## <a name="logging"></a>日志记录
+## <a name="logging"></a>Logging
 
 PowerShell 函数中的日志记录类似于常规的 PowerShell 日志记录。 您可以使用日志记录 cmdlet 来写入每个输出流。 每个 cmdlet 都映射到函数使用的日志级别。
 
@@ -276,10 +276,10 @@ Azure Functions 允许您定义阈值级别，以便轻松控制函数写入日�
 所有触发器和绑定在代码中表示为一些真实的数据类型：
 
 * Hashtable
-* 字符串
+* string
 * byte[]
 * int
-* double
+* Double
 * HttpRequestContext
 * HttpResponseContext
 
@@ -299,10 +299,10 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | 一个包含请求正文的对象。 `Body` 基于数据序列化为最佳类型。 例如，如果数据是 JSON，则以哈希表形式传递。 如果数据是字符串，则以字符串的形式传递。 | 对象 (object) |
 | **`Headers`** | 包含请求标头的字典。                | Dictionary<string，string><sup>*</sup> |
-| **`Method`** | 请求的 HTTP 方法。                                | 字符串                    |
+| **`Method`** | 请求的 HTTP 方法。                                | string                    |
 | **`Params`**  | 一个包含请求的路由参数的对象。 | Dictionary<string，string><sup>*</sup> |
 | **`Query`** | 一个包含查询参数的对象。                  | Dictionary<string，string><sup>*</sup> |
-| **`Url`** | 请求的 URL。                                        | 字符串                    |
+| **`Url`** | 请求的 URL。                                        | string                    |
 
 <sup>*</sup> 所有 `Dictionary<string,string>` 键都不区分大小写。
 
@@ -313,7 +313,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 | 属性      | 说明                                                 | 类型                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | 一个包含响应正文的对象。           | 对象 (object)                    |
-| **`ContentType`** | 用于设置响应的内容类型的简短内容。 | 字符串                    |
+| **`ContentType`** | 用于设置响应的内容类型的简短内容。 | string                    |
 | **`Headers`** | 一个包含响应标头的对象。               | 字典或哈希表   |
 | **`StatusCode`**  | 响应的 HTTP 状态代码。                       | 字符串或整数             |
 
@@ -375,7 +375,7 @@ param([string] $myBlob)
 
 在 PowerShell 中，有一个 PowerShell 配置文件的概念。 如果你不熟悉 PowerShell 配置文件，请参阅 [关于配置文件](/powershell/module/microsoft.powershell.core/about/about_profiles)。
 
-在 PowerShell 函数中，配置文件脚本在函数应用启动时执行。 函数应用在第一次部署时开始，在空闲后开始)  ([冷启动](#cold-start) 。
+在 PowerShell 函数中，在首次部署时，会在应用中为每个 PowerShell 辅助角色实例执行一次配置文件脚本，在空闲 ([冷启动](#cold-start)之后执行。 如果通过设置 [PSWorkerInProcConcurrencyUpperBound](#concurrency) 值启用并发，则会为创建的每个运行空间运行配置文件脚本。
 
 使用工具（如 Visual Studio Code 和 Azure Functions Core Tools）创建函数应用时，将 `profile.ps1` 为您创建一个默认值。 默认配置文件将保留 [在核心工具 GitHub 存储库中](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1) ，并包含：
 
@@ -417,7 +417,10 @@ param([string] $myBlob)
 更新 requirements.psd1 文件时，将在重新启动后安装更新的模块。
 
 > [!NOTE]
-> 托管依赖项需要对 www.powershellgallery.com 的访问权限才能下载模块。 在本地运行时，请确保运行时可以通过添加任何所需的防火墙规则来访问此 URL。 
+> 托管依赖项需要对 www.powershellgallery.com 的访问权限才能下载模块。 在本地运行时，请确保运行时可以通过添加任何所需的防火墙规则来访问此 URL。
+
+> [!NOTE]
+> 托管依赖关系当前不支持要求用户接受许可证的模块，无论是通过交互方式接受许可证，还是 `-AcceptLicense` 在调用时提供开关 `Install-Module` 。
 
 以下应用程序设置可用于更改如何下载和安装托管依赖项。 应用升级在中启动 `MDMaxBackgroundUpgradePeriod` ，升级过程将在大约内完成 `MDNewSnapshotCheckPeriod` 。
 
@@ -435,6 +438,7 @@ param([string] $myBlob)
 
 * 位于 `Modules` function app 的根目录中的文件夹。
 * `Modules`由 PowerShell 语言辅助角色控制的文件夹的路径。
+
 
 ### <a name="function-app-level-modules-folder"></a>函数应用级 `Modules` 文件夹
 
@@ -502,17 +506,22 @@ Write-Host $env:WEBSITE_SITE_NAME
 * 当你尝试同时处理大量调用时。
 * 当您具有在同一 function app 内调用其他函数的函数时。
 
-可以通过将以下环境变量设置为整数值来更改此行为：
+您可以根据工作负荷的类型来探索几个并发模型：
 
-```
-PSWorkerInProcConcurrencyUpperBound
-```
+* 增加 ```FUNCTIONS_WORKER_PROCESS_COUNT``` 。 这允许在同一实例中的多个进程中处理函数调用，这会引入特定的 CPU 和内存开销。 通常，i/o 绑定函数不会受到这种开销的影响。 对于 CPU 绑定函数，影响可能会很大。
 
-在 Function App 的 " [应用设置](functions-app-settings.md) " 中设置此环境变量。
+* 增加 ```PSWorkerInProcConcurrencyUpperBound``` 应用程序设置值。 这允许在同一进程中创建多个运行空间，从而大大降低 CPU 和内存开销。
+
+在函数应用的 [应用设置](functions-app-settings.md) 中设置这些环境变量。
+
+根据用例，Durable Functions 可能会显著提高可伸缩性。 若要了解详细信息，请参阅 [Durable Functions 应用程序模式](/azure/azure-functions/durable/durable-functions-overview?tabs=powershell#application-patterns)。
+
+>[!NOTE]
+> 你可能会收到 "请求已排队，因为没有可用的运行空间" 警告，请注意这不是错误。 消息通知你，请求将排队等候，并在上一个请求完成后进行处理。
 
 ### <a name="considerations-for-using-concurrency"></a>使用并发的注意事项
 
-默认情况下，PowerShell 是 _单线程_ 脚本语言。 但是，可以在同一进程中使用多个 PowerShell 运行空间来添加并发。 创建的运行空间量将与 PSWorkerInProcConcurrencyUpperBound 应用程序设置匹配。 吞吐量将受到选定计划中可用的 CPU 和内存量的影响。
+默认情况下，PowerShell 是 _单线程_ 脚本语言。 但是，可以在同一进程中使用多个 PowerShell 运行空间来添加并发。 创建的运行空间量将与 ```PSWorkerInProcConcurrencyUpperBound``` 应用程序设置匹配。 吞吐量将受到选定计划中可用的 CPU 和内存量的影响。
 
 Azure PowerShell 使用某些 _进程级_ 上下文和状态，以帮助节省额外的键入内容。 但是，如果在函数应用中打开并发，并调用更改状态的操作，则可能会出现争用条件。 这些争用条件很难调试，因为一个调用依赖于某种状态，另一个调用更改了状态。
 

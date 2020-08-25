@@ -5,12 +5,12 @@ author: mscurrell
 ms.topic: how-to
 ms.date: 03/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: 48350a684844ca0e1624826afeca8e0b9ab36f3b
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e33119213d4ae28347334e60923d5ba222cd3a66
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85959987"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816688"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>将低优先级 VM 与 Batch 配合使用
 
@@ -23,7 +23,7 @@ Azure Batch 可提供低优先级虚拟机 (VM) 来降低 Batch 工作负载的�
 与专用 VM 相比，以显著低廉的价格提供低优先级 VM。 有关价格详细信息，请参阅 [Batch 定价](https://azure.microsoft.com/pricing/details/batch/)。
 
 > [!NOTE]
-> [现成 VM](https://azure.microsoft.com/pricing/spot/) 现可用于[单实例 VM](../virtual-machines/linux/spot-vms.md) 和 [VM 规模集](../virtual-machine-scale-sets/use-spot.md)。 现成 VM 是低优先级 VM 的进化版，区别在于定价可能不同，而且在分配现成 VM 时可设置价格上限（可选）。
+> [现成 VM](https://azure.microsoft.com/pricing/spot/) 现可用于[单实例 VM](../virtual-machines/spot-vms.md) 和 [VM 规模集](../virtual-machine-scale-sets/use-spot.md)。 现成 VM 是低优先级 VM 的进化版，区别在于定价可能不同，而且在分配现成 VM 时可设置价格上限（可选）。
 >
 > Azure Batch 池在正式发布后几个月内就将开始支持现成 VM，其中有新版本的 [Batch API 和工具](./batch-apis-tools.md)。 在对现成 VM 的支持推出后，我们将弃用低优先级 VM。为了让用户有足够的时间迁移到现成 VM，我们将使用现有 API 和工具版本继续支持低优先级 VM 至少 12 个月。 
 >

@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
-ms.openlocfilehash: 8996673cf8f01334e3dcd35aab8544643bd37360
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d46354b18d5c3317cc1ed67d839feb26b7b6b5d0
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88802157"
+ms.locfileid: "88815838"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>如何：使用 Fortanix Enclave Manager 运行应用程序 
 
@@ -46,7 +46,6 @@ Fortanix 是第三方软件供应商，其中的产品和服务构建在 Azure �
 1. 登录到 [FORTANIX EM](https://fortanix.com)
 1. 导航到 " **帐户** " 页，然后选择 " **添加帐户** " 以创建新帐户。 
     
-[!div class="mx-imgBorder"]
 ![创建帐户](media/how-to-fortanix-enclave-manager/create-account.png)
 
 1. 创建帐户后，单击 " **选择** " 以选择新创建的帐户。 现在，我们可以开始注册计算节点和创建应用程序。 
@@ -131,7 +130,7 @@ Fortanix EM 图像是应用程序的软件版本或版本。 每个映像都与�
 
      ![部署资源](media/how-to-fortanix-enclave-manager/deploy-fortanix-node-agent.png)
 
-1. 选择“查看 + 创建”。 确保验证通过，然后选择 " **创建**"。 部署所有资源后，计算节点现已在 Enclave Manager 中注册。 
+1. 选择“查看 + 创建”  。 确保验证通过，然后选择 " **创建**"。 部署所有资源后，计算节点现已在 Enclave Manager 中注册。 
 
 ## <a name="run-the-application-image-on-the-compute-node"></a>在计算节点上运行应用程序映像
 通过执行以下命令来运行应用程序。 请确保将节点 IP、端口和转换后的映像名称更改为你的特定应用程序的输入。 

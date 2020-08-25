@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 7500eddc2416a1cb705ef207930c5fe4c6f1068a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 6344cb5f1a4bd52395378f97ba2848eeec336572
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604753"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88817011"
 ---
 # <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>在商业应用商店中创建 SaaS 产品/服务
 
@@ -144,7 +144,7 @@ SaaS 产品/服务支持根据固定费用、每位用户按月或按年计费�
 
 #### <a name="call-out-descriptions"></a>拨出说明
 
-1. Title
+1. 标题
 2. 说明
 3. 有用链接
 4. 屏幕截图
@@ -282,18 +282,19 @@ Microsoft 提供标准协定模板。
 #### <a name="files-and-images"></a>文件和映像
 
 -  (必需) 的**文档**–为产品/服务添加相关营销文档（PDF 格式），其中至少有一个和多达三个文档。
-- **图像**  –以 PNG 格式上传徽标图像：
+-  (所需) 的**映像**–在) 的所有 (marketplace 中，产品/服务的徽标图像可能出现在多个位置。 提供 **大** 徽标徽标的 PNG 文件。 合作伙伴中心将使用此来创建 **小型** 和 **中型** 徽标。 稍后可以选择将它们替换为不同的图像。
 
-  - **小写** (48 x 48 像素，必需) 
-  - **中型** (90 x 90 像素，必需) 
-  - **大** (216 x 216 像素，必需) 
-  - **宽** (255 x 115 像素)  (可选) 
+  - **大型** (从 216 x 216 到 350 x 350 px，必需) 
+  - **中型** (90 x 90 px，可选) 
+  - **小写** (48 x 48 px，可选) 
+  
+  在列表中的不同位置使用这些徽标：
 
-   这三种徽标大小用于在线商店中的不同位置：
+   - 大徽标显示在 Azure Marketplace 中的产品/服务列表页上，并 Microsoft AppSource。
+   - 在 Microsoft Azure 中创建新资源时，将显示 "中" 徽标。
+   - 小徽标出现在 Azure Marketplace 搜索结果中，并出现在 "Microsoft AppSource" 主页和 "搜索结果" 页上。
 
-   -   小徽标 (48 x 48 像素) 出现在 Azure Marketplace 搜索结果和 Microsoft AppSource 主页和 "搜索结果" 页上。 
-   -   当你在 Microsoft Azure 中创建新资源时，将显示中等徽标 (90 x 90 像素) 。
-   -   ) 在 Azure Marketplace 和 Microsoft AppSource 的产品/服务列表页上， (216 x 216 和 350 x 350 像素之间的大徽标。
+   [!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 - **屏幕截图** (所需) –添加最多五个屏幕截图，其中演示了产品/服务，大小为 1280 x 720 像素。 所有图像都必须为 .PNG 格式。
 - **视频**（可选）- 添加演示产品/服务的视频的链接。 可以使用 YouTube 和/或 Vimeo 视频链接，这将随产品/服务一起呈现给客户。 还需要以 PNG 格式输入视频的缩略图，大小为 1280 x 720 像素。 每个产品/服务最多可以显示四个视频。

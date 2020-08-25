@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 08/06/2020
+ms.date: 08/24/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14df46a921b482b182e0f17754293af37146d1e7
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 7c6537ace2caeb2f5dc25848a04aa2e0e65b31d6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783206"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815974"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>部署 Azure AD Privileged Identity Management (PIM)
 
@@ -30,7 +30,7 @@ ms.locfileid: "88783206"
 >
 > :heavy_check_mark:**Microsoft 建议**
 >
-> 这些是常规建议，应仅当其适用于企业需求时才实施。
+> 这些是常规建议，只应在它们适用于你的特定企业需求时才实现它们。
 
 ## <a name="learn-about-privileged-identity-management"></a>了解 Privileged Identity Management
 
@@ -117,9 +117,9 @@ Azure AD Privileged Identity Management 可帮助跨 Azure AD、Azure 资源和�
 | 姓名和电子邮件 | **IT 支持管理员/支持人员**<br/>IT 支持组织的代表，可以从服务支持的角度提供有关更改的可支持性的信息。 | R/I |
 | 试点用户的姓名和电子邮件 | **Azure 角色用户**<br/>要为其实施特权标识管理的用户组。 他们需要知道 Privileged Identity Management 实施后如何激活角色。 | I |
 
-### <a name="enable-privileged-identity-management"></a>启用 Privileged Identity Management
+### <a name="start-using-privileged-identity-management"></a>开始使用 Privileged Identity Management
 
-作为规划过程的一部分，必须先按照[开始使用 Privileged Identity Management](pim-getting-started.md) 一文中所述，同意启用 Privileged Identity Management。 通过启用 Privileged Identity Management，可以访问专为帮助部署而设计的某些功能。
+在规划过程中，你应按照 [开始使用 Privileged Identity Management](pim-getting-started.md) 文章中的步骤准备 Privileged Identity Management。 Privileged Identity Management 使你能够访问专门用于帮助你的部署的某些功能。
 
 如果目标是为 Azure 资源部署 Privileged Identity Management，则应按照[发现要在 Privileged Identity Management 文档中管理的 Azure 资源](pim-resource-roles-discover-resources.md)一文中所述操作。 只有订阅和管理组的所有者可以发现这些资源并将其载入 Privileged Identity Management。 载入后，PIM 功能可用于所有级别（包括管理组、订阅、资源组和资源）的所有者。 如果你是全局管理员并尝试为 Azure 资源部署 Privileged Identity Management，可以[提升访问权限以管理所有 Azure 订阅](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)，从而让自己访问目录中的所有 Azure 资源以进行发现。 但是，建议在使用 Privileged Identity Management 管理其资源之前先获取每个订阅所有者的批准。
 

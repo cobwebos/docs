@@ -1,22 +1,22 @@
 ---
-title: Azure PowerShell-通过 SSE 托管磁盘启用客户管理的密钥
-description: 使用 Azure PowerShell 在托管磁盘上使用客户管理的密钥启用服务器端加密。
+title: Azure PowerShell - 使用 SSE 启用客户管理的密钥 - 托管磁盘
+description: 使用 Azure PowerShell 在托管磁盘上通过客户管理的密钥启用服务器端加密。
 author: roygara
-ms.date: 07/09/2020
+ms.date: 08/24/2020
 ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: f27f704c0bfbe0c7718ef9c64e907c86a065ebbd
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: f967d061ece5887457375b4e93469809f6a575f9
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86235808"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814767"
 ---
-# <a name="azure-powershell---enable-customer-managed-keys-with-server-side-encryption---managed-disks"></a>Azure PowerShell-通过服务器端加密托管磁盘启用客户管理的密钥
+# <a name="azure-powershell---enable-customer-managed-keys-with-server-side-encryption---managed-disks"></a>Azure PowerShell - 使用客户管理的密钥进行服务器端加密 - 托管磁盘
 
-如果选择此项，Azure 磁盘存储允许你在使用托管磁盘的服务器端加密 (SSE) 时管理自己的密钥。 有关包含客户托管密钥的 SSE 以及其他托管磁盘加密类型的概念信息，请参阅磁盘加密文章的[客户托管密钥](disk-encryption.md#customer-managed-keys)部分。
+Azure 磁盘存储使你能在对托管磁盘使用服务器端加密 (SSE) 时管理自己的密钥（如果你选择）。 有关使用客户管理的密钥的 SSE 以及其他托管磁盘加密类型的概念信息，请参阅磁盘加密文章的[客户管理的密钥](disk-encryption.md#customer-managed-keys)部分。
 
 ## <a name="restrictions"></a>限制
 
@@ -26,19 +26,19 @@ ms.locfileid: "86235808"
     如果需要解决此问题，则必须[复制所有数据](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)到完全不同的托管磁盘（未使用客户托管密钥）。
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
 
-## <a name="set-up-your-azure-key-vault-and-diskencryptionset"></a>设置 Azure Key Vault 和 DiskEncryptionSet
+## <a name="set-up-your-azure-key-vault-and-diskencryptionset"></a>设置 Azure Key Vault 和 DiskEncryptionSet 资源
 
-若要将客户托管密钥用于 SSE，必须设置 Azure Key Vault 和 DiskEncryptionSet 资源。
+若要使用客户管理的密钥进行 SSE，必须设置 Azure Key Vault 和 DiskEncryptionSet 资源。
 
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-powershell](../../../includes/virtual-machines-disks-encryption-create-key-vault-powershell.md)]
 
 ## <a name="examples"></a>示例
 
-现在，已创建并配置了这些资源，可以使用它们来保护托管磁盘。 下面是示例脚本，每个脚本都有各自的方案，可用于保护托管磁盘。
+创建并配置这些资源之后，可以使用它们来保护托管磁盘。 以下是示例脚本，每个脚本都有各自的方案，可用于保护托管磁盘。
 
 ### <a name="create-a-vm-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>使用市场映像创建 VM，并使用客户托管密钥加密 OS 和数据磁盘
 
-复制该脚本，将所有示例值替换为自己的参数，然后运行该脚本。
+复制该脚本，将所有示例值替换为你自己的参数，然后运行该脚本。
 
 ```powershell
 $VMLocalAdminUser = "yourVMLocalAdminUserName"
@@ -78,7 +78,7 @@ New-AzVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $Virt
 
 ### <a name="create-an-empty-disk-encrypted-using-server-side-encryption-with-customer-managed-keys-and-attach-it-to-a-vm"></a>创建一个使用客户托管密钥的服务器端加密进行了加密的空磁盘，并将其附加到 VM
 
-复制该脚本，将所有示例值替换为自己的参数，然后运行该脚本。
+复制该脚本，将所有示例值替换为你自己的参数，然后运行该脚本。
 
 ```PowerShell
 $vmName = "yourVMName"
@@ -117,7 +117,7 @@ New-AzDiskUpdateConfig -EncryptionType "EncryptionAtRestWithCustomerKey" -DiskEn
 
 ### <a name="create-a-virtual-machine-scale-set-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>使用市场映像创建虚拟机规模集，并使用客户托管密钥加密 OS 和数据磁盘
 
-复制该脚本，将所有示例值替换为自己的参数，然后运行该脚本。
+复制该脚本，将所有示例值替换为你自己的参数，然后运行该脚本。
 
 ```PowerShell
 $VMLocalAdminUser = "yourLocalAdminUser"
@@ -163,7 +163,7 @@ New-AzVmss -VirtualMachineScaleSet $VMSS -ResourceGroupName $ResourceGroupName -
 
 ### <a name="change-the-key-of-a-diskencryptionset-to-rotate-the-key-for-all-the-resources-referencing-the-diskencryptionset"></a>更改 DiskEncryptionSet 的密钥，以轮替所有引用 DiskEncryptionSet 的资源的密钥
 
-复制该脚本，将所有示例值替换为自己的参数，然后运行该脚本。
+复制该脚本，将所有示例值替换为你自己的参数，然后运行该脚本。
 
 ```PowerShell
 $ResourceGroupName="yourResourceGroupName"

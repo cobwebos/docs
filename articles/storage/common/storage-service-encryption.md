@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: fd819f0b819007611f5232d0fdfb324173d9c4b4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 1a5ed324ae109a151bf21050993bff02434410df
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88797915"
+ms.locfileid: "88814444"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>静态数据的 Azure 存储加密
 
@@ -68,7 +68,7 @@ Azure 存储中的数据将使用 256 位 [AES 加密法](https://en.wikipedia.o
 创建加密作用域后，可以在请求上指定加密作用域，以创建容器或 blob。 有关如何创建加密范围的详细信息，请参阅 [创建和管理加密范围 (预览) ](../blobs/encryption-scope-manage.md)。
 
 > [!NOTE]
-> 在预览期间 (GRS) 帐户的读取访问异地冗余存储不支持加密作用域。
+> 读取访问异地冗余存储不支持加密作用域 (GRS) ，并在预览期间 (GZRS) 帐户读取访问地域冗余存储。
 
 > [!IMPORTANT]
 > 加密范围预览版仅适用于非生产使用。 生产服务级别协议 (SLA) 当前不可用。

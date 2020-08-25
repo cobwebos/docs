@@ -4,12 +4,12 @@ description: 汇总了使用 Azure Site Recovery 将 Azure VM 灾难恢复到次
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: c648387547e9543c9e509344aa86285504dced7a
-ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
+ms.openlocfilehash: 3006522f75ed732c08e453a266e660cf4c577917
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88761366"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815362"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>在 Azure 区域之间进行 Azure VM 灾难恢复的支持矩阵
 
@@ -195,6 +195,7 @@ RBAC 策略 | 不支持 | Vm 上基于角色的访问控制 (RBAC) 策略不会�
 -- | ---
 调整复制的 VM 上的磁盘大小 | 故障转移前在源 VM 上受支持。 无需禁用/重新启用复制。<br/><br/> 如果在故障转移后更改源 VM，则不会捕获这些更改。<br/><br/> 如果在故障转移后更改 Azure VM 上的磁盘大小，则 Site Recovery 不会捕获这些更改，将故障回复到原始 VM 大小。
 将磁盘添加到复制的 VM | 支持
+脱机更改受保护的磁盘 | 断开磁盘连接并对其进行脱机修改需要触发完全重新同步。
 
 ## <a name="replicated-machines---storage"></a>复制的计算机 - 存储
 
@@ -254,6 +255,7 @@ Azure 共享磁盘 | 不支持
 - 这些限制基于我们的测试，但很明显，它们并未涵盖所有可能的应用程序 I/O 组合。
 - 实际结果可能因应用 I/O 的混合形式而异。
 - 有两个限制需要考虑：每个磁盘的数据变动率，以及每个虚拟机的数据变动率。
+- 每个虚拟机数据改动的当前限制为 54 MB/秒，而不考虑大小。
 
 **存储目标** | **平均源磁盘 I/O** |**平均源磁盘数据变动量** | **每天的总源磁盘数据变动量**
 ---|---|---|---

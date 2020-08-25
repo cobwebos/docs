@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: f8ddbc66b8e7775fa35d2407bf3aa8614fe8e835
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 03fa302d2e8aa173419912b99d60734c7a4e0356
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606156"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814258"
 ---
 # <a name="create-a-consulting-service-offer"></a>创建咨询服务套餐
 
@@ -98,9 +98,9 @@ ms.locfileid: "88606156"
 
 3. 如果选择了 " **Azure** 作为主要产品"，请选择最多三个 **解决方案区域**。 这样会使 Azure 市场中的客户更轻松地找到你的产品/服务。 如果未选择 Azure，请跳过此步骤。
 
-    - Analytics
+    - 分析
     - 应用现代化
-    - 存档
+    - Archive
     - AI + 机器学习
     - 备份
     - 大数据
@@ -207,17 +207,16 @@ ms.locfileid: "88606156"
 >[!Note]
 >如果在上传文件时遇到问题，请确保本地网络不会阻止合作伙伴中心使用的 https://upload.xboxlive.com 服务。
 
-#### <a name="store-logos"></a>Store 徽标
+#### <a name="store-logos"></a>应用商店徽标
 
-按以下每个像素大小提供产品/服务徽标的 PNG 文件：
+提供 **大** 徽标徽标的 PNG 文件。 合作伙伴中心将使用此来创建 **小** 徽标。 稍后，可以选择将此替换为其他映像。
 
-- 小图 (48 x 48)
-- 大图 (216 x 216)
+- **大型** (从 216 x 216 到 350 x 350 px，必需) 
+- **小写** (48 x 48 px，可选) 
 
-所有徽标都是必需的，并且在市场列表的不同位置上使用。
+这些徽标用在列表中的不同位置。
 
--   小徽标 (48 x 48 像素) 出现在 Azure Marketplace 搜索结果和 Microsoft AppSource 主页和 "搜索结果" 页上。 
--   ) 在 Azure Marketplace 和 Microsoft AppSource 的产品/服务列表页上， (216 x 216 和 350 x 350 像素之间的大徽标。
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots-optional"></a>屏幕截图（可选）
 

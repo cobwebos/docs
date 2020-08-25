@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/06/2020
-ms.openlocfilehash: 7bf4860e8c42ef8aacc2e564dacd6de1a7d39149
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 19e3e356765099b83f7248a024b55c491a61b110
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607405"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816263"
 ---
 # <a name="offer-listing-best-practices"></a>套餐列出最佳做法
 
@@ -23,7 +23,7 @@ ms.locfileid: "88607405"
 | 设置 | 最佳做法 |
 |:--- |:--- |  
 | 产品名称 | 对于应用程序，提供清晰的标题，其中包括搜索关键字，以帮助客户发现你的产品/服务。 <br> <br> 对于咨询服务，请遵循以下格式： [产品名称： [Duration] [产品类型] (例如，Contoso：2周实现)  |
-| 产品/服务描述 | 在前几个句子中提供说明产品/服务的价值主张的清楚说明。  请记住，这些句子可以在搜索引擎结果中使用。 值主张的核心组件应包括： <ul> <li>产品或解决方案的说明。 </li> <li> 受益于产品或解决方案的用户角色。 </li> <li> 客户需要或获得产品或解决方案地址。 </li> </ul> <br> 尽可能使用行业标准词汇或基于权益的措辞。  不要依赖于特性和功能来销售产品。  而应该强调提供的价值。 <br> <br> 对于咨询服务列表，请明确陈述您提供的专业服务。 |
+| 套餐说明 | 在前几个句子中提供说明产品/服务的价值主张的清楚说明。  请记住，这些句子可以在搜索引擎结果中使用。 值主张的核心组件应包括： <ul> <li>产品或解决方案的说明。 </li> <li> 受益于产品或解决方案的用户角色。 </li> <li> 客户需要或获得产品或解决方案地址。 </li> </ul> <br> 尽可能使用行业标准词汇或基于权益的措辞。  不要依赖于特性和功能来销售产品。  而应该强调提供的价值。 <br> <br> 对于咨询服务列表，请明确陈述您提供的专业服务。 |
 
 > [!IMPORTANT]
 > 请确保您的产品/服务说明符合 **[Microsoft 商标和品牌准则](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx)** ，以及其他相关的特定于产品的指导原则，在提及 microsoft 商标和 microsoft 软件、产品和服务的名称时，也是如此。
@@ -54,12 +54,12 @@ Microsoft AppSource 和 Azure Marketplace 是两个不同的在线商店，它�
 
 选择最适合你的产品/服务和目标受众的类别和子类别。 可以选择：
 
-* 最多2个 (2 个) 类别，包括 (可选) 的主要和辅助类别。
-* 每个主节点和/或辅助类别最多 (2 个) 子类别。 如果未选择任何子类别，你的产品/服务仍将仅在所选类别上可发现。
+* 最多包含两个类别，其中包括一个主类别和一个辅助类别 (可选) 。
+* 每个主节点和/或辅助类别最多包含两个子类别。 如果未选择任何子类别，你的产品/服务仍将仅在所选类别上可发现。
 
 [!INCLUDE [categories and subcategories](./includes/categories.md)]
 
-**重要说明： SaaS 提供和 Microsoft 365 外接程序**
+#### <a name="important-saas-offers-and-microsoft-365-add-ins"></a>重要说明： SaaS 提供和 Microsoft 365 外接程序
 
 请参阅 " [产品/服务类型](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) " 中的指南，了解有关使用情况的详细信息。 对于 SaaS 产品/服务，产品/服务的交易功能以及类别选择将确定发布产品/服务的在线商店：
 
@@ -120,9 +120,9 @@ Microsoft AppSource 和 Azure Marketplace 是两个不同的在线商店，它�
 ## <a name="online-store-marketing-details"></a>在线商店市场营销详细信息
 | 设置 | 最佳做法 |
 |:--- |:--- |  
-| 产品/服务徽标（PNG 格式，48&nbsp;&times;&nbsp;48）：搜索页 | 针对数字媒体设计和优化徽标。<br>将 PNG 格式的徽标上传到产品/服务的搜索页。 |
-| 产品/服务徽标（PNG 格式， 216&nbsp;&times;&nbsp;216）：应用详细信息页 | 针对数字媒体设计和优化徽标。<br>将 PNG 格式的徽标上传到产品/服务的应用详细信息列表页。 |
-| “了解详细信息”文档 | 在“了解详细信息”下包含支持性的销售和市场营销资产，例如： <ul> <li> 白皮书； </li> <li> 小册子； </li> <li> 清单； </li> <li> PowerPoint 演示文稿。</li> </ul>以 PDF 格式保存所有文件。 此处的目标应该是教育客户，而不是推销。 <br><br>将应用登陆页的链接添加到所有文档，并添加 URL 参数来帮助跟踪访问量和试用量。 |
+| 提供徽标 (PNG 格式，从216×216到 350 x 350 px) ：应用详细信息页 | 针对数字媒体设计和优化徽标。<br>将 PNG 格式的徽标上传到产品/服务的应用详细信息列表页。 合作伙伴中心会将其调整为所需的徽标大小。 |
+|  (PNG 格式提供徽标，48×48像素) ：搜索页面 | 合作伙伴中心将从你上传的大型徽标生成此徽标。 稍后，可以选择将此替换为其他映像。 |
+| “了解详细信息”文档 | 在“了解详细信息”下包含支持性的销售和市场营销资产，例如：<ul><li>白皮书</li><li> 手册</li><li>清单；</li><li> PowerPoint 演示文稿</li></ul><br>以 PDF 格式保存所有文件。 此处的目标应该是教育客户，而不是推销。<br><br>将应用登陆页的链接添加到所有文档，并添加 URL 参数来帮助跟踪访问量和试用量。 |
 | 视频：仅限 AppSource、咨询服务和 SaaS 产品/服务 | 最强大的视频能够以叙事形式传达产品/服务的价值：<ul> <li> 让客户而不是你的公司成为故事的主角。 </li> <li> 视频应该解决目标客户面临的首要难题及其目标。 </li> <li> 建议长度：60-90 秒。</li> <li> 包含使用视频名称的搜索关键字。 </li> <li> 考虑添加其他视频，例如操作说明、入门或客户荐言。 </li> </ul> |
 | 屏幕截图 (1280&nbsp;&times;&nbsp;720) | 最多添加 5 张屏幕截图：<br>在文件名中包含搜索关键字。 |
 
@@ -141,4 +141,3 @@ Microsoft AppSource 和 Azure Marketplace 是两个不同的在线商店，它�
 详细了解[商业市场权益](./gtm-your-marketplace-benefits.md)。
 
 登录到[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建并配置产品/服务。
-

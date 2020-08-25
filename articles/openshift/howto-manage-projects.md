@@ -8,14 +8,14 @@ ms.author: gwallace
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: d4f53238951784a74e6e3fc8a73d1f112ce75608
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 35474df96254b158a39b6d913171c553bf30aea4
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79139107"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816433"
 ---
-# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>在 Azure Red Hat OpenShift 群集中管理项目、模板和图像流 
+# <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>在 Azure Red Hat OpenShift 群集中管理项目、模板和图像流
 
 在 OpenShift 容器平台中，项目用于对相关对象进行分组和隔离。 作为管理员，你可以向开发人员提供对特定项目的访问权限，允许他们创建自己的项目，并向他们授予对各个项目的管理权限。
 
@@ -25,7 +25,7 @@ ms.locfileid: "79139107"
 
 提交项目请求时，API 会将以下参数替换为模板：
 
-| 参数               | 描述                                    |
+| 参数               | 说明                                    |
 | ----------------------- | ---------------------------------------------- |
 | PROJECT_NAME            | 项目的名称。 必需。             |
 | PROJECT_DISPLAYNAME     | 项目的显示名称。 可能为空。 |
@@ -45,7 +45,7 @@ ms.locfileid: "79139107"
    oc edit template project-request -n openshift
    ```
 
-3. 通过添加以下批注，从 Azure Red Hat OpenShift （ARO）更新过程中删除默认项目模板：`openshift.io/reconcile-protect: "true"`
+3. 通过添加以下批注，从 Azure Red Hat OpenShift (ARO) 更新过程中删除默认项目模板： `openshift.io/reconcile-protect: "true"`
 
    ```
    ...

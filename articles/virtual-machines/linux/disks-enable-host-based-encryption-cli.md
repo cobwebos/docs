@@ -4,20 +4,20 @@ description: 使用主机上的加密在 Azure 托管磁盘上启用端到端加
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
-ms.date: 07/10/2020
+ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 9f61835887c26e41b3338286065df4ca9d05f513
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ff56654981ef69648b1fa7ad11a8681c887289f6
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87029002"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816960"
 ---
-# <a name="enable-end-to-end-encryption-using-encryption-at-host---azure-cli"></a>使用主机上的加密启用端到端加密-Azure CLI
+# <a name="use-the-azure-cli-to-enable-end-to-end-encryption-using-encryption-at-host"></a>使用 Azure CLI 在主机上使用加密启用端到端加密
 
-当你在主机上启用加密时，存储在 VM 主机上的数据将静态加密，并加密为存储服务。 有关主机加密以及其他托管磁盘加密类型的概念信息，请参阅[VM 数据的主机端对端加密](disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)。
+启用主机加密时，存储在 VM 主机上的数据将静态加密，且已加密的数据将流向存储服务。 有关主机加密以及其他托管磁盘加密类型的概念信息，请参阅[主机加密 - 为 VM 数据启用端到端加密](disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)。
 
 ## <a name="restrictions"></a>限制
 
@@ -31,15 +31,15 @@ ms.locfileid: "87029002"
 
 [!INCLUDE [virtual-machines-disks-encryption-at-host-suported-sizes](../../../includes/virtual-machines-disks-encryption-at-host-suported-sizes.md)]
 
-你还可以通过编程方式找到 VM 大小。 若要了解如何以编程方式检索它们，请参阅[查找支持的 VM 大小](#finding-supported-vm-sizes)部分。
+你还可以以编程方式找到 VM 大小。 若要了解如何以编程方式检索它们，请参阅[查找支持的 VM 大小](#finding-supported-vm-sizes)部分。
 
 ## <a name="prerequisites"></a>先决条件
 
-为了能够在 Vm 或虚拟机规模集的主机上使用加密，必须在订阅上启用该功能。 使用你的订阅 Id 向发送电子邮件 encryptionAtHost@microsoft.com ，以便为你的订阅启用该功能。
+为了能够为 VM 或虚拟机规模集使用主机加密，必须在订阅上启用该功能。 使用你的订阅 Id 向发送电子邮件 encryptionAtHost@microsoft.com ，以便为你的订阅启用该功能。
 
 ### <a name="create-an-azure-key-vault-and-diskencryptionset"></a>创建 Azure Key Vault 和 DiskEncryptionSet
 
-启用该功能后，需要设置 Azure Key Vault 和 DiskEncryptionSet （如果尚未这样做）。
+启用该功能后，需要设置 Azure Key Vault 和 DiskEncryptionSet（如果尚未设置）。
 
 [!INCLUDE [virtual-machines-disks-encryption-create-key-vault-cli](../../../includes/virtual-machines-disks-encryption-create-key-vault-cli.md)]
 
@@ -183,11 +183,11 @@ az vmss show -n $vmssName \
 --query [virtualMachineProfile.securityProfile.encryptionAtHost] -o tsv
 ```
 
-## <a name="finding-supported-vm-sizes"></a>查找支持的 VM 大小
+## <a name="finding-supported-vm-sizes"></a>找到支持的 VM 大小
 
-不支持旧的 VM 大小。 可以通过以下任一方法查找受支持的 VM 大小列表：
+不支持“旧的 VM 大小”。 可以通过以下任一方法查找支持的 VM 大小列表：
 
-调用[资源 SKU API](/rest/api/compute/resourceskus/list)并检查 `EncryptionAtHostSupported` 功能是否设置为**True**。
+调用[资源 SKU API](/rest/api/compute/resourceskus/list) 并检查 `EncryptionAtHostSupported` 功能是否设置为 True。
 
 ```json
     {
@@ -208,7 +208,7 @@ az vmss show -n $vmssName \
     }
 ```
 
-或调用[AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0) PowerShell cmdlet。
+或者，调用 [AzComputeResourceSku](/powershell/module/az.compute/get-azcomputeresourcesku?view=azps-3.8.0) PowerShell cmdlet。
 
 ```powershell
 $vmSizes=Get-AzComputeResourceSku | where{$_.ResourceType -eq 'virtualMachines' -and $_.Locations.Contains('CentralUSEUAP')} 
@@ -229,6 +229,6 @@ foreach($vmSize in $vmSizes)
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，已创建并配置了这些资源，可以使用它们来保护托管磁盘。 下面的链接包含示例脚本，每个脚本都有各自的方案，可用于保护托管磁盘。
+创建并配置这些资源之后，可以使用它们来保护托管磁盘。 以下链接包含示例脚本，每个脚本都有各自的方案，可用于保护托管磁盘。
 
 [Azure 资源管理器模板示例](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/EncryptionAtHost)

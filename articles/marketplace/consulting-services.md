@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/08/2020
 author: Microsoft-BradleyWright
 ms.author: brwrigh
-ms.openlocfilehash: 2ca0031d3ae9fc1347c3a8bd7bf24c2780e502a8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: afcca913b8a9c8fb31fa6e18d0570aebd68b8ef3
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607451"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814716"
 ---
 # <a name="consulting-service-offers"></a>咨询服务产品
 
@@ -72,40 +72,40 @@ ms.locfileid: "88607451"
 
 系统集成商合作伙伴可以为以下20个国家/地区提交咨询服务产品/服务：
 
-| 国家/地区  |  (继续 .。。)    |  (继续 .。。)   |  (继续 .。。)   |
+| 国家/地区 |  (续 )  |   (续 )  |   (续 )  |
 |---------|----------|----------|----------|
 | 澳大利亚 | 比利时 | Canada | 丹麦 |
 | 芬兰  | 法国 | 德国  | 印度   |
 | 意大利    | 日本  |  墨西哥  |  荷兰  |
 |  新西兰  |  挪威  |  波兰  | 南非 |
 |  瑞典  | 瑞士  |  United States  | United Kingdom  |
-||
+|
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>在商业市场注册咨询服务
 
-首先在市场中[注册](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)公司信息。 有关注册要求的完整清单，请参考[成为市场中的发布者](become-publisher.md)。 
+首先在市场中[注册](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)公司信息。 有关注册要求的完整清单，请参考[成为市场中的发布者](become-publisher.md)。
 
 ## <a name="prepare-your-publishing-artifacts"></a>准备发布项目
 在注册之前，可以开始收集和准备内容，以帮助通过列表向目标客户主张服务和解决方案的价值。 
 
 |设置新的发布服务器  |
-|---------|
-|MPN ID     |
-|公司徽标（48 x 48、216 x 216 像素）     |
-|潜在客户目标     |
-||
+| - |
+| MPN ID |
+| 公司徽标（48 x 48、216 x 216 像素） |
+| 潜在客户目标 |
+|
 
 |新产品设置  |
-|---------|
-|产品/服务名称（200 个字符）和说明（2000 个字符）    |
-|资质     |
-|国家/区域可用性     |
-|参与持续时间     |
-|适用的行业、类别和搜索关键字     |
-|产品概述视频    |
-|屏幕截图（最多 5 个、1280 x 720 像素）     |
-|营销文档（最多 3 个）     |
-||
+| - |
+| 产品/服务名称（200 个字符）和说明（2000 个字符） |
+| 资质  |
+| 国家/区域可用性 |
+| 参与持续时间  |
+| 适用的行业、类别和搜索关键字 |
+| 产品概述视频 |
+| 屏幕截图（最多 5 个、1280 x 720 像素） |
+| 营销文档（最多 3 个） |
+|
 
 ## <a name="the-publishing-process"></a>发布过程
 

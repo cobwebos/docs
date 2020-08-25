@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2d4ab180818e597afa86a4cfdf73c6948d44e630
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a967777b65c06cf23239a47e8e691fb3a29231b4
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87132444"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815464"
 ---
 如果你是第一次执行此操作，则为磁盘设置客户托管密钥时将要求你按特定顺序创建资源。 首先，需要创建并设置 Azure Key Vault。
 
@@ -22,7 +22,7 @@ ms.locfileid: "87132444"
 1. 登录到 [Azure 门户](https://aka.ms/diskencryptionupdates)。
 1. 搜索并选择“Key Vault”。
 
-    [![server-side-encryption-key-vault-portal-search.png](media/virtual-machines-disk-encryption-portal/server-side-encryption-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-portal-search-expanded.png#lightbox)
+    [![展开 "搜索" 对话框时的 Azure 门户屏幕截图。](./media/virtual-machines-disk-encryption-portal/server-side-encryption-key-vault-portal-search.png)](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-portal-search-expanded.png#lightbox)
 
     > [!IMPORTANT]
     > Azure Key Vault、磁盘加密集、VM、磁盘和快照必须都位于同一区域和订阅中才能成功部署。
@@ -36,28 +36,28 @@ ms.locfileid: "87132444"
 
 1. 选择“审阅 + 创建”，验证选择，然后选择“创建” 。
 
-    ![Azure Key Vault 创建体验的屏幕截图。 显示所创建的特定值](media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-vault.png)
+    ![Azure Key Vault 创建体验的屏幕截图。 显示所创建的特定值](./media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-vault.png)
 
 1. Key Vault 部署完成后，请选择它。
 1. 在“设置”下，选择“密钥” 。
 1. 选择“生成/导入”。
 
-    ![Key Vault 资源设置窗格的屏幕截图。 显示设置中的“生成/导入”按钮。](media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-generate-settings.png)
+    ![Key Vault 资源设置窗格的屏幕截图。 显示设置中的“生成/导入”按钮。](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-generate-settings.png)
 
 1. 将“密钥类型”设置为“RSA”，将“RSA 密钥大小”设置为“2048”   。
 1. 根据需要填写其余选项，然后选择“创建”。
 
-    ![选择“生成/导入”按钮后出现的“创建密钥”边栏选项卡的屏幕截图](media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-generate.png)
+    ![选择“生成/导入”按钮后出现的“创建密钥”边栏选项卡的屏幕截图](./media/virtual-machines-disk-encryption-portal/server-side-encryption-create-a-key-generate.png)
 
 ## <a name="set-up-your-disk-encryption-set"></a>设置磁盘加密集
 
 1. 搜索“磁盘加密集”并选择它。
 1. 在“磁盘加密集”边栏选项卡上，选择“+添加” 。
 
-    ![磁盘加密门户主屏幕的屏幕截图。 突出显示“添加”按钮](media/virtual-machines-disk-encryption-portal/sever-side-encryption-create-disk-encryption-set.png)
+    ![磁盘加密门户主屏幕的屏幕截图。 突出显示“添加”按钮](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-create-disk-encryption-set.png)
 
 1. 选择资源组，命名加密集，然后选择与 Key Vault 相同的区域。
-1. 对于 "**加密类型**"，请选择 "**使用客户管理的密钥进行静态加密**"。
+1. 对于 " **加密类型** "，请选择 " **使用客户管理的密钥进行静态加密**"。
 
     > [!NOTE]
     > 一旦创建了具有特定加密类型的磁盘加密集，就不能对其进行更改。 如果要使用不同的加密类型，则必须创建新的磁盘加密集。
@@ -67,12 +67,12 @@ ms.locfileid: "87132444"
 1. 按“选择”。
 1. 选择“审阅 + 创建”，然后选择“创建” 。
 
-    ![磁盘加密创建边栏选项卡的屏幕截图。 显示订阅、资源组、磁盘加密集名称、区域以及 Key Vault + 密钥选择器。](media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png)
+    ![磁盘加密创建边栏选项卡的屏幕截图。 显示订阅、资源组、磁盘加密集名称、区域以及 Key Vault + 密钥选择器。](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png)
 
 1. 完成创建后，打开磁盘加密集，然后选择弹出的警报。
 
-    ![警报弹出窗口的屏幕截图：“若要将磁盘、映像或快照与磁盘加密设置相关联，必须向 Key Vault 授予权限”。 选择此警报以继续](media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-encryption-set-alert-fix.png)
+    ![警报弹出窗口的屏幕截图：“若要将磁盘、映像或快照与磁盘加密设置相关联，必须向 Key Vault 授予权限”。 选择此警报以继续](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-encryption-set-alert-fix.png)
 
     应弹出两个通知并成功。 这允许你将磁盘加密集用于密钥保管库。
 
-    ![Key Vault 的成功权限和角色分配的屏幕截图。](media/virtual-machines-disk-encryption-portal/disk-encryption-notification-success.png)
+    ![Key Vault 的成功权限和角色分配的屏幕截图。](./media/virtual-machines-disk-encryption-portal/disk-encryption-notification-success.png)

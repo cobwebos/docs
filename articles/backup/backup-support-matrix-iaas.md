@@ -4,12 +4,12 @@ description: 提供有关在使用 Azure 备份服务备份 Azure VM 时的支�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 66c712eca86b01c5815638c9ea58042580791ea6
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: f0783d937178c88265c33c8b7339f71520506fc5
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685470"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816110"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 
@@ -35,7 +35,7 @@ ms.locfileid: "88685470"
 
 ## <a name="supported-backup-actions"></a>支持的备份操作
 
-**Action** | **支持**
+**操作** | **支持**
 --- | ---
 备份已关闭/脱机的 VM | 支持。<br/><br/> 仅创建崩溃一致性快照，不会创建应用一致性快照。
 迁移到托管磁盘后备份磁盘 | 支持。<br/><br/> 备份将继续工作。 因此不需要执行任何操作。
@@ -68,7 +68,7 @@ Azure 备份不支持 32 位操作系统。
 
 下面是在需要备份 Linux 计算机的情况下的支持项目。
 
-**Action** | **支持**
+**操作** | **支持**
 --- | ---
 使用 Linux Azure VM 代理备份 Linux Azure VM | 文件一致性备份。<br/><br/> 使用[自定义脚本](backup-azure-linux-app-consistent.md)的应用一致性备份。<br/><br/> 在还原过程中，可以创建新的 VM、还原某个磁盘并使用它来创建 VM，或者还原某个磁盘并使用它来替换现有 VM 上的磁盘。 还可以还原单个文件和文件夹。
 使用 MARS 代理备份 Linux Azure VM | 不支持。<br/><br/> MARS 代理只能安装在 Windows 计算机上。
@@ -149,7 +149,7 @@ VM 大小 |至少有 2 个 CPU 核心和 1-GB RAM 的任意 Azure VM 大小。<b
 还原区域固定 VM | 支持（适用于 2019 年 1 月以后备份的并且可以使用[可用性区域](https://azure.microsoft.com/global-infrastructure/availability-zones/)的 VM）。<br/><br/>目前支持还原到在 VM 中固定的区域。 但是，如果该区域不可用，则还原将失败。
 Gen2 VM | 支持 <br> Azure 备份支持备份和还原 [Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)。 从恢复点还原这些 Vm 时，它们会还原为 [Gen2 vm](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/)。
 具有锁定的 Azure Vm 备份 | 不支持非托管 Vm。 <br><br> 托管 Vm 支持。
-[点 VM](../virtual-machines/windows/spot-vms.md) | 不支持。 Azure 备份会将专色 Vm 恢复为常规 Azure Vm。
+[点 VM](../virtual-machines/spot-vms.md) | 不支持。 Azure 备份会将专色 Vm 恢复为常规 Azure Vm。
 
 ## <a name="vm-storage-support"></a>VM 存储支持
 

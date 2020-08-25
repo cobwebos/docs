@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 5b9752107aac1f90a67fb7c87a14492a74a124aa
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: ebc3ad6957890423314bb2d8623c7b4708aed10b
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88604645"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815398"
 ---
 # <a name="create-a-power-bi-app-offer"></a>创建 Power BI 应用套餐
 
@@ -209,13 +209,16 @@ ms.locfileid: "88604645"
 
 #### <a name="store-logos"></a>应用商店徽标
 
-提供两个像素大小的产品/服务徽标的 PNG 文件：
-- 小 (48 x 48)
-- 大图 (216 x 216)
+提供 **大** 徽标徽标的 PNG 文件。 合作伙伴中心将使用此来创建 **小** 徽标。 稍后，可以选择将此替换为其他映像。
 
-两种徽标都是必需的，并且在市场列表的不同位置上使用。
+- **大型** (从 216 x 216 到 350 x 350 px，必需) 
+- **小写** (48 x 48 px，可选) 
+
+在列表中的不同位置使用这些徽标：
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>屏幕截图
 

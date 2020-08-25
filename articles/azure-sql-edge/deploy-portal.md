@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 43359b66ba747dba7b3294d022a2c1aa2a3e624c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 7af4264860f8d9950515cd5302f03822e7cbac39
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233241"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816858"
 ---
 # <a name="deploy-azure-sql-edge-preview"></a>部署 Azure SQL Edge（预览） 
 
@@ -114,9 +114,114 @@ Azure 市场是一个应用程序和服务在线市场，可在其中浏览各�
 12. 单击“下一步”。
 13. 单击“提交”。
 
-在本快速入门中，你在 IoT Edge 设备上部署了 SQL Edge 模块。
+## <a name="connect-to-azure-sql-edge"></a>连接到 Azure SQL Edge
+
+以下步骤使用容器中的 Azure SQL Edge 命令行工具 **sqlcmd**连接到 Azure sql edge。
+
+> [!NOTE]
+> sqlcmd 工具在 SQL Edge 容器的 ARM64 版本中不可用。
+
+1. 使用 `docker exec -it` 命令在运行的容器内部启动交互式 Bash Shell。 在下面的示例中 `azuresqledge` ，是由 IoT Edge 模块的参数指定的名称 `Name` 。
+
+   ```bash
+   sudo docker exec -it azuresqledge "bash"
+   ```
+
+2. 在容器内部使用 sqlcmd 进行本地连接。 默认情况下，sqlcmd 不在路径之中，因此需要指定完整路径。
+
+   ```bash
+   /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P "<YourNewStrong@Passw0rd>"
+   ```
+
+   > [!TIP]
+   > 可以省略命令行上提示要输入的密码。
+
+3. 如果成功，应会显示 sqlcmd 命令提示符：`1>`。
+
+## <a name="create-and-query-data"></a>创建和查询数据
+
+以下部分将引导你使用 sqlcmd 和 Transact-SQL 完成新建数据库、添加数据并运行简单查询的整个过程。
+
+### <a name="create-a-new-database"></a>新建数据库
+
+以下步骤创建一个名为 `TestDB` 的新数据库。
+
+1. 在 sqlcmd 命令提示符中，粘贴以下 Transact-SQL 命令以创建测试数据库：
+
+   ```sql
+   CREATE DATABASE TestDB
+   Go
+   ```
+
+2. 在下一行中，编写一个查询以返回服务器上所有数据库的名称：
+
+   ```sql
+   SELECT Name from sys.Databases
+   Go
+   ```
+
+### <a name="insert-data"></a>插入数据
+
+接下来创建一个新表 `Inventory`，然后插入两个新行。
+
+1. 在 sqlcmd 命令提示符中，将上下文切换到新的 `TestDB` 数据库：
+
+   ```sql
+   USE TestDB
+   ```
+
+2. 创建名为 `Inventory` 的新表：
+
+   ```sql
+   CREATE TABLE Inventory (id INT, name NVARCHAR(50), quantity INT)
+   ```
+
+3. 将数据插入新表：
+
+   ```sql
+   INSERT INTO Inventory VALUES (1, 'banana', 150); INSERT INTO Inventory VALUES (2, 'orange', 154);
+   ```
+
+4. 要执行上述命令的类型 `GO`：
+
+   ```sql
+   GO
+   ```
+
+### <a name="select-data"></a>选择数据
+
+现在，运行查询以从 `Inventory` 表返回数据。
+
+1. 通过 sqlcmd 命令提示符输入查询，以返回 `Inventory` 表中数量大于 152 的行：
+
+   ```sql
+   SELECT * FROM Inventory WHERE quantity > 152;
+   ```
+
+2. 执行此命令：
+
+   ```sql
+   GO
+   ```
+
+### <a name="exit-the-sqlcmd-command-prompt"></a>退出 sqlcmd 命令提示符
+
+1. 要结束 sqlcmd 会话，请键入 `QUIT`：
+
+   ```sql
+   QUIT
+   ```
+
+2. 要在容器中退出交互式命令提示，请键入 `exit`。 退出交互式 Bash Shell 后，容器将继续运行。
+
+## <a name="connect-from-outside-the-container"></a> 从容器外连接
+
+你可以从支持 SQL 连接的任何外部 Linux、Windows 或 macOS 工具连接到 Azure SQL Edge 实例，并对其运行 SQL 查询。 有关从外部连接到 SQL Edge 容器的详细信息，请参阅 [连接和查询 AZURE SQL edge](https://docs.microsoft.com/azure/azure-sql-edge/connect)。
+
+在本快速入门中，你在 IoT Edge 设备上部署了 SQL Edge 模块。 
 
 ## <a name="next-steps"></a>后续步骤
 
 - [在 SQL Edge 中将机器学习和人工智能与 ONNX 结合使用](onnx-overview.md)。
 - [使用 IoT Edge 通过 SQL Edge 生成端到端 IoT 解决方案](tutorial-deploy-azure-resources.md)。
+- [Azure SQL Edge 中的数据流](stream-data.md)

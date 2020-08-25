@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: ericrad
 ms.reviwer: mimckitt
-ms.openlocfilehash: 213d9fe2db148c6260a1271c3c2b22978b98a8f3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: b6e877f4e4ce7b50a2e50a2925850b9f533b7f97
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86508196"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88814818"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure 元数据服务：适用于 Windows VM 的计划事件
 
@@ -42,7 +42,7 @@ ms.locfileid: "86508196"
 - [平台启动的维护](../maintenance-and-updates.md?bc=/azure/virtual-machines/windows/breadcrumb/toc.json&toc=/azure/virtual-machines/windows/toc.json)（例如，VM 重新启动、实时迁移或主机的内存保留更新）
 - 虚拟机正在根据预测很快会出现故障的[降级主机硬件](https://azure.microsoft.com/blog/find-out-when-your-virtual-machine-hardware-is-degraded-with-scheduled-events)上运行
 - 用户启动的维护（例如，用户重启或重新部署 VM）
-- [现成 VM](spot-vms.md) 和[现成规模集](../../virtual-machine-scale-sets/use-spot.md)实例逐出。
+- [现成 VM](../spot-vms.md) 和[现成规模集](../../virtual-machine-scale-sets/use-spot.md)实例逐出。
 
 ## <a name="the-basics"></a>基础知识  
 
@@ -57,7 +57,7 @@ ms.locfileid: "86508196"
 - 规模集位置组中的所有 VM。 
 
 > [!NOTE]
-> 将结构控制器（FC）租户中所有虚拟机（Vm）的 Scheduled Events 传递给 FC 租户中的所有 Vm。 对于 VM 规模集（VMSS），FC 租户等同于独立 VM、整个云服务和一个放置组，而不考虑可用性区域的使用情况。 
+> 某个结构控制器 (FC) 租户中所有虚拟机 (VM) 的 Scheduled Events 传送到另一个 FC 租户中的所有 VM。 在不考虑可用性区域使用情况的条件下，FC 租户等同于一个独立的 VM、一个完整的云服务、一个完整的可用性集和一个 VM 规模集 (VMSS) 的放置组。 
 
 因此，检查事件中的 `Resources` 字段可确定哪些 VM 受到了影响。
 
@@ -76,9 +76,9 @@ ms.locfileid: "86508196"
 | 2019-08-01 | 正式版 | 全部 | <li> 添加了对 EventSource 的支持 |
 | 2019-04-01 | 正式版 | 全部 | <li> 添加了对事件说明的支持 |
 | 2019-01-01 | 正式版 | 全部 | <li> 已添加对虚拟机规模集 EventType“Terminate”的支持 |
-| 2017-11-01 | 正式版 | 全部 | <li> 已添加对现成 VM 逐出 EventType“Preempt”的支持<br> | 
-| 2017-08-01 | 正式版 | 全部 | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
-| 2017-03-01 | 预览 | All | <li>初始版本 |
+| 2017-11-01 | 正式版 | All | <li> 已添加对现成 VM 逐出 EventType“Preempt”的支持<br> | 
+| 2017-08-01 | 正式版 | All | <li> 已从 IaaS VM 的资源名称中删除前置下划线<br><li>针对所有请求强制执行元数据标头要求 | 
+| 2017-03-01 | 预览 | 全部 | <li>初始版本 |
 
 
 > [!NOTE] 
@@ -128,7 +128,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 ```
 
 ### <a name="event-properties"></a>事件属性
-|properties  |  说明 |
+|属性  |  说明 |
 | - | - |
 | EventId | 此事件的全局唯一标识符。 <br><br> 示例： <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | 此事件造成的影响。 <br><br> 值： <br><ul><li> `Freeze`：虚拟机计划暂停数秒。 CPU 和网络连接可能会暂停，但对内存或打开的文件没有影响。<li>`Reboot`：计划重启虚拟机（非永久性内存丢失）。 <li>`Redeploy`：计划将虚拟机移到另一节点（临时磁盘将丢失）。 <li>`Preempt`：正在删除现成虚拟机（临时磁盘将丢失）。 <li> `Terminate`：计划将删除虚拟机。 |
@@ -137,7 +137,7 @@ curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-versio
 | EventStatus | 此事件的状态。 <br><br> 值： <ul><li>`Scheduled`：此事件计划在 `NotBefore` 属性指定的时间之后启动。<li>`Started`：此事件已启动。</ul> 不提供 `Completed` 或类似状态。 事件完成后，将不再返回该事件。
 | NotBefore| 在可以启动此事件之前所要经过的时间。 <br><br> 示例： <br><ul><li> 2016 年 9 月 19 日星期一 18:29:47 GMT  |
 | 说明 | 此事件的说明。 <br><br> 示例： <br><ul><li> 主机服务器正在维护中。 |
-| EventSource | 事件的发起者。 <br><br> 示例： <br><ul><li> `Platform`：此事件由平台启动。 <li>`User`：此事件是由用户发起的。 |
+| EventSource | 事件的发起者。 <br><br> 示例： <br><ul><li> `Platform`：此事件是由平台发起的。 <li>`User`：此事件是由用户发起的。 |
 
 ### <a name="event-scheduling"></a>事件计划
 将根据事件类型为每个事件计划将来的最小量时间。 此时间反映在某个事件的 `NotBefore` 属性上。 

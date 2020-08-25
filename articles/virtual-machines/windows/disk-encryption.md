@@ -8,23 +8,23 @@ ms.author: rogarana
 ms.service: virtual-machines
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 413ca677bc778069b92def043bf35ab7bb87b038
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 6174fbeb45c23c0ff04597305c6f65aef05bd26e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448936"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815583"
 ---
-# <a name="server-side-encryption-of-azure-disk-storage"></a>Azure 磁盘存储的服务器端加密
+# <a name="server-side-encryption-of-azure-disk-storage-for-powershell"></a>适用于 PowerShell 的 Azure 磁盘存储服务器端加密
 
-服务器端加密 (SSE) 可保护数据，并帮助实现组织安全性和符合性承诺。 默认情况下，在将存储在 Azure 托管磁盘（OS 和数据磁盘）上的数据保存到云时，SSE 会自动对其进行加密。 
+服务器端加密 (SSE) 可保护数据，并帮助实现组织安全性和符合性承诺。 将存储在 Azure 托管磁盘（OS 和数据磁盘）上的数据保存到云时，SSE 在默认情况下会自动对这些数据进行静态加密。 
 
 Azure 托管磁盘中的数据使用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)（可用的最强大分组加密之一）以透明方式加密，且符合 FIPS 140-2 规范。 有关加密模块基础 Azure 托管磁盘的详细信息，请参阅[加密 API：下一代](/windows/desktop/seccng/cng-portal)
 
-服务器端加密不会对托管磁盘的性能产生影响，并且不会产生额外的费用。 
+服务器端加密不会影响托管磁盘的性能，并且不会产生额外的费用。 
 
 > [!NOTE]
-> 临时磁盘不是托管磁盘，并且不是由 SSE 加密的，除非你在主机上启用了加密。
+> 临时磁盘不是托管磁盘，不会由 SSE 加密，除非在主机上启用了加密。
 
 ## <a name="about-encryption-key-management"></a>关于加密密钥管理
 
@@ -34,7 +34,7 @@ Azure 托管磁盘中的数据使用 256 位 [AES 加密](https://en.wikipedia.o
 
 ### <a name="platform-managed-keys"></a>平台托管的密钥
 
-默认情况下，托管磁盘使用平台托管的加密密钥。 写入到现有托管磁盘的所有托管磁盘、快照、映像和数据都将通过平台管理的密钥自动进行静态加密。
+默认情况下，托管磁盘使用平台托管的加密密钥。 所有写入现有托管磁盘的托管磁盘、快照、映像和数据都会自动使用平台托管密钥进行静态加密。
 
 ### <a name="customer-managed-keys"></a>客户管理的密钥
 
@@ -48,11 +48,11 @@ Azure 托管磁盘中的数据使用 256 位 [AES 加密](https://en.wikipedia.o
     如果需要解决此问题，则必须[复制所有数据](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk)到完全不同的托管磁盘（未使用客户托管密钥）。
 [!INCLUDE [virtual-machines-managed-disks-customer-managed-keys-restrictions](../../../includes/virtual-machines-managed-disks-customer-managed-keys-restrictions.md)]
 
-## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>VM 数据的主机端对端加密加密
+## <a name="encryption-at-host---end-to-end-encryption-for-your-vm-data"></a>主机加密 - VM 数据的端到端加密
 
-端对端加密从 VM 主机（VM 分配到的 Azure 服务器）开始。 临时磁盘上的数据、临时 OS 磁盘和持久化 OS/数据磁盘缓存存储在该 VM 主机上。 启用端对端加密时，所有这些数据都将静态加密，并加密到存储服务，并在其中保存。 端对端加密不使用 VM 的 CPU，并且不会影响 VM 的性能。 
+端对端加密从 VM 主机（将 VM 分配到的 Azure 服务器）开始。 临时磁盘上的数据、临时 OS 磁盘和持久化 OS/数据磁盘缓存存储在该 VM 主机上。 当你启用端到端加密时，所有这些数据都会静态加密，且数据流将加密到用于保存数据的存储服务。 端对端加密不使用 VM 的 CPU，不会影响 VM 的性能。 
 
-当启用端对端加密时，临时磁盘和临时操作系统磁盘使用平台管理的密钥进行静态加密。 操作系统和数据磁盘缓存是以客户管理的密钥或平台管理的密钥进行静态加密，具体取决于加密类型。 例如，如果使用客户管理的密钥对磁盘进行加密，则使用客户管理的密钥对磁盘缓存进行加密，如果磁盘是使用平台托管密钥加密的，则使用平台托管密钥对磁盘缓存进行加密。
+启用端对端加密后，临时磁盘和临时 OS 磁盘会使用平台管理的密钥进行静态加密。 OS 和数据磁盘缓存使用客户管理的密钥或平台管理的密钥进行静态加密，具体取决于加密类型。 例如，如果使用客户管理的密钥对磁盘进行加密，则使用客户管理的密钥对磁盘的缓存进行加密，如果使用平台管理的密钥对磁盘进行加密，则使用平台管理的密钥对磁盘的缓存进行加密。
 
 ### <a name="restrictions"></a>限制
 
@@ -84,8 +84,8 @@ Azure 托管磁盘中的数据使用 256 位 [AES 加密](https://en.wikipedia.o
 
 ## <a name="next-steps"></a>后续步骤
 
-- 使用[PowerShell](disks-enable-host-based-encryption-powershell.md)或[Azure 门户](disks-enable-host-based-encryption-portal.md)在主机上启用端到端加密。
-- 使用[PowerShell](disks-enable-double-encryption-at-rest-powershell.md)或[Azure 门户](disks-enable-double-encryption-at-rest-portal.md)为托管磁盘启用静态加密。
-- 使用[PowerShell](disks-enable-customer-managed-keys-powershell.md)或[Azure 门户](disks-enable-customer-managed-keys-portal.md)为托管磁盘启用客户管理的密钥。
+- 使用 [PowerShell](disks-enable-host-based-encryption-powershell.md) 或 [Azure 门户](../disks-enable-host-based-encryption-portal.md)在主机上启用端到端加密。
+- 使用 [PowerShell](disks-enable-double-encryption-at-rest-powershell.md) 或 [Azure 门户](../disks-enable-double-encryption-at-rest-portal.md)为托管磁盘启用静态加密。
+- 使用 [PowerShell](disks-enable-customer-managed-keys-powershell.md) 或 [Azure 门户](../disks-enable-customer-managed-keys-portal.md)为托管磁盘启用客户管理的密钥。
 - [探索 Azure 资源管理器模板以使用客户管理密钥创建加密磁盘](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [什么是 Azure 密钥保管库？](../../key-vault/general/overview.md)

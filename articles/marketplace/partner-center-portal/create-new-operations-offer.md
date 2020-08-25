@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: bdce311efbe7e41e09a3be76562c6be752a4b5c1
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 79bf5f0d6b7e3fa4735d94c7b26c1736ab25113e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88606104"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816994"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations 产品/服务
 
@@ -21,7 +21,7 @@ ms.locfileid: "88606104"
 开始前，请先[在合作伙伴中心内创建商业市场帐户](create-account.md)（如果尚未创建的话）。 请确保你的帐户已注册加入商业市场计划。
 
 >[!NOTE]
-> 在产品/服务发布后，在合作伙伴中心内对它进行的编辑只会在产品/服务重新发布后才在系统和店面中进行更新。 请务必在进行更改后提交产品/服务以供发布。
+> 发布产品/服务后，在重新提交产品/服务进行发布之后，将仅在合作伙伴中心和在线商店中更新对产品/服务的编辑。
 
 ## <a name="create-a-new-offer"></a>创建新套餐
 
@@ -32,7 +32,7 @@ ms.locfileid: "88606104"
     ![展示了左侧导航菜单。](./media/new-offer-dynamics-365-operations.png)
 
 > [!NOTE]
-> 发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅会在重新发布产品/服务后出现在联机商店中。 请务必在进行更改后始终进行重新发布。
+> 发布产品/服务后，在 "合作伙伴中心" 中对其进行的编辑仅会在重新发布产品/服务后出现在联机商店中。 确保在进行更改后始终重新发布。
 
 ## <a name="new-offer"></a>新产品/服务
 
@@ -54,26 +54,26 @@ ms.locfileid: "88606104"
 
 选择要用于此产品/服务的选项。
 
-#### <a name="get-it-now-free"></a>立即获取(免费)
+#### <a name="get-it-now-free"></a>立即获取（免费）
 
 通过提供可供用户访问应用的有效 URL（以 http 或 https 开头），免费向客户提供产品/服务一览。  例如： `https://contoso.com/my-app`
 
 #### <a name="free-trial-listing"></a>免费试用版(一览)
 
-向客户列出你的产品/服务，其中包含免费试用版的链接，方法是提供有效的 URL， (始于 `http` 或 `https`) 可以获取试用版。 例如，`https://contoso.com/trial/my-app` 。 产品/服务一览免费试用版是由你的服务创建、管理和配置，不包含由 Microsoft 管理的订阅。
+向客户列出你的产品/服务，其中包含免费试用版的链接，方法是提供有效的 URL， (始于 `http` 或 `https`) 可以获取试用版。 例如，`https://contoso.com/trial/my-app` 。 产品/服务列表免费试用版由你的服务创建、管理和配置，并且不包含由 Microsoft 管理的订阅。
 
 > [!NOTE]
-> 应用通过试用版链接收到的令牌只能用于通过 Azure Active Directory (Azure AD) 获取用户信息，从而在应用中自动创建帐户。 不支持使用此令牌对 Microsoft 帐户进行身份验证。
+> 应用程序将通过试用链接收到的令牌只能用于通过 Azure Active Directory (Azure AD) 获取用户信息，从而在应用中自动创建帐户。 Microsoft 帐户不支持使用此令牌进行身份验证。
 
 #### <a name="contact-me"></a>与我联系
 
-通过连接客户关系管理 (CRM) 系统来收集客户联系信息。 客户会被要求授权共享其信息。 这些客户详细信息以及产品/服务名称、ID 和他们在其中找到产品/服务的市场来源将发送到你配置的 CRM 系统。 若要详细了解如何配置 CRM，请参阅[潜在客户](#customer-leads)。
+通过连接客户关系管理 (CRM) 系统来收集客户联系信息。 系统将要求客户允许共享其信息。 这些客户详细信息以及产品/服务名称、ID 和他们在其中找到产品/服务的市场来源将发送到你配置的 CRM 系统。 有关如何配置 CRM 的详细信息，请参阅[潜在顾客](#customer-leads)。
 
 ### <a name="test-drive"></a>体验版
 
-体验版是一种向潜在客户展示你的产品/服务的好方法，让他们可以选择“先试后买”，从而提高转化率，并开发出高质量的潜在客户。 若要了解详细信息，请从 [什么是测试驱动器](../what-is-test-drive.md)开始。
+体验版是一种向潜在客户展示你的产品/服务的好方法，它为潜在客户提供“在购买前试用”这一选择，从而提高了转化率并开发出优质的潜在顾客。 若要了解详细信息，请从 [什么是测试驱动器](../what-is-test-drive.md)开始。
 
-若要在固定时间段内启用体验版，请选中“启用体验版”复选框。 若要从产品/服务中删除体验版，请取消选中此复选框。
+若要在固定时间段内启用体验版，请选中“启用体验版”复选框。 若要从产品/服务中删除体验版，请清除此复选框。
 
 ### <a name="customer-leads"></a>潜在顾客
 
@@ -193,12 +193,16 @@ ms.locfileid: "88606104"
 
 #### <a name="store-logos"></a>应用商店徽标
 
-提供以下两个像素大小的产品/服务徽标：
+提供 **大** 徽标徽标的 PNG 文件。 合作伙伴中心将使用此来创建 **小** 徽标。 稍后，可以选择将此替换为其他映像。
 
-- 小 (48 x 48)
-- 大 (216 x 216)
+- **大型** (从 216 x 216 到 350 x 350 px，必需) 
+- **小写** (48 x 48 px，可选) 
+
+在列表中的不同位置使用这些徽标：
 
 [!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>屏幕截图
 

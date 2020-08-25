@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 985fbc70f15c0806c45ae43d62995590e10b1bb2
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 09206b8189f03a37f8bd7d073238609a3f1bd3ad
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88798918"
+ms.locfileid: "88816093"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>使用网络文件系统 (NFS) 3.0 协议 (预览中装载 Blob 存储) 
 
@@ -109,11 +109,11 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 
 |工具|SDK|
 |---|---|
-|[Azure 存储资源管理器](data-lake-storage-explorer.md#create-a-container)|[.NET](data-lake-storage-directory-file-acl-dotnet.md#create-a-container)|
+|[Azure 门户](https://portal.azure.com)|[.NET](data-lake-storage-directory-file-acl-dotnet.md#create-a-container)|
 |[AzCopy](../common/storage-use-azcopy-blobs.md#create-a-container)|[Java](data-lake-storage-directory-file-acl-java.md#create-a-container)|
 |[PowerShell](data-lake-storage-directory-file-acl-powershell.md#create-a-container)|[Python](data-lake-storage-directory-file-acl-python.md#create-a-container)|
 |[Azure CLI](data-lake-storage-directory-file-acl-cli.md#create-a-container)|[JavaScript](data-lake-storage-directory-file-acl-javascript.md)|
-|[Azure 门户](https://portal.azure.com)|[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
+||[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
 
 ## <a name="step-7-mount-the-container"></a>步骤7：装载容器
 
@@ -172,7 +172,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 |`Access denied by server while mounting`|请确保客户端在支持的子网中运行。 请参阅 [支持的网络位置](network-file-system-protocol-support.md#supported-network-connections)。|
 |`No such file or directory`| 请确保在验证功能已注册后创建要装载的容器。 请参阅 [步骤2：验证是否已注册该功能](#step-2-verify-that-the-feature-is-registered)。另外，请确保将 mount 命令和它的参数直接输入到终端中。 如果你将该命令的任何部分从另一个应用程序复制并粘贴到终端，粘贴的信息中的隐藏字符可能会导致出现此错误。|
 
-## <a name="see-also"></a>请参阅
+## <a name="see-also"></a>另请参阅
 
 [Azure Blob 存储中的网络文件系统 (NFS) 3.0 协议支持 (预览) ](network-file-system-protocol-support.md)
 

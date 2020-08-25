@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2020
 tags: connectors
-ms.openlocfilehash: 768186d4b1cf9ac62d4ffdb0af8fdb3df04e9b19
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: d02467fddcce77340b9845fe084bf5a2fb8b01f3
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461578"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815719"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure 逻辑应用和 Azure 服务总线在云中交换消息
 
@@ -45,7 +45,7 @@ ms.locfileid: "87461578"
 
 确认逻辑应用有权访问服务总线命名空间。
 
-1. 在[Azure 门户](https://portal.azure.com)中，用 Azure 帐户登录。
+1. 在 [Azure 门户](https://portal.azure.com)中，用 Azure 帐户登录。
 
 1. 转到服务总线的命名空间。 在命名空间页上的“设置”下，选择“共享访问策略”。  在“声明”下，检查你是否有该命名空间的“管理”权限。 
 
@@ -77,6 +77,9 @@ ms.locfileid: "87461578"
    所有服务总线触发器都是长轮询触发器。 此说明意味着，触发器在激发时会处理所有消息，然后等待 30 秒，让更多的消息出现在队列或主题订阅中。 如果在 30 秒内未显示任何消息，则会跳过触发器运行。 否则，该触发器将继续读取消息，直到队列或主题订阅为空。 下一次触发器轮询将基于在触发器的属性中指定的重复周期间隔。
 
    某些触发器（例如“一条或多条消息抵达队列时(自动完成)”触发器）可能会返回一条或多条消息。 这些触发器在触发时返回的消息数至少为 1，至多为触发器的**最大消息计数**属性指定的消息数。
+
+    > [!NOTE]
+    > 自动完成触发器会自动完成一条消息，但只有在下一次触发器运行时才会完成。 此行为可能会影响逻辑应用的设计。 例如，如果你将自动完成触发器设置为每分钟检查一次消息，但在服务总线端将锁定持续时间设置为30秒，则结果为在完成该消息时出现 "锁定已过期" 的错误。 需要将锁定持续时间设置为长度超过轮询间隔的值。
 
 1. 如果触发器是首次连接到服务总线命名空间，则请在逻辑应用设计器提示你输入连接信息时执行以下步骤。
 

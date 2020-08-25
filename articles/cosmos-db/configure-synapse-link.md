@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: rosouz
-ms.openlocfilehash: 37cbddbb54493c54a29a790d617bbdb44bf17da9
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 4c5f812bf1a5a60a6d1344d6a39fbd95898f55fc
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88653131"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815566"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>配置和使用 Azure Synapse Link for Azure Cosmos DB（预览版）
 
@@ -19,7 +19,7 @@ Azure Synapse Link for Azure Cosmos 是一种云原生混合事务和分析处�
 
 
 > [!IMPORTANT]
-> 若要使用 Azure Synapse Link，请确保在上述支持的区域之一预配 Azure Cosmos 帐户和 Azure Synapse Analytics 工作区。有关支持的区域的列表，请参阅 [Azure 服务更新](https://azure.microsoft.com/updates/)。 
+> 若要使用 Azure Synapse 链接，请确保在一个支持的区域中预配 Azure Cosmos 帐户 & Azure Synapse Analytics 工作区。 Azure Synapse 链接目前在以下 Azure 区域中提供：美国西部、美国东部、西2、北欧、西欧、美国中南部、东南亚、澳大利亚东部、东 U2、英国南部。
 
 使用以下步骤，通过 Azure Synapse Link for Azure Cosmos 运行分析查询：
 

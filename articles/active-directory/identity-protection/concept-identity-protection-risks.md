@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 08/15/2020
+ms.date: 08/24/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c92994fee6de4c56257343af2ef418393b505ad
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 3ecb25e9bb9625a5ada70be2df61898a462c86af
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507427"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88815046"
 ---
 # <a name="what-is-risk"></a>什么是风险？
 
@@ -39,6 +39,7 @@ Azure AD Identity Protection 中的风险检测包括任何与目录中的用户
 | 风险检测 | 说明 |
 | --- | --- |
 | 凭据泄露 | 此风险检测类型表示用户的有效凭据已泄漏。 当网络犯罪分子泄露合法用户的有效密码时，他们通常会共享这些凭据。 通常，这种共享方式是通过公开发布到暗 web、粘贴站点或通过贸易并在黑色市场上销售凭据来完成的。 当 Microsoft 泄漏的凭据服务从深色 web、粘贴站点或其他源获取用户凭据时，将根据 Azure AD 用户的当前有效凭据来检查它们以查找有效匹配项。 有关泄漏的凭据的详细信息，请参阅 [常见问题](#common-questions)。 |
+| 密码喷涂 | 密码喷涂攻击是指使用常见密码以统一暴力破解方式攻击多个用户名以获取未经授权的访问。 执行密码喷涂攻击时，会触发此风险检测。 |
 | Azure AD 威胁智能 | 此风险检测类型表示对于给定用户异常的用户活动，或者与基于 Microsoft 内部和外部威胁智能源的已知攻击模式一致。 |
 
 ### <a name="sign-in-risk"></a>登录风险
@@ -70,7 +71,7 @@ Azure AD Identity Protection 中的风险检测包括任何与目录中的用户
 
 标识保护将风险分为三个级别：低、中和高。 
 
-尽管 Microsoft 不提供有关如何计算风险的具体详细信息，但我们会说，每个级别都使用户或登录受损的置信度更高。 例如，类似于用户的不熟悉登录属性的一个实例可能不像其他用户泄露的凭据。
+虽然 Microsoft 不提供有关风险计算方式的具体详细信息，但可以说每个级别在用户或登录受到攻击时都提供了更高的置信度。 例如，与某用户的一个实例出现不熟悉的登录属性相比，将凭据泄露给另一个用户所带来的威胁性更高。
 
 ### <a name="leaked-credentials"></a>凭据泄露
 

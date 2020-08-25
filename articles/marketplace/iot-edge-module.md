@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 04/15/2020
-ms.openlocfilehash: f7a4997117c8730b767f245050caa3f3157fb6fd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 08/18/2020
+ms.openlocfilehash: c475e548cc8e29a83f2d440df43fb8ac31dc1c1e
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88750245"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816246"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模块
 
@@ -40,13 +40,13 @@ IoT Edge 模块套餐类型是在 IoT Edge 设备上运行的一种特定类型�
 
 **选择正确的在线商店**
 
-IoT Edge 模块仅发布到 Azure 市场，AppSource 不适用。  有关在线商店中的差异和目标受众的详细信息，请参阅 [确定发布选项](determine-your-listing-type.md)。
- 
+IoT Edge 模块仅发布到 Azure Marketplace;AppSource 不适用。 有关在线商店中的差异和目标受众的详细信息，请参阅 [确定发布选项](determine-your-listing-type.md)。
+
 **计费选项**
 
 市场当前支持 IoT Edge 模块的“免费”和“自带许可证 (BYOL)”计费选项。
- 
-**发布选项**
+
+### <a name="publishing-options"></a>发布选项
 
 在所有情况下，IoT Edge 模块应选择“Transact”发布选项。  有关发布选项的详细信息，请参阅[选择发布选项](determine-your-listing-type.md)。  
 
@@ -54,22 +54,22 @@ IoT Edge 模块仅发布到 Azure 市场，AppSource 不适用。  有关在线�
 
 Microsoft Azure 市场协议和策略的所有条款都适用于 IoT Edge 模块套餐。  此外，还有 IoT Edge 模块的先决条件和技术要求。  
 
-**先决条件**
+### <a name="prerequisites"></a>先决条件
 
 若要将 IoT Edge 模块发布到 Azure 市场，需满足以下先决条件：
 
 - 访问合作伙伴中心。 有关详细信息，请参阅 [Azure 市场和 AppSource 发布指南](marketplace-publishers-guide.md)。
-- 在 Azure 容器注册表中托管 IoT Edge 模块。 
-- 准备好 IoT Edge 模块元数据，比如（非详尽列表）： 
+- 在 Azure 容器注册表中托管 IoT Edge 模块。
+- 准备好 IoT Edge 模块元数据，比如（非详尽列表）：
     - 标题
     - 说明（采用 HTML 格式）
-    - 徽标图像（PNG 格式和包括 40x40px、90x90px、115x115px、255x115px 的固定图像大小）
+    - 徽标图像 (大小为 48 x 48 (可选) 、90 x 90 (可选) ，以及从 216 x 216 到 350 x 350 px，均为 PNG 格式) 
     - 使用条款和隐私策略
     - 默认模块配置（路由、孪生所需属性、createOptions、环境变量）
     - 文档
     - 支持联系人
 
-**技术要求**
+### <a name="technical-requirements"></a>技术要求
 
 若要详细了解帮助 IoT Edge 模块获得认证并在 Azure 市场中发布的主要技术要求，请参阅[准备 IoT Edge 模块技术资产](./partner-center-portal/create-iot-edge-module-asset.md)。
 

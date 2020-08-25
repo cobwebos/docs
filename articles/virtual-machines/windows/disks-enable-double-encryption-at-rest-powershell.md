@@ -2,22 +2,22 @@
 title: Azure PowerShell-启用静态托管磁盘上的双加密
 description: 使用 Azure PowerShell 为托管磁盘数据启用静态加密。
 author: roygara
-ms.date: 07/10/2020
+ms.date: 08/24/2020
 ms.topic: how-to
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 5e70d434fcb297ff39b32a83b89a86e85fe9564f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6cb0bf9ae12169f9431cf221431f442b5870d932
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87088438"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816501"
 ---
-# <a name="azure-powershell---enable-double-encryption-at-rest-on-your-managed-disks"></a>Azure PowerShell-在托管磁盘上启用静态加密
+# <a name="use-the-azure-powershell-module-to-enable-double-encryption-at-rest-for-managed-disks"></a>使用 Azure PowerShell 模块为托管磁盘启用静态加密
 
-Azure 磁盘存储支持将静态加密用于托管磁盘。 有关静态加密以及其他托管磁盘加密类型的概念信息，请参阅磁盘加密一文中的 "[静态加密](disk-encryption.md#double-encryption-at-rest)" 部分。
+Azure 磁盘存储支持将静态加密用于托管磁盘。 有关静态加密以及其他托管磁盘加密类型的概念信息，请参阅磁盘加密一文中的 " [静态加密](disk-encryption.md#double-encryption-at-rest) " 部分。
 
 ## <a name="supported-regions"></a>支持的区域
 
@@ -25,7 +25,7 @@ Azure 磁盘存储支持将静态加密用于托管磁盘。 有关静态加密�
 
 ## <a name="prerequisites"></a>先决条件
 
-安装最新的[Azure PowerShell 版本](/powershell/azure/install-az-ps)，并使用[AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-4.3.0)登录到 Azure 帐户。
+安装最新的 [Azure PowerShell 版本](/powershell/azure/install-az-ps)，并使用 [AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-4.3.0)登录到 Azure 帐户。
 
 ## <a name="getting-started"></a>入门
 
@@ -46,7 +46,7 @@ Azure 磁盘存储支持将静态加密用于托管磁盘。 有关静态加密�
     $key = Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Destination $keyDestination  
     ```
 
-1.  创建 DiskEncryptionSet，并将 encryptionType 设置为 EncryptionAtRestWithPlatformAndCustomerKeys。 使用 Azure 资源管理器（ARM）模板中的 API **2020-05-01**版。 
+1.  创建 DiskEncryptionSet，并将 encryptionType 设置为 EncryptionAtRestWithPlatformAndCustomerKeys。 使用 Azure 资源管理器 (ARM) 模板中的 API 版本 **2020-05-01** 。 
     
     ```powershell
     New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName `
@@ -70,7 +70,7 @@ Azure 磁盘存储支持将静态加密用于托管磁盘。 有关静态加密�
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，已创建并配置了这些资源，可以使用它们来保护托管磁盘。 以下链接包含示例脚本，每个脚本都有各自的方案，可用于保护托管磁盘。
+创建并配置这些资源之后，可以使用它们来保护托管磁盘。 以下链接包含示例脚本，每个脚本都有各自的方案，可用于保护托管磁盘。
 
-- [Azure PowerShell-通过服务器端加密托管磁盘启用客户管理的密钥](disks-enable-customer-managed-keys-powershell.md)
+- [Azure PowerShell - 使用客户管理的密钥进行服务器端加密 - 托管磁盘](disks-enable-customer-managed-keys-powershell.md)
 - [Azure 资源管理器模板示例](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/DoubleEncryption)

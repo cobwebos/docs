@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 08/07/2020
-ms.openlocfilehash: 3e8822462cd7989f6bc1f051b3868d6241f591b1
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 33b3dcdc4fbcf08114f6ba6d63bb949250380d63
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166699"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816518"
 ---
 # <a name="create-an-azure-virtual-machine-offer-on-azure-marketplace"></a>在 Azure 市场创建 Azure 虚拟机产品/服务
 
@@ -116,16 +116,16 @@ ms.locfileid: "88166699"
 
 ## <a name="properties"></a>属性
 
-在 "**属性**" 页上，定义用于对 Azure Marketplace 上的产品/服务、应用程序版本以及支持产品/服务的法律合同进行分组的类别。
+在 " **属性** " 页上，定义用于对 Azure Marketplace 上的产品/服务、应用程序版本以及支持产品/服务的法律合同进行分组的类别。
 
 ### <a name="category"></a>类别
 
 选择类别和子类别，将产品/服务置于适当的 marketplace 搜索区域。 确保在产品/服务说明中介绍产品/服务如何支持这些类别。 选择：
 
 - 至少一个和多达两个类别，包括主类别和辅助类别 (可选) 。
-- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 "**不适用**"。
+- 每个主节点和/或辅助类别最多包含两个子类别。 如果没有任何子类别适用于你的产品/服务，请选择 " **不适用**"。
 
-请参阅[产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。 虚拟机产品/服务始终显示在 Azure Marketplace 上的**计算**类别下。
+请参阅 [产品/服务列表最佳做法](../gtm-offer-listing-best-practices.md)中的类别和子类别的完整列表。 虚拟机产品/服务始终显示在 Azure Marketplace 上的 **计算** 类别下。
 
 ### <a name="legal"></a>合法
 
@@ -249,16 +249,17 @@ ms.locfileid: "88166699"
 
 #### <a name="azure-marketplace-logos"></a>Azure 市场徽标
 
-按以下四个图像尺寸提供产品/服务徽标的 PNG 文件：
+提供 **大** 徽标徽标的 PNG 文件。 合作伙伴中心将使用此来创建 **小型** 和 **中型** 徽标。 稍后可以选择将它们替换为不同的图像。
 
-- **小**（48 &times; 48 像素）
-- **中**（90 &times; 90 像素）
-- **大**（216 &times; 216 像素）
-- **宽**（255 &times; 115 像素）
+- **大型** (从 216 x 216 到 350 x 350 px，必需) 
+- **中型** (90 x 90 px，可选) 
+- **小写** (48 x 48 px，可选) 
 
-所有这四种徽标都是必需的，它们显示在各种 Azure 市场列表中。
+在列表中的不同位置使用这些徽标：
 
 [!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
+
+[!INCLUDE [Logo tips](../includes/graphics-suggestions.md)]
 
 #### <a name="screenshots"></a>屏幕截图
 
@@ -292,7 +293,7 @@ ms.locfileid: "88166699"
 
 在合作伙伴中心内，可以在同一产品/服务中提供各种计划选项。 产品/服务需要至少一个名为 "SKU)  (的计划，盈利受众、Azure 区域、功能或 VM 映像可能会有所不同。
 
-最多可为每个产品创建100个计划：最多可为45个。 详细了解[Microsoft 商业应用商店](../private-offers.md)中的专用产品/服务。
+最多可为每个产品创建100个计划：最多可为45个。 详细了解 [Microsoft 商业应用商店](../private-offers.md)中的专用产品/服务。
 
 创建计划后，选择“计划概述”选项卡以显示：
 
@@ -374,7 +375,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 
 此窗格中，将配置：
 
-- 提供此计划的市场。 每个计划都必须至少在一个[市场](../marketplace-geo-availability-currencies.md)中可用。
+- 提供此计划的市场。 每个计划都必须至少在一个 [市场](../marketplace-geo-availability-currencies.md)中可用。
 - 每小时价格。
 - 是让计划对所有人可见，还是仅对特定客户（专用受众）可见。
 
@@ -464,7 +465,7 @@ Azure 政府服务处理符合特定政府法规和要求的数据。 例如，F
 为虚拟机映像提供磁盘版本和共享访问签名 (SAS) URI。 为每个 VM 映像添加多达 16 个数据磁盘。 在指定的提交中，每个计划仅提供一个新的映像版本。 映像发布后，无法对其进行编辑，但可以将其删除。 删除版本会阻止新用户和现有用户部署已删除版本的新实例。
 
 - **光盘版本**：正在提供的映像的版本。
-- **SAS URI**：Azure 存储帐户中存储操作系统 VHD 的位置。 若要了解如何获取 SAS URI，请参阅[获取 VM 映像的共享访问签名 URI](get-sas-uri.md)。
+- **SAS URI**：Azure 存储帐户中存储操作系统 VHD 的位置。 若要了解如何获取 SAS URI，请参阅 [获取 VM 映像的共享访问签名 URI](get-sas-uri.md)。
 - 数据磁盘映像也是存储在其 Azure 存储帐户中的 VHD 共享访问签名 URI。
 - 计划中的每次提交只添加一个映像。
 

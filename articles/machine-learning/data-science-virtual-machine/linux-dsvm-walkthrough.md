@@ -8,19 +8,17 @@ ms.subservice: data-science-vm
 author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
-ms.date: 04/02/2020
-ms.openlocfilehash: ed552a57e51ce9249f84bab6bb72bfe783e43edb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 07/17/2020
+ms.openlocfilehash: ca3cfa44bd4f757c6fbb0dd2c84d7a843f9bff36
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078111"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816212"
 ---
-# <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure 上的 Linux Data Science Virtual Machine 中的数据科学
+# <a name="data-science-with-an-ubuntu-data-science-virtual-machine-in-azure"></a>使用 Azure 中的 Ubuntu Data Science Virtual Machine 进行数据科学
 
-本演练介绍如何使用 Linux Data Science Virtual Machine (DSVM) 执行多种常见数据科学任务。 Linux DSVM 是 Azure 提供的虚拟机映像，其中预安装了一组常用于执行数据分析和机器学习的工具。 [预配 Linux Data Science Virtual Machine](linux-dsvm-intro.md) 中逐项列出了主要的软件组件。 DSVM 映像允许在几分钟之内轻松开始执行数据科学任务，而无需逐个安装和配置每个工具。 可以根据需要轻松扩展 DSVM，还可以在不使用时将其停用。 DSVM 资源既具有弹性，又具有成本效益。
-
-在本演练中演示的数据科学任务遵循了[什么是团队数据科学过程？](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview)中所概述的步骤 团队数据科学过程是数据科学的系统性方法，允许数据科学家团队在构建智能应用程序的生命周期内有效地协作。 数据科学过程还为数据科学提供了可供个人遵循迭代框架。
+本演练演示如何使用 Ubuntu Data Science Virtual Machine (DSVM) 完成几个常见的数据科学任务。 Ubuntu DSVM 是 Azure 中提供的虚拟机映像，预安装了一系列用于数据分析和机器学习的工具。 [预配 Ubuntu Data Science Virtual Machine](./dsvm-ubuntu-intro.md)中详细列出了重要软件组件。 DSVM 映像允许在几分钟之内轻松开始执行数据科学任务，而无需逐个安装和配置每个工具。 可以根据需要轻松扩展 DSVM，还可以在不使用时将其停用。 DSVM 资源既具有弹性，又具有成本效益。
 
 在本演练中，我们对 [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) 数据集进行了分析。 Spambase 是一组标记为 spam 或 ham（非 spam）的电子邮件。 Spambase 还包含有关电子邮件内容的一些统计信息。 我们稍后将在本演练中讨论这些统计信息。
 
@@ -29,10 +27,10 @@ ms.locfileid: "87078111"
 必须具备以下先决条件，才能使用 Linux DSVM：
 
 * **Azure 订阅**。 若要获取 Azure 订阅，请参阅[立即创建免费的 Azure 帐户](https://azure.microsoft.com/free/)。
-* [Linux Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 有关预配虚拟机的信息，请参阅[预配 Linux Data Science Virtual Machine](linux-dsvm-intro.md)。
-* 计算机上安装了 [X2Go](https://wiki.x2go.org/doku.php) 且 XFCE 会话处于打开状态。 有关详细信息，请参阅[安装和配置 X2Go 客户端](dsvm-ubuntu-intro.md#x2go)。
+
+* [**Ubuntu Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804)。 有关设置虚拟机的信息，请参阅 [预配 Ubuntu Data Science Virtual Machine](linux-dsvm-intro.md)。
+* 计算机上安装了 [X2Go](https://wiki.x2go.org/doku.php) 且 XFCE 会话处于打开状态。 有关详细信息，请参阅[安装和配置 X2Go 客户端](linux-dsvm-intro.md#x2go)。
 * 为获得更流畅的滚动体验，请在 DSVM 的 Firefox Web 浏览器中切换 `about:config` 中的 `gfx.xrender.enabled` 标记。 [了解详细信息](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 此外，考虑将 `mousewheel.enable_pixel_scrolling` 设置为 `False`。 [了解详细信息](https://support.mozilla.org/questions/981140)。
-* Azure 机器学习帐户。 如果没有帐户，请在 [Azure 机器学习主页](https://azure.microsoft.com/free/services/machine-learning//)上注册新帐户。
 
 ## <a name="download-the-spambase-dataset"></a>下载 spambase 数据集
 
@@ -228,7 +226,7 @@ accuracy
 * JupyterHub
 * Rattle
 * PostgreSQL 和 SQuirreL SQL
-* SQL Server 数据仓库
+* Azure Synapse Analytics（以前称为 SQL DW）
 
 ### <a name="xgboost"></a>XGBoost
 
@@ -286,31 +284,6 @@ clf = svm.SVC()
 clf.fit(X, y)
 ```
 
-若要将模型发布到 Azure 机器学习：
-
-```Python
-# Publish the model.
-workspace_id = "<workspace-id>"
-workspace_token = "<workspace-token>"
-from azureml import services
-@services.publish(workspace_id, workspace_token)
-@services.types(char_freq_dollar = float, word_freq_remove = float, word_freq_hp = float)
-@services.returns(int) # 0 or 1
-def predictSpam(char_freq_dollar, word_freq_remove, word_freq_hp):
-    inputArray = [char_freq_dollar, word_freq_remove, word_freq_hp]
-    return clf.predict(inputArray)
-
-# Get some info about the resulting model.
-predictSpam.service.url
-predictSpam.service.api_key
-
-# Call the model
-predictSpam.service(1, 1, 1)
-```
-
-> [!NOTE]
-> 此选项仅适用于 Python 2.7。 Python 3.5 尚不支持。 若要运行，请使用 /anaconda/bin/python2.7。
-
 ### <a name="jupyterhub"></a>JupyterHub
 
 在 DSVM 中的 Anaconda 分发版包含 Jupyter Notebook - 一个共享 Python、R 或 Julia 代码和分析的跨平台环境。 可通过 JupyterHub 访问 Jupyter notebook。 使用本地 Linux 用户名和密码在 https://\<DSVM DNS name or IP address\>:8000/ 中登录。 JupyterHub 的所有配置文件可以在 /etc/jupyterhub 中找到。
@@ -334,7 +307,6 @@ DSVM 上已安装了几个示例 Notebook：
 
 * 示例 Python 笔记本：
   * [IntroToJupyterPython.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroToJupyterPython.ipynb)
-  * [IrisClassifierPyMLWebService](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IrisClassifierPyMLWebService.ipynb)
 * 示例 R 笔记本：
   * [IntroTutorialinR](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroTutorialinR.ipynb) 
 
@@ -506,9 +478,9 @@ CREATE TABLE data (word_freq_make real, word_freq_address real, word_freq_all re
 1. 对于“驱动程序”，选择 PostgreSQL 。
 1. 将 URL 设置为 **jdbc:postgresql://localhost/spam**。
 1. 输入用户名和密码。
-1. 选择“确定” 。
+1. 选择“确定”。
 1. 若要打开“连接”窗口，请双击**垃圾邮件数据库**别名。
-1. 选择“连接” 。
+1. 选择“连接”。
 
 运行一些查询：
 
@@ -532,9 +504,9 @@ SELECT * from data order by word_freq_3d desc;
 
 如果希望使用 PostgreSQL 数据库中存储的数据执行机器学习，请考虑使用 [MADlib](https://madlib.incubator.apache.org/)。
 
-### <a name="sql-data-warehouse"></a>SQL 数据仓库
+### <a name="azure-synapse-analytics-formerly-sql-dw"></a>Azure Synapse Analytics（以前称为 SQL DW）
 
-Azure SQL 数据仓库是一种基于云的向外扩展数据库，可以处理大量数据（关系数据和非关系数据）。 有关详细信息，请参阅[什么是 Azure SQL 数据仓库？](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+Azure Synapse Analytics 是一种基于云的向外扩展数据库，可以处理大量数据（关系数据和非关系数据）。 有关详细信息，请参阅 [什么是 Azure Synapse Analytics？](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 若要连接到数据仓库并创建表，请从命令提示符运行以下命令：
 
@@ -567,8 +539,4 @@ GO
 
 还可以使用 SQuirreL SQL 进行查询。 使用 SQL Server JDBC 驱动程序执行类似于 PostgreSQL 的步骤。 JDBC 驱动程序位于 /usr/share/java/jdbcdrivers/sqljdbc42.jar 文件夹中。
 
-## <a name="next-steps"></a>后续步骤
 
-获取文章概述，了解包含在 Azure 中的数据科学过程的任务，请参阅[团队数据科学过程](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview)。
-
-有关针对特定方案，演示团队数据科学过程中的步骤的端到端演练的说明，请参阅[团队数据科学过程演练](../team-data-science-process/walkthroughs.md)。 该演练还展示了如何将云、本地工具以及服务结合到一个工作流或管道中，以创建智能应用程序。

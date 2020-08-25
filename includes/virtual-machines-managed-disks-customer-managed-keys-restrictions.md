@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/24/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f45ecf9985f17008ce7f751b21a04deefc285461
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 8833639b6efacc664596ecb2aa6f9da41ad23b81
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88809832"
+ms.locfileid: "88814123"
 ---
 - 仅支持2048位、3072位和4096位大小的 [软件和 HSM RSA 密钥](../articles/key-vault/keys/about-keys.md) ，无其他密钥或大小。
     - [HSM](../articles/key-vault/keys/hsm-protected-keys.md) 密钥需要 Azure 密钥保管库的 **高级** 层。

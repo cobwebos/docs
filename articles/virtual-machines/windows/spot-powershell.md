@@ -8,31 +8,31 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: f615ed5183142ca7684c7e705fa6a42bd3124d19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8bcf90368e8d43dce2d10fa3744024bcbc7e4b52
+ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514836"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88816535"
 ---
 # <a name="deploy-spot-vms-using-azure-powershell"></a>使用 Azure PowerShell 部署专色 Vm
 
 
-使用[污点 vm](spot-vms.md) ，你可以显著节省成本。 当 Azure 需要恢复容量时，Azure 基础结构将逐出点 Vm。 因此，专色 Vm 非常适合用于处理中断的工作负荷，如批处理作业、开发/测试环境、大型计算工作负荷等。
+使用 [污点 vm](../spot-vms.md) ，你可以显著节省成本。 当 Azure 需要恢复容量时，Azure 基础结构将逐出点 Vm。 因此，专色 Vm 非常适合用于处理中断的工作负荷，如批处理作业、开发/测试环境、大型计算工作负荷等。
 
-基于区域和 SKU，污点 Vm 的定价是可变的。 有关详细信息，请参阅适用于[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)和[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定价。 有关设置最大价格的详细信息，请参阅[污点 vm-定价](spot-vms.md#pricing)。
+基于区域和 SKU，污点 Vm 的定价是可变的。 有关详细信息，请参阅适用于 [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) 和 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)的 VM 定价。 有关设置最大价格的详细信息，请参阅 [污点 vm-定价](../spot-vms.md#pricing)。
 
-你可以选择为 VM 设置你愿意支付的最大价格（每小时）。 可使用最多5个小数位来设置专色 VM 的最大价格（美元）。 例如，值 `0.98765` 表示最高价格为 0.98765 美元/小时。 如果将最大价格设置为 `-1` ，则不会根据价格收回 VM。 VM 的价格将是当前的价格价格或标准 VM 的价格，只要容量和配额可用，此价格就越小。
+你可以选择为 VM 设置你愿意支付的最大价格（每小时）。 可使用最多5个小数位 (USD) ，为专色 VM 设置最大价格。 例如，值 `0.98765` 表示最高价格为 0.98765 美元/小时。 如果将最大价格设置为 `-1` ，则不会根据价格收回 VM。 VM 的价格将是当前的价格价格或标准 VM 的价格，只要容量和配额可用，此价格就越小。
 
 
 ## <a name="create-the-vm"></a>创建 VM
 
-使用[AzVmConfig](/powershell/module/az.compute/new-azvmconfig)创建 spotVM，创建配置。 包含 `-Priority Spot` 并将设置 `-MaxPrice` 为：
-- `-1`因此，VM 不会根据价格收回。
+使用 [AzVmConfig](/powershell/module/az.compute/new-azvmconfig) 创建 spotVM，创建配置。 包含 `-Priority Spot` 并将设置 `-MaxPrice` 为：
+- `-1` 因此，VM 不会根据价格收回。
 - 美元金额，最多5位数字。 例如， `-MaxPrice .98765` 这意味着，一旦 spotVM 的价格约为每小时98765美元，就会解除分配 VM。
 
 
-此示例将创建一个 spotVM，此功能不会根据定价进行释放（仅当 Azure 需要恢复容量时）。 逐出策略设置为解除分配 VM，以便以后可以重新启动它。 如果要在逐出 VM 时删除 VM 和基础磁盘，请 `-EvictionPolicy` 在中将设置为 `Delete` `New-AzVMConfig` 。
+此示例将创建一个 spotVM，该仅在 Azure 需要容量回) 时才会基于定价 (释放。 逐出策略设置为解除分配 VM，以便以后可以重新启动它。 如果要在逐出 VM 时删除 VM 和基础磁盘，请 `-EvictionPolicy` 在中将设置为 `Delete` `New-AzVMConfig` 。
 
 
 ```azurepowershell-interactive
@@ -75,6 +75,6 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
 
 ## <a name="next-steps"></a>后续步骤
 
-你还可以使用[Azure CLI](../linux/spot-cli.md)、[门户](spot-portal.md)或[模板](../linux/spot-template.md)创建一个专色 VM。
+你还可以使用 [Azure CLI](../linux/spot-cli.md)、 [门户](spot-portal.md) 或 [模板](../linux/spot-template.md)创建一个专色 VM。
 
-如果遇到错误，请参阅[错误代码](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
+如果遇到错误，请参阅 [错误代码](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
