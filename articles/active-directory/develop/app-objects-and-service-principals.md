@@ -27,7 +27,7 @@ ms.locfileid: "88782422"
 ## <a name="application-registration"></a>应用程序注册
 为了将标识和访问管理功能委托给 Azure AD，应用程序必须使用 Azure AD [租户](developer-glossary.md#tenant)进行注册。 将应用程序注册到 Azure AD 时，需要创建应用程序的标识配置，使其能够与 Azure AD 集成。 当你在 [Azure 门户][AZURE-Portal]中注册应用时，你可以选择该应用是只能在) 租户中访问的单个租户 (， (也可以选择设置将访问令牌发送到) 的 "重定向 URI ("。
 
-:::image type="content" source="media/app-objects-and-service-principals/app-registration.png" alt-text="Azure 门户的 "注册应用程序" 窗格的屏幕截图":::
+:::image type="content" source="media/app-objects-and-service-principals/app-registration.png" alt-text="Azure 门户的 注册应用程序 窗格的屏幕截图":::
 
 完成应用注册后，你将拥有应用（应用程序对象）的全局唯一实例，该实例存在于你的主租户或目录中。  而且你的应用拥有全局唯一 ID（应用或客户端 ID）。  然后，在门户中，你便可以添加机密或证书和作用域以使应用正常工作，在登录对话框中自定义应用的品牌等等。
 
