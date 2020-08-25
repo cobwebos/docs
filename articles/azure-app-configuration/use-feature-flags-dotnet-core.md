@@ -11,15 +11,15 @@ ms.service: azure-app-configuration
 ms.workload: tbd
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 04/19/2019
+ms.date: 08/12/2020
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 3182961f928a9befc5a55fb6d58e22c74ba81089
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: 3f8a43a1ff28206a4bcc5fd059f69492c83eb34d
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79473432"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224707"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用功能标志
 
@@ -37,7 +37,7 @@ ms.locfileid: "79473432"
 
 ## <a name="set-up-feature-management"></a>设置功能管理
 
-添加对 `Microsoft.FeatureManagement` NuGet 包的引用以利用 .NET Core 功能管理器。
+添加对 `Microsoft.FeatureManagement.AspNetCore` 和 `Microsoft.FeatureManagement` NuGet 包的引用以利用 .NET Core 功能管理器。
     
 .NET Core 功能管理器 `IFeatureManager` 从框架的本机配置系统获取功能标志。 因此，可以使用 .NET Core 支持的任何配置源（包括本地 *appsettings.json* 文件或环境变量）来定义应用程序的功能标志。 `IFeatureManager` 依赖于 .NET Core 依赖项注入。 可以使用标准约定来注册功能管理服务。
 
@@ -206,6 +206,8 @@ public class HomeController : Controller
 在 MVC 控制器中，使用 `FeatureGate` 属性控制是要启用整个控制器类还是特定的操作。 以下 `HomeController` 控制器要求 `FeatureA` 状态为“打开”，才能执行控制器类包含的任何操作： 
 
 ```csharp
+using Microsoft.FeatureManagement.Mvc;
+
 [FeatureGate(MyFeatureFlags.FeatureA)]
 public class HomeController : Controller
 {
@@ -216,6 +218,8 @@ public class HomeController : Controller
 以下 `Index` 操作要求 `FeatureA` 状态为“打开”才能运行该操作： 
 
 ```csharp
+using Microsoft.FeatureManagement.Mvc;
+
 [FeatureGate(MyFeatureFlags.FeatureA)]
 public IActionResult Index()
 {

@@ -9,21 +9,23 @@ ms.topic: tutorial
 ms.reviewer: jmartens, larryfr
 ms.author: tracych
 author: tracychms
-ms.date: 07/16/2020
+ms.date: 08/14/2020
 ms.custom: Build2020, devx-track-python
-ms.openlocfilehash: 960b59275885efd547df63febab37d2403c1c7cf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: dddb332498f41437eba77d75c38218c58b8c8379
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87847698"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507108"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>使用 Azure 机器学习对大量数据运行批处理推理
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-了解如何使用 Azure 机器学习以异步方式和并行方式对大量数据运行批量推理。 ParallelRunStep 提供现成的并行功能。
+本文介绍如何并行运行 Azure 机器学习模型，以快速计算大量数据。 
 
-借助 ParallelRunStep，可以轻松地将离线推理扩展到拥有数 TB 结构化或非结构化数据的大型计算机群集，从而提高工作效率和优化成本。
+通过大型数据集或使用复杂的模型进行推理可能会非常耗时。 通过 `ParallelRunStep` 类，可以并行执行处理，可能会更快地获得整体结果。 即使运行单个计算的速度非常快，但许多方案（对象检测、视频处理、自然语言处理等）都需要运行多个计算。 
+
+通过 `ParallelRunStep`，可轻松将批量推理扩展到大型计算机群集。 此类群集可以处理 TB 级结构化或非结构化数据，同时可提高工作效率和优化成本。
 
 本文介绍如何执行以下任务：
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 2c8f2d95e7e06f2fff3d8344a3fffa5b19648ede
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: d7f7b0eb2c49e4abba9e12e09d70e321cc6c06f4
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88655258"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88760579"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>了解 VM 重启 - 维护和停机
 有三种情况可能会导致 Azure 中的虚拟机受影响：计划外硬件维护、意外停机、计划内维护。
@@ -34,7 +34,7 @@ ms.locfileid: "88655258"
 * [在可用性集中对 VM 使用托管磁盘]
 * [使用计划事件主动响应影响 VM 的事件](../articles/virtual-machines/linux/scheduled-events.md)
 * [将每个应用程序层配置到不同的可用性集中]
-* [将负载均衡器与可用性集组合在一起]
+* [将负载均衡器与可用性区域或可用性集组合在一起]
 * [使用可用性区域防范数据中心级故障]
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>使用可用性区域防范数据中心级故障
@@ -110,7 +110,7 @@ az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Lo
 
 <!-- Link references -->
 [在可用性集中配置多个虚拟机以确保冗余]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
-[将负载均衡器与可用性集组合在一起]: #combine-a-load-balancer-with-availability-zones-or-sets
+[将负载均衡器与可用性区域或可用性集组合在一起]: #combine-a-load-balancer-with-availability-zones-or-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [在可用性集中对 VM 使用托管磁盘]: #use-managed-disks-for-vms-in-an-availability-set
 [使用可用性区域防范数据中心级故障]: #use-availability-zones-to-protect-from-datacenter-level-failures

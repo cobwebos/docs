@@ -3,12 +3,12 @@ title: 配置 Azure 备份报表
 description: 使用 Log Analytics 和 Azure 工作簿配置和查看 Azure 备份的报表
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 94298c5826f7158655367ae1dd6b7dd54cb88d24
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: bcb9e75cea06be6ce69c6baccb5ac252c1666d4d
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88612429"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755256"
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 
@@ -70,7 +70,7 @@ Azure 备份还提供内置 Azure Policy 定义，该定义会自动配置给定
 
 报表包含各种选项卡：
 
-##### <a name="summary"></a>总结
+##### <a name="summary"></a>摘要
 
 使用此选项卡可大致了解备份空间。 你可以快速查看备份项的总数、使用的云存储空间总量、受保护实例的数量以及每种工作负载类型的作业成功率。 有关特定备份项目类型的详细信息，请转到相应的选项卡。
 
@@ -82,14 +82,14 @@ Azure 备份还提供内置 Azure Policy 定义，该定义会自动配置给定
 
    ![“备份项”选项卡](./media/backup-azure-configure-backup-reports/backup-items.png)
 
-##### <a name="usage"></a>使用情况
+##### <a name="usage"></a>用法
 
 使用此选项卡查看备份的按键帐单参数。 此选项卡上显示的信息可归于计费实体（受保护容器）级别。 例如，如果要将 DPM 服务器备份到 Azure，则可以查看 DPM 服务器使用的受保护实例和云存储的趋势。 同样，如果在 Azure 备份中使用 SQL，或者在 Azure 备份中使用 SAP HANA，此选项卡将在包含这些数据库的虚拟机级别上提供与使用情况相关的信息。
 
    ![“使用情况”选项卡](./media/backup-azure-configure-backup-reports/usage.png)
 
 > [!NOTE]
-> 对于 DPM 工作负荷，用户可能会发现报表中显示的使用情况值与“恢复服务保管库概述”选项卡中显示的聚合使用情况值之间存在细微差异（每个 DPM 服务器相差大约 20 MB）。出现这种差异的原因在于，每个要注册备份的 DPM 服务器都有一个关联的“元数据”数据源，该数据源未作为报告项目显示。
+> 对于 DPM 工作负荷，用户可能会发现，在报表中显示的使用值与 "恢复服务保管库 **概述** " 选项卡中所示的聚合使用值相比，在报表中所示的使用值之间，每个 DPM) 服务器 (的顺序略有不同。这种差异的原因在于，为备份注册的每个 DPM 服务器都有关联的 "metadata" 数据源，该数据源未作为报告的项目出现。
 
 ##### <a name="jobs"></a>作业
 

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0aa9a9728c3a59b6f47ef1427cbcd368d4f1e77c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 0c81f88821d841002ef2489c727071e9629da9e1
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586114"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750775"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>使用托管标识提供 Key Vault 身份验证
 
@@ -114,6 +114,6 @@ az keyvault set-policy --name myKeyVault --object-id <PrincipalId> --secret-perm
 
 - [Azure Key Vault 安全性：标识和访问管理](overview-security.md#identity-and-access-management)
 - [使用访问控制策略提供 Key Vault 身份验证](group-permissions-for-apps.md)
-- [保护密钥保管库](secure-your-key-vault.md)。
+- [保护 Key Vault](secure-your-key-vault.md)
 - [Azure Key Vault 开发人员指南](developers-guide.md)
 - 查看 [Azure Key Vault 最佳做法](best-practices.md)

@@ -1,21 +1,21 @@
 ---
-title: 在 Azure Notebooks 预览版上创建并共享 Jupyter 笔记本
-description: 在 Azure Notebooks 预览版上快速创建并运行 Jupyter 笔记本，然后与他人共享该笔记本。
+title: 在 Azure Notebooks 预览版上创建并共享 Jupyter Notebook
+description: 在 Azure Notebooks 预览版上快速创建并运行 Jupyter Notebook，然后与他人共享该 Notebook。
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: devx-track-python
-ms.openlocfilehash: 19773a6857d58f5b6af2a02ac28a3414c51fc917
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 77575b5b9e006ac9881d03dc95509d55c53c26d7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849392"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589327"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>快速入门：在 Azure Notebooks 预览版中创建和共享笔记本
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-在本快速入门中，你将在 Azure Notebooks 上创建并运行 Jupyter 笔记本，然后与其他人共享该笔记本。 Jupyter 可让你轻松地将 Markdown 文本、可执行代码、持久性数据、图形和可视化效果组合到一个可共享的画布（笔记本）上。 Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyter 笔记本而无需进行安装。
+在本快速入门中，你将在 Azure Notebooks 上创建并运行 Jupyter Notebook，然后与其他人共享该 Notebook。 Jupyter 可让你轻松地将 Markdown 文本、可执行代码、持久性数据、图形和可视化效果组合到一个可共享的画布（笔记本）上。 Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyter Notebook 而无需进行安装。
 
 ## <a name="prerequisites"></a>先决条件
 无。
@@ -91,7 +91,7 @@ ms.locfileid: "87849392"
 
 1. 选择保存图标以保存你的工作：
 
-    ![Jupyter Notebook 工具栏上的保存图标](media/quickstarts/hello-results-save-icon.png)
+    ![Jupyter Notebook 工具栏上的“保存”图标](media/quickstarts/hello-results-save-icon.png)
 
 1. 选择“文件” > “关闭并停止”菜单命令来停止服务器并关闭浏览器窗口 。
 
@@ -106,4 +106,4 @@ ms.locfileid: "87849392"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：创建并运行 Jupyter 笔记本以执行线性回归](tutorial-create-run-jupyter-notebook.md)
+> [教程：创建并运行 Jupyter Notebook 以执行线性回归](tutorial-create-run-jupyter-notebook.md)

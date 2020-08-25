@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: 831f09ecf7550a847c483fbe1678f1e4c3cecb61
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 07055025eff9ab81c7321624daed9b4a6e993a60
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052295"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506505"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell 脚本示例
 
@@ -26,21 +26,21 @@ Azure 远程渲染提供以下两个 REST API：
 若要执行示例脚本，需要正确安装 [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)。
 
 1. 安装 Azure PowerShell：
-    1. 以管理员权限打开 PowerShell
+    1. 以管理员权限打开 PowerShell 窗口。
     1. 运行：`Install-Module -Name Az -AllowClobber`
 
 1. 如果出现了有关运行脚本的错误，请确保正确设置[执行策略](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)：
-    1. 以管理员权限打开 PowerShell
+    1. 以管理员权限打开 PowerShell 窗口。
     1. 运行：`Set-ExecutionPolicy -ExecutionPolicy Unrestricted`
 
 1. [准备 Azure 存储帐户](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)
 
 1. 登录到包含 Azure 远程渲染帐户的订阅：
-    1. 打开 PowerShell
+    1. 打开 PowerShell 窗口。
     1. 运行 `Connect-AzAccount`，并按照屏幕上的指示进行操作。
 
-> [!NOTE]
-> 如果你的组织有多个订阅，你可能需要指定 SubscriptionId 和 Tenant 参数。 在 [Connect-AzAccount 文档](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)中可以找到详细信息。
+    > [!NOTE]
+    > 如果你的组织有多个订阅，你可能需要指定 SubscriptionId 和 Tenant 参数。 在 [Connect-AzAccount 文档](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)中可以找到详细信息。
 
 1. 从 [Azure 远程渲染 GithHub 存储库](https://github.com/Azure/azure-remote-rendering)下载 Scripts 文件夹。
 
@@ -86,9 +86,9 @@ Azure 远程渲染提供以下两个 REST API：
 
 ### <a name="renderingsessionsettings"></a>renderingSessionSettings
 
-若要运行 RenderingSession.ps1，必须填写此结构。
+若要运行 RenderingSession.ps1，必须填写此结构：
 
-- **vmSize：** 选择虚拟机的大小。 选择“标准”或“高级”。  请关闭不再需要的渲染会话。
+- **vmSize：** 选择虚拟机的大小。 选择[标准](../reference/vm-sizes.md)或[高级](../reference/vm-sizes.md) 。 请关闭不再需要的渲染会话。
 - **maxLeaseTime：** 要租用 VM 的持续时间。 租约过期后，该 VM 将会关闭。 以后可以延长租用时间（请参阅下文）。
 
 ### <a name="assetconversionsettings"></a>assetConversionSettings
@@ -189,10 +189,10 @@ Azure 远程渲染提供以下两个 REST API：
 .\Conversion.ps1
 ```
 
-1. 将 `assetConversionSettings.modelLocation` 中包含的所有文件上传到输入 Blob 容器中的给定 `inputFolderPath` 下
+1. 将 `assetConversionSettings.modelLocation` 中包含的所有文件上传到输入 Blob 容器中的给定 `inputFolderPath` 下。
 1. 调用[模型转换 REST API](../how-tos/conversion/conversion-rest-api.md) 启动[模型转换](../how-tos/conversion/model-conversion.md)
-1. 轮询转换状态，直到转换成功或失败
-1. 已转换的文件位置的输出详细信息（存储帐户、输出容器、文件在容器中的路径）
+1. 轮询转换状态，直到转换成功或失败。
+1. 已转换的文件位置的输出详细信息（存储帐户、输出容器、文件在容器中的路径）。
 
 ### <a name="access-to-storage-via-shared-access-signatures"></a>通过共享访问签名访问存储
 
@@ -202,13 +202,13 @@ Azure 远程渲染提供以下两个 REST API：
 
 这会：
 
-1. 将 `assetConversionSettings.localAssetDirectoryPath` 中的本地文件上传到输入 Blob 容器
-1. 为输入容器生成 SAS URI
-1. 为输出容器生成 SAS URI
-1. 调用[模型转换 REST API](../how-tos/conversion/conversion-rest-api.md) 启动[模型转换](../how-tos/conversion/model-conversion.md)
-1. 轮询转换状态，直到转换成功或失败
-1. 已转换的文件位置的输出详细信息（存储帐户、输出容器、文件在容器中的路径）
-1. 将 SAS URI 输出到输出 Blob 容器中已转换的模型
+1. 将 `assetConversionSettings.localAssetDirectoryPath` 中的本地文件上传到输入 Blob 容器。
+1. 为输入容器生成 SAS URI。
+1. 为输出容器生成 SAS URI。
+1. 调用[模型转换 REST API](../how-tos/conversion/conversion-rest-api.md) 启动[模型转换](../how-tos/conversion/model-conversion.md)。
+1. 轮询转换状态，直到转换成功或失败。
+1. 已转换的文件位置的输出详细信息（存储帐户、输出容器、文件在容器中的路径）。
+1. 将 SAS URI 输出到输出 Blob 容器中已转换的模型。
 
 ### <a name="additional-command-line-options"></a>其他命令行选项
 
@@ -249,7 +249,7 @@ Azure 远程渲染提供以下两个 REST API：
 
 若要运行单个过程步骤，可以使用：
 
-仅上传给定 LocalAssetDirectoryPath 中的数据
+仅上传给定 LocalAssetDirectoryPath 中的数据。
 
 ```PowerShell
 .\Conversion.ps1 -Upload

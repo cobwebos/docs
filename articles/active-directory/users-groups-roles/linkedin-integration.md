@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c5058e24ee0817ebcc6c5761f7b9e22d1a14203
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 08d6b12f897b8b7efb150b11ae4b3f5e2440f7c8
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727188"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88797983"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>在 Azure Active Directory 中集成 LinkedIn 帐户连接
 
-你可以允许组织中的用户在某些 Microsoft 应用中访问其 LinkedIn 连接。 在用户同意连接其帐户之前，不会共享数据。 你可以在 Azure Active Directory （Azure AD）[管理中心](https://aad.portal.azure.com)内集成你的组织。
+你可以允许组织中的用户在某些 Microsoft 应用中访问其 LinkedIn 连接。 在用户同意连接其帐户之前，不会共享数据。 你可以在 Azure Active Directory (Azure AD) [管理中心](https://aad.portal.azure.com)集成你的组织。
 
 > [!IMPORTANT]
 > LinkedIn 帐户连接设置当前正在 Azure AD 组织中推出。 在将其推出给你的组织时，它会默认启用。
@@ -33,24 +33,24 @@ ms.locfileid: "84727188"
 > * 对于在德国预配 Azure AD 组织，默认设置为 off。 请注意，此设置不适用于使用德国 Microsoft 云的客户。
 > * 对于在法国预配的组织，默认设置为 off。
 >
-> 为你的组织启用 LinkedIn 帐户连接后，帐户连接将在用户同意应用代表他们访问公司数据的应用后工作。 有关用户同意设置的信息，请参阅[如何删除用户对应用程序的访问权限](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment)。
+> 为你的组织启用 LinkedIn 帐户连接后，帐户连接将在用户同意应用代表他们访问公司数据的应用后工作。 有关用户同意设置的信息，请参阅 [如何删除用户对应用程序的访问权限](../manage-apps/methods-for-removing-user-access.md)。
 
 ## <a name="enable-linkedin-account-connections-in-the-azure-portal"></a>在 Azure 门户中启用 LinkedIn 帐户连接
 
 你可以仅为你想要访问的用户（从整个组织到你组织中的选定用户）启用 LinkedIn 帐户连接。
 
-1. 使用 Azure AD 组织的全局管理员帐户登录到[Azure AD 管理中心](https://aad.portal.azure.com/)。
-1. 选择 "**用户**"。
-1. 在 "**用户**" 页上，选择 "**用户设置**"。
+1. 使用 Azure AD 组织的全局管理员帐户登录到 [Azure AD 管理中心](https://aad.portal.azure.com/) 。
+1. 选择“用户”。
+1. 在 " **用户** " 页上，选择 " **用户设置**"。
 1. 在 " **LinkedIn 帐户连接**" 下，允许用户连接其帐户以在某些 Microsoft 应用中访问其 LinkedIn 连接。 在用户同意连接其帐户之前，不会共享数据。
 
     * 选择 **"是"** 可为组织中的所有用户启用该服务
-    * 选择 "**所选组**" 以仅为组织中的一组选定用户启用该服务
-    * 选择 "**否**" 以撤消组织中所有用户的同意
+    * 选择 " **所选组** " 以仅为组织中的一组选定用户启用该服务
+    * 选择 " **否** " 以撤消组织中所有用户的同意
 
     ![在组织中集成 LinkedIn 帐户连接](./media/linkedin-integration/linkedin-integration.png)
 
-1. 完成后，选择 "**保存**" 以保存设置。
+1. 完成后，选择 " **保存** " 以保存设置。
 
 > [!Important]
 > 如果用户同意连接帐户，则不会为用户完全启用 LinkedIn 集成。 为用户启用帐户连接时，不会共享数据。
@@ -71,7 +71,7 @@ ms.locfileid: "84727188"
 1. 创建为 LinkedIn 帐户连接选择的用户的 CSV 文件。
 1. 用管理员帐户登录 Microsoft 365。
 1. 启动 PowerShell。
-1. 通过运行安装 Azure AD 模块`Install-Module AzureAD`
+1. 通过运行安装 Azure AD 模块 `Install-Module AzureAD`
 1. 运行以下脚本：
 
   ``` PowerShell
@@ -84,7 +84,7 @@ ms.locfileid: "84727188"
   foreach($user in $users} { Add-AzureADGroupMember -ObjectId $groupId -RefObjectId $user ; Write-Host $i Added $user ; $i++ ; Start-Sleep -Milliseconds 10 }
   ```
 
-若要使用步骤2中的组作为 Azure AD 管理中心中 "LinkedIn 帐户连接" 设置中的选定组，请参阅[在 Azure 门户中启用 LinkedIn 帐户连接](#enable-linkedin-account-connections-in-the-azure-portal)。
+若要使用步骤2中的组作为 Azure AD 管理中心中 "LinkedIn 帐户连接" 设置中的选定组，请参阅 [在 Azure 门户中启用 LinkedIn 帐户连接](#enable-linkedin-account-connections-in-the-azure-portal)。
 
 ## <a name="use-group-policy-to-enable-linkedin-account-connections"></a>使用组策略启用 LinkedIn 帐户连接
 
@@ -96,8 +96,8 @@ ms.locfileid: "84727188"
   
    状态 | 效果
    ------ | ------
-   **已启用** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已启用。**** 你的组织中的用户可以在其 Office 2016 应用程序中使用 LinkedIn 功能。
-   **已禁用** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已禁用，最终用户不能更改此设置。**** 组织中的用户无法在其 Office 2016 应用程序中使用 LinkedIn 功能。
+   **Enabled** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已启用。**** 你的组织中的用户可以在其 Office 2016 应用程序中使用 LinkedIn 功能。
+   **禁用** | Office 2016“选项”中的“在 Office 应用程序中显示领英功能”设置已禁用，最终用户不能更改此设置。**** 组织中的用户无法在其 Office 2016 应用程序中使用 LinkedIn 功能。
 
 此组策略只会影响本地计算机上的 Office 2016 应用。 如果用户在其 Office 2016 应用中禁用 LinkedIn，则他们仍可在 Office 365 中看到 LinkedIn 功能。
 

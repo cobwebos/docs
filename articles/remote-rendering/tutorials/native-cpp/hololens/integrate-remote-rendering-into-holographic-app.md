@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: fff032d37fa0746695736e0dbdde73c6bcaade4b
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: a786baf70dfd9063c635fd27d43d198b3bd89bfb
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445672"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272121"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>教程：将远程渲染集成到 HoloLens Holographic 应用
 
@@ -99,14 +99,15 @@ if (context.As(&contextMultithread) == S_OK)
 #include <AzureRemoteRendering.h>
 ```
 
-...向 HolographicAppMain.cpp 文件添加这个附加的 `include` 指令：
+...向 HolographicAppMain.cpp 文件添加以下附加的 `include` 指令：
 
 ```cpp
 #include <AzureRemoteRendering.inl>
 #include <RemoteRenderingExtensions.h>
+#include <windows.perception.spatial.h>
 ```
 
-为了简化代码，我们在 HolographicAppMain 文件的顶部、`include` 指令的后面定义以下命名空间快捷方式：
+为了简化代码，我们在 HolographicAppMain.h 文件的顶部、`include` 指令的后面定义以下命名空间快捷方式：
 
 ```cpp
 namespace RR = Microsoft::Azure::RemoteRendering;
@@ -297,7 +298,7 @@ namespace HolographicApp
         bool m_modelLoadTriggered = false;
         float m_modelLoadingProgress = 0.f;
         bool m_modelLoadFinished = false;
-
+        bool m_needsCoordinateSystemUpdate = true;
     }
 ```
 
@@ -420,9 +421,13 @@ void HolographicAppMain::OnConnectionStatusChanged(RR::ConnectionStatus status, 
 
 ### <a name="per-frame-update"></a>每帧更新
 
-我们必须在每个模拟计时周期对客户端进行一次计时。 类 `HolographicApp1Main` 为每帧更新提供良好的挂钩。 此外，我们还需要轮询会话的状态，并查看它是否已转换为 `Ready` 状态。 如果已成功连接，最终会通过 `StartModelLoading` 启动模型加载。
+每次模拟时钟周期后必须更新客户端，并进行一些其他的状态更新。 函数 `HolographicAppMain::Update` 为每帧更新提供良好的挂钩。
 
-将以下代码添加到函数 `HolographicApp1Main::Update` 的主体：
+#### <a name="state-machine-update"></a>状态机更新
+
+我们需要轮询会话的状态，并查看它是否已转换为 `Ready` 状态。 如果已成功连接，最终会通过 `StartModelLoading` 启动模型加载。
+
+将以下代码添加到函数 `HolographicAppMain::Update` 的主体：
 
 ```cpp
 // Updates the application state once per frame.
@@ -485,9 +490,57 @@ HolographicFrame HolographicAppMain::Update()
         }
     }
 
+    if (m_needsCoordinateSystemUpdate && m_stationaryReferenceFrame && m_graphicsBinding)
+    {
+        // Set the coordinate system once. This must be called again whenever the coordinate system changes.
+        winrt::com_ptr<ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem> ptr{ m_stationaryReferenceFrame.CoordinateSystem().as<ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem>() };
+        m_graphicsBinding->UpdateUserCoordinateSystem(ptr.get());
+        m_needsCoordinateSystemUpdate = false;
+    }
+
     // Rest of the body:
     ...
 }
+```
+
+#### <a name="coordinate-system-update"></a>坐标系统更新
+
+我们需要同意在坐标系统上使用渲染服务。 若要访问我们要使用的坐标系统，我们需要在函数 `HolographicAppMain::OnHolographicDisplayIsAvailableChanged` 的末尾创建的 `m_stationaryReferenceFrame`。
+
+该坐标系统通常不会更改，因此这是一次性的初始化。 如果应用程序更改了坐标系统，则必须再次调用它。
+
+只要我们同时拥有参考坐标系统和已连接的会话，上述代码就会在 `Update` 函数中设置一次坐标系统。
+
+#### <a name="camera-update"></a>相机更新
+
+我们需要更新相机剪裁平面，以便服务器相机与本地相机保持同步。 可以在 `Update` 函数的末尾完成该操作：
+
+```cpp
+    ...
+    if (m_isConnected)
+    {
+        // Any near/far plane values of your choosing.
+        constexpr float fNear = 0.1f;
+        constexpr float fFar = 10.0f;
+        for (HolographicCameraPose const& cameraPose : prediction.CameraPoses())
+        {
+            // Set near and far to the holographic camera as normal
+            cameraPose.HolographicCamera().SetNearPlaneDistance(fNear);
+            cameraPose.HolographicCamera().SetFarPlaneDistance(fFar);
+        }
+
+        // The API to inform the server always requires near < far. Depth buffer data will be converted locally to match what is set on the HolographicCamera.
+        auto settings = *m_api->CameraSettings();
+        settings->NearPlane(std::min(fNear, fFar));
+        settings->FarPlane(std::max(fNear, fFar));
+        settings->EnableDepth(true);
+    }
+
+    // The holographic frame will be used to get up-to-date view and projection matrices and
+    // to present the swap chain.
+    return holographicFrame;
+}
+
 ```
 
 ### <a name="rendering"></a>渲染

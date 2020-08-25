@@ -1,7 +1,7 @@
 ---
 title: Azure CLI 脚本示例 - 创建 Azure 应用配置存储区
 titleSuffix: Azure App Configuration
-description: 使用 Azure CLI 脚本创建 Azure 应用配置存储
+description: 使用 Azure CLI 脚本示例创建 Azure 应用配置存储区。 请参阅参考文章链接，了解脚本中所用的命令。
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 01/24/2020
 ms.author: lcozzens
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 17be6dee1d5077a45dd14f403ed6e2c13b1e19b1
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 7b3221c55cef6207ea38ac1375202acd8b8ab4f1
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494853"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588293"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>创建 Azure 应用配置存储区
 
@@ -67,7 +67,7 @@ echo "$appConfigConnectionString"
 
 此脚本使用以下命令创建新资源组和应用程序配置存储区。 表中的每条命令均链接到特定于命令的文档。
 
-| Command | 说明 |
+| 命令 | 说明 |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | 创建用于存储所有资源的资源组。 |
 | [az appconfig create](/cli/azure/appconfig#az-appconfig-create) | 创建应用程序配置存储区资源。 |

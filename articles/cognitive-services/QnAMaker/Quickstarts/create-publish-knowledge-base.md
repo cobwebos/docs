@@ -1,23 +1,23 @@
 ---
-title: 快速入门：创建、定型和发布知识库-QnA Maker
+title: 快速入门：创建、训练和发布知识库 - QnA Maker
 description: 可以根据自己的内容（例如常见问题解答或产品手册）创建一个 QnA Maker 知识库 (KB)。 本文包含一个从简单的 FAQ 网页创建 QnA Maker 知识库以回答 QnA Maker 相关问题的示例。
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 12f46e9a72f0a3b027fe67e5b8bf27c940685cfe
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
-ms.translationtype: MT
+ms.openlocfilehash: 77ddb2a0a149729af72066b53c17b1dcb08a2992
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340583"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540748"
 ---
-# <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入门：创建、定型和发布 QnA Maker 知识库
+# <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>快速入门：创建、训练和发布 QnA Maker 知识库
 
 可以根据自己的内容（例如常见问题解答或产品手册）创建一个 QnA Maker 知识库 (KB)。 本文包含一个从简单的 FAQ 网页创建 QnA Maker 知识库以回答 QnA Maker 相关问题的示例。
 
 ## <a name="prerequisites"></a>先决条件
 
 > [!div class="checklist"]
-> * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+> * 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/cognitive-services/)。
 > * 在 Azure 门户中创建的 QnA Maker [资源](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)。 请记住你在创建资源时选择的 Azure Active Directory ID、订阅、QnA 资源名称。
 
 ## <a name="create-your-first-qna-maker-knowledge-base"></a>创建第一个 QnA Maker 知识库
@@ -47,7 +47,7 @@ ms.locfileid: "84340583"
     |**+ 添加 URL**|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/troubleshooting`|
     |**聊天内容**|选择“专业”|
 
-1. 在**步骤 5**中，选择 "**创建知识库**"。
+1. 在“步骤 5”中，选择“创建 KB” 。
 
     提取过程需要一些时间来读取文档并确定问题和解答。
 
@@ -114,7 +114,7 @@ ms.locfileid: "84340583"
 
 1. 此时会打开 Azure 门户的新浏览器标签页，其中显示了 Azure 机器人服务的创建页。 配置 Azure 机器人服务。 机器人和 QnA Maker 可以共享 Web 应用服务计划，但不能共享 Web 应用。 这意味着，机器人的**应用名称**必须不同于 QnA Maker 服务的应用名称。
 
-    * **看**
+    * **建议做法**
         * 更改机器人句柄 - 如果它不独一无二。
         * 选择 SDK 语言。 创建机器人后，可以将代码下载到本地开发环境，然后继续开发过程。
     * **不要**
@@ -124,7 +124,7 @@ ms.locfileid: "84340583"
 
 
 1. 创建机器人后，打开“机器人服务”资源。****
-1. 在 "**机器人管理**" 下，选择 "**在 Web 聊天中测试**"。
+1. 在“机器人管理”下，选择“通过网上聊天执行测试”。
 1. 出现聊天提示“键入你的消息”时，输入：****
 
     `Azure services?`
@@ -135,7 +135,7 @@ ms.locfileid: "84340583"
 
 ## <a name="what-did-you-accomplish"></a>你完成了哪些操作？
 
-您创建了一个新的知识库，并将一个公共 URL 添加到了知识库，添加了自己的 QnA 对，训练、测试和发布了知识库。
+你创建了一个新的知识库、将一个公共 URL 添加到了知识库，添加了自己的 QnA 对，以及训练、测试和发布了知识库。
 
 在发布知识库之后，你创建了一个机器人，并测试了该机器人。
 

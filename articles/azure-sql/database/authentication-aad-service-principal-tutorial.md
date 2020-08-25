@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
-ms.openlocfilehash: 10d1fe9e47b7a3bf2d921f86703d5ae6d067813c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/17/2020
+ms.openlocfilehash: 61cb5384fd4d935ef4038c18b391b5da5fbc96b1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293258"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516684"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>教程：使用 Azure AD 应用程序创建 Azure AD 用户
 
@@ -94,6 +94,8 @@ ms.locfileid: "87293258"
 
 > [!NOTE] 
 > 此脚本必须由 Azure AD `Global Administrator` 或 `Privileged Roles Administrator` 执行。
+>
+> 在“公共预览”中，可以在 Azure AD 中将 `Directory Readers` 角色分配给组。 然后，组所有者可以将托管标识添加为此组的成员，这样就不需要 `Global Administrator` 或 `Privileged Roles Administrator` 来授予 `Directory Readers` 角色。 有关此功能的详细信息，请参阅 [Azure SQL 的 Azure Active Directory 中的目录读取者角色](authentication-aad-directory-readers-role.md)。
 
 - 将 `<TenantId>` 替换为之前收集的 `TenantId`。
 - 将 `<server name>` 替换为你的 SQL 逻辑服务器名称。 如果服务器名称为 `myserver.database.windows.net`，请将 `<server name>` 替换为 `myserver`。
@@ -304,3 +306,4 @@ else
 - [对 SQL DB 进行Azure AD 服务主体身份验证 - 代码示例](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467)
 - [Azure Active Directory 中的应用程序对象和服务主体对象](../../active-directory/develop/app-objects-and-service-principals.md)
 - [使用 Azure PowerShell 创建 Azure 服务主体](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+- [Azure SQL 的 Azure Active Directory 中的目录读取者角色](authentication-aad-directory-readers-role.md)

@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: bd8b8deed2afafc22e99ac15f2bcffdf65af83c4
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: bb0f0b93f3890a06f4ecbdc6cf39a173ea048940
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422431"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798170"
 ---
 # <a name="manage-your-connected-organizations-from-the-organizations-page"></a>在“组织”页中管理连接的组织
 
@@ -30,7 +30,7 @@ ms.locfileid: "87422431"
 - **其他组织。** 其他组织是之前使用工作或学校帐户登录到的任何组。 可以随时离开其中任何组织。
 
 >[!Important]
->本文适用于尝试更新连接到工作或学校帐户的组织信息的用户。 如果你作为管理员正在为你的员工和其他用户查找组和用户管理相关信息，请参阅[企业用户管理文档](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index)。
+>本文适用于尝试更新连接到工作或学校帐户的组织信息的用户。 如果你作为管理员正在为你的员工和其他用户查找组和用户管理相关信息，请参阅[企业用户管理文档](../users-groups-roles/index.yml)。
 
 ## <a name="view-your-organizations"></a>查看组织
 
@@ -61,7 +61,7 @@ ms.locfileid: "87422431"
 
 查看组织后，可以：
 
-- 查看或管理[安全信息](user-help-security-info-overview.md)。
+- 查看或管理[安全信息](./security-info-setup-signin.md)。
 
 - 查看或管理已连接的[设备](my-account-portal-devices-page.md)
 

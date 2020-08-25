@@ -1,14 +1,14 @@
 ---
 title: 快速入门：通过门户进行新策略分配
 description: 本快速入门介绍如何使用 Azure 门户创建 Azure Policy 分配以识别不合规的资源。
-ms.date: 03/24/2020
+ms.date: 08/17/2020
 ms.topic: quickstart
-ms.openlocfilehash: 3a514478f3cefa49c37c3431a80b578dff480584
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: eb3f97ab2f8da3ff2809cb969c8442779e173983
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "80240009"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548373"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>快速入门：创建策略分配以识别不合规资源
 
@@ -37,7 +37,7 @@ ms.locfileid: "80240009"
 
    :::image type="content" source="./media/assign-policy-portal/select-assign-policy.png" alt-text="从“分配”页分配策略定义" border="false":::
 
-1. 在“分配策略”页上，通过单击省略号并选择管理组或订阅，选择“范围”   。 或者，请选择一个资源组。 范围用于确定对其强制执行策略分配的资源或资源组。 然后在“范围”页的底部单击“选择”。  
+1. 在“分配策略”页上，通过选择省略号然后选择管理组或订阅，设置“范围” 。 或者，请选择一个资源组。 范围用于确定对其强制执行策略分配的资源或资源组。 然后使用“范围”页底部的“选择”按钮 。
 
    此示例使用 Contoso 订阅  。 你的订阅将有所不同。
 
@@ -51,7 +51,7 @@ ms.locfileid: "80240009"
 
    有关可用内置策略的部分列表，请参阅 [Azure Policy 示例](./samples/index.md)。
 
-1. 在策略定义列表中搜索，找到“审核未使用托管磁盘的 VM”定义  。 单击该策略，再单击“选择”  。
+1. 在策略定义列表中搜索，找到“审核未使用托管磁盘的 VM”定义  。 选择该策略，然后使用“选择”按钮。
 
    :::image type="content" source="./media/assign-policy-portal/select-available-definition.png" alt-text="找到正确的策略定义" border="false":::
 
@@ -60,7 +60,7 @@ ms.locfileid: "80240009"
 
 1. 不选中“创建托管标识”  。 当策略或计划包含具有 [deployIfNotExists](./concepts/effects.md#deployifnotexists) 效果的策略时，必须选中此复选框  。 由于本快速入门所使用的策略中未包含上述策略，请将其留空。 有关详细信息，请参阅[托管标识](../../active-directory/managed-identities-azure-resources/overview.md)和[修正安全性工作原理](./how-to/remediate-resources.md#how-remediation-security-works)。
 
-1. 单击“分配”  。
+1. 选择“分配”。
 
 你现已准备好识别不合规的资源，了解环境的符合性状态。
 

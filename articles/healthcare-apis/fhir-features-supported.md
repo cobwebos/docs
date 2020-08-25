@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: 0a24339d728c43817b6a7ae6eac8782ad0e27b09
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 46568bf3969d050fd964c85278debd9d599db266
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142513"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796555"
 ---
 # <a name="features"></a>功能
 
@@ -53,7 +53,7 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 
 支持所有搜索参数类型。 
 
-| 搜索参数类型 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 注释 |
+| 搜索参数类型 | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 评论 |
 |-----------------------|-----------|-----------|-----------|---------|
 | Number                | 是       | 是       | 是       |         |
 | Date/DateTime         | 是       | 是       | 是       |         |
@@ -90,12 +90,12 @@ Azure API for FHIR 为适用于 Azure 的 Microsoft FHIR 服务器提供完全�
 | `_security`             | 是       | 是       | 是       |         |
 | `_text`                 | 否        | 否        | 否        |         |
 | `_content`              | 否        | 否        | 否        |         |
-| `_list`                 | 否        | 是       | 是       |         |
+| `_list`                 | 是       | 是       | 是       |         |
 | `_has`                  | 否        | 否        | 否        |         |
 | `_type`                 | 是       | 是       | 是       |         |
 | `_query`                | 否        | 否        | 否        |         |
 
-| 搜索操作       | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 注释 |
+| 搜索操作       | 支持-PaaS | 支持-OSS (SQL)  | 支持-OSS (Cosmos DB)  | 评论 |
 |-------------------------|-----------|-----------|-----------|---------|
 | `_filter`               | 否        | 否        | 否        |         |
 | `_sort`                 | 否        | 否        | 否        |         |

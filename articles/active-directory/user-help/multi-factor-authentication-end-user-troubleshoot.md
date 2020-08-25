@@ -13,12 +13,12 @@ ms.date: 08/20/2020
 ms.author: curtand
 ms.reviewer: kexia
 metadata ms.custom: contperfq1
-ms.openlocfilehash: b21b2a9f2d2bd483ed48a4c30b504908bb54a101
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: 61ba06054e86d544ae4ab1edbdef8d86667ef3b2
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88661431"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796572"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>双因素验证以及工作或学校帐户的常见问题
 
@@ -33,7 +33,7 @@ ms.locfileid: "88661431"
 2FV 比密码更安全，因为2FV 需要你_知道_的东西和某些_东西。_ 无黑客的物理电话。
 
 >[!Important]
->如果你是管理员，可以在 [Azure AD 文档](https://docs.microsoft.com/azure/active-directory)中详细了解如何创建和管理 Azure AD 环境。
+>如果你是管理员，可以在 [Azure AD 文档](../index.yml)中详细了解如何创建和管理 Azure AD 环境。
 
 此内容旨在帮助你使用工作或学校帐户，这是你的组织提供给你的帐户 (例如 dritan@contoso.com) 。 如果你在个人 Microsoft 帐户上遇到双重验证问题（这是你自行设置的帐户 (例如， danielle@outlook.com) ，请参阅 [为你的 Microsoft 帐户打开或关闭双因素验证](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)。
 

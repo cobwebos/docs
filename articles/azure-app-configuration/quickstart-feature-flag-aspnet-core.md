@@ -3,15 +3,16 @@ title: 有关将功能标志添加到 ASP.NET Core 的快速入门
 description: 将功能标志添加到 ASP.NET Core 应用并使用 Azure 应用配置对其进行管理
 author: lisaguthrie
 ms.service: azure-app-configuration
+ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: lcozzens
-ms.openlocfilehash: a25a40346d588f56028bf08294b070823b729e25
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 12b66dc173a8d3f93f97fb369ce03533299a65d7
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760135"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235258"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>快速入门：将功能标志添加到 ASP.NET Core 应用
 
@@ -114,7 +115,7 @@ ms.locfileid: "87760135"
 
 1. 将名为 ConnectionStrings:AppConfig 的机密添加到机密管理器  。
 
-    此机密包含用于访问应用程序配置存储区的连接字符串。 将以下命令中的 `<your_connection_string>` 值替换为应用程序配置存储区的连接字符串。 可以在 Azure 门户的“访问密钥”  下找到该连接字符串。
+    此机密包含用于访问应用程序配置存储区的连接字符串。 将以下命令中的 `<your_connection_string>` 值替换为应用程序配置存储区的连接字符串。 可以在 Azure 门户的“访问密钥”下找到该只读主密钥连接字符串。
 
     必须在 .csproj 文件所在的同一目录中执行此命令  。
 
@@ -186,7 +187,7 @@ ms.locfileid: "87760135"
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddControllersWithViews();
-        services.AddSingleton(Configuration).AddFeatureManagement();
+        services.AddFeatureManagement();
     }
 
     ---

@@ -7,12 +7,12 @@ ms.topic: sample
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/06/2020
-ms.openlocfilehash: a25f0ddeb35aaf880682780fd61bcbc3cedbad08
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: c24363caac1db8dd8ce21b690ef989b2beb97f2d
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930312"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506050"
 ---
 # <a name="example-jupyter-notebooks-show-how-to-enrich-data-with-open-datasets"></a>展示如何使用开放数据集来扩充数据的示例 Jupyter 笔记本 
 使用 Azure 开放数据集的示例 Jupyter 笔记本展示了如何加载开放数据集，并使用它们来扩充演示数据。 所涉及的技术包括使用 Apache Spark 和 Pandas 来处理数据。
@@ -43,3 +43,4 @@ ms.locfileid: "82930312"
 * [教程：使用自动化机器学习和开放数据集的回归建模](/azure/machine-learning/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [用于开放数据集的 Python SDK](/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py)
 * [Azure 开放数据集目录](https://azure.microsoft.com/services/open-datasets/catalog/)
+* [使用开放数据集创建 Azure 机器学习数据集](how-to-create-azure-machine-learning-dataset-from-open-dataset.md)

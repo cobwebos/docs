@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Spotinst 的单一登录 (SSO) 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Spotinst 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 2f6dbd70-c2db-4ae9-99ee-976c3090d214
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5490ff6c6143dff258d74e013bb9d4c821aab625
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3b8297175c24aac132fd7d83580e0889e0da4730
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76263279"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587948"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>教程：Azure Active Directory 与 Spotinst 的单一登录 (SSO) 集成
 
@@ -79,24 +75,17 @@ ms.locfileid: "76263279"
 
    ![编辑基本 SAML 配置](common/edit-urls.png)
 
-1. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤： 
+1. 如果要在 IDP 发起的模式下配置应用程序，请在“基本 SAML 配置”部分完成以下步骤：
 
-    a. 选中“设置其他 URL”  。
+   1. 请确保将“回复 URL”设置为 https://console.spotinst.com/auth/saml。
+   1. 在“中继状态”中，输入 Spotinst 组织 ID，你还可以在“SSO”选项卡上进行确认 。
+   1. “登录 URL”必须为空。
 
-    b. 在“中继状态”  文本框中，键入值：`<ID>`
-
-1. 若要在 **SP** 发起的模式下配置应用程序，请单击“设置其他 URL”并执行以下步骤  ：
-
-    在“登录 URL”文本框中，键入 URL：  `https://console.spotinst.com/auth/saml`
-
-    > [!NOTE]
-    > “中继状态”值不是实际值。 用户将使用实际的中继状态值更新该值（详见本教程的稍后部分）。
-
-1. 单击“ **保存**”。
+1. 单击“保存”。
 
 1. Spotinst 应用程序需要特定格式的 SAML 断言，这需要你向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。
 
-    ![image](common/default-attributes.png)
+    ![图像](common/default-attributes.png)
 
 1. 除了上述属性，Spotinst 应用程序还要求在 SAML 响应中传递回更多的属性，如下所示。 这些属性也是预先填充的，但可以根据要求查看它们。
 
@@ -110,7 +99,7 @@ ms.locfileid: "76263279"
 
     ![证书下载链接](common/metadataxml.png)
 
-1. 在“设置 Spotinst”部分中，根据你的需要复制相应 URL  。
+1. 在“设置 Spotinst”部分中，根据你的需要复制相应 URL****。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -118,63 +107,63 @@ ms.locfileid: "76263279"
 
 在本部分，我们将在 Azure 门户中创建名为 B.Simon 的测试用户。
 
-1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”    。
-1. 选择屏幕顶部的“新建用户”  。
-1. 在“用户”属性中执行以下步骤  ：
-   1. 在“名称”  字段中，输入 `B.Simon`。  
-   1. 在“用户名”字段中输入 username@companydomain.extension  。 例如，`B.Simon@contoso.com` 。
-   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
-   1. 单击“创建”。 
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”  。
+1. 选择屏幕顶部的“新建用户”。
+1. 在“用户”属性中执行以下步骤：
+   1. 在“名称”字段中，输入 `B.Simon`。  
+   1. 在“用户名”字段中输入 username@companydomain.extension。 例如，`B.Simon@contoso.com`。
+   1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
+   1. 单击“创建”。
 
 ### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
 
 在本部分中，将通过授予 B.Simon 访问 Spotinst 的权限，允许其使用 Azure 单一登录。
 
-1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。  
-1. 在应用程序列表中，选择“Spotinst”  。
-1. 在应用的概述页中，找到“管理”部分，选择“用户和组”   。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”。 
+1. 在应用程序列表中，选择“Spotinst”****。
+1. 在应用的概述页中，找到“管理”部分，选择“用户和组” 。
 
    ![“用户和组”链接](common/users-groups-blade.png)
 
-1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。   
+1. 选择“添加用户”，然后在“添加分配”对话框中选择“用户和组”。
 
     ![“添加用户”链接](common/add-assign-user.png)
 
-1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。   
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。  
-1. 在“添加分配”对话框中，单击“分配”按钮。  
+1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+1. 在“添加分配”对话框中，单击“分配”按钮。
 
 ## <a name="configure-spotinst-sso"></a>配置 Spotinst SSO
 
 1. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Spotinst。
 
-2. 单击屏幕右上方的用户图标，再单击“设置”   。
+2. 单击屏幕右上方的用户图标，再单击“设置”********。
 
     ![Spotinst 设置](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
-3. 单击顶部的“安全性”选项卡，然后选择“标识提供者”并执行以下步骤   ：
+3. 单击顶部的“安全性”选项卡，然后选择“标识提供者”并执行以下步骤********：
 
     ![Spotinst 安全性](./media/spotinst-tutorial/tutorial_spotinst_security.png)
 
-    a. 复制实例的“中继状态”值并将其粘贴到 Azure 门户中“基本 SAML 配置”部分的“中继状态”文本框    。
+    a. 复制实例的“中继状态”值并将其粘贴到 Azure 门户中“基本 SAML 配置”部分的“中继状态”文本框************。
 
-    b. 单击“浏览”，上传从 Azure 门户下载的元数据 xml 文件 
+    b. 单击“浏览”，上传从 Azure 门户下载的元数据 xml 文件****
 
-    c. 单击“保存”  。
+    c. 单击 **“保存”**。
 
 ### <a name="create-spotinst-test-user"></a>创建 Spotinst 测试用户
 
 本部分旨在 Spotinst 中创建名为 Britta Simon 的用户。
 
-1. 如果已在启用了 SP 的模式下配置应用程序，请执行以下步骤  ：
+1. 如果已在启用了 SP 的模式下配置应用程序，请执行以下步骤****：
 
    a. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Spotinst。
 
-   b. 单击屏幕右上方的用户图标，再单击“设置”   。
+   b. 单击屏幕右上方的用户图标，再单击“设置”********。
 
     ![Spotinst 设置](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
-    c. 单击“用户”，然后选择“添加用户”   。
+    c. 单击“用户”，然后选择“添加用户”********。
 
     ![Spotinst 设置](./media/spotinst-tutorial/adduser1.png)
 
@@ -182,13 +171,13 @@ ms.locfileid: "76263279"
 
     ![Spotinst 设置](./media/spotinst-tutorial/adduser2.png)
 
-    * 在“全名”文本框中输入用户的全名，例如 BrittaSimon   。
+    * 在“全名”文本框中输入用户的全名，例如 BrittaSimon********。
 
-    * 在“电子邮件”文本框中，输入用户的电子邮件地址（如 `brittasimon\@contoso.com`）  。
+    * 在“电子邮件”文本框中，输入用户的电子邮件地址（如 `brittasimon\@contoso.com`）****。
 
-    * 为组织角色、帐户角色和帐户选择组织特定的详细信息  。
+    * 为组织角色、帐户角色和帐户选择组织特定的详细信息****。
 
-2. 如果已在启用了 IDP 的模式下配置应用程序，则此部分中没有操作项  。 Spotinst 支持实时预配（该预配默认启用）。 尝试访问 Spotinst 期间，如果尚不存在用户，则会创建一个新用户。
+2. 如果已在启用了 IDP 的模式下配置应用程序，则此部分中没有操作项****。 Spotinst 支持实时预配（该预配默认启用）。 尝试访问 Spotinst 期间，如果尚不存在用户，则会创建一个新用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 

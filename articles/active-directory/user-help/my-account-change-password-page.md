@@ -11,19 +11,19 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
-ms.openlocfilehash: d1191fdd757b4614eca543660eccddea5c20d033
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 55df08b0782c446d7313e709de9b8ceaeb58ab2b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87422499"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798187"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>从“更改密码”页更改工作或学校帐户密码
 
 “我的帐户”门户的“更改密码”页可帮助你更新工作或学校帐户的现有密码，前提是你记得密码，并且你的帐户未锁定。 如果不记得密码、帐户已锁定或从来没有从组织处得到过密码，则可使用安全信息和移动设备来重置密码。
 
 >[!Important]
->本文适用于尝试为现有工作或学校帐户更新已知密码的用户。 如果你是尝试进入个人帐户（例如 Xbox、Hotmail 或 Outlook.com）的用户，请尝试[当无法登录到你的 Microsoft 帐户时](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)文章中的建议。 如果你是尝试查找有关如何为员工或其他用户测试自助式密码重置的详细信息的管理员，请参阅[自助式密码重置](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)。
+>本文适用于尝试为现有工作或学校帐户更新已知密码的用户。 如果你是尝试进入个人帐户（例如 Xbox、Hotmail 或 Outlook.com）的用户，请尝试[当无法登录到你的 Microsoft 帐户时](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)文章中的建议。 如果你是尝试查找有关如何为员工或其他用户测试自助式密码重置的详细信息的管理员，请参阅[自助式密码重置](../authentication/tutorial-enable-sspr.md)。
 
 ## <a name="update-a-password-from-the-change-password-page"></a>从“更改密码”页更新密码
 
@@ -45,7 +45,7 @@ ms.locfileid: "87422499"
 
 更改密码之后，可以：
 
-- 查看或管理[安全信息](user-help-security-info-overview.md)。
+- 查看或管理[安全信息](./security-info-setup-signin.md)。
 
 - 查看或管理已连接的[设备](my-account-portal-devices-page.md)。
 

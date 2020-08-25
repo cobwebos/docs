@@ -8,13 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: tutorial
-ms.date: 04/25/2020
-ms.openlocfilehash: 66289c512a746a30ed8dbd3e5c2df92bea27d907
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.date: 08/21/2020
+ms.openlocfilehash: 04434753949f0e00eaf99610199cc4997ef53caf
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565830"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751066"
 ---
 # <a name="tutorial-query-a-cognitive-search-index-from-power-apps"></a>教程：从 Power Apps 查询认知搜索索引
 
@@ -92,7 +92,7 @@ Power Apps 中的连接器是一个数据源连接。 在此步骤中，你将�
 
 1. 对于 select：将 `HotelName,Description,Address/City` 设置为默认值，将 required 设置为 False，将 visibility 设置为 none。   
 
-    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="版本参数元数据" border="true":::
+    :::image type="content" source="./media/search-howto-powerapps/1-10-4-parameter-metadata-select.png" alt-text="选择参数元数据" border="true":::
 
 1. 对于 api-version：将 `2020-06-30` 设置为默认值，将 required 设置为 True，将 visibility 设置为 internal。   
 

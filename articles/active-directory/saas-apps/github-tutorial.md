@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 GitHub 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 GitHub 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 8761f5ca-c57c-4a7e-bf14-ac0421bd3b5e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 06/17/2020
+ms.date: 08/07/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 718d51c94d05e8e18f2b254b5e81e346a67205a1
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: 7153a1279785cfe79d23b2b5ba843ec9f5cd4965
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87170538"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550736"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>教程：Azure Active Directory 与 GitHub 的单一登录 (SSO) 集成
 
@@ -45,7 +41,7 @@ ms.locfileid: "87170538"
 * GitHub 支持 **SP** 发起的 SSO
 
 * GitHub 支持[**自动**用户预配（组织邀请）](github-provisioning-tutorial.md)
-* 配置 GitHub 后，就可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+* 配置 GitHub 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-github-from-the-gallery"></a>从库中添加 GitHub
 
@@ -138,8 +134,14 @@ ms.locfileid: "87170538"
     ![“添加用户”链接](common/add-assign-user.png)
 
 1. 在“用户和组”对话框中，从“用户”列表中选择“B.Simon”，然后单击屏幕底部的“选择”按钮。  
-1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。 
-1. 在“添加分配”对话框中，单击“分配”按钮。 
+1. 如果在 SAML 断言中需要任何角色值，请在“选择角色”对话框的列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮 。
+
+    ![用户角色](./media/github-tutorial/user-role.png)
+
+    > [!NOTE]
+    > 将禁用“选择角色”选项，所选用户的默认角色为“用户”。
+
+7. 在“添加分配”对话框中，单击“分配”按钮。 
 
 ## <a name="configure-github-sso"></a>配置 GitHub SSO
 
@@ -147,11 +149,11 @@ ms.locfileid: "87170538"
 
 2. 导航“设置”并单击“安全性”。 
 
-    ![设置](./media/github-tutorial/tutorial_github_config_github_03.png)
+    ![设置](./media/github-tutorial/security.png)
 
 3. 选中“启用 SAML 身份验证”框，显示“单一登录”配置字段。 执行以下步骤：
 
-    ![设置](./media/github-tutorial/tutorial_github_config_github_13.png)
+    ![设置](./media/github-tutorial/saml-sso.png)
 
     a. 复制“单一登录 URL”值，并将此值粘贴到 Azure 门户上“基本 SAML 配置”的“登录 URL”文本框中  。
     
@@ -159,7 +161,7 @@ ms.locfileid: "87170538"
 
 4. 配置以下字段：
 
-    ![设置](./media/github-tutorial/tutorial_github_config_github_051.png)
+    ![设置](./media/github-tutorial/configure.png)
 
     a. 在“登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值 。
 
@@ -175,7 +177,7 @@ ms.locfileid: "87170538"
 
 5. 单击“测试 SAML 配置”，确认在 SSO 期间未发生验证失败错误。
 
-    ![设置](./media/github-tutorial/tutorial_github_config_github_06.png)
+    ![设置](./media/github-tutorial/test.png)
 
 6. 单击“保存”
 
@@ -192,21 +194,21 @@ ms.locfileid: "87170538"
 
 2. 单击“人员”。
 
-    ![People](./media/github-tutorial/tutorial_github_config_github_08.png "人员")
+    ![People](./media/github-tutorial/people.png "人员")
 
 3. 单击“邀请成员”。
 
-    ![邀请用户](./media/github-tutorial/tutorial_github_config_github_09.png "邀请用户")
+    ![邀请用户](./media/github-tutorial/invite-member.png "邀请用户")
 
 4. 在“邀请成员”对话框页上，执行以下步骤：
 
     a. 在“电子邮件”文本框中，键入 Britta Simon 帐户的电子邮件地址。
 
-    ![邀请人员](./media/github-tutorial/tutorial_github_config_github_10.png "邀请人员")
+    ![邀请人员](./media/github-tutorial/email-box.png "邀请人员")
 
     b. 单击“发送邀请”。
 
-    ![邀请人员](./media/github-tutorial/tutorial_github_config_github_11.png "邀请人员")
+    ![邀请人员](./media/github-tutorial/send-invitation.png "邀请人员")
 
     > [!NOTE]
     > Azure Active Directory 帐户持有者将收到一封电子邮件，并且将单击其中的链接以在激活帐户前确认帐户。

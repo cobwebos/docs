@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 02/03/2020
 ms.author: curtand
 ms.custom: user-help
-ms.openlocfilehash: 4249f753181ea4b54d7e1e1f098717ef669bae4a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
-ms.translationtype: HT
+ms.openlocfilehash: 8507a53959e7d28cbcec2dec6783b2470696d59b
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83744034"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798102"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-portal"></a>在“我的应用”门户中编辑或撤销应用程序权限
 
@@ -26,7 +26,7 @@ ms.locfileid: "83744034"
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-and-workspaces.md)]
 
 >[!Important]
->此内容适用于用户。 如果你是管理员，可以在[应用程序管理文档](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces)中查找有关如何设置和管理基于云的应用的详细信息。
+>此内容适用于用户。 如果你是管理员，可以在[应用程序管理文档](../manage-apps/access-panel-collections.md)中查找有关如何设置和管理基于云的应用的详细信息。
 
 ## <a name="manage-app-permissions"></a>管理应用权限
 

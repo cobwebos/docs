@@ -4,12 +4,12 @@ description: 本文介绍使用 Azure 门户对 Azure 备份工作负荷执行�
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: ec0453725186ddef359f85f8c3e5554ff240d3e3
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 9a4558367d3af6858310ce4455cbf1df2a596312
+ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88755715"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88763467"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>监视 Azure 备份工作负荷
 
@@ -70,7 +70,7 @@ Azure 备份针对 Azure 备份保护的工作负荷提供内置的监视和警�
 - VM 备份作业失败，因为备份的 Azure VM 不再存在
 - [合并的警报](#consolidated-alerts)
 
-之所以设计上述异常，是因为我们知道，这些操作的结果（主要是用户触发的操作）会立即显示在门户/PS/CLI 客户端中。 因此，用户会立即了解相关情况，不需要通知。
+以上异常的设计是为了理解这些操作的结果 (主要是用户触发的) 会立即显示在门户/PS/CLI 客户端上。 因此，用户会立即了解相关情况，不需要通知。
 
 ### <a name="alert-types"></a>警报类型
 

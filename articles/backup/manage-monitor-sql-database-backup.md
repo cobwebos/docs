@@ -3,12 +3,12 @@ title: 管理和监视 Azure VM 上的 SQL Server 数据库
 description: 本文介绍如何管理和监视 Azure VM 上运行的 SQL Server 数据库。
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: ada367e94b75c30a98bedf5848b248cadfe9acc2
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.openlocfilehash: c9d8b9b56820182f7bf7866d38d40df8f5488a7a
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88659508"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756310"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和监视已备份的 SQL Server 数据库
 
@@ -16,15 +16,11 @@ ms.locfileid: "88659508"
 
 如果尚未为 SQL Server 数据库配置备份，请参阅[备份 Azure VM 上的 SQL Server 数据库](backup-azure-sql-database.md)
 
-## <a name="monitor-manual-backup-jobs-in-the-portal"></a>在门户中监视手动备份作业
+## <a name="monitor-backup-jobs-in-the-portal"></a>在门户中监视备份作业
 
-Azure 备份在“备份作业”门户中显示所有手动触发的作业。 此门户中显示的作业包括数据库发现和注册，以及备份和还原操作。
+Azure 备份会在门户中的 " **备份作业** " 下显示所有计划的和按需操作，但计划的日志备份除外，因为它们可能会非常频繁。 在此门户中看到的作业包括数据库发现和注册、配置备份以及备份和还原操作。
 
 ![“备份作业”门户](./media/backup-azure-sql-database/jobs-list.png)
-
-> [!NOTE]
-> “备份作业”门户不显示计划的备份作业。 可按下一部分所述，使用 SQL Server Management Studio 来监视计划的备份作业。
->
 
 有关监视方案的详细信息，请参阅[在 Azure 门户中进行监视](backup-azure-monitoring-built-in-monitor.md)和[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。  
 
@@ -33,7 +29,7 @@ Azure 备份在“备份作业”门户中显示所有手动触发的作业。 �
 由于日志备份每隔 15 分钟就会发生一次，因此，监视备份作业可能很繁琐。 Azure 备份通过发送电子邮件警报来简化监视工作。 电子邮件警报：
 
 - 只要出现备份失败就会触发。
-- 在数据库级别按错误代码进行合并。
+- 按错误代码在数据库级别合并的警报。
 - 仅在数据库首次备份失败时发送。
 
 若要监视数据库备份警报：
@@ -57,7 +53,7 @@ Azure 备份在“备份作业”门户中显示所有手动触发的作业。 �
 
 如果选择保留恢复点，请注意以下细节：
 
-- 所有恢复点永远保留不变，在停止保护时所有修剪操作都会停止，但会保留数据。
+- 所有恢复点都将永久保持不变，所有删除操作都应在停止保护时停止，并保留数据。
 - 你将为受保护的实例和使用的存储付费。 有关详细信息，请参阅 [Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。
 - 如果在不停止备份的情况下删除数据源，则新备份将会失败。 旧恢复点将根据策略过期，但始终会保留一个最后的恢复点，直至你显式停止备份并删除数据。
 
@@ -162,7 +158,7 @@ Azure 备份在“备份作业”门户中显示所有手动触发的作业。 �
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>重新注册 SQL Server VM 上的扩展
 
-有时，VM 上的工作负荷扩展可能会因为某种原因而受到影响。 在这种情况下，在该 VM 上触发的所有操作将开始失败。 然后，可能需要在 VM 上重新注册该扩展。 **重新注册**操作会重新安装 VM 上的工作负荷备份扩展，以便继续操作。 可以在恢复服务保管库中的 **备份基础结构** 下找到此选项。
+有时，VM 上的工作负荷扩展可能会因为某种原因而受到影响。 在这些情况下，在 VM 上触发的所有操作都将开始失败。 然后，你可能需要在 VM 上重新注册该扩展。 **重新注册**操作会重新安装 VM 上的工作负荷备份扩展，以便继续操作。 可以在恢复服务保管库中的 **备份基础结构** 下找到此选项。
 
 ![备份基础结构下受保护的服务器](./media/backup-azure-sql-database/protected-servers-backup-infrastructure.png)
 

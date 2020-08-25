@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 08/03/2020
 ms.author: curtand
-ms.openlocfilehash: 1816170da0fb6e5120f8cec6b6dda68d2ea1c678
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: d9023579b6627e9dab9feac8dfaccd94dc9f5c12
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543162"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88798119"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-page"></a>从 "我的登录" 页查看和搜索最近的登录活动
 
@@ -40,17 +40,17 @@ ms.locfileid: "87543162"
 
 ### <a name="if-you-see-a-successful-sign-in"></a>如果你看到成功登录
 
-有时，在检查自己的正常登录活动时，可能会看到从不熟悉的位置、浏览器或操作系统的登录成功。 不熟悉的登录可能意味着攻击者已获得帐户的访问权限。 如果你看到 "未授权" 活动，建议你立即更改密码，然后转到 "[安全信息](https://mysignins.microsoft.com/security-info)" 以更新安全设置。
+有时，在检查自己的正常登录活动时，可能会看到从不熟悉的位置、浏览器或操作系统的登录成功。 不熟悉的登录可能意味着攻击者已获得帐户的访问权限。 如果你看到 "未授权" 活动，建议你立即更改密码，然后转到 " [安全信息](https://mysignins.microsoft.com/security-info) " 以更新安全设置。
 
 在确定某些内容不正确之前，请确保看到的不是误报（即该项看起来可疑，但没问题）。 例如，我们根据你的 IP 地址确定你的大致位置和映射。 由于移动网络有时会将流量传送到较远的位置，因此很难精确定位。 即使你使用华盛顿州的移动设备登录，此位置也可能会显示来自加利福尼亚的登录。 我们强烈建议你检查除位置之外的详细信息。 请确保操作系统、浏览器和应用程序都有意义。
 
 ### <a name="if-you-see-an-unsuccessful-sign-in"></a>如果你看到 "登录失败"
 
-如果你看到登录失败，这可能意味着你键入了错误的凭据。 这也可能表示攻击者试图猜测密码。 若要应对此风险，无需更改密码，但建议注册 Azure 多重身份验证（MFA）。 使用多重身份验证，即使黑客推测了密码，也不能访问帐户。
+如果你看到登录失败，这可能意味着你键入了错误的凭据。 这也可能表示攻击者试图猜测密码。 若要应对此风险，无需更改密码，但建议注册 Azure 多重身份验证 (MFA) 。 使用多重身份验证，即使黑客推测了密码，也不能访问帐户。
 
 ![不成功的登录磁贴](media/my-account-portal-sign-ins-page/unsuccessful.png)
 
-如果你看到 "登录失败"，并在 "会话"**活动**下显示 "说明"， `Additional verification failed, invalid code` 则表示你的主要身份验证凭据已成功，但多重身份验证失败。 这种情况可能表示攻击者正确地猜到了你的密码，但无法通过多重身份验证质询。 建议你仍要更改密码，因为攻击者可能已有该密码，并转到 "[安全信息](https://mysignins.microsoft.com/security-info)" 页来更新安全设置。
+如果你看到 "登录失败"，并在 "会话" **活动** 下显示 "说明"， `Additional verification failed, invalid code` 则表示你的主要身份验证凭据已成功，但多重身份验证失败。 这种情况可能表示攻击者正确地猜到了你的密码，但无法通过多重身份验证质询。 建议你仍要更改密码，因为攻击者可能已有该密码，并转到 " [安全信息](https://mysignins.microsoft.com/security-info) " 页来更新安全设置。
 
 ## <a name="search-for-specific-sign-in-activity"></a>搜索特定的登录活动
 
@@ -64,7 +64,7 @@ ms.locfileid: "87543162"
 
 ### <a name="confirm-unusual-activity"></a>确认异常活动
 
-可以在 "**我的登录**" 页中的该活动的磁贴上确认标记为异常活动的登录。
+可以在 " **我的登录** " 页中的该活动的磁贴上确认标记为异常活动的登录。
 
 ![用于确认你执行或未尝试登录的异常登录磁贴](media/my-account-portal-sign-ins-page/this-wasnt-me.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "87543162"
 
 查看最近的登录活动后，可以：
 
-- 查看或管理[安全信息](user-help-security-info-overview.md)。
+- 查看或管理[安全信息](./security-info-setup-signin.md)。
 
 - 查看或管理已连接的[设备](my-account-portal-devices-page.md)。
 

@@ -4,12 +4,12 @@ description: 与代理、扩展和磁盘相关的 Azure 备份失败的症状、
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: d690ed23f49d3aa3f77b88c8d57c963ae2a98682
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.openlocfilehash: 26050dfb9fdde5988fe3ae922dae5486d17f4317
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88611851"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88755362"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
@@ -176,7 +176,7 @@ Azure VM 代理可能已停止、已过期、处于不一致状态或未安装�
 最近的备份作业失败，因为某个现有的备份作业正在进行。 在当前作业完成前，无法启动新的备份作业。 在触发或计划其他备份操作之前，请确保完成当前正在进行的备份操作。 若要检查备份作业状态，请执行以下步骤：
 
 1. 登录到 Azure 门户，选择 " **所有服务**"。 键入 "恢复服务"，并选择 " **恢复服务保管库**"。 此时显示恢复服务保管库列表。
-2. 在恢复服务保管库列表中，选择在其中配置了备份的保管库。
+2. 从恢复服务保管库列表中，选择要在其中配置备份的保管库。
 3. 在保管库仪表板菜单上，选择 " **备份作业** "，它将显示所有备份作业。
    - 如果某个备份作业正在进行，请等待它完成或取消备份作业。
      - 若要取消备份作业，请右键单击备份作业，然后选择 " **取消** " 或 "使用 [PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob)"。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: f16df87ca72b66003d8870dcd9d778616ea840d4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 550c9ff57b9c558f2f175165c7f06ead45991be9
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038539"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226000"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>快速入门：将 Azure 订阅加入安全中心标准层
 Azure 安全中心跨混合云工作负荷提供统一的安全管理和威胁防护。 免费层只能为 Azure 资源提供有限的安全性，而标准层将这些功能扩展到了本地和其他云。 借助安全中心标准层，可以查找和修复安全漏洞、应用访问控制和应用程序控制来阻止恶意活动、使用分析和智能功能检测威胁，以及在受到攻击时迅速做出响应。 可以免费试用安全中心标准版。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
@@ -34,7 +34,8 @@ Azure 安全中心跨混合云工作负荷提供统一的安全管理和威胁�
 ## <a name="enable-your-azure-subscription"></a>启用 Azure 订阅
 
 1. 登录到 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)。
-2. 在 **Microsoft Azure** 菜单上选择“安全中心”。 此时会打开“安全中心 - 概览”。
+
+1. 在 **Microsoft Azure** 菜单上选择“安全中心”。 此时会打开“安全中心 - 概览”。
 
    ![安全中心概述][2]
 
@@ -49,21 +50,25 @@ Azure 安全中心跨混合云工作负荷提供统一的安全管理和威胁�
 
 若要充分利用安全中心，需要按以下步骤升级到标准层，并安装 Log Analytics 代理。
 
-## <a name="upgrade-to-the-standard-pricing-tier"></a>升级到标准定价层
+
+## <a name="upgrade-to-the-standard-tier"></a>升级到标准层
+
 若要学习安全中心快速入门和教程，必须升级到标准层。 有一个免费试用的安全中心标准版。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。 
 
-1. 在“安全中心”主菜单下，选择“入门”  。
+1. 从安全中心的边栏选择“开始使用”。
  
-   ![入门][4]
+   ![入门](./media/security-center-get-started/get-started-upgrade-tab.png)
 
-2. 在“升级”  下，安全中心将列出符合载入条件的订阅和工作区。 
-   - 可以单击可展开的“申请试用”  来查看所有订阅和工作区的列表及其试用资格状态。
-   -    你可以升级没有资格试用的订阅和工作区。
-   -    可以选择符合试用条件的工作区和订阅来开始试用。
-3. 单击“开始试用”  在所选订阅上开始试用。
+    “升级”选项卡列出了符合加入条件的订阅和工作区。
+
+1. 从“选择要对其启用标准层的工作区”列表中，选择要升级的工作区。
 
 
-  ![安全警报][9]
+    > [!TIP]
+    > 如果你选择了一个有符合免费试用条件的工作区，下一步将开始试用。 如果工作区不符合试用条件，则对其进行升级并开始收费。
+
+1. 选择“升级”，将所选工作区升级到标准层。
+
 
 ## <a name="automate-data-collection"></a>自动收集数据
 安全中心从 Azure VM 和非 Azure 计算机收集数据以监视安全漏洞和威胁。 数据是使用 Log Analytics 代理收集的，该代理从计算机中读取各种与安全相关的配置和事件日志，然后将数据复制到工作区进行分析。 默认情况下，安全中心会自动创建新工作区。
@@ -73,9 +78,9 @@ Azure 安全中心跨混合云工作负荷提供统一的安全管理和威胁�
 若要启用对 Log Analytics 代理的自动预配，请执行以下操作：
 
 1. 在“安全中心”主菜单下，选择“定价和设置”  。
-2. 在订阅的行上，单击要更改其设置的订阅。
-3. 在“数据收集”  选项卡上，将“自动预配”  设置为“开启”。
-4. 选择“保存”  。
+1. 在订阅的行上，单击要更改其设置的订阅。
+1. 在“数据收集”  选项卡上，将“自动预配”  设置为“开启”。
+1. 选择“保存”。 
 ---
   ![启用自动设置][6]
 
@@ -96,7 +101,7 @@ Azure 安全中心跨混合云工作负荷提供统一的安全管理和威胁�
 1. 返回到“安全中心”主菜单，选择“定价和设置”。
 2. 清理要禁用自动预配的订阅。
 3. 在“数据收集”  选项卡上，将“自动预配”  设置为“关闭”。
-4. 选择“保存”  。
+4. 选择“保存”。 
 
 >[!NOTE]
 > 禁用自动预配不会从已预配代理的 Azure VM 中删除 Log Analytics 代理。 禁用自动设置会限制对资源的安全监视。

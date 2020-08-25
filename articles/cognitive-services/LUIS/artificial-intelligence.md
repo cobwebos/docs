@@ -1,56 +1,57 @@
 ---
-title: 人工智能
-description: LUIS 使用人工智能根据你定义的架构为你的数据提供语言理解。
+title: 人工智能 (AI)
+description: LUIS 根据你定义的架构，使用人工智能 (AI) 为数据提供语言理解。
 ms.topic: conceptual
-ms.date: 06/29/2020
-ms.openlocfilehash: 4f145585e097a3cf6a2338dbab879f6fce07f71d
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.date: 08/07/2020
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: bdcede01ec6bab5f8b43d89ff40d588a011d5dfb
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85802646"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751348"
 ---
-# <a name="artificial-intelligence-in-language-understanding-luis"></a>语言理解中的人工智能（LUIS）
+# <a name="artificial-intelligence-in-language-understanding-luis"></a>语言理解 (LUIS) 中的人工智能
 
-LUIS 使用人工智能根据你定义的架构为你的数据提供自然语言理解（NLU）。
+LUIS 使用人工智能 (AI) 根据你定义的架构，为你的数据提供自然语言理解 (NLU) 。
 
-## <a name="natural-language-processing"></a>自然语言处理
+## <a name="natural-language-processing-nlp"></a>自然语言处理 (NLP) 
 
-自然语言理解（NLU）是自然语言处理（NLP）的特定子主题。
+自然语言理解 (NLU) 是自然语言处理 (NLP) 的特定子主题。
 
-自然语言处理是一种更广泛的概念，用于处理文本数据的任何形式，这包括：
+自然语言处理是一个更广泛的概念，可以用于任何形式的文本数据处理，其中包括：
 
-* 化
-* 语音（pos）标记的一部分
+* 词汇切分
+* 词性 (pos) 标记
 * 分段
 * 语形学分析
 * 语义相似性
-* Discourse
+* 公开 (Discourse)
 * 翻译
 
 ## <a name="natural-language-processing-in-luis"></a>LUIS 中的自然语言处理
 
-可以通过以下方式在 LUIS 应用程序中使用自然语言处理：
-* [自然语言理解](#natural-language-understanding)（LUIS）
-* LUIS 中可配置的 NLP 方面：
+可以通过以下方式在 LUIS 应用中使用自然语言处理：
+* [自然语言理解](#natural-language-processing-nlp) (LUIS)
+* LUIS 中可配置的 NLP 特性：
     * [词汇切分](luis-language-support.md#tokenization)
-    * 通过音调符号、标点和 word 窗体[API 设置](luis-reference-application-settings.md)Morphology
-* 预处理或后处理其他[认知服务](../Welcome.md)提供的查询文本查询：
+    * 通过音调符号、标点和单词形式 [API 设置](luis-reference-application-settings.md)配置词态
+* 其他[认知服务](../Welcome.md)提供的查询言语的预处理或后期处理，例如：
     * [翻译](../translator/translator-info-overview.md)
 
-## <a name="natural-language-understanding"></a>自然语言理解
+## <a name="natural-language-understanding-nlu"></a>自然语言理解 (NLU) 
 
-NLU 是一种将语言语句_转换_为表示形式的功能，它使你可以自然地了解你的用户。 自然语言理解仍是一个非常难的问题，并定义为_AI-硬_问题。
+NLU 功能可用于将口语语句转换为可让你自然地理解用户意思的表示形式。 自然语言理解仍是一个极具挑战性的问题，被定义为一个 AI 难题。
 
-LUIS 旨在重点介绍意向和提取，这包括能够确定：
-* 用户需要的内容
-* 它们所谈论的内容。
+LUIS 旨在关注意图和提取，这包括能够识别：
+* 用户需求
+* 用户谈论的内容。
 
-LUIS 对更广泛的_NLP_方面（如语义相似性）几乎不知道，无需显式标识。 例如，以下标记（单词）是三个不同的内容，直到在提供的示例中将它们用于类似的上下文中：
+在示例中没有明确标识的情况下，LUIS 几乎或完全不了解更广泛的 NLP 特性（例如语义相似性）。 例如，在所提供的示例中将以下标记（单词）用于相似的上下文中之前，它们是三个不同的内容：
 
 * buy
-* 用途
-* 购买
+* buying
+* bought
 
 ## <a name="next-steps"></a>后续步骤
 

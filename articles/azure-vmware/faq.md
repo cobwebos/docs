@@ -1,35 +1,35 @@
 ---
 title: 常见问题
-description: 提供有关 Azure VMware 解决方案 (AVS) 的某些常见问题的解答。
+description: 提供有关 Azure VMware 解决方案的一些常见问题的解答。
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: bd27d4669788b10fc12c47e4514020f6b01300bc
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: cffa31bb66adfde2af24ab2542322479639ed9dd
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87872321"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88752180"
 ---
-# <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>有关 Azure VMware 解决方案 (AVS) 预览版的常见问题解答
+# <a name="frequently-asked-questions-about-azure-vmware-solution-preview"></a>有关 Azure VMware 解决方案预览版的常见问题
 
-有关 Azure VMware 解决方案 (AVS) 的常见问题解答。
+有关 Azure VMware 解决方案的常见问题的解答。
 
 ## <a name="general"></a>常规
 
-**什么是 Azure VMware 解决方案 (AVS)？**
+**什么是 Azure VMware 解决方案？**
 
-随着企业采用 IT 现代化策略来提高业务敏捷性、降低成本和加速创新，混合云平台已成为客户数字化转型的关键推动力。 AVS 将 VMware 软件定义的数据中心(SDDC)与 Microsoft Azure 全球云服务结合。 可通过管理 AVS 解决方案来满足性能、可用性、安全性和符合性要求。
+随着企业采用 IT 现代化策略来提高业务敏捷性、降低成本和加速创新，混合云平台已成为客户数字化转型的关键推动力。 Azure VMware 解决方案将 VMware 的软件定义数据中心 (SDDC) 软件与 Microsoft Azure 全局云服务生态系统相结合。 Azure VMware 解决方案经过管理，以满足性能、可用性、安全性和合规性要求。
 
-## <a name="avs-service"></a>AVS 服务
+## <a name="azure-vmware-solution-service"></a>Azure VMware 解决方案服务
 
-**目前在哪些地区提供 AVS？**
+**Azure VMware 解决方案目前可用在何处？**
 
-正在将该服务连续添加到新区域，因此请查看[最新的服务可用性信息](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware)以了解更多详细信息。 
+正在将该服务连续添加到新区域，因此请查看 [最新的服务可用性信息](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware) 以了解更多详细信息。 
 
-**在 Azure VMware 解决方案 (AVS) 实例中运行的工作负载是否可使用 Azure 服务或与其集成？**
+**Azure VMware 解决方案实例中运行的工作负荷是使用还是与 Azure 服务集成？**
 
-所有 Azure 服务都将可供 AVS 解决方案客户使用。 需要逐一解决特定服务的性能和可用性限制。
+所有 Azure 服务都将可供 Azure VMware 解决方案客户使用。 需要逐一解决特定服务的性能和可用性限制。
 
 **我是否使用与现在相同的工具来管理私有云资源？**
 
@@ -37,15 +37,15 @@ ms.locfileid: "87872321"
 
 **可以使用我的本地 vCenter 来管理私有云吗？**
 
-发布时，AVS 不支持跨本地和私有云环境的单一管理体验。 将通过私有云的本地 vCenter 和 NSX Manager 来管理私有云群集。
+在启动时，Azure VMware 解决方案不支持跨本地和私有云环境的单一管理体验。 将通过私有云的本地 vCenter 和 NSX Manager 来管理私有云群集。
 
 **可以使用在本地运行的 vRealize Suite 吗？** 
 
 可以根据具体情况评估特定集成和用例。
 
-**可以将 vSphere VM 从本地环境迁移到 AVS 私有云吗？**
+**能否将 vSphere Vm 从本地环境迁移到 Azure VMware 解决方案私有云？**
 
-是的。 如果满足标准跨 vCenter [vMotion 要求](https://kb.vmware.com/s/article/210695)，则可以使用 VM 迁移和 VMotion 将 vm 移到私有云。
+是。 如果满足标准跨 vCenter [vMotion 要求](https://kb.vmware.com/s/article/210695) ，则可以使用 VM 迁移和 VMotion 将 vm 移到私有云。
 
 **本地环境中是否需要特定版本的 vSphere？**
 
@@ -89,7 +89,7 @@ Azure VMware Solution by CloudSimple 没有任何更改。 我们继续支持 Az
 
 **每个 ESXi 主机中提供多少网络带宽？**
 
-每个 ESXi 主机均为 AVS 配置了 4 25 Gbps Nic，为 ESXi 系统流量预配了两个 Nic，为工作负荷流量预配了两个 nic。 
+每个 ESXi 主机都是配置了 4 25 Gbps Nic 的 Azure VMware 解决方案，为 ESXi 系统流量预配了两个 Nic，为工作负荷流量预配了两个 nic。 
 
 **VSAN 数据存储上存储的数据是否静态加密？**
 
@@ -111,13 +111,13 @@ Azure VMware Solution by CloudSimple 没有任何更改。 我们继续支持 Az
 
 **什么是试用群集？**
 
-试用群集是三个主机群集，用于 AVS 私有云的一个月评估。
+试用群集是三个主机群集，用于一个月评估 Azure VMware 解决方案私有云。
 
 **可以为试用群集使用高端主机吗？**
 
 不是。 高端 ESXi 主机保留用于生产群集。
 
-## <a name="avs-and-vmware-software"></a>AVS 和 VMware 软件
+## <a name="azure-vmware-solution-and-vmware-software"></a>Azure VMware 解决方案和 VMware 软件
 
 **私有云中使用的是哪些版本的 VMware 软件？**
 
@@ -125,7 +125,7 @@ Azure VMware Solution by CloudSimple 没有任何更改。 我们继续支持 Az
 
 **私有云是否使用 VMware NSX？**
 
-是的，NSX-T 2.5 用于 AVS 私有云中软件定义的网络。
+是的，NSX-T 2.5 用于 Azure VMware 解决方案私有云中软件定义的网络。
 
 **可以在私有云中使用 VMware NSX-V 吗？**
 
@@ -147,9 +147,9 @@ Azure VMware Solution by CloudSimple 没有任何更改。 我们继续支持 Az
 
 **将私有云与本地环境合并需要什么网络 IP 地址计划？**
 
-部署 AVS 私有云需要专用网络 /22 地址空间。 此专用地址空间不应与订阅中的其他虚拟网络或本地网络重叠。
+部署 Azure VMware 解决方案私有云需要专用网络/22 地址空间。 此专用地址空间不应与订阅中的其他虚拟网络或本地网络重叠。
  
-**如何从本地环境连接到 AVS 私有云？**
+**如何实现从本地环境连接到 Azure VMware 解决方案私有云？**
 
 可以通过以下两种方法之一连接到服务： 
 
@@ -170,7 +170,7 @@ Azure VMware Solution by CloudSimple 没有任何更改。 我们继续支持 Az
 
 ## <a name="accounts-and-privileges"></a>帐户和特权
 
-**我可以通过新的 AVS 私有云获得哪些帐户和特权？**
+**我的新的 Azure VMware 解决方案私有云会获得哪些帐户和特权？**
 
 你可获得 vCenter 中 cloudadmin 用户的凭据和 NSX-T 管理器的管理员访问权限。 还可通过一个 CloudAdmin 组合并 Azure Active Directory。 有关详细信息，请参阅[访问权限和标识的概念](concepts-identity.md)。
 
@@ -191,19 +191,19 @@ Azure VMware Solution by CloudSimple 没有任何更改。 我们继续支持 Az
 
 ## <a name="billing-and-support"></a>计费和支持
 
-**在 AVS 预览期间将如何计费？**
+**Azure VMware 解决方案预览期间将如何计费**
 
-在预览期间，AVS 的计费方式是每月即用即付。 在正式发布后，将提供其他选项。
+预览期间的 Azure VMware 解决方案的计费是按现用现付的方式。 在正式发布后，将提供其他选项。
 
-**在 AVS 预览期间将如何定价？**
+**在 Azure VMware 解决方案的预览过程中，定价如何构造？**
 
 有关定价的一般问题，请参阅 Azure VMware 解决方案[定价](https://azure.microsoft.com/pricing/details/azure-vmware)页面。 预览版定价适用于请求，请联系你的帐户团队，或单击定价页面上的链接以联系销售人员。
 
-**由谁针对 AVS 提供支持？**
+**谁支持 Azure VMware 解决方案？**
 
-对 AVS 的支持由 Microsoft 提供。 请注意，根据我们的预览准则，我们将在周一至周五的9到 5 pm PST 营业时间内提供支持。 可通过[此链接](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)提交支持票证
+Microsoft 提供对 Azure VMware 解决方案的支持。 请注意，根据我们的预览准则，我们将在周一至周五的9到 5 pm PST 营业时间内提供支持。 可通过[此链接](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)提交支持票证
 
-**创建 AVS 私有云需要哪些帐户？**
+**需要哪些帐户才能创建 Azure VMware 解决方案私有云？**
 
 需要 Azure 订阅中的 Azure 帐户。
 

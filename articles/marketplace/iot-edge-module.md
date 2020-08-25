@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/15/2020
-ms.openlocfilehash: 168d343ea4582d8c19a577cedadf6f1bc3c39971
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: f7a4997117c8730b767f245050caa3f3157fb6fd
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88607359"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88750245"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge 模块
 
@@ -76,6 +76,5 @@ Microsoft Azure 市场协议和策略的所有条款都适用于 IoT Edge 模块
 ## <a name="next-steps"></a>后续步骤
 
 - [了解](https://azuremarketplace.microsoft.com/sell) 商用 marketplace。
-- [Create a IoT Edge module 产品/服务]。
 - 登录[合作伙伴中心](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)以创建或完成产品/服务。
-- 有关如何发布 IoT Edge 模块产品/服务的信息，请参阅 [创建 IoT Edge 模块产品/服务](./partner-center-portal/azure-iot-edge-module-creation.md)。
+- 在合作伙伴中心[创建 IoT Edge 模块产品/服务](./partner-center-portal/azure-iot-edge-module-creation.md)。

@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3aa45050286888dd8ae1d26d96c8ed02da197326
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 0cf2aa504fd7a36a55740b3a59eeb3759e67f469
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876727"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509903"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>教程：在 Azure Notebook 中使用个性化体验创建服务
 
@@ -623,7 +623,7 @@ Coffee count 4
 
 ## <a name="validate-new-learning-policy"></a>验证新学习策略
 
-返回到 Azure Notebook，然后继续运行同一个循环，但这一次仅针对 2,000 个迭代运行。 定期刷新 Azure 门户中的指标图表，以查看调用服务的总次数。 针对循环的每个迭代调用排名和奖励大约 4,000 次后，迭代即告完成。
+返回到 Azure Notebooks 文件，然后继续运行同一个循环，但这一次仅针对 2,000 个迭代运行。 定期刷新 Azure 门户中的指标图表，以查看调用服务的总次数。 针对循环的每个迭代调用排名和奖励大约 4,000 次后，迭代即告完成。
 
 ```python
 # max iterations
