@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 973eeebfdf9164cb50cf98ae8edc845a80a7e080
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: d528ff41d8b7098e313e070dfe734960cdc89eaa
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794512"
+ms.locfileid: "88827522"
 ---
 # <a name="secure-azure-digital-twins"></a>保护 Azure 数字孪生
 
@@ -79,7 +79,7 @@ Azure 提供以下 Azure 内置角色，用于授权访问 Azure 数字孪生资
 
 ## <a name="encryption-of-data-at-rest"></a>静态数据加密
 
-Azure 数字孪生提供静态数据和传输中的数据加密，因为它是在我们的数据中心编写的，在你访问数据中心时，会对其进行解密。
+Azure 数字孪生提供静态数据和传输中的数据加密，因为它是在我们的数据中心编写的，在你访问数据中心时，会对其进行解密。 使用 Microsoft 托管的加密密钥进行加密。
 
 ## <a name="next-steps"></a>后续步骤
 

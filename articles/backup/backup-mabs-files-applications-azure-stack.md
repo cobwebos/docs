@@ -3,19 +3,19 @@ title: 在 Azure Stack VM 中备份文件
 description: 使用 Azure 备份将 Azure Stack 文件与应用程序备份和恢复到 Azure Stack 环境。
 ms.topic: conceptual
 ms.date: 06/05/2018
-ms.openlocfilehash: b45e3a0916f46f247503ea336105646f5538246c
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: caac247b5a972c515b4350f1b0c79792bbf75537
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263123"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825794"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>在 Azure Stack 上备份文件和应用程序
 
 可以使用 Azure 备份保护（或备份）Azure Stack 上的文件和应用程序。 若要备份文件和应用程序，请将 Microsoft Azure 备份服务器安装为 Azure Stack 上运行的虚拟机。 可以保护相同虚拟网络中任何 Azure Stack 服务器上的文件。 安装 Azure 备份服务器后，可添加 Azure 磁盘以增加可用于短期备份数据的本地存储。 Azure 备份服务器将 Azure 存储用于长期保留。
 
 > [!NOTE]
-> 尽管 Azure 备份服务器与 System Center Data Protection Manager (DPM) 类似，但不支持将 DPM 与 Azure Stack 配合使用。
+> 尽管 Azure 备份服务器和 System Center Data Protection Manager (DPM) 类似，但不支持将 DPM 与 Azure Stack 一起使用。
 >
 
 本文不涉及在 Azure Stack 环境中安装 Azure 备份服务器。 若要在 Azure Stack 中安装 Azure 备份服务器，请参阅[安装 Azure 备份服务器](backup-mabs-install-azure-stack.md)一文。

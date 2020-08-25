@@ -3,12 +3,12 @@ title: 使用客户托管密钥加密备份数据
 description: 了解 Azure 备份如何允许使用客户管理的密钥加密备份数据， (CMK) 。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 2c83350acad59e72cfabc8e40069aab46d785b63
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 9e299095709e07d3c73c8e8c847042cc51f549dd
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763110"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827335"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>使用客户托管密钥加密备份数据
 
@@ -39,7 +39,7 @@ Azure 备份允许使用客户管理的密钥加密备份数据， (CMK) ，而�
 
 - 此功能当前仅可通过 Azure 门户进行配置。
 
-如果你尚未创建和配置恢复服务保管库，则可以在 [此处阅读如何执行此操作](backup-create-rs-vault.md)。
+如果尚未创建和配置恢复服务保管库，则可以在 [此处阅读](backup-create-rs-vault.md)此内容。
 
 ## <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>将保管库配置为使用客户托管的密钥进行加密
 
@@ -60,7 +60,7 @@ Azure 备份允许使用客户管理的密钥加密备份数据， (CMK) ，而�
 Azure 备份使用系统分配的托管标识对恢复服务保管库进行身份验证，以访问存储在 Azure Key Vault 中的加密密钥。 若要为恢复服务保管库启用托管标识，请按照下面所述的步骤进行操作。
 
 >[!NOTE]
->启用后，不能 (禁用托管标识，即使暂时) 也是如此。 禁用托管标识可能导致出现不一致的行为。
+>启用后， **不** 能 (禁用托管标识，即使暂时) 也是如此。 禁用托管标识可能导致出现不一致的行为。
 
 1. 请参阅恢复服务保管库-> **标识**
 
@@ -138,7 +138,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 > - 上述所有步骤均已成功完成：
 >   - 恢复服务保管库的托管标识已启用，并且已分配有必需的权限
 >   - 已启用软删除和清除保护的 Azure Key Vault
-> - 要为其启用 CMK 加密的恢复服务保管库没有任何受保护的项或未向其注册的项
+> - 要为其启用 CMK 加密的恢复服务保管库没有任何受保护的项或 **未** 向其注册的项
 
 确保了上述各项后，请继续选择保管库的加密密钥。
 
@@ -160,7 +160,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
         ![从密钥保管库中选择密钥](./media/encryption-at-rest-with-cmk/key-vault.png)
 
-1. 单击“保存”  。
+1. 单击“ **保存**”。
 
 1. **跟踪加密密钥更新的进度：** 可以使用恢复服务保管库中的 **活动日志** 跟踪密钥分配的进度。 状态应更改为 " **成功**"。 现在，保管库会将具有指定密钥的所有数据加密为 KEK。
 
@@ -220,7 +220,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 1. 从下拉列表中，选择要用于还原的磁盘的 DES)  (。 **确保你有权访问 DES。**
 
 >[!NOTE]
->如果正在还原使用 Azure 磁盘加密的 VM，则在还原时选择 DES 的功能将不可用。
+>如果正在还原使用 Azure 磁盘加密的 VM，则在还原时选择 DES 的功能不可用。
 
 ![使用密钥加密磁盘](./media/encryption-at-rest-with-cmk/encrypt-disk-using-your-key.png)
 
@@ -240,7 +240,7 @@ Azure 备份使用系统分配的托管标识对恢复服务保管库进行身�
 
 ### <a name="i-tried-to-protect-an-item-to-my-vault-but-it-failed-and-the-vault-still-doesnt-contain-any-items-protected-to-it-can-i-enable-cmk-encryption-for-this-vault"></a>我尝试保护我的保管库中的某一项，但失败，并且该保管库仍未包含任何受保护的项。 能否为此保管库启用 CMK 加密？
 
-不可以，保管库在过去不能尝试保护任何项。
+不可以，保管库在过去不能对任何项进行任何保护。
 
 ### <a name="i-have-a-vault-that-is-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>我有一个使用 CMK 加密的保管库。 以后是否可以使用平台托管密钥恢复到加密，即使已将备份项保护到保管库？
 

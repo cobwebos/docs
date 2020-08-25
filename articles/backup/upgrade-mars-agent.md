@@ -3,12 +3,12 @@ title: " (MARS) 代理升级 Microsoft Azure 恢复服务"
 description: 了解如何 (MARS) 代理升级 Microsoft Azure 恢复服务。
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: 782975583547bb5b51c3816d815ae1129c979509
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 1f4fd5074b0c6195742935e0cf0e742a00a3549e
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757330"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827318"
 ---
 # <a name="upgrade-the-microsoft-azure-recovery-services-mars-agent"></a> (MARS) 代理升级 Microsoft Azure 恢复服务
 
@@ -50,13 +50,13 @@ ms.locfileid: "88757330"
     ![通过远程桌面连接连接到服务器](./media/upgrade-mars-agent/connect-to-server.png)
 
     >[!NOTE]
-    > 如果列出的服务器不存在或已被解除，则你可以忽略下面的剩余步骤，并跳转到下一台服务器。
+    > 如果列出的服务器不存在或已被取消，你可以忽略以下剩余步骤，并跳到下一个服务器。
 
 1. 输入管理登录详细信息并登录。
 
 1. 如果服务器或服务器的代理具有有限的 internet 访问权限，请确保将服务器/代理上的防火墙设置配置为允许使用适用于你正在使用的 Azure 云的 URL：
 
-    Azure 云 | URL
+    Azure 云 | 代码
     -- | ---
     Azure 云 (公有)  |   `https://login.windows.net`
     Azure 中国世纪互联云   | `https://login.chinacloudapi.cn`

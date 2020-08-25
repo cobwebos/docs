@@ -4,12 +4,12 @@ description: 了解如何使用 System Center 2012 R2 DPM 将 Exchange Server �
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: c9d54bb8e9875bcd622c5ce5343dc6f8baa3f2be
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 139741c4f721f0fd86cc585b4cfb2ed97c45b25c
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763569"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827403"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份
 
@@ -76,7 +76,7 @@ ms.locfileid: "88763569"
 9. 选择“**复制备份**”的数据库，并单击“**下一步**”。
 
    > [!NOTE]
-   > 如果未针对数据库的至少一个 DAG 副本选择“完全备份”，则不会截断日志。
+   > 如果没有为数据库的至少一个 DAG 副本选择 "完全备份"，则不会截断日志。
    >
    >
 10. 配置“**短期备份**”的目标，并单击“**下一步**”。

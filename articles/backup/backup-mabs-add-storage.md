@@ -3,12 +3,12 @@ title: 将新式备份存储与 Azure 备份服务器一起使用
 description: 了解 Azure 备份服务器中的新功能。 本文介绍如何升级备份服务器安装。
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 5c7533a5ee2fc65beb86c0c803a522e0acb1df6d
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: b8620f6999c1fcb1a1e70c73fb71fcaac008d930
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762430"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825862"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>将存储添加到 Azure 备份服务器
 
@@ -56,7 +56,7 @@ Azure 备份服务器 V2 及更高版本支持新式备份存储，后者可提�
 
     ![创建新卷](./media/backup-mabs-add-storage/mabs-add-storage-5.png)
 
-6. 在“选择服务器和磁盘”**** 对话框中，选择服务器和新磁盘。 然后，选择“下一步”。
+6. 在“选择服务器和磁盘”**** 对话框中，选择服务器和新磁盘。 然后，选择“下一步”  。
 
     ![选择服务器和磁盘](./media/backup-mabs-add-storage/mabs-add-storage-6.png)
 
@@ -97,7 +97,7 @@ Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-Datasour
 
 ## <a name="migrate-legacy-storage-to-modern-backup-storage"></a>将旧存储迁移到 Modern Backup Storage
 
-升级到或安装备份服务器 V2 并将操作系统升级到 Windows Server 2016 之后，可更新保护组以使用新式备份存储。 默认情况下，保护组不会进行更改。 它们会继续按照初始设置运行。
+升级到或安装备份服务器 V2 并将操作系统升级到 Windows Server 2016 之后，可更新保护组以使用新式备份存储。 默认情况下，保护组不会更改。 它们会继续按照初始设置运行。
 
 可以选择更新保护组以使用新式备份存储。 若要更新保护组，请使用保留数据选项停止所有数据源的保护。 然后，将数据源添加到新保护组。
 

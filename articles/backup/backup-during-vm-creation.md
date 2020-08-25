@@ -3,12 +3,12 @@ title: 在创建 Azure VM 时启用备份
 description: 介绍了如何在创建 Azure VM 时通过 Azure 备份启用备份。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: c744f6aa2bef6d3d6800aa6b6dc077915fc5205b
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 8612061ca21b4609600f5b9822ca4f6fe3b673f1
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88586692"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825947"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>在创建 Azure VM 时启用备份
 
@@ -58,15 +58,15 @@ ms.locfileid: "88586692"
 需要注意的要点：
 
 1. 可以使用 RG 的默认名称，也可以根据公司要求对其进行编辑。
-2. 可以在创建 VM 备份策略时将 RG 名称模式作为输入提供。 RG 名称应采用以下格式：`<alpha-numeric string>* n <alpha-numeric string>`。 “n”将替换为一个整数（从 1 开始），用于在第一个 RG 已满时进行横向扩展。 目前一个 RG 最多可以有 600 个 RPC。
+2. 可以在创建 VM 备份策略时将 RG 名称模式作为输入提供。 RG 名称应采用以下格式：`<alpha-numeric string>* n <alpha-numeric string>`。 “n”将替换为一个整数（从 1 开始），用于在第一个 RG 已满时进行横向扩展。 目前一个 RG 最多可以有600个 Rpc。
               ![创建策略时选择名称](./media/backup-during-vm-creation/create-policy.png)
 3. 该模式应遵循下面的 RG 命名规则，并且总长度不应超过允许的最大 RG 名称长度。
-    1. 资源组名称只允许使用字母数字字符、句点、下划线、连字符和括号。 它们不能以句点结尾。
+    1. 资源组名称只允许使用字母数字字符、句点、下划线、连字符和括号。 它们不能以句点结束。
     2. 资源组名称最多可包含 74 个字符，包括 RG 名称和后缀。
 4. 第一个 `<alpha-numeric-string>` 是必需的，但“n”后面的第二个是可选的。 这仅适用于你提供自定义名称的情况。 如果未在任何文本框中输入任何内容，则使用默认名称。
-5. 如果需要，可以通过修改策略来编辑 RG 的名称。 如果更改了名称模式，将在新 RG 中创建新的 RP。 但是，旧的 RP 仍将驻留在旧 RG 中，不会被删除，因为 RP 集合不支持资源移动。 最终，当点过期时，RP 会进行垃圾回收。
+5. 如果需要，可以通过修改策略来编辑 RG 的名称。 如果更改了名称模式，将在新 RG 中创建新的 RP。 但是，旧的 RPs 仍将驻留在旧 RG 中，因此不会移动，因为 RP 集合不支持资源移动。 最终，当点过期时，RP 会进行垃圾回收。
 ![修改策略时更改名称](./media/backup-during-vm-creation/modify-policy.png)
-6. 建议不要锁定为了供备份服务使用而创建的资源组。
+6. 建议不要锁定为备份服务使用而创建的资源组。
 
 若要使用 PowerShell 为虚拟机配置 Azure 备份资源组，请参阅[在快照保留期间创建 Azure 备份资源组](backup-azure-vms-automation.md#creating-azure-backup-resource-group-during-snapshot-retention)。
 

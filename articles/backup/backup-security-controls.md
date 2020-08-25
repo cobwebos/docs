@@ -3,12 +3,12 @@ title: 安全控件
 description: 了解 Azure 备份服务中使用的安全控制。 这些控制可帮助服务预防、检测和响应安全漏洞。
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.openlocfilehash: 4a59ab0edeeba480475ac593d2721f95c7b5f48a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e69053d4646207b34e8df31b949410994c967303
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371713"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827284"
 ---
 # <a name="security-controls-for-azure-backup"></a>Azure 备份的安全控制
 
@@ -22,7 +22,7 @@ ms.locfileid: "87371713"
 |---|---|--|--|
 | 服务终结点支持| 否 |  |  |
 | VNet 注入支持| 否 |  |  |
-| 网络隔离和防火墙支持| 是 | 对 VM 备份支持强制隧道。 对 VM 内运行的工作负荷不支持强制隧道。 |  |
+| 网络隔离和防火墙支持| 是 | 对 VM 备份支持强制隧道。 Vm 内运行的工作负荷不支持强制隧道。 |  |
 | 强制隧道支持| 否 |  |  |
 
 ## <a name="monitoring--logging"></a>监视和日志记录

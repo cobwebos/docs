@@ -3,12 +3,12 @@ title: 与 REST API 备份 Azure 文件共享
 description: 了解如何使用 REST API 在恢复服务保管库中备份 Azure 文件共享
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: b3d83104b699740c43b0c6506c00694c2b2ac063
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 8d2d8ed88da133986540a293185c8e37000ab87b
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757126"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824859"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>通过 Rest API 使用 Azure 备份来备份 Azure 文件共享
 

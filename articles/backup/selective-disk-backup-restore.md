@@ -4,12 +4,12 @@ description: 本文介绍如何使用 Azure 虚拟机备份解决方案进行选
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: dd4691f6248099bdc4fa713c84d396adac6011fa
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 44454977a977a85b8735657a439a265467f1bcf5
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757432"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824740"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>针对 Azure 虚拟机的选择性磁盘备份和还原
 
@@ -28,7 +28,7 @@ Azure 备份支持使用虚拟机备份解决方案，将 VM 中的所有磁盘 
 使用 PowerShell 或 Azure CLI，可以配置 Azure VM 的选择性磁盘备份。  使用脚本，可以使用数据磁盘的 LUN 编号来包含或排除这些磁盘。  目前，通过 Azure 门户配置选择性磁盘备份的功能 **仅限于备份 OS 磁盘** 选项。 因此，你可以配置 Azure VM 的备份和 OS 磁盘，并排除附加到它的所有数据磁盘。
 
 >[!NOTE]
-> OS 磁盘默认情况下已添加到 VM 备份，无法将其排除。
+> OS 磁盘默认情况下已添加到 VM 备份，不能排除。
 
 ## <a name="using-azure-cli"></a>使用 Azure CLI
 
@@ -190,7 +190,7 @@ az backup item show -c {vmname} -n {vmname} --vault-name {vaultname} --resource-
 
 ## <a name="using-powershell"></a>使用 PowerShell
 
-请确保使用的是 Azure PS 版本3.7.0 或更高版本。
+确保使用 Azure PowerShell 版本3.7.0 或更高版本。
 
 ### <a name="enable-backup-with-powershell"></a>使用 PowerShell 启用备份
 
@@ -261,7 +261,7 @@ Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "
 通过 Azure 门户为 VM 配置选择性磁盘备份体验 **仅限备份 OS 磁盘** 选项。 若要在已备份的 VM 上使用选择性磁盘备份，或者对 VM 的特定数据磁盘进行高级包含或排除，请使用 PowerShell 或 Azure CLI。
 
 >[!NOTE]
->如果跨磁盘的数据跨越，请确保备份中包含所有相关磁盘。 如果不备份卷中的所有从属磁盘，则在还原过程中，将不会创建由某些非备份磁盘组成的卷。
+>如果跨磁盘的数据跨越，请确保备份中包含所有相关磁盘。 如果不备份卷中的所有从属磁盘，则在还原过程中，不会创建由某些非备份磁盘组成的卷。
 
 ### <a name="backup-os-disk-only-in-the-azure-portal"></a>仅备份 OS 磁盘 Azure 门户
 

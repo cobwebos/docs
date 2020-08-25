@@ -3,17 +3,17 @@ title: 教程 - 从 Azure 成本管理创建和管理导出的数据
 description: 本文介绍如何创建和管理导出的 Azure 成本管理数据，以便在外部系统中使用。
 author: bandersmsft
 ms.author: banders
-ms.date: 05/27/2020
+ms.date: 08/05/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 90334d29ed2f649854863f9ad86f03811728a945
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 69b7b4bff46ba2998ca931ba1cb6bc9e7c1d9096
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142295"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272177"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
@@ -49,40 +49,38 @@ ms.locfileid: "84142295"
 
 ## <a name="create-a-daily-export"></a>创建每日导出
 
-要创建或查看数据导出或计划导出，请在 Azure 门户中打开所需的作用域，然后在菜单中选择“成本分析”。 例如，导航到“订阅”，从列表中选择订阅，然后在菜单中选择“成本分析” 。 在“成本分析”页的顶部，依次选择“设置”和“导出”，然后选择导出选项 。
+要创建或查看数据导出或计划导出，请在 Azure 门户中打开所需的作用域，然后在菜单中选择“成本分析”。 例如，导航到“订阅”，从列表中选择订阅，然后在菜单中选择“成本分析” 。 在“成本分析”页的顶部，选择“设置”，然后“导出”。
 
 > [!NOTE]
-> - 除了订阅之外，还可以针对资源组、帐户、部门和注册创建导出。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
+> - 除了订阅之外，还可以针对资源组、管理组、部门和注册创建导出。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 >- 在计费帐户范围内或在客户的租户上以合作伙伴身份登录时，可以将数据导出到链接到合作伙伴存储帐户的 Azure 存储帐户。 但是，必须在 CSP 租户中具有活动订阅。
 
-选择“添加”，为导出键入名称，然后选择“本月至今累计成本每日导出”选项 。 选择“**下一页**”。
-
-[![显示导出类型的新导出示例](./media/tutorial-export-acm-data/basics_exports.png)](./media/tutorial-export-acm-data/basics_exports.png#lightbox)
-
-指定 Azure 存储帐户的订阅，然后选择存储帐户。  指定要将导出文件放置到其中的存储容器和目录路径。 选择“**下一页**”。
-
-![显示存储帐户详细信息的新导出示例](./media/tutorial-export-acm-data/storage_exports.png)
-
-查看导出详细信息，然后选择“创建”。
+1. 选择“添加”，然后键入导出的名称。 
+1. 对于“指标”，请选择：
+    - **实际成本（使用量和购买量）** - 选择此项可导出标准使用量和购买量
+    - **摊销成本（使用量和购买量）** - 选择此项可针对购买量（如 Azure 预留）导出摊销成本
+1. 对于“导出类型”，请选择：
+    - **每日导出本月累计成本** - 每日提供一个新的本月累计成本的导出文件。 最新数据是根据以前的每日导出聚合的。
+    - **每周导出过去 7 天的成本** - 创建自选定的导出开始日期起过去 7 天的每周成本导出文件。  
+    - **每月导出上个月的成本** - 提供上月成本的导出文件（与创建导出的当前月份进行比较）。 并且，计划在每月的第五天运行导出，其中包含以前的月份成本。  
+    - **一次性导出** - 允许你选择要导出到 Azure blob 存储的历史数据的日期范围。 你可以导出从所选的那一天起最多 90 天的历史成本。 此导出会立即运行，最多 2 小时后便可在存储帐户中获取它。  
+        根据你的导出类型，请选择“开始日期”，或选择“从”和“到”日期 。
+1. 指定 Azure 存储帐户的订阅，然后选择一个资源组，或者创建一个新的资源组。 
+1. 选择存储帐户名称或新建一个。 
+1. 选择位置（Azure 区域）。
+1. 指定要将导出文件放置到其中的存储容器和目录路径。 
+    :::image type="content" source="./media/tutorial-export-acm-data/basics_exports.png" alt-text="新导出示例" lightbox="./media/tutorial-export-acm-data/basics_exports.png":::
+1. 检查导出详细信息，然后选择“创建”。
 
 新导出将出现在导出列表中。 默认情况下，新导出为启用状态。 如果要禁用或删除计划的导出，请选择列表中的任何项，然后选择“禁用”或“删除”。
 
-最初，在导出运行之前，可能需要一到两个小时。 但是，在导出文件中显示数据之前，它可能需要四个小时。
+最初，在导出运行之前，可能需要 12 到 24 个小时。 但是，可能需要更长时间才能在导出的文件中显示数据。
 
 ### <a name="export-schedule"></a>导出计划
 
-计划的导出受刚开始创建导出时的时间以及星期几的影响。 创建计划的导出后，随后的每次导出都会以相同的频率运行。 例如，对于设置为每天频率的本月至今累计导出，导出每天都会运行。 同样，对于每周导出，导出每周按计划在同一天运行。 不保证导出的确切交付时间，但导出的数据在运行导出后 4 小时内可用。
-每次导出都会创建新文件，因此旧的导出不会被覆盖。
+计划的导出受刚开始创建导出时的时间以及星期几的影响。 创建计划的导出后，随后的每次导出都会以相同的频率运行。 例如，对于设置为每天频率的每日的本月至今累计成本导出，导出每天都会运行。 同样，对于每周导出，导出每周按计划在同一天运行。 不保证导出的确切交付时间，但导出的数据在运行导出后 4 小时内可用。
 
-有两种类型的导出选项：
-
-**每日导出本月至今的成本** – 初始导出立即运行。 后续导出在第二天运行，其时间与初始导出一样。 最新数据是根据以前的每日导出聚合的。
-
-**自定义** – 可以使用 week-to-date 和 month-to-date 选项计划每周和每月的导出。 初始导出会立即运行。
-
-如果有即用即付、MSDN 或 Visual Studio 订阅，则发票计费周期可能与日历月不一致。 对于这些类型的订阅和资源组，可以创建一个与发票周期或日历月一致的导出。 若要创建与发票月一致的导出，请导航到“自定义”，然后选择“计费周期至今”。   若要创建与日历月一致的导出，请选择“本月至今”。
-
-![“新建导出 - 基本信息”选项卡，显示自定义的每周 week-to-date 选择](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
+每个导出都将创建一个新文件，因此不会覆盖较早的导出。
 
 #### <a name="create-an-export-for-multiple-subscriptions"></a>为多个订阅创建导出
 
@@ -90,12 +88,13 @@ ms.locfileid: "84142295"
 
 不支持导出其他订阅类型的管理组。
 
-1. 创建管理组并向其分配订阅。
-1. 在“导出”中选择“范围”。
-1. 选择“选择此管理组”。
-1. 在范围内创建导出，获取管理组中订阅的成本管理数据。
+1. 如果尚未创建管理组，请创建一个，并为其分配订阅。
+1. 在成本分析中，将范围设置为管理组，并选择“选择此管理组”。  
+    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="显示“选择此管理组”选项的示例" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
+1. 在范围内创建导出，获取管理组中订阅的成本管理数据。  
+    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="显示具有管理组范围的“新建导出”选项的示例":::
 
-## <a name="verify-that-data-is-collected"></a>验证收集的数据
+## <a name="verify-that-data-is-collected"></a>验证是否已收集数据
 
 可以轻松验证正在收集的成本管理数据，并使用 Azure 存储资源管理器查看导出的 CSV 文件。
 
@@ -123,6 +122,16 @@ ms.locfileid: "84142295"
 1. 选择 CSV 文件，然后选择“下载”。
 
 [![示例导出下载](./media/tutorial-export-acm-data/download-export.png)](./media/tutorial-export-acm-data/download-export.png#lightbox)
+
+## <a name="view-export-run-history"></a>查看导出运行历史记录  
+
+你可以通过在导出列表页中选择单个导出来查看计划导出的运行历史记录。 导出列表页还提供了快速访问，可查看先前、下次以及将来导出的运行时间。 下面是显示运行历史记录的示例。
+
+:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="显示导出运行历史记录的示例":::
+
+选择导出以查看其运行历史记录。
+
+:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="显示导出运行历史记录的示例":::
 
 ## <a name="access-exported-data-from-other-systems"></a>从其他系统访问导出的数据
 

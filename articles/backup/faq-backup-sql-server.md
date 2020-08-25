@@ -4,12 +4,12 @@ description: 查找有关使用 Azure 备份在 Azure VM 上备份 SQL Server �
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: a5fdbb78f6d700d14c2458a8d87a4b0f9a971207
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 577f6637ebe96dcabcb1357ca09da75bd9552c30
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88762838"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827233"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有关备份 Azure VM 上运行的 SQL Server 数据库的常见问题解答
 
@@ -30,7 +30,7 @@ ms.locfileid: "88762838"
 - 如果在还原期间选择覆盖数据库，则下一次日志/差异备份将会失败，并改为触发完整备份。
 - 如果由于数据库恢复模式发生更改而需要使用完整备份来重置日志链，则会在下一个计划时间自动触发完整备份。
 
-默认已为所有用户启用自动修复功能；但是，如果你要禁用它，请执行以下操作：
+默认情况下，为所有用户启用了自动修复功能。 但是，如果选择退出它，请执行以下步骤：
 
 - 在 SQL Server 实例上的 *C:\Program Files\Azure Workload Backup\bin* 文件夹中，创建或编辑 **ExtensionSettingsOverrides.json** 文件。
 - 在 **ExtensionSettingsOverrides.json** 中，设置 *{"EnableAutoHealer": false}* 。
@@ -56,7 +56,7 @@ DefaultBackupTasksThreshold 的默认值为 **20**。
 
 ## <a name="can-i-run-a-full-backup-from-a-secondary-replica"></a>是否可以从次要副本运行完整备份？
 
-根据 SQL 限制，只能针对次要副本运行“仅限复制的完整备份”，而不允许“完整备份”。
+根据 SQL 限制，你可以只在辅助副本上运行复制完整备份。 但是，不允许完整备份。
 
 ## <a name="can-i-protect-availability-groups-on-premises"></a>是否可以保护本地的可用性组？
 
@@ -68,7 +68,7 @@ Azure 备份恢复服务保管库可以检测并保护保管库所在的同一�
 
 ## <a name="do-successful-backup-jobs-create-alerts"></a>成功的备份作业是否会创建警报？
 
-否。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 [此文](backup-azure-monitoring-built-in-monitor.md)介绍了门户警报的详细行为。 但是，如果你希望同时收到已成功作业的警报，可以[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。
+不是。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 [此文](backup-azure-monitoring-built-in-monitor.md)介绍了门户警报的详细行为。 但是，如果你希望同时收到已成功作业的警报，可以[使用 Azure Monitor 进行监视](backup-azure-monitoring-use-azuremonitor.md)。
 
 ## <a name="can-i-see-scheduled-backup-jobs-in-the-backup-jobs-menu"></a>“备份作业”菜单中是否会显示计划的备份作业？
 
@@ -92,7 +92,7 @@ Azure 备份恢复服务保管库可以检测并保护保管库所在的同一�
 
 ## <a name="if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior"></a>如果在保护数据库后更改其名称，会出现怎样的行为？
 
-已重命名的数据库被视为新数据库。 因此，服务将此情况视为找不到数据库，同时会使备份失败。
+已重命名的数据库被视为新数据库。 因此，该服务将处理此情况，就好像找不到数据库，备份失败。
 
 可以选择现在已重命名的数据库并对其配置保护。 如果对实例启用了自动保护，则会自动检测并保护已重命名的数据库。
 

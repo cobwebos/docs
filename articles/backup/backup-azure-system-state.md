@@ -3,12 +3,12 @@ title: 将 Windows 系统状态备份到 Azure
 description: 了解如何将 Windows Server 计算机的系统状态备份到 Azure。
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: a56e500cc0330a6406b4465ab5baeafa39b544aa
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.openlocfilehash: 8ce30b93ebaecec1e69c6c6a6f1064c6cdd3d0f6
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88263038"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824455"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>将 Windows 系统状态备份到 Azure
 
@@ -86,7 +86,7 @@ ms.locfileid: "88263038"
 
     ![下载保管库凭据](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    保管库凭据下载到 **下载** 文件夹。 保管库凭据下载完成后，会显示一个弹出窗口，询问你是要打开还是要保存凭据。 选择“保存” 。 如果意外选择了 " **打开**"，则让尝试打开保管库凭据的对话框失败。 你将无法打开保管库凭据。 继续执行下一步。 保管库凭据位于 " **下载** " 文件夹中。
+    保管库凭据下载到 **下载** 文件夹。 保管库凭据下载完成后，会显示一个弹出窗口，询问你是要打开还是要保存凭据。 选择“保存”。 如果意外选择了 " **打开**"，则让尝试打开保管库凭据的对话框失败。 你将无法打开保管库凭据。 继续执行下一步。 保管库凭据位于 " **下载** " 文件夹中。
 
     ![已下载保管库凭据](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
@@ -98,7 +98,7 @@ ms.locfileid: "88263038"
 ## <a name="install-and-register-the-agent"></a>安装并注册代理
 
 > [!NOTE]
-> 尚未推出通过 Azure 门户启用备份这一功能。 使用 Microsoft Azure 恢复服务代理备份 Windows Server 的系统状态。
+> 无法通过 Azure 门户启用备份。 使用 Microsoft Azure 恢复服务代理备份 Windows Server 的系统状态。
 >
 
 1. 在 Downloads 文件夹（或其他保存位置）中找到并双击 **MARSagentinstaller.exe**。
@@ -116,7 +116,7 @@ ms.locfileid: "88263038"
    * 将加密通行短语保存在安全的位置。
 
      > [!NOTE]
-     > 如果丢失或忘记了通行短语，Microsoft 无法帮助你恢复备份数据。 请将文件保存在安全的位置。 还原备份时需要用到此文件。
+     > 如果你丢失或忘记了该通行短语，Microsoft 无法帮助恢复备份数据。 请将文件保存在安全的位置。 需要还原备份。
      >
      >
 
@@ -132,7 +132,7 @@ ms.locfileid: "88263038"
 若要完成初始备份，请使用 Microsoft Azure 恢复服务代理。
 
 > [!NOTE]
-> 可以在 Windows Server 2008 R2 到 Windows Server 2016 上备份系统状态。 客户端 SKU 不支持系统状态备份。 系统状态不会显示为 Windows 客户端或 Windows Server 2008 SP2 计算机选项。
+> 可以在 Windows Server 2008 R2 到 Windows Server 2016 上备份系统状态。 客户端 Sku 不支持系统状态备份。 系统状态不会显示为适用于 Windows 客户端或 Windows Server 2008 SP2 计算机的选项。
 >
 >
 
@@ -170,7 +170,7 @@ ms.locfileid: "88263038"
 
 3. 在出现的 "**选择备份项目**" 屏幕上选择 "**系统状态**"，然后选择 "**下一步**"
 
-4. 在“确认”页上复查“立即备份向导”用于备份计算机的设置。 然后选择 " **备份**"。
+4. 在“确认”页上复查“立即备份向导”用于备份计算机的设置。 然后选择“备份”。
 
 5. 选择“关闭”以关闭向导。 如果在备份过程完成之前关闭向导，向导将继续在后台运行。
     > [!NOTE]

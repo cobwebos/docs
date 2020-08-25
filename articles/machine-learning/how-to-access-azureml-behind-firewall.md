@@ -11,18 +11,18 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 990a2d5279c796f354055328e6968ea705ea10b2
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 7d270ac9a6597645c5a98b6af77d19021ef00329
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87873630"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827420"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>使用防火墙后面的工作区进行 Azure 机器学习
 
-本文介绍如何将 Azure 防火墙配置为控制对 Azure 机器学习工作区和公共 internet 的访问。   若要了解有关保护 Azure 机器学习的详细信息，请参阅[企业安全性 Azure 机器学习](concept-enterprise-security.md)
+本文介绍如何将 Azure 防火墙配置为控制对 Azure 机器学习工作区和公共 internet 的访问。   若要了解有关保护 Azure 机器学习的详细信息，请参阅 [企业安全性 Azure 机器学习](concept-enterprise-security.md)
 
-虽然本文档中的信息基于使用[Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)，但你应该能够将其与其他防火墙产品一起使用。 如果有关于如何允许通过防火墙进行通信的问题，请查阅所使用防火墙的相关文档。
+虽然本文档中的信息基于使用 [Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)，但你应该能够将其与其他防火墙产品一起使用。 如果有关于如何允许通过防火墙进行通信的问题，请查阅所使用防火墙的相关文档。
 
 ## <a name="network-rules"></a>网络规则
 
@@ -57,6 +57,7 @@ ms.locfileid: "87873630"
 | **mcr.microsoft.com** | 用于 docker 基础映像的 Microsoft 容器注册表 |
 | **your-acr-server-name.azurecr.io** | 仅当 Azure 容器注册表位于虚拟网络后面时才需要。 在此配置中，将从 Microsoft 环境创建专用链接到订阅中的 ACR 实例。 为 Azure 机器学习工作区使用 ACR 服务器名称。 |
 | **\*。 notebooks.azure.net** | Azure 机器学习 studio 中的笔记本需要。 |
+| **graph.windows.net** | 笔记本需要 |
 
 ## <a name="python-hosts"></a>Python 主机
 
@@ -65,8 +66,8 @@ ms.locfileid: "87873630"
 | **主机名** | **用途** |
 | ---- | ---- |
 | **anaconda.com** | 用于安装默认包。 |
-| **\*。 anaconda.org** | 用于获取存储库数据。 |
-| **pypi.org** | 用于列出默认索引的依赖项（如果有），并且索引不会被用户设置覆盖。 如果覆盖索引，则还必须允许** \* pythonhosted.org**。 |
+| \*.anaconda.org | 用于获取存储库数据。 |
+| **pypi.org** | 用于列出默认索引的依赖项（如果有），索引不会被用户设置覆盖。 如果索引被覆盖，则还必须允许“\*.pythonhosted.org”。 |
 
 ## <a name="r-hosts"></a>R 主机
 
@@ -78,6 +79,15 @@ ms.locfileid: "87873630"
 | **主机名** | **用途** |
 | ---- | ---- |
 | **cloud.r-project.org** | 在安装 CRAN 包时使用。 |
+
+## <a name="azure-government-region"></a>Azure 政府区域
+
+Azure 政府区域所需的 Url。
+
+| **主机名** | **用途** |
+| ---- | ---- |
+| **usgovarizona.api.ml.azure.us** | 美国-亚利桑那地区 |
+| **usgovvirginia.api.ml.azure.us** | 美国中南部地区 |
 
 ## <a name="next-steps"></a>后续步骤
 

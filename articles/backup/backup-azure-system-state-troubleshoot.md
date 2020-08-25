@@ -4,12 +4,12 @@ description: 本文介绍如何为本地 Windows 服务器解决系统状态备�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: add54955def7df31f8e1688f56382067343616fe
-ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+ms.openlocfilehash: 56593176e705176b87cf955eb116909c1912e723
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88763382"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824264"
 ---
 # <a name="troubleshoot-system-state-backup"></a>解决系统状态备份的问题
 
@@ -37,7 +37,7 @@ ms.locfileid: "88763382"
 
 ### <a name="limitation"></a>限制
 
-- Microsoft 不建议使用系统状态恢复来恢复到不同的硬件
+- Microsoft 不建议使用系统状态恢复恢复到不同的硬件
 - 系统状态备份当前支持“本地”Windows 服务器。 此功能不适用于 Azure VM。
 
 ## <a name="prerequisites"></a>先决条件

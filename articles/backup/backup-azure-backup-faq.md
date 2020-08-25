@@ -3,12 +3,12 @@ title: 常见问题的解答
 description: '针对以下常见问题的解答：包括恢复服务保管库在内的 Azure 备份功能、能够备份的内容、原理、加密和限制。 '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 96ff7fedf0574d5eb1b7bb540ccb425f4d7e9ade
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 332b86d58e4c3f64dfbc528b4fe30399ef69d2a3
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757194"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88827386"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 
@@ -39,7 +39,7 @@ ms.locfileid: "88757194"
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>是否可以在订阅之间移动我的保管库？
 
-是。 若要移动恢复服务保管库，请参阅此[文章](backup-azure-move-recovery-services-vault.md)
+是的。 若要移动恢复服务保管库，请参阅此[文章](backup-azure-move-recovery-services-vault.md)
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>是否可以将备份数据移动到另一个保管库？
 
@@ -214,7 +214,7 @@ Azure 备份存储体系结构在这两方面都能提供最佳性能，它以�
 - 对于本地备份，使用在备份到 Azure 时提供的密码提供静态加密。
 - 对于 Azure VM，使用存储服务加密 (SSE) 对数据进行静态加密。
 
-Microsoft 不会解密任何位置的备份数据。
+Microsoft 在任何时候都不会解密备份数据。
 
 ### <a name="what-is-the-minimum-length-of-the-encryption-key-used-to-encrypt-backup-data"></a>用于加密备份数据的加密密钥的最小长度是多少？
 
@@ -222,7 +222,7 @@ Microsoft Azure 恢复服务 (MARS) 代理使用的加密密钥派生自密码�
 
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-can-microsoft-recover-the-data"></a>如果我丢失了加密密钥，会发生什么情况？ 能否恢复数据？ Microsoft 能否恢复数据？
 
-用于加密备份数据的密钥仅出现在你的站点上。 Microsoft 不会在 Azure 中保留副本，并且无权访问密钥。 如果错放密钥，Microsoft 将无法恢复备份数据。
+用于加密备份数据的密钥仅出现在你的站点上。 Microsoft 不会在 Azure 中保留副本，也不能访问密钥。 如果错放密钥，Microsoft 将无法恢复备份数据。
 
 ## <a name="next-steps"></a>后续步骤
 

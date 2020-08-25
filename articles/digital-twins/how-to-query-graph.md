@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 1fdc6b79bf86272afac038d8f91e4663514830fe
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: e7be96fcab0807ac8c6500c3b360f9380b4d2b28
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905580"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88824944"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>查询 Azure 数字孪生克隆图形
 
-本文提供了有关使用[Azure 数字孪生查询语言](concepts-query-language.md)查询克隆[图形](concepts-twins-graph.md)以获取信息的示例和更多详细信息。 使用 Azure 数字孪生[**查询 api**](how-to-use-apis-sdks.md)在图形上运行查询。
+本文提供了有关使用 [Azure 数字孪生查询语言](concepts-query-language.md) 查询克隆 [图形](concepts-twins-graph.md) 以获取信息的示例和更多详细信息。 使用 Azure 数字孪生 [**查询 api**](how-to-use-apis-sdks.md)在图形上运行查询。
 
 [!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
 
@@ -26,7 +26,7 @@ ms.locfileid: "87905580"
 
 本部分包含的示例查询阐释了查询语言结构并执行了可能的查询操作。
 
-获取[数字孪生](concepts-twins-graph.md)按属性 (包括 ID 和元数据) ：
+获取 [数字孪生](concepts-twins-graph.md) 按属性 (包括 ID 和元数据) ：
 ```sql
 SELECT  * 
 FROM DigitalTwins T  
@@ -38,7 +38,7 @@ AND T.Temperature = 70
 > [!TIP]
 > 使用元数据字段查询数字克隆的 ID `$dtId` 。
 
-你还可以通过其*标记*属性获取孪生，如[向数字孪生添加标记](how-to-use-tags.md)中所述。
+你还可以通过其 *标记* 属性获取孪生，如 [向数字孪生添加标记](how-to-use-tags.md)中所述。
 ```sql
 select * from digitaltwins where is_defined(tags.red) 
 ```
@@ -91,7 +91,7 @@ SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', ex
 
 关系将被提取到子句中的查询范围内 `FROM` 。 "经典" SQL 类型语言中的一个重要区别在于，此子句中的每个表达式 `FROM` 不是一个表; 相反， `FROM` 子句表示跨实体关系遍历，并使用 Azure 数字孪生版本编写 `JOIN` 。 
 
-回忆一下，通过 Azure 数字孪生[模型](concepts-models.md)功能，关系不能独立于孪生存在。 这意味着，Azure 数字孪生查询语言与 `JOIN` 常规 SQL 略有不同 `JOIN` ，因为此处的关系不能单独查询，必须绑定到一个完全不同的位置。
+回忆一下，通过 Azure 数字孪生 [模型](concepts-models.md) 功能，关系不能独立于孪生存在。 这意味着，Azure 数字孪生查询语言与 `JOIN` 常规 SQL 略有不同 `JOIN` ，因为此处的关系不能单独查询，必须绑定到一个完全不同的位置。
 为了引入这种差异， `RELATED` 子句中使用关键字 `JOIN` 来引用克隆的一组关系。 
 
 以下部分提供了此类外观的几个示例。
@@ -103,7 +103,7 @@ SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', ex
 
 若要获取包含关系的数据集，请使用单个 `FROM` 语句，后跟 N `JOIN` 个语句，其中的 `JOIN` 语句表示上一个或语句的结果上的关系 `FROM` `JOIN` 。
 
-下面是一个基于关系的示例查询。 此代码段选择*ID*属性为 "ABC" 的所有数字孪生，并通过*包含*关系与这些数字孪生相关的所有数字孪生。 
+下面是一个基于关系的示例查询。 此代码段选择 *ID* 属性为 "ABC" 的所有数字孪生，并通过 *包含* 关系与这些数字孪生相关的所有数字孪生。 
 
 ```sql
 SELECT T, CT
@@ -129,7 +129,7 @@ WHERE T.$dtId = 'ABC'
 AND R.reportedCondition = 'clean'
 ```
 
-在上面的示例中，请注意， *reportedCondition*是*servicedBy*关系本身的属性， (不属于具有*servicedBy*关系) 的某些数字克隆。
+在上面的示例中，请注意， *reportedCondition* 是 *servicedBy* 关系本身的属性， (不属于具有 *servicedBy* 关系) 的某些数字克隆。
 
 ### <a name="query-with-multiple-joins"></a>具有多个联接的查询
 
@@ -149,7 +149,7 @@ AND Room.$dtId IN [‘room1’, ‘room2’]
 
 ## <a name="run-queries-with-an-api-call"></a>使用 API 调用运行查询
 
-一旦您决定了查询字符串，就可以通过调用**查询 API**来执行它。
+一旦您决定了查询字符串，就可以通过调用 **查询 API**来执行它。
 下面的代码段演示了从客户端应用程序进行的此调用：
 
 ```csharp
@@ -187,7 +187,7 @@ catch (RequestFailedException e)
 
 在预览期间，使用还有其他限制 `JOIN` 。
 * 语句内不支持子查询 `FROM` 。
-* `OUTER JOIN`不支持语义，这意味着，如果关系的排名为零，则将从输出结果集中消除整个 "行"。
+* `OUTER JOIN` 不支持语义，这意味着，如果关系的排名为零，则将从输出结果集中消除整个 "行"。
 * 预览期间，图形遍历深度限制为每个查询的五个 `JOIN` 级别。
 * 操作的源 `JOIN` 受到限制：查询必须声明查询开始处的孪生。
 
@@ -197,7 +197,7 @@ catch (RequestFailedException e)
 
 * 在模型设计阶段，请考虑查询模式。 尝试确保在单个查询中需要回答的关系作为单级关系建模。
 * 设计属性的方式可避免图形遍历中的大型结果集。
-* 您可以通过生成孪生数组并使用运算符查询来大幅减少所需的查询数 `IN` 。 例如，假设*建筑物*包含*楼层*，*地面*包含*房间*。 若要在生成中搜索热点，可以执行以下操作：
+* 您可以通过生成孪生数组并使用运算符查询来大幅减少所需的查询数 `IN` 。 例如，假设 *建筑物* 包含 *楼层* ， *地面* 包含 *房间*。 若要在生成中搜索热点，可以执行以下操作：
 
     1. 基于关系查找建筑物中的地面 `contains`
         ```sql
@@ -206,7 +206,7 @@ catch (RequestFailedException e)
         JOIN Floor RELATED Building.contains
         WHERE Building.$dtId = @buildingId
         ``` 
-    2. 若要查找房间，而不是逐个考虑并运行 `JOIN` 查询来查找每个房间的房间，可以在下面的查询中使用名为*Floor*的建筑物 (中的楼层集合进行查询) 。
+    2. 若要查找房间，而不是逐个考虑并运行 `JOIN` 查询来查找每个房间的房间，可以在下面的查询中使用名为 *Floor* 的建筑物 (中的楼层集合进行查询) 。
 
         在客户端应用中：
         ```csharp
@@ -223,7 +223,6 @@ catch (RequestFailedException e)
         ```
 * 属性名称和值区分大小写，因此请注意使用模型中定义的确切名称。 如果属性名称拼写错误或大小写不正确，则结果集为空，并且不返回任何错误。
 
-
 ## <a name="next-steps"></a>后续步骤
 
-了解有关[Azure 数字孪生 api 和 sdk](how-to-use-apis-sdks.md)的详细信息，包括用于运行本文中查询的查询 API。
+了解有关 [Azure 数字孪生 api 和 sdk](how-to-use-apis-sdks.md)的详细信息，包括用于运行本文中查询的查询 API。
