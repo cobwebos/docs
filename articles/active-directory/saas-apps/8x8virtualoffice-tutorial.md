@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 8x8 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 8x8 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b34a6edf-e745-4aec-b0b2-7337473d64c5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c81e63a073882dea3a7aea32d5e9f4d3d5c48f7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 52b45bf7457a81b605df91e63a7c6ad539309dd8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87018580"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88538648"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>教程：Azure Active Directory 单一登录 (SSO) 与 8x8 的集成
 
@@ -48,7 +44,7 @@ ms.locfileid: "87018580"
 
 * 8x8 支持 **SP 和 IDP** 发起的 SSO
 
-* 配置 8x8 后，可以强制实施会话控制，从而实时保护组织的敏感数据免于外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
+* 配置 8x8 后，可以强制实施会话控制，从而实时防止组织的敏感数据外泄和渗透。 会话控制从条件访问扩展而来。 [了解如何通过 Microsoft Cloud App Security 强制实施会话控制](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app)。
 
 > [!NOTE]
 > 此应用程序的标识符是一个固定字符串值，因此只能在一个租户中配置一个实例。
@@ -64,7 +60,7 @@ ms.locfileid: "87018580"
 1. 在“从库中添加”部分的搜索框中，键入 **8x8**。
 1. 在结果面板中选择“8x8”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-8x8"></a>配置并测试 8x8 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-8x8"></a>配置并测试 8x8 的 Azure AD SSO
 
 使用名为 **B.Simon** 的测试用户配置并测试 8x8 的 Azure AD SSO。 若要正常使用 SSO，需要在 Azure AD 用户与 8x8 中的相关用户之间建立链接关系。
 
@@ -139,7 +135,15 @@ ms.locfileid: "87018580"
 
 ### <a name="configure-8x8-configuration-manager"></a>配置 8x8 Configuration Manager
 
-1. 登录到 8x8 [Configuration Manager](https://vo-cm.8x8.com/)。
+1. 若要在 8x8 中自动执行配置，需要通过单击“安装扩展”来安装“我的应用安全登录浏览器扩展” 。
+
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+1. 将扩展添加到浏览器后，单击“设置 8x8”会将你定向到 8x8 应用程序。 在此处，提供管理员凭据以登录到 8x8。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-6。
+
+    ![设置配置](common/setup-sso.png)
+
+1. 如果要手动设置 8x8，请以管理员身份登录到 8x8 [Configuration Manager](https://vo-cm.8x8.com/)。
 
 1. 在主页中，单击“标识管理”。
 

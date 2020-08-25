@@ -11,13 +11,12 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4db0956b1a2dec7626a24de2939941c2384d6a8a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: e44de0058af0210ecb42eaa4be8b55d543d66103
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88080756"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212817"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 
@@ -32,7 +31,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 > * 将本地应用程序添加到 Azure AD 租户
 > * 验证测试用户是否可以使用 Azure AD 帐户登录到该应用程序
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="prerequisites"></a>先决条件
 
 若要将本地应用程序添加到 Azure AD，需要：
 
@@ -235,6 +234,10 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 
 有关故障排除信息，请参阅[根据错误消息排查应用程序代理问题](application-proxy-troubleshoot.md)。
 
+## <a name="clean-up-resources"></a>清理资源
+
+不再需要时，请删除本教程中创建的资源。
+
 ## <a name="next-steps"></a>后续步骤
 
 在本教程中，你已准备了要与应用程序代理配合使用的本地环境，然后安装并注册了应用程序代理连接器。 接下来，你已将一个应用程序添加到 Azure AD 租户。 你已验证某个用户是否可以使用 Azure AD 帐户登录到该应用程序。
@@ -250,4 +253,4 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 现在可以配置应用程序的单一登录。 使用以下链接选择单一登录方法，并查找单一登录教程。
 
 > [!div class="nextstepaction"]
-> [配置单一登录](what-is-single-sign-on.md#choosing-a-single-sign-on-method)
+> [配置单一登录](sso-options.md#choosing-a-single-sign-on-method)

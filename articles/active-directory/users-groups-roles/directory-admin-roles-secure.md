@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d303f8a04a9159eeb4dc5e78ef09b57f5a966c72
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: dd189db10b599c0bc6bd5a3dbae2b1bc21b53b0c
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88691354"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795909"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>确保 Azure AD 中混合部署和云部署的特权访问安全性
 
@@ -37,7 +37,7 @@ ms.locfileid: "88691354"
 * 流程、管理做法和知识管理
 * 技术组件，例如主机防御、帐户保护和标识管理
 
-在你关注的 Microsoft 服务中以一种管理加报告的方式保护你的特权访问。 如果你有本地管理员帐户，请参阅[保护特权访问](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)中提供的有关 Active Directory 中的本地和混合特权访问的指导。
+在你关注的 Microsoft 服务中以一种管理加报告的方式保护你的特权访问。 如果你有本地管理员帐户，请参阅[保护特权访问](/windows-server/identity/securing-privileged-access/securing-privileged-access)中提供的有关 Active Directory 中的本地和混合特权访问的指导。
 
 > [!NOTE]
 > 本文中的指南主要讲述 Azure Active Directory Premium 计划 P1 和 P2 中包括的 Azure Active Directory 功能。 Azure Active Directory Premium P2 包括在 EMS E5 套件和 Microsoft 365 E5 套件中。 本指南假定你的组织已经为你的用户购买 Azure AD Premium P2 许可证。 如果没有这些许可证，某些指南内容可能不适用于你的组织。 此外，在本文中，"全局管理员" (或 "全局管理员" 这一术语) 意味着与 "公司管理员" 或 "租户管理员" 相同。
@@ -93,7 +93,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 * Exchange 管理员
 * SharePoint 管理员
 
-如果组织中没有 Azure AD Privileged Identity Management，可以使用 [PowerShell API](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)。 请从全局管理员角色开始，因为全局管理员在组织订阅的所有云服务中拥有相同的权限。 无论这些角色是在哪个位置分配的（在 Microsoft 365 管理中心分配、在 Azure 门户分配或者通过 Microsoft PowerShell 的 Azure AD 模块分配），都会授予这些权限。
+如果组织中没有 Azure AD Privileged Identity Management，可以使用 [PowerShell API](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)。 请从全局管理员角色开始，因为全局管理员在组织订阅的所有云服务中拥有相同的权限。 无论这些角色是在哪个位置分配的（在 Microsoft 365 管理中心分配、在 Azure 门户分配或者通过 Microsoft PowerShell 的 Azure AD 模块分配），都会授予这些权限。
 
 删除这些角色不再需要的任何帐户。 然后，对分配给管理员角色的剩余帐户进行分类：
 
@@ -130,7 +130,7 @@ Azure AD Privileged Identity Management 包括在 Azure AD Premium P2 或 EMS E5
 
 * 标识具有管理角色的用户及其可以在其中进行管理的服务。
 * 使用 Azure AD PIM 找出组织中的哪些用户对 Azure AD 拥有管理访问权限。
-* 除了在 Azure AD 中定义的角色，Office 365 还带有一组可以分配给组织中用户的管理员角色。 每个管理员角色都映射到常用业务功能，为组织中的人员提供在 [Microsoft 365 管理中心](https://admin.microsoft.com)执行特定任务的权限。 通过 Microsoft 365 管理中心找出组织中哪些用户可以通过管理员身份来访问 Office 365，包括通过不在 Azure AD 中管理的角色进行访问。 有关详细信息，请参阅[关于 Office 365 管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)和 [Office 365 安全做法](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)。
+* 除了在 Azure AD 中定义的角色，Office 365 还带有一组可以分配给组织中用户的管理员角色。 每个管理员角色都映射到常用业务功能，为组织中的人员提供在 [Microsoft 365 管理中心](https://admin.microsoft.com)执行特定任务的权限。 通过 Microsoft 365 管理中心找出组织中哪些用户可以通过管理员身份来访问 Office 365，包括通过不在 Azure AD 中管理的角色进行访问。 有关详细信息，请参阅[关于 Office 365 管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)和 [Office 365 安全做法](/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)。
 * 在组织所依赖的服务（例如 Azure、Intune 或 Dynamics 365）中进行盘点。
 * 确保用于管理目的的帐户：
 
@@ -169,11 +169,11 @@ Azure AD 建议你要求所有用户执行多重身份验证 (MFA)。 请务必�
 
 * 对组织中的所有用户启用[使用条件访问策略的 MFA](../authentication/howto-mfa-getstarted.md)。
 
-如果使用 Windows Hello for Business，则可通过 Windows Hello 登录体验来满足 MFA 要求。 有关详细信息，请参阅 [Windows Hello](https://docs.microsoft.com/windows/uwp/security/microsoft-passport)。
+如果使用 Windows Hello for Business，则可通过 Windows Hello 登录体验来满足 MFA 要求。 有关详细信息，请参阅 [Windows Hello](/windows/uwp/security/microsoft-passport)。
 
 #### <a name="configure-identity-protection"></a>配置“标识保护”
 
-Azure AD Identity Protection 是一种基于算法的监视和报告工具，用于检测影响组织标识的潜在漏洞。 可以配置自动响应，以便对那些检测到的可疑活动进行响应，并采取相应的解决措施。 有关详细信息，请参阅 [Azure Active Directory 标识保护](../active-directory-identityprotection.md)。
+Azure AD Identity Protection 是一种基于算法的监视和报告工具，用于检测影响组织标识的潜在漏洞。 可以配置自动响应，以便对那些检测到的可疑活动进行响应，并采取相应的解决措施。 有关详细信息，请参阅 [Azure Active Directory 标识保护](../identity-protection/overview-identity-protection.md)。
 
 #### <a name="obtain-your-office-365-secure-score-if-using-office-365"></a>获取 Office 365 安全评分（如果使用 Office 365）
 
@@ -193,7 +193,7 @@ Azure AD Identity Protection 是一种基于算法的监视和报告工具，用
 
 #### <a name="secure-on-premises-privileged-administrative-accounts-if-not-already-done"></a>如果尚未这样做，请确保本地特权管理帐户的安全性
 
-如果 Azure Active Directory 组织与本地 Active Directory 同步，请遵循[安全特权访问路线图](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)中的指导：此阶段包括：
+如果 Azure Active Directory 组织与本地 Active Directory 同步，请遵循[安全特权访问路线图](/windows-server/identity/securing-privileged-access/securing-privileged-access)中的指导：此阶段包括：
 
 * 为需要执行本地管理任务的用户创建单独的管理员帐户
 * 为 Active Directory 管理员部署特权访问工作站
@@ -211,13 +211,13 @@ Azure AD Identity Protection 是一种基于算法的监视和报告工具，用
 
 #### <a name="monitor-azure-activity"></a>监视 Azure 活动
 
-Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供的信息涉及谁创建、更新和删除了什么资源，以及这些事件的发生时间。 有关详细信息，请参阅[审核和接收关于 Azure 订阅中重要操作的通知](../../azure-monitor/platform/quick-audit-notify-action-subscription.md)。
+Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供的信息涉及谁创建、更新和删除了什么资源，以及这些事件的发生时间。 有关详细信息，请参阅[审核和接收关于 Azure 订阅中重要操作的通知](../../azure-monitor/platform/alerts-activity-log.md)。
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>组织通过 Azure AD 管理其他云应用的访问权限时所需的其他步骤
 
 #### <a name="configure-conditional-access-policies"></a>配置条件访问策略
 
-为本地应用程序和托管在云中的应用程序准备条件访问策略。 如果你有加入了用户工作区的设备，请参阅[使用 Azure Active Directory 设备注册设置本地条件访问](../active-directory-device-registration-on-premises-setup.md)中提供的详细信息。
+为本地应用程序和托管在云中的应用程序准备条件访问策略。 如果你有加入了用户工作区的设备，请参阅[使用 Azure Active Directory 设备注册设置本地条件访问](../devices/overview.md)中提供的详细信息。
 
 ## <a name="stage-3-take-control-of-admin-activity"></a>阶段 3：控制管理活动
 
@@ -255,7 +255,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 * 模拟攻击
 * 凭据盗窃攻击，例如按键日志记录、哈希传递和票证传递
 
-部署特权访问工作站可以降低管理员在未经过强化的桌面环境中输入凭据时遇到的风险。 有关详细信息，请参阅[特权访问工作站](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)。
+部署特权访问工作站可以降低管理员在未经过强化的桌面环境中输入凭据时遇到的风险。 有关详细信息，请参阅[特权访问工作站](/windows-server/identity/securing-privileged-access/privileged-access-workstations)。
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>查看美国国家标准与技术协会提供的有关如何处理事件的建议
 
@@ -279,7 +279,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>确定是否向基于密码的登录协议公开（如果使用 Exchange Online）
 
-建议你识别每一位在其凭据泄漏的情况下可能会对组织造成灾难性后果的用户。 针对这些用户，请制定严格的身份验证要求，并使用 Azure AD 条件访问来防止这些用户使用用户名和密码登录其电子邮件。 可以[使用条件访问来阻止旧式身份验证](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)，并可以通过 Exchange Online [阻止基本身份验证](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online)。
+建议你识别每一位在其凭据泄漏的情况下可能会对组织造成灾难性后果的用户。 针对这些用户，请制定严格的身份验证要求，并使用 Azure AD 条件访问来防止这些用户使用用户名和密码登录其电子邮件。 可以[使用条件访问来阻止旧式身份验证](../conditional-access/block-legacy-authentication.md)，并可以通过 Exchange Online [阻止基本身份验证](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online)。
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>针对 Office 365 角色完成角色审核评估（如果使用 Office 365）
 
@@ -291,7 +291,7 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 #### <a name="continue-to-secure-on-premises-privileged-administrative-accounts"></a>继续保护本地特权管理帐户
 
-如果 Azure Active Directory 连接到本地 Active Directory，则请遵循[安全特权访问路线图](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)：阶段 2 中的指南。 在此阶段，你将：
+如果 Azure Active Directory 连接到本地 Active Directory，则请遵循[安全特权访问路线图](/windows-server/identity/securing-privileged-access/securing-privileged-access)：阶段 2 中的指南。 在此阶段，你将：
 
 * 为所有管理员部署特权访问工作站
 * 要求 MFA
@@ -314,11 +314,11 @@ Azure 活动日志提供 Azure 中订阅级别事件的历史记录。 它提供
 
 #### <a name="implement-pim-for-azure-ad-administrator-roles"></a>为 Azure AD 管理员角色实施 PIM
 
-将 Privileged Identity Management 与 Azure AD 管理员角色配合使用，对 Azure 资源的访问权限进行管理、控制和监视。 可以缩短特权的暴露时间并通过报告和警报增加对使用情况的可见性，从而使用 PIM 提供保护。 有关详细信息，请参阅[使用 Privileged Identity Management 管理对 Azure 资源的 RBAC 访问](../../role-based-access-control/pim-azure-resource.md)。
+将 Privileged Identity Management 与 Azure AD 管理员角色配合使用，对 Azure 资源的访问权限进行管理、控制和监视。 可以缩短特权的暴露时间并通过报告和警报增加对使用情况的可见性，从而使用 PIM 提供保护。 有关详细信息，请参阅[使用 Privileged Identity Management 管理对 Azure 资源的 RBAC 访问](../../role-based-access-control/best-practices.md)。
 
 #### <a name="use-azure-log-integrations-to-send-relevant-azure-logs-to-your-siem-systems"></a>使用 Azure 日志集成将相关的 Azure 日志发送到 SIEM 系统
 
-可以通过 azure 日志集成将 Azure 资源中的原始日志集成到组织的现有安全信息和事件管理 (SIEM) 系统。 [Azure 日志集成](../../security/fundamentals/azure-log-integration-overview.md)从 Windows 事件查看器日志收集 Windows 事件，并从以下位置收集 Azure 资源：
+可以通过 azure 日志集成将 Azure 资源中的原始日志集成到组织的现有安全信息和事件管理 (SIEM) 系统。 [Azure 日志集成](/previous-versions/azure/security/fundamentals/azure-log-integration-overview)从 Windows 事件查看器日志收集 Windows 事件，并从以下位置收集 Azure 资源：
 
 * Azure 活动日志
 * Azure 安全中心警报
@@ -332,7 +332,7 @@ Azure AD 允许在 Dropbox、Salesforce 和 ServiceNow 等云应用中自动创�
 
 #### <a name="integrate-information-protection"></a>集成信息保护
 
-Microsoft Cloud App Security 允许根据 Azure 信息保护分类标签来调查文件并设置策略，从而增加云数据的可见性并加强对此类数据的控制。 对云中的文件进行扫描和分类，并应用 Azure 信息保护标签。 有关详细信息，请参阅 [Azure 信息保护集成](https://docs.microsoft.com/cloud-app-security/azip-integration)。
+Microsoft Cloud App Security 允许根据 Azure 信息保护分类标签来调查文件并设置策略，从而增加云数据的可见性并加强对此类数据的控制。 对云中的文件进行扫描和分类，并应用 Azure 信息保护标签。 有关详细信息，请参阅 [Azure 信息保护集成](/cloud-app-security/azip-integration)。
 
 #### <a name="configure-conditional-access"></a>配置条件访问
 
@@ -340,7 +340,7 @@ Microsoft Cloud App Security 允许根据 Azure 信息保护分类标签来调�
 
 #### <a name="monitor-activity-in-connected-cloud-apps"></a>监视连接的云应用中的活动
 
-建议使用 [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) 来确保用户访问在连接的应用程序中也受保护。 此功能可以保护企业对云应用的访问并保护管理员帐户，使你可以：
+建议使用 [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) 来确保用户访问在连接的应用程序中也受保护。 此功能可以保护企业对云应用的访问并保护管理员帐户，使你可以：
 
 * 扩展对云应用的可见性和控制
 * 针对访问权限、活动和数据共享创建策略
@@ -348,7 +348,7 @@ Microsoft Cloud App Security 允许根据 Azure 信息保护分类标签来调�
 * 防止数据泄漏
 * 将风险降至最低并自动实施威胁防护和策略
 
-Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，以便集中监视 Office 365 警报和活动。 它还可以在服务器上运行，从 Cloud App Security 拉取警报和活动并将其流式传输到 SIEM 服务器中。 有关详细信息，请参阅 [SIEM 集成](https://docs.microsoft.com/cloud-app-security/siem)。
+Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，以便集中监视 Office 365 警报和活动。 它还可以在服务器上运行，从 Cloud App Security 拉取警报和活动并将其流式传输到 SIEM 服务器中。 有关详细信息，请参阅 [SIEM 集成](/cloud-app-security/siem)。
 
 ## <a name="stage-4-continue-building-defenses"></a>阶段 4：持续构建防御
 
@@ -385,7 +385,7 @@ Cloud App Security SIEM 代理将 Cloud App Security 与 SIEM 服务器集成，
 
 #### <a name="review-users-who-have-administration-of-azure-ad-joined-devices"></a>审核那些可以管理已加入 Azure AD 的设备的用户
 
-有关详细信息，请参阅[如何配置联接到混合 Azure Active Directory 的设备](../device-management-hybrid-azuread-joined-devices-setup.md)。
+有关详细信息，请参阅[如何配置联接到混合 Azure Active Directory 的设备](../devices/hybrid-azuread-join-plan.md)。
 
 #### <a name="review-members-of-built-in-office-365-admin-roles"></a>审核[内置 Office 365 管理员角色](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)的成员
 如果不使用 Office 365，请跳过此步骤。

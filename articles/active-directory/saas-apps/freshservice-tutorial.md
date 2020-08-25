@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 单一登录 (SSO) 与 Freshservice 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Freshservice 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3dd22b1f-445d-45c6-8eda-30207eb9a1a8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/29/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06b52ec552434f74c56333d1afe00cde2a285418
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 9e53881d5b28b61cd220b14e02c411db53d19d36
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905391"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550990"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshservice"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Freshservice 集成
 
@@ -60,7 +56,7 @@ ms.locfileid: "87905391"
 1. 在“从库中添加”部分的搜索框中，键入“Freshservice” 。
 1. 从结果面板中选择“Freshservice”，然后添加该应用。 在该应用添加到租户时等待几秒钟。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-freshservice"></a>配置并测试 Freshservice 的 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-sso-for-freshservice"></a>配置并测试 Freshservice 的 Azure AD SSO
 
 使用名为“B.Simon”的测试用户为 Freshservice 配置和测试 Azure AD SSO。 若要使 SSO 有效，需要在 Azure AD 用户与 Freshservice 相关用户之间建立关联。
 
@@ -132,7 +128,15 @@ ms.locfileid: "87905391"
 
 ## <a name="configure-freshservice-sso"></a>配置 Freshservice SSO
 
-1. 打开新的 Web 浏览器窗口，以管理员身份登录到 Freshservice 公司站点。
+1. 若要在“Freshservice”中自动执行配置，需要安装“我的应用安全登录浏览器扩展”，方法是单击“安装扩展”********。
+
+    ![我的应用扩展](common/install-myappssecure-extension.png)
+
+1. 将扩展添加到浏览器后，单击“设置 Freshservice”会将你定向到 Freshservice 应用程序。 在这里，提供管理员凭据登录到 Freshservice。 浏览器扩展会自动配置该应用程序，并自动执行步骤 3-6。
+
+    ![设置配置](common/setup-sso.png)
+
+1. 如果想要手动设置 Freshservice，请以管理员身份登录到 Freshservice 公司网站。
 
 1. 在左侧菜单中，单击“管理”，然后在“常规设置”中选择“支持人员安全性”。
 

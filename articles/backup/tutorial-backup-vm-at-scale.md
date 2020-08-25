@@ -4,12 +4,12 @@ description: 在本教程中，了解如何创建恢复服务保管库、定义�
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 7a8849bba51939a0c40cba81925e1b4b4a6e3826
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ed91105488b812131d3a908c509998c955cec299
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372546"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263412"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>使用 Azure 门户备份多个虚拟机
 
@@ -156,7 +156,7 @@ ms.locfileid: "87372546"
 
 1. 在“myRecoveryServicesVault”仪表板上，选择“备份项”下的“3”，打开“备份项”菜单  。
 
-    ![备份项](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
+    ![打开“备份项”菜单](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
 
 1. 在“备份项”菜单上，选择“Azure 虚拟机”，打开与保管库关联的虚拟机列表 。
 
@@ -185,7 +185,7 @@ ms.locfileid: "87372546"
 
 1. 当保管库中没有其他项时，请选择“删除”。
 
-    ![选择“停止备份”以删除保管库](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
+    ![选择“删除”](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
 
     删除此保管库后，将返回恢复服务保管库列表。
 

@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 05/18/2020
+ms.date: 08/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2521a579538b272ac4990c3d390fb1aa6f2e58a0
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: f376a1f3601c976ff1efdaee1da6181510a9cf64
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876523"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234935"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>快速入门：使用 Python SDK 和 Azure Cosmos DB 构建 Cassandra 应用
 
@@ -44,7 +44,7 @@ ms.locfileid: "87876523"
 
 ## <a name="clone-the-sample-application"></a>克隆示例应用程序
 
-现在从 GitHub 克隆 Cassandra API 应用，设置连接字符串，并运行应用。 会看到以编程方式处理数据是多么容易。 
+现在从 GitHub 克隆 Cassandra API 应用，设置连接字符串，并运行应用。 你会看到以编程方式处理数据是多么容易。 
 
 1. 打开命令提示符。 创建名为 `git-samples` 的新文件夹。 然后，关闭命令提示符。
 
@@ -68,68 +68,29 @@ ms.locfileid: "87876523"
 
 此步骤是可选的。 如果有意了解如何通过代码创建数据库资源，可以查看以下代码片段。 这些代码片段全部摘自 pyquickstart.py 文件。 否则，可以直接跳转到[更新连接字符串](#update-your-connection-string)。 
 
-* 用户名和密码值是使用 Azure 门户中的连接字符串页设置的。 `path\to\cert` 提供 X509 证书的路径。 
+* 使用从 Azure 门户检索的 `contactPoint` 和 `port` 信息对 `cluster` 进行初始化。 然后，`cluster` 使用 `connect()` 方法连接到 Azure Cosmos DB Cassandra API。 授权连接是通过使用用户名、密码和默认证书或显式证书（如果你在配置文件中提供了一个）来建立的。
 
-   ```python
-    ssl_opts = {
-            'ca_certs': 'path\to\cert',
-            'ssl_version': ssl.PROTOCOL_TLSv1_2
-            }
-    auth_provider = PlainTextAuthProvider( username=cfg.config['username'], password=cfg.config['password'])
-    cluster = Cluster([cfg.config['contactPoint']], port = cfg.config['port'], auth_provider=auth_provider, ssl_options=ssl_opts)
-    session = cluster.connect()
-   
-   ```
-
-* 使用 contactPoint 信息初始化 `cluster`。 从 Azure 门户中检索 contactPoint。
-
-    ```python
-   cluster = Cluster([cfg.config['contactPoint']], port = cfg.config['port'], auth_provider=auth_provider)
-    ```
-
-* `cluster` 连接到 Azure Cosmos DB Cassandra API。
-
-    ```python
-    session = cluster.connect()
-    ```
+  :::code language="python" source="~/cosmosdb-cassandra-python-sample/pyquickstart.py" id="authenticateAndConnect":::
 
 * 创建新的键空间。
 
-    ```python
-   session.execute('CREATE KEYSPACE IF NOT EXISTS uprofile WITH replication = {\'class\': \'NetworkTopologyStrategy\', \'datacenter1\' : \'1\' }')
-    ```
+  :::code language="python" source="~/cosmosdb-cassandra-python-sample/pyquickstart.py" id="createKeyspace":::
 
 * 创建新表。
 
-   ```
-   session.execute('CREATE TABLE IF NOT EXISTS uprofile.user (user_id int PRIMARY KEY, user_name text, user_bcity text)');
-   ```
+  :::code language="python" source="~/cosmosdb-cassandra-python-sample/pyquickstart.py" id="createTable":::
 
 * 插入键/值实体。
 
-    ```Python
-    insert_data = session.prepare("INSERT INTO  uprofile.user  (user_id, user_name , user_bcity) VALUES (?,?,?)")
-    session.execute(insert_data, [1,'Lybkov','Seattle'])
-    session.execute(insert_data, [2,'Doniv','Dubai'])
-    session.execute(insert_data, [3,'Keviv','Chennai'])
-    session.execute(insert_data, [4,'Ehtevs','Pune'])
-    session.execute(insert_data, [5,'Dnivog','Belgaum'])
-    ....
-    
-    ```
+  :::code language="python" source="~/cosmosdb-cassandra-python-sample/pyquickstart.py" id="insertData":::
 
 * 用于获取所有键值的查询。
 
-    ```Python
-    rows = session.execute('SELECT * FROM uprofile.user')
-    ```  
+  :::code language="python" source="~/cosmosdb-cassandra-python-sample/pyquickstart.py" id="queryAllItems":::
     
 * 用于获取键-值的查询。
 
-    ```Python
-    
-    rows = session.execute('SELECT * FROM uprofile.user where user_id=1')
-    ```  
+  :::code language="python" source="~/cosmosdb-cassandra-python-sample/pyquickstart.py" id="queryByID":::
 
 ## <a name="update-your-connection-string"></a>更新连接字符串
 

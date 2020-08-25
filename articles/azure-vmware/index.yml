@@ -1,26 +1,26 @@
 ### YamlMime:Landing
-title: Azure VMware 解决方案 (AVS) 文档
-summary: 了解如何使用 Azure VMware 解决方案 (AVS) 将 VMware 私有云部署到 Azure
+title: Azure VMware 解决方案文档
+summary: 了解如何使用 Azure VMware 解决方案将 VMware 私有云部署到 Azure
 metadata:
-  title: Azure VMware 解决方案 (AVS) 文档
-  description: 了解如何使用 Azure VMware 解决方案 (AVS) 将 VMware 私有云部署到 Azure
+  title: Azure VMware 解决方案文档
+  description: 了解如何使用 Azure VMware 解决方案将 VMware 私有云部署到 Azure
   ms.service: azure-vmware
   ms.topic: landing-page
   author: dikamath
   ms.author: dikamath
   ms.date: 05/04/2020
-  ms.openlocfilehash: 2ae8f6bc5257dc4d7383516201912c504c4d6038
-  ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+  ms.openlocfilehash: aad6bc60066d76c96dd38fa3ba1e94069bb9e25a
+  ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 05/04/2020
-  ms.locfileid: "82739444"
+  ms.lasthandoff: 08/22/2020
+  ms.locfileid: "88752119"
 landingContent:
-- title: 关于 Azure VMware 解决方案 (AVS)
+- title: 关于 Azure VMware 解决方案
   linkLists:
   - linkListType: overview
     links:
-    - text: 什么是 Azure VMware 解决方案 (AVS)？
+    - text: 什么是 Azure VMware 解决方案？
       url: introduction.md
   - linkListType: get-started
     links:

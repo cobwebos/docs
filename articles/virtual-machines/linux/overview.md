@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c24989c73aa4343fea2b719a5b1e8c63c06af010
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 0d4c5a33f52799ea4da9c7c23fbace94e800660b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835623"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589463"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Azure 中的 Linux 虚拟机
 
@@ -51,6 +51,10 @@ Azure 虚拟机 (VM) 是 Azure 提供的多种[可缩放按需分配计算资源
 | Azure PowerShell |使用 [Get-AzLocation](/powershell/module/az.resources/get-azlocation) 命令。 |
 | REST API |使用[列出位置](/rest/api/resources/subscriptions)操作。 |
 | Azure CLI |使用 [az account list-locations](/cli/azure/account?view=azure-cli-latest) 操作。 |
+
+### <a name="singapore-data-residency"></a>新加坡数据驻留
+
+在 Azure 中，将客户数据存储到一个区域的功能目前仅适用于亚太地域的东南亚区域（新加坡）。 对于其他所有区域，客户数据存储在以下地域。 有关详细信息，请参阅[信任中心](https://azuredatacentermap.azurewebsites.net/)。
 
 ## <a name="availability"></a>可用性
 Azure 宣布了行业领先的单实例虚拟机服务级别协议：可用性达到 99.9%（前提是为所有磁盘使用高级存储部署 VM）。  为了使部署符合标准 99.95% 的 VM 服务级别协议，仍需要在可用性集中部署两个或更多个运行工作负荷的 VM。 可用性集可确保 VM 分布在 Azure 数据中心内的多个容错域，并使用不同的维护时段部署到主机。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 说明了 Azure 作为整体的保证可用性。

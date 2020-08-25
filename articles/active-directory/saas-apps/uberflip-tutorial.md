@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Uberflip 的集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Uberflip 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 754b1f5b-6694-4fd6-9e1e-9fad769c64db
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: d20c05e6ec5a413b81ede9cb4906de2595967115
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8936c2150c32a22877f9b56736ecc4b8f3424b32
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80048476"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88533123"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uberflip"></a>教程：Azure Active Directory 与 Uberflip 的集成
 
@@ -153,7 +149,7 @@ Uberflip 支持以下功能：
 
     1. 在“名称”框中，输入“BSimon”   。
   
-    1. 在“用户名”框中，输入“BSimon\@\<yourcompanydomain>.\<extension>”。 例如，BSimon\@contoso.com。
+    1. 在“用户名”框中，输入 BSimon\@\<yourcompanydomain>.\<extension> 。 例如，BSimon\@contoso.com。
 
     1. 选中“显示密码”复选框，然后记下“密码”框中显示的值。  
 

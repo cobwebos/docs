@@ -2,25 +2,21 @@
 title: 教程：Azure Active Directory 与 Chatwork 的单一登录 (SSO) 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 与 Chatwork 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0982ee1d-7ae2-415b-9e47-cfc72e1885ca
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 368b87a4abd5b55a807f7184c3a56876169b2517
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: fdf9e16e5578f794d01671d391f3568eae6555cc
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293264"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586233"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-chatwork"></a>教程：Azure Active Directory 单一登录 (SSO) 与 Chatwork 集成
 
@@ -87,7 +83,9 @@ ms.locfileid: "87293264"
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://www.chatwork.com/s/<TENANT_NAME>`
 
     > [!NOTE]
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 请联系 [Chatwork 客户端支持团队](mailto:info@support.chatwork.com)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 此值不是真实值。 使用在配置 Chatwork SSO 之后设置的专用登录 URL 更新该值。
+
+1. Chatwork 应用程序期望“唯一用户标识符”属性的值与在 Chatwork 中注册的电子邮件地址相匹配。 默认情况下，该属性映射到 user.principalname。 如果 principalname 与电子邮件地址不同，请将唯一用户标识符映射到 user.mail 。
 
 1. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，找到“证书(Base64)”，选择“下载”以下载该证书并将其保存到计算机上   。
 
@@ -129,11 +127,11 @@ ms.locfileid: "87293264"
 
 ## <a name="configure-chatwork-sso"></a>配置 Chatwork SSO
 
-若要在 Chatwork 端配置单一登录，需要将下载的“证书(Base64)”以及从 Azure 门户复制的相应 URL 发送给 [Chatwork 支持团队](mailto:info@support.chatwork.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Chatwork 端配置单一登录，请阅读 [Chatwork 管理员指南](https://download.chatwork.com/Chatwork_AdminGuide.pdf)并配置 Chatwork 设置。
 
 ### <a name="create-chatwork-test-user"></a>创建 Chatwork 测试用户
 
-在本部分中，你将在 Chatwork 中创建名为 B.Simon 的用户。 请与  [Chatwork 支持团队](mailto:info@support.chatwork.com)协作，将用户添加到 Chatwork 平台中。 使用单一登录前，必须先创建并激活用户。
+在本部分中，你将在 Chatwork 中创建名为 B.Simon 的用户。 访问 [Chatwork 管理员指南](https://download.chatwork.com/Chatwork_AdminGuide.pdf)并在 Chatwork 平台中添加用户。
 
 ## <a name="test-sso"></a>测试 SSO 
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Go 进行连接 - Azure Database for MySQL
+title: 快速入门：使用 Go 进行连接 - Azure Database for MySQL
 description: 本快速入门提供了多个 Go 代码示例，你可以使用它来连接到 Azure Database for MySQL 并查询其中的数据。
 author: ajlam
 ms.author: andrela
@@ -8,14 +8,15 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 1a6942364e6f77c97c93903b25bffa130222cd59
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 154c41c6799bb251f30991fde05f6eacc5de57da
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869871"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185938"
 ---
-# <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL：使用 Go 语言连接和查询数据
+# <a name="quickstart-use-go-language-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入门：使用 Go 语言在 Azure Database for MySQL 中进行连接并查询数据
+
 本快速入门演示如何在 Windows、Ubuntu Linux 和 Apple macOS 平台中使用以 [Go](https://golang.org/) 语言编写的代码连接到 Azure Database for MySQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本主题假设你熟悉如何使用 Go 进行开发，但不太熟悉 Azure Database for MySQL 的用法。
 
 ## <a name="prerequisites"></a>先决条件
@@ -32,9 +33,9 @@ ms.locfileid: "83869871"
 ### <a name="windows"></a>Windows
 1. 根据[安装说明](https://golang.org/doc/install)[下载](https://golang.org/dl/)和安装用于 Microsoft Windows 的 Go。
 2. 从开始菜单启动命令提示符。
-3. 为项目创建一个文件夹，例如 `mkdir  %USERPROFILE%\go\src\mysqlgo` 列中的一个值匹配。
+3. 为项目创建一个文件夹，例如 `mkdir  %USERPROFILE%\go\src\mysqlgo`.
 4. 将目录转到项目文件夹，例如 `cd %USERPROFILE%\go\src\mysqlgo`。
-5. 设置 GOPATH 的环境变量，使之指向源代码目录。 `set GOPATH=%USERPROFILE%\go` 列中的一个值匹配。
+5. 设置 GOPATH 的环境变量，使之指向源代码目录。 `set GOPATH=%USERPROFILE%\go`.
 6. 通过运行 `go get github.com/go-sql-driver/mysql` 命令安装[用于 MySQL 的 go-sql-driver](https://github.com/go-sql-driver/mysql#installation)。
 
    总起来说就是，安装 Go，然后在命令提示符处运行以下命令：

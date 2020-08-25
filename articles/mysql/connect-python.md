@@ -1,5 +1,5 @@
 ---
-title: 使用 Python 进行连接 - Azure Database for MySQL
+title: 快速入门：使用 Python 进行连接 - Azure Database for MySQL
 description: 本快速入门提供了多个 Python 代码示例，你可以使用它来连接到 Azure Database for MySQL 并查询其中的数据。
 author: ajlam
 ms.author: andrela
@@ -11,14 +11,14 @@ ms.custom:
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 8d417fdc604fa132e3ada5380b9e0a1f7326af04
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 32603514db76ceba4f1d9f8873c99b2e8a97eddf
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843226"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185904"
 ---
-# <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>快速入门：使用 Python 通过 Azure Database for MySQL 连接并查询数据
+# <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>快速入门：使用 Python 连接到 Azure Database for MySQL 并查询其中的数据
 
 在本快速入门中，你将使用 Python 连接到 Azure Database for MySQL。 然后使用 SQL 语句在 Mac、Ubuntu Linux 和 Windows 平台的数据库中查询、插入、更新和删除数据。 
 
@@ -59,7 +59,7 @@ ms.locfileid: "87843226"
 
 从 Azure 门户获取连接到 Azure Database for MySQL 所需的连接信息。 需要服务器名称、数据库名称和登录凭据。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录 [Azure 门户](https://portal.azure.com/)。
    
 1. 在门户搜索栏中，搜索并选择创建的 Azure Database for MySQL 服务器，如 **mydemoserver**。
    

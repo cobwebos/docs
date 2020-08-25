@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 3a2381302a378e7b2635b84c32a87e844e4605a7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8554a78112d197ef8174ac9d18147d301745165e
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68844879"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "83652158"
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>监视云存储应用程序并排查其问题
 
@@ -87,7 +87,7 @@ curl https://<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/<CONTAINER_NAME>/<INCO
 
 ### <a name="download-microsoft-message-analyzer"></a>下载 Microsoft Message Analyzer
 
-下载 [Microsoft Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226) 并安装该应用程序。
+下载 [Microsoft Message Analyzer](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer) 并安装该应用程序。
 
 启动应用程序并选择“文件” > “打开” > “从其他文件源”  。
 

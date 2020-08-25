@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 06/26/2020
+ms.date: 08/18/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c1a8fbb5558d5b9069c5b8103bca2fc3f8bcddf3
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: eec99ae353d4e5ca1bede1afef135def96207c50
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88507565"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604702"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>用户是否需要将中心辐射型拓扑与 SD-WAN/VPN 设备配合使用才能使用 Azure 虚拟 WAN？
 
@@ -119,7 +119,7 @@ ms.locfileid: "88507565"
 
 ### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>如果使用的设备不在虚拟 WAN 合作伙伴列表中，该怎么办？ 还可以用它来连接到 Azure 虚拟 WAN VPN 吗？
 
-是的，只要设备支持 IPsec IKEv1 或 IKEv2 即可。 虚拟 WAN 合作伙伴自动执行设备到 Azure VPN 端点的连接。 这表示自动执行“分支信息上传”、“IPsec 和配置”以及“连接”等步骤。由于设备不是来自虚拟 WAN 合作伙伴生态系统，因此需要大量手动执行 Azure 配置和更新设备才能建立 IPsec 连接。
+是的，只要设备支持 IPsec IKEv1 或 IKEv2 即可。 虚拟 WAN 合作伙伴自动执行设备到 Azure VPN 端点的连接。 这表示自动执行“分支信息上传”、“IPsec 和配置”以及“连接”等步骤。 由于设备不是来自虚拟 WAN 合作伙伴生态系统，因此需要大量手动执行 Azure 配置和更新设备才能建立 IPsec 连接。
 
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>没有在启动合作伙伴列表中列出的新合作伙伴如何加入？
 
@@ -215,7 +215,7 @@ ms.locfileid: "88507565"
 
 是的。 支持 IPsec 的 Internet 连接和物理设备，最好是来自我们的集成[虚拟 WAN 合作伙伴](../articles/virtual-wan/virtual-wan-locations-partners.md)。 还可以从你偏爱的设备手动管理 Azure 的配置和连接。
 
-### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>如何在连接（VPN、ExpressRoute 或虚拟网络）中启用默认路由 (0.0.0.0/0)：
+### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>如何在连接（VPN、ExpressRoute 或虚拟网络）中启用默认路由 (0.0.0.0/0)？
 
 如果连接上的标志为“已启用”，则虚拟中心可将获知的默认路由传播到虚拟网络/站点到站点 VPN/ExpressRoute 连接。 当用户编辑虚拟网络连接、VPN 连接或 ExpressRoute 连接时，将显示此标志。 默认情况下，当站点或 ExpressRoute 线路连接到中心时，将禁用此标志。 如果添加虚拟网络连接以将 VNet 连接到虚拟中心，则默认情况下启用此功能。 默认路由不是源自虚拟 WAN 中心；只有当虚拟 WAN 中心由于在中心部署防火墙而获知默认路由或另一个连接的站点已启用强制隧道时，此标志才会将默认路由传播到连接。
 
@@ -239,11 +239,11 @@ ER 到 ER 之间的传输始终通过 Global Reach 进行。 虚拟中心网关�
 
 ### <a name="does-virtual-wan-prefer-expressroute-over-vpn-for-traffic-egressing-azure"></a>对于传出 Azure 的流量，虚拟 WAN 是否优先选择 ExpressRoute 而非 VPN
 
-是 
+是的。
 
-### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-prefered-over-expressroute"></a>当虚拟 WAN 中心具有 ExpressRoute 线路和连接到该线路的 VPN 站点时，什么原因会导致优先选择 VPN 连接而非 ExpressRoute？
+### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-preferred-over-expressroute"></a>当虚拟 WAN 中心具有 ExpressRoute 线路和连接到该线路的 VPN 站点时，什么原因会导致优先选择 VPN 连接而非 ExpressRoute？
 
-当 ExpressRoute 线路连接到虚拟中心时，Microsoft 边缘路由器是在本地与 Azure 之间进行通信的第一个节点。 这些边缘路由器与虚拟 WAN ExpressRoute 网关通信，而这些网关从控制虚拟 WAN 中任何网关之间的所有路由的虚拟中心路由器获知路由。 Microsoft 边缘路由器优先处理虚拟中心 ExpressRoute 路由而非从本地获知的路由。 如果 VPN 连接因任何原因而成为虚拟中心获知路由的主要媒介（例如 ExpressRoute 和 VPN 之间的故障转移方案），那么除非 VPN 站点具有较长的 AS 路径长度，否则虚拟中心将继续与 ExpressRoute 网关分享获知的 VPN 路由，这将导致 Microsoft 边缘路由器优先处理 VPN 路由而非本地路由。 
+当 ExpressRoute 线路连接到虚拟中心时，Microsoft 边缘路由器是在本地与 Azure 之间进行通信的第一个节点。 这些边缘路由器与虚拟 WAN ExpressRoute 网关通信，而这些网关从控制虚拟 WAN 中任何网关之间的所有路由的虚拟中心路由器获知路由。 Microsoft 边缘路由器优先处理虚拟中心 ExpressRoute 路由而非从本地获知的路由。 如果 VPN 连接因任何原因而成为虚拟中心获知路由的主要媒介（例如 ExpressRoute 和 VPN 之间的故障转移方案），那么除非 VPN 站点具有较长的 AS 路径长度，否则虚拟中心将继续与 ExpressRoute 网关分享获知的 VPN 路由，这将导致 Microsoft 边缘路由器优先处理 VPN 路由而非本地路由。
 
 ### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>如果连接了两个中心（中心 1 和 2），并且有一条 ExpressRoute 线路以蝴蝶结的形式连接到这两个中心，那么连接到中心 1 的 VNet 通过什么路径到达中心 2 中连接的 VNet？
 
@@ -253,9 +253,13 @@ ER 到 ER 之间的传输始终通过 Global Reach 进行。 虚拟中心网关�
 
 虚拟 WAN 中心及其网关不支持 IPv6。 如果你有一个支持 IPv6 的 VNet，并且要将 VNet 连接到虚拟 WAN，则当前不支持此方案。
 
-### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionality-"></a>对于自动完成多种虚拟 WAN 功能的脚本，建议其使用哪个 API 版本？
+### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>对于自动完成多种虚拟 WAN 功能的脚本，建议其使用哪个 API 版本？
 
 所需的最低版本为 05-01-2020（2020 年 5 月 1 日）。 
+
+### <a name="are-there-any-virtual-wan-limits"></a>是否存在虚拟 WAN 限制？
+
+请参阅“订阅和服务限制”页上的[虚拟 WAN 限制](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#virtual-wan-limits)部分。
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>虚拟 WAN 类型（基本和标准）之间的区别是什么？
 

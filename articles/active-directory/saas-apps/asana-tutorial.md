@@ -2,26 +2,21 @@
 title: 教程：Azure Active Directory 与 Asana 集成 | Microsoft Docs
 description: 了解如何在 Azure Active Directory 和 Asana 之间配置单一登录。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 837e38fe-8f55-475c-87f4-6394dc1fee2b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5531a7c1a95e472239c639e3307623fc4ccedd37
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: dd2c02f25584fd32acd32277a1dd2300c6a98e73
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73157867"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549494"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>教程：Azure Active Directory 与 Asana 集成
 
@@ -128,7 +123,7 @@ ms.locfileid: "73157867"
 
 ### <a name="configure-asana-single-sign-on"></a>配置 Asana 单一登录
 
-1. 在其他浏览器窗口中，登录 Asana 应用程序。 若要在 Asana 中配置 SSO，请单击屏幕右上角的工作区名称，访问工作区设置。 然后，单击“\<工作区名称\> 设置”。
+1. 在其他浏览器窗口中，登录 Asana 应用程序。 若要在 Asana 中配置 SSO，请单击屏幕右上角的工作区名称，访问工作区设置。 然后单击“\<your workspace name\> 设置”。
 
     ![Asana SSO 设置](./media/asana-tutorial/tutorial_asana_09.png)
 

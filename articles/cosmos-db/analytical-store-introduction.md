@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: rosouz
-ms.openlocfilehash: 3b210ea558f857d017504d07e571e94e34c0d4f6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: d831d40733f9fa1d0db4c53d72de22898e493639
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037093"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88795858"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Azure Cosmos DB 分析存储（预览版）是什么？
 
@@ -134,7 +134,7 @@ Azure Cosmos DB 事务性存储架构不可知，因此你能够迭代事务性�
 * 分析读取操作：从 Synapse Analytics Spark 和 SQL 无服务器运行时对分析存储执行的读取操作。
 
 > [!NOTE]
-> Azure Cosmos DB 分析存储目前以公共预览版提供，在 2020 年 8 月 30 日之前可免费使用。
+> Azure Cosmos DB 分析存储当前在公共预览版中免费提供，不收取任何费用。
 
 分析存储定价与事务性存储定价模型不同。 分析存储中没有预配 RU 这一概念。 有关分析存储定价模型的完整详细信息，请参阅 [Azure Cosmos DB 定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。
 
@@ -144,7 +144,7 @@ Azure Cosmos DB 事务性存储架构不可知，因此你能够迭代事务性�
 
 分析 TTL 表示应将容器的分析存储中的数据保留多久。 
 
-无论事务性 TTL 配置如何，都会从事务性存储中将对操作数据执行的插入、更新、删除自动同步到分析存储。 分析存储中操作数据的保留可以由容器级别的分析 TTL 值控制，如下所示：
+如果已启用分析存储区，则操作数据的插入、更新、删除操作会自动从事务存储同步到分析存储，而不考虑事务 TTL 配置。 分析存储中操作数据的保留可以由容器级别的分析 TTL 值控制，如下所示：
 
 使用 `AnalyticalStoreTimeToLiveInSeconds` 属性设置容器中的分析 TTL：
 
@@ -152,7 +152,7 @@ Azure Cosmos DB 事务性存储架构不可知，因此你能够迭代事务性�
 
 * 若此值存在且设置为“-1”：无论事务性存储中数据的保留期是多久，分析存储都将保留所有历史数据。 此设置表示分析存储会无限期保留操作数据
 
-* 若此值存在且设置为某个正数“n”：距在事务性存储中最后一次修改项“n”秒后，项将从分析存储中过期。 如果想要在有限的一段时间内将操作数据保留在分析存储中，而不考虑该数据在事务性存储中的保留期，可利用此设置。
+* 若此值存在且设置为某个正数“n”：距在事务性存储中最后一次修改项“n”秒后，项将从分析存储中过期。 如果要在分析存储中将操作数据保留一段有限的时间，则可以利用此设置，而不考虑事务存储中数据的保留期
 
 考虑的要点：
 *   使用分析 TTL 值启用分析存储后，可以在以后将其更新为其他有效值。 

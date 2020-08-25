@@ -5,18 +5,18 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: cc44b587bfa3b65b551df46bef025b461c8f6849
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: aee6e6d8ca505bfdcfd4a51e4693779f44b2b0c0
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87375247"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226320"
 ---
 本快速入门介绍如何使用适用于 Linux 的语音设备 SDK 来生成支持语音的产品，或将其用作[对话听录](../conversation-transcription-service.md)设备。 目前，只有 [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) 受支持。
 
 该应用程序是使用语音 SDK 程序包和 Eclipse Java IDE (v4) 在 64 位 Linux（Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7/8、CentOS 7/8）上构建的。 它在 64 位 Java 8 运行时环境 (JRE) 中运行。
 
-本指南需要一个包含语音服务资源的 [Azure 认知服务](../get-started.md)帐户。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/)获取订阅密钥。
+本指南需要一个包含语音服务资源的 [Azure 认知服务](../get-started.md)帐户。 
 
 [示例应用程序](https://aka.ms/sdsdk-download-JRE)的源代码随附在语音设备 SDK 中， 也可在 [GitHub 上获取](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)。
 
@@ -60,7 +60,7 @@ ms.locfileid: "87375247"
   > - 在 RHEL/CentOS 7 上，按照[如何为语音 SDK 配置 RHEL/CentOS 7](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md) 上的说明进行操作。
 > - 在 RHEL/CentOS 8 上，按照[如何配置 OpenSSL for Linux](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md) 上的说明进行操作。
 
-对话听录目前仅在“centralus”和“eastasia”区域中适用于“en-US”和“zh-CN”。 必须在这些区域中的一个区域中具有语音密钥，才能使用对话听录。
+对话听录目前在“centralus”和“eastasia”区域中仅提供“en-US”和“zh-CN”。 必须在这些区域中的一个区域中具有语音密钥，才能使用对话听录。
 
 如果计划使用意向，则将需要[语音理解服务 (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) 订阅。 若要了解有关 LUIS 和意向识别的详细信息，请参阅[使用 LUIS、C# 识别语音意向](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)。 [示例 LUIS 模型](https://aka.ms/sdsdk-luis)适用于此应用。
 
@@ -163,7 +163,7 @@ ms.locfileid: "87375247"
 
    ![示例语音设备 SDK 的示例应用程序和选项](../media/speech-devices-sdk/java-sample-app-linux.png)
 
-1. 试用新的“对话听录”演示。 通过“会话” > “启动”来启动听录。 默认情况下，每个人都是来宾。 但是，如果你拥有参与者的语音签名，则这些签名可以放入项目文件夹 **target/classes** 的 `participants.properties` 中。 若要生成语音签名，请查看[听录对话 (SDK)](../how-to-use-conversation-transcription-service.md)。
+1. 试用新的“对话听录”演示。 通过“会话” > “启动”来启动听录。 默认情况下，每个人都是来宾。 但是，如果你拥有参与者的语音签名，则这些签名可以放入项目文件夹 target/classes 的 `participants.properties` 中。 若要生成语音签名，请查看[听录对话 (SDK)](../how-to-use-conversation-transcription-service.md)。
 
    ![演示对话听录应用程序](../media/speech-devices-sdk/cts-sample-app-linux.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 Go 进行连接 - Azure Database for PostgreSQL - 单一服务器
+title: 快速入门：使用 Go 进行连接 - Azure Database for PostgreSQL - 单一服务器
 description: 本快速入门提供了可用于从 Azure Database for PostgreSQL - 单一服务器连接和查询数据的 Go 编程语言示例。
 author: rachel-msft
 ms.author: raagyema
@@ -8,14 +8,15 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: b44759ce4e65e55a3d143fd178764e8ae6e16e89
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e8a44de5b6da4c9a125b5c035d0344115930cfe2
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74767919"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182895"
 ---
-# <a name="azure-database-for-postgresql---single-server-use-go-language-to-connect-and-query-data"></a>Azure Database for PostgreSQL - 单一服务器：使用 Go 语言连接和查询数据
+# <a name="quickstart-use-go-language-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>快速入门：使用 Go 语言连接到 Azure Database for PostgreSQL 并查询其中的数据 - 单一服务器
+
 本快速入门演示如何使用以 [Go](https://golang.org/) 语言 (golang) 编写的代码连接到 Azure Database for PostgreSQL。 同时还介绍了如何使用 SQL 语句在数据库中查询、插入、更新和删除数据。 本文假设你熟悉如何使用 Go 进行开发，但不熟悉如何使用 Azure Database for PostgreSQL。
 
 ## <a name="prerequisites"></a>先决条件
@@ -31,7 +32,7 @@ ms.locfileid: "74767919"
 2. 从开始菜单启动命令提示符。
 3. 为项目创建一个文件夹，例如 `mkdir  %USERPROFILE%\go\src\postgresqlgo`。
 4. 将目录转到项目文件夹，例如 `cd %USERPROFILE%\go\src\postgresqlgo`。
-5. 设置 GOPATH 的环境变量，使之指向源代码目录。 `set GOPATH=%USERPROFILE%\go` 列中的一个值匹配。
+5. 设置 GOPATH 的环境变量，使之指向源代码目录。 `set GOPATH=%USERPROFILE%\go`.
 6. 通过运行 `go get github.com/lib/pq` 命令安装[纯 Go 语言 Postgres 驱动程序 (pq)](https://github.com/lib/pq)。
 
    总起来说就是，安装 Go，然后在命令提示符处运行以下命令：
@@ -79,9 +80,9 @@ ms.locfileid: "74767919"
 获取连接到 Azure Database for PostgreSQL 所需的连接信息。 需要完全限定的服务器名称和登录凭据。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 在 Azure 门户的左侧菜单中，单击“所有资源”  ，然后搜索已创建的服务器（例如 mydemoserver  ）。
+2. 在 Azure 门户的左侧菜单中，单击“所有资源”，然后搜索已创建的服务器（例如 mydemoserver）。
 3. 单击服务器名称。
-4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。    如果忘记了密码，也可通过此面板来重置密码。
+4. 从服务器的“概览”面板中记下“服务器名称”和“服务器管理员登录名”。   如果忘记了密码，也可通过此面板来重置密码。
  ![Azure Database for PostgreSQL 服务器名称](./media/connect-go/1-connection-string.png)
 
 ## <a name="build-and-run-go-code"></a>生成和运行 Go 代码 
@@ -227,7 +228,7 @@ func main() {
 ```
 
 ## <a name="update-data"></a>更新数据
-使用以下代码进行连接，并使用 UPDATE SQL 语句更新数据  。
+使用以下代码进行连接，并使用 UPDATE SQL 语句更新数据****。
 
 代码导入三个包：[sql 包](https://golang.org/pkg/database/sql/)、[pq 包](https://godoc.org/github.com/lib/pq)（充当与 Postgres 服务器通信所需的驱动程序）以及 [fmt 包](https://golang.org/pkg/fmt/)（适用于在命令行中列显的输入和输出）。
 

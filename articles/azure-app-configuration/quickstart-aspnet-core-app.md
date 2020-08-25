@@ -1,19 +1,20 @@
 ---
 title: 将 Azure 应用配置与 ASP.NET Core 结合使用的快速入门| Microsoft Docs
-description: 将 Azure 应用配置与 ASP.NET Core 应用结合使用的快速入门
+description: 使用 Azure 应用程序配置创建 ASP.NET Core 应用，集中存储和管理 ASP.NET Core 应用程序的应用程序设置。
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.devlang: csharp
+ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 069bce6f2f8e46679cbc82dd92c9fd73bfecde85
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 41675eb1911eede750b5a9cdc19cfe49e4699bac
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373515"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590296"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 ASP.NET Core 应用
 

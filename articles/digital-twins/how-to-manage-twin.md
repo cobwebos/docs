@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9f140594ef18df7f9a6a3b919998962c966cde76
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 995d621ffbabd6743d248812c88ebe7e65da24ca
+ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587593"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88796946"
 ---
 # <a name="manage-digital-twins"></a>管理数字孪生
 
@@ -104,8 +104,10 @@ object result = await client.GetDigitalTwin(id);
 
 此调用返回作为 JSON 字符串的未克隆数据。 
 
-> [!TIP]
-> 当你使用检索到次时，仅返回至少已设置一次的属性 `GetDigitalTwin` 。
+当你使用检索到次时，仅返回至少已设置一次的属性 `GetDigitalTwin` 。
+
+>[!TIP]
+>"克隆" 的 `displayName` 是其模型元数据的一部分，因此，在为克隆的实例获取数据时，它将不会显示。 若要查看此值，可以 [从模型中检索它](how-to-manage-model.md#retrieve-models)。
 
 若要使用单个 API 调用检索多个孪生，请参阅 [*如何：查询双子图*](how-to-query-graph.md)中的查询 API 示例。
 
@@ -164,14 +166,14 @@ object result = await client.GetDigitalTwin(id);
 数字克隆的已定义属性在数字克隆上作为顶级属性返回。 不属于 DTDL 定义的元数据或系统信息将以 `$` 前缀返回。 元数据属性包括：
 * 此 Azure 数字孪生实例中数字输出的 ID，如 `$dtId` 。
 * `$etag`，由 web 服务器分配的标准 HTTP 字段
-* 节中的其他属性 `$metadata` 。 其中包括：
+* 节中的其他属性 `$metadata` 。 这些方法包括：
     - 数字克隆的模型的 DTMI。
     - 每个可写属性的同步状态。 这对于设备最为有用，在这种情况下，在设备处于) 脱机状态时，服务和设备可能会 (分叉状态。 目前，此属性仅适用于连接到 IoT 中心的物理设备。 使用元数据部分中的数据，可以了解属性的完整状态以及上次修改的时间戳。 有关同步状态的详细信息，请参阅有关同步设备状态的 [此 IoT 中心教程](../iot-hub/tutorial-device-twins.md) 。
     - 服务特定的元数据，如 IoT 中心或 Azure 数字孪生。 
 
 您可以使用所选的 JSON 分析库（如）分析返回的 JSON `System.Text.Json` 。
 
-你还可以使用 SDK 随附的序列化帮助器类 `BasicDigitalTwin` ，它将返回以预分析形式返回的核心数据和属性。 下面是一个示例：
+你还可以使用 SDK 随附的序列化帮助器类 `BasicDigitalTwin` ，它将返回以预分析形式返回的核心数据和属性。 以下是示例：
 
 ```csharp
 Response<string> res = client.GetDigitalTwin(twin_id);

@@ -1,7 +1,7 @@
 ---
 title: 升级到计算机视觉 API 的 v3.0
 titleSuffix: Azure Cognitive Services
-description: 了解如何从计算机视觉 API 的 v2.0 和 v2.1 升级到 v3.0。
+description: 了解如何将计算机视觉 Read API 从 v2.0/v2.1 升级到 v3.0。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: sample
 ms.date: 08/11/2020
 ms.author: pafarley
 ROBOTS: NOINDEX
-ms.openlocfilehash: 16add0dce88d0f809dc291d3c9de33e1a853f257
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 6e695fcfacac19ca82273d84d049bdb2afe14b54
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88136566"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214195"
 ---
-# <a name="upgrade-to-v30-of-computer-vision-api-from-v20-and-v21"></a>从计算机视觉 API 的 v2.0 和 v2.1 升级到 v3.0
+# <a name="upgrade-to-computer-vision-v30-read-api-from-v20v21"></a>将计算机视觉 Read API 从 v2.0/v2.1 升级到 v3.0
 
-本指南演示如何修改现有代码，以便为 REST API 的用户从计算机视觉 API 的 v2.0 或 v2.1 迁移到 v3.0。 
+本指南说明如何将现有计算机视觉 v2.0 或 v2.1 REST API 代码升级到 v3.0 Read 操作。 
 
 ## <a name="upgrade-batch-read-file-to-read"></a>将 `Batch Read File` 升级到 `Read`
 

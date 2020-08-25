@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 05dd1f1d429b59c4d621b63c6b78a1fc00e8d4dd
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 6f54a8993b602110e35c410338b6f0a51109738f
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87528457"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88603895"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>使用 Synapse SQL 安全地加载数据
 
@@ -23,10 +23,11 @@ ms.locfileid: "87528457"
 
 下表介绍了每种文件类型和存储帐户所支持的身份验证方法。 这适用于源存储位置和错误文件位置。
 
-|                          |                CSV                |              Parquet              |                ORC                |
-| :----------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-|  **Azure blob 存储**  | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD |              SAS/KEY              |              SAS/KEY              |
-| **Azure Data Lake Gen2** | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD |
+|                          |                CSV                |              Parquet               |                ORC                 |
+| :----------------------: | :-------------------------------: | :-------------------------------:  | :-------------------------------:  |
+|  **Azure blob 存储**  | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD |              SAS/KEY               |              SAS/KEY               |
+| **Azure Data Lake Gen2** | SAS/MSI/SERVICE PRINCIPAL/KEY/AAD | SAS（blob 终结点）/MSI（dfs 终结点）/服务主体/密钥/AAD | SAS（blob 终结点）/MSI（dfs 终结点）/服务主体/密钥/AAD |
+
 
 ## <a name="a-storage-account-key-with-lf-as-the-row-terminator-unix-style-new-line"></a>A. 以 LF 作为行终止符的存储帐户密钥（Unix 样式的新行）
 

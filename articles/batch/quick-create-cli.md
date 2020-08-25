@@ -1,35 +1,39 @@
 ---
-title: Azure 快速入门 - 运行 Batch 作业 - CLI
-description: 快速了解如何使用 Azure CLI 运行 Batch 作业。 从命令行或通过脚本创建和管理 Azure 资源。
+title: 快速入门 - 使用 Azure CLI 运行第一个 Batch 作业
+description: 快速了解使用 Azure CLI 创建 Batch 帐户和运行 Batch 作业。
 ms.topic: quickstart
-ms.date: 07/03/2018
+ms.date: 08/13/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4c56695180f8f07384f31b750cec03f9d14fb9da
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8824d4485167955dd1b928bc57381b2e6b672c5d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504154"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213104"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>快速入门：使用 Azure CLI 运行第一个 Batch 作业
 
-Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 本快速入门介绍如何使用 Azure CLI 创建 Batch 帐户、包含计算节点（虚拟机）的*池*以及在池中运行*任务*的*作业*。 每个示例任务在一个池节点上运行一个基本命令。 完成本快速入门以后，你会了解 Batch 服务的重要概念，并可使用更逼真的工作负荷进行更大规模的 Batch 试用。
+通过使用 Azure CLI 创建 Batch 帐户、计算节点（虚拟机）池以及在池中运行任务的作业，开始使用 Azure Batch。 每个示例任务在一个池节点上运行一个基本命令。
 
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+Azure CLI 用于从命令行或脚本创建和管理 Azure 资源。 完成本快速入门以后，你会了解 Batch 服务的重要概念，并可使用更逼真的工作负荷进行更大规模的 Batch 试用。
+
+## <a name="prerequisites"></a>先决条件
+
+- 具有活动订阅的 Azure 帐户。 [免费创建帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+- 如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.20 版或更高版本。 要查找版本，请运行 `az --version`。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 CLI，本快速入门要求运行 Azure CLI 2.0.20 版或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli)。 
-
 ## <a name="create-a-resource-group"></a>创建资源组
 
-使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。 
+使用“[az group create](/cli/azure/group#az-group-create)”命令创建资源组。 Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 
-以下示例在“eastus2”位置创建名为“myResourceGroup”的资源组。
+以下示例在 eastus2 位置创建名为 QuickstartBatch-rg 的资源组 。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create \
-    --name myResourceGroup \
+    --name QuickstartBatch-rg \
     --location eastus2
 ```
 
@@ -39,7 +43,7 @@ az group create \
 
 ```azurecli-interactive
 az storage account create \
-    --resource-group myResourceGroup \
+    --resource-group QuickstartBatch-rg \
     --name mystorageaccount \
     --location eastus2 \
     --sku Standard_LRS
@@ -49,22 +53,22 @@ az storage account create \
 
 使用 [az batch account create](/cli/azure/batch/account#az-batch-account-create) 命令创建 Batch 帐户。 需要一个帐户来创建计算资源（计算节点池）和 Batch 作业。
 
-以下示例在 *myResourceGroup* 中创建名为 *mybatchaccount* 的 Batch 帐户，并链接已创建的存储帐户。  
+以下示例在 QuickstartBatch-rg 中创建名为 mybatchaccount 的 Batch 帐户，并链接已创建的存储帐户 。  
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch account create \
     --name mybatchaccount \
     --storage-account mystorageaccount \
-    --resource-group myResourceGroup \
+    --resource-group QuickstartBatch-rg \
     --location eastus2
 ```
 
 若要创建和管理计算池和作业，需使用 Batch 进行身份验证。 使用 [az batch account login](/cli/azure/batch/account#az-batch-account-login) 命令登录到帐户。 登录后，`az batch` 命令使用此帐户上下文。
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch account login \
     --name mybatchaccount \
-    --resource-group myResourceGroup \
+    --resource-group QuickstartBatch-rg \
     --shared-key-auth
 ```
 
@@ -77,7 +81,7 @@ az batch pool create \
     --id mypool --vm-size Standard_A1_v2 \
     --target-dedicated-nodes 2 \
     --image canonical:ubuntuserver:16.04-LTS \
-    --node-agent-sku-id "batch.node.ubuntu 16.04" 
+    --node-agent-sku-id "batch.node.ubuntu 16.04"
 ```
 
 Batch 会立即创建池，但分配和启动计算节点则需要数分钟。 在此期间，池处于`resizing`状态。 若要查看池的状态，请运行 [az batch pool show](/cli/azure/batch/pool#az-batch-pool-show) 命令。 此命令显示池的所有属性，你可以查询特定的属性。 以下命令获取池的分配状态：
@@ -87,13 +91,13 @@ az batch pool show --pool-id mypool \
     --query "allocationState"
 ```
 
-继续以下步骤，在池状态更改的情况下创建作业和任务。 如果分配状态为`steady`且所有节点处于运行状态，则说明池已做好运行任务的准备。 
+继续以下步骤，在池状态更改的情况下创建作业和任务。 如果分配状态为`steady`且所有节点处于运行状态，则说明池已做好运行任务的准备。
 
 ## <a name="create-a-job"></a>创建作业
 
-有了池之后，请创建可在其中运行的作业。  Batch 作业是适用于一个或多个任务的逻辑组。 作业包含任务的公用设置，例如优先级以及运行任务的池。 使用 [az batch job create](/cli/azure/batch/job#az-batch-job-create) 命令创建 Batch 作业。 以下示例在 *mypool* 池中创建 *myjob* 作业。 作业一开始没有任务。
+有了池之后，请创建可在其中运行的作业。 Batch 作业是适用于一个或多个任务的逻辑组。 作业包含任务的公用设置，例如优先级以及运行任务的池。 使用 [az batch job create](/cli/azure/batch/job#az-batch-job-create) 命令创建 Batch 作业。 以下示例在 *mypool* 池中创建 *myjob* 作业。 作业一开始没有任务。
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch job create \
     --id myjob \
     --pool-id mypool
@@ -105,7 +109,7 @@ az batch job create \
 
 以下 Bash 脚本创建 4 个并行任务（*mytask1* 到 *mytask4*）。
 
-```azurecli-interactive 
+```azurecli-interactive
 for i in {1..4}
 do
    az batch task create \
@@ -123,7 +127,7 @@ done
 
 使用 [az batch task show](/cli/azure/batch/task#az-batch-task-show) 命令查看 Batch 任务的状态。 以下示例显示在一个池节点上运行的 *mytask1* 的详细信息。
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch task show \
     --job-id myjob \
     --task-id mytask1
@@ -133,9 +137,9 @@ az batch task show \
 
 ## <a name="view-task-output"></a>查看任务输出
 
-若要列出计算节点上的任务所创建的文件，请使用 [az batch task file list](/cli/azure/batch/task) 命令。 以下命令列出 *mytask1* 创建的文件： 
+若要列出计算节点上的任务所创建的文件，请使用 [az batch task file list](/cli/azure/batch/task) 命令。 以下命令列出 *mytask1* 创建的文件：
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch task file list \
     --job-id myjob \
     --task-id mytask1 \
@@ -154,7 +158,7 @@ stderr.txt  https://mybatchaccount.eastus2.batch.azure.com/jobs/myjob/tasks/myta
 
 ```
 
-若要将某个输出文件下载到本地目录，请使用 [az batch task file download](/cli/azure/batch/task) 命令。 在此示例中，任务输出位于 `stdout.txt`。 
+若要将某个输出文件下载到本地目录，请使用 [az batch task file download](/cli/azure/batch/task) 命令。 在此示例中，任务输出位于 `stdout.txt`。
 
 ```azurecli-interactive
 az batch task file download \
@@ -183,10 +187,12 @@ AZ_BATCH_TASK_ID=mytask1
 AZ_BATCH_ACCOUNT_NAME=mybatchaccount
 AZ_BATCH_TASK_USER_IDENTITY=PoolNonAdmin
 ```
+
 ## <a name="clean-up-resources"></a>清理资源
+
 若要继续学习 Batch 教程和示例，请使用在本快速入门中创建的 Batch 帐户和关联的存储帐户。 Batch 帐户本身不收费。
 
-只要有节点在运行，就会对池收费，即使没有计划作业。 不再需要池时，请使用 [az batch pool delete](/cli/azure/batch/pool#az-batch-pool-delete) 命令将其删除。 删除池时会删除节点上的所有任务输出。 
+只要有节点在运行，就会对池收费，即使没有计划作业。 不再需要池时，请使用 [az batch pool delete](/cli/azure/batch/pool#az-batch-pool-delete) 命令将其删除。 删除池时会删除节点上的所有任务输出。
 
 ```azurecli-interactive
 az batch pool delete --pool-id mypool
@@ -194,14 +200,13 @@ az batch pool delete --pool-id mypool
 
 如果不再需要资源组、Batch 帐户、池和所有相关的资源，则可以使用 [az group delete](/cli/azure/group#az-group-delete) 命令将其删除。 删除资源，如下所示：
 
-```azurecli-interactive 
-az group delete --name myResourceGroup
+```azurecli-interactive
+az group delete --name QuickstartBatch-rg
 ```
 
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门创建了 Batch 帐户、Batch 池和 Batch 作业。 作业运行示例任务，你查看了在其中一个节点上产生的输出。 了解 Batch 服务的重要概念以后，即可使用更逼真的工作负荷进行更大规模的 Batch 试用。 若要详细了解 Azure Batch，请继续学习 Azure Batch 教程。 
-
+本快速入门创建了 Batch 帐户、Batch 池和 Batch 作业。 作业运行示例任务，你查看了在其中一个节点上产生的输出。 了解 Batch 服务的重要概念以后，即可使用更逼真的工作负荷进行更大规模的 Batch 试用。 若要详细了解 Azure Batch，请继续学习 Azure Batch 教程。
 
 > [!div class="nextstepaction"]
 > [Azure Batch 教程](./tutorial-parallel-dotnet.md)

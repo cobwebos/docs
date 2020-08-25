@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
-ms.openlocfilehash: 62669457f73ba78186614433fb6d10cc4dc01089
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: b5865f2fd76c1159f7f72633362a96335af8a059
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85565519"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509359"
 ---
 # <a name="quickstart-render-a-model-with-unity"></a>快速入门：使用 Unity 渲染模型
 
@@ -84,7 +84,7 @@ git clone https://github.com/Azure/azure-remote-rendering
 
 ### <a name="create-a-session-and-view-the-default-model"></a>创建会话并查看默认模型
 
-按下 Unity 的“播放”按钮以启动会话。 在“游戏”面板中的视区底部，应会看到一个包含状态文本的叠加层。 该会话将经历一系列状态转换。 处于“正在启动”状态时，表示远程 VM 已运转，启动过程需要几分钟时间。 成功后，会话将转换为“就绪”状态。 现在，会话已进入“正在连接”状态，此时它会尝试访问该 VM 上的渲染运行时。 成功后，示例将转换为“已连接”状态。 此时，它会开始下载要渲染的模型。 由于模型较大，下载过程可能需要额外的几分钟时间。 然后，远程渲染的模型将会显示。
+按下 Unity 的“播放”按钮以启动会话。 在“游戏”面板中的视区底部，应会看到一个包含状态文本的叠加层。 该会话将经历一系列状态转换。 在“启动”状态下，服务器将启动，这需要几分钟时间。 成功后，会话将转换为“就绪”状态。 现在，会话已进入“正在连接”状态，此时它会尝试访问该服务器上的渲染运行时。 成功后，示例将转换为“已连接”状态。 此时，它会开始下载要渲染的模型。 由于模型较大，下载过程可能需要额外的几分钟时间。 然后，远程渲染的模型将会显示。
 
 ![示例的输出](media/arr-sample-output.png)
 

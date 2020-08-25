@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 6e4f71be1dc3cdaeb01069f234531da29a7b4977
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 601e51c7a587cd55e9b0b235bbdfb2e559be09e2
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498695"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263089"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>教程：使用 Azure CLI 创建和管理 Linux VM
 
@@ -254,7 +254,7 @@ Azure VM 可能会处于多种电源状态之一。 从虚拟机监控程序的�
 | 电源状态 | 说明
 |----|----|
 | 正在启动 | 指示正在启动虚拟机。 |
-| 正在运行 | 指示虚拟机正在运行。 |
+| 运行 | 指示虚拟机正在运行。 |
 | 正在停止 | 指示正在停止虚拟机。 | 
 | 已停止 | 指示虚拟机已停止。 虚拟机处于停止状态时仍会产生计算费用。  |
 | 正在解除分配 | 指示正在解除分配虚拟机。 |
@@ -279,6 +279,8 @@ ode                DisplayStatus    Level
 ------------------  ---------------  -------
 PowerState/running  VM running       Info
 ```
+
+若要检索订阅中所有 VM 的电源状态，请使用[虚拟机 - 列出所有 API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall)，并将参数 statusOnly 设置为 true。
 
 ## <a name="management-tasks"></a>管理任务
 

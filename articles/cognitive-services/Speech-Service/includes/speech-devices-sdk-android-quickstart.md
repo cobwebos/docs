@@ -5,16 +5,16 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: abc9a42c7ced6a71f93c00968eb825f28f720843
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: dc027d034c50b49044f4a350fe4d239c18060fc7
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374783"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226576"
 ---
 本快速入门介绍如何使用适用于 Android 的语音设备 SDK 来生成支持语音的产品，或将其用作[对话听录](../conversation-transcription-service.md)设备。
 
-本指南需要一个包含语音服务资源的 [Azure 认知服务](../get-started.md)帐户。 如果没有帐户，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/)获取订阅密钥。
+本指南需要一个包含语音服务资源的 [Azure 认知服务](../get-started.md)帐户。
 
 示例应用程序的源代码随附在语音设备 SDK 中， 也可在 [GitHub 上获取](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)。
 
@@ -31,7 +31,7 @@ ms.locfileid: "87374783"
 
 - 获取[语音服务的 Azure 订阅密钥](../get-started.md)
 
-- 如果计划使用对话听录，则必须使用[圆形麦克风设备](../get-speech-devices-sdk.md)，该功能目前仅适用于“centralus”区域的“en-US”和“eastasia”区域的“zh-CN”。 必须在这些区域中的一个区域中具有语音密钥，才能使用对话听录。
+- 如果计划使用对话听录，则必须使用[圆形麦克风设备](../get-speech-devices-sdk.md)，该功能目前在“centralus”和“eastasia”区域中仅提供“en-US”和“zh-CN”。 必须在这些区域中的一个区域中具有语音密钥，才能使用对话听录。
 
 - 如果计划使用语音服务来确定用户话语中的意向（或行动），则需[语言理解服务 (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) 订阅。 若要了解有关 LUIS 和意向识别的详细信息，请参阅[使用 LUIS、C# 识别语音意向](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)。
 
@@ -126,7 +126,7 @@ ms.locfileid: "87374783"
 
    要使用新的关键字，请更新 `MainActivity.java` 中的下面两行，并将关键字包复制到应用。 例如，若要使用关键字包 kws-machine.zip 中的关键字“Machine”，请执行以下操作：
 
-   - 将该关键字包复制到“C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\”文件夹中。
+   - 将该关键字包复制到“C:\SDSDK\Android-Sample-Release\example\app\src\main\assets\"”文件夹中。
    - 使用关键字和包名称更新 `MainActivity.java`：
 
      ```java
@@ -162,7 +162,7 @@ ms.locfileid: "87374783"
 
    ![示例语音设备 SDK 的示例应用程序和选项](../media/speech-devices-sdk/qsg-8.png)
 
-1. 试用新的“对话听录”演示。 使用“启动会话”来启动听录。 默认情况下，每个人都是来宾。 但是，如果你有参与者的语音签名，则这些签名可以放入设备上的 `/video/participants.properties` 文件中。 若要生成语音签名，请查看[听录对话 (SDK)](../how-to-use-conversation-transcription-service.md)。
+1. 试用新的“对话听录”演示。 使用“启动会话”来启动听录。 默认情况下，每个人都是来宾。 但是，如果你拥有参与者的语音签名，则这些签名可以放入设备上的 `/video/participants.properties` 文件中。 若要生成语音签名，请查看[听录对话 (SDK)](../how-to-use-conversation-transcription-service.md)。
 
    ![演示对话听录应用程序](../media/speech-devices-sdk/qsg-15.png)
 

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 08/10/2020
+ms.date: 08/18/2020
 ms.author: victorh
-ms.openlocfilehash: 0fcf1c8a3800a52e8fa8659fe4bf97e83103c79d
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: b4ef35f2892925919ca9c8eda37a9b0e0d11835e
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056986"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590398"
 ---
 # <a name="what-is-azure-firewall-manager"></a>什么是 Azure 防火墙管理器？
 
@@ -85,6 +85,8 @@ Azure 防火墙管理器存在以下已知问题：
 |虚拟中心外的其他区域中的分支|不支持虚拟中心外的其他区域中的分支。|正在调查<br><br>在每一个区域创建一个中心，并在该中心所在区域创建对等 VNet。|
 |启用了专用流量筛选的分支之间的流量|不支持启用了专用流量筛选时的分支之间的流量。 |正在调查。<br><br>如果分支之间的连接至关重要，请勿保护专用流量的安全。|
 |共享同一虚拟 WAN 的所有安全虚拟中心必须位于同一资源组中。|此行为现在与虚拟 WAN 中心保持一致。|创建多个虚拟 WAN，以允许在不同的资源组中创建安全虚拟中心。|
+|批量 IP 地址添加失败|如果添加多个公共 IP 地址，安全中心防火墙将进入失败状态。|添加较小的公共 IP 地址增量。 例如，一次添加 10 个。|
+|如果安全中心中配置了自定义 DNS（预览版），应用程序规则将失败。|DNS 代理/自定义 DNS（预览版）在配置了防火墙管理 NIC 的情况下不起作用。 这包括安全中心部署以及启用强制隧道的情况。|通过检查解决该问题。|
 
 ## <a name="next-steps"></a>后续步骤
 

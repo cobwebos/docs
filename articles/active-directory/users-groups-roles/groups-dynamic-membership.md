@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: overview
-ms.date: 04/29/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3370a2631a81ce36fd994da73c871fb1e409c667
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 8dda8c742a0aafe7ec3f46a0a9dbf0abd4a516b4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84728361"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213789"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory 中的动态组成员资格规则
 
-在 Azure Active Directory (Azure AD) 中，可以创建基于属性的复杂规则以启用组的动态成员身份。 动态组成员资格可减少添加和删除用户的管理开销。 本文详细介绍了用于为用户或设备创建动态成员资格规则的属性和语法。 可以为安全组或 Office 365 组中的动态成员身份设置规则。
+在 Azure Active Directory (Azure AD) 中，可以创建基于属性的复杂规则以启用组的动态成员身份。 动态组成员资格可减少添加和删除用户的管理开销。 本文详细介绍了用于为用户或设备创建动态成员资格规则的属性和语法。 可以为安全组或 Microsoft 365 组中的动态成员身份设置规则。
 
 当用户或设备的任何属性发生更改时，系统会评估目录中的所有动态组规则，以查看该更改是否会触发任何组添加或删除。 如果用户或设备满足组的规则，它们将添加为该组的成员。 如果用户或设备不再满足该规则，则会将其删除。 无法手动添加或删除动态组的成员。
 
@@ -269,7 +269,7 @@ assignedPlans 是多值属性，该项列出了分配给用户的所有服务计
 user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-可使用像这样的规则对启用了 Office 365（或其他 Microsoft 联机服务）功能的所有用户进行分组。 然后，可将一组策略应用于该组。
+可使用此类规则对启用了 Microsoft 365（或其他 Microsoft 联机服务）功能的所有用户进行分组。 然后，可将一组策略应用于该组。
 
 #### <a name="example-2"></a>示例 2
 

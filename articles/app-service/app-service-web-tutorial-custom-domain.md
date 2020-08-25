@@ -5,14 +5,14 @@ keywords: 应用服务, Azure 应用服务, 域映射, 域名, 现有域, 主机
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 04/27/2020
+ms.date: 08/13/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 96a947a20a17c4dc08851824a392143ce162f186
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: c301876a57b3be4a112c7df2706bf17389a5af44
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543549"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190071"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>教程：将现有的自定义 DNS 名称映射到 Azure 应用服务
 
@@ -125,11 +125,11 @@ ms.locfileid: "87543549"
 
 #### <a name="create-the-cname-record"></a>创建 CNAME 记录
 
-将子域映射到应用的默认域名（`<app_name>.azurewebsites.net`，其中 `<app_name>` 是应用的名称）。 若要为 `www` 子域创建 CNAME 映射，请创建两条记录：
+将子域映射到应用的默认域名（`<app-name>.azurewebsites.net`，其中 `<app-name>` 是应用的名称）。 若要为 `www` 子域创建 CNAME 映射，请创建两条记录：
 
 | 记录类型 | 主机 | 值 | 注释 |
 | - | - | - |
-| CNAME | `www` | `<app_name>.azurewebsites.net` | 域映射本身。 |
+| CNAME | `www` | `<app-name>.azurewebsites.net` | 域映射本身。 |
 | TXT | `asuid.www` | [之前获得的验证 ID](#get-domain-verification-id) | 应用服务访问 `asuid.<subdomain>` TXT 记录以验证你对自定义域的所有权。 |
 
 添加 CNAME 和 TXT 记录后，DNS 记录页如下例所示：
@@ -210,7 +210,7 @@ ms.locfileid: "87543549"
 > | 记录类型 | 主机 | 值 |
 > | - | - | - |
 > | A | `www` | 在[复制应用的 IP 地址](#info)步骤中复制的 IP 地址 |
-> | TXT | `asuid.www` | `<app_name>.azurewebsites.net` |
+> | TXT | `asuid.www` | `<app-name>.azurewebsites.net` |
 >
 
 添加记录后，DNS 记录页与以下示例相似：
@@ -262,9 +262,14 @@ ms.locfileid: "87543549"
 
 #### <a name="create-the-cname-record"></a>创建 CNAME 记录
 
-添加一条 CNAME 记录，以便将通配符域名称名映射到应用的默认域名 (`<app_name>.azurewebsites.net`)。
+将通配符名称 `*` 映射到应用的默认域名（`<app-name>.azurewebsites.net`，其中 `<app-name>` 是应用的名称）。 若要映射通配符名称，请创建两条记录：
 
-在 `*.contoso.com` 域示例中， CNAME 记录将把名称 `*` 映射到 `<app_name>.azurewebsites.net`。
+| 记录类型 | 主机 | 值 | 注释 |
+| - | - | - |
+| CNAME | `*` | `<app-name>.azurewebsites.net` | 域映射本身。 |
+| TXT | `asuid` | [之前获得的验证 ID](#get-domain-verification-id) | 应用服务访问 `asuid` TXT 记录以验证你对自定义域的所有权。 |
+
+在 `*.contoso.com` 域示例中， CNAME 记录将把名称 `*` 映射到 `<app-name>.azurewebsites.net`。
 
 添加 CNAME 时，DNS 记录页与以下示例相似：
 
@@ -272,7 +277,7 @@ ms.locfileid: "87543549"
 
 #### <a name="enable-the-cname-record-mapping-in-the-app"></a>在应用中启用 CNAME 记录映射
 
-现在，可以将任何与通配符名称匹配的子域添加到应用中（例如 `sub1.contoso.com` 和`sub2.contoso.com` 匹配 `*.contoso.com`）。
+现在，可以将任何与通配符名称匹配的子域添加到应用中（例如 `sub1.contoso.com` 和 `sub2.contoso.com` 都匹配 `*.contoso.com`）。
 
 在 Azure 门户中的应用页左侧导航窗格中，选择“自定义域”。
 
@@ -342,7 +347,7 @@ ms.locfileid: "87543549"
 
 ```bash 
 az webapp config hostname add \
-    --webapp-name <app_name> \
+    --webapp-name <app-name> \
     --resource-group <resource_group_name> \
     --hostname <fully_qualified_domain_name>
 ``` 
@@ -357,9 +362,9 @@ az webapp config hostname add \
 
 ```powershell  
 Set-AzWebApp `
-    -Name <app_name> `
+    -Name <app-name> `
     -ResourceGroupName <resource_group_name> ` 
-    -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net")
+    -HostNames @("<fully_qualified_domain_name>","<app-name>.azurewebsites.net")
 ```
 
 有关详细信息，请参阅[将自定义域分配到 Web 应用](scripts/powershell-configure-custom-domain.md)。

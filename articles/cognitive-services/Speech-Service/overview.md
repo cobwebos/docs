@@ -10,23 +10,23 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 06/25/2020
 ms.author: trbye
-ms.openlocfilehash: 43efc770f3a3b29a1b0fc214d2927c8c153dff96
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 82099172a933496f015ae8fc575c1919a879e1f9
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391632"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167736"
 ---
 # <a name="what-is-the-speech-service"></a>什么是语音服务？
 
-语音服务在单个 Azure 订阅中统合了语音转文本、文本转语音以及语音翻译功能。 使用[语音 SDK](speech-sdk-reference.md)、[语音设备 SDK](https://aka.ms/sdsdk-quickstart) 或 [REST API](rest-apis.md) 可以轻松在应用程序、工具和设备中启用语音。
+语音服务在单个 Azure 订阅中统合了语音转文本、文本转语音以及语音翻译功能。 使用[语音 CLI](spx-overview.md)、[语音 SDK](speech-sdk-reference.md)、[语音设备 SDK](https://aka.ms/sdsdk-quickstart)、[Speech Studio](https://speech.microsoft.com/) 或 [REST API](rest-apis.md) 可以轻松在应用程序、工具和设备中启用语音。
 
 > [!IMPORTANT]
 > 语音服务已替代必应语音 API 和语音翻译。 有关迁移说明，请参阅_操作指南 > 迁移_。
 
 这些功能构成了语音服务。 请使用下表中的链接详细了解每项功能的常见用例或浏览 API 参考信息。
 
-| 服务 | Feature | 说明 | SDK 中 IsInRole 中的声明 | REST |
+| 服务 | 功能 | 说明 | SDK 中 IsInRole 中的声明 | REST |
 |---------|---------|-------------|-----|------|
 | [语音转文本](speech-to-text.md) | 实时语音转文本 | 语音转文本可将音频流或本地文件实时转录或翻译为文本，应用程序、工具或设备可以使用或显示这些文本。 结合[语言理解 (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) 使用语音转文本可以从听录的语音中派生用户意向，以及处理语音命令。 | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [是](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [批量语音转文本](batch-transcription.md) | 批量语音转文本支持对 Azure Blob 存储中存储的大量语音音频数据进行异步语音到文本转录。 除了将语音音频转换为文本，批量语音转文本还允许进行分割聚类和情感分析。 | 否 | [是](https://westus.cris.ai/swagger/ui/index) |

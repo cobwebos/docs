@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 07/08/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 67a66ae94508a8d7f54d6112de95fa65a8fd5f09
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: d7502414f6476cafcc85bbefd28a4ec463f62099
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88185411"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88751689"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>使用 Azure 机器学习部署模型
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "88185411"
 
 1. 注册模型。
 1. 准备推理配置
-1. 准备条目脚本 (，除非使用[无代码部署](how-to-deploy-no-code-deployment.md)) 
+1. 准备条目脚本 (，除非使用 [无代码部署](how-to-deploy-no-code-deployment.md)) 
 1. 将模型部署到计算目标。
 1. 测试已部署的模型（也称为“Web 服务”）。
 
@@ -53,7 +53,7 @@ ms.locfileid: "88185411"
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)
 
-按照 Azure CLI 文档中的说明[设置你的订阅上下文](/cli/azure/manage-azure-subscriptions-azure-cli#change-the-active-subscription)。
+按照 Azure CLI 文档中的说明 [设置你的订阅上下文](/cli/azure/manage-azure-subscriptions-azure-cli#change-the-active-subscription)。
 
 然后执行以下操作：
 
@@ -107,7 +107,7 @@ az ml model register -n onnx_mnist -p mnist/model.onnx
 
 若要在模型注册中包含多个文件，请将 `-p` 设置为包含文件的文件夹的路径。
 
-有关的详细信息 `az ml model register` ，请参阅[参考文档](/cli/azure/ext/azure-cli-ml/ml/model)。
+有关的详细信息 `az ml model register` ，请参阅 [参考文档](/cli/azure/ext/azure-cli-ml/ml/model)。
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -218,12 +218,12 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 name: project_environment
 dependencies:
-    - python=3.6.2
-    - scikit-learn=0.20.0
-    - pip:
-        # You must list azureml-defaults as a pip dependency
-    - azureml-defaults>=1.0.45
-    - inference-schema[numpy-support]
+- python=3.6.2
+- scikit-learn=0.22.1
+- pip:
+ # You must list azureml-defaults as a pip dependency
+ - azureml-defaults>=1.0.45
+ - inference-schema[numpy-support]
 ```
 
 > [!IMPORTANT]
@@ -242,7 +242,7 @@ myenv = Environment.from_conda_specification(name = 'myenv',
 myenv.register(workspace=ws)
 ```
 
-有关使用 Azure 机器学习并自定义 Python 环境的详细讨论，请参阅[在 Azure 机器学习中创建 & 使用软件环境](how-to-use-environments.md)。
+有关使用 Azure 机器学习并自定义 Python 环境的详细讨论，请参阅 [在 Azure 机器学习中创建 & 使用软件环境](how-to-use-environments.md)。
 
 若要详细了解如何将自定义 Docker 映像与推理配置结合使用，请参阅[如何使用自定义 Docker 映像部署模型](how-to-deploy-custom-docker-image.md)。
 
@@ -371,9 +371,9 @@ Azure 机器学习计算目标由 Azure 机器学习创建和管理。 它们可
 
 若要删除已部署的 webservice，请使用 `az ml service <name of webservice>` 。
 
-若要从工作区中删除已注册的模型，请使用`az ml model delete <model id>`
+若要从工作区中删除已注册的模型，请使用 `az ml model delete <model id>`
 
-阅读有关[删除 webservice](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-delete)并[删除模型](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-delete)的详细信息。
+阅读有关 [删除 webservice](/cli/azure/ext/azure-cli-ml/ml/service#ext-azure-cli-ml-az-ml-service-delete) 并 [删除模型](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-delete)的详细信息。
 
 # <a name="python"></a>[Python](#tab/python)
 

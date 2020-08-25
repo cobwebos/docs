@@ -2,16 +2,16 @@
 author: areddish
 ms.author: areddish
 ms.service: cognitive-services
-ms.date: 04/14/2020
+ms.date: 08/17/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 0cb31f5470519e33b76c6cad83d7b47972f21381
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 6705e6f1e988a836a3a9b7e7c4950510fcb2b228
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407297"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511273"
 ---
-本文介绍如何开始通过 Node.js 使用自定义视觉 SDK 来构建对象检测模型。 创建该项目后，可以添加标记的区域、上传图像、训练项目、获取项目的已发布预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Node.js 应用程序的模板。
+本文介绍如何开始通过 Node.js 使用自定义视觉客户端库来构建对象检测模型。 创建该项目后，可以添加标记的区域、上传图像、训练项目、获取项目的已发布预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Node.js 应用程序的模板。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -24,9 +24,9 @@ ms.locfileid: "87407297"
 [!INCLUDE [node-get-images](../../includes/node-get-images.md)]
 
 
-## <a name="install-the-custom-vision-sdk"></a>安装自定义视觉 SDK
+## <a name="install-the-custom-vision-client-library"></a>安装自定义视觉客户端库
 
-若要在项目中安装适用于 Node.js 的自定义视觉服务 SDK，请运行以下命令：
+若要在项目中安装适用于 Node.js 的自定义视觉服务客户端库，请运行以下命令：
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training

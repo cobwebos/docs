@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 8fd670104a04229ed688b365de89e2ffc22b5429
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: adf58b667d17393fc905fbf31261530fce88d9f8
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499375"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272342"
 ---
 # <a name="what-are-durable-functions"></a>什么是 Durable Functions？
 
@@ -25,6 +25,7 @@ Durable Functions 目前支持以下语言：
 * **JavaScript**：仅 Azure Functions 运行时的版本 2.x 支持此语言。 要求使用 1.7.0 版或更高版本的 Durable Functions 扩展。 
 * **Python**：要求使用 1.8.5 版或更高版本的 Durable Functions 扩展。 
 * **F#** ：预编译的类库和 F# 脚本。 仅 Azure Functions 运行时的版本 1.x 支持 F# 脚本。
+* **PowerShell**：对 Durable Functions 的支持目前以公共预览版提供。 仅 Azure Functions 运行时的版本 3.x 和 PowerShell 7 支持。 要求使用 2.2.2 版或更高版本的 Durable Functions 扩展。 目前仅支持以下模式：[函数链](#chaining)、[扇出/扇入](#fan-in-out)和[异步 HTTP API](#async-http)。
 
 Durable Functions 的目标是支持所有 [Azure Functions 语言](../supported-languages.md)。 请参阅 [Durable Functions 问题列表](https://github.com/Azure/azure-functions-durable-extension/issues)，了解支持其他语言所需的最新工作状态。
 
@@ -119,6 +120,19 @@ main = df.Orchestrator.create(orchestrator_function)
 > [!NOTE]
 > Python 中的 `context` 对象表示业务流程上下文。 使用业务流程上下文上的 `function_context` 属性访问主 Azure Functions 上下文。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```PowerShell
+param($Context)
+
+$X = Invoke-ActivityFunction -FunctionName 'F1'
+$Y = Invoke-ActivityFunction -FunctionName 'F2' -Input $X
+$Z = Invoke-ActivityFunction -FunctionName 'F3' -Input $Y
+Invoke-ActivityFunction -FunctionName 'F4' -Input $Z
+```
+
+可以使用 `Invoke-ActivityFunction` 命令按名称调用其他函数、传递参数并返回函数输出结果。 每当代码在不使用 `NoWait` 开关的情况下调用 `Invoke-ActivityFunction` 时，Durable Functions 框架都会对当前函数实例的进度执行检查点操作。 如果在执行中途回收进程或虚拟机，函数实例将从上一个 `Invoke-ActivityFunction` 调用继续执行。 有关详细信息，请参阅下一部分“模式 #2：扇出/扇入”。
+
 ---
 
 ### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>模式 #2：扇出/扇入
@@ -156,7 +170,7 @@ public static async Task Run(
 }
 ```
 
-扇出操作将分散到 `F2` 函数的多个实例。 使用动态任务列表跟踪这些操作。 将调用 `Task.WhenAll` 来等待所有被调用函数完成。 然后，从动态任务列表聚合 `F2` 函数输出，并将这些输出传递给 `F3` 函数。
+扇出工作将分散到 `F2` 函数的多个实例。 使用动态任务列表跟踪这些操作。 将调用 `Task.WhenAll` 来等待所有被调用函数完成。 然后，从动态任务列表聚合 `F2` 函数输出，并将这些输出传递给 `F3` 函数。
 
 在针对 `Task.WhenAll` 调用 `await` 时自动执行的检查点操作确保中途可能出现的任何崩溃或重新启动无需重启已完成的任务。
 
@@ -182,7 +196,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-扇出操作将分散到 `F2` 函数的多个实例。 使用动态任务列表跟踪这些操作。 将调用 `context.df.Task.all` API 来等待所有被调用函数完成。 然后，从动态任务列表聚合 `F2` 函数输出，并将这些输出传递给 `F3` 函数。
+扇出工作将分散到 `F2` 函数的多个实例。 使用动态任务列表跟踪这些操作。 将调用 `context.df.Task.all` API 来等待所有被调用函数完成。 然后，从动态任务列表聚合 `F2` 函数输出，并将这些输出传递给 `F3` 函数。
 
 在针对 `context.df.Task.all` 调用 `yield` 时自动执行的检查点操作确保中途可能出现的任何崩溃或重新启动无需重启已完成的任务。
 
@@ -211,6 +225,30 @@ main = df.Orchestrator.create(orchestrator_function)
 扇出工作将分散到 `F2` 函数的多个实例。 使用动态任务列表跟踪这些操作。 将调用 `context.task_all` API 来等待所有被调用函数完成。 然后，从动态任务列表聚合 `F2` 函数输出，并将这些输出传递给 `F3` 函数。
 
 在针对 `context.task_all` 调用 `yield` 时自动执行的检查点操作确保中途可能出现的任何崩溃或重新启动无需重启已完成的任务。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```PowerShell
+param($Context)
+
+# Get a list of work items to process in parallel.
+$WorkBatch = Invoke-ActivityFunction -FunctionName 'F1'
+
+$ParallelTasks =
+    foreach ($WorkItem in $WorkBatch) {
+        Invoke-ActivityFunction -FunctionName 'F2' -Input $WorkItem -NoWait
+    }
+
+$Outputs = Wait-ActivityFunction -Task $ParallelTasks
+
+# Aggregate all outputs and send the result to F3.
+$Total = ($Outputs | Measure-Object -Sum).Sum
+Invoke-ActivityFunction -FunctionName 'F3' -Input $Total
+```
+
+扇出工作将分散到 `F2` 函数的多个实例。 请注意，在 `F2` 函数调用上使用 `NoWait` 开关：此开关允许业务流程协调程序继续调用 `F2`，而无需完成活动。 使用动态任务列表跟踪这些操作。 将调用 `Wait-ActivityFunction` 命令来等待所有被调用函数完成。 然后，从动态任务列表聚合 `F2` 函数输出，并将这些输出传递给 `F3` 函数。
+
+在调用 `Wait-ActivityFunction` 时自动执行的检查点操作确保中途可能出现的任何崩溃或重新启动无需重启已完成的任务。
 
 ---
 
@@ -357,6 +395,10 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 目前不支持监视器。
+
 ---
 
 收到请求时，会为该作业 ID 创建新的业务流程实例。 该实例会一直轮询状态，直到满足条件退出循环。 持久计时器控制轮询间隔。 然后可以执行其他操作，或者可以结束业务流程。 当 `nextCheck` 超过 `expiryTime` 时，监视器将结束。
@@ -455,6 +497,10 @@ main = df.Orchestrator.create(orchestrator_function)
 
 若要创建持久计时器，请调用 `context.create_timer`。 通知由 `context.wait_for_external_event` 接收。 然后，调用 `context.task_any` 来确定是上报（首先发生超时）还是处理审批（超时前收到审批）。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 目前不支持人机交互。
+
 ---
 
 外部客户端可以使用[内置 HTTP API](durable-functions-http-api.md#raise-event) 将事件通知传递给正在等待的业务流程协调程序函数：
@@ -501,6 +547,10 @@ async def main(client: str):
     is_approved = True
     await durable_client.raise_event(instance_id, "ApprovalEvent", is_approved)
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 目前不支持人机交互。
 
 ---
 
@@ -583,6 +633,10 @@ module.exports = df.entity(function(context) {
 
 Python 目前不支持持久性实体。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 目前不支持持久性实体。
+
 ---
 
 客户端可以使用[实体客户端绑定](durable-functions-bindings.md#entity-client)将实体函数的操作排入队列（也称为“信号发送”）。
@@ -622,6 +676,10 @@ module.exports = async function (context) {
 # <a name="python"></a>[Python](#tab/python)
 
 Python 目前不支持持久性实体。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+PowerShell 目前不支持持久性实体。
 
 ---
 

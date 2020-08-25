@@ -1,19 +1,17 @@
 ---
 title: Data Lake Analytics 的最新更改
 description: 本文提供了对 Data Lake Analytics 进行的最新更改的持续更新的列表。
-services: data-lake-analytics
 author: xujiang1
 ms.service: data-lake-analytics
-ms.devlang: na
 ms.topic: overview
 ms.author: xujiang1
 ms.date: 07/31/2020
-ms.openlocfilehash: e78389ffc06f1b4cd4e39c15ac66215d514e9bc1
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 6f4885594e4f67d91c595d8afdddc15e8ed4ae75
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87476309"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263174"
 ---
 # <a name="whats-new-in-data-lake-analytics"></a>Data Lake Analytics 中的新增功能
 
@@ -35,14 +33,13 @@ Azure Data Lake U-SQL 运行时（包括编译器、优化器和作业管理器�
 
 运行时版本会定期更新。 以前的运行时会保留一段时间以供使用。 当新的 Beta 版本可供预览时，它也会在其中进行提供。
 
-下面是目前可用的运行时版本。
+> [!CAUTION]
+> - 选择与默认运行时不同的运行时可能会中断 U-SQL 作业。 强烈建议不要将这些非默认版本用于生产，而仅将其用于测试。
+> - 非默认运行时版本有固定的生命周期。 它会自动过期。
 
-- release-20200124live_adl_16283022_2 --> 当前默认版本
-- release_20200124live_adl_16283022
-- release_20200124_adl_14480125
-- release_20190904_adl_10236248_1
-- release_20190904_adl_10236248
-- release_20190904_adl_9225818
+以下版本是当前的默认运行时版本。
+
+- release-20200124live_adl_16283022_2
 
 若要了解如何排查 SQL 运行时故障，请参阅[排查 U-SQL 运行时故障](runtime-troubleshoot.md)。
 

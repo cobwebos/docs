@@ -1,6 +1,6 @@
 ---
 title: 教程 - 将自定义域添加到 Azure CDN 终结点 | Microsoft Docs
-description: 在本教程中，请将 Azure CDN 终结点内容映射到自定义域。
+description: 使用本教程将自定义域添加到 Azure 内容分发网络终结点，以便在 URL 中可以看到域名。
 services: cdn
 documentationcenter: ''
 author: asudbring
@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/11/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: ab4845a93771bace5bca15ea3afa7027884e36f4
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 4ca601a3f149d8287137265665379d407d10b988
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81260575"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192695"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>教程：将自定义域添加到 Azure CDN 终结点
 本教程介绍如何将自定义域添加到 Azure 内容分发网络 (CDN) 终结点。 使用 CDN 终结点来交付内容时，如果希望自己的域名在 CDN URL 中可见，则必须使用自定义域。 使用可见的域名可以方便客户，适用于推广品牌。 
