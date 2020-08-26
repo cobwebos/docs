@@ -4,12 +4,12 @@ description: 了解如何通过添加节点类型来缩放 Service Fabric 分类
 ms.topic: article
 ms.date: 08/06/2020
 ms.author: pepogors
-ms.openlocfilehash: eecf398359470f6e5e151c53eb63b3cb56efbe39
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: b34f3f77dab6c4dcd8b7653f552c32a669d257c9
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056748"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854623"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type-by-adding-a-node-type"></a>通过添加节点类型来向上缩放 Service Fabric 群集主节点类型
 本文介绍如何通过向群集中添加其他节点类型来纵向扩展 Service Fabric 群集主节点类型。 Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 属于群集一部分的计算机或 VM 称为节点。 虚拟机规模集是一种 Azure 计算资源，用于将一组 VM 作为一个集进行部署和管理。 Azure 群集中定义的每个节点类型[设置为独立的规模集](service-fabric-cluster-nodetypes.md)。 然后可以单独管理每个节点类型。
@@ -29,7 +29,7 @@ ms.locfileid: "88056748"
 > 在生产群集上尝试执行此过程之前，建议先研究示例模板并对测试群集验证此过程。 群集也可能在很短的时间内不可用。 
 
 ### <a name="deploy-the-initial-service-fabric-cluster"></a>部署初始 Service Fabric 群集 
-如果要遵循示例，请使用单个主节点类型部署初始群集，并[Service Fabric 初始群集](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-1.json)部署单个规模集。 如果已部署现有 Service Fabric 群集，则可以跳过此步骤。 
+如果要遵循示例，请使用单个主节点类型部署初始群集，并 [Service Fabric 初始群集](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-1.json)部署单个规模集。 如果已部署现有 Service Fabric 群集，则可以跳过此步骤。 
 
 1. 登录到 Azure 帐户。 
 ```powershell
@@ -43,7 +43,7 @@ $resourceGroupName = "myResourceGroup"
 $location = "WestUS"
 
 New-AzResourceGroup `
-    -Name $resourceGroupName
+    -Name $resourceGroupName `
     -Location $location
 ```
 3. 填写模板文件中的参数值。 
@@ -56,7 +56,7 @@ $parameterFilePath = "C:\AzureDeploy.Parameters.json"
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateFile $templateFilePath `
-    -TemplateParameterFile $parameterFilePath `
+    -TemplateParameterFile $parameterFilePath
 ```
 
 ### <a name="add-a-new-primary-node-type-to-the-cluster"></a>向群集添加新的主节点类型
@@ -124,7 +124,7 @@ VM SKU
     "version": "[parameters('vmImageVersion1')]"
 }
 ```
-5. 向群集添加新的节点类型，该类型引用前面创建的虚拟机规模集。 应将此节点类型的**isPrimary**属性设置为 true。 
+5. 向群集添加新的节点类型，该类型引用前面创建的虚拟机规模集。 应将此节点类型的 **isPrimary** 属性设置为 true。 
 ```json
 "name": "[variables('vmNodeType1Name')]",
 "applicationPorts": {
@@ -337,7 +337,7 @@ foreach($node in $nodes)
  } 
 }
 ```
-10. 从 ARM 模板删除与原始节点类型相关的所有其他资源。 请参阅 Service Fabric-已删除所有这些原始资源的模板的[新节点类型分类](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json)。
+10. 从 ARM 模板删除与原始节点类型相关的所有其他资源。 请参阅 Service Fabric-已删除所有这些原始资源的模板的 [新节点类型分类](https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/Primary-NodeType-Scaling-Sample/AzureDeploy-4.json) 。
 
 11. 部署修改后的 Azure 资源管理器模板。 ** 此步骤需要花费一段时间，通常最长为两个小时。 此项升级会将设置更改为 InfrastructureService，因此需要重启节点。 在这种情况下，将忽略 forceRestart。 参数 upgradeReplicaSetCheckTimeout 指定 Service Fabric 等待分区处于安全状态（如果尚未处于安全状态）的最长时间。 一旦节点上的所有分区都已通过安全检查，Service Fabric 就会在该节点上继续升级。 参数 upgradeTimeout 的值可以缩短到6小时，但应使用最大安全12小时。
 然后验证门户中的 Service Fabric 资源是否显示为 "就绪"。 

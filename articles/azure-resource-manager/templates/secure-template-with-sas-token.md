@@ -2,17 +2,20 @@
 title: 使用 SAS 令牌安全部署模板
 description: 使用受 SAS 令牌保护的 Azure 资源管理器模板将资源部署到 Azure。 显示 Azure PowerShell 和 Azure CLI。
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 42eaae316d4fd0575102323933f849a3058228a6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/25/2020
+ms.openlocfilehash: 8b35e82da8ebca98ec9fe1fb7441612bf61fb142
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "80156389"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855659"
 ---
 # <a name="deploy-private-arm-template-with-sas-token"></a>部署具有 SAS 令牌的专用 ARM 模板
 
-当 Azure 资源管理器（ARM）模板位于存储帐户中时，你可以限制对该模板的访问，以避免公开公开。 访问受保护模板的方法是：为模板创建一个共享访问签名 (SAS) 令牌，在部署时提供该令牌。 本文介绍如何使用 Azure PowerShell 或 Azure CLI 通过 SAS 令牌来部署模板。
+当 Azure 资源管理器模板 (ARM 模板) 位于存储帐户中时，你可以限制对该模板的访问，以避免公开公开。 访问受保护模板的方法是：为模板创建一个共享访问签名 (SAS) 令牌，在部署时提供该令牌。 本文介绍如何使用 Azure PowerShell 或 Azure CLI 通过 SAS 令牌来部署模板。
+
+> [!IMPORTANT]
+> 请考虑使用 [模板规范](template-specs.md)，而不是使用 SAS 令牌保护模板。 使用模板规范，你可以与组织中的其他用户共享模板，并通过 Azure RBAC 管理对模板的访问权限。
 
 ## <a name="create-storage-account-with-secured-container"></a>使用受保护的容器创建存储帐户
 
@@ -111,6 +114,8 @@ New-AzResourceGroupDeployment `
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+下面的示例与 Cloud Shell 中的 Bash 环境结合使用。 其他环境可能需要不同的语法来创建 SAS 令牌的过期时间。
+
 ```azurecli-interactive
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
 connection=$(az storage account show-connection-string \
@@ -140,5 +145,5 @@ az deployment group create \
 
 
 ## <a name="next-steps"></a>后续步骤
-* 有关部署模板的简介，请参阅[使用 ARM 模板部署资源和 Azure PowerShell](deploy-powershell.md)。
+* 有关部署模板的简介，请参阅 [使用 ARM 模板部署资源和 Azure PowerShell](deploy-powershell.md)。
 * 若要在模板中定义参数，请参阅[创作模板](template-syntax.md#parameters)。

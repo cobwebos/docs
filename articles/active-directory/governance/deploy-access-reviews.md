@@ -16,12 +16,12 @@ ms.date: 08/14/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb74fae150d4c8e5dda6978c272d358bdec6ca25
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 46a56e830c8c9b55c9bbe48cd7d23ad8475b51b8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88783597"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853031"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>规划 Azure Active Directory 访问评审部署
 
@@ -283,7 +283,7 @@ ms.locfileid: "88783597"
 
 * 在 Azure AD 或 Azure 订阅中分配有特权角色
 
-请参阅 [示例脚本](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse.)。 此脚本将显示在何处使用受邀加入租户的外部标识。 可以在 Azure AD 中查看外部用户的组成员身份、角色分配和应用程序分配。 此脚本不会显示 Azure AD 之外的任何分配，例如无需使用组即可直接分配给 Sharepoint 资源的权限。
+请参阅 [示例脚本](https://github.com/microsoft/access-reviews-samples/tree/master/ExternalIdentityUse)。 此脚本将显示在何处使用受邀加入租户的外部标识。 可以在 Azure AD 中查看外部用户的组成员身份、角色分配和应用程序分配。 此脚本不会显示 Azure AD 之外的任何分配，例如无需使用组即可直接分配给 Sharepoint 资源的权限。
 
 创建组或应用程序的访问评审时，可以选择让审阅者专注于具有访问权限的所有人或仅限来宾用户。 通过选择 "仅来宾用户"，将为审阅者提供 Azure AD B2B 中可访问资源的外部标识的集中列表。
 

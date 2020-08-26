@@ -10,15 +10,15 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/06/2020
+ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: d518dcf833a49e32d72938a31da412d53cc40037
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 1cd2b7550d47ecc92f8ca7f5531fab923e13930c
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88141527"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853358"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -143,7 +143,6 @@ ms.locfileid: "88141527"
 | onprem_sid |
 | openid2_id |
 | password |
-| platf |
 | polids |
 | pop_jwk |
 | preferred_username |
@@ -157,12 +156,12 @@ ms.locfileid: "88141527"
 | refreshtoken |
 | request_nonce |
 | resource |
-| role |
+| 角色 (role) |
 | 角色 |
 | scope |
 | scp |
 | sid |
-| signature |
+| 签名 |
 | signin_state |
 | src1 |
 | src2 |
@@ -248,11 +247,11 @@ ms.locfileid: "88141527"
 
 **摘要：** 此属性确定是否在受此策略影响的令牌中包含基本声明集。
 
-- 如果设置为 True，则会在受策略影响的令牌中发出基本声明集中的所有声明。 
+- 如果设置为 True，则会在受策略影响的令牌中发出基本声明集中的所有声明。
 - 如果设置为 False，基本声明集中的声明不包含在令牌中，除非在相同策略的声明架构属性中单独添加它们。
 
-> [!NOTE] 
-> 核心声明集中的声明存在于每个令牌中（与此属性的设置无关）。 
+> [!NOTE]
+> 核心声明集中的声明存在于每个令牌中（与此属性的设置无关）。
 
 ### <a name="claims-schema"></a>声明架构
 
@@ -261,20 +260,20 @@ ms.locfileid: "88141527"
 **数据类型：** 具有一个或多个声明架构条目的 JSON Blob
 
 **摘要：** 此属性定义除了基本声明集与核心声明集之外，在受此策略影响的令牌中存在的声明。
-对于此属性中定义的每个声明架构条目，都需要特定信息。 指定数据的来源位置 (**值**、**源/ID 对**或**源/ExtensionID 对**) ，并声明数据作为 (**声明类型**) 发出。
+对于此属性中定义的每个声明架构条目，都需要特定信息。 指定数据的来源位置 (**值**、 **源/ID 对**或 **源/ExtensionID 对**) ，并声明数据作为 (**声明类型**) 发出。
 
 ### <a name="claim-schema-entry-elements"></a>声明架构条目元素
 
 **Value：** Value 元素将静态值定义为要在声明中发出的数据。
 
-**Source/ID 对：** Source 和 ID 元素定义声明中的数据的来源。  
+**Source/ID 对：** Source 和 ID 元素定义声明中的数据的来源。
 
-**Source/ExtensionID 对：** 源元素和 ExtensionID 元素定义声明中的数据源自的目录架构扩展属性。 有关详细信息，请参阅[在声明中使用目录架构扩展属性](active-directory-schema-extensions.md)。
+**Source/ExtensionID 对：** 源元素和 ExtensionID 元素定义声明中的数据源自的目录架构扩展属性。 有关详细信息，请参阅 [在声明中使用目录架构扩展属性](active-directory-schema-extensions.md)。
 
-将 Source 元素设置为下列值之一： 
+将 Source 元素设置为下列值之一：
 
-- "user"：声明中的数据是 User 对象的属性。 
-- "application"：声明中的数据是应用程序（客户端）服务主体的属性。 
+- "user"：声明中的数据是 User 对象的属性。
+- "application"：声明中的数据是应用程序（客户端）服务主体的属性。
 - "resource"：声明中的数据是资源服务主体的属性。
 - "audience"：声明中的数据是作为令牌受众的服务主体（客户端或资源服务主体）的属性。
 - "company"：声明中的数据是资源租户的 Company 对象的属性。
@@ -288,50 +287,50 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 | 源 | ID | 说明 |
 |-----|-----|-----|
-| 用户 | surname | 家族名称 |
-| 用户 | givenname | 名 |
-| 用户 | displayname | 显示名称 |
-| 用户 | objectid | ObjectID |
-| 用户 | mail | 电子邮件地址 |
-| 用户 | userprincipalname | 用户主体名称 |
-| 用户 | department|部门|
-| 用户 | onpremisessamaccountname | 本地 SAM 帐户名称 |
-| 用户 | netbiosname| NetBios 名称 |
-| 用户 | dnsdomainname | DNS 域名 |
-| 用户 | onpremisesecurityidentifier | 本地安全标识符 |
-| 用户 | companyname| 组织名称 |
-| 用户 | streetaddress | 街道地址 |
-| 用户 | postalcode | 邮政编码 |
-| 用户 | preferredlanguange | 首选语言 |
-| 用户 | onpremisesuserprincipalname | 本地 UPN |
-| 用户 | mailNickname | 邮件别名 |
-| 用户 | extensionattribute1 | 扩展属性 1 |
-| 用户 | extensionattribute2 | 扩展属性 2 |
-| 用户 | extensionattribute3 | 扩展属性 3 |
-| 用户 | extensionattribute4 | 扩展属性 4 |
-| 用户 | extensionattribute5 | 扩展属性 5 |
-| 用户 | extensionattribute6 | 扩展属性 6 |
-| 用户 | extensionattribute7 | 扩展属性 7 |
-| 用户 | extensionattribute8 | 扩展属性 8 |
-| 用户 | extensionattribute9 | 扩展属性 9 |
-| 用户 | extensionattribute10 | 扩展属性 10 |
-| 用户 | extensionattribute11 | 扩展属性 11 |
-| 用户 | extensionattribute12 | 扩展属性 12 |
-| 用户 | extensionattribute13 | 扩展属性 13 |
-| 用户 | extensionattribute14 | 扩展属性 14 |
-| 用户 | extensionattribute15 | 扩展属性 15 |
-| 用户 | othermail | 其他邮件 |
-| 用户 | country | 国家/地区 |
-| 用户 | city | 城市 |
-| 用户 | state | 状态 |
-| 用户 | jobtitle | 职务 |
-| 用户 | employeeid | 员工 ID |
-| 用户 | facsimiletelephonenumber | 传真电话号码 |
+| User | surname | 家族名称 |
+| User | givenname | 名 |
+| User | displayname | 显示名称 |
+| User | objectid | ObjectID |
+| User | mail | 电子邮件地址 |
+| User | userprincipalname | 用户主体名称 |
+| User | department|部门|
+| User | onpremisessamaccountname | 本地 SAM 帐户名称 |
+| User | netbiosname| NetBios 名称 |
+| User | dnsdomainname | DNS 域名 |
+| User | onpremisesecurityidentifier | 本地安全标识符 |
+| User | companyname| 组织名称 |
+| User | streetaddress | 街道地址 |
+| User | postalcode | 邮政编码 |
+| User | preferredlanguange | 首选语言 |
+| User | onpremisesuserprincipalname | 本地 UPN |
+| User | mailNickname | 邮件别名 |
+| User | extensionattribute1 | 扩展属性 1 |
+| User | extensionattribute2 | 扩展属性 2 |
+| User | extensionattribute3 | 扩展属性 3 |
+| User | extensionattribute4 | 扩展属性 4 |
+| User | extensionattribute5 | 扩展属性 5 |
+| User | extensionattribute6 | 扩展属性 6 |
+| User | extensionattribute7 | 扩展属性 7 |
+| User | extensionattribute8 | 扩展属性 8 |
+| User | extensionattribute9 | 扩展属性 9 |
+| User | extensionattribute10 | 扩展属性 10 |
+| User | extensionattribute11 | 扩展属性 11 |
+| User | extensionattribute12 | 扩展属性 12 |
+| User | extensionattribute13 | 扩展属性 13 |
+| User | extensionattribute14 | 扩展属性 14 |
+| User | extensionattribute15 | 扩展属性 15 |
+| User | othermail | 其他邮件 |
+| User | country | 国家/地区 |
+| User | city | 城市 |
+| User | state | 状态 |
+| User | jobtitle | 职务 |
+| User | employeeid | 员工 ID |
+| User | facsimiletelephonenumber | 传真电话号码 |
 | User | assignedroles | 分配给用户的应用角色列表|
 | application、resource、audience | displayname | 显示名称 |
 | application、resource、audience | objectid | ObjectID |
 | application、resource、audience | 标记 | 服务主体标记 |
-| 公司 | tenantcountry | 租户的国家/地区 |
+| Company | tenantcountry | 租户的国家/地区 |
 
 **TransformationID：** 仅当 Source 元素设置为“transformation”时，才必须提供 TransformationID 元素。
 
@@ -349,7 +348,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 **字符串：** ClaimsTransformation
 
-**数据类型：** 具有一个或多个转换条目的 JSON Blob 
+**数据类型：** 具有一个或多个转换条目的 JSON Blob
 
 **摘要：** 使用此属性可将常见转换应用于源数据，以便为声明架构中指定的声明生成输出数据。
 
@@ -368,7 +367,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 **InputClaims：** 使用 InputClaims 元素可将数据从声明架构条目传递给转换。 它具有两个属性：**ClaimTypeReferenceId** 和 **TransformationClaimType**。
 
-- **ClaimTypeReferenceId** 与声明架构条目的 ID 元素联接在一起可查找相应的输入声明。 
+- **ClaimTypeReferenceId** 与声明架构条目的 ID 元素联接在一起可查找相应的输入声明。
 - **TransformationClaimType** 用于向此输入提供唯一名称。 此名称必须与转换方法的预期输入之一匹配。
 
 **InputParameters：** 使用 InputParameters 元素可将常数值传递给转换。 它具有两个属性：**Value** 和 **ID**。
@@ -407,7 +406,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 | User | extensionattribute12 | 扩展属性 12 |
 | User | extensionattribute13 | 扩展属性 13 |
 | User | extensionattribute14 | 扩展属性 14 |
-| 用户 | extensionattribute15 | 扩展属性 15 |
+| User | extensionattribute15 | 扩展属性 15 |
 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>表 6：允许用于 SAML NameID 的转换方法
 
@@ -420,7 +419,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 必须为服务主体对象分配自定义签名密钥，否则声明映射策略无法生效。 这可以确保确认令牌是由声明映射策略的创建者修改的，并防止应用程序被恶意参与者创建的声明映射策略破坏。 若要添加自定义签名密钥，可以使用 Azure PowerShell cmdlet `new-azureadapplicationkeycredential` 为应用程序对象创建对称密钥凭据。 有关此 Azure PowerShell cmdlet 的详细信息，请参阅 [New-AzureADApplicationKeyCredential](/powerShell/module/Azuread/New-AzureADApplicationKeyCredential?view=azureadps-2.0)。
 
-启用了声明映射的应用必须通过将 `appid={client_id}` 追加到其 [OpenID Connect 元数据请求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)来验证令牌签名密钥。 下面是你应该使用的 OpenID 连接元数据文档的格式： 
+启用了声明映射的应用必须通过将 `appid={client_id}` 追加到其 [OpenID Connect 元数据请求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)来验证令牌签名密钥。 下面是你应该使用的 OpenID 连接元数据文档的格式：
 
 ```
 https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid={client-id}
@@ -439,7 +438,7 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 在 Azure AD 中，在可以为特定服务主体自定义令牌中发出的声明时，可以实现许多方案。 在此部分中，我们会演练几个常见方案，它们可帮助你理解如何使用声明映射策略类型。
 
 > [!NOTE]
-> 创建声明映射策略时，还可以从令牌中的目录架构扩展属性发出声明。 在元素中使用*ExtensionID*作为扩展特性而不是*ID* `ClaimsSchema` 。  有关扩展属性的详细信息，请参阅[使用目录架构扩展属性](active-directory-schema-extensions.md)。
+> 创建声明映射策略时，还可以从令牌中的目录架构扩展属性发出声明。 在元素中使用 *ExtensionID* 作为扩展特性而不是 *ID* `ClaimsSchema` 。  有关扩展属性的详细信息，请参阅 [使用目录架构扩展属性](active-directory-schema-extensions.md)。
 
 #### <a name="prerequisites"></a>先决条件
 
@@ -464,20 +463,20 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 在此示例中创建一个策略，它会从颁发给链接的服务主体的令牌中删除基本声明集。
 
 1. 创建声明映射策略。 此策略（链接到特定服务主体）会从令牌中删除基本声明集。
-   1. 若要创建该策略，请运行以下命令： 
-    
+   1. 若要创建该策略，请运行以下命令：
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"false"}}') -DisplayName "OmitBasicClaims" -Type "ClaimsMappingPolicy"
       ```
    2. 若要查看新策略并获取其 ObjectId，请运行以下命令：
-    
+
       ``` powershell
       Get-AzureADPolicy
       ```
 1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。
    1. 若要查看组织的所有服务主体，可以[查询 Microsoft Graph API](/graph/traverse-the-graph)。 或者，在 [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) 中登录到你的 Azure AD 帐户。
-   2. 获取服务主体的 ObjectId 后，运行以下命令：  
-     
+   2. 获取服务主体的 ObjectId 后，运行以下命令：
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
@@ -487,21 +486,21 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 在此示例中创建一个策略，它会向颁发给链接的服务主体的令牌添加 EmployeeID 和 TenantCountry。 EmployeeID 在 SAML 令牌和 JWT 中都作为名称声明类型发出。 TenantCountry 在 SAML 令牌和 JWT 中都作为国家/地区声明类型发出。 在此示例中，我们继续在令牌中包含基本声明集。
 
 1. 创建声明映射策略。 此策略（链接到特定服务主体）向令牌添加 EmployeeID 和 TenantCountry 声明。
-   1. 若要创建该策略，请运行以下命令：  
-     
+   1. 若要创建该策略，请运行以下命令：
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema": [{"Source":"user","ID":"employeeid","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/employeeid","JwtClaimType":"name"},{"Source":"company","ID":"tenantcountry","SamlClaimType":"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/country","JwtClaimType":"country"}]}}') -DisplayName "ExtraClaimsExample" -Type "ClaimsMappingPolicy"
       ```
-    
+
    2. 若要查看新策略并获取其 ObjectId，请运行以下命令：
-     
-      ``` powershell  
+
+      ``` powershell
       Get-AzureADPolicy
       ```
-1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。 
+1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。
    1. 若要查看组织的所有服务主体，可以[查询 Microsoft Graph API](/graph/traverse-the-graph)。 或者，在 [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) 中登录到你的 Azure AD 帐户。
-   2. 获取服务主体的 ObjectId 后，运行以下命令：  
-     
+   2. 获取服务主体的 ObjectId 后，运行以下命令：
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
@@ -512,20 +511,20 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 
 1. 创建声明映射策略。 此策略（链接到特定服务主体）向令牌添加 EmployeeID 和 TenantCountry 声明。
    1. 若要创建该策略，请运行以下命令：
-     
+
       ``` powershell
       New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy"
       ```
-    
-   2. 若要查看新策略并获取其 ObjectId，请运行以下命令： 
-     
+
+   2. 若要查看新策略并获取其 ObjectId，请运行以下命令：
+
       ``` powershell
       Get-AzureADPolicy
       ```
-1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。 
+1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。
    1. 若要查看组织的所有服务主体，可以[查询 Microsoft Graph API](/graph/traverse-the-graph)。 或者，在 [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) 中登录到你的 Azure AD 帐户。
-   2. 获取服务主体的 ObjectId 后，运行以下命令： 
-     
+   2. 获取服务主体的 ObjectId 后，运行以下命令：
+
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
@@ -533,4 +532,4 @@ https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
 ## <a name="see-also"></a>另请参阅
 
 - 若要了解如何通过 Azure 门户自定义 SAML 令牌中颁发的声明，请参阅[如何：为企业应用程序自定义 SAML 令牌中颁发的声明](active-directory-saml-claims-customization.md)
-- 若要了解有关扩展属性的详细信息，请参阅[在声明中使用目录架构扩展属性](active-directory-schema-extensions.md)。
+- 若要了解有关扩展属性的详细信息，请参阅 [在声明中使用目录架构扩展属性](active-directory-schema-extensions.md)。

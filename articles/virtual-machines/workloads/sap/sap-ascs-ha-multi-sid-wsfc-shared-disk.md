@@ -13,26 +13,24 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e8c235cd204b86573746be4bce615939f3b072fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 332c81c8502dac6f057c6ea41c7662e1edde1599
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82977900"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855176"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-shared-disk-on-azure"></a>使用 Azure 上的 Windows Server 故障转移群集和共享磁盘实现 SAP ASCS/SCS 实例多 SID 高可用性
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows OS][Logo_Windows] Windows
 >
-
-2016 年 9 月，Microsoft 推出了一项功能，可用于通过 [Azure 内部负载均衡器][load-balancer-multivip-overview]管理多个虚拟 IP 地址。 Azure 外部负载均衡器已包含此功能。 
 
 在 SAP 部署中，必须使用内部负载均衡器为 SAP 中心服务 (ASCS/SCS) 实例创建 Windows 群集配置。
 
-本文重点介绍如何通过使用共享磁盘在现有 Windows Server 故障转移群集 (WSFC) 群集中安装附加的 SAP ASCS/SCS 群集实例，从单一 ASCS/SCS 安装转移到 SAP 多 SID 配置。 完成此过程后，即已配置 SAP 多 SID 群集。
+本文重点介绍如何通过将附加的 SAP ASCS/SCS 群集实例安装到现有 Windows Server 故障转移)  (群集中，使用 ASCS 将其他 SAP/SCS 群集实例迁移到 SAP 多 SID 配置，并使用 SIOS 模拟共享磁盘。 完成此过程后，即已配置 SAP 多 SID 群集。
 
 > [!NOTE]
 > 此功能仅在 Azure 资源管理器部署模型中可用。
@@ -54,9 +52,10 @@ ms.locfileid: "82977900"
 
 > [!IMPORTANT]
 > 该设置必须满足以下条件：
-> * SAP ASCS/SCS 实例必须共享同一个 WSFC 群集。
-> * 每个数据库管理系统 (DBMS) SID 都必须有自己专用的 WSFC 群集。
-> * 属于一个 SAP 系统 SID 的 SAP 应用程序服务器必须有自身的专用 VM。
+> * SAP ASCS/SCS 实例必须共享同一个 WSFC 群集。  
+> * 每个数据库管理系统 (DBMS) SID 都必须有自己专用的 WSFC 群集。  
+> * 属于一个 SAP 系统 SID 的 SAP 应用程序服务器必须有自身的专用 VM。  
+> * 不支持在同一个群集中混合使用排队复制服务器1和排队复制服务器2。  
 
 ## <a name="sap-ascsscs-multi-sid-architecture-with-shared-disk"></a>包含共享磁盘的 SAP ASCS/SCS 多 SID 体系结构
 
@@ -246,8 +245,6 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 
     此外，打开 Azure 内部负载均衡器探测端口，在本例中为 62350。 [本文][sap-high-availability-installation-wsfc-shared-disk-win-firewall-probe-port]对此进行了描述。
 
-7. [更改 SAP 评估收据结算 (ERS) Windows 服务实例的启动类型][sap-high-availability-installation-wsfc-shared-disk-change-ers-service-startup-type]。
-
 8. 在新的专用 VM 上安装 SAP 主应用程序服务器，如 SAP 安装指南中所述。  
 
 9. 在新的专用 VM 上安装 SAP 附加应用程序服务器，如 SAP 安装指南中所述。
@@ -285,7 +282,7 @@ Write-Host "Successfully added new IP '$ILBIP' to the internal load balancer '$I
 [sap-high-availability-installation-wsfc-shared-disk]:sap-high-availability-installation-wsfc-shared-disk.md
 [sap-hana-ha]:sap-hana-high-availability.md
 [sap-suse-ascs-ha]:high-availability-guide-suse.md
-[sap-net-weaver-ports-ascs-scs-ports]:sap-high-availability-infrastructure-wsfc-shared-disk.md#0f3ee255-b31e-4b8a-a95a-d9ed6200468b
+[sap-net-weaver-ports-ascs-scs-ports]:sap-high-availability-infrastructure-wsfc-shared-disk.md#fe0bd8b5-2b43-45e3-8295-80bee5415716
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 

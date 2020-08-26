@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 03477fa46aaec04c0563ed38b085605dce5b87a1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6c85a7315fe05bb4fedabd176295523c2fa95d81
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751745"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855239"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>将模型部署到 Azure Kubernetes 服务群集
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -233,6 +233,10 @@ az ml computetarget attach aks -n myaks -i aksresourceid -g myresourcegroup -w m
 ## <a name="deploy-to-aks"></a>部署到 AKS
 
 要将模型部署到 Azure Kubernetes 服务，请创建一个描述所需计算资源的部署配置____。 例如，核心和内存的数量。 此外，还需要一个推理配置，描述托管模型和 Web 服务所需的环境。 有关如何创建推理配置的详细信息，请参阅[部署模型的方式和位置](how-to-deploy-and-where.md)。
+
+> [!NOTE]
+> 每个容器)  (每个部署的模型数限制为1000。
+
 
 ### <a name="using-the-sdk"></a>使用 SDK
 

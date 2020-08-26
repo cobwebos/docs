@@ -5,12 +5,12 @@ description: 了解如何在 Azure Kubernetes 服务 (AKS) 群集中安装和配
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 0254b8746c757d98ee98e4815dc53b22d5014765
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.openlocfilehash: 42e9f2128063caa13cf3fca1a28ec7e6465ba74e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/17/2020
-ms.locfileid: "88272801"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855695"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>创建 HTTPS 入口控制器并在 Azure Kubernetes 服务 (AKS) 中使用自己的 TLS 证书
 
@@ -27,7 +27,7 @@ ms.locfileid: "88272801"
 
 ## <a name="before-you-begin"></a>准备阶段
 
-本文使用 [Helm 3][helm] 安装 NGINX 入口控制器。 请确保使用最新版本的 Helm 并具有对 *稳定* Helm 存储库的访问权限。 有关升级说明，请参阅 [Helm 安装文档][helm-install]。有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
+本文使用 [Helm 3][helm] 安装 NGINX 入口控制器。 请确保使用最新版本的 Helm，并且有权访问 *nginx* Helm 存储库。 有关升级说明，请参阅 [Helm 安装文档][helm-install]。有关配置和使用 Helm 的详细信息，请参阅[在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序][use-helm]。
 
 本文还要求运行 Azure CLI 2.0.64 或更高版本。 运行 `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅[安装 Azure CLI][azure-cli-install]。
 
@@ -47,11 +47,11 @@ ms.locfileid: "88272801"
 # Create a namespace for your ingress resources
 kubectl create namespace ingress-basic
 
-# Add the official stable repository
-helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+# Add the ingress-nginx repository
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
 # Use Helm to deploy an NGINX ingress controller
-helm install nginx-ingress stable/nginx-ingress \
+helm install nginx-ingress ingress-nginx/ingress-nginx \
     --namespace ingress-basic \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
@@ -63,17 +63,16 @@ helm install nginx-ingress stable/nginx-ingress \
 若要获取公共 IP 地址，请使用 `kubectl get service` 命令。
 
 ```console
-kubectl get service -l app=nginx-ingress --namespace ingress-basic
+kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller
 ```
 
 将 IP 地址分配给服务需要几分钟时间。
 
 ```
-$ kubectl get service -l app=nginx-ingress --namespace ingress-basic
+$ kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller
 
-NAME                             TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)                      AGE
-nginx-ingress-controller         LoadBalancer   10.0.61.144    EXTERNAL_IP   80:30386/TCP,443:32276/TCP   6m2s
-nginx-ingress-default-backend    ClusterIP      10.0.192.145   <none>        80/TCP                       6m2s
+NAME                                     TYPE           CLUSTER-IP    EXTERNAL-IP     PORT(S)                      AGE   SELECTOR
+nginx-ingress-ingress-nginx-controller   LoadBalancer   10.0.74.133   EXTERNAL_IP     80:32486/TCP,443:30953/TCP   44s   app.kubernetes.io/component=controller,app.kubernetes.io/instance=nginx-ingress,app.kubernetes.io/name=ingress-nginx
 ```
 
 请记下此公共 IP 地址，因为在最后一个步骤中测试部署时需要用到。

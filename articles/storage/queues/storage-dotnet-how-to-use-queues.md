@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: b0415542d737fa2ab926eb572855dce5ef81690e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11fa99acda5f1c8edac3026961c426257bb74d92
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808836"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853676"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>通过 .NET 开始使用 Azure 队列存储
 
@@ -154,6 +154,8 @@ Azure 队列存储用于在应用程序组件之间进行云消息传送。 设�
 ```
 
 ### <a name="add-using-directives"></a>添加 using 指令
+
+[!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 将以下 `using` 指令添加到 `Program.cs` 文件顶部：
 

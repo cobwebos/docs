@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/10/2020
+ms.date: 08/25/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 47582f941c314933baf378478b1380cb8316935b
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.openlocfilehash: 60c7ac6a86c963a4a133f06ba6d9d602cb9090d0
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88066604"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854543"
 ---
 # <a name="soft-delete-for-containers-preview"></a>容器的软删除 (预览) 
 
@@ -23,16 +23,16 @@ ms.locfileid: "88066604"
 
 对于 blob 数据的端到端保护，Microsoft 建议启用以下数据保护功能：
 
-- 容器软删除，以防止意外删除或覆盖容器。 若要了解如何启用容器软删除，请参阅[启用和管理容器的软删除](soft-delete-container-enable.md)。
-- Blob 软删除，以防止意外删除或覆盖单个 blob。 若要了解如何启用 blob 软删除，请参阅[blob 的软删除](soft-delete-blob-overview.md)。
-- Blob 版本控制 (预览) 自动维护以前版本的 blob。 启用 blob 版本控制后，如果错误地修改或删除了数据，则可以还原该 blob 的早期版本以恢复数据。 若要了解如何启用 blob 版本控制，请参阅[启用和管理 blob 版本控制](versioning-enable.md)。
+- 容器软删除，以防止意外删除或覆盖容器。 若要了解如何启用容器软删除，请参阅 [启用和管理容器的软删除](soft-delete-container-enable.md)。
+- Blob 软删除，以防止意外删除或覆盖单个 blob。 若要了解如何启用 blob 软删除，请参阅 [blob 的软删除](soft-delete-blob-overview.md)。
+- Blob 版本控制 (预览) 自动维护以前版本的 blob。 启用 blob 版本控制后，如果错误地修改或删除了数据，则可以还原该 blob 的早期版本以恢复数据。 若要了解如何启用 blob 版本控制，请参阅 [启用和管理 blob 版本控制](versioning-enable.md)。
 
-> [!IMPORTANT]
-> 若要防止意外删除存储帐户，请在存储帐户资源上配置**CannotDelete**锁。 有关锁定 Azure 资源的详细信息，请参阅[锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
+> [!WARNING]
+> 无法撤消删除存储帐户。 软删除无法防止删除存储帐户。 若要防止意外删除存储帐户，请在存储帐户资源上配置 **CannotDelete** 锁。 有关锁定 Azure 资源的详细信息，请参阅 [锁定资源以防止意外更改](../../azure-resource-manager/management/lock-resources.md)。
 
 ## <a name="how-container-soft-delete-works"></a>容器软删除的工作原理
 
-启用容器软删除时，可以为已删除的容器指定介于1到365天之间的保留期。 默认保持期为7天。 在保留期内，可以通过调用 "**撤消删除容器**" 操作来恢复已删除的容器。
+启用容器软删除时，可以为已删除的容器指定介于1到365天之间的保留期。 默认保持期为 7 天。 在保留期内，可以通过调用 " **撤消删除容器** " 操作来恢复已删除的容器。
 
 当你还原某个容器时，如果该名称尚未重复使用，则可以将其还原为原始名称。 如果已使用原始容器名称，则可以使用新名称还原容器。
 
@@ -71,7 +71,7 @@ Azure 存储 REST API 版本2019-12-12 及更高版本支持容器软删除。
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要向 PowerShell 注册，请调用[AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature)命令。
+若要向 PowerShell 注册，请调用 [AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature) 命令。
 
 ```powershell
 # Register for container soft delete (preview)
@@ -84,7 +84,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要注册 Azure CLI，请调用[az feature register](/cli/azure/feature#az-feature-register)命令。
+若要注册 Azure CLI，请调用 [az feature register](/cli/azure/feature#az-feature-register) 命令。
 
 ```azurecli
 az feature register --namespace Microsoft.Storage --name ContainerSoftDelete
@@ -99,7 +99,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-若要通过 PowerShell 检查注册状态，请调用[AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature)命令。
+若要通过 PowerShell 检查注册状态，请调用 [AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) 命令。
 
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName ContainerSoftDelete
@@ -107,7 +107,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName Containe
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-若要查看 Azure CLI 的注册状态，请调用[az 功能](/cli/azure/feature#az-feature-show)命令。
+若要查看 Azure CLI 的注册状态，请调用 [az 功能](/cli/azure/feature#az-feature-show) 命令。
 
 ```azurecli
 az feature show --namespace Microsoft.Storage --name ContainerSoftDelete

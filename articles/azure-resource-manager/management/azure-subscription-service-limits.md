@@ -4,12 +4,12 @@ description: 提供常见的 Azure 订阅和服务限制、配额和约束的列
 ms.topic: conceptual
 author: davidsmatlak
 ms.date: 06/04/2020
-ms.openlocfilehash: 79aaa594a708fe775a2cdcc6e15b7c7f880f9f50
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 86c9958818b5439502ab37471ed7a51fb3f21bf9
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810473"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854096"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 
@@ -28,7 +28,7 @@ ms.locfileid: "87810473"
 >
 > 如果想要提高限制或配额，使其超出默认限制，可以[免费建立联机客户支持请求](../templates/error-resource-quota.md)。
 
-[免费试用订阅](https://azure.microsoft.com/offers/ms-azr-0044p)不符合限制或配额增加的条件。 如果有[免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)，可将其升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅。 有关详细信息，请参阅将[Azure 免费试用版订阅升级到即用即付订阅](../../cost-management-billing/manage/upgrade-azure-subscription.md)和[免费试用订阅常见问题解答](https://azure.microsoft.com/free/free-account-faq)。
+[免费试用订阅](https://azure.microsoft.com/offers/ms-azr-0044p) 不符合限制或配额增加的条件。 如果有[免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)，可将其升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅。 有关详细信息，请参阅将 [Azure 免费试用版订阅升级到即用即付订阅](../../cost-management-billing/manage/upgrade-azure-subscription.md) 和 [免费试用订阅常见问题解答](https://azure.microsoft.com/free/free-account-faq)。
 
 某些限制在区域级别进行管理。
 
@@ -221,7 +221,7 @@ ms.locfileid: "87810473"
 ## <a name="digital-twins-limits"></a>数字孪生限制
 
 > [!NOTE]
-> 此服务的某些区域具有可调整的限制，而其他区域则不具有可调整的限制。 下面的表中显示了可调整的 *？* 列。 当调整该限制时，可*调整*的值为*Yes*。
+> 此服务的某些区域具有可调整的限制，而其他区域则不具有可调整的限制。 下面的表中显示了可调整的 *？* 列。 当调整该限制时，可 *调整* 的值为 *Yes*。
 
 [!INCLUDE [digital-twins-limits](../../../includes/digital-twins-limits.md)]
 
@@ -276,6 +276,10 @@ ms.locfileid: "87810473"
 
 [!INCLUDE [expressroute-limits](../../../includes/expressroute-limits.md)]
 
+### <a name="virtual-network-gateway-limits"></a>虚拟网络网关限制
+
+[!INCLUDE [virtual-wan-limits](../../../includes/azure-virtual-network-gateway-limits.md)]
+
 ### <a name="virtual-wan-limits"></a>虚拟 WAN 限制
 
 [!INCLUDE [virtual-wan-limits](../../../includes/virtual-wan-limits.md)]
@@ -297,7 +301,7 @@ ms.locfileid: "87810473"
 
 [!INCLUDE [traffic-manager-limits](../../../includes/traffic-manager-limits.md)]
 
-### <a name="azure-bastion-limits"></a>Azure 堡垒限制
+### <a name="azure-bastion-limits"></a>Azure Bastion 限制
 
 [!INCLUDE [Azure Bastion limits](../../../includes/bastion-limits.md)]
 
@@ -331,7 +335,7 @@ ms.locfileid: "87810473"
 
 ## <a name="sql-database-limits"></a>SQL 数据库限制
 
-有关 SQL 数据库限制，请参阅[单一数据库的 Sql 数据库资源限制](../../azure-sql/database/resource-limits-vcore-single-databases.md)、[弹性池的 sql 数据库资源限制和共](../../azure-sql/database/resource-limits-vcore-elastic-pools.md)用的数据库以及 Sql[托管实例的 sql 数据库资源限制](../../azure-sql/managed-instance/resource-limits.md)。
+有关 SQL 数据库的限制，请参阅[单一数据库的 SQL 数据库资源限制](../../azure-sql/database/resource-limits-vcore-single-databases.md)、[弹性池和共用数据库的 SQL 数据库资源限制](../../azure-sql/database/resource-limits-vcore-elastic-pools.md)以及 [SQL 托管实例的 SQL 数据库资源限制](../../azure-sql/managed-instance/resource-limits.md)。
 
 ## <a name="azure-synapse-analytics-limits"></a>Azure Synapse Analytics 限制
 
@@ -379,7 +383,7 @@ ms.locfileid: "87810473"
 
 #### <a name="disk-encryption-sets"></a>磁盘加密集
 
-每个区域每个订阅的磁盘加密集限制为50。 有关详细信息，请参阅适用于[Linux](../../virtual-machines/linux/disk-encryption.md#restrictions)或[Windows](../../virtual-machines/windows/disk-encryption.md#restrictions)虚拟机的加密文档。 如果需要增加配额，请联系 Azure 支持。
+每个区域、每个订阅有 50 个磁盘加密集的限制。 有关更多信息，请参阅 [Linux](../../virtual-machines/linux/disk-encryption.md#restrictions) 或 [Windows](../../virtual-machines/windows/disk-encryption.md#restrictions) 虚拟机的加密文档。 如果需要增加配额，请与 Azure 支持部门联系。
 
 ### <a name="managed-virtual-machine-disks"></a>托管虚拟机磁盘
 

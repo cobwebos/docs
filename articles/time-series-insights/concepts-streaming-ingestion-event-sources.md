@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
-ms.openlocfilehash: 6524128cb5bccfefe37d605b406210a91e78cac8
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.date: 08/25/2020
+ms.openlocfilehash: a16a83408587a1b99485140174c45e457ac820f8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163962"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855107"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure 时序见解第 2 代事件源
 
@@ -27,7 +27,7 @@ ms.locfileid: "88163962"
 
 ## <a name="create-or-edit-event-sources"></a>创建或编辑事件源
 
-事件源资源 () 可与 Azure 时序见解 Gen2 环境或不同的订阅居住在同一 Azure 订阅中。你可以使用[Azure 门户](time-series-insights-update-create-environment.md#create-a-preview-payg-environment)、 [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights)、 [ARM 模板](time-series-insights-manage-resources-using-azure-resource-manager-template.md)和[REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources)来创建、编辑或删除环境的事件源。
+事件源资源 () 可与 Azure 时序见解 Gen2 环境或不同的订阅居住在同一 Azure 订阅中。你可以使用 [Azure 门户](time-series-insights-update-create-environment.md#create-a-preview-payg-environment)、 [Azure CLI](https://github.com/Azure/azure-cli-extensions/tree/master/src/timeseriesinsights)、 [ARM 模板](time-series-insights-manage-resources-using-azure-resource-manager-template.md)和 [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) 来创建、编辑或删除环境的事件源。
 
 连接事件源时，Azure 时序见解第 2 代环境会从最早的事件开始，读取当前存储在 IoT 中心或事件中心的所有事件。
 
@@ -64,7 +64,7 @@ Azure 时序见解第 2 代目前不支持使用流式传输管道导入历史�
 
 ## <a name="event-source-timestamp"></a>事件源时间戳
 
-配置事件源时，系统会要求你提供时间戳 ID 属性。 Timestamp 属性用于跟踪一段时间内 $event 的事件，这是在 Azure 时序见解 Gen2 资源管理器的[查询 api](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute)和绘图序列中用作 $ts 的时间。 如果在创建时未提供此属性，或者事件中缺少时间戳属性，则会将事件的 IoT 中心或事件中心排队时间用作默认值。 时间戳属性值以 UTC 格式存储。
+配置事件源时，系统会要求你提供时间戳 ID 属性。 Timestamp 属性用于跟踪一段时间内的事件，这是将用作在 Azure 时序见解 TSI 资源管理器中的 [查询 api](https://docs.microsoft.com/rest/api/time-series-insights/dataaccessgen2/query/execute) 和绘图序列的 $event 的时间 $ts。 如果在创建时未提供此属性，或者事件中缺少时间戳属性，则会将事件的 IoT 中心或事件中心排队时间用作默认值。 时间戳属性值以 UTC 格式存储。
 
 通常情况下，用户会选择自定义时间戳属性，并使用传感器或标记生成读数时的时间，而不是使用默认的中心排队时间。 当设备出现间歇性连接中断，并将一批延迟的消息转发到 Azure 时序见解第 2 代时，尤其需要这样做。
 

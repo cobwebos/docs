@@ -7,12 +7,12 @@ ms.date: 07/22/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: d8efec0517cd0b4bdcba643a0936b474593d58c4
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 2320bed07f574c096be1883a9d82da7311e92fa7
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475458"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854220"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>IoT 即插即用预览版术语表
 
@@ -24,7 +24,7 @@ Azure IoT 资源管理器是一种图形工具，可用于与 [IoT 即插即用�
 
 - 查看连接到 [IoT 中心](#azure-iot-hub)的设备。
 - 连接到 IoT 即插即用设备。
-- 查看设备[组件](#component)。
+- 查看设备 [组件](#component)。
 - 查看设备发送的[遥测数据](#telemetry)。
 - 使用设备[属性](#properties)。
 - 调用设备[命令](#commands)。
@@ -46,7 +46,7 @@ IoT 中心托管服务在云中进行托管，充当中央消息中心，用于 
 
 ## <a name="component"></a>组件
 
-组件允许您将模型[接口](#interface)生成为其他接口的程序集。 [设备模型](#device-model)可以将多个接口组合为多个组件。 例如，模型可能包含 switch 组件和恒温器组件。 模型中的多个组件也可以使用相同的接口类型。 例如，模型可能包括两个恒温器组件。
+组件允许您将模型 [接口](#interface) 生成为其他接口的程序集。 [设备模型](#device-model)可以将多个接口组合为多个组件。 例如，模型可能包含 switch 组件和恒温器组件。 模型中的多个组件也可以使用相同的接口类型。 例如，模型可能包括两个恒温器组件。
 
 ## <a name="connection-string"></a>连接字符串
 
@@ -55,13 +55,17 @@ IoT 中心托管服务在云中进行托管，充当中央消息中心，用于 
 - 设备连接字符串使 [IoT 即插即用设备](#iot-plug-and-play-device)能够连接到 IoT 中心上面向设备的终结点。 设备上的客户端代码使用连接字符串与 IoT 中心建立安全连接。
 - IoT 中心连接字符串使后端解决方案和工具能够安全地连接到 IoT 中心上面向服务的终结点。 这些解决方案和工具可管理 IoT 中心以及与之连接的设备。
 
+## <a name="device-certification"></a>设备认证
+
+IoT 即插即用设备认证计划验证设备是否满足 IoT 即插即用认证要求。 可以将认证设备添加到公共 [认证的 Azure IoT 设备目录](https://aka.ms/devicecatalog)。
+
 ## <a name="device-model"></a>设备型号
 
-设备型号描述了[IoT 即插即用设备](#iot-plug-and-play-device)，并定义组成设备的[组件](#component)。 简单的设备模型没有单独的组件，并包含单个根级别接口的定义。 更复杂的设备模型包含多个组件。 设备型号通常对应于物理设备、产品或 SKU。 使用[数字孪生定义语言版本 2](#digital-twins-definition-language)来定义设备型号。
+设备型号描述了 [IoT 即插即用设备](#iot-plug-and-play-device) ，并定义组成设备的 [组件](#component) 。 简单的设备模型没有单独的组件，并包含单个根级别接口的定义。 更复杂的设备模型包含多个组件。 设备型号通常对应于物理设备、产品或 SKU。 使用 [数字孪生定义语言版本 2](#digital-twins-definition-language) 来定义设备型号。
 
 ## <a name="device-builder"></a>设备生成器
 
-设备生成器在实现在[IoT 即插即用设备](#iot-plug-and-play-device)上运行的代码时使用[设备模型](#device-model)和[接口](#interface)。 设备构建者通常使用[Azure IoT 设备 sdk](#azure-iot-device-sdk)之一来实现设备客户端，但这不是必需的。
+设备生成器在实现在[IoT 即插即用设备](#iot-plug-and-play-device)上运行的代码时使用[设备模型](#device-model)和[接口](#interface)。 设备构建者通常使用 [Azure IoT 设备 sdk](#azure-iot-device-sdk) 之一来实现设备客户端，但这不是必需的。
 
 ## <a name="device-modeling"></a>设备建模
 
@@ -69,23 +73,23 @@ IoT 中心托管服务在云中进行托管，充当中央消息中心，用于 
 
 ## <a name="digital-twin"></a>数字孪生体
 
-数字孪生体是一种 [IoT 即插即用设备](#iot-plug-and-play-device)模型。 数字克隆使用[数字孪生定义语言](#digital-twins-definition-language)进行建模。 你可以使用 [Azure IoT 设备 SDK](#azure-iot-device-sdk) 在运行时与数字孪生体交互。 例如，你可以在设备的数字孪生体中设置属性值，SDK 会将此更改传递到云中的 IoT 解决方案。
+数字孪生体是一种 [IoT 即插即用设备](#iot-plug-and-play-device)模型。 数字克隆使用 [数字孪生定义语言](#digital-twins-definition-language)进行建模。 你可以使用 [Azure IoT 设备 SDK](#azure-iot-device-sdk) 在运行时与数字孪生体交互。 例如，你可以在设备的数字孪生体中设置属性值，SDK 会将此更改传递到云中的 IoT 解决方案。
 
 ## <a name="digital-twin-change-events"></a>数字孪生体更改事件
 
-将 [IoT 即插即用设备](#iot-plug-and-play-device)连接到 [IoT 中心](#azure-iot-hub)时，IoT 中心可以使用其路由功能发送数字孪生体更改通知。 例如，每当设备上的[属性](#properties)值发生更改时，IoT 中心均可将通知发送到终结点，如事件中心。
+将 [IoT 即插即用设备](#iot-plug-and-play-device)连接到 [IoT 中心](#azure-iot-hub)时，IoT 中心可以使用其路由功能发送数字孪生体更改通知。 例如，每当设备上的 [属性](#properties) 值发生更改时，IoT 中心均可将通知发送到终结点，如事件中心。
 
 ## <a name="digital-twins-definition-language"></a>数字孪生定义语言
 
-用于描述 [IoT 即插即用设备](#iot-plug-and-play-device)的模型和接口的语言。 使用[数字孪生定义语言版本 2](https://github.com/Azure/opendigitaltwins-dtdl)来描述数字克隆[的](#digital-twin)功能，并使 iot 平台和 iot 解决方案能够利用实体的语义。
+用于描述 [IoT 即插即用设备](#iot-plug-and-play-device)的模型和接口的语言。 使用 [数字孪生定义语言版本 2](https://github.com/Azure/opendigitaltwins-dtdl) 来描述数字克隆 [的](#digital-twin) 功能，并使 iot 平台和 iot 解决方案能够利用实体的语义。
 
 ## <a name="digital-twin-route"></a>数字孪生体路由
 
-在[IoT 中心](#azure-iot-hub)内设置的一种路由，用于向和终结点（例如事件中心）传递[数字克隆更改事件](#digital-twin-change-events)。
+在 [IoT 中心](#azure-iot-hub) 内设置的一种路由，用于向和终结点（例如事件中心）传递 [数字克隆更改事件](#digital-twin-change-events) 。
 
 ## <a name="interface"></a>接口
 
-接口描述由 [IoT 即插即用设备](#iot-plug-and-play-device)或[数字孪生体](#digital-twin)实现的相关功能。 可以跨不同的[设备模型](#device-model)重复使用接口。 当在设备模型中使用接口时，它将定义设备的一个[组件](#component)。
+接口描述由 [IoT 即插即用设备](#iot-plug-and-play-device)或[数字孪生体](#digital-twin)实现的相关功能。 可以跨不同的 [设备模型](#device-model)重复使用接口。 当在设备模型中使用接口时，它将定义设备的一个 [组件](#component) 。
 
 ## <a name="iot-hub-query-language"></a>IoT 中心查询语言
 
@@ -93,11 +97,11 @@ IoT 中心查询语言用于多种目的。 例如，可以使用该语言来搜
 
 ## <a name="iot-plug-and-play-device"></a>IoT 即插即用设备
 
-IoT 即插即用设备通常是一种小型的独立计算设备，用于收集数据或控制其他设备，并运行实现[设备型号](#device-model)的软件或固件。  例如，IoT 即插即用设备可以是环境监视设备，也可以是智能农业灌溉系统的控制器。 你可以编写云托管的 IoT 解决方案来命令、控制和接收 IoT 即插即用设备中的数据。
+IoT 即插即用设备通常是一种小型的独立计算设备，用于收集数据或控制其他设备，并运行实现 [设备型号](#device-model)的软件或固件。  例如，IoT 即插即用设备可以是环境监视设备，也可以是智能农业灌溉系统的控制器。 你可以编写云托管的 IoT 解决方案来命令、控制和接收 IoT 即插即用设备中的数据。
 
 ## <a name="iot-plug-and-play-conventions"></a>IoT 即插即用约定
 
-IoT 即插即用[设备](#iot-plug-and-play-device)在与解决方案交换数据时，应遵循一组[约定](concepts-convention.md)。
+IoT 即插即用 [设备](#iot-plug-and-play-device) 在与解决方案交换数据时，应遵循一组 [约定](concepts-convention.md) 。
 
 ## <a name="model-id"></a>模型 ID
 
@@ -109,7 +113,7 @@ IoT 即插即用[设备](#iot-plug-and-play-device)在与解决方案交换数�
 
 ## <a name="model-repository-rest-api"></a>模型存储库 REST API
 
-用于管理模型存储库和与之交互的 API。 例如，你可以使用 API 来添加和搜索[设备型号](#device-model)。
+用于管理模型存储库和与之交互的 API。 例如，你可以使用 API 来添加和搜索 [设备型号](#device-model)。
 
 ## <a name="properties"></a>属性
 
@@ -121,7 +125,7 @@ IoT 即插即用[设备](#iot-plug-and-play-device)在与解决方案交换数�
 
 ## <a name="solution-builder"></a>解决方案生成器
 
-解决方案生成器将创建解决方案后端。 解决方案生成器通常适用于 Azure 资源，如[IoT 中心](#azure-iot-hub)和[模型存储库](#model-repository)。
+解决方案生成器将创建解决方案后端。 解决方案生成器通常适用于 Azure 资源，如 [IoT 中心](#azure-iot-hub) 和 [模型存储库](#model-repository)。
 
 ## <a name="telemetry"></a>遥测
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/27/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0fab0bf956790db2860daf75866d84173bfa6cbf
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a13fa7c819dcccc101c23015214bac55d2ab26c9
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88751502"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855538"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure 高级存储：高性能设计
 
@@ -230,7 +230,7 @@ IO 大小是较为重要的因素之一。 IO 大小是由应用程序生成的�
 
 Linux 发行版  
 
-使用 Azure 高级存储，可以让运行 Windows 和 Linux 的 VM 获得相同的性能级别。 支持多种 Linux 发行版，可在[此处](~/articles/virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)查看完整列表。 请务必注意，不同的发行版适用于不同类型的工作负荷。 根据运行工作负荷的发行版，所见性能级别会有所不同。 使用应用程序测试各种 Linux 发行版，选择最适合的。
+使用 Azure 高级存储，可以让运行 Windows 和 Linux 的 VM 获得相同的性能级别。 支持多种 Linux 发行版，可在[此处](linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)查看完整列表。 请务必注意，不同的发行版适用于不同类型的工作负荷。 根据运行工作负荷的发行版，所见性能级别会有所不同。 使用应用程序测试各种 Linux 发行版，选择最适合的。
 
 使用高级存储运行 Linux 时，请查看与所需驱动程序相关的最新更新，确保实现高性能。
 
@@ -292,7 +292,7 @@ Azure 高级存储提供了多种大小，因此你可以选择最适合需求�
 *ReadWrite*  
 默认情况下，OS 磁盘已启用 ReadWrite 缓存。 我们最近还增加了对在数据磁盘上进行 ReadWrite 缓存的支持。 如果使用 ReadWrite 缓存，则必须通过适当方法将数据从缓存写入到永久性磁盘。 例如，SQL Server 会自行将缓存数据写入永久性存储磁盘。 对不负责保留所需数据的应用程序使用 ReadWrite 缓存可能会在 VM 崩溃时导致数据丢失。
 
-无  
+*无*  
 目前，只有数据磁盘支持“无”。 OS 磁盘不支持此选项。 如果在 OS 磁盘上设置“无”，它将在内部覆盖此设置并将其设置为“ReadOnly”。
 
 举例来说，可以通过执行以下操作将这些准则应用到在高级存储上运行的 SQL Server：

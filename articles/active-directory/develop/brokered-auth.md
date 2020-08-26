@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/14/2019
+ms.date: 08/25/2020
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
-ms.openlocfilehash: a734589178438fd65d9a2d156fd91fc82807f578
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9042318d29b9a7fc8c2064bdf845d6f0d5a4f3e8
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "76697891"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853859"
 ---
 # <a name="brokered-authentication-in-android"></a>Android 中的中介身份验证
 
@@ -44,7 +44,7 @@ ms.locfileid: "76697891"
 
 ## <a name="installing-apps-that-host-a-broker"></a>安装托管中介的应用
 
-代理托管的应用可由设备所有者从其应用商店（通常是 Google Play 商店）进行安装。 但是，某些 API（资源）受条件访问策略的保护，这些策略要求设备：
+代理托管应用可以由设备所有者从其应用商店进行安装 (通常 Google Play 商店) 。 但是，某些 API（资源）受条件访问策略的保护，这些策略要求设备：
 
 - 已注册（已加入工作区），和/或
 - 已在设备管理中注册，或
@@ -122,3 +122,12 @@ MSAL 首先使用中介绑定服务，因为调用此服务不需要任何 Andro
 
 - 要求用户禁用 Microsoft Authenticator 应用和 Intune 公司门户的超级优化。
 - 要求用户授予 `"READ_CONTACTS"` 权限
+
+## <a name="verifying-broker-integration"></a>验证 broker 集成
+
+可能不会立即清楚地表明代理集成正在运行，但你可以使用以下步骤来检查：
+
+1. 在 Android 设备上，使用 broker 完成请求。
+1. 在 Android 设备上的设置中，查找与用进行身份验证的帐户相对应的新创建的帐户。 该帐户的类型应为 " *工作帐户*"。
+
+如果要重复该测试，可以从设置中删除该帐户。

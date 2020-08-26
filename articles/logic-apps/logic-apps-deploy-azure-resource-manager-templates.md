@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4fce5b191e0af6a69fe218c4ed7272f352c3bdd2
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 8c51095c9e33cd9e5f6da7e972e0cc596eec6478
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827488"
+ms.locfileid: "88855595"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>为 Azure 逻辑应用部署 Azure 资源管理器模板
 
@@ -119,7 +119,9 @@ az group deployment create -g <Azure-resource-group-name> --template-uri https:/
 
 ## <a name="authorize-oauth-connections"></a>授权 OAuth 连接
 
-部署后，逻辑应用将使用有效参数进行端到端的运行。 但是，你仍需要授权或使用预授权 OAuth 连接来生成用于 [验证凭据](../active-directory/develop/authentication-vs-authorization.md)的有效访问令牌。 以下是一些建议：
+部署完成后，逻辑应用使用有效的参数以端到端的方式运行，但为了生成用于 [验证凭据](../active-directory/develop/authentication-vs-authorization.md)的有效访问令牌，你仍需要授权或使用预授权 OAuth 连接。 但是，你只需部署和验证 API 连接资源一次，这意味着在后续部署中无需包含这些连接资源，除非你需要更新连接信息。 如果使用持续集成和连续部署管道，则仅部署已更新的逻辑应用资源，无需每次都重新授权连接。
+
+下面是一些处理授权连接的建议：
 
 * 在同一区域中的逻辑应用上 Preauthorize 和共享 API 连接资源。 API 连接与逻辑应用独立于 Azure 资源。 逻辑应用与 API 连接资源存在依赖关系，而 API 连接资源不依赖于逻辑应用，并且在删除从属逻辑应用后仍保留。 此外，逻辑应用可以使用其他资源组中存在的 API 连接。 但是，逻辑应用设计器仅支持在与逻辑应用相同的资源组中创建 API 连接。
 

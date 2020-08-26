@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
-ms.openlocfilehash: 6148cedbf004e3e63200ac50b91a40866c5b18db
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: 1af3ce7125d30ed0cb9b8ca6b3cb9322dc14c520
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88719632"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855253"
 ---
 # <a name="troubleshoot-resource-health-frontend-and-backend-availability-issues"></a>排查资源运行状况、前端和后端可用性问题 
 
@@ -30,6 +30,9 @@ ms.locfileid: "88719632"
 
 ## <a name="health-probe-status"></a>运行状况探测状态
 运行状况探测状态指标是由运行状况探测中定义的协议的 ping 生成的。 此 ping 将发送到后端池中的每个实例，以及运行状况探测中定义的端口上。 对于 HTTP 和 HTTPS 探测，成功的 ping 需要 HTTP 200 OK 响应，而 TCP 探测则视为成功。 然后，每个探测的连续成功或失败将确定后端实例是否正常运行，以及是否能够接收后端池分配到的负载均衡规则的流量。 与数据路径可用性类似，我们使用平均聚合，它在采样间隔期间告诉我们平均成功/总数 ping。 此运行状况探测状态值通过探测后端实例，无需通过前端发送流量，来指示与负载均衡器隔离的后端运行状况。
+
+>[!IMPORTANT]
+>每分钟采样一次运行状况探测状态。 这可能会导致其他稳定值的轻微波动。 例如，如果有两个后端实例，一个被唤醒，一个被探测，则运行状况探测服务可能会捕获7个正常实例的示例，6个用于不正常的实例。 这将导致以前稳定的值50在一分钟时间间隔内显示为46.15。 
 
 ## <a name="diagnose-degraded-and-unavailable-load-balancers"></a>诊断降级和不可用的负载均衡器
 如 [资源运行状况一文](load-balancer-standard-diagnostics.md#resource-health-status)中所述，降级的负载均衡器是指25% 到90% 的数据路径可用性，而不可用的负载均衡器是一分钟内的数据路径可用性低于25% 的负载均衡器。 可以采取这些相同的步骤来调查你在任何运行状况探测状态或配置的数据路径可用性警报中看到的失败。 我们将探讨我们已检查资源运行状况的情况，发现，如果数据路径可用性为0%，我们的负载均衡器不可用-我们的服务已关闭。

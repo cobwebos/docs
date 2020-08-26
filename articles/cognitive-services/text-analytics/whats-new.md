@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: 1a5f7dcd37a970d5e039ebc38f1059839424ff68
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.openlocfilehash: 06c36b3f3939c8804149448ecb770a22d658fcbf
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88192027"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854731"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>文本分析 API 中有哪些新功能？
 
@@ -28,6 +28,7 @@ ms.locfileid: "88192027"
 * V3 的模型版本 `2020-07-01` `/keyphrases` `/pii` 和 `/languages` 终结点，这些终结点用于添加：
     * 命名实体识别的其他政府和国家特定 [实体类别](named-entity-types.md?tabs=personal) 。
 * 对于超过已发布 [数据限制](concepts/data-limits.md)的 v3 API 请求，将返回 HTTP 400 错误。 
+* 返回偏移量的终结点现在支持可选的 `stringIndexType` 参数，该参数将调整返回的 `offset` `length` 值和值，以匹配支持的 [字符串索引方案](concepts/text-offsets.md)。
 
 ### <a name="text-analytics-for-health-container-august-updates"></a>运行状况容器的文本分析8月更新
 

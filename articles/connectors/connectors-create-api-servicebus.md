@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2020
 tags: connectors
-ms.openlocfilehash: d02467fddcce77340b9845fe084bf5a2fb8b01f3
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 13732c6d31f19dfb2548154feb8336a1dff3a529
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88815719"
+ms.locfileid: "88853293"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>使用 Azure 逻辑应用和 Azure 服务总线在云中交换消息
 
@@ -85,23 +85,23 @@ ms.locfileid: "88815719"
 
    1. 请提供连接名称，并选择服务总线命名空间。
 
-      ![创建服务总线连接 - 第 1 部分](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
+      ![屏幕截图，显示提供连接名称和选择服务总线命名空间](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-1.png)
 
       若要改为手动输入连接字符串，请选择“手动输入连接信息”。 如果没有连接字符串，请了解[如何查找连接字符串](#permissions-connection-string)。
 
    1. 选择服务总线策略，然后选择“创建”。
 
-      ![创建服务总线连接第 2 部分](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
+      ![显示选择服务总线策略的屏幕截图](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-trigger-2.png)
 
    1. 选择所需的消息传送实体，例如某个队列或主题。 在此示例中，请选择服务总线队列。
    
-      ![选择服务总线队列](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
+      ![显示选择服务总线队列的屏幕截图](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-trigger.png)
 
 1. 为所选触发器提供必需信息。 若要向操作添加其他可用属性，请打开“添加新参数”列表，然后选择所需属性。
 
    对于此示例的触发器，请选择轮询间隔和检查队列的频率。
 
-   ![设置轮询间隔](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
+   ![显示在服务总线触发器上设置轮询间隔的屏幕截图](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 
    有关可用触发器和属性的详细信息，请参阅连接器的[参考页](/connectors/servicebus/)。
 
@@ -123,29 +123,29 @@ ms.locfileid: "88815719"
 
    在此示例中，请选择“发送消息”操作。
 
-   ![选择服务总线操作](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
+   ![显示选择服务总线操作的屏幕截图](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
 
 1. 如果操作是首次连接到服务总线命名空间，则请在逻辑应用设计器提示你输入连接信息时执行以下步骤。
 
    1. 请提供连接名称，并选择服务总线命名空间。
 
-      ![创建服务总线连接 - 第 1 部分](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
+      ![屏幕截图，显示提供连接名称和选择服务总线命名空间](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-1.png)
 
       若要改为手动输入连接字符串，请选择“手动输入连接信息”。 如果没有连接字符串，请了解[如何查找连接字符串](#permissions-connection-string)。
 
    1. 选择服务总线策略，然后选择“创建”。
 
-      ![创建服务总线连接第 2 部分](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
+      ![显示选择服务总线策略并选择 "创建" 按钮的屏幕截图](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-action-2.png)
 
    1. 选择所需的消息传送实体，例如某个队列或主题。 在此示例中，请选择服务总线队列。
 
-      ![选择服务总线队列](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
+      ![显示选择服务总线队列的屏幕截图](./media/connectors-create-api-azure-service-bus/service-bus-select-queue-action.png)
 
 1. 为所选操作提供必要的详细信息。 若要向操作添加其他可用属性，请打开“添加新参数”列表，然后选择所需属性。
 
    例如，选择“内容”和“内容类型”属性，以便将其添加到操作。  然后，指定要发送的消息的内容。
 
-   ![提供消息内容和详细信息](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
+   ![显示提供消息内容类型和详细信息的屏幕截图](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
 
    有关可用操作及其属性的详细信息，请参阅连接器的[参考页](/connectors/servicebus/)。
 

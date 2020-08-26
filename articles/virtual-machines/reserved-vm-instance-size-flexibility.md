@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: manshuk
-ms.openlocfilehash: 05119a6f9af935a0f4a2887eae53f3d5bdb1a482
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.openlocfilehash: 381023a0650b078a74c01ff7b698aebacb256147
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88658027"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855511"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>虚拟机预留实例的虚拟机大小灵活性
 
-购买保留 VM 实例时，可以选择优化实例大小的灵活性或容量优先级。 有关设置或更改保留 VM 实例的优化设置的详细信息，请参阅 [更改保留 vm 实例的优化设置](~/articles/cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)。
+购买保留 VM 实例时，可以选择优化实例大小的灵活性或容量优先级。 有关设置或更改保留 VM 实例的优化设置的详细信息，请参阅 [更改保留 vm 实例的优化设置](../cost-management-billing/reservations/manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)。
 
 使用为实例大小灵活性优化的保留虚拟机实例，你购买的预订可应用于虚拟机 (Vm) 大小在同一实例大小的灵活性组中。 例如，如果购买了 DSv2 系列中列出的 VM 大小的保留，如 Standard_DS5_v2，则预订折扣可以应用于同一实例大小灵活性组中列出的其他四种大小：
 
@@ -52,4 +52,4 @@ ms.locfileid: "88658027"
 
 ## <a name="next-steps"></a>后续步骤
 
-有关详细信息，请参阅 [什么是 Azure 保留](~/articles/cost-management-billing/reservations/save-compute-costs-reservations.md)。
+有关详细信息，请参阅 [什么是 Azure 保留](../cost-management-billing/reservations/save-compute-costs-reservations.md)。

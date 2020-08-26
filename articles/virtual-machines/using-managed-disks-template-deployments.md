@@ -10,12 +10,12 @@ ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.subservice: disks
-ms.openlocfilehash: 15c3f2de30509a7dc6836f5d39fac4c0ea8b7f25
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 708df0a8ed1085c6e7d435c6f3c3b811ef2ed64e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513135"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854330"
 ---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>在 Azure Resource Manager 模板中使用托管磁盘
 
@@ -263,7 +263,7 @@ ms.locfileid: "88513135"
 * 有关使用托管磁盘的完整模板，请访问以下 Azure 快速入门存储库链接。
     * [使用托管磁盘的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
     * [使用托管磁盘的 Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
-* 请访问 [Azure 托管磁盘概述](~/articles/virtual-machines/windows/managed-disks-overview.md)文档，了解有关托管磁盘的详细信息。
+* 请访问 [Azure 托管磁盘概述](managed-disks-overview.md)文档，了解有关托管磁盘的详细信息。
 * 请访问 [Microsoft.Compute/virtualMachines 模板参考](/azure/templates/microsoft.compute/virtualmachines)文档，查看虚拟机资源的模板参考文档。
 * 请访问 [Microsoft.Compute/disks 模板参考](/azure/templates/microsoft.compute/disks)文档，查看磁盘资源的模板参考文档。
 * 有关如何使用 Azure 虚拟机规模集中的托管磁盘的信息，请访问[将数据磁盘与规模集配合使用](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks)文档。

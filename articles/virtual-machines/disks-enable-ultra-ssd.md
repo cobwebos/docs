@@ -8,12 +8,12 @@ ms.date: 05/11/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 4f49d4e78cd58d16627a0b6fda1957baa9f1f085
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 4c005bc49780edcb7f322455e37163e78d87619f
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88752086"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852691"
 ---
 # <a name="using-azure-ultra-disks"></a>使用 Azure 超磁盘
 
@@ -55,7 +55,7 @@ $vmSize = "Standard_E64s_v3"
 
 保留 " **区域** " 值，它表示可用性区域，你需要它来部署超磁盘。
 
-|ResourceType  |名称  |位置  |区域  |限制  |功能  |“值”  |
+|ResourceType  |名称  |位置  |区域  |限制  |功能  |值  |
 |---------|---------|---------|---------|---------|---------|---------|
 |disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
@@ -128,7 +128,7 @@ UltraSSDAvailable                            True
 
 ## <a name="deploy-an-ultra-disk-using-the-azure-portal"></a>使用 Azure 门户部署超磁盘
 
-本部分介绍如何部署一个虚拟机，并将其作为数据磁盘。 本教程假定你已熟悉如何部署虚拟机，如果不这样做，请参阅 [快速入门：在 Azure 门户中创建 Windows 虚拟机](~/articles/virtual-machines/windows/quick-create-portal.md)。
+本部分介绍如何部署一个虚拟机，并将其作为数据磁盘。 本教程假定你已熟悉如何部署虚拟机，如果不这样做，请参阅 [快速入门：在 Azure 门户中创建 Windows 虚拟机](./windows/quick-create-portal.md)。
 
 - 登录到 [Azure 门户](https://portal.azure.com/) ，导航到 "部署虚拟机" (VM) "。
 - 请确保选择支持的 [VM 大小和区域](#ga-scope-and-limitations)。

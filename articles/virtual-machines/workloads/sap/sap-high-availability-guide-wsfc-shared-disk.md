@@ -13,19 +13,19 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf85632ff062bff5b71451379f37c14830bf6b68
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b286812ba0a418d74738837fd5cfb7a7b617a9fa
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82982949"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854416"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>使用 Azure 中的群集共享磁盘在 Windows 故障转移群集上群集化 SAP ASCS/SCS 实例
 
-> ![Windows][Logo_Windows] Windows
+> ![Windows OS][Logo_Windows] Windows
 >
 
 Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装和 DBMS 的基础。
@@ -40,7 +40,7 @@ Windows Server 故障转移群集是 Windows 中高可用性 SAP ASCS/SCS 安装
 
 ## <a name="windows-server-failover-clustering-in-azure"></a>Azure 中的 Windows Server 故障转移群集
 
-相比于裸机或私有云部署，Azure 虚拟机要求执行额外的步骤来配置 Windows Server 故障转移群集。 生成群集时，需要为 SAP ASCS/SCS 实例设置多个 IP 地址和虚拟主机名。
+Windows Server 故障转移群集和 Azure 虚拟机需要额外的配置步骤。 生成群集时，需要为 SAP ASCS/SCS 实例设置多个 IP 地址和虚拟主机名。
 
 ### <a name="name-resolution-in-azure-and-the-cluster-virtual-host-name"></a>Azure 中的名称解析和群集虚拟主机名
 
@@ -52,7 +52,7 @@ Azure 负载均衡器服务提供适用于 Azure 的内部负载均衡器**。 �
 
 ![图 1：Azure 中未使用共享磁盘的 Windows 故障转移群集配置][sap-ha-guide-figure-1001]
 
-_图 1：Azure 中未使用共享磁盘的 Windows Server 故障转移群集配置_****
+_Azure 中没有共享磁盘的 Windows Server 故障转移群集配置_
 
 ### <a name="sap-ascsscs-ha-with-cluster-shared-disks"></a>使用群集共享磁盘的 SAP ASCS/SCS HA
 在 Windows 中，SAP ASCS/SCS 实例包含 SAP 中心服务、SAP 消息服务器、排队服务器进程和 SAP 全局主机文件。 SAP 全局主机文件存储整个 SAP 系统的中心文件。
@@ -73,30 +73,104 @@ SAP ASCS/SCS 实例具有以下组件：
 
 ![图 2：SAP ASCS/SCS 实例的进程、文件结构和全局主机 sapmnt 文件共享][sap-ha-guide-figure-8001]
 
-_**图2：** SAP ASCS/SCS 实例的进程、文件结构和全局主机 sapmnt 文件共享_
+_SAP ASCS/SCS 实例的进程、文件结构和全局主机 sapmnt 文件共享_
 
 在高可用性设置中，可群集化 SAP ASCS/SCS 实例。 我们使用群集共享磁盘（在示例中为驱动器 S）放置 SAP ASCS/SCS 文件和 SAP 全局主机文件**。
 
 ![图 3：使用共享磁盘的 SAP ASCS/SCS HA 体系结构][sap-ha-guide-figure-8002]
 
-_**图3：** 包含共享磁盘的 SAP ASCS/SCS HA 体系结构_
+_包含共享磁盘的 SAP ASCS/SCS HA 体系结构_
 
-> [!IMPORTANT]
-> 由于这两个组件在相同的 SAP ASCS/SCS 实例下运行，因此：
->* 此相同 \<ASCS/SCS virtual host name> 用于通过 sapmnt 文件共享访问 sap 消息和排队服务器进程，以及 sap 全局主机文件。
->* 它们共用同一个群集共享磁盘驱动器 S。
->
 
+对于排队服务器复制1体系结构：
+* 此相同 \<ASCS/SCS virtual host name> 用于通过 sapmnt 文件共享访问 sap 消息和排队服务器进程，以及 sap 全局主机文件。
+* 它们共用同一个群集共享磁盘驱动器 S。  
+
+对于排队服务器复制2体系结构： 
+* 同一 \<ASCS/SCS virtual host name> 用于通过 sapmnt 文件共享访问 sap 消息服务器进程和 sap 全局主机文件。
+* 它们共用同一个群集共享磁盘驱动器 S。
+* \<ERS virtual host name>可单独访问排队服务器进程  
 
 ![图 4：使用共享磁盘的 SAP ASCS/SCS HA 体系结构][sap-ha-guide-figure-8003]
 
-_图 4：使用共享磁盘的 SAP ASCS/SCS HA 体系结构_****
+_包含共享磁盘的 SAP ASCS/SCS HA 体系结构_
+
+#### <a name="shared-disk-and-enqueue-replication-server"></a>共享磁盘和排队复制服务器 
+
+1. 排队服务器复制1体系结构支持共享磁盘，其中排队复制服务器 (ERS) 实例：   
+
+   - 未群集
+   - 使用 `localhost` 名称
+   - 部署在每个群集节点上的本地磁盘上
+
+2. 排队服务器复制2体系结构还支持共享磁盘，其中，排队复制服务器 2 (ERS2) 实例：  
+
+   - 已群集化
+   - 使用专用的虚拟/网络主机名
+   - 除了 () SCS IP 地址外，还需要在 Azure 内部负载均衡器上配置 ERS 虚拟主机的 IP 地址
+   - 部署在每个群集节点上的 **本地磁盘** 上，因此不需要共享磁盘
+
+   > [!TIP]
+   > 可在此处找到有关排队复制服务器1和 2 (ERS1 和 ERS2) 的详细信息：  
+   > [Microsoft 故障转移群集中的排队复制服务器](https://help.sap.com/viewer/3741bfe0345f4892ae190ee7cfc53d4c/CURRENT_VERSION_SWPM20/en-US/8abd4b52902d4b17a105c2fabdf5c0cf.html)  
+   > [故障转移群集环境中的新排队复制器](https://blogs.sap.com/2019/03/19/new-enqueue-replicator-in-failover-cluster-environments/)  
+
+#### <a name="options-for-shared-disk-in-azure-for-sap-workloads"></a>Azure 中用于 SAP 工作负荷的共享磁盘的选项
+
+在 Azure 中，windows 故障转移群集中的共享磁盘有两个选项：
+
+- [Azure 共享磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared) -允许同时将 Azure 托管磁盘附加到多个 vm 的功能。 
+- 使用第三方软件 [SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster) 创建模拟群集共享存储的镜像存储。 
+
+为共享磁盘选择技术时，请记住以下注意事项：
+
+**适用于 SAP 工作负荷的 Azure 共享磁盘**
+- 允许你同时将 Azure 托管磁盘附加到多个 Vm，而无需额外的软件来维护和操作 
+- 你将使用一个存储群集上的单个 Azure 共享磁盘运行。 这会影响 SAP 解决方案的可靠性。
+- 目前唯一受支持的部署是在可用性集中的 Azure 共享高级磁盘。 区域性部署中不支持 Azure 共享磁盘。     
+- 请确保使用 [高级 SSD 范围](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared#disk-sizes) 中指定的最小磁盘大小预配 Azure 高级磁盘，以便能够同时连接到所需数量的 VM (SAP ASCS Windows 故障转移群集 ) 通常为2）。 
+- SAP 工作负荷不支持 Azure 共享的 Ultra 磁盘，因为它不支持可用性集或区域部署中的部署。  
+ 
+SIOS 
+- SIOS 解决方案提供两个磁盘之间的实时同步数据复制
+- 使用 SIOS 解决方案，你可以对两个托管磁盘进行操作，如果使用可用性集或可用性区域，托管磁盘将驻留在不同的存储群集上。 
+- 支持在可用性区域中部署
+- 需要安装并运行第三方软件，你将需要另外购买
+
+### <a name="shared-disk-using-azure-shared-disk"></a>使用 Azure 共享磁盘的共享磁盘
+
+Microsoft 提供 [Azure 共享磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)，可用于通过共享磁盘选项实现 SAP ASCS/SCS 高可用性。
+
+#### <a name="prerequisites-and-limitations"></a>先决条件和限制
+
+目前，可以使用 Azure 高级 SSD 磁盘作为 SAP ASCS/SCS 实例的 Azure 共享磁盘。 目前有以下限制：
+
+-  SAP 工作负荷的 azure[超级磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#ultra-disk)不支持作为 Azure 共享磁盘。 目前不能使用可用性集中的 Azure 超磁盘放置 Azure Vm
+-  只有可用性集中的虚拟机支持带有高级 SSD 磁盘的[Azure 共享磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared)。 它在可用性区域部署中不受支持。 
+-  Azure 共享磁盘值 [maxShares](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable?tabs=azure-cli#disk-sizes) 确定可以使用共享磁盘的群集节点数。 通常，对于 SAP ASCS/SCS 实例，你将在 Windows 故障转移群集中配置两个节点，因此的值 `maxShares` 必须设置为 "2"。
+-  所有 SAP ASCS/SCS 群集 Vm 都必须部署在同一 [Azure 邻近位置组](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups)中。   
+   尽管可以在可用性集中部署 Windows 群集 Vm，而无需 PPG，PPG 将确保 Azure 共享磁盘与群集 Vm 的物理上接近，从而实现 Vm 与存储层之间的延迟较低。    
+
+有关 Azure 共享磁盘限制的更多详细信息，请仔细查看 Azure 共享磁盘文档的 [限制](https://docs.microsoft.com/azure/virtual-machines/linux/disks-shared#limitations) 部分。
+
+> [!IMPORTANT]
+> 使用 Azure 共享磁盘部署 SAP ASCS/SCS Windows 故障转移群集时，请注意，你的部署将在一个存储群集中使用单个共享磁盘运行。 如果存储群集出现问题，则 SAP ASCS/SCS 实例将会受到影响，其中部署了 Azure 共享磁盘。    
+
+> [!TIP]
+> 规划 SAP 部署时，查看 sap [Netweaver On azure 规划指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) 和 [适用于 sap 工作负荷的 azure 存储指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide-storage) ，了解重要的注意事项。
+
+### <a name="supported-os-versions"></a>支持的操作系统版本
+
+支持 Windows Server 2016 和 2019 (使用最新的数据中心映像) 。
+
+强烈建议使用 **Windows Server 2019 Datacenter**，如下所示：
+- Windows 2019 故障转移群集服务可识别 Azure
+- 通过监视 Azure 计划事件，增加了 Azure 主机维护和改进体验的集成和认知。
+- 可以使用分布式网络名称 (它是默认选项) 。 因此，群集网络名称无需专用 IP 地址。 此外，无需在 Azure 内部负载均衡器上配置此 IP 地址。 
 
 ### <a name="shared-disks-in-azure-with-sios-datakeeper"></a>Azure 中使用 SIOS DataKeeper 的共享磁盘
 
-对于高可用性 SAP ASCS/SCS 实例，需要群集共享存储。
-
-可使用第三方软件 SIOS DataKeeper Cluster Edition 创建模拟群集共享存储的镜像存储。 SIOS 解决方案提供实时同步的数据复制。
+共享磁盘的另一种方法是使用第三方软件 SIOS DataKeeper Cluster Edition 创建模拟群集共享存储的镜像存储。 SIOS 解决方案提供实时同步的数据复制。
 
 为群集创建共享磁盘资源：
 
@@ -108,7 +182,7 @@ _图 4：使用共享磁盘的 SAP ASCS/SCS HA 体系结构_****
 
 ![图 5：Azure 中使用 SIOS DataKeeper 的 Windows Server 故障转移群集配置][sap-ha-guide-figure-1002]
 
-_图 5：Azure 中使用 SIOS DataKeeper 的 Windows 故障转移群集配置_****
+_Azure 中带 SIOS DataKeeper 的 Windows 故障转移群集配置_
 
 > [!NOTE]
 > 对于某些 DBMS 产品（如 SQL Server），无需共享磁盘来实现高可用性。 SQL Server AlwaysOn 将 DBMS 数据和日志从一个群集节点的本地磁盘复制到另一个群集节点的本地磁盘。 在此情况下，Windows 群集配置不需要共享磁盘。

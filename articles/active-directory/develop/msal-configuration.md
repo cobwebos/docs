@@ -13,12 +13,12 @@ ms.date: 09/12/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
-ms.openlocfilehash: 3de252b22d7b33e45c3b45e2b6c05e4b33df663d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f5950347fff380fcfbaa89834407ff5f497a9719
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87027047"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854920"
 ---
 # <a name="android-microsoft-authentication-library-configuration-file"></a>Android Microsoft 身份验证库配置文件
 
@@ -58,7 +58,7 @@ Android Microsoft 身份验证库 (MSAL) 随附了一个[默认的配置 JSON �
     "audience": {
         "type": "AzureADandPersonalMicrosoftAccount"
     },
-    "default": true // Indicates that this is the default to use if not provided as part of the acquireToken or acquireTokenSilent call
+    "default": true // Indicates that this is the default to use if not provided as part of the acquireToken call
 },
 // Example AzureAD My Organization
 {
@@ -88,7 +88,7 @@ Android Microsoft 身份验证库 (MSAL) 随附了一个[默认的配置 JSON �
 
 | 类型 | 目标受众 | 租户 ID | Authority_Url | 生成的终结点 | 注释 |
 |------|------------|------------|----------------|----------------------|---------|
-| AAD | AzureADandPersonalMicrosoftAccount | | | `https://login.microsoftonline.com/common` | `common`是帐户所在位置的租户别名。 如特定的 Azure Active Directory 租户或 Microsoft 帐户系统。 |
+| AAD | AzureADandPersonalMicrosoftAccount | | | `https://login.microsoftonline.com/common` | `common` 是帐户所在位置的租户别名。 如特定的 Azure Active Directory 租户或 Microsoft 帐户系统。 |
 | AAD | AzureADMyOrg | contoso.com | | `https://login.microsoftonline.com/contoso.com` | 只有 contoso.com 中的帐户才能获取令牌。 任何已验证的域或租户 GUID 都可用作租户 ID。 |
 | AAD | AzureADMultipleOrgs | | | `https://login.microsoftonline.com/organizations` | 在此终结点上只能使用 Azure Active Directory 帐户。 Microsoft 帐户可以是组织的成员。 若要使用 Microsoft 帐户获取组织中资源的令牌，请指定要从中获取令牌的组织租户。 |
 | AAD | PersonalMicrosoftAccount | | | `https://login.microsoftonline.com/consumers` | 只有 Microsoft 帐户才能使用此终结点。 |
@@ -110,9 +110,9 @@ Android Microsoft 身份验证库 (MSAL) 随附了一个[默认的配置 JSON �
 
 #### <a name="audience-properties"></a>受众属性
 
-| properties | 数据类型  | 必须 | 注释 |
+| 属性 | 数据类型  | 必须 | 注释 |
 |-----------|-------------|------------|-------|
-| `type` | 字符串 | 是 | 指定应用要面向的受众。 可能的值： `AzureADandPersonalMicrosoftAccount` 、 `PersonalMicrosoftAccount` 、 `AzureADMultipleOrgs` 、`AzureADMyOrg` |
+| `type` | 字符串 | 是 | 指定应用要面向的受众。 可能的值： `AzureADandPersonalMicrosoftAccount` 、 `PersonalMicrosoftAccount` 、 `AzureADMultipleOrgs` 、 `AzureADMyOrg` |
 | `tenant_id` | 字符串 | 是 | 仅当指定 `"type":"AzureADMyOrg"` 时才是必需的。 如果指定其他 `type` 值，则是可选的。 这可以是类似于 `contoso.com` 的租户域，或类似于 `72f988bf-86f1-41af-91ab-2d7cd011db46` 的租户 ID |
 
 ### <a name="authorization_user_agent"></a>authorization_user_agent

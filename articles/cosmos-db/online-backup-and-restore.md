@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/24/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 1ac7f27015812756a8de9736351cc1fe0e374e0c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 54bbd5d45e14c1d345570eea9dc5469f77694154
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88799498"
+ms.locfileid: "88853921"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB 中的联机备份和按需数据还原
 
@@ -26,7 +26,7 @@ Azure Cosmos DB 会定期自动备份数据。 自动备份不会影响数据库
 
 * Azure Cosmos DB 将这些备份存储在 Azure Blob 存储中，而实际数据以本地形式驻留在 Azure Cosmos DB 中。
 
-*  为了保证低延迟，你的备份快照存储在与当前写入区域相同的区域中的 Azure Blob 存储中 (或 **其中一个** 写入区域，以防有多主机配置) 。 对于针对区域性灾难的恢复，Azure Blob 存储中备份数据的屏幕快照将通过异地冗余存储 (GRS) 再次复制到另一区域。 根据源区域以及与源区域关联的区域对确定备份复制的目标区域。 若要了解详细信息，请参阅 [Azure 区域的异地冗余对列表](../best-practices-availability-paired-regions.md)一文。 不能直接访问此数据库。 Azure Cosmos DB 团队将在你请求通过支持请求时还原备份。
+* 为了保证低延迟，你的备份快照存储在与当前写入区域相同的区域中的 Azure Blob 存储中 (或 **其中一个** 写入区域，以防有多主机配置) 。 对于针对区域性灾难的恢复，Azure Blob 存储中备份数据的屏幕快照将通过异地冗余存储 (GRS) 再次复制到另一区域。 根据源区域以及与源区域关联的区域对确定备份复制的目标区域。 若要了解详细信息，请参阅 [Azure 区域的异地冗余对列表](../best-practices-availability-paired-regions.md)一文。 不能直接访问此数据库。 Azure Cosmos DB 团队将在你请求通过支持请求时还原备份。
 
    下图显示了如何在美国西部的远程 Azure Blob 存储帐户中备份 Azure Cosmos 容器（其三个主要物理分区全部位于美国西部），然后将其复制到美国东部：
 
@@ -42,15 +42,15 @@ Azure Cosmos DB 会定期自动备份数据。 自动备份不会影响数据库
 
 * 使用 Azure Cosmos DB [更改源](change-feed.md) 来定期读取数据以进行完整备份或增量更改，并将其存储在自己的存储中。
 
-## <a name="backup-interval-and-retention-period"></a>备份间隔和保持期
+## <a name="modify-the-backup-interval-and-retention-period"></a>修改备份间隔和保持期
 
-Azure Cosmos DB 每隔4小时自动备份一次数据，在任何时间点都存储最新的两个备份。 此配置是默认选项，提供它时不需要任何额外的费用。 如果你的工作负荷中的默认备份间隔和保持期不足，可以更改它们。 你可以在创建 Azure Cosmos 帐户或创建帐户之后更改这些值。 备份配置在 Azure Cosmos 帐户级别设置，需要在每个帐户上进行配置。 为帐户配置备份选项后，该帐户将应用到该帐户中的所有容器。 目前只能从 Azure 门户更改它们的备份选项。
+Azure Cosmos DB 每隔4小时自动备份一次数据，在任何时间点都存储最新的两个备份。 此配置是默认选项，提供它时不需要任何额外的费用。 你可以在创建 Azure Cosmos 帐户期间或创建帐户后更改默认备份间隔和保持期。 备份配置在 Azure Cosmos 帐户级别设置，需要在每个帐户上进行配置。 为帐户配置备份选项后，该帐户将应用到该帐户中的所有容器。 目前只能从 Azure 门户更改它们的备份选项。
 
 如果你意外删除或损坏了数据， **则在创建支持请求以还原数据之前，请确保将你的帐户的备份保留期至少增加了7天。最好在此事件的8小时内提高你的保留期。** 这样，Azure Cosmos DB 团队有足够的时间来还原你的帐户。
 
 使用以下步骤更改现有 Azure Cosmos 帐户的默认备份选项：
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
 1. 导航到你的 Azure Cosmos 帐户，并打开 **备份 & 还原** 窗格。 根据需要更新备份间隔和备份保留期。
 
    * **备份间隔** -Azure Cosmos DB 尝试对数据进行备份的时间间隔。 备份需要非零时间，在某些情况下，可能由于下游依赖关系而失败。 Azure Cosmos DB 尝试在配置的时间间隔内进行备份，但它不能保证备份在该时间间隔内完成。 可以用小时数或分钟数来配置此值。 备份间隔不能小于1小时且不能超过24小时。 更改此间隔后，新时间间隔将从上次备份的时间开始生效。

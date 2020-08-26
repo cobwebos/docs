@@ -6,16 +6,16 @@ author: zr-msft
 ms.topic: article
 ms.date: 06/24/2020
 ms.author: zarhoads
-ms.openlocfilehash: 6ee99eee02e874208106d39c6442f54f59f95dad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d05d0166724e586fa79e58e2e74fb583b45d0cc6
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85361602"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852872"
 ---
 # <a name="install-existing-applications-with-helm-in-azure-kubernetes-service-aks"></a>使用 Helm 在 Azure Kubernetes 服务 (AKS) 中安装现有应用程序
 
-[Helm][helm] 是一种开放源打包工具，有助于安装和管理 Kubernetes 应用程序的生命周期。 与 Linux 包管理器（例如*APT*和*Yum*）类似，Helm 用于管理 Kubernetes 图表，这些图表是预配置的 Kubernetes 资源包。
+[Helm][helm] 是一种开放源打包工具，有助于安装和管理 Kubernetes 应用程序的生命周期。 与诸如 *APT* 和 *Yum* 的 Linux 包管理器类似，Helm 用于管理 Kubernetes 图表，这些图表是预配置的 Kubernetes 资源包。
 
 本文介绍如何在 AKS 上的 Kubernetes 群集中配置和使用 Helm。
 
@@ -26,11 +26,11 @@ ms.locfileid: "85361602"
 还需要安装 Helm CLI，这是在开发系统上运行的客户端。 它允许你使用 Helm 启动、停止和管理应用程序。 如果使用 Azure Cloud Shell，则已安装 Helm CLI。 有关本地平台上的安装说明，请参阅[安装 Helm][helm-install]。
 
 > [!IMPORTANT]
-> Helm 要在 Linux 节点上运行。 如果群集中有 Windows Server 节点，则必须确保 Helm pod 仅计划在 Linux 节点上运行。 还需要确保所安装的所有 Helm 图表也计划在正确的节点上运行。 本文中的命令使用 [节点选择器] [k8s] 来确保将 pod 安排到正确的节点，而不是所有 Helm 图表都公开节点选择器。 还可以考虑使用群集上的其他选项，例如[排斥][taints]。
+> Helm 要在 Linux 节点上运行。 如果群集中有 Windows Server 节点，则必须确保 Helm Pod 仅计划在 Linux 节点上运行。 还需要确保所安装的所有 Helm 图表也计划在正确的节点上运行。 本文中的命令使用 [节点选择器][k8s-节点选择器]，以确保将 Pod 安排到正确的节点，但并非所有 Helm 图表都可以公开节点选择器。 还可以考虑使用群集上的其他选项，例如[排斥][taints]。
 
 ## <a name="verify-your-version-of-helm"></a>验证 Helm 版本
 
-使用 `helm version` 命令验证是否已安装 Helm 3：
+使用 `helm version` 命令来验证已安装 Helm 3：
 
 ```console
 helm version
@@ -46,12 +46,13 @@ version.BuildInfo{Version:"v3.0.0", GitCommit:"e29ce2a54e96cd02ccfce88bee4f58bb6
 
 ## <a name="install-an-application-with-helm-v3"></a>使用 Helm v3 安装应用程序
 
-### <a name="add-the-official-helm-stable-charts-repository"></a>添加官方 Helm 稳定图表存储库
+### <a name="add-helm-repositories"></a>添加 Helm 存储库
 
-使用 [helm repo][helm-repo-add] 命令添加官方 Helm 稳定图表存储库。
+使用 [helm][helm-repo-add] 存储库命令添加官方 helm 稳定图表和 *nginx* 存储库。
 
 ```console
 helm repo add stable https://kubernetes-charts.storage.googleapis.com/
+helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 ```
 
 ### <a name="find-helm-charts"></a>查找 Helm 图表
@@ -123,6 +124,7 @@ helm repo update
 $ helm repo update
 
 Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "ingress-nginx" chart repository
 ...Successfully got an update from the "stable" chart repository
 Update Complete. ⎈ Happy Helming!⎈
 ```
@@ -132,7 +134,7 @@ Update Complete. ⎈ Happy Helming!⎈
 若要使用 Helm 安装图表，请使用 [helm install][helm-install-command] 命令并指定版本名称和要安装的图表的名称。 若要查看实际安装的 Helm 图表，让我们使用 Helm 图表安装基本的 nginx 部署。
 
 ```console
-helm install my-nginx-ingress stable/nginx-ingress \
+helm install my-nginx-ingress ingress-nginx/ingress-nginx \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 ```
@@ -140,7 +142,7 @@ helm install my-nginx-ingress stable/nginx-ingress \
 以下精简示例输出显示了 Helm 图表创建的 Kubernetes 资源的部署状态：
 
 ```console
-$ helm install my-nginx-ingress stable/nginx-ingress \
+$ helm install my-nginx-ingress ingress-nginx/ingress-nginx \
 >     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
 >     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
 
@@ -153,23 +155,23 @@ TEST SUITE: None
 NOTES:
 The nginx-ingress controller has been installed.
 It may take a few minutes for the LoadBalancer IP to be available.
-You can watch the status by running 'kubectl --namespace default get services -o wide -w my-nginx-ingress-controller'
+You can watch the status by running 'kubectl --namespace default get services -o wide -w my-nginx-ingress-ingress-nginx-controller'
 ...
 ```
 
 使用 `kubectl get services` 命令获取服务的 *EXTERNAL-IP*。
 
 ```console
-kubectl --namespace default get services -o wide -w my-nginx-ingress-controller
+kubectl --namespace default get services -o wide -w my-nginx-ingress-ingress-nginx-controller
 ```
 
-例如，下面的命令显示 *my-nginx-ingress-controller* 服务的 *EXTERNAL-IP*：
+例如，下面的命令显示*nginx-nginx-控制器*服务的*外部 IP* ：。
 
 ```console
-$ kubectl --namespace default get services -o wide -w my-nginx-ingress-controller
+$ kubectl --namespace default get services -o wide -w my-nginx-ingress-ingress-nginx-controller
 
-NAME                          TYPE           CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE   SELECTOR
-my-nginx-ingress-controller   LoadBalancer   10.0.123.1     <EXTERNAL-IP>   80:31301/TCP,443:31623/TCP   96s   app=nginx-ingress,component=controller,release=my-nginx-ingress
+NAME                                        TYPE           CLUSTER-IP   EXTERNAL-IP      PORT(S)                      AGE   SELECTOR
+my-nginx-ingress-ingress-nginx-controller   LoadBalancer   10.0.2.237   <EXTERNAL-IP>    80:31380/TCP,443:32239/TCP   72s   app.kubernetes.io/component=controller,app.kubernetes.io/instance=my-nginx-ingress,app.kubernetes.io/name=ingress-nginx
 ```
 
 ### <a name="list-releases"></a>列出版本

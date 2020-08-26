@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 08/04/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a8bed6c46b0660d5bf43863a5c7aaf4eeaf7e26f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 6b62f8c33c73ded978c0c2e3a8c3b7fadea49c96
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853191"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852092"
 ---
 # <a name="scenario-route-traffic-through-an-nva"></a>方案：通过 NVA 路由流量
 
 使用虚拟 WAN 虚拟中心路由时，有很多可用方案。 在此 NVA 方案中，目标是将流量路由到分支到 VNet 的 NVA (网络虚拟) 设备，并将 VNet 路由到分支。 有关虚拟中心路由的信息，请参阅[关于虚拟中心路由](about-virtual-hub-routing.md)。
 
 > [!NOTE]
-> 某些路由功能可能仍在推出。如果你所在的区域中尚未发生此推出，请使用以下文章中的步骤：
+> 如果已设置了具有新功能的新功能之前的路由， [如何配置虚拟中心路由](how-to-virtual-hub-routing.md) ，请使用以下文章中的步骤：
 >* [Azure 门户文章](virtual-wan-route-table-nva-portal.md)
 >* [PowerShell 文章](virtual-wan-route-table-nva.md)
 >
@@ -32,14 +32,14 @@ ms.locfileid: "87853191"
 
 * 对于用户已部署 NVA 并已将其他虚拟网络作为辐射 (VNet 2 和 VNet 4 的虚拟网络 **，请在) 下面的 "** NVA vnet"。
 * 连接到 NVA VNet 的虚拟网络的 "NVA 轮辐" (VNet 5、VNet 6、VNet 7 和中的 VNet 8 **，如下所) **示。
-* 对于连接到未使用 NVA 或其他 Vnet 对等互连的虚拟 WAN 的虚拟网络，"NVA Vnet" 在**连接矩阵**中 (VNet 1 和 vnet 3，请在下面) 。
+* 对于连接到未使用 NVA 或其他 Vnet 对等互连的虚拟 WAN 的虚拟网络，"NVA Vnet" 在 **连接矩阵**中 (VNet 1 和 vnet 3，请在下面) 。
 * 适用于 Microsoft 托管的虚拟 WAN 中心的 "中心"，其中 NVA Vnet 连接到。 NVA 轮辐 Vnet 无需连接到虚拟 WAN 中心，只能连接到 NVA Vnet。
 
 下面的连接矩阵汇总了此方案中支持的流：
 
 **连接矩阵**
 
-| From             | 到:|   *NVA 轮辐*|*NVA Vnet*|*非 NVA Vnet*|*分支*|
+| 从             | 更改为：|   *NVA 轮辐*|*NVA Vnet*|*非 NVA Vnet*|*分支*|
 |---|---|---|---|---|---|
 | **NVA 轮辐**   | &#8594; | 0/0 UDR  |  对等互连 |   0/0 UDR    |  0/0 UDR  |
 | **NVA Vnet**    | &#8594; |   静态 |      X   |        X     |      X    |
@@ -55,13 +55,13 @@ ms.locfileid: "87853191"
 考虑到 NVA 轮辐不受虚拟 WAN 管理，所有其他行都显示相同的连接模式。 因此，单个路由表 (默认) 会执行以下操作：
 
 * 虚拟网络 (非中心 Vnet 和用户中心 Vnet) ：
-  * 关联的路由表：**默认值**
-  * 传播到路由表：**默认值**
+  * 关联的路由表： **默认值**
+  * 传播到路由表： **默认值**
 * 转
-  * 关联的路由表：**默认值**
-  * 传播到路由表：**默认值**
+  * 关联的路由表： **默认值**
+  * 传播到路由表： **默认值**
 
-但是，在此方案中，我们需要考虑要配置哪些静态路由。 每个静态路由都将具有两个组件，一个部分位于虚拟 WAN 集线器中，用于指示虚拟 WAN 组件要用于每个辐射的连接，另一个部分位于该特定连接中，指向分配给 NVA (的具体 IP 地址，或指向多个 Nva) 前面的负载均衡器，如**图 1**所示：
+但是，在此方案中，我们需要考虑要配置哪些静态路由。 每个静态路由都将具有两个组件，一个部分位于虚拟 WAN 集线器中，用于指示虚拟 WAN 组件要用于每个辐射的连接，另一个部分位于该特定连接中，指向分配给 NVA (的具体 IP 地址，或指向多个 Nva) 前面的负载均衡器，如 **图 1** 所示：
 
 **图 1**
 
@@ -69,7 +69,7 @@ ms.locfileid: "87853191"
 
 这样，在默认表中要将流量发送到 NVA VNet 后面的 NVA 轮辐的静态路由如下：
 
-| 描述 | 路由表 | 静态路由              |
+| 说明 | 路由表 | 静态路由              |
 | ----------- | ----------- | ------------------------- |
 | VNet 2       | 默认     | 10.2.0.0/16-> eastusconn |
 | VNet 4       | 默认     | 10.4.0.0/16-> weconn     |
@@ -87,15 +87,15 @@ ms.locfileid: "87853191"
 
 ## <a name="architecture"></a><a name="architecture"></a>体系结构
 
-在**图 2**中，有两个中心：**Hub1**和**Hub2**。
+在 **图 2**中，有两个中心： **Hub1** 和 **Hub2**。
 
-* **Hub1**和**Hub2**直接连接到 NVA Vnet **VNet 2**和**vnet 4**。
+* **Hub1** 和 **Hub2** 直接连接到 NVA Vnet **VNet 2** 和 **vnet 4**。
 
-* **Vnet 5**和**Vnet 6**与**vnet 2**对等互连。
+* **Vnet 5** 和 **Vnet 6** 与 **vnet 2**对等互连。
 
-* **Vnet 7**和**Vnet 8**与**vnet 4**对等互连。
+* **Vnet 7** 和 **Vnet 8** 与 **vnet 4**对等互连。
 
-* **Vnet 5、6、7、8**是间接轮辐，不直接连接到虚拟中心。
+* **Vnet 5、6、7、8** 是间接轮辐，不直接连接到虚拟中心。
 
 **图 2**
 
@@ -105,7 +105,7 @@ ms.locfileid: "87853191"
 
 若要通过 NVA 设置路由，请执行以下步骤：
 
-1. 标识 NVA 辐射 VNet 连接。 在**图 2**中，它们是**vnet 2 连接 (Eastusconn) **和**VNet 4 连接 (weconn) **。
+1. 标识 NVA 辐射 VNet 连接。 在 **图 2**中，它们是 **vnet 2 连接 (Eastusconn) ** 和 **VNet 4 连接 (weconn) **。
 
    确保已设置 Udr：
    * 从 VNet 5 和 VNet 6 到 VNet 2 NVA IP
@@ -117,13 +117,13 @@ ms.locfileid: "87853191"
 
    :::image type="content" source="./media/routing-scenarios/nva/nva-static-expand.png" alt-text="示例":::
 
-3. 为 VNet 2 的虚拟网络连接中的 Vnet 5、6配置静态路由。 若要为虚拟网络连接设置路由配置，请参阅[虚拟中心路由](how-to-virtual-hub-routing.md#routing-configuration)。
+3. 为 VNet 2 的虚拟网络连接中的 Vnet 5、6配置静态路由。 若要为虚拟网络连接设置路由配置，请参阅 [虚拟中心路由](how-to-virtual-hub-routing.md#routing-configuration)。
 
 4. 将 Vnet 4、7、8的聚合静态路由条目添加到中心1的默认路由表。
 
 5. 对于中心2的默认路由表，重复步骤2、3和4。
 
-这将导致路由配置更改，如下面的**图 3**所示。
+这将导致路由配置更改，如下面的 **图 3**所示。
 
 **图3**
 

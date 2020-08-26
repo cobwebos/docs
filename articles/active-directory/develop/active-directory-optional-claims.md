@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/24/2020
+ms.date: 08/25/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: ff3e2c9f989a6688e200a1c34e85ef3a22860840
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 1384dc760edb0bca66344d8892c18fdebb54855d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794674"
+ms.locfileid: "88853594"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>如何：向应用程序提供可选声明
 
@@ -54,7 +54,6 @@ ms.locfileid: "88794674"
 | `auth_time`                | 用户上次进行身份验证的时间。 请参阅 OpenID Connect 规范。| JWT        |           |  |
 | `tenant_region_scope`      | 资源租户的区域 | JWT        |           | |
 | `sid`                      | 会话 ID，用于基于会话的用户注销。 | JWT        |  个人帐户和 Azure AD 帐户。   |         |
-| `platf`                    | 设备平台    | JWT        |           | 限制为可以验证设备类型的托管设备。|
 | `verified_primary_email`   | 源自用户的 PrimaryAuthoritativeEmail      | JWT        |           |         |
 | `verified_secondary_email` | 源自用户的 SecondaryAuthoritativeEmail   | JWT        |           |        |
 | `vnet`                     | VNET 说明符信息。 | JWT        |           |      |
@@ -65,7 +64,7 @@ ms.locfileid: "88794674"
 | `xms_pl`                   | 用户首选语言  | JWT ||用户的首选语言（如果已设置）。 在来宾访问方案中，源自其主租户。 已格式化 LL-CC（“zh-cn”）。 |
 | `xms_tpl`                  | 租户首选语言| JWT | | 资源租户的首选语言（如果已设置）。 已格式化 LL（“en”）。 |
 | `ztdid`                    | 零接触部署 ID | JWT | | 用于 [Windows AutoPilot](/windows/deployment/windows-autopilot/windows-10-autopilot) 的设备标识 |
-| `email`                    | 此用户的可寻址电子邮件（如果此用户有）。  | JWT、SAML | MSA、Azure AD | 如果用户是租户中的来宾，则默认包含此值。  对于托管用户（租户内部的用户），它必须通过此可选声明进行请求，或者仅在 v2.0 上使用 OpenID 范围进行请求。  对于托管用户，必须在 [Office 管理门户](https://portal.office.com/adminportal/home#/users)中设置电子邮件地址。|
+| `email`                    | 此用户的可寻址电子邮件（如果此用户有）。  | JWT、SAML | MSA、Azure AD | 如果用户是租户中的来宾，则默认包含此值。  对于托管用户（租户内部的用户），必须通过此可选声明进行请求，或者仅在 v2.0 上使用 OpenID 范围进行请求。  对于托管用户，必须在 [Office 管理门户](https://portal.office.com/adminportal/home#/users)中设置电子邮件地址。|
 | `acct`                | 租户中的用户帐户状态 | JWT、SAML | | 如果用户是租户的成员，则该值为 `0`。 如果他们是来宾，则该值为 `1`。 |
 | `groups`| 组声明的可选格式 |JWT、SAML| |与[应用程序清单](reference-app-manifest.md)中的 GroupMembershipClaims 设置（也是必需的）结合使用。 有关详细信息，请参阅下面的[组声明](#configuring-groups-optional-claims)。 有关组声明的详细信息，请参阅[如何配置组声明](../hybrid/how-to-connect-fed-group-claims.md)
 | `upn`                      | UserPrincipalName | JWT、SAML  |           | 尽管会自动包含此声明，但可以将它指定为可选声明，以附加额外的属性，在来宾用例中修改此声明的行为。  |
@@ -137,7 +136,7 @@ ms.locfileid: "88794674"
 1. 选择“添加可选声明”。
 1. 选择要配置的令牌类型。
 1. 选择要添加的可选声明。
-1. 选择“添加”  。
+1. 选择 **添加** 。
 
 **通过应用程序清单配置可选声明：**
 
@@ -288,7 +287,7 @@ ms.locfileid: "88794674"
     }
     ```
 
-   | 可选声明架构 | 值 |
+   | 可选声明架构 | Value |
    |----------|-------------|
    | **name：** | 必须是“groups” |
    | **source：** | 未使用。 省略或指定 null |
@@ -379,7 +378,7 @@ ms.locfileid: "88794674"
 
 1. 通过身份验证后，在页面右上角选择 Azure AD 租户。
 
-1. 从左侧菜单中选择“Azure Active Directory”。
+1. 在左侧菜单中，选择“Azure Active Directory”。
 
 1. 在“管理”部分下选择“应用注册” 。
 

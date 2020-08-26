@@ -8,20 +8,20 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 61c969bc0c0ac9731ae35e445b82db633c3c5191
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: cbf1c678307d76361e6083f4e2231fb9e48a112f
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163163"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855155"
 ---
 # <a name="querying-data-from-azure-time-series-insights-gen2"></a>查询来自 Azure 时序见解第 2 代的数据
 
-使用 Azure 时序见解第 2 代可以通过公共 Surface API 对存储在环境中的事件和元数据进行数据查询。 [Azure 时序见解 Gen2 资源管理器](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer)也使用这些 api。
+使用 Azure 时序见解第 2 代可以通过公共 Surface API 对存储在环境中的事件和元数据进行数据查询。 [Azure 时序见解 TSI 资源管理器](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer)也使用这些 api。
 
-Azure 时序见解第 2 代中提供三个主要 API 类别：
+Azure 时序见解 Gen2 中有三个主要 API 类别：
 
 * **环境 API**：这些 API 允许查询 Azure 时序见解第 2 代环境本身。 这些 API 可用于收集调用方有权访问的环境列表和环境元数据。
 * **时序模型-查询 (TSM-Q) API**：用于针对环境的时序模型中存储的元数据执行创建、读取、更新和删除 (CRUD) 操作。 这些 API 可用于访问和编辑实例、类型与层次结构。
@@ -73,4 +73,4 @@ Azure 时序见解第 2 代使用丰富的基于字符串的表达式语言[时�
 ## <a name="next-steps"></a>后续步骤
 
 * 详细了解可在[时序模型](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-tsm)中定义的不同变量。
-* 详细了解如何从[Azure 时序见解 Gen2 资源管理器](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer)查询数据。
+* 详细了解如何从 [Azure 时序见解 TSI 资源管理器](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-explorer)查询数据。

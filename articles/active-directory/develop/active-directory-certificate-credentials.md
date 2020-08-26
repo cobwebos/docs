@@ -13,22 +13,22 @@ ms.date: 08/12/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 06f15257148342879a164005a8f4fb302c539e67
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 6330621aac78d5e9df52f2cd3ad9c3968bb0120d
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163656"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853378"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft 标识平台应用程序身份验证证书凭据
 
-Microsoft 标识平台允许应用程序使用自己的凭据进行身份验证，例如，在 OAuth 2.0[客户端凭据授予](v2-oauth2-client-creds-grant-flow.md)流和[代表](v2-oauth2-on-behalf-of-flow.md) (OBO) 流中。
+Microsoft 标识平台允许应用程序使用自己的凭据进行身份验证，例如，在 OAuth 2.0  [客户端凭据授予](v2-oauth2-client-creds-grant-flow.md) 流和 [代表](v2-oauth2-on-behalf-of-flow.md) (OBO) 流中。
 
-应用程序可用于身份验证的一种形式的凭据是 (JWT) 断言，该[令牌](./security-tokens.md#json-web-tokens-jwts-and-claims)是使用应用程序拥有的证书进行签名的。
+应用程序可用于身份验证的一种形式的凭据是 (JWT) 断言，该 [令牌](./security-tokens.md#json-web-tokens-jwts-and-claims) 是使用应用程序拥有的证书进行签名的。
 
 ## <a name="assertion-format"></a>断言格式
 
-若要计算断言，可以使用所选语言的多种 JWT 库之一。 此信息由标记在其[标头](#header)、[声明](#claims-payload)和[签名](#signature)中传送。
+若要计算断言，可以使用所选语言的多种 JWT 库之一。 此信息由标记在其 [标头](#header)、 [声明](#claims-payload)和 [签名](#signature)中传送。
 
 ### <a name="header"></a>标头
 
@@ -36,13 +36,13 @@ Microsoft 标识平台允许应用程序使用自己的凭据进行身份验证�
 | --- | --- |
 | `alg` | 应为 **RS256** |
 | `typ` | 应为 **JWT** |
-| `x5t` | X.509 证书哈希 (也称为证书的 SHA-1*指纹*) 编码为 Base64 字符串值。 例如，给定的 x.509 证书哈希值 `84E05C1D98BCE3A5421D225B140B36E86A3D5534` 为，则 `x5t` 声明为 `hOBcHZi846VCHSJbFAs26Go9VTQ` 。 |
+| `x5t` | X.509 证书哈希的 (也称为证书的 SHA-1 *指纹*) 十六进制表示形式编码为 Base64 字符串值。 例如，给定 (Hex) 的 x.509 证书哈希 `84E05C1D98BCE3A5421D225B140B36E86A3D5534` ，则 `x5t` 声明将 `hOBcHZi846VCHSJbFAs26Go9VTQ=` (Base64) 。 |
 
 ### <a name="claims-payload"></a>声明（有效负载）
 
 | 参数 |  备注 |
 | --- | --- |
-| `aud` | 受众：应为`https://login.microsoftonline.com/<your-tenant-id>/oauth2/token` |
+| `aud` | 受众：应为 `https://login.microsoftonline.com/<your-tenant-id>/oauth2/token` |
 | `exp` | 到期日期：令牌的到期日期。 该时间表示为自 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) UTC 至令牌有效期到期的秒数。 建议使用较短的过期时间-10 分钟到一小时。|
 | `iss` | 颁发者：应为客户端服务的 client_id (*应用程序 (客户端) id*)  |
 | `jti` | GUID： JWT ID |
@@ -51,7 +51,7 @@ Microsoft 标识平台允许应用程序使用自己的凭据进行身份验证�
 
 ### <a name="signature"></a>签名
 
-签名是通过应用证书来计算的，如[JSON Web 令牌 RFC7519 规范](https://tools.ietf.org/html/rfc7519)中所述。
+签名是通过应用证书来计算的，如 [JSON Web 令牌 RFC7519 规范](https://tools.ietf.org/html/rfc7519)中所述。
 
 ## <a name="example-of-a-decoded-jwt-assertion"></a>已解码的 JWT 断言示例
 
@@ -78,8 +78,8 @@ Microsoft 标识平台允许应用程序使用自己的凭据进行身份验证�
 
 以下字符串是已编码的断言的示例。 如果你仔细查看，你会注意到三个以点分隔的部分 (`.`) ：
 
-* 第一部分编码*标头*
-* 第二部分将*声明* (负载编码) 
+* 第一部分编码 *标头*
+* 第二部分将 *声明* (负载编码) 
 * 最后一节是通过前两部分内容中的证书进行计算的*签名*
 
 ```
@@ -103,8 +103,8 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 拥有证书后需计算：
 
-- `$base64Thumbprint`-证书哈希的 Base64 编码值
-- `$base64Value`-证书原始数据的 Base64 编码值
+- `$base64Thumbprint` -证书哈希的 Base64 编码值
+- `$base64Value` -证书原始数据的 Base64 编码值
 
 还需要提供 GUID 来标识应用程序清单中的密钥 (`$keyId`)。
 
@@ -129,4 +129,4 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 ## <a name="next-steps"></a>后续步骤
 
-GitHub 上的[.Net Core 守护程序控制台应用程序使用 Microsoft 标识平台](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)代码示例显示应用程序如何使用其自己的凭据进行身份验证。 它还演示了如何使用 PowerShell cmdlet[创建自签名证书](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) `New-SelfSignedCertificate` 。 你还可以使用示例存储库中的[应用创建脚本](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md)来创建证书、计算指纹等。
+GitHub 上的 [.Net Core 守护程序控制台应用程序使用 Microsoft 标识平台](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) 代码示例显示应用程序如何使用其自己的凭据进行身份验证。 它还演示了如何使用 PowerShell cmdlet [创建自签名证书](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/1-Call-MSGraph#optional-use-the-automation-script) `New-SelfSignedCertificate` 。 你还可以使用示例存储库中的 [应用创建脚本](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/blob/master/1-Call-MSGraph/AppCreationScripts-withCert/AppCreationScripts.md) 来创建证书、计算指纹等。

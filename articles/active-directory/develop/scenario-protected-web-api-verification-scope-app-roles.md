@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 204bc7dd8cc31f48fdc09eae6b00247023de64f3
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: c3cf8bfd2810e9c26a6f65c50c1a22baeec892af
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88120960"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855479"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>受保护的 Web API：验证范围和应用角色
 
@@ -88,7 +88,7 @@ public class TodoListController : Controller
 
 #### <a name="verify-the-scopes-more-globally"></a>更全局地验证范围
 
-为 web API 定义粒度范围并验证每个控制器操作中的作用域是推荐的方法。 不过，也可以使用 ASP.NET Core 验证应用程序或控制器级别的作用域。 有关详细信息，请参阅 ASP.NET 核心文档中的[基于声明的授权](/aspnet/core/security/authorization/claims)。
+为 web API 定义粒度范围并验证每个控制器操作中的作用域是推荐的方法。 不过，也可以使用 ASP.NET Core 验证应用程序或控制器级别的作用域。 有关详细信息，请参阅 ASP.NET 核心文档中的 [基于声明的授权](/aspnet/core/security/authorization/claims) 。
 
 ### <a name="net-mvc"></a>.NET MVC
 
@@ -108,12 +108,12 @@ public class TodoListController : ApiController
 {
     public IEnumerable<TodoItem> Get()
     {
-        ValidateAppRole("access_as_application");
+        HttpContext.ValidateAppRole("access_as_application");
         ...
     }
 ```
 
-此 `ValidateAppRole` 方法是在[RolesRequiredHttpContextExtensions.cs](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RolesRequiredHttpContextExtensions.cs#L28)中的中定义的。
+此 `ValidateAppRole` 方法是在 [RolesRequiredHttpContextExtensions.cs](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RolesRequiredHttpContextExtensions.cs#L28)中的中定义的。
 
 ### <a name="aspnet-mvc"></a>ASP.NET MVC
 
