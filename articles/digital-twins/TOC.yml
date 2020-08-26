@@ -88,6 +88,8 @@
           href: how-to-integrate-maps.md
         - name: 与 Azure 时序见解集成
           href: how-to-integrate-time-series-insights.md
+        - name: 与逻辑应用集成
+          href: how-to-integrate-logic-apps.md
     - name: 疑难解答
       items:
         - name: 查看 Azure Monitor 中的指标

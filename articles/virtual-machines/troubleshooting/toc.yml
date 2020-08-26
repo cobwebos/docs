@@ -195,7 +195,7 @@
     - name: 概述
       href: ../managed-disks-overview.md
     - name: 常见问题解答
-      href: ../windows/faq-for-disks.md
+      href: ../faq-for-disks.md
     - name: 删除存储资源时出错
       href: storage-resource-deletion-errors.md
     - name: 删除经典存储资源时出错

@@ -282,7 +282,7 @@
               href: ../reserved-vm-instance-size-flexibility.md
         - name: 点 VM
           displayName: 'pre-empt, preempt'
-          href: spot-vms.md
+          href: ../spot-vms.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 不带临时磁盘的 Azure VM
           href: ../azure-vms-no-temp-disk.md
         - name: Azure VM 大小命名约定
@@ -879,15 +879,15 @@
             - name: 启用主机加密 - PowerShell
               href: disks-enable-host-based-encryption-powershell.md
             - name: 启用主机加密 - 门户
-              href: disks-enable-host-based-encryption-portal.md
+              href: ../disks-enable-host-based-encryption-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: 启用客户管理的密钥 - PowerShell
               href: disks-enable-customer-managed-keys-powershell.md
             - name: 启用客户管理的密钥 - 门户
-              href: disks-enable-customer-managed-keys-portal.md
+              href: ../disks-enable-customer-managed-keys-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: 启用静态双重加密
               href: disks-enable-double-encryption-at-rest-powershell.md
             - name: 启用静态双重加密 - 门户
-              href: disks-enable-double-encryption-at-rest-portal.md
+              href: ../disks-enable-double-encryption-at-rest-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 迁移和转换
           items:
             - name: 在“标准”和“高级”之间转换磁盘
@@ -911,7 +911,7 @@
         - name: 查找未附加的磁盘 - 门户
           href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 磁盘常见问题解答
-          href: faq-for-disks.md
+          href: ../faq-for-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: 管理网络
       href: ps-common-network-ref.md
       items:

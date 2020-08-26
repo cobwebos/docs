@@ -11,12 +11,12 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 02/14/2020
-  ms.openlocfilehash: ea9b89a92aa271065a59de561dc684263ce1cdc4
-  ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+  ms.openlocfilehash: eb7d7c911fc099a5f3b5456d7fb77688e0b06af5
+  ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
   ms.translationtype: HT
   ms.contentlocale: zh-CN
-  ms.lasthandoff: 08/06/2020
-  ms.locfileid: "87829027"
+  ms.lasthandoff: 08/25/2020
+  ms.locfileid: "88816467"
 highlightedContent:
   items:
   - title: 使用 Azure CLI 创建 Linux 虚拟机
@@ -30,7 +30,7 @@ highlightedContent:
     url: ../virtual-machine-scale-sets/quick-create-portal.md
   - title: 点 VM - 利用未使用的容量，同时大幅降低成本。
     itemType: concept
-    url: ./linux/spot-vms.md
+    url: ./spot-vms.md
   - title: 专用主机 - 用于承载一个或多个虚拟机的物理服务器。
     itemType: concept
     url: ./linux/dedicated-hosts.md

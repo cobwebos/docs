@@ -510,6 +510,8 @@
           href: unique-keys.md
         - name: 事务和乐观并发控制
           href: database-transactions-optimistic-concurrency.md
+        - name: Attachments
+          href: attachments.md
     - name: 更改源
       items:
         - name: 更改源概述

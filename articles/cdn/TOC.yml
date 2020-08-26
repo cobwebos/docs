@@ -68,6 +68,8 @@
           href: cdn-restrict-access-by-country.md
         - name: 通过压缩文件来提高性能
           href: cdn-improve-performance.md
+        - name: 终结点多源
+          href: endpoint-multiorigin.md
         - name: 控制缓存行为
           items:
             - name: 使用缓存规则控制缓存行为

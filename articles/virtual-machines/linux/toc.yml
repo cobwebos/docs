@@ -297,7 +297,7 @@
               href: ../reserved-vm-instance-size-flexibility.md
         - name: 点 VM
           displayName: 'pre-empt, preempt'
-          href: spot-vms.md
+          href: ../spot-vms.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 不带临时磁盘的 Azure VM
           href: ../azure-vms-no-temp-disk.md
         - name: Azure VM 大小命名约定
@@ -984,15 +984,15 @@
             - name: 启用主机加密 - CLI
               href: disks-enable-host-based-encryption-cli.md
             - name: 启用主机加密 - 门户
-              href: disks-enable-host-based-encryption-portal.md
+              href: ../disks-enable-host-based-encryption-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 启用客户管理的密钥 - CLI
               href: disks-enable-customer-managed-keys-cli.md
             - name: 启用客户管理的密钥 - 门户
-              href: disks-enable-customer-managed-keys-portal.md
+              href: ../disks-enable-customer-managed-keys-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: 启用静态双重加密 - CLI
               href: disks-enable-double-encryption-at-rest-cli.md
             - name: 启用静态双重加密 - 门户
-              href: disks-enable-double-encryption-at-rest-portal.md
+              href: ../disks-enable-double-encryption-at-rest-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: 迁移和转换
           items:
             - name: 使用 Azure Site Recovery 迁移到高级存储
@@ -1024,7 +1024,7 @@
         - name: 使用文件存储
           href: mount-azure-file-storage-on-linux-using-smb.md
         - name: 磁盘常见问题解答
-          href: faq-for-disks.md
+          href: ../faq-for-disks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: 管理网络
       items:
         - name: 创建虚拟网络

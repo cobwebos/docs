@@ -41,6 +41,10 @@
           href: tutorial-alias-rr.md
 - name: 概念
   items:
+    - name: 安全性
+      items:
+        - name: 安全基线
+          href: security-baseline.md
     - name: 公共 DNS
       items:
         - name: 区域和记录
