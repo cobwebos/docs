@@ -1,6 +1,6 @@
 ---
-title: 配置安全以授权数据访问-Azure 时序见解 |Microsoft Docs
-description: 了解如何在 Azure 时序见解环境中配置安全性、权限和管理数据访问策略。
+title: 配置授予数据访问权限所需的安全性 - Azure 时序见解 | Microsoft Docs
+description: 了解如何在 Azure 时序见解环境中配置安全性和权限并管理数据访问策略。
 ms.service: time-series-insights
 services: time-series-insights
 author: shipra1mishra
@@ -9,23 +9,23 @@ manager: dviso
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 07/07/2020
+ms.date: 08/25/2020
 ms.custom: seodec18
-ms.openlocfilehash: 149d1eab696ae8419bed79cd2cdc0b066c32060c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 35a2be5c9f418bc423ae56c456db0062677a33c2
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86531025"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856116"
 ---
 # <a name="grant-data-access-to-an-environment"></a>授予对环境的数据访问权限
 
-本文介绍两种类型的 Azure 时序见解访问策略。
+本文讨论了两种类型的 Azure 时序见解访问策略。
 
 ## <a name="sign-in-to-azure-time-series-insights"></a>登录到 Azure 时序见解
 
-1. 登录 [Azure 门户](https://portal.azure.com/)。
-1. 通过 `Time Series Insights environments` 在**搜索**框中输入来查找 Azure 时序见解环境。 `Time Series Insights environments`在搜索结果中选择。
+1. 登录到 [Azure 门户](https://portal.azure.com/)。
+1. 通过在“搜索”框中输入 `Time Series Insights environments` 找到 Azure 时序见解环境。 在搜索结果中选择 `Time Series Insights environments`。
 1. 从列表中选择 Azure 时序见解环境。
 
 ## <a name="grant-data-access"></a>授予数据访问权限
@@ -60,11 +60,11 @@ ms.locfileid: "86531025"
 
 ## <a name="provide-guest-access-from-another-azure-ad-tenant"></a>提供从另一个 Azure AD 租户进行来宾访问的权限
 
-此 `Guest` 角色不是管理角色。 这是一个术语，用于从一个租户邀请到另一个租户的帐户。 邀请来宾帐户加入租户的目录后，就可以像任何其他帐户一样对其应用相同的访问控制。 可以通过使用访问控制（IAM）边栏选项卡授予对 Azure 时序见解环境的管理访问权限。 也可以通过“数据访问策略”边栏选项卡授予对环境中数据的访问权限。 若要详细了解 Azure Active Directory (Azure AD) 租户来宾访问权限，请阅读[在 Azure 门户中添加 Azure Active Directory B2B 协作用户](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)。
+`Guest` 角色不是管理角色。 它是一个术语，是指从一个租户被邀请到另一个租户的帐户。 在将来宾帐户邀请到租户目录后，它就可以像任何其他帐户一样拥有相同的访问控制。 可以使用“访问控制(IAM)”边栏选项卡授予对 Azure 时序见解环境的管理访问权限。 也可以通过“数据访问策略”边栏选项卡授予对环境中数据的访问权限。 若要详细了解 Azure Active Directory (Azure AD) 租户来宾访问权限，请阅读[在 Azure 门户中添加 Azure Active Directory B2B 协作用户](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)。
 
-请按照以下步骤向其他租户中的 Azure AD 用户授予对 Azure 时序见解环境的来宾访问权限。
+请按照以下步骤将来宾对 Azure 时序见解环境的访问权限授予另一个租户的 Azure AD 用户。
 
-1. 中转到 Azure 门户，单击**Azure Active Directory**，在 "**概述**" 选项卡上向下滚动，然后选择 "**来宾用户**"。
+1. 转到 Azure 门户，单击“Azure Active Directory”，在“概述”选项卡上向下滚动，然后选择“来宾用户”  。
 
     [![选择“数据访问策略”，然后选择“+ 邀请”](media/data-access/data-access-invite-another-aad-tenant.png)](media/data-access/data-access-invite-another-aad-tenant.png#lightbox)
 
@@ -72,11 +72,11 @@ ms.locfileid: "86531025"
 
     [![输入查找所选用户所需的电子邮件地址](media/data-access/data-access-invite-guest-by-email.png)](media/data-access/data-access-invite-guest-by-email.png#lightbox)
 
-1. 查找屏幕上显示的确认气泡。 你还可以单击 "**通知**" 以确认已添加来宾用户。
+1. 查找屏幕上显示的确认气泡。 也可以单击“通知”来确认已经添加了来宾用户。
 
     [![查找要显示的确认气泡](media/data-access/data-access-confirmation-bubble.png)](media/data-access/data-access-confirmation-bubble.png#lightbox)
 
-1. 返回到时序见解环境，添加新创建的来宾用户。 单击 "**授予数据访问权限**" 中所述的 "**数据访问策略**"。 **选择 "用户**"。 搜索已邀请的来宾用户的电子邮件地址，找到要添加的用户。 然后单击“选择”以确认选择  。
+1. 返回到时序见解环境，以添加新创建的来宾用户。 按照“授予数据访问权限”下的说明，单击“数据访问策略” 。 选择用户。 搜索已邀请的来宾用户的电子邮件地址，找到要添加的用户。 然后单击“选择”以确认选择  。
 
     [![选择用户并确认所做的选择](media/data-access/data-access-select-invited-person-confirmation.png)](media/data-access/data-access-select-invited-person-confirmation.png#lightbox)
 
@@ -106,7 +106,7 @@ ms.locfileid: "86531025"
 
 1. 管理员与其来宾[共享环境 URL](time-series-insights-parameterized-urls.md)。
 
-1. 当来宾用户登录到你用来邀请他们的电子邮件地址并接受邀请后，系统就会将其定向到 Azure 门户。 
+1. 当来宾用户登录到你用来邀请他们的电子邮件地址并接受邀请后，系统就会将其定向到 Azure 门户。
 
 1. 来宾现在可以使用管理员提供的环境 URL 访问共享环境。 来宾将该 URL 输入其 Web 浏览器即可立刻进行访问。
 
@@ -114,14 +114,14 @@ ms.locfileid: "86531025"
 
     [![在 insights.azure.com 上选择头像](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 
+    来宾用户在选择管理员的租户以后，即可选择共享的 Azure 时序见解环境。
 
-    当来宾用户选择管理员的租户后，他们将能够选择共享的 Azure 时序见解环境。 
-    
     现在，他们拥有了与你在**步骤 5** 中提供的角色相关联的所有功能。
 
     [![来宾用户从下拉列表中选择你的 Azure 租户](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
+
 * 阅读[身份验证和授权](time-series-insights-authentication-and-authorization.md)以获取 Azure Active Directory 应用注册步骤。
 
-* [在 Azure 时序见解 Gen2 资源管理器中查看环境](./time-series-insights-update-explorer.md)。
+* [在 Azure 时序见解 TSI 资源管理器中查看环境](./time-series-insights-update-explorer.md)。

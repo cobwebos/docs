@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 6f633a585e4fa6ebd12e8d12408847b5ee758855
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: da75e1d6208db5adf5f0f63d2a5525fc651513b0
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513090"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855918"
 ---
 # <a name="technical-deep-dive-on-platform-supported-migration-from-classic-to-azure-resource-manager"></a>有关平台支持的从经典部署模型到 Azure Resource Manager 的迁移的技术深入探讨
 
@@ -33,7 +33,7 @@ ms.locfileid: "88513090"
 
 经典部署模型和资源管理器堆栈之间的数据平面是相同的。 区别在于，在迁移过程中，Microsoft 会将资源的表示方式从经典部署模型转换为资源管理器堆栈中的相应模型。 因此，需在资源管理器堆栈中使用新的工具、API 和 SDK 来管理资源。
 
-![显示管理/控制平面和数据平面之间差异的图](~/articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
+![显示管理/控制平面和数据平面之间差异的图](media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
 
 
 > [!NOTE]
@@ -52,7 +52,7 @@ ms.locfileid: "88513090"
 
 迁移工作流如下所示：
 
-![显示迁移工作流的图](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-workflow.png)
+![显示迁移工作流的图](windows/media/migration-classic-resource-manager/migration-workflow.png)
 
 > [!NOTE]
 > 以下部分描述的操作全都是幂等的。 如果遇到功能不受支持或配置错误以外的问题，请重试准备、中止或提交操作。 Azure 会再次尝试此操作。
@@ -94,17 +94,17 @@ ms.locfileid: "88513090"
 准备操作完成之后，可以选择在经典部署模型和资源管理器模型中将资源可视化。 对于经典部署模型中的每项云服务，Azure 平台都会创建模式为 `cloud-service-name>-Migrated` 的资源组名称。
 
 > [!NOTE]
-> 不能选择针对已迁移资源（即标有“-Migrated”字样的资源）创建的资源组的名称。 但是，可以在迁移完成后，使用 Azure 资源管理器的移动功能将资源移至所需的任何资源组。 有关详细信息，请参阅[将资源移到新资源组或订阅](~/articles/resource-group-move-resources.md)。
+> 不能选择针对已迁移资源（即标有“-Migrated”字样的资源）创建的资源组的名称。 但是，可以在迁移完成后，使用 Azure 资源管理器的移动功能将资源移至所需的任何资源组。 有关详细信息，请参阅[将资源移到新资源组或订阅](../azure-resource-manager/management/move-resource-group-and-subscription.md)。
 
 下面的两个屏幕截图显示了准备操作成功后的结果。 第一个屏幕截图显示包含原始云服务的资源组。 第二个屏幕截图显示包含 Azure 资源管理器等效资源的新“-Migrated”资源组。
 
-![显示原始云服务的屏幕截图](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-classic.png)
+![显示原始云服务的屏幕截图](windows/media/migration-classic-resource-manager/portal-classic.png)
 
-![显示准备操作中的 Azure 资源管理器资源的屏幕截图](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
+![显示准备操作中的 Azure 资源管理器资源的屏幕截图](windows/media/migration-classic-resource-manager/portal-arm.png)
 
 下面是在完成准备阶段以后，在幕后查看资源的情形。 请注意，数据平面中的资源是相同的。 它同时在管理平面（经典部署模型）和控制平面（资源管理器）中呈现。
 
-![准备阶段图](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
+![准备阶段图](windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
 
 > [!NOTE]
 > 不属于经典部署模型中的虚拟网络的 VM 在此迁移阶段停止和解除分配。
@@ -124,7 +124,7 @@ ms.locfileid: "88513090"
 ### <a name="abort"></a>中止
 这是可选步骤，用于还原对经典部署模型所做的更改，并停止迁移。 对于资源，此操作会删除资源管理器元数据（在准备步骤中创建）。 
 
-![中止步骤图](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
+![中止步骤图](windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
 
 
 > [!NOTE]
@@ -139,13 +139,13 @@ ms.locfileid: "88513090"
 >
 >
 
-![提交步骤图](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
+![提交步骤图](windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
 
 ## <a name="migration-flowchart"></a>迁移流程图
 
 下面是一个流程图，说明了如何进行迁移：
 
-![Screenshot that shows the migration steps](~/articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png)
+![Screenshot that shows the migration steps](windows/media/migration-classic-resource-manager/migration-flow.png)
 
 ## <a name="translation-of-the-classic-deployment-model-to-resource-manager-resources"></a>从经典部署模型资源转换为资源管理器资源
 可以在下表中找到资源的经典部署模型与资源管理器表示形式。 目前不支持其他功能和资源。

@@ -7,23 +7,23 @@ ms.date: 07/10/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 126673391b49f884a51521d462060c425a314667
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: ef29be53e776c4c185ac8430b3340c53ca85d855
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475662"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856057"
 ---
 # <a name="iot-plug-and-play-conventions"></a>IoT 即插即用约定
 
 IoT 即插即用预览版设备在与 IoT 中心交换消息时应遵循一组约定。 IoT 即插即用预览版设备使用 MQTT 协议与 IoT 中心通信。
 
-使用[数字孪生定义语言 v2 （DTDL）](https://github.com/Azure/opendigitaltwins-dtdl) _模型_描述 IoT 即插即用设备实现的遥测、属性和命令。 本文中引用的模型分为两种类型：
+使用 [数字孪生定义语言 v2 (DTDL) ](https://github.com/Azure/opendigitaltwins-dtdl) _模型_来描述 IoT 即插即用设备实现的遥测、属性和命令。 本文中引用的模型分为两种类型：
 
-- **无组件**-没有组件的模型。 该模型在主接口的内容部分中将遥测、属性和命令声明为顶级属性。
-- **多个组件**-由两个或多个接口组成的模型。 具有遥测、属性和命令的主接口。 将一个或多个接口声明为包含附加遥测、属性和命令的组件。
+- **无组件** -没有组件的模型。 该模型在主接口的内容部分中将遥测、属性和命令声明为顶级属性。
+- **多个组件** -由两个或多个接口组成的模型。 具有遥测、属性和命令的主接口。 将一个或多个接口声明为包含附加遥测、属性和命令的组件。
 
-有关详细信息，请参阅[IoT 即插即用模型中的组件](concepts-components.md)。
+有关详细信息，请参阅 [IoT 即插即用模型中的组件](concepts-components.md)。
 
 ## <a name="identify-the-model"></a>标识模型
 
@@ -35,7 +35,7 @@ IoT 即插即用预览版设备在与 IoT 中心交换消息时应遵循一组�
 - 数字双子 `$metadata.$model` 字段。
 - 数字克隆更改通知。
 
-## <a name="telemetry"></a>遥测
+## <a name="telemetry"></a>遥测技术
 
 从无组件设备发送的遥测无需任何额外的元数据。 系统添加 `dt-dataschema` 属性。
 
@@ -127,10 +127,10 @@ IoT 即插即用预览版设备在与 IoT 中心交换消息时应遵循一组�
 
 设备应通过发送报告的属性来确认它已接收到属性。 报告的属性应包括：
 
-- `value`-设备接收的值。
-- `ac`-使用 HTTP 状态代码的确认代码。
-- `av`-引用所 `$version` 需属性的的确认版本。
-- `ad`-可选确认说明。
+- `value` -属性的实际值 (通常是接收到的值，但设备可能决定报告不同的值) 。
+- `ac` -使用 HTTP 状态代码的确认代码。
+- `av` -引用所 `$version` 需属性的的确认版本。
+- `ad` -可选确认说明。
 
 ### <a name="sample-no-component-writable-property"></a>无组件可写属性示例
 
@@ -261,7 +261,7 @@ IoT 即插即用预览版设备在与 IoT 中心交换消息时应遵循一组�
 
 现在，你已了解 IoT 即插即用约定，下面是一些其他资源：
 
-- [数字孪生定义语言（DTDL）](https://github.com/Azure/opendigitaltwins-dtdl)
+- [数字孪生定义语言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [C 设备 SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)
 - [模型组件](./concepts-components.md)

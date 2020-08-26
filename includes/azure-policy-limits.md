@@ -6,12 +6,12 @@ ms.service: azure-policy
 ms.topic: include
 ms.date: 08/07/2020
 ms.author: dacoulte
-ms.openlocfilehash: e22594a50a9c0d814ef7d66443f8253f5832cb1d
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 9fcaca3f89217f649eb970ec70514a5735222782
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88038486"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88854074"
 ---
 Azure Policy 的每个对象类型都有一个最大计数。 _作用域_条目是指订阅或[管理组](../articles/governance/management-groups/overview.md)。
 
@@ -26,4 +26,4 @@ Azure Policy 的每个对象类型都有一个最大计数。 _作用域_条目�
 | 计划定义 | 参数 | 100 |
 | 策略或计划分配 | 排除项 (notScopes) | 400 |
 | 策略规则 | 嵌套式条件语句 | 512 |
-| 修正任务 | 资源 | 1000 |
+| 修正任务 | 资源 | 500 |

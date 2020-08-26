@@ -7,27 +7,27 @@ ms.date: 07/16/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ef221ea068f2786a4a84f20a29e80dd7176f06c6
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 9e6d13fedbfa495448164c1354868e12992dd71c
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337409"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88856042"
 ---
 # <a name="iot-plug-and-play-preview-developer-guide"></a>IoT 即插即用预览版开发人员指南
 
 IoT 即插即用预览版允许构建智能设备，将其功能公布到 Azure IoT 应用程序。 当客户将其连接到 IoT 即插即用启用的应用程序时，IoT 即插即用设备不需要手动配置。
 
-本指南介绍了创建遵循[IoT 即插即用约定](concepts-convention.md)的设备所需的基本步骤，以及可用于与设备进行交互的可用 REST api。
+本指南介绍了创建遵循 [IoT 即插即用约定](concepts-convention.md)的设备所需的基本步骤，以及可用于与设备进行交互的可用 REST api。
 
 若要构建 IoT 即插即用设备，请执行以下步骤：
 
 1. 确保你的设备使用 MQTT 或 MQTT over Websocket 协议连接到 Azure IoT 中心。
-1. 创建[数字孪生定义语言（DTDL）](https://github.com/Azure/opendigitaltwins-dtdl)模型来描述你的设备。 若要了解详细信息，请参阅[了解 IoT 即插即用模型中的组件](concepts-components.md)。
+1. 创建 [数字孪生定义语言 (DTDL) ](https://github.com/Azure/opendigitaltwins-dtdl) 模型来描述你的设备。 若要了解详细信息，请参阅 [了解 IoT 即插即用模型中的组件](concepts-components.md)。
 1. 更新设备以在 `model-id` 设备连接过程中公告。
 1. 使用[IoT 即插即用约定](concepts-convention.md)实现遥测、属性和命令
 
-设备实现准备就绪后，请使用[Azure iot 浏览器](howto-use-iot-explorer.md)验证设备是否遵循 IoT 即插即用约定。
+设备实现准备就绪后，请使用 [Azure iot 浏览器](howto-use-iot-explorer.md) 验证设备是否遵循 IoT 即插即用约定。
 
 > [!Tip]
 > 本文中的所有代码片段都使用 c #，但这些概念适用于适用于 C、Python、Node 和 Java 的任何可用的 Sdk。
@@ -55,11 +55,21 @@ DeviceClient.CreateFromConnectionString(
 |节点|1.17.0|
 |Python|2.1.4|
 
+## <a name="dps-payload"></a>DPS 有效负载
+
+使用 [设备预配服务 (DPS) ](/iot-dps/) 的设备可以包括 `modelId` 使用以下 JSON 有效负载的预配过程中要使用的。
+
+```json
+{
+    "modelId" : "dtmi:com:example:Thermostat;1"
+}
+```
+
 ## <a name="implement-telemetry-properties-and-commands"></a>实现遥测、属性和命令
 
-如[了解 IoT 即插即用模型中的组件](concepts-components.md)中所述，设备构建者必须决定是否要使用组件来描述其设备。 使用组件时，设备必须遵循本部分中所述的规则。
+如 [了解 IoT 即插即用模型中的组件](concepts-components.md)中所述，设备构建者必须决定是否要使用组件来描述其设备。 使用组件时，设备必须遵循本部分中所述的规则。
 
-### <a name="telemetry"></a>遥测
+### <a name="telemetry"></a>遥测技术
 
 没有组件的模型不需要任何特殊属性。
 
@@ -417,7 +427,7 @@ POST /digitalTwins/t-123/components/Thermostat/commands/restart
 
 现在，你已了解设备建模，以下是一些其他资源：
 
-- [数字孪生定义语言（DTDL）](https://github.com/Azure/opendigitaltwins-dtdl)
+- [数字孪生定义语言 (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl)
 - [C 设备 SDK](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 - [IoT REST API](https://docs.microsoft.com/rest/api/iothub/device)
 - [模型组件](./concepts-components.md)

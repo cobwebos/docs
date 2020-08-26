@@ -8,12 +8,12 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 008d5f22a48fdd31c90e63643adc94b26a975ca2
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 00219dbebb8e84c21b9e5b84cf71309c63fc518e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88589361"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855967"
 ---
 # <a name="write-client-app-authentication-code"></a>编写客户端应用身份验证代码
 
@@ -39,18 +39,19 @@ ms.locfileid: "88589361"
 
 根据您选择的工具，您可以使用 Visual Studio 包管理器或 `dotnet` 命令行工具包含包。 
 
-若要使用 .NET SDK 进行身份验证，请使用在 [Azure](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) 中定义的凭据获取方法之一。
-
-下面是常用的两种： 
-* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet)。 此方法适用于交互式应用程序，并将显示用于身份验证的 web 浏览器。
-* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet)。 此方法在以下情况下非常有用： [ (MSI) 需要托管标识 ](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)，例如在使用 Azure Functions 时。 
-
 还需要以下 using 语句：
 
 ```csharp
 using Azure.Identity;
 using Azure.DigitalTwins.Core;
 ```
+若要使用 .NET SDK 进行身份验证，请使用在 [Azure](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) 中定义的凭据获取方法之一。 下面是在同一应用程序) 中经常使用的两个 (：
+
+* [InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) 适用于交互式应用程序，可用于创建经过身份验证的 SDK 客户端
+* [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet) 非常适合于需要 (MSI) 的托管标识，这是使用 Azure Functions
+
+### <a name="interactivebrowsercredential-method"></a>InteractiveBrowserCredential 方法
+[InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet)方法适用于交互式应用程序，并将打开一个 web 浏览器用于身份验证。
 
 若要使用交互式浏览器凭据创建经过身份验证的 SDK 客户端，请添加以下代码：
 
@@ -79,6 +80,8 @@ try
 >[!NOTE]
 > 虽然你可以将客户端 ID、租户 ID 和实例 URL 直接放置在代码中（如上所示），但最好是让你的代码从配置文件或环境变量获取这些值。
 
+### <a name="managedidentitycredential-method"></a>ManagedIdentityCredential 方法
+ 如果需要[ (MSI) 的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)（例如，使用 Azure Functions 时）， [ManagedIdentityCredential](https://docs.microsoft.com/dotnet/api/azure.identity.managedidentitycredential?view=azure-dotnet)方法非常有用。
 在 Azure 函数中，可以使用如下所示的托管标识凭据：
 
 ```csharp

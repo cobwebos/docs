@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 885394b2dd50b9f8a94ece409c47609c8f7f18fd
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.openlocfilehash: 39c33efb4896893c8baa18d06f62defc26c64949
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88587554"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855880"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>使用 Azure 数字孪生 API 和 SDK
 
@@ -63,7 +63,7 @@ Azure 数字孪生附带了 **控制平面 api** 和 **数据平面 api** ，用
 Azure 数字孪生 .NET (c # ) SDK 是用于 .NET 的 Azure SDK 的一部分。 它是开放源代码，基于 Azure 数字孪生数据平面 Api。
 
 > [!NOTE]
-> 有关 SDK 设计的详细信息，请参阅 [Azure sdk 的常规设计原则](https://azure.github.io/azure-sdk/general_introduction.html) 和特定的 [.net 设计准则](https://azure.github.io/azure-sdk/dotnet_introduction.html)。
+> 有关 SDK 设计的详细信息，请参阅 [Azure sdk 的常规设计原则](https://azure.github.io/azure-sdk/general_introduction.html) 和特定 [.net 设计准则](https://azure.github.io/azure-sdk/dotnet_introduction.html)。
 
 若要使用 SDK，请在项目中包括 NuGet 包 **DigitalTwins** 。 还需要 (版本 1.1.1) 的**Azure。**
 
@@ -143,7 +143,7 @@ await foreach (string twin in result)
 
 #### <a name="serialization-helpers"></a>序列化帮助器
 
-如前文所述，核心 SDK 方法返回的数据为 JSON。 不过，SDK 还包含用于序列化的帮助器类。 利用这些帮助器函数，可快速创建或反序列化数据，以便访问基本信息。
+序列化帮助程序是 SDK 内可用的帮助程序函数，用于快速创建或反序列化用于访问基本信息的数据。 由于核心 SDK 方法默认返回的是以 JSON 形式返回的数据，因此，使用这些帮助器类进一步打破了克隆数据会很有帮助。
 
 可用的帮助程序类包括：
 * `BasicDigitalTwin`：表示数字输出的核心数据
@@ -230,7 +230,7 @@ foreach (string prop in rel.CustomProperties.Keys)
 
 ##### <a name="create-a-relationship"></a>创建关系
 
-通过使用 `BasicDigitalTwin` 类，您还可以准备用于在克隆实例上创建关系的数据：
+通过使用 `BasicRelationship` 类，您还可以准备用于在克隆实例上创建关系的数据：
 
 ```csharp
 BasicRelationship rel = new BasicRelationship();
@@ -284,7 +284,7 @@ client.UpdateDigitalTwin("myTwin", uou.Serialize());
 
 在门户主页上，搜索 Azure 数字孪生实例以提取其详细信息。 从 Azure 数字孪生实例的菜单中选择 " **指标** " 选项，打开 " *指标* " 页。
 
-:::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="显示 Azure 数字孪生的 指标 页的屏幕截图":::
+:::image type="content" source="media/troubleshoot-metrics/azure-digital-twins-metrics.png" alt-text="显示 Azure 数字孪生的 "指标" 页的屏幕截图":::
 
 在此处，你可以查看实例的度量值并创建自定义视图。
 

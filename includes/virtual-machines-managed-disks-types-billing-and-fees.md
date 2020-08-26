@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 335b2f345cbebc55ad7ddd60487cfd17288d547d
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: c0627dd0833e3b20468eb5f50fbeb9fd9d9ae2b3
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88703783"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88864638"
 ---
 **出站数据传输**：[出站数据传输](https://azure.microsoft.com/pricing/details/bandwidth/)（传出 Azure 数据中心的数据）会产生带宽使用费。
 
@@ -26,7 +26,7 @@ ms.locfileid: "88703783"
 Azure Vm 可以指示它们是否与超磁盘兼容。 与超级磁盘兼容的 VM 在计算 VM 实例与块存储缩放单元之间分配专用的带宽容量，以优化性能并降低延迟。 在 VM 上添加此功能会导致预留费用，不过，这笔费用是仅当在 VM 上启用了超级磁盘功能但未将超级磁盘附加到 VM 时才产生的。 如果将超级磁盘附加到与超级磁盘兼容的 VM，则不会收取此费用。 此费用根据 VM 上预配的每个 vCPU 计收。 
 
 > [!Note]
-> 对于 [受约束的核心 VM 大小](~/articles/virtual-machines/constrained-vcpu.md)，预订费用将基于个 vcpu 的实际数量，而不是受约束的内核数。 对于 Standard_E32 8s_v3，预订费用将基于32核心。 
+> 对于 [受约束的核心 VM 大小](../articles/virtual-machines/constrained-vcpu.md)，预订费用将基于个 vcpu 的实际数量，而不是受约束的内核数。 对于 Standard_E32 8s_v3，预订费用将基于32核心。 
 
 有关超高磁盘定价的详细信息，请参阅 [Azure 磁盘定价页](https://azure.microsoft.com/pricing/details/managed-disks/) 。
 

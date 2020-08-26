@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1
 ms.date: 08/20/2020
-ms.openlocfilehash: f423ae957d11248b16a180e22647d6566157b7be
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.openlocfilehash: 3a6ecc44791602ea074ebdd1fdf4e11393e10a4b
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2020
-ms.locfileid: "88782832"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88852163"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时序预测模型
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -178,6 +178,7 @@ featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": 
 |`enable_dnn`|[启用预测 dnn]()。||
 |`time_series_id_column_names`|列名，用于唯一标识多行数据中具有相同时间戳的时序。 如果未定义时序标识符，则假定该数据集为一个时序。 要详细了解单个时序，请查看 [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)。||
 |`target_lags`|要根据数据频率滞后目标值的行数。 此滞后表示为一个列表或整数。 默认情况下，在独立变量和依赖变量之间的关系不匹配或关联时，应使用滞后。 ||
+|`feature_lags`| `target_lags`设置并将设置为时，自动 ML 会自动决定 lag 的功能 `feature_lags` `auto` 。 启用功能滞后有助于提高准确性。 默认情况下，功能滞后处于禁用状态。 ||
 |`target_rolling_window_size`|要用于生成预测值的 *n* 个历史时间段，该值小于或等于训练集大小。 如果省略，则 *n* 为完整训练集大小。 如果训练模型时只想考虑一定量的历史记录，请指定此参数。 了解有关 [目标滚动窗口聚合](#target-rolling-window-aggregation)的详细信息。||
 
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 3d8c5d408ef2b958ca7d3454f23ce2c52fb1d1be
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 0f9a8a1c4631fc667d0dd31ae62f7d57aefccc90
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88513092"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855839"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>有关从经典部署模型迁移到 Azure Resource Manager 部署模型的常见问题
 
@@ -22,11 +22,11 @@ ms.locfileid: "88513092"
 
 ## <a name="what-is-azure-service-manager-and-what-does-it-mean-by-classic"></a>什么是 Azure Service Manager，“经典”的含义是什么？
 
-IaaS VM（经典）中的“经典”一词是指由 Azure Service Manager (ASM) 托管的 VM。 Azure Service Manager (ASM) 是 Azure 的旧控制平面，负责创建、管理、删除 VM 和执行其他控制平面操作。 
+IaaS VM（经典）中的“经典”一词是指由 Azure Service Manager (ASM) 托管的 VM。 Azure Service Manager (ASM) 是 Azure 的旧控制平面，负责创建、管理、删除 Vm 和执行其他控制平面操作。 
 
 ## <a name="what-is-azure-resource-manager"></a>什么是 Azure 资源管理器？
 
-[Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) 是 Azure 的最新控制平面，负责创建、管理、删除 VM 和执行其他控制平面操作。 
+[Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/management/overview) 是 azure 的最新控制面，负责创建、管理、删除 vm 和执行其他控制平面操作。 
 
 ## <a name="what-is-the-time-required-for-migration"></a>迁移需要多长时间？
 
@@ -70,7 +70,7 @@ IaaS VM（经典）中的“经典”一词是指由 Azure Service Manager (ASM)
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>如果我必须使用 Resource Manager 下的 IaaS，是否必须购买其他 ExpressRoute 线路？ 
 
-不是。 我们近期实现了[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](~/articles/expressroute/expressroute-move.md)。 如果已有 ExpressRoute 线路，则不需要购买新的线路。
+不是。 我们近期实现了[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](../expressroute/expressroute-move.md)。 如果已有 ExpressRoute 线路，则不需要购买新的线路。
 
 ## <a name="what-if-i-had-configured-role-based-access-control-policies-for-my-classic-iaas-resources"></a>如果我已经为经典 IaaS 资源配置基于角色的访问控制策略，该怎么办？ 
 
@@ -93,7 +93,7 @@ IaaS VM（经典）中的“经典”一词是指由 Azure Service Manager (ASM)
 1. 从 VM 中删除备份/快照扩展。
 2. 将虚拟机从经典模式迁移到 Resource Manager 模式。 确保与虚拟机对应的存储和网络信息也已迁移到 Resource Manager 模式。
 
-此外，如果想要备份迁移的 VM，请转至“虚拟机管理”边栏选项卡，以[启用备份](~/articles/backup/quick-backup-vm-portal.md#enable-backup-on-a-vm)。
+此外，如果想要备份迁移的 VM，请转至“虚拟机管理”边栏选项卡，以[启用备份](../backup/quick-backup-vm-portal.md#enable-backup-on-a-vm)。
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>我是否可以验证订阅或资源，以查看其是否能够迁移？ 
 
@@ -113,7 +113,7 @@ IaaS VM（经典）中的“经典”一词是指由 Azure Service Manager (ASM)
 
 ## <a name="can-i-migrate-expressroute-circuits-used-across-subscriptions-with-authorization-links"></a>是否可以使用授权链接迁移跨订阅使用的 ExpressRoute 线路？ 
 
-不停机无法自动迁移使用跨订阅授权链接的 ExpressRoute 线路。 我们提供了有关如何使用手动步骤迁移这些线路的指南。 有关步骤和详细信息，请参阅[将 ExpressRoute 线路和关联的虚拟网络从经典部署模型迁移到 Resource Manager 部署模型](~/articles/expressroute/expressroute-migration-classic-resource-manager.md)。
+不停机无法自动迁移使用跨订阅授权链接的 ExpressRoute 线路。 我们提供了有关如何使用手动步骤迁移这些线路的指南。 有关步骤和详细信息，请参阅[将 ExpressRoute 线路和关联的虚拟网络从经典部署模型迁移到 Resource Manager 部署模型](../expressroute/expressroute-migration-classic-resource-manager.md)。
 
 ## <a name="i-got-the-message-vm-is-reporting-the-overall-agent-status-as-not-ready-hence-the-vm-cannot-be-migrated-ensure-that-the-vm-agent-is-reporting-overall-agent-status-as-ready-or-vm-contains-extension-whose-status-is-not-being-reported-from-the-vm-hence-this-vm-cannot-be-migrated"></a>我收到消息，指出 *“VM 报告总体代理状态为‘未就绪’。因此，此 VM 无法迁移。请确保 VM 代理报告总体代理状态为‘就绪’”* 或 *“VM 包含未报告其状态的扩展。因此，此 VM 无法迁移。”*
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 6344cb5f1a4bd52395378f97ba2848eeec336572
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: c1550b941c6d0f58feba7d505c7206993e14226b
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817011"
+ms.locfileid: "88856066"
 ---
 # <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>在商业应用商店中创建 SaaS 产品/服务
 
@@ -133,7 +133,7 @@ SaaS 产品/服务支持根据固定费用、每位用户按月或按年计费�
 5. 使用条款
 6. 隐私策略
 7. 产品名称
-8. 总结
+8. 摘要
 9. 说明
 10. 屏幕截图/视频
 11. 文档
@@ -234,7 +234,7 @@ Microsoft 提供标准协定模板。
 
 #### <a name="terms-and-conditions"></a>条款和条件
 
-如果要提供自己的自定义条款和条件，可以选择在条款和条件字段中输入它们。 最多可在此字段中输入 10,000 个字符的文本。 如果条款和条件需要更长的说明，请在此字段中输入指向可找到你的条款和条件的位置的单个 URL 链接。 它将作为活动链接向客户显示。
+如果要提供自己的自定义条款和条件，可以选择在条款和条件字段中输入它们。 最多可在此字段中输入 10,000 个字符的文本。 如果条款和条件需要更长的说明，请在此字段中输入指向可找到你的条款和条件的位置的单个 URL 链接。
 
 客户必须接受这些条款才能试用产品/服务。
 

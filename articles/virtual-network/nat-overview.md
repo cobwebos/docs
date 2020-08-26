@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/11/2020
+ms.date: 08/25/2020
 ms.author: allensu
-ms.openlocfilehash: 63c687cdfe3e014617b5a8773136dfb6513178ed
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: 3180fa34b85c3ec5f7cb1d2d9da8c2e1b528bd69
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135804"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88855793"
 ---
 # <a name="what-is-virtual-network-nat"></a>什么是虚拟网络 NAT？
 
@@ -123,31 +123,17 @@ NAT 默认是区域性的。 创建[可用性区域](../availability-zones/az-ov
 
 在保持一般可用性的条件下，NAT 数据路径的可用性至少为 99.9%。
 
-
 ## <a name="pricing"></a>定价
 
-NAT 网关通过两个单独的计量器来计费：
-
-| 计量 | 费率 |
-| --- | --- |
-| 资源小时数 | 0\.045 美元/小时 |
-| 已处理的数据 | 0\.045 美元/GB |
-
-资源小时数包括 NAT 网关资源的存在持续时间。
-处理的数据包括 NAT 网关资源处理的所有流量。
+有关定价的详细信息，请参阅 [虚拟网络定价](https://azure.microsoft.com/pricing/details/virtual-network)。
 
 ## <a name="availability"></a>可用性
 
-虚拟网络 NAT 和 NAT 网关资源在所有 Azure 公有云[区域](https://azure.microsoft.com/global-infrastructure/regions/)中都可用。
-
-## <a name="support"></a>支持
-
-通过正常的支持渠道为 NAT 提供支持。
+虚拟网络 NAT 和 NAT 网关资源在所有 Azure 云 [区域](https://azure.microsoft.com/global-infrastructure/regions/)的所有区域均可用。
 
 ## <a name="suggestions"></a>建议
 
 我们很想知道如何能够改进该服务。 请在 [UserVoice for NAT](https://aka.ms/natuservoice) 上为我们接下来要开发的功能提供建议和投票。
-
 
 ## <a name="limitations"></a>限制
 
