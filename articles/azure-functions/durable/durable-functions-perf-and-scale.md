@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 58c28160de15bc99c94c84ab23fdbb358125132d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e98792c81604b0f867343db289a44dfec9704b5e
+ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87033575"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88853711"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions 中的性能和缩放 (Azure Functions)
 
@@ -51,7 +51,7 @@ Durable Task 扩展实现了随机指数退让算法，以降低空闲队列轮�
 可以通过 [host.json 文件](../functions-host-json.md#durabletask)中的 `maxQueuePollingInterval` 属性配置最大轮询延迟。 将此属性设置为较高的值时，可能导致的消息处理延迟也越高。 只有在不活动的时间段过后，才会出现较高的延迟。 将此属性设置为较低的值时，可能导致的存储成本会较高，因为存储事务数增高。
 
 > [!NOTE]
-> 在 Azure Functions 消耗量和高级计划中运行时， [Azure Functions 规模控制器](../functions-scale.md#how-the-consumption-and-premium-plans-work)将每10秒轮询一次每个控件和一次工作项队列。 若要确定何时激活函数应用实例并进行缩放决策，这种额外的轮询是必需的。 在撰写本文时，这种 10 秒的时间间隔为常量，不能进行配置。
+> 在 Azure Functions 消耗量和高级计划中运行时， [Azure Functions 规模控制器](../functions-scale.md#how-the-consumption-and-premium-plans-work) 将每10秒轮询一次每个控件和一次工作项队列。 若要确定何时激活函数应用实例并进行缩放决策，这种额外的轮询是必需的。 在撰写本文时，这种 10 秒的时间间隔为常量，不能进行配置。
 
 ### <a name="orchestration-start-delays"></a>业务流程启动延迟
 通过在某个任务中心的控制队列中放置 `ExecutionStarted` 消息来启动业务流程实例。 在某些情况下，你可能会观察到计划的业务流程运行时间与它实际开始运行的时间之间存在数秒延迟。 在此时间间隔内，业务流程实例仍处于 `Pending` 状态。 造成这种延迟的潜在原因有两个：
@@ -138,7 +138,7 @@ Durable Task 扩展实现了随机指数退让算法，以降低空闲队列轮�
 
 ## <a name="auto-scale"></a>自动缩放
 
-与在使用和弹性高级计划中运行的所有 Azure Functions 一样，Durable Functions 通过[Azure Functions 缩放控制器](../functions-scale.md#runtime-scaling)支持自动缩放。 缩放控制器通过定期发出 _peek_ 命令来监视所有队列的延迟。 根据扫视消息的延迟，缩放控制器将决定是要添加还是删除 VM。
+与在使用和弹性高级计划中运行的所有 Azure Functions 一样，Durable Functions 通过 [Azure Functions 缩放控制器](../functions-scale.md#runtime-scaling)支持自动缩放。 缩放控制器通过定期发出 _peek_ 命令来监视所有队列的延迟。 根据扫视消息的延迟，缩放控制器将决定是要添加还是删除 VM。
 
 如果缩放控制器确定控制队列消息延迟过高，则会添加 VM 实例，直到消息延迟下降到可接受的级别，或者达到控制队列分区计数。 同样，如果工作项队列延迟偏高，缩放控制器会不断地添加 VM 实例，而不管分区计数如何。
 
@@ -224,6 +224,10 @@ Azure Functions 支持在单个应用实例中并发执行多个函数。 这种
 例如，如果 `durableTask/extendedSessionIdleTimeoutInSeconds` 设置为 30 秒，则执行时间不超过 1 秒的、生存期较短的业务流程协调程序或实体函数周期仍会占用内存 30 秒。 这种消耗还会计入前面所述的 `durableTask/maxConcurrentOrchestratorFunctions` 配额，从而可能导致其他业务流程协调程序或实体函数无法运行。
 
 后续部分将描述扩展会话对业务流程协调程序和实体函数的具体影响。
+
+> [!NOTE]
+> 目前仅支持 .NET 语言的扩展会话，如 c # 或 F #。 `extendedSessionsEnabled` `true` 对于其他平台，将设置为会导致运行时问题，例如，以无提示方式执行活动和业务流程触发的函数。
+
 
 ### <a name="orchestrator-function-replay"></a>业务流程协调程序函数重播
 
