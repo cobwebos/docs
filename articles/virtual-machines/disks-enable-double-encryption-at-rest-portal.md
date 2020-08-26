@@ -49,14 +49,14 @@ Azure 磁盘存储支持将静态加密用于托管磁盘。 有关静态加密�
 
 1. 填写剩余的信息。
 
-    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-create-disk-encryption-set-blade.png" alt-text="突出显示了 "磁盘加密集创建" 边栏选项卡、区域和对平台管理的密钥进行双重加密的屏幕截图。":::
+    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-create-disk-encryption-set-blade.png" alt-text="突出显示了 磁盘加密集创建 边栏选项卡、区域和对平台管理的密钥进行双重加密的屏幕截图。":::
 
 1. 选择 Azure Key Vault 和密钥，如有必要，请创建新的密钥。
 
     > [!NOTE]
     > 如果创建 Key Vault 实例，则必须启用软删除和清除保护。 当使用 Key Vault 加密托管磁盘时，这些设置是必需的，并且防止因意外删除而导致数据丢失。
 
-    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-select-key-vault.png" alt-text="Key Vault 创建 "边栏选项卡的屏幕截图。":::
+    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-select-key-vault.png" alt-text="Key Vault 创建 边栏选项卡的屏幕截图。":::
 
 1. 选择“创建”  。
 1. 导航到所创建的磁盘加密集，然后选择显示的错误。 这会将磁盘加密设置为 "有效"。
@@ -73,7 +73,7 @@ Azure 磁盘存储支持将静态加密用于托管磁盘。 有关静态加密�
 1. 选择磁盘加密集。
 1. 选择“保存”。
 
-    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-enable-disk-blade.png" alt-text="托管磁盘的 "加密" 边栏选项卡的屏幕截图，将突出显示上述加密类型。":::
+    :::image type="content" source="media/virtual-machines-disks-double-encryption-at-rest-portal/double-encryption-enable-disk-blade.png" alt-text="托管磁盘的 加密 边栏选项卡的屏幕截图，将突出显示上述加密类型。":::
 
 现已在托管磁盘上启用静态加密。
 
