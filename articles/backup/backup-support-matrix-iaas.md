@@ -4,12 +4,12 @@ description: 提供有关在使用 Azure 备份服务备份 Azure VM 时的支�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: f0783d937178c88265c33c8b7339f71520506fc5
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 6cb9f53bceb6caaac77dddd6828c46842e53d257
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816110"
+ms.locfileid: "88825250"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 
@@ -49,7 +49,7 @@ ms.locfileid: "88816110"
 每月/每年备份| 使用 Azure VM 扩展备份时不受支持。 仅支持每日和每周备份。<br/><br/> 可将策略设置为按每月/每年保留期保留每日/每周备份。
 自动时钟调整 | 不支持。<br/><br/> 备份 VM 时，Azure 备份不会根据夏令时自动调整。<br/><br/>  请根据需要手动修改策略。
 [混合备份的安全功能](./backup-azure-security-feature.md) |不支持禁用安全功能。
-备份其计算机时间已发生更改的 VM | 不支持。<br/><br/> 如果在为 VM 启用备份后将计算机时间更改为将来的日期时间，则为;但是，即使已还原时间更改，也不能保证成功备份。
+备份其计算机时间已发生更改的 VM | 不支持。<br/><br/> 如果在为 VM 启用备份后，计算机时间更改为将来的日期时间，则即使恢复了时间更改，也不能保证成功备份。
 [虚拟机规模集中](../virtual-machine-scale-sets/overview.md)的 Azure vm | [业务流程模式](../virtual-machine-scale-sets/orchestration-modes.md#orchestration-modes)设置为3的 vm 支持备份和还原。 <br><br>可用性集不受支持。
 
 ## <a name="operating-system-support-windows"></a>操作系统支持 (Windows)

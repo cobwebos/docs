@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 91f5ef4a5065079f0fe385b92af2a1c4bfa5ee84
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ea834ed874f3011d95f8b924df860576f72bc4ee
+ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88007703"
+ms.lasthandoff: 08/25/2020
+ms.locfileid: "88825607"
 ---
 # <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>使用 Azure 文件和 Azure AD DS 创建配置文件容器
 
@@ -19,7 +19,7 @@ ms.locfileid: "88007703"
 
 ## <a name="prerequisites"></a>先决条件
 
-本文假设已设置 Azure AD DS 实例。 如果还没有，请按照[创建基本托管域](../active-directory-domain-services/tutorial-create-instance.md)中的说明进行操作，然后返回此处。
+本文假设已设置 Azure AD DS 实例。 如果还没有，请按照 [创建基本托管域](../active-directory-domain-services/tutorial-create-instance.md) 中的说明进行操作，然后返回此处。
 
 ## <a name="add-azure-ad-ds-admins"></a>添加 Azure AD DS 管理员
 
@@ -27,15 +27,15 @@ ms.locfileid: "88007703"
 
 添加管理员：
 
-1. 从边栏中选择 " **Azure Active Directory** "，并选择 "**所有用户**"，然后选择 "**新建用户**"。
+1. 从边栏中选择 " **Azure Active Directory** "，并选择 " **所有用户**"，然后选择 " **新建用户**"。
 
 2.  在字段中输入用户详细信息。
 
-3. 在屏幕左侧的 Azure Active Directory 窗格中，选择 "**组**"。
+3. 在屏幕左侧的 Azure Active Directory 窗格中，选择 " **组**"。
 
-4. 选择 " **AAD DC 管理员**" 组。
+4. 选择 " **AAD DC 管理员** " 组。
 
-5. 在左窗格中，选择 "**成员**"，然后选择主窗格中的 "**添加成员**"。 这将显示 Azure AD 中可用的所有用户的列表。 选择刚创建的用户配置文件的名称。
+5. 在左窗格中，选择 " **成员**"，然后选择主窗格中的 " **添加成员** "。 这将显示 Azure AD 中可用的所有用户的列表。 选择刚创建的用户配置文件的名称。
 
 ## <a name="set-up-an-azure-storage-account"></a>设置 Azure 存储帐户
 
@@ -43,15 +43,15 @@ ms.locfileid: "88007703"
 
 启用身份验证：
 
-1. 如果尚未这样做，请按照[创建 Azure 存储帐户](../storage/common/storage-account-create.md)中的说明设置和部署通用 V2 Azure 存储帐户。
+1. 如果尚未这样做，请按照 [创建 Azure 存储帐户](../storage/common/storage-account-create.md)中的说明设置和部署通用 V2 Azure 存储帐户。
 
-2. 完成帐户设置后，选择 "**前往资源**"。
+2. 完成帐户设置后，选择 " **前往资源**"。
 
-3. 在屏幕左侧的窗格中选择 "**配置**"，然后在主窗格中**为 Azure 文件启用 Azure Active Directory 身份验证**。 完成后，选择“保存”。
+3. 在屏幕左侧的窗格中选择 " **配置** "，然后在主窗格中 **为 Azure 文件启用 Azure Active Directory 身份验证** 。 完成后，选择“保存”。
 
-4. 在屏幕左侧的窗格中选择 "**概述**"，然后在主窗格中选择 "**文件**"。
+4. 在屏幕左侧的窗格中选择 " **概述** "，然后在主窗格中选择 " **文件** "。
 
-5. 选择 "**文件共享**"，然后在屏幕右侧显示的字段中输入**名称**和**配额**。
+5. 选择 " **文件共享** "，然后在屏幕右侧显示的字段中输入 **名称** 和 **配额** 。
 
 ## <a name="assign-access-permissions-to-an-identity"></a>为标识分配访问权限
 
@@ -59,15 +59,15 @@ ms.locfileid: "88007703"
 
 若要分配用户访问权限：
 
-1. 在 Azure 门户中，打开在[设置 Azure 存储帐户](#set-up-an-azure-storage-account)中创建的文件共享。
+1. 在 Azure 门户中，打开在 [设置 Azure 存储帐户](#set-up-an-azure-storage-account)中创建的文件共享。
 
 2. 选择“访问控制 (IAM)”。
 
-3. 选择 "**添加角色分配**"。
+3. 选择 " **添加角色分配**"。
 
-4. 在 "**添加角色分配**" 选项卡中，从 "角色" 列表中选择适当的内置角色。 至少需要为帐户选择**存储文件数据 SMB 共享参与者**，才能获取适当的权限。
+4. 在 " **添加角色分配** " 选项卡中，从 "角色" 列表中选择适当的内置角色。 至少需要为帐户选择 **存储文件数据 SMB 共享参与者** ，才能获取适当的权限。
 
-5. 对于 "分配对的**访问权限**"，请选择**Azure Active Directory 用户、组或服务主体**。
+5. 对于 "分配对的 **访问权限**"，请选择 **Azure Active Directory 用户、组或服务主体**。
 
 6. 选择目标 Azure Active Directory 标识的名称或电子邮件地址。
 
@@ -79,13 +79,13 @@ ms.locfileid: "88007703"
 
 获取存储帐户访问密钥：
 
-1. 在 Azure 门户边栏中，选择 "**存储帐户**"。
+1. 在 Azure 门户边栏中，选择 " **存储帐户**"。
 
 2. 从存储帐户列表中，选择已 Azure AD DS 启用的帐户，并在上面的步骤中创建自定义角色。
 
-3. 在 "**设置**" 下，选择 "**访问密钥**"，然后复制**key1**中的密钥。
+3. 在 " **设置**" 下，选择 " **访问密钥** "，然后复制 **key1**中的密钥。
 
-4. 中转到 "**虚拟机**" 选项卡并找到将成为主机池一部分的任何 VM。
+4. 中转到 " **虚拟机** " 选项卡并找到将成为主机池一部分的任何 VM。
 
 5. 在 "**虚拟机 () adVM** " 下选择虚拟机 (VM) 的名称，并选择 "**连接**"
 
@@ -96,7 +96,7 @@ ms.locfileid: "88007703"
 
 6. 登录到 VM 后，请以管理员身份运行命令提示符。
 
-7. 运行以下命令：
+7. 运行下面的命令：
 
      ```cmd
      net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
@@ -113,19 +113,25 @@ ms.locfileid: "88007703"
      net use y: \\fsprofile.file.core.windows.net\share HDZQRoFP2BBmoYQ=(truncated)= /user:Azure\fsprofile)
      ```
 
-8. 运行以下命令，授予用户对 Azure 文件共享的完全访问权限。
+8. 运行以下命令，以允许 Windows 虚拟桌面用户在阻止其他用户访问配置文件容器时创建自己的配置文件容器。
 
      ```cmd
-     icacls <mounted-drive-letter>: /grant <user-email>:(f)
+     icacls <mounted-drive-letter>: /grant <user-email>:(M)
+     icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
+     icacls <mounted-drive-letter>: /remove "Authenticated Users"
+     icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
-    - 将替换 `<mounted-drive-letter>` 为你希望用户使用的驱动器号。
-    - `<user-email>`将替换为将使用此配置文件访问会话主机 vm 的用户的 UPN。
+    - 替换 `<mounted-drive-letter>` 为用于映射驱动器的驱动器号。
+    - 将替换 `<user-email>` 为包含需要访问共享的用户的用户或 Active Directory 组的 UPN。
 
     例如：
 
      ```cmd
-     icacls y: /grant john.doe@contoso.com:(f)
+     icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)
+     icacls <mounted-drive-letter>: /grant "Creator Owner":(OI)(CI)(IO)(M)
+     icacls <mounted-drive-letter>: /remove "Authenticated Users"
+     icacls <mounted-drive-letter>: /remove "Builtin\Users"
      ```
 
 ## <a name="create-a-profile-container"></a>创建配置文件容器
@@ -134,31 +140,31 @@ ms.locfileid: "88007703"
 
 配置 FSLogix 配置文件容器：
 
-1. 登录到本文开头部分配置的会话主机 VM，然后[下载并安装 FSLogix 代理](/fslogix/install-ht/)。
+1. 登录到本文开头部分配置的会话主机 VM，然后 [下载并安装 FSLogix 代理](/fslogix/install-ht/)。
 
 2. 解压缩已下载的 FSLogix 代理文件并中转到**x64**  >  **版本**，并打开**FSLogixAppsSetup.exe**。
 
-3. 安装程序启动后，选择 "**我同意许可条款和条件"。** 如果适用，请提供新的密钥。
+3. 安装程序启动后，选择 " **我同意许可条款和条件"。** 如果适用，请提供新的密钥。
 
-4. 选择“安装”  。
+4. 选择“安装”。
 
 5. 打开**驱动器 C**，然后前往**Program Files**  >  **FSLogix**  >  **Apps** ，确保已正确安装了 FSLogix 代理。
 
      >[!NOTE]
      > 如果主机池中有多个 Vm，则需要对每个 VM 重复步骤1至5。
 
-6. 以管理员身份运行**注册表编辑器** (RegEdit) 。
+6. 以管理员身份运行 **注册表编辑器** (RegEdit) 。
 
 7. 导航到 "**计算机**  >  **HKEY_LOCAL_MACHINE**  >  **software**  >  **FSLogix**"，右键单击 " **FSLogix**"，选择 "**新建**"，然后选择 "**密钥**"。
 
-8. 创建**名为 profile 的新**密钥。
+8. 创建 **名为 profile 的新**密钥。
 
-9.  右键单击 "**配置文件**"，选择 "**新建**"，然后选择 " **DWORD (32 位) 值"。** 为**启用**值命名，并将**数据**值设置为**1**。
+9.  右键单击 " **配置文件**"，选择 " **新建**"，然后选择 " **DWORD (32 位) 值"。** 为 **启用** 值命名，并将 **数据** 值设置为 **1**。
 
     > [!div class="mx-imgBorder"]
     > ![配置文件密钥的屏幕截图。 将突出显示 REG_DWORD 文件，并将其数据值设置为1。](media/dword-value.png)
 
-10. 右键单击 "**配置文件**"，选择 "**新建**"，然后选择 "**多字符串值**"。 将值命名为**VHDLocations**并设置输入 Azure 文件共享的 URI `\\fsprofile.file.core.windows.net\share` 作为数据值。
+10. 右键单击 " **配置文件**"，选择 " **新建**"，然后选择 " **多字符串值**"。 将值命名为 **VHDLocations** 并设置输入 Azure 文件共享的 URI `\\fsprofile.file.core.windows.net\share` 作为数据值。
 
     > [!div class="mx-imgBorder"]
     > ![显示 VHDLocations 文件的 "配置文件" 项的屏幕截图。 它的数据值显示 Azure 文件共享的 URI。](media/multi-string-value.png)
@@ -220,19 +226,19 @@ ms.locfileid: "88007703"
 
 验证配置文件：
 
-1. 打开浏览器并中转到[Windows 虚拟桌面 web 客户端](https://rdweb.wvd.microsoft.com/arm/webclient)。
+1. 打开浏览器并中转到 [Windows 虚拟桌面 web 客户端](https://rdweb.wvd.microsoft.com/arm/webclient)。
 
 2. 用分配给远程桌面组的用户帐户登录。
 
 3. 建立用户会话后，打开 Azure 门户并使用管理帐户登录。
 
-4. 从边栏中，选择 "**存储帐户**"。
+4. 从边栏中，选择 " **存储帐户**"。
 
 5. 选择配置为你的会话主机池的文件共享的存储帐户，并 Azure AD DS 启用。
 
-6. 选择 "**文件**" 图标，然后展开你的共享。
+6. 选择 " **文件** " 图标，然后展开你的共享。
 
-    如果所有内容设置正确，应会看到一个**目录**，其名称格式如下： `<user SID>-<username>` 。
+    如果所有内容设置正确，应会看到一个 **目录** ，其名称格式如下： `<user SID>-<username>` 。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -241,4 +247,4 @@ ms.locfileid: "88007703"
 - [使用文件共享为主机池创建配置文件容器](create-host-pools-user-profile.md)。
 - [使用 Azure NetApp 文件为主机池创建 FSLogix 配置文件容器](create-fslogix-profile-container.md)
 
-可在[FSlogix 配置文件容器和 Azure 文件](fslogix-containers-azure-files.md)中找到有关与 azure 文件的 FSlogix 容器相关的概念的更多详细信息。
+可在 [FSlogix 配置文件容器和 Azure 文件](fslogix-containers-azure-files.md)中找到有关与 azure 文件的 FSlogix 容器相关的概念的更多详细信息。
