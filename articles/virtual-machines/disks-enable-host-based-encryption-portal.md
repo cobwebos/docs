@@ -58,12 +58,12 @@ ms.locfileid: "88817387"
 1. 创建新的虚拟机，选择适当的区域和受支持的 VM 大小。
 1. 根据需要在 " **基本** " 边栏选项卡中填写其他值，然后转到 " **磁盘** " 边栏选项卡。
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="将突出显示 "虚拟机创建基本信息" 边栏选项卡、"区域" 和 "V" 大小的屏幕截图。":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-basic-blade.png" alt-text="将突出显示 虚拟机创建基本信息 边栏选项卡、区域 和 V 大小的屏幕截图。":::
 
 1. 在 " **磁盘** " 边栏选项卡上，选择 **"是"** 以 **在主机上加密**。
 1. 根据需要进行剩余选择。
 
-    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="虚拟机 "创建磁盘" 边栏选项卡的屏幕截图会突出显示 "在主机上加密"。":::
+    :::image type="content" source="media/virtual-machines-disks-encryption-at-host-portal/disks-encryption-at-host-disk-blade.png" alt-text="虚拟机 创建磁盘 边栏选项卡的屏幕截图会突出显示 在主机上加密。":::
 
 1. 完成 VM 部署过程，选择适合你的环境的选项。
 
