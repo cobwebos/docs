@@ -44,7 +44,7 @@ VMware HCX 提供各种操作，可提供复制策略的精细控制和粒度。
 
 输入 " **灾难恢复** " 区域，然后单击 " **保护 vm**"。
 
-:::image type="content" source="./media/disaster-recovery/protect-virtual-machine.png" alt-text="选择 "保护 vm"" border="true":::
+:::image type="content" source="./media/disaster-recovery/protect-virtual-machine.png" alt-text="选择 保护 vm" border="true":::
 
 在打开的窗口中，选择源和远程站点，在这种情况下，远程站点应为 Azure VMware 解决方案私有云。
 
@@ -101,7 +101,7 @@ VMware HCX 提供各种操作，可提供复制策略的精细控制和粒度。
 
 在 "新建" 窗口中，选择测试的选项。 选择要用于测试虚拟机的不同状态的快照。
 
-:::image type="content" source="./media/disaster-recovery/choose-snapshot.png" alt-text="选择快照并单击 "测试"" border="true":::
+:::image type="content" source="./media/disaster-recovery/choose-snapshot.png" alt-text="选择快照并单击 测试" border="true":::
 
 单击 " **测试**" 后，恢复操作将开始。
 
@@ -136,7 +136,7 @@ VMware HCX 提供各种操作，可提供复制策略的精细控制和粒度。
 
 从列表中选择要复制回源站点的虚拟机，打开 " **操作** " 菜单，然后选择 " **反向**"。 在弹出窗口中，单击 " **反向** " 开始复制。
 
-:::image type="content" source="./media/disaster-recovery/reverse-operation-virtual-machines.png" alt-text="选择 "保护操作" 下的 "反向操作"" border="true":::
+:::image type="content" source="./media/disaster-recovery/reverse-operation-virtual-machines.png" alt-text="选择 保护操作 下的 反向操作" border="true":::
 
 可以在每个虚拟机的详细信息部分监视复制。
 
