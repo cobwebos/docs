@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 7d270ac9a6597645c5a98b6af77d19021ef00329
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 581feff516e0f0cd820c94290d4aaa729cc4d3a4
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827420"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889934"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>使用防火墙后面的工作区进行 Azure 机器学习
 
@@ -24,9 +24,9 @@ ms.locfileid: "88827420"
 
 虽然本文档中的信息基于使用 [Azure 防火墙](../firewall/tutorial-firewall-deploy-portal.md)，但你应该能够将其与其他防火墙产品一起使用。 如果有关于如何允许通过防火墙进行通信的问题，请查阅所使用防火墙的相关文档。
 
-## <a name="network-rules"></a>网络规则
+## <a name="application-rules"></a>应用程序规则
 
-在防火墙上创建网络规则，允许流量流入和流出本文中的地址。
+在防火墙上，创建一个 _应用程序规则_ ，以允许与本文中的地址通信。
 
 > [!TIP]
 > 添加网络规则时，请将“协议”设置为“任何”，并将端口设置为 `*`。

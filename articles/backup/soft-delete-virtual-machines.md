@@ -4,12 +4,12 @@ description: 了解虚拟机的软删除如何使备份更安全。
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.custom: references_regions
-ms.openlocfilehash: 90d55e8ed6c831adf4efaf0663d191697177ea63
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: a79f2bf77bcc184db8ac61b51107c1bb4a2a989d
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88826474"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889819"
 ---
 # <a name="soft-delete-for-virtual-machines"></a>虚拟机的软删除
 
@@ -110,7 +110,7 @@ AppVM1           Undelete             Completed            12/5/2019 12:47:28 PM
 ## <a name="soft-delete-for-vms-using-rest-api"></a>使用 REST API 对 VM 进行软删除
 
 - 如[此处](backup-azure-arm-userestapi-backupazurevms.md#stop-protection-and-delete-data)所述，使用 REST API 删除备份。
-- 如果用户想要撤消这些删除操作，请参阅[此处](backup-azure-arm-userestapi-backupazurevms.md#undo-the-deletion)所述的步骤。
+- 如果要撤消这些删除操作，请参阅 [此处](backup-azure-arm-userestapi-backupazurevms.md#undo-the-deletion)所述的步骤。
 
 ## <a name="how-to-disable-soft-delete"></a>如何禁用软删除
 

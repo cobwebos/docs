@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 3bf9dc0e69707eaed8c2a844f6ed3169e65a5342
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 088f3c78e0840ca435d70d6844b0eb932a07ccb7
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564083"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88891089"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Azure 认知搜索中的 Lucene 查询语法
 
@@ -166,7 +166,7 @@ NOT 运算符是一个减号。 例如：`wifi –luxury` 将搜索包含 `wifi`
  若要提升术语，请使用插入符号“^”，并且所搜索术语末尾还要附加提升系数（数字）。 还可以提升短语。 提升系数越高，术语相对于其他搜索词的相关性也越大。 默认情况下，提升系数是 1。 虽然提升系数必须是正数，但可以小于 1（例如 0.20）。  
 
 ##  <a name="regular-expression-search"></a><a name="bkmk_regex"></a> 正则表达式搜索  
- 正则表达式搜索基于 Apache Lucene 下有效的模式找到匹配项，如[RegExp 类](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)中所述。 在 Azure 认知搜索中，正则表达式括在正斜杠之间 `/` 。
+ 正则表达式搜索根据在 Apache Lucene 下有效的模式找到匹配项，如 [RegExp 类](https://lucene.apache.org/core/6_6_1/core/org/apache/lucene/util/automaton/RegExp.html)中所述。 在 Azure 认知搜索中，正则表达式包含在正斜杠 `/` 之间。
 
  例如，若要查找包含“汽车旅馆”或“酒店”的文档，请指定 `/[mh]otel/`。 正则表达式搜索与单个词匹配。
 
@@ -174,20 +174,29 @@ NOT 运算符是一个减号。 例如：`wifi –luxury` 将搜索包含 `wifi`
 
 ##  <a name="wildcard-search"></a><a name="bkmk_wildcard"></a> 通配符搜索
 
-对于多（ `*` ）或单个（ `?` ）字符通配符搜索，可以使用公认的语法。 例如，查询表达式 `search=alpha*` 返回 "字母数字" 或 "字母"。 请注意，Lucene 查询分析器支持将这些符号与单个术语一起使用，但不能与短语一起使用。
+可将通常可识别的语法用于多个 (`*`) 或单个 (`?`) 字符通配符搜索。 例如，`search=alpha*` 的查询表达式返回“alphanumeric”或“alphabetical”。 请注意，Lucene 查询分析器支持将这些符号与单个术语一起使用，但不能与短语一起使用。
 
-Full Lucene 语法支持前缀、中缀和后缀匹配。 但是，如果你只需要前缀匹配，则可以使用简单语法（这两种情况下都支持前缀匹配）。
+完整的 Lucene 语法支持前缀、中缀和后缀匹配。 但是，如果只需要前缀匹配，则可以使用简单的语法（两者都支持前缀匹配）。
 
-后缀匹配、 `*` `?` 字符串（如中的或之前 `search=/.*numeric./` ）或中缀匹配要求完整的 Lucene 语法，以及正则表达式正斜杠 `/` 分隔符。 不得将 * 或 ?  符号作为术语的第一个字符，或在不包含的词中 `/` 。 
+后缀匹配，其中 `*` 或 `?` 在字符串之前（如 `search=/.*numeric./`）或中缀匹配需要完整的 Lucene 语法以及正则表达式正斜杠 `/` 分隔符。 不得将 * 或 ? 符号作为搜索词的第一个字符，或在不含 `/` 的搜索词中。 
 
 > [!NOTE]  
-> 通常，模式匹配速度较慢，因此你可能想要浏览其他方法，例如，创建字词中字符序列的标记的其他方法，如边缘 n 语法词汇。 索引将更大，但查询执行速度可能更快，具体取决于模式构造和要编制索引的字符串的长度。
+> 通常，模式匹配很慢，因此你可能需要使用其他方法，例如边缘 n 元标记化，为搜索词中的字符序列创建标记。 索引将更大，但是查询的执行速度可能更快，具体取决于模式构造和要编制索引的字符串的长度。
 >
-> 在查询分析期间，以前缀、后缀、通配符或正则表达式形式构建的查询将绕过[词法分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)，按原样传递到查询树。 仅当索引包含查询所指定的格式的字符串时，才会查找匹配项。 在大多数情况下，在编制索引期间需要使用一个可以保留字符串完整性的替代分析器，使部分字词和模式匹配能够成功。 有关详细信息，请参阅 [Azure 认知搜索查询中的部分字词搜索](search-query-partial-matching.md)。
+
+### <a name="impact-of-an-analyzer-on-wildcard-queries"></a>分析器对通配符查询的影响
+
+在查询分析期间，以前缀、后缀、通配符或正则表达式形式构建的查询将绕过[词法分析](search-lucene-query-architecture.md#stage-2-lexical-analysis)，按原样传递到查询树。 仅当索引包含查询所指定的格式的字符串时，才会查找匹配项。 在大多数情况下，你将需要在编制索引期间使用分析器来保留字符串完整性，以便部分术语和模式匹配成功。 有关详细信息，请参阅 [Azure 认知搜索查询中的部分字词搜索](search-query-partial-matching.md)。
+
+请考虑这样一种情况：你可能希望搜索查询 "terminat *" 返回包含 "终止"、"终止" 和 "终止" 等术语的结果。
+
+如果使用的是 (英语 Lucene) 分析器，则会应用每个术语的积极词干。 例如，"terminate"、"终止"、"终止" 将全部在索引中标记为 "termi"。 另一方面，不会分析使用通配符或模糊搜索的查询中的术语。，因此没有与 "terminat *" 查询匹配的结果。
+
+另一方面，Microsoft 分析器在这种情况下 (，这种情况下，microsoft 分析器) 更高级，使用词形还原而不是词干。 这意味着所有生成的令牌都应该是有效的英语单词。 例如，"terminate"、"终止" 和 "终止" 主要在索引中保持不变，对于依赖于通配符和模糊搜索的方案，这是首选方案。
 
 ##  <a name="scoring-wildcard-and-regex-queries"></a><a name="bkmk_searchscoreforwildcardandregexqueries"></a> 对通配符和正则表达式查询评分
 
-Azure 认知搜索使用基于频率的评分（[TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)）进行文本查询。 但是，对于术语范围可能很广的通配符和正则表达式查询，则忽略频率因子，以防止排名偏向于比较少见的术语匹配。 通配符和正则表达式搜索对所有匹配项和正则表达式搜索进行相同处理。
+Azure 认知搜索使用基于频率的计分 ([TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)) 进行文本查询。 但是，对于术语范围可能很广的通配符和正则表达式查询，则忽略频率因子，以防止排名偏向于比较少见的术语匹配。 通配符和正则表达式搜索对所有匹配项和正则表达式搜索进行相同处理。
 
 ## <a name="see-also"></a>另请参阅
 

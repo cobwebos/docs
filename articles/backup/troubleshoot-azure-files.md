@@ -3,12 +3,12 @@ title: 排查 Azure 文件共享备份问题
 description: 本文提供在保护 Azure 文件共享时所发生的问题的故障排除信息。
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: e6aec34bea32d33e7a202cb9afb1aae6e1047f18
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: b6f4c74f6e2e8c463d1bcbd78d6ff79d3fb6ee56
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825454"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889802"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>在备份 Azure 文件共享时排查问题
 
@@ -25,7 +25,7 @@ ms.locfileid: "88825454"
   >一个存储帐户中的所有文件共享只能在一个恢复服务保管库中进行保护。 您可以使用 [此脚本](scripts/backup-powershell-script-find-recovery-services-vault.md) 查找您的存储帐户注册到的恢复服务保管库。
 
 - 确保文件共享不在任何不受支持的存储帐户中。 可以参考 [Azure 文件共享备份的支持矩阵](azure-file-share-support-matrix.md) 来查找支持的存储帐户。
-- 请确保存储帐户名称和资源组名称的组合长度不超过84个字符，以防在经典存储帐户的情况下出现新存储帐户和77个字符。
+- 请确保存储帐户名称和资源组名称的组合长度在新存储帐户的情况下不超过84个字符，对于经典存储帐户，请确保77个字符。
 - 检查存储帐户的防火墙设置，以确保启用 "允许受信任的 Microsoft 服务访问存储帐户" 选项。
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>门户中的错误指出无法发现存储帐户
@@ -300,7 +300,7 @@ ms.locfileid: "88825454"
 检查是否删除了备份的文件共享。 如果它处于软删除状态，请检查软删除保留期是否已过，并且未恢复。 在这两种情况下，都将永久丢失所有快照，并且无法恢复数据。
 
 >[!NOTE]
-> 建议你不要删除已备份的文件共享，或者如果它处于软删除状态，则在软删除保留期结束前删除删除，以避免丢失你的所有还原点。
+> 建议你不要删除备份的文件共享，或者，如果它处于软删除状态，则在软删除保留期结束前删除删除，以避免丢失所有还原点。
 
 ### <a name="usererrorbackupafsinsoftdeletestate---backup-failed-as-the-azure-file-share-is-in-soft-deleted-state"></a>UserErrorBackupAFSInSoftDeleteState-备份失败，因为 Azure 文件共享处于软删除状态
 

@@ -3,12 +3,12 @@ title: 恢复服务保管库概述
 description: 恢复服务保管库和 Azure 备份保管库的概述和比较。
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: c69883a88473cd304bb772430ddfe662da4d8fac
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 6b6550bc8c5221547d55ad1e81a985b8ecd303e0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757092"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889611"
 ---
 # <a name="recovery-services-vaults-overview"></a>恢复服务保管库概述
 
@@ -20,7 +20,7 @@ ms.locfileid: "88757092"
 
 - **基于角色的访问控制 (RBAC)** ：RBAC 在 Azure 中提供精细的访问管理控制。 [Azure 提供各种内置角色](../role-based-access-control/built-in-roles.md)，而 Azure 备份具有三个[用于管理恢复点的内置角色](backup-rbac-rs-vault.md)。 恢复服务保管库与 RBAC 兼容，后者会限制对已定义用户角色集的备份和还原访问权限。 [了解详细信息](backup-rbac-rs-vault.md)
 
-- **软删除**：对于软删除，即使恶意执行组件删除了备份 (或意外删除了备份数据) ，备份数据仍将保留14天，允许恢复该备份项目且不会丢失数据。 "软删除" 状态中的备份数据保留期额外的14天不会对客户产生任何费用。 [了解详细信息](backup-azure-security-feature-cloud.md)。
+- **软删除**：对于软删除，即使恶意执行组件删除了备份 (或意外删除了备份数据) ，备份数据仍将保留14天，允许恢复该备份项目且不会丢失数据。 "软删除" 状态中其他14天的备份数据保留期不会产生任何费用。 [了解详细信息](backup-azure-security-feature-cloud.md)。
 
 - **跨区域还原**：跨区域还原 (CRR) 使你可以在辅助区域（即 Azure 配对区域）中还原 azure vm。 如果 Azure 在主要区域中声明灾难，则辅助区域中复制的数据可以在次要区域中进行还原，以减轻其环境的主要区域中的实时停机灾难。 [了解详细信息](backup-azure-arm-restore-vms.md#cross-region-restore)。
 

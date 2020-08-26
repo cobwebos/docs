@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 07/08/2020
-ms.openlocfilehash: 53f151c63c85e958aad3bd0eaf16c50294bf250f
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 437c2b8e42ed5128cc716eee23b8702ec012b481
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287228"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890908"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>什么是 Azure 机器学习工作区？
 
@@ -34,7 +34,7 @@ ms.locfileid: "87287228"
 
 + 工作区可以包含 [Azure 机器学习计算实例](concept-compute-instance.md)和配置了运行 Azure 机器学习所需的 Python 环境的云资源。
 
-+ [用户角色](how-to-assign-roles.md)使你可以与其他用户、团队或项目共享你的工作区。
++ [用户角色](how-to-assign-roles.md) 使你可以与其他用户、团队或项目共享你的工作区。
 + [计算目标](concept-azure-machine-learning-architecture.md#compute-targets)用于运行试验。
 + 创建工作区的同时还会创建[关联的资源](#resources)。
 + [试验](concept-azure-machine-learning-architecture.md#experiments)是用于构建模型的训练用运行。  
@@ -48,14 +48,14 @@ ms.locfileid: "87287228"
 可以通过以下方式与工作区交互：
 
 > [!IMPORTANT]
-> 以下标记为（预览版）的工具当前公开预览版。
-> 提供的预览版本没有服务级别协议，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> 下面标记了“（预览版）”的工具目前为公共预览版。
+> 该预览版在提供时没有附带服务级别协议，建议不要将其用于生产工作负载。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 + 在 Web 上：
     + [Azure 机器学习工作室](https://ml.azure.com) 
     + [Azure 机器学习设计器（预览版）](concept-designer.md)- 仅在[企业版](overview-what-is-azure-ml.md#sku)工作区中可用。
 + 在任何 Python 环境中使用[适用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
-+ 在带有[用于 R 的 AZURE 机器学习 SDK （预览版）](https://azure.github.io/azureml-sdk-for-r/reference/index.html)的任何 R 环境中。
++ 在具有 [AZURE 机器学习 SDK For r (preview) ](https://azure.github.io/azureml-sdk-for-r/reference/index.html)的任何 R 环境中。
 + 在命令行上使用 Azure 机器学习 [CLI 扩展](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)
 + [Azure 机器学习 VS Code 扩展](how-to-manage-resources-vscode.md#workspaces)
 
@@ -117,8 +117,16 @@ ms.locfileid: "87287228"
 > [!NOTE]
 > 除创建新版本以外，还可以使用现有的 Azure 服务。
 
+### <a name="azure-storage-account"></a>Azure 存储帐户
+
+默认情况下，在工作区中创建的 Azure 存储帐户是常规用途 v1 帐户。 在创建工作区后，可以按照 [升级到常规用途 v2 存储帐户一](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) 文中的步骤，将此升级到常规用途 v2。
+
 > [!IMPORTANT]
-> 如果要使用现有的 Azure 存储帐户，则该帐户不能是高级帐户（Premium_LRS 和 Premium_GRS）。 它也不能具有分层命名空间（与 Azure Data Lake Storage Gen2 一起使用）。 工作区的_默认_存储帐户不支持高级存储或分层命名空间。 可以将高级存储或分层命名空间用于_非默认_存储帐户。
+> 升级到常规用途 v2 后，不要在存储帐户上启用分层命名空间。
+
+若要使用现有 Azure 存储帐户，则该帐户不能是高级帐户（Premium_LRS 和 Premium_GRS）。 它也不能具有分层命名空间（与 Azure Data Lake Storage Gen2 一起使用）。 工作区的 _默认_ 存储帐户不支持高级存储或分层命名空间。 可以将高级存储或分层命名空间用于非默认存储帐户。
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

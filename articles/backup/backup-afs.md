@@ -3,12 +3,12 @@ title: 在 Azure 门户中备份 Azure 文件共享
 description: 了解如何使用 Azure 门户在恢复服务保管库中备份 Azure 文件共享
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 40b966d719360570a472b17fbf733aa4c8795b4d
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: ca49f1ad48ab0534b27b91ad6a5a50b393cda782
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757789"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890342"
 ---
 # <a name="back-up-azure-file-shares"></a>备份 Azure 文件共享
 
@@ -21,7 +21,7 @@ ms.locfileid: "88757789"
 * 从 "文件共享" 窗格配置备份
 * 运行按需备份作业，以创建还原点
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 * [了解](azure-file-share-backup-overview.md) Azure 文件共享基于快照的备份解决方案。
 * 确保文件共享存在于 [受支持的存储帐户类型](azure-file-share-support-matrix.md)之一中。
@@ -67,7 +67,7 @@ ms.locfileid: "88757789"
 
 1. 右侧会打开 " **选择文件共享** " 上下文窗格。 Azure 将在存储帐户中搜索可备份的文件共享。 如果你最近添加了文件共享，但在列表中看不到它们，则留出一些时间让文件共享出现。
 
-1. 从 " **选择文件共享** " 列表中，选择要备份的一个或多个文件共享。 选择“确定” 。
+1. 从 " **选择文件共享** " 列表中，选择要备份的一个或多个文件共享。 选择“确定”。
 
    ![选择文件共享](./media/backup-afs/select-file-shares.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "88757789"
        ![创建新保管库](./media/backup-afs/create-new-vault.png)
 
       >[!IMPORTANT]
-      >如果已向保管库注册存储帐户，或者在托管你要尝试保护的文件共享的存储帐户中有少量受保护的共享，则将预填充恢复服务保管库名称，并且你不能在 [此处查看详细信息](backup-azure-files-faq.md#why-cant-i-change-the-vault-to-configure-backup-for-the-file-share)。
+      >如果已向保管库注册存储帐户，或者在托管要保护的文件共享的存储帐户中有少量受保护的共享，则将预填充恢复服务保管库名称，并且你不能在 [此处查看详细信息](backup-azure-files-faq.md#why-cant-i-change-the-vault-to-configure-backup-for-the-file-share)。
 
 1. 对于 " **备份策略** 选择"，请执行以下操作之一：
 
@@ -211,7 +211,7 @@ ms.locfileid: "88757789"
 >[!NOTE]
 >为相应帐户中的任何文件共享配置保护时，Azure 备份会锁定存储帐户。 这样可以防止意外删除包含备份文件共享的存储帐户。
 
-## <a name="best-practices"></a>最佳做法
+## <a name="best-practices"></a>最佳实践
 
 * 请勿删除由 Azure 备份创建的快照。 删除快照可能导致恢复点丢失和/或还原失败。
 

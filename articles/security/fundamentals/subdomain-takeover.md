@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2020
 ms.author: memildin
-ms.openlocfilehash: 3d63ccc2c47bca9410b5b9105b90aa1f0cf5854a
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.openlocfilehash: e378ffe00be9215c692a832e232fac7e866ab3c9
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87439274"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890818"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>禁止无关联的 DNS 条目，并避免子域接管
 
@@ -39,7 +39,7 @@ ms.locfileid: "87439274"
 
     在此示例中，创建了以下友好名称： `greatapp.contoso.com` 。
 
-1. 几个月后，将不再需要该站点，因此将其删除，**而不会**删除相应的 DNS 条目。 
+1. 几个月后，将不再需要该站点，因此将其删除， **而不会** 删除相应的 DNS 条目。 
 
     CNAME DNS 条目现在为 "无关联"。
 
@@ -59,13 +59,13 @@ ms.locfileid: "87439274"
 
 无关联的 DNS 条目使得威胁参与者可以控制关联的 DNS 名称，以托管恶意网站或服务。 组织子域中的恶意页面和服务可能导致：
 
-- **失去对子域内容的控制**-负按下，你的组织无法保护其内容，同时还会损坏品牌和失去信任。
+- **失去对子域内容的控制** -负按下，你的组织无法保护其内容，同时还会损坏品牌和失去信任。
 
-- **从不受防范的访客那里收集 cookie** -通常，web 应用会将会话 cookie 公开给子域（*. contoso.com），因此任何子域都可以访问这些 cookie。 威胁参与者可以使用子域接管来构建真实的页面，欺骗用户访问它，并搜集其 cookie （甚至是安全 cookie）。 一个常见的误解是，使用 SSL 证书可保护你的网站和你的用户的 cookie。 但是，威胁参与者可以使用劫持的子域来申请和接收有效的 SSL 证书。 有效的 SSL 证书向他们授予安全 cookie 的访问权限，并可以进一步提高恶意网站的感知合法性。
+- **从不受防范的访客那里收集 Cookie** -通常，web 应用会将会话 cookie 公开给子域 ( * contoso.com) ，因此任何子域都可以访问这些 cookie。 威胁参与者可以使用子域接管来构建真实的页面，欺骗用户访问其 cookie，并 (甚至) 保护 cookie。 一个常见的误解是，使用 SSL 证书可保护你的网站和你的用户的 cookie。 但是，威胁参与者可以使用劫持的子域来申请和接收有效的 SSL 证书。 有效的 SSL 证书向他们授予安全 cookie 的访问权限，并可以进一步提高恶意网站的感知合法性。
 
-- **网络钓鱼活动**-可在网络钓鱼活动中使用可信外观的子域。 这适用于恶意站点以及 MX 记录，这种情况下，攻击者可能会收到发送到已知安全品牌合法子域的电子邮件。
+- **网络钓鱼活动** -可在网络钓鱼活动中使用可信外观的子域。 这适用于恶意站点以及 MX 记录，这种情况下，攻击者可能会收到发送到已知安全品牌合法子域的电子邮件。
 
-- **进一步的风险**-恶意网站可用于升级到其他经典攻击，如 XSS、CSRF、CORS 回避等。
+- **进一步的风险** -恶意网站可用于升级到其他经典攻击，如 XSS、CSRF、CORS 回避等。
 
 
 
@@ -78,16 +78,16 @@ ms.locfileid: "87439274"
 
 ### <a name="use-azure-dns-alias-records"></a>使用 Azure DNS 别名记录
 
-Azure DNS 的[别名记录](https://docs.microsoft.com/azure/dns/dns-alias#scenarios)可以通过将 DNS 记录的生命周期与 Azure 资源耦合，来防止无关联的引用。 例如，假设某个 DNS 记录限定为别名记录，以指向公共 IP 地址或流量管理器配置文件。 如果删除这些基础资源，DNS 别名记录将变成空的记录集。 它不再引用已删除的资源。 需要特别注意的是，可以通过别名记录来保护的内容有限制。 目前，该列表限制为：
+Azure DNS 的 [别名记录](https://docs.microsoft.com/azure/dns/dns-alias#scenarios) 可以通过将 DNS 记录的生命周期与 Azure 资源耦合，来防止无关联的引用。 例如，假设某个 DNS 记录限定为别名记录，以指向公共 IP 地址或流量管理器配置文件。 如果删除这些基础资源，DNS 别名记录将变成空的记录集。 它不再引用已删除的资源。 需要特别注意的是，可以通过别名记录来保护的内容有限制。 目前，该列表限制为：
 
 - Azure Front Door
 - 流量管理器配置文件
-- Azure 内容分发网络（CDN）终结点
+- Azure 内容分发网络 (CDN) 终结点
 - 公共 IP
 
 尽管目前提供有限的服务，我们仍建议使用别名记录来防止子域接管。
 
-[详细了解](https://docs.microsoft.com/azure/dns/dns-alias#capabilities)Azure DNS 的别名记录的功能。
+[详细了解](https://docs.microsoft.com/azure/dns/dns-alias#capabilities) Azure DNS 的别名记录的功能。
 
 
 
@@ -97,7 +97,7 @@ Azure DNS 的[别名记录](https://docs.microsoft.com/azure/dns/dns-alias#scena
 
 这些记录不会阻止他人创建与 CNAME 条目中的名称相同的 Azure App Service。 如果无法证明域名的所有权，威胁参与者将无法接收流量或控制内容。
 
-[详细了解](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain)如何将现有的自定义 DNS 名称映射到 Azure App Service。
+[详细了解](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain) 如何将现有的自定义 DNS 名称映射到 Azure App Service。
 
 
 
@@ -111,21 +111,21 @@ Azure DNS 的[别名记录](https://docs.microsoft.com/azure/dns/dns-alias#scena
 
     - 停用服务时，请在所需检查列表中放置 "删除 DNS 条目"。
 
-    - 对具有自定义 DNS 条目的任何资源放置[删除锁定](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)。 删除锁定用作指示符，在取消预配资源之前，必须删除该映射。 此类度量值仅在与内部教育计划结合使用时才起作用。
+    - 对具有自定义 DNS 条目的任何资源放置 [删除锁定](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources) 。 删除锁定用作指示符，在取消预配资源之前，必须删除该映射。 此类度量值仅在与内部教育计划结合使用时才起作用。
 
 - **创建发现过程：**
 
     - 定期查看你的 DNS 记录，以确保你的子域全部都映射到以下 Azure 资源：
 
-        - 存在-在 DNS 区域中查询指向 Azure 子域的资源，例如 *. azurewebsites.net 或 cloudapp.azure.com （请参阅[此引用列表](azure-domains.md)）。
+        - 存在-在 DNS 区域中查询指向 Azure 子域的资源，例如 *. azurewebsites.net 或 *. cloudapp.azure.com (参阅 [此引用列表](azure-domains.md)) 。
         - 你需要确认你拥有 DNS 子域所面向的所有资源。
 
-    - 维护 Azure 完全限定的域名（FQDN）终结点和应用程序所有者的服务目录。 若要生成服务目录，请运行以下 Azure 资源关系图查询脚本。 此脚本将为你有权访问的资源创建 FQDN 终结点信息，并将其输出到 CSV 文件中。 如果你有权访问租户的所有订阅，该脚本将会考虑所有这些订阅，如下面的示例脚本中所示。 若要将结果限制为一组特定的订阅，请按如下所示编辑脚本。
+    - 维护 Azure 完全限定的域名的服务目录 (FQDN) 终结点和应用程序所有者。 若要生成服务目录，请运行以下 Azure 资源关系图查询脚本。 此脚本将为你有权访问的资源创建 FQDN 终结点信息，并将其输出到 CSV 文件中。 如果你有权访问租户的所有订阅，该脚本将会考虑所有这些订阅，如下面的示例脚本中所示。 若要将结果限制为一组特定的订阅，请按如下所示编辑脚本。
 
         >[!IMPORTANT]
-        > **权限**-以有权访问所有 Azure 订阅的用户身份运行查询。 
+        > **权限** -以有权访问所有 Azure 订阅的用户身份运行查询。 
         >
-        > **限制**-Azure 资源图的限制和分页限制，你应考虑使用大型 azure 环境。 [详细了解](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data)如何使用大型 Azure 资源数据集。 下面的示例脚本使用订阅批处理来避免这些限制。
+        > **限制** -Azure 资源图的限制和分页限制，你应考虑使用大型 azure 环境。 [详细了解](https://docs.microsoft.com/azure/governance/resource-graph/concepts/work-with-data) 如何使用大型 Azure 资源数据集。 下面的示例脚本使用订阅批处理来避免这些限制。
 
         ```powershell
         
@@ -133,23 +133,22 @@ Azure DNS 的[别名记录](https://docs.microsoft.com/azure/dns/dns-alias#scena
             $subscriptions = Get-AzSubscription
 
             $subscriptionIds = $subscriptions.Id
-                   # Output file path and names
-                   $date = get-date
-                   $fdate = $date.ToString("MM-dd-yyy hh_mm_ss tt")
-                   $fdate #log to console
-                   $rpath = [Environment]::GetFolderPath("MyDocuments") + '\' # Feel free to update your path.
-                   $rname = 'Tenant_FQDN_Report_' + $fdate + '.csv' # Feel free to update the document name.
-                   $fpath = $rpath + $rname
-                   $fpath #This is the output file of FQDN report.
+                    # Output file path and names
+                    $date = get-date
+                    $fdate = $date.ToString("MM-dd-yyy hh_mm_ss tt")
+                    $fdate #log to console
+                    $rpath = [Environment]::GetFolderPath("MyDocuments") + '\' # Feel free to update your path.
+                    $rname = 'Tenant_FQDN_Report_' + $fdate + '.csv' # Feel free to update the document name.
+                    $fpath = $rpath + $rname
+                    $fpath #This is the output file of FQDN report.
 
-            # query
-            $query = "where type in ('microsoft.network/frontdoors',
+            # queries
+            $allTypesFqdnsQuery = "where type in ('microsoft.network/frontdoors',
                                     'microsoft.storage/storageaccounts',
                                     'microsoft.cdn/profiles/endpoints',
                                     'microsoft.network/publicipaddresses',
                                     'microsoft.network/trafficmanagerprofiles',
                                     'microsoft.containerinstance/containergroups',
-                                    'microsoft.apimanagement/service',
                                     'microsoft.web/sites',
                                     'microsoft.web/sites/slots')
                         | extend FQDN = case(
@@ -159,12 +158,29 @@ Azure DNS 的[别名记录](https://docs.microsoft.com/azure/dns/dns-alias#scena
                             type =~ 'microsoft.network/publicipaddresses', properties['dnsSettings']['fqdn'],
                             type =~ 'microsoft.network/trafficmanagerprofiles', properties['dnsConfig']['fqdn'],
                             type =~ 'microsoft.containerinstance/containergroups', properties['ipAddress']['fqdn'],
-                            type =~ 'microsoft.apimanagement/service', properties['hostnameConfigurations']['hostName'],
                             type =~ 'microsoft.web/sites', properties['defaultHostName'],
                             type =~ 'microsoft.web/sites/slots', properties['defaultHostName'],
                             '')
-                        | project id, ['type'], name, FQDN
+                        | project id, type, name, FQDN
                         | where isnotempty(FQDN)";
+
+            $apiManagementFqdnsQuery = "where type =~ 'microsoft.apimanagement/service'
+                        | project id, type, name,
+                            gatewayUrl=parse_url(tostring(properties['gatewayUrl'])).Host,
+                            portalUrl =parse_url(tostring(properties['portalUrl'])).Host,
+                            developerPortalUrl = parse_url(tostring(properties['developerPortalUrl'])).Host,
+                            managementApiUrl = parse_url(tostring(properties['managementApiUrl'])).Host,
+                            gatewayRegionalUrl = parse_url(tostring(properties['gatewayRegionalUrl'])).Host,
+                            scmUrl = parse_url(tostring(properties['scmUrl'])).Host,
+                            additionaLocs = properties['additionalLocations']
+                        | mvexpand additionaLocs
+                        | extend additionalPropRegionalUrl = tostring(parse_url(tostring(additionaLocs['gatewayRegionalUrl'])).Host)
+                        | project id, type, name, FQDN = pack_array(gatewayUrl, portalUrl, developerPortalUrl, managementApiUrl, gatewayRegionalUrl, scmUrl,             
+                            additionalPropRegionalUrl)
+                        | mvexpand FQDN
+                        | where isnotempty(FQDN)";
+
+            $queries = @($allTypesFqdnsQuery, $apiManagementFqdnsQuery);
 
             # Paging helper cursor
             $Skip = 0;
@@ -178,18 +194,21 @@ Azure DNS 的[别名记录](https://docs.microsoft.com/azure/dns/dns-alias#scena
             # Group the subscriptions into batches.
             $subscriptionsBatch = $subscriptionIds | Group -Property { [math]::Floor($counter.Value++ / $batchSize) }
 
-            # Run the query for each subscription batch with paging.
-            foreach ($batch in $subscriptionsBatch)
-            { 
-                $Skip = 0; #Reset after each batch.
+            foreach($query in $queries)
+            {
+                # Run the query for each subscription batch with paging.
+                foreach ($batch in $subscriptionsBatch)
+                { 
+                    $Skip = 0; #Reset after each batch.
 
-                $response += do { Start-Sleep -Milliseconds 500;   if ($Skip -eq 0) {$y = Search-AzGraph -Query $query -First $First -Subscription $batch.Group ; } `
-                else {$y = Search-AzGraph -Query $query -Skip $Skip -First $First -Subscription $batch.Group } `
-                $cont = $y.Count -eq $First; $Skip = $Skip + $First; $y; } while ($cont)
+                    $response += do { Start-Sleep -Milliseconds 500;   if ($Skip -eq 0) {$y = Search-AzGraph -Query $query -First $First -Subscription $batch.Group ; } `
+                    else {$y = Search-AzGraph -Query $query -Skip $Skip -First $First -Subscription $batch.Group } `
+                    $cont = $y.Count -eq $First; $Skip = $Skip + $First; $y; } while ($cont)
+                }
             }
 
-            # View the completed results of the query on all subscriptions.
-            $response | Export-Csv -Path $fpath -Append 
+            # View the completed results of the query on all subscriptions
+            $response | Export-Csv -Path $fpath -Append  
 
         ```
 
@@ -211,7 +230,7 @@ Azure DNS 的[别名记录](https://docs.microsoft.com/azure/dns/dns-alias#scena
 - **创建修补程序：**
     - 找到无关联的 DNS 条目后，你的团队需要调查是否发生了任何损害。
     - 调查停止资源后不重新路由地址的原因。
-    - 删除不再使用的 DNS 记录，或将其指向组织拥有的正确 Azure 资源（FQDN）。
+    - 如果 DNS 记录不再使用，请将其删除，或将其指向正确的 Azure 资源 (FQDN) 你的组织拥有。
  
 
 ## <a name="next-steps"></a>后续步骤

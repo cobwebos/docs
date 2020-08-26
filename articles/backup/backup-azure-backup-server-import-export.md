@@ -3,12 +3,12 @@ title: DPM 和 Azure 备份服务器的脱机备份
 description: 借助 Azure 备份，可以使用 Azure 导入/导出服务在网外发送数据。 本文说明 DPM 和 Azure 备份服务器的脱机备份工作流。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: 30c8526271a636b8890dde0079e27374df9c38af
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.openlocfilehash: 221424871aa4f022e199c98e95024ec20e55d803
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/23/2020
-ms.locfileid: "88757262"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890070"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-mabs"></a>DPM 和 Azure 备份服务器 (MABS) 的脱机备份工作流
 
@@ -136,9 +136,9 @@ AzureOfflineBackupDiskPrep 实用工具准备好要发送到最近的 Azure 数�
 
     ![Azure 登录屏幕](./media/backup-azure-backup-server-import-export/signin-disk-prep.png)
 
-    该工具随后便开始准备磁盘和复制备份数据。 可能需要根据工具的提示附加其他磁盘，以防提供的磁盘没有足够空间来容纳备份数据。 <br/>
+    该工具随后便开始准备磁盘和复制备份数据。 如果所提供的磁盘没有足够空间来备份数据，则可能需要在工具提示时附加更多磁盘。 <br/>
 
-    成功结束该工具的执行时，命令提示符会提供三段信息：
+    成功执行该工具后，命令提示符将提供三条信息：
     * 所提供的一个或多个磁盘已准备好寄送到 Azure。
     * 你会收到确认已创建导入作业。 导入作业使用你提供的名称。
     * 该工具显示 Azure 数据中心的送货地址。

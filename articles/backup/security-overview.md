@@ -3,12 +3,12 @@ title: 安全功能概述
 description: 了解 Azure 备份中的安全功能，这些功能可帮助你保护备份数据并满足企业的安全需求。
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 0354e319c82e02072a8771f9aae383bf0b6240f6
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: f9a505723b40df61665a99e898d59ecfb8c03fd5
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824588"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890461"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure 备份中的安全功能概述
 
@@ -56,7 +56,7 @@ Azure 备份服务中内置了多个安全控制机制，用于防止、检测�
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>防止意外删除备份数据
 
-Azure 备份提供安全功能来帮助保护备份数据，即使是删除了备份数据，也能予以恢复。 启用软删除后，如果用户删除了 VM 的备份，备份数据将额外保留 14 天，因此可以恢复该备份项，而不会丢失数据。 以“软删除”状态将备份数据额外保留 14 天不会向客户收取任何费用。 [详细了解软删除](backup-azure-security-feature-cloud.md)。
+Azure 备份提供安全功能来帮助保护备份数据，即使是删除了备份数据，也能予以恢复。 启用软删除后，如果用户删除了 VM 的备份，备份数据将额外保留 14 天，因此可以恢复该备份项，而不会丢失数据。 "软删除" 状态中的备份数据的额外14天的保留期不会产生任何费用。 [详细了解软删除](backup-azure-security-feature-cloud.md)。
 
 ## <a name="monitoring-and-alerts-of-suspicious-activity"></a>可疑活动的监视和警报
 

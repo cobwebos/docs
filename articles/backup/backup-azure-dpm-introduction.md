@@ -3,12 +3,12 @@ title: 准备 DPM 服务器以备份工作负荷
 description: 本文介绍如何使用 Azure 备份服务准备将 System Center Data Protection Manager (DPM) 备份到 Azure。
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 86becc2b989c55ac080b9bdcbfcca182987e9fb2
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 96eadb4d600b6aa842cdbded2a906d70f27cf55e
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827301"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890801"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>使用 System Center DPM 准备将工作负载备份到 Azure
 
@@ -90,7 +90,7 @@ Azure 备份代理 | 如果 DPM 正在 System Center 2012 SP1 上运行，请安
 - 保管库凭据仅在注册工作流的过程中使用。
 - 你需负责确保保管库凭据文件安全且不会泄露。
   - 如果失去了对凭据的控制权，则保管库凭据可能会被用来向保管库注册其他计算机。
-  - 但是，备份数据是使用属于客户的通行短语加密的，因此现有的备份数据不会泄露。
+  - 但是，使用属于你的密码对备份数据进行加密，因此现有的备份数据不会泄露。
 - 确保将文件保存在可从 DPM 服务器访问的位置。 如果它存储在文件共享/SMB 中，请检查访问权限。
 - 保管库凭据会在 48 小时后过期。 可以根据需要任意下载新的保管库凭据。 不过，在注册工作流中只能使用最新的保管库凭据文件。
 - Azure 备份服务不知道证书的私钥，并且私钥在门户或服务中不可用。

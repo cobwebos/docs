@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 05/26/2020
-ms.openlocfilehash: 3ed160780e15cc36648f7e2ad77e726901ee86c3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 2cfce37ff63a8321f40843ced2a7b786bcfc013e
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119848"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88649595"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>快速入门：使用 ARM 模板创建异地复制容器注册表
 
@@ -33,7 +33,7 @@ ms.locfileid: "86119848"
 
 本快速入门中使用的模板来自 [Azure 快速启动模板](https://azure.microsoft.com/resources/templates/101-container-registry-geo-replication/)。 该模板会设置注册表和其他区域副本。
 
-:::code language="json" source="~/quickstart-templates/101-container-registry-geo-replication/azuredeploy.json" range="1-81" highlight="45-74" :::
+:::code language="json" source="~/quickstart-templates/101-container-registry-geo-replication/azuredeploy.json":::
 
 该模板中定义了以下资源：
 
@@ -51,7 +51,7 @@ ms.locfileid: "86119848"
  2. 选择或输入以下值。
 
     * 订阅：选择一个 Azure 订阅。
-    * **资源组**：选择“新建”，为资源组输入一个独一无二的名称，然后选择“确定”。 
+    * **资源组**：选择“新建”，为资源组输入一个独一无二的名称，然后选择“确定”。
     * **位置**：选择资源组的位置。 示例：“美国中部”。
     * **Acr 名称**：接受为注册表生成的名称，或者输入一个名称。 它必须全局唯一。
     * **位置**：接受为注册表的主副本生成的位置，或输入一个位置，例如美国中部。 

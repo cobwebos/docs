@@ -3,18 +3,18 @@ title: DPM 和 MABS Azure Data Box 的脱机备份
 description: 你可以使用 Azure Data Box 将初始备份数据从 DPM 和 MABS 脱机。
 ms.topic: conceptual
 ms.date: 08/12/2020
-ms.openlocfilehash: 974be6d337c3376d10e09ba6211f7804c2c8cada
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 33515cdd943f3816328bfd77d831288c5ee0a608
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88824553"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88890019"
 ---
 # <a name="offline-seeding-using-azure-data-box-for-dpm-and-mabs-preview"></a>使用 DPM 和 MABS (预览版的 Azure Data Box 进行脱机种子设定) 
 
 > [!NOTE]
 > 此功能适用于 Data Protection Manager (DPM) 2019 UR2 及更高版本。<br><br>
-> 此功能目前以预览版提供 Microsoft Azure 备份 Server (MABS) 。 如果对使用 Azure Data Box 进行脱机种子设定感兴趣，请访问 MABS [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com) 。
+> 此功能目前以预览版提供 Microsoft Azure 备份 Server (MABS) 。 如果对 Azure Data Box 使用 MABS 进行脱机种子设定感兴趣，请访问我们的 [systemcenterfeedback@microsoft.com](mailto:systemcenterfeedback@microsoft.com) 。
 
 本文介绍如何使用 Azure Data Box 将初始备份数据从 DPM 和 MABS 脱机到 Azure 恢复服务保管库。
 
@@ -149,7 +149,7 @@ DPM/MABS 服务器在系统上下文中运行，因此需要向连接 Azure Data
           - Azure.Storage       4.6.1<br>
      >  - Azure AD 应用程序注册为 AzureOfflineBackup_\<object GUID of the user>。
 
-13. 选择正确的 Data Box 订单，以便打开包装、连接和解锁 Data Box Disk。 选择“**下一页**”。
+13. 选择正确的 Data Box 订单，以便打开包装、连接和解锁 Data Box Disk。 选择“**下一步**”。
 
     ![选择 Data Box](./media/offline-backup-azure-data-box-dpm-mabs/select-databox.png)
 
@@ -165,7 +165,7 @@ DPM/MABS 服务器在系统上下文中运行，因此需要向连接 Azure Data
     > 例如，如果磁盘的路径为 `\\mydomain\myserver\disk1\` ，并且 *disk1* 包含一个名为 *PageBlob*的目录，则 DPM/MABS 服务器向导上提供的路径为 `\\mydomain\myserver\disk1\` 。
     > 如果[设置 Azure Data Box 100 TB 设备](https://docs.microsoft.com/azure/backup/offline-backup-azure-data-box#setup-azure-data-box)，请提供以下信息作为设备 `\\<DeviceIPAddress>\<StorageAccountName>_PageBlob` 的网络路径。
 
-15. 选择“**下一页**”。 在 " **摘要** " 页上，检查设置并选择 " **创建组**"。
+15. 选择“**下一步**”。 在 " **摘要** " 页上，检查设置并选择 " **创建组**"。
 
     ![检测 Data Box](./media/offline-backup-azure-data-box-dpm-mabs/detect-databox.png)
 

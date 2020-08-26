@@ -3,12 +3,12 @@ title: 专用终结点
 description: 了解创建 Azure 备份的专用终结点的过程以及使用专用终结点帮助维护资源安全的方案。
 ms.topic: conceptual
 ms.date: 05/07/2020
-ms.openlocfilehash: b7f7c6461701b6f4e438cbead60456b327c7c207
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.openlocfilehash: 4f41eee7a84308eb9f4da56f087b2c36e09148f0
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 08/26/2020
-ms.locfileid: "88871541"
+ms.locfileid: "88890886"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Azure 备份的专用终结点
 
@@ -41,7 +41,7 @@ ms.locfileid: "88871541"
 本部分介绍在虚拟网络中创建和使用 Azure 备份的专用终结点时所涉及的步骤。
 
 >[!IMPORTANT]
-> 强烈建议按照本文档中所述的顺序执行步骤。 如果未按照顺序操作，可能导致保管库呈现为不兼容，无法使用专用终结点，并要求你使用新保管库重启此进程。
+> 强烈建议你遵循本文档中所述的相同顺序执行的步骤。 如果未按照顺序操作，可能导致保管库呈现为不兼容，无法使用专用终结点，并要求你使用新保管库重启此进程。
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -99,7 +99,7 @@ ms.locfileid: "88871541"
 
 ### <a name="optional-dns-zone"></a>可选的 DNS 区域
 
-客户可以选择将其专用终结点与 Azure 备份的专用 DNS 区域集成（在创建专用终结点部分介绍过）以进行服务通信。 如果你不希望与专用 DNS 区域集成，可以选择使用自己的 DNS 服务器或单独创建专用 DNS 区域。 这是对上一部分介绍的两个必需的专用 DNS 区域的补充。
+你可以选择将专用终结点与专用 DNS 区域集成，以便进行 Azure 备份， (在 " [创建和使用用于备份的专用终结点](#creating-and-using-private-endpoints-for-backup) ") 进行服务通信部分中讨论。 如果你不希望与专用 DNS 区域集成，可以选择使用自己的 DNS 服务器或单独创建专用 DNS 区域。 这是对上一部分介绍的两个必需的专用 DNS 区域的补充。
 
 如果要在 Azure 中创建单独的专用 DNS 区域，可以使用用于创建必需的 DNS 区域的相同步骤执行相同操作。 命名和订阅详细信息如下所示：
 

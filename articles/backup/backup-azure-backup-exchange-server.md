@@ -4,12 +4,12 @@ description: 了解如何使用 System Center 2012 R2 DPM 将 Exchange Server �
 ms.reviewer: kasinh
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 139741c4f721f0fd86cc585b4cfb2ed97c45b25c
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 48a0e0f4b838b3f9b26de5a9cf297ddcdfc2a7e9
+ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827403"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88889713"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>使用 System Center 2012 R2 DPM 将 Exchange Server 备份到 Azure 备份
 
@@ -32,7 +32,7 @@ ms.locfileid: "88827403"
 * 代理和保管库凭据已下载到 DPM 服务器。
 * DPM 服务器上已安装代理。
 * DPM 服务器已使用保管库凭据注册。
-* 如果要保护 Exchange 2016，请升级到 DPM 2012 R2 UR9 或更高版本
+* 如果要保护 Exchange 2016，请升级到 DPM 2012 R2 UR9 或更高版本。
 
 ## <a name="dpm-protection-agent"></a>DPM 保护代理
 
@@ -49,7 +49,7 @@ ms.locfileid: "88827403"
 4. 选择想要保护的 Exchange Server 数据库，并单击“**下一步**”。
 
    > [!NOTE]
-   > 如果要保护 Exchange 2013，请检查 [Exchange 2013 先决条件](/system-center/dpm/back-up-exchange)。
+   > 如果要保护 Exchange 2013，请检查 [exchange 2013 必备组件](/system-center/dpm/back-up-exchange)。
    >
    >
 
