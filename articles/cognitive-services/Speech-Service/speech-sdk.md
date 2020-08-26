@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 79f7924b021de9426eeb66adf2ec12f8033efcea
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: ad26fe0d869a2e892a419b1732727c3ff1d1e9a2
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056850"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870708"
 ---
 # <a name="about-the-speech-sdk"></a>关于语音 SDK
 
@@ -31,17 +31,52 @@ ms.locfileid: "88056850"
 
 [语音转文本](speech-to-text.md)（也称为“语音识别”**）可将音频流听录为应用程序、工具或设备可以使用或显示的文本。 结合[语言理解 (LUIS)](../luis/index.yml) 使用语音转文本可以从听录的语音中派生用户意向，以及处理语音命令。 使用[语音翻译](speech-translation.md)通过单个调用将语音输入翻译为另一种语言。 有关详细信息，请参阅[语音转文本基础知识](speech-to-text-basics.md)。
 
+**语音识别 (SR) 、短语列表、意向、翻译和本地容器** 在以下平台上可用：
+
+  - C++/Windows 和 Linux 和 macOS
+  - C#（Framework 和 .NET Core）/Windows 和 UWP 和 Unity 和 Xamarin 和 Linux 和 macOS
+  - Java（Jre 和 Android）
+  - JavaScript（浏览器和 NodeJS）
+  - Python
+  - Swift
+  - Objective-C  
+  - 仅 (SR) 
+
 ### <a name="text-to-speech"></a>文本转语音
 
 [文本转语音](text-to-speech.md)（也称为“语音合成”**）将文本转换为类似人类语言的合成语音。 输入文本是字符串文字或使用[语音合成标记语言 (SSML)](speech-synthesis-markup.md)。 有关标准语音或神经语音的详细信息，请参阅[文本转语音语言和语音支持](language-support.md#text-to-speech)。
 
+可在以下平台上使用**文本到语音 (TTS) ** ：
+
+  - C++/Windows 和 Linux
+  - C#/Windows 和 UWP 和 Unity
+  - Java（Jre 和 Android）
+  - Python
+  - Swift
+  - Objective-C
+  - TTS REST API 可以在所有其他情况下使用。
+
 ### <a name="voice-assistants"></a>语音助手
 
-使用语音 SDK 的[语音助手](voice-assistants.md)使开发人员可以为其应用程序和体验创建自然、人为的对话接口。 语音助手服务在设备和助手之间提供快速、可靠的交互。 实现使用 Bot 框架的直接线路语音通道或集成自定义命令 (预览) 服务完成任务。 此外，语音助手可以使用在[自定义语音门户](https://aka.ms/customvoice)中创建的自定义语音来添加独特的语音输出体验。
+使用语音 SDK 的[语音助手](voice-assistants.md)使开发人员可以为其应用程序和体验创建自然、人为的对话接口。 语音助手服务在设备和助手之间提供快速、可靠的交互。 实现使用 Bot 框架的直接线路语音通道或集成自定义命令 (预览) 服务完成任务。 此外，语音助手可以使用在 [自定义语音门户](https://aka.ms/customvoice) 中创建的自定义语音来添加独特的语音输出体验。
+
+**语音助手** 适用于以下平台：
+
+  - C++/Windows 和 Linux 和 macOS
+  - C#/Windows
+  - Java/Windows & Linux & macOS & Android (语音设备 SDK) 
 
 #### <a name="keyword-spotting"></a>关键字发现
 
-语音 SDK 支持[关键字发现](speech-devices-sdk-create-kws.md)的概念。 关键字发现是在语音中标识关键字的操作，后跟一个对关键字的操作。 例如，"你好 Cortana" 会激活 Cortana 助手。
+语音 SDK 支持 [关键字发现](speech-devices-sdk-create-kws.md) 的概念。 关键字发现是在语音中标识关键字的操作，后跟一个对关键字的操作。 例如，"你好 Cortana" 会激活 Cortana 助手。
+
+**关键字发现 (KWS) ** 可在以下平台上使用：
+
+  - C++/Windows 和 Linux
+  - C#/Windows 和 Linux
+  - Python/Windows 和 Linux
+  - Java/Windows 和 Linux 和 Android（语音设备 SDK）
+  - 关键字发现 (KWS) 功能可能适用于任何麦克风类型，但官方 KWS 支持目前仅限于在 Azure Kinect 深色硬件或语音设备 SDK 中找到的麦克风阵列
 
 ### <a name="meeting-scenarios"></a>会议方案
 
@@ -49,11 +84,22 @@ ms.locfileid: "88056850"
 
 #### <a name="conversation-transcription"></a>对话听录
 
-[对话](conversation-transcription.md)脚本为每个扬声器 (实时 (和异步) 语音识别、发言人识别和句子归属，也称为*diarization*) 。 它非常适合用于听录能够区分说话人的面对面会谈场景。
+[对话](conversation-transcription.md) 脚本为每个扬声器 (实时 (和异步) 语音识别、发言人识别和句子归属，也称为 *diarization*) 。 它非常适合用于听录能够区分说话人的面对面会谈场景。
+
+**会话** 脚本在以下平台上提供：
+
+  - C++/Windows 和 Linux
+  - C#（Framework 和 .NET Core）/Windows 和 UWP 和 Linux
+  - Java/Windows 和 Linux 和 Android（语音设备 SDK）
 
 #### <a name="multi-device-conversation"></a>多设备对话
 
-通过[多设备会话](multi-device-conversation.md)，连接会话中的多个设备或客户端，以发送基于语音的消息或基于文本的消息，并对脚本和翻译提供简单支持。
+通过 [多设备会话](multi-device-conversation.md)，连接会话中的多个设备或客户端，以发送基于语音的消息或基于文本的消息，并对脚本和翻译提供简单支持。
+
+**多设备对话** 在以下平台上提供：
+
+  - C + +/Windows
+  - C # (Framework & .NET Core) /Windows
 
 ### <a name="custom--agent-scenarios"></a>自定义/代理方案
 
@@ -61,11 +107,19 @@ ms.locfileid: "88056850"
 
 #### <a name="call-center-transcription"></a>呼叫中心听录
 
-[呼叫中心](call-center-transcription.md)脚本是一种常见的语音到文本转录，适用于来自各种系统（如交互式语音响应 (IVR) 的大量电话服务数据。 语音服务的最新语音识别模型非常擅长听录这些电话数据，即使是人类也难以识别的数据。
+[呼叫中心](call-center-transcription.md) 脚本是一种常见的语音到文本转录，适用于来自各种系统（如交互式语音响应 (IVR) 的大量电话服务数据。 语音服务的最新语音识别模型非常擅长听录这些电话数据，即使是人类也难以识别的数据。
+
+**Call Center** 脚本通过 Batch Speech Service 通过其 REST API 提供，可以在任何情况下使用。
 
 ### <a name="codec-compressed-audio-input"></a>编解码器压缩的音频输入
 
 一些语音 SDK 编程语言支持编解码器压缩的音频输入流。 有关详细信息，请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-codec-compressed-audio-input-streams" target="_blank">使用压缩的音频输入格式 <span class="docon docon-navigate-external x-hidden-focus"></span></a>。
+
+**编解码器压缩的音频输入** 在以下平台上提供：
+
+  - C++/Linux
+  - C#/Linux
+  - Java/Linux、Android 和 iOS
 
 ## <a name="rest-api"></a>REST API
 
@@ -85,7 +139,7 @@ ms.locfileid: "88056850"
 
 ### <a name="custom-text-to-speech"></a>自定义文本到语音转换
 
-自定义文本到语音功能（也称为自定义语音）是一组联机工具，可用于为品牌创建可识别的一种类型的声音。 可以通过[自定义语音门户](https://aka.ms/customvoice)来创建和管理无代码自定义语音模型。 自定义语音模型发布后，它可以由语音 SDK 使用。
+自定义文本到语音功能（也称为自定义语音）是一组联机工具，可用于为品牌创建可识别的一种类型的声音。 可以通过 [自定义语音门户](https://aka.ms/customvoice)来创建和管理无代码自定义语音模型。 自定义语音模型发布后，它可以由语音 SDK 使用。
 
 ## <a name="get-the-speech-sdk"></a>获取语音 SDK
 

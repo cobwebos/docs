@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/31/2020
+ms.date: 08/25/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 0d915c0b293e9f3deadbfb2a5fb0ff7f379e1717
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 87e0fe7baaf3d83c18b12227e9ecb5bf1d2fb361
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053467"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88869450"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中可用的 Blob 存储功能
 
@@ -53,12 +53,13 @@ Blob 存储功能（例如[诊断日志记录](../common/storage-analytics-loggi
 |帐户故障转移|尚不支持|尚不支持|[灾难恢复和帐户故障转移](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blob 容器 ACL|尚不支持<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|尚不支持<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|[Set Container ACL](https://docs.microsoft.com/rest/api/storageservices/set-container-acl)|
 |自定义域|尚不支持|尚不支持|[将自定义域映射到 Azure Blob 存储终结点](storage-custom-domain-name.md)|
+|加密范围|尚不支持|尚不支持|[ (预览创建和管理加密范围) ](encryption-scope-manage.md)|
 
-<div id="diagnostic-logging"><sup>1</sup>对于高级块 blob 存储帐户，不能使用 Azure 门户启用 (经典) 的诊断日志。 可使用 PowerShell 启用它们。</div><br>
+<div id="diagnostic-logging"><sup>1</sup> 对于高级块 blob 存储帐户，不能使用 Azure 门户启用 (经典) 的诊断日志。 可使用 PowerShell 启用它们。</div><br>
 
-<div id="blob-container-ACL"><sup>2</sup>可以在容器的根文件夹中设置 acl，但不能在容器本身上设置 acl。</div><br>
+<div id="blob-container-ACL"><sup>2</sup> 可以在容器的根文件夹中设置 acl，但不能在容器本身上设置 acl。</div><br>
 
-<div id="preview-form"><sup>3</sup>若要将快照、不可变的存储或静态网站用于 Data Lake Storage Gen2，您需要完成此<a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>窗体</a>中的注册。  </div>
+<div id="preview-form"><sup>3</sup>若要将快照、不可变的存储或静态网站用于 Data Lake Storage Gen2，您需要完成此 <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>窗体</a>中的注册。  </div>
 
 ## <a name="see-also"></a>另请参阅
 

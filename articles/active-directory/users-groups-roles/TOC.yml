@@ -62,12 +62,14 @@
           href: users-revoke-access.md
         - name: 关闭非托管目录下的帐户
           href: users-close-account.md
-        - name: 添加 B2B 用户
-          href: ../external-identities/what-is-b2b.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
-        - name: 向 B2B 用户分配角色
-          href: ../external-identities/add-guest-to-role.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
-        - name: 动态组和 B2B
-          href: ../external-identities/use-dynamic-groups.md?context=azure%2factive-directory%2fusers-groups-roles%2fcontext%2fugr-context
+        - name: 添加来宾用户
+          href: /azure/active-directory/b2b/what-is-b2b?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: 向来宾用户分配角色
+          href: /azure/active-directory/b2b/add-guest-to-role?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: 限制来宾用户访问权限
+          href: users-restrict-guest-permissions.md
+        - name: 动态组和来宾
+          href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: 管理目录
       items:
         - name: Azure AD 组织

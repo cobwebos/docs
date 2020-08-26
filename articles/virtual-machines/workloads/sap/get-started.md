@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/21/2020
+ms.date: 08/25/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4b1705fbfae297c7f92de6b4080569deaad3de98
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 704d4c1b4e4e4229f35526748494aaac2e351f99
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "88749670"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871371"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>使用 Azure 托管和运行 SAP 工作负荷方案
 
@@ -88,7 +88,10 @@ Azure for SAP HANA 的独特之处在于，它是一款能让 Azure 脱颖而出
 
 ## <a name="change-log"></a>更改日志
 
-- 08/21/2020：将新的操作系统版本添加到适用于 [HANA 大型实例的兼容操作系统](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) 中，为类型为 i 和 II 的
+- 08/25/2020： [针对使用 wsfc 和共享磁盘的 SAP ASCS/scs 的 HA 指南进行](./sap-high-availability-guide-wsfc-shared-disk.md)更改，使用 wsfc 和共享磁盘为 [SAP ASCS/scs 准备 Azure 基础结构](./sap-high-availability-infrastructure-wsfc-shared-disk.md) ，并使用 [WSFC 和共享磁盘安装 sap NW HA](./sap-high-availability-guide-wsfc-shared-disk.md) ，以引入使用 AZURE 共享磁盘和文档 SAP ERS2 体系结构的选项
+- 08/25/2020： [为 SAP ASCS/SCS 和 WSFC 和 Azure 共享磁盘发布多 SID HA 指南](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md)
+- 08/25/2020： [通过 WSFC 和 Azure NetApp 文件 (SMB) 中的 SAP ASCS/SCS 的 HA 指南进行 ](./high-availability-guide-windows-netapp-files-smb.md)更改使用 wsfc 和 [文件共享为 SAP ASCS/scs 准备 Azure 基础结构](./sap-high-availability-infrastructure-wsfc-file-share.md)、 [包含 WSFC 和共享磁盘的 sap ASCS/scs 的多 sid ha 指南](./sap-ascs-ha-multi-sid-wsfc-shared-disk.md) 、包含 WSFC 和 [SOFS 文件共享的 sap ASCS/scs](./sap-ascs-ha-multi-sid-wsfc-file-share.md) 的多 sid ha 指南，作为使用 WFC 和共享磁盘的 sap ASCS/scs 的 HA 指南 
+- 08/21/2020：将新的操作系统版本添加到适用于 [HANA 大型实例的兼容操作系统](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-compatibility-matrix-hana-large-instance) 中，为类型为 I 和 II 的
 - 08/18/2020： [在 RHEL 上发布和的 HA SAP HANA 向上扩展](./sap-hana-high-availability-netapp-files-red-hat.md)
 - 08/17/2020：添加有关使用 Azure Site Recovery 将 SAP NetWeaver 系统从本地迁移到 Azure 的信息，请阅读 [Azure 虚拟机计划和实施 Sap NetWeaver](./planning-guide.md)
 - 08/14/2020：为[SAP 工作负荷的 IBM Db2 Azure 虚拟机 DBMS 部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_ibm)一文中的 Db2 添加磁盘配置建议

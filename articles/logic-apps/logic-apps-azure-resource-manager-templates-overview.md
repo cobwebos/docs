@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: 391692d708adbd542b2cf358f0ac597dc1db3fa0
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 9d3c5a914fe472dd7e4f797cb633e65951bf07e7
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88565547"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871456"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概述：使用 Azure 资源管理器模板将 Azure 逻辑应用部署自动化
 
@@ -269,17 +269,7 @@ ms.locfileid: "88565547"
 
 ### <a name="view-resource-definitions"></a>查看资源定义
 
-若要查看 Azure 资源组中所有资源的资源定义，请将 [逻辑应用从 azure 下载到 Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)中，这是创建最适用于部署的有效参数化逻辑应用模板的最简单方法，或者按照 Azure 门户中的以下步骤进行操作：
-
-1. 使用 Azure 帐户凭据登录到 [Azure 门户](https://portal.azure.com)。
-
-1. 查找包含逻辑应用、连接和其他资源的 Azure 资源组。
-
-1. 在资源组工具栏上，选择 " **概述**"，然后选择资源组中的所有资源。
-
-1. 在资源组工具栏上的 " **设置**" 下，选择 " **导出模板**"。
-
-   门户会显示所选资源的定义。 有关详细信息，请参阅 [Azure 门户中的单个和多个资源导出到模板](../azure-resource-manager/templates/export-template-portal.md)。
+若要查看 Azure 资源组中所有资源的资源定义，请将 [逻辑应用从 azure 下载到 Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)中，这是创建最适用于部署的有效参数化逻辑应用模板的最简单方法。
 
 有关模板资源及其属性的一般信息，请参阅以下主题：
 
@@ -335,7 +325,7 @@ ms.locfileid: "88565547"
 
 下面是特定于逻辑应用资源定义的属性：
 
-| 属性 | 必须 | 类型 | 说明 |
+| 属性 | 必需 | 类型 | 描述 |
 |-----------|----------|------|-------------|
 | `state` | 是 | String | 逻辑应用在部署时的状态，`Enabled` 表示逻辑应用处于活动状态，`Disabled` 表示逻辑应用处于非活动状态。 例如，如果你尚未准备好推出逻辑应用，而是想要部署草稿版本，则可以使用 `Disabled` 选项。 |
 | `integrationAccount` | 否 | Object | 如果逻辑应用使用集成帐户（用于存储企业到企业 (B2B) 方案的项目），则此对象包含用于指定集成帐户 ID 的 `id` 属性。 |
@@ -584,7 +574,7 @@ ms.locfileid: "88565547"
 
 ## <a name="connection-resource-definitions"></a>连接资源定义
 
-当逻辑应用通过[托管连接器](../connectors/apis-list.md)来创建并使用与其他服务和系统的连接时，模板的 `resources` 对象将包含这些连接的资源定义。
+当逻辑应用通过[托管连接器](../connectors/apis-list.md)来创建并使用与其他服务和系统的连接时，模板的 `resources` 对象将包含这些连接的资源定义。 尽管从逻辑应用中创建连接，但连接是使用其自己的资源定义分隔的 Azure 资源。 若要查看这些连接资源定义，请将 [逻辑应用从 Azure 下载到 Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)中，这是创建最适用于部署的有效参数化逻辑应用模板的最简单方法。
 
 ```json
 {

@@ -155,7 +155,7 @@
           href: search-howto-large-index.md
         - name: 处理并发更新
           href: search-howto-concurrency.md
-    - name: 引入 Azure 数据
+    - name: 引入仅限 Azure 的数据
       items:
         - name: 配置索引器
           href: search-indexer-overview.md
@@ -203,7 +203,7 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: SQL 数据库
               href: search-howto-managed-identities-sql.md
-    - name: 使用 AI 引入
+    - name: 使用技能 (AI)
       items:
         - name: 附加认知服务资源
           href: cognitive-search-attach-cognitive-services.md
@@ -215,7 +215,7 @@
               href: cognitive-search-concept-annotations-syntax.md
             - name: 映射到索引字段
               href: cognitive-search-output-field-mapping.md
-            - name: 提取图像中的信息
+            - name: 处理图像文件
               href: cognitive-search-concept-image-scenarios.md
             - name: 缓存（增量）扩充
               href: search-howto-incremental-index.md
@@ -269,7 +269,7 @@
               href: query-lucene-syntax.md
             - name: moreLikeThis（预览版）
               href: search-more-like-this.md
-    - name: “筛选器”
+    - name: 筛选器
       items:
         - name: 筛选器概述
           href: search-filters.md

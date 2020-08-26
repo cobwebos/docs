@@ -572,12 +572,14 @@
               href: ../common/storage-explorer-support-policy-lifecycle.md
             - name: 存储资源管理器可访问性
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Azure 存储论坛
+        - name: Microsoft Q&A 上的 Azure 存储
           href: 'https://docs.microsoft.com/answers/topics/azure-blob-storage.html'
         - name: Stack Overflow 上的 Azure 存储
           href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-        - name: Blob 存储的定价
+        - name: 块 blob 的定价
           href: 'https://azure.microsoft.com/pricing/details/storage/blobs/'
+        - name: 页 blob 的定价
+          href: 'https://azure.microsoft.com/pricing/details/storage/page-blobs/'
         - name: Azure 定价计算器
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: 视频

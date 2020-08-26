@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 8/6/2020
-ms.openlocfilehash: 5b5840c1b668e9a509f58d7edf65175f621d9e4c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 4c6d1d3877629150493ee2a57a04573760d2772a
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88794297"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870011"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>流分析和 Power BI：针对流式处理数据的实时分析仪表板
 

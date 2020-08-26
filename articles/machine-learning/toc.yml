@@ -509,6 +509,8 @@
       href: monitor-resource-reference.md
     - name: 机器学习管道 YAML 参考
       href: reference-pipeline-yaml.md
+    - name: 主权云奇偶校验
+      href: reference-machine-learning-cloud-parity.md
 - name: 资源
   items:
     - name: 发行说明

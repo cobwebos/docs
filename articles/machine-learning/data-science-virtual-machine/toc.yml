@@ -44,12 +44,18 @@
       href: vm-do-ten-things.md
     - name: 使用 Linux Data Science Virtual Machine
       href: linux-dsvm-walkthrough.md
-    - name: 创建自动缩放的 Data Science Virtual Machine 池
-      href: dsvm-pools.md
-    - name: 与 Azure Active Directory 集成
-      href: dsvm-common-identity.md
-    - name: 保护资源访问凭据
-      href: dsvm-secure-access-keys.md
+    - name: 与 Azure 机器学习集成
+      items:
+        - name: 跟踪试验
+          href: how-to-track-experiments.md
+    - name: 企业指南
+      items:
+        - name: 创建自动缩放的 Data Science Virtual Machine 池
+          href: dsvm-pools.md
+        - name: 与 Azure Active Directory 集成
+          href: dsvm-common-identity.md
+        - name: 保护资源访问凭据
+          href: dsvm-secure-access-keys.md
 - name: 资源
   items:
     - name: Microsoft Q&A 问题页面

@@ -53,6 +53,9 @@
           href: quickstart-device-streams-proxy-nodejs.md
         - name: C
           href: quickstart-device-streams-proxy-c.md
+    - name: 使用 ARM 模板自动路由消息
+      displayName: Resource Manager
+      href: horizontal-arm-route-messages.md
 - name: 教程
   items:
     - name: 路由消息

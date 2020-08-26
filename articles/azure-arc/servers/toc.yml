@@ -1,0 +1,51 @@
+- name: “已启用 Azure Arc 的服务器”文档
+  href: index.yml
+- name: 概述
+  items:
+    - name: 关于已启用 Azure Arc 的服务器
+      href: overview.md
+- name: 快速入门
+  items:
+    - name: 启用支持 Arc 的服务器代理
+      href: ./learn/quick-enable-hybrid-vm.md
+- name: 教程
+  items:
+    - name: 分配策略来评估符合性
+      href: ./learn/tutorial-assign-policy-portal.md
+    - name: 监视计算机
+      href: ./learn/tutorial-enable-vm-insights.md
+- name: 示例
+  items:
+    - name: Azure Policy 内置策略定义
+      items:
+        - name: 已启用 Arc 的服务器
+          href: policy-samples.md
+- name: 概念
+  items:
+    - name: 安全性
+      items:
+        - name: Azure Policy 的安全控件
+          displayName: 'regulatory, compliance, standards, domains'
+          href: security-controls-policy.md
+- name: 操作指南
+  items:
+    - name: 连接到 Azure Arc
+      items:
+        - name: Connected Machine 代理概述
+          href: agent-overview.md
+        - name: 从 Azure 门户将计算机连接到 Azure Arc
+          href: onboard-portal.md
+        - name: 使用服务主体大规模连接计算机
+          href: onboard-service-principal.md
+        - name: 通过 PowerShell DSC 将计算机连接到 Azure Arc
+          href: onboard-dsc.md
+    - name: 管理
+      items:
+        - name: 管理和使用 Azure VM 扩展
+          href: manage-vm-extensions.md
+        - name: 管理代理
+          href: manage-agent.md
+    - name: 疑难解答
+      items:
+        - name: 代理连接问题
+          href: troubleshoot-agent-onboard.md

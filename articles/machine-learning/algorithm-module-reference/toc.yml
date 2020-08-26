@@ -192,3 +192,5 @@
       href: web-service-input-output.md
 - name: 模块错误和故障排除
   href: designer-error-codes.md
+- name: Graph 搜索查询语法
+  href: graph-search-syntax.md

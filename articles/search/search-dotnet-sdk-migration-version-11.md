@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/20/2020
-ms.openlocfilehash: 6880706300597e925267dae1230a87d17cd5c028
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5dd061309447dd6037d2dd664e7c5db2c7df38cc
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88688345"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88870198"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>升级到 Azure 认知搜索 .NET SDK 版本11
 
@@ -153,6 +153,8 @@ Azure 认知搜索客户端库的每个版本都面向 REST API 的相应版本�
    using Azure.Search.Documents.Indexes.Models;
    using Azure.Search.Documents.Models;
    ```
+
+1. 对于需要 JSON 序列化的类，请将替换 `using Newtonsoft.Json` 为 `using System.Text.Json.Serialization` 。
 
 1. 修改客户端身份验证代码。 在以前的版本中，你将使用客户端对象上的属性设置 API 密钥 (例如，) 的 [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) 属性。 在当前版本中，使用 [AzureKeyCredential](https://docs.microsoft.com/dotnet/api/azure.azurekeycredential) 类作为凭据传递密钥，以便在需要时可以更新 API 密钥，而无需创建新的客户端对象。
 

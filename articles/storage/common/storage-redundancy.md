@@ -10,12 +10,12 @@ ms.date: 08/24/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 30839fac6a264ad9defb565663b28a5b12b571b5
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 407853152d4f18d8f8daacd8ef7d19c878384076
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88814512"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871150"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -64,8 +64,8 @@ Azure 存储帐户中的数据在主要区域中始终复制三次。 Azure 存�
 | 存储帐户类型 | 支持的区域 | 支持的服务 |
 |--|--|--|
 | 常规用途 v2<sup>1</sup> | 亚洲东南部<br /> 澳大利亚东部<br /> 北欧<br />  西欧<br /> 法国中部<br /> 日本东部<br /> 南非北部<br /> 英国南部<br /> 美国中部<br /> 美国东部<br /> 美国东部 2<br /> 美国西部 2 | 块 Blob<br /> 页 Blob<sup>2</sup><br /> 文件共享（共享）<br /> 表<br /> 队列<br /> |
-| BlockBlobStorage<sup>1</sup> | 亚洲东南部<br /> 澳大利亚东部<br /> 西欧<br /> 美国东部 <br /> 美国西部 2| 仅限高级块 blob |
-| FileStorage | 亚洲东南部<br /> 澳大利亚东部<br /> 西欧<br /> 美国东部 <br /> 美国西部 2 | 仅高级文件共享 |
+| BlockBlobStorage<sup>1</sup> | 亚洲东南部<br /> 澳大利亚东部<br /> 北欧<br /> 西欧<br /> 美国东部 <br /> 美国西部 2| 仅限高级块 blob |
+| FileStorage | 亚洲东南部<br /> 澳大利亚东部<br /> 北欧<br /> 西欧<br /> 美国东部 <br /> 美国西部 2 | 仅高级文件共享 |
 
 <sup>1</sup> ZRS 帐户当前不支持存档层。<br />
 <sup>2</sup> 包含虚拟机的 Azure 托管磁盘的存储帐户始终使用 LRS。 Azure 非托管磁盘还应使用 LRS。 可以为使用 GRS 的 Azure 非托管磁盘创建存储帐户，但由于异步异地复制可能存在一致性问题，因此不建议这样做。 托管磁盘和非托管磁盘都不支持 ZRS 或 GZRS。 有关托管磁盘的详细信息，请参阅 [Azure 托管磁盘定价](https://azure.microsoft.com/pricing/details/managed-disks/)。

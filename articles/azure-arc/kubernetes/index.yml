@@ -1,0 +1,38 @@
+### YamlMime:Landing
+title: Azure Arc Kubernetes（预览版）
+summary: 了解如何使用 Azure Arc 管理 Kubernetes 群集
+metadata:
+  title: Azure Arc Kubernetes
+  description: 了解如何管理 Azure 中的本地计算机
+  author: 
+  ms.service: azure-arc
+  ms.topic: landing-page
+  ms.date: 06/26/2020
+  ms.author: 
+  ms.openlocfilehash: 7c643d10971d93a3c6194bc7390d2271c1ed561b
+  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+  ms.translationtype: HT
+  ms.contentlocale: zh-CN
+  ms.lasthandoff: 08/24/2020
+  ms.locfileid: "88763710"
+landingContent:
+- title: 使用 Azure Arc 将 Kubernetes 群集连接到 Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 什么是已启用 Azure Arc 的 Kubernetes？
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: 连接群集
+      url: connect-cluster.md
+  - linkListType: how-to-guide
+    links:
+    - text: 使用 GitOps 部署配置
+      url: use-gitops-connected-cluster.md
+    - text: 使用 GitOps 部署 Helm 图表
+      url: use-gitops-with-helm.md
+    - text: 通过 Azure Policy 强制使用 GitOps
+      url: use-azure-policy.md
+    - text: 部署 Azure IoT Edge 工作负载
+      url: deploy-azure-iot-edge-workloads.md

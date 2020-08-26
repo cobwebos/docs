@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/13/2020
+ms.date: 08/25/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6eaabac35676e9c836d07ffe6942ef9fc8c20cd8
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.openlocfilehash: 8f389581d8fbeb912507b303c46109dd08fcab8d
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88855397"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871510"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>针对 SAP ASCS/SCS 使用 Windows 故障转移群集和共享磁盘准备 SAP HA 的 Azure 基础结构
 
@@ -174,7 +174,7 @@ ms.locfileid: "88855397"
 > Azure 近程放置组是使用 Azure 共享磁盘的先决条件。
  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备条件
 
 在开始安装之前，请查看以下文章：
 
@@ -540,7 +540,7 @@ SAP ASCS、SAP SCS 和新的 SAP ERS2 使用虚拟主机名和虚拟 IP 地址�
 
    ![图 43：选择“是”将复制的卷设置为群集卷][sap-ha-guide-figure-3043]
 
-   _ 选择 **"是"** 将复制的卷设置为群集 volume_
+   _选择 **"是"** 将复制的卷设置为群集卷_
 
    创建卷后，DataKeeper 管理和配置工具显示复制作业处于活动状态。
 

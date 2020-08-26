@@ -227,6 +227,8 @@
               href: high-availability-guide-rhel-netapp-files.md
         - name: SAP 多 SID
           items:
+            - name: Windows 以及用于 (A)SCS 实例的 Azure 共享磁盘
+              href: sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md
             - name: Windows 以及用于 (A)SCS 实例的共享磁盘
               href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
             - name: Windows 以及用于 (A)SCS 实例的 SOFS 文件共享

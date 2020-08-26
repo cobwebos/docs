@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 1dd38f0360a4471124497d8357481283cd98383c
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.openlocfilehash: 1bd3cb1c18d1bac078ac1344f574914dba73d07b
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88566295"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871558"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>适用于 Azure 逻辑应用的连接器
 
@@ -48,9 +48,9 @@ ms.locfileid: "88566295"
 
   连接器分类为“标准”或“企业”连接器。 [企业连接器](#enterprise-connectors)提供对 SAP、IBM MQ 和 IBM 3270 等企业系统的访问，但会产生额外的费用。 若要确定某个连接器是标准还是企业连接器，请参阅[连接器概述](/connectors)下每个连接器的参考页中的技术详细信息。
 
-  也可以使用这些类别来识别连接器，不过，某些连接器可能属于多个类别。 例如，SAP 既是企业连接器，也是本地连接器：
+  你还可以使用这些类别来识别连接器，尽管某些连接器可以存在于多个类别中。 例如，SAP 既是企业连接器，也是本地连接器：
 
-  | 类别 | 说明 |
+  | 类别 | 描述 |
   |----------|-------------|
   | [**托管连接器**](#managed-api-connectors) | 创建使用 Azure Blob 存储、Office 365、Dynamics、Power BI、OneDrive、Salesforce、SharePoint Online 等服务的逻辑应用。 |
   | [**本地连接器**](#on-premises-connectors) | 安装并设置[本地数据网关][gateway-doc]后，这些连接器可以帮助逻辑应用访问 SQL Server、SharePoint Server、Oracle DB、文件共享等本地系统。 |
@@ -66,9 +66,9 @@ ms.locfileid: "88566295"
 > [!NOTE]
 > 在 ISE 及其连接器中运行的逻辑应用，不管这些连接器的运行位置如何，都遵循固定定价计划与基于消耗的定价计划。 有关详细信息，请参阅 [逻辑应用定价模型](../logic-apps/logic-apps-pricing.md) 和 [逻辑应用定价详细](https://azure.microsoft.com/pricing/details/logic-apps/)信息。
 
-| Label | 示例 | 说明 |
+| Label | 示例 | 描述 |
 |-------|---------|-------------|
-| **转储** | ![ISE 连接器示例](./media/apis-list/example-core-connector.png) | 此标签的内置触发器和操作与逻辑应用在同一 ISE 中运行。 |
+| **转储** | ![示例核心连接器](./media/apis-list/example-core-connector.png) | 此标签的内置触发器和操作与逻辑应用在同一 ISE 中运行。 |
 | **ISE** | ![ISE 连接器示例](./media/apis-list/example-ise-connector.png) | 此标签的托管连接器与逻辑应用在同一 ISE 中运行。 如果你的本地系统已连接到 Azure 虚拟网络，则 ISE 允许你的逻辑应用直接访问该系统，而无需使用 [本地数据网关](../logic-apps/logic-apps-gateway-connection.md)。 相反，你可以使用该系统的 **ISE** 连接器（如果有）、HTTP 操作或 [自定义连接器](#custom)。 对于没有 **ISE** 连接器的本地系统，请使用本地数据网关。 若要查看可用的 ISE 连接器，请参阅 [ise 连接器](#ise-connectors)。 |
 | 无标签 | ![多租户连接器示例](./media/apis-list/example-multi-tenant-connector.png) | 无 **核心** 或 **ISE** 标签的所有其他连接器，你可以继续使用该标签，在全局多租户逻辑应用服务中运行。 |
 |||
@@ -79,50 +79,50 @@ ms.locfileid: "88566295"
 
 逻辑应用提供内置触发器和操作，使你能够创建基于计划的工作流、帮助逻辑应用与其他应用和服务通信、通过逻辑应用控制工作流，以及管理或处理数据。
 
-| 名称 | 说明 |
+| 名称 | 描述 |
 |------|-------------|
-| [![API 图标][schedule-icon]<br>**计划**][schedule-doc] | - 使用[ **“重复周期”** 触发器][schedule-recurrence-doc]，按指定的重复周期以简单到高级的计划运行逻辑应用。 <br>- 使用[ **“滑动窗口”** 触发器][schedule-sliding-window-doc]，运行需要处理连续区块中的数据的逻辑应用。 <br>- 使用[ **“延迟”** 操作][schedule-delay-doc]，将逻辑应用暂停指定的持续时间。 <br>- 使用[ **“延迟截止时间”** 操作][schedule-delay-until-doc]，将逻辑应用暂停到指定的日期和时间。 |
-| [![API 图标][batch-icon]<br>**批处理**][batch-doc] | - 使用“批处理消息”触发器来批量处理消息。 <br>- 使用“发送要批量处理的消息”操作调用具有现有批处理触发器的逻辑应用。 |
-| [![API 图标][http-icon]<br>**HTTP**][http-doc] | 使用适用于 HTTP 的触发器和操作调用 HTTP 或 HTTPS 终结点。 其他 HTTP 内置触发器和操作包括 [HTTP + Swagger][http-swagger-doc] 和 [HTTP + Webhook][http-webhook-doc]。 |
-| [![API 图标][http-request-icon]<br>**请求**][http-request-doc] | - 使用“请求”触发器，使逻辑应用可从其他应用程序或服务调用、针对事件网格资源事件触发，或者针对 Azure 安全中心警报触发。 <br>- 使用“响应”操作将响应发送到应用或服务。 |
-| [![API 图标][azure-api-management-icon]<br>**Azure API <br>管理**][azure-api-management-doc] | 调用可以使用 Azure API 管理进行管理和发布的自有 API 定义的触发器与操作。 |
-| [![API 图标][azure-app-services-icon]<br>**Azure 应用<br>服务**][azure-app-services-doc] | 调用 Azure 应用服务上托管的 Azure API 应用或 Web 应用。 包含 Swagger 后，这些应用定义的触发器和操作类似于其他任何第一类触发器和操作。 |
-| [![API 图标][azure-logic-apps-icon]<br>**Azure 逻辑<br>应用**][nested-logic-app-doc] | 调用使用“请求”触发器启动的其他逻辑应用。 |
+| [![计划内置连接器 ][schedule-icon]<br> **计划**][schedule-doc] | - 使用[ **“重复周期”** 触发器][schedule-recurrence-doc]，按指定的重复周期以简单到高级的计划运行逻辑应用。 <br>- 使用[ **“滑动窗口”** 触发器][schedule-sliding-window-doc]，运行需要处理连续区块中的数据的逻辑应用。 <br>- 使用[ **“延迟”** 操作][schedule-delay-doc]，将逻辑应用暂停指定的持续时间。 <br>- 使用[ **“延迟截止时间”** 操作][schedule-delay-until-doc]，将逻辑应用暂停到指定的日期和时间。 |
+| [![批处理内置连接器 ][batch-icon]<br> **批处理**][batch-doc] | - 使用“批处理消息”触发器来批量处理消息。 <br>- 使用“发送要批量处理的消息”操作调用具有现有批处理触发器的逻辑应用。 |
+| [![HTTP 内置连接器 ][http-icon]<br> **http**][http-doc] | 使用适用于 HTTP 的触发器和操作调用 HTTP 或 HTTPS 终结点。 其他 HTTP 内置触发器和操作包括 [http + Swagger 内置连接器][http-swagger-doc] 和 [http + Webhook][http-webhook-doc]。 |
+| [![请求内置连接器 ][http-request-icon]<br> **请求**][http-request-doc] | - 使用“请求”触发器，使逻辑应用可从其他应用程序或服务调用、针对事件网格资源事件触发，或者针对 Azure 安全中心警报触发。 <br>- 使用“响应”操作将响应发送到应用或服务。 |
+| [![Azure API 管理内置连接器 ][azure-api-management-icon]<br> **azure api <br> 管理**][azure-api-management-doc] | 调用可以使用 Azure API 管理进行管理和发布的自有 API 定义的触发器与操作。 |
+| [![Azure 应用 Services 内置连接器 ][azure-app-services-icon]<br> **Azure 应用 <br> 服务**][azure-app-services-doc] | 调用 Azure 应用服务上托管的 Azure API 应用或 Web 应用。 包含 Swagger 后，这些应用定义的触发器和操作类似于其他任何第一类触发器和操作。 |
+| [![Azure 逻辑应用内置连接器 ][azure-logic-apps-icon]<br> **azure 逻辑 <br> 应用**][nested-logic-app-doc] | 调用使用“请求”触发器启动的其他逻辑应用。 |
 |||
 
 ### <a name="run-code-from-logic-apps"></a>从逻辑应用运行代码
 
 逻辑应用提供内置操作用于在逻辑应用工作流中运行你自己的代码：
 
-| 名称 | 说明 |
+| 名称 | 描述 |
 |------|-------------|
-| [![API 图标][azure-functions-icon]<br>**Azure Functions**][azure-functions-doc] | 从逻辑应用调用运行自定义代码片段（C# 或 Node.js）的 Azure 函数。 |
-| [![API 图标][inline-code-icon]<br>**内联代码**][inline-code-doc] | 从逻辑应用添加和运行 JavaScript 代码片段。 |
+| [![Azure Functions 内置连接器 ][azure-functions-icon]<br> **Azure Functions**][azure-functions-doc] | 从逻辑应用调用运行自定义代码片段（C# 或 Node.js）的 Azure 函数。 |
+| [![内联代码内置连接器 ][inline-code-icon]<br> **内联代码**][inline-code-doc] | 从逻辑应用添加和运行 JavaScript 代码片段。 |
 |||
 
 ### <a name="control-workflow"></a>控制工作流
 
 逻辑应用提供用于在逻辑应用工作流中构建和控制操作的内置操作：
 
-| 名称 | 说明 |
+| 名称 | 描述 |
 |------|-------------|
-| [![“内置”图标][condition-icon]<br>**条件**][condition-doc] | 评估条件，并根据条件是 true 还是 false 运行不同的操作。 |
-| [![“内置”图标][for-each-icon]<br>**For each**][for-each-doc] | 对数组中的每个项执行相同的操作。 |
-| [![内置图标 ][scope-icon]<br> **范围**][scope-doc] | 将操作分组到范围，以便在该范围内的操作完成运行后，获取这些操作的自身状态。 |
-| [![“内置”图标][switch-icon]<br>**Switch**][switch-doc] | 将操作分组到案例，而案例分配有唯一的值（默认案例除外）。 仅运行其分配值与表达式、对象或令牌的结果相匹配的案例。 如果不存在任何匹配项，则运行默认案例。 |
-| [![“内置”图标][terminate-icon]<br>**Terminate**][terminate-doc] | 停止当前正在运行的逻辑应用工作流。 |
-| [![“内置”图标][until-icon]<br>**Until**][until-doc] | 重复操作，直到指定的条件为 true 或某个状态发生更改。 |
+| [![条件内置操作 ][condition-icon]<br> **条件**][condition-doc] | 评估条件，并根据条件是 true 还是 false 运行不同的操作。 |
+| [![对于 ][for-each-icon]<br> **每个**内置操作][for-each-doc] | 对数组中的每个项执行相同的操作。 |
+| [![范围内置操作 ][scope-icon]<br> **范围**][scope-doc] | 将操作分组到范围，以便在该范围内的操作完成运行后，获取这些操作的自身状态。 |
+| [![切换内置操作 ][switch-icon]<br> **开关**][switch-doc] | 将操作分组到案例，而案例分配有唯一的值（默认案例除外）。 仅运行其分配值与表达式、对象或令牌的结果相匹配的案例。 如果不存在任何匹配项，则运行默认案例。 |
+| [![终止内置操作 ][terminate-icon]<br> **终止**][terminate-doc] | 停止当前正在运行的逻辑应用工作流。 |
+| [![到内置操作 ][until-icon]<br> **之前**][until-doc] | 重复操作，直到指定的条件为 true 或某个状态发生更改。 |
 |||
 
 ### <a name="manage-or-manipulate-data"></a>管理或处理数据
 
 逻辑应用提供用于处理数据输出及其格式的内置操作：
 
-| 名称 | 说明 |
+| 名称 | 描述 |
 |------|-------------|
-| [![“内置”图标][data-operations-icon]<br>**数据操作**][data-operations-doc] | 对数据执行操作： <p>- **撰写**：基于具有不同类型的多个输入创建单个输出。 <br>- **创建 CSV 表**：基于包含 JSON 对象的数组创建逗号分隔值 (CSV) 表。 <br>- **创建 HTML 表**：基于包含 JSON 对象的数组创建一个 HTML 表。 <br>- **筛选数组**：基于符合条件的另一个数组中的项创建一个数组。 <br>- **联接**：基于数组中的所有项创建一个字符串，并使用指定的分隔符分隔这些项。 <br>- **分析 JSON**：基于 JSON 内容中的属性及其值创建用户友好的令牌，以便可以在工作流中使用这些属性。 <br>- **选择**：通过转换另一数组中的项或值并将这些项映射到指定的属性，创建包含 JSON 对象的数组。 |
-| ![内置操作图标][date-time-icon]<br>**日期时间** | 对时间戳执行操作： <p>- **添加到时间**：将指定的单位数添加到时间戳。 <br>- **转换时区**：将时间戳从源时区转换为目标时区。 <br>- **当前时间**：返回字符串形式的当前时间戳。 <br>- **获取将来的时间**：返回当前时间戳加上指定的时间单位。 <br>- **获取过去的时间**：返回当前时间戳减去指定的时间单位。 <br>- **从时间中减去**：从时间戳中减去一定数目的时间单位。 |
-| [![“内置”图标][variables-icon]<br>**变量**][variables-doc] | 对变量执行操作： <p>- **追加到数组变量**：插入一个值，作为变量存储的数组中的最后一个项。 <br>- **追加到字符串变量**：插入一个值，作为变量存储的字符串中的最后一个字符。 <br>- **递减变量**：按常量值减小变量。 <br>- **递增变量**：按常量值增大变量。 <br>- **初始化变量**：创建一个变量并声明其数据类型和初始值。 <br>- **设置变量**：将不同的值分配给现有变量。 |
+| [![数据操作内置操作 ][data-operations-icon]<br> **数据操作**][data-operations-doc] | 对数据执行操作： <p>- **撰写**：基于具有不同类型的多个输入创建单个输出。 <br>- **创建 CSV 表**：基于包含 JSON 对象的数组创建逗号分隔值 (CSV) 表。 <br>- **创建 HTML 表**：基于包含 JSON 对象的数组创建一个 HTML 表。 <br>- **筛选数组**：基于符合条件的另一个数组中的项创建一个数组。 <br>- **联接**：基于数组中的所有项创建一个字符串，并使用指定的分隔符分隔这些项。 <br>- **分析 JSON**：基于 JSON 内容中的属性及其值创建用户友好的令牌，以便可以在工作流中使用这些属性。 <br>- **选择**：通过转换另一数组中的项或值并将这些项映射到指定的属性，创建包含 JSON 对象的数组。 |
+| ![日期时间内置操作][date-time-icon]<br>**日期时间** | 对时间戳执行操作： <p>- **添加到时间**：将指定的单位数添加到时间戳。 <br>- **转换时区**：将时间戳从源时区转换为目标时区。 <br>- **当前时间**：返回字符串形式的当前时间戳。 <br>- **获取将来的时间**：返回当前时间戳加上指定的时间单位。 <br>- **获取过去的时间**：返回当前时间戳减去指定的时间单位。 <br>- **从时间中减去**：从时间戳中减去一定数目的时间单位。 |
+| [![变量内置操作 ][variables-icon]<br> **变量**][variables-doc] | 对变量执行操作： <p>- **追加到数组变量**：插入一个值，作为变量存储的数组中的最后一个项。 <br>- **追加到字符串变量**：插入一个值，作为变量存储的字符串中的最后一个字符。 <br>- **递减变量**：按常量值减小变量。 <br>- **递增变量**：按常量值增大变量。 <br>- **初始化变量**：创建一个变量并声明其数据类型和初始值。 <br>- **设置变量**：将不同的值分配给现有变量。 |
 |||
 
 <a name="managed-api-connectors"></a>
@@ -131,20 +131,20 @@ ms.locfileid: "88566295"
 
 逻辑应用提供以下用于自动化这些服务或系统的任务、流程和工作流的流行标准连接器：
 
-| 名称 | 说明 |
+| 名称 | 描述 |
 |------|-------------|
-| [![API 图标][azure-service-bus-icon]<br>**Azure 服务总线**][azure-service-bus-doc] | 使用逻辑应用中最常用的连接器管理异步消息、会话和主题订阅。 |
-| [![API 图标][sql-server-icon]<br>**SQL Server**][sql-server-doc] | 连接到本地 SQL Server 或云中的 Azure SQL 数据库，以便可以管理记录、运行存储过程或执行查询。 |
-| [![API 图标][azure-blob-storage-icon]<br>**Azure Blob<br>存储**][azure-blob-storage-doc] | 连接到存储帐户，以便可以创建和管理 Blob 内容。 |
-| [![API 图标][office-365-outlook-icon]<br>**Office 365<br>Outlook**][office-365-outlook-doc] | 连接到 Office 365 电子邮件帐户，以便可以创建和管理电子邮件、任务、日历事件和会议、联系人、请求，等等。 |
-| [![API 图标][sftp-ssh-icon]<br>**SFTP-SSH**][sftp-ssh-doc] | 使用 SSH 连接到可从 Internet 访问的 SFTP 服务器，以便可以处理文件和文件夹。 |
-| [![API 图标][sharepoint-online-icon]<br>**SharePoint<br>Online**][sharepoint-online-doc] | 连接到 SharePoint Online，以便可以管理文件、附件、文件夹，等等。 |
-| [![API 图标][azure-queues-icon]<br>**Azure <br>队列**][azure-queues-doc] | 连接到你的 Azure 存储帐户，以便你可以创建和管理队列和消息。 |
-| [![API 图标][ftp-icon]<br>**FTP**][ftp-doc] | 连接到可从 Internet 访问的 FTP 服务器，以便可以处理文件和文件夹。 |
-| [![API 图标][file-system-icon]<br>**文件<br>系统**][file-system-doc] | 连接到本地文件共享，以便可以创建和管理文件。 |
-| [![API 图标][azure-event-hubs-icon]<br>**Azure 事件中心**][azure-event-hubs-doc] | 通过事件中心使用和发布事件。 例如，通过事件中心获取逻辑应用的输出，然后将输出发送到实时分析提供程序。 |
-| [![API 图标][azure-event-grid-icon]<br>**Azure 事件**<br>**网格**][azure-event-grid-doc] | 监视事件网格发布的事件（例如，当 Azure 资源或第三方资源发生更改时）。 |
-| [![API 图标][salesforce-icon]<br>**Salesforce**][salesforce-doc] | 连接到 Salesforce 帐户，以便可以创建和管理记录、作业、对象，等等。 |
+| [![Azure 服务总线托管连接器 ][azure-service-bus-icon]<br> **Azure 服务总线**][azure-service-bus-doc] | 使用逻辑应用中最常用的连接器管理异步消息、会话和主题订阅。 |
+| [![SQL Server 托管连接器 ][sql-server-icon]<br> **SQL Server**][sql-server-doc] | 连接到本地 SQL Server 或云中的 Azure SQL 数据库，以便可以管理记录、运行存储过程或执行查询。 |
+| [![Azure Blob 存储托管连接器 ][azure-blob-storage-icon]<br> **azure blob <br> 存储**][azure-blob-storage-doc] | 连接到存储帐户，以便可以创建和管理 Blob 内容。 |
+| [![Office 365 Outlook 托管连接器 ][office-365-outlook-icon]<br> **Office 365 <br> outlook**][office-365-outlook-doc] | 连接到 Office 365 电子邮件帐户，以便可以创建和管理电子邮件、任务、日历事件和会议、联系人、请求，等等。 |
+| [![SFTP-SSH 托管连接器 ][sftp-ssh-icon]<br> **SFTP-ssh**][sftp-ssh-doc] | 使用 SSH 连接到可从 Internet 访问的 SFTP 服务器，以便可以处理文件和文件夹。 |
+| [![SharePoint Online 托管连接器 ][sharepoint-online-icon]<br> **sharepoint <br> online**][sharepoint-online-doc] | 连接到 SharePoint Online，以便可以管理文件、附件、文件夹，等等。 |
+| [![Azure 队列托管连接器 ][azure-queues-icon]<br> **azure <br> 队列**][azure-queues-doc] | 连接到你的 Azure 存储帐户，以便你可以创建和管理队列和消息。 |
+| [![FTP 托管连接器 ][ftp-icon]<br> **ftp**][ftp-doc] | 连接到可从 Internet 访问的 FTP 服务器，以便可以处理文件和文件夹。 |
+| [![文件系统托管连接器 ][file-system-icon]<br> **文件 <br> 系统**][file-system-doc] | 连接到本地文件共享，以便可以创建和管理文件。 |
+| [![Azure 事件中心托管连接器 ][azure-event-hubs-icon]<br> **Azure 事件中心**][azure-event-hubs-doc] | 通过事件中心使用和发布事件。 例如，通过事件中心获取逻辑应用的输出，然后将输出发送到实时分析提供程序。 |
+| [![Azure 事件网格托管连接器 ][azure-event-grid-icon]<br> **azure 事件** <br> **网格**][azure-event-grid-doc] | 监视事件网格发布的事件（例如，当 Azure 资源或第三方资源发生更改时）。 |
+| [![Salesforce 托管连接器 ][salesforce-icon]<br> **Salesforce**][salesforce-doc] | 连接到 Salesforce 帐户，以便可以创建和管理记录、作业、对象，等等。 |
 |||
 
 <a name="on-premises-connectors"></a>
@@ -155,38 +155,38 @@ ms.locfileid: "88566295"
 
 :::row:::
     :::column:::
-        [![API 图标][biztalk-server-icon]<br>**BizTalk** <br>**Server**][biztalk-server-doc]
+        [![BizTalk Server 连接器 ][biztalk-server-icon]<br> **BizTalk** <br> **Server**][biztalk-server-doc]
     :::column-end:::
     :::column:::
-        [![API 图标][file-system-icon]<br>**文件<br>系统**][file-system-doc]
+        [![文件系统连接器 ][file-system-icon]<br> **文件 <br> 系统**][file-system-doc]
     :::column-end:::
     :::column:::
-        [![API 图标 ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+        [![DB2 连接器 ][ibm-db2-icon]<br> **IBM db2**][ibm-db2-doc]
     :::column-end:::
     :::column:::
-        [![API 图标 ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API 图标][mysql-icon]<br>**MySQL**][mysql-doc]
-    :::column-end:::
-    :::column:::
-        [![API 图标][oracle-db-icon]<br>**Oracle DB**][oracle-db-doc]
-    :::column-end:::
-    :::column:::
-        [![API 图标][postgre-sql-icon]<br>**PostgreSQL**][postgre-sql-doc]
-    :::column-end:::
-    :::column:::
-        [![API 图标][sharepoint-server-icon]<br>**SharePoint <br>Server**][sharepoint-server-doc]
+        [![Informix 连接器 ][ibm-informix-icon]<br> **IBM** <br> **Informix**][ibm-informix-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API 图标][sql-server-icon]<br>**SQL <br>Server**][sql-server-doc]
+        [![MySQL 连接器 ][mysql-icon]<br> **mysql**][mysql-doc]
     :::column-end:::
     :::column:::
-        [![API 图标][teradata-icon]<br>**Teradata**][teradata-doc]
+        [![Oracle DB 连接器 ][oracle-db-icon]<br> **Oracle DB**][oracle-db-doc]
+    :::column-end:::
+    :::column:::
+        [![PostgreSQL 连接器 ][postgre-sql-icon]<br> **PostgreSQL**][postgre-sql-doc]
+    :::column-end:::
+    :::column:::
+        [![SharePoint Server 连接器 ][sharepoint-server-icon]<br> **sharepoint <br> server**][sharepoint-server-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![SQL Server 连接器 ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![Teradata 连接器 ][teradata-icon]<br> **Teradata**][teradata-doc]
     :::column-end:::
     :::column:::
         
@@ -204,44 +204,44 @@ ms.locfileid: "88566295"
 
 :::row:::
     :::column:::
-        [![API 图标][as2-icon]<br>**AS2 <br>解码**][as2-doc]
+        [![AS2 解码操作 ][as2-icon]<br> **as2 <br> 解码**][as2-doc]
     :::column-end:::
     :::column:::
-        [![API 图标][as2-icon]<br>**AS2 <br>编码**][as2-doc]
+        [![AS2 编码操作 ][as2-icon]<br> **as2 <br> 编码**][as2-doc]
     :::column-end:::
     :::column:::
-        [![API 图标][edifact-icon]<br>**EDIFACT <br>解码**][edifact-decode-doc]
+        [![EDIFACT 解码操作 ][edifact-icon]<br> **edifact <br> 解码**][edifact-decode-doc]
     :::column-end:::
     :::column:::
-        [![API 图标][edifact-icon]<br>**EDIFACT <br>编码**][edifact-encode-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API 图标][flat-file-decode-icon]<br>**平面文件<br>解码**][flat-file-decode-doc]
-    :::column-end:::
-    :::column:::
-        [![API 图标][flat-file-encode-icon]<br>**平面文件<br>编码**][flat-file-encode-doc]
-    :::column-end:::
-    :::column:::
-        [![API 图标][integration-account-icon]<br>**集成<br>帐户**][integration-account-doc]
-    :::column-end:::
-    :::column:::
-        [![API 图标][liquid-icon]<br>**Liquid** <br>**转换**][json-liquid-transform-doc]
+        [![EDIFACT 编码操作 ][edifact-icon]<br> **edifact <br> 编码**][edifact-encode-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API 图标][x12-icon]<br>**X12 <br>解码**][x12-decode-doc]
+        [![平面文件解码操作 ][flat-file-decode-icon]<br> **平面文件 <br> 解码**][flat-file-decode-doc]
     :::column-end:::
     :::column:::
-        [![API 图标][x12-icon]<br>**X12 <br>编码**][x12-encode-doc]
+        [![平面文件编码操作 ][flat-file-encode-icon]<br> **平面文件 <br> 编码**][flat-file-encode-doc]
     :::column-end:::
     :::column:::
-        [![API 图标][xml-transform-icon]<br>**XML** <br>**转换**][xml-transform-doc]
+        [![集成帐户操作 ][integration-account-icon]<br> **集成 <br> 帐户**][integration-account-doc]
     :::column-end:::
     :::column:::
-        [![API 图标][xml-validate-icon]<br>**XML <br>验证**][xml-validate-doc]
+        [![液体转换操作 ][liquid-icon]<br> **液体** <br> **变换**][json-liquid-transform-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![X12 解码操作 ][x12-icon]<br> **x12 <br> 解码**][x12-decode-doc]
+    :::column-end:::
+    :::column:::
+        [![X12 编码操作 ][x12-icon]<br> **x12 <br> 编码**][x12-encode-doc]
+    :::column-end:::
+    :::column:::
+        [![Xml 转换操作 ][xml-transform-icon]<br> **xml** <br> **转换**][xml-transform-doc]
+    :::column-end:::
+    :::column:::
+        [![XML 验证操作 ][xml-validate-icon]<br> **xml <br> 验证**][xml-validate-doc]
     :::column-end:::
 :::row-end:::
 
@@ -253,13 +253,13 @@ ms.locfileid: "88566295"
 
 :::row:::
     :::column:::
-        [![API 图标 ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+        [![IBM 3270 连接器 ][ibm-3270-icon]<br> **ibm 3270**][ibm-3270-doc]
     :::column-end:::
     :::column:::
-        [![API 图标][ibm-mq-icon]<br>**IBM MQ**][ibm-mq-doc]
+        [![MQ connector ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
     :::column-end:::
     :::column:::
-        [![API 图标][sap-icon]<br>**SAP**][sap-connector-doc]
+        [![SAP 连接器 ][sap-icon]<br> **sap**][sap-connector-doc]
     :::column-end:::
     :::column:::
         
@@ -274,86 +274,86 @@ ms.locfileid: "88566295"
 
 :::row:::
     :::column:::
-        [![API 图标 ][as2-icon]<br> **AS2**][as2-doc]
+        [![AS2 ISE 连接器 ][as2-icon]<br> **as2**][as2-doc]
     :::column-end:::
     :::column:::
-        [![API 图标 ][azure-automation-icon]<br> **Azure <br> 自动化**][azure-automation-doc]
+        [![Azure 自动化 ISE 连接器 ][azure-automation-icon]<br> **azure <br> 自动化**][azure-automation-doc]
     :::column-end:::
     :::column:::
-        [![API 图标][azure-blob-storage-icon]<br>**Azure Blob<br>存储**][azure-blob-storage-doc]
+        [![Azure Blob 存储 ISE 连接器 ][azure-blob-storage-icon]<br> **azure blob <br> 存储**][azure-blob-storage-doc]
     :::column-end:::
     :::column:::
-        [![API 图标 ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> DB**][azure-cosmos-db-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API 图标 ][azure-event-hubs-icon]<br> **Azure 事件 <br> 中心**][azure-event-hubs-doc]
-    :::column-end:::
-    :::column:::
-        [![API 图标 ][azure-event-grid-icon]<br> **Azure 事件 <br> 网格**][azure-event-grid-doc]
-    :::column-end:::
-    :::column:::
-        [![API 图标 ][azure-file-storage-icon]<br> **Azure 文件 <br> 存储**][azure-file-storage-doc]
-    :::column-end:::
-    :::column:::
-        [![API 图标 ][azure-key-vault-icon]<br> **Azure 密钥 <br> 保管库**][azure-key-vault-doc]
+        [![Azure Cosmos DB ISE 连接器 ][azure-cosmos-db-icon]<br> **Azure Cosmos <br> DB**][azure-cosmos-db-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API 图标 ][azure-monitor-logs-icon]<br> **Azure Monitor <br> 日志**][azure-monitor-logs-doc]
+        [![Azure 事件中心 ISE 连接器 ][azure-event-hubs-icon]<br> **azure 事件 <br> 中心**][azure-event-hubs-doc]
     :::column-end:::
     :::column:::
-        [![API 图标 ][azure-service-bus-icon]<br> **Azure 服务 <br> 总线**][azure-service-bus-doc]
+        [![Azure 事件网格 ISE 连接器 ][azure-event-grid-icon]<br> **azure 事件 <br> 网格**][azure-event-grid-doc]
     :::column-end:::
     :::column:::
-        [![API 图标 ][azure-sql-data-warehouse-icon]<br> **Azure SQL 数据 <br> 仓库**][azure-sql-data-warehouse-doc]
+        [![Azure 文件存储 ISE 连接器 ][azure-file-storage-icon]<br> **azure 文件 <br> 存储**][azure-file-storage-doc]
     :::column-end:::
     :::column:::
-        [![API 图标 ][azure-table-storage-icon]<br> **Azure 表 <br> 存储**][azure-table-storage-doc]
-    :::column-end:::
-:::row-end:::
-:::row:::
-    :::column:::
-        [![API 图标][azure-queues-icon]<br>**Azure <br>队列**][azure-queues-doc]
-    :::column-end:::
-    :::column:::
-        [![API 图标 ][edifact-icon]<br> **EDIFACT**][edifact-doc]
-    :::column-end:::
-    :::column:::
-        [![API 图标][file-system-icon]<br>**文件<br>系统**][file-system-doc]
-    :::column-end:::
-    :::column:::
-        [![API 图标][ftp-icon]<br>**FTP**][ftp-doc]
+        [![Azure Key Vault ISE 连接器 ][azure-key-vault-icon]<br> **Azure 密钥 <br> 保管库**][azure-key-vault-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API 图标 ][ibm-3270-icon]<br> **IBM 3270**][ibm-3270-doc]
+        [![Azure Monitor 记录 ISE 连接器 ][azure-monitor-logs-icon]<br> **Azure Monitor <br> 日志**][azure-monitor-logs-doc]
     :::column-end:::
     :::column:::
-        [![API 图标 ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+        [![Azure 服务总线 ISE 连接器 ][azure-service-bus-icon]<br> **azure 服务 <br> 总线**][azure-service-bus-doc]
     :::column-end:::
     :::column:::
-        [![API 图标][ibm-mq-icon]<br>**IBM MQ**][ibm-mq-doc]
+        [![Azure SQL 数据仓库 ISE 连接器 ][azure-sql-data-warehouse-icon]<br> **Azure sql 数据 <br> 仓库**][azure-sql-data-warehouse-doc]
     :::column-end:::
     :::column:::
-        [![API 图标][sap-icon]<br>**SAP**][sap-connector-doc]
+        [![Azure 表存储 ISE 连接器 ][azure-table-storage-icon]<br> **azure 表 <br> 存储**][azure-table-storage-doc]
     :::column-end:::
 :::row-end:::
 :::row:::
     :::column:::
-        [![API 图标][sftp-ssh-icon]<br>**SFTP-SSH**][sftp-ssh-doc]
+        [![Azure 队列 ISE 连接器 ][azure-queues-icon]<br> **azure <br> 队列**][azure-queues-doc]
     :::column-end:::
     :::column:::
-        [![API 图标 ][smtp-icon]<br> **SMTP**][smtp-doc]
+        [![EDIFACT ISE 连接器 ][edifact-icon]<br> **EDIFACT**][edifact-doc]
     :::column-end:::
     :::column:::
-        [![API 图标][sql-server-icon]<br>**SQL <br>Server**][sql-server-doc]
+        [![文件系统 ISE 连接器 ][file-system-icon]<br> **文件 <br> 系统**][file-system-doc]
     :::column-end:::
     :::column:::
-        [![API 图标 ][x12-icon]<br> **X12**][x12-doc]
+        [![FTP ISE 连接器 ][ftp-icon]<br> **ftp**][ftp-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![IBM 3270 ISE 连接器 ][ibm-3270-icon]<br> **ibm 3270**][ibm-3270-doc]
+    :::column-end:::
+    :::column:::
+        [![DB2 ISE 连接器 ][ibm-db2-icon]<br> **IBM DB2**][ibm-db2-doc]
+    :::column-end:::
+    :::column:::
+        [![MQ ISE 连接器 ][ibm-mq-icon]<br> **IBM MQ**][ibm-mq-doc]
+    :::column-end:::
+    :::column:::
+        [![SAP ISE 连接器 ][sap-icon]<br> **sap**][sap-connector-doc]
+    :::column-end:::
+:::row-end:::
+:::row:::
+    :::column:::
+        [![SFTP-SSH ISE 连接器 ][sftp-ssh-icon]<br> **SFTP-ssh**][sftp-ssh-doc]
+    :::column-end:::
+    :::column:::
+        [![SMTP ISE 连接器 ][smtp-icon]<br> **smtp**][smtp-doc]
+    :::column-end:::
+    :::column:::
+        [![SQL Server ISE 连接器 ][sql-server-icon]<br> **SQL <br> Server**][sql-server-doc]
+    :::column-end:::
+    :::column:::
+        [![X12 ISE 连接器 ][x12-icon]<br> **X12**][x12-doc]
     :::column-end:::
 :::row-end:::
 
@@ -410,7 +410,7 @@ ms.locfileid: "88566295"
 
 ## <a name="get-ready-for-deployment"></a>准备部署
 
-尽管从逻辑应用中创建连接，但连接是使用其自己的资源定义分隔的 Azure 资源。 若要查看这些连接资源定义，可以 [通过使用 Azure 门户检查逻辑应用的资源组](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#view-resource-definitions) ，或将 [逻辑应用从 Azure 下载到 Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)中，这是创建最适用于部署的有效参数化逻辑应用模板的最简单方法。
+尽管从逻辑应用中创建连接，但连接是使用其自己的资源定义分隔的 Azure 资源。 若要查看这些连接资源定义，请将 [逻辑应用从 Azure 下载到 Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)中，这是创建最适用于部署的有效参数化逻辑应用模板的最简单方法。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -574,7 +574,7 @@ ms.locfileid: "88566295"
 [azure-service-bus-doc]: ./connectors-create-api-servicebus.md "从服务总线队列和主题发送消息，并从服务总线队列和订阅接收消息"
 [azure-sql-data-warehouse-doc]: /connectors/sqldw/ "连接到 Azure SQL 数据仓库，以便查看数据"
 [azure-table-storage-doc]: /connectors/azuretables/ "连接到 Azure 存储帐户，以便创建、更新和查询表与其他对象"
-[biztalk-server-doc]: /connectors/biztalk/ "连接到 BizTalk Server，以便将基于 BizTalk 的应用程序与 Azure 逻辑应用一起运行"
+[biztalk-server-doc]: /connectors/biztalk/ "连接到 BizTalk Server，以便可以将基于 BizTalk 的应用程序与 Azure 逻辑应用并行运行"
 [file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md "连接到本地文件系统"
 [ftp-doc]: ./connectors-create-api-ftp.md "连接到 FTP/FTPS 服务器以执行 FTP 任务，例如上传、获取、删除文件，等等"
 [github-doc]: ./connectors-create-api-github.md "连接到 GitHub，对问题进行跟踪"

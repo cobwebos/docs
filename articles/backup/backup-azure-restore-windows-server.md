@@ -3,12 +3,12 @@ title: 使用 MARS 代理将文件还原到 Windows 服务器
 description: 在本文中，了解如何使用 Microsoft Azure 恢复服务 (MARS) 代理将存储在 Azure 中的数据还原到 Windows 服务器或 Windows 计算机。
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: e5158681971c5c10e813187fedb61bc0022ee9e1
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: 78663edadfdef581dbdd259882a6dd4afe5a4b0b
+ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88827063"
+ms.lasthandoff: 08/26/2020
+ms.locfileid: "88871252"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>使用 MARS 代理将文件还原到 Windows 服务器
 
@@ -50,7 +50,7 @@ ms.locfileid: "88827063"
    > 还原单个文件和文件夹的选项需要 .NET Framework 4.5.2 或更高版本。 如果看不到 " **单个文件和文件夹** " 选项，则必须将 .NET Framework 升级到4.5.2 或更高版本，然后重试。
 
    > [!TIP]
-   > 使用“单个文件和文件夹”选项可以快速访问恢复点数据。 它适用于恢复单个文件（总大小不超过 80 GB），并且在恢复期间提供高达 6 MBps 的传输或复制速度。 “卷”选项恢复指定卷中的所有备份数据。 此选项提供更快的传输速度（最高 40 MBps），非常适合恢复大型数据或整个卷。
+   > 使用“单个文件和文件夹”选项可以快速访问恢复点数据。 它适用于恢复单个文件，建议使用的总大小小于 80 GB。 在恢复期间，它提供了高达 6 MBps 的传输或副本速度。 “卷”选项恢复指定卷中的所有备份数据。 此选项提供更快的传输速度 (最高 40 MBps) ，建议使用此选项来恢复大大小的数据或整个卷。
 
 5. 在“选择卷和日期”页上，选择包含想要还原的文件和文件夹的卷。
 

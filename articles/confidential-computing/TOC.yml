@@ -12,6 +12,11 @@
   items:
     - name: 有关虚拟机的解决方案
       href: virtual-machine-solutions.md
+- name: 操作方式
+  expanded: true
+  items:
+    - name: Fortanix Enclave Manager
+      href: how-to-fortanix-enclave-manager.md
 - name: 资源
   expanded: true
   items:
