@@ -73,7 +73,7 @@ HCX 高级（默认安装）支持 (本地或云到云) 的最多三个站点连
 
 1. 在 " **管理**" 下，选择 " **系统更新** "，然后选择 " **请求下载链接** " 下载 VMware HCX .ova 文件。
 
-   :::image type="content" source="media/hybrid-cloud-extension-installation/administration-updates.png" alt-text="在 "管理" 下，选择 "系统更新"，然后选择 "请求下载链接" 下载 VMware HCX .OVA 文件。":::
+   :::image type="content" source="media/hybrid-cloud-extension-installation/administration-updates.png" alt-text="在 管理 下，选择 系统更"，然后选择 请求下载链接 下载 VMware HCX .OVA 文件。":::
 
 1. 接下来，请前往本地 vCenter，选择要部署到本地 vCenter 的 OVF 模板。  
 
@@ -81,13 +81,13 @@ HCX 高级（默认安装）支持 (本地或云到云) 的最多三个站点连
 
 1. 选择名称和位置，然后选择需要在其中部署 HCX 的资源/群集。 然后查看详细信息和所需资源。  
 
-   :::image type="content" source="media/hybrid-cloud-extension-installation/configure-template.png" alt-text=" 选择 "名称" 和 "位置"，然后选择要在其中部署 HCX 的资源/群集。然后，查看详细信息和所需的资源。":::
+   :::image type="content" source="media/hybrid-cloud-extension-installation/configure-template.png" alt-text=" 选择 名称 和 位置，然后选择要在其中部署 HCX 的资源/群集。然后，查看详细信息和所需的资源。":::
 
 1. 查看许可条款，如果同意，则选择所需存储和网络。 然后，选择“下一步”。
 
 1. 在“自定义模板”中，输入所有必需的信息。 
 
-   :::image type="content" source="media/hybrid-cloud-extension-installation/customize-template.png" alt-text="在 "自定义模板" 中，输入所有必需的信息。":::
+   :::image type="content" source="media/hybrid-cloud-extension-installation/customize-template.png" alt-text="在 自定义模板 中，输入所有必需的信息。":::
 
 1. 选择“下一步”，验证配置，然后选择“完成”以部署 HCX OVA。
 
@@ -102,7 +102,7 @@ HCX 高级（默认安装）支持 (本地或云到云) 的最多三个站点连
 
 1. 在“许可”中，输入“HCX Advanced 密钥”。  
 
-   :::image type="content" source="media/hybrid-cloud-extension-installation/hcx-key.png" alt-text="在 "授权" 中，输入你的 HCX 高级密钥。":::
+   :::image type="content" source="media/hybrid-cloud-extension-installation/hcx-key.png" alt-text="在 授权 中，输入你的 HCX 高级密钥。":::
     
     > [!NOTE]
     > HCX 管理器必须开放 Internet 访问或配置代理。
@@ -113,17 +113,17 @@ HCX 高级（默认安装）支持 (本地或云到云) 的最多三个站点连
 
 1. 在“数据中心位置”中，如有必要，编辑数据中心位置。
 
-   :::image type="content" source="media/hybrid-cloud-extension-installation/system-location.png" alt-text="如果需要，请在 "数据中心位置" 编辑数据中心位置。":::
+   :::image type="content" source="media/hybrid-cloud-extension-installation/system-location.png" alt-text="如果需要，请在 数据中心位置 编辑数据中心位置。":::
 
 ## <a name="configure-hcx"></a>配置 HCX 
 
 1. 登录到本地 vCenter，然后在 " **主页**" 下选择 " **HCX**"。
 
-   :::image type="content" source="media/hybrid-cloud-extension-installation/hcx-vcenter.png" alt-text="登录到本地 vCenter，然后在 "主页" 下选择 "HCX"。":::
+   :::image type="content" source="media/hybrid-cloud-extension-installation/hcx-vcenter.png" alt-text="登录到本地 vCenter，然后在 主页 下选择 HCX。":::
 
 1. 在 "**基础结构**" 下，选择 "**站点配对**" "  >  **添加站点配对**"。
 
-   :::image type="content" source="media/hybrid-cloud-extension-installation/site-pairing.png" alt-text="在 "基础结构" 下，选择 "站点配对 > 添加站点配对。":::
+   :::image type="content" source="media/hybrid-cloud-extension-installation/site-pairing.png" alt-text="在 基础结构 下，选择 "站点配对 > 添加站点配对。":::
 
 1. 输入远程 HCX URL 或 IP 地址，Azure VMware 解决方案 cloudadmin 用户名和密码，然后选择 " **连接**"。
 
@@ -133,7 +133,7 @@ HCX 高级（默认安装）支持 (本地或云到云) 的最多三个站点连
 
 1. 在 "**基础结构**" 下，选择 "**互连**  >  **多站点服务网格**  >  **网络配置**文件" "  >  **创建网络配置文件**"。
 
-   :::image type="content" source="media/hybrid-cloud-extension-installation/create-network-profile.png" alt-text="在 "基础结构" 下，选择 "互连 > 多站点服务网格 > 网络配置文件 > 创建网络配置文件。":::
+   :::image type="content" source="media/hybrid-cloud-extension-installation/create-network-profile.png" alt-text="在 基础结构 下，选择 "互连 > 多站点服务网格 > 网络配置文件 > 创建网络配置文件。":::
 
 1. 对于新的网络配置文件，输入 HCX IX 和 NE IP 地址范围 (IX 和 NE 装置) 至少需要两个 IP 地址。
 
@@ -146,11 +146,11 @@ HCX 高级（默认安装）支持 (本地或云到云) 的最多三个站点连
 
 1. 输入计算配置文件名称，然后选择“继续”。  
 
-   :::image type="content" source="media/hybrid-cloud-extension-installation/create-compute-profile.png" alt-text="输入计算配置文件名称，然后选择 "继续"。":::
+   :::image type="content" source="media/hybrid-cloud-extension-installation/create-compute-profile.png" alt-text="输入计算配置文件名称，然后选择 继续。":::
 
 1. 选择要启用的服务，如迁移、网络扩展或灾难恢复，然后选择 " **继续**"。
 
-   :::image type="content" source="media/hybrid-cloud-extension-installation/select-services.png" alt-text="选择要启用的服务，如迁移、网络扩展或灾难恢复，然后选择 "继续"。":::
+   :::image type="content" source="media/hybrid-cloud-extension-installation/select-services.png" alt-text="选择要启用的服务，如迁移、网络扩展或灾难恢复，然后选择 继续。":::
 
 1. 在“选择服务资源”中，选择应该为其启用所选 HCX 服务的一个或多个服务资源。 选择“继续”。
 
